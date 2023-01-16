@@ -17,9 +17,9 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
-  ColumnDefinition,
-  RowState,
-  createColumn,
+  TableColumnDefinition,
+  TableRowData,
+  createTableColumn,
 } from '@fluentui/react-table';
 
 type FileCell = {
@@ -89,9 +89,9 @@ const items: Item[] = [
 ];
 
 export const SingleSelect = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
+  const columns: TableColumnDefinition<Item>[] = React.useMemo(
     () => [
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'file',
         compare: (a, b) => {
           return a.file.label.localeCompare(b.file.label);
@@ -103,7 +103,7 @@ export const SingleSelect = () => {
           return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'author',
         compare: (a, b) => {
           return a.author.label.localeCompare(b.author.label);
@@ -127,7 +127,7 @@ export const SingleSelect = () => {
           );
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdated',
         compare: (a, b) => {
           return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
@@ -140,7 +140,7 @@ export const SingleSelect = () => {
           return item.lastUpdated.label;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdate',
         compare: (a, b) => {
           return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
@@ -162,15 +162,15 @@ export const SingleSelect = () => {
     <DataGrid items={items} columns={columns} selectionMode="single" defaultSelectedItems={defaultSelectedItems}>
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell }: ColumnDefinition<Item>) => (
+          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
             <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody>
-        {({ item, rowId }: RowState<Item>) => (
+        {({ item, rowId }: TableRowData<Item>) => (
           <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

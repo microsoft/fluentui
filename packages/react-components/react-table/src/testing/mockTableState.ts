@@ -1,8 +1,8 @@
-import type { TableState, TableSortState } from '../hooks';
+import type { TableFeaturesState, TableSortState } from '../hooks';
 import { defaultTableSelectionState, defaultTableSortState } from '../hooks';
 
-export const mockTableState = <TItem = unknown>(options: Partial<TableState<TItem>> = {}) => {
-  const mockState: TableState<TItem> = {
+export const mockTableState = <TItem = unknown>(options: Partial<TableFeaturesState<TItem>> = {}) => {
+  const mockState: TableFeaturesState<TItem> = {
     columns: [],
     getRows: () => [],
     items: [],

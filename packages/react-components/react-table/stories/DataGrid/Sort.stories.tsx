@@ -17,9 +17,9 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
-  ColumnDefinition,
-  RowState,
-  createColumn,
+  TableColumnDefinition,
+  TableRowData,
+  createTableColumn,
 } from '@fluentui/react-table';
 import { SortState } from '../../src/hooks/types';
 
@@ -90,9 +90,9 @@ const items: Item[] = [
 ];
 
 export const Sort = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
+  const columns: TableColumnDefinition<Item>[] = React.useMemo(
     () => [
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'file',
         compare: (a, b) => {
           return a.file.label.localeCompare(b.file.label);
@@ -104,7 +104,7 @@ export const Sort = () => {
           return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'author',
         compare: (a, b) => {
           return a.author.label.localeCompare(b.author.label);
@@ -128,7 +128,7 @@ export const Sort = () => {
           );
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdated',
         compare: (a, b) => {
           return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
@@ -141,7 +141,7 @@ export const Sort = () => {
           return item.lastUpdated.label;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdate',
         compare: (a, b) => {
           return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
@@ -163,15 +163,15 @@ export const Sort = () => {
     <DataGrid items={items} columns={columns} sortable defaultSortState={defaultSortState}>
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell }: ColumnDefinition<Item>) => (
+          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
             <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody>
-        {({ item, rowId }: RowState<Item>) => (
+        {({ item, rowId }: TableRowData<Item>) => (
           <DataGridRow key={rowId}>
-            {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

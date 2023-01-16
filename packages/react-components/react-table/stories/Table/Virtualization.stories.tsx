@@ -19,10 +19,10 @@ import {
   TableHeaderCell,
   TableCellLayout,
   TableSelectionCell,
-  createColumn,
+  createTableColumn,
   useTableFeatures,
   useTableSelection,
-  RowState as RowStateBase,
+  TableRowData as RowStateBase,
 } from '@fluentui/react-components/unstable';
 
 type Item = {
@@ -44,7 +44,7 @@ type Item = {
   };
 };
 
-interface RowState extends RowStateBase<Item> {
+interface TableRowData extends RowStateBase<Item> {
   onClick: (e: React.MouseEvent) => void;
   onKeyDown: (e: React.KeyboardEvent) => void;
   selected: boolean;
@@ -52,7 +52,7 @@ interface RowState extends RowStateBase<Item> {
 }
 
 interface ReactWindowRenderFnProps extends ListChildComponentProps {
-  data: RowState[];
+  data: TableRowData[];
 }
 
 export const Virtualization = () => {
@@ -60,16 +60,16 @@ export const Virtualization = () => {
   const scrollbarWidth = useScrollbarWidth({ targetDocument });
   const columns = React.useMemo(
     () => [
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'file',
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'author',
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdated',
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdate',
       }),
     ],
@@ -135,7 +135,7 @@ export const Virtualization = () => {
     ],
   );
 
-  const rows: RowState[] = getRows(row => {
+  const rows: TableRowData[] = getRows(row => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,

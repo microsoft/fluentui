@@ -17,10 +17,10 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
-  ColumnDefinition,
-  RowState,
-  createColumn,
-  RowId,
+  TableColumnDefinition,
+  TableRowData,
+  createTableColumn,
+  TableRowId,
   DataGridProps,
 } from '@fluentui/react-table';
 
@@ -91,9 +91,9 @@ const items: Item[] = [
 ];
 
 export const SingleSelectControlled = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
+  const columns: TableColumnDefinition<Item>[] = React.useMemo(
     () => [
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'file',
         compare: (a, b) => {
           return a.file.label.localeCompare(b.file.label);
@@ -105,7 +105,7 @@ export const SingleSelectControlled = () => {
           return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'author',
         compare: (a, b) => {
           return a.author.label.localeCompare(b.author.label);
@@ -129,7 +129,7 @@ export const SingleSelectControlled = () => {
           );
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdated',
         compare: (a, b) => {
           return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
@@ -142,7 +142,7 @@ export const SingleSelectControlled = () => {
           return item.lastUpdated.label;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdate',
         compare: (a, b) => {
           return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
@@ -159,7 +159,7 @@ export const SingleSelectControlled = () => {
   );
 
   const [selectedRows, setSelectedRows] = React.useState(
-    new Set<RowId>([1]),
+    new Set<TableRowId>([1]),
   );
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);
@@ -175,15 +175,15 @@ export const SingleSelectControlled = () => {
     >
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell }: ColumnDefinition<Item>) => (
+          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
             <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
           )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody>
-        {({ item, rowId }: RowState<Item>) => (
+        {({ item, rowId }: TableRowData<Item>) => (
           <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>
