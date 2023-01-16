@@ -11,7 +11,7 @@ import type { DataGridBodySlots as DataGridBodySlots_2 } from '@fluentui/react-c
 import type { DataGridBodyState as DataGridBodyState_2 } from '@fluentui/react-components/unstable';
 import type { ForwardRefComponent } from '@fluentui/react-components';
 import * as React_2 from 'react';
-import type { RowState } from '@fluentui/react-components/unstable';
+import type { TableRowData } from '@fluentui/react-components/unstable';
 
 // @public
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
