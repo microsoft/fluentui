@@ -110,9 +110,15 @@ const useStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
     ':hover': {
       backgroundColor: tokens.colorBrandBackground2,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorBrandBackground2,
+      },
     },
     ':active': {
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      },
     },
 
     '@media(forced-colors: active)': {
@@ -136,10 +142,19 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorSubtleBackgroundSelected,
+      },
+    },
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        backgroundColor: tokens.colorSubtleBackgroundSelected,
+      },
     },
+
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
   },
 
