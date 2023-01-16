@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { ColumnId } from '../hooks/';
+import type { TableColumnId } from '../hooks/';
 
-const columnIdContext = React.createContext<ColumnId | undefined>(undefined);
+const columnIdContext = React.createContext<TableColumnId | undefined>(undefined);
 
 export const columnIdContextDefaultValue = '';
 
