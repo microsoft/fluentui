@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 export const FarGroup = (props: Partial<ToolbarProps>) => {
   const farGroupStyles = useStyles();
   return (
-    <Toolbar {...props} className={farGroupStyles.toolbar}>
+    <Toolbar aria-label="with Separeted Groups" {...props} className={farGroupStyles.toolbar}>
       <ToolbarGroup role="presentation">
         <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncreaseRegular />} />
         <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecreaseRegular />} />

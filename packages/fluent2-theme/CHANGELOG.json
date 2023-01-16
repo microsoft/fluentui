@@ -2,6 +2,21 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 07:41:02 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.9",
+      "version": "8.104.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "d7631d4cb034ace1e90d34410a094e21766bf424",
+            "comment": "Updated theme colors to match Fluent2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:52 GMT",
       "tag": "@fluentui/fluent2-theme_v8.104.8",
       "version": "8.104.8",

@@ -21018,7 +21018,7 @@ prettyjson@^1.2.1:
     colors "1.4.0"
     minimist "^1.2.0"
 
-prismjs@~1.16.0, prismjs@^1.16.0, prismjs@^1.8.4:
+prismjs@^1.16.0, prismjs@^1.8.4, prismjs@~1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.16.0.tgz#406eb2c8aacb0f5f0f1167930cb83835d10a4308"
   integrity sha512-OA4MKxjFZHSvZcisLGe14THYsug/nF6O1f0pAJc0KN0wTyAcLqmsbE+lTGKSpyh+9pEW57+k6pg2AfYR+coyHA==
@@ -25794,10 +25794,10 @@ void-elements@^2.0.0:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
-vrscreenshotdiff@0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/vrscreenshotdiff/-/vrscreenshotdiff-0.0.16.tgz#54b312a3d87d9c6bcd20f9aa2c2973e43989fa1a"
-  integrity sha512-LVrjP+11tKwsxdk+MUmK93d+B4LT/gFYdKA/I/bjRuCsRnNWvmrgbbCg0QKv1BausE8pKeH/YNKJPQzoGWd0JQ==
+vrscreenshotdiff@0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/vrscreenshotdiff/-/vrscreenshotdiff-0.0.17.tgz#de93eab3302144ffe09c536886eff2a36eaca688"
+  integrity sha512-zfL6eUs3FbJzNhmqih/YtciAh2tf8dz9427kn6BRpdo/VC/fnCTUSl2ZzaAW0/wJaQpkWnl24PPfCa2ptuZENQ==
   dependencies:
     "@octokit/rest" "^19.0.3"
     adal-node "^0.2.3"

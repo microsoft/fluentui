@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 09 Jan 2023 21:51:24 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:38:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.19)
+
+Mon, 16 Jan 2023 08:38:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.18..@fluentui/react-table_v9.0.0-alpha.19)
+
+### Changes
+
+- feat: Export RowIdProvider ([PR #26081](https://github.com/microsoft/fluentui/pull/26081) by lingfangao@hotmail.com)
+- fix(TableSelectionCell): Radios should not change selection on focus ([PR #26283](https://github.com/microsoft/fluentui/pull/26283) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.13 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.20 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-radio to v9.0.18 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.18)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:54 GMT",
+      "tag": "@fluentui/priority-overflow_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:34:54 GMT",
       "tag": "@fluentui/priority-overflow_v9.0.0-rc.2",
       "version": "9.0.0-rc.2",
