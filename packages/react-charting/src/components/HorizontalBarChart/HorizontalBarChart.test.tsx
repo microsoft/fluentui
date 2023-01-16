@@ -63,17 +63,17 @@ describe('HorizontalBarChart snapShot testing', () => {
     jest.spyOn(global.Math, 'random').mockRestore();
   });
 
-  it('Should render relative variant correctly', () => {
+  it('Should render absolute-scale variant correctly', () => {
     const component = renderer.create(
-      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.Relative} />,
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should not render bar values in relative variant', () => {
+  it('Should not render bar values in absolute-scale variant', () => {
     const component = renderer.create(
-      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.Relative} hideValues={true} />,
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideValues={true} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

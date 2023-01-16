@@ -110,7 +110,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
         />
         <HorizontalBarChart
           data={data}
-          variant={HorizontalBarChartVariant.Relative}
+          variant={HorizontalBarChartVariant.AbsoluteScale}
           hideValues={this.state.hideValues}
         />
       </>

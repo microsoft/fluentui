@@ -19,7 +19,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       className,
     ],
     items: {
-      marginBottom: showTriangle || variant === HorizontalBarChartVariant.Relative ? '16px' : '10px',
+      marginBottom: showTriangle || variant === HorizontalBarChartVariant.AbsoluteScale ? '16px' : '10px',
     },
     chart: {
       width: '100%',
@@ -42,7 +42,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       whiteSpace: 'nowrap',
       display: 'block',
       color: '#171717',
-      marginBottom: variant === HorizontalBarChartVariant.Relative ? '4px' : '5px',
+      marginBottom: variant === HorizontalBarChartVariant.AbsoluteScale ? '4px' : '5px',
     },
     chartTitleRight: {
       fontSize: FontSizes.medium,
@@ -75,7 +75,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       fill: theme.palette.neutralPrimary,
     },
     chartWrapper: {
-      paddingRight: variant === HorizontalBarChartVariant.Relative && !hideValues ? 40 : 0,
+      paddingRight: variant === HorizontalBarChartVariant.AbsoluteScale && !hideValues ? 40 : 0,
     },
   };
 };

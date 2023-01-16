@@ -81,9 +81,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             color: palette.neutralLight,
           };
 
-          /** Hide right side text of chart title for relative variant */
+          /** Hide right side text of chart title for absolute-scale variant */
           const chartDataText =
-            this.props.variant === HorizontalBarChartVariant.Relative ? null : this._getChartDataText(points!);
+            this.props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
           const classNames = getClassNames(this.props.styles!, {
@@ -330,9 +330,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       const placeholderIndex = 1;
 
       /**
-       * Render bar value instead of placeholder bar for relative variant
+       * Render bar value instead of placeholder bar for absolute-scale variant
        */
-      if (index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.Relative) {
+      if (index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.AbsoluteScale) {
         if (this.props.hideValues) {
           return null;
         }

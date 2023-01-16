@@ -148,7 +148,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
-    const total = this.props.variant === MultiStackedBarChartVariant.Relative ? this._maxBarValue : barValue;
+    const total = this.props.variant === MultiStackedBarChartVariant.AbsoluteScale ? this._maxBarValue : barValue;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -167,7 +167,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     /**
      * Include an imaginary placeholder with value equal to
      * the difference between (maximum of all bar values) and (current bar value)
-     * while calculating sumOfPercent to get correct scalingRatio for relative variant
+     * while calculating sumOfPercent to get correct scalingRatio for absolute-scale variant
      */
     let val = total === 0 ? 0 : ((total - barValue) / total) * 100;
     if (val < 1 && val !== 0) {
@@ -249,7 +249,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>,
       );
     }
-    if (this.props.variant === MultiStackedBarChartVariant.Relative && !this.props.hideValues) {
+    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale && !this.props.hideValues) {
       bars.push(
         <text
           key="text"
@@ -269,12 +269,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const hideNumber = hideRatio === undefined ? false : hideRatio;
 
     /**
-     * Hide right side text of chart title for relative variant
+     * Hide right side text of chart title for absolute-scale variant
      */
     const showRatio =
-      this.props.variant !== MultiStackedBarChartVariant.Relative && !hideNumber && data!.chartData!.length === 2;
+      this.props.variant !== MultiStackedBarChartVariant.AbsoluteScale && !hideNumber && data!.chartData!.length === 2;
     const showNumber =
-      this.props.variant !== MultiStackedBarChartVariant.Relative && !hideNumber && data!.chartData!.length === 1;
+      this.props.variant !== MultiStackedBarChartVariant.AbsoluteScale && !hideNumber && data!.chartData!.length === 1;
 
     const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (

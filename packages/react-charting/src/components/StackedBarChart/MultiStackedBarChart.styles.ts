@@ -38,13 +38,13 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       whiteSpace: 'nowrap',
       display: 'block',
       color: '#171717',
-      marginBottom: variant === MultiStackedBarChartVariant.Relative ? '4px' : '5px',
+      marginBottom: variant === MultiStackedBarChartVariant.AbsoluteScale ? '4px' : '5px',
     },
     singleChartRoot: {
       width: width ? width : '100%',
       display: 'flex',
       flexDirection: 'column',
-      marginBottom: variant === MultiStackedBarChartVariant.Relative ? '16px' : '10px',
+      marginBottom: variant === MultiStackedBarChartVariant.AbsoluteScale ? '16px' : '10px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
@@ -91,7 +91,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       fill: theme.palette.neutralPrimary,
     },
     chartWrapper: {
-      paddingRight: variant === MultiStackedBarChartVariant.Relative && !hideValues ? 40 : 0,
+      paddingRight: variant === MultiStackedBarChartVariant.AbsoluteScale && !hideValues ? 40 : 0,
     },
   };
 };

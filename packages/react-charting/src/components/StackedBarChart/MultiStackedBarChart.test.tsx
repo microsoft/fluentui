@@ -111,17 +111,17 @@ describe('MultiStackedBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should render relative variant correctly', () => {
+  it('Should render absolute-scale variant correctly', () => {
     const component = renderer.create(
-      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.Relative} />,
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should not render bar values in relative variant', () => {
+  it('Should not render bar values in absolute-scale variant', () => {
     const component = renderer.create(
-      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.Relative} hideValues={true} />,
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} hideValues={true} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

@@ -205,5 +205,5 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
 export enum HorizontalBarChartVariant {
   PartToWhole = 'part-to-whole',
-  Relative = 'relative',
+  AbsoluteScale = 'absolute-scale',
 }

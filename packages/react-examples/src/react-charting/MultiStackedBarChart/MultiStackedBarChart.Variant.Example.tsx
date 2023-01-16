@@ -115,7 +115,7 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
         />
         <MultiStackedBarChart
           data={data}
-          variant={MultiStackedBarChartVariant.Relative}
+          variant={MultiStackedBarChartVariant.AbsoluteScale}
           hideValues={this.state.hideValues}
         />
       </>

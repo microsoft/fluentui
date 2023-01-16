@@ -238,5 +238,5 @@ export interface IMultiStackedBarChartStyles {
 
 export enum MultiStackedBarChartVariant {
   PartToWhole = 'part-to-whole',
-  Relative = 'relative',
+  AbsoluteScale = 'absolute-scale',
 }

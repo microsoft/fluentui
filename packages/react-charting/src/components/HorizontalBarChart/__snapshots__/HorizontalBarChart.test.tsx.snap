@@ -942,7 +942,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
 </div>
 `;
 
-exports[`HorizontalBarChart snapShot testing Should not render bar values in relative variant 1`] = `
+exports[`HorizontalBarChart snapShot testing Should not render bar values in absolute-scale variant 1`] = `
 <div
   className=
 
@@ -1221,7 +1221,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar values in rel
 </div>
 `;
 
-exports[`HorizontalBarChart snapShot testing Should render relative variant correctly 1`] = `
+exports[`HorizontalBarChart snapShot testing Should render absolute-scale variant correctly 1`] = `
 <div
   className=
 

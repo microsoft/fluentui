@@ -1245,7 +1245,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
 </div>
 `;
 
-exports[`MultiStackedBarChart snapShot testing Should not render bar values in relative variant 1`] = `
+exports[`MultiStackedBarChart snapShot testing Should not render bar values in absolute-scale variant 1`] = `
 <div
   className=
       ms-StackedBarChart
@@ -1685,7 +1685,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar values in r
 </div>
 `;
 
-exports[`MultiStackedBarChart snapShot testing Should render relative variant correctly 1`] = `
+exports[`MultiStackedBarChart snapShot testing Should render absolute-scale variant correctly 1`] = `
 <div
   className=
       ms-StackedBarChart
