@@ -13,7 +13,7 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
 - [Basics](#basics)
 - [APIs](#apis)
   - [`makeStyles`](#makestyles)
-    - [Limitations](#limitations)
+    - [Performance caveat](#performance-caveat)
   - [`mergeClasses()`](#mergeclasses)
     - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
   - [`makeResetStyles`](#makeresetstyles)
@@ -82,7 +82,7 @@ const useClasses = makeStyles({
 });
 ```
 
-### Limitations
+### Performance caveat
 
 Atomic CSS generates more classes than a standard approach with monolithic classes. Usually it's not a problem, but there are cases when performance [may degrade][griffel-recalc-performance], for example when elements have more than 100 classes. This does not happen usually as there are only a limited number of CSS properties that can be applied to a DOM element:
 
