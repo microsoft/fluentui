@@ -2,6 +2,47 @@
   "name": "@fluentui/react-infobutton",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:39:02 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "4aa7a43c0c302dc151d6446abfde95fe9637edb0",
+            "comment": "fix: Update border for Teams HCM to be transparent."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "b326546752a1df3cf4d626dee2d5c47b59ba00ae",
+            "comment": "fix: Update PopoverSurface's role to note and remove need to cast props passed to popover slot."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.4.1",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.3.7",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-infobutton_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",

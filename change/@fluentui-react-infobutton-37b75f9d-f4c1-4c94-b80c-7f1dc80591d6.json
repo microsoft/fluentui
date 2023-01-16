@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Update border for Teams HCM to be transparent.",
-  "packageName": "@fluentui/react-infobutton",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

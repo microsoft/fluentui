@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:38:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.15)
+
+Mon, 16 Jan 2023 08:38:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.1.14..@fluentui/react-button_v9.1.15)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.14)
 

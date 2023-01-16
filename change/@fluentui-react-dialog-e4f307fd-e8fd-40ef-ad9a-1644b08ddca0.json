@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: fix typo in Dialog docs",
-  "packageName": "@fluentui/react-dialog",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "none"
-}

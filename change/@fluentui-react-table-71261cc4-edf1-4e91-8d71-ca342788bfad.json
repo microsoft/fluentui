@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to packaged scripts",
-  "packageName": "@fluentui/react-table",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
