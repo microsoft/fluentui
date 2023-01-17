@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { FontIncreaseRegular, FontDecreaseRegular, TextFontRegular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarGroup } from '@fluentui/react-components/unstable';
-import type { ToolbarProps } from '@fluentui/react-components/unstable';
+import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarGroup } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   toolbar: {
