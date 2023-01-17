@@ -325,7 +325,7 @@ describe('Render calling with respective to props', () => {
       width: 800,
     };
     mount(<SankeyChart {...props} />);
-    expect(renderMock).toHaveBeenCalledTimes(1);
+    expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
 
@@ -338,7 +338,7 @@ describe('Render calling with respective to props', () => {
     };
     const component = mount(<SankeyChart {...props} />);
     component.setProps({ ...props, height: 1000 });
-    expect(renderMock).toHaveBeenCalledTimes(2);
+    expect(renderMock).toHaveBeenCalledTimes(3);
     renderMock.mockRestore();
   });
 });
@@ -362,14 +362,14 @@ describe('SankeyChart - mouse events', () => {
   });
   it('Should render callout correctly on mouseover when height of node is less than 24px', () => {
     wrapper = mount(<SankeyChart data={data} height={500} width={800} />);
-    wrapper.find('rect[id="nodeBar12"]').at(0).simulate('mouseover');
+    wrapper.find('rect[aria-label="node124.360.55.1with weight14"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('Should render tooltip correctly on mouseover when node description is large', () => {
     wrapper = mount(<SankeyChart data={data} height={500} width={800} />);
-    wrapper.find('text[id="nodeBar48-name"]').at(0).simulate('mouseover');
+    wrapper.find('text[x=739]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });

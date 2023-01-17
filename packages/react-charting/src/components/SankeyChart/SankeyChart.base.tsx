@@ -30,6 +30,8 @@ export interface ISankeyChartState {
   linkElement?: any;
   selectedLink?: SLink;
   shouldOverflow: boolean;
+  isDataNormalised: boolean;
+  prevData: ISankeyChartData | undefined;
 }
 
 const NON_SELECTED_NODE_AND_STREAM_COLOR: string = '#757575';
@@ -65,6 +67,16 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>;
   private _margins: IMargins;
 
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ISankeyChartProps>,
+    prevState: Readonly<ISankeyChartState>,
+  ): Partial<ISankeyChartState> | null {
+    if (nextProps.data.SankeyChartData !== prevState.prevData) {
+      return { prevData: nextProps.data.SankeyChartData, isDataNormalised: false };
+    }
+    return null;
+  }
+
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
@@ -74,6 +86,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       selectedLinks: new Set<number>(),
       selectedNodes: new Set<number>(),
       shouldOverflow: false,
+      isDataNormalised: false,
+      prevData: props.data.SankeyChartData,
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
@@ -83,6 +97,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
   public componentDidMount(): void {
     this._fitParentContainer();
+    // We are normalising data based on this state .
+    if (!this.state.isDataNormalised) {
+      this.setState({
+        isDataNormalised: true,
+      });
+    }
   }
 
   public componentDidUpdate(prevProps: ISankeyChartProps): void {
@@ -93,6 +113,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       this._preRenderLayout();
       this._nodesInColumn = this._populateNodeInColumns(this._sankey);
       this._adjustOnePercentHeightNodes(this._nodesInColumn);
+      this.setState({
+        isDataNormalised: true,
+      });
     }
   }
   public componentWillUnmount(): void {
@@ -109,6 +132,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     });
     // We are using the this._margins.left and this._margins.top in sankey extent while constructing the layout
     const { height, width } = this._preRenderLayout();
+    if (!this.state.isDataNormalised) {
+      this._adjustOnePercentHeightNodes(this._nodesInColumn);
+    }
     let nodePadding = 8;
     nodePadding = this._adjustPadding(this._sankey, height - 6, this._nodesInColumn);
 
