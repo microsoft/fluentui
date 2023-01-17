@@ -18,7 +18,6 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableColumnDefinition,
-  TableRowData,
   createTableColumn,
 } from '@fluentui/react-table';
 
@@ -160,15 +159,13 @@ export const RowNavigation = () => {
     <DataGrid items={items} columns={columns} focusMode="row_unstable">
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
-            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-          )}
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridBody>
-        {({ item, rowId }: TableRowData<Item>) => (
-          <DataGridRow key={rowId}>
-            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

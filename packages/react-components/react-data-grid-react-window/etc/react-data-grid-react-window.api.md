@@ -6,22 +6,22 @@
 
 /// <reference types="react" />
 
-import type { DataGridBodyProps as DataGridBodyProps_2 } from '@fluentui/react-components/unstable';
-import type { DataGridBodySlots as DataGridBodySlots_2 } from '@fluentui/react-components/unstable';
-import type { DataGridBodyState as DataGridBodyState_2 } from '@fluentui/react-components/unstable';
-import type { ForwardRefComponent } from '@fluentui/react-components';
+import type { DataGridBodyProps as DataGridBodyProps_2 } from '@fluentui/react-table';
+import type { DataGridBodySlots as DataGridBodySlots_2 } from '@fluentui/react-table';
+import type { DataGridBodyState as DataGridBodyState_2 } from '@fluentui/react-table';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { TableRowData } from '@fluentui/react-components/unstable';
+import type { TableRowData } from '@fluentui/react-table';
 
 // @public
-export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
 // @public
-export type DataGridBodyProps = Omit<DataGridBodyProps_2, 'children'> & {
+export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'children'> & {
     itemSize: number;
     height: number;
     width?: string | number;
-    children: RowRenderFunction;
+    children: RowRenderFunction<TItem>;
 };
 
 // @public (undocumented)

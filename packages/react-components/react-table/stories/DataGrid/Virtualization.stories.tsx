@@ -16,7 +16,6 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableColumnDefinition,
-  TableRowData,
   createTableColumn,
   TableCellLayout,
 } from '@fluentui/react-components/unstable';
@@ -164,15 +163,13 @@ export const Virtualization = () => {
     <DataGrid items={items} columns={columns} focusMode="cell" sortable selectionMode="multiselect">
       <DataGridHeader style={{ paddingRight: scrollbarWidth }}>
         <DataGridRow>
-          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
-            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-          )}
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridBody itemSize={50} height={400}>
-        {({ item, rowId }: TableRowData<Item>, style) => (
-          <DataGridRow key={rowId} style={style}>
-            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      <DataGridBody<Item> itemSize={50} height={400}>
+        {({ item, rowId }, style) => (
+          <DataGridRow<Item> key={rowId} style={style}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>

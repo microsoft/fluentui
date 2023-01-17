@@ -20,7 +20,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type CellRenderFunction = (column: TableColumnDefinition<any>) => React_2.ReactNode;
+export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>) => React_2.ReactNode;
 
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
@@ -40,14 +40,14 @@ export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefi
 export const DataGrid: ForwardRefComponent<DataGridProps>;
 
 // @public
-export const DataGridBody: ForwardRefComponent<DataGridBodyProps>;
+export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
 // @public (undocumented)
 export const dataGridBodyClassNames: SlotClassNames<DataGridBodySlots>;
 
 // @public
-export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
-    children: RowRenderFunction;
+export type DataGridBodyProps<TItem = unknown> = Omit<TableBodyProps, 'children'> & {
+    children: RowRenderFunction<TItem>;
 };
 
 // @public (undocumented)
@@ -55,7 +55,7 @@ export type DataGridBodySlots = TableBodySlots;
 
 // @public
 export type DataGridBodyState = TableBodyState & {
-    rows: TableRowData<any>[];
+    rows: TableRowData<unknown>[];
     renderRow: RowRenderFunction;
 };
 
@@ -131,14 +131,14 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
 };
 
 // @public
-export const DataGridRow: ForwardRefComponent<DataGridRowProps>;
+export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
 
 // @public (undocumented)
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
-    children: CellRenderFunction;
+export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
+    children: CellRenderFunction<TItem>;
 };
 
 // @public (undocumented)
@@ -224,7 +224,7 @@ export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
 export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSX.Element;
 
 // @public (undocumented)
-export type RowRenderFunction = (row: TableRowData<any>, ...rest: any[]) => React_2.ReactNode;
+export type RowRenderFunction<TItem = unknown> = (row: TableRowData<TItem>, ...rest: unknown[]) => React_2.ReactNode;
 
 // @public (undocumented)
 export type SortDirection = 'ascending' | 'descending';
