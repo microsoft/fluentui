@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Body1Strong renders a default state 1`] = `
+<div>
+  <span
+    class="fui-Body1Strong fui-Text"
+  >
+    Default Body1Strong
+  </span>
+</div>
+`;

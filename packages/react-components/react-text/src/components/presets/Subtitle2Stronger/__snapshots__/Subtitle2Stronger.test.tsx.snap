@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subtitle2Stronger renders a default state 1`] = `
+<div>
+  <span
+    class="fui-Subtitle2Stronger fui-Text"
+  >
+    Default Subtitle2Stronger
+  </span>
+</div>
+`;
