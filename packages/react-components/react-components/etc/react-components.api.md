@@ -116,6 +116,9 @@ import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
+import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
+import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import { Dialog } from '@fluentui/react-dialog';
 import { DialogActions } from '@fluentui/react-dialog';
 import { dialogActionsClassNames } from '@fluentui/react-dialog';
@@ -281,6 +284,10 @@ import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
+import { Overflow } from '@fluentui/react-overflow';
+import { OverflowItem } from '@fluentui/react-overflow';
+import { OverflowItemProps } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
 import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
@@ -557,6 +564,8 @@ import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
+import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -596,6 +605,7 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useOverflowMenu } from '@fluentui/react-overflow';
 import { usePersona_unstable } from '@fluentui/react-persona';
 import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { usePopover_unstable } from '@fluentui/react-popover';
@@ -865,6 +875,12 @@ export { createLightTheme }
 export { createTeamsDarkTheme }
 
 export { CurveTokens }
+
+export { DATA_OVERFLOW_ITEM }
+
+export { DATA_OVERFLOW_MENU }
+
+export { DATA_OVERFLOWING }
 
 export { Dialog }
 
@@ -1195,6 +1211,14 @@ export { OnOpenChangeData }
 export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
+
+export { Overflow }
+
+export { OverflowItem }
+
+export { OverflowItemProps }
+
+export { OverflowProps }
 
 export { PartialTheme }
 
@@ -1748,6 +1772,10 @@ export { useInputStyles_unstable }
 
 export { useIsomorphicLayoutEffect }
 
+export { useIsOverflowGroupVisible }
+
+export { useIsOverflowItemVisible }
+
 export { useIsSSR }
 
 export { useKeyboardNavAttribute }
@@ -1825,6 +1853,8 @@ export { useMergedRefs }
 export { useModalAttributes }
 
 export { UseModalAttributesOptions }
+
+export { useOverflowMenu }
 
 export { usePersona_unstable }
 
