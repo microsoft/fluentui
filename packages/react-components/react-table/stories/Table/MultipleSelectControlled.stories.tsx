@@ -91,25 +91,22 @@ const items: Item[] = [
   },
 ];
 
-export const MultipleSelectControlled = () => {
-  const columns: TableColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createTableColumn<Item>({
-        columnId: 'file',
-      }),
-      createTableColumn<Item>({
-        columnId: 'author',
-      }),
-      createTableColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createTableColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
 
+export const MultipleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(
     () => new Set<TableRowId>([0, 1]),
   );

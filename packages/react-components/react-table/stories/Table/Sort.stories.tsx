@@ -90,37 +90,34 @@ const items: Item[] = [
   },
 ];
 
-export const Sort = () => {
-  const columns: TableColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createTableColumn<Item>({
-        columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
-      }),
-      createTableColumn<Item>({
-        columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
-      }),
-      createTableColumn<Item>({
-        columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
-      }),
-      createTableColumn<Item>({
-        columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  }),
+];
 
+export const Sort = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
