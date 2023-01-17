@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { stripJsonComments, workspaceRoot } from '@nrwl/devkit';
+import { stripJsonComments } from '@nrwl/devkit';
 import * as jju from 'jju';
 import type { TscTaskOptions } from 'just-scripts';
 
@@ -50,26 +50,38 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
-const rootTsConfig = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'tsconfig.base.json'), 'utf-8')) as TsConfig;
+function createNormalizedTsPaths(options: { definitionsRootPath: string; pathAliasesTsConfigPath: string }) {
+  type PathAliases = Record<string, string[]>;
+  const { definitionsRootPath, pathAliasesTsConfigPath } = options;
+  const tsConfigRoot = JSON.parse(fs.readFileSync(pathAliasesTsConfigPath, 'utf-8')) as TsConfig;
+  const paths = (tsConfigRoot.compilerOptions.paths as unknown) as undefined | PathAliases;
 
-function createNormalizedTsPaths(options: { definitionsRootPath: string; rootTsConfig: TsConfig }) {
-  const paths = (options.rootTsConfig.compilerOptions.paths as unknown) as Record<string, string[]>;
+  if (!paths) {
+    throw new Error(`Provided "${pathAliasesTsConfigPath}" has no compilerOptions.path defined`);
+  }
 
   const normalizedPaths = Object.entries(paths).reduce((acc, [pkgName, pathAliases]) => {
-    acc[pkgName] = [path.join(options.definitionsRootPath, pathAliases[0].replace('index.ts', 'index.d.ts'))];
+    acc[pkgName] = [path.join(definitionsRootPath, pathAliases[0].replace('index.ts', 'index.d.ts'))];
     return acc;
-  }, {} as typeof paths);
+  }, {} as PathAliases);
 
   return normalizedPaths;
 }
 
 export function getTsPathAliasesApiExtractorConfig(options: {
   tsConfig: TsConfig;
-  tsConfigPath: string;
   packageJson: PackageJson;
   definitionsRootPath: string;
+  pathAliasesTsConfigPath?: string;
 }) {
-  const normalizedPaths = createNormalizedTsPaths({ definitionsRootPath: options.definitionsRootPath, rootTsConfig });
+  const { packageJson, tsConfig, pathAliasesTsConfigPath, definitionsRootPath } = options;
+  /**
+   * Because api-extractor ran into race conditions when executing via lage (https://github.com/microsoft/fluentui/issues/25766),
+   * we won't use path aliases on CI, rather serving api-extractor rolluped dts files cross package, that will be referenced via yarn workspace sym-links
+   */
+  const normalizedPaths = pathAliasesTsConfigPath
+    ? createNormalizedTsPaths({ definitionsRootPath, pathAliasesTsConfigPath })
+    : undefined;
 
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
@@ -77,14 +89,14 @@ export function getTsPathAliasesApiExtractorConfig(options: {
    * NOTES:
    * - `extends` is properly resolved via api-extractor which uses TS api
    * - `skipLibCheck` needs to be explicitly set to `false` so errors propagate to api-extractor
-   * - `paths` is overriden to path mapping that points to generated declaration files. This also enables creation of dts rollup without a need of generating rollups for all dependencies 🫡
+   * - `paths` if usePathAliases is enabled, we override it to path mapping that points to generated declaration files. This also enables creation of dts rollup without a need of generating rollups for all dependencies 🫡
    *
    */
   const apiExtractorTsConfig: TsConfig = {
-    ...options.tsConfig,
+    ...tsConfig,
     compilerOptions: {
-      ...options.tsConfig.compilerOptions,
-      ...enableAllowSyntheticDefaultImports({ pkgJson: options.packageJson }),
+      ...tsConfig.compilerOptions,
+      ...enableAllowSyntheticDefaultImports({ pkgJson: packageJson }),
       /**
        * This option has no effect on type declarations '.d.ts' thus can be turned off. For more info see https://www.typescriptlang.org/tsconfig#non-module-files
        *
