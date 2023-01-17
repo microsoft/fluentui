@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 16 Jan 2023 08:38:45 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jan 2023 12:22:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.10.1)
+
+Tue, 17 Jan 2023 12:22:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.10.0..@fluentui/react-components_v9.10.1)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - feat(PresenceBadge): Add blocked status ([PR #26366](https://github.com/microsoft/fluentui/pull/26366) by jukapsia@microsoft.com)
+- `@fluentui/react-components`
+  - BREAKING: table API naming changes ([PR #26304](https://github.com/microsoft/fluentui/pull/26304) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-table`
+  - BREAKING: API naming changes ([PR #26304](https://github.com/microsoft/fluentui/pull/26304) by lingfangao@hotmail.com)
+  - BREAKING(DataGrid): render functions need to by typed ([PR #26371](https://github.com/microsoft/fluentui/pull/26371) by lingfangao@hotmail.com)
 
 ## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.10.0)
 
