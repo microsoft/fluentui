@@ -27,7 +27,7 @@ export { VerticalButton } from './ToolbarVerticalButton.stories';
 export { FarGroup } from './ToolbarFarGroup.stories';
 
 export default {
-  title: 'Preview Components/Toolbar',
+  title: 'Components/Toolbar',
   component: Toolbar,
   subcomponents: {
     ToolbarButton,
