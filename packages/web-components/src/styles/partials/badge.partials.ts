@@ -78,7 +78,7 @@ export const badgeSizeStyles = css.partial`
     padding-inline: calc(${spacingHorizontalXXS} + ${textPadding});
   }
   :host([size='small']) ::slotted(svg) {
-    font-size: 10px;
+    font-size: 12px;
   }
   :host([size='medium']) {
     min-width: 20px;
@@ -88,7 +88,7 @@ export const badgeSizeStyles = css.partial`
     padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
   }
   :host([size='medium']) ::slotted(svg) {
-    font-size: 10px;
+    font-size: 12px;
   }
   :host([size='large']) {
     min-width: 24px;
@@ -98,7 +98,7 @@ export const badgeSizeStyles = css.partial`
     padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
   }
   :host([size='large']) ::slotted(svg) {
-    font-size: 10px;
+    font-size: 16px;
   }
   :host([size='extra-large']) {
     min-width: 32px;

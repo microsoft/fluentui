@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { badgeTemplate } from '../badge/badge.template';
+import { badgeTemplate } from '../badge/badge.template.js';
 import { CounterBadge } from './counter-badge.js';
 import { CounterBadgeOptions } from './counter-badge.options.js';
 
