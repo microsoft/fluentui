@@ -87,24 +87,24 @@ export default {
 export const CounterBadge = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-counter-badge appearance="filled"></fluent-counter-badge>
-  <fluent-counter-badge appearance="ghost"></fluent-counter-badge>
+  <fluent-counter-badge count="5" appearance="filled"></fluent-counter-badge>
+  <fluent-counter-badge count="5" appearance="ghost"></fluent-counter-badge>
 `);
 
 export const Color = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-counter-badge color="brand"></fluent-counter-badge>
-  <fluent-counter-badge color="danger"></fluent-counter-badge>
-  <fluent-counter-badge color="important"></fluent-counter-badge>
-  <fluent-counter-badge color="informative"></fluent-counter-badge>
-  <fluent-counter-badge color="severe"></fluent-counter-badge>
-  <fluent-counter-badge color="subtle"></fluent-counter-badge>
-  <fluent-counter-badge color="success"></fluent-counter-badge>
-  <fluent-counter-badge color="warning"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="brand"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="danger"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="important"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="informative"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="severe"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="subtle"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="success"></fluent-counter-badge>
+  <fluent-counter-badge count="5" color="warning"></fluent-counter-badge>
 `);
 
 export const Shape = renderComponent(html<CounterBadgeStoryArgs>`
-  <fluent-counter-badge shape="circular"></fluent-counter-badge>
-  <fluent-counter-badge shape="rounded"></fluent-counter-badge>
+  <fluent-counter-badge count="5" shape="circular"></fluent-counter-badge>
+  <fluent-counter-badge count="5" shape="rounded"></fluent-counter-badge>
 `);
 
 export const Size = renderComponent(html<CounterBadgeStoryArgs>`

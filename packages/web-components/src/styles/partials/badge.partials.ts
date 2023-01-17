@@ -1,5 +1,7 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
+  borderRadiusCircular,
   colorBrandBackground,
   colorBrandBackground2,
   colorBrandForeground1,
@@ -36,16 +38,56 @@ import {
   colorPaletteYellowBorder1,
   colorPaletteYellowForeground2,
   colorTransparentStroke,
+  fontFamilyBase,
   fontSizeBase100,
   fontSizeBase200,
+  fontWeightSemibold,
   lineHeightBase100,
   lineHeightBase200,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
+  strokeWidthThin,
 } from '../../theme/design-tokens.js';
 
 const textPadding = spacingHorizontalXXS;
+
+export const badgeBaseStyles = css.partial`
+  ${display('inline-flex')} :host {
+    position: relative;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightSemibold};
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
+    min-width: 20px;
+    height: 20px;
+    padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
+    border-radius: ${borderRadiusCircular};
+    border-color: ${colorTransparentStroke};
+    background-color: ${colorBrandBackground};
+    color: ${colorNeutralForegroundOnBrand};
+  }
+
+  ::slotted(svg) {
+    font-size: 12px;
+  }
+
+  :host(:not([appearance='ghost']))::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-style: solid;
+    border-width: ${strokeWidthThin};
+    border-color: inherit;
+    border-radius: inherit;
+  }
+`;
 
 /**
  * @public
@@ -57,6 +99,8 @@ export const badgeSizeStyles = css.partial`
     height: 6px;
     font-size: 4px;
     line-height: 4px;
+    padding-inline: 0;
+    min-width: unset;
   }
   :host([size='tiny']) ::slotted(svg) {
     font-size: 6px;
@@ -66,6 +110,8 @@ export const badgeSizeStyles = css.partial`
     height: 10px;
     font-size: 6px;
     line-height: 6px;
+    padding-inline: 0;
+    min-width: unset;
   }
   :host([size='extra-small']) ::slotted(svg) {
     font-size: 10px;
@@ -78,16 +124,6 @@ export const badgeSizeStyles = css.partial`
     padding-inline: calc(${spacingHorizontalXXS} + ${textPadding});
   }
   :host([size='small']) ::slotted(svg) {
-    font-size: 12px;
-  }
-  :host([size='medium']) {
-    min-width: 20px;
-    height: 20px;
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
-    padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
-  }
-  :host([size='medium']) ::slotted(svg) {
     font-size: 12px;
   }
   :host([size='large']) {
@@ -114,49 +150,42 @@ export const badgeSizeStyles = css.partial`
 
 /**
  * The badge's `filled` appearance styles
+ * Filled appearance is default so do not
+ * Include that attribute as it's not present by default
  * @public
  */
 export const badgeFilledStyles = css.partial`
-  :host([appearance='filled']) {
-    border-color: ${colorTransparentStroke};
-  }
-
-  :host([appearance='filled'][color='brand']) {
-    background-color: ${colorBrandBackground};
-    color: ${colorNeutralForegroundOnBrand};
-  }
-
-  :host([appearance='filled'][color='danger']) {
+  :host([color='danger']) {
     background-color: ${colorPaletteRedBackground3};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host([appearance='filled'][color='important']) {
+  :host([color='important']) {
     background-color: ${colorNeutralForeground1};
     color: ${colorNeutralBackground1};
   }
 
-  :host([appearance='filled'][color='informative']) {
+  :host([color='informative']) {
     background-color: ${colorNeutralBackground5};
     color: ${colorNeutralForeground3};
   }
 
-  :host([appearance='filled'][color='severe']) {
+  :host([color='severe']) {
     background-color: ${colorPaletteDarkOrangeBackground3};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host([appearance='filled'][color='subtle']) {
+  :host([color='subtle']) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground1};
   }
 
-  :host([appearance='filled'][color='success']) {
+  :host([color='success']) {
     background-color: ${colorPaletteGreenBackground3};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host([appearance='filled'][color='warning']) {
+  :host([color='warning']) {
     background-color: ${colorPaletteYellowBackground3};
     color: ${colorNeutralForeground1};
   }
@@ -167,8 +196,9 @@ export const badgeFilledStyles = css.partial`
  * @public
  */
 export const badgeGhostStyles = css.partial`
-  :host([appearance='ghost'][color='brand']) {
+  :host([appearance='ghost']) {
     color: ${colorBrandBackground};
+    background-color: initial;
   }
 
   :host([appearance='ghost'][color='danger']) {
@@ -207,10 +237,8 @@ export const badgeGhostStyles = css.partial`
 export const badgeOutlineStyles = css.partial`
   :host([appearance='outline']) {
     border-color: currentColor;
-  }
-
-  :host([appearance='outline'][color='brand']) {
     color: ${colorBrandForeground1};
+    background-color: initial;
   }
 
   :host([appearance='outline'][color='danger']) {
@@ -249,7 +277,7 @@ export const badgeOutlineStyles = css.partial`
  * @public
  */
 export const badgeTintStyles = css.partial`
-  :host([appearance='tint'][color='brand']) {
+  :host([appearance='tint']) {
     background-color: ${colorBrandBackground2};
     color: ${colorBrandForeground2};
     border-color: ${colorBrandStroke2};
