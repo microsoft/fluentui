@@ -38,7 +38,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -67,7 +67,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.168.42.72toinboxwith weight80"
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -76,7 +76,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -102,7 +102,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toinboxwith weight50"
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -111,7 +111,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -137,7 +137,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toJunk Folderwith weight28"
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -146,7 +146,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -172,7 +172,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.360.55.1toJunk Folderwith weight14"
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -181,7 +181,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -207,7 +207,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toJunk Folderwith weight7"
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -216,7 +216,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -242,7 +242,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -251,7 +251,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -277,7 +277,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.124.50.1toJunk Folderwith weight10"
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -286,7 +286,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -312,7 +312,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.630.89.4toJunk Folderwith weight10"
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -321,7 +321,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -347,7 +347,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoClickedwith weight30"
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -356,7 +356,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -382,7 +382,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoOpenedwith weight55"
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -391,7 +391,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -417,7 +417,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -426,7 +426,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -452,7 +452,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -461,7 +461,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -482,7 +482,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement5"
         >
           <rect
-            aria-label="192.168.42.72 80"
+            aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
@@ -490,7 +490,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -514,6 +514,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -530,6 +531,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -547,7 +549,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement9"
         >
           <rect
-            aria-label="172.152.48.13 78"
+            aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -555,7 +557,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -579,6 +581,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -595,6 +598,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -612,7 +616,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement13"
         >
           <rect
-            aria-label="124.360.55.1 14"
+            aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -620,7 +624,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -632,7 +636,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement17"
         >
           <rect
-            aria-label="192.564.10.2 27"
+            aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
@@ -640,7 +644,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -664,6 +668,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -680,6 +685,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -697,7 +703,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement21"
         >
           <rect
-            aria-label="124.124.50.1 10"
+            aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -705,7 +711,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -717,7 +723,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement25"
         >
           <rect
-            aria-label="172.630.89.4 10"
+            aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -725,7 +731,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -737,7 +743,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement29"
         >
           <rect
-            aria-label="inbox 130"
+            aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
@@ -745,7 +751,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -769,6 +775,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -785,6 +792,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -802,7 +810,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement33"
         >
           <rect
-            aria-label="Junk Folder 69"
+            aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
@@ -810,7 +818,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -834,6 +842,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -850,6 +859,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -867,7 +877,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement37"
         >
           <rect
-            aria-label="Deleted Folder 20"
+            aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
@@ -875,7 +885,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -899,6 +909,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -915,6 +926,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#FFFFFF"
@@ -932,7 +944,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement41"
         >
           <rect
-            aria-label="Clicked 30"
+            aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
@@ -940,7 +952,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -964,6 +976,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -980,6 +993,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -997,7 +1011,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement45"
         >
           <rect
-            aria-label="Opened 55"
+            aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
@@ -1005,7 +1019,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -1029,6 +1043,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1045,6 +1060,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1062,7 +1078,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement49"
         >
           <rect
-            aria-label=" No further action  required 62"
+            aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
@@ -1070,7 +1086,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -1094,6 +1110,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1110,6 +1127,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1167,7 +1185,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -1196,7 +1214,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from192.168.42.72toinboxwith weight80"
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1205,7 +1223,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1231,7 +1249,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from172.152.48.13toinboxwith weight50"
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1240,7 +1258,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1266,7 +1284,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from172.152.48.13toJunk Folderwith weight28"
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1275,7 +1293,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1301,7 +1319,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from124.360.55.1toJunk Folderwith weight14"
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1310,7 +1328,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1336,7 +1354,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from192.564.10.2toJunk Folderwith weight7"
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1345,7 +1363,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1371,7 +1389,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1380,7 +1398,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1406,7 +1424,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from124.124.50.1toJunk Folderwith weight10"
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1415,7 +1433,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1441,7 +1459,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link from172.630.89.4toJunk Folderwith weight10"
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1450,7 +1468,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1476,7 +1494,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link frominboxtoClickedwith weight30"
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1485,7 +1503,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1511,7 +1529,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link frominboxtoOpenedwith weight55"
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1520,7 +1538,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1546,7 +1564,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1555,7 +1573,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1581,7 +1599,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
+            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1590,7 +1608,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -1611,7 +1629,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement69"
         >
           <rect
-            aria-label="192.168.42.72 80"
+            aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             fill="#E3008C"
             height={129.31506849315068}
@@ -1619,7 +1637,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#002E39"
             strokeWidth="2"
             width={124}
@@ -1643,6 +1661,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1659,6 +1678,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1676,7 +1696,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement73"
         >
           <rect
-            aria-label="172.152.48.13 78"
+            aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#00A2AD"
             height={126.08219178082172}
@@ -1684,7 +1704,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#43002C"
             strokeWidth="2"
             width={124}
@@ -1708,6 +1728,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1724,6 +1745,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1741,7 +1763,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement77"
         >
           <rect
-            aria-label="124.360.55.1 14"
+            aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#022F22"
             height={22.630136986301352}
@@ -1749,7 +1771,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -1761,7 +1783,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement81"
         >
           <rect
-            aria-label="192.564.10.2 27"
+            aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             fill="#00188F"
             height={43.643835616438366}
@@ -1769,7 +1791,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             strokeWidth="2"
             width={124}
             x={48}
@@ -1792,6 +1814,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1808,6 +1831,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1825,7 +1849,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement85"
         >
           <rect
-            aria-label="124.124.50.1 10"
+            aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             fill="#E3008C"
             height={16.16438356164383}
@@ -1833,7 +1857,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#002E39"
             strokeWidth="2"
             width={124}
@@ -1845,7 +1869,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement89"
         >
           <rect
-            aria-label="172.630.89.4 10"
+            aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             fill="#00A2AD"
             height={16.16438356164383}
@@ -1853,7 +1877,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#43002C"
             strokeWidth="2"
             width={124}
@@ -1865,7 +1889,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement93"
         >
           <rect
-            aria-label="inbox 130"
+            aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#022F22"
             height={210.13698630136994}
@@ -1873,7 +1897,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -1897,6 +1921,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1913,6 +1938,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1930,7 +1956,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement97"
         >
           <rect
-            aria-label="Junk Folder 69"
+            aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#00188F"
             height={111.53424657534248}
@@ -1938,7 +1964,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             strokeWidth="2"
             width={124}
             x={393.5}
@@ -1961,6 +1987,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -1977,6 +2004,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -1994,7 +2022,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement101"
         >
           <rect
-            aria-label="Deleted Folder 20"
+            aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             fill="#E3008C"
             height={32.32876712328766}
@@ -2002,7 +2030,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#002E39"
             strokeWidth="2"
             width={124}
@@ -2026,6 +2054,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2042,6 +2071,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#FFFFFF"
@@ -2059,7 +2089,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement105"
         >
           <rect
-            aria-label="Clicked 30"
+            aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#00A2AD"
             height={48.49315068493148}
@@ -2067,7 +2097,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#43002C"
             strokeWidth="2"
             width={124}
@@ -2091,6 +2121,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2107,6 +2138,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -2124,7 +2156,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement109"
         >
           <rect
-            aria-label="Opened 55"
+            aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#022F22"
             height={88.90410958904114}
@@ -2132,7 +2164,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -2156,6 +2188,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2172,6 +2205,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -2189,7 +2223,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement113"
         >
           <rect
-            aria-label=" No further action  required 62"
+            aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#00188F"
             height={100.21917808219177}
@@ -2197,7 +2231,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             strokeWidth="2"
             width={124}
             x={739}
@@ -2220,6 +2254,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2236,6 +2271,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -2293,7 +2329,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -2322,8 +2358,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
-            d="M172,36C455.5,36,455.5,47.951536403029024,739,47.951536403029024L739,51.42212463832314C455.5,51.42212463832314,455.5,39.470588235294116,172,39.470588235294116Z"
+            aria-label="link fromnode0tonode6with weight5"
+            d="M172,36C455.5,36,455.5,47.95153640302902,739,47.95153640302902L739,49.72153640302901C455.5,49.72153640302901,455.5,37.769999999999996,172,37.769999999999996Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link98"
@@ -2331,7 +2367,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2357,8 +2393,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
-            d="M172,47.470588235294116C455.5,47.470588235294116,455.5,51.42212463832314,739,51.42212463832314L739,54.892712873617256C455.5,54.892712873617256,455.5,50.94117647058823,172,50.94117647058823Z"
+            aria-label="link fromnode1tonode6with weight5"
+            d="M172,45.769999999999996C455.5,45.769999999999996,455.5,49.72153640302902,739,49.72153640302902L739,51.491536403029016C455.5,51.491536403029016,455.5,47.53999999999999,172,47.53999999999999Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link99"
@@ -2366,7 +2402,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2392,8 +2428,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
-            d="M172,58.94117647058823C455.5,58.94117647058823,455.5,54.892712873617256,739,54.892712873617256L739,58.36330110891137C455.5,58.36330110891137,455.5,62.41176470588235,172,62.41176470588235Z"
+            aria-label="link fromnode2tonode6with weight5"
+            d="M172,55.53999999999999C455.5,55.53999999999999,455.5,51.49153640302902,739,51.49153640302902L739,53.26153640302902C455.5,53.26153640302902,455.5,57.30999999999999,172,57.30999999999999Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link100"
@@ -2401,7 +2437,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2427,8 +2463,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
-            d="M172,70.41176470588235C455.5,70.41176470588235,455.5,58.36330110891137,739,58.36330110891137L739,61.83388934420549C455.5,61.83388934420549,455.5,73.88235294117646,172,73.88235294117646Z"
+            aria-label="link fromnode3tonode6with weight5"
+            d="M172,65.30999999999999C455.5,65.30999999999999,455.5,53.26153640302903,739,53.26153640302903L739,55.03153640302902C455.5,55.03153640302902,455.5,67.08,172,67.08Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link101"
@@ -2436,7 +2472,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2462,8 +2498,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
-            d="M172,81.88235294117646C455.5,81.88235294117646,455.5,82.44476169854653,739,82.44476169854653L739,394.7977028750171C455.5,394.7977028750171,455.5,394.235294117647,172,394.235294117647Z"
+            aria-label="link fromnode4tonode7with weight900"
+            d="M172,75.07999999999998C455.5,75.07999999999998,455.5,75.64240875737008,739,75.64240875737008L739,394.2424087573701C455.5,394.2424087573701,455.5,393.67999999999995,172,393.67999999999995Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link102"
@@ -2471,7 +2507,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2497,8 +2533,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout64"
-            d="M172,402.23529411764696C455.5,402.23529411764696,455.5,394.7977028750171,739,394.7977028750171L739,422.56240875737C455.5,422.56240875737,455.5,429.9999999999999,172,429.9999999999999Z"
+            aria-label="link fromnode5tonode7with weight80"
+            d="M172,401.68C455.5,401.68,455.5,394.24240875737,739,394.24240875737L739,422.56240875737006C455.5,422.56240875737006,455.5,430.00000000000006,172,430.00000000000006Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link103"
@@ -2506,7 +2542,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2527,15 +2563,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement69"
         >
           <rect
-            aria-label="node0 5"
+            aria-label="nodenode0with weight5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={1.769999999999996}
             id="nodeBar68"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
@@ -2547,80 +2583,80 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement73"
         >
           <rect
-            aria-label="node1 5"
+            aria-label="nodenode1with weight5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={1.769999999999996}
             id="nodeBar72"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={48}
-            y={47.470588235294116}
+            y={45.769999999999996}
           />
         </g>
         <g
           id="nodeGElement77"
         >
           <rect
-            aria-label="node2 5"
+            aria-label="nodenode2with weight5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={1.769999999999996}
             id="nodeBar76"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={48}
-            y={58.94117647058823}
+            y={55.53999999999999}
           />
         </g>
         <g
           id="nodeGElement81"
         >
           <rect
-            aria-label="node3 5"
+            aria-label="nodenode3with weight5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={1.769999999999996}
             id="nodeBar80"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={48}
-            y={70.41176470588235}
+            y={65.30999999999999}
           />
         </g>
         <g
           id="nodeGElement85"
         >
           <rect
-            aria-label="node4 900"
+            aria-label="nodenode4with weight900"
             data-is-focusable={true}
             fill="#0078D4"
-            height={312.3529411764705}
+            height={318.6}
             id="nodeBar84"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={48}
-            y={81.88235294117646}
+            y={75.07999999999998}
           />
           <g
             className=
@@ -2639,6 +2675,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2649,12 +2686,13 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 onMouseOver={[Function]}
                 textAnchor="start"
                 x={48}
-                y={81.88235294117646}
+                y={75.07999999999998}
               >
                 node4
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -2662,7 +2700,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               fontWeight="bold"
               textAnchor="start"
               x={48}
-              y={81.88235294117646}
+              y={75.07999999999998}
             >
               900
             </text>
@@ -2672,20 +2710,20 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement89"
         >
           <rect
-            aria-label="node5 80"
+            aria-label="nodenode5with weight80"
             data-is-focusable={true}
             fill="#0078D4"
-            height={27.764705882352928}
+            height={28.319999999999936}
             id="nodeBar88"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={48}
-            y={402.23529411764696}
+            y={401.68}
           />
           <g
             className=
@@ -2704,6 +2742,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2714,12 +2753,13 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 onMouseOver={[Function]}
                 textAnchor="start"
                 x={48}
-                y={402.23529411764696}
+                y={401.68}
               >
                 node5
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#FFFFFF"
@@ -2727,7 +2767,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               fontWeight="bold"
               textAnchor="start"
               x={164}
-              y={402.23529411764696}
+              y={401.68}
             >
               80
             </text>
@@ -2737,40 +2777,40 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement93"
         >
           <rect
-            aria-label="node6 20"
+            aria-label="nodenode6with weight20"
             data-is-focusable={true}
             fill="#E3008C"
-            height={13.882352941176471}
+            height={7.079999999999998}
             id="nodeBar92"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={739}
-            y={47.951536403029024}
+            y={47.95153640302902}
           />
         </g>
         <g
           id="nodeGElement97"
         >
           <rect
-            aria-label="node7 980"
+            aria-label="nodenode7with weight980"
             data-is-focusable={true}
             fill="#E3008C"
-            height={340.1176470588236}
+            height={346.91999999999996}
             id="nodeBar96"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#757575"
             strokeWidth="2"
             width={124}
             x={739}
-            y={82.44476169854653}
+            y={75.64240875737006}
           />
           <g
             className=
@@ -2789,6 +2829,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -2799,12 +2840,13 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 onMouseOver={[Function]}
                 textAnchor="start"
                 x={739}
-                y={82.44476169854653}
+                y={75.64240875737006}
               >
                 node7
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -2812,7 +2854,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               fontWeight="bold"
               textAnchor="start"
               x={739}
-              y={82.44476169854653}
+              y={75.64240875737006}
             >
               980
             </text>
@@ -2862,7 +2904,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -2893,7 +2935,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.168.42.72toinboxwith weight80"
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2902,7 +2944,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2930,7 +2972,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toinboxwith weight50"
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2939,7 +2981,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -2967,7 +3009,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toJunk Folderwith weight28"
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2976,7 +3018,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3004,7 +3046,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.360.55.1toJunk Folderwith weight14"
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -3014,7 +3056,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3042,7 +3084,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toJunk Folderwith weight7"
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3051,7 +3093,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3079,7 +3121,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3088,7 +3130,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3116,7 +3158,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.124.50.1toJunk Folderwith weight10"
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3125,7 +3167,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3153,7 +3195,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.630.89.4toJunk Folderwith weight10"
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3162,7 +3204,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3190,7 +3232,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoClickedwith weight30"
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3199,7 +3241,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3227,7 +3269,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoOpenedwith weight55"
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3236,7 +3278,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3264,7 +3306,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -3274,7 +3316,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3302,7 +3344,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3311,7 +3353,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -3333,14 +3375,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="0"
         >
           <rect
-            aria-label="192.168.42.72 80"
+            aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             height={129.31506849315068}
             id="nodeBar66"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3367,6 +3409,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3383,6 +3426,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -3401,14 +3445,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="1"
         >
           <rect
-            aria-label="172.152.48.13 78"
+            aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             height={126.08219178082172}
             id="nodeBar70"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3435,6 +3479,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3451,6 +3496,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -3469,7 +3515,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="2"
         >
           <rect
-            aria-label="124.360.55.1 14"
+            aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -3477,7 +3523,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3493,14 +3539,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="3"
         >
           <rect
-            aria-label="192.564.10.2 27"
+            aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             height={43.643835616438366}
             id="nodeBar78"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3527,6 +3573,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3543,6 +3590,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -3561,14 +3609,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="4"
         >
           <rect
-            aria-label="124.124.50.1 10"
+            aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar82"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3584,14 +3632,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="5"
         >
           <rect
-            aria-label="172.630.89.4 10"
+            aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar86"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3607,14 +3655,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="6"
         >
           <rect
-            aria-label="inbox 130"
+            aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             height={210.13698630136994}
             id="nodeBar90"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -3641,6 +3689,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3657,6 +3706,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -3675,7 +3725,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="7"
         >
           <rect
-            aria-label="Junk Folder 69"
+            aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#8764B8"
             height={111.53424657534248}
@@ -3683,7 +3733,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3710,6 +3760,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -3726,6 +3777,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -3744,14 +3796,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="8"
         >
           <rect
-            aria-label="Deleted Folder 20"
+            aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             height={32.32876712328766}
             id="nodeBar98"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -3778,6 +3830,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3794,6 +3847,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#323130"
@@ -3812,14 +3866,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="9"
         >
           <rect
-            aria-label="Clicked 30"
+            aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             height={48.49315068493148}
             id="nodeBar102"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -3846,6 +3900,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3862,6 +3917,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -3880,14 +3936,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="10"
         >
           <rect
-            aria-label="Opened 55"
+            aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             height={88.90410958904114}
             id="nodeBar106"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -3914,6 +3970,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -3930,6 +3987,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -3948,7 +4006,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="11"
         >
           <rect
-            aria-label=" No further action  required 62"
+            aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#8764B8"
             height={100.21917808219177}
@@ -3956,7 +4014,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -3983,6 +4041,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -3999,6 +4058,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -4056,7 +4116,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -4087,7 +4147,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.168.42.72toinboxwith weight80"
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4096,7 +4156,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4128,7 +4188,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toinboxwith weight50"
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fill="url(#gradient-link1-1)"
@@ -4138,7 +4198,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="url(#gradient-link1-1)"
             strokeOpacity={1}
             strokeWidth="2"
@@ -4170,7 +4230,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toJunk Folderwith weight28"
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4179,7 +4239,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4211,7 +4271,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.360.55.1toJunk Folderwith weight14"
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4220,7 +4280,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4252,7 +4312,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toJunk Folderwith weight7"
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4261,7 +4321,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4293,7 +4353,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4302,7 +4362,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4334,7 +4394,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.124.50.1toJunk Folderwith weight10"
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4343,7 +4403,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4375,7 +4435,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.630.89.4toJunk Folderwith weight10"
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4384,7 +4444,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4416,7 +4476,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoClickedwith weight30"
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fill="url(#gradient-link1-8)"
@@ -4426,7 +4486,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="url(#gradient-link1-8)"
             strokeOpacity={1}
             strokeWidth="2"
@@ -4458,7 +4518,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoOpenedwith weight55"
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fill="url(#gradient-link1-9)"
@@ -4468,7 +4528,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="url(#gradient-link1-9)"
             strokeOpacity={1}
             strokeWidth="2"
@@ -4500,7 +4560,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4509,7 +4569,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4541,7 +4601,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4550,7 +4610,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
@@ -4576,7 +4636,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="0"
         >
           <rect
-            aria-label="192.168.42.72 80"
+            aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
@@ -4584,7 +4644,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -4608,6 +4668,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -4624,6 +4685,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -4642,7 +4704,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="1"
         >
           <rect
-            aria-label="172.152.48.13 78"
+            aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -4650,7 +4712,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -4674,6 +4736,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -4690,6 +4753,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -4708,7 +4772,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="2"
         >
           <rect
-            aria-label="124.360.55.1 14"
+            aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -4716,7 +4780,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -4729,7 +4793,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="3"
         >
           <rect
-            aria-label="192.564.10.2 27"
+            aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
@@ -4737,7 +4801,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -4761,6 +4825,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -4777,6 +4842,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -4795,7 +4861,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="4"
         >
           <rect
-            aria-label="124.124.50.1 10"
+            aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -4803,7 +4869,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -4816,7 +4882,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="5"
         >
           <rect
-            aria-label="172.630.89.4 10"
+            aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -4824,7 +4890,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -4837,7 +4903,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="6"
         >
           <rect
-            aria-label="inbox 130"
+            aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
@@ -4845,7 +4911,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -4869,6 +4935,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -4885,6 +4952,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -4903,7 +4971,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="7"
         >
           <rect
-            aria-label="Junk Folder 69"
+            aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
@@ -4911,7 +4979,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -4935,6 +5003,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -4951,6 +5020,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -4969,7 +5039,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="8"
         >
           <rect
-            aria-label="Deleted Folder 20"
+            aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
@@ -4977,7 +5047,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -5001,6 +5071,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -5017,6 +5088,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#FFFFFF"
@@ -5035,7 +5107,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="9"
         >
           <rect
-            aria-label="Clicked 30"
+            aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
@@ -5043,7 +5115,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -5067,6 +5139,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -5083,6 +5156,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -5101,7 +5175,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="10"
         >
           <rect
-            aria-label="Opened 55"
+            aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
@@ -5109,7 +5183,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -5133,6 +5207,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -5149,6 +5224,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -5167,7 +5243,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="11"
         >
           <rect
-            aria-label=" No further action  required 62"
+            aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
@@ -5175,7 +5251,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -5199,6 +5275,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -5215,6 +5292,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -5272,7 +5350,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -5303,7 +5381,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.168.42.72toinboxwith weight80"
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5312,7 +5390,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5340,7 +5418,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toinboxwith weight50"
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5350,7 +5428,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5378,7 +5456,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toJunk Folderwith weight28"
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5388,7 +5466,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5416,7 +5494,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.360.55.1toJunk Folderwith weight14"
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5425,7 +5503,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5453,7 +5531,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toJunk Folderwith weight7"
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5462,7 +5540,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5490,7 +5568,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5499,7 +5577,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5527,7 +5605,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.124.50.1toJunk Folderwith weight10"
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5536,7 +5614,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5564,7 +5642,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.630.89.4toJunk Folderwith weight10"
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5573,7 +5651,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5601,7 +5679,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoClickedwith weight30"
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5611,7 +5689,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5639,7 +5717,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoOpenedwith weight55"
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5649,7 +5727,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5677,7 +5755,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5687,7 +5765,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5715,7 +5793,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5724,7 +5802,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -5746,14 +5824,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="0"
         >
           <rect
-            aria-label="192.168.42.72 80"
+            aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             height={129.31506849315068}
             id="nodeBar66"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -5777,6 +5855,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -5793,6 +5872,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -5811,7 +5891,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="1"
         >
           <rect
-            aria-label="172.152.48.13 78"
+            aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -5819,7 +5899,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -5843,6 +5923,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -5859,6 +5940,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -5877,14 +5959,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="2"
         >
           <rect
-            aria-label="124.360.55.1 14"
+            aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             height={22.630136986301352}
             id="nodeBar74"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -5897,14 +5979,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="3"
         >
           <rect
-            aria-label="192.564.10.2 27"
+            aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             height={43.643835616438366}
             id="nodeBar78"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -5928,6 +6010,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -5944,6 +6027,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#323130"
@@ -5962,14 +6046,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="4"
         >
           <rect
-            aria-label="124.124.50.1 10"
+            aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar82"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -5982,14 +6066,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="5"
         >
           <rect
-            aria-label="172.630.89.4 10"
+            aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar86"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6002,7 +6086,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="6"
         >
           <rect
-            aria-label="inbox 130"
+            aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#8764B8"
             height={210.13698630136994}
@@ -6010,7 +6094,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6034,6 +6118,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -6050,6 +6135,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -6068,7 +6154,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="7"
         >
           <rect
-            aria-label="Junk Folder 69"
+            aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#8764B8"
             height={111.53424657534248}
@@ -6076,7 +6162,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6100,6 +6186,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -6116,6 +6203,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -6134,14 +6222,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="8"
         >
           <rect
-            aria-label="Deleted Folder 20"
+            aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             height={32.32876712328766}
             id="nodeBar98"
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -6165,6 +6253,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#323130"
@@ -6181,6 +6270,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#323130"
@@ -6199,7 +6289,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="9"
         >
           <rect
-            aria-label="Clicked 30"
+            aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#8764B8"
             height={48.49315068493148}
@@ -6207,7 +6297,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6231,6 +6321,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -6247,6 +6338,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -6265,7 +6357,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="10"
         >
           <rect
-            aria-label="Opened 55"
+            aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#8764B8"
             height={88.90410958904114}
@@ -6273,7 +6365,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6297,6 +6389,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -6313,6 +6406,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -6331,7 +6425,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="11"
         >
           <rect
-            aria-label=" No further action  required 62"
+            aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#8764B8"
             height={100.21917808219177}
@@ -6339,7 +6433,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6363,6 +6457,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -6379,6 +6474,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -6436,7 +6532,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         className=
 
             {
-              fill: #F5F5F5;
+              fill: #ffffff;
               stroke-width: 3px;
               stroke: #000000;
             }
@@ -6467,7 +6563,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.168.42.72toinboxwith weight80"
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6476,7 +6572,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6504,7 +6600,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toinboxwith weight50"
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6513,7 +6609,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6541,7 +6637,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.152.48.13toJunk Folderwith weight28"
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6550,7 +6646,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6578,7 +6674,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.360.55.1toJunk Folderwith weight14"
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6587,7 +6683,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6615,7 +6711,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toJunk Folderwith weight7"
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6624,7 +6720,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6652,7 +6748,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6661,7 +6757,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6689,7 +6785,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from124.124.50.1toJunk Folderwith weight10"
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6698,7 +6794,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6726,7 +6822,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link from172.630.89.4toJunk Folderwith weight10"
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6735,7 +6831,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6763,7 +6859,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoClickedwith weight30"
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6772,7 +6868,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6800,7 +6896,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link frominboxtoOpenedwith weight55"
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6809,7 +6905,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6837,7 +6933,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6846,7 +6942,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6874,7 +6970,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-labelledby="toolTipcallout0"
+            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6883,7 +6979,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            role="text"
+            role="img"
             stroke="#757575"
             strokeOpacity={1}
             strokeWidth="2"
@@ -6905,7 +7001,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="0"
         >
           <rect
-            aria-label="192.168.42.72 80"
+            aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
@@ -6913,7 +7009,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -6937,6 +7033,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -6953,6 +7050,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -6971,7 +7069,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="1"
         >
           <rect
-            aria-label="172.152.48.13 78"
+            aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -6979,7 +7077,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -7003,6 +7101,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7019,6 +7118,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -7037,7 +7137,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="2"
         >
           <rect
-            aria-label="124.360.55.1 14"
+            aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -7045,7 +7145,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -7058,7 +7158,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="3"
         >
           <rect
-            aria-label="192.564.10.2 27"
+            aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
@@ -7066,7 +7166,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -7090,6 +7190,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7106,6 +7207,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -7124,7 +7226,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="4"
         >
           <rect
-            aria-label="124.124.50.1 10"
+            aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -7132,7 +7234,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -7145,7 +7247,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="5"
         >
           <rect
-            aria-label="172.630.89.4 10"
+            aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -7153,7 +7255,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#4B3867"
             strokeWidth="2"
             width={124}
@@ -7166,7 +7268,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="6"
         >
           <rect
-            aria-label="inbox 130"
+            aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
@@ -7174,7 +7276,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -7198,6 +7300,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7214,6 +7317,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -7232,7 +7336,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="7"
         >
           <rect
-            aria-label="Junk Folder 69"
+            aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
@@ -7240,7 +7344,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -7264,6 +7368,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7280,6 +7385,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -7298,7 +7404,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="8"
         >
           <rect
-            aria-label="Deleted Folder 20"
+            aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
@@ -7306,7 +7412,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#004E4E"
             strokeWidth="2"
             width={124}
@@ -7330,6 +7436,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7346,6 +7453,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0em"
               dy="1em"
               fill="#FFFFFF"
@@ -7364,7 +7472,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="9"
         >
           <rect
-            aria-label="Clicked 30"
+            aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
@@ -7372,7 +7480,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -7396,6 +7504,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7412,6 +7521,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -7430,7 +7540,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="10"
         >
           <rect
-            aria-label="Opened 55"
+            aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
@@ -7438,7 +7548,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -7462,6 +7572,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7478,6 +7589,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"
@@ -7496,7 +7608,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="11"
         >
           <rect
-            aria-label=" No further action  required 62"
+            aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
@@ -7504,7 +7616,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
-            role="text"
+            role="img"
             stroke="#3B52B4"
             strokeWidth="2"
             width={124}
@@ -7528,6 +7640,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               className="nodeName"
             >
               <text
+                aria-hidden="true"
                 dx="0.4em"
                 dy="1.2em"
                 fill="#FFFFFF"
@@ -7544,6 +7657,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               </text>
             </g>
             <text
+              aria-hidden="true"
               dx="0.4em"
               dy="2em"
               fill="#FFFFFF"

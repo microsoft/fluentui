@@ -94,4 +94,10 @@ export interface ISankeyChartStyles {
    *  Style for the tooltip ,when user hover over the truncated node detail.
    */
   toolTip?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+
+  calloutContentRoot?: IStyle;
 }

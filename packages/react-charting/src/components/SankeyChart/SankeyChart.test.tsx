@@ -324,9 +324,8 @@ describe('Render calling with respective to props', () => {
       height: 500,
       width: 800,
     };
-    const component = mount(<SankeyChart {...props} />);
-    component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
+    mount(<SankeyChart {...props} />);
+    expect(renderMock).toHaveBeenCalledTimes(1);
     renderMock.mockRestore();
   });
 

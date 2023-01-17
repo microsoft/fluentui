@@ -3,6 +3,7 @@ import { HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
   const { className, theme, pathColor } = props;
+  const { effects } = theme;
   return {
     root: [
       theme.fonts.medium,
@@ -17,7 +18,7 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     ],
     links: {
       stroke: pathColor ? pathColor : theme.palette.black,
-      fill: '#F5F5F5',
+      fill: theme ? theme.semanticColors.bodyBackground : '#F5F5F5',
       strokeWidth: 3,
       selectors: {
         [HighContrastSelectorBlack]: {
@@ -60,6 +61,9 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       marginLeft: '8px',
       marginBottom: '4px',
       marginRight: '8px',
+    },
+    calloutContentRoot: {
+      boxShadow: effects.elevation4,
     },
   };
 };
