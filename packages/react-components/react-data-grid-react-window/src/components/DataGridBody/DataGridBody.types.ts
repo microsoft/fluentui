@@ -4,7 +4,7 @@ import type {
   DataGridBodyProps as DataGridBodyPropsBase,
   DataGridBodySlots as DataGridBodySlotsBase,
   DataGridBodyState as DataGridBodyStateBase,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-table';
 
 export type DataGridBodySlots = DataGridBodySlotsBase;
 

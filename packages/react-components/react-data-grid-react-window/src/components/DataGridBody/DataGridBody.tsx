@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-components';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDataGridBodyStyles_unstable } from './useDataGridBodyStyles';
 import { useDataGridBody_unstable } from './useDataGridBody';
 import { renderDataGridBody_unstable } from './renderDataGridBody';

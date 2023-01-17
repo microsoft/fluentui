@@ -1,9 +1,6 @@
 import * as React from 'react';
 import type { DataGridBodyProps, DataGridBodyState } from './DataGridBody.types';
-import {
-  useDataGridBody_unstable as useDataGridBodyBase_unstable,
-  TableRowData,
-} from '@fluentui/react-components/unstable';
+import { useDataGridBody_unstable as useDataGridBodyBase_unstable, RowRenderFunction } from '@fluentui/react-table';
 
 /**
  * Create the state required to render DataGridBody.
@@ -18,7 +15,7 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
   const { height, itemSize, width = '100%', children } = props;
 
   // cast the row render function to work with unknown args
-  const renderRowWithUnknown = children as (row: TableRowData<unknown>, ...rest: unknown[]) => React.ReactNode;
+  const renderRowWithUnknown = children as RowRenderFunction;
   const baseState = useDataGridBodyBase_unstable({ ...props, children: renderRowWithUnknown }, ref);
 
   return {
