@@ -63,7 +63,7 @@
     "@fluentui/react-spinbutton": "^9.0.15",
     "@fluentui/react-spinner": "^9.0.17",
     "@fluentui/react-switch": "^9.0.18",
-    "@fluentui/react-table": "9.0.0-alpha.20",
+    "@fluentui/react-table": "9.0.0-rc.0",
     "@fluentui/react-tabs": "^9.1.7",
     "@fluentui/react-tabster": "^9.3.7",
     "@fluentui/react-textarea": "^9.1.12",
