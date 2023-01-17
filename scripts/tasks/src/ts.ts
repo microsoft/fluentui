@@ -1,5 +1,7 @@
 import * as path from 'path';
-import { tscTask, TscTaskOptions, logger } from 'just-scripts';
+
+import { TscTaskOptions, logger, tscTask } from 'just-scripts';
+
 import { getJustArgv } from './argv';
 import { getTsPathAliasesConfig, getTsPathAliasesConfigV8 } from './utils';
 
@@ -38,16 +40,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
     const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
 
-    const hasNewCompilationSetup = tsConfigOutDir.includes('dist/out-tsc');
-
-    if (hasNewCompilationSetup) {
-      options.outDir = `${tsConfigOutDir}/${options.outDir}`;
-    } else {
-      // TODO: remove after all v9 is migrated to new tsc processing
-      options.baseUrl = '.';
-      options.rootDir = './src';
-    }
-
+    options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     options.project = tsConfigFile;
   }
 
