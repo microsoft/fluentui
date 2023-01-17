@@ -98,15 +98,6 @@ export const styles = css`
     display: flex;
   }
 
-  .indeterminate {
-    height: 6px;
-    border-radius: ${borderRadiusMedium};
-    display: flex;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
-
   .indeterminate-indicator-1 {
     position: absolute;
     opacity: 0;
