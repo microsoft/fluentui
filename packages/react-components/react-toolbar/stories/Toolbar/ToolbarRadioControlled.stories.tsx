@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AlignCenterHorizontal24Regular, AlignLeft24Regular, AlignRight24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarRadioButton, ToolbarRadioGroup } from '@fluentui/react-components/unstable';
-import type { ToolbarProps } from '@fluentui/react-components/unstable';
+import { Toolbar, ToolbarRadioButton, ToolbarRadioGroup } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
 
 export const ControlledRadio = (props: Partial<ToolbarProps>) => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({

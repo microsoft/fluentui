@@ -1,4 +1,4 @@
-import { Toolbar } from '@fluentui/react-components/unstable';
+import { Toolbar } from '@fluentui/react-components';
 
 import descriptionMd from './ToolbarDescription.md';
 import bestPracticesMd from './ToolbarBestPractices.md';
@@ -19,7 +19,7 @@ export { VerticalButton } from './ToolbarVerticalButton.stories';
 export { FarGroup } from './ToolbarFarGroup.stories';
 
 export default {
-  title: 'Preview Components/Toolbar',
+  title: 'Components/Toolbar',
   component: Toolbar,
   parameters: {
     docs: {

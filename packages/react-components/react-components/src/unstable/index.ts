@@ -113,52 +113,6 @@ export {
 export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  Toolbar,
-  ToolbarButton,
-  useToolbarButtonStyles_unstable,
-  useToolbarButton_unstable,
-  ToolbarRadioButton,
-  useToolbarRadioButton_unstable,
-  useToolbarRadioButtonStyles_unstable,
-  ToolbarDivider,
-  useToolbarDivider_unstable,
-  ToolbarGroup,
-  useToolbarGroupStyles_unstable,
-  useToolbarGroup_unstable,
-  renderToolbarGroup_unstable,
-  toolbarGroupClassNames,
-  ToolbarToggleButton,
-  useToolbarToggleButtonStyles_unstable,
-  useToolbarToggleButton_unstable,
-  renderToolbar_unstable,
-  toolbarClassNames,
-  useToolbar_unstable,
-  useToolbarDividerStyles_unstable,
-  useToolbarStyles_unstable,
-  ToolbarRadioGroup,
-} from '@fluentui/react-toolbar';
-
-export type {
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarContextValue,
-  ToolbarContextValues,
-  ToolbarDividerProps,
-  ToolbarDividerState,
-  ToolbarProps,
-  ToolbarSlots,
-  ToolbarState,
-  ToolbarToggleButtonProps,
-  ToolbarToggleButtonState,
-  ToolbarGroupProps,
-  ToolbarGroupState,
-  ToolbarRadioButtonProps,
-  ToolbarRadioButtonState,
-  ToolbarRadioGroupProps,
-  ToolbarRadioGroupState,
-} from '@fluentui/react-toolbar';
-
-export {
   InfoButton,
   infoButtonClassNames,
   useInfoButton_unstable,
