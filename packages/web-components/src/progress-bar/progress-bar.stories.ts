@@ -10,12 +10,9 @@ type ProgressStoryMeta = Meta<ProgressStoryArgs>;
 
 const storyTemplate = html<ProgressStoryArgs>`
   <fluent-progress-bar
-    ?paused=${x => x.paused}
     thickness=${x => x.thickness}
     shape=${x => x.shape}
-    min=${x => x.min}
     max=${x => x.max}
-    aria-valuemin=${x => x.min}
     aria-valuemax=${x => x.max}
     aria-valuenow=${x => x.value}
     value=${x => x.value}
@@ -27,19 +24,13 @@ const storyTemplate = html<ProgressStoryArgs>`
 export default {
   title: 'Components/ProgressBar',
   args: {
-    min: 0,
     max: 100,
     value: 15,
     thickness: 'medium',
     shape: 'rounded',
-    paused: false,
     validationState: '',
   },
   argTypes: {
-    min: {
-      control: 'number',
-      defaultValue: 0,
-    },
     max: {
       control: 'number',
       defaultValue: 100,
@@ -61,10 +52,6 @@ export default {
         type: 'select',
       },
       defaultValue: 'rounded',
-    },
-    paused: {
-      control: 'boolean',
-      defaultValue: false,
     },
     validationState: {
       options: Object.keys(ProgressBarValidationState),

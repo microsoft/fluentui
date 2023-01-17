@@ -130,18 +130,6 @@ export const styles = css`
     animation: indeterminate-2 3s infinite;
   }
 
-  :host([paused]) .indeterminate-indicator-1,
-  :host([paused]) .indeterminate-indicator-2 {
-    animation: none;
-    background-color: ${colorNeutralBackground6};
-    width: 100%;
-    opacity: 1;
-  }
-
-  :host([paused]) .determinate {
-    background-color: ${colorCompoundBrandBackground};
-  }
-
   @keyframes indeterminate-1 {
     0% {
       opacity: 1;
