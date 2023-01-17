@@ -24,6 +24,9 @@ import {
   useTableSort,
   createTableColumn,
   TableColumnId,
+  TableRowId,
+  TableRowProps,
+  TableSelectionState,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -119,7 +122,7 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const DataGrid = () => {
+export const Memoization = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
@@ -143,13 +146,6 @@ export const DataGrid = () => {
       const selected = isRowSelected(row.rowId);
       return {
         ...row,
-        onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
-        onKeyDown: (e: React.KeyboardEvent) => {
-          if (e.key === ' ') {
-            e.preventDefault();
-            toggleRow(e, row.rowId);
-          }
-        },
         selected,
         appearance: selected ? ('brand' as const) : ('none' as const),
       };
@@ -183,56 +179,88 @@ export const DataGrid = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
-          <TableRow
-            key={item.file.label}
-            onClick={onClick}
-            onKeyDown={onKeyDown}
-            aria-selected={selected}
+        {rows.map(({ item, selected, appearance, rowId }) => (
+          <TableSelectableRowMemoized
+            key={rowId}
+            rowId={rowId}
+            toggleRow={toggleRow}
+            item={item}
+            selected={selected}
             appearance={appearance}
-          >
-            <TableSelectionCell
-              role="gridcell"
-              aria-selected={selected}
-              checked={selected}
-              checkboxIndicator={{ 'aria-label': 'Select row' }}
-            />
-            <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
-              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-            </TableCell>
-            <TableCell tabIndex={0} role="gridcell">
-              <TableCellLayout
-                media={
-                  <Avatar
-                    aria-label={item.author.label}
-                    name={item.author.label}
-                    badge={{ status: item.author.status }}
-                  />
-                }
-              >
-                {item.author.label}
-              </TableCellLayout>
-            </TableCell>
-            <TableCell tabIndex={0} role="gridcell">
-              {item.lastUpdated.label}
-            </TableCell>
-            <TableCell tabIndex={0} role="gridcell">
-              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-            </TableCell>
-          </TableRow>
+          />
         ))}
       </TableBody>
     </Table>
   );
 };
 
-DataGrid.parameters = {
+type TableSelectableRowProps = {
+  toggleRow: TableSelectionState['toggleRow'];
+  item: Item;
+  selected: boolean;
+  appearance: TableRowProps['appearance'];
+  rowId: TableRowId;
+};
+
+const TableSelectableRow: React.FC<TableSelectableRowProps> = props => {
+  const { item, selected, appearance, rowId, toggleRow } = props;
+  const onClick = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => toggleRow(e, rowId), [toggleRow, rowId]);
+  const onKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        e.preventDefault();
+        toggleRow(e, rowId);
+      }
+    },
+    [toggleRow, rowId],
+  );
+
+  return (
+    <TableRow
+      key={item.file.label}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      aria-selected={selected}
+      appearance={appearance}
+    >
+      <TableSelectionCell
+        role="gridcell"
+        aria-selected={selected}
+        checked={selected}
+        checkboxIndicator={{ 'aria-label': 'Select row' }}
+      />
+      <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
+        <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+      </TableCell>
+      <TableCell tabIndex={0} role="gridcell">
+        <TableCellLayout
+          media={
+            <Avatar aria-label={item.author.label} name={item.author.label} badge={{ status: item.author.status }} />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      </TableCell>
+      <TableCell tabIndex={0} role="gridcell">
+        {item.lastUpdated.label}
+      </TableCell>
+      <TableCell tabIndex={0} role="gridcell">
+        <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+      </TableCell>
+    </TableRow>
+  );
+};
+
+const TableSelectableRowMemoized = React.memo(TableSelectableRow);
+
+Memoization.parameters = {
   docs: {
     description: {
       story: [
-        'The `DataGrid` component is a composition of the `useTableFeatures` hook and primitive `Table` components',
-        'along with some convenience features such as accessible markup and event handlers.',
-        'Any feature of the `DataGrid` is achievable with the primitive components and hook',
+        'There is no single correct way to memoize components. It is important to note that memoization is not free',
+        'and should only be used to optimize scenarios that can be identified as performance bottlenecks. This',
+        "example demonstrates a reasonable memoization strategy to memoize entire table. When a row's selection",
+        'changes, only the affected row is re-rendered.',
       ].join('\n'),
     },
   },
