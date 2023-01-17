@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, find, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, find, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import {
   IAccessibilityProps,
@@ -39,6 +39,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _calloutId: string;
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _isRTL: boolean = getRTL();
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -337,16 +338,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           return null;
         }
 
-        /** Calculate bar value by subtracting placeholder value from total value */
-        const barValue = point.horizontalBarChartdata!.y - xValue;
+        const barValue = data.chartData![0].horizontalBarChartdata!.x;
 
         return (
           <text
             key={index}
-            x={`${startingPoint[index]}%`}
+            x={`${this._isRTL ? 100 - startingPoint[index] : startingPoint[index]}%`}
             y={this._barHeight / 2}
             dominantBaseline="central"
-            transform="translate(4)"
+            transform={`translate(${this._isRTL ? -4 : 4})`}
             className={this._classNames.barValue}
             aria-hidden={true}
           >
@@ -358,7 +358,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       return (
         <rect
           key={index}
-          x={startingPoint[index] + '%'}
+          x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
           y={0}
           data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}
