@@ -5,8 +5,11 @@ import {
   colorBrandBackground2,
   colorCompoundBrandBackground,
   colorNeutralBackground6,
+  colorPaletteDarkOrangeBackground2,
   colorPaletteDarkOrangeBackground3,
+  colorPaletteGreenBackground2,
   colorPaletteGreenBackground3,
+  colorPaletteRedBackground2,
   colorPaletteRedBackground3,
 } from '../theme/design-tokens.js';
 
@@ -17,56 +20,87 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    --progress-bar-thickness: 2px;
-    --progress-bar-radius: ${borderRadiusMedium};
-    --progress-bar-color: ${colorCompoundBrandBackground};
-    --progress-speed: 3s;
     align-items: center;
-    height: var(--progress-bar-thickness);
+    height: 2px;
     overflow-x: hidden;
+    border-radius: ${borderRadiusMedium};
   }
 
-  :host([thickness='large']) {
-    --progress-bar-thickness: 4px;
+  :host([thickness='large']),
+  :host([thickness='large']) .progress,
+  :host([thickness='large']) .determinate {
+    height: 4px;
   }
 
-  :host([shape='rectangular']) {
-    --progress-bar-radius: 0;
+  :host([shape='rectangular']),
+  :host([shape='rectangular']) .progress,
+  :host([shape='rectangular']) .determinate {
+    border-radius: 0;
   }
 
-  :host([validation-state='error']) {
-    --progress-bar-color: ${colorPaletteRedBackground3};
+  :host([validation-state='error']) .determinate {
+    background-color: ${colorPaletteRedBackground3};
   }
 
-  :host([validation-state='warning']) {
-    --progress-bar-color: ${colorPaletteDarkOrangeBackground3};
+  :host([validation-state='error']) .indeterminate-indicator-1,
+  :host([validation-state='error']) .indeterminate-indicator-2 {
+    background: linear-gradient(
+      to right,
+      ${colorPaletteRedBackground2} 0%,
+      ${colorPaletteRedBackground3} 50%,
+      ${colorPaletteRedBackground2}
+    );
   }
 
-  :host([validation-state='success']) {
-    --progress-bar-color: ${colorPaletteGreenBackground3};
+  :host([validation-state='warning']) .determinate {
+    background-color: ${colorPaletteDarkOrangeBackground3};
+  }
+
+  :host([validation-state='warning']) .indeterminate-indicator-1,
+  :host([validation-state='warning']) .indeterminate-indicator-2 {
+    background: linear-gradient(
+      to right,
+      ${colorPaletteDarkOrangeBackground2} 0%,
+      ${colorPaletteDarkOrangeBackground3} 50%,
+      ${colorPaletteDarkOrangeBackground2}
+    );
+  }
+
+  :host([validation-state='success']) .determinate {
+    background-color: ${colorPaletteGreenBackground3};
+  }
+
+  :host([validation-state='success']) .indeterminate-indicator-1,
+  :host([validation-state='success']) .indeterminate-indicator-2 {
+    background: linear-gradient(
+      to right,
+      ${colorPaletteGreenBackground2} 0%,
+      ${colorPaletteGreenBackground3} 50%,
+      ${colorPaletteGreenBackground2}
+    );
   }
 
   .progress {
     background-color: ${colorNeutralBackground6};
-    border-radius: var(--progress-bar-radius);
+    border-radius: ${borderRadiusMedium};
     width: 100%;
-    height: var(--progress-bar-thickness);
+    height: 2px;
     display: flex;
     align-items: center;
     position: relative;
   }
 
   .determinate {
-    background-color: var(--progress-bar-color);
-    border-radius: var(--progress-bar-radius);
-    height: var(--progress-bar-thickness);
+    background-color: ${colorCompoundBrandBackground};
+    border-radius: ${borderRadiusMedium};
+    height: 2px;
     transition: all 0.2s ease-in-out;
     display: flex;
   }
 
   .indeterminate {
     height: 6px;
-    border-radius: var(--progress-bar-radius);
+    border-radius: ${borderRadiusMedium};
     display: flex;
     width: 100%;
     position: relative;
@@ -83,10 +117,10 @@ export const styles = css`
       ${colorCompoundBrandBackground} 50%,
       ${colorBrandBackground2}
     );
-    border-radius: var(--progress-bar-radius);
+    border-radius: ${borderRadiusMedium};
     animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
     width: 40%;
-    animation: indeterminate-1 var(--progress-speed) infinite;
+    animation: indeterminate-1 3s infinite;
   }
 
   .indeterminate-indicator-2 {
@@ -99,10 +133,10 @@ export const styles = css`
       ${colorCompoundBrandBackground} 50%,
       ${colorBrandBackground2}
     );
-    border-radius: var(--progress-bar-radius);
+    border-radius: ${borderRadiusMedium};
     animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
     width: 60%;
-    animation: indeterminate-2 var(--progress-speed) infinite;
+    animation: indeterminate-2 3s infinite;
   }
 
   :host([paused]) .indeterminate-indicator-1,
@@ -114,7 +148,7 @@ export const styles = css`
   }
 
   :host([paused]) .determinate {
-    background-color: var(--progress-bar-color);
+    background-color: ${colorCompoundBrandBackground};
   }
 
   @keyframes indeterminate-1 {

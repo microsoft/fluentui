@@ -18,7 +18,6 @@ const storyTemplate = html<ProgressStoryArgs>`
     aria-valuemin=${x => x.min}
     aria-valuemax=${x => x.max}
     aria-valuenow=${x => x.value}
-    value=${x => x.value}
     validation-state=${x => x.validationState}
     aria-label="Progress bar"
   ></fluent-progress-bar>

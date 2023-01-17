@@ -15,7 +15,7 @@ export class ProgressBar extends FASTProgress {
    * HTML Attribute: thickness
    */
   @attr
-  public thickness: ProgressBarThickness = 'medium';
+  public thickness: ProgressBarThickness;
 
   /**
    * The shape of the progress bar
@@ -24,7 +24,7 @@ export class ProgressBar extends FASTProgress {
    * HTML Attribute: shape
    */
   @attr
-  public shape: ProgressBarShape = 'rounded';
+  public shape: ProgressBarShape;
 
   /**
    * The validation state of the progress bar
