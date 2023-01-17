@@ -5314,14 +5314,6 @@
   resolved "https://registry.yarnpkg.com/@types/doctrine/-/doctrine-0.0.5.tgz#9768264221e8fd422e4989c8cfdab2ff781f4eb6"
   integrity sha512-JJwEeFy8Sl9ctiugU4h4DGN9hCB47oyhUkM2H8g8xZr4tHTEXtmV4U6krKrU8Ng0S7RlG/J7fkta1rGu3pq+YQ==
 
-"@types/enhanced-resolve@3.0.7":
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/@types/enhanced-resolve/-/enhanced-resolve-3.0.7.tgz#3d24e24192a5e5a9cb012041013d2f950d1a0d7d"
-  integrity sha512-H23Fzk0BCz4LoKq1ricnLSRQuzoXTv57bGUwC+Cn84kKPaoHIS7bhFhfy4DzMeSBxoXc6jFziYoqpCab1U511w==
-  dependencies:
-    "@types/node" "*"
-    "@types/tapable" "^0"
-
 "@types/enzyme@3.10.7":
   version "3.10.7"
   resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.10.7.tgz#ebdf3b972d293095e09af479e36c772025285e3a"
@@ -6000,11 +5992,6 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/stylis/-/stylis-4.0.0.tgz#ad0f07d60dd7291676d968498fa21d6b9bb1afe8"
   integrity sha512-DB1wPXVDfTTyLO9tr4wTeAptinTGd+EemFDDJTdCfsLedYXuF1mRWpJtU74Rucqx7N7HecBmMwEERbPpLt1tGA==
-
-"@types/tapable@^0":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-0.2.5.tgz#2443fc12da514c81346b1a665675559cee21fa75"
-  integrity sha512-dEoVvo/I9QFomyhY+4Q6Qk+I+dhG59TYceZgC6Q0mCifVPErx6Y83PNTKGDS5e9h9Eti6q0S2mm16BU6iQK+3w==
 
 "@types/tapable@^1", "@types/tapable@^1.0.5":
   version "1.0.6"
@@ -11399,14 +11386,6 @@ engine.io@~6.2.0:
     debug "~4.3.1"
     engine.io-parser "~5.0.3"
     ws "~8.2.3"
-
-enhanced-resolve@5.8.2:
-  version "5.8.2"
-  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.8.2.tgz#15ddc779345cbb73e97c611cd00c01c1e7bf4d8b"
-  integrity sha512-F27oB3WuHDzvR2DOGNTaYy0D5o0cnrv8TeI482VM4kYgQd/FT9lUQwuNsJ0oOHtBUq7eiW5ytqzp7nBFknL+GA==
-  dependencies:
-    graceful-fs "^4.2.4"
-    tapable "^2.2.0"
 
 enhanced-resolve@^4.5.0:
   version "4.5.0"
