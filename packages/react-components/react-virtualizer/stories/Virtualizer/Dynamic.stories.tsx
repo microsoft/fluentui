@@ -53,7 +53,7 @@ export const Dynamic = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'}>
       <Virtualizer
         getItemSize={index => getSizeForIndex(index)}
         numItems={childLength}
@@ -67,6 +67,9 @@ export const Dynamic = () => {
           return (
             <div
               className={sizeClass}
+              role={'listItem'}
+              aria-posinset={index}
+              aria-setsize={childLength}
               key={`child-node-${index}-${sizeValue}`}
             >{`Node-${index}-size-${sizeValue}`}</div>
           );

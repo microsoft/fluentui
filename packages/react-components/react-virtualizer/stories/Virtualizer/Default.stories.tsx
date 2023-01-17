@@ -22,19 +22,20 @@ const useStyles = makeStyles({
 export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const childList = React.useMemo(() => {
-    const nodeList: React.ReactNode[] = [];
-    for (let i = 0; i < childLength; i++) {
-      nodeList.push(<span key={`test-virtualizer-child-${i}`} className={styles.child}>{`Node-${i}`}</span>);
-    }
-    return nodeList;
-  }, [styles.child]);
 
   return (
-    <div className={styles.container}>
-      <Virtualizer numItems={childList.length} virtualizerLength={100} itemSize={100}>
+    <div aria-label="Virtualizer Example" className={styles.container} role={'list'}>
+      <Virtualizer numItems={childLength} virtualizerLength={100} itemSize={100}>
         {index => {
-          return childList[index];
+          return (
+            <span
+              role={'listitem'}
+              aria-posinset={index}
+              aria-setsize={childLength}
+              key={`test-virtualizer-child-${index}`}
+              className={styles.child}
+            >{`Node-${index}`}</span>
+          );
         }}
       </Virtualizer>
     </div>
