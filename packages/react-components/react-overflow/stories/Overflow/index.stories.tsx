@@ -12,7 +12,7 @@ export { Dividers } from './Dividers.stories';
 export { PriorityWithDividers } from './PriorityWithDividers.stories';
 
 export default {
-  title: 'Overflow',
+  title: 'Components/Overflow',
   component: Overflow,
   subcomponents: {
     OverflowItem,
