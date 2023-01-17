@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 16 Jan 2023 08:38:48 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jan 2023 12:22:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.20)
+
+Tue, 17 Jan 2023 12:22:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.19..@fluentui/react-table_v9.0.0-alpha.20)
+
+### Changes
+
+- BREAKING: API naming changes ([PR #26304](https://github.com/microsoft/fluentui/pull/26304) by lingfangao@hotmail.com)
+- BREAKING(DataGrid): render functions need to by typed ([PR #26371](https://github.com/microsoft/fluentui/pull/26371) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.14 ([PR #26373](https://github.com/microsoft/fluentui/pull/26373) by beachball)
 
 ## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.19)
 

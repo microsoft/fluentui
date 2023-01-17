@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 17 Jan 2023 12:22:54 GMT",
+      "tag": "@fluentui/react-badge_v9.0.20",
+      "version": "9.0.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "ae4a49ac93d6cd185869648f493489ed40edde63",
+            "comment": "feat(PresenceBadge): Add blocked status"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:55 GMT",
       "tag": "@fluentui/react-badge_v9.0.19",
       "version": "9.0.19",

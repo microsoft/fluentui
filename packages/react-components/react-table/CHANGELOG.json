@@ -2,6 +2,33 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Tue, 17 Jan 2023 12:22:55 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0d265cf542add3b4895e3ba764bbb22be7843f45",
+            "comment": "BREAKING: API naming changes"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "08ccb46dd03a8871c1234008a5a543cd53f579a9",
+            "comment": "BREAKING(DataGrid): render functions need to by typed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.14",
+            "commit": "64989c23309e77e51bb42c00609fd2425cd20680"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:48 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.19",
       "version": "9.0.0-alpha.19",
