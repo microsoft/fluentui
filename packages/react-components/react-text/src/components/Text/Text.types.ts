@@ -40,7 +40,7 @@ export type TextProps = ComponentProps<TextSlots> & {
   italic?: boolean;
 
   /**
-   * Applies font size and line height based on the theme tokens.
+   * Applies font size and line height based on the theme typography tokens.
    *
    * @default 300
    */
