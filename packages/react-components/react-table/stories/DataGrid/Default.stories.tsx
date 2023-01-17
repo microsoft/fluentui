@@ -170,13 +170,11 @@ export const Default = () => {
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
-        {({ item, rowId }) => {
-          return (
-            <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-              {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
-            </DataGridRow>
-          );
-        }}
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+          </DataGridRow>
+        )}
       </DataGridBody>
     </DataGrid>
   );
