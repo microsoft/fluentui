@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FontIncrease24Regular, FontDecrease24Regular, TextFont24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarButton } from '@fluentui/react-components/unstable';
-import type { ToolbarProps } from '@fluentui/react-components/unstable';
+import { Toolbar, ToolbarButton } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
 
 export const Large = (props: Partial<ToolbarProps>) => (
   <Toolbar
