@@ -2,7 +2,7 @@ import { html, when } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
 import type { Badge as FluentBadge } from './badge.js';
-import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options';
+import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 import './define.js';
 
 type BadgeStoryArgs = Args & FluentBadge;
@@ -61,13 +61,13 @@ export default {
       },
     },
     color: {
-      options: Object.keys(BadgeColor),
+      options: Object.values(BadgeColor),
       control: {
         type: 'select',
       },
     },
     shape: {
-      options: Object.keys(BadgeShape),
+      options: Object.values(BadgeShape),
       control: {
         type: 'select',
       },

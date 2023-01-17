@@ -46,13 +46,13 @@ export default {
       },
     },
     color: {
-      options: Object.keys(CounterBadgeColor),
+      options: Object.values(CounterBadgeColor),
       control: {
         type: 'select',
       },
     },
     shape: {
-      options: Object.keys(CounterBadgeShape),
+      options: Object.values(CounterBadgeShape),
       control: {
         type: 'select',
       },
