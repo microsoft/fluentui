@@ -6,7 +6,7 @@ import {
   badgeOutlineStyles,
   badgeSizeStyles,
   badgeTintStyles,
-} from '../styles/index';
+} from '../styles/index.js';
 import { borderRadiusMedium, borderRadiusNone, borderRadiusSmall } from '../theme/design-tokens.js';
 // why is the border not showing up?
 /** Badge styles
