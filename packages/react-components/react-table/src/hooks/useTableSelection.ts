@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { createSelectionManager } from './selectionManager';
-import type { RowId, TableSelectionState, TableState, UseTableSelectionOptions } from './types';
+import type { TableRowId, TableSelectionState, TableFeaturesState, UseTableSelectionOptions } from './types';
 
 const noop = () => undefined;
 
@@ -21,18 +21,18 @@ export const defaultTableSelectionState: TableSelectionState = {
 export function useTableSelection<TItem>(options: UseTableSelectionOptions) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableState<TItem>) => useTableSelectionState(tableState, options);
+  return (tableState: TableFeaturesState<TItem>) => useTableSelectionState(tableState, options);
 }
 
 export function useTableSelectionState<TItem>(
-  tableState: TableState<TItem>,
+  tableState: TableFeaturesState<TItem>,
   options: UseTableSelectionOptions,
-): TableState<TItem> {
+): TableFeaturesState<TItem> {
   const { items, getRowId } = tableState;
   const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
   const [selected, setSelected] = useControllableState({
-    initialState: new Set<RowId>(),
+    initialState: new Set<TableRowId>(),
     defaultState: defaultSelectedItems,
     state: selectedItems,
   });
@@ -54,19 +54,19 @@ export function useTableSelectionState<TItem>(
     );
   });
 
-  const toggleRow: TableSelectionState['toggleRow'] = useEventCallback((e, rowId: RowId) =>
+  const toggleRow: TableSelectionState['toggleRow'] = useEventCallback((e, rowId: TableRowId) =>
     selectionManager.toggleItem(e, rowId, selected),
   );
 
-  const deselectRow: TableSelectionState['deselectRow'] = useEventCallback((e, rowId: RowId) =>
+  const deselectRow: TableSelectionState['deselectRow'] = useEventCallback((e, rowId: TableRowId) =>
     selectionManager.deselectItem(e, rowId, selected),
   );
 
-  const selectRow: TableSelectionState['selectRow'] = useEventCallback((e, rowId: RowId) =>
+  const selectRow: TableSelectionState['selectRow'] = useEventCallback((e, rowId: TableRowId) =>
     selectionManager.selectItem(e, rowId, selected),
   );
 
-  const isRowSelected: TableSelectionState['isRowSelected'] = (rowId: RowId) =>
+  const isRowSelected: TableSelectionState['isRowSelected'] = (rowId: TableRowId) =>
     selectionManager.isSelected(rowId, selected);
 
   return {

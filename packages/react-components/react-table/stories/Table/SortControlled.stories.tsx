@@ -17,11 +17,11 @@ import {
   TableHeader,
   TableHeaderCell,
   useTableFeatures,
-  ColumnDefinition,
-  ColumnId,
+  TableColumnDefinition,
+  TableColumnId,
   useTableSort,
   TableCellLayout,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -91,27 +91,27 @@ const items: Item[] = [
 ];
 
 export const SortControlled = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
+  const columns: TableColumnDefinition<Item>[] = React.useMemo(
     () => [
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'file',
         compare: (a, b) => {
           return a.file.label.localeCompare(b.file.label);
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'author',
         compare: (a, b) => {
           return a.author.label.localeCompare(b.author.label);
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdated',
         compare: (a, b) => {
           return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
         },
       }),
-      createColumn<Item>({
+      createTableColumn<Item>({
         columnId: 'lastUpdate',
         compare: (a, b) => {
           return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
@@ -123,7 +123,7 @@ export const SortControlled = () => {
 
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
-    sortColumn: ColumnId | undefined;
+    sortColumn: TableColumnId | undefined;
   }>({
     sortDirection: 'ascending' as const,
     sortColumn: 'file',
@@ -140,7 +140,7 @@ export const SortControlled = () => {
     [useTableSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
 
-  const headerSortProps = (columnId: ColumnId) => ({
+  const headerSortProps = (columnId: TableColumnId) => ({
     onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
