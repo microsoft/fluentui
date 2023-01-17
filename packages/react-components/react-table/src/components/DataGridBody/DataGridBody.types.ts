@@ -4,27 +4,23 @@ import type { TableBodySlots, TableBodyProps, TableBodyState } from '../TableBod
 
 export type DataGridBodySlots = TableBodySlots;
 
-// Use any here since we can't know the user types
-// The user is responsible for narrowing the type downstream
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RowRenderFunction = (row: TableRowData<any>, ...rest: any[]) => React.ReactNode;
+export type RowRenderFunction<TItem = unknown> = (row: TableRowData<TItem>, ...rest: unknown[]) => React.ReactNode;
 
 /**
  * DataGridBody Props
  */
-export type DataGridBodyProps = Omit<TableBodyProps, 'children'> & {
+export type DataGridBodyProps<TItem = unknown> = Omit<TableBodyProps, 'children'> & {
   /**
    * Render function for rows
    */
-  children: RowRenderFunction;
+  children: RowRenderFunction<TItem>;
 };
 
 /**
  * State used in rendering DataGridBody
  */
 export type DataGridBodyState = TableBodyState & {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  rows: TableRowData<any>[];
+  rows: TableRowData<unknown>[];
 
   renderRow: RowRenderFunction;
 };

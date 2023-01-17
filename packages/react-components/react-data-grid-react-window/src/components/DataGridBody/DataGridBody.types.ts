@@ -4,19 +4,19 @@ import type {
   DataGridBodyProps as DataGridBodyPropsBase,
   DataGridBodySlots as DataGridBodySlotsBase,
   DataGridBodyState as DataGridBodyStateBase,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-table';
 
 export type DataGridBodySlots = DataGridBodySlotsBase;
 
-// Use any here since we can't know the user types
-// The user is responsible for narrowing the type downstream
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RowRenderFunction = (row: TableRowData<any>, style: React.CSSProperties) => React.ReactNode;
+export type RowRenderFunction<TItem = unknown> = (
+  row: TableRowData<TItem>,
+  style: React.CSSProperties,
+) => React.ReactNode;
 
 /**
  * DataGridBody Props
  */
-export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
+export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyPropsBase, 'children'> & {
   /**
    * The size of each row
    */
@@ -33,7 +33,7 @@ export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
   /**
    * Children render function for rows
    */
-  children: RowRenderFunction;
+  children: RowRenderFunction<TItem>;
 };
 
 /**

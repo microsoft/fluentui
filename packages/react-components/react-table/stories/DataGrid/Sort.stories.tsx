@@ -18,7 +18,6 @@ import {
   DataGridHeaderCell,
   DataGridCell,
   TableColumnDefinition,
-  TableRowData,
   createTableColumn,
 } from '@fluentui/react-table';
 import { SortState } from '../../src/hooks/types';
@@ -163,15 +162,13 @@ export const Sort = () => {
     <DataGrid items={items} columns={columns} sortable defaultSortState={defaultSortState}>
       <DataGridHeader>
         <DataGridRow>
-          {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
-            <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-          )}
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
-      <DataGridBody>
-        {({ item, rowId }: TableRowData<Item>) => (
-          <DataGridRow key={rowId}>
-            {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>
