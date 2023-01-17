@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Release @fluentui/react-table as RC",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
