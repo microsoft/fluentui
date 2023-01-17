@@ -1,8 +1,8 @@
 import * as React from 'react';
 import type { DataGridBodyState, DataGridBodySlots } from './DataGridBody.types';
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
-import { getSlots } from '@fluentui/react-components';
-import { TableRowData, TableRowIdContextProvider } from '@fluentui/react-components/unstable';
+import { getSlots } from '@fluentui/react-utilities';
+import { TableRowData, TableRowIdContextProvider } from '@fluentui/react-table';
 
 /**
  * Render the final JSX of DataGridVirtualizedBody
