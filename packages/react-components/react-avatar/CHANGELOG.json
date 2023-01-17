@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Tue, 17 Jan 2023 12:22:56 GMT",
+      "tag": "@fluentui/react-avatar_v9.2.14",
+      "version": "9.2.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.20",
+            "commit": "64989c23309e77e51bb42c00609fd2425cd20680"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:55 GMT",
       "tag": "@fluentui/react-avatar_v9.2.13",
       "version": "9.2.13",
