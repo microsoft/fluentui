@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import type { ExtractorMessageCategory, ExtractorResult } from '@microsoft/api-extractor';
+import { workspaceRoot } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as glob from 'glob';
 import { ApiExtractorOptions, TaskFunction, apiExtractorVerifyTask, logger, series, task } from 'just-scripts';
@@ -56,11 +57,17 @@ export function apiExtractor(): TaskFunction {
   let configDebug: Parameters<NonNullable<ApiExtractorOptions['onConfigLoaded']>>[0] | null = null;
 
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
-  const { isUsingTsSolutionConfigs, packageJson, tsConfig, tsConfigPath } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
 
   if (configsToExecute.length === 0) {
     return noop;
   }
+
+  /**
+   * overrides api-extractor default `true` to be `false` on local dev machine
+   * Triggers if path aliases will be used or yarn workspaces (that needs to be build based on package dependency tree)
+   */
+  const isLocalBuild = args.local ?? !process.env.TF_BUILD;
 
   const tasks = configsToExecute.map(([configPath, configName]) => {
     const taskName = `api-extractor:${configName}`;
@@ -73,7 +80,7 @@ export function apiExtractor(): TaskFunction {
         showDiagnostics: args.diagnostics,
         typescriptCompilerFolder: args['typescript-compiler-folder'],
         configJsonFilePath: args.config ?? configPath,
-        localBuild: args.local ?? !process.env.TF_BUILD,
+        localBuild: isLocalBuild,
         onConfigLoaded,
         messageCallback,
         onResult,
@@ -103,8 +110,8 @@ export function apiExtractor(): TaskFunction {
 
     const compilerConfig = getTsPathAliasesApiExtractorConfig({
       tsConfig,
-      tsConfigPath,
       packageJson,
+      pathAliasesTsConfigPath: isLocalBuild ? path.join(workspaceRoot, 'tsconfig.base.json') : undefined,
       definitionsRootPath: 'dist/out-tsc/types',
     });
 

@@ -1,3 +1,7 @@
+import * as path from 'path';
+
+import { workspaceRoot } from '@nrwl/devkit';
+
 import { getTsPathAliasesApiExtractorConfig } from './utils';
 
 type DeepPartial<T> = Partial<{ [P in keyof T]: DeepPartial<T[P]> }>;
@@ -12,7 +16,6 @@ describe(`utils`, () => {
             ...options.tsConfig?.compilerOptions,
           },
         },
-        tsConfigPath: 'tsconfig.lib.json',
         packageJson: {
           name: '@proj/one',
           version: '0.0.1',
@@ -21,6 +24,7 @@ describe(`utils`, () => {
           peerDependencies: { ...options.packageJson?.peerDependencies },
         },
         definitionsRootPath: options.definitionsRootPath ?? 'dist/types',
+        pathAliasesTsConfigPath: options.pathAliasesTsConfigPath ?? undefined,
       };
 
       return getTsPathAliasesApiExtractorConfig(defaults as Options);
@@ -34,8 +38,19 @@ describe(`utils`, () => {
       );
     });
 
+    it(`should not use path aliases to emitted declaration files`, () => {
+      const actual = setup({
+        definitionsRootPath: 'dist/for/types',
+      });
+
+      expect(actual.overrideTsconfig.compilerOptions).toEqual(expect.objectContaining({ paths: undefined }));
+    });
+
     it(`should override path aliases to emitted declaration files instead of source files`, () => {
-      const actual = setup({ definitionsRootPath: 'dist/for/types' });
+      const actual = setup({
+        definitionsRootPath: 'dist/for/types',
+        pathAliasesTsConfigPath: path.join(workspaceRoot, 'tsconfig.base.json'),
+      });
 
       const newPaths = (actual.overrideTsconfig.compilerOptions.paths as unknown) as Record<string, string[]>;
 
