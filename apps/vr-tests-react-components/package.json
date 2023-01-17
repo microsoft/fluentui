@@ -50,7 +50,7 @@
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-switch": "^9.0.18",
     "@fluentui/react-tabs": "^9.1.7",
-    "@fluentui/react-table": "9.0.0-alpha.20",
+    "@fluentui/react-table": "9.0.0-rc.0",
     "@fluentui/react-text": "^9.1.13",
     "@fluentui/react-textarea": "^9.1.12",
     "@fluentui/react-theme": "^9.1.5",
