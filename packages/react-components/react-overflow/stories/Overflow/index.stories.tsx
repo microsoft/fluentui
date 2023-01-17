@@ -1,4 +1,4 @@
-import { Overflow, OverflowItem } from '@fluentui/react-components/unstable';
+import { Overflow, OverflowItem } from '@fluentui/react-components';
 import { ComponentMeta } from '@storybook/react';
 import descriptionMd from './OverflowDescription.md';
 
