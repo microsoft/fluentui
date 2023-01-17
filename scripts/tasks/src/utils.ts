@@ -69,13 +69,7 @@ export function getTsPathAliasesApiExtractorConfig(options: {
   packageJson: PackageJson;
   definitionsRootPath: string;
 }) {
-  const hasNewCompilationSetup = ((options.tsConfig.compilerOptions as unknown) as { outDir: string }).outDir.includes(
-    'dist/out-tsc',
-  );
-  // TODO: after all v9 is migrated to new tsc processing use only createNormalizedTsPaths
-  const normalizedPaths = hasNewCompilationSetup
-    ? createNormalizedTsPaths({ definitionsRootPath: options.definitionsRootPath, rootTsConfig })
-    : undefined;
+  const normalizedPaths = createNormalizedTsPaths({ definitionsRootPath: options.definitionsRootPath, rootTsConfig });
 
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
