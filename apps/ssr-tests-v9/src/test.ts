@@ -15,17 +15,17 @@ async function test(): Promise<void> {
   const startTime = process.hrtime();
   console.log('Starting a browser...');
 
+  const htmlPath = path.resolve(__dirname, '..', 'dist', 'index.html');
+
+  if (!fs.existsSync(htmlPath)) {
+    throw new Error('"dist/index.html" does not exist, please run "yarn build" first');
+  }
+
   let browser: Browser | undefined;
 
   try {
     browser = await launchBrowser();
     console.log('Using', await browser.version());
-
-    const htmlPath = path.resolve(__dirname, '..', 'dist', 'index.html');
-
-    if (!fs.existsSync(htmlPath)) {
-      throw new Error('"dist/index.html" does not exist, please run "yarn build" first');
-    }
 
     const url = `file://${htmlPath}`;
     console.log(`Using "${url}"`);

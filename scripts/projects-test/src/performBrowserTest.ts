@@ -1,21 +1,35 @@
 import http from 'http';
 import { AddressInfo } from 'net';
 
-import { safeLaunchOptions } from '@fluentui/scripts-puppeteer';
+import { launch, visitUrl } from '@fluentui/scripts-puppeteer';
 import express from 'express';
-import puppeteer from 'puppeteer';
 
-
-const SERVER_HOST = 'localhost';
-
-function startServer(publicDirectory: string, listenPort: number) {
-  return new Promise<http.Server>((resolve, reject) => {
+function startServer(rootDirectory: string, listenPort: number, host = 'localhost') {
+  return new Promise<{ server: http.Server; port: number; url: string }>((resolve, reject) => {
+    let port: number;
     try {
-      const app = express();
-      app.use(express.static(publicDirectory));
+      console.log('express: starting server');
 
-      const server = app.listen(listenPort, SERVER_HOST, () => {
-        resolve(server);
+      const server = express()
+        .use(express.static(rootDirectory))
+        .listen(listenPort, host, () => {
+          console.log(`express: server running at http://${host}:${port} from directory "${rootDirectory}"`);
+          port = listenPort === 0 ? (server.address() as AddressInfo).port : listenPort;
+          const url = `http://${host}:${port}`;
+          resolve({ server, port, url });
+        });
+
+      server.on('error', err => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore - improper Error type in typings -> https://nodejs.org/api/net.html#serverlisten
+        if (err.code === 'EADDRINUSE') {
+          console.error('express: Address in use ...', { port, host });
+        }
+
+        throw err;
+      });
+      server.on('close', () => {
+        console.error('express: Terminating server ...', { port, host });
       });
     } catch (err) {
       reject(err);
@@ -23,32 +37,38 @@ function startServer(publicDirectory: string, listenPort: number) {
   });
 }
 
-export async function performBrowserTest(publicDirectory: string) {
-  const server = await startServer(publicDirectory, 0);
-  const { port } = server.address() as AddressInfo;
+async function launchServer(root: string) {
+  /**
+   * If port is omitted or is 0, the operating system will assign an arbitrary unused port,
+   * which can be retrieved by using server.address().port after the 'listening' event has been emitted.
+   *
+   * @see https://nodejs.org/api/net.html#serverlisten
+   */
+  const PORT = 0;
 
-  console.log(`Starting server on port ${port} from directory ${publicDirectory}`);
-  console.log('Started server. Launching Puppeteer...');
+  try {
+    const { server, ...rest } = await startServer(root, PORT);
+    /**
+     *
+     * .close is asynchronous (not promisified thus we are wrapping it)
+     *  @see https://nodejs.org/api/net.html#serverclosecallback
+     */
+    const closeServer = () =>
+      new Promise<void>((resolve, reject) => server.close(err => (err ? reject(err) : resolve())));
 
-  const options = safeLaunchOptions();
-  let browser: puppeteer.Browser | undefined;
-  let attempt = 1;
-  while (!browser) {
-    try {
-      browser = await puppeteer.launch(options);
-      console.log('Launched Puppeteer');
-    } catch (err) {
-      if (attempt === 5) {
-        console.error(`Puppeteer failed to launch after 5 attempts`);
-        throw err;
-      }
-      console.warn('Puppeteer failed to launch (will retry):');
-      console.warn(err);
-      attempt++;
-    }
+    return { server, closeServer, ...rest };
+  } catch (err) {
+    console.error('express: start failed!');
+    console.error(err);
+    throw err;
   }
+}
 
+export async function performBrowserTest(publicDirectory: string) {
+  const { closeServer, url } = await launchServer(publicDirectory);
+  const browser = await launch();
   const page = await browser.newPage();
+
   let error: Error | undefined;
 
   page.on('console', message => {
@@ -60,14 +80,11 @@ export async function performBrowserTest(publicDirectory: string) {
     error = pageError;
   });
 
-  const url = `http://${SERVER_HOST}:${port}`;
-  console.log(`Loading ${url} in puppeteer...`);
-  await page.goto(url);
-  console.log('Page loaded');
+  await visitUrl(page, url);
 
   await page.close();
   await browser.close();
-  await new Promise(resolve => server.close(resolve));
+  await closeServer();
 
   if (error) {
     throw error;
