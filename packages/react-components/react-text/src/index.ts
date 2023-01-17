@@ -1,5 +1,5 @@
 export { Text, renderText_unstable, textClassNames, useTextStyles_unstable, useText_unstable } from './Text';
-export type { TextProps, TextSlots, TextState } from './Text';
+export type { TextProps, TextSlots, TextState, TextPresetProps } from './Text';
 export { Body1, body1ClassNames } from './Body1';
 export { Body1Strong, body1StrongClassNames } from './Body1Strong';
 export { Body1Stronger, body1StrongerClassNames } from './Body1Stronger';

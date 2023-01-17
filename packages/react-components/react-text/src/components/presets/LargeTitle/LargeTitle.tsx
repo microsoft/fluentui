@@ -1,8 +1,8 @@
 import type { FunctionComponent } from 'react';
 import { makeStyles } from '@griffel/react';
-import { createPreset, TextWrapperProps } from '../createPreset';
+import { createPreset } from '../createPreset';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { TextSlots } from '../../Text/Text.types';
+import type { TextSlots, TextPresetProps } from '../../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 export const largeTitleClassNames: SlotClassNames<TextSlots> = {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Large Title typography variant
  */
-export const LargeTitle: FunctionComponent<TextWrapperProps> = createPreset({
+export const LargeTitle: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,
   className: largeTitleClassNames.root,
   displayName: 'LargeTitle',

@@ -84,6 +84,11 @@ export type TextProps = ComponentProps<TextSlots> & {
 };
 
 /**
+ * TextPreset Props
+ */
+export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
+
+/**
  * State used in rendering Text
  */
 export type TextState = ComponentState<TextSlots> &
