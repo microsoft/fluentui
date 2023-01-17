@@ -48,11 +48,11 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     return [newElement, () => newElement.remove()];
   }, [targetDocument]);
 
-  // This useEffect call is intentional
+  // This useMemo call is intentional
   // We don't want to re-create the portal element when its attributes change.
   // This also should not be done in an effect because, changing the value of css variables
   // after initial mount can trigger interesting CSS side effects like transitions.
-  useInsertionEffect(() => {
+  React.useMemo(() => {
     if (!element) {
       return;
     }
