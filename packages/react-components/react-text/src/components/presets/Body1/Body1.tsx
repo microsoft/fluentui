@@ -1,8 +1,8 @@
 import type { FunctionComponent } from 'react';
 import { makeStyles } from '@griffel/react';
-import { createWrapper, TextWrapperProps } from '../wrapper';
+import { createPreset, TextWrapperProps } from '../createPreset';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { TextSlots } from '../Text/Text.types';
+import { TextSlots } from '../../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 export const body1ClassNames: SlotClassNames<TextSlots> = {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Body1 typography variant
  */
-export const Body1: FunctionComponent<TextWrapperProps> = createWrapper({
+export const Body1: FunctionComponent<TextWrapperProps> = createPreset({
   useStyles,
   className: body1ClassNames.root,
   displayName: 'Body1',

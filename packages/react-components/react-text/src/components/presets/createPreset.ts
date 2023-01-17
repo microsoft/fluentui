@@ -4,9 +4,9 @@ import { renderText_unstable, useText_unstable, useTextStyles_unstable } from '.
 import type { TextProps } from '../Text';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
-export type TextWrapperProps = Omit<TextProps, 'font' | 'size'>;
+export type TextWrapperProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
 
-export function createWrapper(options: {
+export function createPreset(options: {
   className: string;
   displayName: string;
   useStyles: () => Record<'root', string>;

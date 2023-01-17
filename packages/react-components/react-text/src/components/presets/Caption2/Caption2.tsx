@@ -1,8 +1,8 @@
 import type { FunctionComponent } from 'react';
 import { makeStyles } from '@griffel/react';
-import { createWrapper, TextWrapperProps } from '../wrapper';
+import { createPreset, TextWrapperProps } from '../createPreset';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { TextSlots } from '../Text/Text.types';
+import { TextSlots } from '../../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
 export const caption2ClassNames: SlotClassNames<TextSlots> = {
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 /**
  * Text wrapper component for the Caption2 typography variant
  */
-export const Caption2: FunctionComponent<TextWrapperProps> = createWrapper({
+export const Caption2: FunctionComponent<TextWrapperProps> = createPreset({
   useStyles,
   className: caption2ClassNames.root,
   displayName: 'Caption2',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { LargeTitle } from './LargeTitle';
-import { isConformant } from '../../testing/isConformant';
+import { isConformant } from '../../../testing/isConformant';
 
 describe('LargeTitle', () => {
   isConformant({
