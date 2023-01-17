@@ -6,18 +6,25 @@ import {
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
 import {
-  Toolbar,
-  ToolbarButton,
-  ToolbarDivider,
   Overflow,
   OverflowItem,
   useOverflowMenu,
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
 } from '@fluentui/react-components/unstable';
-import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-components/unstable';
-import { Button, Menu, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import type { MenuItemProps } from '@fluentui/react-components';
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  Button,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from '@fluentui/react-components';
+import type { ToolbarProps, ToolbarButtonProps, MenuItemProps } from '@fluentui/react-components';
 
 interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;
