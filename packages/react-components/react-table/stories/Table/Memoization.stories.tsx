@@ -204,7 +204,7 @@ type TableSelectableRowProps = {
 
 const TableSelectableRow: React.FC<TableSelectableRowProps> = props => {
   const { item, selected, appearance, rowId, toggleRow } = props;
-  const onClick = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => toggleRow(e, rowId), [toggleRow]);
+  const onClick = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => toggleRow(e, rowId), [toggleRow, rowId]);
   const onKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key === ' ') {
@@ -212,7 +212,7 @@ const TableSelectableRow: React.FC<TableSelectableRowProps> = props => {
         toggleRow(e, rowId);
       }
     },
-    [toggleRow],
+    [toggleRow, rowId],
   );
 
   return (
