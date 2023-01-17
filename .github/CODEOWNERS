@@ -63,7 +63,6 @@ scripts/babel @microsoft/fluentui-react-build
 scripts/beachball @microsoft/fluentui-react-build
 scripts/cypress @microsoft/fluentui-react-build
 scripts/dangerjs @microsoft/fluentui-react-build
-scripts/dependency-graph-generator @microsoft/fluentui-react-build
 scripts/executors @microsoft/fluentui-react-build
 scripts/fluentui-publish @microsoft/fluentui-react-build
 scripts/generators @microsoft/fluentui-react-build
