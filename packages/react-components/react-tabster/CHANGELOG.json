@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 16:32:56 GMT",
+      "tag": "@fluentui/react-tabster_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2dd64b998750525c3e6a4c1652c33305d772ada7",
+            "comment": "feat: add modalizer id to `useModalAttributes` option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:49 GMT",
       "tag": "@fluentui/react-tabster_v9.3.7",
       "version": "9.3.7",

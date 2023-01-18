@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Release @fluentui/react-table as RC",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
