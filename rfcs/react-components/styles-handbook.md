@@ -341,7 +341,7 @@ const useClasses = makeStyles({
 
 ### CSS variables caveat
 
-Values than contain CSS variables (or our `tokens`) might not be always converted, for example:
+Values that contain CSS variables (or our `tokens`) might not be always converted, for example:
 
 ```js
 import { makeStyles } from '@griffel/react';
@@ -515,7 +515,7 @@ const useClasses = makeStyles({
 });
 ```
 
-Exact colors should be never used in Fluent UI code and we do not recommend their use in applications either. The exception are [system-colors][mdn-system-colors] used by forced colors mode (inside media queries):
+Exact colors should be never used in Fluent UI code and we do not recommend their use in applications either. The exception is [system-colors][mdn-system-colors] used by forced colors mode (inside media queries):
 
 ```js
 import { makeStyles } from '@griffel/react';
