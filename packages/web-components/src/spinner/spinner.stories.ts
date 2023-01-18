@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
+import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 import './define.js';
 
 type SpinnerStoryArgs = Args;
@@ -20,7 +21,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: ['primary', 'inverted'],
+        options: Object.values(SpinnerAppearance),
       },
       defaultValue: 'primary',
     },
@@ -31,7 +32,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large', 'huge'],
+        options: Object.values(SpinnerSize),
       },
       defaultValue: 'medium',
     },
@@ -44,3 +45,9 @@ export default {
 } as SpinnerStoryMeta;
 
 export const Spinner = renderComponent(storyTemplate).bind({});
+
+export const SpinnerInverted = renderComponent(html<SpinnerStoryArgs>`
+  <div style="background-color: #0f6cbd; padding: 20px;">
+    <fluent-spinner appearance="inverted" size="medium"></fluent-spinner>
+  </div>
+`);
