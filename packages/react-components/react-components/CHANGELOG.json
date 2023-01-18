@@ -2,6 +2,79 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 16:32:53 GMT",
+      "tag": "@fluentui/react-components_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "e59f114d3244739a7917813ea02c59d53406d902",
+            "comment": "Release as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "d8caa0e6c6d1e4ace415dec6f767411acca43415",
+            "comment": "Release @fluentui/react-table as RC"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e59f114d3244739a7917813ea02c59d53406d902",
+            "comment": "Release as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104",
+            "comment": "fix: Insert css variables class at render time"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c00be5f379d806949158774212e1681f7c3d1325",
+            "comment": "Release `@fluentui/react-toolbar` as stable"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e59f114d3244739a7917813ea02c59d53406d902",
+            "comment": "Release @fluentui/react-overflow as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "c00be5f379d806949158774212e1681f7c3d1325",
+            "comment": "Release `@fluentui/react-toolbar` as stable"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2dd64b998750525c3e6a4c1652c33305d772ada7",
+            "comment": "feat: add modalizer id to `useModalAttributes` option"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "d8caa0e6c6d1e4ace415dec6f767411acca43415",
+            "comment": "Release @fluentui/react-table as RC"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "64989c23309e77e51bb42c00609fd2425cd20680",
+            "comment": "fix(TableCellActions): Background should match rown on hover and active"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Jan 2023 12:22:54 GMT",
       "tag": "@fluentui/react-components_v9.10.1",
       "version": "9.10.1",

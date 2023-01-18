@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Insert css variables class at render time",
-  "packageName": "@fluentui/react-portal",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

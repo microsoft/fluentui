@@ -2,6 +2,33 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 16:32:57 GMT",
+      "tag": "@fluentui/react-avatar_v9.2.15",
+      "version": "9.2.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.4.2",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.4.0",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.1.9",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Jan 2023 12:22:56 GMT",
       "tag": "@fluentui/react-avatar_v9.2.14",
       "version": "9.2.14",
