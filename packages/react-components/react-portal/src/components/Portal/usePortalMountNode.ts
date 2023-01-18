@@ -21,6 +21,8 @@ const useStyles = makeStyles({
   },
 });
 
+const reactMajorVersion = Number(React.version.split('.')[0]);
+
 /**
  * Creates a new element on a document.body to mount portals
  */
@@ -42,7 +44,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     return [newElement, () => newElement.remove()];
   }, [targetDocument]);
 
-  if (React.version.startsWith('18')) {
+  if (reactMajorVersion >= 18) {
     // @ts-expect-error useInsertionEffect does not exist on React 17 types
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useInsertionEffect(() => {
