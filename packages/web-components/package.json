@@ -27,6 +27,10 @@
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
+    },
+    "./divider": {
+      "types": "./dist/esm/divider/define.d.ts",
+      "default": "./dist/esm/divider/define.js"
     }
   },
   "scripts": {
