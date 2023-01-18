@@ -111,7 +111,7 @@ The v8 ComboBox component should be replaced with the v9 Combobox component. The
 
 ## From v0 Dropdown
 
-The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with `search: true`, and by the v9 Dropdown if it does not. The primary most significant difference in moving to v9 is that the v0 Dropdown `items` should be defined as child `<Options>` of the v9 Combobox or Dropdown.
+The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with `search: true`, and by the v9 Dropdown if it does not. The most significant difference in moving to v9 is that the v0 Dropdown `items` should be defined as child `<Option>`s of the v9 Combobox or Dropdown.
 
 ### Property mapping
 
