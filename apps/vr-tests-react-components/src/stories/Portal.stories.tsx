@@ -7,10 +7,7 @@ import { ComponentMeta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { withStoryWrightSteps } from '../utilities/withStoryWrightSteps';
 
-export const steps = new Steps()
-  .mouseDown('button')
-  .snapshot('should have green border', { cropTo: '.testWrapper' })
-  .end();
+const steps = new Steps().mouseDown('button').snapshot('should have green border', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'Portal',
