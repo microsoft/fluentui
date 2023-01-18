@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
+
 <!--------------------------------[ v0.66.0 ]------------------------------- -->
 ## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.65.0..@fluentui/react-northstar_v0.66.0)
