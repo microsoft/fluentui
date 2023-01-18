@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add progressbar as new component",
+  "packageName": "@fluentui/web-components",
+  "email": "ryan@ryanmerrill.net",
+  "dependentChangeType": "patch"
+}
