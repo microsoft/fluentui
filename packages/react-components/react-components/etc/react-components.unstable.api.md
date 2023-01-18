@@ -49,9 +49,6 @@ import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
-import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
-import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
-import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import { DataGrid } from '@fluentui/react-table';
 import { DataGridBody } from '@fluentui/react-table';
 import { dataGridBodyClassNames } from '@fluentui/react-table';
@@ -128,10 +125,6 @@ import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
-import { Overflow } from '@fluentui/react-overflow';
-import { OverflowItem } from '@fluentui/react-overflow';
-import { OverflowItemProps } from '@fluentui/react-overflow';
-import { OverflowProps } from '@fluentui/react-overflow';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -290,8 +283,6 @@ import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
-import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
-import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
@@ -299,7 +290,6 @@ import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
-import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
@@ -418,12 +408,6 @@ export { ComboboxState }
 export { createTableColumn }
 
 export { CreateTableColumnOptions }
-
-export { DATA_OVERFLOW_ITEM }
-
-export { DATA_OVERFLOW_MENU }
-
-export { DATA_OVERFLOWING }
 
 export { DataGrid }
 
@@ -576,14 +560,6 @@ export { OptionProps }
 export { OptionSlots }
 
 export { OptionState }
-
-export { Overflow }
-
-export { OverflowItem }
-
-export { OverflowItemProps }
-
-export { OverflowProps }
 
 export { ProgressBar }
 
@@ -901,10 +877,6 @@ export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
 
-export { useIsOverflowGroupVisible }
-
-export { useIsOverflowItemVisible }
-
 export { useListbox_unstable }
 
 export { useListboxContextValues }
@@ -918,8 +890,6 @@ export { useOptionGroup_unstable }
 export { useOptionGroupStyles_unstable }
 
 export { useOptionStyles_unstable }
-
-export { useOverflowMenu }
 
 export { useProgressBar_unstable }
 
