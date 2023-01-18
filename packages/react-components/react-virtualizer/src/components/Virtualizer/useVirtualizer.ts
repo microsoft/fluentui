@@ -1,6 +1,6 @@
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import type { ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback, useReducer } from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 import { resolveShorthand } from '@fluentui/react-utilities';
@@ -38,11 +38,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   this helps us skip re-calculations unless children/size changes */
   const childProgressiveSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
 
-  // The internal tracking STATE for child array (updates when re-render required).
-  const [childState, setChildState] = useState<ReactNode[]>([]);
-
   // The internal tracking REF for child array (updates often).
   const childArray = useRef<ReactNode[]>(new Array(virtualizerLength));
+
+  // We want to be methodical about updating the render with child reference array
+  const forceUpdate = useReducer(() => ({}), {})[1];
 
   const horizontal = axis === 'horizontal';
 
@@ -79,7 +79,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // State setters
     setVirtualizerStartIndex(index);
-    setChildState(childArray.current);
   };
 
   // Observe intersections of virtualized components
@@ -295,39 +294,45 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
   };
 
-  const setBeforeRef = (element: HTMLDivElement) => {
-    if (!element || beforeElementRef.current === element) {
-      return;
-    }
-    beforeElementRef.current = element;
-    const newList = [];
+  const setBeforeRef = useCallback(
+    (element: HTMLDivElement) => {
+      if (!element || beforeElementRef.current === element) {
+        return;
+      }
+      beforeElementRef.current = element;
+      const newList = [];
 
-    newList.push(beforeElementRef.current);
-
-    if (afterElementRef.current) {
-      newList.push(afterElementRef.current);
-    }
-
-    // Ensure we update array if before element changed
-    setObserverList(newList);
-  };
-
-  const setAfterRef = (element: HTMLDivElement) => {
-    if (!element || afterElementRef.current === element) {
-      return;
-    }
-    afterElementRef.current = element;
-    const newList = [];
-
-    if (beforeElementRef.current) {
       newList.push(beforeElementRef.current);
-    }
 
-    newList.push(afterElementRef.current);
+      if (afterElementRef.current) {
+        newList.push(afterElementRef.current);
+      }
 
-    // Ensure we update array if after element changed
-    setObserverList(newList);
-  };
+      // Ensure we update array if before element changed
+      setObserverList(newList);
+    },
+    [setObserverList],
+  );
+
+  const setAfterRef = useCallback(
+    (element: HTMLDivElement) => {
+      if (!element || afterElementRef.current === element) {
+        return;
+      }
+      afterElementRef.current = element;
+      const newList = [];
+
+      if (beforeElementRef.current) {
+        newList.push(beforeElementRef.current);
+      }
+
+      newList.push(afterElementRef.current);
+
+      // Ensure we update array if after element changed
+      setObserverList(newList);
+    },
+    [setObserverList],
+  );
 
   const updateCurrentItemSizes = (newIndex: number) => {
     if (!getItemSize) {
@@ -379,7 +384,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   useEffect(() => {
     if (virtualizerStartIndex >= 0) {
       updateChildRows(virtualizerStartIndex);
-      setChildState(childArray.current);
+      forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild]);
@@ -400,7 +405,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       beforeContainer: 'div',
       afterContainer: 'div',
     },
-    virtualizedChildren: childState,
+    virtualizedChildren: childArray.current,
     before: resolveShorthand(props.before, {
       required: true,
       defaultProps: {
