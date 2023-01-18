@@ -27,7 +27,7 @@ export default {
     value: 15,
     thickness: 'medium',
     shape: 'rounded',
-    validationState: '',
+    validationState: null,
   },
   argTypes: {
     max: {
@@ -57,7 +57,7 @@ export default {
       control: {
         type: 'select',
       },
-      defaultValue: '',
+      defaultValue: null,
     },
   },
 } as ProgressStoryMeta;
