@@ -5,7 +5,7 @@ import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
 import { useTableRow_unstable } from '../TableRow/useTableRow';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { DataGridSelectionCell } from '../DataGridSelectionCell/DataGridSelectionCell';
-import { useRowIdContext } from '../../contexts/rowIdContext';
+import { useTableRowIdContext } from '../../contexts/rowIdContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 /**
@@ -18,7 +18,7 @@ import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
  * @param ref - reference to root HTMLElement of DataGridRow
  */
 export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<HTMLElement>): DataGridRowState => {
-  const rowId = useRowIdContext();
+  const rowId = useTableRowIdContext();
   const isHeader = useIsInTableHeader();
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
   const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);

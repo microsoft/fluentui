@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Field styles do not wrap SVG status icon in inline parent to avoid layout bugs",
-  "packageName": "@fluentui/react-field",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

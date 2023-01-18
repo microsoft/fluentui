@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Toolbar, ToolbarToggleButton, ToolbarDivider, ToolbarButton } from '@fluentui/react-components/unstable';
-import type { ToolbarProps } from '@fluentui/react-components/unstable';
-import { Tooltip } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
+import { Toolbar, ToolbarToggleButton, ToolbarDivider, ToolbarButton, Tooltip } from '@fluentui/react-components';
 import {
   TextUnderline24Regular,
   TextBold24Regular,
