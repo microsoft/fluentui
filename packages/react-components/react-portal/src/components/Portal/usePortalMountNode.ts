@@ -42,26 +42,42 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     return [newElement, () => newElement.remove()];
   }, [targetDocument]);
 
-  // This useMemo call is intentional
-  // We don't want to re-create the portal element when its attributes change.
-  // This also should not be done in an effect because, changing the value of css variables
-  // after initial mount can trigger interesting CSS side effects like transitions.
-  React.useMemo(() => {
-    if (!element) {
-      return;
-    }
+  if (React.version.startsWith('18')) {
+    // @ts-expect-error useInsertionEffect does not exist on React 17 types
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useInsertionEffect(() => {
+      if (!element) {
+        return;
+      }
 
-    const classesToApply = className.split(' ').filter(Boolean);
+      const classesToApply = className.split(' ').filter(Boolean);
 
-    element.classList.add(...classesToApply);
-    element.setAttribute('dir', dir);
-    focusVisibleRef.current = element;
+      element.classList.add(...classesToApply);
+      element.setAttribute('dir', dir);
+      focusVisibleRef.current = element;
 
-    return () => {
-      element.classList.remove(...classesToApply);
-      element.removeAttribute('dir');
-    };
-  }, [className, dir, element, focusVisibleRef]);
+      return () => {
+        element.classList.remove(...classesToApply);
+        element.removeAttribute('dir');
+      };
+    }, [className, dir, element, focusVisibleRef]);
+  } else {
+    // This useMemo call is intentional for React 17
+    // We don't want to re-create the portal element when its attributes change.
+    // This also should not be done in an effect because, changing the value of css variables
+    // after initial mount can trigger interesting CSS side effects like transitions.
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useMemo(() => {
+      if (!element) {
+        return;
+      }
+
+      // Force replace all classes
+      element.className = className;
+      element.setAttribute('dir', dir);
+      focusVisibleRef.current = element;
+    }, [className, dir, element, focusVisibleRef]);
+  }
 
   return element;
 };
