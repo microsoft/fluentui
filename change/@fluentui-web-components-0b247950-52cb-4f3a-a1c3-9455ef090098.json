@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(web-components): resolve invalid webpack test regex on windows",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
