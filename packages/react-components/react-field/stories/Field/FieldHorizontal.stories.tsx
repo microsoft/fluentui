@@ -10,7 +10,7 @@ import {
   Textarea,
   tokens,
 } from '@fluentui/react-components';
-import { Combobox, Option, Progress, Select } from '@fluentui/react-components/unstable';
+import { Combobox, Option, ProgressBar, Select } from '@fluentui/react-components/unstable';
 import { Field } from '../../src/index';
 
 const useStyles = makeStyles({
@@ -77,7 +77,7 @@ export const Horizontal = () => {
         </Select>
       </Field>
       <Field required validationState="error" label="Progress" orientation="horizontal">
-        <Progress validationState="error" />
+        <ProgressBar validationState="error" />
       </Field>
     </div>
   );
