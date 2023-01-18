@@ -2,6 +2,21 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 07:42:14 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.10",
+      "version": "8.104.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.104.6",
+            "commit": "fe36f5e6d0293f93532aee9c25e3bf14ea31d0d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 07:41:02 GMT",
       "tag": "@fluentui/fluent2-theme_v8.104.9",
       "version": "8.104.9",
