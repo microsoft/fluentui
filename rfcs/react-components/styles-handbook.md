@@ -866,7 +866,7 @@ Instead of usage [input pseudo classes][mdn-input-pseudo-classes] in styles, pre
 
 - Produces less classes on an element
 - Selectors for overrides are simpler
-- These pseudo classes are supported by input elements
+- These pseudo classes are **only** supported by input elements
 
 ```jsx
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
