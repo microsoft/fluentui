@@ -2,6 +2,41 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:39:03 GMT",
+      "tag": "@fluentui/react-input_v9.2.12",
+      "version": "9.2.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "a98c062f5a7ae87ad0a0f1cff75a4fd964b45672",
+            "comment": "fix: Update contentBefore and contentAfter slot styling for svg"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.15",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.13",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-input_v9.2.11",
       "version": "9.2.11",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated theme colors to match Fluent2",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

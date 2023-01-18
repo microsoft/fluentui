@@ -855,12 +855,6 @@
       "projectType": "library",
       "tags": ["tools"]
     },
-    "@fluentui/scripts-dependency-graph-generator": {
-      "root": "scripts/dependency-graph-generator",
-      "sourceRoot": "scripts/dependency-graph-generator",
-      "projectType": "library",
-      "tags": ["tools"]
-    },
     "@fluentui/scripts-executors": {
       "root": "scripts/executors",
       "sourceRoot": "scripts/executors",
