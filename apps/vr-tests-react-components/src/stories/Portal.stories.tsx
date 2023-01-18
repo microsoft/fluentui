@@ -4,15 +4,14 @@ import { tokens } from '@fluentui/react-theme';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { makeStyles, shorthands } from '@griffel/react';
 import { ComponentMeta } from '@storybook/react';
-import { Steps } from 'storywright';
-import { withStoryWrightSteps } from '../utilities/withStoryWrightSteps';
+import { Steps, StoryWright } from 'storywright';
 
-const steps = new Steps().mouseDown('button').snapshot('should have green border', { cropTo: '.testWrapper' }).end();
+const steps = new Steps().click('#popoverTrigger').snapshot('should have green border').end();
 
 export default {
   title: 'Portal',
   Component: Portal,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  decorators: [story => <StoryWright steps={steps}>{story()}</StoryWright>],
 } as ComponentMeta<typeof Portal>;
 
 const useStyles = makeStyles({
@@ -25,19 +24,12 @@ const useStyles = makeStyles({
   },
 });
 
-/**
- * CSS variable insertion can happen after the DOM is mounted.
- * This can accidentally trigger transitions on mount. The below example
- * adds a transition to the border. If the css variable insertion happens
- * after DOM is mounted, then the applied border colour should not be
- * visible in the screenshot since the transtion duration is 1000 seconds.
- */
-export const ApplyClassNames = () => {
+const Example = () => {
   const styles = useStyles();
   return (
     <Popover>
       <PopoverTrigger>
-        <button>foo</button>
+        <button id="popoverTrigger">foo</button>
       </PopoverTrigger>
       <PopoverSurface>
         <button className={styles.canary}>should have green border</button>
@@ -45,3 +37,12 @@ export const ApplyClassNames = () => {
     </Popover>
   );
 };
+
+/**
+ * CSS variable insertion can happen after the DOM is mounted.
+ * This can accidentally trigger transitions on mount. The below example
+ * adds a transition to the border. If the css variable insertion happens
+ * after DOM is mounted, then the applied border colour should not be
+ * visible in the screenshot since the transtion duration is 1000 seconds.
+ */
+export const ApplyClassNames = () => <Example />;
