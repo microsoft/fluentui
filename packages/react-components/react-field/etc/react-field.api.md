@@ -26,10 +26,13 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
     validationState?: 'error' | 'warning' | 'success';
 };
 
+// @internal (undocumented)
+export type FieldShimProps = Pick<FieldProps, 'className' | 'control' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
+
 // @public
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
-    control: Slot<'div'>;
+    control: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
@@ -38,6 +41,9 @@ export type FieldSlots = {
 
 // @public
 export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;
+
+// @internal @deprecated
+export function getPartitionedFieldShimProps<ComponentProps>(props: FieldShimProps & ComponentProps): [FieldShimProps, ComponentProps];
 
 // @public
 export const renderField_unstable: (state: FieldState) => JSX.Element;
