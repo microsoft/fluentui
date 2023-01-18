@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
-import { Button } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { makeStyles, shorthands } from '@griffel/react';
@@ -23,9 +22,19 @@ const useStyles = makeStyles({
   canary: {
     ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
     ...shorthands.borderWidth('5px'),
+    transitionDuration: '1000s',
+    transitionProperty: 'border',
+    transitionTimingFunction: tokens.curveEasyEase,
   },
 });
 
+/**
+ * CSS variable insertion can happen after the DOM is mounted.
+ * This can accidentally trigger transitions on mount. The below example
+ * adds a transition to the border. If the css variable insertion happens
+ * after DOM is mounted, then the applied border colour should not be
+ * visible in the screenshot since the transtion duration is 1000 seconds.
+ */
 export const ApplyClassNames = () => {
   const styles = useStyles();
   return (
@@ -34,7 +43,7 @@ export const ApplyClassNames = () => {
         <button>foo</button>
       </PopoverTrigger>
       <PopoverSurface>
-        <Button className={styles.canary}>should have green border</Button>
+        <button className={styles.canary}>should have green border</button>
       </PopoverSurface>
     </Popover>
   );
