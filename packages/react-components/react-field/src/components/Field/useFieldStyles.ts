@@ -72,13 +72,11 @@ const useSecondaryTextStyles = makeStyles({
 });
 
 const useValidationMessageIconBaseClassName = makeResetStyles({
-  position: 'absolute',
-  left: 0,
-  top: tokens.spacingVerticalXXS,
-  width: iconSize,
-  height: iconSize,
+  display: 'inline-block',
+  marginLeft: `calc(-${iconSize} - ${tokens.spacingHorizontalXS})`,
+  marginRight: tokens.spacingHorizontalXS,
+  verticalAlign: 'middle',
   fontSize: iconSize,
-  lineHeight: iconSize,
 });
 
 const useValidationMessageIconStyles = makeStyles({
