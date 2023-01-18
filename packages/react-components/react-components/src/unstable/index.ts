@@ -330,3 +330,18 @@ export {
   useProgressBar_unstable,
 } from '@fluentui/react-progress';
 export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';
+
+export {
+  Virtualizer,
+  virtualizerClassNames,
+  useVirtualizer_unstable,
+  renderVirtualizer_unstable,
+  useVirtualizerStyles_unstable,
+  useIntersectionObserver,
+} from '@fluentui/react-virtualizer';
+export type {
+  VirtualizerProps,
+  VirtualizerState,
+  VirtualizerSlots,
+  VirtualizerChildRenderFunction,
+} from '@fluentui/react-virtualizer';
