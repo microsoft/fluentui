@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Simplify Field layout styles",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
