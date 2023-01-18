@@ -812,7 +812,7 @@ Keep selectors simple to produce reusable CSS rules:
 - Complicated selectors are hard to override as overrides should match component's styles
 
   ```js
-  // On component side
+  // On component's side (library code)
   makeResetStyles({
     '> .some-classname': {
       '> .other-classname': {
@@ -823,7 +823,8 @@ Keep selectors simple to produce reusable CSS rules:
       },
     },
   });
-  // On consumer side 💥
+  // 🟡 On consumer side (application code)
+  //    Works, but it's hard for a consumer to guess it
   makeStyles({
     foo: {
       '> .some-classname > .other-classname:hover': {
