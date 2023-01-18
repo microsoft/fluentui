@@ -9,17 +9,16 @@ import del from 'del';
 import { argv } from 'yargs';
 import markdownTable from 'markdown-table';
 
-// TODO (fui repo merge): scripts should not have relative imports of things inside packages
-import {
+import { webpackPlugin, createChrome, createElectron, config } from '@fluentui/scripts-gulp';
+import type { Browser } from '@fluentui/scripts-gulp';
+
+import type {
   MeasuredValues,
   PerExamplePerfMeasures,
   ProfilerMeasure,
   ProfilerMeasureCycle,
   ReducedMeasures,
-} from '../../../../packages/fluentui/perf/types';
-import config from '../config';
-import webpackPlugin from '../plugins/gulp-webpack';
-import { Browser, createChrome, createElectron } from './browserAdapters';
+} from '../types';
 
 const { paths } = config;
 
@@ -162,7 +161,7 @@ async function runMeasures(
 task('perf:clean', () => del(paths.perfDist(), { force: true }));
 
 task('perf:build', cb => {
-  webpackPlugin(require('../webpack/webpack.config.perf').default, cb);
+  webpackPlugin(require('./webpack.config').webpackConfig, cb);
 });
 
 task('perf:run', async () => {
