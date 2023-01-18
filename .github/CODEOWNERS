@@ -113,7 +113,7 @@ apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
 #### Packages
 packages/azure-themes @robtaft-ms @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
-packages/date-time-utilities @microsoft/fluent-date-time
+packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
@@ -128,7 +128,7 @@ packages/react-cards @microsoft/cxe-red @khmakoto
 packages/react-charting @microsoft/charting-team
 packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
-packages/react-date-time @microsoft/fluent-date-time
+packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
@@ -216,14 +216,14 @@ packages/react/src/components/ActivityItem @microsoft/cxe-red @microsoft/cxe-coa
 packages/react/src/components/Announced @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Breadcrumb @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Button @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Calendar @microsoft/fluent-date-time
-packages/react/src/components/CalendarDayGrid @microsoft/fluent-date-time
+packages/react/src/components/Calendar @microsoft/cxe-red
+packages/react/src/components/CalendarDayGrid @microsoft/cxe-red
 packages/react/src/components/Check @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal @leddie24
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/DatePicker @microsoft/fluent-date-time
+packages/react/src/components/DatePicker @microsoft/cxe-red
 packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
 packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal @yiminwu
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
@@ -255,7 +255,7 @@ packages/react/src/components/Text @microsoft/cxe-red @microsoft/cxe-coastal @kh
 packages/react/src/components/TextField @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Toggle @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/Tooltip @microsoft/cxe-red @microsoft/cxe-coastal @behowell
-packages/react/src/components/WeeklyDayPicker @microsoft/fluent-date-time
+packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
