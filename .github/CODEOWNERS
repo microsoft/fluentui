@@ -206,6 +206,7 @@ packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
 packages/react-components/react-data-grid-react-window @microsoft/teams-prg
+packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker @microsoft/cxe-red @sopranopillow @khmakoto
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
