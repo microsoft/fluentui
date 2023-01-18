@@ -9,6 +9,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../src/**/*.stories.@(ts|tsx)',
     ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
     '../../../packages/react-migration-v8-v9/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+    '../../../packages/react-components/react-migration-v0-v9/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],
