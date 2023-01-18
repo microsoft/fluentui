@@ -24,6 +24,14 @@
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
     },
+    "./badge": {
+      "types": "./dist/esm/badge/define.d.ts",
+      "default": "./dist/esm/badge/define.js"
+    },
+    "./counter-badge": {
+      "types": "./dist/esm/counter-badge/define.d.ts",
+      "default": "./dist/esm/counter-badge/define.js"
+    },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
@@ -36,7 +44,7 @@
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
-    "clean": "node ./build/clean.js dist",
+    "clean": "node ./build/clean.cjs dist",
     "doc": "api-extractor run --local",
     "doc:ci": "yarn doc",
     "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
@@ -88,6 +96,7 @@
     "karma-webpack": "5.0.0",
     "mocha": "7.2.0",
     "@microsoft/api-extractor": "7.31.2",
+    "rimraf": "^3.0.2",
     "typescript": "4.7.4"
   },
   "dependencies": {
