@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Tue, 17 Jan 2023 12:22:55 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jan 2023 16:32:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-rc.1)
+
+Wed, 18 Jan 2023 16:32:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.20..@fluentui/react-table_v9.0.0-rc.1)
+
+### Changes
+
+- Release @fluentui/react-table as RC ([PR #26381](https://github.com/microsoft/fluentui/pull/26381) by lingfangao@hotmail.com)
+- fix(TableCellActions): Background should match rown on hover and active ([PR #26373](https://github.com/microsoft/fluentui/pull/26373) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.15 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.21 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+- Bump @fluentui/react-radio to v9.0.19 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
 
 ## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.20)
 
