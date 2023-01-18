@@ -7,6 +7,8 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
 
+const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect;
+
 export type UsePortalMountNodeOptions = {
   /**
    * Since hooks cannot be called conditionally use this flag to disable creating the node
@@ -46,7 +48,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
   if (reactMajorVersion >= 18) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    ((React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect)(() => {
+    useInsertionEffect(() => {
       if (!element) {
         return;
       }
