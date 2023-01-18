@@ -8,6 +8,7 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { FASTProgress } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
@@ -175,6 +176,50 @@ export const CounterBadgeStyles: ElementStyles;
 
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
+
+// @public
+export class ProgressBar extends FASTProgress {
+    shape: ProgressBarShape;
+    thickness: ProgressBarThickness;
+    validationState: ProgressBarValidationState | null;
+}
+
+// @public
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+
+// @public
+export const ProgressBarShape: {
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type ProgressBarShape = ValuesOf<typeof ProgressBarShape>;
+
+// @public
+export const ProgressBarStyles: ElementStyles;
+
+// @public (undocumented)
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+
+// @public
+export const ProgressBarThickness: {
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ProgressBarThickness = ValuesOf<typeof ProgressBarThickness>;
+
+// @public
+export const ProgressBarValidationState: {
+    readonly success: "success";
+    readonly warning: "warning";
+    readonly error: "error";
+};
+
+// @public
+export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
 // @public
 class Text_2 extends FASTElement {
