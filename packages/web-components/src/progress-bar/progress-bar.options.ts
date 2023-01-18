@@ -21,7 +21,7 @@ export type ProgressBarThickness = ValuesOf<typeof ProgressBarThickness>;
  */
 export const ProgressBarShape = {
   rounded: 'rounded',
-  rectangular: 'rectangular',
+  square: 'square',
 } as const;
 
 /**

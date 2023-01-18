@@ -17,7 +17,6 @@ const storyTemplate = html<ProgressStoryArgs>`
     aria-valuenow=${x => x.value}
     value=${x => x.value}
     validation-state=${x => x.validationState}
-    aria-label="Progress bar"
   ></fluent-progress-bar>
 `;
 
@@ -43,18 +42,18 @@ export default {
       control: {
         type: 'select',
       },
-      options: Object.keys(ProgressBarThickness),
+      options: Object.values(ProgressBarThickness),
       defaultValue: 'medium',
     },
     shape: {
-      options: Object.keys(ProgressBarShape),
+      options: Object.values(ProgressBarShape),
       control: {
         type: 'select',
       },
       defaultValue: 'rounded',
     },
     validationState: {
-      options: Object.keys(ProgressBarValidationState),
+      options: Object.values(ProgressBarValidationState),
       control: {
         type: 'select',
       },

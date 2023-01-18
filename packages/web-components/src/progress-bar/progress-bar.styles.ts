@@ -32,9 +32,9 @@ export const styles = css`
     height: 4px;
   }
 
-  :host([shape='rectangular']),
-  :host([shape='rectangular']) .progress,
-  :host([shape='rectangular']) .determinate {
+  :host([shape='square']),
+  :host([shape='square']) .progress,
+  :host([shape='square']) .determinate {
     border-radius: 0;
   }
 
