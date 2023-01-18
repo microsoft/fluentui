@@ -276,7 +276,7 @@ import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/
 
 const useBaseClassname = makeResetStyles({
   ':hover': {
-    ...shorthands.padding('4px'),
+    padding: '4px',
     /* other styles */
   },
   '::before': {
@@ -284,7 +284,7 @@ const useBaseClassname = makeResetStyles({
     content: "' '",
   },
   '@media (forced-colors: active)': {
-    ...shorthands.padding('4px'),
+    padding: '4px',
     /* other styles */
   },
 });
