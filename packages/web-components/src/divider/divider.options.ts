@@ -1,50 +1,35 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
+import { DividerRole, ValuesOf } from '@microsoft/fast-foundation';
+
+/**
+ * Fast Foundation DividerRole property
+ * @public
+ */
+export { DividerRole };
 
 /**
  * Align content within divider
  * @public
  */
-export const AlignContent = {
-  /**
-   * Default. Center align content.
-   */
+export const DividerAlignContent = {
   center: 'center',
-  /**
-   * Align content at flex start
-   */
   start: 'start',
-  /**
-   * Align content at flex end
-   */
   end: 'end',
 } as const;
 
 /**
- * The types for AlignContent
+ * The types for DividerAlignContent
  * @public
  */
-export type AlignContent = ValuesOf<typeof AlignContent>;
+export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
 
 /**
- * Appearance is divider color
+ * Appearance is the divider color defined by a design token alias.
  * @public
  */
-export const Appearance = {
-  /**
-   * Strong corresponds to design token alias.
-   */
+export const DividerAppearance = {
   strong: 'strong',
-  /**
-   * Brand corresponds to design token alias
-   */
   brand: 'brand',
-  /**
-   * Subtle corresponds to design token alias
-   */
   subtle: 'subtle',
-  /**
-   * Default corresponds to design token alias
-   */
   default: 'default',
 } as const;
 
@@ -52,4 +37,6 @@ export const Appearance = {
  * The types for Appearance
  * @public
  */
-export type Appearance = ValuesOf<typeof Appearance>;
+export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
+
+// inset

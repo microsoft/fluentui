@@ -11,7 +11,7 @@ import { styles } from './divider.styles.js';
  * @remarks
  * HTML Element: \<fluent-divider\>
  */
-export const dividerDefinition = Divider.compose({
+export const definition = Divider.compose({
   name: `${FluentDesignSystem.prefix}-divider`,
   template,
   styles,

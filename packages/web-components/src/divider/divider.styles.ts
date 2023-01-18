@@ -6,15 +6,15 @@ export const styles = css`
   :host {
   }
 
-  :host([alignContent='start']) {
+  :host([dividerAlignContent='start']) {
     display: flex;
     align-items: flex-start;
   }
-  :host([alignContent='center']) {
+  :host([dividerAlignContent='center']) {
     display: flex;
     align-items: center;
   }
-  :host([alignContent='end']) {
+  :host([dividerAlignContent='end']) {
     display: flex;
     align-items: end;
   }
