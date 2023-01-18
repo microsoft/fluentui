@@ -7,5 +7,6 @@ export {
 } from './Textarea';
 export type { TextareaProps, TextareaSlots, TextareaState } from './Textarea';
 
-export { TextareaField as TextareaField_unstable, textareaFieldClassNames } from './TextareaField';
+// eslint-disable-next-line deprecation/deprecation
+export { TextareaField as TextareaField_unstable } from './TextareaField';
 export type { TextareaFieldProps as TextareaFieldProps_unstable } from './TextareaField';

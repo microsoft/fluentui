@@ -15,5 +15,6 @@ export type {
   SpinButtonBounds,
 } from './SpinButton';
 
-export { SpinButtonField as SpinButtonField_unstable, spinButtonFieldClassNames } from './SpinButtonField';
+// eslint-disable-next-line deprecation/deprecation
+export { SpinButtonField as SpinButtonField_unstable } from './SpinButtonField';
 export type { SpinButtonFieldProps as SpinButtonFieldProps_unstable } from './SpinButtonField';

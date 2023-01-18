@@ -284,34 +284,44 @@ export type {
   DataGridSelectionCellSlots,
 } from '@fluentui/react-table';
 
-export { CheckboxField_unstable as CheckboxField, checkboxFieldClassNames } from '@fluentui/react-checkbox';
+// eslint-disable-next-line deprecation/deprecation
+export { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 export type { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
 
-export { ComboboxField_unstable as ComboboxField, comboboxFieldClassNames } from '@fluentui/react-combobox';
+// eslint-disable-next-line deprecation/deprecation
+export { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
 export type { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
 
-export { InputField_unstable as InputField, inputFieldClassNames } from '@fluentui/react-input';
+// eslint-disable-next-line deprecation/deprecation
+export { InputField_unstable as InputField } from '@fluentui/react-input';
 export type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 
-export { ProgressField_unstable as ProgressField, progressFieldClassNames } from '@fluentui/react-progress';
+// eslint-disable-next-line deprecation/deprecation
+export { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 export type { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
 
-export { RadioGroupField_unstable as RadioGroupField, radioGroupFieldClassNames } from '@fluentui/react-radio';
+// eslint-disable-next-line deprecation/deprecation
+export { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
 export type { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 
-export { SelectField_unstable as SelectField, selectFieldClassNames } from '@fluentui/react-select';
+// eslint-disable-next-line deprecation/deprecation
+export { SelectField_unstable as SelectField } from '@fluentui/react-select';
 export type { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
 
-export { SliderField_unstable as SliderField, sliderFieldClassNames } from '@fluentui/react-slider';
+// eslint-disable-next-line deprecation/deprecation
+export { SliderField_unstable as SliderField } from '@fluentui/react-slider';
 export type { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
 
-export { SpinButtonField_unstable as SpinButtonField, spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
+// eslint-disable-next-line deprecation/deprecation
+export { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
 export type { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
 
-export { SwitchField_unstable as SwitchField, switchFieldClassNames } from '@fluentui/react-switch';
+// eslint-disable-next-line deprecation/deprecation
+export { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
 export type { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
 
-export { TextareaField_unstable as TextareaField, textareaFieldClassNames } from '@fluentui/react-textarea';
+// eslint-disable-next-line deprecation/deprecation
+export { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
 
 export { renderField_unstable, useFieldStyles_unstable, useField_unstable } from '@fluentui/react-field';

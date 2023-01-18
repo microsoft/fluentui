@@ -7,5 +7,6 @@ export {
 } from './Checkbox';
 export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from './Checkbox';
 
-export { CheckboxField as CheckboxField_unstable, checkboxFieldClassNames } from './CheckboxField';
+// eslint-disable-next-line deprecation/deprecation
+export { CheckboxField as CheckboxField_unstable } from './CheckboxField';
 export type { CheckboxFieldProps as CheckboxFieldProps_unstable } from './CheckboxField';

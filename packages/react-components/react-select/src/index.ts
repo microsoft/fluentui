@@ -7,5 +7,6 @@ export {
 } from './Select';
 export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from './Select';
 
-export { SelectField as SelectField_unstable, selectFieldClassNames } from './SelectField';
+// eslint-disable-next-line deprecation/deprecation
+export { SelectField as SelectField_unstable } from './SelectField';
 export type { SelectFieldProps as SelectFieldProps_unstable } from './SelectField';
