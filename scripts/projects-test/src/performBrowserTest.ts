@@ -1,35 +1,60 @@
-import http from 'http';
+import { Server } from 'http';
 import { AddressInfo } from 'net';
 
 import { launch, visitUrl } from '@fluentui/scripts-puppeteer';
-import express from 'express';
+import express, { Express } from 'express';
 
-function startServer(rootDirectory: string, listenPort: number, host = 'localhost') {
-  return new Promise<{ server: http.Server; port: number; url: string }>((resolve, reject) => {
-    let port: number;
+/**
+ *
+ * .close is asynchronous (not promisified thus we are wrapping it)
+ *  @see https://nodejs.org/api/net.html#serverclosecallback
+ */
+export function closeServer(server: Server): Promise<void> {
+  if (!server) {
+    return Promise.resolve();
+  }
+
+  return new Promise<void>((resolve, reject) => {
+    // TODO: Default is 5 seconds. why is this set to 1 ?
+    // https://nodejs.org/api/http.html#serverkeepalivetimeout
+    server.keepAliveTimeout = 1000;
+    server.close(err => (err ? reject(err) : resolve()));
+  });
+}
+
+export function startServer(
+  options: { root: string; port: number; host?: string },
+  configureMiddleware = (app: Express) => app,
+) {
+  const { root, port, host = 'localhost' } = options;
+  return new Promise<{ server: Server; port: number; url: string }>((resolve, reject) => {
+    let usedPort: number;
     try {
       console.log('express: starting server');
 
-      const server = express()
-        .use(express.static(rootDirectory))
-        .listen(listenPort, host, () => {
-          console.log(`express: server running at http://${host}:${port} from directory "${rootDirectory}"`);
-          port = listenPort === 0 ? (server.address() as AddressInfo).port : listenPort;
-          const url = `http://${host}:${port}`;
-          resolve({ server, port, url });
-        });
+      const middleware = (app: Express) => app.use(express.static(root));
+      const app = middleware(configureMiddleware(express()));
+      const server = app.listen(port, host, () => {
+        const shouldAssignArbitraryUnusedPort = port === 0;
+        usedPort = shouldAssignArbitraryUnusedPort ? (server.address() as AddressInfo).port : port;
+        const url = `http://${host}:${usedPort}`;
+
+        console.log(`express: server running at http://${host}:${usedPort} from directory "${root}"`);
+
+        resolve({ server, port: usedPort, url });
+      });
 
       server.on('error', err => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore - improper Error type in typings -> https://nodejs.org/api/net.html#serverlisten
         if (err.code === 'EADDRINUSE') {
-          console.error('express: Address in use ...', { port, host });
+          console.error('express: Address in use ...', { port: usedPort, host });
         }
 
         throw err;
       });
       server.on('close', () => {
-        console.error('express: Terminating server ...', { port, host });
+        console.error('express: Terminating server ...', { port: usedPort, host });
       });
     } catch (err) {
       reject(err);
@@ -47,16 +72,9 @@ async function launchServer(root: string) {
   const PORT = 0;
 
   try {
-    const { server, ...rest } = await startServer(root, PORT);
-    /**
-     *
-     * .close is asynchronous (not promisified thus we are wrapping it)
-     *  @see https://nodejs.org/api/net.html#serverclosecallback
-     */
-    const closeServer = () =>
-      new Promise<void>((resolve, reject) => server.close(err => (err ? reject(err) : resolve())));
+    const api = await startServer({ root, port: PORT });
 
-    return { server, closeServer, ...rest };
+    return api;
   } catch (err) {
     console.error('express: start failed!');
     console.error(err);
@@ -65,7 +83,7 @@ async function launchServer(root: string) {
 }
 
 export async function performBrowserTest(publicDirectory: string) {
-  const { closeServer, url } = await launchServer(publicDirectory);
+  const { server, url } = await launchServer(publicDirectory);
   const browser = await launch();
   const page = await browser.newPage();
 
@@ -84,7 +102,7 @@ export async function performBrowserTest(publicDirectory: string) {
 
   await page.close();
   await browser.close();
-  await closeServer();
+  await closeServer(server);
 
   if (error) {
     throw error;
