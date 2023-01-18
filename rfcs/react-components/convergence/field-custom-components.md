@@ -20,6 +20,7 @@ Implement a single `<Field>` component, which does the layout for field, includi
 
 The control is the child, and Field adds the following props to the child using cloneElement (or a render function):
 
+- `id` (used as the label's `htmlFor`; generated if the child does not have an `id` already)
 - `aria-labelledby`
 - `aria-describedby`
 - `aria-invalid` (when `validationState="error"` is set on the field)
@@ -64,16 +65,8 @@ Add add `FieldContext` around the children of Field to allow for better integrat
 
 ### Cons
 
-- By default, uses `aria-labelledby="label-id"` instead of the label's `htmlFor="control-id"`.
-  - The user can add `htmlFor` manually if they want:
-    ```jsx
-    <Field label="Example" htmlFor="input-id-42">
-      <Input id="input-id-42" />
-    </Field>
-    ```
 - Does not set the intrinsic `required` prop on the child input when set on the Field; uses `aria-required` instead.
 - No type safety or checking that the contract was followed: TypeScript doesn't support checking that a JSX child supports certain props.
-- Adds a `<div>` around the input component for layout purposes (may be possible to avoid with css-grid trickery).
 
 ### Open questions
 
