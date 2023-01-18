@@ -18,10 +18,10 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   useTableFeatures,
-  ColumnDefinition,
+  TableColumnDefinition,
   useTableSelection,
   TableCellLayout,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -90,25 +90,22 @@ const items: Item[] = [
   },
 ];
 
-export const SingleSelect = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
 
+export const SingleSelect = () => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },

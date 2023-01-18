@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { RowId } from '../hooks/';
+import type { TableRowId } from '../hooks/';
 
-const rowIdContext = React.createContext<RowId | undefined>(undefined);
+const rowIdContext = React.createContext<TableRowId | undefined>(undefined);
 
-export const rowIdContextDefaultValue = '';
+export const tableRowIdContextDefaultValue = '';
 
-export const useRowIdContext = () => React.useContext(rowIdContext) ?? rowIdContextDefaultValue;
+export const useTableRowIdContext = () => React.useContext(rowIdContext) ?? tableRowIdContextDefaultValue;
 
-export const RowIdContextProvider = rowIdContext.Provider;
+export const TableRowIdContextProvider = rowIdContext.Provider;

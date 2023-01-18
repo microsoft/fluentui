@@ -9,12 +9,14 @@ export const Badge = () => (
     <Avatar name="Robin Counts" badge={{ status: 'away' }} />
     <Avatar name="Tim Deboer" badge={{ status: 'offline' }} />
     <Avatar name="Cameron Evans" badge={{ status: 'do-not-disturb' }} />
+    <Avatar name="Wanda Howard" badge={{ status: 'blocked' }} />
     <Avatar name="Mona Kane" badge={{ status: 'available', outOfOffice: true }} />
     <Avatar name="Allan Munger" badge={{ status: 'busy', outOfOffice: true }} />
     <Avatar name="Erik Nason" badge={{ status: 'out-of-office', outOfOffice: true }} />
     <Avatar name="Daisy Phillips" badge={{ status: 'away', outOfOffice: true }} />
     <Avatar name="Kevin Sturgis" badge={{ status: 'offline', outOfOffice: true }} />
     <Avatar name="Elliot Woodward" badge={{ status: 'do-not-disturb', outOfOffice: true }} />
+    <Avatar name="Wanda Howard" badge={{ status: 'blocked', outOfOffice: true }} />
   </>
 );
 

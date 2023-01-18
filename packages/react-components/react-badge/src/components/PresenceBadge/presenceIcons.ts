@@ -9,6 +9,9 @@ import {
   PresenceAway10Filled,
   PresenceAway12Filled,
   PresenceAway16Filled,
+  PresenceBlocked10Regular,
+  PresenceBlocked12Regular,
+  PresenceBlocked16Regular,
   PresenceBusy10Filled,
   PresenceBusy12Filled,
   PresenceBusy16Filled,
@@ -73,6 +76,21 @@ export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React.F
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceAvailable16Filled,
+};
+
+export const presenceBlockedRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  tiny: PresenceBlocked10Regular,
+  'extra-small': PresenceBlocked10Regular,
+  small: PresenceBlocked12Regular,
+  medium: PresenceBlocked16Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceBlocked16Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  'extra-large': PresenceBlocked16Regular,
 };
 
 export const presenceBusyFilled: Record<PresenceBadgeState['size'], React.FunctionComponent> = {

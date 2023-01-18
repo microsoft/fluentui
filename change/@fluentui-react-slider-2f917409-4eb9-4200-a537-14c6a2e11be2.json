@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: allow refs passed in root slot to merge with focus refs",
-  "packageName": "@fluentui/react-slider",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
