@@ -1,22 +1,22 @@
 import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Slider } from '../../Slider';
+import { Slider, SliderProps } from '../../Slider';
 
-export type SliderFieldProps = FieldProps<typeof Slider>;
+export type SliderFieldProps = SliderProps & FieldShimProps;
 
-export const sliderFieldClassNames = getFieldClassNames('SliderField');
-
+/**
+ * @deprecated Use Field with Slider: `<Field><Slider /></Field>`
+ */
 export const SliderField: ForwardRefComponent<SliderFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, { component: Slider, classNames: sliderFieldClassNames });
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
+  const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
+  return (
+    <Field {...fieldProps}>
+      <Slider {...controlProps} ref={ref} />
+    </Field>
+  );
 });
 
+// eslint-disable-next-line deprecation/deprecation
 SliderField.displayName = 'SliderField';

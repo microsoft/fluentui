@@ -1,28 +1,22 @@
 import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { ProgressBar } from '../../ProgressBar';
+import { ProgressBar, ProgressBarProps } from '../../ProgressBar';
 
-export type ProgressFieldProps = FieldProps<typeof ProgressBar>;
+export type ProgressBarFieldProps = ProgressBarProps & FieldShimProps;
 
-export const progressFieldClassNames = getFieldClassNames('ProgressField');
-
-export const ProgressField: ForwardRefComponent<ProgressFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, {
-    component: ProgressBar,
-    classNames: progressFieldClassNames,
-    labelConnection: 'aria-labelledby',
-    ariaInvalidOnError: false,
-  });
-  state.control.validationState = state.validationState;
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+/**
+ * @deprecated Use Field with ProgressBar: `<Field><ProgressBar /></Field>`
+ */
+export const ProgressBarField: ForwardRefComponent<ProgressBarFieldProps> = React.forwardRef((props, ref) => {
+  // eslint-disable-next-line deprecation/deprecation
+  const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
+  return (
+    <Field {...fieldProps}>
+      <ProgressBar {...controlProps} ref={ref} />
+    </Field>
+  );
 });
 
-ProgressField.displayName = 'ProgressField';
+// eslint-disable-next-line deprecation/deprecation
+ProgressBarField.displayName = 'ProgressBarField';

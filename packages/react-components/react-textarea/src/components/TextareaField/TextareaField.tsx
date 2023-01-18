@@ -1,22 +1,22 @@
 import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Textarea } from '../../Textarea';
+import { Textarea, TextareaProps } from '../../Textarea';
 
-export type TextareaFieldProps = FieldProps<typeof Textarea>;
+export type TextareaFieldProps = TextareaProps & FieldShimProps;
 
-export const textareaFieldClassNames = getFieldClassNames('TextareaField');
-
+/**
+ * @deprecated Use Field with Textarea: `<Field><Textarea /></Field>`
+ */
 export const TextareaField: ForwardRefComponent<TextareaFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, { component: Textarea, classNames: textareaFieldClassNames });
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
+  const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
+  return (
+    <Field {...fieldProps}>
+      <Textarea {...controlProps} ref={ref} />
+    </Field>
+  );
 });
 
+// eslint-disable-next-line deprecation/deprecation
 TextareaField.displayName = 'TextareaField';

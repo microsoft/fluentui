@@ -1,24 +1,22 @@
 import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Switch } from '../../Switch';
+import { Switch, SwitchProps } from '../../Switch';
 
-// The Field's `label` prop overrides the Switch's built-in `label`.
-// Therefore, the Switch's `labelPosition` has no effect and is omitted to avoid confusion.
-export type SwitchFieldProps = Omit<FieldProps<typeof Switch>, 'labelPosition'>;
+export type SwitchFieldProps = SwitchProps & FieldShimProps;
 
-export const switchFieldClassNames = getFieldClassNames('SwitchField');
-
+/**
+ * @deprecated Use Field with Switch: `<Field><Switch /></Field>`
+ */
 export const SwitchField: ForwardRefComponent<SwitchFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, { component: Switch, classNames: switchFieldClassNames });
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
+  const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
+  return (
+    <Field {...fieldProps}>
+      <Switch {...controlProps} ref={ref} />
+    </Field>
+  );
 });
 
+// eslint-disable-next-line deprecation/deprecation
 SwitchField.displayName = 'SwitchField';

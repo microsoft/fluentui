@@ -1,22 +1,22 @@
 import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Select } from '../../Select';
+import { Select, SelectProps } from '../../Select';
 
-export type SelectFieldProps = FieldProps<typeof Select>;
+export type SelectFieldProps = SelectProps & FieldShimProps;
 
-export const selectFieldClassNames = getFieldClassNames('SelectField');
-
+/**
+ * @deprecated Use Field with Select: `<Field><Select /></Field>`
+ */
 export const SelectField: ForwardRefComponent<SelectFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, { component: Select, classNames: selectFieldClassNames });
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
+  const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
+  return (
+    <Field {...fieldProps}>
+      <Select {...controlProps} ref={ref} />
+    </Field>
+  );
 });
 
+// eslint-disable-next-line deprecation/deprecation
 SelectField.displayName = 'SelectField';
