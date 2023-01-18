@@ -24,6 +24,11 @@ export interface UseModalAttributesOptions {
    * Always reachabled in Tab order
    */
   alwaysFocusable?: boolean;
+
+  /**
+   * Id to use for the modalizer. An id will be generated if not provided.
+   */
+  id?: string;
 }
 
 /**
@@ -44,7 +49,7 @@ export const useModalAttributes = (
     getDeloser(tabster);
   }
 
-  const id = useId('modal-');
+  const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
     deloser: {},
     modalizer: {
