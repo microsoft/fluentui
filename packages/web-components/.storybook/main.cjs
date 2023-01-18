@@ -42,7 +42,7 @@ module.exports = {
       // It also enables importing other packages without proper ESM extensions, but that should be avoided !
       // @see https://webpack.js.org/configuration/module/#resolvefullyspecified
       {
-        test: /\.storybook\/.+\.m?js/,
+        test: /\.m?js/,
         resolve: { fullySpecified: false },
       },
     );
