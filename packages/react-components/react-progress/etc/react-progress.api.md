@@ -8,13 +8,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import { FieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
@@ -40,14 +38,11 @@ export type ProgressBarSlots = {
 // @public
 export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'validationState'>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
 
 // @public (undocumented)
-export const progressFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type ProgressFieldProps_unstable = FieldProps<typeof ProgressBar>;
+export type ProgressFieldProps_unstable = ProgressBarProps & FieldShimProps;
 
 // @public
 export const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;

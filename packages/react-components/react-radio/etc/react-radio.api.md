@@ -10,16 +10,14 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import { FieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -41,14 +39,11 @@ export type RadioGroupContextValues = {
     radioGroup: RadioGroupContextValue;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const RadioGroupField_unstable: ForwardRefComponent<RadioGroupFieldProps_unstable>;
 
 // @public (undocumented)
-export const radioGroupFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type RadioGroupFieldProps_unstable = FieldProps<typeof RadioGroup>;
+export type RadioGroupFieldProps_unstable = RadioGroupProps & FieldShimProps;
 
 // @public
 export type RadioGroupOnChangeData = {

@@ -8,14 +8,12 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import { FieldShimProps } from '@fluentui/react-field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Checkbox: ForwardRefComponent<CheckboxProps>;
@@ -23,16 +21,12 @@ export const Checkbox: ForwardRefComponent<CheckboxProps>;
 // @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const CheckboxField_unstable: ForwardRefComponent<CheckboxFieldProps_unstable>;
 
 // @public (undocumented)
-export const checkboxFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type CheckboxFieldProps_unstable = Omit<FieldProps<typeof Checkbox>, 'label'> & {
-    label?: CheckboxProps['label'];
-    fieldLabel?: FieldProps<typeof Checkbox>['label'];
+export type CheckboxFieldProps_unstable = CheckboxProps & Omit<FieldShimProps, 'label'> & {
+    fieldLabel?: FieldShimProps['label'];
 };
 
 // @public

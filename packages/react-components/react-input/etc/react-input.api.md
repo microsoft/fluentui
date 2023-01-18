@@ -8,13 +8,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import { FieldShimProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Input: ForwardRefComponent<InputProps>;
@@ -22,14 +20,11 @@ export const Input: ForwardRefComponent<InputProps>;
 // @public (undocumented)
 export const inputClassNames: SlotClassNames<InputSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const InputField_unstable: ForwardRefComponent<InputFieldProps_unstable>;
 
 // @public (undocumented)
-export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type InputFieldProps_unstable = FieldProps<typeof Input>;
+export type InputFieldProps_unstable = InputProps & FieldShimProps;
 
 // @public
 export type InputOnChangeData = {

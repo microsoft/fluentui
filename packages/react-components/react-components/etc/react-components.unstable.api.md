@@ -32,14 +32,12 @@ import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
-import { checkboxFieldClassNames } from '@fluentui/react-checkbox';
 import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
-import { comboboxFieldClassNames } from '@fluentui/react-combobox';
 import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
 import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
 import { ComboboxOpenEvents } from '@fluentui/react-combobox';
@@ -94,18 +92,15 @@ import { DropdownOpenEvents } from '@fluentui/react-combobox';
 import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
-import { FieldConfig } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
-import { getFieldClassNames } from '@fluentui/react-field';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
 import { InfoButtonSlots } from '@fluentui/react-infobutton';
 import { InfoButtonState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
-import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
@@ -131,10 +126,8 @@ import { ProgressBarProps } from '@fluentui/react-progress';
 import { ProgressBarSlots } from '@fluentui/react-progress';
 import { ProgressBarState } from '@fluentui/react-progress';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
-import { progressFieldClassNames } from '@fluentui/react-progress';
 import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
 import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
-import { radioGroupFieldClassNames } from '@fluentui/react-radio';
 import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderCard_unstable } from '@fluentui/react-card';
@@ -170,20 +163,16 @@ import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
-import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
 import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
-import { sliderFieldClassNames } from '@fluentui/react-slider';
 import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
 import { SortDirection } from '@fluentui/react-table';
 import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
-import { spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
 import { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
 import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
-import { switchFieldClassNames } from '@fluentui/react-switch';
 import { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
 import { Table } from '@fluentui/react-table';
 import { TableBody } from '@fluentui/react-table';
@@ -249,7 +238,6 @@ import { TableSlots } from '@fluentui/react-table';
 import { TableSortState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
-import { textareaFieldClassNames } from '@fluentui/react-textarea';
 import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
@@ -385,8 +373,6 @@ export { CardState }
 
 export { CheckboxField }
 
-export { checkboxFieldClassNames }
-
 export { CheckboxFieldProps }
 
 export { Combobox }
@@ -398,8 +384,6 @@ export { ComboboxContextValue }
 export { ComboboxContextValues }
 
 export { ComboboxField }
-
-export { comboboxFieldClassNames }
 
 export { ComboboxFieldProps }
 
@@ -509,15 +493,11 @@ export { DropdownSlots }
 
 export { DropdownState }
 
-export { FieldConfig }
-
 export { FieldProps }
 
 export { FieldSlots }
 
 export { FieldState }
-
-export { getFieldClassNames }
 
 export { InfoButton }
 
@@ -530,8 +510,6 @@ export { InfoButtonSlots }
 export { InfoButtonState }
 
 export { InputField }
-
-export { inputFieldClassNames }
 
 export { InputFieldProps }
 
@@ -583,13 +561,9 @@ export { ProgressBarState }
 
 export { ProgressField }
 
-export { progressFieldClassNames }
-
 export { ProgressFieldProps }
 
 export { RadioGroupField }
-
-export { radioGroupFieldClassNames }
 
 export { RadioGroupFieldProps }
 
@@ -661,8 +635,6 @@ export { selectClassNames }
 
 export { SelectField }
 
-export { selectFieldClassNames }
-
 export { SelectFieldProps }
 
 export { SelectProps }
@@ -673,21 +645,15 @@ export { SelectState }
 
 export { SliderField }
 
-export { sliderFieldClassNames }
-
 export { SliderFieldProps }
 
 export { SortDirection }
 
 export { SpinButtonField }
 
-export { spinButtonFieldClassNames }
-
 export { SpinButtonFieldProps }
 
 export { SwitchField }
-
-export { switchFieldClassNames }
 
 export { SwitchFieldProps }
 
@@ -818,8 +784,6 @@ export { TableSortState }
 export { TableState }
 
 export { TextareaField }
-
-export { textareaFieldClassNames }
 
 export { TextareaFieldProps }
 
