@@ -45,9 +45,8 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
   }, [targetDocument]);
 
   if (reactMajorVersion >= 18) {
-    // @ts-expect-error useInsertionEffect does not exist on React 17 types
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useInsertionEffect(() => {
+    ((React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect)(() => {
       if (!element) {
         return;
       }
