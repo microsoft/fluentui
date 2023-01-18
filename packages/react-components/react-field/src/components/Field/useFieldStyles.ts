@@ -55,7 +55,6 @@ const useLabelStyles = makeStyles({
 });
 
 const useSecondaryTextBaseClassName = makeResetStyles({
-  position: 'relative',
   marginTop: tokens.spacingVerticalXXS,
   color: tokens.colorNeutralForeground3,
   ...typographyStyles.caption1,
@@ -67,16 +66,21 @@ const useSecondaryTextStyles = makeStyles({
   },
 
   withIcon: {
+    // Add a gutter for the icon, to allow multiple lines of text to line up to the right of the icon.
     paddingLeft: `calc(${iconSize} + ${tokens.spacingHorizontalXS})`,
   },
 });
 
 const useValidationMessageIconBaseClassName = makeResetStyles({
   display: 'inline-block',
+  fontSize: iconSize,
+  // Negative left margin puts the icon in the gutter of the validation message div's withIcon style.
   marginLeft: `calc(-${iconSize} - ${tokens.spacingHorizontalXS})`,
   marginRight: tokens.spacingHorizontalXS,
-  verticalAlign: 'middle',
-  fontSize: iconSize,
+  // Line height of 0 prevents the verticalAlign from affecting the line height of the text.
+  lineHeight: '0',
+  // Negative verticalAlign shifts the inline icon down to align with the text (effectively top padding).
+  verticalAlign: '-1px',
 });
 
 const useValidationMessageIconStyles = makeStyles({
