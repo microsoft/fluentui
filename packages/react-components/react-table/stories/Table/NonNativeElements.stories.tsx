@@ -67,7 +67,7 @@ const columns = [
 
 export const NonNativeElements = () => {
   return (
-    <Table noNativeElements>
+    <Table noNativeElements aria-label="Table without semantic HTML elements">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -84,7 +84,11 @@ export const NonNativeElements = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}

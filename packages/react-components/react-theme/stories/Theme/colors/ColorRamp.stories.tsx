@@ -60,7 +60,7 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props 
           justifyContent: 'space-between',
           padding: '1.5vh',
           background: props.value,
-          width: '300px',
+          width: '200px',
           boxSizing: 'border-box',
           alignItems: 'center',
           height: '100%',

@@ -17,12 +17,12 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
   const { logo } = props;
 
   const {
-    selectableA11yProps: { referenceLabel, setReferenceLabel },
+    selectableA11yProps: { referenceLabel, referenceId, setReferenceLabel, setReferenceId },
   } = useCardContext_unstable();
   const previewRef = useMergedRefs(ref, React.useRef<HTMLDivElement>(null));
 
   React.useEffect(() => {
-    if (referenceLabel) {
+    if (referenceLabel && referenceId) {
       return;
     }
 
@@ -31,15 +31,18 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
 
       if (img) {
         const ariaLabel = img.getAttribute('aria-label');
+        const ariaDescribedby = img.getAttribute('aria-describedby');
 
-        if (img.alt) {
+        if (ariaDescribedby) {
+          setReferenceId(ariaDescribedby);
+        } else if (img.alt) {
           setReferenceLabel(img.alt);
         } else if (ariaLabel) {
           setReferenceLabel(ariaLabel);
         }
       }
     }
-  }, [setReferenceLabel, referenceLabel, previewRef]);
+  }, [setReferenceLabel, referenceLabel, previewRef, referenceId, setReferenceId]);
 
   return {
     components: {

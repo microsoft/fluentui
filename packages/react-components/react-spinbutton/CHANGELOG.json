@@ -2,6 +2,213 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:46 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.15",
+      "version": "9.0.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.15",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.2.12",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.17",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 14:35:02 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.14",
+      "version": "9.0.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.14",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.2.11",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.16",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:28 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.13",
+      "version": "9.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "2c38f1e4ae07b2b60df596efe11015a68f166dbf",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.13",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.2.10",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-utilities to v9.3.1",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.15",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Dec 2022 10:20:31 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.12",
+      "version": "9.0.12",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.12",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.2.9",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.14",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 14:59:34 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.11",
+      "version": "9.0.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.11",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.2.8",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.13",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Dec 2022 18:29:30 GMT",
       "tag": "@fluentui/react-spinbutton_v9.0.10",
       "version": "9.0.10",

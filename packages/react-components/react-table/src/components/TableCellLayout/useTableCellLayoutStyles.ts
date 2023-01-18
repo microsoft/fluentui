@@ -9,7 +9,7 @@ export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots> = {
   media: 'fui-TableCellLayout__media',
   main: 'fui-TableCellLayout__main',
   description: 'fui-TableCellLayout__description',
-  wrapper: 'fui-TableCellLayout__wrapper',
+  content: 'fui-TableCellLayout__content',
 };
 
 /**
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
-  wrapper: {
+  content: {
     display: 'flex',
     flexDirection: 'column',
   },
@@ -94,8 +94,8 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
     );
   }
 
-  if (state.wrapper) {
-    state.wrapper.className = mergeClasses(tableCellLayoutClassNames.wrapper, styles.wrapper, state.wrapper.className);
+  if (state.content) {
+    state.content.className = mergeClasses(tableCellLayoutClassNames.content, styles.content, state.content.className);
   }
 
   return state;

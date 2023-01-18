@@ -18,6 +18,22 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.66.0 ]------------------------------- -->
+## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.65.0..@fluentui/react-northstar_v0.66.0)
+
+### BREAKING CHANGES
+- `createFelaRenderer` is now a function @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+
+### Fixes
+- `Carousel` fix for FZ - Adding data-is-visible prop #25973 @kolaps33 ([#25973](https://github.com/microsoft/fluentui/pull/25973))
+- Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
+- Fix `Button` styles for `disabledFocusable` when `text` @chpalac ([#26012](https://github.com/microsoft/fluentui/pull/26012))
+
+### Features
+- `nonce` can be configured for Fela renderer @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+- Unstyled prop for `Tree`, `TreeItem` and `TreeTitle` @jurokapsiar ([#25886](https://github.com/microsoft/fluentui/pull/25886))
+
 <!--------------------------------[ v0.65.0 ]------------------------------- -->
 ## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.64.0..@fluentui/react-northstar_v0.65.0)

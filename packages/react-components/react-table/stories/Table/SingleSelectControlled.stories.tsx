@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -18,11 +18,11 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   useTableFeatures,
-  ColumnDefinition,
-  RowId,
+  TableColumnDefinition,
+  TableRowId,
   useTableSelection,
   TableCellLayout,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -91,27 +91,24 @@ const items: Item[] = [
   },
 ];
 
-export const SingleSelectControlled = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
 
+export const SingleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([1]),
+    () => new Set<TableRowId>([1]),
   );
   const {
     getRows,
@@ -146,10 +143,8 @@ export const SingleSelectControlled = () => {
     };
   });
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
   return (
-    <Table>
+    <Table aria-label="Table with controlled single selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" hidden />
@@ -159,7 +154,7 @@ export const SingleSelectControlled = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
+      <TableBody>
         {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
@@ -168,12 +163,20 @@ export const SingleSelectControlled = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+            <TableSelectionCell checked={selected} type="radio" radioIndicator={{ 'aria-label': 'Select row' }} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

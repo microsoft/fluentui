@@ -41,12 +41,3 @@ SharePoint uses Fluent UI, so if you’re building on top of or within a SharePo
   <li className="mdut--half">[Theme Designer](https://aka.ms/themedesigner)</li>
   <li className="mdut--half">[Get started with building client-side web parts](https://aka.ms/spfx-tutorials)</li>
 </ul>
-
-<h3 id="office-add-ins-dev">Office Add-ins</h3>
-
-Fluent UI is the official UI toolkit for creating Office Add-ins. Check out some of these resources to learn more about how to use Fluent UI in your next Add-in.
-
-<ul className="md-list--flex">
-  <li className="mdut--full">[Add-ins overview](https://docs.microsoft.com/office/dev/add-ins/)</li>
-  <li className="mdut--full">[Using Fluent UI React in your Add-ins](https://docs.microsoft.com/office/dev/add-ins/design/add-in-design)</li>
-</ul>

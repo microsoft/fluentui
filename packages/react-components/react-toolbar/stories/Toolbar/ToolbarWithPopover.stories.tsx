@@ -1,14 +1,21 @@
 import * as React from 'react';
-import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
-import type { ToolbarProps } from '@fluentui/react-toolbar';
-import { Popover, PopoverSurface, PopoverTrigger, Button } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  Button,
+} from '@fluentui/react-components';
 import { MathFormatLinear24Regular, Image24Regular, Table24Filled } from '@fluentui/react-icons';
 
 export const WithPopover = (props: Partial<ToolbarProps>) => {
   const [open, setOpen] = React.useState<'first' | 'second' | 'third' | 'fourth' | undefined>();
 
   return (
-    <Toolbar {...props} size="small">
+    <Toolbar aria-label="with Popover" {...props} size="small">
       <Popover
         withArrow
         trapFocus
@@ -21,7 +28,6 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Insert Image</h3>
-            <Button>Example 1</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -38,7 +44,6 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Insert Table</h3>
-            <Button>Example 2</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -55,7 +60,6 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Insert Formula</h3>
-            <Button>Example 3</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>
@@ -73,7 +77,6 @@ export const WithPopover = (props: Partial<ToolbarProps>) => {
         <PopoverSurface>
           <div>
             <h3>Quick Actions</h3>
-            <Button>Example 4</Button>
             <Button onClick={() => setOpen(undefined)}>Close</Button>
           </div>
         </PopoverSurface>

@@ -1,8 +1,116 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 05 Dec 2022 18:29:31 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jan 2023 12:22:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.20)
+
+Tue, 17 Jan 2023 12:22:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.19..@fluentui/react-table_v9.0.0-alpha.20)
+
+### Changes
+
+- BREAKING: API naming changes ([PR #26304](https://github.com/microsoft/fluentui/pull/26304) by lingfangao@hotmail.com)
+- BREAKING(DataGrid): render functions need to by typed ([PR #26371](https://github.com/microsoft/fluentui/pull/26371) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.14 ([PR #26373](https://github.com/microsoft/fluentui/pull/26373) by beachball)
+
+## [9.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.19)
+
+Mon, 16 Jan 2023 08:38:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.18..@fluentui/react-table_v9.0.0-alpha.19)
+
+### Changes
+
+- feat: Export RowIdProvider ([PR #26081](https://github.com/microsoft/fluentui/pull/26081) by lingfangao@hotmail.com)
+- fix(TableSelectionCell): Radios should not change selection on focus ([PR #26283](https://github.com/microsoft/fluentui/pull/26283) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.2.13 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.20 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-radio to v9.0.18 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.18)
+
+Mon, 09 Jan 2023 21:51:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.17..@fluentui/react-table_v9.0.0-alpha.18)
+
+### Changes
+
+- Bump @fluentui/react-checkbox to v9.0.19 ([PR #26261](https://github.com/microsoft/fluentui/pull/26261) by beachball)
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.17)
+
+Mon, 09 Jan 2023 14:35:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.16..@fluentui/react-table_v9.0.0-alpha.17)
+
+### Changes
+
+- fix: remove Event type in selectionManager ([PR #26211](https://github.com/microsoft/fluentui/pull/26211) by olfedias@microsoft.com)
+- refactor: Cleanup unused code ([PR #26219](https://github.com/microsoft/fluentui/pull/26219) by lingfangao@hotmail.com)
+- BREAKING(TableCellLayout): `wrapper` slot renamed to `content` ([PR #26220](https://github.com/microsoft/fluentui/pull/26220) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.5 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-avatar to v9.2.12 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.18 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.5 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-radio to v9.0.17 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.16)
+
+Wed, 04 Jan 2023 01:40:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.15..@fluentui/react-table_v9.0.0-alpha.16)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- refactor: render function children called in component render function ([PR #26085](https://github.com/microsoft/fluentui/pull/26085) by lingfangao@hotmail.com)
+- fix: DataGridSelection cell should focus on input, not cell ([PR #26076](https://github.com/microsoft/fluentui/pull/26076) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.4 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-avatar to v9.2.11 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.17 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.4 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-radio to v9.0.16 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-tabster to v9.3.5 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.15)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.14..@fluentui/react-table_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-avatar to v9.2.10 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.16 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-radio to v9.0.15 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-tabster to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.14)
+
+Tue, 20 Dec 2022 14:59:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-alpha.13..@fluentui/react-table_v9.0.0-alpha.14)
+
+### Changes
+
+- fix: Explicit focus outline for TableHeaderCell and TableSelectionCell ([PR #25938](https://github.com/microsoft/fluentui/pull/25938) by lingfangao@hotmail.com)
+- fix(DataGridSelectionCell): should render `aria-selected` on the cell ([PR #25950](https://github.com/microsoft/fluentui/pull/25950) by lingfangao@hotmail.com)
+- fix: DataGrid supports keyboard navigation by default ([PR #25939](https://github.com/microsoft/fluentui/pull/25939) by lingfangao@hotmail.com)
+- feat: Add row focus as unstable feature due to a11y unknowns ([PR #25944](https://github.com/microsoft/fluentui/pull/25944) by lingfangao@hotmail.com)
+- fix(DataGridRow): `children` type should only be render function ([PR #25930](https://github.com/microsoft/fluentui/pull/25930) by lingfangao@hotmail.com)
+- fix: DataGridRow should prevent default on spacebar ([PR #25942](https://github.com/microsoft/fluentui/pull/25942) by lingfangao@hotmail.com)
+- feat: DataGrid supports custom row Ids ([PR #25885](https://github.com/microsoft/fluentui/pull/25885) by lingfangao@hotmail.com)
+- fix(TableHeaderCell): should render `aria-sort="none"` if not sorted ([PR #25921](https://github.com/microsoft/fluentui/pull/25921) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-avatar to v9.2.9 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.15 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-radio to v9.0.14 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-tabster to v9.3.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-alpha.13)
 

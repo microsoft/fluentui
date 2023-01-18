@@ -9,7 +9,7 @@ import { execSync } from 'child_process';
 import chalk from 'chalk';
 import { names, WorkspaceJsonConfiguration } from '@nrwl/devkit';
 
-import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '../../monorepo';
+import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 //#endregion
 

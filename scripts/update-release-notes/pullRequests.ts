@@ -1,6 +1,6 @@
 import type { RestEndpointMethodTypes } from '@octokit/rest';
 import { ChangelogEntry } from 'beachball';
-import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } from '../github';
+import { IPullRequest, processPullRequestApiResponse, getPullRequestForCommit } from '@fluentui/scripts-github';
 import { repoDetails, github } from './init';
 import { IExtendedPullRequest } from './types';
 
@@ -104,6 +104,7 @@ async function getRecentPrsByAuthor(
           ].join('+'),
           sort: 'updated',
           order: 'desc',
+          // eslint-disable-next-line @typescript-eslint/naming-convention
           per_page: count,
         })
       ).data.items;
@@ -129,6 +130,7 @@ async function _addCommitInfo(prs: IPullRequest[]): Promise<IExtendedPullRequest
   for (const pr of prs) {
     console.log(`  Getting commits for #${pr.number}...`);
     try {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       const commits = await github.pulls.listCommits({ pull_number: pr.number, ...repoDetails });
 
       results.push({

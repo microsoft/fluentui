@@ -64,19 +64,21 @@ export const SelectableIndicator = () => {
   const [selected3, setSelected3] = React.useState(false);
   const [selected4, setSelected4] = React.useState(false);
 
-  const onFirstCardSelected = React.useCallback((_, { selected }) => setSelected1(selected), [setSelected1]);
-  const onSecondCardSelected = React.useCallback((_, { selected }) => setSelected2(selected), [setSelected2]);
-  const onThirdCardSelected = React.useCallback((_, { selected }) => setSelected3(selected), [setSelected3]);
-  const onForthCardSelected = React.useCallback((_, { selected }) => setSelected4(selected), [setSelected4]);
+  const setCheckboxState = React.useCallback(({ selected, checked }, setFn) => setFn(!!(selected || checked)), []);
+
+  const onSelected1Change = React.useCallback((_, state) => setCheckboxState(state, setSelected1), [setCheckboxState]);
+  const onSelected2Change = React.useCallback((_, state) => setCheckboxState(state, setSelected2), [setCheckboxState]);
+  const onSelected3Change = React.useCallback((_, state) => setCheckboxState(state, setSelected3), [setCheckboxState]);
+  const onSelected4Change = React.useCallback((_, state) => setCheckboxState(state, setSelected4), [setCheckboxState]);
 
   return (
     <div className={styles.main}>
       <div className={styles.row}>
         <Card
           className={styles.card}
-          floatingAction={<Checkbox checked={selected1} />}
+          floatingAction={<Checkbox onChange={onSelected1Change} checked={selected1} />}
           selected={selected1}
-          onSelectionChange={onFirstCardSelected}
+          onSelectionChange={onSelected1Change}
         >
           <CardPreview
             className={styles.grayBackground}
@@ -94,9 +96,9 @@ export const SelectableIndicator = () => {
 
         <Card
           className={styles.card}
-          floatingAction={<Checkbox checked={selected2} />}
+          floatingAction={<Checkbox onChange={onSelected2Change} checked={selected2} />}
           selected={selected2}
-          onSelectionChange={onSecondCardSelected}
+          onSelectionChange={onSelected2Change}
         >
           <CardPreview
             className={styles.grayBackground}
@@ -114,31 +116,21 @@ export const SelectableIndicator = () => {
       </div>
 
       <div className={styles.row}>
-        <Card className={styles.card} selected={selected3} onSelectionChange={onThirdCardSelected}>
+        <Card className={styles.card} selected={selected3} onSelectionChange={onSelected3Change}>
           <CardHeader
             image={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word Logo" />}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-            action={
-              <div className={styles.actions}>
-                <Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />
-                <Checkbox checked={selected3} />
-              </div>
-            }
+            action={<Checkbox onChange={onSelected3Change} checked={selected3} />}
           />
         </Card>
 
-        <Card className={styles.card} selected={selected4} onSelectionChange={onForthCardSelected}>
+        <Card className={styles.card} selected={selected4} onSelectionChange={onSelected4Change}>
           <CardHeader
             image={<img src={resolveAsset('excel_logo.svg')} alt="Microsoft Excel Logo" />}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-            action={
-              <div className={styles.actions}>
-                <Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />
-                <Checkbox checked={selected4} />
-              </div>
-            }
+            action={<Checkbox onChange={onSelected4Change} checked={selected4} />}
           />
         </Card>
       </div>

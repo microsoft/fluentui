@@ -19,16 +19,51 @@ const useRootStyles = makeStyles({
   base: {
     display: 'grid',
     gridAutoFlow: 'row',
+    gridTemplateColumns: 'auto 1fr',
+    gridTemplateAreas: `
+      "label label"
+      "control control"
+      "validationIcon validationMessage"
+      "hint hint"
+    `,
     justifyItems: 'start',
   },
 
   horizontal: {
-    gridTemplateRows: 'auto auto auto auto',
-    gridTemplateColumns: '1fr 2fr',
+    gridTemplateColumns: '33% auto 1fr',
+    gridTemplateAreas: `
+      "label control control"
+      "label validationIcon validationMessage"
+      "label hint hint"
+      "label . ."
+    `,
   },
 
-  secondColumn: {
-    gridColumnStart: '2',
+  label: {
+    gridColumnStart: 'label',
+    gridColumnEnd: 'label',
+    gridRowStart: 'label',
+    gridRowEnd: 'label',
+  },
+
+  control: {
+    gridColumnStart: 'control',
+    gridColumnEnd: 'control',
+  },
+
+  validationIcon: {
+    gridColumnStart: 'validationIcon',
+    gridColumnEnd: 'validationIcon',
+  },
+
+  validationMessage: {
+    gridColumnStart: 'validationMessage',
+    gridColumnEnd: 'validationMessage',
+  },
+
+  hint: {
+    gridColumnStart: 'hint',
+    gridColumnEnd: 'hint',
   },
 });
 
@@ -39,8 +74,6 @@ const useLabelStyles = makeStyles({
   },
 
   horizontal: {
-    gridRowStart: '1',
-    gridRowEnd: '-1',
     marginRight: tokens.spacingHorizontalM,
     alignSelf: 'start',
     justifySelf: 'stretch',
@@ -61,10 +94,12 @@ const useSecondaryTextStyles = makeStyles({
 
 const useValidationMessageIconStyles = makeStyles({
   base: {
+    display: 'block',
+    alignSelf: 'start',
     fontSize: '12px',
     lineHeight: '12px',
-    verticalAlign: 'middle',
     marginRight: tokens.spacingHorizontalXS,
+    marginTop: tokens.spacingVerticalXS,
   },
 
   error: {
@@ -94,18 +129,14 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   );
 
   if (state.control) {
-    state.control.className = mergeClasses(
-      fieldClassNames.control,
-      horizontal && rootStyles.secondColumn,
-      state.control.className,
-    );
+    state.control.className = mergeClasses(fieldClassNames.control, rootStyles.control, state.control.className);
   }
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
+      rootStyles.label,
       labelStyles.base,
-      horizontal && labelStyles.horizontal,
       state.label.className,
     );
   }
@@ -114,6 +145,7 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = mergeClasses(
       fieldClassNames.validationMessageIcon,
+      rootStyles.validationIcon,
       validationMessageIconStyles.base,
       !!validationState && validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
@@ -124,6 +156,7 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
       fieldClassNames.validationMessage,
+      rootStyles.validationMessage,
       secondaryTextStyles.base,
       validationState === 'error' && secondaryTextStyles.error,
       state.validationMessage.className,
@@ -131,6 +164,11 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   }
 
   if (state.hint) {
-    state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextStyles.base, state.hint.className);
+    state.hint.className = mergeClasses(
+      fieldClassNames.hint,
+      secondaryTextStyles.base,
+      rootStyles.hint,
+      state.hint.className,
+    );
   }
 };

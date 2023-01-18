@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Listbox } from './Listbox';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Listbox', () => {
   isConformant({
