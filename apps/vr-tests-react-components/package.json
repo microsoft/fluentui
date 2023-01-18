@@ -38,6 +38,7 @@
     "@fluentui/react-menu": "^9.6.2",
     "@fluentui/react-persona": "^9.1.3",
     "@fluentui/react-popover": "^9.4.1",
+    "@fluentui/react-portal": "^9.1.1",
     "@fluentui/react-positioning": "^9.3.8",
     "@fluentui/react-progress": "9.0.0-alpha.12",
     "@fluentui/react-provider": "^9.2.2",
