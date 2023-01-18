@@ -8,7 +8,173 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { StartEnd } from '@microsoft/fast-foundation';
+import { StartEndOptions } from '@microsoft/fast-foundation';
+import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import { ValuesOf } from '@microsoft/fast-foundation';
+
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
+//
+// @public
+export class Badge extends FASTElement {
+    appearance: BadgeAppearance;
+    color: BadgeColor;
+    shape: BadgeShape;
+    size: BadgeSize;
+}
+
+// @internal
+export interface Badge extends StartEnd {
+}
+
+// @public
+export const BadgeAppearance: {
+    readonly filled: "filled";
+    readonly ghost: "ghost";
+    readonly outline: "outline";
+    readonly tint: "tint";
+};
+
+// @public
+export type BadgeAppearance = ValuesOf<typeof BadgeAppearance>;
+
+// @public
+export const BadgeColor: {
+    readonly brand: "brand";
+    readonly danger: "danger";
+    readonly important: "important";
+    readonly informative: "informative";
+    readonly severe: "severe";
+    readonly subtle: "subtle";
+    readonly success: "success";
+    readonly warning: "warning";
+};
+
+// @public
+export type BadgeColor = ValuesOf<typeof BadgeColor>;
+
+// @public
+export const BadgeDefinition: FASTElementDefinition<typeof Badge>;
+
+// Warning: (ae-internal-missing-underscore) The name "BadgeOptions" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type BadgeOptions = StartEndOptions<Badge> & {
+    defaultContent?: StaticallyComposableHTML;
+};
+
+// @public
+export const BadgeShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type BadgeShape = ValuesOf<typeof BadgeShape>;
+
+// @public
+export const BadgeSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+};
+
+// @public
+export type BadgeSize = ValuesOf<typeof BadgeSize>;
+
+// @public
+export const BadgeStyles: ElementStyles;
+
+// @public (undocumented)
+export const BadgeTemplate: ElementViewTemplate<Badge>;
+
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
+//
+// @public
+export class CounterBadge extends FASTElement {
+    appearance: CounterBadgeAppearance;
+    color: CounterBadgeColor;
+    count: number;
+    // (undocumented)
+    protected countChanged(): void;
+    dot: boolean;
+    overflowCount: number;
+    // (undocumented)
+    protected overflowCountChanged(): void;
+    // @internal
+    setCount(): string | void;
+    shape: CounterBadgeShape;
+    showZero: boolean;
+    size: CounterBadgeSize;
+}
+
+// @internal
+export interface CounterBadge extends StartEnd {
+}
+
+// @public
+export const CounterBadgeAppearance: {
+    readonly filled: "filled";
+    readonly ghost: "ghost";
+};
+
+// @public
+export type CounterBadgeAppearance = ValuesOf<typeof CounterBadgeAppearance>;
+
+// @public
+export const CounterBadgeColor: {
+    readonly brand: "brand";
+    readonly danger: "danger";
+    readonly important: "important";
+    readonly informative: "informative";
+    readonly severe: "severe";
+    readonly subtle: "subtle";
+    readonly success: "success";
+    readonly warning: "warning";
+};
+
+// @public
+export type CounterBadgeColor = ValuesOf<typeof CounterBadgeColor>;
+
+// @public
+export const CounterBadgeDefinition: FASTElementDefinition<typeof CounterBadge>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "CounterBadgeOptions" is marked as @public, but its signature references "BadgeOptions" which is marked as @internal
+//
+// @public
+export type CounterBadgeOptions = BadgeOptions;
+
+// @public
+export const CounterBadgeShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+};
+
+// @public
+export type CounterBadgeShape = ValuesOf<typeof CounterBadgeShape>;
+
+// @public
+export const CounterBadgeSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+};
+
+// @public
+export type CounterBadgeSize = ValuesOf<typeof CounterBadgeSize>;
+
+// @public
+export const CounterBadgeStyles: ElementStyles;
+
+// @public
+export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
 
 // @public
 class Text_2 extends FASTElement {

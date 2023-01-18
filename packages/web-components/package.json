@@ -24,6 +24,14 @@
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
     },
+    "./badge": {
+      "types": "./dist/esm/badge/define.d.ts",
+      "default": "./dist/esm/badge/define.js"
+    },
+    "./counter-badge": {
+      "types": "./dist/esm/counter-badge/define.d.ts",
+      "default": "./dist/esm/counter-badge/define.js"
+    },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
