@@ -3,12 +3,12 @@ import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/r
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { ProgressBar, ProgressBarProps } from '../../ProgressBar';
 
-export type ProgressBarFieldProps = ProgressBarProps & FieldShimProps;
+export type ProgressFieldProps = ProgressBarProps & FieldShimProps;
 
 /**
  * @deprecated Use Field with ProgressBar: `<Field><ProgressBar /></Field>`
  */
-export const ProgressBarField: ForwardRefComponent<ProgressBarFieldProps> = React.forwardRef((props, ref) => {
+export const ProgressField: ForwardRefComponent<ProgressFieldProps> = React.forwardRef((props, ref) => {
   // eslint-disable-next-line deprecation/deprecation
   const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
   return (
@@ -19,4 +19,4 @@ export const ProgressBarField: ForwardRefComponent<ProgressBarFieldProps> = Reac
 });
 
 // eslint-disable-next-line deprecation/deprecation
-ProgressBarField.displayName = 'ProgressBarField';
+ProgressField.displayName = 'ProgresField';
