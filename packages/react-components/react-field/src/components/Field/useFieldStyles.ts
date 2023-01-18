@@ -5,7 +5,6 @@ import type { FieldSlots, FieldState } from './Field.types';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
-  control: `fui-Field__control`,
   label: `fui-Field__label`,
   validationMessage: `fui-Field__validationMessage`,
   validationMessageIcon: `fui-Field__validationMessageIcon`,

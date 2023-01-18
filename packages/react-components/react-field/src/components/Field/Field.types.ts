@@ -3,8 +3,8 @@ import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FieldChildProps = Pick<
-  React.AriaAttributes,
-  'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
+  React.HTMLAttributes<HTMLElement>,
+  'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
 >;
 
 /**
@@ -12,11 +12,6 @@ export type FieldChildProps = Pick<
  */
 export type FieldSlots = {
   root: NonNullable<Slot<'div'>>;
-
-  /**
-   * Wrapper for the control inside the field.
-   */
-  control: NonNullable<Slot<'div'>>;
 
   /**
    * The label associated with the field.
@@ -67,12 +62,6 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-
-  /**
-   * The htmlFor attribute of the Field's label. If not provided, the child of the Field will have `aria-labelledby`
-   * set to the Field's label ID.
-   */
-  htmlFor?: string;
 
   /**
    * The orientation of the label relative to the field component.

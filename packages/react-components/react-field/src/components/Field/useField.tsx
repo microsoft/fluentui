@@ -20,22 +20,18 @@ const validationMessageIcons = {
  * @param ref - Ref to the control slot (primary slot)
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>): FieldState => {
-  const { children, htmlFor, orientation = 'vertical', required, size, validationState } = props;
+  const { children, orientation = 'vertical', required, size, validationState } = props;
 
   const baseId = useId('field-');
 
   const root = getNativeElementProps('div', props, ['children']);
 
-  const control = resolveShorthand(props.control, {
-    required: true,
-  });
-
   const label = resolveShorthand(props.label, {
     defaultProps: {
-      htmlFor,
       id: baseId + '__label',
       required,
       size,
+      // htmlFor is handled below
     },
   });
 
@@ -63,8 +59,14 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
 
   const childProps: FieldChildProps = { ...childElement?.props };
 
-  if (label && !htmlFor) {
+  if (label) {
     childProps['aria-labelledby'] ??= label.id;
+
+    if (!label.htmlFor) {
+      // Assign the child a generated ID if doesn't already have an ID
+      childProps.id ??= baseId + '__control';
+      label.htmlFor = childProps.id;
+    }
   }
 
   if (validationMessage || hint) {
@@ -85,9 +87,9 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
   }
 
   if (typeof children === 'function') {
-    control.children = children(childProps);
+    root.children = children(childProps);
   } else if (childElement) {
-    control.children = React.cloneElement(childElement, childProps);
+    root.children = React.cloneElement(childElement, childProps);
   }
 
   return {
@@ -95,14 +97,12 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     validationState,
     components: {
       root: 'div',
-      control: 'div',
       label: Label,
       validationMessage: 'div',
       validationMessageIcon: 'span',
       hint: 'div',
     },
     root,
-    control,
     label,
     validationMessageIcon,
     validationMessage,

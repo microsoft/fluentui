@@ -21,18 +21,16 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
     children: React_2.ReactElement | null | ((props: FieldChildProps) => React_2.ReactElement | null);
     required?: boolean;
     size?: 'small' | 'medium' | 'large';
-    htmlFor?: string;
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';
 };
 
 // @internal (undocumented)
-export type FieldShimProps = Pick<FieldProps, 'className' | 'control' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
+export type FieldShimProps = Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
 
 // @public
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
-    control: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;

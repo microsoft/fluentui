@@ -3,18 +3,32 @@ import { render } from '@testing-library/react';
 import { Field } from './index';
 
 describe('Field', () => {
-  it("sets the label's htmlFor to the supplied id, and does not set aria-labelledby", () => {
+  it("sets the label's htmlFor to the child's id if it has one", () => {
     const result = render(
-      <Field label="Test label" htmlFor="test-id">
-        <input id="htmlFor" />
+      <Field label="Test label">
+        <input id="test-id" />
       </Field>,
     );
 
     const input = result.getByRole('textbox');
     const label = result.getByText('Test label') as HTMLLabelElement;
 
+    expect(input.id).toBe('test-id');
     expect(label.htmlFor).toBe('test-id');
-    expect(input.getAttribute('aria-labelledby')).toBeFalsy();
+  });
+
+  it('generates an id for the child if it does not have one,', () => {
+    const result = render(
+      <Field label="Test label">
+        <input />
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+
+    expect(input.id).toBeTruthy();
+    expect(label.htmlFor).toBe(input.id);
   });
 
   it('sets aria-labelledby on the control', () => {
@@ -28,10 +42,9 @@ describe('Field', () => {
 
     expect(label.id).toBeTruthy();
     expect(input.getAttribute('aria-labelledby')).toBe(label.id);
-    expect(label.htmlFor).toBeFalsy();
   });
 
-  it('adds a required asterisk * to the label when requried is set', () => {
+  it('adds a required asterisk * to the label when required is set', () => {
     const result = render(
       <Field label="Test label" required>
         <input />
@@ -119,17 +132,5 @@ describe('Field', () => {
     expect(input.getAttribute('aria-labelledby')).toBe('test-labelledby');
     expect(input.getAttribute('aria-errormessage')).toBe('test-errormessage');
     expect(input.getAttribute('aria-invalid')).toBe('false');
-  });
-
-  it('does not override user aria-describedby on the control slot', () => {
-    const result = render(
-      <Field label="test label" validationState="error" validationMessage="test description" hint="test hint">
-        {ariaProps => <input {...ariaProps} aria-describedby="test-describedby" />}
-      </Field>,
-    );
-
-    const input = result.getByRole('textbox');
-
-    expect(input.getAttribute('aria-describedby')).toBe('test-describedby');
   });
 });

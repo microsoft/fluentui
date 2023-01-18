@@ -6,7 +6,6 @@ import { FieldProps } from '../Field';
 export type FieldShimProps = Pick<
   FieldProps,
   | 'className'
-  | 'control'
   | 'hint'
   | 'label'
   | 'orientation'
@@ -27,7 +26,6 @@ export function getPartitionedFieldShimProps<ComponentProps>(
 ): [FieldShimProps, ComponentProps] {
   const {
     className,
-    control,
     hint,
     label,
     orientation,
@@ -41,7 +39,6 @@ export function getPartitionedFieldShimProps<ComponentProps>(
   return [
     {
       className,
-      control,
       hint,
       label,
       orientation,
