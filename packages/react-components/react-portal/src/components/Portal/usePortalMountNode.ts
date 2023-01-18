@@ -6,12 +6,6 @@ import {
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useDisposable } from 'use-disposable';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-
-// String concatenation is used to prevent bundlers to complain with older versions of React
-const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
-  ? (React as never)['useInsertion' + 'Effect']
-  : useIsomorphicLayoutEffect;
 
 export type UsePortalMountNodeOptions = {
   /**
