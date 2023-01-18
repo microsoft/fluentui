@@ -295,67 +295,6 @@ vs
 
 Composition approach would be difficult to adjust at runtime because css vars are already set on the root, and new styles would either need to replace the old one, be more specific, or not use makeResetStyles so user could override individual css vars
 
-### 🤔
-
-## Option D: Build time component tokens
-
-Each component would define a hierarchy component-level token constants.
-Component tokens would reference alias tokens.
-The hierarchy would have levels for slot and state variations.
-The component style hook would then use the component token constants rather than alias token constants.
-The component's tokens could be substituted at build time for a mapping to other tokens (CSS var references)
-
-```ts
-// Button.tokens.ts (limited example)
-export const buttonTokens = {
-  root: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    hover: {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-    }
-    active: {
-      backgroundColor: tokens.colorNeutralBackground1Pressed
-    },
-    outline: {
-      backgroundColor: tokens.colorTransparentBackground,
-      hover: {
-        backgroundColor: tokens.colorTransparentBackgroundHover
-      },
-      active: {
-        backgroundColor: tokens.colorTransparentBackgroundPressed
-      }
-    }
-  },
-  icon: {
-    small: {
-      spacing: tokens.spacingHorizontalXS
-    },
-    medium: {
-      spacing: tokens.spacingHorizontalSNudge
-    },
-    large: {
-      spacing: tokens.spacingHorizontalSNudge
-    }
-  }
-}
-```
-
-### 👍
-
-- Codifies the mapping of component part style to alias token.
-- Build time substitution allows for continued build time style optimizations
-- Runtime CSS vars are unchanged and works with existing themes
-- Provides a similar experience to custom styles and theme component styles from v8, but mapped to slots.
-
-### 👎
-
-- Exports yet another set of constants for the bundle
-- Adds some complexity to the style hooks
-
-### 🤔
-
-- Would the hierarchy of component tokens be a contract?
-
 ## Decision making
 
 //TODO @Geoff
