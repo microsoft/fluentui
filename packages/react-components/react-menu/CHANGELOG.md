@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Mon, 16 Jan 2023 08:39:04 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jan 2023 16:32:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.6.3)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.6.2..@fluentui/react-menu_v9.6.3)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.1.2 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.6.2)
 

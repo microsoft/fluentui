@@ -2,6 +2,27 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 16:32:57 GMT",
+      "tag": "@fluentui/react-dialog_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-tabster to v9.4.0",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.1.2",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:39:00 GMT",
       "tag": "@fluentui/react-dialog_v9.1.8",
       "version": "9.1.8",

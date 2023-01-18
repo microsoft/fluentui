@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Release `@fluentui/react-toolbar` as stable",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
