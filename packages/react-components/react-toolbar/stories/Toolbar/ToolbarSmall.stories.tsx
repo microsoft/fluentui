@@ -18,3 +18,11 @@ export const Small = (props: Partial<ToolbarProps>) => (
     <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
   </Toolbar>
 );
+
+Small.parameters = {
+  docs: {
+    description: {
+      story: ['Height of the container is 32px'].join('\n'),
+    },
+  },
+};
