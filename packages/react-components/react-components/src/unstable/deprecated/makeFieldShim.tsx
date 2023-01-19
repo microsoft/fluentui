@@ -73,7 +73,7 @@ export type MakeFieldShimOptions<ControlProps> = {
 };
 
 /**
- * Only for use to make deprecated [Control]Field shim components.
+ * @deprecated Only for use to make deprecated [Control]Field shim components.
  * @internal
  */
 export function makeFieldShim<ControlProps>(

@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Combobox, ComboboxProps } from '@fluentui/react-combobox';
 import { Input, InputProps } from '@fluentui/react-input';
@@ -10,6 +11,10 @@ import { Switch, SwitchProps } from '@fluentui/react-switch';
 import { Textarea, TextareaProps } from '@fluentui/react-textarea';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { FieldShimProps, makeFieldShim } from './makeFieldShim';
+
+// This file contains shims for the old [Component]Field components that were removed
+// and replaced by the standalone Field component.
+// These components are deprecated and will be removed in a future release.
 
 /** @deprecated Use Field with Combobox: `<Field><Combobox /></Field>` */
 export const ComboboxField: ForwardRefComponent<ComboboxFieldProps> = makeFieldShim(Combobox);
@@ -57,7 +62,7 @@ export type CheckboxFieldProps = Omit<FieldShimProps<CheckboxProps>, 'label'> & 
   fieldLabel?: FieldShimProps<CheckboxProps>['label'];
 };
 
-/** @deprecated Use Field with Progress: `<Field><Progress /></Field>` */
+/** @deprecated Use Field with ProgressBar: `<Field><ProgressBar /></Field>` */
 export const ProgressField: ForwardRefComponent<ProgressFieldProps> = makeFieldShim(ProgressBar, {
   mapProps: (props: ProgressFieldProps) => ({
     ...props,
