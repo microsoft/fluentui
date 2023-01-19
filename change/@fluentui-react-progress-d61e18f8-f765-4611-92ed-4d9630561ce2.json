@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Rename rectangular shape to square",
   "packageName": "@fluentui/react-progress",
   "email": "miroslav.stastny@microsoft.com",
