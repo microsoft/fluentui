@@ -1076,8 +1076,10 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   return Math.floor(maxHeight / 1.414); // Compute maxHeight/tanInverse(45) to get the vertical height of labels.
 }
 
-export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
+export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): string {
   let idx: number = 0;
+  let value: string = '';
+
   d3SelectAll(`.${selectorClass}`).each(function () {
     const text = d3Select(this);
     const words = text.text().split(/\s+/).reverse();
@@ -1086,6 +1088,8 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
     let lineNumber: number = 0;
     const lineHeight = 1.1; // ems
     const y = text.attr('y');
+    const ellipsis: string = '...';
+    let isTruncationRequired: boolean = false;
 
     let tspan = text
       .text(null)
@@ -1095,22 +1099,127 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
       .attr('y', y)
       .attr('dy', lineNumber++ * lineHeight + 'em');
 
+    // tspanEllipsis is used for checking if truncation is required vertically/horizontally
+    // before appending the text to the inner donut text
+    let tspanEllipsis = d3Select('#Donut_center_text').text(null).append('tspan').attr('opacity', 0);
+
+    // Determine the ellipsis length for word truncation.
+    tspanEllipsis.text(ellipsis);
+    const ellipsisLength = tspanEllipsis.node()!.getComputedTextLength();
+    tspanEllipsis.text(null);
+
+    // Value concatinates and saves the final truncated string and returns it back to the donut chart
+    // to handle mouse over and mouse out scenarios
+    value = '';
+
     while ((word = words.pop()!)) {
       line.push(word);
       tspan.text(line.join(' ') + ' ');
-      if (tspan.node()!.getComputedTextLength() > maxWidth && line.length > 1) {
-        line.pop();
-        tspan.text(line.join(' ') + ' ');
-        line = [word];
-        tspan = text
-          .append('tspan')
-          .attr('id', `WordBreakId-${idx}-${lineNumber}`)
-          .attr('x', 0)
-          .attr('y', y)
-          .attr('dy', lineNumber++ * lineHeight + 'em')
-          .text(word);
+      tspanEllipsis.text(line.join(' ') + ' ');
+
+      // Determine if wrapping is required
+      if (tspan.node()!.getComputedTextLength() > maxWidth - ellipsisLength && line.length > 1) {
+        while (tspan.node()!.getComputedTextLength() > maxWidth - ellipsisLength) {
+          line.pop();
+          tspan.text(line.join(' ') + ' ');
+          tspanEllipsis.text(line.join(' ') + ' ');
+        }
+        // Determine if truncation is required vertically
+        // If truncation is not required vertically, append a new line while taking care of horizontal truncation
+        if (tspan.node()!.getBoundingClientRect().y < maxWidth) {
+          line = [word];
+          tspanEllipsis.text(word);
+
+          // Determine if truncation is appending the text exceeds maximum width vertically or horizontally
+          while (
+            tspanEllipsis.node()!.getComputedTextLength() > maxWidth - ellipsisLength ||
+            tspanEllipsis.node()!.getBoundingClientRect().y > maxWidth
+          ) {
+            word = line.pop()!;
+            word = word.slice(0, -1);
+            line = [word];
+            tspanEllipsis.text(word);
+            isTruncationRequired = true;
+          }
+
+          // If after truncation, the word becomes empty, append the ellipsis to the last line
+          if (word.length === 0) {
+            tspan.text(tspan.text().trim() + ellipsis);
+            value = value.trim() + ellipsis;
+            break;
+          }
+          // Trim whitespaces if any
+          word = word.trim();
+
+          // Append the ellipsis only if the word was truncated and word is not the last word in the sentence.
+          if (isTruncationRequired && !isTextTruncated(word)) {
+            // Append '.' only as much required
+            while (!isTextTruncated(word)) {
+              word = word + '.';
+            }
+          }
+          tspan = text
+            .append('tspan')
+            .attr('id', `WordBreakId-${idx}-${lineNumber}`)
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', lineNumber++ * lineHeight + 'em')
+            .text(word);
+          tspanEllipsis = d3Select('#Donut_center_text')
+            .append('tspan')
+            .attr('id', `WordBreakId-${idx}-${lineNumber}`)
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', lineNumber++ * lineHeight + 'em')
+            .text(word);
+          value += word + ' ';
+
+          // If truncation was done either verticaly or horizontally, break
+          if (isTruncationRequired) {
+            tspanEllipsis.text(null);
+            break;
+          }
+        } else {
+          // If truncation is required vertically, append ellipsis and break
+          tspan.text(line.join(' ') + ellipsis);
+          value += ellipsis;
+          break;
+        }
+      } else {
+        // If there is just 1 line which exceeds the max width horizontally,
+        // no wrapping required, only truncate
+        tspanEllipsis.text(tspanEllipsis.text().trim());
+        tspan.text(tspan.text().trim());
+        while (tspanEllipsis.node()!.getComputedTextLength() > maxWidth - ellipsisLength) {
+          word = line.pop()!.trim();
+          word = word.slice(0, -1);
+          line = [word];
+          tspanEllipsis.text(word);
+          isTruncationRequired = true;
+        }
+        // Trim whitespaces if any
+        word = word.trim();
+        // Append the ellipsis only if the word was truncated
+        if (isTruncationRequired && !isTextTruncated(word)) {
+          // Append '.' only as much required
+          while (!isTextTruncated(word)) {
+            word = word + '.';
+          }
+          value += word;
+          line = [word];
+          tspan.text(word);
+          break;
+        }
+        // If no truncation is required
+        value += word + ' ';
       }
     }
+    tspanEllipsis.text(null);
     idx += 1;
   });
+  return value.trim();
+}
+
+export function isTextTruncated(text: string): boolean {
+  return text.slice(-3) === '...';
 }
