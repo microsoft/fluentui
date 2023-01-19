@@ -360,7 +360,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         .padding(0.1);
 
       const xBarScale = d3ScaleLinear()
-        .domain([0, xMax])
+        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }
@@ -393,11 +393,15 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={this.margins.left!}
+          x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
           y={yBarScale(point.y) - this._barWidth / 2}
           data-is-focusable={!this.props.hideTooltip}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
+          width={
+            this._isRtl
+              ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
+              : Math.max(xBarScale(point.x), 0) - this.margins.left!
+          }
           height={this._barWidth}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
@@ -467,9 +471,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       return (
         <rect
           key={point.x}
-          x={this.margins.left!}
+          x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
           y={yBarScale(point.y) + this._barWidth / 2}
-          width={Math.max(xBarScale(point.x), 0) - this.margins.left!}
+          width={
+            this._isRtl
+              ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
+              : Math.max(xBarScale(point.x), 0) - this.margins.left!
+          }
           height={this._barWidth}
           aria-labelledby={`toolTip${this._calloutId}`}
           aria-label={this._getAriaLabel(point)}

@@ -25,11 +25,11 @@ import {
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
-  truncateYAxisLabels,
   rotateXAxisLabels,
   Points,
   pointTypes,
   calculateLongestYAxisLabel,
+  createYAxisLabels,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 
@@ -103,6 +103,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   public componentDidMount(): void {
     this._fitParentContainer();
+    if (this.props.showYAxisLables) {
+      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.props.theme!);
+      if (this.state.startFromX !== maxYAxisLabelLength) {
+        this.setState({
+          startFromX: maxYAxisLabelLength,
+        });
+      }
+    } else if (this.state.startFromX !== 0) {
+      this.setState({
+        startFromX: 0,
+      });
+    }
   }
 
   public componentWillUnmount(): void {
@@ -135,6 +147,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         });
       }
     }
+    if (this.props.showYAxisLables) {
+      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.props.theme!);
+      if (this.state.startFromX !== maxYAxisLabelLength) {
+        this.setState({
+          startFromX: maxYAxisLabelLength,
+        });
+      }
+    } else if (this.state.startFromX !== 0) {
+      this.setState({
+        startFromX: 0,
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -155,18 +179,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     const margin = { ...this.margins };
-    if (this.props.showYAxisLables) {
-      const maxYAxisLabelLength = calculateLongestYAxisLabel(points, this.props.theme!);
-      if (this.state.startFromX !== maxYAxisLabelLength) {
-        this.setState({
-          startFromX: maxYAxisLabelLength,
-        });
-      }
+    if (!this._isRtl) {
       margin.left! += this.state.startFromX;
-    } else if (this.state.startFromX !== 0) {
-      this.setState({
-        startFromX: 0,
-      });
+    } else {
+      margin.right! += this.state.startFromX;
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(margin);
@@ -284,11 +300,19 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     /*
-     * To truncate y axis tick values by truncating the rest of the text and showing elipsis,
+     * To create y axis tick values by if specified
+    truncating the rest of the text and showing elipsis
+    or showing the whole string,
      * */
-    if (this.props.showYAxisLablesTooltip) {
-      yScale && truncateYAxisLabels(this.yAxisElement, yScale, this.props.noOfCharsToTruncate || 4);
-    }
+    yScale &&
+      createYAxisLabels(
+        this.yAxisElement,
+        yScale,
+        this.props.noOfCharsToTruncate || 4,
+        this.props.showYAxisLablesTooltip || false,
+        this.state.startFromX,
+        this._isRtl,
+      );
 
     this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
@@ -354,7 +378,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               }}
               id={`yAxisGElement${this.idForGraph}`}
               transform={`translate(${
-                this._isRtl ? svgDimensions.width - this.margins.right! : this.margins.left! + this.state.startFromX
+                this._isRtl
+                  ? svgDimensions.width - this.margins.right! - this.state.startFromX
+                  : this.margins.left! + this.state.startFromX
               }, 0)`}
               className={this._classNames.yAxis}
             />
@@ -591,9 +617,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   };
 
   private _onChartLeave = (): void => {
-    this.setState({
-      startFromX: 0,
-    });
     this.props.onChartMouseLeave && this.props.onChartMouseLeave();
   };
 }

@@ -711,7 +711,15 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
  * This method used for wrapping of y axis labels (tick values).
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function truncateYAxisLabels(node: SVGElement | null, yAxis: any, noOfCharsToTruncate: number) {
+export function createYAxisLabels(
+  node: SVGElement | null,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  yAxis: any,
+  noOfCharsToTruncate: number,
+  truncateLabel: boolean,
+  xValue: number,
+  isRtl: boolean,
+) {
   if (node === null) {
     return;
   }
@@ -721,11 +729,11 @@ export function truncateYAxisLabels(node: SVGElement | null, yAxis: any, noOfCha
     const totalWord = text.text();
     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const lineHeight = 1.1; // ems
+    const padding = truncateLabel ? 1.5 : 1; // ems
     const y = text.attr('y');
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
-    const dx = parseFloat(text.attr('dx'));
+    const dx = 0;
     text
       .text(null)
       .append('tspan')
@@ -735,22 +743,23 @@ export function truncateYAxisLabels(node: SVGElement | null, yAxis: any, noOfCha
       .attr('dy', dy + 'em')
       .attr('data-', totalWord);
 
-    if (totalWordLength > noOfCharsToTruncate) {
+    if (truncateLabel && totalWordLength > noOfCharsToTruncate) {
       text
         .append('tspan')
         .attr('id', 'showDots')
         .attr('x', x)
         .attr('y', y)
         .attr('dy', dy)
-        .attr('dx', lineHeight + dx + 'em')
+        .attr('dx', padding + dx + 'em')
         .text(truncatedWord);
     } else {
       text
+        .attr('text-align', 'start')
         .append('tspan')
         .attr('id', 'LessLength')
-        .attr('x', x)
+        .attr('x', isRtl ? xValue : x)
         .attr('y', y)
-        .attr('dx', lineHeight + dx + 'em')
+        .attr('dx', padding + dx + 'em')
         .text(totalWord);
     }
   });
@@ -924,8 +933,8 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   shiftX: number,
 ): IDomainNRange {
   const xMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
-  const rMin = margins.left! + shiftX;
-  const rMax = containerWidth - margins.right!;
+  const rMin = isRTL ? margins.left! : margins.left! + shiftX;
+  const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
     ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
