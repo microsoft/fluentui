@@ -1,18 +1,15 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2019",
     "module": "commonjs",
-    "outDir": "lib",
+    "target": "ES2019",
     "noEmit": true,
+    "isolatedModules": true,
+    "importHelpers": true,
     "jsx": "react",
-    "allowJs": true,
-    "checkJs": true,
-    "sourceMap": true,
-    "experimentalDecorators": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["node", "jest"]
+    "skipLibCheck": true
   },
-  "include": ["./src", "./.storybook/*"]
+  "include": ["src"]
 }
