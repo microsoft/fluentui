@@ -19,7 +19,7 @@ export const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
 
 // @public
 export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
-    shape?: 'rounded' | 'rectangular';
+    shape?: 'rounded' | 'square';
     value?: number;
     max?: number;
     thickness?: 'medium' | 'large';

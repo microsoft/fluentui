@@ -6,7 +6,7 @@ A Progress provides a visual representation of content being loaded or processed
 >
 > ```jsx
 >
-> import { Progress } from '@fluentui/react-components/unstable';
+> import { ProgressBar } from '@fluentui/react-components/unstable';
 >
 > ```
 >

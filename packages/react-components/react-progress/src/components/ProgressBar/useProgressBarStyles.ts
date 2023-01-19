@@ -52,7 +52,7 @@ const useRootStyles = makeStyles({
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
-  rectangular: {
+  square: {
     ...shorthands.borderRadius(tokens.borderRadiusNone),
   },
   medium: {
