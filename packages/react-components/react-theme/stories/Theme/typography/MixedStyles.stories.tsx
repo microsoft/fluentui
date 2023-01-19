@@ -2,11 +2,6 @@ import * as React from 'react';
 import { makeStyles, typographyStyles, Text } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
   title: typographyStyles.title2,
 
   paragraph: {
@@ -20,12 +15,12 @@ export const MixedStyles = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
-      <Text as="h1" className={styles.title}>
+    <div>
+      <Text as="h1" block className={styles.title}>
         Using Title 2 tokens
       </Text>
 
-      <Text as="p" className={styles.paragraph}>
+      <Text as="p" block className={styles.paragraph}>
         I'm a paragraph using Body 1 tokens and customized styles
       </Text>
     </div>
