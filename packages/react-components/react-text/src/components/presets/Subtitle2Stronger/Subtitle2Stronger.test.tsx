@@ -11,6 +11,14 @@ describe('Subtitle2Stronger', () => {
 
   it('renders a default state', () => {
     const result = render(<Subtitle2Stronger>Default Subtitle2Stronger</Subtitle2Stronger>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-Subtitle2Stronger fui-Text"
+        >
+          Default Subtitle2Stronger
+        </span>
+      </div>
+    `);
   });
 });

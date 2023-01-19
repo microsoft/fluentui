@@ -11,6 +11,14 @@ describe('Subtitle1', () => {
 
   it('renders a default state', () => {
     const result = render(<Subtitle1>Default Subtitle1</Subtitle1>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-Subtitle1 fui-Text"
+        >
+          Default Subtitle1
+        </span>
+      </div>
+    `);
   });
 });

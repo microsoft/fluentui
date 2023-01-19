@@ -11,6 +11,14 @@ describe('Body1Stronger', () => {
 
   it('renders a default state', () => {
     const result = render(<Body1Stronger>Default Body1Stronger</Body1Stronger>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-Body1Stronger fui-Text"
+        >
+          Default Body1Stronger
+        </span>
+      </div>
+    `);
   });
 });

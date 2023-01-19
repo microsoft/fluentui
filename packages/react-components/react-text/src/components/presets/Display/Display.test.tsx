@@ -11,6 +11,14 @@ describe('Display', () => {
 
   it('renders a default state', () => {
     const result = render(<Display>Default Display</Display>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-Display fui-Text"
+        >
+          Default Display
+        </span>
+      </div>
+    `);
   });
 });

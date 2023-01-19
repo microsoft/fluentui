@@ -11,6 +11,14 @@ describe('LargeTitle', () => {
 
   it('renders a default state', () => {
     const result = render(<LargeTitle>Default LargeTitle</LargeTitle>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-LargeTitle fui-Text"
+        >
+          Default LargeTitle
+        </span>
+      </div>
+    `);
   });
 });
