@@ -380,6 +380,10 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             &:hover .ms-ContextualMenu-submenuIcon {
                               color: #323130;
                             }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                              -ms-high-contrast-adjust: none;
+                              forced-color-adjust: none;
+                            }
                             &:active {
                               background-color: #edebe9;
                             }
