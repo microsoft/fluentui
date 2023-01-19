@@ -45,6 +45,7 @@
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
+      "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-migration-v8-v9/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/src/index.ts"],
@@ -77,7 +78,8 @@
       "@fluentui/react-tree": ["packages/react-components/react-tree/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
-      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"],
+      "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]

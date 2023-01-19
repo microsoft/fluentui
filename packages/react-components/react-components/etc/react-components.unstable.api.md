@@ -166,6 +166,7 @@ import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
+import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
@@ -283,6 +284,7 @@ import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
+import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
@@ -318,6 +320,14 @@ import { useTableSelectionCell_unstable } from '@fluentui/react-table';
 import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
 import { useTableSort } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
+import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
+import { Virtualizer } from '@fluentui/react-virtualizer';
+import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
+import { virtualizerClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerProps } from '@fluentui/react-virtualizer';
+import { VirtualizerSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerState } from '@fluentui/react-virtualizer';
 
 export { Alert }
 
@@ -643,6 +653,8 @@ export { renderTableRow_unstable }
 
 export { renderTableSelectionCell_unstable }
 
+export { renderVirtualizer_unstable }
+
 export { Select }
 
 export { selectClassNames }
@@ -877,6 +889,8 @@ export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
 
+export { useIntersectionObserver }
+
 export { useListbox_unstable }
 
 export { useListboxContextValues }
@@ -946,6 +960,22 @@ export { useTableSelectionCellStyles_unstable }
 export { useTableSort }
 
 export { useTableStyles_unstable }
+
+export { useVirtualizer_unstable }
+
+export { useVirtualizerStyles_unstable }
+
+export { Virtualizer }
+
+export { VirtualizerChildRenderFunction }
+
+export { virtualizerClassNames }
+
+export { VirtualizerProps }
+
+export { VirtualizerSlots }
+
+export { VirtualizerState }
 
 // (No @packageDocumentation comment for this package)
 

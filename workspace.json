@@ -552,6 +552,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-migration-v0-v9": {
+      "root": "packages/react-components/react-migration-v0-v9",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-migration-v0-v9/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-migration-v8-v9": {
       "root": "packages/react-migration-v8-v9",
       "projectType": "library",
@@ -1069,6 +1076,13 @@
       "root": "packages/utilities",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/react-virtualizer": {
+      "root": "packages/react-components/react-virtualizer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-virtualizer/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
