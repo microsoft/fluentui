@@ -3,6 +3,7 @@ import * as path from 'path';
 import type { ExtractorMessageCategory, ExtractorResult } from '@microsoft/api-extractor';
 import { workspaceRoot } from '@nrwl/devkit';
 import chalk from 'chalk';
+import { isCI } from 'ci-info';
 import * as glob from 'glob';
 import { ApiExtractorOptions, TaskFunction, apiExtractorVerifyTask, logger, series, task } from 'just-scripts';
 import type * as ApiExtractorTypes from 'just-scripts/src/tasks/apiExtractorTypes';
@@ -67,7 +68,9 @@ export function apiExtractor(): TaskFunction {
    * overrides api-extractor default `true` to be `false` on local dev machine
    * Triggers if path aliases will be used or yarn workspaces (that needs to be build based on package dependency tree)
    */
-  const isLocalBuild = args.local ?? !process.env.TF_BUILD;
+  const isLocalBuild = args.local ?? !(process.env.TF_BUILD || isCI);
+
+  console.log({ isLocalBuild });
 
   const tasks = configsToExecute.map(([configPath, configName]) => {
     const taskName = `api-extractor:${configName}`;
