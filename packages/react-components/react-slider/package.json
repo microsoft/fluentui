@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "@griffel/react": "^1.5.2",
-    "@fluentui/react-field": "9.0.0-alpha.15",
     "@fluentui/react-shared-contexts": "^9.1.5",
     "@fluentui/react-tabster": "^9.4.0",
     "@fluentui/react-theme": "^9.1.5",

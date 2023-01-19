@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.5",
-    "@fluentui/react-field": "9.0.0-alpha.15",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-label": "^9.0.17",
     "@fluentui/react-tabster": "^9.4.0",
