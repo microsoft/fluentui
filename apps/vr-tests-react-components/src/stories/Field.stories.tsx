@@ -14,9 +14,11 @@ import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spi
 import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 
-type FieldControlProps = Pick<
-  InputFieldProps,
-  'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'validationMessageIcon' | 'hint'
+type FieldControlProps = Partial<
+  Pick<
+    InputFieldProps,
+    'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'validationMessageIcon' | 'hint'
+  >
 >;
 
 /**
