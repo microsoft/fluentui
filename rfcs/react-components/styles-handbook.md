@@ -673,7 +673,36 @@ const useClasses = makeStyles({
 }
 ```
 
-This can be useful to define direction specific animations:
+`@noflip` also works with `shorthands.*` functions:
+
+```js
+import { makeStyles } from '@griffel/react';
+
+const useClasses = makeStyles({
+  root: {
+    ...shorthands.borderLeft('5px /* @noflip */', 'solid /* @noflip */', 'red /* @noflip */'),
+  },
+});
+```
+
+⬇️⬇️⬇️
+
+```css
+/* Will be applied in LTR & RTL */
+.f1h8qh3y {
+  border-left-width: 5px;
+}
+
+.f150p1cp {
+  border-left-style: solid;
+}
+
+.f1sim4um {
+  border-left-color: red;
+}
+```
+
+This feature can be useful to define direction specific animations:
 
 ```js
 import { makeStyles } from '@griffel/react';
