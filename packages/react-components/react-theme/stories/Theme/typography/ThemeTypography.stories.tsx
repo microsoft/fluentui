@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, Subtitle2Stronger, Text, TypographyStyles } from '@fluentui/react-components';
-import { typographyStyles } from '@fluentui/react-components';
+import { makeStyles, Subtitle2Stronger, Text, typographyStyles } from '@fluentui/react-components';
+import type { TypographyStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
