@@ -11,5 +11,11 @@
     "preserveConstEnums": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }
