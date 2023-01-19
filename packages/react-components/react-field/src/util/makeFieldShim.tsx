@@ -65,8 +65,15 @@ function getPartitionedFieldShimProps<ControlProps>(
 /**
  * @internal Only for use by the deprecated [Control]Field shim components.
  */
-export function makeFieldShim<ControlProps>(Control: React.ComponentType<ControlProps>) {
+export function makeFieldShim<ControlProps>(
+  Control: React.ComponentType<ControlProps>,
+  mapProps?: (props: FieldShimProps<ControlProps>) => FieldShimProps<ControlProps>,
+) {
   const FieldShim = React.forwardRef((props, ref) => {
+    if (mapProps) {
+      props = mapProps(props);
+    }
+
     const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
     return (
       <Field {...fieldProps}>
