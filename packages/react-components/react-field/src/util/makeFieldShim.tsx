@@ -13,6 +13,7 @@ export type FieldShimProps<ControlProps> = ControlProps & {
     | 'hint'
     | 'label'
     | 'orientation'
+    | 'size'
     | 'style'
     | 'validationMessage'
     | 'validationMessageIcon'
@@ -29,6 +30,7 @@ function getPartitionedFieldShimProps<ControlProps>(props: FieldShimProps<Contro
     hint,
     label,
     orientation,
+    size,
     style,
     validationMessage,
     validationMessageIcon,
@@ -42,12 +44,14 @@ function getPartitionedFieldShimProps<ControlProps>(props: FieldShimProps<Contro
       hint,
       label,
       orientation,
+      size,
       style,
       validationMessage,
       validationMessageIcon,
       validationState,
     },
     {
+      size,
       ...restOfProps,
       ...control,
     },
@@ -62,7 +66,7 @@ export function makeFieldShim<ControlProps>(Control: React.ComponentType<Control
     const [fieldProps, controlProps] = getPartitionedFieldShimProps(props);
     return (
       <Field {...fieldProps}>
-        <Control {...(controlProps as ControlProps)} ref={ref} />
+        <Control {...((controlProps as unknown) as ControlProps)} ref={ref} />
       </Field>
     );
   }) as ForwardRefComponent<FieldShimProps<ControlProps>>;
