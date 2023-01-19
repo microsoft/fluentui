@@ -32,7 +32,7 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
 // @internal (undocumented)
 export type FieldShimProps<ControlProps> = ControlProps & {
     control?: ControlProps;
-} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'required' | 'size' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
+} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
 
 // @public
 export type FieldSlots = {

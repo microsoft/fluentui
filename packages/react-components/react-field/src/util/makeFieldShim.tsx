@@ -13,8 +13,6 @@ export type FieldShimProps<ControlProps> = ControlProps & {
     | 'hint'
     | 'label'
     | 'orientation'
-    | 'required'
-    | 'size'
     | 'style'
     | 'validationMessage'
     | 'validationMessageIcon'
@@ -24,7 +22,9 @@ export type FieldShimProps<ControlProps> = ControlProps & {
 /**
  * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
  */
-function getPartitionedFieldShimProps<ControlProps>(props: FieldShimProps<ControlProps>) {
+function getPartitionedFieldShimProps<ControlProps>(
+  props: FieldShimProps<ControlProps> & Pick<FieldProps, 'required' | 'size'>,
+) {
   const {
     className,
     control,
