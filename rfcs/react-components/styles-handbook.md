@@ -351,6 +351,27 @@ const useClasses = makeStyles({
 }
 ```
 
+`FluentProvider` is used to determine the text direction for computed styles. The default text direction is Left-To-Right (LTR).
+
+```jsx
+import { FluentProvider } from '@fluentui/react-components';
+
+function App() {
+  return (
+    <>
+      <FluentProvider>
+        {/* Inner components will have styles for LTR */}
+        {/* ... */}
+      </FluentProvider>
+      <FluentProvider dir="rtl">
+        {/* Inner components will have styles for RTL */}
+        {/* ... */}
+      </FluentProvider>
+    </>
+  );
+}
+```
+
 ### CSS variables caveat
 
 Values that contain CSS variables (or our `tokens`) might not be always converted, for example:
