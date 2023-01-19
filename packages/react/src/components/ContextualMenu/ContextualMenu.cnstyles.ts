@@ -76,6 +76,9 @@ export const getMenuItemStyles = memoizeFunction(
           '.ms-ContextualMenu-submenuIcon': {
             color: palette.neutralPrimary,
           },
+          [HighContrastSelector]: {
+            ...getHighContrastNoAdjustStyle(),
+          },
         },
       },
       rootFocused: {
