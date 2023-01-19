@@ -25,8 +25,9 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
 export const CheckboxField_unstable: ForwardRefComponent<CheckboxFieldProps_unstable>;
 
 // @public (undocumented)
-export type CheckboxFieldProps_unstable = CheckboxProps & Omit<FieldShimProps, 'label'> & {
-    fieldLabel?: FieldShimProps['label'];
+export type CheckboxFieldProps_unstable = Omit<FieldShimProps<CheckboxProps>, 'label'> & {
+    label?: CheckboxProps['label'];
+    fieldLabel?: FieldShimProps<CheckboxProps>['label'];
 };
 
 // @public

@@ -92,6 +92,8 @@ import { DropdownOpenEvents } from '@fluentui/react-combobox';
 import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
+import { Field } from '@fluentui/react-field';
+import { fieldClassNames } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
@@ -492,6 +494,10 @@ export { DropdownProps }
 export { DropdownSlots }
 
 export { DropdownState }
+
+export { Field }
+
+export { fieldClassNames }
 
 export { FieldProps }
 

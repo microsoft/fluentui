@@ -324,7 +324,13 @@ export type { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/re
 export { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
 
-export { renderField_unstable, useFieldStyles_unstable, useField_unstable } from '@fluentui/react-field';
+export {
+  Field,
+  fieldClassNames,
+  renderField_unstable,
+  useFieldStyles_unstable,
+  useField_unstable,
+} from '@fluentui/react-field';
 export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {

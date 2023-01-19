@@ -1,26 +1,22 @@
 import * as React from 'react';
-import { Field, FieldShimProps, getPartitionedFieldShimProps } from '@fluentui/react-field';
+import { FieldShimProps, makeFieldShim } from '@fluentui/react-field';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Checkbox, CheckboxProps } from '../../Checkbox';
 
-export type CheckboxFieldProps = CheckboxProps &
-  Omit<FieldShimProps, 'label'> & {
-    fieldLabel?: FieldShimProps['label'];
-  };
+export type CheckboxFieldProps = Omit<FieldShimProps<CheckboxProps>, 'label'> & {
+  label?: CheckboxProps['label'];
+  fieldLabel?: FieldShimProps<CheckboxProps>['label'];
+};
 
-/**
- * @deprecated Use Field with Checkbox: `<Field><Checkbox /></Field>`
- */
+/** @deprecated Use Field with Checkbox: `<Field><Checkbox /></Field>` */
 export const CheckboxField: ForwardRefComponent<CheckboxFieldProps> = React.forwardRef((props, ref) => {
-  const { label, fieldLabel } = props;
-  // eslint-disable-next-line deprecation/deprecation
-  const [fieldProps, checkboxProps] = getPartitionedFieldShimProps(props);
+  const CheckboxFieldShim = makeFieldShim(Checkbox);
   return (
-    <Field {...fieldProps} label={fieldLabel}>
-      <Checkbox {...checkboxProps} label={label} ref={ref} />
-    </Field>
+    <CheckboxFieldShim
+      {...props}
+      label={props.fieldLabel}
+      control={{ ...props.control, label: props.label }}
+      ref={ref}
+    />
   );
 });
-
-// eslint-disable-next-line deprecation/deprecation
-CheckboxField.displayName = 'CheckboxField';

@@ -11,7 +11,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import { FieldShimProps } from '@fluentui/react-field';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -43,7 +43,7 @@ export type RadioGroupContextValues = {
 export const RadioGroupField_unstable: ForwardRefComponent<RadioGroupFieldProps_unstable>;
 
 // @public (undocumented)
-export type RadioGroupFieldProps_unstable = RadioGroupProps & FieldShimProps;
+export type RadioGroupFieldProps_unstable = FieldShimProps<RadioGroupProps>;
 
 // @public
 export type RadioGroupOnChangeData = {

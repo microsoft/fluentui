@@ -9,7 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FieldShimProps } from '@fluentui/react-field';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -27,7 +27,7 @@ export const textareaClassNames: SlotClassNames<TextareaSlots>;
 export const TextareaField_unstable: ForwardRefComponent<TextareaFieldProps_unstable>;
 
 // @public (undocumented)
-export type TextareaFieldProps_unstable = TextareaProps & FieldShimProps;
+export type TextareaFieldProps_unstable = FieldShimProps<TextareaProps>;
 
 // @public
 export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {

@@ -9,7 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FieldShimProps } from '@fluentui/react-field';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -34,7 +34,7 @@ export const sliderCSSVars: {
 export const SliderField_unstable: ForwardRefComponent<SliderFieldProps_unstable>;
 
 // @public (undocumented)
-export type SliderFieldProps_unstable = SliderProps & FieldShimProps;
+export type SliderFieldProps_unstable = FieldShimProps<SliderProps>;
 
 // @public (undocumented)
 export type SliderOnChangeData = {
