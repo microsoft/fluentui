@@ -13,6 +13,7 @@ export type FieldShimProps<ControlProps> = ControlProps & {
     | 'hint'
     | 'label'
     | 'orientation'
+    | 'required'
     | 'size'
     | 'style'
     | 'validationMessage'
@@ -30,6 +31,7 @@ function getPartitionedFieldShimProps<ControlProps>(props: FieldShimProps<Contro
     hint,
     label,
     orientation,
+    required,
     size,
     style,
     validationMessage,
@@ -44,6 +46,7 @@ function getPartitionedFieldShimProps<ControlProps>(props: FieldShimProps<Contro
       hint,
       label,
       orientation,
+      required,
       size,
       style,
       validationMessage,
@@ -51,6 +54,7 @@ function getPartitionedFieldShimProps<ControlProps>(props: FieldShimProps<Contro
       validationState,
     },
     {
+      required,
       size,
       ...restOfProps,
       ...control,
