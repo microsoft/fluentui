@@ -2,7 +2,7 @@
 
 [@layeshifter](https://github.com/layershifter)
 
-This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used in Fluent UI React v9) to style components.
+This document covers how to use [Griffel][griffel] CSS-in-JS (used in Fluent UI React v9) to efficiently style components.
 
 ## Table of contents
 
@@ -42,7 +42,7 @@ This document covers how to efficiently use [Griffel][griffel] CSS-in-JS (used i
 
 # Introduction
 
-Griffel is a hybrid CSS-in-JS that features runtime option like any other CSS-in-JS and [Ahead-of-time compilation][griffel-aot] with [CSS extraction][griffel-css-extraction] to reduce runtime footprint and improve performance.
+Griffel is a hybrid CSS-in-JS that features a runtime option like any other CSS-in-JS solution and [Ahead-of-time compilation][griffel-aot] with [CSS extraction][griffel-css-extraction] to reduce runtime footprint and improve performance.
 
 # Core concepts
 
@@ -74,7 +74,7 @@ Griffel uses Atomic CSS to generate classes. In Atomic CSS every property-value 
 
 ## `makeStyles`
 
-`makeStyles` is used to define style permutations in components and is used for style overrides. Returns a [React hook][react-hook] that should be called inside a component:
+`makeStyles` is used to define style permutations in components and is used for style overrides. It returns a [React hook][react-hook] that should be called inside a component:
 
 ```js
 import { makeStyles } from '@griffel/react';
@@ -102,7 +102,7 @@ const useClasses = makeStyles({
 });
 ```
 
-> 💡 **Note:** The most of the functions follow syntax in matching CSS properties, but each value should a separate argument:
+> 💡 **Note:** Most of the functions follow syntax matching CSS properties, but each value should be a separate argument:
 
 ```js
 // ❌ Will produce wrong results:
@@ -141,7 +141,7 @@ const useClasses = makeStyles({
 // produces 6 classes (1 + 1 + 4 for expanded padding)
 ```
 
-> 💡**Tip:** Preview generated classes consider in the [Try out][griffel-try-out] sandbox.
+> 💡**Tip:** Preview generated classes in the [Try out][griffel-try-out] sandbox.
 
 However, "CSS rule explosion" can happen when using nested selectors, [pseudo classes][mdn-pseudo-classes]/selectors and [At-rules][mdn-at-rules]:
 
@@ -173,7 +173,7 @@ const useClasses = makeStyles({
 // produces 26 classes ((4+4)+(4+4)+2+(4+4))
 ```
 
-Such cases might be unavoidable by design, [the next section](#makeresetstyles) covers APIs to address this problem.
+Such cases might be unavoidable by design, [the `makeResetStyles` section](#makeresetstyles) covers APIs to address this problem.
 
 ## `mergeClasses()`
 
@@ -254,7 +254,7 @@ function App(props) {
 
 ## `makeResetStyles`
 
-This API works similarly to `makeStyles` and is used to styles as a single monolithic class to avoid the "CSS rules explosion" problem.
+This API works similarly to `makeStyles` and is used to generate styles as a single monolithic class to avoid the "CSS rules explosion" problem.
 
 ```js
 import { makeResetStyles } from '@griffel/react';
@@ -515,7 +515,7 @@ const useClasses = makeStyles({
 });
 ```
 
-Exact colors should be never used in Fluent UI code and we do not recommend their use in applications either. The exception is [system-colors][mdn-system-colors] used by forced colors mode (inside media queries):
+Exact colors should never be used in Fluent UI code and we do not recommend their use in applications either. The exception is [system-colors][mdn-system-colors] used by forced colors mode (inside media queries):
 
 ```js
 import { makeStyles } from '@griffel/react';
@@ -533,7 +533,7 @@ const useClasses = makeStyles({
 
 Styles written for components should follow these rules:
 
-- base styles should contain the most of CSS definitions that are applicable to base state
+- base styles should contain most of the CSS definitions that are applicable to base state
   - use `makeResetStyles` to define them
 - styles for permutations should be granular
 - base styles should not be duplicated by permutations
@@ -635,7 +635,7 @@ function Component(props) {
 }
 ```
 
-Conditions to apply styles might be complex, in this case consider to extract them to separate variables:
+Conditions to apply styles might be complex, in this case consider extracting them to separate variables:
 
 ```js
 // ✅ Do
@@ -726,7 +726,7 @@ const useBaseClassName = makeResetStyles({
 
 ### Apply classes directly to elements
 
-Do not use nested selectors to target an element or slot if you can apply classes on directly on it.
+Do not use nested selectors to target an element or slot if you can apply classes directly on it.
 
 ```jsx
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -755,9 +755,9 @@ function App(props) {
   const classes = useClasses();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.slotA}>
       {/* 💡 Classes can be passed directly to this element */}
-      <div className={classes.slot} />
+      <div className={classes.slotB} />
     </div>
   );
 }
