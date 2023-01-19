@@ -52,7 +52,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
   Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
 
-  const forceUpdate = () => {
+  let forceUpdate = () => {
     if (isFirstUpdate) {
       scrollParents.add(getScrollParent(container));
       if (target instanceof HTMLElement) {
@@ -97,6 +97,10 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const updatePosition = debounce(() => forceUpdate());
 
   const dispose = () => {
+    // debounced update can still occur afterwards
+    // so destroy the reference to forceUpdate
+    forceUpdate = () => null;
+
     if (targetWindow) {
       targetWindow.removeEventListener('scroll', updatePosition);
       targetWindow.removeEventListener('resize', updatePosition);

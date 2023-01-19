@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { BaseTreeItemElement } from '../BaseTreeItem/BaseTreeItem.types';
 import { TreeContextValue } from '../../contexts/treeContext';
 
 export type TreeSlots = {
@@ -9,12 +8,24 @@ export type TreeSlots = {
 
 export type TreeOpenChangeData = { open: boolean; id: string } & (
   | {
-      event: React.MouseEvent<BaseTreeItemElement>;
+      event: React.MouseEvent<HTMLElement>;
+      type: 'expandIconClick';
+    }
+  | {
+      event: React.MouseEvent<HTMLElement>;
       type: 'click';
     }
   | {
-      event: React.KeyboardEvent<BaseTreeItemElement>;
-      type: 'arrowRight' | 'arrowLeft';
+      event: React.KeyboardEvent<HTMLElement>;
+      type: 'enter';
+    }
+  | {
+      event: React.KeyboardEvent<HTMLElement>;
+      type: 'arrowRight';
+    }
+  | {
+      event: React.KeyboardEvent<HTMLElement>;
+      type: 'arrowLeft';
     }
 );
 
@@ -25,6 +36,20 @@ export type TreeContextValues = {
 };
 
 export type TreeProps = ComponentProps<TreeSlots> & {
+  /**
+   * A tree item can have various appearances:
+   * - 'subtle' (default): The default tree item styles.
+   * - 'subtle-alpha': Minimizes emphasis on hovered or focused states.
+   * - 'transparent': Removes background color.
+   * @default 'subtle'
+   */
+  appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+
+  /**
+   * Size of the tree item.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
   /**
    * Controls the state of the open subtrees.
    * These property is ignored for subtrees.

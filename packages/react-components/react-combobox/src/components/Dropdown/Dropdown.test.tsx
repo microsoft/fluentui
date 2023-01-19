@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Dropdown', () => {
   isConformant({
@@ -66,6 +66,19 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
+  });
+
+  it('adds aria-owns pointing to the popup', () => {
+    const { getByRole, container } = render(
+      <Dropdown open className="root">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const listboxId = getByRole('listbox').id;
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
   });
 
   /* open/close tests */

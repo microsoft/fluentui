@@ -12,7 +12,7 @@ export type TableContextValue = {
   size: 'extra-small' | 'small' | 'medium';
 
   /**
-   * Render all table elements as divs intead of semantic table elements
+   * Render all table elements as divs instead of semantic table elements
    * Using divs no longer uses `display: table` layout but `display: flex`
    * @default false
    */

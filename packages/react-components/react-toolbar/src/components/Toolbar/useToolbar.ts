@@ -34,6 +34,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     root: getNativeElementProps('div', {
       role: 'toolbar',
       ref,
+      ...(vertical && { 'aria-orientation': 'vertical' }),
       ...arrowNavigationProps,
       ...props,
     }),

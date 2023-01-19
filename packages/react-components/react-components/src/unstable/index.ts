@@ -72,9 +72,14 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  ComboboxProvider,
+  useComboboxContextValues,
+  ListboxProvider,
+  useListboxContextValues,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
+  ComboboxContextValue,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -86,6 +91,7 @@ export type {
   DropdownOpenEvents,
   DropdownSlots,
   DropdownState,
+  ListboxContextValue,
   ListboxContextValues,
   ListboxProps,
   ListboxSlots,
@@ -107,32 +113,6 @@ export {
 export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  Toolbar,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  renderToolbar_unstable,
-  toolbarClassNames,
-  useToolbar_unstable,
-  useToolbarDividerStyles_unstable,
-  useToolbarStyles_unstable,
-} from '@fluentui/react-toolbar';
-
-export type {
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarContextValue,
-  ToolbarContextValues,
-  ToolbarDividerProps,
-  ToolbarDividerState,
-  ToolbarProps,
-  ToolbarSlots,
-  ToolbarState,
-  ToolbarToggleButtonProps,
-  ToolbarToggleButtonState,
-} from '@fluentui/react-toolbar';
-
-export {
   InfoButton,
   infoButtonClassNames,
   useInfoButton_unstable,
@@ -140,19 +120,6 @@ export {
   renderInfoButton_unstable,
 } from '@fluentui/react-infobutton';
 export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
-
-export {
-  Overflow,
-  OverflowItem,
-  useIsOverflowGroupVisible,
-  useIsOverflowItemVisible,
-  useOverflowMenu,
-  DATA_OVERFLOWING,
-  DATA_OVERFLOW_MENU,
-  DATA_OVERFLOW_ITEM,
-} from '@fluentui/react-overflow';
-
-export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
 
 export {
   TableCell,
@@ -211,7 +178,7 @@ export {
   useTableFeatures,
   useTableSelection,
   useTableSort,
-  createColumn,
+  createTableColumn,
   DataGridCell,
   dataGridCellClassNames,
   useDataGridCellStyles_unstable,
@@ -247,6 +214,8 @@ export {
   useDataGridSelectionCell_unstable,
   renderDataGridSelectionCell_unstable,
   dataGridSelectionCellClassNames,
+  TableRowIdContextProvider,
+  useTableRowIdContext,
 } from '@fluentui/react-table';
 
 export type {
@@ -280,16 +249,16 @@ export type {
   TableCellLayoutProps,
   TableCellLayoutState,
   TableCellLayoutSlots,
-  UseTableOptions,
-  TableState as HeadlessTableState,
+  UseTableFeaturesOptions,
+  TableFeaturesState,
   TableSelectionState,
   TableSortState,
-  TableStatePlugin,
-  RowState,
-  RowId,
-  ColumnDefinition,
-  ColumnId,
-  CreateColumnOptions,
+  TableFeaturePlugin,
+  TableRowData,
+  TableRowId,
+  TableColumnDefinition,
+  TableColumnId,
+  CreateTableColumnOptions,
   DataGridHeaderCellProps,
   DataGridHeaderCellSlots,
   DataGridHeaderCellState,
@@ -354,10 +323,16 @@ export {
 export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
+  Virtualizer,
+  virtualizerClassNames,
+  useVirtualizer_unstable,
+  renderVirtualizer_unstable,
+  useVirtualizerStyles_unstable,
+  useIntersectionObserver,
+} from '@fluentui/react-virtualizer';
+export type {
+  VirtualizerProps,
+  VirtualizerState,
+  VirtualizerSlots,
+  VirtualizerChildRenderFunction,
+} from '@fluentui/react-virtualizer';

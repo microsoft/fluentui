@@ -15,6 +15,7 @@ const distRoot = path.resolve(__dirname, '../../apps/test-bundles/dist');
 const sizes = {};
 const outputFilename = 'bundlesize.json';
 
+// eslint-disable-next-line no-var
 var items = fs.readdirSync(distRoot);
 items.forEach(item => {
   const file = path.join(distRoot, item);

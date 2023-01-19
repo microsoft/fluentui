@@ -6,12 +6,12 @@ import type { VirtualElement } from './types';
  * @param child - Theme element to set the virtual parent
  * @param parent - The virtual parent, use `undefined` to remove a virtual parent relationship
  */
-export function setVirtualParent(child: HTMLElement, parent?: HTMLElement): void {
+export function setVirtualParent(child: Node, parent?: Node): void {
   if (!child) {
     return;
   }
 
-  const virtualChild = <VirtualElement>child;
+  const virtualChild = child as VirtualElement;
 
   if (!virtualChild._virtual) {
     virtualChild._virtual = {};

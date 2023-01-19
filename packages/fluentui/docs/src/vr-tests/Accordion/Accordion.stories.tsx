@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Accordion } from '@fluentui/react-northstar';
 import AccordionDefaultBsize from '../../examples/components/Accordion/Performance/AccordionDefault.bsize';

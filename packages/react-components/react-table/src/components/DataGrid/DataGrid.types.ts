@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
 import type {
   SortState,
-  TableState as HeadlessTableState,
+  TableFeaturesState,
   UseTableSortOptions,
   SelectionMode,
   UseTableSelectionOptions,
@@ -12,7 +12,7 @@ import { TableRowProps } from '../TableRow/TableRow.types';
 
 export type DataGridSlots = TableSlots;
 
-export type FocusMode = 'none' | 'cell' | 'row_unstable';
+export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
 
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
@@ -21,12 +21,12 @@ export type DataGridContextValues = TableContextValues & {
 // Use any here since we can't know the user types
 // The user is responsible for narrowing the type downstream
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type DataGridContextValue = HeadlessTableState<any> & {
+export type DataGridContextValue = TableFeaturesState<any> & {
   /**
    * How focus navigation will work in the datagrid
    * @default cell
    */
-  focusMode: FocusMode;
+  focusMode: DataGridFocusMode;
 
   /**
    * Lets child components know if rows selection is enabled
@@ -67,7 +67,7 @@ export type DataGridProps = TableProps &
 /**
  * State used in rendering DataGrid
  */
-export type DataGridState = TableState & { tableState: HeadlessTableState<unknown> } & Pick<
+export type DataGridState = TableState & { tableState: TableFeaturesState<unknown> } & Pick<
     DataGridContextValue,
     'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'
   >;

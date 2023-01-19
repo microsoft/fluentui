@@ -15,7 +15,7 @@ export const Shape = () => {
     <div>
       <ProgressBar className={styles.container} shape="rounded" thickness="large" value={0.5} />
 
-      <ProgressBar className={styles.container} shape="rectangular" thickness="large" value={0.5} />
+      <ProgressBar className={styles.container} shape="square" thickness="large" value={0.5} />
     </div>
   );
 };

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(DataGridSelectionCell): should render `aria-selected` on the cell",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
