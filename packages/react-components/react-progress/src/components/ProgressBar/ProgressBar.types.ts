@@ -19,7 +19,7 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
    * The shape of the bar and track.
    * @default 'rounded'
    */
-  shape?: 'rounded' | 'rectangular';
+  shape?: 'rounded' | 'square';
   /**
    * A decimal number between `0` and `1` (or between `0` and `max` if given),
    * which specifies how much of the task has been completed.

@@ -13,14 +13,12 @@ import {
   MenuButton,
   tokens,
   mergeClasses,
-} from '@fluentui/react-components';
-import {
   Overflow,
   OverflowItem,
   useIsOverflowGroupVisible,
   useIsOverflowItemVisible,
   useOverflowMenu,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

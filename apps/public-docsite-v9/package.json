@@ -22,11 +22,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.104.5",
-    "@fluentui/react-northstar": "^0.65.0",
-    "@fluentui/react-icons-northstar": "^0.65.0",
+    "@fluentui/react": "^8.104.6",
+    "@fluentui/react-northstar": "^0.66.0",
+    "@fluentui/react-icons-northstar": "^0.66.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.9.1",
+    "@fluentui/react-components": "^9.11.0",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-theme": "^9.1.5",
     "@griffel/react": "^1.5.2",

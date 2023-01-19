@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2023 08:38:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.17)
+
+Mon, 16 Jan 2023 08:38:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.16..@fluentui/react-spinner_v9.0.17)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.0.17 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.16)
 

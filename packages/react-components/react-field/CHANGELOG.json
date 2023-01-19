@@ -2,6 +2,35 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:39:01 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5b35bf93f6634324e8651ec29640353edd11178b",
+            "comment": "fix: Field styles do not wrap SVG status icon in inline parent to avoid layout bugs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.0.17",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-field_v9.0.0-alpha.14",
       "version": "9.0.0-alpha.14",
