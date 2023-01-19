@@ -58,7 +58,3 @@ export {
   useOptionGroup_unstable,
 } from './OptionGroup';
 export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './OptionGroup';
-
-// eslint-disable-next-line deprecation/deprecation
-export { ComboboxField as ComboboxField_unstable } from './ComboboxField';
-export type { ComboboxFieldProps as ComboboxFieldProps_unstable } from './ComboboxField';

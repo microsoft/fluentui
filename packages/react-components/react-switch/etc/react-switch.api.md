@@ -8,8 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldShimProps } from '@fluentui/react-field';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -26,12 +25,6 @@ export const switchClassName: string;
 
 // @public (undocumented)
 export const switchClassNames: SlotClassNames<SwitchSlots>;
-
-// @public @deprecated (undocumented)
-export const SwitchField_unstable: ForwardRefComponent<SwitchFieldProps_unstable>;
-
-// @public (undocumented)
-export type SwitchFieldProps_unstable = FieldShimProps<SwitchProps>;
 
 // @public (undocumented)
 export type SwitchOnChangeData = {

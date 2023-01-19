@@ -8,7 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -29,11 +29,6 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
     validationState?: 'error' | 'warning' | 'success';
 };
 
-// @internal (undocumented)
-export type FieldShimProps<ControlProps> = ControlProps & {
-    control?: ControlProps;
-} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
-
 // @public
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
@@ -45,9 +40,6 @@ export type FieldSlots = {
 
 // @public
 export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;
-
-// @internal
-export function makeFieldShim<ControlProps>(Control: React_2.ComponentType<ControlProps>): ForwardRefComponent<FieldShimProps<ControlProps>>;
 
 // @public
 export const renderField_unstable: (state: FieldState) => JSX.Element;

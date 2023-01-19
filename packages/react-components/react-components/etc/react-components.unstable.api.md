@@ -31,14 +31,11 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
-import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
 import { ComboboxContextValues } from '@fluentui/react-combobox';
-import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
-import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
 import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
 import { ComboboxOpenEvents } from '@fluentui/react-combobox';
 import { ComboboxProps } from '@fluentui/react-combobox';
@@ -97,13 +94,13 @@ import { fieldClassNames } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
 import { InfoButtonSlots } from '@fluentui/react-infobutton';
 import { InfoButtonState } from '@fluentui/react-infobutton';
-import { InputField_unstable as InputField } from '@fluentui/react-input';
-import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+import { InputProps } from '@fluentui/react-input';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValue } from '@fluentui/react-combobox';
@@ -127,10 +124,7 @@ import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
 import { ProgressBarSlots } from '@fluentui/react-progress';
 import { ProgressBarState } from '@fluentui/react-progress';
-import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
-import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
-import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
-import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
+import { RadioGroupProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
@@ -164,18 +158,13 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
-import { SelectField_unstable as SelectField } from '@fluentui/react-select';
-import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
-import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
-import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
+import { SliderProps } from '@fluentui/react-slider';
 import { SortDirection } from '@fluentui/react-table';
-import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
-import { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
-import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
-import { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
+import { SpinButtonProps } from '@fluentui/react-spinbutton';
+import { SwitchProps } from '@fluentui/react-switch';
 import { Table } from '@fluentui/react-table';
 import { TableBody } from '@fluentui/react-table';
 import { tableBodyClassName } from '@fluentui/react-table';
@@ -239,8 +228,7 @@ import { TableSelectionState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
 import { TableSortState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
-import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
-import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
+import { TextareaProps } from '@fluentui/react-textarea';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useCard_unstable } from '@fluentui/react-card';
@@ -373,9 +361,14 @@ export { CardSlots }
 
 export { CardState }
 
-export { CheckboxField }
+// @public @deprecated (undocumented)
+export const CheckboxField: ForwardRefComponent<CheckboxFieldProps>;
 
-export { CheckboxFieldProps }
+// @public (undocumented)
+export type CheckboxFieldProps = Omit<FieldShimProps<CheckboxProps>, 'label'> & {
+    label?: CheckboxProps['label'];
+    fieldLabel?: FieldShimProps<CheckboxProps>['label'];
+};
 
 export { Combobox }
 
@@ -385,9 +378,11 @@ export { ComboboxContextValue }
 
 export { ComboboxContextValues }
 
-export { ComboboxField }
+// @public @deprecated (undocumented)
+export const ComboboxField: ForwardRefComponent<ComboboxFieldProps>;
 
-export { ComboboxFieldProps }
+// @public (undocumented)
+export type ComboboxFieldProps = FieldShimProps<ComboboxProps>;
 
 export { ComboboxOpenChangeData }
 
@@ -515,9 +510,11 @@ export { InfoButtonSlots }
 
 export { InfoButtonState }
 
-export { InputField }
+// @public @deprecated (undocumented)
+export const InputField: ForwardRefComponent<InputFieldProps>;
 
-export { InputFieldProps }
+// @public (undocumented)
+export type InputFieldProps = FieldShimProps<InputProps>;
 
 export { Listbox }
 
@@ -565,13 +562,17 @@ export { ProgressBarSlots }
 
 export { ProgressBarState }
 
-export { ProgressField }
+// @public @deprecated (undocumented)
+export const ProgressField: ForwardRefComponent<ProgressFieldProps>;
 
-export { ProgressFieldProps }
+// @public (undocumented)
+export type ProgressFieldProps = FieldShimProps<ProgressBarProps>;
 
-export { RadioGroupField }
+// @public @deprecated (undocumented)
+export const RadioGroupField: ForwardRefComponent<RadioGroupFieldProps>;
 
-export { RadioGroupFieldProps }
+// @public (undocumented)
+export type RadioGroupFieldProps = FieldShimProps<RadioGroupProps>;
 
 export { renderAlert_unstable }
 
@@ -639,9 +640,11 @@ export { Select }
 
 export { selectClassNames }
 
-export { SelectField }
+// @public @deprecated (undocumented)
+export const SelectField: ForwardRefComponent<SelectFieldProps>;
 
-export { SelectFieldProps }
+// @public (undocumented)
+export type SelectFieldProps = FieldShimProps<SelectProps>;
 
 export { SelectProps }
 
@@ -649,19 +652,25 @@ export { SelectSlots }
 
 export { SelectState }
 
-export { SliderField }
+// @public @deprecated (undocumented)
+export const SliderField: ForwardRefComponent<SliderFieldProps>;
 
-export { SliderFieldProps }
+// @public (undocumented)
+export type SliderFieldProps = FieldShimProps<SliderProps>;
 
 export { SortDirection }
 
-export { SpinButtonField }
+// @public @deprecated (undocumented)
+export const SpinButtonField: ForwardRefComponent<SpinButtonFieldProps>;
 
-export { SpinButtonFieldProps }
+// @public (undocumented)
+export type SpinButtonFieldProps = FieldShimProps<SpinButtonProps>;
 
-export { SwitchField }
+// @public @deprecated (undocumented)
+export const SwitchField: ForwardRefComponent<SwitchFieldProps>;
 
-export { SwitchFieldProps }
+// @public (undocumented)
+export type SwitchFieldProps = FieldShimProps<SwitchProps>;
 
 export { Table }
 
@@ -789,9 +798,11 @@ export { TableSortState }
 
 export { TableState }
 
-export { TextareaField }
+// @public @deprecated (undocumented)
+export const TextareaField: ForwardRefComponent<TextareaFieldProps>;
 
-export { TextareaFieldProps }
+// @public (undocumented)
+export type TextareaFieldProps = FieldShimProps<TextareaProps>;
 
 export { useAlert_unstable }
 

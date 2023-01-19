@@ -1,8 +1,9 @@
-import { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { Field, FieldProps } from '../Field';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Field, FieldProps } from '@fluentui/react-field';
 
 /**
+ * Props of the deprecated [Control]Field shim components.
  * @internal
  */
 export type FieldShimProps<ControlProps> = ControlProps & {
@@ -63,11 +64,21 @@ function getPartitionedFieldShimProps<ControlProps>(
 }
 
 /**
- * @internal Only for use by the deprecated [Control]Field shim components.
+ * Only for use by the deprecated [Control]Field shim components.
+ * @internal
+ */
+export type MakeFieldShimOptions<ControlProps> = {
+  mapProps?: (props: FieldShimProps<ControlProps>) => FieldShimProps<ControlProps>;
+  displayName?: string;
+};
+
+/**
+ * Only for use to make deprecated [Control]Field shim components.
+ * @internal
  */
 export function makeFieldShim<ControlProps>(
   Control: React.ComponentType<ControlProps>,
-  mapProps?: (props: FieldShimProps<ControlProps>) => FieldShimProps<ControlProps>,
+  { mapProps, displayName }: MakeFieldShimOptions<ControlProps> = {},
 ) {
   const FieldShim = React.forwardRef((props, ref) => {
     if (mapProps) {
@@ -82,7 +93,7 @@ export function makeFieldShim<ControlProps>(
     );
   }) as ForwardRefComponent<FieldShimProps<ControlProps>>;
 
-  FieldShim.displayName = `${Control.displayName}Field`;
+  FieldShim.displayName = displayName ?? `${Control.displayName}Field`;
 
   return FieldShim;
 }

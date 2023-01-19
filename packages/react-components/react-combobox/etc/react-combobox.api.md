@@ -9,8 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
-import { FieldShimProps } from '@fluentui/react-field';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -29,12 +28,6 @@ export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appeara
 
 // @public (undocumented)
 export type ComboboxContextValues = ComboboxBaseContextValues;
-
-// @public @deprecated (undocumented)
-export const ComboboxField_unstable: ForwardRefComponent<ComboboxFieldProps_unstable>;
-
-// @public (undocumented)
-export type ComboboxFieldProps_unstable = FieldShimProps<ComboboxProps>;
 
 // @public (undocumented)
 export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;
