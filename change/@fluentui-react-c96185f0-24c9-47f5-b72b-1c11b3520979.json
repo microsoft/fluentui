@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ContextualMenu items now have correct hover styling in HCM.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
