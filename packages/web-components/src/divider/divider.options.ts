@@ -23,7 +23,7 @@ export const DividerAlignContent = {
 export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
 
 /**
- * Appearance is the divider color defined by a design token alias.
+ * DividerAppearance - divider color defined by a design token alias.
  * @public
  */
 export const DividerAppearance = {
@@ -39,4 +39,11 @@ export const DividerAppearance = {
  */
 export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
 
-// inset
+/**
+ * Inset - display block or inline
+ * @public
+ */
+export const Inset = {
+  true: true,
+  false: false,
+} as const;

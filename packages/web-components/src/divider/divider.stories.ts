@@ -25,14 +25,14 @@ export default {
   title: 'Components/Divider',
   args: {
     content: 'Text',
-    dividerAlignContent: 'start',
+    dividerAlignContent: 'center',
     dividerAppearance: 'brand',
     dividerRole: 'presentation',
-    inset: true,
-    orientation: 'vertical',
+    inset: false,
+    orientation: 'horizontal',
   },
   argTypes: {
-    dividerAlignment: {
+    dividerAlignContent: {
       options: Object.keys(DividerAlignContent),
       control: {
         type: 'select',

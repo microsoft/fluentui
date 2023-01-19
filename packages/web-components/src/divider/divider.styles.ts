@@ -18,4 +18,12 @@ export const styles = css`
     display: flex;
     align-items: end;
   }
+  :host([DividerAppearance='strong']) {
+  }
+  :host([DividerAppearance='brand']) {
+  }
+  :host([DividerAppearance='subtle']) {
+  }
+  :host([DividerAppearance='default']) {
+  }
 `;
