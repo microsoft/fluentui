@@ -9,6 +9,7 @@ import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
+import { FASTProgressRing } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
@@ -222,6 +223,44 @@ export const ProgressBarValidationState: {
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
 // @public
+export class Spinner extends FASTProgressRing {
+    appearance: SpinnerAppearance;
+    size: SpinnerSize;
+}
+
+// @public
+export const SpinnerAppearance: {
+    readonly primary: "primary";
+    readonly inverted: "inverted";
+};
+
+// @public (undocumented)
+export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
+
+// @public
+export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+
+// @public
+export const SpinnerSize: {
+    readonly small: "small";
+    readonly tiny: "tiny";
+    readonly 'extra-small': "extra-small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly 'extra-large': "extra-large";
+    readonly huge: "huge";
+};
+
+// @public
+export type SpinnerSize = Values<typeof SpinnerSize>;
+
+// @public (undocumented)
+export const SpinnerStyles: ElementStyles;
+
+// @public (undocumented)
+export const SpinnerTemplate: ElementViewTemplate<Spinner>;
+
+// @public
 class Text_2 extends FASTElement {
     align: TextAlign;
     block: boolean;
@@ -295,6 +334,9 @@ export const TextWeight: {
 
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
+
+// @public (undocumented)
+export type Values<T> = T[keyof T];
 
 // (No @packageDocumentation comment for this package)
 
