@@ -41,8 +41,21 @@ const useRootStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   base: {
-    marginTop: tokens.spacingVerticalXXS,
+    paddingTop: tokens.spacingVerticalXXS,
+    paddingBottom: tokens.spacingVerticalXXS,
+  },
+
+  large: {
+    paddingTop: '1px',
+    paddingBottom: '1px',
+  },
+
+  vertical: {
     marginBottom: tokens.spacingVerticalXXS,
+  },
+
+  verticalLarge: {
+    marginBottom: tokens.spacingVerticalXS,
   },
 
   horizontal: {
@@ -122,6 +135,9 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
       classNames.label,
       labelStyles.base,
       horizontal && labelStyles.horizontal,
+      !horizontal && labelStyles.vertical,
+      state.label.size === 'large' && labelStyles.large,
+      !horizontal && state.label.size === 'large' && labelStyles.verticalLarge,
       state.label.className,
     );
   }
