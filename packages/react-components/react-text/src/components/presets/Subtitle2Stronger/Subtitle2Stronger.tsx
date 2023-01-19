@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Subtitle2Stronger typography variant
+ * Text preset component for the Subtitle2Stronger typography variant
  */
 export const Subtitle2Stronger: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,

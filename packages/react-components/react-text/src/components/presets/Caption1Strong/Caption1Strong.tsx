@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Caption1Strong typography variant
+ * Text preset component for the Caption1Strong typography variant
  */
 export const Caption1Strong: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,

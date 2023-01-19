@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Body1Stronger typography variant
+ * Text preset component for the Body1Stronger typography variant
  */
 export const Body1Stronger: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,

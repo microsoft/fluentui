@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Title 2 typography variant
+ * Text preset component for the Title 2 typography variant
  */
 export const Title2: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,

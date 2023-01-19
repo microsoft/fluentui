@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Body1 typography variant
+ * Text preset component for the Body1 typography variant
  */
 export const Body1: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,

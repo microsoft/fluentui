@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Display typography variant
+ * Text preset component for the Display typography variant
  */
 export const Display: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,

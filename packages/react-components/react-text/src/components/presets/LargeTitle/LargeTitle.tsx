@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Text wrapper component for the Large Title typography variant
+ * Text preset component for the Large Title typography variant
  */
 export const LargeTitle: FunctionComponent<TextPresetProps> = createPreset({
   useStyles,
