@@ -88,7 +88,7 @@ Freeform.parameters = {
       story:
         'Combobox supports the `freeform` prop, which allows freeform text input. ' +
         'Implementing filtering together with `freeform` is generally recommended.' +
-        "We also recommend displaying a custom freeform string if the user input doesn't match an animal",
+        "We also recommend displaying a custom freeform string if the user input doesn't match an existing option.",
     },
   },
 };
