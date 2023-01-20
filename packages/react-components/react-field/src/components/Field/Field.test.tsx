@@ -167,12 +167,4 @@ describe('Field', () => {
 
     expect(validationMessage.getAttribute('role')).toBe(role);
   });
-
-  it('sets role="alert" on the validation when it is an error', () => {
-    const result = render(<MockField validationState="error" validationMessage="test error message" />);
-
-    const validationMessage = result.getByText('test error message');
-
-    expect(validationMessage.getAttribute('role')).toBe('alert');
-  });
 });
