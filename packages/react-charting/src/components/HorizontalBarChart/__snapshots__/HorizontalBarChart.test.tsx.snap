@@ -49,7 +49,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -216,7 +216,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -559,7 +559,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -726,7 +726,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -942,7 +942,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
 </div>
 `;
 
-exports[`HorizontalBarChart snapShot testing Should not render bar values in absolute-scale variant 1`] = `
+exports[`HorizontalBarChart snapShot testing Should not render bar labels in absolute-scale variant 1`] = `
 <div
   className=
 
@@ -989,7 +989,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar values in abs
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -1120,7 +1120,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar values in abs
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -1268,7 +1268,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -1418,7 +1418,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;

@@ -8,7 +8,7 @@ import {
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 interface IMSBCVariantExampleState {
-  hideValues: boolean;
+  hideLabels: boolean;
 }
 
 export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSBCVariantExampleState> {
@@ -16,7 +16,7 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
     super(props);
 
     this.state = {
-      hideValues: false,
+      hideLabels: false,
     };
   }
 
@@ -109,20 +109,20 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
       <>
         <Checkbox
           label="Hide values"
-          checked={this.state.hideValues}
+          checked={this.state.hideLabels}
           onChange={this._onCheckChange}
           styles={{ root: { marginBottom: '20px' } }}
         />
         <MultiStackedBarChart
           data={data}
           variant={MultiStackedBarChartVariant.AbsoluteScale}
-          hideValues={this.state.hideValues}
+          hideLabels={this.state.hideLabels}
         />
       </>
     );
   }
 
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideValues: checked });
+    this.setState({ hideLabels: checked });
   };
 }

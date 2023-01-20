@@ -119,9 +119,9 @@ describe('MultiStackedBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should not render bar values in absolute-scale variant', () => {
+  it('Should not render bar labels in absolute-scale variant', () => {
     const component = renderer.create(
-      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} hideValues={true} />,
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} hideLabels={true} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

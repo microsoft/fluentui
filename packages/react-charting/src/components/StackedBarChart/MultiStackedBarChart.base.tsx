@@ -50,6 +50,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
+  /** Maximum total value of stacked bars in all charts */
   private _maxBarsTotalValue: number;
   private _isRTL: boolean = getRTL();
 
@@ -83,13 +84,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       legendColor: this.state.color,
       theme: theme!,
       variant: this.props.variant,
-      hideValues: this.props.hideValues,
+      hideLabels: this.props.hideLabels,
     });
 
     const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
     const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
-    this._getMaxBarsTotalValue();
+    this._maxBarsTotalValue = this._getMaxBarsTotalValue();
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
@@ -145,6 +146,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
+    /** Sum of values of stacked bars in current chart */
     const barsTotalValue = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
@@ -166,11 +168,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       return sumOfPercent;
     });
 
-    /**
-     * Include an imaginary placeholder with value equal to
-     * the difference between (maximum of all bar values) and (current bar value)
-     * while calculating sumOfPercent to get correct scalingRatio for absolute-scale variant
-     */
+    // Include an imaginary placeholder bar with value equal to
+    // the difference between maxBarsTotalValue and barsTotalValue
+    // while calculating sumOfPercent to get correct scalingRatio for absolute-scale variant
     if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale) {
       let value = total === 0 ? 0 : ((total - barsTotalValue) / total) * 100;
       if (value < 1 && value !== 0) {
@@ -215,7 +215,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         shouldHighlight: shouldHighlight,
         href: href,
         variant: this.props.variant,
-        hideValues: this.props.hideValues,
+        hideLabels: this.props.hideLabels,
       });
 
       return (
@@ -246,48 +246,48 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>
       );
     });
-    if (data.chartData!.length === 0) {
-      bars.push(
-        <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
-        </g>,
-      );
-    }
-    if (barsTotalValue === 0) {
-      bars.push(
-        <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-          <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
-        </g>,
-      );
-    }
-    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale && !this.props.hideValues) {
-      bars.push(
-        <text
-          key="text"
-          x={`${
-            startingPoint.length > 0
-              ? this._isRTL
-                ? 100 - startingPoint[startingPoint.length - 1] - value
-                : startingPoint[startingPoint.length - 1] + value
-              : 0
-          }%`}
-          y={barHeight / 2}
-          dominantBaseline="central"
-          transform={`translate(${this._isRTL ? -4 : 4})`}
-          className={this._classNames.barValue}
-          data-is-focusable={true}
-          aria-label={`Total: ${barsTotalValue}`}
-          role="img"
-        >
-          {d3FormatPrefix(barsTotalValue < 1000 ? '.2~' : '.1', barsTotalValue)(barsTotalValue)}
-        </text>,
-      );
+    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale) {
+      if (!this.props.hideLabels) {
+        bars.push(
+          <text
+            key="text"
+            x={`${
+              this._isRTL
+                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value
+                : (startingPoint[startingPoint.length - 1] || 0) + value
+            }%`}
+            y={barHeight / 2}
+            dominantBaseline="central"
+            transform={`translate(${this._isRTL ? -4 : 4})`}
+            className={this._classNames.barLabel}
+            data-is-focusable={true}
+            aria-label={`Total: ${barsTotalValue}`}
+            role="img"
+          >
+            {d3FormatPrefix(barsTotalValue < 1000 ? '.2~' : '.1', barsTotalValue)(barsTotalValue)}
+          </text>,
+        );
+      }
+    } else {
+      // Render placeholder bars only for part-to-whole variant
+      if (data.chartData!.length === 0) {
+        bars.push(
+          <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
+            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+          </g>,
+        );
+      }
+      if (barsTotalValue === 0) {
+        bars.push(
+          <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
+            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+          </g>,
+        );
+      }
     }
     const hideNumber = hideRatio === undefined ? false : hideRatio;
 
-    /**
-     * Hide right side text of chart title for absolute-scale variant
-     */
+    // Hide right side text of chart title for absolute-scale variant
     const showRatio =
       this.props.variant !== MultiStackedBarChartVariant.AbsoluteScale && !hideNumber && data!.chartData!.length === 2;
     const showNumber =
@@ -548,6 +548,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       );
       maxBarsTotalValue = Math.max(maxBarsTotalValue, barsTotalValue);
     });
-    this._maxBarsTotalValue = maxBarsTotalValue;
+    return maxBarsTotalValue;
   };
 }

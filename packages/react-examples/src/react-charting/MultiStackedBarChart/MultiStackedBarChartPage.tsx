@@ -74,6 +74,10 @@ export class MultiStackedBarChartPage extends React.Component<IComponentDemoPage
                 A number is displayed on the top of stacked bar chart if it has only one data point. This number shown
                 is the datapoint that is passed to the chart.
               </li>
+              <li>
+                The bar labels are shown by default in the absolute-scale variant. Set the <code>hideLabels</code> prop
+                to hide them.
+              </li>
             </ul>
           </div>
         }

@@ -6,7 +6,7 @@ import {
 import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleProps): IMultiStackedBarChartStyles => {
-  const { className, width, barHeight, shouldHighlight, theme, href, variant, hideValues } = props;
+  const { className, width, barHeight, shouldHighlight, theme, href, variant, hideLabels } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -37,7 +37,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
-      color: '#171717',
+      color: theme.palette.neutralPrimary,
       marginBottom: variant === MultiStackedBarChartVariant.AbsoluteScale ? '4px' : '5px',
     },
     singleChartRoot: {
@@ -85,13 +85,13 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     noData: {
       cursor: href ? 'pointer' : 'default',
     },
-    barValue: {
+    barLabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
     },
     chartWrapper: {
-      paddingRight: variant === MultiStackedBarChartVariant.AbsoluteScale && !hideValues ? 40 : 0,
+      paddingRight: variant === MultiStackedBarChartVariant.AbsoluteScale && !hideLabels ? 40 : 0,
     },
   };
 };

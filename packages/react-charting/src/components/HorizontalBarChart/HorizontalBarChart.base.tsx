@@ -82,7 +82,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             color: palette.neutralLight,
           };
 
-          /** Hide right side text of chart title for absolute-scale variant */
+          // Hide right side text of chart title for absolute-scale variant
           const chartDataText =
             this.props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
@@ -219,7 +219,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       barHeight: this._barHeight,
       color: this.state.lineColor,
       variant: this.props.variant,
-      hideValues: this.props.hideValues,
+      hideLabels: this.props.hideLabels,
     });
   };
 
@@ -330,11 +330,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       const xValue = point.horizontalBarChartdata!.x;
       const placeholderIndex = 1;
 
-      /**
-       * Render bar value instead of placeholder bar for absolute-scale variant
-       */
+      // Render bar label instead of placeholder bar for absolute-scale variant
       if (index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.AbsoluteScale) {
-        if (this.props.hideValues) {
+        if (this.props.hideLabels) {
           return null;
         }
 
@@ -347,7 +345,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             y={this._barHeight / 2}
             dominantBaseline="central"
             transform={`translate(${this._isRTL ? -4 : 4})`}
-            className={this._classNames.barValue}
+            className={this._classNames.barLabel}
             aria-hidden={true}
           >
             {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}

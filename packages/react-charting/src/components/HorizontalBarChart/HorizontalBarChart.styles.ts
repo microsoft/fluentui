@@ -6,7 +6,7 @@ import {
 } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
-  const { className, theme, width, barHeight, showTriangle, variant, hideValues } = props;
+  const { className, theme, width, barHeight, showTriangle, variant, hideLabels } = props;
   const { palette } = theme!;
 
   return {
@@ -41,7 +41,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
-      color: '#171717',
+      color: theme.palette.neutralPrimary,
       marginBottom: variant === HorizontalBarChartVariant.AbsoluteScale ? '4px' : '5px',
     },
     chartTitleRight: {
@@ -69,13 +69,13 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       marginBottom: '4px',
       position: 'absolute',
     },
-    barValue: {
+    barLabel: {
       ...theme.fonts.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
     },
     chartWrapper: {
-      paddingRight: variant === HorizontalBarChartVariant.AbsoluteScale && !hideValues ? 40 : 0,
+      paddingRight: variant === HorizontalBarChartVariant.AbsoluteScale && !hideLabels ? 40 : 0,
     },
   };
 };

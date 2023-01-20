@@ -84,10 +84,10 @@ export interface IHorizontalBarChartProps {
   variant?: HorizontalBarChartVariant;
 
   /**
-   * Prop to hide the bar values
+   * Prop to hide the bar labels
    * @default false
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IHorizontalBarChartStyleProps {
@@ -128,9 +128,9 @@ export interface IHorizontalBarChartStyleProps {
   variant?: HorizontalBarChartVariant;
 
   /**
-   * Prop to hide the bar values
+   * Prop to hide the bar labels
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IHorizontalBarChartStyles {
@@ -185,9 +185,9 @@ export interface IHorizontalBarChartStyles {
   triangle: IStyle;
 
   /**
-   * Style for the bar values
+   * Style for the bar labels
    */
-  barValue: IStyle;
+  barLabel: IStyle;
 
   /**
    * Style for the div containing the chart

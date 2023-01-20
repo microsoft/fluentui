@@ -4,7 +4,7 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 interface IHBCVariantExampleState {
-  hideValues: boolean;
+  hideLabels: boolean;
 }
 
 export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVariantExampleState> {
@@ -12,7 +12,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
     super(props);
 
     this.state = {
-      hideValues: false,
+      hideLabels: false,
     };
   }
 
@@ -104,20 +104,20 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
       <>
         <Checkbox
           label="Hide values"
-          checked={this.state.hideValues}
+          checked={this.state.hideLabels}
           onChange={this._onCheckChange}
           styles={{ root: { marginBottom: '20px' } }}
         />
         <HorizontalBarChart
           data={data}
           variant={HorizontalBarChartVariant.AbsoluteScale}
-          hideValues={this.state.hideValues}
+          hideLabels={this.state.hideLabels}
         />
       </>
     );
   }
 
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideValues: checked });
+    this.setState({ hideLabels: checked });
   };
 }

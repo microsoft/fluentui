@@ -82,6 +82,11 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
               Set the <code>data</code> attribute of IChartDataPoint to specify the benchmark value. The benchmark value
               is shown as an inverted triangle in the chart.
             </p>
+            <h4>AbsoluteScale variant</h4>
+            <p>
+              The bar labels are shown by default in the absolute-scale variant. Set the <code>hideLabels</code> prop to
+              hide them.
+            </p>
           </div>
         }
       />

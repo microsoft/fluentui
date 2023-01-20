@@ -71,9 +71,9 @@ describe('HorizontalBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should not render bar values in absolute-scale variant', () => {
+  it('Should not render bar labels in absolute-scale variant', () => {
     const component = renderer.create(
-      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideValues={true} />,
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={true} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

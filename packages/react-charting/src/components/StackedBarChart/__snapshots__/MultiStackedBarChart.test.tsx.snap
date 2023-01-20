@@ -57,7 +57,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -263,7 +263,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -720,7 +720,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -926,7 +926,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -1245,7 +1245,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
 </div>
 `;
 
-exports[`MultiStackedBarChart snapShot testing Should not render bar values in absolute-scale variant 1`] = `
+exports[`MultiStackedBarChart snapShot testing Should not render bar labels in absolute-scale variant 1`] = `
 <div
   className=
       ms-StackedBarChart
@@ -1300,7 +1300,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar values in a
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -1474,7 +1474,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar values in a
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -1740,7 +1740,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -1932,7 +1932,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 4px;
                   overflow: hidden;
@@ -2216,7 +2216,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -2416,7 +2416,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -2708,7 +2708,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -2898,7 +2898,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -3180,7 +3180,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -3380,7 +3380,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -3602,7 +3602,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -3776,7 +3776,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -4249,7 +4249,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -4449,7 +4449,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;

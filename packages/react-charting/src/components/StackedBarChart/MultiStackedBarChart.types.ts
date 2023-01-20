@@ -111,10 +111,10 @@ export interface IMultiStackedBarChartProps {
   variant?: MultiStackedBarChartVariant;
 
   /**
-   * Prop to hide the bar values
+   * Prop to hide the bar labels
    * @default false
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IMultiStackedBarChartStyleProps {
@@ -159,9 +159,9 @@ export interface IMultiStackedBarChartStyleProps {
   variant?: MultiStackedBarChartVariant;
 
   /**
-   * Prop to hide the bar values
+   * Prop to hide the bar labels
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IMultiStackedBarChartStyles {
@@ -226,9 +226,9 @@ export interface IMultiStackedBarChartStyles {
   noData: IStyle;
 
   /**
-   * Style for the bar values
+   * Style for the bar labels
    */
-  barValue: IStyle;
+  barLabel: IStyle;
 
   /**
    * Style for the div containing the chart
