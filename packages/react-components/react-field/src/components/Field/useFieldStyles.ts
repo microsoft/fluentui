@@ -139,7 +139,7 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.validationMessageIcon.className = mergeClasses(
       fieldClassNames.validationMessageIcon,
       validationMessageIconBaseClassName,
-      validationState !== 'neutral' && validationMessageIconStyles[validationState],
+      !!validationState && validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
     );
   }

@@ -8,7 +8,6 @@ const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
   warning: <Warning12Filled />,
   success: <CheckmarkCircle12Filled />,
-  neutral: undefined,
 } as const;
 
 /**
@@ -21,7 +20,7 @@ const validationMessageIcons = {
  * @param ref - Ref to the root
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivElement>): FieldState => {
-  const { children, orientation = 'vertical', required, validationState = 'neutral', size } = props;
+  const { children, orientation = 'vertical', required, validationState, size } = props;
 
   const baseId = useId('field-');
 
@@ -50,9 +49,9 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   });
 
   const validationMessageIcon = resolveShorthand(props.validationMessageIcon, {
-    required: validationState !== 'neutral',
+    required: !!validationState,
     defaultProps: {
-      children: validationMessageIcons[validationState],
+      children: validationState ? validationMessageIcons[validationState] : undefined,
     },
   });
 

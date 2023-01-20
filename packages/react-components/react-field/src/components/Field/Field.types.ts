@@ -65,15 +65,12 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
   orientation?: 'vertical' | 'horizontal';
 
   /**
-   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`, and for some
-   * field components, an `validationState="error"` causes the border to become red.
+   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`
    *
-   * Setting `validationState` to `error` will also set `aria-invalid` to `true` on the Field's child, as well as
-   * `role="alert"` on the `validationMessage`.
-   *
-   * @default error if `validationMessage` is set, otherwise neutral
+   * Setting `validationState` to `error` will also set `aria-invalid` to `true` on the Field's child,
+   * `role="alert"` on the `validationMessage`, and for some field components, causes the border to become red.
    */
-  validationState?: 'error' | 'warning' | 'success' | 'neutral';
+  validationState?: 'error' | 'warning' | 'success';
 
   /**
    * Marks the Field as required. If `true`, an asterisk will be appended to the label, and `aria-required` will be set
@@ -92,5 +89,4 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 /**
  * State used in rendering Field
  */
-export type FieldState = ComponentState<Required<FieldSlots>> &
-  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;
