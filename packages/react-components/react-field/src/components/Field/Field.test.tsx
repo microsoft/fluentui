@@ -139,7 +139,6 @@ describe('Field', () => {
     ['error', 'alert'],
     ['warning', null],
     ['success', null],
-    ['neutral', null],
   ] as const)('if validationState is %s, sets role to %s on the validationMessage', (validationState, role) => {
     const result = render(
       <Field validationState={validationState} validationMessage="test validation message">

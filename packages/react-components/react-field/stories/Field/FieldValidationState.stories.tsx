@@ -39,12 +39,7 @@ export const ValidationState = () => {
       >
         <Input />
       </Field>
-      <Field
-        label="Neutral state"
-        validationState="neutral"
-        validationMessage="This is a neutral message."
-        orientation="horizontal"
-      >
+      <Field label="Neutral state" validationMessage="This is a neutral message." orientation="horizontal">
         <Input />
       </Field>
     </div>
