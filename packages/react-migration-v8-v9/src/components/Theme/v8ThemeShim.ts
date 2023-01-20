@@ -1,5 +1,6 @@
-import { createTheme, DefaultPalette } from '@fluentui/react';
 import type { IPalette, ISemanticColors, IFontStyles, IFontWeight, IEffects, Theme as ThemeV8 } from '@fluentui/react';
+import { createTheme, DefaultPalette } from '@fluentui/react';
+import { fluent2ComponentStyles } from '@fluentui/fluent2-theme';
 
 import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 
@@ -330,6 +331,7 @@ export const createV8Theme = (
   return {
     ...baseTheme,
     palette: mapPalette(brandColors, isDarkTheme),
+    components: fluent2ComponentStyles,
     semanticColors: mapSemanticColors(baseTheme.semanticColors, themeV9),
     fonts: mapFonts(baseTheme.fonts, themeV9),
     effects: mapEffects(baseTheme.effects, themeV9),
