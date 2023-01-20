@@ -1,5 +1,5 @@
 diff --git a/node_modules/tabster/dist/tabster.esm.js b/node_modules/tabster/dist/tabster.esm.js
-index 6f52799..1f20a24 100644
+index 6f52799..52d0bd3 100644
 --- a/node_modules/tabster/dist/tabster.esm.js
 +++ b/node_modules/tabster/dist/tabster.esm.js
 @@ -269,60 +269,6 @@ function updateTabsterByAttribute(tabster, element, dispose) {
@@ -199,7 +199,7 @@ index 6f52799..1f20a24 100644
  
  /*!
   * Copyright (c) Microsoft Corporation. All rights reserved.
-@@ -1567,6 +1642,7 @@ class Root extends TabsterPart {
+@@ -1567,12 +1642,48 @@ class Root extends TabsterPart {
  
  class RootAPI {
    constructor(tabster, autoRoot) {
@@ -207,12 +207,21 @@ index 6f52799..1f20a24 100644
      this._roots = {};
      this._forceDummy = false;
      this.rootById = {};
-@@ -1575,6 +1651,32 @@ class RootAPI {
-       this._initTimer = undefined;
-     };
  
+     this._init = () => {
+       this._initTimer = undefined;
++
++      if (this._autoRoot) {
++        this._autoRootCreate();
++      }
++    };
++
 +    this._autoRootCreate = () => {
 +      var _a;
++
++      if (this._initTimer) {
++        return;
++      }
 +
 +      const doc = this._win().document;
 +
@@ -227,6 +236,7 @@ index 6f52799..1f20a24 100644
 +          setTabsterAttribute(body, {
 +            root: props
 +          }, true);
++          updateTabsterByAttribute(this._tabster, body);
 +          return (_a = getTabsterOnElement(this._tabster, body)) === null || _a === void 0 ? void 0 : _a.root;
 +        }
 +      } else if (!this._autoRootWaiting) {
@@ -235,23 +245,10 @@ index 6f52799..1f20a24 100644
 +      }
 +
 +      return undefined;
-+    };
-+
-     this._onRootDispose = root => {
-       delete this._roots[root.id];
      };
-@@ -1582,19 +1684,27 @@ class RootAPI {
-     this._tabster = tabster;
-     this._win = tabster.getWindow;
-     this._initTimer = this._win().setTimeout(this._init, 0);
--    this._autoRoot = autoRoot;
-+
-+    if (autoRoot) {
-+      this._autoRoot = autoRoot;
-+
-+      this._autoRootCreate();
-+    }
-+
+ 
+     this._onRootDispose = root => {
+@@ -1586,15 +1697,17 @@ class RootAPI {
      this.eventTarget = createEventTarget(this._win);
    }
  
@@ -274,7 +271,7 @@ index 6f52799..1f20a24 100644
  
      if (this._initTimer) {
        win.clearTimeout(this._initTimer);
-@@ -1739,15 +1849,11 @@ class RootAPI {
+@@ -1739,15 +1852,11 @@ class RootAPI {
        const rootAPI = tabster.root;
        const autoRoot = rootAPI._autoRoot;
  
@@ -293,7 +290,7 @@ index 6f52799..1f20a24 100644
      }
  
      if (groupper && !mover) {
-@@ -8184,62 +8290,6 @@ function getInternal(tabster) {
+@@ -8184,62 +8293,6 @@ function getInternal(tabster) {
  function disposeTabster(tabster, allInstances) {
    tabster.core.disposeTabster(tabster, allInstances);
  }
@@ -356,7 +353,7 @@ index 6f52799..1f20a24 100644
  /**
   * Returns an instance of Tabster if it already exists on the window .
   * @param win window instance that could contain an Tabster instance.
-@@ -8290,5 +8340,5 @@ function isNoOp(tabster) {
+@@ -8290,5 +8343,5 @@ function isNoOp(tabster) {
    return tabster._noop;
  }
  
