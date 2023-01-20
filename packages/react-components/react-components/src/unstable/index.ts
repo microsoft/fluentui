@@ -315,12 +315,13 @@ export { TextareaField_unstable as TextareaField, textareaFieldClassNames } from
 export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
 
 export {
-  getFieldClassNames,
+  Field,
+  fieldClassNames,
   renderField_unstable,
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-field';
-export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
+export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
   ProgressBar,
