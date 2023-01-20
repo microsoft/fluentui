@@ -68,3 +68,35 @@ module.exports = {
    - > 💡 this will run `prestorybook` script that compiles addon implementation with all of its direct dependencies that live within monorepo, so it can be consumed by local storybook
 
 2. Every time you do any change to implementation, after you ran your local storybook you'll need to manually run `yarn workspace @fluentui/react-storybook-addon build` to reflect those changes
+
+## Parameter Configuration
+
+- Three custom optional parameters can be set to alter behavior of the addon
+  1. `dir` - determines whether to render story in `ltr` or `rtl` mode. Default is `undefined`.
+  2. `fluentTheme` - determines whether to render story theme in `web-light`, `web-dark`, `teams-high-contrast`, `teams-dark`, or `teams-light`. Setting this
+     parameter will disable ability to dynamically change the theme within story canvas or doc.
+  3. `mode` - when set to `vr-test`, this removes injected padding and background theme that's automatically applied from rendered story. Default is `default`.
+
+```js
+import { FluentParameters, parameters } from '@fluentui/react-storybook-addon';
+import { Button } from '@fluentui/react-components';
+
+export const Button = () => <Button> Hello World </Button>;
+
+export const ButtonDarkMode = {
+  render: Button,
+  parameters: { fluentTheme: 'web-dark' } as FluentParameters, // story renders in Dark mode.
+};
+
+export const ButtonHighContrast = {
+  render: Button,
+  parameters: { fluentTheme: 'teams-high-contrast', mode: 'vr-test' } as FluentParameters; // story renders in High Contrast mode without injected padding and background style.
+}
+
+export const ButtonRTL = {
+  render: Button,
+  // parameters identity function will have all TS type annotations built in for intellisense.
+  parameters: parameters({ fluentTheme: 'web-light', dir: 'rtl', mode: 'vr-test'}), // story renders in RTL, Web light mode and without injected padding and background style.
+};
+
+```

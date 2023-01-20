@@ -46,17 +46,19 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
       >
         <p>{explanation}</p>
       </Panel>
-      <Dialog
-        hidden={!isDialogVisible}
-        onDismiss={hideDialog}
-        dialogContentProps={dialogContentProps}
-        modalProps={dialogModalProps}
-      >
-        <DialogFooter>
-          <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
-          <DefaultButton onClick={hideDialog} text="No" />
-        </DialogFooter>
-      </Dialog>
+      {isDialogVisible && (
+        <Dialog
+          hidden={false}
+          onDismiss={hideDialog}
+          dialogContentProps={dialogContentProps}
+          modalProps={dialogModalProps}
+        >
+          <DialogFooter>
+            <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
+            <DefaultButton onClick={hideDialog} text="No" />
+          </DialogFooter>
+        </Dialog>
+      )}
     </div>
   );
 };

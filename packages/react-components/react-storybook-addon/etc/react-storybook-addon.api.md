@@ -5,20 +5,47 @@
 ```ts
 
 import { Args } from '@storybook/api';
+import { OptionsParameter } from '@storybook/addons';
+import { Parameters as Parameters_2 } from '@storybook/addons';
 import { StoryContext } from '@storybook/addons';
 import type { Theme } from '@fluentui/react-theme';
 
 // @public
 export interface FluentGlobals extends Args {
     // (undocumented)
+    [STRICT_MODE_ID]?: boolean;
+    // (undocumented)
     [THEME_ID]?: ThemeIds;
+}
+
+// @public
+export interface FluentParameters extends Parameters_2 {
+    // (undocumented)
+    dir?: 'ltr' | 'rtl';
+    // (undocumented)
+    fluentTheme?: ThemeIds;
+    // (undocumented)
+    mode?: 'default' | 'vr-test';
 }
 
 // @public (undocumented)
 export interface FluentStoryContext extends StoryContext {
     // (undocumented)
     globals: FluentGlobals;
+    // (undocumented)
+    parameters: FluentParameters;
 }
+
+// @public (undocumented)
+export function parameters(options?: FluentParameters): {
+    dir: string;
+    fluentTheme: string;
+    mode: string;
+    fileName?: string | undefined;
+    options?: OptionsParameter | undefined;
+    layout?: "centered" | "fullscreen" | "padded" | "none" | undefined;
+    docsOnly?: boolean | undefined;
+};
 
 // @public (undocumented)
 export const THEME_ID: "storybook/fluentui-react-addon/theme";

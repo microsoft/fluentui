@@ -1,9 +1,17 @@
-import { makeStyles } from '@griffel/react';
+import { makeStaticStyles, makeStyles } from '@fluentui/react-components';
+
+export const useStaticStyles = makeStaticStyles({
+  '#docs-root .sbdocs-content > div:last-child': {
+    marginBottom: '0px',
+  },
+});
+
 export const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridTemplateColumns: '250px auto',
     gridTemplateRows: '40px auto',
+    minHeight: '100vh',
   },
   nav: {
     gridColumnStart: 1,

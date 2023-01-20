@@ -1,7 +1,13 @@
-import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
+import { Tree, updateJson, getProjects, formatFiles } from '@nrwl/devkit';
 import * as semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
-import { getProjectConfig, isPackageVersionConverged, printUserLogs, UserLog } from '../../utils';
+import {
+  getProjectConfig,
+  packageJsonHasBeachballConfig,
+  printUserLogs,
+  UserLog,
+  isPackageConverged,
+} from '../../utils';
 import { PackageJson } from '../../types';
 
 export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
@@ -33,32 +39,57 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
 
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
+
+    // nightly releases should bypass beachball disallowed changetypes
+    if (
+      schema.bumpType === 'nightly' &&
+      packageJsonHasBeachballConfig(packageJson) &&
+      packageJson.beachball?.disallowedChangeTypes
+    ) {
+      packageJson.beachball.disallowedChangeTypes = undefined;
+    }
     packageJson.version = nextVersion;
 
     return packageJson;
   });
 
   if (nextVersion) {
-    updatePackageDependents(host, nextVersion, schema.name, userLog);
+    updatePackageDependents({ host, nextVersion, userLog, schema });
   }
 }
 
-function updatePackageDependents(host: Tree, nextVersion: string, dependencyName: string, userLog: UserLog) {
+function updatePackageDependents(options: {
+  host: Tree;
+  nextVersion: string;
+  userLog: UserLog;
+  schema: ValidatedSchema;
+}) {
+  const { host, nextVersion, userLog, schema } = options;
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
     const projectConfig = getProjectConfig(host, { packageName: projectName });
-    updatePackageDependent(host, nextVersion, dependencyName, projectConfig.paths.packageJson, userLog);
+    updatePackageDependent({
+      host,
+      nextVersion,
+      dependencyName: schema.name,
+      packageJsonPath: projectConfig.paths.packageJson,
+      userLog,
+      bumpType: schema.bumpType,
+    });
   });
 }
 
-function updatePackageDependent(
-  host: Tree,
-  nextVersion: string,
-  dependencyName: string,
-  packageJsonPath: string,
-  userLog: UserLog,
-) {
+function updatePackageDependent(options: {
+  host: Tree;
+  nextVersion: string;
+  dependencyName: string;
+  packageJsonPath: string;
+  userLog: UserLog;
+  bumpType: ValidatedSchema['bumpType'];
+}) {
+  const { host, nextVersion, dependencyName, packageJsonPath, userLog, bumpType } = options;
+
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     if (packageJson.dependencies?.[dependencyName]) {
       userLog.push({
@@ -66,7 +97,7 @@ function updatePackageDependent(
         message: `bumping dependency ${dependencyName} in ${packageJsonPath}`,
       });
 
-      bumpDependency(packageJson.dependencies, dependencyName, nextVersion);
+      bumpDependency({ dependencies: packageJson.dependencies, dependencyName, version: nextVersion, bumpType });
     }
 
     if (packageJson.devDependencies?.[dependencyName]) {
@@ -74,20 +105,23 @@ function updatePackageDependent(
         type: 'info',
         message: `bumping devDependency ${dependencyName} in ${packageJsonPath}`,
       });
-      bumpDependency(packageJson.devDependencies, dependencyName, nextVersion);
+      bumpDependency({ dependencies: packageJson.devDependencies, dependencyName, version: nextVersion, bumpType });
     }
 
     return packageJson;
   });
 }
 
-const bumpDependency = (
-  dependencies: NonNullable<PackageJson['dependencies'] | PackageJson['devDependencies']>,
-  dependencyName: string,
-  version: string,
-) => {
+const bumpDependency = (options: {
+  dependencies: NonNullable<PackageJson['dependencies'] | PackageJson['devDependencies']>;
+  dependencyName: string;
+  version: string;
+  bumpType: ValidatedSchema['bumpType'];
+}) => {
+  const { dependencies, dependencyName, version, bumpType } = options;
+
   const hasCaret = dependencies[dependencyName].includes('^');
-  const versionToBump = hasCaret ? `^${version}` : version;
+  const versionToBump = hasCaret && bumpType !== 'nightly' ? `^${version}` : version;
   dependencies[dependencyName] = versionToBump;
 };
 
@@ -95,7 +129,7 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
   const projects = getProjects(host);
 
   projects.forEach((project, projectName) => {
-    if (isPackageConverged(projectName, host)) {
+    if (isPackageConverged(host, project)) {
       runMigrationOnProject(
         host,
         {
@@ -129,25 +163,6 @@ function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpTy
   }
 
   return semverVersion.version;
-}
-
-/**
- * @returns whether the package is converged
- */
-function isPackageConverged(packageName: string, host: Tree) {
-  let config: ReturnType<typeof getProjectConfig>;
-  try {
-    config = getProjectConfig(host, { packageName });
-  } catch (err) {
-    if (!(err as Error).message.startsWith('Cannot find configuration for')) {
-      throw err;
-    }
-
-    return false;
-  }
-
-  const packageJson = readJson(host, config.paths.packageJson);
-  return isPackageVersionConverged(packageJson.version);
 }
 
 function normalizeOptions(host: Tree, options: ValidatedSchema) {
@@ -193,15 +208,6 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
   };
   if (!validateBumpType(schema.bumpType)) {
     throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validbumpTypes}`);
-  }
-
-  if (schema.name) {
-    if (!isPackageConverged(schema.name, tree)) {
-      throw new Error(
-        `${schema.name} is not converged package consumed by customers.
-        Make sure to run the migration on packages with version 9.x.x and has the alpha tag`,
-      );
-    }
   }
 
   const validatedSchema: ValidatedSchema = {

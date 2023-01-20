@@ -10,15 +10,6 @@ export const inputClassNames: SlotClassNames<InputSlots> = {
   contentAfter: 'fui-Input__contentAfter',
 };
 
-// TODO(sharing) use theme values once available
-const contentSizes = {
-  // TODO: This 400 style is not in the typography styles.
-  // May need a design change
-  400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-};
 // TODO(sharing) should these be shared somewhere?
 const fieldHeights = {
   small: '24px',
@@ -68,6 +59,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within::after': {
       // Animation for focus IN
@@ -75,6 +71,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
@@ -99,7 +100,7 @@ const useRootStyles = makeStyles({
   large: {
     minHeight: fieldHeights.large,
     ...shorthands.padding('0', tokens.spacingHorizontalM),
-    ...contentSizes[400],
+    ...typographyStyles.body2,
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
   outline: {
@@ -134,7 +135,6 @@ const useRootStyles = makeStyles({
     '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
-    boxShadow: tokens.shadow2, // optional shadow for filled appearances
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
   },
   filledInteractive: {
@@ -144,17 +144,29 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    boxShadow: tokens.shadow2,
+  },
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow2,
+  },
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
@@ -187,7 +199,7 @@ const useInputElementStyles = makeStyles({
     ...typographyStyles.body1,
   },
   large: {
-    ...contentSizes[400],
+    ...typographyStyles.body2,
     ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
   },
   disabled: {
@@ -204,8 +216,8 @@ const useContentStyles = makeStyles({
   base: {
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground3, // "icon color" in design spec
+    display: 'flex',
     // special case styling for icons (most common case) to ensure they're centered vertically
-    '> svg': { display: 'block' },
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -228,6 +240,7 @@ const useContentStyles = makeStyles({
 export const useInputStyles_unstable = (state: InputState): InputState => {
   const { size, appearance } = state;
   const disabled = state.input.disabled;
+  const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
   const rootStyles = useRootStyles();
@@ -244,6 +257,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
     filled && rootStyles.filled,
+    !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
     state.root.className,
   );

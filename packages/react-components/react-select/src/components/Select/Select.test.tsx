@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Select } from './Select';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Select', () => {
   isConformant({
     Component: Select,
     displayName: 'Select',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'select',
   });
 

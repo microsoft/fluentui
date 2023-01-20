@@ -217,6 +217,12 @@ export interface IDetailsRowBaseProps
   role?: string;
 
   /**
+   * Whether the row is rendered within a grid.
+   * In DetailsList this should be true, and in GroupedList this should be false.
+   */
+  isGridRow?: boolean;
+
+  /**
    * Id for row
    */
   id?: string;

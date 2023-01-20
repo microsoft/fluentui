@@ -1,3 +1,7 @@
+const { findGitRoot } = require('../utils/configHelpers');
+
+const workspaceRoot = findGitRoot();
+
 module.exports = {
   extends: [
     'airbnb',
@@ -23,7 +27,10 @@ module.exports = {
     'import/no-default-export': 'error',
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'] },
+      {
+        packageDir: ['.', workspaceRoot],
+        devDependencies: ['**/*-test.ts*', '**/*.test.ts*', '*.config.js', 'gulpfile.ts', 'just.config.ts'],
+      },
     ],
 
     // False positive on arg types:

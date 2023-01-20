@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Link } from './Link';
 import { LinkProps } from './Link.types';
 
@@ -9,7 +9,6 @@ describe('Link', () => {
   isConformant<LinkProps>({
     Component: Link,
     displayName: 'Link',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   describe('meets accessibility requirements', () => {

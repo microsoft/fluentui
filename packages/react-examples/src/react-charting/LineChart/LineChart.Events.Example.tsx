@@ -108,6 +108,9 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
             },
           ],
           color: DefaultPalette.blue,
+          lineOptions: {
+            lineBorderWidth: '4',
+          },
         },
         {
           legend: 'All',
@@ -142,6 +145,9 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
             },
           ],
           color: DefaultPalette.green,
+          lineOptions: {
+            lineBorderWidth: '4',
+          },
         },
       ],
     };

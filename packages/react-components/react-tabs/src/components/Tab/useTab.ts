@@ -18,6 +18,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const { content, disabled: tabDisabled = false, icon, value } = props;
 
   const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
+  const reserveSelectedTabSpace = useContextSelector(TabListContext, ctx => ctx.reserveSelectedTabSpace);
   const listDisabled = useContextSelector(TabListContext, ctx => ctx.disabled);
   const selected = useContextSelector(TabListContext, ctx => ctx.selectedValue === value);
   const onRegister = useContextSelector(TabListContext, ctx => ctx.onRegister);
@@ -52,6 +53,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref: useMergedRefs(ref, innerRef),
       role: 'tab',
+      type: 'button',
       // aria-selected undefined indicates it is not selectable
       // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
       'aria-selected': disabled ? undefined : `${selected}`,
@@ -63,6 +65,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
     content: contentShorthand,
     appearance,
+    contentReservedSpaceClassName: reserveSelectedTabSpace ? '' : undefined,
     disabled,
     selected,
     size,

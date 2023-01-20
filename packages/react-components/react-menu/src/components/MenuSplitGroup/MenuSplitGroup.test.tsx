@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { MenuSplitGroup } from './MenuSplitGroup';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('MenuSplitGroup', () => {
   isConformant({
     Component: MenuSplitGroup,
-    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuSplitGroup',
   });
 

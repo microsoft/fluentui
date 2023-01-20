@@ -12,7 +12,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-export const useCheckedStyles = makeStyles({
+const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
@@ -74,6 +74,7 @@ export const useCheckedStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
@@ -111,18 +112,18 @@ export const useCheckedStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: tokens.colorNeutralForeground2Selected,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: tokens.colorNeutralForeground2Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: tokens.colorNeutralForeground2Pressed,
     },
   },
   transparent: {
@@ -144,7 +145,7 @@ export const useCheckedStyles = makeStyles({
   },
 });
 
-export const useDisabledStyles = makeStyles({
+const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -183,38 +184,46 @@ export const useDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: 'transparent',
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
     },
   },
 });
 
+const useIconCheckedStyles = makeStyles({
+  // Appearance variations
+  subtleOrTransparent: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
+});
+
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
-  const checkedStyles = useCheckedStyles();
-  const disabledStyles = useDisabledStyles();
+  const rootCheckedStyles = useRootCheckedStyles();
+  const rootDisabledStyles = useRootDisabledStyles();
+  const iconCheckedStyles = useIconCheckedStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
@@ -222,20 +231,24 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
     toggleButtonClassNames.root,
 
     // Checked styles
-    checked && checkedStyles.base,
-    checked && checkedStyles.highContrast,
-    appearance && checked && checkedStyles[appearance],
+    checked && rootCheckedStyles.base,
+    checked && rootCheckedStyles.highContrast,
+    appearance && checked && rootCheckedStyles[appearance],
 
     // Disabled styles
-    (disabled || disabledFocusable) && disabledStyles.base,
-    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
+    (disabled || disabledFocusable) && rootDisabledStyles.base,
+    appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // User provided class name
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(toggleButtonClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      toggleButtonClassNames.icon,
+      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
+      state.icon.className,
+    );
   }
 
   useButtonStyles_unstable(state);

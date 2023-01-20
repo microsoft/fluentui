@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
 import { Textarea } from './Textarea';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 function getTextarea(): HTMLTextAreaElement {
   return screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -21,7 +21,6 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   // TODO create visual regression tests in /apps/vr-tests

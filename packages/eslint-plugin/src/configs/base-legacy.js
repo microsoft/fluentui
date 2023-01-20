@@ -14,5 +14,13 @@ module.exports = {
      */
     ...getNamingConventionRule({ prefixInterface: true }),
   },
-  overrides: [],
+  overrides: [
+    {
+      files: '**/src/index.{ts,tsx,js}',
+      rules: {
+        // TODO: propagate to `error` once all packages barrel files have been fixed
+        '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
+      },
+    },
+  ],
 };

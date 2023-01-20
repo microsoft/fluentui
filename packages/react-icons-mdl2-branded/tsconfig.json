@@ -16,7 +16,8 @@
     "preserveConstEnums": true,
     "lib": ["ES2019", "DOM"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["custom-global"]
+    "types": ["custom-global"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

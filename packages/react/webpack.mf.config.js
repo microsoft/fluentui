@@ -5,8 +5,11 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const getResolveAlias = require('@fluentui/scripts/webpack/getResolveAlias');
-const { createServeConfig } = require('@fluentui/scripts/webpack/webpack-resources');
+const {
+  getResolveAlias,
+  resources: { createServeConfig },
+} = require('@fluentui/scripts-webpack');
+
 const { webpackMerge } = require('just-scripts');
 
 // These shared are known vendor dependencies for the module federation plugin

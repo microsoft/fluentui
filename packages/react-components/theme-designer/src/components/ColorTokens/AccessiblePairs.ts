@@ -59,7 +59,7 @@ export const accessiblePairs: AccessiblePairs = {
     ['colorNeutralForegroundInvertedLinkPressed', 4.5],
     ['colorNeutralForegroundInvertedLinkSelected', 4.5],
   ],
-  colorBrandBackgroundHovered: [['colorNeutralForegroundOnBrand', 4.5]],
+  colorBrandBackgroundHover: [['colorNeutralForegroundOnBrand', 4.5]],
   colorBrandBackgroundPressed: [['colorNeutralForegroundOnBrand', 4.5]],
   colorBrandBackgroundSelected: [['colorNeutralForegroundOnBrand', 4.5]],
   colorCompoundBrandBackground: [

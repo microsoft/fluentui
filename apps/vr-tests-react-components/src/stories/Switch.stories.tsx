@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Switch } from '@fluentui/react-switch';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
@@ -7,7 +7,7 @@ import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 storiesOf('Switch Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.test-class')
@@ -18,7 +18,7 @@ storiesOf('Switch Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Enabled and unchecked',
@@ -54,9 +54,15 @@ storiesOf('Switch Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory('With label above', () => <Switch className="test-class" label="Toggle switch" labelPosition="above" />)
-  .addStory('With label after', () => <Switch className="test-class" label="Toggle switch" labelPosition="after" />)
-  .addStory('With label before', () => <Switch className="test-class" label="Toggle switch" labelPosition="before" />)
+  .addStory('With label above', () => <Switch className="test-class" label="Toggle switch" labelPosition="above" />, {
+    includeRtl: true,
+  })
+  .addStory('With label after', () => <Switch className="test-class" label="Toggle switch" labelPosition="after" />, {
+    includeRtl: true,
+  })
+  .addStory('With label before', () => <Switch className="test-class" label="Toggle switch" labelPosition="before" />, {
+    includeRtl: true,
+  })
   .addStory('With label wrapping', () => (
     <Switch
       className="test-class"

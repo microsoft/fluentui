@@ -12,17 +12,19 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.81.0",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/example-data": "^8.4.5",
+    "@fluentui/react": "^8.104.6",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",
     "querystring": "^0.2.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "tslib": "^2.1.0"
   }
 }

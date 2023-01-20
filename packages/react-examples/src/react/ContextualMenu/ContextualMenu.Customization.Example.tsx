@@ -23,7 +23,6 @@ export const ContextualMenuCustomizationExample: React.FunctionComponent = () =>
       {
         key: 'charm',
         text: 'Charm',
-        ariaLabel: 'Charm. Press enter, space or right arrow keys to open submenu.',
         subMenuProps: {
           focusZoneProps: { direction: FocusZoneDirection.bidirectional },
           items: [
@@ -48,7 +47,6 @@ export const ContextualMenuCustomizationExample: React.FunctionComponent = () =>
       {
         key: 'categories',
         text: 'Categorize',
-        ariaLabel: 'Categorize. Press enter, space or right arrow keys to open submenu.',
         subMenuProps: {
           items: [
             {

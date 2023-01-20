@@ -7,7 +7,7 @@ export interface UseArrowNavigationGroupOptions {
    * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
    * @defaultValue vertical
    */
-  axis?: 'vertical' | 'horizontal' | 'grid';
+  axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
   /**
    * Focus will cycle to the first/last elements of the group without stopping
    */
@@ -21,13 +21,18 @@ export interface UseArrowNavigationGroupOptions {
    * Allow tabbing within the arrow navigation group items.
    */
   tabbable?: boolean;
+  /**
+   * Tabster should ignore default handling of keydown events
+   */
+  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
 }
 
 /**
  * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions): Types.TabsterDOMAttribute => {
+export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
+  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown } = options;
   const tabster = useTabster();
 
   if (tabster) {
@@ -36,11 +41,16 @@ export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions
 
   return useTabsterAttributes({
     mover: {
-      cyclic: !!options?.circular,
-      direction: axisToMoverDirection(options?.axis ?? 'vertical'),
-      memorizeCurrent: options?.memorizeCurrent,
-      tabbable: options?.tabbable,
+      cyclic: !!circular,
+      direction: axisToMoverDirection(axis ?? 'vertical'),
+      memorizeCurrent: memorizeCurrent,
+      tabbable: tabbable,
     },
+    ...(ignoreDefaultKeydown && {
+      focusable: {
+        ignoreKeydown: ignoreDefaultKeydown,
+      },
+    }),
   });
 };
 
@@ -50,6 +60,8 @@ function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Typ
       return Types.MoverDirections.Horizontal;
     case 'grid':
       return Types.MoverDirections.Grid;
+    case 'both':
+      return Types.MoverDirections.Both;
 
     case 'vertical':
     default:

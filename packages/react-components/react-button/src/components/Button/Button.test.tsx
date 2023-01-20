@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { buttonAccessibilityBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Button } from './Button';
 import { ButtonProps } from './Button.types';
 
@@ -10,7 +10,6 @@ describe('Button', () => {
   isConformant({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

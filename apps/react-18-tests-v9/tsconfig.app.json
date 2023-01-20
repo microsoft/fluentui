@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2019", "dom"],
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "inlineSources": true,
+    "types": ["static-assets", "environment"]
+  },
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.cy.tsx", "**/*.cy.ts"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

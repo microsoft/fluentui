@@ -146,6 +146,11 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
   isLoading?: boolean;
 
   /**
+   * Used to indicate whether or not the suggestions are taking an extended amount of time to load.
+   */
+  isExtendedLoading?: boolean;
+
+  /**
    * Used to indicate whether or not the component is searching for more results.
    */
   isSearching?: boolean;
@@ -185,11 +190,13 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
+   * This should not include interactive elements as the footer is not focusable.
    */
   resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has fewer items than resultsMaximumNumber.
+   * This should not include interactive elements as the footer is not focusable.
    */
   resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
 

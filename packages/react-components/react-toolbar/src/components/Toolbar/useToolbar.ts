@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { ToolbarProps, ToolbarState } from './Toolbar.types';
+import type { ToggableHandler, ToolbarProps, ToolbarState, UninitializedToolbarState } from './Toolbar.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
@@ -13,16 +14,16 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Toolbar
  */
 export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElement>): ToolbarState => {
+  const { size = 'medium', vertical = false } = props;
+
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
-    axis: 'horizontal',
+    axis: 'both',
   });
 
-  const { size = 'medium' } = props;
-
-  return {
+  const initialState: UninitializedToolbarState = {
     size,
-
+    vertical,
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
@@ -31,10 +32,76 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
+      role: 'toolbar',
       ref,
+      ...(vertical && { 'aria-orientation': 'vertical' }),
       ...arrowNavigationProps,
       ...props,
     }),
-    ...props,
   };
+
+  const [checkedValues, onCheckedValueChange] = useToolbarSelectableState({
+    checkedValues: props.checkedValues,
+    defaultCheckedValues: props.defaultCheckedValues,
+    onCheckedValueChange: props.onCheckedValueChange,
+  });
+
+  const handleToggleButton: ToggableHandler = useEventCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked?: boolean) => {
+      if (name && value) {
+        const checkedItems = checkedValues?.[name] || [];
+        const newCheckedItems = [...checkedItems];
+        if (checked) {
+          newCheckedItems.splice(newCheckedItems.indexOf(value), 1);
+        } else {
+          newCheckedItems.push(value);
+        }
+        onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
+      }
+    },
+  );
+
+  const handleRadio: ToggableHandler = useEventCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked?: boolean) => {
+      if (name && value) {
+        onCheckedValueChange?.(e, {
+          name,
+          checkedItems: [value],
+        });
+      }
+    },
+  );
+
+  return {
+    ...initialState,
+    handleToggleButton,
+    handleRadio,
+    checkedValues: checkedValues ?? {},
+  };
+};
+
+/**
+ * Adds appropriate state values and handlers for selectable items
+ * i.e checkboxes and radios
+ */
+const useToolbarSelectableState = (
+  state: Pick<ToolbarProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+) => {
+  const [checkedValues, setCheckedValues] = useControllableState({
+    state: state.checkedValues,
+    defaultState: state.defaultCheckedValues,
+    initialState: {},
+  });
+  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
+  const onCheckedValueChange: ToolbarState['onCheckedValueChange'] = useEventCallback((e, { name, checkedItems }) => {
+    if (onCheckedValueChangeOriginal) {
+      onCheckedValueChangeOriginal(e, { name, checkedItems });
+    }
+
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  });
+
+  return [checkedValues, onCheckedValueChange] as const;
 };

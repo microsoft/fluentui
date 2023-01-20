@@ -3,38 +3,63 @@ import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
-import type { ComboboxBaseProps, ComboboxBaseOpenEvents } from './ComboboxBase.types';
+import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
 
 /**
  * State shared between Combobox and Dropdown components
  */
-export const useComboboxBaseState = (props: ComboboxBaseProps) => {
-  const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
+export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boolean }): ComboboxBaseState => {
+  const {
+    appearance = 'outline',
+    editable = false,
+    inlinePopup = false,
+    multiselect,
+    onOpenChange,
+    size = 'medium',
+  } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionById, getOptionsMatchingValue } = optionCollection;
+  const { getOptionAtIndex, getOptionsMatchingText } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
-  const { selectedOptions, selectOption } = useSelection(props);
 
-  // update value based on selectedOptions
+  // track whether keyboard focus outline should be shown
+  // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
+  const [focusVisible, setFocusVisible] = React.useState(false);
+
+  // track focused state to conditionally render collapsed listbox
+  const [hasFocus, setHasFocus] = React.useState(false);
+
+  const ignoreNextBlur = React.useRef(false);
+
+  const selectionState = useSelection(props);
+  const { selectedOptions } = selectionState;
+
+  // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
+  const [controllableValue, setValue] = useControllableState({
+    state: props.value,
+    initialState: undefined,
+  });
+
   const value = React.useMemo(() => {
-    // don't compute value if it is defined through props,
-    if (props.value !== undefined) {
-      return props.value;
+    // don't compute the value if it is defined through props or setValue,
+    if (controllableValue !== undefined) {
+      return controllableValue;
     }
 
+    // handle defaultValue here, so it is overridden by selection
     if (isFirstMount && props.defaultValue !== undefined) {
       return props.defaultValue;
     }
 
     if (multiselect) {
-      return selectedOptions.join(', ');
+      // editable inputs should not display multiple selected options in the input as text
+      return editable ? '' : selectedOptions.join(', ');
     }
 
     return selectedOptions[0];
-  }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
+  }, [controllableValue, editable, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
@@ -43,37 +68,27 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     initialState: false,
   });
 
-  const setOpen = (event: ComboboxBaseOpenEvents, newState: boolean) => {
-    onOpenChange?.(event, { open: newState });
-    setOpenState(newState);
-  };
-
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
-    // clicked option should always become active option
-    setActiveOption(getOptionById(option.id));
-
-    // close on option click for single-select
-    !multiselect && setOpen(event, false);
-
-    // handle selection change
-    selectOption(event, option.value);
-  };
+  const setOpen = React.useCallback(
+    (event: ComboboxBaseOpenEvents, newState: boolean) => {
+      onOpenChange?.(event, { open: newState });
+      setOpenState(newState);
+    },
+    [onOpenChange, setOpenState],
+  );
 
   // update active option based on change in open state
   React.useEffect(() => {
-    if (open) {
-      // if there is a selection, start at the most recently selected item
-      if (selectedOptions.length > 0) {
-        const lastSelectedOption = getOptionsMatchingValue(
-          v => v === selectedOptions[selectedOptions.length - 1],
-        ).pop();
-        lastSelectedOption && setActiveOption(lastSelectedOption);
+    if (open && !activeOption) {
+      // if it is single-select and there is a selected option, start at the selected option
+      if (!multiselect && selectedOptions.length > 0) {
+        const selectedOption = getOptionsMatchingText(v => v === selectedOptions[0]).pop();
+        selectedOption && setActiveOption(selectedOption);
       }
       // default to starting at the first option
       else {
         setActiveOption(getOptionAtIndex(0));
       }
-    } else {
+    } else if (!open) {
       // reset the active option when closing
       setActiveOption(undefined);
     }
@@ -83,15 +98,19 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
 
   return {
     ...optionCollection,
+    ...selectionState,
     activeOption,
     appearance,
+    focusVisible,
+    hasFocus,
+    ignoreNextBlur,
     inlinePopup,
-    onOptionClick,
     open,
-    selectedOptions,
-    selectOption,
     setActiveOption,
+    setFocusVisible,
+    setHasFocus,
     setOpen,
+    setValue,
     size,
     value,
   };

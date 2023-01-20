@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Spinner } from './Spinner';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Spinner', () => {
   isConformant({
@@ -16,7 +16,6 @@ describe('Spinner', () => {
         },
       ],
     },
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('has role progressbar', () => {

@@ -2,8 +2,6 @@
 
 **SpinButton component for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 SpinButtons are used to allow numeric input bounded between minimum and maximum values with buttons to increment and decrement the input value. Values can also be manipulated via the keyboard.
 
 ### Usage
@@ -34,4 +32,4 @@ See [Spec.md](./Spec.md).
 
 ### Migration Guide
 
-If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest SpinButton implementation.
+When upgrading to Fluent UI v9 see the [upgrade guide](https://react.fluentui.dev/?path=/docs/concepts-upgrading-from-v8-components-spinbutton-upgrade--page) for guidance on updating to the latest SpinButton implementation.

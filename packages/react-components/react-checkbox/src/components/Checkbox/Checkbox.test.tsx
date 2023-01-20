@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Checkbox } from './Checkbox';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { CheckboxOnChangeData } from './Checkbox.types';
 
@@ -15,7 +15,6 @@ describe('Checkbox', () => {
   isConformant({
     Component: Checkbox,
     displayName: 'Checkbox',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'input',
     testOptions: {
       'has-static-classnames': [

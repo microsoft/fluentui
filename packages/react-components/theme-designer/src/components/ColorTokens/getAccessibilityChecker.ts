@@ -25,12 +25,13 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     const compSRGB: Vec3 = hex_to_sRGB(compHex);
 
     const contrastRatio = contrast(currSRGB, compSRGB);
+    const roundedContrastRatio = Math.floor(contrastRatio * 10) / 10;
 
     return {
       isPass: contrastRatio >= desiredRatio,
       failInfo: {
         compHex: compHex,
-        ratio: contrastRatio.toFixed(1),
+        ratio: roundedContrastRatio.toFixed(1),
         desiredRatio: desiredRatio.toFixed(1),
       },
     };
@@ -57,7 +58,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     }
   };
 
-  const pass: string[] = [];
+  const all: string[] = [];
   const fail: ContrastRatioList = {};
 
   Object.keys(accessiblePairs).map(token => {
@@ -75,12 +76,12 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     // Check if there are any accessibility failures
     if (failList.length > 0) {
       fail[token] = failList;
-    } else {
-      pass.push(token);
     }
+
+    all.push(token);
 
     return failList;
   });
 
-  return { pass, fail };
+  return { all, fail };
 };

@@ -281,6 +281,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       minDate,
       maxDate,
       restrictedDates,
+      id,
       className,
       showCloseButton,
       allFocusable,
@@ -326,6 +327,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
 
     return (
       <div
+        id={id}
         ref={forwardedRef}
         role="group"
         aria-label={selectionAndTodayString}

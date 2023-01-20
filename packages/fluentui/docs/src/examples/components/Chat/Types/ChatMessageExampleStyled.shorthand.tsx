@@ -72,7 +72,6 @@ const ChatMessageExampleStyled = () => (
               backgroundColor: '#E0FFFF',
             }),
           }),
-          content: { ...slotLabelStyles('content'), backgroundColor: '#F08080' },
           timestamp: {
             ...slotLabelStyles('timestamp', {}, { display: 'inline-block' }),
             backgroundColor: '#FFFFE0',
@@ -90,10 +89,13 @@ const ChatMessageExampleStyled = () => (
             backgroundColor: '#FFFFE0',
           },
         },
+        ChatMessageContent: {
+          root: { ...slotLabelStyles('content'), backgroundColor: '#F08080' },
+        },
       },
       componentVariables: {
-        ChatMessage: siteVars => ({
-          content: {
+        ChatMessageContent: siteVars => ({
+          root: {
             focusOutlineColor: siteVars.colors.red[400],
           },
         }),

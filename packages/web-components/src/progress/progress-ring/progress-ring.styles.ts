@@ -16,7 +16,6 @@ export const progressRingStyles: (
   css`
     ${display('flex')} :host {
       align-items: center;
-      outline: none;
       height: calc(${heightNumber} * 1px);
       width: calc(${heightNumber} * 1px);
     }

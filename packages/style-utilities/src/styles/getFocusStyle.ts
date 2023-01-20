@@ -23,6 +23,7 @@ export function getFocusStyle(theme: ITheme, options?: IGetFocusStylesOptions): 
  * @param borderColor - Color of the border.
  * @param outlineColor - Color of the outline.
  * @param isFocusedOnly - If the styles should apply on focus or not.
+ * @param borderRadius - If the style should include a rounded border.
  * @returns The style object.
  * @deprecated Use the object parameter version instead.
  */
@@ -34,6 +35,7 @@ export function getFocusStyle(
   borderColor?: string,
   outlineColor?: string,
   isFocusedOnly?: boolean,
+  borderRadius?: string | number | undefined,
 ): IRawStyle;
 export function getFocusStyle(
   theme: ITheme,
@@ -43,6 +45,7 @@ export function getFocusStyle(
   borderColor?: string,
   outlineColor?: string,
   isFocusedOnly?: boolean,
+  borderRadius?: string | number | undefined,
 ): IRawStyle {
   if (typeof insetOrOptions === 'number' || !insetOrOptions) {
     return _getFocusStyleInternal(theme, {
@@ -52,6 +55,7 @@ export function getFocusStyle(
       borderColor,
       outlineColor,
       isFocusedOnly,
+      borderRadius,
     });
   } else {
     return _getFocusStyleInternal(theme, insetOrOptions);
@@ -60,6 +64,7 @@ export function getFocusStyle(
 
 function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions = {}): IRawStyle {
   const {
+    borderRadius,
     inset = 0,
     width = 1,
     position = 'relative',
@@ -94,6 +99,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
         border: `${width}px solid ${borderColor}`,
         outline: `${width}px solid ${outlineColor}`,
         zIndex: ZIndexes.FocusStyle,
+        borderRadius: borderRadius,
         selectors: {
           [HighContrastSelector]: highContrastStyle,
         },

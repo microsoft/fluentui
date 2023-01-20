@@ -235,7 +235,7 @@ export const getItemClassNames = memoizeFunction(
  * the getStyles API, but invokes memoized className generator function with
  * primitive values.
  *
- * @param props the ContextualMenuItem style props used to generate its styles.
+ * @param props - the ContextualMenuItem style props used to generate its styles.
  */
 export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextualMenuItemStyles => {
   const {

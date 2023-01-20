@@ -3,7 +3,7 @@ import { MenuList } from './MenuList';
 import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuListContext } from '../../contexts/menuListContext';
 
 describe('MenuList', () => {
@@ -11,7 +11,6 @@ describe('MenuList', () => {
     Component: MenuList,
     displayName: 'MenuList',
     disabledTests: [
-      'component-has-static-classname-exported',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],

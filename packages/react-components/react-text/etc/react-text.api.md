@@ -74,7 +74,7 @@ export type TextProps = ComponentProps<TextSlots> & {
     strikethrough?: boolean;
     truncate?: boolean;
     underline?: boolean;
-    weight?: 'regular' | 'medium' | 'semibold';
+    weight?: 'regular' | 'medium' | 'semibold' | 'bold';
     wrap?: boolean;
 };
 

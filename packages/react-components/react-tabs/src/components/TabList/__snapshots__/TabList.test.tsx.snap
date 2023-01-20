@@ -11,10 +11,16 @@ exports[`TabList renders tabs when disabled 1`] = `
       class="fui-Tab"
       disabled=""
       role="tab"
+      type="button"
       value="1"
     >
       <span
         class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         First
       </span>
@@ -23,6 +29,7 @@ exports[`TabList renders tabs when disabled 1`] = `
       class="fui-Tab"
       disabled=""
       role="tab"
+      type="button"
       value="2"
     >
       <span
@@ -35,10 +42,16 @@ exports[`TabList renders tabs when disabled 1`] = `
       class="fui-Tab"
       disabled=""
       role="tab"
+      type="button"
       value="3"
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>
@@ -59,10 +72,16 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="1"
     >
       <span
         class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         First
       </span>
@@ -72,6 +91,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="2"
     >
       <span
@@ -85,10 +105,16 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="3"
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>
@@ -119,10 +145,16 @@ exports[`TabList renders with tabs 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="1"
     >
       <span
         class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         First
       </span>
@@ -132,10 +164,16 @@ exports[`TabList renders with tabs 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="2"
     >
       <span
         class="fui-Tab__content"
+      >
+        Second
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Second
       </span>
@@ -145,10 +183,16 @@ exports[`TabList renders with tabs 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="3"
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>

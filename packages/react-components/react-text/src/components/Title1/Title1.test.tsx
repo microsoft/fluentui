@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Title1 } from './Title1';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Title1', () => {
   isConformant({
     Component: Title1,
     displayName: 'Title1',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {

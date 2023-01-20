@@ -127,11 +127,24 @@ export const baseElementProperties = toObjectMap([
 ]);
 
 /**
+ * An array of microdata attributes that are allowed on every html element type.
+ *
+ * @public
+ */
+export const microdataProperties = toObjectMap([
+  'itemID', // global
+  'itemProp', // global
+  'itemRef', // global
+  'itemScope', // global
+  'itemType', // global
+]);
+
+/**
  * An array of HTML element properties and events.
  *
  * @public
  */
-export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents);
+export const htmlElementProperties = toObjectMap(baseElementProperties, baseElementEvents, microdataProperties);
 
 /**
  * An array of LABEL tag properties and events.
@@ -314,6 +327,7 @@ export const trProperties = htmlElementProperties;
  * @public
  */
 export const thProperties = toObjectMap(htmlElementProperties, [
+  'colSpan', // td, th
   'rowSpan', // td, th
   'scope', // th
 ]);
@@ -397,6 +411,13 @@ export const imgProperties = toObjectMap(htmlElementProperties, [
   'useMap', // img, object,
   'width', // canvas, embed, iframe, img, input, object, video
 ]);
+
+/**
+ * An array of DIALOG tag properties and events.
+ *
+ * @public
+ */
+export const dialogProperties = toObjectMap(htmlElementProperties, ['open', 'onCancel', 'onClose']);
 
 /**
  * An array of DIV tag properties and events.

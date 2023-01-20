@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Positioning" />
+
+# Migrate Positioning Props
+
+Some components make use of positioning props, like `Menu`, `Popup`(v9 `Popover`), `Tooltip`.
+
+Positioning props includes:
+`align`, `autoSize`, `flipBoundary`, `offset`,`overflowBoundary`,`popperRef`,`position`,`positionFixed`,`target`, `unstable_disableTether`, `unstable_pinned`
+
+In v9, these props are grouped together under `positioning` prop.
+
+## Recommended: positioning shorthand
+
+If only `position` or `align` or both prop is used, for example `<Popup position="below" align="end" />`, it can be migrate to a string like `positioning="below-end"`.
+
+This is v9 positioning shorthand syntax, which avoids using a full blown javascript object. See more on [v9 docsite example](?path=/docs/concepts-developer-positioning-components--default#shorthand-positions).
+
+## Migrate other positioning props:
+
+All v0 positioning props can be passed to v9 `positioning` as an object.
+For example, if v0 uses props `<Popup position="below" align="end" autoSize={"height"} />`, it can be migrate to prop `positioning={{ position: "below", align: "end", autoSize: "height" }}`.
+
+Note that v0 `unstable_pinned` is stable in v9, and should be migrated to `positioning.pinned`.
+
+### Migrate `target` prop:
+
+The common pattern to anchor target in v0 causes extra re-render: in v0 `target` is often obtained by using React state. The state value is null on intial render, and changed to the real HTML element, causing double render. In such case, please migrate to `popperRef.current.setTarget` in v9 to prevent double render. See [example on v9 docsite](?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)

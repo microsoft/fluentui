@@ -42,4 +42,9 @@ export interface IGetFocusStylesOptions {
    * @defaultvalue true
    */
   isFocusedOnly?: boolean;
+
+  /**
+   * If the style should include a rounded border.
+   */
+  borderRadius?: string | number | undefined;
 }

@@ -7,7 +7,7 @@ const related: ISideRailLink[] = [
   { text: 'iOS Persona', url: '#/controls/ios/persona' },
   { text: 'Android Persona', url: '#/controls/android/persona' },
   { text: 'macOS Avatar', url: '#/controls/mac/avatar' },
-  { text: 'Cross-platform Persona', url: '#/controls/crossplatform/persona' },
+  { text: 'Cross-platform Persona', url: '#/controls/cross/persona' },
 ];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PersonaPage';

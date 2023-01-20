@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ChartHoverCard, HorizontalBarChart, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
+import * as d3 from 'd3-format';
 
 export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}> = () => {
   const hideRatio: boolean[] = [true, false];
@@ -114,10 +115,13 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
       }}
       // eslint-disable-next-line react/jsx-no-bind
       barChartCustomData={(props: IChartProps) => {
+        const chartData: IChartDataPoint = props!.chartData![0];
+        const x = chartData.horizontalBarChartdata!.x;
+        const y = chartData.horizontalBarChartdata!.y;
         return (
           <div>
-            <span style={{ fontWeight: 'bold' }}>19K</span>
-            <span>{'/ 45.9 T'}</span>
+            <span style={{ fontWeight: 'bold' }}>{d3.format('.2s')(x)}</span>
+            <span>{`/${d3.format('.2s')(y)} hours`}</span>
           </div>
         );
       }}

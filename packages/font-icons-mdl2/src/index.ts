@@ -87,7 +87,9 @@ export function initializeIcons(
   registerIconAliases();
 }
 
-// eslint-disable-next-line deprecation/deprecation
+/* eslint-disable deprecation/deprecation */
+export type { IconNamesInput } from './IconNames';
 export { IconNames } from './IconNames';
+/* eslint-enable deprecation/deprecation */
 
 import './version';

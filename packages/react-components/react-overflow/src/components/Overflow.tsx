@@ -55,7 +55,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     setGroupVisibility(data.groupVisibility);
   };
 
-  const { containerRef, registerItem, updateOverflow } = useOverflowContainer(update, {
+  const { containerRef, registerItem, updateOverflow, registerOverflowMenu } = useOverflowContainer(update, {
     overflowDirection,
     overflowAxis,
     padding,
@@ -76,6 +76,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
         hasOverflow,
         registerItem,
         updateOverflow,
+        registerOverflowMenu,
       }}
     >
       {clonedChild}

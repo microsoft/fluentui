@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-portal-compat",
-  "version": "9.0.2",
+  "version": "9.0.28",
   "description": "A package that contains compatibility layer for React Portals",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -12,36 +12,48 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build --module esm,cjs,amd",
+    "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "start": "yarn storybook",
+    "lint": "just-scripts lint && just-scripts lint-imports",
     "test": "jest --passWithNoTests",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-portal-compat/src && yarn docs",
-    "storybook": "node ../../../scripts/storybook/runner",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-components": "^9.1.0",
-    "@fluentui/react-shared-contexts": "^9.0.0",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/react-components": "^9.11.0",
+    "@fluentui/react-shared-contexts": "^9.1.5",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-portal-compat-context": "^9.0.0",
+    "@fluentui/react-portal-compat-context": "^9.0.4",
+    "@fluentui/react-tabster": "^9.4.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.1.0",
-    "@types/react": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0"
+    "@fluentui/react-components": "^9.11.0",
+    "@types/react": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major"
+      "major",
+      "prerelease"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Label } from './Label';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Label', () => {
   isConformant({
     Component: Label,
     displayName: 'Label',
-    disabledTests: ['component-has-static-classname-exported'],
     requiredProps: { children: "I'm a label." },
     testOptions: {
       'has-static-classnames': [

@@ -37,16 +37,16 @@ const clickableStackTokens: IStackTokens = {
 
 export const HorizontalStackBasicExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={containerStackTokens}>
+    <Stack enableScopedSelectors tokens={containerStackTokens}>
       <span>Default horizontal stack</span>
-      <Stack horizontal disableShrink styles={stackStyles}>
+      <Stack enableScopedSelectors horizontal disableShrink styles={stackStyles}>
         <span>Item One</span>
         <span>Item Two</span>
         <span>Item Three</span>
       </Stack>
 
       <span>Ordered stack</span>
-      <Stack horizontal disableShrink styles={stackStyles}>
+      <Stack enableScopedSelectors horizontal disableShrink styles={stackStyles}>
         <Stack.Item order={2}>
           <span>Item One</span>
         </Stack.Item>
@@ -59,14 +59,20 @@ export const HorizontalStackBasicExample: React.FunctionComponent = () => {
       </Stack>
 
       <span>Horizontal gap between items</span>
-      <Stack horizontal disableShrink styles={stackStyles} tokens={horizontalGapStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink styles={stackStyles} tokens={horizontalGapStackTokens}>
         <span>Item One</span>
         <span>Item Two</span>
         <span>Item Three</span>
       </Stack>
 
       <span>Item alignments</span>
-      <Stack horizontal disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
+      <Stack
+        enableScopedSelectors
+        horizontal
+        disableShrink
+        styles={itemAlignmentsStackStyles}
+        tokens={itemAlignmentsStackTokens}
+      >
         <Stack.Item align="auto" styles={stackItemStyles}>
           <span>Auto-aligned item</span>
         </Stack.Item>
@@ -88,7 +94,14 @@ export const HorizontalStackBasicExample: React.FunctionComponent = () => {
       </Stack>
 
       <span>Clickable stack</span>
-      <Stack horizontal disableShrink onClick={_onClick} styles={stackStyles} tokens={clickableStackTokens}>
+      <Stack
+        enableScopedSelectors
+        horizontal
+        disableShrink
+        onClick={_onClick}
+        styles={stackStyles}
+        tokens={clickableStackTokens}
+      >
         <span>Click inside this box</span>
       </Stack>
     </Stack>

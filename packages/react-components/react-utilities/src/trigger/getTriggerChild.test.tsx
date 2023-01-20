@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getTriggerChild } from './getTriggerChild';
-import { FluentTriggerComponent } from './types';
+import type { FluentTriggerComponent } from './types';
 
-export const TestTrigger: React.FC<{ id?: string }> & FluentTriggerComponent = props => <>{props.children}</>;
+const TestTrigger: React.FC<{ id?: string }> & FluentTriggerComponent = props => <>{props.children}</>;
 TestTrigger.displayName = 'TestTrigger';
 TestTrigger.isFluentTriggerComponent = true;
 
@@ -13,9 +13,9 @@ describe('getTriggerChild', () => {
     expect(getTriggerChild(child)).toBe(child);
   });
 
-  it('throws an error if a non-valid element is sent as the child', () => {
+  it('returns null if a non-valid element is sent as the child', () => {
     const nonValid = () => child;
-    expect(() => getTriggerChild(nonValid)).toThrow();
+    expect(getTriggerChild(nonValid)).toBe(null);
   });
 
   it('returns the child of a trigger', () => {

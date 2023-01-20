@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { AvatarGroupItem } from './AvatarGroupItem';
 import { AvatarGroupContext } from '../../contexts';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 const testId = 'testId';
 
@@ -14,11 +14,7 @@ describe('AvatarGroupItem', () => {
   isConformant({
     Component: AvatarGroupItem,
     displayName: 'AvatarGroupItem',
-    disabledTests: [
-      'component-has-static-classname',
-      'component-has-static-classname-exported',
-      'make-styles-overrides-win',
-    ],
+    disabledTests: ['make-styles-overrides-win'],
     primarySlot: 'avatar',
     renderOptions: {
       wrapper: ContextWrapper,
@@ -43,15 +39,5 @@ describe('AvatarGroupItem', () => {
     );
 
     expect(screen.getByTestId(testId).textContent).toBe('Test Label');
-  });
-
-  it('sets role to listitem when context provides true for isOverflow', () => {
-    render(
-      <AvatarGroupContext.Provider value={{ isOverflow: true }}>
-        <AvatarGroupItem name="Katri Athokas" />
-      </AvatarGroupContext.Provider>,
-    );
-
-    expect(screen.getByRole('listitem').textContent).toBe('KAKatri Athokas');
   });
 });

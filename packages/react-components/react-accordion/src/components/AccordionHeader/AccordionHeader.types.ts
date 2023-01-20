@@ -21,7 +21,7 @@ export type AccordionHeaderSlots = {
   /**
    * The component to be used as button in heading
    */
-  button: NonNullable<Slot<ARIAButtonSlotProps>>;
+  button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
   /**
    * Expand icon slot rendered before (or after) children content in heading.
    */

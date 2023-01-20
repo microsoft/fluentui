@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SpinButton } from './SpinButton';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import * as Keys from '@fluentui/keyboard-keys';
 
 const getSpinButtonInput = (): HTMLInputElement => {
@@ -14,7 +14,6 @@ describe('SpinButton', () => {
     Component: SpinButton,
     displayName: 'SpinButton',
     primarySlot: 'input',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('renders a default uncontrolled state', () => {

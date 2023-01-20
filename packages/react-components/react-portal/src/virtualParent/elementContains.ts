@@ -5,7 +5,7 @@ import { getParent } from './getParent';
  *
  * @returns true if the child can find the parent in its virtual hierarchy
  */
-export function elementContains(parent: HTMLElement | null, child: HTMLElement | null): boolean {
+export function elementContains(parent: Node | null, child: Node | null): boolean {
   if (!parent || !child) {
     return false;
   }
@@ -14,7 +14,7 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
     return true;
   } else {
     while (child) {
-      const nextParent: HTMLElement | null = getParent(child);
+      const nextParent = getParent(child);
 
       if (nextParent === parent) {
         return true;

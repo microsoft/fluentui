@@ -50,18 +50,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralForegroundInverted,
+      borderRightColor: tokens.colorNeutralForegroundOnBrand,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralForegroundInverted,
+        borderRightColor: tokens.colorNeutralForegroundOnBrand,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralForegroundInverted,
+        borderRightColor: tokens.colorNeutralForegroundOnBrand,
       },
     },
   },
@@ -70,7 +70,7 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1Hover,
+      borderRightColor: tokens.colorNeutralStroke1,
     },
 
     ':hover': {
@@ -81,13 +81,13 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorNeutralStroke1Pressed,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1Hover,
+      borderRightColor: tokens.colorNeutralStroke1,
     },
 
     ':hover': {
@@ -98,7 +98,7 @@ const useRootStyles = makeStyles({
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorNeutralStroke1Pressed,
       },
     },
   },

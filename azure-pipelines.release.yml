@@ -152,7 +152,7 @@ jobs:
         displayName: 'Publish artifact: homepage.htm'
 
       - script: |
-          node ./scripts/generate-package-manifest
+          node ./scripts/generators/generate-package-manifest
         displayName: 'Generate package manifest'
 
       - task: PublishBuildArtifacts@1
@@ -172,7 +172,7 @@ jobs:
       # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
       # failure doesn't need to block anything else
       - script: |
-          node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
+          node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
         displayName: 'Update github release notes'
 
       - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0

@@ -454,7 +454,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             M
           </th>
           <th
-            aria-label="Tuesday Jan"
+            aria-label="Tuesday"
             className=
 
                 {
@@ -525,7 +525,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                 }
             scope="col"
-            title="Tuesday Jan"
+            title="Tuesday"
           >
             Jan
           </th>
@@ -3679,7 +3679,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             M
           </th>
           <th
-            aria-label="Tuesday Jan"
+            aria-label="Tuesday"
             className=
 
                 {
@@ -3750,7 +3750,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                 }
             scope="col"
-            title="Tuesday Jan"
+            title="Tuesday"
           >
             Jan
           </th>

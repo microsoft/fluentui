@@ -5,10 +5,9 @@ export const getStyles = (props: ISparklineStyleProps): ISparklineStyles => {
     inlineBlock: {
       display: 'inline',
     },
-    titleText: {
-      marginLeft: '8px',
-      textAlign: 'center',
+    valueText: {
       ...props.theme!.fonts.smallPlus,
+      fill: props.theme!.palette.black,
     },
   };
 };

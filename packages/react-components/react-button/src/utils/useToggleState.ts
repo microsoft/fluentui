@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableState, useMergedEventCallbacks } from '@fluentui/react-utilities';
+import { mergeCallbacks, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { ButtonState } from '../Button';
 import type { ToggleButtonProps, ToggleButtonState } from '../ToggleButton';
 
@@ -40,9 +40,8 @@ export function useToggleState<
     root: {
       ...state.root,
       [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedValue,
-      onClick: useMergedEventCallbacks(
-        onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>,
-        onToggleClick,
+      onClick: useEventCallback(
+        mergeCallbacks(onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>, onToggleClick),
       ),
     },
   } as TToggleButtonState;
