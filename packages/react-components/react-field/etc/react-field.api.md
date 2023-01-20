@@ -28,7 +28,7 @@ export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
-    children?: React_2.ReactElement | null | ((props: FieldChildProps) => React_2.ReactNode);
+    children?: React_2.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';
     required?: boolean;

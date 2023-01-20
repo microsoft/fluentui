@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import type { FieldChildProps, FieldProps, FieldState } from './Field.types';
+import type { FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
@@ -55,7 +55,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     },
   });
 
-  const childElement = React.isValidElement<FieldChildProps>(children) ? React.Children.only(children) : undefined;
+  const childElement = React.isValidElement(children) ? React.Children.only(children) : undefined;
   const controlProps = { ...childElement?.props };
 
   if (label) {
