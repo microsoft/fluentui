@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-components/unstable';
+import { Input, makeStyles, tokens } from '@fluentui/react-components';
+import { Field } from '../../src/index';
 
 const useStyles = makeStyles({
   stack: {
@@ -14,16 +14,24 @@ export const Horizontal = () => {
   const styles = useStyles();
   return (
     <div className={styles.stack}>
-      <InputField
+      <Field
         label="Horizontal"
         orientation="horizontal"
         validationState="success"
-        validationMessage="Validation message appears below the input"
-        hint="Hint text does too"
-      />
-      <InputField label="Longer labels will wrap to multiple lines" orientation="horizontal" />
-      <InputField label="First Name" orientation="horizontal" />
-      <InputField label="Last Name" orientation="horizontal" />
+        validationMessage="Validation message appears below the input."
+        hint="Hint text does too."
+      >
+        <Input />
+      </Field>
+      <Field label="Longer labels will wrap to multiple lines" orientation="horizontal">
+        <Input />
+      </Field>
+      <Field label="First Name" orientation="horizontal">
+        <Input />
+      </Field>
+      <Field label="Last Name" orientation="horizontal">
+        <Input />
+      </Field>
     </div>
   );
 };

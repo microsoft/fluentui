@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-components/unstable';
+import { Field } from '../../src/index';
+import { Input, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   stack: {
@@ -14,9 +14,15 @@ export const Size = () => {
   const styles = useStyles();
   return (
     <div className={styles.stack}>
-      <InputField label="Size small" size="small" />
-      <InputField label="Size medium" size="medium" />
-      <InputField label="Size large" size="large" />
+      <Field label="Size small" size="small">
+        <Input size="small" />
+      </Field>
+      <Field label="Size medium" size="medium">
+        <Input size="medium" />
+      </Field>
+      <Field label="Size large" size="large">
+        <Input size="large" />
+      </Field>
     </div>
   );
 };

@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { InputField } from '@fluentui/react-components/unstable';
+import { Field } from '../../src/index';
+import { Input } from '@fluentui/react-components';
 
-export const Label = () => <InputField label="Field label" />;
+export const Label = () => (
+  <Field label="Field label">
+    <Input />
+  </Field>
+);
 
 Label.parameters = {
   docs: {
