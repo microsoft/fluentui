@@ -1,0 +1,365 @@
+diff --git a/node_modules/tabster/dist/tabster.esm.js b/node_modules/tabster/dist/tabster.esm.js
+index 6f52799..1f20a24 100644
+--- a/node_modules/tabster/dist/tabster.esm.js
++++ b/node_modules/tabster/dist/tabster.esm.js
+@@ -269,60 +269,6 @@ function updateTabsterByAttribute(tabster, element, dispose) {
+     tabster.storageEntry(element, false);
+   }
+ }
+-function augmentAttribute(tabster, element, name, value // Restore original value when undefined.
+-) {
+-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+-  const entry = tabster.storageEntry(element, true);
+-  let ret = false;
+-
+-  if (!entry.aug) {
+-    if (value === undefined) {
+-      return ret;
+-    }
+-
+-    entry.aug = {};
+-  }
+-
+-  if (value === undefined) {
+-    if (name in entry.aug) {
+-      const origVal = entry.aug[name];
+-      delete entry.aug[name];
+-
+-      if (origVal === null) {
+-        element.removeAttribute(name);
+-      } else {
+-        element.setAttribute(name, origVal);
+-      }
+-
+-      ret = true;
+-    }
+-  } else {
+-    let origValue;
+-
+-    if (!(name in entry.aug)) {
+-      origValue = element.getAttribute(name);
+-    }
+-
+-    if (origValue !== undefined && origValue !== value) {
+-      entry.aug[name] = origValue;
+-
+-      if (value === null) {
+-        element.removeAttribute(name);
+-      } else {
+-        element.setAttribute(name, value);
+-      }
+-
+-      ret = true;
+-    }
+-  }
+-
+-  if (value === undefined && Object.keys(entry.aug).length === 0) {
+-    delete entry.aug;
+-    tabster.storageEntry(element, false);
+-  }
+-
+-  return ret;
+-}
+ 
+ /*!
+  * Copyright (c) Microsoft Corporation. All rights reserved.
+@@ -1361,6 +1307,135 @@ function triggerEvent(target, name, details) {
+   target.dispatchEvent(event);
+   return !event.defaultPrevented;
+ }
++function augmentAttribute(tabster, element, name, value // Restore original value when undefined.
++) {
++  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
++  const entry = tabster.storageEntry(element, true);
++  let ret = false;
++
++  if (!entry.aug) {
++    if (value === undefined) {
++      return ret;
++    }
++
++    entry.aug = {};
++  }
++
++  if (value === undefined) {
++    if (name in entry.aug) {
++      const origVal = entry.aug[name];
++      delete entry.aug[name];
++
++      if (origVal === null) {
++        element.removeAttribute(name);
++      } else {
++        element.setAttribute(name, origVal);
++      }
++
++      ret = true;
++    }
++  } else {
++    let origValue;
++
++    if (!(name in entry.aug)) {
++      origValue = element.getAttribute(name);
++    }
++
++    if (origValue !== undefined && origValue !== value) {
++      entry.aug[name] = origValue;
++
++      if (value === null) {
++        element.removeAttribute(name);
++      } else {
++        element.setAttribute(name, value);
++      }
++
++      ret = true;
++    }
++  }
++
++  if (value === undefined && Object.keys(entry.aug).length === 0) {
++    delete entry.aug;
++    tabster.storageEntry(element, false);
++  }
++
++  return ret;
++}
++
++/*!
++ * Copyright (c) Microsoft Corporation. All rights reserved.
++ * Licensed under the MIT License.
++ */
++function getTabsterAttribute(props, plain) {
++  const attr = JSON.stringify(props);
++
++  if (plain === true) {
++    return attr;
++  }
++
++  return {
++    [TabsterAttributeName]: attr
++  };
++}
++/**
++ * Updates Tabster props object with new props.
++ * @param element an element to set data-tabster attribute on.
++ * @param props current Tabster props to update.
++ * @param newProps new Tabster props to add.
++ *  When the value of a property in newProps is undefined, the property
++ *  will be removed from the attribute.
++ */
++
++function mergeTabsterProps(props, newProps) {
++  for (const key of Object.keys(newProps)) {
++    const value = newProps[key];
++
++    if (value) {
++      // eslint-disable-next-line @typescript-eslint/no-explicit-any
++      props[key] = value;
++    } else {
++      delete props[key];
++    }
++  }
++}
++/**
++ * Sets or updates Tabster attribute of the element.
++ * @param element an element to set data-tabster attribute on.
++ * @param newProps new Tabster props to set.
++ * @param update if true, newProps will be merged with the existing props.
++ *  When true and the value of a property in newProps is undefined, the property
++ *  will be removed from the attribute.
++ */
++
++function setTabsterAttribute(element, newProps, update) {
++  let props;
++
++  if (update) {
++    const attr = element.getAttribute(TabsterAttributeName);
++
++    if (attr) {
++      try {
++        props = JSON.parse(attr);
++      } catch (e) {
++        if (process.env.NODE_ENV === 'development') {
++          console.error(`data-tabster attribute error: ${e}`, element);
++        }
++      }
++    }
++  }
++
++  if (!props) {
++    props = {};
++  }
++
++  mergeTabsterProps(props, newProps);
++
++  if (Object.keys(props).length > 0) {
++    element.setAttribute(TabsterAttributeName, getTabsterAttribute(props, true));
++  } else {
++    element.removeAttribute(TabsterAttributeName);
++  }
++}
+ 
+ /*!
+  * Copyright (c) Microsoft Corporation. All rights reserved.
+@@ -1567,6 +1642,7 @@ class Root extends TabsterPart {
+ 
+ class RootAPI {
+   constructor(tabster, autoRoot) {
++    this._autoRootWaiting = false;
+     this._roots = {};
+     this._forceDummy = false;
+     this.rootById = {};
+@@ -1575,6 +1651,32 @@ class RootAPI {
+       this._initTimer = undefined;
+     };
+ 
++    this._autoRootCreate = () => {
++      var _a;
++
++      const doc = this._win().document;
++
++      const body = doc.body;
++
++      if (body) {
++        this._autoRootUnwait(doc);
++
++        const props = this._autoRoot;
++
++        if (props) {
++          setTabsterAttribute(body, {
++            root: props
++          }, true);
++          return (_a = getTabsterOnElement(this._tabster, body)) === null || _a === void 0 ? void 0 : _a.root;
++        }
++      } else if (!this._autoRootWaiting) {
++        this._autoRootWaiting = true;
++        doc.addEventListener("readystatechange", this._autoRootCreate);
++      }
++
++      return undefined;
++    };
++
+     this._onRootDispose = root => {
+       delete this._roots[root.id];
+     };
+@@ -1582,19 +1684,27 @@ class RootAPI {
+     this._tabster = tabster;
+     this._win = tabster.getWindow;
+     this._initTimer = this._win().setTimeout(this._init, 0);
+-    this._autoRoot = autoRoot;
++
++    if (autoRoot) {
++      this._autoRoot = autoRoot;
++
++      this._autoRootCreate();
++    }
++
+     this.eventTarget = createEventTarget(this._win);
+   }
+ 
++  _autoRootUnwait(doc) {
++    doc.removeEventListener("readystatechange", this._autoRootCreate);
++    this._autoRootWaiting = false;
++  }
++
+   dispose() {
+     const win = this._win();
+ 
+-    if (this._autoRootInstance) {
+-      this._autoRootInstance.dispose();
++    this._autoRootUnwait(win.document);
+ 
+-      delete this._autoRootInstance;
+-      delete this._autoRoot;
+-    }
++    delete this._autoRoot;
+ 
+     if (this._initTimer) {
+       win.clearTimeout(this._initTimer);
+@@ -1739,15 +1849,11 @@ class RootAPI {
+       const rootAPI = tabster.root;
+       const autoRoot = rootAPI._autoRoot;
+ 
+-      if (autoRoot && !rootAPI._autoRootInstance) {
+-        const body = (_d = element.ownerDocument) === null || _d === void 0 ? void 0 : _d.body;
+-
+-        if (body) {
+-          rootAPI._autoRootInstance = new Root(rootAPI._tabster, body, rootAPI._onRootDispose, autoRoot);
++      if (autoRoot) {
++        if ((_d = element.ownerDocument) === null || _d === void 0 ? void 0 : _d.body) {
++          root = rootAPI._autoRootCreate();
+         }
+       }
+-
+-      root = rootAPI._autoRootInstance;
+     }
+ 
+     if (groupper && !mover) {
+@@ -8184,62 +8290,6 @@ function getInternal(tabster) {
+ function disposeTabster(tabster, allInstances) {
+   tabster.core.disposeTabster(tabster, allInstances);
+ }
+-function getTabsterAttribute(props, plain) {
+-  const attr = JSON.stringify(props);
+-
+-  if (plain === true) {
+-    return attr;
+-  }
+-
+-  return {
+-    [TabsterAttributeName]: attr
+-  };
+-}
+-/**
+- * Sets or updates Tabster attribute of the element.
+- * @param element an element to set data-tabster attribute on.
+- * @param newProps new Tabster props to set.
+- * @param update if true, newProps will be merged with the existing props.
+- *  When true and the value of a property in newProps is undefined, the property
+- *  will be removed from the attribute.
+- */
+-
+-function setTabsterAttribute(element, newProps, update) {
+-  let props;
+-
+-  if (update) {
+-    const attr = element.getAttribute(TabsterAttributeName);
+-
+-    if (attr) {
+-      try {
+-        props = JSON.parse(attr);
+-      } catch (e) {
+-        /**/
+-      }
+-    }
+-  }
+-
+-  if (!update || !props) {
+-    props = {};
+-  }
+-
+-  for (const key of Object.keys(newProps)) {
+-    const value = newProps[key];
+-
+-    if (value) {
+-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+-      props[key] = value;
+-    } else {
+-      delete props[key];
+-    }
+-  }
+-
+-  if (Object.keys(props).length > 0) {
+-    element.setAttribute(TabsterAttributeName, getTabsterAttribute(props, true));
+-  } else {
+-    element.removeAttribute(TabsterAttributeName);
+-  }
+-}
+ /**
+  * Returns an instance of Tabster if it already exists on the window .
+  * @param win window instance that could contain an Tabster instance.
+@@ -8290,5 +8340,5 @@ function isNoOp(tabster) {
+   return tabster._noop;
+ }
+ 
+-export { Types, createTabster, disposeTabster, forceCleanup, getCrossOrigin, getDeloser, getGroupper, getInternal, getModalizer, getMover, getObservedElement, getOutline, getTabster, getTabsterAttribute, isNoOp, makeNoOp, setTabsterAttribute };
++export { Types, createTabster, disposeTabster, forceCleanup, getCrossOrigin, getDeloser, getGroupper, getInternal, getModalizer, getMover, getObservedElement, getOutline, getTabster, getTabsterAttribute, isNoOp, makeNoOp, mergeTabsterProps, setTabsterAttribute };
+ //# sourceMappingURL=tabster.esm.js.map
