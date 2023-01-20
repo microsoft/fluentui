@@ -16,6 +16,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @internal @deprecated (undocumented)
 export type DeprecatedFieldProps<ControlProps> = ControlProps & {
+    root?: FieldProps;
     control?: ControlProps;
 } & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
 
@@ -27,7 +28,7 @@ export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
-    children: React_2.ReactElement | null | ((props: FieldChildProps) => React_2.ReactElement | null);
+    children?: React_2.ReactElement | null | ((props: FieldChildProps) => React_2.ReactElement | null);
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success' | 'neutral';
     required?: boolean;

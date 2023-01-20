@@ -18,14 +18,11 @@ export type CheckboxFieldProps = Omit<DeprecatedFieldProps<CheckboxProps>, 'labe
 export const checkboxFieldClassNames = getDeprecatedFieldClassNames(checkboxClassNames.root);
 
 /** @deprecated Use Field with a Checkbox inside: `<Field><Checkbox /></Field>` */
-export const CheckboxField: ForwardRefComponent<CheckboxFieldProps> = makeDeprecatedField<CheckboxFieldProps>(
-  Checkbox,
-  {
-    mapProps: (props: CheckboxFieldProps) => ({
-      ...props,
-      label: props.fieldLabel,
-      required: undefined,
-      control: { ...props.control, required: props.required, label: props.label },
-    }),
-  },
-);
+export const CheckboxField: ForwardRefComponent<CheckboxFieldProps> = makeDeprecatedField(Checkbox, {
+  mapProps: (props: CheckboxFieldProps) => ({
+    ...props,
+    label: props.fieldLabel,
+    required: undefined,
+    control: { ...props.control, required: props.required, label: props.label },
+  }),
+});

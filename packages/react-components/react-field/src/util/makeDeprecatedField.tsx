@@ -9,6 +9,7 @@ import { Field, fieldClassNames } from '../Field';
  * @internal
  */
 export type DeprecatedFieldProps<ControlProps> = ControlProps & {
+  root?: FieldProps;
   control?: ControlProps;
 } & Pick<
     FieldProps,
@@ -35,6 +36,7 @@ function getPartitionedFieldProps<ControlProps>(
     label,
     orientation,
     required,
+    root,
     size,
     style,
     validationMessage,
@@ -55,6 +57,7 @@ function getPartitionedFieldProps<ControlProps>(
       validationMessage,
       validationMessageIcon,
       validationState,
+      ...root,
     },
     {
       required,
@@ -62,7 +65,7 @@ function getPartitionedFieldProps<ControlProps>(
       ...restOfProps,
       ...control,
     },
-  ] as [FieldProps, ControlProps];
+  ];
 }
 
 /**
@@ -82,7 +85,8 @@ export function makeDeprecatedField<ControlProps>(
     const [fieldProps, controlProps] = getPartitionedFieldProps(mapProps(props));
     return (
       <Field {...fieldProps}>
-        <Control {...controlProps} ref={ref} />
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        <Control {...(controlProps as any)} ref={ref as any} />
       </Field>
     );
   }) as ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
