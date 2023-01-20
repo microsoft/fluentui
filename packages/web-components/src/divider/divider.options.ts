@@ -38,12 +38,3 @@ export const DividerAppearance = {
  * @public
  */
 export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
-
-/**
- * Inset - display block or inline
- * @public
- */
-export const Inset = {
-  true: true,
-  false: false,
-} as const;

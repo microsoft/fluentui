@@ -4,26 +4,26 @@ import {} from '../theme/design-tokens.js';
 
 export const styles = css`
   :host {
+    /* default CSS */
+    display: flex;
+    background-color: red;
   }
 
-  :host([dividerAlignContent='start']) {
-    display: flex;
+  :host([alignContent='start']) {
     align-items: flex-start;
   }
-  :host([dividerAlignContent='center']) {
-    display: flex;
+  :host([alignContent='center']) {
     align-items: center;
   }
-  :host([dividerAlignContent='end']) {
-    display: flex;
+  :host([alignContent='end']) {
     align-items: end;
   }
-  :host([DividerAppearance='strong']) {
+  :host([appearance='strong']) {
   }
-  :host([DividerAppearance='brand']) {
+  :host([appearance='brand']) {
   }
-  :host([DividerAppearance='subtle']) {
+  :host([appearance='subtle']) {
   }
-  :host([DividerAppearance='default']) {
+  :host([appearance='default']) {
   }
 `;
