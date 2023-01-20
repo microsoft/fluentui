@@ -1,7 +1,8 @@
 /* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Field, fieldClassNames, FieldProps } from '@fluentui/react-field';
+import type { FieldProps } from '../Field';
+import { Field, fieldClassNames } from '../Field';
 
 /**
  * @deprecated Only for use to make deprecated [Control]Field shim components.

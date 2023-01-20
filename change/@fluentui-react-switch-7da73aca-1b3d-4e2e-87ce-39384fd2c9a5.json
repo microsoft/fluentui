@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Deprecate SwitchField_unstable in favor of Field with Switch as its child.",
+  "packageName": "@fluentui/react-switch",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

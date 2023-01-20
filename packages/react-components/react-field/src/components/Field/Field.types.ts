@@ -43,7 +43,7 @@ export type FieldSlots = {
 /**
  * Field Props
  */
-export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> & {
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
   /**
    * The Field's child can be a single form control, or a render function that takes the props that should be spread on
    * a form control.

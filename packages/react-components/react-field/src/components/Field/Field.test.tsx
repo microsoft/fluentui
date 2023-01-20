@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Field, FieldProps } from './index';
+import { Field } from './index';
 
 describe('Field', () => {
   it("sets the label's htmlFor to the child's id if it has one", () => {
