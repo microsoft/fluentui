@@ -56,9 +56,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     },
   });
 
-  const controlElement = children && typeof children === 'object' ? React.Children.only(children) : undefined;
-
-  const controlProps: FieldChildProps = { ...controlElement?.props };
+  const childElement = React.isValidElement<FieldChildProps>(children) ? React.Children.only(children) : undefined;
+  const controlProps = { ...childElement?.props };
 
   if (label) {
     controlProps['aria-labelledby'] ??= label.id;
@@ -89,8 +88,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
 
   if (typeof children === 'function') {
     root.children = children(controlProps);
-  } else if (controlElement) {
-    root.children = React.cloneElement(controlElement, controlProps);
+  } else if (childElement) {
+    root.children = React.cloneElement(childElement, controlProps);
   }
 
   return {
