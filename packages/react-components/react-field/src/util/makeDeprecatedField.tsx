@@ -62,7 +62,7 @@ function getPartitionedFieldProps<ControlProps>(
       ...restOfProps,
       ...control,
     },
-  ] as const;
+  ] as [FieldProps, ControlProps];
 }
 
 /**
@@ -82,7 +82,7 @@ export function makeDeprecatedField<ControlProps>(
     const [fieldProps, controlProps] = getPartitionedFieldProps(mapProps(props));
     return (
       <Field {...fieldProps}>
-        <Control {...((controlProps as unknown) as ControlProps)} ref={ref} />
+        <Control {...controlProps} ref={ref} />
       </Field>
     );
   }) as ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;

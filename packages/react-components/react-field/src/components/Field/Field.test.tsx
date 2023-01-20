@@ -134,19 +134,8 @@ describe('Field', () => {
     expect(input.getAttribute('aria-invalid')).toBe('false');
   });
 
-  it('defaults validationState to error if validationMessage is set', () => {
-    const result = render(
-      <Field validationMessage="test validation message">
-        <input />
-      </Field>,
-    );
-    const input = result.getByRole('textbox');
-
-    expect(input.getAttribute('aria-invalid')).toBeTruthy();
-  });
-
   it.each([
-    [undefined, 'alert'], // defaults to error when validationMessage is set
+    [undefined, null], // defaults to neutral
     ['error', 'alert'],
     ['warning', null],
     ['success', null],

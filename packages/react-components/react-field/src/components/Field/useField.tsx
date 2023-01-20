@@ -21,7 +21,7 @@ const validationMessageIcons = {
  * @param ref - Ref to the root
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivElement>): FieldState => {
-  const { children, orientation = 'vertical', required, size } = props;
+  const { children, orientation = 'vertical', required, validationState = 'neutral', size } = props;
 
   const baseId = useId('field-');
 
@@ -39,16 +39,9 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const validationMessage = resolveShorthand(props.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
+      role: validationState === 'error' ? 'alert' : undefined,
     },
   });
-
-  // validationState defaults to error if there is a validationMessage; otherwise it defaults to neutral
-  const { validationState = validationMessage ? 'error' : 'neutral' } = props;
-
-  // Error messages should be announced by screen readers
-  if (validationState === 'error' && validationMessage && !validationMessage.role) {
-    validationMessage.role = 'alert';
-  }
 
   const hint = resolveShorthand(props.hint, {
     defaultProps: {

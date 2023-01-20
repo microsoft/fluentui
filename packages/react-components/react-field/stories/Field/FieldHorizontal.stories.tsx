@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Input, makeStyles, tokens } from '@fluentui/react-components';
+import { Checkbox, Input, makeStyles, Radio, RadioGroup, tokens } from '@fluentui/react-components';
 import { Field } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
@@ -20,18 +20,28 @@ export const Horizontal = () => {
         orientation="horizontal"
         validationState="success"
         validationMessage="Validation message appears below the input."
-        hint="Hint text does too."
       >
         <Input />
       </Field>
-      <Field label="Longer labels will wrap to multiple lines" orientation="horizontal">
+      <Field
+        label="Longer labels wrap to multiple lines"
+        orientation="horizontal"
+        hint="Hint text also appears below the input."
+      >
         <Input />
       </Field>
-      <Field label="First Name" orientation="horizontal">
-        <Input />
+      <Field orientation="horizontal" label="Favorite Color">
+        <RadioGroup>
+          <Radio label="Red" />
+          <Radio label="Green" />
+          <Radio label="Blue" />
+        </RadioGroup>
       </Field>
-      <Field label="Last Name" orientation="horizontal">
-        <Input />
+      <Field
+        orientation="horizontal"
+        hint="Controls without a Field label are aligned with the rest (use a vertical orientation if not desired)."
+      >
+        <Checkbox label="Checkbox" />
       </Field>
     </div>
   );

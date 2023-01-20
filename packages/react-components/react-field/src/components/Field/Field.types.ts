@@ -54,7 +54,7 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
    *
    * For more complex scenarios, a render function can be used to pass the FieldChildProps to the appropriate control.
    */
-  children: React.ReactElement | null | ((props: FieldChildProps) => React.ReactElement | null);
+  children?: React.ReactElement | null | ((props: FieldChildProps) => React.ReactElement | null);
 
   /**
    * The orientation of the label relative to the field component.
