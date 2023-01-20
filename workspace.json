@@ -827,6 +827,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/recipes-react-components": {
+      "root": "apps/recipes-react-components",
+      "projectType": "application",
+      "implicitDependencies": [],
+      "sourceRoot": "apps/recipes-react-components/src",
+      "tags": ["vNext"]
+    },
     "@fluentui/scheme-utilities": {
       "root": "packages/scheme-utilities",
       "projectType": "library",
