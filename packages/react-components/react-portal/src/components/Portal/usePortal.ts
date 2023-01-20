@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { usePortalMountNode } from './usePortalMountNode';
-import { setVirtualParent } from '../../virtualParent/index';
+import { cleanVirtualParent, setVirtualParent } from '../../virtualParent/index';
 import type { PortalProps, PortalState } from './Portal.types';
 
 /**
@@ -26,6 +26,9 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
     if (state.virtualParentRootRef.current && state.mountNode) {
       setVirtualParent(state.mountNode, state.virtualParentRootRef.current);
     }
+    return () => {
+      if (state.mountNode) {cleanVirtualParent(state.mountNode);}
+    };
   }, [state.virtualParentRootRef, state.mountNode]);
 
   return state;
