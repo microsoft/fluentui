@@ -64,7 +64,7 @@ import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
-import { ChatItemContext } from './chatItemContext';
+import { ChatItemContext, ChatMessageLayout } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
@@ -82,8 +82,6 @@ export interface ChatMessageSlotClassNames {
   reactionGroup: string;
   timestamp: string;
 }
-
-export type ChatMessageLayout = 'default' | 'refresh';
 
 export interface ChatMessageProps
   extends UIComponentProps,
@@ -254,7 +252,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
-  const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
+  const chatItemProps = useContextSelector(ChatItemContext, v => v);
   const chatProps = useChatContextSelectors({
     density: v => v.density,
     accessibility: v => v.behaviors.message,
@@ -262,6 +260,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
 
   const props = {
     ...inputProps,
+    unstable_layout:
+      inputProps.unstable_layout === undefined ? chatItemProps.unstable_layout : inputProps.unstable_layout,
     density: inputProps.density === undefined ? chatProps.density : inputProps.density,
     accessibility:
       inputProps.accessibility === undefined
@@ -270,7 +270,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   };
   const {
     accessibility,
-    attached = parentAttached,
+    attached = chatItemProps.attached,
     author,
     badge,
     badgePosition,

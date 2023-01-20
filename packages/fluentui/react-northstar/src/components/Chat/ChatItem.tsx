@@ -24,8 +24,7 @@ import {
 import { Box, BoxProps } from '../Box/Box';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
-import { ChatItemContextProvider } from './chatItemContext';
-import type { ChatMessageLayout } from './ChatMessage';
+import { ChatItemContextProvider, ChatMessageLayout } from './chatItemContext';
 
 export interface ChatItemSlotClassNames {
   message: string;
@@ -135,7 +134,7 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
     });
 
     return (
-      <ChatItemContextProvider value={{ attached }}>
+      <ChatItemContextProvider value={{ attached, unstable_layout: layout }}>
         {(contentPosition === 'start' || density === 'compact') && gutterElement}
         {messageElement}
         {contentPosition === 'end' && density === 'comfy' && gutterElement}

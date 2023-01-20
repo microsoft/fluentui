@@ -14,7 +14,6 @@ const items: ShorthandCollection<ChatItemProps> = [
     ),
     message: (
       <Chat.Message
-        unstable_layout="refresh"
         content="Hello"
         author="Robin Counts"
         timestamp={{

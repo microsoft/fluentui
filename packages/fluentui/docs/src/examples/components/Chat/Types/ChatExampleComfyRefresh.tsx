@@ -13,7 +13,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         status={{ color: 'green', icon: <AcceptIcon /> }}
       />
     ),
-    message: <Chat.Message unstable_layout="refresh" content="Hello" author="Robin Counts" timestamp="10:15 PM" />,
+    message: <Chat.Message content="Hello" author="Robin Counts" timestamp="10:15 PM" />,
   },
   {
     key: 'message-id-2',
@@ -22,7 +22,6 @@ const items: ShorthandCollection<ChatItemProps> = [
     contentPosition: 'end',
     message: (
       <Chat.Message
-        unstable_layout="refresh"
         content="Hi! How are you doing?"
         author="Tim Deboer"
         timestamp="10:15 PM"
