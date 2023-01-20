@@ -25,7 +25,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
 
   const baseId = useId('field-');
 
-  const root = getNativeElementProps('div', props, ['children']);
+  const root = getNativeElementProps('div', { ...props, ref }, ['children']);
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
