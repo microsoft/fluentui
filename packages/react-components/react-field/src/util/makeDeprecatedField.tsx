@@ -1,0 +1,101 @@
+/* eslint-disable deprecation/deprecation */
+import * as React from 'react';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Field, fieldClassNames, FieldProps } from '@fluentui/react-field';
+
+/**
+ * @deprecated Only for use to make deprecated [Control]Field shim components.
+ * @internal
+ */
+export type DeprecatedFieldProps<ControlProps> = ControlProps & {
+  control?: ControlProps;
+} & Pick<
+    FieldProps,
+    | 'className'
+    | 'hint'
+    | 'label'
+    | 'orientation'
+    | 'style'
+    | 'validationMessage'
+    | 'validationMessageIcon'
+    | 'validationState'
+  >;
+
+/**
+ * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
+ */
+function getPartitionedFieldProps<ControlProps>(
+  props: DeprecatedFieldProps<ControlProps> & Pick<FieldProps, 'required' | 'size'>,
+) {
+  const {
+    className,
+    control,
+    hint,
+    label,
+    orientation,
+    required,
+    size,
+    style,
+    validationMessage,
+    validationMessageIcon,
+    validationState,
+    ...restOfProps
+  } = props;
+
+  return [
+    {
+      className,
+      hint,
+      label,
+      orientation,
+      required,
+      size,
+      style,
+      validationMessage,
+      validationMessageIcon,
+      validationState,
+    },
+    {
+      required,
+      size,
+      ...restOfProps,
+      ...control,
+    },
+  ] as const;
+}
+
+/**
+ * @deprecated Only for use to make deprecated [Control]Field shim components.
+ * @internal
+ */
+export function makeDeprecatedField<ControlProps>(
+  Control: React.ComponentType<ControlProps>,
+  options: {
+    mapProps?: (props: DeprecatedFieldProps<ControlProps>) => DeprecatedFieldProps<ControlProps>;
+    displayName?: string;
+  } = {},
+) {
+  const { mapProps = props => props, displayName = `${Control.displayName}Field` } = options;
+
+  const DeprecatedField = React.forwardRef((props, ref) => {
+    const [fieldProps, controlProps] = getPartitionedFieldProps(mapProps(props));
+    return (
+      <Field {...fieldProps}>
+        <Control {...((controlProps as unknown) as ControlProps)} ref={ref} />
+      </Field>
+    );
+  }) as ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
+
+  DeprecatedField.displayName = displayName;
+
+  return DeprecatedField;
+}
+
+/**
+ * @deprecated Only for use to make deprecated [Control]Field shim components.
+ * @internal
+ */
+export const getDeprecatedFieldClassNames = (controlRootClassName: string) => ({
+  ...fieldClassNames,
+  control: controlRootClassName,
+});
