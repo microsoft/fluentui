@@ -72,13 +72,19 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
+// @internal
+export function isHTMLElement(element?: unknown): element is HTMLElement;
+
+// @internal
+export function isInteractiveHTMLElement(element: unknown): boolean;
+
 // @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
 
-// @internal
+// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
@@ -98,9 +104,6 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
     required?: Required;
     defaultProps?: Props;
 };
-
-// @internal
-export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
@@ -133,7 +136,7 @@ export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | Reac
 // @public
 export const SSRProvider: React_2.FC;
 
-// @internal
+// @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
 };
@@ -160,13 +163,13 @@ export function useForceUpdate(): DispatchWithoutAction;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
-// @internal
+// @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function useIsSSR(): boolean;
 
-// @internal
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)
@@ -186,6 +189,9 @@ export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => 
 
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
+
+// @public (undocumented)
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];

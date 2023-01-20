@@ -3,6 +3,8 @@ import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
+import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
@@ -13,36 +15,12 @@ const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-row',
   },
-
-  medium: {
-    height: '44px',
-  },
-
-  small: {
-    height: '34px',
-  },
-
-  smaller: {
-    height: '24px',
-  },
 });
 
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-  },
-
-  medium: {
-    minHeight: '44px',
-  },
-
-  small: {
-    minHeight: '34px',
-  },
-
-  smaller: {
-    minHeight: '24px',
   },
 });
 
@@ -52,15 +30,60 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1Hover,
+    boxSizing: 'border-box',
+    ...createCustomFocusIndicatorStyle(
+      {
+        [`& .${tableSelectionCellClassNames.root}`]: {
+          opacity: 1,
+        },
+        [`& .${tableCellActionsClassNames.root}`]: {
+          opacity: 1,
+        },
+      },
+      { selector: 'focus-within', enableOutline: true },
+    ),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus', enableOutline: true },
+    ),
+  },
+
+  // When focus is within the row the background colour
+  // should be the same as hover, except when there is a brand
+  // or neutral appearance applied on the row
+  noAppearanceFocusWithin: {
+    ...createCustomFocusIndicatorStyle(
+      {
+        backgroundColor: tokens.colorSubtleBackgroundHover,
+      },
+      { selector: 'focus-within', enableOutline: true },
+    ),
+  },
+
+  rootInteractive: {
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      color: tokens.colorNeutralForeground1Pressed,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorNeutralBackground1Hover,
+        opacity: 1,
+      },
+      [`& .${tableSelectionCellClassNames.root}`]: {
         opacity: 1,
       },
     },
-    boxSizing: 'border-box',
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+      color: tokens.colorNeutralForeground1Hover,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        opacity: 1,
+      },
+      [`& .${tableSelectionCellClassNames.root}`]: {
+        opacity: 1,
+      },
+    },
   },
 
   medium: {
@@ -71,9 +94,53 @@ const useStyles = makeStyles({
     ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
-  smaller: {
+  'extra-small': {
     fontSize: tokens.fontSizeBase200,
   },
+
+  brand: {
+    backgroundColor: tokens.colorBrandBackground2,
+    color: tokens.colorNeutralForeground1Hover,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
+    ':hover': {
+      backgroundColor: tokens.colorBrandBackground2,
+    },
+    ':active': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    },
+
+    '@media(forced-colors: active)': {
+      ...shorthands.border('2px', 'solid', 'transparent'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      ':focus-visible': {
+        outlineOffset: '-4px',
+      },
+    },
+  },
+
+  neutral: {
+    '@media(forced-colors: active)': {
+      ...shorthands.border('2px', 'solid', 'transparent'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      boxSizing: 'border-box',
+      ':focus-visible': {
+        outlineOffset: '-4px',
+      },
+    },
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    color: tokens.colorNeutralForeground1Hover,
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+
+    ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
+  },
+
+  none: {},
 });
 
 /**
@@ -88,9 +155,11 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,
+    !state.isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
-    state.noNativeElements ? layoutStyles.flex[state.size] : layoutStyles.table[state.size],
+    styles[state.appearance],
+    state.appearance === 'none' && !state.isHeaderRow && styles.noAppearanceFocusWithin,
     state.root.className,
   );
 

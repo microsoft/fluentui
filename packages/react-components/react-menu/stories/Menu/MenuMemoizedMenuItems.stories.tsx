@@ -18,7 +18,7 @@ const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
 export const MemoizedMenuItems = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>

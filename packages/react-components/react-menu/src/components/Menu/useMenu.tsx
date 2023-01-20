@@ -13,8 +13,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
-import { Tab } from '@fluentui/keyboard-keys';
+import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 
 /**
  * Create the state required to render Menu.
@@ -41,11 +40,11 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
   const positioningState = {
-    position: isSubmenu ? ('after' as const) : ('below' as const),
-    align: isSubmenu ? ('top' as const) : ('start' as const),
+    position: isSubmenu ? 'after' : 'below',
+    align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
     ...resolvePositioningShorthand(props.positioning),
-  };
+  } as const;
 
   const children = React.Children.toArray(props.children) as React.ReactElement[];
 
@@ -69,10 +68,10 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
+
   const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
   // TODO Better way to narrow types ?
-
   const [open, setOpen] = useMenuOpenState({
     hoverDelay,
     isSubmenu,
@@ -112,7 +111,6 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     open,
     setOpen,
     checkedValues,
-    defaultCheckedValues,
     onCheckedValueChange,
     persistOnItemClick,
   };
@@ -123,22 +121,20 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
  * i.e checkboxes and radios
  */
 const useMenuSelectableState = (
-  state: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
+  props: Pick<MenuProps, 'checkedValues' | 'defaultCheckedValues' | 'onCheckedValueChange'>,
 ) => {
   const [checkedValues, setCheckedValues] = useControllableState({
-    state: state.checkedValues,
-    defaultState: state.defaultCheckedValues,
+    state: props.checkedValues,
+    defaultState: props.defaultCheckedValues,
     initialState: {},
   });
-  const { onCheckedValueChange: onCheckedValueChangeOriginal } = state;
   const onCheckedValueChange: MenuState['onCheckedValueChange'] = useEventCallback((e, { name, checkedItems }) => {
-    if (onCheckedValueChangeOriginal) {
-      onCheckedValueChangeOriginal(e, { name, checkedItems });
-    }
+    props.onCheckedValueChange?.(e, { name, checkedItems });
 
-    setCheckedValues(s => {
-      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
-    });
+    setCheckedValues(currentValue => ({
+      ...currentValue,
+      [name]: checkedItems,
+    }));
   });
 
   return [checkedValues, onCheckedValueChange] as const;
@@ -149,22 +145,19 @@ const useMenuOpenState = (
     MenuState,
     | 'isSubmenu'
     | 'menuPopoverRef'
-    | 'onOpenChange'
     | 'setContextTarget'
     | 'triggerRef'
     | 'openOnContext'
     | 'closeOnScroll'
     | 'hoverDelay'
   > &
-    Pick<MenuProps, 'open' | 'defaultOpen'>,
+    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
-  const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
+  const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleKeyboardRef = React.useRef(false);
-  const shouldHandleTabRef = React.useRef(false);
-  const pressedShiftRef = React.useRef(false);
+  const shouldHandleCloseRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
@@ -174,7 +167,7 @@ const useMenuOpenState = (
     initialState: false,
   });
 
-  const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+  const trySetOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
     onOpenChange?.(event, { ...data });
     if (data.open && e.type === 'contextmenu') {
@@ -183,14 +176,7 @@ const useMenuOpenState = (
 
     if (!data.open) {
       state.setContextTarget(undefined);
-    }
-
-    if (e.type === 'keydown') {
-      shouldHandleKeyboardRef.current = true;
-      if ((e as React.KeyboardEvent<HTMLElement>).key === Tab) {
-        shouldHandleTabRef.current = true;
-        pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
-      }
+      shouldHandleCloseRef.current = true;
     }
 
     if (data.bubble) {
@@ -200,7 +186,7 @@ const useMenuOpenState = (
     setOpenState(data.open);
   });
 
-  const setOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
+  const setOpen = useEventCallback((e: MenuOpenEvent, data: MenuOpenChangeData) => {
     clearTimeout(setOpenTimeout.current);
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
@@ -228,7 +214,7 @@ const useMenuOpenState = (
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
     ) as React.MutableRefObject<HTMLElement>[],
-    callback: e => setOpen(e, { open: false }),
+    callback: event => setOpen(event, { open: false, type: 'clickOutside', event }),
   });
 
   // only close on scroll for context, or when closeOnScroll is specified
@@ -236,7 +222,7 @@ const useMenuOpenState = (
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
-    callback: ev => setOpen(ev, { open: false }),
+    callback: event => setOpen(event, { open: false, type: 'scrollOutside', event }),
     refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
       Boolean,
     ) as React.MutableRefObject<HTMLElement>[],
@@ -245,11 +231,11 @@ const useMenuOpenState = (
 
   useOnMenuMouseEnter({
     element: targetDocument,
-    callback: e => {
+    callback: event => {
       // When moving from a menu directly back to its trigger, this handler can close the menu
       // Explicitly check a flag to see if this situation happens
       if (!enteringTriggerRef.current) {
-        setOpen(e, { open: false });
+        setOpen(event, { open: false, type: 'menuMouseEnter', event });
       }
     },
     disabled: !open,
@@ -265,45 +251,29 @@ const useMenuOpenState = (
   }, []);
 
   // Manage focus for open state
-  const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
+  const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
 
-  const focusAfterMenuTrigger = React.useCallback(() => {
-    const nextFocusable = findNextFocusable(state.triggerRef.current);
-    nextFocusable?.focus();
-  }, [findNextFocusable, state.triggerRef]);
-
-  const focusBeforeMenuTrigger = React.useCallback(() => {
-    const prevFocusable = findPrevFocusable(state.triggerRef.current);
-    prevFocusable?.focus();
-  }, [findPrevFocusable, state.triggerRef]);
-
   React.useEffect(() => {
     if (open) {
       focusFirst();
-    }
-  }, [open, focusFirst]);
-
-  React.useEffect(() => {
-    if (open) {
-      focusFirst();
-    }
-
-    if (shouldHandleKeyboardRef.current && !open) {
-      if (shouldHandleTabRef.current && !state.isSubmenu) {
-        pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
-      } else {
+    } else {
+      if (shouldHandleCloseRef.current) {
+        // We know that React effects are sync so we focus the trigger here
+        // after any event handler (event handlers will update state and re-render).
+        // Since the browser only performs the default behaviour for the Tab key once
+        // keyboard events have fully bubbled up the window, the browser will move
+        // focus to the next tabbable element before/after the trigger if needed.
+        // If the Tab key was not pressed, focus will remain on the trigger as expected.
         state.triggerRef.current?.focus();
       }
     }
 
-    shouldHandleKeyboardRef.current = false;
-    shouldHandleTabRef.current = false;
-    pressedShiftRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);
+    shouldHandleCloseRef.current = false;
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst]);
 
-  return [open ?? false, setOpen] as const;
+  return [open, setOpen] as const;
 };

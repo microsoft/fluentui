@@ -4,7 +4,7 @@ import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuSplitGr
 
 export const SplitMenuItem = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
     <MenuPopover>
@@ -14,7 +14,7 @@ export const SplitMenuItem = () => (
         <Menu>
           <MenuSplitGroup>
             <MenuItem>Open</MenuItem>
-            <MenuTrigger>
+            <MenuTrigger disableButtonEnhancement>
               <MenuItem aria-label="Open on platform" />
             </MenuTrigger>
           </MenuSplitGroup>

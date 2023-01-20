@@ -6,4 +6,5 @@ export type {
   ARIAButtonType,
   ARIAButtonElement,
   ARIAButtonElementIntersection,
+  ARIAButtonAlteredProps,
 } from './button/index';

@@ -53,9 +53,6 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
             loader: 'swc-loader',
             options: {
               jsc: {
-                minify: {
-                  compress: true,
-                },
                 target: 'es2019',
                 parser: {
                   syntax: 'typescript',
@@ -79,7 +76,7 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
     plugins: [new CleanWebpackPlugin()],
 
     optimization: {
-      minimize: false,
+      minimize: isProd,
       splitChunks: {
         chunks: 'all',
       },

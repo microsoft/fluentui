@@ -13,24 +13,26 @@ export const personaClassNames: SlotClassNames<PersonaSlots> = {
   quaternaryText: 'fui-Persona__quaternaryText',
 };
 
+const avatarSpacing = `--fui-Persona__avatar--spacing`;
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
+  base: {
     display: 'inline-grid',
-    gridAutoColumns: 'max-content',
     gridAutoRows: 'max-content',
   },
+
   after: {
     gridAutoFlow: 'column',
     justifyItems: 'start',
-    columnGap: '8px',
+    gridTemplateColumns: 'max-content [middle] auto',
   },
   before: {
     gridAutoFlow: 'column',
     justifyItems: 'end',
-    columnGap: '8px',
+    gridTemplateColumns: 'auto [middle] max-content',
   },
   below: {
     justifyItems: 'center',
@@ -39,11 +41,58 @@ const useStyles = makeStyles({
     gridRowStart: 'span 5',
   },
 
-  fixed: {
+  start: {
     alignSelf: 'start',
   },
-  scaled: {
+  center: {
     alignSelf: 'center',
+  },
+
+  afterAlignToPrimary: {
+    alignSelf: 'center',
+    gridRowStart: 'unset',
+    gridColumnEnd: 'middle',
+  },
+  beforeAlignToPrimary: {
+    alignSelf: 'center',
+    gridRowStart: 'unset',
+    gridColumnStart: 'middle',
+  },
+});
+
+const useAvatarSpacingStyles = makeStyles({
+  'extra-small': {
+    [avatarSpacing]: tokens.spacingHorizontalSNudge,
+  },
+  small: {
+    [avatarSpacing]: tokens.spacingHorizontalS,
+  },
+  medium: {
+    [avatarSpacing]: tokens.spacingHorizontalS,
+  },
+  large: {
+    [avatarSpacing]: tokens.spacingHorizontalMNudge,
+  },
+  'extra-large': {
+    [avatarSpacing]: tokens.spacingHorizontalMNudge,
+  },
+  huge: {
+    [avatarSpacing]: tokens.spacingHorizontalM,
+  },
+  after: {
+    marginRight: `var(${avatarSpacing})`,
+  },
+  below: {
+    marginBottom: `var(${avatarSpacing})`,
+  },
+  before: {
+    marginLeft: `var(${avatarSpacing})`,
+  },
+});
+
+const usePresenceSpacingStyles = makeStyles({
+  small: {
+    [avatarSpacing]: tokens.spacingHorizontalSNudge,
   },
 });
 
@@ -51,17 +100,24 @@ const useStyles = makeStyles({
  * Apply styling to the Persona slots based on the state
  */
 export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => {
-  const { fixed, textPosition } = state;
-  const styles = useStyles();
-  const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state);
+  const { presenceOnly, size, textAlignment, textPosition } = state;
 
-  state.root.className = mergeClasses(personaClassNames.root, styles.root, styles[textPosition], state.root.className);
+  const alignToPrimary = presenceOnly && textAlignment === 'start' && size !== 'extra-large' && size !== 'huge';
+  const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state, alignToPrimary);
+
+  const styles = useStyles();
+  const avatarSpacingStyles = useAvatarSpacingStyles();
+  const presenceSpacingStyles = { ...avatarSpacingStyles, ...usePresenceSpacingStyles() };
+
+  state.root.className = mergeClasses(personaClassNames.root, styles.base, styles[textPosition], state.root.className);
 
   if (state.avatar) {
     state.avatar.className = mergeClasses(
       personaClassNames.avatar,
       styles.coin,
-      fixed ? styles.fixed : styles.scaled,
+      styles[textAlignment],
+      avatarSpacingStyles[size],
+      avatarSpacingStyles[textPosition],
       state.avatar.className,
     );
   }
@@ -70,7 +126,11 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
     state.presence.className = mergeClasses(
       personaClassNames.presence,
       styles.coin,
-      fixed ? styles.fixed : styles.scaled,
+      styles[textAlignment],
+      presenceSpacingStyles[size],
+      presenceSpacingStyles[textPosition],
+      textPosition === 'after' && alignToPrimary && styles.afterAlignToPrimary,
+      textPosition === 'before' && alignToPrimary && styles.beforeAlignToPrimary,
       state.presence.className,
     );
   }
@@ -121,72 +181,69 @@ const useTextStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
 
+  beforeAlignToPrimary: {
+    gridColumnEnd: 'middle',
+  },
+  afterAlignToPrimary: {
+    gridColumnStart: 'middle',
+  },
+
   body1: typographyStyles.body1,
   caption1: typographyStyles.caption1,
   subtitle2: typographyStyles.subtitle2,
-  subtitle1: typographyStyles.subtitle1,
-  title2: typographyStyles.title2,
-  title3: typographyStyles.title3,
 });
 
 const useTextClassNames = (
   state: PersonaState,
+  alignToPrimary: boolean,
 ): {
   primaryTextClassName: string;
   optionalTextClassName: string;
 } => {
-  const { fixed, numTextLines, presenceOnly } = state;
+  const { presenceOnly, size, textPosition } = state;
   const textStyles = useTextStyles();
+
   let primaryTextSize;
-  let optionalTextSize;
+  let alignToPrimaryClassName;
 
-  if (fixed) {
-    if (state.avatar && state.avatar.size) {
-      const { size } = state.avatar;
+  if (presenceOnly) {
+    if (size === 'extra-small') {
+      primaryTextSize = state.numTextLines > 1 ? textStyles.body1 : textStyles.caption1;
+    } else if (size === 'extra-large' || size === 'huge') {
+      primaryTextSize = textStyles.subtitle2;
+    } else {
+      primaryTextSize = textStyles.body1;
+    }
 
-      if (size < 40) {
-        primaryTextSize = textStyles.body1;
-        optionalTextSize = textStyles.caption1;
-      } else if (size < 64) {
-        primaryTextSize = textStyles.subtitle2;
-        optionalTextSize = textStyles.body1;
-      } else if (size < 96) {
-        primaryTextSize = textStyles.subtitle1;
-        optionalTextSize = textStyles.caption1;
-      } else {
-        if (numTextLines > 1) {
-          primaryTextSize = textStyles.title3;
-        } else {
-          primaryTextSize = textStyles.title2;
-        }
-        optionalTextSize = textStyles.body1;
-      }
-    } else if (presenceOnly && state.presence) {
-      const { size } = state.presence;
-
-      if (size === 'extra-small' || size === 'tiny') {
-        if (numTextLines > 1) {
-          primaryTextSize = textStyles.body1;
-        } else {
-          primaryTextSize = textStyles.caption1;
-        }
-        optionalTextSize = textStyles.caption1;
-      } else {
-        primaryTextSize = textStyles.body1;
-        optionalTextSize = textStyles.caption1;
+    if (alignToPrimary) {
+      if (textPosition === 'before') {
+        alignToPrimaryClassName = textStyles.beforeAlignToPrimary;
+      } else if (textPosition === 'after') {
+        alignToPrimaryClassName = textStyles.afterAlignToPrimary;
       }
     }
   } else {
-    if (numTextLines > 1) {
-      primaryTextSize = textStyles.body1;
+    if (size === 'huge') {
+      primaryTextSize = textStyles.subtitle2;
+    } else if (size === 'extra-large') {
+      primaryTextSize = textStyles.subtitle2;
     } else {
-      primaryTextSize = textStyles.caption1;
+      primaryTextSize = textStyles.body1;
     }
-    optionalTextSize = textStyles.caption1;
   }
 
   return {
-    primaryTextClassName: mergeClasses(textStyles.base, textStyles.primaryText, primaryTextSize),
-    optionalTextClassName: mergeClasses(textStyles.base, textStyles.optionalText, optionalTextSize),
+    primaryTextClassName: mergeClasses(
+      textStyles.base,
+      textStyles.primaryText,
+      primaryTextSize,
+      alignToPrimaryClassName,
+    ),
+    optionalTextClassName: mergeClasses(
+      textStyles.base,
+      textStyles.optionalText,
+      !presenceOnly && size === 'huge' ? textStyles.body1 : textStyles.caption1,
+      alignToPrimaryClassName,
+    ),
   };
 };

@@ -98,7 +98,8 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         transform="translate(40, 0)"
       />
       <g
-        aria-labelledby="10"
+        aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
         key="00"
@@ -106,6 +107,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(-19.405940594059405, -7.227722772277229)"
       >
         <rect
@@ -133,7 +135,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         </text>
       </g>
       <g
-        aria-labelledby="10"
+        aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         key="10"
@@ -141,6 +143,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(10.297029702970299, -34.45544554455446)"
       >
         <rect
@@ -363,6 +366,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
             border: 0px;
           }
       data-is-focusable={false}
+      hidden={false}
       id="10"
       style={
         Object {
@@ -647,12 +651,15 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g
+        aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(-19.405940594059405, -7.227722772277229)"
       >
         <rect
@@ -680,12 +687,14 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         </text>
       </g>
       <g
+        aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(10.297029702970299, -34.45544554455446)"
       >
         <rect
@@ -873,6 +882,9 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -974,12 +986,15 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         transform="translate(40, 0)"
       />
       <g
+        aria-label="Mar/04, p2. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+      off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(-19.405940594059405, -7.227722772277229)"
       >
         <rect
@@ -1007,12 +1022,14 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         </text>
       </g>
       <g
+        aria-label="Mar/03, p1. Nasty, 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(10.297029702970299, -34.45544554455446)"
       >
         <rect
@@ -1290,6 +1307,9 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1391,12 +1411,15 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g
+        aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(-19.405940594059405, -7.227722772277229)"
       >
         <rect
@@ -1424,12 +1447,14 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         </text>
       </g>
       <g
+        aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(10.297029702970299, -34.45544554455446)"
       >
         <rect
@@ -1458,6 +1483,9 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
       </g>
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1559,12 +1587,15 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g
+        aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(-19.405940594059405, -7.227722772277229)"
       >
         <rect
@@ -1592,12 +1623,14 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         </text>
       </g>
       <g
+        aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(10.297029702970299, -34.45544554455446)"
       >
         <rect
@@ -1785,6 +1818,9 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1886,12 +1922,15 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g
+        aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(-19.405940594059405, -7.227722772277229)"
       >
         <rect
@@ -1919,12 +1958,14 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         </text>
       </g>
       <g
+        aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
         onMouseOver={[Function]}
+        role="img"
         transform="translate(10.297029702970299, -34.45544554455446)"
       >
         <rect
@@ -2112,5 +2153,8 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

@@ -15,7 +15,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 
 export const AligningWithSelectableItems = () => (
   <Menu hasIcons hasCheckmarks>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
     <MenuPopover>

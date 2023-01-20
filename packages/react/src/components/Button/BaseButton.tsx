@@ -18,6 +18,7 @@ import {
   Async,
   EventGroup,
   FocusRects,
+  FocusRectsContext,
   KeyCodes,
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
@@ -26,7 +27,7 @@ import { ContextualMenu } from '../../ContextualMenu';
 import { getBaseButtonClassNames } from './BaseButton.classNames';
 import { getSplitButtonClassNames as getBaseSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
-import type { IRenderFunction } from '../../Utilities';
+import type { IFocusRectsContext, IRenderFunction } from '../../Utilities';
 import type { IContextualMenuProps } from '../../ContextualMenu';
 import type { IButtonProps, IButton } from './Button.types';
 import type { IButtonClassNames } from './BaseButton.classNames';
@@ -65,6 +66,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     styles: {},
     split: false,
   };
+
+  // needed to access registeredProviders when manually setting focus visibility
+  public static contextType = FocusRectsContext;
+  public context: IFocusRectsContext;
 
   private _async: Async;
   private _events: EventGroup;
@@ -290,10 +295,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   public focus(): void {
     if (this._isSplitButton && this._splitButtonContainer.current) {
-      setFocusVisibility(true);
+      setFocusVisibility(true, undefined, this.context?.registeredProviders);
       this._splitButtonContainer.current.focus();
     } else if (this._buttonElement.current) {
-      setFocusVisibility(true);
+      setFocusVisibility(true, undefined, this.context?.registeredProviders);
       this._buttonElement.current.focus();
     }
   }
@@ -714,9 +719,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const splitButtonProps = {
       ...splitButtonMenuProps,
       styles: classNames,
-      checked: checked,
-      disabled: disabled,
-      allowDisabledFocus: allowDisabledFocus,
+      checked,
+      disabled,
+      allowDisabledFocus,
       onClick: this._onMenuClick,
       menuProps: undefined,
       iconProps: { ...menuIconProps, className: this._classNames.menuIcon },
@@ -841,7 +846,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       // We manually set the focus visibility to true if opening via Enter or Space to account for the scenario where
       // a user clicks on the button, closes the menu and then opens it via keyboard. In this scenario our default logic
       // for setting focus visibility is not triggered since there is no keyboard navigation present beforehand.
-      setFocusVisibility(true, ev.target as Element);
+      setFocusVisibility(true, ev.target as Element, this.context?.registeredProviders);
     }
 
     if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {

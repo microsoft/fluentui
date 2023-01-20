@@ -10,7 +10,7 @@ export const useFocusFinders = () => {
 
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = React.useCallback(
-    (container: HTMLElement, acceptCondition: (el: HTMLElement) => boolean) =>
+    (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) =>
       tabster?.focusable.findAll({ container, acceptCondition }) || [],
     [tabster],
   );

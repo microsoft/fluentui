@@ -118,7 +118,7 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   const triggerButtonStyles = useTriggerButtonStyles();
   const contentStyles = useContentStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
-  const groupChildClassName = useGroupChildClassName(layout, size, true);
+  const groupChildClassName = useGroupChildClassName(layout, size);
 
   const triggerButtonClasses = [];
 

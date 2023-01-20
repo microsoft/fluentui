@@ -1,12 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { TabList, Tab } from '@fluentui/react-tabs';
 
 storiesOf('TabList and Tab Converged', module)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.mouse-target')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -16,7 +16,7 @@ storiesOf('TabList and Tab Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Default',
@@ -80,6 +80,38 @@ storiesOf('TabList and Tab Converged', module)
     'Vertical and small size',
     () => (
       <TabList size="small" vertical>
+        <Tab value="1">First</Tab>
+        <Tab className="mouse-target" value="2">
+          Second
+        </Tab>
+        <Tab value="3">Third</Tab>
+      </TabList>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Large size',
+    () => (
+      <TabList size="large">
+        <Tab value="1">First</Tab>
+        <Tab className="mouse-target" value="2">
+          Second
+        </Tab>
+        <Tab value="3">Third</Tab>
+      </TabList>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Vertical and large size',
+    () => (
+      <TabList size="large" vertical>
         <Tab value="1">First</Tab>
         <Tab className="mouse-target" value="2">
           Second

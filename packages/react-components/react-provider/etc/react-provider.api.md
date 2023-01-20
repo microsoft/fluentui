@@ -12,13 +12,14 @@ import type { ProviderContextValue_unstable } from '@fluentui/react-shared-conte
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { Theme } from '@fluentui/react-theme';
+import { Theme } from '@fluentui/tokens';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
+    applyStylesToPortals?: boolean | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
@@ -39,6 +40,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
 
 // @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+    applyStylesToPortals?: boolean;
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document;
     theme?: PartialTheme;
@@ -51,7 +53,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
     overrides: OverridesContextValue_unstable;

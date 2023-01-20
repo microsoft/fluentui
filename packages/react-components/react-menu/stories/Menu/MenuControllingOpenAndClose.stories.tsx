@@ -22,7 +22,7 @@ export const ControllingOpenAndClose = () => {
       </div>
 
       <Menu open={open} onOpenChange={onOpenChange}>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <Button>Toggle menu</Button>
         </MenuTrigger>
 

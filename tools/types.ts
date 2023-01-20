@@ -25,6 +25,8 @@ export interface PackageJson {
   typings?: string;
   private?: boolean;
   name: string;
+  main: string;
+  module?: string;
   version: string;
   scripts?: Record<string, string>;
   dependencies?: Record<string, string>;

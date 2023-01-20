@@ -19,6 +19,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   const child = getTriggerChild(children);
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
+  const open = useDialogContext_unstable(ctx => ctx.open);
 
   const { triggerAttributes } = useModalAttributes();
 
@@ -37,7 +38,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const triggerChildProps = {
     ...child?.props,
-    'aria-haspopup': action === 'close' ? undefined : 'dialog',
+    'aria-expanded': open,
     ref: child?.ref,
     onClick: handleClick,
     ...triggerAttributes,

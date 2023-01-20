@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix chart title overflow",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

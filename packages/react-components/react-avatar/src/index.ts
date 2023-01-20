@@ -7,7 +7,7 @@ export {
 } from './Avatar';
 export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState, AvatarSizes } from './Avatar';
 export { getInitials, partitionAvatarGroupItems } from './utils/index';
-export type { PartitionAvatarGroupItemsOptions } from './utils/index';
+export type { PartitionAvatarGroupItems, PartitionAvatarGroupItemsOptions } from './utils/index';
 export {
   AvatarGroup,
   avatarGroupClassNames,
@@ -40,9 +40,9 @@ export {
 } from './AvatarGroupPopover';
 export type { AvatarGroupPopoverProps, AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover';
 export {
-  AvatarGroupProvider,
-  useAvatarGroupContext_unstable,
   AvatarContextProvider,
+  AvatarGroupProvider,
   useAvatarContext,
+  useAvatarGroupContext_unstable,
 } from './contexts/index';
 export type { AvatarContextValue } from './contexts/index';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorTall } from '../utilities/index';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
@@ -8,11 +8,9 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 storiesOf('TeachingBubble', module)
   .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}
-    >
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'WideIllustration',

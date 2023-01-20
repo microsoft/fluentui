@@ -41,19 +41,13 @@ interface IRectRef {
 type RectanglesGraphData = { [key: string]: FlattenData[] };
 export interface IHeatMapChartState {
   /**
-   * determines if the legend any of the legend is selected or not
-   * @default false
+   * contains the selected legend string
    */
-  isLegendSelected: boolean;
+  selectedLegend: string;
   /**
-   * contains the seleted legend string
+   * contains the hovered legend string
    */
   activeLegend: string;
-  /**
-   * determines if the legend is hovered or not
-   * @default false
-   */
-  isLegendHovered: boolean;
   /**
    * determines wethere to show or hide the callout
    * @default false
@@ -142,9 +136,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ): DataSet => this._createNewDataSet(data, xDate, xNum, yDate, yNum),
     );
     this.state = {
-      isLegendSelected: false,
+      selectedLegend: '',
       activeLegend: '',
-      isLegendHovered: false,
       isCalloutVisible: false,
       target: null,
       calloutLegend: '',
@@ -243,11 +236,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _getOpacity = (legendTitle: string): string => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = legendTitle === this.state.activeLegend;
-    }
-    return shouldHighlight ? '1' : '0.1';
+    const opacity = this._legendHighlighted(legendTitle) || this._noLegendHighlighted() ? '1' : '0.1';
+    return opacity;
   };
 
   private _rectRefCallback = (rectElement: SVGGElement, index: number | string, dataPointObject: FlattenData): void => {
@@ -257,7 +247,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onRectFocus = (id: string, data: FlattenData): void => {
     this.setState({
       target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
+      /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
+      isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
       calloutYValue: `${data.rectText}`,
       calloutTextColor: this._colorScale(data.value),
       calloutLegend: data.legend,
@@ -274,7 +265,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this._calloutAnchorPoint = data;
       this.setState({
         target: this._rectRefArray[id].refElement,
-        isCalloutVisible: true,
+        /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         calloutYValue: `${data.rectText}`,
         calloutTextColor: this._colorScale(data.value),
         calloutLegend: data.legend,
@@ -319,9 +311,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         const rectElement: JSX.Element = (
           <g
             key={id}
-            {...(this.state.calloutId && {
-              'aria-labelledby': `${this.state.calloutId}`,
-            })}
+            role="img"
+            aria-label={this._getAriaLabel(dataPointObject)}
             data-is-focusable={true}
             fillOpacity={this._getOpacity(dataPointObject.legend)}
             transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
@@ -357,34 +348,23 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   /**
    * when the legend is hovered we need to highlight
    * all the rectangles which fall under that category
-   * and un-highlight the rest of them, this functionality
-   * should happen only when there no legend Selected
+   * and un-highlight the rest of them
    * @param legendTitle
    */
   private _onLegendHover = (legendTitle: string): void => {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: legendTitle,
-        isLegendHovered: true,
-      });
-    }
+    this.setState({
+      activeLegend: legendTitle,
+    });
   };
 
   /**
    * when the mouse is out from the legend , we need
-   * to show the graph in initial mode. isLegendFocused will
-   * be useful at the scenario where mouseout happend for
-   * the legends which are in overflow card
-   * @param isLegendFocused
+   * to show the graph in initial mode.
    */
-  private _onLegendLeave = (isLegendFocused?: boolean): void => {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: '',
-        isLegendHovered: false,
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave = (): void => {
+    this.setState({
+      activeLegend: '',
+    });
   };
   /**
    * @param legendTitle
@@ -395,27 +375,16 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onLegendClick = (legendTitle: string): void => {
     /**
      * check if the legend is already selceted,
-     * if yes, then check if the consumer has clicked already
-     * seleceted legend if yes un-select the legend, else
-     * set the acitve legend state to legendTitle
-     *
-     * if legend is not alredy selceted, simply set the isLegendSelected to true
-     * and the active legend to the legendTitle of selected legend
+     * if yes, un-select the legend, else
+     * set the selected legend state to legendTitle
      */
-    if (this.state.isLegendSelected) {
-      if (this.state.activeLegend === legendTitle) {
-        this.setState({
-          activeLegend: '',
-          isLegendSelected: false,
-        });
-      } else {
-        this.setState({ activeLegend: legendTitle });
-      }
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        activeLegend: legendTitle,
-        isLegendSelected: true,
-        isLegendHovered: false,
+        selectedLegend: legendTitle,
       });
     }
   };
@@ -430,10 +399,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._onLegendClick(item.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(item.legend);
         },
-        onMouseOutAction: (isLegendSelected?: boolean) => {
-          this._onLegendLeave(isLegendSelected);
+        onMouseOutAction: () => {
+          this._onLegendLeave();
         },
       };
       legends.push(legend);
@@ -686,5 +656,37 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: FlattenData): string => {
+    const xValue = point.x;
+    const yValue = point.y;
+    const legend = point.legend;
+    const zValue = point.ratio ? `${point.ratio[0]}/${point.ratio[1]}` : point.rectText || point.value;
+    const description = point.descriptionMessage;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
+    );
   };
 }

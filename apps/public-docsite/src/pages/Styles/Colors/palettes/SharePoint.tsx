@@ -2,10 +2,11 @@ import * as React from 'react';
 import { ColorPalette, IColorSwatch, MarkdownHeader } from '@fluentui/react-docsite-components/lib/index2';
 import { SharePointNeutrals, SharePointThemes } from './sharePointThemes';
 
-export class SharePoint extends React.Component<{}, { activeThemeName?: string }> {
+type SharePointState = { activeThemeName?: string };
+export class SharePoint extends React.Component<{}, SharePointState> {
   public readonly state = {
-    activeThemeName: null,
-  };
+    activeThemeName: undefined,
+  } as SharePointState;
 
   public render() {
     const { activeThemeName } = this.state;
@@ -45,11 +46,12 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
   }
 
   private _changeTheme = (theme: IColorSwatch) => {
-    this.setState(
-      prevState =>
-        prevState.activeThemeName !== theme.name && {
-          activeThemeName: theme.name,
-        },
+    this.setState(prevState =>
+      prevState.activeThemeName !== theme.name
+        ? {
+            activeThemeName: theme.name,
+          }
+        : {},
     );
   };
 }

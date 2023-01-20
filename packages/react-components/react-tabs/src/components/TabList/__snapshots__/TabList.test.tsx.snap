@@ -19,6 +19,11 @@ exports[`TabList renders tabs when disabled 1`] = `
       >
         First
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
     </button>
     <button
       class="fui-Tab"
@@ -42,6 +47,11 @@ exports[`TabList renders tabs when disabled 1`] = `
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>
@@ -70,6 +80,11 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       >
         First
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
     </button>
     <button
       aria-selected="true"
@@ -95,6 +110,11 @@ exports[`TabList renders tabs with default selected tab 1`] = `
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>
@@ -133,6 +153,11 @@ exports[`TabList renders with tabs 1`] = `
       >
         First
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
     </button>
     <button
       aria-selected="false"
@@ -147,6 +172,11 @@ exports[`TabList renders with tabs 1`] = `
       >
         Second
       </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Second
+      </span>
     </button>
     <button
       aria-selected="false"
@@ -158,6 +188,11 @@ exports[`TabList renders with tabs 1`] = `
     >
       <span
         class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
       >
         Third
       </span>

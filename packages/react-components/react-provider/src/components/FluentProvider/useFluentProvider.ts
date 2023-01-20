@@ -33,6 +33,7 @@ export const useFluentProvider_unstable = (
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
   const {
+    applyStylesToPortals = true,
     dir = parentContext.dir,
     targetDocument = parentContext.targetDocument,
     theme,
@@ -55,6 +56,7 @@ export const useFluentProvider_unstable = (
   }, []);
 
   return {
+    applyStylesToPortals,
     dir,
     targetDocument,
     theme: mergedTheme,

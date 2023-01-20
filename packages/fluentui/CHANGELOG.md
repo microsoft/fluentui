@@ -18,6 +18,29 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
+
+<!--------------------------------[ v0.66.0 ]------------------------------- -->
+## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.65.0..@fluentui/react-northstar_v0.66.0)
+
+### BREAKING CHANGES
+- `createFelaRenderer` is now a function @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+
+### Fixes
+- `Carousel` fix for FZ - Adding data-is-visible prop #25973 @kolaps33 ([#25973](https://github.com/microsoft/fluentui/pull/25973))
+- Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
+- Fix `Button` styles for `disabledFocusable` when `text` @chpalac ([#26012](https://github.com/microsoft/fluentui/pull/26012))
+
+### Features
+- `nonce` can be configured for Fela renderer @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+- Unstyled prop for `Tree`, `TreeItem` and `TreeTitle` @jurokapsiar ([#25886](https://github.com/microsoft/fluentui/pull/25886))
+
+<!--------------------------------[ v0.65.0 ]------------------------------- -->
+## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.64.0..@fluentui/react-northstar_v0.65.0)
+
 ### BREAKING CHANGES
 - Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
 - Remove `goToToday` prop from `DatePicker` as it had no effect @miroslavstastny ([#25242](https://github.com/microsoft/fluentui/pull/25242))
@@ -26,6 +49,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
 - Add `FocusTrapZone` prop `preventScrollOnRestoreFocus` to prevent scroll on focus when `FocusTrapZone` releases @yuanboxue-amber ([#24632](https://github.com/microsoft/fluentui/pull/24632))
 - Add new style to v0 Tooltip to match v9 Tooltip @GianoglioEnrico ([#24908](https://github.com/microsoft/fluentui/pull/24908))
+- Restyling v0 Menu to match v9 Menu @GianoglioEnrico ([#25012](https://github.com/microsoft/fluentui/pull/25012))
+- Limit keyboard detection in inputs @jurokapsiar ([#25087](https://github.com/microsoft/fluentui/pull/25087))
+- Dropdown Freeform search should be case insensitive @jurokapsiar ([#24879](https://github.com/microsoft/fluentui/pull/24879))
+- Update styles to v0 Loader to match v9 Spinner @GianoglioEnrico ([#25169](https://github.com/microsoft/fluentui/pull/25169))
 
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
