@@ -21,7 +21,6 @@ const iconSize = '12px';
 const useRootStyles = makeStyles({
   base: {
     display: 'grid',
-    justifyItems: 'start',
   },
 
   // In horizontal layout, the field is a grid with the label taking up the entire first column.
@@ -62,8 +61,6 @@ const useLabelStyles = makeStyles({
     marginRight: tokens.spacingHorizontalM,
     gridRowStart: '1',
     gridRowEnd: '-1',
-    alignSelf: 'start',
-    justifySelf: 'stretch',
   },
 });
 
