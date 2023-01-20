@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add react-progress to stable",
+  "comment": "feat: Add react-progress to stable",
   "packageName": "@fluentui/react-components",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
