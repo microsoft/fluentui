@@ -1,8 +1,26 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { isConformant } from '../../testing/isConformant';
 import { Field } from './index';
 
 describe('Field', () => {
+  isConformant({
+    Component: Field,
+    displayName: 'Field',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'Test label',
+            hint: 'Test hint',
+            validationMessage: 'Test validation message',
+            validationState: 'error',
+          },
+        },
+      ],
+    },
+  });
+
   it("sets the label's htmlFor to the child's id if it has one", () => {
     const result = render(
       <Field label="Test label">
