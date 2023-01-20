@@ -218,11 +218,6 @@ export interface IHorizontalBarChartWithAxisDataPoint {
   yAxisCalloutData?: string;
 
   /**
-   * data to render the line along with bars
-   */
-  lineData?: ILineDataInVerticalBarChart;
-
-  /**
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;

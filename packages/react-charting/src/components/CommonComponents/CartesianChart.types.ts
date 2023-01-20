@@ -311,17 +311,6 @@ export interface ICartesianChartProps {
   showXAxisLablesTooltip?: boolean;
 
   /**
-   *@default false
-   *Used for to elipse y axis labes and show tooltip on x axis labels
-   */
-  showYAxisLablesTooltip?: boolean;
-
-  /**
-   *@default false
-   *Used for showing complete y axis lables   */
-  showYAxisLables?: boolean;
-
-  /**
    * @default 4
    * Used for X axis labels
    * While Giving showXAxisLablesTooltip prop, need to define after how many chars, we need to truncate the word.
@@ -547,4 +536,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 
   //starting point of x axis
   startFromX?: number;
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }
