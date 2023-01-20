@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Field sets role=\"alert\" on its error message so it is announced by screen readers",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
