@@ -1,25 +1,25 @@
+import * as path from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { argv } from 'yargs';
 import webpack from 'webpack';
 
+import { config } from '@fluentui/scripts-gulp';
 import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
-
-import config from '../config';
 
 const { paths } = config;
 
-const webpackConfig: webpack.Configuration = {
+export const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
   // eslint-disable-next-line no-extra-boolean-cast
   mode: Boolean(argv.debug) ? 'development' : 'production',
   entry: {
-    app: paths.perfSrc('index'),
+    app: path.join(__dirname, '..', 'src/index'),
   },
   output: {
     filename: `[name].js`,
-    path: paths.perfDist(),
+    path: path.join(__dirname, '..', 'dist'),
     pathinfo: true,
     publicPath: config.compiler_public_path,
   },
@@ -50,8 +50,8 @@ const webpackConfig: webpack.Configuration = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: paths.perfSrc('index.html'),
-          to: paths.perfDist(),
+          from: path.join(__dirname, '..', 'src/index.html'),
+          to: path.join(__dirname, '..', 'dist'),
         },
       ],
     }),
@@ -83,5 +83,3 @@ const webpackConfig: webpack.Configuration = {
     nodeEnv: !!argv.debug ? 'development' : 'production',
   },
 };
-
-export default webpackConfig;
