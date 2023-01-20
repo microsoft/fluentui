@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2019", "dom"],
+    "declaration": true,
+    "inlineSources": true
+  },
+  "exclude": [],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}
