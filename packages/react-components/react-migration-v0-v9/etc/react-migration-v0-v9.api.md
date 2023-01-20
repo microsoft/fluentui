@@ -44,6 +44,9 @@ export interface GridShimProps {
 }
 
 // @public (undocumented)
+export const Segment: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
 
 // (No @packageDocumentation comment for this package)
