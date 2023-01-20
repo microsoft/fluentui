@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 
-
-
 import { isConvergedPackage } from '@fluentui/scripts-monorepo';
 import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
@@ -151,7 +149,7 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
+  task('build', series('clean', 'copy', 'sass', isConvergedPackage() ? 'swc' : 'ts', 'api-extractor')).cached!();
 
   task(
     'bundle',
