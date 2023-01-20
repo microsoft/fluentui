@@ -69,7 +69,11 @@ export const MultiselectWithValueString = (props: Partial<ComboboxProps>) => {
 MultiselectWithValueString.parameters = {
   docs: {
     description: {
-      story: 'Multiselect Combobox supports using a controlled value to display selected options when not in focus.',
+      story:
+        'Multiselect Combobox supports using a controlled value to' +
+        'display selected options when not in focus, similar to v8 behavior.' +
+        'We recommend using tags rather than the value string when possible,' +
+        'since they have better UX and accessibility.',
     },
   },
 };
