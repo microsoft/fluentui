@@ -10,42 +10,42 @@ type DividerStoryArgs = Args & FluentDivider;
 type DividerStoryMeta = Meta<DividerStoryArgs>;
 
 const storyTemplate = html<DividerStoryArgs>`
-  <dcs-divider
-    dividerAlignContent=${x => x.dividerAlignContent}
-    dividerAppearance=${x => x.dividerAppearance}
+  <fluent-divider
+    alignContent=${x => x.alignContent}
+    appearance=${x => x.appearance}
     dividerRole=${x => x.role}
-    inset=${x => x.inset}
+    ?inset=${x => x.inset}
     orientation=${x => x.orientation}
   >
     ${x => x.content}
-  </dcs-divider>
+  </fluent-divider>
 `;
 
 export default {
   title: 'Components/Divider',
   args: {
     content: 'Text',
-    dividerAlignContent: 'center',
-    dividerAppearance: 'brand',
+    alignContent: 'center',
+    appearance: 'brand',
     dividerRole: 'presentation',
     inset: false,
     orientation: 'horizontal',
   },
   argTypes: {
-    dividerAlignContent: {
-      options: Object.keys(DividerAlignContent),
+    alignContent: {
+      options: Object.values(DividerAlignContent),
       control: {
         type: 'select',
       },
     },
-    dividerAppearance: {
-      options: Object.keys(DividerAppearance),
+    appearance: {
+      options: Object.values(DividerAppearance),
       control: {
         type: 'select',
       },
     },
-    dividerRole: {
-      options: Object.keys(DividerRole),
+    role: {
+      options: Object.values(DividerRole),
       control: {
         type: 'select',
       },
@@ -54,7 +54,7 @@ export default {
       control: 'boolean',
     },
     orientation: {
-      options: Object.keys(TabsOrientation),
+      options: Object.values(TabsOrientation),
       control: {
         type: 'select',
       },

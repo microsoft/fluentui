@@ -10,22 +10,22 @@ import { DividerAlignContent, DividerAppearance } from './divider.options.js';
  */
 export class Divider extends FASTDivider {
   /**
-   * @property dividerAlignContent
+   * @property alignContent
    * @default center (DividerAlignContent.center)
    * @remarks
    * Determines the alignment of the content within the divider. Select from center, start, or end.
    */
-  @attr({ attribute: 'divider-align-content' })
-  public dividerAlignContent?: DividerAlignContent;
+  @attr({ attribute: 'align-content' })
+  public alignContent?: DividerAlignContent;
 
   /**
-   * @property dividerAppearance
+   * @property appearance
    * @default default (DividerAppearance.default)
    * @remarks
    * A divider can have one of the preset appearances. When not specified, the divider has its default appearance. Select from strong, brand, subtle, default.
    */
-  @attr({ attribute: 'divider-apearance' })
-  public dividerAppearance?: DividerAppearance;
+  @attr({ attribute: 'apearance' })
+  public appearance?: DividerAppearance;
 
   /**
    * @property inset
@@ -33,6 +33,6 @@ export class Divider extends FASTDivider {
    * @remarks
    * Adds padding to the beginning and end of the divider.
    */
-  @attr
+  @attr({ mode: 'boolean' })
   public inset?: boolean;
 }
