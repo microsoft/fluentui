@@ -35,7 +35,10 @@
       "patch"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "@swc/core": "^1.3.24",
+    "@swc/helpers": "^0.4.11"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
