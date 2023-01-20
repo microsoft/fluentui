@@ -82,6 +82,7 @@ export const useField_unstable = <T extends FieldControl>(
   const validationMessage = resolveShorthand(fieldProps.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
+      role: validationState === 'error' ? 'alert' : undefined,
     },
   });
 

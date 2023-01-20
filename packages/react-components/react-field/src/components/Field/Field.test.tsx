@@ -145,4 +145,12 @@ describe('Field', () => {
 
     expect(input.getAttribute('aria-describedby')).toBe('test-describedby');
   });
+
+  it('sets role="alert" on the validation when it is an error', () => {
+    const result = render(<MockField validationState="error" validationMessage="test error message" />);
+
+    const validationMessage = result.getByText('test error message');
+
+    expect(validationMessage.getAttribute('role')).toBe('alert');
+  });
 });
