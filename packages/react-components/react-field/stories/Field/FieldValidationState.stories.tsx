@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Field } from '../../src/index';
+
 import { Input, makeStyles, tokens } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components/unstable';
 import { SparkleFilled } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -40,9 +41,10 @@ export const ValidationState = () => {
         <Input />
       </Field>
       <Field
-        label="Custom state"
+        label="Neutral state"
+        validationState="neutral"
         validationMessageIcon={<SparkleFilled />}
-        validationMessage="This validation message has a custom icon."
+        validationMessage="This is a neutral message with a custom icon."
         orientation="horizontal"
       >
         <Input />

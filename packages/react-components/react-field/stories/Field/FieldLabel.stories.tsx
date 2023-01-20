@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Field } from '../../src/index';
+
 import { Input } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components/unstable';
 
 export const Label = () => (
   <Field label="Field label">

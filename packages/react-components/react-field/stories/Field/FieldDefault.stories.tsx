@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Field } from '../../src/index';
-import type { FieldProps } from '../../src/index';
+
 import { Input } from '@fluentui/react-components';
+import type { FieldProps } from '@fluentui/react-components/unstable';
+import { Field } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<FieldProps>) => (
   <Field
