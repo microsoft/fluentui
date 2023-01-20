@@ -95,6 +95,7 @@
     "@griffel/webpack-extraction-plugin": "0.3.3",
     "@griffel/webpack-loader": "2.1.8",
     "@jest/reporters": "26.6.2",
+    "just-scripts-utils": "1.1.15",
     "@mdx-js/loader": "1.6.22",
     "@microsoft/api-extractor": "7.18.1",
     "@microsoft/eslint-plugin-sdl": "0.1.9",

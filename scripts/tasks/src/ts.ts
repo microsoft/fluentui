@@ -40,11 +40,16 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
     const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
 
-    options.outDir = `${tsConfigOutDir}/${options.outDir}`;
+    options.outDir = options.outDir ? `${tsConfigOutDir}/${options.outDir}` : undefined;
     options.project = tsConfigFile;
   }
 
   return options;
+}
+
+export function tsDeclarationFilesEmit() {
+  const options = prepareTsTaskConfig({});
+  return tscTask(options);
 }
 
 export const ts = {

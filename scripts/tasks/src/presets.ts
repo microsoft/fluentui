@@ -1,25 +1,27 @@
-import { task, series, parallel, condition, option, addResolvePath } from 'just-scripts';
-
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+
+
 
 import { isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
+import { apiExtractor } from './api-extractor';
+import { getJustArgv } from './argv';
 import { babel } from './babel';
 import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
-import { jest as jestTask, jestWatch } from './jest';
-import { sass } from './sass';
-import { ts } from './ts';
 import { eslint } from './eslint';
-import { webpack, webpackDevServer } from './webpack';
-import { apiExtractor } from './api-extractor';
+import { jest as jestTask, jestWatch } from './jest';
 import { lintImports } from './lint-imports';
-import { prettier } from './prettier';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
-import { startStorybookTask, buildStorybookTask } from './storybook';
-import { getJustArgv } from './argv';
+import { prettier } from './prettier';
+import { sass } from './sass';
+import { buildStorybookTask, startStorybookTask } from './storybook';
+import { swc } from './swc';
+import { ts, tsDeclarationFilesEmit } from './ts';
+import { webpack, webpackDevServer } from './webpack';
 
 /** Do only the bare minimum setup of options and resolve paths */
 export function basicPreset() {
@@ -69,6 +71,38 @@ export function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
+
+  task('swc:commonjs', swc.commonjs);
+  task('swc:esm', swc.esm);
+  task('swc:amd', swc.amd);
+
+  task('swc:compile', () => {
+    const moduleFlag = args.module;
+    // default behaviour
+    if (!moduleFlag) {
+      return parallel(
+        'swc:commonjs',
+        'swc:esm',
+        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+      );
+    }
+
+    return parallel(
+      condition('swc:commonjs', () => moduleFlag.cjs),
+      condition('swc:esm', () => moduleFlag.esm),
+      condition('swc:amd', () => moduleFlag.amd),
+    );
+  });
+
+  task('swc', () => {
+    return series(
+      'ts:declaration-files-emit',
+      'swc:compile',
+      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    );
+  });
+
+  task('ts:declaration-files-emit', tsDeclarationFilesEmit);
 
   task('ts:compile', () => {
     const moduleFlag = args.module;
