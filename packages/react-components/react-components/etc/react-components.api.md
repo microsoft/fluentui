@@ -66,6 +66,7 @@ import { AvatarGroupSlots } from '@fluentui/react-avatar';
 import { AvatarGroupState } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
 import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
@@ -473,6 +474,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
+import { TextareaOnChangeData } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
@@ -815,6 +817,8 @@ export { AvatarGroupState }
 export { AvatarNamedColor }
 
 export { AvatarProps }
+
+export { AvatarSize }
 
 export { AvatarSizes }
 
@@ -1629,6 +1633,8 @@ export { Text_2 as Text }
 export { Textarea }
 
 export { textareaClassNames }
+
+export { TextareaOnChangeData }
 
 export { TextareaProps }
 

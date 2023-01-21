@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Deprecate SliderField_unstable in favor of Field with Slider as its child.",
+  "packageName": "@fluentui/react-slider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

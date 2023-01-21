@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add support for appearance overrides (unstable)",
+  "packageName": "@fluentui/react-components",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

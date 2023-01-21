@@ -560,10 +560,11 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-migration-v8-v9": {
-      "root": "packages/react-migration-v8-v9",
+      "root": "packages/react-components/react-migration-v8-v9",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-migration-v8-v9/src"
+      "sourceRoot": "packages/react-components/react-migration-v8-v9/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",

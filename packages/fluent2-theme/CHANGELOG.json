@@ -2,6 +2,21 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Tue, 24 Jan 2023 07:51:03 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.11",
+      "version": "8.104.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "3e8465f772759b02c06bd2a0b74afa88208375b6",
+            "comment": "Adding styles for SpinButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 07:42:14 GMT",
       "tag": "@fluentui/fluent2-theme_v8.104.10",
       "version": "8.104.10",

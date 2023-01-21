@@ -70,9 +70,10 @@ ComplexOptions.parameters = {
   docs: {
     description: {
       story:
-        'Options can have structured JSX children. ' +
-        "When this is the case, the Option's `text` prop should be a the plain text version of the option, " +
-        'and is used as the Combobox value when the option is selected.',
+        'Options are defined as JSX children, and can include nested elements or other components. ' +
+        "When this is the case, the Option's `text` prop should be the plain text version of the option, " +
+        'and is used as the Combobox value when the option is selected. ' +
+        'Options should never contain interactive elements, such as buttons or links.',
     },
   },
 };

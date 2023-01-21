@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: export toolbar hooks as functions, not Typescript types",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

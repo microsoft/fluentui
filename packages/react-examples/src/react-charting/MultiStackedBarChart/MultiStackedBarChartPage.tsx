@@ -8,9 +8,11 @@ import {
 
 import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
+import { MultiStackedBarChartVariantExample } from './MultiStackedBarChart.Variant.Example';
 
 const MultiStackedBarChartExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChart.Example.tsx') as string;
 const MultiStackedBarChartWithPlaceholderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChartWithPlaceHolder.Example.tsx') as string;
+const MultiStackedBarChartVariantExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChart.Variant.Example.tsx') as string;
 
 export class MultiStackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -28,6 +30,9 @@ export class MultiStackedBarChartPage extends React.Component<IComponentDemoPage
               code={MultiStackedBarChartWithPlaceholderExampleCode}
             >
               <MultiStackedBarChartWithPlaceholderExample />
+            </ExampleCard>
+            <ExampleCard title="MultiStackedBarChart Variant" code={MultiStackedBarChartVariantExampleCode}>
+              <MultiStackedBarChartVariantExample />
             </ExampleCard>
           </>
         }
@@ -68,6 +73,10 @@ export class MultiStackedBarChartPage extends React.Component<IComponentDemoPage
               <li>
                 A number is displayed on the top of stacked bar chart if it has only one data point. This number shown
                 is the datapoint that is passed to the chart.
+              </li>
+              <li>
+                The bar labels are shown by default in the absolute-scale variant. Set the <code>hideLabels</code> prop
+                to hide them.
               </li>
             </ul>
           </div>

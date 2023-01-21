@@ -4,7 +4,13 @@ import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IChartProps, IChartDataPoint, IMultiStackedBarChartProps, MultiStackedBarChart } from '../../index';
+import {
+  IChartProps,
+  IChartDataPoint,
+  IMultiStackedBarChartProps,
+  MultiStackedBarChart,
+  MultiStackedBarChartVariant,
+} from '../../index';
 import { IMultiStackedBarChartState, MultiStackedBarChartBase } from './MultiStackedBarChart.base';
 import toJson from 'enzyme-to-json';
 
@@ -101,6 +107,22 @@ describe('MultiStackedBarChart snapShot testing', () => {
 
   it('renders hideDenominator correctly', () => {
     const component = renderer.create(<MultiStackedBarChart data={chartPoints} hideDenominator={[true, true]} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render absolute-scale variant correctly', () => {
+    const component = renderer.create(
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render bar labels in absolute-scale variant', () => {
+    const component = renderer.create(
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} hideLabels={true} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

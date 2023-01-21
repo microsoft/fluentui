@@ -1,65 +1,86 @@
 import * as React from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
-import type { FieldProps } from './index';
-import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from './index';
-
-const MockComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => <input {...props} />;
-
-type MockFieldProps = FieldProps<typeof MockComponent>;
-const mockFieldClassNames = getFieldClassNames('MockField');
-const MockField: ForwardRefComponent<MockFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, { component: MockComponent, classNames: mockFieldClassNames });
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
-});
+import { isConformant } from '../../testing/isConformant';
+import { Field } from './index';
 
 describe('Field', () => {
-  it("sets the label's htmlFor to the supplied id", () => {
-    const result = render(<MockField label="Test label" id="test-id" />);
+  isConformant({
+    Component: Field,
+    displayName: 'Field',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            label: 'Test label',
+            hint: 'Test hint',
+            validationMessage: 'Test validation message',
+            validationState: 'error',
+          },
+        },
+      ],
+    },
+  });
+
+  it("sets the label's htmlFor to the child's id if it has one", () => {
+    const result = render(
+      <Field label="Test label">
+        <input id="test-id" />
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox');
     const label = result.getByText('Test label') as HTMLLabelElement;
 
+    expect(input.id).toBe('test-id');
     expect(label.htmlFor).toBe('test-id');
   });
 
-  it("sets the label's htmlFor to a generated id, and does not set aria-labelledby", () => {
-    const result = render(<MockField label="Test label" />);
+  it('generates an id for the child if it does not have one,', () => {
+    const result = render(
+      <Field label="Test label">
+        <input />
+      </Field>,
+    );
+
     const input = result.getByRole('textbox');
     const label = result.getByText('Test label') as HTMLLabelElement;
 
     expect(input.id).toBeTruthy();
     expect(label.htmlFor).toBe(input.id);
-    expect(input.getAttribute('aria-labelledby')).toBeFalsy();
   });
 
-  it('sets aria-labelledby instead of htmlFor if configured to do so', () => {
-    const MockFieldLabelledBy: ForwardRefComponent<MockFieldProps> = React.forwardRef((props, ref) => {
-      const state = useField_unstable(props, ref, {
-        component: MockComponent,
-        classNames: mockFieldClassNames,
-        labelConnection: 'aria-labelledby',
-      });
-      useFieldStyles_unstable(state);
-      return renderField_unstable(state);
-    });
-
-    const result = render(<MockFieldLabelledBy label="Test label" />);
+  it('sets aria-labelledby on the control', () => {
+    const result = render(
+      <Field label="Test label">
+        <input />
+      </Field>,
+    );
     const input = result.getByRole('textbox');
     const label = result.getByText('Test label') as HTMLLabelElement;
 
     expect(label.id).toBeTruthy();
     expect(input.getAttribute('aria-labelledby')).toBe(label.id);
-    expect(label.htmlFor).toBeFalsy();
   });
 
-  it('adds a required asterisk * to the label when requried is set', () => {
-    const result = render(<MockField label="Test label" required />);
+  it('adds a required asterisk * to the label, and aria-required on the control when required is set', () => {
+    const result = render(
+      <Field label="Test label" required>
+        <input />
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox');
 
     expect(result.getByText('*')).toBeTruthy();
+    expect(input.getAttribute('aria-required')).toBe('true');
   });
 
   it('sets aria-describedby to the hint', () => {
-    const result = render(<MockField hint="Test hint" />);
+    const result = render(
+      <Field hint="Test hint">
+        <input />
+      </Field>,
+    );
     const input = result.getByRole('textbox');
     const hint = result.getByText('Test hint');
 
@@ -68,7 +89,11 @@ describe('Field', () => {
   });
 
   it('sets aria-describedby to the validationMessage', () => {
-    const result = render(<MockField validationMessage="Test validation message" validationState="warning" />);
+    const result = render(
+      <Field validationMessage="Test validation message" validationState="warning">
+        <input />
+      </Field>,
+    );
     const input = result.getByRole('textbox');
     const validationMessage = result.getByText('Test validation message');
 
@@ -78,7 +103,9 @@ describe('Field', () => {
 
   it('sets aria-describedby to the validationMessage + hint', () => {
     const result = render(
-      <MockField hint="Test hint" validationMessage="Test validation message" validationState="error" />,
+      <Field hint="Test hint" validationMessage="Test validation message" validationState="error">
+        <input />
+      </Field>,
     );
     const input = result.getByRole('textbox');
     const hint = result.getByText('Test hint');
@@ -89,12 +116,9 @@ describe('Field', () => {
 
   it('sets aria-describedby to the validationMessage + hint + user aria-describedby', () => {
     const result = render(
-      <MockField
-        hint="Test hint"
-        validationMessage="Test validation message"
-        validationState="error"
-        aria-describedby="test-describedby"
-      />,
+      <Field hint="Test hint" validationMessage="Test validation message" validationState="error">
+        <input aria-describedby="test-describedby" />
+      </Field>,
     );
     const input = result.getByRole('textbox');
     const hint = result.getByText('Test hint');
@@ -104,7 +128,11 @@ describe('Field', () => {
   });
 
   it('sets aria-invalid if an error', () => {
-    const result = render(<MockField validationState="error" />);
+    const result = render(
+      <Field validationState="error">
+        <input />
+      </Field>,
+    );
     const input = result.getByRole('textbox');
 
     expect(input.getAttribute('aria-invalid')).toBeTruthy();
@@ -112,15 +140,9 @@ describe('Field', () => {
 
   it('does not override user aria props, EXCEPT aria-describedby', () => {
     const result = render(
-      <MockField
-        label="test label"
-        validationState="error"
-        validationMessage="test description"
-        hint="test hint"
-        aria-labelledby="test-labelledby"
-        aria-errormessage="test-errormessage"
-        aria-invalid={false}
-      />,
+      <Field label="test label" validationState="error" validationMessage="test description" hint="test hint">
+        <input aria-labelledby="test-labelledby" aria-errormessage="test-errormessage" aria-invalid={false} />
+      </Field>,
     );
 
     const input = result.getByRole('textbox');
@@ -130,27 +152,46 @@ describe('Field', () => {
     expect(input.getAttribute('aria-invalid')).toBe('false');
   });
 
-  it('does not override user aria-describedby on the control slot', () => {
+  it.each([
+    [undefined, null], // defaults to neutral
+    ['error', 'alert'],
+    ['warning', null],
+    ['success', null],
+  ] as const)('if validationState is %s, sets role to %s on the validationMessage', (validationState, role) => {
     const result = render(
-      <MockField
-        label="test label"
-        validationState="error"
-        validationMessage="test description"
-        hint="test hint"
-        control={{ 'aria-describedby': 'test-describedby' }}
-      />,
+      <Field validationState={validationState} validationMessage="test validation message">
+        <input />
+      </Field>,
     );
+    const validationMessage = result.getByText('test validation message');
 
-    const input = result.getByRole('textbox');
-
-    expect(input.getAttribute('aria-describedby')).toBe('test-describedby');
+    expect(validationMessage.getAttribute('role')).toBe(role);
   });
 
-  it('sets role="alert" on the validation when it is an error', () => {
-    const result = render(<MockField validationState="error" validationMessage="test error message" />);
+  it('passes expected props to child render function', () => {
+    const renderFn = jest.fn();
+    const result = render(
+      <Field
+        label="Test label"
+        hint="Test hint"
+        validationMessage="Test validation message"
+        validationState="error"
+        required
+      >
+        {renderFn}
+      </Field>,
+    );
 
-    const validationMessage = result.getByText('test error message');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const hint = result.getByText('Test hint');
+    const validationMessage = result.getByText('Test validation message');
 
-    expect(validationMessage.getAttribute('role')).toBe('alert');
+    expect(renderFn).toHaveBeenCalledWith({
+      id: label.htmlFor,
+      'aria-labelledby': label.id,
+      'aria-describedby': validationMessage.id + ' ' + hint.id,
+      'aria-invalid': true,
+      'aria-required': true,
+    });
   });
 });
