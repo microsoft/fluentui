@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Button, CounterBadge, PresenceBadge } from '@fluentui/react-components';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 
@@ -19,32 +19,46 @@ const Actions = () => (
 
 export const Badges = () => (
   <Tree aria-label="Tree">
-    <TreeItem aria-owns="default-subtree-1" actions={<Actions />} badges={<RenderBadges />}>
-      level 1, item 1 with actions
+    <TreeItem aria-owns="default-subtree-1" actions={<Actions />}>
+      <TreeItemLayout aside={<RenderBadges />}>level 1, item 1 with actions</TreeItemLayout>
     </TreeItem>
     <Tree id="default-subtree-1">
-      <TreeItem badges={<RenderBadges />}>level 2, item 1</TreeItem>
-      <TreeItem badges={<RenderBadges />}>level 2, item 2</TreeItem>
-      <TreeItem badges={<RenderBadges />}>level 2, item 3</TreeItem>
+      <TreeItem>
+        <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
+      </TreeItem>
+      <TreeItem>
+        <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
+      </TreeItem>
+      <TreeItem>
+        <TreeItemLayout aside={<RenderBadges />}>level 2, item 3</TreeItemLayout>
+      </TreeItem>
     </Tree>
-    <TreeItem aria-owns="default-subtree-2" badges={<RenderBadges />}>
-      level 1, item 2
+    <TreeItem aria-owns="default-subtree-2">
+      <TreeItemLayout aside={<RenderBadges />}>level 1, item 2</TreeItemLayout>
     </TreeItem>
     <Tree id="default-subtree-2">
-      <TreeItem aria-owns="default-subtree-2-1" badges={<RenderBadges />}>
-        level 2, item 1
+      <TreeItem aria-owns="default-subtree-2-1">
+        <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
       </TreeItem>
       <Tree id="default-subtree-2-1">
-        <TreeItem badges={<RenderBadges />}>level 3, item 1</TreeItem>
+        <TreeItem>
+          <TreeItemLayout aside={<RenderBadges />}>level 3, item 1</TreeItemLayout>
+        </TreeItem>
       </Tree>
 
-      <TreeItem aria-owns="default-subtree-3" badges={<RenderBadges />}>
-        level 1, item 1
+      <TreeItem aria-owns="default-subtree-3">
+        <TreeItemLayout aside={<RenderBadges />}>level 1, item 1</TreeItemLayout>
       </TreeItem>
       <Tree id="default-subtree-3">
-        <TreeItem badges={<RenderBadges />}>level 2, item 1</TreeItem>
-        <TreeItem badges={<RenderBadges />}>level 2, item 2</TreeItem>
-        <TreeItem badges={<RenderBadges />}>level 2, item 3</TreeItem>
+        <TreeItem>
+          <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
+        </TreeItem>
+        <TreeItem>
+          <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
+        </TreeItem>
+        <TreeItem>
+          <TreeItemLayout aside={<RenderBadges />}>level 2, item 3</TreeItemLayout>
+        </TreeItem>
       </Tree>
     </Tree>
   </Tree>
