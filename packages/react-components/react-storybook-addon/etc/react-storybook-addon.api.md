@@ -76,6 +76,9 @@ export const themes: readonly [{
     readonly theme: Theme;
 }];
 
+// @public (undocumented)
+export const withFluentProvider: (StoryFn: () => JSX.Element, context: FluentStoryContext) => JSX.Element;
+
 // (No @packageDocumentation comment for this package)
 
 ```
