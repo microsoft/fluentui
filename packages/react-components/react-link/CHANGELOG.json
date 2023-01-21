@@ -2,6 +2,33 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:30:57 GMT",
+      "tag": "@fluentui/react-link_v9.0.20",
+      "version": "9.0.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "a2eb0b3b09c9b6007977e273311d327f43df42e1",
+            "comment": "fix: handle \"tabIndex\" from user's input"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-tabster to v9.4.1",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 16:32:57 GMT",
       "tag": "@fluentui/react-link_v9.0.19",
       "version": "9.0.19",

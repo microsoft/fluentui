@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:31:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.6)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.5..@fluentui/react-aria_v9.3.6)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 
 ## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.5)
 

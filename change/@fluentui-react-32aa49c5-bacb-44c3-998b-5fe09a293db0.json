@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update ComboBox & Dropdown docs to explicitly prohibit nested interactive content",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}

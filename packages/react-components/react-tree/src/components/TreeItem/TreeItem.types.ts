@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TreeItemContextValue } from '../../contexts/treeItemContext';
+import type { ButtonContextValue } from '@fluentui/react-button';
+import type { TreeItemContextValue } from '../../contexts';
 
 export type TreeItemSlots = {
   root: Slot<'div'>;
@@ -19,6 +20,7 @@ export type TreeItemSlots = {
 
 export type TreeItemContextValues = {
   treeItem: TreeItemContextValue;
+  button: ButtonContextValue;
 };
 
 /**
@@ -29,8 +31,12 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> &
-  TreeItemContextValue & {
-    open: boolean;
-    isLeaf: boolean;
-  };
+export type TreeItemState = ComponentState<TreeItemSlots> & {
+  open: boolean;
+  isLeaf: boolean;
+  /**
+   * By design, a button included on the actions slot should be small
+   */
+  buttonSize: 'small';
+  isActionsVisible: boolean;
+};

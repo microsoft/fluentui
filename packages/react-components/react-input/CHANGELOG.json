@@ -2,6 +2,53 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:30:56 GMT",
+      "tag": "@fluentui/react-input_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Deprecate InputField_unstable in favor of Field with Input as its child."
+          }
+        ],
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "6f29c8f65b2db6125efbd2a7ec2d7abdd0f44601",
+            "comment": "feat: Allow default appearance override"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.17",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.2.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.14",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:12 GMT",
       "tag": "@fluentui/react-input_v9.2.13",
       "version": "9.2.13",

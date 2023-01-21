@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 07:35:31 GMT",
+      "tag": "@fluentui/react-charting_v5.14.38",
+      "version": "5.14.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "84c8b3d4d503c0c755bcdf45563549fffc34790c",
+            "comment": "Add labels to arcs in donut chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8ca9702605078cfdd584d75b5ea469066b2a4349",
+            "comment": "Add new variant to horizontal bar chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.104.7",
+            "commit": "175abf247751c2ababcc8deef8b4479c648ea2dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 07:42:14 GMT",
       "tag": "@fluentui/react-charting_v5.14.37",
       "version": "5.14.37",

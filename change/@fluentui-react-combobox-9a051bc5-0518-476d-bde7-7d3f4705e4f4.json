@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: update spec and migration docs",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

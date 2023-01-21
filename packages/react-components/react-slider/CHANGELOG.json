@@ -2,6 +2,51 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:31:00 GMT",
+      "tag": "@fluentui/react-slider_v9.0.20",
+      "version": "9.0.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Deprecate SliderField_unstable in favor of Field with Slider as its child."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.17",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.2.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.4.1",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.18",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:12 GMT",
       "tag": "@fluentui/react-slider_v9.0.19",
       "version": "9.0.19",

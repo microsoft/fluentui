@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Overrides context",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

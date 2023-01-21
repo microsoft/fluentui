@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: bump tslib to 2.1 to align with rest of monorepo packages",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
