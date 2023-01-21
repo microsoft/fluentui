@@ -73,10 +73,10 @@ export function preset() {
   task('swc:commonjs', swc.commonjs);
   task(
     'swc:esm',
-    series(
-      swc.esm,
-      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
-    ),
+    // series(
+    swc.esm,
+    // condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+    // ),
   );
   task('swc:amd', swc.amd);
 
@@ -84,14 +84,14 @@ export function preset() {
     const moduleFlag = args.module;
     // default behaviour
     if (!moduleFlag) {
-      return series(
+      return parallel(
         'swc:esm',
         'swc:commonjs',
-        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+        // condition('swc:amd', () => !!args.production && !isConvergedPackage()),
       );
     }
 
-    return series(
+    return parallel(
       condition('swc:esm', () => moduleFlag.esm),
       condition('swc:commonjs', () => moduleFlag.cjs),
       condition('swc:amd', () => moduleFlag.amd),
@@ -99,7 +99,11 @@ export function preset() {
   });
 
   task('swc', () => {
-    return series('ts:declaration-files-emit', 'swc:compile');
+    return series(
+      //'ts:declaration-files-emit',
+      'ts',
+      'swc:compile',
+    );
   });
 
   task('ts:declaration-files-emit', tsDeclarationFilesEmit);

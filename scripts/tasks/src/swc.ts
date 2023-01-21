@@ -32,11 +32,11 @@ function getSwcTaskConfig(options: any) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function swcTask(options: any) {
   const outDir = options.outDir;
-  if (options.type === 'commonjs') {
-    console.log(`npx swc lib -d ${outDir} -C module.type=${options.type} `);
-    return exec(`npx swc lib -d ${outDir} -C module.type=${options.type} `);
-  }
-  const cmd = `npx swc src -d ${outDir} -C module.type=${options.type}`;
+  // if (options.type === 'commonjs') {
+  //   console.log(`npx swc lib -d ${outDir} -C module.type=${options.type} `);
+  //   return exec(`npx babel lib --out-dir ${outDir} --plugins @babel/plugin-transform-modules-commonjs `);
+  // }
+  const cmd = `npx swc ${outDir} -d ${outDir} -C module.type=${options.type}`;
   console.log('swc task cli command: ', cmd);
   return exec(cmd);
 }
