@@ -3,7 +3,7 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const rootMain = require('../../../.storybook/main');
 
 module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConfig} */ ({
-  addons: [...rootMain.addons],
+  addons: [...rootMain.addons, '@fluentui/react-storybook-addon'],
 
   stories: ['../src/**/*.stories.tsx'],
   core: {
