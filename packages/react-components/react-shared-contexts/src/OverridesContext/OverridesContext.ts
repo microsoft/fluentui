@@ -4,7 +4,7 @@ import * as React from 'react';
  * @internal
  */
 export type OverridesContextValue = {
-  // should be InputProps['appearance'], but do we want to add the dependency?
+  // copy of InputProps['appearance'] to avoid dependency
   inputDefaultAppearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 };
 

@@ -86,7 +86,6 @@ export {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
 } from '@fluentui/react-shared-contexts';
-export type { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
   getPartitionedNativeProps,

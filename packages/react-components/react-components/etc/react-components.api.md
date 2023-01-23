@@ -288,7 +288,6 @@ import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
-import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
@@ -1260,8 +1259,6 @@ export { OverflowItem }
 export { OverflowItemProps }
 
 export { OverflowProps }
-
-export { OverridesContextValue_unstable }
 
 export { PartialTheme }
 

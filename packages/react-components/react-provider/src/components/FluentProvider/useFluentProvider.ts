@@ -39,9 +39,9 @@ export const useFluentProvider_unstable = (
     theme,
     overrides_unstable: overrides = {},
   } = props;
-  const mergedTheme = mergeObjects(parentTheme, theme);
+  const mergedTheme = shallowMerge(parentTheme, theme);
 
-  const mergedOverrides = mergeObjects(parentOverrides, overrides);
+  const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
   React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
@@ -75,7 +75,7 @@ export const useFluentProvider_unstable = (
   };
 };
 
-function mergeObjects<T>(a: T, b: T): T {
+function shallowMerge<T>(a: T, b: T): T {
   // Merge impacts perf: we should like to avoid it if it's possible
   if (a && b) {
     return { ...a, ...b };
