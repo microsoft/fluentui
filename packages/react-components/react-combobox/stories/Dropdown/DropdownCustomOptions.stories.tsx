@@ -48,11 +48,12 @@ const CustomOption = (props: CustomOptionProps) => {
 };
 
 const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: (keyof typeof animalIcons)[] }) => {
-  const labelSlot = typeof props.label === 'object' ? props.label : { children: props.label };
+  const { label, options, ...optionGroupProps } = props;
+  const labelSlot = typeof label === 'object' ? label : { children: label };
 
   return (
-    <OptionGroup {...props} label={{ style: { fontStyle: 'italic' }, ...labelSlot }}>
-      {props.options.map(option => (
+    <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }} {...optionGroupProps}>
+      {options.map(option => (
         <CustomOption key={option} animal={option} />
       ))}
     </OptionGroup>
