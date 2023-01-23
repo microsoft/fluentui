@@ -113,39 +113,116 @@ Drag (optional)
 
 ## Structure
 
-```tsx
-1. <Tag>Simple Tag</Tag>
-2. <Tag image={<image/>} > Tag with image  </Tag>
-3. <Tag image={<icon/>} > Tag with icon   </Tag>
-4. <TagButton onClick={handleClick}>Tag with button</Tag>
-5. <TagButton as="a" href="#">Tag with link</Tag>
-6. <TagButton toggleable onButtonToggle>Tag with toggle button</Tag>
-7. <TagButton onClick={handleClick} image={<image/>}>Tag with button and image</TagButton>
-8. <TagButton onClick={handleClick} image={<icon/>} dismissable>Tag with icon and dismiss button </TagButton>
-9. <TagButton onClick={handleClick} image={<icon/>} dismiss={<icon/>}> Tag with image and custom dismiss button </TagButton>
-10.  <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        {(triggerProps: MenuButtonProps) => <TagButton action={triggerProps} dismissable>Tag menu and dismiss button</Tag>}
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Item a</MenuItem>
-          <MenuItem>Item b</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-```
+### Simple Tag
 
 ```tsx
-1. <span>Simple Tag</span>
-2. <span><img />Tag with image</span>
-3. <span><Icon />Tag with icon</span>
-4. <span><button>Tag with button</button></span>
-5. <span><a>Tag with link</a></span>
-6. <span><button>Tag with toggle button</button></span>
-7. <span><button><img />Tag with button and image</button></span>
-8. <span><button><img />Tag with icon and dismiss button</button><button>x</button></span>
-9. <span><button><img />Tag with image and custom dismiss button</button><button><icon /></button></span>
+<Tag>Simple Tag</Tag>
+```
+
+```html
+<span>Simple Tag</span>
+```
+
+### Tag with image
+
+```tsx
+<Tag image="https://foo.com/image.jpg"> Tag with image </Tag>
+```
+
+```html
+<span>
+  <span><img role="presentation" aria-hidden="true" /></span>
+  Tag with image
+</span>
+```
+
+### Tag with icon
+
+```tsx
+<Tag image={<MyFluentIcon />}> Tag with icon </Tag>
+```
+
+```html
+<span>
+  <span><svg /></span>
+  Tag with icon
+</span>
+```
+
+### TagButton
+
+```tsx
+<TagButton onClick={handleClick}>Tag button</Tag>
+```
+
+```html
+<span><button type="button">Tag with button</button></span>
+```
+
+### TagButton as anchor
+
+```tsx
+ <TagButton as="a" href="#">Tag with link</Tag>
+```
+
+```html
+<span><a href="#">Tag with link</a></span>
+```
+
+### Toggleable TagButton
+
+```tsx
+ <TagButton toggleable >Uncontrolled toggle tag</Tag>
+ <TagButton toggled={isToggled} onToggle={handleToggle} >Controlled toggle tag</Tag>
+```
+
+```html
+<span><button aria-pressed="true" type="button">Toggleable TagButton</button></span>
+```
+
+### Dismissable TagButton
+
+```tsx
+ <TagButton dismissable onDismiss={handleDismiss} >Dismissable TagButton</Tag>
+```
+
+```html
+<span><button type="button">Toggleable TagButton</button><button type="button">x</button></span>
+```
+
+### Dismissable TagButton with custom dismiss icon
+
+```tsx
+ <TagButton
+  onClick={handleClick}
+  dismissable
+  onDismiss={handleDismiss}
+  dismiss={<MyDismissIcon/>}
+  >
+    Dismissable TagButton
+  </Tag>
+```
+
+```html
+<span
+  ><button type="button">Dismissable TagButton with custom dismiss icon</button><button type="button"><svg /></button
+></span>
+```
+
+### Dismissable Tag with Menu on primary action
+
+```tsx
+<Menu>
+  <MenuTrigger disableButtonEnhancement>
+    {(triggerProps) => <TagButton action={triggerProps} dismissable>Tag menu and dismiss button</Tag>}
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuItem>Item a</MenuItem>
+      <MenuItem>Item b</MenuItem>
+    </MenuList>
+  </MenuPopover>
+</Menu>
 ```
 
 ## Migration
@@ -201,6 +278,10 @@ TagButton
   - _Screen readers_
 
 ## Accessibility
+
+Tags are either strictly visual, a single button tab stop, or two buttons and two tabstops.
+
+Toggleable tabs would use `aria-pressed` to denote if they are toggled or not.
 
 Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
 
