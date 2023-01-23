@@ -31,6 +31,7 @@ async function test(): Promise<void> {
       process.platform === 'win32'
         ? `file:///${htmlPath.split(path.win32.sep).join(path.posix.sep)}`
         : `file://${htmlPath}`;
+    console.log(`Using "${url}"`);
 
     await visitPage(browser, url);
     console.log(`Test finished successfully in ${hrToSeconds(process.hrtime(startTime))}`);
