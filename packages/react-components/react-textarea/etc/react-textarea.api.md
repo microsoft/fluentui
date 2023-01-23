@@ -35,6 +35,11 @@ export const textareaFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 export type TextareaFieldProps_unstable = FieldProps<typeof Textarea>;
 
 // @public
+export type TextareaOnChangeData = {
+    value: string;
+};
+
+// @public
 export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
     appearance?: 'outline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
     defaultValue?: string;

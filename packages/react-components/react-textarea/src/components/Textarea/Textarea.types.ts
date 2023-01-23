@@ -71,6 +71,6 @@ export type TextareaState = ComponentState<TextareaSlots> &
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
  */
-type TextareaOnChangeData = {
+export type TextareaOnChangeData = {
   value: string;
 };

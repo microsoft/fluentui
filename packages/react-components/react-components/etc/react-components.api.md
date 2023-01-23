@@ -473,6 +473,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
+import { TextareaOnChangeData } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
@@ -1629,6 +1630,8 @@ export { Text_2 as Text }
 export { Textarea }
 
 export { textareaClassNames }
+
+export { TextareaOnChangeData }
 
 export { TextareaProps }
 
