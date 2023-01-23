@@ -1,4 +1,3 @@
-import { canUseDOM } from '@fluentui/react-utilities';
 import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
@@ -24,7 +23,7 @@ try {
   felaDevMode = !!window.localStorage.felaDevMode;
 } catch {}
 
-if (canUseDOM() && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if (typeof window !== "undefined" && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   if (felaDevMode) {
     /* eslint-disable-next-line no-console */
     console.warn(
