@@ -620,7 +620,7 @@ export {
   useTextarea_unstable,
   useTextareaStyles_unstable,
 } from '@fluentui/react-textarea';
-export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
+export type { TextareaOnChangeData, TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
 export {
   Tooltip,
   renderTooltip_unstable,
