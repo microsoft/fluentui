@@ -2,50 +2,50 @@
 
 ## Migration from v8 Dropdown
 
-The v8 Dropdown component should be replaced with the [v9 Select](https://github.com/microsoft/fluentui/blob/master/packages/react-select/Spec.md) or v9 Dropdown component. The biggest change is that the v8 `options: IDropdownOption[]` prop should be mapped to children in v9.
+The v8 Dropdown component should be replaced with the [v9 Select](https://github.com/microsoft/fluentui/blob/master/packages/react-select/Spec.md) or v9 Dropdown component. The biggest change is that the v8 `options: IDropdownOption[]` prop is mapped to children in v9.
 
 ### Property mapping
 
-| v8 Dropdown            | v9 Dropdown               |
-| ---------------------- | ------------------------- |
-| `options`              | `<Option>` children       |
-| `ariaLabel`            | Native `aria-*` props     |
-| `calloutProps`         | `positioning` + `listbox` |
-| `className`            | `className`               |
-| `componentRef`         | `ref`                     |
-| `defaultSelectedKeys`  | defaultSelectedOptions    |
-| `disabled`             | `disabled`                |
-| `dropdownWidth`        | `listbox` slot styles     |
-| `errorMessage`         | Handled by Field          |
-| `id`                   | `id`                      |
-| `label`                | Handled by Field          |
-| `multiSelect`          | `multiselect`             |
-| `multiSelectDelimiter` | controlled `value`        |
-| `notifyOnReselect`     | `onClick` on Option       |
-| `onChange`             | `onOptionSelect`          |
-| `onDismiss`            | `onOpenChange`            |
-| `onRenderCaretDown`    | `expandIcon` slot         |
-| `onRenderContainer`    | `listbox` slot            |
-| `onRenderLabel`        | Handled by Field          |
-| `onRenderItem`         | children                  |
-| `onRenderList`         | `listbox` slot            |
-| `onRenderOption`       | `<Option>` children       |
-| `onRenderPlaceholder`  | `button` slot             |
-| `onRenderTitle`        | `button` slot             |
-| `openOnKeyboardFocus`  | controlled `open`         |
-| `panelProps`           | N/A                       |
-| `placeholder`          | `placeholder`             |
-| `required`             | `required`                |
-| `selectedKey(s)`       | `selectedOptions`         |
-| `styles`               | `styles`                  |
+| v8 Dropdown            | v9 Dropdown                       |
+| ---------------------- | --------------------------------- |
+| `options`              | `<Option>` children               |
+| `ariaLabel`            | Native `aria-*` props             |
+| `calloutProps`         | `positioning` + `listbox`         |
+| `className`            | `className`                       |
+| `componentRef`         | `ref`                             |
+| `defaultSelectedKeys`  | defaultSelectedOptions            |
+| `disabled`             | `disabled`                        |
+| `dropdownWidth`        | `listbox` slot styles             |
+| `errorMessage`         | Handled by Field                  |
+| `id`                   | `id`                              |
+| `label`                | Handled by Field or Label         |
+| `multiSelect`          | `multiselect`                     |
+| `multiSelectDelimiter` | controlled `value`                |
+| `notifyOnReselect`     | `onClick` on Option               |
+| `onChange`             | `onOptionSelect`                  |
+| `onDismiss`            | `onOpenChange`                    |
+| `onRenderCaretDown`    | `expandIcon` slot                 |
+| `onRenderContainer`    | `listbox` slot                    |
+| `onRenderLabel`        | Handled by Field                  |
+| `onRenderItem`         | children                          |
+| `onRenderList`         | `listbox` slot                    |
+| `onRenderOption`       | `<Option>` children               |
+| `onRenderPlaceholder`  | `button` slot                     |
+| `onRenderTitle`        | `button` slot                     |
+| `openOnKeyboardFocus`  | controlled `open`                 |
+| `panelProps`           | N/A                               |
+| `placeholder`          | `placeholder`                     |
+| `required`             | `required`                        |
+| `selectedKey(s)`       | `selectedOptions`                 |
+| `styles`               | `makeStyles` or HTML `style` prop |
 
 ## From v8 ComboBox
 
 The v8 ComboBox component should be replaced with the v9 Combobox component. The biggest differences are as follows:
 
-- The v8 `options: IComboBoxOption[]` prop should be mapped to children in v9 (as with Dropdown)
+- The v8 `options: IComboBoxOption[]` prop is mapped to children in v9
 - Filtering is handled by authors by updating children
-- The v9 Combobox allows users to type any text while the input is focused. The value is updated to a matching option (or none) when blurred, unless `freeform` is true. If allowing typing is not desired, Dropdown is recommended.
+- The v9 Combobox allows users to type any text while the input is focused. The value is updated to a matching option (or none) when blurred, unless `freeform` is true. If you don't need typing support, use Dropdown.
 
 ### Property mapping
 
@@ -73,7 +73,7 @@ The v8 ComboBox component should be replaced with the v9 Combobox component. The
 | `iconButtonProps`        | `expandIcon` slot                              |
 | `id`                     | `id`                                           |
 | `isButtonAriaHidden`     | `expandIcon` slot, not recommended             |
-| `label`                  | Handled by Field                               |
+| `label`                  | Handled by Field or Label                      |
 | `multiSelect`            | `multiselect`                                  |
 | `multiSelectDelimiter`   | controlled `value`                             |
 | `onChange`               | `onOptionSelect`\*                             |
@@ -103,7 +103,7 @@ The v8 ComboBox component should be replaced with the v9 Combobox component. The
 | `scrollSelectedToTop`    |                                                |
 | `selectedKey(s)`         | `selectedOptions`                              |
 | `shouldRestoreFocus`     |                                                |
-| `styles`                 | `styles`                                       |
+| `styles`                 | `makeStyles` or HTML `style` prop              |
 | `text`                   | `value`                                        |
 | `useComboBoxAsMenuWidth` | default behavior, `listbox` styles to override |
 
@@ -111,7 +111,7 @@ The v8 ComboBox component should be replaced with the v9 Combobox component. The
 
 ## From v0 Dropdown
 
-The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with `search: true`, and by the v9 Dropdown if it does not. The most significant difference in moving to v9 is that the v0 Dropdown `items` should be defined as child `<Option>`s of the v9 Combobox or Dropdown.
+The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with `search: true`, and by the v9 Dropdown if it does not. The most significant difference in moving to v9 is that the v0 Dropdown `items` are defined as child `<Option>`s of the v9 Combobox or Dropdown.
 
 ### Property mapping
 
@@ -167,7 +167,7 @@ The v0 Dropdown should be replaced with the v9 Combobox if it allows typing with
 | `search`                      | use Combobox instead of Dropdown    |
 | `searchInput`                 | Combobox primary slot               |
 | `searchQuery`                 | `value`                             |
-| `styles`                      | `styles`                            |
+| `styles`                      | `makeStyles` or HTML `style` prop   |
 | `toggleIndicator`             | `expandIcon`                        |
 | `triggerButton`               | Dropdown primary slot               |
 | `value`                       | `selectedOptions`                   |

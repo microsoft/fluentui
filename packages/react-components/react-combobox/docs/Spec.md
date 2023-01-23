@@ -8,25 +8,29 @@ A combobox can be single or multi-select, and it can be editable (`<Combobox>`) 
 
 The basic structure of a Combobox or Dropdown has two pieces: the faceplate, which is always rendered on the page, and displays the current selection, and the popup that contains a list of options.
 
-### Combobox vs. Dropdown
+### In this package: Combobox vs. Dropdown
 
-The `react-combobox` package provides two combobox-like selection controls: `<Combobox>` and `<Dropdown>`. While they share the bulk of their logic under the hood, they differ in the
+The `@fluentui/react-combobox` package provides two combobox-like selection controls: `<Combobox>` and `<Dropdown>`. While they share the bulk of their logic under the hood, they differ in the primary slot (`input` vs. `button`), and in whether the user can insert typed characters.
 
-### Combobox/Dropdown vs. Select vs. Menu
+Use `<Combobox>` when the user should be able to type custom strings into the control, or type to filter options. Use `<Dropdown>` when the user should only be able to select from the available options. Dropdown will allow users to type one letter or multiple letters in quick succession to quickly jump to an option, but does not otherwise allow text input.
+
+### Select vs. Menu vs. Combobox & Dropdown
 
 Combobox, Dropdown, Select, and Menu all share some common pieces of interaction: a trigger element opens a popup with a list of interactive items. Despite that similarity, they cannot be used interchangeably.
 
 ### When to use Select
 
-The [Select component](https://github.com/microsoft/fluentui/blob/master/packages/react-select/Spec.md) shares most of its underlying semantics with the Combobox. The main difference is that under the hood it uses the HTML `<select>` element, so its functionality is more limited.
+The [Select component](https://github.com/microsoft/fluentui/blob/master/packages/react-select/Spec.md) from `@fluentui/react-select` shares most of its underlying semantics with Combobox and Dropdown. The main difference is that under the hood it uses the HTML `<select>` element, so its functionality is more limited.
 
 Select provides better mobile support and accessibility than Combobox, and has the same visual appearance when collapsed. When expanded, it displays the native OS select menu, which cannot be styled.
 
-Use Select when a basic single-select form component with no freeform text input or filtering is needed.
+Use Select when a basic single-select form component with no freeform text input or filtering is needed. Select is also the ideal choice when you need the best possible mobile support.
 
 ### When to use Combobox or Dropdown
 
-Dropdown is a more feature-rich version of Select, which comes at the cost a larger code footprint, and less robust support for accessibility compared to the native `<select>` element. Combobox (as mentioned previously) is essentially a Dropdown that allows text input.
+The components in this package (`@fluentui/react-combobox`) are more customizable and provide more features than Select, and are intended to be used in scenarios where Select is not sufficient.
+
+Dropdown is a more feature-rich version of Select, which comes at the cost a larger code footprint, and less robust support for accessibility compared to the native `<select>` element. Combobox is essentially a Dropdown that allows text input.
 
 Use Dropdown over Select when any of the following are required:
 
@@ -34,13 +38,16 @@ Use Dropdown over Select when any of the following are required:
 - Control over styling the dropdown and options
 - Multiple selection
 
-Use Combobox when filtering or freeform text input is needed.
+Combobox also supports all of the above, and should be used instead of Dropdown for:
+
+- filtering
+- freeform text input
 
 ### When to use Menu
 
-Unlike Select, Dropdown, and Combobox, [Menu](https://github.com/microsoft/fluentui/blob/master/packages/react-menu/Spec.md) is not primarily a selection component or a form control. Menu should be used when the purpose is to allow the user to perform an immediate action on the page, rather than save a selected value.
+Unlike Select, Dropdown, and Combobox, [Menu](https://github.com/microsoft/fluentui/blob/master/packages/react-menu/Spec.md) (`@fluentui/react-menu`) is not primarily a selection component or a form control. Menu should be used when the purpose is to allow the user to perform an immediate action on the page, rather than save a selected value.
 
-Selection that occurs within the context of a larger menubar or menu should use Menu components (specifically `MenuItemCheckbox` and `MenuItemRadio`). Select, Dropdown, and Combobox should never be nested inside a Menu, and Menu components should never be nested inside a Select, Dropdown, or Combobox.
+One exception: selection that occurs within the context of a larger menubar or menu should use Menu components (specifically `MenuItemCheckbox` and `MenuItemRadio`). Select, Dropdown, and Combobox should never be nested inside a Menu, and Menu components should never be nested inside a Select, Dropdown, or Combobox.
 
 Examples of appropriate Menu usage include:
 
