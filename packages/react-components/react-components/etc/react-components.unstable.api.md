@@ -49,9 +49,6 @@ import { ComboboxSlots } from '@fluentui/react-combobox';
 import { ComboboxState } from '@fluentui/react-combobox';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
-import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
-import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
-import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import { DataGrid } from '@fluentui/react-table';
 import { DataGridBody } from '@fluentui/react-table';
 import { dataGridBodyClassNames } from '@fluentui/react-table';
@@ -128,10 +125,6 @@ import { OptionGroupState } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
-import { Overflow } from '@fluentui/react-overflow';
-import { OverflowItem } from '@fluentui/react-overflow';
-import { OverflowItemProps } from '@fluentui/react-overflow';
-import { OverflowProps } from '@fluentui/react-overflow';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -173,8 +166,7 @@ import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
-import { renderToolbar_unstable } from '@fluentui/react-toolbar';
-import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
@@ -259,32 +251,6 @@ import { TableState } from '@fluentui/react-table';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 import { textareaFieldClassNames } from '@fluentui/react-textarea';
 import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
-import { Toolbar } from '@fluentui/react-toolbar';
-import { ToolbarButton } from '@fluentui/react-toolbar';
-import { ToolbarButtonProps } from '@fluentui/react-toolbar';
-import { ToolbarButtonState } from '@fluentui/react-toolbar';
-import { toolbarClassNames } from '@fluentui/react-toolbar';
-import { ToolbarContextValue } from '@fluentui/react-toolbar';
-import { ToolbarContextValues } from '@fluentui/react-toolbar';
-import { ToolbarDivider } from '@fluentui/react-toolbar';
-import { ToolbarDividerProps } from '@fluentui/react-toolbar';
-import { ToolbarDividerState } from '@fluentui/react-toolbar';
-import { ToolbarGroup } from '@fluentui/react-toolbar';
-import { toolbarGroupClassNames } from '@fluentui/react-toolbar';
-import { ToolbarGroupProps } from '@fluentui/react-toolbar';
-import { ToolbarGroupState } from '@fluentui/react-toolbar';
-import { ToolbarProps } from '@fluentui/react-toolbar';
-import { ToolbarRadioButton } from '@fluentui/react-toolbar';
-import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
-import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
-import { ToolbarRadioGroup } from '@fluentui/react-toolbar';
-import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
-import { ToolbarRadioGroupState } from '@fluentui/react-toolbar';
-import { ToolbarSlots } from '@fluentui/react-toolbar';
-import { ToolbarState } from '@fluentui/react-toolbar';
-import { ToolbarToggleButton } from '@fluentui/react-toolbar';
-import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
-import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useCard_unstable } from '@fluentui/react-card';
@@ -318,8 +284,7 @@ import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
-import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
-import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
+import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
@@ -327,7 +292,6 @@ import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
 import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
-import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useSelect_unstable } from '@fluentui/react-select';
@@ -356,18 +320,14 @@ import { useTableSelectionCell_unstable } from '@fluentui/react-table';
 import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
 import { useTableSort } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
-import { useToolbar_unstable } from '@fluentui/react-toolbar';
-import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
-import { useToolbarButtonStyles_unstable } from '@fluentui/react-toolbar';
-import { useToolbarDivider_unstable } from '@fluentui/react-toolbar';
-import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
-import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
-import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
-import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
-import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
-import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
-import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
-import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
+import { Virtualizer } from '@fluentui/react-virtualizer';
+import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
+import { virtualizerClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerProps } from '@fluentui/react-virtualizer';
+import { VirtualizerSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerState } from '@fluentui/react-virtualizer';
 
 export { Alert }
 
@@ -458,12 +418,6 @@ export { ComboboxState }
 export { createTableColumn }
 
 export { CreateTableColumnOptions }
-
-export { DATA_OVERFLOW_ITEM }
-
-export { DATA_OVERFLOW_MENU }
-
-export { DATA_OVERFLOWING }
 
 export { DataGrid }
 
@@ -617,14 +571,6 @@ export { OptionSlots }
 
 export { OptionState }
 
-export { Overflow }
-
-export { OverflowItem }
-
-export { OverflowItemProps }
-
-export { OverflowProps }
-
 export { ProgressBar }
 
 export { progressBarClassNames }
@@ -707,9 +653,7 @@ export { renderTableRow_unstable }
 
 export { renderTableSelectionCell_unstable }
 
-export { renderToolbar_unstable }
-
-export { renderToolbarGroup_unstable }
+export { renderVirtualizer_unstable }
 
 export { Select }
 
@@ -879,58 +823,6 @@ export { textareaFieldClassNames }
 
 export { TextareaFieldProps }
 
-export { Toolbar }
-
-export { ToolbarButton }
-
-export { ToolbarButtonProps }
-
-export { ToolbarButtonState }
-
-export { toolbarClassNames }
-
-export { ToolbarContextValue }
-
-export { ToolbarContextValues }
-
-export { ToolbarDivider }
-
-export { ToolbarDividerProps }
-
-export { ToolbarDividerState }
-
-export { ToolbarGroup }
-
-export { toolbarGroupClassNames }
-
-export { ToolbarGroupProps }
-
-export { ToolbarGroupState }
-
-export { ToolbarProps }
-
-export { ToolbarRadioButton }
-
-export { ToolbarRadioButtonProps }
-
-export { ToolbarRadioButtonState }
-
-export { ToolbarRadioGroup }
-
-export { ToolbarRadioGroupProps }
-
-export { ToolbarRadioGroupState }
-
-export { ToolbarSlots }
-
-export { ToolbarState }
-
-export { ToolbarToggleButton }
-
-export { ToolbarToggleButtonProps }
-
-export { ToolbarToggleButtonState }
-
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
@@ -997,9 +889,7 @@ export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
 
-export { useIsOverflowGroupVisible }
-
-export { useIsOverflowItemVisible }
+export { useIntersectionObserver }
 
 export { useListbox_unstable }
 
@@ -1014,8 +904,6 @@ export { useOptionGroup_unstable }
 export { useOptionGroupStyles_unstable }
 
 export { useOptionStyles_unstable }
-
-export { useOverflowMenu }
 
 export { useProgressBar_unstable }
 
@@ -1073,29 +961,21 @@ export { useTableSort }
 
 export { useTableStyles_unstable }
 
-export { useToolbar_unstable }
+export { useVirtualizer_unstable }
 
-export { useToolbarButton_unstable }
+export { useVirtualizerStyles_unstable }
 
-export { useToolbarButtonStyles_unstable }
+export { Virtualizer }
 
-export { useToolbarDivider_unstable }
+export { VirtualizerChildRenderFunction }
 
-export { useToolbarDividerStyles_unstable }
+export { virtualizerClassNames }
 
-export { useToolbarGroup_unstable }
+export { VirtualizerProps }
 
-export { useToolbarGroupStyles_unstable }
+export { VirtualizerSlots }
 
-export { useToolbarRadioButton_unstable }
-
-export { useToolbarRadioButtonStyles_unstable }
-
-export { useToolbarStyles_unstable }
-
-export { useToolbarToggleButton_unstable }
-
-export { useToolbarToggleButtonStyles_unstable }
+export { VirtualizerState }
 
 // (No @packageDocumentation comment for this package)
 

@@ -60,7 +60,7 @@ export const Freeform = (props: Partial<ComboboxProps>) => {
 
   return (
     <div className={styles.root}>
-      <label id={comboId}>Best pet</label>
+      <label id={comboId}>Find pets</label>
       <Combobox
         aria-labelledby={comboId}
         freeform
@@ -69,10 +69,9 @@ export const Freeform = (props: Partial<ComboboxProps>) => {
         onOptionSelect={onOptionSelect}
         {...props}
       >
-        {/* We recommend displaying a custom freeform string, if the user input doesn't match an animal */}
         {customSearch ? (
           <Option key="freeform" text={customSearch}>
-            "{customSearch}"
+            Search for "{customSearch}"
           </Option>
         ) : null}
         {matchingOptions.map(option => (
@@ -88,7 +87,8 @@ Freeform.parameters = {
     description: {
       story:
         'Combobox supports the `freeform` prop, which allows freeform text input. ' +
-        'Implementing filtering together with `freeform` is generally recommended.',
+        'Implementing filtering together with `freeform` is generally recommended.' +
+        "We also recommend displaying a custom freeform string if the user input doesn't match an existing option.",
     },
   },
 };

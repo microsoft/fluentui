@@ -23,7 +23,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
       <Combobox aria-labelledby={comboId} {...props}>
         <Option text="Katri Athokas">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Katri Athokas"
             presence={{
               status: 'available',
@@ -33,7 +33,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
         </Option>
         <Option text="Elvia Atkins">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Elvia Atkins"
             presence={{
               status: 'busy',
@@ -43,7 +43,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
         </Option>
         <Option text="Cameron Evans">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Cameron Evans"
             presence={{
               status: 'away',
@@ -53,7 +53,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
         </Option>
         <Option text="Wanda Howard">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Wanda Howard"
             presence={{
               status: 'out-of-office',

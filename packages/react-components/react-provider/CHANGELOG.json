@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 16:32:57 GMT",
+      "tag": "@fluentui/react-provider_v9.2.3",
+      "version": "9.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.4.0",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:39:07 GMT",
       "tag": "@fluentui/react-provider_v9.2.2",
       "version": "9.2.2",

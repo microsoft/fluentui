@@ -10,7 +10,7 @@ export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
 };
 
 const getIsBusy = (status: PresenceBadgeStatus): boolean => {
-  if (status === 'busy' || status === 'do-not-disturb' || status === 'unknown') {
+  if (status === 'busy' || status === 'do-not-disturb' || status === 'unknown' || status === 'blocked') {
     return true;
   }
 

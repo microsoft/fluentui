@@ -116,6 +116,9 @@ import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
+import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
+import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import { Dialog } from '@fluentui/react-dialog';
 import { DialogActions } from '@fluentui/react-dialog';
 import { dialogActionsClassNames } from '@fluentui/react-dialog';
@@ -281,6 +284,10 @@ import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
+import { Overflow } from '@fluentui/react-overflow';
+import { OverflowItem } from '@fluentui/react-overflow';
+import { OverflowItemProps } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
 import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
@@ -389,6 +396,8 @@ import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
+import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
@@ -484,6 +493,32 @@ import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
+import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButton } from '@fluentui/react-toolbar';
+import { ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonState } from '@fluentui/react-toolbar';
+import { toolbarClassNames } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
+import { ToolbarDivider } from '@fluentui/react-toolbar';
+import { ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarGroup } from '@fluentui/react-toolbar';
+import { toolbarGroupClassNames } from '@fluentui/react-toolbar';
+import { ToolbarGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarGroupState } from '@fluentui/react-toolbar';
+import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButton } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroup } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupState } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { tooltipClassNames } from '@fluentui/react-tooltip';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -557,6 +592,8 @@ import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
+import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -596,6 +633,7 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useOverflowMenu } from '@fluentui/react-overflow';
 import { usePersona_unstable } from '@fluentui/react-persona';
 import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { usePopover_unstable } from '@fluentui/react-popover';
@@ -635,6 +673,18 @@ import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
+import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDivider_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
@@ -865,6 +915,12 @@ export { createLightTheme }
 export { createTeamsDarkTheme }
 
 export { CurveTokens }
+
+export { DATA_OVERFLOW_ITEM }
+
+export { DATA_OVERFLOW_MENU }
+
+export { DATA_OVERFLOWING }
 
 export { Dialog }
 
@@ -1196,6 +1252,14 @@ export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
 
+export { Overflow }
+
+export { OverflowItem }
+
+export { OverflowItemProps }
+
+export { OverflowProps }
+
 export { PartialTheme }
 
 export { PartitionAvatarGroupItems }
@@ -1412,6 +1476,10 @@ export { renderTextarea_unstable }
 
 export { renderToggleButton_unstable }
 
+export { renderToolbar_unstable }
+
+export { renderToolbarGroup_unstable }
+
 export { renderTooltip_unstable }
 
 export { renderToStyleElements }
@@ -1602,6 +1670,58 @@ export { ToggleButtonState }
 
 export { tokens }
 
+export { Toolbar }
+
+export { ToolbarButton }
+
+export { ToolbarButtonProps }
+
+export { ToolbarButtonState }
+
+export { toolbarClassNames }
+
+export { ToolbarContextValue }
+
+export { ToolbarContextValues }
+
+export { ToolbarDivider }
+
+export { ToolbarDividerProps }
+
+export { ToolbarDividerState }
+
+export { ToolbarGroup }
+
+export { toolbarGroupClassNames }
+
+export { ToolbarGroupProps }
+
+export { ToolbarGroupState }
+
+export { ToolbarProps }
+
+export { ToolbarRadioButton }
+
+export { ToolbarRadioButtonProps }
+
+export { ToolbarRadioButtonState }
+
+export { ToolbarRadioGroup }
+
+export { ToolbarRadioGroupProps }
+
+export { ToolbarRadioGroupState }
+
+export { ToolbarSlots }
+
+export { ToolbarState }
+
+export { ToolbarToggleButton }
+
+export { ToolbarToggleButtonProps }
+
+export { ToolbarToggleButtonState }
+
 export { Tooltip }
 
 export { tooltipClassNames }
@@ -1748,6 +1868,10 @@ export { useInputStyles_unstable }
 
 export { useIsomorphicLayoutEffect }
 
+export { useIsOverflowGroupVisible }
+
+export { useIsOverflowItemVisible }
+
 export { useIsSSR }
 
 export { useKeyboardNavAttribute }
@@ -1826,6 +1950,8 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
+export { useOverflowMenu }
+
 export { usePersona_unstable }
 
 export { usePersonaStyles_unstable }
@@ -1903,6 +2029,30 @@ export { useToggleButton_unstable }
 export { useToggleButtonStyles_unstable }
 
 export { useToggleState }
+
+export { useToolbar_unstable }
+
+export { useToolbarButton_unstable }
+
+export { useToolbarButtonStyles_unstable }
+
+export { useToolbarDivider_unstable }
+
+export { useToolbarDividerStyles_unstable }
+
+export { useToolbarGroup_unstable }
+
+export { useToolbarGroupStyles_unstable }
+
+export { useToolbarRadioButton_unstable }
+
+export { useToolbarRadioButtonStyles_unstable }
+
+export { useToolbarStyles_unstable }
+
+export { useToolbarToggleButton_unstable }
+
+export { useToolbarToggleButtonStyles_unstable }
 
 export { useTooltip_unstable }
 

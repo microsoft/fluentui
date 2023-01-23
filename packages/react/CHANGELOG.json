@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 18 Jan 2023 07:42:13 GMT",
+      "tag": "@fluentui/react_v8.104.6",
+      "version": "8.104.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "92710eb4e323dd1c23f53e567efa04e2507fc603",
+            "comment": "fix: added border with correct contrast ratio in HC in MessageBar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:54 GMT",
       "tag": "@fluentui/react_v8.104.5",
       "version": "8.104.5",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 16 Jan 2023 08:38:57 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jan 2023 16:32:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.24)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.23..@fluentui/react-combobox_v9.0.0-beta.24)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.1.2 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
 
 ## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.23)
 
