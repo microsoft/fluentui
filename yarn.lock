@@ -3019,7 +3019,7 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.3.1.tgz#defc59874176e42316be7e6d24c31885ead8ca56"
   integrity sha512-72RZXVfCbwQzvo5sXXkuLXLT7rMeYaSf5r/6ewQiv/trBtqpWRm4DEH2EilHw/iWTBKOXs1qZNQndgUMa5n4LA==
 
-"@microsoft/fast-element@^1.10.4", "@microsoft/fast-element@^1.11.0":
+"@microsoft/fast-element@^1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.0.tgz#494f6c87057bcbb42406982d68a92887d6b5acb1"
   integrity sha512-VKJYMkS5zgzHHb66sY7AFpYv6IfFhXrjQcAyNgi2ivD65My1XOhtjfKez5ELcLFRJfgZNAxvI8kE69apXERTkw==
@@ -5680,7 +5680,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
-"@types/mocha@7.0.2", "@types/mocha@^7.0.2":
+"@types/mocha@7.0.2":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-7.0.2.tgz#b17f16cf933597e10d6d78eae3251e692ce8b0ce"
   integrity sha512-ZvO2tAcjmMi8V/5Z3JsyofMe3hasRcaw88cto5etSVMwVQfeivGAlEYmaQgceUSVYFofVjT+ioHsATjdWcFt1w==
@@ -18765,7 +18765,7 @@ mkdirp@1.x, mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mocha@7.2.0, mocha@^7.1.2:
+mocha@7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/mocha/-/mocha-7.2.0.tgz#01cc227b00d875ab1eed03a75106689cfed5a604"
   integrity sha512-O9CIypScywTVpNaRrCAgoUnJgozpIofjKUYmJhiCIJMiuYnLI6otcb1/kpW9/n/tJODHGZ7i8aLQoDVsMtOKQQ==
