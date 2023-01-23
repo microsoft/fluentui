@@ -1,4 +1,6 @@
-# [Fluent UI V9 website](https://react.fluentui.dev/)
+# public-docsite-v9
+
+This app is official documentation for Fluentui react-components published to https://react.fluentui.dev
 
 **Fluent UI V9 React Components**
 
@@ -6,20 +8,5 @@ Fluent UI is a collection of projects that represent the Fluent design language 
 
 ## Build the website
 
-1. In `fluentui` folder run `yarn`.
-2. Run `yarn lage build --to @fluentui/public-docsite-v9 --no-cache`
-3. Run `yarn workspace @fluentui/public-docsite-v9 start`
-
-## If you want to show full code in "Show Code" area
-
-Inside `YouComponentName.stories.tsx` add the following code:
-
-```jsx
-YouComponentName.parameters = {
-  docs: {
-    source: {
-      code: `[Insert here your code...]`,
-    },
-  },
-};
-```
+1. Run `yarn lage build --to @fluentui/public-docsite-v9 --no-cache`
+2. Run `yarn workspace @fluentui/public-docsite-v9 start`
