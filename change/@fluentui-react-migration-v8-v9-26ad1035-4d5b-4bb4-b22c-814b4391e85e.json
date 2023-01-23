@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Moved to be a v9 convergence package",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
