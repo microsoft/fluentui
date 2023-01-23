@@ -43,8 +43,10 @@ _Provide some representative example code that uses the proposed API for the com
   - Hover
   - HoverDismiss
   - Focus
+  - FocusDismiss
   - Pressed
-  - Selected/Active
+  - PressedDismiss
+  - Toggled
   - Disabled
 - Interactive
   - Togglable
@@ -55,21 +57,22 @@ _Provide some representative example code that uses the proposed API for the com
 
 ## Components
 
-<Tag dismissable dismiss={{}}>
-<TagButton checkable toggled={true} onToggle={(e, v) => } as="a" href="" image={<Icon/> || <Image/>} dismissable> Click Me </TagButton>
+<Tag> A Tag </Tag>
+<TagButton> Click Me </TagButton>
+
 ## API
 
 ### Slots
 
 #### Tag
 
-- root (span)
+- root
 - image
 - dismiss
 
 #### TagButton
 
-- root (span)
+- root
 - action (primary)
 - image
 - dismiss
@@ -96,14 +99,14 @@ Click
 
 - onClick
 
-Select
+Toggle (or Select)
 
 - toggleable
 - toggled
 - onToggle
-- defaultToggle
+- defaultToggled
 
-Drag
+Drag (optional)
 
 - dragable
 - onDrag
@@ -138,11 +141,11 @@ Drag
 2. <span><img />Tag with image</span>
 3. <span><Icon />Tag with icon</span>
 4. <span><button>Tag with button</button></span>
-5. <a>Tag with link</a>
+5. <span><a>Tag with link</a></span>
 6. <span><button>Tag with toggle button</button></span>
 7. <span><button><img />Tag with button and image</button></span>
 8. <span><button><img />Tag with icon and dismiss button</button><button>x</button></span>
-9.<span><button><img />Tag with image and custom dismiss button</button><button><icon /></button></span>
+9. <span><button><img />Tag with image and custom dismiss button</button><button><icon /></button></span>
 ```
 
 ## Migration
@@ -150,17 +153,51 @@ Drag
 _Describe what will need to be done to upgrade from the existing implementations:_
 
 - _Migration from v8_
+
+No equivalent component in v8
+
 - _Migration from v0_
+
+https://fluentsite.z22.web.core.windows.net/0.65.0/components/pill/definition
+
+| v0         | v9            |
+| ---------- | ------------- | -------------- |
+| actionable | use TagButton |
+| selectable | toggleable    | (might change) |
+| selected   | toggled       |
 
 ## Behaviors
 
 _Explain how the component will behave in use, including:_
 
+Tag
+
 - _Component States_
+  - no changable states
 - _Interaction_
   - _Keyboard_
+    - Tag can be focused if dismissable
+    - Pressing enter or delete will call onDismiss if dismissable
   - _Cursor_
+    - Clicking on tag will focus dismiss button
+    - Clicking on dismiss will call onDismiss
   - _Touch_
+    - Touching the tag will focus dismiss button if dismissable
+    - Touching dismiss button will call onDismiss if dismissable
+  - _Screen readers_
+
+TagButton
+
+- _Component States_
+  - Toggleable TagButtons can be switched between toggled true and false
+- _Interaction_
+  - _Keyboard_
+    - TagButtons are always tab stops
+    - If dismissable, both primary action and dismiss action are seperate tab stops
+  - _Cursor_
+    - Action and dismiss slots have individual hover/pressed styles and perform different actions
+  - _Touch_
+    - Same as cursor
   - _Screen readers_
 
 ## Accessibility
