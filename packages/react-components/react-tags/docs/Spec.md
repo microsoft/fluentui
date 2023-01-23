@@ -2,15 +2,14 @@
 
 ## Background
 
-_Description and use cases of this component_
+A tag is an object that represent an input, a filter, a category or an attribute. Tags should be used when representing an input, as a way to filter content, or to represent an attribute.
 
 ## Prior Art
 
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- [Evergreen](https://evergreen.segment.com/components/badges)
+- [Lightning](https://www.lightningdesignsystem.com/components/pills/)
+- [Material UI](https://material-ui.com/components/chips/#chip)
+- [OpenUI Research](https://github.com/WICG/open-ui/pull/259)
 
 ## Sample Code
 
@@ -18,17 +17,140 @@ _Provide some representative example code that uses the proposed API for the com
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+- Content
+  - Basic with text
+  - With icon
+  - With image
+  - With image and icon
+  - With two lines of text
+- Transforms
+  - RTL
+  - With truncation
+- Size
+  - Extra-small
+  - Small
+  - Medium (default)
+- Shape
+  - Rounded rectangle
+  - Circle
+- Style
+  - Filled-darker
+  - Filled-lighter
+  - Tint
+  - Outline
+- States
+  - Rest
+  - Hover
+  - HoverDismiss
+  - Focus
+  - Pressed
+  - Selected/Active
+  - Disabled
+- Interactive
+  - Togglable
+  - Dismissable
+  - Draggable (user provided style?)
+  - Menu (composed)
+  - Right click (composed?)
 
+## Components
+
+<Tag dismissable dismiss={{}}>
+<TagButton checkable toggled={true} onToggle={(e, v) => } as="a" href="" image={<Icon/> || <Image/>} dismissable> Click Me </TagButton>
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+### Slots
+
+#### Tag
+
+- root (span)
+- image
+- dismiss
+
+#### TagButton
+
+- root (span)
+- action (primary)
+- image
+- dismiss
+
+### Props
+
+#### Shared
+
+Appearance
+
+- size
+- shape
+- appearance
+- disabled
+
+Dismiss
+
+- dismissable
+- onDismiss
+
+#### TagButton
+
+Click
+
+- onClick
+
+Select
+
+- toggleable
+- toggled
+- onToggle
+- defaultToggle
+
+Drag
+
+- dragable
+- onDrag
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### 100% Slot & prop approach
+
+```tsx
+1. <Tag>Simple Tag</Tag>
+2. <Tag image={<image/>} > Tag with image  </Tag>
+3. <Tag image={<icon/>} > Tag with icon   </Tag>
+4. <TagButton onClick={handleClick}>Tag with button</Tag>
+5. <TagButton as="a" href="#">Tag with link</Tag>
+6. <TagButton toggleable onButtonToggle>Tag with toggle button</Tag>
+7. <TagButton onClick={handleClick} image={<image/>}>Tag with button and image</TagButton>
+8. <TagButton onClick={handleClick} image={<icon/>} dismissable>Tag with icon and dismiss button </TagButton>
+9. <TagButton onClick={handleClick} image={<icon/>} dismiss={<icon/>}> Tag with image and custom dismiss button </TagButton>
+10.  <Menu>
+      <MenuTrigger disableButtonEnhancement>
+        {(triggerProps: MenuButtonProps) => <TagButton action={triggerProps} dismissable>Tag menu and dismiss button</Tag>}
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item a</MenuItem>
+          <MenuItem>Item b</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+```
+
+```html
+1. <span>Simple Tag</span> 2. <span><img />Tag with image</span> 3. <span><Icon />Tag with icon</span> 4.
+<span><button>Tag with button</button></span> 5. <a>Tag with link</a> 6.
+<span><button>Tag with toggle button</button></span> 7.
+<span
+  ><button><img />Tag with button and image</button></span
+>
+8.
+<span
+  ><button><img />Tag with icon and dismiss button</button><button>x</button></span
+>
+9.
+<span
+  ><button><img />Tag with image and custom dismiss button</button><button><icon /></button
+></span>
+```
 
 ## Migration
 
