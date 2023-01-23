@@ -26,8 +26,7 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
   // Hooks appear to be running conditionally, but they will always run in the same order since it's based on
   // the version of React being used. This is safe to ignore.
   return _useId
-    ? // We need to replace : with -- because we used it as a class name.
-      `${prefix}${_useId().replace(/:/g, '--')}`
+    ? providedId ?? `${prefix}${_useId()}`
     : // eslint-disable-next-line react-hooks/rules-of-hooks
       React.useMemo(() => {
         if (providedId) {

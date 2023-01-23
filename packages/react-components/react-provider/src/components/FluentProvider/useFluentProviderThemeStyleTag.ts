@@ -62,7 +62,7 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
       : '';
   }, [theme]);
 
-  const rule = `.${styleTagId} { ${cssVarsAsString} }`;
+  const rule = `.${styleTagId.replace(/:/g, '\\:')} { ${cssVarsAsString} }`;
 
   useInsertionEffect(() => {
     styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
