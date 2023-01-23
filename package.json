@@ -154,7 +154,7 @@
     "@types/gulp-sourcemaps": "0.0.35",
     "@types/gulp-util": "3.0.36",
     "@types/jest": "26.0.24",
-    "@types/jest-axe": "3.5.3",
+    "@types/jest-axe": "3.5.5",
     "@types/jju": "1.4.1",
     "@types/json-schema": "^7.0.8",
     "@types/lerna-alias": "3.0.0",
@@ -374,9 +374,9 @@
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
-    "@types/jest-axe/axe-core": "4.2.1",
     "eslint": "7.25.0",
-    "@mdx-js/loader/loader-utils": "~2.0.4"
+    "@mdx-js/loader/loader-utils": "~2.0.4",
+    "@types/jest-axe/axe-core": "4.2.1"
   },
   "syncpack": {
     "prod": true,
