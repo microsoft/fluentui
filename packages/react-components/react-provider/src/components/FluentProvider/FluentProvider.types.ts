@@ -29,7 +29,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
   theme?: PartialTheme;
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  overrides_unstable?: OverridesContextValue; // FIXME: better type
+  overrides_unstable?: OverridesContextValue;
 };
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &

@@ -8,8 +8,9 @@ import {
   Input,
   Label,
   FluentProvider,
-  OverridesContextValue_unstable,
 } from '@fluentui/react-components';
+
+import type { FluentProviderProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
@@ -76,7 +77,7 @@ const AppearanceExample = () => {
 
 export const Appearance = () => {
   const styles = useStyles();
-  const [overrides, _] = React.useState<OverridesContextValue_unstable>({
+  const [overrides, _] = React.useState<FluentProviderProps['overrides_unstable']>({
     inputDefaultAppearance: 'filled-darker',
   });
 
