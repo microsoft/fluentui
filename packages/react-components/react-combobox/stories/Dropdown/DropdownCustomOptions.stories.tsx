@@ -51,7 +51,7 @@ const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: (keyof 
   const labelSlot = typeof props.label === 'object' ? props.label : { children: props.label };
 
   return (
-    <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }}>
+    <OptionGroup {...props} label={{ style: { fontStyle: 'italic' }, ...labelSlot }}>
       {props.options.map(option => (
         <CustomOption key={option} animal={option} />
       ))}
@@ -98,8 +98,11 @@ CustomOptions.parameters = {
   docs: {
     description: {
       story:
-        'Options and OptionGroups can be extended and customized. ' +
-        'The `value` prop is used here, since the children of `<Option>` include JSX.',
+        'Options and OptionGroups can be extended and customized.' +
+        'Here `OptionGroup` is wrapped in `CustomOptionGroup`,' +
+        'which adds a custom label style and takes an `options` array prop which is mapped to child Option elements.' +
+        '`Option` is also wrapped in `CustomOption`, which adds a custom check icon and animal icon.' +
+        'The `text` prop is added to `<Option>`, since the children of `<Option>` are not a simple string.',
     },
   },
 };

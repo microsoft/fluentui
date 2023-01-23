@@ -60,7 +60,11 @@ export const CustomOptions = (props: Partial<ComboboxProps>) => {
 CustomOptions.parameters = {
   docs: {
     description: {
-      story: 'Options and OptionGroups can be extended and customized.',
+      story:
+        'Options and OptionGroups can be extended and customized.' +
+        'Here `OptionGroup` is wrapped in `CustomOptionGroup`,' +
+        'which adds a custom label style and takes an `options` array prop which is mapped to child Option elements.' +
+        '`Option` is also wrapped in `CustomOption`, which adds a custom check icon.',
     },
   },
 };
