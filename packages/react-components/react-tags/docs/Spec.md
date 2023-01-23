@@ -110,8 +110,6 @@ Drag
 
 ## Structure
 
-### 100% Slot & prop approach
-
 ```tsx
 1. <Tag>Simple Tag</Tag>
 2. <Tag image={<image/>} > Tag with image  </Tag>
@@ -135,21 +133,16 @@ Drag
     </Menu>
 ```
 
-```html
-1. <span>Simple Tag</span> 2. <span><img />Tag with image</span> 3. <span><Icon />Tag with icon</span> 4.
-<span><button>Tag with button</button></span> 5. <a>Tag with link</a> 6.
-<span><button>Tag with toggle button</button></span> 7.
-<span
-  ><button><img />Tag with button and image</button></span
->
-8.
-<span
-  ><button><img />Tag with icon and dismiss button</button><button>x</button></span
->
-9.
-<span
-  ><button><img />Tag with image and custom dismiss button</button><button><icon /></button
-></span>
+```tsx
+1. <span>Simple Tag</span>
+2. <span><img />Tag with image</span>
+3. <span><Icon />Tag with icon</span>
+4. <span><button>Tag with button</button></span>
+5. <a>Tag with link</a>
+6. <span><button>Tag with toggle button</button></span>
+7. <span><button><img />Tag with button and image</button></span>
+8. <span><button><img />Tag with icon and dismiss button</button><button>x</button></span>
+9.<span><button><img />Tag with image and custom dismiss button</button><button><icon /></button></span>
 ```
 
 ## Migration
