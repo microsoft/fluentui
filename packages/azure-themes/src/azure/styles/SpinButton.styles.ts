@@ -13,10 +13,6 @@ export const SpinButtonStyles: IStyleFunction<ISpinButtonStyleProps, ISpinButton
         '> div:nth-child(2), .labelWrapper-132': {
           height: StyleConstants.inputControlHeight,
         },
-
-        // '.labelWrapper-132': {
-        //   // height: StyleConstants.inputControlHeight,
-        // },
         button: {
           i: {
             height: StyleConstants.spinButtonArrowHeight,
