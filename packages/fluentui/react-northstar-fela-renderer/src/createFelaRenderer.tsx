@@ -23,7 +23,7 @@ try {
   felaDevMode = !!window.localStorage.felaDevMode;
 } catch {}
 
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if (typeof window !== "undefined" && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   if (felaDevMode) {
     /* eslint-disable-next-line no-console */
     console.warn(
