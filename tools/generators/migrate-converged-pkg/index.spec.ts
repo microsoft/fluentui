@@ -18,6 +18,8 @@ import {
   visitNotIgnoredFiles,
   writeJson,
   WorkspaceConfiguration,
+  joinPathFragments,
+  ProjectConfiguration,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -276,7 +278,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           types: ['static-assets', 'environment'],
         },
-        exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
+        exclude: ['./src/testing/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
         include: ['./src/**/*.ts', './src/**/*.tsx'],
       });
       expect(tsConfigTest).toEqual({
@@ -286,7 +288,15 @@ describe('migrate-converged-pkg generator', () => {
           outDir: 'dist',
           types: ['jest', 'node'],
         },
-        include: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx', '**/*.d.ts'],
+        include: [
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.d.ts',
+          './src/testing/**/*.ts',
+          './src/testing/**/*.tsx',
+        ],
       });
     });
 
@@ -498,8 +508,8 @@ describe('migrate-converged-pkg generator', () => {
 
       const normalizedProjectNameNamesVariants = names(normalizedProjectName);
       const paths = {
-        storyOne: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
-        storyTwo: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+        storyOne: `${projectConfig.root}/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
         tsconfig: {
           storybook: `${projectStorybookConfigPath}/tsconfig.json`,
           main: `${projectConfig.root}/tsconfig.json`,
@@ -560,7 +570,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: '',
           types: ['static-assets', 'environment', 'storybook__addons'],
         },
-        include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
+        include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
       });
       expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).toEqual(
         expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),
@@ -578,7 +588,7 @@ describe('migrate-converged-pkg generator', () => {
 
         module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
         const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -632,7 +642,7 @@ describe('migrate-converged-pkg generator', () => {
       // artificially add stories globs to exclude
       writeJson<TsConfig>(tree, paths.tsconfig.lib, {
         compilerOptions: {},
-        exclude: ['../src/common/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
+        exclude: ['../src/testing/**', '**/*.test.ts', '**/*.test.tsx', '**/*.stories.ts', '**/*.stories.tsx'],
       });
       // artificially create spec ts config
       writeJson<TsConfig>(tree, paths.tsconfig.test, {
@@ -674,11 +684,10 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
     });
 
-    it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
-      const { projectConfig, normalizedProjectName } = setup({ createDummyStories: true });
-      const componentName = names(normalizedProjectName).className.replace('React', '');
+    it(`should move existing stories to the root stories subfolder`, async () => {
+      const { projectConfig } = setup({ createDummyStories: true });
       const oldStoriesPath = `${projectConfig.root}/src/stories`;
-      const newStoriesPath = `${oldStoriesPath}/${componentName}`;
+      const newStoriesPath = `${projectConfig.root}/stories`;
       const storyFiles: string[] = [];
 
       visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
@@ -707,29 +716,28 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`e2e config`, () => {
+  describe(`cypress config`, () => {
     function setup(config: { projectName: string }) {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
-        e2eRoot: `${projectConfig.root}/e2e`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
           lib: `${projectConfig.root}/tsconfig.lib.json`,
           test: `${projectConfig.root}/tsconfig.spec.json`,
-          e2e: `${projectConfig.root}/e2e/tsconfig.json`,
+          cypress: `${projectConfig.root}/tsconfig.cy.json`,
         },
       };
 
-      function createE2eSetup() {
-        writeJson<TsConfig>(tree, paths.tsconfig.e2e, {
+      function createCypressSetup() {
+        writeJson<TsConfig>(tree, paths.tsconfig.cypress, {
           extends: '../../tsconfig.base.json',
           compilerOptions: {},
         });
         tree.write(
-          `${paths.e2eRoot}/index.e2e.ts`,
+          `${projectConfig.sourceRoot}/components/index.cy.ts`,
           stripIndents`
-         describe('E2E test', () => {
+         describe('Cypress test', () => {
            before(() => {
             cy.visitStorybook();
            });
@@ -740,39 +748,41 @@ describe('migrate-converged-pkg generator', () => {
         return tree;
       }
 
-      return { projectConfig, paths, createE2eSetup };
+      return { projectConfig, paths, createCypressSetup };
     }
-    it(`should do nothing if e2e setup is missing`, async () => {
+    it(`should do nothing if cypress setup is missing`, async () => {
       const { paths } = setup({ projectName: options.name });
 
       await generator(tree, { name: options.name });
 
-      expect(tree.exists(paths.tsconfig.e2e)).toBeFalsy();
+      expect(tree.exists(paths.tsconfig.cypress)).toBeFalsy();
     });
 
-    it(`should setup e2e if present`, async () => {
-      const { paths, createE2eSetup } = setup({ projectName: options.name });
+    it(`should setup cypress if present`, async () => {
+      const { paths, createCypressSetup } = setup({ projectName: options.name });
 
-      createE2eSetup();
+      createCypressSetup();
 
-      expect(tree.exists(paths.tsconfig.e2e)).toBeTruthy();
+      expect(tree.exists(paths.tsconfig.cypress)).toBeTruthy();
 
       await generator(tree, { name: options.name });
 
       // // TS Updates
-      const e2eTsConfig: TsConfig = readJson(tree, paths.tsconfig.e2e);
+      const cypressTsConfig: TsConfig = readJson(tree, paths.tsconfig.cypress);
       const mainTsConfig: TsConfig = readJson(tree, paths.tsconfig.main);
+      const libTsConfig: TsConfig = readJson(tree, paths.tsconfig.lib);
 
-      expect(e2eTsConfig).toEqual({
-        extends: '../tsconfig.json',
+      expect(cypressTsConfig).toEqual({
+        extends: './tsconfig.json',
         compilerOptions: {
           isolatedModules: false,
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
-        include: ['**/*.ts', '**/*.tsx'],
+        include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
-      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
+      expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './tsconfig.cy.json' }]));
+      expect(libTsConfig.exclude).toEqual(expect.arrayContaining(['**/*.cy.ts', '**/*.cy.tsx']));
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
@@ -795,12 +805,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "dtsRollup": Object {
-            "enabled": true,
-            "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts",
-            "untrimmedFilePath": "",
-          },
-          "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+          "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
         }
       `);
     });
@@ -832,7 +837,7 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
-      expect(pkgJson.typings).toEqual('dist/index.d.ts');
+      expect(pkgJson.typings).toEqual('./dist/index.d.ts');
     });
 
     it(`should update package npm scripts`, async () => {
@@ -879,6 +884,57 @@ describe('migrate-converged-pkg generator', () => {
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
+      });
+    });
+
+    describe(`export-maps`, () => {
+      function setup(config: { name: string; addModuleField?: boolean }) {
+        const addModuleField = config.addModuleField ?? true;
+        const projectConfig = readProjectConfiguration(tree, config.name);
+        const pkgJsonPath = `${projectConfig.root}/package.json`;
+
+        if (addModuleField) {
+          updateJson(tree, pkgJsonPath, json => {
+            json.module = './lib/index.js';
+            return json;
+          });
+        }
+
+        const getPackageJson = () => readJson(tree, pkgJsonPath);
+
+        return { getPackageJson };
+      }
+
+      it(`should update exports map`, async () => {
+        const { getPackageJson } = setup({ name: options.name });
+
+        let pkgJson = getPackageJson();
+
+        expect(pkgJson.exports).toBe(undefined);
+
+        await generator(tree, options);
+
+        pkgJson = getPackageJson();
+
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+                  Object {
+                    ".": Object {
+                      "import": "./lib/index.js",
+                      "require": "./lib-commonjs/index.js",
+                      "types": "./dist/index.d.ts",
+                    },
+                    "./package.json": "./package.json",
+                  }
+              `);
+      });
+
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson } = setup({ name: options.name, addModuleField: false });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        expect(pkgJson.exports['.'].module).toBe(undefined);
       });
     });
 
@@ -956,10 +1012,11 @@ describe('migrate-converged-pkg generator', () => {
         bundle-size/
         config/
         coverage/
-        e2e/
+        docs/
         etc/
         node_modules/
         src/
+        stories/
         dist/types/
         temp/
         __fixtures__
@@ -969,7 +1026,7 @@ describe('migrate-converged-pkg generator', () => {
         *.api.json
         *.log
         *.spec.*
-        *.stories.*
+        *.cy.*
         *.test.*
         *.yml
 
@@ -1202,6 +1259,127 @@ describe('migrate-converged-pkg generator', () => {
       expect(content).toContain(`packages/react-dummy @org/team-awesome`);
     });
   });
+
+  describe(`unstable API`, () => {
+    const getPkgJsonUnstablePath = (projectConfig: ProjectConfiguration) => {
+      return `${projectConfig.root}/src/unstable/package.json__tmpl__`;
+    };
+
+    describe(`export-maps`, () => {
+      function setup(config: { name: string; addModuleField?: boolean }) {
+        const addModuleField = config.addModuleField ?? true;
+        const projectConfig = readProjectConfiguration(tree, config.name);
+        const pkgJsonPath = `${projectConfig.root}/package.json`;
+        const pkgJsonUnstablePath = getPkgJsonUnstablePath(projectConfig);
+
+        if (addModuleField) {
+          updateJson(tree, pkgJsonPath, json => {
+            json.module = './lib/index.js';
+            return json;
+          });
+        }
+
+        writeJson(tree, pkgJsonUnstablePath, {
+          typings: './../dist/unstable.d.ts',
+          ...(addModuleField ? { module: './../lib/index.js' } : null),
+        });
+        const getUnstablePackageJson = () => readJson(tree, pkgJsonUnstablePath);
+
+        const getPackageJson = () => readJson(tree, pkgJsonPath);
+
+        return { getPackageJson, getUnstablePackageJson };
+      }
+
+      it(`should update exports map in stable package.json`, async () => {
+        const { getPackageJson } = setup({ name: options.name });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+
+        expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
+          Object {
+            "import": "./lib/unstable/index.js",
+            "require": "./lib-commonjs/unstable/index.js",
+            "types": "./dist/unstable.d.ts",
+          }
+        `);
+      });
+
+      it(`should update exports map`, async () => {
+        const { getUnstablePackageJson } = setup({ name: options.name });
+
+        let pkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports).toBe(undefined);
+
+        await generator(tree, options);
+
+        pkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports).toMatchInlineSnapshot(`
+          Object {
+            ".": Object {
+              "import": "./../lib/unstable/index.js",
+              "require": "./../lib-commonjs/unstable/index.js",
+              "types": "./../dist/unstable.d.ts",
+            },
+          }
+        `);
+      });
+
+      it(`should update exports map based on main,module fields`, async () => {
+        const { getPackageJson, getUnstablePackageJson } = setup({
+          name: options.name,
+          addModuleField: false,
+        });
+
+        await generator(tree, options);
+
+        const pkgJson = getPackageJson();
+        const unstablePkgJson = getUnstablePackageJson();
+
+        expect(pkgJson.exports['./unstable'].module).toBe(undefined);
+        expect(unstablePkgJson.exports['.'].module).toBe(undefined);
+      });
+    });
+
+    describe(`api-extractor`, () => {
+      it(`should create api-extractor.json`, async () => {
+        const projectConfig = readProjectConfiguration(tree, options.name);
+        const pkgJsonUnstablePath = getPkgJsonUnstablePath(projectConfig);
+        writeJson(tree, pkgJsonUnstablePath, {
+          description: 'unstable api',
+          sideEffects: false,
+          main: '../lib-commonjs/unstable/index.js',
+        });
+        const apiExtractorConfigPath = `${projectConfig.root}/config/api-extractor.unstable.json`;
+
+        expect(tree.exists(apiExtractorConfigPath)).toBeFalsy();
+
+        await generator(tree, options);
+
+        expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
+        /* eslint-disable @fluentui/max-len */
+        expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
+          Object {
+            "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+            "apiReport": Object {
+              "enabled": true,
+              "reportFileName": "<unscopedPackageName>.unstable.api.md",
+            },
+            "dtsRollup": Object {
+              "enabled": true,
+              "untrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
+            },
+            "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
+            "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
+          }
+        `);
+        /* eslint-enable @fluentui/max-len */
+      });
+    });
+  });
 });
 
 // ==== helpers ====
@@ -1258,6 +1436,7 @@ function setupDummyPackage(
       name: pkgName,
       version: normalizedOptions.version,
       typings: 'lib/index.d.ts',
+      main: 'lib-commonjs/index.js',
       scripts: {
         build: 'just-scripts build',
         clean: 'just-scripts clean',
@@ -1352,7 +1531,7 @@ function setupDummyPackage(
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
   // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
   const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
-  tree.write(`${projectConfig.root}/src/common/isConformant.ts`, stripIndents`${template}`);
+  tree.write(`${projectConfig.root}/src/testing/isConformant.ts`, stripIndents`${template}`);
 }
 
 function addUnstableSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {

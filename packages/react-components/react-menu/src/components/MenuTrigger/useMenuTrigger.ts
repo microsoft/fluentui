@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -21,7 +21,7 @@ import { useARIAButtonProps } from '@fluentui/react-aria';
  * @param props - props from this instance of MenuTrigger
  */
 export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerState => {
-  const { children } = props;
+  const { children, disableButtonEnhancement = false } = props;
 
   const triggerRef = useMenuContext_unstable(context => context.triggerRef);
   const menuPopoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
@@ -45,43 +45,43 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  const child = React.isValidElement(children) ? getTriggerChild<Partial<MenuTriggerChildProps>>(children) : undefined;
+  const child = getTriggerChild(children);
 
-  const onContextMenu = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
 
     if (openOnContext) {
-      e.preventDefault();
-      setOpen(e, { open: true, keyboard: false });
+      event.preventDefault();
+      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerContextMenu', event });
     }
   };
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
 
     if (!openOnContext) {
-      setOpen(e, { open: !open, keyboard: openedWithKeyboardRef.current });
+      setOpen(event, { open: !open, keyboard: openedWithKeyboardRef.current, type: 'menuTriggerClick', event });
       openedWithKeyboardRef.current = false;
     }
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
 
-    const key = e.key;
+    const key = event.key;
 
     if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
-      setOpen(e, { open: true, keyboard: true });
+      setOpen(event, { open: true, keyboard: true, type: 'menuTriggerKeyDown', event });
     }
 
     if (key === Escape && !isSubmenu) {
-      setOpen(e, { open: false, keyboard: true });
+      setOpen(event, { open: false, keyboard: true, type: 'menuTriggerKeyDown', event });
     }
 
     // if menu is already open, can't rely on effects to focus
@@ -90,63 +90,65 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onMouseEnter = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onMouseEnter = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
     if (openOnHover && hasMouseMoved.current) {
-      setOpen(e, { open: true, keyboard: false });
+      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
     }
   };
 
   // Opening a menu when a mouse hasn't moved and just entering the trigger is a bad a11y experience
   // First time open the mouse using mousemove and then continue with mouseenter
   // Only use once to determine that the user is using the mouse since it is an expensive event to handle
-  const onMouseMove = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onMouseMove = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
     if (openOnHover && !hasMouseMoved.current) {
-      setOpen(e, { open: true, keyboard: false });
+      setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
       hasMouseMoved.current = true;
     }
   };
 
-  const onMouseLeave = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(e)) {
+  const onMouseLeave = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+    if (isTargetDisabled(event)) {
       return;
     }
     if (openOnHover) {
-      setOpen(e, { open: false, keyboard: false });
+      setOpen(event, { open: false, keyboard: false, type: 'menuTriggerMouseLeave', event });
     }
   };
 
-  const triggerProps = {
-    'aria-haspopup': 'menu',
-    'aria-expanded': !open && !isSubmenu ? undefined : open,
+  const contextMenuProps = {
     id: triggerId,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
-    onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
-    onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-    onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
-    onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
+    onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
+    onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
+    onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
+    onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
+  };
+
+  const triggerChildProps = {
+    'aria-haspopup': 'menu',
+    'aria-expanded': !open && !isSubmenu ? undefined : open,
+    ...contextMenuProps,
+    onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
   } as const;
 
-  const ariaButtonTriggerProps = useARIAButtonProps(
+  const ariaButtonTriggerChildProps = useARIAButtonProps(
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
-    {
-      ...triggerProps,
-      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
-    },
+    triggerChildProps,
   );
 
   return {
     isSubmenu,
-    children: applyTriggerPropsToChildren<MenuTriggerChildProps>(
+    children: applyTriggerPropsToChildren(
       children,
-      openOnContext ? triggerProps : ariaButtonTriggerProps,
+      openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
     ),
   };
 };

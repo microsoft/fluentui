@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore(react-menu): Updates trigger to use useARIAButton",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

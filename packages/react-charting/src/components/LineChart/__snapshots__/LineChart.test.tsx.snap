@@ -1679,6 +1679,9 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -1988,6 +1991,9 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2158,6 +2164,9 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
       </g>
     </svg>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2487,6 +2496,9 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -2816,6 +2828,9 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3145,6 +3160,9 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
 
@@ -3474,5 +3492,8 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.4)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.3..@fluentui/date-time-utilities_v8.5.4)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+
+## [8.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.3)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.2..@fluentui/date-time-utilities_v8.5.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
 
 ## [8.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.2)
 

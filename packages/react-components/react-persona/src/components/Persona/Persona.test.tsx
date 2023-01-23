@@ -1,18 +1,48 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { isConformant } from '../../testing/isConformant';
+import { omit } from '@fluentui/react-utilities/src/utils/omit';
 import { Persona } from './Persona';
-import { isConformant } from '../../common/isConformant';
+import { personaClassNames } from './usePersonaStyles';
+import { render, screen } from '@testing-library/react';
 
 describe('Persona', () => {
   isConformant({
     Component: Persona,
     displayName: 'Persona',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            name: 'Kevin Sturgis',
+            secondaryText: 'Software Engineer',
+            tertiaryText: 'Seattle, WA',
+            quaternaryText: 'Microsoft',
+          },
+          expectedClassNames: omit(personaClassNames, ['presence']),
+        },
+        {
+          props: {
+            presenceOnly: true,
+            presence: { status: 'available' },
+            name: 'Kevin Sturgis',
+            secondaryText: 'Software Engineer',
+            tertiaryText: 'Available',
+            quaternaryText: 'Microsoft',
+          },
+          expectedClassNames: omit(personaClassNames, ['avatar']),
+        },
+      ],
+    },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  it('passes name to primaryText if no primaryText is provided', () => {
+    render(<Persona name="Kevin Sturgis" />);
+    expect(screen.queryByText('Kevin Sturgis')).toBeTruthy();
+  });
 
-  it('renders a default state', () => {
-    const result = render(<Persona>Default Persona</Persona>);
-    expect(result.container).toMatchSnapshot();
+  it('ignores name when primaryText is provided', () => {
+    render(<Persona name="Kevin Sturgis" primaryText="Custom Primary Text" />);
+    expect(screen.queryByText('Kevin Sturgis')).toBeFalsy();
+    expect(screen.queryByText('Custom Primary Text')).toBeTruthy();
   });
 });

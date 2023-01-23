@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add scroll lock feature to Dialog",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,10 +2,14 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { typographyStyles } from '@fluentui/react-theme';
 
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots> = {
   root: 'fui-TableCellLayout',
   media: 'fui-TableCellLayout__media',
+  main: 'fui-TableCellLayout__main',
+  description: 'fui-TableCellLayout__description',
+  content: 'fui-TableCellLayout__content',
 };
 
 /**
@@ -18,13 +22,36 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 
   media: {
     display: 'flex',
     alignItems: 'center',
   },
 
-  // TODO add additional classes for different states and/or slots
+  mediaExtraSmall: {
+    fontSize: '16px',
+  },
+
+  mediaSmallAndMedium: {
+    fontSize: '20px',
+  },
+
+  mediaPrimary: {
+    fontSize: '24px',
+  },
+
+  mainPrimary: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+
+  description: {
+    color: tokens.colorNeutralForeground2,
+    ...typographyStyles.caption1,
+  },
 });
 
 /**
@@ -33,8 +60,42 @@ const useStyles = makeStyles({
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
   const styles = useStyles();
   state.root.className = mergeClasses(tableCellLayoutClassNames.root, styles.root, state.root.className);
+  const primary = state.appearance === 'primary';
+
   if (state.media) {
-    state.media.className = mergeClasses(tableCellLayoutClassNames.media, styles.media, state.media.className);
+    const mediaSizedStyles = {
+      small: styles.mediaSmallAndMedium,
+      medium: styles.mediaSmallAndMedium,
+      'extra-small': styles.mediaExtraSmall,
+    };
+
+    state.media.className = mergeClasses(
+      tableCellLayoutClassNames.media,
+      styles.media,
+      mediaSizedStyles[state.size],
+      primary && styles.mediaPrimary,
+      state.media.className,
+    );
+  }
+
+  if (state.main) {
+    state.main.className = mergeClasses(
+      tableCellLayoutClassNames.main,
+      primary && styles.mainPrimary,
+      state.main.className,
+    );
+  }
+
+  if (state.description) {
+    state.description.className = mergeClasses(
+      tableCellLayoutClassNames.description,
+      styles.description,
+      state.description.className,
+    );
+  }
+
+  if (state.content) {
+    state.content.className = mergeClasses(tableCellLayoutClassNames.content, styles.content, state.content.className);
   }
 
   return state;

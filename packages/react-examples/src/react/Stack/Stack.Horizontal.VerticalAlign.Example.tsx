@@ -23,23 +23,23 @@ const stackTokens: IStackTokens = { childrenGap: 5 };
 
 export const HorizontalStackVerticalAlignExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={stackTokens}>
+    <Stack enableScopedSelectors tokens={stackTokens}>
       <span>Top-aligned</span>
-      <Stack horizontal verticalAlign="start" styles={stackStyles}>
+      <Stack enableScopedSelectors horizontal verticalAlign="start" styles={stackStyles}>
         <span style={itemStyles}>1</span>
         <span style={itemStyles}>2</span>
         <span style={itemStyles}>3</span>
       </Stack>
 
       <span>Vertically centered</span>
-      <Stack horizontal verticalAlign="center" styles={stackStyles}>
+      <Stack enableScopedSelectors horizontal verticalAlign="center" styles={stackStyles}>
         <span style={itemStyles}>1</span>
         <span style={itemStyles}>2</span>
         <span style={itemStyles}>3</span>
       </Stack>
 
       <span>Bottom-aligned</span>
-      <Stack horizontal verticalAlign="end" styles={stackStyles}>
+      <Stack enableScopedSelectors horizontal verticalAlign="end" styles={stackStyles}>
         <span style={itemStyles}>1</span>
         <span style={itemStyles}>2</span>
         <span style={itemStyles}>3</span>

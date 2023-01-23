@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Making PopoverSurface focusable, moving Overflow aria-label to PopoverSurface, and moving content styles to PopoverSurface.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

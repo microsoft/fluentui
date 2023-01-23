@@ -2,6 +2,66 @@
   "name": "@fluentui/theme-designer",
   "entries": [
     {
+      "date": "Tue, 20 Sep 2022 20:55:45 GMT",
+      "tag": "@fluentui/theme-designer_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-components to v9.3.1",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-alert to v9.0.0-beta.10",
+            "commit": "4ceba844c804a2f49b0465389100e7a3dabf116e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 09:50:08 GMT",
+      "tag": "@fluentui/theme-designer_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-utilities to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-components to v9.3.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-alert to v9.0.0-beta.9",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.3",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:04:10 GMT",
       "tag": "@fluentui/theme-designer_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

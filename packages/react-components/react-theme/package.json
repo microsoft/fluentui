@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.0.0",
+  "version": "9.1.5",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -21,23 +21,17 @@
     "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-theme/src && yarn docs",
-    "token-pipeline": "node -r ../../../scripts/ts-node-register ../../../scripts/token-pipeline.ts",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0"
-  },
-  "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "tslib": "^2.1.0",
+    "@fluentui/tokens": "1.0.0-alpha.2"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -47,9 +41,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }

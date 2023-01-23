@@ -5,6 +5,7 @@ exports[`MenuItem renders a default state 1`] = `
   className="fui-MenuItem"
   onClick={[Function]}
   onKeyDown={[Function]}
+  onKeyUp={[Function]}
   onMouseEnter={[Function]}
   role="menuitem"
   tabIndex={0}

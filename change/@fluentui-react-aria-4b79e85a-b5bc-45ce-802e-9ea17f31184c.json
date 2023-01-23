@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: re-organize useARIAButton into its own folder",
-  "packageName": "@fluentui/react-aria",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-menu): stop spreading props on state",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

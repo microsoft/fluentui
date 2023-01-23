@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Stop exporting TablePrimaryCell and associated utilities and types",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -160,22 +160,6 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     },
   }),
 
-  content: ({ props: p, variables: v, theme }): ICSSInJSStyle => ({
-    color: v.contentColor,
-    wordBreak: 'break-word',
-    wordWrap: 'break-word',
-    '& a': {
-      color: 'inherit',
-      textDecoration: 'underline',
-      wordBreak: 'break-all',
-      '&:hover': { textDecorationStyle: 'double' },
-      '&:focus': { textDecorationStyle: 'double' },
-    },
-    ...(p.failed && {
-      color: theme.siteVariables.colorScheme.default.foreground,
-    }),
-  }),
-
   badge: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     top: pxToRem(-5),

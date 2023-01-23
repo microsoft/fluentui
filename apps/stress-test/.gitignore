@@ -1,4 +1,5 @@
 node_modules/
+dev-build/
 dist/
 
 benchmarks/**/*.json

@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.5)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.4..@fluentui/react-window-provider_v2.2.5)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/test-utilities to v8.2.5 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+
+## [2.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.4)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.3..@fluentui/react-window-provider_v2.2.4)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/test-utilities to v8.2.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+
+## [2.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.3)
+
+Thu, 20 Oct 2022 07:43:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.2..@fluentui/react-window-provider_v2.2.3)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- Bump @fluentui/test-utilities to v8.2.3 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
 
 ## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.2)
 

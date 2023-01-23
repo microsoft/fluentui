@@ -114,22 +114,6 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     };
   },
 
-  content: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const { props: p, variables: v } = componentStyleFunctionParam;
-    return {
-      color: v.contentColor,
-      display: 'block',
-      '& a': {
-        outline: 'none',
-        color: p.mine ? v.linkColorMine : v.linkColor,
-        ':focus': {
-          textDecoration: 'underline',
-        },
-      },
-      ...getChatMessageVariantStyles(p).content?.(componentStyleFunctionParam),
-    };
-  },
-
   badge: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p, variables: v } = componentStyleFunctionParam;
     return {

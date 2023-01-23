@@ -80,12 +80,20 @@ const ReactIconGrid = () => {
 
   const filteredIcons = React.useMemo(
     () =>
-      reactIcons.filter(icon =>
-        size === 'Unsized'
-          ? icon.displayName! && !/\d/.test(icon.displayName.toLowerCase())
-          : icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-            icon.displayName?.indexOf(String(size)) !== -1,
-      ),
+      reactIcons.filter(icon => {
+        if (size === 'Unsized') {
+          return (
+            icon.displayName! &&
+            !/\d/.test(icon.displayName.toLowerCase()) &&
+            icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1
+          );
+        }
+
+        return (
+          icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
+          icon.displayName?.indexOf(String(size)) !== -1
+        );
+      }),
     [search, size],
   );
 

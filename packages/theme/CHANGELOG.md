@@ -1,8 +1,58 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Fri, 02 Sep 2022 07:48:53 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.21)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.20..@fluentui/theme_v2.6.21)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.5.5 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/utilities to v8.13.5 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+
+## [2.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.20)
+
+Tue, 20 Dec 2022 07:53:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.19..@fluentui/theme_v2.6.20)
+
+### Patches
+
+- chore: Updating cdn links to match latest. ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by esteban.230@hotmail.com)
+
+## [2.6.19](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.19)
+
+Tue, 15 Nov 2022 07:44:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.18..@fluentui/theme_v2.6.19)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.4 ([PR #25643](https://github.com/microsoft/fluentui/pull/25643) by beachball)
+
+## [2.6.18](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.18)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.17..@fluentui/theme_v2.6.18)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.5.4 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/utilities to v8.13.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+
+## [2.6.17](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.17)
+
+Thu, 20 Oct 2022 07:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.16..@fluentui/theme_v2.6.17)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- Bump @fluentui/utilities to v8.13.2 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
 
 ## [2.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.16)
 

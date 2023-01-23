@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix no-context-default-value lint violations for cxe",
-  "packageName": "@fluentui/react-accordion",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

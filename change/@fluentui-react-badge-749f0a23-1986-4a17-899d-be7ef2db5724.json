@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted",
-  "packageName": "@fluentui/react-badge",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

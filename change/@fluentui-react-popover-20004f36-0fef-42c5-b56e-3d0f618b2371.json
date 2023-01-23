@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Allow PopoverSurface to trap focus when it's focusable.",
-  "packageName": "@fluentui/react-popover",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -42,7 +42,7 @@ export const usePopoverSurface_unstable = (
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
-      role: trapFocus ? 'dialog' : 'complementary',
+      role: trapFocus ? 'dialog' : 'group',
       'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
       ...props,

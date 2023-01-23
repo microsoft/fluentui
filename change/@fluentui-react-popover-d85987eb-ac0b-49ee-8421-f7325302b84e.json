@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix no-context-default-value lint violations",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

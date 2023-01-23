@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add pie layout implementation.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

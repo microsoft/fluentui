@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator, TestWrapperDecoratorTall } from '../utilities/index';
 import {
@@ -47,7 +47,7 @@ const commandProps: IButtonProps = {
 storiesOf('Button (compat)', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -57,7 +57,7 @@ storiesOf('Button (compat)', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <DefaultButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <DefaultButton {...baseProps} disabled={true} />)
@@ -78,7 +78,7 @@ storiesOf('Button (compat)', module)
 storiesOf('Button Action (compat)', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -88,7 +88,7 @@ storiesOf('Button Action (compat)', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <ActionButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
@@ -99,7 +99,7 @@ storiesOf('Button Action (compat)', module)
 storiesOf('Button Compound (compat)', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -109,7 +109,7 @@ storiesOf('Button Compound (compat)', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <CompoundButton {...baseProps} />, { includeRtl: true })
   .addStory('Disabled', () => <CompoundButton {...baseProps} disabled={true} />)
@@ -129,7 +129,7 @@ storiesOf('Button Command (compat)', module)
   ))
   .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -142,7 +142,7 @@ storiesOf('Button Command (compat)', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <CommandBarButton {...commandProps} />, { includeRtl: true })
   .addStory('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
@@ -151,7 +151,7 @@ storiesOf('Button Command (compat)', module)
 storiesOf('Button Split (compat)', module)
   .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button:nth-child(1)')
@@ -170,7 +170,7 @@ storiesOf('Button Split (compat)', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { includeRtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
@@ -193,9 +193,9 @@ storiesOf('Button Split (compat)', module)
 storiesOf('Button Special Scenarios (compat)', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('primary with placeholder', () => (
@@ -226,7 +226,7 @@ storiesOf('Button Special Scenarios (compat)', module)
 storiesOf('IconButton Scenarios (compat)', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('icon', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
@@ -234,7 +234,7 @@ storiesOf('IconButton Scenarios (compat)', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('normal icon button', () => (

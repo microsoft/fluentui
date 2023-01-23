@@ -6,6 +6,7 @@ export interface OverflowContextValue {
   groupVisibility: Record<string, OverflowGroupState>;
   hasOverflow: boolean;
   registerItem: (item: OverflowItemEntry) => () => void;
+  registerOverflowMenu: (el: HTMLElement) => () => void;
   updateOverflow: (padding?: number) => void;
 }
 
@@ -19,6 +20,7 @@ const overflowContextDefaultValue: OverflowContextValue = {
   hasOverflow: false,
   registerItem: () => () => null,
   updateOverflow: () => null,
+  registerOverflowMenu: () => () => null,
 };
 
 export const useOverflowContext = <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) =>

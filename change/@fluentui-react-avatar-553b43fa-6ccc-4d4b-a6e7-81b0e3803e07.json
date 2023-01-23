@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Cleaning up use of AvatarGroup context.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

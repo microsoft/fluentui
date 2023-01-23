@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Avatar } from './Avatar';
 import { render, screen } from '@testing-library/react';
 import { avatarClassNames } from './useAvatarStyles';
+import { DEFAULT_STRINGS } from './useAvatar';
 
 describe('Avatar', () => {
   isConformant({
@@ -25,15 +26,11 @@ describe('Avatar', () => {
         },
         {
           props: {
-            image: { src: 'avatar.png', alt: 'test-image' },
             icon: 'Test Icon',
-            badge: 'Test Badge',
           },
           expectedClassNames: {
             root: avatarClassNames.root,
-            image: avatarClassNames.image,
             icon: avatarClassNames.icon,
-            badge: avatarClassNames.badge,
           },
         },
       ],
@@ -107,13 +104,11 @@ describe('Avatar', () => {
     );
   });
 
-  it('prioritizes image over icon', () => {
+  it('does not render the icon when there is an image', () => {
     render(<Avatar icon={<img src="i.svg" alt="test-icon" />} image={{ src: 'avatar.png', alt: 'test-image' }} />);
 
-    // Both are rendered, but the icon precedes the image, and are hidden by it
-    expect(screen.getByAltText('test-image').compareDocumentPosition(screen.getByAltText('test-icon'))).toBe(
-      Node.DOCUMENT_POSITION_PRECEDING,
-    );
+    expect(screen.getByAltText('test-image')).toBeTruthy();
+    expect(screen.queryByAltText('test-icon')).toBeFalsy();
   });
 
   it('prioritizes image over initials and icon', () => {
@@ -175,13 +170,13 @@ describe('Avatar', () => {
     expect(iconRef.current?.getAttribute('aria-hidden')).toBeTruthy();
   });
 
-  it('falls back to initials for aria-labelledby', () => {
+  it('sets aria-labelledby to initials if no name is provided', () => {
     render(<Avatar initials={{ children: 'FL', id: 'initials-id' }} />);
 
     expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe('initials-id');
   });
 
-  it('falls back to string initials for aria-labelledby', () => {
+  it('sets aria-labelledby to initials with a generated ID, if no name is provided', () => {
     render(<Avatar initials="ABC" />);
 
     const intialsId = screen.getByText('ABC').id;
@@ -189,11 +184,67 @@ describe('Avatar', () => {
     expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe(intialsId);
   });
 
-  it('includes badge in aria-labelledby', () => {
+  it('sets aria-labelledby to the name + badge', () => {
     const name = 'First Last';
     render(<Avatar id="root-id" name={name} badge={{ status: 'away', id: 'badge-id' }} />);
 
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-label')).toBe(name);
-    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe('root-id badge-id');
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe(name);
+    expect(root.getAttribute('aria-labelledby')).toBe('root-id badge-id');
+  });
+
+  it('sets aria-label to the name + activeState when active="active"', () => {
+    const name = 'First Last';
+    render(<Avatar id="root-id" name={name} active="active" />);
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe(`${name} ${DEFAULT_STRINGS.active}`);
+  });
+
+  it('sets aria-label to the name + activeState when active="inactive"', () => {
+    const name = 'First Last';
+    render(<Avatar id="root-id" name={name} active="inactive" />);
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe(`${name} ${DEFAULT_STRINGS.inactive}`);
+  });
+
+  it('sets aria-labelledby to the name + badge + activeState when there is a badge and active state', () => {
+    render(<Avatar id="root-id" name="First Last" badge={{ status: 'away', id: 'badge-id' }} active="active" />);
+
+    const activeAriaLabelElement = screen.getByText(DEFAULT_STRINGS.active);
+    expect(activeAriaLabelElement.id).toBeTruthy();
+    expect(activeAriaLabelElement.hidden).toBeTruthy();
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-labelledby')).toBe(`root-id badge-id ${activeAriaLabelElement.id}`);
+  });
+
+  it('sets aria-labelledby to the initials + badge + activeState, if no name is provided', () => {
+    render(
+      <Avatar
+        initials={{ children: 'FL', id: 'initials-id' }}
+        badge={{ status: 'away', id: 'badge-id' }}
+        active="inactive"
+      />,
+    );
+
+    const activeAriaLabelElement = screen.getByText(DEFAULT_STRINGS.inactive);
+    expect(activeAriaLabelElement.id).toBeTruthy();
+    expect(activeAriaLabelElement.hidden).toBeTruthy();
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-labelledby')).toBe(`initials-id badge-id ${activeAriaLabelElement.id}`);
+  });
+
+  it('does not render an activeAriaLabelElement when active state is unset', () => {
+    render(<Avatar name="First Last" />);
+
+    expect(screen.queryByText(DEFAULT_STRINGS.active)).toBeNull();
+    expect(screen.queryByText(DEFAULT_STRINGS.inactive)).toBeNull();
+
+    const root = screen.getAllByRole('img')[0];
+    expect(root.getAttribute('aria-label')).toBe('First Last');
+    expect(root.getAttribute('aria-labelledby')).toBeFalsy();
   });
 });

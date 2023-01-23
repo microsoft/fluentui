@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/accessibility",
   "description": "A set of reusable framework accessibility behaviours.",
-  "version": "0.64.0",
+  "version": "0.66.0",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/gulp": "^4.0.6",
-    "gulp": "^4.0.2",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-jest": "*"
   },
   "files": [
     "dist"

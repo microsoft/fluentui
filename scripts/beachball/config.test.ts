@@ -8,6 +8,9 @@ describe(`beachball configs`, () => {
       changehint: "Run 'yarn change' to generate a change file",
       disallowedChangeTypes: ['major'],
       generateChangelog: true,
+      hooks: {
+        precommit: expect.any(Function),
+      },
       ignorePatterns: [
         '**/*.{shot,snap}',
         '**/*.{test,spec}.{ts,tsx}',
@@ -16,6 +19,7 @@ describe(`beachball configs`, () => {
         '**/__fixtures__/**',
         '**/__mocks__/**',
         '**/common/isConformant.ts',
+        '**/src/testing/**',
         '**/config/tests.js',
         '**/jest.config.js',
         '**/SPEC*.md',

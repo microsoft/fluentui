@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Update color tokens mapping",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

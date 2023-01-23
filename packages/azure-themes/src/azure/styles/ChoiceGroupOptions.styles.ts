@@ -37,8 +37,8 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The circle
           ':before': [
             {
-              width: StyleConstants.choiceGroupDimensions,
-              height: StyleConstants.choiceGroupDimensions,
+              width: StyleConstants.choiceFieldHeight,
+              height: StyleConstants.choiceFieldHeight,
               borderColor: semanticColors.bodyText,
             },
             checked && {

@@ -9,6 +9,11 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   buttonBackground: string;
   buttonBackgroundChecked: string;
   buttonBackgroundCheckedHovered: string;
+  ButtonBackgroundDanger: string;
+  ButtonBackgroundDangerHovered: string;
+  ButtonBackgroundDangerPressed: string;
+  ButtonBackgroundDangerText: string;
+  ButtonBackgroundDangerTextHovered: string;
   buttonBackgroundDisabled: string;
   buttonBackgroundHovered: string;
   buttonBackgroundPressed: string;
@@ -101,6 +106,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   primaryButtonBackgroundDisabled: string;
   primaryButtonBackgroundHovered: string;
   primaryButtonBackgroundPressed: string;
+  ButtonBorderDanger: string;
+  ButtonBorderDangerHovered: string;
+  ButtonBorderDangerPressed: string;
   primaryButtonBorder: string;
   primaryButtonBorderDisabled: string;
   primaryButtonText: string;

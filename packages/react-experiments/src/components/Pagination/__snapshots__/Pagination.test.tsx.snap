@@ -1585,7 +1585,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         value="1"
       />
       <button
-        aria-hidden={true}
         className=
             ms-Button
             ms-Button--icon

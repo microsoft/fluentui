@@ -327,6 +327,7 @@ export const trProperties = htmlElementProperties;
  * @public
  */
 export const thProperties = toObjectMap(htmlElementProperties, [
+  'colSpan', // td, th
   'rowSpan', // td, th
   'scope', // th
 ]);

@@ -38,6 +38,7 @@ export const useDialogTitleInternalStyles = makeStyles({
     color: 'inherit',
     fontFamily: 'inherit',
     fontSize: 'inherit',
+    cursor: 'pointer',
     lineHeight: 0,
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),

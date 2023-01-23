@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/addon-docs';
+import { IconCatalog } from './Components/IconCatalog/IconCatalog.tsx';
+
+<Meta title="Concepts/Migration/from v0/Icons" />
+
+# Icons Migration
+
+## createSvgIcon
+
+V0 exports a `createSvgIcon` function that allows creating a custom icon such as:
+
+```jsx
+export const MyIcon = createSvgIcon({
+  svg: ({ classes }) => (
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
+      <g className={classes.outlinePart}>
+        <path d="..." />
+      </g>
+      <g className={classes.filledPart}>
+        <path d="..." />
+      </g>
+    </svg>
+  ),
+  displayName: 'MyIcon',
+});
+```
+
+And its usage would be like:
+
+```jsx
+// Usage Example
+
+// Default filled icon
+<MyIcon />
+
+// Outline Icon
+<MyIcon outline />
+```
+
+To achieve the same using V9 we have to make usage of a combination with `wrapIcon` and `bundleIcon`.
+
+```jsx
+// MyIcon.tsx
+import { FluentIconsProps, bundleIcon, wrapIcon } from '@fluentui/react-icons';
+
+export const MyOutlineIcon = wrapIcon((props: FluentIconsProps) => {
+  return (
+    <svg height="1rem" width="1rem" role="presentation" focusable="false" viewBox="2 2 16 16" {...props}>
+      <g>
+        <path d="..." />
+      </g>
+    </svg>
+  );
+}, 'MyOutlineIcon');
+
+export const MyFilledIcon = wrapIcon((props: FluentIconsProps) => {
+  return (
+    <svg height="1rem" width="1rem" role="presentation" focusable="false" viewBox="2 2 16 16" {...props}>
+      <g>
+        <path d="..." />
+      </g>
+    </svg>
+  );
+}, 'MyFilledIcon');
+
+export const MyIcon = bundleIcon(MyFilledIcon, MyOutlineIcon);
+```
+
+And its usage would be like:
+
+```jsx
+// Usage Example
+
+// Default outlined icon
+<MyIcon />
+
+// Filled Icon
+<MyIcon filled />
+```
+
+An Icon created with `createSvgIcon` is filled by default while an Icon created with `wrapIcon` is outline by default, so when replacing the usage of `createSvgIcon` remember to add filled prop to the Icon usage.
+
+### Sizing
+
+`createSvgIcon` from V0 will allow you to set a range of pre-defined size values (`small`,`smaller`,`smallest`,`medium`,`large`,`largest`,`larger`). e.g.:
+
+```jsx
+<MyIcon size="small" />
+```
+
+The V9 wrapIcon has a different approach allowing to set the fontSize which would change directly the icon size.
+
+```jsx
+<MyIcon fontSize={24} />
+```
+
+In the V9 Icon it is also possible to style it by using css `font-size` propertie.
+
+## v0 - v9 Icon Catalog
+
+This catalog can help you find the equivalent v9 icon if you are using v0 icons. Not all icons have a direct
+equivalent, and you will see clearly when this is case in the catalog.
+
+## Hover styles
+
+V0 can handle switching between outline and filled versions of an icon automatically. However extra work is needed
+to achieve the same effect in v9. You can read about these steps in [the official v9 Icon docs](?path=/docs/concepts-developer-icons-icons--page).
+
+<IconCatalog />

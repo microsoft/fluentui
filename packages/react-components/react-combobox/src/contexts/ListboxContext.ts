@@ -31,3 +31,5 @@ export const ListboxContext = createContext<ListboxContextValue>({
     // noop
   },
 });
+
+export const ListboxProvider = ListboxContext.Provider;

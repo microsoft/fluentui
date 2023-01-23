@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { TableSlots, TableState } from './Table.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -7,16 +8,28 @@ export const tableClassNames: SlotClassNames<TableSlots> = {
   root: 'fui-Table',
 };
 
+const useTableLayoutStyles = makeStyles({
+  root: {
+    display: 'table',
+    verticalAlign: 'middle',
+    width: '100%',
+    tableLayout: 'fixed',
+  },
+});
+
+const useFlexLayoutStyles = makeStyles({
+  root: {
+    display: 'block',
+  },
+});
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    verticalAlign: 'middle',
     borderCollapse: 'collapse',
-    width: '100%',
-    display: 'table',
-    tableLayout: 'fixed',
+    backgroundColor: tokens.colorSubtleBackground,
   },
 });
 
@@ -25,7 +38,16 @@ const useStyles = makeStyles({
  */
 export const useTableStyles_unstable = (state: TableState): TableState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableClassName, styles.root, state.root.className);
+  const layoutStyles = {
+    table: useTableLayoutStyles(),
+    flex: useFlexLayoutStyles(),
+  };
+  state.root.className = mergeClasses(
+    tableClassName,
+    styles.root,
+    state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.root.className,
+  );
 
   return state;
 };

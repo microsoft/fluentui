@@ -12,12 +12,11 @@ import {
   controlCornerRadius,
   density,
   designUnit,
-  focusStrokeOuter,
-  focusStrokeWidth,
   neutralForegroundRest,
   strokeWidth,
 } from '../../design-tokens';
 import { typeRampBase } from '../../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../../styles/focus';
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
@@ -34,7 +33,6 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
         justify-content: center;
         grid-row: 1 / 3;
         cursor: pointer;
-        outline: none;
       }
 
       :host([aria-selected='true']) {
@@ -47,8 +45,7 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
       }
 
       :host(:${focusVisible}) {
-        border-color: ${focusStrokeOuter};
-        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset;
+        ${focusTreatmentBase}
       }
 
       :host(.vertical) {
@@ -90,8 +87,7 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
           }
           :host(:${focusVisible}) {
             background: transparent;
-            border-color: ${SystemColors.ButtonText};
-            box-shadow: none;
+            outline-color: ${SystemColors.ButtonText};
           }
         `,
       ),

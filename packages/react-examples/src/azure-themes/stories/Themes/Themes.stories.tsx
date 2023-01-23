@@ -31,6 +31,7 @@ import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 import { SliderBasicExample } from '../components/slider.stories';
+import { SpinButtonBasicExample } from '../components/SpinButton.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -49,6 +50,9 @@ const Example = () => (
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
       <DefaultButton primary={true} text="Default button as primary" />
       <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
+      <Label>Danger buttons (both primary and default)</Label>
+      <DefaultButton className="danger" text="danger defaultbutton" />
+      <PrimaryButton className="danger" text="danger primarybutton" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
@@ -61,7 +65,6 @@ const Example = () => (
       <ButtonIconWithTooltipExample />
       <ButtonContextualMenuExample />
       <ButtonActionExample />
-
       <Label>Toggle button</Label>
       <ButtonToggleExample />
       <ButtonSplitExample checked={false} />
@@ -107,6 +110,17 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
+      <Checkbox
+        label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
+        defaultIndeterminate
+        defaultChecked={true}
+      />
+      <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
+      <Checkbox label="Indeterminate checkbox (controlled)" indeterminate={true} />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>Links</Label>
       <Link>Hello I am a link, hover underline</Link>
     </Stack>
@@ -128,6 +142,11 @@ const Example = () => (
       <TextField disabled value="disabled text" />
       <TextField placeholder="Hello" />
       <TextField errorMessage="Error message!" />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Spin button example</Label>
+      <SpinButtonBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>

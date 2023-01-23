@@ -17,6 +17,7 @@ import {
   useUnhandledProps,
   useMergedRefs,
   ForwardRefWithAs,
+  mergeVariablesOverrides,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -67,6 +68,7 @@ import { ChatItemContext } from './chatItemContext';
 import { ChatMessageDetails, ChatMessageDetailsProps } from './ChatMessageDetails';
 import { ChatMessageHeader, ChatMessageHeaderProps } from './ChatMessageHeader';
 import { ChatMessageReadStatus, ChatMessageReadStatusProps } from './ChatMessageReadStatus';
+import { ChatMessageContent } from './ChatMessageContent';
 
 export interface ChatMessageSlotClassNames {
   actionMenu: string;
@@ -77,7 +79,6 @@ export interface ChatMessageSlotClassNames {
   bubbleInset: string;
   body: string;
   compactBody: string;
-  content: string;
   reactionGroup: string;
   timestamp: string;
 }
@@ -226,7 +227,6 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   bubble: `${chatMessageClassName}__bubble`,
   bubbleInset: `${chatMessageClassName}__bubble-inset`,
   compactBody: `${chatMessageClassName}__compact-body`,
-  content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
   timestamp: `${chatMessageClassName}__timestamp`,
 };
@@ -336,6 +336,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   const popperRef = React.useRef<PopperRefHandle>();
   const { targetRef: actionsMenuTargetRef, containerRef: actionsMenuRef } = usePopper({
     align: 'end',
+    rtl: context.rtl,
     position: 'above',
     positionFixed: overflow,
 
@@ -542,10 +543,10 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     }),
   });
 
-  const messageContent = Box.create(content, {
-    defaultProps: () => ({
-      className: chatMessageSlotClassNames.content,
-      styles: resolvedStyles.content,
+  const messageContent = createShorthand(ChatMessageContent, content, {
+    defaultProps: () => ({ badgePosition, density, failed, hasBadge: !!badge, mine, unstable_layout: layout }),
+    overrideProps: predefinedProps => ({
+      variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     }),
   });
 

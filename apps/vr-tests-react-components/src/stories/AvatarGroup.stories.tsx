@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import {
   AvatarGroup,
   AvatarGroupItem,
@@ -57,11 +57,13 @@ const AvatarGroupList: React.FC<
           {inlineItems.map(name => (
             <AvatarGroupItem key={name} name={name} />
           ))}
-          <AvatarGroupPopover indicator={props.overflowIndicator}>
-            {overflowItems.map(name => (
-              <AvatarGroupItem key={name} name={name} />
-            ))}
-          </AvatarGroupPopover>
+          {overflowItems && (
+            <AvatarGroupPopover indicator={props.overflowIndicator}>
+              {overflowItems.map(name => (
+                <AvatarGroupItem key={name} name={name} />
+              ))}
+            </AvatarGroupPopover>
+          )}
         </AvatarGroup>
       ))}
     </div>
@@ -72,7 +74,7 @@ const AvatarGroupList: React.FC<
 storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('basic', () => <AvatarGroupList />, {
     includeHighContrast: true,
@@ -97,6 +99,7 @@ storiesOf('AvatarGroup Converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -116,11 +119,13 @@ storiesOf('AvatarGroup Converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+      includeRtl: true,
     },
   )
   .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
     includeHighContrast: true,
     includeDarkMode: true,
+    includeRtl: true,
   })
   .addStory('overflowIndicator', () => <AvatarGroupList overflowIndicator="icon" />, {
     includeHighContrast: true,
@@ -131,9 +136,9 @@ storiesOf('AvatarGroup Converged', module)
 storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('overflowContentOpen').end()}>
+    <StoryWright steps={new Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'overflowContent',
@@ -145,11 +150,13 @@ storiesOf('AvatarGroup Converged', module)
             {inlineItems.map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
-            <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
-              {overflowItems.map(name => (
-                <AvatarGroupItem key={name} name={name} />
-              ))}
-            </AvatarGroupPopover>
+            {overflowItems && (
+              <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
+                {overflowItems.map(name => (
+                  <AvatarGroupItem key={name} name={name} />
+                ))}
+              </AvatarGroupPopover>
+            )}
           </AvatarGroup>
         </div>
       );

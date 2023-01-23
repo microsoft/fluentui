@@ -1,14 +1,16 @@
 {
   "name": "@fluentui/ability-attributes",
   "description": "Accessibility attributes schema for Fluent UI",
-  "version": "0.64.0",
+  "version": "0.66.0",
   "author": "Marat Abdullin <marata@microsoft.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "ability-attributes": "^0.0.8"
   },
   "devDependencies": {
-    "ability-attributes-generator": "^0.0.8"
+    "ability-attributes-generator": "^0.0.8",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*"
   },
   "files": [
     "dist"

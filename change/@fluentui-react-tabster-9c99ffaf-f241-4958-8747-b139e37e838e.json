@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Exports `applyFocusVisible` as internal",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

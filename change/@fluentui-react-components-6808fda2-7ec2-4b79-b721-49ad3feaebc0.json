@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Export `TableSelectionCell` from unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

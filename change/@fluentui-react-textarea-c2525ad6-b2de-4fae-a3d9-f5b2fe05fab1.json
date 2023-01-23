@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: disabled textarea uses semantic contrast theme border color",
-  "packageName": "@fluentui/react-textarea",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

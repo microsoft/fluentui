@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusWithin } from '@fluentui/react-tabster';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { TableCellActionsProps, TableCellActionsState } from './TableCellActions.types';
 
 /**
@@ -21,8 +20,9 @@ export const useTableCellActions_unstable = (
       root: 'div',
     },
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, useFocusWithin()),
+      ref,
       ...props,
     }),
+    visible: props.visible ?? false,
   };
 };

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Replace deprecated ReactNodeArray for React 17 support.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: consume cypress.config from it's package boundary",
-  "packageName": "@fluentui/react-card",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

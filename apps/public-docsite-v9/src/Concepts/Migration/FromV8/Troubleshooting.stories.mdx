@@ -24,6 +24,25 @@ ReactDOM.render(
 );
 ```
 
+## "I tried using the new components inside v8 Callouts, Panels, etc. but there does not seem to be any styling applied to them. Am I doing something wrong?"
+
+Components in version v9 use CSS variables for styling, v9 components that are using [React Portals](https://reactjs.org/docs/portals.html) handle this by default. Components like `Callout` & `Panel` in v8 don't do it, but this can be enabled with a compatibility package called `@fluentui/react-portal-compat`.
+
+`PortalCompatProvider` should be an inner child of FluentProvider, no additional configuration is required for `@fluentui/react`.
+
+```jsx
+import { FluentProvider } from '@fluentui/react-components';
+import { PortalCompatProvider } from '@fluentui/react-portal-compat';
+
+function App() {
+  return (
+    <FluentProvider>
+      <PortalCompatProvider>{/* your components */}</PortalCompatProvider>
+    </FluentProvider>
+  );
+}
+```
+
 ## "I managed to get the theme working but the components look different than they did previously, why is that?"
 
 We are modernizing our components in version 9 to adhere to the latest guidelines in the Fluent Design Language. That is the reason for any visual differences you might notice.

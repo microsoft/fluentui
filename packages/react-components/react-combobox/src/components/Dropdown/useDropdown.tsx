@@ -3,8 +3,8 @@ import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useTimeout } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
 import type { OptionValue } from '../../utils/OptionCollection.types';
@@ -25,7 +25,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const {
     activeOption,
     getIndexOfId,
-    getOptionsMatchingValue,
+    getOptionsMatchingText,
     open,
     setActiveOption,
     setFocusVisible,
@@ -53,7 +53,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const getNextMatchingOption = (): OptionValue | undefined => {
     // first check for matches for the full searchString
     let matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.current) === 0;
-    let matches = getOptionsMatchingValue(matcher);
+    let matches = getOptionsMatchingText(matcher);
     let startIndex = activeOption ? getIndexOfId(activeOption.id) : 0;
 
     // if the dropdown is already open and the searchstring is a single character,
@@ -72,7 +72,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       if (allSameLetter) {
         startIndex++;
         matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(letters[0]) === 0;
-        matches = getOptionsMatchingValue(matcher);
+        matches = getOptionsMatchingText(matcher);
       }
     }
 
@@ -146,6 +146,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
+        'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
         children: props.children,
         ...rootNativeProps,
       },

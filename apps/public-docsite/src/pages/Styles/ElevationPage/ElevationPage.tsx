@@ -14,8 +14,8 @@ export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props =>
   return (
     <StylesAreaPage
       {...props}
-      {...ElevationPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ElevationPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
@@ -124,7 +124,7 @@ function _renderDepthsTable() {
               </div>
             );
           default:
-            return row[column.rowProperty];
+            return row[column.rowProperty!];
         }
       }}
     />

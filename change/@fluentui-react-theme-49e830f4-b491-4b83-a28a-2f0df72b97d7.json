@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update color neutral background inverted color in teams dark",
-  "packageName": "@fluentui/react-theme",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

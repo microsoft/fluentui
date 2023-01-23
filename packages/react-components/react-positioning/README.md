@@ -2,8 +2,6 @@
 
 A react hook wrapper around [Popper.js](https://popper.js.org/) for Fluent UI.
 
-These are not production-ready utilities and **should never be used in product**. This space is useful for testing new utilities whose APIs might change before final release.
-
 ## Usage
 
 ```tsx

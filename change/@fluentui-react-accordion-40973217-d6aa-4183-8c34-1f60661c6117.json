@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Refactor accordion expandIcon styling)",
-  "packageName": "@fluentui/react-accordion",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

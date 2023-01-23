@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: export ToolbarButton",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

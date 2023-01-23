@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { FieldComponent, FieldSlots, FieldState } from './Field.types';
+import type { FieldControl, FieldSlots, FieldState } from './Field.types';
 
 /**
  * Render the final JSX of Field
  */
-export const renderField_unstable = <T extends FieldComponent>(state: FieldState<T>) => {
-  const { slots, slotProps } = getSlots<FieldSlots<FieldComponent>>(state as FieldState<FieldComponent>);
+export const renderField_unstable = <T extends FieldControl>(state: FieldState<T>) => {
+  const { slots, slotProps } = getSlots<FieldSlots<FieldControl>>(state as FieldState<FieldControl>);
 
   return (
     <slots.root {...slotProps.root}>

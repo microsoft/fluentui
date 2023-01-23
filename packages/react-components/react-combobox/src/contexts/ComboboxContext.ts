@@ -39,3 +39,5 @@ export const ComboboxContext = createContext<ComboboxContextValue>({
   },
   size: 'medium',
 });
+
+export const ComboboxProvider = ComboboxContext.Provider;

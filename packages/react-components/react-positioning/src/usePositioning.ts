@@ -1,18 +1,16 @@
-import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
-import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from '@floating-ui/dom';
+import { hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import type { Middleware, Strategy } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
-import type { PositioningOptions, PositioningProps, PositioningVirtualElement } from './types';
-import {
-  useCallbackRef,
-  toFloatingUIPlacement,
-  toggleScrollListener,
-  hasAutofocusFilter,
-  debounce,
-  hasScrollParent,
-} from './utils';
+import type {
+  PositioningOptions,
+  PositioningProps,
+  PositionManager,
+  TargetElement,
+  UsePositioningReturn,
+} from './types';
+import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent } from './utils';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
@@ -21,88 +19,48 @@ import {
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware';
-import {
-  DATA_POSITIONING_ESCAPED,
-  DATA_POSITIONING_INTERSECTING,
-  DATA_POSITIONING_HIDDEN,
-  DATA_POSITIONING_PLACEMENT,
-} from './constants';
+import { createPositionManager } from './createPositionManager';
 
 /**
  * @internal
  */
-export function usePositioning(
-  options: UsePositioningOptions,
-): {
-  // React refs are supposed to be contravariant
-  // (allows a more general type to be passed rather than a more specific one)
-  // However, Typescript currently can't infer that fact for refs
-  // See https://github.com/microsoft/TypeScript/issues/30748 for more information
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  targetRef: React.MutableRefObject<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  containerRef: React.MutableRefObject<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  arrowRef: React.MutableRefObject<any>;
-} {
-  const { targetDocument } = useFluent();
+export function usePositioning(options: UsePositioningOptions): UsePositioningReturn {
+  const managerRef = React.useRef<PositionManager | null>(null);
+  const targetRef = React.useRef<TargetElement | null>(null);
+  const overrideTargetRef = React.useRef<TargetElement | null>(null);
+  const containerRef = React.useRef<HTMLElement | null>(null);
+  const arrowRef = React.useRef<HTMLElement | null>(null);
+
   const { enabled = true } = options;
   const resolvePositioningOptions = usePositioningOptions(options);
-
-  const forceUpdate = useEventCallback(() => {
-    const target = overrideTargetRef.current ?? targetRef.current;
-    if (!canUseDOM || !enabled || !target || !containerRef.current) {
-      return;
+  const updatePositionManager = React.useCallback(() => {
+    if (managerRef.current) {
+      managerRef.current.dispose();
     }
+    managerRef.current = null;
 
-    const { placement, middleware, strategy } = resolvePositioningOptions(
-      target,
-      containerRef.current,
-      arrowRef.current,
-    );
+    const target = overrideTargetRef.current ?? targetRef.current;
 
-    // Container is always initialized with `position: fixed` to avoid scroll jumps
-    // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
-    Object.assign(containerRef.current.style, { position: strategy });
-    computePosition(target, containerRef.current, { placement, middleware, strategy })
-      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
-        writeArrowUpdates({ arrow: arrowRef.current, middlewareData });
-        writeContainerUpdates({
-          container: containerRef.current,
-          middlewareData,
-          placement: computedPlacement,
-          coordinates: { x, y },
-          lowPPI: (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1,
-          strategy,
-        });
-      })
-      .catch(err => {
-        // https://github.com/floating-ui/floating-ui/issues/1845
-        // FIXME for node > 14
-        // node 15 introduces promise rejection which means that any components
-        // tests need to be `it('', async () => {})` otherwise there can be race conditions with
-        // JSDOM being torn down before this promise is resolved so globals like `window` and `document` don't exist
-        // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
-        // will actually be counter productive
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.error('[usePositioning]: Failed to calculate position', err);
-        }
+    if (enabled && canUseDOM() && target && containerRef.current) {
+      managerRef.current = createPositionManager({
+        container: containerRef.current,
+        target,
+        arrow: arrowRef.current,
+        ...resolvePositioningOptions(containerRef.current, arrowRef.current),
       });
+    }
+  }, [enabled, resolvePositioningOptions]);
+
+  const setOverrideTarget = useEventCallback((target: TargetElement | null) => {
+    overrideTargetRef.current = target;
+    updatePositionManager();
   });
-
-  const updatePosition = React.useState(() => debounce(forceUpdate))[0];
-
-  const targetRef = useTargetRef(updatePosition);
-  const overrideTargetRef = useTargetRef(updatePosition);
-  const containerRef = useContainerRef(updatePosition, enabled);
-  const arrowRef = useArrowRef(updatePosition);
 
   React.useImperativeHandle(
     options.positioningRef,
     () => ({
-      updatePosition,
-      setTarget: (target: HTMLElement | PositioningVirtualElement) => {
+      updatePosition: () => managerRef.current?.updatePosition(),
+      setTarget: (target: TargetElement) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
           // eslint-disable-next-line no-console
@@ -111,40 +69,19 @@ export function usePositioning(
           console.warn(err.stack);
         }
 
-        overrideTargetRef.current = target;
+        setOverrideTarget(target);
       },
     }),
-    // Missing deps:
-    // options.target - only used for a runtime warning
-    // overrideTargetRef - Stable between renders
-    // updatePosition - Stable between renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [options.target, setOverrideTarget],
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (options.target) {
-      overrideTargetRef.current = options.target;
-    }
-  }, [options.target, overrideTargetRef, containerRef]);
+    setOverrideTarget(options.target ?? null);
+  }, [options.target, setOverrideTarget]);
 
   useIsomorphicLayoutEffect(() => {
-    updatePosition();
-  }, [enabled, resolvePositioningOptions, updatePosition]);
-
-  // Add window resize and scroll listeners to update position
-  useIsomorphicLayoutEffect(() => {
-    const win = targetDocument?.defaultView;
-    if (win) {
-      win.addEventListener('resize', updatePosition);
-      win.addEventListener('scroll', updatePosition);
-
-      return () => {
-        win.removeEventListener('resize', updatePosition);
-        win.removeEventListener('scroll', updatePosition);
-      };
-    }
-  }, [updatePosition, targetDocument]);
+    updatePositionManager();
+  }, [updatePositionManager]);
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode
@@ -188,7 +125,29 @@ export function usePositioning(
     }, []);
   }
 
-  return { targetRef, containerRef, arrowRef };
+  const setTarget = useCallbackRef<TargetElement>(null, target => {
+    if (targetRef.current !== target) {
+      targetRef.current = target;
+      updatePositionManager();
+    }
+  });
+
+  const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
+    if (containerRef.current !== container) {
+      containerRef.current = container;
+      updatePositionManager();
+    }
+  });
+
+  const setArrow = useCallbackRef<HTMLElement | null>(null, arrow => {
+    if (arrowRef.current !== arrow) {
+      arrowRef.current = arrow;
+      updatePositionManager();
+    }
+  });
+
+  // Let users use callback refs so they feel like 'normal' DOM refs
+  return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
 interface UsePositioningOptions extends PositioningProps {
@@ -218,11 +177,7 @@ function usePositioningOptions(options: PositioningOptions) {
   const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
 
   return React.useCallback(
-    (
-      target: HTMLElement | PositioningVirtualElement | null,
-      container: HTMLElement | null,
-      arrow: HTMLElement | null,
-    ) => {
+    (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -231,7 +186,7 @@ function usePositioningOptions(options: PositioningOptions) {
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement }),
         shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
-        autoSize && maxSizeMiddleware(autoSize),
+        autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
@@ -259,96 +214,4 @@ function usePositioningOptions(options: PositioningOptions) {
       strategy,
     ],
   );
-}
-
-function useContainerRef(updatePosition: () => void, enabled: boolean) {
-  return useCallbackRef<HTMLElement | null>(null, (container, prevContainer) => {
-    if (container && enabled) {
-      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
-      // Without this scroll jumps can occur when the element is rendered initially and receives focus
-      Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
-    }
-
-    toggleScrollListener(container, prevContainer, updatePosition);
-
-    updatePosition();
-  });
-}
-
-function useTargetRef(updatePosition: () => void) {
-  return useCallbackRef<HTMLElement | PositioningVirtualElement | null>(null, (target, prevTarget) => {
-    toggleScrollListener(target, prevTarget, updatePosition);
-
-    updatePosition();
-  });
-}
-
-function useArrowRef(updatePosition: () => void) {
-  return useCallbackRef<HTMLElement | null>(null, updatePosition);
-}
-
-/**
- * Writes all DOM element updates after position is computed
- */
-function writeContainerUpdates(options: {
-  container: HTMLElement | null;
-  placement: Placement;
-  middlewareData: MiddlewareData;
-  /**
-   * Layer acceleration can disable subpixel rendering which causes slightly
-   * blurry text on low PPI displays, so we want to use 2D transforms
-   * instead
-   */
-  lowPPI: boolean;
-  strategy: Strategy;
-  coordinates: Coords;
-}) {
-  const {
-    container,
-    placement,
-    middlewareData,
-    strategy,
-    lowPPI,
-    coordinates: { x, y },
-  } = options;
-  if (!container) {
-    return;
-  }
-  container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
-  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
-  if (middlewareData.intersectionObserver.intersecting) {
-    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_ESCAPED);
-  if (middlewareData.hide?.escaped) {
-    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
-  }
-
-  container.removeAttribute(DATA_POSITIONING_HIDDEN);
-  if (middlewareData.hide?.referenceHidden) {
-    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
-  }
-
-  Object.assign(container.style, {
-    transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
-    position: strategy,
-  });
-}
-
-/**
- * Writes all DOM element updates after position is computed
- */
-function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }) {
-  const { arrow, middlewareData } = options;
-  if (!middlewareData.arrow || !arrow) {
-    return;
-  }
-
-  const { x: arrowX, y: arrowY } = middlewareData.arrow;
-
-  Object.assign(arrow.style, {
-    left: `${arrowX}px`,
-    top: `${arrowY}px`,
-  });
 }

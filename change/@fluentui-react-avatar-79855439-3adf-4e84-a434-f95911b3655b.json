@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Set aria-hidden to AvatarGroupItem's label.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

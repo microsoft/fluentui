@@ -1,7 +1,54 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
+
 import type { CardProps, CardState } from './Card.types';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useCardSelectable } from './useCardSelectable';
+import { cardContextDefaultValue } from './CardContext';
+
+const focusMap = {
+  off: undefined,
+  'no-tab': 'limited-trap-focus',
+  'tab-exit': 'limited',
+  'tab-only': 'unlimited',
+} as const;
+
+/**
+ * Create the state for interactive cards.
+ *
+ * This internal hook defines if the card is interactive
+ * and control focus properties based on that.
+ *
+ * @param props - props from this instance of Card
+ */
+const useCardInteractive = ({ focusMode = 'off', ...props }: CardProps) => {
+  const interactive = ([
+    'onClick',
+    'onDoubleClick',
+    'onMouseUp',
+    'onMouseDown',
+    'onPointerUp',
+    'onPointerDown',
+    'onTouchStart',
+    'onTouchEnd',
+    'onDragStart',
+    'onDragEnd',
+  ] as (keyof React.HTMLAttributes<HTMLElement>)[]).some(prop => props[prop]);
+
+  const groupperAttrs = useFocusableGroup({
+    tabBehavior: focusMap[interactive ? 'no-tab' : focusMode],
+  });
+
+  const interactiveFocusAttributes = {
+    ...groupperAttrs,
+    tabIndex: 0,
+  };
+
+  return {
+    interactive,
+    focusAttributes: focusMode === 'off' ? null : interactiveFocusAttributes,
+  };
+};
 
 /**
  * Create the state required to render Card.
@@ -10,35 +57,55 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  * before being passed to renderCard_unstable.
  *
  * @param props - props from this instance of Card
- * @param ref - reference to root HTMLElement of Card
+ * @param ref - reference to the root element of Card
  */
-export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
-  const { appearance = 'filled', focusMode = 'off', orientation = 'vertical', size = 'medium' } = props;
+export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement>): CardState => {
+  const { appearance = 'filled', orientation = 'vertical', size = 'medium', floatingAction } = props;
 
-  const focusMap = {
-    off: undefined,
-    'no-tab': 'limited-trap-focus',
-    'tab-exit': 'limited',
-    'tab-only': 'unlimited',
-  } as const;
+  const [referenceId, setReferenceId] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
+  const [referenceLabel, setReferenceLabel] = React.useState(cardContextDefaultValue.selectableA11yProps.referenceId);
 
-  const groupperAttrs = useFocusableGroup({
-    tabBehavior: focusMap[focusMode],
-  });
+  const cardBaseRef = useFocusWithin<HTMLDivElement>();
+  const { selectable, selected, selectableCardProps, selectFocused, checkboxSlot } = useCardSelectable(
+    props,
+    { referenceId, referenceLabel },
+    cardBaseRef,
+  );
 
-  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : null;
+  const cardRef = useMergedRefs(cardBaseRef, ref);
+
+  const { interactive, focusAttributes } = useCardInteractive(props);
 
   return {
     appearance,
     orientation,
     size,
+    interactive,
+    selectable,
+    selectFocused,
+    selected,
+    selectableA11yProps: {
+      setReferenceId,
+      referenceId,
+      referenceLabel,
+      setReferenceLabel,
+    },
 
-    components: { root: 'div' },
-    root: getNativeElementProps(props.as || 'div', {
-      ref,
+    components: {
+      root: 'div',
+      floatingAction: 'div',
+      checkbox: 'input',
+    },
+
+    root: getNativeElementProps('div', {
+      ref: cardRef,
       role: 'group',
-      ...focusAttrs,
+      ...focusAttributes,
       ...props,
+      ...selectableCardProps,
     }),
+
+    floatingAction: resolveShorthand(floatingAction),
+    checkbox: checkboxSlot,
   };
 };

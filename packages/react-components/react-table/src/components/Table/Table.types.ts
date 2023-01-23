@@ -5,10 +5,23 @@ export type TableSlots = {
 };
 
 export type TableContextValue = {
-  size: 'small' | 'smaller' | 'medium';
+  /**
+   * Affects the sizes of all table subcomponents
+   * @default medium
+   */
+  size: 'extra-small' | 'small' | 'medium';
 
+  /**
+   * Render all table elements as divs instead of semantic table elements
+   * Using divs no longer uses `display: table` layout but `display: flex`
+   * @default false
+   */
   noNativeElements: boolean;
 
+  /**
+   * Whether the table is sortable
+   * @default false
+   */
   sortable: boolean;
 };
 

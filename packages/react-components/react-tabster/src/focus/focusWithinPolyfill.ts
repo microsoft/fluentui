@@ -1,5 +1,5 @@
 import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
-import { FOCUS_WITHIN_CLASS } from './constants';
+import { FOCUS_WITHIN_ATTR } from './constants';
 
 /**
  * Because `addEventListener` type override falls back to 2nd definition (evt name is unknown string literal)
@@ -51,11 +51,11 @@ export function applyFocusWithinPolyfill(element: HTMLElement, win: Window): () 
 }
 
 function applyFocusWithinClass(el: HTMLElement) {
-  el.classList.add(FOCUS_WITHIN_CLASS);
+  el.setAttribute(FOCUS_WITHIN_ATTR, '');
 }
 
 function removeFocusWithinClass(el: HTMLElement) {
-  el.classList.remove(FOCUS_WITHIN_CLASS);
+  el.removeAttribute(FOCUS_WITHIN_ATTR);
 }
 
 function isHTMLElement(target: EventTarget | null): target is HTMLElement {

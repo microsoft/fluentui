@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Combobox and Dropdown hover/active border colors and padding styles",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

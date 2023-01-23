@@ -9,17 +9,17 @@ import type { SlotComponent } from './SlotComponent.types';
  * Note: the use of VoidFunctionComponent means that component is not *required* to have a children prop,
  * but it is still allowed to have a children prop.
  */
-export type FieldComponent = React.VoidFunctionComponent<
+export type FieldControl = React.VoidFunctionComponent<
   Pick<
     React.HTMLAttributes<HTMLElement>,
-    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'
+    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid'
   >
 >;
 
 /**
  * Slots added by Field
  */
-export type FieldSlots<T extends FieldComponent> = {
+export type FieldSlots<T extends FieldControl> = {
   root: NonNullable<Slot<'div'>>;
 
   /**
@@ -35,7 +35,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
    */
-  validationMessage?: Slot<'span'>;
+  validationMessage?: Slot<'div'>;
 
   /**
    * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
@@ -48,13 +48,13 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * Additional hint text below the field.
    */
-  hint?: Slot<'span'>;
+  hint?: Slot<'div'>;
 };
 
 /**
  * Field Props
  */
-export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
   /**
    * The orientation of the label relative to the field component.
    * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
@@ -79,7 +79,12 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
  * This allows Field to forward the required and size props to the label if the underlying component supports them,
  * but doesn't add them to the public API of fields that don't support them.
  */
-export type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = FieldProps<T> & {
+export type FieldPropsWithOptionalComponentProps<T extends FieldControl> = FieldProps<T> & {
+  /**
+   * A ref to the underlying control.
+   */
+  ref?: React.Ref<HTMLElement>;
+
   /**
    * Whether the field label should be marked as required.
    */
@@ -96,7 +101,7 @@ export type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = Fie
 /**
  * Configuration parameters for a Field class, passed to useField_unstable
  */
-export type FieldConfig<T extends FieldComponent> = {
+export type FieldConfig<T extends FieldControl> = {
   /**
    * The underlying input component that this field is wrapping.
    */
@@ -117,12 +122,19 @@ export type FieldConfig<T extends FieldComponent> = {
    * @default htmlFor
    */
   labelConnection?: 'htmlFor' | 'aria-labelledby';
+
+  /**
+   * Should the aria-invalid attribute be set when validationState="error".
+   *
+   * @default true
+   */
+  ariaInvalidOnError?: boolean;
 };
 
 /**
  * State used in rendering Field
  */
-export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> &
+export type FieldState<T extends FieldControl> = ComponentState<Required<FieldSlots<T>>> &
   Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
     classNames: SlotClassNames<FieldSlots<T>>;
   };

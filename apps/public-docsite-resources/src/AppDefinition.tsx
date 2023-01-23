@@ -486,6 +486,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/textfield',
         },
         {
+          component: require<any>('./components/pages/TimePickerPage').TimePickerPage,
+          key: 'TimePicker',
+          name: 'TimePicker',
+          url: '#/examples/timepicker',
+        },
+        {
           component: require<any>('./components/pages/TogglePage').TogglePage,
           key: 'Toggle',
           name: 'Toggle',

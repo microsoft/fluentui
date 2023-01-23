@@ -62,10 +62,12 @@ export interface OverflowItemEntry {
 // @internal (undocumented)
 export interface OverflowManager {
     addItem: (items: OverflowItemEntry) => void;
+    addOverflowMenu: (element: HTMLElement) => void;
     disconnect: () => void;
     forceUpdate: () => void;
     observe: (container: HTMLElement, options: ObserveOptions) => void;
     removeItem: (itemId: string) => void;
+    removeOverflowMenu: () => void;
     update: () => void;
 }
 

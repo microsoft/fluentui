@@ -63,7 +63,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     rootError: {
       borderColor: semanticColors.errorBackground,
-      borderWidth: StyleConstants.borderWidthError,
+      borderWidth: StyleConstants.borderWidth,
     },
     rootPressed: {
       borderColor: semanticColors.focusBorder,

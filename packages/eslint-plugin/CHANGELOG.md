@@ -1,8 +1,62 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 08 Aug 2022 07:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.8)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.7..@fluentui/eslint-plugin_v1.12.8)
+
+### Patches
+
+- fix: add cypress.config to config files glob to fix linting ([PR #26212](https://github.com/microsoft/fluentui/pull/26212) by martinhochel@microsoft.com)
+
+## [1.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.7)
+
+Tue, 20 Dec 2022 07:53:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.6..@fluentui/eslint-plugin_v1.12.7)
+
+### Patches
+
+- Turn off react/jsx-no-bind rule for cypress component test files. ([PR #26003](https://github.com/microsoft/fluentui/pull/26003) by tristan.watanabe@gmail.com)
+
+## [1.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.6)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.5..@fluentui/eslint-plugin_v1.12.6)
+
+### Patches
+
+- Updating react-legacy linting to warn on export star usage. ([PR #25545](https://github.com/microsoft/fluentui/pull/25545) by dzearing@microsoft.com)
+
+## [1.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.5)
+
+Mon, 10 Oct 2022 07:38:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.4..@fluentui/eslint-plugin_v1.12.5)
+
+### Patches
+
+- Turn off import/no-extraneous-dependencies rule for cypress component test files. ([PR #24458](https://github.com/microsoft/fluentui/pull/24458) by tristan.watanabe@gmail.com)
+
+## [1.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.4)
+
+Tue, 04 Oct 2022 07:45:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.3..@fluentui/eslint-plugin_v1.12.4)
+
+### Patches
+
+- chore: enable object-shorthand in ESLint ([PR #25031](https://github.com/microsoft/fluentui/pull/25031) by olfedias@microsoft.com)
+
+## [1.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.3)
+
+Tue, 27 Sep 2022 07:46:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.2..@fluentui/eslint-plugin_v1.12.3)
+
+### Patches
+
+- fix(eslint-plugin): properly resolve single-version policy dep issues in react-northstar packages ([PR #24526](https://github.com/microsoft/fluentui/pull/24526) by martinhochel@microsoft.com)
 
 ## [1.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.2)
 

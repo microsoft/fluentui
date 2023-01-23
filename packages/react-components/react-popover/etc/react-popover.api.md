@@ -10,7 +10,6 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
@@ -20,10 +19,11 @@ import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
+import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
-import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -59,6 +59,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     size?: PopoverSize;
     trapFocus?: UseModalAttributesOptions['trapFocus'];
     legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
+    unstable_disableAutoFocus?: boolean;
 };
 
 // @public (undocumented)
@@ -74,7 +75,7 @@ export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOp
     contextTarget: PositioningVirtualElement | undefined;
     popoverSurface: React_2.ReactElement | undefined;
     popoverTrigger: React_2.ReactElement | undefined;
-    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
+    setContextTarget: SetVirtualMouseTarget;
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     size: NonNullable<PopoverProps['size']>;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -101,7 +102,7 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<Pop
 };
 
 // @public
-export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComponent;
+export const PopoverTrigger: React_2.FC<PopoverTriggerProps>;
 
 // @public
 export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
@@ -113,8 +114,8 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
 }>;
 
 // @public
-export type PopoverTriggerProps = {
-    children: React_2.ReactElement | ((props: PopoverTriggerChildProps) => React_2.ReactElement | null);
+export type PopoverTriggerProps = TriggerProps<PopoverTriggerChildProps> & {
+    disableButtonEnhancement?: boolean;
 };
 
 // @public

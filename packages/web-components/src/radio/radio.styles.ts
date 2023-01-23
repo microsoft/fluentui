@@ -15,8 +15,6 @@ import {
   accentFillRest,
   designUnit,
   disabledOpacity,
-  fillColor,
-  focusStrokeOuter,
   foregroundOnAccentRest,
   neutralFillInputAltActive,
   neutralFillInputAltFocus,
@@ -29,6 +27,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentTight } from '../styles/focus';
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -58,7 +57,6 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       border-radius: 50%;
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
       background: ${neutralFillInputAltRest};
-      outline: none;
       cursor: pointer;
     }
 
@@ -108,9 +106,8 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     :host(:${focusVisible}) .control {
-      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
+      ${focusTreatmentTight}
       background: ${neutralFillInputAltFocus};
-      border-color: ${focusStrokeOuter};
     }
 
     :host(.checked) .control {
@@ -155,17 +152,13 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
         }
         :host(:${focusVisible}) .control {
           forced-color-adjust: none;
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
           background: ${SystemColors.Field};
-          border-color: ${SystemColors.Highlight};
+          outline-color: ${SystemColors.FieldText};
         }
         :host(.checked:not(.disabled):hover) .control,
         :host(.checked:not(.disabled):active) .control {
           border-color: ${SystemColors.Highlight};
           background: ${SystemColors.Highlight};
-        }
-        :host(.checked:${focusVisible}) .control {
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
         }
         :host(.checked) slot[name='checked-indicator'] {
           fill: ${SystemColors.Highlight};

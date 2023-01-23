@@ -25,13 +25,13 @@ export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 // @internal (undocumented)
 export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
 
-// @internal (undocumented)
+// @public (undocumented)
 export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
 
 // @internal (undocumented)
 export const ThemeProvider_unstable: React_2.Provider<ThemeContextValue_unstable>;
 
-// @internal
+// @public
 export type TooltipVisibilityContextValue_unstable = {
     visibleTooltip?: {
         hide: () => void;
@@ -44,10 +44,10 @@ export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibil
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
 
-// @internal (undocumented)
+// @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;
 
-// @internal (undocumented)
+// @public (undocumented)
 export function useTooltipVisibility_unstable(): TooltipVisibilityContextValue_unstable;
 
 // (No @packageDocumentation comment for this package)

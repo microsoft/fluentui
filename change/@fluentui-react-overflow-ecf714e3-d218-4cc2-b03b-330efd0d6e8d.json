@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: re-generate api.md files",
-  "packageName": "@fluentui/react-overflow",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

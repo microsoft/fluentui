@@ -12,6 +12,17 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
+const reservedSpaceClassNames = {
+  content: 'fui-Tab__content--reserved-space',
+};
+
+// These should match the constants defined in @fluentui/react-icons
+// This package avoids taking a dependency on the icons package for only the constants.
+const iconClassNames = {
+  filled: 'fui-Icon-filled',
+  regular: 'fui-Icon-regular',
+};
+
 /**
  * Styles for the root slot
  */
@@ -41,6 +52,15 @@ const useRootStyles = makeStyles({
   vertical: {
     justifyContent: 'start',
   },
+  smallHorizontal: {
+    columnGap: tokens.spacingHorizontalXXS,
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
+  },
+  smallVertical: {
+    // horizontal spacing is deliberate. This is the gap between icon and content.
+    columnGap: tokens.spacingHorizontalXXS,
+    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingHorizontalSNudge),
+  },
   mediumHorizontal: {
     columnGap: tokens.spacingHorizontalSNudge,
     ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalMNudge),
@@ -50,14 +70,14 @@ const useRootStyles = makeStyles({
     columnGap: tokens.spacingHorizontalSNudge,
     ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalMNudge),
   },
-  smallHorizontal: {
-    columnGap: tokens.spacingHorizontalXXS,
-    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
+  largeHorizontal: {
+    columnGap: tokens.spacingHorizontalSNudge,
+    ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalMNudge),
   },
-  smallVertical: {
+  largeVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
-    columnGap: tokens.spacingHorizontalXXS,
-    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingHorizontalSNudge),
+    columnGap: tokens.spacingHorizontalSNudge,
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalMNudge),
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -199,6 +219,22 @@ const usePendingIndicatorStyles = makeStyles({
       backgroundColor: tokens.colorTransparentStroke,
     },
   },
+  smallHorizontal: {
+    '::before': {
+      bottom: 0,
+      height: tokens.strokeWidthThick,
+      left: tokens.spacingHorizontalSNudge,
+      right: tokens.spacingHorizontalSNudge,
+    },
+  },
+  smallVertical: {
+    '::before': {
+      bottom: tokens.spacingVerticalXS,
+      left: 0,
+      top: tokens.spacingVerticalXS,
+      width: tokens.strokeWidthThicker,
+    },
+  },
   mediumHorizontal: {
     '::before': {
       bottom: 0,
@@ -215,19 +251,19 @@ const usePendingIndicatorStyles = makeStyles({
       width: tokens.strokeWidthThicker,
     },
   },
-  smallHorizontal: {
+  largeHorizontal: {
     '::before': {
       bottom: 0,
-      height: tokens.strokeWidthThick,
-      left: tokens.spacingHorizontalSNudge,
-      right: tokens.spacingHorizontalSNudge,
+      height: tokens.strokeWidthThicker,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
     },
   },
-  smallVertical: {
+  largeVertical: {
     '::before': {
-      bottom: tokens.spacingVerticalXS,
+      bottom: tokens.spacingVerticalMNudge,
       left: 0,
-      top: tokens.spacingVerticalXS,
+      top: tokens.spacingVerticalMNudge,
       width: tokens.strokeWidthThicker,
     },
   },
@@ -270,22 +306,6 @@ const useActiveIndicatorStyles = makeStyles({
       backgroundColor: tokens.colorNeutralForegroundDisabled,
     },
   },
-  mediumHorizontal: {
-    '::after': {
-      bottom: '0',
-      height: tokens.strokeWidthThicker,
-      left: tokens.spacingHorizontalM,
-      right: tokens.spacingHorizontalM,
-    },
-  },
-  mediumVertical: {
-    '::after': {
-      bottom: tokens.spacingVerticalS,
-      left: 0,
-      top: tokens.spacingVerticalS,
-      width: tokens.strokeWidthThicker,
-    },
-  },
   smallHorizontal: {
     '::after': {
       bottom: 0,
@@ -302,6 +322,38 @@ const useActiveIndicatorStyles = makeStyles({
       width: tokens.strokeWidthThicker,
     },
   },
+  mediumHorizontal: {
+    '::after': {
+      bottom: '0',
+      height: tokens.strokeWidthThicker,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
+    },
+  },
+  mediumVertical: {
+    '::after': {
+      bottom: tokens.spacingVerticalS,
+      left: 0,
+      top: tokens.spacingVerticalS,
+      width: tokens.strokeWidthThicker,
+    },
+  },
+  largeHorizontal: {
+    '::after': {
+      bottom: 0,
+      height: tokens.strokeWidthThicker,
+      left: tokens.spacingHorizontalM,
+      right: tokens.spacingHorizontalM,
+    },
+  },
+  largeVertical: {
+    '::after': {
+      bottom: tokens.spacingVerticalMNudge,
+      left: 0,
+      top: tokens.spacingVerticalMNudge,
+      width: tokens.strokeWidthThicker,
+    },
+  },
 });
 
 /**
@@ -309,10 +361,18 @@ const useActiveIndicatorStyles = makeStyles({
  */
 const useIconStyles = makeStyles({
   base: {
+    gridColumnStart: 1,
+    gridRowStart: 1,
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
     ...shorthands.overflow('hidden'),
+    [`& .${iconClassNames.filled}`]: {
+      display: 'none',
+    },
+    [`& .${iconClassNames.regular}`]: {
+      display: 'inline',
+    },
   },
   // per design, the small and medium font sizes are the same.
   // the size prop only affects spacing.
@@ -325,6 +385,19 @@ const useIconStyles = makeStyles({
     fontSize: '20px',
     height: '20px',
     width: '20px',
+  },
+  large: {
+    fontSize: '24px',
+    height: '24px',
+    width: '24px',
+  },
+  selected: {
+    [`& .${iconClassNames.filled}`]: {
+      display: 'inline',
+    },
+    [`& .${iconClassNames.regular}`]: {
+      display: 'none',
+    },
   },
 });
 
@@ -340,6 +413,23 @@ const useContentStyles = makeStyles({
   },
   selected: {
     ...typographyStyles.body1Strong,
+  },
+  large: {
+    ...typographyStyles.body2,
+  },
+  largeSelected: {
+    ...typographyStyles.subtitle2,
+  },
+  noIconBefore: {
+    gridColumnStart: 1,
+    gridRowStart: 1,
+  },
+  iconBefore: {
+    gridColumnStart: 2,
+    gridRowStart: 1,
+  },
+  placeholder: {
+    visibility: 'hidden',
   },
 });
 
@@ -360,8 +450,9 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     tabClassNames.root,
     rootStyles.base,
     vertical ? rootStyles.vertical : rootStyles.horizontal,
-    size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
+    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
     focusStyles.base,
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
@@ -370,31 +461,56 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
 
     // pending indicator (before pseudo element)
     pendingIndicatorStyles.base,
-    size !== 'small' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
     size === 'small' && (vertical ? pendingIndicatorStyles.smallVertical : pendingIndicatorStyles.smallHorizontal),
+    size === 'medium' && (vertical ? pendingIndicatorStyles.mediumVertical : pendingIndicatorStyles.mediumHorizontal),
+    size === 'large' && (vertical ? pendingIndicatorStyles.largeVertical : pendingIndicatorStyles.largeHorizontal),
     disabled && pendingIndicatorStyles.disabled,
 
     // active indicator (after pseudo element)
     selected && activeIndicatorStyles.base,
     selected && !disabled && activeIndicatorStyles.selected,
     selected &&
-      size !== 'small' &&
-      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
-    selected &&
       size === 'small' &&
       (vertical ? activeIndicatorStyles.smallVertical : activeIndicatorStyles.smallHorizontal),
+    selected &&
+      size === 'medium' &&
+      (vertical ? activeIndicatorStyles.mediumVertical : activeIndicatorStyles.mediumHorizontal),
+    selected &&
+      size === 'large' &&
+      (vertical ? activeIndicatorStyles.largeVertical : activeIndicatorStyles.largeHorizontal),
     selected && disabled && activeIndicatorStyles.disabled,
+
     state.root.className,
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(tabClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      tabClassNames.icon,
+      iconStyles.base,
+      iconStyles[size],
+      selected && iconStyles.selected,
+      state.icon.className,
+    );
+  }
+
+  // This needs to be before state.content.className is updated
+  if (state.contentReservedSpaceClassName !== undefined) {
+    state.contentReservedSpaceClassName = mergeClasses(
+      reservedSpaceClassNames.content,
+      contentStyles.base,
+      size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
+      state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
+      contentStyles.placeholder,
+      state.content.className,
+    );
   }
 
   state.content.className = mergeClasses(
     tabClassNames.content,
     contentStyles.base,
-    selected && contentStyles.selected,
+    size === 'large' && contentStyles.large,
+    selected && (size === 'large' ? contentStyles.largeSelected : contentStyles.selected),
+    state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
     state.content.className,
   );
 

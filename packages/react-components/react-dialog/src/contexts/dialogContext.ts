@@ -6,8 +6,7 @@ import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 
 export type DialogContextValue = {
   open: boolean;
-  dialogBodyID?: string;
-  dialogTitleID?: string;
+  dialogTitleId?: string;
   isNestedDialog: boolean;
   dialogRef: React.Ref<DialogSurfaceElement>;
   modalType: DialogModalType;

@@ -1,1 +1,1 @@
-export * from './components/TableCellPrimaryLayout/index';
+export * from './components/TableCellLayout/index';

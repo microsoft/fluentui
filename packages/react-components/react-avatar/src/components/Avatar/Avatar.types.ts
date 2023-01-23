@@ -1,6 +1,11 @@
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+/**
+ * Sizes for the avatar
+ */
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+
 export type AvatarSlots = {
   root: Slot<'span'>;
 
@@ -68,11 +73,6 @@ export type AvatarNamedColor =
   | 'mink'
   | 'platinum'
   | 'anchor';
-
-/**
- * Sizes that can be used for the Avatar
- */
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * Properties for Avatar
@@ -154,4 +154,9 @@ export type AvatarState = ComponentState<AvatarSlots> &
      * The Avatar's color, it matches props.color but with `'colorful'` resolved to a named color
      */
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
+
+    /**
+     * Hidden span to render the active state label for the purposes of including in the aria-labelledby, if needed.
+     */
+    activeAriaLabelElement?: JSX.Element;
   };

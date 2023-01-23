@@ -19,6 +19,17 @@ import type { TextareaProps, TextareaState } from './Textarea.types';
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
   const { size = 'medium', appearance = 'outline', resize = 'none', onChange } = props;
 
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    (appearance === 'filled-darker-shadow' || appearance === 'filled-lighter-shadow')
+  ) {
+    // eslint-disable-next-line no-console
+    console.error(
+      "The 'filled-darker-shadow' and 'filled-lighter-shadow' appearances are deprecated and will be removed in the" +
+        ' future.',
+    );
+  }
+
   const [value, setValue] = useControllableState({
     state: props.value,
     defaultState: props.defaultValue,

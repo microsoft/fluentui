@@ -2,6 +2,96 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 11 Jan 2023 07:50:50 GMT",
+      "tag": "@fluentui/codemods_v8.4.7",
+      "version": "8.4.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:40 GMT",
+      "tag": "@fluentui/codemods_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:50:57 GMT",
+      "tag": "@fluentui/codemods_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Dec 2022 07:45:09 GMT",
+      "tag": "@fluentui/codemods_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:06 GMT",
+      "tag": "@fluentui/codemods_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Oct 2022 07:38:30 GMT",
+      "tag": "@fluentui/codemods_v8.4.5",
+      "version": "8.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "90200f61726f12deb407611ec32067301efeb0e9",
+            "comment": "fix: Do not fail on empty configMod config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 16:36:05 GMT",
       "tag": "@fluentui/codemods_v8.4.4",
       "version": "8.4.4",

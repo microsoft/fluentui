@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-theme-sass dev-depends on react-theme",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuGroupHeader } from './MenuGroupHeader';
 import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
 
 describe('MenuGroupHeader', () => {

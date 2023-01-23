@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
@@ -15,163 +15,149 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
 const indicatorSizeMedium = '16px';
 const indicatorSizeLarge = '20px';
 
+const useRootBaseClassName = makeResetStyles({
+  position: 'relative',
+  display: 'inline-flex',
+  cursor: 'pointer',
+  color: tokens.colorNeutralForeground3,
+  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+});
+
 const useRootStyles = makeStyles({
-  base: {
-    position: 'relative',
-    display: 'inline-flex',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
-    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+  unchecked: {
+    ':hover': {
+      color: tokens.colorNeutralForeground2,
+      [`> .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
+      },
+    },
+
+    ':active': {
+      color: tokens.colorNeutralForeground1,
+      [`> .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
+      },
+    },
   },
+
+  checked: {
+    color: tokens.colorNeutralForeground1,
+
+    [`> .${checkboxClassNames.indicator}`]: {
+      backgroundColor: tokens.colorCompoundBrandBackground,
+      color: tokens.colorNeutralForegroundInverted,
+      ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
+    },
+
+    ':hover': {
+      [`> .${checkboxClassNames.indicator}`]: {
+        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
+      },
+    },
+
+    ':active': {
+      [`> .${checkboxClassNames.indicator}`]: {
+        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
+        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
+      },
+    },
+  },
+
+  mixed: {
+    color: tokens.colorNeutralForeground1,
+
+    [`> .${checkboxClassNames.indicator}`]: {
+      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
+      color: tokens.colorCompoundBrandForeground1,
+    },
+
+    ':hover': {
+      [`> .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
+        color: tokens.colorCompoundBrandForeground1Hover,
+      },
+    },
+
+    ':active': {
+      [`> .${checkboxClassNames.indicator}`]: {
+        ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
+        color: tokens.colorCompoundBrandForeground1Pressed,
+      },
+    },
+  },
+
+  disabled: {
+    cursor: 'default',
+
+    color: tokens.colorNeutralForegroundDisabled,
+
+    [`> .${checkboxClassNames.indicator}`]: {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      color: tokens.colorNeutralForegroundDisabled,
+    },
+
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+      [`> .${checkboxClassNames.indicator}`]: {
+        color: 'GrayText',
+      },
+    },
+  },
+});
+
+const useInputBaseClassName = makeResetStyles({
+  boxSizing: 'border-box',
+  cursor: 'inherit',
+  height: '100%',
+  margin: 0,
+  opacity: 0,
+  position: 'absolute',
+  top: 0,
+  // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
+  // This is done so that clicking on that "empty space" still toggles the checkbox.
+  width: `calc(${indicatorSizeMedium} + 2 * ${tokens.spacingHorizontalS})`,
 });
 
 const useInputStyles = makeStyles({
-  base: {
-    position: 'absolute',
+  before: {
+    right: 0,
+  },
+  after: {
     left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-    boxSizing: 'border-box',
-    ...shorthands.margin(0),
-    opacity: 0,
-    cursor: 'pointer',
-
-    // When unchecked, hide the the checkmark icon (child of the indicator slot)
-    [`:not(:checked):not(:indeterminate) ~ .${checkboxClassNames.indicator} > *`]: {
-      opacity: 0,
-    },
-
-    // Colors for the unchecked state
-    ':enabled:not(:checked):not(:indeterminate)': {
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground3,
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
-      },
-
-      ':hover': {
-        [`& ~ .${checkboxClassNames.label}`]: {
-          color: tokens.colorNeutralForeground2,
-        },
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
-        },
-      },
-
-      ':active:hover': {
-        [`& ~ .${checkboxClassNames.label}`]: {
-          color: tokens.colorNeutralForeground1,
-        },
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
-        },
-      },
-    },
-
-    // Colors for the checked state
-    ':enabled:checked:not(:indeterminate)': {
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackground,
-        color: tokens.colorNeutralForegroundInverted,
-        ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
-      },
-
-      ':hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-          ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
-        },
-      },
-
-      ':active:hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-          ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
-        },
-      },
-    },
-
-    // Colors for the mixed state
-    ':enabled:indeterminate': {
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
-        color: tokens.colorCompoundBrandForeground1,
-      },
-
-      ':hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
-          color: tokens.colorCompoundBrandForeground1Hover,
-        },
-      },
-
-      ':active:hover': {
-        [`& ~ .${checkboxClassNames.indicator}`]: {
-          ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
-          color: tokens.colorCompoundBrandForeground1Pressed,
-        },
-      },
-    },
-
-    ':disabled': {
-      cursor: 'default',
-
-      [`& ~ .${checkboxClassNames.label}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
-        '@media (forced-colors: active)': {
-          color: 'GrayText',
-        },
-      },
-      [`& ~ .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-        color: tokens.colorNeutralForegroundDisabled,
-        '@media (forced-colors: active)': {
-          color: 'GrayText',
-        },
-      },
-      [`& ~ .${checkboxClassNames.indicator} svg`]: {
-        '@media (forced-colors: active)': {
-          color: 'GrayText',
-        },
-      },
-    },
-  },
-});
-
-const useIndicatorStyles = makeStyles({
-  base: {
-    alignSelf: 'flex-start',
-    boxSizing: 'border-box',
-    flexShrink: 0,
-
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...shorthands.overflow('hidden'),
-
-    ...shorthands.border(tokens.strokeWidthThin, 'solid'),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-    fill: 'currentColor',
-    pointerEvents: 'none',
-  },
-
-  medium: {
-    width: indicatorSizeMedium,
-    height: indicatorSizeMedium,
-    fontSize: '12px',
   },
 
   large: {
-    width: indicatorSizeLarge,
-    height: indicatorSizeLarge,
+    width: `calc(${indicatorSizeLarge} + 2 * ${tokens.spacingHorizontalS})`,
+  },
+});
+
+const useIndicatorBaseClassName = makeResetStyles({
+  alignSelf: 'flex-start',
+  boxSizing: 'border-box',
+  flexShrink: 0,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+
+  border: tokens.strokeWidthThin + ' solid ' + tokens.colorNeutralStrokeAccessible,
+  borderRadius: tokens.borderRadiusSmall,
+  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
+  fill: 'currentColor',
+  pointerEvents: 'none',
+
+  fontSize: '12px',
+  height: indicatorSizeMedium,
+  width: indicatorSizeMedium,
+});
+
+const useIndicatorStyles = makeStyles({
+  large: {
     fontSize: '16px',
+    height: indicatorSizeLarge,
+    width: indicatorSizeLarge,
   },
 
   circular: {
@@ -179,22 +165,24 @@ const useIndicatorStyles = makeStyles({
   },
 });
 
+// Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    cursor: 'inherit',
     color: 'inherit',
+    cursor: 'inherit',
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   before: {
-    marginRight: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalXS,
   },
   after: {
-    marginLeft: tokens.spacingHorizontalM,
+    paddingLeft: tokens.spacingHorizontalXS,
   },
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
-  // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
+  // This prevents the label from expanding the height of the checkbox, but preserves line height if the label wraps.
   medium: {
     marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
     marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
@@ -209,19 +197,41 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Checkbox slots based on the state
  */
 export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState => {
+  const { checked, disabled, labelPosition, shape, size } = state;
+
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
-  state.root.className = mergeClasses(checkboxClassNames.root, rootStyles.base, state.root.className);
+  state.root.className = mergeClasses(
+    checkboxClassNames.root,
+    rootBaseClassName,
+    disabled
+      ? rootStyles.disabled
+      : checked === 'mixed'
+      ? rootStyles.mixed
+      : checked
+      ? rootStyles.checked
+      : rootStyles.unchecked,
+    state.root.className,
+  );
 
+  const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
-  state.input.className = mergeClasses(checkboxClassNames.input, inputStyles.base, state.input.className);
+  state.input.className = mergeClasses(
+    checkboxClassNames.input,
+    inputBaseClassName,
+    size === 'large' && inputStyles.large,
+    inputStyles[labelPosition],
+    state.input.className,
+  );
 
+  const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
   if (state.indicator) {
     state.indicator.className = mergeClasses(
       checkboxClassNames.indicator,
-      indicatorStyles.base,
-      indicatorStyles[state.size],
-      state.shape === 'circular' && indicatorStyles.circular,
+      indicatorBaseClassName,
+      size === 'large' && indicatorStyles.large,
+      shape === 'circular' && indicatorStyles.circular,
       state.indicator.className,
     );
   }
@@ -231,8 +241,8 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
     state.label.className = mergeClasses(
       checkboxClassNames.label,
       labelStyles.base,
-      labelStyles[state.size],
-      labelStyles[state.labelPosition],
+      labelStyles[size],
+      labelStyles[labelPosition],
       state.label.className,
     );
   }

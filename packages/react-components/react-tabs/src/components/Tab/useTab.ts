@@ -18,6 +18,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const { content, disabled: tabDisabled = false, icon, value } = props;
 
   const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
+  const reserveSelectedTabSpace = useContextSelector(TabListContext, ctx => ctx.reserveSelectedTabSpace);
   const listDisabled = useContextSelector(TabListContext, ctx => ctx.disabled);
   const selected = useContextSelector(TabListContext, ctx => ctx.selectedValue === value);
   const onRegister = useContextSelector(TabListContext, ctx => ctx.onRegister);
@@ -64,6 +65,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
     content: contentShorthand,
     appearance,
+    contentReservedSpaceClassName: reserveSelectedTabSpace ? '' : undefined,
     disabled,
     selected,
     size,

@@ -14,7 +14,7 @@ export type DialogTitleSlots = {
 /**
  * DialogTitle Props
  */
-export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
+export type DialogTitleProps = ComponentProps<DialogTitleSlots>;
 
 /**
  * State used in rendering DialogTitle

@@ -2,13 +2,7 @@ import * as React from 'react';
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import type {
-  FieldComponent,
-  FieldConfig,
-  FieldProps,
-  FieldPropsWithOptionalComponentProps,
-  FieldState,
-} from './Field.types';
+import type { FieldConfig, FieldControl, FieldPropsWithOptionalComponentProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
@@ -17,15 +11,9 @@ const validationMessageIcons = {
 } as const;
 
 /**
- * Merge two possibly-undefined IDs for aria-describedby. If both IDs are defined, combines
- * them into a string separated by a space. Otherwise, returns just the defined ID (if any).
- */
-const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` : a || b);
-
-/**
  * Partition the props used by the Field itself, from the props that are passed to the underlying field component.
  */
-export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
+export const getPartitionedFieldProps = (props: FieldPropsWithOptionalComponentProps<FieldControl>) => {
   const {
     className,
     control,
@@ -66,16 +54,16 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
  * @param ref - Ref to the control slot (primary slot)
  * @param params - Configuration parameters for this Field
  */
-export const useField_unstable = <T extends FieldComponent>(
+export const useField_unstable = <T extends FieldControl>(
   props: FieldPropsWithOptionalComponentProps<T>,
   ref: React.Ref<HTMLElement>,
   params: FieldConfig<T>,
 ): FieldState<T> => {
   const [fieldProps, controlProps] = getPartitionedFieldProps(props);
+  const { orientation = 'vertical', validationState } = fieldProps;
+  const { labelConnection = 'htmlFor', ariaInvalidOnError = true } = params;
 
   const baseId = useId('field-');
-
-  const { orientation = 'vertical', validationState } = fieldProps;
 
   const root = resolveShorthand(fieldProps.root, {
     required: true,
@@ -87,13 +75,14 @@ export const useField_unstable = <T extends FieldComponent>(
       id: baseId + '__label',
       required: controlProps.required,
       size: typeof controlProps.size === 'string' ? controlProps.size : undefined,
-      // htmlFor is set below
+      // htmlFor is handled below
     },
   });
 
   const validationMessage = resolveShorthand(fieldProps.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
+      role: validationState === 'error' ? 'alert' : undefined,
     },
   });
 
@@ -110,29 +99,38 @@ export const useField_unstable = <T extends FieldComponent>(
     },
   });
 
-  const { labelConnection = 'htmlFor' } = params;
-  const hasError = validationState === 'error';
+  // Hook up aria props on the control
+  if (label && labelConnection === 'aria-labelledby') {
+    controlProps['aria-labelledby'] ??= label.id;
+  }
+
+  if (validationMessage || hint) {
+    // The control is described by the validation message, or hint, or both
+    // We also preserve and append any aria-describedby supplied by the user
+    // For reference: https://github.com/microsoft/fluentui/pull/25580#discussion_r1017259933
+    controlProps['aria-describedby'] = [validationMessage?.id, hint?.id, controlProps['aria-describedby']]
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  if (validationState === 'error' && ariaInvalidOnError) {
+    controlProps['aria-invalid'] ??= true;
+  }
 
   const control = resolveShorthand(fieldProps.control, {
     required: true,
     defaultProps: {
       ref,
-      // Add a default ID only if required for label's htmlFor prop
-      id: label && labelConnection === 'htmlFor' ? baseId + '__control' : undefined,
-      // Add aria-labelledby only if not using the label's htmlFor
-      'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
-      'aria-describedby': hasError ? hint?.id : mergeAriaDescribedBy(validationMessage?.id, hint?.id),
-      'aria-errormessage': hasError ? validationMessage?.id : undefined,
-      'aria-invalid': hasError ? true : undefined,
+      id: baseId + '__control',
       ...controlProps,
     },
   });
 
-  if (labelConnection === 'htmlFor' && label && !label.htmlFor) {
-    label.htmlFor = control.id;
+  if (label && labelConnection === 'htmlFor') {
+    label.htmlFor ??= control.id;
   }
 
-  const state: FieldState<FieldComponent> = {
+  const state: FieldState<FieldControl> = {
     orientation,
     validationState,
     classNames: params.classNames,
@@ -140,9 +138,9 @@ export const useField_unstable = <T extends FieldComponent>(
       root: 'div',
       control: params.component,
       label: Label,
-      validationMessage: 'span',
+      validationMessage: 'div',
       validationMessageIcon: 'span',
-      hint: 'span',
+      hint: 'div',
     },
     root,
     control,

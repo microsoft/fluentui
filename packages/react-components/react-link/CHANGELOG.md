@@ -1,8 +1,175 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 03 Aug 2022 16:03:51 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jan 2023 16:32:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.19)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.18..@fluentui/react-link_v9.0.19)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.18)
+
+Mon, 16 Jan 2023 08:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.17..@fluentui/react-link_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.17)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.16..@fluentui/react-link_v9.0.17)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.16)
+
+Wed, 04 Jan 2023 01:40:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.15..@fluentui/react-link_v9.0.16)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.3.5 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+
+## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.15)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.14..@fluentui/react-link_v9.0.15)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.4 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.14)
+
+Tue, 20 Dec 2022 14:59:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.13..@fluentui/react-link_v9.0.14)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.13)
+
+Mon, 05 Dec 2022 18:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.12..@fluentui/react-link_v9.0.13)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.2 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.12)
+
+Thu, 17 Nov 2022 23:05:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.11..@fluentui/react-link_v9.0.12)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.1 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.11)
+
+Fri, 11 Nov 2022 14:58:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.10..@fluentui/react-link_v9.0.11)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-tabster to v9.3.0 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.10)
+
+Wed, 02 Nov 2022 11:57:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.9..@fluentui/react-link_v9.0.10)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- chore: Migrate to new package structure. ([PR #25471](https://github.com/microsoft/fluentui/pull/25471) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabster to v9.2.1 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.9)
+
+Thu, 20 Oct 2022 08:39:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.8..@fluentui/react-link_v9.0.9)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #25212](https://github.com/microsoft/fluentui/pull/25212) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.2.0 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-theme to v9.1.1 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-utilities to v9.1.2 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.16 ([PR #25265](https://github.com/microsoft/fluentui/pull/25265) by beachball)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.8)
+
+Thu, 13 Oct 2022 11:02:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.7..@fluentui/react-link_v9.0.8)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25075](https://github.com/microsoft/fluentui/pull/25075) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.3 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-utilities to v9.1.1 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.15 ([PR #25181](https://github.com/microsoft/fluentui/pull/25181) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.7)
+
+Mon, 03 Oct 2022 22:24:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.6..@fluentui/react-link_v9.0.7)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.1.2 ([PR #25055](https://github.com/microsoft/fluentui/pull/25055) by beachball)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.6)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.5..@fluentui/react-link_v9.0.6)
+
+### Patches
+
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.14 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.5)
+
+Thu, 15 Sep 2022 09:49:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.4..@fluentui/react-link_v9.0.5)
+
+### Patches
+
+- fix: add type=button when rendered as a button ([PR #24327](https://github.com/microsoft/fluentui/pull/24327) by sarah.higley@microsoft.com)
+- fix: Replacing bottom border styles with text decoration underline. ([PR #24734](https://github.com/microsoft/fluentui/pull/24734) by humberto_makoto@hotmail.com)
+- chore: Update Griffel to latest version ([PR #24221](https://github.com/microsoft/fluentui/pull/24221) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.13 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.4)
 

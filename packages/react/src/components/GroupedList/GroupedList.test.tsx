@@ -129,7 +129,7 @@ describe('GroupedList', () => {
 
   it("renders the number of rows specified by a group's count when startIndex is not zero", () => {
     const _selection = new Selection();
-    const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }];
+    const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }, { key: '5' }];
     const _groups: Array<IGroup> = [
       {
         count: 3,
@@ -172,7 +172,11 @@ describe('GroupedList', () => {
     );
 
     const listRows = wrapper.find(DetailsRow);
-    expect(listRows).toHaveLength(1);
+    expect(listRows).toHaveLength(3);
+
+    expect(listRows.at(0).parent().key()).toBe('3');
+    expect(listRows.at(1).parent().key()).toBe('4');
+    expect(listRows.at(2).parent().key()).toBe('5');
 
     wrapper.unmount();
   });

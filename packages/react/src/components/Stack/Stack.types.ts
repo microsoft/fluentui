@@ -149,6 +149,13 @@ export interface IStackProps
    * @defaultvalue false
    */
   wrap?: boolean;
+
+  /**
+   * Defines if scoped style selectors are enabled for the Stack component, which greatly helps in style recalculation
+   * performance, but requires children of the Stack to be able to accept a className prop (excluding Fragments).
+   * @defaultvalue false
+   */
+  enableScopedSelectors?: boolean;
 }
 
 /**

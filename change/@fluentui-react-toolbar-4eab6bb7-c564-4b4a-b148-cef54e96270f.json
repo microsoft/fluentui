@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add e2e tests for toolbar",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "chassunc@microsoft.com",
-  "dependentChangeType": "none"
-}

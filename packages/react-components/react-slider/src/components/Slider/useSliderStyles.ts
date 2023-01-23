@@ -33,7 +33,6 @@ const useRootStyles = makeStyles({
   root: {
     position: 'relative',
     display: 'inline-grid',
-    gridTemplateAreas: '"slider"',
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
@@ -53,13 +52,16 @@ const useRootStyles = makeStyles({
 
   horizontal: {
     minWidth: '120px',
-    height: `var(${thumbSizeVar})`,
+    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
+    gridTemplateRows: `1fr var(${thumbSizeVar}) 1fr`,
+    gridTemplateColumns: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
   },
 
   vertical: {
-    width: `var(${thumbSizeVar})`,
     minHeight: '120px',
-    gridTemplateColumns: `var(${thumbSizeVar})`,
+    // 3x3 grid with the rail and thumb in the center cell [2,2] and the hidden input stretching across all cells
+    gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
+    gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
   },
 
   enabled: {
@@ -114,10 +116,10 @@ const useRailStyles = makeStyles({
   rail: {
     ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     pointerEvents: 'none',
-    gridRowStart: 'slider',
-    gridRowEnd: 'slider',
-    gridColumnStart: 'slider',
-    gridColumnEnd: 'slider',
+    gridRowStart: '2',
+    gridRowEnd: '2',
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
     position: 'relative',
     forcedColorAdjust: 'none',
     // Background gradient represents the progress of the slider
@@ -180,6 +182,10 @@ const useRailStyles = makeStyles({
  */
 const useThumbStyles = makeStyles({
   thumb: {
+    gridRowStart: '2',
+    gridRowEnd: '2',
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
     position: 'absolute',
     width: `var(${thumbSizeVar})`,
     height: `var(${thumbSizeVar})`,
@@ -189,7 +195,6 @@ const useThumbStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
-    transform: 'translateX(-50%)',
     '::before': {
       position: 'absolute',
       top: '0px',
@@ -208,6 +213,7 @@ const useThumbStyles = makeStyles({
     },
   },
   horizontal: {
+    transform: 'translateX(-50%)',
     left: `var(${sliderProgressVar})`,
   },
   vertical: {
@@ -221,20 +227,24 @@ const useThumbStyles = makeStyles({
  */
 const useInputStyles = makeStyles({
   input: {
+    cursor: 'pointer',
     opacity: 0,
-    gridRowStart: 'slider',
-    gridRowEnd: 'slider',
-    gridColumnStart: 'slider',
-    gridColumnEnd: 'slider',
+    gridRowStart: '1',
+    gridRowEnd: '-1',
+    gridColumnStart: '1',
+    gridColumnEnd: '-1',
     ...shorthands.padding(0),
     ...shorthands.margin(0),
   },
+  disabled: {
+    cursor: 'default',
+  },
   horizontal: {
     height: `var(${thumbSizeVar})`,
-    width: `calc(100% + var(${thumbSizeVar}))`,
+    width: '100%',
   },
   vertical: {
-    height: `calc(100% + var(${thumbSizeVar}))`,
+    height: '100%',
     width: `var(${thumbSizeVar})`,
     '-webkit-appearance': 'slider-vertical',
   },
@@ -279,6 +289,7 @@ export const useSliderStyles_unstable = (state: SliderState): SliderState => {
     sliderClassNames.input,
     inputStyles.input,
     isVertical ? inputStyles.vertical : inputStyles.horizontal,
+    state.disabled && inputStyles.disabled,
     state.input.className,
   );
 

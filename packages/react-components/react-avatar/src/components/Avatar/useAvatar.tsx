@@ -5,10 +5,24 @@ import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types'
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useAvatarContext } from '../../contexts/AvatarContext';
+
+export const DEFAULT_STRINGS = {
+  active: 'active',
+  inactive: 'inactive',
+};
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
+  const { size: contextSize } = useAvatarContext();
+  const {
+    name,
+    size = contextSize ?? (32 as const),
+    shape = 'circular',
+    active = 'unset',
+    activeAppearance = 'ring',
+    idForColor,
+  } = props;
   let { color = 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
@@ -30,28 +44,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     /* excludedPropNames: */ ['name'],
   );
 
-  // Resolve the initials slot, defaulted to getInitials.
-  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
-    required: true,
-    defaultProps: {
-      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
-      id: baseId + '__initials',
-    },
-  });
-
-  // Render the icon slot *only if* there aren't any initials to display.
-  let icon: AvatarState['icon'] = undefined;
-  if (!initials?.children) {
-    initials = undefined;
-    icon = resolveShorthand(props.icon, {
-      required: true,
-      defaultProps: {
-        children: <PersonRegular />,
-        'aria-hidden': true,
-      },
-    });
-  }
-
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
   const image: AvatarState['image'] = resolveShorthand(props.image, {
     defaultProps: {
@@ -68,12 +60,40 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     image.onLoad = mergeCallbacks(image.onLoad, () => setImageHidden(undefined));
   }
 
+  // Resolve the initials slot, defaulted to getInitials.
+  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
+    required: true,
+    defaultProps: {
+      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
+      id: baseId + '__initials',
+    },
+  });
+
+  // Don't render the initials slot if it's empty
+  if (!initials?.children) {
+    initials = undefined;
+  }
+
+  // Render the icon slot *only if* there aren't any initials or image to display
+  let icon: AvatarState['icon'] = undefined;
+  if (!initials && (!image || imageHidden)) {
+    icon = resolveShorthand(props.icon, {
+      required: true,
+      defaultProps: {
+        children: <PersonRegular />,
+        'aria-hidden': true,
+      },
+    });
+  }
+
   const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
     defaultProps: {
       size: getBadgeSize(size),
       id: baseId + '__badge',
     },
   });
+
+  let activeAriaLabelElement: AvatarState['activeAriaLabelElement'];
 
   // Resolve aria-label and/or aria-labelledby if not provided by the user
   if (!root['aria-label'] && !root['aria-labelledby']) {
@@ -88,6 +108,24 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
       root['aria-labelledby'] = initials.id + (badge ? ' ' + badge.id : '');
     }
+
+    // Add the active state to the aria label
+    if (active === 'active' || active === 'inactive') {
+      const activeText = DEFAULT_STRINGS[active];
+      if (root['aria-labelledby']) {
+        // If using aria-labelledby, render a hidden span and append it to the labelledby
+        const activeId = baseId + '__active';
+        root['aria-labelledby'] += ' ' + activeId;
+        activeAriaLabelElement = (
+          <span hidden id={activeId}>
+            {activeText}
+          </span>
+        );
+      } else if (root['aria-label']) {
+        // Otherwise, just append it to the aria-label
+        root['aria-label'] += ' ' + activeText;
+      }
+    }
   }
 
   return {
@@ -95,6 +133,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     shape,
     active,
     activeAppearance,
+    activeAriaLabelElement,
     color,
 
     components: {
