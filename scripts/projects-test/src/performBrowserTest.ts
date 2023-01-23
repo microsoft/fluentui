@@ -1,7 +1,7 @@
 import { Server } from 'http';
 import { AddressInfo } from 'net';
 
-import { launch, visitUrl } from '@fluentui/scripts-puppeteer';
+import { closeUrl, launch, visitUrl } from '@fluentui/scripts-puppeteer';
 import express, { Express } from 'express';
 
 /**
@@ -99,8 +99,7 @@ export async function performBrowserTest(publicDirectory: string) {
   });
 
   await visitUrl(page, url);
-
-  await page.close();
+  await closeUrl(browser, page);
   await browser.close();
   await closeServer(server);
 

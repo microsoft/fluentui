@@ -30,6 +30,32 @@ export async function launch(options: LaunchOptions = {}) {
   return browser;
 }
 
+/**
+ *
+ * Try out https://github.com/puppeteer/puppeteer/issues/1490
+ */
+export async function closeUrl(browser: puppeteer.Browser, page: puppeteer.Page) {
+  await page.close();
+
+  const pages = await browser.pages();
+  console.log(
+    'puppeteer: existing open pages',
+    pages.map(_page => _page.url()),
+  );
+
+  for (const browserPage of pages) {
+    if (browserPage.isClosed()) {
+      continue;
+    }
+
+    const url = browserPage.url();
+    if (url === 'about:blank') {
+      console.log('puppeteer: closing about:blank page');
+      await browserPage.close();
+    }
+  }
+}
+
 export async function visitUrl(page: puppeteer.Page, url: string) {
   const TEN_SECONDS = 10 * 1000;
   const maxAttempts = 5;

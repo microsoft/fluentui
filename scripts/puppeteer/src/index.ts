@@ -1,1 +1,1 @@
-export { launch, visitUrl } from './utils';
+export { launch, visitUrl, closeUrl } from './utils';

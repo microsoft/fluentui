@@ -1,5 +1,5 @@
 import type { Browser } from 'puppeteer';
-import { visitUrl } from '@fluentui/scripts-puppeteer';
+import { closeUrl, visitUrl } from '@fluentui/scripts-puppeteer';
 import { PROVIDER_ID } from './constants';
 
 class RenderError extends Error {
@@ -37,7 +37,8 @@ export async function visitPage(browser: Browser, url: string) {
   await visitUrl(page, url);
 
   await page.waitForSelector(`#${PROVIDER_ID}`);
-  await page.close();
+
+  await closeUrl(browser, page);
 
   if (error) {
     throw error;
