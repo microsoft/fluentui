@@ -445,12 +445,7 @@
         "packages": [
           "@fluentui/web-components"
         ],
-        "dependencies": [
-          "mocha",
-          "ts-loader",
-          "tslib",
-          "webpack"
-        ]
+        "dependencies": []
       },
       {
         "packages": [
