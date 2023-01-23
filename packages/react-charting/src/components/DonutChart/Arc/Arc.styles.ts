@@ -20,9 +20,10 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       strokeWidth: 4,
       fill: 'transparent',
     },
-    arcValue: {
+    arcLabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
   };
 };

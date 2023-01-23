@@ -43,16 +43,16 @@ export interface IDonutChartProps extends ICartesianChartProps {
   culture?: string;
 
   /**
-   * Prop to show the arc values in percentage format
+   * Prop to show the arc labels in percentage format
    * @default false
    */
-  showValuesInPercent?: boolean;
+  showLabelsInPercent?: boolean;
 
   /**
-   * Prop to hide the arc values
+   * Prop to hide the arc labels
    * @default false
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {}

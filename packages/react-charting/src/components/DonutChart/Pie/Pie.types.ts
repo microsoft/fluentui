@@ -77,14 +77,14 @@ export interface IPieProps {
   focusedArcId?: string;
 
   /**
-   * Prop to show the arc values in percentage format
+   * Prop to show the arc labels in percentage format
    */
-  showValuesInPercent?: boolean;
+  showLabelsInPercent?: boolean;
 
   /**
-   * Prop to hide the arc values
+   * Prop to hide the arc labels
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IPieStyles {

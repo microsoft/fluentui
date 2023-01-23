@@ -6,8 +6,8 @@ import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 export interface IExampleState {
   dynamicData: IChartDataPoint[];
-  hideValues: boolean;
-  showValuesInPercent: boolean;
+  hideLabels: boolean;
+  showLabelsInPercent: boolean;
 }
 
 export class DonutChartDynamicExample extends React.Component<IDonutChartProps, IExampleState> {
@@ -33,8 +33,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         { legend: 'third', data: 30, color: '#4f67ed' },
         { legend: 'fourth', data: 10, color: '#ae8c00' },
       ],
-      hideValues: false,
-      showValuesInPercent: false,
+      hideLabels: false,
+      showLabelsInPercent: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -50,13 +50,13 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       <div>
         <Checkbox
           label="Hide values"
-          checked={this.state.hideValues}
+          checked={this.state.hideLabels}
           onChange={this._onHideCheckChange}
           styles={{ root: { marginBottom: '10px' } }}
         />
         <Checkbox
           label="Show values in percentage format"
-          checked={this.state.showValuesInPercent}
+          checked={this.state.showLabelsInPercent}
           onChange={this._onShowCheckChange}
         />
         <DonutChart
@@ -65,8 +65,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           legendProps={{
             allowFocusOnLegends: true,
           }}
-          hideValues={this.state.hideValues}
-          showValuesInPercent={this.state.showValuesInPercent}
+          hideLabels={this.state.hideLabels}
+          showLabelsInPercent={this.state.showLabelsInPercent}
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
@@ -105,10 +105,10 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   }
 
   private _onHideCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideValues: checked });
+    this.setState({ hideLabels: checked });
   };
 
   private _onShowCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ showValuesInPercent: checked });
+    this.setState({ showLabelsInPercent: checked });
   };
 }

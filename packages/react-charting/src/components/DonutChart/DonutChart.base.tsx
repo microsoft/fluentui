@@ -7,7 +7,7 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { getAccessibleDataObject } from '../../utilities/index';
+import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
 export interface IDonutChartState {
@@ -43,18 +43,18 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     nextProps: Readonly<IDonutChartProps>,
     prevState: Readonly<IDonutChartState>,
   ): Partial<IDonutChartState> | null {
-    let state1: Partial<IDonutChartState> | undefined;
+    let widthState: { _width: number } | undefined;
     if (nextProps.width && nextProps.width !== prevState._width) {
-      state1 = { _width: nextProps.width };
+      widthState = { _width: nextProps.width };
     }
 
-    let state2: Partial<IDonutChartState> | undefined;
+    let heightState: { _height: number } | undefined;
     if (nextProps.height && nextProps.height !== prevState._height) {
       const reducedHeight = nextProps.height / 5;
-      state2 = { _height: nextProps.height - reducedHeight };
+      heightState = { _height: nextProps.height - reducedHeight };
     }
 
-    return { ...state1, ...state2 };
+    return { ...widthState, ...heightState };
   }
 
   constructor(props: IDonutChartProps) {
@@ -94,7 +94,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const { palette } = this.props.theme!;
 
     /**
-     * Resize SVG box to prevent overflow of arc values
+     * Resize SVG box to prevent overflow of arc labels
      */
     const adjustedWidth = Math.min(this._rootElem ? this._rootElem.offsetWidth : Infinity, this.state._width! + 80);
     const adjustedHeight = this.state._height! + 40;
@@ -139,10 +139,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
-                valueInsideDonut={valueInsideDonut}
+                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
                 theme={this.props.theme!}
-                showValuesInPercent={this.props.showValuesInPercent}
-                hideValues={this.props.hideValues}
+                showLabelsInPercent={this.props.showLabelsInPercent}
+                hideLabels={this.props.hideLabels}
               />
             </svg>
           </div>
@@ -297,6 +297,14 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     } else {
       return valueInsideDonut;
     }
+  }
+
+  private _toLocaleString(data: string | number | undefined) {
+    const localeString = convertToLocaleString(data, this.props.culture);
+    if (!localeString) {
+      return data;
+    }
+    return localeString?.toString();
   }
 
   /**

@@ -75,6 +75,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -116,6 +117,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -622,6 +624,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -663,6 +666,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -1012,7 +1016,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
 </div>
 `;
 
-exports[`DonutChart snapShot testing Should not render arc values 1`] = `
+exports[`DonutChart snapShot testing Should not render arc labels 1`] = `
 <div
   className=
       ms-DonutChart
@@ -1368,7 +1372,7 @@ exports[`DonutChart snapShot testing Should not render arc values 1`] = `
 </div>
 `;
 
-exports[`DonutChart snapShot testing Should render arc values in percentage format 1`] = `
+exports[`DonutChart snapShot testing Should render arc labels in percentage format 1`] = `
 <div
   className=
       ms-DonutChart
@@ -1443,6 +1447,7 @@ exports[`DonutChart snapShot testing Should render arc values in percentage form
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -1484,6 +1489,7 @@ exports[`DonutChart snapShot testing Should render arc values in percentage form
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -1829,6 +1835,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -1870,6 +1877,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -2215,6 +2223,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -2256,6 +2265,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -2601,6 +2611,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -2642,6 +2653,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -2738,6 +2750,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -2779,6 +2792,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -3124,6 +3138,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -3165,6 +3180,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
                   }
@@ -3177,7 +3193,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             </text>
           </g>
           <text
-            aria-label="1000"
             className=
 
                 {
@@ -3190,11 +3205,10 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 }
             data-is-focusable={true}
             dominantBaseline="middle"
-            role="img"
             textAnchor="middle"
             y={5}
           >
-            1.0k
+            1,000
           </text>
         </g>
       </svg>
