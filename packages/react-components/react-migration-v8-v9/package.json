@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-migration-v8-v9",
-  "version": "9.0.0-alpha.0",
-  "private": true,
-  "description": "React components for building web experiences",
+  "version": "9.0.0",
+  "description": "Migration shim components and methods for hybrid v8/v9 applications building on Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -20,7 +19,9 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,6 +31,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@ctrl/tinycolor": "3.3.4",
+    "@fluentui/fluent2-theme": "^8.104.10",
+    "@fluentui/react": "^8.104.6",
+    "@fluentui/react-components": "^9.11.0",
+    "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.4.0",
     "@griffel/react": "^1.5.2",
@@ -43,9 +49,7 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
+      "major"
     ]
   },
   "exports": {
