@@ -9,7 +9,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
   DataGridBody,
   DataGridRow,
@@ -17,11 +16,11 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
+  TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
   DataGridProps,
-} from '@fluentui/react-table';
-import { SortState } from '../../src/hooks/types';
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;
@@ -150,7 +149,10 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const SortControlled = () => {
-  const [sortState, setSortState] = React.useState<SortState>({ sortColumn: 'file', sortDirection: 'ascending' });
+  const [sortState, setSortState] = React.useState<Parameters<NonNullable<DataGridProps['onSortChange']>>[1]>({
+    sortColumn: 'file',
+    sortDirection: 'ascending',
+  });
   const onSortChange: DataGridProps['onSortChange'] = (e, nextSortState) => {
     setSortState(nextSortState);
   };

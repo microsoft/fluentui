@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "docs: update imports in DataGrid stories",
+  "packageName": "@fluentui/react-table",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
