@@ -32,7 +32,7 @@ const useRootStyles = makeStyles({
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-      // TODO: stop using treeItemClassNames.expandIcon fro this styling
+      // TODO: stop using treeItemClassNames.expandIcon for styling
       [`& .${treeItemClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Pressed,
       },
