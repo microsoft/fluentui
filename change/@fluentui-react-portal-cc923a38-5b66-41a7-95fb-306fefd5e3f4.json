@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "clean up parent reference to avoid memory leaks",
-  "packageName": "@fluentui/react-portal",
-  "email": "arthurd@microsoft.com",
-  "dependentChangeType": "patch"
-}

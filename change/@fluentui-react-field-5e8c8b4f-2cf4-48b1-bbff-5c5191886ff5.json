@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Stretch Field components to full width",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

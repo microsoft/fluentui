@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Wed, 18 Jan 2023 16:32:55 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jan 2023 16:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.3)
+
+Mon, 23 Jan 2023 16:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.1.2..@fluentui/react-portal_v9.1.3)
+
+### Patches
+
+- clean up parent reference to avoid memory leaks ([PR #26435](https://github.com/microsoft/fluentui/pull/26435) by arthurd@microsoft.com)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.2)
 

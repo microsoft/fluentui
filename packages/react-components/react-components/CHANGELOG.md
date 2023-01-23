@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 18 Jan 2023 16:32:53 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jan 2023 16:43:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.11.1)
+
+Mon, 23 Jan 2023 16:43:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.11.0..@fluentui/react-components_v9.11.1)
+
+### Patches
+
+- `@fluentui/react-components`
+  - make unsized icons searchable ([PR #26451](https://github.com/microsoft/fluentui/pull/26451) by martin.troback@axis.com)
+  - feat: Export 'Virtualizer' as unstable ([PR #25451](https://github.com/microsoft/fluentui/pull/25451) by mifraser@microsoft.com)
+- `@fluentui/react-portal`
+  - clean up parent reference to avoid memory leaks ([PR #26435](https://github.com/microsoft/fluentui/pull/26435) by arthurd@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-field`
+  - chore: Simplify Field layout styles ([PR #26352](https://github.com/microsoft/fluentui/pull/26352) by behowell@microsoft.com)
+  - fix: Stretch Field components to full width ([PR #26412](https://github.com/microsoft/fluentui/pull/26412) by behowell@microsoft.com)
+  - fix: Update Field label padding to match spec ([PR #26413](https://github.com/microsoft/fluentui/pull/26413) by behowell@microsoft.com)
+  - fix: Field sets role="alert" on its error message so it is announced by screen readers ([PR #26414](https://github.com/microsoft/fluentui/pull/26414) by behowell@microsoft.com)
+- `@fluentui/react-progress`
+  - Rename rectangular shape to square ([PR #26419](https://github.com/microsoft/fluentui/pull/26419) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-table`
+  - docs: update imports in DataGrid stories ([PR #26454](https://github.com/microsoft/fluentui/pull/26454) by olfedias@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - feat: Initial unstable release of the Virtualizer ([PR #25451](https://github.com/microsoft/fluentui/pull/25451) by mifraser@microsoft.com)
 
 ## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.11.0)
 

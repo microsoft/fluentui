@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make unsized icons searchable",
-  "packageName": "@fluentui/react-components",
-  "email": "martin.troback@axis.com",
-  "dependentChangeType": "patch"
-}
