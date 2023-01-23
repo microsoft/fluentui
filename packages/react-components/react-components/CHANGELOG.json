@@ -2,6 +2,77 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 23 Jan 2023 16:43:09 GMT",
+      "tag": "@fluentui/react-components_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martin.troback@axis.com",
+            "package": "@fluentui/react-components",
+            "commit": "c075fab840bf34761b3b8dfc2e37de1ad2ac23fc",
+            "comment": "make unsized icons searchable"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "547235ce85eef5fc65ed0cdd51ef5244d480b4b6",
+            "comment": "feat: Export 'Virtualizer' as unstable"
+          },
+          {
+            "author": "arthurd@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "f6440277702514c86bd2a640a7706940ffcbe7d0",
+            "comment": "clean up parent reference to avoid memory leaks"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "1f145044a1ef3707e0724d75f9b70e7d2af69375",
+            "comment": "chore: Simplify Field layout styles"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "b04b2f0c02f2ccd7960905a886ce27f2321fee72",
+            "comment": "fix: Stretch Field components to full width"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "48a6fc95e6eb7530c162390fb70db7fac88b15ab",
+            "comment": "fix: Update Field label padding to match spec"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "014041b7447b02856ae50638de71bdb829b0a759",
+            "comment": "fix: Field sets role=\"alert\" on its error message so it is announced by screen readers"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "22b51ad9694bdaa9dbf0bd1283421d65f77dbf8c",
+            "comment": "Rename rectangular shape to square"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "86a28f6ebcc84819c695f12b841b9377736fb5f7",
+            "comment": "docs: update imports in DataGrid stories"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "547235ce85eef5fc65ed0cdd51ef5244d480b4b6",
+            "comment": "feat: Initial unstable release of the Virtualizer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 16:32:53 GMT",
       "tag": "@fluentui/react-components_v9.11.0",
       "version": "9.11.0",

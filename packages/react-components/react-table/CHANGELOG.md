@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Wed, 18 Jan 2023 16:32:55 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jan 2023 16:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-rc.2)
+
+Mon, 23 Jan 2023 16:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-rc.1..@fluentui/react-table_v9.0.0-rc.2)
+
+### Changes
+
+- docs: update imports in DataGrid stories ([PR #26454](https://github.com/microsoft/fluentui/pull/26454) by olfedias@microsoft.com)
+- Bump @fluentui/react-avatar to v9.2.16 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.22 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+- Bump @fluentui/react-radio to v9.0.20 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-rc.1)
 
