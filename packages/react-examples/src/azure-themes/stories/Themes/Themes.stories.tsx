@@ -32,6 +32,7 @@ import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 import { SliderBasicExample } from '../components/slider.stories';
 import { SpinButtonBasicExample } from '../components/SpinButton.stories';
+import { DatePickerBasicExample } from '../components/defaultDatePicker';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -88,6 +89,7 @@ const Example = () => (
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label className="section">DatePicker</Label>
+      <DatePickerBasicExample />
       <DatePickerBoundedExample />
     </Stack>
 
