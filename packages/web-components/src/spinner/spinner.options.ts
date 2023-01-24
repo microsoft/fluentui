@@ -10,10 +10,10 @@ export const SpinnerSize = {
    */
   small: 'small',
   tiny: 'tiny',
-  'extra-small': 'extra-small',
+  extraSmall: 'extra-small',
   medium: 'medium',
   large: 'large',
-  'extra-large': 'extra-large',
+  extraLarge: 'extra-large',
   huge: 'huge',
 } as const;
 
@@ -36,8 +36,13 @@ export const SpinnerAppearance = {
 } as const;
 
 /**
- * The types for Spinner size and appearance options
+ * The type for Spinner size option
  * @public
  */
 export type SpinnerSize = Values<typeof SpinnerSize>;
+
+/**
+ * The type for Spinner appearance option
+ * @public
+ */
 export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
