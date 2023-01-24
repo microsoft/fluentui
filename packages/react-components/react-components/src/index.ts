@@ -518,6 +518,14 @@ export type {
   RadioState,
 } from '@fluentui/react-radio';
 export {
+  Select,
+  renderSelect_unstable,
+  selectClassNames,
+  useSelectStyles_unstable,
+  useSelect_unstable,
+} from '@fluentui/react-select';
+export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
+export {
   Slider,
   sliderClassNames,
   sliderCSSVars,
