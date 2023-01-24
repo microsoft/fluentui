@@ -66,6 +66,7 @@ import { AvatarGroupSlots } from '@fluentui/react-avatar';
 import { AvatarGroupState } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
 import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
@@ -816,6 +817,8 @@ export { AvatarGroupState }
 export { AvatarNamedColor }
 
 export { AvatarProps }
+
+export { AvatarSize }
 
 export { AvatarSizes }
 
