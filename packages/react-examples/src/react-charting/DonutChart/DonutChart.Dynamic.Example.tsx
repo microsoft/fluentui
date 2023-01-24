@@ -49,15 +49,15 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     return (
       <div>
         <Checkbox
-          label="Hide values"
+          label="Hide labels"
           checked={this.state.hideLabels}
-          onChange={this._onHideCheckChange}
+          onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginBottom: '10px' } }}
         />
         <Checkbox
-          label="Show values in percentage format"
+          label="Show labels in percentage format"
           checked={this.state.showLabelsInPercent}
-          onChange={this._onShowCheckChange}
+          onChange={this._onShowPercentCheckChange}
         />
         <DonutChart
           data={data}
@@ -104,11 +104,11 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
   }
 
-  private _onHideCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideLabels: checked });
   };
 
-  private _onShowCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+  private _onShowPercentCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ showLabelsInPercent: checked });
   };
 }

@@ -72,7 +72,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       theme: this.props.theme!,
     });
 
-    this._getTotalValue();
+    this._totalValue = this._computeTotalValue();
 
     return (
       <g transform={translate}>
@@ -108,10 +108,11 @@ export class Pie extends React.Component<IPieProps, {}> {
     this.props.hoverOnCallback!(data, e);
   }
 
-  private _getTotalValue = (): void => {
-    this._totalValue = 0;
+  private _computeTotalValue = () => {
+    let totalValue = 0;
     this.props.data.forEach((arc: IChartDataPoint) => {
-      this._totalValue += arc.data!;
+      totalValue += arc.data!;
     });
+    return totalValue;
   };
 }
