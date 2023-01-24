@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { TreeItemLayoutProps, TreeItemLayoutState } from './TreeItemLayout.types';
+import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
 /**
  * Create the state required to render TreeItemLayout.
@@ -15,17 +16,20 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
+  const { iconAfter, iconBefore, aside, as = 'div' } = props;
+  const treeItemContext = useTreeItemContext_unstable();
+
   return {
-    // TODO add appropriate props/defaults
+    ...treeItemContext,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      iconBefore: 'span',
+      iconAfter: 'span',
+      aside: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: getNativeElementProps(as, { ...props, ref }),
+    iconBefore: resolveShorthand(iconBefore, { defaultProps: { 'aria-hidden': true } }),
+    iconAfter: resolveShorthand(iconAfter, { defaultProps: { 'aria-hidden': true } }),
+    aside: resolveShorthand(aside, { defaultProps: { 'aria-hidden': true } }),
   };
 };

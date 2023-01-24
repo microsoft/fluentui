@@ -1,33 +1,87 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 
 export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
   root: 'fui-TreeItemLayout',
-  // TODO: add class names for all slots on TreeItemLayoutSlots.
-  // Should be of the form `<slotName>: 'fui-TreeItemLayout__<slotName>`
+  aside: 'fui-TreeItemLayout__aside',
+  iconAfter: 'fui-TreeItemLayout__iconAfter',
+  iconBefore: 'fui-TreeItemLayout__iconBefore',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+const useRootStyles = makeStyles({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.flex(1),
   },
+  medium: {
+    columnGap: tokens.spacingHorizontalSNudge,
+    minHeight: '32px',
+    ...typographyStyles.body1,
+  },
+  small: {
+    columnGap: tokens.spacingHorizontalXS,
+    minHeight: '24px',
+    ...typographyStyles.caption1,
+  },
+});
 
-  // TODO add additional classes for different states and/or slots
+/**
+ * Styles for the before/after icon slot
+ */
+const useIconStyles = makeStyles({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    color: tokens.colorNeutralForeground2,
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
+  },
+});
+
+/**
+ * Styles for the action icon slot
+ */
+const useAsideStyles = makeStyles({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    marginLeft: 'auto',
+    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+  },
 });
 
 /**
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(treeItemLayoutClassNames.root, styles.root, state.root.className);
+  const { iconAfter, iconBefore, aside, root } = state;
+  const rootStyles = useRootStyles();
+  const iconStyles = useIconStyles();
+  const asideStyles = useAsideStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const size = useTreeContext_unstable(ctx => ctx.size);
+
+  root.className = mergeClasses(treeItemLayoutClassNames.root, rootStyles.base, rootStyles[size], root.className);
+
+  if (iconBefore) {
+    iconBefore.className = mergeClasses(treeItemLayoutClassNames.iconBefore, iconStyles.base, iconBefore.className);
+  }
+
+  if (iconAfter) {
+    iconAfter.className = mergeClasses(treeItemLayoutClassNames.iconAfter, iconStyles.base, iconAfter.className);
+  }
+
+  if (aside) {
+    aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, aside.className);
+  }
 
   return state;
 };

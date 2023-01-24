@@ -2,6 +2,81 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Wed, 11 Jan 2023 07:50:54 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.4",
+      "version": "1.3.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:43 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:01 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Dec 2022 07:45:27 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "2119358057078b8f9e844f4a88a813287edc64ca",
+            "comment": "chore(scripts): remove deep imports from /scripts/tasks/*"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Dec 2022 07:45:10 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.3",
+      "version": "1.3.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Apr 2022 07:38:08 GMT",
       "tag": "@fluentui/monaco-editor_v1.3.0",
       "version": "1.3.0",

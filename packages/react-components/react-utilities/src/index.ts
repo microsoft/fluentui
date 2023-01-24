@@ -26,6 +26,7 @@ export {
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,
+  useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
@@ -38,8 +39,8 @@ export {
   getPartitionedNativeProps,
   getRTLSafeKey,
   mergeCallbacks,
-  shouldPreventDefaultOnKeyDown,
   isHTMLElement,
+  isInteractiveHTMLElement,
 } from './utils/index';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';

@@ -25,3 +25,4 @@ const GroupedListV2: React.FunctionComponent<IGroupedListV2Props> = styled<
 GroupedListV2.displayName = 'GroupedListV2_unstable';
 
 export { GroupedListV2 as GroupedListV2_unstable };
+export type { IGroupedListV2Props } from './GroupedListV2.types';

@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -17,11 +17,11 @@ import {
   TableHeader,
   TableHeaderCell,
   useTableFeatures,
-  ColumnDefinition,
-  ColumnId,
+  TableColumnDefinition,
+  TableColumnId,
   useTableSort,
   TableCellLayout,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -90,40 +90,37 @@ const items: Item[] = [
   },
 ];
 
-export const SortControlled = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  }),
+];
 
+export const SortControlled = () => {
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
-    sortColumn: ColumnId | undefined;
+    sortColumn: TableColumnId | undefined;
   }>({
     sortDirection: 'ascending' as const,
     sortColumn: 'file',
@@ -139,9 +136,8 @@ export const SortControlled = () => {
     },
     [useTableSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
-  const headerSortProps = (columnId: ColumnId) => ({
+  const headerSortProps = (columnId: TableColumnId) => ({
     onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
@@ -149,7 +145,7 @@ export const SortControlled = () => {
   const rows = sort(getRows());
 
   return (
-    <Table sortable {...keyboardNavAttr}>
+    <Table sortable aria-label="Table with controlled sort">
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -167,7 +163,11 @@ export const SortControlled = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}

@@ -7,6 +7,11 @@ describe('TreeItemLayout', () => {
   isConformant({
     Component: TreeItemLayout,
     displayName: 'TreeItemLayout',
+    requiredProps: {
+      aside: 'aside',
+      iconAfter: 'iconAfter',
+      iconBefore: 'iconBefore',
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

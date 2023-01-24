@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { DataGrid } from './DataGrid';
 import { isConformant } from '../../testing/isConformant';
 import { DataGridProps } from './DataGrid.types';
-import { ColumnDefinition, createColumn, RowState } from '../../hooks';
+import { TableColumnDefinition, createTableColumn, TableRowData } from '../../hooks';
 import { DataGridBody } from '../DataGridBody/DataGridBody';
 import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
@@ -15,10 +15,10 @@ interface Item {
   third: string;
 }
 
-const testColumns: ColumnDefinition<Item>[] = [
-  createColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
-  createColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
-  createColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
+const testColumns: TableColumnDefinition<Item>[] = [
+  createTableColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
+  createTableColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
+  createTableColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
 ];
 const testItems: Item[] = [
   { first: 'first', second: 'second', third: 'third' },
@@ -41,15 +41,15 @@ describe('DataGrid', () => {
       <DataGrid items={testItems} columns={testColumns}>
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+            {({ renderHeaderCell, columnId }: TableColumnDefinition<Item>) => (
               <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
             )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
-          {({ item, rowId }: RowState<Item>) => (
+          {({ item, rowId }: TableRowData<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+              {({ renderCell, columnId }: TableColumnDefinition<Item>) => (
                 <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
               )}
             </DataGridRow>
@@ -65,15 +65,15 @@ describe('DataGrid', () => {
       <DataGrid items={testItems} columns={testColumns} focusMode="cell">
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+            {({ renderHeaderCell, columnId }: TableColumnDefinition<Item>) => (
               <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
             )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
-          {({ item, rowId }: RowState<Item>) => (
+          {({ item, rowId }: TableRowData<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+              {({ renderCell, columnId }: TableColumnDefinition<Item>) => (
                 <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
               )}
             </DataGridRow>
@@ -87,20 +87,20 @@ describe('DataGrid', () => {
     );
   });
 
-  it('should not render tabster attributes when `focusMode` has value `none`', () => {
+  it('should none render tabster attributes when `focusMode` has value `none`', () => {
     const result = render(
       <DataGrid items={testItems} columns={testColumns} focusMode="none">
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+            {({ renderHeaderCell, columnId }: TableColumnDefinition<Item>) => (
               <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
             )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
-          {({ item, rowId }: RowState<Item>) => (
+          {({ item, rowId }: TableRowData<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+              {({ renderCell, columnId }: TableColumnDefinition<Item>) => (
                 <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
               )}
             </DataGridRow>
@@ -112,20 +112,20 @@ describe('DataGrid', () => {
     expect(result.getByRole('grid').hasAttribute('data-tabster')).toBe(false);
   });
 
-  it('should not render tabster attributes when `focusMode` prop is not set', () => {
+  it('should render tabster attributes when `focusMode` prop is not set', () => {
     const result = render(
       <DataGrid items={testItems} columns={testColumns}>
         <DataGridHeader>
           <DataGridRow>
-            {({ renderHeaderCell, columnId }: ColumnDefinition<Item>) => (
+            {({ renderHeaderCell, columnId }: TableColumnDefinition<Item>) => (
               <DataGridCell key={columnId}>{renderHeaderCell()}</DataGridCell>
             )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
-          {({ item, rowId }: RowState<Item>) => (
+          {({ item, rowId }: TableRowData<Item>) => (
             <DataGridRow key={rowId}>
-              {({ renderCell, columnId }: ColumnDefinition<Item>) => (
+              {({ renderCell, columnId }: TableColumnDefinition<Item>) => (
                 <DataGridCell key={columnId}>{renderCell(item)}</DataGridCell>
               )}
             </DataGridRow>
@@ -134,6 +134,8 @@ describe('DataGrid', () => {
       </DataGrid>,
     );
 
-    expect(result.getByRole('grid').hasAttribute('data-tabster')).toBe(false);
+    expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+    );
   });
 });

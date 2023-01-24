@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
 import AttachmentDefaultBsize from '../../examples/components/Attachment/Performance/AttachmentDefault.bsize';

@@ -6,8 +6,14 @@ import type { TreeItemLayoutState, TreeItemLayoutSlots } from './TreeItemLayout.
  * Render the final JSX of TreeItemLayout
  */
 export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
+  const { isActionsVisible } = state;
   const { slots, slotProps } = getSlots<TreeItemLayoutSlots>(state);
-
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slots.iconBefore && <slots.iconBefore {...slotProps.iconBefore} />}
+      {slotProps.root.children}
+      {slots.iconAfter && <slots.iconAfter {...slotProps.iconAfter} />}
+      {!isActionsVisible && slots.aside && <slots.aside {...slotProps.aside} />}
+    </slots.root>
+  );
 };

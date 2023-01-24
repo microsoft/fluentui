@@ -80,7 +80,11 @@ const useStyles = makeStyles({
     },
   },
 
-  listbox: {},
+  listbox: {
+    boxShadow: `${tokens.shadow16}`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    maxHeight: '80vh',
+  },
 
   listboxCollapsed: {
     display: 'none',
@@ -197,6 +201,7 @@ const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
+    cursor: 'pointer',
     display: 'block',
     fontSize: tokens.fontSizeBase500,
 
@@ -222,6 +227,7 @@ const useIconStyles = makeStyles({
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
   },
 });
 

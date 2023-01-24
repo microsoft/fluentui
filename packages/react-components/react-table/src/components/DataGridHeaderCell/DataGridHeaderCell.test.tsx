@@ -22,8 +22,6 @@ describe('DataGridHeaderCell', () => {
     },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<DataGridHeaderCell>Default DataGridHeaderCell</DataGridHeaderCell>);
     expect(result.container).toMatchSnapshot();
@@ -70,5 +68,39 @@ describe('DataGridHeaderCell', () => {
 
     fireEvent.click(getByRole('columnheader'));
     expect(toggleColumnSort).toHaveBeenCalledTimes(0);
+  });
+
+  it('should set tabindex 0 on header cell if not sortable', () => {
+    const dataGridCtx = mockDataGridContext();
+    const { getAllByRole } = render(
+      <TableContextProvider value={{ noNativeElements: true, size: 'medium', sortable: false }}>
+        <DataGridContextProvider value={dataGridCtx}>
+          <DataGridHeaderCell>Header cell</DataGridHeaderCell>
+        </DataGridContextProvider>
+      </TableContextProvider>,
+    );
+
+    const columnHeaders = getAllByRole('columnheader');
+    columnHeaders.forEach(columnHeader => {
+      expect(columnHeader.tabIndex).toBe(0);
+      expect(columnHeader.getAttribute('tabindex')).toBe('0');
+    });
+  });
+
+  it('should not set tabindex on header cell if sortable', () => {
+    const dataGridCtx = mockDataGridContext();
+    const { getAllByRole } = render(
+      <TableContextProvider value={{ noNativeElements: true, size: 'medium', sortable: true }}>
+        <DataGridContextProvider value={dataGridCtx}>
+          <DataGridHeaderCell>Header cell</DataGridHeaderCell>
+        </DataGridContextProvider>
+      </TableContextProvider>,
+    );
+
+    const columnHeaders = getAllByRole('columnheader');
+    columnHeaders.forEach(columnHeader => {
+      expect(columnHeader.tabIndex).toBe(-1);
+      expect(columnHeader.hasAttribute('tabindex')).toBe(false);
+    });
   });
 });

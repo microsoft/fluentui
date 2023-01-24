@@ -17,10 +17,28 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Progress: ForwardRefComponent<ProgressProps>;
+export const ProgressBar: ForwardRefComponent<ProgressBarProps>;
 
 // @public (undocumented)
-export const progressClassNames: SlotClassNames<ProgressSlots>;
+export const progressBarClassNames: SlotClassNames<ProgressBarSlots>;
+
+// @public
+export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
+    shape?: 'rounded' | 'square';
+    value?: number;
+    max?: number;
+    thickness?: 'medium' | 'large';
+    validationState?: 'success' | 'warning' | 'error';
+};
+
+// @public (undocumented)
+export type ProgressBarSlots = {
+    root: NonNullable<Slot<'div'>>;
+    bar?: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'validationState'>;
 
 // @public (undocumented)
 export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
@@ -29,34 +47,16 @@ export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unst
 export const progressFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
 
 // @public (undocumented)
-export type ProgressFieldProps_unstable = FieldProps<typeof Progress>;
+export type ProgressFieldProps_unstable = FieldProps<typeof ProgressBar>;
 
 // @public
-export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
-    shape?: 'rounded' | 'rectangular';
-    value?: number;
-    max?: number;
-    thickness?: 'medium' | 'large';
-    validationState?: 'success' | 'warning' | 'error';
-};
-
-// @public (undocumented)
-export type ProgressSlots = {
-    root: NonNullable<Slot<'div'>>;
-    bar?: NonNullable<Slot<'div'>>;
-};
+export const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressProps, 'value' | 'validationState'>;
+export const useProgressBar_unstable: (props: ProgressBarProps, ref: React_2.Ref<HTMLElement>) => ProgressBarState;
 
 // @public
-export const renderProgress_unstable: (state: ProgressState) => JSX.Element;
-
-// @public
-export const useProgress_unstable: (props: ProgressProps, ref: React_2.Ref<HTMLElement>) => ProgressState;
-
-// @public
-export const useProgressStyles_unstable: (state: ProgressState) => ProgressState;
+export const useProgressBarStyles_unstable: (state: ProgressBarState) => ProgressBarState;
 
 // (No @packageDocumentation comment for this package)
 

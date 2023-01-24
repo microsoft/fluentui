@@ -9,7 +9,7 @@ import {
   shEcho,
   workspaceRoot,
   generateFiles,
-} from '@fluentui/scripts/projects-test';
+} from '@fluentui/scripts-projects-test';
 
 export async function rollup() {
   const logger = log('test:projects:rollup');

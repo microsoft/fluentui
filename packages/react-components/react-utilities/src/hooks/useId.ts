@@ -19,6 +19,17 @@ export function resetIdsForTests(): void {
 export function useId(prefix: string = 'fui-', providedId?: string): string {
   const contextValue = useSSRContext();
 
+  // Checking if useId is available on React, if it is, we use it to generate the id. String concatenation is used to
+  // prevent bundlers from complaining with older versions of React.
+  const _useId: () => string | undefined = (React as never)['use' + 'Id'];
+
+  if (_useId) {
+    return providedId || `${prefix}${_useId()}`;
+  }
+
+  // Hooks appear to be running conditionally, but they will always run in the same order since it's based on
+  // the version of React being used. This is safe to ignore.
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   return React.useMemo(() => {
     if (providedId) {
       return providedId;

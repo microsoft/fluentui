@@ -9,7 +9,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -19,10 +19,10 @@ import {
   TableHeaderCell,
   TableCellLayout,
   TableSelectionCell,
-  createColumn,
+  createTableColumn,
   useTableFeatures,
   useTableSelection,
-  RowState as RowStateBase,
+  TableRowData as RowStateBase,
 } from '@fluentui/react-components/unstable';
 
 type Item = {
@@ -44,7 +44,7 @@ type Item = {
   };
 };
 
-interface RowState extends RowStateBase<Item> {
+interface TableRowData extends RowStateBase<Item> {
   onClick: (e: React.MouseEvent) => void;
   onKeyDown: (e: React.KeyboardEvent) => void;
   selected: boolean;
@@ -52,70 +52,68 @@ interface RowState extends RowStateBase<Item> {
 }
 
 interface ReactWindowRenderFnProps extends ListChildComponentProps {
-  data: RowState[];
+  data: TableRowData[];
 }
 
+const baseItems: Item[] = [
+  {
+    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
+    author: { label: 'Max Mustermann', status: 'available' },
+    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdate: {
+      label: 'You edited this',
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
+    author: { label: 'Erika Mustermann', status: 'busy' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Training recording', icon: <VideoRegular /> },
+    author: { label: 'John Doe', status: 'away' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
+    author: { label: 'Jane Doe', status: 'offline' },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdate: {
+      label: 'You shared this in a Teams chat',
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const items = new Array(1500).fill(0).map((_, i) => baseItems[i % baseItems.length]);
+
+const columns = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
+
 export const Virtualization = () => {
-  const columns = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
-
-  const items = React.useMemo(() => {
-    const baseItems: Item[] = [
-      {
-        file: { label: 'Meeting notes', icon: <DocumentRegular /> },
-        author: { label: 'Max Mustermann', status: 'available' },
-        lastUpdated: { label: '7h ago', timestamp: 1 },
-        lastUpdate: {
-          label: 'You edited this',
-          icon: <EditRegular />,
-        },
-      },
-      {
-        file: { label: 'Thursday presentation', icon: <FolderRegular /> },
-        author: { label: 'Erika Mustermann', status: 'busy' },
-        lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
-        lastUpdate: {
-          label: 'You recently opened this',
-          icon: <OpenRegular />,
-        },
-      },
-      {
-        file: { label: 'Training recording', icon: <VideoRegular /> },
-        author: { label: 'John Doe', status: 'away' },
-        lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
-        lastUpdate: {
-          label: 'You recently opened this',
-          icon: <OpenRegular />,
-        },
-      },
-      {
-        file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
-        author: { label: 'Jane Doe', status: 'offline' },
-        lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
-        lastUpdate: {
-          label: 'You shared this in a Teams chat',
-          icon: <PeopleRegular />,
-        },
-      },
-    ];
-
-    return new Array(1500).fill(0).map((_, i) => baseItems[i % baseItems.length]);
-  }, []);
+  const { targetDocument } = useFluent();
+  const scrollbarWidth = useScrollbarWidth({ targetDocument });
 
   const {
     getRows,
@@ -133,9 +131,7 @@ export const Virtualization = () => {
     ],
   );
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
-
-  const rows: RowState[] = getRows(row => {
+  const rows: TableRowData[] = getRows(row => {
     const selected = isRowSelected(row.rowId);
     return {
       ...row,
@@ -151,22 +147,32 @@ export const Virtualization = () => {
     };
   });
 
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
+
   return (
-    <Table noNativeElements {...keyboardNavAttr}>
+    <Table noNativeElements aria-label="Table with selection" aria-rowcount={rows.length}>
       <TableHeader>
-        <TableRow>
+        <TableRow aria-rowindex={1}>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
+            checkboxIndicator={{ 'aria-label': 'Select all rows' }}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
           <TableHeaderCell>Last updated</TableHeaderCell>
           <TableHeaderCell>Last update</TableHeaderCell>
           {/** Scrollbar alignment for the header */}
-          <div role="presentation" style={{ width: 16 }} />
+          <div role="presentation" style={{ width: scrollbarWidth }} />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -175,20 +181,28 @@ export const Virtualization = () => {
             const { item, selected, appearance, onClick, onKeyDown } = data[index];
             return (
               <TableRow
+                aria-rowindex={index + 2}
                 style={style}
                 key={item.file.label}
                 onKeyDown={onKeyDown}
                 onClick={onClick}
                 appearance={appearance}
               >
-                <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+                <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
                 <TableCell>
-                  <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+                  <TableCellLayout media={item.file.icon}>
+                    <strong>[{index}] </strong>
+                    {item.file.label}
+                  </TableCellLayout>
                 </TableCell>
                 <TableCell>
                   <TableCellLayout
                     media={
-                      <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                      <Avatar
+                        aria-label={item.author.label}
+                        name={item.author.label}
+                        badge={{ status: item.author.status as PresenceBadgeStatus }}
+                      />
                     }
                   >
                     {item.author.label}
@@ -217,7 +231,7 @@ Virtualization.parameters = {
         '',
         'The `Table` primitive components are unopinionated with respect to virtualization. They should be compatible',
         'with any virtualization library. Hoisting business logic to a state management',
-        'hook like `useTableFeaturesFeautres',
+        'hook like `useTableFeatures`',
         'means that features can persist between the mounting/unmounting that happens during virtualization.',
         'The below example uses the [react-window](https://www.npmjs.com/package/react-window) library.',
       ].join('\n'),

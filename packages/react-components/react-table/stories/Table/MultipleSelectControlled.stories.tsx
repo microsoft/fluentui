@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -19,10 +19,10 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  ColumnDefinition,
-  RowId,
+  TableColumnDefinition,
+  TableRowId,
   useTableSelection,
-  createColumn,
+  createTableColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -91,27 +91,24 @@ const items: Item[] = [
   },
 ];
 
-export const MultipleSelectControlled = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
 
+export const MultipleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([0, 1]),
+    () => new Set<TableRowId>([0, 1]),
   );
 
   const {
@@ -147,17 +144,25 @@ export const MultipleSelectControlled = () => {
     };
   });
 
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+  const toggleAllKeydown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === ' ') {
+        toggleAllRows(e);
+        e.preventDefault();
+      }
+    },
+    [toggleAllRows],
+  );
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table aria-label="Table with controlled multiselect">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             onClick={toggleAllRows}
+            onKeyDown={toggleAllKeydown}
+            checkboxIndicator={{ 'aria-label': 'Select all rows ' }}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
@@ -174,12 +179,20 @@ export const MultipleSelectControlled = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+            <TableSelectionCell checked={selected} checkboxIndicator={{ 'aria-label': 'Select row' }} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

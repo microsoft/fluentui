@@ -19,11 +19,11 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  ColumnDefinition,
+  TableColumnDefinition,
   useTableSelection,
   useTableSort,
-  createColumn,
-  ColumnId,
+  createTableColumn,
+  TableColumnId,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -92,37 +92,34 @@ const items: Item[] = [
   },
 ];
 
-export const DataGrid = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  }),
+];
 
+export const DataGrid = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
@@ -159,7 +156,7 @@ export const DataGrid = () => {
     }),
   );
 
-  const headerSortProps = (columnId: ColumnId) => ({
+  const headerSortProps = (columnId: TableColumnId) => ({
     onClick: (e: React.MouseEvent) => {
       toggleColumnSort(e, columnId);
     },
@@ -169,14 +166,15 @@ export const DataGrid = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} sortable>
+    <Table {...keyboardNavAttr} role="grid" sortable aria-label="DataGrid implementation with Table primitives">
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            aria-checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            role="checkbox"
             onClick={toggleAllRows}
+            checkboxIndicator={{ 'aria-label': 'Select all rows ' }}
           />
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
           <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
@@ -193,17 +191,32 @@ export const DataGrid = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
-            <TableCell tabIndex={0}>
+            <TableSelectionCell
+              role="gridcell"
+              aria-selected={selected}
+              checked={selected}
+              checkboxIndicator={{ 'aria-label': 'Select row' }}
+            />
+            <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+            <TableCell tabIndex={0} role="gridcell">
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
           </TableRow>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
-import { useRowIdContext } from '../../contexts/rowIdContext';
+import { useTableRowIdContext } from '../../contexts/rowIdContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 import { useTableSelectionCell_unstable } from '../TableSelectionCell/useTableSelectionCell';
 import type { DataGridSelectionCellProps, DataGridSelectionCellState } from './DataGridSelectionCell.types';
@@ -20,11 +20,10 @@ export const useDataGridSelectionCell_unstable = (
   ref: React.Ref<HTMLElement>,
 ): DataGridSelectionCellState => {
   const isHeader = useIsInTableHeader();
-  const rowId = useRowIdContext();
-  const multiselect = useDataGridContext_unstable(ctx => ctx.selection.selectionMode === 'multiselect');
+  const rowId = useTableRowIdContext();
   const subtle = useDataGridContext_unstable(ctx => ctx.subtleSelection);
   const checked = useDataGridContext_unstable(ctx => {
-    if (isHeader && multiselect) {
+    if (isHeader && ctx.selection.selectionMode === 'multiselect') {
       return ctx.selection.allRowsSelected ? true : ctx.selection.someRowsSelected ? 'mixed' : false;
     }
 
@@ -50,10 +49,10 @@ export const useDataGridSelectionCell_unstable = (
       role: 'gridcell',
       checked,
       type,
-      tabIndex: 0,
-      hidden: isHeader && !multiselect,
+      hidden: isHeader && type === 'radio',
+      'aria-checked': isHeader ? checked : undefined,
+      'aria-selected': isHeader || checked === 'mixed' ? undefined : checked,
       subtle,
-      checkboxIndicator: { tabIndex: -1 },
       ...props,
       onClick,
     },

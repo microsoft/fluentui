@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Box } from '@fluentui/react-northstar';
 import BoxDefaultBsize from '../../examples/components/Box/Performance/BoxDefault.bsize';

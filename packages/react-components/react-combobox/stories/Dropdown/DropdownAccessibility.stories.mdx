@@ -1,0 +1,326 @@
+import { Meta } from '@storybook/addon-docs';
+import clickImg from '../assets/Dropdown/dropdown-click.png';
+import collapsedImg from '../assets/Dropdown/dropdown-collapsed.png';
+import hoverImg from '../assets/Dropdown/dropdown-hover.png';
+import keySelectImg from '../assets/Dropdown/dropdown-key-select.png';
+import multiselect1Img from '../assets/Dropdown/dropdown-multiselection1.png';
+import multiselect2Img from '../assets/Dropdown/dropdown-multiselection2.png';
+import navImg from '../assets/Dropdown/dropdown-nav.png';
+import openImg from '../assets/Dropdown/dropdown-open.png';
+import optionHoverImg from '../assets/Dropdown/dropdown-option-hover.png';
+import selectedOpenImg from '../assets/Dropdown/dropdown-selected-open.png';
+import semanticsImg from '../assets/Dropdown/dropdown-semantics.png';
+import tabbingImg from '../assets/Dropdown/dropdown-tabbing.png';
+
+<Meta title="Concepts/Developer/Accessibility/Components/Dropdown" />
+
+# Dropdown Accessibility Spec
+
+`Dropdown` is one of three form selection components that display the current selection, and allow a user to expand a popup to modify the selection. The other two are `Select` and `Combobox`.
+
+The semantics and behavior are roughly similar to a more complex version of the `Select` component (an HTML `<select>` element), but with more functionality and full control over styling. Unlike `Combobox`, `Dropdown` does not allow text input. `Dropdown` supports both single-selection and multi-selection.
+
+## Usage
+
+### When to choose Dropdown
+
+#### Dropdown vs. Select
+
+`Dropdown` is a more feature-rich version of `Select`, which comes at the cost a larger code footprint, and less robust support for accessibility compared to the native `<select>` element.
+
+Use `Dropdown` when any of the following are required:
+
+- Control over styling the popup and options
+- Multiple selection
+- Virtualization
+
+Otherwise, `Select` is recommended for performance, accessibility, and native-feeling mobile support.
+
+#### Dropdown vs. Combobox
+
+`Combobox` allows text input, which enables filtering and freeform values. This is a better fit for use cases with a large number of options, or where the user may want to type a value directly without interacting with the popup.
+
+#### Dropdown vs. Menu
+
+`Select` or `Dropdown` should be used over `Menu` when creating a standalone control for selecting values. `Menu` should be used when the purpose is to allow the user to perform an immediate action on the page, or when the control is embedded within a parent `Menu`.
+
+Examples of appropriate `Menu` usage include:
+
+- Application top menus
+- Context menus
+- Editing menubars
+
+#### Multiselect Dropdown vs. Checkboxes
+
+Checkboxes are significantly more usable and accessible than multiselect comboboxes for smaller numbers of choices. Consider using a checkbox group over `Dropdown` if there are less than 10 options.
+
+### Implementing Dropdown
+
+#### Label
+
+Authors must provide label text for `Dropdown`. The recommended pattern for Fluent form controls is to use the `Label` component like this:
+
+```tsx
+<Label htmlFor="dropdown-id">Favorite Fruit</Label>
+<Dropdown id="dropdown-id">
+  <Option>Apple</Option>
+  <Option>Banana</Option>
+</Dropdown>
+```
+
+Other options include:
+
+1. `aria-label="label text string"` on the `<Dropdown>` component
+2. `aria-labelledby="label-id"` on the `<Dropdown>` component, pointing to the id of label text
+
+The `placeholder` prop is not a substitute for a label. It is no longer displayed when a value is selected, while labels must be persistently visible and exposed to the user.
+
+#### Content restrictions
+
+The following content types should not be used within children or slots of `Dropdown`:
+
+- Any interactive or focusable content, aside from `<Option>`.
+- Any structured content, such as tables, lists, or headings.
+
+The following content types should not be used within children or slots of `Option`:
+
+- Any interactive or focusable content, aside from `<Option>`.
+- Any structured content, such as tables, lists, or headings.
+- Tooltips
+
+Focusable and interactive content is prohibited based on the semantics of `Dropdown` and `Option`, and will cause issues for screen reader users. Focusable items within the popup will additionally not be keyboard accessible.
+
+The following content types may be used within children and slot content in `Dropdown` and `Option`:
+
+- Images and icons
+- Generic elements like `<div>` and `<span>`, without `tabindex` or `role` properties
+- Fluent's `<Text>` component
+
+#### inlinePopup
+
+By default, the popup renders in its own layer at the end of the DOM to ensure it appears above all other UI, and is not clipped by containers with overflow: hidden or overflow: scroll. This causes an issue for people who use iOS VoiceOver (Apple's touch-based screen reader), since it strictly follows DOM order when swiping from one control to the next. This makes it difficult to reach the options popup after opening the `Dropdown`.
+
+If possible, we recommend setting `inlinePopup={true}`, which will render the popup directly after the `Dropdown` button in the DOM for better `VoiceOver` touch support.
+
+#### Option value
+
+By default, the `<Option>` component calculates its text value from its children. This works if the children are a simple string, like this:
+
+```tsx
+<Option>Simple text string</Option>
+```
+
+However, if the `<Option>` contains JSX, this will not work correctly. If that is the case, provide a string value with the `value` prop:
+
+```tsx
+<Option value="Simple text string">
+  <CheckRegular />
+  <span>Simple text string</span>
+</Option>
+```
+
+`Dropdown` uses string values to handle jumping between options based on alphanumeric keyboard input, so `value` must match the visual text displayed within the `Option`.
+
+#### Color contrast and appearance variants
+
+The `filled-lighter`, `filled-darker`, and `underline` all have contrast requirements for their background color:
+
+- `filled-lighter` and `filled-darker` variants must both be placed over background colors dark enough to meet 3:1 contrast against the `Dropdown` button's background color.
+- `underline` must be placed over a light enough background for the placeholder and value text to meet 4.5:1 contrast against the page background.
+
+## Semantics
+
+<img
+  src={semanticsImg}
+  alt="Diagram of an open dropdown annotated with numbers. Number 1 points to the Dropdown trigger button. 2 points to the popup containing all the options. 3 points to a single option."
+/>
+
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>States and properties</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">1. combobox</td>
+      <td>
+        <code>type="button"</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>aria-haspopup="listbox"</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>aria-activedescendant="active-option-id"</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>aria-expanded="true/false"</code>
+      </td>
+    </tr>
+    <tr>
+      <td>2. listbox</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>3. option</td>
+      <td>
+        <code>aria-selected="true/false"</code>
+      </td>
+    </tr>
+    <tr>
+      <td>wrapper (no role)</td>
+      <td>
+        <code>aria-owns="listbox-id"*</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+** \* putting `aria-owns` on the wrapping element moves the listbox immediately after the trigger in the accessibility tree, even though it is rendered at the end of the DOM. For all screen readers but VoiceOver, this enables virtual cursor navigation between the trigger and listbox/options. **
+
+## Keyboard interaction
+
+### Navigate to dropdown
+
+<img
+  src={tabbingImg}
+  alt="Diagram of a closed dropdown button annotated with a black tab key and the number 1. The number 1 points to the entire closed dropdown button, showing it is a single tab stop."
+/>
+
+| Name           | Role     | States and properties   |
+| -------------- | -------- | ----------------------- |
+| (1) Best fruit | combobox | `aria-expanded="false"` |
+
+### Open or close the listbox popup
+
+#### Open popup with no selected options
+
+<img
+  src={openImg}
+  alt="Diagram of an open, focused dropdown with visible focus on the first option in the popup, Apple. It is annotated the number 1 pointing to the dropdown button. Black key icons show the symbols for enter, space, and down arrow keys, indicating that those three keys will open the dropdown."
+/>
+
+| Name           | Role     | States and properties  |
+| -------------- | -------- | ---------------------- |
+| (1) Best fruit | combobox | `aria-expanded="true"` |
+
+| Key                                                    | Result                                                                |
+| ------------------------------------------------------ | --------------------------------------------------------------------- |
+| <kbd>Enter</kbd>                                       | Opens popup with first option in focus                                |
+| <kbd>Space</kbd>                                       | Opens popup with first option in focus                                |
+| <kbd>Up</kbd> or <kbd>Down</kbd> arrow                 | Opens popup with first option in focus                                |
+| Any printable character                                | Opens popup with focus on first option matching that character        |
+| <kbd>Esc</kbd> or <kbd>Alt</kbd> + <kbd>Up</kbd> arrow | Closes popup without modifying selection, and keeps dropdown in focus |
+
+#### Open popup with a selected option (or options)
+
+When one or more options are already selected, focus will move to the most recently selected option when opened.
+
+<img
+  src={selectedOpenImg}
+  alt="Diagram of an open, focused dropdown with visible focus on the second option, Banana, which is selected. The number 2 points to the dropdown trigger button, and the number 3 points to the second option, which has a checkmark next to it."
+/>
+
+| Name           | Role     | States and properties  |
+| -------------- | -------- | ---------------------- |
+| (2) Best fruit | combobox | `aria-expanded="true"` |
+| (3) Banana     | option   | `aria-selected="true"` |
+
+### Navigate between options in popup
+
+<img
+  src={navImg}
+  alt="Diagram of an open, focused dropdown with visible focus on the second option, Banana. The number 2 points to the entire listbox popup, and the number 3 points to the second option. There are black icons  showing the symbols for up and down arrows, indicating those keys will move focus between options in the popup."
+/>
+
+| Name       | Role    | States and properties   |
+| ---------- | ------- | ----------------------- |
+| (2) -      | listbox | -                       |
+| (3) Banana | option  | `aria-selected="false"` |
+
+| Key                     | Result                                                 |
+| ----------------------- | ------------------------------------------------------ |
+| <kbd>Up</kbd> arrow     | Moves focus to the previous option, if one exists      |
+| <kbd>Down</kbd> arrow   | Moves focus to the next option, if one exists          |
+| <kbd>Home</kbd>         | Moves focus to the first option                        |
+| <kbd>End</kbd>          | Moves focus to the last option                         |
+| <kbd>PageUp</kbd>       | Moves focus up 10 options, or to the first option      |
+| <kbd>PageDown</kbd>     | Moves focus down 10 options, or to the last option     |
+| Any printable character | Moves focus to the next option matching that character |
+
+### Behavior: Single-selection
+
+#### Select an option
+
+<img
+  src={keySelectImg}
+  alt="Diagram of an open, focused dropdown with visible focus on the second option, Banana. The number 1 points to the focused option. Next to it are symbols for the enter and space keys, indicating those keys will select the option."
+/>
+
+| Name       | Role   | States and properties   |
+| ---------- | ------ | ----------------------- |
+| (1) Banana | option | `aria-selected="false"` |
+
+| Key                                  | Result                                                                            |
+| ------------------------------------ | --------------------------------------------------------------------------------- |
+| <kbd>Enter</kbd> or <kbd>Space</kbd> | Selects the focused option and closes the popup                                   |
+| <kbd>Tab</kbd>                       | Selects the focused option, closes the popup, and moves focus after the dropdown  |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd>    | Selects the focused option, closes the popup, and moves focus before the dropdown |
+
+#### Popup closes automatically after an option is selected
+
+<img
+  src={collapsedImg}
+  alt="Diagram of a closed, focused dropdown. The number 2 points to the dropdown trigger button."
+/>
+
+| Name           | Role     | States and properties   |
+| -------------- | -------- | ----------------------- |
+| (2) Best fruit | combobox | `aria-expanded="false"` |
+
+### Behavior: Multiselection
+
+Unlike single-select behavior, mutliselect Dropdowns do not close automatically after a selection is made, unless using <kbd>Tab</kbd> or <kbd>Shift</kbd> + <kbd>Tab</kbd>.
+
+<img
+  src={multiselect1Img}
+  alt="Diagram of an open, focused dropdown with visual focus on the second option, which is unselected and shows an unselected checkbox icon. The number 1A points to the second option, next to two key symbols for enter and space, indicating those keys will select the option."
+/>
+
+<img
+  src={multiselect2Img}
+  alt="Diagram of an open, focused dropdown with visual focus on the second option, which is selected and shows a selected checkbox icon. The number 1B points to the second option, next to two key symbols for enter and space, indicating those keys will unselect the option."
+/>
+
+| Name        | Role   | States and properties   |
+| ----------- | ------ | ----------------------- |
+| (1a) Banana | option | `aria-selected="false"` |
+| (1b) Banana | option | `aria-selected="true"`  |
+
+| Key                                  | Result                                                                                                |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| <kbd>Enter</kbd> or <kbd>Space</kbd> | Toggles selection on or off for focused option                                                        |
+| <kbd>Tab</kbd>                       | Toggles selection on or off for focused option, closes the popup, and moves focus after the dropdown  |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd>    | Toggles selection on or off for focused option, closes the popup, and moves focus before the dropdown |
+
+## Windows contrast themes (high contrast mode)
+
+Dropdown fully relies on native browser behavior for Windows contrast themes. All borders, icons, and text adapt to the user-selected theme colors without modifying styles in a media query.
+
+## Motion and animation
+
+The focus underline's growing animation does not run when [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) is true.
+
+## Known issues
+
+- [Safari does not support `aria-owns`](https://bugs.webkit.org/show_bug.cgi?id=241694)
+- [JAWS does not expose option group labels](https://github.com/FreedomScientific/VFO-standards-support/issues/381)
+- [Android Talkback does not expose option group labels](https://issuetracker.google.com/issues/225987035)
+- NVDA and JAWS do not explicitly announce "selected" for selected options (this is not a bug per se, but occasionally causes confusion)

@@ -1,15 +1,15 @@
-export { useTableFeatures, useTableSelection, useTableSort, createColumn } from './hooks';
+export { useTableFeatures, useTableSelection, useTableSort, createTableColumn } from './hooks';
 export type {
-  UseTableOptions,
-  TableState as HeadlessTableState,
+  CreateTableColumnOptions,
+  UseTableFeaturesOptions,
+  TableColumnDefinition,
+  TableColumnId,
+  TableFeaturesState,
+  TableRowData,
+  TableRowId,
   TableSelectionState,
   TableSortState,
-  TableStatePlugin,
-  RowState,
-  RowId,
-  ColumnDefinition,
-  ColumnId,
-  CreateColumnOptions,
+  TableFeaturePlugin,
 } from './hooks';
 
 export {
@@ -73,6 +73,7 @@ export {
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export { useTableRowIdContext, TableRowIdContextProvider } from './contexts/rowIdContext';
 export {
   TableSelectionCell,
   useTableSelectionCellStyles_unstable,
@@ -140,7 +141,7 @@ export type {
   DataGridState,
   DataGridContextValues,
   DataGridContextValue,
-  FocusMode,
+  DataGridFocusMode,
 } from './DataGrid';
 
 export {
