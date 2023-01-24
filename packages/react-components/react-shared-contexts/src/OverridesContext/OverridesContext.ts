@@ -4,8 +4,8 @@ import * as React from 'react';
  * @internal
  */
 export type OverridesContextValue = {
-  // copy of InputProps['appearance'] to avoid dependency
-  inputDefaultAppearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+  // No 'underline' as it is not supported by TextArea
+  inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
 };
 
 /**

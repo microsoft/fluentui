@@ -3,6 +3,7 @@ import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Select } from '@fluentui/react-select';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 storiesOf('Select Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -102,4 +103,16 @@ storiesOf('Select Converged', module)
     <Select icon="+">
       <option>text</option>
     </Select>
+  ))
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Select>
+          <option>Default overriden appearance</option>
+        </Select>
+        <Select appearance="outline">
+          <option>Outline appearance</option>
+        </Select>
+      </div>
+    </FluentProvider>
   ));

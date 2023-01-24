@@ -9,7 +9,7 @@ import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
 export type OverridesContextValue_unstable = {
-    inputDefaultAppearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+    inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
 };
 
 // @internal (undocumented)
