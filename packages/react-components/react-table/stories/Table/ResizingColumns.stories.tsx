@@ -12,6 +12,7 @@ import {
   useColumnSizing_unstable,
   useTableFeatures,
   useTableSort,
+  TableColumnSizingOptions,
 } from '@fluentui/react-components/unstable';
 import {
   DocumentRegular,
@@ -26,7 +27,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import { PresenceBadgeStatus } from '../../../react-badge/src';
 import { Avatar } from '@fluentui/react-components';
-import { ColumnSizingOptions } from '../../src/hooks';
 
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
@@ -127,7 +127,7 @@ const items: Item[] = [
 
 export const ResizingColumns = () => {
   const [columns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
-  const [columnSizingOptions, setColumnSizingOptions] = useState<ColumnSizingOptions>({
+  const [columnSizingOptions, setColumnSizingOptions] = useState<TableColumnSizingOptions>({
     file: {
       idealWidth: 300,
       minWidth: 190,

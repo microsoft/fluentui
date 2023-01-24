@@ -1,4 +1,4 @@
-import { TableColumnDefinition, ColumnWidthState, TableColumnId, ColumnSizingOptions } from '../hooks';
+import { TableColumnDefinition, ColumnWidthState, TableColumnId, TableColumnSizingOptions } from '../hooks';
 
 const DEFAULT_WIDTH = 150;
 const DEFAULT_MIN_WIDTH = 100;
@@ -17,7 +17,7 @@ const DEFAULT_MIN_WIDTH = 100;
 export function columnDefinitionsToState<T>(
   columns: TableColumnDefinition<T>[],
   state: ColumnWidthState[] = [],
-  columnSizingOptions: ColumnSizingOptions = {},
+  columnSizingOptions: TableColumnSizingOptions = {},
 ): ColumnWidthState[] {
   let updated = false;
 

@@ -213,12 +213,12 @@ export type ColumnResizeState = {
   getColumns: () => ColumnWidthState[];
 };
 
-export type ColumnSizingOptions = Record<
+export type TableColumnSizingOptions = Record<
   TableColumnId,
   Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
 >;
 
 export type UseColumnSizingParams = {
-  columnSizingOptions?: ColumnSizingOptions;
+  columnSizingOptions?: TableColumnSizingOptions;
   onColumnResize?: (columnId: TableColumnId, width: number) => void;
 };

@@ -259,6 +259,7 @@ export type {
   TableRowId,
   TableColumnDefinition,
   TableColumnId,
+  TableColumnSizingOptions,
   CreateTableColumnOptions,
   DataGridHeaderCellProps,
   DataGridHeaderCellSlots,
