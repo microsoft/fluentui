@@ -103,14 +103,6 @@ export type {
   OptionGroupSlots,
   OptionGroupState,
 } from '@fluentui/react-combobox';
-export {
-  Select,
-  renderSelect_unstable,
-  selectClassNames,
-  useSelectStyles_unstable,
-  useSelect_unstable,
-} from '@fluentui/react-select';
-export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
   InfoButton,
