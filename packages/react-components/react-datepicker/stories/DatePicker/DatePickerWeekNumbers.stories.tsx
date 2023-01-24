@@ -2,10 +2,8 @@ import * as React from 'react';
 import { makeStyles, useId } from '@fluentui/react-components';
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import { defaultDatePickerStrings, DatePicker, DayOfWeek } from '@fluentui/react-datepicker';
-import type { DatePickerProps } from '@fluentui/react-datepicker';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 const useStyles = makeStyles({
   root: {
     maxWidth: '300px',
@@ -15,8 +13,8 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<DatePickerProps>) => {
-  const dropdownId = useId('dropdown-default');
+export const WeekNumbers = () => {
+  const dropdownId = useId('dropdown');
   const styles = useStyles();
 
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
@@ -34,11 +32,13 @@ export const Default = (props: Partial<DatePickerProps>) => {
     <div className={styles.root}>
       <DatePicker
         firstDayOfWeek={firstDayOfWeek}
+        showWeekNumbers={true}
+        firstWeekOfYear={1}
+        showMonthPickerAsOverlay={true}
         placeholder="Select a date..."
         ariaLabel="Select a date"
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
-        {...props}
       />
       <label id={dropdownId}>Select the first day of the week</label>
       <Dropdown aria-labelledby={dropdownId} onOptionSelect={onOptionSelect} value={days[firstDayOfWeek]}>
