@@ -1094,7 +1094,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           inputClassName: inputProps && inputProps.className,
         })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
+          root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
