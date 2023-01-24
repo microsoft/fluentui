@@ -86,7 +86,7 @@ export const TimePickerBasicExample: React.FC = () => {
             }}
           />
         </div>
-        <Text>{`Current selected time: ${currentTime ? currentTime.toString() : ''}`}</Text>
+        <Text>{`TimePicker selected time: ${currentTime ? currentTime.toString() : ''}`}</Text>
       </div>
     </>
   );
