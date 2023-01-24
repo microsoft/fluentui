@@ -1,4 +1,4 @@
-import { attr } from '@microsoft/fast-element';
+import { attr, observable } from '@microsoft/fast-element';
 import { FASTDivider } from '@microsoft/fast-foundation';
 import { DividerAlignContent, DividerAppearance } from './divider.options.js';
 
@@ -24,7 +24,7 @@ export class Divider extends FASTDivider {
    * @remarks
    * A divider can have one of the preset appearances. When not specified, the divider has its default appearance. Select from strong, brand, subtle, default.
    */
-  @attr({ attribute: 'apearance' })
+  @attr({ attribute: 'appearance' })
   public appearance?: DividerAppearance;
 
   /**
@@ -35,4 +35,10 @@ export class Divider extends FASTDivider {
    */
   @attr({ mode: 'boolean' })
   public inset?: boolean;
+
+  /**
+   * @internal
+   */
+  @observable
+  public slottedElements: HTMLElement[];
 }

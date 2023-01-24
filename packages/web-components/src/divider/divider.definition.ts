@@ -6,7 +6,6 @@ import { styles } from './divider.styles.js';
 /**
  * The Fluent Divider Element
  *
- *
  * @public
  * @remarks
  * HTML Element: \<fluent-divider\>
