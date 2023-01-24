@@ -31,14 +31,14 @@ function loadWorkspaceAddon(addonName, options = {}) {
   function getPaths() {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
-    const rootPath = path.join(workspaceRoot, addonMetadata.root);
-    const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
-    const packageJsonPath = path.join(rootPath, 'package.json');
+    const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
+    // const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
+    const packageJsonPath = path.join(packageRootPath, 'package.json');
     const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     /**
      * @type {Record<string,unknown> & {compilerOptions:{outDir?:string}}}
      */
-    const tsconfigJson = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
+    // const tsconfigJson = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
     /**
      * @type {Record<string,unknown> & {module?:string}}
      */
@@ -50,12 +50,13 @@ function loadWorkspaceAddon(addonName, options = {}) {
       );
     }
 
-    if (!tsconfigJson.compilerOptions.outDir) {
-      throw new Error('your addon tsconfig.lib.json is missing compilerOptions.outDir definition');
-    }
+    // if (!tsconfigJson.compilerOptions.outDir) {
+    //   throw new Error('your addon tsconfig.lib.json is missing compilerOptions.outDir definition');
+    // }
 
     const packageDistPath = path.dirname(packageJson.module);
-    const tsConfigDistPath = path.join(rootPath, tsconfigJson.compilerOptions.outDir);
+    const packageDistAbsolutePath = path.join(packageRootPath, packageDistPath);
+    // const tsConfigDistPath = path.join(rootPath, tsconfigJson.compilerOptions.outDir);
     /**
      * we use always POSIX path in js modules thus this needs to be converted explicitly to POSIX, not matter what OS is used
      * Example:
@@ -63,14 +64,14 @@ function loadWorkspaceAddon(addonName, options = {}) {
      * `..\\one\\two` ->  `../one/two` | NON POSIX (windows)
      */
     const relativePathToSource = path
-      .relative(tsConfigDistPath, sourceRootPath)
+      .relative(packageDistAbsolutePath, sourceRootPath)
       .replace(new RegExp(`\\${path.sep}`, 'g'), path.posix.sep);
-    const presetSourcePath = path.join(rootPath, 'preset.js');
-    const presetMockedSourcePath = path.join(tsConfigDistPath, 'preset.js');
+    const presetSourcePath = path.join(packageRootPath, 'preset.js');
+    const presetMockedSourcePath = path.join(packageDistAbsolutePath, 'preset.js');
 
     return {
-      tsConfigDistPath,
       packageDistPath,
+      packageDistAbsolutePath,
       presetSourcePath,
       presetMockedSourcePath,
       relativePathToSource,
@@ -79,8 +80,8 @@ function loadWorkspaceAddon(addonName, options = {}) {
 
   const {
     relativePathToSource,
-    tsConfigDistPath,
     packageDistPath,
+    packageDistAbsolutePath,
     presetSourcePath,
     presetMockedSourcePath,
   } = getPaths();
@@ -105,13 +106,15 @@ function loadWorkspaceAddon(addonName, options = {}) {
     ${modifiedPresetContent}
   `;
 
-  if (!fs.existsSync(tsConfigDistPath)) {
-    fs.mkdirSync(tsConfigDistPath, { recursive: true });
+  if (!fs.existsSync(packageDistAbsolutePath)) {
+    fs.mkdirSync(packageDistAbsolutePath, { recursive: true });
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
 
-  return tsConfigDistPath;
+  console.log({ packageDistAbsolutePath });
+
+  return packageDistAbsolutePath;
   /* eslint-enable no-shadow */
 }
 
