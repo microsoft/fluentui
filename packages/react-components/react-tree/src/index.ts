@@ -11,3 +11,12 @@ export {
   useTreeItem_unstable,
 } from './TreeItem';
 export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+
+export {
+  TreeItemLayout,
+  treeItemLayoutClassNames,
+  renderTreeItemLayout_unstable,
+  useTreeItemLayoutStyles_unstable,
+  useTreeItemLayout_unstable,
+} from './TreeItemLayout';
+export type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout';

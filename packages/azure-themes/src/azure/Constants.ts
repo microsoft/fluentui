@@ -22,5 +22,6 @@ export const inputControlHeightInner = '20px';
 export const inputControlPadding = '12px';
 export const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
 export const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidthMaxMedium);
+export const spinButtonArrowHeight = '14px';
 export const textAlignCenter = 'center';
 export const transparent = 'transparent';

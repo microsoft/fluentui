@@ -16,7 +16,7 @@ const performanceExamplesContext = require.context('@fluentui/docs/src/examples/
 const performanceExampleNames: string[] = _.shuffle(performanceExamplesContext.keys());
 
 const asyncRender = (element: React.ReactElement, container: Element) =>
-  new Promise(resolve => {
+  new Promise<void>(resolve => {
     ReactDOM.render(element, container, () => {
       ReactDOM.unmountComponentAtNode(container);
       resolve();

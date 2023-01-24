@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 24 Jan 2023 07:51:03 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.47",
+      "version": "8.5.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "2331c9314cd1440ab413e404bdf1da8da0de7e05",
+            "comment": "Spin button height and caret positioning (for Elixir controls) "
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 07:42:14 GMT",
       "tag": "@fluentui/azure-themes_v8.5.46",
       "version": "8.5.46",

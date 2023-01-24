@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Export 'Virtualizer' as unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

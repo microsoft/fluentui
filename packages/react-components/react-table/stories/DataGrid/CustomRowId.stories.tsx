@@ -9,7 +9,6 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar, Checkbox } from '@fluentui/react-components';
-import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
   DataGridBody,
   DataGridRow,
@@ -17,12 +16,13 @@ import {
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
+  TableCellLayout,
   TableColumnDefinition,
   TableRowData,
   createTableColumn,
   TableRowId,
   DataGridProps,
-} from '@fluentui/react-table';
+} from '@fluentui/react-components/unstable';
 
 type FileCell = {
   label: string;

@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-virtualizer",
+  "entries": [
+    {
+      "date": "Mon, 23 Jan 2023 16:43:12 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "547235ce85eef5fc65ed0cdd51ef5244d480b4b6",
+            "comment": "feat: Initial unstable release of the Virtualizer"
+          }
+        ]
+      }
+    }
+  ]
+}

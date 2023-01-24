@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Initial unstable release of the Virtualizer",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

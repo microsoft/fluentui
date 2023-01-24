@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Update Field label padding to match spec",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

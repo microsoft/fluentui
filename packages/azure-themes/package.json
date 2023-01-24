@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/azure-themes",
-  "version": "8.5.46",
+  "version": "8.5.47",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

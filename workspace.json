@@ -822,6 +822,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-virtualizer": {
+      "root": "packages/react-components/react-virtualizer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-virtualizer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-window-provider": {
       "root": "packages/react-window-provider",
       "projectType": "library",
@@ -1083,13 +1090,6 @@
       "root": "packages/utilities",
       "projectType": "library",
       "implicitDependencies": []
-    },
-    "@fluentui/react-virtualizer": {
-      "root": "packages/react-components/react-virtualizer",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-virtualizer/src",
-      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",
