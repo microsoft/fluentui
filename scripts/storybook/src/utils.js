@@ -5,6 +5,7 @@ const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@
 const { stripIndents, offsetFromRoot } = require('@nrwl/devkit');
 const { workspaceRoot } = require('nx/src/utils/app-root');
 const semver = require('semver');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
@@ -14,15 +15,22 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  *
  * @example
  * ```js
- *  module.exports = { addons: ['@storybook/addon-essentials', loadWorkspaceAddon('@fluentui/custom-storybook-addon')] }
+ *  module.exports = {
+ *    addons: [
+        '@storybook/addon-essentials',
+        loadWorkspaceAddon('@fluentui/custom-storybook-addon',{ tsConfigPath: path.join(__dirname,'../tsconfig.base.json') }),
+      ]
+ *  }
  * ```
  *
  * @param {string} addonName - package name of custom workspace addon
- * @param {Partial<typeof loadWorkspaceAddonDefaultOptions>} options
+ * @param {Object} options
+ * @param {string=} options.workspaceRoot
+ * @param {string} options.tsConfigPath - absolute path to tsConfig that contains path aliases
  */
-function loadWorkspaceAddon(addonName, options = {}) {
+function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
-  const { workspaceRoot } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+  const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
   if (process.env.NODE_ENV === 'production') {
     return addonName;
@@ -32,13 +40,13 @@ function loadWorkspaceAddon(addonName, options = {}) {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
     const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
-    // const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
     const packageJsonPath = path.join(packageRootPath, 'package.json');
-    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
-    /**
-     * @type {Record<string,unknown> & {compilerOptions:{outDir?:string}}}
-     */
-    // const tsconfigJson = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
+    const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
+
+    if (!fs.existsSync(packageJsonPath)) {
+      throw new Error('your addon is missing package.json.');
+    }
+
     /**
      * @type {Record<string,unknown> & {module?:string}}
      */
@@ -50,13 +58,9 @@ function loadWorkspaceAddon(addonName, options = {}) {
       );
     }
 
-    // if (!tsconfigJson.compilerOptions.outDir) {
-    //   throw new Error('your addon tsconfig.lib.json is missing compilerOptions.outDir definition');
-    // }
-
     const packageDistPath = path.dirname(packageJson.module);
     const packageDistAbsolutePath = path.join(packageRootPath, packageDistPath);
-    // const tsConfigDistPath = path.join(rootPath, tsconfigJson.compilerOptions.outDir);
+
     /**
      * we use always POSIX path in js modules thus this needs to be converted explicitly to POSIX, not matter what OS is used
      * Example:
@@ -64,7 +68,7 @@ function loadWorkspaceAddon(addonName, options = {}) {
      * `..\\one\\two` ->  `../one/two` | NON POSIX (windows)
      */
     const relativePathToSource = path
-      .relative(packageDistAbsolutePath, sourceRootPath)
+      .relative(packageDistAbsolutePath, packageSourceRootPath)
       .replace(new RegExp(`\\${path.sep}`, 'g'), path.posix.sep);
     const presetSourcePath = path.join(packageRootPath, 'preset.js');
     const presetMockedSourcePath = path.join(packageDistAbsolutePath, 'preset.js');
@@ -95,13 +99,24 @@ function loadWorkspaceAddon(addonName, options = {}) {
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
 
   const regex = new RegExp(`\\./${path.normalize(packageDistPath)}`, 'g');
-  let modifiedPresetContent = presetContent.replace(regex, relativePathToSource);
+  const presetApiRegex = /module\.exports\s+=\s+({).+}/;
+  let modifiedPresetContent = presetContent
+    .replace(regex, relativePathToSource)
+    .replace(presetApiRegex, (match, p1) => {
+      return match.replace(p1, '{ managerWebpack, ');
+    });
 
   modifiedPresetContent = stripIndents`
-    const { workspaceRoot } = require('nx/src/utils/app-root');
-    const { registerTsProject } = require('nx/src/utils/register');
+    const path = require('path');
+    const { workspaceRoot } = require('@nrwl/devkit');
+    const { registerTsPaths, registerTsProject } = require('@fluentui/scripts-storybook');
 
-    registerTsProject(workspaceRoot, 'tsconfig.base.json');
+    registerTsProject('${tsConfigPath}');
+
+    function managerWebpack(config, options) {
+      registerTsPaths({config, tsConfigPath: '${tsConfigPath}'});
+      return config;
+    }
 
     ${modifiedPresetContent}
   `;
@@ -111,8 +126,6 @@ function loadWorkspaceAddon(addonName, options = {}) {
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
-
-  console.log({ packageDistAbsolutePath });
 
   return packageDistAbsolutePath;
   /* eslint-enable no-shadow */
@@ -172,6 +185,40 @@ function getPackageStoriesGlob(options) {
     });
 }
 
+/**
+ *
+ * register TsconfigPathsPlugin to webpack config
+ * @param {Object} options
+ * @param {string} options.tsConfigPath - absolute path to tsconfig that contains path aliases
+ * @param {import('webpack').Configuration} options.config
+ * @returns
+ */
+function registerTsPaths(options) {
+  const { config, tsConfigPath } = options;
+  const tsPaths = new TsconfigPathsPlugin({
+    configFile: tsConfigPath,
+  });
+
+  config.resolve = config.resolve ?? {};
+  config.resolve.plugins = config.resolve.plugins ?? [];
+  config.resolve.plugins.push(tsPaths);
+  return config;
+}
+
+/**
+ * Enable typescript file resolution and in memory transpilation to vanilla JS within NodeJS environment
+ * @param {string} tsConfigPath
+ */
+function registerTsProject(tsConfigPath) {
+  const { register } = require('@swc-node/register/register');
+  const { readDefaultTsConfig } = require('@swc-node/register/read-default-tsconfig');
+
+  const tsConfig = readDefaultTsConfig(tsConfigPath);
+  register(tsConfig);
+}
+
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;
+exports.registerTsPaths = registerTsPaths;
+exports.registerTsProject = registerTsProject;
