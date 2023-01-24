@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, isResolvedShorthand, resolveShorthand } from '@fluentui/react-utilities';
-import { ChevronRightRegular } from '@fluentui/react-icons';
+import { ChevronRight12Regular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -28,8 +28,8 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
   const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
 
   const isBranch = typeof ariaOwns === 'string';
+  const { expandIcon, actions, groupper } = props;
   const open = useTreeContext_unstable(ctx => isBranch && ctx.openSubtrees.includes(ariaOwns!));
-  const { expandIcon, iconBefore, iconAfter, actions, badges, groupper } = props;
   const { dir, targetDocument } = useFluent_unstable();
   const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   const groupperProps = useFocusableGroup();
@@ -91,14 +91,20 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     }
   });
 
-  const [keepActionsOpen, setKeepActionsOpen] = React.useState(false);
+  const [isActionsVisible, setActionsVisible] = React.useState(false);
+  const showActions = useEventCallback(() => {
+    setActionsVisible(true);
+  });
+  const hideActions = useEventCallback(() => {
+    setActionsVisible(false);
+  });
 
   // Listens to focusout event on the document to ensure treeitem actions visibility on portal scenarios
   // TODO: find a better way to ensure this behavior
   React.useEffect(() => {
     if (actionsRef.current) {
       const handleFocusOut = (event: FocusEvent) => {
-        setKeepActionsOpen(elementContains(actionsRef.current, event.relatedTarget as Node));
+        setActionsVisible(elementContains(actionsRef.current, event.relatedTarget as Node));
       };
       targetDocument?.addEventListener('focusout', handleFocusOut, { passive: true });
       return () => {
@@ -110,14 +116,11 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
   return {
     isLeaf: !isBranch,
     open,
-    keepActionsOpen,
+    isActionsVisible: actions ? isActionsVisible : false,
     components: {
       root: 'div',
       expandIcon: 'span',
-      iconBefore: 'span',
-      iconAfter: 'span',
       actions: 'span',
-      badges: 'span',
       groupper: 'span',
     },
     root: getNativeElementProps(as, {
@@ -131,6 +134,10 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       role: 'treeitem',
       onClick: handleClick,
       onKeyDown: handleKeyDown,
+      onMouseOver: actions ? showActions : undefined,
+      onFocus: actions ? showActions : undefined,
+      onMouseOut: actions ? hideActions : undefined,
+      onBlur: actions ? hideActions : undefined,
     }),
     groupper: resolveShorthand(groupper, {
       required: true,
@@ -139,21 +146,10 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
         ...groupperProps,
       },
     }),
-    iconBefore: resolveShorthand(iconBefore, {
-      defaultProps: { 'aria-hidden': true },
-    }),
-    iconAfter: resolveShorthand(iconAfter, {
-      defaultProps: { 'aria-hidden': true },
-    }),
     expandIcon: resolveShorthand(expandIcon, {
       required: isBranch,
       defaultProps: {
-        children: <ChevronRightRegular style={expandIconInlineStyles[expandIconRotation]} />,
-        'aria-hidden': true,
-      },
-    }),
-    badges: resolveShorthand(badges, {
-      defaultProps: {
+        children: <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />,
         'aria-hidden': true,
       },
     }),

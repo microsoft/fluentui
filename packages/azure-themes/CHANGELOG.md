@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Wed, 18 Jan 2023 07:42:14 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jan 2023 07:51:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.47](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.47)
+
+Tue, 24 Jan 2023 07:51:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.46..@fluentui/azure-themes_v8.5.47)
+
+### Patches
+
+- Spin button height and caret positioning (for Elixir controls)  ([PR #26464](https://github.com/microsoft/fluentui/pull/26464) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [8.5.46](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.46)
 
