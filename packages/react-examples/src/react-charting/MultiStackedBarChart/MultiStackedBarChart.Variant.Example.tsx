@@ -108,7 +108,7 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
     return (
       <>
         <Checkbox
-          label="Hide values"
+          label="Hide labels"
           checked={this.state.hideLabels}
           onChange={this._onCheckChange}
           styles={{ root: { marginBottom: '20px' } }}

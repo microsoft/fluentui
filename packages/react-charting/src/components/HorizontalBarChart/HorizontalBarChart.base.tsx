@@ -283,7 +283,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
-  private _createBars(data: IChartProps, palette: IPalette): (JSX.Element | null)[] {
+  private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -333,7 +333,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       // Render bar label instead of placeholder bar for absolute-scale variant
       if (index === placeholderIndex && this.props.variant === HorizontalBarChartVariant.AbsoluteScale) {
         if (this.props.hideLabels) {
-          return null;
+          return <text key={index} />;
         }
 
         const barValue = data.chartData![0].horizontalBarChartdata!.x;

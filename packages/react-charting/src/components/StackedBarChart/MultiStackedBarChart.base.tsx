@@ -50,8 +50,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
-  /** Maximum total value of stacked bars in all charts */
-  private _maxBarsTotalValue: number;
+  private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
 
   public constructor(props: IMultiStackedBarChartProps) {
@@ -90,7 +89,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
     const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
-    this._maxBarsTotalValue = this._getMaxBarsTotalValue();
+    this._longestBarTotalValue = this._computeLongestBarTotalValue();
     const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
       const singleChartBars = this._createBarsAndLegends(
         singleChartData!,
@@ -146,13 +145,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    /** Sum of values of stacked bars in current chart */
-    const barsTotalValue = data.chartData!.reduce(
+    const barTotalValue = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
     const total =
-      this.props.variant === MultiStackedBarChartVariant.AbsoluteScale ? this._maxBarsTotalValue : barsTotalValue;
+      this.props.variant === MultiStackedBarChartVariant.AbsoluteScale ? this._longestBarTotalValue : barTotalValue;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -169,10 +167,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
 
     // Include an imaginary placeholder bar with value equal to
-    // the difference between maxBarsTotalValue and barsTotalValue
+    // the difference between longestBarTotalValue and barTotalValue
     // while calculating sumOfPercent to get correct scalingRatio for absolute-scale variant
     if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale) {
-      let value = total === 0 ? 0 : ((total - barsTotalValue) / total) * 100;
+      let value = total === 0 ? 0 : ((total - barTotalValue) / total) * 100;
       if (value < 1 && value !== 0) {
         value = 1;
       } else if (value > 99 && value !== 100) {
@@ -261,10 +259,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             transform={`translate(${this._isRTL ? -4 : 4})`}
             className={this._classNames.barLabel}
             data-is-focusable={true}
-            aria-label={`Total: ${barsTotalValue}`}
+            aria-label={`Total: ${barTotalValue}`}
             role="img"
           >
-            {d3FormatPrefix(barsTotalValue < 1000 ? '.2~' : '.1', barsTotalValue)(barsTotalValue)}
+            {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
           </text>,
         );
       }
@@ -277,7 +275,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           </g>,
         );
       }
-      if (barsTotalValue === 0) {
+      if (barTotalValue === 0) {
         bars.push(
           <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
             <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
@@ -312,7 +310,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!hideDenominator && (
                   <span className={this._classNames.ratioDenominator}>
-                    {' / ' + convertToLocaleString(barsTotalValue, culture)}
+                    {' / ' + convertToLocaleString(barTotalValue, culture)}
                   </span>
                 )}
               </div>
@@ -539,15 +537,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private _getMaxBarsTotalValue = () => {
-    let maxBarsTotalValue = 0;
+  private _computeLongestBarTotalValue = () => {
+    let longestBarTotalValue = 0;
     this.props.data!.forEach(({ chartData }) => {
-      const barsTotalValue = chartData!.reduce(
+      const barTotalValue = chartData!.reduce(
         (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
         0,
       );
-      maxBarsTotalValue = Math.max(maxBarsTotalValue, barsTotalValue);
+      longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
     });
-    return maxBarsTotalValue;
+    return longestBarTotalValue;
   };
 }
