@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { CalendarDayGrid, CalendarDayGridProps } from '@fluentui/react-datepicker';
+import { CalendarDayGridProps } from '@fluentui/react-datepicker';
 
-export const Default = (props: Partial<CalendarDayGridProps>) => <CalendarDayGrid {...props} />;
+export const Default = (props: Partial<CalendarDayGridProps>) => <div {...props} />;
