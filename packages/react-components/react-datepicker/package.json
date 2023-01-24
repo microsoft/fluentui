@@ -34,6 +34,13 @@
   "dependencies": {
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.4.0",
+    "@fluentui/keyboard-keys": "^9.0.1",
+    "@fluentui/utilities": "^8.13.5",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-shared-contexts": "^9.1.5",
+    "@fluentui/react-tabster": "^9.4.0",
+    "@fluentui/react-popover": "^9.4.3",
+    "@fluentui/react-input": "^9.2.13",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
