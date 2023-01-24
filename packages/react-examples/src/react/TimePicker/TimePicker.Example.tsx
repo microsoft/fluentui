@@ -15,7 +15,7 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
 };
 
 const onFormatDate = (date: Date) => `Custom prefix + ${date.toLocaleTimeString()}`;
-const onChange = (_: React.FormEvent<IComboBox>, date: Date) => console.log('SELECTED DATE: ', date);
+const onTimeChange = (date: Date) => console.log('SELECTED DATE: ', date);
 
 export const TimePickerBasicExample: React.FC = () => {
   const timeRange: ITimeRange = {
@@ -31,8 +31,8 @@ export const TimePickerBasicExample: React.FC = () => {
         allowFreeform
         autoComplete="on"
         label={'TimePicker basic example'}
-        onChange={onChange}
-        defaultValue={new Date('November 25, 2021 09:15:00')}
+        onTimeChange={onTimeChange}
+        currentDate={new Date('November 25, 2021 09:15:00')}
         useComboBoxAsMenuWidth
       />
       <TimePicker
@@ -44,7 +44,7 @@ export const TimePickerBasicExample: React.FC = () => {
         label={'TimePicker with non default options'}
         useComboBoxAsMenuWidth
         timeRange={timeRange}
-        onChange={onChange}
+        onTimeChange={onTimeChange}
       />
       <TimePicker
         styles={timePickerStyles}

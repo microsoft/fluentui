@@ -1,5 +1,4 @@
-import * as React from 'react';
-import type { IComboBox, IComboBoxProps } from '../../ComboBox';
+import type { IComboBoxProps } from '../../ComboBox';
 
 /**
  * {@docCategory TimePicker}
@@ -20,16 +19,15 @@ export interface ITimeRange {
 export interface ITimePickerStrings {
   /** Error message to render below the field if input parsing fails. */
   invalidInputErrorMessage: string;
+  /** Default placeholder text to render within ComboBox if no placeholder is provided. */
+  defaultTimePickerPlaceholder: string;
 }
 
 /**
  * {@docCategory TimePicker}
  */
 export interface ITimePickerProps
-  extends Omit<
-    IComboBoxProps,
-    'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'defaultValue' | 'onChange'
-  > {
+  extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'onChange'> {
   /**
    * Label of the component
    */
@@ -70,14 +68,14 @@ export interface ITimePickerProps
   strings?: ITimePickerStrings;
 
   /**
-   * Default value of the TimePicker, if any
+   * Controlled current date for the TimePicker, if any
    */
-  defaultValue?: Date;
+  currentDate?: Date;
 
   /**
    * Callback issued when the time is changed
    */
-  onChange?: (event: React.FormEvent<IComboBox>, time: Date) => void;
+  onTimeChange?: (time: Date) => void;
 
   /**
    * Callback to localize the date strings displayed for dropdown options
