@@ -7,8 +7,7 @@ import {
   ceilMinuteToIncrement,
   getDateFromTimeSelection,
 } from '@fluentui/date-time-utilities';
-import { ComboBox } from '../../ComboBox';
-import type { IComboBox, IComboBoxOption } from '../../ComboBox';
+import type { ComboBox, IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
 
 const REGEX_SHOW_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):([0-5][0-9]):([0-5][0-9])\s([AaPp][Mm]))$/;
