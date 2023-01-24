@@ -20,10 +20,10 @@ export const Button: ForwardRefComponent<ButtonProps>;
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
-// @internal (undocumented)
+// @internal
 export const ButtonContextProvider: React_2.Provider<ButtonContextValue | undefined>;
 
-// @internal (undocumented)
+// @internal
 export interface ButtonContextValue {
     // (undocumented)
     size?: ButtonSize;
@@ -136,7 +136,7 @@ export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, '
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
 
-// @internal (undocumented)
+// @internal
 export const useButtonContext: () => ButtonContextValue;
 
 // @public (undocumented)
