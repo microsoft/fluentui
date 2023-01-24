@@ -21,18 +21,20 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
 
   // Checking if useId is available on React, if it is, we use it to generate the id. String concatenation is used to
   // prevent bundlers from complaining with older versions of React.
-  const _useId: () => string = (React as never)['use' + 'Id'];
+  const _useId: () => string | undefined = (React as never)['use' + 'Id'];
+
+  if (_useId) {
+    return providedId || `${prefix}${_useId()}`;
+  }
 
   // Hooks appear to be running conditionally, but they will always run in the same order since it's based on
   // the version of React being used. This is safe to ignore.
-  return _useId
-    ? providedId || `${prefix}${_useId()}`
-    : // eslint-disable-next-line react-hooks/rules-of-hooks
-      React.useMemo(() => {
-        if (providedId) {
-          return providedId;
-        }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return React.useMemo(() => {
+    if (providedId) {
+      return providedId;
+    }
 
-        return `${prefix}${++contextValue.current}`;
-      }, [prefix, providedId, contextValue]);
+    return `${prefix}${++contextValue.current}`;
+  }, [prefix, providedId, contextValue]);
 }
