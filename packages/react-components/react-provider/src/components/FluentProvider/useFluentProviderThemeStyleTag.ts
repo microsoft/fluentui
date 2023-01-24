@@ -62,6 +62,7 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
       : '';
   }, [theme]);
 
+  // When using React 18, the id generated will contain : which is not valid unless we add an escape character
   const rule = `.${styleTagId.replace(/:/g, '\\:')} { ${cssVarsAsString} }`;
 
   useInsertionEffect(() => {
