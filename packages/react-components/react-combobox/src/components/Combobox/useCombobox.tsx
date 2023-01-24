@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as keys from '@fluentui/keyboard-keys';
+import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
@@ -157,7 +157,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }
 
     // clear activedescendant when moving the text insertion cursor
-    if (ev.key === keys.ArrowLeft || ev.key === keys.ArrowRight) {
+    if (ev.key === ArrowLeft || ev.key === ArrowRight) {
       setHideActiveDescendant(true);
     } else {
       setHideActiveDescendant(false);
