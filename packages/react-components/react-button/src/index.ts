@@ -40,3 +40,6 @@ export {
 export type { ToggleButtonProps, ToggleButtonState } from './ToggleButton';
 
 export { useToggleState } from './utils/index';
+
+export { ButtonContextProvider, useButtonContext } from './contexts/index';
+export type { ButtonContextValue } from './contexts/index';
