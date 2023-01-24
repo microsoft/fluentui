@@ -54,7 +54,7 @@ describe('useFluentProvider_unstable', () => {
 
   it('should merge overrides', () => {
     const overridesA: OverridesContextValue_unstable = {
-      inputDefaultAppearance: 'underline',
+      inputDefaultAppearance: 'filled-lighter',
       // currently the overrides object contains a single value, adding one more to test the merging
       customValue: 'shouldNotBeOverridden',
     } as OverridesContextValue_unstable;
