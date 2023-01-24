@@ -11,13 +11,14 @@ export const renderTreeItem_unstable = (state: TreeItemState, contextValues: Tre
 
   return (
     <TreeItemProvider value={contextValues.treeItem}>
-      <slots.groupper {...slotProps.groupper}>
-        <slots.root {...slotProps.root}>
+      <slots.root {...slotProps.root}>
+        <slots.content {...slotProps.content}>
           {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
-          {slotProps.root.children}
+          {slotProps.content.children}
           {slots.actions && <slots.actions {...slotProps.actions} />}
-        </slots.root>
-      </slots.groupper>
+        </slots.content>
+        {slots.subtree && <slots.subtree {...slotProps.subtree} />}
+      </slots.root>
     </TreeItemProvider>
   );
 };

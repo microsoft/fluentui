@@ -33,9 +33,8 @@ export const Tree: ForwardRefComponent<TreeProps>;
 export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
-export type TreeContextValue = {
+export type TreeContextValue = Required<Pick<TreeProps, 'openItems'>> & {
     level: number;
-    openSubtrees: string[];
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
     focusFirstSubtreeItem(target: HTMLElement): void;
@@ -75,9 +74,10 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 // @public (undocumented)
 export type TreeItemSlots = {
     root: Slot<'div'>;
+    content: NonNullable<Slot<'span'>>;
+    subtree?: Slot<'span'>;
     expandIcon?: Slot<'span'>;
     actions?: Slot<'span'>;
-    groupper: NonNullable<Slot<'span'>>;
 };
 
 // @public
@@ -90,8 +90,8 @@ export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue
 export type TreeProps = ComponentProps<TreeSlots> & {
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
-    openSubtrees?: string | string[];
-    defaultOpenSubtrees?: string | string[];
+    openItems?: string | string[];
+    defaultOpenItems?: string | string[];
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
 };
 
@@ -104,9 +104,7 @@ export type TreeSlots = {
 };
 
 // @public
-export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
-    open: boolean;
-};
+export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;

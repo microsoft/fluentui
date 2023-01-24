@@ -2,15 +2,7 @@ import { TreeContextValue } from '../../contexts';
 import type { TreeContextValues, TreeState } from './Tree.types';
 
 export function useTreeContextValues_unstable(state: TreeState): TreeContextValues {
-  const {
-    openSubtrees,
-    level,
-    appearance,
-    size,
-    requestOpenChange,
-    focusFirstSubtreeItem,
-    focusSubtreeOwnerItem,
-  } = state;
+  const { openItems, level, appearance, size, requestOpenChange, focusFirstSubtreeItem, focusSubtreeOwnerItem } = state;
   /**
    * This context is created with "@fluentui/react-context-selector",
    * there is no sense to memoize it
@@ -19,7 +11,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
     appearance,
     size,
     level,
-    openSubtrees,
+    openItems,
     requestOpenChange,
     focusFirstSubtreeItem,
     focusSubtreeOwnerItem,
