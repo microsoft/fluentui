@@ -5,7 +5,7 @@ import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { useTreeContext_unstable } from '../../contexts/index';
 import * as React from 'react';
-import { levelToken } from '../../contexts';
+import { levelToken } from '../../utils/tokens';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
