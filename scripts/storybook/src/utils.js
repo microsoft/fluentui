@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot } = require('@nrwl/devkit');
-const { workspaceRoot } = require('nx/src/utils/app-root');
+const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
@@ -206,7 +205,45 @@ function registerTsPaths(options) {
   return config;
 }
 
+function createPathAliasesConfig() {
+  const { tsConfigAllPath } = createMergedTsConfig();
+  const tsPaths = new TsconfigPathsPlugin({
+    configFile: tsConfigAllPath,
+  });
+
+  return { tsPaths };
+}
+
+function createMergedTsConfig() {
+  const rootPath = workspaceRoot;
+  const baseConfigs = {
+    v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
+    v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
+    v9: readJsonFile(path.join(rootPath, 'tsconfig.base.json')),
+  };
+  const mergedTsConfig = {
+    compilerOptions: {
+      moduleResolution: 'node',
+      forceConsistentCasingInFileNames: true,
+      skipLibCheck: true,
+      baseUrl: workspaceRoot,
+      paths: {
+        ...baseConfigs.v0.compilerOptions.paths,
+        ...baseConfigs.v8.compilerOptions.paths,
+        ...baseConfigs.v9.compilerOptions.paths,
+      },
+    },
+  };
+
+  const tsConfigAllPath = path.join(workspaceRoot, 'dist/tsconfig.base.all.json');
+
+  writeJsonFile(tsConfigAllPath, mergedTsConfig);
+
+  return { tsConfigAllPath, mergedTsConfig };
+}
+
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;
 exports.registerTsPaths = registerTsPaths;
+exports.createPathAliasesConfig = createPathAliasesConfig;

@@ -1,1 +1,7 @@
-export { getPackageStoriesGlob, getCodesandboxBabelOptions, loadWorkspaceAddon, registerTsPaths } from './utils';
+export {
+  getPackageStoriesGlob,
+  getCodesandboxBabelOptions,
+  loadWorkspaceAddon,
+  registerTsPaths,
+  createPathAliasesConfig,
+} from './utils';
