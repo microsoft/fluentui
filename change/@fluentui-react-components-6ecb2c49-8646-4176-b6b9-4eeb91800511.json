@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add DropdownField",
+  "packageName": "@fluentui/react-components",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
