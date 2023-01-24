@@ -3,6 +3,7 @@ import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
+import { DropdownField_unstable as DropdownField } from '@fluentui/react-combobox';
 import { SparkleFilled } from '@fluentui/react-icons';
 import type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
@@ -79,6 +80,11 @@ storiesOfField('CheckboxField converged', CheckboxField)
 // ComboboxField
 //
 storiesOfFieldWithSize('ComboboxField converged', ComboboxField);
+
+//
+// DropdownField
+//
+storiesOfFieldWithSize('DropdownField converged', DropdownField);
 
 //
 // InputField

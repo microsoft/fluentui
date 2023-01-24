@@ -61,3 +61,6 @@ export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './Opt
 
 export { ComboboxField as ComboboxField_unstable, comboboxFieldClassNames } from './ComboboxField';
 export type { ComboboxFieldProps as ComboboxFieldProps_unstable } from './ComboboxField';
+
+export { DropdownField as DropdownField_unstable, dropdownFieldClassNames } from './DropdownField';
+export type { DropdownFieldProps as DropdownFieldProps_unstable } from './DropdownField';

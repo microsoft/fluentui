@@ -290,6 +290,9 @@ export type { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentu
 export { ComboboxField_unstable as ComboboxField, comboboxFieldClassNames } from '@fluentui/react-combobox';
 export type { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
 
+export { DropdownField_unstable as DropdownField, dropdownFieldClassNames } from '@fluentui/react-combobox';
+export type { DropdownFieldProps_unstable as DropdownFieldProps } from '@fluentui/react-combobox';
+
 export { InputField_unstable as InputField, inputFieldClassNames } from '@fluentui/react-input';
 export type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 

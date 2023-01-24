@@ -26,6 +26,7 @@ This is how the packages are currently organized: the `@fluentui/react-field` pa
   - Field utilities (`useField_unstable`, etc.)
   - `CheckboxField`
   - `ComboboxField`
+  - `DropdownField`
   - `InputField`
   - `ProgressField`
   - `RadioGroupField`

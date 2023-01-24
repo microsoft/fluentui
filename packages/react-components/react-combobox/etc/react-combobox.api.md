@@ -77,6 +77,15 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots>;
 export type DropdownContextValues = ComboboxBaseContextValues;
 
 // @public (undocumented)
+export const DropdownField_unstable: ForwardRefComponent<DropdownFieldProps_unstable>;
+
+// @public (undocumented)
+export const dropdownFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+
+// @public (undocumented)
+export type DropdownFieldProps_unstable = FieldProps<typeof Dropdown>;
+
+// @public (undocumented)
 export type DropdownOpenChangeData = ComboboxBaseOpenChangeData;
 
 // @public (undocumented)
