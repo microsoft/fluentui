@@ -6,11 +6,9 @@ import type { Divider } from './divider.js';
  * @public
  */
 export const template: ElementViewTemplate<Divider> = html<Divider>`
-  <template
-    class="${x => (x.hasChildNodes() ? 'children' : 'childless')}"
-    role="${x => x.role}"
-    aria-orientation="${x => (x.vertical ? 'vertical' : 'horizontal')}"
-  >
-    ${x => (x.hasChildNodes() ? html`<div class="wrapper" part="wrapper"><slot></slot></div>` : '')}
+  <template role="${x => x.role}" aria-orientation="${x => x.orientation}">
+    <div divider-background>
+      <slot></slot>
+    </div>
   </template>
 `;

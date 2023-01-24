@@ -1,10 +1,17 @@
 import { DividerRole, ValuesOf } from '@microsoft/fast-foundation';
+import { Orientation } from '@microsoft/fast-web-utilities';
 
 /**
  * Fast Foundation DividerRole property
  * @public
  */
 export { DividerRole };
+
+/**
+ * Fast Web Utilties Orientation property
+ * @public
+ */
+export { Orientation as DividerOrientation };
 
 /**
  * Align content within divider

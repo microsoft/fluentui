@@ -1,5 +1,5 @@
 export * from './divider.js';
 export * from './divider.options.js';
-export { definition } from './divider.definition.js';
-export { template as dividerTemplate } from './divider.template.js';
-export { styles as dividerStyles } from './divider.styles.js';
+export { definition as DividerDefinition } from './divider.definition.js';
+export { template as DividerTemplate } from './divider.template.js';
+export { styles as DividerStyles } from './divider.styles.js';

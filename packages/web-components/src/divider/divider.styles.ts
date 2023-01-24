@@ -1,29 +1,68 @@
 import { css } from '@microsoft/fast-element';
+import { colorNeutralStroke1, strokeWidthThin } from '../theme/design-tokens.js';
 
-import {} from '../theme/design-tokens.js';
-
+/** Divider styles
+ * @public
+ */
 export const styles = css`
   :host {
-    /* default CSS */
+    border: none;
     display: flex;
-    background-color: red;
+  }
+  :host [divider-background] {
+    display: flex;
+    background: red;
   }
 
-  :host([alignContent='start']) {
+  :host([orientation='horizontal']) {
+    flex-direction: column;
+  }
+  :host([orientation='horizontal']) ::slotted(*) {
+  }
+
+  :host([orientation='vertical']) {
+    flex-direction: row;
+  }
+  :host([orientation='vertical']) ::slotted(*) {
+    flex-direction: row;
+  }
+
+  :host ::slotted(*) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  :host([align-content='start']) {
     align-items: flex-start;
   }
-  :host([alignContent='center']) {
+  :host([align-content='center']) {
     align-items: center;
   }
-  :host([alignContent='end']) {
-    align-items: end;
+  :host([align-content='end']) {
+    align-items: flex-end;
   }
-  :host([appearance='strong']) {
+
+  :host ::slotted(*)::before,
+  :host ::slotted(*)::after {
+    align-self: center;
+    content: '';
+    height: 1px;
+    flex: 1;
+    margin: 0 1em;
+    background: #ddd;
   }
-  :host([appearance='brand']) {
+
+  :host([appearance='strong']) ::slotted(*)::after,
+  :host([appearance='strong']) ::slotted(*)::before {
+    background: #000000;
   }
-  :host([appearance='subtle']) {
+  :host([appearance='brand']) ::slotted(*)::after,
+  :host([appearance='brand']) ::slotted(*)::before {
+    background: blue;
   }
-  :host([appearance='default']) {
+  :host([appearance='subtle']) ::slotted(*)::after,
+  :host([appearance='subtle']) ::slotted(*)::before {
+    background: #ececec;
   }
 `;

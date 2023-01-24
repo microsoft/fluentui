@@ -1,9 +1,8 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { DividerRole, TabsOrientation } from '@microsoft/fast-foundation';
 import { renderComponent } from '../__test__/helpers.js';
 import type { Divider as FluentDivider } from './divider.js';
-import { DividerAlignContent, DividerAppearance } from './divider.options.js';
+import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 import './define.js';
 
 type DividerStoryArgs = Args & FluentDivider;
@@ -11,23 +10,24 @@ type DividerStoryMeta = Meta<DividerStoryArgs>;
 
 const storyTemplate = html<DividerStoryArgs>`
   <fluent-divider
-    alignContent=${x => x.alignContent}
+    align-content=${x => x.alignContent}
     appearance=${x => x.appearance}
-    dividerRole=${x => x.role}
+    role=${x => x.role}
     ?inset=${x => x.inset}
     orientation=${x => x.orientation}
   >
-    ${x => x.content}
+    <span>
+      <h3>${x => x.content}</h3>
+    </span>
   </fluent-divider>
 `;
 
 export default {
   title: 'Components/Divider',
   args: {
-    content: 'Text',
+    content: 'text',
     alignContent: 'center',
-    appearance: 'brand',
-    dividerRole: 'presentation',
+    role: 'presentation',
     inset: false,
     orientation: 'horizontal',
   },
@@ -54,7 +54,7 @@ export default {
       control: 'boolean',
     },
     orientation: {
-      options: Object.values(TabsOrientation),
+      options: Object.values(DividerOrientation),
       control: {
         type: 'select',
       },
