@@ -22,6 +22,7 @@ const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
 const configFiles = [
   './just.config.ts',
+  './cypress.config.ts',
   './gulpfile.ts',
   './*.js',
   './.*.js',

@@ -1,6 +1,12 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useCallback, useState } from 'react';
-import { ColumnDefinition, ColumnId, ColumnResizeState, ColumnWidthState, UseColumnSizingParams } from './types';
+import {
+  TableColumnDefinition,
+  TableColumnId,
+  ColumnResizeState,
+  ColumnWidthState,
+  UseColumnSizingParams,
+} from './types';
 import {
   columnDefinitionsToState,
   adjustColumnWidthsToFitContainer,
@@ -14,7 +20,7 @@ import {
 } from '../utils/columnResizeUtils';
 
 export function useColumnResizeState<T>(
-  columns: ColumnDefinition<T>[],
+  columns: TableColumnDefinition<T>[],
   containerWidth: number,
   params: UseColumnSizingParams = {},
 ): ColumnResizeState {
@@ -31,7 +37,7 @@ export function useColumnResizeState<T>(
   }, [columns, containerWidth, state, columnSizingOptions]);
 
   const setColumnWidth = useCallback(
-    (columnId: ColumnId, width: number) => {
+    (columnId: TableColumnId, width: number) => {
       const column = getColumnById(state, columnId);
       let newState = [...state];
 
@@ -56,17 +62,17 @@ export function useColumnResizeState<T>(
   );
 
   const setColumnIdealWidth = useCallback(
-    (columnId: ColumnId, minWidth: number) => {
+    (columnId: TableColumnId, minWidth: number) => {
       setState(setColumnProperty(state, columnId, 'idealWidth', minWidth));
     },
     [state],
   );
 
   return {
-    getColumnById: (colId: ColumnId) => getColumnById(state, colId),
+    getColumnById: (colId: TableColumnId) => getColumnById(state, colId),
     getColumnByIndex: (index: number) => getColumnByIndex(state, index),
     getColumns: () => state,
-    getColumnWidth: (colId: ColumnId) => getColumnWidth(state, colId),
+    getColumnWidth: (colId: TableColumnId) => getColumnWidth(state, colId),
     getLastColumn: () => getLastColumn(state),
     getLength: () => getLength(state),
     getTotalWidth: () => getTotalWidth(state),

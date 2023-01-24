@@ -1,9 +1,9 @@
 import {
-  ColumnId,
+  TableColumnId,
   ColumnWidthProps,
   ColumnWidthState,
   TableColumnSizingState,
-  TableState,
+  TableFeaturesState,
   UseColumnSizingParams,
 } from './types';
 import { useColumnResizeState } from './useColumnResizeState';
@@ -23,7 +23,7 @@ export const defaultColumnSizingState: TableColumnSizingState = {
 export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableState<TItem>) => useColumnSizingState(tableState, params);
+  return (tableState: TableFeaturesState<TItem>) => useColumnSizingState(tableState, params);
 }
 
 function getColumnProps(column: ColumnWidthState): ColumnWidthProps {
@@ -40,7 +40,10 @@ function getColumnProps(column: ColumnWidthState): ColumnWidthProps {
   };
 }
 
-function useColumnSizingState<TItem>(tableState: TableState<TItem>, params?: UseColumnSizingParams): TableState<TItem> {
+function useColumnSizingState<TItem>(
+  tableState: TableFeaturesState<TItem>,
+  params?: UseColumnSizingParams,
+): TableFeaturesState<TItem> {
   const { columns, tableRef } = tableState;
 
   const { targetDocument } = useFluent();
@@ -56,12 +59,12 @@ function useColumnSizingState<TItem>(tableState: TableState<TItem>, params?: Use
   return {
     ...tableState,
     columnSizing: {
-      getOnMouseDown: (columnId: ColumnId) => mouseHandler.getOnMouseDown(columnId),
-      getColumnWidth: (columnId: ColumnId) => columnResizeState.getColumnWidth(columnId),
+      getOnMouseDown: (columnId: TableColumnId) => mouseHandler.getOnMouseDown(columnId),
+      getColumnWidth: (columnId: TableColumnId) => columnResizeState.getColumnWidth(columnId),
       getTotalWidth: () => columnResizeState.getTotalWidth(),
-      setColumnWidth: (columnId: ColumnId, newSize: number) => columnResizeState.setColumnWidth(columnId, newSize),
+      setColumnWidth: (columnId: TableColumnId, newSize: number) => columnResizeState.setColumnWidth(columnId, newSize),
       getColumnWidths: () => columnResizeState.getColumns(),
-      getColumnProps: (columnId: ColumnId) => {
+      getColumnProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
         return col ? getColumnProps(col) : { columnId };
       },

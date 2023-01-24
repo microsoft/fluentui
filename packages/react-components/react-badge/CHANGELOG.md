@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Wed, 04 Jan 2023 01:40:52 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jan 2023 12:22:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.20)
+
+Tue, 17 Jan 2023 12:22:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.19..@fluentui/react-badge_v9.0.20)
+
+### Patches
+
+- feat(PresenceBadge): Add blocked status ([PR #26366](https://github.com/microsoft/fluentui/pull/26366) by jukapsia@microsoft.com)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.18)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.17..@fluentui/react-badge_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.17)
 

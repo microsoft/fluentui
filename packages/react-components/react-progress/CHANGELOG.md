@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Wed, 04 Jan 2023 01:40:22 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jan 2023 16:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.13)
+
+Mon, 23 Jan 2023 16:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.12..@fluentui/react-progress_v9.0.0-alpha.13)
+
+### Changes
+
+- Rename rectangular shape to square ([PR #26419](https://github.com/microsoft/fluentui/pull/26419) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.16 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.12)
+
+Mon, 16 Jan 2023 08:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.11..@fluentui/react-progress_v9.0.0-alpha.12)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.11)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.10..@fluentui/react-progress_v9.0.0-alpha.11)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.10)
 

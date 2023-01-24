@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: implement `useScrollbarWidth` utility hook",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

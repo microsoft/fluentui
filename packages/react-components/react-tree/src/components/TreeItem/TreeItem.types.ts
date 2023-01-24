@@ -1,18 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import {
-  BaseTreeItemElement,
-  BaseTreeItemElementIntersection,
-  BaseTreeItemProps,
-  BaseTreeItemSlots,
-  BaseTreeItemState,
-} from '../BaseTreeItem/index';
 
-export type TreeItemElement = BaseTreeItemElement;
-
-/** @internal */
-export type TreeItemElementIntersection = BaseTreeItemElementIntersection;
-
-export type TreeItemSlots = BaseTreeItemSlots & {
+export type TreeItemSlots = {
+  root: Slot<'div'>;
   /**
    * Expand icon slot,
    * by default renders a chevron icon to indicate opening and closing
@@ -35,14 +24,22 @@ export type TreeItemSlots = BaseTreeItemSlots & {
    * when the item is hovered/focused
    */
   actions?: Slot<'span'>;
+  groupper: NonNullable<Slot<'span'>>;
 };
 
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
+export type TreeItemState = ComponentState<TreeItemSlots> & {
+  open: boolean;
+  isLeaf: boolean;
+  /**
+   * boolean indicating that actions should remain open due to focus on some portal
+   */
+  keepActionsOpen: boolean;
+};

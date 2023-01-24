@@ -1,12 +1,12 @@
 import {
-  ColumnDefinition,
+  TableColumnDefinition,
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableHeaderCell,
   TableRow,
-  createColumn,
+  createTableColumn,
   useColumnSizing_unstable,
   useTableFeatures,
 } from '@fluentui/react-components/unstable';
@@ -20,26 +20,26 @@ type Item = {
   fourth: number;
 };
 
-const columnsDef: ColumnDefinition<Item>[] = [
-  createColumn<Item>({
+const columnsDef: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
     columnId: 'first',
     compare: (a, b) => {
       return a.first - b.first;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'second',
     compare: (a, b) => {
       return a.second - b.second;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'third',
     compare: (a, b) => {
       return a.third - b.third;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'fourth',
     compare: (a, b) => {
       return a.fourth - b.fourth;
@@ -50,10 +50,10 @@ const columnsDef: ColumnDefinition<Item>[] = [
 const items: Item[] = new Array(10).fill(0).map((_, i) => ({ first: i, second: i, third: i, fourth: i }));
 
 export const ResizingControlled = () => {
-  const [columns, setColumns] = useState<ColumnDefinition<Item>[]>(columnsDef);
+  const [columns, setColumns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
 
   const insertColumn = () => {
-    const newColumn = createColumn<Item>({
+    const newColumn = createTableColumn<Item>({
       columnId: Date.now().toString().split('').slice(-4).join(''),
       compare: (a, b) => {
         return a.first - b.first;

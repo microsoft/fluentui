@@ -101,6 +101,15 @@ export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick
 // @public
 export type ToolbarRadioButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & Pick<ToolbarRadioButtonProps, 'name' | 'value'>;
 
+// @public
+export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps>;
+
+// @public
+export type ToolbarRadioGroupProps = ComponentProps<ToolbarRadioGroupSlots>;
+
+// @public
+export type ToolbarRadioGroupState = ComponentState<ToolbarRadioGroupSlots>;
+
 // @public (undocumented)
 export type ToolbarSlots = {
     root: Slot<'div'>;

@@ -1,13 +1,12 @@
 import {
-  ColumnDefinition,
-  ColumnId,
+  TableColumnDefinition,
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableHeaderCell,
   TableRow,
-  createColumn,
+  createTableColumn,
   useColumnSizing_unstable,
   useTableFeatures,
 } from '@fluentui/react-components/unstable';
@@ -20,26 +19,26 @@ type Item = {
   fourth: number;
 };
 
-const columns: ColumnDefinition<Item>[] = [
-  createColumn<Item>({
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
     columnId: 'first',
     compare: (a, b) => {
       return a.first - b.first;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'second',
     compare: (a, b) => {
       return a.second - b.second;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'third',
     compare: (a, b) => {
       return a.third - b.third;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'fourth',
     compare: (a, b) => {
       return a.fourth - b.fourth;

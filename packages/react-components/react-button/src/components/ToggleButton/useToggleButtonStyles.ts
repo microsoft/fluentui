@@ -62,14 +62,11 @@ const useRootCheckedStyles = makeStyles({
       },
 
       ':focus': {
-        ...shorthands.borderColor('Highlight'),
+        ...shorthands.border('1px', 'solid', 'HighlightText'),
+        outlineColor: 'Highlight',
       },
     },
   },
-  highContrastFocusStyles: createCustomFocusIndicatorStyle({
-    ...shorthands.border('1px', 'solid', 'HighlightText'),
-    outlineColor: 'Highlight',
-  }),
 
   // Appearance variations
   outline: {

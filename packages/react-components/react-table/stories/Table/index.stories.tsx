@@ -31,8 +31,10 @@ export { SingleSelect } from './SingleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { SubtleSelection } from './SubtleSelection.stories';
+export { SelectionWithCellActions } from './SelectionWithCellActions.stories';
 export { Virtualization } from './Virtualization.stories';
 export { DataGrid } from './DataGrid.stories';
+export { Memoization } from './Memoization.stories';
 
 export default {
   title: 'Preview Components/Table',

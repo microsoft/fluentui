@@ -2,7 +2,7 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as glob from 'glob';
-import { findGitRoot } from '../monorepo';
+import { findGitRoot } from '@fluentui/scripts-monorepo';
 
 const generateOnly = process.argv.includes('-g');
 const beachballBin = require.resolve('beachball/bin/beachball.js');
@@ -50,6 +50,7 @@ function revertLocalChanges() {
  * "generateOnly" mode takes existing versions and write them out to version files (do this when out of sync)
  */
 export function generateVersionFiles() {
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const gitRoot = findGitRoot();
 
   if (!generateOnly) {

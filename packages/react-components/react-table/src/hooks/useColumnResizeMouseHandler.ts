@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColumnId, ColumnResizeState } from './types';
+import { TableColumnId, ColumnResizeState } from './types';
 import { useCallback, useRef } from 'react';
 
 export default function useColumnResizeMouseHandler(
@@ -8,7 +8,7 @@ export default function useColumnResizeMouseHandler(
 ) {
   const mouseX = useRef(0);
   const currentWidth = useRef(0);
-  const colId = useRef<ColumnId | undefined>(undefined);
+  const colId = useRef<TableColumnId | undefined>(undefined);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
@@ -42,7 +42,7 @@ export default function useColumnResizeMouseHandler(
     [onMouseMove],
   );
 
-  const getOnMouseDown = (columnId: ColumnId) => (mouseDownEvent: React.MouseEvent<HTMLElement>) => {
+  const getOnMouseDown = (columnId: TableColumnId) => (mouseDownEvent: React.MouseEvent<HTMLElement>) => {
     // ignore other buttons than primary mouse button
     if (mouseDownEvent.target !== mouseDownEvent.currentTarget || mouseDownEvent.button !== 0) {
       return;
@@ -58,6 +58,6 @@ export default function useColumnResizeMouseHandler(
   };
 
   return {
-    getOnMouseDown: (columnId: ColumnId) => getOnMouseDown(columnId),
+    getOnMouseDown: (columnId: TableColumnId) => getOnMouseDown(columnId),
   };
 }

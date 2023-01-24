@@ -1,6 +1,6 @@
 import {
-  ColumnDefinition,
-  ColumnId,
+  TableColumnDefinition,
+  TableColumnId,
   Table,
   TableBody,
   TableCell,
@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-  createColumn,
+  createTableColumn,
   useColumnSizing_unstable,
   useTableFeatures,
   useTableSort,
@@ -28,29 +28,29 @@ import { PresenceBadgeStatus } from '../../../react-badge/src';
 import { Avatar } from '@fluentui/react-components';
 import { ColumnSizingOptions } from '../../src/hooks';
 
-const columnsDef: ColumnDefinition<Item>[] = [
-  createColumn<Item>({
+const columnsDef: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
     columnId: 'file',
     renderHeaderCell: () => <>File</>,
     compare: (a, b) => {
       return a.file.label.localeCompare(b.file.label);
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'author',
     renderHeaderCell: () => <>Author</>,
     compare: (a, b) => {
       return a.author.label.localeCompare(b.author.label);
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'lastUpdated',
     renderHeaderCell: () => <>Last updated</>,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
   }),
-  createColumn<Item>({
+  createTableColumn<Item>({
     columnId: 'lastUpdate',
     renderHeaderCell: () => <>Last update</>,
     compare: (a, b) => {
@@ -126,7 +126,7 @@ const items: Item[] = [
 ];
 
 export const ResizingColumns = () => {
-  const [columns] = useState<ColumnDefinition<Item>[]>(columnsDef);
+  const [columns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions, setColumnSizingOptions] = useState<ColumnSizingOptions>({
     file: {
       idealWidth: 300,
@@ -171,7 +171,7 @@ export const ResizingColumns = () => {
     }));
   };
 
-  const onColumnResize = React.useCallback((columnId: ColumnId, width: number) => {
+  const onColumnResize = React.useCallback((columnId: TableColumnId, width: number) => {
     setColumnSizingOptions(state => ({
       ...state,
       [columnId]: {
@@ -197,7 +197,7 @@ export const ResizingColumns = () => {
     ],
   );
 
-  const headerSortProps = (columnId: ColumnId) => ({
+  const headerSortProps = (columnId: TableColumnId) => ({
     onClick: (e: React.MouseEvent) => {
       toggleColumnSort(e, columnId);
     },

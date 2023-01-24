@@ -1,4 +1,4 @@
-import { ColumnDefinition, ColumnWidthState, ColumnId, ColumnSizingOptions } from '../hooks';
+import { TableColumnDefinition, ColumnWidthState, TableColumnId, ColumnSizingOptions } from '../hooks';
 
 const DEFAULT_WIDTH = 150;
 const DEFAULT_MIN_WIDTH = 100;
@@ -15,7 +15,7 @@ const DEFAULT_MIN_WIDTH = 100;
  */
 
 export function columnDefinitionsToState<T>(
-  columns: ColumnDefinition<T>[],
+  columns: TableColumnDefinition<T>[],
   state: ColumnWidthState[] = [],
   columnSizingOptions: ColumnSizingOptions = {},
 ): ColumnWidthState[] {
@@ -89,7 +89,7 @@ export function columnDefinitionsToState<T>(
   return updated ? updatedState : state;
 }
 
-export function getColumnById(state: ColumnWidthState[], columnId: ColumnId) {
+export function getColumnById(state: ColumnWidthState[], columnId: TableColumnId) {
   return state.find(c => c.columnId === columnId);
 }
 
@@ -109,7 +109,7 @@ export function getLength(state: ColumnWidthState[]) {
   return state.length;
 }
 
-export function getColumnWidth(state: ColumnWidthState[], columnId: ColumnId): number {
+export function getColumnWidth(state: ColumnWidthState[], columnId: TableColumnId): number {
   const column = getColumnById(state, columnId);
   return column?.width ?? 0;
 }
@@ -128,7 +128,7 @@ export function getColumnWidth(state: ColumnWidthState[], columnId: ColumnId): n
  */
 export function setColumnProperty(
   localState: ColumnWidthState[],
-  columnId: ColumnId,
+  columnId: TableColumnId,
   property: keyof ColumnWidthState,
   value: number,
 ) {

@@ -1,29 +1,9 @@
-import type { Browser, Page } from 'puppeteer';
+import type { Browser } from 'puppeteer';
+import { visitUrl } from '@fluentui/scripts-puppeteer';
 import { PROVIDER_ID } from './constants';
 
 class RenderError extends Error {
   public name = 'RangeError';
-}
-
-export async function visitUrl(page: Page, url: string) {
-  let attempt = 1;
-
-  while (attempt <= 5) {
-    try {
-      await page.goto(url, { timeout: 10 * 1000 /* 10 seconds */ });
-      break;
-    } catch (err) {
-      if (attempt === 5) {
-        console.error(`Failed to navigate to a page after 5 attempts...`);
-        throw err;
-      }
-
-      console.warn('A browser failed to navigate to a page, retrying...');
-      console.warn(err);
-
-      attempt++;
-    }
-  }
 }
 
 export async function visitPage(browser: Browser, url: string) {

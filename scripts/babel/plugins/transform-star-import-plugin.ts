@@ -22,6 +22,7 @@ const createDefaultImportDeclaration = (
  */
 const starImportToDefaultPlugin: BabelPlugin = ({ types: t }) => ({
   visitor: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     ImportDeclaration: path => {
       const { specifiers } = path.node;
       const specifier = specifiers[0];

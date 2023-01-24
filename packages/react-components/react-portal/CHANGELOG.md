@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Wed, 04 Jan 2023 01:40:17 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jan 2023 16:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.3)
+
+Mon, 23 Jan 2023 16:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.1.2..@fluentui/react-portal_v9.1.3)
+
+### Patches
+
+- clean up parent reference to avoid memory leaks ([PR #26435](https://github.com/microsoft/fluentui/pull/26435) by arthurd@microsoft.com)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.2)
+
+Wed, 18 Jan 2023 16:32:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.1.1..@fluentui/react-portal_v9.1.2)
+
+### Patches
+
+- fix: Insert css variables class at render time ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.1)
+
+Mon, 16 Jan 2023 08:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.1.0..@fluentui/react-portal_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.1.0)
+
+Mon, 09 Jan 2023 14:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.15..@fluentui/react-portal_v9.1.0)
+
+### Minor changes
+
+- feat: elementContains supports Node types ([PR #26158](https://github.com/microsoft/fluentui/pull/26158) by email not defined)
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.15)
 

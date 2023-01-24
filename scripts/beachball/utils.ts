@@ -1,4 +1,4 @@
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo';
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.

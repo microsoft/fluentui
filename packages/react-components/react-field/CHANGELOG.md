@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Wed, 04 Jan 2023 01:40:06 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Jan 2023 16:43:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.16)
+
+Mon, 23 Jan 2023 16:43:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.15..@fluentui/react-field_v9.0.0-alpha.16)
+
+### Changes
+
+- chore: Simplify Field layout styles ([PR #26352](https://github.com/microsoft/fluentui/pull/26352) by behowell@microsoft.com)
+- fix: Stretch Field components to full width ([PR #26412](https://github.com/microsoft/fluentui/pull/26412) by behowell@microsoft.com)
+- fix: Update Field label padding to match spec ([PR #26413](https://github.com/microsoft/fluentui/pull/26413) by behowell@microsoft.com)
+- fix: Field sets role="alert" on its error message so it is announced by screen readers ([PR #26414](https://github.com/microsoft/fluentui/pull/26414) by behowell@microsoft.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.15)
+
+Mon, 16 Jan 2023 08:39:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.14..@fluentui/react-field_v9.0.0-alpha.15)
+
+### Changes
+
+- fix: Field styles do not wrap SVG status icon in inline parent to avoid layout bugs ([PR #26150](https://github.com/microsoft/fluentui/pull/26150) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-label to v9.0.17 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.14)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.13..@fluentui/react-field_v9.0.0-alpha.14)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.5 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-label to v9.0.16 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.13)
 

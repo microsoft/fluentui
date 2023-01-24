@@ -72,9 +72,14 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  ComboboxProvider,
+  useComboboxContextValues,
+  ListboxProvider,
+  useListboxContextValues,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
+  ComboboxContextValue,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -86,6 +91,7 @@ export type {
   DropdownOpenEvents,
   DropdownSlots,
   DropdownState,
+  ListboxContextValue,
   ListboxContextValues,
   ListboxProps,
   ListboxSlots,
@@ -107,49 +113,6 @@ export {
 export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  Toolbar,
-  ToolbarButton,
-  useToolbarButtonStyles_unstable,
-  useToolbarButton_unstable,
-  ToolbarRadioButton,
-  useToolbarRadioButton_unstable,
-  useToolbarRadioButtonStyles_unstable,
-  ToolbarDivider,
-  useToolbarDivider_unstable,
-  ToolbarGroup,
-  useToolbarGroupStyles_unstable,
-  useToolbarGroup_unstable,
-  renderToolbarGroup_unstable,
-  toolbarGroupClassNames,
-  ToolbarToggleButton,
-  useToolbarToggleButtonStyles_unstable,
-  useToolbarToggleButton_unstable,
-  renderToolbar_unstable,
-  toolbarClassNames,
-  useToolbar_unstable,
-  useToolbarDividerStyles_unstable,
-  useToolbarStyles_unstable,
-} from '@fluentui/react-toolbar';
-
-export type {
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarContextValue,
-  ToolbarContextValues,
-  ToolbarDividerProps,
-  ToolbarDividerState,
-  ToolbarProps,
-  ToolbarSlots,
-  ToolbarState,
-  ToolbarToggleButtonProps,
-  ToolbarToggleButtonState,
-  ToolbarGroupProps,
-  ToolbarGroupState,
-  ToolbarRadioButtonProps,
-  ToolbarRadioButtonState,
-} from '@fluentui/react-toolbar';
-
-export {
   InfoButton,
   infoButtonClassNames,
   useInfoButton_unstable,
@@ -157,19 +120,6 @@ export {
   renderInfoButton_unstable,
 } from '@fluentui/react-infobutton';
 export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
-
-export {
-  Overflow,
-  OverflowItem,
-  useIsOverflowGroupVisible,
-  useIsOverflowItemVisible,
-  useOverflowMenu,
-  DATA_OVERFLOWING,
-  DATA_OVERFLOW_MENU,
-  DATA_OVERFLOW_ITEM,
-} from '@fluentui/react-overflow';
-
-export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
 
 export {
   TableCell,
@@ -228,7 +178,7 @@ export {
   useTableFeatures,
   useTableSelection,
   useTableSort,
-  createColumn,
+  createTableColumn,
   DataGridCell,
   dataGridCellClassNames,
   useDataGridCellStyles_unstable,
@@ -264,6 +214,8 @@ export {
   useDataGridSelectionCell_unstable,
   renderDataGridSelectionCell_unstable,
   dataGridSelectionCellClassNames,
+  TableRowIdContextProvider,
+  useTableRowIdContext,
   useColumnSizing_unstable,
 } from '@fluentui/react-table';
 
@@ -298,16 +250,16 @@ export type {
   TableCellLayoutProps,
   TableCellLayoutState,
   TableCellLayoutSlots,
-  UseTableOptions,
-  TableState as HeadlessTableState,
+  UseTableFeaturesOptions,
+  TableFeaturesState,
   TableSelectionState,
   TableSortState,
-  TableStatePlugin,
-  RowState,
-  RowId,
-  ColumnDefinition,
-  ColumnId,
-  CreateColumnOptions,
+  TableFeaturePlugin,
+  TableRowData,
+  TableRowId,
+  TableColumnDefinition,
+  TableColumnId,
+  CreateTableColumnOptions,
   DataGridHeaderCellProps,
   DataGridHeaderCellSlots,
   DataGridHeaderCellState,
@@ -379,3 +331,18 @@ export {
   useProgressBar_unstable,
 } from '@fluentui/react-progress';
 export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';
+
+export {
+  Virtualizer,
+  virtualizerClassNames,
+  useVirtualizer_unstable,
+  renderVirtualizer_unstable,
+  useVirtualizerStyles_unstable,
+  useIntersectionObserver,
+} from '@fluentui/react-virtualizer';
+export type {
+  VirtualizerProps,
+  VirtualizerState,
+  VirtualizerSlots,
+  VirtualizerChildRenderFunction,
+} from '@fluentui/react-virtualizer';

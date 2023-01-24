@@ -1,5 +1,5 @@
 // @ts-check
-const { resources } = require('@fluentui/scripts/webpack');
+const { resources } = require('@fluentui/scripts-webpack');
 
 const BUNDLE_NAME = 'fluentui-react';
 

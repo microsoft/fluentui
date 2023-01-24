@@ -2,6 +2,101 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 24 Jan 2023 07:51:03 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.47",
+      "version": "8.5.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "2331c9314cd1440ab413e404bdf1da8da0de7e05",
+            "comment": "Spin button height and caret positioning (for Elixir controls) "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jan 2023 07:42:14 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.46",
+      "version": "8.5.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.6",
+            "commit": "fe36f5e6d0293f93532aee9c25e3bf14ea31d0d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:50 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.45",
+      "version": "8.5.45",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.5",
+            "commit": "1cb0b6daabfcff4b79830a1c2b3b7cba8dcf14c7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.44",
+      "version": "8.5.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "d34b9cdabed0763b72778818a1cbb509e446e6fc",
+            "comment": "Spin button height fix for Azure theme. Reduced to 24px to match textfield / dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/set-version to v8.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 07:49:46 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.43",
+      "version": "8.5.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.3",
+            "commit": "1d3c92581624aeebaf60d7d4601f400352a961da"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Jan 2023 07:59:48 GMT",
       "tag": "@fluentui/azure-themes_v8.5.42",
       "version": "8.5.42",

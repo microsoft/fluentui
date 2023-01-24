@@ -2,6 +2,95 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 23 Jan 2023 16:43:09 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "1f145044a1ef3707e0724d75f9b70e7d2af69375",
+            "comment": "chore: Simplify Field layout styles"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "b04b2f0c02f2ccd7960905a886ce27f2321fee72",
+            "comment": "fix: Stretch Field components to full width"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "48a6fc95e6eb7530c162390fb70db7fac88b15ab",
+            "comment": "fix: Update Field label padding to match spec"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "014041b7447b02856ae50638de71bdb829b0a759",
+            "comment": "fix: Field sets role=\"alert\" on its error message so it is announced by screen readers"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:39:01 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5b35bf93f6634324e8651ec29640353edd11178b",
+            "comment": "fix: Field styles do not wrap SVG status icon in inline parent to avoid layout bugs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.0.17",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 14:35:02 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.5",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.0.16",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:06 GMT",
       "tag": "@fluentui/react-field_v9.0.0-alpha.13",
       "version": "9.0.0-alpha.13",

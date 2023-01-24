@@ -2,10 +2,10 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useTableContext } from '../../contexts/tableContext';
 import { tokens } from '@fluentui/react-theme';
-import { ColumnId } from '../../hooks/types';
+import { TableColumnId } from '../../hooks/types';
 
 type DefaultResizeHandleProps = {
-  columnId?: ColumnId;
+  columnId?: TableColumnId;
 };
 
 const useDefaultHandleStyles = makeStyles({
