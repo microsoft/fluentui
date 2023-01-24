@@ -23,11 +23,14 @@ const onTimeChange = (date: Date) => console.log('SELECTED DATE: ', date);
 
 export const TimePickerBasicExample: React.FC = () => {
   const [datePickerDate, setDatePickerDate] = React.useState<Date>();
-  const [currentTime, setCurrentTime] = React.useState<Date>();
   const [currentTimeString, setCurrentTimeString] = React.useState<string>('');
 
   const onSelectDate = React.useCallback((selectedDate: Date) => {
     setDatePickerDate(selectedDate);
+  }, []);
+
+  const onDateTimePickerChange = React.useCallback((time: Date) => {
+    setCurrentTimeString(time.toString());
   }, []);
 
   const timeRange: ITimeRange = {
@@ -78,15 +81,9 @@ export const TimePickerBasicExample: React.FC = () => {
             onSelectDate={onSelectDate}
             minDate={new Date()}
           />
-          <TimePicker
-            currentDate={datePickerDate}
-            useComboBoxAsMenuWidth
-            onTimeChange={(time: Date) => {
-              setCurrentTime(time);
-            }}
-          />
+          <TimePicker currentDate={datePickerDate} useComboBoxAsMenuWidth onTimeChange={onDateTimePickerChange} />
         </div>
-        <Text>{`TimePicker selected time: ${currentTime ? currentTime.toString() : ''}`}</Text>
+        <Text>{`TimePicker selected time: ${currentTimeString}`}</Text>
       </div>
     </>
   );
