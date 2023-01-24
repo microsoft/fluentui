@@ -2,7 +2,11 @@
 
 exports[`TagPicker renders correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -399,7 +403,11 @@ exports[`TagPicker renders correctly 1`] = `
 
 exports[`TagPicker renders picker with selected item correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
