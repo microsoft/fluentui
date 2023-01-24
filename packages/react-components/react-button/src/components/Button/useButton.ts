@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { ButtonProps, ButtonState } from './Button.types';
 import { useButtonContext } from '../../contexts/ButtonContext';
+import type { ButtonProps, ButtonState } from './Button.types';
 
 /**
  * Given user props, defines default props for the Button, calls useButtonState, and returns processed state.
