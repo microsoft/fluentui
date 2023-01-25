@@ -4771,7 +4771,7 @@
   resolved "https://registry.yarnpkg.com/@swc-node/core/-/core-1.9.2.tgz#9c126ace9c71acd8ad301b3823bde7925d8a58ab"
   integrity sha512-tInCla6NO1HEQwhIc/K7PCOu4X3ppqw5xYNEMD7i41SyRuH7yp3u8x7x2cqeAD+6IAhJ5jKDPv2QRLPz7Xt3EA==
 
-"@swc-node/register@1.5.5", "@swc-node/register@^1.4.2":
+"@swc-node/register@^1.4.2":
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/@swc-node/register/-/register-1.5.5.tgz#0c9c6b8ea969b7ee2280e176debd1fde89986c06"
   integrity sha512-SNpbRG8EOXShk3YAnC4suAVovYQ7oFOFdCVBA3J8hkO5qy0WHPVnlnMojTYI+8UT1CrfQ1QSUySaAARRvEdwjg==

@@ -40,8 +40,8 @@ function loadWorkspaceAddon(addonName, options) {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
     const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
-    const packageJsonPath = path.join(packageRootPath, 'package.json');
     const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
+    const packageJsonPath = path.join(packageRootPath, 'package.json');
 
     if (!fs.existsSync(packageJsonPath)) {
       throw new Error('your addon is missing package.json.');
@@ -58,9 +58,10 @@ function loadWorkspaceAddon(addonName, options) {
       );
     }
 
-    const packageDistPath = path.dirname(packageJson.module);
-    const packageDistAbsolutePath = path.join(packageRootPath, packageDistPath);
-
+    const packageDistPath = path.normalize(path.dirname(packageJson.module));
+    const packageTempPath = path.join(packageRootPath, 'temp');
+    const presetSourcePath = path.join(packageRootPath, 'preset.js');
+    const presetMockedSourcePath = path.join(packageTempPath, 'preset.ts');
     /**
      * we use always POSIX path in js modules thus this needs to be converted explicitly to POSIX, not matter what OS is used
      * Example:
@@ -68,14 +69,13 @@ function loadWorkspaceAddon(addonName, options) {
      * `..\\one\\two` ->  `../one/two` | NON POSIX (windows)
      */
     const relativePathToSource = path
-      .relative(packageDistAbsolutePath, packageSourceRootPath)
-      .replace(new RegExp(`\\${path.sep}`, 'g'), path.posix.sep);
-    const presetSourcePath = path.join(packageRootPath, 'preset.js');
-    const presetMockedSourcePath = path.join(packageDistAbsolutePath, 'preset.js');
+      .relative(packageTempPath, packageSourceRootPath)
+      .split(path.sep)
+      .join(path.posix.sep);
 
     return {
       packageDistPath,
-      packageDistAbsolutePath,
+      packageTempPath,
       presetSourcePath,
       presetMockedSourcePath,
       relativePathToSource,
@@ -85,7 +85,7 @@ function loadWorkspaceAddon(addonName, options) {
   const {
     relativePathToSource,
     packageDistPath,
-    packageDistAbsolutePath,
+    packageTempPath,
     presetSourcePath,
     presetMockedSourcePath,
   } = getPaths();
@@ -97,37 +97,38 @@ function loadWorkspaceAddon(addonName, options) {
   }
 
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
+  // absolute path needs to be always posix, non posix will explode in module resolution
+  const posixTsConfigPath = tsConfigPath.split(path.sep).join(path.posix.sep);
 
-  const regex = new RegExp(`\\./${path.normalize(packageDistPath)}`, 'g');
+  const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}`, 'g');
   const presetApiRegex = /module\.exports\s+=\s+({).+}/;
+  const presetApiPathRegex = /(\/manager|\/preview)/g;
   let modifiedPresetContent = presetContent
-    .replace(regex, relativePathToSource)
+    .replace(presetRelativePathToDistApiRegex, relativePathToSource)
+    .replace(presetApiPathRegex, '$1.ts')
     .replace(presetApiRegex, (match, p1) => {
-      return match.replace(p1, '{ managerWebpack, ');
+      return match.replace(p1, '{ managerWebpack,');
     });
 
   modifiedPresetContent = stripIndents`
-    const path = require('path');
-    const { workspaceRoot } = require('@nrwl/devkit');
-    const { registerTsPaths, registerTsProject } = require('@fluentui/scripts-storybook');
-
-    registerTsProject('${tsConfigPath}');
+    // @ts-ignore
+    const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
     function managerWebpack(config, options) {
-      registerTsPaths({config, tsConfigPath: '${tsConfigPath}'});
+      registerTsPaths({config, tsConfigPath: '${posixTsConfigPath}'});
       return config;
     }
 
     ${modifiedPresetContent}
   `;
 
-  if (!fs.existsSync(packageDistAbsolutePath)) {
-    fs.mkdirSync(packageDistAbsolutePath, { recursive: true });
+  if (!fs.existsSync(packageTempPath)) {
+    fs.mkdirSync(packageTempPath, { recursive: true });
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
 
-  return packageDistAbsolutePath;
+  return presetMockedSourcePath;
   /* eslint-enable no-shadow */
 }
 
@@ -205,20 +206,7 @@ function registerTsPaths(options) {
   return config;
 }
 
-/**
- * Enable typescript file resolution and in memory transpilation to vanilla JS within NodeJS environment
- * @param {string} tsConfigPath
- */
-function registerTsProject(tsConfigPath) {
-  const { register } = require('@swc-node/register/register');
-  const { readDefaultTsConfig } = require('@swc-node/register/read-default-tsconfig');
-
-  const tsConfig = readDefaultTsConfig(tsConfigPath);
-  register(tsConfig);
-}
-
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;
 exports.registerTsPaths = registerTsPaths;
-exports.registerTsProject = registerTsProject;
