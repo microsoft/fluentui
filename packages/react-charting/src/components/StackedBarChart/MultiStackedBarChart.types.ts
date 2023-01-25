@@ -103,6 +103,18 @@ export interface IMultiStackedBarChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Prop to define the variant of MultiStackedBarChart to render
+   * @default MultiStackedBarChartVariant.PartToWhole
+   */
+  variant?: MultiStackedBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IMultiStackedBarChartStyleProps {
@@ -140,6 +152,16 @@ export interface IMultiStackedBarChartStyleProps {
    * prop to check to decide cursor type
    */
   href?: string;
+
+  /**
+   * Prop to define the variant of MultiStackedBarChart to render
+   */
+  variant?: MultiStackedBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   */
+  hideLabels?: boolean;
 }
 
 export interface IMultiStackedBarChartStyles {
@@ -202,4 +224,19 @@ export interface IMultiStackedBarChartStyles {
    * Style for stacked bar chart with no data
    */
   noData: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
+
+  /**
+   * Style for the div containing the chart
+   */
+  chartWrapper: IStyle;
+}
+
+export enum MultiStackedBarChartVariant {
+  PartToWhole = 'part-to-whole',
+  AbsoluteScale = 'absolute-scale',
 }
