@@ -61,6 +61,15 @@ Thu, 05 Jan 2023 07:59:57 GMT
 
 - Fix fluent-tooltip not showing anchor pointer when wc prefix is changed ([PR #26154](https://github.com/microsoft/fluentui/pull/26154) by abcy@microsoft.com)
 
+## [3.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.2)
+
+Wed, 25 Jan 2023 17:42:30 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.1..@fluentui/web-components_v3.0.0-alpha.2)
+
+### Changes
+
+- feat: export theme ([PR #26500](https://github.com/microsoft/fluentui/pull/26500) by miroslav.stastny@microsoft.com)
+
 ## [3.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.1)
 
 Wed, 25 Jan 2023 14:49:08 GMT
