@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: deprecates AvatarSizes in favor of AvatarSize",
+  "packageName": "@fluentui/react-avatar",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

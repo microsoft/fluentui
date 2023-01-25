@@ -7,7 +7,7 @@
 /// <reference types="react" />
 
 import type { AvatarContextValue } from '@fluentui/react-avatar';
-import type { AvatarSizes } from '@fluentui/react-avatar';
+import type { AvatarSize } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -94,7 +94,7 @@ export type TreeItemPersonaLayoutSlots = {
 
 // @public
 export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & TreeItemContextValue & {
-    avatarSize: AvatarSizes;
+    avatarSize: AvatarSize;
 };
 
 // @public

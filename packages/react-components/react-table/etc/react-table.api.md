@@ -7,7 +7,7 @@
 /// <reference types="react" />
 
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { AvatarSizes } from '@fluentui/react-avatar';
+import type { AvatarSize } from '@fluentui/react-avatar';
 import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
@@ -302,7 +302,7 @@ export type TableCellLayoutSlots = {
 
 // @public
 export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'> & {
-    avatarSize: AvatarSizes | undefined;
+    avatarSize: AvatarSize | undefined;
 } & Pick<TableContextValue, 'size'>;
 
 // @public
