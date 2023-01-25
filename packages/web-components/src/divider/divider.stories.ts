@@ -16,16 +16,14 @@ const storyTemplate = html<DividerStoryArgs>`
     ?inset=${x => x.inset}
     orientation=${x => x.orientation}
   >
-    <span>
-      <h3>${x => x.content}</h3>
-    </span>
+    <h3>${x => x.content}</h3>
   </fluent-divider>
 `;
 
 export default {
   title: 'Components/Divider',
   args: {
-    content: 'text',
+    content: 'I Am Tile',
     alignContent: 'center',
     role: 'presentation',
     inset: false,

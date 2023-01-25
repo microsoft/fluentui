@@ -7,8 +7,8 @@ import type { Divider } from './divider.js';
  */
 export const template: ElementViewTemplate<Divider> = html<Divider>`
   <template role="${x => x.role}" aria-orientation="${x => x.orientation}">
-    <div divider-background>
+    <span>
       <slot></slot>
-    </div>
+    </span>
   </template>
 `;
