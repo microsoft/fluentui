@@ -3,6 +3,8 @@ import { TreeItemContextValue } from '../../contexts/treeItemContext';
 
 export type TreeItemSlots = {
   root: Slot<'div'>;
+  content: NonNullable<Slot<'span'>>;
+  subtree?: Slot<'span'>;
   /**
    * Expand icon slot,
    * by default renders a chevron icon to indicate opening and closing
@@ -13,7 +15,6 @@ export type TreeItemSlots = {
    * when the item is hovered/focused
    */
   actions?: Slot<'span'>;
-  groupper: NonNullable<Slot<'span'>>;
 };
 
 export type TreeItemContextValues = {
