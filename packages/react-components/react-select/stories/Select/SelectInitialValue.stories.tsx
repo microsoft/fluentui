@@ -20,7 +20,7 @@ export const InitialValue = () => {
 InitialValue.parameters = {
   docs: {
     description: {
-      story: 'A Select can have its initial value defined by using `selected` on a child `option`',
+      story: 'A Select can have its initial value defined by using `defaultValue` prop.',
     },
   },
 };
