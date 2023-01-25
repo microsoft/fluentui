@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   wrapper: {
@@ -14,8 +17,8 @@ export const Appearance = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
-          <MenuButton>Default</MenuButton>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton icon={<CalendarMonthRegular />}>Default</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -27,8 +30,10 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
-          <MenuButton appearance="primary">Primary</MenuButton>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton appearance="primary" icon={<CalendarMonthRegular />}>
+            Primary
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -40,8 +45,10 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
-          <MenuButton appearance="outline">Outline</MenuButton>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton appearance="outline" icon={<CalendarMonth />}>
+            Outline
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -53,8 +60,10 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
-          <MenuButton appearance="subtle">Subtle</MenuButton>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton appearance="subtle" icon={<CalendarMonth />}>
+            Subtle
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -66,8 +75,10 @@ export const Appearance = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
-          <MenuButton appearance="transparent">Transparent</MenuButton>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton appearance="transparent" icon={<CalendarMonth />}>
+            Transparent
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>

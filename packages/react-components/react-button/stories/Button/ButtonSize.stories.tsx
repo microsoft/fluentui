@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, Button, Tooltip } from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   innerWrapper: {
@@ -14,8 +14,6 @@ const useStyles = makeStyles({
   },
 });
 
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-
 export const Size = () => {
   const styles = useStyles();
 
@@ -23,27 +21,27 @@ export const Size = () => {
     <div className={styles.outerWrapper}>
       <div className={styles.innerWrapper}>
         <Button size="small">Small</Button>
-        <Button size="small" icon={<CalendarMonth />}>
+        <Button size="small" icon={<CalendarMonthRegular />}>
           Small with calendar icon
         </Button>
         <Tooltip content="Small with calendar icon only" relationship="label">
-          <Button size="small" icon={<CalendarMonth />} />
+          <Button size="small" icon={<CalendarMonthRegular />} />
         </Tooltip>
       </div>
       <div className={styles.innerWrapper}>
         <Button>Medium</Button>
-        <Button icon={<CalendarMonth />}>Medium with calendar icon</Button>
+        <Button icon={<CalendarMonthRegular />}>Medium with calendar icon</Button>
         <Tooltip content="Medium with calendar icon only" relationship="label">
-          <Button icon={<CalendarMonth />} />
+          <Button icon={<CalendarMonthRegular />} />
         </Tooltip>
       </div>
       <div className={styles.innerWrapper}>
         <Button size="large">Large</Button>
-        <Button size="large" icon={<CalendarMonth />}>
+        <Button size="large" icon={<CalendarMonthRegular />}>
           Large with calendar icon
         </Button>
         <Tooltip content="Large with calendar icon only" relationship="label">
-          <Button size="large" icon={<CalendarMonth />} />
+          <Button size="large" icon={<CalendarMonthRegular />} />
         </Tooltip>
       </div>
     </div>

@@ -27,7 +27,7 @@ export const WithLongText = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Short text</SplitButton>}
         </MenuTrigger>
 
@@ -40,7 +40,7 @@ export const WithLongText = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton primaryActionButton={{ className: styles.longText }} menuButton={triggerProps}>
               Long text wraps after it hits the max width of the component

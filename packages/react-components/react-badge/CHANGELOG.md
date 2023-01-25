@@ -1,8 +1,99 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Tue, 25 Oct 2022 00:35:28 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jan 2023 12:22:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.20)
+
+Tue, 17 Jan 2023 12:22:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.19..@fluentui/react-badge_v9.0.20)
+
+### Patches
+
+- feat(PresenceBadge): Add blocked status ([PR #26366](https://github.com/microsoft/fluentui/pull/26366) by jukapsia@microsoft.com)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.18)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.17..@fluentui/react-badge_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.17)
+
+Wed, 04 Jan 2023 01:40:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.16..@fluentui/react-badge_v9.0.17)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.16)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.15..@fluentui/react-badge_v9.0.16)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.15)
+
+Tue, 20 Dec 2022 14:59:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.14..@fluentui/react-badge_v9.0.15)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+
+## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.14)
+
+Mon, 05 Dec 2022 18:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.13..@fluentui/react-badge_v9.0.14)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.13)
+
+Thu, 17 Nov 2022 23:05:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.12..@fluentui/react-badge_v9.0.13)
+
+### Patches
+
+- chore: Update Badge colors with new mappings from design ([PR #25599](https://github.com/microsoft/fluentui/pull/25599) by behowell@microsoft.com)
+- fix: Allow PresenceBadge's icon to be overridden by the user. ([PR #25684](https://github.com/microsoft/fluentui/pull/25684) by humberto_makoto@hotmail.com)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.12)
+
+Fri, 11 Nov 2022 14:57:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.11..@fluentui/react-badge_v9.0.12)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.11)
+
+Wed, 02 Nov 2022 11:57:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.10..@fluentui/react-badge_v9.0.11)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.10)
 

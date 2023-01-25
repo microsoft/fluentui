@@ -2,7 +2,7 @@ import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Listbox } from './Listbox';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Listbox', () => {
   isConformant({
@@ -30,6 +30,30 @@ describe('Listbox', () => {
       </Listbox>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('uses lisbox/option semantics for single-select', () => {
+    const { getAllByRole } = render(
+      <Listbox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+    expect(getAllByRole('listbox').length).toEqual(1);
+    expect(getAllByRole('option').length).toEqual(3);
+  });
+
+  it('uses menu/menuitemcheckbox semantics for multi-select', () => {
+    const { getAllByRole } = render(
+      <Listbox multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Listbox>,
+    );
+    expect(getAllByRole('menu').length).toEqual(1);
+    expect(getAllByRole('menuitemcheckbox').length).toEqual(3);
   });
 
   /* Moving activeOption */
@@ -158,9 +182,9 @@ describe('Listbox', () => {
       </Listbox>,
     );
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Red').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Blue').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should set selectedOptions', () => {
@@ -201,8 +225,8 @@ describe('Listbox', () => {
 
     fireEvent.click(getByText('Red'));
 
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Red').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Red').getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should fire onChange when an option is selected', () => {
@@ -219,7 +243,11 @@ describe('Listbox', () => {
     fireEvent.click(getByText('Red'));
 
     expect(onOptionSelect).toHaveBeenCalled();
-    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({
+      optionValue: 'Red',
+      optionText: 'Red',
+      selectedOptions: ['Red'],
+    });
   });
 
   it('should not change selection with selectedOptions', () => {
@@ -239,7 +267,11 @@ describe('Listbox', () => {
 
     expect(option.getAttribute('aria-selected')).toEqual('false');
     expect(onOptionSelect).toHaveBeenCalled();
-    expect(onOptionSelect.mock.calls[0][1]).toEqual({ optionValue: 'Red', selectedOptions: ['Red'] });
+    expect(onOptionSelect.mock.calls[0][1]).toEqual({
+      optionValue: 'Red',
+      optionText: 'Red',
+      selectedOptions: ['Red'],
+    });
   });
 
   it('should select option with the enter key', () => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, RenderResult, fireEvent, screen } from '@testing-library/react';
 import { Input } from './Input';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 function getInput(): HTMLInputElement {
   return screen.getByRole('textbox') as HTMLInputElement;

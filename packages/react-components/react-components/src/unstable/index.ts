@@ -9,39 +9,6 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 export {
-  AvatarGroup,
-  AvatarGroupItem,
-  AvatarGroupPopover,
-  AvatarGroupProvider,
-  avatarGroupClassNames,
-  avatarGroupItemClassNames,
-  avatarGroupPopoverClassNames,
-  partitionAvatarGroupItems,
-  renderAvatarGroup_unstable,
-  renderAvatarGroupItem_unstable,
-  renderAvatarGroupPopover_unstable,
-  useAvatarGroup_unstable,
-  useAvatarGroupContext_unstable,
-  useAvatarGroupItem_unstable,
-  useAvatarGroupItemStyles_unstable,
-  useAvatarGroupPopover_unstable,
-  useAvatarGroupPopoverStyles_unstable,
-  useAvatarGroupStyles_unstable,
-} from '@fluentui/react-avatar';
-export type {
-  AvatarGroupProps,
-  AvatarGroupSlots,
-  AvatarGroupState,
-  AvatarGroupItemProps,
-  AvatarGroupItemSlots,
-  AvatarGroupItemState,
-  AvatarGroupPopoverProps,
-  AvatarGroupPopoverSlots,
-  AvatarGroupPopoverState,
-  PartitionAvatarGroupItems,
-  PartitionAvatarGroupItemsOptions,
-} from '@fluentui/react-avatar';
-export {
   Card,
   CardFooter,
   CardHeader,
@@ -105,9 +72,14 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  ComboboxProvider,
+  useComboboxContextValues,
+  ListboxProvider,
+  useListboxContextValues,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
+  ComboboxContextValue,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -119,6 +91,7 @@ export type {
   DropdownOpenEvents,
   DropdownSlots,
   DropdownState,
+  ListboxContextValue,
   ListboxContextValues,
   ListboxProps,
   ListboxSlots,
@@ -140,43 +113,13 @@ export {
 export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  Toolbar,
-  ToolbarButton,
-  ToolbarDivider,
-  ToolbarToggleButton,
-  renderToolbar_unstable,
-  toolbarClassNames,
-  useToolbar_unstable,
-  useToolbarDividerStyles_unstable,
-  useToolbarStyles_unstable,
-} from '@fluentui/react-toolbar';
-
-export type {
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarContextValue,
-  ToolbarContextValues,
-  ToolbarDividerProps,
-  ToolbarDividerState,
-  ToolbarProps,
-  ToolbarSlots,
-  ToolbarState,
-  ToolbarToggleButtonProps,
-  ToolbarToggleButtonState,
-} from '@fluentui/react-toolbar';
-
-export {
-  Overflow,
-  OverflowItem,
-  useIsOverflowGroupVisible,
-  useIsOverflowItemVisible,
-  useOverflowMenu,
-  DATA_OVERFLOWING,
-  DATA_OVERFLOW_MENU,
-  DATA_OVERFLOW_ITEM,
-} from '@fluentui/react-overflow';
-
-export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
+  InfoButton,
+  infoButtonClassNames,
+  useInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  renderInfoButton_unstable,
+} from '@fluentui/react-infobutton';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
 
 export {
   TableCell,
@@ -232,7 +175,49 @@ export {
   useTableCellLayoutStyles_unstable,
   renderTableCellLayout_unstable,
   tableCellLayoutClassNames,
+  useTableFeatures,
+  useTableSelection,
+  useTableSort,
+  createTableColumn,
+  DataGridCell,
+  dataGridCellClassNames,
+  useDataGridCellStyles_unstable,
+  useDataGridCell_unstable,
+  renderDataGridCell_unstable,
+  DataGridRow,
+  dataGridRowClassNames,
+  useDataGridRowStyles_unstable,
+  useDataGridRow_unstable,
+  renderDataGridRow_unstable,
+  DataGridBody,
+  dataGridBodyClassNames,
+  useDataGridBodyStyles_unstable,
+  useDataGridBody_unstable,
+  renderDataGridBody_unstable,
+  DataGrid,
+  dataGridClassNames,
+  useDataGridStyles_unstable,
+  useDataGrid_unstable,
+  renderDataGrid_unstable,
+  DataGridHeader,
+  dataGridHeaderClassNames,
+  useDataGridHeaderStyles_unstable,
+  useDataGridHeader_unstable,
+  renderDataGridHeader_unstable,
+  DataGridHeaderCell,
+  dataGridHeaderCellClassNames,
+  useDataGridHeaderCellStyles_unstable,
+  useDataGridHeaderCell_unstable,
+  renderDataGridHeaderCell_unstable,
+  DataGridSelectionCell,
+  useDataGridSelectionCellStyles_unstable,
+  useDataGridSelectionCell_unstable,
+  renderDataGridSelectionCell_unstable,
+  dataGridSelectionCellClassNames,
+  TableRowIdContextProvider,
+  useTableRowIdContext,
 } from '@fluentui/react-table';
+
 export type {
   SortDirection,
   TableHeaderCellProps,
@@ -261,62 +246,102 @@ export type {
   TableCellActionsProps,
   TableCellActionsState,
   TableCellActionsSlots,
+  TableCellLayoutProps,
+  TableCellLayoutState,
+  TableCellLayoutSlots,
+  UseTableFeaturesOptions,
+  TableFeaturesState,
+  TableSelectionState,
+  TableSortState,
+  TableFeaturePlugin,
+  TableRowData,
+  TableRowId,
+  TableColumnDefinition,
+  TableColumnId,
+  CreateTableColumnOptions,
+  DataGridHeaderCellProps,
+  DataGridHeaderCellSlots,
+  DataGridHeaderCellState,
+  DataGridHeaderProps,
+  DataGridHeaderSlots,
+  DataGridHeaderState,
+  DataGridProps,
+  DataGridSlots,
+  DataGridState,
+  DataGridContextValue,
+  DataGridContextValues,
+  DataGridBodyProps,
+  DataGridBodyState,
+  DataGridBodySlots,
+  DataGridRowProps,
+  DataGridRowState,
+  DataGridRowSlots,
+  DataGridCellProps,
+  DataGridCellState,
+  DataGridCellSlots,
+  DataGridSelectionCellProps,
+  DataGridSelectionCellState,
+  DataGridSelectionCellSlots,
 } from '@fluentui/react-table';
 
+export { CheckboxField_unstable as CheckboxField, checkboxFieldClassNames } from '@fluentui/react-checkbox';
+export type { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
+
+export { ComboboxField_unstable as ComboboxField, comboboxFieldClassNames } from '@fluentui/react-combobox';
+export type { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
+
+export { InputField_unstable as InputField, inputFieldClassNames } from '@fluentui/react-input';
+export type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+
+export { ProgressField_unstable as ProgressField, progressFieldClassNames } from '@fluentui/react-progress';
+export type { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
+
+export { RadioGroupField_unstable as RadioGroupField, radioGroupFieldClassNames } from '@fluentui/react-radio';
+export type { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
+
+export { SelectField_unstable as SelectField, selectFieldClassNames } from '@fluentui/react-select';
+export type { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
+
+export { SliderField_unstable as SliderField, sliderFieldClassNames } from '@fluentui/react-slider';
+export type { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
+
+export { SpinButtonField_unstable as SpinButtonField, spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
+export type { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
+
+export { SwitchField_unstable as SwitchField, switchFieldClassNames } from '@fluentui/react-switch';
+export type { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
+
+export { TextareaField_unstable as TextareaField, textareaFieldClassNames } from '@fluentui/react-textarea';
+export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
+
 export {
-  CheckboxField,
-  checkboxFieldClassNames,
-  ComboboxField,
-  comboboxFieldClassNames,
   getFieldClassNames,
-  InputField,
-  inputFieldClassNames,
-  RadioGroupField,
-  radioGroupFieldClassNames,
   renderField_unstable,
-  SelectField,
-  selectFieldClassNames,
-  SliderField,
-  sliderFieldClassNames,
-  SpinButtonField,
-  spinButtonFieldClassNames,
-  SwitchField,
-  switchFieldClassNames,
-  TextareaField,
-  textareaFieldClassNames,
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-field';
-export type {
-  CheckboxFieldProps,
-  ComboboxFieldProps,
-  FieldConfig,
-  FieldProps,
-  FieldSlots,
-  FieldState,
-  InputFieldProps,
-  RadioGroupFieldProps,
-  SelectFieldProps,
-  SliderFieldProps,
-  SpinButtonFieldProps,
-  SwitchFieldProps,
-  TextareaFieldProps,
-} from '@fluentui/react-field';
+export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
-
-export {
-  Progress,
-  progressClassNames,
-  renderProgress_unstable,
-  useProgressStyles_unstable,
-  useProgress_unstable,
+  ProgressBar,
+  progressBarClassNames,
+  renderProgressBar_unstable,
+  useProgressBarStyles_unstable,
+  useProgressBar_unstable,
 } from '@fluentui/react-progress';
-export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';
+export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';
+
+export {
+  Virtualizer,
+  virtualizerClassNames,
+  useVirtualizer_unstable,
+  renderVirtualizer_unstable,
+  useVirtualizerStyles_unstable,
+  useIntersectionObserver,
+} from '@fluentui/react-virtualizer';
+export type {
+  VirtualizerProps,
+  VirtualizerState,
+  VirtualizerSlots,
+  VirtualizerChildRenderFunction,
+} from '@fluentui/react-virtualizer';

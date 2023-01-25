@@ -14,7 +14,7 @@ export const Shape = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton>Rounded</MenuButton>
         </MenuTrigger>
 
@@ -27,7 +27,7 @@ export const Shape = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton shape="circular">Circular</MenuButton>
         </MenuTrigger>
 
@@ -40,7 +40,7 @@ export const Shape = () => {
       </Menu>
 
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton shape="square">Square</MenuButton>
         </MenuTrigger>
 

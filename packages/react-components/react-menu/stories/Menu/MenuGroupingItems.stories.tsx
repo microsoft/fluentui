@@ -26,7 +26,7 @@ const EditIcon = bundleIcon(EditFilled, EditRegular);
 
 export const GroupingItems = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
 

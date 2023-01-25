@@ -68,13 +68,13 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
-    setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
+    setTarget: (target: TargetElement) => void;
 };
 
 // @public (undocumented)
 export interface PositioningProps extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
-    target?: HTMLElement | PositioningVirtualElement | null;
+    target?: TargetElement | null;
 }
 
 // @public (undocumented)
@@ -101,15 +101,14 @@ export type PositioningVirtualElement = {
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
+// @public (undocumented)
+export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
+
 // @internal (undocumented)
-export function usePositioning(options: UsePositioningOptions): {
-    targetRef: React_2.MutableRefObject<any>;
-    containerRef: React_2.MutableRefObject<any>;
-    arrowRef: React_2.MutableRefObject<any>;
-};
+export function usePositioning(options: UsePositioningOptions): UsePositioningReturn;
 
 // @internal
-export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // (No @packageDocumentation comment for this package)
 

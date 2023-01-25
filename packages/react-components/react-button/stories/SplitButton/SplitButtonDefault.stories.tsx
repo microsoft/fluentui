@@ -4,7 +4,7 @@ import type { MenuButtonProps } from '@fluentui/react-components';
 
 export const Default = () => (
   <Menu positioning="below-end">
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Example</SplitButton>}
     </MenuTrigger>
 

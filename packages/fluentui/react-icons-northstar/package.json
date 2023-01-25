@@ -1,20 +1,22 @@
 {
   "name": "@fluentui/react-icons-northstar",
   "description": "A set svg icons and utilities for creating custom ones.",
-  "version": "0.64.0",
+  "version": "0.66.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/accessibility": "^0.64.0",
-    "@fluentui/react-bindings": "^0.64.0",
-    "@fluentui/styles": "^0.64.0",
+    "@fluentui/accessibility": "^0.66.0",
+    "@fluentui/react-bindings": "^0.66.0",
+    "@fluentui/styles": "^0.66.0",
     "classnames": "^2.2.6"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
-    "lerna-alias": "^3.0.3-0"
+    "lerna-alias": "^3.0.3-0",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-jest": "*"
   },
   "files": [
     "dist"

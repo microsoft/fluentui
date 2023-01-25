@@ -6,7 +6,7 @@ import { useTableContext } from '../../contexts/tableContext';
 const tableAvatarSizeMap = {
   medium: 32,
   small: 24,
-  smaller: 20,
+  'extra-small': 20,
 } as const;
 
 /**
@@ -29,7 +29,7 @@ export const useTableCellLayout_unstable = (
       root: 'div',
       main: 'span',
       description: 'span',
-      wrapper: 'div',
+      content: 'div',
       media: 'span',
     },
     root: getNativeElementProps('div', { ref, ...props }),
@@ -37,7 +37,8 @@ export const useTableCellLayout_unstable = (
     main: resolveShorthand(props.main, { required: true }),
     media: resolveShorthand(props.media),
     description: resolveShorthand(props.description),
-    wrapper: resolveShorthand(props.wrapper, { required: !!props.description || !!props.children }),
+    content: resolveShorthand(props.content, { required: !!props.description || !!props.children }),
     avatarSize: tableAvatarSizeMap[size],
+    size,
   };
 };

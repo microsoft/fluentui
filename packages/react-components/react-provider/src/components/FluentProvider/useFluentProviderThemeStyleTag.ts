@@ -1,5 +1,7 @@
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useRenderer_unstable } from '@griffel/react';
 import * as React from 'react';
+
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles';
 
@@ -8,12 +10,17 @@ const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
   ? (React as never)['useInsertion' + 'Effect']
   : useIsomorphicLayoutEffect;
 
-const createStyleTag = (target: Document | undefined, id: string) => {
+const createStyleTag = (target: Document | undefined, elementAttributes: Record<string, string>) => {
   if (!target) {
     return undefined;
   }
+
   const tag = target.createElement('style');
-  tag.setAttribute('id', id);
+
+  Object.keys(elementAttributes).forEach(attrName => {
+    tag.setAttribute(attrName, elementAttributes[attrName]);
+  });
+
   target.head.appendChild(tag);
   return tag;
 };
@@ -39,9 +46,12 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
+
+  const renderer = useRenderer_unstable();
   const styleTag = React.useRef<HTMLStyleElement>();
 
   const styleTagId = useId(fluentProviderClassNames.root);
+  const styleElementAttributes = renderer.styleElementAttributes;
 
   const cssVarsAsString = React.useMemo(() => {
     return theme
@@ -52,10 +62,11 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
       : '';
   }, [theme]);
 
-  const rule = `.${styleTagId} { ${cssVarsAsString} }`;
+  // When using React 18, the id generated will contain : which is not valid unless we add an escape character
+  const rule = `.${styleTagId.replace(/:/g, '\\:')} { ${cssVarsAsString} }`;
 
   useInsertionEffect(() => {
-    styleTag.current = createStyleTag(targetDocument, styleTagId);
+    styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
 
     if (styleTag.current) {
       insertSheet(styleTag.current, rule);
@@ -64,7 +75,7 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
         styleTag.current?.remove();
       };
     }
-  }, [styleTagId, targetDocument, rule]);
+  }, [styleTagId, targetDocument, rule, styleElementAttributes]);
 
   return styleTagId;
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
@@ -20,13 +20,13 @@ storiesOf('Panel', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default')
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Small left w/ close button',
@@ -107,15 +107,11 @@ storiesOf('Panel', module)
 storiesOf('Panel', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default')
-        .click('.ms-SearchBox-field')
-        .snapshot('click')
-        .end()}
+    <StoryWright
+      steps={new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'SearchBox and Right Panel',

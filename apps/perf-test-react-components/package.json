@@ -12,16 +12,19 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.8.0",
-    "@fluentui/react-avatar": "^9.2.4",
-    "@fluentui/react-button": "^9.1.6",
-    "@fluentui/react-provider": "^9.1.5",
-    "@fluentui/react-spinbutton": "^9.0.6",
-    "@fluentui/react-theme": "^9.1.1",
-    "@fluentui/scripts": "^1.0.0",
+    "@griffel/core": "^1.9.0",
+    "@fluentui/react-avatar": "^9.2.16",
+    "@fluentui/react-button": "^9.1.16",
+    "@fluentui/react-infobutton": "9.0.0-beta.9",
+    "@fluentui/react-persona": "^9.1.5",
+    "@fluentui/react-provider": "^9.2.3",
+    "@fluentui/react-spinbutton": "^9.0.16",
+    "@fluentui/react-theme": "^9.1.5",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",

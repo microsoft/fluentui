@@ -8,8 +8,8 @@ import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { PersonaPresence, PersonaSize } from './index';
 import { isConformant } from '../../common/isConformant';
-import type { IRenderFunction } from '../../Utilities';
-import type { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps } from './index';
+import type { IPersonaSharedProps, IPersonaCoinProps } from './index';
+import { wrapPersona } from './test-utils';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -19,22 +19,6 @@ const STYLES = {
   primaryText: '.ms-Persona-primaryText',
   black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red',
-};
-
-/**
- * function to override the default onRender callbacks
- */
-export const wrapPersona = (
-  example: IPersonaSharedProps,
-  shouldWrapPersonaCoin: boolean = false,
-): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
-  return (coinProps, defaultCoinRenderer): JSX.Element | null => {
-    return shouldWrapPersonaCoin ? (
-      <span id="persona-coin-container">{defaultCoinRenderer(coinProps)}</span>
-    ) : (
-      defaultCoinRenderer(coinProps)
-    );
-  };
 };
 
 const customOnRenderPersonaFunction = (props: IPersonaCoinProps): JSX.Element | null => {

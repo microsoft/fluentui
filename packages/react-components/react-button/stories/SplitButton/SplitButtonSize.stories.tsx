@@ -24,7 +24,7 @@ export const Size = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} size="small">
               Size: small
@@ -41,7 +41,7 @@ export const Size = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} size="medium">
               Size: medium
@@ -58,7 +58,7 @@ export const Size = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} size="large">
               Size: large

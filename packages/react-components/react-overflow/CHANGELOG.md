@@ -1,8 +1,105 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 20 Oct 2022 08:39:38 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Jan 2023 16:32:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0)
+
+Wed, 18 Jan 2023 16:32:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-rc.7..@fluentui/react-overflow_v9.0.0)
+
+### Patches
+
+- Release as stable ([PR #26380](https://github.com/microsoft/fluentui/pull/26380) by lingfangao@hotmail.com)
+- Bump @fluentui/priority-overflow to v9.0.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-rc.6)
+
+Mon, 09 Jan 2023 14:34:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-rc.5..@fluentui/react-overflow_v9.0.0-rc.6)
+
+### Changes
+
+- Bump @fluentui/priority-overflow to v9.0.0-rc.2 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.5 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-rc.5)
+
+Wed, 04 Jan 2023 01:40:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-rc.4..@fluentui/react-overflow_v9.0.0-rc.5)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.4 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-rc.4)
+
+Wed, 21 Dec 2022 10:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-rc.3..@fluentui/react-overflow_v9.0.0-rc.4)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-rc.3)
+
+Tue, 20 Dec 2022 14:59:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-rc.2..@fluentui/react-overflow_v9.0.0-rc.3)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.3 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-theme to v9.1.4 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+- Bump @fluentui/react-utilities to v9.3.0 ([PR #26047](https://github.com/microsoft/fluentui/pull/26047) by beachball)
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-rc.2)
+
+Mon, 05 Dec 2022 18:29:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-rc.1..@fluentui/react-overflow_v9.0.0-rc.2)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.1.3 ([PR #25798](https://github.com/microsoft/fluentui/pull/25798) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-rc.1)
+
+Thu, 17 Nov 2022 23:05:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-beta.14..@fluentui/react-overflow_v9.0.0-rc.1)
+
+### Changes
+
+- feat: Bump to RC ([PR #25659](https://github.com/microsoft/fluentui/pull/25659) by lingfangao@hotmail.com)
+- Bump @fluentui/priority-overflow to v9.0.0-rc.1 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+- Bump @fluentui/react-utilities to v9.2.2 ([PR #25683](https://github.com/microsoft/fluentui/pull/25683) by beachball)
+
+## [9.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.14)
+
+Fri, 11 Nov 2022 14:58:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-beta.13..@fluentui/react-overflow_v9.0.0-beta.14)
+
+### Changes
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.0.0-beta.4 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-theme to v9.1.2 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+- Bump @fluentui/react-utilities to v9.2.1 ([PR #25615](https://github.com/microsoft/fluentui/pull/25615) by beachball)
+
+## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.13)
+
+Wed, 02 Nov 2022 11:57:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-beta.12..@fluentui/react-overflow_v9.0.0-beta.13)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #25412](https://github.com/microsoft/fluentui/pull/25412) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
+- Bump @fluentui/react-utilities to v9.2.0 ([PR #25456](https://github.com/microsoft/fluentui/pull/25456) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.12)
 

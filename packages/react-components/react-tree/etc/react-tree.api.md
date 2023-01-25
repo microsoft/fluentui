@@ -4,6 +4,131 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
+
+// @public
+export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
+
+// @public
+export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
+
+// @public
+export const Tree: ForwardRefComponent<TreeProps>;
+
+// @public (undocumented)
+export const treeClassNames: SlotClassNames<TreeSlots>;
+
+// @public (undocumented)
+export type TreeContextValue = {
+    level: number;
+    openSubtrees: string[];
+    appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+    size: 'small' | 'medium';
+    focusFirstSubtreeItem(target: HTMLElement): void;
+    focusSubtreeOwnerItem(target: HTMLElement): void;
+    requestOpenChange(data: TreeOpenChangeData): void;
+};
+
+// @public
+export const TreeItem: ForwardRefComponent<TreeItemProps>;
+
+// @public (undocumented)
+export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
+
+// @public
+export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
+
+// @public (undocumented)
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots>;
+
+// @public
+export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
+
+// @public (undocumented)
+export type TreeItemLayoutSlots = {
+    root: Slot<'div'>;
+    iconBefore?: Slot<'span'>;
+    iconAfter?: Slot<'span'>;
+    aside?: Slot<'span'>;
+};
+
+// @public
+export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & TreeItemContextValue;
+
+// @public
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
+
+// @public (undocumented)
+export type TreeItemSlots = {
+    root: Slot<'div'>;
+    expandIcon?: Slot<'span'>;
+    actions?: Slot<'span'>;
+    groupper: NonNullable<Slot<'span'>>;
+};
+
+// @public
+export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue & {
+    open: boolean;
+    isLeaf: boolean;
+};
+
+// @public (undocumented)
+export type TreeProps = ComponentProps<TreeSlots> & {
+    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+    size?: 'small' | 'medium';
+    openSubtrees?: string | string[];
+    defaultOpenSubtrees?: string | string[];
+    onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
+};
+
+// @public (undocumented)
+export const TreeProvider: Provider<TreeContextValue | undefined> & FC<ProviderProps<TreeContextValue | undefined>>;
+
+// @public (undocumented)
+export type TreeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
+    open: boolean;
+};
+
+// @public
+export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
+
+// @public (undocumented)
+export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
+
+// @public
+export const useTreeItem_unstable: (props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>) => TreeItemState;
+
+// @public
+export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;
+
+// @public
+export const useTreeItemLayoutStyles_unstable: (state: TreeItemLayoutState) => TreeItemLayoutState;
+
+// @public
+export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
+
+// @public (undocumented)
+export const useTreeStyles_unstable: (state: TreeState) => TreeState;
+
 // (No @packageDocumentation comment for this package)
 
 ```

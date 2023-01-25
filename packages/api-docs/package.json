@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "8.2.3",
+  "version": "8.2.5",
   "description": "Transforms API Extractor .api.json files into .page.json files",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.13.3",

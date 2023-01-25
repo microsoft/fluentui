@@ -1,6 +1,7 @@
 {
-  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "extends": "../../../tsconfig.base.v0.json",
   "compilerOptions": {
+    "composite": true,
     "module": "esnext",
     "outDir": "dist/dts",
     "types": ["node", "webpack-env"]
@@ -12,6 +13,12 @@
     },
     {
       "path": "../react-component-event-listener"
+    },
+    {
+      "path": "../docs-components"
+    },
+    {
+      "path": "../react-icons-northstar"
     }
   ]
 }

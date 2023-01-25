@@ -19,6 +19,7 @@ describe(`beachball configs`, () => {
         '**/__fixtures__/**',
         '**/__mocks__/**',
         '**/common/isConformant.ts',
+        '**/src/testing/**',
         '**/config/tests.js',
         '**/jest.config.js',
         '**/SPEC*.md',

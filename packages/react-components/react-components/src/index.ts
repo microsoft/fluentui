@@ -1,8 +1,11 @@
 // Utilities
 export {
   __css,
+  __resetCSS,
+  __resetStyles,
   __styles,
   createDOMRenderer,
+  makeResetStyles,
   makeStaticStyles,
   makeStyles,
   mergeClasses,
@@ -25,49 +28,6 @@ export type {
   FluentProviderSlots,
   FluentProviderState,
 } from '@fluentui/react-provider';
-export {
-  Radio,
-  radioClassNames,
-  RadioGroup,
-  RadioGroupProvider,
-  radioGroupClassNames,
-  renderRadio_unstable,
-  renderRadioGroup_unstable,
-  useRadio_unstable,
-  useRadioGroupContext_unstable,
-  useRadioGroupContextValues,
-  useRadioGroup_unstable,
-  useRadioGroupStyles_unstable,
-  useRadioStyles_unstable,
-} from '@fluentui/react-radio';
-export type {
-  RadioGroupContextValue,
-  RadioGroupContextValues,
-  RadioGroupOnChangeData,
-  RadioGroupProps,
-  RadioGroupSlots,
-  RadioGroupState,
-  RadioOnChangeData,
-  RadioProps,
-  RadioSlots,
-  RadioState,
-} from '@fluentui/react-radio';
-export {
-  SpinButton,
-  renderSpinButton_unstable,
-  spinButtonClassNames,
-  useSpinButtonStyles_unstable,
-  useSpinButton_unstable,
-} from '@fluentui/react-spinbutton';
-export type {
-  SpinButtonOnChangeData,
-  SpinButtonChangeEvent,
-  SpinButtonProps,
-  SpinButtonSlots,
-  SpinButtonState,
-  SpinButtonSpinState,
-  SpinButtonBounds,
-} from '@fluentui/react-spinbutton';
 export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
@@ -137,6 +97,7 @@ export {
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
+  useScrollbarWidth,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -212,8 +173,46 @@ export {
   renderAvatar_unstable,
   useAvatar_unstable,
   useAvatarStyles_unstable,
+  AvatarGroup,
+  avatarGroupClassNames,
+  AvatarGroupItem,
+  avatarGroupItemClassNames,
+  AvatarGroupPopover,
+  avatarGroupPopoverClassNames,
+  AvatarGroupProvider,
+  renderAvatarGroup_unstable,
+  useAvatarGroupContextValues,
+  useAvatarGroupStyles_unstable,
+  useAvatarGroup_unstable,
+  renderAvatarGroupItem_unstable,
+  useAvatarGroupItemStyles_unstable,
+  useAvatarGroupItem_unstable,
+  renderAvatarGroupPopover_unstable,
+  useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopover_unstable,
+  useAvatarGroupContext_unstable,
+  partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
-export type { AvatarNamedColor, AvatarProps, AvatarSizes, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
+export type {
+  AvatarNamedColor,
+  AvatarProps,
+  AvatarSizes,
+  AvatarSlots,
+  AvatarState,
+  AvatarGroupProps,
+  AvatarGroupSlots,
+  AvatarGroupState,
+  AvatarGroupItemProps,
+  AvatarGroupItemSlots,
+  AvatarGroupItemState,
+  AvatarGroupPopoverProps,
+  AvatarGroupPopoverSlots,
+  AvatarGroupPopoverState,
+  AvatarGroupContextValue,
+  AvatarGroupContextValues,
+  PartitionAvatarGroupItems,
+  PartitionAvatarGroupItemsOptions,
+} from '@fluentui/react-avatar';
 export {
   Badge,
   CounterBadge,
@@ -427,6 +426,9 @@ export type {
   MenuListSlots,
   MenuListState,
   MenuOpenChangeData,
+  MenuOpenEvent,
+  // MenuOpenEvents is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   MenuOpenEvents,
   MenuPopoverProps,
   MenuPopoverSlots,
@@ -441,8 +443,18 @@ export type {
   MenuTriggerProps,
   MenuTriggerState,
   SelectableHandler,
+  // UninitializedMenuListState is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
+export {
+  Persona,
+  personaClassNames,
+  renderPersona_unstable,
+  usePersonaStyles_unstable,
+  usePersona_unstable,
+} from '@fluentui/react-persona';
+export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
 export {
   Popover,
   PopoverSurface,
@@ -476,6 +488,33 @@ export type {
 export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
+  Radio,
+  radioClassNames,
+  RadioGroup,
+  RadioGroupProvider,
+  radioGroupClassNames,
+  renderRadio_unstable,
+  renderRadioGroup_unstable,
+  useRadio_unstable,
+  useRadioGroupContext_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
+  useRadioGroupStyles_unstable,
+  useRadioStyles_unstable,
+} from '@fluentui/react-radio';
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioOnChangeData,
+  RadioProps,
+  RadioSlots,
+  RadioState,
+} from '@fluentui/react-radio';
+export {
   Slider,
   sliderClassNames,
   sliderCSSVars,
@@ -485,6 +524,22 @@ export {
   renderSlider_unstable,
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+export {
+  SpinButton,
+  renderSpinButton_unstable,
+  spinButtonClassNames,
+  useSpinButtonStyles_unstable,
+  useSpinButton_unstable,
+} from '@fluentui/react-spinbutton';
+export type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+  SpinButtonProps,
+  SpinButtonSlots,
+  SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
+} from '@fluentui/react-spinbutton';
 export {
   Spinner,
   spinnerClassNames,
@@ -565,7 +620,7 @@ export {
   useTextarea_unstable,
   useTextareaStyles_unstable,
 } from '@fluentui/react-textarea';
-export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
+export type { TextareaOnChangeData, TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
 export {
   Tooltip,
   renderTooltip_unstable,
@@ -650,3 +705,62 @@ export type {
   DialogContentSlots,
   DialogContentState,
 } from '@fluentui/react-dialog';
+
+export {
+  Overflow,
+  OverflowItem,
+  useIsOverflowGroupVisible,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+  DATA_OVERFLOWING,
+  DATA_OVERFLOW_MENU,
+  DATA_OVERFLOW_ITEM,
+} from '@fluentui/react-overflow';
+
+export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
+
+export {
+  Toolbar,
+  ToolbarButton,
+  useToolbarButtonStyles_unstable,
+  useToolbarButton_unstable,
+  ToolbarRadioButton,
+  useToolbarRadioButton_unstable,
+  useToolbarRadioButtonStyles_unstable,
+  ToolbarDivider,
+  useToolbarDivider_unstable,
+  ToolbarGroup,
+  useToolbarGroupStyles_unstable,
+  useToolbarGroup_unstable,
+  renderToolbarGroup_unstable,
+  toolbarGroupClassNames,
+  ToolbarToggleButton,
+  useToolbarToggleButtonStyles_unstable,
+  useToolbarToggleButton_unstable,
+  renderToolbar_unstable,
+  toolbarClassNames,
+  useToolbar_unstable,
+  useToolbarDividerStyles_unstable,
+  useToolbarStyles_unstable,
+  ToolbarRadioGroup,
+} from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarContextValue,
+  ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarProps,
+  ToolbarSlots,
+  ToolbarState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+  ToolbarGroupProps,
+  ToolbarGroupState,
+  ToolbarRadioButtonProps,
+  ToolbarRadioButtonState,
+  ToolbarRadioGroupProps,
+  ToolbarRadioGroupState,
+} from '@fluentui/react-toolbar';

@@ -23,7 +23,7 @@ export const Disabled = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Enabled state</SplitButton>}
         </MenuTrigger>
 
@@ -35,7 +35,7 @@ export const Disabled = () => {
         </MenuPopover>
       </Menu>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} disabled>
               Disabled state
@@ -51,7 +51,7 @@ export const Disabled = () => {
         </MenuPopover>
       </Menu>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <SplitButton menuButton={triggerProps} disabledFocusable>
               Disabled focusable state

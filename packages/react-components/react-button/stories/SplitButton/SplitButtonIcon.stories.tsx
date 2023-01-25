@@ -1,12 +1,5 @@
 import * as React from 'react';
 import {
-  bundleIcon,
-  CalendarMonthFilled,
-  CalendarMonthRegular,
-  FilterFilled,
-  FilterRegular,
-} from '@fluentui/react-icons';
-import {
   makeStyles,
   Menu,
   MenuItem,
@@ -16,10 +9,8 @@ import {
   SplitButton,
   Tooltip,
 } from '@fluentui/react-components';
+import { CalendarMonthRegular, FilterRegular } from '@fluentui/react-icons';
 import type { MenuButtonProps } from '@fluentui/react-components';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
-const Filter = bundleIcon(FilterFilled, FilterRegular);
 
 const useStyles = makeStyles({
   wrapper: {
@@ -38,9 +29,9 @@ export const Icon = () => {
   return (
     <div className={styles.wrapper}>
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />}>
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />}>
               With calendar icon before contents
             </SplitButton>
           )}
@@ -54,9 +45,9 @@ export const Icon = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} iconPosition="after">
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} iconPosition="after">
               With calendar icon after contents
             </SplitButton>
           )}
@@ -70,9 +61,9 @@ export const Icon = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
-            <SplitButton menuButton={triggerProps} icon={<CalendarMonth />} menuIcon={<Filter />}>
+            <SplitButton menuButton={triggerProps} icon={<CalendarMonthRegular />} menuIcon={<FilterRegular />}>
               With calendar icon and custom filter menu icon
             </SplitButton>
           )}
@@ -86,7 +77,7 @@ export const Icon = () => {
       </Menu>
 
       <Menu positioning="below-end">
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           {(triggerProps: MenuButtonProps) => (
             <Tooltip
               content="With calendar icon only"
@@ -96,7 +87,7 @@ export const Icon = () => {
               <SplitButton
                 menuButton={triggerProps}
                 primaryActionButton={{ ref: setPrimaryActionButtonRef }}
-                icon={<CalendarMonth />}
+                icon={<CalendarMonthRegular />}
               />
             </Tooltip>
           )}
