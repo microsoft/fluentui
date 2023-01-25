@@ -94,8 +94,8 @@ export interface AccordionProps extends UIComponentProps, ChildrenComponentProps
    */
   accessibility?: Accessibility<AccordionBehaviorProps>;
 
-  /** Manage if panels should be rerendered each time or just shown or hidden. */
-  disablePanelsRerendering?: boolean;
+  /** Manage if panels should be rendered always or based on their state. */
+  alwaysRenderPanels?: boolean;
 }
 
 export type AccordionStylesProps = never;
@@ -127,7 +127,7 @@ export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((pr
     panels,
     renderPanelContent,
     renderPanelTitle,
-    disablePanelsRerendering
+    alwaysRenderPanels,
   } = props;
   const alwaysActiveIndex = expanded ? 0 : -1;
 
@@ -280,7 +280,7 @@ export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((pr
           render: renderPanelTitle,
         }),
       );
-      if (disablePanelsRerendering || active) {
+      if (alwaysRenderPanels || active) {
         children.push(
           createShorthand(AccordionContent, content, {
             defaultProps: () => ({
