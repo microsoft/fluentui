@@ -51,9 +51,9 @@ _Provide some representative example code that uses the proposed API for the com
 - Interactive
   - Togglable
   - Dismissable
-  - Draggable (user provided style?)
+  - Draggable (user provided)
   - Menu (composed)
-  - Right click (composed?)
+  - Right click (composed)
 
 ## Components
 
@@ -66,15 +66,15 @@ _Provide some representative example code that uses the proposed API for the com
 
 #### Tag
 
-- root
+- root : span
 - image
 - dismiss
 
 #### TagButton
 
-- root
-- action (primary)
+- root : span, takes action props due to primary slot
 - image
+- action (primary)
 - dismiss
 
 ### Props
@@ -95,21 +95,12 @@ Dismiss
 
 #### TagButton
 
-Click
+Toggle (or checked)
 
-- onClick
-
-Toggle (or Select)
-
-- toggleable
-- toggled
-- onToggle
-- defaultToggled
-
-Drag (optional)
-
-- dragable
-- onDrag
+- toggleable: boolean
+- defaultToggled: boolean
+- toggled: boolean
+- onToggle: function
 
 ## Structure
 
@@ -117,10 +108,12 @@ Drag (optional)
 
 ```tsx
 <Tag>Simple Tag</Tag>
+<Tab as="li">Simple List Tag</Tag>
 ```
 
 ```html
 <span>Simple Tag</span>
+<li>Simple Tag</li>
 ```
 
 ### Tag with image
@@ -131,7 +124,7 @@ Drag (optional)
 
 ```html
 <span>
-  <span><img role="presentation" aria-hidden="true" /></span>
+  <span role="presentation" aria-hidden="true"><img alt /></span>
   Tag with image
 </span>
 ```
@@ -144,7 +137,7 @@ Drag (optional)
 
 ```html
 <span>
-  <span><svg /></span>
+  <span role="presentation" aria-hidden="true"><svg /></span>
   Tag with icon
 </span>
 ```
@@ -152,7 +145,7 @@ Drag (optional)
 ### TagButton
 
 ```tsx
-<TagButton onClick={handleClick}>Tag button</Tag>
+<TagButton onClick={handleClick}> Tag button</Tag>
 ```
 
 ```html
@@ -172,7 +165,7 @@ Drag (optional)
 ### Toggleable TagButton
 
 ```tsx
- <TagButton toggleable >Uncontrolled toggle tag</Tag>
+ <TagButton toggleable defaultToggled={true}>Uncontrolled toggle tag</Tag>
  <TagButton toggled={isToggled} onToggle={handleToggle} >Controlled toggle tag</Tag>
 ```
 
@@ -183,11 +176,14 @@ Drag (optional)
 ### Dismissable TagButton
 
 ```tsx
- <TagButton dismissable onDismiss={handleDismiss} >Dismissable TagButton</Tag>
+ <TagButton dismissable onDismiss={handleDismiss}>Dismissable TagButton</Tag>
 ```
 
 ```html
-<span><button type="button">Toggleable TagButton</button><button type="button">x</button></span>
+<span>
+  <button id="action" type="button">Toggleable TagButton</button>
+  <button id="dismiss" aria-label="remove" aria-labelledby="dismiss action" type="button">x</button>
+</span>
 ```
 
 ### Dismissable TagButton with custom dismiss icon
@@ -214,7 +210,7 @@ Drag (optional)
 ```tsx
 <Menu>
   <MenuTrigger disableButtonEnhancement>
-    {(triggerProps) => <TagButton action={triggerProps} dismissable>Tag menu and dismiss button</Tag>}
+    <TagButton dismissable>Tag menu and dismiss button</Tag>
   </MenuTrigger>
   <MenuPopover>
     <MenuList>
