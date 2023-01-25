@@ -34,6 +34,7 @@
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.5",
     "@fluentui/react-shared-contexts": "^9.1.5",
+    "@fluentui/react-avatar": "^9.2.16",
     "@fluentui/react-aria": "^9.3.5",
     "@fluentui/react-tabster": "^9.4.0",
     "@fluentui/react-portal": "^9.1.3",
