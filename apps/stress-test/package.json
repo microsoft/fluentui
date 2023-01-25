@@ -14,7 +14,7 @@
     "@fluentui/react-components": "^9.11.1",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/web-components": "^2.5.11",
-    "@microsoft/fast-element": "^1.10.4",
+    "@microsoft/fast-element": "^1.11.0",
     "afterframe": "1.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
