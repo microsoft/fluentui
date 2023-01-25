@@ -2,6 +2,71 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 25 Jan 2023 14:49:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.1",
+      "version": "3.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "1322f3f962e8a850fe104cc2ba9b12b2bc2f2842",
+            "comment": "add progressbar as new component"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6de62a46eafd74b968ec913901729b3f7284dc7a",
+            "comment": "Add initial theme"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "eead74fee07339f998615fe34d8f847d0f63af6e",
+            "comment": "add badge and counter badge as new components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5e3ba35835c0a5487b574ea58a51cccd67b5fa8c",
+            "comment": "add text as a new component"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7c94cbd46051ea57bba4e8885c86e89967bb412c",
+            "comment": "chore: setup typescript 4.7 for web-components package"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cd42ab4f8aa11c7ac134538193dc8dc4a01ca0f3",
+            "comment": "Reset web-components for v3 development"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f15428e8fb2c3cfbfe8e555978bfa66f74f8fd8",
+            "comment": "chore: bump web-components to 3.0.0-alpha.0"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9b29aada3dba8f929530ddc1b4b64e869d5fffd4",
+            "comment": "chore(web-components): resolve invalid webpack test regex on windows"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "be3d30fcbe222be34b02a554e948d14bb2d730df",
+            "comment": "update clean file to .cjs and ensure rimraf is in dependency tree"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Apr 2024 07:28:55 GMT",
       "tag": "@fluentui/web-components_v2.6.1",
       "version": "2.6.1",
