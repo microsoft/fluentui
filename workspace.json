@@ -330,6 +330,13 @@
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
+    "@fluentui/react-breadcrumb": {
+      "root": "packages/react-components/react-breadcrumb",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-breadcrumb/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-builder": {
       "root": "packages/fluentui/react-builder",
       "projectType": "library",
