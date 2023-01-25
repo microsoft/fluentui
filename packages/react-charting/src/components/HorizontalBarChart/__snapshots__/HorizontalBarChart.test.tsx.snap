@@ -49,7 +49,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -109,6 +109,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
+            {
+              padding-right: 0px;
+            }
         data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -121,22 +124,23 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               {
                 display: block;
                 height: 12px;
+                overflow: visible;
                 width: 100%;
               }
         >
           <g
-            className=
-
-                {
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
             id="_HorizontalLine_lllllm_0"
             key="_HorizontalLine_lllllm_0"
             onClick={[Function]}
           >
             <rect
               aria-label="2020/04/30, 94%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -152,6 +156,12 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             />
             <rect
               aria-label="13457/15000."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -206,7 +216,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -266,6 +276,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
+            {
+              padding-right: 0px;
+            }
         data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -278,22 +291,23 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               {
                 display: block;
                 height: 12px;
+                overflow: visible;
                 width: 100%;
               }
         >
           <g
-            className=
-
-                {
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
             id="_HorizontalLine_lllllm_1"
             key="_HorizontalLine_lllllm_1"
             onClick={[Function]}
           >
             <rect
               aria-label="2020/04/30, 19%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -309,6 +323,12 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             />
             <rect
               aria-label="14200/15000."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -539,7 +559,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -599,6 +619,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
+            {
+              padding-right: 0px;
+            }
         data-focuszone-id="FocusZone3"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -611,22 +634,23 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               {
                 display: block;
                 height: 12px;
+                overflow: visible;
                 width: 100%;
               }
         >
           <g
-            className=
-
-                {
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
             id="_HorizontalLine_lllllm_0"
             key="_HorizontalLine_lllllm_0"
             onClick={[Function]}
           >
             <rect
               aria-label="2020/04/30, 94%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -642,6 +666,12 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             />
             <rect
               aria-label="13457/15000."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -696,7 +726,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             className=
                 ms-TooltipHost
                 {
-                  color: #171717;
+                  color: #323130;
                   display: block;
                   margin-bottom: 5px;
                   overflow: hidden;
@@ -756,6 +786,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
+            {
+              padding-right: 0px;
+            }
         data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -768,22 +801,23 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               {
                 display: block;
                 height: 12px;
+                overflow: visible;
                 width: 100%;
               }
         >
           <g
-            className=
-
-                {
-                  stroke-width: 2px;
-                  stroke: #ffffff;
-                }
             id="_HorizontalLine_lllllm_1"
             key="_HorizontalLine_lllllm_1"
             onClick={[Function]}
           >
             <rect
               aria-label="2020/04/30, 19%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -799,6 +833,12 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             />
             <rect
               aria-label="14200/15000."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -899,5 +939,603 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       </div>
     </div>
   </div>
+</div>
+`;
+
+exports[`HorizontalBarChart snapShot testing Should not render bar labels in absolute-scale variant 1`] = `
+<div
+  className=
+
+      {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 16px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone8"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 4px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              one
+            </span>
+            <div
+              hidden={true}
+              id="tooltip9"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              one
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 0px;
+            }
+        data-focuszone-id="FocusZone10"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="one"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_0"
+            onClick={[Function]}
+          >
+            <rect
+              aria-label="2020/04/30, 94%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              fill="#004b50"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <text />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 16px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone11"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 4px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              two
+            </span>
+            <div
+              hidden={true}
+              id="tooltip12"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              two
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 0px;
+            }
+        data-focuszone-id="FocusZone13"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="two"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_1"
+            onClick={[Function]}
+          >
+            <rect
+              aria-label="2020/04/30, 19%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              fill="#5c2d91"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <text />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`HorizontalBarChart snapShot testing Should render absolute-scale variant correctly 1`] = `
+<div
+  className=
+
+      {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 16px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone1"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 4px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              one
+            </span>
+            <div
+              hidden={true}
+              id="tooltip2"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              one
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 40px;
+            }
+        data-focuszone-id="FocusZone3"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="one"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_0"
+            onClick={[Function]}
+          >
+            <rect
+              aria-label="2020/04/30, 94%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              fill="#004b50"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    fill: #323130;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="central"
+              transform="translate(4)"
+              x="10.286666666666665%"
+              y={6}
+            >
+              1.5k
+            </text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 16px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone4"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 4px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              two
+            </span>
+            <div
+              hidden={true}
+              id="tooltip5"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              two
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 40px;
+            }
+        data-focuszone-id="FocusZone6"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="two"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_1"
+            onClick={[Function]}
+          >
+            <rect
+              aria-label="2020/04/30, 19%."
+              className=
+
+                  {
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              fill="#5c2d91"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <text
+              aria-hidden={true}
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    fill: #323130;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              dominantBaseline="central"
+              transform="translate(4)"
+              x="5.333333333333334%"
+              y={6}
+            >
+              800
+            </text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
 </div>
 `;
