@@ -385,7 +385,7 @@
     "source": [
       "package.json",
       "apps/!(react-18-tests-v8|react-18-tests-v9)/package.json",
-      "packages/!(web-components)/package.json",
+      "packages/web-components/package.json",
       "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
       "scripts/package.json"
@@ -439,17 +439,6 @@
           "webpack",
           "webpack-bundle-analyzer",
           "yargs"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/web-components"
-        ],
-        "dependencies": [
-          "mocha",
-          "ts-loader",
-          "tslib",
-          "webpack"
         ]
       },
       {
