@@ -1,3 +1,4 @@
+import { canUseDOM } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -27,13 +28,13 @@ export function useMeasureElement(el: React.RefObject<HTMLElement>) {
   }, [container, setWidth]);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = useState(new ResizeObserver(_handleResize));
+  const [resizeObserver] = useState(canUseDOM() ? new ResizeObserver(_handleResize) : undefined);
 
   // After the ResizeObserver is created or the currentContainer reference has been changed(created),
   // update the observer
   React.useEffect(() => {
-    currentContainer && resizeObserver.observe(currentContainer);
-    return () => resizeObserver.disconnect();
+    currentContainer && resizeObserver?.observe(currentContainer);
+    return () => resizeObserver?.disconnect();
   }, [resizeObserver, currentContainer]);
 
   useEffect(() => {
