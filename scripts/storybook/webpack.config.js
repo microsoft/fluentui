@@ -64,11 +64,15 @@ module.exports = config => {
       ],
     },
     {
-      test: /\.(gif|jpg|jpeg|png|svg)$/,
+      test: /\.(gif|jpg|jpeg|png)$/,
       loader: 'file-loader',
       options: {
         name: '[name].[ext]',
       },
+    },
+    {
+      test: /\.svg)$/,
+      type: 'asset/source',
     },
     {
       test: /\.(woff|woff2|ttf)$/,

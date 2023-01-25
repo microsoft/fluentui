@@ -86,6 +86,7 @@ export const styles = css`
     display: flex;
     flex-direction: column;
     padding: 12px 0;
+    line-height: 20px;
   }
 
   span::after,
@@ -100,7 +101,8 @@ export const styles = css`
   :host([orientation='vertical']) span::after,
   :host([orientation='vertical']) span::before {
     width: ${strokeWidthThin};
-    min-height: 24px;
+    min-height: 20px;
+    height: 100%;
   }
 
   :host([appearance='strong']) span::after,
