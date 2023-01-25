@@ -338,6 +338,11 @@ export interface TableColumnDefinition<TItem> {
 export type TableColumnId = string | number;
 
 // @public (undocumented)
+export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
+    defaultWidth?: number;
+}>;
+
+// @public (undocumented)
 export const TableContextProvider: React_2.Provider<TableContextValue | undefined>;
 
 // @public (undocumented)
@@ -345,11 +350,13 @@ export type TableContextValue = {
     size: 'extra-small' | 'small' | 'medium';
     noNativeElements: boolean;
     sortable: boolean;
+    columnSizingState?: TableColumnSizingState;
 };
 
 // @public (undocumented)
 export type TableContextValues = {
     table: TableContextValue;
+    columnSizingState?: TableColumnSizingState;
 };
 
 // @public (undocumented)
@@ -358,9 +365,13 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 // @public (undocumented)
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
     columns: TableColumnDefinition<TItem>[];
+    // (undocumented)
+    columnSizing: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
+    // (undocumented)
+    tableRef: React_2.RefObject<HTMLDivElement>;
 }
 
 // @public
@@ -378,6 +389,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
     sortDirection?: SortDirection;
+    columnId?: TableColumnId;
 };
 
 // @public (undocumented)
@@ -385,10 +397,11 @@ export type TableHeaderCellSlots = {
     root: Slot<'th', 'div'>;
     sortIcon: Slot<'span'>;
     button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    resizeHandle: Slot<'div'>;
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableHeaderCellProps, 'columnId'> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
@@ -501,6 +514,9 @@ export interface TableSortState<TItem> {
 
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
+
+// @public (undocumented)
+export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 // @public
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;

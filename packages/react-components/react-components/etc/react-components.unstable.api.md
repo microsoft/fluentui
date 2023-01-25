@@ -212,6 +212,7 @@ import { tableClassName } from '@fluentui/react-table';
 import { tableClassNames } from '@fluentui/react-table';
 import { TableColumnDefinition } from '@fluentui/react-table';
 import { TableColumnId } from '@fluentui/react-table';
+import { TableColumnSizingOptions } from '@fluentui/react-table';
 import { TableContextProvider } from '@fluentui/react-table';
 import { TableContextValue } from '@fluentui/react-table';
 import { TableContextValues } from '@fluentui/react-table';
@@ -261,6 +262,7 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useColumnSizing_unstable } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
@@ -745,6 +747,8 @@ export { TableColumnDefinition }
 
 export { TableColumnId }
 
+export { TableColumnSizingOptions }
+
 export { TableContextProvider }
 
 export { TableContextValue }
@@ -842,6 +846,8 @@ export { useCardPreview_unstable }
 export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
+
+export { useColumnSizing_unstable }
 
 export { useCombobox_unstable }
 
