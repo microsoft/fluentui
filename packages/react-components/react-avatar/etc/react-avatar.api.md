@@ -72,7 +72,7 @@ export type AvatarGroupItemSlots = {
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
     layout: AvatarGroupProps['layout'];
-    size: AvatarSizes;
+    size: AvatarSize;
 };
 
 // @public
@@ -101,13 +101,13 @@ export type AvatarGroupPopoverSlots = {
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
-    size: AvatarSizes;
+    size: AvatarSize;
 };
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
-    size?: AvatarSizes;
+    size?: AvatarSize;
 };
 
 // @public (undocumented)
