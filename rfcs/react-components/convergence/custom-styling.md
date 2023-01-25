@@ -110,6 +110,101 @@ a method for each component, but that causes a circular dependency problem for c
 There may some typescript trickery that would allow for a single context value type, but having each component define
 the context type it will inspect for custom styling follows SOLID dependency inversion.
 
+## Option A2: Add global custom styling hook
+
+A global custom styling hook would be defined. It takes a component kind and state.
+
+> We experimented with several ways to try and make the method typesafe, but it proved
+> either overly complex, forced conditional calls that would make hooks unstable,
+> led to cirtcular references between packages, or restricted custom styling to the point
+> of lower value as an escape hatch.
+
+```tsx
+export type FluentStyleCustomizer = {
+  useCustomStyles_unstable: (kind: string, state: any) => void;
+};
+
+export const fuiCustomizer: FuiCustomizer = {
+  useCustomStyles_unstable: () => {},
+};
+```
+
+Components would call the custom styling hook immediately after their own styling hook.
+
+> The kind passed to the custom style hook can be specific to library (e.g. 'FluentUI.Button').
+
+```tsx
+export const SomeComponent: ForwardRefComponent<SomeComponentProps> = React.forwardRef((props, ref) => {
+  const state = useSomeComponent_unstable(props, ref);
+
+  useSomeComponentStyles_unstable(state);
+
+  fuiCustomizer.useCustomStyles_unstable('SomeComponent', state);
+
+  return renderSomeComponent_unstable(state);
+  // Casting is required due to lack of distributive union to support unions on @types/react
+}) as ForwardRefComponent<SomeComponentProps>;
+```
+
+Callers can customize styles by replacing the default useCustomStyles_unstable hook.
+
+> Callers are encouraged to use Griffel to define styles.
+> They can use makeStyles and mergeClasses to default, override, or replace
+> The classes applied by the component style hook.
+> A good implementation will switch to typesafe methods.
+
+```ts
+const useSomeComponentCustomStyles = (state: SomeComponentState) => {
+  const styles = useStyles();
+
+  if (state.active) {
+  }
+  state.root.className = mergeClasses(
+    state.root.className,
+    styles.root,
+    state.size === 'small' && styles.small,
+    state.size === 'medium' && styles.medium,
+    state.size === 'large' && styles.large,
+  );
+};
+
+fuiCustomizer.useCustomStyles_unstable = (kind: string, state: any) => {
+  switch (kind) {
+    case 'SomeComponent':
+      useSomeComponentCustomStyles(<SomeComponentState>state);
+      break;
+    // case ...
+  }
+};
+```
+
+### 💡 Improvement - apply Typescript discriminant property technique
+
+- Add a `kind: string` property to ComponentState
+- Each component state would redefine kind to retrict to their type (e.g. Button would have `kind: 'Button'`).
+- Remove kind parameter from useCustomStyles.
+- Trying to cast to the wrong component state will fail.
+
+### 👍
+
+- Custom styling gets the same power as the default component useStyles hook.
+- This builds on using slots as the addressable items for applying styles.
+- The custom styles can be built using Griffel with build-time optimization.
+- Single, centralized point of customization.
+- Only one new type introduced (FluentStyleCustomizer)
+- One line of code to add to each component.
+- Does not significantly affect rendering performance.
+- Partners building components can follow the same practice to support custom styling in their libraries.
+- Hooks is not conditionally called and should not lead to unstable hook react errors.
+- Can restyle without having to recompile component libraries.
+- Global traverses multiple render roots.
+
+### 👎
+
+- Custom style hook state is not compile-time typesafe.
+- Very powerful. Only modifying classes is a implicit agreement.
+- Callers doing custom styling may still take a dependency on the CSS internals of the component.
+
 ## Option B: Encourage recomposition | make recomposition easier
 
 The hooks composition model was architected to separate concerns of component behavior, style, and rendering.
