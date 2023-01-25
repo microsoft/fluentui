@@ -91,7 +91,7 @@ const useStyles = makeStyles({
   },
 
   multiselectCheck: {
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralForeground3),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
     boxSizing: 'border-box',
 
