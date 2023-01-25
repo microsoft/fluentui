@@ -61,6 +61,18 @@ Thu, 05 Jan 2023 07:59:57 GMT
 
 - Fix fluent-tooltip not showing anchor pointer when wc prefix is changed ([PR #26154](https://github.com/microsoft/fluentui/pull/26154) by abcy@microsoft.com)
 
+## [3.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.1)
+
+Wed, 25 Jan 2023 14:49:08 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.8..@fluentui/web-components_v3.0.0-alpha.1)
+
+### Changes
+
+- add progressbar as new component ([PR #26329](https://github.com/microsoft/fluentui/pull/26329) by ryan@ryanmerrill.net)
+- Add initial theme ([PR #25660](https://github.com/microsoft/fluentui/pull/25660) by miroslav.stastny@microsoft.com)
+- add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
+- add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
+
 ## [2.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.8)
 
 Wed, 26 Oct 2022 07:52:54 GMT
