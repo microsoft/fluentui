@@ -11,15 +11,16 @@ type DefaultResizeHandleProps = {
 const useDefaultHandleStyles = makeStyles({
   root: {
     position: 'absolute',
-    right: '0px',
+    right: 0,
     top: 0,
     bottom: 0,
     width: '16px',
-    ...shorthands.margin(0, '-16px'),
+    ...shorthands.margin(0, '-8px'),
     cursor: 'col-resize',
     opacity: 0,
     transitionProperty: 'opacity',
     transitionDuration: '.2s',
+    zIndex: 1,
 
     ':hover': {
       opacity: 1,

@@ -83,7 +83,9 @@ export const ResizingControlled = () => {
             {columns.map((column, index) => (
               <TableHeaderCell key={column.columnId} {...columnSizing.getColumnProps(column.columnId)}>
                 Header {column.columnId}
-                <button onClick={() => removeColumn(index)}>x</button>
+                <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
+                  x
+                </span>
               </TableHeaderCell>
             ))}
           </TableRow>

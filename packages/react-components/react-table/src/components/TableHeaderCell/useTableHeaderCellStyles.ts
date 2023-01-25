@@ -40,6 +40,7 @@ const useStyles = makeStyles({
       },
       { selector: 'focus-within', enableOutline: true },
     ),
+    position: 'relative',
   },
 
   rootInteractive: {
@@ -88,6 +89,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXXS,
   },
+
+  resizeHandle: {},
 });
 
 /**
@@ -123,7 +126,11 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   }
 
   if (state.resizeHandle) {
-    state.resizeHandle.className = mergeClasses(tableHeaderCellClassNames.resizeHandle, state.resizeHandle.className);
+    state.resizeHandle.className = mergeClasses(
+      tableHeaderCellClassNames.resizeHandle,
+      styles.resizeHandle,
+      state.resizeHandle.className,
+    );
   }
 
   return state;
