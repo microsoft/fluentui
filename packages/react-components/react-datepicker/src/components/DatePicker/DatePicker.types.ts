@@ -11,6 +11,7 @@ import type { CalendarStrings, DateFormatting } from '../../utils';
 
 export type DatePickerSlots = {
   root: NonNullable<Slot<'div'>>;
+  // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
   inputField: NonNullable<Slot<typeof InputField>>;
   wrapper: NonNullable<Slot<'div'>>;
 };
