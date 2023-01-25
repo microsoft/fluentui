@@ -25,5 +25,12 @@ export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellSt
     state.sortIcon.className = mergeClasses(dataGridHeaderCellClassNames.sortIcon, state.sortIcon.className);
   }
 
+  if (state.resizeHandle) {
+    state.resizeHandle.className = mergeClasses(
+      dataGridHeaderCellClassNames.resizeHandle,
+      state.resizeHandle.className,
+    );
+  }
+
   return state;
 };

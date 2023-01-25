@@ -25,7 +25,7 @@ export const useTableHeaderCell_unstable = (
   props: TableHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableHeaderCellState => {
-  const { noNativeElements, sortable } = useTableContext();
+  const { noNativeElements, sortable, columnSizingState } = useTableContext();
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
   return {
@@ -42,9 +42,9 @@ export const useTableHeaderCell_unstable = (
       ...props,
     }),
     resizeHandle: resolveShorthand(props.resizeHandle, {
-      required: true,
+      required: !!columnSizingState,
       defaultProps: {
-        children: <ResizeHandle columnId={props.columnId} />,
+        children: columnSizingState ? <ResizeHandle columnId={props.columnId} /> : undefined,
       },
     }),
     sortIcon: resolveShorthand(props.sortIcon, {

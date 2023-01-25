@@ -1,4 +1,5 @@
-import type { TableFeaturesState, TableSortState } from '../hooks';
+import { createRef } from 'react';
+import { TableFeaturesState, TableSortState, defaultColumnSizingState } from '../hooks';
 import { defaultTableSelectionState, defaultTableSortState } from '../hooks';
 
 export const mockTableState = <TItem = unknown>(options: Partial<TableFeaturesState<TItem>> = {}) => {
@@ -8,6 +9,8 @@ export const mockTableState = <TItem = unknown>(options: Partial<TableFeaturesSt
     items: [],
     selection: defaultTableSelectionState,
     sort: defaultTableSortState as TableSortState<TItem>,
+    columnSizing: defaultColumnSizingState,
+    tableRef: createRef(),
     ...options,
   };
 

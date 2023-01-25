@@ -122,5 +122,9 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     );
   }
 
+  if (state.resizeHandle) {
+    state.resizeHandle.className = mergeClasses(tableHeaderCellClassNames.resizeHandle, state.resizeHandle.className);
+  }
+
   return state;
 };

@@ -16,6 +16,7 @@ describe('DataGridHeaderCell', () => {
         {
           props: {
             sortIcon: 'Test Icon',
+            resizeHandle: 'Test resizeHandle',
           },
         },
       ],
