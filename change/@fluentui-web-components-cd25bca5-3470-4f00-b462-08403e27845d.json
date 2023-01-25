@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: export theme",
+  "packageName": "@fluentui/web-components",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
