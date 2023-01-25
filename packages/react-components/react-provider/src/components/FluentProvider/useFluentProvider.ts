@@ -60,7 +60,8 @@ export const useFluentProvider_unstable = (
     dir,
     targetDocument,
     theme: mergedTheme,
-    overrides: mergedOverrides,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    overrides_unstable: mergedOverrides,
     themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
 
     components: {

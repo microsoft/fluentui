@@ -30,12 +30,11 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 
 // @public (undocumented)
-export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
+export type FluentProviderContextValues = Pick<FluentProviderState, 'theme' | 'overrides_unstable'> & {
     provider: ProviderContextValue_unstable;
     themeClassName: ThemeClassNameContextValue_unstable;
     textDirection: 'ltr' | 'rtl';
     tooltip: TooltipVisibilityContextValue_unstable;
-    overrides: OverridesContextValue_unstable;
 };
 
 // @public (undocumented)
@@ -53,10 +52,9 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
-    overrides: OverridesContextValue_unstable;
 };
 
 // @public

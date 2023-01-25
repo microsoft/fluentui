@@ -34,16 +34,14 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
   Pick<FluentProviderProps, 'targetDocument'> &
-  Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir'>> & {
+  Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue;
     themeClassName: string;
-    overrides: OverridesContextValue;
   };
 
-export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
+export type FluentProviderContextValues = Pick<FluentProviderState, 'theme' | 'overrides_unstable'> & {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
   textDirection: 'ltr' | 'rtl';
   tooltip: TooltipVisibilityContextValue;
-  overrides: OverridesContextValue;
 };
