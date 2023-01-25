@@ -4,9 +4,21 @@ This log was last generated on Thu, 26 Jan 2023 07:35:32 GMT and should not be m
 
 <!-- Start content -->
 
+## [3.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.1)
+
+Wed, 25 Jan 2023 14:49:08 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.8..@fluentui/web-components_v3.0.0-alpha.1)
+
+### Changes
+
+- add progressbar as new component ([PR #26329](https://github.com/microsoft/fluentui/pull/26329) by ryan@ryanmerrill.net)
+- Add initial theme ([PR #25660](https://github.com/microsoft/fluentui/pull/25660) by miroslav.stastny@microsoft.com)
+- add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
+- add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
+
 ## [2.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.12)
 
-Thu, 26 Jan 2023 07:35:32 GMT 
+Thu, 26 Jan 2023 07:35:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.11..@fluentui/web-components_v2.5.12)
 
 ### Patches
@@ -15,7 +27,7 @@ Thu, 26 Jan 2023 07:35:32 GMT
 
 ## [2.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.11)
 
-Wed, 11 Jan 2023 07:50:49 GMT 
+Wed, 11 Jan 2023 07:50:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.10..@fluentui/web-components_v2.5.11)
 
 ### Patches
@@ -24,7 +36,7 @@ Wed, 11 Jan 2023 07:50:49 GMT
 
 ## [2.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.10)
 
-Tue, 10 Jan 2023 07:50:14 GMT 
+Tue, 10 Jan 2023 07:50:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.9..@fluentui/web-components_v2.5.10)
 
 ### Patches
@@ -33,7 +45,7 @@ Tue, 10 Jan 2023 07:50:14 GMT
 
 ## [2.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.9)
 
-Thu, 05 Jan 2023 07:59:57 GMT 
+Thu, 05 Jan 2023 07:59:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.8..@fluentui/web-components_v2.5.9)
 
 ### Patches
@@ -42,7 +54,7 @@ Thu, 05 Jan 2023 07:59:57 GMT
 
 ## [2.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.8)
 
-Wed, 26 Oct 2022 07:52:54 GMT 
+Wed, 26 Oct 2022 07:52:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.7..@fluentui/web-components_v2.5.8)
 
 ### Patches
@@ -51,7 +63,7 @@ Wed, 26 Oct 2022 07:52:54 GMT
 
 ## [2.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.7)
 
-Fri, 21 Oct 2022 07:44:53 GMT 
+Fri, 21 Oct 2022 07:44:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.6..@fluentui/web-components_v2.5.7)
 
 ### Patches
@@ -60,7 +72,7 @@ Fri, 21 Oct 2022 07:44:53 GMT
 
 ## [2.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.6)
 
-Mon, 19 Sep 2022 07:47:29 GMT 
+Mon, 19 Sep 2022 07:47:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.5..@fluentui/web-components_v2.5.6)
 
 ### Patches
@@ -69,7 +81,7 @@ Mon, 19 Sep 2022 07:47:29 GMT
 
 ## [2.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.5)
 
-Wed, 07 Sep 2022 07:54:43 GMT 
+Wed, 07 Sep 2022 07:54:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.4..@fluentui/web-components_v2.5.5)
 
 ### Patches
@@ -78,7 +90,7 @@ Wed, 07 Sep 2022 07:54:43 GMT
 
 ## [2.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.4)
 
-Tue, 30 Aug 2022 07:41:54 GMT 
+Tue, 30 Aug 2022 07:41:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.3..@fluentui/web-components_v2.5.4)
 
 ### Patches
@@ -87,7 +99,7 @@ Tue, 30 Aug 2022 07:41:54 GMT
 
 ## [2.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.3)
 
-Thu, 16 Jun 2022 23:03:44 GMT 
+Thu, 16 Jun 2022 23:03:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.2..@fluentui/web-components_v2.5.3)
 
 ### Patches
@@ -96,7 +108,7 @@ Thu, 16 Jun 2022 23:03:44 GMT
 
 ## [2.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.2)
 
-Tue, 07 Jun 2022 07:48:04 GMT 
+Tue, 07 Jun 2022 07:48:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.1..@fluentui/web-components_v2.5.2)
 
 ### Patches
@@ -105,7 +117,7 @@ Tue, 07 Jun 2022 07:48:04 GMT
 
 ## [2.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.1)
 
-Tue, 17 May 2022 07:45:01 GMT 
+Tue, 17 May 2022 07:45:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.0..@fluentui/web-components_v2.5.1)
 
 ### Patches
@@ -114,7 +126,7 @@ Tue, 17 May 2022 07:45:01 GMT
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.0)
 
-Fri, 06 May 2022 07:36:53 GMT 
+Fri, 06 May 2022 07:36:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.4.0..@fluentui/web-components_v2.5.0)
 
 ### Minor changes
@@ -123,7 +135,7 @@ Fri, 06 May 2022 07:36:53 GMT
 
 ## [2.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.4.0)
 
-Thu, 28 Apr 2022 07:39:56 GMT 
+Thu, 28 Apr 2022 07:39:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.3.1..@fluentui/web-components_v2.4.0)
 
 ### Minor changes
@@ -132,7 +144,7 @@ Thu, 28 Apr 2022 07:39:56 GMT
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.3.1)
 
-Mon, 07 Mar 2022 07:41:14 GMT 
+Mon, 07 Mar 2022 07:41:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.3.0..@fluentui/web-components_v2.3.1)
 
 ### Patches
@@ -141,7 +153,7 @@ Mon, 07 Mar 2022 07:41:14 GMT
 
 ## [2.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.3.0)
 
-Tue, 01 Mar 2022 07:23:43 GMT 
+Tue, 01 Mar 2022 07:23:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.3..@fluentui/web-components_v2.3.0)
 
 ### Minor changes
@@ -150,7 +162,7 @@ Tue, 01 Mar 2022 07:23:43 GMT
 
 ## [2.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.3)
 
-Fri, 18 Feb 2022 07:22:08 GMT 
+Fri, 18 Feb 2022 07:22:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.2..@fluentui/web-components_v2.2.3)
 
 ### Patches
@@ -159,7 +171,7 @@ Fri, 18 Feb 2022 07:22:08 GMT
 
 ## [2.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.2)
 
-Thu, 27 Jan 2022 07:34:08 GMT 
+Thu, 27 Jan 2022 07:34:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.1..@fluentui/web-components_v2.2.2)
 
 ### Patches
@@ -168,7 +180,7 @@ Thu, 27 Jan 2022 07:34:08 GMT
 
 ## [2.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.1)
 
-Wed, 12 Jan 2022 07:32:29 GMT 
+Wed, 12 Jan 2022 07:32:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.2.0..@fluentui/web-components_v2.2.1)
 
 ### Patches
@@ -177,7 +189,7 @@ Wed, 12 Jan 2022 07:32:29 GMT
 
 ## [2.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.2.0)
 
-Fri, 07 Jan 2022 07:27:47 GMT 
+Fri, 07 Jan 2022 07:27:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.3..@fluentui/web-components_v2.2.0)
 
 ### Minor changes
@@ -186,7 +198,7 @@ Fri, 07 Jan 2022 07:27:47 GMT
 
 ## [2.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.3)
 
-Wed, 15 Dec 2021 07:31:29 GMT 
+Wed, 15 Dec 2021 07:31:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.2..@fluentui/web-components_v2.1.3)
 
 ### Patches
@@ -195,7 +207,7 @@ Wed, 15 Dec 2021 07:31:29 GMT
 
 ## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.2)
 
-Fri, 10 Dec 2021 07:30:35 GMT 
+Fri, 10 Dec 2021 07:30:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.1..@fluentui/web-components_v2.1.2)
 
 ### Patches
@@ -204,7 +216,7 @@ Fri, 10 Dec 2021 07:30:35 GMT
 
 ## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.1)
 
-Thu, 02 Dec 2021 07:36:29 GMT 
+Thu, 02 Dec 2021 07:36:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.1.0..@fluentui/web-components_v2.1.1)
 
 ### Patches
@@ -213,7 +225,7 @@ Thu, 02 Dec 2021 07:36:29 GMT
 
 ## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.1.0)
 
-Tue, 23 Nov 2021 07:27:34 GMT 
+Tue, 23 Nov 2021 07:27:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.2..@fluentui/web-components_v2.1.0)
 
 ### Minor changes
@@ -222,7 +234,7 @@ Tue, 23 Nov 2021 07:27:34 GMT
 
 ## [2.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.2)
 
-Tue, 09 Nov 2021 07:38:11 GMT 
+Tue, 09 Nov 2021 07:38:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.1..@fluentui/web-components_v2.0.2)
 
 ### Patches
@@ -231,7 +243,7 @@ Tue, 09 Nov 2021 07:38:11 GMT
 
 ## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.1)
 
-Tue, 02 Nov 2021 07:37:01 GMT 
+Tue, 02 Nov 2021 07:37:01 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.0.0..@fluentui/web-components_v2.0.1)
 
 ### Patches
@@ -242,7 +254,7 @@ Tue, 02 Nov 2021 07:37:01 GMT
 
 ## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.0.0)
 
-Fri, 22 Oct 2021 23:04:22 GMT 
+Fri, 22 Oct 2021 23:04:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.3..@fluentui/web-components_v2.0.0)
 
 ### Major changes
@@ -251,7 +263,7 @@ Fri, 22 Oct 2021 23:04:22 GMT
 
 ## [1.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.3)
 
-Fri, 22 Oct 2021 19:30:28 GMT 
+Fri, 22 Oct 2021 19:30:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.2..@fluentui/web-components_v1.6.3)
 
 ### Patches
@@ -260,7 +272,7 @@ Fri, 22 Oct 2021 19:30:28 GMT
 
 ## [1.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.2)
 
-Thu, 14 Oct 2021 00:11:22 GMT 
+Thu, 14 Oct 2021 00:11:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.1..@fluentui/web-components_v1.6.2)
 
 ### Patches
@@ -269,7 +281,7 @@ Thu, 14 Oct 2021 00:11:22 GMT
 
 ## [1.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.1)
 
-Fri, 08 Oct 2021 07:31:50 GMT 
+Fri, 08 Oct 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.6.0..@fluentui/web-components_v1.6.1)
 
 ### Patches
@@ -278,7 +290,7 @@ Fri, 08 Oct 2021 07:31:50 GMT
 
 ## [1.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.6.0)
 
-Thu, 07 Oct 2021 07:30:53 GMT 
+Thu, 07 Oct 2021 07:30:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.6..@fluentui/web-components_v1.6.0)
 
 ### Minor changes
@@ -292,7 +304,7 @@ Thu, 07 Oct 2021 07:30:53 GMT
 
 ## [1.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.6)
 
-Wed, 06 Oct 2021 11:11:56 GMT 
+Wed, 06 Oct 2021 11:11:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.5..@fluentui/web-components_v1.5.6)
 
 ### Patches
@@ -301,7 +313,7 @@ Wed, 06 Oct 2021 11:11:56 GMT
 
 ## [1.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.5)
 
-Tue, 05 Oct 2021 07:37:17 GMT 
+Tue, 05 Oct 2021 07:37:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.4..@fluentui/web-components_v1.5.5)
 
 ### Patches
@@ -311,7 +323,7 @@ Tue, 05 Oct 2021 07:37:17 GMT
 
 ## [1.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.4)
 
-Wed, 29 Sep 2021 07:36:23 GMT 
+Wed, 29 Sep 2021 07:36:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.3..@fluentui/web-components_v1.5.4)
 
 ### Patches
@@ -320,7 +332,7 @@ Wed, 29 Sep 2021 07:36:23 GMT
 
 ## [1.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.3)
 
-Thu, 23 Sep 2021 07:35:13 GMT 
+Thu, 23 Sep 2021 07:35:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.2..@fluentui/web-components_v1.5.3)
 
 ### Patches
@@ -329,7 +341,7 @@ Thu, 23 Sep 2021 07:35:13 GMT
 
 ## [1.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.2)
 
-Fri, 17 Sep 2021 07:35:26 GMT 
+Fri, 17 Sep 2021 07:35:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.1..@fluentui/web-components_v1.5.2)
 
 ### Patches
@@ -339,7 +351,7 @@ Fri, 17 Sep 2021 07:35:26 GMT
 
 ## [1.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.1)
 
-Tue, 14 Sep 2021 20:09:02 GMT 
+Tue, 14 Sep 2021 20:09:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.5.0..@fluentui/web-components_v1.5.1)
 
 ### Patches
@@ -348,7 +360,7 @@ Tue, 14 Sep 2021 20:09:02 GMT
 
 ## [1.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.5.0)
 
-Mon, 13 Sep 2021 07:37:03 GMT 
+Mon, 13 Sep 2021 07:37:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.2..@fluentui/web-components_v1.5.0)
 
 ### Minor changes
@@ -357,7 +369,7 @@ Mon, 13 Sep 2021 07:37:03 GMT
 
 ## [1.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.2)
 
-Fri, 10 Sep 2021 07:39:51 GMT 
+Fri, 10 Sep 2021 07:39:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.1..@fluentui/web-components_v1.4.2)
 
 ### Patches
@@ -367,7 +379,7 @@ Fri, 10 Sep 2021 07:39:51 GMT
 
 ## [1.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.1)
 
-Fri, 03 Sep 2021 00:13:07 GMT 
+Fri, 03 Sep 2021 00:13:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.4.0..@fluentui/web-components_v1.4.1)
 
 ### Patches
@@ -376,7 +388,7 @@ Fri, 03 Sep 2021 00:13:07 GMT
 
 ## [1.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.4.0)
 
-Thu, 02 Sep 2021 07:36:46 GMT 
+Thu, 02 Sep 2021 07:36:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.8..@fluentui/web-components_v1.4.0)
 
 ### Minor changes
@@ -385,7 +397,7 @@ Thu, 02 Sep 2021 07:36:46 GMT
 
 ## [1.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.8)
 
-Tue, 31 Aug 2021 07:37:47 GMT 
+Tue, 31 Aug 2021 07:37:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.7..@fluentui/web-components_v1.3.8)
 
 ### Patches
@@ -395,7 +407,7 @@ Tue, 31 Aug 2021 07:37:47 GMT
 
 ## [1.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.7)
 
-Mon, 30 Aug 2021 07:35:05 GMT 
+Mon, 30 Aug 2021 07:35:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.6..@fluentui/web-components_v1.3.7)
 
 ### Patches
@@ -404,7 +416,7 @@ Mon, 30 Aug 2021 07:35:05 GMT
 
 ## [1.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.6)
 
-Thu, 26 Aug 2021 07:35:43 GMT 
+Thu, 26 Aug 2021 07:35:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.5..@fluentui/web-components_v1.3.6)
 
 ### Patches
@@ -413,7 +425,7 @@ Thu, 26 Aug 2021 07:35:43 GMT
 
 ## [1.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.5)
 
-Fri, 20 Aug 2021 07:37:28 GMT 
+Fri, 20 Aug 2021 07:37:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.4..@fluentui/web-components_v1.3.5)
 
 ### Patches
@@ -422,7 +434,7 @@ Fri, 20 Aug 2021 07:37:28 GMT
 
 ## [1.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.4)
 
-Thu, 19 Aug 2021 07:41:35 GMT 
+Thu, 19 Aug 2021 07:41:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.3..@fluentui/web-components_v1.3.4)
 
 ### Patches
@@ -432,7 +444,7 @@ Thu, 19 Aug 2021 07:41:35 GMT
 
 ## [1.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.3)
 
-Thu, 05 Aug 2021 07:34:24 GMT 
+Thu, 05 Aug 2021 07:34:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.2..@fluentui/web-components_v1.3.3)
 
 ### Patches
@@ -441,7 +453,7 @@ Thu, 05 Aug 2021 07:34:24 GMT
 
 ## [1.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.2)
 
-Wed, 04 Aug 2021 07:34:12 GMT 
+Wed, 04 Aug 2021 07:34:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.1..@fluentui/web-components_v1.3.2)
 
 ### Patches
@@ -450,7 +462,7 @@ Wed, 04 Aug 2021 07:34:12 GMT
 
 ## [1.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.1)
 
-Fri, 30 Jul 2021 07:35:22 GMT 
+Fri, 30 Jul 2021 07:35:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.3.0..@fluentui/web-components_v1.3.1)
 
 ### Patches
@@ -459,7 +471,7 @@ Fri, 30 Jul 2021 07:35:22 GMT
 
 ## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.3.0)
 
-Mon, 26 Jul 2021 07:37:30 GMT 
+Mon, 26 Jul 2021 07:37:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.3..@fluentui/web-components_v1.3.0)
 
 ### Minor changes
@@ -468,7 +480,7 @@ Mon, 26 Jul 2021 07:37:30 GMT
 
 ## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.3)
 
-Fri, 23 Jul 2021 07:38:19 GMT 
+Fri, 23 Jul 2021 07:38:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.2..@fluentui/web-components_v1.2.3)
 
 ### Patches
@@ -477,7 +489,7 @@ Fri, 23 Jul 2021 07:38:19 GMT
 
 ## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.2)
 
-Thu, 22 Jul 2021 07:36:55 GMT 
+Thu, 22 Jul 2021 07:36:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.1..@fluentui/web-components_v1.2.2)
 
 ### Patches
@@ -486,7 +498,7 @@ Thu, 22 Jul 2021 07:36:55 GMT
 
 ## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.1)
 
-Fri, 16 Jul 2021 22:53:17 GMT 
+Fri, 16 Jul 2021 22:53:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.2.0..@fluentui/web-components_v1.2.1)
 
 ### Patches
@@ -496,7 +508,7 @@ Fri, 16 Jul 2021 22:53:17 GMT
 
 ## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.2.0)
 
-Fri, 16 Jul 2021 00:35:31 GMT 
+Fri, 16 Jul 2021 00:35:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.1..@fluentui/web-components_v1.2.0)
 
 ### Minor changes
@@ -510,7 +522,7 @@ Fri, 16 Jul 2021 00:35:31 GMT
 
 ## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.1)
 
-Thu, 15 Jul 2021 07:36:18 GMT 
+Thu, 15 Jul 2021 07:36:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.1.0..@fluentui/web-components_v1.1.1)
 
 ### Patches
@@ -519,7 +531,7 @@ Thu, 15 Jul 2021 07:36:18 GMT
 
 ## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.1.0)
 
-Tue, 13 Jul 2021 22:32:58 GMT 
+Tue, 13 Jul 2021 22:32:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.2..@fluentui/web-components_v1.1.0)
 
 ### Minor changes
@@ -529,7 +541,7 @@ Tue, 13 Jul 2021 22:32:58 GMT
 
 ## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.2)
 
-Fri, 09 Jul 2021 07:39:31 GMT 
+Fri, 09 Jul 2021 07:39:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.1..@fluentui/web-components_v1.0.2)
 
 ### Patches
@@ -538,7 +550,7 @@ Fri, 09 Jul 2021 07:39:31 GMT
 
 ## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.1)
 
-Wed, 07 Jul 2021 07:32:54 GMT 
+Wed, 07 Jul 2021 07:32:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v1.0.0..@fluentui/web-components_v1.0.1)
 
 ### Patches
@@ -547,7 +559,7 @@ Wed, 07 Jul 2021 07:32:54 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v1.0.0)
 
-Fri, 02 Jul 2021 23:15:55 GMT 
+Fri, 02 Jul 2021 23:15:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.22.1..@fluentui/web-components_v1.0.0)
 
 ### Major changes
@@ -580,7 +592,7 @@ Fri, 02 Jul 2021 23:15:55 GMT
 
 ## [0.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.1)
 
-Tue, 08 Jun 2021 07:32:44 GMT 
+Tue, 08 Jun 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.22.0..@fluentui/web-components_v0.22.1)
 
 ### Patches
@@ -589,7 +601,7 @@ Tue, 08 Jun 2021 07:32:44 GMT
 
 ## [0.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.22.0)
 
-Fri, 04 Jun 2021 07:37:23 GMT 
+Fri, 04 Jun 2021 07:37:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.2..@fluentui/web-components_v0.22.0)
 
 ### Minor changes
@@ -598,7 +610,7 @@ Fri, 04 Jun 2021 07:37:23 GMT
 
 ## [0.21.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.2)
 
-Thu, 20 May 2021 07:41:54 GMT 
+Thu, 20 May 2021 07:41:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.1..@fluentui/web-components_v0.21.2)
 
 ### Patches
@@ -607,7 +619,7 @@ Thu, 20 May 2021 07:41:54 GMT
 
 ## [0.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.1)
 
-Mon, 17 May 2021 07:33:48 GMT 
+Mon, 17 May 2021 07:33:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.21.0..@fluentui/web-components_v0.21.1)
 
 ### Patches
@@ -617,7 +629,7 @@ Mon, 17 May 2021 07:33:48 GMT
 
 ## [0.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.21.0)
 
-Fri, 30 Apr 2021 07:42:23 GMT 
+Fri, 30 Apr 2021 07:42:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.3..@fluentui/web-components_v0.21.0)
 
 ### Minor changes
@@ -626,7 +638,7 @@ Fri, 30 Apr 2021 07:42:23 GMT
 
 ## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.3)
 
-Wed, 21 Apr 2021 07:31:50 GMT 
+Wed, 21 Apr 2021 07:31:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.2..@fluentui/web-components_v0.20.3)
 
 ### Patches
@@ -635,7 +647,7 @@ Wed, 21 Apr 2021 07:31:50 GMT
 
 ## [0.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.2)
 
-Thu, 01 Apr 2021 07:33:24 GMT 
+Thu, 01 Apr 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.1..@fluentui/web-components_v0.20.2)
 
 ### Patches
@@ -644,7 +656,7 @@ Thu, 01 Apr 2021 07:33:24 GMT
 
 ## [0.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.1)
 
-Mon, 29 Mar 2021 07:30:29 GMT 
+Mon, 29 Mar 2021 07:30:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.20.0..@fluentui/web-components_v0.20.1)
 
 ### Patches
@@ -653,7 +665,7 @@ Mon, 29 Mar 2021 07:30:29 GMT
 
 ## [0.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.20.0)
 
-Fri, 26 Mar 2021 07:32:34 GMT 
+Fri, 26 Mar 2021 07:32:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.19.1..@fluentui/web-components_v0.20.0)
 
 ### Minor changes
@@ -662,7 +674,7 @@ Fri, 26 Mar 2021 07:32:34 GMT
 
 ## [0.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.19.1)
 
-Thu, 25 Mar 2021 07:33:24 GMT 
+Thu, 25 Mar 2021 07:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.19.0..@fluentui/web-components_v0.19.1)
 
 ### Patches
@@ -671,7 +683,7 @@ Thu, 25 Mar 2021 07:33:24 GMT
 
 ## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.19.0)
 
-Tue, 23 Mar 2021 07:31:43 GMT 
+Tue, 23 Mar 2021 07:31:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.18.0..@fluentui/web-components_v0.19.0)
 
 ### Minor changes
@@ -684,7 +696,7 @@ Tue, 23 Mar 2021 07:31:43 GMT
 
 ## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.18.0)
 
-Fri, 19 Mar 2021 07:32:43 GMT 
+Fri, 19 Mar 2021 07:32:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.17.0..@fluentui/web-components_v0.18.0)
 
 ### Minor changes
@@ -693,7 +705,7 @@ Fri, 19 Mar 2021 07:32:43 GMT
 
 ## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.17.0)
 
-Thu, 18 Mar 2021 20:15:34 GMT 
+Thu, 18 Mar 2021 20:15:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.2..@fluentui/web-components_v0.17.0)
 
 ### Minor changes
@@ -706,7 +718,7 @@ Thu, 18 Mar 2021 20:15:34 GMT
 
 ## [0.16.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.2)
 
-Wed, 17 Mar 2021 07:35:44 GMT 
+Wed, 17 Mar 2021 07:35:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.1..@fluentui/web-components_v0.16.2)
 
 ### Patches
@@ -715,7 +727,7 @@ Wed, 17 Mar 2021 07:35:44 GMT
 
 ## [0.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.1)
 
-Tue, 16 Mar 2021 07:32:44 GMT 
+Tue, 16 Mar 2021 07:32:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.16.0..@fluentui/web-components_v0.16.1)
 
 ### Patches
@@ -724,7 +736,7 @@ Tue, 16 Mar 2021 07:32:44 GMT
 
 ## [0.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.16.0)
 
-Fri, 12 Mar 2021 20:04:27 GMT 
+Fri, 12 Mar 2021 20:04:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.15.0..@fluentui/web-components_v0.16.0)
 
 ### Minor changes
@@ -733,7 +745,7 @@ Fri, 12 Mar 2021 20:04:27 GMT
 
 ## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.15.0)
 
-Sun, 07 Mar 2021 23:34:51 GMT 
+Sun, 07 Mar 2021 23:34:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.2..@fluentui/web-components_v0.15.0)
 
 ### Minor changes
@@ -743,7 +755,7 @@ Sun, 07 Mar 2021 23:34:51 GMT
 
 ## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.2)
 
-Thu, 25 Feb 2021 01:15:27 GMT 
+Thu, 25 Feb 2021 01:15:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.1..@fluentui/web-components_v0.14.2)
 
 ### Patches
@@ -753,7 +765,7 @@ Thu, 25 Feb 2021 01:15:27 GMT
 
 ## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.1)
 
-Mon, 22 Feb 2021 12:26:22 GMT 
+Mon, 22 Feb 2021 12:26:22 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.0..@fluentui/web-components_v0.14.1)
 
 ### Patches
@@ -762,7 +774,7 @@ Mon, 22 Feb 2021 12:26:22 GMT
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.0)
 
-Fri, 12 Feb 2021 12:26:20 GMT 
+Fri, 12 Feb 2021 12:26:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.13.1..@fluentui/web-components_v0.14.0)
 
 ### Minor changes
@@ -771,7 +783,7 @@ Fri, 12 Feb 2021 12:26:20 GMT
 
 ## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.1)
 
-Thu, 11 Feb 2021 02:38:00 GMT 
+Thu, 11 Feb 2021 02:38:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.13.0..@fluentui/web-components_v0.13.1)
 
 ### Patches
@@ -780,7 +792,7 @@ Thu, 11 Feb 2021 02:38:00 GMT
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.0)
 
-Tue, 09 Feb 2021 00:56:52 GMT 
+Tue, 09 Feb 2021 00:56:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.12.1..@fluentui/web-components_v0.13.0)
 
 ### Minor changes
@@ -793,7 +805,7 @@ Tue, 09 Feb 2021 00:56:52 GMT
 
 ## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.1)
 
-Mon, 08 Feb 2021 12:23:08 GMT 
+Mon, 08 Feb 2021 12:23:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.12.0..@fluentui/web-components_v0.12.1)
 
 ### Patches
@@ -802,7 +814,7 @@ Mon, 08 Feb 2021 12:23:08 GMT
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.0)
 
-Wed, 03 Feb 2021 05:51:40 GMT 
+Wed, 03 Feb 2021 05:51:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.11.0..@fluentui/web-components_v0.12.0)
 
 ### Minor changes
@@ -811,7 +823,7 @@ Wed, 03 Feb 2021 05:51:40 GMT
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.11.0)
 
-Tue, 26 Jan 2021 12:33:19 GMT 
+Tue, 26 Jan 2021 12:33:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.6..@fluentui/web-components_v0.11.0)
 
 ### Minor changes
@@ -824,7 +836,7 @@ Tue, 26 Jan 2021 12:33:19 GMT
 
 ## [0.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.6)
 
-Thu, 21 Jan 2021 12:36:12 GMT 
+Thu, 21 Jan 2021 12:36:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.5..@fluentui/web-components_v0.10.6)
 
 ### Patches
@@ -833,7 +845,7 @@ Thu, 21 Jan 2021 12:36:12 GMT
 
 ## [0.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.5)
 
-Wed, 20 Jan 2021 12:22:46 GMT 
+Wed, 20 Jan 2021 12:22:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.4..@fluentui/web-components_v0.10.5)
 
 ### Patches
@@ -842,7 +854,7 @@ Wed, 20 Jan 2021 12:22:46 GMT
 
 ## [0.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.4)
 
-Fri, 15 Jan 2021 12:30:40 GMT 
+Fri, 15 Jan 2021 12:30:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.3..@fluentui/web-components_v0.10.4)
 
 ### Patches
@@ -852,7 +864,7 @@ Fri, 15 Jan 2021 12:30:40 GMT
 
 ## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.3)
 
-Tue, 12 Jan 2021 12:36:40 GMT 
+Tue, 12 Jan 2021 12:36:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.2..@fluentui/web-components_v0.10.3)
 
 ### Patches
@@ -861,7 +873,7 @@ Tue, 12 Jan 2021 12:36:40 GMT
 
 ## [0.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.2)
 
-Tue, 05 Jan 2021 12:29:33 GMT 
+Tue, 05 Jan 2021 12:29:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.1..@fluentui/web-components_v0.10.2)
 
 ### Patches
@@ -876,7 +888,7 @@ Tue, 05 Jan 2021 12:29:33 GMT
 
 ## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.1)
 
-Fri, 18 Dec 2020 12:27:55 GMT 
+Fri, 18 Dec 2020 12:27:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.0..@fluentui/web-components_v0.10.1)
 
 ### Patches
@@ -885,7 +897,7 @@ Fri, 18 Dec 2020 12:27:55 GMT
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.0)
 
-Thu, 17 Dec 2020 12:30:15 GMT 
+Thu, 17 Dec 2020 12:30:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.2..@fluentui/web-components_v0.10.0)
 
 ### Minor changes
@@ -898,7 +910,7 @@ Thu, 17 Dec 2020 12:30:15 GMT
 
 ## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.2)
 
-Wed, 16 Dec 2020 12:27:05 GMT 
+Wed, 16 Dec 2020 12:27:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.1..@fluentui/web-components_v0.9.2)
 
 ### Patches
@@ -907,7 +919,7 @@ Wed, 16 Dec 2020 12:27:05 GMT
 
 ## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.1)
 
-Wed, 09 Dec 2020 12:27:00 GMT 
+Wed, 09 Dec 2020 12:27:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.0..@fluentui/web-components_v0.9.1)
 
 ### Patches
@@ -916,7 +928,7 @@ Wed, 09 Dec 2020 12:27:00 GMT
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.0)
 
-Wed, 02 Dec 2020 12:37:40 GMT 
+Wed, 02 Dec 2020 12:37:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.1..@fluentui/web-components_v0.9.0)
 
 ### Minor changes
@@ -925,7 +937,7 @@ Wed, 02 Dec 2020 12:37:40 GMT
 
 ## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.1)
 
-Sat, 21 Nov 2020 02:00:44 GMT 
+Sat, 21 Nov 2020 02:00:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.0..@fluentui/web-components_v0.8.1)
 
 ### Patches
@@ -937,7 +949,7 @@ Sat, 21 Nov 2020 02:00:44 GMT
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.0)
 
-Wed, 18 Nov 2020 12:30:07 GMT 
+Wed, 18 Nov 2020 12:30:07 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.2..@fluentui/web-components_v0.8.0)
 
 ### Minor changes
@@ -946,7 +958,7 @@ Wed, 18 Nov 2020 12:30:07 GMT
 
 ## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.2)
 
-Tue, 17 Nov 2020 12:36:24 GMT 
+Tue, 17 Nov 2020 12:36:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.1..@fluentui/web-components_v0.7.2)
 
 ### Patches
@@ -955,7 +967,7 @@ Tue, 17 Nov 2020 12:36:24 GMT
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.1)
 
-Thu, 05 Nov 2020 12:29:43 GMT 
+Thu, 05 Nov 2020 12:29:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.7.0..@fluentui/web-components_v0.7.1)
 
 ### Patches
@@ -964,7 +976,7 @@ Thu, 05 Nov 2020 12:29:43 GMT
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.7.0)
 
-Thu, 29 Oct 2020 12:34:59 GMT 
+Thu, 29 Oct 2020 12:34:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.6.3..@fluentui/web-components_v0.7.0)
 
 ### Minor changes
