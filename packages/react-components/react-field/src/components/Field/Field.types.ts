@@ -1,31 +1,20 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
-import type { ComponentProps, ComponentState, Slot, SlotClassNames } from '@fluentui/react-utilities';
-import type { SlotComponent } from './SlotComponent.types';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
- * The minimum requirement for a component used by Field.
- *
- * Note: the use of VoidFunctionComponent means that component is not *required* to have a children prop,
- * but it is still allowed to have a children prop.
+ * The props added to the Field's child element.
  */
-export type FieldControl = React.VoidFunctionComponent<
-  Pick<
-    React.HTMLAttributes<HTMLElement>,
-    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid'
-  >
+export type FieldChildProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
 >;
 
 /**
- * Slots added by Field
+ * Slots of the Field component
  */
-export type FieldSlots<T extends FieldControl> = {
+export type FieldSlots = {
   root: NonNullable<Slot<'div'>>;
-
-  /**
-   * The underlying component wrapped by this field.
-   */
-  control: SlotComponent<T>;
 
   /**
    * The label associated with the field.
@@ -54,7 +43,19 @@ export type FieldSlots<T extends FieldControl> = {
 /**
  * Field Props
  */
-export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+  /**
+   * The Field's child can be a single form control, or a render function that takes the props that should be spread on
+   * a form control.
+   *
+   * All form controls in this library can be used directly as children (such as `<Input>` or `<RadioGroup>`), as well
+   * as intrinsic form controls like `<input>` or `<textarea>`. Custom controls can also be used as long as they
+   * accept FieldChildProps and spread them on the appropriate element.
+   *
+   * For more complex scenarios, a render function can be used to pass the FieldChildProps to the appropriate control.
+   */
+  children?: React.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React.ReactNode);
+
   /**
    * The orientation of the label relative to the field component.
    * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
@@ -64,77 +65,28 @@ export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlo
   orientation?: 'vertical' | 'horizontal';
 
   /**
-   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`, and for some
-   * field components, an `validationState="error"` causes the border to become red.
+   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`
    *
-   * @default undefined
+   * Setting `validationState` to `error` will also set `aria-invalid` to `true` on the Field's child,
+   * `role="alert"` on the `validationMessage`, and for some field components, causes the border to become red.
    */
   validationState?: 'error' | 'warning' | 'success';
-};
-
-/**
- * FieldProps plus extra optional props that are supported by useField_unstable, but not required to be part of the
- * API of every Field component.
- *
- * This allows Field to forward the required and size props to the label if the underlying component supports them,
- * but doesn't add them to the public API of fields that don't support them.
- */
-export type FieldPropsWithOptionalComponentProps<T extends FieldControl> = FieldProps<T> & {
-  /**
-   * A ref to the underlying control.
-   */
-  ref?: React.Ref<HTMLElement>;
 
   /**
-   * Whether the field label should be marked as required.
+   * Marks the Field as required. If `true`, an asterisk will be appended to the label, and `aria-required` will be set
+   * on the Field's child.
    */
   required?: boolean;
 
   /**
-   * Size of the field label.
+   * The size of the Field's label.
    *
-   * Number sizes will be ignored, but are allowed because the HTML `<input>` element has a prop `size?: number`.
+   * @default medium
    */
-  size?: 'small' | 'medium' | 'large' | number;
-};
-
-/**
- * Configuration parameters for a Field class, passed to useField_unstable
- */
-export type FieldConfig<T extends FieldControl> = {
-  /**
-   * The underlying input component that this field is wrapping.
-   */
-  component: T;
-
-  /**
-   * Class names for this component, created by `getFieldClassNames`.
-   */
-  classNames: SlotClassNames<FieldSlots<T>>;
-
-  /**
-   * How the label be connected to the control.
-   * * htmlFor - Set the Label's htmlFor prop to the component's ID (and generate an ID if not provided).
-   *   This is the preferred method for components that use the underlying <input> tag.
-   * * aria-labelledby - Set the component's aria-labelledby prop to the Label's ID. Use this for components
-   *   that are not directly <input> elements (such as RadioGroup).
-   *
-   * @default htmlFor
-   */
-  labelConnection?: 'htmlFor' | 'aria-labelledby';
-
-  /**
-   * Should the aria-invalid attribute be set when validationState="error".
-   *
-   * @default true
-   */
-  ariaInvalidOnError?: boolean;
+  size?: 'small' | 'medium' | 'large';
 };
 
 /**
  * State used in rendering Field
  */
-export type FieldState<T extends FieldControl> = ComponentState<Required<FieldSlots<T>>> &
-  Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
-    classNames: SlotClassNames<FieldSlots<T>>;
-  };
+export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;

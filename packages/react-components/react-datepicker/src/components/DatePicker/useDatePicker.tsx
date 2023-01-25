@@ -518,6 +518,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   //   (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
+  // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
   const inputAppearance: InputFieldProps['appearance'] = underlined
     ? 'underline'
     : borderless
@@ -561,6 +562,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       tabIndex,
       validationMessage: errorMessage ?? statusMessage,
       validationState: errorMessage ? 'error' : undefined,
+      // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
       ...(textFieldProps as InputFieldProps),
       className: mergeClasses(classNames.textField, textFieldProps?.className),
       id: textFieldId,
@@ -623,6 +625,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     // Slots definition
     components: {
       root: 'div',
+      // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
       inputField: InputField,
       wrapper: 'div',
     },
