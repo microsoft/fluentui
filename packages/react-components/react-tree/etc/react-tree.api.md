@@ -6,6 +6,8 @@
 
 /// <reference types="react" />
 
+import type { AvatarContextValue } from '@fluentui/react-avatar';
+import type { AvatarSizes } from '@fluentui/react-avatar';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -25,6 +27,9 @@ export const renderTreeItem_unstable: (state: TreeItemState, contextValues: Tree
 
 // @public
 export const renderTreeItemLayout_unstable: (state: TreeItemLayoutState) => JSX.Element;
+
+// @public
+export const renderTreeItemPersonaLayout_unstable: (state: TreeItemPersonaLayoutState, contextValues: TreeItemPersonaLayoutContextValues) => JSX.Element;
 
 // @public
 export const Tree: ForwardRefComponent<TreeProps>;
@@ -68,6 +73,30 @@ export type TreeItemLayoutSlots = {
 
 // @public
 export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & TreeItemContextValue;
+
+// @public
+export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
+
+// @public (undocumented)
+export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots>;
+
+// @public
+export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaLayoutSlots>>;
+
+// @public (undocumented)
+export type TreeItemPersonaLayoutSlots = {
+    root: Slot<'span'>;
+    media: NonNullable<Slot<'span'>>;
+    main: Slot<'span'>;
+    description?: Slot<'span'>;
+    aside?: Slot<'span'>;
+    content: Slot<'div'>;
+};
+
+// @public
+export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlots> & TreeItemContextValue & {
+    avatarSize: AvatarSizes;
+};
 
 // @public
 export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
@@ -122,6 +151,12 @@ export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React
 
 // @public
 export const useTreeItemLayoutStyles_unstable: (state: TreeItemLayoutState) => TreeItemLayoutState;
+
+// @public
+export const useTreeItemPersonaLayout_unstable: (props: TreeItemPersonaLayoutProps, ref: React_2.Ref<HTMLSpanElement>) => TreeItemPersonaLayoutState;
+
+// @public
+export const useTreeItemPersonaLayoutStyles_unstable: (state: TreeItemPersonaLayoutState) => TreeItemPersonaLayoutState;
 
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;
