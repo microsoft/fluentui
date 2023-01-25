@@ -19,47 +19,47 @@ const Actions = () => (
 
 export const Badges = () => (
   <Tree aria-label="Tree">
-    <TreeItem aria-owns="default-subtree-1" actions={<Actions />}>
-      <TreeItemLayout aside={<RenderBadges />}>level 1, item 1 with actions</TreeItemLayout>
-    </TreeItem>
-    <Tree id="default-subtree-1">
-      <TreeItem>
-        <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
-      </TreeItem>
-      <TreeItem>
-        <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
-      </TreeItem>
-      <TreeItem>
-        <TreeItemLayout aside={<RenderBadges />}>level 2, item 3</TreeItemLayout>
-      </TreeItem>
-    </Tree>
-    <TreeItem aria-owns="default-subtree-2">
-      <TreeItemLayout aside={<RenderBadges />}>level 1, item 2</TreeItemLayout>
-    </TreeItem>
-    <Tree id="default-subtree-2">
-      <TreeItem aria-owns="default-subtree-2-1">
-        <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
-      </TreeItem>
-      <Tree id="default-subtree-2-1">
-        <TreeItem>
-          <TreeItemLayout aside={<RenderBadges />}>level 3, item 1</TreeItemLayout>
-        </TreeItem>
-      </Tree>
-
-      <TreeItem aria-owns="default-subtree-3">
-        <TreeItemLayout aside={<RenderBadges />}>level 1, item 1</TreeItemLayout>
-      </TreeItem>
-      <Tree id="default-subtree-3">
-        <TreeItem>
+    <TreeItem actions={<Actions />}>
+      <TreeItemLayout aside={<RenderBadges />}>level 1, item 1</TreeItemLayout>
+      <Tree>
+        <TreeItem actions={<Actions />}>
           <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
         </TreeItem>
-        <TreeItem>
+        <TreeItem actions={<Actions />}>
           <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
         </TreeItem>
-        <TreeItem>
+        <TreeItem actions={<Actions />}>
           <TreeItemLayout aside={<RenderBadges />}>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
-    </Tree>
+    </TreeItem>
+    <TreeItem actions={<Actions />}>
+      <TreeItemLayout aside={<RenderBadges />}>level 1, item 2</TreeItemLayout>
+      <Tree>
+        <TreeItem actions={<Actions />}>
+          <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
+          <Tree>
+            <TreeItem actions={<Actions />}>
+              <TreeItemLayout aside={<RenderBadges />}>level 3, item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+
+        <TreeItem actions={<Actions />}>
+          <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
+          <Tree>
+            <TreeItem actions={<Actions />}>
+              <TreeItemLayout aside={<RenderBadges />}>level 3, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem actions={<Actions />}>
+              <TreeItemLayout aside={<RenderBadges />}>level 3, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem actions={<Actions />}>
+              <TreeItemLayout aside={<RenderBadges />}>level 3, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </Tree>
+    </TreeItem>
   </Tree>
 );

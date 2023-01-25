@@ -1,9 +1,8 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeOpenChangeData } from '../Tree';
+import { TreeOpenChangeData, TreeProps } from '../Tree';
 
-export type TreeContextValue = {
+export type TreeContextValue = Required<Pick<TreeProps, 'openItems'>> & {
   level: number;
-  openSubtrees: string[];
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
   focusFirstSubtreeItem(target: HTMLElement): void;
@@ -16,7 +15,7 @@ export type TreeContextValue = {
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
-  openSubtrees: [],
+  openItems: [],
   focusFirstSubtreeItem() {
     /* noop */
   },
