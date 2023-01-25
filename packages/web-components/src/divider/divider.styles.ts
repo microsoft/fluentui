@@ -1,68 +1,127 @@
 import { css } from '@microsoft/fast-element';
-import { colorNeutralStroke1, strokeWidthThin } from '../theme/design-tokens.js';
+import {
+  colorBrandForeground1,
+  colorBrandStroke1,
+  colorNeutralForeground1,
+  colorNeutralForeground2,
+  colorNeutralForeground3,
+  colorNeutralStroke1,
+  colorNeutralStroke2,
+  colorNeutralStroke3,
+  fontFamilyBase,
+  fontSizeBase200,
+  fontWeightRegular,
+  strokeWidthThin,
+} from '../theme/design-tokens.js';
 
 /** Divider styles
  * @public
  */
 export const styles = css`
   :host {
-    border: none;
     display: flex;
   }
-  :host [divider-background] {
+
+  :host span {
     display: flex;
-    background: red;
+    width: 100%;
   }
 
-  :host([orientation='horizontal']) {
-    flex-direction: column;
-  }
-  :host([orientation='horizontal']) ::slotted(*) {
-  }
-
-  :host([orientation='vertical']) {
-    flex-direction: row;
-  }
-  :host([orientation='vertical']) ::slotted(*) {
-    flex-direction: row;
+  :host([inset]) span {
+    padding: 0 12px;
   }
 
   :host ::slotted(*) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    color: ${colorNeutralForeground2};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
+    margin: 0;
+    padding: 0 12px;
   }
 
-  :host([align-content='start']) {
-    align-items: flex-start;
+  :host([align-content='start']) span::before {
+    flex-basis: 12px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    order: 0;
   }
-  :host([align-content='center']) {
+  :host([align-content='start']) ::slotted(*) {
+    order: 1;
+  }
+  :host([align-content='start']) span::after {
+    order: 2;
+  }
+
+  :host([align-content='end']) span::before {
+    order: 0;
+  }
+  :host([align-content='end']) ::slotted(*) {
+    order: 1;
+  }
+  :host([align-content='end']) span::after {
+    flex-basis: 12px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    order: 2;
+  }
+
+  :host([orientation='vertical']) {
+    height: 100%;
+    min-height: 84px;
+  }
+
+  :host([orientation='vertical']) span {
+    flex-direction: column;
     align-items: center;
   }
-  :host([align-content='end']) {
-    align-items: flex-end;
+
+  :host([orientation='vertical'][inset]) span {
+    padding: 12px 0;
   }
 
-  :host ::slotted(*)::before,
-  :host ::slotted(*)::after {
+  :host([orientation='vertical']) span::before {
+  }
+  :host([orientation='vertical']) ::slotted(*) {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+  }
+
+  span::after,
+  span::before {
     align-self: center;
+    background: ${colorNeutralStroke2};
     content: '';
-    height: 1px;
-    flex: 1;
-    margin: 0 1em;
-    background: #ddd;
+    flex-grow: 1;
+    height: ${strokeWidthThin};
   }
 
-  :host([appearance='strong']) ::slotted(*)::after,
-  :host([appearance='strong']) ::slotted(*)::before {
-    background: #000000;
+  :host([orientation='vertical']) span::after,
+  :host([orientation='vertical']) span::before {
+    width: ${strokeWidthThin};
+    min-height: 24px;
   }
-  :host([appearance='brand']) ::slotted(*)::after,
-  :host([appearance='brand']) ::slotted(*)::before {
-    background: blue;
+
+  :host([appearance='strong']) span::after,
+  :host([appearance='strong']) span::before {
+    background: ${colorNeutralStroke1};
   }
-  :host([appearance='subtle']) ::slotted(*)::after,
-  :host([appearance='subtle']) ::slotted(*)::before {
-    background: #ececec;
+  :host([appearance='strong']) ::slotted(*) {
+    color: ${colorNeutralForeground1};
+  }
+  :host([appearance='brand']) span::after,
+  :host([appearance='brand']) span::before {
+    background: ${colorBrandStroke1};
+  }
+  :host([appearance='brand']) ::slotted(*) {
+    color: ${colorBrandForeground1};
+  }
+  :host([appearance='subtle']) span::after,
+  :host([appearance='subtle']) span::before {
+    background: ${colorNeutralStroke3};
+  }
+  :host([appearance='subtle']) ::slotted(*) {
+    color: ${colorNeutralForeground3};
   }
 `;
