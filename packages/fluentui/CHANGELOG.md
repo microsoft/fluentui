@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
+- Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
 
 <!--------------------------------[ v0.66.0 ]------------------------------- -->
 ## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)
@@ -52,7 +53,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restyling v0 Menu to match v9 Menu @GianoglioEnrico ([#25012](https://github.com/microsoft/fluentui/pull/25012))
 - Limit keyboard detection in inputs @jurokapsiar ([#25087](https://github.com/microsoft/fluentui/pull/25087))
 - Dropdown Freeform search should be case insensitive @jurokapsiar ([#24879](https://github.com/microsoft/fluentui/pull/24879))
-- Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
 - Update styles to v0 Loader to match v9 Spinner @GianoglioEnrico ([#25169](https://github.com/microsoft/fluentui/pull/25169))
 
 ### Fixes
