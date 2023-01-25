@@ -43,11 +43,18 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     nextProps: Readonly<IDonutChartProps>,
     prevState: Readonly<IDonutChartState>,
   ): Partial<IDonutChartState> | null {
-    if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
-      const reducedHeight = nextProps.height / 5;
-      return { _width: nextProps.width, _height: nextProps.height - reducedHeight };
+    let widthState: { _width: number } | undefined;
+    if (nextProps.width && nextProps.width !== prevState._width) {
+      widthState = { _width: nextProps.width };
     }
-    return null;
+
+    let heightState: { _height: number } | undefined;
+    if (nextProps.height && nextProps.height !== prevState._height) {
+      const reducedHeight = nextProps.height / 5;
+      heightState = { _height: nextProps.height - reducedHeight };
+    }
+
+    return { ...widthState, ...heightState };
   }
 
   constructor(props: IDonutChartProps) {
@@ -56,8 +63,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: false,
       value: '',
       legend: '',
-      _width: this.props.width || 200,
-      _height: this.props.height || 200,
+      _width: this.props.width || 160,
+      _height: this.props.height || 160,
       activeLegend: '',
       color: '',
       xCalloutValue: '',
@@ -86,10 +93,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const { data, hideLegend = false } = this.props;
     const { palette } = this.props.theme!;
 
+    /**
+     * Resize SVG box to prevent overflow of arc labels
+     */
+    const adjustedWidth = Math.min(this._rootElem ? this._rootElem.offsetWidth : Infinity, this.state._width! + 80);
+    const adjustedHeight = this.state._height! + 40;
+
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
-      width: this.state._width!,
-      height: this.state._height!,
+      width: adjustedWidth,
+      height: adjustedHeight,
       color: this.state.color!,
       className: this.props.className!,
     });
@@ -112,8 +125,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
               ref={(node: SVGElement | null) => this._setViewBox(node)}
             >
               <Pie
-                width={this.state._width!}
-                height={this.state._height!}
+                width={adjustedWidth}
+                height={adjustedHeight}
                 outerRadius={outerRadius}
                 innerRadius={this.props.innerRadius!}
                 data={chartData!}
@@ -128,6 +141,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 calloutId={this._calloutId}
                 valueInsideDonut={this._toLocaleString(valueInsideDonut)}
                 theme={this.props.theme!}
+                showLabelsInPercent={this.props.showLabelsInPercent}
+                hideLabels={this.props.hideLabels}
               />
             </svg>
           </div>

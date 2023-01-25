@@ -1,5 +1,5 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette, FontSizes, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { DefaultPalette, FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IArcProps): IArcStyles => {
   const { color, href, theme } = props;
@@ -20,14 +20,10 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       strokeWidth: 4,
       fill: 'transparent',
     },
-    insideDonutString: {
-      fontSize: FontSizes.large,
-      fill: theme.semanticColors.bodyText,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
+    arcLabel: {
+      fontSize: FontSizes.small,
+      fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
   };
 };
