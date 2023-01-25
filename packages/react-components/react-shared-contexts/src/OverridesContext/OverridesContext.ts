@@ -12,7 +12,6 @@ export type OverridesContextValue = {
  * @internal
  */
 export const OverridesContext = React.createContext<OverridesContextValue | undefined>(undefined);
-OverridesContext.displayName = 'OverridesContext';
 
 /**
  * @internal

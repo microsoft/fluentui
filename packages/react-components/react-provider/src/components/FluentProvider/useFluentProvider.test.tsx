@@ -74,7 +74,7 @@ describe('useFluentProvider_unstable', () => {
       },
     );
 
-    expect(result.current.overrides).toMatchInlineSnapshot(`
+    expect(result.current.overrides_unstable).toMatchInlineSnapshot(`
       Object {
         "customValue": "shouldNotBeOverridden",
         "inputDefaultAppearance": "filled-darker",
