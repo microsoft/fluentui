@@ -167,4 +167,31 @@ describe('Field', () => {
 
     expect(validationMessage.getAttribute('role')).toBe(role);
   });
+
+  it('passes expected props to child render function', () => {
+    const renderFn = jest.fn();
+    const result = render(
+      <Field
+        label="Test label"
+        hint="Test hint"
+        validationMessage="Test validation message"
+        validationState="error"
+        required
+      >
+        {renderFn}
+      </Field>,
+    );
+
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const hint = result.getByText('Test hint');
+    const validationMessage = result.getByText('Test validation message');
+
+    expect(renderFn).toHaveBeenCalledWith({
+      id: label.htmlFor,
+      'aria-labelledby': label.id,
+      'aria-describedby': validationMessage.id + ' ' + hint.id,
+      'aria-invalid': true,
+      'aria-required': true,
+    });
+  });
 });
