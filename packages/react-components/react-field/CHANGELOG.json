@@ -2,6 +2,39 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Mon, 23 Jan 2023 16:43:09 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "1f145044a1ef3707e0724d75f9b70e7d2af69375",
+            "comment": "chore: Simplify Field layout styles"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "b04b2f0c02f2ccd7960905a886ce27f2321fee72",
+            "comment": "fix: Stretch Field components to full width"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "48a6fc95e6eb7530c162390fb70db7fac88b15ab",
+            "comment": "fix: Update Field label padding to match spec"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "014041b7447b02856ae50638de71bdb829b0a759",
+            "comment": "fix: Field sets role=\"alert\" on its error message so it is announced by screen readers"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:39:01 GMT",
       "tag": "@fluentui/react-field_v9.0.0-alpha.15",
       "version": "9.0.0-alpha.15",

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Mon, 23 Jan 2023 16:43:11 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "86a28f6ebcc84819c695f12b841b9377736fb5f7",
+            "comment": "docs: update imports in DataGrid stories"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.16",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.22",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.20",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 16:32:55 GMT",
       "tag": "@fluentui/react-table_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

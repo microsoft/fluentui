@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const semver = require('semver');
-const { stripIndents, offsetFromRoot } = require('@nrwl/devkit');
-const { workspaceRoot } = require('nx/src/utils/app-root');
 
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
+const { stripIndents, offsetFromRoot } = require('@nrwl/devkit');
+const { workspaceRoot } = require('nx/src/utils/app-root');
+const semver = require('semver');
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
@@ -123,9 +123,9 @@ function getCodesandboxBabelOptions() {
 
   return Object.values(allPackageInfo).reduce((acc, cur) => {
     if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
-      const prereleaseTags = semver.prerelease(cur.packageJson.version);
-      const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
-      acc[cur.packageJson.name] = isNonRcPrerelease
+      const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
+
+      acc[cur.packageJson.name] = isPrerelease
         ? { replace: '@fluentui/react-components/unstable' }
         : { replace: '@fluentui/react-components' };
     }

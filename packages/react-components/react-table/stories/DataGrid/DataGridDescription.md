@@ -4,7 +4,7 @@
 >
 > ```jsx
 >
-> import { Table } from '@fluentui/react-components/unstable';
+> import { DataGrid } from '@fluentui/react-components/unstable';
 >
 > ```
 >

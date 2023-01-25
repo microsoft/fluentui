@@ -1,4 +1,4 @@
-import { IButtonProps, IButtonStyles, IStyleFunctionOrObject, ITheme } from '@fluentui/react';
+import { IButtonProps, IButtonStyles, IStyle, IStyleFunctionOrObject, ITheme } from '@fluentui/react';
 import { concatStyleSets } from '@fluentui/react';
 
 type FocusStyleType = {
@@ -125,10 +125,31 @@ export function getIconButtonStyles(props: IButtonProps): IStyleFunctionOrObject
 }
 
 export function getDefaultButtonStyles(props: IButtonProps): IStyleFunctionOrObject<IButtonProps, IButtonStyles> {
-  const { theme, primary } = props;
+  const { theme, primary, split } = props;
 
   return concatStyleSets(
     getBaseButtonStyles(theme!),
     primary ? getPrimaryButtonStyles(theme!) : getStandardButtonStyles(theme!),
+    split && getSplitButtonStyles(theme!),
   );
+}
+
+const fluent2SplitButtonDividerStyles: IStyle = {
+  position: 'relative',
+  top: 'unset',
+  bottom: 'unset',
+};
+
+export function getSplitButtonStyles(theme: ITheme): Partial<IButtonStyles> {
+  const styles: Partial<IButtonStyles> = {
+    splitButtonMenuButton: {
+      borderRadius: 'unset',
+      borderTopRightRadius: theme?.effects.roundedCorner4,
+      borderBottomRightRadius: theme?.effects.roundedCorner4,
+    },
+    splitButtonDivider: fluent2SplitButtonDividerStyles,
+    splitButtonDividerDisabled: fluent2SplitButtonDividerStyles,
+  };
+
+  return styles;
 }

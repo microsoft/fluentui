@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
@@ -55,6 +56,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   const rootRef = React.useRef<HTMLDivElement>(null);
   const triggerRef = React.useRef<HTMLInputElement>(null);
+
+  // NVDA and JAWS have bugs that suppress reading the input value text when aria-activedescendant is set
+  // To prevent this, we clear the HTML attribute (but save the state) when a user presses left/right arrows
+  // ref: https://github.com/microsoft/fluentui/issues/26359#issuecomment-1397759888
+  const [hideActiveDescendant, setHideActiveDescendant] = React.useState(false);
 
   // calculate listbox width style based on trigger width
   const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
@@ -149,6 +155,13 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     if (!open && getDropdownActionFromKey(ev) === 'Type') {
       baseState.setOpen(ev, true);
     }
+
+    // clear activedescendant when moving the text insertion cursor
+    if (ev.key === ArrowLeft || ev.key === ArrowRight) {
+      setHideActiveDescendant(true);
+    } else {
+      setHideActiveDescendant(false);
+    }
   };
 
   // resolve input and listbox slot props
@@ -183,6 +196,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+
+  if (hideActiveDescendant) {
+    triggerSlot['aria-activedescendant'] = undefined;
+  }
 
   const state: ComboboxState = {
     components: {
