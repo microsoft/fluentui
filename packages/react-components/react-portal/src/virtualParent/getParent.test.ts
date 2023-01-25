@@ -37,6 +37,19 @@ describe('getParent', () => {
     expect(getParent(child)).toBe(virtualParent);
   });
 
+  it('should skip virtual parent based on options', () => {
+    // Arrange
+    const child = document.createElement('div');
+    const virtualParent = document.createElement('div');
+    const realParent = document.createElement('div');
+
+    realParent.appendChild(child);
+    setVirtualParent(child, virtualParent);
+
+    // Assert
+    expect(getParent(child, { skipVirtual: true })).toBe(realParent);
+  });
+
   it('should return undefined for normal DOM element', () => {
     // Arrange
     const child = document.createElement('div');

@@ -1,4 +1,5 @@
 import { getParent } from './getParent';
+
 /**
  * Similar functionality to `element.contains` DOM API for use without of order DOM elements that
  * checks the virtual parent hierarchy. If a virtual parents exists, it is chosen over the actual parent
@@ -17,7 +18,9 @@ export function elementContains(parent: Node | null, child: Node | null): boolea
     const set = new WeakSet<Node>();
 
     while (child) {
-      const nextParent: Node | null = getParent(child, set.has(child));
+      const nextParent: Node | null = getParent(child, {
+        skipVirtual: set.has(child),
+      });
       set.add(child);
 
       if (nextParent === parent) {
