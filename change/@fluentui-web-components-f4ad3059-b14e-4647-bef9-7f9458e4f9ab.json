@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "chore: run manually bump to fix failed CI release",
+  "comment": "chore(web-components): run manually bump to fix failed CI release",
   "packageName": "@fluentui/web-components",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "none"
