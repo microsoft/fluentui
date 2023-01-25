@@ -4,6 +4,7 @@
 
 ```ts
 
+import { CSSDesignToken } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
@@ -12,6 +13,7 @@ import { FASTProgress } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
+import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
@@ -92,6 +94,900 @@ export const BadgeStyles: ElementStyles;
 
 // @public (undocumented)
 export const BadgeTemplate: ElementViewTemplate<Badge>;
+
+// @public (undocumented)
+export const borderRadiusCircular: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const borderRadiusLarge: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const borderRadiusMedium: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const borderRadiusNone: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const borderRadiusSmall: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const borderRadiusXLarge: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBackgroundOverlay: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackground: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundInvertedHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundInvertedPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundInvertedSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandBackgroundStatic: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundInvertedHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundInvertedPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundLink: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundLinkHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundLinkPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundLinkSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundOnLight: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundOnLightHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundOnLightPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandForegroundOnLightSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandShadowAmbient: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandShadowKey: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandStroke1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorBrandStroke2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandBackground: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandBackgroundHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandBackgroundPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandForeground1Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandForeground1Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandStroke: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandStrokeHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorCompoundBrandStrokePressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground1Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground1Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground1Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground2Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground2Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground2Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground3Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground3Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground3Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground4: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground4Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground4Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground4Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground5: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground5Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground5Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground5Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackground6: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackgroundDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackgroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackgroundInvertedDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralBackgroundStatic: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground1Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground1Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground1Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground1Static: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2BrandHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2BrandPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2BrandSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2Link: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2LinkHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2LinkPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2LinkSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground2Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3BrandHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3BrandPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3BrandSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground3Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForeground4: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInverted2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLink: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLinkHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLinkPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedLinkSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundInvertedSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundOnBrand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralForegroundStaticInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralShadowAmbient: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralShadowAmbientDarker: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralShadowAmbientLighter: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralShadowKey: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralShadowKeyDarker: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralShadowKeyLighter: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStencil1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStencil2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStroke1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStroke1Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStroke1Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStroke1Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStroke2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStroke3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessible: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessibleHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessiblePressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeAccessibleSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeInvertedDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2Hover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2Pressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStrokeOnBrand2Selected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteAnchorBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteAnchorBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteAnchorForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBeigeBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBeigeBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBeigeForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBerryForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBlueBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBlueBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBlueForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBrassBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBrassBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBrassForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBrownBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBrownBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteBrownForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteCornflowerBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteCornflowerBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteCornflowerForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteCranberryBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteCranberryBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteCranberryForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkGreenBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkGreenBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkGreenForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkOrangeForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkRedBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkRedBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteDarkRedForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteForestBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteForestBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteForestForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGoldBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGoldBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGoldForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGrapeBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGrapeBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGrapeForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteGreenForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLavenderBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLavenderBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLavenderForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightGreenForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightTealBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightTealBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLightTealForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLilacBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLilacBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteLilacForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMagentaBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMagentaBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMagentaForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMarigoldForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMinkBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMinkBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteMinkForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteNavyBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteNavyBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteNavyForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePeachBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePeachBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePeachForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePinkBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePinkBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePinkForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePlatinumBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePlatinumBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePlatinumForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePlumBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePlumBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePlumForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePumpkinBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePumpkinBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePumpkinForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePurpleBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePurpleBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPalettePurpleForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRedForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRoyalBlueBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRoyalBlueBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteRoyalBlueForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteSeafoamBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteSeafoamBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteSeafoamForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteSteelBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteSteelBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteSteelForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteTealBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteTealBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteTealForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowBackground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowBackground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowBackground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowBorder1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowBorder2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowBorderActive: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowForeground1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowForeground2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorScrollbarOverlay: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorStrokeFocus1: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorStrokeFocus2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackground: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundInvertedHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundInvertedPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundInvertedSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundLightAlphaHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundLightAlphaPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundLightAlphaSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorSubtleBackgroundSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentBackground: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentBackgroundHover: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentBackgroundPressed: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentBackgroundSelected: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentStroke: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentStrokeDisabled: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorTransparentStrokeInteractive: CSSDesignToken<string>;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
 //
@@ -177,6 +1073,135 @@ export const CounterBadgeStyles: ElementStyles;
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
 
+// @public (undocumented)
+export const curveAccelerateMax: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveAccelerateMid: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveAccelerateMin: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveDecelerateMax: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveDecelerateMid: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveDecelerateMin: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveEasyEase: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveEasyEaseMax: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveLinear: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationFast: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationFaster: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationNormal: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationSlower: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationUltraFast: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationUltraSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontFamilyBase: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontFamilyMonospace: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontFamilyNumeric: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase100: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase200: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase300: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase400: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase500: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase600: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero1000: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero700: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero800: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero900: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightBold: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightMedium: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightRegular: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightSemibold: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase100: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase200: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase300: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase400: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase500: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase600: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero1000: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero700: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero800: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero900: CSSDesignToken<string>;
+
 // @public
 export class ProgressBar extends FASTProgress {
     shape: ProgressBarShape;
@@ -220,6 +1245,123 @@ export const ProgressBarValidationState: {
 
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
+
+// @public
+export const setTheme: (theme: Theme) => void;
+
+// @public (undocumented)
+export const shadow16: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow16Brand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow28: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow28Brand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow2Brand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow4: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow4Brand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow64: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow64Brand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow8: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const shadow8Brand: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalM: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalMNudge: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalNone: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalS: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalSNudge: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalXL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalXS: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalXXL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalXXS: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingHorizontalXXXL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalM: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalMNudge: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalNone: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalS: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalSNudge: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalXL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalXS: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalXXL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalXXS: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const spacingVerticalXXXL: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeWidthThick: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeWidthThicker: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeWidthThickest: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const strokeWidthThin: CSSDesignToken<string>;
 
 // @public
 class Text_2 extends FASTElement {
