@@ -1,28 +1,17 @@
-import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+/* eslint-disable deprecation/deprecation */
+import { DeprecatedFieldProps, getDeprecatedFieldClassNames, makeDeprecatedField } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { ProgressBar } from '../../ProgressBar';
+import { ProgressBar, progressBarClassNames, ProgressBarProps } from '../../ProgressBar';
 
-export type ProgressFieldProps = FieldProps<typeof ProgressBar>;
-
-export const progressFieldClassNames = getFieldClassNames('ProgressField');
-
-export const ProgressField: ForwardRefComponent<ProgressFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, {
-    component: ProgressBar,
-    classNames: progressFieldClassNames,
-    labelConnection: 'aria-labelledby',
-    ariaInvalidOnError: false,
-  });
-  state.control.validationState = state.validationState;
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+/** @deprecated Use Field with ProgressBar: `<Field><ProgressBar /></Field>` */
+export type ProgressFieldProps = DeprecatedFieldProps<ProgressBarProps>;
+/** @deprecated Use Field with ProgressBar: `<Field><ProgressBar /></Field>` */
+export const progressFieldClassNames = getDeprecatedFieldClassNames(progressBarClassNames.root);
+/** @deprecated Use Field with ProgressBar: `<Field><ProgressBar /></Field>` */
+export const ProgressField: ForwardRefComponent<ProgressFieldProps> = makeDeprecatedField(ProgressBar, {
+  displayName: 'ProgressField',
+  mapProps: (props: ProgressFieldProps) => ({
+    ...props,
+    control: { ...props.control, validationState: props.validationState },
+  }),
 });
-
-ProgressField.displayName = 'ProgressField';

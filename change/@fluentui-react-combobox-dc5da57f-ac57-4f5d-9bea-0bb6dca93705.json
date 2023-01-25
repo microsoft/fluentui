@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Deprecate ComboboxField_unstable in favor of Field with Combobox as its child.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

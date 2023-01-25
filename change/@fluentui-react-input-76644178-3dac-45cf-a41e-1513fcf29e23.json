@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Deprecate InputField_unstable in favor of Field with Input as its child.",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Implement Field component to replace InputField, ComboboxField, etc.",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
