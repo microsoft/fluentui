@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: bump web-components to 3.0.0-alpha.0",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
