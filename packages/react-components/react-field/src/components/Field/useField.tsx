@@ -1,8 +1,9 @@
 import * as React from 'react';
+
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
-import type { FieldProps, FieldState } from './Field.types';
+import type { FieldChildProps, FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
@@ -24,7 +25,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
 
   const baseId = useId('field-');
 
-  const root = getNativeElementProps('div', { ...props, ref }, ['children']);
+  const root = getNativeElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']);
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
@@ -55,8 +56,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     },
   });
 
-  const childElement = React.isValidElement(children) ? React.Children.only(children) : undefined;
-  const controlProps = { ...childElement?.props };
+  const controlProps: FieldChildProps = React.isValidElement(children) ? { ...children.props } : {};
 
   if (label) {
     controlProps['aria-labelledby'] ??= label.id;
@@ -77,18 +77,18 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
       .join(' ');
   }
 
-  if (required) {
-    controlProps['aria-required'] ??= true;
-  }
-
   if (validationState === 'error') {
     controlProps['aria-invalid'] ??= true;
   }
 
-  if (typeof children === 'function') {
+  if (required) {
+    controlProps['aria-required'] ??= true;
+  }
+
+  if (React.isValidElement(children)) {
+    root.children = React.cloneElement(children, controlProps);
+  } else if (typeof children === 'function') {
     root.children = children(controlProps);
-  } else if (childElement) {
-    root.children = React.cloneElement(childElement, controlProps);
   }
 
   return {
