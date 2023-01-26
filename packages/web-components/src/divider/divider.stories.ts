@@ -10,16 +10,18 @@ type DividerStoryArgs = Args & FluentDivider;
 type DividerStoryMeta = Meta<DividerStoryArgs>;
 
 const dividerTemplate = html<DividerStoryArgs>`
-  <fluent-divider
-    align-content=${x => x.alignContent}
-    appearance=${x => x.appearance}
-    role=${x => x.role}
-    ?inset=${x => x.inset}
-    orientation=${x => x.orientation}
-    empty=${x => (x.content ? null : '')}
-  >
-    ${x => (x.content ? html`<h3>${x.content}</h3>` : '')}
-  </fluent-divider>
+  <div style="border: 30px solid #ccc; height: 9em; display: flex; flex-direction: column; justify-content: center;">
+    <fluent-divider
+      align-content=${x => x.alignContent}
+      appearance=${x => x.appearance}
+      role=${x => x.role}
+      ?inset=${x => x.inset}
+      orientation=${x => x.orientation}
+      empty=${x => (x.content ? null : '')}
+    >
+      ${x => (x.content ? html`<h3>${x.content}</h3>` : '')}
+    </fluent-divider>
+  </div>
 `;
 
 const dividerSvgTemplate = html<DividerStoryArgs>`

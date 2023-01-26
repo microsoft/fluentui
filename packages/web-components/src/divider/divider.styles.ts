@@ -66,8 +66,11 @@ export const styles = css`
     align-items: center;
   }
 
-  :host([orientation='vertical'][inset]) {
-    padding: 12px 0;
+  :host([orientation='vertical'][inset])::before {
+    margin-top: 12px;
+  }
+  :host([orientation='vertical'][inset])::after {
+    margin-bottom: 12px;
   }
 
   :host([orientation='vertical'][empty])::before,
