@@ -10,6 +10,7 @@ import { useColumnResizeState } from './useColumnResizeState';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import useColumnResizeMouseHandler from './useColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
+import * as React from 'react';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidth: () => 0,
@@ -26,9 +27,14 @@ export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams) 
   return (tableState: TableFeaturesState<TItem>) => useColumnSizingState(tableState, params);
 }
 
-function getColumnProps(column: ColumnWidthState): ColumnWidthProps {
+function getColumnProps(
+  column: ColumnWidthState,
+  resizeHandleMouseDown: (mouseDownEvent: React.MouseEvent<HTMLElement>) => void,
+): ColumnWidthProps {
   const width = column.width;
+
   return {
+    resizeHandleMouseDown,
     columnId: column.columnId,
     style: {
       // native styles
@@ -66,7 +72,8 @@ function useColumnSizingState<TItem>(
       getColumnWidths: () => columnResizeState.getColumns(),
       getColumnProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
-        return col ? getColumnProps(col) : { columnId };
+        const handler = mouseHandler.getOnMouseDown(columnId);
+        return col ? getColumnProps(col, handler) : { columnId };
       },
     },
   };

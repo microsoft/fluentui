@@ -70,7 +70,7 @@ export const ResizableUncontrolled = () => {
 
   return (
     <>
-      <Table ref={tableRef} columnSizingState={columnSizing}>
+      <Table ref={tableRef}>
         <TableHeader>
           <TableRow>
             <TableHeaderCell

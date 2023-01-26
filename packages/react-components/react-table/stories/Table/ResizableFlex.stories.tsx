@@ -70,7 +70,7 @@ export const ResizableFlex = () => {
 
   return (
     <>
-      <Table ref={tableRef} columnSizingState={columnSizing} noNativeElements>
+      <Table ref={tableRef} noNativeElements>
         <TableHeader>
           <TableRow>
             <TableHeaderCell

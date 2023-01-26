@@ -215,7 +215,7 @@ export const ResizingColumns = () => {
         First column minWidth:{' '}
         <input type="text" onChange={onMinWidthChange} value={columnSizingOptions.file.minWidth} />
       </p>
-      <Table sortable aria-label="Table with sort" ref={tableRef} columnSizingState={columnSizing}>
+      <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
           <TableRow>
             {columns.map(column => (

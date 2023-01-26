@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { SortDirection, TableContextValue } from '../Table/Table.types';
-import { TableColumnId } from '../../hooks';
+import { ColumnWidthProps, TableColumnId } from '../../hooks';
 
 export type TableHeaderCellSlots = {
   root: Slot<'th', 'div'>;
@@ -19,14 +19,15 @@ export type TableHeaderCellSlots = {
 /**
  * TableHeaderCell Props
  */
-export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
-  /**
-   * @default undefined
-   */
-  sortDirection?: SortDirection;
+export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> &
+  Pick<ColumnWidthProps, 'resizeHandleMouseDown'> & {
+    /**
+     * @default undefined
+     */
+    sortDirection?: SortDirection;
 
-  columnId?: TableColumnId;
-};
+    columnId?: TableColumnId;
+  };
 
 /**
  * State used in rendering TableHeaderCell

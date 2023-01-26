@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TableColumnSizingState } from '../../hooks';
 
 export type TableSlots = {
   root: Slot<'table', 'div'>;
@@ -24,15 +23,12 @@ export type TableContextValue = {
    * @default false
    */
   sortable: boolean;
-
-  columnSizingState?: TableColumnSizingState;
 };
 
 export type SortDirection = 'ascending' | 'descending';
 
 export type TableContextValues = {
   table: TableContextValue;
-  columnSizingState?: TableColumnSizingState;
 };
 
 /**

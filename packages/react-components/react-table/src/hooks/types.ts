@@ -190,6 +190,7 @@ export interface ColumnWidthState {
 export interface ColumnWidthProps {
   style?: React.CSSProperties;
   columnId?: TableColumnId;
+  resizeHandleMouseDown?: (mouseDownEvent: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface TableColumnSizingState {

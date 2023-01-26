@@ -77,7 +77,7 @@ export const ResizingControlled = () => {
   return (
     <>
       <button onClick={insertColumn}>Add column</button>
-      <Table ref={tableRef} columnSizingState={columnSizing}>
+      <Table ref={tableRef}>
         <TableHeader>
           <TableRow>
             {columns.map((column, index) => (

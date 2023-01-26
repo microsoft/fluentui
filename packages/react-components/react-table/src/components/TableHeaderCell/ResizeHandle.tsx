@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { useTableContext } from '../../contexts/tableContext';
 import { tokens } from '@fluentui/react-theme';
 import { TableColumnId } from '../../hooks/types';
 
 type DefaultResizeHandleProps = {
   columnId?: TableColumnId;
+  mouseDown?: (mouseDownEvent: React.MouseEvent<HTMLElement>) => void;
 };
 
 const useDefaultHandleStyles = makeStyles({
@@ -41,7 +41,6 @@ const useDefaultHandleStyles = makeStyles({
 
 export const ResizeHandle: React.FC<DefaultResizeHandleProps> = props => {
   const styles = useDefaultHandleStyles();
-  const { columnSizingState } = useTableContext();
 
   // Make sure the clicks on the ResizeHandle are not propagated to other components that might have
   // listeners, e.g. sorting.
@@ -49,10 +48,8 @@ export const ResizeHandle: React.FC<DefaultResizeHandleProps> = props => {
     e.stopPropagation();
   }, []);
 
-  if (props.columnId && columnSizingState?.getOnMouseDown) {
-    return (
-      <div className={styles.root} onMouseDown={columnSizingState?.getOnMouseDown(props.columnId)} onClick={onClick} />
-    );
+  if (props.mouseDown) {
+    return <div className={styles.root} onMouseDown={props.mouseDown} onClick={onClick} />;
   }
   return null;
 };
