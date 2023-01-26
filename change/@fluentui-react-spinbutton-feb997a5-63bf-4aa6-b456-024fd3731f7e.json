@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Deprecate SpinButtonField_unstable in favor of Field with SpinButton as its child.",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

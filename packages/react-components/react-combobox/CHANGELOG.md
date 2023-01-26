@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 23 Jan 2023 16:43:12 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:30:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.26)
+
+Thu, 26 Jan 2023 13:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.25..@fluentui/react-combobox_v9.0.0-beta.26)
+
+### Changes
+
+- fix: add popup maxHeight, and move shadow styles to combobox/dropdown ([PR #26470](https://github.com/microsoft/fluentui/pull/26470) by sarah.higley@microsoft.com)
+- chore: update spec and migration docs ([PR #26396](https://github.com/microsoft/fluentui/pull/26396) by sarah.higley@microsoft.com)
+- fix: combobox should recalculate the activedescendant when the children change while open, and clear it when moving text cursor ([PR #26444](https://github.com/microsoft/fluentui/pull/26444) by sarah.higley@microsoft.com)
+- fix: update multiselect checkbox styles to match checkbox ([PR #26509](https://github.com/microsoft/fluentui/pull/26509) by sarah.higley@microsoft.com)
+- Deprecate ComboboxField_unstable in favor of Field with Combobox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.17 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-portal to v9.1.4 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-positioning to v9.3.9 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 
 ## [9.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.25)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Allow default appearance override",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

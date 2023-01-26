@@ -1,8 +1,89 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 Jan 2023 16:43:09 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:30:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.12.0)
+
+Thu, 26 Jan 2023 13:30:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.11.1..@fluentui/react-components_v9.12.0)
+
+### Minor changes
+
+- `@fluentui/react-avatar`
+  - chore: deprecates AvatarSizes in favor of AvatarSize ([PR #26492](https://github.com/microsoft/fluentui/pull/26492) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - feature: creates ButtonContext ([PR #26478](https://github.com/microsoft/fluentui/pull/26478) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - feat: export TextareaOnChangeData type ([PR #26455](https://github.com/microsoft/fluentui/pull/26455) by olfedias@microsoft.com)
+  - feat: add support for appearance overrides (unstable) ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+  - feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+  - chore(react-avatar): deprecates AvatarSizes in favor of AvatarSize ([PR #26492](https://github.com/microsoft/fluentui/pull/26492) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-input`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - Moved to be a v9 convergence package ([PR #26503](https://github.com/microsoft/fluentui/pull/26503) by gcox@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: add support for overrides (unstable) ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Overrides context ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+  - feat: export TextareaOnChangeData type ([PR #26455](https://github.com/microsoft/fluentui/pull/26455) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: high contrast mode focus styles are applied ([PR #26116](https://github.com/microsoft/fluentui/pull/26116) by sarah.higley@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Deprecate CheckboxField_unstable in favor of Field with Checkbox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - Add Field to react-components/unstable. Deprecate InputField/etc. in favor of Field with Input/etc. as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-input`
+  - Deprecate InputField_unstable in favor of Field with Input as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-link`
+  - fix: handle "tabIndex" from user's input ([PR #26456](https://github.com/microsoft/fluentui/pull/26456) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: update elementContains() to handle circular references ([PR #26483](https://github.com/microsoft/fluentui/pull/26483) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: Update FluentProvider's class name to use backslash when a colon is present. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
+- `@fluentui/react-radio`
+  - Deprecate RadioGroupField_unstable in favor of Field with RadioGroup as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-slider`
+  - Deprecate SliderField_unstable in favor of Field with Slider as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - Deprecate SpinButtonField_unstable in favor of Field with SpinButton as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-switch`
+  - Deprecate SwitchField_unstable in favor of Field with Switch as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-textarea`
+  - Deprecate TextareaField_unstable in favor of Field with Textarea as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: export toolbar hooks as functions, not Typescript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: Leverage React.useId when available for our useId hook. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-combobox`
+  - fix: add popup maxHeight, and move shadow styles to combobox/dropdown ([PR #26470](https://github.com/microsoft/fluentui/pull/26470) by sarah.higley@microsoft.com)
+  - chore: update spec and migration docs ([PR #26396](https://github.com/microsoft/fluentui/pull/26396) by sarah.higley@microsoft.com)
+  - fix: combobox should recalculate the activedescendant when the children change while open, and clear it when moving text cursor ([PR #26444](https://github.com/microsoft/fluentui/pull/26444) by sarah.higley@microsoft.com)
+  - fix: update multiselect checkbox styles to match checkbox ([PR #26509](https://github.com/microsoft/fluentui/pull/26509) by sarah.higley@microsoft.com)
+  - Deprecate ComboboxField_unstable in favor of Field with Combobox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-field`
+  - Implement Field component to replace InputField, ComboboxField, etc. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-progress`
+  - Deprecate ProgressField_unstable in favor of Field with Progress as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-select`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+  - Deprecate SelectField_unstable in favor of Field with Select as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-table`
+  - chore(react-table): switch AvatarSizes in favor of AvatarSize ([PR #26492](https://github.com/microsoft/fluentui/pull/26492) by bernardo.sunderhus@gmail.com)
 
 ## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.11.1)
 

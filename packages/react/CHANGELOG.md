@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 18 Jan 2023 07:42:13 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 07:35:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.104.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.7)
+
+Thu, 26 Jan 2023 07:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.6..@fluentui/react_v8.104.7)
+
+### Patches
+
+- Fix: add relative position to BasePicker to fix absolute position child bug ([PR #26490](https://github.com/microsoft/fluentui/pull/26490) by mgodbolt@microsoft.com)
 
 ## [8.104.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.6)
 

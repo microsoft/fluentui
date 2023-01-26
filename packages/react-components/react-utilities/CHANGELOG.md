@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:31:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.0)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.4.0..@fluentui/react-utilities_v9.5.0)
+
+### Minor changes
+
+- feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+
+### Patches
+
+- fix: Leverage React.useId when available for our useId hook. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.4.0)
 
