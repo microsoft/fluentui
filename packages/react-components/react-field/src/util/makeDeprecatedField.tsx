@@ -1,8 +1,9 @@
 /* eslint-disable deprecation/deprecation */
 import * as React from 'react';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent, resolveShorthand } from '@fluentui/react-utilities';
 import type { FieldProps } from '../Field';
 import { Field, fieldClassNames } from '../Field';
+import { FieldMessageProps } from '../FieldMessage';
 
 /**
  * @deprecated Only for use to make deprecated [Control]Field shim components.
@@ -11,16 +12,10 @@ import { Field, fieldClassNames } from '../Field';
 export type DeprecatedFieldProps<ControlProps> = ControlProps & {
   root?: FieldProps;
   control?: ControlProps;
+  validationMessageIcon?: FieldMessageProps['icon'];
 } & Pick<
     FieldProps,
-    | 'className'
-    | 'hint'
-    | 'label'
-    | 'orientation'
-    | 'style'
-    | 'validationMessage'
-    | 'validationMessageIcon'
-    | 'validationState'
+    'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationState'
   >;
 
 /**
@@ -54,8 +49,7 @@ function getPartitionedFieldProps<ControlProps>(
       required,
       size,
       style,
-      validationMessage,
-      validationMessageIcon,
+      validationMessage: resolveShorthand(validationMessage, { defaultProps: { icon: validationMessageIcon } }),
       validationState,
       ...root,
     },

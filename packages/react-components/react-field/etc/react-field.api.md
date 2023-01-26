@@ -18,7 +18,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export type DeprecatedFieldProps<ControlProps> = ControlProps & {
     root?: FieldProps;
     control?: ControlProps;
-} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
+    validationMessageIcon?: FieldMessageProps['icon'];
+} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationState'>;
 
 // @public (undocumented)
 export const Field: ForwardRefComponent<FieldProps>;
@@ -27,10 +28,30 @@ export const Field: ForwardRefComponent<FieldProps>;
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public
+export const FieldMessage: ForwardRefComponent<FieldMessageProps>;
+
+// @public (undocumented)
+export const fieldMessageClassNames: SlotClassNames<FieldMessageSlots>;
+
+// @public
+export type FieldMessageProps = ComponentProps<FieldMessageSlots> & {
+    validationState?: 'error' | 'success' | 'warning' | 'neutral';
+};
+
+// @public
+export type FieldMessageSlots = {
+    root: NonNullable<Slot<'div'>>;
+    icon?: Slot<'span'>;
+};
+
+// @public
+export type FieldMessageState = ComponentState<FieldMessageSlots> & Required<Pick<FieldMessageProps, 'validationState'>>;
+
+// @public
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
     children?: React_2.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
-    validationState?: 'error' | 'warning' | 'success';
+    validationState?: 'error' | 'warning' | 'success' | 'neutral';
     required?: boolean;
     size?: 'small' | 'medium' | 'large';
 };
@@ -39,13 +60,12 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
-    validationMessage?: Slot<'div'>;
-    validationMessageIcon?: Slot<'span'>;
-    hint?: Slot<'div'>;
+    validationMessage?: Slot<typeof FieldMessage>;
+    hint?: Slot<typeof FieldMessage>;
 };
 
 // @public
-export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
 
 // @internal @deprecated (undocumented)
 export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
@@ -53,7 +73,6 @@ export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
     root: string;
     label: string;
     validationMessage: string;
-    validationMessageIcon: string;
     hint: string;
 };
 
@@ -67,7 +86,16 @@ export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType
 export const renderField_unstable: (state: FieldState) => JSX.Element;
 
 // @public
+export const renderFieldMessage_unstable: (state: FieldMessageState) => JSX.Element;
+
+// @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
+// @public
+export const useFieldMessage_unstable: (props: FieldMessageProps, ref: React_2.Ref<HTMLElement>) => FieldMessageState;
+
+// @public
+export const useFieldMessageStyles_unstable: (state: FieldMessageState) => FieldMessageState;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;

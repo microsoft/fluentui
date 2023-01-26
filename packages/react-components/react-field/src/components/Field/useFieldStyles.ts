@@ -1,18 +1,14 @@
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { FieldSlots, FieldState } from './Field.types';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
   label: `fui-Field__label`,
   validationMessage: `fui-Field__validationMessage`,
-  validationMessageIcon: `fui-Field__validationMessageIcon`,
   hint: `fui-Field__hint`,
 };
-
-// Size of the icon in the validation message
-const iconSize = '12px';
 
 /**
  * Styles for the root slot
@@ -63,52 +59,10 @@ const useLabelStyles = makeStyles({
   },
 });
 
-const useSecondaryTextBaseClassName = makeResetStyles({
-  marginTop: tokens.spacingVerticalXXS,
-  color: tokens.colorNeutralForeground3,
-  ...typographyStyles.caption1,
-});
-
-const useSecondaryTextStyles = makeStyles({
-  error: {
-    color: tokens.colorPaletteRedForeground1,
-  },
-
-  withIcon: {
-    // Add a gutter for the icon, to allow multiple lines of text to line up to the right of the icon.
-    paddingLeft: `calc(${iconSize} + ${tokens.spacingHorizontalXS})`,
-  },
-});
-
-const useValidationMessageIconBaseClassName = makeResetStyles({
-  display: 'inline-block',
-  fontSize: iconSize,
-  // Negative left margin puts the icon in the gutter of the validation message div's withIcon style.
-  marginLeft: `calc(-${iconSize} - ${tokens.spacingHorizontalXS})`,
-  marginRight: tokens.spacingHorizontalXS,
-  // Line height of 0 prevents the verticalAlign from affecting the line height of the text.
-  lineHeight: '0',
-  // Negative verticalAlign shifts the inline icon down to align with the text (effectively top padding).
-  verticalAlign: '-1px',
-});
-
-const useValidationMessageIconStyles = makeStyles({
-  error: {
-    color: tokens.colorPaletteRedForeground1,
-  },
-  warning: {
-    color: tokens.colorPaletteDarkOrangeForeground1,
-  },
-  success: {
-    color: tokens.colorPaletteGreenForeground1,
-  },
-});
-
 /**
  * Apply styling to the Field slots based on the state
  */
 export const useFieldStyles_unstable = (state: FieldState) => {
-  const { validationState } = state;
   const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();
@@ -133,30 +87,14 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     );
   }
 
-  const validationMessageIconBaseClassName = useValidationMessageIconBaseClassName();
-  const validationMessageIconStyles = useValidationMessageIconStyles();
-  if (state.validationMessageIcon) {
-    state.validationMessageIcon.className = mergeClasses(
-      fieldClassNames.validationMessageIcon,
-      validationMessageIconBaseClassName,
-      !!validationState && validationMessageIconStyles[validationState],
-      state.validationMessageIcon.className,
-    );
-  }
-
-  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
-  const secondaryTextStyles = useSecondaryTextStyles();
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
       fieldClassNames.validationMessage,
-      secondaryTextBaseClassName,
-      validationState === 'error' && secondaryTextStyles.error,
-      !!state.validationMessageIcon && secondaryTextStyles.withIcon,
       state.validationMessage.className,
     );
   }
 
   if (state.hint) {
-    state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextBaseClassName, state.hint.className);
+    state.hint.className = mergeClasses(fieldClassNames.hint, state.hint.className);
   }
 };

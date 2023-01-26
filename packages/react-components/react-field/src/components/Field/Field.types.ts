@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { FieldMessage } from '../FieldMessage/FieldMessage';
 
 /**
  * The props added to the Field's child element.
@@ -22,22 +24,15 @@ export type FieldSlots = {
   label?: Slot<typeof Label>;
 
   /**
-   * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
+   * A message about the validation state. By default, this is an error message, but it can be a success, warning,
+   * or neutral message by setting `validationState`.
    */
-  validationMessage?: Slot<'div'>;
-
-  /**
-   * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
-   * icon corresponding to that state.
-   *
-   * This will only be displayed if `validationMessage` is set.
-   */
-  validationMessageIcon?: Slot<'span'>;
+  validationMessage?: Slot<typeof FieldMessage>;
 
   /**
    * Additional hint text below the field.
    */
-  hint?: Slot<'div'>;
+  hint?: Slot<typeof FieldMessage>;
 };
 
 /**
@@ -67,10 +62,14 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
   /**
    * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`
    *
-   * Setting `validationState` to `error` will also set `aria-invalid` to `true` on the Field's child,
-   * `role="alert"` on the `validationMessage`, and for some field components, causes the border to become red.
+   * When `validationState` is `error`:
+   * * The `validationMessage` text is red and has `role="alert"` to announce the message to screen readers
+   * * The Field's child has `aria-invalid="true"`
+   * * Some field components (such as `Input`) have a red border
+   *
+   * @default error (when validationMessage is set)
    */
-  validationState?: 'error' | 'warning' | 'success';
+  validationState?: 'error' | 'warning' | 'success' | 'neutral';
 
   /**
    * Marks the Field as required. If `true`, an asterisk will be appended to the label, and `aria-required` will be set
@@ -89,4 +88,5 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 /**
  * State used in rendering Field
  */
-export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;
+export type FieldState = ComponentState<Required<FieldSlots>> &
+  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;

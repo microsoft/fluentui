@@ -16,7 +16,7 @@ import { TextareaField_unstable as TextareaField } from '@fluentui/react-textare
 
 type FieldControlProps = Pick<
   InputFieldProps,
-  'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'validationMessageIcon' | 'hint'
+  'orientation' | 'required' | 'label' | 'validationState' | 'validationMessage' | 'hint'
 >;
 
 /**
@@ -36,13 +36,13 @@ const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldCo
     .addStory('required', () => <Field label="Example field" required />)
     .addStory('validation', () => (
       <div style={{ display: 'grid', rowGap: '10px' }}>
-        <Field label="Validation error" validationState="error" validationMessage="Error message" />
+        <Field label="Validation error" validationMessage="Error message" />
         <Field label="Validation warning" validationState="warning" validationMessage="Warning message" />
         <Field label="Validation success" validationState="success" validationMessage="Success message" />
         <Field
           label="Custom validation state"
-          validationMessageIcon={<SparkleFilled />}
-          validationMessage="Custom message"
+          validationState="neutral"
+          validationMessage={{ icon: <SparkleFilled />, children: 'Custom message' }}
         />
       </div>
     ))
@@ -51,7 +51,6 @@ const storiesOfField = (name: string, Field: React.VoidFunctionComponent<FieldCo
       <Field
         label="This is a very long label that should wrap around to be multiple lines in height"
         orientation="horizontal"
-        validationState="error"
         validationMessage="Error message"
         hint="Hint text"
       />
@@ -88,7 +87,13 @@ storiesOfFieldWithSize('InputField converged', InputField);
 //
 // ProgressField
 //
-storiesOfField('ProgressField converged', props => <ProgressField value={0.5} {...props} />);
+storiesOfField('ProgressField converged', props => (
+  <ProgressField
+    value={0.5}
+    {...props}
+    validationState={props.validationState === 'neutral' ? undefined : props.validationState}
+  />
+));
 
 //
 // RadioGroupField

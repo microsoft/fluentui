@@ -1,15 +1,9 @@
 import * as React from 'react';
 
-import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { FieldMessage } from '../../FieldMessage';
 import type { FieldChildProps, FieldProps, FieldState } from './Field.types';
-
-const validationMessageIcons = {
-  error: <ErrorCircle12Filled />,
-  warning: <Warning12Filled />,
-  success: <CheckmarkCircle12Filled />,
-} as const;
 
 /**
  * Create the state required to render Field.
@@ -21,7 +15,13 @@ const validationMessageIcons = {
  * @param ref - Ref to the root
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivElement>): FieldState => {
-  const { children, orientation = 'vertical', required, validationState, size } = props;
+  const {
+    children,
+    orientation = 'vertical',
+    required,
+    size,
+    validationState = props.validationMessage ? 'error' : 'neutral',
+  } = props;
 
   const baseId = useId('field-');
 
@@ -39,20 +39,13 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const validationMessage = resolveShorthand(props.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
-      role: validationState === 'error' ? 'alert' : undefined,
+      validationState,
     },
   });
 
   const hint = resolveShorthand(props.hint, {
     defaultProps: {
       id: baseId + '__hint',
-    },
-  });
-
-  const validationMessageIcon = resolveShorthand(props.validationMessageIcon, {
-    required: !!validationState,
-    defaultProps: {
-      children: validationState ? validationMessageIcons[validationState] : undefined,
     },
   });
 
@@ -97,13 +90,11 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     components: {
       root: 'div',
       label: Label,
-      validationMessage: 'div',
-      validationMessageIcon: 'span',
-      hint: 'div',
+      validationMessage: FieldMessage,
+      hint: FieldMessage,
     },
     root,
     label,
-    validationMessageIcon,
     validationMessage,
     hint,
   };
