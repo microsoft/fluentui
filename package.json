@@ -266,6 +266,7 @@
     "json-schema": "0.4.0",
     "json-stable-stringify-without-jsonify": "1.0.1",
     "just-scripts": "1.8.2",
+    "just-scripts-utils": "1.2.0",
     "lage": "1.8.8",
     "lerna": "5.5.2",
     "lerna-alias": "3.0.3-0",
