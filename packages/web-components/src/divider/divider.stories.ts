@@ -4,7 +4,7 @@ import { renderComponent } from '../__test__/helpers.js';
 import type { Divider as FluentDivider } from './divider.js';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 import './define.js';
-// import * as SampleIcon from './paginated_reports_20_regular.svg';
+import SampleIcon from './paginated_reports_20_regular.svg';
 
 type DividerStoryArgs = Args & FluentDivider;
 type DividerStoryMeta = Meta<DividerStoryArgs>;
@@ -16,6 +16,7 @@ const dividerTemplate = html<DividerStoryArgs>`
     role=${x => x.role}
     ?inset=${x => x.inset}
     orientation=${x => x.orientation}
+    empty=${x => (x.content ? null : '')}
   >
     ${x => (x.content ? html`<h3>${x.content}</h3>` : '')}
   </fluent-divider>
@@ -29,6 +30,7 @@ const dividerSvgTemplate = html<DividerStoryArgs>`
     ?inset=${x => x.inset}
     orientation=${x => x.orientation}
   >
+    <img width="20" height="20" src=${SampleIcon} />
   </fluent-divider>
 `;
 
