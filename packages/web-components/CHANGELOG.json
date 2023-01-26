@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 04:18:59 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1949a66866dca51e82530efdedbb3d455880d614",
+            "comment": "chore(web-components): run manually bump to fix failed CI release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Jan 2023 17:42:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.2",
       "version": "3.0.0-alpha.2",
