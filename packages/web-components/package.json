@@ -39,6 +39,10 @@
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
+    },
+    "./switch": {
+      "types": "./dist/esm/switch/define.d.ts",
+      "default": "./dist/esm/switch/define.js"
     }
   },
   "scripts": {
