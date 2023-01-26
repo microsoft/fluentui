@@ -181,7 +181,7 @@ fuiCustomizer.useCustomStyles_unstable = (kind: string, state: any) => {
 ### 💡 Improvement - apply Typescript discriminant property technique
 
 - Add a `kind: string` property to ComponentState
-- Each component state would redefine kind to retrict to their type (e.g. Button would have `kind: 'Button'`).
+- Each component state would redefine kind to restrict customization to their type (e.g. Button would have `kind: 'Button'`).
 - Remove kind parameter from useCustomStyles.
 - Trying to cast to the wrong component state will fail.
 
@@ -195,14 +195,14 @@ fuiCustomizer.useCustomStyles_unstable = (kind: string, state: any) => {
 - One line of code to add to each component.
 - Does not significantly affect rendering performance.
 - Partners building components can follow the same practice to support custom styling in their libraries.
-- Hooks is not conditionally called and should not lead to unstable hook react errors.
+- Hooks are not conditionally called and should not lead to unstable hook react errors.
 - Can restyle without having to recompile component libraries.
-- Global traverses multiple render roots.
+- Globally traverses multiple render roots.
 
 ### 👎
 
 - Custom style hook state is not compile-time typesafe.
-- Very powerful. Only modifying classes is a implicit agreement.
+- Very powerful. Only modifying classes is an implicit agreement but state modification is possible.
 - Callers doing custom styling may still take a dependency on the CSS internals of the component.
 
 ## Option B: Encourage recomposition | make recomposition easier
@@ -237,7 +237,7 @@ Button.displayName = 'Button';
 
 ### 💡 Improvement - making recomposition easier with compose()
 
-Recomposing every component could be made easier with a compose method that hid some of the details of the ForwardRef
+Recomposing every component could be made easier with a compose method that hides some of the details of the ForwardRef
 and sequencing the hook.
 
 ```tsx
