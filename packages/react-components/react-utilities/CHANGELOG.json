@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:31:03 GMT",
+      "tag": "@fluentui/react-utilities_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1",
+            "comment": "feat: add IdPrefixProvider"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4f3871db826e542114d853b57fb2f740787f91e8",
+            "comment": "fix: Leverage React.useId when available for our useId hook."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:52 GMT",
       "tag": "@fluentui/react-utilities_v9.4.0",
       "version": "9.4.0",

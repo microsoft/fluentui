@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:31:00 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "6f29c8f65b2db6125efbd2a7ec2d7abdd0f44601",
+            "comment": "feat: Overrides context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:45 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.1.5",
       "version": "9.1.5",

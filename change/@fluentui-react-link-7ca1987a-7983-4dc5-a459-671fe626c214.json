@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: handle \"tabIndex\" from user's input",
-  "packageName": "@fluentui/react-link",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,47 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:30:52 GMT",
+      "tag": "@fluentui/react-button_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "b19643775c1b39ec5f960c7d31aeb2d55eb1cfff",
+            "comment": "feature: creates ButtonContext"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.3.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.4.1",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ea3269970b9b5072f6647fcd40c6be05229dc47c",
+            "comment": "fix: high contrast mode focus styles are applied"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 16:32:57 GMT",
       "tag": "@fluentui/react-button_v9.1.16",
       "version": "9.1.16",

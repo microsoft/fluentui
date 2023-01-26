@@ -2,6 +2,53 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:31:01 GMT",
+      "tag": "@fluentui/react-textarea_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "6f29c8f65b2db6125efbd2a7ec2d7abdd0f44601",
+            "comment": "feat: Allow default appearance override"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "fdc548e6e52077bad22ced4a332b39c7b8641a6c",
+            "comment": "feat: export TextareaOnChangeData type"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.17",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.2.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Deprecate TextareaField_unstable in favor of Field with Textarea as its child."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:12 GMT",
       "tag": "@fluentui/react-textarea_v9.1.13",
       "version": "9.1.13",
