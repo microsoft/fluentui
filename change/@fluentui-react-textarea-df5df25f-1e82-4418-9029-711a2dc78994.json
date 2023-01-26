@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Deprecate TextareaField_unstable in favor of Field with Textarea as its child.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

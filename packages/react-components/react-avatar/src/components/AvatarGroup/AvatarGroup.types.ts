@@ -1,4 +1,4 @@
-import type { AvatarSizes } from '../Avatar/Avatar.types';
+import type { AvatarSize } from '../Avatar/Avatar.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarGroupSlots = {
@@ -19,7 +19,7 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
    * Size of the AvatarGroupItems.
    * @default 32
    */
-  size?: AvatarSizes;
+  size?: AvatarSize;
 };
 
 /**

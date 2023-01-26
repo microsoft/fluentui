@@ -8,34 +8,36 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SlotRenderFunction } from '@fluentui/react-utilities';
-import type { SlotShorthandValue } from '@fluentui/react-utilities';
+
+// @internal @deprecated (undocumented)
+export type DeprecatedFieldProps<ControlProps> = ControlProps & {
+    root?: FieldProps;
+    control?: ControlProps;
+} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
+
+// @public (undocumented)
+export const Field: ForwardRefComponent<FieldProps>;
+
+// @public (undocumented)
+export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public
-export type FieldConfig<T extends FieldControl> = {
-    component: T;
-    classNames: SlotClassNames<FieldSlots<T>>;
-    labelConnection?: 'htmlFor' | 'aria-labelledby';
-    ariaInvalidOnError?: boolean;
-};
-
-// @public
-export type FieldControl = React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid'>>;
-
-// @public
-export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+    children?: React_2.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';
+    required?: boolean;
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public
-export type FieldSlots<T extends FieldControl> = {
+export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
-    control: SlotComponent<T>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
@@ -43,21 +45,32 @@ export type FieldSlots<T extends FieldControl> = {
 };
 
 // @public
-export type FieldState<T extends FieldControl> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
-    classNames: SlotClassNames<FieldSlots<T>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'orientation' | 'validationState'>;
+
+// @internal @deprecated (undocumented)
+export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
 };
 
-// @public (undocumented)
-export const getFieldClassNames: (name: string) => SlotClassNames<FieldSlots<FieldControl>>;
+// @internal @deprecated (undocumented)
+export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType<ControlProps>, options?: {
+    mapProps?: (props: DeprecatedFieldProps<ControlProps>) => DeprecatedFieldProps<ControlProps>;
+    displayName?: string;
+}): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
 
 // @public
-export const renderField_unstable: <T extends FieldControl>(state: FieldState<T>) => JSX.Element;
+export const renderField_unstable: (state: FieldState) => JSX.Element;
 
 // @public
-export const useField_unstable: <T extends FieldControl>(props: FieldPropsWithOptionalComponentProps<T>, ref: React_2.Ref<HTMLElement>, params: FieldConfig<T>) => FieldState<T>;
+export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public
-export const useFieldStyles_unstable: <T extends FieldControl>(state: FieldState<T>) => void;
+export const useFieldStyles_unstable: (state: FieldState) => void;
 
 // (No @packageDocumentation comment for this package)
 

@@ -43,17 +43,10 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
   const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
   const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
-  const openSubtrees = useTreeContext_unstable(ctx => ctx.openSubtrees);
+  const openItems = useTreeContext_unstable(ctx => ctx.openItems);
   const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
   const isSubtree = parentLevel > 0;
 
-  if (isSubtree) {
-    warnIfNoProperPropsSubtree(props);
-  }
-
-  const open = useTreeContext_unstable(
-    ctx => !isSubtree || props.id === undefined || ctx.openSubtrees.includes(props.id),
-  );
   const arrowNavigationProps = useArrowNavigationGroup({
     tabbable: true,
     axis: 'vertical',
@@ -65,9 +58,8 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
     },
     appearance,
     size,
-    open,
     level: parentLevel + 1,
-    openSubtrees,
+    openItems,
     requestOpenChange,
     focusFirstSubtreeItem,
     focusSubtreeOwnerItem,
@@ -91,8 +83,8 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
  */
 function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   warnIfNoProperPropsRootTree(props);
-  const { openSubtrees: stateOpenSubtrees, defaultOpenSubtrees, onOpenChange } = props;
-  const [openSubtrees, setOpenSubtrees] = useControllableState({
+  const { openItems: stateOpenSubtrees, defaultOpenItems: defaultOpenSubtrees, onOpenChange } = props;
+  const [openItems, setOpenSubtrees] = useControllableState({
     state: React.useMemo(() => normalizeOpenSubtreesOrUndefined(stateOpenSubtrees), [stateOpenSubtrees]),
     defaultState: () => normalizeOpenSubtrees(defaultOpenSubtrees),
     initialState: [],
@@ -101,7 +93,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
     onOpenChange?.(data.event, data);
     if (!data.event.isDefaultPrevented()) {
-      setOpenSubtrees(updateOpenSubtrees(data, openSubtrees));
+      setOpenSubtrees(updateOpenSubtrees(data, openItems));
     }
   });
   const { treeWalker: treeWalkerRef, root: treeRef } = useTreeWalker(NodeFilter.SHOW_ELEMENT, {
@@ -110,7 +102,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const commonState = useSubtree(props, useMergedRefs(ref, treeRef));
   return {
     ...commonState,
-    openSubtrees,
+    openItems,
     requestOpenChange,
     focusFirstSubtreeItem: useEventCallback(target => {
       const treeWalker = treeWalkerRef.current;
@@ -153,15 +145,6 @@ function filterTreeItemAndSubtree(node: Node) {
   return element.role === 'treeitem' || element.role === 'group' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
 }
 
-function warnIfNoProperPropsSubtree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
-  if (process.env.NODE_ENV === 'development') {
-    if (!props.id) {
-      // eslint-disable-next-line no-console
-      console.warn('as sub Tree must have an id to be referred by a TreeItem');
-    }
-  }
-}
-
 function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
@@ -186,9 +169,10 @@ function normalizeOpenSubtreesOrUndefined(openSubtrees?: string | string[]) {
 }
 
 function updateOpenSubtrees(data: TreeOpenChangeData, previousOpenSubtrees: string[]) {
+  const id = data.event.currentTarget.id;
   if (data.open) {
-    return previousOpenSubtrees.includes(data.id) ? previousOpenSubtrees : [...previousOpenSubtrees, data.id];
+    return previousOpenSubtrees.includes(id) ? previousOpenSubtrees : [...previousOpenSubtrees, id];
   }
-  const nextOpenItems = previousOpenSubtrees.filter(value => value !== data.id);
+  const nextOpenItems = previousOpenSubtrees.filter(value => value !== id);
   return nextOpenItems.length === previousOpenSubtrees.length ? previousOpenSubtrees : nextOpenItems;
 }

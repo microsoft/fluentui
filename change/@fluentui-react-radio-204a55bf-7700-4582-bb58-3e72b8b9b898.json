@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Deprecate RadioGroupField_unstable in favor of Field with RadioGroup as its child.",
+  "packageName": "@fluentui/react-radio",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

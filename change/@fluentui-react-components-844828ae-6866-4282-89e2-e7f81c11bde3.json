@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add Field to react-components/unstable. Deprecate InputField/etc. in favor of Field with Input/etc. as its child.",
+  "packageName": "@fluentui/react-components",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

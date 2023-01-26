@@ -8,10 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import { FC } from 'react';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
@@ -32,14 +30,21 @@ export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appeara
 // @public (undocumented)
 export type ComboboxContextValues = ComboboxBaseContextValues;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const ComboboxField_unstable: ForwardRefComponent<ComboboxFieldProps_unstable>;
 
-// @public (undocumented)
-export const comboboxFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+// @public @deprecated (undocumented)
+export const comboboxFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
 
-// @public (undocumented)
-export type ComboboxFieldProps_unstable = FieldProps<typeof Combobox>;
+// @public @deprecated (undocumented)
+export type ComboboxFieldProps_unstable = DeprecatedFieldProps<ComboboxProps>;
 
 // @public (undocumented)
 export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;

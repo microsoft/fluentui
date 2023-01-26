@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(react-table): switch AvatarSizes in favor of AvatarSize",
+  "packageName": "@fluentui/react-table",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

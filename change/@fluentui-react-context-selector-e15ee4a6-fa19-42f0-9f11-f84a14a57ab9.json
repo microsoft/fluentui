@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: fix a typo in jsdoc",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}

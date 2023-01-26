@@ -1,16 +1,15 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import type { FieldControl, FieldProps, FieldSlots, FieldState } from './Field.types';
+import type { FieldSlots, FieldState } from './Field.types';
 
-export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldControl>> => ({
-  root: `fui-${name}`,
-  control: `fui-${name}__control`,
-  label: `fui-${name}__label`,
-  validationMessage: `fui-${name}__validationMessage`,
-  validationMessageIcon: `fui-${name}__validationMessageIcon`,
-  hint: `fui-${name}__hint`,
-});
+export const fieldClassNames: SlotClassNames<FieldSlots> = {
+  root: `fui-Field`,
+  label: `fui-Field__label`,
+  validationMessage: `fui-Field__validationMessage`,
+  validationMessageIcon: `fui-Field__validationMessageIcon`,
+  hint: `fui-Field__hint`,
+};
 
 // Size of the icon in the validation message
 const iconSize = '12px';
@@ -108,28 +107,23 @@ const useValidationMessageIconStyles = makeStyles({
 /**
  * Apply styling to the Field slots based on the state
  */
-export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldState<T>) => {
-  const classNames = state.classNames;
-  const validationState: FieldProps<FieldControl>['validationState'] = state.validationState;
+export const useFieldStyles_unstable = (state: FieldState) => {
+  const { validationState } = state;
   const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(
-    classNames.root,
+    fieldClassNames.root,
     rootStyles.base,
     horizontal && rootStyles.horizontal,
     horizontal && !state.label && rootStyles.horizontalNoLabel,
     state.root.className,
   );
 
-  if (state.control) {
-    state.control.className = mergeClasses(classNames.control, state.control.className);
-  }
-
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
-      classNames.label,
+      fieldClassNames.label,
       labelStyles.base,
       horizontal && labelStyles.horizontal,
       !horizontal && labelStyles.vertical,
@@ -143,7 +137,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   const validationMessageIconStyles = useValidationMessageIconStyles();
   if (state.validationMessageIcon) {
     state.validationMessageIcon.className = mergeClasses(
-      classNames.validationMessageIcon,
+      fieldClassNames.validationMessageIcon,
       validationMessageIconBaseClassName,
       !!validationState && validationMessageIconStyles[validationState],
       state.validationMessageIcon.className,
@@ -154,7 +148,7 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   const secondaryTextStyles = useSecondaryTextStyles();
   if (state.validationMessage) {
     state.validationMessage.className = mergeClasses(
-      classNames.validationMessage,
+      fieldClassNames.validationMessage,
       secondaryTextBaseClassName,
       validationState === 'error' && secondaryTextStyles.error,
       !!state.validationMessageIcon && secondaryTextStyles.withIcon,
@@ -163,6 +157,6 @@ export const useFieldStyles_unstable = <T extends FieldControl>(state: FieldStat
   }
 
   if (state.hint) {
-    state.hint.className = mergeClasses(classNames.hint, secondaryTextBaseClassName, state.hint.className);
+    state.hint.className = mergeClasses(fieldClassNames.hint, secondaryTextBaseClassName, state.hint.className);
   }
 };
