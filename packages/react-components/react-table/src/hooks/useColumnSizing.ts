@@ -7,7 +7,6 @@ import {
   UseColumnSizingParams,
 } from './types';
 import { useColumnResizeState } from './useColumnResizeState';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import useColumnResizeMouseHandler from './useColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
 import * as React from 'react';
@@ -53,15 +52,12 @@ function useColumnSizingState<TItem>(
   const { columns } = tableState;
   const [tableEl, setTableEl] = React.useState<HTMLElement | null>(null);
 
-  const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
-
   // Gets the container width
   const containerWidth = useMeasureElement(tableEl);
   // Creates the state based on columns and available containerWidth
   const columnResizeState = useColumnResizeState<TItem>(columns, containerWidth, params);
   // Creates the mouse handler and attaches the state to it
-  const mouseHandler = useColumnResizeMouseHandler(columnResizeState, win);
+  const mouseHandler = useColumnResizeMouseHandler(columnResizeState);
 
   return {
     ...tableState,

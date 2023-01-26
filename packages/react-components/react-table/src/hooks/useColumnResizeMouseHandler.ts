@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { TableColumnId, ColumnResizeState } from './types';
-import { useCallback, useRef } from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-export default function useColumnResizeMouseHandler(
-  columnResizeState: ColumnResizeState,
-  globalWin: Window | null | undefined,
-) {
-  const mouseX = useRef(0);
-  const currentWidth = useRef(0);
-  const colId = useRef<TableColumnId | undefined>(undefined);
+export default function useColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
+  const mouseX = React.useRef(0);
+  const currentWidth = React.useRef(0);
+  const colId = React.useRef<TableColumnId | undefined>(undefined);
 
-  const handleMouseMove = useCallback(
+  const { targetDocument } = useFluent();
+  const globalWin = targetDocument?.defaultView;
+
+  const handleMouseMove = React.useCallback(
     (e: MouseEvent) => {
       const dx = e.clientX - mouseX.current;
 
@@ -22,7 +22,7 @@ export default function useColumnResizeMouseHandler(
     [columnResizeState],
   );
 
-  const onMouseMove = useCallback(
+  const onMouseMove = React.useCallback(
     (e: MouseEvent) => {
       // Using requestAnimationFrame here drastically improves resizing experience on slower CPUs
       if (typeof globalWin?.requestAnimationFrame === 'function') {
@@ -34,12 +34,12 @@ export default function useColumnResizeMouseHandler(
     [globalWin?.requestAnimationFrame, handleMouseMove],
   );
 
-  const onMouseUp = useCallback(
+  const onMouseUp = React.useCallback(
     (e: MouseEvent) => {
-      document.removeEventListener('mouseup', onMouseUp);
-      document.removeEventListener('mousemove', onMouseMove);
+      targetDocument?.removeEventListener('mouseup', onMouseUp);
+      targetDocument?.removeEventListener('mousemove', onMouseMove);
     },
-    [onMouseMove],
+    [onMouseMove, targetDocument],
   );
 
   const getOnMouseDown = (columnId: TableColumnId) => (mouseDownEvent: React.MouseEvent<HTMLElement>) => {
@@ -53,8 +53,8 @@ export default function useColumnResizeMouseHandler(
     mouseX.current = mouseDownEvent.clientX;
     colId.current = columnId;
 
-    document.addEventListener('mouseup', onMouseUp);
-    document.addEventListener('mousemove', onMouseMove);
+    targetDocument?.addEventListener('mouseup', onMouseUp);
+    targetDocument?.addEventListener('mousemove', onMouseMove);
   };
 
   return {

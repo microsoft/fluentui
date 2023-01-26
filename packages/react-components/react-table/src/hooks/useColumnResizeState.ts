@@ -1,5 +1,5 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useCallback, useState } from 'react';
+import * as React from 'react';
 import {
   TableColumnDefinition,
   TableColumnId,
@@ -26,7 +26,7 @@ export function useColumnResizeState<T>(
 ): ColumnResizeState {
   const { onColumnResize, columnSizingOptions } = params;
 
-  const [state, setState] = useState<ColumnWidthState[]>(
+  const [state, setState] = React.useState<ColumnWidthState[]>(
     columnDefinitionsToState(columns, undefined, columnSizingOptions),
   );
 
@@ -36,7 +36,7 @@ export function useColumnResizeState<T>(
     setState(adjustColumnWidthsToFitContainer(intermediateState, containerWidth));
   }, [columns, containerWidth, state, columnSizingOptions]);
 
-  const setColumnWidth = useCallback(
+  const setColumnWidth = React.useCallback(
     (columnId: TableColumnId, width: number) => {
       const column = getColumnById(state, columnId);
       let newState = [...state];
@@ -61,7 +61,7 @@ export function useColumnResizeState<T>(
     [containerWidth, state, onColumnResize],
   );
 
-  const setColumnIdealWidth = useCallback(
+  const setColumnIdealWidth = React.useCallback(
     (columnId: TableColumnId, minWidth: number) => {
       setState(setColumnProperty(state, columnId, 'idealWidth', minWidth));
     },

@@ -1,4 +1,4 @@
-import { createRef } from 'react';
+import * as React from 'react';
 import { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
 import {
   TableColumnDefinition,
@@ -43,7 +43,7 @@ export function mockDataGridContext(
     subtleSelection: false,
     selectionAppearance: 'brand',
     columnSizing: defaultColumnSizingState,
-    tableRef: createRef(),
+    tableRef: React.createRef(),
     ...options,
   };
 
