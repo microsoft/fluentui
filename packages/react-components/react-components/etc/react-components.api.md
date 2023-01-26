@@ -181,6 +181,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
+import { IdPrefixProvider } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
@@ -1047,6 +1048,8 @@ export { GriffelRenderer }
 export { GriffelStyle }
 
 export { HorizontalSpacingTokens }
+
+export { IdPrefixProvider }
 
 export { Image_2 as Image }
 
