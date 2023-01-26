@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "feat: Allow default appearance override",
   "packageName": "@fluentui/react-select",
   "email": "miroslav.stastny@microsoft.com",
