@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   TableColumnId,
-  ColumnWidthProps,
   ColumnWidthState,
   TableColumnSizingState,
   TableFeaturesState,
@@ -27,17 +26,15 @@ export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams) 
   return (tableState: TableFeaturesState<TItem>) => useColumnSizingState(tableState, params);
 }
 
-function getColumnProps(column: ColumnWidthState): ColumnWidthProps {
+function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
   const width = column.width;
 
   return {
-    style: {
-      // native styles
-      width,
-      // non-native element styles (flex layout)
-      minWidth: width,
-      maxWidth: width,
-    },
+    // native styles
+    width,
+    // non-native element styles (flex layout)
+    minWidth: width,
+    maxWidth: width,
   };
 }
 
@@ -67,13 +64,8 @@ function useColumnSizingState<TItem>(
       getColumnProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
         const aside = <TableResizeHandle onMouseDown={mouseHandler.getOnMouseDown(columnId)} />;
-        return {
-          ...(col ? getColumnProps(col) : defaultColumnWidthProps),
-          aside,
-        };
+        return col ? { style: getColumnStyles(col), aside } : {};
       },
     },
   };
 }
-
-const defaultColumnWidthProps: ColumnWidthProps = {};

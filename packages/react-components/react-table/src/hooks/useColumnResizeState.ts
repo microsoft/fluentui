@@ -41,9 +41,12 @@ export function useColumnResizeState<T>(
       const column = getColumnById(state, columnId);
       let newState = [...state];
 
-      // Return early if the new width should result in smaller than minimum
-      if (!column || width < column.minWidth) {
+      if (!column) {
         return;
+      }
+
+      if (width < column.minWidth) {
+        width = column.minWidth;
       }
 
       // Adjust the column width and measure the new total width

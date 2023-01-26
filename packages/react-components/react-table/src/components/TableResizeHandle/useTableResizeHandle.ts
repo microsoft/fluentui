@@ -15,7 +15,7 @@ export const useTableResizeHandle_unstable = (
   props: TableResizeHandleProps,
   ref: React.Ref<HTMLElement>,
 ): TableResizeHandleState => {
-  const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+  const onClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     props.onClick?.(event);
     event.stopPropagation();
   });
@@ -26,7 +26,7 @@ export const useTableResizeHandle_unstable = (
     root: getNativeElementProps('div', {
       ref,
       ...props,
-      handleClick,
+      onClick,
     }),
   };
 };
