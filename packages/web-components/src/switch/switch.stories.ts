@@ -30,15 +30,47 @@ export default {
       control: {
         type: 'select',
       },
+      table: {
+        type: {
+          summary: 'Sets the position of label',
+        },
+        defaultValue: {
+          summary: 'after',
+        },
+      },
     },
     checked: {
       control: 'boolean',
+      table: {
+        type: {
+          summary: 'Sets checked state',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
     disabled: {
       control: 'boolean',
+      table: {
+        type: {
+          summary: 'Sets disabled state',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
     required: {
       control: 'boolean',
+      table: {
+        type: {
+          summary: 'Sets required state',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
   },
 } as SwitchStoryMeta;
