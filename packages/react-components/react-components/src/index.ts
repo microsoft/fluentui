@@ -90,6 +90,7 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getSlots,
+  IdPrefixProvider,
   resetIdsForTests,
   resolveShorthand,
   SSRProvider,
