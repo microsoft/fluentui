@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Deprecate CheckboxField_unstable in favor of Field with Checkbox as its child.",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
