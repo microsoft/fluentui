@@ -50,13 +50,14 @@ function useColumnSizingState<TItem>(
   tableState: TableFeaturesState<TItem>,
   params?: UseColumnSizingParams,
 ): TableFeaturesState<TItem> {
-  const { columns, tableRef } = tableState;
+  const { columns } = tableState;
+  const [tableEl, setTableEl] = React.useState<HTMLElement | null>(null);
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 
   // Gets the container width
-  const containerWidth = useMeasureElement(tableRef);
+  const containerWidth = useMeasureElement(tableEl);
   // Creates the state based on columns and available containerWidth
   const columnResizeState = useColumnResizeState<TItem>(columns, containerWidth, params);
   // Creates the mouse handler and attaches the state to it
@@ -64,6 +65,7 @@ function useColumnSizingState<TItem>(
 
   return {
     ...tableState,
+    tableRef: setTableEl,
     columnSizing: {
       getOnMouseDown: (columnId: TableColumnId) => mouseHandler.getOnMouseDown(columnId),
       getColumnWidth: (columnId: TableColumnId) => columnResizeState.getColumnWidth(columnId),

@@ -16,44 +16,50 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  * @param el element to measure and report width on
  * @returns
  */
-export function useMeasureElement(el: React.RefObject<HTMLElement>) {
+export function useMeasureElement(el: HTMLElement | null) {
   const [width, setWidth] = useState(0);
   const container = useRef<HTMLElement | null>(null);
-  const { current: currentContainer } = container;
 
   // the handler for resize observer
-  const _handleResize = useCallback(() => {
+  const handleResize = useCallback(() => {
     const w = container.current?.getBoundingClientRect().width;
     setWidth(w || 0);
-  }, [container, setWidth]);
+  }, []);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = useState(canUseDOM() ? new ResizeObserver(_handleResize) : undefined);
+  const [resizeObserver] = useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
 
   // After the ResizeObserver is created or the currentContainer reference has been changed(created),
   // update the observer
   React.useEffect(() => {
-    currentContainer && resizeObserver?.observe(currentContainer);
-    return () => resizeObserver?.disconnect();
-  }, [resizeObserver, currentContainer]);
+    if (el && resizeObserver) {
+      // If the refs changed, clean up the previous measuring element and resizeObserver listener
+      if (container.current) {
+        container.current.remove();
+      }
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
 
-  useEffect(() => {
-    container.current = document.createElement('div');
-    el.current?.insertAdjacentElement('beforebegin', container.current);
-  }, [el]);
+      container.current = document.createElement('div');
+      el.insertAdjacentElement('beforebegin', container.current);
+      resizeObserver?.observe(container.current);
+      handleResize();
+    }
+    return () => {
+      container.current?.remove();
+      container.current = null;
+      resizeObserver?.disconnect();
+    };
+  }, [el, handleResize, resizeObserver]);
 
   // Update the element width based on the measuring container width
   useEffect(() => {
-    el.current &&
-      Object.assign(el.current.style, {
+    el &&
+      Object.assign(el.style, {
         width: `${width}px`,
       });
   }, [el, width]);
-
-  React.useEffect(() => {
-    const w = container.current?.getBoundingClientRect().width;
-    setWidth(w || 0);
-  }, [container]);
 
   return width;
 }

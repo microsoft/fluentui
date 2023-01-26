@@ -42,7 +42,7 @@ export function useTableFeatures<TItem>(
     selection: defaultTableSelectionState,
     sort: defaultTableSortState as TableSortState<TItem>,
     columnSizing: defaultColumnSizingState,
-    tableRef: React.useRef(null),
+    tableRef: React.createRef(),
   };
 
   return plugins.reduce((state, plugin) => plugin(state), initialState);

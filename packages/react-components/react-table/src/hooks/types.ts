@@ -134,7 +134,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
 
   columnSizing: TableColumnSizingState;
 
-  tableRef: React.RefObject<HTMLDivElement>;
+  tableRef: React.Ref<HTMLDivElement>;
 }
 
 export interface UseTableSortOptions {
