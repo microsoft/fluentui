@@ -25,12 +25,20 @@ const dividerTemplate = html<DividerStoryArgs>`
 `;
 
 const dividerSvgTemplate = html<DividerStoryArgs>`
+  <div style="border: 30px solid #ccc; height: 9em; display: flex; flex-direction: column; justify-content: center;">
+    <fluent-divider align-content="start" appearance="brand" role="presentation" orientation="horizontal">
+      <img width="20" height="20" src=${SampleIcon} />
+    </fluent-divider>
+  </div>
+`;
+
+const dividerSvgVerticalTemplate = html<DividerStoryArgs>`
   <fluent-divider
     align-content=${x => x.alignContent}
     appearance=${x => x.appearance}
     role=${x => x.role}
     ?inset=${x => x.inset}
-    orientation=${x => x.orientation}
+    orientation="vertical"
   >
     <img width="20" height="20" src=${SampleIcon} />
   </fluent-divider>
@@ -128,3 +136,4 @@ export default {
 
 export const Divider = renderComponent(dividerTemplate).bind({});
 export const DividerWithSvg = renderComponent(dividerSvgTemplate).bind({});
+export const VerticalDividerWithSvg = renderComponent(dividerSvgVerticalTemplate).bind({});
