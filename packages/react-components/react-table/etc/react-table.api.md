@@ -350,13 +350,11 @@ export type TableContextValue = {
     size: 'extra-small' | 'small' | 'medium';
     noNativeElements: boolean;
     sortable: boolean;
-    columnSizingState?: TableColumnSizingState;
 };
 
 // @public (undocumented)
 export type TableContextValues = {
     table: TableContextValue;
-    columnSizingState?: TableColumnSizingState;
 };
 
 // @public (undocumented)
@@ -371,7 +369,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
     // (undocumented)
-    tableRef: React_2.RefObject<HTMLDivElement>;
+    tableRef: React_2.Ref<HTMLDivElement>;
 }
 
 // @public
@@ -387,7 +385,7 @@ export const tableHeaderCellClassName = "fui-TableHeaderCell";
 export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
-export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & Pick<ColumnWidthProps, 'resizeHandleMouseDown'> & {
     sortDirection?: SortDirection;
     columnId?: TableColumnId;
 };

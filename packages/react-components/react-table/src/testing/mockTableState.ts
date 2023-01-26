@@ -1,4 +1,4 @@
-import { createRef } from 'react';
+import * as React from 'react';
 import { TableFeaturesState, TableSortState, defaultColumnSizingState } from '../hooks';
 import { defaultTableSelectionState, defaultTableSortState } from '../hooks';
 
@@ -10,7 +10,7 @@ export const mockTableState = <TItem = unknown>(options: Partial<TableFeaturesSt
     selection: defaultTableSelectionState,
     sort: defaultTableSortState as TableSortState<TItem>,
     columnSizing: defaultColumnSizingState,
-    tableRef: createRef(),
+    tableRef: React.createRef(),
     ...options,
   };
 
