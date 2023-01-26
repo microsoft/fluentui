@@ -69,11 +69,11 @@ export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<Fi
 
 // @internal @deprecated (undocumented)
 export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
-    validationMessageIcon: string;
     control: string;
     root: string;
     label: string;
     validationMessage: string;
+    validationMessageIcon: string;
     hint: string;
 };
 
