@@ -12,41 +12,36 @@ import {
 } from '@fluentui/react-components/unstable';
 import * as React from 'react';
 
-type Item = {
-  first: number;
-  second: number;
-  third: number;
-  fourth: number;
-};
+type Item = number;
 
 const columns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'first',
     compare: (a, b) => {
-      return a.first - b.first;
+      return a - b;
     },
   }),
   createTableColumn<Item>({
     columnId: 'second',
     compare: (a, b) => {
-      return a.second - b.second;
+      return a - b;
     },
   }),
   createTableColumn<Item>({
     columnId: 'third',
     compare: (a, b) => {
-      return a.third - b.third;
+      return a - b;
     },
   }),
   createTableColumn<Item>({
     columnId: 'fourth',
     compare: (a, b) => {
-      return a.fourth - b.fourth;
+      return a - b;
     },
   }),
 ];
 
-const items: Item[] = new Array(10).fill(0).map((_, i) => ({ first: i, second: i, third: i, fourth: i }));
+const items: Item[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const CustomHandle: React.FC<{ onMouseDown: React.MouseEventHandler }> = ({ onMouseDown }) => {
   return (
@@ -75,11 +70,10 @@ export const ResizableFlex = () => {
           <TableRow>
             <TableHeaderCell
               {...columnSizing.getColumnProps('first')}
-              resizeHandle={<CustomHandle onMouseDown={columnSizing.getOnMouseDown('first')} />}
+              aside={<CustomHandle onMouseDown={columnSizing.getOnMouseDown('first')} />}
             >
               Octopus' column
             </TableHeaderCell>
-
             <TableHeaderCell {...columnSizing.getColumnProps('second')}>Second</TableHeaderCell>
             <TableHeaderCell {...columnSizing.getColumnProps('third')}>Third</TableHeaderCell>
             <TableHeaderCell {...columnSizing.getColumnProps('fourth')}>Fourth</TableHeaderCell>
@@ -88,10 +82,10 @@ export const ResizableFlex = () => {
         <TableBody>
           {getRows().map(({ item }, i) => (
             <TableRow key={i}>
-              <TableCell {...columnSizing.getColumnProps('first')}>{item.first}</TableCell>
-              <TableCell {...columnSizing.getColumnProps('second')}>{item.second}</TableCell>
-              <TableCell {...columnSizing.getColumnProps('third')}>{item.third}</TableCell>
-              <TableCell {...columnSizing.getColumnProps('fourth')}>{item.fourth}</TableCell>
+              <TableCell {...columnSizing.getColumnProps('first')}>{item}</TableCell>
+              <TableCell {...columnSizing.getColumnProps('second')}>{item}</TableCell>
+              <TableCell {...columnSizing.getColumnProps('third')}>{item}</TableCell>
+              <TableCell {...columnSizing.getColumnProps('fourth')}>{item}</TableCell>
             </TableRow>
           ))}
         </TableBody>

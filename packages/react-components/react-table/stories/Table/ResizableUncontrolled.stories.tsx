@@ -75,7 +75,7 @@ export const ResizableUncontrolled = () => {
           <TableRow>
             <TableHeaderCell
               {...columnSizing.getColumnProps('first')}
-              resizeHandle={<CustomHandle onMouseDown={columnSizing.getOnMouseDown('first')} />}
+              aside={<CustomHandle onMouseDown={columnSizing.getOnMouseDown('first')} />}
             >
               Octopus' column
             </TableHeaderCell>

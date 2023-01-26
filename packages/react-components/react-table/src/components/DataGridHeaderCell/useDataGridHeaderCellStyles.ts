@@ -7,7 +7,7 @@ export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlot
   root: 'fui-DataGridHeaderCell',
   button: 'fui-DataGridHeaderCell__button',
   sortIcon: 'fui-DataGridHeaderCell__sortIcon',
-  resizeHandle: 'fui-DataGridHeaderCell__resizeHandle',
+  aside: 'fui-DataGridHeaderCell__aside',
 };
 
 /**
@@ -25,11 +25,8 @@ export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellSt
     state.sortIcon.className = mergeClasses(dataGridHeaderCellClassNames.sortIcon, state.sortIcon.className);
   }
 
-  if (state.resizeHandle) {
-    state.resizeHandle.className = mergeClasses(
-      dataGridHeaderCellClassNames.resizeHandle,
-      state.resizeHandle.className,
-    );
+  if (state.aside) {
+    state.aside.className = mergeClasses(dataGridHeaderCellClassNames.aside, state.aside.className);
   }
 
   return state;

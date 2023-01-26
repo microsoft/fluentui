@@ -9,7 +9,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
   root: 'fui-TableHeaderCell',
   button: 'fui-TableHeaderCell__button',
   sortIcon: 'fui-TableHeaderCell__sortIcon',
-  resizeHandle: 'fui-TableHeaderCell__resizeHandle',
+  aside: 'fui-TableHeaderCell__aside',
 };
 
 const useTableLayoutStyles = makeStyles({
@@ -125,12 +125,8 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     );
   }
 
-  if (state.resizeHandle) {
-    state.resizeHandle.className = mergeClasses(
-      tableHeaderCellClassNames.resizeHandle,
-      styles.resizeHandle,
-      state.resizeHandle.className,
-    );
+  if (state.aside) {
+    state.aside.className = mergeClasses(tableHeaderCellClassNames.aside, styles.resizeHandle, state.aside.className);
   }
 
   return state;

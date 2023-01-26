@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
+import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;
@@ -187,11 +188,7 @@ export interface ColumnWidthState {
   padding: number;
 }
 
-export interface ColumnWidthProps {
-  style?: React.CSSProperties;
-  columnId?: TableColumnId;
-  resizeHandleMouseDown?: (mouseDownEvent: React.MouseEvent<HTMLElement>) => void;
-}
+export type ColumnWidthProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 
 export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent<HTMLElement>) => void;

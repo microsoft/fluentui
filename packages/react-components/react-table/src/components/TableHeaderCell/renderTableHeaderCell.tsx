@@ -14,7 +14,7 @@ export const renderTableHeaderCell_unstable = (state: TableHeaderCellState) => {
         {slotProps.root.children}
         {slots.sortIcon && <slots.sortIcon {...slotProps.sortIcon} />}
       </slots.button>
-      {slots.resizeHandle && <slots.resizeHandle {...slotProps.resizeHandle} />}
+      {slots.aside && <slots.aside {...slotProps.aside} />}
     </slots.root>
   );
 };

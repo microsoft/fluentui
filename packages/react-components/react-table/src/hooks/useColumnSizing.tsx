@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   TableColumnId,
   ColumnWidthProps,
@@ -9,7 +10,7 @@ import {
 import { useColumnResizeState } from './useColumnResizeState';
 import useColumnResizeMouseHandler from './useColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
-import * as React from 'react';
+import { TableResizeHandle } from '../TableResizeHandle';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidth: () => 0,
@@ -26,15 +27,10 @@ export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams) 
   return (tableState: TableFeaturesState<TItem>) => useColumnSizingState(tableState, params);
 }
 
-function getColumnProps(
-  column: ColumnWidthState,
-  resizeHandleMouseDown: (mouseDownEvent: React.MouseEvent<HTMLElement>) => void,
-): ColumnWidthProps {
+function getColumnProps(column: ColumnWidthState): ColumnWidthProps {
   const width = column.width;
 
   return {
-    resizeHandleMouseDown,
-    columnId: column.columnId,
     style: {
       // native styles
       width,
@@ -70,9 +66,14 @@ function useColumnSizingState<TItem>(
       getColumnWidths: () => columnResizeState.getColumns(),
       getColumnProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
-        const handler = mouseHandler.getOnMouseDown(columnId);
-        return col ? getColumnProps(col, handler) : { columnId };
+        const aside = <TableResizeHandle onMouseDown={mouseHandler.getOnMouseDown(columnId)} />;
+        return {
+          ...(col ? getColumnProps(col) : defaultColumnWidthProps),
+          aside,
+        };
       },
     },
   };
 }
+
+const defaultColumnWidthProps: ColumnWidthProps = {};

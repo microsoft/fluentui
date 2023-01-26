@@ -218,6 +218,9 @@ export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Elemen
 export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
 
 // @public
+export const renderTableResizeHandle_unstable: (state: TableResizeHandleState) => JSX.Element;
+
+// @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
 
 // @public
@@ -395,7 +398,7 @@ export type TableHeaderCellSlots = {
     root: Slot<'th', 'div'>;
     sortIcon: Slot<'span'>;
     button: NonNullable<Slot<ARIAButtonSlotProps>>;
-    resizeHandle: Slot<'div'>;
+    aside: Slot<'span'>;
 };
 
 // @public
@@ -420,6 +423,23 @@ export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableCont
 
 // @public
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
+
+// @public
+export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
+
+// @public (undocumented)
+export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
+
+// @public
+export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
+
+// @public (undocumented)
+export type TableResizeHandleSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TableResizeHandleState = ComponentState<TableResizeHandleSlots>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
@@ -612,6 +632,12 @@ export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) =>
 
 // @public
 export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHeaderState;
+
+// @public
+export const useTableResizeHandle_unstable: (props: TableResizeHandleProps, ref: React_2.Ref<HTMLElement>) => TableResizeHandleState;
+
+// @public
+export const useTableResizeHandleStyles_unstable: (state: TableResizeHandleState) => TableResizeHandleState;
 
 // @public
 export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;
