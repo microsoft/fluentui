@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { TreeItemContextValue } from '../../contexts';
 import type { ButtonContextValue } from '@fluentui/react-button';
+import type { TreeItemContextValue } from '../../contexts';
 
 export type TreeItemSlots = {
   root: Slot<'div'>;
