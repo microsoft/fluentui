@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 07:35:31 GMT",
+      "tag": "@fluentui/react_v8.104.7",
+      "version": "8.104.7",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7d349735c9143bd031c57caf5af0b1c0b7943c0b",
+            "comment": "chore: update ComboBox & Dropdown docs to explicitly prohibit nested interactive content"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "30c81d09f4a447f7750e07898caf9c762e3c2395",
+            "comment": "Fix: add relative position to BasePicker to fix absolute position child bug"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 07:42:13 GMT",
       "tag": "@fluentui/react_v8.104.6",
       "version": "8.104.6",

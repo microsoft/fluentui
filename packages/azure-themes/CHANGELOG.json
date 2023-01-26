@@ -2,6 +2,27 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 07:35:31 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.48",
+      "version": "8.5.48",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "2fe537e268140f5b18bf0f53ef23d93f6f1ad940",
+            "comment": "Fixing CSS selector from previous PR, the style of spin button is unchanged\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.7",
+            "commit": "175abf247751c2ababcc8deef8b4479c648ea2dd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Jan 2023 07:51:03 GMT",
       "tag": "@fluentui/azure-themes_v8.5.47",
       "version": "8.5.47",

@@ -25,6 +25,15 @@ Wed, 25 Jan 2023 14:49:08 GMT
 - add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
 - add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
 
+## [2.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.12)
+
+Thu, 26 Jan 2023 07:35:32 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.11..@fluentui/web-components_v2.5.12)
+
+### Patches
+
+- feat: bump tslib to 2.1 to align with rest of monorepo packages ([PR #26457](https://github.com/microsoft/fluentui/pull/26457) by martinhochel@microsoft.com)
+
 ## [2.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.11)
 
 Wed, 11 Jan 2023 07:50:49 GMT
