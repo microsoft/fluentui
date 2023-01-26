@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Add FieldMessage component for displaying the hint and validationMessage",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
