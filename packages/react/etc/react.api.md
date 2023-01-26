@@ -1317,6 +1317,10 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     // (undocumented)
     forceUpdate(): void;
     // (undocumented)
+    getCurrentColumnWidths(): {
+        [columnKey: string]: number | undefined;
+    };
+    // (undocumented)
     static getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
     // (undocumented)
     getStartItemIndexInView(): number;
