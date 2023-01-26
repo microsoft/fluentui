@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update multiselect checkbox styles to match checkbox",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
