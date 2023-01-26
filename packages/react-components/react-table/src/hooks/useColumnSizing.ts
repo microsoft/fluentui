@@ -7,7 +7,7 @@ import {
   UseColumnSizingParams,
 } from './types';
 import { useColumnResizeState } from './useColumnResizeState';
-import { useFluent } from '../../../react-shared-contexts/src/ProviderContext';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import useColumnResizeMouseHandler from './useColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
 
