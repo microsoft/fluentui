@@ -23,11 +23,7 @@ import {
   fontSizeBase300,
   fontWeightSemibold,
   lineHeightBase300,
-  spacingHorizontalM,
-  spacingHorizontalMNudge,
   spacingHorizontalS,
-  spacingHorizontalXXS,
-  spacingVerticalMNudge,
   spacingVerticalS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
@@ -159,7 +155,6 @@ export const styles = css`
   :host([aria-checked='true'][disabled]) .switch .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-
   .unchecked-message {
     display: block;
   }
