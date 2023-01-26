@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix: add relative position to BasePicker to fix absolute position child bug",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
