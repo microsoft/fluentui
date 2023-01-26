@@ -22,12 +22,18 @@ export const styles = css`
     display: flex;
   }
 
-  :host span {
+  :host::after,
+  :host::before {
+    align-self: center;
+    background: ${colorNeutralStroke2};
+    box-sizing: border-box;
+    content: '';
     display: flex;
-    width: 100%;
+    flex-grow: 1;
+    height: ${strokeWidthThin};
   }
 
-  :host([inset]) span {
+  :host([inset]) {
     padding: 0 12px;
   }
 
@@ -40,8 +46,8 @@ export const styles = css`
     padding: 0 12px;
   }
 
-  :host([align-content='start']) span::before,
-  :host([align-content='end']) span::after {
+  :host([align-content='start'])::before,
+  :host([align-content='end'])::after {
     flex-basis: 12px;
     flex-grow: 0;
     flex-shrink: 0;
@@ -55,20 +61,27 @@ export const styles = css`
     min-height: 20px;
   }
 
-  :host([orientation='vertical']) span {
+  :host([orientation='vertical']) {
     flex-direction: column;
     align-items: center;
   }
 
-  :host([orientation='vertical'][inset]) span {
+  :host([orientation='vertical'][inset]) {
     padding: 12px 0;
   }
 
-  :host([orientation='vertical'][empty]) span::before,
-  :host([orientation='vertical'][empty]) span::after {
+  :host([orientation='vertical'][empty])::before,
+  :host([orientation='vertical'][empty])::after {
     height: 10px;
     min-height: 10px;
     flex-grow: 0;
+  }
+
+  :host([orientation='vertical'])::before,
+  :host([orientation='vertical'])::after {
+    width: ${strokeWidthThin};
+    min-height: 20px;
+    height: 100%;
   }
 
   :host([orientation='vertical']) ::slotted(*) {
@@ -78,45 +91,29 @@ export const styles = css`
     line-height: 20px;
   }
 
-  span::after,
-  span::before {
-    align-self: center;
-    background: ${colorNeutralStroke2};
-    content: '';
-    flex-grow: 1;
-    height: ${strokeWidthThin};
-  }
-
-  :host([orientation='vertical']) span::before,
-  :host([orientation='vertical']) span::after {
-    width: ${strokeWidthThin};
-    min-height: 20px;
-    height: 100%;
-  }
-
-  :host([orientation='vertical'][align-content='start']) span::before {
+  :host([orientation='vertical'][align-content='start'])::before {
     min-height: 8px;
   }
-  :host([orientation='vertical'][align-content='end']) span::after {
+  :host([orientation='vertical'][align-content='end'])::after {
     min-height: 8px;
   }
 
-  :host([appearance='strong']) span::before,
-  :host([appearance='strong']) span::after {
+  :host([appearance='strong'])::before,
+  :host([appearance='strong'])::after {
     background: ${colorNeutralStroke1};
   }
   :host([appearance='strong']) ::slotted(*) {
     color: ${colorNeutralForeground1};
   }
-  :host([appearance='brand']) span::before,
-  :host([appearance='brand']) span::after {
+  :host([appearance='brand'])::before,
+  :host([appearance='brand'])::after {
     background: ${colorBrandStroke1};
   }
   :host([appearance='brand']) ::slotted(*) {
     color: ${colorBrandForeground1};
   }
-  :host([appearance='subtle']) span::before,
-  :host([appearance='subtle']) span::after {
+  :host([appearance='subtle'])::before,
+  :host([appearance='subtle'])::after {
     background: ${colorNeutralStroke3};
   }
   :host([appearance='subtle']) ::slotted(*) {
