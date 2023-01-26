@@ -96,6 +96,11 @@ import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
+import { FieldMessage } from '@fluentui/react-field';
+import { fieldMessageClassNames } from '@fluentui/react-field';
+import { FieldMessageProps } from '@fluentui/react-field';
+import { FieldMessageSlots } from '@fluentui/react-field';
+import { FieldMessageState } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
@@ -151,6 +156,7 @@ import { renderDataGridRow_unstable } from '@fluentui/react-table';
 import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderField_unstable } from '@fluentui/react-field';
+import { renderFieldMessage_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
@@ -281,6 +287,8 @@ import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useField_unstable } from '@fluentui/react-field';
+import { useFieldMessage_unstable } from '@fluentui/react-field';
+import { useFieldMessageStyles_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
@@ -513,6 +521,16 @@ export { Field }
 
 export { fieldClassNames }
 
+export { FieldMessage }
+
+export { fieldMessageClassNames }
+
+export { FieldMessageProps }
+
+export { FieldMessageSlots }
+
+export { FieldMessageState }
+
 export { FieldProps }
 
 export { FieldSlots }
@@ -622,6 +640,8 @@ export { renderDataGridSelectionCell_unstable }
 export { renderDropdown_unstable }
 
 export { renderField_unstable }
+
+export { renderFieldMessage_unstable }
 
 export { renderInfoButton_unstable }
 
@@ -882,6 +902,10 @@ export { useDropdown_unstable }
 export { useDropdownStyles_unstable }
 
 export { useField_unstable }
+
+export { useFieldMessage_unstable }
+
+export { useFieldMessageStyles_unstable }
 
 export { useFieldStyles_unstable }
 
