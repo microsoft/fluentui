@@ -8,6 +8,7 @@
 
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
+import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -110,9 +111,11 @@ export type TreeItemSlots = {
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue & {
+export type TreeItemState = ComponentState<TreeItemSlots> & {
     open: boolean;
     isLeaf: boolean;
+    buttonSize: 'small';
+    isActionsVisible: boolean;
 };
 
 // @public (undocumented)
