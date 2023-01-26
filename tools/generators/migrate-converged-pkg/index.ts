@@ -141,6 +141,8 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   updateNxWorkspace(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
+
+  setupSwcConfig(tree, options);
 }
 
 // ==== helpers ====
@@ -388,6 +390,33 @@ const templates = {
     .git*
     .prettierignore
   ` + os.EOL,
+  swcConfig: () => {
+    return {
+      $schema: 'https://json.schemastore.org/swcrc',
+      env: { targets: { chrome: '84', edge: '84', firefox: '75', opera: '73', safari: '14.1' } },
+      exclude: [
+        '/testing',
+        '/**/*.cy.ts',
+        '/**/*.cy.tsx',
+        '/**/*.spec.ts',
+        '/**/*.spec.tsx',
+        '/**/*.test.ts',
+        '/**/*.test.tsx',
+      ],
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          tsx: true,
+          decorators: false,
+          dynamicImport: false,
+        },
+        target: 'es2019',
+        externalHelpers: true,
+      },
+      minify: false,
+      sourceMaps: true,
+    };
+  },
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -552,6 +581,13 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
+function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
+  const swcConfig = templates.swcConfig();
+  writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
+
+  return tree;
+}
+
 interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
   tsconfigs: ReturnType<typeof updatedLocalTsConfig>['configs'];
 }
@@ -628,6 +664,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   packageJson = setupScripts(packageJson);
   packageJson = setupExportMaps(packageJson);
+  packageJson = addSwcHelpers(packageJson);
 
   writeJson(tree, options.paths.packageJson, packageJson);
 
@@ -672,6 +709,12 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       return './' + path.normalize(entryPath);
     }
   }
+}
+
+//TODO: remove after migration to swc transpilation is complete
+function addSwcHelpers(json: PackageJson) {
+  json.dependencies = { ...json.dependencies, '@swc/core': '^1.3.24', '@swc/helpers': '^0.4.11' };
+  return json;
 }
 
 function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
