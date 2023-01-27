@@ -38,11 +38,14 @@ export const styles = css`
     outline: none;
     user-select: none;
   }
-  :host([label-position='before']) {
+  :host {
     flex-direction: row-reverse;
   }
+  :host([label-position='before']) {
+    flex-direction: row;
+  }
   :host([label-position='above']) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-start;
   }
   :host([disabled]) .label,
@@ -51,7 +54,7 @@ export const styles = css`
   :host([disabled]) .switch {
     cursor: not-allowed;
   }
-  :host .status-message {
+  :host .label {
     color: ${colorNeutralForeground1};
     line-height: ${lineHeightBase300};
     font-size: ${fontSizeBase300};

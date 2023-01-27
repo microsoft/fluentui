@@ -16,8 +16,7 @@ const storyTemplate = html<SwitchStoryArgs>`
       ?required=${x => x.required}
       label-position=${x => x.labelPosition}
     >
-      <div slot="checked-message">Checked</div>
-      <div slot="unchecked-message">Unchecked</div>
+      This is a switch
     </fluent-switch>
   </div>
 `;
