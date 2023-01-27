@@ -867,8 +867,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  public getColumnOverrides(): { [key: string]: IColumn } {
-    return this._columnOverrides;
+  public getColumns(): IColumn[] {
+    return this.state.adjustedColumns;
   }
 
   public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {

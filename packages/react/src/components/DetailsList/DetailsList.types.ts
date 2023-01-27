@@ -58,9 +58,9 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 
   /**
-   * Returns the current state of column overrides
+   * Returns the current state of adjusted columns
    */
-  getColumnOverrides(): { [key: string]: IColumn };
+  getColumns(): IColumn[];
 
   /**
    * Use to programatically resize and/or reorder columns in the DetailsList.
