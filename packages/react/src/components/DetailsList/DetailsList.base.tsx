@@ -867,13 +867,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  public getCurrentColumnWidths(): { [columnKey: string]: number | undefined } {
-    const columnWidths: { [columnKey: string]: number | undefined } = {};
-
-    for (const key in this._columnOverrides) {
-      columnWidths[key] = this._columnOverrides[key].currentWidth;
-    }
-    return columnWidths;
+  /** Returns current state of adjusted columns */
+  public getColumns(): IColumn[] {
+    return this.state.adjustedColumns;
   }
 
   public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {

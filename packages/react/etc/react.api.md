@@ -1316,10 +1316,7 @@ export class DetailsListBase extends React_2.Component<IDetailsListProps, IDetai
     focusIndex(index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     forceUpdate(): void;
-    // (undocumented)
-    getCurrentColumnWidths(): {
-        [columnKey: string]: number | undefined;
-    };
+    getColumns(): IColumn[];
     // (undocumented)
     static getDerivedStateFromProps(nextProps: IDetailsListProps, previousState: IDetailsListState): IDetailsListState;
     // (undocumented)
