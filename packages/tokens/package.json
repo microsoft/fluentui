@@ -28,7 +28,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@swc/core": "^1.3.24",
+    "@swc/helpers": "^0.4.11"
   },
   "beachball": {
     "disallowedChangeTypes": [

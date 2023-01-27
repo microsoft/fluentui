@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "env": {
+    "targets": {
+      "chrome": "84",
+      "edge": "84",
+      "firefox": "75",
+      "opera": "73",
+      "safari": "14.1"
+    }
+  },
+  "exclude": [
+    "/testing",
+    "/**/*.cy.ts",
+    "/**/*.cy.tsx",
+    "/**/*.spec.ts",
+    "/**/*.spec.tsx",
+    "/**/*.test.ts",
+    "/**/*.test.tsx"
+  ],
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": false
+    },
+    "target": "es2019",
+    "externalHelpers": true
+  },
+  "minify": false,
+  "sourceMaps": true
+}
