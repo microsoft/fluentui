@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2023 07:37:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.0)
+
+Fri, 27 Jan 2023 07:37:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.8.5..@fluentui/style-utilities_v8.9.0)
+
+### Minor changes
+
+- feat(getFocusStyle): Optionally tweak pointer-events on the focus ring ([PR #25088](https://github.com/microsoft/fluentui/pull/25088) by miroslav.stastny@microsoft.com)
 
 ## [8.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.8.5)
 
