@@ -17,7 +17,6 @@ const dividerTemplate = html<DividerStoryArgs>`
       role=${x => x.role}
       ?inset=${x => x.inset}
       orientation=${x => x.orientation}
-      empty=${x => (x.content ? null : '')}
     >
       ${x => (x.content ? html`<h3>${x.content}</h3>` : '')}
     </fluent-divider>
