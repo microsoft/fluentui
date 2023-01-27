@@ -78,15 +78,35 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * Callback for when the user changes the pending value in ComboBox.
-   * This will be called any time the component is updated and there is a current
-   * pending value. Option, index, and value will all be undefined if no change
-   * has taken place and the previously entered pending value is still valid.
+   * Called when the user changes the pending value in ComboBox, either by typing in the
+   * input or hovering over options. When typing, the behavior varies depending on `autoComplete`
+   * and `allowFreeform` settings.
+   *
+   * In all cases, when the pending value is reset, all parameters will be undefined.
+   *
+   * When hovering options: `option` and `index` will be provided, and `value` will be undefined.
+   *
+   * Typing with `allowFreeform` on: If there's an option matching the input (an exact match if
+   * `autoComplete` is off, or a prefix match otherwise), `option` and `index` are provided and
+   * `value` is undefined. Otherwise only `value` is provided.
+   *
+   * Typing with `allowFreeform` off (or unspecified): If `autoComplete` is on (or unspecified),
+   * and the user types text matching the start of an option within a timeout, `option` and `index`
+   * are provided and `value` is undefined. If `autoComplete` is off, typing does nothing.
+   *
+   * If you simply want to be notified of raw text input, use the prop `onInputValueChange`.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * Callback for when the ComboBox menu is launched.
+   * Called when the user types in to the input of the combo box
+   *
+   * Ideal if you want to be notified of raw text input
+   */
+  onInputValueChange?: (text: string) => void;
+
+  /**
+   * Called when the ComboBox menu is launched.
    */
   onMenuOpen?: () => void;
 

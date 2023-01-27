@@ -738,6 +738,10 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       return;
     }
 
+    if (this.props.onInputValueChange) {
+      this.props.onInputValueChange(updatedValue);
+    }
+
     this.props.allowFreeform
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);

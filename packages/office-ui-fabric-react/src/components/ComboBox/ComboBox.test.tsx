@@ -621,6 +621,28 @@ describe('ComboBox', () => {
     expect(changedValue).toEqual('');
   });
 
+  it('onInputValueChange is called whenever the input changes', () => {
+    let changedValue: string | undefined = undefined;
+    const onInputValueChangeHandler = (value: string) => {
+      changedValue = value;
+    };
+
+    wrapper = mount(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform onInputValueChange={onInputValueChangeHandler} />,
+    );
+
+    // Simulate typing one character into the ComboBox input
+    const input = wrapper.find('input');
+    input.simulate('input', { target: { value: 'a' } });
+    expect(changedValue).toEqual('a');
+
+    // Simulate clearing the ComboBox input
+    // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
+    (input.getDOMNode() as HTMLInputElement).value = '';
+    input.simulate('input', { target: { value: '' } });
+    expect(changedValue).toEqual('');
+  });
+
   it('suggestedDisplayValue is called undefined when the selected input is cleared', () => {
     const componentRef = React.createRef<any>();
     wrapper = mount(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} componentRef={componentRef} />);

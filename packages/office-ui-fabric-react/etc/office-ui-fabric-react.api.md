@@ -3198,6 +3198,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     keytipProps?: IKeytipProps;
     multiSelectDelimiter?: string;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+    onInputValueChange?: (text: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
