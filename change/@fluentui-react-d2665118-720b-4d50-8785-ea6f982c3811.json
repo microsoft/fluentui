@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "DetailsList: Add method getColumns",
+  "comment": "DetailsList: Add method getColumnOverrides",
   "packageName": "@fluentui/react",
   "email": "erabelle@microsoft.com",
   "dependentChangeType": "patch"
