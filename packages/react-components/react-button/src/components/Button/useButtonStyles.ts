@@ -12,8 +12,7 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
-const buttonSpacingSmall = '3px';
-const buttonSpacingSmallWithIcon = '1px';
+const buttonSpacingSmall = '1px';
 
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
@@ -229,9 +228,6 @@ const useRootStyles = makeStyles({
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
   },
-  smallWithIcon: {
-    ...shorthands.padding(buttonSpacingSmallWithIcon, tokens.spacingHorizontalS),
-  },
   medium: {
     /* defined in base styles */
   },
@@ -399,7 +395,7 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacingSmallWithIcon),
+    ...shorthands.padding(buttonSpacingSmall),
 
     minWidth: '24px',
     maxWidth: '24px',
@@ -457,7 +453,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -466,7 +462,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     appearance && rootStyles[appearance],
 
     rootStyles[size],
-    icon && size === 'small' && rootStyles.smallWithIcon,
     rootStyles[shape],
 
     // Disabled styles
