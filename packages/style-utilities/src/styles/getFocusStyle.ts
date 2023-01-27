@@ -101,7 +101,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
         border: `${width}px solid ${borderColor}`,
         outline: `${width}px solid ${outlineColor}`,
         zIndex: ZIndexes.FocusStyle,
-        borderRadius,
+        borderRadius: borderRadius,
         selectors: {
           [HighContrastSelector]: highContrastStyle,
         },
