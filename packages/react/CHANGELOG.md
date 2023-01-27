@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2023 12:23:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.204.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.204.0)
+
+Fri, 27 Jan 2023 12:23:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.203.0..@fluentui/react_v7.204.0)
+
+### Minor changes
+
+- ComboBox: Add callback to listen to raw text input ([PR #26525](https://github.com/microsoft/fluentui/pull/26525) by dennisgeorge.mec@gmail.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.204.0 ([PR #26525](https://github.com/microsoft/fluentui/pull/26525) by seanmonahan@microsoft.com)
 
 ## [7.203.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.203.0)
 

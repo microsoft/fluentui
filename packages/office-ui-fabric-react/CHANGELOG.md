@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Jan 2023 12:29:54 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2023 12:23:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.204.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.204.0)
+
+Fri, 27 Jan 2023 12:23:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.203.0..office-ui-fabric-react_v7.204.0)
+
+### Minor changes
+
+- cherry-pick: Combobox: Provide a callback to listen to raw text input (#21069) ([PR #26525](https://github.com/microsoft/fluentui/pull/26525) by seanmonahan@microsoft.com)
 
 ## [7.203.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.203.0)
 

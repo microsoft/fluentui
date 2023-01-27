@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 27 Jan 2023 12:23:20 GMT",
+      "tag": "@uifabric/charting_v4.23.24",
+      "version": "4.23.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.204.0",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "3089d88e81fc82263f0be702799eab38e4fd0983",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Jan 2023 12:29:54 GMT",
       "tag": "@uifabric/charting_v4.23.23",
       "version": "4.23.23",

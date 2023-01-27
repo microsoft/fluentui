@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 27 Jan 2023 12:23:20 GMT",
+      "tag": "@fluentui/react_v7.204.0",
+      "version": "7.204.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ComboBox: Add callback to listen to raw text input",
+            "author": "dennisgeorge.mec@gmail.com",
+            "commit": "3089d88e81fc82263f0be702799eab38e4fd0983",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.204.0",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "3089d88e81fc82263f0be702799eab38e4fd0983",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Jan 2023 12:29:54 GMT",
       "tag": "@fluentui/react_v7.203.0",
       "version": "7.203.0",

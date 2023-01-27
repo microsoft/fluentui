@@ -1,8 +1,17 @@
 # Change Log - theming-designer
 
-This log was last generated on Wed, 11 Jan 2023 12:22:17 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2023 12:23:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
+
+Fri, 27 Jan 2023 12:23:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/theming-designer_v7.0.0..theming-designer_v7.0.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.204.0 ([PR #26525](https://github.com/microsoft/fluentui/pull/26525) by seanmonahan@microsoft.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/theming-designer_v7.0.0)
 
