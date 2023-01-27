@@ -8,8 +8,8 @@ export class Switch extends FASTSwitch {
    *
    * @public
    * @remarks
-   * HTML Attribute: label
+   * HTML Attribute: labelposition
    */
-  @attr
-  public labelPosition: SwitchLabelPosition = 'after';
+  @attr({ attribute: 'label-position' })
+  public labelPosition: SwitchLabelPosition;
 }

@@ -38,10 +38,10 @@ export const styles = css`
     outline: none;
     user-select: none;
   }
-  :host([labelposition='before']) {
+  :host([label-position='before']) {
     flex-direction: row-reverse;
   }
-  :host([labelposition='above']) {
+  :host([label-position='above']) {
     flex-direction: column-reverse;
     align-items: flex-start;
   }

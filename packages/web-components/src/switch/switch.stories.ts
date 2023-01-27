@@ -14,7 +14,7 @@ const storyTemplate = html<SwitchStoryArgs>`
       ?checked=${x => x.checked}
       ?disabled=${x => x.disabled}
       ?required=${x => x.required}
-      labelposition=${x => x.labelPosition}
+      label-position=${x => x.labelPosition}
     >
       <div slot="checked-message">Checked</div>
       <div slot="unchecked-message">Unchecked</div>
