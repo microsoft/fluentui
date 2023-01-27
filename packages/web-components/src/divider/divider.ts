@@ -35,10 +35,4 @@ export class Divider extends FASTDivider {
    */
   @attr({ mode: 'boolean' })
   public inset?: boolean;
-
-  /**
-   * @internal
-   */
-  @observable
-  public slottedElements: HTMLElement[];
 }

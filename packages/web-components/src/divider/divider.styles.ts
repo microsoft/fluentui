@@ -57,7 +57,7 @@ export const styles = css`
     height: 100%;
     min-height: 84px;
   }
-  :host([orientation='vertical'][empty]) {
+  :host([orientation='vertical']):empty {
     min-height: 20px;
   }
 
@@ -73,8 +73,8 @@ export const styles = css`
     margin-bottom: 12px;
   }
 
-  :host([orientation='vertical'][empty])::before,
-  :host([orientation='vertical'][empty])::after {
+  :host([orientation='vertical']):empty::before,
+  :host([orientation='vertical']):empty::after {
     height: 10px;
     min-height: 10px;
     flex-grow: 0;
