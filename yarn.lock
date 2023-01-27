@@ -5559,10 +5559,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest-axe@3.5.3":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@types/jest-axe/-/jest-axe-3.5.3.tgz#5af918553388aa0a448af75603b44093985778c6"
-  integrity sha512-ad9qI9f+00N8IlOuGh6dnZ6o0BDdV9VhGfTUr1zCejsPvOfZd6eohffe4JYxUoUuRYEftyMcaJ6Ux4+MsOpGHg==
+"@types/jest-axe@3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@types/jest-axe/-/jest-axe-3.5.5.tgz#21fd8152dc3963bf6e1f72f34a7ce4e827838b7b"
+  integrity sha512-b8WDIdoeKtr/JDJ2+QjFXMuS8UhfdMA6+15Z5KjjIie3jQrSXD9KZWMSQxc0nPtx7L9rIFKdiDpQk+m7s4a/8w==
   dependencies:
     "@types/jest" "*"
     axe-core "^3.5.5"
@@ -7528,15 +7528,10 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
-axe-core@3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.0.tgz#161b17fc6ce07a5470ff179e0703957c422b2220"
-  integrity sha512-wJqOIreoFiGjvZ1UZvGLAUs8H3QQ3cS833+6ctFcCdr/xFd5oB66mmwGWnwQlBXFFaefRt+KR+m2dY9em2RxVg==
-
-axe-core@4.2.1, axe-core@^3.5.5, axe-core@^4.0.2, axe-core@^4.2.0:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.1.tgz#2e50bcf10ee5b819014f6e342e41e45096239e34"
-  integrity sha512-evY7DN8qSIbsW2H/TWQ1bX3sXN1d4MNb5Vb4n7BzPuCwRHdkZ1H2eNLuSh73EoQqkGKUtju2G2HCcjCfhvZIAA==
+axe-core@4.4.1, axe-core@4.4.3, axe-core@^3.5.5, axe-core@^4.0.2, axe-core@^4.2.0:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.3.tgz#11c74d23d5013c0fa5d183796729bc3482bd2f6f"
+  integrity sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==
 
 axios@^0.21.1:
   version "0.21.4"
@@ -15864,12 +15859,12 @@ jake@^10.8.5:
     filelist "^1.0.1"
     minimatch "^3.0.4"
 
-jest-axe@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/jest-axe/-/jest-axe-5.0.1.tgz#26c43643b2e5f2bd4900c1ab36f8283635957a6e"
-  integrity sha512-MMOWA6gT4pcZGbTLS8ZEqABH08Lnj5bInfLPpn9ADWX2wFF++odbbh8csmSfkwKjHaioVPzlCtIypAtxFDx/rw==
+jest-axe@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/jest-axe/-/jest-axe-6.0.1.tgz#54a8b7dc09afd6190b21f38b51b8bddc2d923834"
+  integrity sha512-+KcRAdZeKXBbtHTmMkokRq5/hXHaVFpX+WS2o3uvhkmF3szdr4+TYAz+QuOTeM0B1d4YPoNmQWhGzSzxHJNZrA==
   dependencies:
-    axe-core "4.2.1"
+    axe-core "4.4.1"
     chalk "4.1.0"
     jest-matcher-utils "27.0.2"
     lodash.merge "4.6.2"
