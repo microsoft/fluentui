@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Change the default value of validationState to error when a validationMessage is set.",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
