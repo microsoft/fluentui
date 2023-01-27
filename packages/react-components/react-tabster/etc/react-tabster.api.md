@@ -25,10 +25,11 @@ export interface CreateCustomFocusIndicatorStyleOptions {
 }
 
 // @public
-export const createFocusOutlineStyle: ({ selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
-export interface CreateFocusOutlineStyleOptions extends CreateCustomFocusIndicatorStyleOptions {
+export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
+    enableOutline?: boolean;
     // (undocumented)
     style?: Partial<FocusOutlineStyleOptions>;
 }
