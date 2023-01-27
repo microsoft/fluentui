@@ -58,6 +58,11 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 
   /**
+   * Returns the current state of adjusted columns
+   */
+  getColumns(): IColumn[];
+
+  /**
    * Use to programatically resize and/or reorder columns in the DetailsList.
    * @param column - column to resize/reorder.
    * @param options - includes width which is desired width in pixels the column should be resized

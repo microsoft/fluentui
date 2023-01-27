@@ -867,7 +867,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     return 0;
   }
 
-  /** Returns current state of adjusted columns */
   public getColumns(): IColumn[] {
     return this.state.adjustedColumns;
   }
