@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "cherry-pick: Combobox: Provide a callback to listen to raw text input (#21069)",
+  "packageName": "office-ui-fabric-react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
