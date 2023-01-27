@@ -143,6 +143,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   setupUnstableApi(tree, optionsWithTsConfigs);
 
   setupSwcConfig(tree, options);
+  setupJustConfig(tree, options);
 }
 
 // ==== helpers ====
@@ -417,6 +418,12 @@ const templates = {
       sourceMaps: true,
     };
   },
+  justConfig: stripIndents`
+    import { preset, task } from '@fluentui/scripts-tasks';
+
+    preset();
+
+    task('build', 'build:react-components').cached!();`,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -584,6 +591,12 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
 function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
   const swcConfig = templates.swcConfig();
   writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
+
+  return tree;
+}
+
+function setupJustConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.justConfig, templates.justConfig);
 
   return tree;
 }
