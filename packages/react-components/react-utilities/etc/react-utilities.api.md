@@ -69,6 +69,9 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
     ref?: React_2.Ref<any>;
 }) | null;
 
+// @public
+export const IdPrefixProvider: React_2.Provider<string | undefined>;
+
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 

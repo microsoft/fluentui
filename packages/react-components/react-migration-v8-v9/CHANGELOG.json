@@ -1,0 +1,32 @@
+{
+  "name": "@fluentui/react-migration-v8-v9",
+  "entries": [
+    {
+      "date": "Thu, 26 Jan 2023 13:30:57 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "38f8d75d0e279f6fe50fe5647650592cd648d6b2",
+            "comment": "Moved to be a v9 convergence package"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.12.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -58,6 +58,10 @@ const useStyles = makeStyles({
     gridRowStart: 'unset',
     gridColumnStart: 'middle',
   },
+
+  secondLineSpacing: {
+    marginTop: '-2px',
+  },
 });
 
 const useAvatarSpacingStyles = makeStyles({
@@ -147,6 +151,7 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
     state.secondaryText.className = mergeClasses(
       personaClassNames.secondaryText,
       optionalTextClassName,
+      styles.secondLineSpacing,
       state.secondaryText.className,
     );
   }

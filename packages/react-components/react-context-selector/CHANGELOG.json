@@ -2,6 +2,29 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:30:55 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "6f29c8f65b2db6125efbd2a7ec2d7abdd0f44601",
+            "comment": "chore: fix a typo in jsdoc"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:39:00 GMT",
       "tag": "@fluentui/react-context-selector_v9.1.5",
       "version": "9.1.5",

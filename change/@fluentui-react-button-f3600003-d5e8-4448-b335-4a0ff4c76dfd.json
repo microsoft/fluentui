@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: creates ButtonContext",
-  "packageName": "@fluentui/react-button",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

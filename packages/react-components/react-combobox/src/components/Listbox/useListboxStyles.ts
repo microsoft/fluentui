@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     minWidth: '160px',
     overflowY: 'auto',
+    ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     ...shorthands.padding(tokens.spacingHorizontalXS),
     rowGap: tokens.spacingHorizontalXXS,
   },

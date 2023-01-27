@@ -180,6 +180,7 @@ export interface IGetFocusStylesOptions {
     inset?: number;
     isFocusedOnly?: boolean;
     outlineColor?: string;
+    pointerEvents?: IRawStyle['pointerEvents'];
     position?: 'relative' | 'absolute';
     width?: number;
 }

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Deprecate ProgressField_unstable in favor of Field with Progress as its child.",
-  "packageName": "@fluentui/react-progress",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

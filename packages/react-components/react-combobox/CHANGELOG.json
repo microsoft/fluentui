@@ -2,6 +2,75 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:30:53 GMT",
+      "tag": "@fluentui/react-combobox_v9.0.0-beta.26",
+      "version": "9.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "6a610c7107d57e569dcb03e02ed6480c26412cd4",
+            "comment": "fix: add popup maxHeight, and move shadow styles to combobox/dropdown"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3079711d3af954e45081347e7a5abb963ef78abf",
+            "comment": "chore: update spec and migration docs"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "9a8b3515e95478a8fb4f9332b2998fdaa44c8ac1",
+            "comment": "fix: combobox should recalculate the activedescendant when the children change while open, and clear it when moving text cursor"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "175abf247751c2ababcc8deef8b4479c648ea2dd",
+            "comment": "fix: update multiselect checkbox styles to match checkbox"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Deprecate ComboboxField_unstable in favor of Field with Combobox as its child."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.17",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.1.4",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.3.9",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:12 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0-beta.25",
       "version": "9.0.0-beta.25",

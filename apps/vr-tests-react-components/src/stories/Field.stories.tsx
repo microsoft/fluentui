@@ -88,7 +88,13 @@ storiesOfFieldWithSize('InputField converged', InputField);
 //
 // ProgressField
 //
-storiesOfField('ProgressField converged', props => <ProgressField value={0.5} {...props} />);
+storiesOfField('ProgressField converged', props => (
+  <ProgressField
+    value={0.5}
+    {...props}
+    validationState={props.validationState === 'none' ? undefined : props.validationState}
+  />
+));
 
 //
 // RadioGroupField

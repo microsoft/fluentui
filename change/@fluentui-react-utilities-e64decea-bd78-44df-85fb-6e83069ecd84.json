@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Leverage React.useId when available for our useId hook.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

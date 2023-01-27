@@ -127,6 +127,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
   return {
     isLeaf: !isBranch,
     open,
+    buttonSize: 'small',
     isActionsVisible: actions ? isActionsVisible : false,
     components: {
       content: 'span',

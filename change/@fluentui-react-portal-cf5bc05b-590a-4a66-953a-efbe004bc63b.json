@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update elementContains() to handle circular references",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

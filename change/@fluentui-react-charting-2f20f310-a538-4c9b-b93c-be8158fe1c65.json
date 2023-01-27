@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add new variant to horizontal bar chart",
+  "comment": "Fix duplicate-id accessibility issue in line chart",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"

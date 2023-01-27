@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Implement Field component to replace InputField, ComboboxField, etc.",
+  "comment": "chore: Change the default value of validationState to error when a validationMessage is set.",
   "packageName": "@fluentui/react-field",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
