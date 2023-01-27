@@ -1,25 +1,27 @@
-import { task, series, parallel, condition, option, addResolvePath } from 'just-scripts';
-
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+
+
 
 import { isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
+import { apiExtractor } from './api-extractor';
+import { getJustArgv } from './argv';
 import { babel } from './babel';
 import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
-import { jest as jestTask, jestWatch } from './jest';
-import { sass } from './sass';
-import { ts } from './ts';
 import { eslint } from './eslint';
-import { webpack, webpackDevServer } from './webpack';
-import { apiExtractor } from './api-extractor';
+import { jest as jestTask, jestWatch } from './jest';
 import { lintImports } from './lint-imports';
-import { prettier } from './prettier';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
-import { startStorybookTask, buildStorybookTask } from './storybook';
-import { getJustArgv } from './argv';
+import { prettier } from './prettier';
+import { sass } from './sass';
+import { buildStorybookTask, startStorybookTask } from './storybook';
+import { swc } from './swc';
+import { ts } from './ts';
+import { webpack, webpackDevServer } from './webpack';
 
 /** Do only the bare minimum setup of options and resolve paths */
 export function basicPreset() {
@@ -110,6 +112,28 @@ export function preset() {
     ),
   );
 
+  task('swc:commonjs', swc.commonjs);
+  task('swc:esm', swc.esm);
+  task('swc:amd', swc.amd);
+
+  task('swc:compile', () => {
+    const moduleFlag = args.module;
+    // default behaviour
+    if (!moduleFlag) {
+      return parallel(
+        'swc:esm',
+        'swc:commonjs',
+        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+      );
+    }
+
+    return parallel(
+      condition('swc:esm', () => moduleFlag.esm),
+      condition('swc:commonjs', () => moduleFlag.cjs),
+      condition('swc:amd', () => moduleFlag.amd),
+    );
+  });
+
   task('code-style', series('prettier', 'lint'));
 
   task('dev:storybook', series('storybook:start'));
@@ -118,6 +142,8 @@ export function preset() {
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
   task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
+
+  task('build:react-components', series('clean', 'copy', 'sass', 'ts', 'swc:compile', 'api-extractor')).cached!();
 
   task(
     'bundle',
