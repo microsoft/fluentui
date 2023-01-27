@@ -5,6 +5,7 @@ const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@
 const { stripIndents, offsetFromRoot } = require('@nrwl/devkit');
 const { workspaceRoot } = require('nx/src/utils/app-root');
 const semver = require('semver');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
@@ -14,15 +15,22 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  *
  * @example
  * ```js
- *  module.exports = { addons: ['@storybook/addon-essentials', loadWorkspaceAddon('@fluentui/custom-storybook-addon')] }
+ *  module.exports = {
+ *    addons: [
+        '@storybook/addon-essentials',
+        loadWorkspaceAddon('@fluentui/custom-storybook-addon',{ tsConfigPath: path.join(__dirname,'../tsconfig.base.json') }),
+      ]
+ *  }
  * ```
  *
  * @param {string} addonName - package name of custom workspace addon
- * @param {Partial<typeof loadWorkspaceAddonDefaultOptions>} options
+ * @param {Object} options
+ * @param {string=} options.workspaceRoot
+ * @param {string} options.tsConfigPath - absolute path to tsConfig that contains path aliases
  */
-function loadWorkspaceAddon(addonName, options = {}) {
+function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
-  const { workspaceRoot } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+  const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
   if (process.env.NODE_ENV === 'production') {
     return addonName;
@@ -31,14 +39,14 @@ function loadWorkspaceAddon(addonName, options = {}) {
   function getPaths() {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
-    const rootPath = path.join(workspaceRoot, addonMetadata.root);
-    const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
-    const packageJsonPath = path.join(rootPath, 'package.json');
-    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
-    /**
-     * @type {Record<string,unknown> & {compilerOptions:{outDir?:string}}}
-     */
-    const tsconfigJson = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
+    const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
+    const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
+    const packageJsonPath = path.join(packageRootPath, 'package.json');
+
+    if (!fs.existsSync(packageJsonPath)) {
+      throw new Error('your addon is missing package.json.');
+    }
+
     /**
      * @type {Record<string,unknown> & {module?:string}}
      */
@@ -50,12 +58,10 @@ function loadWorkspaceAddon(addonName, options = {}) {
       );
     }
 
-    if (!tsconfigJson.compilerOptions.outDir) {
-      throw new Error('your addon tsconfig.lib.json is missing compilerOptions.outDir definition');
-    }
-
-    const packageDistPath = path.dirname(packageJson.module);
-    const tsConfigDistPath = path.join(rootPath, tsconfigJson.compilerOptions.outDir);
+    const packageDistPath = path.normalize(path.dirname(packageJson.module));
+    const packageTempPath = path.join(packageRootPath, 'temp');
+    const presetSourcePath = path.join(packageRootPath, 'preset.js');
+    const presetMockedSourcePath = path.join(packageTempPath, 'preset.ts');
     /**
      * we use always POSIX path in js modules thus this needs to be converted explicitly to POSIX, not matter what OS is used
      * Example:
@@ -63,14 +69,13 @@ function loadWorkspaceAddon(addonName, options = {}) {
      * `..\\one\\two` ->  `../one/two` | NON POSIX (windows)
      */
     const relativePathToSource = path
-      .relative(tsConfigDistPath, sourceRootPath)
-      .replace(new RegExp(`\\${path.sep}`, 'g'), path.posix.sep);
-    const presetSourcePath = path.join(rootPath, 'preset.js');
-    const presetMockedSourcePath = path.join(tsConfigDistPath, 'preset.js');
+      .relative(packageTempPath, packageSourceRootPath)
+      .split(path.sep)
+      .join(path.posix.sep);
 
     return {
-      tsConfigDistPath,
       packageDistPath,
+      packageTempPath,
       presetSourcePath,
       presetMockedSourcePath,
       relativePathToSource,
@@ -79,8 +84,8 @@ function loadWorkspaceAddon(addonName, options = {}) {
 
   const {
     relativePathToSource,
-    tsConfigDistPath,
     packageDistPath,
+    packageTempPath,
     presetSourcePath,
     presetMockedSourcePath,
   } = getPaths();
@@ -92,26 +97,38 @@ function loadWorkspaceAddon(addonName, options = {}) {
   }
 
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
+  // absolute path needs to be always posix, non posix will explode in module resolution
+  const posixTsConfigPath = tsConfigPath.split(path.sep).join(path.posix.sep);
 
-  const regex = new RegExp(`\\./${path.normalize(packageDistPath)}`, 'g');
-  let modifiedPresetContent = presetContent.replace(regex, relativePathToSource);
+  const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}`, 'g');
+  const presetApiRegex = /module\.exports\s+=\s+({).+}/;
+  const presetApiPathRegex = /(\/manager|\/preview)/g;
+  let modifiedPresetContent = presetContent
+    .replace(presetRelativePathToDistApiRegex, relativePathToSource)
+    .replace(presetApiPathRegex, '$1.ts')
+    .replace(presetApiRegex, (match, p1) => {
+      return match.replace(p1, '{ managerWebpack,');
+    });
 
   modifiedPresetContent = stripIndents`
-    const { workspaceRoot } = require('nx/src/utils/app-root');
-    const { registerTsProject } = require('nx/src/utils/register');
+    // @ts-ignore
+    const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
-    registerTsProject(workspaceRoot, 'tsconfig.base.json');
+    function managerWebpack(config, options) {
+      registerTsPaths({config, tsConfigPath: '${posixTsConfigPath}'});
+      return config;
+    }
 
     ${modifiedPresetContent}
   `;
 
-  if (!fs.existsSync(tsConfigDistPath)) {
-    fs.mkdirSync(tsConfigDistPath, { recursive: true });
+  if (!fs.existsSync(packageTempPath)) {
+    fs.mkdirSync(packageTempPath, { recursive: true });
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
 
-  return tsConfigDistPath;
+  return presetMockedSourcePath;
   /* eslint-enable no-shadow */
 }
 
@@ -169,6 +186,27 @@ function getPackageStoriesGlob(options) {
     });
 }
 
+/**
+ *
+ * register TsconfigPathsPlugin to webpack config
+ * @param {Object} options
+ * @param {string} options.tsConfigPath - absolute path to tsconfig that contains path aliases
+ * @param {import('webpack').Configuration} options.config
+ * @returns
+ */
+function registerTsPaths(options) {
+  const { config, tsConfigPath } = options;
+  const tsPaths = new TsconfigPathsPlugin({
+    configFile: tsConfigPath,
+  });
+
+  config.resolve = config.resolve ?? {};
+  config.resolve.plugins = config.resolve.plugins ?? [];
+  config.resolve.plugins.push(tsPaths);
+  return config;
+}
+
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;
+exports.registerTsPaths = registerTsPaths;

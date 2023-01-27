@@ -1,9 +1,10 @@
 const path = require('path');
 const fs = require('fs');
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
 
-const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('@fluentui/scripts-storybook');
+const { loadWorkspaceAddon, getCodesandboxBabelOptions, registerTsPaths } = require('@fluentui/scripts-storybook');
+
+const tsConfigPath = path.resolve(__dirname, '../tsconfig.base.json');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
@@ -50,16 +51,10 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     // internal monorepo custom addons
 
     /**  @see ../packages/react-components/react-storybook-addon */
-    loadWorkspaceAddon('@fluentui/react-storybook-addon'),
+    loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
   ],
   webpackFinal: config => {
-    const tsPaths = new TsconfigPathsPlugin({
-      configFile: path.resolve(__dirname, '../tsconfig.base.json'),
-    });
-
-    if (config.resolve) {
-      config.resolve.plugins ? config.resolve.plugins.push(tsPaths) : (config.resolve.plugins = [tsPaths]);
-    }
+    registerTsPaths({ config, tsConfigPath });
 
     if (config.module && config.module.rules) {
       /**
