@@ -384,13 +384,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             />
           </span>
         )}
-
-        <span
-          role="checkbox"
-          className={this._classNames.checkCover}
-          aria-checked={isSelected}
-          data-selection-toggle={true}
-        />
       </FocusZone>
     );
   }
