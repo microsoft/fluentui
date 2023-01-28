@@ -2,61 +2,60 @@
 
 ## Background
 
-Field adds a label, validation text, and hint text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
+Field adds a label, validation text, and hint text to form input components. It can be added around any input components, such as `Input` or `Combobox` from this library, or intrinsic `<input>` elements, or custom form controls.
 
 Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues/19627
 
 ## Prior Art
 
-Existing libraries tend to take one of the following approaches to field.
+Existing libraries take one of several approaches to Field. The basic problem that all are trying to solve is to (a) render a label and some descriptive text around a control, and (b) connect that text to the control via `for`/`aria-labelledby`/`aria-describedby`.
 
 1. Include support for label, error text, etc. in the base input component. Libraries using this approach include:
    - **FluentUI v8** - [`TextField`](https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield), [`Dropdown`](https://developer.microsoft.com/en-us/fluentui#/controls/web/dropdown), [`ChoiceGroup`](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup), etc.
    - **Spectrum** - [`TextField`](https://react-spectrum.adobe.com/react-spectrum/TextField.html), [`Slider`](https://react-spectrum.adobe.com/react-spectrum/Slider.html), [`RadioGroup`](https://react-spectrum.adobe.com/react-spectrum/RadioGroup.html), etc.
 2. Provide a set of components that are manually constructed into a field. This requires manually hooking up the components using props like `htmlFor` and `aria-describedby`. Libraries using this approach include:
    - **FluentUI v0** - [`FormField`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-field), [`FormLabel`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-label), [`FormMessage`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-message)
-   - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the item and the field component).
 3. Provide base components without a label or descriptive text, and then Field versions of those controls. Libraries using this approach include:
    - **FluentUI v0** - [`Input`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/input/props) and [`FormInput`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-input), for example.
    - **Evergreen UI** - [`TextInput`](https://evergreen.segment.com/components/text-input) and [`TextInputField`](https://evergreen.segment.com/components/text-input#textinputfield), for example.
+4. Provide base components without a label or descriptive text, and have a Field (FormItem) component that passes props to its child via context, a render function, or cloneElement.
+   - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the control and the Form.Item component).
+   - **Atlaskit** - [`Field`](https://atlaskit.atlassian.com/packages/design-system/form/docs/fields) (uses a render function as the child of the Field to pass props).
 
-The Field implementation in this spec follows pattern (3). There are Field versions of all components that can be used as form inputs. There are several reasons, including:
+The Field implementation in this spec follows pattern (4). Field passes props to its child to connect the field's label and message text. There are several reasons, including:
 
-- **Accessibility**: By combining a base component with the field props into a single component, all of the accessibility props like `htmlFor` and `aria-describedby` are set correctly for "free".
-- **Simplicity**: All props related to the component (such as `label`, `id`, `validationState="error"`, etc.) are on the same component, rather than split between multiple components (like separate `Field` and `Input` components).
+- **Accessibility**: All of the accessibility props like `htmlFor` and `aria-describedby` are set correctly on the child for "free".
+- **Simplicity**: Passing props down to the children allows any form control to be used as the child of Field.
 - **Consistency**: All of the Field components share a common set of props for the label, validationState, hint, etc.
-- **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the base components without pulling in unnecessary dependencies (like `Label` and the field styling).
+- **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the core components like `Input` without pulling in unnecessary dependencies (like `Label` and the field styling).
 
 ## Sample Code
 
-Each input component has a field version (such as `InputField`, `ComboboxField`, etc.) that includes the features of Field added to that component.
-
 ```jsx
 <>
-  <InputField
-    // Field-specific props
-    label="This is the field label"
-    orientation="horizontal"
-    validationState="error"
-    validationMessage="This is error text"
-    // All props and slots of the underlying Input component are supported
-    required
-    size="small"
-    contentBefore="$"
-    contentAfter=".00"
-  />
-  <RadioGroupField label="Radio group field">
-    <Radio value="one" label="Option one" />
-    <Radio value="two" label="Option two" />
-    <Radio value="three" label="Option three" />
-  </RadioGroupField>
-  <ComboboxField label="Combobox field" validationState="success" validationMessage="Success text">
-    <Option value="one">Option one</Option>
-    <Option value="two">Option two</Option>
-    <Option value="three">Option three</Option>
-  </ComboboxField>
-  <SliderField label="Slider field" validationState="warning" validationMessage="Warning text" />
-  <SpinButtonField label="Spin button field" hint="Hint text" />
+  <Field label="This is the field label" orientation="horizontal" validationMessage="This is error text" required>
+    <Input size="small" contentBefore="$" contentAfter=".00" />
+  </Field>
+  <Field label="Radio group field">
+    <RadioGroup>
+      <Radio value="one" label="Option one" />
+      <Radio value="two" label="Option two" />
+      <Radio value="three" label="Option three" />
+    </RadioGroup>
+  </Field>
+  <Field label="Combobox field" validationState="success" validationMessage="Success text">
+    <Combobox>
+      <Option value="one">Option one</Option>
+      <Option value="two">Option two</Option>
+      <Option value="three">Option three</Option>
+    </Combobox>
+  </Field>
+  <Field label="Slider field" validationState="warning" validationMessage="Warning text">
+    <Slider defaultValue={25} />
+  </Field>
+  <Field label="Spin button field" hint="Hint text">
+    <SpinButton />
+  </Field>
 </>
 ```
 
