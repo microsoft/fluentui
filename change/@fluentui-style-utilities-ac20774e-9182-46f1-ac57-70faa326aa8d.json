@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(getFocusStyle): Optionally tweak pointer-events on the focus ring",
-  "packageName": "@fluentui/style-utilities",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

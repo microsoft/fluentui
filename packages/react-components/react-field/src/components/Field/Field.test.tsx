@@ -103,7 +103,7 @@ describe('Field', () => {
 
   it('sets aria-describedby to the validationMessage + hint', () => {
     const result = render(
-      <Field hint="Test hint" validationMessage="Test validation message" validationState="error">
+      <Field hint="Test hint" validationMessage="Test validation message">
         <input />
       </Field>,
     );
@@ -116,7 +116,7 @@ describe('Field', () => {
 
   it('sets aria-describedby to the validationMessage + hint + user aria-describedby', () => {
     const result = render(
-      <Field hint="Test hint" validationMessage="Test validation message" validationState="error">
+      <Field hint="Test hint" validationMessage="Test validation message">
         <input aria-describedby="test-describedby" />
       </Field>,
     );
@@ -140,7 +140,7 @@ describe('Field', () => {
 
   it('does not override user aria props, EXCEPT aria-describedby', () => {
     const result = render(
-      <Field label="test label" validationState="error" validationMessage="test description" hint="test hint">
+      <Field label="test label" validationMessage="test description" hint="test hint">
         <input aria-labelledby="test-labelledby" aria-errormessage="test-errormessage" aria-invalid={false} />
       </Field>,
     );
@@ -153,10 +153,11 @@ describe('Field', () => {
   });
 
   it.each([
-    [undefined, null], // defaults to neutral
+    [undefined, 'alert'], // defaults to error
     ['error', 'alert'],
     ['warning', null],
     ['success', null],
+    ['none', null],
   ] as const)('if validationState is %s, sets role to %s on the validationMessage', (validationState, role) => {
     const result = render(
       <Field validationState={validationState} validationMessage="test validation message">
@@ -171,13 +172,7 @@ describe('Field', () => {
   it('passes expected props to child render function', () => {
     const renderFn = jest.fn();
     const result = render(
-      <Field
-        label="Test label"
-        hint="Test hint"
-        validationMessage="Test validation message"
-        validationState="error"
-        required
-      >
+      <Field label="Test label" hint="Test hint" validationMessage="Test validation message" required>
         {renderFn}
       </Field>,
     );
