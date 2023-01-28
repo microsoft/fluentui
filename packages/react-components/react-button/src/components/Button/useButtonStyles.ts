@@ -15,7 +15,7 @@ const iconSpacingVar = '--fui-Button__icon--spacing';
 const buttonSpacingSmall = '3px';
 const buttonSpacingSmallWithIcon = '1px';
 const buttonSpacingMedium = '5px';
-const buttonSpacingLarge = tokens.spacingHorizontalS;
+const buttonSpacingLarge = '8px';
 const buttonSpacingLargeWithIcon = '7px';
 
 const useRootBaseClassName = makeResetStyles({
