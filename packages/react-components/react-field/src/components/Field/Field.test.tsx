@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { Field } from './index';
+import { Field, FieldContextValue } from './index';
+import { useFieldContext } from '../../contexts/FieldContext';
 
 describe('Field', () => {
   isConformant({
@@ -188,5 +189,55 @@ describe('Field', () => {
       'aria-invalid': true,
       'aria-required': true,
     });
+  });
+
+  // const ExpectFieldContext = (props: { expected: FieldContextValue | undefined }) => {
+  //   expect(useFieldContext(ctx => ctx)).toEqual(props.expected);
+  //   return null;
+  // };
+
+  const FieldContextReader = (props: { contextRef: React.MutableRefObject<FieldContextValue | undefined | null> }) => {
+    props.contextRef.current = useFieldContext(ctx => ctx);
+    return null;
+  };
+
+  it('passes default state via context', () => {
+    const contextRef = React.createRef<FieldContextValue | undefined>();
+
+    render(
+      <Field>
+        <FieldContextReader contextRef={contextRef} />
+      </Field>,
+    );
+
+    expect(contextRef.current).toEqual({
+      size: 'medium',
+      orientation: 'vertical',
+      required: false,
+      validationState: 'none',
+    });
+  });
+
+  it('passes provided state via context', () => {
+    const contextRef = React.createRef<FieldContextValue | undefined>();
+
+    render(
+      <Field size="small" orientation="horizontal" required validationState="warning">
+        <FieldContextReader contextRef={contextRef} />
+      </Field>,
+    );
+
+    expect(contextRef.current).toEqual({
+      size: 'small',
+      orientation: 'horizontal',
+      required: true,
+      validationState: 'warning',
+    });
+  });
+
+  it('context is undefined outside of a Field', () => {
+    const contextRef = React.createRef<FieldContextValue | undefined>();
+    render(<FieldContextReader contextRef={contextRef} />);
+    expect(contextRef.current).toBeUndefined();
   });
 });

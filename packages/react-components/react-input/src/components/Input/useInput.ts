@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
@@ -19,8 +20,9 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
   const overrides = useOverrides();
+  const fieldSize = useFieldContext(field => field?.size);
 
-  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
+  const { size = fieldSize ?? 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&

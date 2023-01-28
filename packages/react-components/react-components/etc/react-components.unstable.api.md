@@ -96,6 +96,8 @@ import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
@@ -281,6 +283,8 @@ import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContext } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
@@ -512,6 +516,10 @@ export { DropdownState }
 export { Field }
 
 export { fieldClassNames }
+
+export { FieldContextValue }
+
+export { FieldContextValues }
 
 export { FieldProps }
 
@@ -882,6 +890,10 @@ export { useDropdown_unstable }
 export { useDropdownStyles_unstable }
 
 export { useField_unstable }
+
+export { useFieldContext }
+
+export { useFieldContextValues_unstable }
 
 export { useFieldStyles_unstable }
 

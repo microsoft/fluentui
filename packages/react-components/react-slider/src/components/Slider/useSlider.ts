@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import { getPartitionedNativeProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useSliderState_unstable } from './useSliderState';
 import { SliderProps, SliderState } from './Slider.types';
@@ -11,10 +12,12 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     excludedPropNames: ['onChange', 'size'],
   });
 
+  const fieldSize = useFieldContext(field => field?.size);
+
   const {
     disabled,
     vertical,
-    size = 'medium',
+    size = fieldSize === 'small' ? 'small' : 'medium',
     // Slots
     root,
     input,

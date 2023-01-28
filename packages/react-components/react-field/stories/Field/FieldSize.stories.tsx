@@ -16,13 +16,13 @@ export const Size = () => {
   return (
     <div className={styles.stack}>
       <Field label="Size small" size="small">
-        <Input size="small" />
+        <Input />
       </Field>
       <Field label="Size medium" size="medium">
-        <Input size="medium" />
+        <Input />
       </Field>
       <Field label="Size large" size="large">
-        <Input size="large" />
+        <Input />
       </Field>
     </div>
   );

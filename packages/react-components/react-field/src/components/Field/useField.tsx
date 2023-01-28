@@ -25,9 +25,9 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const {
     children,
     orientation = 'vertical',
-    required,
+    required = false,
     validationState = props.validationMessage ? 'error' : 'none',
-    size,
+    size = 'medium',
   } = props;
 
   const baseId = useId('field-');
@@ -101,6 +101,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
 
   return {
     orientation,
+    required,
+    size,
     validationState,
     components: {
       root: 'div',

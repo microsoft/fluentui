@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
@@ -19,9 +20,10 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
   const overrides = useOverrides();
+  const fieldSize = useFieldContext(field => field?.size);
 
   const {
-    size = 'medium',
+    size = fieldSize ?? 'medium',
     appearance = overrides.inputDefaultAppearance ?? 'outline',
     resize = 'none',
     onChange,

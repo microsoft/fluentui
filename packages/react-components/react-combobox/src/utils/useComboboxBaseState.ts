@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
@@ -11,6 +12,8 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } fro
 export const useComboboxBaseState = (
   props: ComboboxBaseProps & { children?: React.ReactNode; editable?: boolean },
 ): ComboboxBaseState => {
+  const fieldSize = useFieldContext(field => field?.size);
+
   const {
     appearance = 'outline',
     children,
@@ -18,7 +21,7 @@ export const useComboboxBaseState = (
     inlinePopup = false,
     multiselect,
     onOpenChange,
-    size = 'medium',
+    size = fieldSize ?? 'medium',
   } = props;
 
   const optionCollection = useOptionCollection();

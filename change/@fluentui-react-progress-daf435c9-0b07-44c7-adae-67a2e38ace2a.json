@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Connect to FieldContext to set validationState properly when inside a Field",
+  "packageName": "@fluentui/react-progress",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

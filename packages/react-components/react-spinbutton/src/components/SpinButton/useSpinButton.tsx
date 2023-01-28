@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
@@ -53,6 +54,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   });
 
   const overrides = useOverrides();
+  const fieldSize = useFieldContext(field => field?.size);
 
   const {
     value,
@@ -64,7 +66,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     stepPage = 1,
     precision: precisionFromProps,
     onChange,
-    size = 'medium',
+    size = fieldSize === 'small' ? 'small' : 'medium',
     appearance = overrides.inputDefaultAppearance ?? 'outline',
     root,
     input,

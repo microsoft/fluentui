@@ -338,10 +338,12 @@ export {
   Field,
   fieldClassNames,
   renderField_unstable,
-  useFieldStyles_unstable,
   useField_unstable,
+  useFieldContext,
+  useFieldContextValues_unstable,
+  useFieldStyles_unstable,
 } from '@fluentui/react-field';
-export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
+export type { FieldContextValue, FieldContextValues, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
   ProgressBar,

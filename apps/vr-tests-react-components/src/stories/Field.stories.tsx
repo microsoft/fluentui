@@ -6,13 +6,14 @@ import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobo
 import { SparkleFilled } from '@fluentui/react-icons';
 import type { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
-import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
+import { ProgressBar, ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { Radio, RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
 import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
 import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
+import { Field } from '../../../../packages/react-components/react-field/src/Field';
 
 type FieldControlProps = Pick<
   InputFieldProps,
@@ -89,11 +90,9 @@ storiesOfFieldWithSize('InputField converged', InputField);
 // ProgressField
 //
 storiesOfField('ProgressField converged', props => (
-  <ProgressField
-    value={0.5}
-    {...props}
-    validationState={props.validationState === 'none' ? undefined : props.validationState}
-  />
+  <Field {...props}>
+    <ProgressBar value={0.75} />
+  </Field>
 ));
 
 //

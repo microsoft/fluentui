@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import { getPartitionedNativeProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectProps, SelectState } from './Select.types';
@@ -15,6 +16,7 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
   const overrides = useOverrides();
+  const fieldSize = useFieldContext(field => field?.size);
 
   const {
     defaultValue,
@@ -25,7 +27,7 @@ export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelect
     appearance = overrides.inputDefaultAppearance ?? 'outline',
 
     onChange,
-    size = 'medium',
+    size = fieldSize ?? 'medium',
   } = props;
 
   const nativeProps = getPartitionedNativeProps({

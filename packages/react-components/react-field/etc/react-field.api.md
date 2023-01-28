@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
@@ -25,6 +26,14 @@ export const Field: ForwardRefComponent<FieldProps>;
 
 // @public (undocumented)
 export const fieldClassNames: SlotClassNames<FieldSlots>;
+
+// @public
+export type FieldContextValue = Pick<FieldState, 'orientation' | 'required' | 'size' | 'validationState'>;
+
+// @public (undocumented)
+export type FieldContextValues = {
+    field: FieldContextValue;
+};
 
 // @public
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
@@ -45,7 +54,7 @@ export type FieldSlots = {
 };
 
 // @public
-export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>>;
 
 // @internal @deprecated (undocumented)
 export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
@@ -64,10 +73,16 @@ export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType
 }): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export const renderField_unstable: (state: FieldState, context: FieldContextValues) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
+// @public
+export const useFieldContext: <T>(selector: ContextSelector<FieldContextValue | undefined, T>) => T;
+
+// @public
+export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;

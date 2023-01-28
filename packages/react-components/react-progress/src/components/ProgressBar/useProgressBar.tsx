@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldContext } from '@fluentui/react-field';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
@@ -12,8 +13,16 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  * @param ref - reference to root HTMLElement of ProgressBar
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
+  const fieldValidationState = useFieldContext(field => field?.validationState);
+
   // Props
-  const { max = 1.0, shape = 'rounded', thickness = 'medium', validationState, value } = props;
+  const {
+    max = 1.0,
+    shape = 'rounded',
+    thickness = 'medium',
+    validationState = fieldValidationState === 'none' ? undefined : fieldValidationState,
+    value,
+  } = props;
 
   const root = getNativeElementProps('div', {
     ref,

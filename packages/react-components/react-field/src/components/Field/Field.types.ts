@@ -100,4 +100,13 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
  * State used in rendering Field
  */
 export type FieldState = ComponentState<Required<FieldSlots>> &
-  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+  Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>>;
+
+/**
+ * When a component is wrapped by a Field, it can access the Field's state through this context
+ */
+export type FieldContextValue = Pick<FieldState, 'orientation' | 'required' | 'size' | 'validationState'>;
+
+export type FieldContextValues = {
+  field: FieldContextValue;
+};

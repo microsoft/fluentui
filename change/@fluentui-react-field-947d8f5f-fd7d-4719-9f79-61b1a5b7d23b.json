@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Add FieldContext to pass state to controls inside Field",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
