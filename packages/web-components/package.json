@@ -24,6 +24,14 @@
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
     },
+    "./accordion/accordion": {
+      "types": "./dist/esm/accordion/accordion/define.d.ts",
+      "default": "./dist/esm/accordion/accordion/define.js"
+    },
+    "./accordion/accordion-item": {
+      "types": "./dist/esm/accordion/accordion-item/define.d.ts",
+      "default": "./dist/esm/accordion/accordion-item/define.js"
+    },
     "./badge": {
       "types": "./dist/esm/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
