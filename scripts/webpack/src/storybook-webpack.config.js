@@ -63,15 +63,11 @@ const createStorybookWebpackConfig = config => {
       ],
     },
     {
-      test: /\.(gif|jpg|jpeg|png)$/,
+      test: /\.(gif|jpg|jpeg|png|svg)$/,
       loader: 'file-loader',
       options: {
         name: '[name].[ext]',
       },
-    },
-    {
-      test: /\.svg)$/,
-      type: 'asset/source',
     },
     {
       test: /\.(woff|woff2|ttf)$/,
