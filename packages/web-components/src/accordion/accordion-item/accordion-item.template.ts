@@ -29,7 +29,7 @@ const chevronDown20Filled = html`<svg
 </svg>`;
 
 // /**
-//  * The template for the dcs-accordion component.
+//  * The template for the fluent-accordion component.
 //  * @public
 //  */
 export const template: ElementViewTemplate<AccordionItem> = accordionItemTemplate({
