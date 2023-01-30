@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: import Dropdown and Option from react-components",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "none"
+}

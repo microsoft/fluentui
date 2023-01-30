@@ -137,7 +137,9 @@ export type Slots<S extends SlotPropsRecord> = {
 export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | React_2.ReactPortal;
 
 // @public
-export const SSRProvider: React_2.FC;
+export const SSRProvider: React_2.FC<{
+    children: React_2.ReactNode;
+}>;
 
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {

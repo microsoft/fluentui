@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 27 Jan 2023 07:37:50 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jan 2023 07:36:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.0)
+
+Mon, 30 Jan 2023 07:36:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.8..@fluentui/react_v8.105.0)
+
+### Minor changes
+
+- fix: remove invalid extra checkbox at end of DetailsRow ([PR #26519](https://github.com/microsoft/fluentui/pull/26519) by sarah.higley@microsoft.com)
 
 ## [8.104.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.8)
 
