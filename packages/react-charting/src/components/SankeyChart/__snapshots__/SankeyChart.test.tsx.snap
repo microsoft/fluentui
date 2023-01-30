@@ -16,6 +16,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -24,14 +25,14 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone63"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart124"
+      id="sankeyChart50"
       width={864}
     >
       <g
@@ -71,7 +72,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link112"
+            id="link38"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -106,7 +107,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link113"
+            id="link39"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -141,7 +142,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link114"
+            id="link40"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -176,7 +177,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link115"
+            id="link41"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -211,7 +212,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link116"
+            id="link42"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -246,7 +247,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link117"
+            id="link43"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -281,7 +282,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link118"
+            id="link44"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -316,7 +317,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link119"
+            id="link45"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -351,7 +352,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link120"
+            id="link46"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -386,7 +387,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link121"
+            id="link47"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -421,7 +422,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link122"
+            id="link48"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -456,7 +457,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link123"
+            id="link49"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -479,14 +480,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             }
       >
         <g
-          id="nodeGElement67"
+          id="nodeGElement4"
         >
           <rect
             aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
-            id="nodeBar66"
+            id="nodeBar3"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -520,7 +522,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar66-name"
+                id="nodeBar3-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -546,14 +548,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement71"
+          id="nodeGElement7"
         >
           <rect
             aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
-            id="nodeBar70"
+            id="nodeBar6"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -587,7 +590,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar70-name"
+                id="nodeBar6-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -613,14 +616,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement75"
+          id="nodeGElement10"
         >
           <rect
             aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
-            id="nodeBar74"
+            id="nodeBar9"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -633,14 +637,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           />
         </g>
         <g
-          id="nodeGElement79"
+          id="nodeGElement13"
         >
           <rect
             aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
-            id="nodeBar78"
+            id="nodeBar12"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -674,7 +679,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar78-name"
+                id="nodeBar12-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -700,14 +705,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement83"
+          id="nodeGElement16"
         >
           <rect
             aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
-            id="nodeBar82"
+            id="nodeBar15"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -720,14 +726,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           />
         </g>
         <g
-          id="nodeGElement87"
+          id="nodeGElement19"
         >
           <rect
             aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
-            id="nodeBar86"
+            id="nodeBar18"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -740,14 +747,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           />
         </g>
         <g
-          id="nodeGElement91"
+          id="nodeGElement22"
         >
           <rect
             aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
-            id="nodeBar90"
+            id="nodeBar21"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -781,7 +789,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar90-name"
+                id="nodeBar21-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -807,14 +815,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement95"
+          id="nodeGElement25"
         >
           <rect
             aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
-            id="nodeBar94"
+            id="nodeBar24"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -848,7 +857,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar94-name"
+                id="nodeBar24-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -874,14 +883,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement99"
+          id="nodeGElement28"
         >
           <rect
             aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
-            id="nodeBar98"
+            id="nodeBar27"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -915,7 +925,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar98-name"
+                id="nodeBar27-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -941,14 +951,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement103"
+          id="nodeGElement31"
         >
           <rect
             aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
-            id="nodeBar102"
+            id="nodeBar30"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -982,7 +993,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar102-name"
+                id="nodeBar30-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1008,14 +1019,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement107"
+          id="nodeGElement34"
         >
           <rect
             aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
-            id="nodeBar106"
+            id="nodeBar33"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1049,7 +1061,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar106-name"
+                id="nodeBar33-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1075,14 +1087,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           </g>
         </g>
         <g
-          id="nodeGElement111"
+          id="nodeGElement37"
         >
           <rect
             aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
-            id="nodeBar110"
+            id="nodeBar36"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1116,7 +1129,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar110-name"
+                id="nodeBar36-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1163,6 +1176,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1171,14 +1185,14 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone188"
+    data-focuszone-id="FocusZone103"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart249"
+      id="sankeyChart102"
       width={864}
     >
       <g
@@ -1197,7 +1211,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-0"
+              id="gradient-link53-0"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1218,7 +1232,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link237"
+            id="link90"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1232,7 +1246,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-1"
+              id="gradient-link53-1"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1253,7 +1267,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link238"
+            id="link91"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1267,7 +1281,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-2"
+              id="gradient-link53-2"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1288,7 +1302,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link239"
+            id="link92"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1302,7 +1316,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-3"
+              id="gradient-link53-3"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1323,7 +1337,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link240"
+            id="link93"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1337,7 +1351,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-4"
+              id="gradient-link53-4"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1358,7 +1372,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link241"
+            id="link94"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1372,7 +1386,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-5"
+              id="gradient-link53-5"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1393,7 +1407,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link242"
+            id="link95"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1407,7 +1421,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-6"
+              id="gradient-link53-6"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1428,7 +1442,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link243"
+            id="link96"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1442,7 +1456,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-7"
+              id="gradient-link53-7"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1463,7 +1477,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link244"
+            id="link97"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1477,7 +1491,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-8"
+              id="gradient-link53-8"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1498,7 +1512,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link245"
+            id="link98"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1512,7 +1526,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-9"
+              id="gradient-link53-9"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1533,7 +1547,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link246"
+            id="link99"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1547,7 +1561,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-10"
+              id="gradient-link53-10"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1568,7 +1582,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link247"
+            id="link100"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1582,7 +1596,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-11"
+              id="gradient-link53-11"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -1603,7 +1617,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link248"
+            id="link101"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -1626,14 +1640,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             }
       >
         <g
-          id="nodeGElement192"
+          id="nodeGElement56"
         >
           <rect
             aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             fill="#E3008C"
             height={129.31506849315068}
-            id="nodeBar191"
+            id="nodeBar55"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1667,7 +1682,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar191-name"
+                id="nodeBar55-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1693,14 +1708,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement196"
+          id="nodeGElement59"
         >
           <rect
             aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             fill="#00A2AD"
             height={126.08219178082172}
-            id="nodeBar195"
+            id="nodeBar58"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1734,7 +1750,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar195-name"
+                id="nodeBar58-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1760,14 +1776,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement200"
+          id="nodeGElement62"
         >
           <rect
             aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             fill="#022F22"
             height={22.630136986301352}
-            id="nodeBar199"
+            id="nodeBar61"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1780,19 +1797,19 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           />
         </g>
         <g
-          id="nodeGElement204"
+          id="nodeGElement65"
         >
           <rect
             aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             fill="#00188F"
             height={43.643835616438366}
-            id="nodeBar203"
+            id="nodeBar64"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
             role="img"
-            stroke="#757575"
             strokeWidth="2"
             width={124}
             x={48}
@@ -1821,7 +1838,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar203-name"
+                id="nodeBar64-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1847,14 +1864,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement208"
+          id="nodeGElement68"
         >
           <rect
             aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             fill="#E3008C"
             height={16.16438356164383}
-            id="nodeBar207"
+            id="nodeBar67"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1867,14 +1885,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           />
         </g>
         <g
-          id="nodeGElement212"
+          id="nodeGElement71"
         >
           <rect
             aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             fill="#00A2AD"
             height={16.16438356164383}
-            id="nodeBar211"
+            id="nodeBar70"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1887,14 +1906,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           />
         </g>
         <g
-          id="nodeGElement216"
+          id="nodeGElement74"
         >
           <rect
             aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             fill="#022F22"
             height={210.13698630136994}
-            id="nodeBar215"
+            id="nodeBar73"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -1928,7 +1948,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar215-name"
+                id="nodeBar73-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -1954,19 +1974,19 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement220"
+          id="nodeGElement77"
         >
           <rect
             aria-label="nodeJunk Folderwith weight69"
             data-is-focusable={true}
             fill="#00188F"
             height={111.53424657534248}
-            id="nodeBar219"
+            id="nodeBar76"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
             role="img"
-            stroke="#757575"
             strokeWidth="2"
             width={124}
             x={393.5}
@@ -1995,7 +2015,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar219-name"
+                id="nodeBar76-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2021,14 +2041,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement224"
+          id="nodeGElement80"
         >
           <rect
             aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             fill="#E3008C"
             height={32.32876712328766}
-            id="nodeBar223"
+            id="nodeBar79"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2062,7 +2083,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar223-name"
+                id="nodeBar79-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2088,14 +2109,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement228"
+          id="nodeGElement83"
         >
           <rect
             aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             fill="#00A2AD"
             height={48.49315068493148}
-            id="nodeBar227"
+            id="nodeBar82"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2129,7 +2151,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar227-name"
+                id="nodeBar82-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2155,14 +2177,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement232"
+          id="nodeGElement86"
         >
           <rect
             aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             fill="#022F22"
             height={88.90410958904114}
-            id="nodeBar231"
+            id="nodeBar85"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2196,7 +2219,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar231-name"
+                id="nodeBar85-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2222,19 +2245,19 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           </g>
         </g>
         <g
-          id="nodeGElement236"
+          id="nodeGElement89"
         >
           <rect
             aria-label="node No further action  requiredwith weight62"
             data-is-focusable={true}
             fill="#00188F"
             height={100.21917808219177}
-            id="nodeBar235"
+            id="nodeBar88"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
             role="img"
-            stroke="#757575"
             strokeWidth="2"
             width={124}
             x={739}
@@ -2263,7 +2286,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar235-name"
+                id="nodeBar88-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2310,6 +2333,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -2318,14 +2342,14 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone166"
+    data-focuszone-id="FocusZone85"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart205"
+      id="sankeyChart84"
       width={864}
     >
       <g
@@ -2344,7 +2368,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-0"
+              id="gradient-link53-0"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -2365,7 +2389,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             d="M172,36C455.5,36,455.5,47.951536403029024,739,47.951536403029024L739,51.42212463832314C455.5,51.42212463832314,455.5,39.470588235294116,172,39.470588235294116Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link199"
+            id="link78"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2379,7 +2403,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-1"
+              id="gradient-link53-1"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -2400,7 +2424,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             d="M172,47.470588235294116C455.5,47.470588235294116,455.5,51.42212463832314,739,51.42212463832314L739,54.892712873617256C455.5,54.892712873617256,455.5,50.94117647058823,172,50.94117647058823Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link200"
+            id="link79"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2414,7 +2438,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-2"
+              id="gradient-link53-2"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -2435,7 +2459,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             d="M172,58.94117647058823C455.5,58.94117647058823,455.5,54.892712873617256,739,54.892712873617256L739,58.36330110891137C455.5,58.36330110891137,455.5,62.41176470588235,172,62.41176470588235Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link201"
+            id="link80"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2449,7 +2473,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-3"
+              id="gradient-link53-3"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -2470,7 +2494,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             d="M172,70.41176470588235C455.5,70.41176470588235,455.5,58.36330110891137,739,58.36330110891137L739,61.83388934420549C455.5,61.83388934420549,455.5,73.88235294117646,172,73.88235294117646Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link202"
+            id="link81"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2484,7 +2508,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-4"
+              id="gradient-link53-4"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -2505,7 +2529,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             d="M172,81.88235294117646C455.5,81.88235294117646,455.5,82.44476169854653,739,82.44476169854653L739,394.7977028750171C455.5,394.7977028750171,455.5,394.235294117647,172,394.235294117647Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link203"
+            id="link82"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2519,7 +2543,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         <g>
           <defs>
             <linearGradient
-              id="gradient-link126-5"
+              id="gradient-link53-5"
               x1="0%"
               x2="100%"
               y1="0%"
@@ -2540,7 +2564,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             d="M172,402.23529411764696C455.5,402.23529411764696,455.5,394.7977028750171,739,394.7977028750171L739,422.56240875737C455.5,422.56240875737,455.5,429.9999999999999,172,429.9999999999999Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link204"
+            id="link83"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2563,14 +2587,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             }
       >
         <g
-          id="nodeGElement170"
+          id="nodeGElement56"
         >
           <rect
             aria-label="nodenode0with weight5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
-            id="nodeBar169"
+            id="nodeBar55"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2583,14 +2608,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           />
         </g>
         <g
-          id="nodeGElement174"
+          id="nodeGElement59"
         >
           <rect
             aria-label="nodenode1with weight5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
-            id="nodeBar173"
+            id="nodeBar58"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2603,14 +2629,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           />
         </g>
         <g
-          id="nodeGElement178"
+          id="nodeGElement62"
         >
           <rect
             aria-label="nodenode2with weight5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
-            id="nodeBar177"
+            id="nodeBar61"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2623,14 +2650,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           />
         </g>
         <g
-          id="nodeGElement182"
+          id="nodeGElement65"
         >
           <rect
             aria-label="nodenode3with weight5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
-            id="nodeBar181"
+            id="nodeBar64"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2643,14 +2671,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           />
         </g>
         <g
-          id="nodeGElement186"
+          id="nodeGElement68"
         >
           <rect
             aria-label="nodenode4with weight900"
             data-is-focusable={true}
             fill="#0078D4"
             height={312.3529411764705}
-            id="nodeBar185"
+            id="nodeBar67"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2684,7 +2713,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar185-name"
+                id="nodeBar67-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2710,14 +2739,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </g>
         </g>
         <g
-          id="nodeGElement190"
+          id="nodeGElement71"
         >
           <rect
             aria-label="nodenode5with weight80"
             data-is-focusable={true}
             fill="#0078D4"
             height={27.764705882352928}
-            id="nodeBar189"
+            id="nodeBar70"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2751,7 +2781,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar189-name"
+                id="nodeBar70-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2777,14 +2807,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </g>
         </g>
         <g
-          id="nodeGElement194"
+          id="nodeGElement74"
         >
           <rect
             aria-label="nodenode6with weight20"
             data-is-focusable={true}
             fill="#E3008C"
             height={13.882352941176471}
-            id="nodeBar193"
+            id="nodeBar73"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2797,14 +2828,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           />
         </g>
         <g
-          id="nodeGElement198"
+          id="nodeGElement77"
         >
           <rect
             aria-label="nodenode7with weight980"
             data-is-focusable={true}
             fill="#E3008C"
             height={340.1176470588236}
-            id="nodeBar197"
+            id="nodeBar76"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -2838,7 +2870,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar197-name"
+                id="nodeBar76-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -2885,6 +2917,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -2893,14 +2926,14 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone63"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart185"
+      id="sankeyChart100"
       width={864}
     >
       <g
@@ -2942,7 +2975,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link173"
+            id="link88"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2979,7 +3012,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link174"
+            id="link89"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3016,7 +3049,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link175"
+            id="link90"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3054,7 +3087,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link176"
+            id="link91"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3091,7 +3124,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link177"
+            id="link92"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3128,7 +3161,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link178"
+            id="link93"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3165,7 +3198,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link179"
+            id="link94"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3202,7 +3235,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link180"
+            id="link95"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3239,7 +3272,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link181"
+            id="link96"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3276,7 +3309,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link182"
+            id="link97"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3314,7 +3347,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link183"
+            id="link98"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3351,7 +3384,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link184"
+            id="link99"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -3374,14 +3407,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             }
       >
         <g
-          id="nodeGElement128"
+          id="nodeGElement54"
           key="0"
         >
           <rect
             aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             height={129.31506849315068}
-            id="nodeBar127"
+            id="nodeBar53"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3391,9 +3425,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={48}
             y={36}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3418,7 +3449,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar127-name"
+                id="nodeBar53-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3444,14 +3475,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement132"
+          id="nodeGElement57"
           key="1"
         >
           <rect
             aria-label="node172.152.48.13with weight78"
             data-is-focusable={true}
             height={126.08219178082172}
-            id="nodeBar131"
+            id="nodeBar56"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3461,9 +3493,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={48}
             y={173.31506849315068}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3488,7 +3517,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar131-name"
+                id="nodeBar56-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3514,7 +3543,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement136"
+          id="nodeGElement60"
           key="2"
         >
           <rect
@@ -3522,7 +3551,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
-            id="nodeBar135"
+            id="nodeBar59"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3533,19 +3563,17 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             x={48}
             y={307.3972602739724}
           />
-          <span
-            className="ms-layer"
-          />
         </g>
         <g
-          id="nodeGElement140"
+          id="nodeGElement63"
           key="3"
         >
           <rect
             aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             height={43.643835616438366}
-            id="nodeBar139"
+            id="nodeBar62"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3555,9 +3583,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={48}
             y={362.1917808219178}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3582,7 +3607,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar139-name"
+                id="nodeBar62-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3608,14 +3633,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement144"
+          id="nodeGElement66"
           key="4"
         >
           <rect
             aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
-            id="nodeBar143"
+            id="nodeBar65"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3626,19 +3652,17 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             x={48}
             y={338.02739726027374}
           />
-          <span
-            className="ms-layer"
-          />
         </g>
         <g
-          id="nodeGElement148"
+          id="nodeGElement69"
           key="5"
         >
           <rect
             aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
-            id="nodeBar147"
+            id="nodeBar68"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3649,19 +3673,17 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             x={48}
             y={413.83561643835617}
           />
-          <span
-            className="ms-layer"
-          />
         </g>
         <g
-          id="nodeGElement152"
+          id="nodeGElement72"
           key="6"
         >
           <rect
             aria-label="nodeinboxwith weight130"
             data-is-focusable={true}
             height={210.13698630136994}
-            id="nodeBar151"
+            id="nodeBar71"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3671,9 +3693,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={393.5}
             y={37.68645072950067}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3698,7 +3717,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar151-name"
+                id="nodeBar71-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3724,7 +3743,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement156"
+          id="nodeGElement75"
           key="7"
         >
           <rect
@@ -3732,7 +3751,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={111.53424657534248}
-            id="nodeBar155"
+            id="nodeBar74"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3742,9 +3762,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={393.5}
             y={270.8534770168133}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3769,7 +3786,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar155-name"
+                id="nodeBar74-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3795,14 +3812,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement160"
+          id="nodeGElement78"
           key="8"
         >
           <rect
             aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             height={32.32876712328766}
-            id="nodeBar159"
+            id="nodeBar77"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3812,9 +3830,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={393.5}
             y={390.3877235921558}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3839,7 +3854,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar159-name"
+                id="nodeBar77-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3865,14 +3880,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement164"
+          id="nodeGElement81"
           key="9"
         >
           <rect
             aria-label="nodeClickedwith weight30"
             data-is-focusable={true}
             height={48.49315068493148}
-            id="nodeBar163"
+            id="nodeBar80"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3882,9 +3898,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={739}
             y={36}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3909,7 +3922,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar163-name"
+                id="nodeBar80-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -3935,14 +3948,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement168"
+          id="nodeGElement84"
           key="10"
         >
           <rect
             aria-label="nodeOpenedwith weight55"
             data-is-focusable={true}
             height={88.90410958904114}
-            id="nodeBar167"
+            id="nodeBar83"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -3952,9 +3966,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={739}
             y={92.49315068493148}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -3979,7 +3990,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar167-name"
+                id="nodeBar83-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -4005,7 +4016,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement172"
+          id="nodeGElement87"
           key="11"
         >
           <rect
@@ -4013,7 +4024,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={100.21917808219177}
-            id="nodeBar171"
+            id="nodeBar86"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4023,9 +4035,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             width={124}
             x={739}
             y={271.54289868025126}
-          />
-          <span
-            className="ms-layer"
           />
           <g
             className=
@@ -4050,7 +4059,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar171-name"
+                id="nodeBar86-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -4076,6 +4085,9 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           </g>
         </g>
       </g>
+      <span
+        className="ms-layer"
+      />
     </svg>
   </div>
 </div>
@@ -4097,6 +4109,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -4105,14 +4118,14 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone63"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart185"
+      id="sankeyChart100"
       width={864}
     >
       <g
@@ -4154,7 +4167,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link173"
+            id="link88"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4163,11 +4176,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-1"
@@ -4196,7 +4205,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="url(#gradient-link1-1)"
             fillOpacity={0.3}
-            id="link174"
+            id="link89"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4205,11 +4214,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="url(#gradient-link1-1)"
             strokeOpacity={1}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-2"
@@ -4237,7 +4242,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link175"
+            id="link90"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4246,11 +4251,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-3"
@@ -4278,7 +4279,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link176"
+            id="link91"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4287,11 +4288,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-4"
@@ -4319,7 +4316,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link177"
+            id="link92"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4328,11 +4325,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-5"
@@ -4360,7 +4353,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link178"
+            id="link93"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4369,11 +4362,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-6"
@@ -4401,7 +4390,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link179"
+            id="link94"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4410,11 +4399,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-7"
@@ -4442,7 +4427,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link180"
+            id="link95"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4451,11 +4436,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-8"
@@ -4484,7 +4465,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="url(#gradient-link1-8)"
             fillOpacity={0.3}
-            id="link181"
+            id="link96"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4493,11 +4474,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="url(#gradient-link1-8)"
             strokeOpacity={1}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-9"
@@ -4526,7 +4503,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="url(#gradient-link1-9)"
             fillOpacity={0.3}
-            id="link182"
+            id="link97"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4535,11 +4512,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="url(#gradient-link1-9)"
             strokeOpacity={1}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-10"
@@ -4567,7 +4540,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link183"
+            id="link98"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4576,11 +4549,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
         <g
           key="link1-11"
@@ -4608,7 +4577,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link184"
+            id="link99"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -4617,11 +4586,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             stroke="#757575"
             strokeOpacity={0.5}
             strokeWidth="2"
-          >
-            <span
-              className="ms-layer"
-            />
-          </path>
+          />
         </g>
       </g>
       <g
@@ -4635,7 +4600,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             }
       >
         <g
-          id="nodeGElement128"
+          id="nodeGElement54"
           key="0"
         >
           <rect
@@ -4643,7 +4608,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
-            id="nodeBar127"
+            id="nodeBar53"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4677,7 +4643,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar127-name"
+                id="nodeBar53-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -4703,7 +4669,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement132"
+          id="nodeGElement57"
           key="1"
         >
           <rect
@@ -4711,7 +4677,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
-            id="nodeBar131"
+            id="nodeBar56"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4745,7 +4712,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar131-name"
+                id="nodeBar56-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -4771,7 +4738,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement136"
+          id="nodeGElement60"
           key="2"
         >
           <rect
@@ -4779,7 +4746,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
-            id="nodeBar135"
+            id="nodeBar59"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4792,7 +4760,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           />
         </g>
         <g
-          id="nodeGElement140"
+          id="nodeGElement63"
           key="3"
         >
           <rect
@@ -4800,7 +4768,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
-            id="nodeBar139"
+            id="nodeBar62"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4834,7 +4803,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar139-name"
+                id="nodeBar62-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -4860,7 +4829,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement144"
+          id="nodeGElement66"
           key="4"
         >
           <rect
@@ -4868,7 +4837,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
-            id="nodeBar143"
+            id="nodeBar65"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4881,7 +4851,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           />
         </g>
         <g
-          id="nodeGElement148"
+          id="nodeGElement69"
           key="5"
         >
           <rect
@@ -4889,7 +4859,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
-            id="nodeBar147"
+            id="nodeBar68"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4902,7 +4873,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           />
         </g>
         <g
-          id="nodeGElement152"
+          id="nodeGElement72"
           key="6"
         >
           <rect
@@ -4910,7 +4881,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
-            id="nodeBar151"
+            id="nodeBar71"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -4944,7 +4916,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar151-name"
+                id="nodeBar71-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -4970,7 +4942,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement156"
+          id="nodeGElement75"
           key="7"
         >
           <rect
@@ -4978,7 +4950,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
-            id="nodeBar155"
+            id="nodeBar74"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5012,7 +4985,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar155-name"
+                id="nodeBar74-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5038,7 +5011,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement160"
+          id="nodeGElement78"
           key="8"
         >
           <rect
@@ -5046,7 +5019,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
-            id="nodeBar159"
+            id="nodeBar77"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5080,7 +5054,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar159-name"
+                id="nodeBar77-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5106,7 +5080,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement164"
+          id="nodeGElement81"
           key="9"
         >
           <rect
@@ -5114,7 +5088,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
-            id="nodeBar163"
+            id="nodeBar80"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5148,7 +5123,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar163-name"
+                id="nodeBar80-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5174,7 +5149,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement168"
+          id="nodeGElement84"
           key="10"
         >
           <rect
@@ -5182,7 +5157,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
-            id="nodeBar167"
+            id="nodeBar83"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5216,7 +5192,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar167-name"
+                id="nodeBar83-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5242,7 +5218,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement172"
+          id="nodeGElement87"
           key="11"
         >
           <rect
@@ -5250,7 +5226,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
-            id="nodeBar171"
+            id="nodeBar86"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5284,7 +5261,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar171-name"
+                id="nodeBar86-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5310,6 +5287,9 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           </g>
         </g>
       </g>
+      <span
+        className="ms-layer"
+      />
     </svg>
   </div>
 </div>
@@ -5331,6 +5311,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -5339,14 +5320,14 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone63"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart185"
+      id="sankeyChart100"
       width={864}
     >
       <g
@@ -5388,7 +5369,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link173"
+            id="link88"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5426,7 +5407,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link174"
+            id="link89"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5464,7 +5445,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link175"
+            id="link90"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5501,7 +5482,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link176"
+            id="link91"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5538,7 +5519,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link177"
+            id="link92"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5575,7 +5556,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link178"
+            id="link93"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5612,7 +5593,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link179"
+            id="link94"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5649,7 +5630,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link180"
+            id="link95"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5687,7 +5668,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link181"
+            id="link96"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5725,7 +5706,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link182"
+            id="link97"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5763,7 +5744,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             fillOpacity={1}
-            id="link183"
+            id="link98"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5800,7 +5781,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link184"
+            id="link99"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -5823,14 +5804,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             }
       >
         <g
-          id="nodeGElement128"
+          id="nodeGElement54"
           key="0"
         >
           <rect
             aria-label="node192.168.42.72with weight80"
             data-is-focusable={true}
             height={129.31506849315068}
-            id="nodeBar127"
+            id="nodeBar53"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5864,7 +5846,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar127-name"
+                id="nodeBar53-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5890,7 +5872,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement132"
+          id="nodeGElement57"
           key="1"
         >
           <rect
@@ -5898,7 +5880,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
-            id="nodeBar131"
+            id="nodeBar56"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5932,7 +5915,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar131-name"
+                id="nodeBar56-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -5958,14 +5941,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement136"
+          id="nodeGElement60"
           key="2"
         >
           <rect
             aria-label="node124.360.55.1with weight14"
             data-is-focusable={true}
             height={22.630136986301352}
-            id="nodeBar135"
+            id="nodeBar59"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -5978,14 +5962,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           />
         </g>
         <g
-          id="nodeGElement140"
+          id="nodeGElement63"
           key="3"
         >
           <rect
             aria-label="node192.564.10.2with weight27"
             data-is-focusable={true}
             height={43.643835616438366}
-            id="nodeBar139"
+            id="nodeBar62"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6019,7 +6004,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar139-name"
+                id="nodeBar62-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6045,14 +6030,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement144"
+          id="nodeGElement66"
           key="4"
         >
           <rect
             aria-label="node124.124.50.1with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
-            id="nodeBar143"
+            id="nodeBar65"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6065,14 +6051,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           />
         </g>
         <g
-          id="nodeGElement148"
+          id="nodeGElement69"
           key="5"
         >
           <rect
             aria-label="node172.630.89.4with weight10"
             data-is-focusable={true}
             height={16.16438356164383}
-            id="nodeBar147"
+            id="nodeBar68"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6085,7 +6072,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           />
         </g>
         <g
-          id="nodeGElement152"
+          id="nodeGElement72"
           key="6"
         >
           <rect
@@ -6093,7 +6080,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={210.13698630136994}
-            id="nodeBar151"
+            id="nodeBar71"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6127,7 +6115,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar151-name"
+                id="nodeBar71-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6153,7 +6141,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement156"
+          id="nodeGElement75"
           key="7"
         >
           <rect
@@ -6161,7 +6149,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={111.53424657534248}
-            id="nodeBar155"
+            id="nodeBar74"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6195,7 +6184,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar155-name"
+                id="nodeBar74-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6221,14 +6210,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement160"
+          id="nodeGElement78"
           key="8"
         >
           <rect
             aria-label="nodeDeleted Folderwith weight20"
             data-is-focusable={true}
             height={32.32876712328766}
-            id="nodeBar159"
+            id="nodeBar77"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6262,7 +6252,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#323130"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar159-name"
+                id="nodeBar77-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6288,7 +6278,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement164"
+          id="nodeGElement81"
           key="9"
         >
           <rect
@@ -6296,7 +6286,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={48.49315068493148}
-            id="nodeBar163"
+            id="nodeBar80"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6330,7 +6321,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar163-name"
+                id="nodeBar80-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6356,7 +6347,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement168"
+          id="nodeGElement84"
           key="10"
         >
           <rect
@@ -6364,7 +6355,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={88.90410958904114}
-            id="nodeBar167"
+            id="nodeBar83"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6398,7 +6390,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar167-name"
+                id="nodeBar83-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6424,7 +6416,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           </g>
         </g>
         <g
-          id="nodeGElement172"
+          id="nodeGElement87"
           key="11"
         >
           <rect
@@ -6432,7 +6424,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             data-is-focusable={true}
             fill="#8764B8"
             height={100.21917808219177}
-            id="nodeBar171"
+            id="nodeBar86"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -6466,7 +6459,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar171-name"
+                id="nodeBar86-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -6513,6 +6506,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         overflow: hidden;
         width: 100%;
       }
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -6521,14 +6515,14 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone63"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
       height={436}
-      id="sankeyChart124"
+      id="sankeyChart50"
       width={864}
     >
       <g
@@ -6570,7 +6564,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,36C282.75,36,282.75,37.68645072950066,393.5,37.68645072950066L393.5,167.00151922265132C282.75,167.00151922265132,282.75,165.31506849315068,172,165.31506849315068Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link112"
+            id="link38"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6607,7 +6601,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,173.3150684931507C282.75,173.3150684931507,282.75,167.00151922265138,393.5,167.00151922265138L393.5,247.82343703087054C282.75,247.82343703087054,282.75,254.13698630136986,172,254.13698630136986Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link113"
+            id="link39"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6644,7 +6638,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,254.13698630136983C282.75,254.13698630136983,282.75,270.8534770168133,393.5,270.8534770168133L393.5,316.113750989416C282.75,316.113750989416,282.75,299.39726027397256,172,299.39726027397256Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link114"
+            id="link40"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6681,7 +6675,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,307.3972602739724C282.75,307.3972602739724,282.75,316.1137509894161,393.5,316.1137509894161L393.5,338.7438879757175C282.75,338.7438879757175,282.75,330.0273972602738,172,330.0273972602738Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link115"
+            id="link41"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6718,7 +6712,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,362.1917808219178C282.75,362.1917808219178,282.75,354.90827153736126,393.5,354.90827153736126L393.5,366.2233400305119C282.75,366.2233400305119,282.75,373.50684931506845,172,373.50684931506845Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link116"
+            id="link42"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6755,7 +6749,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,373.5068493150685C282.75,373.5068493150685,282.75,390.3877235921558,393.5,390.3877235921558L393.5,422.71649071544346C282.75,422.71649071544346,282.75,405.83561643835617,172,405.83561643835617Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link117"
+            id="link43"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6792,7 +6786,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,338.02739726027374C282.75,338.02739726027374,282.75,338.7438879757174,393.5,338.7438879757174L393.5,354.90827153736126C282.75,354.90827153736126,282.75,354.1917808219176,172,354.1917808219176Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link118"
+            id="link44"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6829,7 +6823,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M172,413.83561643835617C282.75,413.83561643835617,282.75,366.22334003051196,393.5,366.22334003051196L393.5,382.3877235921558C282.75,382.3877235921558,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link119"
+            id="link45"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6866,7 +6860,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M517.5,37.68645072950067C628.25,37.68645072950067,628.25,36,739,36L739,84.4931506849315C628.25,84.4931506849315,628.25,86.17960141443217,517.5,86.17960141443217Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link120"
+            id="link46"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6903,7 +6897,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M517.5,86.17960141443218C628.25,86.17960141443218,628.25,92.49315068493148,739,92.49315068493148L739,181.39726027397256C628.25,181.39726027397256,628.25,175.0837110034733,517.5,175.0837110034733Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link121"
+            id="link47"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6940,7 +6934,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M517.5,270.8534770168133C628.25,270.8534770168133,628.25,271.54289868025126,739,271.54289868025126L739,368.52920005011424C628.25,368.52920005011424,628.25,367.8397783866763,517.5,367.8397783866763Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link122"
+            id="link48"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -6977,7 +6971,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             d="M517.5,390.3877235921558C628.25,390.3877235921558,628.25,368.52920005011424,739,368.52920005011424L739,371.76207676244303C628.25,371.76207676244303,628.25,393.6206003044846,517.5,393.6206003044846Z"
             data-is-focusable={true}
             fillOpacity={1}
-            id="link123"
+            id="link49"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -7000,7 +6994,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             }
       >
         <g
-          id="nodeGElement67"
+          id="nodeGElement4"
           key="0"
         >
           <rect
@@ -7008,7 +7002,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
-            id="nodeBar66"
+            id="nodeBar3"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7042,7 +7037,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar66-name"
+                id="nodeBar3-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7068,7 +7063,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement71"
+          id="nodeGElement7"
           key="1"
         >
           <rect
@@ -7076,7 +7071,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
-            id="nodeBar70"
+            id="nodeBar6"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7110,7 +7106,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar70-name"
+                id="nodeBar6-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7136,7 +7132,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement75"
+          id="nodeGElement10"
           key="2"
         >
           <rect
@@ -7144,7 +7140,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
-            id="nodeBar74"
+            id="nodeBar9"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7157,7 +7154,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           />
         </g>
         <g
-          id="nodeGElement79"
+          id="nodeGElement13"
           key="3"
         >
           <rect
@@ -7165,7 +7162,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
-            id="nodeBar78"
+            id="nodeBar12"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7199,7 +7197,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar78-name"
+                id="nodeBar12-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7225,7 +7223,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement83"
+          id="nodeGElement16"
           key="4"
         >
           <rect
@@ -7233,7 +7231,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
-            id="nodeBar82"
+            id="nodeBar15"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7246,7 +7245,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           />
         </g>
         <g
-          id="nodeGElement87"
+          id="nodeGElement19"
           key="5"
         >
           <rect
@@ -7254,7 +7253,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
-            id="nodeBar86"
+            id="nodeBar18"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7267,7 +7267,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           />
         </g>
         <g
-          id="nodeGElement91"
+          id="nodeGElement22"
           key="6"
         >
           <rect
@@ -7275,7 +7275,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
-            id="nodeBar90"
+            id="nodeBar21"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7309,7 +7310,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar90-name"
+                id="nodeBar21-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7335,7 +7336,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement95"
+          id="nodeGElement25"
           key="7"
         >
           <rect
@@ -7343,7 +7344,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
-            id="nodeBar94"
+            id="nodeBar24"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7377,7 +7379,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar94-name"
+                id="nodeBar24-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7403,7 +7405,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement99"
+          id="nodeGElement28"
           key="8"
         >
           <rect
@@ -7411,7 +7413,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
-            id="nodeBar98"
+            id="nodeBar27"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7445,7 +7448,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar98-name"
+                id="nodeBar27-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7471,7 +7474,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement103"
+          id="nodeGElement31"
           key="9"
         >
           <rect
@@ -7479,7 +7482,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
-            id="nodeBar102"
+            id="nodeBar30"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7513,7 +7517,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar102-name"
+                id="nodeBar30-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7539,7 +7543,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement107"
+          id="nodeGElement34"
           key="10"
         >
           <rect
@@ -7547,7 +7551,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
-            id="nodeBar106"
+            id="nodeBar33"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7581,7 +7586,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar106-name"
+                id="nodeBar33-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"
@@ -7607,7 +7612,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           </g>
         </g>
         <g
-          id="nodeGElement111"
+          id="nodeGElement37"
           key="11"
         >
           <rect
@@ -7615,7 +7620,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
-            id="nodeBar110"
+            id="nodeBar36"
+            onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity="1"
@@ -7649,7 +7655,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                 fill="#FFFFFF"
                 fontSize={10}
                 fontWeight="regular"
-                id="nodeBar110-name"
+                id="nodeBar36-name"
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
                 textAnchor="start"

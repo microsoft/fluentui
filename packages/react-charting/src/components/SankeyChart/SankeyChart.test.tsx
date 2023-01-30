@@ -325,7 +325,7 @@ describe('Render calling with respective to props', () => {
       width: 800,
     };
     mount(<SankeyChart {...props} />);
-    expect(renderMock).toHaveBeenCalledTimes(2);
+    expect(renderMock).toHaveBeenCalledTimes(1);
     renderMock.mockRestore();
   });
 
@@ -338,7 +338,7 @@ describe('Render calling with respective to props', () => {
     };
     const component = mount(<SankeyChart {...props} />);
     component.setProps({ ...props, height: 1000 });
-    expect(renderMock).toHaveBeenCalledTimes(3);
+    expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
 });

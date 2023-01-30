@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import { sum as d3Sum } from 'd3-array';
-import { ChartHoverCard, SLink, SNode } from '../../index';
+import { ChartHoverCard, IBasestate, IChartHoverCardProps, SLink, SNode } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { select, selectAll } from 'd3-selection';
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
@@ -17,7 +17,7 @@ const PADDING_PERCENTAGE = 0.3;
 type NodesInColumns = { [key: number]: SNode[] };
 type NodeColors = { fillColor: string; borderColor: string };
 
-export interface ISankeyChartState {
+export interface ISankeyChartState extends IBasestate, IChartHoverCardProps {
   containerWidth: number;
   containerHeight: number;
   selectedState: boolean;
@@ -25,13 +25,10 @@ export interface ISankeyChartState {
   selectedNodes: Set<Number>;
   selectedNode?: SNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  nodeElement?: any;
+  refSelected?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  linkElement?: any;
   selectedLink?: SLink;
   shouldOverflow: boolean;
-  isDataNormalised: boolean;
-  prevData: ISankeyChartData | undefined;
 }
 
 const NON_SELECTED_NODE_AND_STREAM_COLOR: string = '#757575';
@@ -66,16 +63,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _nodesInColumn: NodesInColumns;
   private _sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>;
   private _margins: IMargins;
-
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<ISankeyChartProps>,
-    prevState: Readonly<ISankeyChartState>,
-  ): Partial<ISankeyChartState> | null {
-    if (nextProps.data.SankeyChartData !== prevState.prevData) {
-      return { prevData: nextProps.data.SankeyChartData, isDataNormalised: false };
-    }
-    return null;
-  }
+  private _isRtl: boolean = getRTL();
+  private _normalizeData: (data: ISankeyChartData) => void;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -86,36 +75,21 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       selectedLinks: new Set<number>(),
       selectedNodes: new Set<number>(),
       shouldOverflow: false,
-      isDataNormalised: false,
-      prevData: props.data.SankeyChartData,
+      isCalloutVisible: false,
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
     this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
     this._preRenderLayout();
-    this._nodesInColumn = this._populateNodeInColumns(this._sankey);
+    this._normalizeData = memoizeFunction((data: ISankeyChartData) => this._normalizeSankeyData(data));
   }
   public componentDidMount(): void {
     this._fitParentContainer();
-    // We are normalising data based on this state .
-    if (!this.state.isDataNormalised) {
-      this.setState({
-        isDataNormalised: true,
-      });
-    }
   }
 
   public componentDidUpdate(prevProps: ISankeyChartProps): void {
     if (prevProps.shouldResize !== this.props.shouldResize) {
       this._fitParentContainer();
-    }
-    if (prevProps.data.SankeyChartData !== this.props.data.SankeyChartData) {
-      this._preRenderLayout();
-      this._nodesInColumn = this._populateNodeInColumns(this._sankey);
-      this._adjustOnePercentHeightNodes(this._nodesInColumn);
-      this.setState({
-        isDataNormalised: true,
-      });
     }
   }
   public componentWillUnmount(): void {
@@ -132,9 +106,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     });
     // We are using the this._margins.left and this._margins.top in sankey extent while constructing the layout
     const { height, width } = this._preRenderLayout();
-    if (!this.state.isDataNormalised) {
-      this._adjustOnePercentHeightNodes(this._nodesInColumn);
-    }
+    this._normalizeData(this.props.data.SankeyChartData!);
     let nodePadding = 8;
     nodePadding = this._adjustPadding(this._sankey, height - 6, this._nodesInColumn);
 
@@ -144,11 +116,27 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._assignNodeColors();
     const nodeData = this._createNodes(width);
     const linkData = this._createLinks();
+    const calloutProps = {
+      isCalloutVisible: this.state.isCalloutVisible,
+      directionalHint: DirectionalHint.topAutoEdge,
+      id: `toolTip${this._calloutId}`,
+      target: this.state.refSelected,
+      color: this.state.color,
+      XValue: this.state.xCalloutValue,
+      YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+      descriptionMessage: this.state.descriptionMessage,
+      isBeakVisible: false,
+      gapSpace: 15,
+      onDismiss: this._onCloseCallout,
+      className: this._classNames.calloutContentRoot,
+      preventDismissOnLostFocus: true,
+    };
     return (
       <div
         className={this._classNames.root}
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        onMouseLeave={this._onCloseCallout}
       >
         <FocusZone
           direction={FocusZoneDirection.bidirectional}
@@ -160,6 +148,16 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               {linkData}
             </g>
             <g className={this._classNames.nodes}>{nodeData}</g>
+            {calloutProps.isCalloutVisible && (
+              <Callout {...calloutProps}>
+                <ChartHoverCard
+                  XValue={calloutProps.XValue}
+                  YValue={calloutProps.YValue}
+                  color={calloutProps.color}
+                  descriptionMessage={calloutProps.descriptionMessage ? calloutProps.descriptionMessage : ''}
+                />
+              </Callout>
+            )}
           </svg>
         </FocusZone>
       </div>
@@ -177,7 +175,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       .extent([
         [this._margins.left!, this._margins.top!],
         [width - 1, height - 6],
-      ]);
+      ])
+      .nodeAlign(this._isRtl ? d3Sankey.sankeyRight : d3Sankey.sankeyJustify);
 
     return { height, width };
   }
@@ -200,12 +199,18 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     });
   }
 
+  private _normalizeSankeyData(data: ISankeyChartData): void {
+    this._nodesInColumn = this._populateNodeInColumns(data, this._sankey);
+    this._adjustOnePercentHeightNodes(this._nodesInColumn);
+  }
   /**
    *
    * This is used to group nodes by column index.
    */
-  private _populateNodeInColumns(sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>) {
-    const graph = { ...this.props.data.SankeyChartData! };
+  private _populateNodeInColumns(
+    graph: ISankeyChartData,
+    sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>,
+  ) {
     sankey(graph);
     const nodesInColumn: NodesInColumns = {};
     graph.nodes.forEach((node: SNode) => {
@@ -294,16 +299,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
     if (this.props.data.SankeyChartData) {
       this.props.data.SankeyChartData.links.forEach((singleLink: SLink, index: number) => {
-        const calloutProps = {
-          isCalloutVisible: this.state.selectedLink,
-          directionalHint: DirectionalHint.topAutoEdge,
-          id: `toolTip${this._calloutId}`,
-          target: this.state.linkElement,
-          isBeakVisible: false,
-          gapSpace: 15,
-          onDismiss: this._onCloseCallout,
-          className: this._classNames.calloutContentRoot,
-        };
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
@@ -355,18 +350,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                 singleLink!.unnormalizedValue
               }
               role="img"
-            >
-              {calloutProps.isCalloutVisible && (
-                <Callout {...calloutProps}>
-                  <ChartHoverCard
-                    XValue={(this.state.selectedLink!.target as SNode).name}
-                    YValue={this.state.selectedLink!.unnormalizedValue}
-                    color={(this.state.selectedLink!.source as SNode).color}
-                    descriptionMessage={'from ' + (this.state.selectedLink!.source as SNode).name}
-                  />
-                </Callout>
-              )}
-            </path>
+            />
           </g>
         );
         links.push(link);
@@ -386,17 +370,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         };
         const height = singleNode.y1! - singleNode.y0! > 0 ? singleNode.y1! - singleNode.y0! : 0;
         let padding = 8;
-        const calloutProps = {
-          isCalloutVisible:
-            this.state.selectedNode &&
-            this.state.selectedNode!.y1! - this.state.selectedNode!.y0! < MIN_HEIGHT_FOR_TYPE,
-          directionalHint: DirectionalHint.topAutoEdge,
-          id: `toolTip${getId('nodeGElement')}`,
-          target: this.state.nodeElement,
-          isBeakVisible: false,
-          gapSpace: 15,
-          className: this._classNames.calloutContentRoot,
-        };
         let textLengthForNodeWeight = 0;
 
         // If the nodeWeight is in the same line as node description an extra padding
@@ -434,6 +407,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               id={nodeId}
               onMouseOver={this._onHover.bind(this, singleNode)}
               onMouseOut={onMouseOut}
+              onFocus={this._onCloseCallout.bind(this)}
               stroke={this._fillNodeBorder(singleNode)}
               strokeWidth="2"
               opacity="1"
@@ -441,17 +415,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               aria-label={'node' + `${singleNode.name}` + 'with weight' + `${singleNode.actualValue}`}
               role="img"
             />
-
-            {calloutProps.isCalloutVisible && (
-              <Callout {...calloutProps}>
-                <ChartHoverCard
-                  XValue={this.state.selectedNode!.name}
-                  YValue={this.state.selectedNode!.actualValue}
-                  color={this.state.selectedNode!.color}
-                />
-              </Callout>
-            )}
-
             {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (
               <g className={this._classNames.nodeTextContainer}>
                 <g className="nodeName">
@@ -461,7 +424,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                     y={singleNode.y0}
                     dy={'1.2em'}
                     dx={'0.4em'}
-                    textAnchor="start"
+                    textAnchor={this._isRtl ? 'end' : 'start'}
                     fontWeight="regular"
                     aria-hidden="true"
                     fill={
@@ -490,7 +453,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                   y={singleNode.y0}
                   dy={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '2em' : '1em'}
                   dx={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '0.4em' : '0em'}
-                  textAnchor="start"
+                  textAnchor={this._isRtl ? 'end' : 'start'}
                   fontWeight="bold"
                   aria-hidden="true"
                   fill={
@@ -526,7 +489,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: new Set<number>(),
         selectedLinks: new Set<number>(),
         selectedNode: undefined,
-        nodeElement: undefined,
       });
     }
   }
@@ -534,6 +496,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onHover(singleNode: SNode, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
+    this._onCloseCallout();
     if (!this.state.selectedState) {
       const selectedLinks = this._getSelectedLinks(singleNode);
       const selectedNodes = this._getSelectedNodes(selectedLinks);
@@ -543,7 +506,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: new Set<number>(Array.from(selectedNodes).map(node => node.index)),
         selectedLinks: new Set<number>(Array.from(selectedLinks).map(link => link.index!)),
         selectedNode: singleNode,
-        nodeElement: mouseEvent,
+        refSelected: mouseEvent, //this._refArray.get(index),
+        isCalloutVisible: singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE,
+        color: singleNode.color,
+        xCalloutValue: singleNode.name,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        yCalloutValue: (singleNode.actualValue! as any) as string,
       });
     }
   }
@@ -551,45 +519,57 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onStreamHover(singleLink: SLink, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
+    this._onCloseCallout();
     if (!this.state.selectedState) {
       const { selectedLinks, selectedNodes } = this._getSelectedLinksforStreamHover(singleLink);
       this.setState({
         selectedState: true,
         selectedNodes: new Set<number>(Array.from(selectedNodes).map(node => node.index!)),
         selectedLinks: new Set<number>(Array.from(selectedLinks).map(link => link.index!)),
-        linkElement: mouseEvent,
+        refSelected: mouseEvent,
         selectedLink: singleLink,
+        isCalloutVisible: true,
+        color: (singleLink.source as SNode).color,
+        xCalloutValue: (singleLink.target as SNode).name,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        yCalloutValue: ((singleLink.source as SNode).actualValue! as any) as string,
+        descriptionMessage: 'from ' + (singleLink.source as SNode).name,
       });
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onStreamLeave(singleLink: SLink) {
     if (this.state.selectedState) {
       this.setState({
         selectedState: false,
         selectedNodes: new Set<number>(),
         selectedLinks: new Set<number>(),
-        linkElement: '',
         selectedLink: undefined,
       });
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onFocusLink(singleLink: SLink, element: React.FocusEvent<SVGElement>): void {
     element.persist();
+    this._onCloseCallout();
     this.setState({
-      linkElement: element.currentTarget,
+      refSelected: element.currentTarget,
       selectedLink: singleLink,
+      isCalloutVisible: true,
+      color: (singleLink.source as SNode).color,
+      xCalloutValue: (singleLink.target as SNode).name,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      yCalloutValue: ((singleLink.source as SNode).actualValue! as any) as string,
+      descriptionMessage: 'from ' + (singleLink.source as SNode).name,
     });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onCloseCallout = () => {
     this.setState({
-      selectedLink: undefined,
-      linkElement: '',
+      isCalloutVisible: false,
+      refSelected: undefined,
+      descriptionMessage: '',
     });
   };
 
