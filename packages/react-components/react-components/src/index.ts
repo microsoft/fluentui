@@ -90,6 +90,7 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getSlots,
+  IdPrefixProvider,
   resetIdsForTests,
   resolveShorthand,
   SSRProvider,
@@ -196,7 +197,10 @@ export {
 export type {
   AvatarNamedColor,
   AvatarProps,
+  // AvatarSizes is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   AvatarSizes,
+  AvatarSize,
   AvatarSlots,
   AvatarState,
   AvatarGroupProps,

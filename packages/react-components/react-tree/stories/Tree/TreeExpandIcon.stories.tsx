@@ -3,44 +3,43 @@ import { Tree, TreeItem } from '@fluentui/react-tree';
 import { Add12Regular, Subtract12Regular } from '@fluentui/react-icons';
 import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/Tree';
 
-const RenderExpandIcon = ({ openSubtrees, id }: { openSubtrees: string[]; id: string }) =>
-  openSubtrees.includes(id) ? <Add12Regular /> : <Subtract12Regular />;
-
 export const ExpandIcon = () => {
-  const [openSubtrees, setOpenSubtrees] = React.useState<string[]>([]);
-  const handleOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenSubtrees(curr => (data.open ? [...curr, data.id] : curr.filter(id => id !== data.id)));
+  const [openItems, setOpenItems] = React.useState<string[]>([]);
+  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    setOpenItems(curr =>
+      data.open ? [...curr, event.currentTarget.id] : curr.filter(id => id !== event.currentTarget.id),
+    );
   };
   return (
-    <Tree aria-label="Tree" onOpenChange={handleOpenChange}>
+    <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem
-        aria-owns="default-subtree-1"
-        expandIcon={<RenderExpandIcon openSubtrees={openSubtrees} id="default-subtree-1" />}
+        id="tree-item-1"
+        expandIcon={openItems.includes('tree-item-1') ? <Add12Regular /> : <Subtract12Regular />}
       >
         level 1, item 1
+        <Tree>
+          <TreeItem>level 2, item 1</TreeItem>
+          <TreeItem>level 2, item 2</TreeItem>
+          <TreeItem>level 2, item 3</TreeItem>
+        </Tree>
       </TreeItem>
-      <Tree id="default-subtree-1">
-        <TreeItem>level 2, item 1</TreeItem>
-        <TreeItem>level 2, item 2</TreeItem>
-        <TreeItem>level 2, item 3</TreeItem>
-      </Tree>
       <TreeItem
-        aria-owns="default-subtree-2"
-        expandIcon={<RenderExpandIcon openSubtrees={openSubtrees} id="default-subtree-2" />}
+        id="tree-item-2"
+        expandIcon={openItems.includes('tree-item-2') ? <Add12Regular /> : <Subtract12Regular />}
       >
         level 1, item 2
-      </TreeItem>
-      <Tree id="default-subtree-2">
-        <TreeItem
-          aria-owns="default-subtree-2-1"
-          expandIcon={<RenderExpandIcon openSubtrees={openSubtrees} id="default-subtree-2-1" />}
-        >
-          level 2, item 1
-        </TreeItem>
-        <Tree id="default-subtree-2-1">
-          <TreeItem>level 3, item 1</TreeItem>
+        <Tree>
+          <TreeItem
+            id="tree-item-3"
+            expandIcon={openItems.includes('tree-item-3') ? <Add12Regular /> : <Subtract12Regular />}
+          >
+            level 2, item 1
+            <Tree>
+              <TreeItem>level 3, item 1</TreeItem>
+            </Tree>
+          </TreeItem>
         </Tree>
-      </Tree>
+      </TreeItem>
     </Tree>
   );
 };

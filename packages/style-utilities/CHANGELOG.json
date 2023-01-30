@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Fri, 27 Jan 2023 07:37:50 GMT",
+      "tag": "@fluentui/style-utilities_v8.9.0",
+      "version": "8.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "d1dc25a7a7f66a5aebdf55a47dcde2167613e92a",
+            "comment": "feat(getFocusStyle): Optionally tweak pointer-events on the focus ring"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:48 GMT",
       "tag": "@fluentui/style-utilities_v8.8.5",
       "version": "8.8.5",

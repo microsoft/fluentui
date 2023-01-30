@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 07:35:32 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c5ad495ac5b9f4a10906f241b6b4ce54dbd9e7d1",
+            "comment": "feat: bump tslib to 2.1 to align with rest of monorepo packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:49 GMT",
       "tag": "@fluentui/web-components_v2.5.11",
       "version": "2.5.11",
