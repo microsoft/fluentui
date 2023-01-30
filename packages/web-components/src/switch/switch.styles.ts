@@ -22,7 +22,6 @@ import {
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
-  fontWeightSemibold,
   lineHeightBase300,
   spacingHorizontalS,
   spacingVerticalS,
