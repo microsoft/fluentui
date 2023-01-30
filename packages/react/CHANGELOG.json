@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 30 Jan 2023 07:36:22 GMT",
+      "tag": "@fluentui/react_v8.105.0",
+      "version": "8.105.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4598aa1ee1dd93fd347ba202b0d2021e943510ff",
+            "comment": "fix: remove invalid extra checkbox at end of DetailsRow"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jan 2023 07:37:50 GMT",
       "tag": "@fluentui/react_v8.104.8",
       "version": "8.104.8",
