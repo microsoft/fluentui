@@ -4,7 +4,6 @@ import {
   borderRadiusSmall,
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
-  colorNeutralStroke1Selected,
   colorStrokeFocus1,
   colorStrokeFocus2,
   colorTransparentBackground,

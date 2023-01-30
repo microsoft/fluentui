@@ -36,7 +36,7 @@ class AccordionItem extends FASTAccordionItem {
    * HTML Attribute: expandIconPosition
    */
   @attr({ attribute: 'expandIconPosition' })
-  public expandIconPosition: AccordionItemSize;
+  public expandIconPosition: AccordionItemExpandIconPosition;
 }
 
 export { AccordionItem };
