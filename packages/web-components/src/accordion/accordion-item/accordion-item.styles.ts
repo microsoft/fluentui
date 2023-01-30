@@ -74,7 +74,7 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
   }
 
-  :host([expandiconposition='start']) .icon {
+  :host .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,6 +100,7 @@ export const styles = css`
   :host slot[name='collapsed-icon'],
   :host slot[name='expanded-icon'] {
     display: flex;
+    align-items: center;
   }
 
   :host slot[name='expanded-icon'] {
@@ -193,14 +194,6 @@ export const styles = css`
     display: flex;
     padding-left: 10px;
     padding-right: 0;
-  }
-
-  :host([expandIconPosition='end']) .icon slot[name='expanded-icon'] {
-    transform: rotate(180deg);
-  }
-
-  :host([expandIconPosition='end']) .icon slot[name='collapsed-icon'] {
-    transform: rotate(90deg);
   }
 
   :host([expandIconPosition='end']) .button {

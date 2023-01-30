@@ -10,11 +10,12 @@ class AccordionItem extends FASTAccordionItem {
    * Defines accordion header size.
    *
    * @public
+   * @default 'medium'
    * @remarks
    * HTML Attribute: appearance
    */
-
-  @attr appearance?: AccordionItemSize = 'medium';
+  @attr({ attribute: 'appearance' })
+  public appearance: AccordionItemSize;
 
   /**
    * Sets the width of the focus state.
@@ -23,16 +24,19 @@ class AccordionItem extends FASTAccordionItem {
    * @remarks
    * HTML Attribute: block
    */
-  @attr({ mode: 'boolean' }) block: boolean = true;
+  @attr({ mode: 'boolean' })
+  block: boolean = true;
 
   /**
    * Sets expand and collapsed icon position.
    *
    * @public
+   * @default 'start'
    * @remarks
    * HTML Attribute: expandIconPosition
    */
-  @attr expandIconPosition?: AccordionItemExpandIconPosition = 'start';
+  @attr({ attribute: 'expandIconPosition' })
+  public expandIconPosition: AccordionItemSize;
 }
 
 export { AccordionItem };

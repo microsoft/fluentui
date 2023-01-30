@@ -2,7 +2,7 @@ import { ElementViewTemplate, html } from '@microsoft/fast-element';
 import { accordionItemTemplate } from '@microsoft/fast-foundation';
 import { AccordionItem } from './accordion-item.js';
 
-const chevronRight20Filled = html`<svg
+const chevronRight20Filled = html` <svg
   width="20"
   height="20"
   viewBox="0 0 20 20"
@@ -15,7 +15,7 @@ const chevronRight20Filled = html`<svg
   />
 </svg>`;
 
-const chevronDown20Filled = html`<svg
+const chevronDown20Filled = html` <svg
   width="20"
   height="20"
   viewBox="0 0 20 20"
