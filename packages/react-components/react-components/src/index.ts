@@ -34,6 +34,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
 } from '@fluentui/react-tabster';
