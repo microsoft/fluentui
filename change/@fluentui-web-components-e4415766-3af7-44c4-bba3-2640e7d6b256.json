@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds Divider component",
+  "packageName": "@fluentui/web-components",
+  "email": "harankin@microsoft.com",
+  "dependentChangeType": "patch"
+}
