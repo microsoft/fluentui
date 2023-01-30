@@ -86,7 +86,7 @@ storiesOf('Persona Converged', module)
   .addStory('textAlignment', () => (
     <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
       {textAlignments.map(textAlignment => (
-        <div style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
+        <div key={textAlignment} style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
           <Persona
             textAlignment={textAlignment}
             presenceOnly
