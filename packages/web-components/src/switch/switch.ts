@@ -7,6 +7,7 @@ export class Switch extends FASTSwitch {
    * The label position of the switch
    *
    * @public
+   * @default 'after'
    * @remarks
    * HTML Attribute: labelposition
    */

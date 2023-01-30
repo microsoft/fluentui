@@ -1,11 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
-import type { Switch as DCSSwitch } from './switch.js';
+import type { Switch as FluentSwitch } from './switch.js';
 import './define.js';
 import { SwitchLabelPosition } from './switch.options.js';
 
-type SwitchStoryArgs = Args & DCSSwitch;
+type SwitchStoryArgs = Args & FluentSwitch;
 type SwitchStoryMeta = Meta<SwitchStoryArgs>;
 
 const storyTemplate = html<SwitchStoryArgs>`
