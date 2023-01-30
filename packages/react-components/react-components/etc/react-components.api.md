@@ -589,6 +589,7 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
@@ -1864,6 +1865,8 @@ export { useFocusableGroup }
 export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
+
+export { useFocusWithin }
 
 export { useId }
 
