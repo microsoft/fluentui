@@ -1,8 +1,17 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 31 Oct 2022 12:24:01 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Jan 2023 12:23:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.11](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.11)
+
+Mon, 30 Jan 2023 12:23:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.10.10..@uifabric/file-type-icons_v7.10.11)
+
+### Patches
+
+- Update CDN information for filetype icons, new icons for loop and clipchamp. ([PR #26273](https://github.com/microsoft/fluentui/pull/26273) by caperez@microsoft.com)
 
 ## [7.10.10](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.10.10)
 

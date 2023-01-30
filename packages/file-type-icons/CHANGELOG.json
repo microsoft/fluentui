@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Mon, 30 Jan 2023 12:23:13 GMT",
+      "tag": "@uifabric/file-type-icons_v7.10.11",
+      "version": "7.10.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update CDN information for filetype icons, new icons for loop and clipchamp.",
+            "author": "caperez@microsoft.com",
+            "commit": "b8dcc2639c4c83fcc5511821dd94895a0e224c33",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Oct 2022 12:24:01 GMT",
       "tag": "@uifabric/file-type-icons_v7.10.10",
       "version": "7.10.10",

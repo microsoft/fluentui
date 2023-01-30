@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 30 Jan 2023 12:23:13 GMT",
+      "tag": "@uifabric/fabric-website_v7.17.15",
+      "version": "7.17.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.10.11",
+            "author": "caperez@microsoft.com",
+            "commit": "b8dcc2639c4c83fcc5511821dd94895a0e224c33",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jan 2023 12:23:20 GMT",
       "tag": "@uifabric/fabric-website_v7.17.15",
       "version": "7.17.15",

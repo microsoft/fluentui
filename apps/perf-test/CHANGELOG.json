@@ -2,6 +2,21 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Mon, 30 Jan 2023 12:23:13 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.45.23",
+            "author": "caperez@microsoft.com",
+            "commit": "b8dcc2639c4c83fcc5511821dd94895a0e224c33",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jan 2023 12:23:20 GMT",
       "tag": "perf-test_v7.0.0",
       "version": "7.0.0",
