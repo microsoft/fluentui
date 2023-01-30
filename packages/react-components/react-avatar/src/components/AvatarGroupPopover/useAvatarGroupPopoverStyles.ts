@@ -69,6 +69,7 @@ const useTriggerButtonStyles = makeStyles({
 
   focusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    outlineStyle: 'none',
   }),
 
   states: {
