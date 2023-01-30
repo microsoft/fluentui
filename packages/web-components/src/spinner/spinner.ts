@@ -11,6 +11,7 @@ export class Spinner extends FASTProgressRing {
    * The size of the spinner
    *
    * @public
+   * @default 'medium'
    * @remarks
    * HTML Attribute: size
    */
@@ -18,9 +19,9 @@ export class Spinner extends FASTProgressRing {
   public size: SpinnerSize;
 
   /**
-   * The appearance of the progress bar
+   * The appearance of the spinner
    * @public
-   * @default 'medium'
+   * @default 'primary'
    * @remarks
    * HTML Attribute: appearance
    */
