@@ -37,6 +37,7 @@
       "@fluentui/react-datepicker": ["packages/react-components/react-datepicker/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/src/index.ts"],
+      "@fluentui/react-drawer": ["packages/react-components/react-drawer/src/index.ts"],
       "@fluentui/react-field": ["packages/react-components/react-field/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
