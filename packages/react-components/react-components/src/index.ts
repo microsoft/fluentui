@@ -569,7 +569,11 @@ export {
   useTab_unstable,
   renderTabList_unstable,
   TabList,
+  TabListContext,
   tabListClassNames,
+  TabListProvider,
+  useTabListContext_unstable,
+  useTabListContextValues_unstable,
   useTabListStyles_unstable,
   useTabList_unstable,
 } from '@fluentui/react-tabs';
