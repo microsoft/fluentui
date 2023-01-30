@@ -234,25 +234,25 @@ export const SpinnerAppearance: {
     readonly inverted: "inverted";
 };
 
-// @public (undocumented)
+// @public
 export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
 
 // @public
 export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
 
 // @public
-export const SpinnerSize: {
-    readonly small: "small";
-    readonly tiny: "tiny";
-    readonly 'extra-small': "extra-small";
-    readonly medium: "medium";
-    readonly large: "large";
-    readonly 'extra-large': "extra-large";
-    readonly huge: "huge";
-};
+export type SpinnerSize = Values<typeof SpinnerSize>;
 
 // @public
-export type SpinnerSize = Values<typeof SpinnerSize>;
+export const SpinnerSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+    readonly huge: "huge";
+};
 
 // @public (undocumented)
 export const SpinnerStyles: ElementStyles;
