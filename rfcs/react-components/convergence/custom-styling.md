@@ -112,78 +112,70 @@ the context type it will inspect for custom styling follows SOLID dependency inv
 
 ## Option A2: Add global custom styling hook
 
-A global custom styling hook would be defined. It takes a component kind and state.
-
-> We experimented with several ways to try and make the method typesafe, but it proved
-> either overly complex, forced conditional calls that would make hooks unstable,
-> led to cirtcular references between packages, or restricted custom styling to the point
-> of lower value as an escape hatch.
+A global object would be defined having custom styling hooks for each known component. 
+To avoid circular references and preventing tree-shaking, each hook takes state as `unknown`.
 
 ```tsx
 export type FluentStyleCustomizer = {
-  useCustomStyles_unstable: (kind: string, state: any) => void;
+  useCustomButtonStyles_unstable: (state: unknown) => void;
 };
+```
 
+The global will have no-op methods defined so components can call unconditionally.
+
+```
 export const fuiCustomizer: FuiCustomizer = {
-  useCustomStyles_unstable: () => {},
+  useCustomButtonStyles_unstable: () => {},
+  //...
 };
 ```
 
 Components would call the custom styling hook immediately after their own styling hook.
 
-> The kind passed to the custom style hook can be specific to library (e.g. 'FluentUI.Button').
-
 ```tsx
-export const SomeComponent: ForwardRefComponent<SomeComponentProps> = React.forwardRef((props, ref) => {
-  const state = useSomeComponent_unstable(props, ref);
+export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton_unstable(props, ref);
 
-  useSomeComponentStyles_unstable(state);
+  useButtonStyles_unstable(state);
 
-  fuiCustomizer.useCustomStyles_unstable('SomeComponent', state);
+  fuiCustomizer.useButtonCustomStyles_unstable(state);
 
-  return renderSomeComponent_unstable(state);
-  // Casting is required due to lack of distributive union to support unions on @types/react
-}) as ForwardRefComponent<SomeComponentProps>;
+  return renderButton_unstable(state);
+}) as ForwardRefComponent<ButtonProps>;
 ```
 
-Callers can customize styles by replacing the default useCustomStyles_unstable hook.
+Callers can customize styles by replacing the default hook for a component.
 
-> Callers are encouraged to use Griffel to define styles.
-> They can use makeStyles and mergeClasses to default, override, or replace
-> The classes applied by the component style hook.
-> A good implementation will switch to typesafe methods.
+Callers are encouraged to use Griffel to define styles. They can use makeStyles and mergeClasses to default, override, or replace. The classes applied by the component style hook.
+
+A good implementation will switch to typesafe methods.
 
 ```ts
-const useSomeComponentCustomStyles = (state: SomeComponentState) => {
+export const useFancyButtonStyles = (state: unknown) => {
   const styles = useStyles();
 
-  if (state.active) {
-  }
-  state.root.className = mergeClasses(
-    state.root.className,
-    styles.root,
-    state.size === 'small' && styles.small,
-    state.size === 'medium' && styles.medium,
-    state.size === 'large' && styles.large,
-  );
-};
+  const buttonState = state as ButtonState;
 
-fuiCustomizer.useCustomStyles_unstable = (kind: string, state: any) => {
-  switch (kind) {
-    case 'SomeComponent':
-      useSomeComponentCustomStyles(<SomeComponentState>state);
-      break;
-    // case ...
-  }
+  buttonState.root.className = mergeClasses(
+    buttonState.root.className,
+    styles.root,
+    buttonState.size === 'small' && styles.small,
+    buttonState.size === 'medium' && styles.medium,
+    buttonState.size === 'large' && styles.large,
+  );
 };
 ```
 
-### 💡 Improvement - apply Typescript discriminant property technique
+When the application is created, the customizer hooks can be set.
 
-- Add a `kind: string` property to ComponentState
-- Each component state would redefine kind to restrict customization to their type (e.g. Button would have `kind: 'Button'`).
-- Remove kind parameter from useCustomStyles.
-- Trying to cast to the wrong component state will fail.
+```tsx
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement!);
+
+fuiCustomizer.useButtonCustomStyles = useFancyButtonStyles;
+
+root.render(<App />);
+```
 
 ### 👍
 
@@ -201,7 +193,7 @@ fuiCustomizer.useCustomStyles_unstable = (kind: string, state: any) => {
 
 ### 👎
 
-- Custom style hook state is not compile-time typesafe.
+- Custom style hook state is not typesafe. With the component-specific hooks, there is less chance for error.
 - Very powerful. Only modifying classes is an implicit agreement but state modification is possible.
 - Callers doing custom styling may still take a dependency on the CSS internals of the component.
 
