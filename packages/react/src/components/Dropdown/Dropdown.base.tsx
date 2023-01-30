@@ -346,7 +346,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       isRenderingPlaceholder: !selectedOptions.length,
       panelClassName: panelProps ? panelProps.className : undefined,
       calloutClassName: calloutProps ? calloutProps.className : undefined,
-      calloutRenderEdge: calloutRenderEdge,
+      calloutRenderEdge,
     });
 
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
@@ -847,13 +847,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
-        onRenderLabel={this._onRenderItemLabel.bind(this, item)}
+        onRenderLabel={this._onRenderItemLabel.bind(this, item, this._listId + item.index + '-label')}
         className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}
         ariaSetSize={!item.hidden ? this._sizePosCache.optionSetSize : undefined}
         ariaLabel={item.ariaLabel}
+        ariaLabelledBy={item.ariaLabel ? undefined : this._listId + item.index + '-label'}
       />
     );
   };
@@ -864,9 +865,13 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   /** Render custom label for drop down item */
-  private _onRenderItemLabel = (item: IDropdownOption): JSX.Element | null => {
+  private _onRenderItemLabel = (item: IDropdownOption, id: string): JSX.Element | null => {
     const { onRenderOption = this._onRenderOption } = this.props;
-    return onRenderOption(item, this._onRenderOption);
+    return (
+      <div id={id} aria-hidden="true">
+        {onRenderOption(item, this._onRenderOption)}
+      </div>
+    );
   };
 
   private _onPositioned = (positions?: ICalloutPositionedInfo): void => {
