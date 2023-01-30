@@ -319,7 +319,7 @@
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
     "source-map-loader": "4.0.0",
-    "storybook-addon-export-to-codesandbox": "0.7.1",
+    "storybook-addon-export-to-codesandbox": "0.8.1",
     "storybook-addon-performance": "0.16.1",
     "storywright": "0.0.26-beta.1",
     "strip-ansi": "6.0.0",
