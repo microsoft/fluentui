@@ -13,7 +13,6 @@ export const buttonPadding = '0px 16px';
 export const calendarHeightInner = '22px';
 export const choiceFieldHeight = '18px';
 export const commandBarHeight = '36px';
-export const DayIsTodayDimension = '27px';
 export const dropDownItemHeight = '32px';
 export const fontFamily =
   // eslint-disable-next-line @fluentui/max-len

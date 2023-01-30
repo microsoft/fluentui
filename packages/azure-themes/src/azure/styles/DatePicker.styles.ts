@@ -55,12 +55,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
             display: 'none !important',
             border: 0,
           },
-          '.ms-CalendarDay-dayIsToday': {
-            color: semanticColors.primaryButtonText,
-            borderRadius: StyleConstants.borderRadius,
-            width: StyleConstants.DayIsTodayDimension,
-            height: StyleConstants.DayIsTodayDimension,
-          },
         },
       },
     ],
