@@ -20,6 +20,7 @@ export class Spinner extends FASTProgressRing {
   /**
    * The appearance of the progress bar
    * @public
+   * @default 'medium'
    * @remarks
    * HTML Attribute: appearance
    */

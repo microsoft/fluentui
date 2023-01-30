@@ -12,7 +12,7 @@ const storyTemplate = html<SpinnerStoryArgs>`
 `;
 
 export default {
-  title: 'Web Components/Spinner',
+  title: 'Components/Spinner',
   argTypes: {
     appearance: {
       description: 'The appearance of the spinner',

@@ -1,23 +1,5 @@
 export type Values<T> = T[keyof T];
 /**
- * Spinner size options
- * @public
- */
-export const SpinnerSize = {
-  /**
-   * A Spinner's size can be small, tiny, extra-small, medium, large, extra-large, or huge
-   *
-   */
-  small: 'small',
-  tiny: 'tiny',
-  extraSmall: 'extra-small',
-  medium: 'medium',
-  large: 'large',
-  extraLarge: 'extra-large',
-  huge: 'huge',
-} as const;
-
-/**
  * Spinner appearance options
  * @public
  */
@@ -46,3 +28,21 @@ export type SpinnerSize = Values<typeof SpinnerSize>;
  * @public
  */
 export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
+
+/**
+ * Spinner size options
+ * @public
+ */
+export const SpinnerSize = {
+  /**
+   * A Spinner's size can be small, tiny, extra-small, medium, large, extra-large, or huge
+   *
+   */
+  tiny: 'tiny',
+  extraSmall: 'extra-small',
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+  extraLarge: 'extra-large',
+  huge: 'huge',
+} as const;
