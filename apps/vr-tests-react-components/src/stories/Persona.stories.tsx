@@ -86,16 +86,26 @@ storiesOf('Persona Converged', module)
   .addStory('textAlignment', () => (
     <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
       {textAlignments.map(textAlignment => (
-        <Persona
-          textAlignment={textAlignment}
-          presenceOnly
-          presence={{ status: 'available' }}
-          name="Kevin Sturgis"
-          secondaryText="Software Engineer"
-          tertiaryText="Available"
-          quaternaryText="Microsoft"
-          key={textAlignment}
-        />
+        <>
+          <Persona
+            textAlignment={textAlignment}
+            presenceOnly
+            presence={{ status: 'available' }}
+            name="Kevin Sturgis"
+            secondaryText="Software Engineer"
+            tertiaryText="Available"
+            quaternaryText="Microsoft"
+            key={'presence-' + textAlignment}
+          />
+          {/* This test is to verify that when the Avatar takes more space than the text lines, the text lines are centered */}
+          <Persona
+            textAlignment={textAlignment}
+            size="huge"
+            name="Kevin Sturgis"
+            secondaryText="Software Engineer"
+            key={'avatar-' + textAlignment}
+          />
+        </>
       ))}
     </div>
   ))
