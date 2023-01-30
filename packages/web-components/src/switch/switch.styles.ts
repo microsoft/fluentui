@@ -21,6 +21,7 @@ import {
   durationNormal,
   fontFamilyBase,
   fontSizeBase300,
+  fontWeightRegular,
   fontWeightSemibold,
   lineHeightBase300,
   spacingHorizontalS,
@@ -58,7 +59,7 @@ export const styles = css`
     color: ${colorNeutralForeground1};
     line-height: ${lineHeightBase300};
     font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightSemibold};
+    font-weight: ${fontWeightRegular};
     font-family: ${fontFamilyBase};
     padding: ${spacingVerticalXS} ${spacingHorizontalS} ${spacingVerticalXS} ${spacingHorizontalS};
   }
