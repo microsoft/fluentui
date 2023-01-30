@@ -1,5 +1,5 @@
 import { createTheme, Theme } from '@fluentui/react';
-import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
+import { BaseColors, CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
@@ -100,7 +100,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   rowBorder: DarkSemanticColors.detailsRow.border,
   rowFocus: DarkSemanticColors.detailsRow.focus,
   tabHover: DarkSemanticColors.tabs.hover,
-  variantBorder: CommonSemanticColors.dividers.lineSeparator,
+  variantBorder: BaseColors.TRANSPARENT,
 
   // extended
   commandBarButtonAfterColor: DarkSemanticColors.commandBar.button.focus.borderColor,
