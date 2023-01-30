@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Added context exports",
+  "comment": "chore: Added context exports",
   "packageName": "@fluentui/react-tabs",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
