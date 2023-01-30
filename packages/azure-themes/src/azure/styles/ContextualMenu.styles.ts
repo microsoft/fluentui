@@ -18,7 +18,6 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
       callout: {
         root: {
           backgroundColor: extendedSemanticColors.controlBackground,
-
           borderColor: semanticColors.variantBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: StyleConstants.borderWidth,
