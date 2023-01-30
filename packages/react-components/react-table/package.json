@@ -39,6 +39,7 @@
     "@fluentui/react-context-selector": "^9.1.6",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-radio": "^9.0.21",
+    "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-tabster": "^9.4.1",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.0",
