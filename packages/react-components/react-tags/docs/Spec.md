@@ -62,17 +62,14 @@ _Provide some representative example code that uses the proposed API for the com
 
 ### Slots
 
-#### Tag
-
 - root: span
 - content: span (primary)
   - image
   - icon
+  - secondary
 - dismiss
 
 ### Props
-
-#### Shared
 
 Appearance
 
@@ -89,15 +86,21 @@ Dismiss
 
 ## Structure
 
+(classes denote slot name other than root)
+
 ### Simple Tag
 
 ```tsx
 <Tag>Simple Tag</Tag>
+<Tag secondary="The secondary text">Simple Tag with secondary text</Tag>
 <Tab as="li">Simple List Tag</Tag>
 ```
 
 ```html
 <span> <span class="content"> Simple Tag </span></span>
+<span>
+  <span class="content"> Simple Tag <span class="secondary">The secondary text</span></span></span
+>
 <li><span class="content"> Simple Tag </span></li>
 ```
 
