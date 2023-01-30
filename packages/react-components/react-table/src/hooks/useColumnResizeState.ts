@@ -65,8 +65,8 @@ export function useColumnResizeState<T>(
   );
 
   const setColumnIdealWidth = React.useCallback(
-    (columnId: TableColumnId, minWidth: number) => {
-      setState(setColumnProperty(state, columnId, 'idealWidth', minWidth));
+    (columnId: TableColumnId, idealWidth: number) => {
+      setState(setColumnProperty(state, columnId, 'idealWidth', idealWidth));
     },
     [state],
   );
