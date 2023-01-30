@@ -43,6 +43,8 @@ export const Example = () => {
 
 ## Composing Tokens
 
+Besides using typography styles, you can still use individual typography tokens:
+
 ```tsx
 import * as React from 'react';
 import { makeStyles, tokens } from '@fluentui/react-components';
@@ -68,6 +70,8 @@ export const Composing = () => {
 </Canvas>
 
 ## Mixing tokens and custom styles
+
+To mix tokens and custom styles, spread typography styles into the style object and combine them with another CSS properties:
 
 ```tsx
 import * as React from 'react';
