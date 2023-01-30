@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Update Field spec and migration guide",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}
