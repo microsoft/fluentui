@@ -63,19 +63,18 @@ export default {
   },
   argTypes: {
     content: {
+      description: 'HTML element wrapping text  (e.g. `<h3>Section One</h3>`), Image or SVG',
       table: {
-        type: {
-          summary: 'HTML element wrapping text  (e.g. <h3>Section One</h3>), Image or SVG',
-        },
         defaultValue: {
           summary: 'empty',
         },
       },
     },
     alignContent: {
+      description: 'Align content',
       table: {
         type: {
-          summary: 'Align content within the divider',
+          summary: 'Fluent v9. Determines the alignment of the content within the divider.',
         },
         defaultValue: {
           summary: 'center',
@@ -87,9 +86,10 @@ export default {
       },
     },
     appearance: {
+      description: 'Divider and text colors',
       table: {
         type: {
-          summary: 'Divider and text colors',
+          summary: 'Fluent v9. A divider can have one of the preset appearances.',
         },
         defaultValue: {
           summary: 'default',
@@ -101,9 +101,10 @@ export default {
       },
     },
     role: {
+      description: 'Set role attribute',
       table: {
         type: {
-          summary: 'Set role attribute',
+          summary: 'Inherited from FASTDivider. Aria role for the divider.',
         },
         defaultValue: {
           summary: 'separator',
@@ -115,9 +116,11 @@ export default {
       },
     },
     inset: {
+      description: 'Pad the ends of divider',
       table: {
         type: {
-          summary: 'Pads ends of divider',
+          summary:
+            'Type: boolean. Fluent v9. Divider layout is block for strict distinctions between items, or inset for closer relationships with neighboring content.',
         },
         defaultValue: {
           summary: false,
@@ -126,9 +129,11 @@ export default {
       control: 'boolean',
     },
     orientation: {
+      description: 'Divider layout',
       table: {
         type: {
-          summary: 'Divider layout, used also for aria-orientation',
+          summary:
+            'Inherited from FASTDivider. Layout can be horizontal or vertical. Adds aria-orientation to component.',
         },
         defaultValue: {
           summary: 'horizontal',
