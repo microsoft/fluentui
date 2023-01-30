@@ -40,7 +40,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         selectors: {
           '.ms-TextField-fieldGroup': {
             borderColor: semanticColors.datePickerDisabledBorder,
-            borderRadius: 2,
+            borderRadius: StyleConstants.borderRadius,
           },
           '.ms-TextField-field': {
             lineHeight: 22,
@@ -56,7 +56,10 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
             border: 0,
           },
           '.ms-CalendarDay-dayIsToday': {
-            borderRadius: 3,
+            color: semanticColors.primaryButtonText,
+            borderRadius: StyleConstants.borderRadius,
+            width: StyleConstants.DayIsTodayDimension,
+            height: StyleConstants.DayIsTodayDimension,
           },
         },
       },

@@ -34,6 +34,7 @@ import { SliderBasicExample } from '../components/slider.stories';
 import { SpinButtonBasicExample } from '../components/SpinButton.stories';
 import { DatePickerBasicExample } from '../components/defaultDatePicker';
 import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
+import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -97,6 +98,7 @@ const Example = () => (
       <Label className="section">DatePicker</Label>
       <DatePickerBasicExample />
       <DatePickerBoundedExample />
+      <CalendarInlineMultidayDayViewExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>

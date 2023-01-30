@@ -19,7 +19,7 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
         fontSize: 0,
         paddingTop: 1,
         paddingLeft: 1,
-        borderRadius: 2,
+        borderRadius: StyleConstants.borderRadius,
         color: semanticColors.listBackground,
         backgroundColor: semanticColors.listBackground,
         borderColor: semanticColors.ButtonBorderFocus,
