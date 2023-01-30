@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 30 Jan 2023 07:36:21 GMT",
+      "tag": "@fluentui/react-charting_v5.14.40",
+      "version": "5.14.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "27fc5f14887373354f818454d8b09ee5d2e47cb4",
+            "comment": "Fix duplicate-id accessibility issue in line chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.105.0",
+            "commit": "b9284238a8b79e3d0864ce26a8bb0e9ffb33a96a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jan 2023 07:37:51 GMT",
       "tag": "@fluentui/react-charting_v5.14.39",
       "version": "5.14.39",

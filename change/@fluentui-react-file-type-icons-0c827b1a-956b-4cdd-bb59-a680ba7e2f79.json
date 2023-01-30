@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update CDN information for filetype icons, new icons for loop and clipchamp",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
