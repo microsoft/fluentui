@@ -1489,7 +1489,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
   private _renderOption = (item: IComboBoxOption): JSX.Element => {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
-    const id = this._id;
+    const id = item.id ?? this._id + '-list' + item.index;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const isChecked: boolean = this._isOptionChecked(item.index);
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
@@ -1497,12 +1497,16 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     const title = item.title;
 
-    const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
+    const onRenderCheckboxLabel = () => (
+      <div id={id + '-label'} aria-hidden="true">
+        onRenderOption(item, this._onRenderOptionContent)
+      </div>
+    );
 
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
         <CommandButton
-          id={item.id ?? id + '-list' + item.index}
+          id={id}
           key={item.key}
           data-index={item.index}
           styles={optionStyles}
@@ -1529,8 +1533,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         </CommandButton>
       ) : (
         <Checkbox
-          id={item.id ?? id + '-list' + item.index}
+          id={id}
           ariaLabel={item.ariaLabel}
+          ariaLabelledBy={item.ariaLabel ? undefined : id + '-label'}
           key={item.key}
           styles={optionStyles}
           className={'ms-ComboBox-option'}
