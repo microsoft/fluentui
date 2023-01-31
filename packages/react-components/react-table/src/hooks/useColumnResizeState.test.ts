@@ -21,11 +21,9 @@ describe('useColumnResizeState', () => {
       expect(state.current).toMatchInlineSnapshot(`
         Object {
           "getColumnById": [Function],
-          "getColumnByIndex": [Function],
           "getColumnWidth": [Function],
           "getColumns": [Function],
           "getLength": [Function],
-          "getTotalWidth": [Function],
           "setColumnWidth": [Function],
         }
       `);
@@ -41,18 +39,6 @@ describe('useColumnResizeState', () => {
             "width": 150,
           }
         `);
-    });
-
-    it('getColumnByIndex returns the proper column with proper defaults', () => {
-      expect(state.current.getColumnByIndex(2)).toMatchInlineSnapshot(`
-        Object {
-          "columnId": 3,
-          "idealWidth": 150,
-          "minWidth": 100,
-          "padding": 16,
-          "width": 652,
-        }
-      `);
     });
 
     it('getColumnWidth returns the proper columnWidth', () => {
@@ -89,14 +75,6 @@ describe('useColumnResizeState', () => {
           },
         ]
       `);
-    });
-
-    it('getLength returns the proper length', () => {
-      expect(state.current.getLength()).toEqual(3);
-    });
-
-    it('getTotalWidth returns the proper width', () => {
-      expect(state.current.getTotalWidth()).toEqual(1000);
     });
 
     it('setColumnWidth sets width successfully', () => {

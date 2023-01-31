@@ -6,7 +6,6 @@ import { TableFeaturesState } from './types';
 
 const mockColumnResizeState = {
   getColumnWidth: jest.fn(),
-  getTotalWidth: jest.fn(),
   setColumnWidth: jest.fn(),
   getColumns: jest.fn(),
   getColumnById: jest.fn(() => ({
@@ -62,7 +61,6 @@ describe('useColumnSizing', () => {
         "getColumnWidth": [Function],
         "getColumnWidths": [Function],
         "getOnMouseDown": [Function],
-        "getTotalWidth": [Function],
         "setColumnWidth": [Function],
       }
     `);
@@ -78,11 +76,6 @@ describe('useColumnSizing', () => {
   it('getColumnWidth calls the function returned from useColumnResizeState hook', () => {
     renderHookResult.result.current.columnSizing.getColumnWidth(1);
     expect(mockColumnResizeState.getColumnWidth).toHaveBeenCalledWith(1);
-  });
-
-  it('getTotalWidth calls the function returned from useColumnResizeState hook', () => {
-    renderHookResult.result.current.columnSizing.getTotalWidth();
-    expect(mockColumnResizeState.getTotalWidth).toHaveBeenCalled();
   });
 
   it('setColumnWidth calls the function returned from useColumnResizeState hook', () => {

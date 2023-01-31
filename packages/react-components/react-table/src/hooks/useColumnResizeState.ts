@@ -13,10 +13,7 @@ import {
   adjustColumnWidthsToFitContainer,
   getColumnById,
   setColumnProperty,
-  getTotalWidth,
-  getColumnByIndex,
   getColumnWidth,
-  getLength,
 } from '../utils/columnResizeUtils';
 
 type ComponentState<T> = {
@@ -136,11 +133,8 @@ export function useColumnResizeState<T>(
 
   return {
     getColumnById: (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),
-    getColumnByIndex: (index: number) => getColumnByIndex(state.columnWidthState, index),
     getColumns: () => state.columnWidthState,
     getColumnWidth: (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
-    getLength: () => getLength(state.columnWidthState),
-    getTotalWidth: () => getTotalWidth(state.columnWidthState),
     setColumnWidth,
   };
 }

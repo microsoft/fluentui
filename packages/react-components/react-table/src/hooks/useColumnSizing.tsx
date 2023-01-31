@@ -12,10 +12,8 @@ import { useMeasureElement } from './useMeasureElement';
 import { TableResizeHandle } from '../TableResizeHandle';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
-  getColumnWidth: () => 0,
   getColumnWidths: () => [],
   getOnMouseDown: () => () => null,
-  getTotalWidth: () => 0,
   setColumnWidth: () => null,
   getColumnProps: () => ({ style: {}, columnId: '' }),
 };
@@ -57,8 +55,6 @@ function useColumnSizingState<TItem>(
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: {
       getOnMouseDown: mouseHandler.getOnMouseDown,
-      getColumnWidth: columnResizeState.getColumnWidth,
-      getTotalWidth: columnResizeState.getTotalWidth,
       setColumnWidth: columnResizeState.setColumnWidth,
       getColumnWidths: columnResizeState.getColumns,
       getColumnProps: (columnId: TableColumnId) => {

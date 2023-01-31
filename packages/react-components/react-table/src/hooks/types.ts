@@ -193,8 +193,6 @@ export type ColumnWidthProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 
 export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
-  getColumnWidth: (columnId: TableColumnId) => number;
-  getTotalWidth: () => number;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
   getColumnProps: (columnId: TableColumnId) => ColumnWidthProps;
@@ -202,10 +200,7 @@ export interface TableColumnSizingState {
 
 export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;
-  getTotalWidth: () => number;
   setColumnWidth: (columnId: TableColumnId, width: number) => void;
-  getLength: () => number;
-  getColumnByIndex: (index: number) => ColumnWidthState;
   getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
   getColumns: () => ColumnWidthState[];
 };
