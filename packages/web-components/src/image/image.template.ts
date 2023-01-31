@@ -2,11 +2,11 @@ import { ElementViewTemplate, html } from '@microsoft/fast-element';
 import type { Image } from './image.js';
 
 /**
- * Template for the Divider component
+ * Template for the Image component
  * @public
  */
 export const template: ElementViewTemplate<Image> = html<Image>`
-  <template role="${x => x.role}" aria-orientation="${x => x.orientation}">
+  <template>
     <slot></slot>
   </template>
 `;
