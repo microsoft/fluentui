@@ -37,6 +37,29 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   },
   stories: [],
   addons: [
+    {
+      name: 'storybook-addon-swc',
+      options: {
+        swcLoaderOptions: {
+          jsc: {
+            target: 'es2019',
+            parser: {
+              syntax: 'typescript',
+              tsx: true,
+              decorators: true,
+              dynamicImport: true,
+            },
+            transform: {
+              decoratorMetadata: true,
+              legacyDecorator: true,
+            },
+            keepClassNames: true,
+            externalHelpers: true,
+            loose: true,
+          },
+        },
+      },
+    },
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-links',
@@ -79,7 +102,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
       config.module.rules.push(codesandboxRule);
 
-      overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
+      // overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
     }
 
     if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
@@ -114,6 +137,20 @@ function processBabelLoaderOptions(loaderConfig) {
   const customOptions = { customize: customLoaderPath };
   Object.assign(loaderConfig, customOptions);
 
+  // tweak presets
+  const presets = [...(loaderConfig.presets ?? [])];
+  const tsPresetIdx = presets.findIndex(
+    preset => typeof preset === 'string' && preset.includes('@babel/preset-typescript'),
+  );
+
+  // if (tsPresetIdx !== -1) {
+  //   const tsPresetValue = presets[tsPresetIdx];
+  //   presets.splice(tsPresetIdx, 1);
+
+  //   presets.push(tsPresetValue);
+  //   Object.assign(loaderConfig.presets, presets);
+  // }
+
   return loaderConfig;
 }
 
@@ -133,6 +170,8 @@ function processBabelLoaderOptions(loaderConfig) {
  */
 function overrideDefaultBabelLoader(rules) {
   const loader = getBabelLoader();
+
+  console.log('AFTER:', { loader: JSON.stringify(loader.options.plugins, null, 2) });
   processBabelLoaderOptions(loader.options);
 
   function getBabelLoader() {
