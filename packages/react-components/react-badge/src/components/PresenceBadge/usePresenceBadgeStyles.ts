@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     '& span': {
       display: 'flex',
     },
-    ...shorthands.borderRadius('50%'),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     backgroundColor: tokens.colorNeutralBackground1,
   },
   statusBusy: {

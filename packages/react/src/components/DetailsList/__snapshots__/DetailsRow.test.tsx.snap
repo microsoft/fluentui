@@ -2169,21 +2169,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
   </div>
-  <span
-    aria-checked={false}
-    className=
-
-        {
-          bottom: 0px;
-          display: none;
-          left: 0px;
-          position: absolute;
-          right: 0px;
-          top: -1px;
-        }
-    data-selection-toggle={true}
-    role="checkbox"
-  />
 </div>
 `;
 

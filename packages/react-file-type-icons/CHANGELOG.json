@@ -2,6 +2,21 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Mon, 30 Jan 2023 07:36:22 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.8.7",
+      "version": "8.8.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "98890c6f7b5627768107b3f1ae0c734332780695",
+            "comment": "Update CDN information for filetype icons, new icons for loop and clipchamp"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 Jan 2023 07:37:51 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.8.6",
       "version": "8.8.6",
