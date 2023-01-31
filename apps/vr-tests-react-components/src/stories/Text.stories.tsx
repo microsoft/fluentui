@@ -3,16 +3,23 @@ import { storiesOf } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import {
   Body1,
+  Body1Strong,
+  Body1Stronger,
+  Body2,
   Caption1,
+  Caption1Strong,
+  Caption1Stronger,
+  Caption2,
+  Caption2Strong,
   Display,
-  Subtitle1,
   LargeTitle,
+  Subtitle1,
   Subtitle2,
+  Subtitle2Stronger,
   Text,
   Title1,
   Title2,
   Title3,
-  Caption2,
 } from '@fluentui/react-text';
 
 storiesOf('Text Converged', module)
@@ -138,19 +145,26 @@ storiesOf('Text Converged', module)
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory(
-    'Typography wrappers',
+    'Typography presets',
     () => (
       <>
+        <Body1 block>Body1</Body1>
+        <Body1Strong block>Body1Strong</Body1Strong>
+        <Body1Stronger block>Body1Stronger</Body1Stronger>
+        <Body2 block>Body2</Body2>
+        <Caption1 block>Caption1</Caption1>
+        <Caption1Strong block>Caption1Strong</Caption1Strong>
+        <Caption1Stronger block>Caption1Stronger</Caption1Stronger>
+        <Caption2 block>Caption2</Caption2>
+        <Caption2Strong block>Caption2Strong</Caption2Strong>
         <Display block>Display</Display>
         <LargeTitle block>LargeTitle</LargeTitle>
+        <Subtitle1 block>Subtitle1</Subtitle1>
+        <Subtitle2 block>Subtitle2</Subtitle2>
+        <Subtitle2Stronger block>Subtitle2Stronger</Subtitle2Stronger>
         <Title1 block>Title1</Title1>
         <Title2 block>Title2</Title2>
         <Title3 block>Title3</Title3>
-        <Subtitle1 block>Subtitle1</Subtitle1>
-        <Subtitle2 block>Subtitle2</Subtitle2>
-        <Body1 block>Body1</Body1>
-        <Caption1 block>Caption1</Caption1>
-        <Caption2 block>Caption2</Caption2>
       </>
     ),
     { includeRtl: true },
