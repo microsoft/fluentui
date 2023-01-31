@@ -46,14 +46,6 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
-export {
-  Select,
-  renderSelect_unstable,
-  selectClassNames,
-  useSelectStyles_unstable,
-  useSelect_unstable,
-} from '@fluentui/react-select';
-export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
   InfoButton,
