@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import {
   TableColumnDefinition,
@@ -6,6 +6,7 @@ import {
   ColumnResizeState,
   ColumnWidthState,
   UseColumnSizingParams,
+  TableColumnSizingOptions,
 } from './types';
 import {
   columnDefinitionsToState,
@@ -19,6 +20,75 @@ import {
   getLength,
 } from '../utils/columnResizeUtils';
 
+type ComponentState<T> = {
+  columns: TableColumnDefinition<T>[];
+  containerWidth: number;
+  columnWidthState: ColumnWidthState[];
+  columnSizingOptions: TableColumnSizingOptions | undefined;
+};
+
+type ColumnResizeStateAction<T> =
+  | {
+      type: 'CONTAINER_WIDTH_UPDATED';
+      containerWidth: number;
+    }
+  | {
+      type: 'COLUMNS_UPDATED';
+      columns: TableColumnDefinition<T>[];
+    }
+  | {
+      type: 'COLUMN_SIZING_OPTIONS_UPDATED';
+      columnSizingOptions: TableColumnSizingOptions | undefined;
+    }
+  | {
+      type: 'SET_COLUMN_WIDTH';
+      columnId: TableColumnId;
+      width: number;
+    };
+
+const createReducer = <T>() => (state: ComponentState<T>, action: ColumnResizeStateAction<T>): ComponentState<T> => {
+  switch (action.type) {
+    case 'CONTAINER_WIDTH_UPDATED':
+      return {
+        ...state,
+        containerWidth: action.containerWidth,
+        columnWidthState: adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth),
+      };
+
+    case 'COLUMNS_UPDATED':
+      const newS = columnDefinitionsToState(action.columns, state.columnWidthState, state.columnSizingOptions);
+      return { ...state, columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth) };
+
+    case 'COLUMN_SIZING_OPTIONS_UPDATED':
+      const newState = columnDefinitionsToState(state.columns, state.columnWidthState, action.columnSizingOptions);
+      return {
+        ...state,
+        columnSizingOptions: action.columnSizingOptions,
+        columnWidthState: adjustColumnWidthsToFitContainer(newState, state.containerWidth),
+      };
+
+    case 'SET_COLUMN_WIDTH':
+      const { columnId, width } = action;
+      const { containerWidth } = state;
+
+      const column = getColumnById(state.columnWidthState, columnId);
+      let newColumnWidthState = [...state.columnWidthState];
+
+      if (!column) {
+        return state;
+      }
+
+      // Adjust the column width and measure the new total width
+      newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'width', width);
+      // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
+      newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'idealWidth', width);
+      // Adjust the widths to the container size
+      newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
+
+      return { ...state, columnWidthState: newColumnWidthState };
+  }
+};
+
 export function useColumnResizeState<T>(
   columns: TableColumnDefinition<T>[],
   containerWidth: number,
@@ -26,60 +96,46 @@ export function useColumnResizeState<T>(
 ): ColumnResizeState {
   const { onColumnResize, columnSizingOptions } = params;
 
-  const [state, setState] = React.useState<ColumnWidthState[]>(
-    columnDefinitionsToState(columns, undefined, columnSizingOptions),
-  );
+  const reducer = React.useMemo(() => createReducer<T>(), []);
 
-  // Use layout effect here to make sure that updated columns receive proper styles immediately
+  const [state, dispatch] = React.useReducer(reducer, {
+    columns,
+    containerWidth: 0,
+    columnWidthState: columnDefinitionsToState(columns, undefined, columnSizingOptions),
+    columnSizingOptions,
+  });
+
+  React.useEffect(() => {
+    dispatch({ type: 'CONTAINER_WIDTH_UPDATED', containerWidth });
+  }, [containerWidth]);
+
   useIsomorphicLayoutEffect(() => {
-    const intermediateState = columnDefinitionsToState(columns, state, columnSizingOptions);
-    setState(adjustColumnWidthsToFitContainer(intermediateState, containerWidth));
-  }, [columns, containerWidth, state, columnSizingOptions]);
+    dispatch({ type: 'COLUMNS_UPDATED', columns });
+  }, [columns]);
 
-  const setColumnWidth = React.useCallback(
-    (columnId: TableColumnId, width: number) => {
-      const column = getColumnById(state, columnId);
-      let newState = [...state];
+  useIsomorphicLayoutEffect(() => {
+    dispatch({ type: 'COLUMN_SIZING_OPTIONS_UPDATED', columnSizingOptions });
+  }, [columnSizingOptions]);
 
-      if (!column) {
+  const setColumnWidth = useEventCallback((columnId: TableColumnId, width: number) => {
+    if (onColumnResize) {
+      const col = getColumnById(state.columnWidthState, columnId);
+      if (!col) {
         return;
       }
-
-      if (width < column.minWidth) {
-        width = column.minWidth;
-      }
-
-      // Adjust the column width and measure the new total width
-      newState = setColumnProperty(newState, columnId, 'width', width);
-      // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
-      newState = setColumnProperty(newState, columnId, 'idealWidth', width);
-      // Adjust the widths to the container size
-      newState = adjustColumnWidthsToFitContainer(newState, containerWidth);
-
-      onColumnResize?.(columnId, width);
-
-      // Commit the state update
-      setState(newState);
-    },
-    [containerWidth, state, onColumnResize],
-  );
-
-  const setColumnIdealWidth = React.useCallback(
-    (columnId: TableColumnId, idealWidth: number) => {
-      setState(setColumnProperty(state, columnId, 'idealWidth', idealWidth));
-    },
-    [state],
-  );
+      onColumnResize(columnId, Math.max(col.minWidth || 0, width));
+    }
+    dispatch({ type: 'SET_COLUMN_WIDTH', columnId, width });
+  });
 
   return {
-    getColumnById: (colId: TableColumnId) => getColumnById(state, colId),
-    getColumnByIndex: (index: number) => getColumnByIndex(state, index),
-    getColumns: () => state,
-    getColumnWidth: (colId: TableColumnId) => getColumnWidth(state, colId),
-    getLastColumn: () => getLastColumn(state),
-    getLength: () => getLength(state),
-    getTotalWidth: () => getTotalWidth(state),
-    setColumnIdealWidth,
+    getColumnById: (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),
+    getColumnByIndex: (index: number) => getColumnByIndex(state.columnWidthState, index),
+    getColumns: () => state.columnWidthState,
+    getColumnWidth: (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
+    getLastColumn: () => getLastColumn(state.columnWidthState),
+    getLength: () => getLength(state.columnWidthState),
+    getTotalWidth: () => getTotalWidth(state.columnWidthState),
     setColumnWidth,
   };
 }

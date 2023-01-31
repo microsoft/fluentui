@@ -203,7 +203,6 @@ export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;
   getTotalWidth: () => number;
   setColumnWidth: (columnId: TableColumnId, width: number) => void;
-  setColumnIdealWidth: (columnId: TableColumnId, minWidth: number) => void;
   getLastColumn: () => ColumnWidthState;
   getLength: () => number;
   getColumnByIndex: (index: number) => ColumnWidthState;

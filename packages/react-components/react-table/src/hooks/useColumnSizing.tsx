@@ -47,7 +47,7 @@ function useColumnSizingState<TItem>(
   // Gets the container width
   const { width, measureElementRef } = useMeasureElement();
   // Creates the state based on columns and available containerWidth
-  const columnResizeState = useColumnResizeState<TItem>(columns, width, params);
+  const columnResizeState = useColumnResizeState(columns, width, params);
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useColumnResizeMouseHandler(columnResizeState);
 
@@ -55,11 +55,11 @@ function useColumnSizingState<TItem>(
     ...tableState,
     tableRef: measureElementRef,
     columnSizing: {
-      getOnMouseDown: (columnId: TableColumnId) => mouseHandler.getOnMouseDown(columnId),
-      getColumnWidth: (columnId: TableColumnId) => columnResizeState.getColumnWidth(columnId),
-      getTotalWidth: () => columnResizeState.getTotalWidth(),
-      setColumnWidth: (columnId: TableColumnId, newSize: number) => columnResizeState.setColumnWidth(columnId, newSize),
-      getColumnWidths: () => columnResizeState.getColumns(),
+      getOnMouseDown: mouseHandler.getOnMouseDown,
+      getColumnWidth: columnResizeState.getColumnWidth,
+      getTotalWidth: columnResizeState.getTotalWidth,
+      setColumnWidth: columnResizeState.setColumnWidth,
+      getColumnWidths: columnResizeState.getColumns,
       getColumnProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
         const aside = <TableResizeHandle onMouseDown={mouseHandler.getOnMouseDown(columnId)} />;
