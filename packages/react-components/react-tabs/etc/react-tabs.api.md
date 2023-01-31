@@ -6,7 +6,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -47,9 +46,6 @@ export const TabList: ForwardRefComponent<TabListProps>;
 
 // @public (undocumented)
 export const tabListClassNames: SlotClassNames<TabListSlots>;
-
-// @public (undocumented)
-export const TabListContext: Context<TabListContextValue>;
 
 // @public (undocumented)
 export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
