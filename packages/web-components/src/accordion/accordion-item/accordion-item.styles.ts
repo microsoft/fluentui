@@ -170,17 +170,17 @@ export const styles = css`
     line-height: ${lineHeightBase300};
   }
 
-  :host([appearance='small']) .heading slot[name='heading'] {
+  :host([size='small']) .heading slot[name='heading'] {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host([appearance='large']) slot[name='heading'] {
+  :host([size='large']) slot[name='heading'] {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host([appearance='extra-large']) slot[name='heading'] {
+  :host([size='extra-large']) slot[name='heading'] {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }

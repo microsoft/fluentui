@@ -1,7 +1,7 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 /**
- * An Accordion Item can be small, medium, large, and extra-large in height
+ * An Accordion Item header font size can be small, medium, large, and extra-large
  */
 export const AccordionItemSize = {
   small: 'small',

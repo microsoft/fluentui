@@ -14,8 +14,8 @@ class AccordionItem extends FASTAccordionItem {
    * @remarks
    * HTML Attribute: appearance
    */
-  @attr({ attribute: 'appearance' })
-  public appearance: AccordionItemSize;
+  @attr({ attribute: 'size' })
+  public size: AccordionItemSize;
 
   /**
    * Sets the width of the focus state.

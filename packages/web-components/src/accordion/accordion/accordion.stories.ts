@@ -51,7 +51,7 @@ const subtract20Filled = html`<svg
 const storyTemplate = html<AccordionStoryArgs>`
   <fluent-accordion expand-mode=${x => x.expandMode}>
     <fluent-accordion-item
-      appearance=${x => x.appearance}
+      size=${x => x.size}
       heading-level=${x => x.headingLevel}
       expandIconPosition=${x => x.expandIconPosition}
       block=${x => x.block}
@@ -71,7 +71,7 @@ const storyTemplate = html<AccordionStoryArgs>`
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item
-      appearance=${x => x.appearance}
+      size=${x => x.size}
       heading-level=${x => x.headingLevel}
       expandIconPosition=${x => x.expandIconPosition}
       block=${x => x.block}
@@ -91,7 +91,7 @@ const storyTemplate = html<AccordionStoryArgs>`
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item
-      appearance=${x => x.appearance}
+      size=${x => x.size}
       heading-level=${x => x.headingLevel}
       expandIconPosition=${x => x.expandIconPosition}
       block=${x => x.block}
@@ -114,9 +114,9 @@ const storyTemplate = html<AccordionStoryArgs>`
 `;
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Components/Accordion/Default',
   argTypes: {
-    appearance: {
+    size: {
       description: 'Sets the size of the Accordion Item header',
       table: {
         defaultValue: { summary: 'medium' },
