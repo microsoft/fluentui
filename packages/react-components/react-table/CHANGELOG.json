@@ -2,6 +2,63 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:31:01 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f5f1f5eed0c4e45333f38fbefc4b1b42580b4836",
+            "comment": "chore(react-table): switch AvatarSizes in favor of AvatarSize"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.23",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.21",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.4.1",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:11 GMT",
       "tag": "@fluentui/react-table_v9.0.0-rc.2",
       "version": "9.0.0-rc.2",

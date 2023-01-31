@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 23 Jan 2023 16:43:12 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:30:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.0)
+
+Thu, 26 Jan 2023 13:30:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.2.13..@fluentui/react-input_v9.3.0)
+
+### Minor changes
+
+- feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.17 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-text to v9.1.14 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+### Patches
+
+- Deprecate InputField_unstable in favor of Field with Input as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
 
 ## [9.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.13)
 

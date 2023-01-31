@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: combobox should recalculate the activedescendant when the children change while open, and clear it when moving text cursor",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -16,6 +16,7 @@ import {
 } from './SpinButton.types';
 import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 type InternalState = {
   value: number | null;
@@ -51,6 +52,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'size', 'value'],
   });
 
+  const overrides = useOverrides();
+
   const {
     value,
     displayValue,
@@ -62,7 +65,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     precision: precisionFromProps,
     onChange,
     size = 'medium',
-    appearance = 'outline',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
     root,
     input,
     incrementButton,

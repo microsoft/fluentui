@@ -36,6 +36,7 @@ export async function visitPage(browser: Browser, url: string) {
 
   await visitUrl(page, url);
 
+  // @ts-expect-error - https://github.com/puppeteer/puppeteer/issues/9582
   await page.waitForSelector(`#${PROVIDER_ID}`);
   await page.close();
 

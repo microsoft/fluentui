@@ -2,6 +2,39 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Thu, 26 Jan 2023 13:30:56 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Implement Field component to replace InputField, ComboboxField, etc."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.0.18",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:09 GMT",
       "tag": "@fluentui/react-field_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",

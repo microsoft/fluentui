@@ -3,8 +3,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 /**
  * Sizes for the avatar
+ * @deprecated use AvatarSize instead
  */
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = AvatarSize;
+/**
+ * Sizes for the avatar
+ */
+export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 export type AvatarSlots = {
   root: Slot<'span'>;
@@ -142,7 +147,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    *
    * @default 32
    */
-  size?: AvatarSizes;
+  size?: AvatarSize;
 };
 
 /**

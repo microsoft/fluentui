@@ -66,6 +66,7 @@ import { AvatarGroupSlots } from '@fluentui/react-avatar';
 import { AvatarGroupState } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
 import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
@@ -180,6 +181,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
+import { IdPrefixProvider } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
@@ -587,6 +589,7 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
@@ -817,6 +820,8 @@ export { AvatarNamedColor }
 
 export { AvatarProps }
 
+export { AvatarSize }
+
 export { AvatarSizes }
 
 export { AvatarSlots }
@@ -1044,6 +1049,8 @@ export { GriffelRenderer }
 export { GriffelStyle }
 
 export { HorizontalSpacingTokens }
+
+export { IdPrefixProvider }
 
 export { Image_2 as Image }
 
@@ -1858,6 +1865,8 @@ export { useFocusableGroup }
 export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
+
+export { useFocusWithin }
 
 export { useId }
 

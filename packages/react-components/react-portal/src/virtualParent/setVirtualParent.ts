@@ -17,5 +17,5 @@ export function setVirtualParent(child: Node, parent?: Node): void {
     virtualChild._virtual = {};
   }
 
-  virtualChild._virtual.parent = parent || undefined;
+  virtualChild._virtual.parent = parent;
 }

@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 18 Jan 2023 16:32:57 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:30:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.2.0)
+
+Thu, 26 Jan 2023 13:30:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.1.16..@fluentui/react-button_v9.2.0)
+
+### Minor changes
+
+- feature: creates ButtonContext ([PR #26478](https://github.com/microsoft/fluentui/pull/26478) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.3.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+### Patches
+
+- fix: high contrast mode focus styles are applied ([PR #26116](https://github.com/microsoft/fluentui/pull/26116) by sarah.higley@microsoft.com)
 
 ## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.1.16)
 

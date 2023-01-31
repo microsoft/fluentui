@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Mon, 23 Jan 2023 16:43:12 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:31:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.2)
+
+Thu, 26 Jan 2023 13:31:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.1..@fluentui/react-toolbar_v9.0.2)
+
+### Patches
+
+- fix: export toolbar hooks as functions, not Typescript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-button to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-divider to v9.1.12 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-radio to v9.0.21 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.1)
 

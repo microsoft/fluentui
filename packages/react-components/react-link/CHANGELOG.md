@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 18 Jan 2023 16:32:57 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:30:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.20)
+
+Thu, 26 Jan 2023 13:30:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.19..@fluentui/react-link_v9.0.20)
+
+### Patches
+
+- fix: handle "tabIndex" from user's input ([PR #26456](https://github.com/microsoft/fluentui/pull/26456) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 
 ## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.19)
 

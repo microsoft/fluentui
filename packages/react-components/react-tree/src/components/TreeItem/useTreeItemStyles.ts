@@ -9,15 +9,16 @@ import { levelToken } from '../../utils/tokens';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
+  content: 'fui-TreeItem__content',
+  subtree: 'fui-TreeItem__subtree',
   expandIcon: 'fui-TreeItem__expandIcon',
   actions: 'fui-TreeItem__actions',
-  groupper: 'fui-TreeItem__groupper',
 };
 
 /**
- * Styles for the root slot
+ * Styles for the content slot
  */
-const useRootStyles = makeStyles({
+const useContentStyles = makeStyles({
   base: {
     position: 'relative',
     alignItems: 'center',
@@ -119,7 +120,7 @@ export const expandIconInlineStyles = {
  * Apply styling to the TreeItem slots based on the state
  */
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
-  const rootStyles = useRootStyles();
+  const contentStyles = useContentStyles();
   const expandIconStyles = useExpandIconStyles();
   const actionsStyles = useActionsStyles();
 
@@ -127,18 +128,18 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
-  const { actions, expandIcon, isActionsVisible: showActions } = state;
+  const { actions, subtree, expandIcon, isActionsVisible: showActions } = state;
 
-  state.root.className = mergeClasses(
-    treeItemClassNames.root,
-    rootStyles.base,
-    rootStyles[appearance],
-    rootStyles.focusIndicator,
-    state.isLeaf && rootStyles.leaf,
-    state.root.className,
+  state.root.className = mergeClasses(treeItemClassNames.root, state.root.className);
+
+  state.content.className = mergeClasses(
+    treeItemClassNames.content,
+    contentStyles.base,
+    contentStyles[appearance],
+    contentStyles.focusIndicator,
+    state.isLeaf && contentStyles.leaf,
+    state.content.className,
   );
-
-  state.groupper.className = mergeClasses(treeItemClassNames.groupper, state.groupper.className);
 
   state.root.style = {
     ...state.root.style,
@@ -160,6 +161,9 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
       showActions && actionsStyles.open,
       actions.className,
     );
+  }
+  if (subtree) {
+    subtree.className = mergeClasses(treeItemClassNames.subtree, subtree.className);
   }
 
   return state;
