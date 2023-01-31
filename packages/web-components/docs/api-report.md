@@ -1352,6 +1352,44 @@ export const spacingVerticalXXS: CSSDesignToken<string>;
 // @public (undocumented)
 export const spacingVerticalXXXL: CSSDesignToken<string>;
 
+// @public
+export class Spinner extends FASTProgressRing {
+    appearance: SpinnerAppearance;
+    size: SpinnerSize;
+}
+
+// @public
+export const SpinnerAppearance: {
+    readonly primary: "primary";
+    readonly inverted: "inverted";
+};
+
+// @public
+export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
+
+// @public
+export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+
+// @public
+export type SpinnerSize = Values<typeof SpinnerSize>;
+
+// @public
+export const SpinnerSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+    readonly huge: "huge";
+};
+
+// @public (undocumented)
+export const SpinnerStyles: ElementStyles;
+
+// @public (undocumented)
+export const SpinnerTemplate: ElementViewTemplate<Spinner>;
+
 // @public (undocumented)
 export const strokeWidthThick: CSSDesignToken<string>;
 
