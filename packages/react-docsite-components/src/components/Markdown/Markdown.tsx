@@ -2,7 +2,7 @@ import * as React from 'react';
 import type MarkdownComponentType from 'markdown-to-jsx';
 import type { MarkdownToJSX } from 'markdown-to-jsx';
 import * as MarkdownModule from 'markdown-to-jsx';
-import { Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from '@fluentui/react';
+import { Image, IImageProps, IImageStyles, classNamesFunction, IStyleFunction, styled } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { DisplayToggle } from '../DisplayToggle/index';
 import * as MDTable from '../MarkdownTable/index';
@@ -12,6 +12,8 @@ import { MarkdownParagraph } from './MarkdownParagraph';
 import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMarkdownStyles } from './Markdown.types';
 import { MarkdownLink } from './MarkdownLink';
 import { MarkdownPre } from './MarkdownPre';
+
+const CustomImage = (props: IImageProps) => <Image {...props} src={props.src?.toLowerCase()} />;
 
 // This is to work around inconsistency between the way markdown-to-jsx declares its types
 // (as having a default export) and the way it actually builds its files (for its cjs `main` file,
@@ -93,7 +95,7 @@ function getOverrides(subComponentStyles: IMarkdownSubComponentStyles, props: IM
       props: { className: 'ms-mdLink', styles: subComponentStyles.link },
     },
     img: {
-      component: Image,
+      component: CustomImage,
       props: { className: 'ms-mdImage', styles: subComponentStyles.image },
     },
     button: {
