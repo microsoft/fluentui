@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 26 Jan 2023 13:31:03 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.1)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.0..@fluentui/react-utilities_v9.5.1)
+
+### Patches
+
+- fix: update definitions for SSRProvider ([PR #25582](https://github.com/microsoft/fluentui/pull/25582) by olfedias@microsoft.com)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.0)
 

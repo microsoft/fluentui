@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 26 Jan 2023 13:30:52 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.2.1)
+
+Tue, 31 Jan 2023 19:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.2.0..@fluentui/react-button_v9.2.1)
+
+### Patches
+
+- fix: Fixing button padding + minHeight to get correct sizes from design spec. ([PR #26522](https://github.com/microsoft/fluentui/pull/26522) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.3.7 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.2.0)
 

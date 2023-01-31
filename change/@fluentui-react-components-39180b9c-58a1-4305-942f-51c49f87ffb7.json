@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release Combobox and Dropdown as stable components",
-  "packageName": "@fluentui/react-components",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

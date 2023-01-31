@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 26 Jan 2023 13:30:51 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.13.0)
+
+Tue, 31 Jan 2023 19:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.12.0..@fluentui/react-components_v9.13.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: release Combobox and Dropdown as stable components ([PR #26518](https://github.com/microsoft/fluentui/pull/26518) by sarah.higley@microsoft.com)
+  - feat: expose all typography tokens as components ([PR #26403](https://github.com/microsoft/fluentui/pull/26403) by marcosvmmoura@gmail.com)
+  - chore: Added context exports for react-tabs ([PR #26552](https://github.com/microsoft/fluentui/pull/26552) by gcox@microsoft.com)
+  - feat: release `@fluentui/react-select` as stable ([PR #26491](https://github.com/microsoft/fluentui/pull/26491) by sarah.higley@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Added context exports ([PR #26552](https://github.com/microsoft/fluentui/pull/26552) by gcox@microsoft.com)
+- `@fluentui/react-text`
+  - feat: expose all typography tokens as components ([PR #26403](https://github.com/microsoft/fluentui/pull/26403) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - chore: Updates border-radius to use proper token ([PR #26531](https://github.com/microsoft/fluentui/pull/26531) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - fix: Fixing button padding + minHeight to get correct sizes from design spec. ([PR #26522](https://github.com/microsoft/fluentui/pull/26522) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: release Combobox and Dropdown as stable components ([PR #26518](https://github.com/microsoft/fluentui/pull/26518) by sarah.higley@microsoft.com)
+- `@fluentui/react-components`
+  - feat: re-export useFocusWithin() hook ([PR #26533](https://github.com/microsoft/fluentui/pull/26533) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: properly use tokens for border radius ([PR #26516](https://github.com/microsoft/fluentui/pull/26516) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-persona`
+  - fix: Reduce spacing between first and second line. ([PR #26520](https://github.com/microsoft/fluentui/pull/26520) by esteban.230@hotmail.com)
+  - fix: Make before and after textPositions align correctly when the Avatar size is larger than the text lines together. ([PR #26546](https://github.com/microsoft/fluentui/pull/26546) by esteban.230@hotmail.com)
+- `@fluentui/react-select`
+  - feat: release `@fluentui/react-select` as stable ([PR #26491](https://github.com/microsoft/fluentui/pull/26491) by sarah.higley@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: update definitions for SSRProvider ([PR #25582](https://github.com/microsoft/fluentui/pull/25582) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-field`
+  - chore: Change the default value of validationState to error when a validationMessage is set. ([PR #26523](https://github.com/microsoft/fluentui/pull/26523) by behowell@microsoft.com)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.12.0)
 

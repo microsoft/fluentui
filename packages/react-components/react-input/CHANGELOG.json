@@ -2,6 +2,33 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-input_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.18",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.2.0",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:30:56 GMT",
       "tag": "@fluentui/react-input_v9.3.0",
       "version": "9.3.0",

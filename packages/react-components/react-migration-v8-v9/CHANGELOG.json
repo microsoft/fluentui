@@ -2,6 +2,35 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:56 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "a864688a78bff922b8ba9accf77f69af41a58633",
+            "comment": "chore: import Dropdown and Option from react-components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.13.0",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:30:57 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.1.0",
       "version": "9.1.0",
