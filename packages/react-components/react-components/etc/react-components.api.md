@@ -459,7 +459,6 @@ import { Tab } from '@fluentui/react-tabs';
 import { tabClassNames } from '@fluentui/react-tabs';
 import { TabList } from '@fluentui/react-tabs';
 import { tabListClassNames } from '@fluentui/react-tabs';
-import { TabListContext } from '@fluentui/react-tabs';
 import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
 import { TabListProps } from '@fluentui/react-tabs';
@@ -1609,8 +1608,6 @@ export { tabClassNames }
 export { TabList }
 
 export { tabListClassNames }
-
-export { TabListContext }
 
 export { TabListContextValue }
 
