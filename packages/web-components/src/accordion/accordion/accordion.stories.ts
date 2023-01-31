@@ -192,15 +192,6 @@ export default {
       defaultValue: false,
     },
   },
-  // parameters: {
-  //     docs: {
-  //         page: AccordionDocs,
-  //     },
-  //     status: {
-  //         type: "experimental",
-  //     },
-  // },
-  // decorators: [docsComponentDecorator],
 } as AccordionStoryMeta;
 
 export const Accordion = renderComponent(storyTemplate).bind({});
