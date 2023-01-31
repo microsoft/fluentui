@@ -54,8 +54,7 @@
     "tag": "beta",
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {
