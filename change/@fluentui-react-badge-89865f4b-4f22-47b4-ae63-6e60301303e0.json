@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Updates border-radius to use proper token",
-  "packageName": "@fluentui/react-badge",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

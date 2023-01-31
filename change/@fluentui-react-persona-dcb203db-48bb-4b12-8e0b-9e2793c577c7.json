@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make before and after textPositions align correctly when the Avatar size is larger than the text lines together.",
-  "packageName": "@fluentui/react-persona",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

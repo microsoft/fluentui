@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: re-export useFocusWithin() hook",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

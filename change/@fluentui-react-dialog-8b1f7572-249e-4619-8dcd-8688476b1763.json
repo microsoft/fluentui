@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: properly use tokens for border radius",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

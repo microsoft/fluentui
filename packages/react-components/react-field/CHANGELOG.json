@@ -2,6 +2,39 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:56 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "d59cee0443fc357a3033d0e71e23659a2ce2d57d",
+            "comment": "chore: Change the default value of validationState to error when a validationMessage is set."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.7",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.0.19",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:30:56 GMT",
       "tag": "@fluentui/react-field_v9.0.0-alpha.17",
       "version": "9.0.0-alpha.17",
