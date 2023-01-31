@@ -1,8 +1,29 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 26 Oct 2022 07:52:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Jan 2023 17:42:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.2)
+
+Wed, 25 Jan 2023 17:42:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.1..@fluentui/web-components_v3.0.0-alpha.2)
+
+### Changes
+
+- feat: export theme ([PR #26500](https://github.com/microsoft/fluentui/pull/26500) by miroslav.stastny@microsoft.com)
+
+## [3.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.1)
+
+Wed, 25 Jan 2023 14:49:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.8..@fluentui/web-components_v3.0.0-alpha.1)
+
+### Changes
+
+- add progressbar as new component ([PR #26329](https://github.com/microsoft/fluentui/pull/26329) by ryan@ryanmerrill.net)
+- Add initial theme ([PR #25660](https://github.com/microsoft/fluentui/pull/25660) by miroslav.stastny@microsoft.com)
+- add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
+- add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
 
 ## [2.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.8)
 

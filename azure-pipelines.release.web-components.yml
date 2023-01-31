@@ -40,7 +40,8 @@ jobs:
       - script: |
           git config user.name "Fluent UI Build"
           git config user.email "fluentui-internal@service.microsoft.com"
-        displayName: Configure git user (used by beachball)
+          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+        displayName: Authenticate git for pushes
 
       - task: Bash@3
         inputs:

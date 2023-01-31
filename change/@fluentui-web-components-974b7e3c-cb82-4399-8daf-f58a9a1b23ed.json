@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: setup typescript 4.7 for web-components package",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
