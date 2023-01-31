@@ -92,15 +92,11 @@ Dismiss
 
 ```tsx
 <Tag>Simple Tag</Tag>
-<Tag secondary="The secondary text">Simple Tag with secondary text</Tag>
 <Tab as="li">Simple List Tag</Tag>
 ```
 
 ```html
 <span> <span class="content"> Simple Tag </span></span>
-<span>
-  <span class="content"> Simple Tag <span class="secondary">The secondary text</span></span></span
->
 <li><span class="content"> Simple Tag </span></li>
 ```
 
