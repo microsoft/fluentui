@@ -77,6 +77,12 @@ import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
 import { Body1 } from '@fluentui/react-text';
 import { body1ClassNames } from '@fluentui/react-text';
+import { Body1Strong } from '@fluentui/react-text';
+import { body1StrongClassNames } from '@fluentui/react-text';
+import { Body1Stronger } from '@fluentui/react-text';
+import { body1StrongerClassNames } from '@fluentui/react-text';
+import { Body2 } from '@fluentui/react-text';
+import { body2ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
@@ -86,8 +92,14 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { Caption1 } from '@fluentui/react-text';
 import { caption1ClassNames } from '@fluentui/react-text';
+import { Caption1Strong } from '@fluentui/react-text';
+import { caption1StrongClassNames } from '@fluentui/react-text';
+import { Caption1Stronger } from '@fluentui/react-text';
+import { caption1StrongerClassNames } from '@fluentui/react-text';
 import { Caption2 } from '@fluentui/react-text';
 import { caption2ClassNames } from '@fluentui/react-text';
+import { Caption2Strong } from '@fluentui/react-text';
+import { caption2StrongClassNames } from '@fluentui/react-text';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -490,6 +502,8 @@ import { Subtitle1 } from '@fluentui/react-text';
 import { subtitle1ClassNames } from '@fluentui/react-text';
 import { Subtitle2 } from '@fluentui/react-text';
 import { subtitle2ClassNames } from '@fluentui/react-text';
+import { Subtitle2Stronger } from '@fluentui/react-text';
+import { subtitle2StrongerClassNames } from '@fluentui/react-text';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -522,6 +536,7 @@ import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
 import { textClassNames } from '@fluentui/react-text';
+import { TextPresetProps } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
@@ -898,6 +913,18 @@ export { Body1 }
 
 export { body1ClassNames }
 
+export { Body1Strong }
+
+export { body1StrongClassNames }
+
+export { Body1Stronger }
+
+export { body1StrongerClassNames }
+
+export { Body2 }
+
+export { body2ClassNames }
+
 export { BorderRadiusTokens }
 
 export { BrandVariants }
@@ -916,9 +943,21 @@ export { Caption1 }
 
 export { caption1ClassNames }
 
+export { Caption1Strong }
+
+export { caption1StrongClassNames }
+
+export { Caption1Stronger }
+
+export { caption1StrongerClassNames }
+
 export { Caption2 }
 
 export { caption2ClassNames }
+
+export { Caption2Strong }
+
+export { caption2StrongClassNames }
 
 export { Checkbox }
 
@@ -1724,6 +1763,10 @@ export { Subtitle2 }
 
 export { subtitle2ClassNames }
 
+export { Subtitle2Stronger }
+
+export { subtitle2StrongerClassNames }
+
 export { Switch }
 
 export { switchClassNames }
@@ -1787,6 +1830,8 @@ export { TextareaSlots }
 export { TextareaState }
 
 export { textClassNames }
+
+export { TextPresetProps }
 
 export { TextProps }
 

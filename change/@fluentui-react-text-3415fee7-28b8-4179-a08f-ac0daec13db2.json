@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: expose all typography tokens as components",
+  "packageName": "@fluentui/react-text",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
