@@ -6,7 +6,6 @@ import {
   getColumnById,
   getColumnByIndex,
   getColumnWidth,
-  getLastColumn,
   getLength,
   getTotalWidth,
   setColumnProperty,
@@ -75,24 +74,6 @@ describe('columnResizeUtils', () => {
   describe('getTotalWidth', () => {
     it('returns correct width', () => {
       expect(getTotalWidth(mockColumnState)).toEqual(1000);
-    });
-  });
-
-  describe('getLastColumn', () => {
-    it('returns correct column', () => {
-      expect(getLastColumn(mockColumnState)).toMatchInlineSnapshot(`
-        Object {
-          "columnId": 3,
-          "idealWidth": 150,
-          "minWidth": 100,
-          "padding": 16,
-          "width": 702,
-        }
-      `);
-    });
-
-    it('returns undefined when state is empty', () => {
-      expect(getLastColumn([])).toBeUndefined();
     });
   });
 

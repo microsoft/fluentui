@@ -14,7 +14,6 @@ import {
   getColumnById,
   setColumnProperty,
   getTotalWidth,
-  getLastColumn,
   getColumnByIndex,
   getColumnWidth,
   getLength,
@@ -105,7 +104,7 @@ export function useColumnResizeState<T>(
     columnSizingOptions,
   });
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     dispatch({ type: 'CONTAINER_WIDTH_UPDATED', containerWidth });
   }, [containerWidth]);
 
@@ -118,12 +117,15 @@ export function useColumnResizeState<T>(
   }, [columnSizingOptions]);
 
   const setColumnWidth = useEventCallback((columnId: TableColumnId, width: number) => {
+    const col = getColumnById(state.columnWidthState, columnId);
+    if (!col) {
+      return;
+    }
+
+    width = Math.max(col.minWidth || 0, width);
+
     if (onColumnResize) {
-      const col = getColumnById(state.columnWidthState, columnId);
-      if (!col) {
-        return;
-      }
-      onColumnResize(columnId, Math.max(col.minWidth || 0, width));
+      onColumnResize(columnId, width);
     }
     dispatch({ type: 'SET_COLUMN_WIDTH', columnId, width });
   });
@@ -133,7 +135,6 @@ export function useColumnResizeState<T>(
     getColumnByIndex: (index: number) => getColumnByIndex(state.columnWidthState, index),
     getColumns: () => state.columnWidthState,
     getColumnWidth: (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
-    getLastColumn: () => getLastColumn(state.columnWidthState),
     getLength: () => getLength(state.columnWidthState),
     getTotalWidth: () => getTotalWidth(state.columnWidthState),
     setColumnWidth,

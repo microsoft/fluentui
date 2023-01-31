@@ -20,69 +20,51 @@ export function columnDefinitionsToState<T>(
   columnSizingOptions: TableColumnSizingOptions = {},
 ): ColumnWidthState[] {
   let updated = false;
+  const stateMap = new Map(state.map(s => [s.columnId, s]));
 
-  let updatedState = columns.map(column => {
-    const { columnId } = column;
-    const existingColumnState = state.find(col => col.columnId === column.columnId);
+  const updatedState = columns.map(column => {
+    const existingColumnState = stateMap.get(column.columnId);
 
     if (existingColumnState) {
-      const newIdealWidth = columnSizingOptions[column.columnId]?.idealWidth;
-      const newMinWidth = columnSizingOptions[column.columnId]?.minWidth;
-      const newPadding = columnSizingOptions[column.columnId]?.padding;
+      const {
+        idealWidth = existingColumnState.idealWidth,
+        minWidth = existingColumnState.minWidth,
+        padding = existingColumnState.padding,
+      } = columnSizingOptions[column.columnId] ?? {};
+
       if (
-        (newIdealWidth && newIdealWidth !== existingColumnState.idealWidth) ||
-        (newMinWidth && newMinWidth !== existingColumnState.minWidth) ||
-        (newPadding && newPadding !== existingColumnState.padding)
+        idealWidth !== existingColumnState.idealWidth ||
+        minWidth !== existingColumnState.minWidth ||
+        padding !== existingColumnState.padding ||
+        // If the length changed (column was added or removed), reset the width to ideal if its not ideal.
+        // This solves a case when the last column's width is expanded and a new column is added after it.
+        (columns.length !== state.length && existingColumnState.width !== existingColumnState.idealWidth)
       ) {
         updated = true;
         return {
           ...existingColumnState,
-          idealWidth: columnSizingOptions[column.columnId]?.idealWidth ?? existingColumnState.idealWidth,
-          width: columnSizingOptions[column.columnId]?.idealWidth ?? existingColumnState.idealWidth,
-          minWidth: columnSizingOptions[column.columnId]?.minWidth ?? existingColumnState.minWidth,
-          padding: columnSizingOptions[column.columnId]?.padding ?? existingColumnState.padding,
+          idealWidth,
+          width: idealWidth,
+          minWidth,
+          padding,
         };
       }
-
       return existingColumnState;
     }
 
+    const { defaultWidth, idealWidth, minWidth, padding } = columnSizingOptions[column.columnId] ?? {};
+
     updated = true;
     return {
-      columnId,
-      width:
-        columnSizingOptions[column.columnId]?.defaultWidth ??
-        columnSizingOptions[column.columnId]?.idealWidth ??
-        DEFAULT_WIDTH,
-      minWidth: columnSizingOptions[column.columnId]?.minWidth ?? DEFAULT_MIN_WIDTH,
-      idealWidth:
-        columnSizingOptions[column.columnId]?.defaultWidth ??
-        columnSizingOptions[column.columnId]?.idealWidth ??
-        DEFAULT_WIDTH,
-      padding: columnSizingOptions[column.columnId]?.padding ?? 16,
+      columnId: column.columnId,
+      width: defaultWidth ?? idealWidth ?? DEFAULT_WIDTH,
+      minWidth: minWidth ?? DEFAULT_MIN_WIDTH,
+      idealWidth: defaultWidth ?? idealWidth ?? DEFAULT_WIDTH,
+      padding: padding ?? 16,
     };
   });
 
-  if (updatedState.length !== state.length) {
-    // Adding or removing columns, set all columns which have a different idealWidth than width to width = idealWidth,
-    // so that the adjustColumnWidthsToFitContainer can successfully expand the last column,
-    // since the column which was last before is not necessarily last now.
-    if (updatedState.length > state.length) {
-      updatedState = updatedState.map(s => {
-        if (s.idealWidth !== s.width) {
-          s.width = s.idealWidth;
-        }
-        return s;
-      });
-    }
-
-    return updatedState;
-  }
-
-  const a1 = state.map(({ columnId }) => columnId);
-  const a2 = updatedState.map(({ columnId }) => columnId);
-
-  if (!a1.every((v, i) => v === a2[i])) {
+  if (!updatedState.every((newState, i) => state[i] === newState)) {
     updated = true;
   }
 
@@ -99,10 +81,6 @@ export function getColumnByIndex(state: ColumnWidthState[], index: number) {
 
 export function getTotalWidth(state: ColumnWidthState[]): number {
   return state.reduce((sum, column) => sum + column.width + column.padding, 0);
-}
-
-export function getLastColumn(state: ColumnWidthState[]) {
-  return state[state.length - 1];
 }
 
 export function getLength(state: ColumnWidthState[]) {
