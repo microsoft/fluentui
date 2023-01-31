@@ -1,8 +1,11 @@
+import { Avatar } from '@fluentui/react-components';
 import {
-  TableColumnDefinition,
   Table,
   TableBody,
   TableCell,
+  TableCellLayout,
+  TableColumnDefinition,
+  TableColumnSizingOptions,
   TableHeader,
   TableHeaderCell,
   TableRow,
@@ -10,92 +13,197 @@ import {
   useColumnSizing_unstable,
   useTableFeatures,
 } from '@fluentui/react-components/unstable';
+import {
+  DocumentPdfRegular,
+  DocumentRegular,
+  EditRegular,
+  FolderRegular,
+  OpenRegular,
+  PeopleRegular,
+  VideoRegular,
+} from '@fluentui/react-icons';
 import * as React from 'react';
+import { useState } from 'react';
+import { PresenceBadgeStatus } from '../../../react-badge/src';
 
-type Item = {
-  first: number;
-  second: number;
-  third: number;
-  fourth: number;
-};
-
-const columns: TableColumnDefinition<Item>[] = [
+const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
-    columnId: 'first',
-    compare: (a, b) => {
-      return a.first - b.first;
-    },
+    columnId: 'file',
+    renderHeaderCell: () => <>File</>,
   }),
   createTableColumn<Item>({
-    columnId: 'second',
-    compare: (a, b) => {
-      return a.second - b.second;
-    },
+    columnId: 'author',
+    renderHeaderCell: () => <>Author</>,
   }),
   createTableColumn<Item>({
-    columnId: 'third',
-    compare: (a, b) => {
-      return a.third - b.third;
-    },
+    columnId: 'lastUpdated',
+    renderHeaderCell: () => <>Last updated</>,
   }),
   createTableColumn<Item>({
-    columnId: 'fourth',
-    compare: (a, b) => {
-      return a.fourth - b.fourth;
-    },
+    columnId: 'lastUpdate',
+    renderHeaderCell: () => <>Last update</>,
   }),
 ];
 
-const items: Item[] = new Array(10).fill(0).map((_, i) => ({ first: i, second: i, third: i, fourth: i }));
-
-const CustomHandle: React.FC<{ onMouseDown: React.MouseEventHandler }> = ({ onMouseDown }) => {
-  return (
-    <div
-      onMouseDown={onMouseDown}
-      style={{ position: 'absolute', right: 0, top: 0, bottom: 0, display: 'flex', alignItems: 'center' }}
-    >
-      🦑
-    </div>
-  );
+type FileCell = {
+  label: string;
+  icon: JSX.Element;
 };
 
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
+  {
+    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
+    author: { label: 'Max Mustermann', status: 'available' },
+    lastUpdated: { label: '7h ago', timestamp: 3 },
+    lastUpdate: {
+      label: 'You edited this',
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
+    author: { label: 'Erika Mustermann', status: 'busy' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Training recording', icon: <VideoRegular /> },
+    author: { label: 'John Doe', status: 'away' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
+    author: { label: 'Jane Doe', status: 'offline' },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
+    lastUpdate: {
+      label: 'You shared this in a Teams chat',
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
 export const ResizableUncontrolled = () => {
-  const { getRows, columnSizing_unstable: columnSizing, tableRef } = useTableFeatures(
+  const [columns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
+  const [columnSizingOptions] = useState<TableColumnSizingOptions>({
+    file: {
+      idealWidth: 300,
+      minWidth: 190,
+    },
+    author: {
+      minWidth: 170,
+      defaultWidth: 250,
+    },
+    lastUpdate: {
+      minWidth: 220,
+    },
+  });
+
+  const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
       items,
     },
-    [useColumnSizing_unstable()],
+    [useColumnSizing_unstable({ columnSizingOptions })],
   );
+
+  const [inputValue, setInputValue] = useState('300');
+
+  const onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    const numeric = parseInt(e.target.value, 10);
+    if (!Number.isNaN(numeric)) {
+      columnSizing_unstable.setColumnWidth('file', numeric);
+    }
+  };
+  const rows = getRows();
 
   return (
     <>
-      <Table ref={tableRef}>
+      <p>
+        First column width: <input type="text" onChange={onWidthChange} value={inputValue} />
+      </p>
+      <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
           <TableRow>
-            <TableHeaderCell
-              {...columnSizing.getColumnProps('first')}
-              aside={<CustomHandle onMouseDown={columnSizing.getOnMouseDown('first')} />}
-            >
-              Octopus' column
-            </TableHeaderCell>
-
-            <TableHeaderCell {...columnSizing.getColumnProps('second')}>Second</TableHeaderCell>
-            <TableHeaderCell {...columnSizing.getColumnProps('third')}>Third</TableHeaderCell>
-            <TableHeaderCell {...columnSizing.getColumnProps('fourth')}>Fourth</TableHeaderCell>
+            {columns.map(column => (
+              <TableHeaderCell key={column.columnId} {...columnSizing_unstable.getColumnProps(column.columnId)}>
+                {column.renderHeaderCell()}
+              </TableHeaderCell>
+            ))}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {getRows().map(({ item }, i) => (
-            <TableRow key={i}>
-              <TableCell>{item.first}</TableCell>
-              <TableCell>{item.second}</TableCell>
-              <TableCell>{item.third}</TableCell>
-              <TableCell>{item.fourth}</TableCell>
+          {rows.map(({ item }) => (
+            <TableRow key={item.file.label}>
+              <TableCell {...columnSizing_unstable.getColumnProps('file')}>
+                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+              </TableCell>
+              <TableCell {...columnSizing_unstable.getColumnProps('author')}>
+                <TableCellLayout
+                  media={
+                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  }
+                >
+                  {item.author.label}
+                </TableCellLayout>
+              </TableCell>
+              <TableCell {...columnSizing_unstable.getColumnProps('lastUpdated')}>{item.lastUpdated.label}</TableCell>
+              <TableCell {...columnSizing_unstable.getColumnProps('lastUpdate')}>
+                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </>
   );
+};
+ResizableUncontrolled.storyName = 'Resizable Columns';
+ResizableUncontrolled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The Table component contains logic to support column resizing. To enable resizing,',
+        'use the `useTableFeatures` hook in combination with the `useColumnSizing_unstable` plugin.',
+        'The resulting `columnSizing_unstable` object contains methods needed to make resizing work.',
+        '',
+        'In this example we are choosing an uncontrolled approach, which still allows us to set column ',
+        'width in an imperative matter (try changing the input value).',
+        '',
+        'Options can be passed to the plugin to define minimum, default and optimal ',
+        '(in a controlled scenario) width of the column.',
+        '',
+        'To learn about how to control widths from the parent, please see the example below.',
+      ].join('\n'),
+    },
+  },
 };

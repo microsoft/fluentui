@@ -21,9 +21,7 @@ export { RowNavigation } from './RowNavigation.stories';
 
 export { Sort } from './Sort.stories';
 export { ResizableUncontrolled } from './ResizableUncontrolled.stories';
-export { ResizableFlex } from './ResizableFlex.stories';
-export { ResizingControlled } from './ResizingControlled.stories';
-export { ResizingColumns } from './ResizingColumns.stories';
+export { ResizableControlled } from './ResizableControlled.stories';
 
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';

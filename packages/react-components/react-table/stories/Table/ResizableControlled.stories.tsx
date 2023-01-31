@@ -32,6 +32,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
     renderHeaderCell: () => <>File</>,
+    renderCell: (item: Item) => <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.file.label.localeCompare(b.file.label);
     },
@@ -39,6 +40,13 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'author',
     renderHeaderCell: () => <>Author</>,
+    renderCell: (item: Item) => (
+      <TableCellLayout
+        media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+      >
+        {item.author.label}
+      </TableCellLayout>
+    ),
     compare: (a, b) => {
       return a.author.label.localeCompare(b.author.label);
     },
@@ -46,6 +54,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdated',
     renderHeaderCell: () => <>Last updated</>,
+    renderCell: (item: Item) => item.lastUpdated.label,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
@@ -53,6 +62,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdate',
     renderHeaderCell: () => <>Last update</>,
+    renderCell: (item: Item) => <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
     },
@@ -125,8 +135,8 @@ const items: Item[] = [
   },
 ];
 
-export const ResizingColumns = () => {
-  const [columns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
+export const ResizableControlled = () => {
+  const [columns, setColumns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions, setColumnSizingOptions] = useState<TableColumnSizingOptions>({
     file: {
       idealWidth: 300,
@@ -141,20 +151,31 @@ export const ResizingColumns = () => {
     },
   });
 
+  const removeColumn = (index: number) => {
+    setColumns([...columns.slice(0, index), ...columns.slice(index + 1)]);
+  };
+
+  const addColumn = () => {
+    const currentColumnIds = columns.map(({ columnId }) => columnId);
+    const missingColumnIndex = columnsDef.findIndex(({ columnId }) => !currentColumnIds.includes(columnId));
+    if (missingColumnIndex !== -1) {
+      const missingColumn = columnsDef[missingColumnIndex];
+      setColumns(state => [...state.slice(0, missingColumnIndex), missingColumn, ...state.slice(missingColumnIndex)]);
+    }
+  };
+
   const onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newWidth = parseInt(e.target.value, 10);
     if (Number.isNaN(newWidth)) {
       return;
     }
-    setColumnSizingOptions({
+    setColumnSizingOptions(state => ({
+      ...state,
       file: {
-        minWidth: 187,
+        ...state.file,
         idealWidth: newWidth,
       },
-      author: {
-        minWidth: 170,
-      },
-    });
+    }));
   };
 
   const onMinWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -215,16 +236,24 @@ export const ResizingColumns = () => {
         First column minWidth:{' '}
         <input type="text" onChange={onMinWidthChange} value={columnSizingOptions.file.minWidth} />
       </p>
+      <p>
+        <button onClick={addColumn} disabled={columns.length === columnsDef.length}>
+          Add removed column
+        </button>
+      </p>
       <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
           <TableRow>
-            {columns.map(column => (
+            {columns.map((column, index) => (
               <TableHeaderCell
                 key={column.columnId}
                 {...columnSizing.getColumnProps(column.columnId)}
                 {...headerSortProps(column.columnId)}
               >
                 {column.renderHeaderCell()}
+                <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
+                  x
+                </span>
               </TableHeaderCell>
             ))}
           </TableRow>
@@ -232,26 +261,30 @@ export const ResizingColumns = () => {
         <TableBody>
           {rows.map(({ item }) => (
             <TableRow key={item.file.label}>
-              <TableCell {...columnSizing.getColumnProps('file')}>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing.getColumnProps('author')}>
-                <TableCellLayout
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing.getColumnProps('lastUpdated')}>{item.lastUpdated.label}</TableCell>
-              <TableCell {...columnSizing.getColumnProps('lastUpdate')}>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
-              </TableCell>
+              {columns.map(column => (
+                <TableCell key={column.columnId} {...columnSizing.getColumnProps(column.columnId)}>
+                  {column.renderCell(item)}
+                </TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </>
   );
+};
+ResizableControlled.storyName = 'Resizable Columns - controlled';
+ResizableControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'This example demonstrates how `columnSizingOptions` can be used in combination with ',
+        '`onColumnResize` callback to control the width of each column from the parent component.',
+        '',
+        'The table itself still makes sure the columns are laid out in such a way that they fit in the container.',
+        '',
+        'This example also demonstrates how columns can be removed or added.',
+      ].join('\n'),
+    },
+  },
 };
