@@ -441,6 +441,7 @@ import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
@@ -459,7 +460,13 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
+import { selectClassNames } from '@fluentui/react-select';
+import { SelectOnChangeData } from '@fluentui/react-select';
+import { SelectProps } from '@fluentui/react-select';
+import { SelectSlots } from '@fluentui/react-select';
+import { SelectState } from '@fluentui/react-select';
 import { SelectTabData } from '@fluentui/react-tabs';
 import { SelectTabEvent } from '@fluentui/react-tabs';
 import { SelectTabEventHandler } from '@fluentui/react-tabs';
@@ -723,6 +730,8 @@ import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
+import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -1641,6 +1650,8 @@ export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
 
+export { renderSelect_unstable }
+
 export { renderSlider_unstable }
 
 export { renderSpinButton_unstable }
@@ -1677,7 +1688,19 @@ export { ResolveShorthandFunction }
 
 export { ResolveShorthandOptions }
 
+export { Select }
+
 export { SelectableHandler }
+
+export { selectClassNames }
+
+export { SelectOnChangeData }
+
+export { SelectProps }
+
+export { SelectSlots }
+
+export { SelectState }
 
 export { SelectTabData }
 
@@ -2204,6 +2227,10 @@ export { useRadioGroupStyles_unstable }
 export { useRadioStyles_unstable }
 
 export { useScrollbarWidth }
+
+export { useSelect_unstable }
+
+export { useSelectStyles_unstable }
 
 export { useSlider_unstable }
 

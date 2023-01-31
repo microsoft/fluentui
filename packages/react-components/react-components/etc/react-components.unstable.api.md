@@ -115,7 +115,6 @@ import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
-import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
 import { renderTableCell_unstable } from '@fluentui/react-table';
@@ -126,14 +125,9 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
-import { Select } from '@fluentui/react-select';
-import { selectClassNames } from '@fluentui/react-select';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
-import { SelectProps } from '@fluentui/react-select';
-import { SelectSlots } from '@fluentui/react-select';
-import { SelectState } from '@fluentui/react-select';
 import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
 import { sliderFieldClassNames } from '@fluentui/react-slider';
 import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
@@ -241,8 +235,6 @@ import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
-import { useSelect_unstable } from '@fluentui/react-select';
-import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -498,8 +490,6 @@ export { renderInfoButton_unstable }
 
 export { renderProgressBar_unstable }
 
-export { renderSelect_unstable }
-
 export { renderTable_unstable }
 
 export { renderTableBody_unstable }
@@ -520,21 +510,11 @@ export { renderTableSelectionCell_unstable }
 
 export { renderVirtualizer_unstable }
 
-export { Select }
-
-export { selectClassNames }
-
 export { SelectField }
 
 export { selectFieldClassNames }
 
 export { SelectFieldProps }
-
-export { SelectProps }
-
-export { SelectSlots }
-
-export { SelectState }
 
 export { SliderField }
 
@@ -749,10 +729,6 @@ export { useIntersectionObserver }
 export { useProgressBar_unstable }
 
 export { useProgressBarStyles_unstable }
-
-export { useSelect_unstable }
-
-export { useSelectStyles_unstable }
 
 export { useTable_unstable }
 
