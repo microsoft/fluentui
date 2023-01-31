@@ -13,7 +13,7 @@ import type { SkeletonLineProps, SkeletonLineState } from './SkeletonLine.types'
  */
 export const useSkeletonLine_unstable = (props: SkeletonLineProps, ref: React.Ref<HTMLElement>): SkeletonLineState => {
   //Props
-  const { height = '16px', width = '100%', verticalAlign = 'center' } = props;
+  const { height = '16px', width } = props;
 
   const root = getNativeElementProps('div', {
     ref,
@@ -21,7 +21,6 @@ export const useSkeletonLine_unstable = (props: SkeletonLineProps, ref: React.Re
 
   return {
     height,
-    verticalAlign,
     width,
     components: {
       root: 'div',

@@ -1,56 +1,59 @@
 import * as React from 'react';
 import { Skeleton, SkeletonProps } from '@fluentui/react-skeleton';
+import { skeletonGroupClassName } from '@fluentui/react-skeleton';
 import { SkeletonCircle } from '../../src/components/SkeletonCircle/SkeletonCircle';
 import { SkeletonLine } from '../../src/components/SkeletonLine/SkeletonLine';
-import { SkeletonGap } from '../../src/components/SkeletonGap/SkeletonGap';
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  invertedWrapper: {
+    backgroundColor: 'white',
+    opacity: '1',
+  },
+});
 
 const SkeletonElementsFirstRow = () => {
   return (
-    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
-      <SkeletonCircle />
-      <SkeletonGap width="2%" height="24px" />
-      <SkeletonLine height="24px" />
+    <div className={skeletonGroupClassName} style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
+      <SkeletonCircle style={{ padding: '10px' }} />
+      <SkeletonLine height="24px" width="80%" style={{ padding: '10px' }} />
     </div>
   );
 };
 const SkeletonElementsSecondRow = () => {
   return (
-    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
-      <SkeletonCircle height="24px" />
-      <SkeletonGap width="2%" height="24px" />
-      <SkeletonLine height="16px" width="20%" />
-      <SkeletonGap width="5%" height="24px" />
-      <SkeletonLine height="16px" width="20%" />
-      <SkeletonGap width="10%" height="24px" />
-      <SkeletonLine height="16px" width="15%" />
-      <SkeletonGap width="10%" height="24px" />
-      <SkeletonLine height="16px" width="15%" />
+    <div className={skeletonGroupClassName} style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
+      <SkeletonCircle radius="24px" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
+
+      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
     </div>
   );
 };
 
 const SkeletonElementsThirdRow = () => {
   return (
-    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
-      <SkeletonCircle height="24px" />
-      <SkeletonGap width="2%" height="24px" />
-      <SkeletonLine height="16px" width="20%" />
-      <SkeletonGap width="5%" height="24px" />
-      <SkeletonLine height="16px" width="20%" />
-      <SkeletonGap width="10%" height="24px" />
-      <SkeletonLine height="16px" width="15%" />
-      <SkeletonGap width="10%" height="24px" />
-      <SkeletonLine height="16px" width="15%" />
+    <div className={skeletonGroupClassName} style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
+      <SkeletonCircle radius="24px" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
+      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
     </div>
   );
 };
 
 export const Row = (props: Partial<SkeletonProps>) => {
+  const styles = useStyles();
   return (
-    <Skeleton {...props}>
-      <SkeletonElementsFirstRow />
-      <SkeletonElementsSecondRow />
-      <SkeletonElementsThirdRow />
-    </Skeleton>
+    <div className={mergeClasses(styles.invertedWrapper, skeletonGroupClassName)}>
+      <Skeleton {...props}>
+        <SkeletonElementsFirstRow />
+        <SkeletonElementsSecondRow />
+        <SkeletonElementsThirdRow />
+      </Skeleton>
+    </div>
   );
 };

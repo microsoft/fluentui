@@ -9,10 +9,5 @@ export const renderSkeleton_unstable = (state: SkeletonState) => {
   const { slots, slotProps } = getSlots<SkeletonSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return (
-    <slots.root {...slotProps.root}>
-      {slotProps.root.children}
-      {slots.gradient && <slots.gradient {...slotProps.gradient} />}
-    </slots.root>
-  );
+  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
 };

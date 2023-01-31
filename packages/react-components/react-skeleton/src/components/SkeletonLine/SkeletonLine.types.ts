@@ -18,12 +18,6 @@ export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {
   height?: number | string;
 
   /**
-   * Sets vertical alignment of the Line.
-   * @defaultvalue center
-   */
-  verticalAlign?: 'top' | 'center' | 'bottom';
-
-  /**
    * The width of the SkeletonLine
    * @defaultValue 100%
    */
@@ -34,4 +28,5 @@ export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {
  * State used in rendering SkeletonLine
  */
 export type SkeletonLineState = ComponentState<SkeletonLineSlots> &
-  Required<Pick<SkeletonLineProps, 'height' | 'verticalAlign' | 'width'>>;
+  Required<Pick<SkeletonLineProps, 'height'>> &
+  Pick<SkeletonLineProps, 'width'>;

@@ -6,10 +6,6 @@ export type SkeletonSlots = {
    * and any data that the `Skeleton` will load. The default html element is a `div`.
    */
   root: NonNullable<Slot<'div'>>;
-  /**
-   * The slot that will show the Skeleton gradient on the page. The default html element is a div.
-   */
-  gradient: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -21,12 +17,6 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
    * @defaultvalue 100%
    */
   width?: number | string;
-
-  /**
-   * Controls when the skeleton is swapped with actual data through an animated transition.
-   * @defaultvalue false
-   */
-  isDataLoaded?: boolean;
 
   /**
    * The background color to set for the Skeleton
@@ -44,4 +34,4 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
 /**
  * State used in rendering Skeleton
  */
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'isDataLoaded' | 'animation'>>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation'>>;

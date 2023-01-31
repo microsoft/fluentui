@@ -15,17 +15,10 @@ export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {
    * The height of the SkeletonCircle
    * @defaultValue 24px
    */
-  height?: number | string;
-
-  /**
-   * Sets vertical alignment of the Line.
-   * @defaultvalue center
-   */
-  verticalAlign?: 'top' | 'center' | 'bottom';
+  radius?: number | string;
 };
 
 /**
  * State used in rendering SkeletonCircle
  */
-export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> &
-  Required<Pick<SkeletonCircleProps, 'height' | 'verticalAlign'>>;
+export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> & Required<Pick<SkeletonCircleProps, 'radius'>>;

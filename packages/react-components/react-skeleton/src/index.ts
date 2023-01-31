@@ -1,6 +1,7 @@
 export {
   Skeleton,
   skeletonClassNames,
+  skeletonGroupClassName,
   renderSkeleton_unstable,
   useSkeleton_unstable,
   useSkeletonStyles_unstable,
@@ -15,15 +16,6 @@ export {
   useSkeletonCircleStyles_unstable,
 } from './SkeletonCircle';
 export type { SkeletonCircleProps, SkeletonCircleSlots, SkeletonCircleState } from './SkeletonCircle';
-
-export {
-  SkeletonGap,
-  skeletonGapClassNames,
-  renderSkeletonGap_unstable,
-  useSkeletonGap_unstable,
-  useSkeletonGapStyles_unstable,
-} from './SkeletonGap';
-export type { SkeletonGapProps, SkeletonGapSlots, SkeletonGapState } from './SkeletonGap';
 
 export {
   SkeletonLine,

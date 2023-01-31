@@ -17,13 +17,12 @@ export const useSkeletonCircle_unstable = (
   ref: React.Ref<HTMLElement>,
 ): SkeletonCircleState => {
   //Props
-  const { height = '24px', verticalAlign = 'center' } = props;
+  const { radius = '24px' } = props;
 
   const root = getNativeElementProps('div', { ref });
 
   return {
-    height,
-    verticalAlign,
+    radius,
     components: {
       root: 'div',
     },

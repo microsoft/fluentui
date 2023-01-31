@@ -7,7 +7,5 @@ import type { SkeletonLineState, SkeletonLineSlots } from './SkeletonLine.types'
  */
 export const renderSkeletonLine_unstable = (state: SkeletonLineState) => {
   const { slots, slotProps } = getSlots<SkeletonLineSlots>(state);
-
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { SkeletonProps, SkeletonState } from './Skeleton.types';
 import { SkeletonLine } from '../SkeletonLine/SkeletonLine';
-//import { SkeletonElementsGroup } from '../SkeletonElementsGroup/SkeletonElementsGroup';
 
 /**
  * Create the state required to render Skeleton.
@@ -15,7 +14,7 @@ import { SkeletonLine } from '../SkeletonLine/SkeletonLine';
  */
 export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLElement>): SkeletonState => {
   //Props
-  const { isDataLoaded = false, animation = 'wave', children = <SkeletonLine /> } = props;
+  const { animation = 'wave', children = <SkeletonLine /> } = props;
 
   const root = getNativeElementProps('div', {
     ref,
@@ -26,18 +25,11 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
     ...props,
   });
 
-  const gradient = resolveShorthand(props.gradient, {
-    required: true,
-  });
-
   return {
-    isDataLoaded,
     animation,
     components: {
       root: 'div',
-      gradient: 'div',
     },
     root,
-    gradient,
   };
 };
