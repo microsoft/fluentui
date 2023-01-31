@@ -37,7 +37,6 @@ export const parameters = {
       excludeDecorators: true,
       type: 'source',
     },
-    // "transformSource" allows to override code that will be used for "Show Code" tab.
     // This config reuses sources generated for CodeSandbox export feature (storybook-addon-export-to-codesandbox).
     transformSource: (snippet, story) => story.parameters.fullSource,
   },
