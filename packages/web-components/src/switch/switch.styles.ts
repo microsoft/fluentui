@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
@@ -24,22 +25,20 @@ import {
   fontWeightRegular,
   lineHeightBase300,
   spacingHorizontalS,
+  spacingHorizontalXS,
   spacingVerticalS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
-  :host([hidden]) {
-    display: none;
-  }
+  ${display('flex')}
+
   :host {
     display: inline-flex;
     align-items: center;
+    flex-direction: row-reverse;
     outline: none;
     user-select: none;
-  }
-  :host {
-    flex-direction: row-reverse;
   }
   :host([label-position='before']) {
     flex-direction: row;
@@ -60,7 +59,8 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     font-family: ${fontFamilyBase};
-    padding: ${spacingVerticalXS} ${spacingHorizontalS} ${spacingVerticalXS} ${spacingHorizontalS};
+    padding: ${spacingVerticalXS} ${spacingHorizontalXS};
+    cursor: pointer;
   }
   :host([disabled]) .status-message {
     color: ${colorNeutralForegroundDisabled};
@@ -101,7 +101,8 @@ export const styles = css`
     height: 14px;
     width: 14px;
     left: 3px;
-    bottom: 3px;
+    top: 50%;
+    margin-top: -7px;
     border-radius: 50%;
     background-color: ${colorNeutralForeground3};
   }
@@ -129,12 +130,6 @@ export const styles = css`
   }
   :host([disabled]) .status-message,
   :host([readonly]) .status-message {
-    cursor: pointer;
-  }
-  .label {
-    color: ${colorNeutralForeground1};
-    font-size: ${fontSizeBase300};
-    line-height: l ${lineHeightBase300};
     cursor: pointer;
   }
   .label__hidden {
