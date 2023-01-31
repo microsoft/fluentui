@@ -796,6 +796,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     const { title } = item;
 
+    // define the id and label id (for multiselect checkboxes)
+    const id = this._listId + item.index;
+    const labelId = id + '-label';
+
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
           ICheckboxStyleProps,
@@ -805,7 +809,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     return !this.props.multiSelect ? (
       <CommandButton
-        id={this._listId + item.index}
+        id={id}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
@@ -829,7 +833,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       </CommandButton>
     ) : (
       <Checkbox
-        id={this._listId + item.index}
+        id={id}
         key={item.key}
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
@@ -847,14 +851,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
-        onRenderLabel={this._onRenderItemLabel.bind(this, item, this._listId + item.index + '-label')}
+        onRenderLabel={this._onRenderItemLabel.bind(this, item, labelId)}
         className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}
         ariaSetSize={!item.hidden ? this._sizePosCache.optionSetSize : undefined}
         ariaLabel={item.ariaLabel}
-        ariaLabelledBy={item.ariaLabel ? undefined : this._listId + item.index + '-label'}
+        ariaLabelledBy={item.ariaLabel ? undefined : labelId}
       />
     );
   };

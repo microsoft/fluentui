@@ -1499,7 +1499,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     const onRenderCheckboxLabel = () => (
       <div id={id + '-label'} aria-hidden="true">
-        onRenderOption(item, this._onRenderOptionContent)
+        {onRenderOption(item, this._onRenderOptionContent)}
       </div>
     );
 
