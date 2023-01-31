@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../__test__/helpers.js';
+import { AccordionItemExpandIconPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
 import './define';
 import '../accordion-item/define';
@@ -123,7 +124,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: ['small', 'medium', 'large', 'extra-large'],
+        options: Object.values(AccordionItemSize),
       },
       defaultValue: 'medium',
     },
@@ -134,7 +135,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: ['start', 'end'],
+        options: Object.values(AccordionItemExpandIconPosition),
       },
       defaultValue: 'start',
     },
