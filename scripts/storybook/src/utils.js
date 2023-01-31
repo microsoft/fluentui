@@ -190,7 +190,7 @@ function getPackageStoriesGlob(options) {
  * register TsconfigPathsPlugin to webpack config
  * @param {Object} options
  * @param {string} options.tsConfigPath - absolute path to tsconfig that contains path aliases
- * @param {import('webpack').Configuration} options.config
+ * @param {import('webpack').Configuration} options.config - webpack config
  * @returns
  */
 function registerTsPaths(options) {
@@ -201,21 +201,46 @@ function registerTsPaths(options) {
 
   config.resolve = config.resolve ?? {};
   config.resolve.plugins = config.resolve.plugins ?? [];
+
+  // remove existing to prevent multiple tspaths plugin
+  config.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof TsconfigPathsPlugin));
+
   config.resolve.plugins.push(tsPaths);
+
   return config;
 }
 
+/**
+ *
+ * register custom Webpack Rules to webpack config
+ * @param {Object} options
+ * @param {import('webpack').RuleSetRule[]} options.rules - webpack rules
+ * @param {import('webpack').Configuration} options.config - webpack config
+ * @returns
+ */
+function registerRules(options) {
+  const { config, rules } = options;
+  config.module = config.module ?? {};
+  config.module.rules = config.module.rules ?? [];
+  config.module.rules.push(...rules);
+
+  return config;
+}
+
+/**
+ * Create tsconfig.json with merged "compilerOptions.paths" from v0,v8,v9 tsconfigs.
+ *
+ * Main purpose of this is to be used for build-less DX in webpack in tandem with {@link registerTsPaths}
+ * @returns
+ */
 function createPathAliasesConfig() {
   const { tsConfigAllPath } = createMergedTsConfig();
-  const tsPaths = new TsconfigPathsPlugin({
-    configFile: tsConfigAllPath,
-  });
-
-  return { tsPaths };
+  return { tsConfigAllPath };
 }
 
 function createMergedTsConfig() {
   const rootPath = workspaceRoot;
+  const tsConfigAllPath = path.join(rootPath, 'dist/tsconfig.base.all.json');
   const baseConfigs = {
     v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
     v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
@@ -235,8 +260,6 @@ function createMergedTsConfig() {
     },
   };
 
-  const tsConfigAllPath = path.join(workspaceRoot, 'dist/tsconfig.base.all.json');
-
   writeJsonFile(tsConfigAllPath, mergedTsConfig);
 
   return { tsConfigAllPath, mergedTsConfig };
@@ -246,4 +269,5 @@ exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;
 exports.registerTsPaths = registerTsPaths;
+exports.registerRules = registerRules;
 exports.createPathAliasesConfig = createPathAliasesConfig;
