@@ -56,7 +56,11 @@ const createReducer = <T>() => (state: ComponentState<T>, action: ColumnResizeSt
 
     case 'COLUMNS_UPDATED':
       const newS = columnDefinitionsToState(action.columns, state.columnWidthState, state.columnSizingOptions);
-      return { ...state, columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth) };
+      return {
+        ...state,
+        columns: action.columns,
+        columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth),
+      };
 
     case 'COLUMN_SIZING_OPTIONS_UPDATED':
       const newState = columnDefinitionsToState(state.columns, state.columnWidthState, action.columnSizingOptions);

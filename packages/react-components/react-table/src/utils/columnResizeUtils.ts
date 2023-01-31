@@ -35,10 +35,7 @@ export function columnDefinitionsToState<T>(
       if (
         idealWidth !== existingColumnState.idealWidth ||
         minWidth !== existingColumnState.minWidth ||
-        padding !== existingColumnState.padding ||
-        // If the length changed (column was added or removed), reset the width to ideal if its not ideal.
-        // This solves a case when the last column's width is expanded and a new column is added after it.
-        (columns.length !== state.length && existingColumnState.width !== existingColumnState.idealWidth)
+        padding !== existingColumnState.padding
       ) {
         updated = true;
         return {
@@ -64,7 +61,16 @@ export function columnDefinitionsToState<T>(
     };
   });
 
-  if (!updatedState.every((newState, i) => state[i] === newState)) {
+  // If the length of the new state changed (column was added or removed) or any of
+  // the individual states has a new reference (column was replaced),
+  // we have to reset the column widths to their optimal (because the column which was last may not be last now).
+  // Then the adjustColumnWidthsToFitContainer can do its job and properly stretch the last column.
+  if (updatedState.length !== state.length || !updatedState.every((newState, i) => state[i] === newState)) {
+    const column = updatedState.find(col => col.width > col.idealWidth);
+    if (column) {
+      column.width = column.idealWidth;
+    }
+
     updated = true;
   }
 
