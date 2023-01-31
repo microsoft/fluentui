@@ -55,7 +55,7 @@ const CustomHandle: React.FC<{ onMouseDown: React.MouseEventHandler }> = ({ onMo
 };
 
 export const ResizableFlex = () => {
-  const { getRows, columnSizing, tableRef } = useTableFeatures(
+  const { getRows, columnSizing_unstable: columnSizing, tableRef } = useTableFeatures(
     {
       columns,
       items,

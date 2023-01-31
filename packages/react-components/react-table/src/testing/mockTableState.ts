@@ -9,7 +9,8 @@ export const mockTableState = <TItem = unknown>(options: Partial<TableFeaturesSt
     items: [],
     selection: defaultTableSelectionState,
     sort: defaultTableSortState as TableSortState<TItem>,
-    columnSizing: defaultColumnSizingState,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnSizing_unstable: defaultColumnSizingState,
     tableRef: React.createRef(),
     ...options,
   };

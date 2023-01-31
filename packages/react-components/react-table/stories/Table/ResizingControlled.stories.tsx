@@ -66,7 +66,7 @@ export const ResizingControlled = () => {
     setColumns([...columns.slice(0, index), ...columns.slice(index + 1)]);
   };
 
-  const { getRows, columnSizing, tableRef } = useTableFeatures(
+  const { getRows, columnSizing_unstable: columnSizing, tableRef } = useTableFeatures(
     {
       columns,
       items,

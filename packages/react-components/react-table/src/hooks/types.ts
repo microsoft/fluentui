@@ -133,7 +133,8 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    */
   columns: TableColumnDefinition<TItem>[];
 
-  columnSizing: TableColumnSizingState;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnSizing_unstable: TableColumnSizingState;
 
   tableRef: React.Ref<HTMLDivElement>;
 }

@@ -54,7 +54,8 @@ function useColumnSizingState<TItem>(
   return {
     ...tableState,
     tableRef: measureElementRef,
-    columnSizing: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnSizing_unstable: {
       getOnMouseDown: mouseHandler.getOnMouseDown,
       getColumnWidth: columnResizeState.getColumnWidth,
       getTotalWidth: columnResizeState.getTotalWidth,

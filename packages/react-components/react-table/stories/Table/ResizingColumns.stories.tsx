@@ -184,7 +184,7 @@ export const ResizingColumns = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-    columnSizing,
+    columnSizing_unstable: columnSizing,
     tableRef,
   } = useTableFeatures(
     {

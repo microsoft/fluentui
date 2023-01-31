@@ -42,7 +42,8 @@ export function mockDataGridContext(
     selectableRows: false,
     subtleSelection: false,
     selectionAppearance: 'brand',
-    columnSizing: defaultColumnSizingState,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnSizing_unstable: defaultColumnSizingState,
     tableRef: React.createRef(),
     ...options,
   };
