@@ -1641,6 +1641,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           }
                     >
                       <input
+                        aria-labelledby="ComboBox0-list1-label"
                         aria-selected="false"
                         class=
 
@@ -1741,22 +1742,27 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             
                           </i>
                         </div>
-                        <span
-                          class=
-                              ms-ComboBox-optionText
-                              {
-                                display: inline-block;
-                                max-width: 100%;
-                                min-width: 0px;
-                                overflow-wrap: break-word;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                word-wrap: break-word;
-                              }
+                        <div
+                          aria-hidden="true"
+                          id="ComboBox0-list1-label"
                         >
-                          Option 1
-                        </span>
+                          <span
+                            class=
+                                ms-ComboBox-optionText
+                                {
+                                  display: inline-block;
+                                  max-width: 100%;
+                                  min-width: 0px;
+                                  overflow-wrap: break-word;
+                                  overflow: hidden;
+                                  text-overflow: ellipsis;
+                                  white-space: nowrap;
+                                  word-wrap: break-word;
+                                }
+                          >
+                            Option 1
+                          </span>
+                        </div>
                       </label>
                     </div>
                     <div
@@ -1854,6 +1860,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         }
                   >
                     <input
+                      aria-labelledby="ComboBox0-list3-label"
                       aria-selected="true"
                       checked=""
                       class=
@@ -1958,22 +1965,27 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           
                         </i>
                       </div>
-                      <span
-                        class=
-                            ms-ComboBox-optionText
-                            {
-                              display: inline-block;
-                              max-width: 100%;
-                              min-width: 0px;
-                              overflow-wrap: break-word;
-                              overflow: hidden;
-                              text-overflow: ellipsis;
-                              white-space: nowrap;
-                              word-wrap: break-word;
-                            }
+                      <div
+                        aria-hidden="true"
+                        id="ComboBox0-list3-label"
                       >
-                        Option 2
-                      </span>
+                        <span
+                          class=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option 2
+                        </span>
+                      </div>
                     </label>
                   </div>
                 </div>

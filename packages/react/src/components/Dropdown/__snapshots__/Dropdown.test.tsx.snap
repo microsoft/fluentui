@@ -468,6 +468,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           }
                     >
                       <input
+                        aria-labelledby="Dropdown0-list1-label"
                         aria-posinset="1"
                         aria-selected="true"
                         aria-setsize="2"
@@ -581,25 +582,30 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             
                           </i>
                         </div>
-                        <span
-                          class=
-                              ms-Dropdown-optionText
-                              {
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
-                                max-width: 100%;
-                                min-width: 0px;
-                                overflow-wrap: break-word;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                word-wrap: break-word;
-                              }
+                        <div
+                          aria-hidden="true"
+                          id="Dropdown0-list1-label"
                         >
-                          1
-                        </span>
+                          <span
+                            class=
+                                ms-Dropdown-optionText
+                                {
+                                  margin-bottom: 1px;
+                                  margin-left: 1px;
+                                  margin-right: 1px;
+                                  margin-top: 1px;
+                                  max-width: 100%;
+                                  min-width: 0px;
+                                  overflow-wrap: break-word;
+                                  overflow: hidden;
+                                  text-overflow: ellipsis;
+                                  white-space: nowrap;
+                                  word-wrap: break-word;
+                                }
+                          >
+                            1
+                          </span>
+                        </div>
                       </label>
                     </div>
                     <div
@@ -714,6 +720,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                     title="test"
                   >
                     <input
+                      aria-labelledby="Dropdown0-list3-label"
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="2"
@@ -824,25 +831,30 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           
                         </i>
                       </div>
-                      <span
-                        class=
-                            ms-Dropdown-optionText
-                            {
-                              margin-bottom: 1px;
-                              margin-left: 1px;
-                              margin-right: 1px;
-                              margin-top: 1px;
-                              max-width: 100%;
-                              min-width: 0px;
-                              overflow-wrap: break-word;
-                              overflow: hidden;
-                              text-overflow: ellipsis;
-                              white-space: nowrap;
-                              word-wrap: break-word;
-                            }
+                      <div
+                        aria-hidden="true"
+                        id="Dropdown0-list3-label"
                       >
-                        2
-                      </span>
+                        <span
+                          class=
+                              ms-Dropdown-optionText
+                              {
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          2
+                        </span>
+                      </div>
                     </label>
                   </div>
                 </div>
