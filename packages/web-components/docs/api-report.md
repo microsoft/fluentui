@@ -4,8 +4,11 @@
 
 ```ts
 
+import { Orientation as DividerOrientation } from '@microsoft/fast-web-utilities';
+import { DividerRole } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
+import { FASTDivider } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
@@ -176,6 +179,47 @@ export const CounterBadgeStyles: ElementStyles;
 
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
+
+// @public
+export class Divider extends FASTDivider {
+    alignContent?: DividerAlignContent;
+    appearance?: DividerAppearance;
+    inset?: boolean;
+}
+
+// @public
+export const DividerAlignContent: {
+    readonly center: "center";
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
+
+// @public
+export const DividerAppearance: {
+    readonly strong: "strong";
+    readonly brand: "brand";
+    readonly subtle: "subtle";
+    readonly default: "default";
+};
+
+// @public
+export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
+
+// @public
+export const DividerDefinition: FASTElementDefinition<typeof Divider>;
+
+export { DividerOrientation }
+
+export { DividerRole }
+
+// @public
+export const DividerStyles: ElementStyles;
+
+// @public
+export const DividerTemplate: ElementViewTemplate<Divider>;
 
 // @public
 export class ProgressBar extends FASTProgress {
