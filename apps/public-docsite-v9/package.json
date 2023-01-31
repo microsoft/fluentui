@@ -22,6 +22,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/fluent2-theme": "^8.104.14",
     "@fluentui/react": "^8.105.0",
     "@fluentui/react-northstar": "^0.66.0",
     "@fluentui/react-icons-northstar": "^0.66.0",
