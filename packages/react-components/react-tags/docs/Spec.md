@@ -66,7 +66,7 @@ _Provide some representative example code that uses the proposed API for the com
 - content: span (primary)
   - image
   - icon
-  - secondary
+  - secondary ? (not sure on how to approach this yet)
 - dismiss
 
 ### Props
