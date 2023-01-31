@@ -1204,7 +1204,21 @@ export const lineHeightHero800: CSSDesignToken<string>;
 export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
-class ProgressBar_2 extends FASTProgress {
+class Image_2 extends FASTElement {
+}
+export { Image_2 as Image }
+
+// @public
+export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
+
+// @public
+export const ImageStyles: ElementStyles;
+
+// @public
+export const ImageTemplate: ElementViewTemplate<Image_2>;
+
+// @public
+export class ProgressBar extends FASTProgress {
     shape: ProgressBarShape;
     thickness: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
