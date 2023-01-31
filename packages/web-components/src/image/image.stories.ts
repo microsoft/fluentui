@@ -9,109 +9,34 @@ type ImageStoryArgs = Args & FluentImage;
 type ImageStoryMeta = Meta<ImageStoryArgs>;
 
 const imageTemplate = html<ImageStoryArgs>`
-  <div style="border: 30px solid #ccc; height: 9em; display: flex; flex-direction: column; justify-content: center;">
-    <fluent-image
-      align-content=${x => x.alignContent}
-      appearance=${x => x.appearance}
-      role=${x => x.role}
-      ?inset=${x => x.inset}
-      orientation=${x => x.orientation}
-    >
-      ${x => (x.content ? html`<h3>${x.content}</h3>` : '')}
-    </fluent-image>
+  <div>
+    <fluent-image alt=${x => x.alt}> ${x => x.content} </fluent-image>
   </div>
 `;
 
 export default {
   title: 'Components/Image',
   args: {
-    content: 'Section One',
-    alignContent: 'center',
-    role: 'separator',
-    inset: false,
-    orientation: 'horizontal',
+    alt: 'image description',
   },
   argTypes: {
     content: {
-      description: 'HTML element wrapping text  (e.g. `<h3>Section One</h3>`), Image or SVG',
+      description: 'Image element',
       table: {
         defaultValue: {
           summary: 'empty',
         },
       },
     },
-    alignContent: {
-      description: 'Align content',
+    alt: {
+      description: 'Image alt content',
       table: {
         type: {
-          summary: 'Fluent v9. Determines the alignment of the content within the image.',
+          summary: 'Description of image read by screen reader',
         },
         defaultValue: {
-          summary: 'center',
+          summary: 'empty',
         },
-      },
-      options: Object.values(ImageAlignContent),
-      control: {
-        type: 'select',
-      },
-    },
-    appearance: {
-      description: 'Image and text colors',
-      table: {
-        type: {
-          summary: 'Fluent v9. A image can have one of the preset appearances.',
-        },
-        defaultValue: {
-          summary: 'default',
-        },
-      },
-      options: Object.values(ImageAppearance),
-      control: {
-        type: 'select',
-      },
-    },
-    role: {
-      description: 'Set role attribute',
-      table: {
-        type: {
-          summary: 'Inherited from FASTImage. Aria role for the image.',
-        },
-        defaultValue: {
-          summary: 'separator',
-        },
-      },
-      options: Object.values(ImageRole),
-      control: {
-        type: 'select',
-      },
-    },
-    inset: {
-      description: 'Pad the ends of image',
-      table: {
-        type: {
-          summary:
-            'Type: boolean. Fluent v9. Image layout is block for strict distinctions between items, or inset for closer relationships with neighboring content.',
-        },
-        defaultValue: {
-          summary: false,
-        },
-      },
-      control: 'boolean',
-    },
-    orientation: {
-      description: 'Image layout',
-      table: {
-        type: {
-          summary:
-            'Inherited from FASTImage. Layout can be horizontal or vertical. Adds aria-orientation to component.',
-        },
-        defaultValue: {
-          summary: 'horizontal',
-        },
-      },
-      options: Object.values(ImageOrientation),
-      control: {
-        type: 'select',
       },
     },
   },
