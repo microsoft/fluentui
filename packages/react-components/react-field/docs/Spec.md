@@ -22,11 +22,11 @@ Existing libraries take one of several approaches to Field. The basic problem th
    - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the control and the Form.Item component).
    - **Atlaskit** - [`Field`](https://atlaskit.atlassian.com/packages/design-system/form/docs/fields) (uses a render function as the child of the Field to pass props).
 
-The Field implementation in this spec follows pattern (4). Field passes props to its child to connect the field's label and message text. There are several reasons, including:
+The Field implementation in this spec follows pattern (4). Field passes props to its child to connect the field's label and message text. There are several reasons:
 
-- **Accessibility**: All of the accessibility props like `htmlFor` and `aria-describedby` are set correctly on the child for "free".
+- **Accessibility**: All of the accessibility props like `aria-labelledby` and `aria-describedby` are set correctly on the child for "free".
 - **Simplicity**: Passing props down to the children allows any form control to be used as the child of Field.
-- **Consistency**: The Field component provides props for the label, validationState, hint, etc.
+- **Consistency**: The Field component provides props the label, validationState, hint, etc. for any form control.
 - **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the core components like `Input` without pulling in unnecessary dependencies (like `Label` and the field styling).
 
 ## Sample Code
@@ -66,10 +66,10 @@ The Field implementation in this spec follows pattern (4). Field passes props to
   - `'horizontal'` - label is to the left of the field component, and is 33% the width of the field (this allows multiple stacked fields to all align their labels)
 - **Validation state**: The `validationState` prop affects the icon and color used by the `validationMessage`:
   - `'error'` - (default when there is a `validationMessage`): Red x icon, red text color
+    - In the error state, Field also sets `aria-invalid` on the child element. Some controls such as `Input` and `Combobox` draw a red border when `aria-invalid` is set.
   - `'warning'` - Yellow exclamation icon, neutral color text
   - `'success'` - Green check icon, neutral color text
   - `'none'` - No validation message icon, neutral color text
-- **Error**: When `validationState` is `'error'`, Field
 
 Field also forwards some props to its Label:
 
@@ -82,7 +82,7 @@ Field also forwards some props to its Label:
 
 The props added are:
 
-- `id` - An ID is generated if not present on the child. This is used as the label's `htmlFor`.
+- `id` - Uses the child's `id` prop if set; otherwise generates an ID and sets it on the child. This is used as the label's `htmlFor`.
 - `aria-labelledby` - The label's ID.
 - `aria-describedby` - The validationMessage and/or hint's ID.
 - `aria-invalid` - If validationState is error (which is the default when a validationMessage is set).
@@ -287,14 +287,16 @@ The Field itself is not interactive. The wrapped component has the same interact
   - Field itself does not implement a defined ARIA pattern. It has no role applied to the root element.
 - **Attributes**
   - The following are applied on the child component:
-    - `id={generatedChildID}`, for use by the label's `htmlFor` (only if `id` is not preset on props).
-    - `aria-labelledby={label.id}`, if the label is present.
-    - `aria-describedby={validationMessage.id + ' ' + hint.id}` (omits validationMessage and/or hint if not present).
-    - `aria-invalid={true}`, _only if_ `validationState === 'error'` (which is the default when a validationMessage is supplied).
+    - `id={generatedChildID}` - if the label is present, and the child doesn't have an `id` already.
+    - `aria-labelledby={label.id}` - if the label is present.
+    - `aria-describedby={validationMessage.id + ' ' + hint.id}` - if the validationMessage and/or hint are present.
+    - `aria-invalid={true}` - if validationMessage is present, unless validationState set to something _other than_ `error`.
   - On the `label` slot:
-    - `htmlFor={child.id}` - the child's `id` (an ID is generated and set on the child, if not provided by props).
+    - `htmlFor={child.id}`
   - On the `validationMessage` slot:
-    - `role="alert"`, _only if_ `validationState === 'error'` (which is the default).
+    - `role="alert"` - unless validationState set to something _other than_ `error`.
+- **Live regions** (state change announcements)
+  - `role="alert"` on the `validationMessage` when it is an error causes the message to be announced by screen readers when it appears.
 - **UI parts appearing on hover or focus**
   - None.
 - **Focus behavior**
