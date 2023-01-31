@@ -21,6 +21,7 @@
     "random-seedable": "1.0.8"
   },
   "devDependencies": {
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-storybook": "*"
   }
 }
