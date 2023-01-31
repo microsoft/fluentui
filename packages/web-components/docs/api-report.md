@@ -1371,9 +1371,6 @@ export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
 export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
 
 // @public
-export type SpinnerSize = Values<typeof SpinnerSize>;
-
-// @public
 export const SpinnerSize: {
     readonly tiny: "tiny";
     readonly extraSmall: "extra-small";
@@ -1383,6 +1380,9 @@ export const SpinnerSize: {
     readonly extraLarge: "extra-large";
     readonly huge: "huge";
 };
+
+// @public
+export type SpinnerSize = Values<typeof SpinnerSize>;
 
 // @public (undocumented)
 export const SpinnerStyles: ElementStyles;

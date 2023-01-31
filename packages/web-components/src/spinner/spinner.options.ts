@@ -1,43 +1,24 @@
 export type Values<T> = T[keyof T];
 /**
- * Spinner appearance options
+ * SpinnerAppearance constants
  * @public
  */
 export const SpinnerAppearance = {
-  /**
-   * Use the primary appearance when the Spinner is on a light background
-   *
-   */
   primary: 'primary',
-
-  /**
-   * Use the inverted appearance when the Spinner is on a dark background
-   *
-   */
   inverted: 'inverted',
 } as const;
 
 /**
- * The type for Spinner size option
- * @public
- */
-export type SpinnerSize = Values<typeof SpinnerSize>;
-
-/**
- * The type for Spinner appearance option
+ * A Spinner's appearance can be either primary or inverted
  * @public
  */
 export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
 
 /**
- * Spinner size options
+ * SpinnerSize constants
  * @public
  */
 export const SpinnerSize = {
-  /**
-   * A Spinner's size can be small, tiny, extra-small, medium, large, extra-large, or huge
-   *
-   */
   tiny: 'tiny',
   extraSmall: 'extra-small',
   small: 'small',
@@ -46,3 +27,9 @@ export const SpinnerSize = {
   extraLarge: 'extra-large',
   huge: 'huge',
 } as const;
+
+/**
+ * A Spinner's size can be either small, tiny, extra-small, medium, large, extra-large, or huge
+ * @public
+ */
+export type SpinnerSize = Values<typeof SpinnerSize>;
