@@ -15,7 +15,6 @@ export type {
 export {
   renderTabList_unstable,
   TabList,
-  TabListContext,
   TabListProvider,
   tabListClassNames,
   useTabListContext_unstable,

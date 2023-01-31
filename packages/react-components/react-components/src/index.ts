@@ -569,7 +569,6 @@ export {
   useTab_unstable,
   renderTabList_unstable,
   TabList,
-  TabListContext,
   tabListClassNames,
   TabListProvider,
   useTabListContext_unstable,
