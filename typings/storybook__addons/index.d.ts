@@ -2,6 +2,7 @@
 // Project: https://github.com/storybookjs/storybook/tree/main/lib/addons
 
 import { ViewMode } from '@storybook/addons';
+import { StoryContextForEnhancers } from '@storybook/csf';
 import * as React from 'react';
 
 declare module '@storybook/addons' {
@@ -41,6 +42,8 @@ declare module '@storybook/addons' {
         excludeDecorators: boolean;
         type: 'source' | 'auto' | 'dynamic';
       };
+
+      transformSource: (snippet: string, story: StoryContextForEnhancers) => string | undefined;
 
       container?: React.ComponentType<any>;
       page?: React.ComponentType<any>;
