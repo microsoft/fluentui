@@ -15,7 +15,7 @@ export { Size } from './DropdownSize.stories';
 export { Disabled } from './DropdownDisabled.stories';
 
 export default {
-  title: 'Preview Components/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
     docs: {
