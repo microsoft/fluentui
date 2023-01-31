@@ -1,4 +1,17 @@
+const rules = require('./rules');
+const {
+  createPathAliasesConfig,
+  getPackageStoriesGlob,
+  loadWorkspaceAddon,
+  registerRules,
+  registerTsPaths,
+} = require('./utils');
+
 module.exports = {
-  ...require('./utils'),
-  rules: require('./rules'),
+  createPathAliasesConfig,
+  getPackageStoriesGlob,
+  loadWorkspaceAddon,
+  registerRules,
+  registerTsPaths,
+  rules,
 };

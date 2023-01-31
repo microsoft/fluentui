@@ -1,3 +1,5 @@
+const { _createCodesandboxRule } = require('./utils');
+
 /**
  * v8 uses SCSS/CSS modules
  * @type {import("webpack").RuleSetRule}
@@ -54,5 +56,11 @@ const griffelRule = {
   ],
 };
 
+/**
+ * @type {import("webpack").RuleSetRule}
+ */
+const codesandboxRule = _createCodesandboxRule();
+
 exports.scssRule = scssRule;
 exports.griffelRule = griffelRule;
+exports.codesandboxRule = codesandboxRule;
