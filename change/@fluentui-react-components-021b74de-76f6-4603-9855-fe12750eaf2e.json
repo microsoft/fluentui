@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: export SlotRenderFunction type",
+  "packageName": "@fluentui/react-components",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
