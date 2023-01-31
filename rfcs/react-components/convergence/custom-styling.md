@@ -458,7 +458,7 @@ Callers can use the `themeToTokensObject` method to get the set of tokens to be 
 
 All v9 components have a `className` prop which applies custom styles.
 Each slot also has a `className` props which applies custom styles to a part of a component.
-Custom styles can be built with Griffel `makeStyles()` and `mergeClasses().
+Custom styles can be built with Griffel `makeStyles()` and `mergeClasses()`.
 
 #### Capabilities
 
