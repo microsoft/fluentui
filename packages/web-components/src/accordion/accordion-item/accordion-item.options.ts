@@ -1,9 +1,31 @@
+import { ValuesOf } from '@microsoft/fast-foundation';
+
 /**
- * An Accordion Item can be medium, large, and larger in height
+ * An Accordion Item can be small, medium, large, and extra-large in height
  */
-export type AccordionItemSize = 'medium' | 'large' | 'larger';
+export const AccordionItemSize = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+  extraLarge: 'extra-large',
+} as const;
+
+/**
+ * Applies font size to accordion header
+ * @public
+ */
+export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
 
 /**
  * An Accordion Item expand/collapse icon can appear at the start or end of the accordion
  */
-export type AccordionItemExpandIconPosition = 'start' | 'end';
+export const AccordionItemExpandIconPosition = {
+  start: 'start',
+  end: 'end',
+} as const;
+
+/**
+ * Applies expand/collapse icon position
+ * @public
+ */
+export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;

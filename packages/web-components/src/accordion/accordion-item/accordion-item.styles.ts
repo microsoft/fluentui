@@ -8,11 +8,15 @@ import {
   colorStrokeFocus2,
   colorTransparentBackground,
   fontFamilyBase,
+  fontSizeBase200,
   fontSizeBase300,
   fontSizeBase400,
   fontSizeBase500,
   fontWeightRegular,
+  lineHeightBase200,
   lineHeightBase300,
+  lineHeightBase400,
+  lineHeightBase500,
   spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalS,
@@ -161,16 +165,24 @@ export const styles = css`
 
   /* --- Appearance attr styles --- */
 
-  :host([appearance='medium']) .heading slot[name='heading'] {
+  :host .heading slot[name='heading'] {
     font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+  }
+
+  :host([appearance='small']) .heading slot[name='heading'] {
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
   }
 
   :host([appearance='large']) slot[name='heading'] {
     font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
   }
 
-  :host([appearance='larger']) slot[name='heading'] {
+  :host([appearance='extra-large']) slot[name='heading'] {
     font-size: ${fontSizeBase500};
+    line-height: ${lineHeightBase500};
   }
 
   /* --- expandIconPosition attr styles --- */

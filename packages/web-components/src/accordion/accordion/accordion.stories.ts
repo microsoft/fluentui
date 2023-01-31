@@ -123,7 +123,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: ['medium', 'large', 'larger'],
+        options: ['small', 'medium', 'large', 'extra-large'],
       },
       defaultValue: 'medium',
     },
