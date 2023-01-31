@@ -33,12 +33,12 @@ storiesOf('Field', module)
   ))
   .addStory('size:small', () => (
     <Field label="Small field" size="small">
-      <Input />
+      <Input size="small" />
     </Field>
   ))
   .addStory('size:large', () => (
     <Field label="Large field" size="large">
-      <Input />
+      <Input size="large" />
     </Field>
   ))
   .addStory('validation:error', () => (
@@ -126,7 +126,7 @@ storiesOf('Field', module)
   ))
   .addStory('ProgressBar:error', () => (
     <Field label="ProgressBar in a Field with an error" validationMessage="Error message">
-      <ProgressBar value={0.5} />
+      <ProgressBar value={0.5} validationState="error" />
     </Field>
   ))
   .addStory('RadioGroup:error', () => (
