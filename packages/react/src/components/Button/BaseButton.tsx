@@ -910,7 +910,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
       // Touch and pointer events don't focus the button naturally,
       // so adding an imperative focus call to guarantee this behavior.
-      this.focus();
+      // Only focus the button if a splitbutton menu is not open
+      if (this.state.menuHidden) {
+        this.focus();
+      }
     }, TouchIdleDelay);
   }
 
