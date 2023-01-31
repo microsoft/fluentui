@@ -503,6 +503,7 @@ import { tabListClassNames } from '@fluentui/react-tabs';
 import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
 import { TabListProps } from '@fluentui/react-tabs';
+import { TabListProvider } from '@fluentui/react-tabs';
 import { TabListSlots } from '@fluentui/react-tabs';
 import { TabListState } from '@fluentui/react-tabs';
 import { TabProps } from '@fluentui/react-tabs';
@@ -720,6 +721,8 @@ import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
 import { useTabList_unstable } from '@fluentui/react-tabs';
+import { useTabListContext_unstable } from '@fluentui/react-tabs';
+import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useText_unstable } from '@fluentui/react-text';
@@ -1747,6 +1750,8 @@ export { TabListContextValues }
 
 export { TabListProps }
 
+export { TabListProvider }
+
 export { TabListSlots }
 
 export { TabListState }
@@ -2180,6 +2185,10 @@ export { useSwitchStyles_unstable }
 export { useTab_unstable }
 
 export { useTabList_unstable }
+
+export { useTabListContext_unstable }
+
+export { useTabListContextValues_unstable }
 
 export { useTabListStyles_unstable }
 
