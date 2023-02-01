@@ -122,6 +122,7 @@ import { renderTableCellActions_unstable } from '@fluentui/react-table';
 import { renderTableCellLayout_unstable } from '@fluentui/react-table';
 import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
+import { renderTableResizeHandle_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
@@ -184,6 +185,8 @@ import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
 import { TableProps } from '@fluentui/react-table';
+import { TableResizeHandle } from '@fluentui/react-table';
+import { tableResizeHandleClassNames } from '@fluentui/react-table';
 import { TableRow } from '@fluentui/react-table';
 import { tableRowClassName } from '@fluentui/react-table';
 import { tableRowClassNames } from '@fluentui/react-table';
@@ -215,7 +218,6 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useColumnSizing_unstable } from '@fluentui/react-table';
 import { useDataGrid_unstable } from '@fluentui/react-table';
 import { useDataGridBody_unstable } from '@fluentui/react-table';
 import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
@@ -246,6 +248,7 @@ import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
 import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
+import { useTableColumnSizing_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableFeatures } from '@fluentui/react-table';
 import { UseTableFeaturesOptions } from '@fluentui/react-table';
@@ -253,6 +256,8 @@ import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { useTableResizeHandle_unstable } from '@fluentui/react-table';
+import { useTableResizeHandleStyles_unstable } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowIdContext } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
@@ -506,6 +511,8 @@ export { renderTableHeader_unstable }
 
 export { renderTableHeaderCell_unstable }
 
+export { renderTableResizeHandle_unstable }
+
 export { renderTableRow_unstable }
 
 export { renderTableSelectionCell_unstable }
@@ -630,6 +637,10 @@ export { TableHeaderState }
 
 export { TableProps }
 
+export { TableResizeHandle }
+
+export { tableResizeHandleClassNames }
+
 export { TableRow }
 
 export { tableRowClassName }
@@ -692,8 +703,6 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
-export { useColumnSizing_unstable }
-
 export { useDataGrid_unstable }
 
 export { useDataGridBody_unstable }
@@ -754,6 +763,8 @@ export { useTableCellLayoutStyles_unstable }
 
 export { useTableCellStyles_unstable }
 
+export { useTableColumnSizing_unstable }
+
 export { useTableContext }
 
 export { useTableFeatures }
@@ -767,6 +778,10 @@ export { useTableHeaderCell_unstable }
 export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
+
+export { useTableResizeHandle_unstable }
+
+export { useTableResizeHandleStyles_unstable }
 
 export { useTableRow_unstable }
 
