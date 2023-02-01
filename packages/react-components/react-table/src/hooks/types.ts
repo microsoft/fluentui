@@ -189,13 +189,15 @@ export interface ColumnWidthState {
   padding: number;
 }
 
-export type ColumnWidthProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
+export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
+export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
 export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
-  getColumnProps: (columnId: TableColumnId) => ColumnWidthProps;
+  getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
+  getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
 }
 
 export type ColumnResizeState = {

@@ -15,7 +15,8 @@ export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
   getOnMouseDown: () => () => null,
   setColumnWidth: () => null,
-  getColumnProps: () => ({ style: {}, columnId: '' }),
+  getTableHeaderCellProps: () => ({ style: {}, columnId: '' }),
+  getTableCellProps: () => ({ style: {}, columnId: '' }),
 };
 
 export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams) {
@@ -57,10 +58,14 @@ function useColumnSizingState<TItem>(
       getOnMouseDown: mouseHandler.getOnMouseDown,
       setColumnWidth: columnResizeState.setColumnWidth,
       getColumnWidths: columnResizeState.getColumns,
-      getColumnProps: (columnId: TableColumnId) => {
+      getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
         const aside = <TableResizeHandle onMouseDown={mouseHandler.getOnMouseDown(columnId)} />;
         return col ? { style: getColumnStyles(col), aside } : {};
+      },
+      getTableCellProps: (columnId: TableColumnId) => {
+        const col = columnResizeState.getColumnById(columnId);
+        return col ? { style: getColumnStyles(col) } : {};
       },
     },
   };

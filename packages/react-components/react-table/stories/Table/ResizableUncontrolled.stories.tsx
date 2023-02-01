@@ -127,6 +127,7 @@ export const ResizableUncontrolled = () => {
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
@@ -155,7 +156,10 @@ export const ResizableUncontrolled = () => {
         <TableHeader>
           <TableRow>
             {columns.map(column => (
-              <TableHeaderCell key={column.columnId} {...columnSizing_unstable.getColumnProps(column.columnId)}>
+              <TableHeaderCell
+                key={column.columnId}
+                {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
+              >
                 {column.renderHeaderCell()}
               </TableHeaderCell>
             ))}
@@ -164,10 +168,10 @@ export const ResizableUncontrolled = () => {
         <TableBody>
           {rows.map(({ item }) => (
             <TableRow key={item.file.label}>
-              <TableCell {...columnSizing_unstable.getColumnProps('file')}>
+              <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
                 <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               </TableCell>
-              <TableCell {...columnSizing_unstable.getColumnProps('author')}>
+              <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
                 <TableCellLayout
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
@@ -176,8 +180,10 @@ export const ResizableUncontrolled = () => {
                   {item.author.label}
                 </TableCellLayout>
               </TableCell>
-              <TableCell {...columnSizing_unstable.getColumnProps('lastUpdated')}>{item.lastUpdated.label}</TableCell>
-              <TableCell {...columnSizing_unstable.getColumnProps('lastUpdate')}>
+              <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
+                {item.lastUpdated.label}
+              </TableCell>
+              <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
                 <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
               </TableCell>
             </TableRow>

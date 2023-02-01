@@ -247,7 +247,7 @@ export const ResizableControlled = () => {
             {columns.map((column, index) => (
               <TableHeaderCell
                 key={column.columnId}
-                {...columnSizing.getColumnProps(column.columnId)}
+                {...columnSizing.getTableHeaderCellProps(column.columnId)}
                 {...headerSortProps(column.columnId)}
               >
                 {column.renderHeaderCell()}
@@ -262,7 +262,7 @@ export const ResizableControlled = () => {
           {rows.map(({ item }) => (
             <TableRow key={item.file.label}>
               {columns.map(column => (
-                <TableCell key={column.columnId} {...columnSizing.getColumnProps(column.columnId)}>
+                <TableCell key={column.columnId} {...columnSizing.getTableCellProps(column.columnId)}>
                   {column.renderCell(item)}
                 </TableCell>
               ))}
