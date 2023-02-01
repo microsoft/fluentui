@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "2.5.11",
+  "version": "2.5.12",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -76,6 +76,6 @@
     "@microsoft/fast-element": "^1.11.0",
     "@microsoft/fast-foundation": "^2.47.0",
     "@microsoft/fast-web-utilities": "^5.4.0",
-    "tslib": "^1.13.0"
+    "tslib": "^2.1.0"
   }
 }

@@ -3,6 +3,7 @@ import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Textarea } from '@fluentui/react-textarea';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -47,4 +48,12 @@ storiesOf('Textarea Converged', module)
   ))
   .addStory('Size: small', () => <Textarea size="small" placeholder="Placeholder" />)
   .addStory('Size: medium', () => <Textarea size="medium" placeholder="Placeholder" />)
-  .addStory('Size: large', () => <Textarea size="large" placeholder="Placeholder" />);
+  .addStory('Size: large', () => <Textarea size="large" placeholder="Placeholder" />)
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Textarea placeholder="Default overriden appearance" />
+        <Textarea appearance="outline" placeholder="Outline appearance" />
+      </div>
+    </FluentProvider>
+  ));

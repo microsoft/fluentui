@@ -44,7 +44,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -414,7 +414,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -701,7 +701,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -908,7 +908,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -1115,7 +1115,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -1312,7 +1312,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -1519,7 +1519,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -1700,7 +1700,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;
@@ -1907,7 +1907,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         className=
             ms-TooltipHost
             {
-              color: #171717;
+              color: #323130;
               display: block;
               margin-bottom: 5px;
               overflow: hidden;

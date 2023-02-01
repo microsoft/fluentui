@@ -154,7 +154,7 @@
     "@types/gulp-sourcemaps": "0.0.35",
     "@types/gulp-util": "3.0.36",
     "@types/jest": "26.0.24",
-    "@types/jest-axe": "3.5.3",
+    "@types/jest-axe": "3.5.5",
     "@types/jju": "1.4.1",
     "@types/json-schema": "^7.0.8",
     "@types/lerna-alias": "3.0.0",
@@ -255,7 +255,7 @@
     "ignore-not-found-export-webpack-plugin": "1.0.2",
     "imports-loader": "1.2.0",
     "jest": "26.6.3",
-    "jest-axe": "5.0.1",
+    "jest-axe": "6.0.1",
     "jest-cli": "26.6.3",
     "jest-environment-jsdom": "26.6.2",
     "jest-environment-node-single-context": "26.2.0",
@@ -291,7 +291,7 @@
     "pretty-bytes": "5.6.0",
     "progress": "2.0.3",
     "prompts": "2.4.2",
-    "puppeteer": "17.1.3",
+    "puppeteer": "19.6.0",
     "raw-loader": "4.0.2",
     "react": "17.0.2",
     "react-app-polyfill": "2.0.0",
@@ -319,7 +319,7 @@
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
     "source-map-loader": "4.0.0",
-    "storybook-addon-export-to-codesandbox": "0.7.1",
+    "storybook-addon-export-to-codesandbox": "0.8.1",
     "storybook-addon-performance": "0.16.1",
     "storywright": "0.0.26-beta.1",
     "strip-ansi": "6.0.0",
@@ -336,7 +336,7 @@
     "ts-node": "10.9.1",
     "tsconfig-paths": "4.1.0",
     "tsconfig-paths-webpack-plugin": "4.0.0",
-    "tslib": "2.4.0",
+    "tslib": "2.4.1",
     "typescript": "4.3.5",
     "vinyl": "2.2.0",
     "vrscreenshotdiff": "0.0.17",
@@ -374,7 +374,8 @@
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
-    "@types/jest-axe/axe-core": "4.2.1",
+    "@types/jest-axe/axe-core": "4.4.3",
+    "jest-axe/axe-core": "4.4.3",
     "eslint": "7.25.0",
     "@mdx-js/loader/loader-utils": "~2.0.4"
   },
@@ -385,7 +386,7 @@
     "source": [
       "package.json",
       "apps/!(react-18-tests-v8|react-18-tests-v9)/package.json",
-      "packages/!(web-components)/package.json",
+      "packages/web-components/package.json",
       "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
       "scripts/package.json"
@@ -439,17 +440,6 @@
           "webpack",
           "webpack-bundle-analyzer",
           "yargs"
-        ]
-      },
-      {
-        "packages": [
-          "@fluentui/web-components"
-        ],
-        "dependencies": [
-          "mocha",
-          "ts-loader",
-          "tslib",
-          "webpack"
         ]
       },
       {

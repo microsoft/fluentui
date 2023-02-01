@@ -459,6 +459,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             right: 0px;
                             top: 0px;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            inset: 2px;
+                          }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
@@ -701,6 +704,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           left: 0px;
                           right: 0px;
                           top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          inset: 2px;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           border: none;
@@ -1608,6 +1614,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             bottom: -2px;
+                            inset: 2px;
                             left: -2px;
                             outline-color: ButtonText;
                             right: -2px;
@@ -1774,6 +1781,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           bottom: -2px;
+                          inset: 2px;
                           left: -2px;
                           outline-color: ButtonText;
                           right: -2px;

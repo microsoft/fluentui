@@ -1,8 +1,45 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 24 Jan 2023 07:51:03 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 07:34:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.51](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.51)
+
+Tue, 31 Jan 2023 07:34:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.50..@fluentui/azure-themes_v8.5.51)
+
+### Patches
+
+- azure theme calendar selection, contextmenu border, pivot focus border, dropdown item size updates ([PR #26544](https://github.com/microsoft/fluentui/pull/26544) by 30805892+Jacqueline-ms@users.noreply.github.com)
+
+## [8.5.50](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.50)
+
+Mon, 30 Jan 2023 07:36:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.49..@fluentui/azure-themes_v8.5.50)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.0 ([PR #26522](https://github.com/microsoft/fluentui/pull/26522) by beachball)
+
+## [8.5.49](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.49)
+
+Fri, 27 Jan 2023 07:37:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.48..@fluentui/azure-themes_v8.5.49)
+
+### Patches
+
+- Bump @fluentui/react to v8.104.8 ([PR #26520](https://github.com/microsoft/fluentui/pull/26520) by beachball)
+
+## [8.5.48](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.48)
+
+Thu, 26 Jan 2023 07:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.47..@fluentui/azure-themes_v8.5.48)
+
+### Patches
+
+- Fixing CSS selector from previous PR, the style of spin button is unchanged" ([PR #26467](https://github.com/microsoft/fluentui/pull/26467) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.104.7 ([PR #26509](https://github.com/microsoft/fluentui/pull/26509) by beachball)
 
 ## [8.5.47](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.47)
 

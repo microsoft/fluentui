@@ -4,7 +4,7 @@ import descriptionMd from './Description.md';
 
 import { FormField, Input, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-components/unstable';
+import { Field } from '@fluentui/react-components/unstable';
 import { FormFieldShim } from '../../components/FormField/FormFieldShim';
 
 const useStyles = makeStyles({
@@ -43,7 +43,9 @@ export const Default = () => {
           <Input />
         </FormFieldShim>
       </Provider>
-      <InputField />
+      <Field>
+        <Input />
+      </Field>
     </div>
   );
 };

@@ -5,23 +5,25 @@ import { LockClosed20Regular } from '@fluentui/react-icons';
 export const IconAfter = () => {
   return (
     <Tree aria-label="Tree">
-      <TreeItem aria-owns="default-subtree-1">
+      <TreeItem>
         <TreeItemLayout iconAfter={<LockClosed20Regular />}>level 1, item 1</TreeItemLayout>
-      </TreeItem>
-      <Tree id="default-subtree-1">
-        <TreeItem>level 2, item 1</TreeItem>
-        <TreeItem>level 2, item 2</TreeItem>
-        <TreeItem>level 2, item 3</TreeItem>
-      </Tree>
-      <TreeItem aria-owns="default-subtree-2">
-        <TreeItemLayout iconAfter={<LockClosed20Regular />}>level 1, item 2</TreeItemLayout>
-      </TreeItem>
-      <Tree id="default-subtree-2">
-        <TreeItem aria-owns="default-subtree-2-1">level 2, item 1</TreeItem>
-        <Tree id="default-subtree-2-1">
-          <TreeItem>level 3, item 1</TreeItem>
+        <Tree>
+          <TreeItem>level 2, item 1</TreeItem>
+          <TreeItem>level 2, item 2</TreeItem>
+          <TreeItem>level 2, item 3</TreeItem>
         </Tree>
-      </Tree>
+      </TreeItem>
+      <TreeItem>
+        <TreeItemLayout iconAfter={<LockClosed20Regular />}>level 1, item 2</TreeItemLayout>
+        <Tree>
+          <TreeItem>
+            level 2, item 1
+            <Tree>
+              <TreeItem>level 3, item 1</TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
     </Tree>
   );
 };
