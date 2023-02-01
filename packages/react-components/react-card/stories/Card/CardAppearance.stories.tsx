@@ -105,7 +105,7 @@ export const Appearance = () => {
     <div className={styles.main}>
       <section>
         <ExampleHeader
-          title="Default"
+          title="Filled (Default)"
           description="This is the default style to use for cards. Use this style variant for most of your card
           designs."
         />
