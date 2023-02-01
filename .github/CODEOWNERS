@@ -209,6 +209,7 @@ packages/react-components/react-data-grid-react-window @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-components/react-drawer @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
