@@ -17,6 +17,7 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
+  colorPaletteRedForeground3,
   colorTransparentBackground,
   curveEasyEase,
   durationNormal,
@@ -54,6 +55,7 @@ export const styles = css`
     cursor: not-allowed;
   }
   :host .label {
+    position: relative;
     color: ${colorNeutralForeground1};
     line-height: ${lineHeightBase300};
     font-size: ${fontSizeBase300};
@@ -61,6 +63,12 @@ export const styles = css`
     font-family: ${fontFamilyBase};
     padding: ${spacingVerticalXS} ${spacingHorizontalXS};
     cursor: pointer;
+  }
+  :host([required]) .label:after {
+    content: '*';
+    color: ${colorPaletteRedForeground3};
+    position: absolute;
+    right: -4px;
   }
   :host([disabled]) .status-message {
     color: ${colorNeutralForegroundDisabled};

@@ -15,6 +15,7 @@ const storyTemplate = html<SwitchStoryArgs>`
       ?disabled=${x => x.disabled}
       ?required=${x => x.required}
       label-position=${x => x.labelPosition}
+      value="${x => x.value}"
     >
       This is a switch
     </fluent-switch>
@@ -23,6 +24,12 @@ const storyTemplate = html<SwitchStoryArgs>`
 
 export default {
   title: 'Components/Switch',
+  args: {
+    checked: false,
+    disabled: false,
+    required: false,
+    labelPosition: 'after',
+  },
   argTypes: {
     labelPosition: {
       options: Object.values(SwitchLabelPosition),
@@ -70,6 +77,9 @@ export default {
           summary: 'false',
         },
       },
+    },
+    value: {
+      control: 'text',
     },
   },
 } as SwitchStoryMeta;
