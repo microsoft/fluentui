@@ -37,6 +37,7 @@ import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import { TabsOrientation } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
+import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTAccordion {
@@ -1717,6 +1718,37 @@ export const lineHeightHero800: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const lineHeightHero900: CSSDesignToken<string>;
+
+// @public (undocumented)
+export class Popover extends FASTElement {
+    // (undocumented)
+    anchorRef: HTMLElement[];
+    // (undocumented)
+    arrow: boolean;
+    // (undocumented)
+    arrowRef: FASTElement;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    open: boolean;
+    // (undocumented)
+    protected openChanged(): void;
+    // (undocumented)
+    popoverContentRef: FASTElement;
+    // (undocumented)
+    position: 'top' | 'bottom' | 'left' | 'right';
+}
+
+// @public (undocumented)
+export const PopoverDefinition: FASTElementDefinition<typeof Popover>;
+
+// @public (undocumented)
+export const PopoverStyles: ElementStyles;
+
+// @public (undocumented)
+export const PopoverTemplate: ViewTemplate<Popover, any>;
 
 // @public
 export class MenuButton extends Button {

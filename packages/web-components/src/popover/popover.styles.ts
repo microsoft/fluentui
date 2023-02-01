@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import * as tokens from '../theme/design-tokens';
+import * as tokens from '../theme/design-tokens.js';
 
 export const styles = css`
   :host {

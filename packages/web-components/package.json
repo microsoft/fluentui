@@ -80,6 +80,10 @@
       "types": "./dist/esm/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
+    "./popover": {
+      "types": "./dist/esm/popover/define.d.ts",
+      "default": "./dist/esm/popover/define.js"
+    },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"

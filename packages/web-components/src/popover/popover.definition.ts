@@ -1,9 +1,10 @@
-import { Popover } from './popover';
-import { popoverTemplate } from './popover.template';
-import { styles } from './popover.styles';
+import { FluentDesignSystem } from '../fluent-design-system.js';
+import { Popover } from './popover.js';
+import { styles } from './popover.styles.js';
+import { template } from './popover.template.js';
 
 export const definition = Popover.compose({
-  name: 'fluent-popover',
-  template: popoverTemplate(),
+  name: `${FluentDesignSystem.prefix}-popover`,
+  template: template,
   styles,
 });

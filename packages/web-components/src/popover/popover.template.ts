@@ -1,7 +1,7 @@
 import { html, ref, slotted, when } from '@microsoft/fast-element';
-import { Popover } from './popover';
+import { Popover } from './popover.js';
 
-export const popoverTemplate = () => html<Popover>`
+export const template = html<Popover>`
   <slot name="anchor" ${slotted('anchorRef')}></slot>
   ${when(
     x => x.open,

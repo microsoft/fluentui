@@ -1,6 +1,4 @@
-import { definition } from './popover.definition';
-
-definition.define();
+import './define.js';
 
 export default {
   title: 'Components/Popover',
