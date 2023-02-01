@@ -31,7 +31,7 @@ export const InfoButtonWithLabel = () => {
         <InfoButton
           id={infoButtonId}
           aria-labelledby={`${labelId} ${infoButtonId}`}
-          content="Your username should have at least 6 characters."
+          content="Usernames offer a unique way to identify you and keep your account secure."
         />
       </div>
       <Input id={inputId} placeholder="Username" />
