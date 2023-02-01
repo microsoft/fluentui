@@ -34,19 +34,9 @@ import { CardState } from '@fluentui/react-card';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 import { checkboxFieldClassNames } from '@fluentui/react-checkbox';
 import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
-import { Combobox } from '@fluentui/react-combobox';
-import { comboboxClassNames } from '@fluentui/react-combobox';
-import { ComboboxContextValue } from '@fluentui/react-combobox';
-import { ComboboxContextValues } from '@fluentui/react-combobox';
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
 import { comboboxFieldClassNames } from '@fluentui/react-combobox';
 import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
-import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
-import { ComboboxOpenEvents } from '@fluentui/react-combobox';
-import { ComboboxProps } from '@fluentui/react-combobox';
-import { ComboboxProvider } from '@fluentui/react-combobox';
-import { ComboboxSlots } from '@fluentui/react-combobox';
-import { ComboboxState } from '@fluentui/react-combobox';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { DataGrid } from '@fluentui/react-table';
@@ -86,14 +76,6 @@ import { DataGridSelectionCellSlots } from '@fluentui/react-table';
 import { DataGridSelectionCellState } from '@fluentui/react-table';
 import { DataGridSlots } from '@fluentui/react-table';
 import { DataGridState } from '@fluentui/react-table';
-import { Dropdown } from '@fluentui/react-combobox';
-import { dropdownClassNames } from '@fluentui/react-combobox';
-import { DropdownContextValues } from '@fluentui/react-combobox';
-import { DropdownOpenChangeData } from '@fluentui/react-combobox';
-import { DropdownOpenEvents } from '@fluentui/react-combobox';
-import { DropdownProps } from '@fluentui/react-combobox';
-import { DropdownSlots } from '@fluentui/react-combobox';
-import { DropdownState } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
@@ -107,24 +89,6 @@ import { InfoButtonState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
-import { Listbox } from '@fluentui/react-combobox';
-import { listboxClassNames } from '@fluentui/react-combobox';
-import { ListboxContextValue } from '@fluentui/react-combobox';
-import { ListboxContextValues } from '@fluentui/react-combobox';
-import { ListboxProps } from '@fluentui/react-combobox';
-import { ListboxProvider } from '@fluentui/react-combobox';
-import { ListboxSlots } from '@fluentui/react-combobox';
-import { ListboxState } from '@fluentui/react-combobox';
-import { Option as Option_2 } from '@fluentui/react-combobox';
-import { optionClassNames } from '@fluentui/react-combobox';
-import { OptionGroup } from '@fluentui/react-combobox';
-import { optionGroupClassNames } from '@fluentui/react-combobox';
-import { OptionGroupProps } from '@fluentui/react-combobox';
-import { OptionGroupSlots } from '@fluentui/react-combobox';
-import { OptionGroupState } from '@fluentui/react-combobox';
-import { OptionProps } from '@fluentui/react-combobox';
-import { OptionSlots } from '@fluentui/react-combobox';
-import { OptionState } from '@fluentui/react-combobox';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -141,7 +105,6 @@ import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderDataGrid_unstable } from '@fluentui/react-table';
 import { renderDataGridBody_unstable } from '@fluentui/react-table';
 import { renderDataGridCell_unstable } from '@fluentui/react-table';
@@ -149,14 +112,9 @@ import { renderDataGridHeader_unstable } from '@fluentui/react-table';
 import { renderDataGridHeaderCell_unstable } from '@fluentui/react-table';
 import { renderDataGridRow_unstable } from '@fluentui/react-table';
 import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
-import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
-import { renderListbox_unstable } from '@fluentui/react-combobox';
-import { renderOption_unstable } from '@fluentui/react-combobox';
-import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderProgressBar_unstable } from '@fluentui/react-progress';
-import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
 import { renderTableCell_unstable } from '@fluentui/react-table';
@@ -167,14 +125,9 @@ import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
-import { Select } from '@fluentui/react-select';
-import { selectClassNames } from '@fluentui/react-select';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
-import { SelectProps } from '@fluentui/react-select';
-import { SelectSlots } from '@fluentui/react-select';
-import { SelectState } from '@fluentui/react-select';
 import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
 import { sliderFieldClassNames } from '@fluentui/react-slider';
 import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
@@ -263,9 +216,6 @@ import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useColumnSizing_unstable } from '@fluentui/react-table';
-import { useCombobox_unstable } from '@fluentui/react-combobox';
-import { useComboboxContextValues } from '@fluentui/react-combobox';
-import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useDataGrid_unstable } from '@fluentui/react-table';
 import { useDataGridBody_unstable } from '@fluentui/react-table';
 import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
@@ -280,24 +230,13 @@ import { useDataGridRowStyles_unstable } from '@fluentui/react-table';
 import { useDataGridSelectionCell_unstable } from '@fluentui/react-table';
 import { useDataGridSelectionCellStyles_unstable } from '@fluentui/react-table';
 import { useDataGridStyles_unstable } from '@fluentui/react-table';
-import { useDropdown_unstable } from '@fluentui/react-combobox';
-import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
-import { useListbox_unstable } from '@fluentui/react-combobox';
-import { useListboxContextValues } from '@fluentui/react-combobox';
-import { useListboxStyles_unstable } from '@fluentui/react-combobox';
-import { useOption_unstable } from '@fluentui/react-combobox';
-import { useOptionGroup_unstable } from '@fluentui/react-combobox';
-import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
-import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
-import { useSelect_unstable } from '@fluentui/react-select';
-import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -391,31 +330,11 @@ export { checkboxFieldClassNames }
 
 export { CheckboxFieldProps }
 
-export { Combobox }
-
-export { comboboxClassNames }
-
-export { ComboboxContextValue }
-
-export { ComboboxContextValues }
-
 export { ComboboxField }
 
 export { comboboxFieldClassNames }
 
 export { ComboboxFieldProps }
-
-export { ComboboxOpenChangeData }
-
-export { ComboboxOpenEvents }
-
-export { ComboboxProps }
-
-export { ComboboxProvider }
-
-export { ComboboxSlots }
-
-export { ComboboxState }
 
 export { createTableColumn }
 
@@ -495,22 +414,6 @@ export { DataGridSlots }
 
 export { DataGridState }
 
-export { Dropdown }
-
-export { dropdownClassNames }
-
-export { DropdownContextValues }
-
-export { DropdownOpenChangeData }
-
-export { DropdownOpenEvents }
-
-export { DropdownProps }
-
-export { DropdownSlots }
-
-export { DropdownState }
-
 export { Field }
 
 export { fieldClassNames }
@@ -536,42 +439,6 @@ export { InputField }
 export { inputFieldClassNames }
 
 export { InputFieldProps }
-
-export { Listbox }
-
-export { listboxClassNames }
-
-export { ListboxContextValue }
-
-export { ListboxContextValues }
-
-export { ListboxProps }
-
-export { ListboxProvider }
-
-export { ListboxSlots }
-
-export { ListboxState }
-
-export { Option_2 as Option }
-
-export { optionClassNames }
-
-export { OptionGroup }
-
-export { optionGroupClassNames }
-
-export { OptionGroupProps }
-
-export { OptionGroupSlots }
-
-export { OptionGroupState }
-
-export { OptionProps }
-
-export { OptionSlots }
-
-export { OptionState }
 
 export { ProgressBar }
 
@@ -605,8 +472,6 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
-export { renderCombobox_unstable }
-
 export { renderDataGrid_unstable }
 
 export { renderDataGridBody_unstable }
@@ -621,21 +486,11 @@ export { renderDataGridRow_unstable }
 
 export { renderDataGridSelectionCell_unstable }
 
-export { renderDropdown_unstable }
-
 export { renderField_unstable }
 
 export { renderInfoButton_unstable }
 
-export { renderListbox_unstable }
-
-export { renderOption_unstable }
-
-export { renderOptionGroup_unstable }
-
 export { renderProgressBar_unstable }
-
-export { renderSelect_unstable }
 
 export { renderTable_unstable }
 
@@ -657,21 +512,11 @@ export { renderTableSelectionCell_unstable }
 
 export { renderVirtualizer_unstable }
 
-export { Select }
-
-export { selectClassNames }
-
 export { SelectField }
 
 export { selectFieldClassNames }
 
 export { SelectFieldProps }
-
-export { SelectProps }
-
-export { SelectSlots }
-
-export { SelectState }
 
 export { SliderField }
 
@@ -849,12 +694,6 @@ export { useCardStyles_unstable }
 
 export { useColumnSizing_unstable }
 
-export { useCombobox_unstable }
-
-export { useComboboxContextValues }
-
-export { useComboboxStyles_unstable }
-
 export { useDataGrid_unstable }
 
 export { useDataGridBody_unstable }
@@ -883,10 +722,6 @@ export { useDataGridSelectionCellStyles_unstable }
 
 export { useDataGridStyles_unstable }
 
-export { useDropdown_unstable }
-
-export { useDropdownStyles_unstable }
-
 export { useField_unstable }
 
 export { useFieldStyles_unstable }
@@ -897,27 +732,9 @@ export { useInfoButtonStyles_unstable }
 
 export { useIntersectionObserver }
 
-export { useListbox_unstable }
-
-export { useListboxContextValues }
-
-export { useListboxStyles_unstable }
-
-export { useOption_unstable }
-
-export { useOptionGroup_unstable }
-
-export { useOptionGroupStyles_unstable }
-
-export { useOptionStyles_unstable }
-
 export { useProgressBar_unstable }
 
 export { useProgressBarStyles_unstable }
-
-export { useSelect_unstable }
-
-export { useSelectStyles_unstable }
 
 export { useTable_unstable }
 
