@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Dropdown option focus in high contrast mode should not be cut off by the popup",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

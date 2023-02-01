@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 30 Jan 2023 07:36:22 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Feb 2023 07:39:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.1)
+
+Wed, 01 Feb 2023 07:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.0..@fluentui/react_v8.105.1)
+
+### Patches
+
+- fix: splitbutton should not refocus trigger after touch event ([PR #26572](https://github.com/microsoft/fluentui/pull/26572) by sarah.higley@microsoft.com)
+- fix: Dropdown option focus in high contrast mode should not be cut off by the popup ([PR #26573](https://github.com/microsoft/fluentui/pull/26573) by sarah.higley@microsoft.com)
 
 ## [8.105.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.0)
 
