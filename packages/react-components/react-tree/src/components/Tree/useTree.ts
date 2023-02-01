@@ -30,27 +30,22 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
 };
 
 /**
- * Create the common state required to render Tree.
- *
- * The returned state can be modified with hooks such as useTreeStyles_unstable,
- * before being passed to renderTree_unstable.
+ * Create the state required to render a sub-level Tree.
  *
  * @param props - props from this instance of Tree
  * @param ref - reference to root HTMLElement of Tree
  */
 function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
-  const { appearance = 'subtle', size = 'medium' } = props;
+  const contextAppearance = useTreeContext_unstable(ctx => ctx.appearance);
+  const contextSize = useTreeContext_unstable(ctx => ctx.size);
+
+  const { appearance = contextAppearance ?? 'subtle', size = contextSize ?? 'medium' } = props;
+
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
   const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
   const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
   const openItems = useTreeContext_unstable(ctx => ctx.openItems);
   const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
-  const isSubtree = parentLevel > 0;
-
-  const arrowNavigationProps = useArrowNavigationGroup({
-    tabbable: true,
-    axis: 'vertical',
-  });
 
   return {
     components: {
@@ -59,83 +54,98 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
     appearance,
     size,
     level: parentLevel + 1,
+    root: getNativeElementProps('div', {
+      ref,
+      role: 'group',
+      ...props,
+    }),
     openItems,
     requestOpenChange,
     focusFirstSubtreeItem,
     focusSubtreeOwnerItem,
-    root: getNativeElementProps('div', {
-      ref,
-      role: isSubtree ? 'group' : 'tree',
-      ...props,
-      ...(isSubtree ? undefined : arrowNavigationProps),
-    }),
   };
 }
 
 /**
- * Create the state required to render the root Tree.
- *
- * The returned state can be modified with hooks such as useTreeStyles_unstable,
- * before being passed to renderTree_unstable.
+ * Create the state required to render the root level Tree.
  *
  * @param props - props from this instance of Tree
  * @param ref - reference to root HTMLElement of Tree
  */
 function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   warnIfNoProperPropsRootTree(props);
+
+  const { appearance = 'subtle', size = 'medium' } = props;
+
+  const { targetDocument } = useFluent_unstable();
   const { openItems: stateOpenSubtrees, defaultOpenItems: defaultOpenSubtrees, onOpenChange } = props;
   const [openItems, setOpenSubtrees] = useControllableState({
     state: React.useMemo(() => normalizeOpenSubtreesOrUndefined(stateOpenSubtrees), [stateOpenSubtrees]),
     defaultState: () => normalizeOpenSubtrees(defaultOpenSubtrees),
     initialState: [],
   });
-  const { targetDocument } = useFluent_unstable();
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
     onOpenChange?.(data.event, data);
     if (!data.event.isDefaultPrevented()) {
       setOpenSubtrees(updateOpenSubtrees(data, openItems));
     }
   });
+  const focusFirstSubtreeItem = useEventCallback((target: HTMLElement) => {
+    const treeWalker = treeWalkerRef.current;
+    if (!treeWalker) {
+      return;
+    }
+    const groupId = target.getAttribute('aria-owns');
+    if (groupId && targetDocument) {
+      const element = targetDocument.getElementById(groupId);
+      if (treeWalker && element) {
+        treeWalker.currentNode = element;
+        const firstTreeItem = treeWalker.firstChild();
+        if (isHTMLElement(firstTreeItem)) {
+          return firstTreeItem?.focus();
+        }
+      }
+    }
+  });
+  const focusSubtreeOwnerItem = useEventCallback((target: HTMLElement) => {
+    const treeWalker = treeWalkerRef.current;
+    if (!treeWalker) {
+      return;
+    }
+    treeWalker.currentNode = target;
+    const group = treeWalker.parentNode();
+    if (isHTMLElement(group)) {
+      while (treeWalker.previousNode()) {
+        const treeItem = treeWalker.currentNode;
+        if (isHTMLElement(treeItem) && treeItem.getAttribute('aria-owns') === group.id) {
+          return treeItem.focus();
+        }
+      }
+    }
+  });
   const { treeWalker: treeWalkerRef, root: treeRef } = useTreeWalker(NodeFilter.SHOW_ELEMENT, {
     acceptNode: filterTreeItemAndSubtree,
   });
-  const commonState = useSubtree(props, useMergedRefs(ref, treeRef));
+  const arrowNavigationProps = useArrowNavigationGroup({
+    tabbable: true,
+    axis: 'vertical',
+  });
   return {
-    ...commonState,
+    components: {
+      root: 'div',
+    },
+    appearance,
+    size,
+    level: 1,
     openItems,
     requestOpenChange,
-    focusFirstSubtreeItem: useEventCallback(target => {
-      const treeWalker = treeWalkerRef.current;
-      if (!treeWalker) {
-        return;
-      }
-      const groupId = target.getAttribute('aria-owns');
-      if (groupId && targetDocument) {
-        const element = targetDocument.getElementById(groupId);
-        if (treeWalker && element) {
-          treeWalker.currentNode = element;
-          const firstTreeItem = treeWalker.firstChild();
-          if (isHTMLElement(firstTreeItem)) {
-            return firstTreeItem?.focus();
-          }
-        }
-      }
-    }),
-    focusSubtreeOwnerItem: useEventCallback(target => {
-      const treeWalker = treeWalkerRef.current;
-      if (!treeWalker) {
-        return;
-      }
-      treeWalker.currentNode = target;
-      const group = treeWalker.parentNode();
-      if (isHTMLElement(group)) {
-        while (treeWalker.previousNode()) {
-          const treeItem = treeWalker.currentNode;
-          if (isHTMLElement(treeItem) && treeItem.getAttribute('aria-owns') === group.id) {
-            return treeItem.focus();
-          }
-        }
-      }
+    focusFirstSubtreeItem,
+    focusSubtreeOwnerItem,
+    root: getNativeElementProps('div', {
+      ref: useMergedRefs(treeRef, ref),
+      role: 'tree',
+      ...props,
+      ...arrowNavigationProps,
     }),
   };
 }
