@@ -851,7 +851,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
-        onRenderLabel={this._onRenderItemLabel.bind(this, item, labelId)}
+        onRenderLabel={this._onRenderItemLabel.bind(this, { ...item, id: labelId })}
         className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
@@ -868,14 +868,22 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
-  /** Render custom label for drop down item */
-  private _onRenderItemLabel = (item: IDropdownOption, id: string): JSX.Element | null => {
-    const { onRenderOption = this._onRenderOption } = this.props;
+  /*
+   * Render content of a multiselect item label.
+   * Text within the label is aria-hidden, to prevent duplicate input/label exposure
+   */
+  private _onRenderMultiselectOption = (item: IDropdownOption): JSX.Element => {
     return (
-      <div id={id} aria-hidden="true">
-        {onRenderOption(item, this._onRenderOption)}
-      </div>
+      <span id={item.id} aria-hidden="true" className={this._classNames.dropdownOptionText}>
+        {item.text}
+      </span>
     );
+  };
+
+  /** Render custom label for multiselect checkbox items */
+  private _onRenderItemLabel = (item: IDropdownOption, id: string): JSX.Element | null => {
+    const { onRenderOption = this._onRenderMultiselectOption } = this.props;
+    return onRenderOption(item, this._onRenderMultiselectOption);
   };
 
   private _onPositioned = (positions?: ICalloutPositionedInfo): void => {

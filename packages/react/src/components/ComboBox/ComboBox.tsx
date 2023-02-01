@@ -1487,6 +1487,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     );
   }
 
+  private _renderCheckboxLabel(item: IComboBoxOption): JSX.Element {
+    const { onRenderOption = this._onRenderMultiselectOptionContent } = this.props;
+    return onRenderOption(item, this._onRenderMultiselectOptionContent);
+  }
+
   private _renderOption = (item: IComboBoxOption): JSX.Element => {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
     const id = item.id ?? this._id + '-list' + item.index;
@@ -1496,12 +1501,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const optionStyles = this._getCurrentOptionStyles(item);
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     const title = item.title;
-
-    const onRenderCheckboxLabel = () => (
-      <div id={id + '-label'} aria-hidden="true">
-        {onRenderOption(item, this._onRenderOptionContent)}
-      </div>
-    );
 
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
@@ -1546,7 +1545,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           disabled={item.disabled}
           // eslint-disable-next-line react/jsx-no-bind
-          onRenderLabel={onRenderCheckboxLabel}
+          onRenderLabel={this._renderCheckboxLabel.bind(this, { ...item, id: id + '-label' })}
           inputProps={{
             // aria-selected should only be applied to checked items, not hovered items
             'aria-selected': isChecked ? 'true' : 'false',
@@ -1753,6 +1752,19 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _onRenderOptionContent = (item: IComboBoxOption): JSX.Element => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     return <span className={optionClassNames.optionText}>{item.text}</span>;
+  };
+
+  /*
+   * Render content of a multiselect item label.
+   * Text within the label is aria-hidden, to prevent duplicate input/label exposure
+   */
+  private _onRenderMultiselectOptionContent = (item: IComboBoxOption): JSX.Element => {
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    return (
+      <span id={item.id} aria-hidden="true" className={optionClassNames.optionText}>
+        {item.text}
+      </span>
+    );
   };
 
   /**
