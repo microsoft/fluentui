@@ -63,9 +63,9 @@ export function columnDefinitionsToState<T>(
 
   // If the length of the new state changed (column was added or removed) or any of
   // the individual states has a new reference (column was replaced),
-  // we have to reset the column widths to their optimal (because the column which was last may not be last now).
+  // we have to reset the column widths to their ideal width (because the column which was last may not be last now).
   // Then the adjustColumnWidthsToFitContainer can do its job and properly stretch the last column.
-  if (updatedState.length !== state.length || !updatedState.every((newState, i) => state[i] === newState)) {
+  if (updatedState.length !== state.length || updated) {
     const column = updatedState.find(col => col.width > col.idealWidth);
     if (column) {
       column.width = column.idealWidth;

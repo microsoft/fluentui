@@ -156,7 +156,7 @@ export {
   dataGridSelectionCellClassNames,
   TableRowIdContextProvider,
   useTableRowIdContext,
-  useColumnSizing_unstable,
+  useTableColumnSizing_unstable,
 } from '@fluentui/react-table';
 
 export type {

@@ -22,7 +22,7 @@ export const defaultColumnSizingState: TableColumnSizingState = {
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableFeaturesState<TItem>) => useColumnSizingState(tableState, params);
+  return (tableState: TableFeaturesState<TItem>) => useTableColumnSizingState(tableState, params);
 }
 
 function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
@@ -37,7 +37,7 @@ function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
   };
 }
 
-function useColumnSizingState<TItem>(
+function useTableColumnSizingState<TItem>(
   tableState: TableFeaturesState<TItem>,
   params?: UseTableColumnSizingParams,
 ): TableFeaturesState<TItem> {
