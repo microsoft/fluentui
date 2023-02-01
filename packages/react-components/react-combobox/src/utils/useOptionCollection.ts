@@ -18,6 +18,9 @@ export const useOptionCollection = (): OptionCollectionState => {
     const getOptionsMatchingText = (matcher: (value: string) => boolean) => {
       return nodes.current.filter(node => matcher(node.option.text)).map(node => node.option);
     };
+    const getOptionsMatchingValue = (matcher: (value: string) => boolean) => {
+      return nodes.current.filter(node => matcher(node.option.value)).map(node => node.option);
+    };
 
     return {
       getCount,
@@ -25,6 +28,7 @@ export const useOptionCollection = (): OptionCollectionState => {
       getIndexOfId,
       getOptionById,
       getOptionsMatchingText,
+      getOptionsMatchingValue,
     };
   }, []);
 
