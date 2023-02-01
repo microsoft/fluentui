@@ -12,7 +12,7 @@ export const Label = () => (
 Label.parameters = {
   docs: {
     description: {
-      story: 'The field label is placed above the field component by default.',
+      story: 'The label is placed above the field component by default.',
     },
   },
 };

@@ -9,7 +9,7 @@ export const Default = (props: Partial<FieldProps>) => (
     label="Example field"
     validationState="success"
     validationMessage="This is a success message."
-    hint="Fields can have hint text, but it should be used sparingly."
+    hint="This is a hint message."
     {...props}
   >
     <Input />
