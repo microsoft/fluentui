@@ -37,7 +37,7 @@ interface PositionManagerOptions {
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   const { container, target, arrow, strategy, middleware, placement } = options;
-  let destroyed = false;
+  const isDestroyed = false;
   if (!target || !container) {
     return {
       updatePosition: () => undefined,
@@ -56,7 +56,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const forceUpdate = () => {
     // debounced update can still occur afterwards
     // early return to avoid memory leaks
-    if (destroyed) {
+    if (isDestroyed) {
       return;
     }
 
@@ -78,7 +78,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
         // Promise can still resolve after destruction
         // early return to avoid applying outdated position
-        if (destroyed) {
+        if (isDestroyed) {
           return;
         }
 
