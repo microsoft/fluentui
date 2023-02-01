@@ -366,12 +366,10 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 // @public (undocumented)
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
     columns: TableColumnDefinition<TItem>[];
-    // (undocumented)
     columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
-    // (undocumented)
     tableRef: React_2.Ref<HTMLDivElement>;
 }
 
@@ -532,9 +530,6 @@ export interface TableSortState<TItem> {
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
-// @public (undocumented)
-export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
-
 // @public
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
@@ -603,6 +598,9 @@ export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) =>
 
 // @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
+
+// @public (undocumented)
+export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 // @public (undocumented)
 export const useTableContext: () => TableContextValue;
