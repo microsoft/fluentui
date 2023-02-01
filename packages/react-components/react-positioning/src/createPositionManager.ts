@@ -110,7 +110,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const updatePosition = debounce(() => forceUpdate());
 
   const dispose = () => {
-    destroyed = true;
+    isDestroyed = true;
 
     if (targetWindow) {
       targetWindow.removeEventListener('scroll', updatePosition);
