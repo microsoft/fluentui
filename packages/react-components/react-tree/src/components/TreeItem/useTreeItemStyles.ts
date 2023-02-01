@@ -21,12 +21,10 @@ export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
 const useContentStyles = makeStyles({
   base: {
     position: 'relative',
-    alignItems: 'center',
-    backgroundColor: tokens.colorSubtleBackground,
     cursor: 'pointer',
-    color: tokens.colorNeutralForeground2,
     display: 'flex',
-    minHeight: '32px',
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForeground2,
     paddingRight: tokens.spacingHorizontalNone,
     paddingLeft: `calc(${levelToken.value} * ${tokens.spacingHorizontalXXL})`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),

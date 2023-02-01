@@ -18,16 +18,15 @@ const useRootStyles = makeStyles({
   base: {
     display: 'flex',
     alignItems: 'center',
+    minHeight: '24px',
     ...shorthands.flex(1),
   },
   medium: {
     columnGap: tokens.spacingHorizontalSNudge,
-    minHeight: '32px',
     ...typographyStyles.body1,
   },
   small: {
     columnGap: tokens.spacingHorizontalXS,
-    minHeight: '24px',
     ...typographyStyles.caption1,
   },
 });
