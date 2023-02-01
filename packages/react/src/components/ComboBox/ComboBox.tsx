@@ -2367,8 +2367,33 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _getAriaActiveDescendantValue(): string | undefined {
     const { currentOptions, selectedIndices } = this.props.hoisted;
-    const { isOpen, currentPendingValueValidIndex } = this.state;
+    const { isOpen, currentPendingValue } = this.state;
     const options = currentOptions.map((item, index) => ({ ...item, index }));
+
+    let currentPendingValueValidIndex = this.state.currentPendingValueValidIndex;
+
+    // Update the pending value if the current index doesn't exist or it doesn't match the text of the value.
+    if (
+      currentPendingValue &&
+      (currentPendingValueValidIndex >= options.length ||
+        (currentPendingValueValidIndex >= 0 &&
+          options[currentPendingValueValidIndex].text.indexOf(currentPendingValue) < 0))
+    ) {
+      let items;
+      if (this.props.autoComplete === 'on') {
+        items = options.filter(
+          option => !option.disabled && option.text.toLocaleLowerCase().indexOf(currentPendingValue) === 0,
+        );
+      } else {
+        items = options.filter(option => !option.disabled && option.text.toLocaleLowerCase() === currentPendingValue);
+      }
+
+      if (items.length > 0) {
+        this._setPendingInfo(currentPendingValue, items[0].index, items[0].text);
+        currentPendingValueValidIndex = items[0].index;
+      }
+    }
+
     let descendantText =
       isOpen && selectedIndices?.length
         ? options[selectedIndices[0]].id ?? this._id + '-list' + selectedIndices[0]

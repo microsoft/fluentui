@@ -1,44 +1,59 @@
 import * as React from 'react';
-import { ComboBox } from '@fluentui/react';
-import type { IComboBoxOption, IComboBoxStyles } from '@fluentui/react';
+import { ComboBox, IComboBoxProps } from '@fluentui/react';
+import type { IComboBoxOption } from '@fluentui/react';
 
 const options: IComboBoxOption[] = [
-  { key: 'black', text: 'Black' },
-  { key: 'blue', text: 'Blue' },
-  { key: 'brown', text: 'Brown' },
-  { key: 'cyan', text: 'Cyan' },
-  { key: 'green', text: 'Green' },
-  { key: 'magenta', text: 'Magenta', disabled: true },
-  { key: 'mauve', text: 'Mauve' },
-  { key: 'orange', text: 'Orange' },
-  { key: 'pink', text: 'Pink' },
-  { key: 'purple', text: 'Purple' },
-  { key: 'red', text: 'Red' },
-  { key: 'rose', text: 'Rose' },
-  { key: 'violet', text: 'Violet' },
-  { key: 'white', text: 'White' },
-  { key: 'yellow', text: 'Yellow' },
+  {
+    key: 'apple',
+    text: 'apple',
+  },
+  {
+    key: 'aardvark',
+    text: 'aardvark',
+  },
 ];
-// Optional styling to make the example look nicer
-const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
 
 export const ComboBoxFreeInputExample: React.FunctionComponent = () => {
+  const [searchTerm, setSearchTerm] = React.useState<string>('');
+  const [selected, setSelected] = React.useState<string>('');
+  const [customPendingValueIndex, setCustomPendingValueIndex] = React.useState<number>(-1);
+
+  const filteredOptions = searchTerm ? options.filter(opt => opt.text.toLowerCase().startsWith(searchTerm)) : options;
+
+  const handleChange: IComboBoxProps['onChange'] = (e, o, i, v) => {
+    if (o) {
+      setSelected(o.key.toString());
+      setCustomPendingValueIndex(options.indexOf(o) ?? -1);
+      console.log(customPendingValueIndex);
+    }
+    if (!o && v) {
+      setCustomPendingValueIndex(-1);
+    }
+  };
+
+  function handleInputChange(o: string) {
+    setSearchTerm(o);
+  }
+
+  function handlePendingChange(option, index, value) {
+    console.log(option, index, value);
+  }
+
   return (
     <div>
       <ComboBox
-        label="ComboBox with allowFreeInput and autocomplete"
-        options={options}
-        styles={comboBoxStyles}
-        allowFreeInput
-        autoComplete="on"
-      />
-      <ComboBox
-        defaultSelectedKey="C"
-        label="ComboBox with allowFreeInput without autocomplete"
-        options={options}
-        styles={comboBoxStyles}
-        allowFreeInput
-        autoComplete="off"
+        allowFreeform
+        placeholder={'Select a thing...'}
+        selectedKey={selected ? selected : null}
+        prefix="#"
+        options={filteredOptions}
+        autoComplete={'on'}
+        style={{ marginBottom: '1rem' }}
+        onInputValueChange={handleInputChange}
+        openOnKeyboardFocus
+        calloutProps={{ alignTargetEdge: true }}
+        onChange={handleChange}
+        customPendingValueIndex={customPendingValueIndex}
       />
     </div>
   );
