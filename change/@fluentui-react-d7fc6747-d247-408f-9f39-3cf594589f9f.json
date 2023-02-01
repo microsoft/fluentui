@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "[DatePicker] fix default date parser converting dates to UTC implicitly",
+  "packageName": "@fluentui/react",
+  "email": "karlo.sudec@gmail.com",
+  "dependentChangeType": "patch"
+}
