@@ -58,16 +58,6 @@ const storyTemplate = html<AccordionStoryArgs>`
       block=${x => x.block}
       disabled=${x => x.disabled}
     >
-      ${x =>
-        x.presentationIcon
-          ? html` <span slot="start">${eye20Regular}</span>
-              <span slot="end">${eyeOff20Regular}</span>`
-          : null}
-      ${x =>
-        x.customExpandIcon
-          ? html` <span slot="collapsed-icon">${add20Filled}</span>
-              <span slot="expanded-icon">${subtract20Filled}</span>`
-          : null}
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
@@ -78,16 +68,6 @@ const storyTemplate = html<AccordionStoryArgs>`
       block=${x => x.block}
       disabled=${x => x.disabled}
     >
-      ${x =>
-        x.presentationIcon
-          ? html` <span slot="start">${eye20Regular}</span>
-              <span slot="end">${eyeOff20Regular}</span>`
-          : null}
-      ${x =>
-        x.customExpandIcon
-          ? html` <span slot="collapsed-icon">${add20Filled}</span>
-              <span slot="expanded-icon">${subtract20Filled}</span>`
-          : null}
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
@@ -98,16 +78,6 @@ const storyTemplate = html<AccordionStoryArgs>`
       block=${x => x.block}
       disabled=${x => x.disabled}
     >
-      ${x =>
-        x.presentationIcon
-          ? html` <span slot="start">${eye20Regular}</span>
-              <span slot="end">${eyeOff20Regular}</span>`
-          : null}
-      ${x =>
-        x.customExpandIcon
-          ? html` <span slot="collapsed-icon">${add20Filled}</span>
-              <span slot="expanded-icon">${subtract20Filled}</span>`
-          : null}
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
@@ -176,20 +146,6 @@ export default {
         options: ['1', '2', '3', '4', '5', '6'],
       },
       defaultValue: '2',
-    },
-    presentationIcon: {
-      description: 'Slot for presentation icons',
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
-    },
-    customExpandIcon: {
-      description: 'Slot for custom expand collapse icons',
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
     },
   },
 } as AccordionStoryMeta;
