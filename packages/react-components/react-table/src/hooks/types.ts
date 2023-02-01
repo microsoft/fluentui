@@ -132,10 +132,15 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    * Table columns
    */
   columns: TableColumnDefinition<TItem>[];
-
+  /**
+   * State and actions to manage column resizing
+   */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   columnSizing_unstable: TableColumnSizingState;
-
+  /**
+   * A React.Ref object to be set as a ref for the table.
+   * Used with column resizing.
+   */
   tableRef: React.Ref<HTMLDivElement>;
 }
 
@@ -212,7 +217,7 @@ export type TableColumnSizingOptions = Record<
   Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
 >;
 
-export type UseColumnSizingParams = {
+export type UseTableColumnSizingParams = {
   columnSizingOptions?: TableColumnSizingOptions;
   onColumnResize?: (columnId: TableColumnId, width: number) => void;
 };

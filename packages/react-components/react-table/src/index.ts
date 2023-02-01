@@ -3,7 +3,7 @@ export {
   useTableSelection,
   useTableSort,
   createTableColumn,
-  useColumnSizing_unstable,
+  useTableColumnSizing_unstable,
 } from './hooks';
 
 export type {

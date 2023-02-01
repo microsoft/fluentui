@@ -1,4 +1,4 @@
-import { Avatar } from '@fluentui/react-components';
+import { Avatar, Input } from '@fluentui/react-components';
 import {
   Table,
   TableBody,
@@ -10,7 +10,7 @@ import {
   TableHeaderCell,
   TableRow,
   createTableColumn,
-  useColumnSizing_unstable,
+  useTableColumnSizing_unstable,
   useTableFeatures,
 } from '@fluentui/react-components/unstable';
 import {
@@ -111,7 +111,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableUncontrolled = () => {
+export const ResizableColumnsUncontrolled = () => {
   const [columns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions] = useState<TableColumnSizingOptions>({
     file: {
@@ -133,7 +133,7 @@ export const ResizableUncontrolled = () => {
       columns,
       items,
     },
-    [useColumnSizing_unstable({ columnSizingOptions })],
+    [useTableColumnSizing_unstable({ columnSizingOptions })],
   );
 
   const [inputValue, setInputValue] = useState('300');
@@ -150,7 +150,8 @@ export const ResizableUncontrolled = () => {
   return (
     <>
       <p>
-        First column width: <input type="text" onChange={onWidthChange} value={inputValue} />
+        First column width:{' '}
+        <Input type="number" onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
       <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
@@ -193,13 +194,13 @@ export const ResizableUncontrolled = () => {
     </>
   );
 };
-ResizableUncontrolled.storyName = 'Resizable Columns';
-ResizableUncontrolled.parameters = {
+ResizableColumnsUncontrolled.storyName = 'Resizable Columns (preview)';
+ResizableColumnsUncontrolled.parameters = {
   docs: {
     description: {
       story: [
         'The Table component contains logic to support column resizing. To enable resizing,',
-        'use the `useTableFeatures` hook in combination with the `useColumnSizing_unstable` plugin.',
+        'use the `useTableFeatures` hook in combination with the `useTableColumnSizing_unstable` plugin.',
         'The resulting `columnSizing_unstable` object contains methods needed to make resizing work.',
         '',
         'In this example we are choosing an uncontrolled approach, which still allows us to set column ',

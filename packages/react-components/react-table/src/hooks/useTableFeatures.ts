@@ -9,7 +9,7 @@ import type {
 } from './types';
 import { defaultTableSelectionState } from './useTableSelection';
 import { defaultTableSortState } from './useTableSort';
-import { defaultColumnSizingState } from './useColumnSizing';
+import { defaultColumnSizingState } from './useTableColumnSizing';
 
 const defaultRowEnhancer: RowEnhancer<unknown, TableRowData<unknown>> = row => row;
 

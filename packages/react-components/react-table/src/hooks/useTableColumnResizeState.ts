@@ -5,7 +5,7 @@ import {
   TableColumnId,
   ColumnResizeState,
   ColumnWidthState,
-  UseColumnSizingParams,
+  UseTableColumnSizingParams,
   TableColumnSizingOptions,
 } from './types';
 import {
@@ -89,10 +89,10 @@ const createReducer = <T>() => (state: ComponentState<T>, action: ColumnResizeSt
   }
 };
 
-export function useColumnResizeState<T>(
+export function useTableColumnResizeState<T>(
   columns: TableColumnDefinition<T>[],
   containerWidth: number,
-  params: UseColumnSizingParams = {},
+  params: UseTableColumnSizingParams = {},
 ): ColumnResizeState {
   const { onColumnResize, columnSizingOptions } = params;
 

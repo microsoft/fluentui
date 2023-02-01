@@ -4,10 +4,10 @@ import {
   ColumnWidthState,
   TableColumnSizingState,
   TableFeaturesState,
-  UseColumnSizingParams,
+  UseTableColumnSizingParams,
 } from './types';
-import { useColumnResizeState } from './useColumnResizeState';
-import useColumnResizeMouseHandler from './useColumnResizeMouseHandler';
+import { useTableColumnResizeState } from './useTableColumnResizeState';
+import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
 import { TableResizeHandle } from '../TableResizeHandle';
 
@@ -19,7 +19,7 @@ export const defaultColumnSizingState: TableColumnSizingState = {
   getTableCellProps: () => ({ style: {}, columnId: '' }),
 };
 
-export function useColumnSizing_unstable<TItem>(params?: UseColumnSizingParams) {
+export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableFeaturesState<TItem>) => useColumnSizingState(tableState, params);
@@ -39,16 +39,16 @@ function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
 
 function useColumnSizingState<TItem>(
   tableState: TableFeaturesState<TItem>,
-  params?: UseColumnSizingParams,
+  params?: UseTableColumnSizingParams,
 ): TableFeaturesState<TItem> {
   const { columns } = tableState;
 
   // Gets the container width
   const { width, measureElementRef } = useMeasureElement();
   // Creates the state based on columns and available containerWidth
-  const columnResizeState = useColumnResizeState(columns, width, params);
+  const columnResizeState = useTableColumnResizeState(columns, width, params);
   // Creates the mouse handler and attaches the state to it
-  const mouseHandler = useColumnResizeMouseHandler(columnResizeState);
+  const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
 
   return {
     ...tableState,

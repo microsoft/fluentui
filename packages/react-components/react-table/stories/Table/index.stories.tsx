@@ -20,8 +20,8 @@ export { CellNavigation } from './CellNavigation.stories';
 export { RowNavigation } from './RowNavigation.stories';
 
 export { Sort } from './Sort.stories';
-export { ResizableUncontrolled } from './ResizableUncontrolled.stories';
-export { ResizableControlled } from './ResizableControlled.stories';
+export { ResizableColumnsUncontrolled } from './ResizableColumnsUncontrolled.stories';
+export { ResizableColumnsControlled } from './ResizableColumnsControlled.stories';
 
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';

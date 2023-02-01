@@ -9,7 +9,7 @@ import {
   TableHeaderCell,
   TableRow,
   createTableColumn,
-  useColumnSizing_unstable,
+  useTableColumnSizing_unstable,
   useTableFeatures,
   useTableSort,
   TableColumnSizingOptions,
@@ -26,7 +26,7 @@ import {
 import * as React from 'react';
 import { useState } from 'react';
 import { PresenceBadgeStatus } from '../../../react-badge/src';
-import { Avatar } from '@fluentui/react-components';
+import { Avatar, Button, Input, Label } from '@fluentui/react-components';
 
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
@@ -135,7 +135,7 @@ const items: Item[] = [
   },
 ];
 
-export const ResizableControlled = () => {
+export const ResizableColumnsControlled = () => {
   const [columns, setColumns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
   const [columnSizingOptions, setColumnSizingOptions] = useState<TableColumnSizingOptions>({
     file: {
@@ -165,9 +165,9 @@ export const ResizableControlled = () => {
   };
 
   const onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newWidth = parseInt(e.target.value, 10);
+    let newWidth = parseInt(e.target.value, 10);
     if (Number.isNaN(newWidth)) {
-      return;
+      newWidth = 0;
     }
     setColumnSizingOptions(state => ({
       ...state,
@@ -179,15 +179,15 @@ export const ResizableControlled = () => {
   };
 
   const onMinWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMinWIdth = parseInt(e.target.value, 10);
-    if (Number.isNaN(newMinWIdth)) {
-      return;
+    let newMinWidth = parseInt(e.target.value, 10);
+    if (Number.isNaN(newMinWidth)) {
+      newMinWidth = 0;
     }
     setColumnSizingOptions(state => ({
       ...state,
       file: {
         ...state.file,
-        minWidth: newMinWIdth,
+        minWidth: newMinWidth,
       },
     }));
   };
@@ -213,7 +213,7 @@ export const ResizableControlled = () => {
       items,
     },
     [
-      useColumnSizing_unstable({ columnSizingOptions, onColumnResize }),
+      useTableColumnSizing_unstable({ columnSizingOptions, onColumnResize }),
       useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } }),
     ],
   );
@@ -230,16 +230,25 @@ export const ResizableControlled = () => {
   return (
     <>
       <p>
-        First column width: <input type="text" onChange={onWidthChange} value={columnSizingOptions.file.idealWidth} />
+        <Label>First column width: </Label>
+        <Input
+          type="number"
+          onChange={onWidthChange}
+          value={columnSizingOptions.file.idealWidth ? columnSizingOptions.file.idealWidth.toString() : ''}
+        />
       </p>
       <p>
-        First column minWidth:{' '}
-        <input type="text" onChange={onMinWidthChange} value={columnSizingOptions.file.minWidth} />
+        <Label>First column minWidth: </Label>
+        <Input
+          type="number"
+          onChange={onMinWidthChange}
+          value={columnSizingOptions.file.minWidth ? columnSizingOptions.file.minWidth?.toString() : ''}
+        />
       </p>
       <p>
-        <button onClick={addColumn} disabled={columns.length === columnsDef.length}>
+        <Button onClick={addColumn} disabled={columns.length === columnsDef.length}>
           Add removed column
-        </button>
+        </Button>
       </p>
       <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
@@ -273,8 +282,8 @@ export const ResizableControlled = () => {
     </>
   );
 };
-ResizableControlled.storyName = 'Resizable Columns - controlled';
-ResizableControlled.parameters = {
+ResizableColumnsControlled.storyName = 'Resizable Columns - controlled (preview)';
+ResizableColumnsControlled.parameters = {
   docs: {
     description: {
       story: [

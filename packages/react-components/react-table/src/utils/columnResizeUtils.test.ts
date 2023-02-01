@@ -216,7 +216,7 @@ describe('columnResizeUtils', () => {
             "idealWidth": 200,
             "minWidth": 100,
             "padding": 16,
-            "width": 200,
+            "width": 100,
           },
           Object {
             "columnId": 3,

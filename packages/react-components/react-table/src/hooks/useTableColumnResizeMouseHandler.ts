@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TableColumnId, ColumnResizeState } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-export default function useColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
+export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
   const colId = React.useRef<TableColumnId | undefined>(undefined);

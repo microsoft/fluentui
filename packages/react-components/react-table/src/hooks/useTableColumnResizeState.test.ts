@@ -1,9 +1,9 @@
 import { RenderResult, act, renderHook } from '@testing-library/react-hooks';
 import { createTableColumn } from './createColumn';
-import { useColumnResizeState } from './useColumnResizeState';
+import { useTableColumnResizeState } from './useTableColumnResizeState';
 import { ColumnResizeState, TableColumnSizingOptions } from './types';
 
-describe('useColumnResizeState', () => {
+describe('useTableColumnResizeState', () => {
   describe('default options', () => {
     let state: RenderResult<ColumnResizeState>;
 
@@ -13,7 +13,7 @@ describe('useColumnResizeState', () => {
         createTableColumn({ columnId: 2 }),
         createTableColumn({ columnId: 3 }),
       ];
-      const { result } = renderHook(() => useColumnResizeState(columnDefinition, 1000));
+      const { result } = renderHook(() => useTableColumnResizeState(columnDefinition, 1000));
       state = result;
     });
 
@@ -23,7 +23,6 @@ describe('useColumnResizeState', () => {
           "getColumnById": [Function],
           "getColumnWidth": [Function],
           "getColumns": [Function],
-          "getLength": [Function],
           "setColumnWidth": [Function],
         }
       `);
@@ -153,7 +152,7 @@ describe('useColumnResizeState', () => {
         createTableColumn({ columnId: 3 }),
       ];
       const { result } = renderHook(() =>
-        useColumnResizeState(columnDefinition, 1000, {
+        useTableColumnResizeState(columnDefinition, 1000, {
           onColumnResize,
         }),
       );
@@ -189,7 +188,7 @@ describe('useColumnResizeState', () => {
         createTableColumn({ columnId: 3 }),
       ];
       let { result } = renderHook(() =>
-        useColumnResizeState(columnDefinition, 1000, {
+        useTableColumnResizeState(columnDefinition, 1000, {
           columnSizingOptions,
         }),
       );
@@ -223,7 +222,7 @@ describe('useColumnResizeState', () => {
       columnSizingOptions['1'].minWidth = 120;
 
       result = renderHook(() =>
-        useColumnResizeState(columnDefinition, 1000, {
+        useTableColumnResizeState(columnDefinition, 1000, {
           columnSizingOptions,
         }),
       ).result;
@@ -257,7 +256,7 @@ describe('useColumnResizeState', () => {
       columnSizingOptions['2'].idealWidth = 300;
 
       result = renderHook(() =>
-        useColumnResizeState(columnDefinition, 1000, {
+        useTableColumnResizeState(columnDefinition, 1000, {
           columnSizingOptions,
         }),
       ).result;
