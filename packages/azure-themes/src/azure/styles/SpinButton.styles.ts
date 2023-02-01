@@ -11,7 +11,7 @@ export const SpinButtonStyles: IStyleFunction<ISpinButtonStyleProps, ISpinButton
     root: {
       selectors: {
         'div[class^="spinButtonWrapper-"]': {
-          height: StyleConstants.spinButtonHeight,
+          height: StyleConstants.inputControlHeight,
         },
         'div[class^="labelWrapper-"]': {
           height: StyleConstants.inputControlHeight,
