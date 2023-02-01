@@ -1487,7 +1487,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     );
   }
 
-  private _renderCheckboxLabel(item: IComboBoxOption): JSX.Element {
+  private _renderCheckboxLabel(item: IComboBoxOption): JSX.Element | null {
     const { onRenderOption = this._onRenderMultiselectOptionContent } = this.props;
     return onRenderOption(item, this._onRenderMultiselectOptionContent);
   }

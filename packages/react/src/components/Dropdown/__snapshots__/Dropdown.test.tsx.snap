@@ -582,30 +582,27 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             
                           </i>
                         </div>
-                        <div
+                        <span
                           aria-hidden="true"
+                          class=
+                              ms-Dropdown-optionText
+                              {
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
                           id="Dropdown0-list1-label"
                         >
-                          <span
-                            class=
-                                ms-Dropdown-optionText
-                                {
-                                  margin-bottom: 1px;
-                                  margin-left: 1px;
-                                  margin-right: 1px;
-                                  margin-top: 1px;
-                                  max-width: 100%;
-                                  min-width: 0px;
-                                  overflow-wrap: break-word;
-                                  overflow: hidden;
-                                  text-overflow: ellipsis;
-                                  white-space: nowrap;
-                                  word-wrap: break-word;
-                                }
-                          >
-                            1
-                          </span>
-                        </div>
+                          1
+                        </span>
                       </label>
                     </div>
                     <div
@@ -831,30 +828,27 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           
                         </i>
                       </div>
-                      <div
+                      <span
                         aria-hidden="true"
+                        class=
+                            ms-Dropdown-optionText
+                            {
+                              margin-bottom: 1px;
+                              margin-left: 1px;
+                              margin-right: 1px;
+                              margin-top: 1px;
+                              max-width: 100%;
+                              min-width: 0px;
+                              overflow-wrap: break-word;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              word-wrap: break-word;
+                            }
                         id="Dropdown0-list3-label"
                       >
-                        <span
-                          class=
-                              ms-Dropdown-optionText
-                              {
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
-                                max-width: 100%;
-                                min-width: 0px;
-                                overflow-wrap: break-word;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                word-wrap: break-word;
-                              }
-                        >
-                          2
-                        </span>
-                      </div>
+                        2
+                      </span>
                     </label>
                   </div>
                 </div>

@@ -1742,27 +1742,24 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             
                           </i>
                         </div>
-                        <div
+                        <span
                           aria-hidden="true"
+                          class=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
                           id="ComboBox0-list1-label"
                         >
-                          <span
-                            class=
-                                ms-ComboBox-optionText
-                                {
-                                  display: inline-block;
-                                  max-width: 100%;
-                                  min-width: 0px;
-                                  overflow-wrap: break-word;
-                                  overflow: hidden;
-                                  text-overflow: ellipsis;
-                                  white-space: nowrap;
-                                  word-wrap: break-word;
-                                }
-                          >
-                            Option 1
-                          </span>
-                        </div>
+                          Option 1
+                        </span>
                       </label>
                     </div>
                     <div
@@ -1965,27 +1962,24 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           
                         </i>
                       </div>
-                      <div
+                      <span
                         aria-hidden="true"
+                        class=
+                            ms-ComboBox-optionText
+                            {
+                              display: inline-block;
+                              max-width: 100%;
+                              min-width: 0px;
+                              overflow-wrap: break-word;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              word-wrap: break-word;
+                            }
                         id="ComboBox0-list3-label"
                       >
-                        <span
-                          class=
-                              ms-ComboBox-optionText
-                              {
-                                display: inline-block;
-                                max-width: 100%;
-                                min-width: 0px;
-                                overflow-wrap: break-word;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                                word-wrap: break-word;
-                              }
-                        >
-                          Option 2
-                        </span>
-                      </div>
+                        Option 2
+                      </span>
                     </label>
                   </div>
                 </div>
