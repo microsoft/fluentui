@@ -7,4 +7,8 @@ import { colorNeutralStroke2, strokeWidthThin } from '../theme/design-tokens.js'
 export const styles = css`
   :host {
   }
+
+  :host([border]) {
+    border: ${strokeWidthThin}px solid ${colorNeutralStroke2};
+  }
 `;
