@@ -7,7 +7,9 @@ import {
   OverflowProps,
   useIsOverflowGroupVisible,
   useOverflowMenu,
+  useOverflowContext,
 } from '@fluentui/react-overflow';
+import { Portal } from '@fluentui/react-portal';
 
 const selectors = {
   container: 'data-test-container',
@@ -72,6 +74,7 @@ const Item: React.FC<{ children?: React.ReactNode; width?: number } & Omit<Overf
 
 const Menu: React.FC<{ width?: number }> = ({ width }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
+  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
   const selector = {
     [selectors.menu]: '',
   };
@@ -82,9 +85,21 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
 
   // No need to actually render a menu, we're testing state
   return (
-    <button {...selector} ref={ref} style={{ width: width ?? 50, height: 20 }}>
-      +{overflowCount}
-    </button>
+    <>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 20 }}>
+        +{overflowCount}
+      </button>
+      <Portal>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: 200 }}>
+          {Object.entries(itemVisibility).map(([id, visible]) => (
+            <>
+              <div>{id}</div>
+              <div id={`${id}-visibility`}>{visible ? 'visible' : 'invisible'}</div>
+            </>
+          ))}
+        </div>
+      </Portal>
+    </>
   );
 };
 
@@ -451,5 +466,51 @@ describe('Overflow', () => {
     setContainerSize(195);
     cy.get(`[${selectors.menu}]`).should('not.be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+  });
+
+  it('should dispatch update when updating priority of an item', () => {
+    const Example = () => {
+      const [priority, setPriority] = React.useState<number | undefined>();
+
+      return (
+        <>
+          <Container>
+            <Item id="today" width={87.59}>
+              Today
+            </Item>
+            <Item id="agenda" width={99.19}>
+              Agenda
+            </Item>
+            <Item id="day" width={74.47}>
+              Day
+            </Item>
+            <Item id="threeDay" width={114.13}>
+              Three Day
+            </Item>
+            <Item id="workWeek" width={123.3}>
+              Work Week
+            </Item>
+            <Item id="week" width={85.39} priority={priority}>
+              Week
+            </Item>
+            <Item id="month" width={92.69}>
+              Month
+            </Item>
+            <Item id="search" width={92.17}>
+              Search
+            </Item>
+            <Item id="chat" width={139.56}>
+              Conversations
+            </Item>
+            <Menu width={32} />
+          </Container>
+          <button onClick={() => setPriority(2)}>Update priority</button>
+        </>
+      );
+    };
+    mount(<Example />);
+
+    setContainerSize(520);
+    cy.contains('Update priority').click().get('#week-visibility').should('have.text', 'visible');
   });
 });
