@@ -367,7 +367,7 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
     columns: TableColumnDefinition<TItem>[];
     // (undocumented)
-    columnSizing: TableColumnSizingState;
+    columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
@@ -388,9 +388,8 @@ export const tableHeaderCellClassName = "fui-TableHeaderCell";
 export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
-export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & Pick<ColumnWidthProps, 'resizeHandleMouseDown'> & {
+export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
     sortDirection?: SortDirection;
-    columnId?: TableColumnId;
 };
 
 // @public (undocumented)
@@ -402,7 +401,7 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableHeaderCellProps, 'columnId'> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";

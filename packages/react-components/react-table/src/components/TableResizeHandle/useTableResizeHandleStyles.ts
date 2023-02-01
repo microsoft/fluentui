@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '../../../../react-theme/src/index';
+import { tokens } from '@fluentui/react-theme';
 
 export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots> = {
   root: 'fui-TableResizeHandle',
