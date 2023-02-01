@@ -12,48 +12,44 @@ Images, like photos and illustrations, help reinforce a message and express your
 
 ### Inputs
 
-- @attr public alt: string | Requires description if image role is not set to presentation.
+**booleans**
+
 - @attr public block: boolean | false
 - @attr public border: boolean | false
 - @attr public shadow: boolean | false
-- @attr public fit: string -- 'none' | 'center' | 'contain' | 'cover' | unspecified
 - @attr public margin: boolean | false
-- @attr public role: string | 'presentation'
+
+**options**
+
+- @attr public fit: string -- 'none' | 'center' | 'contain' | 'cover' | 'default'
 - @attr public shape: string -- 'square' | 'rounded' | 'circular'
+
+**content**
+
+- @attr public alt: string | Requires description if image role is not set to presentation.
+- @attr public role: string | 'presentation'
 - @attr public src: string
 
 ### Slots
 
-- None needed
+None needed
 
 ## Accessibility
 
-- The image element requires an alt tag when not used in role: presentation.
+The image element requires an alt tag when not used in role: presentation.
 
 ## Preparation
 
-- This will inherit from the FASTElement.
+This will extend the FASTElement.
 
-- [Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default)
+[Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default)
 
-  - This appears to be indentical in terms of props.
+- This appears to be indentical in terms of props.
 
-- [Open GitHub issues related to Image component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
+Open GitHub issues related to Image component
 
-  - [Feature request](https://github.com/microsoft/fluentui/issues/26452)
-  - [Bug](https://github.com/microsoft/fluentui/issues/26399)
-
----
-
-## Stop Here
-
----
-
-- [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
-
-  - [link to draft implementation, if applicable]
-
-- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
+- [Feature request](https://github.com/microsoft/fluentui/issues/26452)
+- [Bug](https://github.com/microsoft/fluentui/issues/26399)
 
 ## Implementation
 

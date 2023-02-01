@@ -5,8 +5,4 @@ import type { Image } from './image.js';
  * Template for the Image component
  * @public
  */
-export const template: ElementViewTemplate<Image> = html<Image>`
-  <template>
-    <slot></slot>
-  </template>
-`;
+export const template: ElementViewTemplate<Image> = html<Image>` <template> </template> `;
