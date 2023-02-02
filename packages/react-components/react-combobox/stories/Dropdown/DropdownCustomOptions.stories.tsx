@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
+import { Dropdown, makeStyles, Option, OptionGroup, shorthands, useId } from '@fluentui/react-components';
+import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import {
   AnimalCat24Filled,
   AnimalDog24Filled,
@@ -8,8 +9,6 @@ import {
   FoodFish24Filled,
   CheckboxChecked24Regular,
 } from '@fluentui/react-icons';
-import { Dropdown, Option, OptionGroup } from '@fluentui/react-combobox';
-import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-combobox';
 
 const animalIcons = {
   Cat: AnimalCat24Filled,

@@ -18,7 +18,7 @@ export { Size } from './ComboboxSize.stories';
 export { Disabled } from './ComboboxDisabled.stories';
 
 export default {
-  title: 'Preview Components/Combobox',
+  title: 'Components/Combobox',
   component: Combobox,
   parameters: {
     docs: {

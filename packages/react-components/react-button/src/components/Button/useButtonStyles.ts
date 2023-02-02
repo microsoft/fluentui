@@ -13,7 +13,10 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
 const buttonSpacingSmall = '3px';
+const buttonSpacingSmallWithIcon = '1px';
 const buttonSpacingMedium = '5px';
+const buttonSpacingLarge = '8px';
+const buttonSpacingLargeWithIcon = '7px';
 
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
@@ -218,9 +221,8 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
-
     minWidth: '64px',
+    ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
     ...shorthands.borderRadius(buttonSpacingSmall),
 
@@ -228,19 +230,26 @@ const useRootStyles = makeStyles({
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
   },
+  smallWithIcon: {
+    paddingBottom: buttonSpacingSmallWithIcon,
+    paddingTop: buttonSpacingSmallWithIcon,
+  },
   medium: {
     /* defined in base styles */
   },
   large: {
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalL),
-
     minWidth: '96px',
+    ...shorthands.padding(buttonSpacingLarge, tokens.spacingHorizontalL),
 
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase400,
     fontWeight: tokens.fontWeightSemibold,
     lineHeight: tokens.lineHeightBase400,
+  },
+  largeWithIcon: {
+    paddingBottom: buttonSpacingLargeWithIcon,
+    paddingTop: buttonSpacingLargeWithIcon,
   },
 });
 
@@ -395,19 +404,19 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    ...shorthands.padding(buttonSpacingSmallWithIcon),
 
-    minWidth: '28px',
-    maxWidth: '28px',
+    minWidth: '24px',
+    maxWidth: '24px',
   },
   medium: {
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    ...shorthands.padding(buttonSpacingMedium),
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(buttonSpacingLargeWithIcon),
 
     minWidth: '40px',
     maxWidth: '40px',
@@ -453,7 +462,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, shape, size } = state;
+  const { appearance, disabled, disabledFocusable, icon, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -462,6 +471,8 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     appearance && rootStyles[appearance],
 
     rootStyles[size],
+    icon && size === 'small' && rootStyles.smallWithIcon,
+    icon && size === 'large' && rootStyles.largeWithIcon,
     rootStyles[shape],
 
     // Disabled styles

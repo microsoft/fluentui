@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
-import { TabListContext } from '../TabList/TabListContext';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useTabListContext_unstable } from '../TabList/TabListContext';
 import { SelectTabEvent } from '../TabList/TabList.types';
 
 /**
@@ -17,15 +16,15 @@ import { SelectTabEvent } from '../TabList/TabList.types';
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
   const { content, disabled: tabDisabled = false, icon, value } = props;
 
-  const appearance = useContextSelector(TabListContext, ctx => ctx.appearance);
-  const reserveSelectedTabSpace = useContextSelector(TabListContext, ctx => ctx.reserveSelectedTabSpace);
-  const listDisabled = useContextSelector(TabListContext, ctx => ctx.disabled);
-  const selected = useContextSelector(TabListContext, ctx => ctx.selectedValue === value);
-  const onRegister = useContextSelector(TabListContext, ctx => ctx.onRegister);
-  const onUnregister = useContextSelector(TabListContext, ctx => ctx.onUnregister);
-  const onSelect = useContextSelector(TabListContext, ctx => ctx.onSelect);
-  const size = useContextSelector(TabListContext, ctx => ctx.size);
-  const vertical = useContextSelector(TabListContext, ctx => !!ctx.vertical);
+  const appearance = useTabListContext_unstable(ctx => ctx.appearance);
+  const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
+  const listDisabled = useTabListContext_unstable(ctx => ctx.disabled);
+  const selected = useTabListContext_unstable(ctx => ctx.selectedValue === value);
+  const onRegister = useTabListContext_unstable(ctx => ctx.onRegister);
+  const onUnregister = useTabListContext_unstable(ctx => ctx.onUnregister);
+  const onSelect = useTabListContext_unstable(ctx => ctx.onSelect);
+  const size = useTabListContext_unstable(ctx => ctx.size);
+  const vertical = useTabListContext_unstable(ctx => !!ctx.vertical);
   const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);

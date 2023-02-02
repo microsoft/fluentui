@@ -6,10 +6,11 @@ import {
 } from '@fluentui/react/lib/Styling';
 
 export const borderNone = 'none';
-export const borderRadius = '3px';
+export const borderRadius = '2px';
 export const borderSolid = 'solid';
 export const borderWidth = '1px';
 export const buttonPadding = '0px 16px';
+export const calendarHeightInner = '22px';
 export const choiceFieldHeight = '18px';
 export const commandBarHeight = '36px';
 export const dropDownItemHeight = '32px';

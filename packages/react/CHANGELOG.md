@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 27 Jan 2023 07:37:50 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Feb 2023 07:35:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.2)
+
+Thu, 02 Feb 2023 07:35:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.1..@fluentui/react_v8.105.2)
+
+### Patches
+
+- fix: ContextualMenu label was missing overflow hidden ([PR #26591](https://github.com/microsoft/fluentui/pull/26591) by mgodbolt@microsoft.com)
+- [DatePicker] fix default date parser converting dates to UTC implicitly ([PR #25962](https://github.com/microsoft/fluentui/pull/25962) by karlo.sudec@gmail.com)
+
+## [8.105.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.1)
+
+Wed, 01 Feb 2023 07:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.0..@fluentui/react_v8.105.1)
+
+### Patches
+
+- fix: splitbutton should not refocus trigger after touch event ([PR #26572](https://github.com/microsoft/fluentui/pull/26572) by sarah.higley@microsoft.com)
+- fix: Dropdown option focus in high contrast mode should not be cut off by the popup ([PR #26573](https://github.com/microsoft/fluentui/pull/26573) by sarah.higley@microsoft.com)
+
+## [8.105.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.0)
+
+Mon, 30 Jan 2023 07:36:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.104.8..@fluentui/react_v8.105.0)
+
+### Minor changes
+
+- fix: remove invalid extra checkbox at end of DetailsRow ([PR #26519](https://github.com/microsoft/fluentui/pull/26519) by sarah.higley@microsoft.com)
 
 ## [8.104.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.104.8)
 

@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 27 Jan 2023 07:37:51 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Feb 2023 07:35:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.14)
+
+Thu, 02 Feb 2023 07:35:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.13..@fluentui/react-docsite-components_v8.11.14)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.2 ([PR #26591](https://github.com/microsoft/fluentui/pull/26591) by beachball)
+- Bump @fluentui/public-docsite-setup to v0.3.16 ([PR #26591](https://github.com/microsoft/fluentui/pull/26591) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.49 ([PR #26591](https://github.com/microsoft/fluentui/pull/26591) by beachball)
+
+## [8.11.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.13)
+
+Wed, 01 Feb 2023 07:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.12..@fluentui/react-docsite-components_v8.11.13)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.1 ([PR #26573](https://github.com/microsoft/fluentui/pull/26573) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.48 ([PR #26573](https://github.com/microsoft/fluentui/pull/26573) by beachball)
+
+## [8.11.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.12)
+
+Mon, 30 Jan 2023 07:36:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.11..@fluentui/react-docsite-components_v8.11.12)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.0 ([PR #26522](https://github.com/microsoft/fluentui/pull/26522) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.47 ([PR #26522](https://github.com/microsoft/fluentui/pull/26522) by beachball)
 
 ## [8.11.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.11)
 
