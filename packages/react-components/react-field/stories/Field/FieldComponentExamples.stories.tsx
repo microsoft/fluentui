@@ -14,7 +14,7 @@ import {
   Textarea,
   tokens,
 } from '@fluentui/react-components';
-import { Field, ProgressBar } from '@fluentui/react-components/unstable';
+import { Field } from '@fluentui/react-components/unstable';
 
 const useStackClassName = makeResetStyles({
   display: 'flex',

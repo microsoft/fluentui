@@ -1,4 +1,4 @@
-Fields add a label, validation message, and hint text to a control.
+Field adds a label, validation message, and hint text to a control.
 
 <!-- Don't allow prettier to collapse code block into single line -->
 <!-- prettier-ignore -->
