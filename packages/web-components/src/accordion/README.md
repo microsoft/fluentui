@@ -131,7 +131,34 @@ Fluent WC3 Accordion extends from the FAST Accordion [FAST Accordion](https://ex
 <hr />
 <br />
 
-## **Web Component v3 v.s Fluent UI React 9 implementation**
+## **Accessibility**
+
+[W3 Accordion Spec](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+
+<br />
+
+### **WAI-ARIA Roles, States, and Properties**
+
+- `role = "button"`
+  - The title of each accordion header is contained in an element with role button.
+- `role = "heading"`
+  - Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
+- `aria-expanded`
+  - If the accordion panel associated with an accordion header is visible, the header button element has aria-expanded set to true. If the panel is not visible, aria-expanded is set to false.
+- `aria-controls`
+  - The accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
+- `aria-disabled`
+  - If the accordion panel associated with an accordion header is visible, and if the accordion does not permit the panel to be collapsed, the header button element has aria-disabled set to true.
+
+<br />
+<hr />
+<br />
+
+## **Preparation**
+
+<br />
+
+### **Fluent Web Component v3 v.s Fluent React 9**
 
 <br />
 
@@ -157,72 +184,3 @@ Fluent WC3 Accordion extends from the FAST Accordion [FAST Accordion](https://ex
 | `expandIconPosition` | `expandIconPosition` |
 | `expandIcon` | `named slot: collapsed-icon` + `expanded-icon` | `expandIcon` is a prop that is passed a ternary to render the appropriate icon. <hr /> `collapsed-icon` and `expanded-icon` are named slots to supply the appropriate icons.
 | `icon` | `named slot: start` + `end` | `icon` is a property set on the `AccordionHeader` through which an icon is passed <hr /> `start` and `end` are named slots through which to supply a presentation icon.
-
-## **Accessibility**
-
-[W3 Accordion Spec](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
-
-<br />
-
-**WAI-ARIA Roles, States, and Properties**
-
-- `role = "button"`
-  - The title of each accordion header is contained in an element with role button.
-- `role = "heading"`
-  - Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
-- `aria-expanded`
-  - If the accordion panel associated with an accordion header is visible, the header button element has aria-expanded set to true. If the panel is not visible, aria-expanded is set to false.
-- `aria-controls`
-  - The accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
-- `aria-disabled`
-  - If the accordion panel associated with an accordion header is visible, and if the accordion does not permit the panel to be collapsed, the header button element has aria-disabled set to true.
-
-## Preparation
-
-- [ ] [Find the base FAST Component](https://explore.fast.design/components/fast-accordion) this component will inherit from and document
-  - [FAST Component]()
-- [ ] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
-  - Difference #1
-- [ ] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
-  - Difference #1
-- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
-  - [link to each issue]
-- [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
-  - [link to draft implementation, if applicable]
-- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
-- [ ] [Find the base FAST Component](https://explore.fast.design/components/fast-accordion) this component will inherit from and document
-  - [FAST Component]()
-- [ ] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
-  - Difference #1
-- [ ] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
-  - Difference #1
-- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
-  - [link to each issue]
-- [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
-  - [link to draft implementation, if applicable]
-- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
-
-## Implementation
-
-- [ ] Initial conformance and unit tests (validate basic functionality)
-- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
-  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
-  - [ ] README.md covering basic usage
-- [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/web-components/unstable`
-- [ ] Uses design tokens for styling
-- [ ] Renders correctly in High Contrast mode
-
-## Validation
-
-- [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
-  - [ ] Unit and conformance tests
-  - [ ] Bundle size fixtures
-  - [ ] Performance test scenario
-  - [ ] Accessibility behavior tests
-  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
-- [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
-- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
-  - [ ] Review and add any missing storybook stories
-  - [ ] Finalize migration guide
-  - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
-  - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`
