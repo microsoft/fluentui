@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.20)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.19..@fluentui/react-image_v9.0.20)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.19)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.18..@fluentui/react-image_v9.0.19)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 
 ## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.17)
 

@@ -41,7 +41,7 @@ function getPartitionedFieldProps<ControlProps>(
     style,
     validationMessage,
     validationMessageIcon,
-    validationState,
+    validationState = 'none',
     ...restOfProps
   } = props;
 

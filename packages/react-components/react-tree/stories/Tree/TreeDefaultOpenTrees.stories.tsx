@@ -1,26 +1,34 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 
 export const DefaultOpenTrees = () => {
   const defaultOpenTrees = ['default-subtree-1', 'default-subtree-2', 'default-subtree-2-1'];
 
   return (
     <Tree aria-label="Tree" defaultOpenItems={defaultOpenTrees}>
-      <TreeItem id="default-subtree-1">
-        level 1, item 1
+      <TreeItem>
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
-          <TreeItem>level 2, item 1</TreeItem>
-          <TreeItem>level 2, item 2</TreeItem>
-          <TreeItem>level 2, item 3</TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem id="default-subtree-2">
-        level 1, item 2
+      <TreeItem>
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
-          <TreeItem id="default-subtree-2-1">
-            level 2, item 1
+          <TreeItem>
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>level 3, item 1</TreeItem>
+              <TreeItem>
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>

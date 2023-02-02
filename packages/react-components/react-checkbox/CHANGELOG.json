@@ -2,6 +2,78 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.24",
+      "version": "9.0.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.18",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.19",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.4.2",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 13:30:52 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.23",
+      "version": "9.0.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Deprecate CheckboxField_unstable in favor of Field with Checkbox as its child."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.17",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.18",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.4.1",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Jan 2023 16:43:12 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.22",
       "version": "9.0.22",

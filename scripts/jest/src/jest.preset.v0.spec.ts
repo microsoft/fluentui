@@ -12,6 +12,7 @@ describe(`v0 preset`, () => {
         coverageReporters: ['json', 'lcov'],
         moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
         moduleNameMapper: expect.any(Object),
+        modulePathIgnorePatterns: expect.any(Array),
         setupFilesAfterEnv: [`${workspaceRoot}/scripts/jest/src/v0/setupTests.js`],
         testRegex: '/test/.*-test\\.tsx?$',
         transform: {

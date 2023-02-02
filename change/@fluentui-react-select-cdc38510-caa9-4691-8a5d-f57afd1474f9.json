@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Deprecate SelectField_unstable in favor of Field with Select as its child.",
-  "packageName": "@fluentui/react-select",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
