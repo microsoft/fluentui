@@ -125,6 +125,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -162,6 +163,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -199,6 +201,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -825,6 +828,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -862,6 +866,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -899,6 +904,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -1319,7 +1325,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
 </div>
 `;
 
-exports[`VerticalBarChart snapShot testing Should not render bar values 1`] = `
+exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
 <div
   className=
 

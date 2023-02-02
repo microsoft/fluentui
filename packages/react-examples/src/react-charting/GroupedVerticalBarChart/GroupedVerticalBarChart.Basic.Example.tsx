@@ -8,7 +8,7 @@ interface IGroupedBarChartState {
   height: number;
   barwidth: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
-  hideValues: boolean;
+  hideLabels: boolean;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -19,7 +19,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
       height: 400,
       barwidth: 16,
       selectedCallout: 'singleCallout',
-      hideValues: false,
+      hideLabels: false,
     };
   }
 
@@ -40,7 +40,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.setState({ selectedCallout: option.key as IGroupedBarChartState['selectedCallout'] });
   };
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideValues: checked });
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -179,8 +179,8 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           label="Pick one"
         />
         <Checkbox
-          label="Hide bar values"
-          checked={this.state.hideValues}
+          label="Hide labels"
+          checked={this.state.hideLabels}
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
@@ -195,7 +195,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
             barwidth={this.state.barwidth}
-            hideValues={this.state.hideValues}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>

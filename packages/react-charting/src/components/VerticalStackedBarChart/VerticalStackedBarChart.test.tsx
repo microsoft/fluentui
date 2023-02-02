@@ -133,8 +133,8 @@ describe('VerticalStackedBarChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should not render bar values', () => {
-    const component = renderer.create(<VerticalStackedBarChart data={chartPoints} hideValues={true} />);
+  it('Should not render bar labels', () => {
+    const component = renderer.create(<VerticalStackedBarChart data={chartPoints} hideLabels={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

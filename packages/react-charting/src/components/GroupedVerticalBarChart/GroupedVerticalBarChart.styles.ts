@@ -21,9 +21,10 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
       pointerEvents: 'none',
     },
 
-    barValue: {
+    barLabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
   };
 };

@@ -34,9 +34,10 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
       pointerEvents: 'none',
     },
 
-    barValue: {
+    barLabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
   };
 };

@@ -36,6 +36,13 @@ const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGr
 type StringAxis = D3Axis<string>;
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
+const MIN_DOMAIN_MARGIN = 8;
+const X1_INNER_PADDING = 0.1;
+// x1_inner_padding = space_between_bars / (space_between_bars + bar_width)
+// => space_between_bars = (x1_inner_padding / (1 - x1_inner_padding)) * bar_width
+/** Rate at which the space between the bars in a group changes wrt the bar width */
+const BAR_GAP_RATE = X1_INNER_PADDING / (1 - X1_INNER_PADDING);
+
 // This interface used for - While forming datapoints from given prop "data" in code
 interface IGVDataPoint {
   [key: string]: number | string;
@@ -75,7 +82,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _isRtl: boolean = getRTL();
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
   private _barWidth: number;
-  private _minDomainMargin = 8;
   private _domainMargin: number;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
@@ -104,7 +110,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._refArray = [];
     this._calloutId = getId('callout');
     this._tooltipId = getId('GVBCTooltipId_');
-    this._domainMargin = this._minDomainMargin;
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public render(): React.ReactNode {
@@ -168,7 +174,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         getDomainMargins={this._getDomainMargins}
-        xAxisInnerPadding={2 / (2 + this._keys.length)}
+        xAxisInnerPadding={2 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE)}
         xAxisOuterPadding={0}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
@@ -306,7 +312,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     xElement: SVGElement,
   ): JSX.Element => {
     const singleGroup: JSX.Element[] = [];
-    const barValuesForGroup: JSX.Element[] = [];
+    const barLabelsForGroup: JSX.Element[] = [];
 
     const yBarScale = d3ScaleLinear()
       .domain([0, this._yMax])
@@ -344,13 +350,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
             role="img"
           />,
         );
-      if (pointData.data && !this.props.hideValues && this._barWidth >= 16) {
-        barValuesForGroup.push(
+      if (pointData.data && !this.props.hideLabels && this._barWidth >= 16) {
+        barLabelsForGroup.push(
           <text
             x={xPoint + this._barWidth / 2}
             y={yPoint - 6}
             textAnchor="middle"
-            className={this._classNames.barValue}
+            className={this._classNames.barLabel}
             aria-hidden={true}
           >
             {d3FormatPrefix(pointData.data < 1000 ? '.2~' : '.1', pointData.data)(pointData.data)}
@@ -375,7 +381,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return (
       <g key={singleSet.indexNum} transform={`translate(${xScale0(singleSet.xAxisPoint)}, 0)`}>
         {singleGroup}
-        {barValuesForGroup}
+        {barLabelsForGroup}
       </g>
     );
   };
@@ -420,10 +426,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
           ? [containerWidth! - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
           : [this.margins.left! + this._domainMargin, containerWidth! - this.margins.right! - this._domainMargin],
       )
+      // x0_inner_padding = space_between_groups / (space_between_groups + group_width)
       // space_between_groups = 2 * bar_width
-      // group_width = this._keys.length * bar_width
-      // inner_padding = space_between_groups / (space_between_groups + group_width)
-      .paddingInner(2 / (2 + this._keys.length));
+      // group_width = this._keys.length * bar_width + (this._keys.length - 1) * space_between_bars
+      .paddingInner(2 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE));
     return x0Axis;
   };
 
@@ -434,7 +440,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return d3ScaleBand()
       .domain(this._keys)
       .range(this._isRtl ? [bandWidth, 0] : [0, bandWidth])
-      .paddingInner(0.05);
+      .paddingInner(X1_INNER_PADDING);
   };
 
   private _closeCallout = () => {
@@ -545,13 +551,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _getDomainMargins = (containerWidth: number): IMargins => {
     /** Total width available to render the bars */
     const totalWidth =
-      containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
-    const barWidth = Math.min(this.props.barwidth || 16, 24);
-    let groupWidth = this._keys.length * barWidth; // (i)
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    let barWidth = Math.min(this.props.barwidth || 16, 24);
+    let groupWidth = this._keys.length * barWidth + (this._keys.length - 1) * BAR_GAP_RATE * barWidth; // (i)
     /** Total width required to render the bars. Directly proportional to bar width */
-    const reqWidth = this._xAxisLabels.length * groupWidth + (this._xAxisLabels.length - 1) * barWidth * 2; // (ii)
+    const reqWidth = this._xAxisLabels.length * groupWidth + (this._xAxisLabels.length - 1) * 2 * barWidth; // (ii)
 
-    this._domainMargin = this._minDomainMargin;
+    this._domainMargin = MIN_DOMAIN_MARGIN;
     if (totalWidth >= reqWidth) {
       // Center align the chart by setting equal left and right margins for domain
       this._domainMargin += (totalWidth - reqWidth) / 2;
@@ -559,13 +565,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
       // From (i) and (ii)
       /** Maximum possible group width to maintain 2:1 spacing */
       const maxBandwidth =
-        totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * (2 / this._keys.length));
+        totalWidth /
+        (this._xAxisLabels.length +
+          (this._xAxisLabels.length - 1) * (2 / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE)));
       groupWidth = maxBandwidth;
+      // From (i)
+      barWidth = groupWidth / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE);
     }
-    // Adjust bar width to exclude space between bars in a group
-    // 1. x1_scale_inner_padding = space_between_bars / (space_between_bars + new_bar_width)
-    // 2. group_width = this._keys.length * new_bar_width + (this._keys.length -1) * space_between_bars
-    this._barWidth = (19 * groupWidth) / (20 * this._keys.length - 1);
+    this._barWidth = barWidth;
 
     return {
       ...this.margins,

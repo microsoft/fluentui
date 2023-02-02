@@ -158,6 +158,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -231,6 +232,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -803,6 +805,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -876,6 +879,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -1357,6 +1361,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -1421,6 +1426,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             className=
 
                 {
+                  fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
                 }
@@ -1902,7 +1908,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
 </div>
 `;
 
-exports[`VerticalStackedBarChart snapShot testing Should not render bar values 1`] = `
+exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1`] = `
 <div
   className=
 

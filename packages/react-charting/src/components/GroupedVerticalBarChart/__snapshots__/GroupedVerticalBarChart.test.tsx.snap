@@ -100,7 +100,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <g>
         <g
           key="0"
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -120,7 +120,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -142,8 +142,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -164,8 +164,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -191,7 +191,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -213,8 +213,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -235,8 +235,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -848,7 +848,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       <g>
         <g
           key="0"
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -868,7 +868,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -890,8 +890,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -912,8 +912,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -939,7 +939,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -961,8 +961,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -983,8 +983,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -1515,7 +1515,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -1534,7 +1534,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -1555,8 +1555,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -1576,8 +1576,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -1601,7 +1601,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -1622,8 +1622,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -1643,8 +1643,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -2095,7 +2095,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2114,7 +2114,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -2135,8 +2135,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -2156,8 +2156,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -2181,7 +2181,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -2202,8 +2202,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -2223,8 +2223,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -2655,7 +2655,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2674,7 +2674,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -2695,8 +2695,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -2716,8 +2716,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -2741,7 +2741,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -2762,8 +2762,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -2783,8 +2783,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -2896,7 +2896,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2915,7 +2915,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -2936,8 +2936,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -2957,8 +2957,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -2982,7 +2982,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -3003,8 +3003,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -3024,8 +3024,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -3476,7 +3476,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3495,7 +3495,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -3516,8 +3516,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -3537,8 +3537,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -3562,7 +3562,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -3583,8 +3583,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -3604,8 +3604,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -4056,7 +4056,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4075,7 +4075,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -4096,8 +4096,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -4117,8 +4117,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -4142,7 +4142,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -4163,8 +4163,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -4184,8 +4184,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -4636,7 +4636,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       />
       <g>
         <g
-          transform="translate(19.5, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4655,7 +4655,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={4.45652173913043}
           />
@@ -4676,8 +4676,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={0}
           />
           <rect
@@ -4697,8 +4697,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>
@@ -4722,7 +4722,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
+            width={-9}
             x={0}
             y={0}
           />
@@ -4743,8 +4743,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={9.661016949152541}
+            width={-9}
+            x={10}
             y={18.80434782608696}
           />
           <rect
@@ -4764,8 +4764,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9.177966101694915}
-            x={19.322033898305083}
+            width={-9}
+            x={20}
             y={0}
           />
         </g>

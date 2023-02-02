@@ -40,6 +40,9 @@ enum CircleVisbility {
   hide = 'hidden',
 }
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
+
+const MIN_DOMAIN_MARGIN = 8;
+
 export interface IVerticalBarChartState extends IBasestate {
   dataPointCalloutProps?: IVerticalBarChartDataPoint; // define this in hover and focus
   /**
@@ -70,7 +73,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
-  private _minDomainMargin = 8;
   private _domainMargin: number;
 
   public constructor(props: IVerticalBarChartProps) {
@@ -97,7 +99,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
-    this._domainMargin = this._minDomainMargin;
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public render(): JSX.Element {
@@ -521,7 +523,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
-          {this._renderBarValue(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y)}
         </g>
       );
     });
@@ -579,7 +581,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
           />
-          {this._renderBarValue(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y)}
         </g>
       );
     });
@@ -735,8 +737,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   };
 
-  private _renderBarValue(xPoint: number, yPoint: number, barValue: number) {
-    if (this.props.hideValues || this._barWidth < 16) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number) {
+    if (this.props.hideLabels || this._barWidth < 16) {
       return null;
     }
 
@@ -745,7 +747,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         x={xPoint + this._barWidth / 2}
         y={yPoint - 6}
         textAnchor="middle"
-        className={this._classNames.barValue}
+        className={this._classNames.barLabel}
         aria-hidden={true}
       >
         {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
@@ -757,12 +759,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (this._xAxisType !== XAxisTypes.NumericAxis) {
       /** Total width available to render the bars */
       const totalWidth =
-        containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
+        containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
       let barWidth = Math.min(this.props.barWidth || 16, 24);
       /** Total width required to render the bars. Directly proportional to bar width */
       const reqWidth = (3 * this._xAxisLabels.length - 2) * barWidth;
 
-      this._domainMargin = this._minDomainMargin;
+      this._domainMargin = MIN_DOMAIN_MARGIN;
       if (totalWidth >= reqWidth) {
         // Center align the chart by setting equal left and right margins for domain
         this._domainMargin += (totalWidth - reqWidth) / 2;

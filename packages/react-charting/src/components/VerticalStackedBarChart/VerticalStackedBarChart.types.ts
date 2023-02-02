@@ -114,10 +114,10 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   lineOptions?: ILineChartLineOptions;
 
   /**
-   * Prop to hide the bar values
+   * Prop to hide the bar labels
    * @default false
    */
-  hideValues?: boolean;
+  hideLabels?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}
@@ -129,9 +129,9 @@ export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
   opacityChangeOnHover?: IStyle;
 
   /**
-   * Style for the bar values
+   * Style for the bar labels
    */
-  barValue: IStyle;
+  barLabel: IStyle;
 
   /**
    * Style for the chart.

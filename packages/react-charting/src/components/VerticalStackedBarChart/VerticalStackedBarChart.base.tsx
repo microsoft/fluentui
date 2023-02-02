@@ -45,6 +45,8 @@ const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
 const barGapMultiplier = 0.2;
 const barGapMin = 1;
 
+const MIN_DOMAIN_MARGIN = 8;
+
 interface IRefArrayData {
   refElement?: SVGGElement | null;
 }
@@ -86,7 +88,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _tooltipId: string;
   private _yMax: number;
   private _calloutAnchorPoint: IVSChartDataPoint | null;
-  private _minDomainMargin = 8;
   private _domainMargin: number;
 
   public constructor(props: IVerticalStackedBarChartProps) {
@@ -115,7 +116,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._adjustProps();
     this._dataset = this._createDataSetLayer();
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
-    this._domainMargin = this._minDomainMargin;
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -714,7 +715,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
       const xScaleBandwidthTranslate =
         this._xAxisType === XAxisTypes.NumericAxis ? 0 : (xBarScale.bandwidth() - this._barWidth) / 2;
-      let barValue = 0;
+      let barTotalValue = 0;
 
       // Removing datapoints with zero data
       const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
@@ -756,7 +757,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           barHeight = barMinimumHeight;
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
-        barValue += point.data;
+        barTotalValue += point.data;
 
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
@@ -818,18 +819,18 @@ export class VerticalStackedBarChartBase extends React.Component<
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
-          {!this.props.hideValues && this._barWidth >= 16 && (
+          {!this.props.hideLabels && this._barWidth >= 16 && (
             <text
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
-              className={classNames.barValue}
+              className={classNames.barLabel}
               data-is-focusable={true}
-              aria-label={`Total: ${barValue}`}
+              aria-label={`Total: ${barTotalValue}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+              {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
             </text>
           )}
         </g>
@@ -991,12 +992,12 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (this._xAxisType !== XAxisTypes.NumericAxis) {
       /** Total width available to render the bars */
       const totalWidth =
-        containerWidth - (this.margins.left! + this._minDomainMargin) - (this.margins.right! + this._minDomainMargin);
+        containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
       let barWidth = Math.min(this.props.barWidth || 16, 24);
       /** Total width required to render the bars. Directly proportional to bar width */
       const reqWidth = (3 * this._xAxisLabels.length - 2) * barWidth;
 
-      this._domainMargin = this._minDomainMargin;
+      this._domainMargin = MIN_DOMAIN_MARGIN;
       if (totalWidth >= reqWidth) {
         // Center align the chart by setting equal left and right margins for domain
         this._domainMargin += (totalWidth - reqWidth) / 2;

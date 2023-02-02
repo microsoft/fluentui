@@ -13,7 +13,7 @@ interface IVerticalStackedBarState {
   height: number;
   barGapMax: number;
   showLine: boolean;
-  hideValues: boolean;
+  hideLabels: boolean;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -24,7 +24,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       height: 350,
       showLine: true,
       barGapMax: 2,
-      hideValues: false,
+      hideLabels: false,
     };
   }
   public render(): JSX.Element {
@@ -41,8 +41,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
   private _onShowLineChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ showLine: checked });
   };
-  private _onHideCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideValues: checked });
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -241,9 +241,9 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           styles={{ root: { marginTop: '20px' } }}
         />
         <Checkbox
-          label="Hide bar values"
-          checked={this.state.hideValues}
-          onChange={this._onHideCheckChange}
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
         <div style={rootStyle}>
@@ -258,7 +258,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
             legendProps={{
               allowFocusOnLegends: true,
             }}
-            hideValues={this.state.hideValues}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>

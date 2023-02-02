@@ -15,7 +15,7 @@ interface IVerticalChartState {
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
-  hideValues: boolean;
+  hideLabels: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -31,7 +31,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
-      hideValues: false,
+      hideLabels: false,
     };
   }
 
@@ -56,8 +56,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ useSingleColor: checked });
   };
-  private _onHideCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ hideValues: checked });
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -187,9 +187,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           styles={{ root: { marginTop: '20px' } }}
         />
         <Checkbox
-          label="Hide bar values"
-          checked={this.state.hideValues}
-          onChange={this._onHideCheckChange}
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
         <div style={rootStyle}>
@@ -209,7 +209,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
-            hideValues={this.state.hideValues}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>
