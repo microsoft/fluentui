@@ -6,14 +6,12 @@ const useStyles = makeStyles({
   root: {
     // Stack the label above the field with a gap
     display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
     ...shorthands.gap('20px'),
     maxWidth: '400px',
   },
   field: {
     display: 'grid',
-    gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
     ...shorthands.gap('2px'),
   },
