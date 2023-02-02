@@ -1,3 +1,5 @@
+import { ValuesOf } from '@microsoft/fast-foundation';
+
 export type Values<T> = T[keyof T];
 /**
  * SpinnerAppearance constants
@@ -12,7 +14,7 @@ export const SpinnerAppearance = {
  * A Spinner's appearance can be either primary or inverted
  * @public
  */
-export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
+export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
 
 /**
  * SpinnerSize constants
@@ -32,4 +34,4 @@ export const SpinnerSize = {
  * A Spinner's size can be either small, tiny, extra-small, medium, large, extra-large, or huge
  * @public
  */
-export type SpinnerSize = Values<typeof SpinnerSize>;
+export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
