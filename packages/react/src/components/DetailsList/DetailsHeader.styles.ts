@@ -181,10 +181,6 @@ export const getDetailsHeaderStyles = (props: IDetailsHeaderStyleProps): IDetail
       },
     ],
 
-    groupExpanderContainer: {
-      display: 'contents',
-    },
-
     cellIsActionable: {
       selectors: {
         ':hover': {

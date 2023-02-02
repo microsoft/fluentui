@@ -280,9 +280,8 @@ export class DetailsHeaderBase
             ]
           : null}
         {showGroupExpander ? (
-          <div role="columnheader" className={classNames.groupExpanderContainer}>
+          <div role="columnheader" className={classNames.cellIsGroupExpander}>
             <div
-              className={classNames.cellIsGroupExpander}
               onClick={this._onToggleCollapseAll}
               data-is-focusable={true}
               aria-label={ariaLabelForToggleAllGroupsButton}

@@ -230,5 +230,4 @@ export interface IDetailsHeaderStyles {
   dropHintLineStyle: IStyle;
   dropHintStyle: IStyle;
   accessibleLabel: IStyle;
-  groupExpanderContainer: IStyle;
 }
