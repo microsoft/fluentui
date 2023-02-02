@@ -37,7 +37,7 @@ interface PositionManagerOptions {
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   const { container, target, arrow, strategy, middleware, placement } = options;
-  const isDestroyed = false;
+  let isDestroyed = false;
   if (!target || !container) {
     return {
       updatePosition: () => undefined,
