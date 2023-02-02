@@ -149,8 +149,8 @@ export const Templates = () => {
         </CardPreview>
       </Card>
 
-      <div className={styles.grid}>
-        <Card className={styles.card} size="small">
+      <div className={styles.grid} role="list">
+        <Card className={styles.card} size="small" role="listitem">
           <CardHeader
             image={{ as: 'img', src: powerpointLogoURL, alt: 'PowerPoint app logo' }}
             header={<Text weight="semibold">Team Offsite 2020</Text>}
@@ -159,7 +159,7 @@ export const Templates = () => {
           />
         </Card>
 
-        <Card className={styles.card} size="small">
+        <Card className={styles.card} size="small" role="listitem">
           <CardHeader
             image={{ as: 'img', src: excelLogo, alt: 'Excel app logo' }}
             header={<Text weight="semibold">Team Budget</Text>}
@@ -168,7 +168,7 @@ export const Templates = () => {
           />
         </Card>
 
-        <Card className={styles.card} size="small">
+        <Card className={styles.card} size="small" role="listitem">
           <CardHeader
             image={{ as: 'img', src: wordLogo, alt: 'Word app logo' }}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
