@@ -6,6 +6,8 @@ import bestPracticesMd from './SkeletonBestPractices.md';
 export { Default } from './SkeletonDefault.stories';
 export { Row } from './SkeletonRow.stories';
 export { Pulse } from './SkeletonPulse.stories';
+export { MediaCard } from './MediaCard.stories';
+export { ChatGroup } from './ChatGroup.stories';
 
 export default {
   title: 'Preview Components/Skeleton',

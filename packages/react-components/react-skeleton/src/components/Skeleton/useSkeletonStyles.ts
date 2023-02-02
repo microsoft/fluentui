@@ -10,16 +10,6 @@ export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
 
 export const skeletonGroupClassName = 'fui-Skeleton-Group';
 
-const BACKGROUND_OFF_SCREEN_POSITION = '100%';
-
-// const skeletonWaveAnimation = {
-//   '0%': {
-//     transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
-//   },
-//   '100%': {
-//     transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
-//   },
-// };
 const skeletonWaveAnimation = {
   from: {
     backgroundPositionX: '300%',
@@ -30,23 +20,15 @@ const skeletonWaveAnimation = {
 };
 
 const skeletonWaveAnimationRTL = {
-  '100%': {
-    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
+  from: {
+    backgroundPositionX: '0%',
   },
-  '0%': {
-    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`,
+  to: {
+    backgroundPositionX: '300%',
   },
 };
 
 const skeletonPulseAnimation = {
-  // '0%': { transform: `opacity(1)` },
-  // '30%': { transform: `scale(1)` },
-  // '50%': { transform: `opacity(0.4)` },
-  // '50%': { transform: `scale(1)` },
-  // '60%': { transform: `scale(1)` },
-  // '70%': { transform: `scale(1.03)` },
-  // '80%': { transform: `scale(1)` },
-  // '100%': { transform: `opacity(1)` },
   from: {
     opacity: '1',
   },
@@ -60,7 +42,7 @@ const skeletonPulseAnimation = {
  */
 const useRootStyles = makeStyles({
   root: {
-    '& > .fui-Skeleton-Line': {
+    '& [class^= "fui-Skeleton-"]': {
       position: 'relative',
       height: 'auto',
       ...shorthands.overflow('hidden'),
@@ -75,7 +57,7 @@ const useRootStyles = makeStyles({
       backgroundPositionY: 'center',
       backgroundAttachment: 'fixed',
       animationIterationCount: 'infinite',
-      animationDuration: '2s',
+      animationDuration: '3s',
       animationTimingFunction: 'linear',
 
       '@media screen and (forced-colors: active)': {
@@ -86,160 +68,22 @@ const useRootStyles = makeStyles({
           Window 50%,
           transparent 100%)
         `,
-      },
-    },
-
-    '& > .fui-Skeleton-Circle': {
-      position: 'relative',
-      height: 'auto',
-      ...shorthands.overflow('hidden'),
-      ...shorthands.margin('5px'),
-      backgroundImage: `linear-gradient(
-        to right,
-        ${tokens.colorNeutralStencil1} 0%,
-        ${tokens.colorNeutralStencil2} 50%,
-        ${tokens.colorNeutralStencil1} 100%)`,
-      backgroundSize: '300% 100%',
-      backgroundPositionX: 'center',
-      backgroundPositionY: 'center',
-      backgroundAttachment: 'fixed',
-      animationIterationCount: 'infinite',
-      animationDuration: '2s',
-      animationTimingFunction: 'linear',
-
-      '@media screen and (forced-colors: active)': {
-        backgroundColor: `WindowText
-        linear-gradient(
-          to right,
-          transparent 0%,
-          Window 50%,
-          transparent 100%)
-        `,
-      },
-    },
-
-    [`& > .${skeletonGroupClassName}`]: {
-      '& > .fui-Skeleton-Line': {
-        position: 'relative',
-        height: 'auto',
-        ...shorthands.overflow('hidden'),
-        ...shorthands.margin('5px'),
-        backgroundImage: `linear-gradient(
-          to right,
-          ${tokens.colorNeutralStencil1} 0%,
-          ${tokens.colorNeutralStencil2} 50%,
-          ${tokens.colorNeutralStencil1} 100%)`,
-        backgroundSize: '300% 100%',
-        backgroundPositionX: 'center',
-        backgroundPositionY: 'center',
-        backgroundAttachment: 'fixed',
-        animationIterationCount: 'infinite',
-        animationDuration: '2s',
-        animationTimingFunction: 'linear',
-
-        '@media screen and (forced-colors: active)': {
-          backgroundColor: `WindowText
-          linear-gradient(
-            to right,
-            transparent 0%,
-            Window 50%,
-            transparent 100%)
-          `,
-        },
-      },
-
-      '& > .fui-Skeleton-Circle': {
-        position: 'relative',
-        height: 'auto',
-        ...shorthands.overflow('hidden'),
-        ...shorthands.margin('5px'),
-        backgroundImage: `linear-gradient(
-          to right,
-          ${tokens.colorNeutralStencil1} 0%,
-          ${tokens.colorNeutralStencil2} 50%,
-          ${tokens.colorNeutralStencil1} 100%)`,
-        backgroundSize: '300% 100%',
-        backgroundPositionX: 'center',
-        backgroundPositionY: 'center',
-        backgroundAttachment: 'fixed',
-        animationIterationCount: 'infinite',
-        animationDuration: '2s',
-        animationTimingFunction: 'linear',
-
-        '@media screen and (forced-colors: active)': {
-          backgroundColor: `WindowText
-          linear-gradient(
-            to right,
-            transparent 0%,
-            Window 50%,
-            transparent 100%)
-          `,
-        },
       },
     },
   },
   wave: {
-    [`& > .${skeletonGroupClassName}`]: {
-      '& > .fui-Skeleton-Line': {
-        animationName: skeletonWaveAnimation,
-      },
-
-      '& > .fui-Skeleton-Circle': {
-        animationName: skeletonWaveAnimation,
-      },
-    },
-
-    '& > .fui-Skeleton-Line': {
-      animationName: skeletonWaveAnimation,
-    },
-
-    '& > .fui-Skeleton-Circle': {
+    '& [class^= "fui-Skeleton-"]': {
       animationName: skeletonWaveAnimation,
     },
   },
   waveRtl: {
-    [`& > .${skeletonGroupClassName}`]: {
-      '& > .fui-Skeleton-Line': {
-        animationName: skeletonWaveAnimationRTL,
-      },
-
-      '& > .fui-Skeleton-Circle': {
-        animationName: skeletonWaveAnimationRTL,
-      },
-    },
-
-    '& > .fui-Skeleton-Line': {
-      animationName: skeletonWaveAnimationRTL,
-    },
-
-    '& > .fui-Skeleton-Circle': {
+    '& [class^= "fui-Skeleton-"]': {
       animationName: skeletonWaveAnimationRTL,
     },
   },
   pulse: {
-    [`& > .${skeletonGroupClassName}`]: {
-      '& > .fui-Skeleton-Line': {
-        animationName: skeletonPulseAnimation,
-        animationDuration: '2s',
-        backgroundColor: tokens.colorNeutralStencil1,
-      },
-
-      '& > .fui-Skeleton-Circle': {
-        animationName: skeletonPulseAnimation,
-        animationDuration: '2s',
-        backgroundColor: tokens.colorNeutralStencil1,
-      },
-    },
-
-    '& > .fui-Skeleton-Line': {
+    '& [class^= "fui-Skeleton-"]': {
       animationName: skeletonPulseAnimation,
-      animationDuration: '2s',
-      backgroundColor: tokens.colorNeutralStencil1,
-    },
-
-    '& > .fui-Skeleton-Circle': {
-      animationName: skeletonPulseAnimation,
-      animationDuration: '2s',
       backgroundColor: tokens.colorNeutralStencil1,
     },
   },

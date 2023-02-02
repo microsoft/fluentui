@@ -1,20 +1,18 @@
 import * as React from 'react';
 import { Skeleton, SkeletonProps } from '@fluentui/react-skeleton';
-import { skeletonGroupClassName } from '@fluentui/react-skeleton';
 import { SkeletonCircle } from '../../src/components/SkeletonCircle/SkeletonCircle';
 import { SkeletonLine } from '../../src/components/SkeletonLine/SkeletonLine';
-import { makeStyles, mergeClasses } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   invertedWrapper: {
-    backgroundColor: 'white',
-    opacity: '1',
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 });
 
 const SkeletonElementsFirstRow = () => {
   return (
-    <div className={skeletonGroupClassName} style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
+    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
       <SkeletonCircle style={{ padding: '10px' }} />
       <SkeletonLine height="24px" width="80%" style={{ padding: '10px' }} />
     </div>
@@ -22,7 +20,7 @@ const SkeletonElementsFirstRow = () => {
 };
 const SkeletonElementsSecondRow = () => {
   return (
-    <div className={skeletonGroupClassName} style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
+    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
       <SkeletonCircle radius="24px" style={{ padding: '10px' }} />
       <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
 
@@ -35,7 +33,7 @@ const SkeletonElementsSecondRow = () => {
 
 const SkeletonElementsThirdRow = () => {
   return (
-    <div className={skeletonGroupClassName} style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
+    <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
       <SkeletonCircle radius="24px" style={{ padding: '10px' }} />
       <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
       <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
@@ -48,7 +46,7 @@ const SkeletonElementsThirdRow = () => {
 export const Row = (props: Partial<SkeletonProps>) => {
   const styles = useStyles();
   return (
-    <div className={mergeClasses(styles.invertedWrapper, skeletonGroupClassName)}>
+    <div className={styles.invertedWrapper}>
       <Skeleton {...props}>
         <SkeletonElementsFirstRow />
         <SkeletonElementsSecondRow />

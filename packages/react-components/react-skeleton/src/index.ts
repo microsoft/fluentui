@@ -1,7 +1,6 @@
 export {
   Skeleton,
   skeletonClassNames,
-  skeletonGroupClassName,
   renderSkeleton_unstable,
   useSkeleton_unstable,
   useSkeletonStyles_unstable,
