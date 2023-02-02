@@ -3,7 +3,7 @@ import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Button, CounterBadge, PresenceBadge } from '@fluentui/react-components';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 
-const RenderBadges = () => (
+const RenderAside = () => (
   <>
     <PresenceBadge status="do-not-disturb" />
     <CounterBadge count={1} />
@@ -17,45 +17,45 @@ const Actions = () => (
   </>
 );
 
-export const Badges = () => (
+export const Aside = () => (
   <Tree aria-label="Tree">
     <TreeItem actions={<Actions />}>
-      <TreeItemLayout aside={<RenderBadges />}>level 1, item 1</TreeItemLayout>
+      <TreeItemLayout aside={<RenderAside />}>level 1, item 1</TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
+          <TreeItemLayout aside={<RenderAside />}>level 2, item 1</TreeItemLayout>
         </TreeItem>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
+          <TreeItemLayout aside={<RenderAside />}>level 2, item 2</TreeItemLayout>
         </TreeItem>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderBadges />}>level 2, item 3</TreeItemLayout>
+          <TreeItemLayout aside={<RenderAside />}>level 2, item 3</TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
     <TreeItem actions={<Actions />}>
-      <TreeItemLayout aside={<RenderBadges />}>level 1, item 2</TreeItemLayout>
+      <TreeItemLayout aside={<RenderAside />}>level 1, item 2</TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderBadges />}>level 2, item 1</TreeItemLayout>
+          <TreeItemLayout aside={<RenderAside />}>level 2, item 1</TreeItemLayout>
           <Tree>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderBadges />}>level 3, item 1</TreeItemLayout>
+              <TreeItemLayout aside={<RenderAside />}>level 3, item 1</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
 
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderBadges />}>level 2, item 2</TreeItemLayout>
+          <TreeItemLayout aside={<RenderAside />}>level 2, item 2</TreeItemLayout>
           <Tree>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderBadges />}>level 3, item 1</TreeItemLayout>
+              <TreeItemLayout aside={<RenderAside />}>level 3, item 1</TreeItemLayout>
             </TreeItem>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderBadges />}>level 3, item 2</TreeItemLayout>
+              <TreeItemLayout aside={<RenderAside />}>level 3, item 2</TreeItemLayout>
             </TreeItem>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderBadges />}>level 3, item 3</TreeItemLayout>
+              <TreeItemLayout aside={<RenderAside />}>level 3, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>
