@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Thu, 26 Jan 2023 13:31:03 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.7)
+
+Tue, 31 Jan 2023 19:53:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.6..@fluentui/react-persona_v9.1.7)
+
+### Patches
+
+- fix: Reduce spacing between first and second line. ([PR #26520](https://github.com/microsoft/fluentui/pull/26520) by esteban.230@hotmail.com)
+- fix: Make before and after textPositions align correctly when the Avatar size is larger than the text lines together. ([PR #26546](https://github.com/microsoft/fluentui/pull/26546) by esteban.230@hotmail.com)
+- Bump @fluentui/react-avatar to v9.3.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-badge to v9.0.22 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.6)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: release `@fluentui/react-select` as stable",
-  "packageName": "@fluentui/react-select",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

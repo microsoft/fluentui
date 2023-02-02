@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 01 Feb 2023 07:39:52 GMT",
+      "tag": "@fluentui/react_v8.105.1",
+      "version": "8.105.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77ceacdb9b546c5ca4bc223de24b2ad227f14875",
+            "comment": "fix: splitbutton should not refocus trigger after touch event"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "20a923cf7697dc1b765a43dca7ce874f9e91ebe1",
+            "comment": "fix: Dropdown option focus in high contrast mode should not be cut off by the popup"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Jan 2023 07:36:22 GMT",
       "tag": "@fluentui/react_v8.105.0",
       "version": "8.105.0",

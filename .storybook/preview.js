@@ -37,6 +37,8 @@ export const parameters = {
       excludeDecorators: true,
       type: 'source',
     },
+    // This config reuses sources generated for CodeSandbox export feature (storybook-addon-export-to-codesandbox).
+    transformSource: (snippet, story) => story.parameters.fullSource,
   },
   exportToCodeSandbox: {
     requiredDependencies: {

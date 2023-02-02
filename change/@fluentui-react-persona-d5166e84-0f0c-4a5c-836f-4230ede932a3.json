@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Reduce spacing between first and second line.",
-  "packageName": "@fluentui/react-persona",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

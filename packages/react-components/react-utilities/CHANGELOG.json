@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "12ec691720e2394ef61bd1936d911a4245f6e0cd",
+            "comment": "fix: update definitions for SSRProvider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:31:03 GMT",
       "tag": "@fluentui/react-utilities_v9.5.0",
       "version": "9.5.0",

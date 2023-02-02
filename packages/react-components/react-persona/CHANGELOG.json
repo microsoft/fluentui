@@ -2,6 +2,45 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:56 GMT",
+      "tag": "@fluentui/react-persona_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89",
+            "comment": "fix: Reduce spacing between first and second line."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "fc896528cd40ac5e32c0fb125fb00c502a471cab",
+            "comment": "fix: Make before and after textPositions align correctly when the Avatar size is larger than the text lines together."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.3.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.0.22",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:31:03 GMT",
       "tag": "@fluentui/react-persona_v9.1.6",
       "version": "9.1.6",

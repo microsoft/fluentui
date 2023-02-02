@@ -2,6 +2,39 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:53 GMT",
+      "tag": "@fluentui/react-button_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b9284238a8b79e3d0864ce26a8bb0e9ffb33a96a",
+            "comment": "fix: Fixing button padding + minHeight to get correct sizes from design spec."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.3.7",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.4.2",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:30:52 GMT",
       "tag": "@fluentui/react-button_v9.2.0",
       "version": "9.2.0",

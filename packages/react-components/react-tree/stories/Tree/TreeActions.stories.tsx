@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
@@ -28,29 +28,43 @@ const RenderActions = () => {
 export const Actions = () => (
   <Tree aria-label="Tree">
     <TreeItem actions={<RenderActions />}>
-      level 1, item 1
+      <TreeItemLayout>level 1, item 1</TreeItemLayout>
       <Tree>
-        <TreeItem actions={<RenderActions />}>level 2, item 1</TreeItem>
-        <TreeItem actions={<RenderActions />}>level 2, item 2</TreeItem>
-        <TreeItem actions={<RenderActions />}>level 2, item 3</TreeItem>
+        <TreeItem actions={<RenderActions />}>
+          <TreeItemLayout>level 2, item 1</TreeItemLayout>
+        </TreeItem>
+        <TreeItem actions={<RenderActions />}>
+          <TreeItemLayout>level 2, item 2</TreeItemLayout>
+        </TreeItem>
+        <TreeItem actions={<RenderActions />}>
+          <TreeItemLayout>level 2, item 3</TreeItemLayout>
+        </TreeItem>
       </Tree>
     </TreeItem>
     <TreeItem actions={<RenderActions />}>
-      level 1, item 2
+      <TreeItemLayout>level 1, item 2</TreeItemLayout>
       <Tree>
         <TreeItem actions={<RenderActions />}>
-          level 2, item 1
+          <TreeItemLayout>level 2, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem actions={<RenderActions />}>level 3, item 1</TreeItem>
+            <TreeItem actions={<RenderActions />}>
+              <TreeItemLayout>level 3, item 1</TreeItemLayout>
+            </TreeItem>
           </Tree>
         </TreeItem>
 
         <TreeItem actions={<RenderActions />}>
-          level 1, item 1
+          <TreeItemLayout>level 1, item 1</TreeItemLayout>
           <Tree>
-            <TreeItem actions={<RenderActions />}>level 2, item 1</TreeItem>
-            <TreeItem actions={<RenderActions />}>level 2, item 2</TreeItem>
-            <TreeItem actions={<RenderActions />}>level 2, item 3</TreeItem>
+            <TreeItem actions={<RenderActions />}>
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem actions={<RenderActions />}>
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem actions={<RenderActions />}>
+              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
           </Tree>
         </TreeItem>
       </Tree>

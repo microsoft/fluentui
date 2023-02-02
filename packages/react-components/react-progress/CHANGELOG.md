@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Thu, 26 Jan 2023 13:30:58 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.15)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.14..@fluentui/react-progress_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.18 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.14)
 
