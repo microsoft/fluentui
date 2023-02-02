@@ -468,6 +468,10 @@ describe('Overflow', () => {
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
   });
 
+  // Container will fit 4 items with width 100 and the overflow menu
+  // Once the priority of the foo item is updated it should have more
+  // priority than Item 5 (width 100 item), so the foo item should be visible
+  // once this foo item is visible, make sure that the subscriber is in sync.
   it('should dispatch update when updating priority of an item', () => {
     const Example = () => {
       const [priority, setPriority] = React.useState<number | undefined>();
@@ -475,32 +479,29 @@ describe('Overflow', () => {
       return (
         <>
           <Container>
-            <Item id="today" width={87.59}>
-              Today
+            <Item id="1" width={100}>
+              Item 1
             </Item>
-            <Item id="agenda" width={99.19}>
-              Agenda
+            <Item id="2" width={100}>
+              Item 2
             </Item>
-            <Item id="day" width={74.47}>
-              Day
+            <Item id="3" width={100}>
+              Item 3
             </Item>
-            <Item id="threeDay" width={114.13}>
-              Three Day
+            <Item id="4" width={100}>
+              Item 4
             </Item>
-            <Item id="workWeek" width={123.3}>
-              Work Week
+            <Item id="5" width={100}>
+              Item 5
             </Item>
-            <Item id="week" width={85.39} priority={priority}>
-              Week
+            <Item id="foo" width={50} priority={priority}>
+              Foo
             </Item>
-            <Item id="month" width={92.69}>
-              Month
+            <Item id="7" width={50}>
+              Item
             </Item>
-            <Item id="search" width={92.17}>
-              Search
-            </Item>
-            <Item id="chat" width={139.56}>
-              Conversations
+            <Item id="8" width={50}>
+              Item
             </Item>
             <Menu width={32} />
           </Container>
@@ -510,7 +511,7 @@ describe('Overflow', () => {
     };
     mount(<Example />);
 
-    setContainerSize(520);
-    cy.contains('Update priority').click().get('#week-visibility').should('have.text', 'visible');
+    setContainerSize(500);
+    cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
   });
 });
