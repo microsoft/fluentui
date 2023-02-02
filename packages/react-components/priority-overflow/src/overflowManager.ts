@@ -121,11 +121,12 @@ export function createOverflowManager(): OverflowManager {
     options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility });
   };
 
-  const processOverflowItems = (availableSize: number) => {
+  const processOverflowItems = (): boolean => {
     if (!container) {
-      return;
+      return false;
     }
 
+    const availableSize = getOffsetSize(container) - options.padding;
     const overflowMenuOffset = overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     // Snapshot of the visible/invisible state to compare for updates
@@ -161,19 +162,18 @@ export function createOverflowManager(): OverflowManager {
     }
 
     // only update when the state of visible/invisible items has changed
-    if (visibleItemQueue.peek() !== visibleTop || invisibleItemQueue.peek() !== invisibleTop || forceDispatch) {
-      forceDispatch = false;
-      dispatchOverflowUpdate();
+    if (visibleItemQueue.peek() !== visibleTop || invisibleItemQueue.peek() !== invisibleTop) {
+      return true;
     }
+
+    return false;
   };
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
-    if (!container) {
-      return;
+    if (processOverflowItems() || forceDispatch) {
+      forceDispatch = false;
+      dispatchOverflowUpdate();
     }
-
-    const availableSize = getOffsetSize(container) - options.padding;
-    processOverflowItems(availableSize);
   };
 
   const update: OverflowManager['update'] = debounce(forceUpdate);
