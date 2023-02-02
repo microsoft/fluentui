@@ -21,13 +21,14 @@ Images, like photos and illustrations, help reinforce a message and express your
 
 **options**
 
-- @attr public fit: string -- 'none' | 'center' | 'contain' | 'cover' | 'default'
-- @attr public shape: string -- 'square' | 'rounded' | 'circular'
+- @attr public borderRadius: 'small', 'medium', 'large' | 'x-large'
+- @attr public fit: 'none' | 'center' | 'contain' | 'cover' | 'default'
+- @attr public shape: 'square' | 'rounded' | 'circular'
 
 **content**
 
 - @attr public alt: string | Requires description if image role is not set to presentation.
-- @attr public role: string | 'presentation'
+- @attr public role: 'presentation' | null
 - @attr public src: string
 
 ### Slots
