@@ -37,7 +37,6 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.1",
     "@fluentui/react-tabster": "^9.4.2",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.1",
