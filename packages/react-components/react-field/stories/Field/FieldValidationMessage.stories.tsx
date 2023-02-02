@@ -36,7 +36,8 @@ ValidationMessage.parameters = {
   docs: {
     description: {
       story:
-        '<p>The `validationMessage` is used to display messages about about the value the user entered.</p>' +
+        '<p>The `validationMessage` is used to give the user feedback about the value entered. Field does not do ' +
+        'validation itself, but can be used to report the result of form validation.</p>' +
         '<p>The `validationState` affects the behavior and appearance of the message: ' +
         '<ul>' +
         '  <li>`error` - (default) The validation message has red text with a red error icon. It has `role="alert"` ' +
@@ -44,9 +45,10 @@ ValidationMessage.parameters = {
         '   set, which adds a red border to some field components (such as `Input`).</li>' +
         '  <li>`success` - The validation message has gray text with a green checkmark icon.</li>' +
         '  <li>`warning` - The validation message has gray text with a yellow exclamation icon.</li>' +
-        '  <li>`none` - The validation message has no icon by default and gray text.</li>' +
+        '  <li>`none` - The validation message has gray text with no icon.</li>' +
         '</ul></p>' +
-        '<p>You can optionally override the default icon with `validationMessageIcon`.</p>',
+        '<p>Optionally, `validationMessageIcon` can be used to override the default icon (or add an icon in the case ' +
+        'of `validationState="none"`).</p>',
     },
   },
 };

@@ -14,7 +14,7 @@ import {
   Textarea,
   tokens,
 } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, ProgressBar } from '@fluentui/react-components/unstable';
 
 const useStackClassName = makeResetStyles({
   display: 'flex',
@@ -22,7 +22,7 @@ const useStackClassName = makeResetStyles({
   rowGap: tokens.spacingVerticalL,
 });
 
-export const CustomControls = () => (
+export const ComponentExamples = () => (
   <div className={useStackClassName()}>
     <Field label="Combobox">
       <Combobox>
@@ -31,18 +31,8 @@ export const CustomControls = () => (
         <Option>Option 3</Option>
       </Combobox>
     </Field>
-    <Field hint="Checkboxes should use their own label, not the Field label.">
-      <Checkbox label="Checkbox" />
-    </Field>
     <Field label="Input">
       <Input />
-    </Field>
-    <Field label="Radio group">
-      <RadioGroup>
-        <Radio label="Option 1" />
-        <Radio label="Option 2" />
-        <Radio label="Option 3" />
-      </RadioGroup>
     </Field>
     <Field label="Textarea">
       <Textarea />
@@ -56,13 +46,28 @@ export const CustomControls = () => (
     <Field label="Slider">
       <Slider defaultValue={25} />
     </Field>
+    <Field hint="Checkboxes use their own label instead of the Field label.">
+      <Checkbox label="Checkbox" />
+    </Field>
+    <Field label="RadioGroup">
+      <RadioGroup>
+        <Radio label="Option 1" />
+        <Radio label="Option 2" />
+        <Radio label="Option 3" />
+      </RadioGroup>
+    </Field>
+    <Field label="ProgressBar">
+      <ProgressBar value={0.75} />
+    </Field>
   </div>
 );
 
-CustomControls.parameters = {
+ComponentExamples.storyName = 'Component Examples';
+ComponentExamples.parameters = {
   docs: {
     description: {
-      story: `Field can be used with any of the form controls, including but not limited to these examples.`,
+      story: `Field can be used with any input components in this library. This story shows some examples.
+        It can also be used to add a label or error text to components like ProgressBar.`,
     },
   },
 };

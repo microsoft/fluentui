@@ -5,13 +5,7 @@ import type { FieldProps } from '@fluentui/react-components/unstable';
 import { Field } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<FieldProps>) => (
-  <Field
-    label="Example field"
-    validationState="success"
-    validationMessage="This is a success message."
-    hint="This is a hint message."
-    {...props}
-  >
+  <Field label="Example field" validationState="success" validationMessage="This is a success message." {...props}>
     <Input />
   </Field>
 );

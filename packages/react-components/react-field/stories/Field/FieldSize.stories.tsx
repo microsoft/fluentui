@@ -26,8 +26,10 @@ export const Size = () => (
 Size.parameters = {
   docs: {
     description: {
-      story: `The size prop affects the size of the Field's label. It doesn't affect the size of the control itself;
-        to change the size of the control, use its own size prop, if available.`,
+      story:
+        "The `size` prop affects the size of the Field's label.<br />" +
+        "Note: This does not affect the size of the control inside the Field. You must also set the control's own " +
+        'size prop.',
     },
   },
 };
