@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update cell HCM bg color to not clip focus indicator",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
