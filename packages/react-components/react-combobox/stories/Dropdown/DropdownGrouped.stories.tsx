@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
-import { Dropdown, Option, OptionGroup } from '@fluentui/react-combobox';
-import type { DropdownProps } from '@fluentui/react-combobox';
+import { Dropdown, makeStyles, Option, OptionGroup, shorthands, useId } from '@fluentui/react-components';
+import type { DropdownProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:57 GMT",
+      "tag": "@fluentui/react-text_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "7e7f876324b0a1512c3163939180b875d69bd3bb",
+            "comment": "feat: expose all typography tokens as components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:31:03 GMT",
       "tag": "@fluentui/react-text_v9.1.14",
       "version": "9.1.14",

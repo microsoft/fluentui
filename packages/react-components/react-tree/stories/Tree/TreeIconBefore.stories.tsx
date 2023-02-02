@@ -8,9 +8,15 @@ export const IconBefore = () => {
       <TreeItem>
         <TreeItemLayout iconBefore={<CheckboxUnchecked20Filled />}>level 1, item 1</TreeItemLayout>
         <Tree>
-          <TreeItem>level 2, item 1</TreeItem>
-          <TreeItem>level 2, item 2</TreeItem>
-          <TreeItem>level 2, item 3</TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
         </Tree>
       </TreeItem>
       <TreeItem>
@@ -19,7 +25,9 @@ export const IconBefore = () => {
           <TreeItem>
             level 2, item 1
             <Tree>
-              <TreeItem>level 3, item 1</TreeItem>
+              <TreeItem>
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>

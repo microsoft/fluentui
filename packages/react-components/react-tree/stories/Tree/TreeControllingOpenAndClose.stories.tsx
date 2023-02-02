@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/Tree';
 
 export const ControllingOpenAndClose = () => {
@@ -12,20 +12,28 @@ export const ControllingOpenAndClose = () => {
   return (
     <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem id="tree-item-1">
-        level 1, item 1
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
-          <TreeItem>level 2, item 1</TreeItem>
-          <TreeItem>level 2, item 2</TreeItem>
-          <TreeItem>level 2, item 3</TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem>
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
         </Tree>
       </TreeItem>
       <TreeItem id="tree-item-2">
-        level 1, item 2
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
           <TreeItem id="tree-item-3">
-            level 2, item 1
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
-              <TreeItem>level 3, item 1</TreeItem>
+              <TreeItem>
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>
