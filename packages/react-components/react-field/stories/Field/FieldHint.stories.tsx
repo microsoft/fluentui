@@ -13,8 +13,8 @@ Hint.parameters = {
   docs: {
     description: {
       story:
-        'The `hint` provides additional descriptive information about the field.<br />' +
-        'Hint text should be used sparingly. Prefer using a clearer label if possible.',
+        'The `hint` provides additional descriptive information about the field. ' +
+        'Hint text should be used sparingly.',
     },
   },
 };

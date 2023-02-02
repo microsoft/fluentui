@@ -24,6 +24,12 @@ const useStackClassName = makeResetStyles({
 
 export const ComponentExamples = () => (
   <div className={useStackClassName()}>
+    <Field label="Input">
+      <Input />
+    </Field>
+    <Field label="Textarea">
+      <Textarea />
+    </Field>
     <Field label="Combobox">
       <Combobox>
         <Option>Option 1</Option>
@@ -31,23 +37,17 @@ export const ComponentExamples = () => (
         <Option>Option 3</Option>
       </Combobox>
     </Field>
-    <Field label="Input">
-      <Input />
-    </Field>
-    <Field label="Textarea">
-      <Textarea />
-    </Field>
     <Field label="SpinButton">
       <SpinButton />
     </Field>
-    <Field label="Switch">
-      <Switch />
+    <Field hint="Checkboxes use their own label instead of the Field label.">
+      <Checkbox label="Checkbox" />
     </Field>
     <Field label="Slider">
       <Slider defaultValue={25} />
     </Field>
-    <Field hint="Checkboxes use their own label instead of the Field label.">
-      <Checkbox label="Checkbox" />
+    <Field label="Switch">
+      <Switch />
     </Field>
     <Field label="RadioGroup">
       <RadioGroup>
@@ -55,9 +55,6 @@ export const ComponentExamples = () => (
         <Radio label="Option 2" />
         <Radio label="Option 3" />
       </RadioGroup>
-    </Field>
-    <Field label="ProgressBar">
-      <ProgressBar value={0.75} />
     </Field>
   </div>
 );
