@@ -152,7 +152,7 @@ export const Templates = () => {
       <div className={styles.grid}>
         <Card className={styles.card} size="small">
           <CardHeader
-            image={{ as: 'img', src: powerpointLogoURL }}
+            image={{ as: 'img', src: powerpointLogoURL, alt: 'PowerPoint app logo' }}
             header={<Text weight="semibold">Team Offsite 2020</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
@@ -161,7 +161,7 @@ export const Templates = () => {
 
         <Card className={styles.card} size="small">
           <CardHeader
-            image={{ as: 'img', src: excelLogo }}
+            image={{ as: 'img', src: excelLogo, alt: 'Excel app logo' }}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
@@ -170,7 +170,7 @@ export const Templates = () => {
 
         <Card className={styles.card} size="small">
           <CardHeader
-            image={{ as: 'img', src: wordLogo }}
+            image={{ as: 'img', src: wordLogo, alt: 'Word app logo' }}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
             action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
