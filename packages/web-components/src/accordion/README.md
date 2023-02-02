@@ -14,6 +14,8 @@ As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 
 ## **Engineering Spec**
 
+Fluent WC3 Accordion extends from the FAST Accordion [FAST Accordion](https://explore.fast.design/components/fast-accordion) and is intended to be as close to the Fluent UI React 9 Menu implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+
 <br />
 
 ## Class: `Accordion`
@@ -155,15 +157,3 @@ As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 | `expandIconPosition` | `expandIconPosition` |
 | `expandIcon` | `named slot: collapsed-icon` + `expanded-icon` | `expandIcon` is a prop that is passed a ternary to render the appropriate icon. <hr /> `collapsed-icon` and `expanded-icon` are named slots to supply the appropriate icons.
 | `icon` | `named slot: start` + `end` | `icon` is a property set on the `AccordionHeader` through which an icon is passed <hr /> `start` and `end` are named slots through which to supply a presentation icon.
-
-**Property Mapping**
-| Fluent UI React 9 | Fluent Web Components 3 |
-|-----------------------------------------------------------------------------------------------------------------------|---------------------------|
-| `defaultOpenItems: number` <br />set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded. | `expand: boolean` <br /> boolean property set directly on the `AccordionItem` intended to be expanded.
-| `multiple: boolean` | `expandmode: "single"` &#124; `"multiple"`|
-| `size: 'small'` &#124; `'medium'` &#124; `'large'` &#124; `'extra-large'` | `size: 'small'` &#124; `'medium'` &#124; `'large'` &#124; `'extra-large'` |
-| `as: 'h1'` &#124; `'h2'` &#124; `'h3'` &#124; `'h4'` &#124; `'h5'` &#124; `'h6'` <br /> sets wrapper around header with the corresponding header tag | `headinglevel: 1` &#124; `2` &#124; `3` &#124; `4` &#124; `5` &#124; `6` <br /> sets the `aria-level` attribute to the corresponding heading level.
-| `disabled` |`disabled` |
-| `expandIconPosition: 'start'` &#124; `'end'` | `expandIconPosition: 'start'` &#124; `'end'` |
-| `expandIcon` <br /> prop that is passed a ternary to render the appropriate icon | slots: `collapsed-icon` + `expanded-icon` <br /> named slots to supply the appropriate icons.
-| `icon` <br /> property set on the `AccordionHeader` through which an icon is passed | slots: `start` + `end` <br /> named slots through which to supply a presentation icon.
