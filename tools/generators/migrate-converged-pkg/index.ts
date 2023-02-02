@@ -669,7 +669,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     return json;
 
     function normalizePackageEntryPointPaths(entryPath: string) {
-      return './' + path.normalize(entryPath);
+      return './' + path.posix.normalize(entryPath);
     }
   }
 }
