@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 01 Feb 2023 07:39:52 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Feb 2023 07:35:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.2)
+
+Thu, 02 Feb 2023 07:35:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.1..@fluentui/react_v8.105.2)
+
+### Patches
+
+- fix: ContextualMenu label was missing overflow hidden ([PR #26591](https://github.com/microsoft/fluentui/pull/26591) by mgodbolt@microsoft.com)
+- [DatePicker] fix default date parser converting dates to UTC implicitly ([PR #25962](https://github.com/microsoft/fluentui/pull/25962) by karlo.sudec@gmail.com)
 
 ## [8.105.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.1)
 

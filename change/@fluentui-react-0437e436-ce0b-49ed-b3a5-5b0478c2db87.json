@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ContextualMenu label was missing overflow hidden",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
