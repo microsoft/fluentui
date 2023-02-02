@@ -1365,7 +1365,7 @@ export const SpinnerAppearance: {
 };
 
 // @public
-export type SpinnerAppearance = Values<typeof SpinnerAppearance>;
+export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
 
 // @public
 export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
@@ -1382,7 +1382,7 @@ export const SpinnerSize: {
 };
 
 // @public
-export type SpinnerSize = Values<typeof SpinnerSize>;
+export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
 
 // @public (undocumented)
 export const SpinnerStyles: ElementStyles;
