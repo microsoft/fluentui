@@ -166,8 +166,8 @@ Fluent WC3 Accordion extends from the FAST Accordion [FAST Accordion](https://ex
 
 | Fluent UI React 9   | Fluent Web Components 3   |
 | ------------------- | ------------------------- |
-| `<Accordion>`       | `<Accordion>`             |
-| `<AccordionItem>`   | `<AccordionItem>`         |
+| `<Accordion>`       | `<fluent-accordion>`      |
+| `<AccordionItem>`   | `<fluent-accordion-item>` |
 | `<AccordionHeader>` | `named slot = "heading"`  |
 | `<AccordionPanel>`  | `default slotted content` |
 
