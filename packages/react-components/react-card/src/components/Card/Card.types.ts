@@ -37,7 +37,8 @@ export type CardSlots = {
   root: Slot<'div'>;
 
   /**
-   * Floating action that can be rendered on the top-right of a card. Often used together with `selectable` prop.
+   * Floating action that can be rendered on the top-right of a card. Often used together with
+   * `selected`, `defaultSelected`, and `onSelectionChange` props
    */
   floatingAction?: Slot<'div'>;
 
