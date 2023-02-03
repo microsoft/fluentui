@@ -104,7 +104,7 @@
     "@microsoft/fast-foundation": "^3.0.0-alpha.24",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
-    "tslib": "^1.13.0"
+    "tslib": "^2.1.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
