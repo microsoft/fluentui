@@ -12,17 +12,19 @@ import type { SkeletonLineProps, SkeletonLineState } from './SkeletonLine.types'
  * @param ref - reference to root HTMLElement of SkeletonLine
  */
 export const useSkeletonLine_unstable = (props: SkeletonLineProps, ref: React.Ref<HTMLElement>): SkeletonLineState => {
+  //Props
+  const { height = '16px', width } = props;
+
+  const root = getNativeElementProps('div', {
+    ref,
+  });
+
   return {
-    // TODO add appropriate props/defaults
+    height,
+    width,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root,
   };
 };

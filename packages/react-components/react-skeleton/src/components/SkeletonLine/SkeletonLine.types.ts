@@ -1,17 +1,32 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SkeletonLineSlots = {
-  root: Slot<'div'>;
+  /**
+   * The root slot of the `SkeletonLine` is a `div`.
+   */
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * SkeletonLine Props
  */
-export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {};
+export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {
+  /**
+   * The height of the SkeletonLine
+   * @defaultValue 16px
+   */
+  height?: number | string;
+
+  /**
+   * The width of the SkeletonLine
+   * @defaultValue 100%
+   */
+  width?: number | string;
+};
 
 /**
  * State used in rendering SkeletonLine
  */
-export type SkeletonLineState = ComponentState<SkeletonLineSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from SkeletonLineProps.
-// & Required<Pick<SkeletonLineProps, 'propName'>>
+export type SkeletonLineState = ComponentState<SkeletonLineSlots> &
+  Required<Pick<SkeletonLineProps, 'height'>> &
+  Pick<SkeletonLineProps, 'width'>;

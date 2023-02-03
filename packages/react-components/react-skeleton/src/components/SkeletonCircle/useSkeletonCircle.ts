@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { SkeletonCircleProps, SkeletonCircleState } from './SkeletonCircle.types';
+//import { DefaultCircle } from './DefaultCircle';
 
 /**
  * Create the state required to render SkeletonCircle.
@@ -15,17 +16,16 @@ export const useSkeletonCircle_unstable = (
   props: SkeletonCircleProps,
   ref: React.Ref<HTMLElement>,
 ): SkeletonCircleState => {
+  //Props
+  const { radius = '24px' } = props;
+
+  const root = getNativeElementProps('div', { ref });
+
   return {
-    // TODO add appropriate props/defaults
+    radius,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root,
   };
 };

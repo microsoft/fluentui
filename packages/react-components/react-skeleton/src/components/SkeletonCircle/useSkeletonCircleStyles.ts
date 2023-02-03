@@ -1,33 +1,43 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SkeletonCircleSlots, SkeletonCircleState } from './SkeletonCircle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots> = {
-  root: 'fui-SkeletonCircle',
-  // TODO: add class names for all slots on SkeletonCircleSlots.
-  // Should be of the form `<slotName>: 'fui-SkeletonCircle__<slotName>`
+  root: 'fui-Skeleton-Circle',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const useRootStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
-  },
+    ...shorthands.borderRadius('50%'),
+    ...shorthands.borderColor(tokens.colorNeutralStencil1),
 
-  // TODO add additional classes for different states and/or slots
+    '@media screen and (forced-colors:active)': {
+      ...shorthands.borderColor('Window'),
+    },
+  },
 });
 
 /**
  * Apply styling to the SkeletonCircle slots based on the state
  */
 export const useSkeletonCircleStyles_unstable = (state: SkeletonCircleState): SkeletonCircleState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(skeletonCircleClassNames.root, styles.root, state.root.className);
+  const { radius } = state;
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const rootStyles = useRootStyles();
+
+  state.root.className = mergeClasses(skeletonCircleClassNames.root, rootStyles.root, state.root.className);
+
+  if (radius) {
+    state.root.style = {
+      height: radius,
+      width: radius,
+      ...state.root.style,
+    };
+  }
 
   return state;
 };

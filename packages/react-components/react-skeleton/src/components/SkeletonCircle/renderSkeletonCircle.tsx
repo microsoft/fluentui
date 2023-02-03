@@ -8,6 +8,5 @@ import type { SkeletonCircleState, SkeletonCircleSlots } from './SkeletonCircle.
 export const renderSkeletonCircle_unstable = (state: SkeletonCircleState) => {
   const { slots, slotProps } = getSlots<SkeletonCircleSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };
