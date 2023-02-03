@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Combobox/Dropdown multiselect checkbox+label pattern with role=option results in duplicate text",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
