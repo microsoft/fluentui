@@ -1,6 +1,5 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
 
-export type Values<T> = T[keyof T];
 /**
  * SpinnerAppearance constants
  * @public
