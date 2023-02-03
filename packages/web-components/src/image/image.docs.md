@@ -43,7 +43,11 @@ The image element requires an alt tag when not used in role: presentation.
 
 This will extend the FASTElement.
 
-This appears to be indentical to the [Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default) in terms of props. However, when looking at the [component code](https://github.com/microsoft/fluentui/blob/master/packages/react/src/components/Image), they differ significantly.
+This appears to be indentical to the [Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default) in terms of props except for the following:
+
+margin: optional 16px margin
+
+However, when looking at the [component code](https://github.com/microsoft/fluentui/blob/master/packages/react/src/components/Image), they differ significantly.
 
 Open GitHub issues related to Image component
 
