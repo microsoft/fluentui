@@ -1477,9 +1477,6 @@ export const TextWeight: {
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
 
-// @public (undocumented)
-export type Values<T> = T[keyof T];
-
 // (No @packageDocumentation comment for this package)
 
 ```
