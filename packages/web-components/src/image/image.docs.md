@@ -12,28 +12,28 @@ Images, like photos and illustrations, help reinforce a message and express your
 
 ### Inputs
 
+**content**
+
+- @attr public alt: string | Requires description if image role is not set to presentation.
+- @attr public role: string
+- @attr public src: string
+
 **booleans**
 
 - @attr public block: boolean | false
 - @attr public border: boolean | false
-- @attr public shadow: boolean | false
 - @attr public margin: boolean | false
-- @attr public presentation: boolean true ("presentation") or null
+- @attr public shadow: boolean | false
 
 **options**
 
-- @attr public borderRadius: 'small' | 'medium' | 'large' | 'x-large'
+- @attr public border-radius: 'small' | 'medium' | 'large' | 'x-large'
 - @attr public fit: 'none' | 'center' | 'contain' | 'cover' | 'default'
 - @attr public shape: 'square' | 'rounded' | 'circular'
 
-**content**
-
-- @attr public alt: string | Requires description if image role is not set to presentation.
-- @attr public src: string
-
 ### Slots
 
-None needed
+1 slot for developer to add <img/> element.
 
 ## Accessibility
 

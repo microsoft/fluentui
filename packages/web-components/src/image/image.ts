@@ -16,6 +16,25 @@ export class Image extends FASTElement {
   @attr
   public alt: string;
   /**
+   * presentation
+   *
+   * @public
+   * @remarks
+   * HTML attribute: role="presentation"
+   */
+  @attr
+  public role: string;
+  /**
+   * Image source
+   *
+   * @public
+   * @remarks
+   * HTML attribute: src.
+   */
+  @attr
+  public src: string;
+
+  /**
    * Image layout
    *
    * @public
@@ -33,6 +52,25 @@ export class Image extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public border?: boolean;
+  /**
+   * Image margin
+   *
+   * @public
+   * @remarks
+   * HTML attribute: margin.
+   */
+  @attr({ mode: 'boolean' })
+  public margin?: boolean;
+  /**
+   * Image shadow
+   *
+   * @public
+   * @remarks
+   * HTML attribute: shadow.
+   */
+  @attr({ mode: 'boolean' })
+  public shadow?: boolean;
+
   /**
    * Border Radius
    *
@@ -52,33 +90,6 @@ export class Image extends FASTElement {
   @attr
   public fit: ImageFit;
   /**
-   * Image margin
-   *
-   * @public
-   * @remarks
-   * HTML attribute: margin.
-   */
-  @attr({ mode: 'boolean' })
-  public margin?: boolean;
-  /**
-   * presentation
-   *
-   * @public
-   * @remarks
-   * HTML attribute: role="presentation"
-   */
-  @attr({ mode: 'boolean' })
-  public presentation?: boolean;
-  /**
-   * Image shadow
-   *
-   * @public
-   * @remarks
-   * HTML attribute: shadow.
-   */
-  @attr({ mode: 'boolean' })
-  public shadow?: boolean;
-  /**
    * Image shape
    *
    * @public
@@ -87,13 +98,4 @@ export class Image extends FASTElement {
    */
   @attr
   public shape: ImageShape;
-  /**
-   * Image source
-   *
-   * @public
-   * @remarks
-   * HTML attribute: src.
-   */
-  @attr
-  public src: string;
 }
