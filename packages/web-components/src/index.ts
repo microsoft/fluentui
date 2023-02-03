@@ -1,5 +1,7 @@
 export * from './badge/index.js';
 export * from './counter-badge/index.js';
+export * from './menu/menu/index.js';
+export * from './menu/menu-item/index.js';
 export * from './progress-bar/index.js';
 export * from './text/index.js';
 
