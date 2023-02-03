@@ -2,6 +2,9 @@ name: Azure storage publish web components
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - web-components-v3
 
 permissions:
   contents: read
