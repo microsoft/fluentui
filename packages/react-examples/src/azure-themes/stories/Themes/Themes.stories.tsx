@@ -7,7 +7,7 @@ import {
   AzureThemeHighContrastDark,
 } from '@fluentui/azure-themes';
 import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
-import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
+import { CommandBarSplitDisabledExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
 import { ButtonIconExample } from '../components/iconButton.stories';
 import { ButtonIconWithTooltipExample } from '../components/iconTooltip.stories';
@@ -64,7 +64,8 @@ const Example = () => (
       <Label disabled>I am a disabled label</Label>
       <Label>Icon Buttons</Label>
       <ButtonIconExample checked={false} />
-      <ButtonCommandBarExample />
+      <Label>CommandBarSplitDisabledExample</Label>
+      <CommandBarSplitDisabledExample />
       <ButtonIconWithTooltipExample />
       <ButtonContextualMenuExample />
       <ButtonActionExample />
