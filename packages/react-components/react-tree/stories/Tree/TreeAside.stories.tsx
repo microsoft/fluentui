@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
-import { Button, CounterBadge, PresenceBadge } from '@fluentui/react-components';
-import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { Button, CounterBadge } from '@fluentui/react-components';
+import { Edit20Regular, FluentIconsProps, Important16Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+
+const iconStyleProps: FluentIconsProps = {
+  primaryFill: 'red',
+};
 
 const RenderAside = () => (
   <>
-    <PresenceBadge status="do-not-disturb" />
-    <CounterBadge count={1} />
+    <Important16Regular {...iconStyleProps} />
+    <CounterBadge count={1} color="danger" size="small" />
   </>
 );
 

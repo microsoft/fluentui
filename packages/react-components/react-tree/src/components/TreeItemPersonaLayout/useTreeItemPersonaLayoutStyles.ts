@@ -70,7 +70,7 @@ const useAsideStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     whiteSpace: 'nowrap',
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: tokens.spacingHorizontalM,
     ...typographyStyles.caption1,
   },
 });
