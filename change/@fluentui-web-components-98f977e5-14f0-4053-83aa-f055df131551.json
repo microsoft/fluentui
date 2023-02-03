@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(web-components): bump tslib dep to 2.x to match TS version",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
