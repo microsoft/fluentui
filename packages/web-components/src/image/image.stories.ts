@@ -13,7 +13,7 @@ const imageTemplate = html<ImageStoryArgs>`
     <fluent-image
       ?block=${x => x.block}
       ?border=${x => x.border}
-      borderRadius=${x => x.borderRadius}
+      border-radius=${x => x.borderRadius}
       fit=${x => x.fit}
       ?margin=${x => x.margin}
       ?shadow=${x => x.shadow}
@@ -139,6 +139,17 @@ export default {
 } as ImageStoryMeta;
 
 export const Image = renderComponent(imageTemplate).bind({});
+
+// Block layout
+const imageLayoutBlock = html<ImageStoryArgs>`
+  <div style="border: 1px dotted #43ED35;">
+    <fluent-image block presentation border="true">
+      <img src="https://via.placeholder.com/958x20/ddd.png" />
+      <img src="https://via.placeholder.com/100x100/ddd.png" />
+    </fluent-image>
+  </div>
+`;
+export const BlockLayout = renderComponent(imageLayoutBlock).bind({});
 
 // Fit: None
 const imageFitNoneLarge = html<ImageStoryArgs>`
