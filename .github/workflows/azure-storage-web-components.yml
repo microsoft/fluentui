@@ -1,11 +1,7 @@
 name: Azure Static Web Apps CI/CD
 
 on:
-  push:
-    branches:
-      - web-components-v3
-    paths:
-      - packages/web-components/*
+  workflow_dispatch:
 
 permissions:
   contents: read
