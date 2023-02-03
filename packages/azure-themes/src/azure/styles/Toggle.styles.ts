@@ -66,6 +66,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     // toggle circle
     thumb: [
       {
+        borderWidth: 5.5,
         height: StyleConstants.choiceFieldCircle,
         width: StyleConstants.choiceFieldCircle,
       },
