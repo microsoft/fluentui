@@ -5,6 +5,7 @@ import bestPracticesMd from './TreeBestPractices.md';
 
 export { Default } from './TreeDefault.stories';
 export { ControllingOpenAndClose } from './TreeControllingOpenAndClose.stories';
+export { ExpandCollapseIconOnly } from './TreeExpandCollapseIconOnly.stories';
 export { DefaultOpenTrees } from './TreeDefaultOpenTrees.stories';
 export { Actions } from './TreeActions.stories';
 export { Aside } from './TreeAside.stories';
