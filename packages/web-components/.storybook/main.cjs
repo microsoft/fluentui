@@ -2,7 +2,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const tsBin = require.resolve('typescript');
 
-module.exports = {
+module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookConfig,'typescript'|'babel'>} */ ({
   stories: ['../src/**/*.stories.@(ts|mdx)'],
   staticDirs: ['../public'],
   core: {
@@ -61,4 +61,4 @@ module.exports = {
 
     return config;
   },
-};
+});
