@@ -1,7 +1,8 @@
 name: Azure storage publish web components
 
 on:
-  workflow_dispatch:
+  # NOTE: manual workflows work only if workflow exists in default branch - which is not our case 👀
+  # workflow_dispatch:
   push:
     branches:
       - web-components-v3
@@ -17,12 +18,12 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 14.x
-          
+
       - run: yarn
 
       - run: yarn workspace @fluentui/web-components build-storybook
