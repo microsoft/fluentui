@@ -1,9 +1,6 @@
 import { useTableContextValues_unstable } from '../Table/useTableContextValues';
 import { DataGridContextValues, DataGridState } from './DataGrid.types';
 
-/**
- * @internal
- */
 export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues {
   const tableContextValues = useTableContextValues_unstable(state);
   return {
