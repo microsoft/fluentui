@@ -9,5 +9,7 @@ export { useOverflowCount } from './useOverflowCount';
 export { useOverflowItem } from './useOverflowItem';
 export { useOverflowMenu } from './useOverflowMenu';
 
+export { useOverflowContext } from './overflowContext';
+
 export type { OverflowItemProps } from './components/OverflowItem/OverflowItem.types';
 export { OverflowItem } from './components/OverflowItem/OverflowItem';
