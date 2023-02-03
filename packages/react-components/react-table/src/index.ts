@@ -134,6 +134,7 @@ export {
   useDataGridStyles_unstable,
   useDataGrid_unstable,
   renderDataGrid_unstable,
+  useDataGridContextValues_unstable,
 } from './DataGrid';
 export type {
   DataGridProps,
