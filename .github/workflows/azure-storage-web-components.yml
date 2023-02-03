@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: Azure storage publish web components
 
 on:
   workflow_dispatch:
