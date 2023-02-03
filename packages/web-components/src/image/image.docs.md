@@ -18,17 +18,17 @@ Images, like photos and illustrations, help reinforce a message and express your
 - @attr public border: boolean | false
 - @attr public shadow: boolean | false
 - @attr public margin: boolean | false
+- @attr public presentation: boolean true ("presentation") or null
 
 **options**
 
-- @attr public borderRadius: 'small', 'medium', 'large' | 'x-large'
+- @attr public borderRadius: 'small' | 'medium' | 'large' | 'x-large'
 - @attr public fit: 'none' | 'center' | 'contain' | 'cover' | 'default'
 - @attr public shape: 'square' | 'rounded' | 'circular'
 
 **content**
 
 - @attr public alt: string | Requires description if image role is not set to presentation.
-- @attr public role: 'presentation' | null
 - @attr public src: string
 
 ### Slots
@@ -43,9 +43,7 @@ The image element requires an alt tag when not used in role: presentation.
 
 This will extend the FASTElement.
 
-[Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default)
-
-- This appears to be indentical in terms of props.
+This appears to be indentical to the [Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default) in terms of props. However, when looking at the [component code](https://github.com/microsoft/fluentui/blob/master/packages/react/src/components/Image), they differ significantly.
 
 Open GitHub issues related to Image component
 
@@ -54,15 +52,18 @@ Open GitHub issues related to Image component
 
 ## Implementation
 
-- [ ] Initial conformance and unit tests (validate basic functionality)
-- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
-  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
-  - [ ] README.md covering basic usage
-- [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/web-components/unstable`
-- [ ] Uses design tokens for styling
-- [ ] Renders correctly in High Contrast mode
+@miro - are these necessary?
+
+- [?] Initial conformance and unit tests (validate basic functionality)
+
+  - [?] README.md covering basic usage
+
+- [x] Uses design tokens for styling
+- [?] Renders correctly in High Contrast mode
 
 ## Validation
+
+@miro - are these necessary?
 
 - [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
   - [ ] Unit and conformance tests

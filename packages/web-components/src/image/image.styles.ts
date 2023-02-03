@@ -10,6 +10,7 @@ import {
 } from '../theme/design-tokens.js';
 
 /** Image styles
+ *
  * @public
  */
 export const styles = css`
@@ -17,25 +18,41 @@ export const styles = css`
     box-sizing: border-box;
     min-height: 8px;
     min-width: 8px;
-    padding: 0;
-    margin: 0;
+    display: inline-block;
   }
   :host([block]) img {
-    display: block;
+    width: 100%;
+    height: auto;
   }
   :host([border]) img {
     border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
-  :host([fit='none']) {
+  :host([fit='none']) img {
+    object-fit: none;
+    object-position: top left;
+    height: 100%;
+    width: 100%;
   }
-  :host([fit='center']) {
+  :host([fit='center']) img {
+    object-fit: none;
+    object-position: center;
+    height: 100%;
+    width: 100%;
   }
-  :host([fit='contain']) {
+  :host([fit='contain']) img {
+    object-fit: contain;
+    object-position: center;
+    height: 100%;
+    width: 100%;
   }
-  :host([fit='cover']) {
+  :host([fit='cover']) img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
   }
   :host([margin]) img {
-    margin: 8px;
+    margin: 16px;
   }
   :host([shadow]) img {
     box-shadow: ${shadow4};
