@@ -1,0 +1,35 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 14.x
+          
+      - run: yarn
+
+      - run: yarn workspace @fluentui/web-components build-storybook
+
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Azure CLI Action
+        uses: Azure/cli@v1.0.7
+        with:
+          # Specify the script here
+          inlineScript: az storage blob upload-batch --account-name webcomponentsdocsite --auth-mode key -d '$web' -s ./packages/web-components/dist/storybook
