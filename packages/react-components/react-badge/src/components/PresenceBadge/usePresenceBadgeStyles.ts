@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     color: tokens.colorPaletteRedBackground3,
   },
   outOfOfficeAway: {
-    color: tokens.colorPaletteMarigoldBackground3,
+    color: tokens.colorPaletteBerryForeground3,
   },
 
   // Icons are not resizeable, and these sizes are currently missing
