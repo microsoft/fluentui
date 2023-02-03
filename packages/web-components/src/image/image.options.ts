@@ -15,6 +15,7 @@ export const BorderRadius = {
  * @public
  */
 export type BorderRadius = ValuesOf<typeof BorderRadius>;
+
 /**
  * Image fit
  * @public
@@ -24,8 +25,7 @@ export const ImageFit = {
   center: 'center',
   contain: 'contain',
   cover: 'cover',
-  default: 'default', // fluent UI React v9 shows 'default'. Essentially when fit is unspecified.
-  // Is default and none the same?
+  default: 'default',
 } as const;
 /**
  * Types for image fit

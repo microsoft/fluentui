@@ -23,7 +23,7 @@ export class Image extends FASTElement {
    * HTML attribute: block.
    */
   @attr({ mode: 'boolean' })
-  public block: boolean = false;
+  public block?: boolean;
   /**
    * Image border
    *
@@ -32,7 +32,7 @@ export class Image extends FASTElement {
    * HTML attribute: border.
    */
   @attr({ mode: 'boolean' })
-  public border: boolean = false;
+  public border?: boolean;
   /**
    * Border Radius
    *
@@ -59,16 +59,16 @@ export class Image extends FASTElement {
    * HTML attribute: margin.
    */
   @attr({ mode: 'boolean' })
-  public margin: boolean = false;
+  public margin?: boolean;
   /**
-   * Aria role
+   * presentation
    *
    * @public
    * @remarks
-   * HTML attribute: role.
+   * HTML attribute: role="presentation"
    */
-  @attr
-  public role: string; //'presentation'
+  @attr({ mode: 'boolean' })
+  public presentation?: boolean;
   /**
    * Image shadow
    *
@@ -77,7 +77,7 @@ export class Image extends FASTElement {
    * HTML attribute: shadow.
    */
   @attr({ mode: 'boolean' })
-  public shadow: boolean = false;
+  public shadow?: boolean;
   /**
    * Image shape
    *

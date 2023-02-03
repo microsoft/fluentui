@@ -14,7 +14,7 @@ export const template: ElementViewTemplate<Image> = html<Image>`
       borderRadius="${x => x.borderRadius}"
       fit="${x => x.fit}"
       margin="${x => x.margin}"
-      role="${x => x.role}"
+      role="${x => (x.presentation ? 'presentation' : null)}"
       shadow="${x => x.shadow}"
       shape="${x => x.shape}"
       src="${x => x.src}"
