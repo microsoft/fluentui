@@ -19,7 +19,7 @@ export class AreaChartOne extends React.Component<IComponentDemoPageProps, {}> {
         componentName="AreaChartPerformanceExampleOne"
         exampleCards={
           <div>
-            <ExampleCard title="Area chart Perf Analysis" code={AreaChartPerfExampleCode}>
+            <ExampleCard title="Area chart Perf Analysis Data" code={AreaChartPerfExampleCode}>
               <AreaChartPerfExample />
             </ExampleCard>
           </div>
