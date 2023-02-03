@@ -17,7 +17,6 @@ import { DataGridProps } from '@fluentui/react-table';
 import { DataGridRowProps } from '@fluentui/react-table';
 import { DataGridSelectionCell } from '@fluentui/react-table';
 import { DataGridSelectionCellProps } from '@fluentui/react-table';
-import type { DataGridState } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { TableRowData } from '@fluentui/react-table';
@@ -59,9 +58,6 @@ export { DataGridRowProps }
 export { DataGridSelectionCell }
 
 export { DataGridSelectionCellProps }
-
-// @public
-export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
 // (No @packageDocumentation comment for this package)
 

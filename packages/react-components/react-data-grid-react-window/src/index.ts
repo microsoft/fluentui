@@ -14,4 +14,3 @@ export type {
 } from '@fluentui/react-table';
 
 export type { DataGridBodyProps } from './DataGridBody';
-export { DataGrid, useDataGrid_unstable } from './DataGrid';
