@@ -87,13 +87,22 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorNeutralStencil1,
     },
   },
+  material: {
+    '& [class^= "fui-Skeleton-"]': {
+      backgroundImage: `linear-gradient(
+        to right,
+        ${tokens.colorNeutralStencil1Alpha} 0%,
+        ${tokens.colorNeutralStencil2Alpha} 50%,
+        ${tokens.colorNeutralStencil1Alpha} 100%)`,
+    },
+  },
 });
 
 /**
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
-  const { animation } = state;
+  const { animation, materialOs } = state;
   const { dir } = useFluent();
 
   const rootStyles = useRootStyles();
@@ -104,6 +113,7 @@ export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState 
     animation === 'wave' && rootStyles.wave,
     animation === 'wave' && dir === 'rtl' && rootStyles.waveRtl,
     animation === 'pulse' && rootStyles.pulse,
+    materialOs && rootStyles.material,
     state.root.className,
   );
 

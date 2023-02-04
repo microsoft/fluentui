@@ -13,16 +13,16 @@ export type SkeletonSlots = {
  */
 export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
   /**
-   * Sets the width value of the skeleton wave wrapper.
+   * Sets the width value of the skeleton wrapper.
    * @defaultvalue 100%
    */
   width?: number | string;
 
   /**
-   * The background color to set for the Skeleton
-   * @defaultvalue colorNeutralStencil1
+   * Sets the appearance of the Skeleton.
+   * @defaultvalue false
    */
-  skeletonColor?: string;
+  materialOs?: boolean;
 
   /**
    * The animation type for the Skeleton
@@ -34,4 +34,6 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
 /**
  * State used in rendering Skeleton
  */
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation'>>;
+export type SkeletonState = ComponentState<SkeletonSlots> &
+  Required<Pick<SkeletonProps, 'animation'>> &
+  Pick<SkeletonProps, 'materialOs'>;

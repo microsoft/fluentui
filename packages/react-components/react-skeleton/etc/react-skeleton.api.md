@@ -30,15 +30,17 @@ export const SkeletonCircle: ForwardRefComponent<SkeletonCircleProps>;
 export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots>;
 
 // @public
-export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {};
+export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {
+    radius?: number | string;
+};
 
 // @public (undocumented)
 export type SkeletonCircleSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type SkeletonCircleState = ComponentState<SkeletonCircleSlots>;
+export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> & Required<Pick<SkeletonCircleProps, 'radius'>>;
 
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
@@ -50,26 +52,33 @@ export const SkeletonLine: ForwardRefComponent<SkeletonLineProps>;
 export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots>;
 
 // @public
-export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {};
+export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {
+    height?: number | string;
+    width?: number | string;
+};
 
 // @public (undocumented)
 export type SkeletonLineSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type SkeletonLineState = ComponentState<SkeletonLineSlots>;
+export type SkeletonLineState = ComponentState<SkeletonLineSlots> & Required<Pick<SkeletonLineProps, 'height'>> & Pick<SkeletonLineProps, 'width'>;
 
 // @public
-export type SkeletonProps = ComponentProps<SkeletonSlots> & {};
+export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
+    width?: number | string;
+    materialOs?: boolean;
+    animation?: string;
+};
 
 // @public (undocumented)
 export type SkeletonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation'>> & Pick<SkeletonProps, 'materialOs'>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
