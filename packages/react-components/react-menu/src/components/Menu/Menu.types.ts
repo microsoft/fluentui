@@ -86,6 +86,14 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * @default false
      */
     closeOnScroll?: boolean;
+    /**
+     * By default Menu focuses it's first focusable element on open.
+     * Specify `disableAutoFocus` to prevent this behavior.
+     *
+     * @default false
+     */
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableAutoFocus?: boolean;
   };
 
 export type MenuState = ComponentState<MenuSlots> &

@@ -35,6 +35,8 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     persistOnItemClick = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableAutoFocus = false,
   } = props;
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
@@ -83,6 +85,8 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     defaultOpen: props.defaultOpen,
     onOpenChange: props.onOpenChange,
     openOnContext,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_disableAutoFocus,
   });
 
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState({
@@ -151,7 +155,7 @@ const useMenuOpenState = (
     | 'closeOnScroll'
     | 'hoverDelay'
   > &
-    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
+    Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange' | 'unstable_disableAutoFocus'>,
 ) => {
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
@@ -258,6 +262,9 @@ const useMenuOpenState = (
   }, [findFirstFocusable, state.menuPopoverRef]);
 
   React.useEffect(() => {
+    if (state.unstable_disableAutoFocus) {
+      return;
+    }
     if (open) {
       focusFirst();
     } else {
@@ -273,7 +280,7 @@ const useMenuOpenState = (
     }
 
     shouldHandleCloseRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst]);
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst, state.unstable_disableAutoFocus]);
 
   return [open, setOpen] as const;
 };
