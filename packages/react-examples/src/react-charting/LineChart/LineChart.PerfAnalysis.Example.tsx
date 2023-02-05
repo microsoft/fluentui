@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette, getTheme } from '@fluentui/react/lib/Styling';
+import { ILineChartProps, LineChart } from '@fluentui/react-charting';
+import { getTheme } from '@fluentui/react/lib/Styling';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface ILineChartBasicState {
