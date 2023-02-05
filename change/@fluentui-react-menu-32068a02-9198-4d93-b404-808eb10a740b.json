@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "added unstable_disableAutoFocus to Menu to control first focusable element behavior on open",
+  "packageName": "@fluentui/react-menu",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}

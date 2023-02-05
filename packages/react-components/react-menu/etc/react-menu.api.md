@@ -297,6 +297,7 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checked
     persistOnItemClick?: boolean;
     positioning?: PositioningShorthand;
     closeOnScroll?: boolean;
+    unstable_disableAutoFocus?: boolean;
 };
 
 // @public (undocumented)
