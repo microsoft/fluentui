@@ -82,9 +82,9 @@ export const SelectableIndicator = () => {
         >
           <CardPreview
             className={styles.grayBackground}
-            logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
+            logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
           >
-            <img alt="Presentation Preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+            <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
           </CardPreview>
 
           <CardHeader
@@ -102,9 +102,9 @@ export const SelectableIndicator = () => {
         >
           <CardPreview
             className={styles.grayBackground}
-            logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
+            logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
           >
-            <img alt="Presentation Preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+            <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
           </CardPreview>
 
           <CardHeader
