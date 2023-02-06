@@ -8,7 +8,7 @@ export const DefaultOpenTrees = () => {
     <Tree aria-label="Tree" defaultOpenItems={defaultOpenTrees}>
       <TreeItem id="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
-        <Tree aria-owns="default-subtree-1">
+        <Tree>
           <TreeItem>
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
           </TreeItem>
@@ -22,10 +22,10 @@ export const DefaultOpenTrees = () => {
       </TreeItem>
       <TreeItem id="default-subtree-2">
         <TreeItemLayout>level 1, item 2</TreeItemLayout>
-        <Tree aria-owns="default-subtree-2">
+        <Tree>
           <TreeItem id="default-subtree-2-1">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
-            <Tree aria-owns="default-subtree-2-1">
+            <Tree>
               <TreeItem>
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>

@@ -38,7 +38,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
   const groupperProps = useFocusableGroup();
 
   const actionsRef = React.useRef<HTMLElement>(null);
-  const expandRef = React.useRef<HTMLElement>(null);
+  const expandIconRef = React.useRef<HTMLElement>(null);
   const subtreeRef = React.useRef<HTMLElement>(null);
 
   const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -62,31 +62,20 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     if (actionsRef.current && elementContains(actionsRef.current, event.target as Node)) {
       return;
     }
-    // if click handler is provided, don't expand/collapse the tree unless it's explictily from the expand icon
-    if (onClick && expandRef.current && !elementContains(expandRef.current, event.target as Node)) {
-      // TODO: How to handle onKeyDown? Will it be handled by the user or can we do it for them on click behalf?
-      // onClick?.(event);
-      return;
-    }
-
     if (isBranch) {
       requestOpenChange({ event, open: !open, type: 'enter' });
     }
   };
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    onClick?.(event);
     //  if click event originates from actions, ignore it
     if (actionsRef.current && elementContains(actionsRef.current, event.target as Node)) {
       return;
     }
-
-    // if click handler is provided, don't expand/collapse the tree unless it's explictily from the expand icon
-    if (onClick && expandRef.current && !elementContains(expandRef.current, event.target as Node)) {
-      onClick?.(event);
-      return;
-    }
     if (isBranch) {
-      requestOpenChange({ event, open: !open, type: 'click' });
+      const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
+      requestOpenChange({ event, open: !open, type: isFromExpandIcon ? 'expandIconClick' : 'click' });
     }
     event.stopPropagation();
   });
@@ -185,7 +174,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       defaultProps: {
         children: <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />,
         'aria-hidden': true,
-        ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandRef),
+        ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
       },
     }),
     actions: resolveShorthand(actions, {
