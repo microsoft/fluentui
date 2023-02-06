@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "ci: setup web-components docsite CI/CD",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
