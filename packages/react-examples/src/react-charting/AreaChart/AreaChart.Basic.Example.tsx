@@ -130,7 +130,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
         yAxisCalloutData: '12%',
       },
       {
-        x: 90,
+        x: 95,
         y: 10000,
         xAxisCalloutData: '2018/06/01',
         yAxisCalloutData: '45%',
