@@ -9,7 +9,10 @@ import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOpt
 export function createOverflowManager(): OverflowManager {
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
+  // Set as true when resize observer is observing
   let observing = false;
+  // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
+  let forceDispatch = false;
   const options: Required<ObserveOptions> = {
     padding: 10,
     overflowAxis: 'horizontal',
@@ -118,11 +121,12 @@ export function createOverflowManager(): OverflowManager {
     options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility });
   };
 
-  const processOverflowItems = (availableSize: number) => {
+  const processOverflowItems = (): boolean => {
     if (!container) {
-      return;
+      return false;
     }
 
+    const availableSize = getOffsetSize(container) - options.padding;
     const overflowMenuOffset = overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     // Snapshot of the visible/invisible state to compare for updates
@@ -159,17 +163,17 @@ export function createOverflowManager(): OverflowManager {
 
     // only update when the state of visible/invisible items has changed
     if (visibleItemQueue.peek() !== visibleTop || invisibleItemQueue.peek() !== invisibleTop) {
-      dispatchOverflowUpdate();
+      return true;
     }
+
+    return false;
   };
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
-    if (!container) {
-      return;
+    if (processOverflowItems() || forceDispatch) {
+      forceDispatch = false;
+      dispatchOverflowUpdate();
     }
-
-    const availableSize = getOffsetSize(container) - options.padding;
-    processOverflowItems(availableSize);
   };
 
   const update: OverflowManager['update'] = debounce(forceUpdate);
@@ -197,6 +201,10 @@ export function createOverflowManager(): OverflowManager {
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
+      // Updates to elements might not change the queue tops
+      // i.e. new element is enqueued but the top of the queue stays the same
+      // force a dispatch on the next batched update
+      forceDispatch = true;
       visibleItemQueue.enqueue(item.id);
     }
 
