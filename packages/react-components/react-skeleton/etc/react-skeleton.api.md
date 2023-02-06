@@ -4,6 +4,91 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
+
+// @public
+export const renderSkeletonCircle_unstable: (state: SkeletonCircleState) => JSX.Element;
+
+// @public
+export const renderSkeletonLine_unstable: (state: SkeletonLineState) => JSX.Element;
+
+// @public
+export const Skeleton: ForwardRefComponent<SkeletonProps>;
+
+// @public
+export const SkeletonCircle: ForwardRefComponent<SkeletonCircleProps>;
+
+// @public (undocumented)
+export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots>;
+
+// @public
+export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {};
+
+// @public (undocumented)
+export type SkeletonCircleSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SkeletonCircleState = ComponentState<SkeletonCircleSlots>;
+
+// @public (undocumented)
+export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
+
+// @public
+export const SkeletonLine: ForwardRefComponent<SkeletonLineProps>;
+
+// @public (undocumented)
+export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots>;
+
+// @public
+export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {};
+
+// @public (undocumented)
+export type SkeletonLineSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SkeletonLineState = ComponentState<SkeletonLineSlots>;
+
+// @public
+export type SkeletonProps = ComponentProps<SkeletonSlots> & {};
+
+// @public (undocumented)
+export type SkeletonSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SkeletonState = ComponentState<SkeletonSlots>;
+
+// @public
+export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
+
+// @public
+export const useSkeletonCircle_unstable: (props: SkeletonCircleProps, ref: React_2.Ref<HTMLElement>) => SkeletonCircleState;
+
+// @public
+export const useSkeletonCircleStyles_unstable: (state: SkeletonCircleState) => SkeletonCircleState;
+
+// @public
+export const useSkeletonLine_unstable: (props: SkeletonLineProps, ref: React_2.Ref<HTMLElement>) => SkeletonLineState;
+
+// @public
+export const useSkeletonLineStyles_unstable: (state: SkeletonLineState) => SkeletonLineState;
+
+// @public
+export const useSkeletonStyles_unstable: (state: SkeletonState) => SkeletonState;
+
 // (No @packageDocumentation comment for this package)
 
 ```

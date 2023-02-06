@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 03 Feb 2023 07:50:05 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.13.0",
+      "version": "1.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f",
+            "comment": "feat(eslint-plugin): turn off fluentui/max-lenght rule for v9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Jan 2023 07:50:15 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.8",
       "version": "1.12.8",

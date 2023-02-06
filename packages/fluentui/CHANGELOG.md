@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixes
 - `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
 - Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
+- `Dropdown`: Allow clear on Enter/Space press. @jurokapsiar ([#26685](https://github.com/microsoft/fluentui/pull/26685))
 
 <!--------------------------------[ v0.66.0 ]------------------------------- -->
 ## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)

@@ -1641,6 +1641,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           }
                     >
                       <input
+                        aria-labelledby="ComboBox0-list1-label"
                         aria-selected="false"
                         class=
 
@@ -1742,6 +1743,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           </i>
                         </div>
                         <span
+                          aria-hidden="true"
                           class=
                               ms-ComboBox-optionText
                               {
@@ -1754,6 +1756,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 white-space: nowrap;
                                 word-wrap: break-word;
                               }
+                          id="ComboBox0-list1-label"
                         >
                           Option 1
                         </span>
@@ -1854,6 +1857,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         }
                   >
                     <input
+                      aria-labelledby="ComboBox0-list3-label"
                       aria-selected="true"
                       checked=""
                       class=
@@ -1959,6 +1963,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         </i>
                       </div>
                       <span
+                        aria-hidden="true"
                         class=
                             ms-ComboBox-optionText
                             {
@@ -1971,6 +1976,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               white-space: nowrap;
                               word-wrap: break-word;
                             }
+                        id="ComboBox0-list3-label"
                       >
                         Option 2
                       </span>
