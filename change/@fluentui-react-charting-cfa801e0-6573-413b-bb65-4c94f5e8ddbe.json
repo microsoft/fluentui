@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Sankey chart changes for the new design",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}

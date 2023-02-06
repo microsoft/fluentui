@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 06 Feb 2023 07:41:30 GMT",
+      "tag": "@fluentui/react_v8.105.4",
+      "version": "8.105.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a29dcc50328cce8ae6d447a6f1a70bfbbb924424",
+            "comment": "fix: Combobox/Dropdown multiselect checkbox+label pattern with role=option results in duplicate text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Feb 2023 07:50:06 GMT",
       "tag": "@fluentui/react_v8.105.3",
       "version": "8.105.3",
