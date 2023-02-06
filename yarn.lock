@@ -10330,7 +10330,7 @@ d3-path@1:
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
   integrity sha512-q0cW1RpvA5c5ma2rch62mX8AYaiLX0+bdaSM2wxSU9tXjU4DNvkx9qiUvjkuWCj3p22UO/hlPivujqMiR9PDzA==
 
-"d3-path@2":
+d3-path@2:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-2.0.0.tgz#55d86ac131a0548adae241eebfb56b4582dd09d8"
   integrity sha512-ZwZQxKhBnv9yHaiWd6ZU4x5BtCQ7pXszEV9CU6kRgwIQVQGLMv1oiL4M+MK/n79sYzsj+gcgpPQSctJUsLN7fA==
@@ -10386,7 +10386,7 @@ d3-shape@2.1.0:
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-2.1.0.tgz#3b6a82ccafbc45de55b57fcf956c584ded3b666f"
   integrity sha512-PnjUqfM2PpskbSLTJvAzp2Wv4CZsnAgTfcVRTwW03QR3MkXF8Uo7B1y/lWkAsmbKwuecto++4NlsYcvYpXpTHA==
   dependencies:
-    d3-path "2"
+    d3-path "1 - 2"
 
 d3-shape@^1.1.0, d3-shape@^1.2.0:
   version "1.3.7"
@@ -24119,10 +24119,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.1.0.tgz#4639d8f27be0a3789912a5594e44813529a9adc8"
-  integrity sha512-LjnQeCPYvNyJY4tab2Fthasni6alQt1OCctBNIRYjl0b+6CkL0Y79EnX8m4SJ0iEA/DaC1srWRvV8dnKhIiyuw==
+tabster@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.1.1.tgz#4ba615098772cdfc568cca3d5440118f18b29580"
+  integrity sha512-kuO6cxHpDl889ZyY98Fx4Iofiu2U9z7ii2rvPOQgKH5CJMKJ4GddygaEygRETOQV0IDpg4TWJRiDLMAHeS+hDw==
   dependencies:
     keyborg "^2.0.0"
     tslib "^2.3.1"
