@@ -10,21 +10,21 @@ export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
 
 export const skeletonGroupClassName = 'fui-Skeleton-Group';
 
-const skeletonWaveAnimation = {
+const skeletonWaveAnimationRTL = {
   from: {
-    backgroundPositionX: '300%',
+    backgroundPositionX: '300% /* @noflip */',
   },
   to: {
-    backgroundPositionX: '0%',
+    backgroundPositionX: '0% /* @noflip */',
   },
 };
 
-const skeletonWaveAnimationRTL = {
+const skeletonWaveAnimation = {
   from: {
-    backgroundPositionX: '0%',
+    backgroundPositionX: '0% /* @noflip */',
   },
   to: {
-    backgroundPositionX: '300%',
+    backgroundPositionX: '300% /* @noflip */',
   },
 };
 
@@ -102,7 +102,7 @@ const useRootStyles = makeStyles({
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
-  const { animation, materialOs } = state;
+  const { animation, appearance } = state;
   const { dir } = useFluent();
 
   const rootStyles = useRootStyles();
@@ -113,7 +113,7 @@ export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState 
     animation === 'wave' && rootStyles.wave,
     animation === 'wave' && dir === 'rtl' && rootStyles.waveRtl,
     animation === 'pulse' && rootStyles.pulse,
-    materialOs && rootStyles.material,
+    appearance === 'material' && rootStyles.material,
     state.root.className,
   );
 

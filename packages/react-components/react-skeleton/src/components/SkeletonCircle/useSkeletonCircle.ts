@@ -16,7 +16,6 @@ export const useSkeletonCircle_unstable = (
   props: SkeletonCircleProps,
   ref: React.Ref<HTMLElement>,
 ): SkeletonCircleState => {
-  //Props
   const { radius = '24px' } = props;
 
   const root = getNativeElementProps('div', { ref });
