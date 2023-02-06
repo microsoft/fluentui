@@ -16,7 +16,7 @@ import {
 // import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 // import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
 import { LineChartPerfExample } from './LineChart.PerfAnalysis.Example';
-import { LineChartPerfTwoExample } from './LineChart.PerfAnalysisTwo.Example';
+//import { LineChartPerfTwoExample } from './LineChart.PerfAnalysisTwo.Example';
 
 // const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 // const LineChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
@@ -27,7 +27,7 @@ import { LineChartPerfTwoExample } from './LineChart.PerfAnalysisTwo.Example';
 // const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
 // const LineChartCustomLocaleDateAxisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
 const LineChartPerfAnalysisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysis.Example.tsx') as string;
-const LineChartPerfAnalysisTwoExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysisTwo.Example.tsx') as string;
+//const LineChartPerfAnalysisTwoExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysisTwo.Example.tsx') as string;
 
 // All line charts locale is impacted.
 
@@ -66,9 +66,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             <ExampleCard title="LineChart custom Perf Data " code={LineChartPerfAnalysisExampleCode}>
               <LineChartPerfExample />
             </ExampleCard>
-            <ExampleCard title="LineChart custom Perf Two Data " code={LineChartPerfAnalysisTwoExampleCode}>
+            {/* <ExampleCard title="LineChart custom Perf Two Data " code={LineChartPerfAnalysisTwoExampleCode}>
               <LineChartPerfTwoExample />
-            </ExampleCard>
+            </ExampleCard> */}
           </div>
         }
         propertiesTables={
