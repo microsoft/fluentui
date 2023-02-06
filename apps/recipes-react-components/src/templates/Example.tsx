@@ -25,7 +25,7 @@ const useExampleStyles = makeStyles({
   },
 });
 
-export const Example: React.FC<{ centered?: boolean }> = ({ children, centered }) => {
+export const TemplateExample: React.FC<{ centered?: boolean }> = ({ children, centered }) => {
   const exampleStyles = useExampleStyles();
 
   const innerContainerClassName = mergeClasses(exampleStyles.innerContainer, centered && exampleStyles.centered);
