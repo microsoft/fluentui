@@ -51,7 +51,7 @@ export class LineChartPerfExample extends React.Component<{}, ILineChartBasicSta
     const data = [];
 
     let i = 1;
-    for (i = 1; i < 101; i++) {
+    for (i = 1; i < 10; i++) {
       const date = new Date('2020-03-03T00:00:00.000Z');
       const y = Math.random() * 1000 + increment;
       data.push({ x: this._addDays(date, increment * i), y });

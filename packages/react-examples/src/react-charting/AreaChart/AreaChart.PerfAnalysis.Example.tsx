@@ -61,7 +61,7 @@ export class AreaChartPerfExample extends React.Component<{}, IAreaChartBasicSta
   private _getData(increment: number): any {
     const data = [];
     let i = 1;
-    for (i = 1; i < 101; i++) {
+    for (i = 1; i < 10; i++) {
       const y = Math.random() * 1000 + increment;
       data.push({ x: increment * i, y });
     }
@@ -86,7 +86,7 @@ export class AreaChartPerfExample extends React.Component<{}, IAreaChartBasicSta
   private _basicExample(): JSX.Element {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const charts: JSX.Element[] = [];
-    for (let i: number = 0; i < 10; i++) {
+    for (let i: number = 0; i < 5; i++) {
       const data = this._getData(i + 1);
       const chartData = this._getChartData(data, 'Legend', 'Title', this._colors[i]);
       charts.push(
