@@ -1,15 +1,19 @@
+import { exec } from 'child_process';
+import { promisify } from 'util';
+
 import type { Options } from '@swc/core';
 import { logger } from 'just-scripts';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { exec } from 'just-scripts-utils';
+
+const execAsync = promisify(exec);
 
 function swcCli(options: Options) {
   const { outputPath, module } = options;
+  const swcCliBin = 'npx swc';
 
-  const cmd = `npx swc ${outputPath} --out-dir ${outputPath} --config module.type=${module?.type}`;
+  const cmd = `${swcCliBin} src --out-dir ${outputPath} --config module.type=${module?.type}`;
   logger.info(`Running swc CLI: ${cmd}`);
 
-  return exec(cmd);
+  return execAsync(cmd);
 }
 
 export const swc = {
