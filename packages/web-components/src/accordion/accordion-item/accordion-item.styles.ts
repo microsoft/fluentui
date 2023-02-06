@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -24,6 +25,7 @@ import {
 
 export const styles = css`
   /* --- Default styles --- */
+  ${display('block')}
 
   :host {
     max-width: fit-content;
