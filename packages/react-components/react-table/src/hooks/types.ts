@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
+import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;
@@ -131,6 +132,16 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    * Table columns
    */
   columns: TableColumnDefinition<TItem>[];
+  /**
+   * State and actions to manage column resizing
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnSizing_unstable: TableColumnSizingState;
+  /**
+   * A React.Ref object to be set as a ref for the table.
+   * Used with column resizing.
+   */
+  tableRef: React.Ref<HTMLDivElement>;
 }
 
 export interface UseTableSortOptions {
@@ -174,3 +185,39 @@ export interface UseTableFeaturesOptions<TItem> {
 }
 
 export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+
+export interface ColumnWidthState {
+  columnId: TableColumnId;
+  width: number;
+  minWidth: number;
+  idealWidth: number;
+  padding: number;
+}
+
+export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
+export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
+
+export interface TableColumnSizingState {
+  getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
+  setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
+  getColumnWidths: () => ColumnWidthState[];
+  getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
+  getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
+}
+
+export type ColumnResizeState = {
+  getColumnWidth: (columnId: TableColumnId) => number;
+  setColumnWidth: (columnId: TableColumnId, width: number) => void;
+  getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
+  getColumns: () => ColumnWidthState[];
+};
+
+export type TableColumnSizingOptions = Record<
+  TableColumnId,
+  Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
+>;
+
+export type UseTableColumnSizingParams = {
+  columnSizingOptions?: TableColumnSizingOptions;
+  onColumnResize?: (columnId: TableColumnId, width: number) => void;
+};
