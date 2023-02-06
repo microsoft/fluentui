@@ -468,6 +468,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           }
                     >
                       <input
+                        aria-labelledby="Dropdown0-list1-label"
                         aria-posinset="1"
                         aria-selected="true"
                         aria-setsize="2"
@@ -582,6 +583,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           </i>
                         </div>
                         <span
+                          aria-hidden="true"
                           class=
                               ms-Dropdown-optionText
                               {
@@ -597,6 +599,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                                 white-space: nowrap;
                                 word-wrap: break-word;
                               }
+                          id="Dropdown0-list1-label"
                         >
                           1
                         </span>
@@ -714,6 +717,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                     title="test"
                   >
                     <input
+                      aria-labelledby="Dropdown0-list3-label"
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="2"
@@ -825,6 +829,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         </i>
                       </div>
                       <span
+                        aria-hidden="true"
                         class=
                             ms-Dropdown-optionText
                             {
@@ -840,6 +845,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                               white-space: nowrap;
                               word-wrap: break-word;
                             }
+                        id="Dropdown0-list3-label"
                       >
                         2
                       </span>

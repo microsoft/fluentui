@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type {
   UseTableFeaturesOptions,
   TableFeaturesState,
@@ -8,6 +9,7 @@ import type {
 } from './types';
 import { defaultTableSelectionState } from './useTableSelection';
 import { defaultTableSortState } from './useTableSort';
+import { defaultColumnSizingState } from './useTableColumnSizing';
 
 const defaultRowEnhancer: RowEnhancer<unknown, TableRowData<unknown>> = row => row;
 
@@ -18,6 +20,9 @@ export const defaultTableState: TableFeaturesState<unknown> = {
   getRowId: () => '',
   items: [],
   columns: [],
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnSizing_unstable: defaultColumnSizingState,
+  tableRef: React.createRef<HTMLDivElement>(),
 };
 
 export function useTableFeatures<TItem>(
@@ -37,6 +42,9 @@ export function useTableFeatures<TItem>(
     getRows,
     selection: defaultTableSelectionState,
     sort: defaultTableSortState as TableSortState<TItem>,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnSizing_unstable: defaultColumnSizingState,
+    tableRef: React.createRef(),
   };
 
   return plugins.reduce((state, plugin) => plugin(state), initialState);

@@ -58,6 +58,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       required: true,
       defaultProps: {
         role: 'note',
+        tabIndex: -1,
       },
     }),
   };
