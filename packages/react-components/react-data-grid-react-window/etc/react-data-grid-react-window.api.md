@@ -21,7 +21,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { TableRowData } from '@fluentui/react-table';
 
-// @public
+// @public (undocumented)
 export const DataGrid: ForwardRefComponent<DataGridProps>;
 
 // @public
