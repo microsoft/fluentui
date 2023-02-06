@@ -17,25 +17,25 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('../LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
-          name: 'Line Chart',
+          name: 'Line Chart Perf Data One',
           url: '#/examples/linechart',
         },
         {
           component: require<any>('../LineChart/LineChartPageTwo').LineChartPageTwo,
           key: 'LineChartTwo',
-          name: 'Line Chart Perf Analysis',
+          name: 'Line Chart Perf Data One',
           url: '#/examples/linechartTwo',
         },
         {
           component: require<any>('../AreaChart/AreaChartPage').AreaChart,
           key: 'AreaChart',
-          name: 'Area Chart',
+          name: 'Area Chart Per Data One',
           url: '#/examples/areachart',
         },
         {
           component: require<any>('../AreaChart/AreaChartPageTwo').AreaChartTwo,
           key: 'AreaChartTwo',
-          name: 'Area Chart Perf 2',
+          name: 'Area Chart Perf Data Two',
           url: '#/examples/areachartTwo',
         },
         {
