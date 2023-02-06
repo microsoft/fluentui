@@ -5,6 +5,8 @@ exports[`SkeletonCircle renders a default state 1`] = `
   <div
     class="fui-SkeletonCircle"
     style="height: 24px; width: 24px;"
-  />
+  >
+    Default SkeletonCircle
+  </div>
 </div>
 `;

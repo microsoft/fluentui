@@ -5,6 +5,8 @@ exports[`SkeletonLine renders a default state 1`] = `
   <div
     class="fui-SkeletonLine"
     style="height: 16px;"
-  />
+  >
+    Default SkeletonLine
+  </div>
 </div>
 `;
