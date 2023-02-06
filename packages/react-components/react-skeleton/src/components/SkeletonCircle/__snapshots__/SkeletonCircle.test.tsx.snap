@@ -3,7 +3,7 @@
 exports[`SkeletonCircle renders a default state 1`] = `
 <div>
   <div
-    class="fui-Skeleton-Circle"
+    class="fui-SkeletonCircle"
     style="height: 24px; width: 24px;"
   />
 </div>

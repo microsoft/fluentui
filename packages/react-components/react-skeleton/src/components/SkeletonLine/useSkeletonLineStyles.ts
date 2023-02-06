@@ -3,7 +3,7 @@ import type { SkeletonLineSlots, SkeletonLineState } from './SkeletonLine.types'
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots> = {
-  root: 'fui-Skeleton-Line',
+  root: 'fui-SkeletonLine',
 };
 
 /**

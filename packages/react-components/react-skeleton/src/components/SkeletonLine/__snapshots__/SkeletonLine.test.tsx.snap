@@ -3,7 +3,7 @@
 exports[`SkeletonLine renders a default state 1`] = `
 <div>
   <div
-    class="fui-Skeleton-Line"
+    class="fui-SkeletonLine"
     style="height: 16px;"
   />
 </div>

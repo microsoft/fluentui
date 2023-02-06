@@ -4,7 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
 export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots> = {
-  root: 'fui-Skeleton-Circle',
+  root: 'fui-SkeletonCircle',
 };
 
 /**
