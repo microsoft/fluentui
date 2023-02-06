@@ -142,7 +142,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._opacity = opacity;
     this._stackedData = stackedInfo.stackedData;
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
-
+    // Test for Perf data
     const tickParams = {
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,

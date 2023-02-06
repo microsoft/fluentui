@@ -15,7 +15,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'calloutExample', text: 'Custom Callout Example' },
 ];
 
-export class AreaChartPerfExample extends React.Component<{}, IAreaChartBasicState> {
+export class AreaChartPerfTwoExample extends React.Component<{}, IAreaChartBasicState> {
   private _palette = getTheme().palette;
   private _colors = [
     this._palette.yellow,
@@ -69,28 +69,26 @@ export class AreaChartPerfExample extends React.Component<{}, IAreaChartBasicSta
   }
 
   private _getChartData(data: any, legend: string, title: string, color: string): any {
-    const chartPoints = {
-      legend,
-      data,
-      color,
+    const chartPoints = [
+      {
+        legend,
+        data,
+        color,
+      },
+    ];
+    const chartData = {
+      chartTitle: title,
+      lineChartData: chartPoints,
     };
-
-    return chartPoints;
+    return chartData;
   }
 
   private _basicExample(): JSX.Element {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const charts: JSX.Element[] = [];
-    for (let i: number = 0; i < 3; i++) {
-      const chartPoints = [];
-      chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 1', 'Title', this._colors[i]));
-      chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 2', 'Title', this._colors[9]));
-      chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 3', 'Title', this._colors[8]));
-
-      const chartData = {
-        chartTitle: '3-5 time series Chart',
-        lineChartData: chartPoints,
-      };
+    for (let i: number = 0; i < 10; i++) {
+      const data = this._getData(i + 1);
+      const chartData = this._getChartData(data, 'Legend', 'Title', this._colors[i]);
       charts.push(
         <AreaChart
           culture={window.navigator.language}

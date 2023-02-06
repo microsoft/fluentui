@@ -9,7 +9,7 @@ interface ILineChartBasicState {
   allowMultipleShapes: boolean;
 }
 
-export class LineChartPerfExample extends React.Component<{}, ILineChartBasicState> {
+export class LineChartPerfTwoExample extends React.Component<{}, ILineChartBasicState> {
   private _palette = getTheme().palette;
   private _colors = [
     this._palette.yellow,
@@ -34,7 +34,7 @@ export class LineChartPerfExample extends React.Component<{}, ILineChartBasicSta
   }
 
   public render(): JSX.Element {
-    return <div>{this._perfExample()}</div>;
+    return <div>{this._perfTwoExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +73,7 @@ export class LineChartPerfExample extends React.Component<{}, ILineChartBasicSta
     return chartPoints;
   }
 
-  private _perfExample(): JSX.Element {
+  private _perfTwoExample(): JSX.Element {
     // const data: IChartProps = {
     //   chartTitle: 'Line Chart',
     //   lineChartData: [
@@ -186,15 +186,13 @@ export class LineChartPerfExample extends React.Component<{}, ILineChartBasicSta
     const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     const charts: JSX.Element[] = [];
-    for (let i: number = 0; i < 3; i++) {
+    for (let i: number = 0; i < 10; i++) {
       const data = [];
       data.push(this._getData(i + 1));
-      data.push(this._getData(i + 1));
-      data.push(this._getData(i + 1));
+      //data.push(this._getData(i + 1));
       const chartPoints = [];
       chartPoints.push(this._getChartData(data[0], 'Legend 1', 'Title', this._colors[i]));
-      chartPoints.push(this._getChartData(data[1], 'Legend 2', 'Title', this._colors[9]));
-      chartPoints.push(this._getChartData(data[2], 'Legend 2', 'Title', this._colors[10]));
+      //chartPoints.push(this._getChartData(data[1], 'Legend 2', 'Title', this._colors[10]));
       const chartData = {
         chartTitle: 'Title test',
         lineChartData: chartPoints,

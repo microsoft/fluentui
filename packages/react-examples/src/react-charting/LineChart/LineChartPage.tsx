@@ -7,25 +7,27 @@ import {
   PropertiesTableSet,
 } from '@fluentui/react-docsite-components';
 
-import { LineChartBasicExample } from './LineChart.Basic.Example';
-import { LineChartStyledExample } from './LineChart.Styled.Example';
-import { LineChartMultipleExample } from './LineChart.Multiple.Example';
-import { LineChartEventsExample } from './LineChart.Events.Example';
-import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
-import { LineChartGapsExample } from './LineChart.Gaps.Example';
-import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
-import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
-//import { LineChartPerfExample } from './LineChart.PerfAnalysis.Example';
+// import { LineChartBasicExample } from './LineChart.Basic.Example';
+// import { LineChartStyledExample } from './LineChart.Styled.Example';
+// import { LineChartMultipleExample } from './LineChart.Multiple.Example';
+// import { LineChartEventsExample } from './LineChart.Events.Example';
+// import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
+// import { LineChartGapsExample } from './LineChart.Gaps.Example';
+// import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
+// import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
+import { LineChartPerfExample } from './LineChart.PerfAnalysis.Example';
+import { LineChartPerfTwoExample } from './LineChart.PerfAnalysisTwo.Example';
 
-const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
-const LineChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
-const MultipleLineChartExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
-const LineChartEventsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Events.Example.tsx') as string;
-const LineChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomAccessibility.Example.tsx') as string;
-const LineChartGapsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
-const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
-const LineChartCustomLocaleDateAxisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
-//const LineChartPerfAnalysisAxisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysis.Example.tsx') as string;
+// const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
+// const LineChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
+// const MultipleLineChartExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
+// const LineChartEventsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Events.Example.tsx') as string;
+// const LineChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomAccessibility.Example.tsx') as string;
+// const LineChartGapsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
+// const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
+// const LineChartCustomLocaleDateAxisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
+const LineChartPerfAnalysisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysis.Example.tsx') as string;
+const LineChartPerfAnalysisTwoExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysisTwo.Example.tsx') as string;
 
 // All line charts locale is impacted.
 
@@ -37,7 +39,7 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="LineChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="LineChart basic" code={LineChartBasicExampleCode}>
+            {/* <ExampleCard title="LineChart basic" code={LineChartBasicExampleCode}>
               <LineChartBasicExample />
             </ExampleCard>
             <ExampleCard title="LineChart styled" code={LineChartStyledExampleCode}>
@@ -60,10 +62,13 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart custom date axis locale" code={LineChartCustomLocaleDateAxisExampleCode}>
               <LineChartCustomLocaleDateAxisExample />
-            </ExampleCard>
-            {/* <ExampleCard title="LineChart custom Perf Data " code={LineChartPerfAnalysisAxisExampleCode}>
-              <LineChartPerfExample />
             </ExampleCard> */}
+            <ExampleCard title="LineChart custom Perf Data " code={LineChartPerfAnalysisExampleCode}>
+              <LineChartPerfExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart custom Perf Two Data " code={LineChartPerfAnalysisTwoExampleCode}>
+              <LineChartPerfTwoExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
