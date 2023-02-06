@@ -3,7 +3,7 @@ const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
 
-const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('../scripts/storybook');
+const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('@fluentui/scripts-storybook');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
@@ -72,8 +72,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
          */
         enforce: 'post',
         test: /\.stories\.tsx$/,
-        //TODO: simplify once all v9 packages have been migrated to new package structure. Tracking work: https://github.com/microsoft/fluentui/issues/24129
-        include: /stories|src/,
+        include: /stories/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
