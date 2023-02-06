@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.66.1 ]------------------------------- -->
+## [v0.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.1) (2023-02-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.0..@fluentui/react-northstar_v0.66.1)
+
 ### Fixes
 - `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
 - Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
