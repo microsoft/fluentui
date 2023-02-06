@@ -1744,8 +1744,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.clearIndicator,
                         styles: resolvedStyles.clearIndicator,
-                        accessibility: indicatorBehavior,
-                        ...(!search && { tabIndex: 0, role: 'button' }),
+                        ...(!search ? { tabIndex: 0, role: 'button' } : { accessibility: indicatorBehavior }),
                       }),
                       overrideProps: (predefinedProps: BoxProps) => ({
                         onClick: (e: React.SyntheticEvent<HTMLElement>) => {
@@ -1757,6 +1756,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
                           const keyCode = getCode(e);
                           if (!search && (keyCode === keyboardKey.Enter || keyCode === SpacebarKey)) {
                             handleClear(e);
+                            e.stopPropagation();
+                            e.preventDefault();
                           }
                         },
                       }),
