@@ -68,8 +68,8 @@ export type SkeletonLineState = ComponentState<SkeletonLineSlots> & Required<Pic
 // @public
 export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
     width?: number | string;
-    materialOs?: boolean;
-    animation?: string;
+    appearance?: 'default' | 'material';
+    animation?: 'wave' | 'pulse';
 };
 
 // @public (undocumented)
@@ -78,7 +78,7 @@ export type SkeletonSlots = {
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation'>> & Pick<SkeletonProps, 'materialOs'>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation'>> & Pick<SkeletonProps, 'appearance'>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
