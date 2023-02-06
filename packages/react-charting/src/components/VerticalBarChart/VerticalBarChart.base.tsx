@@ -70,6 +70,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   private _isChartEmpty: boolean;
+  private _idVBC: string;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -96,19 +97,22 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
     this._isChartEmpty = false;
+    this._idVBC = getId('_VBC_');
   }
 
   public componentDidMount(): void {
-    const isChartEmpty =
-      d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine;
-    if (isChartEmpty || this._isChartEmpty) {
-      d3Select('body')
+    this._isChartEmpty =
+      this._isChartEmpty ||
+      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
+
+    if (this._isChartEmpty) {
+      const emptyVBC = d3Select('#' + this._idVBC);
+      emptyVBC
         .append('div')
         .attr('role', 'alert')
-        .attr('id', 'ariaLabel_VerticalBarChart')
+        .attr('id', getId('_emptyVBC_'))
         .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
+        .attr('aria-label', 'Graph has no data to display');
     }
   }
 
@@ -149,38 +153,40 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       tickFormat: this.props.tickFormat,
     };
     return (
-      <CartesianChart
-        {...this.props}
-        points={this._points}
-        chartType={ChartTypes.VerticalBarChart}
-        xAxisType={this._xAxisType}
-        calloutProps={calloutProps}
-        tickParams={tickParams}
-        {...(this._isHavingLine && { isCalloutForStack: true })}
-        legendBars={legendBars}
-        datasetForXAxisDomain={this._xAxisLabels}
-        barwidth={this._barWidth}
-        focusZoneDirection={FocusZoneDirection.horizontal}
-        customizedCallout={this._getCustomizedCallout()}
-        getmargins={this._getMargins}
-        getGraphData={this._getGraphData}
-        getAxisData={this._getAxisData}
-        onChartMouseLeave={this._handleChartMouseLeave}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          return (
-            !this._isChartEmpty && (
-              <>
-                <g>{this._bars}</g>
-                {this._isHavingLine && (
-                  <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
-                )}
-              </>
-            )
-          );
-        }}
-      />
+      <div id={this._idVBC}>
+        <CartesianChart
+          {...this.props}
+          points={this._points}
+          chartType={ChartTypes.VerticalBarChart}
+          xAxisType={this._xAxisType}
+          calloutProps={calloutProps}
+          tickParams={tickParams}
+          {...(this._isHavingLine && { isCalloutForStack: true })}
+          legendBars={legendBars}
+          datasetForXAxisDomain={this._xAxisLabels}
+          barwidth={this._barWidth}
+          focusZoneDirection={FocusZoneDirection.horizontal}
+          customizedCallout={this._getCustomizedCallout()}
+          getmargins={this._getMargins}
+          getGraphData={this._getGraphData}
+          getAxisData={this._getAxisData}
+          onChartMouseLeave={this._handleChartMouseLeave}
+          /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop
+          children={(props: IChildProps) => {
+            return (
+              !this._isChartEmpty && (
+                <>
+                  <g>{this._bars}</g>
+                  {this._isHavingLine && (
+                    <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
+                  )}
+                </>
+              )
+            );
+          }}
+        />
+      </div>
     );
   }
 
