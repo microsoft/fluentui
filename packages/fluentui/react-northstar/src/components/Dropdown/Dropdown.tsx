@@ -1756,7 +1756,6 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
                           const keyCode = getCode(e);
                           if (!search && (keyCode === keyboardKey.Enter || keyCode === SpacebarKey)) {
                             handleClear(e);
-                            e.stopPropagation();
                             e.preventDefault();
                           }
                         },
