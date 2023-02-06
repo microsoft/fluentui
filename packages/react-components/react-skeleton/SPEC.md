@@ -27,35 +27,32 @@ The existing components are:
 Basic example:
 
 ```jsx
-import { Skeleton } from '@fluentui/react-skeleton';
+import { Skeleton, SkeletonLine } from '@fluentui/react-skeleton';
 
 function App() {
-  return <Skeleton />;
+  return (
+    <Skeleton>
+      <SkeletonLine />
+    </Skeleton>
+  );
 }
 ```
 
 ## Variants
 
-- There are three basic `Skeleton` shapes
-  - Line
-    - This typically represents content such as paragraphs on the page
-  - Circle
-    - This typically represents content such as an `Avatar` on the page
-  - Gap
-    - This represents a space between two pieces of content being rendered on a page
+- There are two basic `Skeleton` shapes
+  - `Line`
+  - `Circle`
 
 ### Shape
 
-The `Skeleton` is a combination of any of the three shapes in order to represent the content that will be loaded onto the screen. That is, it is a combination of lines, circles, and gaps that is a visual representation of the wireframe of a page.
+The `Skeleton` is a combination of any of the two shapes in order to represent the content that will be loaded onto the screen. That is, it is a combination of rectangles and circles that is a visual representation of the wireframe of a page.
 
 ## API
 
 ### Slots
 
-- `root` - The root alot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton` and any data that the `Skeleton` will load. The default html element is a `div`.
-- `wrapper` - The wrapper slot of the `Skeleton` will contain the `SkeletonElementsGroup` and the `SkeletonGradient`. The default html element is a `div`.
-- `gradient` - The slot that will show the `Skeleton` gradient on the page. The default html element is a `div`.
-- `data` - The data slot will contain the data that will be rendered on the screen once it is loaded onto the page. The default html element is `div`.
+- `root` - The root slot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton` and any data that the `Skeleton` will load. The default html element is a `div`.
 
 ### Props
 
@@ -64,23 +61,16 @@ See API at [Skeleton.types.tsx]().
 ## Structure
 
 ```html
+<!-- Container for Skeleton -->
 <div class="fui-Skeleton">
-  <!-- Container for Skeleton -->
-  <div class="fui-Skeleton__wrapper">
-    <!-- Gradient for Skeleton -->
-    <div class="fui-Skeleton__gradient" />
-    <!-- Container to hold the Skeleton Elements -->
-    <div class="fui-SkeletonElementsGroup">
-      <!-- Skeleton Line element -->
-      <div class="fui-SkeletonLine" />
-    </div>
-  </div>
+  <!-- Container for SkeletonElement -->
+  <div class="fui-Skeleton-Line" />
 </div>
 ```
 
 ## Migration
 
-See [MIGRATION.md]().
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
@@ -88,7 +78,8 @@ See [MIGRATION.md]().
 
 - **Display** - The `Skeleton` will use the following priority:
 
-  - Specifying the `customElementsGroup` prop will allow the use of custom shapes based on the default shapes.
+  - Specifying the `appearance` prop will allow the use of a `materialos` based appearance.
+  - Specifying `wave` or `pulse` will change the animation style of the `Skeleton`
   - The component also has `rtl` support and will animate the `Skeleton` from right to left if set.
 
 ### Interaction
