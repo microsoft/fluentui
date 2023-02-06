@@ -11,13 +11,10 @@ import { Example } from '../../templates';
 
 ### **Overview**
 
-A Media Object, is a pattern that is commonly used to display some media content and a description of that content.
-It is commonly used to display an Avatar/Image of a person along with their name and description. We provide an
-out of the box component in Fluent UI (v8's Persona and v9's Persona) that can be used to achieve this pattern.
+A Media Object, is a pattern commonly used to display media content and a description of that content.
+A typical example of this patter is displaying an Avatar of a person (the media content) next to their name (the description). Fluent UI's <LinkTo kind="components-persona--default">Persona</LinkTo> is an example of this pattern.
 
-This recipe focuses on the other uses of this pattern, where media content is not a persona. We will guide you on
-how to create a Media Object that can be used to display images, icons, and any other media content you might
-want to add.
+This recipe focuses on other uses of this patterns and will show you how to create a Media Object to display images, icons or any other media content you want to add.
 
 ### **Ingredients**
 
@@ -31,7 +28,7 @@ want to add.
 ## **Steps**
 
 There are two ways to build a Media Object, you can use a grid layout or a flex layout. We will cover both in this
-recipe. There are upsides and downsides to both, but the main difference is that grid layout uses less dom than the
+recipe. There are upsides and downsides to both, but the main difference is that grid layout uses less DOM than the
 flex option.
 
 ### **Flex Layout**
@@ -56,7 +53,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
   },
-  text: {
+  textContainer: {
     display: 'flex',
     flexDirection: 'column',
   },
@@ -65,16 +62,22 @@ const useStyles = makeStyles({
 
 #### **Step 2: Putting everything together.**
 
-After we have our styles, we just have to put our styles to work! Since we are using flex box we don't need to worry about dynamically placing items. Do take into account that using this approach will be heavier on the dom than the grid approach.
+After we have our styles, we just have to put our styles to work! Since we are using flex box we don't need to worry about dynamically placing items. Do take into account that using this approach will be heavier on the DOM than the grid approach.
 
 ```jsx
-const MediaObject: React.FC<{}> = ({ children }) => {
+import { Text, makeStyles } from '@fluentui/react-components';
+
+// Our makeStyles call from above
+
+const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
   const styles = useStyles();
 
   return (
     <div className={styles.parent}>
-      {/** Media goes here 🖼️ **/}
-      <div className={styles.text}>{/** Text lines go here 📝 **/}</div>
+      {children}
+      <div className={styles.textContainer}>
+        <Text>{text}</Text>
+      </div>
     </div>
   );
 };
@@ -89,7 +92,7 @@ After these steps you should be able to build something like the example below.
 ### **Grid Layout**
 
 When using a grid for Media Object, we only need a parent div and we can pass the items directly into it.
-As you can tell, the grid layout has one less layer of dom compared to the flex layout. This is especially important
+As you can tell, the grid layout has one less layer of DOM compared to the flex layout. This is especially important
 when the component is going to be used repeatedly in a list or the media or/and text have many layers themselves.
 
 To get started, we will follow these steps:
@@ -130,16 +133,17 @@ const useStyles = makeStyles({
 After these steps we should be able to add our media and text, and get the desired layout shown above. We should have a component that looks like this:
 
 ```jsx
-const MediaObject: React.FC<{}> = ({ children }) => {
+import { Text, makeStyles } from '@fluentui/react-components';
+
+// Our makeStyles call from above
+
+const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
   const styles = useStyles();
 
   return (
     <div className={styles.parent}>
-      <div className={styles.media}>{/** This should be your media 🖼️ **/}</div>
-      {/** Text line goes here 📝 **/}
-      {/** Text line goes here 📝 **/}
-      {/** Text line goes here 📝 **/}
-      {/** Text line goes here 📝 **/}
+      <div className={styles.media}>{children}</div>
+      <Text className={styles.text}>{text}</Text>
     </div>
   );
 };
@@ -179,16 +183,17 @@ const useStyles = makeStyles({
 After our styles are ready to be used, we can put everything together and get the desired layout shown above. We should have a component that looks like this:
 
 ```jsx
-const MediaObject: React.FC<{}> = ({ children }) => {
+import { Text, makeStyles } from '@fluentui/react-components';
+
+// Our makeStyles call from above
+
+const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
   const styles = useStyles();
 
   return (
     <div className={styles.parent}>
-      <div className={styles.media}>{/** This should be your media 🖼️ **/}</div>
-      <span className={styles.text}>{/** This should be your text line 📝 **/}</span>
-      <span className={styles.text}>{/** This should be your text line 📝 **/}</span>
-      <span className={styles.text}>{/** This should be your text line 📝 **/}</span>
-      {/** ... **/}
+      <div className={styles.media}>{children}</div>
+      <Text className={styles.text}>{text}</Text>
     </div>
   );
 };
@@ -218,5 +223,5 @@ There are also vertical alignment variations, these include start and center as 
 ## **Best practices**
 
 - The higher up the text line, the more important it is. You should not apply higher weights to the lines underneath.
-- When using `grid-template-columns` make sure the dom makes sense and not differ from how the grid is placing them. Do
-  not have your dom be `<media> <text>` when the rendered result looks like `<text> <media>`.
+- When using `grid-template-columns` make sure the DOM makes sense and not differ from how the grid is placing them. Do
+  not have your DOM be `<media> <text>` when the rendered result looks like `<text> <media>`.
