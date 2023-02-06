@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 06 Feb 2023 04:20:29 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcf643c51586968fa700b83eb1982866e6cfe946",
+            "comment": "ci: setup web-components docsite CI/CD"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 04:18:59 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.2",
       "version": "3.0.0-alpha.2",
