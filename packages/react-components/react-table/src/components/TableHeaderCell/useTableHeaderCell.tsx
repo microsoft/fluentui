@@ -32,6 +32,7 @@ export const useTableHeaderCell_unstable = (
       root: rootComponent,
       button: 'button',
       sortIcon: 'span',
+      aside: 'span',
     },
     root: getNativeElementProps(rootComponent, {
       ref: useMergedRefs(ref, useFocusWithin()),
@@ -39,6 +40,7 @@ export const useTableHeaderCell_unstable = (
       'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
       ...props,
     }),
+    aside: resolveShorthand(props.aside),
     sortIcon: resolveShorthand(props.sortIcon, {
       required: !!props.sortDirection,
       defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },

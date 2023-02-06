@@ -13,9 +13,7 @@ export const Disabled = () => {
   const labelId = useId('label');
   return (
     <div className={styles.field}>
-      <Label id={labelId} disabled>
-        Favorite Fruit
-      </Label>
+      <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup defaultValue="apple" disabled aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
