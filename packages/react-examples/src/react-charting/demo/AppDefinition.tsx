@@ -21,10 +21,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/linechart',
         },
         {
+          component: require<any>('../LineChart/LineChartPageTwo').LineChartPageTwo,
+          key: 'LineChartTwo',
+          name: 'Line Chart Perf Analysis',
+          url: '#/examples/linechartTwo',
+        },
+        {
           component: require<any>('../AreaChart/AreaChartPage').AreaChart,
           key: 'AreaChart',
           name: 'Area Chart',
           url: '#/examples/areachart',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageTwo').AreaChartTwo,
+          key: 'AreaChartTwo',
+          name: 'Area Chart Perf 2',
+          url: '#/examples/areachartTwo',
         },
         {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
