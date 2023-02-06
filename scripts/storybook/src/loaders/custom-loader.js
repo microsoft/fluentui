@@ -1,5 +1,11 @@
 const excludePresets = ['@griffel'];
 
+/**
+ * Custom babel loader used with [`customize` babel-loader config](https://github.com/babel/babel-loader#customized-loader)
+ * The customize prop is being set by {@link ./../utils#processBabelLoaderOptions}
+ *
+ * @returns
+ */
 module.exports = () => {
   return {
     /**

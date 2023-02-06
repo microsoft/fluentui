@@ -110,6 +110,7 @@ export type {
   Slot,
   SlotClassNames,
   SlotPropsRecord,
+  SlotRenderFunction,
 } from '@fluentui/react-utilities';
 
 // Components

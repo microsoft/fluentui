@@ -20,7 +20,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
     case 'available':
       return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
     case 'away':
-      return outOfOffice ? presenceOfflineRegular[size] : presenceAwayFilled[size];
+      return outOfOffice ? presenceOofRegular[size] : presenceAwayFilled[size];
     case 'blocked':
       return presenceBlockedRegular[size];
     case 'busy':
