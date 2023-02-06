@@ -16,16 +16,24 @@ export const styles = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: fit-content;
+    column-gap: 4px;
+    width: auto;
     height: 32px;
-    padding: 0 6px;
-    margin: 1px 4px;
     background: ${colorNeutralBackground1};
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  :host([:first-of-type]) {
+
+  ::slotted(span[slot='start']),
+  ::slotted(span[slot='end']) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
   }
 `;

@@ -5,22 +5,15 @@ import { colorNeutralBackground1, colorNeutralStrokeAccessible, strokeWidthThin 
  * @public
  */
 export const styles = css`
-:host {
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  width: fit-content;
-  min-with: 160px;
-  background:  ${colorNeutralBackground1};
-  border: 1px solid ${colorNeutralStrokeAccessible};
-}
-
-:host slot([name="start"]) {
-  padding: 0 2px;
-  margin: 0 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-}
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    min-width: 160px;
+    background: ${colorNeutralBackground1};
+    border: 1px solid ${colorNeutralStrokeAccessible};
+    margin-top: -1px;
+    margin-bottom: -1px;
+  }
 `;
