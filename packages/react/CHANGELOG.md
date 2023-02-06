@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 03 Feb 2023 07:50:06 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Feb 2023 07:41:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.4)
+
+Mon, 06 Feb 2023 07:41:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.3..@fluentui/react_v8.105.4)
+
+### Patches
+
+- fix: Combobox/Dropdown multiselect checkbox+label pattern with role=option results in duplicate text ([PR #26566](https://github.com/microsoft/fluentui/pull/26566) by sarah.higley@microsoft.com)
 
 ## [8.105.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.3)
 

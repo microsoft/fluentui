@@ -217,15 +217,44 @@ const useIconCheckedStyles = makeStyles({
   },
 });
 
+const usePrimaryHighContrastStyles = makeStyles({
+  // Do not use primary variant high contrast styles for toggle buttons
+  // otherwise there isn't enough difference between on/off states
+  base: {
+    '@media (forced-colors: active)': {
+      backgroundColor: 'ButtonFace',
+      ...shorthands.borderColor('ButtonBorder'),
+      color: 'ButtonText',
+      forcedColorAdjust: 'auto',
+    },
+  },
+
+  disabled: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+      color: 'GrayText',
+
+      ':focus': {
+        ...shorthands.borderColor('GrayText'),
+      },
+    },
+  },
+});
+
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
   const rootCheckedStyles = useRootCheckedStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const iconCheckedStyles = useIconCheckedStyles();
+  const primaryHighContrastStyles = usePrimaryHighContrastStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
     toggleButtonClassNames.root,
+
+    // Primary high contrast styles
+    appearance === 'primary' && primaryHighContrastStyles.base,
+    appearance === 'primary' && (disabled || disabledFocusable) && primaryHighContrastStyles.disabled,
 
     // Checked styles
     checked && rootCheckedStyles.base,

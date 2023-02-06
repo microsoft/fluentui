@@ -1,3 +1,16 @@
-export { DataGridBody, useDataGridBody_unstable, renderDataGridBody_unstable } from './DataGridBody';
+export { DataGridBody } from './DataGridBody';
+export { DataGrid } from './DataGrid';
+export { DataGridRow } from './DataGridRow';
 
-export type { DataGridBodyProps, DataGridBodyState, DataGridBodySlots } from './DataGridBody';
+export { DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridSelectionCell } from '@fluentui/react-table';
+
+export type {
+  DataGridCellProps,
+  DataGridHeaderCellProps,
+  DataGridHeaderProps,
+  DataGridSelectionCellProps,
+  DataGridRowProps,
+  DataGridProps,
+} from '@fluentui/react-table';
+
+export type { DataGridBodyProps } from './DataGridBody';

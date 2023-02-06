@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 06 Feb 2023 07:41:30 GMT",
+      "tag": "@fluentui/react-charting_v5.15.0",
+      "version": "5.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6ddc1cc914239b1f50cbfab08c549a20b41a201e",
+            "comment": "Sankey chart changes for the new design"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.105.4",
+            "commit": "6ddc1cc914239b1f50cbfab08c549a20b41a201e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Feb 2023 07:50:06 GMT",
       "tag": "@fluentui/react-charting_v5.14.43",
       "version": "5.14.43",
