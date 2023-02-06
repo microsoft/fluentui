@@ -25,13 +25,14 @@ import {
 
 export const styles = css`
   /* --- Default styles --- */
+
   ${display('block')}
 
   :host {
     max-width: fit-content;
   }
 
-  :host .heading {
+  .heading {
     height: 44px;
     display: grid;
     position: relative;
@@ -46,13 +47,13 @@ export const styles = css`
     grid-template-columns: 28px 28px auto 28px;
   }
 
-  :host .heading .heading-content {
+  .heading .heading-content {
     height: 100%;
     display: flex;
     align-items: center;
   }
 
-  :host .button {
+  .button {
     box-sizing: border-box;
     appearance: none;
     border: none;
@@ -71,7 +72,7 @@ export const styles = css`
     grid-row: 1;
   }
 
-  :host .button::before {
+  .button::before {
     content: '';
     position: absolute;
     inset: 0px;
@@ -79,7 +80,7 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
   }
 
-  :host .icon {
+  .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,29 +92,29 @@ export const styles = css`
     grid-row: 1;
   }
 
-  :host .region {
+  .region {
     display: none;
     margin-left: ${spacingHorizontalM};
     margin-right: ${spacingHorizontalM};
   }
 
-  :host .heading ::slotted(*) {
+  .heading ::slotted(*) {
     display: flex;
     align-self: center;
   }
 
-  :host slot[name='collapsed-icon'],
-  :host slot[name='expanded-icon'] {
+  slot[name='collapsed-icon'],
+  slot[name='expanded-icon'] {
     display: flex;
     align-items: center;
   }
 
-  :host slot[name='expanded-icon'] {
+  slot[name='expanded-icon'] {
     display: none;
   }
 
-  :host .heading ::slotted(span[slot='start']),
-  :host .heading ::slotted(span[slot='end']) {
+  .heading ::slotted(span[slot='start']),
+  .heading ::slotted(span[slot='end']) {
     justify-content: center;
     align-items: center;
     padding-right: ${spacingHorizontalS};
@@ -121,7 +122,7 @@ export const styles = css`
     grid-row: 1 / span 1;
   }
 
-  :host button:focus-visible::after {
+  button:focus-visible::after {
     content: '';
     position: absolute;
     inset: 0px;
@@ -167,7 +168,7 @@ export const styles = css`
 
   /* --- Appearance attr styles --- */
 
-  :host .heading slot[name='heading'] {
+  .heading slot[name='heading'] {
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
   }
