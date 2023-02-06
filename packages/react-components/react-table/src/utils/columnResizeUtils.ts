@@ -54,9 +54,9 @@ export function columnDefinitionsToState<T>(
     updated = true;
     return {
       columnId: column.columnId,
-      width: defaultWidth ?? idealWidth ?? DEFAULT_WIDTH,
+      width: Math.max(defaultWidth ?? idealWidth ?? DEFAULT_WIDTH, minWidth ?? DEFAULT_MIN_WIDTH),
       minWidth: minWidth ?? DEFAULT_MIN_WIDTH,
-      idealWidth: defaultWidth ?? idealWidth ?? DEFAULT_WIDTH,
+      idealWidth: Math.max(defaultWidth ?? idealWidth ?? DEFAULT_WIDTH, minWidth ?? DEFAULT_MIN_WIDTH),
       padding: padding ?? 16,
     };
   });

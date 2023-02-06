@@ -9,6 +9,11 @@ import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
+jest.mock('@fluentui/react-utilities', () => {
+  const module = jest.requireActual('@fluentui/react-utilities');
+  return { ...module, canUseDOM: () => false };
+});
+
 interface Item {
   first: string;
   second: string;
@@ -33,6 +38,11 @@ describe('DataGrid', () => {
     requiredProps: {
       items: testItems,
       columns: testColumns,
+    },
+    testOptions: {
+      'consistent-callback-args': {
+        ignoreProps: ['onColumnResize'],
+      },
     },
   });
 

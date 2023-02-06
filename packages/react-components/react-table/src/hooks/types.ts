@@ -220,4 +220,5 @@ export type TableColumnSizingOptions = Record<
 export type UseTableColumnSizingParams = {
   columnSizingOptions?: TableColumnSizingOptions;
   onColumnResize?: (columnId: TableColumnId, width: number) => void;
+  containerWidthOffset?: number;
 };

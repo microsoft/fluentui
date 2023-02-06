@@ -46,7 +46,7 @@ function useTableColumnSizingState<TItem>(
   // Gets the container width
   const { width, measureElementRef } = useMeasureElement();
   // Creates the state based on columns and available containerWidth
-  const columnResizeState = useTableColumnResizeState(columns, width, params);
+  const columnResizeState = useTableColumnResizeState(columns, width + (params?.containerWidthOffset || 0), params);
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
 
