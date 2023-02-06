@@ -34,8 +34,8 @@
     "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.1",
-    "keyborg": "^1.2.1",
-    "tabster": "^3.0.6",
+    "keyborg": "^2.0.0",
+    "tabster": "^4.1.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
