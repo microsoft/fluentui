@@ -72,9 +72,14 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  ComboboxProvider,
+  useComboboxContextValues,
+  ListboxProvider,
+  useListboxContextValues,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
+  ComboboxContextValue,
   ComboboxContextValues,
   ComboboxOpenChangeData,
   ComboboxOpenEvents,
@@ -86,6 +91,7 @@ export type {
   DropdownOpenEvents,
   DropdownSlots,
   DropdownState,
+  ListboxContextValue,
   ListboxContextValues,
   ListboxProps,
   ListboxSlots,
@@ -109,8 +115,21 @@ export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-sele
 export {
   Toolbar,
   ToolbarButton,
+  useToolbarButtonStyles_unstable,
+  useToolbarButton_unstable,
+  ToolbarRadioButton,
+  useToolbarRadioButton_unstable,
+  useToolbarRadioButtonStyles_unstable,
   ToolbarDivider,
+  useToolbarDivider_unstable,
+  ToolbarGroup,
+  useToolbarGroupStyles_unstable,
+  useToolbarGroup_unstable,
+  renderToolbarGroup_unstable,
+  toolbarGroupClassNames,
   ToolbarToggleButton,
+  useToolbarToggleButtonStyles_unstable,
+  useToolbarToggleButton_unstable,
   renderToolbar_unstable,
   toolbarClassNames,
   useToolbar_unstable,
@@ -130,6 +149,10 @@ export type {
   ToolbarState,
   ToolbarToggleButtonProps,
   ToolbarToggleButtonState,
+  ToolbarGroupProps,
+  ToolbarGroupState,
+  ToolbarRadioButtonProps,
+  ToolbarRadioButtonState,
 } from '@fluentui/react-toolbar';
 
 export {
@@ -247,6 +270,8 @@ export {
   useDataGridSelectionCell_unstable,
   renderDataGridSelectionCell_unstable,
   dataGridSelectionCellClassNames,
+  RowIdContextProvider,
+  useRowIdContext,
 } from '@fluentui/react-table';
 
 export type {
@@ -354,19 +379,10 @@ export {
 export type { FieldConfig, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
-  Persona,
-  personaClassNames,
-  renderPersona_unstable,
-  usePersonaStyles_unstable,
-  usePersona_unstable,
-} from '@fluentui/react-persona';
-export type { PersonaProps, PersonaState, PersonaSlots } from '@fluentui/react-persona';
-
-export {
-  Progress,
-  progressClassNames,
-  renderProgress_unstable,
-  useProgressStyles_unstable,
-  useProgress_unstable,
+  ProgressBar,
+  progressBarClassNames,
+  renderProgressBar_unstable,
+  useProgressBarStyles_unstable,
+  useProgressBar_unstable,
 } from '@fluentui/react-progress';
-export type { ProgressProps, ProgressState, ProgressSlots } from '@fluentui/react-progress';
+export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';

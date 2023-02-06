@@ -175,10 +175,9 @@ export const DataGrid = () => {
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             aria-checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            tabIndex={0}
-            checkboxIndicator={{ tabIndex: -1 }}
             role="checkbox"
             onClick={toggleAllRows}
+            checkboxIndicator={{ 'aria-label': 'Select all rows ' }}
           />
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
           <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
@@ -196,17 +195,24 @@ export const DataGrid = () => {
             appearance={appearance}
           >
             <TableSelectionCell
-              tabIndex={0}
-              checkboxIndicator={{ tabIndex: -1 }}
               role="gridcell"
               aria-selected={selected}
               checked={selected}
+              checkboxIndicator={{ 'aria-label': 'Select row' }}
             />
-            <TableCell tabIndex={0} role="gridcell">
+            <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell tabIndex={0} role="gridcell">
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

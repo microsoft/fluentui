@@ -668,6 +668,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           this._onLegendClick(point.legend!);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
         },
         onMouseOutAction: () => {
@@ -684,6 +685,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           this._onLegendClick(lineLegendText);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(lineLegendText);
         },
         onMouseOutAction: () => {

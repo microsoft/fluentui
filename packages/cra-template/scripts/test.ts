@@ -11,8 +11,8 @@ import {
   shEcho,
   prepareCreateReactApp,
   TempPaths,
-} from '@fluentui/scripts/projects-test/index';
-import { findGitRoot } from '@fluentui/scripts/monorepo/index';
+} from '@fluentui/scripts-projects-test';
+import { findGitRoot } from '@fluentui/scripts-monorepo';
 
 // This test is sort of like `packages/fluentui/projects-test/src/createReactApp.ts`, but it uses
 // a custom local template rather than making a generic TS project and adding our project as a dep.

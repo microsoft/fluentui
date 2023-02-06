@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Divider } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';

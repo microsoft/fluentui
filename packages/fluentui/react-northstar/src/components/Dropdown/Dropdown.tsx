@@ -842,6 +842,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         defaultProps: () => ({
           className: dropdownSlotClassNames.selectedItem,
           active: isSelectedItemActive(index),
+          disabled,
           variables,
           ...(typeof item === 'object' &&
             !item.hasOwnProperty('key') && {

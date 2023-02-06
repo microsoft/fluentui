@@ -15,16 +15,17 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.103.7",
-    "@fluentui/merge-styles": "^8.5.4",
-    "@fluentui/react-docsite-components": "^8.10.34",
-    "@fluentui/foundation-legacy": "^8.2.24",
-    "@fluentui/scheme-utilities": "^8.3.20",
-    "@fluentui/set-version": "^8.2.3",
-    "@fluentui/font-icons-mdl2": "^8.5.4",
+    "@fluentui/react": "^8.104.5",
+    "@fluentui/merge-styles": "^8.5.5",
+    "@fluentui/react-docsite-components": "^8.11.8",
+    "@fluentui/foundation-legacy": "^8.2.26",
+    "@fluentui/scheme-utilities": "^8.3.22",
+    "@fluentui/set-version": "^8.2.4",
+    "@fluentui/font-icons-mdl2": "^8.5.6",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "17.0.2",
     "react-dom": "17.0.2",

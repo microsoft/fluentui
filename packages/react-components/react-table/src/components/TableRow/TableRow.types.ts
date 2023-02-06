@@ -22,4 +22,6 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {
  */
 export type TableRowState = ComponentState<TableRowSlots> &
   Pick<TableContextValue, 'noNativeElements' | 'size'> &
-  Pick<Required<TableRowProps>, 'appearance'>;
+  Pick<Required<TableRowProps>, 'appearance'> & {
+    isHeaderRow: boolean;
+  };

@@ -135,19 +135,25 @@ export function createOverflowManager(): OverflowManager {
       return sum + getOffsetSize(child);
     }, 0);
 
-    // Add items until available width is filled
+    // Add items until available width is filled - can result in overflow
     while (currentWidth < availableSize && invisibleItemQueue.size() > 0) {
       currentWidth += makeItemVisible();
     }
-    // Remove items until there's no more overlap
+
+    // Remove items until there's no more overflow
     while (currentWidth > availableSize && visibleItemQueue.size() > 0) {
-      if (visibleItemQueue.size() === options.minimumVisible) {
+      if (visibleItemQueue.size() <= options.minimumVisible) {
         break;
       }
       currentWidth -= makeItemInvisible();
     }
 
-    if (invisibleItemQueue.size() > 0 && currentWidth + overflowMenuOffset > availableSize) {
+    // make sure the overflow menu can fit
+    if (
+      visibleItemQueue.size() > options.minimumVisible &&
+      invisibleItemQueue.size() > 0 &&
+      currentWidth + overflowMenuOffset > availableSize
+    ) {
       makeItemInvisible();
     }
 

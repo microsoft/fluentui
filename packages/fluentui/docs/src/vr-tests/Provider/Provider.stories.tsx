@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Provider } from '@fluentui/react-northstar';
 import ProviderExampleAnimation from '../../examples/components/Provider/Types/ProviderDisableAnimationsExample.shorthand';

@@ -39,6 +39,7 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
  * @param ref - reference to root HTMLElement of Tree
  */
 function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
+  const { appearance = 'subtle', size = 'medium' } = props;
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
   const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
   const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
@@ -62,6 +63,8 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
     components: {
       root: 'div',
     },
+    appearance,
+    size,
     open,
     level: parentLevel + 1,
     openSubtrees,

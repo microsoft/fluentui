@@ -37,7 +37,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       },
       hasErrorMessage && [
         {
-          borderWidth: StyleConstants.borderWidthError,
+          borderWidth: StyleConstants.borderWidth,
         },
         focused && {
           borderColor: semanticColors.focusBorder,

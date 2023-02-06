@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: remove unnecessary selectable ref and add support for aria-describedby on card preview",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

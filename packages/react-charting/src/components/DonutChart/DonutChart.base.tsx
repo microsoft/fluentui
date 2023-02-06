@@ -201,6 +201,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             }
           },
           hoverAction: () => {
+            this._handleChartMouseLeave();
             this.setState({ activeLegend: point.legend! });
           },
           onMouseOutAction: () => {

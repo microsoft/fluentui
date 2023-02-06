@@ -26,15 +26,11 @@ describe('Avatar', () => {
         },
         {
           props: {
-            image: { src: 'avatar.png', alt: 'test-image' },
             icon: 'Test Icon',
-            badge: 'Test Badge',
           },
           expectedClassNames: {
             root: avatarClassNames.root,
-            image: avatarClassNames.image,
             icon: avatarClassNames.icon,
-            badge: avatarClassNames.badge,
           },
         },
       ],
@@ -108,13 +104,11 @@ describe('Avatar', () => {
     );
   });
 
-  it('prioritizes image over icon', () => {
+  it('does not render the icon when there is an image', () => {
     render(<Avatar icon={<img src="i.svg" alt="test-icon" />} image={{ src: 'avatar.png', alt: 'test-image' }} />);
 
-    // Both are rendered, but the icon precedes the image, and are hidden by it
-    expect(screen.getByAltText('test-image').compareDocumentPosition(screen.getByAltText('test-icon'))).toBe(
-      Node.DOCUMENT_POSITION_PRECEDING,
-    );
+    expect(screen.getByAltText('test-image')).toBeTruthy();
+    expect(screen.queryByAltText('test-icon')).toBeFalsy();
   });
 
   it('prioritizes image over initials and icon', () => {
