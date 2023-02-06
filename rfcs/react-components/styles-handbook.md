@@ -15,7 +15,7 @@ This document covers how to use [Griffel][griffel] CSS-in-JS (used in Fluent UI 
   - [`makeStyles`](#makestyles)
     - [Limitations](#limitations)
     - [Performance caveat](#performance-caveat)
-  - [`mergeClasses()`](#mergeclasses)
+  - [`mergeClasses`](#mergeclasses)
     - [Order of arguments determines results](#order-of-arguments-determines-results)
     - [⚠️ Only combine classes with `mergeClasses`](#%EF%B8%8F-only-combine-classes-with-mergeclasses)
   - [`makeResetStyles`](#makeresetstyles)
@@ -181,7 +181,7 @@ const useClasses = makeStyles({
 
 Such cases might be unavoidable by design, [the `makeResetStyles` section](#makeresetstyles) covers APIs to address this problem.
 
-## `mergeClasses()`
+## `mergeClasses`
 
 The [`mergeClasses() API`][griffel-merge-classes] should be used when multiple Griffel styles are used on the same element.
 
