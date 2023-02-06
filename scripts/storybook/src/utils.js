@@ -171,8 +171,12 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       return acc;
     }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
 
-    delete importMappings['@fluentui/react-data-grid-react-window'];
-    return importMappings;
+    return {
+      ...importMappings,
+      '@fluentui/react-data-grid-react-window': {
+        replace: '@fluentui/react-data-grid-react-window',
+      },
+    };
   }
 }
 
