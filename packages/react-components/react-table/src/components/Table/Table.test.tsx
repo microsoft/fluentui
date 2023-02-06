@@ -13,8 +13,6 @@ describe('Table', () => {
     displayName: 'Table',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(
       <Table>

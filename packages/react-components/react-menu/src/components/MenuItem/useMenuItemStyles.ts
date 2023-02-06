@@ -19,19 +19,6 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
 const useStyles = makeStyles({
   focusIndicator: createFocusOutlineStyle(),
   // TODO: this should be extracted to another package
-  resetButton: {
-    boxSizing: 'content-box',
-    backgroundColor: 'inherit',
-    color: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: 'inherit',
-    lineHeight: 'normal',
-    ...shorthands.borderColor('transparent'),
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
-    WebkitAppearance: 'button',
-    textAlign: 'unset',
-  },
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',
@@ -115,7 +102,6 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     menuItemClassNames.root,
-    state.isNativeButton && styles.resetButton,
     styles.root,
     styles.focusIndicator,
     state.disabled && styles.disabled,

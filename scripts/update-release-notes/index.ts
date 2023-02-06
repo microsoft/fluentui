@@ -53,6 +53,7 @@ async function updateReleaseNotes() {
       | RestEndpointMethodTypes['repos']['updateRelease']['parameters']
       | RestEndpointMethodTypes['repos']['createRelease']['parameters'] = {
       ...repoDetails,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       tag_name: entry.tag,
       name: `${entry.name} v${entry.version}`,
       draft: false,

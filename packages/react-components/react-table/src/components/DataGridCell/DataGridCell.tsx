@@ -6,7 +6,7 @@ import type { DataGridCellProps } from './DataGridCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DataGridCell component - TODO: add more docs
+ * DataGridCell component
  */
 export const DataGridCell: ForwardRefComponent<DataGridCellProps> = React.forwardRef((props, ref) => {
   const state = useDataGridCell_unstable(props, ref);

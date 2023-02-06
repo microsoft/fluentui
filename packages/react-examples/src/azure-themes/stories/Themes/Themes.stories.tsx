@@ -31,6 +31,10 @@ import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 import { SliderBasicExample } from '../components/slider.stories';
+import { SpinButtonBasicExample } from '../components/SpinButton.stories';
+import { DatePickerBasicExample } from '../components/defaultDatePicker';
+import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
+import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -86,8 +90,15 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Progress Indicator</Label>
+      <ProgressIndicatorBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label className="section">DatePicker</Label>
+      <DatePickerBasicExample />
       <DatePickerBoundedExample />
+      <CalendarInlineMultidayDayViewExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -141,6 +152,11 @@ const Example = () => (
       <TextField disabled value="disabled text" />
       <TextField placeholder="Hello" />
       <TextField errorMessage="Error message!" />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Spin button example</Label>
+      <SpinButtonBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>

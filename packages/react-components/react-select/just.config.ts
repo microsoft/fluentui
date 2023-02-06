@@ -1,3 +1,3 @@
-import { preset } from '@fluentui/scripts/tasks';
+import { preset } from '@fluentui/scripts-tasks';
 
 preset();

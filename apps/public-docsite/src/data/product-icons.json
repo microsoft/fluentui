@@ -1,0 +1,17 @@
+[
+  { "icon": "outlook", "name": "Outlook" },
+  { "icon": "onedrive", "name": "OneDrive" },
+  { "icon": "word", "name": "Word" },
+  { "icon": "excel", "name": "Excel" },
+  { "icon": "powerpoint", "name": "PowerPoint" },
+  { "icon": "onenote", "name": "OneNote" },
+  { "icon": "sharepoint", "name": "SharePoint" },
+  { "icon": "teams", "name": "Microsoft Teams" },
+  { "icon": "m365", "name": "Microsoft 365" },
+  { "icon": "access", "name": "Access" },
+  { "icon": "delve", "name": "Delve" },
+  { "icon": "forms", "name": "Microsoft Forms" },
+  { "icon": "project", "name": "Project" },
+  { "icon": "sway", "name": "Sway" },
+  { "icon": "visio", "name": "Visio" }
+]

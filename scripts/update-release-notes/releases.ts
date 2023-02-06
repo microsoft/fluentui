@@ -31,6 +31,7 @@ export async function getReleases(tags?: string[]): Promise<Map<string, IRelease
     // Get all the releases
     console.log('Getting all releases...');
     try {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       const res = await github.paginate<{ tag_name: string; id: number }>(
         github.repos.listReleases.endpoint.merge(repoDetails),
       );

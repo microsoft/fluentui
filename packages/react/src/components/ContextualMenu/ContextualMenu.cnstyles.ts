@@ -141,6 +141,7 @@ export const getMenuItemStyles = memoizeFunction(
         flexGrow: '1',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
+        overflow: 'hidden',
       },
       secondaryText: {
         color: theme.palette.neutralSecondary,

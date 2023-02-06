@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { Input } from '@fluentui/react-input';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 storiesOf('Input Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -65,4 +66,12 @@ storiesOf('Input Converged', module)
     'contentAfter',
     () => <Input contentAfter={<DismissRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },
-  );
+  )
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Input placeholder="Default overriden appearance" />
+        <Input appearance="outline" placeholder="Outline appearance" />
+      </div>
+    </FluentProvider>
+  ));

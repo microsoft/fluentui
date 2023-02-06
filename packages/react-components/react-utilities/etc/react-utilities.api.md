@@ -69,6 +69,9 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
     ref?: React_2.Ref<any>;
 }) | null;
 
+// @public
+export const IdPrefixProvider: React_2.Provider<string | undefined>;
+
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
@@ -134,7 +137,9 @@ export type Slots<S extends SlotPropsRecord> = {
 export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | React_2.ReactPortal;
 
 // @public
-export const SSRProvider: React_2.FC;
+export const SSRProvider: React_2.FC<{
+    children: React_2.ReactNode;
+}>;
 
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {
@@ -189,6 +194,9 @@ export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => 
 
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
+
+// @public (undocumented)
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];

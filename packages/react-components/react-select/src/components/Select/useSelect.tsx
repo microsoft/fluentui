@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getPartitionedNativeProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 import type { SelectProps, SelectState } from './Select.types';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Select.
@@ -13,13 +14,15 @@ import type { SelectProps, SelectState } from './Select.types';
  * @param ref - reference to the `<select>` element in Select
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
+  const overrides = useOverrides();
+
   const {
     defaultValue,
     value,
     select,
     icon,
     root,
-    appearance = 'outline',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
 
     onChange,
     size = 'medium',

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "docs: improve API documentation of card props",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

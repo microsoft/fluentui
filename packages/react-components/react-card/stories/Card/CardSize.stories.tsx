@@ -66,8 +66,8 @@ const CardExample = (props: CardProps) => {
   return (
     <Card className={styles.card} {...props}>
       <header className={styles.flex}>
-        <img className={styles.appIcon} src={resolveAsset('logo.svg')} />
-        <img className={styles.appIcon} src={resolveAsset('logo2.svg')} />
+        <img className={styles.appIcon} src={resolveAsset('logo.svg')} alt="Application one logo" />
+        <img className={styles.appIcon} src={resolveAsset('logo2.svg')} alt="Application two logo" />
       </header>
 
       <CardHeader

@@ -1,8 +1,111 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 21 Dec 2022 10:20:28 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0)
+
+Tue, 31 Jan 2023 19:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.26..@fluentui/react-combobox_v9.0.0)
+
+### Patches
+
+- feat: release Combobox and Dropdown as stable components ([PR #26518](https://github.com/microsoft/fluentui/pull/26518) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.7 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.18 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-portal to v9.1.5 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-positioning to v9.3.10 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.26)
+
+Thu, 26 Jan 2023 13:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.25..@fluentui/react-combobox_v9.0.0-beta.26)
+
+### Changes
+
+- fix: add popup maxHeight, and move shadow styles to combobox/dropdown ([PR #26470](https://github.com/microsoft/fluentui/pull/26470) by sarah.higley@microsoft.com)
+- chore: update spec and migration docs ([PR #26396](https://github.com/microsoft/fluentui/pull/26396) by sarah.higley@microsoft.com)
+- fix: combobox should recalculate the activedescendant when the children change while open, and clear it when moving text cursor ([PR #26444](https://github.com/microsoft/fluentui/pull/26444) by sarah.higley@microsoft.com)
+- fix: update multiselect checkbox styles to match checkbox ([PR #26509](https://github.com/microsoft/fluentui/pull/26509) by sarah.higley@microsoft.com)
+- Deprecate ComboboxField_unstable in favor of Field with Combobox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.17 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-portal to v9.1.4 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-positioning to v9.3.9 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.25)
+
+Mon, 23 Jan 2023 16:43:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.24..@fluentui/react-combobox_v9.0.0-beta.25)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.16 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+- Bump @fluentui/react-portal to v9.1.3 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+
+## [9.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.24)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.23..@fluentui/react-combobox_v9.0.0-beta.24)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.1.2 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.23)
+
+Mon, 16 Jan 2023 08:38:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.22..@fluentui/react-combobox_v9.0.0-beta.23)
+
+### Changes
+
+- fix: add aria-owns to combobox and dropdown" ([PR #26246](https://github.com/microsoft/fluentui/pull/26246) by sarah.higley@microsoft.com)
+- fix: button semantics for Combobox chevron, and pointer styles ([PR #26075](https://github.com/microsoft/fluentui/pull/26075) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-portal to v9.1.1 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-positioning to v9.3.8 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.22)
+
+Mon, 09 Jan 2023 21:51:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.21..@fluentui/react-combobox_v9.0.0-beta.22)
+
+### Changes
+
+- fix: disabled cursor style, opening when disabled, and hover styles ([PR #26068](https://github.com/microsoft/fluentui/pull/26068) by sarah.higley@microsoft.com)
+
+## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.21)
+
+Mon, 09 Jan 2023 14:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.20..@fluentui/react-combobox_v9.0.0-beta.21)
+
+### Changes
+
+- fix: perf improvements with useEventCallback ([PR #26191](https://github.com/microsoft/fluentui/pull/26191) by sarah.higley@microsoft.com)
+- fix: Combobox always starts at the first option if multiselect, and correctly sets focus visible" ([PR #26173](https://github.com/microsoft/fluentui/pull/26173) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.5 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-portal to v9.1.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-positioning to v9.3.7 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.20)
+
+Wed, 04 Jan 2023 01:40:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.19..@fluentui/react-combobox_v9.0.0-beta.20)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.4 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.13 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-portal to v9.0.15 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-positioning to v9.3.6 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
 
 ## [9.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.19)
 

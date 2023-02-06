@@ -507,6 +507,10 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: IFocusRectsContext;
+    // (undocumented)
+    static contextType: React_2.Context<IFocusRectsContext | undefined>;
+    // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
     dismissMenu(): void;
@@ -4955,8 +4959,8 @@ export interface IDetailsRowStyles {
     check: IStyle;
     // (undocumented)
     checkCell: IStyle;
-    // (undocumented)
-    checkCover: IStyle;
+    // @deprecated (undocumented)
+    checkCover?: IStyle;
     // (undocumented)
     fields: IStyle;
     // (undocumented)

@@ -6,7 +6,7 @@ import type { TableHeaderCellProps } from './TableHeaderCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableHeaderCell component - TODO: add more docs
+ * TableHeaderCell component
  */
 export const TableHeaderCell: ForwardRefComponent<TableHeaderCellProps> = React.forwardRef((props, ref) => {
   const state = useTableHeaderCell_unstable(props, ref);

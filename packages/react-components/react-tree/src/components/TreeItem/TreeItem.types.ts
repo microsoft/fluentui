@@ -1,35 +1,16 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import {
-  BaseTreeItemElement,
-  BaseTreeItemElementIntersection,
-  BaseTreeItemProps,
-  BaseTreeItemSlots,
-  BaseTreeItemState,
-} from '../BaseTreeItem/index';
+import type { ButtonContextValue } from '@fluentui/react-button';
+import type { TreeItemContextValue } from '../../contexts';
 
-export type TreeItemElement = BaseTreeItemElement;
-
-/** @internal */
-export type TreeItemElementIntersection = BaseTreeItemElementIntersection;
-
-export type TreeItemSlots = BaseTreeItemSlots & {
+export type TreeItemSlots = {
+  root: Slot<'div'>;
+  content: NonNullable<Slot<'span'>>;
+  subtree?: Slot<'span'>;
   /**
    * Expand icon slot,
    * by default renders a chevron icon to indicate opening and closing
    */
   expandIcon?: Slot<'span'>;
-  /**
-   * Icon slot that renders right before main content
-   */
-  iconBefore?: Slot<'span'>;
-  /**
-   * Icon slot that renders right after main content
-   */
-  iconAfter?: Slot<'span'>;
-  /**
-   * Actions slot that renders on the end of tree item
-   */
-  badges?: Slot<'span'>;
   /**
    * Actions slot that renders on the end of tree item
    * when the item is hovered/focused
@@ -37,12 +18,25 @@ export type TreeItemSlots = BaseTreeItemSlots & {
   actions?: Slot<'span'>;
 };
 
+export type TreeItemContextValues = {
+  treeItem: TreeItemContextValue;
+  button: ButtonContextValue;
+};
+
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> & BaseTreeItemState;
+export type TreeItemState = ComponentState<TreeItemSlots> & {
+  open: boolean;
+  isLeaf: boolean;
+  /**
+   * By design, a button included on the actions slot should be small
+   */
+  buttonSize: 'small';
+  isActionsVisible: boolean;
+};

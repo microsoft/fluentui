@@ -69,7 +69,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   )
                 }
               </PivotItem>
-              <PivotItem headerText="SVG icons (branded)" itemKey="svg-branded" className={styles.iconGrid}>
+              <PivotItem headerText="SVG icons (products)" itemKey="svg-branded" className={styles.iconGrid}>
                 {selectedItem === 'svg-branded' && (
                   <IconGrid icons={import('@fluentui/react-icons-mdl2-branded')} iconType="react-svg" />
                 )}

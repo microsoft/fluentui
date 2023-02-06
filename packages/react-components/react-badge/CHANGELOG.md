@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.22)
+
+Tue, 31 Jan 2023 19:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.21..@fluentui/react-badge_v9.0.22)
+
+### Patches
+
+- chore: Updates border-radius to use proper token ([PR #26531](https://github.com/microsoft/fluentui/pull/26531) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.21)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.20..@fluentui/react-badge_v9.0.21)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.20)
+
+Tue, 17 Jan 2023 12:22:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.19..@fluentui/react-badge_v9.0.20)
+
+### Patches
+
+- feat(PresenceBadge): Add blocked status ([PR #26366](https://github.com/microsoft/fluentui/pull/26366) by jukapsia@microsoft.com)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.18)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.17..@fluentui/react-badge_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.17)
+
+Wed, 04 Jan 2023 01:40:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.16..@fluentui/react-badge_v9.0.17)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #26045](https://github.com/microsoft/fluentui/pull/26045) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.3.1 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19 ([PR #26114](https://github.com/microsoft/fluentui/pull/26114) by beachball)
 
 ## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.16)
 

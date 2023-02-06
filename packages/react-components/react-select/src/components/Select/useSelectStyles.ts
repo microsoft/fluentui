@@ -163,7 +163,8 @@ const useSelectStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
-
+  },
+  outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessible,
@@ -256,6 +257,7 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles.base,
     selectStyles[size],
     selectStyles[appearance],
+    !disabled && appearance === 'outline' && selectStyles.outlineInteractive,
     !disabled && invalid && appearance !== 'underline' && selectStyles.invalid,
     !disabled && invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,

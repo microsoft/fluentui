@@ -18,15 +18,21 @@ export { CellActions } from './CellActions.stories';
 export { PrimaryCell } from './PrimaryCell.stories';
 export { CellNavigation } from './CellNavigation.stories';
 export { RowNavigation } from './RowNavigation.stories';
+
 export { Sort } from './Sort.stories';
+export { ResizableColumnsUncontrolled } from './ResizableColumnsUncontrolled.stories';
+export { ResizableColumnsControlled } from './ResizableColumnsControlled.stories';
+
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
 export { SingleSelect } from './SingleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { SubtleSelection } from './SubtleSelection.stories';
+export { SelectionWithCellActions } from './SelectionWithCellActions.stories';
 export { Virtualization } from './Virtualization.stories';
 export { DataGrid } from './DataGrid.stories';
+export { Memoization } from './Memoization.stories';
 
 export default {
   title: 'Preview Components/Table',

@@ -4,7 +4,7 @@ export { Default } from './FieldDefault.stories';
 export { Label } from './FieldLabel.stories';
 export { Horizontal } from './FieldHorizontal.stories';
 export { Required } from './FieldRequired.stories';
-export { ValidationState } from './FieldValidationState.stories';
+export { ValidationMessage } from './FieldValidationMessage.stories';
 export { Size } from './FieldSize.stories';
 export { Hint } from './FieldHint.stories';
 

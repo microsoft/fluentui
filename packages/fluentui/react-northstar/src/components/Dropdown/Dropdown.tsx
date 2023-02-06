@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -1744,13 +1744,20 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.clearIndicator,
                         styles: resolvedStyles.clearIndicator,
-                        accessibility: indicatorBehavior,
-                        ...(!search && { tabIndex: 0, role: 'button' }),
+                        ...(!search ? { tabIndex: 0, role: 'button' } : { accessibility: indicatorBehavior }),
                       }),
                       overrideProps: (predefinedProps: BoxProps) => ({
                         onClick: (e: React.SyntheticEvent<HTMLElement>) => {
                           _.invoke(predefinedProps, 'onClick', e);
                           handleClear(e);
+                        },
+                        onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
+                          _.invoke(predefinedProps, 'onKeyDown', e);
+                          const keyCode = getCode(e);
+                          if (!search && (keyCode === keyboardKey.Enter || keyCode === SpacebarKey)) {
+                            handleClear(e);
+                            e.preventDefault();
+                          }
                         },
                       }),
                     })

@@ -1,15 +1,23 @@
-export { useTableFeatures, useTableSelection, useTableSort, createColumn } from './hooks';
+export {
+  useTableFeatures,
+  useTableSelection,
+  useTableSort,
+  createTableColumn,
+  useTableColumnSizing_unstable,
+} from './hooks';
+
 export type {
-  UseTableOptions,
-  TableState as HeadlessTableState,
+  CreateTableColumnOptions,
+  UseTableFeaturesOptions,
+  TableColumnDefinition,
+  TableColumnId,
+  TableFeaturesState,
+  TableRowData,
+  TableRowId,
   TableSelectionState,
   TableSortState,
-  TableStatePlugin,
-  RowState,
-  RowId,
-  ColumnDefinition,
-  ColumnId,
-  CreateColumnOptions,
+  TableFeaturePlugin,
+  TableColumnSizingOptions,
 } from './hooks';
 
 export {
@@ -72,7 +80,17 @@ export {
 } from './TableHeaderCell';
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
+export {
+  TableResizeHandle,
+  tableResizeHandleClassNames,
+  useTableResizeHandleStyles_unstable,
+  useTableResizeHandle_unstable,
+  renderTableResizeHandle_unstable,
+} from './TableResizeHandle';
+export type { TableResizeHandleProps, TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle';
+
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export { useTableRowIdContext, TableRowIdContextProvider } from './contexts/rowIdContext';
 export {
   TableSelectionCell,
   useTableSelectionCellStyles_unstable,
@@ -140,7 +158,7 @@ export type {
   DataGridState,
   DataGridContextValues,
   DataGridContextValue,
-  FocusMode,
+  DataGridFocusMode,
 } from './DataGrid';
 
 export {

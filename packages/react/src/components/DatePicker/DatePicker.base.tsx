@@ -26,6 +26,11 @@ const DEFAULT_PROPS: IDatePickerProps = {
   allowTextInput: false,
   formatDate: (date: Date) => (date ? date.toDateString() : ''),
   parseDateFromString: (dateStr: string) => {
+    //if dateStr is DATE ONLY ISO 8601 -> add time so Date.parse() won't convert it to UTC
+    //See here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#date_time_string_format
+    if (dateStr.match(/^\d{4}(-\d{2}){2}$/)) {
+      dateStr += 'T12:00';
+    }
     const date = Date.parse(dateStr);
     return date ? new Date(date) : null;
   },

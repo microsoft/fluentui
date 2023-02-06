@@ -2,6 +2,459 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 06 Feb 2023 07:41:30 GMT",
+      "tag": "@fluentui/react_v8.105.4",
+      "version": "8.105.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a29dcc50328cce8ae6d447a6f1a70bfbbb924424",
+            "comment": "fix: Combobox/Dropdown multiselect checkbox+label pattern with role=option results in duplicate text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Feb 2023 07:50:06 GMT",
+      "tag": "@fluentui/react_v8.105.3",
+      "version": "8.105.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.5.5",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.28",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.8",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.5.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.14",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.16",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/set-version to v8.2.5",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.1",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.22",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.17",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.4.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.23",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.2.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/webpack-utilities to v8.1.11",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Feb 2023 07:35:41 GMT",
+      "tag": "@fluentui/react_v8.105.2",
+      "version": "8.105.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c7ec5748dc84266c80da98afcb84f758c2c051d7",
+            "comment": "fix: ContextualMenu label was missing overflow hidden"
+          },
+          {
+            "author": "karlo.sudec@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "5c8d09d5f3f8d0288f611227359ad07336f4f67a",
+            "comment": "[DatePicker] fix default date parser converting dates to UTC implicitly"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Feb 2023 07:39:52 GMT",
+      "tag": "@fluentui/react_v8.105.1",
+      "version": "8.105.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77ceacdb9b546c5ca4bc223de24b2ad227f14875",
+            "comment": "fix: splitbutton should not refocus trigger after touch event"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "20a923cf7697dc1b765a43dca7ce874f9e91ebe1",
+            "comment": "fix: Dropdown option focus in high contrast mode should not be cut off by the popup"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Jan 2023 07:36:22 GMT",
+      "tag": "@fluentui/react_v8.105.0",
+      "version": "8.105.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4598aa1ee1dd93fd347ba202b0d2021e943510ff",
+            "comment": "fix: remove invalid extra checkbox at end of DetailsRow"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jan 2023 07:37:50 GMT",
+      "tag": "@fluentui/react_v8.104.8",
+      "version": "8.104.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d1dc25a7a7f66a5aebdf55a47dcde2167613e92a",
+            "comment": "fix(SplitButton): No pointer events on focus ring"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.27",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.7",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.13",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.0",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.16",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 07:35:31 GMT",
+      "tag": "@fluentui/react_v8.104.7",
+      "version": "8.104.7",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7d349735c9143bd031c57caf5af0b1c0b7943c0b",
+            "comment": "chore: update ComboBox & Dropdown docs to explicitly prohibit nested interactive content"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "30c81d09f4a447f7750e07898caf9c762e3c2395",
+            "comment": "Fix: add relative position to BasePicker to fix absolute position child bug"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jan 2023 07:42:13 GMT",
+      "tag": "@fluentui/react_v8.104.6",
+      "version": "8.104.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "92710eb4e323dd1c23f53e567efa04e2507fc603",
+            "comment": "fix: added border with correct contrast ratio in HC in MessageBar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:54 GMT",
+      "tag": "@fluentui/react_v8.104.5",
+      "version": "8.104.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "581019d078f60460f53c7df1086944b707a4626b",
+            "comment": "Set correct defaultRender for no results found"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/react_v8.104.4",
+      "version": "8.104.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/date-time-utilities to v8.5.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.26",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.6",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/merge-styles to v8.5.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.12",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.15",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/set-version to v8.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.8.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.21",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.15",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/example-data to v8.4.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.22",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/test-utilities to v8.2.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/webpack-utilities to v8.1.10",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 07:49:45 GMT",
+      "tag": "@fluentui/react_v8.104.3",
+      "version": "8.104.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1d3c92581624aeebaf60d7d4601f400352a961da",
+            "comment": "fix: set focus visibility className on correct element when calling setFocusVisibility directly"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jan 2023 08:00:14 GMT",
+      "tag": "@fluentui/react_v8.104.2",
+      "version": "8.104.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "92c695cd39a46fb5e4ce35ca44f94a4f49e63410",
+            "comment": "Suggestions: change resultsFooter docs to mention not adding interactive elements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Jan 2023 07:59:51 GMT",
+      "tag": "@fluentui/react_v8.104.2",
+      "version": "8.104.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "farcemolina@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "866c1ffffd601616450ab55ec4a8e2a29dc19bd8",
+            "comment": "Fix the react errors when we set the ThemeProvider as a React.Fragment to remove the root div, issue: 16633"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6daf6e3e4d5f888e77181ecf4f7dd63763d2752d",
+            "comment": "fix: remove Pickers live announcement text after timeout"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5f03f63309b780bf880201a5db2949be73394827",
+            "comment": "fix: Stopping className being unset in inner Stacks."
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b69b35c04ebb846cb24ba6f1bc60cc9baf55a91b",
+            "comment": "chore(scripts): remove deep imports from scripts/webpack/"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Jan 2023 07:46:45 GMT",
       "tag": "@fluentui/react_v8.104.1",
       "version": "8.104.1",
