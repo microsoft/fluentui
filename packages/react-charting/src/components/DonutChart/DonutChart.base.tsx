@@ -38,6 +38,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _currentHoverElement: any;
   private _calloutId: string;
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _tooltip: any;
+  private _tooltipId: string;
+  private _rectTooltipId: string;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -70,6 +73,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._hoverLeave = this._hoverLeave.bind(this);
     this._calloutId = getId('callout');
     this._uniqText = getId('_Pie_');
+    this._tooltipId = getId('_Donut_tooltip_');
+    this._rectTooltipId = getId('_Rect_tooltip_');
   }
   public componentDidMount(): void {
     /* 80% Height to the Chart
@@ -106,11 +111,22 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       >
         <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
           <div>
+            <div
+              id={this._tooltipId}
+              style={{ position: 'absolute', display: 'none' }}
+              className={this._classNames.tooltip!}
+            />
             <svg
               className={this._classNames.chart}
               aria-label={data?.chartTitle}
               ref={(node: SVGElement | null) => this._setViewBox(node)}
             >
+              <rect
+                id={this._rectTooltipId}
+                onMouseMove={this._showTooltip.bind(this, this.props.valueInsideDonut)}
+                onMouseOut={this._hideTooltip.bind(this)}
+                className={this._classNames.tooltipContainer!}
+              />
               <Pie
                 width={this.state._width!}
                 height={this.state._height!}
@@ -301,4 +317,22 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _getHighlightedLegend() {
     return this.state.selectedLegend || this.state.activeLegend;
   }
+
+  private _showTooltip = (text: string | number, evt: any) => {
+    this._tooltip = document.getElementById(this._tooltipId);
+    if (this._tooltip) {
+      this._tooltip!.innerHTML = text.toString();
+      this._tooltip!.style.display = 'block';
+      this._tooltip!.style.opacity = '0.9';
+      this._tooltip!.style.left = evt.pageX + 'px';
+      this._tooltip!.style.top = evt.pageY - 28 + 'px';
+    }
+  };
+
+  private _hideTooltip = (evt: any) => {
+    if (this._tooltip) {
+      this._tooltip = document.getElementById(this._tooltipId);
+      this._tooltip!.style.display = 'none';
+    }
+  };
 }

@@ -59,4 +59,14 @@ export interface IDonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: IStyle;
+
+  /**
+   * Style for the tool tip container
+   */
+  tooltipContainer?: IStyle;
+
+  /**
+   * Style for the tool tip
+   */
+  tooltip?: IStyle;
 }

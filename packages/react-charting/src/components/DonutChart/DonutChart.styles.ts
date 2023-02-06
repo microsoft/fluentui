@@ -26,5 +26,25 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       paddingTop: '16px',
       width: `${width}px`,
     },
+    tooltipContainer: {
+      width: '100%',
+      height: '100%',
+      textAlign: 'center',
+      fill: 'transparent',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    tooltip: {
+      ...theme.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
+      position: 'absolute',
+      textAlign: 'center',
+      top: '0px',
+      background: theme.semanticColors.bodyBackground,
+      borderRadius: '2px',
+      pointerEvents: 'none',
+    },
   };
 };

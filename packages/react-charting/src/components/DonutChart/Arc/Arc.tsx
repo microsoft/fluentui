@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as shape from 'd3-shape';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
 import { wrapTextInsideDonut } from '../../../utilities/index';
-import { select as d3Select } from 'd3-selection';
 import { IProcessedStyleSet } from '../../../Styling';
 
 export interface IArcState {
@@ -22,7 +21,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   public state: {} = {};
 
-  private _tooltip: any;
   private _classNames: IProcessedStyleSet<IArcStyles>;
   private currentRef = React.createRef<SVGPathElement>();
 
@@ -72,29 +70,12 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           role="img"
         />
         <g className={this._classNames.nodeTextContainer}>
-          <text
-            textAnchor={'middle'}
-            className={this._classNames.insideDonutString}
-            y={5}
-            id={'Donut_center_text'}
-            onMouseOver={this._showTooltip.bind(this, this.props.valueInsideDonut)}
-            onMouseOut={this._hideTooltip}
-          >
+          <text id="Donut_center_text" textAnchor={'middle'} className={this._classNames.insideDonutString} y={5}>
             {this.props.valueInsideDonut}
           </text>
         </g>
       </g>
     );
-  }
-
-  public componentDidMount(): void {
-    if (!this._tooltip) {
-      this._tooltip = d3Select('body')
-        .append('div')
-        .attr('id', getId('_Donut_tooltip_'))
-        .attr('class', this._classNames.tooltip!)
-        .style('opacity', 0);
-    }
   }
 
   public componentDidUpdate(): void {
@@ -108,22 +89,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
     wrapTextInsideDonut(classNames.insideDonutString, this.props.innerRadius! * 2 - TEXT_PADDING);
   }
-
-  private _showTooltip = (text: string | number, evt: any) => {
-    if (text !== null && text !== undefined && this._tooltip) {
-      this._tooltip.style('opacity', 0.9);
-      this._tooltip
-        .html(text)
-        .style('left', evt.pageX + 'px')
-        .style('top', evt.pageY - 28 + 'px');
-    }
-  };
-
-  private _hideTooltip = () => {
-    if (this._tooltip) {
-      this._tooltip.style('opacity', 0);
-    }
-  };
 
   private _onFocus(data: IChartDataPoint, id: string): void {
     this.props.onFocusCallback!(data, id, this.currentRef.current);
