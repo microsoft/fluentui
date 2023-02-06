@@ -9,9 +9,9 @@ import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
-jest.mock('@fluentui/react-utilities', () => {
-  const module = jest.requireActual('@fluentui/react-utilities');
-  return { ...module, canUseDOM: () => false };
+const measureElementRef = jest.fn();
+jest.mock('../../hooks/useMeasureElement', () => {
+  return { useMeasureElement: () => ({ width: 1000, measureElementRef }) };
 });
 
 interface Item {
@@ -43,7 +43,12 @@ describe('DataGrid', () => {
       'consistent-callback-args': {
         ignoreProps: ['onColumnResize'],
       },
-    },
+      'make-styles-overrides-win': {
+        callCount: 2,
+      },
+      // TODO: https://github.com/microsoft/fluentui/issues/19618
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any,
   });
 
   it('renders a default state', () => {
