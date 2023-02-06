@@ -8,9 +8,6 @@ import {
 import type { DataGridProps } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
-/**
- * DataGrid component - TODO: add more docs
- */
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
   const state = useDataGrid_unstable(props, ref);
 
