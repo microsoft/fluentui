@@ -15,7 +15,7 @@ import {
   IChildProps,
 } from '../CommonComponents/index';
 
-export { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

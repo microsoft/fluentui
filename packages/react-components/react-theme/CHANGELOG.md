@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 20 Oct 2022 08:39:54 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 10:20:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.5)
+
+Wed, 21 Dec 2022 10:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.4..@fluentui/react-theme_v9.1.5)
+
+### Patches
+
+- chore: re-export theme from tokens package ([PR #25966](https://github.com/microsoft/fluentui/pull/25966) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.4)
+
+Tue, 20 Dec 2022 14:59:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.3..@fluentui/react-theme_v9.1.4)
+
+### Patches
+
+- fix: update theme tokens ([PR #25903](https://github.com/microsoft/fluentui/pull/25903) by miroslav.stastny@microsoft.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.3)
+
+Mon, 05 Dec 2022 18:29:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.2..@fluentui/react-theme_v9.1.3)
+
+### Patches
+
+- refactor: Use Object.assign to reduce loop runtime ([PR #25433](https://github.com/microsoft/fluentui/pull/25433) by tigeroakes@microsoft.com)
+- chore: Migrate to new package structure. ([PR #25812](https://github.com/microsoft/fluentui/pull/25812) by tristan.watanabe@gmail.com)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.2)
+
+Fri, 11 Nov 2022 14:57:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.1..@fluentui/react-theme_v9.1.2)
+
+### Patches
+
+- Fixed incorrect typography style ([PR #25577](https://github.com/microsoft/fluentui/pull/25577) by gcox@microsoft.com)
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.1)
 

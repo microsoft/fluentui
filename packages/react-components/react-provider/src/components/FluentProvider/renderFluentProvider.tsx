@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TextDirectionProvider } from '@griffel/react';
 import {
+  OverridesProvider_unstable as OverridesProvider,
   Provider_unstable as Provider,
   TooltipVisibilityProvider_unstable as TooltipVisibilityProvider,
   ThemeProvider_unstable as ThemeProvider,
@@ -24,7 +25,9 @@ export const renderFluentProvider_unstable = (
         <ThemeClassNameProvider value={contextValues.themeClassName}>
           <TooltipVisibilityProvider value={contextValues.tooltip}>
             <TextDirectionProvider dir={contextValues.textDirection}>
-              <slots.root {...slotProps.root}>{state.root.children}</slots.root>
+              <OverridesProvider value={contextValues.overrides_unstable}>
+                <slots.root {...slotProps.root}>{state.root.children}</slots.root>
+              </OverridesProvider>
             </TextDirectionProvider>
           </TooltipVisibilityProvider>
         </ThemeClassNameProvider>

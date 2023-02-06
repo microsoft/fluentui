@@ -96,12 +96,12 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
   /**
    * Used to customize option rendering.
    */
-  onRenderField?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
+  onRenderField?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
 
   /**
    * Used to customize label rendering.
    */
-  onRenderLabel?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
 
   /**
    * Props for an icon to display with this option.

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(createPositionManager): computePosition should not apply styles after destruction",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

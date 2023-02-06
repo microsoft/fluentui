@@ -5,6 +5,8 @@
 ```ts
 
 import { __css } from '@griffel/react';
+import { __resetCSS } from '@griffel/react';
+import { __resetStyles } from '@griffel/react';
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
@@ -44,8 +46,27 @@ import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
+import { AvatarGroup } from '@fluentui/react-avatar';
+import { avatarGroupClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupContextValue } from '@fluentui/react-avatar';
+import { AvatarGroupContextValues } from '@fluentui/react-avatar';
+import { AvatarGroupItem } from '@fluentui/react-avatar';
+import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupPopover } from '@fluentui/react-avatar';
+import { avatarGroupPopoverClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverProps } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverSlots } from '@fluentui/react-avatar';
+import { AvatarGroupPopoverState } from '@fluentui/react-avatar';
+import { AvatarGroupProps } from '@fluentui/react-avatar';
+import { AvatarGroupProvider } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupState } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSize } from '@fluentui/react-avatar';
 import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
@@ -56,6 +77,12 @@ import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
 import { Body1 } from '@fluentui/react-text';
 import { body1ClassNames } from '@fluentui/react-text';
+import { Body1Strong } from '@fluentui/react-text';
+import { body1StrongClassNames } from '@fluentui/react-text';
+import { Body1Stronger } from '@fluentui/react-text';
+import { body1StrongerClassNames } from '@fluentui/react-text';
+import { Body2 } from '@fluentui/react-text';
+import { body2ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
@@ -65,8 +92,14 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { Caption1 } from '@fluentui/react-text';
 import { caption1ClassNames } from '@fluentui/react-text';
+import { Caption1Strong } from '@fluentui/react-text';
+import { caption1StrongClassNames } from '@fluentui/react-text';
+import { Caption1Stronger } from '@fluentui/react-text';
+import { caption1StrongerClassNames } from '@fluentui/react-text';
 import { Caption2 } from '@fluentui/react-text';
 import { caption2ClassNames } from '@fluentui/react-text';
+import { Caption2Strong } from '@fluentui/react-text';
+import { caption2StrongClassNames } from '@fluentui/react-text';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -75,6 +108,16 @@ import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
+import { Combobox } from '@fluentui/react-combobox';
+import { comboboxClassNames } from '@fluentui/react-combobox';
+import { ComboboxContextValue } from '@fluentui/react-combobox';
+import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
+import { ComboboxOpenEvents } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxProvider } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
+import { ComboboxState } from '@fluentui/react-combobox';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { CompoundButton } from '@fluentui/react-button';
@@ -96,6 +139,9 @@ import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
+import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
+import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
 import { Dialog } from '@fluentui/react-dialog';
 import { DialogActions } from '@fluentui/react-dialog';
 import { dialogActionsClassNames } from '@fluentui/react-dialog';
@@ -140,6 +186,14 @@ import { dividerClassNames } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
+import { Dropdown } from '@fluentui/react-combobox';
+import { dropdownClassNames } from '@fluentui/react-combobox';
+import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownOpenChangeData } from '@fluentui/react-combobox';
+import { DropdownOpenEvents } from '@fluentui/react-combobox';
+import { DropdownProps } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
+import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
@@ -157,6 +211,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
+import { IdPrefixProvider } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
@@ -181,6 +236,15 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { Listbox } from '@fluentui/react-combobox';
+import { listboxClassNames } from '@fluentui/react-combobox';
+import { ListboxContextValue } from '@fluentui/react-combobox';
+import { ListboxContextValues } from '@fluentui/react-combobox';
+import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxProvider } from '@fluentui/react-combobox';
+import { ListboxSlots } from '@fluentui/react-combobox';
+import { ListboxState } from '@fluentui/react-combobox';
+import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
@@ -235,6 +299,7 @@ import { MenuListProvider } from '@fluentui/react-menu';
 import { MenuListSlots } from '@fluentui/react-menu';
 import { MenuListState } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
+import { MenuOpenEvent } from '@fluentui/react-menu';
 import { MenuOpenEvents } from '@fluentui/react-menu';
 import { MenuPopover } from '@fluentui/react-menu';
 import { menuPopoverClassNames } from '@fluentui/react-menu';
@@ -259,7 +324,29 @@ import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
+import { Option as Option_2 } from '@fluentui/react-combobox';
+import { optionClassNames } from '@fluentui/react-combobox';
+import { OptionGroup } from '@fluentui/react-combobox';
+import { optionGroupClassNames } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionProps } from '@fluentui/react-combobox';
+import { OptionSlots } from '@fluentui/react-combobox';
+import { OptionState } from '@fluentui/react-combobox';
+import { Overflow } from '@fluentui/react-overflow';
+import { OverflowItem } from '@fluentui/react-overflow';
+import { OverflowItemProps } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
 import { PartialTheme } from '@fluentui/react-theme';
+import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
+import { Persona } from '@fluentui/react-persona';
+import { personaClassNames } from '@fluentui/react-persona';
+import { PersonaProps } from '@fluentui/react-persona';
+import { PersonaSlots } from '@fluentui/react-persona';
+import { PersonaState } from '@fluentui/react-persona';
 import { Popover } from '@fluentui/react-popover';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { PopoverProps } from '@fluentui/react-popover';
@@ -309,9 +396,13 @@ import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDialog_unstable } from '@fluentui/react-dialog';
 import { renderDialogActions_unstable } from '@fluentui/react-dialog';
@@ -321,12 +412,14 @@ import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
 import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
 import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDivider_unstable } from '@fluentui/react-divider';
+import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
+import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
 import { renderMenuDivider_unstable } from '@fluentui/react-menu';
@@ -339,12 +432,16 @@ import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderOption_unstable } from '@fluentui/react-combobox';
+import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
+import { renderPersona_unstable } from '@fluentui/react-persona';
 import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
+import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
@@ -355,13 +452,21 @@ import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
+import { renderToolbar_unstable } from '@fluentui/react-toolbar';
+import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
+import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
+import { selectClassNames } from '@fluentui/react-select';
+import { SelectOnChangeData } from '@fluentui/react-select';
+import { SelectProps } from '@fluentui/react-select';
+import { SelectSlots } from '@fluentui/react-select';
+import { SelectState } from '@fluentui/react-select';
 import { SelectTabData } from '@fluentui/react-tabs';
 import { SelectTabEvent } from '@fluentui/react-tabs';
 import { SelectTabEventHandler } from '@fluentui/react-tabs';
@@ -378,6 +483,7 @@ import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
 import { SpacingTokens } from '@fluentui/react-theme';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
@@ -404,6 +510,8 @@ import { Subtitle1 } from '@fluentui/react-text';
 import { subtitle1ClassNames } from '@fluentui/react-text';
 import { Subtitle2 } from '@fluentui/react-text';
 import { subtitle2ClassNames } from '@fluentui/react-text';
+import { Subtitle2Stronger } from '@fluentui/react-text';
+import { subtitle2StrongerClassNames } from '@fluentui/react-text';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -417,6 +525,7 @@ import { tabListClassNames } from '@fluentui/react-tabs';
 import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
 import { TabListProps } from '@fluentui/react-tabs';
+import { TabListProvider } from '@fluentui/react-tabs';
 import { TabListSlots } from '@fluentui/react-tabs';
 import { TabListState } from '@fluentui/react-tabs';
 import { TabProps } from '@fluentui/react-tabs';
@@ -430,10 +539,12 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
+import { TextareaOnChangeData } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
 import { textClassNames } from '@fluentui/react-text';
+import { TextPresetProps } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
@@ -450,6 +561,32 @@ import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
+import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButton } from '@fluentui/react-toolbar';
+import { ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonState } from '@fluentui/react-toolbar';
+import { toolbarClassNames } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
+import { ToolbarDivider } from '@fluentui/react-toolbar';
+import { ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarGroup } from '@fluentui/react-toolbar';
+import { toolbarGroupClassNames } from '@fluentui/react-toolbar';
+import { ToolbarGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarGroupState } from '@fluentui/react-toolbar';
+import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButton } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioButtonState } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroup } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupProps } from '@fluentui/react-toolbar';
+import { ToolbarRadioGroupState } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { tooltipClassNames } from '@fluentui/react-tooltip';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -476,6 +613,14 @@ import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupContext_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
+import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
@@ -484,6 +629,9 @@ import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxContextValues } from '@fluentui/react-combobox';
+import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
 import { useCounterBadge_unstable } from '@fluentui/react-badge';
@@ -502,6 +650,8 @@ import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
+import { useDropdown_unstable } from '@fluentui/react-combobox';
+import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
@@ -509,12 +659,15 @@ import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
+import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -522,6 +675,9 @@ import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxContextValues } from '@fluentui/react-combobox';
+import { useListboxStyles_unstable } from '@fluentui/react-combobox';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -554,6 +710,13 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useOption_unstable } from '@fluentui/react-combobox';
+import { useOptionGroup_unstable } from '@fluentui/react-combobox';
+import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionStyles_unstable } from '@fluentui/react-combobox';
+import { useOverflowMenu } from '@fluentui/react-overflow';
+import { usePersona_unstable } from '@fluentui/react-persona';
+import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { usePopover_unstable } from '@fluentui/react-popover';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
@@ -567,6 +730,9 @@ import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useScrollbarWidth } from '@fluentui/react-utilities';
+import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
@@ -580,6 +746,8 @@ import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
 import { useTabList_unstable } from '@fluentui/react-tabs';
+import { useTabListContext_unstable } from '@fluentui/react-tabs';
+import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useText_unstable } from '@fluentui/react-text';
@@ -590,6 +758,18 @@ import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
+import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDivider_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroup_unstable } from '@fluentui/react-toolbar';
+import { useToolbarGroupStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarRadioButtonStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButton_unstable } from '@fluentui/react-toolbar';
+import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
@@ -598,6 +778,10 @@ import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
 
 export { __css }
+
+export { __resetCSS }
+
+export { __resetStyles }
 
 export { __styles }
 
@@ -677,9 +861,47 @@ export { Avatar }
 
 export { avatarClassNames }
 
+export { AvatarGroup }
+
+export { avatarGroupClassNames }
+
+export { AvatarGroupContextValue }
+
+export { AvatarGroupContextValues }
+
+export { AvatarGroupItem }
+
+export { avatarGroupItemClassNames }
+
+export { AvatarGroupItemProps }
+
+export { AvatarGroupItemSlots }
+
+export { AvatarGroupItemState }
+
+export { AvatarGroupPopover }
+
+export { avatarGroupPopoverClassNames }
+
+export { AvatarGroupPopoverProps }
+
+export { AvatarGroupPopoverSlots }
+
+export { AvatarGroupPopoverState }
+
+export { AvatarGroupProps }
+
+export { AvatarGroupProvider }
+
+export { AvatarGroupSlots }
+
+export { AvatarGroupState }
+
 export { AvatarNamedColor }
 
 export { AvatarProps }
+
+export { AvatarSize }
 
 export { AvatarSizes }
 
@@ -701,6 +923,18 @@ export { Body1 }
 
 export { body1ClassNames }
 
+export { Body1Strong }
+
+export { body1StrongClassNames }
+
+export { Body1Stronger }
+
+export { body1StrongerClassNames }
+
+export { Body2 }
+
+export { body2ClassNames }
+
 export { BorderRadiusTokens }
 
 export { BrandVariants }
@@ -719,9 +953,21 @@ export { Caption1 }
 
 export { caption1ClassNames }
 
+export { Caption1Strong }
+
+export { caption1StrongClassNames }
+
+export { Caption1Stronger }
+
+export { caption1StrongerClassNames }
+
 export { Caption2 }
 
 export { caption2ClassNames }
+
+export { Caption2Strong }
+
+export { caption2StrongClassNames }
 
 export { Checkbox }
 
@@ -738,6 +984,26 @@ export { CheckboxState }
 export { ColorPaletteTokens }
 
 export { ColorTokens }
+
+export { Combobox }
+
+export { comboboxClassNames }
+
+export { ComboboxContextValue }
+
+export { ComboboxContextValues }
+
+export { ComboboxOpenChangeData }
+
+export { ComboboxOpenEvents }
+
+export { ComboboxProps }
+
+export { ComboboxProvider }
+
+export { ComboboxSlots }
+
+export { ComboboxState }
 
 export { ComponentProps }
 
@@ -780,6 +1046,12 @@ export { createLightTheme }
 export { createTeamsDarkTheme }
 
 export { CurveTokens }
+
+export { DATA_OVERFLOW_ITEM }
+
+export { DATA_OVERFLOW_MENU }
+
+export { DATA_OVERFLOWING }
 
 export { Dialog }
 
@@ -869,6 +1141,22 @@ export { DividerSlots }
 
 export { DividerState }
 
+export { Dropdown }
+
+export { dropdownClassNames }
+
+export { DropdownContextValues }
+
+export { DropdownOpenChangeData }
+
+export { DropdownOpenEvents }
+
+export { DropdownProps }
+
+export { DropdownSlots }
+
+export { DropdownState }
+
 export { DurationTokens }
 
 export { FluentProvider }
@@ -902,6 +1190,8 @@ export { GriffelRenderer }
 export { GriffelStyle }
 
 export { HorizontalSpacingTokens }
+
+export { IdPrefixProvider }
 
 export { Image_2 as Image }
 
@@ -950,6 +1240,24 @@ export { LinkProps }
 export { LinkSlots }
 
 export { LinkState }
+
+export { Listbox }
+
+export { listboxClassNames }
+
+export { ListboxContextValue }
+
+export { ListboxContextValues }
+
+export { ListboxProps }
+
+export { ListboxProvider }
+
+export { ListboxSlots }
+
+export { ListboxState }
+
+export { makeResetStyles }
 
 export { makeStaticStyles }
 
@@ -1059,6 +1367,8 @@ export { MenuListState }
 
 export { MenuOpenChangeData }
 
+export { MenuOpenEvent }
+
 export { MenuOpenEvents }
 
 export { MenuPopover }
@@ -1107,7 +1417,51 @@ export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
 
+export { Option_2 as Option }
+
+export { optionClassNames }
+
+export { OptionGroup }
+
+export { optionGroupClassNames }
+
+export { OptionGroupProps }
+
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
+
+export { Overflow }
+
+export { OverflowItem }
+
+export { OverflowItemProps }
+
+export { OverflowProps }
+
 export { PartialTheme }
+
+export { PartitionAvatarGroupItems }
+
+export { partitionAvatarGroupItems }
+
+export { PartitionAvatarGroupItemsOptions }
+
+export { Persona }
+
+export { personaClassNames }
+
+export { PersonaProps }
+
+export { PersonaSlots }
+
+export { PersonaState }
 
 export { Popover }
 
@@ -1207,11 +1561,19 @@ export { renderAccordionPanel_unstable }
 
 export { renderAvatar_unstable }
 
+export { renderAvatarGroup_unstable }
+
+export { renderAvatarGroupItem_unstable }
+
+export { renderAvatarGroupPopover_unstable }
+
 export { renderBadge_unstable }
 
 export { renderButton_unstable }
 
 export { renderCheckbox_unstable }
+
+export { renderCombobox_unstable }
 
 export { renderCompoundButton_unstable }
 
@@ -1231,6 +1593,8 @@ export { renderDialogTrigger_unstable }
 
 export { renderDivider_unstable }
 
+export { renderDropdown_unstable }
+
 export { RendererProvider }
 
 export { renderFluentProvider_unstable }
@@ -1242,6 +1606,8 @@ export { renderInput_unstable }
 export { renderLabel_unstable }
 
 export { renderLink_unstable }
+
+export { renderListbox_unstable }
 
 export { renderMenu_unstable }
 
@@ -1267,6 +1633,12 @@ export { renderMenuSplitGroup_unstable }
 
 export { renderMenuTrigger_unstable }
 
+export { renderOption_unstable }
+
+export { renderOptionGroup_unstable }
+
+export { renderPersona_unstable }
+
 export { renderPopover_unstable }
 
 export { renderPopoverSurface_unstable }
@@ -1278,6 +1650,8 @@ export { renderPortal_unstable }
 export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
+
+export { renderSelect_unstable }
 
 export { renderSlider_unstable }
 
@@ -1299,6 +1673,10 @@ export { renderTextarea_unstable }
 
 export { renderToggleButton_unstable }
 
+export { renderToolbar_unstable }
+
+export { renderToolbarGroup_unstable }
+
 export { renderTooltip_unstable }
 
 export { renderToStyleElements }
@@ -1311,7 +1689,19 @@ export { ResolveShorthandFunction }
 
 export { ResolveShorthandOptions }
 
+export { Select }
+
 export { SelectableHandler }
+
+export { selectClassNames }
+
+export { SelectOnChangeData }
+
+export { SelectProps }
+
+export { SelectSlots }
+
+export { SelectState }
 
 export { SelectTabData }
 
@@ -1344,6 +1734,8 @@ export { Slot }
 export { SlotClassNames }
 
 export { SlotPropsRecord }
+
+export { SlotRenderFunction }
 
 export { SpacingTokens }
 
@@ -1397,6 +1789,10 @@ export { Subtitle2 }
 
 export { subtitle2ClassNames }
 
+export { Subtitle2Stronger }
+
+export { subtitle2StrongerClassNames }
+
 export { Switch }
 
 export { switchClassNames }
@@ -1422,6 +1818,8 @@ export { TabListContextValue }
 export { TabListContextValues }
 
 export { TabListProps }
+
+export { TabListProvider }
 
 export { TabListSlots }
 
@@ -1449,6 +1847,8 @@ export { Textarea }
 
 export { textareaClassNames }
 
+export { TextareaOnChangeData }
+
 export { TextareaProps }
 
 export { TextareaSlots }
@@ -1456,6 +1856,8 @@ export { TextareaSlots }
 export { TextareaState }
 
 export { textClassNames }
+
+export { TextPresetProps }
 
 export { TextProps }
 
@@ -1488,6 +1890,58 @@ export { ToggleButtonProps }
 export { ToggleButtonState }
 
 export { tokens }
+
+export { Toolbar }
+
+export { ToolbarButton }
+
+export { ToolbarButtonProps }
+
+export { ToolbarButtonState }
+
+export { toolbarClassNames }
+
+export { ToolbarContextValue }
+
+export { ToolbarContextValues }
+
+export { ToolbarDivider }
+
+export { ToolbarDividerProps }
+
+export { ToolbarDividerState }
+
+export { ToolbarGroup }
+
+export { toolbarGroupClassNames }
+
+export { ToolbarGroupProps }
+
+export { ToolbarGroupState }
+
+export { ToolbarProps }
+
+export { ToolbarRadioButton }
+
+export { ToolbarRadioButtonProps }
+
+export { ToolbarRadioButtonState }
+
+export { ToolbarRadioGroup }
+
+export { ToolbarRadioGroupProps }
+
+export { ToolbarRadioGroupState }
+
+export { ToolbarSlots }
+
+export { ToolbarState }
+
+export { ToolbarToggleButton }
+
+export { ToolbarToggleButtonProps }
+
+export { ToolbarToggleButtonState }
 
 export { Tooltip }
 
@@ -1541,6 +1995,22 @@ export { UseArrowNavigationGroupOptions }
 
 export { useAvatar_unstable }
 
+export { useAvatarGroup_unstable }
+
+export { useAvatarGroupContext_unstable }
+
+export { useAvatarGroupContextValues }
+
+export { useAvatarGroupItem_unstable }
+
+export { useAvatarGroupItemStyles_unstable }
+
+export { useAvatarGroupPopover_unstable }
+
+export { useAvatarGroupPopoverStyles_unstable }
+
+export { useAvatarGroupStyles_unstable }
+
 export { useAvatarStyles_unstable }
 
 export { useBadge_unstable }
@@ -1556,6 +2026,12 @@ export { useCheckbox_unstable }
 export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
+
+export { useCombobox_unstable }
+
+export { useComboboxContextValues }
+
+export { useComboboxStyles_unstable }
 
 export { useCompoundButton_unstable }
 
@@ -1593,6 +2069,10 @@ export { useDivider_unstable }
 
 export { useDividerStyles_unstable }
 
+export { useDropdown_unstable }
+
+export { useDropdownStyles_unstable }
+
 export { useFluent }
 
 export { useFluentProvider_unstable }
@@ -1607,6 +2087,8 @@ export { UseFocusableGroupOptions }
 
 export { useFocusFinders }
 
+export { useFocusWithin }
+
 export { useId }
 
 export { useImage_unstable }
@@ -1618,6 +2100,10 @@ export { useInput_unstable }
 export { useInputStyles_unstable }
 
 export { useIsomorphicLayoutEffect }
+
+export { useIsOverflowGroupVisible }
+
+export { useIsOverflowItemVisible }
 
 export { useIsSSR }
 
@@ -1632,6 +2118,12 @@ export { useLink_unstable }
 export { useLinkState_unstable }
 
 export { useLinkStyles_unstable }
+
+export { useListbox_unstable }
+
+export { useListboxContextValues }
+
+export { useListboxStyles_unstable }
 
 export { useMenu_unstable }
 
@@ -1697,6 +2189,20 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
+export { useOption_unstable }
+
+export { useOptionGroup_unstable }
+
+export { useOptionGroupStyles_unstable }
+
+export { useOptionStyles_unstable }
+
+export { useOverflowMenu }
+
+export { usePersona_unstable }
+
+export { usePersonaStyles_unstable }
+
 export { usePopover_unstable }
 
 export { usePopoverContext_unstable }
@@ -1722,6 +2228,12 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useScrollbarWidth }
+
+export { useSelect_unstable }
+
+export { useSelectStyles_unstable }
 
 export { useSlider_unstable }
 
@@ -1749,6 +2261,10 @@ export { useTab_unstable }
 
 export { useTabList_unstable }
 
+export { useTabListContext_unstable }
+
+export { useTabListContextValues_unstable }
+
 export { useTabListStyles_unstable }
 
 export { useTabStyles_unstable }
@@ -1768,6 +2284,30 @@ export { useToggleButton_unstable }
 export { useToggleButtonStyles_unstable }
 
 export { useToggleState }
+
+export { useToolbar_unstable }
+
+export { useToolbarButton_unstable }
+
+export { useToolbarButtonStyles_unstable }
+
+export { useToolbarDivider_unstable }
+
+export { useToolbarDividerStyles_unstable }
+
+export { useToolbarGroup_unstable }
+
+export { useToolbarGroupStyles_unstable }
+
+export { useToolbarRadioButton_unstable }
+
+export { useToolbarRadioButtonStyles_unstable }
+
+export { useToolbarStyles_unstable }
+
+export { useToolbarToggleButton_unstable }
+
+export { useToolbarToggleButtonStyles_unstable }
 
 export { useTooltip_unstable }
 

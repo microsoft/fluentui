@@ -7488,7 +7488,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={2}
+                      aria-rowindex={3}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -7766,21 +7766,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           0
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -7790,7 +7775,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={3}
+                      aria-rowindex={4}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -8068,21 +8053,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           1
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -8317,7 +8287,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={4}
+                      aria-rowindex={6}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -8595,21 +8565,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           2
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -8619,7 +8574,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={5}
+                      aria-rowindex={7}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -8897,21 +8852,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           3
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -8921,7 +8861,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                     role="presentation"
                   >
                     <div
-                      aria-rowindex={6}
+                      aria-rowindex={8}
                       aria-selected={false}
                       className=
                           ms-FocusZone
@@ -9199,21 +9139,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           4
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                 </div>

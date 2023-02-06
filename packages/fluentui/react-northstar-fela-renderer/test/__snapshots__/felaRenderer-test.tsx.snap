@@ -109,6 +109,15 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
 <div class=\\"a b\\"></div>"
 `;
 
+exports[`felaRenderer marginLeft is rendered into marginLeft due to LTR 1`] = `
+".a {
+  margin-left: 10px;
+}
+
+
+<div class=\\"a\\"></div>"
+`;
+
 exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`noFlip\` 1`] = `
 ".a {
   margin-left: 10px;
@@ -183,25 +192,25 @@ exports[`felaRenderer styles are expanded to longhand values 1`] = `
   border-top-style: solid;
 }
 .b {
-  border-left-style: solid;
+  border-right-style: solid;
 }
 .c {
   border-bottom-style: solid;
 }
 .d {
-  border-right-style: solid;
+  border-left-style: solid;
 }
 .e {
   border-top-color: rgba(51, 204, 51, 1);
 }
 .f {
-  border-left-color: rgba(51, 0, 204, 1);
+  border-right-color: rgba(51, 0, 204, 1);
 }
 .g {
   border-bottom-color: rgba(51, 204, 51, 1);
 }
 .h {
-  border-right-color: rgba(51, 0, 204, 1);
+  border-left-color: rgba(51, 0, 204, 1);
 }
 
 

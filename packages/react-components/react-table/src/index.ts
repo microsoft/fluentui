@@ -1,14 +1,23 @@
-export { useTable, useSelection, useSort } from './hooks';
+export {
+  useTableFeatures,
+  useTableSelection,
+  useTableSort,
+  createTableColumn,
+  useTableColumnSizing_unstable,
+} from './hooks';
+
 export type {
-  UseTableOptions,
-  TableState as HeadlessTableState,
+  CreateTableColumnOptions,
+  UseTableFeaturesOptions,
+  TableColumnDefinition,
+  TableColumnId,
+  TableFeaturesState,
+  TableRowData,
+  TableRowId,
   TableSelectionState,
   TableSortState,
-  TableStatePlugin,
-  RowState,
-  RowId,
-  ColumnDefinition,
-  ColumnId,
+  TableFeaturePlugin,
+  TableColumnSizingOptions,
 } from './hooks';
 
 export {
@@ -71,7 +80,17 @@ export {
 } from './TableHeaderCell';
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
+export {
+  TableResizeHandle,
+  tableResizeHandleClassNames,
+  useTableResizeHandleStyles_unstable,
+  useTableResizeHandle_unstable,
+  renderTableResizeHandle_unstable,
+} from './TableResizeHandle';
+export type { TableResizeHandleProps, TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle';
+
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export { useTableRowIdContext, TableRowIdContextProvider } from './contexts/rowIdContext';
 export {
   TableSelectionCell,
   useTableSelectionCellStyles_unstable,
@@ -115,7 +134,7 @@ export {
   useDataGridRow_unstable,
   renderDataGridRow_unstable,
 } from './DataGridRow';
-export type { DataGridRowProps, DataGridRowState, DataGridRowSlots } from './DataGridRow';
+export type { DataGridRowProps, DataGridRowState, DataGridRowSlots, CellRenderFunction } from './DataGridRow';
 
 export {
   DataGridBody,
@@ -124,7 +143,7 @@ export {
   useDataGridBody_unstable,
   renderDataGridBody_unstable,
 } from './DataGridBody';
-export type { DataGridBodyProps, DataGridBodyState, DataGridBodySlots } from './DataGridBody';
+export type { DataGridBodyProps, DataGridBodyState, DataGridBodySlots, RowRenderFunction } from './DataGridBody';
 
 export {
   DataGrid,
@@ -132,8 +151,16 @@ export {
   useDataGridStyles_unstable,
   useDataGrid_unstable,
   renderDataGrid_unstable,
+  useDataGridContextValues_unstable,
 } from './DataGrid';
-export type { DataGridProps, DataGridSlots, DataGridState, DataGridContextValues } from './DataGrid';
+export type {
+  DataGridProps,
+  DataGridSlots,
+  DataGridState,
+  DataGridContextValues,
+  DataGridContextValue,
+  DataGridFocusMode,
+} from './DataGrid';
 
 export {
   DataGridHeader,

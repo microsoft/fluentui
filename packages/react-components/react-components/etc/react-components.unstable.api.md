@@ -9,22 +9,6 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
-import { AvatarGroup } from '@fluentui/react-avatar';
-import { avatarGroupClassNames } from '@fluentui/react-avatar';
-import { AvatarGroupItem } from '@fluentui/react-avatar';
-import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
-import { AvatarGroupItemProps } from '@fluentui/react-avatar';
-import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
-import { AvatarGroupItemState } from '@fluentui/react-avatar';
-import { AvatarGroupPopover } from '@fluentui/react-avatar';
-import { avatarGroupPopoverClassNames } from '@fluentui/react-avatar';
-import { AvatarGroupPopoverProps } from '@fluentui/react-avatar';
-import { AvatarGroupPopoverSlots } from '@fluentui/react-avatar';
-import { AvatarGroupPopoverState } from '@fluentui/react-avatar';
-import { AvatarGroupProps } from '@fluentui/react-avatar';
-import { AvatarGroupProvider } from '@fluentui/react-avatar';
-import { AvatarGroupSlots } from '@fluentui/react-avatar';
-import { AvatarGroupState } from '@fluentui/react-avatar';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { cardCSSVars } from '@fluentui/react-card';
@@ -47,94 +31,90 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { CheckboxField } from '@fluentui/react-field';
-import { checkboxFieldClassNames } from '@fluentui/react-field';
-import { CheckboxFieldProps } from '@fluentui/react-field';
-import { ColumnDefinition } from '@fluentui/react-table';
-import { ColumnId } from '@fluentui/react-table';
-import { Combobox } from '@fluentui/react-combobox';
-import { comboboxClassNames } from '@fluentui/react-combobox';
-import { ComboboxContextValues } from '@fluentui/react-combobox';
-import { ComboboxField } from '@fluentui/react-field';
-import { comboboxFieldClassNames } from '@fluentui/react-field';
-import { ComboboxFieldProps } from '@fluentui/react-field';
-import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
-import { ComboboxOpenEvents } from '@fluentui/react-combobox';
-import { ComboboxProps } from '@fluentui/react-combobox';
-import { ComboboxSlots } from '@fluentui/react-combobox';
-import { ComboboxState } from '@fluentui/react-combobox';
-import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
-import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
-import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
-import { Dropdown } from '@fluentui/react-combobox';
-import { dropdownClassNames } from '@fluentui/react-combobox';
-import { DropdownContextValues } from '@fluentui/react-combobox';
-import { DropdownOpenChangeData } from '@fluentui/react-combobox';
-import { DropdownOpenEvents } from '@fluentui/react-combobox';
-import { DropdownProps } from '@fluentui/react-combobox';
-import { DropdownSlots } from '@fluentui/react-combobox';
-import { DropdownState } from '@fluentui/react-combobox';
-import { FieldConfig } from '@fluentui/react-field';
+import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
+import { checkboxFieldClassNames } from '@fluentui/react-checkbox';
+import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
+import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
+import { comboboxFieldClassNames } from '@fluentui/react-combobox';
+import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
+import { createTableColumn } from '@fluentui/react-table';
+import { CreateTableColumnOptions } from '@fluentui/react-table';
+import { DataGrid } from '@fluentui/react-table';
+import { DataGridBody } from '@fluentui/react-table';
+import { dataGridBodyClassNames } from '@fluentui/react-table';
+import { DataGridBodyProps } from '@fluentui/react-table';
+import { DataGridBodySlots } from '@fluentui/react-table';
+import { DataGridBodyState } from '@fluentui/react-table';
+import { DataGridCell } from '@fluentui/react-table';
+import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellProps } from '@fluentui/react-table';
+import { DataGridCellSlots } from '@fluentui/react-table';
+import { DataGridCellState } from '@fluentui/react-table';
+import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextValue } from '@fluentui/react-table';
+import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridHeader } from '@fluentui/react-table';
+import { DataGridHeaderCell } from '@fluentui/react-table';
+import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
+import { DataGridHeaderCellProps } from '@fluentui/react-table';
+import { DataGridHeaderCellSlots } from '@fluentui/react-table';
+import { DataGridHeaderCellState } from '@fluentui/react-table';
+import { dataGridHeaderClassNames } from '@fluentui/react-table';
+import { DataGridHeaderProps } from '@fluentui/react-table';
+import { DataGridHeaderSlots } from '@fluentui/react-table';
+import { DataGridHeaderState } from '@fluentui/react-table';
+import { DataGridProps } from '@fluentui/react-table';
+import { DataGridRow } from '@fluentui/react-table';
+import { dataGridRowClassNames } from '@fluentui/react-table';
+import { DataGridRowProps } from '@fluentui/react-table';
+import { DataGridRowSlots } from '@fluentui/react-table';
+import { DataGridRowState } from '@fluentui/react-table';
+import { DataGridSelectionCell } from '@fluentui/react-table';
+import { dataGridSelectionCellClassNames } from '@fluentui/react-table';
+import { DataGridSelectionCellProps } from '@fluentui/react-table';
+import { DataGridSelectionCellSlots } from '@fluentui/react-table';
+import { DataGridSelectionCellState } from '@fluentui/react-table';
+import { DataGridSlots } from '@fluentui/react-table';
+import { DataGridState } from '@fluentui/react-table';
+import { Field } from '@fluentui/react-field';
+import { fieldClassNames } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
-import { getFieldClassNames } from '@fluentui/react-field';
-import { InputField } from '@fluentui/react-field';
-import { inputFieldClassNames } from '@fluentui/react-field';
-import { InputFieldProps } from '@fluentui/react-field';
-import { Listbox } from '@fluentui/react-combobox';
-import { listboxClassNames } from '@fluentui/react-combobox';
-import { ListboxContextValues } from '@fluentui/react-combobox';
-import { ListboxProps } from '@fluentui/react-combobox';
-import { ListboxSlots } from '@fluentui/react-combobox';
-import { ListboxState } from '@fluentui/react-combobox';
-import { Option as Option_2 } from '@fluentui/react-combobox';
-import { optionClassNames } from '@fluentui/react-combobox';
-import { OptionGroup } from '@fluentui/react-combobox';
-import { optionGroupClassNames } from '@fluentui/react-combobox';
-import { OptionGroupProps } from '@fluentui/react-combobox';
-import { OptionGroupSlots } from '@fluentui/react-combobox';
-import { OptionGroupState } from '@fluentui/react-combobox';
-import { OptionProps } from '@fluentui/react-combobox';
-import { OptionSlots } from '@fluentui/react-combobox';
-import { OptionState } from '@fluentui/react-combobox';
-import { Overflow } from '@fluentui/react-overflow';
-import { OverflowItem } from '@fluentui/react-overflow';
-import { OverflowItemProps } from '@fluentui/react-overflow';
-import { OverflowProps } from '@fluentui/react-overflow';
-import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
-import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
-import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
-import { Persona } from '@fluentui/react-persona';
-import { personaClassNames } from '@fluentui/react-persona';
-import { PersonaProps } from '@fluentui/react-persona';
-import { PersonaSlots } from '@fluentui/react-persona';
-import { PersonaState } from '@fluentui/react-persona';
-import { Progress } from '@fluentui/react-progress';
-import { progressClassNames } from '@fluentui/react-progress';
-import { ProgressProps } from '@fluentui/react-progress';
-import { ProgressSlots } from '@fluentui/react-progress';
-import { ProgressState } from '@fluentui/react-progress';
-import { RadioGroupField } from '@fluentui/react-field';
-import { radioGroupFieldClassNames } from '@fluentui/react-field';
-import { RadioGroupFieldProps } from '@fluentui/react-field';
+import { InfoButton } from '@fluentui/react-infobutton';
+import { infoButtonClassNames } from '@fluentui/react-infobutton';
+import { InfoButtonProps } from '@fluentui/react-infobutton';
+import { InfoButtonSlots } from '@fluentui/react-infobutton';
+import { InfoButtonState } from '@fluentui/react-infobutton';
+import { InputField_unstable as InputField } from '@fluentui/react-input';
+import { inputFieldClassNames } from '@fluentui/react-input';
+import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+import { ProgressBar } from '@fluentui/react-progress';
+import { progressBarClassNames } from '@fluentui/react-progress';
+import { ProgressBarProps } from '@fluentui/react-progress';
+import { ProgressBarSlots } from '@fluentui/react-progress';
+import { ProgressBarState } from '@fluentui/react-progress';
+import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
+import { progressFieldClassNames } from '@fluentui/react-progress';
+import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
+import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-radio';
+import { radioGroupFieldClassNames } from '@fluentui/react-radio';
+import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
-import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
-import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
-import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderCombobox_unstable } from '@fluentui/react-combobox';
-import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderDataGrid_unstable } from '@fluentui/react-table';
+import { renderDataGridBody_unstable } from '@fluentui/react-table';
+import { renderDataGridCell_unstable } from '@fluentui/react-table';
+import { renderDataGridHeader_unstable } from '@fluentui/react-table';
+import { renderDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { renderDataGridRow_unstable } from '@fluentui/react-table';
+import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
 import { renderField_unstable } from '@fluentui/react-field';
-import { renderListbox_unstable } from '@fluentui/react-combobox';
-import { renderOption_unstable } from '@fluentui/react-combobox';
-import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
-import { renderPersona_unstable } from '@fluentui/react-persona';
-import { renderProgress_unstable } from '@fluentui/react-progress';
-import { renderSelect_unstable } from '@fluentui/react-select';
+import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
+import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
 import { renderTableCell_unstable } from '@fluentui/react-table';
@@ -142,29 +122,23 @@ import { renderTableCellActions_unstable } from '@fluentui/react-table';
 import { renderTableCellLayout_unstable } from '@fluentui/react-table';
 import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
+import { renderTableResizeHandle_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
-import { renderToolbar_unstable } from '@fluentui/react-toolbar';
-import { RowId } from '@fluentui/react-table';
-import { RowState } from '@fluentui/react-table';
-import { Select } from '@fluentui/react-select';
-import { selectClassNames } from '@fluentui/react-select';
-import { SelectField } from '@fluentui/react-field';
-import { selectFieldClassNames } from '@fluentui/react-field';
-import { SelectFieldProps } from '@fluentui/react-field';
-import { SelectProps } from '@fluentui/react-select';
-import { SelectSlots } from '@fluentui/react-select';
-import { SelectState } from '@fluentui/react-select';
-import { SliderField } from '@fluentui/react-field';
-import { sliderFieldClassNames } from '@fluentui/react-field';
-import { SliderFieldProps } from '@fluentui/react-field';
+import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { SelectField_unstable as SelectField } from '@fluentui/react-select';
+import { selectFieldClassNames } from '@fluentui/react-select';
+import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
+import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
+import { sliderFieldClassNames } from '@fluentui/react-slider';
+import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
 import { SortDirection } from '@fluentui/react-table';
-import { SpinButtonField } from '@fluentui/react-field';
-import { spinButtonFieldClassNames } from '@fluentui/react-field';
-import { SpinButtonFieldProps } from '@fluentui/react-field';
-import { SwitchField } from '@fluentui/react-field';
-import { switchFieldClassNames } from '@fluentui/react-field';
-import { SwitchFieldProps } from '@fluentui/react-field';
+import { SpinButtonField_unstable as SpinButtonField } from '@fluentui/react-spinbutton';
+import { spinButtonFieldClassNames } from '@fluentui/react-spinbutton';
+import { SpinButtonFieldProps_unstable as SpinButtonFieldProps } from '@fluentui/react-spinbutton';
+import { SwitchField_unstable as SwitchField } from '@fluentui/react-switch';
+import { switchFieldClassNames } from '@fluentui/react-switch';
+import { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-switch';
 import { Table } from '@fluentui/react-table';
 import { TableBody } from '@fluentui/react-table';
 import { tableBodyClassName } from '@fluentui/react-table';
@@ -182,14 +156,22 @@ import { tableCellClassName } from '@fluentui/react-table';
 import { tableCellClassNames } from '@fluentui/react-table';
 import { TableCellLayout } from '@fluentui/react-table';
 import { tableCellLayoutClassNames } from '@fluentui/react-table';
+import { TableCellLayoutProps } from '@fluentui/react-table';
+import { TableCellLayoutSlots } from '@fluentui/react-table';
+import { TableCellLayoutState } from '@fluentui/react-table';
 import { TableCellProps } from '@fluentui/react-table';
 import { TableCellSlots } from '@fluentui/react-table';
 import { TableCellState } from '@fluentui/react-table';
 import { tableClassName } from '@fluentui/react-table';
 import { tableClassNames } from '@fluentui/react-table';
+import { TableColumnDefinition } from '@fluentui/react-table';
+import { TableColumnId } from '@fluentui/react-table';
+import { TableColumnSizingOptions } from '@fluentui/react-table';
 import { TableContextProvider } from '@fluentui/react-table';
 import { TableContextValue } from '@fluentui/react-table';
 import { TableContextValues } from '@fluentui/react-table';
+import { TableFeaturePlugin } from '@fluentui/react-table';
+import { TableFeaturesState } from '@fluentui/react-table';
 import { TableHeader } from '@fluentui/react-table';
 import { TableHeaderCell } from '@fluentui/react-table';
 import { tableHeaderCellClassName } from '@fluentui/react-table';
@@ -203,9 +185,14 @@ import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
 import { TableProps } from '@fluentui/react-table';
+import { TableResizeHandle } from '@fluentui/react-table';
+import { tableResizeHandleClassNames } from '@fluentui/react-table';
 import { TableRow } from '@fluentui/react-table';
 import { tableRowClassName } from '@fluentui/react-table';
 import { tableRowClassNames } from '@fluentui/react-table';
+import { TableRowData } from '@fluentui/react-table';
+import { TableRowId } from '@fluentui/react-table';
+import { TableRowIdContextProvider } from '@fluentui/react-table';
 import { TableRowProps } from '@fluentui/react-table';
 import { TableRowSlots } from '@fluentui/react-table';
 import { TableRowState } from '@fluentui/react-table';
@@ -218,35 +205,11 @@ import { TableSelectionState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
 import { TableSortState } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
-import { TableStatePlugin } from '@fluentui/react-table';
-import { TextareaField } from '@fluentui/react-field';
-import { textareaFieldClassNames } from '@fluentui/react-field';
-import { TextareaFieldProps } from '@fluentui/react-field';
-import { Toolbar } from '@fluentui/react-toolbar';
-import { ToolbarButton } from '@fluentui/react-toolbar';
-import { ToolbarButtonProps } from '@fluentui/react-toolbar';
-import { ToolbarButtonState } from '@fluentui/react-toolbar';
-import { toolbarClassNames } from '@fluentui/react-toolbar';
-import { ToolbarContextValue } from '@fluentui/react-toolbar';
-import { ToolbarContextValues } from '@fluentui/react-toolbar';
-import { ToolbarDivider } from '@fluentui/react-toolbar';
-import { ToolbarDividerProps } from '@fluentui/react-toolbar';
-import { ToolbarDividerState } from '@fluentui/react-toolbar';
-import { ToolbarProps } from '@fluentui/react-toolbar';
-import { ToolbarSlots } from '@fluentui/react-toolbar';
-import { ToolbarState } from '@fluentui/react-toolbar';
-import { ToolbarToggleButton } from '@fluentui/react-toolbar';
-import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
-import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
+import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
+import { textareaFieldClassNames } from '@fluentui/react-textarea';
+import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
-import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupContext_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
-import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -255,30 +218,28 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useCombobox_unstable } from '@fluentui/react-combobox';
-import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
-import { useDropdown_unstable } from '@fluentui/react-combobox';
-import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useDataGrid_unstable } from '@fluentui/react-table';
+import { useDataGridBody_unstable } from '@fluentui/react-table';
+import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
+import { useDataGridCell_unstable } from '@fluentui/react-table';
+import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContextValues_unstable } from '@fluentui/react-table';
+import { useDataGridHeader_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderStyles_unstable } from '@fluentui/react-table';
+import { useDataGridRow_unstable } from '@fluentui/react-table';
+import { useDataGridRowStyles_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCell_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
-import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
-import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
-import { useListbox_unstable } from '@fluentui/react-combobox';
-import { useListboxStyles_unstable } from '@fluentui/react-combobox';
-import { useOption_unstable } from '@fluentui/react-combobox';
-import { useOptionGroup_unstable } from '@fluentui/react-combobox';
-import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
-import { useOptionStyles_unstable } from '@fluentui/react-combobox';
-import { useOverflowMenu } from '@fluentui/react-overflow';
-import { usePersona_unstable } from '@fluentui/react-persona';
-import { usePersonaStyles_unstable } from '@fluentui/react-persona';
-import { useProgress_unstable } from '@fluentui/react-progress';
-import { useProgressStyles_unstable } from '@fluentui/react-progress';
-import { useSelect_unstable } from '@fluentui/react-select';
-import { useSelection } from '@fluentui/react-table';
-import { useSelectStyles_unstable } from '@fluentui/react-select';
-import { useSort } from '@fluentui/react-table';
-import { useTable } from '@fluentui/react-table';
+import { useInfoButton_unstable } from '@fluentui/react-infobutton';
+import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
+import { useIntersectionObserver } from '@fluentui/react-virtualizer';
+import { useProgressBar_unstable } from '@fluentui/react-progress';
+import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
@@ -288,20 +249,32 @@ import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
 import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
+import { useTableColumnSizing_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
+import { useTableFeatures } from '@fluentui/react-table';
+import { UseTableFeaturesOptions } from '@fluentui/react-table';
 import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
-import { UseTableOptions } from '@fluentui/react-table';
+import { useTableResizeHandle_unstable } from '@fluentui/react-table';
+import { useTableResizeHandleStyles_unstable } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
+import { useTableRowIdContext } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
+import { useTableSelection } from '@fluentui/react-table';
 import { useTableSelectionCell_unstable } from '@fluentui/react-table';
 import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useTableSort } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
-import { useToolbar_unstable } from '@fluentui/react-toolbar';
-import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
-import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
+import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
+import { Virtualizer } from '@fluentui/react-virtualizer';
+import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
+import { virtualizerClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerProps } from '@fluentui/react-virtualizer';
+import { VirtualizerSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerState } from '@fluentui/react-virtualizer';
 
 export { Alert }
 
@@ -312,38 +285,6 @@ export { AlertProps }
 export { AlertSlots }
 
 export { AlertState }
-
-export { AvatarGroup }
-
-export { avatarGroupClassNames }
-
-export { AvatarGroupItem }
-
-export { avatarGroupItemClassNames }
-
-export { AvatarGroupItemProps }
-
-export { AvatarGroupItemSlots }
-
-export { AvatarGroupItemState }
-
-export { AvatarGroupPopover }
-
-export { avatarGroupPopoverClassNames }
-
-export { AvatarGroupPopoverProps }
-
-export { AvatarGroupPopoverSlots }
-
-export { AvatarGroupPopoverState }
-
-export { AvatarGroupProps }
-
-export { AvatarGroupProvider }
-
-export { AvatarGroupSlots }
-
-export { AvatarGroupState }
 
 export { Card }
 
@@ -395,55 +336,93 @@ export { checkboxFieldClassNames }
 
 export { CheckboxFieldProps }
 
-export { ColumnDefinition }
-
-export { ColumnId }
-
-export { Combobox }
-
-export { comboboxClassNames }
-
-export { ComboboxContextValues }
-
 export { ComboboxField }
 
 export { comboboxFieldClassNames }
 
 export { ComboboxFieldProps }
 
-export { ComboboxOpenChangeData }
+export { createTableColumn }
 
-export { ComboboxOpenEvents }
+export { CreateTableColumnOptions }
 
-export { ComboboxProps }
+export { DataGrid }
 
-export { ComboboxSlots }
+export { DataGridBody }
 
-export { ComboboxState }
+export { dataGridBodyClassNames }
 
-export { DATA_OVERFLOW_ITEM }
+export { DataGridBodyProps }
 
-export { DATA_OVERFLOW_MENU }
+export { DataGridBodySlots }
 
-export { DATA_OVERFLOWING }
+export { DataGridBodyState }
 
-export { Dropdown }
+export { DataGridCell }
 
-export { dropdownClassNames }
+export { dataGridCellClassNames }
 
-export { DropdownContextValues }
+export { DataGridCellProps }
 
-export { DropdownOpenChangeData }
+export { DataGridCellSlots }
 
-export { DropdownOpenEvents }
+export { DataGridCellState }
 
-export { DropdownProps }
+export { dataGridClassNames }
 
-export { DropdownSlots }
+export { DataGridContextValue }
 
-export { DropdownState }
+export { DataGridContextValues }
 
-export { FieldConfig }
+export { DataGridHeader }
+
+export { DataGridHeaderCell }
+
+export { dataGridHeaderCellClassNames }
+
+export { DataGridHeaderCellProps }
+
+export { DataGridHeaderCellSlots }
+
+export { DataGridHeaderCellState }
+
+export { dataGridHeaderClassNames }
+
+export { DataGridHeaderProps }
+
+export { DataGridHeaderSlots }
+
+export { DataGridHeaderState }
+
+export { DataGridProps }
+
+export { DataGridRow }
+
+export { dataGridRowClassNames }
+
+export { DataGridRowProps }
+
+export { DataGridRowSlots }
+
+export { DataGridRowState }
+
+export { DataGridSelectionCell }
+
+export { dataGridSelectionCellClassNames }
+
+export { DataGridSelectionCellProps }
+
+export { DataGridSelectionCellSlots }
+
+export { DataGridSelectionCellState }
+
+export { DataGridSlots }
+
+export { DataGridState }
+
+export { Field }
+
+export { fieldClassNames }
 
 export { FieldProps }
 
@@ -451,7 +430,15 @@ export { FieldSlots }
 
 export { FieldState }
 
-export { getFieldClassNames }
+export { InfoButton }
+
+export { infoButtonClassNames }
+
+export { InfoButtonProps }
+
+export { InfoButtonSlots }
+
+export { InfoButtonState }
 
 export { InputField }
 
@@ -459,71 +446,21 @@ export { inputFieldClassNames }
 
 export { InputFieldProps }
 
-export { Listbox }
+export { ProgressBar }
 
-export { listboxClassNames }
+export { progressBarClassNames }
 
-export { ListboxContextValues }
+export { ProgressBarProps }
 
-export { ListboxProps }
+export { ProgressBarSlots }
 
-export { ListboxSlots }
+export { ProgressBarState }
 
-export { ListboxState }
+export { ProgressField }
 
-export { Option_2 as Option }
+export { progressFieldClassNames }
 
-export { optionClassNames }
-
-export { OptionGroup }
-
-export { optionGroupClassNames }
-
-export { OptionGroupProps }
-
-export { OptionGroupSlots }
-
-export { OptionGroupState }
-
-export { OptionProps }
-
-export { OptionSlots }
-
-export { OptionState }
-
-export { Overflow }
-
-export { OverflowItem }
-
-export { OverflowItemProps }
-
-export { OverflowProps }
-
-export { PartitionAvatarGroupItems }
-
-export { partitionAvatarGroupItems }
-
-export { PartitionAvatarGroupItemsOptions }
-
-export { Persona }
-
-export { personaClassNames }
-
-export { PersonaProps }
-
-export { PersonaSlots }
-
-export { PersonaState }
-
-export { Progress }
-
-export { progressClassNames }
-
-export { ProgressProps }
-
-export { ProgressSlots }
-
-export { ProgressState }
+export { ProgressFieldProps }
 
 export { RadioGroupField }
 
@@ -533,12 +470,6 @@ export { RadioGroupFieldProps }
 
 export { renderAlert_unstable }
 
-export { renderAvatarGroup_unstable }
-
-export { renderAvatarGroupItem_unstable }
-
-export { renderAvatarGroupPopover_unstable }
-
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -547,23 +478,25 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
-export { renderCombobox_unstable }
+export { renderDataGrid_unstable }
 
-export { renderDropdown_unstable }
+export { renderDataGridBody_unstable }
+
+export { renderDataGridCell_unstable }
+
+export { renderDataGridHeader_unstable }
+
+export { renderDataGridHeaderCell_unstable }
+
+export { renderDataGridRow_unstable }
+
+export { renderDataGridSelectionCell_unstable }
 
 export { renderField_unstable }
 
-export { renderListbox_unstable }
+export { renderInfoButton_unstable }
 
-export { renderOption_unstable }
-
-export { renderOptionGroup_unstable }
-
-export { renderPersona_unstable }
-
-export { renderProgress_unstable }
-
-export { renderSelect_unstable }
+export { renderProgressBar_unstable }
 
 export { renderTable_unstable }
 
@@ -579,31 +512,19 @@ export { renderTableHeader_unstable }
 
 export { renderTableHeaderCell_unstable }
 
+export { renderTableResizeHandle_unstable }
+
 export { renderTableRow_unstable }
 
 export { renderTableSelectionCell_unstable }
 
-export { renderToolbar_unstable }
-
-export { RowId }
-
-export { RowState }
-
-export { Select }
-
-export { selectClassNames }
+export { renderVirtualizer_unstable }
 
 export { SelectField }
 
 export { selectFieldClassNames }
 
 export { SelectFieldProps }
-
-export { SelectProps }
-
-export { SelectSlots }
-
-export { SelectState }
 
 export { SliderField }
 
@@ -659,6 +580,12 @@ export { TableCellLayout }
 
 export { tableCellLayoutClassNames }
 
+export { TableCellLayoutProps }
+
+export { TableCellLayoutSlots }
+
+export { TableCellLayoutState }
+
 export { TableCellProps }
 
 export { TableCellSlots }
@@ -669,11 +596,21 @@ export { tableClassName }
 
 export { tableClassNames }
 
+export { TableColumnDefinition }
+
+export { TableColumnId }
+
+export { TableColumnSizingOptions }
+
 export { TableContextProvider }
 
 export { TableContextValue }
 
 export { TableContextValues }
+
+export { TableFeaturePlugin }
+
+export { TableFeaturesState }
 
 export { TableHeader }
 
@@ -701,11 +638,21 @@ export { TableHeaderState }
 
 export { TableProps }
 
+export { TableResizeHandle }
+
+export { tableResizeHandleClassNames }
+
 export { TableRow }
 
 export { tableRowClassName }
 
 export { tableRowClassNames }
+
+export { TableRowData }
+
+export { TableRowId }
+
+export { TableRowIdContextProvider }
 
 export { TableRowProps }
 
@@ -729,10 +676,7 @@ export { TableSlots }
 
 export { TableSortState }
 
-export { TableState as HeadlessTableState }
 export { TableState }
-
-export { TableStatePlugin }
 
 export { TextareaField }
 
@@ -740,55 +684,9 @@ export { textareaFieldClassNames }
 
 export { TextareaFieldProps }
 
-export { Toolbar }
-
-export { ToolbarButton }
-
-export { ToolbarButtonProps }
-
-export { ToolbarButtonState }
-
-export { toolbarClassNames }
-
-export { ToolbarContextValue }
-
-export { ToolbarContextValues }
-
-export { ToolbarDivider }
-
-export { ToolbarDividerProps }
-
-export { ToolbarDividerState }
-
-export { ToolbarProps }
-
-export { ToolbarSlots }
-
-export { ToolbarState }
-
-export { ToolbarToggleButton }
-
-export { ToolbarToggleButtonProps }
-
-export { ToolbarToggleButtonState }
-
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
-
-export { useAvatarGroup_unstable }
-
-export { useAvatarGroupContext_unstable }
-
-export { useAvatarGroupItem_unstable }
-
-export { useAvatarGroupItemStyles_unstable }
-
-export { useAvatarGroupPopover_unstable }
-
-export { useAvatarGroupPopoverStyles_unstable }
-
-export { useAvatarGroupStyles_unstable }
 
 export { useCard_unstable }
 
@@ -806,53 +704,49 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
-export { useCombobox_unstable }
+export { useDataGrid_unstable }
 
-export { useComboboxStyles_unstable }
+export { useDataGridBody_unstable }
 
-export { useDropdown_unstable }
+export { useDataGridBodyStyles_unstable }
 
-export { useDropdownStyles_unstable }
+export { useDataGridCell_unstable }
+
+export { useDataGridCellStyles_unstable }
+
+export { useDataGridContextValues_unstable }
+
+export { useDataGridHeader_unstable }
+
+export { useDataGridHeaderCell_unstable }
+
+export { useDataGridHeaderCellStyles_unstable }
+
+export { useDataGridHeaderStyles_unstable }
+
+export { useDataGridRow_unstable }
+
+export { useDataGridRowStyles_unstable }
+
+export { useDataGridSelectionCell_unstable }
+
+export { useDataGridSelectionCellStyles_unstable }
+
+export { useDataGridStyles_unstable }
 
 export { useField_unstable }
 
 export { useFieldStyles_unstable }
 
-export { useIsOverflowGroupVisible }
+export { useInfoButton_unstable }
 
-export { useIsOverflowItemVisible }
+export { useInfoButtonStyles_unstable }
 
-export { useListbox_unstable }
+export { useIntersectionObserver }
 
-export { useListboxStyles_unstable }
+export { useProgressBar_unstable }
 
-export { useOption_unstable }
-
-export { useOptionGroup_unstable }
-
-export { useOptionGroupStyles_unstable }
-
-export { useOptionStyles_unstable }
-
-export { useOverflowMenu }
-
-export { usePersona_unstable }
-
-export { usePersonaStyles_unstable }
-
-export { useProgress_unstable }
-
-export { useProgressStyles_unstable }
-
-export { useSelect_unstable }
-
-export { useSelection }
-
-export { useSelectStyles_unstable }
-
-export { useSort }
-
-export { useTable }
+export { useProgressBarStyles_unstable }
 
 export { useTable_unstable }
 
@@ -872,7 +766,13 @@ export { useTableCellLayoutStyles_unstable }
 
 export { useTableCellStyles_unstable }
 
+export { useTableColumnSizing_unstable }
+
 export { useTableContext }
+
+export { useTableFeatures }
+
+export { UseTableFeaturesOptions }
 
 export { useTableHeader_unstable }
 
@@ -882,23 +782,41 @@ export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
 
-export { UseTableOptions }
+export { useTableResizeHandle_unstable }
+
+export { useTableResizeHandleStyles_unstable }
 
 export { useTableRow_unstable }
 
+export { useTableRowIdContext }
+
 export { useTableRowStyles_unstable }
+
+export { useTableSelection }
 
 export { useTableSelectionCell_unstable }
 
 export { useTableSelectionCellStyles_unstable }
 
+export { useTableSort }
+
 export { useTableStyles_unstable }
 
-export { useToolbar_unstable }
+export { useVirtualizer_unstable }
 
-export { useToolbarDividerStyles_unstable }
+export { useVirtualizerStyles_unstable }
 
-export { useToolbarStyles_unstable }
+export { Virtualizer }
+
+export { VirtualizerChildRenderFunction }
+
+export { virtualizerClassNames }
+
+export { VirtualizerProps }
+
+export { VirtualizerSlots }
+
+export { VirtualizerState }
 
 // (No @packageDocumentation comment for this package)
 

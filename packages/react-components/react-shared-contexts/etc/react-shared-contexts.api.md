@@ -8,6 +8,14 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
+export type OverridesContextValue_unstable = {
+    inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+};
+
+// @internal (undocumented)
+export const OverridesProvider_unstable: React_2.Provider<OverridesContextValue_unstable | undefined>;
+
+// @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
@@ -43,6 +51,11 @@ export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibil
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
+
+// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue" which is marked as @internal
+//
+// @public (undocumented)
+export function useOverrides_unstable(): OverridesContextValue_unstable;
 
 // @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;

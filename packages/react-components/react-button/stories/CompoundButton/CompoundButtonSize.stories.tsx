@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, CompoundButton } from '@fluentui/react-components';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -17,13 +15,13 @@ export const Size = () => {
 
   return (
     <div className={styles.wrapper}>
-      <CompoundButton icon={<CalendarMonth />} secondaryContent="Secondary content" size="small">
+      <CompoundButton icon={<CalendarMonthRegular />} secondaryContent="Secondary content" size="small">
         Size: small
       </CompoundButton>
-      <CompoundButton icon={<CalendarMonth />} secondaryContent="Secondary content" size="medium">
+      <CompoundButton icon={<CalendarMonthRegular />} secondaryContent="Secondary content" size="medium">
         Size: medium
       </CompoundButton>
-      <CompoundButton icon={<CalendarMonth />} secondaryContent="Secondary content" size="large">
+      <CompoundButton icon={<CalendarMonthRegular />} secondaryContent="Secondary content" size="large">
         Size: large
       </CompoundButton>
     </div>

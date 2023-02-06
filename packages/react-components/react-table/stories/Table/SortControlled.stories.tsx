@@ -16,11 +16,12 @@ import {
   Table,
   TableHeader,
   TableHeaderCell,
-  useTable,
-  ColumnDefinition,
-  ColumnId,
-  useSort,
+  useTableFeatures,
+  TableColumnDefinition,
+  TableColumnId,
+  useTableSort,
   TableCellLayout,
+  createTableColumn,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,37 +90,37 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
     columnId: 'file',
     compare: (a, b) => {
       return a.file.label.localeCompare(b.file.label);
     },
-  },
-  {
+  }),
+  createTableColumn<Item>({
     columnId: 'author',
     compare: (a, b) => {
       return a.author.label.localeCompare(b.author.label);
     },
-  },
-  {
+  }),
+  createTableColumn<Item>({
     columnId: 'lastUpdated',
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
-  },
-  {
+  }),
+  createTableColumn<Item>({
     columnId: 'lastUpdate',
     compare: (a, b) => {
       return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
     },
-  },
+  }),
 ];
 
 export const SortControlled = () => {
   const [sortState, setSortState] = React.useState<{
     sortDirection: 'ascending' | 'descending';
-    sortColumn: ColumnId | undefined;
+    sortColumn: TableColumnId | undefined;
   }>({
     sortDirection: 'ascending' as const,
     sortColumn: 'file',
@@ -128,23 +129,23 @@ export const SortControlled = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
-    [useSort({ sortState, onSortChange: setSortState })],
+    [useTableSort({ sortState, onSortChange: (e, nextSortState) => setSortState(nextSortState) })],
   );
 
-  const headerSortProps = (columnId: ColumnId) => ({
-    onClick: () => toggleColumnSort(columnId),
+  const headerSortProps = (columnId: TableColumnId) => ({
+    onClick: (e: React.MouseEvent) => toggleColumnSort(e, columnId),
     sortDirection: getSortDirection(columnId),
   });
 
   const rows = sort(getRows());
 
   return (
-    <Table sortable>
+    <Table sortable aria-label="Table with controlled sort">
       <TableHeader>
         <TableRow>
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
@@ -162,7 +163,11 @@ export const SortControlled = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
@@ -177,4 +182,15 @@ export const SortControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+SortControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default our hook is uncontrolled. However, it is possible to control sort features',
+        'with external user state.',
+      ].join('\n'),
+    },
+  },
 };

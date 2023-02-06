@@ -46,7 +46,7 @@
     },
     "@fluentui/circulars-test": {
       "root": "packages/fluentui/circulars-test",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -85,7 +85,7 @@
     },
     "@fluentui/docs": {
       "root": "packages/fluentui/docs",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -102,7 +102,7 @@
     },
     "@fluentui/e2e": {
       "root": "packages/fluentui/e2e",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -113,6 +113,11 @@
     },
     "@fluentui/example-data": {
       "root": "packages/example-data",
+      "projectType": "library",
+      "implicitDependencies": []
+    },
+    "@fluentui/fluent2-theme": {
+      "root": "packages/fluent2-theme",
       "projectType": "library",
       "implicitDependencies": []
     },
@@ -153,7 +158,7 @@
     },
     "@fluentui/local-sandbox": {
       "root": "packages/fluentui/local-sandbox",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -204,7 +209,7 @@
     },
     "@fluentui/perf": {
       "root": "packages/fluentui/perf",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -215,7 +220,7 @@
     },
     "@fluentui/perf-test-northstar": {
       "root": "packages/fluentui/perf-test-northstar",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -238,7 +243,7 @@
     },
     "@fluentui/projects-test": {
       "root": "packages/fluentui/projects-test",
-      "projectType": "library",
+      "projectType": "application",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
@@ -324,6 +329,13 @@
       "projectType": "library",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
+    },
+    "@fluentui/react-breadcrumb": {
+      "root": "packages/react-components/react-breadcrumb",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-breadcrumb/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-builder": {
       "root": "packages/fluentui/react-builder",
@@ -414,10 +426,24 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-data-grid-react-window": {
+      "root": "packages/react-components/react-data-grid-react-window",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-data-grid-react-window/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-date-time": {
       "root": "packages/react-date-time",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/react-datepicker": {
+      "root": "packages/react-components/react-datepicker",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-datepicker/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-dialog": {
       "root": "packages/react-components/react-dialog",
@@ -437,6 +463,13 @@
       "root": "packages/react-docsite-components",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/react-drawer": {
+      "root": "packages/react-components/react-drawer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-drawer/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-examples": {
       "root": "packages/react-examples",
@@ -533,11 +566,19 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
-    "@fluentui/react-migration-v8-v9": {
-      "root": "packages/react-migration-v8-v9",
+    "@fluentui/react-migration-v0-v9": {
+      "root": "packages/react-components/react-migration-v0-v9",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-migration-v8-v9/src"
+      "sourceRoot": "packages/react-components/react-migration-v0-v9/src",
+      "tags": ["vNext", "platform:web"]
+    },
+    "@fluentui/react-migration-v8-v9": {
+      "root": "packages/react-components/react-migration-v8-v9",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-migration-v8-v9/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
@@ -692,13 +733,6 @@
       "sourceRoot": "packages/react-components/react-spinner/src",
       "tags": ["vNext", "platform:web"]
     },
-    "@fluentui/react-storybook": {
-      "root": "packages/react-components/react-storybook",
-      "projectType": "library",
-      "sourceRoot": "packages/react-components/react-storybook/src",
-      "tags": ["vNext", "platform:web"],
-      "implicitDependencies": []
-    },
     "@fluentui/react-storybook-addon": {
       "root": "packages/react-components/react-storybook-addon",
       "projectType": "library",
@@ -733,6 +767,13 @@
       "sourceRoot": "packages/react-components/react-tabster/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-tags": {
+      "root": "packages/react-components/react-tags",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-tags/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-telemetry": {
       "root": "packages/fluentui/react-telemetry",
@@ -796,20 +837,173 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-virtualizer": {
+      "root": "packages/react-components/react-virtualizer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-virtualizer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-window-provider": {
       "root": "packages/react-window-provider",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/recipes-react-components": {
+      "root": "apps/recipes-react-components",
+      "projectType": "application",
+      "implicitDependencies": [],
+      "sourceRoot": "apps/recipes-react-components/src",
+      "tags": ["vNext"]
     },
     "@fluentui/scheme-utilities": {
       "root": "packages/scheme-utilities",
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/scripts": {
-      "root": "scripts",
+    "@fluentui/scripts-api-extractor": {
+      "root": "scripts/api-extractor",
+      "sourceRoot": "scripts/api-extractor",
       "projectType": "library",
-      "implicitDependencies": []
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-babel": {
+      "root": "scripts/babel",
+      "sourceRoot": "scripts/babel",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-beachball": {
+      "root": "scripts/beachball",
+      "sourceRoot": "scripts/beachball",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-cypress": {
+      "root": "scripts/cypress",
+      "sourceRoot": "scripts/cypress/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-dangerjs": {
+      "root": "scripts/dangerjs",
+      "sourceRoot": "scripts/dangerjs/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-executors": {
+      "root": "scripts/executors",
+      "sourceRoot": "scripts/executors",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-fluentui-publish": {
+      "root": "scripts/fluentui-publish",
+      "sourceRoot": "scripts/fluentui-publish",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-generators": {
+      "root": "scripts/generators",
+      "sourceRoot": "scripts/generators",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-github": {
+      "root": "scripts/github",
+      "sourceRoot": "scripts/github/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-gulp": {
+      "root": "scripts/gulp",
+      "sourceRoot": "scripts/gulp/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-jest": {
+      "root": "scripts/jest",
+      "sourceRoot": "scripts/jest/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-lint-staged": {
+      "root": "scripts/lint-staged",
+      "sourceRoot": "scripts/lint-staged",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-monorepo": {
+      "root": "scripts/monorepo",
+      "sourceRoot": "scripts/monorepo/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-package-manager": {
+      "root": "scripts/package-manager",
+      "sourceRoot": "scripts/package-manager",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-prettier": {
+      "root": "scripts/prettier",
+      "sourceRoot": "scripts/prettier/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-projects-test": {
+      "root": "scripts/projects-test",
+      "sourceRoot": "scripts/projects-test/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-puppeteer": {
+      "root": "scripts/puppeteer",
+      "sourceRoot": "scripts/puppeteer/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-storybook": {
+      "root": "scripts/storybook",
+      "sourceRoot": "scripts/storybook/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-tasks": {
+      "root": "scripts/tasks",
+      "sourceRoot": "scripts/tasks/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-triage-bot": {
+      "root": "scripts/triage-bot",
+      "sourceRoot": "scripts/triage-bot/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-ts-node": {
+      "root": "scripts/ts-node",
+      "sourceRoot": "scripts/ts-node",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-update-release-notes": {
+      "root": "scripts/update-release-notes",
+      "sourceRoot": "scripts/update-release-notes",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-utils": {
+      "root": "scripts/utils",
+      "sourceRoot": "scripts/utils/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-webpack": {
+      "root": "scripts/webpack",
+      "sourceRoot": "scripts/webpack/src",
+      "projectType": "library",
+      "tags": ["tools"]
     },
     "@fluentui/set-version": {
       "root": "packages/set-version",
@@ -885,6 +1079,13 @@
       "root": "apps/theming-designer",
       "projectType": "application",
       "implicitDependencies": []
+    },
+    "@fluentui/tokens": {
+      "root": "packages/tokens",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/tokens/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",

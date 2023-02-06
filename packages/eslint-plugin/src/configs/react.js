@@ -48,6 +48,7 @@ module.exports = {
       files: ['**/*.cy.{ts,tsx,js}', 'isConformant.{ts,tsx,js}'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
+        'react/jsx-no-bind': 'off',
       },
     },
   ],

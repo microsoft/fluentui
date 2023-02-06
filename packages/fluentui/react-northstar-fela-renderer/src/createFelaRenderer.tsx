@@ -5,7 +5,6 @@ import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
 import * as React from 'react';
-import { RendererProvider } from 'react-fela';
 
 import { felaDisableAnimationsPlugin } from './felaDisableAnimationsPlugin';
 import { felaExpandCssShorthandsPlugin } from './felaExpandCssShorthandsPlugin';
@@ -14,7 +13,8 @@ import { felaInvokeKeyframesPlugin } from './felaInvokeKeyframesPlugin';
 import { felaPerformanceEnhancer } from './felaPerformanceEnhancer';
 import { felaSanitizeCssPlugin } from './felaSanitizeCssPlugin';
 import { felaStylisEnhancer } from './felaStylisEnhancer';
-import { FelaRendererParam } from './types';
+import { RendererProvider } from './RendererProvider';
+import { FelaRenderer, FelaRendererParam } from './types';
 
 let felaDevMode = false;
 
@@ -23,7 +23,7 @@ try {
   felaDevMode = !!window.localStorage.felaDevMode;
 } catch {}
 
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   if (felaDevMode) {
     /* eslint-disable-next-line no-console */
     console.warn(
@@ -92,58 +92,72 @@ const rendererConfig = {
   ],
 };
 
-export const createFelaRenderer: CreateRenderer = () => {
-  const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
-    listeners: [];
-    nodes: Record<string, HTMLStyleElement>;
-    updateSubscription: Function | undefined;
-  };
-  let usedRenderers: number = 0;
-
-  // rehydration disabled to avoid leaking styles between renderers
-  // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-  const Provider: Renderer['Provider'] = props => (
-    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: props.target }}>
-      {props.children}
-    </RendererProvider>
-  );
-
-  return {
-    registerUsage: () => {
-      usedRenderers += 1;
-    },
-    unregisterUsage: () => {
-      usedRenderers -= 1;
-
-      if (usedRenderers === 0) {
-        felaRenderer.listeners = [];
-        felaRenderer.nodes = {};
-        felaRenderer.updateSubscription = undefined;
-      }
-    },
-
-    renderFont: font => {
-      felaRenderer.renderFont(font.name, font.paths, font.props);
-    },
-    renderGlobal: felaRenderer.renderStatic,
-    renderRule: (styles, param) => {
-      const felaParam: FelaRendererParam = {
-        ...param,
-        theme: { direction: param.direction },
-      };
-
-      return felaRenderer.renderRule(() => (styles as unknown) as IStyle, felaParam);
-    },
-
-    // getOriginalRenderer() is implemented only for tests to be compatible with jest-react-fela expectations.
-    getOriginalRenderer: (): IRenderer => {
-      if (process.env.NODE_ENV !== 'test') {
-        throw new Error('This method implements private API and can be used only in tests');
-      }
-
-      return felaRenderer;
-    },
-
-    Provider,
-  };
+export type CreateFelaRendererOptions = {
+  nonce?: string;
 };
+
+export function createFelaRenderer(options: CreateFelaRendererOptions = {}): CreateRenderer {
+  const { nonce } = options;
+
+  return () => {
+    const felaRenderer = createRenderer(rendererConfig) as FelaRenderer & {
+      listeners: [];
+      nodes: Record<string, HTMLStyleElement>;
+      updateSubscription: Function | undefined;
+    };
+    let usedRenderers: number = 0;
+
+    if (nonce) {
+      felaRenderer.styleNodeAttributes = {
+        nonce,
+      };
+    }
+
+    // rehydration disabled to avoid leaking styles between renderers
+    // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
+    const Provider: Renderer['Provider'] = props => (
+      <RendererProvider renderer={felaRenderer} rehydrate={false} targetDocument={props.target}>
+        {props.children}
+      </RendererProvider>
+    );
+
+    return {
+      registerUsage: () => {
+        usedRenderers += 1;
+      },
+      unregisterUsage: () => {
+        usedRenderers -= 1;
+
+        if (usedRenderers === 0) {
+          felaRenderer.listeners = [];
+          felaRenderer.nodes = {};
+          felaRenderer.updateSubscription = undefined;
+        }
+      },
+
+      renderFont: font => {
+        felaRenderer.renderFont(font.name, font.paths, font.props);
+      },
+      renderGlobal: felaRenderer.renderStatic,
+      renderRule: (styles, param) => {
+        const felaParam: FelaRendererParam = {
+          ...param,
+          theme: { direction: param.direction },
+        };
+
+        return felaRenderer.renderRule(() => (styles as unknown) as IStyle, felaParam);
+      },
+
+      // getOriginalRenderer() is implemented only for tests to be compatible with jest-react-fela expectations.
+      getOriginalRenderer: (): IRenderer => {
+        if (process.env.NODE_ENV !== 'test') {
+          throw new Error('This method implements private API and can be used only in tests');
+        }
+
+        return felaRenderer;
+      },
+
+      Provider,
+    };
+  };
+}

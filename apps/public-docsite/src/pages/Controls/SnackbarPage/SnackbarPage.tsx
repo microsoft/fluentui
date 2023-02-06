@@ -12,13 +12,13 @@ export const SnackbarPage: React.FunctionComponent<IControlsPageProps> = props =
   return (
     <ControlsAreaPage
       {...props}
-      {...SnackbarPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...SnackbarPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'android':
       return [

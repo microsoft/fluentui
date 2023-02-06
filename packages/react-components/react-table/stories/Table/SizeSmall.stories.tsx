@@ -67,7 +67,7 @@ const columns = [
 
 export const SizeSmall = () => {
   return (
-    <Table size="small">
+    <Table size="small" aria-label="Table with small size">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -82,7 +82,15 @@ export const SizeSmall = () => {
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar name={item.author.label} badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
