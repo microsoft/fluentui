@@ -545,7 +545,7 @@ export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.R
 // @public
 export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
 
-// @internal (undocumented)
+// @public (undocumented)
 export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
 
 // @public
