@@ -16,6 +16,7 @@ export const useSkeletonLine_unstable = (props: SkeletonLineProps, ref: React.Re
 
   const root = getNativeElementProps('div', {
     ref,
+    ...props,
   });
 
   return {
