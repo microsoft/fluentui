@@ -32,7 +32,11 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
     renderHeaderCell: () => <>File</>,
-    renderCell: (item: Item) => <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>,
+    renderCell: (item: Item) => (
+      <TableCellLayout truncate media={item.file.icon}>
+        {item.file.label}
+      </TableCellLayout>
+    ),
     compare: (a, b) => {
       return a.file.label.localeCompare(b.file.label);
     },
@@ -42,6 +46,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
     renderHeaderCell: () => <>Author</>,
     renderCell: (item: Item) => (
       <TableCellLayout
+        truncate
         media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
       >
         {item.author.label}
@@ -54,7 +59,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdated',
     renderHeaderCell: () => <>Last updated</>,
-    renderCell: (item: Item) => item.lastUpdated.label,
+    renderCell: (item: Item) => <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
@@ -62,7 +67,11 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdate',
     renderHeaderCell: () => <>Last update</>,
-    renderCell: (item: Item) => <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>,
+    renderCell: (item: Item) => (
+      <TableCellLayout truncate media={item.lastUpdate.icon}>
+        {item.lastUpdate.label}
+      </TableCellLayout>
+    ),
     compare: (a, b) => {
       return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
     },

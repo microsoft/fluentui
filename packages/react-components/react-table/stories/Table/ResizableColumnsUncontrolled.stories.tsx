@@ -116,14 +116,14 @@ export const ResizableColumnsUncontrolled = () => {
   const [columnSizingOptions] = useState<TableColumnSizingOptions>({
     file: {
       idealWidth: 300,
-      minWidth: 190,
+      minWidth: 150,
     },
     author: {
-      minWidth: 170,
+      minWidth: 110,
       defaultWidth: 250,
     },
     lastUpdate: {
-      minWidth: 220,
+      minWidth: 150,
     },
   });
 
@@ -170,10 +170,13 @@ export const ResizableColumnsUncontrolled = () => {
           {rows.map(({ item }) => (
             <TableRow key={item.file.label}>
               <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
-                <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+                <TableCellLayout truncate media={item.file.icon}>
+                  {item.file.label}
+                </TableCellLayout>
               </TableCell>
               <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
                 <TableCellLayout
+                  truncate
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
@@ -182,10 +185,12 @@ export const ResizableColumnsUncontrolled = () => {
                 </TableCellLayout>
               </TableCell>
               <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
-                {item.lastUpdated.label}
+                <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
               </TableCell>
               <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
-                <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+                <TableCellLayout truncate media={item.lastUpdate.icon}>
+                  {item.lastUpdate.label}
+                </TableCellLayout>
               </TableCell>
             </TableRow>
           ))}
