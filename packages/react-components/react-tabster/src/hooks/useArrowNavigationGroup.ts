@@ -27,7 +27,7 @@ export interface UseArrowNavigationGroupOptions {
   ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
   /**
    * The default focusable item in the group will be an element with Focusable.isDefault property.
-   * Note that there is no way in @fluentui/react-tabster to set default focusable element,
+   * Note that there is no way in \@fluentui/react-tabster to set default focusable element,
    * and this option is currently for internal testing purposes only.
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
