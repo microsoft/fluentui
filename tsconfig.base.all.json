@@ -7,6 +7,7 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "isolatedModules": true,
     "preserveConstEnums": true,
+    "sourceMap": true,
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
