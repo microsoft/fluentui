@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "TableCellLayout component now supports ellipsis prop",
+  "packageName": "@fluentui/react-table",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
