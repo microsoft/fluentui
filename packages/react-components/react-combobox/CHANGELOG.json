@@ -2,6 +2,33 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:09 GMT",
+      "tag": "@fluentui/react-combobox_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "22ecddb787ec8626605eb9cd79d8905d93ed179f",
+            "comment": "fix: update Combobox and Dropdown to never use the Option value string as a display value; input value must be set if selectedOptions or defaultSelectOptions is set\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.1.6",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.3.11",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:53 GMT",
       "tag": "@fluentui/react-combobox_v9.0.0",
       "version": "9.0.0",

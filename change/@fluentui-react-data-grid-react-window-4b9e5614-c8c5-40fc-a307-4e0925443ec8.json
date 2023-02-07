@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Initial release react-data-grid-react-window",
-  "packageName": "@fluentui/react-data-grid-react-window",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

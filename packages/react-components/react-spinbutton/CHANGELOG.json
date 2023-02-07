@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:07 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "none": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "7d266a45afded6a702ac86d5cf0722745b882266",
+            "comment": "Updated the story description"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-spinbutton_v9.1.1",
       "version": "9.1.1",

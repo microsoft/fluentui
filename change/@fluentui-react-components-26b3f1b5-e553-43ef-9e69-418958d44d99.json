@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added export of column sizing",
-  "packageName": "@fluentui/react-components",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
