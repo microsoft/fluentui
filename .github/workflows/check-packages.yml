@@ -12,7 +12,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 14.18.1
+          node-version: 16.0.0
           cache: 'yarn'
 
       - uses: tj-actions/changed-files@v34
@@ -42,7 +42,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 14.18.1
+          node-version: 16.0.0
 
       - uses: actions/github-script@v6
         with:
@@ -68,7 +68,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 14.18.1
+          node-version: 16.0.0
 
       - uses: actions/github-script@v6
         with:
