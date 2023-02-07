@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const items = [
   {

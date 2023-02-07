@@ -20,7 +20,7 @@ import {
   TableColumnDefinition,
   createTableColumn,
   DataGridProps,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;

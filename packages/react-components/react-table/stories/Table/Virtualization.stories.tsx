@@ -23,7 +23,7 @@ import {
   useTableFeatures,
   useTableSelection,
   TableRowData as RowStateBase,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type Item = {
   file: {

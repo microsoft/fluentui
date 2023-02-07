@@ -12,7 +12,7 @@ import {
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableFeatures,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
   DocumentRegular,

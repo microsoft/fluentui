@@ -27,7 +27,7 @@ import {
   useTableSelection,
   createTableColumn,
   TableCellActions,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);

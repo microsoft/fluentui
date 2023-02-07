@@ -27,7 +27,7 @@ import {
   TableRowId,
   TableRowProps,
   TableSelectionState,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;

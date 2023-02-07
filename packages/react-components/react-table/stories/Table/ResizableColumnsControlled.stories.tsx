@@ -13,7 +13,7 @@ import {
   useTableFeatures,
   useTableSort,
   TableColumnSizingOptions,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 import {
   DocumentRegular,
   EditRegular,

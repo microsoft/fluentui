@@ -24,7 +24,7 @@ import {
   useTableSort,
   createTableColumn,
   TableColumnId,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
