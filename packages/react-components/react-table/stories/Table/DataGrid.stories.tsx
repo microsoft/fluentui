@@ -8,7 +8,6 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -24,6 +23,9 @@ import {
   useTableSort,
   createTableColumn,
   TableColumnId,
+  PresenceBadgeStatus,
+  Avatar,
+  useArrowNavigationGroup,
 } from '@fluentui/react-components';
 
 type FileCell = {

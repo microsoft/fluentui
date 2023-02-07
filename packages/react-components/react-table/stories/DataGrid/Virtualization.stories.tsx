@@ -8,15 +8,20 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
-import { TableColumnDefinition, createTableColumn, TableCellLayout } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  useScrollbarWidth,
+  useFluent,
   DataGridBody,
   DataGrid,
   DataGridRow,
   DataGridHeader,
   DataGridCell,
   DataGridHeaderCell,
+  TableColumnDefinition,
+  createTableColumn,
+  TableCellLayout,
 } from '@fluentui/react-data-grid-react-window';
 
 type FileCell = {

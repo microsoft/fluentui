@@ -9,8 +9,11 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  useScrollbarWidth,
+  useFluent,
   TableBody,
   TableCell,
   TableRow,

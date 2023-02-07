@@ -8,8 +8,11 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
+  useArrowNavigationGroup,
   TableBody,
   TableCell,
   TableRow,

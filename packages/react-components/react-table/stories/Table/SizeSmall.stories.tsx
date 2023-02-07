@@ -8,8 +8,8 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-components';
 import {
+  Avatar,
   TableBody,
   TableCell,
   TableRow,

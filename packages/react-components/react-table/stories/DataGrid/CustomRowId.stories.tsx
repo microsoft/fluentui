@@ -8,8 +8,10 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Checkbox } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Checkbox,
   DataGridBody,
   DataGridRow,
   DataGrid,

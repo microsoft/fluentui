@@ -13,6 +13,11 @@ import {
   useTableFeatures,
   useTableSort,
   TableColumnSizingOptions,
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
+  Input,
+  Label,
 } from '@fluentui/react-components';
 import {
   DocumentRegular,
@@ -25,8 +30,6 @@ import {
 } from '@fluentui/react-icons';
 import * as React from 'react';
 import { useState } from 'react';
-import { PresenceBadgeStatus } from '../../../react-badge/src';
-import { Avatar, Button, Input, Label } from '@fluentui/react-components';
 
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
