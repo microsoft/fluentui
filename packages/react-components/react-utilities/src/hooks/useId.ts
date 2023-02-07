@@ -37,7 +37,9 @@ export function useId(prefix: string = 'fui-', providedId?: string): string {
   const _useId: () => string | undefined = (React as never)['use' + 'Id'];
 
   if (_useId) {
-    return providedId || `${idPrefix}${prefix}${_useId()}`;
+    const generatedId = _useId()?.replace(/:/g, '');
+
+    return providedId || `${idPrefix}${prefix}${generatedId}`;
   }
 
   // Hooks appear to be running conditionally, but they will always run in the same order since it's based on
