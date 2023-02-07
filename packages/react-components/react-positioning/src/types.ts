@@ -165,7 +165,7 @@ export interface PositioningOptions {
 
 export interface PositioningProps
   // "positionFixed" & "unstable_disableTether" are not exported as public API (yet)
-  extends Omit<PositioningOptions, 'positionFixed'> {
+  extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;
 

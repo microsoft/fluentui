@@ -72,7 +72,7 @@ export type PositioningImperativeRef = {
 };
 
 // @public (undocumented)
-export interface PositioningProps extends Omit<PositioningOptions, 'positionFixed'> {
+export interface PositioningProps extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }
