@@ -1,7 +1,7 @@
 {
-  "type": "prerelease",
-  "comment": "TableCellLayout component now supports ellipsis prop",
-  "packageName": "@fluentui/react-table",
+  "comment": "feat: TableCellLayout component now supports truncate prop",
+  "dependentChangeType": "patch",
   "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
+  "packageName": "@fluentui/react-table",
+  "type": "prerelease"
 }

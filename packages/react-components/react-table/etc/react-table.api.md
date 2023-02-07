@@ -295,7 +295,7 @@ export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
 // @public
 export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
     appearance?: 'primary';
-    ellipsis?: boolean;
+    truncate?: boolean;
 };
 
 // @public (undocumented)
@@ -308,7 +308,7 @@ export type TableCellLayoutSlots = {
 };
 
 // @public
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance' | 'ellipsis'> & {
+export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance' | 'truncate'> & {
     avatarSize: AvatarSize | undefined;
 } & Pick<TableContextValue, 'size'>;
 

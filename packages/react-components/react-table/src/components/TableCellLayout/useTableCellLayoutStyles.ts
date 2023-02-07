@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     ...shorthands.flex(1, 1, '0px'),
   },
 
-  rootEllipsis: {
+  rootTruncate: {
     overflowX: 'hidden',
   },
 
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
 
-  contentEllipsis: {
+  contentTruncate: {
     overflowX: 'hidden',
   },
 
@@ -57,7 +57,7 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
-  mainEllipsis: {
+  mainTruncate: {
     overflowX: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -74,12 +74,12 @@ const useStyles = makeStyles({
  */
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
   const styles = useStyles();
-  const { ellipsis } = state;
+  const { truncate } = state;
 
   state.root.className = mergeClasses(
     tableCellLayoutClassNames.root,
     styles.root,
-    ellipsis && styles.rootEllipsis,
+    truncate && styles.rootTruncate,
     state.root.className,
   );
   const primary = state.appearance === 'primary';
@@ -103,7 +103,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   if (state.main) {
     state.main.className = mergeClasses(
       tableCellLayoutClassNames.main,
-      ellipsis && styles.mainEllipsis,
+      truncate && styles.mainTruncate,
       primary && styles.mainPrimary,
       state.main.className,
     );
@@ -121,7 +121,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
     state.content.className = mergeClasses(
       tableCellLayoutClassNames.content,
       styles.content,
-      ellipsis && styles.contentEllipsis,
+      truncate && styles.contentTruncate,
       state.content.className,
     );
   }
