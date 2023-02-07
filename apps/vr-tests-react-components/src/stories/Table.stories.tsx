@@ -620,7 +620,9 @@ const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativ
               {item.author.label}
             </TableCellLayout>
           </TableCell>
-          <TableCell>{item.lastUpdated.label}</TableCell>
+          <TableCell>
+            <TableCellLayout truncate={truncate}>{item.lastUpdated.label}</TableCellLayout>
+          </TableCell>
           <TableCell>
             <TableCellLayout truncate={truncate} media={item.lastUpdate.icon}>
               {item.lastUpdate.label}
