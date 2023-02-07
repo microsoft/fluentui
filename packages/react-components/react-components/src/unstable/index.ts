@@ -139,6 +139,7 @@ export {
   useDataGridStyles_unstable,
   useDataGrid_unstable,
   renderDataGrid_unstable,
+  useDataGridContextValues_unstable,
   DataGridHeader,
   dataGridHeaderClassNames,
   useDataGridHeaderStyles_unstable,

@@ -159,7 +159,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
    * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
    */
   function getCodesandboxBabelOptions() {
-    return Object.values(allPackageInfo).reduce((acc, cur) => {
+    const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
       if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
         const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
@@ -170,6 +170,13 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
 
       return acc;
     }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
+
+    return {
+      ...importMappings,
+      '@fluentui/react-data-grid-react-window': {
+        replace: '@fluentui/react-data-grid-react-window',
+      },
+    };
   }
 }
 

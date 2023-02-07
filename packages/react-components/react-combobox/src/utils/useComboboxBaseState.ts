@@ -22,7 +22,7 @@ export const useComboboxBaseState = (
   } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionsMatchingText } = optionCollection;
+  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -56,13 +56,22 @@ export const useComboboxBaseState = (
       return props.defaultValue;
     }
 
+    const selectedOptionsText = getOptionsMatchingValue(optionValue => {
+      return selectedOptions.includes(optionValue);
+    }).map(option => option.text);
+
     if (multiselect) {
       // editable inputs should not display multiple selected options in the input as text
-      return editable ? '' : selectedOptions.join(', ');
+      return editable ? '' : selectedOptionsText.join(', ');
     }
 
-    return selectedOptions[0];
-  }, [controllableValue, editable, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
+    return selectedOptionsText[0];
+
+    // do not change value after isFirstMount changes,
+    // we do not want to accidentally override defaultValue on a second render
+    // unless another value is intentionally set
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, props.defaultValue, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
@@ -84,7 +93,7 @@ export const useComboboxBaseState = (
     if (open && !activeOption) {
       // if it is single-select and there is a selected option, start at the selected option
       if (!multiselect && selectedOptions.length > 0) {
-        const selectedOption = getOptionsMatchingText(v => v === selectedOptions[0]).pop();
+        const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
         selectedOption && setActiveOption(selectedOption);
       }
       // default to starting at the first option

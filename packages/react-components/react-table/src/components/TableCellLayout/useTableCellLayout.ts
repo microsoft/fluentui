@@ -34,6 +34,7 @@ export const useTableCellLayout_unstable = (
     },
     root: getNativeElementProps('div', { ref, ...props }),
     appearance: props.appearance,
+    ellipsis: props.ellipsis,
     main: resolveShorthand(props.main, { required: true }),
     media: resolveShorthand(props.media),
     description: resolveShorthand(props.description),
