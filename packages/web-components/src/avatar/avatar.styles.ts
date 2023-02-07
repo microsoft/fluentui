@@ -88,7 +88,7 @@ import {
   strokeWidthThicker,
   strokeWidthThickest,
   strokeWidthThin,
-} from '../theme/design-tokens';
+} from '../theme/design-tokens.js';
 
 // TODO: Should all animation constants go to tokens/theme or globals?
 // https://github.com/microsoft/fluentui/issues/16372#issuecomment-778240665
@@ -505,7 +505,7 @@ export const styles = css`
     border-color: ${colorBrandBackgroundStatic};
   }
 
-  :host([active][appearance='shadow']) {
+  :host([active][appearance='shadow'])::before {
     border-style: none;
     border-color: none;
   }

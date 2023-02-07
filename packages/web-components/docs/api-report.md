@@ -17,6 +17,164 @@ import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
+// @public
+export class Avatar extends FASTElement {
+    active?: AvatarActive | undefined;
+    appearance?: AvatarAppearance | undefined;
+    color: AvatarColor;
+    // (undocumented)
+    protected colorChanged(previous: string, next: string): void;
+    colorId: AvatarNamedColor | undefined;
+    // (undocumented)
+    colorIdChanged(): void;
+    initials: string | undefined;
+    // (undocumented)
+    protected initialsChanged(previous: string | undefined, next: string | undefined): void;
+    name: string | undefined;
+    // (undocumented)
+    protected nameChanged(previous: string, next: string): void;
+    // @internal
+    setColor(): AvatarColor | void;
+    // @internal
+    setInitials(): string | void;
+    shape: AvatarShape | undefined;
+    size: AvatarSize | undefined;
+}
+
+// @public
+export const AvatarActive: {
+    readonly active: "active";
+    readonly inactive: "inactive";
+};
+
+// @public
+export type AvatarActive = ValuesOf<typeof AvatarActive>;
+
+// @public
+export const AvatarAppearance: {
+    readonly ring: "ring";
+    readonly shadow: "shadow";
+    readonly ringShadow: "ring-shadow";
+};
+
+// @public
+export type AvatarAppearance = ValuesOf<typeof AvatarAppearance>;
+
+// @public
+export const AvatarColor: {
+    readonly darkRed: "dark-red";
+    readonly cranberry: "cranberry";
+    readonly red: "red";
+    readonly pumpkin: "pumpkin";
+    readonly peach: "peach";
+    readonly marigold: "marigold";
+    readonly gold: "gold";
+    readonly brass: "brass";
+    readonly brown: "brown";
+    readonly forest: "forest";
+    readonly seafoam: "seafoam";
+    readonly darkGreen: "dark-green";
+    readonly lighTeal: "light-teal";
+    readonly teal: "teal";
+    readonly steel: "steel";
+    readonly blue: "blue";
+    readonly royalBlue: "royal-blue";
+    readonly cornflower: "cornflower";
+    readonly navy: "navy";
+    readonly lavender: "lavender";
+    readonly purple: "purple";
+    readonly grape: "grape";
+    readonly lilac: "lilac";
+    readonly pink: "pink";
+    readonly magenta: "magenta";
+    readonly plum: "plum";
+    readonly beige: "beige";
+    readonly mink: "mink";
+    readonly platinum: "platinum";
+    readonly anchor: "anchor";
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly colorful: "colorful";
+};
+
+// @public
+export type AvatarColor = ValuesOf<typeof AvatarColor>;
+
+// @public
+export const AvatarDefinition: FASTElementDefinition<typeof Avatar>;
+
+// @public
+export const AvatarNamedColor: {
+    readonly darkRed: "dark-red";
+    readonly cranberry: "cranberry";
+    readonly red: "red";
+    readonly pumpkin: "pumpkin";
+    readonly peach: "peach";
+    readonly marigold: "marigold";
+    readonly gold: "gold";
+    readonly brass: "brass";
+    readonly brown: "brown";
+    readonly forest: "forest";
+    readonly seafoam: "seafoam";
+    readonly darkGreen: "dark-green";
+    readonly lighTeal: "light-teal";
+    readonly teal: "teal";
+    readonly steel: "steel";
+    readonly blue: "blue";
+    readonly royalBlue: "royal-blue";
+    readonly cornflower: "cornflower";
+    readonly navy: "navy";
+    readonly lavender: "lavender";
+    readonly purple: "purple";
+    readonly grape: "grape";
+    readonly lilac: "lilac";
+    readonly pink: "pink";
+    readonly magenta: "magenta";
+    readonly plum: "plum";
+    readonly beige: "beige";
+    readonly mink: "mink";
+    readonly platinum: "platinum";
+    readonly anchor: "anchor";
+};
+
+// @public
+export type AvatarNamedColor = ValuesOf<typeof AvatarNamedColor>;
+
+// @public
+export const AvatarShape: {
+    readonly circular: "circular";
+    readonly square: "square";
+};
+
+// @public
+export type AvatarShape = ValuesOf<typeof AvatarShape>;
+
+// @public
+export const AvatarSize: {
+    readonly _20: 20;
+    readonly _24: 24;
+    readonly _28: 28;
+    readonly _32: 32;
+    readonly _36: 36;
+    readonly _40: 40;
+    readonly _48: 48;
+    readonly _56: 56;
+    readonly _64: 64;
+    readonly _72: 72;
+    readonly _96: 96;
+    readonly _120: 120;
+    readonly _128: 128;
+};
+
+// @public
+export type AvatarSize = ValuesOf<typeof AvatarSize>;
+
+// @public
+export const AvatarStyles: ElementStyles;
+
+// @public (undocumented)
+export const AvatarTemplate: ElementViewTemplate<Avatar>;
+
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
 //
 // @public

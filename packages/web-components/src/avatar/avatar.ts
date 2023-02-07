@@ -129,15 +129,15 @@ export class Avatar extends FASTElement {
    * Sets the data-color attribute used for the visual presentation
    * @internal
    */
-  public setColor(): AvatarColor {
+  public setColor(): AvatarColor | void {
     if (!this.color) {
       return;
     }
 
     const colors = Object.keys(AvatarNamedColor);
 
-    return this.color === 'colorful'
-      ? colors[getHashCode(this.colorId ?? this.name ?? '') % colors.length]
+    return this.color === AvatarColor.colorful
+      ? (colors[getHashCode(this.colorId ?? this.name ?? '') % colors.length] as AvatarColor)
       : this.color;
   }
 
