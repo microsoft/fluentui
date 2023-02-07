@@ -2,6 +2,27 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 07:36:28 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.56",
+      "version": "8.5.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "e088f5010e9821b753a813ddf74aa2e89dae078e",
+            "comment": "azure theme calendar selection, contextmenu border, pivot focus border, dropdown item size updates"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.5",
+            "commit": "22ecddb787ec8626605eb9cd79d8905d93ed179f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Feb 2023 07:41:31 GMT",
       "tag": "@fluentui/azure-themes_v8.5.55",
       "version": "8.5.55",
