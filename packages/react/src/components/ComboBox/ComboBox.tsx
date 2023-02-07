@@ -801,7 +801,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Process the new input's new value when the combo box allows freeform entry
    * @param updatedValue - the input's newly changed value
-   * @returns {number} - The index of the matched option, -1 if no match was found
+   * @returns the index of the matched option, -1 if no match was found
    */
   private _processInputChangeWithFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
@@ -872,7 +872,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Process the new input's new value when the combo box does not allow freeform entry
    * @param updatedValue - the input's newly changed value
-   * @returns {number} - The index of the matched option
+   * @returns the index of the matched option
    */
   private _processInputChangeWithoutFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
