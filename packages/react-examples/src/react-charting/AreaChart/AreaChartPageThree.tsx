@@ -11,13 +11,13 @@ import {
 // import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
 // import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 // import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
-import { AreaChartPerfOneExample } from './AreaChart.PerfAnalysisOne.Example';
+import { AreaChartPerfThreeExample } from './AreaChart.PerfAnalysisThree.Example';
 
 // const AreaChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
 // const AreaChartMultipleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Multiple.Example.tsx') as string;
 // const AreaChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Styled.Example.tsx') as string;
 // const AreaChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
-const AreaChartPerfOneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisOne.Example.tsx') as string;
+const AreaChartPerfThreeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisThree.Example.tsx') as string;
 
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,8 +36,8 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Styled Area chart" code={AreaChartStyledExampleCode}>
               <AreaChartStyledExample />
             </ExampleCard> */}
-            <ExampleCard title="Area chart custom Accessibility" code={AreaChartPerfOneExampleCode}>
-              <AreaChartPerfOneExample />
+            <ExampleCard title="Area chart custom Accessibility" code={AreaChartPerfThreeExampleCode}>
+              <AreaChartPerfThreeExample />
             </ExampleCard>
           </div>
         }
