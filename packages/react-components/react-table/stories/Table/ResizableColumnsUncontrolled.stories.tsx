@@ -170,13 +170,13 @@ export const ResizableColumnsUncontrolled = () => {
           {rows.map(({ item }) => (
             <TableRow key={item.file.label}>
               <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
-                <TableCellLayout ellipsis media={item.file.icon}>
+                <TableCellLayout truncate media={item.file.icon}>
                   {item.file.label}
                 </TableCellLayout>
               </TableCell>
               <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
                 <TableCellLayout
-                  ellipsis
+                  truncate
                   media={
                     <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
                   }
@@ -185,10 +185,10 @@ export const ResizableColumnsUncontrolled = () => {
                 </TableCellLayout>
               </TableCell>
               <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
-                <TableCellLayout ellipsis>{item.lastUpdated.label}</TableCellLayout>
+                <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
               </TableCell>
               <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
-                <TableCellLayout ellipsis media={item.lastUpdate.icon}>
+                <TableCellLayout truncate media={item.lastUpdate.icon}>
                   {item.lastUpdate.label}
                 </TableCellLayout>
               </TableCell>

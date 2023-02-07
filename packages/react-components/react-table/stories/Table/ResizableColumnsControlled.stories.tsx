@@ -33,7 +33,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
     columnId: 'file',
     renderHeaderCell: () => <>File</>,
     renderCell: (item: Item) => (
-      <TableCellLayout ellipsis media={item.file.icon}>
+      <TableCellLayout truncate media={item.file.icon}>
         {item.file.label}
       </TableCellLayout>
     ),
@@ -46,7 +46,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
     renderHeaderCell: () => <>Author</>,
     renderCell: (item: Item) => (
       <TableCellLayout
-        ellipsis
+        truncate
         media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
       >
         {item.author.label}
@@ -59,7 +59,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdated',
     renderHeaderCell: () => <>Last updated</>,
-    renderCell: (item: Item) => <TableCellLayout ellipsis>{item.lastUpdated.label}</TableCellLayout>,
+    renderCell: (item: Item) => <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
@@ -68,7 +68,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
     columnId: 'lastUpdate',
     renderHeaderCell: () => <>Last update</>,
     renderCell: (item: Item) => (
-      <TableCellLayout ellipsis media={item.lastUpdate.icon}>
+      <TableCellLayout truncate media={item.lastUpdate.icon}>
         {item.lastUpdate.label}
       </TableCellLayout>
     ),

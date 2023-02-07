@@ -43,16 +43,16 @@ export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>>
   appearance?: 'primary';
 
   /**
-   * Renders content with hidden overflow and ellipsis enabled
+   * Renders content with overflow: hidden and text-overflow: ellipsis
    */
-  ellipsis?: boolean;
+  truncate?: boolean;
 };
 
 /**
  * State used in rendering TableCellLayout
  */
 export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> &
-  Pick<TableCellLayoutProps, 'appearance' | 'ellipsis'> & { avatarSize: AvatarSize | undefined } & Pick<
+  Pick<TableCellLayoutProps, 'appearance' | 'truncate'> & { avatarSize: AvatarSize | undefined } & Pick<
     TableContextValue,
     'size'
   >;
