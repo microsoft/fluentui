@@ -179,7 +179,11 @@ export const ResizableColumns = () => {
           idealWidth: 180,
         },
       }}
-      onColumnResize={(columnId: TableColumnId, width: number) => console.log(columnId, width)}
+      onColumnResize={(event, { columnId, width }) => {
+        if (event instanceof MouseEvent) {
+          console.log(event.offsetX, event.offsetY, columnId, width);
+        }
+      }}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>

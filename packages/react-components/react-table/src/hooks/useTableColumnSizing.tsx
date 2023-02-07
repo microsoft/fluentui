@@ -56,7 +56,8 @@ function useTableColumnSizingState<TItem>(
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: {
       getOnMouseDown: mouseHandler.getOnMouseDown,
-      setColumnWidth: columnResizeState.setColumnWidth,
+      setColumnWidth: (columnId: TableColumnId, w: number) =>
+        columnResizeState.setColumnWidth(undefined, { columnId, width: w }),
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);

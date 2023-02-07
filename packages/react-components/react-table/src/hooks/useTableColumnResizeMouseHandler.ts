@@ -16,7 +16,7 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
 
       // Update the local width for the column and set it
       currentWidth.current += dx;
-      colId.current && columnResizeState.setColumnWidth(colId.current, currentWidth.current);
+      colId.current && columnResizeState.setColumnWidth(e, { columnId: colId.current, width: currentWidth.current });
       mouseX.current = e.clientX;
     },
     [columnResizeState],
