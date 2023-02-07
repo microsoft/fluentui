@@ -52,7 +52,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const getNextMatchingOption = (): OptionValue | undefined => {
     // first check for matches for the full searchString
-    let matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.current) === 0;
+    let matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString.current) === 0;
     let matches = getOptionsMatchingText(matcher);
     let startIndex = activeOption ? getIndexOfId(activeOption.id) : 0;
 
@@ -71,7 +71,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       // if the search is all the same letter, cycle through options starting with that letter
       if (allSameLetter) {
         startIndex++;
-        matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(letters[0]) === 0;
+        matcher = (optionText: string) => optionText.toLowerCase().indexOf(letters[0]) === 0;
         matches = getOptionsMatchingText(matcher);
       }
     }

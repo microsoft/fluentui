@@ -93,6 +93,11 @@ export {
   useTableHeaderCellStyles_unstable,
   useTableHeaderCell_unstable,
   renderTableHeaderCell_unstable,
+  TableResizeHandle,
+  tableResizeHandleClassNames,
+  useTableResizeHandleStyles_unstable,
+  useTableResizeHandle_unstable,
+  renderTableResizeHandle_unstable,
   TableContextProvider,
   useTableContext,
   TableSelectionCell,
@@ -134,6 +139,7 @@ export {
   useDataGridStyles_unstable,
   useDataGrid_unstable,
   renderDataGrid_unstable,
+  useDataGridContextValues_unstable,
   DataGridHeader,
   dataGridHeaderClassNames,
   useDataGridHeaderStyles_unstable,
@@ -151,6 +157,7 @@ export {
   dataGridSelectionCellClassNames,
   TableRowIdContextProvider,
   useTableRowIdContext,
+  useTableColumnSizing_unstable,
 } from '@fluentui/react-table';
 
 export type {
@@ -193,6 +200,7 @@ export type {
   TableRowId,
   TableColumnDefinition,
   TableColumnId,
+  TableColumnSizingOptions,
   CreateTableColumnOptions,
   DataGridHeaderCellProps,
   DataGridHeaderCellSlots,

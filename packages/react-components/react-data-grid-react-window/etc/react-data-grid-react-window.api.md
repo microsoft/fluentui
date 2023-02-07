@@ -7,11 +7,22 @@
 /// <reference types="react" />
 
 import type { DataGridBodyProps as DataGridBodyProps_2 } from '@fluentui/react-table';
-import type { DataGridBodySlots as DataGridBodySlots_2 } from '@fluentui/react-table';
-import type { DataGridBodyState as DataGridBodyState_2 } from '@fluentui/react-table';
+import { DataGridCell } from '@fluentui/react-table';
+import { DataGridCellProps } from '@fluentui/react-table';
+import { DataGridHeader } from '@fluentui/react-table';
+import { DataGridHeaderCell } from '@fluentui/react-table';
+import { DataGridHeaderCellProps } from '@fluentui/react-table';
+import { DataGridHeaderProps } from '@fluentui/react-table';
+import { DataGridProps } from '@fluentui/react-table';
+import { DataGridRowProps } from '@fluentui/react-table';
+import { DataGridSelectionCell } from '@fluentui/react-table';
+import { DataGridSelectionCellProps } from '@fluentui/react-table';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { TableRowData } from '@fluentui/react-table';
+
+// @public (undocumented)
+export const DataGrid: ForwardRefComponent<DataGridProps>;
 
 // @public
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
@@ -22,21 +33,31 @@ export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyProps_2, 'chil
     height: number;
     width?: string | number;
     children: RowRenderFunction<TItem>;
+    ariaRowIndexStart?: number;
 };
 
-// @public (undocumented)
-export type DataGridBodySlots = DataGridBodySlots_2;
+export { DataGridCell }
+
+export { DataGridCellProps }
+
+export { DataGridHeader }
+
+export { DataGridHeaderCell }
+
+export { DataGridHeaderCellProps }
+
+export { DataGridHeaderProps }
+
+export { DataGridProps }
 
 // @public
-export type DataGridBodyState = Omit<DataGridBodyState_2, 'renderRow'> & Pick<DataGridBodyProps, 'itemSize' | 'height'> & Pick<Required<DataGridBodyProps>, 'width'> & {
-    renderRow: RowRenderFunction;
-};
+export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
 
-// @public
-export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
+export { DataGridRowProps }
 
-// @public
-export const useDataGridBody_unstable: (props: DataGridBodyProps, ref: React_2.Ref<HTMLElement>) => DataGridBodyState;
+export { DataGridSelectionCell }
+
+export { DataGridSelectionCellProps }
 
 // (No @packageDocumentation comment for this package)
 

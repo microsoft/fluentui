@@ -161,6 +161,25 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
+
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Highlight',
+      ...shorthands.borderColor('HighlightText'),
+      color: 'HighlightText',
+      forcedColorAdjust: 'none',
+
+      ':hover': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+
+      ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+    },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
@@ -296,6 +315,7 @@ const useRootDisabledStyles = makeStyles({
   // High contrast styles
   highContrast: {
     '@media (forced-colors: active)': {
+      backgroundColor: 'ButtonFace',
       ...shorthands.borderColor('GrayText'),
       color: 'GrayText',
 
@@ -304,11 +324,13 @@ const useRootDisabledStyles = makeStyles({
       },
 
       ':hover': {
+        backgroundColor: 'ButtonFace',
         ...shorthands.borderColor('GrayText'),
         color: 'GrayText',
       },
 
       ':hover:active': {
+        backgroundColor: 'ButtonFace',
         ...shorthands.borderColor('GrayText'),
         color: 'GrayText',
       },

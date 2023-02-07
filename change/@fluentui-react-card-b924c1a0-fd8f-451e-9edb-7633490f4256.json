@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: improve a11y of card storybook examples",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "none"
+}

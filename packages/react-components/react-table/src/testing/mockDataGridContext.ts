@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
 import {
   TableColumnDefinition,
@@ -6,6 +7,7 @@ import {
   defaultTableSortState,
   TableSelectionState,
   TableSortState,
+  defaultColumnSizingState,
 } from '../hooks';
 
 interface Item {
@@ -40,6 +42,9 @@ export function mockDataGridContext(
     selectableRows: false,
     subtleSelection: false,
     selectionAppearance: 'brand',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnSizing_unstable: defaultColumnSizingState,
+    tableRef: React.createRef(),
     ...options,
   };
 

@@ -117,6 +117,7 @@ function useErrorMessage(
     formatDate,
     minDate,
     maxDate,
+    textField,
   }: IDatePickerProps,
   selectedDate: Date | undefined,
   setSelectedDate: (date: Date | undefined) => void,
@@ -125,6 +126,9 @@ function useErrorMessage(
 ) {
   const [errorMessage, setErrorMessage] = React.useState<string | undefined>();
   const [statusMessage, setStatusMessage] = React.useState<string | undefined>();
+  const isFirstLoadRef = React.useRef<boolean>(true);
+
+  const validateOnLoad = textField?.validateOnLoad ?? true;
 
   const validateTextInput = (date: Date | null = null): void => {
     if (allowTextInput) {
@@ -176,6 +180,14 @@ function useErrorMessage(
   };
 
   React.useEffect(() => {
+    if (isFirstLoadRef.current) {
+      isFirstLoadRef.current = false;
+
+      if (!validateOnLoad) {
+        return;
+      }
+    }
+
     if (isRequired && !selectedDate) {
       setErrorMessage(strings!.isRequiredErrorMessage || ' ');
     } else if (selectedDate && isDateOutOfBounds(selectedDate, minDate, maxDate)) {
@@ -193,6 +205,7 @@ function useErrorMessage(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     selectedDate && getDatePartHashValue(selectedDate),
     isRequired,
+    validateOnLoad,
   ]);
 
   return [
