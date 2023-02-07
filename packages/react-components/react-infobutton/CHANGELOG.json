@@ -2,6 +2,39 @@
   "name": "@fluentui/react-infobutton",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:05 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746",
+            "comment": "chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "34514e3502e2830d81f9de25956be8b624cd3c20",
+            "comment": "chore: Making the content focusable and updating example's text."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.4.6",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.5.0",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-infobutton_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.11)
+
+Tue, 07 Feb 2023 14:13:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.10..@fluentui/react-positioning_v9.3.11)
+
+### Patches
+
+- fix(createPositionManager): computePosition should not apply styles after destruction ([PR #26593](https://github.com/microsoft/fluentui/pull/26593) by lingfangao@hotmail.com)
 
 ## [9.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.10)
 

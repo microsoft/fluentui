@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: update Combobox and Dropdown to never use the Option value string as a display value; input value must be set if selectedOptions or defaultSelectOptions is set\"",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

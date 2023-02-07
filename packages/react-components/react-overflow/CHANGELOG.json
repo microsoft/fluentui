@@ -2,6 +2,29 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:06 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "7274228423cc06749b72ab6a8a112db6f18f5378",
+            "comment": "Export useOverflowContext as @internal for testing purposes"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.0.1",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-overflow_v9.0.2",
       "version": "9.0.2",
