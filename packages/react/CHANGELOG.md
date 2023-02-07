@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 06 Feb 2023 07:41:30 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 07:36:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.5)
+
+Tue, 07 Feb 2023 07:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.4..@fluentui/react_v8.105.5)
+
+### Patches
+
+- fix(DatePicker): onLoadValidation can be turned off through textField props  ([PR #25961](https://github.com/microsoft/fluentui/pull/25961) by karlo.sudec@gmail.com)
 
 ## [8.105.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.4)
 
