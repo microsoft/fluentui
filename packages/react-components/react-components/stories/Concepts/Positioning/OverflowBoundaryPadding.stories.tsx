@@ -85,7 +85,7 @@ export const OverflowBoundaryPadding = () => {
   );
 };
 
-BoundaryPadding.parameters = {
+OverflowBoundaryPadding.parameters = {
   docs: {
     description: {
       story: [
