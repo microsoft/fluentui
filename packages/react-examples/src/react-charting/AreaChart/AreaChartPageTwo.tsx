@@ -19,11 +19,11 @@ import { AreaChartPerfTwoExample } from './AreaChart.PerfAnalysisTwo.Example';
 // const AreaChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
 const AreaChartPerfTwoExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisTwo.Example.tsx') as string;
 
-export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
+export class AreaChartTwo extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Area Chart"
+        title="Area Chart Page Two"
         componentName="AreaChartBasicExample"
         exampleCards={
           <div>

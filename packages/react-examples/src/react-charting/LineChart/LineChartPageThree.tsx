@@ -31,12 +31,12 @@ const LineChartPerfAnalysisThreeExampleCode = require('!raw-loader?esModule=fals
 
 // All line charts locale is impacted.
 
-export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
+export class LineChartPageThree extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Line Chart"
-        componentName="LineChartExample"
+        title="Line Chart Page Three"
+        componentName="LineChartPerfThreeExample"
         exampleCards={
           <div>
             {/* <ExampleCard title="LineChart basic" code={LineChartBasicExampleCode}>

@@ -35,8 +35,8 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Line Chart"
-        componentName="LineChartExample"
+        title="Line Chart Page One"
+        componentName="LineChartPerfOneExample"
         exampleCards={
           <div>
             {/* <ExampleCard title="LineChart basic" code={LineChartBasicExampleCode}>
