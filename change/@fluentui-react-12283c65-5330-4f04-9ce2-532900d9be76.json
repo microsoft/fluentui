@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(ComboBox): Make _getAriaActiveDescendantValue update current pending value and index to avoid crash when filtering options.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
