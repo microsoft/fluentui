@@ -801,8 +801,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Process the new input's new value when the combo box allows freeform entry
    * @param updatedValue - the input's newly changed value
+   * @returns {number} - The index of the matched option, -1 if no match was found
    */
-  private _processInputChangeWithFreeform(updatedValue: string): void {
+  private _processInputChangeWithFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
     let newCurrentPendingValueValidIndex = -1;
 
@@ -818,7 +819,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       }
 
       this._setPendingInfo(updatedValue, newCurrentPendingValueValidIndex, updatedValue);
-      return;
+      return newCurrentPendingValueValidIndex;
     }
 
     // Remember the original value and then make the value lowercase for comparison
@@ -865,13 +866,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     // Set the updated state
     this._setPendingInfo(originalUpdatedValue, newCurrentPendingValueValidIndex, newSuggestedDisplayValue);
+    return newCurrentPendingValueValidIndex;
   }
 
   /**
    * Process the new input's new value when the combo box does not allow freeform entry
    * @param updatedValue - the input's newly changed value
+   * @returns {number} - The index of the matched option
    */
-  private _processInputChangeWithoutFreeform(updatedValue: string): void {
+  private _processInputChangeWithoutFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
     const { currentPendingValue, currentPendingValueValidIndex } = this.state;
 
@@ -913,7 +916,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         this._autoCompleteTimeout = this._async.setTimeout(() => {
           this._autoCompleteTimeout = undefined;
         }, ReadOnlyPendingAutoCompleteTimeout);
-        return;
+        return items[0].index;
       }
     }
 
@@ -927,6 +930,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // to allow us to select all content in the input to
     // give the illusion that we are readonly (e.g. freeform off)
     this._setPendingInfoFromIndex(index);
+    return index;
   }
 
   private _getFirstSelectedIndex(): number {
@@ -2369,29 +2373,21 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { currentOptions, selectedIndices } = this.props.hoisted;
     const { isOpen, currentPendingValue } = this.state;
     const options = currentOptions.map((item, index) => ({ ...item, index }));
-
     let currentPendingValueValidIndex = this.state.currentPendingValueValidIndex;
 
-    // Update the pending value if the current index doesn't exist or it doesn't match the text of the value.
+    // We should check if the pending value index is withing the bounds of the options and that it matches the text of
+    // the pending value. If it does not match, we should update it the same way we do in _onInputChange. This is
+    // needed since the user may be filtering the options and the pending value and index are only updated on input
+    // change.
     if (
       currentPendingValue &&
       (currentPendingValueValidIndex >= options.length ||
-        (currentPendingValueValidIndex >= 0 &&
-          options[currentPendingValueValidIndex].text.indexOf(currentPendingValue) < 0))
+        options[currentPendingValueValidIndex].text.indexOf(currentPendingValue) < 0)
     ) {
-      let items;
-      if (this.props.autoComplete === 'on') {
-        items = options.filter(
-          option => !option.disabled && option.text.toLocaleLowerCase().indexOf(currentPendingValue) === 0,
-        );
-      } else {
-        items = options.filter(option => !option.disabled && option.text.toLocaleLowerCase() === currentPendingValue);
-      }
-
-      if (items.length > 0) {
-        this._setPendingInfo(currentPendingValue, items[0].index, items[0].text);
-        currentPendingValueValidIndex = items[0].index;
-      }
+      currentPendingValueValidIndex =
+        this.props.allowFreeform || this.props.allowFreeInput
+          ? this._processInputChangeWithFreeform(currentPendingValue)
+          : this._processInputChangeWithoutFreeform(currentPendingValue);
     }
 
     let descendantText =
