@@ -37,7 +37,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.0.0
+          node-version: 16.18.1
           cache: 'yarn'
 
       - name: Install packages
