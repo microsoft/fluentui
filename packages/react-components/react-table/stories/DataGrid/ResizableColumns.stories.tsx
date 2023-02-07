@@ -99,7 +99,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderCell: item => {
       return (
-        <TableCellLayout ellipsis media={item.file.icon}>
+        <TableCellLayout truncate media={item.file.icon}>
           {item.file.label}
         </TableCellLayout>
       );
@@ -116,7 +116,7 @@ const columns: TableColumnDefinition<Item>[] = [
     renderCell: item => {
       return (
         <TableCellLayout
-          ellipsis
+          truncate
           media={
             <Avatar aria-label={item.author.label} name={item.author.label} badge={{ status: item.author.status }} />
           }
@@ -136,7 +136,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
 
     renderCell: item => {
-      return <TableCellLayout ellipsis>{item.lastUpdated.label}</TableCellLayout>;
+      return <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>;
     },
   }),
   createTableColumn<Item>({
@@ -149,7 +149,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderCell: item => {
       return (
-        <TableCellLayout ellipsis media={item.lastUpdate.icon}>
+        <TableCellLayout truncate media={item.lastUpdate.icon}>
           {item.lastUpdate.label}
         </TableCellLayout>
       );
