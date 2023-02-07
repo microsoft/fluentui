@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar, makeStyles } from '@fluentui/react-components';
 import {
   DataGridBody,
   DataGridRow,
@@ -20,6 +20,7 @@ import {
   TableColumnDefinition,
   createTableColumn,
   TableColumnId,
+  TableCell,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -88,6 +89,32 @@ const items: Item[] = [
   },
 ];
 
+const useTableCellStyles = makeStyles({
+  root: {
+    overflowX: 'hidden',
+  },
+  main: {
+    overflowX: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+  content: {
+    overflowX: 'hidden',
+  },
+});
+
+const StyledTableCellLayout: React.FC<React.ComponentProps<typeof TableCellLayout>> = props => {
+  const styles = useTableCellStyles();
+  return (
+    <TableCellLayout
+      className={styles.root}
+      content={{ className: styles.content }}
+      main={{ className: styles.main }}
+      {...props}
+    />
+  );
+};
+
 const columns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
@@ -98,7 +125,7 @@ const columns: TableColumnDefinition<Item>[] = [
       return 'File';
     },
     renderCell: item => {
-      return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
+      return <StyledTableCellLayout media={item.file.icon}>{item.file.label}</StyledTableCellLayout>;
     },
   }),
   createTableColumn<Item>({
@@ -111,13 +138,13 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderCell: item => {
       return (
-        <TableCellLayout
+        <StyledTableCellLayout
           media={
             <Avatar aria-label={item.author.label} name={item.author.label} badge={{ status: item.author.status }} />
           }
         >
           {item.author.label}
-        </TableCellLayout>
+        </StyledTableCellLayout>
       );
     },
   }),
@@ -131,7 +158,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
 
     renderCell: item => {
-      return item.lastUpdated.label;
+      return <StyledTableCellLayout>{item.lastUpdated.label}</StyledTableCellLayout>;
     },
   }),
   createTableColumn<Item>({
@@ -143,12 +170,12 @@ const columns: TableColumnDefinition<Item>[] = [
       return 'Last update';
     },
     renderCell: item => {
-      return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
+      return <StyledTableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</StyledTableCellLayout>;
     },
   }),
 ];
 
-export const Resizable = () => {
+export const ResizableColumns = () => {
   return (
     <DataGrid
       items={items}
@@ -161,7 +188,8 @@ export const Resizable = () => {
       resizableColumns
       columnSizingOptions={{
         file: {
-          minWidth: 180,
+          minWidth: 80,
+          defaultWidth: 120,
         },
         author: {
           defaultWidth: 180,
@@ -187,8 +215,8 @@ export const Resizable = () => {
   );
 };
 
-Resizable.storyName = 'Resizable Columns (preview)';
-Resizable.parameters = {
+ResizableColumns.storyName = 'Resizable Columns (preview)';
+ResizableColumns.parameters = {
   docs: {
     description: {
       story: [
