@@ -22,7 +22,7 @@ export function shift(options: ShiftMiddlewareOptions) {
       crossAxis: disableTether === 'all',
       mainAxis: false,
     }),
-    padding: overflowBoundaryPadding && toFloatingUIPadding(overflowBoundaryPadding, isRtl),
+    ...(overflowBoundaryPadding && { padding: toFloatingUIPadding(overflowBoundaryPadding, isRtl) }),
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
   });
 }
