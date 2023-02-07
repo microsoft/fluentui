@@ -21,7 +21,7 @@ export const ImageNoneExample = () => {
       <p>This image is larger than the frame, so it's cropped to fit and positioned at the upper left.</p>
       <Image
         {...imageProps}
-        src="http://via.placeholder.com/500x250"
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/500x250.png"
         alt='Example of the image fit value "none" on an image larger than the frame.'
       />
       <p>
@@ -30,7 +30,7 @@ export const ImageNoneExample = () => {
       </p>
       <Image
         {...imageProps}
-        src="http://via.placeholder.com/100x100"
+        src="https://fabricweb.azureedge.net/fabric-website/placeholders/100x100.png"
         alt='Example of the image fit value "none" on an image smaller than the frame.'
       />
     </div>

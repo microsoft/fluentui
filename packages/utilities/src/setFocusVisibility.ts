@@ -1,6 +1,14 @@
+import * as React from 'react';
 import { getWindow } from './dom/getWindow';
 export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
 export const IsFocusHiddenClassName = 'ms-Fabric--isFocusHidden';
+
+function updateClassList(el: HTMLElement | null | undefined, enabled: boolean) {
+  if (el) {
+    el.classList.add(enabled ? IsFocusVisibleClassName : IsFocusHiddenClassName);
+    el.classList.remove(enabled ? IsFocusHiddenClassName : IsFocusVisibleClassName);
+  }
+}
 
 /**
  * Sets the visibility of focus styling.
@@ -14,22 +22,17 @@ export const IsFocusHiddenClassName = 'ms-Fabric--isFocusHidden';
  *
  * @param enabled - Whether to turn focus visibility on or off.
  * @param target - Optional target from which to get window in case no `providerElem` has been specified.
- * @param providerElem - Theme provider element to which the focus visibility classnames are attached. If no provider
- *                       element is passed in, the classnames are attached to the document body that contains `target`.
+ * @param registeredProviders - Array of provider refs that are associated with a FocusRectsProvider. If no array
+ *                              is passed in, the classnames are attached to the document body that contains `target`.
  */
-export function setFocusVisibility(enabled: boolean, target?: Element, providerElem?: Element): void {
-  let classList;
-  if (providerElem) {
-    classList = providerElem.classList;
+export function setFocusVisibility(
+  enabled: boolean,
+  target?: Element,
+  registeredProviders?: React.RefObject<HTMLElement>[],
+): void {
+  if (registeredProviders) {
+    registeredProviders.forEach(ref => updateClassList(ref.current, enabled));
   } else {
-    const win = target ? getWindow(target) : getWindow();
-    if (win) {
-      classList = win.document.body.classList;
-    }
-  }
-
-  if (classList) {
-    classList.add(enabled ? IsFocusVisibleClassName : IsFocusHiddenClassName);
-    classList.remove(enabled ? IsFocusHiddenClassName : IsFocusVisibleClassName);
+    updateClassList(getWindow(target)?.document.body, enabled);
   }
 }

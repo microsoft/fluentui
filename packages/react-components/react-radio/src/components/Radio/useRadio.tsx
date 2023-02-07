@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
-import { RadioGroupContext } from '../../contexts/RadioGroupContext';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { useRadioGroupContext_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioProps, RadioState } from './Radio.types';
 
@@ -17,12 +16,12 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const nameGroup = useContextSelector(RadioGroupContext, ctx => ctx.name);
-  const value = useContextSelector(RadioGroupContext, ctx => ctx.value);
-  const defaultValue = useContextSelector(RadioGroupContext, ctx => ctx.defaultValue);
-  const disabledGroup = useContextSelector(RadioGroupContext, ctx => ctx.disabled);
-  const layout = useContextSelector(RadioGroupContext, ctx => ctx.layout);
-  const requiredGroup = useContextSelector(RadioGroupContext, ctx => ctx.required);
+  const nameGroup = useRadioGroupContext_unstable(ctx => ctx.name);
+  const value = useRadioGroupContext_unstable(ctx => ctx.value);
+  const defaultValue = useRadioGroupContext_unstable(ctx => ctx.defaultValue);
+  const disabledGroup = useRadioGroupContext_unstable(ctx => ctx.disabled);
+  const layout = useRadioGroupContext_unstable(ctx => ctx.layout);
+  const requiredGroup = useRadioGroupContext_unstable(ctx => ctx.required);
 
   const {
     name = nameGroup,
@@ -63,7 +62,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     },
   });
 
-  input.onChange = useMergedEventCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
+  input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { value: ev.currentTarget.value }));
 
   const label = resolveShorthand(props.label, {
     defaultProps: {

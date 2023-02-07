@@ -14,6 +14,7 @@ import { Route, Router } from '@fluentui/react-docsite-components';
 import { SiteGlobals } from '@fluentui/public-docsite-setup';
 import { Site } from '../components/Site/index';
 import { hasUHF } from './location';
+import { cdnUrl } from './cdn';
 
 import '../styles/styles.scss';
 
@@ -33,12 +34,8 @@ if (window.__siteConfig?.baseCDNUrl) {
 
 initializeIcons();
 
-const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
-addCSSToHeader(
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
-    corePackageVersion +
-    '/css/fabric.min.css',
-);
+// blog storage is now immutable, so new versions of fabric-core will be at a new url based on the build number
+addCSSToHeader(`${cdnUrl}/office-ui-fabric-core/11.1.0/css/fabric.min.css`);
 
 let rootElement: HTMLElement;
 
@@ -69,7 +66,7 @@ export function createSite<TPlatforms extends string>(
       }
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
-          const platformPages: INavPage<TPlatforms>[] = page.platforms && page.platforms[plat];
+          const platformPages: INavPage<TPlatforms>[] | undefined = page.platforms && page.platforms[plat];
           routes = routes.concat(_createRoutes(platformPages || []));
         });
       }

@@ -235,9 +235,7 @@ ruleTester.run('no-restricted-imports', rule, {
           ],
         },
       ],
-      output:
-        // eslint-disable-next-line @fluentui/max-len
-        "import type { SpinnerProps, TextProps } from '@fluentui/react-components';",
+      output: "import type { SpinnerProps, TextProps } from '@fluentui/react-components';",
     },
     {
       code:

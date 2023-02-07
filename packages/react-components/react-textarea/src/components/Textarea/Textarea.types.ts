@@ -27,8 +27,10 @@ export type TextareaProps = Omit<
    * Styling the Textarea should use.
    *
    * @default outline
+   *
+   * Note: 'filled-darker-shadow' and 'filled-lighter-shadow' are deprecated and will be removed in the future.
    */
-  appearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+  appearance?: 'outline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
 
   /**
    * The default value of the Textarea.
@@ -69,6 +71,6 @@ export type TextareaState = ComponentState<TextareaSlots> &
 /**
  * Data passed to the `onChange` callback when the textarea's value changes.
  */
-type TextareaOnChangeData = {
+export type TextareaOnChangeData = {
   value: string;
 };

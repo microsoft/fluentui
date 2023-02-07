@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { IconButton, Icons, TooltipLinkList, WithTooltip } from '@storybook/components';
+import { useParameter } from '@storybook/api';
 
 import { ThemeIds, themes, defaultTheme } from '../theme';
 import { THEME_ID } from '../constants';
-import { useGlobals } from '../hooks';
+import { useGlobals, FluentParameters } from '../hooks';
 
 export interface ThemeSelectorItem {
   id: string;
@@ -33,7 +34,9 @@ function createThemeItems(
 
 export const ThemePicker = () => {
   const [globals, updateGlobals] = useGlobals();
-  const selectedThemeId = globals[THEME_ID] ?? defaultTheme.id;
+  const fluentTheme: FluentParameters['fluentTheme'] = useParameter('fluentTheme');
+
+  const selectedThemeId = fluentTheme ? fluentTheme : globals[THEME_ID] ?? defaultTheme.id;
   const selectedTheme = themes.find(entry => entry.id === selectedThemeId);
 
   const isActive = selectedThemeId !== defaultTheme.id;

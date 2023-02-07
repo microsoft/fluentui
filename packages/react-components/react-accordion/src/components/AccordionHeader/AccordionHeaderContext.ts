@@ -1,12 +1,14 @@
 import * as React from 'react';
 import type { AccordionHeaderContextValue } from './AccordionHeader.types';
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const AccordionHeaderContext = React.createContext<AccordionHeaderContextValue>({
+export const AccordionHeaderContext = React.createContext<AccordionHeaderContextValue | undefined>(undefined);
+
+const accordionHeaderContextDefaultValue = {
   open: false,
   disabled: false,
   size: 'medium',
   expandIconPosition: 'start',
-});
+};
 
-export const useAccordionHeaderContext = () => React.useContext(AccordionHeaderContext);
+export const useAccordionHeaderContext = () =>
+  React.useContext(AccordionHeaderContext) ?? accordionHeaderContextDefaultValue;

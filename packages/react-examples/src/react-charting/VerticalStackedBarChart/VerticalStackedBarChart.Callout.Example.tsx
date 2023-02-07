@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalStackedBarChart, IVSChartDataPoint, IVerticalStackedChartProps } from '@fluentui/react-charting';
+import {
+  VerticalStackedBarChart,
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
@@ -185,6 +190,8 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -239,6 +246,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             height={this.state.height}
             width={this.state.width}
             yAxisTickCount={10}
+            lineOptions={lineOptions}
             isCalloutForStack={
               this.state.selectedCallout === 'MultiCallout' || this.state.selectedCallout === 'MultiCustomCallout'
             }

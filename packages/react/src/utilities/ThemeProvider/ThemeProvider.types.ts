@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Theme, PartialTheme } from '@fluentui/theme';
-import type { ICustomizerContext, IFocusRectsContext } from '@fluentui/utilities';
+import type { ICustomizerContext } from '@fluentui/utilities';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -44,6 +44,4 @@ export type ThemeProviderState = Omit<ThemeProviderProps, 'theme' | 'ref'> & {
   ref: React.RefObject<HTMLElement>;
 
   customizerContext: ICustomizerContext;
-
-  focusRectsContext: IFocusRectsContext;
 };

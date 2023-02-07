@@ -1,13 +1,14 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Textarea } from '@fluentui/react-textarea';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('textarea')
@@ -18,13 +19,22 @@ storiesOf('Textarea Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Appearance: outline (default)', () => <Textarea placeholder="Placeholder" />)
   .addStory('Appearance: filled-darker', () => <Textarea appearance="filled-darker" placeholder="Placeholder" />)
   .addStory('Appearance: filled-lighter', () => (
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Textarea appearance="filled-lighter" placeholder="Placeholder" />
+    </div>
+  ))
+  .addStory('Invalid: outline', () => <Textarea aria-invalid placeholder="Placeholder" />)
+  .addStory('Invalid: filled-darker', () => (
+    <Textarea aria-invalid appearance="filled-darker" placeholder="Placeholder" />
+  ))
+  .addStory('Invalid: filled-lighter', () => (
+    <div style={{ background: '#f5f5f5', padding: '10px' }}>
+      <Textarea aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
   .addStory('Disabled', () => <Textarea disabled />)
@@ -34,8 +44,16 @@ storiesOf('Textarea Converged', module)
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('Size: small', () => <Textarea size="small" placeholder="Placeholder" />)
   .addStory('Size: medium', () => <Textarea size="medium" placeholder="Placeholder" />)
-  .addStory('Size: large', () => <Textarea size="large" placeholder="Placeholder" />);
+  .addStory('Size: large', () => <Textarea size="large" placeholder="Placeholder" />)
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Textarea placeholder="Default overriden appearance" />
+        <Textarea appearance="outline" placeholder="Outline appearance" />
+      </div>
+    </FluentProvider>
+  ));

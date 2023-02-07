@@ -1,14 +1,13 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { typographyStyles } from '@fluentui/react-theme';
-import { gridArea } from '../../utils/localShorthands';
-import { CLOSE_BUTTON_GRID_AREA, TITLE_GRID_AREA } from '../../contexts/constants';
+import { TITLE_ACTION_GRID_AREA, TITLE_GRID_AREA } from '../../contexts/constants';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
   root: 'fui-DialogTitle',
-  closeButton: 'fui-DialogTitle__closeButton',
+  action: 'fui-DialogTitle__action',
 };
 
 /**
@@ -17,35 +16,36 @@ export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
 const useStyles = makeStyles({
   root: {
     ...typographyStyles.subtitle1,
-    ...gridArea(TITLE_GRID_AREA),
+    ...shorthands.gridArea(TITLE_GRID_AREA),
   },
   rootWithoutCloseButton: {
-    // ...shorthands.padding(DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING, '8px', DIALOG_CONTENT_PADDING),
+    ...shorthands.gridArea(TITLE_GRID_AREA, TITLE_GRID_AREA, TITLE_ACTION_GRID_AREA, TITLE_ACTION_GRID_AREA),
   },
-  rootWithCloseButton: {
-    // ...shorthands.padding(DIALOG_CONTENT_PADDING, '20px', '8px', DIALOG_CONTENT_PADDING),
+  action: {
+    ...shorthands.gridArea(TITLE_ACTION_GRID_AREA),
   },
-  closeButton: {
+});
+
+/**
+ * Styles to be applied on internal elements used by default action on non-modal Dialog
+ * @internal
+ */
+export const useDialogTitleInternalStyles = makeStyles({
+  button: {
     position: 'relative',
-    lineHeight: '0',
-    cursor: 'pointer',
-    alignSelf: 'start',
-    ...gridArea(CLOSE_BUTTON_GRID_AREA),
-  },
-  closeButtonFocusIndicator: createFocusOutlineStyle(),
-  // TODO: this should be extracted to another package
-  resetButton: {
     boxSizing: 'content-box',
     backgroundColor: 'inherit',
     color: 'inherit',
     fontFamily: 'inherit',
     fontSize: 'inherit',
-    lineHeight: 'normal',
+    cursor: 'pointer',
+    lineHeight: 0,
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     ...shorthands.borderStyle('none'),
     WebkitAppearance: 'button',
     textAlign: 'unset',
+    ...createFocusOutlineStyle(),
   },
 });
 
@@ -57,18 +57,11 @@ export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTi
   state.root.className = mergeClasses(
     dialogTitleClassNames.root,
     styles.root,
-    state.closeButton && styles.rootWithCloseButton,
-    !state.closeButton && styles.rootWithoutCloseButton,
+    !state.action && styles.rootWithoutCloseButton,
     state.root.className,
   );
-  if (state.closeButton) {
-    state.closeButton.className = mergeClasses(
-      dialogTitleClassNames.closeButton,
-      styles.resetButton,
-      styles.closeButton,
-      styles.closeButtonFocusIndicator,
-      state.closeButton.className,
-    );
+  if (state.action) {
+    state.action.className = mergeClasses(dialogTitleClassNames.action, styles.action, state.action.className);
   }
   return state;
 };

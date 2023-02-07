@@ -6,6 +6,7 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import type { InputProps, InputState } from './Input.types';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Input.
@@ -17,7 +18,20 @@ import type { InputProps, InputState } from './Input.types';
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
-  const { size = 'medium', appearance = 'outline', onChange } = props;
+  const overrides = useOverrides();
+
+  const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
+
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    (appearance === 'filled-darker-shadow' || appearance === 'filled-lighter-shadow')
+  ) {
+    // eslint-disable-next-line no-console
+    console.error(
+      "The 'filled-darker-shadow' and 'filled-lighter-shadow' appearances are deprecated and will be removed in the" +
+        ' future.',
+    );
+  }
 
   const [value, setValue] = useControllableState({
     state: props.value,

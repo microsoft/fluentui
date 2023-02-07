@@ -19,6 +19,7 @@ import { useIsSubmenu } from '../../utils/useIsSubmenu';
 export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
   const popoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const open = useMenuContext_unstable(context => context.open);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
@@ -62,29 +63,31 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
 
-  rootProps.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
-      setOpen(e, { open: true, keyboard: false });
+      setOpen(event, { open: true, keyboard: false, type: 'menuPopoverMouseEnter', event });
     }
 
-    onMouseEnterOriginal?.(e);
+    onMouseEnterOriginal?.(event);
   });
 
-  rootProps.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
-    const key = e.key;
+  rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
+    const key = event.key;
 
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
-      if (popoverRef.current?.contains(e.target as HTMLElement)) {
-        setOpen(e, { open: false, keyboard: true });
+      if (open && popoverRef.current?.contains(event.target as HTMLElement)) {
+        setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
+        // stop propagation to avoid conflicting with other elements that listen for `Escape`
+        // e,g: Dialog, Popover and Tooltip
+        event.stopPropagation();
       }
     }
 
     if (key === Tab) {
-      setOpen(e, { open: false, keyboard: true });
-      e.preventDefault();
+      setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
     }
 
-    onKeyDownOriginal?.(e);
+    onKeyDownOriginal?.(event);
   });
 
   return {

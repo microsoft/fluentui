@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 28 Jul 2022 07:41:18 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 07:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.4)
+
+Thu, 20 Oct 2022 07:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.3..@fluentui/react-conformance_v0.15.4)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+
+## [0.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.3)
+
+Wed, 24 Aug 2022 16:36:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.2..@fluentui/react-conformance_v0.15.3)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+
+## [0.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.2)
+
+Tue, 23 Aug 2022 07:22:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.0..@fluentui/react-conformance_v0.15.2)
+
+### Patches
+
+- fix: Bump react-is dependency to version 17. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
 
 ## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.0)
 

@@ -5,7 +5,6 @@ exports[`TableCell renders a default state 1`] = `
   <td
     class="fui-TableCell"
   >
-     
     Default TableCell
   </td>
 </tr>

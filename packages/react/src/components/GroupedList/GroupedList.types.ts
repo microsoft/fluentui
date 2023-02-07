@@ -344,6 +344,8 @@ export interface IGroupDividerProps {
 
   /** Override which allows the caller to provider a custom renderer for the GroupHeader title. */
   onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
+  /** Override which allows the caller to provide a custom renderer for just the name. */
+  onRenderName?: IRenderFunction<IGroupHeaderProps>;
 
   /** Props for expand/collapse button
    * @deprecated Use {@link IGroupHeaderProps.expandButtonProps} instead.

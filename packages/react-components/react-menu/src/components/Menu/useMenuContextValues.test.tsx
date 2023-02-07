@@ -15,19 +15,18 @@ describe('useMenuContextValues_unstable', () => {
     expect(result.current.menu).toMatchInlineSnapshot(`
       Object {
         "checkedValues": Object {},
-        "defaultCheckedValues": undefined,
-        "hasCheckmarks": undefined,
-        "hasIcons": undefined,
-        "inline": undefined,
+        "hasCheckmarks": false,
+        "hasIcons": false,
+        "inline": false,
         "isSubmenu": false,
         "menuPopoverRef": Object {
           "current": null,
         },
         "onCheckedValueChange": [Function],
         "open": false,
-        "openOnContext": undefined,
+        "openOnContext": false,
         "openOnHover": false,
-        "persistOnItemClick": undefined,
+        "persistOnItemClick": false,
         "setOpen": [Function],
         "triggerId": "menu1",
         "triggerRef": Object {

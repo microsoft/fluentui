@@ -29,6 +29,10 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
       fill: '#484644',
       ...props.theme!.fonts.medium,
     },
+    rectBodyText: {
+      fill: '#808080',
+      ...props.theme!.fonts.xSmall,
+    },
     rectMetricText: {
       fill: '#000000',
       ...props.theme!.fonts.xLarge,

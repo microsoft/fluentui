@@ -29,6 +29,7 @@ import { ButtonStylesProps } from '../../components/Button/Button';
 import { ButtonContentStylesProps } from '../../components/Button/ButtonContent';
 import { ChatItemStylesProps } from '../../components/Chat/ChatItem';
 import { ChatMessageStylesProps } from '../../components/Chat/ChatMessage';
+import { ChatMessageContentStylesProps } from '../../components/Chat/ChatMessageContent';
 import { ChatMessageDetailsStylesProps } from '../../components/Chat/ChatMessageDetails';
 import { ChatMessageHeaderStylesProps } from '../../components/Chat/ChatMessageHeader';
 import { ChatMessageReadStatusStylesProps } from '../../components/Chat/ChatMessageReadStatus';
@@ -144,6 +145,7 @@ export type TeamsThemeStylesProps = {
   Chat: ChatStylesProps;
   ChatItem: ChatItemStylesProps;
   ChatMessage: ChatMessageStylesProps;
+  ChatMessageContent: ChatMessageContentStylesProps;
   ChatMessageDetails: ChatMessageDetailsStylesProps;
   ChatMessageHeader: ChatMessageHeaderStylesProps;
   ChatMessageReadStatus: ChatMessageReadStatusStylesProps;

@@ -10,6 +10,7 @@ import {
   ICalendarPickerStyleProps,
 } from '@fluentui/react';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import * as StyleConstants from '../Constants';
 
 // Effects general area of callout.
 export const CalendarStyles = (props: ICalendarStyleProps): Partial<ICalendarStyles> => {
@@ -90,7 +91,7 @@ export const CalendarDayGridStyles = (props: ICalendarDayGridStyleProps): Partia
     },
     dayButton: [
       {
-        borderRadius: 2,
+        borderRadius: StyleConstants.borderRadius,
         color: 'inherit !important',
         selectors: {
           '&:after': {

@@ -7,10 +7,11 @@ import {
   useTelemetry,
   ForwardRefWithAs,
   useMergedRefs,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -34,6 +35,7 @@ import {
   UIComponentProps,
   isFromKeyboard as detectIsFromKeyboard,
   createShorthand,
+  setWhatInputSource,
 } from '../../utils';
 import { List, ListProps } from '../List/List';
 import { DropdownItem, DropdownItemProps } from './DropdownItem';
@@ -322,7 +324,15 @@ const charKeyPressedCleanupTime = 500;
 function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
   const normalizedValue = Array.isArray(rawValue) ? rawValue : [rawValue];
 
-  return multiple ? normalizedValue : normalizedValue.slice(0, 1);
+  if (multiple) {
+    return normalizedValue;
+  }
+
+  if (normalizedValue[0] === '') {
+    return [];
+  }
+
+  return normalizedValue.slice(0, 1);
 }
 
 /**
@@ -525,7 +535,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const popperRef = useMergedRefs(props.popperRef);
 
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     popperRef.current?.updatePosition();
   }, [filteredItems?.length, popperRef]);
 
@@ -832,6 +842,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         defaultProps: () => ({
           className: dropdownSlotClassNames.selectedItem,
           active: isSelectedItemActive(index),
+          disabled,
           variables,
           ...(typeof item === 'object' &&
             !item.hasOwnProperty('key') && {
@@ -896,9 +907,14 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
         if (allowFreeform) {
           // set highlighted index to first item starting with search query
-          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(changes.inputValue));
+          const itemIndex = items.findIndex(i =>
+            itemToString(i)?.toLocaleLowerCase().startsWith(changes.inputValue?.toLowerCase()),
+          );
           if (itemIndex !== -1) {
             newState.highlightedIndex = itemIndex;
+            // for free form always keep searchQuery and inputValue in sync
+            // as state change might not be called after last letter was entered
+            newState.searchQuery = changes.inputValue;
           }
         } else {
           newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
@@ -929,7 +945,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
         newState.searchQuery = getSelectedItemAsString(newValue);
         if (allowFreeform && !inListbox.current && type === Downshift.stateChangeTypes.keyDownEnter) {
-          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+          const itemIndex = items.findIndex(i =>
+            itemToString(i)?.toLocaleLowerCase().startsWith(searchQuery?.toLocaleLowerCase()),
+          );
 
           // if there is an item that starts with searchQuery, still apply the search query
           // to do auto complete (you enter '12:', can be completed to '12:00')
@@ -1000,7 +1018,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         if (open) {
           newState.open = false;
           if (allowFreeform) {
-            const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+            const itemIndex = items.findIndex(i =>
+              itemToString(i)?.toLowerCase().startsWith(searchQuery?.toLowerCase()),
+            );
 
             // if there is an item that starts with searchQuery, still apply the search query
             // to do auto complete (you enter '12:', can be completed to '12:00')
@@ -1029,7 +1049,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             listRef.current.focus();
           }
         } else if (allowFreeform) {
-          const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+          const itemIndex = items.findIndex(i =>
+            itemToString(i)?.toLocaleLowerCase().startsWith(searchQuery.toLowerCase()),
+          );
 
           // if there is an item that starts with searchQuery, still apply the search query
           // to do auto complete (you enter '12:', can be completed to '12:00')
@@ -1158,12 +1180,22 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           case keyboardKey.ArrowLeft:
             e.stopPropagation();
             if (!context.rtl) {
+              // https://github.com/testing-library/user-event/issues/709
+              // JSDOM does not implement `event.view` so prune this code path in test
+              if (process.env.NODE_ENV !== 'test') {
+                setWhatInputSource(e.view.document, 'keyboard');
+              }
               trySetLastSelectedItemAsActive();
             }
             break;
           case keyboardKey.ArrowRight:
             e.stopPropagation();
             if (context.rtl) {
+              // https://github.com/testing-library/user-event/issues/709
+              // JSDOM does not implement `event.view` so prune this code path in test
+              if (process.env.NODE_ENV !== 'test') {
+                setWhatInputSource(e.view.document, 'keyboard');
+              }
               trySetLastSelectedItemAsActive();
             }
             break;
@@ -1712,13 +1744,20 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
                       defaultProps: () => ({
                         className: dropdownSlotClassNames.clearIndicator,
                         styles: resolvedStyles.clearIndicator,
-                        accessibility: indicatorBehavior,
-                        ...(!search && { tabIndex: 0, role: 'button' }),
+                        ...(!search ? { tabIndex: 0, role: 'button' } : { accessibility: indicatorBehavior }),
                       }),
                       overrideProps: (predefinedProps: BoxProps) => ({
                         onClick: (e: React.SyntheticEvent<HTMLElement>) => {
                           _.invoke(predefinedProps, 'onClick', e);
                           handleClear(e);
+                        },
+                        onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
+                          _.invoke(predefinedProps, 'onKeyDown', e);
+                          const keyCode = getCode(e);
+                          if (!search && (keyCode === keyboardKey.Enter || keyCode === SpacebarKey)) {
+                            handleClear(e);
+                            e.preventDefault();
+                          }
                         },
                       }),
                     })

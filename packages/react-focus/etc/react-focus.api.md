@@ -23,7 +23,7 @@ export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFo
     get defaultFocusElement(): HTMLElement | null;
     // (undocumented)
     static defaultProps: IFocusZoneProps;
-    focus(forceIntoFirstElement?: boolean): boolean;
+    focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
     focusElement(element: HTMLElement, forceAlignment?: boolean): boolean;
     focusLast(): boolean;
     static getOuterZones(): number;
@@ -52,7 +52,7 @@ export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof t
 
 // @public
 export interface IFocusZone {
-    focus(forceIntoFirstElement?: boolean): boolean;
+    focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
     focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
     focusLast(): boolean;
     setFocusAlignment(point: Point): void;

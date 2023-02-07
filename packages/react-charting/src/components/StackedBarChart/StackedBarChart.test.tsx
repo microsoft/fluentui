@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, IStackedBarChartProps, StackedBarChart } from '../../index';
 import { IStackedBarChartState, StackedBarChartBase } from './StackedBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the StackedBarChart to be tested.
 let wrapper: ReactWrapper<IStackedBarChartProps, IStackedBarChartState, StackedBarChartBase> | undefined;
@@ -173,5 +174,45 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('StackedBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', () => {
+    wrapper = mount(<StackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<StackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mousemove');
+    const html1 = wrapper.html();
+    wrapper.find('rect').at(1).simulate('mousemove');
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <StackedBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

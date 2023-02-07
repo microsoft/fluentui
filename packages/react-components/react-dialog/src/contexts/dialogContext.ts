@@ -1,19 +1,15 @@
-import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
-import type { DialogOpenChangeData, DialogModalType } from '../Dialog';
 import * as React from 'react';
+import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
+import { DialogSurfaceElement } from '../DialogSurface';
+import type { Context } from '@fluentui/react-context-selector';
+import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 
 export type DialogContextValue = {
-  /**
-   * Reference to trigger element that opened the Dialog
-   * null if Dialog is closed
-   */
-  triggerRef: React.RefObject<HTMLElement>;
-  contentRef: React.RefObject<HTMLElement>;
-  modalType: DialogModalType;
-  dialogTitleID?: string;
-  dialogBodyID?: string;
   open: boolean;
+  dialogTitleId?: string;
+  isNestedDialog: boolean;
+  dialogRef: React.Ref<DialogSurfaceElement>;
+  modalType: DialogModalType;
   /**
    * Requests dialog main component to update it's internal open state
    */
@@ -23,8 +19,8 @@ export type DialogContextValue = {
 const defaultContextValue: DialogContextValue = {
   open: false,
   modalType: 'modal',
-  triggerRef: { current: null },
-  contentRef: { current: null },
+  isNestedDialog: false,
+  dialogRef: { current: null },
   requestOpenChange() {
     /* noop */
   },

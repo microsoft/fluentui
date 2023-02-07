@@ -22,3 +22,5 @@ export type {
   FocusOutlineOffset,
   FocusOutlineStyleOptions,
 } from './focus/index';
+
+export { applyFocusVisiblePolyfill } from './focus/index';

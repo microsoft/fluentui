@@ -10,3 +10,7 @@ export * from './GroupedListSection';
 export type { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderCheckboxProps } from './GroupHeader.types';
 export type { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types';
 export type { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
+
+export * from './GroupedListV2';
+export * from './GroupedListV2.base';
+export * from './GroupedListV2.types';

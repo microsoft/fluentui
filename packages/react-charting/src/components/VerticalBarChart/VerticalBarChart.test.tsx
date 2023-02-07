@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
 import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the VerticalBarChart to be tested.
 let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;
@@ -183,5 +184,46 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('VerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', async () => {
+    wrapper = mount(
+      <VerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
+
+    // Wait for the chart to be resized
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+
+    wrapper.find('rect').at(1).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout on mouseover', async () => {
+    wrapper = mount(
+      <VerticalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

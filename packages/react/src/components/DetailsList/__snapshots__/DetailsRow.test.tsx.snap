@@ -35,7 +35,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -871,7 +870,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -2006,7 +2004,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
     role="presentation"
   >
     <div
-      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2062,7 +2059,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
     <div
-      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2118,7 +2114,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
     <div
-      aria-readonly={true}
       className=
           ms-DetailsRow-cell
           {
@@ -2174,21 +2169,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
   </div>
-  <span
-    aria-checked={false}
-    className=
-
-        {
-          bottom: 0px;
-          display: none;
-          left: 0px;
-          position: absolute;
-          right: 0px;
-          top: -1px;
-        }
-    data-selection-toggle={true}
-    role="checkbox"
-  />
 </div>
 `;
 
@@ -2227,7 +2207,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -3063,7 +3042,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >

@@ -6,6 +6,7 @@ import {
   useEventCallback,
 } from '@fluentui/react-utilities';
 import type { TextareaProps, TextareaState } from './Textarea.types';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Textarea.
@@ -17,7 +18,25 @@ import type { TextareaProps, TextareaState } from './Textarea.types';
  * @param ref - reference to root HTMLElement of Textarea
  */
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
-  const { size = 'medium', appearance = 'outline', resize = 'none', onChange } = props;
+  const overrides = useOverrides();
+
+  const {
+    size = 'medium',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
+    resize = 'none',
+    onChange,
+  } = props;
+
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    (appearance === 'filled-darker-shadow' || appearance === 'filled-lighter-shadow')
+  ) {
+    // eslint-disable-next-line no-console
+    console.error(
+      "The 'filled-darker-shadow' and 'filled-lighter-shadow' appearances are deprecated and will be removed in the" +
+        ' future.',
+    );
+  }
 
   const [value, setValue] = useControllableState({
     state: props.value,

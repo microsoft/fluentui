@@ -35,7 +35,6 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
   >
     <div
       aria-colcount={2}
-      aria-readonly="true"
       aria-rowcount={1}
       role="grid"
     >

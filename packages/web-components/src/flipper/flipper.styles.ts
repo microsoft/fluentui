@@ -13,14 +13,14 @@ import {
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  focusStrokeOuter,
-  focusStrokeWidth,
   neutralFillRest,
   neutralFillStrongActive,
   neutralFillStrongHover,
   neutralFillStrongRest,
   neutralStrokeControlRest,
+  strokeWidth,
 } from '../design-tokens';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -36,9 +36,8 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
       background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
         border-box ${neutralStrokeControlRest};
       box-sizing: border-box;
-      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: calc(${controlCornerRadius} * 1px);
-      outline: none;
       padding: 0;
     }
 
@@ -66,7 +65,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      ${focusTreatmentBase}
     }
 
     :host::-moz-focus-inner {
@@ -104,8 +103,7 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
         }
         :host(:${focusVisible}) {
           forced-color-adjust: none;
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.ButtonFace}, 0 0 0 4px ${SystemColors.ButtonText};
+          outline-color: ${SystemColors.Highlight};
         }
       `,
     ),

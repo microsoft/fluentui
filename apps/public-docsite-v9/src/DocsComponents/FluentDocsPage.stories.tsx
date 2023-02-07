@@ -12,6 +12,8 @@ import {
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Toc, nameToHash } from './Toc.stories';
+import { THEME_ID, themes } from '@fluentui/react-storybook-addon';
+import { ThemePicker } from './ThemePicker.stories';
 
 const useStyles = makeStyles({
   divider: {
@@ -40,6 +42,8 @@ const useStyles = makeStyles({
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
+  // eslint-disable-next-line deprecation/deprecation
+  const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();
   const primaryStory = stories[0];
   const styles = useStyles();
@@ -61,6 +65,7 @@ export const FluentDocsPage = () => {
 
       <div className={styles.wrapper}>
         <div className={styles.container}>
+          <ThemePicker selectedThemeId={selectedTheme?.id} />
           <Subtitle />
           <Description />
           <hr className={styles.divider} />

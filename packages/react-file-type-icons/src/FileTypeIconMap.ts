@@ -41,6 +41,12 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   calendar: {
     extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs'],
   },
+  classifier: {
+    extensions: ['classifier'],
+  },
+  clipchamp: {
+    extensions: ['clipchamp'],
+  },
   code: {
     extensions: [
       'abap',
@@ -258,7 +264,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   desktopfolder: {},
   docset: {},
-  documentfolder: {},
+  documentsfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -271,12 +277,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
+  favoritesfolder: {},
   folder: {},
   font: {
     extensions: ['ttf', 'otf', 'woff'],
-  },
-  fluid: {
-    extensions: ['fluid', 'loop'],
   },
   form: {},
   genericfile: {},
@@ -291,6 +295,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   linkedfolder: {},
   listitem: {},
+  loop: {
+    extensions: ['fluid', 'loop'],
+  },
   officescript: {
     extensions: ['osts'],
   },
@@ -408,13 +415,12 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['pub'],
   },
   spo: {
-    extensions: ['aspx', 'classifier'],
+    extensions: ['aspx'],
   },
   sponews: {},
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
-  stream: {},
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
@@ -535,7 +541,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
   whiteboard: {
-    extensions: ['whiteboard'],
+    extensions: ['whiteboard', 'wbtx'],
   },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],

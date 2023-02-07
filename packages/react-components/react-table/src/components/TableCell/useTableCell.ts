@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { TableCellProps, TableCellState } from './TableCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -13,20 +13,20 @@ import { useTableContext } from '../../contexts/tableContext';
  * @param ref - reference to root HTMLElement of TableCell
  */
 export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTMLElement>): TableCellState => {
-  const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
+  const { noNativeElements, size } = useTableContext();
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'td';
 
   return {
     components: {
       root: rootComponent,
-      media: 'span',
     },
-    media: resolveShorthand(props.media),
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'cell' : undefined,
       ...props,
     }),
+    noNativeElements,
+    size,
   };
 };

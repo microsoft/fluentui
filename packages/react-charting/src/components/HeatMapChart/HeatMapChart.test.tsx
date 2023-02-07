@@ -2,6 +2,7 @@ jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 import { resetIds } from '../../Utilities';
 import { IHeatMapChartProps, HeatMapChart } from './index';
@@ -234,5 +235,24 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, width: 600 });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('HeatMapChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', () => {
+    wrapper = mount(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+        calloutProps={{ doNotLayer: true }}
+      />,
+    );
+    wrapper.find('rect').at(1).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

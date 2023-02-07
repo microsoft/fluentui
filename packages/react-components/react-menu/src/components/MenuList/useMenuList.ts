@@ -9,7 +9,7 @@ import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabste
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
-import type { MenuListProps, MenuListState, UninitializedMenuListState } from './MenuList.types';
+import type { MenuListProps, MenuListState } from './MenuList.types';
 
 /**
  * Returns the props and state required to render the component
@@ -27,22 +27,6 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   }
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const initialState: UninitializedMenuListState = {
-    components: {
-      root: 'div',
-    },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'menu',
-      'aria-labelledby': menuContext.triggerId,
-      ...focusAttributes,
-      ...props,
-    }),
-    hasIcons: menuContext.hasIcons || false,
-    hasCheckmarks: menuContext.hasCheckmarks || false,
-    ...(hasMenuContext && menuContext),
-    ...props,
-  };
 
   const setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
@@ -91,12 +75,14 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   );
 
   const [checkedValues, setCheckedValues] = useControllableState({
-    state: initialState.checkedValues,
-    defaultState: initialState.defaultCheckedValues,
+    state: props.checkedValues ?? (hasMenuContext ? menuContext.checkedValues : undefined),
+    defaultState: props.defaultCheckedValues,
     initialState: {},
   });
 
-  const { onCheckedValueChange } = initialState;
+  const handleCheckedValueChange =
+    props.onCheckedValueChange ?? (hasMenuContext ? menuContext.onCheckedValueChange : undefined);
+
   const toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
@@ -107,7 +93,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
         newCheckedItems.push(value);
       }
 
-      onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
+      handleCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
       setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     },
   );
@@ -115,18 +101,27 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
   const selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
     setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
-    onCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
+    handleCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
   });
 
-  const state = {
-    ...initialState,
+  return {
+    components: {
+      root: 'div',
+    },
+    root: getNativeElementProps('div', {
+      ref: useMergedRefs(ref, innerRef),
+      role: 'menu',
+      'aria-labelledby': menuContext.triggerId,
+      ...focusAttributes,
+      ...props,
+    }),
+    hasIcons: menuContext.hasIcons || false,
+    hasCheckmarks: menuContext.hasCheckmarks || false,
+    checkedValues,
     setFocusByFirstCharacter,
     selectRadio,
     toggleCheckbox,
-    checkedValues: checkedValues ?? {},
   };
-
-  return state;
 };
 
 /**
@@ -135,7 +130,6 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
 const useMenuContextSelectors = () => {
   const checkedValues = useMenuContext_unstable(context => context.checkedValues);
   const onCheckedValueChange = useMenuContext_unstable(context => context.onCheckedValueChange);
-  const defaultCheckedValues = useMenuContext_unstable(context => context.defaultCheckedValues);
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const hasIcons = useMenuContext_unstable(context => context.hasIcons);
   const hasCheckmarks = useMenuContext_unstable(context => context.hasCheckmarks);
@@ -143,7 +137,6 @@ const useMenuContextSelectors = () => {
   return {
     checkedValues,
     onCheckedValueChange,
-    defaultCheckedValues,
     triggerId,
     hasIcons,
     hasCheckmarks,

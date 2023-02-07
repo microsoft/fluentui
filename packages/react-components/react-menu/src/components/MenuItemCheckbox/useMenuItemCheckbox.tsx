@@ -4,45 +4,42 @@ import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
+import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 /** Returns the props and state required to render the component */
 export const useMenuItemCheckbox_unstable = (
   props: MenuItemCheckboxProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<ARIAButtonElement<'div'>>,
 ): MenuItemCheckboxState => {
-  const state = useMenuItem_unstable(
-    {
-      role: 'menuitemcheckbox',
-      persistOnClick: true,
-      ...props,
-      checkmark: resolveShorthand(props.checkmark, {
-        defaultProps: { children: <Checkmark16Filled /> },
-        required: true,
-      }),
-    },
-    ref,
-  ) as MenuItemCheckboxState;
-
   const toggleCheckbox = useMenuListContext_unstable(context => context.toggleCheckbox);
-  const { onClick: onClickOriginal } = state.root;
+  const { name, value } = props;
+
   const checked = useMenuListContext_unstable(context => {
-    const checkedItems = context.checkedValues?.[state.name] || [];
-    return checkedItems.indexOf(state.value) !== -1;
+    const checkedItems = context.checkedValues?.[name] || [];
+    return checkedItems.indexOf(value) !== -1;
   });
 
-  state.checked = checked;
-  state.root['aria-checked'] = state.checked;
-
-  // MenuItem state already transforms keyDown to click events
-  state.root.onClick = e => {
-    if (state.disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    toggleCheckbox?.(e, state.name, state.value, state.checked);
-    onClickOriginal?.(e);
+  const state: MenuItemCheckboxState = {
+    ...useMenuItem_unstable(
+      {
+        role: 'menuitemcheckbox',
+        persistOnClick: true,
+        ...props,
+        'aria-checked': checked,
+        checkmark: resolveShorthand(props.checkmark, {
+          defaultProps: { children: <Checkmark16Filled /> },
+          required: true,
+        }),
+        onClick: (e: React.MouseEvent<ARIAButtonElementIntersection<'div'>>) => {
+          toggleCheckbox?.(e, name, value, checked);
+          props.onClick?.(e);
+        },
+      },
+      ref,
+    ),
+    name,
+    value,
+    checked,
   };
 
   return state;

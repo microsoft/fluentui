@@ -1,14 +1,15 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Input } from '@fluentui/react-input';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 storiesOf('Input Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('input')
@@ -19,7 +20,7 @@ storiesOf('Input Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
   .addStory('Appearance: underline', () => <Input appearance="underline" placeholder="Placeholder" />)
@@ -30,6 +31,15 @@ storiesOf('Input Converged', module)
       <Input appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
+  .addStory('Invalid: outline', () => <Input aria-invalid placeholder="Placeholder" />)
+  .addStory('Invalid: underline', () => <Input aria-invalid appearance="underline" placeholder="Placeholder" />)
+  .addStory('Invalid: filled-darker', () => <Input aria-invalid appearance="filled-darker" placeholder="Placeholder" />)
+  .addStory('Invalid: filled-lighter', () => (
+    // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
+    <div style={{ background: '#f5f5f5', padding: '10px' }}>
+      <Input aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
+    </div>
+  ))
   .addStory('Disabled', () => <Input disabled />)
   .addStory('With value', () => <Input defaultValue="Value!" />);
 
@@ -38,7 +48,7 @@ storiesOf('Input Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   // note: due to reused "Input Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('Size: small', () => <Input size="small" placeholder="Placeholder" />)
   .addStory('Size: large', () => <Input size="large" placeholder="Placeholder" />)
@@ -56,4 +66,12 @@ storiesOf('Input Converged', module)
     'contentAfter',
     () => <Input contentAfter={<DismissRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },
-  );
+  )
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Input placeholder="Default overriden appearance" />
+        <Input appearance="outline" placeholder="Outline appearance" />
+      </div>
+    </FluentProvider>
+  ));

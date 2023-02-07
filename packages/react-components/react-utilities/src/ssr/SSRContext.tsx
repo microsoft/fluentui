@@ -20,14 +20,13 @@ export const defaultSSRContextValue: SSRContextValue = {
   current: 0,
 };
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const SSRContext = React.createContext<SSRContextValue>(defaultSSRContextValue);
+export const SSRContext = React.createContext<SSRContextValue | undefined>(undefined) as React.Context<SSRContextValue>;
 
 /**
  * @internal
  */
 export function useSSRContext(): SSRContextValue {
-  return React.useContext(SSRContext);
+  return React.useContext(SSRContext) ?? defaultSSRContextValue;
 }
 
 /**
@@ -36,7 +35,7 @@ export function useSSRContext(): SSRContextValue {
  *
  * @public
  */
-export const SSRProvider: React.FC = props => {
+export const SSRProvider: React.FC<{ children: React.ReactNode }> = props => {
   const [value] = React.useState<SSRContextValue>(() => ({ current: 0 }));
 
   return <SSRContext.Provider value={value}>{props.children}</SSRContext.Provider>;

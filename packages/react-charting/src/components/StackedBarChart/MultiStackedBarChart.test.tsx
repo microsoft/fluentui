@@ -4,8 +4,15 @@ import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IChartProps, IChartDataPoint, IMultiStackedBarChartProps, MultiStackedBarChart } from '../../index';
+import {
+  IChartProps,
+  IChartDataPoint,
+  IMultiStackedBarChartProps,
+  MultiStackedBarChart,
+  MultiStackedBarChartVariant,
+} from '../../index';
 import { IMultiStackedBarChartState, MultiStackedBarChartBase } from './MultiStackedBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the MultiStackedBarChart to be tested.
 let wrapper: ReactWrapper<IMultiStackedBarChartProps, IMultiStackedBarChartState, MultiStackedBarChartBase> | undefined;
@@ -103,6 +110,22 @@ describe('MultiStackedBarChart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should render absolute-scale variant correctly', () => {
+    const component = renderer.create(
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render bar labels in absolute-scale variant', () => {
+    const component = renderer.create(
+      <MultiStackedBarChart data={chartPoints} variant={MultiStackedBarChartVariant.AbsoluteScale} hideLabels={true} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('MultiStackedBarChart - basic props', () => {
@@ -195,5 +218,45 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('MultiStackedBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', () => {
+    wrapper = mount(<MultiStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<MultiStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mousemove');
+    const html1 = wrapper.html();
+    wrapper.find('rect').at(1).simulate('mousemove');
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <MultiStackedBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

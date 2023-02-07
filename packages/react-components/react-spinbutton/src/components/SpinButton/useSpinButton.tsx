@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
   getPartitionedNativeProps,
+  mergeCallbacks,
   resolveShorthand,
   useControllableState,
-  useMergedEventCallbacks,
   useTimeout,
 } from '@fluentui/react-utilities';
 import * as Keys from '@fluentui/keyboard-keys';
@@ -16,6 +16,7 @@ import {
 } from './SpinButton.types';
 import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 type InternalState = {
   value: number | null;
@@ -51,6 +52,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'size', 'value'],
   });
 
+  const overrides = useOverrides();
+
   const {
     value,
     displayValue,
@@ -62,7 +65,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     precision: precisionFromProps,
     onChange,
     size = 'medium',
-    appearance = 'outline',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
     root,
     input,
     incrementButton,
@@ -260,7 +263,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         ref,
         autoComplete: 'off',
         role: 'spinbutton',
-        appearance: appearance,
+        appearance,
         type: 'text',
         ...nativeProps.primary,
       },
@@ -310,30 +313,18 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.input['aria-valuemax'] = max;
   state.input['aria-valuenow'] = currentValue ?? undefined;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
-  state.input.onChange = useMergedEventCallbacks(state.input.onChange, handleInputChange);
-  state.input.onBlur = useMergedEventCallbacks(state.input.onBlur, handleBlur);
-  state.input.onKeyDown = useMergedEventCallbacks(state.input.onKeyDown, handleKeyDown);
-  state.input.onKeyUp = useMergedEventCallbacks(state.input.onKeyUp, handleKeyUp);
+  state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
+  state.input.onBlur = mergeCallbacks(state.input.onBlur, handleBlur);
+  state.input.onKeyDown = mergeCallbacks(state.input.onKeyDown, handleKeyDown);
+  state.input.onKeyUp = mergeCallbacks(state.input.onKeyUp, handleKeyUp);
 
-  state.incrementButton.onMouseDown = useMergedEventCallbacks(
-    handleIncrementMouseDown,
-    state.incrementButton.onMouseDown,
-  );
-  state.incrementButton.onMouseUp = useMergedEventCallbacks(state.incrementButton.onMouseUp, handleStepMouseUpOrLeave);
-  state.incrementButton.onMouseLeave = useMergedEventCallbacks(
-    state.incrementButton.onMouseLeave,
-    handleStepMouseUpOrLeave,
-  );
+  state.incrementButton.onMouseDown = mergeCallbacks(handleIncrementMouseDown, state.incrementButton.onMouseDown);
+  state.incrementButton.onMouseUp = mergeCallbacks(state.incrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  state.incrementButton.onMouseLeave = mergeCallbacks(state.incrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
-  state.decrementButton.onMouseDown = useMergedEventCallbacks(
-    handleDecrementMouseDown,
-    state.decrementButton.onMouseDown,
-  );
-  state.decrementButton.onMouseUp = useMergedEventCallbacks(state.decrementButton.onMouseUp, handleStepMouseUpOrLeave);
-  state.decrementButton.onMouseLeave = useMergedEventCallbacks(
-    state.decrementButton.onMouseLeave,
-    handleStepMouseUpOrLeave,
-  );
+  state.decrementButton.onMouseDown = mergeCallbacks(handleDecrementMouseDown, state.decrementButton.onMouseDown);
+  state.decrementButton.onMouseUp = mergeCallbacks(state.decrementButton.onMouseUp, handleStepMouseUpOrLeave);
+  state.decrementButton.onMouseLeave = mergeCallbacks(state.decrementButton.onMouseLeave, handleStepMouseUpOrLeave);
 
   return state;
 };

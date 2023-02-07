@@ -95,16 +95,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
+  private _highlightedCircleId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
     this._createSet = memoizeFunction((data: IChartProps) => this._createDataSet(data.lineChartData!));
     this.state = {
+      selectedLegend: '',
       activeLegend: '',
       hoverXValue: '',
       isCalloutVisible: false,
-      isLegendSelected: false,
-      isLegendHovered: false,
       refSelected: null,
       YValueHover: [],
       lineXValue: 0,
@@ -121,6 +121,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
+  }
+
+  public componentDidUpdate() {
+    if (this.state.isShowCalloutPending) {
+      this.setState({
+        refSelected: `#${this._highlightedCircleId}`,
+        isCalloutVisible: true,
+        isShowCalloutPending: false,
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -419,42 +429,28 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
   };
 
-  private _onLegendClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.activeLegend === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          activeLegend: '',
-        });
-      } else {
-        this.setState({
-          activeLegend: customMessage,
-        });
-      }
+  private _onLegendClick(legend: string): void {
+    if (this.state.selectedLegend === legend) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        activeLegend: customMessage,
+        selectedLegend: legend,
       });
     }
   }
 
-  private _onLegendHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: customMessage,
-        isLegendHovered: true,
-      });
-    }
+  private _onLegendHover(legend: string): void {
+    this.setState({
+      activeLegend: legend,
+    });
   }
 
-  private _onLegendLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: '',
-        isLegendHovered: false,
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave(): void {
+    this.setState({
+      activeLegend: '',
+    });
   }
 
   private _getLegendData = (palette: IPalette, points: ILineChartPoints[]): JSX.Element => {
@@ -480,10 +476,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           this._onLegendClick(singleChartData.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(singleChartData.legend);
         },
-        onMouseOutAction: (isLegendSelected?: boolean) => {
-          this._onLegendLeave(isLegendSelected);
+        onMouseOutAction: () => {
+          this._onLegendLeave();
         },
       };
 
@@ -507,14 +504,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this.setState({ isCircleClicked: true });
   };
 
-  private _getOpacity = (selectedArea: string): number => {
+  private _getOpacity = (legend: string): number => {
     if (!this._isMultiStackChart) {
       return 0.7;
     } else {
-      let opacity = 0.7;
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        opacity = this.state.activeLegend === selectedArea ? 0.7 : 0.1;
-      }
+      const opacity = this._legendHighlighted(legend) || this._noLegendHighlighted() ? 0.7 : 0.1;
       return opacity;
     }
   };
@@ -527,8 +521,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       if (this.state.isCalloutVisible) {
         opacity = 1;
       }
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        opacity = this.state.activeLegend === legend ? 0 : 0.1;
+      if (!this._noLegendHighlighted()) {
+        opacity = this._legendHighlighted(legend) ? 0 : 0.1;
       }
       return opacity;
     }
@@ -537,13 +531,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint) {
-      if (this.state.isShowCalloutPending) {
-        this.setState({
-          refSelected: `#${circleId}`,
-          isCalloutVisible: true,
-          isShowCalloutPending: false,
-        });
-      }
+      this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
         fillColor = this.props.theme!.palette.white;
       }
@@ -589,16 +577,33 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             onMouseOver={this._onRectMouseMove}
             {...points[index]!.lineOptions}
           />
-          <path
-            id={`${index}-graph-${this._uniqueIdForGraph}`}
-            d={area(singleStackedData)!}
-            fill={this._colors[index]}
-            opacity={this._opacity[index]}
-            fillOpacity={this._getOpacity(points[index]!.legend)}
-            onMouseMove={this._onRectMouseMove}
-            onMouseOut={this._onRectMouseOut}
-            onMouseOver={this._onRectMouseMove}
-          />
+          {singleStackedData.length === 1 ? (
+            <circle
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              cx={xScale(singleStackedData[0].xVal)}
+              cy={yScale(singleStackedData[0].values[1])}
+              r={6}
+              stroke={this._colors[index]}
+              strokeWidth={3}
+              fill={this._colors[index]}
+              opacity={this._opacity[index]}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+            />
+          ) : (
+            <path
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              d={area(singleStackedData)!}
+              fill={this._colors[index]}
+              opacity={this._opacity[index]}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+            />
+          )}
         </React.Fragment>,
       );
     });
@@ -695,5 +700,24 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this.setState({
       isCalloutVisible: false,
     });
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legend: string) => {
+    return (
+      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 }

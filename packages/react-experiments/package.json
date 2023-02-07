@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.12.14",
+  "version": "8.14.47",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,36 +27,38 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.1",
+    "@fluentui/common-styles": "^1.2.17",
     "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
     "@types/prop-types": "15.7.1",
     "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.19",
-    "react-hooks-testing-library": "^0.5.0"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.23",
+    "react-hooks-testing-library": "^0.5.0",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.86.3",
-    "@fluentui/theme": "^2.6.9",
+    "@fluentui/react": "^8.105.5",
+    "@fluentui/theme": "^2.6.22",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.4.1",
-    "@fluentui/foundation-legacy": "^8.2.12",
-    "@fluentui/font-icons-mdl2": "^8.4.5",
-    "@fluentui/merge-styles": "^8.5.2",
-    "@fluentui/react-hooks": "^8.6.4",
-    "@fluentui/set-version": "^8.2.1",
-    "@fluentui/style-utilities": "^8.7.4",
-    "@fluentui/utilities": "^8.10.1",
+    "@fluentui/example-data": "^8.4.6",
+    "@fluentui/foundation-legacy": "^8.2.28",
+    "@fluentui/font-icons-mdl2": "^8.5.8",
+    "@fluentui/merge-styles": "^8.5.6",
+    "@fluentui/react-hooks": "^8.6.16",
+    "@fluentui/set-version": "^8.2.5",
+    "@fluentui/style-utilities": "^8.9.1",
+    "@fluentui/utilities": "^8.13.6",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
     ".": {
@@ -159,6 +161,16 @@
       "types": "./lib/Signals.d.ts",
       "import": "./lib/Signals.js",
       "require": "./lib-commonjs/Signals.js"
+    },
+    "./lib/components/signals/Signal.scss": {
+      "types": "./lib/components/signals/Signal.scss.d.ts",
+      "import": "./lib/components/signals/Signal.scss.js",
+      "require": "./lib-commonjs/components/signals/Signal.scss.js"
+    },
+    "./lib/components/signals/Signals.scss": {
+      "types": "./lib/components/signals/Signals.scss.d.ts",
+      "import": "./lib/components/signals/Signals.scss.js",
+      "require": "./lib-commonjs/components/signals/Signals.scss.js"
     },
     "./lib/Slider": {
       "types": "./lib/Slider.d.ts",

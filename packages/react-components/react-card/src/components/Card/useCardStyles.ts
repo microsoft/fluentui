@@ -1,17 +1,20 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
 import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 /**
  * Static CSS class names used internally for the component slots.
  */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
+  floatingAction: 'fui-Card__floatingAction',
+  checkbox: 'fui-Card__checkbox',
 };
 
 /**
@@ -22,11 +25,21 @@ export const cardCSSVars = {
   cardBorderRadiusVar: '--fui-Card--border-radius',
 };
 
+const focusOutlineStyle = {
+  outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
+  outlineWidth: tokens.strokeWidthThick,
+};
+
 const useStyles = makeStyles({
   root: {
+    ...shorthands.overflow('hidden'),
+    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
+    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
+    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
+
     display: 'flex',
     position: 'relative',
-    ...shorthands.overflow('hidden'),
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
 
     // Border setting using after pseudo element to allow CardPreview to render behind it.
@@ -44,10 +57,6 @@ const useStyles = makeStyles({
       ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
     },
 
-    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
-    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
-    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
-
     // Prevents CardHeader and CardFooter from shrinking.
     [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
       flexShrink: 0,
@@ -58,13 +67,15 @@ const useStyles = makeStyles({
     },
 
     ...createFocusOutlineStyle({
-      style: {
-        outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-        outlineWidth: tokens.strokeWidthThick,
-      },
+      style: focusOutlineStyle,
       selector: 'focus',
     }),
   },
+
+  selectableFocused: createFocusOutlineStyle({
+    style: focusOutlineStyle,
+    selector: 'focus-within',
+  }),
 
   orientationHorizontal: {
     flexDirection: 'row',
@@ -78,8 +89,14 @@ const useStyles = makeStyles({
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on horizontal cards, the left padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the last element.
+    // Since this is on horizontal cards, the right padding is removed to keep the content flush with the border.
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
+      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
   },
   orientationVertical: {
@@ -90,11 +107,22 @@ const useStyles = makeStyles({
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
       marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
+
     // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
     // As such, the code below targets a CardPreview, when it's the first element.
     // Since this is on vertical cards, the top padding is removed to keep the content flush with the border.
-    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:first-of-type`]: {
       marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+    [`> .${cardClassNames.floatingAction} + .${cardPreviewClassNames.root}`]: {
+      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the first element.
+    // Since this is on vertical cards, the bottom padding is removed to keep the content flush with the border.
+    [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
+      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
   },
 
@@ -111,15 +139,14 @@ const useStyles = makeStyles({
     [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
   },
 
-  interactiveNoOutline: {
-    ':hover::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-    ':active::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
+  filled: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
-
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
@@ -137,8 +164,20 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground1Pressed,
     },
   },
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground1,
+  filledInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Selected,
+    },
+  },
+
+  filledAlternative: {
+    backgroundColor: tokens.colorNeutralBackground2,
     boxShadow: tokens.shadow4,
 
     '::after': {
@@ -162,12 +201,24 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground2Pressed,
     },
   },
-  filledAlternative: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
+  filledAlternativeInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground2Selected,
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground2Selected,
+    },
+  },
+
+  outline: {
+    backgroundColor: tokens.colorTransparentBackground,
+    boxShadow: 'none',
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
   },
   outlineInteractive: {
@@ -194,12 +245,24 @@ const useStyles = makeStyles({
       },
     },
   },
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+  outlineInteractiveSelected: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundSelected,
+    },
+  },
+
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
     boxShadow: 'none',
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   subtleInteractive: {
@@ -218,13 +281,33 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
   },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    boxShadow: 'none',
+  subtleInteractiveSelected: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
+
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
+  },
+
+  select: {
+    position: 'absolute',
+    top: '4px',
+    right: '4px',
+    zIndex: 1,
+  },
+
+  hiddenCheckbox: {
+    ...shorthands.overflow('hidden'),
+    width: '1px',
+    height: '1px',
+    position: 'absolute',
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
   },
 });
 
@@ -237,39 +320,57 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
     vertical: styles.orientationVertical,
-  } as const;
+  };
 
   const sizeMap = {
     small: styles.sizeSmall,
     medium: styles.sizeMedium,
     large: styles.sizeLarge,
-  } as const;
+  };
 
-  const interactive =
-    state.root.onClick ||
-    state.root.onMouseUp ||
-    state.root.onMouseDown ||
-    state.root.onPointerUp ||
-    state.root.onPointerDown ||
-    state.root.onTouchStart ||
-    state.root.onTouchEnd;
+  const appearanceMap = {
+    filled: styles.filled,
+    'filled-alternative': styles.filledAlternative,
+    outline: styles.outline,
+    subtle: styles.subtle,
+  };
+
+  const selectedMap = {
+    filled: styles.filledInteractiveSelected,
+    'filled-alternative': styles.filledAlternativeInteractiveSelected,
+    outline: styles.outlineInteractiveSelected,
+    subtle: styles.subtleInteractiveSelected,
+  };
+  const interactiveMap = {
+    filled: styles.filledInteractive,
+    'filled-alternative': styles.filledAlternativeInteractive,
+    outline: styles.outlineInteractive,
+    subtle: styles.subtleInteractive,
+  };
 
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
     orientationMap[state.orientation],
     sizeMap[state.size],
-    state.appearance === 'filled' && styles.filled,
-    state.appearance === 'filled-alternative' && styles.filledAlternative,
-    state.appearance === 'outline' && styles.outline,
-    state.appearance === 'subtle' && styles.subtle,
-    interactive && state.appearance === 'filled' && styles.filledInteractive,
-    interactive && state.appearance === 'filled-alternative' && styles.filledAlternativeInteractive,
-    interactive && state.appearance === 'outline' && styles.outlineInteractive,
-    interactive && state.appearance === 'subtle' && styles.subtleInteractive,
-    interactive && state.appearance !== 'outline' && styles.interactiveNoOutline,
+    appearanceMap[state.appearance],
+    (state.interactive || state.selectable) && interactiveMap[state.appearance],
+    state.selected && selectedMap[state.appearance],
+    state.selectFocused && styles.selectableFocused,
     state.root.className,
   );
+
+  if (state.floatingAction) {
+    state.floatingAction.className = mergeClasses(
+      cardClassNames.floatingAction,
+      styles.select,
+      state.floatingAction.className,
+    );
+  }
+
+  if (state.checkbox) {
+    state.checkbox.className = mergeClasses(cardClassNames.checkbox, styles.hiddenCheckbox, state.checkbox.className);
+  }
 
   return state;
 };

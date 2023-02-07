@@ -24,6 +24,7 @@ export const alertClassNames: SlotClassNames<AlertSlots>;
 // @public
 export type AlertProps = ComponentProps<AlertSlots> & {
     intent?: 'info' | 'success' | 'error' | 'warning';
+    appearance?: 'primary' | 'inverted';
 };
 
 // @public (undocumented)
@@ -35,7 +36,7 @@ export type AlertSlots = {
 };
 
 // @public
-export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'>;
+export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & Required<Pick<AlertProps, 'appearance'>>;
 
 // @public (undocumented)
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;

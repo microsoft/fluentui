@@ -1,4 +1,4 @@
-export { getSlots, resolveShorthand } from './compose/index';
+export { getSlots, resolveShorthand, isResolvedShorthand } from './compose/index';
 export type {
   ExtractSlotProps,
   ComponentProps,
@@ -15,6 +15,7 @@ export type {
 } from './compose/index';
 
 export {
+  IdPrefixProvider,
   resetIdsForTests,
   useControllableState,
   useEventCallback,
@@ -22,11 +23,11 @@ export {
   useForceUpdate,
   useId,
   useIsomorphicLayoutEffect,
-  useMergedEventCallbacks,
   useMergedRefs,
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,
+  useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
@@ -38,9 +39,11 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
-  shouldPreventDefaultOnKeyDown,
+  mergeCallbacks,
+  isHTMLElement,
+  isInteractiveHTMLElement,
 } from './utils/index';
 
-export { applyTriggerPropsToChildren, getTriggerChild } from './trigger/index';
+export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
 
-export type { FluentTriggerComponent } from './trigger/index';
+export type { FluentTriggerComponent, TriggerProps } from './trigger/index';

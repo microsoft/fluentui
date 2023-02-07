@@ -3,7 +3,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { tokens, webLightTheme } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   box: {
@@ -155,11 +155,11 @@ export const Propagation = () => (
 
 storiesOf('MakeStyles', module)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       <div className="testWrapper" style={{ width: '300px' }}>
         {story()}
       </div>
-    </Screener>
+    </StoryWright>
   ))
   .addStory('RTL: two components in a single Provider', () => (
     <FluentProvider dir="rtl" theme={webLightTheme}>
@@ -194,7 +194,7 @@ storiesOf('MakeStyles', module)
 
 storiesOf('MakeStyles (pseudo)', module)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .focus('#boxA')
@@ -209,6 +209,6 @@ storiesOf('MakeStyles (pseudo)', module)
       <div className="testWrapper" style={{ width: '300px' }}>
         {story()}
       </div>
-    </Screener>
+    </StoryWright>
   ))
   .addStory('insertion is ordered', () => <BoxWithPseudo />);

@@ -7,7 +7,6 @@ import {
   ACTIONS_START_GRID_AREA,
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
 } from '../../contexts/constants';
-import * as localShorthands from '../../utils/localShorthands';
 
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots> = {
   root: 'fui-DialogActions',
@@ -19,9 +18,6 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     display: 'flex',
     ...shorthands.gap(DIALOG_GAP),
-    '> .fui-Button': {
-      maxWidth: '100%',
-    },
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       flexDirection: 'column',
       justifySelf: 'stretch',
@@ -29,11 +25,11 @@ const useStyles = makeStyles({
   },
   gridPositionEnd: {
     justifySelf: 'end',
-    ...localShorthands.gridArea(ACTIONS_END_GRID_AREA),
+    ...shorthands.gridArea(ACTIONS_END_GRID_AREA),
   },
   gridPositionStart: {
     justifySelf: 'start',
-    ...localShorthands.gridArea(ACTIONS_START_GRID_AREA),
+    ...shorthands.gridArea(ACTIONS_START_GRID_AREA),
   },
 });
 

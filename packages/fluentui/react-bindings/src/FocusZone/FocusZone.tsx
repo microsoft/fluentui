@@ -95,7 +95,13 @@ function _raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
+    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => {
+      if (zone.props.shouldResetActiveElementWhenTabFromZone && document.activeElement !== zone._activeElement) {
+        // when focus is outside of component and shouldResetActiveElementWhenTabFromZone, reset tabIndex
+        zone._activeElement = null;
+      }
+      zone.updateTabIndexes();
+    });
   }
 }
 

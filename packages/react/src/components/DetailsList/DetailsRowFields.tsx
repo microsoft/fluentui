@@ -65,7 +65,6 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
           key={key}
           id={column.isRowHeader ? rowHeaderId : undefined}
           role={column.isRowHeader ? 'rowheader' : 'gridcell'}
-          aria-readonly
           className={css(
             column.className,
             column.isMultiline && rowClassNames.isMultiline,

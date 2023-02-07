@@ -24,6 +24,7 @@ import {
   htmlElementProperties,
   getNativeProps,
   timeProperties,
+  dialogProperties,
 } from './properties';
 
 const nativeElementMap: Record<string, Record<string, number>> = {
@@ -49,6 +50,7 @@ const nativeElementMap: Record<string, Record<string, number>> = {
   iframe: iframeProperties,
   img: imgProperties,
   time: timeProperties,
+  dialog: dialogProperties,
 };
 
 /**

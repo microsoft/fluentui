@@ -1,16 +1,19 @@
 import * as React from 'react';
 import type { AccordionItemContextValue } from './AccordionItem.types';
 
-// No default value.
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const AccordionItemContext = React.createContext<AccordionItemContextValue>({
+export const AccordionItemContext = React.createContext<AccordionItemContextValue | undefined>(
+  undefined,
+) as React.Context<AccordionItemContextValue>;
+
+const accordionItemContextDefaultValue: AccordionItemContextValue = {
   onHeaderClick() {
     /** */
   },
   open: false,
   disabled: false,
-});
+};
 
 export const AccordionItemProvider = AccordionItemContext.Provider;
 
-export const useAccordionItemContext_unstable = () => React.useContext(AccordionItemContext);
+export const useAccordionItemContext_unstable = () =>
+  React.useContext(AccordionItemContext) ?? accordionItemContextDefaultValue;

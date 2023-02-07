@@ -1,10 +1,10 @@
-import { createContext } from '@fluentui/react-context-selector';
-import type { Context } from '@fluentui/react-context-selector';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { Context, ContextSelector } from '@fluentui/react-context-selector';
 import { TabListContextValue } from './TabList.types';
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const TabListContext: Context<TabListContextValue> = createContext<TabListContextValue>({
+const tabListContextDefaultValue: TabListContextValue = {
   appearance: 'transparent',
+  reserveSelectedTabSpace: true,
   disabled: false,
   selectedValue: undefined,
   onRegister: () => {
@@ -23,4 +23,12 @@ export const TabListContext: Context<TabListContextValue> = createContext<TabLis
   },
   size: 'medium',
   vertical: false,
-});
+};
+
+export const TabListContext: Context<TabListContextValue> = createContext<TabListContextValue | undefined>(
+  undefined,
+) as Context<TabListContextValue>;
+
+export const TabListProvider = TabListContext.Provider;
+export const useTabListContext_unstable = <T>(selector: ContextSelector<TabListContextValue, T>): T =>
+  useContextSelector(TabListContext, (ctx = tabListContextDefaultValue) => selector(ctx));

@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-spinbutton",
-  "version": "9.0.0",
+  "version": "9.1.1",
   "description": "Fluent UI React SpinButton component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -20,32 +20,34 @@
     "lint": "just-scripts lint",
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-spinbutton/src && yarn docs",
-    "storybook": "node ../../../scripts/storybook/runner",
-    "type-check": "tsc -b tsconfig.json"
+    "storybook": "start-storybook",
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.12",
-    "@fluentui/react-label": "^9.0.4",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/react-label": "^9.0.19",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@griffel/react": "^1.2.3",
-    "@fluentui/keyboard-keys": "^9.0.0",
+    "@griffel/react": "^1.5.2",
+    "@fluentui/keyboard-keys": "^9.0.1",
+    "@fluentui/react-field": "9.0.0-alpha.18",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-input": "^9.0.4",
-    "@fluentui/react-theme": "^9.0.0",
-    "@fluentui/react-utilities": "^9.0.2",
+    "@fluentui/react-input": "^9.3.1",
+    "@fluentui/react-shared-contexts": "^9.2.0",
+    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/react-utilities": "^9.5.1",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -55,9 +57,10 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   }
 }
