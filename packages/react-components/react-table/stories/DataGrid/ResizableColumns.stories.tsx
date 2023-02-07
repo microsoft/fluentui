@@ -8,7 +8,7 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, makeStyles } from '@fluentui/react-components';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   DataGridBody,
   DataGridRow,
@@ -20,7 +20,6 @@ import {
   TableColumnDefinition,
   createTableColumn,
   TableColumnId,
-  TableCell,
 } from '@fluentui/react-components/unstable';
 
 type FileCell = {
@@ -89,32 +88,6 @@ const items: Item[] = [
   },
 ];
 
-const useTableCellStyles = makeStyles({
-  root: {
-    overflowX: 'hidden',
-  },
-  main: {
-    overflowX: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-  },
-  content: {
-    overflowX: 'hidden',
-  },
-});
-
-const StyledTableCellLayout: React.FC<React.ComponentProps<typeof TableCellLayout>> = props => {
-  const styles = useTableCellStyles();
-  return (
-    <TableCellLayout
-      className={styles.root}
-      content={{ className: styles.content }}
-      main={{ className: styles.main }}
-      {...props}
-    />
-  );
-};
-
 const columns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
@@ -125,7 +98,11 @@ const columns: TableColumnDefinition<Item>[] = [
       return 'File';
     },
     renderCell: item => {
-      return <StyledTableCellLayout media={item.file.icon}>{item.file.label}</StyledTableCellLayout>;
+      return (
+        <TableCellLayout ellipsis media={item.file.icon}>
+          {item.file.label}
+        </TableCellLayout>
+      );
     },
   }),
   createTableColumn<Item>({
@@ -138,13 +115,14 @@ const columns: TableColumnDefinition<Item>[] = [
     },
     renderCell: item => {
       return (
-        <StyledTableCellLayout
+        <TableCellLayout
+          ellipsis
           media={
             <Avatar aria-label={item.author.label} name={item.author.label} badge={{ status: item.author.status }} />
           }
         >
           {item.author.label}
-        </StyledTableCellLayout>
+        </TableCellLayout>
       );
     },
   }),
@@ -158,7 +136,7 @@ const columns: TableColumnDefinition<Item>[] = [
     },
 
     renderCell: item => {
-      return <StyledTableCellLayout>{item.lastUpdated.label}</StyledTableCellLayout>;
+      return <TableCellLayout ellipsis>{item.lastUpdated.label}</TableCellLayout>;
     },
   }),
   createTableColumn<Item>({
@@ -170,7 +148,11 @@ const columns: TableColumnDefinition<Item>[] = [
       return 'Last update';
     },
     renderCell: item => {
-      return <StyledTableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</StyledTableCellLayout>;
+      return (
+        <TableCellLayout ellipsis media={item.lastUpdate.icon}>
+          {item.lastUpdate.label}
+        </TableCellLayout>
+      );
     },
   }),
 ];
@@ -193,7 +175,7 @@ export const ResizableColumns = () => {
         },
         author: {
           defaultWidth: 180,
-          minWidth: 165,
+          minWidth: 120,
           idealWidth: 180,
         },
       }}
