@@ -9,7 +9,9 @@ export function toFloatingUIPadding(
     return padding;
   }
 
-  const paddingObject: Partial<SideObject> = { ...padding };
+  const { start, end, ...verticalPadding } = padding;
+
+  const paddingObject: Partial<SideObject> = verticalPadding;
 
   const left = isRtl ? 'end' : 'start';
   const right = isRtl ? 'start' : 'end';
