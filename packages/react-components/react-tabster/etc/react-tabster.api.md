@@ -50,6 +50,7 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions)
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
     circular?: boolean;
+    hasDefault?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;

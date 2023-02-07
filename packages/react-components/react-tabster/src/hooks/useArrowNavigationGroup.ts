@@ -25,6 +25,10 @@ export interface UseArrowNavigationGroupOptions {
    * Tabster should ignore default handling of keydown events
    */
   ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+  /**
+   * The default focusable item in the group will be an element with Focusable.isDefault property
+   */
+  hasDefault?: boolean;
 }
 
 /**
@@ -32,7 +36,7 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
-  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown } = options;
+  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown, hasDefault } = options;
   const tabster = useTabster();
 
   if (tabster) {
@@ -43,8 +47,9 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
-      memorizeCurrent: memorizeCurrent,
-      tabbable: tabbable,
+      memorizeCurrent,
+      tabbable,
+      hasDefault: !!hasDefault,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {
