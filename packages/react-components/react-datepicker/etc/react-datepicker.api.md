@@ -13,12 +13,12 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IBaseProps } from '@fluentui/utilities';
 import type { IComponentAs } from '@fluentui/utilities';
 import { Input } from '@fluentui/react-input';
-import { InputProps } from '@fluentui/react-input';
+import type { InputProps } from '@fluentui/react-input';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { ITheme } from '@fluentui/style-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
-import type { PopoverSurface } from '@fluentui/react-popover';
+import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
