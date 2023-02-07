@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:08 GMT",
+      "tag": "@fluentui/react-badge_v9.0.23",
+      "version": "9.0.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "fe583c0be359e23a4ae6c4f1ab69d359800393e5",
+            "comment": "fix: Using correct icon and color for away + out-of-office PresenceBadge."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:53 GMT",
       "tag": "@fluentui/react-badge_v9.0.22",
       "version": "9.0.22",

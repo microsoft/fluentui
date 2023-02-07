@@ -34,7 +34,7 @@
     "@fluentui/react-utilities": "^9.5.1",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.13.0",
+    "@fluentui/react-components": "^9.14.0",
     "@fluentui/react-northstar": "^0.66.0"
   },
   "peerDependencies": {

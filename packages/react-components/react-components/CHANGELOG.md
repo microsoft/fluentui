@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 31 Jan 2023 19:53:53 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.14.0)
+
+Tue, 07 Feb 2023 14:13:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.13.0..@fluentui/react-components_v9.14.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - chore: export SlotRenderFunction type ([PR #26600](https://github.com/microsoft/fluentui/pull/26600) by seanmonahan@microsoft.com)
+  - Added export of column sizing ([PR #26477](https://github.com/microsoft/fluentui/pull/26477) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: add `unstable_hasDefault` option in `useArrowNavigationGroup` that specifies the arrow navigation group has default focusable item ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by yuanboxue@microsoft.com)
+  - feat: Bump keyborg to 2.0.0 and tabster to 4.0.1 ([PR #26584](https://github.com/microsoft/fluentui/pull/26584) by lingfangao@hotmail.com)
+- `@fluentui/react-combobox`
+  - fix: update Combobox and Dropdown to never use the Option value string as a display value; input value must be set if selectedOptions or defaultSelectOptions is set" ([PR #26617](https://github.com/microsoft/fluentui/pull/26617) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: exports `useDataGridContextValues_unstable` ([PR #26627](https://github.com/microsoft/fluentui/pull/26627) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix(createPositionManager): computePosition should not apply styles after destruction ([PR #26593](https://github.com/microsoft/fluentui/pull/26593) by lingfangao@hotmail.com)
+- `@fluentui/priority-overflow`
+  - fix: New overflow items all always dispatch updates to subscriber ([PR #26565](https://github.com/microsoft/fluentui/pull/26565) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - fix: Using correct icon and color for away + out-of-office PresenceBadge. ([PR #26655](https://github.com/microsoft/fluentui/pull/26655) by makotom@microsoft.com)
+- `@fluentui/react-button`
+  - fix: add forced-colors primary button variant ([PR #26623](https://github.com/microsoft/fluentui/pull/26623) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-data-grid-react-window`
+  - feat: Initial release react-data-grid-react-window ([PR #26731](https://github.com/microsoft/fluentui/pull/26731) by lingfangao@hotmail.com)
+- `@fluentui/react-infobutton`
+  - chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label. ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by esteban.230@hotmail.com)
+  - chore: Making the content focusable and updating example's text. ([PR #26596](https://github.com/microsoft/fluentui/pull/26596) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - feat: exports `useDataGridContextValues_unstable` ([PR #26627](https://github.com/microsoft/fluentui/pull/26627) by lingfangao@hotmail.com)
+  - Add support for column resizing ([PR #26477](https://github.com/microsoft/fluentui/pull/26477) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-card`
+  - docs: improve API documentation of card props ([PR #26614](https://github.com/microsoft/fluentui/pull/26614) by marcosvmmoura@gmail.com)
 
 ## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.13.0)
 

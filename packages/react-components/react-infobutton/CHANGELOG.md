@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.12)
+
+Tue, 07 Feb 2023 14:13:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.11..@fluentui/react-infobutton_v9.0.0-beta.12)
+
+### Changes
+
+- chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label. ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by esteban.230@hotmail.com)
+- chore: Making the content focusable and updating example's text. ([PR #26596](https://github.com/microsoft/fluentui/pull/26596) by esteban.230@hotmail.com)
+- Bump @fluentui/react-popover to v9.4.6 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.11)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66",
+            "comment": "feat: add `unstable_hasDefault` option in `useArrowNavigationGroup` that specifies the arrow navigation group has default focusable item"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "7b7f2cc005b44155e78b9aad071085e1f8db7030",
+            "comment": "feat: Bump keyborg to 2.0.0 and tabster to 4.0.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-tabster_v9.4.2",
       "version": "9.4.2",
