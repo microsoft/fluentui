@@ -1,4 +1,4 @@
-import { shift as baseShift } from '@floating-ui/dom';
+import { shift as baseShift, limitShift } from '@floating-ui/dom';
 import type { PositioningOptions } from '../types';
 import { getBoundary, toFloatingUIPadding } from '../utils/index';
 
@@ -20,7 +20,7 @@ export function shift(options: ShiftMiddlewareOptions) {
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(disableTether && {
       crossAxis: disableTether === 'all',
-      mainAxis: false,
+      limiter: limitShift({ crossAxis: disableTether !== 'all', mainAxis: false }),
     }),
     ...(overflowBoundaryPadding && { padding: toFloatingUIPadding(overflowBoundaryPadding, isRtl) }),
     ...(overflowBoundary && { altBoundary: true, boundary: getBoundary(container, overflowBoundary) }),
