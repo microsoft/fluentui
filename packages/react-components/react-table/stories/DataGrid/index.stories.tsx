@@ -6,7 +6,7 @@ import {
   DataGridRow,
   DataGridCell,
   DataGridSelectionCell,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 import descriptionMd from './DataGridDescription.md';
 
 export { Default } from './Default.stories';
@@ -23,7 +23,7 @@ export { Virtualization } from './Virtualization.stories';
 export { CustomRowId } from './CustomRowId.stories';
 
 export default {
-  title: 'Preview Components/DataGrid',
+  title: 'Components/DataGrid',
   component: DataGrid,
   subcomponents: {
     DataGridHeader,
