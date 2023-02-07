@@ -19,13 +19,22 @@ export function getTsPathAliasesConfig() {
   return { tsConfig, isUsingTsSolutionConfigs, tsConfigFile, tsConfigPath, packageJson };
 }
 
-export function getTsPathAliasesConfigV8() {
+export function getTsPathAliasesConfigUsedOnlyForDx() {
+  const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'];
+  const tsConfigBaseFilesForDx = ['tsconfig.base.v8.json', 'tsconfig.base.all.json'];
   const cwd = process.cwd();
-  const tsConfigFile = 'tsconfig.json';
-  const tsConfigPath = path.join(cwd, `./${tsConfigFile}`);
+  const tsConfigPath = path.join(cwd, `./tsconfig.json`);
   const tsConfig = JSON.parse(stripJsonComments(fs.readFileSync(tsConfigPath, 'utf-8')));
-  const isUsingV8pathAliases = tsConfig.extends && tsConfig.extends.includes('tsconfig.base.v8.json');
-  return { isUsingV8pathAliases, tsConfigFileV8: tsConfigFile };
+  const isUsingPathAliasesForDx =
+    tsConfig.extends && tsConfigBaseFilesForDx.some(relativeFilePath => tsConfig.extends.endsWith(relativeFilePath));
+
+  const tsConfigFileForCompilation = tsConfigFilesWithAliases.find(fileName => fs.existsSync(path.join(cwd, fileName)));
+
+  if (!tsConfigFileForCompilation) {
+    throw new Error(`no tsconfig from ${tsConfigFilesWithAliases} found!`);
+  }
+
+  return { isUsingPathAliasesForDx, tsConfigFileForCompilation };
 }
 
 const packagesWithInvalidTypes = [
