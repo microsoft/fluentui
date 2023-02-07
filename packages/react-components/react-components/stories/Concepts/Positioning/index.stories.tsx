@@ -11,7 +11,7 @@ export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
 export { ImperativeAnchorTarget } from './PositioningImperativeAnchorTarget.stories';
 export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate.stories';
 export { OverflowBoundary } from './PositioningOverflowBoundary.stories';
-export { BoundaryPadding } from './BoundaryPadding.stories';
+export { OverflowBoundaryPadding } from './BoundaryPadding.stories';
 export { FlipBoundary } from './PositioningFlipBoundary.stories';
 
 export default {
