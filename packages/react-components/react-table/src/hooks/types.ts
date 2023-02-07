@@ -207,7 +207,7 @@ export interface TableColumnSizingState {
 
 export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;
-  setColumnWidth: (e: Event | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  setColumnWidth: (e: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
   getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
   getColumns: () => ColumnWidthState[];
 };
@@ -219,6 +219,6 @@ export type TableColumnSizingOptions = Record<
 
 export type UseTableColumnSizingParams = {
   columnSizingOptions?: TableColumnSizingOptions;
-  onColumnResize?: (e: Event | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  onColumnResize?: (e: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
   containerWidthOffset?: number;
 };

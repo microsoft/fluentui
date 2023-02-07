@@ -75,9 +75,8 @@ export type DataGridProps = TableProps &
     columnSizingOptions?: TableColumnSizingOptions;
     /**
      * A callback triggered when a column is resized.
-     * The event is MouseEvent, if triggered by mouse move.
      */
-    onColumnResize?: (event: Event | undefined, data: { columnId: TableColumnId; width: number }) => void;
+    onColumnResize?: (event: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
   };
 
 /**

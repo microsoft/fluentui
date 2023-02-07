@@ -40,9 +40,6 @@ describe('DataGrid', () => {
       columns: testColumns,
     },
     testOptions: {
-      'consistent-callback-args': {
-        ignoreProps: ['onColumnResize'],
-      },
       'make-styles-overrides-win': {
         callCount: 2,
       },
