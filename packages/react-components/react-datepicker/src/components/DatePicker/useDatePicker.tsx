@@ -14,8 +14,9 @@ import { Async } from '@fluentui/utilities';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
-import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverProps } from '@fluentui/react-popover';
+import { OnOpenChangeData, OpenPopoverEvents, Popover } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 import type { ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState } from './DatePicker.types';
@@ -546,11 +547,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
         />
       ),
       disabled,
+      id: textFieldId,
       placeholder,
       readOnly: !allowTextInput,
       required: isRequired,
       role: 'combobox',
-      id: textFieldId,
       tabIndex,
       ...textFieldProps,
     },

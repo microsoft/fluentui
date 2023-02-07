@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverTrigger } from '@fluentui/react-popover';
 import { getSlots } from '@fluentui/react-utilities';
+import type { PopoverProps } from '@fluentui/react-popover';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
 /**

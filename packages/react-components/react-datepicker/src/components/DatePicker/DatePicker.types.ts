@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Input, InputProps } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-input';
 import { Field } from '@fluentui/react-field';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
-import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
+import { PopoverSurface } from '@fluentui/react-popover';
+import type { InputProps } from '@fluentui/react-input';
+import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
