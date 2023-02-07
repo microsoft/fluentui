@@ -7,6 +7,7 @@ export {
   useKeyboardNavAttribute,
   useModalAttributes,
   useTabsterAttributes,
+  useArrowNavigationGroupWithDefaultFocus_unstable,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

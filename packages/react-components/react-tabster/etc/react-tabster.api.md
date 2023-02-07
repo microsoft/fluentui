@@ -48,12 +48,18 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions)
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+    axis?: 'vertical' | 'horizontal' | 'grid';
     circular?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
 }
+
+// @public
+export const useArrowNavigationGroupWithDefaultFocus_unstable: (options?: UseArrowNavigationGroupOptions) => {
+    defaultFocusableAttributes: Types.TabsterDOMAttribute;
+    arrowNavigationGroupAttributes: Types.TabsterDOMAttribute;
+};
 
 // @public
 export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;

@@ -6,3 +6,4 @@ export * from './useFocusWithin';
 export * from './useKeyboardNavAttribute';
 export * from './useModalAttributes';
 export * from './useTabsterAttributes';
+export * from './useArrowNavigationGroupWithDefaultFocus';

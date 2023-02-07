@@ -7,7 +7,7 @@ export interface UseArrowNavigationGroupOptions {
    * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
    * @defaultValue vertical
    */
-  axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+  axis?: 'vertical' | 'horizontal' | 'grid';
   /**
    * Focus will cycle to the first/last elements of the group without stopping
    */
@@ -43,8 +43,8 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
-      memorizeCurrent: memorizeCurrent,
-      tabbable: tabbable,
+      memorizeCurrent,
+      tabbable,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {
@@ -54,14 +54,12 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
   });
 };
 
-function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Types.MoverDirection {
+export function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Types.MoverDirection {
   switch (axis) {
     case 'horizontal':
       return Types.MoverDirections.Horizontal;
     case 'grid':
       return Types.MoverDirections.Grid;
-    case 'both':
-      return Types.MoverDirections.Both;
 
     case 'vertical':
     default:

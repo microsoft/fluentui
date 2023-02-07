@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add unstable hook `useArrowNavigationGroupWithDefaultFocus_unstable` that supports arrow navigation group with default focusable item in the group",
+  "packageName": "@fluentui/react-tabster",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
