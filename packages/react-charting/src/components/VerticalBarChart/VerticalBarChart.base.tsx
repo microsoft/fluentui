@@ -49,6 +49,7 @@ export interface IVerticalBarChartState extends IBasestate {
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  emptyChart?: boolean;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -70,7 +71,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   private _isChartEmpty: boolean;
-  private _idVBC: string;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -87,6 +87,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       YValueHover: [],
       hoverXValue: '',
       calloutLegend: '',
+      emptyChart: false,
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
@@ -97,22 +98,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
     this._isChartEmpty = false;
-    this._idVBC = getId('_VBC_');
   }
 
   public componentDidMount(): void {
     this._isChartEmpty =
       this._isChartEmpty ||
+      this._points.length === 0 ||
       (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
-
-    if (this._isChartEmpty) {
-      const emptyVBC = d3Select('#' + this._idVBC);
-      emptyVBC
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', getId('_emptyVBC_'))
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display');
+    if (this.state.emptyChart !== this._isChartEmpty) {
+      this.setState({ emptyChart: this._isChartEmpty });
     }
   }
 
@@ -152,41 +146,41 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    return (
-      <div id={this._idVBC}>
-        <CartesianChart
-          {...this.props}
-          points={this._points}
-          chartType={ChartTypes.VerticalBarChart}
-          xAxisType={this._xAxisType}
-          calloutProps={calloutProps}
-          tickParams={tickParams}
-          {...(this._isHavingLine && { isCalloutForStack: true })}
-          legendBars={legendBars}
-          datasetForXAxisDomain={this._xAxisLabels}
-          barwidth={this._barWidth}
-          focusZoneDirection={FocusZoneDirection.horizontal}
-          customizedCallout={this._getCustomizedCallout()}
-          getmargins={this._getMargins}
-          getGraphData={this._getGraphData}
-          getAxisData={this._getAxisData}
-          onChartMouseLeave={this._handleChartMouseLeave}
-          /* eslint-disable react/jsx-no-bind */
-          // eslint-disable-next-line react/no-children-prop
-          children={(props: IChildProps) => {
-            return (
-              !this._isChartEmpty && (
-                <>
-                  <g>{this._bars}</g>
-                  {this._isHavingLine && (
-                    <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
-                  )}
-                </>
-              )
-            );
-          }}
-        />
-      </div>
+    return !this.state.emptyChart ? (
+      <CartesianChart
+        {...this.props}
+        points={this._points}
+        chartType={ChartTypes.VerticalBarChart}
+        xAxisType={this._xAxisType}
+        calloutProps={calloutProps}
+        tickParams={tickParams}
+        {...(this._isHavingLine && { isCalloutForStack: true })}
+        legendBars={legendBars}
+        datasetForXAxisDomain={this._xAxisLabels}
+        barwidth={this._barWidth}
+        focusZoneDirection={FocusZoneDirection.horizontal}
+        customizedCallout={this._getCustomizedCallout()}
+        getmargins={this._getMargins}
+        getGraphData={this._getGraphData}
+        getAxisData={this._getAxisData}
+        onChartMouseLeave={this._handleChartMouseLeave}
+        /* eslint-disable react/jsx-no-bind */
+        // eslint-disable-next-line react/no-children-prop
+        children={(props: IChildProps) => {
+          return (
+            !this._isChartEmpty && (
+              <>
+                <g>{this._bars}</g>
+                {this._isHavingLine && (
+                  <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
+                )}
+              </>
+            )
+          );
+        }}
+      />
+    ) : (
+      <div id={getId('_VBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   }
 
@@ -342,14 +336,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     containerWidth: number,
     xElement?: SVGElement | null,
   ) => {
-    if (!this._isChartEmpty) {
-      return (this._bars =
-        this._xAxisType === XAxisTypes.NumericAxis
-          ? this._createNumericBars(containerHeight, containerWidth, xElement!)
-          : this._createStringBars(containerHeight, containerWidth, xElement!));
-    } else {
-      return [];
-    }
+    return (this._bars =
+      this._xAxisType === XAxisTypes.NumericAxis
+        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
+        : this._createStringBars(containerHeight, containerWidth, xElement!));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -711,11 +701,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
-      const domainRange =
-        d3Max(domainValue, (domain: number) => domain)! - d3Min(domainValue, (domain: number) => domain)!;
-      if (domainRange === 0) {
-        this._isChartEmpty = true;
-      }
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
   };
