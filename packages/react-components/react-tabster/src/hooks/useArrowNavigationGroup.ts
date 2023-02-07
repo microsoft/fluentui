@@ -28,7 +28,8 @@ export interface UseArrowNavigationGroupOptions {
   /**
    * The default focusable item in the group will be an element with Focusable.isDefault property
    */
-  hasDefault?: boolean;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_hasDefault?: boolean;
 }
 
 /**
@@ -36,7 +37,15 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
-  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown, hasDefault } = options;
+  const {
+    circular,
+    axis,
+    memorizeCurrent,
+    tabbable,
+    ignoreDefaultKeydown,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault,
+  } = options;
   const tabster = useTabster();
 
   if (tabster) {
@@ -49,7 +58,7 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
       direction: axisToMoverDirection(axis ?? 'vertical'),
       memorizeCurrent,
       tabbable,
-      hasDefault: !!hasDefault,
+      hasDefault: !!unstable_hasDefault,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {
