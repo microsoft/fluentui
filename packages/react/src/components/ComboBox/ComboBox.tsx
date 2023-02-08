@@ -63,6 +63,12 @@ export interface IComboBoxState {
 
   /** When taking input, this will store the actual text that is being entered */
   currentPendingValue?: string;
+
+  /**
+   * The id of the current focused combo item, otherwise the id of the currently selected element,
+   * null otherwise
+   */
+  ariaActiveDescendantValue?: string;
 }
 
 enum SearchDirection {
@@ -347,9 +353,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       text,
       onMenuOpen,
       onMenuDismissed,
-      hoisted: { selectedIndices },
+      hoisted: { selectedIndices, currentOptions },
     } = this.props;
-    const { isOpen, currentPendingValueValidIndex } = this.state;
+    const { isOpen, currentPendingValueValidIndex, currentPendingValue } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -403,6 +409,35 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
       onMenuDismissed();
+    }
+
+    let newCurrentPendingValueValidIndex = currentPendingValueValidIndex;
+    const options = currentOptions.map((item, index) => ({ ...item, index }));
+
+    // If currentOptions differs from the previous currentOptions we need to update the currentPendingValueValidIndex
+    // otherwise, it will be out of sync with the currentOptions. This can happen when the options are filtered.
+    if (!shallowCompare(prevProps.hoisted.currentOptions, currentOptions) && currentPendingValue) {
+      newCurrentPendingValueValidIndex =
+        this.props.allowFreeform || this.props.allowFreeInput
+          ? this._processInputChangeWithFreeform(currentPendingValue)
+          : this._processInputChangeWithoutFreeform(currentPendingValue);
+    }
+
+    let descendantText = undefined;
+
+    if (isOpen && selectedIndices.length) {
+      descendantText = options[selectedIndices[0]].id ?? this._id + '-list' + selectedIndices[0];
+    } else if (isOpen && this._hasFocus() && newCurrentPendingValueValidIndex !== -1) {
+      descendantText =
+        options[newCurrentPendingValueValidIndex].id ?? this._id + '-list' + newCurrentPendingValueValidIndex;
+    } else {
+      descendantText = undefined;
+    }
+
+    if (descendantText !== this.state.ariaActiveDescendantValue) {
+      this.setState({
+        ariaActiveDescendantValue: descendantText,
+      });
     }
   }
 
@@ -579,7 +614,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       hoisted: { suggestedDisplayValue },
     } = this.props;
 
-    const { isOpen } = this.state;
+    const { isOpen, ariaActiveDescendantValue } = this.state;
 
     // If the combo box has focus, is multiselect, and has a display string, then use that placeholder
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
@@ -623,7 +658,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
           }
-          aria-activedescendant={this._getAriaActiveDescendantValue()}
+          aria-activedescendant={ariaActiveDescendantValue}
           aria-required={required}
           aria-disabled={disabled}
           aria-controls={isOpen ? this._id + '-list' : undefined}
@@ -2362,42 +2397,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       item.hidden,
       this._isOptionHighlighted(item.index),
     );
-  }
-
-  /**
-   * Get the aria-activedescendant value for the combo box.
-   * @returns the id of the current focused combo item, otherwise the id of the currently selected element,
-   * null otherwise
-   */
-  private _getAriaActiveDescendantValue(): string | undefined {
-    const { currentOptions, selectedIndices } = this.props.hoisted;
-    const { isOpen, currentPendingValue } = this.state;
-    const options = currentOptions.map((item, index) => ({ ...item, index }));
-    let currentPendingValueValidIndex = this.state.currentPendingValueValidIndex;
-
-    // We should check if the pending value index is withing the bounds of the options and that it matches the text of
-    // the pending value. If it does not match, we should update it the same way we do in _onInputChange. This is
-    // needed since the user may be filtering the options and the pending value and index are only updated on input
-    // change.
-    if (
-      currentPendingValue &&
-      (currentPendingValueValidIndex >= options.length ||
-        options[currentPendingValueValidIndex].text.indexOf(currentPendingValue) < 0)
-    ) {
-      currentPendingValueValidIndex =
-        this.props.allowFreeform || this.props.allowFreeInput
-          ? this._processInputChangeWithFreeform(currentPendingValue)
-          : this._processInputChangeWithoutFreeform(currentPendingValue);
-    }
-
-    let descendantText =
-      isOpen && selectedIndices?.length
-        ? options[selectedIndices[0]].id ?? this._id + '-list' + selectedIndices[0]
-        : undefined;
-    if (isOpen && this._hasFocus() && currentPendingValueValidIndex !== -1) {
-      descendantText = options[currentPendingValueValidIndex].id ?? this._id + '-list' + currentPendingValueValidIndex;
-    }
-    return descendantText;
   }
 
   /**
