@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:06 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.11",
+      "version": "9.3.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "db4be59f6c1677bd9182205dabfcb3e2bb47837f",
+            "comment": "fix(createPositionManager): computePosition should not apply styles after destruction"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-positioning_v9.3.10",
       "version": "9.3.10",

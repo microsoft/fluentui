@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-badge",
-  "version": "9.0.22",
+  "version": "9.0.23",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

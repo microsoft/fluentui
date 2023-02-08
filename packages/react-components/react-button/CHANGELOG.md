@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 31 Jan 2023 19:53:53 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.2.2)
+
+Tue, 07 Feb 2023 14:13:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.2.1..@fluentui/react-button_v9.2.2)
+
+### Patches
+
+- fix: add forced-colors primary button variant ([PR #26623](https://github.com/microsoft/fluentui/pull/26623) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.2.1)
 

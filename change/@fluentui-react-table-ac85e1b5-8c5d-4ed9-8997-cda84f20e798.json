@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add support for column resizing",
-  "packageName": "@fluentui/react-table",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
