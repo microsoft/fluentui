@@ -44,7 +44,7 @@ export const styles = css`
     padding-right: 10px;
     cursor: pointer;
   }
-  :host::part(content) {
+  :host .content {
     flex-grow: 1;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
