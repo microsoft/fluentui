@@ -3943,6 +3943,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
+    ariaActiveDescendantValue?: string;
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
