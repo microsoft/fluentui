@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:10 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.25",
+      "version": "9.0.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.5.0",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.24",
       "version": "9.0.24",

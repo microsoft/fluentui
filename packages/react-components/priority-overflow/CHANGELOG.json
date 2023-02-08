@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:08 GMT",
+      "tag": "@fluentui/priority-overflow_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "7274228423cc06749b72ab6a8a112db6f18f5378",
+            "comment": "fix: New overflow items all always dispatch updates to subscriber"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Jan 2023 16:32:53 GMT",
       "tag": "@fluentui/priority-overflow_v9.0.0",
       "version": "9.0.0",

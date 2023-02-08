@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.3)
+
+Tue, 07 Feb 2023 14:13:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.2..@fluentui/react-overflow_v9.0.3)
+
+### Patches
+
+- Bump @fluentui/priority-overflow to v9.0.1 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.2)
 
