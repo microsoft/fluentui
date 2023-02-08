@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 07:36:28 GMT",
+      "tag": "@fluentui/react_v8.105.5",
+      "version": "8.105.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "karlo.sudec@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "bd2b9155c672b27b54d6f971266e4229de2df927",
+            "comment": "fix(DatePicker): onLoadValidation can be turned off through textField props "
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Feb 2023 07:41:30 GMT",
       "tag": "@fluentui/react_v8.105.4",
       "version": "8.105.4",

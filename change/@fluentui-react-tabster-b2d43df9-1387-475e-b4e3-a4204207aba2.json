@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Bump keyborg to 2.0.0 and tabster to 4.0.1",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

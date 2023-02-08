@@ -1,6 +1,6 @@
 {
-  "type": "prerelease",
-  "comment": "feat: exports `useDataGridContextValues_unstable`",
+  "type": "patch",
+  "comment": "feat: Release 9.0.0",
   "packageName": "@fluentui/react-table",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Using correct icon and color for away + out-of-office PresenceBadge.",
-  "packageName": "@fluentui/react-badge",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

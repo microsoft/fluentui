@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "Added export of column sizing",
+  "comment": "feat: Release `Table` and `DataGrid` as stable",
   "packageName": "@fluentui/react-components",
-  "email": "jirivyhnalek@microsoft.com",
+  "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
 }

@@ -8,17 +8,17 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { Field } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { IBaseProps } from '@fluentui/utilities';
-import type { ICalloutProps } from '@fluentui/react';
 import type { IComponentAs } from '@fluentui/utilities';
-import { InputField_unstable } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-input';
+import type { InputProps } from '@fluentui/react-input';
 import type { IStyle } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
-import type { ITextFieldProps } from '@fluentui/react';
 import type { ITheme } from '@fluentui/style-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
-import type { PopoverSurfaceProps } from '@fluentui/react-popover';
+import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 
@@ -415,9 +415,8 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     componentRef?: React_2.RefObject<IDatePicker>;
     styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
     theme?: ITheme;
-    calloutProps?: ICalloutProps;
     calendarProps?: CalendarProps;
-    textField?: ITextFieldProps;
+    textField?: InputProps;
     calendarAs?: IComponentAs<CalendarProps>;
     onSelectDate?: (date: Date | null | undefined) => void;
     label?: string;
@@ -465,7 +464,6 @@ export interface DatePickerStrings extends CalendarStrings {
 
 // @public (undocumented)
 export interface DatePickerStyleProps {
-    className?: string;
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
@@ -691,7 +689,7 @@ export const useCalendarYearStyles_unstable: (props: CalendarYearStyleProps) => 
 export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;
 
 // @public
-export const useDatePickerStyles_unstable: (props: DatePickerStyleProps) => Record<keyof DatePickerStyles, string>;
+export const useDatePickerStyles_unstable: (state: DatePickerState) => DatePickerState;
 
 // @public (undocumented)
 export interface WeekCorners {

@@ -120,7 +120,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
   /**
    * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
    *
-   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
+   * The name is used to determine the initials displayed when there is no image. It is also provided to
    * accessibility tools.
    */
   name?: string;

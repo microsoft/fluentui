@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Export useOverflowContext as @internal for testing purposes",
-  "packageName": "@fluentui/react-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

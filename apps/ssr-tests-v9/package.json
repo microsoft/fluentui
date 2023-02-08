@@ -20,7 +20,7 @@
     "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.13.0"
+    "@fluentui/react-components": "^9.14.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
