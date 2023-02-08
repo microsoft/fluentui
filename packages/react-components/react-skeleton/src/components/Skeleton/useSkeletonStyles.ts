@@ -8,8 +8,6 @@ export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
   root: 'fui-Skeleton',
 };
 
-export const skeletonGroupClassName = 'fui-Skeleton-Group';
-
 const skeletonWaveAnimationRTL = {
   from: {
     backgroundPositionX: '300% /* @noflip */',
@@ -42,16 +40,9 @@ const skeletonPulseAnimation = {
  */
 const useRootStyles = makeStyles({
   root: {
-    '& [class^= "fui-Skeleton-"]': {
+    '& .fui-SkeletonItem': {
       position: 'relative',
-      height: 'auto',
       ...shorthands.overflow('hidden'),
-      ...shorthands.margin('5px'),
-      backgroundImage: `linear-gradient(
-        to right,
-        ${tokens.colorNeutralStencil1} 0%,
-        ${tokens.colorNeutralStencil2} 50%,
-        ${tokens.colorNeutralStencil1} 100%)`,
       backgroundSize: '300% 100%',
       backgroundPositionX: 'center',
       backgroundPositionY: 'center',
@@ -59,7 +50,16 @@ const useRootStyles = makeStyles({
       animationIterationCount: 'infinite',
       animationDuration: '3s',
       animationTimingFunction: 'linear',
-
+    },
+  },
+  wave: {
+    '& .fui-SkeletonItem': {
+      animationName: skeletonWaveAnimation,
+      backgroundImage: `linear-gradient(
+        to right,
+        ${tokens.colorNeutralStencil1} 0%,
+        ${tokens.colorNeutralStencil2} 50%,
+        ${tokens.colorNeutralStencil1} 100%)`,
       '@media screen and (forced-colors: active)': {
         backgroundColor: `WindowText
         linear-gradient(
@@ -71,30 +71,42 @@ const useRootStyles = makeStyles({
       },
     },
   },
-  wave: {
-    '& [class^= "fui-Skeleton-"]': {
-      animationName: skeletonWaveAnimation,
-    },
-  },
   waveRtl: {
-    '& [class^= "fui-Skeleton-"]': {
+    '& .fui-SkeletonItem': {
       animationName: skeletonWaveAnimationRTL,
+      backgroundImage: `linear-gradient(
+        to right,
+        ${tokens.colorNeutralStencil1} 0%,
+        ${tokens.colorNeutralStencil2} 50%,
+        ${tokens.colorNeutralStencil1} 100%)`,
+      '@media screen and (forced-colors: active)': {
+        backgroundColor: `WindowText
+        linear-gradient(
+          to right,
+          transparent 0%,
+          Window 50%,
+          transparent 100%)
+        `,
+      },
     },
   },
   pulse: {
-    '& [class^= "fui-Skeleton-"]': {
+    '& .fui-SkeletonItem': {
       animationName: skeletonPulseAnimation,
       backgroundColor: tokens.colorNeutralStencil1,
     },
   },
-  material: {
-    '& [class^= "fui-Skeleton-"]': {
+  translucent: {
+    '& .fui-SkeletonItem': {
       backgroundImage: `linear-gradient(
         to right,
         ${tokens.colorNeutralStencil1Alpha} 0%,
         ${tokens.colorNeutralStencil2Alpha} 50%,
         ${tokens.colorNeutralStencil1Alpha} 100%)`,
     },
+  },
+  translucentPulse: {
+    backgroundColor: tokens.colorNeutralStencil1Alpha,
   },
 });
 
@@ -113,7 +125,8 @@ export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState 
     animation === 'wave' && rootStyles.wave,
     animation === 'wave' && dir === 'rtl' && rootStyles.waveRtl,
     animation === 'pulse' && rootStyles.pulse,
-    appearance === 'material' && rootStyles.material,
+    appearance === 'translucent' && rootStyles.translucent,
+    animation === 'pulse' && appearance === 'translucent' && rootStyles.translucentPulse,
     state.root.className,
   );
 

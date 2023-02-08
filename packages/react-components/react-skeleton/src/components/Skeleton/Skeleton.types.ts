@@ -11,7 +11,7 @@ export type SkeletonSlots = {
 /**
  * Skeleton Props
  */
-export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
+export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
   /**
    * Sets the width value of the skeleton wrapper.
    * @defaultValue 100%
@@ -20,9 +20,9 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
 
   /**
    * Sets the appearance of the Skeleton.
-   * @defaultValue default
+   * @defaultValue opaque
    */
-  appearance?: 'default' | 'material';
+  appearance?: 'opaque' | 'translucent';
 
   /**
    * The animation type for the Skeleton

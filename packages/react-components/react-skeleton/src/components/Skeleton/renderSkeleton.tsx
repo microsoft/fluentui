@@ -8,5 +8,5 @@ import type { SkeletonState, SkeletonSlots } from './Skeleton.types';
 export const renderSkeleton_unstable = (state: SkeletonState) => {
   const { slots, slotProps } = getSlots<SkeletonSlots>(state);
 
-  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
+  return <slots.root {...slotProps.root} />;
 };

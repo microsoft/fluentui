@@ -12,7 +12,7 @@ import type { SkeletonProps, SkeletonState } from './Skeleton.types';
  * @param ref - reference to root HTMLElement of Skeleton
  */
 export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLElement>): SkeletonState => {
-  const { animation = 'wave', appearance = 'default' } = props;
+  const { animation = 'wave', appearance = 'opaque' } = props;
 
   const root = getNativeElementProps('div', {
     ref,

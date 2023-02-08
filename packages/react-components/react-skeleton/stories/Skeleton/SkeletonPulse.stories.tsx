@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Skeleton, SkeletonLine, SkeletonProps } from '@fluentui/react-skeleton';
+import { Skeleton, SkeletonItem, SkeletonProps } from '@fluentui/react-skeleton';
 import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -15,7 +15,7 @@ export const Pulse = (props: Partial<SkeletonProps>) => {
   return (
     <div className={styles.invertedWrapper}>
       <Skeleton {...props} animation="pulse">
-        <SkeletonLine />
+        <SkeletonItem />
       </Skeleton>
     </div>
   );

@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Skeleton, SkeletonProps } from '@fluentui/react-skeleton';
-import { SkeletonCircle } from '../../src/components/SkeletonCircle/SkeletonCircle';
-import { SkeletonLine } from '../../src/components/SkeletonLine/SkeletonLine';
+import { Skeleton, SkeletonItem, SkeletonProps } from '@fluentui/react-skeleton';
 import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -13,20 +11,20 @@ const useStyles = makeStyles({
 const SkeletonElementsFirstRow = () => {
   return (
     <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
-      <SkeletonCircle style={{ padding: '10px' }} />
-      <SkeletonLine height="24px" width="80%" style={{ padding: '10px' }} />
+      <SkeletonItem shape="circle" size={24} style={{ margin: '5px' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '80%' }} />
     </div>
   );
 };
 const SkeletonElementsSecondRow = () => {
   return (
     <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
-      <SkeletonCircle radius="24px" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
+      <SkeletonItem shape="circle" size={24} style={{ margin: '5px' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '20%' }} />
 
-      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '20%' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '15%' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '15%' }} />
     </div>
   );
 };
@@ -34,11 +32,12 @@ const SkeletonElementsSecondRow = () => {
 const SkeletonElementsThirdRow = () => {
   return (
     <div style={{ display: 'flex', paddingBottom: '10px', position: 'relative' }}>
-      <SkeletonCircle radius="24px" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="20%" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
-      <SkeletonLine height="16px" width="15%" style={{ padding: '10px' }} />
+      <SkeletonItem shape="circle" size={24} style={{ margin: '5px' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '20%' }} />
+
+      <SkeletonItem size={16} style={{ margin: '5px', width: '20%' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '15%' }} />
+      <SkeletonItem size={16} style={{ margin: '5px', width: '15%' }} />
     </div>
   );
 };

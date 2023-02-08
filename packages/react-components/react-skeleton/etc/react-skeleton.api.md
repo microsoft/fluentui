@@ -18,6 +18,9 @@ export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
 export const renderSkeletonCircle_unstable: (state: SkeletonCircleState) => JSX.Element;
 
 // @public
+export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSX.Element;
+
+// @public
 export const renderSkeletonLine_unstable: (state: SkeletonLineState) => JSX.Element;
 
 // @public
@@ -44,6 +47,23 @@ export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> & Required
 
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
+
+// @public
+export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
+
+// @public (undocumented)
+export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
+
+// @public
+export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {};
+
+// @public (undocumented)
+export type SkeletonItemSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SkeletonItemState = ComponentState<SkeletonItemSlots>;
 
 // @public
 export const SkeletonLine: ForwardRefComponent<SkeletonLineProps>;
@@ -88,6 +108,12 @@ export const useSkeletonCircle_unstable: (props: SkeletonCircleProps, ref: React
 
 // @public
 export const useSkeletonCircleStyles_unstable: (state: SkeletonCircleState) => SkeletonCircleState;
+
+// @public
+export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
+
+// @public
+export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;
 
 // @public
 export const useSkeletonLine_unstable: (props: SkeletonLineProps, ref: React_2.Ref<HTMLElement>) => SkeletonLineState;
