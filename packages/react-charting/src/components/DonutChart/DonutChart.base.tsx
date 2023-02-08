@@ -80,10 +80,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
   }
   public componentDidMount(): void {
-    this.setState({
-      _width: (this._rootElem && this._rootElem!.offsetWidth)!,
-      _height: (this._rootElem && this._rootElem!.offsetHeight - LEGEND_CONTAINER_HEIGHT)!,
-    });
+    if (this._rootElem) {
+      this.setState({
+        _width: this._rootElem.offsetWidth,
+        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+      });
+    }
   }
 
   public render(): JSX.Element {
