@@ -16,6 +16,7 @@ export const styles = css`
     height: fit-content;
     width: auto;
     min-width: 160px;
+    max-width: 300px;
     background: ${colorNeutralBackground1};
     border: 1px solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
