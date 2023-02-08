@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.2.1)
+
+Tue, 07 Feb 2023 14:13:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.2.0..@fluentui/react-tabs_v9.2.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.2.0)
+
+Tue, 31 Jan 2023 19:53:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.1.9..@fluentui/react-tabs_v9.2.0)
+
+### Minor changes
+
+- chore: Added context exports ([PR #26552](https://github.com/microsoft/fluentui/pull/26552) by gcox@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.7 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.1.9)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.1.8..@fluentui/react-tabs_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.1.8)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.1.7..@fluentui/react-tabs_v9.1.8)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.1.7)
+
+Mon, 16 Jan 2023 08:38:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.1.6..@fluentui/react-tabs_v9.1.7)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.1.6)
 

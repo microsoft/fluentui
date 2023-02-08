@@ -9,6 +9,13 @@ import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLog
 
 // TODO: handle redirects
 
+// Remove MWF stylesheet as it is unused by the site and causes conflicts with our styles
+for (const tag of Array.from(document.getElementsByTagName('link'))) {
+  if (tag.href.includes('mwf-main')) {
+    tag.remove();
+  }
+}
+
 initializeFileTypeIcons(cdnUrl + '/assets/item-types/');
 
 setRTL(false);

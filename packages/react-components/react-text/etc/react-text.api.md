@@ -13,31 +13,67 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const Body1: FunctionComponent<TextWrapperProps>;
+export const Body1: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const body1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Caption1: FunctionComponent<TextWrapperProps>;
+export const Body1Strong: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const body1StrongClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Body1Stronger: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const body1StrongerClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Body2: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const body2ClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Caption1: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const caption1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Caption2: FunctionComponent<TextWrapperProps>;
+export const Caption1Strong: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const caption1StrongClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Caption1Stronger: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const caption1StrongerClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Caption2: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const caption2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Display: FunctionComponent<TextWrapperProps>;
+export const Caption2Strong: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const caption2StrongClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Display: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const displayClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const LargeTitle: FunctionComponent<TextWrapperProps>;
+export const LargeTitle: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const largeTitleClassNames: SlotClassNames<TextSlots>;
@@ -46,16 +82,22 @@ export const largeTitleClassNames: SlotClassNames<TextSlots>;
 export const renderText_unstable: (state: TextState) => JSX.Element;
 
 // @public
-export const Subtitle1: FunctionComponent<TextWrapperProps>;
+export const Subtitle1: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const subtitle1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Subtitle2: FunctionComponent<TextWrapperProps>;
+export const Subtitle2: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const subtitle2ClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export const Subtitle2Stronger: FunctionComponent<TextPresetProps>;
+
+// @public (undocumented)
+export const subtitle2StrongerClassNames: SlotClassNames<TextSlots>;
 
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
@@ -63,6 +105,9 @@ export { Text_2 as Text }
 
 // @public (undocumented)
 export const textClassNames: SlotClassNames<TextSlots>;
+
+// @public
+export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
 
 // @public
 export type TextProps = ComponentProps<TextSlots> & {
@@ -87,19 +132,19 @@ export type TextSlots = {
 export type TextState = ComponentState<TextSlots> & Required<Pick<TextProps, 'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'>>;
 
 // @public
-export const Title1: FunctionComponent<TextWrapperProps>;
+export const Title1: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const title1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Title2: FunctionComponent<TextWrapperProps>;
+export const Title2: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const title2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export const Title3: FunctionComponent<TextWrapperProps>;
+export const Title3: FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const title3ClassNames: SlotClassNames<TextSlots>;

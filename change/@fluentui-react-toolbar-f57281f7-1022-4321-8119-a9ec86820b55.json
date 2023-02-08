@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add new ToolbarRadioGroup component and a11y fixes",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "chassunc@microsoft.com",
-  "dependentChangeType": "patch"
-}

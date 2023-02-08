@@ -6,8 +6,8 @@ import { DataGridBodyProps } from './DataGridBody.types';
 import { mockDataGridContext } from '../../testing/mockDataGridContext';
 import { TableContextProvider } from '../../contexts/tableContext';
 import { DataGridContextProvider } from '../../contexts/dataGridContext';
-import { useRowIdContext } from '../../contexts/rowIdContext';
-import { TableState, RowState } from '../../hooks/types';
+import { useTableRowIdContext } from '../../contexts/rowIdContext';
+import { TableFeaturesState, TableRowData } from '../../hooks/types';
 
 describe('DataGridBody', () => {
   isConformant<DataGridBodyProps>({
@@ -55,11 +55,11 @@ describe('DataGridBody', () => {
       { rowId: 3, item: {} },
     ];
 
-    const getRows: TableState<unknown>['getRows'] = <TRowState extends RowState<unknown>>() =>
+    const getRows: TableFeaturesState<unknown>['getRows'] = <TRowState extends TableRowData<unknown>>() =>
       (testRows as unknown) as TRowState[];
     const ctx = mockDataGridContext({ getRows });
     const TestComponent = () => {
-      const rowId = useRowIdContext();
+      const rowId = useTableRowIdContext();
       return <span role="status">{rowId}</span>;
     };
     const { getAllByRole } = render(

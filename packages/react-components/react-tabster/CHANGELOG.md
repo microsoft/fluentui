@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 09 Jan 2023 14:35:01 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.5.0)
+
+Tue, 07 Feb 2023 14:13:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.4.2..@fluentui/react-tabster_v9.5.0)
+
+### Minor changes
+
+- feat: add `unstable_hasDefault` option in `useArrowNavigationGroup` that specifies the arrow navigation group has default focusable item ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by yuanboxue@microsoft.com)
+- feat: Bump keyborg to 2.0.0 and tabster to 4.0.1 ([PR #26584](https://github.com/microsoft/fluentui/pull/26584) by lingfangao@hotmail.com)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.4.2)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.4.1..@fluentui/react-tabster_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.4.1)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.4.0..@fluentui/react-tabster_v9.4.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.4.0)
+
+Wed, 18 Jan 2023 16:32:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.3.7..@fluentui/react-tabster_v9.4.0)
+
+### Minor changes
+
+- feat: add modalizer id to `useModalAttributes` option ([PR #26387](https://github.com/microsoft/fluentui/pull/26387) by yuanboxue@microsoft.com)
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.7)
+
+Mon, 16 Jan 2023 08:38:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.3.6..@fluentui/react-tabster_v9.3.7)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.3.6)
 

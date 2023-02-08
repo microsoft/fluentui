@@ -2,6 +2,189 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 07:36:28 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.56",
+      "version": "8.5.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "e088f5010e9821b753a813ddf74aa2e89dae078e",
+            "comment": "azure theme calendar selection, contextmenu border, pivot focus border, dropdown item size updates"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.5",
+            "commit": "22ecddb787ec8626605eb9cd79d8905d93ed179f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Feb 2023 07:41:31 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.55",
+      "version": "8.5.55",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.4",
+            "commit": "6ddc1cc914239b1f50cbfab08c549a20b41a201e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Feb 2023 07:50:06 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.54",
+      "version": "8.5.54",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.3",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/set-version to v8.2.5",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Feb 2023 07:35:42 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.53",
+      "version": "8.5.53",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.2",
+            "commit": "c7ec5748dc84266c80da98afcb84f758c2c051d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Feb 2023 07:39:53 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.52",
+      "version": "8.5.52",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.1",
+            "commit": "20a923cf7697dc1b765a43dca7ce874f9e91ebe1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Jan 2023 07:34:53 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.51",
+      "version": "8.5.51",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "e088f5010e9821b753a813ddf74aa2e89dae078e",
+            "comment": "azure theme calendar selection, contextmenu border, pivot focus border, dropdown item size updates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 Jan 2023 07:36:22 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.50",
+      "version": "8.5.50",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.0",
+            "commit": "b9284238a8b79e3d0864ce26a8bb0e9ffb33a96a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jan 2023 07:37:51 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.49",
+      "version": "8.5.49",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.8",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 07:35:31 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.48",
+      "version": "8.5.48",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "2fe537e268140f5b18bf0f53ef23d93f6f1ad940",
+            "comment": "Fixing CSS selector from previous PR, the style of spin button is unchanged\""
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.7",
+            "commit": "175abf247751c2ababcc8deef8b4479c648ea2dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Jan 2023 07:51:03 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.47",
+      "version": "8.5.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "2331c9314cd1440ab413e404bdf1da8da0de7e05",
+            "comment": "Spin button height and caret positioning (for Elixir controls) "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jan 2023 07:42:14 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.46",
+      "version": "8.5.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.104.6",
+            "commit": "fe36f5e6d0293f93532aee9c25e3bf14ea31d0d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:50 GMT",
       "tag": "@fluentui/azure-themes_v8.5.45",
       "version": "8.5.45",

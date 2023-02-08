@@ -1,11 +1,13 @@
+import * as React from 'react';
 import { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
 import {
-  ColumnDefinition,
-  createColumn,
+  TableColumnDefinition,
+  createTableColumn,
   defaultTableSelectionState,
   defaultTableSortState,
   TableSelectionState,
   TableSortState,
+  defaultColumnSizingState,
 } from '../hooks';
 
 interface Item {
@@ -14,10 +16,10 @@ interface Item {
   third: string;
 }
 
-const testColumns: ColumnDefinition<Item>[] = [
-  createColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
-  createColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
-  createColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
+const testColumns: TableColumnDefinition<Item>[] = [
+  createTableColumn({ columnId: 'first', renderHeaderCell: () => 'first', renderCell: item => item.first }),
+  createTableColumn({ columnId: 'second', renderHeaderCell: () => 'second', renderCell: item => item.second }),
+  createTableColumn({ columnId: 'third', renderHeaderCell: () => 'third', renderCell: item => item.third }),
 ];
 const testItems: Item[] = [
   { first: 'first', second: 'second', third: 'third' },
@@ -40,6 +42,9 @@ export function mockDataGridContext(
     selectableRows: false,
     subtleSelection: false,
     selectionAppearance: 'brand',
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    columnSizing_unstable: defaultColumnSizingState,
+    tableRef: React.createRef(),
     ...options,
   };
 

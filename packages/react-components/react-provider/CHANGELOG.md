@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.3.2)
+
+Tue, 07 Feb 2023 14:13:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.3.1..@fluentui/react-provider_v9.3.2)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.3.1)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.3.0..@fluentui/react-provider_v9.3.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.3.0)
+
+Thu, 26 Jan 2023 13:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.2.3..@fluentui/react-provider_v9.3.0)
+
+### Minor changes
+
+- feat: add support for overrides (unstable) ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+### Patches
+
+- fix: Update FluentProvider's class name to use backslash when a colon is present. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.2.3)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.2.2..@fluentui/react-provider_v9.2.3)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.2.2)
+
+Mon, 16 Jan 2023 08:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.2.1..@fluentui/react-provider_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.2.1)
 

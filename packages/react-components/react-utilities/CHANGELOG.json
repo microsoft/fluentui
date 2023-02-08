@@ -2,6 +2,59 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.5.1",
+      "version": "9.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "12ec691720e2394ef61bd1936d911a4245f6e0cd",
+            "comment": "fix: update definitions for SSRProvider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 13:31:03 GMT",
+      "tag": "@fluentui/react-utilities_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1",
+            "comment": "feat: add IdPrefixProvider"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4f3871db826e542114d853b57fb2f740787f91e8",
+            "comment": "fix: Leverage React.useId when available for our useId hook."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:38:52 GMT",
+      "tag": "@fluentui/react-utilities_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:35:02 GMT",
       "tag": "@fluentui/react-utilities_v9.4.0",
       "version": "9.4.0",

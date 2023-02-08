@@ -2,6 +2,80 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:06 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.11",
+      "version": "9.3.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "db4be59f6c1677bd9182205dabfcb3e2bb47837f",
+            "comment": "fix(createPositionManager): computePosition should not apply styles after destruction"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.10",
+      "version": "9.3.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 13:31:03 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.9",
+      "version": "9.3.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.2.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:39:07 GMT",
+      "tag": "@fluentui/react-positioning_v9.3.8",
+      "version": "9.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.1.5",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Jan 2023 14:34:59 GMT",
       "tag": "@fluentui/react-positioning_v9.3.7",
       "version": "9.3.7",

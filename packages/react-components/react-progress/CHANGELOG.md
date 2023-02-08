@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.15)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.14..@fluentui/react-progress_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.18 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.14)
+
+Thu, 26 Jan 2023 13:30:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.13..@fluentui/react-progress_v9.0.0-alpha.14)
+
+### Changes
+
+- Deprecate ProgressField_unstable in favor of Field with Progress as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.17 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.13)
+
+Mon, 23 Jan 2023 16:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.12..@fluentui/react-progress_v9.0.0-alpha.13)
+
+### Changes
+
+- Rename rectangular shape to square ([PR #26419](https://github.com/microsoft/fluentui/pull/26419) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.16 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+
+## [9.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.12)
+
+Mon, 16 Jan 2023 08:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.11..@fluentui/react-progress_v9.0.0-alpha.12)
+
+### Changes
+
+- Bump @fluentui/react-field to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.11)
 

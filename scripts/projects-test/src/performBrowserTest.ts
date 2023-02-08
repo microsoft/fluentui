@@ -1,21 +1,60 @@
-import http from 'http';
+import { Server } from 'http';
 import { AddressInfo } from 'net';
 
-import { safeLaunchOptions } from '@fluentui/scripts-puppeteer';
-import express from 'express';
-import puppeteer from 'puppeteer';
+import { launch, visitUrl } from '@fluentui/scripts-puppeteer';
+import express, { Express } from 'express';
 
+/**
+ *
+ * .close is asynchronous (not promisified thus we are wrapping it)
+ *  @see https://nodejs.org/api/net.html#serverclosecallback
+ */
+export function closeServer(server: Server): Promise<void> {
+  if (!server) {
+    return Promise.resolve();
+  }
 
-const SERVER_HOST = 'localhost';
+  return new Promise<void>((resolve, reject) => {
+    // TODO: Default is 5 seconds. why is this set to 1 ?
+    // https://nodejs.org/api/http.html#serverkeepalivetimeout
+    server.keepAliveTimeout = 1000;
+    server.close(err => (err ? reject(err) : resolve()));
+  });
+}
 
-function startServer(publicDirectory: string, listenPort: number) {
-  return new Promise<http.Server>((resolve, reject) => {
+export function startServer(
+  options: { root: string; port: number; host?: string },
+  configureMiddleware = (app: Express) => app,
+) {
+  const { root, port, host = 'localhost' } = options;
+  return new Promise<{ server: Server; port: number; url: string }>((resolve, reject) => {
+    let usedPort: number;
     try {
-      const app = express();
-      app.use(express.static(publicDirectory));
+      console.log('express: starting server');
 
-      const server = app.listen(listenPort, SERVER_HOST, () => {
-        resolve(server);
+      const middleware = (app: Express) => app.use(express.static(root));
+      const app = middleware(configureMiddleware(express()));
+      const server = app.listen(port, host, () => {
+        const shouldAssignArbitraryUnusedPort = port === 0;
+        usedPort = shouldAssignArbitraryUnusedPort ? (server.address() as AddressInfo).port : port;
+        const url = `http://${host}:${usedPort}`;
+
+        console.log(`express: server running at http://${host}:${usedPort} from directory "${root}"`);
+
+        resolve({ server, port: usedPort, url });
+      });
+
+      server.on('error', err => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore - improper Error type in typings -> https://nodejs.org/api/net.html#serverlisten
+        if (err.code === 'EADDRINUSE') {
+          console.error('express: Address in use ...', { port: usedPort, host });
+        }
+
+        throw err;
+      });
+      server.on('close', () => {
+        console.error('express: Terminating server ...', { port: usedPort, host });
       });
     } catch (err) {
       reject(err);
@@ -23,32 +62,31 @@ function startServer(publicDirectory: string, listenPort: number) {
   });
 }
 
-export async function performBrowserTest(publicDirectory: string) {
-  const server = await startServer(publicDirectory, 0);
-  const { port } = server.address() as AddressInfo;
+async function launchServer(root: string) {
+  /**
+   * If port is omitted or is 0, the operating system will assign an arbitrary unused port,
+   * which can be retrieved by using server.address().port after the 'listening' event has been emitted.
+   *
+   * @see https://nodejs.org/api/net.html#serverlisten
+   */
+  const PORT = 0;
 
-  console.log(`Starting server on port ${port} from directory ${publicDirectory}`);
-  console.log('Started server. Launching Puppeteer...');
+  try {
+    const api = await startServer({ root, port: PORT });
 
-  const options = safeLaunchOptions();
-  let browser: puppeteer.Browser | undefined;
-  let attempt = 1;
-  while (!browser) {
-    try {
-      browser = await puppeteer.launch(options);
-      console.log('Launched Puppeteer');
-    } catch (err) {
-      if (attempt === 5) {
-        console.error(`Puppeteer failed to launch after 5 attempts`);
-        throw err;
-      }
-      console.warn('Puppeteer failed to launch (will retry):');
-      console.warn(err);
-      attempt++;
-    }
+    return api;
+  } catch (err) {
+    console.error('express: start failed!');
+    console.error(err);
+    throw err;
   }
+}
 
+export async function performBrowserTest(publicDirectory: string) {
+  const { server, url } = await launchServer(publicDirectory);
+  const browser = await launch();
   const page = await browser.newPage();
+
   let error: Error | undefined;
 
   page.on('console', message => {
@@ -60,14 +98,11 @@ export async function performBrowserTest(publicDirectory: string) {
     error = pageError;
   });
 
-  const url = `http://${SERVER_HOST}:${port}`;
-  console.log(`Loading ${url} in puppeteer...`);
-  await page.goto(url);
-  console.log('Page loaded');
+  await visitUrl(page, url);
 
   await page.close();
   await browser.close();
-  await new Promise(resolve => server.close(resolve));
+  await closeServer(server);
 
   if (error) {
     throw error;

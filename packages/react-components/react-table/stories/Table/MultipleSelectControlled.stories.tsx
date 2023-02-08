@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   TableBody,
   TableCell,
   TableRow,
@@ -19,11 +20,11 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  ColumnDefinition,
-  RowId,
+  TableColumnDefinition,
+  TableRowId,
   useTableSelection,
-  createColumn,
-} from '@fluentui/react-components/unstable';
+  createTableColumn,
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -91,27 +92,24 @@ const items: Item[] = [
   },
 ];
 
-export const MultipleSelectControlled = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
 
+export const MultipleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([0, 1]),
+    () => new Set<TableRowId>([0, 1]),
   );
 
   const {

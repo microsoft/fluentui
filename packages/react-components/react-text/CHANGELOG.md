@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2023 19:53:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.2.0)
+
+Tue, 31 Jan 2023 19:53:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.14..@fluentui/react-text_v9.2.0)
+
+### Minor changes
+
+- feat: expose all typography tokens as components ([PR #26403](https://github.com/microsoft/fluentui/pull/26403) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.14)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.1.13..@fluentui/react-text_v9.1.14)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
 
 ## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.1.12)
 

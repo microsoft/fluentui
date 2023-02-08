@@ -1,8 +1,73 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.12)
+
+Tue, 07 Feb 2023 14:13:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.11..@fluentui/react-infobutton_v9.0.0-beta.12)
+
+### Changes
+
+- chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label. ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by esteban.230@hotmail.com)
+- chore: Making the content focusable and updating example's text. ([PR #26596](https://github.com/microsoft/fluentui/pull/26596) by esteban.230@hotmail.com)
+- Bump @fluentui/react-popover to v9.4.6 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.11)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.10..@fluentui/react-infobutton_v9.0.0-beta.11)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.4.5 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.10)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.9..@fluentui/react-infobutton_v9.0.0-beta.10)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.4.4 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.9)
+
+Mon, 23 Jan 2023 16:43:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.8..@fluentui/react-infobutton_v9.0.0-beta.9)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.4.3 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.8)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.7..@fluentui/react-infobutton_v9.0.0-beta.8)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.4.2 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.7)
+
+Mon, 16 Jan 2023 08:39:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.6..@fluentui/react-infobutton_v9.0.0-beta.7)
+
+### Changes
+
+- fix: Update border for Teams HCM to be transparent. ([PR #26305](https://github.com/microsoft/fluentui/pull/26305) by esteban.230@hotmail.com)
+- fix: Update PopoverSurface's role to note and remove need to cast props passed to popover slot. ([PR #26300](https://github.com/microsoft/fluentui/pull/26300) by esteban.230@hotmail.com)
+- Bump @fluentui/react-popover to v9.4.1 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.6)
 

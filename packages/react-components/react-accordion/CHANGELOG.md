@@ -1,8 +1,61 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.22)
+
+Tue, 07 Feb 2023 14:13:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.21..@fluentui/react-accordion_v9.0.22)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+
+## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.21)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.20..@fluentui/react-accordion_v9.0.21)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.7 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.7 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.20)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.19..@fluentui/react-accordion_v9.0.20)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.6 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.19)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.18..@fluentui/react-accordion_v9.0.19)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.18)
+
+Mon, 16 Jan 2023 08:38:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.17..@fluentui/react-accordion_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.17)
 
