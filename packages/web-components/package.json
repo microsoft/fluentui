@@ -32,13 +32,21 @@
       "types": "./dist/esm/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
-    "./text": {
-      "types": "./dist/esm/text/define.d.ts",
-      "default": "./dist/esm/text/define.js"
+    "./menu": {
+      "types": "./dist/esm/menu/define.d.ts",
+      "default": "./dist/esm/menu/define.js"
+    },
+    "./menu-item": {
+      "types": "./dist/esm/menu-item/define.d.ts",
+      "default": "./dist/esm/menu-item/define.js"
     },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
+    },
+    "./text": {
+      "types": "./dist/esm/text/define.d.ts",
+      "default": "./dist/esm/text/define.js"
     }
   },
   "scripts": {
