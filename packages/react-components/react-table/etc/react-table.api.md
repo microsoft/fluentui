@@ -83,6 +83,7 @@ export type DataGridContextValue = TableFeaturesState<any> & {
     selectableRows: boolean;
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
+    resizableColumns?: boolean;
 };
 
 // @public (undocumented)
@@ -124,10 +125,15 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
+    columnSizingOptions?: TableColumnSizingOptions;
+    onColumnResize?: (event: MouseEvent | undefined, data: {
+        columnId: TableColumnId;
+        width: number;
+    }) => void;
 };
 
 // @public
@@ -173,7 +179,7 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: TableFeaturesState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'>;
 
 // @public
 export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;

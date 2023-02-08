@@ -204,7 +204,7 @@ export const ResizableColumnsControlled = () => {
     }));
   };
 
-  const onColumnResize = React.useCallback((columnId: TableColumnId, width: number) => {
+  const onColumnResize = React.useCallback((_, { columnId, width }) => {
     setColumnSizingOptions(state => ({
       ...state,
       [columnId]: {
