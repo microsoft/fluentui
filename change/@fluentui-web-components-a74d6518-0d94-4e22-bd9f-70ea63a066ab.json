@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "adds switch component",
+  "comment": "feat(switch): Add switch web component",
   "packageName": "@fluentui/web-components",
   "email": "brianbrady@microsoft.com",
   "dependentChangeType": "patch"
