@@ -10325,15 +10325,10 @@ d3-interpolate@1, "d3-interpolate@1.2.0 - 3", d3-interpolate@^1.1.4:
   dependencies:
     d3-color "1"
 
-d3-path@1:
+d3-path@1, "d3-path@1 - 2":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
   integrity sha512-q0cW1RpvA5c5ma2rch62mX8AYaiLX0+bdaSM2wxSU9tXjU4DNvkx9qiUvjkuWCj3p22UO/hlPivujqMiR9PDzA==
-
-"d3-path@2":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-2.0.0.tgz#55d86ac131a0548adae241eebfb56b4582dd09d8"
-  integrity sha512-ZwZQxKhBnv9yHaiWd6ZU4x5BtCQ7pXszEV9CU6kRgwIQVQGLMv1oiL4M+MK/n79sYzsj+gcgpPQSctJUsLN7fA==
 
 d3-sankey@^0.12.3:
   version "0.12.3"
@@ -10386,7 +10381,7 @@ d3-shape@2.1.0:
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-2.1.0.tgz#3b6a82ccafbc45de55b57fcf956c584ded3b666f"
   integrity sha512-PnjUqfM2PpskbSLTJvAzp2Wv4CZsnAgTfcVRTwW03QR3MkXF8Uo7B1y/lWkAsmbKwuecto++4NlsYcvYpXpTHA==
   dependencies:
-    d3-path "2"
+    d3-path "1 - 2"
 
 d3-shape@^1.1.0, d3-shape@^1.2.0:
   version "1.3.7"
@@ -23533,10 +23528,10 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.2.tgz#96d8506aa336620d6e68287f6259e52a50be3427"
-  integrity sha512-jLu8j03qeUzp82+mXnvjcvjgxz9BeEeql5TQTCgZdvZfkBt5vpd4EzvhOnw+y75AeBXCMU4XrXzb4vlNH9ln2A==
+storybook-addon-export-to-codesandbox@0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.3.tgz#ef92a594e2109c80f9ac074e5f3bfbf96c463ceb"
+  integrity sha512-6KLD1mfZwDTO23JvnxpCUYHJSgvSLVbXS4KTAal9tBMoU59/+5ESd239ddX6PMB+/mzgh5v7+FTtVHqAslkubQ==
   dependencies:
     codesandbox-import-utils "^2.2.3"
     pkg-up "^3.1.0"
