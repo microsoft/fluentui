@@ -26,7 +26,7 @@ The Field implementation in this spec follows pattern (4). Field passes props to
 
 - **Accessibility**: All of the accessibility props like `aria-labelledby` and `aria-describedby` are set correctly on the child for "free".
 - **Simplicity**: Passing props down to the children allows any form control to be used as the child of Field.
-- **Consistency**: The Field component provides props the label, validationState, hint, etc. for any form control.
+- **Consistency**: The Field component provides props like label, validationState, hint, etc. for any form control.
 - **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the core components like `Input` without pulling in unnecessary dependencies (like `Label` and the field styling).
 
 ## Sample Code
