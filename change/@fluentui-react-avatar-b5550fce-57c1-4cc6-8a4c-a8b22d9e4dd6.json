@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: Small mistake in docs for Avatar icon prop",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}
