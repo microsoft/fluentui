@@ -8,19 +8,19 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
-  DataGridBody,
-  DataGridRow,
+  PresenceBadgeStatus,
+  Avatar,
   DataGrid,
+  DataGridBody,
+  DataGridCell,
   DataGridHeader,
   DataGridHeaderCell,
-  DataGridCell,
+  DataGridRow,
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
-  TableColumnId,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
