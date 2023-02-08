@@ -7,7 +7,7 @@ import { Button } from '@fluentui/react-button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 export default {
