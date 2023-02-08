@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat:Consume Fluent CDN from style-utilities",
+  "packageName": "@fluentui/react-experiments",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
