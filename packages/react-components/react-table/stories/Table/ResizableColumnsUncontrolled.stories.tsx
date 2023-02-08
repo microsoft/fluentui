@@ -1,4 +1,4 @@
-import { Avatar, Input } from '@fluentui/react-components';
+import * as React from 'react';
 import {
   Table,
   TableBody,
@@ -12,7 +12,10 @@ import {
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableFeatures,
-} from '@fluentui/react-components/unstable';
+  PresenceBadgeStatus,
+  Avatar,
+  Input,
+} from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
   DocumentRegular,
@@ -22,9 +25,6 @@ import {
   PeopleRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import * as React from 'react';
-import { useState } from 'react';
-import { PresenceBadgeStatus } from '../../../react-badge/src';
 
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
@@ -112,8 +112,8 @@ const items: Item[] = [
 ];
 
 export const ResizableColumnsUncontrolled = () => {
-  const [columns] = useState<TableColumnDefinition<Item>[]>(columnsDef);
-  const [columnSizingOptions] = useState<TableColumnSizingOptions>({
+  const [columns] = React.useState<TableColumnDefinition<Item>[]>(columnsDef);
+  const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
     file: {
       idealWidth: 300,
       minWidth: 150,
@@ -136,7 +136,7 @@ export const ResizableColumnsUncontrolled = () => {
     [useTableColumnSizing_unstable({ columnSizingOptions })],
   );
 
-  const [inputValue, setInputValue] = useState('300');
+  const [inputValue, setInputValue] = React.useState('300');
 
   const onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
