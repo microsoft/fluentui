@@ -426,15 +426,15 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       this.props.onOpen();
     }
 
-    this._animationCallback = this._async.setTimeout(() => {
+    this._animationCallback = setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
-      this._onTransitionComplete();
-    }, 200);
+      this._onTransitionComplete(newVisibilityState);
+    }, 1200);
   };
 
   private _clearExistingAnimationTimer = (): void => {
     if (this._animationCallback !== null) {
-      this._async.clearTimeout(this._animationCallback);
+      clearTimeout(this._animationCallback);
     }
   };
 
@@ -442,14 +442,13 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this.dismiss(ev);
   };
 
-  private _onTransitionComplete = (): void => {
+  private _onTransitionComplete = (newVisibilityState: PanelVisibilityState): void => {
     this._updateFooterPosition();
-
-    if (this.state.visibility === PanelVisibilityState.open && this.props.onOpened) {
+    if (newVisibilityState === PanelVisibilityState.open && this.props.onOpened) {
       this.props.onOpened();
     }
 
-    if (this.state.visibility === PanelVisibilityState.closed && this.props.onDismissed) {
+    if (newVisibilityState === PanelVisibilityState.closed && this.props.onDismissed) {
       this.props.onDismissed();
     }
   };
