@@ -8,7 +8,6 @@ import {
   colorNeutralBackground1Pressed,
   colorNeutralBackgroundDisabled,
   colorNeutralForeground2,
-  colorNeutralForeground2BrandHover,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
   colorNeutralForeground3,
@@ -19,6 +18,7 @@ import {
   fontSizeBase200,
   fontSizeBase300,
   fontWeightRegular,
+  fontWeightSemibold,
   lineHeightBase200,
   lineHeightBase300,
 } from '../../theme/design-tokens.js';
@@ -51,6 +51,20 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
   }
+
+  :host(.header) {
+    background: ${colorNeutralBackground1};
+    pointer-events: none;
+    padding: 0 8px;
+  }
+
+  :host(.header) .content {
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightSemibold};
+    line-height: ${lineHeightBase200};
+  }
+
   :host::part(expand-collapse-glyph-container),
   ::slotted(span[slot='start']),
   ::slotted(span[slot='end']),
