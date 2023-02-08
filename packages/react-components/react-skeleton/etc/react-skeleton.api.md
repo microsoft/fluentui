@@ -15,35 +15,10 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
 
 // @public
-export const renderSkeletonCircle_unstable: (state: SkeletonCircleState) => JSX.Element;
-
-// @public
 export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSX.Element;
 
 // @public
-export const renderSkeletonLine_unstable: (state: SkeletonLineState) => JSX.Element;
-
-// @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
-
-// @public
-export const SkeletonCircle: ForwardRefComponent<SkeletonCircleProps>;
-
-// @public (undocumented)
-export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots>;
-
-// @public
-export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {
-    radius?: number | string;
-};
-
-// @public (undocumented)
-export type SkeletonCircleSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type SkeletonCircleState = ComponentState<SkeletonCircleSlots> & Required<Pick<SkeletonCircleProps, 'radius'>>;
 
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
@@ -55,7 +30,10 @@ export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
 
 // @public
-export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {};
+export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+    size?: SkeletonItemSize;
+    shape?: 'circle' | 'square' | 'rectangle';
+};
 
 // @public (undocumented)
 export type SkeletonItemSlots = {
@@ -63,32 +41,12 @@ export type SkeletonItemSlots = {
 };
 
 // @public
-export type SkeletonItemState = ComponentState<SkeletonItemSlots>;
+export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pick<SkeletonItemProps, 'size' | 'shape'>>;
 
 // @public
-export const SkeletonLine: ForwardRefComponent<SkeletonLineProps>;
-
-// @public (undocumented)
-export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots>;
-
-// @public
-export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {
-    height?: number | string;
+export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
     width?: number | string;
-};
-
-// @public (undocumented)
-export type SkeletonLineSlots = {
-    root: NonNullable<Slot<'div'>>;
-};
-
-// @public
-export type SkeletonLineState = ComponentState<SkeletonLineSlots> & Required<Pick<SkeletonLineProps, 'height'>> & Pick<SkeletonLineProps, 'width'>;
-
-// @public
-export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width' | 'animation'> & {
-    width?: number | string;
-    appearance?: 'default' | 'material';
+    appearance?: 'opaque' | 'translucent';
     animation?: 'wave' | 'pulse';
 };
 
@@ -104,22 +62,10 @@ export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<Skelet
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
 
 // @public
-export const useSkeletonCircle_unstable: (props: SkeletonCircleProps, ref: React_2.Ref<HTMLElement>) => SkeletonCircleState;
-
-// @public
-export const useSkeletonCircleStyles_unstable: (state: SkeletonCircleState) => SkeletonCircleState;
-
-// @public
 export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
 
 // @public
 export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;
-
-// @public
-export const useSkeletonLine_unstable: (props: SkeletonLineProps, ref: React_2.Ref<HTMLElement>) => SkeletonLineState;
-
-// @public
-export const useSkeletonLineStyles_unstable: (state: SkeletonLineState) => SkeletonLineState;
 
 // @public
 export const useSkeletonStyles_unstable: (state: SkeletonState) => SkeletonState;
