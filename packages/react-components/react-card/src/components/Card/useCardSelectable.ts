@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { Enter } from '@fluentui/keyboard-keys';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots } from './Card.types';
@@ -21,7 +22,7 @@ export const useCardSelectable = (
   { referenceLabel, referenceId }: Pick<CardContextValue['selectableA11yProps'], 'referenceId' | 'referenceLabel'>,
   cardRef: React.RefObject<HTMLDivElement>,
 ) => {
-  const { checkbox = {}, selected, defaultSelected, onSelectionChange, floatingAction, onClick } = props;
+  const { checkbox = {}, selected, defaultSelected, onSelectionChange, floatingAction, onClick, onKeyDown } = props;
 
   const { findAllFocusable } = useFocusFinders();
 
@@ -63,6 +64,16 @@ export const useCardSelectable = (
       }
     },
     [onSelectionChange, isCardSelected, shouldRestrictTriggerAction],
+  );
+
+  const onKeyDownHandler = React.useCallback(
+    (event: React.KeyboardEvent<HTMLElement>) => {
+      if ([Enter].includes(event.key)) {
+        event.preventDefault();
+        onChangeHandler(event);
+      }
+    },
+    [onChangeHandler],
   );
 
   const checkboxSlot = React.useMemo(() => {
@@ -110,8 +121,9 @@ export const useCardSelectable = (
 
     return {
       onClick: mergeCallbacks(onClick, onChangeHandler),
+      onKeyDown: mergeCallbacks(onKeyDown, onKeyDownHandler),
     };
-  }, [isSelectable, onChangeHandler, onClick]);
+  }, [isSelectable, onChangeHandler, onClick, onKeyDown, onKeyDownHandler]);
 
   React.useEffect(() => setIsCardSelected(Boolean(defaultSelected ?? selected)), [
     defaultSelected,
