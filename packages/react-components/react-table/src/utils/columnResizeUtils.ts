@@ -49,14 +49,15 @@ export function columnDefinitionsToState<T>(
       return existingColumnState;
     }
 
-    const { defaultWidth, idealWidth, minWidth, padding } = columnSizingOptions[column.columnId] ?? {};
+    const { defaultWidth, idealWidth = DEFAULT_WIDTH, minWidth = DEFAULT_MIN_WIDTH, padding } =
+      columnSizingOptions[column.columnId] ?? {};
 
     updated = true;
     return {
       columnId: column.columnId,
-      width: defaultWidth ?? idealWidth ?? DEFAULT_WIDTH,
-      minWidth: minWidth ?? DEFAULT_MIN_WIDTH,
-      idealWidth: defaultWidth ?? idealWidth ?? DEFAULT_WIDTH,
+      width: Math.max(defaultWidth ?? idealWidth, minWidth),
+      minWidth,
+      idealWidth: Math.max(defaultWidth ?? idealWidth, minWidth),
       padding: padding ?? 16,
     };
   });

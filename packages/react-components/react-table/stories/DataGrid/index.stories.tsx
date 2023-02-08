@@ -19,6 +19,7 @@ export { SingleSelect } from './SingleSelect.stories';
 export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { SubtleSelection } from './SubtleSelection.stories';
 export { SelectionAppearance } from './SelectionAppearance.stories';
+export { ResizableColumns } from './ResizableColumns.stories';
 export { Virtualization } from './Virtualization.stories';
 export { CustomRowId } from './CustomRowId.stories';
 
