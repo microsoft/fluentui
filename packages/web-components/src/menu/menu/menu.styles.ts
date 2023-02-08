@@ -1,5 +1,10 @@
 import { css } from '@microsoft/fast-element';
-import { colorNeutralBackground1, colorNeutralStrokeAccessible, strokeWidthThin } from '../../theme/design-tokens.js';
+import {
+  borderRadiusMedium,
+  colorNeutralBackground1,
+  colorTransparentStroke,
+  shadow16,
+} from '../../theme/design-tokens.js';
 
 /** Menu styles
  * @public
@@ -9,11 +14,13 @@ export const styles = css`
     display: flex;
     flex-direction: column;
     height: fit-content;
-    width: fit-content;
+    width: auto;
     min-width: 160px;
     background: ${colorNeutralBackground1};
-    border: 1px solid ${colorNeutralStrokeAccessible};
-    margin-top: -1px;
-    margin-bottom: -1px;
+    border: 1px solid ${colorTransparentStroke};
+    border-radius: ${borderRadiusMedium};
+    box-shadow: ${shadow16};
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
 `;
