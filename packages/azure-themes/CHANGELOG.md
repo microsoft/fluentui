@@ -1,8 +1,18 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 06 Feb 2023 07:41:31 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 07:36:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.56](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.56)
+
+Tue, 07 Feb 2023 07:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.5.55..@fluentui/azure-themes_v8.5.56)
+
+### Patches
+
+- azure theme calendar selection, contextmenu border, pivot focus border, dropdown item size updates ([PR #26544](https://github.com/microsoft/fluentui/pull/26544) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.105.5 ([PR #26617](https://github.com/microsoft/fluentui/pull/26617) by beachball)
 
 ## [8.5.55](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.5.55)
 

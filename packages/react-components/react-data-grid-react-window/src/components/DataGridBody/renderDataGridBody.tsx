@@ -3,6 +3,7 @@ import type { DataGridBodyState, DataGridBodySlots } from './DataGridBody.types'
 import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { getSlots } from '@fluentui/react-utilities';
 import { TableRowData, TableRowIdContextProvider } from '@fluentui/react-table';
+import { TableRowIndexContextProvider } from '../../contexts/rowIndexContext';
 
 /**
  * Render the final JSX of DataGridVirtualizedBody
@@ -21,7 +22,11 @@ export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
       >
         {({ data, index, style }: ListChildComponentProps) => {
           const row: TableRowData<unknown> = data[index];
-          return <TableRowIdContextProvider value={row.rowId}>{state.renderRow(row, style)}</TableRowIdContextProvider>;
+          return (
+            <TableRowIndexContextProvider value={state.ariaRowIndexStart + index}>
+              <TableRowIdContextProvider value={row.rowId}>{state.renderRow(row, style)}</TableRowIdContextProvider>
+            </TableRowIndexContextProvider>
+          );
         }}
       </List>
     </slots.root>

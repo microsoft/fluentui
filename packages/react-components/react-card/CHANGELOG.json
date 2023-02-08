@@ -2,6 +2,41 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:09 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.43",
+      "version": "9.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "24ed48c6ff8d0340314931cfecd74e3265b47148",
+            "comment": "docs: improve API documentation of card props"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.5.0",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.2.2",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          }
+        ],
+        "none": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "0cbf85cf12a08ff04ac1807a49ca469f92330211",
+            "comment": "docs: improve a11y of card storybook examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.42",
       "version": "9.0.0-beta.42",

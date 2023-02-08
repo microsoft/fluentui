@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: New overflow items all always dispatch updates to subscriber",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
