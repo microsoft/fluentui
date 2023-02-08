@@ -426,10 +426,10 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       this.props.onOpen();
     }
 
-    this._animationCallback = setTimeout(() => {
+    this._animationCallback = (setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
       this._onTransitionComplete(newVisibilityState);
-    }, 1200);
+    }, 1200) as unknown) as number;
   };
 
   private _clearExistingAnimationTimer = (): void => {
