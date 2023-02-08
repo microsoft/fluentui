@@ -22,6 +22,7 @@ const Cut20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
+
 const ClipboardPaste20Filled = html`<svg
   fill="currentColor"
   class="___12fm75w f1w7gpdv fez10in fg4l7m0"
@@ -36,6 +37,7 @@ const ClipboardPaste20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
+
 const Edit20Filled = html`<svg
   fill="currentColor"
   class="___12fm75w f1w7gpdv fez10in fg4l7m0"
@@ -50,84 +52,28 @@ const Edit20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
-const FormNew20Filled = html`<svg
-  fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M3 5.5A2.5 2.5 0 015.5 3h9A2.5 2.5 0 0117 5.5v4.1c-.75-.38-1.6-.6-2.5-.6h-5a.5.5 0 000 1h1.84a5.5 5.5 0 00-1.74 7H5.5A2.5 2.5 0 013 14.5v-9zM6.5 9a.5.5 0 100 1 .5.5 0 000-1zM5 9.5a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0zM6.5 13a.5.5 0 100 1 .5.5 0 000-1zm-1.5.5a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0zM5.5 5a.5.5 0 000 1h9a.5.5 0 000-1h-9zM19 14.5a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm-4-2a.5.5 0 00-1 0V14h-1.5a.5.5 0 000 1H14v1.5a.5.5 0 001 0V15h1.5a.5.5 0 000-1H15v-1.5z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-const TabDesktopNewPage20Filled = html`<svg
-  fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M3 5.5A2.5 2.5 0 015.5 3H8v2.5C8 6.33 8.67 7 9.5 7H17v7.5a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9zM8 11a1 1 0 10-2 0 1 1 0 002 0zm2 1a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 10-2 0 1 1 0 002 0zm3-5v-.5A2.5 2.5 0 0014.5 3H9v2.5c0 .28.22.5.5.5H17z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-const Code20Filled = html`<svg
-  fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M12.94 4.05a.75.75 0 00-1.38-.6l-5.5 12.5a.75.75 0 101.38.6l5.5-12.5zm1.35 9.8a.75.75 0 01-.13-1.06L16.3 10l-2.14-2.8a.75.75 0 011.18-.9l2.5 3.24c.21.27.21.65 0 .92l-2.5 3.25a.75.75 0 01-1.05.13zm-8.58-7.7c.33.26.39.73.13 1.06L3.7 10l2.14 2.8a.75.75 0 11-1.18.9l-2.5-3.24a.75.75 0 010-.92l2.5-3.25a.75.75 0 011.05-.13z"
-    fill="currentColor"
-  ></path>
-</svg>`;
+
 const storyTemplate = html<MenuStoryArgs>`
-  <div style="width: 200px">
+  <div style="width: 128px; position: relative">
     <fluent-menu>
-      <fluent-menu-item disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item disabled=${x => x.disabled}>
-        Paste
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+        Edit
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+        Paste
         <span slot="start">${ClipboardPaste20Filled}</span>
-        Edit
-      </fluent-menu-item>
-      <fluent-menu-item>
-        New
-        <span slot="start">${FormNew20Filled}</span>
-        <fluent-menu slot="submenu">
-          <fluent-menu-item>
-            File
-            <span slot="start">${TabDesktopNewPage20Filled}</span>
-          </fluent-menu-item>
-          <fluent-menu-item>
-            Workspace
-            <span slot="start">${Code20Filled}</span>
-          </fluent-menu-item>
-        </fluent-menu>
-        <span slot="end">Shortcut Text</span>
       </fluent-menu-item>
     </fluent-menu>
   </div>
 `;
 
 export default {
-  title: 'Components/Menu/Default',
+  title: 'Components/Menu/Menu Item with Radios',
   args: {
     disabled: false,
   },
