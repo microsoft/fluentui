@@ -43,6 +43,7 @@ export function writeContainerUpdates(options: {
   }
 
   // Round to the nearest device pixel. This prevents blurriness when the browser view is zoomed in.
+  // See https://github.com/microsoft/fluentui/issues/26764 for more info.
   const devicePixelRatio = container.ownerDocument.defaultView?.devicePixelRatio || 1;
   const x = Math.round(coordinates.x * devicePixelRatio) / devicePixelRatio;
   const y = Math.round(coordinates.y * devicePixelRatio) / devicePixelRatio;
