@@ -7,7 +7,7 @@ import {
   TableCell,
   TableSelectionCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 import descriptionMd from './TableDescription.md';
 
 export { Default } from './Default.stories';
@@ -35,7 +35,7 @@ export { DataGrid } from './DataGrid.stories';
 export { Memoization } from './Memoization.stories';
 
 export default {
-  title: 'Preview Components/Table',
+  title: 'Components/Table',
   component: Table,
   subcomponents: {
     TableHeader,

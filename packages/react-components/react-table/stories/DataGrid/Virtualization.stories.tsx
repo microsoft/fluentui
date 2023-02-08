@@ -8,18 +8,23 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
-  DataGridRow,
-  DataGrid,
-  DataGridHeader,
-  DataGridHeaderCell,
-  DataGridCell,
   TableColumnDefinition,
   createTableColumn,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
-import { DataGridBody } from '@fluentui/react-data-grid-react-window';
+  PresenceBadgeStatus,
+  Avatar,
+  useScrollbarWidth,
+  useFluent,
+} from '@fluentui/react-components';
+import {
+  DataGridBody,
+  DataGrid,
+  DataGridRow,
+  DataGridHeader,
+  DataGridCell,
+  DataGridHeaderCell,
+} from '@fluentui/react-data-grid-react-window';
 
 type FileCell = {
   label: string;
@@ -169,4 +174,19 @@ export const Virtualization = () => {
       </DataGridBody>
     </DataGrid>
   );
+};
+
+Virtualization.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Virtualizating the DataGrid component involves recomposing components to use a virtualized container.',
+        'This is already done in the extension package `@fluentui/react-data-grid-react-window` which provides',
+        'extended DataGrid components that are powered',
+        'by [react-window](https://react-window.vercel.app/#/examples/list/fixed-size).',
+        '',
+        'The example below shows how to use this extension package to virtualize the DataGrid component.',
+      ].join('\n'),
+    },
+  },
 };
