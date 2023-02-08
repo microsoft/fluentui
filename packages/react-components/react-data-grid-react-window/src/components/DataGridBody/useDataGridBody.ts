@@ -12,7 +12,7 @@ import { useDataGridBody_unstable as useDataGridBodyBase_unstable, RowRenderFunc
  * @param ref - reference to root HTMLElement of DataGridBody
  */
 export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Ref<HTMLElement>): DataGridBodyState => {
-  const { height, itemSize, width = '100%', children } = props;
+  const { height, itemSize, width = '100%', ariaRowIndexStart = 2, children } = props;
 
   // cast the row render function to work with unknown args
   const renderRowWithUnknown = children as RowRenderFunction;
@@ -24,5 +24,6 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
     height,
     renderRow: children,
     width,
+    ariaRowIndexStart,
   };
 };

@@ -9,6 +9,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
   root: 'fui-TableHeaderCell',
   button: 'fui-TableHeaderCell__button',
   sortIcon: 'fui-TableHeaderCell__sortIcon',
+  aside: 'fui-TableHeaderCell__aside',
 };
 
 const useTableLayoutStyles = makeStyles({
@@ -39,6 +40,7 @@ const useStyles = makeStyles({
       },
       { selector: 'focus-within', enableOutline: true },
     ),
+    position: 'relative',
   },
 
   rootInteractive: {
@@ -64,6 +66,7 @@ const useStyles = makeStyles({
     WebkitAppearance: 'button',
     textAlign: 'unset',
   },
+
   button: {
     position: 'relative',
     width: '100%',
@@ -76,6 +79,7 @@ const useStyles = makeStyles({
     ...shorthands.flex(1, 1, '0px'),
     outlineStyle: 'none',
   },
+
   sortable: {
     cursor: 'pointer',
   },
@@ -85,6 +89,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXXS,
   },
+
+  resizeHandle: {},
 });
 
 /**
@@ -117,6 +123,10 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
       styles.sortIcon,
       state.sortIcon.className,
     );
+  }
+
+  if (state.aside) {
+    state.aside.className = mergeClasses(tableHeaderCellClassNames.aside, styles.resizeHandle, state.aside.className);
   }
 
   return state;
