@@ -42,8 +42,10 @@ export function writeContainerUpdates(options: {
     container.setAttribute(DATA_POSITIONING_HIDDEN, '');
   }
 
-  const x = Math.round(coordinates.x);
-  const y = Math.round(coordinates.y);
+  // Round to the nearest device pixel. This prevents blurriness when the browser view is zoomed in.
+  const devicePixelRatio = container.ownerDocument.defaultView?.devicePixelRatio || 1;
+  const x = Math.round(coordinates.x * devicePixelRatio) / devicePixelRatio;
+  const y = Math.round(coordinates.y * devicePixelRatio) / devicePixelRatio;
 
   Object.assign(container.style, {
     transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
