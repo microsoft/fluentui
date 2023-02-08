@@ -5,7 +5,7 @@ import { isConvergedPackage } from '@fluentui/scripts-monorepo';
 import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
 import { apiExtractor } from './api-extractor';
-import { getJustArgv } from './argv';
+import { JustArgs, getJustArgv } from './argv';
 import { babel, hasBabel } from './babel';
 import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
@@ -135,11 +135,49 @@ export function preset() {
   });
 
   task('compile', () => {
+    const moduleFlag = args.module;
     return series(
-      'swc:compile',
+      'swc:esm',
       condition('babel:postprocess', () => hasBabel()),
+      resolveModuleCompilation(moduleFlag),
     );
   });
+
+  function resolveModuleCompilation(moduleFlag?: JustArgs['module']) {
+    // default behaviour
+    if (!moduleFlag) {
+      return parallel(
+        'swc:commonjs',
+        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+      );
+    }
+
+    return parallel(
+      condition('swc:commonjs', () => moduleFlag.cjs),
+      condition('swc:amd', () => moduleFlag.amd),
+    );
+  }
+
+  // task('compile', () => {
+  //   const moduleFlag = args.module;
+  //   // default behaviour
+  //   if (!moduleFlag) {
+  //     return parallel(
+  //       'swc:commonjs',
+  //       condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+  //     );
+  //   }
+
+  //   return parallel(
+  //     condition('swc:commonjs', () => moduleFlag.cjs),
+  //     condition('swc:amd', () => moduleFlag.amd),
+  //   );
+
+  //   // return series(
+  //   //   'swc:esm',
+  //   //   condition('babel:postprocess', () => hasBabel()),
+  //   // );
+  // });
 
   task('code-style', series('prettier', 'lint'));
 
