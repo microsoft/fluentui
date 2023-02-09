@@ -158,27 +158,6 @@ export function preset() {
     );
   }
 
-  // task('compile', () => {
-  //   const moduleFlag = args.module;
-  //   // default behaviour
-  //   if (!moduleFlag) {
-  //     return parallel(
-  //       'swc:commonjs',
-  //       condition('swc:amd', () => !!args.production && !isConvergedPackage()),
-  //     );
-  //   }
-
-  //   return parallel(
-  //     condition('swc:commonjs', () => moduleFlag.cjs),
-  //     condition('swc:amd', () => moduleFlag.amd),
-  //   );
-
-  //   // return series(
-  //   //   'swc:esm',
-  //   //   condition('babel:postprocess', () => hasBabel()),
-  //   // );
-  // });
-
   task('code-style', series('prettier', 'lint'));
 
   task('dev:storybook', series('storybook:start'));
@@ -187,12 +166,6 @@ export function preset() {
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
   task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
-
-  // now: ts --> babel --> swc --> api-extractor
-  //
-  // want:
-  // api: ts --declarationOnly --> api-extractor
-  // compile: swc --> babel
 
   task('build:react-components', () => {
     return series(
