@@ -5,7 +5,7 @@ import { AccordionItemExpandIconPosition, AccordionItemSize } from './accordion-
 /**
  * @internal
  */
-class AccordionItem extends FASTAccordionItem {
+export class AccordionItem extends FASTAccordionItem {
   /**
    * Defines accordion header size.
    *
@@ -25,7 +25,7 @@ class AccordionItem extends FASTAccordionItem {
    * HTML Attribute: block
    */
   @attr({ mode: 'boolean' })
-  block: boolean = true;
+  public block: boolean = true;
 
   /**
    * Sets expand and collapsed icon position.
@@ -35,8 +35,6 @@ class AccordionItem extends FASTAccordionItem {
    * @remarks
    * HTML Attribute: expandIconPosition
    */
-  @attr({ attribute: 'expandIconPosition' })
+  @attr({ attribute: 'expand-icon-position' })
   public expandIconPosition: AccordionItemExpandIconPosition;
 }
-
-export { AccordionItem };
