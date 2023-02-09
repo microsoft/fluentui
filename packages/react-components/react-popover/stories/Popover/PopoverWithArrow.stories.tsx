@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-components';
+import {
+  Body1,
+  Button,
+  makeStyles,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  Subtitle2,
+} from '@fluentui/react-components';
 
 const supportsBackdropFilter = '@supports (backdrop-filter: blur(100px))';
 
@@ -8,11 +16,16 @@ const useStyles = makeStyles({
     marginTop: '0',
   },
   surface: {
-    backgroundColor: 'white',
+    display: 'grid',
     [supportsBackdropFilter]: {
       backdropFilter: 'blur(100px)',
-      color: '#FF0000',
-      backgroundColor: '#FFFFFF80',
+    },
+  },
+  backdropFilterStatus: {
+    marginTop: '11px',
+    '::before': { content: '"❌ NO SUPPORT FOR backdrop-filter: blur()"' },
+    [supportsBackdropFilter]: {
+      '::before': { content: '"✅ Supports backdrop-filter: blur()"' },
     },
   },
 });
@@ -21,27 +34,33 @@ const ExampleContent = () => {
   const styles = useStyles();
   return (
     <PopoverSurface className={styles.surface}>
-      <h3 className={styles.contentHeader}>Popover content</h3>
+      <Subtitle2 as="h3" className={styles.contentHeader}>
+        Popover container
+      </Subtitle2>
 
-      <div>This popover has an arrow pointing to its target</div>
+      <Body1 as="p">Device Pixel Rounding: NO</Body1>
+
+      <Body1 as="p" className={styles.backdropFilterStatus} />
     </PopoverSurface>
   );
 };
 
 export const WithArrow = () => (
-  <Popover open withArrow>
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>Popover trigger</Button>
-    </PopoverTrigger>
+  <div style={{ padding: '51px' }}>
+    <Popover open withArrow>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
 
-    <ExampleContent />
-  </Popover>
+      <ExampleContent />
+    </Popover>
+  </div>
 );
 
 WithArrow.parameters = {
   docs: {
     description: {
-      story: 'The `withArrow` prop can be used to display an arrow pointing to the target.',
+      story: 'WITHOUT device pixel rounding fix',
     },
   },
 };
