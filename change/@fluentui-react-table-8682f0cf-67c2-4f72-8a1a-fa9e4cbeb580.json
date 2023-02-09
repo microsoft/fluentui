@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: DataGrid - add support for resizable columns",
-  "packageName": "@fluentui/react-table",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
