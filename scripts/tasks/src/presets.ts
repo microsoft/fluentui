@@ -118,45 +118,12 @@ export function preset() {
 
   task('swc:compile', () => {
     const moduleFlag = args.module;
-    // default behaviour
-    if (!moduleFlag) {
-      return parallel(
-        'swc:esm',
-        'swc:commonjs',
-        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
-      );
-    }
-
-    return parallel(
-      condition('swc:esm', () => moduleFlag.esm),
-      condition('swc:commonjs', () => moduleFlag.cjs),
-      condition('swc:amd', () => moduleFlag.amd),
-    );
-  });
-
-  task('compile', () => {
-    const moduleFlag = args.module;
     return series(
       'swc:esm',
       condition('babel:postprocess', () => hasBabel()),
       resolveModuleCompilation(moduleFlag),
     );
   });
-
-  function resolveModuleCompilation(moduleFlag?: JustArgs['module']) {
-    // default behaviour
-    if (!moduleFlag) {
-      return parallel(
-        'swc:commonjs',
-        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
-      );
-    }
-
-    return parallel(
-      condition('swc:commonjs', () => moduleFlag.cjs),
-      condition('swc:amd', () => moduleFlag.amd),
-    );
-  }
 
   task('code-style', series('prettier', 'lint'));
 
@@ -172,7 +139,7 @@ export function preset() {
       'clean',
       'copy',
       condition('sass', () => hasSass()),
-      parallel('compile', 'generate-api'),
+      parallel('swc:compile', 'generate-api'),
     );
   }).cached!();
 
@@ -180,6 +147,21 @@ export function preset() {
     'bundle',
     condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
+
+  function resolveModuleCompilation(moduleFlag?: JustArgs['module']) {
+    // default behaviour
+    if (!moduleFlag) {
+      return parallel(
+        'swc:commonjs',
+        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+      );
+    }
+
+    return parallel(
+      condition('swc:commonjs', () => moduleFlag.cjs),
+      condition('swc:amd', () => moduleFlag.amd),
+    );
+  }
 }
 
 if (process.cwd() === __dirname) {
