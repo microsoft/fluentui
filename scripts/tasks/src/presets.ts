@@ -1,23 +1,22 @@
 import fs from 'fs';
 import path from 'path';
 
-
-
 import { isConvergedPackage } from '@fluentui/scripts-monorepo';
 import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
 import { apiExtractor } from './api-extractor';
-import { getJustArgv } from './argv';
-import { babel } from './babel';
+import { JustArgs, getJustArgv } from './argv';
+import { babel, hasBabel } from './babel';
 import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
 import { eslint } from './eslint';
+import { generateApi } from './generate-api';
 import { jest as jestTask, jestWatch } from './jest';
 import { lintImports } from './lint-imports';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
 import { prettier } from './prettier';
-import { sass } from './sass';
+import { hasSass, sass } from './sass';
 import { buildStorybookTask, startStorybookTask } from './storybook';
 import { swc } from './swc';
 import { ts } from './ts';
@@ -71,6 +70,7 @@ export function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
+  task('generate-api', generateApi);
 
   task('ts:compile', () => {
     const moduleFlag = args.module;
@@ -95,7 +95,7 @@ export function preset() {
       'ts:compile',
       'copy-compiled',
       'ts:postprocess',
-      condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
+      condition('babel:postprocess', () => hasBabel()),
     );
   });
 
@@ -134,6 +134,30 @@ export function preset() {
     );
   });
 
+  task('compile', () => {
+    const moduleFlag = args.module;
+    return series(
+      'swc:esm',
+      condition('babel:postprocess', () => hasBabel()),
+      resolveModuleCompilation(moduleFlag),
+    );
+  });
+
+  function resolveModuleCompilation(moduleFlag?: JustArgs['module']) {
+    // default behaviour
+    if (!moduleFlag) {
+      return parallel(
+        'swc:commonjs',
+        condition('swc:amd', () => !!args.production && !isConvergedPackage()),
+      );
+    }
+
+    return parallel(
+      condition('swc:commonjs', () => moduleFlag.cjs),
+      condition('swc:amd', () => moduleFlag.amd),
+    );
+  }
+
   task('code-style', series('prettier', 'lint'));
 
   task('dev:storybook', series('storybook:start'));
@@ -143,7 +167,14 @@ export function preset() {
 
   task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
 
-  task('build:react-components', series('clean', 'copy', 'sass', 'ts', 'swc:compile', 'api-extractor')).cached!();
+  task('build:react-components', () => {
+    return series(
+      'clean',
+      'copy',
+      condition('sass', () => hasSass()),
+      parallel('compile', 'generate-api'),
+    );
+  }).cached!();
 
   task(
     'bundle',

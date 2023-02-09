@@ -9,6 +9,11 @@ import { DataGridRow } from '../DataGridRow/DataGridRow';
 import { DataGridCell } from '../DataGridCell/DataGridCell';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
+const measureElementRef = jest.fn();
+jest.mock('../../hooks/useMeasureElement', () => {
+  return { useMeasureElement: () => ({ width: 1000, measureElementRef }) };
+});
+
 interface Item {
   first: string;
   second: string;
@@ -34,7 +39,14 @@ describe('DataGrid', () => {
       items: testItems,
       columns: testColumns,
     },
-  });
+    testOptions: {
+      'make-styles-overrides-win': {
+        callCount: 2,
+      },
+    },
+    // TODO: https://github.com/microsoft/fluentui/issues/19618
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as any);
 
   it('renders a default state', () => {
     const result = render(

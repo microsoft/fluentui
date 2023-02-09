@@ -269,7 +269,7 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<unknown> }) => {
     const plugins = ['annotate-pure-calls'];
     if (options.platform === 'web') {
       plugins.push('@babel/transform-react-pure-annotations');
@@ -719,21 +719,22 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     return json;
 
     function normalizePackageEntryPointPaths(entryPath: string) {
-      return './' + path.normalize(entryPath);
+      return './' + path.posix.normalize(entryPath);
     }
   }
 }
 
 //TODO: remove after migration to swc transpilation is complete
 function addSwcHelpers(json: PackageJson) {
-  json.dependencies = { ...json.dependencies, '@swc/core': '^1.3.24', '@swc/helpers': '^0.4.11' };
+  delete json.dependencies?.tslib;
+  json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.14' };
   return json;
 }
 
 function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const apiExtractor = templates.apiExtractor();
   const scripts = {
-    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+    'generate-api': 'just-scripts generate-api',
   };
 
   tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
@@ -1061,7 +1062,29 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
-  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
+  const extraPresets = shouldAddGriffelPreset
+    ? [
+        [
+          '@griffel',
+          {
+            babelOptions: {
+              plugins: [
+                [
+                  'babel-plugin-module-resolver',
+                  {
+                    root: ['../../../'],
+                    alias: {
+                      '@fluentui/tokens': 'packages/tokens/lib/index.js',
+                      '^@fluentui/(.+)': 'packages/react-components/\\1/lib/index.js',
+                    },
+                  },
+                ],
+              ],
+            },
+          },
+        ],
+      ]
+    : [];
   const config = templates.babelConfig({ extraPresets, platform: packageType });
 
   tree.write(options.paths.babelConfig, serializeJson(config));

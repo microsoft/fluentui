@@ -7,6 +7,8 @@ import type {
   SelectionMode,
   UseTableSelectionOptions,
   OnSelectionChangeData,
+  TableColumnSizingOptions,
+  TableColumnId,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
 
@@ -45,6 +47,11 @@ export type DataGridContextValue = TableFeaturesState<any> & {
    * @default brand
    */
   selectionAppearance: TableRowProps['appearance'];
+
+  /**
+   * Enables column resizing
+   */
+  resizableColumns?: boolean;
 };
 
 /**
@@ -52,7 +59,7 @@ export type DataGridContextValue = TableFeaturesState<any> & {
  */
 export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> &
-  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> &
+  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
@@ -62,6 +69,14 @@ export type DataGridProps = TableProps &
      * @default false
      */
     selectionMode?: SelectionMode;
+    /**
+     * Options for column resizing
+     */
+    columnSizingOptions?: TableColumnSizingOptions;
+    /**
+     * A callback triggered when a column is resized.
+     */
+    onColumnResize?: (event: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
   };
 
 /**
@@ -69,5 +84,5 @@ export type DataGridProps = TableProps &
  */
 export type DataGridState = TableState & { tableState: TableFeaturesState<unknown> } & Pick<
     DataGridContextValue,
-    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'
+    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'
   >;
