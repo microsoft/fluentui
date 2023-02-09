@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   Body1,
   Button,
@@ -7,7 +8,6 @@ import {
   PopoverSurface,
   PopoverTrigger,
   Subtitle2,
-  useFluent,
 } from '@fluentui/react-components';
 
 const supportsBackdropFilter = '@supports (backdrop-filter: blur(100px))';
