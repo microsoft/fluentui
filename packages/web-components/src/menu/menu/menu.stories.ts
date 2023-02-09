@@ -107,7 +107,7 @@ const storyTemplate = html<MenuStoryArgs>`
         <span slot="start">${ClipboardPaste20Filled}</span>
         Edit
       </fluent-menu-item>
-      <fluent-menu-item class="header"> Group Header </fluent-menu-item>
+      <fluent-menu-item class="header">Group Header</fluent-menu-item>
       <fluent-menu-item>
         Open
         <span slot="start">${FormNew20Filled}</span>

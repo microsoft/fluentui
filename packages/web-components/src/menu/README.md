@@ -2,6 +2,12 @@
 
 A popup or contextual menu displays a list of options on a temporary surface. They are invoked when users interact with a button, action, or other control.
 
+## Remaining work
+
+1. Ensure divider component is styled appropriately in the context of a Menu
+2. Create support for menu item "grouping"
+3. Split button variation
+
 ## Design Spec
 
 [Link to Menu Design Spec in Figma](https://www.figma.com/file/jFWrkFq61GDdOhPlsz6AtX/Menu?node-id=1528%3A5102&t=XtW4laeEzgVFIl1E-0)
@@ -96,3 +102,4 @@ Menu item |`<MenuItem>` | `<fluent-menu-item>` |
 Menu item with radio | `<MenuItemRadio>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Menu item with checkbox | `<MenuItemCheckbox>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Icons | `<MenuItem icon={<MyIcon />}>` | `<slot name ="start">..` <br /> `<slot name="end">..`|
+Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">`|
