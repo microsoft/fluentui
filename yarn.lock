@@ -4796,6 +4796,18 @@
     source-map-support "^0.5.21"
     tslib "^2.4.1"
 
+"@swc/cli@0.1.59":
+  version "0.1.59"
+  resolved "https://registry.yarnpkg.com/@swc/cli/-/cli-0.1.59.tgz#cb0be624f98ca9e41caa2de454d151faec83cd19"
+  integrity sha512-BlX3wIxYTwdtR22dIqZ3FEIOJPqnlByAp4JY46OMZi2UXMB3ZbOzefawD2ZlLafRUWyy5NtiZZty5waKzaYRnA==
+  dependencies:
+    bin-wrapper "^4.1.0"
+    commander "^7.1.0"
+    fast-glob "^3.2.5"
+    semver "^7.3.8"
+    slash "3.0.0"
+    source-map "^0.7.3"
+
 "@swc/core-darwin-arm64@1.3.30":
   version "1.3.30"
   resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.30.tgz#fb9b20a46455f49597e760e4dfe829196e0fe12e"
