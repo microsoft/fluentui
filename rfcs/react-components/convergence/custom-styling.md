@@ -197,6 +197,101 @@ root.render(<App />);
 - Very powerful. Only modifying classes is an implicit agreement but state modification is possible.
 - Callers doing custom styling may still take a dependency on the CSS internals of the component.
 
+## Option A3: Add custom styling hooks at FluentProvider
+
+A blend of using React.Context from A1 and having a tree-shakable hooks object from A2. 
+
+This defines the same hooks object from A2.  I've renamed it to ComponentStyleHooks as it has the same feel as the ComponentStyles in v8 that were attached to v8's Theme.
+
+```tsx
+export type ComponentStyleHooks = {
+  useCustomButtonStyles_unstable: (state: unknown) => void;
+};
+```
+
+As in A2, a default is defined with noop implementation.
+
+```tsx
+export const defaultComponentStyleHooks: ComponentStyleHooks = {
+  useCustomButtonStyles_unstable: () => {}
+};
+```
+
+A context and provider similar to other react-shared-context objects would be defined.
+An additional `componentStyles` param would be added to FluentProvider.
+💡 We can optionally only allow componentStyles to be set at the top-most FluentProvider if we want to avoid confusion with the behavior of nested componentStyles.
+💡 We could also put the componentStyles on the theme object.
+
+```tsx
+export type ComponentStylesContextValue = ComponentStyleHooks;
+
+const ComponentStylesContext = React.createContext<
+  ComponentStylesContextValue | undefined
+>(undefined) as React.Context<ComponentStylesContextValue>;
+
+export const Provider = ComponentStylesContext.Provider;
+
+export function useComponentStyles(): ComponentStylesContextValue {
+  return React.useContext(ComponentStylesContext) ?? defaultComponentStyleHooks;
+}
+```
+
+Like in option A1, components use the context to call the hooks. 
+Because of the default, the call does not have to be conditional.
+
+```tsx
+export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton_unstable(props, ref);
+
+  useButtonStyles_unstable(state);
+
+  const componentStyles = useComponentStyles();
+  componentStyles.useCustomButtonStyles_unstable(state);
+
+  return renderButton_unstable(state);
+}) as ForwardRefComponent<ButtonProps>;
+```
+
+Like option A2, callers can define their custom style hooks object, but rather than replacing a global object,
+they pass it to FluentProvider.
+
+```ts
+export const useFancyButtonStyles = (state: unknown) => {
+  const styles = useStyles();
+
+  const buttonState = state as ButtonState;
+
+  buttonState.root.className = mergeClasses(
+    buttonState.root.className,
+    styles.root,
+    buttonState.size === 'small' && styles.small,
+    buttonState.size === 'medium' && styles.medium,
+    buttonState.size === 'large' && styles.large,
+  );
+};
+```
+
+```tsx
+const customStyles : ComponentStyleHooks = {
+  useCustomButtonStyles_unstable = useFancyButtonStyles;
+}
+
+<App>
+  <FluentProvider theme={webLightTheme} componentStyles={customStyles}>
+      <Component>Hello custom styles!</Component>
+  </FluentProvider>
+</App>
+```
+
+### 👍
+
+- Same benefits of leveraging Griffle and slots. Additionally, leverage FluentProvider.
+- Same benefit of a tree-shakable set of hooks from A2.
+- Same benefit of minimal code and type introduction from A2.
+
+### 👎
+- Same state:unknown type-safety issue from A2.
+
 ## Option B: Encourage recomposition | make recomposition easier
 
 The hooks composition model was architected to separate concerns of component behavior, style, and rendering.
