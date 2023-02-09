@@ -1075,7 +1075,7 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
                     root: ['../../../'],
                     alias: {
                       '@fluentui/tokens': 'packages/tokens/lib/index.js',
-                      '^@fluentui/(.+)': 'packages/react-components/\\1/lib/index.js',
+                      '^@fluentui/(?!react-icons)(.+)': 'packages/react-components/\\1/lib/index.js',
                     },
                   },
                 ],
