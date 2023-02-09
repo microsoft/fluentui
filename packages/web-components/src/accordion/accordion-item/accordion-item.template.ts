@@ -33,6 +33,6 @@ const chevronDown20Filled = html.partial(`<svg
  * @public
  */
 export const template: ElementViewTemplate<AccordionItem> = accordionItemTemplate({
-  collapsedIcon: html`${chevronRight20Filled}`,
-  expandedIcon: html`${chevronDown20Filled}`,
+  collapsedIcon: chevronRight20Filled,
+  expandedIcon: chevronDown20Filled,
 });
