@@ -1,11 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
+const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
 const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
 const semver = require('semver');
-const { babelPlugin } = require('storybook-addon-export-to-codesandbox');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+
+console.log(babelPlugin);
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
