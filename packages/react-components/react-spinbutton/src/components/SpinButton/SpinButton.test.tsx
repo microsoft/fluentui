@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { SpinButton } from './SpinButton';
 import { isConformant } from '../../testing/isConformant';
-import * as Keys from '@fluentui/keyboard-keys';
+import { ArrowUp, ArrowDown, End, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 
 const getSpinButtonInput = (): HTMLInputElement => {
   return screen.getByRole('spinbutton') as HTMLInputElement;
@@ -206,6 +206,80 @@ describe('SpinButton', () => {
       userEvent.click(decrementButton);
       expect(onChange.mock.calls[1][1]).toEqual({ value: 0, displayValue: undefined });
     });
+
+    it('sets the value to min when "Home" is pressed when uncontrolled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton defaultValue={5} min={0} max={10} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      fireEvent.keyDown(spinButton, { key: Home });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 0, displayValue: undefined });
+      expect(spinButton.value).toEqual('0');
+    });
+
+    it('sets the value to min when "Home" is pressed when controlled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton value={5} min={0} max={10} onChange={onChange} />);
+
+      fireEvent.keyDown(getSpinButtonInput(), { key: Home });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 0, displayValue: undefined });
+    });
+
+    it('does not change the value when "Home" is pressed if no min value is set when uncontrolled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton defaultValue={5} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      fireEvent.keyDown(spinButton, { key: Home });
+      expect(onChange).toHaveBeenCalledTimes(0);
+      expect(spinButton.value).toEqual('5');
+    });
+
+    it('does not change the value when "Home" is pressed if no min value is set when controlled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton value={5} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      fireEvent.keyDown(spinButton, { key: Home });
+      expect(onChange).toHaveBeenCalledTimes(0);
+    });
+
+    it('sets the value to max when "End" is pressed when uncontrolled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton defaultValue={5} min={0} max={10} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      fireEvent.keyDown(spinButton, { key: End });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 10, displayValue: undefined });
+      expect(spinButton.value).toEqual('10');
+    });
+
+    it('sets the value to max when "End" is pressed when controlled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton value={5} min={0} max={10} onChange={onChange} />);
+
+      fireEvent.keyDown(getSpinButtonInput(), { key: End });
+      expect(onChange.mock.calls[0][1]).toEqual({ value: 10, displayValue: undefined });
+    });
+
+    it('does not change the value when "End" is pressed if no max value is set when uncontrolled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton defaultValue={5} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      fireEvent.keyDown(spinButton, { key: End });
+      expect(onChange).toHaveBeenCalledTimes(0);
+      expect(spinButton.value).toEqual('5');
+    });
+
+    it('does not change the value when "End" is pressed if no max value is set when controlled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton value={5} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      fireEvent.keyDown(spinButton, { key: End });
+      expect(onChange).toHaveBeenCalledTimes(0);
+    });
   });
 
   describe('value updates', () => {
@@ -304,12 +378,12 @@ describe('SpinButton', () => {
       render(<SpinButton defaultValue={2} onChange={onChange} />);
 
       const spinButton = getSpinButtonInput();
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 3, displayValue: undefined });
       expect(spinButton.value).toEqual('3');
 
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+      fireEvent.keyDown(spinButton, { key: ArrowDown });
 
       expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
       expect(spinButton.value).toEqual('2');
@@ -322,12 +396,12 @@ describe('SpinButton', () => {
       const { rerender } = render(<SpinButton value={2} onChange={onChange} />);
 
       const spinButton = getSpinButtonInput();
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 3, displayValue: undefined });
 
       rerender(<SpinButton value={3} onChange={onChange} />);
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+      fireEvent.keyDown(spinButton, { key: ArrowDown });
 
       expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
 
@@ -339,12 +413,12 @@ describe('SpinButton', () => {
       render(<SpinButton defaultValue={2} stepPage={10} onChange={onChange} />);
 
       const spinButton = getSpinButtonInput();
-      fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+      fireEvent.keyDown(spinButton, { key: PageUp });
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 12, displayValue: undefined });
       expect(spinButton.value).toEqual('12');
 
-      fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+      fireEvent.keyDown(spinButton, { key: PageDown });
 
       expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
       expect(spinButton.value).toEqual('2');
@@ -357,12 +431,12 @@ describe('SpinButton', () => {
       const { rerender } = render(<SpinButton value={2} stepPage={10} onChange={onChange} />);
 
       const spinButton = getSpinButtonInput();
-      fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+      fireEvent.keyDown(spinButton, { key: PageUp });
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 12, displayValue: undefined });
 
       rerender(<SpinButton value={12} step={2} stepPage={10} onChange={onChange} />);
-      fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+      fireEvent.keyDown(spinButton, { key: PageDown });
 
       expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
 
@@ -382,9 +456,9 @@ describe('SpinButton', () => {
       userEvent.click(decrementButton);
       // Already at min bound, no change
       expect(onChange).not.toHaveBeenCalled();
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+      fireEvent.keyDown(spinButton, { key: ArrowDown });
       expect(onChange).not.toHaveBeenCalled();
-      fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+      fireEvent.keyDown(spinButton, { key: PageDown });
       expect(onChange).not.toHaveBeenCalled();
 
       userEvent.click(incrementButton);
@@ -394,9 +468,9 @@ describe('SpinButton', () => {
       userEvent.click(incrementButton);
       // At max bound, no change
       expect(onChange).toHaveBeenCalledTimes(1);
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
       expect(onChange).toHaveBeenCalledTimes(1);
-      fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+      fireEvent.keyDown(spinButton, { key: PageUp });
       expect(onChange).toHaveBeenCalledTimes(1);
     });
 
@@ -411,9 +485,9 @@ describe('SpinButton', () => {
       userEvent.click(decrementButton);
       // Already at min bound, no change
       expect(onChange).not.toHaveBeenCalled();
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+      fireEvent.keyDown(spinButton, { key: ArrowDown });
       expect(onChange).not.toHaveBeenCalled();
-      fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+      fireEvent.keyDown(spinButton, { key: PageDown });
       expect(onChange).not.toHaveBeenCalled();
 
       rerender(<SpinButton value={1} min={0} max={1} onChange={onChange} />);
@@ -421,9 +495,9 @@ describe('SpinButton', () => {
       userEvent.click(incrementButton);
       // Already at maz bound, no change
       expect(onChange).not.toHaveBeenCalled();
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
       expect(onChange).not.toHaveBeenCalled();
-      fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+      fireEvent.keyDown(spinButton, { key: PageUp });
       expect(onChange).not.toHaveBeenCalled();
     });
 
@@ -638,7 +712,7 @@ describe('SpinButton', () => {
 
       expect(spinButton.value).toEqual('123');
 
-      fireEvent.keyDown(spinButton, { key: Keys.Escape });
+      fireEvent.keyDown(spinButton, { key: Escape });
 
       expect(spinButton.value).toEqual('1');
       expect(onChange).not.toHaveBeenCalled();
@@ -657,12 +731,12 @@ describe('SpinButton', () => {
       userEvent.type(spinButton, '23');
       expect(spinButton.value).toEqual('123');
 
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
       expect(spinButton.value).toEqual('124');
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 124, displayValue: undefined });
 
-      fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+      fireEvent.keyDown(spinButton, { key: PageUp });
       expect(spinButton.value).toEqual('126');
 
       expect(onChange.mock.calls[1][1]).toEqual({ value: 126, displayValue: undefined });
@@ -676,13 +750,13 @@ describe('SpinButton', () => {
       userEvent.type(spinButton, '23');
       expect(spinButton.value).toEqual('123');
 
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+      fireEvent.keyDown(spinButton, { key: ArrowDown });
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 122, displayValue: undefined });
 
       rerender(<SpinButton value={122} stepPage={2} onChange={onChange} />);
 
-      fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+      fireEvent.keyDown(spinButton, { key: PageDown });
 
       expect(onChange.mock.calls[1][1]).toEqual({ value: 120, displayValue: undefined });
     });
@@ -695,7 +769,7 @@ describe('SpinButton', () => {
       userEvent.type(spinButton, '{backspace}kittens');
       expect(spinButton.value).toEqual('kittens');
 
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
       expect(spinButton.value).toEqual('2');
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 2, displayValue: undefined });
@@ -709,7 +783,7 @@ describe('SpinButton', () => {
       userEvent.type(spinButton, '{backspace}kittens');
       expect(spinButton.value).toEqual('kittens');
 
-      fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+      fireEvent.keyDown(spinButton, { key: ArrowUp });
 
       expect(onChange.mock.calls[0][1]).toEqual({ value: 2, displayValue: undefined });
     });
