@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';
-import { focusAsync, getWindow } from '@fluentui/utilities';
 import { mergeClasses } from '@griffel/react';
 import {
   addMonths,
@@ -11,6 +10,8 @@ import {
   FirstWeekOfYear,
   DEFAULT_CALENDAR_STRINGS,
   DEFAULT_DATE_FORMATTING,
+  getWindow,
+  focusAsync,
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
@@ -85,7 +86,7 @@ function useVisibilityState({
       : isMonthPickerVisibleProp,
   });
   /** State used to show/hide day picker */
-  const [isDayPickerVisible = true, setIsDayPickerVisible] = useControllableState({
+  const [isDayPickerVisible, setIsDayPickerVisible] = useControllableState({
     defaultState: true,
     initialState: true,
     state: getShowMonthPickerAsOverlay({ isDayPickerVisible: isDayPickerVisibleProp, showMonthPickerAsOverlay })
