@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Fix svg size in donut chart",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
