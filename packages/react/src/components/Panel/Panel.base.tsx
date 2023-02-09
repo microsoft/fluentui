@@ -88,8 +88,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     const { allowTouchBodyScroll = false } = this.props;
     this._allowTouchBodyScroll = allowTouchBodyScroll;
 
-    this._async = new Async(this);
-    this._events = new EventGroup(this);
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
@@ -107,8 +105,10 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   }
 
   public componentDidMount(): void {
-    this._events.on(window, 'resize', this._updateFooterPosition);
     this._async = new Async(this);
+    this._events = new EventGroup(this);
+
+    this._events.on(window, 'resize', this._updateFooterPosition);
 
     if (this._shouldListenForOuterClick(this.props)) {
       this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
@@ -398,6 +398,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   private _updateFooterPosition(): void {
+    console.log('update');
     const scrollableContent = this._scrollableContent;
     if (scrollableContent) {
       const height = scrollableContent.clientHeight;
