@@ -27,12 +27,12 @@ The existing components are:
 Basic example:
 
 ```jsx
-import { Skeleton, SkeletonLine } from '@fluentui/react-skeleton';
+import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
 
 function App() {
   return (
     <Skeleton>
-      <SkeletonLine />
+      <SkeletonItem />
     </Skeleton>
   );
 }
@@ -40,9 +40,10 @@ function App() {
 
 ## Variants
 
-- There are two basic `Skeleton` shapes
-  - `Line`
+- There are three basic `Skeleton` shapes
+  - `Rectangle`
   - `Circle`
+  - `Square`
 
 ### Shape
 
@@ -52,7 +53,7 @@ The `Skeleton` is a combination of any of the two shapes in order to represent t
 
 ### Slots
 
-- `root` - The root slot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton` and any data that the `Skeleton` will load. The default html element is a `div`.
+- `root` - The root slot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton` and any data that the `Skeleton` will load. The default html element is a `svg`.
 
 ### Props
 
@@ -64,7 +65,7 @@ See API at [Skeleton.types.tsx]().
 <!-- Container for Skeleton -->
 <div class="fui-Skeleton">
   <!-- Container for SkeletonElement -->
-  <div class="fui-Skeleton-Line" />
+  <div class="fui-SkeletonItem" />
 </div>
 ```
 
@@ -78,9 +79,11 @@ See [MIGRATION.md](./MIGRATION.md).
 
 - **Display** - The `Skeleton` will use the following priority:
 
-  - Specifying the `appearance` prop will allow the use of a `materialos` based appearance.
+  - The `appearance` prop will allow the use of a `translucent` appearance.
   - Specifying `wave` or `pulse` will change the animation style of the `Skeleton`
   - The component also has `rtl` support and will animate the `Skeleton` from right to left if set.
+  - Setting the `shape` prop in `<SkeletonItem />` will render a `rectangle`, `square`, or a `circle`.
+  - Setting the `size` prop in `<SkeletonItem />` will allow the user to specify the size of the element.
 
 ### Interaction
 
