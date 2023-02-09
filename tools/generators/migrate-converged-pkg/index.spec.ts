@@ -1139,7 +1139,27 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        presets: [
+          [
+            '@griffel',
+            {
+              babelOptions: {
+                plugins: [
+                  [
+                    'babel-plugin-module-resolver',
+                    {
+                      root: ['../../../'],
+                      alias: {
+                        '@fluentui/tokens': 'packages/tokens/lib/index.js',
+                        '^@fluentui/(.+)': 'packages/react-components/\\1/lib/index.js',
+                      },
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+        ],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1149,7 +1169,27 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        presets: [
+          [
+            '@griffel',
+            {
+              babelOptions: {
+                plugins: [
+                  [
+                    'babel-plugin-module-resolver',
+                    {
+                      root: ['../../../'],
+                      alias: {
+                        '@fluentui/tokens': 'packages/tokens/lib/index.js',
+                        '^@fluentui/(.+)': 'packages/react-components/\\1/lib/index.js',
+                      },
+                    },
+                  ],
+                ],
+              },
+            },
+          ],
+        ],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
     });
