@@ -6,11 +6,11 @@ type TouchOrMouseEvent = MouseEvent | TouchEvent;
 type ReactTouchOrMouseEvent = React.MouseEvent | React.TouchEvent;
 
 function isTouchEvent(event: TouchOrMouseEvent | ReactTouchOrMouseEvent): event is TouchEvent {
-  return 'touches' in event;
+  return ['touchstart', 'touchmove', 'touchend'].includes(event.type);
 }
 
 function isMouseEvent(event: TouchOrMouseEvent | ReactTouchOrMouseEvent): event is MouseEvent {
-  return 'clientX' in event;
+  return ['mousedown', 'mousemove', 'mouseup'].includes(event.type);
 }
 
 function getEventClientX(event: TouchOrMouseEvent | ReactTouchOrMouseEvent): number {
