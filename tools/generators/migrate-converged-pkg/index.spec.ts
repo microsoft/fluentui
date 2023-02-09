@@ -840,6 +840,21 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.typings).toEqual('./dist/index.d.ts');
     });
 
+    it(`should update dependencies`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).not.toBeDefined();
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).not.toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).toBeDefined();
+    });
+
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       const pkgJsonPath = `${projectConfig.root}/package.json`;
@@ -876,7 +891,7 @@ describe('migrate-converged-pkg generator', () => {
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.scripts).toEqual({
-        'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+        'generate-api': 'just-scripts generate-api',
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
