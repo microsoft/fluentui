@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { ThemeProvider, DefaultButton, PartialTheme, getTheme, initializeIcons } from '@fluentui/react';
+import { ThemeProvider, DefaultButton, PartialTheme, getTheme } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
-// import { ContextualMenuExample } from './components';
-import { PanelBasicExample } from './components/Panel.Basic.Example';
+import { ContextualMenuExample } from './components';
 
-initializeIcons();
 // This app is here as a simple sandbox to render v8 controls inside of an React 18 environment.
 
 export const App = () => {
@@ -38,7 +36,8 @@ export const App = () => {
 
   return (
     <ThemeProvider style={{ padding: '8px' }} theme={isLight ? lightTheme : darkTheme}>
-      <PanelBasicExample />
+      <ToggleButton />
+      <ContextualMenuExample />
     </ThemeProvider>
   );
 };
