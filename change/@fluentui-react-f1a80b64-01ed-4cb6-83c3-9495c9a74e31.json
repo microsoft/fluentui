@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(SplitButton): No pointer events on focus ring",
-  "packageName": "@fluentui/react",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

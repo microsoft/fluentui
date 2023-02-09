@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-theme_v9.1.5",
+      "version": "9.1.5",
+      "comments": {
+        "none": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7e7f876324b0a1512c3163939180b875d69bd3bb",
+            "comment": "docs: recreate documentation for typography page"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:50 GMT",
       "tag": "@fluentui/react-theme_v9.1.5",
       "version": "9.1.5",

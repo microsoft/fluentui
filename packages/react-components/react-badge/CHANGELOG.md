@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 26 Jan 2023 13:31:03 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.23)
+
+Tue, 07 Feb 2023 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.22..@fluentui/react-badge_v9.0.23)
+
+### Patches
+
+- fix: Using correct icon and color for away + out-of-office PresenceBadge. ([PR #26655](https://github.com/microsoft/fluentui/pull/26655) by makotom@microsoft.com)
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.22)
+
+Tue, 31 Jan 2023 19:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.21..@fluentui/react-badge_v9.0.22)
+
+### Patches
+
+- chore: Updates border-radius to use proper token ([PR #26531](https://github.com/microsoft/fluentui/pull/26531) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
 
 ## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.21)
 

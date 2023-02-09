@@ -342,6 +342,12 @@
   overflow: hidden;
 }
 
+#docs-root .os-content .prismjs * {
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
 #docs-root .sbdocs-preview .prismjs code {
   color: white;
   background: #11100f;

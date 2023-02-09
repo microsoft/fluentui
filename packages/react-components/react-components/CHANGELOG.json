@@ -2,6 +2,258 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 07 Feb 2023 14:13:04 GMT",
+      "tag": "@fluentui/react-components_v9.14.0",
+      "version": "9.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7c106679b0d571df8085e607931fb55c288d24de",
+            "comment": "chore: export SlotRenderFunction type"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c625afa508c0dead93ea2d3cb698b41dc67ec187",
+            "comment": "Added export of column sizing"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66",
+            "comment": "feat: add `unstable_hasDefault` option in `useArrowNavigationGroup` that specifies the arrow navigation group has default focusable item"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "7b7f2cc005b44155e78b9aad071085e1f8db7030",
+            "comment": "feat: Bump keyborg to 2.0.0 and tabster to 4.0.1"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "22ecddb787ec8626605eb9cd79d8905d93ed179f",
+            "comment": "fix: update Combobox and Dropdown to never use the Option value string as a display value; input value must be set if selectedOptions or defaultSelectOptions is set\""
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0b35790d67cad33bd1d52d2418fcca6ef8b4a710",
+            "comment": "feat: exports `useDataGridContextValues_unstable`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "db4be59f6c1677bd9182205dabfcb3e2bb47837f",
+            "comment": "fix(createPositionManager): computePosition should not apply styles after destruction"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "7274228423cc06749b72ab6a8a112db6f18f5378",
+            "comment": "fix: New overflow items all always dispatch updates to subscriber"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "fe583c0be359e23a4ae6c4f1ab69d359800393e5",
+            "comment": "fix: Using correct icon and color for away + out-of-office PresenceBadge."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d75055c94921130a2433ea62f0002f560ef7e610",
+            "comment": "fix: add forced-colors primary button variant"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "787d758ce8a3cf9eef16692969877163af8538f9",
+            "comment": "feat: Initial release react-data-grid-react-window"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746",
+            "comment": "chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "34514e3502e2830d81f9de25956be8b624cd3c20",
+            "comment": "chore: Making the content focusable and updating example's text."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0b35790d67cad33bd1d52d2418fcca6ef8b4a710",
+            "comment": "feat: exports `useDataGridContextValues_unstable`"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c625afa508c0dead93ea2d3cb698b41dc67ec187",
+            "comment": "Add support for column resizing"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "24ed48c6ff8d0340314931cfecd74e3265b47148",
+            "comment": "docs: improve API documentation of card props"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "7274228423cc06749b72ab6a8a112db6f18f5378",
+            "comment": "Export useOverflowContext as @internal for testing purposes"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "7d266a45afded6a702ac86d5cf0722745b882266",
+            "comment": "Updated the story description"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "0cbf85cf12a08ff04ac1807a49ca469f92330211",
+            "comment": "docs: improve a11y of card storybook examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Jan 2023 19:53:53 GMT",
+      "tag": "@fluentui/react-components_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4e058ce9ac62585e7062b8badfa85f74ebe51f84",
+            "comment": "chore: Updates border-radius to use proper token"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b9284238a8b79e3d0864ce26a8bb0e9ffb33a96a",
+            "comment": "fix: Fixing button padding + minHeight to get correct sizes from design spec."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "a864688a78bff922b8ba9accf77f69af41a58633",
+            "comment": "feat: release Combobox and Dropdown as stable components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "798f50ff4f51e005f89157e1d57b66f343198c71",
+            "comment": "feat: re-export useFocusWithin() hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b58cd1ad53018e1a1971d10f05dd1d545cb52753",
+            "comment": "chore: properly use tokens for border radius"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89",
+            "comment": "fix: Reduce spacing between first and second line."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "fc896528cd40ac5e32c0fb125fb00c502a471cab",
+            "comment": "fix: Make before and after textPositions align correctly when the Avatar size is larger than the text lines together."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "22477ef4202cd24add6ebf823196b5888c9d8083",
+            "comment": "feat: release `@fluentui/react-select` as stable"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "12ec691720e2394ef61bd1936d911a4245f6e0cd",
+            "comment": "fix: update definitions for SSRProvider"
+          }
+        ],
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "a864688a78bff922b8ba9accf77f69af41a58633",
+            "comment": "feat: release Combobox and Dropdown as stable components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "7e7f876324b0a1512c3163939180b875d69bd3bb",
+            "comment": "feat: expose all typography tokens as components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8b78517786e11cd28232851d4704598443cefd64",
+            "comment": "chore: Added context exports for react-tabs"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "22477ef4202cd24add6ebf823196b5888c9d8083",
+            "comment": "feat: release `@fluentui/react-select` as stable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "8b78517786e11cd28232851d4704598443cefd64",
+            "comment": "chore: Added context exports"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "7e7f876324b0a1512c3163939180b875d69bd3bb",
+            "comment": "feat: expose all typography tokens as components"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "d59cee0443fc357a3033d0e71e23659a2ce2d57d",
+            "comment": "chore: Change the default value of validationState to error when a validationMessage is set."
+          }
+        ],
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "a864688a78bff922b8ba9accf77f69af41a58633",
+            "comment": "chore: import Dropdown and Option from react-components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7e7f876324b0a1512c3163939180b875d69bd3bb",
+            "comment": "docs: recreate documentation for typography page"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:30:51 GMT",
       "tag": "@fluentui/react-components_v9.12.0",
       "version": "9.12.0",

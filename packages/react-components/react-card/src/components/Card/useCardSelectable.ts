@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Enter, Space } from '@fluentui/keyboard-keys';
 import { mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { Enter } from '@fluentui/keyboard-keys';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots } from './Card.types';
@@ -68,7 +68,7 @@ export const useCardSelectable = (
 
   const onKeyDownHandler = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      if ([Enter, Space].includes(event.key)) {
+      if ([Enter].includes(event.key)) {
         event.preventDefault();
         onChangeHandler(event);
       }
@@ -77,7 +77,7 @@ export const useCardSelectable = (
   );
 
   const checkboxSlot = React.useMemo(() => {
-    if (!isSelectable || !!floatingAction) {
+    if (!isSelectable || floatingAction) {
       return;
     }
 
@@ -100,7 +100,19 @@ export const useCardSelectable = (
         ...selectableCheckboxProps,
       },
     });
-  }, [isSelectable, floatingAction, referenceId, referenceLabel, checkbox, isCardSelected, onChangeHandler]);
+  }, [checkbox, floatingAction, isCardSelected, isSelectable, onChangeHandler, referenceId, referenceLabel]);
+
+  const floatingActionSlot = React.useMemo(() => {
+    if (!floatingAction) {
+      return;
+    }
+
+    return resolveShorthand(floatingAction, {
+      defaultProps: {
+        ref: checkboxRef,
+      },
+    });
+  }, [floatingAction]);
 
   const selectableCardProps = React.useMemo(() => {
     if (!isSelectable) {
@@ -125,5 +137,6 @@ export const useCardSelectable = (
     selectFocused: isSelectFocused,
     selectableCardProps,
     checkboxSlot,
+    floatingActionSlot,
   };
 };

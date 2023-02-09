@@ -2,6 +2,33 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Tue, 31 Jan 2023 19:53:57 GMT",
+      "tag": "@fluentui/react-select_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "22477ef4202cd24add6ebf823196b5888c9d8083",
+            "comment": "feat: release `@fluentui/react-select` as stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.18",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:30:59 GMT",
       "tag": "@fluentui/react-select_v9.0.0-beta.24",
       "version": "9.0.0-beta.24",
