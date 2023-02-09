@@ -47,7 +47,7 @@ export const styles = css`
     grid-template-columns: 28px 28px auto 28px;
   }
 
-  .heading .heading-content {
+  .heading-content {
     height: 100%;
     display: flex;
     align-items: center;
@@ -96,17 +96,6 @@ export const styles = css`
     display: none;
     margin-left: ${spacingHorizontalM};
     margin-right: ${spacingHorizontalM};
-  }
-
-  .heading ::slotted(*) {
-    display: flex;
-    align-self: center;
-  }
-
-  slot[name='collapsed-icon'],
-  slot[name='expanded-icon'] {
-    display: flex;
-    align-items: center;
   }
 
   slot[name='expanded-icon'] {
