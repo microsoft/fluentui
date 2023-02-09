@@ -471,11 +471,22 @@ vs
 .foo:enabled:not(:checked):not(:indeterminate)' > svg
 ```
 
+Composition approach would be difficult to adjust at runtime because css vars are already set on the root, and new styles would either need to replace the old one, be more specific, or not use makeResetStyles so user could override individual css vars
+
+
 ### 👍
+
+- Provides increased control of individual aspects of components similar to v8
+- Extends theming without introducing unused CSS vars
+- A less fragile API that the raw CSS customization through className
 
 ### 👎
 
-Composition approach would be difficult to adjust at runtime because css vars are already set on the root, and new styles would either need to replace the old one, be more specific, or not use makeResetStyles so user could override individual css vars
+- May break Griffel optimization as each var() with default would be a unique style.
+- Adopters providing customization of all components would likely introduce many component vars that would hurt performance.
+- Introduces complexity at every token usage for the component author and for debugging style issues.
+- Does not provide full control over the CSS, adopters still limited to a specific set of tokens.
+
 
 ## Decision making
 
