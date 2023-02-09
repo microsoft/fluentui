@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing wrong value on link hover",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
