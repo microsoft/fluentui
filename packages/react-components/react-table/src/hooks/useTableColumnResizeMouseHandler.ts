@@ -2,6 +2,27 @@ import * as React from 'react';
 import { TableColumnId, ColumnResizeState } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
+type TouchOrMouseEvent = MouseEvent | TouchEvent;
+type ReactTouchOrMouseEvent = React.MouseEvent | React.TouchEvent;
+
+function isTouchEvent(event: TouchOrMouseEvent | ReactTouchOrMouseEvent): event is TouchEvent {
+  return 'touches' in event;
+}
+
+function isMouseEvent(event: TouchOrMouseEvent | ReactTouchOrMouseEvent): event is MouseEvent {
+  return 'clientX' in event;
+}
+
+function getEventClientX(event: TouchOrMouseEvent | ReactTouchOrMouseEvent): number {
+  if (isMouseEvent(event)) {
+    return event.clientX;
+  } else if (isTouchEvent(event)) {
+    return event.touches[0].clientX;
+  } else {
+    throw new Error('Unable to get clientX. Unknown event type.');
+  }
+}
+
 export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
   const mouseX = React.useRef(0);
   const currentWidth = React.useRef(0);
@@ -10,51 +31,64 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const { targetDocument } = useFluent();
   const globalWin = targetDocument?.defaultView;
 
-  const handleMouseMove = React.useCallback(
-    (e: MouseEvent) => {
-      const dx = e.clientX - mouseX.current;
+  const recalculatePosition = React.useCallback(
+    (e: TouchOrMouseEvent) => {
+      const dx = getEventClientX(e) - mouseX.current;
 
       // Update the local width for the column and set it
       currentWidth.current += dx;
       colId.current && columnResizeState.setColumnWidth(e, { columnId: colId.current, width: currentWidth.current });
-      mouseX.current = e.clientX;
+      mouseX.current = getEventClientX(e);
     },
     [columnResizeState],
   );
 
-  const onMouseMove = React.useCallback(
-    (e: MouseEvent) => {
+  const onDrag = React.useCallback(
+    (e: TouchOrMouseEvent) => {
       // Using requestAnimationFrame here drastically improves resizing experience on slower CPUs
       if (typeof globalWin?.requestAnimationFrame === 'function') {
-        requestAnimationFrame(() => handleMouseMove(e));
+        requestAnimationFrame(() => recalculatePosition(e));
       } else {
-        handleMouseMove(e);
+        recalculatePosition(e);
       }
     },
-    [globalWin?.requestAnimationFrame, handleMouseMove],
+    [globalWin?.requestAnimationFrame, recalculatePosition],
   );
 
-  const onMouseUp = React.useCallback(
-    (e: MouseEvent) => {
-      targetDocument?.removeEventListener('mouseup', onMouseUp);
-      targetDocument?.removeEventListener('mousemove', onMouseMove);
+  const onDragEnd = React.useCallback(
+    (event: TouchOrMouseEvent) => {
+      if (isMouseEvent(event)) {
+        targetDocument?.removeEventListener('mouseup', onDragEnd);
+        targetDocument?.removeEventListener('mousemove', onDrag);
+      }
+      if (isTouchEvent(event)) {
+        targetDocument?.removeEventListener('touchend', onDragEnd);
+        targetDocument?.removeEventListener('touchmove', onDrag);
+      }
     },
-    [onMouseMove, targetDocument],
+    [onDrag, targetDocument],
   );
 
-  const getOnMouseDown = (columnId: TableColumnId) => (mouseDownEvent: React.MouseEvent<HTMLElement>) => {
-    // ignore other buttons than primary mouse button
-    if (mouseDownEvent.target !== mouseDownEvent.currentTarget || mouseDownEvent.button !== 0) {
-      return;
-    }
+  const getOnMouseDown = (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => {
     // Keep the width locally so that we decouple the calculation of the next with from rendering.
     // This makes the whole experience much faster and more precise
     currentWidth.current = columnResizeState.getColumnWidth(columnId);
-    mouseX.current = mouseDownEvent.clientX;
+    mouseX.current = getEventClientX(event);
     colId.current = columnId;
 
-    targetDocument?.addEventListener('mouseup', onMouseUp);
-    targetDocument?.addEventListener('mousemove', onMouseMove);
+    if (isMouseEvent(event)) {
+      // ignore other buttons than primary mouse button
+      if (event.target !== event.currentTarget || event.button !== 0) {
+        return;
+      }
+      targetDocument?.addEventListener('mouseup', onDragEnd);
+      targetDocument?.addEventListener('mousemove', onDrag);
+    }
+
+    if (isTouchEvent(event)) {
+      targetDocument?.addEventListener('touchend', onDragEnd);
+      targetDocument?.addEventListener('touchmove', onDrag);
+    }
   };
 
   return {

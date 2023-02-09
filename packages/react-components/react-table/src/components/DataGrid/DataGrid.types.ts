@@ -8,7 +8,7 @@ import type {
   UseTableSelectionOptions,
   OnSelectionChangeData,
   TableColumnSizingOptions,
-  TableColumnId,
+  UseTableColumnSizingParams,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
 
@@ -76,7 +76,7 @@ export type DataGridProps = TableProps &
     /**
      * A callback triggered when a column is resized.
      */
-    onColumnResize?: (event: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+    onColumnResize?: UseTableColumnSizingParams['onColumnResize'];
   };
 
 /**
