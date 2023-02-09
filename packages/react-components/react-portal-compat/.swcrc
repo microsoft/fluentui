@@ -25,7 +25,7 @@
       "decorators": false,
       "dynamicImport": false
     },
-    "target": "es2019",
+    "target": "es5",
     "externalHelpers": true
   },
   "minify": false,
