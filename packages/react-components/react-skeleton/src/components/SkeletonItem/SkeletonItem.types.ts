@@ -20,7 +20,7 @@ export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
    * to override the rendered size.
    *
    * For example, to set the SkeletonItem to 45px in size:
-   * `<SkeletonItem size={40} style={{ width: '45px', height: '45px' }} />
+   * <SkeletonItem size={40} style={{ width: '45px', height: '45px' }} />
    * @defaultValue 16
    */
   size?: SkeletonItemSize;
