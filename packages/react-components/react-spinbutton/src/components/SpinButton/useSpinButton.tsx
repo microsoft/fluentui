@@ -143,7 +143,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!internalState.current.previousTextValue) {
-      internalState.current.previousTextValue = textValue;
+      internalState.current.previousTextValue = textValue ?? String(currentValue);
     }
     const newValue = e.target.value;
     setTextValue(newValue);
