@@ -23528,10 +23528,10 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.3.tgz#ef92a594e2109c80f9ac074e5f3bfbf96c463ceb"
-  integrity sha512-6KLD1mfZwDTO23JvnxpCUYHJSgvSLVbXS4KTAal9tBMoU59/+5ESd239ddX6PMB+/mzgh5v7+FTtVHqAslkubQ==
+storybook-addon-export-to-codesandbox@0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.4.tgz#7bbbcd88e2776d261f0f6c6322847371a3015139"
+  integrity sha512-l2kRp3ro0j0SAMN/vZWPFXcpJx+FsFtGw87ixG7uf2d0Vig/IrWYZo9oROF10FOhOgCYmrV1XxCU3jujCg9jvw==
   dependencies:
     codesandbox-import-utils "^2.2.3"
     pkg-up "^3.1.0"
