@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Table - add support for resizing columns with touch",
+  "packageName": "@fluentui/react-table",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
