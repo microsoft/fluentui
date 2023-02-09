@@ -720,6 +720,29 @@ describe('SpinButton', () => {
       spinButton.blur();
       expect(onChange).not.toHaveBeenCalled();
     });
+
+    it('updates value when typing a single digit when uncontrolled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton defaultValue={10} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      spinButton.setSelectionRange(0, spinButton.value.length);
+      userEvent.type(spinButton, '2{enter}');
+      expect(spinButton.value).toEqual('2');
+
+      expect(onChange.mock.calls[0][1]).toEqual({ value: undefined, displayValue: '2' });
+    });
+
+    it('updates value when typing a single digit when controlled', () => {
+      const onChange = jest.fn();
+      render(<SpinButton value={10} onChange={onChange} />);
+
+      const spinButton = getSpinButtonInput();
+      spinButton.setSelectionRange(0, spinButton.value.length);
+      userEvent.type(spinButton, '2{enter}');
+
+      expect(onChange.mock.calls[0][1]).toEqual({ value: undefined, displayValue: '2' });
+    });
   });
 
   describe('text input with step', () => {
