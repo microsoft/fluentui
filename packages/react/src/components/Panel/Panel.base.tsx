@@ -108,6 +108,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
   public componentDidMount(): void {
     this._events.on(window, 'resize', this._updateFooterPosition);
+    this._async = new Async(this);
 
     if (this._shouldListenForOuterClick(this.props)) {
       this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
@@ -426,15 +427,15 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       this.props.onOpen();
     }
 
-    this._animationCallback = (setTimeout(() => {
+    this._animationCallback = this._async.setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
       this._onTransitionComplete(newVisibilityState);
-    }, 1200) as unknown) as number;
+    }, 200);
   };
 
   private _clearExistingAnimationTimer = (): void => {
     if (this._animationCallback !== null) {
-      clearTimeout(this._animationCallback);
+      this._async.clearTimeout(this._animationCallback);
     }
   };
 
