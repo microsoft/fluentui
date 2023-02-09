@@ -1,7 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../__test__/helpers.js';
-import { AccordionItemExpandIconPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
 import './define';
 import '../accordion-item/define';
@@ -48,7 +47,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     >
       <span slot="collapsed-icon">${add20Filled}</span>
       <span slot="expanded-icon">${subtract20Filled}</span>
-      <span slot="heading">Accordion Header 1</span>
+      <span slot="heading">Accordion Header 2</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item
@@ -60,7 +59,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     >
       <span slot="collapsed-icon">${add20Filled}</span>
       <span slot="expanded-icon">${subtract20Filled}</span>
-      <span slot="heading">Accordion Header 1</span>
+      <span slot="heading">Accordion Header 3</span>
       Accordion Panel 1
     </fluent-accordion-item>
   </fluent-accordion>
@@ -68,68 +67,6 @@ const storyTemplate = html<AccordionStoryArgs>`
 
 export default {
   title: 'Components/Accordion/Expand and Collapse Icon',
-  argTypes: {
-    size: {
-      description: 'Sets the size of the Accordion Item header',
-      table: {
-        defaultValue: { summary: 'medium' },
-      },
-      control: {
-        type: 'select',
-        options: Object.values(AccordionItemSize),
-      },
-      defaultValue: 'medium',
-    },
-    expandIconPosition: {
-      description: 'Sets position of expand and collapse icon',
-      table: {
-        defaultValue: { summary: 'start' },
-      },
-      control: {
-        type: 'select',
-        options: Object.values(AccordionItemExpandIconPosition),
-      },
-      defaultValue: 'start',
-    },
-    expandMode: {
-      description: 'Sets whether multiple or a single accordion item can be expanded at one time',
-      table: {
-        defaultValue: { summary: 'multiple' },
-      },
-      control: {
-        type: 'select',
-        options: ['multiple', 'single'],
-      },
-      defaultValue: 'multiple',
-    },
-    block: {
-      description: 'Sets focus state width',
-      table: {
-        defaultValue: { summary: true },
-      },
-      control: 'boolean',
-      defaultValue: true,
-    },
-    disabled: {
-      description: 'Sets disabled state on Accordion Item',
-      table: {
-        defaultValue: { summary: false },
-      },
-      control: 'boolean',
-      defaultValue: false,
-    },
-    headingLevel: {
-      description: 'Sets `aria-level` attribute on Accordion Item heading',
-      table: {
-        defaultValue: { summary: '2' },
-      },
-      control: {
-        type: 'select',
-        options: ['1', '2', '3', '4', '5', '6'],
-      },
-      defaultValue: '2',
-    },
-  },
 } as AccordionStoryMeta;
 
-export const Accordion = renderComponent(storyTemplate).bind({});
+export const AccordionCustomExpandIcon = renderComponent(storyTemplate).bind({});

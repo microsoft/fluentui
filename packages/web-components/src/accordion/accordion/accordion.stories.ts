@@ -3,8 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../__test__/helpers.js';
 import { AccordionItemExpandIconPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
-import './define';
-import '../accordion-item/define';
 
 type AccordionStoryArgs = Args & FluentAccordion;
 type AccordionStoryMeta = Meta<AccordionStoryArgs>;
@@ -29,7 +27,7 @@ const storyTemplate = html<AccordionStoryArgs>`
       disabled=${x => x.disabled}
     >
       <span slot="heading">Accordion Header 1</span>
-      Accordion Panel 1
+      Accordion Panel 2
     </fluent-accordion-item>
     <fluent-accordion-item
       size=${x => x.size}
@@ -39,13 +37,21 @@ const storyTemplate = html<AccordionStoryArgs>`
       disabled=${x => x.disabled}
     >
       <span slot="heading">Accordion Header 1</span>
-      Accordion Panel 1
+      Accordion Panel 3
     </fluent-accordion-item>
   </fluent-accordion>
 `;
 
 export default {
   title: 'Components/Accordion/Default',
+  args: {
+    size: 'medium',
+    expandIconPosition: 'start',
+    expandMode: 'multiple',
+    block: true,
+    disabled: false,
+    headingLevel: '2',
+  },
   argTypes: {
     size: {
       description: 'Sets the size of the Accordion Item header',
