@@ -19,7 +19,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
+    "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
     "start": "yarn storybook"
   },
@@ -39,9 +39,8 @@
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.1",
     "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0",
     "@swc/core": "^1.3.24",
-    "@swc/helpers": "^0.4.11"
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

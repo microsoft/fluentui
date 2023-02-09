@@ -20,7 +20,7 @@
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
     "start": "yarn storybook",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
+    "generate-api": "just-scripts generate-api",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -33,9 +33,8 @@
   "dependencies": {
     "@fluentui/react-utilities": "^9.5.1",
     "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0",
     "@swc/core": "^1.3.24",
-    "@swc/helpers": "^0.4.11"
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
