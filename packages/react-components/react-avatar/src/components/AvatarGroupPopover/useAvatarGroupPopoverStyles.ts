@@ -50,8 +50,6 @@ const useTriggerButtonStyles = makeStyles({
     alignItems: 'center',
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
-    width: '32px',
-    height: '32px',
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),

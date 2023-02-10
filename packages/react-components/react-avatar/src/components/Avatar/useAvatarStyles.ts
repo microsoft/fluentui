@@ -23,15 +23,12 @@ const animations = {
   nullEasing: tokens.curveLinear,
 };
 
-const avatarBorderRadius = '--fui-Avatar__borderRadius';
-
 const useRootClassName = makeResetStyles({
-  [avatarBorderRadius]: tokens.borderRadiusCircular,
   display: 'inline-block',
   flexShrink: 0,
   position: 'relative',
   verticalAlign: 'middle',
-  borderRadius: `var(${avatarBorderRadius})`,
+  borderRadius: tokens.borderRadiusCircular,
   fontFamily: tokens.fontFamilyBase,
   fontWeight: tokens.fontWeightSemibold,
   fontSize: tokens.fontSizeBase300,
@@ -39,14 +36,7 @@ const useRootClassName = makeResetStyles({
   height: '32px',
 });
 
-const useBadgeStyles = makeResetStyles({
-  position: 'absolute',
-  bottom: 0,
-  right: 0,
-  boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralBackground1}`,
-});
-
-const useImageStyles = makeResetStyles({
+const useImageClassName = makeResetStyles({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -58,7 +48,7 @@ const useImageStyles = makeResetStyles({
   verticalAlign: 'top',
 });
 
-const useIconInitialsStyles = makeResetStyles({
+const useIconInitialsClassName = makeResetStyles({
   position: 'absolute',
   boxSizing: 'border-box',
   top: 0,
@@ -85,16 +75,16 @@ const useStyles = makeStyles({
   textTitle3: { fontSize: tokens.fontSizeBase600 },
 
   squareSmall: {
-    [avatarBorderRadius]: tokens.borderRadiusSmall,
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
   },
   squareMedium: {
-    [avatarBorderRadius]: tokens.borderRadiusMedium,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   squareLarge: {
-    [avatarBorderRadius]: tokens.borderRadiusLarge,
+    ...shorthands.borderRadius(tokens.borderRadiusLarge),
   },
   squareXLarge: {
-    [avatarBorderRadius]: tokens.borderRadiusXLarge,
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
   },
 
   activeOrInactive: {
@@ -184,6 +174,13 @@ const useStyles = makeStyles({
     },
   },
 
+  badge: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralBackground1}`,
+  },
+
   badgeLarge: {
     boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground1}`,
   },
@@ -202,8 +199,7 @@ export const useSizeStyles = makeStyles({
   20: { width: '20px', height: '20px' },
   24: { width: '24px', height: '24px' },
   28: { width: '28px', height: '28px' },
-  // 32: { width: '32px', height: '32px' },
-  32: {},
+  32: { width: '32px', height: '32px' },
   36: { width: '36px', height: '36px' },
   40: { width: '40px', height: '40px' },
   48: { width: '48px', height: '48px' },
@@ -382,15 +378,14 @@ const useColorStyles = makeStyles({
 export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, active, activeAppearance, color } = state;
 
-  const rootStyles = useRootStyles();
-  const badgeStyles = useBadgeStyles();
-  const imageStyles = useImageStyles();
-  const iconInitialsStyles = useIconInitialsStyles();
+  const rootClassName = useRootClassName();
+  const imageClassName = useImageClassName();
+  const iconInitialsClassName = useIconInitialsClassName();
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const colorStyles = useColorStyles();
 
-  const rootClasses = [rootStyles, sizeStyles[size], colorStyles[color]];
+  const rootClasses = [rootClassName, size !== 32 && sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2Strong);
@@ -403,7 +398,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   } else if (size <= 96) {
     rootClasses.push(styles.textSubtitle1);
   } else {
-    rootClasses.push(styles.textTitle);
+    rootClasses.push(styles.textTitle3);
   }
 
   if (shape === 'square') {
@@ -456,18 +451,18 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   if (state.badge) {
     state.badge.className = mergeClasses(
       avatarClassNames.badge,
-      badgeStyles,
+      styles.badge,
       size >= 64 && styles.badgeLarge,
       state.badge.className,
     );
   }
 
   if (state.image) {
-    state.image.className = mergeClasses(avatarClassNames.image, imageStyles, state.image.className);
+    state.image.className = mergeClasses(avatarClassNames.image, imageClassName, state.image.className);
   }
 
   if (state.initials) {
-    state.initials.className = mergeClasses(avatarClassNames.initials, iconInitialsStyles, state.initials.className);
+    state.initials.className = mergeClasses(avatarClassNames.initials, iconInitialsClassName, state.initials.className);
   }
 
   if (state.icon) {
@@ -488,7 +483,12 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
       iconSizeClass = styles.icon48;
     }
 
-    state.icon.className = mergeClasses(avatarClassNames.icon, iconInitialsStyles, iconSizeClass, state.icon.className);
+    state.icon.className = mergeClasses(
+      avatarClassNames.icon,
+      iconInitialsClassName,
+      iconSizeClass,
+      state.icon.className,
+    );
   }
 
   return state;
