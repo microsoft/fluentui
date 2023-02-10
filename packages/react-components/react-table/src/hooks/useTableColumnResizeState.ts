@@ -117,19 +117,23 @@ export function useTableColumnResizeState<T>(
     dispatch({ type: 'COLUMN_SIZING_OPTIONS_UPDATED', columnSizingOptions });
   }, [columnSizingOptions]);
 
-  const setColumnWidth = useEventCallback((columnId: TableColumnId, width: number) => {
-    const col = getColumnById(state.columnWidthState, columnId);
-    if (!col) {
-      return;
-    }
+  const setColumnWidth = useEventCallback(
+    (event: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => {
+      let { width } = data;
+      const { columnId } = data;
+      const col = getColumnById(state.columnWidthState, columnId);
+      if (!col) {
+        return;
+      }
 
-    width = Math.max(col.minWidth || 0, width);
+      width = Math.max(col.minWidth || 0, width);
 
-    if (onColumnResize) {
-      onColumnResize(columnId, width);
-    }
-    dispatch({ type: 'SET_COLUMN_WIDTH', columnId, width });
-  });
+      if (onColumnResize) {
+        onColumnResize(event, { columnId, width });
+      }
+      dispatch({ type: 'SET_COLUMN_WIDTH', columnId, width });
+    },
+  );
 
   return {
     getColumnById: (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),

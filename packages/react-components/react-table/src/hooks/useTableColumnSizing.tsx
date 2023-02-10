@@ -46,7 +46,7 @@ function useTableColumnSizingState<TItem>(
   // Gets the container width
   const { width, measureElementRef } = useMeasureElement();
   // Creates the state based on columns and available containerWidth
-  const columnResizeState = useTableColumnResizeState(columns, width, params);
+  const columnResizeState = useTableColumnResizeState(columns, width + (params?.containerWidthOffset || 0), params);
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
 
@@ -56,7 +56,8 @@ function useTableColumnSizingState<TItem>(
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: {
       getOnMouseDown: mouseHandler.getOnMouseDown,
-      setColumnWidth: columnResizeState.setColumnWidth,
+      setColumnWidth: (columnId: TableColumnId, w: number) =>
+        columnResizeState.setColumnWidth(undefined, { columnId, width: w }),
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);

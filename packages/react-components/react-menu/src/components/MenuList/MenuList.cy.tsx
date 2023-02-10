@@ -67,5 +67,19 @@ describe('MenuList', () => {
       mount(<Example />);
       cy.get(menuItemSelector).eq(3).focus().type('{rightarrow}').get(menuSelector).should('have.length', 2);
     });
+
+    it('should be able to tab in/out of the MenuList', () => {
+      mount(
+        <>
+          <button>Foo</button>
+          <Example />
+          <button>Foo</button>
+        </>,
+      );
+
+      cy.get('button').first().focus().realPress('Tab');
+      cy.get(menuItemSelector).first().should('be.focused').realPress('Tab');
+      cy.get('button').eq(1).should('be.focused');
+    });
   });
 });
