@@ -16,7 +16,7 @@ export type MenuTriggerProps = TriggerProps<MenuTriggerChildProps> & {
 export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
   Type,
   Props & {
-    'aria-haspopup': 'menu';
+    'aria-haspopup'?: 'menu';
     'aria-expanded'?: boolean;
     id: string;
     ref: React.Ref<never>;

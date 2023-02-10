@@ -2,6 +2,7 @@ import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
+  useOverrides_unstable as useOverrides,
 } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable as ThemeContextValue } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
@@ -24,14 +25,23 @@ export const useFluentProvider_unstable = (
 ): FluentProviderState => {
   const parentContext = useFluent();
   const parentTheme = useTheme();
+  const parentOverrides = useOverrides();
 
   /**
    * TODO: add merge functions to "dir" merge,
    * nesting providers with the same "dir" should not add additional attributes to DOM
    * see https://github.com/microsoft/fluentui/blob/0dc74a19f3aa5a058224c20505016fbdb84db172/packages/fluentui/react-northstar/src/utils/mergeProviderContexts.ts#L89-L93
    */
-  const { dir = parentContext.dir, targetDocument = parentContext.targetDocument, theme } = props;
-  const mergedTheme = mergeThemes(parentTheme, theme);
+  const {
+    applyStylesToPortals = true,
+    dir = parentContext.dir,
+    targetDocument = parentContext.targetDocument,
+    theme,
+    overrides_unstable: overrides = {},
+  } = props;
+  const mergedTheme = shallowMerge(parentTheme, theme);
+
+  const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
   React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
@@ -46,9 +56,12 @@ export const useFluentProvider_unstable = (
   }, []);
 
   return {
+    applyStylesToPortals,
     dir,
     targetDocument,
     theme: mergedTheme,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    overrides_unstable: mergedOverrides,
     themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
 
     components: {
@@ -63,7 +76,7 @@ export const useFluentProvider_unstable = (
   };
 };
 
-function mergeThemes(a: ThemeContextValue, b: ThemeContextValue): ThemeContextValue {
+function shallowMerge<T>(a: T, b: T): T {
   // Merge impacts perf: we should like to avoid it if it's possible
   if (a && b) {
     return { ...a, ...b };

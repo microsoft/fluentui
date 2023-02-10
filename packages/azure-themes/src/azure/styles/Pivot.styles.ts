@@ -99,6 +99,9 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
           ':active': {
             backgroundColor: semanticColors.bodyBackground,
           },
+          ':focus': {
+            border: 0,
+          },
         },
       },
       !rootIsLarge && {

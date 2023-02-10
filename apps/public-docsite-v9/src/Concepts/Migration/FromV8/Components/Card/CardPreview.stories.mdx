@@ -1,0 +1,134 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Card Migration/CardPreview" />
+
+# CardPreview Migration
+
+Fluent UI v8 provides the `DocumentCardPreview` component. Fluent UI v9 provides a `CardPreview`, with a complete different API.
+
+This table maps `DocumentCardPreview` v8 props to the `Card` v9 equivalent.
+
+| v8                           | v9        | Notes                                                            |
+| ---------------------------- | --------- | ---------------------------------------------------------------- |
+| className                    | className |                                                                  |
+| componentRef                 | ref       |                                                                  |
+| previewImages                | n/a       | see Migrate `previewImages` prop in this document                |
+| getOverflowDocumentCountText | n/a       | see Migrate `getOverflowDocumentCountText` prop in this document |
+| maxDisplayCount              | n/a       | see Migrate `getOverflowDocumentCountText` prop in this document |
+| styles                       | className |                                                                  |
+| theme                        | n/a       | Use `FluentProvider` to customize themes                         |
+
+## Migrate `previewImages` prop
+
+The `previewImages` prop is no longer supported and has no other alternatives. The new CardPreview component accepts any element as children and can be used to render images.
+
+Before:
+
+```tsx
+import { DocumentCard, DocumentCardPreview } from '@fluentui/react/lib/DocumentCard';
+import { TestImages } from '@fluentui/example-data';
+
+const previewImage = {
+  name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+  previewImageSrc: TestImages.documentPreview,
+  iconSrc: TestImages.iconPpt,
+  width: 144,
+};
+
+const Component = () => (
+  <DocumentCard>
+    <DocumentCardPreview previewImages={[previewImage]} />
+  </DocumentCard>
+);
+```
+
+After:
+
+```jsx
+import * as React from 'react';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
+
+export const Component = () => {
+  return (
+    <Card size="small" orientation="horizontal">
+      <CardPreview logo={<img src="word_logo.svg" alt="Microsoft Word logo" />}>
+        <img src="doc_template.png" alt="Preview of a Word document " />
+      </CardPreview>
+    </Card>
+  );
+};
+```
+
+## Migrate `getOverflowDocumentCountText` prop
+
+The `getOverflowDocumentCountText` and `maxDisplayCount` prop are no longer supported. The main `Card` can be used to implement a similar functionality.
+
+Before:
+
+```tsx
+import { DocumentCard, DocumentCardPreview } from '@fluentui/react/lib/DocumentCard';
+import { TestImages } from '@fluentui/example-data';
+
+const previewImages = [
+  {
+    name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+    iconSrc: TestImages.iconPpt,
+    width: 144,
+  },
+  {
+    name: 'New Contoso Collaboration for Conference Presentation Draft',
+    iconSrc: TestImages.iconPpt,
+    width: 144,
+  },
+  {
+    name: 'Spec Sheet for design',
+    iconSrc: TestImages.iconPpt,
+    width: 144,
+  },
+];
+
+const Component = () => (
+  <DocumentCard>
+    <DocumentCardPreview
+      getOverflowDocumentCountText={(count: number) => `+${count} more`}
+      maxDisplayCount={2}
+      previewImages={previewImages}
+    />
+  </DocumentCard>
+);
+```
+
+After:
+
+```jsx
+import * as React from 'react';
+import { Text } from '@fluentui/react-components';
+import { Card } from '@fluentui/react-card/unstable';
+
+export const Default = () => {
+  return (
+    <Card orientation="horizontal">
+      <div>
+        <div>
+          <img src="powerpoint_logo.svg" alt="Powerpoint logo" />
+          <Text truncate>Revenue stream proposal fiscal year 2016 version02</Text>
+        </div>
+
+        <div>
+          <img src="powerpoint_logo.svg" alt="Powerpoint logo" />
+          <Text truncate>New Contoso Collaboration for Conference Presentation Draft</Text>
+        </div>
+
+        <div>
+          <img src="powerpoint_logo.svg" alt="Powerpoint logo" />
+          <Text truncate>Spec Sheet for design</Text>
+        </div>
+
+        <div>
+          <Text>+1 more</Text>
+        </div>
+      </div>
+    </Card>
+  );
+};
+```

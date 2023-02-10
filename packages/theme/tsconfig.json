@@ -13,6 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "moduleResolution": "node",
+    "isolatedModules": true,
     "preserveConstEnums": true,
     "lib": ["es5", "dom", "ES2015.Iterable"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],

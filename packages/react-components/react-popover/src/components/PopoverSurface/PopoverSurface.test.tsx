@@ -2,8 +2,8 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { PopoverSurface } from './PopoverSurface';
 import { render, fireEvent } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
-import { mockPopoverContext } from '../../common/mockUsePopoverContext';
+import { isConformant } from '../../testing/isConformant';
+import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
 import { PopoverSurfaceProps } from './PopoverSurface.types';
 
 jest.mock('../../popoverContext');

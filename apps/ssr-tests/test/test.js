@@ -46,6 +46,12 @@ describe('Utilities', () => {
       assert.equal(library.getDocument(), undefined);
     });
   });
+
+  describe('canUseDOM', () => {
+    it('returns false in server environment', () => {
+      assert.equal(library.canUseDOM(), false);
+    });
+  });
 });
 
 function testRender(componentName, component) {
@@ -56,7 +62,7 @@ function testRender(componentName, component) {
       ReactDOMServer.renderToString(elem);
       done();
     } catch (e) {
-      done(new Error(e));
+      done(e);
     }
   });
 }

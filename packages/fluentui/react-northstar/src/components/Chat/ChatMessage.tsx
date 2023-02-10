@@ -336,6 +336,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   const popperRef = React.useRef<PopperRefHandle>();
   const { targetRef: actionsMenuTargetRef, containerRef: actionsMenuRef } = usePopper({
     align: 'end',
+    rtl: context.rtl,
     position: 'above',
     positionFixed: overflow,
 

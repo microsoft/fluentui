@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-hooks';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToolbarContext_unstable } from '../Toolbar/ToolbarContext';
 import { ToolbarRadioButtonProps, ToolbarRadioButtonState } from './ToolbarRadioButton.types';
@@ -19,7 +19,10 @@ export const useToolbarRadioButton_unstable = (
   const size = useToolbarContext_unstable(ctx => ctx.size);
 
   const { onClick: onClickOriginal } = props;
-  const toggleButtonState = useToggleButton_unstable({ size, checked, ...props }, ref);
+  const toggleButtonState = useToggleButton_unstable(
+    { size, checked, role: 'radio', 'aria-checked': checked, ...props },
+    ref,
+  );
   const state: ToolbarRadioButtonState = {
     ...toggleButtonState,
     name: props.name,
@@ -28,15 +31,11 @@ export const useToolbarRadioButton_unstable = (
 
   const handleOnClick = useEventCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-
       handleRadio?.(e, state.name, state.value, state.checked);
       onClickOriginal?.(e);
     },
   );
-
+  state.root['aria-pressed'] = undefined;
   state.root.onClick = handleOnClick;
   return state;
 };
