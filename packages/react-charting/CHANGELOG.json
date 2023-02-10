@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 10 Feb 2023 07:47:23 GMT",
+      "tag": "@fluentui/react-charting_v5.15.3",
+      "version": "5.15.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bf9a0ee7cdd773eb0189710a7338e51c0afc9393",
+            "comment": "Fixing wrong value on link hover"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.105.6",
+            "commit": "1e563117e19994930daaf1083cf0e59d18fbdd76"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Feb 2023 07:38:30 GMT",
       "tag": "@fluentui/react-charting_v5.15.2",
       "version": "5.15.2",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Do not add an escape character for colons in the styleTagId since useId now removes colons from the generated id in React 18.",
-  "packageName": "@fluentui/react-provider",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
