@@ -103,6 +103,12 @@ export interface PositioningOptions {
   overflowBoundary?: Boundary | null;
 
   /**
+   * Applies a padding to the overflow bounadry, so that overflow is detected earlier before the
+   * positioned surface hits the overflow boundary.
+   */
+  overflowBoundaryPadding?: number | Partial<{ top: number; end: number; bottom: number; start: number }>;
+
+  /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
    * and align is also vertical ('top' | 'bottom') or if both position and align are horizontal ('before' | 'after'
    * and 'start' | 'end' respectively),

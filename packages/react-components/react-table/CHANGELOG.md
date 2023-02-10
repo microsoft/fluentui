@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Tue, 07 Feb 2023 14:13:07 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Feb 2023 08:50:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0)
+
+Fri, 10 Feb 2023 08:50:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0-rc.5..@fluentui/react-table_v9.0.0)
+
+### Patches
+
+- feat: Release 9.0.0 ([PR #26736](https://github.com/microsoft/fluentui/pull/26736) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.8 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-avatar to v9.3.3 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.26 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.8 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-radio to v9.0.24 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-tabster to v9.5.1 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+
+### Changes
+
+- feat: TableCellLayout component now supports truncate prop ([PR #26738](https://github.com/microsoft/fluentui/pull/26738) by jirivyhnalek@microsoft.com)
+- feat: DataGrid - add support for resizable columns ([PR #26690](https://github.com/microsoft/fluentui/pull/26690) by jirivyhnalek@microsoft.com)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0-rc.5)
 

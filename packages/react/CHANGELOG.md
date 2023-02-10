@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 07 Feb 2023 07:36:28 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Feb 2023 07:47:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.6)
+
+Fri, 10 Feb 2023 07:47:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.5..@fluentui/react_v8.105.6)
+
+### Patches
+
+- Coachmark: re-render and re-calculate bounds when page resizes ([PR #26725](https://github.com/microsoft/fluentui/pull/26725) by mgodbolt@microsoft.com)
+- fix: Remove override row width style to fix DetailsList layouts. ([PR #24096](https://github.com/microsoft/fluentui/pull/24096) by tmichon@microsoft.com)
 
 ## [8.105.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.5)
 

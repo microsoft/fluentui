@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Feb 2023 08:50:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.2)
+
+Fri, 10 Feb 2023 08:50:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.1..@fluentui/react-utilities_v9.5.2)
+
+### Patches
+
+- fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.1)
 
