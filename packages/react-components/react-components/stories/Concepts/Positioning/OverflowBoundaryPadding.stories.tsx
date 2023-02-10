@@ -32,7 +32,7 @@ export const OverflowBoundaryPadding = () => {
   const styles = useStyles();
   const [boundaryRef, setBoundaryRef] = React.useState<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState(false);
-  const [padding, setPadding] = React.useState(10);
+  const [padding, setPadding] = React.useState(8);
 
   return (
     <>
@@ -91,7 +91,11 @@ OverflowBoundaryPadding.parameters = {
       story: [
         'The `overflowBoundaryPadding` property sets the padding between the positioned element and the',
         'chosen boundary. The padding can be a shorthand number which applies for all sides, or an object',
-        'That explicitly sets the padding for each side',
+        'That explicitly sets the padding for each side.',
+        '',
+        '> _Design guidance recommenends using **8px** or **4px** if a padding is required._',
+        '_Custom values are also possible but should stay within a 4px grid, please consult your_',
+        '_designer if a custom padding is required._',
       ].join('\n'),
     },
   },
