@@ -13,12 +13,13 @@ function main() {
   const { all: runOnAllFiles, check: checkMode } = parsedArgs;
 
   console.log(
-    `Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files, in ${checkMode ? 'check' : 'write'} mode`,
+    `format: running prettier on ${runOnAllFiles ? 'all' : 'changed'} files, in ${checkMode ? 'check' : 'write'} mode`,
   );
 
-  const result = runOnAllFiles ? runOnAll() : runOnChanged();
-
-  process.exit(result?.status ?? undefined);
+  const pass = runOnAllFiles ? runOnAll() : runOnChanged();
+  if (!pass) {
+    process.exit(1);
+  }
 }
 
 function parseArgs() {
@@ -74,12 +75,34 @@ function runOnChanged() {
   const files = gitDiffOutput.toString('utf8').trim().split('\n');
 
   if (files.length === 0) {
-    console.log(`Nothing to format!\n`);
+    console.log(`format: Nothing to format!\n`);
 
-    return;
+    return true;
   }
 
-  return runPrettier(files, { check: parsedArgs.check });
+  // Chunkify the files array to prevent crashing the windows terminal
+  const chunkList = chunkify(files, 50);
+
+  console.log(`format: Processing ${files.length} files`);
+
+  const pass = chunkList.reduce((_pass, chunk) => runPrettier(chunk, { check: parsedArgs.check }) && _pass, true);
+  return pass;
+}
+
+/**
+ *
+ * @param {string[]} target
+ * @param {number} size
+ * @returns {string[][]}
+ */
+function chunkify(target, size) {
+  return target.reduce((current, value, index) => {
+    if (index % size === 0) {
+      current.push([]);
+    }
+    current[current.length - 1].push(value);
+    return current;
+  }, /**  @type {string[][]}*/ ([]));
 }
 
 main();

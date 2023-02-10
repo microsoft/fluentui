@@ -1,4 +1,4 @@
-const { spawnSync } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -38,7 +38,7 @@ function getPrettierBinary() {
  * @param {Object} config
  * @param {boolean=} config.logErrorsOnly - If true, log errors/warnings only. Otherwise log all output.
  * @param {boolean=} config.check - run prettier in check mode
- * @returns A promise if run asynchronously, or nothing if run synchronously
+ * @returns {boolean} - true if all files pass formatting or no prettierSupportedFiles match
  */
 function runPrettier(files, config = {}) {
   const { check, logErrorsOnly } = config;
@@ -53,8 +53,9 @@ function runPrettier(files, config = {}) {
       });
 
   if (!prettierSupportedFiles.length) {
+    console.log('prettier: No supported files found');
     // Exit if there are no supported files (otherwise it will hang forever waiting for stdin)
-    return;
+    return true;
   }
 
   // As of writing, Prettier's Node API (https://prettier.io/docs/en/api.html) only supports running
@@ -71,7 +72,12 @@ function runPrettier(files, config = {}) {
     ...prettierSupportedFiles,
   ].join(' ');
 
-  return spawnSync(cmd, { shell: true, stdio: 'inherit' });
+  try {
+    execSync(cmd, { stdio: 'inherit' });
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -81,7 +87,7 @@ function runPrettier(files, config = {}) {
  * @param {Object} config
  * @param {boolean=} config.nonRecursive - If true, don't add a multi-folder glob to the path.
  * @param {boolean=} config.check - run prettier in check mode
- * @returns A promise if run asynchronously, or nothing if run synchronously
+ * @returns
  */
 function runPrettierForFolder(folderPath, config = {}) {
   const { check, nonRecursive } = config;
