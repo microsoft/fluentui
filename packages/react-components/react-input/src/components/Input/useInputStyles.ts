@@ -99,7 +99,8 @@ const useRootInteractiveClassName = makeResetStyles({ ...rootBaseStyles, ...root
 const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
-    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
     ...typographyStyles.caption1,
   },
   medium: {
@@ -107,7 +108,8 @@ const useRootStyles = makeStyles({
   },
   large: {
     minHeight: fieldHeights.large,
-    ...shorthands.padding('0', tokens.spacingHorizontalM),
+    paddingLeft: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
     ...typographyStyles.body2,
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
