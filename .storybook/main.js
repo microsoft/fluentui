@@ -49,6 +49,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
             loose: true,
           },
         },
+        swcMinifyOptions: { mangle: false },
       }),
     },
     '@storybook/addon-essentials',
