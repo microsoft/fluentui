@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update Persona to use makeResetStyles",
+  "packageName": "@fluentui/react-persona",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
