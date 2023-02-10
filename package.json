@@ -382,7 +382,8 @@
     "jest-axe/axe-core": "4.4.3",
     "eslint": "7.25.0",
     "@mdx-js/loader/loader-utils": "~2.0.4",
-    "swc-loader": "^0.2.3"
+    "swc-loader": "^0.2.3",
+    "puppeteer": "19.6.0"
   },
   "syncpack": {
     "prod": true,
