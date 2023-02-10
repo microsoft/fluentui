@@ -22,13 +22,13 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        height: 32px;
+        min-height: 32px;
         min-width: 80px;
         outline: transparent;
-        padding-bottom: 0;
+        padding-bottom: 6px;
         padding-left: 16px;
         padding-right: 16px;
-        padding-top: 0;
+        padding-top: 6px;
         position: relative;
         text-align: center;
         text-decoration: none;
