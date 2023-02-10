@@ -68,7 +68,7 @@ export const Form: React.FC = () => {
 
   React.useEffect(() => {
     dispatchAppState({ type: 'Custom', customAttributes: debounceAttributes });
-  }, [debounceAttributes]);
+  }, [debounceAttributes, dispatchAppState]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
