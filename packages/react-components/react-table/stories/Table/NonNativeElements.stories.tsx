@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   TableBody,
   TableCell,
   TableRow,
@@ -17,7 +18,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const items = [
   {
@@ -67,7 +68,7 @@ const columns = [
 
 export const NonNativeElements = () => {
   return (
-    <Table noNativeElements>
+    <Table noNativeElements aria-label="Table without semantic HTML elements">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -84,7 +85,11 @@ export const NonNativeElements = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
@@ -99,4 +104,18 @@ export const NonNativeElements = () => {
       </TableBody>
     </Table>
   );
+};
+
+NonNativeElements.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default `Table` components will render native semantic `<table>` HTML elements.',
+        'Native semantic elements provide the best accessibility support and it is recommended to user them.',
+        'However, for certain use cases (i.e. Virtualization) the native semantic elements are not advisable',
+        'due to strict browser layouting. Using the `noNativeElements` prop will ensure that all components are',
+        'rendered as divs while ensuring a layout experience similar to semantic table elements.',
+      ].join('\n'),
+    },
+  },
 };

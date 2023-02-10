@@ -13,7 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": ["jest"]
+    "types": ["jest"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

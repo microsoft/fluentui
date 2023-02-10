@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import {
   makeStyles,
   Menu,
@@ -10,8 +9,7 @@ import {
   MenuTrigger,
   Tooltip,
 } from '@fluentui/react-components';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -40,7 +38,7 @@ export const SizeMedium = () => {
 
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton icon={<CalendarMonth />} size="medium">
+          <MenuButton icon={<CalendarMonthRegular />} size="medium">
             Medium with calendar icon
           </MenuButton>
         </MenuTrigger>
@@ -56,7 +54,7 @@ export const SizeMedium = () => {
       <Menu>
         <MenuTrigger disableButtonEnhancement>
           <Tooltip content="Medium with calendar icon only" relationship="label">
-            <MenuButton icon={<CalendarMonth />} size="medium" />
+            <MenuButton icon={<CalendarMonthRegular />} size="medium" />
           </Tooltip>
         </MenuTrigger>
 

@@ -2,8 +2,7 @@ import * as React from 'react';
 import type { TabState, TabValue } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { TabListContext } from '../TabList/TabListContext';
+import { useTabListContext_unstable } from '../TabList/TabListContext';
 import { TabRegisterData } from '../TabList/TabList.types';
 import { tokens } from '@fluentui/react-theme';
 
@@ -77,7 +76,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   const activeIndicatorStyles = useActiveIndicatorStyles();
   const [lastAnimatedFrom, setLastAnimatedFrom] = React.useState<TabValue>();
   const [animationValues, setAnimationValues] = React.useState({ offset: 0, scale: 1 });
-  const getRegisteredTabs = useContextSelector(TabListContext, ctx => ctx.getRegisteredTabs);
+  const getRegisteredTabs = useTabListContext_unstable(ctx => ctx.getRegisteredTabs);
 
   React.useEffect(() => {
     if (lastAnimatedFrom) {

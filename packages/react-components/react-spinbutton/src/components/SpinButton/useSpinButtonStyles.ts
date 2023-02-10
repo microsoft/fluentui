@@ -136,27 +136,12 @@ const useRootStyles = makeStyles({
   },
 
   disabled: {
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
-    },
-  },
-
-  outlineDisabled: {
     '::before': {
-      ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium), // because underline doesn't usually have a radius
-    },
-  },
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
-  underlineDisabled: {
-    '::before': {
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorTransparentStrokeDisabled),
-    },
-  },
-
-  filledDisabled: {
-    '::before': {
-      ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeDisabled),
+      '@media (forced-colors: active)': {
+        ...shorthands.borderColor('GrayText'),
+      },
     },
   },
 });
@@ -448,9 +433,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     !disabled && filled && rootStyles.filledInteractive,
     !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
-    disabled && appearance === 'outline' && rootStyles.outlineDisabled,
-    disabled && appearance === 'underline' && rootStyles.underlineDisabled,
-    disabled && filled && rootStyles.filledDisabled,
     rootClassName, // Make sure any original class name is applied last
   );
 

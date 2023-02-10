@@ -467,6 +467,16 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 
   const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
 
+  function useGetBounds(): IRectangle | undefined {
+    const async = useAsync();
+    const [bounds, setBounds] = React.useState<IRectangle | undefined>();
+    const updateAsyncPosition = (): void => {
+      async.requestAnimationFrame(() => setBounds(getBounds(props)));
+    };
+    React.useEffect(updateAsyncPosition);
+    return bounds;
+  }
+
   return (
     <PositioningContainer
       target={target}
@@ -474,7 +484,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
       finalHeight={finalHeight}
       ref={forwardedRef}
       onPositioned={onPositioned}
-      bounds={getBounds(props)}
+      bounds={useGetBounds()}
       {...positioningContainerProps}
     >
       <div className={classNames.root}>

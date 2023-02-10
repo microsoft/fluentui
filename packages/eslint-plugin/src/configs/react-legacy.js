@@ -10,4 +10,5 @@ module.exports = {
     'jsdoc/check-tag-names': 'off',
     '@griffel/no-shorthands': 'off',
   },
+  overrides: [],
 };

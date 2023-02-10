@@ -47,8 +47,8 @@ export type MenuListProps = ComponentProps<MenuListSlots> & {
 };
 
 export type MenuListState = ComponentState<MenuListSlots> &
-  Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> &
-  Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & {
+  Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> &
+  Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     /**
      * Selects a radio item, will de-select the currently selected ratio item
      */
@@ -69,6 +69,9 @@ export type MenuListContextValues = {
   menuList: MenuListContextValue;
 };
 
+/**
+ * @deprecated this type is not being used internally anymore
+ */
 export type UninitializedMenuListState = Omit<
   MenuListState,
   'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'

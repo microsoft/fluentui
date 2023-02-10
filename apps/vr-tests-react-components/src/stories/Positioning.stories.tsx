@@ -11,7 +11,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -273,24 +273,112 @@ const VerticalOverflow = () => {
 const HorizontalOverflow = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
-  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary });
   const { dir } = useFluent();
   const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
 
   return (
-    <div className={styles.boundary} style={{ display: 'flex', width: 400, padding: '50px 5px' }} ref={setBoundary}>
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', width: 400, padding: '50px 20px', boxSizing: 'border-box' }}
+      ref={setBoundary}
+    >
       <button ref={startPopper.targetRef}>Target</button>
-      <Box ref={startPopper.containerRef} style={{ width: 50 }}>
+      <Box ref={startPopper.containerRef} style={{ width: 100 }}>
         Shift
       </Box>
 
       <button style={{ [marginDir]: 'auto' }} ref={endPopper.targetRef}>
         Target
       </button>
-      <Box ref={endPopper.containerRef} style={{ width: 50 }}>
+      <Box ref={endPopper.containerRef} style={{ width: 100 }}>
         Shift
       </Box>
+    </div>
+  );
+};
+
+const HorizontalOverflowPadding = () => {
+  const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const { dir } = useFluent();
+  const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', width: 400, padding: '50px 20px', boxSizing: 'border-box' }}
+      ref={setBoundary}
+    >
+      <button ref={startPopper.targetRef}>Target</button>
+      <Box ref={startPopper.containerRef} style={{ width: 100 }}>
+        Shift
+      </Box>
+
+      <button style={{ [marginDir]: 'auto' }} ref={endPopper.targetRef}>
+        Target
+      </button>
+      <Box ref={endPopper.containerRef} style={{ width: 100 }}>
+        Shift
+      </Box>
+    </div>
+  );
+};
+
+const VerticalOverflowPadding = () => {
+  const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+  const topPopper = usePositioning({ position: 'after', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const bottomPopper = usePositioning({ position: 'after', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', flexDirection: 'column', height: 200, padding: '5px 50px' }}
+      ref={setBoundary}
+    >
+      <button ref={topPopper.targetRef}>Target</button>
+      <Box ref={topPopper.containerRef}>Shift</Box>
+
+      <button style={{ marginTop: 'auto' }} ref={bottomPopper.targetRef}>
+        Target
+      </button>
+      <Box ref={bottomPopper.containerRef}>Shift</Box>
+    </div>
+  );
+};
+
+const ExplicitOverflowPadding = () => {
+  const styles = useStyles();
+  const { dir } = useFluent();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+
+  const right = dir === 'ltr' ? 'right' : 'left';
+
+  const first = usePositioning({
+    position: 'above',
+    overflowBoundary: boundary,
+    overflowBoundaryPadding: { start: 20 },
+  });
+  const second = usePositioning({
+    position: 'before',
+    overflowBoundary: boundary,
+    overflowBoundaryPadding: { top: 20 },
+  });
+
+  return (
+    <div className={styles.boundary} style={{ height: 200, width: 400, position: 'relative' }} ref={setBoundary}>
+      <Box ref={first.containerRef}>Shift</Box>
+      <button style={{ position: 'absolute', top: 50 }} ref={first.targetRef}>
+        Target
+      </button>
+      <Box ref={second.containerRef}>Shift</Box>
+      <button style={{ position: 'absolute', [right]: 0 }} ref={second.targetRef}>
+        Target
+      </button>
     </div>
   );
 };
@@ -343,25 +431,27 @@ const Arrow: React.FC = () => {
 
 const AutoSize = () => {
   const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
   const { containerRef, targetRef } = usePositioning({
     position: 'below',
     autoSize: true,
+    overflowBoundary,
   });
 
   return (
     <div
+      ref={setOverflowBoundary}
       className={styles.boundary}
       style={{
         display: 'flex',
         flexDirection: 'column',
         height: 200,
         padding: '10px 50px',
-        overflow: 'hidden',
         position: 'relative',
       }}
     >
       <button ref={targetRef}>Target</button>
-      <Box ref={containerRef} style={{ overflow: 'auto' }}>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
         pretium nibh ipsum consequat. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Porta
@@ -581,6 +671,9 @@ storiesOf('Positioning', module)
   .addStory('vertical flip', () => <VerticalFlip />)
   .addStory('horizontal flip', () => <HorizontalFlip />, { includeRtl: true })
   .addStory('vertical overflow', () => <VerticalOverflow />)
+  .addStory('horizontal overflow padding', () => <HorizontalOverflowPadding />, { includeRtl: true })
+  .addStory('vertical overflow padding', () => <VerticalOverflowPadding />)
+  .addStory('explicit overflow padding', () => <ExplicitOverflowPadding />, { includeRtl: true })
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
@@ -591,8 +684,8 @@ storiesOf('Positioning', module)
   .addStory('target property', () => <TargetProp />)
   .addStory('imperative target', () => <ImperativeTarget />)
   .addStory('visibility modifiers', () => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('has "[data-popper-is-intersecting]" when the popover intersects boundaries')
         .executeScript('document.querySelector("#scrollable-area").scrollTop = 80')
         .snapshot(`has "[data-popper-escaped]" when the popper escapes the reference element's boundary`)
@@ -601,6 +694,6 @@ storiesOf('Positioning', module)
         .end()}
     >
       <VisibilityModifiers />
-    </Screener>
+    </StoryWright>
   ))
   .addStory('arrow', () => <Arrow />, { includeRtl: true });

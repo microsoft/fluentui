@@ -18,8 +18,6 @@ describe('TableHeader', () => {
     },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(
       <TableHeader>
@@ -40,27 +38,5 @@ describe('TableHeader', () => {
     );
     expect(container.firstElementChild?.tagName).toEqual('DIV');
     expect(container.firstElementChild?.getAttribute('role')).toEqual('rowgroup');
-  });
-
-  it('should use tabster if sortable', () => {
-    const { getByRole } = render(
-      <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true, sortable: true }}>
-        <TableHeader>
-          <div />
-        </TableHeader>
-      </TableContextProvider>,
-    );
-    expect(getByRole('rowgroup').hasAttribute('data-tabster')).toBe(true);
-  });
-
-  it('should not use tabster if not sortable', () => {
-    const { getByRole } = render(
-      <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true, sortable: false }}>
-        <TableHeader>
-          <div />
-        </TableHeader>
-      </TableContextProvider>,
-    );
-    expect(getByRole('rowgroup').hasAttribute('data-tabster')).toBe(false);
   });
 });

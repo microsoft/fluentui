@@ -152,7 +152,7 @@ export interface IStackProps
 
   /**
    * Defines if scoped style selectors are enabled for the Stack component, which greatly helps in style recalculation
-   * performance but requires children of the Stack to be able to accept a className prop (excluding Fragments).
+   * performance, but requires children of the Stack to be able to accept a className prop (excluding Fragments).
    * @defaultvalue false
    */
   enableScopedSelectors?: boolean;

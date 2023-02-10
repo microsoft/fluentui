@@ -1,6 +1,6 @@
-An SVG-based version of Fluent UI's icon set is available from `@fluentui/react-icons-mdl2` and is released under the MIT license. This is the same MDL2 icon set used in the font icons, excluding any branded icons.
+An SVG-based version of Fluent UI's icon set is available from `@fluentui/react-icons-mdl2` and is released under the MIT license. This is the same MDL2 icon set used in the font icons, excluding any product icons.
 
-Branded SVG icons are available from `@fluentui/react-icons-mdl2-branded` and are still subject to the [Microsoft Fabric Assets License](https://aka.ms/fluentui-assets-license).
+Product SVG icons are available from `@fluentui/react-icons-mdl2-branded` and are still subject to the [Microsoft Fabric Assets License](https://aka.ms/fluentui-assets-license).
 
 Both packages contain SVG icons wrapped in React components. This allows you to import and bundle only the icons you need, resulting in smaller download sizes compared to the font-based approach with `initializeIcons`, which downloads all icons by default.
 
