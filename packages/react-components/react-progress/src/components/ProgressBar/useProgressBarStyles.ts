@@ -125,7 +125,7 @@ const useBarStyles = makeStyles({
  * Apply styling to the ProgressBar slots based on the state
  */
 export const useProgressBarStyles_unstable = (state: ProgressBarState): ProgressBarState => {
-  const { max, shape, thickness, color, value } = state;
+  const { color, max, shape, thickness, value } = state;
   const rootStyles = useRootStyles();
   const barStyles = useBarStyles();
   const { dir } = useFluent();

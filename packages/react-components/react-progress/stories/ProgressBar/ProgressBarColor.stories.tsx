@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Field } from '@fluentui/react-field';
 import { makeStyles } from '@fluentui/react-components';
 import { ProgressBar } from '@fluentui/react-progress';
-import { Field } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
   container: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ValidationState = () => {
+export const Color = () => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
@@ -30,12 +30,12 @@ export const ValidationState = () => {
   );
 };
 
-ValidationState.parameters = {
+Color.parameters = {
   docs: {
     name: 'Validation State',
     description: {
       story:
-        'The `color` prop can be used to indicate a `"brand"` state(default) `"error"` state (red), `"warning"` state (orange), ' +
+        'The `color` prop can be used to indicate a `"brand"` state (default), `"error"` state (red), `"warning"` state (orange), ' +
         'or `"success"` state (green).',
     },
   },
