@@ -752,7 +752,7 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-storybook-addon-codesandbox/src",
-      "tags": ["vNext", "platform:node"]
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-switch": {
       "root": "packages/react-components/react-switch",
