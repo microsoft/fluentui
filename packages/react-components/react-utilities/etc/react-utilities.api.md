@@ -40,6 +40,12 @@ export type FluentTriggerComponent = {
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
 // @public
+export function getEventClientCoords(event: TouchOrMouseEvent): {
+    clientX: number;
+    clientY: number;
+};
+
+// @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
@@ -82,10 +88,22 @@ export function isHTMLElement(element?: unknown): element is HTMLElement;
 export function isInteractiveHTMLElement(element: unknown): boolean;
 
 // @public
+export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | React_2.MouseEvent;
+
+// @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
+
+// @public
+export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
+
+// @public (undocumented)
+export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
+
+// @public (undocumented)
+export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
 // @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
@@ -140,6 +158,9 @@ export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | Reac
 export const SSRProvider: React_2.FC<{
     children: React_2.ReactNode;
 }>;
+
+// @public (undocumented)
+export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent;
 
 // @public
 export type TriggerProps<TriggerChildProps = unknown> = {
