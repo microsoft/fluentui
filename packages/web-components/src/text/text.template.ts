@@ -5,3 +5,5 @@ import type { Text } from './text.js';
  * @internal
  */
 export const template: ElementViewTemplate<Text> = html<Text>`<slot></slot>`;
+
+console.log('template is good');
