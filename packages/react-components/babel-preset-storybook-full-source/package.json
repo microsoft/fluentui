@@ -4,7 +4,7 @@
   "description": "Babel preset that adds the makes the full source code of stories available",
   "private": true,
   "main": "./src/index.dev.js",
-  "typings": "./src/index.dev.d.ts",
+  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -18,7 +18,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -29,11 +29,11 @@
     "@babel/core": "^7.10.4",
     "prettier": "2.2.1",
     "pkg-up": "^3.1.0",
-    "tslib": "^2.1.0"
+    "@swc/helpers": "^0.4.14"
   },
   "exports": {
     ".": {
-      "types": "./src/index.dev.d.ts",
+      "types": "./dist/index.d.ts",
       "require": "./src/index.dev.js"
     },
     "./package.json": "./package.json"
