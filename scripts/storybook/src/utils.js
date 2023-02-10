@@ -7,8 +7,6 @@ const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
-console.log(babelPlugin);
-
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
  * Registers workspace custom storybook addon to storybook with build-less setup during development.
