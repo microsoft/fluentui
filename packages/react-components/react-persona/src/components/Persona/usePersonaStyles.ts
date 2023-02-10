@@ -273,7 +273,7 @@ const useTextClassNames = (
     primaryTextClassName: mergeClasses(primaryTextBaseStyles, primaryTextSize, alignToPrimaryClassName),
     optionalTextClassName: mergeClasses(
       optionalTextBaseStyle,
-      presenceOnly && size === 'huge' && textStyles.body1,
+      !presenceOnly && size === 'huge' && textStyles.body1,
       alignToPrimaryClassName,
     ),
   };
