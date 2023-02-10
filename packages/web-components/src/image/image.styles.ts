@@ -60,16 +60,16 @@ export const styles = css`
   :host([shape='circular']) ::slotted(*) {
     border-radius: 100%;
   }
-  :host([shape='rounded'][borderRadius='small']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='small']) ::slotted(*) {
     border-radius: ${borderRadiusSmall};
   }
-  :host([shape='rounded'][borderRadius='medium']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='medium']) ::slotted(*) {
     border-radius: ${borderRadiusMedium};
   }
-  :host([shape='rounded'][borderRadius='large']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='large']) ::slotted(*) {
     border-radius: ${borderRadiusLarge};
   }
-  :host([shape='rounded'][borderRadius='x-large']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='x-large']) ::slotted(*) {
     border-radius: ${borderRadiusXLarge};
   }
   :host([shape='square']) ::slotted(*) {
