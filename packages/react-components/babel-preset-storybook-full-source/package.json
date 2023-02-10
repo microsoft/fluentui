@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/babel-preset-storybook-full-source",
-  "version": "9.0.0-alpha.0",
+  "version": "0.0.1",
   "description": "Babel preset that adds the makes the full source code of stories available",
   "private": true,
-  "main": "lib-commonjs/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "./src/index.dev.js",
+  "typings": "./src/index.dev.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -26,12 +26,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@babel/core": "^7.10.4",
+    "prettier": "2.2.1",
+    "pkg-up": "^3.1.0",
     "tslib": "^2.1.0"
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./lib-commonjs/index.js"
+      "types": "./src/index.dev.d.ts",
+      "require": "./src/index.dev.js"
     },
     "./package.json": "./package.json"
   }
