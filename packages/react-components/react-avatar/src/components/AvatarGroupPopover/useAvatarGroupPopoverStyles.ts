@@ -50,6 +50,8 @@ const useTriggerButtonStyles = makeStyles({
     alignItems: 'center',
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
+    width: '32px',
+    height: '32px',
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
@@ -167,8 +169,8 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   state.triggerButton.className = mergeClasses(
     avatarGroupPopoverClassNames.triggerButton,
     groupChildClassName,
-    sizeStyles[size],
     triggerButtonStyles.base,
+    sizeStyles[size],
     layout === 'pie' && triggerButtonStyles.pie,
     triggerButtonStyles.focusIndicator,
     layout !== 'pie' && triggerButtonStyles.states,

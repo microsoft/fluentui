@@ -18,6 +18,8 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
+    width: '32px',
+    height: '32px',
     backgroundColor: tokens.colorTransparentStroke,
     '@media (forced-colors: active)': {
       backgroundColor: 'CanvasText',
@@ -36,8 +38,8 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
     styles.base,
-    layout === 'pie' && sizeStyles[size],
     layout === 'pie' && styles.pie,
+    layout === 'pie' && sizeStyles[size],
     state.root.className,
   );
 

@@ -24,6 +24,8 @@ const useRootStyles = makeStyles({
     display: 'inline-flex',
     flexShrink: 0,
     position: 'relative',
+    width: '32px',
+    height: '32px',
   },
   overflowItem: {
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),

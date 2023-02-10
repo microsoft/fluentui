@@ -191,25 +191,6 @@ const useStyles = makeStyles({
     boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground1}`,
   },
 
-  // iconInitials: {
-  //   position: 'absolute',
-  //   boxSizing: 'border-box',
-  //   top: 0,
-  //   left: 0,
-  //   width: '100%',
-  //   height: '100%',
-  //   lineHeight: '1',
-  //   ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   verticalAlign: 'center',
-  //   textAlign: 'center',
-  //   userSelect: 'none',
-  //   ...shorthands.borderRadius('inherit'),
-  // },
-
   icon12: { fontSize: '12px' },
   icon16: { fontSize: '16px' },
   icon20: { fontSize: '20px' },
