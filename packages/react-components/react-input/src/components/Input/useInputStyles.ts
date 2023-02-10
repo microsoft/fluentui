@@ -198,21 +198,17 @@ const useInputClassName = makeResetStyles({
 
   outlineStyle: 'none', // disable default browser outline
 
-  // size: medium (default)
-  ...typographyStyles.body1,
+  // Inherit typography styles from parent
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontWeight: 'inherit',
+  lineHeight: 'inherit',
 });
 
 const useInputElementStyles = makeStyles({
-  small: {
-    // This is set on root but doesn't inherit
-    ...typographyStyles.caption1,
-  },
-  medium: {
-    // included in useInputClassName
-  },
   large: {
-    ...typographyStyles.body2,
-    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -284,7 +280,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   state.input.className = mergeClasses(
     inputClassNames.input,
     useInputClassName(),
-    inputStyles[size],
+    size === 'large' && inputStyles.large,
     disabled && inputStyles.disabled,
     state.input.className,
   );
