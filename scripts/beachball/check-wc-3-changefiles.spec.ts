@@ -1,12 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
+
 import tmp from 'tmp';
+
 import { main } from './check-wc-3-changefiles';
 import type { ChangeFile } from './check-wc-3-changefiles';
 
 tmp.setGracefulCleanup();
 
 function setup(changefiles: Array<ChangeFile>) {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const noop = () => {};
+
   const root = tmp.dirSync({ prefix: 'changefiles', unsafeCleanup: true }).name;
   const changesRoot = path.join(root, 'change');
 
@@ -18,8 +23,9 @@ function setup(changefiles: Array<ChangeFile>) {
     fs.writeFileSync(changeFilePath, JSON.stringify(change, null, 2), 'utf-8');
   });
 
-  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-  const processExitSpy = jest.spyOn(process, 'exit').mockImplementation((() => {}) as any);
+  const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(noop);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const processExitSpy = jest.spyOn(process, 'exit').mockImplementation(noop as any);
 
   return { root: changesRoot, consoleErrorSpy, processExitSpy };
 }

@@ -1,5 +1,5 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
 /**
  * @typedef {{
@@ -42,6 +42,8 @@ function main(/** @type {string} */ root) {
       if (content.type !== 'none' || content.dependentChangeType !== 'none') {
         return changeFilePath;
       }
+
+      return;
     })
     .filter(Boolean));
 
