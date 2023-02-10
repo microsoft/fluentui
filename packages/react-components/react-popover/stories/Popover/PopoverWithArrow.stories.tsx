@@ -24,10 +24,9 @@ const useStyles = makeStyles({
     },
   },
   backdropFilterStatus: {
-    marginTop: '11px',
-    '::before': { content: '"❌ NO SUPPORT FOR backdrop-filter: blur()"' },
+    '::before': { content: '"backdrop-filter: ❌ NOT SUPPORTED"' },
     [supportsBackdropFilter]: {
-      '::before': { content: '"✅ Supports backdrop-filter: blur()"' },
+      '::before': { content: '"backdrop-filter: ✅ Supported"' },
     },
   },
 });
@@ -35,13 +34,12 @@ const useStyles = makeStyles({
 const ExampleContent = () => {
   const styles = useStyles();
   const { targetDocument } = useFluent();
+
   return (
     <PopoverSurface className={styles.surface}>
       <Subtitle2 as="h3" className={styles.contentHeader}>
         Popover container
       </Subtitle2>
-
-      <Body1>Device Pixel Rounding: YES</Body1>
 
       <Body1>
         Device Pixel Ratio: {Math.round((targetDocument?.defaultView?.devicePixelRatio || 0) * 1000) / 1000}
@@ -67,7 +65,7 @@ export const WithArrow = () => (
 WithArrow.parameters = {
   docs: {
     description: {
-      story: 'WITHOUT device pixel rounding fix',
+      story: 'WITH device pixel rounding fix',
     },
   },
 };
