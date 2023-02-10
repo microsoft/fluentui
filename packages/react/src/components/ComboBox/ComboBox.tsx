@@ -973,9 +973,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return items[0].index;
     }
 
-    const index = this._getFirstSelectedIndex();
-    this._setPendingInfoFromIndex(index);
-    return index;
+    return -1;
   }
 
   private _getFirstSelectedIndex(): number {
