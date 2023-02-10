@@ -2,6 +2,51 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Fri, 10 Feb 2023 08:50:02 GMT",
+      "tag": "@fluentui/react-popover_v9.4.7",
+      "version": "9.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-aria to v9.3.8",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.8",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.1.7",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.4.0",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.5.1",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.5.2",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Feb 2023 14:13:10 GMT",
       "tag": "@fluentui/react-popover_v9.4.6",
       "version": "9.4.6",

@@ -2,6 +2,99 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 10 Feb 2023 08:49:57 GMT",
+      "tag": "@fluentui/react-components_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "30999b8e1a383db0ef254bcaed2f8ee05fc85909",
+            "comment": "fix: Small mistake in docs for Avatar icon prop"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "7db30ce5c8ff56bbcfb01d40e60db382356b6b38",
+            "comment": "chore: Update Field spec and migration guide"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2a4adf399928df00013a1b58eb5dd1ce77141c57",
+            "comment": "chore: Update Field documentation and stories"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "43a79058970c5e18c912b1a5a47e776ad8b72465",
+            "comment": "fix: keyboard navigation not working for select elements"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "fbe4207b3b40b147e936ecaf1e8fad9a8b357db9",
+            "comment": "feat: TableCellLayout component now supports truncate prop"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c5149e270e02a09eae9b7dfbba4da3aa4ac77a52",
+            "comment": "feat: DataGrid - add support for resizable columns"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "6a925547d8051b7d9a1855d6f20b7920d946fcdf",
+            "comment": "feat: Release `Table` and `DataGrid` as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "95a7b63876ccdc142172d93fe30b035d80f4fe88",
+            "comment": "feat: Add `overflowBoundaryPadding` positioning prop"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2043f6d0278192d009426549e6cb63dba4b93593",
+            "comment": "fix: Do not add an escape character for colons in the styleTagId since useId now removes colons from the generated id in React 18."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ab3ee4ca37d90bd42ba0c90a444f9f701d76df7f",
+            "comment": "chore: improve SpinButton documentation for home/end hotkeys"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "dc2adec63a4f71534bf9ed51684503ccb507ceb7",
+            "comment": "fix: properly handle single character text input for SpinButton"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6a925547d8051b7d9a1855d6f20b7920d946fcdf",
+            "comment": "feat: Release 9.0.0"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2043f6d0278192d009426549e6cb63dba4b93593",
+            "comment": "fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Feb 2023 14:13:04 GMT",
       "tag": "@fluentui/react-components_v9.14.0",
       "version": "9.14.0",

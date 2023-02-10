@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 07 Feb 2023 14:13:10 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Feb 2023 08:50:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.3.3)
+
+Fri, 10 Feb 2023 08:50:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.3.2..@fluentui/react-provider_v9.3.3)
+
+### Patches
+
+- fix: Do not add an escape character for colons in the styleTagId since useId now removes colons from the generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+- Bump @fluentui/react-tabster to v9.5.1 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.3.2)
 

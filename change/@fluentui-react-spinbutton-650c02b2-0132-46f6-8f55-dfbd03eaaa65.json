@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: improve SpinButton documentation for home/end hotkeys",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

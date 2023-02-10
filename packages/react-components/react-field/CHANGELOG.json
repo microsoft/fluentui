@@ -2,6 +2,47 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Fri, 10 Feb 2023 08:49:59 GMT",
+      "tag": "@fluentui/react-field_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "7db30ce5c8ff56bbcfb01d40e60db382356b6b38",
+            "comment": "chore: Update Field spec and migration guide"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2a4adf399928df00013a1b58eb5dd1ce77141c57",
+            "comment": "chore: Update Field documentation and stories"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.8",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.0.20",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-utilities to v9.5.2",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:56 GMT",
       "tag": "@fluentui/react-field_v9.0.0-alpha.18",
       "version": "9.0.0-alpha.18",
