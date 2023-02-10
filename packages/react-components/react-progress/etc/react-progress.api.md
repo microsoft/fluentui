@@ -26,7 +26,7 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
     value?: number;
     max?: number;
     thickness?: 'medium' | 'large';
-    validationState?: 'success' | 'warning' | 'error';
+    color?: 'brand' | 'success' | 'warning' | 'error';
 };
 
 // @public (undocumented)
@@ -36,7 +36,7 @@ export type ProgressBarSlots = {
 };
 
 // @public
-export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'validationState'>;
+export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'color'>;
 
 // @public @deprecated (undocumented)
 export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
