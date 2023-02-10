@@ -109,6 +109,11 @@ const storyTemplate = html<MenuStoryArgs>`
       </fluent-menu-item>
       <fluent-menu-item class="header">Group Header</fluent-menu-item>
       <fluent-menu-item>
+        New
+        <span slot="start">${FormNew20Filled}</span>
+        <span slot="end">Ctrl+N</span>
+      </fluent-menu-item>
+      <fluent-menu-item>
         Open
         <span slot="start">${FormNew20Filled}</span>
         <fluent-menu slot="submenu">
@@ -121,21 +126,6 @@ const storyTemplate = html<MenuStoryArgs>`
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
-      </fluent-menu-item>
-      <fluent-menu-item>
-        New
-        <span slot="start">${FormNew20Filled}</span>
-        <fluent-menu slot="submenu">
-          <fluent-menu-item>
-            File
-            <span slot="start">${TabDesktopNewPage20Filled}</span>
-          </fluent-menu-item>
-          <fluent-menu-item>
-            Workspace
-            <span slot="start">${Code20Filled}</span>
-          </fluent-menu-item>
-        </fluent-menu>
-        <span slot="end">Shortcut Text</span>
       </fluent-menu-item>
     </fluent-menu>
   </div>

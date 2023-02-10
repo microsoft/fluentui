@@ -9,6 +9,8 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+import { FASTMenu } from '@microsoft/fast-foundation';
+import { FASTMenuItem } from '@microsoft/fast-foundation';
 import { FASTProgress } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
@@ -1201,6 +1203,32 @@ export const lineHeightHero800: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const lineHeightHero900: CSSDesignToken<string>;
+
+// @public
+export class Menu extends FASTMenu {
+}
+
+// @public
+export const MenuDefinition: FASTElementDefinition<typeof Menu>;
+
+// @public
+export class MenuItem extends FASTMenuItem {
+}
+
+// @public
+export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+
+// @public
+export const MenuItemStyles: ElementStyles;
+
+// @public (undocumented)
+export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
+
+// @public
+export const MenuStyles: ElementStyles;
+
+// @public (undocumented)
+export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
 export class ProgressBar extends FASTProgress {

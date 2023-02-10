@@ -72,8 +72,8 @@ export const styles = css`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: fit-content;
+    height: 32px;
     font-size: 20px;
   }
   :host::part(expand-collapse-glyph-container),
@@ -90,8 +90,6 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
     white-space: nowrap;
-    padding-right: 8px;
-    border-right: 1px solid ${colorNeutralStroke1};
   }
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
