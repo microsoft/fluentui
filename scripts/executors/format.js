@@ -2,24 +2,23 @@
 // It only handles certain cases that prettier doesn't support as well/at all natively.
 
 const { execSync } = require('child_process');
-const { runPrettier, runPrettierForFolder } = require('@fluentui/scripts-prettier');
+
 const { findGitRoot } = require('@fluentui/scripts-monorepo');
+const { runPrettier, runPrettierForFolder } = require('@fluentui/scripts-prettier');
 
 const parsedArgs = parseArgs();
 const root = findGitRoot();
 
-async function main() {
+function main() {
   const { all: runOnAllFiles, check: checkMode } = parsedArgs;
 
   console.log(
     `Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files, in ${checkMode ? 'check' : 'write'} mode`,
   );
 
-  if (runOnAllFiles) {
-    await runPrettierForFolder(root, { runAsync: true, check: parsedArgs.check });
-  } else {
-    await runOnChanged();
-  }
+  const result = runOnAllFiles ? runOnAll() : runOnChanged();
+
+  process.exit(result?.status ?? undefined);
 }
 
 function parseArgs() {
@@ -62,7 +61,11 @@ function parseArgs() {
     }).argv;
 }
 
-async function runOnChanged() {
+function runOnAll() {
+  return runPrettierForFolder(root, { check: parsedArgs.check });
+}
+
+function runOnChanged() {
   const passedDiffTarget = parsedArgs.since;
 
   const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
@@ -76,10 +79,7 @@ async function runOnChanged() {
     return;
   }
 
-  return runPrettier(files, { runAsync: true, check: parsedArgs.check });
+  return runPrettier(files, { check: parsedArgs.check });
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+main();
