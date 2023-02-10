@@ -211,6 +211,7 @@ packages/react-components/react-datepicker @microsoft/cxe-red @sopranopillow @kh
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-breadcrumb @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg
+packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
