@@ -9,14 +9,6 @@ export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 export type DialogOpenChangeData =
   | {
-      /**
-       * triggered when Escape key is pressed in a native `dialog`
-       */
-      type: 'dialogCancel';
-      open: boolean;
-      event: React.SyntheticEvent<DialogSurfaceElement>;
-    }
-  | {
       type: 'escapeKeyDown';
       open: boolean;
       event: React.KeyboardEvent<DialogSurfaceElement>;

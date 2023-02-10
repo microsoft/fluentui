@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { omit } from '@fluentui/react-utilities/src/utils/omit';
 import { Persona } from './Persona';
 import { personaClassNames } from './usePersonaStyles';

@@ -2,13 +2,14 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { typographyStyles } from '@fluentui/react-theme';
 
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots> = {
   root: 'fui-TableCellLayout',
   media: 'fui-TableCellLayout__media',
   main: 'fui-TableCellLayout__main',
   description: 'fui-TableCellLayout__description',
-  wrapper: 'fui-TableCellLayout__wrapper',
+  content: 'fui-TableCellLayout__content',
 };
 
 /**
@@ -21,9 +22,18 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
-  wrapper: {
+
+  rootTruncate: {
+    overflowX: 'hidden',
+  },
+
+  content: {
     display: 'flex',
     flexDirection: 'column',
+  },
+
+  contentTruncate: {
+    overflowX: 'hidden',
   },
 
   media: {
@@ -31,20 +41,31 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
 
+  mediaExtraSmall: {
+    fontSize: '16px',
+  },
+
+  mediaSmallAndMedium: {
+    fontSize: '20px',
+  },
+
   mediaPrimary: {
-    '& svg': {
-      width: '28px',
-      height: '28px',
-    },
+    fontSize: '24px',
   },
 
   mainPrimary: {
     fontWeight: tokens.fontWeightSemibold,
   },
 
+  mainTruncate: {
+    overflowX: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+
   description: {
-    fontSize: tokens.fontSizeBase300,
     color: tokens.colorNeutralForeground2,
+    ...typographyStyles.caption1,
   },
 });
 
@@ -53,13 +74,27 @@ const useStyles = makeStyles({
  */
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableCellLayoutClassNames.root, styles.root, state.root.className);
+  const { truncate } = state;
+
+  state.root.className = mergeClasses(
+    tableCellLayoutClassNames.root,
+    styles.root,
+    truncate && styles.rootTruncate,
+    state.root.className,
+  );
   const primary = state.appearance === 'primary';
 
   if (state.media) {
+    const mediaSizedStyles = {
+      small: styles.mediaSmallAndMedium,
+      medium: styles.mediaSmallAndMedium,
+      'extra-small': styles.mediaExtraSmall,
+    };
+
     state.media.className = mergeClasses(
       tableCellLayoutClassNames.media,
       styles.media,
+      mediaSizedStyles[state.size],
       primary && styles.mediaPrimary,
       state.media.className,
     );
@@ -68,6 +103,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   if (state.main) {
     state.main.className = mergeClasses(
       tableCellLayoutClassNames.main,
+      truncate && styles.mainTruncate,
       primary && styles.mainPrimary,
       state.main.className,
     );
@@ -81,8 +117,13 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
     );
   }
 
-  if (state.wrapper) {
-    state.wrapper.className = mergeClasses(tableCellLayoutClassNames.wrapper, styles.wrapper, state.wrapper.className);
+  if (state.content) {
+    state.content.className = mergeClasses(
+      tableCellLayoutClassNames.content,
+      styles.content,
+      truncate && styles.contentTruncate,
+      state.content.className,
+    );
   }
 
   return state;

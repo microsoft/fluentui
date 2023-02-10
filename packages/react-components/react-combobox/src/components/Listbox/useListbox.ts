@@ -23,7 +23,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const optionCollection = useOptionCollection();
   const { getCount, getOptionAtIndex, getIndexOfId } = optionCollection;
 
-  const { selectedOptions, selectOption } = useSelection(props);
+  const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -89,13 +89,14 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     },
     root: getNativeElementProps('div', {
       ref,
-      role: 'listbox',
+      role: multiselect ? 'menu' : 'listbox',
       'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
       'aria-multiselectable': multiselect,
       tabIndex: 0,
       ...props,
     }),
     multiselect,
+    clearSelection,
     ...optionCollection,
     ...optionContextValues,
   };

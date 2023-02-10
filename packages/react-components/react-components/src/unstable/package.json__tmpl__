@@ -7,7 +7,7 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./../lib/unstable/index.d.ts",
+      "types": "./../dist/unstable.d.ts",
       "import": "./../lib/unstable/index.js",
       "require": "./../lib-commonjs/unstable/index.js"
     }

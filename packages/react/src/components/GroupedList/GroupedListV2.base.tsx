@@ -15,12 +15,12 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
   IGroupedList,
-  IGroupedListProps,
   IGroup,
   IGroupRenderProps,
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
+import type { IGroupedListV2Props } from './GroupedListV2.types';
 import { GroupHeader } from './GroupHeader';
 import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
@@ -29,17 +29,11 @@ import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
 
 export interface IGroupedListV2State {
-  selectionMode?: IGroupedListProps['selectionMode'];
-  compact?: IGroupedListProps['compact'];
+  selectionMode?: IGroupedListV2Props['selectionMode'];
+  compact?: IGroupedListV2Props['compact'];
   groups?: IGroup[];
-  items?: IGroupedListProps['items'];
-  listProps?: IGroupedListProps['listProps'];
-  version: {};
-  groupExpandedVersion: {};
-}
-
-export interface IGroupedListV2Props extends IGroupedListProps {
-  listRef: React.Ref<List>;
+  items?: IGroupedListV2Props['items'];
+  listProps?: IGroupedListV2Props['listProps'];
   version: {};
   groupExpandedVersion: {};
 }
@@ -65,6 +59,7 @@ type IHeaderGroupedItem = {
   type: 'header';
   group: IGroup;
   groupId: string;
+  groupIndex: number;
 };
 
 type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
@@ -75,6 +70,11 @@ type FlattenItems = (
   memoItems: IGroupedItem[],
   groupProps: IGroupRenderProps['getGroupItemLimit'],
 ) => IGroupedItem[];
+
+type GroupStackItem = {
+  group: IGroup;
+  groupIndex: number;
+};
 
 const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit) => {
   if (!groups) {
@@ -90,19 +90,22 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
 
   let index = 0;
 
-  const stack: IGroup[] = [];
+  // const stack: IGroup[] = [];
+  const stack: GroupStackItem[] = [];
   let j = groups.length - 1;
   while (j >= 0) {
-    stack.push(groups[j]);
+    stack.push({ group: groups[j], groupIndex: j + 1 });
     j--;
   }
 
   while (stack.length > 0) {
-    let group = stack.pop()!;
+    // eslint-disable-next-line prefer-const
+    let { group, groupIndex } = stack.pop()!;
     memoItems[index] = {
       group,
       groupId: getId('GroupedListSection'),
       type: 'header',
+      groupIndex,
     };
 
     index++;
@@ -110,7 +113,7 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
     while (group.isCollapsed !== true && group?.children && group.children.length > 0) {
       j = group.children.length - 1;
       while (j > 0) {
-        stack.push(group.children[j]);
+        stack.push({ group: group.children[j], groupIndex: j + 1 });
         j--;
       }
       group = group.children[0];
@@ -118,6 +121,7 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
         group,
         groupId: getId('GroupedListSection'),
         type: 'header',
+        groupIndex: 1,
       };
       index++;
     }
@@ -396,14 +400,27 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
   const renderHeader = (item: IHeaderGroupedItem, flattenedIndex: number): React.ReactNode => {
     const group = item.group;
 
+    let ariaProps;
+    if (role === 'treegrid') {
+      // GroupedList default role
+      ariaProps = {
+        ariaLevel: group.level ? group.level + 1 : 1,
+        ariaSetSize: groups ? groups.length : undefined,
+        ariaPosInSet: item.groupIndex,
+      };
+    } else {
+      // Grouped DetailsList
+      ariaProps = {
+        ariaRowIndex: flattenedIndex,
+      };
+    }
+
     const headerProps = {
       ...groupProps!.headerProps,
       ...getDividerProps(item.group, flattenedIndex),
       key: group.key,
       groupedListId: item.groupId,
-      ariaLevel: group.level ? group.level + 1 : 1,
-      ariaSetSize: groups ? groups.length : undefined,
-      ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
+      ...ariaProps,
     };
 
     return (
@@ -449,7 +466,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       return renderFooter(item, flattenedIndex);
     } else {
       const level = item.group.level ? item.group.level + 1 : 1;
-      return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex);
+      return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex, item.group);
     }
   };
 
@@ -509,13 +526,13 @@ const GroupItem = <T,>({
 };
 
 export class GroupedListV2Wrapper
-  extends React.Component<IGroupedListProps, IGroupedListV2State>
+  extends React.Component<IGroupedListV2Props, IGroupedListV2State>
   implements IGroupedList {
   public static displayName: string = 'GroupedListV2';
   private _list = React.createRef<List>();
 
   public static getDerivedStateFromProps(
-    nextProps: IGroupedListProps,
+    nextProps: IGroupedListV2Props,
     previousState: IGroupedListV2State,
   ): IGroupedListV2State {
     const { groups, selectionMode, compact, items, listProps } = nextProps;
@@ -539,7 +556,7 @@ export class GroupedListV2Wrapper
     return nextState;
   }
 
-  constructor(props: IGroupedListProps) {
+  constructor(props: IGroupedListV2Props) {
     super(props);
     initializeComponentRef(this);
 

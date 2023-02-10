@@ -45,3 +45,4 @@ export { datepickerCalendarCellButtonVariables as DatepickerCalendarCellButton }
 export { datepickerCalendarGridRowVariables as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowVariables';
 export { cardVariables as Card } from './components/Card/cardVariables';
 export { splitButtonVariables as SplitButtonDivider } from './components/SplitButton/splitButtonVariables';
+export { loaderVariables as Loader } from './components/Loader/loaderVariables';

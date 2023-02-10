@@ -34,16 +34,16 @@ export interface IColorsProductsPageState {
 
 export class ColorsProductsPage extends React.Component<IStylesPageProps, IColorsProductsPageState> {
   public readonly state = {
-    activeAppColorPalette: null,
-    activeAppDetails: null,
-  };
+    activeAppColorPalette: undefined,
+    activeAppDetails: undefined,
+  } as IColorsProductsPageState;
 
   public render() {
     return (
       <StylesAreaPage
         {...this.props}
-        {...ColorsProductsPageProps[this.props.platform]}
-        otherSections={this._otherSections(this.props.platform)}
+        {...ColorsProductsPageProps[this.props.platform!]}
+        otherSections={this._otherSections(this.props.platform!)}
       />
     );
   }
@@ -67,6 +67,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
                 {activeAppColorPalette && (
                   <>
                     <MarkdownHeader as="h2">{activeAppColorPalette.name}</MarkdownHeader>
+                    {/* @ts-expect-error - FIXME: notes property doesn't exist within IColorPaletteTheme */}
                     <p>{activeAppColorPalette.notes}</p>
                     <ColorPalette colors={activeAppColorPalette.colors} />
                   </>
@@ -98,7 +99,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
     }
 
     // Show a custom view for the active app (optional).
-    let appDetails: JSX.Element = null;
+    let appDetails: JSX.Element | null = null;
 
     switch (color.name) {
       case 'Excel':
@@ -133,7 +134,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
     }
 
     this.setState({
-      activeAppDetails: appDetails,
+      activeAppDetails: appDetails!,
     });
   };
 }
