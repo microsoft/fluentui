@@ -31,6 +31,11 @@ const rootBaseStyles: GriffelResetStyle = {
   minHeight: fieldHeights.medium,
   padding: `0 ${tokens.spacingHorizontalMNudge}`,
   ...typographyStyles.body1,
+
+  // appearance: outline (default)
+  backgroundColor: tokens.colorNeutralBackground1,
+  border: `1px solid ${tokens.colorNeutralStroke1}`,
+  borderBottomColor: tokens.colorNeutralStrokeAccessible,
 };
 
 const rootInteractiveStyles: GriffelResetStyle = {
@@ -114,9 +119,7 @@ const useRootStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    // included in rootBaseStyles
   },
   outlineInteractive: {
     ':hover': {
@@ -132,7 +135,10 @@ const useRootStyles = makeStyles({
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderRadius(0), // corners look strange if rounded
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
+    // border is specified in rootBaseStyles, but we only want a bottom border here
+    borderTopStyle: 'none',
+    borderRightStyle: 'none',
+    borderLeftStyle: 'none',
   },
   underlineInteractive: {
     ':hover': {
@@ -145,7 +151,7 @@ const useRootStyles = makeStyles({
     '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
-    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
