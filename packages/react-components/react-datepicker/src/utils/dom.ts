@@ -1,7 +1,5 @@
 import { canUseDOM } from '@fluentui/react-utilities';
 
-const window: Window | undefined = undefined;
-
 export function getWindow(targetElement?: Element | null): Window | undefined {
   if (!canUseDOM() || typeof window === 'undefined') {
     return undefined;
