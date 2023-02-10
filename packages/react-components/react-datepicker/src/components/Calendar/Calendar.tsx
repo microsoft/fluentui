@@ -7,11 +7,11 @@ import {
   addYears,
   DateRangeType,
   DayOfWeek,
-  FirstWeekOfYear,
   DEFAULT_CALENDAR_STRINGS,
   DEFAULT_DATE_FORMATTING,
-  getWindow,
+  FirstWeekOfYear,
   focusAsync,
+  getWindow,
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
