@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Feb 2023 08:50:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.1.2)
+
+Fri, 10 Feb 2023 08:50:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.1.1..@fluentui/react-spinbutton_v9.1.2)
+
+### Patches
+
+- chore: improve SpinButton documentation for home/end hotkeys ([PR #26724](https://github.com/microsoft/fluentui/pull/26724) by seanmonahan@microsoft.com)
+- fix: properly handle single character text input for SpinButton ([PR #26789](https://github.com/microsoft/fluentui/pull/26789) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.19 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-input to v9.3.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-label to v9.0.20 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.1.1)
 

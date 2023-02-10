@@ -1,7 +1,0 @@
-{
-  "comment": "feat: TableCellLayout component now supports truncate prop",
-  "dependentChangeType": "patch",
-  "email": "jirivyhnalek@microsoft.com",
-  "packageName": "@fluentui/react-table",
-  "type": "prerelease"
-}

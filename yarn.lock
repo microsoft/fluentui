@@ -1645,17 +1645,17 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@floating-ui/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.0.0.tgz#ec1d31f54c72dd0460276e2149e59bd13c0f01f6"
-  integrity sha512-sm3nW0hHAxTv3gRDdCH8rNVQxijF+qPFo5gAeXCErRjKC7Qc28lIQ3R9Vd7Gw+KgwfA7RhRydDFuGeI0peGq7A==
+"@floating-ui/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.0.tgz#ae7ae7923d41f3d84cb2fd88740a89436610bbec"
+  integrity sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==
 
-"@floating-ui/dom@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.0.0.tgz#66923a56755b6cb7a5958ecf25fe293912672d65"
-  integrity sha512-PMqJvY5Fae8HVQgUqM+lidprS6p9LSvB0AUhCdYKqr3YCaV+WaWCeVNBtXPRY2YIdrgcsL2+vd5F07FxgihHUw==
+"@floating-ui/dom@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.0.tgz#a60212069cc58961c478037c30eba4b191c75316"
+  integrity sha512-QXzg57o1cjLz3cGETzKXjI3kx1xyS49DW9l7kV2jw2c8Yftd434t2hllX0sVGn2Q8MtcW/4pNm8bfE1/4n6mng==
   dependencies:
-    "@floating-ui/core" "^1.0.0"
+    "@floating-ui/core" "^1.2.0"
 
 "@fluent-blocks/colors@9.2.0":
   version "9.2.0"
@@ -23967,10 +23967,10 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.3.tgz#ef92a594e2109c80f9ac074e5f3bfbf96c463ceb"
-  integrity sha512-6KLD1mfZwDTO23JvnxpCUYHJSgvSLVbXS4KTAal9tBMoU59/+5ESd239ddX6PMB+/mzgh5v7+FTtVHqAslkubQ==
+storybook-addon-export-to-codesandbox@0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.4.tgz#7bbbcd88e2776d261f0f6c6322847371a3015139"
+  integrity sha512-l2kRp3ro0j0SAMN/vZWPFXcpJx+FsFtGw87ixG7uf2d0Vig/IrWYZo9oROF10FOhOgCYmrV1XxCU3jujCg9jvw==
   dependencies:
     codesandbox-import-utils "^2.2.3"
     pkg-up "^3.1.0"

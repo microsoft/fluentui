@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 10 Feb 2023 07:47:23 GMT",
+      "tag": "@fluentui/react_v8.105.6",
+      "version": "8.105.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1e563117e19994930daaf1083cf0e59d18fbdd76",
+            "comment": "Coachmark: re-render and re-calculate bounds when page resizes"
+          },
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "26e6b8c130f8b0138af13176e8a6edb6b8416ba9",
+            "comment": "fix: Remove override row width style to fix DetailsList layouts."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Feb 2023 07:36:28 GMT",
       "tag": "@fluentui/react_v8.105.5",
       "version": "8.105.5",
