@@ -513,6 +513,16 @@
         "dependencies": [
           "@fluentui/react-conformance"
         ]
+      },
+      {
+        "packages": [
+          "@fluentui/web-components"
+        ],
+        "dependencies": [
+          "@microsoft/fast-element",
+          "@microsoft/api-extractor",
+          "typescript"
+        ]
       }
     ]
   }
