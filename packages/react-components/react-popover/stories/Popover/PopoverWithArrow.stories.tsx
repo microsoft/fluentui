@@ -8,6 +8,7 @@ import {
   PopoverSurface,
   PopoverTrigger,
   Subtitle2,
+  useFluent,
 } from '@fluentui/react-components';
 
 const supportsBackdropFilter = '@supports (backdrop-filter: blur(100px))';
@@ -33,6 +34,7 @@ const useStyles = makeStyles({
 
 const ExampleContent = () => {
   const styles = useStyles();
+  const { targetDocument } = useFluent();
   return (
     <PopoverSurface className={styles.surface}>
       <Subtitle2 as="h3" className={styles.contentHeader}>
@@ -41,7 +43,9 @@ const ExampleContent = () => {
 
       <Body1>Device Pixel Rounding: NO</Body1>
 
-      <Body1>Device Pixel Ratio: {Math.round((window?.devicePixelRatio || 0) * 1000) / 1000}</Body1>
+      <Body1>
+        Device Pixel Ratio: {Math.round((targetDocument?.defaultView?.devicePixelRatio || 0) * 1000) / 1000}
+      </Body1>
 
       <Body1 className={styles.backdropFilterStatus} />
     </PopoverSurface>
