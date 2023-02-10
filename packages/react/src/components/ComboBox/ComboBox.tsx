@@ -420,13 +420,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       newCurrentPendingValueValidIndex =
         this.props.allowFreeform || this.props.allowFreeInput
           ? this._processInputChangeWithFreeform(currentPendingValue)
-          : this._processInputChangeWithoutFreeform(currentPendingValue);
+          : this._updateAutocompleteIndexWithoutFreeform(currentPendingValue);
     }
 
     let descendantText = undefined;
 
     if (isOpen && selectedIndices.length) {
-      descendantText = options[selectedIndices[0]].id ?? this._id + '-list' + selectedIndices[0];
+      descendantText = options[selectedIndices[0]]?.id ?? this._id + '-list' + selectedIndices[0];
     } else if (isOpen && this._hasFocus() && newCurrentPendingValueValidIndex !== -1) {
       descendantText =
         options[newCurrentPendingValueValidIndex].id ?? this._id + '-list' + newCurrentPendingValueValidIndex;
@@ -910,7 +910,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * @returns the index of the matched option
    */
   private _processInputChangeWithoutFreeform(updatedValue: string): number {
-    const { currentOptions } = this.props.hoisted;
     const { currentPendingValue, currentPendingValueValidIndex } = this.state;
 
     if (this.props.autoComplete === 'on') {
@@ -930,32 +929,18 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           updatedValue = normalizeToString(currentPendingValue) + updatedValue;
         }
 
-        const originalUpdatedValue: string = updatedValue;
-        updatedValue = updatedValue.toLocaleLowerCase();
-
-        // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-        const items = currentOptions
-          .map((item, i) => ({ ...item, index: i }))
-
-          .filter(
-            option =>
-              isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
-          );
-
-        // If we found a match, update the state
-        if (items.length > 0) {
-          this._setPendingInfo(originalUpdatedValue, items[0].index, getPreviewText(items[0]));
-        }
+        const matchingIndex = this._updateAutocompleteIndexWithoutFreeform(updatedValue);
 
         // Schedule a timeout to clear the pending value after the timeout span
         this._autoCompleteTimeout = this._async.setTimeout(() => {
           this._autoCompleteTimeout = undefined;
         }, ReadOnlyPendingAutoCompleteTimeout);
-        return items[0].index;
+
+        return matchingIndex;
       }
     }
 
-    // If we get here, either autoComplete is off or we did not find a match with autoComplete on.
+    // If we get here, autoComplete is off.
     // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
     const index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
@@ -964,6 +949,31 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // set both the pending and suggested values/index
     // to allow us to select all content in the input to
     // give the illusion that we are readonly (e.g. freeform off)
+    this._setPendingInfoFromIndex(index);
+    return index;
+  }
+
+  private _updateAutocompleteIndexWithoutFreeform(updatedValue: string): number {
+    const { currentOptions } = this.props.hoisted;
+    const originalUpdatedValue: string = updatedValue;
+    updatedValue = updatedValue.toLocaleLowerCase();
+
+    // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
+    const items = currentOptions
+      .map((item, i) => ({ ...item, index: i }))
+
+      .filter(
+        option =>
+          isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
+      );
+
+    // If we found a match, update the state
+    if (items.length > 0) {
+      this._setPendingInfo(originalUpdatedValue, items[0].index, getPreviewText(items[0]));
+      return items[0].index;
+    }
+
+    const index = this._getFirstSelectedIndex();
     this._setPendingInfoFromIndex(index);
     return index;
   }
