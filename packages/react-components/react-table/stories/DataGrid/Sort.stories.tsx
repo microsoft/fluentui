@@ -8,19 +8,20 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   DataGridBody,
   DataGridRow,
   DataGrid,
+  DataGridProps,
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
+  TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
-} from '@fluentui/react-table';
-import { SortState } from '../../src/hooks/types';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -149,7 +150,10 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const Sort = () => {
-  const defaultSortState = React.useMemo<SortState>(() => ({ sortColumn: 'file', sortDirection: 'ascending' }), []);
+  const defaultSortState = React.useMemo<Parameters<NonNullable<DataGridProps['onSortChange']>>[1]>(
+    () => ({ sortColumn: 'file', sortDirection: 'ascending' }),
+    [],
+  );
 
   return (
     <DataGrid items={items} columns={columns} sortable defaultSortState={defaultSortState}>

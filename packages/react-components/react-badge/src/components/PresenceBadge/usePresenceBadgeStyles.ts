@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     '& span': {
       display: 'flex',
     },
-    ...shorthands.borderRadius('50%'),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     backgroundColor: tokens.colorNeutralBackground1,
   },
   statusBusy: {
@@ -54,9 +54,6 @@ const useStyles = makeStyles({
   },
   outOfOfficeBusy: {
     color: tokens.colorPaletteRedBackground3,
-  },
-  outOfOfficeAway: {
-    color: tokens.colorPaletteMarigoldBackground3,
   },
 
   // Icons are not resizeable, and these sizes are currently missing
@@ -105,7 +102,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
     state.outOfOffice && styles.outOfOffice,
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && isBusy && styles.outOfOfficeBusy,
-    state.outOfOffice && state.status === 'away' && styles.outOfOfficeAway,
+    state.outOfOffice && state.status === 'away' && styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'offline' && styles.statusOffline,
     state.outOfOffice && state.status === 'out-of-office' && styles.statusOutOfOffice,
     state.size === 'tiny' && styles.tiny,

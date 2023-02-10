@@ -8,7 +8,6 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -17,7 +16,9 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+  PresenceBadgeStatus,
+  Avatar,
+} from '@fluentui/react-components';
 
 const items = [
   {

@@ -15,6 +15,7 @@ export type {
 } from './compose/index';
 
 export {
+  IdPrefixProvider,
   resetIdsForTests,
   useControllableState,
   useEventCallback,

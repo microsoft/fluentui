@@ -8,8 +8,10 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  useArrowNavigationGroup,
   TableBody,
   TableCell,
   TableRow,
@@ -27,7 +29,7 @@ import {
   TableRowId,
   TableRowProps,
   TableSelectionState,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;

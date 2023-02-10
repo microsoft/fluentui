@@ -2,6 +2,7 @@ import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
+  useOverrides_unstable as useOverrides,
 } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable as ThemeContextValue } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
@@ -24,6 +25,7 @@ export const useFluentProvider_unstable = (
 ): FluentProviderState => {
   const parentContext = useFluent();
   const parentTheme = useTheme();
+  const parentOverrides = useOverrides();
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -35,8 +37,11 @@ export const useFluentProvider_unstable = (
     dir = parentContext.dir,
     targetDocument = parentContext.targetDocument,
     theme,
+    overrides_unstable: overrides = {},
   } = props;
-  const mergedTheme = mergeThemes(parentTheme, theme);
+  const mergedTheme = shallowMerge(parentTheme, theme);
+
+  const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
   React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
@@ -55,6 +60,8 @@ export const useFluentProvider_unstable = (
     dir,
     targetDocument,
     theme: mergedTheme,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    overrides_unstable: mergedOverrides,
     themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
 
     components: {
@@ -69,7 +76,7 @@ export const useFluentProvider_unstable = (
   };
 };
 
-function mergeThemes(a: ThemeContextValue, b: ThemeContextValue): ThemeContextValue {
+function shallowMerge<T>(a: T, b: T): T {
   // Merge impacts perf: we should like to avoid it if it's possible
   if (a && b) {
     return { ...a, ...b };

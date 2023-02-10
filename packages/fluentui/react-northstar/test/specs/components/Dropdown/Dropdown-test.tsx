@@ -43,6 +43,17 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).toHaveTextContent('');
     });
 
+    it('value is cleared at Icon enter press', () => {
+      const { triggerButtonNode, keyDownOnClearIndicator } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      keyDownOnClearIndicator('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+    });
+
     it('calls onChange on Icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const { clickOnClearIndicator } = renderDropdown({

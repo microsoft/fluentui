@@ -27,7 +27,10 @@ async function test(): Promise<void> {
     browser = await launchBrowser();
     console.log('Using', await browser.version());
 
-    const url = `file://${htmlPath}`;
+    const url =
+      process.platform === 'win32'
+        ? `file:///${htmlPath.split(path.win32.sep).join(path.posix.sep)}`
+        : `file://${htmlPath}`;
     console.log(`Using "${url}"`);
 
     await visitPage(browser, url);

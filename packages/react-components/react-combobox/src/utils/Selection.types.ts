@@ -2,7 +2,10 @@ import * as React from 'react';
 import { OptionValue } from './OptionCollection.types';
 
 export type SelectionProps = {
-  /* For an uncontrolled component, sets the initial selection */
+  /**
+   * For an uncontrolled component, sets the initial selection.
+   * If this is set, the `defaultValue` prop MUST also be set.
+   */
   defaultSelectedOptions?: string[];
 
   /**
@@ -19,6 +22,7 @@ export type SelectionProps = {
   /**
    * An array of selected option keys.
    * Use this with `onOptionSelect` to directly control the selected option(s)
+   * If this is set, the `value` prop MUST also be controlled.
    */
   selectedOptions?: string[];
 };

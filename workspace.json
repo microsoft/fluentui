@@ -37,6 +37,13 @@
       "sourceRoot": "packages/react-components/babel-preset-global-context/src",
       "tags": ["vNext", "platform:node"]
     },
+    "@fluentui/babel-preset-storybook-full-source": {
+      "root": "packages/react-components/babel-preset-storybook-full-source",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/babel-preset-storybook-full-source/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
@@ -330,6 +337,13 @@
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
+    "@fluentui/react-breadcrumb": {
+      "root": "packages/react-components/react-breadcrumb",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-breadcrumb/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-builder": {
       "root": "packages/fluentui/react-builder",
       "projectType": "library",
@@ -457,6 +471,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-drawer": {
+      "root": "packages/react-components/react-drawer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-drawer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-examples": {
       "root": "packages/react-examples",
       "projectType": "library",
@@ -560,10 +581,11 @@
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-migration-v8-v9": {
-      "root": "packages/react-migration-v8-v9",
+      "root": "packages/react-components/react-migration-v8-v9",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-migration-v8-v9/src"
+      "sourceRoot": "packages/react-components/react-migration-v8-v9/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
@@ -725,6 +747,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-storybook-addon-codesandbox": {
+      "root": "packages/react-components/react-storybook-addon-codesandbox",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-storybook-addon-codesandbox/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-switch": {
       "root": "packages/react-components/react-switch",
       "projectType": "library",
@@ -822,10 +851,24 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-virtualizer": {
+      "root": "packages/react-components/react-virtualizer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-virtualizer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-window-provider": {
       "root": "packages/react-window-provider",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/recipes-react-components": {
+      "root": "apps/recipes-react-components",
+      "projectType": "application",
+      "implicitDependencies": [],
+      "sourceRoot": "apps/recipes-react-components/src",
+      "tags": ["vNext"]
     },
     "@fluentui/scheme-utilities": {
       "root": "packages/scheme-utilities",
@@ -1076,13 +1119,6 @@
       "root": "packages/utilities",
       "projectType": "library",
       "implicitDependencies": []
-    },
-    "@fluentui/react-virtualizer": {
-      "root": "packages/react-components/react-virtualizer",
-      "projectType": "library",
-      "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-virtualizer/src",
-      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/vr-tests": {
       "root": "apps/vr-tests",

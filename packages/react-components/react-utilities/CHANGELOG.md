@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 09 Jan 2023 14:35:02 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Feb 2023 08:50:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.2)
+
+Fri, 10 Feb 2023 08:50:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.1..@fluentui/react-utilities_v9.5.2)
+
+### Patches
+
+- fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.1)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.0..@fluentui/react-utilities_v9.5.1)
+
+### Patches
+
+- fix: update definitions for SSRProvider ([PR #25582](https://github.com/microsoft/fluentui/pull/25582) by olfedias@microsoft.com)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.0)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.4.0..@fluentui/react-utilities_v9.5.0)
+
+### Minor changes
+
+- feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+
+### Patches
+
+- fix: Leverage React.useId when available for our useId hook. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.4.0)
 
