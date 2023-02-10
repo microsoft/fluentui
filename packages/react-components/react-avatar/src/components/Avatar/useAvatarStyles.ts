@@ -25,7 +25,7 @@ const animations = {
 
 const avatarBorderRadius = '--fui-Avatar__borderRadius';
 
-const useRootStyles = makeResetStyles({
+const useRootClassName = makeResetStyles({
   [avatarBorderRadius]: tokens.borderRadiusCircular,
   display: 'inline-block',
   flexShrink: 0,
@@ -78,14 +78,11 @@ const useIconInitialsStyles = makeResetStyles({
 });
 
 const useStyles = makeStyles({
-  textCaption2Strong: {
-    fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightSemibold,
-  },
+  textCaption2Strong: { fontSize: tokens.fontSizeBase100 },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
   textSubtitle2: { fontSize: tokens.fontSizeBase400 },
   textSubtitle1: { fontSize: tokens.fontSizeBase500 },
-  textTitle: { fontSize: tokens.fontSizeBase600 },
+  textTitle3: { fontSize: tokens.fontSizeBase600 },
 
   squareSmall: {
     [avatarBorderRadius]: tokens.borderRadiusSmall,
@@ -400,7 +397,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   } else if (size <= 28) {
     rootClasses.push(styles.textCaption1Strong);
   } else if (size <= 40) {
-    // Intentionally empty
+    // Default text size included in useRootClassName
   } else if (size <= 56) {
     rootClasses.push(styles.textSubtitle2);
   } else if (size <= 96) {
