@@ -3,7 +3,6 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utils';
 import type { Slot } from '@fluentui/react-utilities';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { CalendarStrings, DateFormatting, DayGridOptions } from '../../utils';
 
 export type CalendarDayGridSlots = {
@@ -21,17 +20,12 @@ export interface ICalendarDayGrid {
 /**
  * {@docCategory Calendar}
  */
-export interface CalendarDayGridProps extends DayGridOptions, IBaseProps<ICalendarDayGrid> {
+export interface CalendarDayGridProps extends DayGridOptions {
   /**
    * Optional callback to access the ICalendarDayGrid interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendarDayGrid>;
-
-  /**
-   * Customized styles for the component.
-   */
-  styles?: IStyleFunctionOrObject<CalendarDayGridStyleProps, CalendarDayGridStyles>;
 
   /**
    * Theme (provided through customization).

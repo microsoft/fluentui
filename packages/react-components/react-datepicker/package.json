@@ -35,7 +35,6 @@
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.2",
     "@fluentui/keyboard-keys": "^9.0.1",
-    "@fluentui/utilities": "^8.13.6",
     "@fluentui/react-field": "9.0.0-alpha.19",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-shared-contexts": "^9.2.0",
