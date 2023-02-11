@@ -15,7 +15,7 @@ export const personaClassNames: SlotClassNames<PersonaSlots> = {
 
 const avatarSpacing = `--fui-Persona__avatar--spacing`;
 
-const useRootStyles = makeResetStyles({
+const useRootClassName = makeResetStyles({
   display: 'inline-grid',
   gridAutoRows: 'max-content',
   gridAutoFlow: 'column',
@@ -128,14 +128,14 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   const alignBeforeAfterCenter = textPosition !== 'below' && textAlignment === 'center';
   const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state, alignToPrimary);
 
-  const rootStyles = useRootStyles();
+  const rootClassName = useRootClassName();
   const styles = useStyles();
   const avatarSpacingStyles = useAvatarSpacingStyles();
   const presenceSpacingStyles = { ...avatarSpacingStyles, ...usePresenceSpacingStyles() };
 
   state.root.className = mergeClasses(
     personaClassNames.root,
-    rootStyles,
+    rootClassName,
     alignBeforeAfterCenter && styles.beforeAfterCenter,
     styles[textPosition],
     state.root.className,
@@ -207,13 +207,13 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   return state;
 };
 
-const usePrimaryTextBaseStyles = makeResetStyles({
+const usePrimaryTextBaseClassName = makeResetStyles({
   display: 'block',
   color: tokens.colorNeutralForeground1,
   ...typographyStyles.body1,
 });
 
-const useOptionalTextBaseStyles = makeResetStyles({
+const useOptionalTextBaseClassName = makeResetStyles({
   display: 'block',
   color: tokens.colorNeutralForeground2,
   ...typographyStyles.caption1,
@@ -240,8 +240,8 @@ const useTextClassNames = (
   optionalTextClassName: string;
 } => {
   const { presenceOnly, size, textPosition } = state;
-  const primaryTextBaseStyles = usePrimaryTextBaseStyles();
-  const optionalTextBaseStyle = useOptionalTextBaseStyles();
+  const primaryTextBaseClassName = usePrimaryTextBaseClassName();
+  const optionalTextBaseClassName = useOptionalTextBaseClassName();
   const textStyles = useTextStyles();
 
   let primaryTextSize;
@@ -270,9 +270,9 @@ const useTextClassNames = (
   }
 
   return {
-    primaryTextClassName: mergeClasses(primaryTextBaseStyles, primaryTextSize, alignToPrimaryClassName),
+    primaryTextClassName: mergeClasses(primaryTextBaseClassName, primaryTextSize, alignToPrimaryClassName),
     optionalTextClassName: mergeClasses(
-      optionalTextBaseStyle,
+      optionalTextBaseClassName,
       !presenceOnly && size === 'huge' && textStyles.body1,
       alignToPrimaryClassName,
     ),
