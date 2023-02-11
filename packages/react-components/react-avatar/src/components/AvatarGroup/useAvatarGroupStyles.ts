@@ -36,8 +36,8 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
     styles.base,
-    layout === 'pie' && styles.pie,
     layout === 'pie' && sizeStyles[size],
+    layout === 'pie' && styles.pie,
     state.root.className,
   );
 

@@ -29,8 +29,6 @@ const useRootStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
   },
   nonOverflowItem: {
-    width: '32px',
-    height: '32px',
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   },
 });
