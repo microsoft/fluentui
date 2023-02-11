@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PersonaSlots, PersonaState } from './Persona.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -15,18 +15,15 @@ export const personaClassNames: SlotClassNames<PersonaSlots> = {
 
 const avatarSpacing = `--fui-Persona__avatar--spacing`;
 
-const useRootStyles = makeResetStyles({
-  display: 'inline-grid',
-  gridAutoRows: 'max-content',
-  gridAutoFlow: 'column',
-  justifyItems: 'start',
-  gridTemplateColumns: 'max-content [middle] auto',
-});
-
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
+  base: {
+    display: 'inline-grid',
+    gridAutoRows: 'max-content',
+  },
+
   beforeAfterCenter: {
     // This template is needed to make sure the Avatar is centered when it takes up more space than the text lines
     gridTemplateRows:
@@ -34,16 +31,17 @@ const useStyles = makeStyles({
   },
 
   after: {
-    // Intentionally empty
+    gridAutoFlow: 'column',
+    justifyItems: 'start',
+    gridTemplateColumns: 'max-content [middle] auto',
   },
   before: {
+    gridAutoFlow: 'column',
     justifyItems: 'end',
     gridTemplateColumns: 'auto [middle] max-content',
   },
   below: {
-    gridAutoFlow: 'unset',
     justifyItems: 'center',
-    gridTemplateColumns: 'unset',
   },
 
   media: {
@@ -128,14 +126,13 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   const alignBeforeAfterCenter = textPosition !== 'below' && textAlignment === 'center';
   const { primaryTextClassName, optionalTextClassName } = useTextClassNames(state, alignToPrimary);
 
-  const rootStyles = useRootStyles();
   const styles = useStyles();
   const avatarSpacingStyles = useAvatarSpacingStyles();
   const presenceSpacingStyles = { ...avatarSpacingStyles, ...usePresenceSpacingStyles() };
 
   state.root.className = mergeClasses(
     personaClassNames.root,
-    rootStyles,
+    styles.base,
     alignBeforeAfterCenter && styles.beforeAfterCenter,
     styles[textPosition],
     state.root.className,
@@ -207,19 +204,17 @@ export const usePersonaStyles_unstable = (state: PersonaState): PersonaState => 
   return state;
 };
 
-const usePrimaryTextBaseStyles = makeResetStyles({
-  display: 'block',
-  color: tokens.colorNeutralForeground1,
-  ...typographyStyles.body1,
-});
-
-const useOptionalTextBaseStyles = makeResetStyles({
-  display: 'block',
-  color: tokens.colorNeutralForeground2,
-  ...typographyStyles.caption1,
-});
-
 const useTextStyles = makeStyles({
+  base: {
+    display: 'block',
+  },
+  primaryText: {
+    color: tokens.colorNeutralForeground1,
+  },
+  optionalText: {
+    color: tokens.colorNeutralForeground2,
+  },
+
   beforeAlignToPrimary: {
     gridColumnEnd: 'middle',
   },
@@ -240,8 +235,6 @@ const useTextClassNames = (
   optionalTextClassName: string;
 } => {
   const { presenceOnly, size, textPosition } = state;
-  const primaryTextBaseStyles = usePrimaryTextBaseStyles();
-  const optionalTextBaseStyle = useOptionalTextBaseStyles();
   const textStyles = useTextStyles();
 
   let primaryTextSize;
@@ -249,9 +242,11 @@ const useTextClassNames = (
 
   if (presenceOnly) {
     if (size === 'extra-small') {
-      primaryTextSize = state.numTextLines <= 1 && textStyles.caption1;
+      primaryTextSize = state.numTextLines > 1 ? textStyles.body1 : textStyles.caption1;
     } else if (size === 'extra-large' || size === 'huge') {
       primaryTextSize = textStyles.subtitle2;
+    } else {
+      primaryTextSize = textStyles.body1;
     }
 
     if (alignToPrimary) {
@@ -266,14 +261,22 @@ const useTextClassNames = (
       primaryTextSize = textStyles.subtitle2;
     } else if (size === 'extra-large') {
       primaryTextSize = textStyles.subtitle2;
+    } else {
+      primaryTextSize = textStyles.body1;
     }
   }
 
   return {
-    primaryTextClassName: mergeClasses(primaryTextBaseStyles, primaryTextSize, alignToPrimaryClassName),
+    primaryTextClassName: mergeClasses(
+      textStyles.base,
+      textStyles.primaryText,
+      primaryTextSize,
+      alignToPrimaryClassName,
+    ),
     optionalTextClassName: mergeClasses(
-      optionalTextBaseStyle,
-      !presenceOnly && size === 'huge' && textStyles.body1,
+      textStyles.base,
+      textStyles.optionalText,
+      !presenceOnly && size === 'huge' ? textStyles.body1 : textStyles.caption1,
       alignToPrimaryClassName,
     ),
   };
