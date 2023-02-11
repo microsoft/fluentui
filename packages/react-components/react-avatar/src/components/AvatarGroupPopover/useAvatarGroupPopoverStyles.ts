@@ -167,8 +167,8 @@ export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverSt
   state.triggerButton.className = mergeClasses(
     avatarGroupPopoverClassNames.triggerButton,
     groupChildClassName,
-    triggerButtonStyles.base,
     sizeStyles[size],
+    triggerButtonStyles.base,
     layout === 'pie' && triggerButtonStyles.pie,
     triggerButtonStyles.focusIndicator,
     layout !== 'pie' && triggerButtonStyles.states,
