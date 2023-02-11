@@ -1,4 +1,4 @@
-import { mergeClasses, makeResetStyles, makeStyles, shorthands } from '@griffel/react';
+import { mergeClasses, makeResetStyles, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
@@ -32,19 +32,6 @@ const useRootClassName = makeResetStyles({
 });
 
 const useStyles = makeStyles({
-  // root: {
-  //   ...shorthands.padding(0),
-  //   display: 'inline-flex',
-  //   boxSizing: 'border-box',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-
-  //   '& span': {
-  //     display: 'flex',
-  //   },
-  //   ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  //   backgroundColor: tokens.colorNeutralBackground1,
-  // },
   statusBusy: {
     color: tokens.colorPaletteRedBackground3,
   },
