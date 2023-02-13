@@ -2,6 +2,55 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 09:35:46 GMT",
+      "tag": "@fluentui/react-components_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "01013be09ee21b976963582f112365ae81a33ae0",
+            "comment": "fix: MenuList is a single tabstop"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0565ec044c06af355f951e158c0e68611a1d8861",
+            "comment": "fix: Coordinates should be rounded to device pixels to prevent blurriness"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "48b466e0ba8a55ad6f216127e538076c1e65fd37",
+            "comment": "chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 08:49:57 GMT",
       "tag": "@fluentui/react-components_v9.15.0",
       "version": "9.15.0",

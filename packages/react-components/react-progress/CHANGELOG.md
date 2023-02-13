@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Fri, 10 Feb 2023 08:50:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 09:35:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.17)
+
+Mon, 13 Feb 2023 09:35:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0-alpha.16..@fluentui/react-progress_v9.0.0-alpha.17)
+
+### Changes
+
+- chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar ([PR #26768](https://github.com/microsoft/fluentui/pull/26768) by ololubek@microsoft.com)
 
 ## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0-alpha.16)
 

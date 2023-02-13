@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar",
-  "packageName": "@fluentui/react-progress",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

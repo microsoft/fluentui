@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Fri, 10 Feb 2023 08:50:01 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 09:35:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.1)
+
+Mon, 13 Feb 2023 09:35:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.0.0..@fluentui/react-table_v9.0.1)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.3.4 ([PR #26800](https://github.com/microsoft/fluentui/pull/26800) by beachball)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.0.0)
 

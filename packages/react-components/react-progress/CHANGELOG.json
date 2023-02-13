@@ -2,6 +2,21 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 09:35:47 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "48b466e0ba8a55ad6f216127e538076c1e65fd37",
+            "comment": "chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 08:50:02 GMT",
       "tag": "@fluentui/react-progress_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",
