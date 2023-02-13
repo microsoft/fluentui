@@ -29,7 +29,7 @@
   "dependencies": {
     "tslib": "^2.1.0",
     "codesandbox-import-utils": "2.2.3",
-    "@types/dedent": "^0.7.0",
+    "@types/dedent": "0.7.0",
     "dedent": "0.7.0"
   },
   "peerDependencies": {
