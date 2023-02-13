@@ -1,22 +1,22 @@
 import * as React from 'react';
 import type {
-  RowState,
+  TableRowData,
   DataGridBodyProps as DataGridBodyPropsBase,
   DataGridBodySlots as DataGridBodySlotsBase,
   DataGridBodyState as DataGridBodyStateBase,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-table';
 
 export type DataGridBodySlots = DataGridBodySlotsBase;
 
-// Use any here since we can't know the user types
-// The user is responsible for narrowing the type downstream
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RowRenderFunction = (row: RowState<any>, style: React.CSSProperties) => React.ReactNode;
+export type RowRenderFunction<TItem = unknown> = (
+  row: TableRowData<TItem>,
+  style: React.CSSProperties,
+) => React.ReactNode;
 
 /**
  * DataGridBody Props
  */
-export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
+export type DataGridBodyProps<TItem = unknown> = Omit<DataGridBodyPropsBase, 'children'> & {
   /**
    * The size of each row
    */
@@ -33,7 +33,14 @@ export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
   /**
    * Children render function for rows
    */
-  children: RowRenderFunction;
+  children: RowRenderFunction<TItem>;
+  /**
+   * All virtualized rows must have the [aria-rowindex](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-rowindex)
+   * attribute for correct screen reader navigation. The default start index is 2 since we assume that there is only
+   * one row in the header. If this is not the case, the start index can be reconfigured through this prop.
+   * @default 2
+   */
+  ariaRowIndexStart?: number;
 };
 
 /**
@@ -41,6 +48,6 @@ export type DataGridBodyProps = Omit<DataGridBodyPropsBase, 'children'> & {
  */
 export type DataGridBodyState = Omit<DataGridBodyStateBase, 'renderRow'> &
   Pick<DataGridBodyProps, 'itemSize' | 'height'> &
-  Pick<Required<DataGridBodyProps>, 'width'> & {
+  Pick<Required<DataGridBodyProps>, 'width' | 'ariaRowIndexStart'> & {
     renderRow: RowRenderFunction;
   };

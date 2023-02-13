@@ -9,15 +9,20 @@ import {
   Toolbar,
   ToolbarButton,
   ToolbarDivider,
+  Button,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
   Overflow,
   OverflowItem,
   useOverflowMenu,
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
-} from '@fluentui/react-components/unstable';
-import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-components/unstable';
-import { Button, Menu, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import type { MenuItemProps } from '@fluentui/react-components';
+} from '@fluentui/react-components';
+import type { ToolbarProps, ToolbarButtonProps, MenuItemProps } from '@fluentui/react-components';
 
 interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;
@@ -221,3 +226,15 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
     </Overflow>
   </div>
 );
+
+OverflowItems.parameters = {
+  docs: {
+    description: {
+      story: [
+        'This example uses the',
+        '<a href="#" data-sb-kind="components-overflow--default">Overflow component and utilities</a>,',
+        'Please refer to the documentation for achieve more complex scenarios.',
+      ].join('\n'),
+    },
+  },
+};

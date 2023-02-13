@@ -72,6 +72,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
     borderColor = theme.palette.white,
     outlineColor = theme.palette.neutralSecondary,
     isFocusedOnly = true,
+    pointerEvents,
   } = options;
 
   return {
@@ -92,6 +93,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
       [`.${IsFocusVisibleClassName} &${isFocusedOnly ? ':focus' : ''}:after`]: {
         content: '""',
         position: 'absolute',
+        pointerEvents,
         left: inset + 1,
         top: inset + 1,
         bottom: inset + 1,
@@ -99,7 +101,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
         border: `${width}px solid ${borderColor}`,
         outline: `${width}px solid ${outlineColor}`,
         zIndex: ZIndexes.FocusStyle,
-        borderRadius: borderRadius,
+        borderRadius,
         selectors: {
           [HighContrastSelector]: highContrastStyle,
         },

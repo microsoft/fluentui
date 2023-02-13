@@ -37,7 +37,7 @@ const points: IChartDataPoint[] = [
 const chartTitle = 'Stacked Bar chart example';
 
 const chartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: points,
 };
 
@@ -68,6 +68,18 @@ describe('DonutChart snapShot testing', () => {
 
   it('renders value inside onf the pie', () => {
     const component = renderer.create(<DonutChart data={chartPoints} valueInsideDonut={1000} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render arc labels in percentage format', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} showLabelsInPercent={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render arc labels', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

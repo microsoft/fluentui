@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2023 13:31:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.2.0)
+
+Thu, 26 Jan 2023 13:31:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.1.5..@fluentui/react-shared-contexts_v9.2.0)
+
+### Minor changes
+
+- feat: Overrides context ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
 
 ## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.1.4)
 

@@ -8,21 +8,23 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Checkbox } from '@fluentui/react-components';
-import { TableCellLayout } from '@fluentui/react-components/unstable';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Checkbox,
   DataGridBody,
   DataGridRow,
   DataGrid,
   DataGridHeader,
   DataGridHeaderCell,
   DataGridCell,
-  ColumnDefinition,
-  RowState,
-  createColumn,
-  RowId,
+  TableCellLayout,
+  TableColumnDefinition,
+  TableRowData,
+  createTableColumn,
+  TableRowId,
   DataGridProps,
-} from '@fluentui/react-table';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -90,76 +92,69 @@ const items: Item[] = [
   },
 ];
 
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+    renderHeaderCell: () => {
+      return 'File';
+    },
+    renderCell: item => {
+      return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+    renderHeaderCell: () => {
+      return 'Author';
+    },
+    renderCell: item => {
+      return (
+        <TableCellLayout
+          media={
+            <Avatar aria-label={item.author.label} name={item.author.label} badge={{ status: item.author.status }} />
+          }
+        >
+          {item.author.label}
+        </TableCellLayout>
+      );
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+    renderHeaderCell: () => {
+      return 'Last updated';
+    },
+
+    renderCell: item => {
+      return item.lastUpdated.label;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+    renderHeaderCell: () => {
+      return 'Last update';
+    },
+    renderCell: item => {
+      return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
+    },
+  }),
+];
+
 export const CustomRowId = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
-        renderHeaderCell: () => {
-          return 'File';
-        },
-        renderCell: item => {
-          return <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>;
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
-        renderHeaderCell: () => {
-          return 'Author';
-        },
-        renderCell: item => {
-          return (
-            <TableCellLayout
-              media={
-                <Avatar
-                  aria-label={item.author.label}
-                  name={item.author.label}
-                  badge={{ status: item.author.status }}
-                />
-              }
-            >
-              {item.author.label}
-            </TableCellLayout>
-          );
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
-        renderHeaderCell: () => {
-          return 'Last updated';
-        },
-
-        renderCell: item => {
-          return item.lastUpdated.label;
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
-        renderHeaderCell: () => {
-          return 'Last update';
-        },
-        renderCell: item => {
-          return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
-        },
-      }),
-    ],
-    [],
-  );
-
   const [selectedRows, setSelectedRows] = React.useState(
-    new Set<RowId>(['Thursday presentation']),
+    new Set<TableRowId>(['Thursday presentation']),
   );
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);
@@ -185,15 +180,15 @@ export const CustomRowId = () => {
       >
         <DataGridHeader>
           <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-            {({ renderHeaderCell }: ColumnDefinition<Item>) => (
+            {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
               <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
             )}
           </DataGridRow>
         </DataGridHeader>
         <DataGridBody>
-          {({ item, rowId }: RowState<Item>) => (
+          {({ item, rowId }: TableRowData<Item>) => (
             <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-              {({ renderCell }: ColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+              {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
             </DataGridRow>
           )}
         </DataGridBody>

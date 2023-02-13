@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId, Persona } from '@fluentui/react-components';
-import { Combobox, Option } from '@fluentui/react-combobox';
-import type { ComboboxProps } from '@fluentui/react-combobox';
+import { Combobox, makeStyles, Option, shorthands, useId, Persona } from '@fluentui/react-components';
+import type { ComboboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -23,7 +22,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
       <Combobox aria-labelledby={comboId} {...props}>
         <Option text="Katri Athokas">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Katri Athokas"
             presence={{
               status: 'available',
@@ -33,7 +32,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
         </Option>
         <Option text="Elvia Atkins">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Elvia Atkins"
             presence={{
               status: 'busy',
@@ -43,7 +42,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
         </Option>
         <Option text="Cameron Evans">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Cameron Evans"
             presence={{
               status: 'away',
@@ -53,7 +52,7 @@ export const ComplexOptions = (props: Partial<ComboboxProps>) => {
         </Option>
         <Option text="Wanda Howard">
           <Persona
-            avatar={{ color: 'colorful' }}
+            avatar={{ color: 'colorful', 'aria-hidden': true }}
             name="Wanda Howard"
             presence={{
               status: 'out-of-office',
@@ -70,9 +69,10 @@ ComplexOptions.parameters = {
   docs: {
     description: {
       story:
-        'Options can have structured JSX children. ' +
-        "When this is the case, the Option's `text` prop should be a the plain text version of the option, " +
-        'and is used as the Combobox value when the option is selected.',
+        'Options are defined as JSX children, and can include nested elements or other components. ' +
+        "When this is the case, the Option's `text` prop should be the plain text version of the option, " +
+        'and is used as the Combobox value when the option is selected. ' +
+        'Options should never contain interactive elements, such as buttons or links.',
     },
   },
 };

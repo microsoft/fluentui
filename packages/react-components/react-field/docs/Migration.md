@@ -2,41 +2,70 @@
 
 ## Migration from v8
 
-Migration from v8 will require picking between the normal and `Field` version of an input control, depending on whether the field-specific features are required: (`label`, `validationState="error"`, `validationMessage`, `hint`)
+Many form controls in v8 have `label` and `errorMessage` props. The v9 form controls generally don't include those props, and instead require wrapping with `<Field>` to add a label and error message.
 
-See individual input components for more detailed migration guides.
+### Prop mapping
 
-| v8 Control    | v9 Base control       | v9 Field control                | Notes                                                                                        |
-| ------------- | --------------------- | ------------------------------- | -------------------------------------------------------------------------------------------- |
-| `Checkbox`    | `Checkbox`            | `CheckboxField`                 | Only use `CheckboxField` if an error message is needed, or if required for layout in a form. |
-| `ChoiceGroup` | `RadioGroup`          | `RadioGroupField`               |                                                                                              |
-| `ComboBox`    | `Combobox`            | `ComboboxField`                 | `errorMessage="..."` is replaced by `validationState="error" validationMessage="..."`        |
-| `Dropdown`    | `Dropdown`            | `DropdownField`                 | `errorMessage="..."` is replaced by `validationState="error" validationMessage="..."`        |
-| `Slider`      | `Slider`              | `SliderField`                   |                                                                                              |
-| `SpinButton`  | `SpinButton`          | `SpinButtonField`               |                                                                                              |
-| `TextField`   | `Input` OR `Textarea` | `InputField` OR `TextareaField` | `errorMessage="..."` is replaced by `validationState="error" validationMessage="..."`        |
-| `Toggle`      | `Switch`              | `SwitchField`                   |                                                                                              |
+- `label` on the control => Wrap with `<Field label="...">`
+- `errorMessage` on the control => Wrap with `<Field validationMessage="...">`
+
+### Example
+
+#### v8
+
+```jsx
+<TextField label="Name" errorMessage="Please enter a name" value={name} onChange={onNameChanged} />
+```
+
+#### v9
+
+```jsx
+<Field label="Name" validationMessage="Please enter a name">
+  <Input value={name} onChange={onNameChanged} />
+</Field>
+```
+
+### Special case
+
+For `Checkbox` in v9, it is recommended to continue using `<Checkbox label="..." />`, and not to use `Field` to label the `Checkbox`. It is still ok to use `Field` if an error message is needed, or if required for layout in a form. E.g.:
+
+```jsx
+<Field validationMessage="Please agree to the terms and conditions">
+  <Checkbox label="I agree" />
+</Field>
+```
+
+See individual form components for more detailed migration guides.
 
 ## Migration from v0
 
-Many components in v0 have `Form___` versions (such as `FormInput`). Those are replaced by the `___Field` equivalent. See the underlying component's migration guides for more detailed migration information.
+The v0 `FormField` component is the equivalent to the v9 `Field`. Additionally, many components in v0 have `Form___` versions (such as `<FormInput />`). In v9, these are instead standard inputs wrapped with `<Field>` (such as `<Field><Input /></Field>`).
 
-Component mapping:
+### Prop mapping for `FormField` => `Field`:
 
-- `FormButton` => Not supported
-- `FormCheckbox` => `CheckboxField` OR `SwitchField`
-- `FormDatepicker` => _(Not yet implemented)_
-- `FormDropdown` => `DropdownField`
-- `FormField` => Not supported
-- `FormFieldCustom` => Not supported
-- `FormLabel` => The `label` prop of the field component
-- `FormMessage` => Either the `validationMessage` or `hint` prop of the field component
-- `FormRadioGroup` => `RadioGroupField`
-- `FormSlider` => `SliderField`
-- `FormTextArea` => `TextareaField`
-
-The following props are common to each of the `Form___` components:
-
+- `accessibility` => Not supported (Field is acessible as a form field by default)
+- `as` => `as` (only `div` is supported)
+- `control` slot => The child of the `Field`
+- `errorMessage` => `validationMessage`
+- `inline` => `orientation="horizontal"` (note: still uses a block layout but puts the label to the left instead of above)
 - `label` => `label`
-- `message` => either `validationMessage` or `hint`
-- `errorMessage` => `validationMessage` with `validationState="error"`
+- `message` => `hint`, or `validationMessage` with `validationState` set to `"success"` or `"warning"`
+- `name` => Not supported (set `name` on the child input element if needed)
+- `required` => `required`
+- `type` => Not supported (set `type` on the child input element if needed)
+
+### Example
+
+#### v0
+
+```jsx
+<FormInput label="First name" name="firstName" errorMessage="Error message" required />
+```
+
+#### v9
+
+```jsx
+<Field label="First name" validationMessage="Error message" required>
+  <Input name="firstName" />
+</Field>
+```

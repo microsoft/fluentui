@@ -12,6 +12,10 @@ import {
   MenuTrigger,
   Tab,
   TabList,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+  Overflow,
+  OverflowItem,
 } from '@fluentui/react-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
@@ -37,7 +41,6 @@ import {
   MoreHorizontalFilled,
   bundleIcon,
 } from '@fluentui/react-icons';
-import { useIsOverflowItemVisible, useOverflowMenu, Overflow, OverflowItem } from '@fluentui/react-components/unstable';
 import type { ARIAButtonElement } from '@fluentui/react-aria';
 
 const Calendar3Day = bundleIcon(Calendar3DayFilled, Calendar3DayRegular);
