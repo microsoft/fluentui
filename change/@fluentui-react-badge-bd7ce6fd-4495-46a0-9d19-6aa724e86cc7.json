@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update Badge and PresenceBadge to use makeResetStyles",
-  "packageName": "@fluentui/react-badge",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
