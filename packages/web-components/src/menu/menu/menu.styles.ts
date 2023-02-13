@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorNeutralBackground1,
@@ -10,6 +11,8 @@ import {
  * @public
  */
 export const styles = css`
+  ${display('flex')}
+
   :host {
     display: flex;
     flex-direction: column;

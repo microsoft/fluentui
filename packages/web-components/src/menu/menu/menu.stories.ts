@@ -24,7 +24,6 @@ const Cut20Filled = html`<svg
 </svg>`;
 const ClipboardPaste20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -38,7 +37,6 @@ const ClipboardPaste20Filled = html`<svg
 </svg>`;
 const Edit20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -52,7 +50,6 @@ const Edit20Filled = html`<svg
 </svg>`;
 const FormNew20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -66,7 +63,6 @@ const FormNew20Filled = html`<svg
 </svg>`;
 const TabDesktopNewPage20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -80,7 +76,6 @@ const TabDesktopNewPage20Filled = html`<svg
 </svg>`;
 const Code20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -108,12 +103,12 @@ const storyTemplate = html<MenuStoryArgs>`
         Edit
       </fluent-menu-item>
       <fluent-menu-item class="header">Group Header</fluent-menu-item>
-      <fluent-menu-item>
+      <fluent-menu-item disabled=${x => x.disabled}>
         New
         <span slot="start">${FormNew20Filled}</span>
         <span slot="end">Ctrl+N</span>
       </fluent-menu-item>
-      <fluent-menu-item>
+      <fluent-menu-item disabled=${x => x.disabled}>
         Open
         <span slot="start">${FormNew20Filled}</span>
         <fluent-menu slot="submenu">
@@ -138,7 +133,7 @@ export default {
   },
   argTypes: {
     disabled: {
-      description: 'Disables Accordion Item',
+      description: 'Disables Menu item',
       table: {
         defaultValue: { summary: false },
       },

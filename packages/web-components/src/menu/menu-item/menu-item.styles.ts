@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorCompoundBrandForeground1Hover,
@@ -12,7 +13,6 @@ import {
   colorNeutralForeground2Pressed,
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
-  colorNeutralStroke1,
   colorNeutralStrokeDisabled,
   fontFamilyBase,
   fontSizeBase200,
@@ -27,6 +27,8 @@ import {
  * @public
  */
 export const styles = css`
+  ${display('flex')}
+
   :host {
     display: flex;
     align-items: center;
@@ -65,10 +67,9 @@ export const styles = css`
     line-height: ${lineHeightBase200};
   }
 
-  :host::part(expand-collapse-glyph-container),
-  ::slotted(span[slot='start']),
-  ::slotted(span[slot='end']),
-  .input-container {
+  .expand-collapse-glyph-container,
+  ::slotted([slot='start']),
+  ::slotted([slot='end']) {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -76,8 +77,14 @@ export const styles = css`
     height: 32px;
     font-size: 20px;
   }
-  :host::part(expand-collapse-glyph-container),
-  :host::part(content),
+  .input-container {
+    width: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .expand-collapse-glyph-container,
+  .content,
   ::slotted(span[slot='start']),
   .input-container {
     color: ${colorNeutralForeground2};
@@ -94,8 +101,8 @@ export const styles = css`
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
   }
-  :host(:hover)::part(expand-collapse-glyph-container),
-  :host(:hover)::part(content),
+  :host(:hover) .expand-collapse-glyph-container,
+  :host(:hover) .content,
   :host(:hover) .input-container {
     color: ${colorNeutralForeground2Hover};
   }
@@ -105,8 +112,8 @@ export const styles = css`
   :host(:active) {
     background: ${colorNeutralBackground1Pressed};
   }
-  :host(:active)::part(expand-collapse-glyph-container),
-  :host(:active)::part(content),
+  :host(:active) .expand-collapse-glyph-container,
+  :host(:active) .content,
   :host(:active) .input-container {
     color: ${colorNeutralForeground2Pressed};
   }
@@ -117,23 +124,23 @@ export const styles = css`
   :host([disabled='true']) {
     background: ${colorNeutralBackgroundDisabled};
   }
-  :host([disabled='true'])::part(expand-collapse-glyph-container),
+  :host([disabled='true']) .expand-collapse-glyph-container,
   :host([disabled='true']) .input-container,
   :host([disabled='true']) ::slotted(span[slot='start']),
   :host([disabled='true']) ::slotted(span[slot='end']),
-  :host([disabled='true'])::part(content) {
+  :host([disabled='true']) .content {
     color: ${colorNeutralForegroundDisabled};
   }
   :host([disabled='true']) ::slotted(span[slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host::part(checkbox),
-  :host::part(radio) {
+  .checkbox,
+  .radio {
     display: none;
   }
-  :host([checked])::part(checkbox),
-  :host([checked])::part(radio) {
-    display: block;
+  :host([checked]) .checkbox,
+  :host([checked]) .radio {
+    display: flex;
   }
 `;
