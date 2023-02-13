@@ -86,6 +86,8 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Whether or not tree items are selectable. */
   selectable?: boolean;
+
+  unstyled?: boolean;
 }
 
 export const treeClassName = 'ui-tree';
@@ -134,6 +136,7 @@ export const Tree = (React.forwardRef<HTMLDivElement, TreeProps>((props, ref) =>
       variables,
     }),
     rtl: context.rtl,
+    unstyled: props.unstyled,
   });
 
   const {
@@ -226,6 +229,7 @@ Tree.propTypes = {
   defaultSelectedItemIds: customPropTypes.collectionShorthand,
   exclusive: PropTypes.bool,
   selectable: PropTypes.bool,
+  unstyled: PropTypes.bool,
   items: customPropTypes.collectionObjectShorthand,
   onActiveItemIdsChange: PropTypes.func,
   onSelectedItemIdsChange: PropTypes.func,

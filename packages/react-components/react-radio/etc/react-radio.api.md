@@ -9,6 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
@@ -37,6 +38,22 @@ export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'd
 export type RadioGroupContextValues = {
     radioGroup: RadioGroupContextValue;
 };
+
+// @public @deprecated (undocumented)
+export const RadioGroupField_unstable: ForwardRefComponent<RadioGroupFieldProps_unstable>;
+
+// @public @deprecated (undocumented)
+export const radioGroupFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
+
+// @public @deprecated (undocumented)
+export type RadioGroupFieldProps_unstable = DeprecatedFieldProps<RadioGroupProps>;
 
 // @public
 export type RadioGroupOnChangeData = {

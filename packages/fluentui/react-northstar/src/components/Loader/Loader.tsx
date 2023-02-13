@@ -26,7 +26,6 @@ import { Text, TextProps } from '../Text/Text';
 export interface LoaderSlotClassNames {
   indicator: string;
   label: string;
-  svg: string;
 }
 
 export interface LoaderProps extends UIComponentProps {
@@ -67,7 +66,6 @@ export const loaderClassName = 'ui-loader';
 export const loaderSlotClassNames: LoaderSlotClassNames = {
   indicator: `${loaderClassName}__indicator`,
   label: `${loaderClassName}__label`,
-  svg: `${loaderClassName}__svg`,
 };
 
 export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size' | 'secondary'>;
@@ -87,7 +85,6 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
     secondary,
     label,
     indicator,
-    svg,
     inline,
     labelPosition,
     className,
@@ -142,9 +139,12 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
     return () => clearTimeout(delayTimer.current);
   }, [delay]);
 
-  const svgElement = Box.create(svg, {
-    defaultProps: () => ({ className: loaderSlotClassNames.svg, styles: resolvedStyles.svg }),
-  });
+  const svgElement = (
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className={classes.svg}>
+      <circle className={classes.svgTrack} />
+      <circle className={classes.svgTail} />
+    </svg>
+  );
 
   const element = visible && (
     <ElementType

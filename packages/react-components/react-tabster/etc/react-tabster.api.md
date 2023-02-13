@@ -5,6 +5,7 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
@@ -13,7 +14,7 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
 
 // @public
-export const createCustomFocusIndicatorStyle: (style: GriffelStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions) => GriffelStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
@@ -47,11 +48,12 @@ export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions)
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid';
+    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
     circular?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
+    unstable_hasDefault?: boolean;
 }
 
 // @public
@@ -67,8 +69,8 @@ export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public (undocumented)
@@ -89,6 +91,7 @@ export const useModalAttributes: (options?: UseModalAttributesOptions) => {
 // @public (undocumented)
 export interface UseModalAttributesOptions {
     alwaysFocusable?: boolean;
+    id?: string;
     legacyTrapFocus?: boolean;
     trapFocus?: boolean;
 }

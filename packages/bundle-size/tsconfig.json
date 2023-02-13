@@ -5,7 +5,8 @@
     "checkJs": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "isolatedModules": true
   },
   "include": ["src/**/*.js", "__fixture__/*.js"]
 }

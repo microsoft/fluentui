@@ -8,7 +8,6 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -17,7 +16,9 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+  PresenceBadgeStatus,
+  Avatar,
+} from '@fluentui/react-components';
 
 const items = [
   {
@@ -67,7 +68,7 @@ const columns = [
 
 export const Default = () => {
   return (
-    <Table>
+    <Table arial-label="Default table">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -84,7 +85,11 @@ export const Default = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}

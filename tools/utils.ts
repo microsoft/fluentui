@@ -197,12 +197,13 @@ export function isPackageVersionConverged(versionString: string) {
 
 export function isPackageVersionPrerelease(versionString: string) {
   const version = semver.parse(versionString);
-  return version?.prerelease?.length && version?.prerelease?.length > 0;
+  return Boolean(version?.prerelease?.length && version?.prerelease?.length > 0);
 }
 
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const hasVNextTag = !!project.tags?.includes('vNext');
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return isPackageVersionConverged(packageJson.version);
+  return isPackageVersionConverged(packageJson.version) || hasVNextTag;
 }
 
 export function isV8Package(tree: Tree, project: ProjectConfiguration) {

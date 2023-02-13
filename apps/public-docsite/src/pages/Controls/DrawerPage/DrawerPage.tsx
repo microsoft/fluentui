@@ -12,13 +12,13 @@ export const DrawerPage: React.FunctionComponent<IControlsPageProps> = props => 
     <ControlsAreaPage
       {...props}
       title="Drawer"
-      {...DrawerPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...DrawerPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

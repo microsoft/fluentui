@@ -81,10 +81,6 @@ export type DialogContentState = ComponentState<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogOpenChangeData = {
-    type: 'dialogCancel';
-    open: boolean;
-    event: React_2.SyntheticEvent<DialogSurfaceElement>;
-} | {
     type: 'escapeKeyDown';
     open: boolean;
     event: React_2.KeyboardEvent<DialogSurfaceElement>;

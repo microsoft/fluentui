@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Link } from './Link';
 import { LinkProps } from './Link.types';
 
@@ -65,6 +65,17 @@ describe('Link', () => {
       anchor.focus();
       expect(document.activeElement).toEqual(anchor);
     });
+
+    it('allows overriding "tabIndex"', () => {
+      const result = render(
+        <Link href="https://www.bing.com" tabIndex={-1}>
+          This is a link
+        </Link>,
+      );
+      const link = result.getByRole('link');
+
+      expect(link.getAttribute('tabIndex')).toBe('-1');
+    });
   });
 
   describe('when rendered as a button', () => {
@@ -101,6 +112,13 @@ describe('Link', () => {
       expect(document.activeElement).not.toEqual(button);
       button.focus();
       expect(document.activeElement).toEqual(button);
+    });
+
+    it('allows overriding "tabIndex"', () => {
+      const result = render(<Link tabIndex={-1}>This is a link</Link>);
+      const button = result.getByRole('button');
+
+      expect(button.getAttribute('tabIndex')).toBe('-1');
     });
   });
 });

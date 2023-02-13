@@ -9,7 +9,7 @@ const noOutline: IRawStyle = {
 
 const iconStyle = (fontSize?: string | number): IRawStyle => {
   return {
-    fontSize: fontSize,
+    fontSize,
     margin: '0 4px',
     height: '16px',
     lineHeight: '16px',
@@ -48,8 +48,6 @@ export const getStyles = memoizeFunction(
           boxSizing: 'border-box',
           cursor: 'pointer',
           display: 'inline-block',
-          // This removes the 2px margin Safari adds to all buttons
-          margin: 0,
           padding: '0 16px',
           textDecoration: 'none',
           textAlign: 'center',

@@ -2,7 +2,7 @@ import { Toolbar, toolbarMenuBehavior, Accessibility, ToolbarMenuBehaviorProps }
 import * as React from 'react';
 import { CallVideoIcon, MoreIcon, SkypeLogoIcon } from '@fluentui/react-icons-northstar';
 
-// behavior is overridden, as focus was causing inconsistency in displaying focus outline for screener tests
+// behavior is overridden, as focus was causing inconsistency in displaying focus outline for storywright tests
 const notAutoFocusToolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => {
   const behavior = toolbarMenuBehavior();
   behavior.focusZone.props.shouldFocusOnMount = false;
