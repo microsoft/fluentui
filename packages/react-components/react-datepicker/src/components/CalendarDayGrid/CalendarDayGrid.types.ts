@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utils';
-import type { Slot } from '@fluentui/react-utilities';
-import type { IStyle, ITheme } from '@fluentui/style-utilities';
 import type { CalendarStrings, DateFormatting, DayGridOptions } from '../../utils';
-
-export type CalendarDayGridSlots = {
-  root: Slot<'div'>;
-};
 
 /**
  * {@docCategory Calendar}
@@ -26,11 +20,6 @@ export interface CalendarDayGridProps extends DayGridOptions {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendarDayGrid>;
-
-  /**
-   * Theme (provided through customization).
-   */
-  theme?: ITheme;
 
   /**
    * Additional CSS class(es) to apply to the CalendarDayGrid.
@@ -232,87 +221,87 @@ export interface CalendarDayGridStyles {
   /**
    * The style for the root div
    */
-  wrapper?: IStyle;
+  wrapper?: string;
 
   /**
    * The style for the table containing the grid
    */
-  table?: IStyle;
+  table?: string;
 
   /**
    * The style to apply to the grid cells for days
    */
-  dayCell?: IStyle;
+  dayCell?: string;
 
   /**
    * The style to apply to grid cells for days in the selected range
    */
-  daySelected?: IStyle;
+  daySelected?: string;
 
   /**
    * The style to apply to row around weeks
    */
-  weekRow?: IStyle;
+  weekRow?: string;
 
   /**
    * The style to apply to the column headers above the weeks
    */
-  weekDayLabelCell?: IStyle;
+  weekDayLabelCell?: string;
 
   /**
    * The style to apply to grid cells for week numbers
    */
-  weekNumberCell?: IStyle;
+  weekNumberCell?: string;
 
   /**
    * The style to apply to individual days that are outside the min/max date range
    */
-  dayOutsideBounds?: IStyle;
+  dayOutsideBounds?: string;
 
   /**
    * The style to apply to individual days that are outside the current month
    */
-  dayOutsideNavigatedMonth?: IStyle;
+  dayOutsideNavigatedMonth?: string;
 
   /**
    * The style to apply to the button element within the day cells
    */
-  dayButton?: IStyle;
+  dayButton?: string;
 
   /**
    * The style to apply to the individual button element that matches the "today" parameter
    */
-  dayIsToday?: IStyle;
+  dayIsToday?: string;
 
   /**
    * The style applied to the first placeholder week used during transitions
    */
-  firstTransitionWeek?: IStyle;
+  firstTransitionWeek?: string;
 
   /**
    * The style applied to the last placeholder week used during transitions
    */
-  lastTransitionWeek?: IStyle;
+  lastTransitionWeek?: string;
 
   /**
    * The style applied to the marker on days to mark as important
    */
-  dayMarker?: IStyle;
+  dayMarker?: string;
 
   /**
    * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners
    */
-  topRightCornerDate?: IStyle;
-  topLeftCornerDate?: IStyle;
-  bottomRightCornerDate?: IStyle;
-  bottomLeftCornerDate?: IStyle;
+  topRightCornerDate?: string;
+  topLeftCornerDate?: string;
+  bottomRightCornerDate?: string;
+  bottomLeftCornerDate?: string;
 
   /**
    * The styles to apply to days for focus borders. Can apply multiple if there are multiple focused days
    * around the current focused date
    */
-  datesAbove?: IStyle;
-  datesBelow?: IStyle;
-  datesLeft?: IStyle;
-  datesRight?: IStyle;
+  datesAbove?: string;
+  datesBelow?: string;
+  datesLeft?: string;
+  datesRight?: string;
 }
