@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeResetStyles, makeStyles } from '@griffel/react';
+import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -33,9 +33,7 @@ const useRootClassName = makeResetStyles({
     left: 0,
     bottom: 0,
     right: 0,
-    borderStyle: 'solid',
-    borderWidth: tokens.strokeWidthThin,
-    borderColor: 'inherit',
+    border: `${tokens.strokeWidthThin} solid inherit`,
     borderRadius: 'inherit',
   },
 });
@@ -97,7 +95,7 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
 
-  // border (all appearances except ghost)
+  // hide the boder when appearance is "ghost"
 
   borderGhost: {
     // The border is applied in an ::after pseudo-element because it should not affect layout.
