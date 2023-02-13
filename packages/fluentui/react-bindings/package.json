@@ -1,9 +1,29 @@
 {
   "name": "@fluentui/react-bindings",
-  "description": "A set of components and hooks to build components libraries and UI kits.",
   "version": "0.66.1",
-  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "description": "A set of components and hooks to build components libraries and UI kits.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-bindings",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.66.1",
@@ -27,14 +47,6 @@
     "@types/classnames": "^2.2.9",
     "lerna-alias": "^3.0.3-0"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-bindings",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17",
@@ -45,17 +57,5 @@
   },
   "gulp": {
     "componentInfo": "./src/FocusZone/[A-Z]!(*.types).tsx"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd && yarn build:info",
-    "build:info": "gulp build:component-info",
-    "clean": "gulp clean:component-info bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "test": "gulp test",
-    "test:watch": "gulp test:watch"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

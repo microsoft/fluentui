@@ -1,9 +1,26 @@
 {
   "name": "@fluentui/code-sandbox",
-  "description": "Fluent UI tools for CodeSandbox.",
   "version": "0.66.1",
-  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "description": "Fluent UI tools for CodeSandbox.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/code-sandbox",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
+  },
   "dependencies": {
     "@fluentui/docs-components": "^0.66.1",
     "lodash": "^4.17.15"
@@ -14,14 +31,6 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/code-sandbox",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "peerDependencies": {
     "@fluentui/react-northstar": "0.54.0",
     "react": "^16.8.0 || ^17",
@@ -29,14 +38,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

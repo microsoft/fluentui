@@ -2,9 +2,9 @@
   "name": "@fluentui/stress-test",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
-  "type": "module",
   "license": "MIT",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "stress-test": "ts-node-esm --project tsconfig.scripts.json ./scripts/stressTest.ts",
     "type-check": "tsc -b tsconfig.type.json"
@@ -16,9 +16,9 @@
     "@fluentui/web-components": "^2.5.12",
     "@microsoft/fast-element": "^1.11.0",
     "afterframe": "1.0.2",
+    "random-seedable": "1.0.8",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "random-seedable": "1.0.8"
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@fluentui/scripts-tasks": "*"

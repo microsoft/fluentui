@@ -1,9 +1,29 @@
 {
   "name": "@fluentui/react-northstar",
-  "description": "A themable React component library.",
   "version": "0.66.1",
-  "author": "Levi Thomason <me@levithomason.com>",
+  "description": "A themable React component library.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Levi Thomason <me@levithomason.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd && yarn build:info",
+    "build:info": "gulp build:component-info",
+    "clean": "gulp clean:component-info bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.66.1",
@@ -45,14 +65,6 @@
     "qs": "^6.8.0",
     "simulant": "^0.2.2"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17"
@@ -60,19 +72,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "microsoft/fluentui.git",
   "gulp": {
     "componentInfo": "./src/components/*/[A-Z]*.tsx"
-  },
-  "scripts": {
-    "build": "gulp bundle:package:no-umd && yarn build:info",
-    "build:info": "gulp build:component-info",
-    "clean": "gulp clean:component-info bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "test": "gulp test",
-    "test:watch": "gulp test:watch"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

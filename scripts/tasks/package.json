@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
-    "@fluentui/scripts-utils": "*",
-    "@fluentui/scripts-prettier": "*"
+    "@fluentui/scripts-prettier": "*",
+    "@fluentui/scripts-utils": "*"
   }
 }

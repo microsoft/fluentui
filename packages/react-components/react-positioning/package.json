@@ -2,30 +2,33 @@
   "name": "@fluentui/react-positioning",
   "version": "9.4.1",
   "description": "A react wrapper around Popper.js for Fluent UI",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "./dist/index.d.ts",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.2.0",
@@ -34,6 +37,11 @@
     "@fluentui/react-utilities": "^9.5.2",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
@@ -45,13 +53,5 @@
     "disallowedChangeTypes": [
       "major"
     ]
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    },
-    "./package.json": "./package.json"
   }
 }

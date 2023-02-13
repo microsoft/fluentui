@@ -2,13 +2,20 @@
   "name": "@fluentui/babel-preset-global-context",
   "version": "9.0.0-beta.15",
   "description": "Babel preset that transforms createContext calls to use global context shims",
-  "main": "lib-commonjs/index.js",
-  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib-commonjs/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "just-scripts build --module cjs",
     "clean": "just-scripts clean",
@@ -16,17 +23,11 @@
     "pree2e": "yarn build",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-tasks": "*"
+    "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
@@ -38,6 +39,12 @@
     "find-up": "^5.0.0",
     "tslib": "^2.1.0"
   },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
   "peerDependencies": {
     "@fluentui/global-context": "9.0.0-beta.15"
   },
@@ -47,12 +54,5 @@
       "minor",
       "patch"
     ]
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./lib-commonjs/index.js"
-    },
-    "./package.json": "./package.json"
   }
 }

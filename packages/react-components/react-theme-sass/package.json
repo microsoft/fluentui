@@ -2,26 +2,35 @@
   "name": "@fluentui/react-theme-sass",
   "version": "9.0.0-alpha.8",
   "description": "SASS variables referencing react-theme design tokens injected to DOM by react-provider.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "./dist/index.d.ts",
-  "style": "sass/tokens.scss",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "style": "sass/tokens.scss",
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "type-check": "tsc -b tsconfig.json"
   },
+  "dependencies": {},
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-theme": "^9.1.5",
@@ -34,14 +43,5 @@
       "minor",
       "patch"
     ]
-  },
-  "dependencies": {},
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    },
-    "./package.json": "./package.json"
   }
 }

@@ -2,16 +2,17 @@
   "name": "@fluentui/public-docsite-setup",
   "version": "0.3.17",
   "description": "Bootstrap code for the Fluent UI website. Internal use only.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/loadSite.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "license": "MIT",
+  "sideEffects": [
+    "lib/loadSite.js"
+  ],
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "bin": {
     "create-site-manifests": "./bin/create-site-manifests.js"
   },
@@ -22,10 +23,9 @@
     "just": "just-scripts",
     "lint": "just-scripts lint && eslint ./bin/*.js ./scripts/*.js"
   },
-  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*"
-  },
-  "dependencies": {}
+  }
 }

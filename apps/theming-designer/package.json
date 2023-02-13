@@ -1,34 +1,34 @@
 {
   "name": "@fluentui/theming-designer",
-  "description": "Theming designer for @fluentui/react.",
   "version": "1.0.0",
   "private": true,
+  "description": "Theming designer for @fluentui/react.",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev"
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev",
+    "test": "just-scripts test"
+  },
+  "dependencies": {
+    "@fluentui/font-icons-mdl2": "^8.5.8",
+    "@fluentui/foundation-legacy": "^8.2.28",
+    "@fluentui/merge-styles": "^8.5.6",
+    "@fluentui/react": "^8.105.7",
+    "@fluentui/react-docsite-components": "^8.11.19",
+    "@fluentui/scheme-utilities": "^8.3.23",
+    "@fluentui/set-version": "^8.2.5",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"
-  },
-  "dependencies": {
-    "@fluentui/react": "^8.105.7",
-    "@fluentui/merge-styles": "^8.5.6",
-    "@fluentui/react-docsite-components": "^8.11.19",
-    "@fluentui/foundation-legacy": "^8.2.28",
-    "@fluentui/scheme-utilities": "^8.3.23",
-    "@fluentui/set-version": "^8.2.5",
-    "@fluentui/font-icons-mdl2": "^8.5.8",
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "tslib": "^2.1.0"
   }
 }

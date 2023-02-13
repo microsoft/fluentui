@@ -1,9 +1,28 @@
 {
   "name": "@fluentui/react-builder",
-  "description": "A drag and drop UI builder.",
   "version": "0.66.1",
-  "author": "Levi Thomason <me@levithomason.com>",
+  "description": "A drag and drop UI builder.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-builder",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Levi Thomason <me@levithomason.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
   "dependencies": {
     "@fluentui/accessibility": "^0.66.1",
     "@fluentui/code-sandbox": "^0.66.1",
@@ -34,26 +53,7 @@
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-builder",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "publishConfig": {
     "access": "public"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "test": "gulp test",
-    "test:watch": "gulp test:watch"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

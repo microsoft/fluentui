@@ -14,10 +14,6 @@
     "vr:build": "yarn build",
     "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@fluentui/react-accordion": "^9.0.23",
     "@fluentui/react-avatar": "^9.3.4",
@@ -46,21 +42,25 @@
     "@fluentui/react-select": "^9.0.1",
     "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-slider": "^9.0.23",
-    "@fluentui/react-spinner": "^9.0.20",
     "@fluentui/react-spinbutton": "^9.1.2",
+    "@fluentui/react-spinner": "^9.0.20",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-switch": "^9.0.24",
-    "@fluentui/react-tabs": "^9.2.2",
     "@fluentui/react-table": "^9.0.1",
+    "@fluentui/react-tabs": "^9.2.2",
     "@fluentui/react-text": "^9.2.1",
     "@fluentui/react-textarea": "^9.2.2",
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-tooltip": "^9.1.15",
     "@fluentui/react-toolbar": "^9.0.5",
+    "@fluentui/react-tooltip": "^9.1.15",
     "@fluentui/react-utilities": "^9.5.2",
     "@griffel/react": "^1.5.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
   }
 }

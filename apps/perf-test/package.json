@@ -1,20 +1,15 @@
 {
   "name": "@fluentui/perf-test",
-  "description": "Perf tests for @fluentui/react.",
   "version": "1.0.0",
   "private": true,
+  "description": "Perf tests for @fluentui/react.",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint"
   },
   "dependencies": {
     "@fluentui/example-data": "^8.4.6",
@@ -26,5 +21,10 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   }
 }

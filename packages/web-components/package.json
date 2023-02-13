@@ -1,50 +1,57 @@
 {
   "name": "@fluentui/web-components",
-  "description": "A library of Fluent Web Components",
-  "sideEffects": false,
   "version": "2.5.12",
-  "author": {
-    "name": "Microsoft",
-    "url": "https://discord.gg/FcSNfg4"
+  "description": "A library of Fluent Web Components",
+  "bugs": {
+    "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui/tree/master/packages/web-components"
   },
-  "bugs": {
-    "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
+  "license": "MIT",
+  "author": {
+    "name": "Microsoft",
+    "url": "https://discord.gg/FcSNfg4"
   },
+  "sideEffects": false,
   "main": "dist/esm/index.js",
-  "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
+  "types": "dist/web-components.d.ts",
   "scripts": {
+    "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
+    "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
     "clean": "node ./build/clean.js dist",
+    "code-style": "yarn format:check && yarn lint",
+    "dev": "tsc -p ./tsconfig.json -w",
     "doc": "api-extractor run --local",
     "doc:ci": "api-extractor run --local",
-    "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
-    "dev": "tsc -p ./tsconfig.json -w",
-    "tdd": "yarn dev & yarn test-chrome:watch",
-    "prepare": "yarn clean && yarn build",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
-    "code-style": "yarn format:check && yarn lint",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prepare": "yarn clean && yarn build",
     "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "node node_modules/@storybook/html/bin/index",
-    "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
+    "tdd": "yarn dev & yarn test-chrome:watch",
     "test": "yarn doc:ci && yarn test-chrome:verbose",
-    "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-chrome": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage",
-    "test-chrome:verbose": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
-    "test-chrome:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
     "test-chrome:debugger": "karma start karma.conf.js --browsers=ChromeDebugging",
-    "test-chrome:verbose:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
+    "test-chrome:verbose": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
     "test-chrome:verbose:debugger": "karma start karma.conf.js --browsers=ChromeDebugging --reporter=mocha",
+    "test-chrome:verbose:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
+    "test-chrome:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
     "test-firefox": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage",
-    "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
+    "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha",
+    "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
+    "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'"
+  },
+  "dependencies": {
+    "@microsoft/fast-colors": "^5.3.0",
+    "@microsoft/fast-element": "^1.11.0",
+    "@microsoft/fast-foundation": "^2.47.0",
+    "@microsoft/fast-web-utilities": "^5.4.0",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@storybook/html": "6.5.15",
@@ -70,12 +77,5 @@
     "karma-sourcemap-loader": "0.3.8",
     "karma-webpack": "5.0.0",
     "mocha": "7.2.0"
-  },
-  "dependencies": {
-    "@microsoft/fast-colors": "^5.3.0",
-    "@microsoft/fast-element": "^1.11.0",
-    "@microsoft/fast-foundation": "^2.47.0",
-    "@microsoft/fast-web-utilities": "^5.4.0",
-    "tslib": "^2.1.0"
   }
 }

@@ -16,13 +16,13 @@
     "lint": "just-scripts lint",
     "test": "just-scripts test"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "@microsoft/api-extractor-model": "7.13.3",
     "@microsoft/tsdoc": "0.13.2",
     "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
   }
 }

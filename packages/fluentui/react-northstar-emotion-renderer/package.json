@@ -1,8 +1,27 @@
 {
   "name": "@fluentui/react-northstar-emotion-renderer",
-  "description": "A CSS-in-JS renderer based on Emotion for FluentUI React Northstar.",
   "version": "0.66.1",
+  "description": "A CSS-in-JS renderer based on Emotion for FluentUI React Northstar.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar-emotion-renderer",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@emotion/cache": "^11.4.0",
@@ -22,30 +41,11 @@
     "@types/stylis": "4.0.0",
     "lerna-alias": "^3.0.3-0"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar-emotion-renderer",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "test": "gulp test",
-    "test:watch": "gulp test:watch"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: apply prettier package.json auto-formatter",
+  "packageName": "@fluentui/common-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

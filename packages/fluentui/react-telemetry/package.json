@@ -1,9 +1,26 @@
 {
   "name": "@fluentui/react-telemetry",
-  "description": "A set of components and hooks to build components libraries and UI kits.",
   "version": "0.66.1",
-  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "description": "A set of components and hooks to build components libraries and UI kits.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-telemetry",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/react-bindings": "^0.66.1",
@@ -18,28 +35,11 @@
     "@types/react-table": "^7.0.19",
     "lerna-alias": "^3.0.3-0"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-telemetry",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

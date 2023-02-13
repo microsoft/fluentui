@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: apply prettier package.json auto-formatter",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

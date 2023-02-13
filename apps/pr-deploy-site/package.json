@@ -1,19 +1,19 @@
 {
   "name": "@fluentui/pr-deploy-site",
   "version": "1.0.0",
-  "description": "A site to be deployed as a static site to view what is built during PR",
-  "main": "index.js",
   "private": true,
+  "description": "A site to be deployed as a static site to view what is built during PR",
+  "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
     "lint": "eslint --ext .js,.ts --cache .",
     "type-check": "tsc -p ."
   },
-  "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-monorepo": "*"
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-tasks": "*"
   }
 }

@@ -3,45 +3,53 @@
   "version": "9.0.0-alpha.0",
   "private": true,
   "description": "A theme designer",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "./dist/index.d.ts",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "build-storybook": "build-storybook -o ./dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "dependencies": {
+    "@fluent-blocks/colors": "9.2.0",
+    "@fluentui/react-alert": "9.0.0-beta.32",
+    "@fluentui/react-components": "^9.15.1",
+    "@fluentui/react-context-selector": "^9.1.8",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/react-utilities": "^9.5.2",
+    "@griffel/react": "^1.5.2",
+    "@types/dedent": "0.7.0",
+    "codesandbox-import-utils": "2.2.3",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
-  },
-  "dependencies": {
-    "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.2",
-    "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.15.1",
-    "@fluentui/react-icons": "^2.0.175",
-    "@fluent-blocks/colors": "9.2.0",
-    "codesandbox-import-utils": "2.2.3",
-    "@types/dedent": "0.7.0",
-    "@fluentui/react-alert": "9.0.0-beta.32",
-    "@fluentui/react-context-selector": "^9.1.8"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
@@ -55,13 +63,5 @@
       "minor",
       "patch"
     ]
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    },
-    "./package.json": "./package.json"
   }
 }

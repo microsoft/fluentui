@@ -1,24 +1,17 @@
 {
   "name": "@fluentui/react-18-tests-v8",
-  "description": "React 18 test application",
   "version": "8.0.0",
   "private": true,
+  "description": "React 18 test application",
   "scripts": {
-    "type-check": "tsc -p tsconfig.react-compat-check.json",
-    "format": "prettier -w . --ignore-path ../.prettierignore",
-    "format:check": "yarn format -c",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
+    "format": "prettier -w . --ignore-path ../.prettierignore",
+    "format:check": "yarn format -c",
     "lint": "eslint --ext .js,.ts.,.tsx ./src",
+    "start": "webpack-dev-server --mode=development",
     "test": "jest --passWithNoTests",
-    "start": "webpack-dev-server --mode=development"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "type-check": "tsc -p tsconfig.react-compat-check.json"
   },
   "dependencies": {
     "@fluentui/react": "^8.105.7",
@@ -28,5 +21,12 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   }
 }

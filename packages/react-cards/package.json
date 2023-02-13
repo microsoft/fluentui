@@ -2,28 +2,42 @@
   "name": "@fluentui/react-cards",
   "version": "0.205.54",
   "description": "Deprecated experimental Card container components for Fluent UI React.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
     "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
+  },
+  "dependencies": {
+    "@fluentui/foundation-legacy": "^8.2.28",
+    "@fluentui/react": "^8.105.7",
+    "@fluentui/set-version": "^8.2.5",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -33,24 +47,10 @@
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"
   },
-  "dependencies": {
-    "@fluentui/react": "^8.105.7",
-    "@fluentui/foundation-legacy": "^8.2.28",
-    "@fluentui/set-version": "^8.2.5",
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "tslib": "^2.1.0"
-  },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0"
-  },
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    }
   }
 }
