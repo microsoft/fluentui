@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 10 Feb 2023 08:50:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 09:35:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.6.9)
+
+Mon, 13 Feb 2023 09:35:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.6.8..@fluentui/react-menu_v9.6.9)
+
+### Patches
+
+- fix: MenuList is a single tabstop ([PR #26803](https://github.com/microsoft/fluentui/pull/26803) by lingfangao@hotmail.com)
+- Bump @fluentui/react-positioning to v9.4.1 ([PR #26800](https://github.com/microsoft/fluentui/pull/26800) by beachball)
 
 ## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.6.8)
 
