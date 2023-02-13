@@ -7,7 +7,7 @@ import { getWindow } from './dom/getWindow';
  * @public
  */
 // eslint-disable-next-line deprecation/deprecation
-export interface IDelayedRenderProps extends React.Props<{}> {
+export interface IDelayedRenderProps extends React.PropsWithChildren<React.PropsWithRef<{}>> {
   /**
    * Number of milliseconds to delay rendering children.
    */

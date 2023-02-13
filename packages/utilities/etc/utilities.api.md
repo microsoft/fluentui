@@ -533,7 +533,7 @@ export interface IDeclaredEventsByName {
 }
 
 // @public
-export interface IDelayedRenderProps extends React_2.Props<{}> {
+export interface IDelayedRenderProps extends React_2.PropsWithChildren<React_2.PropsWithRef<{}>> {
     delay?: number;
 }
 
