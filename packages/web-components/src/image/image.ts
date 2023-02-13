@@ -7,43 +7,6 @@ import { BorderRadius, ImageFit, ImageShape } from './image.options.js';
  */
 export class Image extends FASTElement {
   /**
-   * Image description
-   *
-   * @public
-   * @remarks
-   * HTML attribute: alt.
-   */
-  @attr
-  public alt: string;
-  /**
-   * presentation
-   *
-   * @public
-   * @remarks
-   * HTML attribute: role="presentation"
-   */
-  @attr
-  public role: string;
-  /**
-   * Image source
-   *
-   * @public
-   * @remarks
-   * HTML attribute: src.
-   */
-  @attr
-  public src: string;
-
-  /**
-   * Image layout
-   *
-   * @public
-   * @remarks
-   * HTML attribute: block.
-   */
-  @attr({ mode: 'boolean' })
-  public block?: boolean;
-  /**
    * Image border
    *
    * @public
@@ -52,15 +15,6 @@ export class Image extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public border?: boolean;
-  /**
-   * Image margin
-   *
-   * @public
-   * @remarks
-   * HTML attribute: margin.
-   */
-  @attr({ mode: 'boolean' })
-  public margin?: boolean;
   /**
    * Image shadow
    *

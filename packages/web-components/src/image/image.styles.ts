@@ -14,65 +14,58 @@ import {
  * @public
  */
 export const styles = css`
-  :host ::slotted(*) {
+  :host ::slotted(img) {
     box-sizing: border-box;
     min-height: 8px;
     min-width: 8px;
     display: inline-block;
   }
-  :host([block]) ::slotted(*) {
-    width: 100%;
-    height: auto;
-  }
-  :host([border]) ::slotted(*) {
+  :host([border]) ::slotted(img) {
     border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
-  :host([fit='none']) ::slotted(*) {
+  :host([fit='none']) ::slotted(img) {
     object-fit: none;
     object-position: top left;
     height: 100%;
     width: 100%;
   }
-  :host([fit='center']) ::slotted(*) {
+  :host([fit='center']) ::slotted(img) {
     object-fit: none;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host([fit='contain']) ::slotted(*) {
+  :host([fit='contain']) ::slotted(img) {
     object-fit: contain;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host([fit='cover']) ::slotted(*) {
+  :host([fit='cover']) ::slotted(img) {
     object-fit: cover;
     object-position: center;
     height: 100%;
     width: 100%;
   }
-  :host([margin]) ::slotted(*) {
-    margin: 16px;
-  }
-  :host([shadow]) ::slotted(*) {
+  :host([shadow]) ::slotted(img) {
     box-shadow: ${shadow4};
   }
-  :host([shape='circular']) ::slotted(*) {
+  :host([shape='circular']) ::slotted(img) {
     border-radius: 100%;
   }
-  :host([shape='rounded'][border-radius='small']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='small']) ::slotted(img) {
     border-radius: ${borderRadiusSmall};
   }
-  :host([shape='rounded'][border-radius='medium']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='medium']) ::slotted(img) {
     border-radius: ${borderRadiusMedium};
   }
-  :host([shape='rounded'][border-radius='large']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='large']) ::slotted(img) {
     border-radius: ${borderRadiusLarge};
   }
-  :host([shape='rounded'][border-radius='x-large']) ::slotted(*) {
+  :host([shape='rounded'][border-radius='x-large']) ::slotted(img) {
     border-radius: ${borderRadiusXLarge};
   }
-  :host([shape='square']) ::slotted(*) {
+  :host([shape='square']) ::slotted(img) {
     border-radius: none;
   }
 `;
