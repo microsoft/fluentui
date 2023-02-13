@@ -10,12 +10,9 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { Field } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { IBaseProps } from '@fluentui/utilities';
-import type { IComponentAs } from '@fluentui/utilities';
 import { Input } from '@fluentui/react-input';
 import type { InputProps } from '@fluentui/react-input';
 import type { IStyle } from '@fluentui/style-utilities';
-import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { ITheme } from '@fluentui/style-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
@@ -50,7 +47,7 @@ export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
 export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
 
 // @public (undocumented)
-export interface CalendarDayGridProps extends DayGridOptions, IBaseProps<ICalendarDayGrid> {
+export interface CalendarDayGridProps extends DayGridOptions {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
     className?: string;
@@ -75,7 +72,6 @@ export interface CalendarDayGridProps extends DayGridOptions, IBaseProps<ICalend
     showCloseButton?: boolean;
     showWeekNumbers?: boolean;
     strings: CalendarStrings;
-    styles?: IStyleFunctionOrObject<CalendarDayGridStyleProps, CalendarDayGridStyles>;
     theme?: ITheme;
     today?: Date;
     weeksToShow?: number;
@@ -125,7 +121,7 @@ export interface CalendarDayGridStyles {
 }
 
 // @public (undocumented)
-export interface CalendarDayProps extends IBaseProps<ICalendarDay>, CalendarDayGridProps {
+export interface CalendarDayProps extends CalendarDayGridProps {
     allFocusable?: boolean;
     className?: string;
     componentRef?: React_2.RefObject<ICalendarDay>;
@@ -166,7 +162,7 @@ export interface CalendarDayStyles extends Partial<CalendarDayGridStyles> {
 export const CalendarMonth: React_2.FunctionComponent<CalendarMonthProps>;
 
 // @public (undocumented)
-export interface CalendarMonthProps extends IBaseProps<ICalendarMonth> {
+export interface CalendarMonthProps {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
     className?: string;
@@ -183,7 +179,6 @@ export interface CalendarMonthProps extends IBaseProps<ICalendarMonth> {
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     selectedDate: Date;
     strings: CalendarStrings;
-    styles?: IStyleFunctionOrObject<CalendarMonthStyleProps, CalendarMonthStyles>;
     theme?: ITheme;
     today?: Date;
     yearPickerHidden?: boolean;
@@ -240,7 +235,7 @@ export interface CalendarPickerStyles {
 }
 
 // @public (undocumented)
-export interface CalendarProps extends IBaseProps<ICalendar>, React_2.RefAttributes<HTMLDivElement> {
+export interface CalendarProps extends React_2.RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     calendarDayProps?: Partial<CalendarDayProps>;
     calendarMonthProps?: Partial<CalendarMonthProps>;
@@ -267,7 +262,6 @@ export interface CalendarProps extends IBaseProps<ICalendar>, React_2.RefAttribu
     showSixWeeksByDefault?: boolean;
     showWeekNumbers?: boolean;
     strings?: CalendarStrings;
-    styles?: IStyleFunctionOrObject<CalendarStyleProps, CalendarStyles>;
     theme?: ITheme;
     today?: Date;
     value?: Date;
@@ -330,7 +324,7 @@ export interface CalendarYearHeaderProps extends CalendarYearProps, CalendarYear
 }
 
 // @public (undocumented)
-export interface CalendarYearProps extends IBaseProps<ICalendarYear> {
+export interface CalendarYearProps {
     animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: React_2.RefObject<ICalendarYear>;
@@ -346,7 +340,6 @@ export interface CalendarYearProps extends IBaseProps<ICalendarYear> {
     onSelectYear?: (year: number) => void;
     selectedYear?: number;
     strings?: CalendarYearStrings;
-    styles?: IStyleFunctionOrObject<CalendarYearStyleProps, CalendarYearStyles>;
     theme?: ITheme;
 }
 
@@ -413,11 +406,8 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 // @public (undocumented)
 export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     componentRef?: React_2.RefObject<IDatePicker>;
-    styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
     theme?: ITheme;
-    calendarProps?: CalendarProps;
     textField?: InputProps;
-    calendarAs?: IComponentAs<CalendarProps>;
     onSelectDate?: (date: Date | null | undefined) => void;
     label?: string;
     isRequired?: boolean;
@@ -460,37 +450,6 @@ export interface DatePickerStrings extends CalendarStrings {
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
     isResetStatusMessage?: string;
-}
-
-// @public (undocumented)
-export interface DatePickerStyleProps {
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    label?: boolean;
-    // (undocumented)
-    underlined?: boolean;
-}
-
-// @public (undocumented)
-export interface DatePickerStyles {
-    // (undocumented)
-    callout: IStyle;
-    // (undocumented)
-    icon: IStyle;
-    // (undocumented)
-    readOnlyPlaceholder?: IStyle;
-    // (undocumented)
-    readOnlyTextField?: IStyle;
-    root: IStyle;
-    // (undocumented)
-    statusMessage?: IStyle;
-    // (undocumented)
-    textField: IStyle;
-    // (undocumented)
-    wrapper?: IStyle;
 }
 
 // @public
