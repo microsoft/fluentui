@@ -92,9 +92,7 @@ const rootInteractiveStyles: GriffelResetStyle = {
     borderBottomColor: tokens.colorCompoundBrandStrokePressed,
   },
   ':focus-within': {
-    outlineWidth: '2px',
-    outlineStyle: 'solid',
-    outlineColor: 'transparent',
+    outline: '2px solid transparent',
   },
 };
 
