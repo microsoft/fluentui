@@ -11,13 +11,18 @@ type ImageStoryMeta = Meta<ImageStoryArgs>;
 const imageTemplate = html<ImageStoryArgs>`
   <div style="padding: 48px 24px; background-color: rgb(250, 250, 250);">
     <fluent-image
+      ?block=${x => x.block}
       ?border=${x => x.border}
       border-radius=${x => x.borderRadius}
       fit=${x => x.fit}
       ?shadow=${x => x.shadow}
       shape=${x => x.shape}
     >
+      <img alt="Short image description" src="https://via.placeholder.com/100x100/ddd.png" />
       <img alt="Short image description" src="https://via.placeholder.com/200x100/ddd.png" />
+      <img alt="Short image description" src="https://via.placeholder.com/400x100/ddd.png" />
+      <img alt="Short image description" src="https://via.placeholder.com/100x400/ddd.png" />
+      <img alt="Short image description" src="https://via.placeholder.com/800x200/ddd.png" />
     </fluent-image>
   </div>
 `;
@@ -25,6 +30,7 @@ const imageTemplate = html<ImageStoryArgs>`
 export default {
   title: 'Components/Image',
   args: {
+    block: false,
     border: false,
     shadow: false,
     borderRadius: BorderRadius.small,
@@ -38,6 +44,15 @@ export default {
         type: {
           summary:
             'Required. Alt tag provides text attribution for images. Should be brief but accurate—one or two sentences that describe the image and its context. If the image represents a function, be sure to indicate that. If it’s meant to be consumed with other objects on the page, consider that as well. Don’t repeat information that’s on the page in alt text since screen readers will read it twice.',
+        },
+      },
+    },
+    block: {
+      description:
+        'An image can use the argument ‘block’ so that it’s width will expand to fiill the available container space.',
+      table: {
+        defaultValue: {
+          summary: false,
         },
       },
     },
@@ -119,6 +134,17 @@ export default {
 
 export const Image = renderComponent(imageTemplate).bind({});
 
+// Block layout
+const imageLayoutBlock = html<ImageStoryArgs>`
+  <div style="border: 1px dotted #43ED35;">
+    <fluent-image block border="true">
+      <img role="presentation" src="https://via.placeholder.com/958x20/ddd.png" />
+      <img role="presentation" src="https://via.placeholder.com/100x100/ddd.png" />
+    </fluent-image>
+  </div>
+`;
+export const BlockLayout = renderComponent(imageLayoutBlock).bind({});
+
 // Fit: None
 const imageFitNoneLarge = html<ImageStoryArgs>`
   <div style="height: 150px; width: 300px; border: 1px dotted #43ED35;">
@@ -156,17 +182,6 @@ const imageFitCenterSmall = html<ImageStoryArgs>`
   </div>
 `;
 export const ImageFitCenterSmall = renderComponent(imageFitCenterSmall).bind({});
-
-// Fit: Contain
-const imageFitFullContainer = html<ImageStoryArgs>`
-  <div style="border: 1px dotted #43ED35;">
-    <fluent-image fit="contain" border="true">
-      <img role="presentation" src="https://via.placeholder.com/958x20/ddd.png" />
-      <img role="presentation" src="https://via.placeholder.com/100x100/ddd.png" />
-    </fluent-image>
-  </div>
-`;
-export const ImageFitFullContainer = renderComponent(imageFitFullContainer).bind({});
 
 const imageFitContain = html<ImageStoryArgs>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">

@@ -20,6 +20,10 @@ export const styles = css`
     min-width: 8px;
     display: inline-block;
   }
+  :host([block]) ::slotted(img) {
+    width: 100%;
+    height: auto;
+  }
   :host([border]) ::slotted(img) {
     border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
@@ -51,7 +55,7 @@ export const styles = css`
     box-shadow: ${shadow4};
   }
   :host([shape='circular']) ::slotted(img) {
-    border-radius: 100%;
+    border-radius: 999em;
   }
   :host([shape='rounded'][border-radius='small']) ::slotted(img) {
     border-radius: ${borderRadiusSmall};
