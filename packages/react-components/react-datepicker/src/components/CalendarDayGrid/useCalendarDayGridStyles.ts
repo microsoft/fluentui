@@ -35,14 +35,6 @@ export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = 
   firstTransitionWeek: 'fui-CalendarDayGrid__firstTransitionWeek',
   lastTransitionWeek: 'fui-CalendarDayGrid__lastTransitionWeek',
   dayMarker: 'fui-CalendarDayGrid__dayMarker',
-  topRightCornerDate: 'fui-CalendarDayGrid__topRightCornerDate',
-  topLeftCornerDate: 'fui-CalendarDayGrid__topLeftCornerDate',
-  bottomRightCornerDate: 'fui-CalendarDayGrid__bottomRightCornerDate',
-  bottomLeftCornerDate: 'fui-CalendarDayGrid__bottomLeftCornerDate',
-  datesAbove: 'fui-CalendarDayGrid__datesAbove',
-  datesBelow: 'fui-CalendarDayGrid__datesBelow',
-  datesLeft: 'fui-CalendarDayGrid__datesLeft',
-  datesRight: 'fui-CalendarDayGrid__datesRight',
 };
 
 const useWrapperStyles = makeStyles({
@@ -311,44 +303,6 @@ const useDayMarkerStyles = makeStyles({
   },
 });
 
-const useCornerDateStyles = makeStyles({
-  topRight: {
-    borderTopRightRadius: '2px',
-  },
-  topLeft: {
-    borderTopLeftRadius: '2px',
-  },
-  bottomRight: {
-    borderBottomRightRadius: '2px',
-  },
-  bottomLeft: {
-    borderBottomLeftRadius: '2px',
-  },
-});
-
-const useDatesPositionStyles = makeStyles({
-  above: {
-    '&::before': {
-      ...shorthands.borderTop('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-  below: {
-    '&::before': {
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-  left: {
-    '&::before': {
-      ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-  right: {
-    '&::before': {
-      ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-});
-
 /**
  * Apply styling to the CalendarDayGrid slots based on the state
  */
@@ -367,8 +321,6 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
   const firstTransitionWeekStyles = useFirstTransitionWeekStyles();
   const lastTransitionWeekStyles = useLastTransitionWeekStyles();
   const dayMarkerStyles = useDayMarkerStyles();
-  const cornerDateStyles = useCornerDateStyles();
-  const datesPositionStyles = useDatesPositionStyles();
 
   const {
     animateBackwards,
@@ -428,13 +380,5 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
         lastTransitionWeekStyles.verticalBackward,
     ),
     dayMarker: mergeClasses(calendarDayGridClassNames.dayMarker, dayMarkerStyles.base),
-    topRightCornerDate: mergeClasses(calendarDayGridClassNames.topRightCornerDate, cornerDateStyles.topRight),
-    topLeftCornerDate: mergeClasses(calendarDayGridClassNames.topLeftCornerDate, cornerDateStyles.topLeft),
-    bottomRightCornerDate: mergeClasses(calendarDayGridClassNames.bottomRightCornerDate, cornerDateStyles.bottomRight),
-    bottomLeftCornerDate: mergeClasses(calendarDayGridClassNames.bottomLeftCornerDate, cornerDateStyles.bottomLeft),
-    datesAbove: mergeClasses(calendarDayGridClassNames.datesAbove, datesPositionStyles.above),
-    datesBelow: mergeClasses(calendarDayGridClassNames.datesBelow, datesPositionStyles.below),
-    datesLeft: mergeClasses(calendarDayGridClassNames.datesLeft, datesPositionStyles.left),
-    datesRight: mergeClasses(calendarDayGridClassNames.datesRight, datesPositionStyles.right),
   };
 };

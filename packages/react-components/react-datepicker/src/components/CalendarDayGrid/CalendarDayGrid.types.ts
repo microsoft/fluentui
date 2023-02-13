@@ -108,11 +108,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
    * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the
    * specific day.
    */
-  customDayCellRef?: (
-    element: HTMLElement,
-    date: Date,
-    classNames: Record<keyof CalendarDayGridStyles, string>,
-  ) => void;
+  customDayCellRef?: (element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => void;
 
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current
@@ -287,21 +283,4 @@ export interface CalendarDayGridStyles {
    * The style applied to the marker on days to mark as important
    */
   dayMarker?: string;
-
-  /**
-   * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners
-   */
-  topRightCornerDate?: string;
-  topLeftCornerDate?: string;
-  bottomRightCornerDate?: string;
-  bottomLeftCornerDate?: string;
-
-  /**
-   * The styles to apply to days for focus borders. Can apply multiple if there are multiple focused days
-   * around the current focused date
-   */
-  datesAbove?: string;
-  datesBelow?: string;
-  datesLeft?: string;
-  datesRight?: string;
 }

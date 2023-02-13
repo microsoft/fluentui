@@ -2,10 +2,11 @@ import * as React from 'react';
 import { getWeekNumbersInMonth } from '../../utils';
 import { CalendarGridDayCell } from './CalendarGridDayCell';
 import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayGrid.types';
-import type { DayInfo, WeekCorners } from './CalendarDayGrid';
+import type { DayInfo } from './CalendarDayGrid';
+import type { WeekCorners } from './useWeekCornerStyles';
 
 export interface CalendarGridRowProps extends CalendarDayGridProps {
-  classNames: Record<keyof CalendarDayGridStyles, string>;
+  classNames: CalendarDayGridStyles;
   weeks: DayInfo[][];
   week: DayInfo[];
   weekIndex: number;
@@ -15,13 +16,7 @@ export interface CalendarGridRowProps extends CalendarDayGridProps {
   ariaRole?: string;
   navigatedDayRef: React.MutableRefObject<HTMLTableCellElement>;
   activeDescendantId: string;
-  calculateRoundedStyles(
-    classNames: Record<keyof CalendarDayGridStyles, string>,
-    above: boolean,
-    below: boolean,
-    left: boolean,
-    right: boolean,
-  ): string;
+  calculateRoundedStyles(above: boolean, below: boolean, left: boolean, right: boolean): string;
   getDayInfosInRangeOfDay(dayToCompare: DayInfo): DayInfo[];
   getRefsFromDayInfos(dayInfosInRange: DayInfo[]): (HTMLElement | null)[];
 }
