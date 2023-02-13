@@ -398,7 +398,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   private _updateFooterPosition(): void {
-    console.log('update');
     const scrollableContent = this._scrollableContent;
     if (scrollableContent) {
       const height = scrollableContent.clientHeight;
