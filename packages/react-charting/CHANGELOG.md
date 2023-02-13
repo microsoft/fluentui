@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 07 Feb 2023 07:36:28 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 07:37:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.15.4)
+
+Mon, 13 Feb 2023 07:37:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.15.3..@fluentui/react-charting_v5.15.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.7 ([PR #26796](https://github.com/microsoft/fluentui/pull/26796) by beachball)
+
+## [5.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.15.3)
+
+Fri, 10 Feb 2023 07:47:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.15.2..@fluentui/react-charting_v5.15.3)
+
+### Patches
+
+- Fixing wrong value on link hover ([PR #26778](https://github.com/microsoft/fluentui/pull/26778) by ankityadav@microsoft.com)
+- Bump @fluentui/react to v8.105.6 ([PR #26725](https://github.com/microsoft/fluentui/pull/26725) by beachball)
+
+## [5.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.15.2)
+
+Thu, 09 Feb 2023 07:38:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.15.1..@fluentui/react-charting_v5.15.2)
+
+### Patches
+
+- Fix svg-img-alt accessibility issue in vertical stacked bar chart ([PR #26755](https://github.com/microsoft/fluentui/pull/26755) by kumarkshitij@microsoft.com)
 
 ## [5.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.15.1)
 
