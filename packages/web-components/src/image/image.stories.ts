@@ -11,15 +11,13 @@ type ImageStoryMeta = Meta<ImageStoryArgs>;
 const imageTemplate = html<ImageStoryArgs>`
   <div style="padding: 48px 24px; background-color: rgb(250, 250, 250);">
     <fluent-image
-      ?block=${x => x.block}
       ?border=${x => x.border}
       border-radius=${x => x.borderRadius}
       fit=${x => x.fit}
-      ?margin=${x => x.margin}
       ?shadow=${x => x.shadow}
       shape=${x => x.shape}
     >
-      <img alt=${x => x.alt} role=${x => x.role} src=${x => x.src} />
+      <img alt="Short image description" src="https://via.placeholder.com/200x100/ddd.png" />
     </fluent-image>
   </div>
 `;
@@ -27,12 +25,7 @@ const imageTemplate = html<ImageStoryArgs>`
 export default {
   title: 'Components/Image',
   args: {
-    alt: 'Short image description',
-    role: '',
-    src: 'https://via.placeholder.com/200x100/ddd.png',
-    block: false,
     border: false,
-    margin: false,
     shadow: false,
     borderRadius: BorderRadius.small,
     fit: ImageFit.default,
@@ -40,20 +33,11 @@ export default {
   },
   argTypes: {
     alt: {
-      description: 'Alternate text description',
+      description: 'Alternate text description -- to be supplied by component consumer',
       table: {
         type: {
           summary:
             'Required. Alt tag provides text attribution for images. Should be brief but accurate—one or two sentences that describe the image and its context. If the image represents a function, be sure to indicate that. If it’s meant to be consumed with other objects on the page, consider that as well. Don’t repeat information that’s on the page in alt text since screen readers will read it twice.',
-        },
-      },
-    },
-    block: {
-      description:
-        'An image can use the argument ‘block’ so that it’s width will expand to fiill the available container space.',
-      table: {
-        defaultValue: {
-          summary: false,
         },
       },
     },
@@ -89,15 +73,10 @@ export default {
       control: 'select',
     },
     margin: {
-      description: 'Optional 16px margin',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
+      description: 'Optional 16px margin -- to be supplied by component consumer',
     },
     role: {
-      description: 'Aria role for image element',
+      description: 'Aria role -- to be supplied by component consumer',
       table: {
         type: {
           summary:
@@ -128,7 +107,7 @@ export default {
       control: 'select',
     },
     src: {
-      description: 'Image source',
+      description: 'Image source -- to be supplied by component consumer',
       table: {
         type: {
           summary: 'Required',
@@ -139,17 +118,6 @@ export default {
 } as ImageStoryMeta;
 
 export const Image = renderComponent(imageTemplate).bind({});
-
-// Block layout
-const imageLayoutBlock = html<ImageStoryArgs>`
-  <div style="border: 1px dotted #43ED35;">
-    <fluent-image block border="true">
-      <img role="presentation" src="https://via.placeholder.com/958x20/ddd.png" />
-      <img role="presentation" src="https://via.placeholder.com/100x100/ddd.png" />
-    </fluent-image>
-  </div>
-`;
-export const BlockLayout = renderComponent(imageLayoutBlock).bind({});
 
 // Fit: None
 const imageFitNoneLarge = html<ImageStoryArgs>`
@@ -190,6 +158,16 @@ const imageFitCenterSmall = html<ImageStoryArgs>`
 export const ImageFitCenterSmall = renderComponent(imageFitCenterSmall).bind({});
 
 // Fit: Contain
+const imageFitFullContainer = html<ImageStoryArgs>`
+  <div style="border: 1px dotted #43ED35;">
+    <fluent-image fit="contain" border="true">
+      <img role="presentation" src="https://via.placeholder.com/958x20/ddd.png" />
+      <img role="presentation" src="https://via.placeholder.com/100x100/ddd.png" />
+    </fluent-image>
+  </div>
+`;
+export const ImageFitFullContainer = renderComponent(imageFitFullContainer).bind({});
+
 const imageFitContain = html<ImageStoryArgs>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image border="true" fit="contain">
