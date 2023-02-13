@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { TestWrapperDecorator } from '../utilities/index';
 
 const img350x150 = 'http://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png';
@@ -52,13 +52,13 @@ storiesOf('Image', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('No fit, no w/h', () => (
     <div>

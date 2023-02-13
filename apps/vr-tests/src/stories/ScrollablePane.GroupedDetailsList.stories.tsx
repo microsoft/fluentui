@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import {
@@ -236,8 +236,8 @@ const cropTo = { cropTo: '.testWrapper' };
 storiesOf('ScrollablePane Grouped Details List', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default: scrollbars should be visible', cropTo)
         .executeScript(`${getElement}.scrollTop = 100`)
         .snapshot('Scrollbars visibility when header is sticky', cropTo)
@@ -277,6 +277,6 @@ storiesOf('ScrollablePane Grouped Details List', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('ScrollablePane scrollbars visibility', () => <ScrollablePaneDetailsListStory />);

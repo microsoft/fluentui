@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-overflow",
-  "version": "9.0.0-beta.12",
+  "version": "9.0.4",
   "description": "React bindings for @fluentui/priority-overflow",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -28,14 +28,16 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/priority-overflow": "^9.0.0-beta.3",
-    "@fluentui/react-context-selector": "^9.0.5",
-    "@fluentui/react-theme": "^9.1.1",
-    "@fluentui/react-utilities": "^9.1.2",
-    "@griffel/react": "^1.4.1",
+    "@fluentui/priority-overflow": "^9.0.1",
+    "@fluentui/react-context-selector": "^9.1.8",
+    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/react-utilities": "^9.5.2",
+    "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -47,9 +49,16 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
+      "prerelease",
+      "major"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

@@ -8,6 +8,8 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
+import { FieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
@@ -19,6 +21,25 @@ export const Checkbox: ForwardRefComponent<CheckboxProps>;
 
 // @public (undocumented)
 export const checkboxClassNames: SlotClassNames<CheckboxSlots>;
+
+// @public @deprecated (undocumented)
+export const CheckboxField_unstable: ForwardRefComponent<CheckboxFieldProps_unstable>;
+
+// @public @deprecated (undocumented)
+export const checkboxFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
+
+// @public @deprecated (undocumented)
+export type CheckboxFieldProps_unstable = Omit<DeprecatedFieldProps<CheckboxProps>, 'label'> & {
+    label?: CheckboxProps['label'];
+    fieldLabel?: FieldProps['label'];
+};
 
 // @public
 export interface CheckboxOnChangeData {
@@ -46,7 +67,7 @@ export type CheckboxSlots = {
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'labelPosition' | 'shape' | 'size'>>;
+export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;

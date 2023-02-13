@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   TableBody,
   TableCell,
   TableRow,
@@ -17,12 +18,13 @@ import {
   TableHeader,
   TableHeaderCell,
   TableSelectionCell,
-  useTable,
-  ColumnDefinition,
-  RowId,
-  useSelection,
+  useTableFeatures,
+  TableColumnDefinition,
+  TableRowId,
+  useTableSelection,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+  createTableColumn,
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -90,57 +92,60 @@ const items: Item[] = [
   },
 ];
 
-const columns: ColumnDefinition<Item>[] = [
-  {
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
     columnId: 'file',
-  },
-  {
+  }),
+  createTableColumn<Item>({
     columnId: 'author',
-  },
-  {
+  }),
+  createTableColumn<Item>({
     columnId: 'lastUpdated',
-  },
-  {
+  }),
+  createTableColumn<Item>({
     columnId: 'lastUpdate',
-  },
+  }),
 ];
 
 export const SingleSelectControlled = () => {
   const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<RowId>([1]),
+    () => new Set<TableRowId>([1]),
   );
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
-  } = useTable(
+  } = useTableFeatures(
     {
       columns,
       items,
     },
     [
-      useSelection({
+      useTableSelection({
         selectionMode: 'single',
         selectedItems: selectedRows,
-        onSelectionChange: setSelectedRows,
+        onSelectionChange: (e, data) => setSelectedRows(data.selectedItems),
       }),
     ],
   );
 
-  const rows = getRows(row => ({
-    ...row,
-    onClick: () => toggleRow(row.rowId),
-    onKeyDown: (e: React.KeyboardEvent) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        toggleRow(row.rowId);
-      }
-    },
-    selected: isRowSelected(row.rowId),
-  }));
-
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
+  });
 
   return (
-    <Table>
+    <Table aria-label="Table with controlled single selection">
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" hidden />
@@ -150,21 +155,29 @@ export const SingleSelectControlled = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody {...keyboardNavAttr}>
-        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+      <TableBody>
+        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
           <TableRow
             key={item.file.label}
             onClick={onClick}
             onKeyDown={onKeyDown}
             aria-selected={selected}
-            appearance={selected ? 'neutral' : 'none'}
+            appearance={appearance}
           >
-            <TableSelectionCell tabIndex={0} checkboxIndicator={{ tabIndex: -1 }} checked={selected} type="radio" />
+            <TableSelectionCell checked={selected} type="radio" radioIndicator={{ 'aria-label': 'Select row' }} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
@@ -177,4 +190,16 @@ export const SingleSelectControlled = () => {
       </TableBody>
     </Table>
   );
+};
+
+SingleSelectControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'By default the `useTableFeatures` hook is uncontrolled. ',
+        'However, it is possible to control selection features with external',
+        'user state.',
+      ].join('\n'),
+    },
+  },
 };

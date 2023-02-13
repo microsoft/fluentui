@@ -8,7 +8,6 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -17,7 +16,11 @@ import {
   TableHeader,
   TableHeaderCell,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
+  useArrowNavigationGroup,
+} from '@fluentui/react-components';
 
 const items = [
   {
@@ -69,7 +72,7 @@ export const CellNavigation = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr}>
+    <Table {...keyboardNavAttr} role="grid" aria-label="Table with grid keyboard navigation">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -81,23 +84,29 @@ export const CellNavigation = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>
-            <TableCell tabIndex={0}>{item.lastUpdated.label}</TableCell>
-            <TableCell tabIndex={0}>
+            <TableCell tabIndex={0} role="gridcell">
+              {item.lastUpdated.label}
+            </TableCell>
+            <TableCell tabIndex={0} role="gridcell">
               <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
-            <TableCell>
+            <TableCell role="gridcell">
               <TableCellLayout>
                 <Button icon={<EditRegular />}>Edit</Button>
               </TableCellLayout>
@@ -107,4 +116,18 @@ export const CellNavigation = () => {
       </TableBody>
     </Table>
   );
+};
+
+CellNavigation.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `Table` primitive components do not support keyboard navigation. This should be added by users.',
+        'Cell navigation can be achieved simply using the `useArrowNavigationGroup` utility provided by the Library.',
+        '',
+        '>⚠️ Once there is any kind of keyboard navigation on the component it must follow the',
+        '>[aria role="grid" pattern](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids).',
+      ].join('\n'),
+    },
+  },
 };

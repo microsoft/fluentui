@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataGridBody renders items from render function 1`] = `
+<div>
+  <div
+    class="fui-DataGridBody fui-TableBody"
+    role="rowgroup"
+  />
+</div>
+`;
