@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Coordinates should be rounded to device pixels to prevent blurriness",
-  "packageName": "@fluentui/react-positioning",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

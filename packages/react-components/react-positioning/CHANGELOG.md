@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 10 Feb 2023 08:49:59 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 09:35:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.1)
+
+Mon, 13 Feb 2023 09:35:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.0..@fluentui/react-positioning_v9.4.1)
+
+### Patches
+
+- fix: Coordinates should be rounded to device pixels to prevent blurriness ([PR #26766](https://github.com/microsoft/fluentui/pull/26766) by behowell@microsoft.com)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.0)
 

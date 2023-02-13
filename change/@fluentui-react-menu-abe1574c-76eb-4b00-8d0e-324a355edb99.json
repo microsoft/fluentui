@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MenuList is a single tabstop",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 09:35:46 GMT",
+      "tag": "@fluentui/react-menu_v9.6.9",
+      "version": "9.6.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "01013be09ee21b976963582f112365ae81a33ae0",
+            "comment": "fix: MenuList is a single tabstop"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.4.1",
+            "commit": "b24aed22677cb12a74f185feee89edefd1601b9a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 08:50:02 GMT",
       "tag": "@fluentui/react-menu_v9.6.8",
       "version": "9.6.8",

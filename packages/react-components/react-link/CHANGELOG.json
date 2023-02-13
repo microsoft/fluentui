@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 09:35:46 GMT",
+      "tag": "@fluentui/react-link_v9.0.23",
+      "version": "9.0.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 08:50:02 GMT",
       "tag": "@fluentui/react-link_v9.0.23",
       "version": "9.0.23",
