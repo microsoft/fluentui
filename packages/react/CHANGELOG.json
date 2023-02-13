@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 07:37:39 GMT",
+      "tag": "@fluentui/react_v8.105.7",
+      "version": "8.105.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "4c7f4f60b937ea1a46fa03b43cba6a99e8d111d7",
+            "comment": "fix(Datepicker): Set aria-current to date when the day is today instead of when it's selected."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 07:47:23 GMT",
       "tag": "@fluentui/react_v8.105.6",
       "version": "8.105.6",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-infobutton",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 09:35:48 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.14",
+      "version": "9.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.4.8",
+            "commit": "b24aed22677cb12a74f185feee89edefd1601b9a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 08:50:02 GMT",
       "tag": "@fluentui/react-infobutton_v9.0.0-beta.13",
       "version": "9.0.0-beta.13",

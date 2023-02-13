@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Fri, 10 Feb 2023 08:50:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 09:35:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.34)
+
+Mon, 13 Feb 2023 09:35:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.33..@fluentui/react-portal-compat_v9.0.34)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.15.1 ([PR #26800](https://github.com/microsoft/fluentui/pull/26800) by beachball)
 
 ## [9.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.33)
 

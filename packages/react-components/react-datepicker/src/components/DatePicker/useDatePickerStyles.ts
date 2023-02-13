@@ -10,6 +10,7 @@ export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<stri
   popover: 'fui-DatePicker__popover',
   popoverSurface: 'fui-DatePicker__popoverSurface',
   input: 'fui-DatePicker__input',
+  calendar: 'fui-DatePicker__calendar',
 };
 
 const useRootStyles = makeStyles({
@@ -32,11 +33,6 @@ const useTextFieldStyles = makeStyles({
     position: 'relative',
     '& input[readonly]': {
       cursor: 'pointer',
-    },
-    input: {
-      '::-ms-clear': {
-        display: 'none',
-      },
     },
   },
   disabled: {
@@ -74,6 +70,8 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
   state.inputField.className = mergeClasses(datePickerClassNames.inputField, state.inputField.className);
 
   state.popoverSurface.className = mergeClasses(datePickerClassNames.popoverSurface, state.popoverSurface.className);
+
+  state.calendar.className = mergeClasses(datePickerClassNames.calendar, state.calendar.className);
 
   return state;
 };
