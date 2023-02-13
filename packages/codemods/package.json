@@ -2,16 +2,16 @@
   "name": "@fluentui/codemods",
   "version": "8.4.8",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
-  "main": "lib-commonjs/index.js",
-  "typings": "lib-commonjs/index.d.ts",
-  "bin": {
-    "upgrade": "./bin/upgrade.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
+  "bin": {
+    "upgrade": "./bin/upgrade.js"
+  },
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
@@ -22,16 +22,16 @@
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "react": "17.0.2",
+    "ts-morph": "^10.0.1",
+    "tslib": "^2.1.0",
+    "yargs": "^13.3.2"
+  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*"
-  },
-  "dependencies": {
-    "tslib": "^2.1.0",
-    "react": "17.0.2",
-    "ts-morph": "^10.0.1",
-    "glob": "^7.1.2",
-    "yargs": "^13.3.2"
   }
 }

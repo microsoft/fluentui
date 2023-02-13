@@ -2,37 +2,37 @@
   "name": "@fluentui/react-popover",
   "version": "9.4.8",
   "description": "Popover component for Fluent UI",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "./dist/index.d.ts",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component",
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-tasks": "*"
+    "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.1",
@@ -47,6 +47,14 @@
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
@@ -59,13 +67,5 @@
       "major",
       "prerelease"
     ]
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    },
-    "./package.json": "./package.json"
   }
 }

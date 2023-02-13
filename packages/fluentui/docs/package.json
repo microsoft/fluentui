@@ -3,6 +3,17 @@
   "version": "0.66.1",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "build": "gulp build:docs",
+    "build:storybook": "build-storybook -o dist/storybook",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "start": "gulp docs",
+    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
+    "start:storybook": "start-storybook",
+    "vr:build": "yarn build:storybook",
+    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+  },
   "dependencies": {
     "@charlietango/use-script": "^2.1.1",
     "@fluentui/ability-attributes": "^0.66.1",
@@ -63,16 +74,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "build": "gulp build:docs",
-    "build:storybook": "build-storybook -o dist/storybook",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "start": "gulp docs",
-    "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
-    "start:storybook": "start-storybook",
-    "vr:build": "yarn build:storybook",
-    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }

@@ -3,28 +3,43 @@
   "version": "8.1.41",
   "private": true,
   "description": "Fluent UI React local demo app",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "sideEffects": [
-    "*.global.*",
-    "*Examples.*",
-    "*Example.*"
-  ],
-  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": [
+    "*.global.*",
+    "*Examples.*",
+    "*Example.*"
+  ],
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
     "start": "just-scripts dev",
     "update-snapshots": "just-scripts jest -u"
+  },
+  "dependencies": {
+    "@fluentui/azure-themes": "^8.5.58",
+    "@fluentui/font-icons-mdl2": "^8.5.8",
+    "@fluentui/react": "^8.105.7",
+    "@fluentui/react-docsite-components": "^8.11.19",
+    "@fluentui/react-examples": "^8.34.4",
+    "@fluentui/react-monaco-editor": "^1.7.54",
+    "@fluentui/set-version": "^8.2.5",
+    "@fluentui/theme-samples": "^8.7.54",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "office-ui-fabric-core": "^11.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@fluentui/api-docs": "^8.2.6",
@@ -32,20 +47,5 @@
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"
-  },
-  "dependencies": {
-    "@fluentui/react": "^8.105.7",
-    "@fluentui/react-examples": "^8.34.4",
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/azure-themes": "^8.5.58",
-    "@fluentui/react-docsite-components": "^8.11.19",
-    "@fluentui/font-icons-mdl2": "^8.5.8",
-    "@fluentui/set-version": "^8.2.5",
-    "@fluentui/theme-samples": "^8.7.54",
-    "@fluentui/react-monaco-editor": "^1.7.54",
-    "office-ui-fabric-core": "^11.0.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "tslib": "^2.1.0"
   }
 }

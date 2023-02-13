@@ -14,16 +14,16 @@
     "just": "just-scripts",
     "lint": "just-scripts lint"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "loader-utils": "^2.0.0",
     "tslib": "^2.1.0"
   },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
   "peerDependencies": {
-    "webpack": ">=4.0.0 || >=5.0.0",
-    "react-loadable": ">=5.0.0"
+    "react-loadable": ">=5.0.0",
+    "webpack": ">=4.0.0 || >=5.0.0"
   }
 }

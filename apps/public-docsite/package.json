@@ -3,34 +3,27 @@
   "version": "8.2.41",
   "private": true,
   "description": "The official website for the Fluent UI project.",
-  "sideEffects": true,
-  "main": "lib-commonjs/root.js",
-  "module": "lib/root.js",
-  "typings": "lib/root.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "license": "MIT",
+  "sideEffects": true,
+  "main": "lib-commonjs/root.js",
+  "module": "lib/root.js",
+  "typings": "lib/root.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "test": "just-scripts test",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@fluentui/common-styles": "^1.2.17",
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-monaco-editor": "^1.7.54",
-    "write-file-webpack-plugin": "^4.1.0",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev",
+    "test": "just-scripts test"
   },
   "dependencies": {
+    "@fluentui/fluent2-theme": "^8.104.21",
     "@fluentui/font-icons-mdl2": "^8.5.8",
     "@fluentui/public-docsite-resources": "^8.1.41",
     "@fluentui/public-docsite-setup": "^0.3.17",
@@ -38,7 +31,6 @@
     "@fluentui/react-docsite-components": "^8.11.19",
     "@fluentui/react-examples": "^8.34.4",
     "@fluentui/react-experiments": "^8.14.49",
-    "@fluentui/fluent2-theme": "^8.104.21",
     "@fluentui/react-file-type-icons": "^8.8.8",
     "@fluentui/react-icons-mdl2": "^1.3.31",
     "@fluentui/react-icons-mdl2-branded": "^1.2.32",
@@ -52,5 +44,13 @@
     "react-dom": "17.0.2",
     "tslib": "^2.1.0",
     "whatwg-fetch": "2.0.4"
+  },
+  "devDependencies": {
+    "@fluentui/common-styles": "^1.2.17",
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-monaco-editor": "^1.7.54",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*",
+    "write-file-webpack-plugin": "^4.1.0"
   }
 }

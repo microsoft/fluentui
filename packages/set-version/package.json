@@ -2,14 +2,21 @@
   "name": "@fluentui/set-version",
   "version": "8.2.5",
   "description": "Non-Fabric-specific package version setter",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "code-style": "just-scripts code-style",
@@ -17,18 +24,11 @@
     "lint": "just-scripts lint",
     "test": "just-scripts test"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*"
-  },
   "dependencies": {
     "tslib": "^2.1.0"
   },
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    }
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
   }
 }

@@ -4,18 +4,18 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build:withdependencies": "yarn --cwd ../../.. build --scope=@fluentui/local-sandbox --include-filtered-dependencies",
     "build": "webpack",
     "build:production": "webpack -p",
+    "build:withdependencies": "yarn --cwd ../../.. build --scope=@fluentui/local-sandbox --include-filtered-dependencies",
     "serve": "node ./server.js"
   },
   "dependencies": {
     "@fluentui/react-northstar": "^0.66.1"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@fluentui/scripts-babel": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

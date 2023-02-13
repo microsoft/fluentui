@@ -1,9 +1,28 @@
 {
   "name": "@fluentui/styles",
-  "description": "A set of styling utilities for CSS-in-JS.",
   "version": "0.66.1",
-  "author": "Marija Najdova <mnajdova@gmail.com>",
+  "description": "A set of styling utilities for CSS-in-JS.",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/styles",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Marija Najdova <mnajdova@gmail.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "csstype": "^3.0.2",
@@ -16,26 +35,7 @@
     "@fluentui/scripts-jest": "*",
     "lerna-alias": "^3.0.3-0"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/styles",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "publishConfig": {
     "access": "public"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "test": "gulp test",
-    "test:watch": "gulp test:watch"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

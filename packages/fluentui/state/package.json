@@ -1,9 +1,27 @@
 {
   "name": "@fluentui/state",
-  "description": "A set of utils to create framework agnostic and reusable state managers",
   "version": "0.66.1",
-  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "description": "A set of utils to create framework agnostic and reusable state managers",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/state",
   "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "jsnext:main": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
+    "test:watch": "gulp test:watch"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4"
   },
@@ -13,25 +31,7 @@
     "@fluentui/scripts-gulp": "*",
     "lerna-alias": "^3.0.3-0"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/state",
-  "jsnext:main": "dist/es/index.js",
-  "license": "MIT",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "publishConfig": {
     "access": "public"
-  },
-  "repository": "microsoft/fluentui.git",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix",
-    "test:watch": "gulp test:watch"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

@@ -1,9 +1,25 @@
 {
   "name": "@fluentui/react-northstar-prototypes",
-  "description": "A set of prototypes built using @fluentui/react-northstar",
   "version": "0.66.1",
-  "bugs": "https://github.com/microsoft/fluentui/issues",
   "private": true,
+  "description": "A set of prototypes built using @fluentui/react-northstar",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar-prototypes",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
+  "repository": "microsoft/fluentui.git",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
+  },
   "dependencies": {
     "@babel/runtime": "^7.10.4",
     "@fluentui/accessibility": "^0.66.1",
@@ -39,24 +55,8 @@
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2"
   },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar-prototypes",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17"
-  },
-  "repository": "microsoft/fluentui.git",
-  "license": "MIT",
-  "scripts": {
-    "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean",
-    "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
-  },
-  "sideEffects": false,
-  "types": "dist/es/index.d.ts"
+  }
 }

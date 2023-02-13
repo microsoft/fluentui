@@ -1,15 +1,15 @@
 {
   "name": "@fluentui/perf-test-northstar",
-  "description": "Perf tests for fluentui.",
   "version": "0.66.1",
   "private": true,
+  "description": "Perf tests for fluentui.",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts perf-test:bundle",
     "clean": "just-scripts clean",
-    "test": "just-scripts test",
     "perf:test": "just-scripts perf-test",
-    "perf:test:base": "just-scripts perf-test --base"
+    "perf:test:base": "just-scripts perf-test --base",
+    "test": "just-scripts test"
   },
   "devDependencies": {
     "@fluentui/digest": "^0.66.1",

@@ -1,8 +1,8 @@
 {
   "name": "@fluentui/ssr-tests-v9",
   "version": "9.0.0",
-  "description": "SSR testing util for v9",
   "private": true,
+  "description": "SSR testing util for v9",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -14,9 +14,9 @@
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
     "storybook": "start-storybook",
-    "test:unit": "jest",
-    "test:ssr": "ts-node --swc ./src/test.ts",
     "test": "yarn test:unit && yarn test:ssr",
+    "test:ssr": "ts-node --swc ./src/test.ts",
+    "test:unit": "jest",
     "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
@@ -24,8 +24,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-puppeteer": "*",
     "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-puppeteer": "*"
+    "@fluentui/scripts-tasks": "*"
   }
 }

@@ -3,6 +3,9 @@
   "version": "0.66.1",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "test": "gulp test"
+  },
   "dependencies": {
     "@fluentui/react-northstar": "^0.66.1"
   },
@@ -11,8 +14,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "test": "gulp test"
   }
 }

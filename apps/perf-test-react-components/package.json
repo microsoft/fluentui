@@ -1,23 +1,17 @@
 {
   "name": "@fluentui/perf-test-react-components",
-  "description": "Perf tests for @fluentui/react-components.",
   "version": "9.0.0-rc.0",
   "private": true,
+  "description": "Perf tests for @fluentui/react-components.",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "just-scripts lint",
-    "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
-  },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint"
   },
   "dependencies": {
-    "@griffel/core": "^1.9.0",
     "@fluentui/react-avatar": "^9.3.4",
     "@fluentui/react-button": "^9.2.3",
     "@fluentui/react-field": "9.0.0-alpha.19",
@@ -26,6 +20,7 @@
     "@fluentui/react-provider": "^9.3.3",
     "@fluentui/react-spinbutton": "^9.1.2",
     "@fluentui/react-theme": "^9.1.5",
+    "@griffel/core": "^1.9.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",
@@ -33,5 +28,10 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   }
 }

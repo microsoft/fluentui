@@ -2,15 +2,23 @@
   "name": "@fluentui/react-portal-compat",
   "version": "9.0.34",
   "description": "A package that contains compatibility layer for React Portals",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "./dist/index.d.ts",
-  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "just-scripts build --module esm,cjs,amd",
     "bundle-size": "bundle-size measure",
@@ -18,11 +26,16 @@
     "code-style": "just-scripts code-style",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "just": "just-scripts",
     "lint": "just-scripts lint && just-scripts lint-imports",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "dependencies": {
+    "@fluentui/react-portal-compat-context": "^9.0.4",
+    "@fluentui/react-tabster": "^9.5.1",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -31,11 +44,6 @@
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
-  },
-  "dependencies": {
-    "@fluentui/react-portal-compat-context": "^9.0.4",
-    "@fluentui/react-tabster": "^9.5.1",
-    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.15.1",
@@ -47,13 +55,5 @@
       "major",
       "prerelease"
     ]
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    },
-    "./package.json": "./package.json"
   }
 }

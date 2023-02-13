@@ -2,17 +2,24 @@
   "name": "@fluentui/react-focus",
   "version": "8.8.14",
   "description": "Focus helpers to be used in React applications.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
+  },
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
@@ -25,16 +32,6 @@
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u"
   },
-  "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "^8.2.6",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.23",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
-  },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.4.5",
     "@fluentui/merge-styles": "^8.5.6",
@@ -43,18 +40,21 @@
     "@fluentui/utilities": "^8.13.6",
     "tslib": "^2.1.0"
   },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.23",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*",
+    "@fluentui/test-utilities": "^8.2.6"
+  },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib-commonjs/index.js"
-    }
   }
 }
