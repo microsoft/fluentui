@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-date-time",
-  "version": "8.7.53",
+  "version": "8.7.54",
   "description": "Date and time related React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.105.6",
+    "@fluentui/react": "^8.105.7",
     "@fluentui/set-version": "^8.2.5",
     "tslib": "^2.1.0"
   },
