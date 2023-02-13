@@ -39,13 +39,7 @@ export {
   useDatePicker_unstable,
   useDatePickerStyles_unstable,
 } from './DatePicker';
-export type {
-  DatePickerProps,
-  DatePickerStrings,
-  DatePickerStyleProps,
-  DatePickerStyles,
-  IDatePicker,
-} from './DatePicker';
+export type { DatePickerProps, DatePickerStrings, IDatePicker } from './DatePicker';
 
 export {
   DAYS_IN_WEEK,

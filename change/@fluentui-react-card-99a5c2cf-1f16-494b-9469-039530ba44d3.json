@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: keyboard navigation not working for select elements",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

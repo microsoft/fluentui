@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: `resolveShorthand` should resolve an object as its copy",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 07 Feb 2023 14:13:04 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 09:35:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.1)
+
+Mon, 13 Feb 2023 09:35:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.0..@fluentui/react-components_v9.15.1)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: MenuList is a single tabstop ([PR #26803](https://github.com/microsoft/fluentui/pull/26803) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix: Coordinates should be rounded to device pixels to prevent blurriness ([PR #26766](https://github.com/microsoft/fluentui/pull/26766) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-progress`
+  - chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar ([PR #26768](https://github.com/microsoft/fluentui/pull/26768) by ololubek@microsoft.com)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.0)
+
+Fri, 10 Feb 2023 08:49:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.14.0..@fluentui/react-components_v9.15.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Release `Table` and `DataGrid` as stable ([PR #26736](https://github.com/microsoft/fluentui/pull/26736) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - feat: Add `overflowBoundaryPadding` positioning prop ([PR #26730](https://github.com/microsoft/fluentui/pull/26730) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: Do not add an escape character for colons in the styleTagId since useId now removes colons from the generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: improve SpinButton documentation for home/end hotkeys ([PR #26724](https://github.com/microsoft/fluentui/pull/26724) by seanmonahan@microsoft.com)
+  - fix: properly handle single character text input for SpinButton ([PR #26789](https://github.com/microsoft/fluentui/pull/26789) by seanmonahan@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Release 9.0.0 ([PR #26736](https://github.com/microsoft/fluentui/pull/26736) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - fix: keyboard navigation not working for select elements ([PR #26612](https://github.com/microsoft/fluentui/pull/26612) by marcosvmmoura@gmail.com)
+- `@fluentui/react-table`
+  - feat: TableCellLayout component now supports truncate prop ([PR #26738](https://github.com/microsoft/fluentui/pull/26738) by jirivyhnalek@microsoft.com)
+  - feat: DataGrid - add support for resizable columns ([PR #26690](https://github.com/microsoft/fluentui/pull/26690) by jirivyhnalek@microsoft.com)
 
 ## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.14.0)
 

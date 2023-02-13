@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove override row width style to fix DetailsList layouts.",
-  "packageName": "@fluentui/react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
