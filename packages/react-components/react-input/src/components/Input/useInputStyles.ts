@@ -206,7 +206,7 @@ const useInputClassName = makeResetStyles({
 
   outlineStyle: 'none', // disable default browser outline
 
-  // Inherit typography styles from parent
+  // Inherit typography styles from root
   fontFamily: 'inherit',
   fontSize: 'inherit',
   fontWeight: 'inherit',
@@ -232,7 +232,6 @@ const useContentClassName = makeResetStyles({
   boxSizing: 'border-box',
   color: tokens.colorNeutralForeground3, // "icon color" in design spec
   display: 'flex',
-
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
   '> svg': { fontSize: '20px' },
@@ -263,7 +262,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
-  // Call exactly one of the two base className hooks. Each of these hooks functionally identical, except with
+  // Call exactly one of the two base className hooks. Each of these hooks is functionally identical, but with
   // different styles applied, which makes it ok to conditionally change which hook is called.
   const useRootClassName = disabled ? useRootNonInteractiveClassName : useRootInteractiveClassName;
 
