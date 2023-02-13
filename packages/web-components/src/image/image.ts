@@ -7,6 +7,15 @@ import { BorderRadius, ImageFit, ImageShape } from './image.options.js';
  */
 export class Image extends FASTElement {
   /**
+   * Image layout
+   *
+   * @public
+   * @remarks
+   * HTML attribute: block.
+   */
+  @attr({ mode: 'boolean' })
+  public block?: boolean;
+  /**
    * Image border
    *
    * @public
