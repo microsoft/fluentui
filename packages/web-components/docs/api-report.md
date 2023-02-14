@@ -10,10 +10,10 @@ import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
+import { FASTProgressRing } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
-import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
@@ -1247,7 +1247,7 @@ export const ProgressBarValidationState: {
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
 // @public
-export const setTheme: (theme: Theme) => void;
+export const setTheme: (theme: any) => void;
 
 // @public (undocumented)
 export const shadow16: CSSDesignToken<string>;
@@ -1350,6 +1350,44 @@ export const spacingVerticalXXS: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const spacingVerticalXXXL: CSSDesignToken<string>;
+
+// @public
+export class Spinner extends FASTProgressRing {
+    appearance: SpinnerAppearance;
+    size: SpinnerSize;
+}
+
+// @public
+export const SpinnerAppearance: {
+    readonly primary: "primary";
+    readonly inverted: "inverted";
+};
+
+// @public
+export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
+
+// @public
+export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+
+// @public
+export const SpinnerSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+    readonly huge: "huge";
+};
+
+// @public
+export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
+
+// @public (undocumented)
+export const SpinnerStyles: ElementStyles;
+
+// @public (undocumented)
+export const SpinnerTemplate: ElementViewTemplate<Spinner>;
 
 // @public (undocumented)
 export const strokeWidthThick: CSSDesignToken<string>;
