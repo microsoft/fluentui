@@ -70,7 +70,7 @@ export const styles = css`
   :host([disabled]) .status-message {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host .switch {
+  .switch {
     position: relative;
     box-sizing: border-box;
     width: 40px;
@@ -82,16 +82,16 @@ export const styles = css`
     cursor: pointer;
     margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  :host .switch * {
+  .switch * {
     transition-duration: ${durationNormal};
     transition-timing-function: ${curveEasyEase};
     transition-property: transform;
   }
-  :host .switch:hover {
+  .switch:hover {
     background: none;
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host .switch:active {
+  .switch:active {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([disabled]) .switch,
@@ -100,7 +100,7 @@ export const styles = css`
     background-color: none;
     pointer: default;
   }
-  :host .switch .checked-indicator {
+  .checked-indicator {
     position: absolute;
     height: 14px;
     width: 14px;
@@ -110,8 +110,7 @@ export const styles = css`
     border-radius: 50%;
     background-color: ${colorNeutralForeground3};
   }
-
-  :host([aria-checked='true']) .switch .checked-indicator {
+  :host([aria-checked='true']) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
     transform: translateX(19px);
   }
@@ -127,8 +126,8 @@ export const styles = css`
   .switch:active .checked-indicator {
     background-color: ${colorNeutralForeground3Pressed};
   }
-  :host([disabled]) .switch .checked-indicator,
-  :host([readonly]) .switch .checked-indicator {
+  :host([disabled]) .checked-indicator,
+  :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
   :host([disabled]) .status-message,
