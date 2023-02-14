@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: fix package paths",
+  "packageName": "@fluentui/web-components",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}
