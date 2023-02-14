@@ -39,6 +39,10 @@
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
+    },
+    "./spinner": {
+      "types": "./dist/esm/spinner/define.d.ts",
+      "default": "./dist/esm/spinner/define.js"
     }
   },
   "scripts": {
