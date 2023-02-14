@@ -7,14 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { createTestContainer } from './test-utils';
 import * as FocusUtilities from '../../src/FocusZone/focusUtilities';
 
-// rAF does not exist in node - let's mock it
-window.requestAnimationFrame = (callback: FrameRequestCallback) => {
-  const r = window.setTimeout(callback, 0);
-  ReactTestUtils.act(() => {
-    jest.runAllTimers();
-  });
-  return r;
-};
+const originalRAF = window.requestAnimationFrame;
 
 class FocusTrapZoneTestComponent extends React.Component<
   {},
@@ -120,11 +113,16 @@ describe('FocusTrapZone', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
     lastFocusedElement = undefined;
   });
 
   afterAll(() => {
     window.addEventListener = addEventListener;
+    window.requestAnimationFrame = originalRAF;
     jest.useRealTimers();
   });
 
@@ -306,7 +304,7 @@ describe('FocusTrapZone', () => {
     });
   });
 
-  describe.skip('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items', () => {
+  describe('Tab and shift-tab do nothing (keep focus where it is) when the FTZ contains 0 tabbable items', () => {
     function setupTest(props: FocusTrapZoneProps) {
       const topLevelDiv = ReactTestUtils.renderIntoDocument<{}>(
         <div onFocusCapture={_onFocus}>
@@ -376,7 +374,7 @@ describe('FocusTrapZone', () => {
     });
   });
 
-  describe.skip('Focus behavior based on default and explicit prop values', () => {
+  describe('Focus behavior based on default and explicit prop values', () => {
     function setupTest(props: FocusTrapZoneProps) {
       // data-is-visible is embedded in buttons here for testing focus behavior on initial render.
       // Components have to be marked visible before setupElement has a chance to apply the data-is-visible attribute.
@@ -578,7 +576,7 @@ describe('FocusTrapZone', () => {
     });
   });
 
-  describe.skip('Focusing the FTZ', () => {
+  describe('Focusing the FTZ', () => {
     function setupTest(focusPreviouslyFocusedInnerElement: boolean) {
       let focusTrapZoneRef: FocusTrapZone | null = null;
       const topLevelDiv = ReactTestUtils.renderIntoDocument<{}>(
@@ -667,7 +665,7 @@ describe('FocusTrapZone', () => {
     });
   });
 
-  describe.skip('Nested FocusTrapZones Stack Behavior', () => {
+  describe('Nested FocusTrapZones Stack Behavior', () => {
     const getFocusStack = (): FocusTrapZone[] => (FocusTrapZone as any)._focusStack;
     // beforeAll(() => (getFocusStack().length = 0));
     beforeAll(() => {
