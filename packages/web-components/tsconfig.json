@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "importHelpers": true,
     "types": ["node", "mocha", "webpack-env"],
-    "lib": ["DOM", "ES2015", "ES2016.Array.Include"]
+    "lib": ["DOM", "ES2015", "ES2016.Array.Include"],
+    "baseUrl": "../..",
+    "paths": {
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
+    }
   },
   "include": ["src"]
 }

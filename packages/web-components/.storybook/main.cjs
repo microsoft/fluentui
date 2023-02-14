@@ -1,4 +1,6 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const path = require('path');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const tsBin = require.resolve('typescript');
 
@@ -24,6 +26,11 @@ module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookCon
     },
   ],
   webpackFinal: async config => {
+    const tsPaths = new TsconfigPathsPlugin({
+      configFile: path.resolve(__dirname, '../tsconfig.json'),
+    });
+    config.resolve.plugins ? config.resolve.plugins.push(tsPaths) : (config.resolve.plugins = [tsPaths]);
+
     config.resolve.extensionAlias = {
       '.js': ['.ts', '.js'],
       '.mjs': ['.mts', '.mjs'],
