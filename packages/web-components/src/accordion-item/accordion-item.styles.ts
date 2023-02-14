@@ -21,7 +21,7 @@ import {
   spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalS,
-} from '../../theme/design-tokens.js';
+} from '../theme/design-tokens.js';
 
 export const styles = css`
   /* --- Default styles --- */
@@ -44,7 +44,7 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    grid-template-columns: 28px 28px auto 28px;
+    grid-template-columns: auto auto 1fr auto;
   }
 
   .heading-content {
