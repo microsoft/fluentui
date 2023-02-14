@@ -1,5 +1,8 @@
 import { getEventClientCoords, isMouseEvent, isTouchEvent } from './mouseTouchHelpers';
 
+// Its okay to use any in tests.
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 const touchEvents = ['touchstart', 'touchend', 'touchmove', 'touchcancel'];
 const mouseEvents = [
   'click',
