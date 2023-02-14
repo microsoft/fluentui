@@ -1,10 +1,9 @@
-import { StartEndOptions, StaticallyComposableHTML, ValuesOf } from '@microsoft/fast-foundation';
-import type { Badge } from './badge.js';
+import { BadgeOptions, StaticallyComposableHTML, ValuesOf } from '@microsoft/fast-foundation';
 
 /**
  * @internal - marking as internal update when Badge PR for start/end is in
  */
-export type BadgeOptions = StartEndOptions<Badge> & {
+export type BadgeOptions = BadgeOptions & {
   defaultContent?: StaticallyComposableHTML;
 };
 
