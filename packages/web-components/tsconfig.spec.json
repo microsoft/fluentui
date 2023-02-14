@@ -5,5 +5,5 @@
     "outDir": "dist/esm",
     "types": ["mocha", "node", "webpack-env"]
   },
-  "include": ["src/__test__", "src/**/*.test.*", "src/**/*.spec.*"]
+  "include": ["src/**/*.test.*", "src/**/*.spec.*"]
 }

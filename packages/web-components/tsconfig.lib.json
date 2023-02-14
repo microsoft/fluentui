@@ -11,5 +11,5 @@
     "types": []
   },
   "include": ["src"],
-  "exclude": ["src/__test__/**", "**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
+  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
 }

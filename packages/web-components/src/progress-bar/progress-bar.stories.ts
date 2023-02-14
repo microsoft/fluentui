@@ -1,6 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../__test__/helpers.js';
+import { renderComponent } from '../helpers.js';
 import type { ProgressBar as FluentProgressBar } from './progress-bar.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 import './define.js';
