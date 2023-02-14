@@ -17,7 +17,7 @@ export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | Re
  * Returns true if event is a mouse event. Useful when sharing logic between touch and mouse interactions.
  */
 export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | React.MouseEvent {
-  return event.type.startsWith('mouse') || ['click', 'contextmenu', 'dblclick'].includes(event.type);
+  return event.type.startsWith('mouse') || ['click', 'contextmenu', 'dblclick'].indexOf(event.type) > -1;
 }
 
 /**
