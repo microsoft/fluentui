@@ -35,8 +35,7 @@ export const styles = css`
     display: grid;
     position: relative;
     vertical-align: middle;
-    padding-left: ${spacingHorizontalMNudge};
-    padding-right: ${spacingHorizontalM};
+    padding-inline: ${spacingHorizontalM} ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
@@ -92,16 +91,11 @@ export const styles = css`
 
   .region {
     display: none;
-    margin-left: ${spacingHorizontalM};
-    margin-right: ${spacingHorizontalM};
+    margin: 0 ${spacingHorizontalM};
   }
 
-  slot[name='expanded-icon'] {
-    display: none;
-  }
-
-  .heading ::slotted(span[slot='start']),
-  .heading ::slotted(span[slot='end']) {
+  .heading ::slotted([slot='start']),
+  .heading ::slotted([slot='end']) {
     justify-content: center;
     align-items: center;
     padding-right: ${spacingHorizontalS};
@@ -139,17 +133,17 @@ export const styles = css`
     display: none;
   }
 
-  :host([expanded]) slot[name='expanded-icon'] {
-    display: flex;
-  }
-
-  :host([expanded]) ::slotted(span[slot='end']),
-  :host ::slotted(span[slot='start']) {
+  :host(:not([expanded])) slot[name='expanded-icon'] {
     display: none;
   }
 
-  :host([expanded]) .heading ::slotted(span[slot='start']),
-  :host ::slotted(span[slot='end']) {
+  :host([expanded]) ::slotted([slot='end']),
+  :host ::slotted([slot='start']) {
+    display: none;
+  }
+
+  :host([expanded]) .heading ::slotted([slot='start']),
+  :host ::slotted([slot='end']) {
     display: flex;
   }
 
