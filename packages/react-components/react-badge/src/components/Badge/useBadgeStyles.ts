@@ -1,4 +1,4 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { shorthands, makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -12,16 +12,35 @@ export const badgeClassNames: SlotClassNames<BadgeSlots> = {
 // Instead, add extra padding to the root, and a negative margin on the icon to "remove" the extra padding on the icon.
 const textPadding = tokens.spacingHorizontalXXS;
 
-const useRootStyles = makeStyles({
-  base: {
-    display: 'inline-flex',
-    boxSizing: 'border-box',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    ...typographyStyles.caption1Strong,
-  },
+const useRootClassName = makeResetStyles({
+  display: 'inline-flex',
+  boxSizing: 'border-box',
+  alignItems: 'center',
+  justifyContent: 'center',
+  position: 'relative',
+  ...typographyStyles.caption1Strong,
+  height: '20px',
+  minWidth: '20px',
+  padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
+  borderRadius: tokens.borderRadiusCircular,
+  // Use a transparent stroke (rather than no border) so the border is visible in high contrast
+  borderColor: tokens.colorTransparentStroke,
 
+  '::after': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    borderStyle: 'solid',
+    borderColor: 'inherit',
+    borderWidth: tokens.strokeWidthThin,
+    borderRadius: 'inherit',
+  },
+});
+
+const useRootStyles = makeStyles({
   fontSmallToTiny: {
     ...typographyStyles.caption2Strong,
   },
@@ -33,12 +52,16 @@ const useRootStyles = makeStyles({
     height: '6px',
     fontSize: '4px',
     lineHeight: '4px',
+    minWidth: 'unset',
+    ...shorthands.padding('unset'),
   },
   'extra-small': {
     width: '10px',
     height: '10px',
     fontSize: '6px',
     lineHeight: '6px',
+    minWidth: 'unset',
+    ...shorthands.padding('unset'),
   },
   small: {
     minWidth: '16px',
@@ -46,9 +69,7 @@ const useRootStyles = makeStyles({
     ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`),
   },
   medium: {
-    height: '20px',
-    minWidth: '20px',
-    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
+    // Set by useRootClassName
   },
   large: {
     minWidth: '24px',
@@ -73,33 +94,23 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
   },
   circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    // Set by useRootClassName
   },
 
-  // border (all appearances except ghost)
+  // hide the boder when appearance is "ghost"
 
-  border: {
-    // The border is applied in an :after pseudo-element because it should not affect layout.
+  borderGhost: {
+    // The border is applied in an ::after pseudo-element because it should not affect layout.
     // The padding and size of the badge should be the same regardless of whether or not it has a border.
     '::after': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderWidth(tokens.strokeWidthThin),
-      ...shorthands.borderColor('inherit'),
-      ...shorthands.borderRadius('inherit'),
+      display: 'none',
     },
   },
 
   // appearance: filled
 
   filled: {
-    // Use a transparent stroke (rather than no border) so the border is visible in high contrast
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    // Set by useRootClassName
   },
   'filled-brand': {
     backgroundColor: tokens.colorBrandBackground,
@@ -245,13 +256,14 @@ const useRootStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
-  base: {
-    display: 'flex',
-    lineHeight: '1',
-    ...shorthands.margin(0, `calc(-1 * ${textPadding})`), // Remove text padding added to root
-  },
+const useIconRootClassName = makeResetStyles({
+  display: 'flex',
+  lineHeight: '1',
+  margin: `0 calc(-1 * ${textPadding})`, // Remove text padding added to root
+  fontSize: '12px',
+});
 
+const useIconStyles = makeStyles({
   beforeText: {
     marginRight: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
   },
@@ -278,7 +290,7 @@ const useIconStyles = makeStyles({
     fontSize: '12px',
   },
   medium: {
-    fontSize: '12px',
+    // Set by useIconRootClassName
   },
   large: {
     fontSize: '16px',
@@ -292,23 +304,25 @@ const useIconStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
+  const rootClassName = useRootClassName();
   const rootStyles = useRootStyles();
 
   const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
 
   state.root.className = mergeClasses(
     badgeClassNames.root,
-    rootStyles.base,
+    rootClassName,
     smallToTiny && rootStyles.fontSmallToTiny,
     rootStyles[state.size],
     rootStyles[state.shape],
     state.shape === 'rounded' && smallToTiny && rootStyles.roundedSmallToTiny,
-    state.appearance !== 'ghost' && rootStyles.border,
+    state.appearance === 'ghost' && rootStyles.borderGhost,
     rootStyles[state.appearance],
     rootStyles[`${state.appearance}-${state.color}` as const],
     state.root.className,
   );
 
+  const iconRootClassName = useIconRootClassName();
   const iconStyles = useIconStyles();
   if (state.icon) {
     let iconPositionClass;
@@ -322,7 +336,7 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
 
     state.icon.className = mergeClasses(
       badgeClassNames.icon,
-      iconStyles.base,
+      iconRootClassName,
       iconPositionClass,
       iconStyles[state.size],
       state.icon.className,
