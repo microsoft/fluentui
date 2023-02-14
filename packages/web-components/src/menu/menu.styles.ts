@@ -5,7 +5,7 @@ import {
   colorNeutralBackground1,
   colorTransparentStroke,
   shadow16,
-} from '../../theme/design-tokens.js';
+} from '../theme/design-tokens.js';
 
 /** Menu styles
  * @public

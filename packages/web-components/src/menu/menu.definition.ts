@@ -1,4 +1,4 @@
-import { FluentDesignSystem } from '../../fluent-design-system.js';
+import { FluentDesignSystem } from '../fluent-design-system.js';
 import { Menu } from './menu.js';
 import { styles } from './menu.styles.js';
 import { template } from './menu.template.js';

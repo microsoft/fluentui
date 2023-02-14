@@ -1,9 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../../__test__/helpers.js';
+import { renderComponent } from '../__test__/helpers.js';
 import type { Menu as FluentMenu } from './menu.js';
-import './define.js';
-import '../menu-item/define.js';
 
 type MenuStoryArgs = Args & FluentMenu;
 type MenuStoryMeta = Meta<MenuStoryArgs>;
@@ -88,21 +86,17 @@ const Code20Filled = html`<svg
   ></path>
 </svg>`;
 const storyTemplate = html<MenuStoryArgs>`
-  <div style="width: 200px">
+  <div style="width: 200px; height: 13em;">
     <fluent-menu>
       <fluent-menu-item disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item disabled=${x => x.disabled}>
-        Paste
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item disabled=${x => x.disabled}>
         <span slot="start">${ClipboardPaste20Filled}</span>
         Edit
       </fluent-menu-item>
-      <fluent-menu-item class="header">Group Header</fluent-menu-item>
+      <fluent-menu-item class="header">Submenu Group Header</fluent-menu-item>
       <fluent-menu-item disabled=${x => x.disabled}>
         New
         <span slot="start">${FormNew20Filled}</span>
@@ -121,6 +115,32 @@ const storyTemplate = html<MenuStoryArgs>`
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
+      </fluent-menu-item>
+      <fluent-menu-item class="header">Checkbox Group Header</fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+        Cut
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+        Edit
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+        Paste
+        <span slot="start">${ClipboardPaste20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item class="header">Radio Group Header</fluent-menu-item>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+        Cut
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+        Edit
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+        Paste
+        <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
     </fluent-menu>
   </div>

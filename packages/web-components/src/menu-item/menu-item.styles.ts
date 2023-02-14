@@ -21,7 +21,7 @@ import {
   fontWeightSemibold,
   lineHeightBase200,
   lineHeightBase300,
-} from '../../theme/design-tokens.js';
+} from '../theme/design-tokens.js';
 
 /** Menu styles
  * @public

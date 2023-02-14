@@ -1,12 +1,6 @@
-# Menu & Menu Item
+# Menu
 
 A popup or contextual menu displays a list of options on a temporary surface. They are invoked when users interact with a button, action, or other control.
-
-## Remaining work
-
-1. Ensure divider component is styled appropriately in the context of a Menu
-2. Create support for menu item "grouping"
-3. Split button variation
 
 ## Design Spec
 

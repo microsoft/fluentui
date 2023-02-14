@@ -1,9 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../../__test__/helpers.js';
+import { renderComponent } from '../__test__/helpers.js';
 import type { Menu as FluentMenu } from './menu.js';
-import './define.js';
-import '../menu-item/define.js';
 
 type MenuStoryArgs = Args & FluentMenu;
 type MenuStoryMeta = Meta<MenuStoryArgs>;
@@ -54,17 +52,17 @@ const Edit20Filled = html`<svg
 </svg>`;
 
 const storyTemplate = html<MenuStoryArgs>`
-  <div style="width: 128px; position: relative;">
+  <div style="width: 128px; position: relative">
     <fluent-menu>
-      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
         Edit
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
         Paste
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
@@ -73,7 +71,7 @@ const storyTemplate = html<MenuStoryArgs>`
 `;
 
 export default {
-  title: 'Components/Menu/Menu Item with Checkboxes',
+  title: 'Components/Menu/Menu Item with Radios',
   args: {
     disabled: false,
   },
