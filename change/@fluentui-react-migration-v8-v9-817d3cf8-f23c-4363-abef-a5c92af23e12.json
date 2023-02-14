@@ -1,7 +1,7 @@
 {
   "type": "none",
   "comment": "chore: Removing deprecated React.Props from DelayedRender.",
-  "packageName": "@fluentui/react",
+  "packageName": "@fluentui/react-migration-v8-v9",
   "email": "jimsleon@hotmail.com",
   "dependentChangeType": "none"
 }
