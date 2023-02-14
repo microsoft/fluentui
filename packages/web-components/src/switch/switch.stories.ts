@@ -17,7 +17,7 @@ const storyTemplate = html<SwitchStoryArgs>`
       label-position=${x => x.labelPosition}
       value="${x => x.value}"
     >
-      This is a switch
+      ${x => x.value}
     </fluent-switch>
   </div>
 `;
@@ -80,6 +80,7 @@ export default {
     },
     value: {
       control: 'text',
+      defaultValue: 'This is a label',
     },
   },
 } as SwitchStoryMeta;

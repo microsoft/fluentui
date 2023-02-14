@@ -32,10 +32,9 @@ import {
 } from '../theme/design-tokens.js';
 
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-flex')}
 
   :host {
-    display: inline-flex;
     align-items: center;
     flex-direction: row-reverse;
     outline: none;
@@ -67,8 +66,6 @@ export const styles = css`
   :host([required]) .label:after {
     content: '*';
     color: ${colorPaletteRedForeground3};
-    position: absolute;
-    right: -4px;
   }
   :host([disabled]) .status-message {
     color: ${colorNeutralForegroundDisabled};
@@ -79,8 +76,7 @@ export const styles = css`
     width: 40px;
     height: 20px;
     background-color: ${colorTransparentBackground};
-    border: 1px solid;
-    border-color: ${colorNeutralStrokeAccessible};
+    border: 1px solid ${colorNeutralStrokeAccessible};
     border-radius: 10px;
     outline: none;
     cursor: pointer;
@@ -91,11 +87,11 @@ export const styles = css`
     transition-timing-function: ${curveEasyEase};
     transition-property: transform;
   }
-  :host(:not([disabled])) .switch:hover {
+  :host .switch:hover {
     background: none;
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host(:not([disabled])) .switch:active {
+  :host .switch:active {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([disabled]) .switch,
@@ -114,11 +110,10 @@ export const styles = css`
     border-radius: 50%;
     background-color: ${colorNeutralForeground3};
   }
-  :host([aria-checked='true']) .switch .checked-indicator {
-    transform: translateX(19px);
-  }
+
   :host([aria-checked='true']) .switch .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
+    transform: translateX(19px);
   }
   :host([aria-checked='true']) .switch:hover .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};
@@ -147,11 +142,11 @@ export const styles = css`
   :host([aria-checked='true']) .switch {
     background: ${colorCompoundBrandBackground};
   }
-  :host([aria-checked='true']:not([disabled])) .switch:hover {
+  :host([aria-checked='true']) .switch:hover {
     background: ${colorCompoundBrandBackgroundHover};
     border-color: ${colorCompoundBrandBackgroundHover};
   }
-  :host([aria-checked='true']:not([disabled])) .switch:active {
+  :host([aria-checked='true']) .switch:active {
     background: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandBackgroundPressed};
   }
