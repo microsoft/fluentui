@@ -16,10 +16,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.15.1",
+    "@fluentui/react-components": "^9.15.2",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-provider": "^9.3.3",
+    "@fluentui/react-provider": "^9.3.4",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@griffel/react": "^1.5.2",
     "react": "17.0.2",

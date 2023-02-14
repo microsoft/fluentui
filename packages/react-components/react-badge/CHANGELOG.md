@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Fri, 10 Feb 2023 08:50:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2023 23:43:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.25)
+
+Mon, 13 Feb 2023 23:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.24..@fluentui/react-badge_v9.0.25)
+
+### Patches
+
+- chore: update Badge and PresenceBadge to use makeResetStyles ([PR #26817](https://github.com/microsoft/fluentui/pull/26817) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
 
 ## [9.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.24)
 
