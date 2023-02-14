@@ -19,14 +19,22 @@ const ExampleContent = () => {
   );
 };
 
-export const Default = (props: PopoverProps) => (
-  <Popover {...props}>
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>Popover trigger</Button>
-    </PopoverTrigger>
+const iframeContent = `<div id="iframecontent">
+  <button>Hello World!</button>
+</div>`;
 
-    <PopoverSurface>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
+export const Default = (props: PopoverProps) => (
+  <>
+    <iframe title="iframe" srcDoc={iframeContent} />
+    <div />
+    <Popover {...props}>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>Popover trigger</Button>
+      </PopoverTrigger>
+
+      <PopoverSurface>
+        <iframe title="iframe" srcDoc={iframeContent} />
+      </PopoverSurface>
+    </Popover>
+  </>
 );
