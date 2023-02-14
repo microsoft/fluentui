@@ -24,8 +24,6 @@ import {
 } from '../theme/design-tokens.js';
 
 export const styles = css`
-  /* --- Default styles --- */
-
   ${display('block')}
 
   :host {
@@ -58,7 +56,7 @@ export const styles = css`
     appearance: none;
     border: none;
     outline: none;
-    text-align: left;
+    text-align: start;
     cursor: pointer;
     font-family: inherit;
     height: 44px;
