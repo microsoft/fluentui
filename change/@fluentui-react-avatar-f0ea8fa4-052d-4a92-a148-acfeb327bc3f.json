@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update Avatar to use makeResetStyles",
-  "packageName": "@fluentui/react-avatar",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
