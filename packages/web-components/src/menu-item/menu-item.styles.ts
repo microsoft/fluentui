@@ -134,7 +134,6 @@ export const styles = css`
   :host([disabled='true']) ::slotted(span[slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
   }
-
   .checkbox,
   .radio {
     display: none;
