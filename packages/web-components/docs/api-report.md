@@ -1204,14 +1204,15 @@ export const lineHeightHero800: CSSDesignToken<string>;
 export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
-export class ProgressBar extends FASTProgress {
+class ProgressBar_2 extends FASTProgress {
     shape: ProgressBarShape;
     thickness: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
 }
+export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
 
 // @public
 export const ProgressBarShape: {
@@ -1226,7 +1227,7 @@ export type ProgressBarShape = ValuesOf<typeof ProgressBarShape>;
 export const ProgressBarStyles: ElementStyles;
 
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
 
 // @public
 export const ProgressBarThickness: {
