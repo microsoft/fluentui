@@ -2,6 +2,39 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 23:43:13 GMT",
+      "tag": "@fluentui/react-persona_v9.1.11",
+      "version": "9.1.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513",
+            "comment": "chore: update Persona to use makeResetStyles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.3.5",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.0.25",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-utilities to v9.5.3",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Feb 2023 09:35:48 GMT",
       "tag": "@fluentui/react-persona_v9.1.10",
       "version": "9.1.10",

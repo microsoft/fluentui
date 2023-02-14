@@ -2,6 +2,57 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 13 Feb 2023 23:43:14 GMT",
+      "tag": "@fluentui/react-avatar_v9.3.5",
+      "version": "9.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "70a8c39f33f5b5b9ca425ccb00c5c5eec8d7bb0d",
+            "comment": "chore: update Avatar to use makeResetStyles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.25",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.9",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.4.9",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.5.2",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.1.16",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-utilities to v9.5.3",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Feb 2023 09:35:48 GMT",
       "tag": "@fluentui/react-avatar_v9.3.4",
       "version": "9.3.4",
