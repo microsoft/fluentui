@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds Spinner as a web component",
+  "packageName": "@fluentui/web-components",
+  "email": "ryan@ryanmerrill.net",
+  "dependentChangeType": "patch"
+}
