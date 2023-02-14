@@ -90,12 +90,11 @@ export const styles = css`
   }
 
   .region {
-    display: none;
     margin: 0 ${spacingHorizontalM};
   }
 
-  .heading ::slotted([slot='start']),
-  .heading ::slotted([slot='end']) {
+  ::slotted([slot='start']),
+  ::slotted([slot='end']) {
     justify-content: center;
     align-items: center;
     padding-right: ${spacingHorizontalS};
@@ -129,56 +128,53 @@ export const styles = css`
     display: block;
   }
 
-  :host([expanded]) slot[name='collapsed-icon'] {
-    display: none;
-  }
-
-  :host(:not([expanded])) slot[name='expanded-icon'] {
-    display: none;
-  }
-
+  :host([expanded]) .default-collapsed-icon,
+  :host([expanded]) ::slotted([slot='collapsed-icon']),
+  :host(:not([expanded])) .default-expanded-icon,
+  :host(:not([expanded])) ::slotted([slot='expanded-icon']),
   :host([expanded]) ::slotted([slot='end']),
-  :host ::slotted([slot='start']) {
+  ::slotted([slot='start']),
+  .region {
     display: none;
   }
 
-  :host([expanded]) .heading ::slotted([slot='start']),
-  :host ::slotted([slot='end']) {
+  :host([expanded]) ::slotted([slot='start']),
+  ::slotted([slot='end']) {
     display: flex;
   }
 
   /* --- Appearance attr styles --- */
 
-  .heading slot[name='heading'] {
+  .heading {
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
   }
 
-  :host([size='small']) .heading slot[name='heading'] {
+  :host([size='small']) .heading {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host([size='large']) slot[name='heading'] {
+  :host([size='large']) .heading {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host([size='extra-large']) slot[name='heading'] {
+  :host([size='extra-large']) .heading {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
 
   /* --- expandIconPosition attr styles --- */
 
-  :host([expandIconPosition='end']) slot[name='start'],
-  :host([expandIconPosition='end']) slot[name='end'] {
+  :host([expandIconPosition='end']) :slotted(span[slot='start']),
+  :host([expandIconPosition='end']) ::slotted(span[slot='end']) {
     grid-column: 1 / span 1;
     grid-row: 1;
   }
 
-  :host([expandIconPosition='end']) .heading ::slotted(span[slot='start']),
-  :host([expandIconPosition='end']) .heading ::slotted(span[slot='end']) {
+  :host([expandIconPosition='end']) ::slotted(span[slot='start']),
+  :host([expandIconPosition='end']) ::slotted(span[slot='end']) {
     grid-column: 1 / span 1;
     grid-row: 1;
   }
