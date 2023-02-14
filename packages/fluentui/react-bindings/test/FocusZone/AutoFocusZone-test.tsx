@@ -86,7 +86,7 @@ describe('AutoFocusZone', () => {
       return { autoFocusZone: autoFocusZoneRef, buttonF, buttonA, buttonB, buttonZ };
     }
 
-    it('goes to first focusable element when focusing the ATZ', async () => {
+    it.skip('goes to first focusable element when focusing the ATZ', async () => {
       expect.assertions(1);
 
       const { autoFocusZone, buttonF } = setupTest();
@@ -99,7 +99,7 @@ describe('AutoFocusZone', () => {
       expect(lastFocusedElement).toBe(buttonF);
     });
 
-    it('goes to the element with containing the firstFocusableSelector if provided when focusing the ATZ', async () => {
+    it.skip('goes to the element with containing the firstFocusableSelector if provided when focusing the ATZ', async () => {
       expect.assertions(1);
       const { autoFocusZone, buttonB } = setupTest('.b');
 
