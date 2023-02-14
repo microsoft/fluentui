@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-label",
-  "version": "9.0.20",
+  "version": "9.0.21",
   "description": "Fluent UI React Label component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.2",
+    "@fluentui/react-utilities": "^9.5.3",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
