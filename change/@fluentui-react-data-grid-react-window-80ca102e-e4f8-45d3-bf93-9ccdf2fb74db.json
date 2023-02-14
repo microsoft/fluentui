@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Removing deprecated React.Props from DelayedRender.",
-  "packageName": "@fluentui/react-data-grid-react-window",
-  "email": "jimsleon@hotmail.com",
-  "dependentChangeType": "none"
-}
