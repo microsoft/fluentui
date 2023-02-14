@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
@@ -8,7 +8,7 @@ const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
 storiesOf('Link Converged - Rendered as anchor', module)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.fui-Link')
@@ -24,7 +24,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, {
     includeRtl: true,
@@ -62,7 +62,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
 // We put the disabled stories separately so they do not error on the focused step.
 storiesOf('Link Converged - Rendered as anchor', module)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.fui-Link')
@@ -73,7 +73,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Stand-alone Disabled', () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>)
   .addStory('Inline Disabled', () => (
@@ -88,7 +88,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
 
 storiesOf('Link Converged - Rendered as button', module)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.fui-Link')
@@ -104,7 +104,7 @@ storiesOf('Link Converged - Rendered as button', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { includeRtl: true })
   .addStory('Stand-alone Disabled Focusable', () => (
@@ -134,7 +134,7 @@ storiesOf('Link Converged - Rendered as button', module)
 // We put the disabled stories separately so they do not error on the focused step.
 storiesOf('Link Converged - Rendered as button', module)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.fui-Link')
@@ -145,7 +145,7 @@ storiesOf('Link Converged - Rendered as button', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Stand-alone Disabled', () => <ButtonLink disabled>Stand-alone disabled link</ButtonLink>)
   .addStory('Inline Disabled', () => (

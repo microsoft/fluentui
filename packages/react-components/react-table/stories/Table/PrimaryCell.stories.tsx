@@ -2,15 +2,20 @@ import * as React from 'react';
 import {
   FolderRegular,
   EditRegular,
+  EditFilled,
   OpenRegular,
   DocumentRegular,
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
   MoreHorizontalRegular,
+  MoreHorizontalFilled,
+  bundleIcon,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
   TableBody,
   TableCell,
   TableRow,
@@ -19,7 +24,10 @@ import {
   TableHeaderCell,
   TableCellActions,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
+
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
 const items = [
   {
@@ -69,7 +77,7 @@ const columns = [
 
 export const PrimaryCell = () => {
   return (
-    <Table>
+    <Table aria-label="Table with primary cell layout">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -85,15 +93,19 @@ export const PrimaryCell = () => {
                 {item.file.label}
               </TableCellLayout>
               <TableCellActions>
-                <Button icon={<EditRegular />} appearance="subtle" />
-                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                <Button icon={<EditIcon />} appearance="subtle" />
+                <Button icon={<MoreHorizontalIcon />} appearance="subtle" />
               </TableCellActions>
             </TableCell>
 
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
@@ -108,4 +120,16 @@ export const PrimaryCell = () => {
       </TableBody>
     </Table>
   );
+};
+
+PrimaryCell.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A primary cell creates emphasis by increasing icon size and font weight for the main text.',
+        'Generally the primary cell should be used in the first column of a table, but there is no obligation',
+        'to do so and can be used in any column by the user.',
+      ].join('\n'),
+    },
+  },
 };

@@ -7,11 +7,12 @@ import type { PopoverTriggerProps } from './PopoverTrigger.types';
 /**
  * Wraps a trigger element as an only child and adds the necessary event handling to open a popover.
  */
-export const PopoverTrigger: React.FC<PopoverTriggerProps> & FluentTriggerComponent = props => {
+export const PopoverTrigger: React.FC<PopoverTriggerProps> = props => {
   const state = usePopoverTrigger_unstable(props);
 
   return renderPopoverTrigger_unstable(state);
 };
 
 PopoverTrigger.displayName = 'PopoverTrigger';
-PopoverTrigger.isFluentTriggerComponent = true;
+// type casting here is required to ensure internal type FluentTriggerComponent is not leaked
+(PopoverTrigger as FluentTriggerComponent).isFluentTriggerComponent = true;

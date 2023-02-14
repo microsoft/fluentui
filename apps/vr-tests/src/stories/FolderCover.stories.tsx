@@ -6,7 +6,7 @@ import {
   renderFolderCoverWithLayout,
   SharedSignal,
 } from '@fluentui/react-experiments';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
 import { TestWrapperDecorator } from '../utilities/index';
@@ -47,13 +47,13 @@ storiesOf('FolderCover', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Large Default Cover', () => (
     <FolderCoverWithImage

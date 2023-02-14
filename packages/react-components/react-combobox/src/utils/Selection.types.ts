@@ -2,7 +2,10 @@ import * as React from 'react';
 import { OptionValue } from './OptionCollection.types';
 
 export type SelectionProps = {
-  /* For an uncontrolled component, sets the initial selection */
+  /**
+   * For an uncontrolled component, sets the initial selection.
+   * If this is set, the `defaultValue` prop MUST also be set.
+   */
   defaultSelectedOptions?: string[];
 
   /**
@@ -19,14 +22,13 @@ export type SelectionProps = {
   /**
    * An array of selected option keys.
    * Use this with `onOptionSelect` to directly control the selected option(s)
+   * If this is set, the `value` prop MUST also be controlled.
    */
   selectedOptions?: string[];
 };
 
-export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>> & Pick<SelectionProps, 'multiselect'>;
-
 /* Values returned by the useSelection hook */
-export type SelectionValue = {
+export type SelectionState = {
   clearSelection: (event: SelectionEvents) => void;
   selectedOptions: string[];
   selectOption: (event: SelectionEvents, option: OptionValue) => void;
@@ -34,9 +36,13 @@ export type SelectionValue = {
 
 /*
  * Data for the onOptionSelect callback.
- * `optionValue` will be undefined if the multiple options are modified at once.
+ * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
  */
-export type OptionOnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
+export type OptionOnSelectData = {
+  optionValue: string | undefined;
+  optionText: string | undefined;
+  selectedOptions: string[];
+};
 
 /* Possible event types for onOptionSelect */
 export type SelectionEvents =

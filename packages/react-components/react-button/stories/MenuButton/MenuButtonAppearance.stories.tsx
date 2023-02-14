@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { makeStyles, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   wrapper: {
@@ -15,7 +18,7 @@ export const Appearance = () => {
     <div className={styles.wrapper}>
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton>Default</MenuButton>
+          <MenuButton icon={<CalendarMonthRegular />}>Default</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -28,7 +31,9 @@ export const Appearance = () => {
 
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton appearance="primary">Primary</MenuButton>
+          <MenuButton appearance="primary" icon={<CalendarMonthRegular />}>
+            Primary
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -41,7 +46,9 @@ export const Appearance = () => {
 
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton appearance="outline">Outline</MenuButton>
+          <MenuButton appearance="outline" icon={<CalendarMonth />}>
+            Outline
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -54,7 +61,9 @@ export const Appearance = () => {
 
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton appearance="subtle">Subtle</MenuButton>
+          <MenuButton appearance="subtle" icon={<CalendarMonth />}>
+            Subtle
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
@@ -67,7 +76,9 @@ export const Appearance = () => {
 
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton appearance="transparent">Transparent</MenuButton>
+          <MenuButton appearance="transparent" icon={<CalendarMonth />}>
+            Transparent
+          </MenuButton>
         </MenuTrigger>
 
         <MenuPopover>

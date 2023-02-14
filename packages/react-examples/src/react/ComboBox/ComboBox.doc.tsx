@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ComboBoxBasicExample } from './ComboBox.Basic.Example';
+import { ComboBoxFreeInputExample } from './ComboBox.FreeInput.Example';
 import { ComboBoxInlineExample } from './ComboBox.Inline.Example';
 import { ComboBoxTogglesExample } from './ComboBox.Toggles.Example';
 import { ComboBoxControlledExample } from './ComboBox.Controlled.Example';
@@ -12,6 +13,7 @@ import { ComboBoxCustomStyledExample } from './ComboBox.CustomStyled.Example';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const ComboBoxBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Basic.Example.tsx') as string;
+const ComboBoxFreeInputExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.FreeInput.Example.tsx') as string;
 const ComboBoxInlineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Inline.Example.tsx') as string;
 const ComboBoxTogglesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Toggles.Example.tsx') as string;
 const ComboBoxControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Controlled.Example.tsx') as string;
@@ -30,6 +32,11 @@ export const ComboBoxPageProps: IDocPageProps = {
       title: 'Basic uncontrolled ComboBox',
       code: ComboBoxBasicExampleCode,
       view: <ComboBoxBasicExample />,
+    },
+    {
+      title: 'ComboBox with allowFreeInput',
+      code: ComboBoxFreeInputExampleCode,
+      view: <ComboBoxFreeInputExample />,
     },
     {
       title: 'ComboBox with inline dropdown',

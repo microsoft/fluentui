@@ -2,7 +2,6 @@ import * as React from 'react';
 import { canUseDOM } from '../ssr/index';
 
 /**
- * @internal
  * React currently throws a warning when using useLayoutEffect on the server. To get around it, we can conditionally
  * useEffect on the server (no-op) and useLayoutEffect in the browser. We occasionally need useLayoutEffect to
  * ensure we don't get a render flash for certain operations, but we may also need affected components to render on

@@ -6,7 +6,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -44,7 +48,7 @@ export const TabList: ForwardRefComponent<TabListProps>;
 export const tabListClassNames: SlotClassNames<TabListSlots>;
 
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
@@ -63,13 +67,17 @@ export type TabListContextValues = {
 // @public
 export type TabListProps = ComponentProps<TabListSlots> & {
     appearance?: 'transparent' | 'subtle';
+    reserveSelectedTabSpace?: boolean;
     defaultSelectedValue?: TabValue;
     disabled?: boolean;
     onTabSelect?: SelectTabEventHandler;
     selectedValue?: TabValue;
-    size?: 'small' | 'medium';
+    size?: 'small' | 'medium' | 'large';
     vertical?: boolean;
 };
+
+// @public (undocumented)
+export const TabListProvider: Provider<TabListContextValue> & FC<ProviderProps<TabListContextValue>>;
 
 // @public (undocumented)
 export type TabListSlots = {
@@ -103,7 +111,8 @@ export type TabState = ComponentState<TabSlots> & Pick<TabProps, 'value'> & Requ
     appearance?: 'transparent' | 'subtle';
     iconOnly: boolean;
     selected: boolean;
-    size: 'small' | 'medium';
+    contentReservedSpaceClassName?: string;
+    size: 'small' | 'medium' | 'large';
     vertical: boolean;
 };
 
@@ -115,6 +124,12 @@ export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) =
 
 // @public
 export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+// @public (undocumented)
+export const useTabListContext_unstable: <T>(selector: ContextSelector<TabListContextValue, T>) => T;
+
+// @public (undocumented)
+export function useTabListContextValues_unstable(state: TabListState): TabListContextValues;
 
 // @public
 export const useTabListStyles_unstable: (state: TabListState) => TabListState;

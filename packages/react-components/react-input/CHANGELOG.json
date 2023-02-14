@@ -2,6 +2,477 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Fri, 10 Feb 2023 08:50:02 GMT",
+      "tag": "@fluentui/react-input_v9.3.2",
+      "version": "9.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.19",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.5.2",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.2.1",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-input_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.18",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.2.0",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 13:30:56 GMT",
+      "tag": "@fluentui/react-input_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d6e98c0b5390c5c7e03601537b2026307e01a8d4",
+            "comment": "Deprecate InputField_unstable in favor of Field with Input as its child."
+          }
+        ],
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "6f29c8f65b2db6125efbd2a7ec2d7abdd0f44601",
+            "comment": "feat: Allow default appearance override"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.17",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.2.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.14",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jan 2023 16:43:12 GMT",
+      "tag": "@fluentui/react-input_v9.2.13",
+      "version": "9.2.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.16",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:39:03 GMT",
+      "tag": "@fluentui/react-input_v9.2.12",
+      "version": "9.2.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "a98c062f5a7ae87ad0a0f1cff75a4fd964b45672",
+            "comment": "fix: Update contentBefore and contentAfter slot styling for svg"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.15",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.13",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 14:35:02 GMT",
+      "tag": "@fluentui/react-input_v9.2.11",
+      "version": "9.2.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.14",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.12",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:09 GMT",
+      "tag": "@fluentui/react-input_v9.2.10",
+      "version": "9.2.10",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "2c38f1e4ae07b2b60df596efe11015a68f166dbf",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.13",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.3.1",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.19",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.11",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Dec 2022 10:20:29 GMT",
+      "tag": "@fluentui/react-input_v9.2.9",
+      "version": "9.2.9",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "68505ab8eb1b05f45ab09c21b9d66c177d1e50f5",
+            "comment": "chore: Add bundle size tests for Fields"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.12",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.10",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 14:59:34 GMT",
+      "tag": "@fluentui/react-input_v9.2.8",
+      "version": "9.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.11",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.9",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Dec 2022 18:29:24 GMT",
+      "tag": "@fluentui/react-input_v9.2.7",
+      "version": "9.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "6679b1430f61182d34c0b90de33806d9624d811a",
+            "comment": "chore: Replace use of fontSize tokens with typographyStyles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.10",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.8",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Nov 2022 23:05:40 GMT",
+      "tag": "@fluentui/react-input_v9.2.6",
+      "version": "9.2.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.9",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.2.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.7",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:58:05 GMT",
+      "tag": "@fluentui/react-input_v9.2.5",
+      "version": "9.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "023737b640281434710caecc55270838895b50bc",
+            "comment": "fix: update disabled + underline styles, have all text-like form control disabled states match"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "39ba7b6d4648781b979fcf694579f97b851348af",
+            "comment": "chore: Move InputField into the @fluentui/react-input package and export as _unstable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.8",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.18",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.6",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Nov 2022 11:57:52 GMT",
+      "tag": "@fluentui/react-input_v9.2.4",
+      "version": "9.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "890afd9e53f3ad3afd9820fd3e23dc8b8445cb45",
+            "comment": "chore: Migrate to new package structure."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.17",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.1.5",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Oct 2022 00:35:32 GMT",
       "tag": "@fluentui/react-input_v9.2.3",
       "version": "9.2.3",

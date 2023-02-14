@@ -15,15 +15,6 @@ const iconSizes = {
   large: '24px',
 };
 
-// This 400 style is not in the typography styles.
-// May need a design change
-const contentSizes = {
-  400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-};
-
 //TODO: Should fieldHeights be a set of global design tokens or constants?
 const fieldHeights = {
   small: '24px',
@@ -135,12 +126,19 @@ const useSelectStyles = makeStyles({
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
+  },
+  disabledUnderline: {
+    ...shorthands.borderColor(
+      tokens.colorTransparentStrokeDisabled,
+      tokens.colorTransparentStrokeDisabled,
+      tokens.colorNeutralStrokeDisabled,
+    ),
   },
 
   small: {
@@ -159,13 +157,14 @@ const useSelectStyles = makeStyles({
     height: fieldHeights.large,
     paddingLeft: paddingLeft.large,
     paddingRight: paddingRight.large,
-    ...contentSizes[400],
+    ...typographyStyles.body2,
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
-
+  },
+  outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessible,
@@ -258,9 +257,11 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles.base,
     selectStyles[size],
     selectStyles[appearance],
+    !disabled && appearance === 'outline' && selectStyles.outlineInteractive,
     !disabled && invalid && appearance !== 'underline' && selectStyles.invalid,
     !disabled && invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,
+    disabled && appearance === 'underline' && selectStyles.disabledUnderline,
     state.select.className,
   );
 

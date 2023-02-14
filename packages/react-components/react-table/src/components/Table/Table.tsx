@@ -7,7 +7,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTableContextValues_unstable } from './useTableContextValues';
 
 /**
- * Table component - TODO: add more docs
+ * Table component
  */
 export const Table: ForwardRefComponent<TableProps> = React.forwardRef((props, ref) => {
   const state = useTable_unstable(props, ref);

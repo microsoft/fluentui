@@ -1,0 +1,77 @@
+{
+  "name": "@fluentui/tokens",
+  "entries": [
+    {
+      "date": "Mon, 16 Jan 2023 08:38:52 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.2",
+      "version": "1.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:44 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.2",
+      "version": "1.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "f02e92f95e93a6417e64246f2057a1006b64ca90",
+            "comment": "chore(scripts): introduce ts-node sub-package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Dec 2022 10:20:33 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.2",
+      "version": "1.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "97c1c1ab218afb20e37bfc35936fd88177d439b4",
+            "comment": "Hoist theme tokens from react-theme to tokens package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 07:53:34 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.1",
+      "version": "1.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e81182c7d8ad8dc5534d171b88918d6a514dbac1",
+            "comment": "Add @fluentui/tokens package"
+          }
+        ]
+      }
+    }
+  ]
+}

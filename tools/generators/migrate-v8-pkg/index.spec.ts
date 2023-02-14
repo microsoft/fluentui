@@ -124,7 +124,7 @@ function setupDummyPackage(
         'build-storybook': 'cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
-        codepen: 'node ../../scripts/local-codepen.js',
+        codepen: 'node ../../scripts/executors/local-codepen.js',
         e2e: 'yarn workspace @fluentui/react-examples e2e --package react',
         just: 'just-scripts',
         lint: 'just-scripts lint',
@@ -141,12 +141,12 @@ function setupDummyPackage(
       ...normalizedOptions.tsConfig,
     },
     jestConfig: stripIndents`
-      const { createConfig, resolveMergeStylesSerializer } = require('@proj/scripts/jest/jest-resources');
+      const { createConfig,   } = require('@proj/scripts/jest/jest-resources');
       const path = require('path');
 
       const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: [resolveMergeStylesSerializer()],
+         setupFiles: ['./config/tests.js'],
+        snapshotSerializers: ['@fluentui/jest-serializer-merge-styles'],
       });
 
       module.exports = config;

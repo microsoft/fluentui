@@ -1,0 +1,80 @@
+@import '../../../styles/common';
+
+.paragraphInGrid {
+  @include ms-padding-left($contentInGrid);
+}
+
+.exampleIcons {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-around;
+
+  li {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    span {
+      display: block;
+      font-size: $ms-font-size-s;
+      margin-top: 20px;
+    }
+  }
+}
+
+.exampleIcons + .exampleIcons {
+  margin-top: 60px;
+}
+
+.productIcon {
+  width: 100%;
+  max-width: 96px;
+  height: 96px;
+  @include ms-padding-right(8px);
+}
+
+.iconList {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    align-items: center;
+    display: flex;
+    height: 60px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .icon {
+    height: auto;
+    margin-right: 20px;
+    max-width: 48px;
+  }
+
+  .iconName {
+    font-size: $ms-font-size-l;
+    font-weight: $ms-font-weight-semibold;
+    color: $ms-color-gray150;
+  }
+}
+
+.productIconsPage .productIconsPageLink {
+  color: $ms-color-themePrimary;
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .iconList {
+    li {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: $ms-screen-min-xl) {
+  .iconList {
+    li {
+      width: 33%;
+    }
+  }
+}

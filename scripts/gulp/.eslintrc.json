@@ -1,0 +1,24 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:@fluentui/eslint-plugin/imports"],
+  "rules": {
+    "@fluentui/max-len": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-shadow": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "packageDir": [".", "../../"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": "src/index.d.ts",
+      "rules": {
+        "import/no-self-import": "off"
+      }
+    }
+  ],
+  "root": true
+}
