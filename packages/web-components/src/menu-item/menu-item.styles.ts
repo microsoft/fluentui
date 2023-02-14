@@ -89,7 +89,7 @@ export const styles = css`
   .input-container {
     color: ${colorNeutralForeground2};
   }
-  ::slotted(span[slot='end']) {
+  ::slotted([slot='end']) {
     width: fit-content;
     color: ${colorNeutralForeground3};
     font-family: ${fontFamilyBase};
@@ -117,7 +117,7 @@ export const styles = css`
   :host(:active) .input-container {
     color: ${colorNeutralForeground2Pressed};
   }
-  :host(:active) ::slotted(span[slot='start']) {
+  :host(:active) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Pressed};
   }
 
@@ -126,8 +126,8 @@ export const styles = css`
   }
   :host([disabled='true']) .expand-collapse-glyph-container,
   :host([disabled='true']) .input-container,
-  :host([disabled='true']) ::slotted(span[slot='start']),
-  :host([disabled='true']) ::slotted(span[slot='end']),
+  :host([disabled='true']) ::slotted([slot='start']),
+  :host([disabled='true']) ::slotted([slot='end']),
   :host([disabled='true']) .content {
     color: ${colorNeutralForegroundDisabled};
   }
