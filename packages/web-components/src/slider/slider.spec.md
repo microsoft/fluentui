@@ -19,11 +19,10 @@ The Slider component allows users to quickly select a value by dragging an icon 
 - @attr value: number
 - @attr min: number
 - @attr max: number
-- @attr step: number
+- @attr step: number | 1
   - If set, slider appearance has ticks for each step value
 - @attr default-value: number
 - @attr disabled: boolean | false
-- @attr step:number | 1
 - @attr mode: "single-value" "range" | "single-value"
 
 ### Outputs
@@ -32,7 +31,7 @@ None
 
 ### Events
 
-- @onChange
+- @change: Fires whenever the slider's value is changed
 
 ### Slots
 
