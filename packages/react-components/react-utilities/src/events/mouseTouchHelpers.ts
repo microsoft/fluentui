@@ -21,7 +21,7 @@ export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | Re
 }
 
 /**
- * Returns {clientX, clientY} for TouchOrMouseEvent.
+ * Returns an object with clientX, clientY for TouchOrMouseEvent.
  * Returns zeros in case the event is not a mouse or a touch event.
  */
 export function getEventClientCoords(event: TouchOrMouseEvent): { clientX: number; clientY: number } {
