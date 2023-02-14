@@ -34,7 +34,6 @@ const rootBaseStyles: GriffelResetStyle = {
   minHeight: fieldHeights.medium,
   padding: `0 0 0 ${tokens.spacingHorizontalMNudge}`,
   borderRadius: tokens.borderRadiusMedium,
-  ...typographyStyles.body1,
 
   // Apply border styles on the ::before pseudo element.
   // We cannot use ::after since react-input uses that
@@ -225,6 +224,7 @@ const useInputClassName = makeResetStyles({
   outlineStyle: 'none',
   border: '0',
   padding: '0',
+  ...typographyStyles.body1,
 });
 
 const useInputStyles = makeStyles({
