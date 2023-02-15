@@ -119,11 +119,11 @@ export const styles = css`
   :host([disabled='true']) {
     background: ${colorNeutralBackgroundDisabled};
   }
-  :host([disabled='true']) .expand-collapse-glyph-container,
-  :host([disabled='true']) .input-container,
-  :host([disabled='true']) ::slotted([slot='start']),
-  :host([disabled='true']) ::slotted([slot='end']),
-  :host([disabled='true']) .content {
+  :host([disabled]) .expand-collapse-glyph-container,
+  :host([disabled) .input-container,
+  :host([disabled) ::slotted([slot='start']),
+  :host([disabled) ::slotted([slot='end']),
+  :host([disabled) .content {
     color: ${colorNeutralForegroundDisabled};
   }
   :host([disabled='true']) ::slotted([slot='end']) {
