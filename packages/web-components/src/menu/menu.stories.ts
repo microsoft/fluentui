@@ -110,28 +110,28 @@ const storyTemplate = html<MenuStoryArgs>`
       </fluent-menu-item>
       <fluent-menu-item class="header">Checkbox Group Header</fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Cut
+        Option 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Edit
+        Option 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Paste
+        Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item class="header">Radio Group Header</fluent-menu-item>
       <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Cut
+        Option 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Edit
+        Option 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Paste
+        Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
     </fluent-menu>
