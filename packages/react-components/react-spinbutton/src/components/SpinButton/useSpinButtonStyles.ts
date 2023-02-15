@@ -242,9 +242,16 @@ const useInputClassName = makeResetStyles({
 });
 
 const useInputStyles = makeStyles({
+  small: {
+    ...typographyStyles.caption1,
+  },
   disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
+    '::placeholder': {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
   },
 });
 
@@ -525,6 +532,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     spinButtonClassNames.decrementButton,
     spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
     useDecrementButtonClassName(),
+    buttonStyles[appearance],
     size === 'small' && buttonStyles.decrementButtonSmall,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles[appearance],
@@ -534,6 +542,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   state.input.className = mergeClasses(
     spinButtonClassNames.input,
     inputClassName,
+    size === 'small' && inputStyles.small,
     disabled && inputStyles.disabled,
     state.input.className,
   );
