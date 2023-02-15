@@ -104,8 +104,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.20",
-    "@microsoft/fast-foundation": "^3.0.0-alpha.24",
+    "@microsoft/fast-element": "^2.0.0-beta.21",
+    "@microsoft/fast-foundation": "^3.0.0-alpha.25",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
