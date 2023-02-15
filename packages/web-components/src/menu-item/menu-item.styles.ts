@@ -17,6 +17,7 @@ import {
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
+  fontSizeBase500,
   fontWeightRegular,
   fontWeightSemibold,
   lineHeightBase200,
@@ -53,37 +54,40 @@ export const styles = css`
     padding: 0 8px;
   }
   :host(.header) .content {
-    font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightSemibold};
     line-height: ${lineHeightBase200};
   }
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
-  ::slotted([slot='end']) {
+  ::slotted([slot='end']),
+  :host([checked]) .checkbox,
+  :host([checked]) .radio,
+  .input-container {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .expand-collapse-glyph-container,
+  ::slotted([slot='start']),
+  ::slotted([slot='end']) {
     width: fit-content;
     height: 32px;
-    font-size: 20px;
+    font-size: ${fontSizeBase500};
   }
   .input-container {
     width: 20px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
   }
   .expand-collapse-glyph-container,
   .content,
-  ::slotted(span[slot='start']),
+  ::slotted([slot='start']),
   .input-container {
     color: ${colorNeutralForeground2};
   }
   ::slotted([slot='end']) {
     width: fit-content;
     color: ${colorNeutralForeground3};
-    font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
@@ -97,7 +101,7 @@ export const styles = css`
   :host(:hover) .input-container {
     color: ${colorNeutralForeground2Hover};
   }
-  :host(:hover) ::slotted(span[slot='start']) {
+  :host(:hover) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Hover};
   }
   :host(:active) {
@@ -122,15 +126,11 @@ export const styles = css`
   :host([disabled='true']) .content {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host([disabled='true']) ::slotted(span[slot='end']) {
+  :host([disabled='true']) ::slotted([slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
   }
   .checkbox,
   .radio {
     display: none;
-  }
-  :host([checked]) .checkbox,
-  :host([checked]) .radio {
-    display: flex;
   }
 `;
