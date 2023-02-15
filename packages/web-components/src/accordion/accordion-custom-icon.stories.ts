@@ -26,37 +26,19 @@ const subtract20Filled = html`<svg
 
 const storyTemplate = html<AccordionStoryArgs>`
   <fluent-accordion expand-mode=${x => x.expandMode}>
-    <fluent-accordion-item
-      size=${x => x.size}
-      heading-level=${x => x.headingLevel}
-      expand-icon-position=${x => x.expandIconPosition}
-      block=${x => x.block}
-      disabled=${x => x.disabled}
-    >
+    <fluent-accordion-item>
       <span slot="collapsed-icon">${add20Filled}</span>
       <span slot="expanded-icon">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
-    <fluent-accordion-item
-      size=${x => x.size}
-      heading-level=${x => x.headingLevel}
-      expand-icon-position=${x => x.expandIconPosition}
-      block=${x => x.block}
-      disabled=${x => x.disabled}
-    >
+    <fluent-accordion-item>
       <span slot="collapsed-icon">${add20Filled}</span>
       <span slot="expanded-icon">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 2</span>
       Accordion Panel 1
     </fluent-accordion-item>
-    <fluent-accordion-item
-      size=${x => x.size}
-      heading-level=${x => x.headingLevel}
-      expand-icon-position=${x => x.expandIconPosition}
-      block=${x => x.block}
-      disabled=${x => x.disabled}
-    >
+    <fluent-accordion-item>
       <span slot="collapsed-icon">${add20Filled}</span>
       <span slot="expanded-icon">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 3</span>
