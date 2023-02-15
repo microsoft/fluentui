@@ -58,6 +58,10 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
     line-height: ${lineHeightBase200};
   }
+  .checkbox,
+  .radio {
+    display: none;
+  }
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']),
@@ -68,7 +72,6 @@ export const styles = css`
     justify-content: center;
     align-items: center;
   }
-
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
@@ -115,22 +118,17 @@ export const styles = css`
   :host(:active) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Pressed};
   }
-
   :host([disabled]) {
     background: ${colorNeutralBackgroundDisabled};
   }
   :host([disabled]) .expand-collapse-glyph-container,
-  :host([disabled) .input-container,
-  :host([disabled) ::slotted([slot='start']),
-  :host([disabled) ::slotted([slot='end']),
-  :host([disabled) .content {
+  :host([disabled]) .input-container,
+  :host([disabled]) ::slotted([slot='start']),
+  :host([disabled]) ::slotted([slot='end']),
+  :host([disabled]) .content {
     color: ${colorNeutralForegroundDisabled};
   }
   :host([disabled]) ::slotted([slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
-  }
-  .checkbox,
-  .radio {
-    display: none;
   }
 `;
