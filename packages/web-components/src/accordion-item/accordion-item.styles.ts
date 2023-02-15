@@ -139,6 +139,8 @@ export const styles = css`
   }
 
   :host([expanded]) ::slotted([slot='start']),
+  :host([expanded]) ::slotted([slot='expanded-icon']),
+  :host(:not([expanded])) ::slotted([slot='collapsed-icon']),
   ::slotted([slot='end']) {
     display: flex;
   }
