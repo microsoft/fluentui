@@ -12,5 +12,5 @@ export class Switch extends FASTSwitch {
    * HTML Attribute: labelposition
    */
   @attr({ attribute: 'label-position' })
-  public labelPosition: SwitchLabelPosition;
+  public labelPosition: SwitchLabelPosition | undefined;
 }
