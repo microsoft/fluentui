@@ -16,5 +16,13 @@
 
   "dtsRollup": {
     "enabled": true
+  },
+  "compiler": {
+    "tsconfigFilePath": "./tsconfig.lib.json",
+    "overrideTsconfig": {
+      "compilerOptions": {
+        "paths": {}
+      }
+    }
   }
 }
