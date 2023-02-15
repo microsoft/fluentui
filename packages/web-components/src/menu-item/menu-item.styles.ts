@@ -79,9 +79,9 @@ export const styles = css`
   .input-container {
     width: 20px;
   }
+  ::slotted([slot='start']),
   .expand-collapse-glyph-container,
   .content,
-  ::slotted([slot='start']),
   .input-container {
     color: ${colorNeutralForeground2};
   }
@@ -116,7 +116,7 @@ export const styles = css`
     color: ${colorCompoundBrandForeground1Pressed};
   }
 
-  :host([disabled='true']) {
+  :host([disabled]) {
     background: ${colorNeutralBackgroundDisabled};
   }
   :host([disabled]) .expand-collapse-glyph-container,
@@ -126,7 +126,7 @@ export const styles = css`
   :host([disabled) .content {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host([disabled='true']) ::slotted([slot='end']) {
+  :host([disabled]) ::slotted([slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
   }
   .checkbox,
