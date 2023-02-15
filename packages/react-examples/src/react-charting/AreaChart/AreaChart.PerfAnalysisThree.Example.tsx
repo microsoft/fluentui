@@ -97,6 +97,7 @@ export class AreaChartPerfThreeExample extends React.Component<{}, IAreaChartBas
           height={this.state.height}
           width={this.state.width}
           data={chartData}
+          calloutProps={{ hidden: true }}
           showYAxisGridLines={true}
           // eslint-disable-next-line react/jsx-no-bind
           onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
