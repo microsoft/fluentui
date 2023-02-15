@@ -82,11 +82,6 @@ export const styles = css`
     cursor: pointer;
     margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  .switch * {
-    transition-duration: ${durationNormal};
-    transition-timing-function: ${curveEasyEase};
-    transition-property: transform;
-  }
   .switch:hover {
     background: none;
     border-color: ${colorNeutralStrokeAccessibleHover};
@@ -108,6 +103,9 @@ export const styles = css`
     top: 2px;
     border-radius: 50%;
     background-color: ${colorNeutralForeground3};
+    transition-duration: ${durationNormal};
+    transition-timing-function: ${curveEasyEase};
+    transition-property: transform;
   }
   :host([aria-checked='true']) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
