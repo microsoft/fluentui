@@ -52,7 +52,7 @@ const defaultItems: FlatTreeItem[] = [
     children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
   },
   {
-    leaf: false,
+    leaf: true,
     'aria-level': 3,
     'aria-setsize': 1,
     'aria-posinset': 1,
@@ -60,17 +60,9 @@ const defaultItems: FlatTreeItem[] = [
     id: 'flatTreeItem_lvl-3_item-1',
     children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
   },
-  {
-    leaf: true,
-    'aria-level': 4,
-    'aria-setsize': 1,
-    'aria-posinset': 1,
-    parentId: 'flatTreeItem_lvl-3_item-1',
-    children: <TreeItemLayout>Level 4, item 1</TreeItemLayout>,
-  },
 ];
 
-export const useFlatTreeItems = () => {
+export const UseFlatTreeItems = () => {
   const [treeProps, getTreeItems] = useFlatTreeItems_unstable(defaultItems);
   return (
     <Tree {...treeProps} aria-label="Tree">

@@ -36,3 +36,5 @@ export type {
 
 export { useFlatTreeItems_unstable } from './hooks/index';
 export type { FlatTreeItem } from './hooks/index';
+
+export { flattenTree_unstable, flattenTreeFromElements_unstable } from './utils/flattenTree';

@@ -9,9 +9,9 @@ export type FlatTreeItem = Required<Pick<TreeItemProps, 'leaf' | 'aria-level' | 
     parentId?: string;
   };
 
-export function useFlatTreeItems_unstable<Item extends FlatTreeItem>(
-  items: Item[],
-): readonly [Pick<TreeProps, 'openItems' | 'onOpenChange'>, () => Item[]] {
+export function useFlatTreeItems_unstable(
+  items: FlatTreeItem[],
+): readonly [Pick<TreeProps, 'openItems' | 'onOpenChange'>, () => FlatTreeItem[]] {
   const [openItems, setOpenItems] = React.useState<string[]>([]);
   const onOpenChange = useEventCallback((ev: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(curr => updateOpenItems(data, curr));
