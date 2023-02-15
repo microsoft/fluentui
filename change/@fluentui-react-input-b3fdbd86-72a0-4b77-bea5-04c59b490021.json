@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Update Input to use makeResetStyles and reduce the number of classes applied",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
