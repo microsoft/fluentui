@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(useOnClickOutside): iframe focus detection uses `contains`",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
