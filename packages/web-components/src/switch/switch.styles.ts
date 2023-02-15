@@ -155,16 +155,4 @@ export const styles = css`
   :host([aria-checked='true'][disabled]) .switch .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  .unchecked-message {
-    display: block;
-  }
-  .checked-message {
-    display: none;
-  }
-  :host([aria-checked='true']) .unchecked-message {
-    display: none;
-  }
-  :host([aria-checked='true']) .checked-message {
-    display: block;
-  }
 `;
