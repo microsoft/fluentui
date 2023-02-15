@@ -161,15 +161,15 @@ export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
     <fluent-menu>
       <fluent-menu-item role="menuitemcheckbox">
-        Cut
+        Option 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox">
-        Edit
+        Option 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox">
-        Paste
+        Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
     </fluent-menu>
@@ -180,15 +180,15 @@ export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
     <fluent-menu>
       <fluent-menu-item role="menuitemradio">
-        Cut
+        Option 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemradio">
-        Edit
+        Option 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemradio">
-        Paste
+        Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
     </fluent-menu>
