@@ -2,6 +2,8 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
 import type { Menu as FluentMenu } from './menu.js';
+import './define.js';
+import '../menu-item/define.js';
 
 type MenuStoryArgs = Args & FluentMenu;
 type MenuStoryMeta = Meta<MenuStoryArgs>;
@@ -84,6 +86,7 @@ const Code20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
+
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
     <fluent-menu>
@@ -146,7 +149,7 @@ const storyTemplate = html<MenuStoryArgs>`
 `;
 
 export default {
-  title: 'Components/Menu/Default',
+  title: 'Components/Menu',
   args: {
     disabled: false,
   },
@@ -163,3 +166,63 @@ export default {
 } as MenuStoryMeta;
 
 export const Menu = renderComponent(storyTemplate).bind({});
+
+export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-menu>
+      <fluent-menu-item role="menuitemcheckbox">
+        Cut
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox">
+        Edit
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox">
+        Paste
+        <span slot="start">${ClipboardPaste20Filled}</span>
+      </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative">
+    <fluent-menu>
+      <fluent-menu-item role="menuitemradio">
+        Cut
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemradio">
+        Edit
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemradio">
+        Paste
+        <span slot="start">${ClipboardPaste20Filled}</span>
+      </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 260px; position: relative;">
+    <fluent-menu>
+      <fluent-menu-item>
+        New
+        <fluent-menu slot="submenu">
+          <fluent-menu-item> Submenu item 1 </fluent-menu-item>
+          <fluent-menu-item> Submenu item 2 </fluent-menu-item>
+        </fluent-menu>
+      </fluent-menu-item>
+      <fluent-menu-item>
+        New Window
+        <fluent-menu slot="submenu">
+          <fluent-menu-item>Submenu item 1</fluent-menu-item>
+          <fluent-menu-item>Submenu item 2</fluent-menu-item>
+        </fluent-menu>
+      </fluent-menu-item>
+      <fluent-menu-item> Open Folder </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
