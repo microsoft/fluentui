@@ -185,6 +185,13 @@ const useRootStyles = makeStyles({
     },
   },
 
+  'filled-darker': {
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+  'filled-lighter': {
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+
   filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':hover,:focus-within': {
@@ -224,7 +231,14 @@ const useInputClassName = makeResetStyles({
   outlineStyle: 'none',
   border: '0',
   padding: '0',
+  color: tokens.colorNeutralForeground1,
+  backgroundColor: 'transparent',
   ...typographyStyles.body1,
+
+  '::placeholder': {
+    color: tokens.colorNeutralForeground4,
+    opacity: 1, // browser style override
+  },
 });
 
 const useInputStyles = makeStyles({
@@ -487,7 +501,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
     spinButtonClassNames.root,
     useRootClassName(),
     rootStyles[size],
-    appearance === 'underline' && rootStyles.underline,
+    rootStyles[appearance],
     filled && rootStyles.filled,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
