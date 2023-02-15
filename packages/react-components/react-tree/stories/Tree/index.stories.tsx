@@ -15,6 +15,7 @@ export { IconAfter } from './TreeIconAfter.stories';
 export { Layout } from './TreeLayout.stories';
 export { Size } from './TreeSize.stories';
 export { Appearance } from './TreeAppearance.stories';
+export { useFlatTreeItems } from './useFlatTreeItems.stories';
 
 export default {
   title: 'Preview Components/Tree',

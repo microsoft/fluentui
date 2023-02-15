@@ -20,7 +20,7 @@ export const renderTreeItem_unstable = (state: TreeItemState, contextValues: Tre
             {slots.actions && <slots.actions {...slotProps.actions} />}
           </ButtonContextProvider>
         </slots.content>
-        {slots.subtree && <slots.subtree {...slotProps.subtree} />}
+        {state.open && slots.subtree && <slots.subtree {...slotProps.subtree} />}
       </slots.root>
     </TreeItemProvider>
   );

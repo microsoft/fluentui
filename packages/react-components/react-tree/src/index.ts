@@ -33,3 +33,6 @@ export type {
   TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutState,
 } from './TreeItemPersonaLayout';
+
+export { useFlatTreeItems_unstable } from './hooks/index';
+export type { FlatTreeItem } from './hooks/index';
