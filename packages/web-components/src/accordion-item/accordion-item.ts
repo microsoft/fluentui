@@ -14,6 +14,7 @@ export class AccordionItem extends FASTAccordionItem {
    * @remarks
    * HTML Attribute: size
    */
+  @attr
   public size: AccordionItemSize;
 
   /**
