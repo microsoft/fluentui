@@ -8,7 +8,6 @@ type MenuStoryMeta = Meta<MenuStoryArgs>;
 
 const Cut20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -23,7 +22,6 @@ const Cut20Filled = html`<svg
 
 const ClipboardPaste20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
@@ -38,7 +36,6 @@ const ClipboardPaste20Filled = html`<svg
 
 const Edit20Filled = html`<svg
   fill="currentColor"
-  class="___12fm75w f1w7gpdv fez10in fg4l7m0"
   aria-hidden="true"
   width="20"
   height="20"
