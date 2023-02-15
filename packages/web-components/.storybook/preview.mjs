@@ -1,6 +1,6 @@
-import * as Fluent from '../src/index-rollup.ts';
+import * as Fluent from '../src/index-rollup.js';
 import webcomponentsTheme from './theme.mjs';
-import { switchTheme } from '../public/theme-switch.ts';
+import { switchTheme } from '../public/theme-switch.js';
 
 Fluent;
 
@@ -8,7 +8,7 @@ function changeTheme(e) {
   switchTheme(e.target.value);
 }
 
-document.getElementById('theme-switch').addEventListener('change', changeTheme, false);
+document.getElementById('theme-switch')?.addEventListener('change', changeTheme, false);
 switchTheme('web-light');
 
 export const parameters = {

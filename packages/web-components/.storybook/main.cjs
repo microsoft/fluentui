@@ -1,8 +1,15 @@
+const path = require('path');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const tsBin = require.resolve('typescript');
+const tsConfigPath = path.resolve(__dirname, '../../../tsconfig.base.wc.json');
 
-module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookConfig,'typescript'|'babel'>} */ ({
+const tsPaths = new TsconfigPathsPlugin({
+  configFile: tsConfigPath,
+});
+
+module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookConfig,'typescript'|'babel'|'previewHead'>} */ ({
   stories: ['../src/**/*.stories.@(ts|mdx)'],
   staticDirs: ['../public'],
   core: {
@@ -24,10 +31,19 @@ module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookCon
     },
   ],
   webpackFinal: async config => {
+    config.resolve = config.resolve ?? {};
+    config.resolve.extensions = config.resolve.extensions ?? [];
+    config.resolve.plugins = config.resolve.plugins ?? [];
+    config.module = config.module ?? {};
+    config.plugins = config.plugins ?? [];
+
     config.resolve.extensionAlias = {
       '.js': ['.ts', '.js'],
       '.mjs': ['.mts', '.mjs'],
     };
+    config.resolve.extensions.push(...['.ts', '.js']);
+    config.resolve.plugins.push(tsPaths);
+    config.module.rules = config.module.rules ?? [];
     config.module.rules.push(
       {
         test: /\.([cm]?ts|tsx)$/,
@@ -46,7 +62,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookCon
         resolve: { fullySpecified: false },
       },
     );
-    config.resolve.extensions.push(...['.ts', '.js']);
+
     config.plugins.push(
       new CircularDependencyPlugin({
         exclude: /node_modules/,

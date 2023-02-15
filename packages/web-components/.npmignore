@@ -1,7 +1,6 @@
 # Tests
-dist/dts/__test__/
-dist/esm/__test__/
 *.spec.*
+*.test.*
 coverage/
 
 # images
@@ -10,12 +9,16 @@ images/
 # Source files
 src/
 
+scripts/
+
 # config files
 .eslintignore
 .eslintrc.js
 .prettierignore
 .storybook
 tsconfig.json
+tsconfig.lib.json
+tsconfig.spec.json
 tsconfig.build.json
 rollup.config.json
 karma.conf.cjs
@@ -24,6 +27,7 @@ api-extractor.json
 
 # Storybook static site
 dist/storybook-static/
+public/
 
 # cache
 .rollupcache
