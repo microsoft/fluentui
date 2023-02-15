@@ -25,7 +25,7 @@ export class AccordionItem extends FASTAccordionItem {
    * HTML Attribute: block
    */
   @attr({ mode: 'boolean' })
-  public block: boolean = true;
+  public block: boolean = false;
 
   /**
    * Sets expand and collapsed icon position.

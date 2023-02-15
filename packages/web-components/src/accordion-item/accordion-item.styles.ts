@@ -165,21 +165,21 @@ export const styles = css`
     line-height: ${lineHeightBase500};
   }
 
-  /* --- expandIconPosition attr styles --- */
+  /* --- expand-icon-position attr styles --- */
 
-  :host([expandIconPosition='end']) :slotted(span[slot='start']),
-  :host([expandIconPosition='end']) ::slotted(span[slot='end']) {
+  :host([expand-icon-position='end']) :slotted(span[slot='start']),
+  :host([expand-icon-position='end']) ::slotted(span[slot='end']) {
     grid-column: 1 / span 1;
     grid-row: 1;
   }
 
-  :host([expandIconPosition='end']) ::slotted(span[slot='start']),
-  :host([expandIconPosition='end']) ::slotted(span[slot='end']) {
+  :host([expand-icon-position='end']) ::slotted(span[slot='start']),
+  :host([expand-icon-position='end']) ::slotted(span[slot='end']) {
     grid-column: 1 / span 1;
     grid-row: 1;
   }
 
-  :host([expandIconPosition='end']) .icon {
+  :host([expand-icon-position='end']) .icon {
     grid-column: 4 / span 1;
     grid-row: 1;
     display: flex;
@@ -187,7 +187,7 @@ export const styles = css`
     padding-right: 0;
   }
 
-  :host([expandIconPosition='end']) .button {
+  :host([expand-icon-position='end']) .button {
     grid-column: 2 / span 3;
     grid-row: 1;
   }
@@ -198,19 +198,19 @@ export const styles = css`
     max-width: 100%;
   }
 
-  :host([expandIconPosition='end']) .heading {
+  :host([expand-icon-position='end']) .heading {
     grid-template-columns: auto auto 28px;
   }
 
-  :host([expandIconPosition='end']) .icon {
+  :host([expand-icon-position='end']) .icon {
     grid-column: 5 / span 1;
   }
 
-  :host([block][expandIconPosition='end']) .heading {
+  :host([block][expand-icon-position='end']) .heading {
     grid-template-columns: auto 1fr;
   }
 
-  :host([block][expandIconPosition='end']) .icon {
+  :host([block][expand-icon-position='end']) .icon {
     grid-column: 5 / span 1;
   }
 `;

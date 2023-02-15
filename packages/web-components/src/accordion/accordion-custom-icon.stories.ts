@@ -1,6 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../__test__/helpers.js';
+import { renderComponent } from '../helpers.stories.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
 import './define';
 import '../accordion-item/define';
@@ -29,7 +29,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     <fluent-accordion-item
       size=${x => x.size}
       heading-level=${x => x.headingLevel}
-      expandIconPosition=${x => x.expandIconPosition}
+      expand-icon-position=${x => x.expandIconPosition}
       block=${x => x.block}
       disabled=${x => x.disabled}
     >
@@ -41,7 +41,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     <fluent-accordion-item
       size=${x => x.size}
       heading-level=${x => x.headingLevel}
-      expandIconPosition=${x => x.expandIconPosition}
+      expand-icon-position=${x => x.expandIconPosition}
       block=${x => x.block}
       disabled=${x => x.disabled}
     >
@@ -53,7 +53,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     <fluent-accordion-item
       size=${x => x.size}
       heading-level=${x => x.headingLevel}
-      expandIconPosition=${x => x.expandIconPosition}
+      expand-icon-position=${x => x.expandIconPosition}
       block=${x => x.block}
       disabled=${x => x.disabled}
     >
