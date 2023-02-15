@@ -1,6 +1,5 @@
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { GriffelResetStyle } from '@griffel/react';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InputSlots, InputState } from './Input.types';
 
@@ -18,7 +17,7 @@ const fieldHeights = {
   large: '40px',
 };
 
-const rootBaseStyles: GriffelResetStyle = {
+const useRootClassName = makeResetStyles({
   display: 'inline-flex',
   alignItems: 'center',
   flexWrap: 'nowrap',
@@ -36,9 +35,15 @@ const rootBaseStyles: GriffelResetStyle = {
   backgroundColor: tokens.colorNeutralBackground1,
   border: `1px solid ${tokens.colorNeutralStroke1}`,
   borderBottomColor: tokens.colorNeutralStrokeAccessible,
-};
+  ':hover': {
+    borderColor: tokens.colorNeutralStroke1Hover,
+    borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+  },
+  ':active,:focus-within': {
+    borderColor: tokens.colorNeutralStroke1Pressed,
+    borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+  },
 
-const rootInteractiveStyles: GriffelResetStyle = {
   // This is all for the bottom focus border.
   // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
   '::after': {
@@ -94,10 +99,7 @@ const rootInteractiveStyles: GriffelResetStyle = {
   ':focus-within': {
     outline: '2px solid transparent',
   },
-};
-
-const useRootNonInteractiveClassName = makeResetStyles(rootBaseStyles);
-const useRootInteractiveClassName = makeResetStyles({ ...rootBaseStyles, ...rootInteractiveStyles });
+});
 
 const useRootStyles = makeStyles({
   small: {
@@ -119,42 +121,19 @@ const useRootStyles = makeStyles({
   outline: {
     // included in rootBaseStyles
   },
-  outlineInteractive: {
-    ':hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    },
-    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
-    ':active,:focus-within': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-  },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderRadius(0), // corners look strange if rounded
+    '&,::after': shorthands.borderRadius(0), // remove rounded corners on the underline and the ::after focus underline
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
     borderRightStyle: 'none',
     borderLeftStyle: 'none',
   },
-  underlineInteractive: {
-    ':hover': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-    },
-    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
-    ':active,:focus-within': {
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
-    '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
-  },
   filled: {
     ...shorthands.borderColor(tokens.colorTransparentStroke),
-  },
-  filledInteractive: {
+
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
-    ':hover,:focus-within': {
-      // also handles pressed border color (:active)
+    ':hover,:active,:focus-within': {
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
@@ -180,9 +159,19 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    '&,:hover,:active,:focus-within': {
+      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    },
     '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
+      '&,:hover,:active,:focus-within': {
+        ...shorthands.borderColor('GrayText'),
+      },
+    },
+    '::after': {
+      content: 'unset', // remove the focus border
+    },
+    ':focus-within': {
+      outlineStyle: 'none', // remove the focus outline
     },
   },
 });
@@ -260,10 +249,6 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
-  // Call exactly one of the two base className hooks. Each of these hooks is functionally identical, but with
-  // different styles applied, which makes it ok to conditionally change which hook is called.
-  const useRootClassName = disabled ? useRootNonInteractiveClassName : useRootInteractiveClassName;
-
   const rootStyles = useRootStyles();
   const inputStyles = useInputElementStyles();
   const contentStyles = useContentStyles();
@@ -273,9 +258,6 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     useRootClassName(),
     rootStyles[size],
     rootStyles[appearance],
-    !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
-    !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
-    !disabled && filled && rootStyles.filledInteractive,
     filled && rootStyles.filled,
     !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
