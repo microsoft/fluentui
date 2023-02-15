@@ -152,7 +152,7 @@ export const styles = css`
   :host([aria-checked='true'][disabled]) .switch {
     background: ${colorNeutralBackgroundDisabled};
   }
-  :host([aria-checked='true'][disabled]) .switch .checked-indicator {
+  :host([aria-checked='true'][disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
 `;
