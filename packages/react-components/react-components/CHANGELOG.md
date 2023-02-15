@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 13 Feb 2023 23:43:13 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 11:44:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.3)
+
+Wed, 15 Feb 2023 11:44:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.2..@fluentui/react-components_v9.15.3)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: Add event helpers to ease working with mouse and touch ([PR #26784](https://github.com/microsoft/fluentui/pull/26784) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - fix(useOnClickOutside): iframe focus detection uses `contains` ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-table`
+  - feat: Table - add support for resizing columns with touch ([PR #26784](https://github.com/microsoft/fluentui/pull/26784) by jirivyhnalek@microsoft.com)
 
 ## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.2)
 
