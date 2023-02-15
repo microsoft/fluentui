@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Updating peer dependencies to support React 18.",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
