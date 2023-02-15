@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 15 Feb 2023 07:42:17 GMT",
+      "tag": "@fluentui/react_v8.105.8",
+      "version": "8.105.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ef43ec5d4babc785c8002d3a92efaaf676e7ba35",
+            "comment": "fix: update cell HCM bg color to not clip focus indicator"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Feb 2023 07:37:39 GMT",
       "tag": "@fluentui/react_v8.105.7",
       "version": "8.105.7",
