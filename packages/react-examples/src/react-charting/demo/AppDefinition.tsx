@@ -23,8 +23,26 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('../AreaChart/AreaChartPage').AreaChart,
           key: 'AreaChart',
-          name: 'Area Chart',
+          name: 'Area Chart Default',
           url: '#/examples/areachart',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageOne').AreaChartOne,
+          key: 'AreaChartTwo',
+          name: 'Area Chart Perf Data One',
+          url: '#/examples/areachartOne',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageTwo').AreaChartTwo,
+          key: 'AreaChartTwo',
+          name: 'Area Chart Perf Data Two',
+          url: '#/examples/areachartTwo',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageThree').AreaChartThree,
+          key: 'AreaChartTwo',
+          name: 'Area Chart Perf Data Three',
+          url: '#/examples/areachartThree',
         },
         {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
