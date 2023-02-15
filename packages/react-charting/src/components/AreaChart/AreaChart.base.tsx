@@ -56,7 +56,8 @@ export interface IDPointType {
 }
 
 export interface IMapXToDataSet {
-  [key: number | string]: ILineChartDataPoint[];
+  [key: string]: ILineChartDataPoint[];
+  [key: number]: ILineChartDataPoint[];
 }
 
 export interface IAreaChartState extends IBasestate {

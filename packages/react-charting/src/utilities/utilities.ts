@@ -369,7 +369,15 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   });
 
   const xValToDataPoints: {
-    [key: number | string]: {
+    [key: number]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+    [key: string]: {
       legend: string;
       y: number;
       color: string;
