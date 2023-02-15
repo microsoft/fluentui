@@ -12,8 +12,6 @@ The Slider component allows users to quickly select a value by dragging an icon 
 
 ### Inputs
 
-- [List all inputs into the component]
-- [e.g. @attr public paused: boolean | false]
 - @attr size: "small" "medium" | "medium"
 - @attr vertical: boolean | false
 - @attr value: number
@@ -21,7 +19,6 @@ The Slider component allows users to quickly select a value by dragging an icon 
 - @attr max: number
 - @attr step: number | 1
   - If set, slider appearance has ticks for each step value
-- @attr default-value: number
 - @attr disabled: boolean | false
 - @attr mode: "single-value" "range" | "single-value"
 
@@ -80,12 +77,13 @@ None
 
 - [x] [Find the base FAST Component](https://explore.fast.design/components/) this component will inherit from and document
   - [FAST Slider Component](https://explore.fast.design/components/fast-slider)
-- [ ] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
+- [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
   - [Fluent Slider Spec](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-slider/docs/Spec.md)
   - no `defaultValue` attribute, instead only `value` that specifies the initial selected range of the slider
   - `rail` is in Fluent React; `track` is in FAST Foundation
   - Current implementation in Fluent React 9 does not have `range`, but Fast Foundation Slider and Figma design spec has it
-  - No value indicators to the left/right of slider in FAST. These should be present in Fluent version. This might mean appending elements to the template, or modifying the starting template.
+  - No value indicators to the left/right of slider in FAST Slider. These should be present in Fluent version. This will be handled through the SliderLabel component.
+  - No default support for the ticks on the slider when `step` is set. This will be handled through the SliderLabel component.
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
   - [Fluent React V9 Slider](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-slider--default)
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
@@ -101,7 +99,6 @@ None
 - [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
   - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
   - [ ] README.md covering basic usage
-- [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/web-components/unstable`
 - [ ] Uses design tokens for styling
 - [ ] Renders correctly in High Contrast mode
 
