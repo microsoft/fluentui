@@ -1,3 +1,5 @@
+<details>
+<summary>
 ## Best practices
 
 ### Do
@@ -13,3 +15,5 @@
 - Use only a single word description
 - Show text to the right or left of the bar
 - 'Rewind' progress to show new steps
+</summary>
+</details>
