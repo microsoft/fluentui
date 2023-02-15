@@ -14,6 +14,7 @@ import { FASTProgressRing } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
+import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
@@ -1248,7 +1249,7 @@ export const ProgressBarValidationState: {
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
 // @public
-export const setTheme: (theme: any) => void;
+export const setTheme: (theme: Theme) => void;
 
 // @public (undocumented)
 export const shadow16: CSSDesignToken<string>;
