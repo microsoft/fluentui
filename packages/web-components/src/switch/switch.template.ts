@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html } from '@microsoft/fast-element';
+import { ElementViewTemplate } from '@microsoft/fast-element';
 import { switchTemplate } from '@microsoft/fast-foundation';
 import { Switch } from './switch.js';
 
