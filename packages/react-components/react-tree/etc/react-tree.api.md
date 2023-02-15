@@ -20,6 +20,22 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[];
+
+// @public
+export const flattenTreeFromElements_unstable: (tree: React_2.ReactElement<TreeProps>) => FlatTreeItem[];
+
+// @public (undocumented)
+export type FlatTreeItem = Required<Pick<TreeItemProps, 'leaf' | 'aria-level' | 'aria-setsize' | 'aria-posinset'>> & TreeItemProps & {
+    parentId?: string;
+};
+
+// @public (undocumented)
+export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
+    subtree?: NestedTreeItem[];
+};
+
 // @public (undocumented)
 export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
 
@@ -99,12 +115,14 @@ export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlo
 };
 
 // @public
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
+    leaf?: boolean;
+};
 
 // @public (undocumented)
 export type TreeItemSlots = {
     root: Slot<'div'>;
-    content: NonNullable<Slot<'span'>>;
+    content: NonNullable<Slot<'div'>>;
     subtree?: Slot<'span'>;
     expandIcon?: Slot<'span'>;
     actions?: Slot<'span'>;
@@ -114,6 +132,7 @@ export type TreeItemSlots = {
 export type TreeItemState = ComponentState<TreeItemSlots> & {
     open: boolean;
     isLeaf: boolean;
+    level: number;
     buttonSize: 'small';
     isActionsVisible: boolean;
 };
@@ -137,6 +156,9 @@ export type TreeSlots = {
 
 // @public
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
+
+// @public (undocumented)
+export function useFlatTreeItems_unstable(items: FlatTreeItem[]): readonly [Pick<TreeProps, 'openItems' | 'onOpenChange'>, () => FlatTreeItem[]];
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;

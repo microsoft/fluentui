@@ -63,9 +63,15 @@ function flattenTreeFromElementsRecursive_unstable(
   return flatTreeItems;
 }
 
+/**
+ * Converts a nested structure to a flat one which can be consumed by `useFlatTreeItems`
+ */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[] = flattenTreeRecursive_unstable;
 
+/**
+ * Converts a nested structure in the form of JSX elements to a flat one which can be consumed by `useFlatTreeItems`
+ */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const flattenTreeFromElements_unstable: (
   tree: React.ReactElement<TreeProps>,
