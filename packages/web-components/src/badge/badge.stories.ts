@@ -1,6 +1,6 @@
 import { html, when } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../__test__/helpers.js';
+import { renderComponent } from '../helpers.js';
 import type { Badge as FluentBadge } from './badge.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 import './define.js';
