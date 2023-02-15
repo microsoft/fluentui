@@ -1,10 +1,13 @@
+/* eslint-disable no-undef */
 /**
  * Utility for cleaning directories.
  * Usage: node build/clean.js %path%
  */
-const path = require('path');
-const rimraf = require('rimraf');
-const argv = require('yargs').argv;
+import * as path from 'path';
+import rimraf from 'rimraf';
+import yargs from 'yargs';
+
+const argv = yargs.argv;
 
 /**
  * All paths passed to the clean script
