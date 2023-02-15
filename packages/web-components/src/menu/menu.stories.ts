@@ -21,6 +21,7 @@ const Cut20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
+
 const ClipboardPaste20Filled = html`<svg
   fill="currentColor"
   aria-hidden="true"
@@ -34,6 +35,7 @@ const ClipboardPaste20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
+
 const Edit20Filled = html`<svg
   fill="currentColor"
   aria-hidden="true"
@@ -47,32 +49,22 @@ const Edit20Filled = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
-const FormNew20Filled = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M3 5.5A2.5 2.5 0 015.5 3h9A2.5 2.5 0 0117 5.5v4.1c-.75-.38-1.6-.6-2.5-.6h-5a.5.5 0 000 1h1.84a5.5 5.5 0 00-1.74 7H5.5A2.5 2.5 0 013 14.5v-9zM6.5 9a.5.5 0 100 1 .5.5 0 000-1zM5 9.5a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0zM6.5 13a.5.5 0 100 1 .5.5 0 000-1zm-1.5.5a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0zM5.5 5a.5.5 0 000 1h9a.5.5 0 000-1h-9zM19 14.5a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm-4-2a.5.5 0 00-1 0V14h-1.5a.5.5 0 000 1H14v1.5a.5.5 0 001 0V15h1.5a.5.5 0 000-1H15v-1.5z"
+
+const Folder24Filled = html`
+  <svg
     fill="currentColor"
-  ></path>
-</svg>`;
-const TabDesktopNewPage20Filled = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M3 5.5A2.5 2.5 0 015.5 3H8v2.5C8 6.33 8.67 7 9.5 7H17v7.5a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9zM8 11a1 1 0 10-2 0 1 1 0 002 0zm2 1a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 10-2 0 1 1 0 002 0zm3-5v-.5A2.5 2.5 0 0014.5 3H9v2.5c0 .28.22.5.5.5H17z"
-    fill="currentColor"
-  ></path>
-</svg>`;
+    aria-hidden="true"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13.82 6.5h5.93c1.14 0 2.08.84 2.23 1.94l.01.16.01.15v9c0 1.2-.93 2.17-2.1 2.24l-.15.01H4.25c-1.2 0-2.17-.93-2.24-2.1L2 17.75V10.5h6.4c.4-.04.77-.18 1.1-.4l.15-.12 4.17-3.48zM8.21 4c.46 0 .9.14 1.28.4l.16.12 2.1 1.75-3.06 2.56-.09.06a.75.75 0 01-.29.1l-.1.01H2V6.25c0-1.2.93-2.17 2.1-2.24L4.25 4h3.96z"
+      fill="currentColor"
+    ></path>
+  </svg>
+`;
 const Code20Filled = html`<svg
   fill="currentColor"
   aria-hidden="true"
@@ -95,22 +87,20 @@ const storyTemplate = html<MenuStoryArgs>`
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item disabled=${x => x.disabled}>
-        <span slot="start">${ClipboardPaste20Filled}</span>
+        <span slot="start">${Edit20Filled}</span>
         Edit
       </fluent-menu-item>
       <fluent-menu-item class="header">Submenu Group Header</fluent-menu-item>
       <fluent-menu-item disabled=${x => x.disabled}>
         New
-        <span slot="start">${FormNew20Filled}</span>
         <span slot="end">Ctrl+N</span>
       </fluent-menu-item>
       <fluent-menu-item disabled=${x => x.disabled}>
         Open
-        <span slot="start">${FormNew20Filled}</span>
         <fluent-menu slot="submenu">
           <fluent-menu-item>
             File
-            <span slot="start">${TabDesktopNewPage20Filled}</span>
+            <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
           <fluent-menu-item>
             Workspace
@@ -211,18 +201,30 @@ export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
       <fluent-menu-item>
         New
         <fluent-menu slot="submenu">
-          <fluent-menu-item> Submenu item 1 </fluent-menu-item>
-          <fluent-menu-item> Submenu item 2 </fluent-menu-item>
+          <fluent-menu-item>
+            File
+            <span slot="start">${Folder24Filled}</span>
+          </fluent-menu-item>
+          <fluent-menu-item>
+            Workspace
+            <span slot="start">${Code20Filled}</span>
+          </fluent-menu-item>
         </fluent-menu>
       </fluent-menu-item>
       <fluent-menu-item>
-        New Window
+        Open
         <fluent-menu slot="submenu">
-          <fluent-menu-item>Submenu item 1</fluent-menu-item>
-          <fluent-menu-item>Submenu item 2</fluent-menu-item>
+          <fluent-menu-item>
+            Folder
+            <span slot="start">${Folder24Filled}</span>
+          </fluent-menu-item>
+          <fluent-menu-item>
+            Workspace
+            <span slot="start">${Code20Filled}</span>
+          </fluent-menu-item>
         </fluent-menu>
       </fluent-menu-item>
-      <fluent-menu-item> Open Folder </fluent-menu-item>
+      <fluent-menu-item> Help</fluent-menu-item>
     </fluent-menu>
   </div>
 `);
