@@ -1,6 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  borderRadiusCircular,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
@@ -27,6 +28,7 @@ import {
   lineHeightBase300,
   spacingHorizontalS,
   spacingHorizontalXS,
+  spacingHorizontalXXS,
   spacingVerticalS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
@@ -71,13 +73,15 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
   .switch {
-    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 ${spacingHorizontalXXS};
     box-sizing: border-box;
     width: 40px;
     height: 20px;
     background-color: ${colorTransparentBackground};
     border: 1px solid ${colorNeutralStrokeAccessible};
-    border-radius: 10px;
+    border-radius: ${borderRadiusCircular};
     outline: none;
     cursor: pointer;
     margin: ${spacingVerticalS} ${spacingHorizontalS};
@@ -96,11 +100,8 @@ export const styles = css`
     pointer: default;
   }
   .checked-indicator {
-    position: absolute;
     height: 14px;
     width: 14px;
-    left: 3px;
-    top: 2px;
     border-radius: 50%;
     background-color: ${colorNeutralForeground3};
     transition-duration: ${durationNormal};
@@ -109,7 +110,7 @@ export const styles = css`
   }
   :host([aria-checked='true']) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
-    transform: translateX(19px);
+    transform: translateX(20px);
   }
   :host([aria-checked='true']) .switch:hover .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};
