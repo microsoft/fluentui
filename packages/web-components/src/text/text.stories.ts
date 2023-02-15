@@ -1,6 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.js';
+import { renderComponent } from '../helpers.stories.js';
 import type { Text as FluentText } from './text.js';
 import './define.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
