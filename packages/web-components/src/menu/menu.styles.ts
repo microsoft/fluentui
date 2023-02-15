@@ -24,7 +24,6 @@ export const styles = css`
     border: 1px solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
     box-shadow: ${shadow16};
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px 0;
   }
 `;
