@@ -105,8 +105,7 @@ export const styles = css`
     height: 14px;
     width: 14px;
     left: 3px;
-    top: 50%;
-    margin-top: -7px;
+    top: 2px;
     border-radius: 50%;
     background-color: ${colorNeutralForeground3};
   }
