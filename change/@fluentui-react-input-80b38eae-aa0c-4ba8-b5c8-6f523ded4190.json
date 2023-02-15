@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Clean up Input's interactive styles",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
