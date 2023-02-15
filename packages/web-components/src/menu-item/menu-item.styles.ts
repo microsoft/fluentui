@@ -30,7 +30,6 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    display: flex;
     align-items: center;
     row-gap: 4px;
     column-gap: 4px;
@@ -42,31 +41,23 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
     border-radius: ${borderRadiusMedium};
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px;
     cursor: pointer;
   }
-  :host .content {
+  .content {
     flex-grow: 1;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
   }
-
   :host(.header) {
     background: ${colorNeutralBackground1};
     pointer-events: none;
     padding: 0 8px;
   }
-
   :host(.header) .content {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightSemibold};
     line-height: ${lineHeightBase200};
   }
-
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
