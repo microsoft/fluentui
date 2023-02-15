@@ -1,6 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.js';
+import { renderComponent } from '../helpers.stories.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 import './define.js';
 

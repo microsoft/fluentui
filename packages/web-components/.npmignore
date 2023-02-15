@@ -1,34 +1,41 @@
+.vscode/
+
 # Tests
 *.spec.*
 *.test.*
 coverage/
+__fixtures__
+__mocks__
+__tests__
 
 # images
 images/
 
 # Source files
 src/
-
 scripts/
 
 # config files
 .eslintignore
 .eslintrc.js
+.eslintrc.json
 .prettierignore
-.storybook
 tsconfig.json
-tsconfig.lib.json
-tsconfig.spec.json
-tsconfig.build.json
+tsconfig.*.json
 rollup.config.json
+rollup.config.js
 karma.conf.cjs
 api-extractor.json
 .mocharc.json
 
-# Storybook static site
-dist/storybook-static/
+# Storybook
+.storybook
+*.stories.*
 public/
+dist/storybook-static/
 
 # cache
 .rollupcache
-temp
+temp/
+etc/
+CHANGELOG.json
