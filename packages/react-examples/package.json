@@ -20,6 +20,8 @@
     "@fluentui/storybook": "^1.0.0",
     "@types/d3-format": "^1.3.1",
     "@types/d3-fetch": "^3.0.1",
+    "@types/d3-scale": "^4.0.0",
+    "@types/d3-scale-chromatic": "3.0.0",
     "@fluentui/scripts-webpack": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
@@ -49,6 +51,8 @@
     "@microsoft/load-themed-styles": "^1.10.26",
     "d3-fetch": "3.0.1",
     "d3-format": "^1.4.4",
+    "d3-scale": "^4.0.0",
+    "d3-scale-chromatic": "3.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"
