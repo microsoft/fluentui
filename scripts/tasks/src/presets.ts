@@ -1,25 +1,24 @@
-import { task, series, parallel, condition, option, addResolvePath } from 'just-scripts';
-
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 
 import { isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
+import { apiExtractor } from './api-extractor';
+import { getJustArgv } from './argv';
 import { babel } from './babel';
 import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
-import { jest as jestTask, jestWatch } from './jest';
-import { sass } from './sass';
-import { ts } from './ts';
 import { eslint } from './eslint';
-import { webpack, webpackDevServer } from './webpack';
-import { apiExtractor } from './api-extractor';
+import { jest as jestTask, jestWatch } from './jest';
 import { lintImports } from './lint-imports';
-import { prettier } from './prettier';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
-import { startStorybookTask, buildStorybookTask } from './storybook';
-import { getJustArgv } from './argv';
+import { prettier } from './prettier';
+import { sass } from './sass';
+import { buildStorybookTask, startStorybookTask } from './storybook';
+import { ts } from './ts';
+import { webpack, webpackDevServer } from './webpack';
 
 /** Do only the bare minimum setup of options and resolve paths */
 export function basicPreset() {
@@ -102,13 +101,7 @@ export function preset() {
     condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))),
   );
 
-  task(
-    'lint',
-    parallel(
-      condition('lint-imports', () => !isConvergedPackage()),
-      'eslint',
-    ),
-  );
+  task('lint', 'eslint');
 
   task('code-style', series('prettier', 'lint'));
 
@@ -117,7 +110,17 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
+  task(
+    'build',
+    series(
+      'clean',
+      'copy',
+      'sass',
+      'ts',
+      'api-extractor',
+      condition('lint-imports', () => !isConvergedPackage()),
+    ),
+  ).cached!();
 
   task(
     'bundle',

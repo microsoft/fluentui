@@ -1,9 +1,10 @@
-import { getAllPackageInfo, findGitRoot } from '@fluentui/scripts-monorepo';
-import { readConfig } from '@fluentui/scripts-utils';
-import * as glob from 'glob';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+
+import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
+import { readConfig } from '@fluentui/scripts-utils';
 import chalk from 'chalk';
+import * as glob from 'glob';
 
 interface ImportErrorGroup {
   count: number;
@@ -60,7 +61,10 @@ export function lintImports() {
   const currentPackageJson = readConfig('package.json');
   const currentMonorepoPackage = currentPackageJson.name;
 
-  return lintSource();
+  return lintSource().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
   function lintSource() {
     const files = glob.sync(path.join(sourcePath, '**/*.{ts,tsx}'));
