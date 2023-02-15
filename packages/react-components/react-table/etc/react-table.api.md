@@ -130,7 +130,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
     columnSizingOptions?: TableColumnSizingOptions;
-    onColumnResize?: (event: MouseEvent | undefined, data: {
+    onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: {
         columnId: TableColumnId;
         width: number;
     }) => void;
