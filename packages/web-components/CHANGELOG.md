@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 25 Jan 2023 17:42:30 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 04:24:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.3)
+
+Wed, 15 Feb 2023 04:24:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.2..@fluentui/web-components_v3.0.0-alpha.3)
+
+### Changes
+
+- Adds Spinner as a web component ([PR #26392](https://github.com/microsoft/fluentui/pull/26392) by ryan@ryanmerrill.net)
+- update fast element and foundation versions ([PR #26844](https://github.com/microsoft/fluentui/pull/26844) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.2)
 
