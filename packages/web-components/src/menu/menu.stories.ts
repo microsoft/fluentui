@@ -82,20 +82,20 @@ const Code20Filled = html`<svg
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
     <fluent-menu>
-      <fluent-menu-item disabled=${x => x.disabled}>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item disabled=${x => x.disabled}>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
         <span slot="start">${Edit20Filled}</span>
         Edit
       </fluent-menu-item>
       <fluent-menu-item class="header">Submenu Group Header</fluent-menu-item>
-      <fluent-menu-item disabled=${x => x.disabled}>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
         New
         <span slot="end">Ctrl+N</span>
       </fluent-menu-item>
-      <fluent-menu-item disabled=${x => x.disabled}>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
         Open
         <fluent-menu slot="submenu">
           <fluent-menu-item>
@@ -109,28 +109,28 @@ const storyTemplate = html<MenuStoryArgs>`
         </fluent-menu>
       </fluent-menu-item>
       <fluent-menu-item class="header">Checkbox Group Header</fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
         Edit
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
         Paste
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item class="header">Radio Group Header</fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
         Edit
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" disabled=${x => x.disabled}>
+      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
         Paste
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
