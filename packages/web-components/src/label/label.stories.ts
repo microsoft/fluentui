@@ -8,7 +8,13 @@ type LabelStoryArgs = Args & FluentLabel;
 type LabelStoryMeta = Meta<LabelStoryArgs>;
 
 const storyTemplate = html<LabelStoryArgs>`
-  <fluent-label weight="${x => x.weight}" size="${x => x.size}" ?required="${x => x.required}" for="abc" form="def"
+  <fluent-label
+    for="abc"
+    form="def"
+    weight="${x => x.weight}"
+    size="${x => x.size}"
+    ?required="${x => x.required}"
+    ?disabled="${x => x.disabled}"
     >Label</fluent-label
   >
 `;
@@ -22,19 +28,46 @@ export default {
   },
   argTypes: {
     required: {
-      control: 'boolean',
+      description: 'Sets required field styling',
+      table: {
+        defaultValue: { summary: false },
+      },
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
+    disabled: {
+      description: 'Sets disabled styling',
+      table: {
+        defaultValue: { summary: false },
+      },
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
     },
     size: {
-      options: ['small', 'medium', 'large'],
+      description: 'Sets label font size',
+      table: {
+        defaultValue: { summary: 'medium' },
+      },
       control: {
         type: 'select',
+        options: ['small', 'medium', 'large'],
       },
+      defaultValue: 'medium',
     },
     weight: {
-      options: ['regular', 'semibold'],
+      description: 'Sets label font weight',
+      table: {
+        defaultValue: { summary: 'regular' },
+      },
       control: {
         type: 'select',
+        options: ['regular', 'semibold'],
       },
+      defaultValue: 'regular',
     },
   },
 } as LabelStoryMeta;
