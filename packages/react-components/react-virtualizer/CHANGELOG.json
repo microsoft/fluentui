@@ -2,6 +2,21 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 16:18:01 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4af9156bc869948b12610689f15b2a778aa690ca",
+            "comment": "fix: Updating peer dependencies to support React 18."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",

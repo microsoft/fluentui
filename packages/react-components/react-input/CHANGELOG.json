@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 16:18:01 GMT",
+      "tag": "@fluentui/react-input_v9.3.5",
+      "version": "9.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "2a39824231365b95ba70991285301a6b83b4f107",
+            "comment": "chore: Update Input to use makeResetStyles and reduce the number of classes applied"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-input_v9.3.4",
       "version": "9.3.4",
