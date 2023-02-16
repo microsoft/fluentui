@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AnnouncedBase } from './Announced.base';
 import type { IStyle } from '../../Styling';
-import type { IStyleFunctionOrObject, IReactProps } from '../../Utilities';
+import type { IReactProps, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Announced}
