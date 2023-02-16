@@ -1,6 +1,7 @@
 <details>
 <summary>
 ## Best practices
+</summary>
 
 ### Do
 
