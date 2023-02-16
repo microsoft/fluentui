@@ -7,7 +7,7 @@ import { AccordionItemExpandIconPosition, AccordionItemSize } from './accordion-
  */
 export class AccordionItem extends FASTAccordionItem {
   /**
-   * Defines accordion header size.
+   * Defines accordion header font size.
    *
    * @public
    * @default 'medium'
