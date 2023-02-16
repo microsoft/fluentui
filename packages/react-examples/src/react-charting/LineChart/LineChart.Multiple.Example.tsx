@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  IModifiedChartProps,
+  IModifiedLineChartPoints,
+  ILineChartProps,
+  LineChart,
+  QualitativePalette,
+} from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface ILineChartMultipleExampleState {
@@ -65,7 +70,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
   };
 
   private _styledExample(): JSX.Element {
-    const points: ILineChartPoints[] = [
+    const points: IModifiedLineChartPoints[] = [
       {
         data: [
           { x: new Date('2018/01/01'), y: 10, xAxisCalloutData: '2018/01/01', yAxisCalloutData: '10%' },
@@ -76,7 +81,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 30, xAxisCalloutData: '2018/03/15', yAxisCalloutData: '30%' },
         ],
         legend: 'First',
-        color: DefaultPalette.blue,
+        color: QualitativePalette.dataVizSlot20,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -92,7 +97,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 50 },
         ],
         legend: 'Second',
-        color: DefaultPalette.green,
+        color: QualitativePalette.dataVizSlot19,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -108,7 +113,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 70 },
         ],
         legend: 'Third',
-        color: DefaultPalette.red,
+        color: QualitativePalette.dataVizSlot18,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -124,7 +129,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 90 },
         ],
         legend: 'Fourth',
-        color: DefaultPalette.black,
+        color: QualitativePalette.dataVizSlot17,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -140,7 +145,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 110 },
         ],
         legend: 'Fifth',
-        color: DefaultPalette.magentaDark,
+        color: QualitativePalette.dataVizSlot16,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -156,7 +161,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 130 },
         ],
         legend: 'Sixth',
-        color: DefaultPalette.purple,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -172,7 +176,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 150 },
         ],
         legend: 'Seventh',
-        color: DefaultPalette.yellow,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -188,7 +191,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 170 },
         ],
         legend: 'Eight',
-        color: DefaultPalette.teal,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -204,7 +206,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 190 },
         ],
         legend: 'Ninth',
-        color: 'cyan',
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -220,7 +221,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 210 },
         ],
         legend: 'Tenth',
-        color: DefaultPalette.orangeLighter,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -236,7 +236,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 230 },
         ],
         legend: 'Eleventh',
-        color: 'magenta',
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -252,7 +251,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 250 },
         ],
         legend: 'Tweleth',
-        color: DefaultPalette.redDark,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -260,7 +258,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
     ];
 
-    const data: IChartProps = {
+    const data: IModifiedChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
