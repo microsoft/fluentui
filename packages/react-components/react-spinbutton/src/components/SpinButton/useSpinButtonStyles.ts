@@ -1,6 +1,5 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { GriffelResetStyle } from '@griffel/react';
 import type { SpinButtonSlots, SpinButtonState } from './SpinButton.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
@@ -15,7 +14,6 @@ const spinButtonExtraClassNames = {
   buttonActive: 'fui-SpinButton__button_active',
 };
 
-// TODO(sharing) should these be shared somewhere?
 const fieldHeights = {
   small: '24px',
   medium: '32px',
@@ -36,8 +34,7 @@ const useRootClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusMedium,
 
   // Apply border styles on the ::before pseudo element.
-  // We cannot use ::after since react-input uses that
-  // for the selector styles.
+  // We cannot use ::after since that is used for selection.
   // Using the pseudo element allows us to place the border
   // above content in the component which ensures the buttons
   // line up visually with the border as expected. Without this
@@ -114,21 +111,7 @@ const useRootClassName = makeResetStyles({
     borderBottomColor: tokens.colorCompoundBrandStrokePressed,
   },
   ':focus-within': {
-    outlineWidth: '2px',
-    outlineStyle: 'solid',
-    outlineColor: 'transparent',
-  },
-
-  ':hover::before': {
-    borderColor: tokens.colorNeutralStroke1Hover,
-    borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-  },
-  // DO NOT add a space between the selectors! It changes the behavior of make-styles.
-  ':active,:focus-within': {
-    '::before': {
-      borderColor: tokens.colorNeutralStroke1Pressed,
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-    },
+    outline: '2px solid transparent',
   },
 });
 
@@ -148,22 +131,29 @@ const useRootStyles = makeStyles({
   },
 
   outlineInteractive: {
-    // set by useRootInteractiveClassName
+    ':hover::before': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+    },
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
+    ':active,:focus-within': {
+      '::before': {
+        ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+        borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      },
+    },
   },
 
   underline: {
     '::before': {
       ...shorthands.borderWidth(0, 0, '1px', 0),
       ...shorthands.borderRadius(0), // corners look strange if rounded
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
     },
   },
 
   underlineInteractive: {
-    ':hover': {
-      '::before': {
-        borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
+    ':hover::before': {
+      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
     },
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
     ':active,:focus-within': {
@@ -208,7 +198,7 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    ':focus-within::before,:hover::before,::before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
       '@media (forced-colors: active)': {
@@ -228,7 +218,10 @@ const useInputClassName = makeResetStyles({
   padding: '0',
   color: tokens.colorNeutralForeground1,
   backgroundColor: 'transparent',
-  ...typographyStyles.body1,
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontWeight: 'inherit',
+  lineHeight: 'inherit',
 
   '::placeholder': {
     color: tokens.colorNeutralForeground4,
@@ -237,9 +230,6 @@ const useInputClassName = makeResetStyles({
 });
 
 const useInputStyles = makeStyles({
-  small: {
-    ...typographyStyles.caption1,
-  },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
@@ -250,7 +240,7 @@ const useInputStyles = makeStyles({
   },
 });
 
-const buttonBaseStyles: GriffelResetStyle = {
+const useBaseButtonClassName = makeResetStyles({
   display: 'inline-flex',
   width: '24px',
   alignItems: 'center',
@@ -259,10 +249,16 @@ const buttonBaseStyles: GriffelResetStyle = {
   position: 'absolute',
 
   outlineStyle: 'none',
-  height: '100%',
+  height: '16px',
 
   backgroundColor: 'transparent',
   color: tokens.colorNeutralForeground3,
+
+  // common button layout
+  gridColumnStart: '2',
+  borderRadius: '0',
+  padding: '0 5px 0 5px',
+
   ':active': {
     outlineStyle: 'none',
   },
@@ -287,37 +283,21 @@ const buttonBaseStyles: GriffelResetStyle = {
     cursor: 'not-allowed',
     color: tokens.colorNeutralForegroundDisabled,
   },
-};
-
-const incrementButtonBaseStyles: GriffelResetStyle = {
-  gridColumnStart: '2',
-  gridColumnEnd: '3',
-  gridRowStart: '1',
-  gridRowEnd: '2',
-  borderRadius: `0 ${tokens.borderRadiusMedium} 0 0`,
-  padding: '4px 5px 1px 5px',
-};
-
-const decrementButtonBaseStyles: GriffelResetStyle = {
-  gridColumnStart: '2',
-  gridColumnEnd: '3',
-  gridRowStart: '2',
-  gridRowEnd: '3',
-  borderRadius: `0 0 ${tokens.borderRadiusMedium} 0`,
-  padding: '1px 5px 4px 5px',
-};
-
-const useIncrementButtonClassName = makeResetStyles({
-  ...buttonBaseStyles,
-  ...incrementButtonBaseStyles,
-});
-
-const useDecrementButtonClassName = makeResetStyles({
-  ...buttonBaseStyles,
-  ...decrementButtonBaseStyles,
 });
 
 const useButtonStyles = makeStyles({
+  increment: {
+    gridRowStart: '1',
+    borderTopRightRadius: tokens.borderRadiusMedium,
+    paddingTop: '4px',
+    paddingBottom: '1px',
+  },
+  decrement: {
+    gridRowStart: '2',
+    borderBottomRightRadius: tokens.borderRadiusMedium,
+    paddingTop: '1px',
+    paddingButtom: '4px',
+  },
   // Padding values numbers don't align with design specs
   // but visually the padding aligns.
   // The icons are set in a 16x16px square but the artwork is inset from that
@@ -326,10 +306,12 @@ const useButtonStyles = makeStyles({
   // rounded to the nearest integer.
   incrementButtonSmall: {
     ...shorthands.padding('3px', '6px', '0px', '4px'),
+    height: '12px',
   },
 
   decrementButtonSmall: {
     ...shorthands.padding('0px', '6px', '3px', '4px'),
+    height: '12px',
   },
 
   outline: {
@@ -495,7 +477,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   const rootStyles = useRootStyles();
   const buttonStyles = useButtonStyles();
   const buttonDisabledStyles = useButtonDisabledStyles();
-  const inputClassName = useInputClassName();
   const inputStyles = useInputStyles();
 
   state.root.className = mergeClasses(
@@ -515,7 +496,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   state.incrementButton.className = mergeClasses(
     spinButtonClassNames.incrementButton,
     spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
-    useIncrementButtonClassName(),
+    useBaseButtonClassName(),
+    buttonStyles.increment,
     buttonStyles[appearance],
     size === 'small' && buttonStyles.incrementButtonSmall,
     (atBound === 'max' || atBound === 'both') && buttonDisabledStyles.base,
@@ -525,7 +507,8 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   state.decrementButton.className = mergeClasses(
     spinButtonClassNames.decrementButton,
     spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
-    useDecrementButtonClassName(),
+    useBaseButtonClassName(),
+    buttonStyles.decrement,
     buttonStyles[appearance],
     size === 'small' && buttonStyles.decrementButtonSmall,
     (atBound === 'min' || atBound === 'both') && buttonDisabledStyles.base,
@@ -535,8 +518,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
 
   state.input.className = mergeClasses(
     spinButtonClassNames.input,
-    inputClassName,
-    size === 'small' && inputStyles.small,
+    useInputClassName(),
     disabled && inputStyles.disabled,
     state.input.className,
   );
