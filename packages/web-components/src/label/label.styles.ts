@@ -16,6 +16,12 @@ import {
  * @public
  */
 export const styles = css`
+  :host[size='small'] label {
+    font-size: ${fontSizeBase300};
+  }
+  :host[size='large'] label {
+    font-size: ${fontSizeBase300};
+  }
   .label {
     display: flex;
     font-family: ${fontFamilyBase};
@@ -31,11 +37,5 @@ export const styles = css`
     line-height: ${lineHeightBase300};
     color: ${colorPaletteRedForeground1};
     margin-left: ${spacingHorizontalXS};
-  }
-  ::slotted(span[slot='info-icon']) {
-    display: inline-flex;
-    align-items: flex-start;
-    color: ${colorNeutralForeground3};
-    margin-left: ${spacingHorizontalXXS};
   }
 `;

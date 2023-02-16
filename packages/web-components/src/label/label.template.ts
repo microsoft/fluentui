@@ -6,11 +6,14 @@ import { Label } from './label.js';
  * @public
  */
 export const template = html`
-  <template required="${(attr: Label) => attr.required}">
+  <template
+    required="${(attr: Label) => attr.required}"
+    size="${(attr: Label) => attr.size}"
+    weight="${(attr: Label) => attr.weight}"
+  >
     <label class="label" part="label" for="${(attr: Label) => attr.for}" form="${(attr: Label) => attr.form}">
       <slot></slot>
       ${(attr: Label) => (attr.required ? html`<span part="asterisk" class="asterisk">*</span>` : null)}
-      <slot name="icon"></slot>
     </label>
   </template>
 `;

@@ -61,10 +61,9 @@ Creating a simple label element with an optional info icon and optional required
 
 ### **Slots**
 
-| Name   | Description                            |
-| ------ | -------------------------------------- |
-|        | Default slotted content for label text |
-| `icon` | The slot used for a info icon          |
+| Name | Description                            |
+| ---- | -------------------------------------- |
+|      | Default slotted content for label text |
 
 <br />
 <hr />
