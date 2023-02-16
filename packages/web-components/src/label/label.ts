@@ -1,4 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
+import { LabelSize, LabelWeight } from './label.options.js';
 // import { LabelSize, LabelWeight } from "./label.options.js";
 /**
  * The base class used for constructing a fluent-label custom element
@@ -35,25 +36,25 @@ export class Label extends FASTElement {
   @attr({ mode: 'boolean' })
   public required: boolean = false;
 
-  // /**
-  //  * 	Specifies font size of a label
-  //  *
-  //  * @public
-  //  * @default 'medium'
-  //  * @remarks
-  //  * HTML Attribute: size
-  //  */
-  // @attr({attribute: 'size'})
-  // public size: LabelSize = LabelSize.medium;
+  /**
+   * 	Specifies font size of a label
+   *
+   * @public
+   * @default 'medium'
+   * @remarks
+   * HTML Attribute: size
+   */
+  @attr({ attribute: 'size' })
+  public size: LabelSize = LabelSize.medium;
 
-  // /**
-  //  * 	Specifies font weight of a label
-  //  *
-  //  * @public
-  //  * @default 'regular'
-  //  * @remarks
-  //  * HTML Attribute: weight
-  //  */
-  //   @attr({attribute: 'weight'})
-  //   public weight: LabelWeight = LabelWeight.regular;
+  /**
+   * 	Specifies font weight of a label
+   *
+   * @public
+   * @default 'regular'
+   * @remarks
+   * HTML Attribute: weight
+   */
+  @attr({ attribute: 'weight' })
+  public weight: LabelWeight = LabelWeight.regular;
 }
