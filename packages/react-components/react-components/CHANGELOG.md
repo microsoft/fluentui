@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 15 Feb 2023 11:44:51 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2023 19:18:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.5)
+
+Thu, 16 Feb 2023 19:18:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.4..@fluentui/react-components_v9.15.5)
+
+### Patches
+
+- `@fluentui/react-components`
+  - Fixing Build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-input`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-data-grid-react-window`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+## [9.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.4)
+
+Thu, 16 Feb 2023 16:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.3..@fluentui/react-components_v9.15.4)
+
+### Patches
+
+- `@fluentui/react-input`
+  - chore: Update Input to use makeResetStyles and reduce the number of classes applied ([PR #26815](https://github.com/microsoft/fluentui/pull/26815) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Updating peer dependencies to support React 18. ([PR #26866](https://github.com/microsoft/fluentui/pull/26866) by mgodbolt@microsoft.com)
 
 ## [9.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.3)
 
