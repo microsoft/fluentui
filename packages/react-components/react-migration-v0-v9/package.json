@@ -31,10 +31,10 @@
   },
   "dependencies": {
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.3",
+    "@fluentui/react-utilities": "^9.6.0",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.15.2",
+    "@fluentui/react-components": "^9.15.3",
     "@fluentui/react-northstar": "^0.66.1"
   },
   "peerDependencies": {
