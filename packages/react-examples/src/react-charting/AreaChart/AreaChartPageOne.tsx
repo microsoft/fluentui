@@ -19,7 +19,7 @@ import { AreaChartPerfOneExample } from './AreaChart.PerfAnalysisOne.Example';
 // const AreaChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
 const AreaChartPerfOneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisOne.Example.tsx') as string;
 
-export class AreaChartThree extends React.Component<IComponentDemoPageProps, {}> {
+export class AreaChartOne extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
