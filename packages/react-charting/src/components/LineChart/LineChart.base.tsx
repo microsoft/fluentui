@@ -20,6 +20,7 @@ import {
   ILineChartStyles,
   ILineChartGap,
   ILineChartDataPoint,
+  IModifiedLineChartPoints,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -33,6 +34,7 @@ import {
   pointTypes,
   getMinMaxOfYAxis,
   getTypeOfAxis,
+  QualitativePalette,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -49,6 +51,7 @@ const bisect = bisector((d: any) => d.x).left;
 const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
+const QUALITATIVE_COLORS = Object.values(QualitativePalette);
 
 /**
  *
@@ -310,13 +313,25 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   }
 
-  private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
+  private _injectIndexPropertyInLineChartData = (
+    lineChartData?: IModifiedLineChartPoints[],
+  ): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
-      ? lineChartData.map((item: ILineChartPoints, index: number) => ({
-          ...item,
-          index: allowMultipleShapesForPoints ? index : -1,
-        }))
+      ? lineChartData.map((item: IModifiedLineChartPoints, index: number) => {
+          let color: string;
+          if (typeof item.color === 'undefined') {
+            color = QUALITATIVE_COLORS[index % QUALITATIVE_COLORS.length];
+          } else {
+            color = item.color;
+          }
+
+          return {
+            ...item,
+            index: allowMultipleShapesForPoints ? index : -1,
+            color,
+          };
+        })
       : [];
   };
 

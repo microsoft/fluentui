@@ -16,11 +16,20 @@ import {
 } from '../CommonComponents/index';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+
+export type IModifiedLineChartPoints = Omit<ILineChartPoints, 'color'> & {
+  color?: string;
+};
+
+export type IModifiedChartProps = Omit<IChartProps, 'lineChartData'> & {
+  lineChartData?: IModifiedLineChartPoints[];
+};
+
 export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IChartProps;
+  data: IModifiedChartProps;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
