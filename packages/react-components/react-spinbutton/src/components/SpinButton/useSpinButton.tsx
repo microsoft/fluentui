@@ -6,7 +6,7 @@ import {
   useControllableState,
   useTimeout,
 } from '@fluentui/react-utilities';
-import * as Keys from '@fluentui/keyboard-keys';
+import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   SpinButtonProps,
   SpinButtonState,
@@ -16,6 +16,7 @@ import {
 } from './SpinButton.types';
 import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 type InternalState = {
   value: number | null;
@@ -51,6 +52,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'size', 'value'],
   });
 
+  const overrides = useOverrides();
+
   const {
     value,
     displayValue,
@@ -62,7 +65,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     precision: precisionFromProps,
     onChange,
     size = 'medium',
-    appearance = 'outline',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
     root,
     input,
     incrementButton,
@@ -140,7 +143,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!internalState.current.previousTextValue) {
-      internalState.current.previousTextValue = textValue;
+      internalState.current.previousTextValue = textValue ?? String(currentValue);
     }
     const newValue = e.target.value;
     setTextValue(newValue);
@@ -171,30 +174,30 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let nextKeyboardSpinState: SpinButtonSpinState = 'rest';
 
-    if (e.key === Keys.ArrowUp) {
+    if (e.key === ArrowUp) {
       stepValue(e, 'up', textValue);
       nextKeyboardSpinState = 'up';
-    } else if (e.key === Keys.ArrowDown) {
+    } else if (e.key === ArrowDown) {
       stepValue(e, 'down', textValue);
       nextKeyboardSpinState = 'down';
-    } else if (e.key === Keys.PageUp) {
+    } else if (e.key === PageUp) {
       e.preventDefault();
       stepValue(e, 'upPage', textValue);
       nextKeyboardSpinState = 'up';
-    } else if (e.key === Keys.PageDown) {
+    } else if (e.key === PageDown) {
       e.preventDefault();
       stepValue(e, 'downPage', textValue);
       nextKeyboardSpinState = 'down';
-    } else if (!e.shiftKey && e.key === Keys.Home && min !== undefined) {
+    } else if (!e.shiftKey && e.key === Home && min !== undefined) {
       commit(e, min);
       nextKeyboardSpinState = 'down';
-    } else if (!e.shiftKey && e.key === Keys.End && max !== undefined) {
+    } else if (!e.shiftKey && e.key === End && max !== undefined) {
       commit(e, max);
       nextKeyboardSpinState = 'up';
-    } else if (e.key === Keys.Enter) {
+    } else if (e.key === Enter) {
       commit(e, currentValue, textValue);
       internalState.current.previousTextValue = undefined;
-    } else if (e.key === Keys.Escape) {
+    } else if (e.key === Escape) {
       if (internalState.current.previousTextValue) {
         setTextValue(undefined);
         internalState.current.previousTextValue = undefined;

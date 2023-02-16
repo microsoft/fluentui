@@ -10,7 +10,8 @@ export type TableRowSlots = {
  */
 export type TableRowProps = ComponentProps<TableRowSlots> & {
   /**
-   * A table row can have different variants
+   * A table row can have different variants. These appearances are
+   * intended to be used with selection.
    * @default none
    */
   appearance?: 'brand' | 'neutral' | 'none';
@@ -21,4 +22,6 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {
  */
 export type TableRowState = ComponentState<TableRowSlots> &
   Pick<TableContextValue, 'noNativeElements' | 'size'> &
-  Pick<Required<TableRowProps>, 'appearance'>;
+  Pick<Required<TableRowProps>, 'appearance'> & {
+    isHeaderRow: boolean;
+  };

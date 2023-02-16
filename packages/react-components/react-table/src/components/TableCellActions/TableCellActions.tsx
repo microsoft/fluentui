@@ -6,7 +6,7 @@ import type { TableCellActionsProps } from './TableCellActions.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableCellActions component - TODO: add more docs
+ * TableCellActions component
  */
 export const TableCellActions: ForwardRefComponent<TableCellActionsProps> = React.forwardRef((props, ref) => {
   const state = useTableCellActions_unstable(props, ref);

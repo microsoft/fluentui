@@ -507,6 +507,10 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    context: IFocusRectsContext;
+    // (undocumented)
+    static contextType: React_2.Context<IFocusRectsContext | undefined>;
+    // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
     dismissMenu(): void;
@@ -2013,7 +2017,7 @@ export class GroupedListSection extends React_2.Component<IGroupedListSectionPro
 }
 
 // @public
-export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListProps>;
+export const GroupedListV2_unstable: React_2.FunctionComponent<IGroupedListV2Props>;
 
 // @public (undocumented)
 export const GroupFooter: React_2.FunctionComponent<IGroupFooterProps>;
@@ -3348,8 +3352,8 @@ export interface IChoiceGroupOption extends Omit<React_2.InputHTMLAttributes<HTM
     imageSrc?: string;
     key: string;
     labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
+    onRenderField?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -3364,9 +3368,9 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
     itemKey: string;
     key?: string;
     name?: string;
-    onBlur?: (ev?: React_2.FocusEvent<HTMLElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
-    onChange?: (evt?: React_2.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
-    onFocus?: (ev?: React_2.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void | undefined;
+    onBlur?: (ev?: React_2.FocusEvent<HTMLElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void;
+    onChange?: (evt?: React_2.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void;
+    onFocus?: (ev?: React_2.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption & IChoiceGroupOptionProps) => void | undefined;
     required?: boolean;
     theme?: ITheme;
 }
@@ -3901,6 +3905,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 // @public (undocumented)
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React_2.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
+    allowFreeInput?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
     autofill?: IAutofillProps;
@@ -4235,6 +4240,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutProps?: ICalloutProps;
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IContextualMenu>;
     contextualMenuItemAs?: React_2.ComponentClass<IContextualMenuItemProps> | React_2.FunctionComponent<IContextualMenuItemProps>;
     coverTarget?: boolean;
@@ -4953,8 +4959,8 @@ export interface IDetailsRowStyles {
     check: IStyle;
     // (undocumented)
     checkCell: IStyle;
-    // (undocumented)
-    checkCover: IStyle;
+    // @deprecated (undocumented)
+    checkCover?: IStyle;
     // (undocumented)
     fields: IStyle;
     // (undocumented)
@@ -5798,6 +5804,7 @@ export interface IFabricProps extends React_2.HTMLAttributes<HTMLDivElement>, Re
     // (undocumented)
     componentRef?: IRefObject<{}>;
     dir?: 'rtl' | 'ltr' | 'auto';
+    preventBlanketFontInheritance?: boolean;
     styles?: IStyleFunctionOrObject<IFabricStyleProps, IFabricStyles>;
     theme?: ITheme;
 }
@@ -6121,6 +6128,32 @@ export interface IGroupedListStyles {
     groupIsDropping: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IGroupedListV2Props extends IGroupedListProps {
+    groupExpandedVersion?: {};
+    listRef?: React_2.Ref<List>;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number, group?: IGroup) => React_2.ReactNode;
+    version?: {};
+}
+
+// @public (undocumented)
+export interface IGroupedListV2State {
+    // (undocumented)
+    compact?: IGroupedListV2Props['compact'];
+    // (undocumented)
+    groupExpandedVersion: {};
+    // (undocumented)
+    groups?: IGroup[];
+    // (undocumented)
+    items?: IGroupedListV2Props['items'];
+    // (undocumented)
+    listProps?: IGroupedListV2Props['listProps'];
+    // (undocumented)
+    selectionMode?: IGroupedListV2Props['selectionMode'];
+    // (undocumented)
+    version: {};
 }
 
 // @public (undocumented)
@@ -6593,6 +6626,7 @@ export interface ILayerProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
+    fabricProps?: IFabricProps;
     hostId?: string;
     insertFirst?: boolean;
     onLayerDidMount?: () => void;
@@ -6759,6 +6793,8 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
 export interface IListState<T = any> {
     // (undocumented)
     getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
+    // (undocumented)
+    hasMounted: boolean;
     // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
@@ -11010,7 +11046,7 @@ export class SuggestionsController<T> {
     // (undocumented)
     suggestions: ISuggestionModel<T>[];
     // (undocumented)
-    updateSuggestions(newSuggestions: T[], selectedIndex?: number): void;
+    updateSuggestions(newSuggestions: T[], selectedIndex?: number, maxCount?: number): void;
 }
 
 // @public

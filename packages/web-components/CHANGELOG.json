@@ -2,6 +2,42 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 15 Feb 2023 04:24:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.3",
+      "version": "3.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "4d959c01c7b282136e669b7c0ac0d038b9deeafe",
+            "comment": "Adds Spinner as a web component"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "09b44a73d3d225044af4e114d210176f7f38001a",
+            "comment": "update fast element and foundation versions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 04:21:38 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.2",
+      "version": "3.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5745de0ab6ab860f905c33d4430b857b8a72f27f",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Feb 2023 04:20:29 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.2",
       "version": "3.0.0-alpha.2",
@@ -115,6 +151,81 @@
             "package": "@fluentui/web-components",
             "commit": "be3d30fcbe222be34b02a554e948d14bb2d730df",
             "comment": "update clean file to .cjs and ensure rimraf is in dependency tree"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 07:35:32 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c5ad495ac5b9f4a10906f241b6b4ce54dbd9e7d1",
+            "comment": "feat: bump tslib to 2.1 to align with rest of monorepo packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:49 GMT",
+      "tag": "@fluentui/web-components_v2.5.11",
+      "version": "2.5.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "854d1159c9a57d496f6db1ab9f20885136d20cc6",
+            "comment": "chore: upgrade version of storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:14 GMT",
+      "tag": "@fluentui/web-components_v2.5.10",
+      "version": "2.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f",
+            "comment": "fix: layering zindex issue with sub menus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Jan 2023 07:59:57 GMT",
+      "tag": "@fluentui/web-components_v2.5.9",
+      "version": "2.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "abcy@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "b53326ef8367bbd954237bd039c5520188ed1071",
+            "comment": "Fix fluent-tooltip not showing anchor pointer when wc prefix is changed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Nov 2022 07:44:58 GMT",
+      "tag": "@fluentui/web-components_v2.5.8",
+      "version": "2.5.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d419dfa7124fb15ebae8a27b30bdad869964301b",
+            "comment": "chore(.storybook): disable telemetry"
           }
         ]
       }

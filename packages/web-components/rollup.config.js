@@ -4,7 +4,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
 import typescript from 'rollup-plugin-typescript2';
-import { transformCSSFragment, transformHTMLFragment } from './build/transform-fragments';
+import { transformCSSFragment, transformHTMLFragment } from './scripts/transform-fragments';
 
 // eslint-disable-next-line no-undef
 const tsBin = require.resolve('typescript');
@@ -33,6 +33,7 @@ export default [
       typescript({
         // eslint-disable-next-line no-undef
         typescript: require(tsBin),
+        tsconfig: './tsconfig.lib.json',
         tsconfigOverride: {
           compilerOptions: {
             declaration: false,

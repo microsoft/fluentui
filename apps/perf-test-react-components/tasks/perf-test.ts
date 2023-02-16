@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import flamegrill, { CookResults, Scenarios, ScenarioConfig, CookResult } from 'flamegrill';
-import scenarioIterations from '../src/scenarioIterations';
+import { scenarioIterations } from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
-import { argv } from '@fluentui/scripts';
+import { argv } from '@fluentui/scripts-tasks';
+
+type ScenarioSetting = Record<string, { scenarioName: string; iterations: number; renderType: string }>;
 
 // TODO: consolidate with newer version of fluent perf-test
 
@@ -145,13 +147,15 @@ export async function getPerfRegressions() {
   const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
   const scenarios: Scenarios = {};
-  const scenarioSettings = {};
+  const scenarioSettings: ScenarioSetting = {};
   scenarioList.forEach(scenarioName => {
     if (!scenariosAvailable.includes(scenarioName)) {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
-    const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
-    const renderTypes = scenarioRenderTypes[scenarioName] || DefaultRenderTypes;
+    const iterations =
+      iterationsArg || scenarioIterations[scenarioName as keyof typeof scenarioIterations] || iterationsDefault;
+    const renderTypes: string[] =
+      scenarioRenderTypes[scenarioName as keyof typeof scenarioRenderTypes] || DefaultRenderTypes;
 
     renderTypes.forEach(renderType => {
       const scenarioKey = `${scenarioName}-${renderType}`;
@@ -221,7 +225,7 @@ export async function getPerfRegressions() {
 /**
  * Create test summary based on test results.
  */
-function createReport(scenarioSettings, testResults: CookResults) {
+function createReport(scenarioSettings: ScenarioSetting, testResults: CookResults) {
   const report = '## [Perf Analysis (`@fluentui/react-components`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
@@ -239,13 +243,9 @@ function createReport(scenarioSettings, testResults: CookResults) {
  * Create a table of scenario results.
  * @param showAll Show only significant results by default.
  */
-function createScenarioTable(scenarioSettings, testResults: CookResults, showAll: boolean) {
+function createScenarioTable(scenarioSettings: ScenarioSetting, testResults: CookResults, showAll: boolean) {
   const resultsToDisplay = Object.keys(testResults).filter(
-    key =>
-      showAll ||
-      (testResults[key].analysis &&
-        testResults[key].analysis.regression &&
-        testResults[key].analysis.regression.isRegression),
+    key => showAll || testResults[key].analysis?.regression?.isRegression,
   );
 
   if (resultsToDisplay.length === 0) {

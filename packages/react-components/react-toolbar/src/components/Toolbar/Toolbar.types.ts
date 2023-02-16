@@ -23,7 +23,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
    *
    * @default medium
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * Toolbar can be vertical styled

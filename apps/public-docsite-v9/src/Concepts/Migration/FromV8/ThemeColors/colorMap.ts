@@ -193,6 +193,8 @@ export const alias = {
   colorNeutralBackgroundInvertedDisabled: 'whiteAlpha[10]',
   colorNeutralStencil1: 'grey[90]',
   colorNeutralStencil2: 'grey[98]',
+  colorNeutralStencil1Alpha: 'blackAlpha[10]',
+  colorNeutralStencil2Alpha: 'blackAlpha[5]',
   colorBrandBackground: 'brand[80]',
   colorBrandBackgroundHover: 'brand[70]',
   colorBrandBackgroundPressed: 'brand[40]',
