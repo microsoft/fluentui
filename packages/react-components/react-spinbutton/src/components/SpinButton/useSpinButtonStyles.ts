@@ -208,7 +208,7 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    '::focus-within::before,hover::before,::before': {
+    ':focus-within::before,:hover::before,::before': {
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
       '@media (forced-colors: active)': {
