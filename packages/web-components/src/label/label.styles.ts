@@ -13,7 +13,6 @@ import {
   lineHeightBase200,
   lineHeightBase300,
   lineHeightBase400,
-  spacingHorizontalXS,
 } from '../theme/design-tokens.js';
 
 /** Label styles
