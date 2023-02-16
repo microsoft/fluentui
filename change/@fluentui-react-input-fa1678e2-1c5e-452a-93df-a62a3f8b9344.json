@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing build issues",
-  "packageName": "@fluentui/react-input",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-data-grid-react-window",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 19:18:47 GMT",
+      "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-data-grid-react-window",
+            "comment": "Bump @fluentui/react-components to v9.15.5",
+            "commit": "ca757212da6f77eb0bfe18cf7bfcc8bbab2a5da5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Feb 2023 16:18:01 GMT",
       "tag": "@fluentui/react-data-grid-react-window_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",

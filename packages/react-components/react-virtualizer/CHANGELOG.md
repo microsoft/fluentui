@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Thu, 16 Feb 2023 16:18:01 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2023 19:18:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.8)
+
+Thu, 16 Feb 2023 19:18:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.7..@fluentui/react-virtualizer_v9.0.0-alpha.8)
+
+### Changes
+
+- fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.7)
 

@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 16 Feb 2023 16:18:01 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2023 19:18:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.5)
+
+Thu, 16 Feb 2023 19:18:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.4..@fluentui/react-components_v9.15.5)
+
+### Patches
+
+- `@fluentui/react-components`
+  - Fixing Build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-input`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-data-grid-react-window`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
 
 ## [9.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.4)
 

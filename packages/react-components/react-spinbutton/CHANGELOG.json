@@ -2,6 +2,27 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 19:18:48 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.3.6",
+            "commit": "ca757212da6f77eb0bfe18cf7bfcc8bbab2a5da5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Feb 2023 16:18:01 GMT",
       "tag": "@fluentui/react-spinbutton_v9.1.5",
       "version": "9.1.5",

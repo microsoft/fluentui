@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fixing build issues",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

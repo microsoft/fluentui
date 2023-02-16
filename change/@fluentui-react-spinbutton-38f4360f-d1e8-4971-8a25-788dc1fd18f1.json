@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing build issues",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
