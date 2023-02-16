@@ -44,6 +44,14 @@ export interface GridShimProps {
 }
 
 // @public (undocumented)
+export const input: {
+    error: () => GriffelStyle;
+    errorIndicator: () => GriffelStyle;
+    fluid: () => GriffelStyle;
+    successIndicator: () => GriffelStyle;
+};
+
+// @public (undocumented)
 export const Segment: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
