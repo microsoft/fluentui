@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing build issues",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

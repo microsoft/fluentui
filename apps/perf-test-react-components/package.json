@@ -24,7 +24,7 @@
     "@fluentui/react-infobutton": "9.0.0-beta.16",
     "@fluentui/react-persona": "^9.1.12",
     "@fluentui/react-provider": "^9.3.5",
-    "@fluentui/react-spinbutton": "^9.1.4",
+    "@fluentui/react-spinbutton": "^9.1.5",
     "@fluentui/react-theme": "^9.1.5",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",

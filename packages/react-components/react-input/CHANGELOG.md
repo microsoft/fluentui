@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2023 16:18:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.5)
+
+Thu, 16 Feb 2023 16:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.4..@fluentui/react-input_v9.3.5)
+
+### Patches
+
+- chore: Update Input to use makeResetStyles and reduce the number of classes applied ([PR #26815](https://github.com/microsoft/fluentui/pull/26815) by behowell@microsoft.com)
 
 ## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.4)
 
