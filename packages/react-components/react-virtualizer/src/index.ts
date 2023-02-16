@@ -11,4 +11,4 @@ export type {
   VirtualizerSlots,
   VirtualizerChildRenderFunction,
 } from './Virtualizer';
-export { useIntersectionObserver } from './Hooks';
+export { useIntersectionObserver, useStaticVirtualizerMeasure } from './Hooks';

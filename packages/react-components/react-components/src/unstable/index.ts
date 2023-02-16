@@ -120,6 +120,7 @@ export {
   renderVirtualizer_unstable,
   useVirtualizerStyles_unstable,
   useIntersectionObserver,
+  useStaticVirtualizerMeasure,
 } from '@fluentui/react-virtualizer';
 export type {
   VirtualizerProps,

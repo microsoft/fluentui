@@ -24,6 +24,13 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
     observer: MutableRefObject<IntersectionObserver | undefined>;
 };
 
+// @public
+export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView: HTMLElement | null) => {
+    virtualizerLength: number;
+    virtualizerBufferItems: number;
+    virtualizerBufferSize: number;
+};
+
 // @public (undocumented)
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
 
