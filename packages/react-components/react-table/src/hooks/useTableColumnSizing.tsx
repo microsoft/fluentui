@@ -1,15 +1,17 @@
 import * as React from 'react';
+import { TableResizeHandle } from '../TableResizeHandle';
 import {
-  TableColumnId,
+  ColumnResizeState,
   ColumnWidthState,
+  TableColumnId,
   TableColumnSizingState,
   TableFeaturesState,
   UseTableColumnSizingParams,
 } from './types';
-import { useTableColumnResizeState } from './useTableColumnResizeState';
-import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
-import { TableResizeHandle } from '../TableResizeHandle';
+import { useTableColumnResizeKeyboardHandler } from './useTableColumnResizeKeyboardHandler';
+import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
+import { useTableColumnResizeState } from './useTableColumnResizeState';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
@@ -24,6 +26,18 @@ export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizi
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (tableState: TableFeaturesState<TItem>) => useTableColumnSizingState(tableState, params);
 }
+
+const WithTableKeyboardHandler: React.FC<{
+  columnResizeState: ColumnResizeState;
+  children: (renderProps: {
+    keyboardHandler: ReturnType<typeof useTableColumnResizeKeyboardHandler>;
+  }) => React.ReactElement;
+}> = props => {
+  const { children } = props;
+  const keyboardHandler = useTableColumnResizeKeyboardHandler(props.columnResizeState);
+
+  return children({ keyboardHandler });
+};
 
 function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
   const width = column.width;
@@ -61,11 +75,19 @@ function useTableColumnSizingState<TItem>(
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
+
         const aside = (
-          <TableResizeHandle
-            onMouseDown={mouseHandler.getOnMouseDown(columnId)}
-            onTouchStart={mouseHandler.getOnMouseDown(columnId)}
-          />
+          <WithTableKeyboardHandler columnResizeState={columnResizeState}>
+            {({ keyboardHandler }) => (
+              <TableResizeHandle
+                onMouseDown={mouseHandler.getOnMouseDown(columnId)}
+                onTouchStart={mouseHandler.getOnMouseDown(columnId)}
+                onKeyDown={keyboardHandler.getOnKeyDown(columnId)}
+                onBlur={keyboardHandler.getOnBlur(columnId)}
+                value={col ? col.width : 0}
+              />
+            )}
+          </WithTableKeyboardHandler>
         );
         return col ? { style: getColumnStyles(col), aside } : {};
       },

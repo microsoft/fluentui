@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots> = {
   root: 'fui-TableResizeHandle',
@@ -25,6 +26,15 @@ const useStyles = makeStyles({
     transitionProperty: 'opacity',
     transitionDuration: '.2s',
     zIndex: 1,
+
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        opacity: 1,
+      },
+      { selector: 'focus', enableOutline: true },
+    ),
 
     ':hover': {
       opacity: 1,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { UseArrowNavigationGroupOptions, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
 import { useTableFeatures, useTableSort, useTableSelection, useTableColumnSizing_unstable } from '../../hooks';
@@ -35,8 +35,15 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     onColumnResize,
   } = props;
 
+  const defaultNavigationGroupParams: UseArrowNavigationGroupOptions = {
+    axis: 'grid',
+  };
+  const [navigationGroupParams, setNavigationGroupParams] = React.useState<UseArrowNavigationGroupOptions>(
+    defaultNavigationGroupParams,
+  );
+
   const navigable = focusMode !== 'none';
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
+  const keyboardNavAttr = useArrowNavigationGroup(navigationGroupParams);
 
   const tableState = useTableFeatures({ items, columns, getRowId }, [
     useTableSort({
@@ -72,6 +79,10 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
 
   return {
     ...baseTableState,
+    keyboardNavigationContext: {
+      defaultNavigationGroupParams,
+      setNavigationGroupParams,
+    },
     focusMode,
     tableState,
     selectableRows: !!selectionMode,

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import * as React from 'react';
 import type { TableResizeHandleProps, TableResizeHandleState } from './TableResizeHandle.types';
 
 /**
@@ -27,6 +27,10 @@ export const useTableResizeHandle_unstable = (
       ref,
       ...props,
       onClick,
+      role: 'separator',
+      'aria-label': 'Resize column',
+      'aria-valuetext': `${props.value || 0} pixels`,
+      tabIndex: 0,
     }),
   };
 };

@@ -78,6 +78,13 @@ const useStyles = makeStyles({
     minHeight: '32px',
     ...shorthands.flex(1, 1, '0px'),
     outlineStyle: 'none',
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus', enableOutline: true },
+    ),
   },
 
   sortable: {
