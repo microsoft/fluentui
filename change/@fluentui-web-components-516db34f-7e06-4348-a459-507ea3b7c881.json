@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(web-components): introduce ts-solution configs and monorepo setup/DX",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
