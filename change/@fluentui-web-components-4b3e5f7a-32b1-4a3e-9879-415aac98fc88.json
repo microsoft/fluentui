@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: run manually to bump wc to fix failed CI release",
+  "packageName": "@fluentui/web-components",
+  "email": "jslone@microsoft.com",
+  "dependentChangeType": "none"
+}
