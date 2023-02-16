@@ -118,9 +118,7 @@ const rootBaseStyles: GriffelResetStyle = {
     outlineStyle: 'solid',
     outlineColor: 'transparent',
   },
-};
 
-const rootInteractiveStyles: GriffelResetStyle = {
   ':hover::before': {
     borderColor: tokens.colorNeutralStroke1Hover,
     borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
@@ -134,8 +132,7 @@ const rootInteractiveStyles: GriffelResetStyle = {
   },
 };
 
-const useRootNonInteractiveClassName = makeResetStyles(rootBaseStyles);
-const useRootInteractiveClassName = makeResetStyles({ ...rootBaseStyles, ...rootInteractiveStyles });
+const useRootClassName = makeResetStyles(rootBaseStyles);
 
 const useRootStyles = makeStyles({
   small: {
@@ -145,11 +142,11 @@ const useRootStyles = makeStyles({
   },
 
   medium: {
-    // set by useRootNonInteractiveClassName
+    // set by useRootClassName
   },
 
   outline: {
-    // set by useRootNonInteractiveClassName
+    // set by useRootClassName
   },
 
   outlineInteractive: {
@@ -213,7 +210,7 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    '::before': {
+    '::focus-within::before,hover::before,::before': {
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
 
       '@media (forced-colors: active)': {
@@ -497,7 +494,6 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
-  const useRootClassName = disabled ? useRootNonInteractiveClassName : useRootInteractiveClassName;
   const rootStyles = useRootStyles();
   const buttonStyles = useButtonStyles();
   const buttonDisabledStyles = useButtonDisabledStyles();
