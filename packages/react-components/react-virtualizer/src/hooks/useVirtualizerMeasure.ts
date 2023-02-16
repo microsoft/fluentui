@@ -29,14 +29,24 @@ export const useStaticVirtualizerMeasure = (
       return;
     }
 
-    const length = Math.ceil((containerHeight / defaultItemSize) * 1.5);
+    /*
+     * Number of items required to cover viewport.
+     */
+    const length = Math.ceil(containerHeight / defaultItemSize + 1);
 
-    const bufferItems = Math.max(Math.floor(length / 8), 2);
+    /*
+     * Number of items to append at each end, i.e. 'preload' each side before entering view.
+     */
+    const bufferItems = Math.max(Math.floor(length / 4), 2);
 
-    // Buffer has to be at least 1px in size
-    const bufferSize = Math.max(Math.floor((length / 16) * defaultItemSize), 1);
+    /*
+     * This is how far we deviate into the bufferItems to detect a redraw.
+     */
+    const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
-    setVirtualizerLength(length);
+    const totalLength = length + bufferItems * 2;
+
+    setVirtualizerLength(totalLength);
     setVirtualizerBufferSize(bufferSize);
     setVirtualizerBufferItems(bufferItems);
   }, [defaultItemSize]);

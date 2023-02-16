@@ -72,6 +72,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   };
 
   const batchUpdateNewIndex = (index: number) => {
+    console.log('UPDATING NEW INDEX: ', index);
     // Local updates
     onUpdateIndex?.(index, virtualizerStartIndex);
     updateChildRows(index);

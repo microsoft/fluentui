@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     width: '100%',
     height: '100%',
-    maxHeight: '750px',
+    maxHeight: '60vh',
   },
   child: {
     height: '100px',
