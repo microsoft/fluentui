@@ -34,6 +34,6 @@ task('ts:postprocess', postprocess.postprocessTask([...postprocess.defaultLibPat
 task('ts', series(parallel('ts:esm', 'ts:commonjs'), 'ts:postprocess'));
 task('eslint', eslint);
 
-task('build', series('clean', 'copy', 'transform-css', 'ts')).cached!();
+task('build', series('clean', 'copy', 'transform-css', 'ts', 'lint-imports:all')).cached!();
 
 task('lint', 'eslint');

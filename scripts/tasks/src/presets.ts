@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { isConvergedPackage, shipsAMD } from '@fluentui/scripts-monorepo';
 import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
 import { apiExtractor } from './api-extractor';
@@ -11,7 +11,7 @@ import { clean } from './clean';
 import { copy, copyCompiled } from './copy';
 import { eslint } from './eslint';
 import { jest as jestTask, jestWatch } from './jest';
-import { lintImports } from './lint-imports';
+import { lintImportTaskAll, lintImportTaskAmdOnly } from './lint-imports';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
 import { prettier } from './prettier';
@@ -63,7 +63,8 @@ export function preset() {
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer(args));
   task('api-extractor', apiExtractor());
-  task('lint-imports', lintImports);
+  task('lint-imports:all', lintImportTaskAll);
+  task('lint-imports:amd', lintImportTaskAmdOnly);
   task('prettier', prettier);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
@@ -118,7 +119,8 @@ export function preset() {
       'sass',
       'ts',
       'api-extractor',
-      condition('lint-imports', () => !isConvergedPackage()),
+      condition('lint-imports:all', () => !isConvergedPackage() && shipsAMD()),
+      condition('lint-imports:amd', () => isConvergedPackage() && shipsAMD()),
     ),
   ).cached!();
 
