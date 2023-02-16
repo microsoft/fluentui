@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: re-enable AMD import checks for only mixed and v8 packages",
+  "packageName": "@fluentui/monaco-editor",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
