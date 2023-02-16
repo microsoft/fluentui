@@ -25,6 +25,7 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
         Object.assign(elements.floating.style, {
           maxHeight: `${availableHeight}px`,
           boxSizing: 'border-box',
+          overflowY: 'auto',
         });
       }
 
@@ -32,6 +33,7 @@ export function maxSize(autoSize: PositioningOptions['autoSize'], options: MaxSi
         Object.assign(elements.floating.style, {
           maxWidth: `${availableWidth}px`,
           boxSizing: 'border-box',
+          overflowX: 'auto',
         });
       }
     },
