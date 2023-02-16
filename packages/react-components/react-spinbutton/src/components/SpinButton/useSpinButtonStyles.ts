@@ -147,7 +147,7 @@ const useRootStyles = makeStyles({
   underline: {
     '::before': {
       ...shorthands.borderWidth(0, 0, '1px', 0),
-      ...shorthands.borderRadius(0), // corners look strange if rounded
+      ...shorthands.borderRadius(tokens.borderRadiusNone), // corners look strange if rounded
     },
   },
 
@@ -161,7 +161,7 @@ const useRootStyles = makeStyles({
         borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
       },
     },
-    '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
+    '::after': shorthands.borderRadius(tokens.borderRadiusNone), // remove rounded corners from focus underline
   },
 
   filled: {
@@ -217,6 +217,7 @@ const useInputClassName = makeResetStyles({
   border: '0',
   padding: '0',
   color: tokens.colorNeutralForeground1,
+  // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
   fontFamily: 'inherit',
   fontSize: 'inherit',
@@ -251,6 +252,7 @@ const useBaseButtonClassName = makeResetStyles({
   outlineStyle: 'none',
   height: '16px',
 
+  // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
   color: tokens.colorNeutralForeground3,
 
