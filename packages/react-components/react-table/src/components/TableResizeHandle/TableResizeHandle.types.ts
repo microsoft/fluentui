@@ -7,7 +7,9 @@ export type TableResizeHandleSlots = {
 /**
  * TableResizeHandle Props
  */
-export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
+export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {
+  value?: number;
+};
 
 /**
  * State used in rendering TableResizeHandle

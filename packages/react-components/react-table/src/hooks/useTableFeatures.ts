@@ -23,6 +23,7 @@ export const defaultTableState: TableFeaturesState<unknown> = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   columnSizing_unstable: defaultColumnSizingState,
   tableRef: React.createRef<HTMLDivElement>(),
+  accessibilityMenuOptions: [],
 };
 
 export function useTableFeatures<TItem>(
@@ -45,6 +46,7 @@ export function useTableFeatures<TItem>(
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: defaultColumnSizingState,
     tableRef: React.createRef(),
+    accessibilityMenuOptions: [],
   };
 
   return plugins.reduce((state, plugin) => plugin(state), initialState);

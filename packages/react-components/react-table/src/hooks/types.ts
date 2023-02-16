@@ -142,6 +142,8 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    * Used with column resizing.
    */
   tableRef: React.Ref<HTMLDivElement>;
+
+  accessibilityMenuOptions: React.ReactElement[];
 }
 
 export interface UseTableSortOptions {
@@ -207,7 +209,10 @@ export interface TableColumnSizingState {
 
 export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;
-  setColumnWidth: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  setColumnWidth: (
+    e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+    data: { columnId: TableColumnId; width: number },
+  ) => void;
   getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
   getColumns: () => ColumnWidthState[];
 };
@@ -219,6 +224,9 @@ export type TableColumnSizingOptions = Record<
 
 export type UseTableColumnSizingParams = {
   columnSizingOptions?: TableColumnSizingOptions;
-  onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  onColumnResize?: (
+    e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+    data: { columnId: TableColumnId; width: number },
+  ) => void;
   containerWidthOffset?: number;
 };
