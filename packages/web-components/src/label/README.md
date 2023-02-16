@@ -86,7 +86,7 @@ Creating a simple label element with an optional info icon and optional required
 
 ## **Accessibility**
 
-[W3 Accordion Spec](https://www.w3.org/WAI/tutorials/forms/labels/)
+[W3 Label Spec](https://www.w3.org/WAI/tutorials/forms/labels/)
 
 <br />
 
