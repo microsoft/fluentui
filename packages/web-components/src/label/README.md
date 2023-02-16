@@ -79,7 +79,6 @@ Creating a simple label element with an optional info icon and optional required
     <slot></slot>
     ${(attr: Label) =>
       attr.required ? html`<span aria-hidden="true" part="asterisk" class="asterisk">*</span>` : null}
-    <slot name="icon"></slot>
   </label>
 </template>`;
 ```
