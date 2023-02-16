@@ -21,7 +21,7 @@ const fieldHeights = {
   medium: '32px',
 };
 
-const rootBaseStyles: GriffelResetStyle = {
+const useRootClassName = makeResetStyles({
   display: 'inline-grid',
   gridTemplateColumns: `1fr 24px`,
   gridTemplateRows: '1fr 1fr',
@@ -130,9 +130,7 @@ const rootBaseStyles: GriffelResetStyle = {
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
   },
-};
-
-const useRootClassName = makeResetStyles(rootBaseStyles);
+});
 
 const useRootStyles = makeStyles({
   small: {
