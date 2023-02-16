@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fixing build issues",
+  "packageName": "@fluentui/react-data-grid-react-window",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

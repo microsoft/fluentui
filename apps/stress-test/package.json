@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.105.8",
-    "@fluentui/react-components": "^9.15.3",
+    "@fluentui/react-components": "^9.15.4",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/web-components": "^2.5.12",
     "@microsoft/fast-element": "^1.11.0",

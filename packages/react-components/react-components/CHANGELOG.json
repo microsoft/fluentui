@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 16:18:01 GMT",
+      "tag": "@fluentui/react-components_v9.15.4",
+      "version": "9.15.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4af9156bc869948b12610689f15b2a778aa690ca",
+            "comment": "fix: Updating peer dependencies to support React 18."
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "2a39824231365b95ba70991285301a6b83b4f107",
+            "comment": "chore: Update Input to use makeResetStyles and reduce the number of classes applied"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:51 GMT",
       "tag": "@fluentui/react-components_v9.15.3",
       "version": "9.15.3",

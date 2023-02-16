@@ -40,7 +40,7 @@
     "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-tabster": "^9.5.3",
     "@fluentui/react-popover": "^9.4.10",
-    "@fluentui/react-input": "^9.3.4",
+    "@fluentui/react-input": "^9.3.5",
     "@fluentui/style-utilities": "^8.9.1",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"

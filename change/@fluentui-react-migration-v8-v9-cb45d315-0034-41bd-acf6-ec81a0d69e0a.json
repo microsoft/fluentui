@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing build issues",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
