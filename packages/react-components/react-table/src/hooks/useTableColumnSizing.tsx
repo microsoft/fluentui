@@ -1,15 +1,18 @@
 import * as React from 'react';
+import { TableResizeHandle } from '../TableResizeHandle';
 import {
-  TableColumnId,
   ColumnWidthState,
+  TableColumnId,
   TableColumnSizingState,
   TableFeaturesState,
   UseTableColumnSizingParams,
 } from './types';
-import { useTableColumnResizeState } from './useTableColumnResizeState';
-import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
-import { TableResizeHandle } from '../TableResizeHandle';
+import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
+import { useTableColumnResizeState } from './useTableColumnResizeState';
+import { MenuItem } from '../../../react-menu/src/MenuItem';
+import { WithColumnId } from '../contexts/columnIdContext';
+import { useInteractiveKeyboardResizing } from './useInteractiveKeyboardResizing';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
@@ -49,6 +52,23 @@ function useTableColumnSizingState<TItem>(
   const columnResizeState = useTableColumnResizeState(columns, width + (params?.containerWidthOffset || 0), params);
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
+  // Creates the keyboard handler for resizing columns
+  const keyboardResizing = useInteractiveKeyboardResizing(columnResizeState);
+
+  const onMenuItemClick = React.useCallback(
+    (columnId: TableColumnId) => (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      keyboardResizing.enterInteractiveMode(columnId);
+    },
+    [keyboardResizing],
+  );
+
+  tableState.accessibilityMenuOptions?.push(
+    <WithColumnId key="column-sizing">
+      {(columnId: TableColumnId) => <MenuItem onClick={onMenuItemClick(columnId)}>Keyboard Column Resizing</MenuItem>}
+    </WithColumnId>,
+  );
 
   return {
     ...tableState,
@@ -61,13 +81,15 @@ function useTableColumnSizingState<TItem>(
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
+
         const aside = (
           <TableResizeHandle
             onMouseDown={mouseHandler.getOnMouseDown(columnId)}
             onTouchStart={mouseHandler.getOnMouseDown(columnId)}
+            value={col ? col.width : 0}
           />
         );
-        return col ? { style: getColumnStyles(col), aside } : {};
+        return col ? { style: getColumnStyles(col), aside, columnId } : { columnId };
       },
       getTableCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);

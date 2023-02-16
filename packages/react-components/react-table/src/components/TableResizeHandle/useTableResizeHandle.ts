@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import * as React from 'react';
 import type { TableResizeHandleProps, TableResizeHandleState } from './TableResizeHandle.types';
 
 /**

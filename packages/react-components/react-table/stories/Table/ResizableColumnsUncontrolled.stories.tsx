@@ -15,6 +15,10 @@ import {
   PresenceBadgeStatus,
   Avatar,
   Input,
+  Menu,
+  MenuTrigger,
+  MenuPopover,
+  MenuList,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -25,6 +29,7 @@ import {
   PeopleRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
+import { ColumnIdContextProvider } from '../../src/contexts/columnIdContext';
 
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
@@ -128,7 +133,7 @@ export const ResizableColumnsUncontrolled = () => {
   });
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
+  const { getRows, columnSizing_unstable, tableRef, accessibilityMenuOptions } = useTableFeatures(
     {
       columns,
       items,
@@ -157,12 +162,21 @@ export const ResizableColumnsUncontrolled = () => {
         <TableHeader>
           <TableRow>
             {columns.map(column => (
-              <TableHeaderCell
-                key={column.columnId}
-                {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
-              >
-                {column.renderHeaderCell()}
-              </TableHeaderCell>
+              <ColumnIdContextProvider key={column.columnId} value={column.columnId}>
+                <Menu openOnContext key={column.columnId}>
+                  <MenuTrigger>
+                    <TableHeaderCell
+                      key={column.columnId}
+                      {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
+                    >
+                      {column.renderHeaderCell()}
+                    </TableHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>{accessibilityMenuOptions}</MenuList>
+                  </MenuPopover>
+                </Menu>
+              </ColumnIdContextProvider>
             ))}
           </TableRow>
         </TableHeader>

@@ -18,6 +18,7 @@ import * as React_2 from 'react';
 import { ReactNode } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>) => React_2.ReactNode;
@@ -84,11 +85,13 @@ export type DataGridContextValue = TableFeaturesState<any> & {
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
     resizableColumns?: boolean;
+    keyboardNavigationContext?: KeyboardNavigationContextValue;
 };
 
 // @public (undocumented)
 export type DataGridContextValues = TableContextValues & {
     dataGrid: DataGridContextValue;
+    keyboardNavigationContext?: KeyboardNavigationContextValue;
 };
 
 // @public (undocumented)
@@ -130,7 +133,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
     columnSizingOptions?: TableColumnSizingOptions;
-    onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: {
+    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
         columnId: TableColumnId;
         width: number;
     }) => void;
@@ -179,7 +182,7 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: TableFeaturesState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'keyboardNavigationContext'>;
 
 // @public
 export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
@@ -435,7 +438,9 @@ export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
 export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
 
 // @public
-export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
+export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {
+    value?: number;
+};
 
 // @public (undocumented)
 export type TableResizeHandleSlots = {
