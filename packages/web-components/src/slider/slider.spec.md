@@ -14,7 +14,7 @@ The Slider component allows users to quickly select a value by dragging an icon 
 
 - @attr size: "small" "medium" | "medium"
 - @attr vertical: boolean | false
-- @attr value: number
+- @attr current-value: number
 - @attr min: number
 - @attr max: number
 - @attr step: number | 1
@@ -79,7 +79,7 @@ None
   - [FAST Slider Component](https://explore.fast.design/components/fast-slider)
 - [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
   - [Fluent Slider Spec](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-slider/docs/Spec.md)
-  - no `defaultValue` attribute, instead only `value` that specifies the initial selected range of the slider
+  - no `defaultValue` attribute, instead only `current-value` that specifies the selected range of the slider
   - `rail` is in Fluent React; `track` is in FAST Foundation
   - Current implementation in Fluent React 9 does not have `range`, but Fast Foundation Slider and Figma design spec has it
   - No value indicators to the left/right of slider in FAST Slider. These should be present in Fluent version. This will be handled through the SliderLabel component.
