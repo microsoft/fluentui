@@ -35,14 +35,6 @@ const useRootClassName = makeResetStyles({
   backgroundColor: tokens.colorNeutralBackground1,
   border: `1px solid ${tokens.colorNeutralStroke1}`,
   borderBottomColor: tokens.colorNeutralStrokeAccessible,
-  ':hover': {
-    borderColor: tokens.colorNeutralStroke1Hover,
-    borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
-  },
-  ':active,:focus-within': {
-    borderColor: tokens.colorNeutralStroke1Pressed,
-    borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
-  },
 
   // This is all for the bottom focus border.
   // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
@@ -121,19 +113,48 @@ const useRootStyles = makeStyles({
   outline: {
     // included in rootBaseStyles
   },
+  outlineInteractive: {
+    ':hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+    },
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
+    ':active,:focus-within': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+    },
+  },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    '&,::after': shorthands.borderRadius(0), // remove rounded corners on the underline and the ::after focus underline
+    // corners look strange if rounded
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
     borderRightStyle: 'none',
     borderLeftStyle: 'none',
   },
+  underlineInteractive: {
+    ':hover': {
+      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+    },
+    // DO NOT add a space between the selectors! It changes the behavior of make-styles.
+    ':active,:focus-within': {
+      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+    },
+    // remove rounded corners from focus underline
+    '::after': {
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+  },
   filled: {
     ...shorthands.borderColor(tokens.colorTransparentStroke),
-
+  },
+  filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
-    ':hover,:active,:focus-within': {
+    ':hover,:focus-within': {
+      // also handles pressed border color (:active)
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
@@ -159,19 +180,17 @@ const useRootStyles = makeStyles({
   disabled: {
     cursor: 'not-allowed',
     backgroundColor: tokens.colorTransparentBackground,
-    '&,:hover,:active,:focus-within': {
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    },
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
-      '&,:hover,:active,:focus-within': {
-        ...shorthands.borderColor('GrayText'),
-      },
+      ...shorthands.borderColor('GrayText'),
     },
+    // remove the focus border
     '::after': {
-      content: 'unset', // remove the focus border
+      content: 'unset',
     },
+    // remove the focus outline
     ':focus-within': {
-      outlineStyle: 'none', // remove the focus outline
+      outlineStyle: 'none',
     },
   },
 });
@@ -258,6 +277,9 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
     useRootClassName(),
     rootStyles[size],
     rootStyles[appearance],
+    !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
+    !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
+    !disabled && filled && rootStyles.filledInteractive,
     filled && rootStyles.filled,
     !disabled && invalid && rootStyles.invalid,
     disabled && rootStyles.disabled,
