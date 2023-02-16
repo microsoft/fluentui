@@ -1,8 +1,7 @@
 # Label
 
 > A label represents a caption for an item in a user interface.
-
-<br />
+> <br />
 
 ## **Design Spec**
 
@@ -28,11 +27,14 @@ Creating a simple label element with an optional info icon and optional required
 
 ### **Fields**
 
-| Name       | Privacy | Type      | Default | Description                                                       |
-| ---------- | ------- | --------- | ------- | ----------------------------------------------------------------- |
-| `for`      | public  | `string`  |         | Specifies the id of the form element the label should be bound to |
-| `form`     | public  | `string`  |         | Specifies which form the label belongs to                         |
-| `required` | public  | `boolean` | `false` | Specifies required styling for label                              |
+| Name       | Privacy | Type                           | Default     | Description                                                       |
+| ---------- | ------- | ------------------------------ | ----------- | ----------------------------------------------------------------- |
+| `for`      | public  | `string`                       |             | Specifies the id of the form element the label should be bound to |
+| `form`     | public  | `string`                       |             | Specifies which form the label belongs to                         |
+| `required` | public  | `boolean`                      | `false`     | Specifies required styling for label                              |
+| `disabled` | public  | `boolean`                      | `false`     | Sets disabled state for label                                     |
+| `size`     | public  | `"small"` `"medium"` `"large"` | `"medium"`  | Specifies font size for label                                     |
+| `weight`   | public  | `"regular"` `"semibold"`       | `"regular"` | Specifies font weight for label                                   |
 
 <br />
 
@@ -51,6 +53,9 @@ Creating a simple label element with an optional info icon and optional required
 | `for`      | for      |
 | `from`     | from     |
 | `required` | required |
+| `disabled` | disabled |
+| `size`     | size     |
+| `weight `  | weight   |
 
 <br />
 
@@ -65,24 +70,27 @@ Creating a simple label element with an optional info icon and optional required
 <hr />
 <br />
 
+### **Suggested Template**
+
+```ts
+`<template required="${(attr: Label) => attr.required}">
+  <label class="label" part="label" for="${(attr: Label) => attr.for}" form="${(attr: Label) => attr.form}">
+    <slot></slot>
+    ${(attr: Label) =>
+      attr.required ? html`<span aria-hidden="true" part="asterisk" class="asterisk">*</span>` : null}
+  </label>
+</template>`;
+```
+
 ## **Accessibility**
 
-[W3 Accordion Spec](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+[W3 Label Spec](https://www.w3.org/WAI/tutorials/forms/labels/)
 
 <br />
 
 ### **WAI-ARIA Roles, States, and Properties**
 
-- `role = "button"`
-  - The title of each accordion header is contained in an element with role button.
-- `role = "heading"`
-  - Each accordion header button is wrapped in an element with role heading that has a value set for aria-level that is appropriate for the information architecture of the page.
-- `aria-expanded`
-  - If the accordion panel associated with an accordion header is visible, the header button element has aria-expanded set to true. If the panel is not visible, aria-expanded is set to false.
-- `aria-controls`
-  - The accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
-- `aria-disabled`
-  - If the accordion panel associated with an accordion header is visible, and if the accordion does not permit the panel to be collapsed, the header button element has aria-disabled set to true.
+- No corresponding roles
 
 <br />
 <hr />
@@ -98,23 +106,12 @@ Creating a simple label element with an optional info icon and optional required
 
 **Component and Slot Mapping**
 
-| Fluent UI React 9   | Fluent Web Components 3   |
-| ------------------- | ------------------------- |
-| `<Accordion>`       | `<fluent-accordion>`      |
-| `<AccordionItem>`   | `<fluent-accordion-item>` |
-| `<AccordionHeader>` | `named slot = "heading"`  |
-| `<AccordionPanel>`  | `default slotted content` |
+| Fluent UI React 9 | Fluent Web Components 3 |
+| ----------------- | ----------------------- |
+| `<Label>`         | `<fluent-label>`        |
 
 <br />
 
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|---------------------------|---------------------------|------------------------------------------------------------------------------------------|
-| `defaultOpenItems: number`| `expand: boolean` | _FuiR9_ `defaultOpenItems` is a number property set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded.<hr /> `expand` is a boolean property set directly on the `AccordionItem` intended to be expanded.
-| `multiple: boolean` | `expandmode: "single"` &#124; `"multiple"`| |
-| `size` | `size` |
-| `as: 'h1'` &#124; `'h2'` &#124; `'h3'` &#124; `'h4'` &#124; `'h5'` &#124; `'h6'` | `headinglevel: 1` &#124; `2` &#124; `3` &#124; `4` &#124; `5` &#124; `6` | `as` property sets a wrapper around the `AccordionItem` header with the corresponding header tag ( `h1`, `h2`, etc. ) <hr /> `headinglevel` sets the `aria-level` attribute to the corresponding heading level.
-| `disabled` | `disabled` |
-| `expandIconPosition` | `expandIconPosition` |
-| `expandIcon` | `named slot: collapsed-icon` + `expanded-icon` | `expandIcon` is a prop that is passed a ternary to render the appropriate icon. <hr /> `collapsed-icon` and `expanded-icon` are named slots to supply the appropriate icons.
-| `icon` | `named slot: start` + `end` | `icon` is a property set on the `AccordionHeader` through which an icon is passed <hr /> `start` and `end` are named slots through which to supply a presentation icon.
+|-------------------|------------------------ |---------------------------|
