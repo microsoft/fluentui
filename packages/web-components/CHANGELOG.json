@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 16:51:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.4",
+      "version": "3.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ae03f3eec389aca7e15fde295868aacd51eb1822",
+            "comment": "chore(web-components): introduce ts-solution configs and monorepo setup/DX"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "226b7af089cea03d27ec722cabc73d018f263fd1",
+            "comment": "fix(web-components): dont ship non production assets to npm registry"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 04:24:51 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.3",
       "version": "3.0.0-alpha.3",
