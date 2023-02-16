@@ -73,7 +73,7 @@ Creating a simple label element with an optional info icon and optional required
 ### **Suggested Template**
 
 ```ts
-`<template required="${(attr: Label) => attr.required}">
+`<template required="${(attr: Label) => attr.required}" size="${(attr: Label) => attr.size}" weight="${(attr: Label) => attr.weight"}>
   <label class="label" part="label" for="${(attr: Label) => attr.for}" form="${(attr: Label) => attr.form}">
     <slot></slot>
     ${(attr: Label) =>
