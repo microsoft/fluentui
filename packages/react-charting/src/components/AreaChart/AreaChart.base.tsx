@@ -64,6 +64,7 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
+  emptyChart: boolean;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -96,7 +97,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
   private _highlightedCircleId: string;
-  private _isChartEmpty: boolean;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -113,6 +113,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isCircleClicked: false,
       nearestCircleToHighlight: null,
       isShowCalloutPending: false,
+      emptyChart: !(
+        this.props.data &&
+        this.props.data.lineChartData &&
+        this.props.data.lineChartData.length &&
+        !this.props.data.lineChartData.filter(item => !item.data.length).length
+      ),
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -122,12 +128,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
-    this._isChartEmpty = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length &&
-      !this.props.data.lineChartData.filter(item => !item.data.length).length
-    );
+    // console.log('this.state.emptyChart = ', this.state.emptyChart);
+    // const isChartEmpty = !(
+    //   this.props.data &&
+    //   this.props.data.lineChartData &&
+    //   this.props.data.lineChartData.length &&
+    //   !this.props.data.lineChartData.filter(item => !item.data.length).length
+    // );
+    // console.log('isChartEmpty = ', isChartEmpty);
+    // if (this.state.emptyChart !== isChartEmpty) {
+    //   this.setState({ emptyChart: isChartEmpty });
+    // }
   }
 
   public componentDidUpdate() {
@@ -140,20 +151,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   }
 
-  public componentDidMount(): void {
-    if (this._isChartEmpty) {
-      d3Select('body')
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', 'ariaLabel_AreaChart')
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
-    }
-  }
-
   public render(): JSX.Element {
-    if (!this._isChartEmpty) {
+    if (!this.state.emptyChart) {
       const { lineChartData, chartTitle } = this.props.data;
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
       this._calloutPoints = calloutPoints;
@@ -226,7 +225,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         />
       );
     }
-    return <></>;
+    return (
+      <div
+        id={getId('_AreaChart_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
+    );
   }
 
   private _getMargins = (margins: IMargins) => {
