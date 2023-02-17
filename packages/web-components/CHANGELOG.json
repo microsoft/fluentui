@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 17 Feb 2023 04:19:53 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.4",
+      "version": "3.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "jslone@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "b79b33d10cbd6015531fa943e0e6dbe7f84b9b42",
+            "comment": "chore: run manually to bump wc to fix failed CI release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Feb 2023 16:51:48 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.4",
       "version": "3.0.0-alpha.4",
