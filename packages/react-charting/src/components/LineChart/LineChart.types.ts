@@ -1,11 +1,11 @@
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
-  IChartProps,
   ILineChartPoints,
   IMargins,
   IBasestate,
   IRefArrayData,
   ICustomizedCalloutData,
+  IModifiedChartProps,
 } from '../../types/index';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
 import {
@@ -16,15 +16,6 @@ import {
 } from '../CommonComponents/index';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
-
-export type IModifiedLineChartPoints = Omit<ILineChartPoints, 'color'> & {
-  color?: string;
-};
-
-export type IModifiedChartProps = Omit<IChartProps, 'lineChartData'> & {
-  lineChartData?: IModifiedLineChartPoints[];
-};
-
 export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

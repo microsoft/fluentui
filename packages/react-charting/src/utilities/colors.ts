@@ -20,3 +20,5 @@ export const QualitativePalette = {
   dataVizSlot19: '#C36BD1',
   dataVizSlot20: '#D06228',
 };
+
+export const QUALITATIVE_COLORS = Object.values(QualitativePalette);

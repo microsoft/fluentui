@@ -1,12 +1,12 @@
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
-  IChartProps,
   IRefArrayData,
   IBasestate,
   ILineChartDataPoint,
   ILineChartPoints,
   ICustomizedCalloutData,
   IMargins,
+  IModifiedChartProps,
 } from '../../types/index';
 import {
   ICartesianChartStyles,
@@ -20,7 +20,7 @@ export interface IAreaChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IChartProps;
+  data: IModifiedChartProps;
 
   /**
    * This prop is used to draw Y axis grid lines on the chart. Default value will be false

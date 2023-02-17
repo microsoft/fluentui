@@ -632,3 +632,13 @@ export interface ICustomizedCalloutData {
   x: number | string | Date;
   values: ICustomizedCalloutDataPoint[];
 }
+
+/** ILineChartPoints with optional color prop */
+export type IModifiedLineChartPoints = Omit<ILineChartPoints, 'color'> & {
+  color?: string;
+};
+
+/** IChartProps with optional color prop */
+export type IModifiedChartProps = Omit<IChartProps, 'lineChartData'> & {
+  lineChartData?: IModifiedLineChartPoints[];
+};
