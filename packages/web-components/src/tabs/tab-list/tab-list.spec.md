@@ -6,6 +6,9 @@ Each tab typically contains a text header and often includes an icon.
 
 ## Tab List api
 
+[Link to Fluent React API](https://react.fluentui.dev/?path=/docs/components-tablist--default)
+
+
 | name                       | desctiption                                                                                                                  | type                           | default       |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------- |
 | appearance                 | optional - "subtle": Minimizes emphasis. "transparent": No background and border styling                                     | 'transparent' \| 'subtle'      | 'transparent' |
@@ -17,6 +20,8 @@ Each tab typically contains a text header and often includes an icon.
 | vertical                   | optional - to arrange the tab list vertically                                                                                | boolean                        | false         |
 
 ## Tab List - api to Fast mappings:
+
+[Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 
 | fluent api name | fast api Equivalent |
 | --------------- | ------------------- |
