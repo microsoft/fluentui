@@ -314,7 +314,10 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
       animateBackwards !== undefined && currentItemButtonStyles.animation,
       hasHeaderClickCallback && currentItemButtonStyles.hasHeaderClickCallback,
     ),
-    navigationButtonsContainer: mergeClasses(navigationButtonsContainerStyles.base),
+    navigationButtonsContainer: mergeClasses(
+      calendarPickerClassNames.navigationButtonsContainer,
+      navigationButtonsContainerStyles.base,
+    ),
     navigationButton: mergeClasses(calendarPickerClassNames.navigationButton, navigationButtonStyles.base),
     gridContainer: mergeClasses(calendarPickerClassNames.gridContainer, gridContainerStyles.base),
     buttonRow: mergeClasses(

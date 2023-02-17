@@ -611,7 +611,7 @@ export const useCalendarDayGridStyles_unstable: (props: CalendarDayGridStyleProp
 export const useCalendarDayStyles_unstable: (props: CalendarDayStyleProps) => CalendarDayStyles;
 
 // @public
-export const useCalendarMonthStyles_unstable: (props: CalendarMonthStyleProps) => Record<keyof CalendarMonthStyles, string>;
+export const useCalendarMonthStyles_unstable: (props: CalendarMonthStyleProps) => CalendarMonthStyles;
 
 // @public
 export const useCalendarPickerStyles_unstable: (props: CalendarPickerStyleProps) => CalendarPickerStyles;

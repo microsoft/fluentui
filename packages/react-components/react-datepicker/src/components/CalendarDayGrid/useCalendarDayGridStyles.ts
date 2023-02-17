@@ -121,7 +121,7 @@ const useDaySelectedStyles = makeStyles({
       top: 0,
     },
 
-    '&:hover:active': {
+    '&:hover, &:active': {
       backgroundColor: tokens.colorNeutralBackground1Selected + ' !important',
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight!important',
