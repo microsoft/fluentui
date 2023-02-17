@@ -81,7 +81,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 30, xAxisCalloutData: '2018/03/15', yAxisCalloutData: '30%' },
         ],
         legend: 'First',
-        color: QualitativePalette.dataVizSlot20,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -97,7 +96,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 50 },
         ],
         legend: 'Second',
-        color: QualitativePalette.dataVizSlot19,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -113,7 +111,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 70 },
         ],
         legend: 'Third',
-        color: QualitativePalette.dataVizSlot18,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -129,7 +126,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 90 },
         ],
         legend: 'Fourth',
-        color: QualitativePalette.dataVizSlot17,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -145,7 +141,6 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           { x: new Date('2018/06/01'), y: 110 },
         ],
         legend: 'Fifth',
-        color: QualitativePalette.dataVizSlot16,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -278,7 +273,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
     const colorFillBarData = [
       {
         legend: 'Time range 1',
-        color: 'blue',
+        color: QualitativePalette.dataVizSlot19,
         data: [
           {
             startX: new Date('2018/01/06'),
@@ -288,7 +283,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         legend: 'Time range 2',
-        color: 'brown',
+        color: QualitativePalette.dataVizSlot20,
         data: [
           {
             startX: new Date('2018/01/18'),
