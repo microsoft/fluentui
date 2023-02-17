@@ -6793,8 +6793,6 @@ export interface IListState<T = any> {
     // (undocumented)
     getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
     // (undocumented)
-    hasMounted: boolean;
-    // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
     // (undocumented)
