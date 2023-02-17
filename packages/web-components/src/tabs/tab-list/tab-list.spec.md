@@ -54,10 +54,6 @@ Component works like this:
 </fluent-tab-list>
 ```
 
-```javascript
-// not required
-```
-
 ## Tab List - option 2 - more closely resembles FluentUI React v9 tab-list
 
 Adds aditional component `fluent-tab-panel-group`.
