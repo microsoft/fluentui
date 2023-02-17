@@ -4,6 +4,8 @@
 
 ```ts
 
+import { Orientation as DividerOrientation } from '@microsoft/fast-web-utilities';
+import { DividerRole } from '@microsoft/fast-foundation';
 import { CSSDesignToken } from '@microsoft/fast-foundation';
 import { Orientation as DividerOrientation } from '@microsoft/fast-web-utilities';
 import { DividerRole } from '@microsoft/fast-foundation';
@@ -1248,7 +1250,52 @@ export const lineHeightHero800: CSSDesignToken<string>;
 export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
+<<<<<<< HEAD
 class ProgressBar_2 extends FASTProgress {
+=======
+export class Divider extends FASTDivider {
+    alignContent?: DividerAlignContent;
+    appearance?: DividerAppearance;
+    inset?: boolean;
+}
+
+// @public
+export const DividerAlignContent: {
+    readonly center: "center";
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
+
+// @public
+export const DividerAppearance: {
+    readonly strong: "strong";
+    readonly brand: "brand";
+    readonly subtle: "subtle";
+    readonly default: "default";
+};
+
+// @public
+export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
+
+// @public
+export const DividerDefinition: FASTElementDefinition<typeof Divider>;
+
+export { DividerOrientation }
+
+export { DividerRole }
+
+// @public
+export const DividerStyles: ElementStyles;
+
+// @public
+export const DividerTemplate: ElementViewTemplate<Divider>;
+
+// @public
+export class ProgressBar extends FASTProgress {
+>>>>>>> 88fa380eacca857cd763d2ec4531a65f8c3aebbc
     shape: ProgressBarShape;
     thickness: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
