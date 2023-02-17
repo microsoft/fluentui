@@ -31,10 +31,10 @@ export function useTableSelectionState<TItem>(
   const { items, getRowId } = tableState;
   const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
-  const [selected, setSelected] = useControllableState({
-    initialState: new Set<TableRowId>(),
-    defaultState: defaultSelectedItems,
-    state: selectedItems,
+  const [selected, setSelected] = useControllableState<Set<TableRowId>>({
+    initialState: new Set(),
+    defaultState: React.useMemo(() => defaultSelectedItems && new Set(defaultSelectedItems), [defaultSelectedItems]),
+    state: React.useMemo(() => selectedItems && new Set(selectedItems), [selectedItems]),
   });
 
   const selectionManager = React.useMemo(() => {

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: exports UseTableSelectionOptions",
+  "packageName": "@fluentui/react-table",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

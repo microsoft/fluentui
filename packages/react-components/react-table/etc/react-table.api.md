@@ -665,6 +665,14 @@ export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, re
 export const useTableSelectionCellStyles_unstable: (state: TableSelectionCellState) => TableSelectionCellState;
 
 // @public (undocumented)
+export interface UseTableSelectionOptions {
+    defaultSelectedItems?: Iterable<TableRowId>;
+    onSelectionChange?(e: React_2.SyntheticEvent, data: OnSelectionChangeData): void;
+    selectedItems?: Iterable<TableRowId>;
+    selectionMode: SelectionMode_2;
+}
+
+// @public (undocumented)
 export function useTableSort<TItem>(options: UseTableSortOptions): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 // @public
