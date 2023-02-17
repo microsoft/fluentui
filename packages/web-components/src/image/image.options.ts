@@ -4,7 +4,7 @@ import { ValuesOf } from '@microsoft/fast-foundation';
  * Border radius
  * @public
  */
-export const BorderRadius = {
+export const ImageBorderRadius = {
   small: 'small',
   medium: 'medium',
   large: 'large',
@@ -14,7 +14,7 @@ export const BorderRadius = {
  * Types for border radius
  * @public
  */
-export type BorderRadius = ValuesOf<typeof BorderRadius>;
+export type ImageBorderRadius = ValuesOf<typeof ImageBorderRadius>;
 
 /**
  * Image fit
