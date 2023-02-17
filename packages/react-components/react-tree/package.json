@@ -32,16 +32,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.9",
+    "@fluentui/react-context-selector": "^9.1.10",
     "@fluentui/react-shared-contexts": "^9.2.0",
-    "@fluentui/react-avatar": "^9.3.5",
-    "@fluentui/react-aria": "^9.3.9",
-    "@fluentui/react-tabster": "^9.5.2",
-    "@fluentui/react-portal": "^9.1.8",
-    "@fluentui/react-button": "^9.2.4",
+    "@fluentui/react-avatar": "^9.3.6",
+    "@fluentui/react-aria": "^9.3.10",
+    "@fluentui/react-tabster": "^9.5.3",
+    "@fluentui/react-portal": "^9.1.9",
+    "@fluentui/react-button": "^9.2.5",
     "@fluentui/keyboard-keys": "^9.0.1",
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.3",
+    "@fluentui/react-utilities": "^9.6.0",
     "@fluentui/react-icons": "^2.0.175",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"

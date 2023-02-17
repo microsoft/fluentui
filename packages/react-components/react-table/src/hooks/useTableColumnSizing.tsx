@@ -61,7 +61,12 @@ function useTableColumnSizingState<TItem>(
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
-        const aside = <TableResizeHandle onMouseDown={mouseHandler.getOnMouseDown(columnId)} />;
+        const aside = (
+          <TableResizeHandle
+            onMouseDown={mouseHandler.getOnMouseDown(columnId)}
+            onTouchStart={mouseHandler.getOnMouseDown(columnId)}
+          />
+        );
         return col ? { style: getColumnStyles(col), aside } : {};
       },
       getTableCellProps: (columnId: TableColumnId) => {
