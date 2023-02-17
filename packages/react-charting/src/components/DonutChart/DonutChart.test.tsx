@@ -167,35 +167,13 @@ describe('DonutChart - mouse events', () => {
 
   describe('Render empty chart aria label div when chart is empty', () => {
     it('No empty chart aria label div rendered', () => {
-      wrapper = mount(
-        <DonutChart
-          data={chartPoints}
-          innerRadius={55}
-          href={'https://developer.microsoft.com/en-us/'}
-          legendsOverflowText={'overflow Items'}
-          hideLegend={false}
-          height={220}
-          width={176}
-          valueInsideDonut={39000}
-        />,
-      );
+      wrapper = mount(<DonutChart data={chartPoints} />);
       const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
       expect(renderedDOM!.length).toBe(0);
     });
 
     it('Empty chart aria label div rendered', () => {
-      wrapper = mount(
-        <DonutChart
-          data={emptyChartPoints}
-          innerRadius={55}
-          href={'https://developer.microsoft.com/en-us/'}
-          legendsOverflowText={'overflow Items'}
-          hideLegend={false}
-          height={220}
-          width={176}
-          valueInsideDonut={39000}
-        />,
-      );
+      wrapper = mount(<DonutChart data={emptyChartPoints} />);
       const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
       expect(renderedDOM!.length).toBe(1);
     });

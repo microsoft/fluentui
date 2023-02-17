@@ -49,6 +49,7 @@ export interface IGroupedVerticalBarChartState extends IBasestate {
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  emptyChart?: boolean;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -92,6 +93,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       hoverXValue: '',
       calloutLegend: '',
       activeLegend: '',
+      emptyChart: false,
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -111,14 +113,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this.props.data.length &&
       this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length
     );
-    if (isChartEmpty) {
-      d3Select('body')
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', 'ariaLabel_GroupedVerticalBarChart')
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
     }
   }
 
@@ -162,7 +158,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       tickFormat: this.props.tickFormat!,
     };
 
-    return (
+    return !this.state.emptyChart ? (
       <CartesianChart
         {...this.props}
         points={this._datasetForBars}
@@ -188,6 +184,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
           return <g>{this._groupedVerticalBarGraph}</g>;
         }}
       />
+    ) : (
+      <div id={getId('_GVBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   }
 
