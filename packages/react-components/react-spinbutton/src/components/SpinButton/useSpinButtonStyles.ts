@@ -298,7 +298,7 @@ const useButtonStyles = makeStyles({
     gridRowStart: '2',
     borderBottomRightRadius: tokens.borderRadiusMedium,
     paddingTop: '1px',
-    paddingButtom: '4px',
+    paddingBottom: '4px',
   },
   // Padding values numbers don't align with design specs
   // but visually the padding aligns.
