@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Fri, 17 Feb 2023 07:46:37 GMT",
+      "tag": "@fluentui/utilities_v8.13.6",
+      "version": "8.13.6",
+      "comments": {
+        "none": [
+          {
+            "author": "jimsleon@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "9e287be4544ad39f0041349a0d1da0e9100800b0",
+            "comment": "chore: Removing deprecated React.Props from DelayedRender."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Feb 2023 07:50:06 GMT",
       "tag": "@fluentui/utilities_v8.13.6",
       "version": "8.13.6",

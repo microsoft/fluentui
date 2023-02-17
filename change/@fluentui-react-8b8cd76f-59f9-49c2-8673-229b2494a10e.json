@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: move props object creation to allow for memoization in DetailsList.",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
