@@ -34,7 +34,7 @@ import {
   pointTypes,
   getMinMaxOfYAxis,
   getTypeOfAxis,
-  QUALITATIVE_COLORS,
+  getNextColor,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -318,7 +318,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       ? lineChartData.map((item: IModifiedLineChartPoints, index: number) => {
           let color: string;
           if (typeof item.color === 'undefined') {
-            color = QUALITATIVE_COLORS[index % QUALITATIVE_COLORS.length];
+            color = getNextColor(index);
           } else {
             color = item.color;
           }

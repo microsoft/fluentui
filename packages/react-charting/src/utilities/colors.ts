@@ -21,4 +21,8 @@ export const QualitativePalette = {
   dataVizSlot20: '#D06228',
 };
 
-export const QUALITATIVE_COLORS = Object.values(QualitativePalette);
+const QUALITATIVE_COLORS = Object.values(QualitativePalette);
+
+export const getNextColor = (index: number, offset: number = 0): string => {
+  return QUALITATIVE_COLORS[(index + offset) % QUALITATIVE_COLORS.length];
+};

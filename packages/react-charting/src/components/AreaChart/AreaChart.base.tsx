@@ -26,7 +26,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  QUALITATIVE_COLORS,
+  getNextColor,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -724,7 +724,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       ? lineChartData.map((item, index) => {
           let color: string;
           if (typeof item.color === 'undefined') {
-            color = QUALITATIVE_COLORS[index % QUALITATIVE_COLORS.length];
+            color = getNextColor(index);
           } else {
             color = item.color;
           }
