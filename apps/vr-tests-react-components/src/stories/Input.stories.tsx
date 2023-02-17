@@ -31,20 +31,23 @@ storiesOf('Input Converged', module)
       <Input appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Invalid: outline', () => <Input aria-invalid placeholder="Placeholder" />)
-  .addStory('Invalid: underline', () => <Input aria-invalid appearance="underline" placeholder="Placeholder" />)
-  .addStory('Invalid: filled-darker', () => <Input aria-invalid appearance="filled-darker" placeholder="Placeholder" />)
-  .addStory('Invalid: filled-lighter', () => (
+  .addStory('Invalid, appearance: outline', () => <Input aria-invalid placeholder="Placeholder" />)
+  .addStory('Invalid, appearance: underline', () => (
+    <Input aria-invalid appearance="underline" placeholder="Placeholder" />
+  ))
+  .addStory('Invalid, appearance: filled-darker', () => (
+    <Input aria-invalid appearance="filled-darker" placeholder="Placeholder" />
+  ))
+  .addStory('Invalid, appearance: filled-lighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Input aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Input disabled />)
-  .addStory('Disabled with value: outline', () => <Input disabled value="Disabled" />)
-  .addStory('Disabled with value: underline', () => <Input disabled appearance="underline" value="Disabled" />)
-  .addStory('Disabled with value: filled-darker', () => <Input disabled appearance="filled-darker" value="Disabled" />)
-  .addStory('Disabled with value: filled-lighter', () => (
+  .addStory('Disabled, appearance: outline', () => <Input disabled value="Disabled" />)
+  .addStory('Disabled, appearance: underline', () => <Input disabled appearance="underline" value="Disabled" />)
+  .addStory('Disabled, appearance: filled-darker', () => <Input disabled appearance="filled-darker" value="Disabled" />)
+  .addStory('Disabled, appearance: filled-lighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Input disabled appearance="filled-lighter" value="Disabled" />
