@@ -21,7 +21,7 @@ import { ts } from './ts';
 import { webpack, webpackDevServer } from './webpack';
 
 /** Do only the bare minimum setup of options and resolve paths */
-export function basicPreset() {
+function basicPreset() {
   // this adds a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
