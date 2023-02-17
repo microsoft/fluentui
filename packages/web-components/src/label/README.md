@@ -6,7 +6,7 @@
 
 ## **Design Spec**
 
-[Link to Label Design Spec in Figma](https://www.figma.com/file/aFHbqxQlX8fetFhyYl6STb/TF---Trident-control-specs?node-id=339%3A52012)
+[Link to Label Design Spec in Figma](https://www.figma.com/file/jpWO2FMBefirTyThf5Rg2P/Label?node-id=2%3A476&t=QCdofuTbXkUjMS4d-0)
 
 <br />
 
@@ -30,15 +30,13 @@ Creating a simple label element with an optional info icon and optional required
 
 ### **Fields**
 
-| Name       | Privacy | Type                           | Default     | Description                                                       |
-| ---------- | ------- | ------------------------------ | ----------- | ----------------------------------------------------------------- |
-| `id`       | public  | `string`                       |             | Specifies the id of label                                         |
-| `for`      | public  | `string`                       |             | Specifies the id of the form element the label should be bound to |
-| `form`     | public  | `string`                       |             | Specifies which form the label belongs to                         |
-| `required` | public  | `boolean`                      | `false`     | Specifies required styling for label                              |
-| `disabled` | public  | `boolean`                      | `false`     | Sets disabled state for label                                     |
-| `size`     | public  | `"small"` `"medium"` `"large"` | `"medium"`  | Specifies font size for label                                     |
-| `weight`   | public  | `"regular"` `"semibold"`       | `"regular"` | Specifies font weight for label                                   |
+| Name       | Privacy | Type                           | Default     | Description                          |
+| ---------- | ------- | ------------------------------ | ----------- | ------------------------------------ |
+| `id`       | public  | `string`                       |             | Specifies the id of label            |
+| `required` | public  | `boolean`                      | `false`     | Specifies required styling for label |
+| `disabled` | public  | `boolean`                      | `false`     | Sets disabled state for label        |
+| `size`     | public  | `"small"` `"medium"` `"large"` | `"medium"`  | Specifies font size for label        |
+| `weight`   | public  | `"regular"` `"semibold"`       | `"regular"` | Specifies font weight for label      |
 
 <br />
 
@@ -54,8 +52,6 @@ Creating a simple label element with an optional info icon and optional required
 
 | Name       | Field    |
 | ---------- | -------- |
-| `for`      | for      |
-| `from`     | from     |
 | `required` | required |
 | `disabled` | disabled |
 | `size`     | size     |
@@ -82,17 +78,15 @@ Creating a simple label element with an optional info icon and optional required
     required="${(attr: Label) => attr.required}"
     size="${(attr: Label) => attr.size}"
     weight="${(attr: Label) => attr.weight"}>
-    <label
+    <span
       class="label"
       part="label"
-      id="${(attr: Label) => attr.id}"
-      for="${(attr: Label) => attr.for}"
-      form="${(attr: Label) => attr.form}">
+      id="${(attr: Label) => attr.id}">
     <slot></slot>
     ${(attr: Label) => attr.required
       ? html`<span aria-hidden="true" part="asterisk" class="asterisk">*</span>`
       : null }
-  </label>
+  </span>
 </template>`;
 ```
 
