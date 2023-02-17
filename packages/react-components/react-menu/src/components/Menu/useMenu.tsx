@@ -9,7 +9,7 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { findFirstFocusable } from '@focuskit/react';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
@@ -251,11 +251,10 @@ const useMenuOpenState = (
   }, []);
 
   // Manage focus for open state
-  const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
     firstFocusable?.focus();
-  }, [findFirstFocusable, state.menuPopoverRef]);
+  }, [state.menuPopoverRef]);
 
   React.useEffect(() => {
     if (open) {

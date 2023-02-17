@@ -4,9 +4,11 @@ import {
   useEventCallback,
   useControllableState,
   getNativeElementProps,
+  useId,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { useList, useCommander, findAllFocusable } from '@focuskit/react';
 import { useHasParentContext } from '@fluentui/react-context-selector';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
 import type { MenuListProps, MenuListState } from './MenuList.types';
@@ -15,10 +17,14 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
  * Returns the props and state required to render the component
  */
 export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
-  const { findAllFocusable } = useFocusFinders();
+  const { targetDocument } = useFluent();
+  const documentRef = useCommander('commander');
+  const focuskitRef = useList(useId('menulist'));
+  if (targetDocument) {
+    documentRef.current = targetDocument.body;
+  }
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
-  const focusAttributes = useArrowNavigationGroup({ circular: true, ignoreDefaultKeydown: { Tab: hasMenuContext } });
 
   if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely
@@ -28,51 +34,48 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
 
   const innerRef = React.useRef<HTMLElement>(null);
 
-  const setFocusByFirstCharacter = React.useCallback(
-    (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
-      // TODO use some kind of children registration to reduce dependency on DOM roles
-      const acceptedRoles = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
-      if (!innerRef.current) {
-        return;
-      }
+  const setFocusByFirstCharacter = React.useCallback((e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
+    // TODO use some kind of children registration to reduce dependency on DOM roles
+    const acceptedRoles = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
+    if (!innerRef.current) {
+      return;
+    }
 
-      const menuItems = findAllFocusable(
-        innerRef.current,
-        (el: HTMLElement) => el.hasAttribute('role') && acceptedRoles.indexOf(el.getAttribute('role')!) !== -1,
-      );
+    const menuItems = findAllFocusable(
+      innerRef.current,
+      (el: HTMLElement) => el.hasAttribute('role') && acceptedRoles.indexOf(el.getAttribute('role')!) !== -1,
+    );
 
-      let startIndex = menuItems.indexOf(itemEl) + 1;
-      if (startIndex === menuItems.length) {
-        startIndex = 0;
-      }
+    let startIndex = menuItems.indexOf(itemEl) + 1;
+    if (startIndex === menuItems.length) {
+      startIndex = 0;
+    }
 
-      const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
-      const char = e.key.toLowerCase();
+    const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
+    const char = e.key.toLowerCase();
 
-      const getIndexFirstChars = (start: number, firstChar: string) => {
-        for (let i = start; i < firstChars.length; i++) {
-          if (char === firstChars[i]) {
-            return i;
-          }
+    const getIndexFirstChars = (start: number, firstChar: string) => {
+      for (let i = start; i < firstChars.length; i++) {
+        if (char === firstChars[i]) {
+          return i;
         }
-        return -1;
-      };
-
-      // Check remaining slots in the menu
-      let index = getIndexFirstChars(startIndex, char);
-
-      // If not found in remaining slots, check from beginning
-      if (index === -1) {
-        index = getIndexFirstChars(0, char);
       }
+      return -1;
+    };
 
-      // If match was found...
-      if (index > -1) {
-        menuItems[index].focus();
-      }
-    },
-    [findAllFocusable],
-  );
+    // Check remaining slots in the menu
+    let index = getIndexFirstChars(startIndex, char);
+
+    // If not found in remaining slots, check from beginning
+    if (index === -1) {
+      index = getIndexFirstChars(0, char);
+    }
+
+    // If match was found...
+    if (index > -1) {
+      menuItems[index].focus();
+    }
+  }, []);
 
   const [checkedValues, setCheckedValues] = useControllableState({
     state: props.checkedValues ?? (hasMenuContext ? menuContext.checkedValues : undefined),
@@ -109,10 +112,9 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
       root: 'div',
     },
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
+      ref: useMergedRefs(ref, innerRef, focuskitRef),
       role: 'menu',
       'aria-labelledby': menuContext.triggerId,
-      ...focusAttributes,
       ...props,
     }),
     hasIcons: menuContext.hasIcons || false,

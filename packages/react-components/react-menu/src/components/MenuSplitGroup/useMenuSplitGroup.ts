@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { findNextFocusable, findPrevFocusable } from '@focuskit/react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { MenuSplitGroupProps, MenuSplitGroupState } from './MenuSplitGroup.types';
 import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
@@ -24,8 +24,6 @@ export const useMenuSplitGroup_unstable = (
   const nextArrowKey = getRTLSafeKey(ArrowRight, dir);
   const prevArrowKey = getRTLSafeKey(ArrowLeft, dir);
 
-  const { findNextFocusable, findPrevFocusable } = useFocusFinders();
-
   const onKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>) => {
       const activeElement = targetDocument?.activeElement;
@@ -38,16 +36,16 @@ export const useMenuSplitGroup_unstable = (
       }
 
       if (e.key === nextArrowKey) {
-        const next = findNextFocusable(activeElement as HTMLElement, { container: innerRef.current });
+        const next = findNextFocusable(activeElement as HTMLElement, innerRef.current);
         next?.focus();
       }
 
       if (e.key === prevArrowKey) {
-        const prev = findPrevFocusable(activeElement as HTMLElement, { container: innerRef.current });
+        const prev = findPrevFocusable(activeElement as HTMLElement, innerRef.current);
         prev?.focus();
       }
     },
-    [findNextFocusable, findPrevFocusable, targetDocument, nextArrowKey, prevArrowKey],
+    [targetDocument, nextArrowKey, prevArrowKey],
   );
 
   return {

@@ -1678,6 +1678,18 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
+"@focuskit/react@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@focuskit/react/-/react-0.0.4.tgz#296708e265242577b9e2210de63501e7196b878e"
+  integrity sha512-ICXY1EH04IJzmUXlVG9nR9+M0kzWM8h9Om7AXqe0wk56zTvUTtApPNot/DMPgf6QBded9ByWvjdZtUIjW5Eu3w==
+  dependencies:
+    "@focuskit/vanilla" "^0.1.0"
+
+"@focuskit/vanilla@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@focuskit/vanilla/-/vanilla-0.1.0.tgz#3fb691f0a951bc349b283e71c4661ca1378b1fd1"
+  integrity sha512-olwdS2JdUEPNk3FpBDqhfNWW2OcNWU9y+9vmRzB+m+kUoNYDdScC0xRnwT7zolpu4irE6P+d6cJlyncMb1GNxg==
+
 "@gar/promisify@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
