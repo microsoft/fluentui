@@ -126,9 +126,7 @@ const useRootStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    // corners look strange if rounded
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
+    ...shorthands.borderRadius(0), // corners look strange if rounded
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
     borderRightStyle: 'none',
@@ -142,11 +140,7 @@ const useRootStyles = makeStyles({
     ':active,:focus-within': {
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
-    // remove rounded corners from focus underline
-    '::after': {
-      borderBottomLeftRadius: 0,
-      borderBottomRightRadius: 0,
-    },
+    '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
     ...shorthands.borderColor(tokens.colorTransparentStroke),
