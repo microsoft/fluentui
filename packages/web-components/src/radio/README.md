@@ -119,4 +119,4 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
 |-------------------|------------------------ |---------------------------|
-| `prop label` | default slotted content | React implementation requires user to pass a string through the `label` prop on the Radio component <br /> The web component implementation requires users to pass the label text through the default slotted content
+| `prop label` | default slotted content | React implementation requires user to pass a string through the `label` prop on the Radio component <br /><br /> The web component implementation requires users to pass the label text through the default slotted content
