@@ -11,7 +11,7 @@ export { Shape } from './ProgressBarShape.stories';
 export { Thickness } from './ProgressBarThickness.stories';
 
 export default {
-  title: 'Preview Components/ProgressBar',
+  title: 'Components/ProgressBar',
   component: ProgressBar,
   parameters: {
     docs: {
