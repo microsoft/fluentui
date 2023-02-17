@@ -90,7 +90,7 @@ One simple way to hide and show panels:
 function onTabSelect(event, value) {
   const panels = document.getElementsByClassName('tabpanel');
   panels.style.display = 'none';
-  const tab = document.getElementById(value);
-  tab.style.display = 'block';
+  const activePanel = document.getElementById(value + "-panel");
+  activePanel.style.display = 'block';
 }
 ```
