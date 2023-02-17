@@ -55,10 +55,11 @@ export const Tree: ForwardRefComponent<TreeProps>;
 export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
-export type TreeContextValue = Required<Pick<TreeProps, 'openItems'>> & {
+export type TreeContextValue = {
     level: number;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
+    openItems: ImmutableSet<TreeItemId>;
     focusFirstSubtreeItem(target: HTMLElement): void;
     focusSubtreeOwnerItem(target: HTMLElement): void;
     requestOpenChange(data: TreeOpenChangeData): void;
@@ -69,6 +70,9 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 
 // @public (undocumented)
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
+
+// @public (undocumented)
+export type TreeItemId = string | number;
 
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
@@ -138,11 +142,34 @@ export type TreeItemState = ComponentState<TreeItemSlots> & {
 };
 
 // @public (undocumented)
+export type TreeOpenChangeData = {
+    open: boolean;
+} & ({
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'expandIconClick';
+} | {
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'click';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: 'enter';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: 'arrowRight';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: 'arrowLeft';
+});
+
+// @public (undocumented)
+export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
+
+// @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
-    openItems?: string | string[];
-    defaultOpenItems?: string | string[];
+    openItems?: Iterable<TreeItemId>;
+    defaultOpenItems?: Iterable<TreeItemId>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
 };
 

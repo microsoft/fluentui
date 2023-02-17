@@ -45,7 +45,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const isBranch = !isLeaf;
 
-  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.includes(id));
+  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.has(id));
   const { dir, targetDocument } = useFluent_unstable();
   const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   const groupperProps = useFocusableGroup();

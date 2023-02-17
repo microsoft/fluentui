@@ -8,11 +8,13 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import type { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
+import { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { filterTreeItemAndSubtree, useTreeWalker } from '../../utils/useTreeWalker';
 import { updateOpenItems } from '../../utils/updateOpenItems';
-import { normalizeOpenItems } from '../../utils/normalizeOpenItems';
+import { ImmutableSet } from '../../utils/ImmutableSet';
+
+const emptyImmutableSet = new ImmutableSet<never>();
 
 /**
  * Create the state required to render Tree.
@@ -81,9 +83,11 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
 
   const { targetDocument } = useFluent_unstable();
   const [openItems, setOpenItems] = useControllableState({
-    state: React.useMemo(() => normalizeOpenItems(props.openItems, { keepUndefined: true }), [props.openItems]),
-    defaultState: () => normalizeOpenItems(props.defaultOpenItems),
-    initialState: [],
+    state: React.useMemo(() => props.openItems && new ImmutableSet(props.openItems), [props.openItems]),
+    defaultState: React.useMemo(() => props.defaultOpenItems && new ImmutableSet(props.defaultOpenItems), [
+      props.defaultOpenItems,
+    ]),
+    initialState: emptyImmutableSet,
   });
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
     props.onOpenChange?.(data.event, data);

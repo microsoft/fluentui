@@ -1,10 +1,15 @@
-import { TreeOpenChangeData } from '../Tree';
+import { TreeItemId, TreeOpenChangeData } from '../Tree';
+import { ImmutableSet } from './ImmutableSet';
 
-export function updateOpenItems(data: TreeOpenChangeData, previousOpenSubtrees: string[]) {
+export function updateOpenItems(
+  data: TreeOpenChangeData,
+  previousOpenItems: ImmutableSet<TreeItemId>,
+): ImmutableSet<TreeItemId> {
   const id = data.event.currentTarget.id;
-  if (data.open) {
-    return previousOpenSubtrees.includes(id) ? previousOpenSubtrees : [...previousOpenSubtrees, id];
+  const previousOpenItemsHasId = previousOpenItems.has(id);
+  if (data.open ? previousOpenItemsHasId : !previousOpenItemsHasId) {
+    return previousOpenItems;
   }
-  const nextOpenItems = previousOpenSubtrees.filter(value => value !== id);
-  return nextOpenItems.length === previousOpenSubtrees.length ? previousOpenSubtrees : nextOpenItems;
+  const nextOpenItems = new ImmutableSet<TreeItemId>(previousOpenItems);
+  return data.open ? nextOpenItems.add(id) : nextOpenItems.delete(id);
 }
