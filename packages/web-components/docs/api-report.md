@@ -4,6 +4,7 @@
 
 ```ts
 
+import { CSSDesignToken } from '@microsoft/fast-foundation';
 import { Orientation as DividerOrientation } from '@microsoft/fast-web-utilities';
 import { DividerRole } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -1075,6 +1076,176 @@ export const CounterBadgeStyles: ElementStyles;
 
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
+
+// @public (undocumented)
+export const curveAccelerateMax: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveAccelerateMid: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveAccelerateMin: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveDecelerateMax: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveDecelerateMid: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveDecelerateMin: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveEasyEase: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveEasyEaseMax: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const curveLinear: CSSDesignToken<string>;
+
+// @public
+export class Divider extends FASTDivider {
+    alignContent?: DividerAlignContent;
+    appearance?: DividerAppearance;
+    inset?: boolean;
+}
+
+// @public
+export const DividerAlignContent: {
+    readonly center: "center";
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
+
+// @public
+export const DividerAppearance: {
+    readonly strong: "strong";
+    readonly brand: "brand";
+    readonly subtle: "subtle";
+    readonly default: "default";
+};
+
+// @public
+export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
+
+// @public
+export const DividerDefinition: FASTElementDefinition<typeof Divider>;
+
+export { DividerOrientation }
+
+export { DividerRole }
+
+// @public
+export const DividerStyles: ElementStyles;
+
+// @public
+export const DividerTemplate: ElementViewTemplate<Divider>;
+
+// @public (undocumented)
+export const durationFast: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationFaster: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationNormal: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationSlower: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationUltraFast: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const durationUltraSlow: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontFamilyBase: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontFamilyMonospace: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontFamilyNumeric: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase100: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase200: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase300: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase400: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase500: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeBase600: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero1000: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero700: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero800: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontSizeHero900: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightBold: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightMedium: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightRegular: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const fontWeightSemibold: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase100: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase200: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase300: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase400: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase500: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightBase600: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero1000: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero700: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero800: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
 class ProgressBar_2 extends FASTProgress {

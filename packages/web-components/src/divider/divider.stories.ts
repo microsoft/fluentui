@@ -1,6 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../__test__/helpers.js';
+import { renderComponent } from '../helpers.stories.js';
 import type { Divider as FluentDivider } from './divider.js';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 import './define.js';
