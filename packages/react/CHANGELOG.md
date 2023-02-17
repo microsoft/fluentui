@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 15 Feb 2023 07:42:17 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Feb 2023 07:46:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.9)
+
+Fri, 17 Feb 2023 07:46:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.8..@fluentui/react_v8.105.9)
+
+### Patches
+
+- fix: move props object creation to allow for memoization in DetailsList. ([PR #26842](https://github.com/microsoft/fluentui/pull/26842) by seanmonahan@microsoft.com)
 
 ## [8.105.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.8)
 
