@@ -2,6 +2,21 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Fri, 17 Feb 2023 22:05:37 GMT",
+      "tag": "@fluentui/azure-themes_v8.5.61",
+      "version": "8.5.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.105.10",
+            "commit": "055d703d6d400235309b038e460d63cadaa3a0c3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Feb 2023 07:46:38 GMT",
       "tag": "@fluentui/azure-themes_v8.5.60",
       "version": "8.5.60",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 17 Feb 2023 07:46:37 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Feb 2023 22:05:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.105.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.10)
+
+Fri, 17 Feb 2023 22:05:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.105.9..@fluentui/react_v8.105.10)
+
+### Patches
+
+- revert: rollback List rendering change ([PR #26896](https://github.com/microsoft/fluentui/pull/26896) by seanmonahan@microsoft.com)
 
 ## [8.105.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.105.9)
 

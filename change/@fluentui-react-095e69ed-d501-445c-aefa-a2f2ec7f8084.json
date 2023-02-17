@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "revert: rollback List rendering change",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
