@@ -16,6 +16,25 @@ export function useTableColumnResizeKeyboardHandler(columnResizeState: ColumnRes
   const { setNavigationGroupParams, defaultNavigationGroupParams } = useKeyboardNavigationContext();
   const [interactiveMode, setInteractiveMode] = React.useState(false);
 
+  const enableInteractiveMode = React.useCallback(() => {
+    setInteractiveMode(true);
+    setNavigationGroupParams({
+      ...defaultNavigationGroupParams,
+      ignoreDefaultKeydown: {
+        ArrowLeft: true,
+        ArrowRight: true,
+      },
+    });
+  }, [defaultNavigationGroupParams, setNavigationGroupParams]);
+
+  const disableInteractiveMode = React.useCallback(() => {
+    setInteractiveMode(false);
+    setNavigationGroupParams(defaultNavigationGroupParams);
+  }, [defaultNavigationGroupParams, setNavigationGroupParams]);
+
+  /**
+   * Handles keyboard events. Doesn't cover entering interactive mode with the VoiceOver, see clickHandler
+   */
   const keyboardHandler = (columnId: TableColumnId) => (event: React.KeyboardEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -41,35 +60,40 @@ export function useTableColumnResizeKeyboardHandler(columnResizeState: ColumnRes
       case SPACEBAR:
       case ENTER:
         if (!interactiveMode) {
-          setInteractiveMode(true);
-          setNavigationGroupParams({
-            ...defaultNavigationGroupParams,
-            ignoreDefaultKeydown: {
-              ArrowLeft: true,
-              ArrowRight: true,
-            },
-          });
+          enableInteractiveMode();
         } else {
-          setInteractiveMode(false);
-          setNavigationGroupParams(defaultNavigationGroupParams);
+          disableInteractiveMode();
         }
         break;
 
       case ESC:
         if (interactiveMode) {
-          setInteractiveMode(false);
-          setNavigationGroupParams(defaultNavigationGroupParams);
+          disableInteractiveMode();
         }
         break;
     }
   };
 
-  const onBlur = (columnId: TableColumnId) => (event: React.FocusEvent) => {
-    setNavigationGroupParams(defaultNavigationGroupParams);
+  /**
+   * Handles click event (for VoiceOver).
+   */
+  const clickHandler = (columnId: TableColumnId) => {
+    return (event: React.MouseEvent) => {
+      if (!interactiveMode) {
+        enableInteractiveMode();
+      } else {
+        disableInteractiveMode();
+      }
+    };
+  };
+
+  const onBlur = (event: React.FocusEvent) => {
+    disableInteractiveMode();
   };
 
   return {
     getOnKeyDown: (columnId: TableColumnId) => keyboardHandler(columnId),
-    getOnBlur: (columnId: TableColumnId) => onBlur(columnId),
+    getOnClick: (columnId: TableColumnId) => clickHandler(columnId),
+    getOnBlur: () => onBlur,
   };
 }

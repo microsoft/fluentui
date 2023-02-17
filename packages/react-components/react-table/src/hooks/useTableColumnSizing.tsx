@@ -83,7 +83,8 @@ function useTableColumnSizingState<TItem>(
                 onMouseDown={mouseHandler.getOnMouseDown(columnId)}
                 onTouchStart={mouseHandler.getOnMouseDown(columnId)}
                 onKeyDown={keyboardHandler.getOnKeyDown(columnId)}
-                onBlur={keyboardHandler.getOnBlur(columnId)}
+                onClick={keyboardHandler.getOnClick(columnId)}
+                onBlur={keyboardHandler.getOnBlur()}
                 value={col ? col.width : 0}
               />
             )}
