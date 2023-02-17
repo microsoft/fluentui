@@ -1173,6 +1173,59 @@ export const fontWeightRegular: CSSDesignToken<string>;
 // @public (undocumented)
 export const fontWeightSemibold: CSSDesignToken<string>;
 
+// @public
+class Image_2 extends FASTElement {
+    block?: boolean;
+    border?: boolean;
+    borderRadius: ImageBorderRadius;
+    fit: ImageFit;
+    shadow?: boolean;
+    shape: ImageShape;
+}
+export { Image_2 as Image }
+
+// @public
+export const ImageBorderRadius: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly xlarge: "x-large";
+};
+
+// @public
+export type ImageBorderRadius = ValuesOf<typeof ImageBorderRadius>;
+
+// @public
+export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
+
+// @public
+export const ImageFit: {
+    readonly none: "none";
+    readonly center: "center";
+    readonly contain: "contain";
+    readonly cover: "cover";
+    readonly default: "default";
+};
+
+// @public
+export type ImageFit = ValuesOf<typeof ImageFit>;
+
+// @public
+export const ImageShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type ImageShape = ValuesOf<typeof ImageShape>;
+
+// @public
+export const ImageStyles: ElementStyles;
+
+// @public
+export const ImageTemplate: ElementViewTemplate<Image_2>;
+
 // @public (undocumented)
 export const lineHeightBase100: CSSDesignToken<string>;
 
@@ -1204,21 +1257,7 @@ export const lineHeightHero800: CSSDesignToken<string>;
 export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
-class Image_2 extends FASTElement {
-}
-export { Image_2 as Image }
-
-// @public
-export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
-
-// @public
-export const ImageStyles: ElementStyles;
-
-// @public
-export const ImageTemplate: ElementViewTemplate<Image_2>;
-
-// @public
-export class ProgressBar extends FASTProgress {
+class ProgressBar_2 extends FASTProgress {
     shape: ProgressBarShape;
     thickness: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
