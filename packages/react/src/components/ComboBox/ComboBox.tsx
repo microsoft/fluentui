@@ -353,9 +353,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       text,
       onMenuOpen,
       onMenuDismissed,
-      hoisted: { selectedIndices, currentOptions },
+      hoisted: { currentOptions, selectedIndices },
     } = this.props;
-    const { isOpen, currentPendingValueValidIndex, currentPendingValue } = this.state;
+    const { currentPendingValue, currentPendingValueValidIndex, isOpen } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -430,8 +430,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     } else if (isOpen && this._hasFocus() && newCurrentPendingValueValidIndex !== -1) {
       descendantText =
         options[newCurrentPendingValueValidIndex].id ?? this._id + '-list' + newCurrentPendingValueValidIndex;
-    } else {
-      descendantText = undefined;
     }
 
     if (descendantText !== this.state.ariaActiveDescendantValue) {
@@ -614,7 +612,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       hoisted: { suggestedDisplayValue },
     } = this.props;
 
-    const { isOpen, ariaActiveDescendantValue } = this.state;
+    const { ariaActiveDescendantValue, isOpen } = this.state;
 
     // If the combo box has focus, is multiselect, and has a display string, then use that placeholder
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
