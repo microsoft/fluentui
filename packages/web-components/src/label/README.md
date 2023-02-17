@@ -12,7 +12,9 @@
 
 ## **Engineering Spec**
 
-fluent-label is a web component implementation of an HTML label element. The fluent-label several visual font sizes (small, medium, large) and font weights (regular, semibold). The fluent-label also provides appearances for required and disabled states.
+Due to the cost of associating elements across the shadow DOM boundary the `fluent-label` will not have access to the element it is intended to reference. For this reason the `fluent-label` is for visual purposes only.
+
+The fluent-label has several visual font size (small, medium, large) and font weight(regular, semibold) options. The fluent-label also provides appearances for required and disabled states.
 
 ### Use Case
 
