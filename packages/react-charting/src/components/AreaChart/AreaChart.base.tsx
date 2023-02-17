@@ -64,7 +64,7 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
-  emptyChart: boolean;
+  emptyChart?: boolean;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
