@@ -34,7 +34,10 @@ Each tab typically contains a text header and often includes an icon.
 | ------ | --------------------------------------------- | ------------------ | ------- |
 | change | Change event fires on keyboard or mouse click | html event handler | -       |
 
-## Tab List example - option 1 - more closely resembles Fast component
+
+## Merging the APIs of the FAST and Fluent React controls could work in two ways:
+
+## Option 1 - Tab List example - more closely resembles Fast component
 
 Component works like this:
 
@@ -54,7 +57,7 @@ Component works like this:
 </fluent-tab-list>
 ```
 
-## Tab List - option 2 - more closely resembles FluentUI React v9 tab-list
+## Option 2 - Tab List - more closely resembles FluentUI React v9 tab-list
 
 Adds aditional component `fluent-tab-panel-group`.
 
