@@ -6,8 +6,6 @@
 
 /// <reference types="react" />
 
-import type { ARIAButtonElement } from '@fluentui/react-aria';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -18,29 +16,6 @@ import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @public
-export const BaseTreeItem: ForwardRefComponent<BaseTreeItemProps>;
-
-// @public (undocumented)
-export const baseTreeItemClassNames: SlotClassNames<BaseTreeItemSlots>;
-
-// @public
-export type BaseTreeItemProps = ComponentProps<BaseTreeItemSlots>;
-
-// @public (undocumented)
-export type BaseTreeItemSlots = {
-    root: Slot<ARIAButtonSlotProps>;
-};
-
-// @public
-export type BaseTreeItemState = ComponentState<BaseTreeItemSlots> & {
-    open: boolean;
-    isLeaf: boolean;
-};
-
-// @public
-export const renderBaseTreeItem_unstable: (state: BaseTreeItemState) => JSX.Element;
 
 // @public (undocumented)
 export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
@@ -58,6 +33,8 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 export type TreeContextValue = {
     level: number;
     openSubtrees: string[];
+    appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+    size: 'small' | 'medium';
     focusFirstSubtreeItem(target: HTMLElement): void;
     focusSubtreeOwnerItem(target: HTMLElement): void;
     requestOpenChange(data: TreeOpenChangeData): void;
@@ -70,21 +47,30 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 
 // @public
-export type TreeItemProps = ComponentProps<TreeItemSlots> & BaseTreeItemProps;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 
 // @public (undocumented)
-export type TreeItemSlots = BaseTreeItemSlots & {
+export type TreeItemSlots = {
+    root: Slot<'div'>;
     expandIcon?: Slot<'span'>;
     iconBefore?: Slot<'span'>;
     iconAfter?: Slot<'span'>;
-    actionIcon?: Slot<'span'>;
+    badges?: Slot<'span'>;
+    actions?: Slot<'span'>;
+    groupper: NonNullable<Slot<'span'>>;
 };
 
 // @public
-export type TreeItemState = ComponentState<TreeItemSlots>;
+export type TreeItemState = ComponentState<TreeItemSlots> & {
+    open: boolean;
+    isLeaf: boolean;
+    keepActionsOpen: boolean;
+};
 
 // @public (undocumented)
 export type TreeProps = ComponentProps<TreeSlots> & {
+    appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
+    size?: 'small' | 'medium';
     openSubtrees?: string | string[];
     defaultOpenSubtrees?: string | string[];
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
@@ -104,19 +90,13 @@ export type TreeState = ComponentState<TreeSlots> & TreeContextValue & {
 };
 
 // @public
-export const useBaseTreeItem_unstable: (props: BaseTreeItemProps, ref: React_2.Ref<BaseTreeItemElement>) => BaseTreeItemState;
-
-// @public
-export const useBaseTreeItemStyles_unstable: (state: BaseTreeItemState) => BaseTreeItemState;
-
-// @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
 
 // @public (undocumented)
 export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
 
 // @public
-export const useTreeItem_unstable: (props: TreeItemProps, ref: React_2.Ref<TreeItemElement>) => TreeItemState;
+export const useTreeItem_unstable: (props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>) => TreeItemState;
 
 // @public
 export const useTreeItemStyles_unstable: (state: TreeItemState) => TreeItemState;

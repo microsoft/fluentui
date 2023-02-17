@@ -115,7 +115,15 @@ export const SortControlled = () => {
         },
         renderCell: item => {
           return (
-            <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+            <TableCellLayout
+              media={
+                <Avatar
+                  aria-label={item.author.label}
+                  name={item.author.label}
+                  badge={{ status: item.author.status }}
+                />
+              }
+            >
               {item.author.label}
             </TableCellLayout>
           );

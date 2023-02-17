@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
     "@types/faker": "^4.1.3",
@@ -59,7 +58,8 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
-    "storywright": "0.0.26-beta.1"
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-babel": "*"
   },
   "publishConfig": {
     "access": "public"
@@ -70,11 +70,9 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
-    "screener:build": "yarn build:storybook",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
     "start:storybook": "start-storybook",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
-    "vr:build": "cross-env NODE_ENV=production gulp screener:build",
-    "vr:test": "gulp screener:runner"
+    "vr:build": "yarn build:storybook",
+    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }

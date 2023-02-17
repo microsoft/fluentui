@@ -4,491 +4,210 @@
 
 ```ts
 
-// @public (undocumented)
-export type BorderRadiusTokens = {
-    borderRadiusNone: string;
-    borderRadiusSmall: string;
-    borderRadiusMedium: string;
-    borderRadiusLarge: string;
-    borderRadiusXLarge: string;
-    borderRadiusCircular: string;
-};
+import { BorderRadiusTokens } from '@fluentui/tokens';
+import { Brands } from '@fluentui/tokens';
+import { BrandVariants } from '@fluentui/tokens';
+import { ColorPaletteAnchor } from '@fluentui/tokens';
+import { ColorPaletteBeige } from '@fluentui/tokens';
+import { ColorPaletteBerry } from '@fluentui/tokens';
+import { ColorPaletteBlue } from '@fluentui/tokens';
+import { ColorPaletteBrass } from '@fluentui/tokens';
+import { ColorPaletteBrown } from '@fluentui/tokens';
+import { ColorPaletteCornflower } from '@fluentui/tokens';
+import { ColorPaletteCranberry } from '@fluentui/tokens';
+import { ColorPaletteDarkGreen } from '@fluentui/tokens';
+import { ColorPaletteDarkOrange } from '@fluentui/tokens';
+import { ColorPaletteDarkRed } from '@fluentui/tokens';
+import { ColorPaletteForest } from '@fluentui/tokens';
+import { ColorPaletteGold } from '@fluentui/tokens';
+import { ColorPaletteGrape } from '@fluentui/tokens';
+import { ColorPaletteGreen } from '@fluentui/tokens';
+import { ColorPaletteLavender } from '@fluentui/tokens';
+import { ColorPaletteLightGreen } from '@fluentui/tokens';
+import { ColorPaletteLightTeal } from '@fluentui/tokens';
+import { ColorPaletteLilac } from '@fluentui/tokens';
+import { ColorPaletteMagenta } from '@fluentui/tokens';
+import { ColorPaletteMarigold } from '@fluentui/tokens';
+import { ColorPaletteMink } from '@fluentui/tokens';
+import { ColorPaletteNavy } from '@fluentui/tokens';
+import { ColorPalettePeach } from '@fluentui/tokens';
+import { ColorPalettePink } from '@fluentui/tokens';
+import { ColorPalettePlatinum } from '@fluentui/tokens';
+import { ColorPalettePlum } from '@fluentui/tokens';
+import { ColorPalettePumpkin } from '@fluentui/tokens';
+import { ColorPalettePurple } from '@fluentui/tokens';
+import { ColorPaletteRed } from '@fluentui/tokens';
+import { ColorPaletteRoyalBlue } from '@fluentui/tokens';
+import { ColorPaletteSeafoam } from '@fluentui/tokens';
+import { ColorPaletteSteel } from '@fluentui/tokens';
+import { ColorPaletteTeal } from '@fluentui/tokens';
+import { ColorPaletteTokens } from '@fluentui/tokens';
+import { ColorPaletteYellow } from '@fluentui/tokens';
+import { ColorTokens } from '@fluentui/tokens';
+import { createDarkTheme } from '@fluentui/tokens';
+import { createHighContrastTheme } from '@fluentui/tokens';
+import { createLightTheme } from '@fluentui/tokens';
+import { createTeamsDarkTheme } from '@fluentui/tokens';
+import { CurveTokens } from '@fluentui/tokens';
+import { DurationTokens } from '@fluentui/tokens';
+import { FontFamilyTokens } from '@fluentui/tokens';
+import { FontSizeTokens } from '@fluentui/tokens';
+import { FontWeightTokens } from '@fluentui/tokens';
+import { HorizontalSpacingTokens } from '@fluentui/tokens';
+import { LineHeightTokens } from '@fluentui/tokens';
+import { PartialTheme } from '@fluentui/tokens';
+import { ShadowBrandTokens } from '@fluentui/tokens';
+import { ShadowTokens } from '@fluentui/tokens';
+import { SpacingTokens } from '@fluentui/tokens';
+import { StrokeWidthTokens } from '@fluentui/tokens';
+import { teamsDarkTheme } from '@fluentui/tokens';
+import { teamsHighContrastTheme } from '@fluentui/tokens';
+import { teamsLightTheme } from '@fluentui/tokens';
+import { Theme } from '@fluentui/tokens';
+import { themeToTokensObject } from '@fluentui/tokens';
+import { tokens } from '@fluentui/tokens';
+import { TypographyStyle } from '@fluentui/tokens';
+import { TypographyStyles } from '@fluentui/tokens';
+import { typographyStyles } from '@fluentui/tokens';
+import { VerticalSpacingTokens } from '@fluentui/tokens';
+import { webDarkTheme } from '@fluentui/tokens';
+import { webLightTheme } from '@fluentui/tokens';
 
-// @public (undocumented)
-export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160;
+export { BorderRadiusTokens }
 
-// @public (undocumented)
-export type BrandVariants = Record<Brands, string>;
+export { Brands }
 
-// @public (undocumented)
-export type ColorPaletteAnchor = 'colorPaletteAnchorBackground2' | 'colorPaletteAnchorForeground2' | 'colorPaletteAnchorBorderActive';
+export { BrandVariants }
 
-// @public (undocumented)
-export type ColorPaletteBeige = 'colorPaletteBeigeBackground2' | 'colorPaletteBeigeForeground2' | 'colorPaletteBeigeBorderActive';
+export { ColorPaletteAnchor }
 
-// @public (undocumented)
-export type ColorPaletteBerry = 'colorPaletteBerryBackground1' | 'colorPaletteBerryBackground2' | 'colorPaletteBerryBackground3' | 'colorPaletteBerryForeground1' | 'colorPaletteBerryForeground2' | 'colorPaletteBerryForeground3' | 'colorPaletteBerryBorderActive' | 'colorPaletteBerryBorder1' | 'colorPaletteBerryBorder2';
+export { ColorPaletteBeige }
 
-// @public (undocumented)
-export type ColorPaletteBlue = 'colorPaletteBlueBackground2' | 'colorPaletteBlueForeground2' | 'colorPaletteBlueBorderActive';
+export { ColorPaletteBerry }
 
-// @public (undocumented)
-export type ColorPaletteBrass = 'colorPaletteBrassBackground2' | 'colorPaletteBrassForeground2' | 'colorPaletteBrassBorderActive';
+export { ColorPaletteBlue }
 
-// @public (undocumented)
-export type ColorPaletteBrown = 'colorPaletteBrownBackground2' | 'colorPaletteBrownForeground2' | 'colorPaletteBrownBorderActive';
+export { ColorPaletteBrass }
 
-// @public (undocumented)
-export type ColorPaletteCornflower = 'colorPaletteCornflowerBackground2' | 'colorPaletteCornflowerForeground2' | 'colorPaletteCornflowerBorderActive';
+export { ColorPaletteBrown }
 
-// @public (undocumented)
-export type ColorPaletteCranberry = 'colorPaletteCranberryBackground2' | 'colorPaletteCranberryForeground2' | 'colorPaletteCranberryBorderActive';
+export { ColorPaletteCornflower }
 
-// @public (undocumented)
-export type ColorPaletteDarkGreen = 'colorPaletteDarkGreenBackground2' | 'colorPaletteDarkGreenForeground2' | 'colorPaletteDarkGreenBorderActive';
+export { ColorPaletteCranberry }
 
-// @public (undocumented)
-export type ColorPaletteDarkOrange = 'colorPaletteDarkOrangeBackground1' | 'colorPaletteDarkOrangeBackground2' | 'colorPaletteDarkOrangeBackground3' | 'colorPaletteDarkOrangeForeground1' | 'colorPaletteDarkOrangeForeground2' | 'colorPaletteDarkOrangeForeground3' | 'colorPaletteDarkOrangeBorderActive' | 'colorPaletteDarkOrangeBorder1' | 'colorPaletteDarkOrangeBorder2';
+export { ColorPaletteDarkGreen }
 
-// @public (undocumented)
-export type ColorPaletteDarkRed = 'colorPaletteDarkRedBackground2' | 'colorPaletteDarkRedForeground2' | 'colorPaletteDarkRedBorderActive';
+export { ColorPaletteDarkOrange }
 
-// @public (undocumented)
-export type ColorPaletteForest = 'colorPaletteForestBackground2' | 'colorPaletteForestForeground2' | 'colorPaletteForestBorderActive';
+export { ColorPaletteDarkRed }
 
-// @public (undocumented)
-export type ColorPaletteGold = 'colorPaletteGoldBackground2' | 'colorPaletteGoldForeground2' | 'colorPaletteGoldBorderActive';
+export { ColorPaletteForest }
 
-// @public (undocumented)
-export type ColorPaletteGrape = 'colorPaletteGrapeBackground2' | 'colorPaletteGrapeForeground2' | 'colorPaletteGrapeBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteGreen = 'colorPaletteGreenBackground1' | 'colorPaletteGreenBackground2' | 'colorPaletteGreenBackground3' | 'colorPaletteGreenForeground1' | 'colorPaletteGreenForeground2' | 'colorPaletteGreenForeground3' | 'colorPaletteGreenForegroundInverted' | 'colorPaletteGreenBorderActive' | 'colorPaletteGreenBorder1' | 'colorPaletteGreenBorder2';
-
-// @public (undocumented)
-export type ColorPaletteLavender = 'colorPaletteLavenderBackground2' | 'colorPaletteLavenderForeground2' | 'colorPaletteLavenderBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteLightGreen = 'colorPaletteLightGreenBackground1' | 'colorPaletteLightGreenBackground2' | 'colorPaletteLightGreenBackground3' | 'colorPaletteLightGreenForeground1' | 'colorPaletteLightGreenForeground2' | 'colorPaletteLightGreenForeground3' | 'colorPaletteLightGreenBorderActive' | 'colorPaletteLightGreenBorder1' | 'colorPaletteLightGreenBorder2';
-
-// @public (undocumented)
-export type ColorPaletteLightTeal = 'colorPaletteLightTealBackground2' | 'colorPaletteLightTealForeground2' | 'colorPaletteLightTealBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteLilac = 'colorPaletteLilacBackground2' | 'colorPaletteLilacForeground2' | 'colorPaletteLilacBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteMagenta = 'colorPaletteMagentaBackground2' | 'colorPaletteMagentaForeground2' | 'colorPaletteMagentaBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteMarigold = 'colorPaletteMarigoldBackground1' | 'colorPaletteMarigoldBackground2' | 'colorPaletteMarigoldBackground3' | 'colorPaletteMarigoldForeground1' | 'colorPaletteMarigoldForeground2' | 'colorPaletteMarigoldForeground3' | 'colorPaletteMarigoldBorderActive' | 'colorPaletteMarigoldBorder1' | 'colorPaletteMarigoldBorder2';
-
-// @public (undocumented)
-export type ColorPaletteMink = 'colorPaletteMinkBackground2' | 'colorPaletteMinkForeground2' | 'colorPaletteMinkBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteNavy = 'colorPaletteNavyBackground2' | 'colorPaletteNavyForeground2' | 'colorPaletteNavyBorderActive';
-
-// @public (undocumented)
-export type ColorPalettePeach = 'colorPalettePeachBackground2' | 'colorPalettePeachForeground2' | 'colorPalettePeachBorderActive';
-
-// @public (undocumented)
-export type ColorPalettePink = 'colorPalettePinkBackground2' | 'colorPalettePinkForeground2' | 'colorPalettePinkBorderActive';
-
-// @public (undocumented)
-export type ColorPalettePlatinum = 'colorPalettePlatinumBackground2' | 'colorPalettePlatinumForeground2' | 'colorPalettePlatinumBorderActive';
-
-// @public (undocumented)
-export type ColorPalettePlum = 'colorPalettePlumBackground2' | 'colorPalettePlumForeground2' | 'colorPalettePlumBorderActive';
-
-// @public (undocumented)
-export type ColorPalettePumpkin = 'colorPalettePumpkinBackground2' | 'colorPalettePumpkinForeground2' | 'colorPalettePumpkinBorderActive';
-
-// @public (undocumented)
-export type ColorPalettePurple = 'colorPalettePurpleBackground2' | 'colorPalettePurpleForeground2' | 'colorPalettePurpleBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteRed = 'colorPaletteRedBackground1' | 'colorPaletteRedBackground2' | 'colorPaletteRedBackground3' | 'colorPaletteRedForeground1' | 'colorPaletteRedForeground2' | 'colorPaletteRedForeground3' | 'colorPaletteRedForegroundInverted' | 'colorPaletteRedBorderActive' | 'colorPaletteRedBorder1' | 'colorPaletteRedBorder2';
-
-// @public (undocumented)
-export type ColorPaletteRoyalBlue = 'colorPaletteRoyalBlueBackground2' | 'colorPaletteRoyalBlueForeground2' | 'colorPaletteRoyalBlueBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteSeafoam = 'colorPaletteSeafoamBackground2' | 'colorPaletteSeafoamForeground2' | 'colorPaletteSeafoamBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteSteel = 'colorPaletteSteelBackground2' | 'colorPaletteSteelForeground2' | 'colorPaletteSteelBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteTeal = 'colorPaletteTealBackground2' | 'colorPaletteTealForeground2' | 'colorPaletteTealBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteTokens = StatusColorPaletteTokens & PersonaColorPaletteTokens;
-
-// @public (undocumented)
-export type ColorPaletteYellow = 'colorPaletteYellowBackground1' | 'colorPaletteYellowBackground2' | 'colorPaletteYellowBackground3' | 'colorPaletteYellowForeground1' | 'colorPaletteYellowForeground2' | 'colorPaletteYellowForeground3' | 'colorPaletteYellowForegroundInverted' | 'colorPaletteYellowBorderActive' | 'colorPaletteYellowBorder1' | 'colorPaletteYellowBorder2';
-
-// @public
-export type ColorTokens = {
-    colorNeutralForeground1: string;
-    colorNeutralForeground1Hover: string;
-    colorNeutralForeground1Pressed: string;
-    colorNeutralForeground1Selected: string;
-    colorNeutralForeground2: string;
-    colorNeutralForeground2Hover: string;
-    colorNeutralForeground2Pressed: string;
-    colorNeutralForeground2Selected: string;
-    colorNeutralForeground2BrandHover: string;
-    colorNeutralForeground2BrandPressed: string;
-    colorNeutralForeground2BrandSelected: string;
-    colorNeutralForeground3: string;
-    colorNeutralForeground3Hover: string;
-    colorNeutralForeground3Pressed: string;
-    colorNeutralForeground3Selected: string;
-    colorNeutralForeground3BrandHover: string;
-    colorNeutralForeground3BrandPressed: string;
-    colorNeutralForeground3BrandSelected: string;
-    colorNeutralForeground4: string;
-    colorNeutralForegroundDisabled: string;
-    colorNeutralForegroundInvertedDisabled: string;
-    colorBrandForegroundLink: string;
-    colorBrandForegroundLinkHover: string;
-    colorBrandForegroundLinkPressed: string;
-    colorBrandForegroundLinkSelected: string;
-    colorNeutralForeground2Link: string;
-    colorNeutralForeground2LinkHover: string;
-    colorNeutralForeground2LinkPressed: string;
-    colorNeutralForeground2LinkSelected: string;
-    colorCompoundBrandForeground1: string;
-    colorCompoundBrandForeground1Hover: string;
-    colorCompoundBrandForeground1Pressed: string;
-    colorBrandForeground1: string;
-    colorBrandForeground2: string;
-    colorNeutralForeground1Static: string;
-    colorNeutralForegroundInverted: string;
-    colorNeutralForegroundInvertedHover: string;
-    colorNeutralForegroundInvertedPressed: string;
-    colorNeutralForegroundInvertedSelected: string;
-    colorNeutralForegroundInverted2: string;
-    colorNeutralForegroundOnBrand: string;
-    colorNeutralForegroundStaticInverted: string;
-    colorNeutralForegroundInvertedLink: string;
-    colorNeutralForegroundInvertedLinkHover: string;
-    colorNeutralForegroundInvertedLinkPressed: string;
-    colorNeutralForegroundInvertedLinkSelected: string;
-    colorBrandForegroundInverted: string;
-    colorBrandForegroundInvertedHover: string;
-    colorBrandForegroundInvertedPressed: string;
-    colorBrandForegroundOnLight: string;
-    colorBrandForegroundOnLightHover: string;
-    colorBrandForegroundOnLightPressed: string;
-    colorBrandForegroundOnLightSelected: string;
-    colorNeutralBackground1: string;
-    colorNeutralBackground1Hover: string;
-    colorNeutralBackground1Pressed: string;
-    colorNeutralBackground1Selected: string;
-    colorNeutralBackground2: string;
-    colorNeutralBackground2Hover: string;
-    colorNeutralBackground2Pressed: string;
-    colorNeutralBackground2Selected: string;
-    colorNeutralBackground3: string;
-    colorNeutralBackground3Hover: string;
-    colorNeutralBackground3Pressed: string;
-    colorNeutralBackground3Selected: string;
-    colorNeutralBackground4: string;
-    colorNeutralBackground4Hover: string;
-    colorNeutralBackground4Pressed: string;
-    colorNeutralBackground4Selected: string;
-    colorNeutralBackground5: string;
-    colorNeutralBackground5Hover: string;
-    colorNeutralBackground5Pressed: string;
-    colorNeutralBackground5Selected: string;
-    colorNeutralBackground6: string;
-    colorNeutralBackgroundStatic: string;
-    colorNeutralBackgroundInverted: string;
-    colorSubtleBackground: string;
-    colorSubtleBackgroundHover: string;
-    colorSubtleBackgroundPressed: string;
-    colorSubtleBackgroundSelected: string;
-    colorSubtleBackgroundLightAlphaHover: string;
-    colorSubtleBackgroundLightAlphaPressed: string;
-    colorSubtleBackgroundLightAlphaSelected: string;
-    colorSubtleBackgroundInverted: string;
-    colorSubtleBackgroundInvertedHover: string;
-    colorSubtleBackgroundInvertedPressed: string;
-    colorSubtleBackgroundInvertedSelected: string;
-    colorTransparentBackground: string;
-    colorTransparentBackgroundHover: string;
-    colorTransparentBackgroundPressed: string;
-    colorTransparentBackgroundSelected: string;
-    colorNeutralBackgroundDisabled: string;
-    colorNeutralBackgroundInvertedDisabled: string;
-    colorNeutralStencil1: string;
-    colorNeutralStencil2: string;
-    colorNeutralStencil1Alpha: string;
-    colorNeutralStencil2Alpha: string;
-    colorBackgroundOverlay: string;
-    colorScrollbarOverlay: string;
-    colorBrandBackground: string;
-    colorBrandBackgroundHover: string;
-    colorBrandBackgroundPressed: string;
-    colorBrandBackgroundSelected: string;
-    colorCompoundBrandBackground: string;
-    colorCompoundBrandBackgroundHover: string;
-    colorCompoundBrandBackgroundPressed: string;
-    colorBrandBackgroundStatic: string;
-    colorBrandBackground2: string;
-    colorBrandBackgroundInverted: string;
-    colorBrandBackgroundInvertedHover: string;
-    colorBrandBackgroundInvertedPressed: string;
-    colorBrandBackgroundInvertedSelected: string;
-    colorNeutralStrokeAccessible: string;
-    colorNeutralStrokeAccessibleHover: string;
-    colorNeutralStrokeAccessiblePressed: string;
-    colorNeutralStrokeAccessibleSelected: string;
-    colorNeutralStroke1: string;
-    colorNeutralStroke1Hover: string;
-    colorNeutralStroke1Pressed: string;
-    colorNeutralStroke1Selected: string;
-    colorNeutralStroke2: string;
-    colorNeutralStroke3: string;
-    colorNeutralStrokeOnBrand: string;
-    colorNeutralStrokeOnBrand2: string;
-    colorNeutralStrokeOnBrand2Hover: string;
-    colorNeutralStrokeOnBrand2Pressed: string;
-    colorNeutralStrokeOnBrand2Selected: string;
-    colorBrandStroke1: string;
-    colorBrandStroke2: string;
-    colorCompoundBrandStroke: string;
-    colorCompoundBrandStrokeHover: string;
-    colorCompoundBrandStrokePressed: string;
-    colorNeutralStrokeDisabled: string;
-    colorNeutralStrokeInvertedDisabled: string;
-    colorTransparentStroke: string;
-    colorTransparentStrokeInteractive: string;
-    colorTransparentStrokeDisabled: string;
-    colorStrokeFocus1: string;
-    colorStrokeFocus2: string;
-    colorNeutralShadowAmbient: string;
-    colorNeutralShadowKey: string;
-    colorNeutralShadowAmbientLighter: string;
-    colorNeutralShadowKeyLighter: string;
-    colorNeutralShadowAmbientDarker: string;
-    colorNeutralShadowKeyDarker: string;
-    colorBrandShadowAmbient: string;
-    colorBrandShadowKey: string;
-};
-
-// @public (undocumented)
-export const createDarkTheme: (brand: BrandVariants) => Theme;
-
-// @public (undocumented)
-export const createHighContrastTheme: () => Theme;
-
-// @public (undocumented)
-export const createLightTheme: (brand: BrandVariants) => Theme;
-
-// @public (undocumented)
-export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
-
-// @public (undocumented)
-export type CurveTokens = {
-    curveAccelerateMax: string;
-    curveAccelerateMid: string;
-    curveAccelerateMin: string;
-    curveDecelerateMax: string;
-    curveDecelerateMid: string;
-    curveDecelerateMin: string;
-    curveEasyEaseMax: string;
-    curveEasyEase: string;
-    curveLinear: string;
-};
-
-// @public (undocumented)
-export type DurationTokens = {
-    durationUltraFast: string;
-    durationFaster: string;
-    durationFast: string;
-    durationNormal: string;
-    durationSlow: string;
-    durationSlower: string;
-    durationUltraSlow: string;
-};
-
-// @public (undocumented)
-export type FontFamilyTokens = {
-    fontFamilyBase: string;
-    fontFamilyMonospace: string;
-    fontFamilyNumeric: string;
-};
-
-// @public (undocumented)
-export type FontSizeTokens = {
-    fontSizeBase100: string;
-    fontSizeBase200: string;
-    fontSizeBase300: string;
-    fontSizeBase400: string;
-    fontSizeBase500: string;
-    fontSizeBase600: string;
-    fontSizeHero700: string;
-    fontSizeHero800: string;
-    fontSizeHero900: string;
-    fontSizeHero1000: string;
-};
-
-// @public (undocumented)
-export type FontWeightTokens = {
-    fontWeightRegular: number;
-    fontWeightMedium: number;
-    fontWeightSemibold: number;
-    fontWeightBold: number;
-};
-
-// @public (undocumented)
-export type HorizontalSpacingTokens = {
-    spacingHorizontalNone: string;
-    spacingHorizontalXXS: string;
-    spacingHorizontalXS: string;
-    spacingHorizontalSNudge: string;
-    spacingHorizontalS: string;
-    spacingHorizontalMNudge: string;
-    spacingHorizontalM: string;
-    spacingHorizontalL: string;
-    spacingHorizontalXL: string;
-    spacingHorizontalXXL: string;
-    spacingHorizontalXXXL: string;
-};
-
-// @public (undocumented)
-export type LineHeightTokens = {
-    lineHeightBase100: string;
-    lineHeightBase200: string;
-    lineHeightBase300: string;
-    lineHeightBase400: string;
-    lineHeightBase500: string;
-    lineHeightBase600: string;
-    lineHeightHero700: string;
-    lineHeightHero800: string;
-    lineHeightHero900: string;
-    lineHeightHero1000: string;
-};
-
-// @public (undocumented)
-export type PartialTheme = Partial<Theme>;
-
-// @public (undocumented)
-export type ShadowBrandTokens = {
-    shadow2Brand: string;
-    shadow4Brand: string;
-    shadow8Brand: string;
-    shadow16Brand: string;
-    shadow28Brand: string;
-    shadow64Brand: string;
-};
-
-// @public
-export type ShadowTokens = {
-    shadow2: string;
-    shadow4: string;
-    shadow8: string;
-    shadow16: string;
-    shadow28: string;
-    shadow64: string;
-};
-
-// @public (undocumented)
-export type SpacingTokens = {
-    none: string;
-    xxs: string;
-    xs: string;
-    sNudge: string;
-    s: string;
-    mNudge: string;
-    m: string;
-    l: string;
-    xl: string;
-    xxl: string;
-    xxxl: string;
-};
-
-// @public (undocumented)
-export type StrokeWidthTokens = {
-    strokeWidthThin: string;
-    strokeWidthThick: string;
-    strokeWidthThicker: string;
-    strokeWidthThickest: string;
-};
-
-// @public (undocumented)
-export const teamsDarkTheme: Theme;
-
-// @public (undocumented)
-export const teamsHighContrastTheme: Theme;
-
-// @public (undocumented)
-export const teamsLightTheme: Theme;
-
-// @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
-
-// @public
-export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
-
-// @public (undocumented)
-export const tokens: Record<keyof Theme, string>;
-
-// @public (undocumented)
-export type TypographyStyle = {
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-    lineHeight: string;
-};
-
-// @public (undocumented)
-export type TypographyStyles = {
-    body1: TypographyStyle;
-    body1Strong: TypographyStyle;
-    body1Stronger: TypographyStyle;
-    body2: TypographyStyle;
-    caption1: TypographyStyle;
-    caption1Strong: TypographyStyle;
-    caption1Stronger: TypographyStyle;
-    caption2: TypographyStyle;
-    caption2Strong: TypographyStyle;
-    subtitle1: TypographyStyle;
-    subtitle2: TypographyStyle;
-    subtitle2Stronger: TypographyStyle;
-    title1: TypographyStyle;
-    title2: TypographyStyle;
-    title3: TypographyStyle;
-    largeTitle: TypographyStyle;
-    display: TypographyStyle;
-};
-
-// @public
-export const typographyStyles: TypographyStyles;
-
-// @public (undocumented)
-export type VerticalSpacingTokens = {
-    spacingVerticalNone: string;
-    spacingVerticalXXS: string;
-    spacingVerticalXS: string;
-    spacingVerticalSNudge: string;
-    spacingVerticalS: string;
-    spacingVerticalMNudge: string;
-    spacingVerticalM: string;
-    spacingVerticalL: string;
-    spacingVerticalXL: string;
-    spacingVerticalXXL: string;
-    spacingVerticalXXXL: string;
-};
-
-// @public (undocumented)
-export const webDarkTheme: Theme;
-
-// @public (undocumented)
-export const webLightTheme: Theme;
+export { ColorPaletteGold }
+
+export { ColorPaletteGrape }
+
+export { ColorPaletteGreen }
+
+export { ColorPaletteLavender }
+
+export { ColorPaletteLightGreen }
+
+export { ColorPaletteLightTeal }
+
+export { ColorPaletteLilac }
+
+export { ColorPaletteMagenta }
+
+export { ColorPaletteMarigold }
+
+export { ColorPaletteMink }
+
+export { ColorPaletteNavy }
+
+export { ColorPalettePeach }
+
+export { ColorPalettePink }
+
+export { ColorPalettePlatinum }
+
+export { ColorPalettePlum }
+
+export { ColorPalettePumpkin }
+
+export { ColorPalettePurple }
+
+export { ColorPaletteRed }
+
+export { ColorPaletteRoyalBlue }
+
+export { ColorPaletteSeafoam }
+
+export { ColorPaletteSteel }
+
+export { ColorPaletteTeal }
+
+export { ColorPaletteTokens }
+
+export { ColorPaletteYellow }
+
+export { ColorTokens }
+
+export { createDarkTheme }
+
+export { createHighContrastTheme }
+
+export { createLightTheme }
+
+export { createTeamsDarkTheme }
+
+export { CurveTokens }
+
+export { DurationTokens }
+
+export { FontFamilyTokens }
+
+export { FontSizeTokens }
+
+export { FontWeightTokens }
+
+export { HorizontalSpacingTokens }
+
+export { LineHeightTokens }
+
+export { PartialTheme }
+
+export { ShadowBrandTokens }
+
+export { ShadowTokens }
+
+export { SpacingTokens }
+
+export { StrokeWidthTokens }
+
+export { teamsDarkTheme }
+
+export { teamsHighContrastTheme }
+
+export { teamsLightTheme }
+
+export { Theme }
+
+export { themeToTokensObject }
+
+export { tokens }
+
+export { TypographyStyle }
+
+export { TypographyStyles }
+
+export { typographyStyles }
+
+export { VerticalSpacingTokens }
+
+export { webDarkTheme }
+
+export { webLightTheme }
 
 // (No @packageDocumentation comment for this package)
 

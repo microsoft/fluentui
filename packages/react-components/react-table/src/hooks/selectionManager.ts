@@ -1,19 +1,15 @@
 import * as React from 'react';
 import { SelectionMode } from './types';
 
-type OnSelectionChangeCallback = (e: React.SyntheticEvent | Event, selectedItems: Set<SelectionItemId>) => void;
+type OnSelectionChangeCallback = (e: React.SyntheticEvent, selectedItems: Set<SelectionItemId>) => void;
 
 export interface SelectionManager {
-  toggleItem(e: React.SyntheticEvent | Event, id: SelectionItemId, selectedItems: Set<SelectionItemId>): void;
-  selectItem(e: React.SyntheticEvent | Event, id: SelectionItemId, selectedItems: Set<SelectionItemId>): void;
-  deselectItem(e: React.SyntheticEvent | Event, id: SelectionItemId, selectedItems: Set<SelectionItemId>): void;
-  clearItems(e: React.SyntheticEvent | Event): void;
+  toggleItem(e: React.SyntheticEvent, id: SelectionItemId, selectedItems: Set<SelectionItemId>): void;
+  selectItem(e: React.SyntheticEvent, id: SelectionItemId, selectedItems: Set<SelectionItemId>): void;
+  deselectItem(e: React.SyntheticEvent, id: SelectionItemId, selectedItems: Set<SelectionItemId>): void;
+  clearItems(e: React.SyntheticEvent): void;
   isSelected(id: SelectionItemId, selectedItems: Set<SelectionItemId>): boolean;
-  toggleAllItems(
-    e: React.SyntheticEvent | Event,
-    itemIds: SelectionItemId[],
-    selectedItems: Set<SelectionItemId>,
-  ): void;
+  toggleAllItems(e: React.SyntheticEvent, itemIds: SelectionItemId[], selectedItems: Set<SelectionItemId>): void;
 }
 
 export type SelectionItemId = string | number;

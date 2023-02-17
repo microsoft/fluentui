@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { preset, task, series, TaskFunction } from '@fluentui/scripts';
+import { preset, task, series, TaskFunction } from '@fluentui/scripts-tasks';
 
 preset();
 

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Slider } from '@fluentui/react-northstar';
 import SliderExampleDisabledShorthand from '../../examples/components/Slider/States/SliderExampleDisabled.shorthand';

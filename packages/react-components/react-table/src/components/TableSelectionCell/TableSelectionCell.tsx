@@ -6,7 +6,7 @@ import type { TableSelectionCellProps } from './TableSelectionCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableSelectionCell component - TODO: add more docs
+ * TableSelectionCell component
  */
 export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps> = React.forwardRef((props, ref) => {
   const state = useTableSelectionCell_unstable(props, ref);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
@@ -14,8 +14,8 @@ const options: IChoiceGroupOption[] = [
 storiesOf('ChoiceGroup', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('div.ms-ChoiceField:nth-of-type(1)')
         .snapshot('hover unselected', { cropTo: '.testWrapper' })
@@ -27,7 +27,7 @@ storiesOf('ChoiceGroup', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () =>
     // prettier-ignore

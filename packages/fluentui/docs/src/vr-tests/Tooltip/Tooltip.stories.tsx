@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tooltip } from '@fluentui/react-northstar';
 import TooltipOpenExample from '../../examples/components/Tooltip/States/TooltipOpenControlledExample.shorthand';

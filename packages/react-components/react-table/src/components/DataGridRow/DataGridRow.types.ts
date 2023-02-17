@@ -28,4 +28,9 @@ export type DataGridRowProps = Omit<TableRowProps, 'children'> &
 /**
  * State used in rendering DataGridRow
  */
-export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots>;
+export type DataGridRowState = TableRowState &
+  ComponentState<DataGridRowSlots> & {
+    renderCell: CellRenderFunction;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    columnDefs: ColumnDefinition<any>[];
+  };

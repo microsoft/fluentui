@@ -10,7 +10,7 @@ import {
   prepareCreateReactApp,
   workspaceRoot,
   generateFiles,
-} from '@fluentui/scripts/projects-test';
+} from '@fluentui/scripts-projects-test';
 
 /**
  * Tests the following scenario:

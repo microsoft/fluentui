@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
-import type { ToolbarProps } from '@fluentui/react-toolbar';
+import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-components/unstable';
+import type { ToolbarProps } from '@fluentui/react-components/unstable';
 import { Popover, PopoverSurface, PopoverTrigger, Button } from '@fluentui/react-components';
 import { MathFormatLinear24Regular, Image24Regular, Table24Filled } from '@fluentui/react-icons';
 

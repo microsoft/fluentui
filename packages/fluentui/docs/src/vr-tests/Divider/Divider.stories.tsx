@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Divider } from '@fluentui/react-northstar';
 import DividerExampleContent from '../../examples/components/Divider/Types/DividerExampleContent';

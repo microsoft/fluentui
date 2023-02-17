@@ -7,7 +7,7 @@ import type { TableCellLayoutProps } from './TableCellLayout.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableCellLayout component - TODO: add more docs
+ * TableCellLayout component
  */
 export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps> = React.forwardRef((props, ref) => {
   const state = useTableCellLayout_unstable(props, ref);

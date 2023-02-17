@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Add bundle size fixtures for react-table",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}
