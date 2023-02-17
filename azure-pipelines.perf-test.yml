@@ -107,7 +107,7 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
-  - job: PerfTestV8
+  - job: PerfTestReact
     displayName: Perf test for @fluentui/react
     dependsOn: CheckIfPackagesAffected
     condition: eq(dependencies.CheckIfPackagesAffected.outputs['PackagesAffected.V8PackageAffected'], true)
@@ -121,14 +121,8 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage build --to perf-test --verbose
+          yarn workspace @fluentui/perf-test test:perf
         condition: eq(variables.isPR, true)
-        displayName: Build to Perf Test
-
-      - script: |
-          yarn just perf-test
-        condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test
         displayName: Run Perf Test
 
       - task: AzureUpload@2
@@ -167,14 +161,8 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage build --to perf-test-react-components --verbose
+          yarn workspace @fluentui/perf-test-react-components test:perf
         condition: eq(variables.isPR, true)
-        displayName: Build to Perf Test
-
-      - script: |
-          yarn just perf-test
-        condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test-react-components
         displayName: Run Perf Test
 
       - task: AzureUpload@2
