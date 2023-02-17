@@ -20,7 +20,6 @@ The Slider component allows users to quickly select a value by dragging an icon 
 - @attr step: number | 1
   - If set, slider appearance has ticks for each step value
 - @attr disabled: boolean | false
-- @attr mode: "single-value" "range" | "single-value"
 
 ### Outputs
 
@@ -32,10 +31,8 @@ None
 
 ### Slots
 
-- default: the primary slot intended for the `input` element
+- default: child elements such as SliderLabel will be placed in the default slot
 - thumb: the draggable element of the slider
-- lower-thumb: same as `thumb`, but used in `range` mode
-- upper-thumb: same as `thumb`, but used in `range` mode
 - track: the slider's base and used to display the min/max selectable values
 - progress-track: the progress indicator when in `range` mode
 
@@ -44,10 +41,6 @@ None
 None
 
 ### Interactions
-
-#### thumb
-
-- On :hover a tooltip appears indicating the current value of the slider
 
 #### track
 
@@ -79,11 +72,10 @@ None
   - [FAST Slider Component](https://explore.fast.design/components/fast-slider)
 - [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
   - [Fluent Slider Spec](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-slider/docs/Spec.md)
-  - no `defaultValue` attribute, instead only `current-value` that specifies the selected range of the slider
+  - no `defaultValue` or `value` attributes, instead only `current-value` that specifies the selected range of the slider
   - `rail` is in Fluent React; `track` is in FAST Foundation
-  - Current implementation in Fluent React 9 does not have `range`, but Fast Foundation Slider and Figma design spec has it
-  - No value indicators to the left/right of slider in FAST Slider. These should be present in Fluent version. This will be handled through the SliderLabel component.
-  - No default support for the ticks on the slider when `step` is set. This will be handled through the SliderLabel component.
+  - No value indicators to the left/right of slider in FAST Slider. These should be present in Fluent version. This will be handled through slotting in the the SliderLabel component.
+  - No default support for the ticks on the slider when `step` is set. This will be handled through slotting in the SliderLabel component.
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
   - [Fluent React V9 Slider](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-slider--default)
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
