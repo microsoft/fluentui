@@ -116,7 +116,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
   return allPointPaths[index];
 };
 
-type LineChartDataWithIndex = ILineChartPoints & { index: number };
+type LineChartDataWithIndex = IModifiedLineChartPoints & { index: number };
 
 export interface ILineChartState extends IBasestate {
   // This array contains data of selected legends for points
@@ -312,9 +312,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   }
 
-  private _injectIndexPropertyInLineChartData = (
-    lineChartData?: IModifiedLineChartPoints[],
-  ): LineChartDataWithIndex[] | [] => {
+  private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
       ? lineChartData.map((item: IModifiedLineChartPoints, index: number) => {

@@ -311,7 +311,7 @@ export interface ILineChartPoints {
   /**
    * color for the legend in the chart
    */
-  color: string;
+  color?: string;
 
   /**
    * opacity for chart fill color
@@ -633,12 +633,7 @@ export interface ICustomizedCalloutData {
   values: ICustomizedCalloutDataPoint[];
 }
 
-/** ILineChartPoints with optional color prop */
-export type IModifiedLineChartPoints = Omit<ILineChartPoints, 'color'> & {
-  color?: string;
-};
-
-/** IChartProps with optional color prop */
-export type IModifiedChartProps = Omit<IChartProps, 'lineChartData'> & {
-  lineChartData?: IModifiedLineChartPoints[];
+/** ILineChartPoints with required color prop */
+export type IModifiedLineChartPoints = ILineChartPoints & {
+  color: string;
 };

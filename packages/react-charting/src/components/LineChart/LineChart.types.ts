@@ -1,11 +1,11 @@
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
+  IChartProps,
   ILineChartPoints,
   IMargins,
   IBasestate,
   IRefArrayData,
   ICustomizedCalloutData,
-  IModifiedChartProps,
 } from '../../types/index';
 import { IEventAnnotation } from '../../types/IEventAnnotation';
 import {
@@ -20,7 +20,7 @@ export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IModifiedChartProps;
+  data: IChartProps;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

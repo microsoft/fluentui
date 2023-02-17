@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  IModifiedChartProps,
-  IModifiedLineChartPoints,
+  IChartProps,
+  ILineChartPoints,
   ILineChartProps,
   LineChart,
   QualitativePalette,
@@ -70,7 +70,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
   };
 
   private _styledExample(): JSX.Element {
-    const points: IModifiedLineChartPoints[] = [
+    const points: ILineChartPoints[] = [
       {
         data: [
           { x: new Date('2018/01/01'), y: 10, xAxisCalloutData: '2018/01/01', yAxisCalloutData: '10%' },
@@ -253,7 +253,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
     ];
 
-    const data: IModifiedChartProps = {
+    const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: points,
     };
