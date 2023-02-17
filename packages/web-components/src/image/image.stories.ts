@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../__test__/helpers.js';
 import type { Image as FluentImage } from './image.js';
-import { BorderRadius, ImageFit, ImageShape } from './image.options.js';
+import { ImageBorderRadius, ImageFit, ImageShape } from './image.options.js';
 import './define.js';
 
 type ImageStoryArgs = Args & FluentImage;
@@ -33,7 +33,7 @@ export default {
     block: false,
     border: false,
     shadow: false,
-    borderRadius: BorderRadius.small,
+    borderRadius: ImageBorderRadius.small,
     fit: ImageFit.default,
     shape: ImageShape.square,
   },
@@ -74,7 +74,7 @@ export default {
           summary: 'small',
         },
       },
-      options: Object.values(BorderRadius),
+      options: Object.values(ImageBorderRadius),
       control: 'select',
     },
     fit: {
