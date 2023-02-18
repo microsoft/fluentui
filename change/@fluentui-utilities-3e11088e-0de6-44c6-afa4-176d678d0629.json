@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "chore: Removing deprecated React.Props from DelayedRender.",
   "packageName": "@fluentui/utilities",
   "email": "jimsleon@hotmail.com",
