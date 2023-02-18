@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: use swc for browser matrix based transpilation. ",
+  "packageName": "@fluentui/react-card",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

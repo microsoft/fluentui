@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: use swc for browser matrix based transpilation. ",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
