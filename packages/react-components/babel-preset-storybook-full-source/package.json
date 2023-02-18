@@ -4,7 +4,7 @@
   "description": "Babel preset that adds the makes the full source code of stories available",
   "private": true,
   "main": "./src/index.dev.js",
-  "typings": "./dist/index.d.ts",
+  "typings": "./src/index.dev.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -33,7 +33,7 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./src/index.dev.d.ts",
       "require": "./src/index.dev.js"
     },
     "./package.json": "./package.json"
