@@ -6,8 +6,7 @@ import { PopoverSurface } from '@fluentui/react-popover';
 import type { InputProps } from '@fluentui/react-input';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
+import type { ITheme } from '@fluentui/style-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 
@@ -18,6 +17,7 @@ export type DatePickerSlots = {
   wrapper: NonNullable<Slot<'div'>>;
   popover: NonNullable<Slot<Partial<PopoverProps>>>;
   popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  calendar: NonNullable<Slot<Partial<CalendarProps>>>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -40,30 +40,15 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   componentRef?: React.RefObject<IDatePicker>;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
-
-  /**
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
-
-  /**
-   * Pass calendar props to calendar component
-   */
-  calendarProps?: CalendarProps;
 
   /**
    * Pass textField props to textField component.
    * Prop name is "textField" for compatibility with upcoming slots work.
    */
   textField?: InputProps;
-
-  /**
-   * Custom Calendar to be used for date picking
-   */
-  calendarAs?: IComponentAs<CalendarProps>;
 
   /**
    * Callback issued when a date is selected
@@ -256,12 +241,10 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   tabIndex?: number;
 };
 
-export type DatePickerState = ComponentState<DatePickerSlots> &
-  Required<Pick<DatePickerProps, 'calendarAs'>> & {
-    calendar: CalendarProps;
-    disabled: boolean;
-    isDatePickerShown: boolean;
-  };
+export type DatePickerState = ComponentState<DatePickerSlots> & {
+  disabled: boolean;
+  isDatePickerShown: boolean;
+};
 
 /**
  * {@docCategory DatePicker}
@@ -288,32 +271,4 @@ export interface DatePickerStrings extends CalendarStrings {
    *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
    */
   isResetStatusMessage?: string;
-}
-
-/**
- * {@docCategory DatePicker}
- */
-export interface DatePickerStyleProps {
-  // Insert DatePicker style props below
-  disabled?: boolean;
-  underlined?: boolean;
-  label?: boolean;
-  isDatePickerShown?: boolean;
-}
-
-/**
- * {@docCategory DatePicker}
- */
-export interface DatePickerStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
-  textField: IStyle;
-  callout: IStyle;
-  icon: IStyle;
-  statusMessage?: IStyle;
-  wrapper?: IStyle;
-  readOnlyTextField?: IStyle;
-  readOnlyPlaceholder?: IStyle;
 }

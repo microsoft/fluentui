@@ -414,6 +414,11 @@ import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { ProgressBar } from '@fluentui/react-progress';
+import { progressBarClassNames } from '@fluentui/react-progress';
+import { ProgressBarProps } from '@fluentui/react-progress';
+import { ProgressBarSlots } from '@fluentui/react-progress';
+import { ProgressBarState } from '@fluentui/react-progress';
 import { Radio } from '@fluentui/react-radio';
 import { radioClassNames } from '@fluentui/react-radio';
 import { RadioGroup } from '@fluentui/react-radio';
@@ -485,6 +490,7 @@ import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSelect_unstable } from '@fluentui/react-select';
@@ -862,6 +868,8 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { useProgressBar_unstable } from '@fluentui/react-progress';
+import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
@@ -1762,6 +1770,16 @@ export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
 
+export { ProgressBar }
+
+export { progressBarClassNames }
+
+export { ProgressBarProps }
+
+export { ProgressBarSlots }
+
+export { ProgressBarState }
+
 export { Radio }
 
 export { radioClassNames }
@@ -1903,6 +1921,8 @@ export { renderPopoverSurface_unstable }
 export { renderPopoverTrigger_unstable }
 
 export { renderPortal_unstable }
+
+export { renderProgressBar_unstable }
 
 export { renderRadio_unstable }
 
@@ -2657,6 +2677,10 @@ export { usePopoverTrigger_unstable }
 export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
+
+export { useProgressBar_unstable }
+
+export { useProgressBarStyles_unstable }
 
 export { useRadio_unstable }
 

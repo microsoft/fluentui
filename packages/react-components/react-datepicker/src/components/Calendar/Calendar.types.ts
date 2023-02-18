@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { CalendarStrings, DateFormatting, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
@@ -22,17 +21,12 @@ export interface ICalendar {
 /**
  * {@docCategory Calendar}
  */
-export interface CalendarProps extends IBaseProps<ICalendar>, React.RefAttributes<HTMLDivElement> {
+export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendar>;
-
-  /**
-   * Customized styles for the calendar component
-   */
-  styles?: IStyleFunctionOrObject<CalendarStyleProps, CalendarStyles>;
 
   /**
    * Customized props for the calendar day

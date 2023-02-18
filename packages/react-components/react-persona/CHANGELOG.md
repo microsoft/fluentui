@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Fri, 10 Feb 2023 08:50:02 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.12)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.11..@fluentui/react-persona_v9.1.12)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.3.6 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-badge to v9.0.26 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.11)
+
+Mon, 13 Feb 2023 23:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.10..@fluentui/react-persona_v9.1.11)
+
+### Patches
+
+- chore: update Persona to use makeResetStyles ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-avatar to v9.3.5 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-badge to v9.0.25 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.10)
+
+Mon, 13 Feb 2023 09:35:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.9..@fluentui/react-persona_v9.1.10)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.3.4 ([PR #26800](https://github.com/microsoft/fluentui/pull/26800) by beachball)
 
 ## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.9)
 

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "style: fix formatting in files that were silently passed previously",
-  "packageName": "@fluentui/react-link",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

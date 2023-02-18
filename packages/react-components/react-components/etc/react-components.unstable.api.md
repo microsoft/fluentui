@@ -50,11 +50,6 @@ import { InfoButtonState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
-import { ProgressBar } from '@fluentui/react-progress';
-import { progressBarClassNames } from '@fluentui/react-progress';
-import { ProgressBarProps } from '@fluentui/react-progress';
-import { ProgressBarSlots } from '@fluentui/react-progress';
-import { ProgressBarState } from '@fluentui/react-progress';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
 import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
@@ -68,7 +63,6 @@ import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
-import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
@@ -100,8 +94,6 @@ import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
-import { useProgressBar_unstable } from '@fluentui/react-progress';
-import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
@@ -203,16 +195,6 @@ export { inputFieldClassNames }
 
 export { InputFieldProps }
 
-export { ProgressBar }
-
-export { progressBarClassNames }
-
-export { ProgressBarProps }
-
-export { ProgressBarSlots }
-
-export { ProgressBarState }
-
 export { ProgressField }
 
 export { progressFieldClassNames }
@@ -238,8 +220,6 @@ export { renderCardPreview_unstable }
 export { renderField_unstable }
 
 export { renderInfoButton_unstable }
-
-export { renderProgressBar_unstable }
 
 export { renderVirtualizer_unstable }
 
@@ -302,10 +282,6 @@ export { useInfoButton_unstable }
 export { useInfoButtonStyles_unstable }
 
 export { useIntersectionObserver }
-
-export { useProgressBar_unstable }
-
-export { useProgressBarStyles_unstable }
 
 export { useVirtualizer_unstable }
 

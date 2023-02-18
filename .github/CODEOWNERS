@@ -15,6 +15,10 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
+##### Catch All Rule ######
+#### Later rules will override this, if you are hitting this rule often add a rule to a sub-folder
+* @microsoft/fluentui-admins
+
 ###### Build Section ######
 #### Repo-wide build files - Note these will only be applied if another rule below does not apply
 *.sh @microsoft/fluentui-react-build

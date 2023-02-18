@@ -2,6 +2,139 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Sat, 18 Feb 2023 01:37:02 GMT",
+      "tag": "@fluentui/react_v8.105.11",
+      "version": "8.105.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.29",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.9",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.15",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.17",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.2",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.23",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.7",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.18",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Feb 2023 22:05:37 GMT",
+      "tag": "@fluentui/react_v8.105.10",
+      "version": "8.105.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "055d703d6d400235309b038e460d63cadaa3a0c3",
+            "comment": "revert: rollback List rendering change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Feb 2023 07:46:37 GMT",
+      "tag": "@fluentui/react_v8.105.9",
+      "version": "8.105.9",
+      "comments": {
+        "none": [
+          {
+            "author": "jimsleon@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "9e287be4544ad39f0041349a0d1da0e9100800b0",
+            "comment": "chore: Removing deprecated React.Props from DelayedRender."
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ca757212da6f77eb0bfe18cf7bfcc8bbab2a5da5",
+            "comment": "fix: move props object creation to allow for memoization in DetailsList."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Feb 2023 07:42:17 GMT",
+      "tag": "@fluentui/react_v8.105.8",
+      "version": "8.105.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ef43ec5d4babc785c8002d3a92efaaf676e7ba35",
+            "comment": "fix: update cell HCM bg color to not clip focus indicator"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 07:37:39 GMT",
+      "tag": "@fluentui/react_v8.105.7",
+      "version": "8.105.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "4c7f4f60b937ea1a46fa03b43cba6a99e8d111d7",
+            "comment": "fix(Datepicker): Set aria-current to date when the day is today instead of when it's selected."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Feb 2023 07:47:23 GMT",
       "tag": "@fluentui/react_v8.105.6",
       "version": "8.105.6",

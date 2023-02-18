@@ -2,7 +2,6 @@ import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { Slot } from '@fluentui/react-utilities';
 import type { ITheme } from '@fluentui/style-utilities';
-import type { IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
@@ -22,17 +21,12 @@ export interface ICalendarMonth {
 /**
  * {@docCategory Calendar}
  */
-export interface CalendarMonthProps extends IBaseProps<ICalendarMonth> {
+export interface CalendarMonthProps {
   /**
    * Optional callback to access the ICalendarMonth interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendarMonth>;
-
-  /**
-   * Customized styles for the calendar month component
-   */
-  styles?: IStyleFunctionOrObject<CalendarMonthStyleProps, CalendarMonthStyles>;
 
   /**
    * Theme (provided through customization).

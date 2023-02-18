@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-badge",
-  "version": "9.0.24",
+  "version": "9.0.26",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,13 +35,8 @@
     "@fluentui/react-icons": "^2.0.175",
     "@griffel/react": "^1.5.2",
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.2",
-    "@swc/helpers": "^0.4.14"
-  },
-  "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "beachball": {
