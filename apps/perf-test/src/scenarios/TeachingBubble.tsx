@@ -1,7 +1,8 @@
+import * as React from 'react';
+import { TeachingBubble } from '@fluentui/react';
+
 // This test hangs with puppeteer 19, commenting out for now.
-// import * as React from 'react';
-// import { TeachingBubble } from '@fluentui/react';
-
 // const Scenario = () => <TeachingBubble />;
+const Scenario = () => <div />;
 
-// export default Scenario;
+export default Scenario;
