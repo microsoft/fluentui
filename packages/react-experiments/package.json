@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.14.52",
+  "version": "8.14.53",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.17",
+    "@fluentui/common-styles": "^1.2.18",
     "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
     "@types/prop-types": "15.7.1",
@@ -39,17 +39,17 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.105.10",
-    "@fluentui/theme": "^2.6.22",
+    "@fluentui/react": "^8.105.11",
+    "@fluentui/theme": "^2.6.23",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.4.6",
-    "@fluentui/foundation-legacy": "^8.2.28",
-    "@fluentui/font-icons-mdl2": "^8.5.8",
+    "@fluentui/foundation-legacy": "^8.2.29",
+    "@fluentui/font-icons-mdl2": "^8.5.9",
     "@fluentui/merge-styles": "^8.5.6",
-    "@fluentui/react-hooks": "^8.6.16",
+    "@fluentui/react-hooks": "^8.6.17",
     "@fluentui/set-version": "^8.2.5",
-    "@fluentui/style-utilities": "^8.9.1",
-    "@fluentui/utilities": "^8.13.6",
+    "@fluentui/style-utilities": "^8.9.2",
+    "@fluentui/utilities": "^8.13.7",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
