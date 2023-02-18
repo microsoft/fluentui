@@ -296,8 +296,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
       }
     };
-    const rootClass = 'ms-DatePicker';
-
     const showMonthPickerAsOverlay = getShowMonthPickerAsOverlay(props);
 
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
@@ -331,7 +329,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
         ref={forwardedRef}
         role="group"
         aria-label={selectionAndTodayString}
-        className={mergeClasses(rootClass, classes.root, className, 'ms-slideDownIn10')}
+        className={mergeClasses(classes.root, className, 'ms-slideDownIn10')}
         onKeyDown={onDatePickerPopupKeyDown}
       >
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">

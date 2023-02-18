@@ -12,8 +12,6 @@ import { Field } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import type { InputProps } from '@fluentui/react-input';
-import type { IStyle } from '@fluentui/style-utilities';
-import type { ITheme } from '@fluentui/style-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
@@ -52,7 +50,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
     animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: React_2.RefObject<ICalendarDayGrid>;
-    customDayCellRef?: (element: HTMLElement, date: Date, classNames: Record<keyof CalendarDayGridStyles, string>) => void;
+    customDayCellRef?: (element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => void;
     dateRangeType: DateRangeType;
     dateTimeFormatter: DateFormatting;
     daysToSelectInDayView?: number;
@@ -72,7 +70,6 @@ export interface CalendarDayGridProps extends DayGridOptions {
     showCloseButton?: boolean;
     showWeekNumbers?: boolean;
     strings: CalendarStrings;
-    theme?: ITheme;
     today?: Date;
     weeksToShow?: number;
     workWeekDays?: DayOfWeek[];
@@ -90,34 +87,20 @@ export interface CalendarDayGridStyleProps {
 
 // @public (undocumented)
 export interface CalendarDayGridStyles {
-    // (undocumented)
-    bottomLeftCornerDate?: IStyle;
-    // (undocumented)
-    bottomRightCornerDate?: IStyle;
-    datesAbove?: IStyle;
-    // (undocumented)
-    datesBelow?: IStyle;
-    // (undocumented)
-    datesLeft?: IStyle;
-    // (undocumented)
-    datesRight?: IStyle;
-    dayButton?: IStyle;
-    dayCell?: IStyle;
-    dayIsToday?: IStyle;
-    dayMarker?: IStyle;
-    dayOutsideBounds?: IStyle;
-    dayOutsideNavigatedMonth?: IStyle;
-    daySelected?: IStyle;
-    firstTransitionWeek?: IStyle;
-    lastTransitionWeek?: IStyle;
-    table?: IStyle;
-    // (undocumented)
-    topLeftCornerDate?: IStyle;
-    topRightCornerDate?: IStyle;
-    weekDayLabelCell?: IStyle;
-    weekNumberCell?: IStyle;
-    weekRow?: IStyle;
-    wrapper?: IStyle;
+    dayButton?: string;
+    dayCell?: string;
+    dayIsToday?: string;
+    dayMarker?: string;
+    dayOutsideBounds?: string;
+    dayOutsideNavigatedMonth?: string;
+    daySelected?: string;
+    firstTransitionWeek?: string;
+    lastTransitionWeek?: string;
+    table?: string;
+    weekDayLabelCell?: string;
+    weekNumberCell?: string;
+    weekRow?: string;
+    wrapper?: string;
 }
 
 // @public (undocumented)
@@ -138,7 +121,6 @@ export interface CalendarDayProps extends CalendarDayGridProps {
     showSixWeeksByDefault?: boolean;
     showWeekNumbers?: boolean;
     strings: CalendarStrings;
-    theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -149,13 +131,13 @@ export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
 }
 
 // @public (undocumented)
-export interface CalendarDayStyles extends Partial<CalendarDayGridStyles> {
-    disabledStyle: IStyle;
-    header: IStyle;
-    headerIconButton: IStyle;
-    monthAndYear: IStyle;
-    monthComponents: IStyle;
-    root: IStyle;
+export interface CalendarDayStyles {
+    disabledStyle: string;
+    header: string;
+    headerIconButton: string;
+    monthAndYear: string;
+    monthComponents: string;
+    root: string;
 }
 
 // @public (undocumented)
@@ -179,7 +161,6 @@ export interface CalendarMonthProps {
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     selectedDate: Date;
     strings: CalendarStrings;
-    theme?: ITheme;
     today?: Date;
     yearPickerHidden?: boolean;
 }
@@ -212,26 +193,26 @@ export interface CalendarPickerStyleProps {
 // @public (undocumented)
 export interface CalendarPickerStyles {
     // (undocumented)
-    buttonRow: IStyle;
+    buttonRow: string;
     // (undocumented)
-    current: IStyle;
+    current: string;
     // (undocumented)
-    currentItemButton: IStyle;
+    currentItemButton: string;
     // (undocumented)
-    disabled: IStyle;
+    disabled: string;
     // (undocumented)
-    gridContainer: IStyle;
+    gridContainer: string;
     // (undocumented)
-    headerContainer: IStyle;
+    headerContainer: string;
     // (undocumented)
-    itemButton: IStyle;
+    itemButton: string;
     // (undocumented)
-    navigationButton: IStyle;
+    navigationButton: string;
     // (undocumented)
-    navigationButtonsContainer: IStyle;
-    root: IStyle;
+    navigationButtonsContainer: string;
+    root: string;
     // (undocumented)
-    selected: IStyle;
+    selected: string;
 }
 
 // @public (undocumented)
@@ -262,7 +243,6 @@ export interface CalendarProps extends React_2.RefAttributes<HTMLDivElement> {
     showSixWeeksByDefault?: boolean;
     showWeekNumbers?: boolean;
     strings?: CalendarStrings;
-    theme?: ITheme;
     today?: Date;
     value?: Date;
     workWeekDays?: DayOfWeek[];
@@ -303,14 +283,14 @@ export interface CalendarStyleProps {
 // @public (undocumented)
 export interface CalendarStyles {
     // (undocumented)
-    divider: IStyle;
+    divider: string;
     // (undocumented)
-    goTodayButton: IStyle;
+    goTodayButton: string;
     // (undocumented)
-    liveRegion: IStyle;
+    liveRegion: string;
     // (undocumented)
-    monthPickerWrapper: IStyle;
-    root: IStyle;
+    monthPickerWrapper: string;
+    root: string;
 }
 
 // @public (undocumented)
@@ -340,7 +320,6 @@ export interface CalendarYearProps {
     onSelectYear?: (year: number) => void;
     selectedYear?: number;
     strings?: CalendarYearStrings;
-    theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -406,7 +385,6 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 // @public (undocumented)
 export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     componentRef?: React_2.RefObject<IDatePicker>;
-    theme?: ITheme;
     textField?: InputProps;
     onSelectDate?: (date: Date | null | undefined) => void;
     label?: string;
@@ -627,22 +605,22 @@ export const TimeConstants: {
 };
 
 // @public
-export const useCalendarDayGridStyles_unstable: (props: CalendarDayGridStyleProps) => Record<keyof CalendarDayGridStyles, string>;
+export const useCalendarDayGridStyles_unstable: (props: CalendarDayGridStyleProps) => CalendarDayGridStyles;
 
 // @public
-export const useCalendarDayStyles_unstable: (props: CalendarDayStyleProps) => Record<keyof CalendarDayStyles, string>;
+export const useCalendarDayStyles_unstable: (props: CalendarDayStyleProps) => CalendarDayStyles;
 
 // @public
-export const useCalendarMonthStyles_unstable: (props: CalendarMonthStyleProps) => Record<keyof CalendarMonthStyles, string>;
+export const useCalendarMonthStyles_unstable: (props: CalendarMonthStyleProps) => CalendarMonthStyles;
 
 // @public
-export const useCalendarPickerStyles_unstable: (props: CalendarPickerStyleProps) => Record<keyof CalendarPickerStyles, string>;
+export const useCalendarPickerStyles_unstable: (props: CalendarPickerStyleProps) => CalendarPickerStyles;
 
 // @public
-export const useCalendarStyles_unstable: (props: CalendarStyleProps) => Record<keyof CalendarStyles, string>;
+export const useCalendarStyles_unstable: (props: CalendarStyleProps) => CalendarStyles;
 
 // @public
-export const useCalendarYearStyles_unstable: (props: CalendarYearStyleProps) => Record<keyof CalendarYearStyles, string>;
+export const useCalendarYearStyles_unstable: (props: CalendarYearStyleProps) => CalendarYearStyles;
 
 // @public
 export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;

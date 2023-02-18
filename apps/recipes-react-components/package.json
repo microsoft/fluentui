@@ -21,6 +21,7 @@
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-provider": "^9.3.5",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
+    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
     "@griffel/react": "^1.5.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
