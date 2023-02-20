@@ -69,10 +69,12 @@ export const Colors = () => {
   };
 
   React.useEffect(() => {
+    // Trigger the token's search
     setTokensSearchResult(searchToken(inputValue));
   }, [inputValue]);
 
   const applyFilter: MenuProps['onCheckedValueChange'] = (_, { name, checkedItems }) => {
+    // Filteringchecked items remove the selection and display the full list of tokens
     if (checkedItems[0] === checkedValue?.usecase[0]) {
       setCheckedValue(undefined);
       setTokensSearchResult(tokens);
@@ -89,7 +91,7 @@ export const Colors = () => {
       <div className={styles.searchContainer}>
         <TokensFilterButton checkedValues={checkedValue} onChange={applyFilter} />
         <Input
-          placeholder={'Search for tokens by name, usage or color'}
+          placeholder={'Search for tokens by name or color'}
           size={'large'}
           onChange={onInputChange}
           value={inputValue}
