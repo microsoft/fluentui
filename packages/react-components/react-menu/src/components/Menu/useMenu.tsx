@@ -113,6 +113,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     checkedValues,
     onCheckedValueChange,
     persistOnItemClick,
+    autoSize: !!positioningState.autoSize,
   };
 };
 

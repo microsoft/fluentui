@@ -18,4 +18,6 @@ export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
    * This option is disregarded for submenus
    */
   inline: boolean;
+
+  autoSize: boolean;
 };

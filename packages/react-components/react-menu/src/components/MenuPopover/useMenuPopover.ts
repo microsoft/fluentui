@@ -21,6 +21,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
+  const autoSize = useMenuContext_unstable(context => context.autoSize);
   const isSubmenu = useIsSubmenu();
   const canDispatchCustomEventRef = React.useRef(true);
   const throttleDispatchTimerRef = React.useRef(0);
@@ -96,5 +97,6 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
       root: 'div',
     },
     root: rootProps,
+    autoSize,
   };
 };

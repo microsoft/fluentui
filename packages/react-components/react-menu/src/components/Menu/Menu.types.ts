@@ -163,6 +163,8 @@ export type MenuState = ComponentState<MenuSlots> &
      * the signature remains just to avoid breaking changes
      */
     defaultCheckedValues?: Record<string, string[]>;
+
+    autoSize: boolean;
   };
 
 export type MenuContextValues = {

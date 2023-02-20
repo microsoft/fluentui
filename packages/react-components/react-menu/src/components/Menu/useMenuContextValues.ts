@@ -16,6 +16,7 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     setOpen,
     triggerId,
     triggerRef,
+    autoSize,
   } = state;
 
   // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
@@ -34,6 +35,7 @@ export function useMenuContextValues_unstable(state: MenuState): MenuContextValu
     setOpen,
     triggerId,
     triggerRef,
+    autoSize,
   };
 
   return { menu };

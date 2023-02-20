@@ -20,6 +20,11 @@ const useStyles = makeStyles({
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
   },
+
+  autoSize: {
+    overflowX: 'auto',
+    overflowY: 'auto',
+  },
 });
 
 /**
@@ -27,6 +32,11 @@ const useStyles = makeStyles({
  */
 export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopoverState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(menuPopoverClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    menuPopoverClassNames.root,
+    styles.root,
+    state.root.className,
+    state.autoSize && styles.autoSize,
+  );
   return state;
 };

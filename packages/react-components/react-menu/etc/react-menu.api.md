@@ -34,7 +34,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'autoSize'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
@@ -282,6 +282,7 @@ export type MenuPopoverSlots = {
 // @public
 export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
     inline: boolean;
+    autoSize: boolean;
 };
 
 // @public
@@ -335,6 +336,7 @@ export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'ha
     triggerRef: React_2.MutableRefObject<HTMLElement>;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     defaultCheckedValues?: Record<string, string[]>;
+    autoSize: boolean;
 };
 
 // @public

@@ -22,6 +22,7 @@ const menuContextDefaultValue: MenuContextValue = {
   hasCheckmarks: false,
   inline: false,
   persistOnItemClick: false,
+  autoSize: false,
 };
 
 /**
@@ -44,6 +45,7 @@ export type MenuContextValue = Pick<
   | 'inline'
   | 'checkedValues'
   | 'onCheckedValueChange'
+  | 'autoSize'
 > & {
   open: boolean;
   triggerId: string;
