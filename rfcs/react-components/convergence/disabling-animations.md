@@ -48,7 +48,6 @@ Add a CSS rule with `!important` property which will override all the animations
   animation-delay: -1ms !important;
   animation-duration: 1ms !important;
   animation-iteration-count: 1 !important;
-  background-attachment: initial !important;
   scroll-behavior: auto !important;
   transition-duration: 0.1s !important;
   transition-delay: 0.1s !important;
