@@ -1,5 +1,6 @@
-import { getPerfRegressions } from './tasks/perf-test';
 import { preset, task, series } from '@fluentui/scripts-tasks';
+
+import { getPerfRegressions } from './tasks/perf';
 
 preset();
 

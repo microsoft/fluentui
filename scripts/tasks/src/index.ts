@@ -86,4 +86,12 @@ export type {
 } from 'just-scripts';
 export { preset } from './presets';
 export { expandSourcePath } from './copy';
-export { postprocessTask } from './postprocess';
+export { defaultLibPaths, postprocessTask } from './postprocess';
+export {
+  getPerfRegressions,
+  AllRenderTypes,
+  DefaultRenderTypes,
+  ScenarioIterations,
+  ScenarioRenderTypes,
+  ScenarioNames,
+} from './perf-task';
