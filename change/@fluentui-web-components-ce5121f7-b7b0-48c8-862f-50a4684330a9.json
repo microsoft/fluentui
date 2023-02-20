@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: Add landing page",
+  "packageName": "@fluentui/web-components",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}
