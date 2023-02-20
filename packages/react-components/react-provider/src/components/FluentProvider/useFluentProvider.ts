@@ -38,6 +38,7 @@ export const useFluentProvider_unstable = (
     targetDocument = parentContext.targetDocument,
     theme,
     overrides_unstable: overrides = {},
+    animations = 'enabled',
   } = props;
   const mergedTheme = shallowMerge(parentTheme, theme);
 
@@ -63,6 +64,7 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line @typescript-eslint/naming-convention
     overrides_unstable: mergedOverrides,
     themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
+    animations,
 
     components: {
       root: 'div',

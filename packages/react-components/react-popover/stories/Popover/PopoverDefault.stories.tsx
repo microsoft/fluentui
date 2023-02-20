@@ -1,32 +1,40 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import type { PopoverProps } from '@fluentui/react-components';
+import { makeStyles, shorthands, mergeClasses } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
+  root: {
+    width: '64px',
+    height: '64px',
+    ...shorthands.margin('10px'),
+    ...shorthands.borderRadius('50%'),
+    backgroundColor: 'silver',
+    ...shorthands.outline('1px', 'solid', 'transparent'),
+
+    transitionProperty: 'outline',
+    transitionDuration: '500ms, 100ms',
+    transitionDelay: 'cubic-bezier(0.80,0.00,0.20,1.00), linear',
+  },
+  x: {
+    ...shorthands.outline('10px', 'solid', 'cornflowerblue'),
   },
 });
 
-const ExampleContent = () => {
-  const styles = useStyles();
-  return (
-    <div>
-      <h3 className={styles.contentHeader}>Popover content</h3>
-
-      <div>This is some popover content</div>
-    </div>
-  );
+const onTransitionEnd = () => {
+  console.log('transitionEnd');
 };
 
-export const Default = (props: PopoverProps) => (
-  <Popover {...props}>
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>Popover trigger</Button>
-    </PopoverTrigger>
+export const Default = () => {
+  const classes = useStyles();
+  const [border, setBorder] = React.useState(false);
 
-    <PopoverSurface>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
-);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setBorder(b => !b);
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return <div onTransitionEnd={onTransitionEnd} className={mergeClasses(classes.root, border && classes.x)} />;
+};

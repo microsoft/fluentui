@@ -24,6 +24,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
     overrides_unstable?: OverridesContextValue_unstable | undefined;
+    animations?: "disabled" | "enabled" | "reduced" | undefined;
 } & React_2.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -44,6 +45,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
     targetDocument?: Document;
     theme?: PartialTheme;
     overrides_unstable?: OverridesContextValue_unstable;
+    animations?: 'enabled' | 'disabled' | 'reduced';
 };
 
 // @public (undocumented)
@@ -52,7 +54,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable' | 'animations'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
 };

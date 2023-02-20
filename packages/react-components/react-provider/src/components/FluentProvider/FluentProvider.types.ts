@@ -30,11 +30,20 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   overrides_unstable?: OverridesContextValue;
+
+  /**
+   * Some global control of how animations are applied.
+   * - enabled - All animations are applied normally.
+   * - reduced - Animations have extremely short durations which are harder to perceive.
+   * - disabled - Animations are disabled and transition events will not be triggered.
+   * @default enabled
+   */
+  animations?: 'enabled' | 'disabled' | 'reduced';
 };
 
 export type FluentProviderState = ComponentState<FluentProviderSlots> &
   Pick<FluentProviderProps, 'targetDocument'> &
-  Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable'>> & {
+  Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable' | 'animations'>> & {
     theme: ThemeContextValue;
     themeClassName: string;
   };
