@@ -8,7 +8,6 @@ import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../ind
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
-import { select as d3Select } from 'd3-selection';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 

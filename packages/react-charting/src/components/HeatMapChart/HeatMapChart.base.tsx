@@ -14,7 +14,6 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import { select as d3Select } from 'd3-selection';
 import {
   ChartTypes,
   convertToLocaleString,

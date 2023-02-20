@@ -14,7 +14,6 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
-import { select as d3Select } from 'd3-selection';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -29,6 +28,7 @@ export interface IHorizontalBarChartState {
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  emptyChart?: boolean;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -51,6 +51,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
+      emptyChart: false,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
@@ -60,14 +61,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   public componentDidMount(): void {
     const isChartEmpty: boolean = !(this.props.data && this.props.data.length);
-    if (isChartEmpty) {
-      d3Select('body')
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', 'ariaLabel_HorizontalBarChart')
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
     }
   }
 
@@ -76,7 +71,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return (
+    return !this.state.emptyChart ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -174,6 +169,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           </>
         </Callout>
       </div>
+    ) : (
+      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
   }
 
