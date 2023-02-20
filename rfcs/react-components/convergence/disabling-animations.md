@@ -39,7 +39,41 @@ There is currently no known requirement to reduce motion (use less or slower/fas
 
 ## Detailed Design or Proposal
 
-There are multiple ways how the animations can be disabled. The following section describes the approaches and also links to codesandbox examples demonstrating the approach.
+Add a CSS rule with `!important` property which will override all the animations and transitions on the page.
+
+```css
+*,
+*::before,
+*::after {
+  animation-delay: -1ms !important;
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  background-attachment: initial !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.1s !important;
+  transition-delay: 0.1s !important;
+}
+```
+
+This global CSS approach is recommended by MUI -
+https://mui.com/getting-started/faq/#how-can-i-disable-transitions-globally.
+We go further by overriding animation duration to imperceptible levels so that we don't break
+[features that use animation events](https://codesandbox.io/s/disable-animations-important-with-events-dx38w6?file=/src/AnimatedCircle.tsx:496-563),
+this is recommended by [this blog post](<https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites>)
+
+Codesandbox: https://codesandbox.io/s/disable-animations-important-dpugv
+
+#### Pros
+
+- 👍 disables all animations on the page
+- 👍 not coupled with tokens/griffel
+
+## Open Issues
+
+Open question: what is the v8 approach for disabling animations?
+Open question: does any component in the application need to know whether the animations are disabled?
+
+## Discarded Solutions
 
 ### Filter rules in `DOMRenderer`
 
@@ -73,30 +107,3 @@ To disable the animations, we can set all the tokens for duration to 0.
 
 - 👎 Requires additional theme merging
 - 👎 Only disables animations which use design tokens for the duration
-
-### Override animations !important
-
-Add a CSS rule with `!important` property which will override all the animations and transitions on the page.
-
-```css
-*,
-*::before,
-*::after {
-  transition: none !important;
-  animation: none !important;
-}
-```
-
-This approach is recommended by MUI - https://mui.com/getting-started/faq/#how-can-i-disable-transitions-globally.
-
-Codesandbox: https://codesandbox.io/s/disable-animations-important-dpugv
-
-#### Pros
-
-- 👍 disables all animations on the page
-- 👍 not coupled with tokens/griffel
-
-## Open Issues
-
-Open question: what is the v8 approach for disabling animations?
-Open question: does any component in the application need to know whether the animations are disabled?
