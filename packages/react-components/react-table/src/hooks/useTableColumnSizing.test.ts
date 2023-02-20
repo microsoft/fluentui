@@ -128,6 +128,14 @@ describe('useTableColumnSizing', () => {
 
   it('getTableCellProps returns the correct props for the column', () => {
     const props = renderHookResult.result.current.columnSizing_unstable.getTableCellProps(1);
-    expect(props).toMatchInlineSnapshot();
+    expect(props).toMatchInlineSnapshot(`
+      Object {
+        "style": Object {
+          "maxWidth": 150,
+          "minWidth": 150,
+          "width": 150,
+        },
+      }
+    `);
   });
 });
