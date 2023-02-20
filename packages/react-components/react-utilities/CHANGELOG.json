@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 15 Feb 2023 11:44:51 GMT",
+      "tag": "@fluentui/react-utilities_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4e349194f193d7371de6040c7c69cf071b87be56",
+            "comment": "feat: Add event helpers to ease working with mouse and touch"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2",
+            "comment": "fix(useOnClickOutside): iframe focus detection uses `contains`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Feb 2023 23:43:13 GMT",
       "tag": "@fluentui/react-utilities_v9.5.3",
       "version": "9.5.3",

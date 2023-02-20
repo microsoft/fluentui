@@ -5,10 +5,7 @@ import { useSegmentStyles } from './Segment.styles';
 
 export const segmentClassName = 'fui-Segment';
 
-export const Segment = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>((
-  props,
-  ref,
-) => {
+export const Segment = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>((props, ref) => {
   const { children, className, ...rest } = props;
   const classes = useSegmentStyles();
 

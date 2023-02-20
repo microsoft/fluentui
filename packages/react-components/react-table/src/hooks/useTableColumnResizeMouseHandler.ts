@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { TableColumnId, ColumnResizeState } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import {
+  NativeTouchOrMouseEvent,
+  ReactTouchOrMouseEvent,
+  getEventClientCoords,
+  isMouseEvent,
+  isTouchEvent,
+} from '@fluentui/react-utilities';
 
 export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResizeState) {
   const mouseX = React.useRef(0);
@@ -10,51 +17,65 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const { targetDocument } = useFluent();
   const globalWin = targetDocument?.defaultView;
 
-  const handleMouseMove = React.useCallback(
-    (e: MouseEvent) => {
-      const dx = e.clientX - mouseX.current;
+  const recalculatePosition = React.useCallback(
+    (e: NativeTouchOrMouseEvent) => {
+      const { clientX } = getEventClientCoords(e);
+      const dx = clientX - mouseX.current;
 
       // Update the local width for the column and set it
       currentWidth.current += dx;
       colId.current && columnResizeState.setColumnWidth(e, { columnId: colId.current, width: currentWidth.current });
-      mouseX.current = e.clientX;
+      mouseX.current = clientX;
     },
     [columnResizeState],
   );
 
-  const onMouseMove = React.useCallback(
-    (e: MouseEvent) => {
+  const onDrag = React.useCallback(
+    (e: NativeTouchOrMouseEvent) => {
       // Using requestAnimationFrame here drastically improves resizing experience on slower CPUs
       if (typeof globalWin?.requestAnimationFrame === 'function') {
-        requestAnimationFrame(() => handleMouseMove(e));
+        requestAnimationFrame(() => recalculatePosition(e));
       } else {
-        handleMouseMove(e);
+        recalculatePosition(e);
       }
     },
-    [globalWin?.requestAnimationFrame, handleMouseMove],
+    [globalWin?.requestAnimationFrame, recalculatePosition],
   );
 
-  const onMouseUp = React.useCallback(
-    (e: MouseEvent) => {
-      targetDocument?.removeEventListener('mouseup', onMouseUp);
-      targetDocument?.removeEventListener('mousemove', onMouseMove);
+  const onDragEnd = React.useCallback(
+    (event: NativeTouchOrMouseEvent) => {
+      if (isMouseEvent(event)) {
+        targetDocument?.removeEventListener('mouseup', onDragEnd);
+        targetDocument?.removeEventListener('mousemove', onDrag);
+      }
+      if (isTouchEvent(event)) {
+        targetDocument?.removeEventListener('touchend', onDragEnd);
+        targetDocument?.removeEventListener('touchmove', onDrag);
+      }
     },
-    [onMouseMove, targetDocument],
+    [onDrag, targetDocument],
   );
 
-  const getOnMouseDown = (columnId: TableColumnId) => (mouseDownEvent: React.MouseEvent<HTMLElement>) => {
-    // ignore other buttons than primary mouse button
-    if (mouseDownEvent.target !== mouseDownEvent.currentTarget || mouseDownEvent.button !== 0) {
-      return;
-    }
+  const getOnMouseDown = (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => {
     // Keep the width locally so that we decouple the calculation of the next with from rendering.
     // This makes the whole experience much faster and more precise
     currentWidth.current = columnResizeState.getColumnWidth(columnId);
-    mouseX.current = mouseDownEvent.clientX;
+    mouseX.current = getEventClientCoords(event).clientX;
     colId.current = columnId;
 
-    targetDocument?.addEventListener('mouseup', onMouseUp);
-    targetDocument?.addEventListener('mousemove', onMouseMove);
+    if (isMouseEvent(event)) {
+      // ignore other buttons than primary mouse button
+      if (event.target !== event.currentTarget || event.button !== 0) {
+        return;
+      }
+      targetDocument?.addEventListener('mouseup', onDragEnd);
+      targetDocument?.addEventListener('mousemove', onDrag);
+    }
+
+    if (isTouchEvent(event)) {
+      targetDocument?.addEventListener('touchend', onDragEnd);
+      targetDocument?.addEventListener('touchmove', onDrag);
+    }
   };
 
   return {
