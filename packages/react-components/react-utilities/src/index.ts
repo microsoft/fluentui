@@ -26,6 +26,7 @@ export {
   useMergedRefs,
   useOnClickOutside,
   useOnScrollOutside,
+  usePrefersReducedMotion,
   usePrevious,
   useScrollbarWidth,
   useTimeout,

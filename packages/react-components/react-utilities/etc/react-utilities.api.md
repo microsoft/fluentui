@@ -213,6 +213,9 @@ export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => v
 // @internal
 export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
 
+// @public
+export function usePrefersReducedMotion(targetDocument: Document | null | undefined): boolean;
+
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
