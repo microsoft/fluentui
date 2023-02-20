@@ -118,7 +118,7 @@ export function useTableColumnResizeState<T>(
   }, [columnSizingOptions]);
 
   const setColumnWidth = useEventCallback(
-    (event: MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => {
+    (event: MouseEvent | TouchEvent | undefined, data: { columnId: TableColumnId; width: number }) => {
       let { width } = data;
       const { columnId } = data;
       const col = getColumnById(state.columnWidthState, columnId);

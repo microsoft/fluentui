@@ -404,4 +404,97 @@ describe('Popover', () => {
       });
     });
   });
+
+  describe('with Iframe', () => {
+    const iframeContent = `<div id="iframecontent">
+  <button>Hello World!</button>
+</div>`;
+
+    const ExampleFrame = () => {
+      return <iframe title="frame" srcDoc={iframeContent} />;
+    };
+
+    it('should close when focus is on an external iframe', () => {
+      mount(
+        <>
+          <ExampleFrame />
+          <div />
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>This is a popover</PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector).click().get('iframe').focus().get(popoverContentSelector).should('not.exist');
+    });
+
+    it('should not close when focus is on an internal iframe', () => {
+      mount(
+        <>
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <ExampleFrame />
+            </PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get('iframe')
+        .focus()
+        // wait is generally bad practice but since the iframe focus
+        // detection works through polling, set a value here where the
+        // the event would definitely dispatch
+        .wait(2000)
+        .get(popoverContentSelector)
+        .should('exist');
+    });
+
+    it('should not close when focus is on an internal iframe in a nested popover', () => {
+      mount(
+        <>
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>First</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <Popover>
+                <PopoverTrigger>
+                  <button>Second</button>
+                </PopoverTrigger>
+                <PopoverSurface>
+                  <ExampleFrame />
+                </PopoverSurface>
+              </Popover>
+            </PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .first()
+        .click()
+        .get(popoverTriggerSelector)
+        .eq(1)
+        .click()
+        .get('iframe')
+        .focus()
+        // wait is generally bad practice but since the iframe focus
+        // detection works through polling, set a value here where the
+        // the event would definitely dispatch
+        .wait(2000)
+        .get(popoverContentSelector)
+        .should('have.length', 2);
+    });
+  });
 });

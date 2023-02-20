@@ -44,7 +44,7 @@ const useStyles = makeStyles({
     width: '100%',
     ...shorthands.border('1px', 'solid', 'transparent'),
     ...shorthands.padding(0, tokens.spacingHorizontalM, 0, tokens.spacingHorizontalMNudge),
-    height: '44px',
+    minHeight: '44px',
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
   },
   buttonSmall: {
-    height: '32px',
+    minHeight: '32px',
     fontSize: tokens.fontSizeBase200,
   },
   buttonLarge: {
