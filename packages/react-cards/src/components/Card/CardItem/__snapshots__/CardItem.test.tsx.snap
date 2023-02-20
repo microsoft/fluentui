@@ -28,10 +28,7 @@ exports[`Card Item renders correctly 1`] = `
       & > *:not(:first-child) {
         margin-top: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -45,6 +42,7 @@ exports[`Card Item renders correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -94,10 +92,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-left: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -111,6 +106,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -136,6 +132,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -185,10 +182,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-top: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -202,6 +196,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -227,6 +222,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -276,10 +272,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-left: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -293,6 +286,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -318,6 +312,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -367,10 +362,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-top: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -384,6 +376,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -409,6 +402,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -458,10 +452,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-left: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -475,6 +466,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -500,6 +492,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -525,6 +518,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -574,10 +568,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-top: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -591,6 +582,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -616,6 +608,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -641,6 +634,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -690,10 +684,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-left: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -707,6 +698,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -756,10 +748,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
       & > *:not(:first-child) {
         margin-top: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -773,6 +762,7 @@ exports[`Card Item renders correctly when filling up the margins while being the
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
@@ -822,10 +812,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
       & > *:not(:first-child) {
         margin-top: 12px;
       }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
   onKeyDown={[Function]}
@@ -839,6 +826,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          flex-basis: auto;
           flex-shrink: 0;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;

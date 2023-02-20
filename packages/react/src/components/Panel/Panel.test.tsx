@@ -8,6 +8,7 @@ import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
 import type { IPanel, IPanelProps } from './Panel.types';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Panel', () => {
   let div: HTMLElement | undefined;
@@ -143,6 +144,48 @@ describe('Panel', () => {
     const popup = screen.getByRole('dialog');
     expect(popup.getAttribute('aria-label')).toBe('I am an aria label');
     expect(popup.getAttribute('aria-labelledby')).toBe('');
+  });
+
+  describe('enableAriaHiddenSiblings', () => {
+    // These tests cover functionality inherited from Modal: when the dialog is open, all siblings
+    // outside the *content's* DOM tree should be hidden. The content is rendered in a portal
+    // (not under the same div as the rest of the React-rendered elements), so to test that a
+    // sibling element gets properly hidden, the sibling must be attached directly to document.body.
+    let sibling: HTMLElement;
+
+    beforeEach(() => {
+      sibling = document.createElement('div');
+      sibling.textContent = 'sibling';
+      document.body.appendChild(sibling);
+    });
+
+    afterEach(() => {
+      sibling.remove();
+    });
+
+    it('hides siblings when open', () => {
+      const { getByText } = render(<Panel isOpen>content</Panel>);
+
+      expect(getByText('sibling').getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('does not hide siblings when closed', () => {
+      const { queryByText } = render(<Panel isOpen={false}>content</Panel>);
+
+      expect(queryByText('content')).toBeFalsy(); // verify it's closed
+
+      expectNoHiddenParents(queryByText('sibling')!);
+    });
+
+    it('does not hide parent when closed and isHiddenOnDismiss is true', () => {
+      const { queryByText } = render(
+        <Panel isOpen={false} isHiddenOnDismiss={true}>
+          content
+        </Panel>,
+      );
+
+      expectNoHiddenParents(queryByText('content')!);
+    });
   });
 
   isConformant({

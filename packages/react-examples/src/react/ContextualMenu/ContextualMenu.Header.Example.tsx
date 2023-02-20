@@ -31,7 +31,6 @@ export const ContextualMenuHeaderExample: React.FunctionComponent = () => {
           ],
         },
         text: 'Sharing',
-        ariaLabel: 'Sharing. Press enter, space or right arrow keys to open submenu.',
       },
       {
         key: 'navigation',

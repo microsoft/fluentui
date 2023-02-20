@@ -28,7 +28,7 @@ export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageSt
           backgroundColor: v.hasMention ? v.hasMentionColor : v.isImportantColor,
           position: 'absolute',
           borderRadius: pxToRem(2),
-          height: `calc(100% - ${v.paddingCompact} - ${v.paddingCompact})`,
+          height: pxToRem(20),
           left: pxToRem(-56),
           top: v.paddingCompact,
           width: pxToRem(2),

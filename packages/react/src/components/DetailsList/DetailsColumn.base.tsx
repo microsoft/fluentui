@@ -165,10 +165,10 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
                   {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
-                  {column.isSorted && (
+                  {(column.isSorted || column.showSortIconWhenUnsorted) && (
                     <IconComponent
                       className={classNames.sortIcon}
-                      iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'}
+                      iconName={column.isSorted ? (column.isSortedDescending ? 'SortDown' : 'SortUp') : 'Sort'}
                     />
                   )}
 
@@ -292,7 +292,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       column.filterAriaLabel ||
       column.sortAscendingAriaLabel ||
       column.sortDescendingAriaLabel ||
-      column.groupAriaLabel
+      column.groupAriaLabel ||
+      column.sortableAriaLabel
     );
   }
 
@@ -308,8 +309,12 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
         hidden
       >
         {(column.isFiltered && column.filterAriaLabel) || null}
-        {(column.isSorted &&
-          (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) ||
+        {((column.isSorted || column.showSortIconWhenUnsorted) &&
+          (column.isSorted
+            ? column.isSortedDescending
+              ? column.sortDescendingAriaLabel
+              : column.sortAscendingAriaLabel
+            : column.sortableAriaLabel)) ||
           null}
         {(column.isGrouped && column.groupAriaLabel) || null}
       </label>

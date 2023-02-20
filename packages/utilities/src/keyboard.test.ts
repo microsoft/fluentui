@@ -1,4 +1,4 @@
-import { isDirectionalKeyCode, addDirectionalKeyCode } from './keyboard';
+import { addDirectionalKeyCode, isDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
 import { KeyCodes } from './KeyCodes';
 
 describe('isDirectionalKeyCode', () => {
@@ -13,5 +13,13 @@ describe('addDirectionalKeyCode', () => {
     expect(isDirectionalKeyCode(KeyCodes.f6)).toBe(false);
     addDirectionalKeyCode(KeyCodes.f6);
     expect(isDirectionalKeyCode(KeyCodes.f6)).toBe(true);
+  });
+});
+
+describe('removeDirectionalKeyCode', () => {
+  it('can remove a custom keycode', () => {
+    expect(isDirectionalKeyCode(KeyCodes.up)).toBe(true);
+    removeDirectionalKeyCode(KeyCodes.up);
+    expect(isDirectionalKeyCode(KeyCodes.up)).toBe(false);
   });
 });

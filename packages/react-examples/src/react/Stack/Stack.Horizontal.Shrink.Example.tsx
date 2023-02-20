@@ -46,7 +46,7 @@ export const HorizontalStackShrinkExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack tokens={outerStackTokens}>
+    <Stack enableScopedSelectors tokens={outerStackTokens}>
       <Slider
         label="Change the stack width to see how child items shrink:"
         min={1}
@@ -56,7 +56,7 @@ export const HorizontalStackShrinkExample: React.FunctionComponent = () => {
         showValue={true}
         onChange={setStackWidth}
       />
-      <Stack horizontal styles={stackStyles} tokens={innerStackTokens}>
+      <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={innerStackTokens}>
         <Stack.Item grow styles={stackItemStyles}>
           I shrink
         </Stack.Item>

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "babel-make-styles: Correctly handling sequence expressions.",
-  "packageName": "@fluentui/babel-make-styles",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

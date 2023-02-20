@@ -1,8 +1,44 @@
 # Change Log - @fluentui/bundle-size
 
-This log was last generated on Fri, 03 Dec 2021 07:36:11 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Nov 2022 07:55:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.2.0)
+
+Thu, 10 Nov 2022 07:55:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.7..@fluentui/bundle-size_v1.2.0)
+
+### Minor changes
+
+- fix(typings): fix type errors exposed by node 14 typings ([PR #25510](https://github.com/microsoft/fluentui/pull/25510) by martinhochel@microsoft.com)
+
+## [1.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.7)
+
+Wed, 28 Sep 2022 07:37:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.6..@fluentui/bundle-size_v1.1.7)
+
+### Patches
+
+- fix: bump workspace-tools and add options to collectLocalReport api ([PR #24891](https://github.com/microsoft/fluentui/pull/24891) by martinhochel@microsoft.com)
+
+## [1.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.6)
+
+Thu, 12 May 2022 07:41:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.5..@fluentui/bundle-size_v1.1.6)
+
+### Patches
+
+- fix: update glob for collecting reports ([PR #22937](https://github.com/microsoft/fluentui/pull/22937) by olfedias@microsoft.com)
+
+## [1.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.5)
+
+Thu, 21 Apr 2022 07:36:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.4..@fluentui/bundle-size_v1.1.5)
+
+### Patches
+
+- fix: update icons in Markdown reporter ([PR #22543](https://github.com/microsoft/fluentui/pull/22543) by olfedias@microsoft.com)
 
 ## [1.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.4)
 

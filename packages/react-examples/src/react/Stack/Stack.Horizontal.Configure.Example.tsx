@@ -115,6 +115,7 @@ const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOp
 
   return (
     <Stack
+      enableScopedSelectors
       horizontal
       wrap={wrap}
       disableShrink={disableShrink}
@@ -161,10 +162,10 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
   const [emptyChildren, setEmptyChildren] = React.useState<string[]>([]);
 
   return (
-    <Stack tokens={sectionStackTokens}>
-      <Stack horizontal disableShrink>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Number of items:"
               min={1}
@@ -174,15 +175,15 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
               showValue
               onChange={setNumItems}
             />
-            <Stack horizontal disableShrink>
+            <Stack enableScopedSelectors horizontal disableShrink>
               <Checkbox label="Shadow around items" onChange={toggleShowBoxShadow} styles={shadowItemCheckboxStyles} />
               <Checkbox label="Prevent item overflow" onChange={togglePreventOverflow} />
             </Stack>
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack horizontal disableShrink tokens={configureStackTokens}>
-            <Stack>
+          <Stack enableScopedSelectors horizontal disableShrink tokens={configureStackTokens}>
+            <Stack enableScopedSelectors>
               <Checkbox label="Wrap items" onChange={toggleWrap} styles={wrapItemCheckboxStyles} />
               <Checkbox label="Shrink items" onChange={toggleDisableShrink} />
             </Stack>
@@ -201,9 +202,9 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
         </Stack.Item>
       </Stack>
 
-      <Stack horizontal disableShrink tokens={configureStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink tokens={configureStackTokens}>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Horizontal gap between items:"
               min={0}
@@ -225,7 +226,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Left padding:"
               min={0}
@@ -247,7 +248,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
           </Stack>
         </Stack.Item>
         <Stack.Item grow>
-          <Stack>
+          <Stack enableScopedSelectors>
             <Slider
               label="Top padding:"
               min={0}
@@ -270,7 +271,7 @@ export const HorizontalStackConfigureExample: React.FunctionComponent = () => {
         </Stack.Item>
       </Stack>
 
-      <Stack horizontal disableShrink verticalAlign="end" tokens={configureStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink verticalAlign="end" tokens={configureStackTokens}>
         <Stack.Item grow>
           <Dropdown
             selectedKey={horizontalAlignment}

@@ -27,33 +27,14 @@
       var useMinified =
         !isDev && minParam !== '0' && (minParam === '1' || location.pathname === '/fabric-react/master/');
 
-      function loadScript(n) {
-        for (var i = 0; i < n.length; i++) {
-          var s = document.createElement('script');
-          s.src = n[i];
-          s.async = false;
-          document.body.appendChild(s);
-        }
+      function loadScript(src) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.async = false;
+        document.body.appendChild(s);
       }
 
-      const scripts = [];
-
-      if (isLocal) {
-        scripts.push('./react.development.js');
-        scripts.push('./react-dom.development.js');
-      } else {
-        const reactVersion = isDev ? 'development.js' : 'production.min.js';
-        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.' + reactVersion);
-        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.' + reactVersion);
-      }
-
-      if (useMinified) {
-        scripts.push('demo-app.min.js');
-      } else {
-        scripts.push('demo-app.js');
-      }
-
-      loadScript(scripts);
+      loadScript(useMinified ? 'demo-app.min.js' : 'demo-app.js');
 
       function getParameterByName(name, url) {
         if (!url) {

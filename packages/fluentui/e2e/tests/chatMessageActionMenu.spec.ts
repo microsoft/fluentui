@@ -12,7 +12,7 @@ describe('Chat message with action menu rendered outside', () => {
       selectors.chatMessageClassName
     }`;
 
-  const getActionMenuAt = index => `${selectors.menuClassName}:nth-child(${index + 1})`;
+  const getActionMenuAt = index => `#action-menu${index}`;
 
   const iconInActionMenu = ['.likeIcon', '.emojiIcon', '.moreIcon'];
 

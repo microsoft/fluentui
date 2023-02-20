@@ -51,6 +51,9 @@ export interface ICSPSettings {
 }
 
 // @public (undocumented)
+export type ICSSPixelUnitRule = string | number;
+
+// @public (undocumented)
 export type ICSSRule = 'initial' | 'inherit' | 'unset';
 
 // @public
@@ -91,7 +94,6 @@ export interface IRawFontStyle {
     font?: ICSSRule | string;
     fontFamily?: ICSSRule | string;
     fontKerning?: ICSSRule | string;
-    // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
     fontSizeAdjust?: ICSSRule | 'none' | number | string;

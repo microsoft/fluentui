@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "include": ["scripts"],
+  "exclude": ["node_modules", "template"]
+}

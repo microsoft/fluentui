@@ -3,7 +3,7 @@
   "root": true,
   "rules": {
     "import/no-default-export": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true, "packageDir": [".", "../../.."] }],
     "no-console": "off"
   }
 }

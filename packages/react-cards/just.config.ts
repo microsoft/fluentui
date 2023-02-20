@@ -1,3 +1,3 @@
-const { preset } = require('@fluentui/scripts');
+const { preset } = require('@fluentui/scripts-tasks');
 
 preset();

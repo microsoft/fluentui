@@ -25,4 +25,32 @@ describe('Popup - dismiss on scroll container', () => {
     cy.get('body').trigger('wheel'); // page scroll
     cy.notExist(`#${selectors.dismissScrollPopup.contentId}`); // popup dismissed
   });
+
+  describe('nested popup on context', () => {
+    const openNestedPopups = () => {
+      cy.get(`#${selectors.nestedPopup.parentPopupTriggerId}`).rightclick(); // opens popup 1
+      cy.visible(`#${selectors.nestedPopup.childPopupTriggerId}`); // popup 1 visible
+
+      cy.get(`#${selectors.nestedPopup.childPopupTriggerId}`).click(); // opens popup 2
+      cy.visible(`#${selectors.nestedPopup.childPopupContentId}`); // nested popup 2 visible
+    };
+
+    it('dismiss on scroll document', () => {
+      openNestedPopups();
+
+      cy.get('body').trigger('wheel'); // page scroll
+      cy.notExist(`#${selectors.nestedPopup.childPopupTriggerId}`);
+      cy.notExist(`#${selectors.nestedPopup.childPopupContentId}`); // both popups dismissed
+    });
+
+    it('does not dismiss on scroll child popup', () => {
+      openNestedPopups();
+
+      cy.get(`#${selectors.nestedPopup.childPopupContentId}`).trigger('wheel'); // popup 2 scroll
+      cy.wait(100);
+
+      cy.visible(`#${selectors.nestedPopup.childPopupTriggerId}`);
+      cy.visible(`#${selectors.nestedPopup.childPopupContentId}`); // both popups still visible
+    });
+  });
 });

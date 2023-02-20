@@ -32,28 +32,14 @@
         useMinified: useMinified,
       };
 
-      function loadScript(n) {
-        for (var i = 0; i < n.length; i++) {
-          var s = document.createElement('script');
-          s.src = n[i];
-          s.async = false;
-          document.body.appendChild(s);
-        }
+      function loadScript(src) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.async = false;
+        document.body.appendChild(s);
       }
 
-      const scripts = [];
-
-      if (isLocal) {
-        scripts.push('./react.development.js');
-        scripts.push('./react-dom.development.js');
-      } else {
-        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js');
-        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js');
-      }
-
-      scripts.push('demo-app' + jsSuffix);
-
-      loadScript(scripts);
+      loadScript('demo-app' + jsSuffix);
     </script>
   </body>
 </html>

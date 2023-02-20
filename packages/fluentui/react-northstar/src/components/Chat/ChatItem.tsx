@@ -25,6 +25,7 @@ import { Box, BoxProps } from '../Box/Box';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
 import { ChatItemContextProvider } from './chatItemContext';
+import type { ChatMessageLayout } from './ChatMessage';
 
 export interface ChatItemSlotClassNames {
   message: string;
@@ -55,9 +56,14 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Chat items can have a message. */
   message?: ShorthandValue<BoxProps>;
+
+  /** Chat items can render with different layouts. */
+  unstable_layout?: ChatMessageLayout;
 }
 
-export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'>;
+export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'> & {
+  layout: ChatMessageLayout;
+};
 
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
@@ -88,6 +94,7 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
     message,
     styles,
     variables,
+    unstable_layout: layout = 'default',
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -97,6 +104,7 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
   const { classes, styles: resolvedStyles } = useStyles<ChatItemStylesProps>(ChatItem.displayName, {
     className: chatItemClassName,
     mapPropsToStyles: () => ({
+      layout,
       attached,
       contentPosition,
       density,
@@ -169,6 +177,7 @@ ChatItem.propTypes = {
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   gutter: customPropTypes.itemShorthand,
   message: customPropTypes.itemShorthand,
+  unstable_layout: PropTypes.oneOf(['default', 'refresh']),
 };
 ChatItem.handledProps = Object.keys(ChatItem.propTypes) as any;
 

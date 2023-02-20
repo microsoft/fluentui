@@ -92,7 +92,7 @@ export class Editor extends React.PureComponent<EditorProps> {
     this.setCursorVisibility(showCursor);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const previousPros = this.props;
     const { active, showCursor } = nextProps;
 

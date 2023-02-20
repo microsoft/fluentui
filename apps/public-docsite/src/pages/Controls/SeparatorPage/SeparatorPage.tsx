@@ -17,13 +17,13 @@ export const SeparatorPage: React.FunctionComponent<IControlsPageProps> = props 
     <ControlsAreaPage
       {...props}
       title="Separator"
-      {...SeparatorPageProps[platform]}
-      otherSections={_otherSections(platform) as any}
+      {...SeparatorPageProps[platform!]}
+      otherSections={_otherSections(platform!) as any}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [

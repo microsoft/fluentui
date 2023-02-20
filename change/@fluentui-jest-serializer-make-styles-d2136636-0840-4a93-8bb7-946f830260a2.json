@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "remove inline-style-expand-shorthand from tsconfigs",
-  "packageName": "@fluentui/jest-serializer-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

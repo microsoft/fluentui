@@ -1,4 +1,3 @@
-import { setSSR } from './dom/setSSR';
 import { modalize } from './modalize';
 
 function getHiddenElements() {
@@ -17,7 +16,6 @@ function getHiddenElements() {
 describe('modalize', () => {
   afterEach(() => {
     document.body.innerHTML = '';
-    setSSR(false);
   });
 
   const modalizeId = 'childToModalize';
@@ -138,24 +136,6 @@ describe('modalize', () => {
     const child = document.getElementById(modalizeId)!;
     const unmodalize = modalize(child);
     expect(getHiddenElements()).toStrictEqual(['siblingBefore', 'siblingAfter']);
-
-    unmodalize();
-    expect(getHiddenElements()).toStrictEqual([]);
-  });
-
-  it('does nothing in SSR', () => {
-    // can't fully simulate SSR but at least set the variable
-    setSSR(true);
-
-    document.body.innerHTML = `
-      <div id="siblingBefore"></div>
-      <div id="${modalizeId}"></div>
-      <div id="siblingAfter"></div>
-    `;
-
-    const child = document.getElementById(modalizeId)!;
-    const unmodalize = modalize(child);
-    expect(getHiddenElements()).toStrictEqual([]);
 
     unmodalize();
     expect(getHiddenElements()).toStrictEqual([]);

@@ -27,24 +27,25 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/api-docs": "^8.2.1",
+    "@fluentui/api-docs": "^8.2.6",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "react-dom": "16.8.6"
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.55.2",
+    "@fluentui/react": "^8.105.11",
     "@fluentui/react-examples": "^8.34.4",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/azure-themes": "^8.1.138",
-    "@fluentui/react-docsite-components": "^8.3.98",
-    "@fluentui/font-icons-mdl2": "^8.1.23",
-    "@fluentui/set-version": "^8.1.5",
-    "@fluentui/theme-samples": "^8.2.79",
-    "@fluentui/react-monaco-editor": "^1.2.79",
-    "@types/react": "16.9.42",
+    "@fluentui/azure-themes": "^8.5.62",
+    "@fluentui/react-docsite-components": "^8.11.23",
+    "@fluentui/font-icons-mdl2": "^8.5.9",
+    "@fluentui/set-version": "^8.2.5",
+    "@fluentui/theme-samples": "^8.7.58",
+    "@fluentui/react-monaco-editor": "^1.7.58",
     "office-ui-fabric-core": "^11.0.0",
-    "react": "16.8.6",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "tslib": "^2.1.0"
   }
 }

@@ -1,1 +1,1 @@
-export { Depths } from '@fluentui/theme/lib/effects/FluentDepths';
+export { Depths } from '@fluentui/theme';

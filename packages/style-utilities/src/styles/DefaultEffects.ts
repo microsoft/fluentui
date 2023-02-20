@@ -1,1 +1,1 @@
-export { DefaultEffects } from '@fluentui/theme/lib/effects/DefaultEffects';
+export { DefaultEffects } from '@fluentui/theme';

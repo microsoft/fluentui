@@ -15,6 +15,7 @@ export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props 
     input: {
       'aria-labelledby': props['aria-labelledby'],
       'aria-invalid': props['aria-invalid'],
+      ...(!props.allowManualInput && { 'aria-haspopup': true }),
     },
   },
   keyActions: {
@@ -29,4 +30,5 @@ export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props 
 export type DatepickerBehaviorProps = {
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
   'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
+  allowManualInput?: boolean;
 };

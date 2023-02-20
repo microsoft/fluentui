@@ -5,13 +5,13 @@ export function isConformant<TProps = {}>(
   testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
 ) {
   const defaultOptions: Partial<IsConformantOptions<TProps>> = {
-    disabledTests: [
-      'has-docblock',
-      'kebab-aria-attributes',
-      // Focus* components don't have static classes
-      'component-has-static-classname',
-    ],
-    componentPath: module!.parent!.filename.replace('.test', ''),
+    disabledTests: ['kebab-aria-attributes', 'component-has-static-classname-exported'],
+    testOptions: {
+      'component-has-static-classname': {
+        prefix: 'ms-',
+      },
+    },
+    componentPath: require.main?.filename.replace('.test', ''),
   };
 
   baseIsConformant(defaultOptions, testInfo);

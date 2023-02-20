@@ -25,7 +25,6 @@ describe('Callout', () => {
   isConformant({
     Component: Callout,
     displayName: 'Callout',
-    targetComponent: CalloutContent,
     requiredProps: { doNotLayer: true },
     disabledTests: ['component-handles-classname'],
   });
@@ -185,6 +184,19 @@ describe('Callout', () => {
         containsFocus: true,
       }),
     );
+  });
+
+  it('passes popupProps through to Popup', () => {
+    const { getByRole } = render(
+      <div>
+        <Callout doNotLayer role="dialog" popupProps={{ 'aria-modal': 'true' }}>
+          content
+        </Callout>
+      </div>,
+    );
+
+    const popup = getByRole('dialog');
+    expect(popup.getAttribute('aria-modal')).toEqual('true');
   });
 
   // This behavior could be changed in the future

@@ -2,65 +2,71 @@ pr: none
 
 trigger: none
 
-pool: '1ES-Host-Ubuntu'
-
-workspace:
-  clean: all
-
 name: '$(targetNpmVersion) ($(Rev:r))'
 
 variables:
   - template: .devops/templates/variables.yml
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
-steps:
-  - template: .devops/templates/tools.yml
+jobs:
+  - template: .devops/templates/compliance-job.yml
 
-  - script: |
-      node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
-    displayName: 'Checking for targetNpmVersion variable'
+  - job: Release
+    dependsOn: Compliance
+    pool: '1ES-Host-Ubuntu'
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
 
-  - script: |
-      npm install semver
-      node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
-    displayName: 'Check targetNpmVersion is valid semver'
+      - script: |
+          node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
+        displayName: 'Checking for targetNpmVersion variable'
 
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
+      - script: |
+          npm install semver
+          node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
+        displayName: 'Check targetNpmVersion is valid semver'
 
-  - script: |
-      npm version $(targetNpmVersion)
-    workingDirectory: 'packages/react'
-    displayName: 'Manually set package version'
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
 
-  - script: |
-      yarn buildto @fluentui/react --production
-    displayName: yarn build to FUIR (Create production build)
+      - script: |
+          npm version $(targetNpmVersion)
+        workingDirectory: 'packages/react'
+        displayName: 'Manually set package version'
 
-  - script: yarn workspace @fluentui/react bundle --production
-    displayName: yarn bundle FUIR
+      - script: |
+          yarn buildto @fluentui/react --production
+        displayName: yarn build to FUIR (Create production build)
 
-  - script: |
-      npm pack
-    displayName: 'Create tarball'
-    workingDirectory: 'packages/react'
+      - script: yarn workspace @fluentui/react bundle --production
+        displayName: yarn bundle FUIR
 
-  - script: |
-      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-    displayName: Publish new version
+      - script: |
+          npm pack
+        displayName: 'Create tarball'
+        workingDirectory: 'packages/react'
 
-  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-    displayName: 📒 Generate Manifest
-    inputs:
-      BuildDropPath: $(System.DefaultWorkingDirectory)
+      - script: |
+          npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
+        displayName: Publish new version
 
-  - task: PublishPipelineArtifact@1
-    displayName: 📒 Publish Manifest
-    inputs:
-      artifactName: SBom-$(System.JobAttempt)
-      targetPath: $(System.DefaultWorkingDirectory)/_manifest
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
 
-  - template: .devops/templates/cleanup.yml
-    parameters:
-      checkForModifiedFiles: false
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
+
+      - template: .devops/templates/cleanup.yml
+        parameters:
+          checkForModifiedFiles: false

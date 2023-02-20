@@ -66,10 +66,6 @@ export const chatMessageStylesComfy: ComponentSlotStylesPrepared<ChatMessageStyl
     position: 'absolute',
   }),
 
-  content: ({ props: p }): ICSSInJSStyle => ({
-    ...(p.hasBadge && p.badgePosition === 'end' && { marginRight: pxToRem(4) }),
-  }),
-
   reactionGroup: ({ props: p, variables: v }) => ({
     marginLeft: v.reactionGroupMarginLeft,
     ...(p.hasBadge && p.badgePosition === 'end' && { marginRight: pxToRem(2) }),

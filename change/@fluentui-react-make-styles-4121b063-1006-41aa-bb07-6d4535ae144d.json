@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "re-export base makeStyles types",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

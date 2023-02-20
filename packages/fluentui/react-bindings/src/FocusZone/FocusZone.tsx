@@ -12,14 +12,12 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 
-import {
-  elementContains,
-  findScrollableParent,
-  getDocument,
-  getParent,
-  getWindow,
-  shouldWrapFocus,
-} from '@uifabric/utilities';
+import { getDocument } from '../utils/getDocument';
+import { getWindow } from '../utils/getWindow';
+import { findScrollableParent } from '../utils/findScrollableParent';
+import { shouldWrapFocus } from '../utils/shouldWrapFocus';
+
+import { elementContains, getParent } from '@fluentui/dom-utilities';
 
 import { getElementType } from '../utils/getElementType';
 import { getUnhandledProps } from '../utils/getUnhandledProps';
@@ -97,7 +95,13 @@ function _raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
+    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => {
+      if (zone.props.shouldResetActiveElementWhenTabFromZone && document.activeElement !== zone._activeElement) {
+        // when focus is outside of component and shouldResetActiveElementWhenTabFromZone, reset tabIndex
+        zone._activeElement = null;
+      }
+      zone.updateTabIndexes();
+    });
   }
 }
 

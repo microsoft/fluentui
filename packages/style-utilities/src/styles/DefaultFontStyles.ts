@@ -1,1 +1,1 @@
-export { DefaultFontStyles, registerDefaultFontFaces } from '@fluentui/theme/lib/fonts/DefaultFontStyles';
+export { DefaultFontStyles, registerDefaultFontFaces } from '@fluentui/theme';

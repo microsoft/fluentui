@@ -78,6 +78,15 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     thumbnailColumn.ariaLabel = 'Thumbnail';
     thumbnailColumn.onColumnClick = undefined;
 
+    // Indicate that all columns except thumbnail column can be sorted,
+    // and only the description colum should disappear at small screen sizes
+    columns.forEach((column: IColumn) => {
+      if (column.name) {
+        column.showSortIconWhenUnsorted = true;
+        column.isCollapsible = column.name === 'description';
+      }
+    });
+
     return columns;
   }
 

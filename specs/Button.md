@@ -791,7 +791,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Element/setPointerCapture
 - `mousedown`: Should immediately change the styling of the `Button` so that it appears to be pressed.
 - `mouseup`:
   - If triggered while cursor is still inside of the `Button's` boundaries, then it should trigger the `Button's` action and immediately remove the pressed styling of the `Button`.
-  - If triggered outside of the `Button's` boundaries, then it should immmediately remove the pressed styling of the `Button` without triggering the `Button's` action.
+  - If triggered outside of the `Button's` boundaries, then it should immediately remove the pressed styling of the `Button` without triggering the `Button's` action.
 
 ### Touch interaction
 
@@ -951,7 +951,7 @@ colorDisabled: string
 colorFocus: string
 colorHover: string
 contentFontSize: string
-contentFontWeight: FontWeightProperty
+contentFontWeight: Property.FontWeight
 contentLineHeight: string
 height: string
 loaderBorderSize: string

@@ -1,20 +1,19 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import {
+  AnchoredRegion,
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  FoundationElementDefinition
 } from '@microsoft/fast-foundation';
 import { elevationShadowTooltip } from '../styles/index';
 import {
-  bodyFont,
   controlCornerRadius,
   fillColor,
   neutralForegroundRest,
   neutralStrokeLayerRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const tooltipStyles: (
   context: ElementDefinitionContext,
@@ -39,14 +38,12 @@ export const tooltipStyles: (
       padding: 4px 12px;
       height: fit-content;
       width: fit-content;
-      font-family: ${bodyFont};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       white-space: nowrap;
       box-shadow: ${elevationShadowTooltip};
     }
 
-    fluent-anchored-region {
+    ${context.tagFor(AnchoredRegion)} {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -54,15 +51,15 @@ export const tooltipStyles: (
       flex-direction: row;
     }
 
-    fluent-anchored-region.right,
-    fluent-anchored-region.left {
+    ${context.tagFor(AnchoredRegion)}.right,
+    ${context.tagFor(AnchoredRegion)}.left {
       flex-direction: column;
     }
 
-    fluent-anchored-region.top .tooltip::after,
-    fluent-anchored-region.bottom .tooltip::after,
-    fluent-anchored-region.left .tooltip::after,
-    fluent-anchored-region.right .tooltip::after {
+    ${context.tagFor(AnchoredRegion)}.top .tooltip::after,
+    ${context.tagFor(AnchoredRegion)}.bottom .tooltip::after,
+    ${context.tagFor(AnchoredRegion)}.left .tooltip::after,
+    ${context.tagFor(AnchoredRegion)}.right .tooltip::after {
       content: '';
       width: 12px;
       height: 12px;
@@ -72,43 +69,43 @@ export const tooltipStyles: (
       position: absolute;
     }
 
-    fluent-anchored-region.top .tooltip::after {
+    ${context.tagFor(AnchoredRegion)}.top .tooltip::after {
       transform: translateX(-50%) rotate(225deg);
       bottom: 5px;
       left: 50%;
     }
 
-    fluent-anchored-region.top .tooltip {
+    ${context.tagFor(AnchoredRegion)}.top .tooltip {
       margin-bottom: 12px;
     }
 
-    fluent-anchored-region.bottom .tooltip::after {
+    ${context.tagFor(AnchoredRegion)}.bottom .tooltip::after {
       transform: translateX(-50%) rotate(45deg);
       top: 5px;
       left: 50%;
     }
 
-    fluent-anchored-region.bottom .tooltip {
+    ${context.tagFor(AnchoredRegion)}.bottom .tooltip {
       margin-top: 12px;
     }
 
-    fluent-anchored-region.left .tooltip::after {
+    ${context.tagFor(AnchoredRegion)}.left .tooltip::after {
       transform: translateY(-50%) rotate(135deg);
       top: 50%;
       right: 5px;
     }
 
-    fluent-anchored-region.left .tooltip {
+    ${context.tagFor(AnchoredRegion)}.left .tooltip {
       margin-right: 12px;
     }
 
-    fluent-anchored-region.right .tooltip::after {
+    ${context.tagFor(AnchoredRegion)}.right .tooltip::after {
       transform: translateY(-50%) rotate(-45deg);
       top: 50%;
       left: 5px;
     }
 
-    fluent-anchored-region.right .tooltip {
+    ${context.tagFor(AnchoredRegion)}.right .tooltip {
       margin-left: 12px;
     }
   `.withBehaviors(
@@ -117,10 +114,10 @@ export const tooltipStyles: (
         :host([disabled]) {
           opacity: 1;
         }
-        fluent-anchored-region.top .tooltip::after,
-        fluent-anchored-region.bottom .tooltip::after,
-        fluent-anchored-region.left .tooltip::after,
-        fluent-anchored-region.right .tooltip::after {
+        ${context.tagFor(AnchoredRegion)}.top .tooltip::after,
+        ${context.tagFor(AnchoredRegion)}.bottom .tooltip::after,
+        ${context.tagFor(AnchoredRegion)}.left .tooltip::after,
+        ${context.tagFor(AnchoredRegion)}.right .tooltip::after {
           content: '';
           width: unset;
           height: unset;

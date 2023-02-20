@@ -11,6 +11,7 @@ import { DocumentCardType } from './DocumentCard.types';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
   IDocumentCard,
+  IDocumentCardContext,
   IDocumentCardProps,
   IDocumentCardStyleProps,
   IDocumentCardStyles,
@@ -19,6 +20,8 @@ import type {
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
 const COMPONENT_NAME = 'DocumentCard';
+
+export const DocumentCardContext = React.createContext<IDocumentCardContext>({});
 
 /**
  * {@docCategory DocumentCard}
@@ -69,20 +72,19 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     // if this element is actionable it should have an aria role
     const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
     const tabIndex = actionable ? 0 : undefined;
+    const documentCardContextValue = { role, tabIndex };
 
     return (
       <div
         ref={this._rootElement}
-        tabIndex={tabIndex}
-        data-is-focusable={actionable}
-        role={role}
+        role={'group'}
         className={this._classNames.root}
         onKeyDown={actionable ? this._onKeyDown : undefined}
         onClick={actionable ? this._onClick : undefined}
         style={style}
         {...nativeProps}
       >
-        {children}
+        <DocumentCardContext.Provider value={documentCardContextValue}>{children}</DocumentCardContext.Provider>
       </div>
     );
   }

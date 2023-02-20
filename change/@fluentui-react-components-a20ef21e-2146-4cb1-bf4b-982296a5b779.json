@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: notes on migration to `@fluentui/react-components@9.0.0-rc.1`",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

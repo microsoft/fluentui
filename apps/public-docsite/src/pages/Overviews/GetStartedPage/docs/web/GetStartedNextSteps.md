@@ -16,8 +16,8 @@ Fluent UI React components are highly customizable using CSS-in-JS. We also supp
 
 For an overview of styling and theming approaches in Fluent UI, see [this page](https://github.com/Microsoft/frontend-bootcamp/tree/master/step2-03/demo). Then check out the links below for more details:
 
-<ul class="md-list--flex">
-  <li class="mdut--full">[Theme designer](https://aka.ms/themedesigner)</li>
-  <li class="mdut--full">[Customizing CSS-in-JS styled components](https://github.com/microsoft/fluentui/wiki/Component-Styling)</li>
-  <li class="mdut--full">[Theming deep dive](https://github.com/microsoft/fluentui/wiki/Theming)</li>
+<ul className="md-list--flex">
+  <li className="mdut--full">[Theme designer](https://aka.ms/themedesigner)</li>
+  <li className="mdut--full">[Customizing CSS-in-JS styled components](https://github.com/microsoft/fluentui/wiki/Component-Styling)</li>
+  <li className="mdut--full">[Theming deep dive](https://github.com/microsoft/fluentui/wiki/Theming)</li>
 </ul>

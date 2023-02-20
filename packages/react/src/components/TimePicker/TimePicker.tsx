@@ -30,6 +30,9 @@ const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePicke
   };
 };
 
+/**
+ * {@docCategory TimePicker}
+ */
 export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   label,
   increments = 30,
@@ -134,15 +137,17 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
+    // eslint-disable-next-line deprecation/deprecation
+    const charCode = event.charCode;
     if (
       !onFormatDate &&
       // Only permit input of digits, space, colon, A/P/M characters
       !(
-        (event.charCode >= KeyCodes.zero && event.charCode <= KeyCodes.colon) ||
-        event.charCode === KeyCodes.space ||
-        event.charCode === KeyCodes.a ||
-        event.charCode === KeyCodes.m ||
-        event.charCode === KeyCodes.p
+        (charCode >= KeyCodes.zero && charCode <= KeyCodes.colon) ||
+        charCode === KeyCodes.space ||
+        charCode === KeyCodes.a ||
+        charCode === KeyCodes.m ||
+        charCode === KeyCodes.p
       )
     ) {
       event.preventDefault();

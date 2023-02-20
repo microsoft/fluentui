@@ -24,13 +24,19 @@ import { DetailsListAdvancedExample } from './DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListProportionalColumnsExample } from './DetailsList.ProportionalColumns.Example';
-const DetailsListProportionalColumnsCode = require('!raw-loader!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
+const DetailsListProportionalColumnsCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
 
+import { DetailsListGroupedV2Example } from './DetailsList.GroupedV2.Example';
+const DetailsListGroupedV2ExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.Example.tsx') as string;
+
 import { DetailsListGroupedLargeExample } from './DetailsList.Grouped.Large.Example';
 const DetailsListGroupedLargeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Large.Example.tsx') as string;
+
+import { DetailsListGroupedV2LargeExmaple } from './DetailsList.GroupedV2.Large.Example';
+const DetailsListGroupedV2LargeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.Large.Example.tsx') as string;
 
 import { DetailsListDragDropExample } from './DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.DragDrop.Example.tsx') as string;
@@ -49,6 +55,9 @@ const DetailsListCustomFooterExampleCode = require('!raw-loader?esModule=false!@
 
 import { DetailsListKeyboardAccessibleResizeAndReorderExample } from './DetailsList.KeyboardAccessibleResizeAndReorder.Example';
 const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx') as string;
+
+import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
+const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -101,10 +110,22 @@ export const DetailsListSimpleGroupedPageProps: IDocPageProps = generateProps({
   view: <DetailsListGroupedExample />,
 });
 
+export const DetailsListSimpleGroupedV2PageProps: IDocPageProps = generateProps({
+  title: 'Simple grouped DetailsList V2',
+  code: DetailsListGroupedV2ExampleCode,
+  view: <DetailsListGroupedV2Example />,
+});
+
 export const DetailsListLargeGroupedPageProps: IDocPageProps = generateProps({
   title: 'Large grouped DetailsList',
   code: DetailsListGroupedLargeExampleCode,
   view: <DetailsListGroupedLargeExample />,
+});
+
+export const DetailsListLargeGroupedV2PageProps: IDocPageProps = generateProps({
+  title: 'Large grouped DetailsList V2',
+  code: DetailsListGroupedV2LargeExampleCode,
+  view: <DetailsListGroupedV2LargeExmaple />,
 });
 
 export const DetailsListCustomColumnsPageProps: IDocPageProps = generateProps({
@@ -165,4 +186,10 @@ export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps =
   title: 'Keyboard-accessible column reordering and resizing',
   code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
   view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
+});
+
+export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
+  title: 'Keyboard overrides for selection',
+  code: DetailsListKeyboardOverridesExampleCode,
+  view: <DetailsListKeyboardOverridesExample />,
 });

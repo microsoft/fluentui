@@ -66,7 +66,6 @@ const computeCacheKey = (primaryControls: IContextualMenuItem[]): string => {
 
 const onRenderItem = (item: any) => (
   <CommandBarButton
-    role="menuitem"
     text={item.name}
     iconProps={{ iconName: item.icon }}
     onClick={item.onClick}
@@ -114,7 +113,6 @@ export const ResizeGroupOverflowSetExample: React.FunctionComponent = () => {
   const onRenderData = (data: any) => {
     return (
       <OverflowSet
-        role="menubar"
         items={data.primary}
         overflowItems={data.overflow.length ? data.overflow : null}
         onRenderItem={onRenderItem}

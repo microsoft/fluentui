@@ -25,7 +25,7 @@ const GlobalClassNames = {
   nearIcon: 'ms-DetailsColumn-nearIcon',
 };
 
-export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
+export const getDetailsColumnStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
   const {
     theme,
     headerClassName,

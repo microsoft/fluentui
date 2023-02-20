@@ -9,7 +9,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'role=tooltip' to 'tooltip' slot.
  * Adds attribute 'aria-hidden=false' to 'tooltip' slot if 'open' property is true. Sets the attribute to 'true' otherwise.
  * Adds attribute 'aria-describedby' based on the property 'contentId' to 'trigger' slot. This can be overriden by providing 'aria-describedby' property directly to the component.
- * Triggers 'close' action with 'Escape' on 'trigger'.
+ * Triggers 'close' action with 'Escape' on 'trigger' if 'open' property is true.
  */
 export const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
   const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props);
@@ -27,9 +27,11 @@ export const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> =
     },
     keyActions: {
       trigger: {
-        close: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }],
-        },
+        ...(props.open && {
+          close: {
+            keyCombinations: [{ keyCode: keyboardKey.Escape }],
+          },
+        }),
       },
     },
   };

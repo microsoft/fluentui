@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Fri, 11 Feb 2022 07:27:48 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Oct 2022 07:43:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.4)
+
+Thu, 20 Oct 2022 07:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.3..@fluentui/react-conformance_v0.15.4)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+
+## [0.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.3)
+
+Wed, 24 Aug 2022 16:36:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.2..@fluentui/react-conformance_v0.15.3)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+
+## [0.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.2)
+
+Tue, 23 Aug 2022 07:22:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.0..@fluentui/react-conformance_v0.15.2)
+
+### Patches
+
+- fix: Bump react-is dependency to version 17. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+
+## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.0)
+
+Thu, 28 Jul 2022 07:41:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.14.0..@fluentui/react-conformance_v0.15.0)
+
+### Minor changes
+
+- chore: Remove static className conformance tests. ([PR #24063](https://github.com/microsoft/fluentui/pull/24063) by ololubek@microsoft.com)
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.14.0)
+
+Fri, 24 Jun 2022 07:43:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.13.0..@fluentui/react-conformance_v0.14.0)
+
+### Minor changes
+
+- feat: Adding getPortalElement option to static classnames object test. ([PR #23631](https://github.com/microsoft/fluentui/pull/23631) by esteban.230@hotmail.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.13.0)
+
+Tue, 29 Mar 2022 07:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.12.0..@fluentui/react-conformance_v0.13.0)
+
+### Minor changes
+
+- BREAKING CHANGE: Switch from Enzyme to `@testing-library/react` and remove Enzyme-specific APIs ([PR #22009](https://github.com/microsoft/fluentui/pull/22009) by elcraig@microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.12.0)
+
+Wed, 16 Mar 2022 07:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.11.0..@fluentui/react-conformance_v0.12.0)
+
+### Minor changes
+
+- Add conformance tests for static classnames ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.11.0)
+
+Tue, 08 Mar 2022 07:35:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.10.1..@fluentui/react-conformance_v0.11.0)
+
+### Minor changes
+
+- BREAKING CHANGE: Remove some tests and options specific to `@fluentui/react-northstar` ([PR #21700](https://github.com/microsoft/fluentui/pull/21700) by elcraig@microsoft.com)
 
 ## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.10.1)
 

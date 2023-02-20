@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { IAreaChartProps, AreaChart } from './index';
 import { IAreaChartState, AreaChartBase } from './AreaChart.base';
 import { ICustomizedCalloutData } from '../../index';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the AreaChart to be tested.
 let wrapper: ReactWrapper<IAreaChartProps, IAreaChartState, AreaChartBase> | undefined;
@@ -41,6 +42,18 @@ const points = [
 const chartPoints = {
   chartTitle: 'AreaChart',
   lineChartData: points,
+};
+
+const singlePoint = [
+  {
+    legend: 'metaData1',
+    data: [{ x: 20, y: 50 }],
+    color: 'red',
+  },
+];
+const singleChartPoint = {
+  chartTitle: 'AreaChart',
+  lineChartData: singlePoint,
 };
 
 describe('AreaChart snapShot testing', () => {
@@ -82,6 +95,12 @@ describe('AreaChart snapShot testing', () => {
 
   it('renders yAxisTickFormat correctly', () => {
     const component = renderer.create(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Areachart with single point correctly', () => {
+    const component = renderer.create(<AreaChart data={singleChartPoint} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -188,5 +207,82 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('AreaChart - mouse events', () => {
+  let root: HTMLDivElement | null;
+
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    root = document.createElement('div');
+    document.body.appendChild(root);
+  });
+
+  afterEach(() => {
+    sharedAfterEach();
+
+    if (root) {
+      document.body.removeChild(root);
+      root = null;
+    }
+  });
+
+  it('Should render callout correctly on mouseover', () => {
+    // document.getElementbyId() returns null if component is not attached to DOM
+    wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+    wrapper.find('rect').simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+    wrapper.find('rect').simulate('mousemove', { clientX: 40, clientY: 0 });
+    const html1 = wrapper.html();
+    wrapper.find('rect').simulate('mousemove', { clientX: -20, clientY: 0 });
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <AreaChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+      { attachTo: root },
+    );
+    wrapper.find('rect').simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout per stack on mouseover', () => {
+    wrapper = mount(
+      <AreaChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+      { attachTo: root },
+    );
+    wrapper.find('rect').simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

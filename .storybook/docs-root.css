@@ -62,22 +62,32 @@
   padding: 48px 0 0 0;
 }
 
+#docs-root .sbdocs-h2 code {
+  border-radius: 4px;
+  font-size: 20px;
+}
+
 #docs-root .sbdocs-h3 {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;
   line-height: 24px;
-  margin: 15px 0 0 0 !important;
+  margin: 25px 0 0 0 !important;
   letter-spacing: -0.01em;
   color: #000000;
+}
+
+#docs-root .sbdocs-h3 code {
+  border-radius: 3px;
+  font-size: 16px;
 }
 
 /* Only apply to H3s inside of stories which have a parent with an ID */
 #docs-root [id] > .sbdocs-h3:before {
   content: '';
   display: block;
-  height: 60px;
-  margin: -60px 0 0;
+  height: 40px;
+  margin: -40px 0 0;
 }
 
 #docs-root .sbdocs-li {
@@ -90,22 +100,27 @@
   /* Neutrals / Web / Gray 200 #1B1A19 */
   color: #1b1a19;
   margin-top: 8px;
-  list-style: none;
-  position: relative;
-}
-
-#docs-root .sbdocs-li::before {
-  position: absolute;
-  content: '•';
-  color: #bdbdbd;
-  font-size: 16px;
-  line-height: 6px;
-  top: calc(50% - 3px);
-  left: -25px;
 }
 
 #docs-root .sbdocs-ul {
   margin: 12px 0;
+}
+
+#docs-root .sbdocs-ul .sbdocs-li {
+  list-style: none;
+  position: relative;
+}
+
+#docs-root .sbdocs-ul .sbdocs-li::before {
+  position: absolute;
+  content: '•';
+  color: #8d8d8d;
+  top: 0;
+  left: -15px;
+}
+
+#docs-root .sbdocs-ol .sbdocs-li::marker {
+  color: #8d8d8d;
 }
 
 #docs-root .sbdocs-preview {
@@ -124,8 +139,14 @@
   display: none;
 }
 
+/* Remove z-index from "show code" button container */
+/* https://github.com/microsoft/fluentui/issues/22773 */
+.docs-story > div:nth-child(2) {
+  z-index: auto;
+}
+
 #docs-root .docblock-code-toggle,
-.docs-story > a:last-child {
+.docs-story .with-code-sandbox-button {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   min-width: 91px;
@@ -143,12 +164,22 @@
   border-radius: 5px 5px 0px 0px !important;
 }
 
+/* Reduce font size of CodeSandbox and Show Code button when zoomed or small window width*/
+/* https://github.com/microsoft/fluentui/issues/22764 */
+
+@media screen and (max-width: 380px) {
+  #docs-root .docblock-code-toggle,
+  .docs-story .with-code-sandbox-button {
+    font-size: 10px !important;
+  }
+}
+
 /* Make storybook-addon-export-to-codesandbox button match Figma design */
-.docs-story > a:last-child {
+.docs-story .with-code-sandbox-button {
   right: 105px !important;
 }
 
-.docs-story > a:last-child:focus {
+.docs-story .with-code-sandbox-button:focus {
   outline: none;
   box-shadow: #1ea7fd 0 -3px 0 0 inset;
 }
@@ -264,7 +295,7 @@
 #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
 #docs-root .css-16d4d7t {
-  font-family: Menlo, monospace;
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -297,7 +328,10 @@
 }
 
 #docs-root code {
-  margin: 1px 0 1px 0;
+  padding: 0.1em 0.2em;
+  display: inline-block;
+  background-color: rgba(17, 16, 15, 0.1);
+  border-radius: 2px;
 }
 
 .os-content-glue {
@@ -306,6 +340,12 @@
 
 #docs-root .sbdocs-preview .prismjs {
   overflow: hidden;
+}
+
+#docs-root .os-content .prismjs * {
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.4em;
 }
 
 #docs-root .sbdocs-preview .prismjs code {
@@ -332,6 +372,10 @@
 
 #docs-root .docblock-argstable tr > :nth-child(2) {
   width: 100%;
+}
+
+#docs-root .os-padding {
+  z-index: 0;
 }
 
 @font-face {

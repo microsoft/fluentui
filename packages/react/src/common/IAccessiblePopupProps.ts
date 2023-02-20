@@ -9,9 +9,14 @@ export interface IAccessiblePopupProps {
   elementToFocusOnDismiss?: HTMLElement;
 
   /**
-   * If false (the default), the control's FocusTrapZone will restore focus to the element which
-   * activated it once the trap zone is unmounted or disabled. Set to true to disable this behavior.
+   * If false (the default), the control's FocusTrapZone will restore focus to the element which activated it
+   * once the trap zone is unmounted or disabled. Set to true to disable this behavior.
    * @defaultvalue false
+   */
+  disableRestoreFocus?: boolean;
+
+  /**
+   * @deprecated Use `disableRestoreFocus` (it has the same behavior and a clearer name).
    */
   ignoreExternalFocusing?: boolean;
 

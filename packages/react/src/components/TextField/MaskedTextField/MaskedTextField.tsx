@@ -12,7 +12,7 @@ import {
   insertString,
   parseMask,
 } from './inputMask';
-import { useConst } from '@fluentui/react-hooks';
+import { useConst, useIsomorphicLayoutEffect } from '@fluentui/react-hooks';
 import type { IMaskedTextFieldProps, IMaskedTextField } from '../TextField.types';
 import type { IRefObject } from '../../../Utilities';
 import type { IMaskValue } from './inputMask';
@@ -289,6 +289,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
 
       internalState.changeSelectionData = null;
       if (textField.current && textField.current.value) {
+        // eslint-disable-next-line deprecation/deprecation
         const { keyCode, ctrlKey, metaKey } = ev;
 
         // Ignore ctrl and meta keydown
@@ -345,8 +346,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
   }, [mask, value]);
 
   // Run before browser paint to avoid flickering from selection reset.
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Move the cursor to position before paint.
     if (maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);

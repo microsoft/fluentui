@@ -119,7 +119,9 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   wrapper?: ShorthandValue<BoxProps>;
 }
 
-export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
+export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled' | 'disabledFocusable'> & {
+  hasContent: boolean;
+};
 
 export interface ToolbarMenuItemSlotClassNames {
   wrapper: string;
@@ -213,7 +215,8 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        disabled: disabled || disabledFocusable,
+        disabled,
+        disabledFocusable,
         hasContent: !!content,
       }),
       mapPropsToInlineStyles: () => ({
@@ -413,7 +416,12 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
                     </ToolbarVariablesProvider>
                   </Popper>
                 </Ref>
-                <EventListener listener={outsideClickHandler(getRefs)} target={context.target} type="click" />
+                <EventListener
+                  capture={true}
+                  listener={outsideClickHandler(getRefs)}
+                  target={context.target}
+                  type="click"
+                />
               </>
             );
           }}

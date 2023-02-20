@@ -6,7 +6,7 @@ const related: ISideRailLink[] = [
   { text: 'Web Text', url: '#/controls/web/text' },
   { text: 'iOS Text', url: '#/controls/ios/text' },
   { text: 'Android Text', url: '#/controls/android/text' },
-  { text: 'Cross-platform Text', url: '#/controls/crossplatform/text' },
+  { text: 'Cross-platform Text', url: '#/controls/cross/text' },
 ];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/TextPage';

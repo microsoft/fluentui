@@ -1,11 +1,17 @@
 // @ts-check
 
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const jju = require('jju');
 
+/**
+ *  @typedef {{root: string, name: string}} Options
+ *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
+ *  @typedef {import("@nrwl/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
+ */
+
 const testFiles = [
-  '**/*{.,-}{test,spec}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
@@ -16,6 +22,7 @@ const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
 const configFiles = [
   './just.config.ts',
+  './cypress.config.ts',
   './gulpfile.ts',
   './*.js',
   './.*.js',
@@ -55,7 +62,7 @@ module.exports = {
    * - config/build
    * - stories, for now
    *   - may need to reconsider for converged components depending on website approach
-   *   - the stories suffix is also used for screener stories in `vr-tests`
+   *   - the stories suffix is also used for storywright stories in `vr-tests`
    */
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, '**/*.stories.tsx'],
 
@@ -69,10 +76,10 @@ module.exports = {
    * Returns a rule configuration for [`@typescript-eslint/naming-convention`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md).
    * This provides the ability to override *only* the interface rule without having to repeat or
    * lose the rest of the (very complicated) config.
-   * @param {boolean} prefixWithI - Whether to prefix interfaces with I
+   * @param {{prefixInterface: boolean}} config - Whether to prefix interfaces with I
    * @returns {import("eslint").Linter.RulesRecord}
    */
-  getNamingConventionRule: prefixWithI => ({
+  getNamingConventionRule: (config = { prefixInterface: false }) => ({
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
@@ -98,7 +105,7 @@ module.exports = {
       {
         selector: 'interface',
         format: ['PascalCase'],
-        ...(prefixWithI ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
+        ...(config.prefixInterface ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
       },
       {
         selector: 'default',
@@ -132,7 +139,7 @@ module.exports = {
    * @returns {import("eslint").Linter.ConfigOverride[]} A single-entry array with a config for TS files if
    * *not* running lint-staged (or empty array for lint-staged)
    */
-  getTypeInfoRuleOverrides: (rules, tsconfigPath) => {
+  getTypeInfoRuleOverrides: (rules, tsconfigPath = path.join(process.cwd(), 'tsconfig.json')) => {
     if (isLintStaged) {
       return [];
     }
@@ -140,16 +147,14 @@ module.exports = {
     // Type info-dependent rules must only apply to TS files included in a project.
     // Usually this is files under src, but check the tsconfig to verify.
     const tsGlob = '**/*.{ts,tsx}';
-    let tsFiles = [`src/${tsGlob}`];
-    tsconfigPath = tsconfigPath || path.join(process.cwd(), 'tsconfig.json');
 
     if (!fs.existsSync(tsconfigPath)) {
       return [];
     }
 
     /**
-       * Note that this approach only accounts for a single level of extends. JJU is used for parsing
-       * the tsconfig because Typescript functions are more complex than necessary.
+       * Note that this approach only accounts for a single level of extends.
+       * - JJU is used for tsconfig parsing because Typescript configs support JS comments (JSON5 "standard")
        *
        * @type {{
           extends: string;
@@ -159,29 +164,9 @@ module.exports = {
           references?: Array<{path:string}>
           }}
        */
-    let tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
+    const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
 
-    /**
-     * Handle any necessary extends merging here, make sure to treat just like native tsconfigs would
-     */
-    if (tsconfig.extends) {
-      const parentTsConfigPath = path.join(path.dirname(tsconfigPath), tsconfig.extends);
-      /** @type { typeof tsconfig } */
-      const parentTsConfig = jju.parse(fs.readFileSync(parentTsConfigPath).toString());
-
-      // Extending config overrides parent files, include and exclude
-      // https://www.typescriptlang.org/tsconfig#extends
-      tsconfig = {
-        ...parentTsConfig,
-        ...tsconfig,
-        compilerOptions: {
-          ...parentTsConfig.compilerOptions,
-          ...tsconfig.compilerOptions,
-        },
-      };
-    }
-
-    // if project is using solution TS style config (process references)
+    // vNext setup - if project is using solution TS style config (process references)
     if (tsconfig.references) {
       return [
         {
@@ -194,10 +179,11 @@ module.exports = {
       ];
     }
 
+    // v8.v0 setup
+
+    let tsFiles = [`src/${tsGlob}`];
     if (tsconfig.include) {
-      tsFiles = /** @type {string[]} */ (tsconfig.include).map(
-        includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
-      );
+      tsFiles = tsconfig.include.map(includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`);
     } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
       tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];
     }
@@ -238,5 +224,44 @@ module.exports = {
       cwd = path.dirname(cwd);
     }
     return cwd;
+  },
+
+  /**
+   * Gets package.json of provided package name.
+   * @param {Options} options Takes provided root folder of git repo and package name.
+   * @returns {PackageJson} package.json file of the provided package name.
+   */
+  getPackageJson: (/** @type {Options} */ options) => {
+    /** @type {WorkspaceJsonConfiguration} */
+    const nxWorkspace = JSON.parse(fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'));
+    const projectMetaData = nxWorkspace.projects[options.name];
+    const packagePath = path.join(options.root, projectMetaData.root);
+    /** @type {PackageJson} */
+    const packageJson = fs.readJSONSync(path.join(packagePath, 'package.json'));
+
+    return packageJson;
+  },
+
+  /**
+   * Gets a set of v9 packages that are currently being exported as unstable from @fluentui/react-components.
+   * @param {string} root folder of git repo.
+   * @returns {Set<string>} Returns a set of v9 packages that are currently unstable.
+   */
+  getV9UnstablePackages: (/** @type {string} */ root) => {
+    const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
+    const v9ProjectMetaData = nxWorkspace.projects['@fluentui/react-components'];
+    const v9PackagePath = path.join(root, v9ProjectMetaData.sourceRoot, 'unstable', 'index.ts');
+    const unstableV9Packages = new Set();
+    fs.readFileSync(v9PackagePath)
+      .toString()
+      .split(' ')
+      .forEach(str => {
+        if (str.includes('@fluentui')) {
+          const pkgName = str.split(';')[0].slice(1, -1);
+          unstableV9Packages.add(pkgName);
+        }
+      });
+
+    return unstableV9Packages;
   },
 };

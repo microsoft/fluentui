@@ -20,6 +20,11 @@
     "all": {
       "type": "boolean",
       "description": "Run generator on all vNext packages"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Add particular team to CODEOWNERS file",
+      "pattern": "^@[/-\\w]+$"
     }
   },
   "required": []

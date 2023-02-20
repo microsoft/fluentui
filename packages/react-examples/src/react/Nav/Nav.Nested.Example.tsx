@@ -8,8 +8,7 @@ const navLinkGroups: INavLinkGroup[] = [
         name: 'Parent link 1',
         url: 'http://example.com',
         target: '_blank',
-        expandAriaLabel: 'Expand Parent link 1',
-        collapseAriaLabel: 'Collapse Parent link 1',
+        expandAriaLabel: 'Show more Parent link 1',
         links: [
           {
             name: 'Child link 1',
@@ -20,8 +19,7 @@ const navLinkGroups: INavLinkGroup[] = [
             name: 'Child link 2',
             url: 'http://example.com',
             target: '_blank',
-            expandAriaLabel: 'Expand Child link 2',
-            collapseAriaLabel: 'Collapse Child link 2',
+            expandAriaLabel: 'Show more Child link 2',
             links: [
               {
                 name: '3rd level link 1',
@@ -46,8 +44,7 @@ const navLinkGroups: INavLinkGroup[] = [
         name: 'Parent link 2',
         url: 'http://example.com',
         target: '_blank',
-        expandAriaLabel: 'Expand Parent link 2',
-        collapseAriaLabel: 'Collapse Parent link 2',
+        expandAriaLabel: 'Show more Parent link 2',
         links: [
           {
             name: 'Child link 4',

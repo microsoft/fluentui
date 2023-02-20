@@ -69,5 +69,11 @@ export interface FocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>
    */
   focusPreviouslyFocusedInnerElement?: boolean;
 
+  /**
+   * When FocusTrapZone is released, FocusTrapZone will try to restore focus back to the previously focused element;
+   * sometimes focusing on the previously focused element can cause page to scroll. Set this prop to true to prevent scrolling
+   */
+  preventScrollOnRestoreFocus?: boolean;
+
   innerRef?: any;
 }

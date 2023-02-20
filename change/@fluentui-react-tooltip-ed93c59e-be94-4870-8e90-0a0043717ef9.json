@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update trigger implementation to be consistent",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

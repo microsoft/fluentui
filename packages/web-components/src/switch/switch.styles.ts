@@ -16,8 +16,6 @@ import {
   bodyFont,
   designUnit,
   disabledOpacity,
-  fillColor,
-  focusStrokeOuter,
   foregroundOnAccentActive,
   foregroundOnAccentHover,
   foregroundOnAccentRest,
@@ -30,9 +28,9 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentTight } from '../styles/focus';
 
 export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -70,7 +68,6 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     .switch {
       position: relative;
-      outline: none;
       box-sizing: border-box;
       width: calc(((${heightNumber} / 2) + ${designUnit}) * 2px);
       height: calc(((${heightNumber} / 2) + ${designUnit}) * 1px);
@@ -91,9 +88,8 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     }
 
     :host(:${focusVisible}) .switch {
-      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
+      ${focusTreatmentTight}
       background: ${neutralFillInputAltFocus};
-      border-color: ${focusStrokeOuter};
     }
 
     :host(.checked) .switch {
@@ -122,8 +118,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
     .status-message {
       color: ${neutralForegroundRest};
       cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
     }
 
     .label__hidden {
@@ -133,8 +128,7 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     .label {
       color: ${neutralForegroundRest};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       margin-inline-end: calc(${designUnit} * 2px + 2px);
       cursor: pointer;
     }
@@ -167,11 +161,6 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
 
     :host(.checked:not(.disabled)) .switch:active slot[name='switch'] {
       fill: ${foregroundOnAccentActive};
-    }
-
-    :host(.checked:${focusVisible}:not(.disabled)) .switch {
-      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
-      border-color: transparent;
     }
 
     .unchecked-message {
@@ -240,15 +229,9 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
         }
         :host(:${focusVisible}) .switch {
           forced-color-adjust: none;
-          background: ${SystemColors.Field};
+          background: ${SystemColors.Field}; 
           border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 1px ${SystemColors.Highlight}, 0 0 0 3px ${SystemColors.FieldText};
-        }
-        :host(.checked:${focusVisible}:not(.disabled)) .switch {
-          forced-color-adjust: none;
-          background: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
-          border-color: ${SystemColors.Field};
+          outline-color: ${SystemColors.FieldText};
         }
         :host(.disabled) {
           opacity: 1;

@@ -347,11 +347,10 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
         aria-label={ariaLabel}
         role="button"
         type="button"
-        aria-atomic={true}
-        // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
-        aria-live="polite"
       >
-        {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        <span aria-live="assertive" aria-atomic="true">
+          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        </span>
       </button>
     );
   }

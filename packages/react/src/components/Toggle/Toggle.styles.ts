@@ -93,6 +93,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         display: 'flex',
         alignItems: 'center',
         padding: '0 3px',
+        overflow: 'visible',
       },
       !disabled && [
         !checked && {

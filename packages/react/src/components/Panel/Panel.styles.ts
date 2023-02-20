@@ -258,9 +258,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     commands: [
       classNames.commands,
       {
-        marginTop: 18,
-        //Ensures that the stickied header always has a background to prevent overlaps on scroll.
-        background: 'inherit',
+        // Ensures that the sticky header always has a background to prevent overlaps on scroll.
+        backgroundColor: semanticColors.bodyBackground,
+        paddingTop: 18,
         selectors: {
           [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
             position: 'sticky',
@@ -270,7 +270,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         },
       },
       hasCustomNavigation && {
-        marginTop: 'inherit',
+        paddingTop: 'inherit',
       },
     ],
     navigation: [
@@ -290,7 +290,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexDirection: 'column',
         flexGrow: 1,
         overflowY: 'hidden',
-        background: 'inherit',
       },
     ],
     header: [
@@ -325,7 +324,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.scrollableContent,
       {
         overflowY: 'auto',
-        background: 'inherit',
       },
       isFooterAtBottom && {
         flexGrow: 1,
@@ -362,7 +360,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         },
       },
       isFooterSticky && {
-        background: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground,
         borderTopColor: semanticColors.variantBorder,
       },
     ],

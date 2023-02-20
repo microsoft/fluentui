@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix visual display of controlled switches",
-  "packageName": "@fluentui/react-switch",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

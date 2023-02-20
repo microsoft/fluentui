@@ -1,60 +1,76 @@
 {
   "migrations": [
     {
-      "version": "13.0.0-beta.1",
-      "description": "Add default base to nx.json if its not currently set",
-      "factory": "./src/migrations/update-13-0-0/set-default-base-if-not-set",
+      "version": "13.9.0-beta.0",
+      "description": "Replace @nrwl/tao with nx",
       "cli": "nx",
+      "implementation": "./src/migrations/update-13-9-0/replace-tao-with-nx",
       "package": "@nrwl/workspace",
-      "name": "set-default-base-if-not-set"
+      "name": "13-9-0-replace-tao-with-nx"
+    },
+    {
+      "version": "13.10.0-beta.0",
+      "description": "Update the decorate-angular-cli script to require nx instead of @nrwl/cli",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-13-10-0/update-decorate-cli",
+      "package": "@nrwl/workspace",
+      "name": "13-10-0-update-decorate-cli"
+    },
+    {
+      "version": "13.10.0-beta.0",
+      "description": "Update the tasks runner property to import it from the nx package instead of @nrwl/worksapce",
+      "cli": "nx",
+      "implementation": "./src/migrations/update-13-10-0/update-tasks-runner",
+      "package": "@nrwl/workspace",
+      "name": "13-10-0-update-tasks-runner"
     },
     {
       "cli": "nx",
-      "version": "13.0.0-beta.1",
-      "description": "Remove packages installed by Nx 12's `@nrwl/node:webpack5` generator.",
-      "factory": "./src/migrations/update-13-0-0/remove-webpack-5-packages-13-0-0",
+      "version": "13.8.5-beta.1",
+      "description": "Renames @nrwl/node:build to @nrwl/node:webpack",
+      "factory": "./src/migrations/update-13-8-5/rename-build-to-webpack",
       "package": "@nrwl/node",
-      "name": "remove-webpack-5-packages"
+      "name": "rename-build-to-webpack"
     },
     {
-      "version": "13.0.0-beta.4",
-      "description": "Move global settings into nx.json, and project specific settings into workspace.json",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-0-0/config-locations/config-locations",
-      "package": "@nrwl/workspace",
-      "name": "13-0-0-config-locations"
+      "version": "13.8.5-beta.1",
+      "description": "Renames @nrwl/node:execute to @nrwl/node:node",
+      "factory": "./src/migrations/update-13-8-5/rename-execute-to-node",
+      "package": "@nrwl/node",
+      "name": "rename-execute-to-node"
     },
     {
-      "version": "13.1.2-beta.0",
       "cli": "nx",
-      "description": "Support .test. file names in tsconfigs",
-      "factory": "./src/migrations/update-13-1-2/update-tsconfigs-for-tests",
-      "package": "@nrwl/jest",
-      "name": "update-ts-config-for-test-filenames"
+      "version": "13.8.5-beta.1",
+      "description": "Renames @nrwl/node:package to @nrwl/js:tsc",
+      "factory": "./src/migrations/update-13-8-5/update-package-to-tsc",
+      "package": "@nrwl/node",
+      "name": "update-package-to-tsc"
     },
     {
-      "version": "13.2.0",
-      "description": "Set --parallel=1 for existing repos to preserve the existing behavior",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-2-0/set-parallel-default",
-      "package": "@nrwl/workspace",
-      "name": "set-parallel-default"
+      "version": "13.8.5-beta.1",
+      "description": "Renames @nrwl/js:node to @nrwl/node:node",
+      "factory": "./src/migrations/update-13-8-5/update-node-executor",
+      "package": "@nrwl/js",
+      "name": "update-node-executor"
     },
     {
-      "version": "13.3.0-beta.0",
-      "description": "@nrwl/workspace:tsc is now @nrwl/js:tsc",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-3-0/update-tsc-executor-location",
-      "package": "@nrwl/workspace",
-      "name": "13-3-0-tsc-location"
+      "version": "13.8.5-beta.1",
+      "description": "Adjust .swcrc to .lib.swcrc",
+      "factory": "./src/migrations/update-13-8-5/update-swcrc",
+      "package": "@nrwl/js",
+      "name": "update-swcrc"
     },
     {
-      "version": "13.4.4-beta.0",
       "cli": "nx",
-      "description": "Create a root babel config file if it doesn't exist and using babel-jest in jest.config.js and add @nrwl/web as needed",
-      "factory": "./src/migrations/update-13-4-4/add-missing-root-babel-config",
-      "package": "@nrwl/jest",
-      "name": "add-missing-root-babel-config"
+      "version": "13.10.1-beta.1",
+      "description": "Update .lib.swcrc to exclude missing test files",
+      "factory": "./src/migrations/update-13-10-1/update-lib-swcrc-exclude",
+      "package": "@nrwl/js",
+      "name": "update-swcrc-exclude"
     }
   ]
 }

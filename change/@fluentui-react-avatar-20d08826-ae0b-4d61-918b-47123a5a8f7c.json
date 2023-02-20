@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Hide Avatar's image if it fails to load, rather than displaying the broken image icon",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

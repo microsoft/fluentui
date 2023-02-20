@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
-import { IBasePickerSuggestionsProps, NormalPeoplePicker, ValidationState } from '@fluentui/react/lib/Pickers';
+import {
+  IBasePickerSuggestionsProps,
+  IPeoplePickerItemSelectedProps,
+  NormalPeoplePicker,
+  PeoplePickerItem,
+  ValidationState,
+} from '@fluentui/react/lib/Pickers';
 import { people, mru } from '@fluentui/example-data';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -23,6 +29,7 @@ const checkboxStyles = {
 export const PeoplePickerNormalExample: React.FunctionComponent = () => {
   const [delayResults, setDelayResults] = React.useState(false);
   const [isPickerDisabled, setIsPickerDisabled] = React.useState(false);
+  const [showSecondaryText, setShowSecondaryText] = React.useState(false);
   const [mostRecentlyUsed, setMostRecentlyUsed] = React.useState<IPersonaProps[]>(mru);
   const [peopleList, setPeopleList] = React.useState<IPersonaProps[]>(people);
 
@@ -79,12 +86,29 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
     }
   };
 
+  const renderItemWithSecondaryText = (props: IPeoplePickerItemSelectedProps) => {
+    const newProps = {
+      ...props,
+      item: {
+        ...props.item,
+        ValidationState: ValidationState.valid,
+        showSecondaryText: true,
+      },
+    };
+
+    return <PeoplePickerItem {...newProps} />;
+  };
+
   const onDisabledButtonClick = (): void => {
     setIsPickerDisabled(!isPickerDisabled);
   };
 
   const onToggleDelayResultsChange = (): void => {
     setDelayResults(!delayResults);
+  };
+
+  const onToggleShowSecondaryText = (): void => {
+    setShowSecondaryText(!showSecondaryText);
   };
 
   return (
@@ -100,6 +124,7 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
         key={'normal'}
         // eslint-disable-next-line react/jsx-no-bind
         onRemoveSuggestion={onRemoveSuggestion}
+        onRenderItem={showSecondaryText ? renderItemWithSecondaryText : undefined}
         onValidateInput={validateInput}
         selectionAriaLabel={'Selected contacts'}
         removeButtonAriaLabel={'Remove'}
@@ -125,6 +150,13 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
         defaultChecked={delayResults}
         // eslint-disable-next-line react/jsx-no-bind
         onChange={onToggleDelayResultsChange}
+        styles={checkboxStyles}
+      />
+      <Checkbox
+        label="Show Secondary Text"
+        defaultChecked={showSecondaryText}
+        // eslint-disable-next-line react/jsx-no-bind
+        onChange={onToggleShowSecondaryText}
         styles={checkboxStyles}
       />
     </div>

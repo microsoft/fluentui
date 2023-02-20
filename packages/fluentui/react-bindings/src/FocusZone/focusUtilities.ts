@@ -1,12 +1,15 @@
 import { IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { getParent, getWindow } from '@uifabric/utilities';
+import { getWindow } from '../utils/getWindow';
+import { getParent } from '@fluentui/dom-utilities';
 
 export const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 export const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 export const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 export const HIDDEN_FROM_ACC_TREE = 'data-is-hidden-from-acc-tree';
 
-export { getDocument, getParent, getWindow } from '@uifabric/utilities';
+export { getDocument } from '../utils/getDocument';
+export { getWindow } from '../utils/getWindow';
+export { getParent } from '@fluentui/dom-utilities';
 
 /**
  * Gets the first focusable element.
@@ -391,7 +394,10 @@ let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | und
  * only the latest called focusAsync element will actually be focused
  * @param element - The element to focus
  */
-export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
+export function focusAsync(
+  element: HTMLElement | { focus: (options?: FocusOptions) => void } | undefined | null,
+  options?: FocusOptions,
+): void {
   if (element) {
     // An element was already queued to be focused, so replace that one with the new element
     if (targetToFocusOnNextRepaint) {
@@ -406,7 +412,7 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
     if (win) {
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
       win.requestAnimationFrame(() => {
-        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus(options);
 
         // We are done focusing for this frame, so reset the queued focus element
         targetToFocusOnNextRepaint = undefined;

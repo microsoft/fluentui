@@ -45,7 +45,14 @@ export interface SiteGlobals {
   /** Info from the manifest file (may not be present in local or PR deployed sites) */
   __siteConfig?: SiteConfig;
 
-  /** Monaco editor global configuration */
+  /**
+   * Monaco editor global configuration.
+   * This should match `packages/monaco-editor/src/configureEnvironment.ts`.
+   *
+   * (The types aren't shared directly because this package must be used in old Fabric versions
+   * where pulling in newer typescript output could cause issues, and `@fluentui/monaco-editor`
+   * is intended to be usable outside of Fluent and therefore shouldn't depend on this package.)
+   */
   MonacoConfig?: {
     baseUrl: string;
     useMinified: boolean;

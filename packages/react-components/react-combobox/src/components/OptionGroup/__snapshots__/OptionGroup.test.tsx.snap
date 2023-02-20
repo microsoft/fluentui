@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionGroup renders a default state 1`] = `
+<div>
+  <div
+    class="fui-OptionGroup"
+    role="group"
+  >
+    Default OptionGroup
+  </div>
+</div>
+`;
+
+exports[`OptionGroup renders with a label 1`] = `
+<div>
+  <div
+    aria-labelledby="group-label9"
+    class="fui-OptionGroup"
+    role="group"
+  >
+    <span
+      class="fui-OptionGroup__label"
+      id="group-label9"
+      role="presentation"
+    >
+      optgroup label
+    </span>
+    Default OptionGroup
+  </div>
+</div>
+`;
