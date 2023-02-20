@@ -425,64 +425,15 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
         }
   >
     <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              aria-label="Legends"
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-              data-focuszone-id="FocusZone7"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet
-                    {
-                      display: flex;
-                      flex-wrap: wrap;
-                      justify-content: unset;
-                      position: relative;
-                    }
-                role="group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      aria-label="Graph has no data to display"
+      id="_Legends_9"
+      role="alert"
+      style={
+        Object {
+          "opacity": "0",
+        }
+      }
+    />
   </div>
   <div
     className=
@@ -1074,64 +1025,15 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
         }
   >
     <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              aria-label="Legends"
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-              data-focuszone-id="FocusZone7"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet
-                    {
-                      display: flex;
-                      flex-wrap: wrap;
-                      justify-content: unset;
-                      position: relative;
-                    }
-                role="group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      aria-label="Graph has no data to display"
+      id="_Legends_9"
+      role="alert"
+      style={
+        Object {
+          "opacity": "0",
+        }
+      }
+    />
   </div>
   <div
     className=
@@ -1630,64 +1532,15 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         }
   >
     <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              aria-label="Legends"
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-              data-focuszone-id="FocusZone7"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet
-                    {
-                      display: flex;
-                      flex-wrap: wrap;
-                      justify-content: unset;
-                      position: relative;
-                    }
-                role="group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      aria-label="Graph has no data to display"
+      id="_Legends_8"
+      role="alert"
+      style={
+        Object {
+          "opacity": "0",
+        }
+      }
+    />
   </div>
   <span
     className="ms-layer"
@@ -1728,7 +1581,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone32"
+        data-focuszone-id="FocusZone34"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1772,7 +1625,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </span>
             <div
               hidden={true}
-              id="tooltip33"
+              id="tooltip35"
               style={
                 Object {
                   "border": 0,
@@ -1813,7 +1666,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone34"
+        data-focuszone-id="FocusZone36"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1911,7 +1764,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone35"
+        data-focuszone-id="FocusZone37"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1955,7 +1808,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </span>
             <div
               hidden={true}
-              id="tooltip36"
+              id="tooltip38"
               style={
                 Object {
                   "border": 0,
@@ -1996,7 +1849,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone37"
+        data-focuszone-id="FocusZone39"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2088,64 +1941,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
         }
   >
     <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              aria-label="Legends"
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-              data-focuszone-id="FocusZone38"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet
-                    {
-                      display: flex;
-                      flex-wrap: wrap;
-                      justify-content: unset;
-                      position: relative;
-                    }
-                role="group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      aria-label="Graph has no data to display"
+      id="_Legends_41"
+      role="alert"
+      style={
+        Object {
+          "opacity": "0",
+        }
+      }
+    />
   </div>
   <span
     className="ms-layer"
@@ -2186,7 +1990,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone9"
+        data-focuszone-id="FocusZone10"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2230,7 +2034,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </span>
             <div
               hidden={true}
-              id="tooltip10"
+              id="tooltip11"
               style={
                 Object {
                   "border": 0,
@@ -2281,7 +2085,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone12"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2379,7 +2183,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone13"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2423,7 +2227,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             </span>
             <div
               hidden={true}
-              id="tooltip13"
+              id="tooltip14"
               style={
                 Object {
                   "border": 0,
@@ -2474,7 +2278,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone15"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2594,7 +2398,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone24"
+        data-focuszone-id="FocusZone26"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2638,7 +2442,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </span>
             <div
               hidden={true}
-              id="tooltip25"
+              id="tooltip27"
               style={
                 Object {
                   "border": 0,
@@ -2663,7 +2467,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone28"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2761,7 +2565,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone27"
+        data-focuszone-id="FocusZone29"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2805,7 +2609,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             </span>
             <div
               hidden={true}
-              id="tooltip28"
+              id="tooltip30"
               style={
                 Object {
                   "border": 0,
@@ -2856,7 +2660,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone29"
+        data-focuszone-id="FocusZone31"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2984,7 +2788,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone30"
+              data-focuszone-id="FocusZone32"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3227,7 +3031,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone16"
+        data-focuszone-id="FocusZone17"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3271,7 +3075,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </span>
             <div
               hidden={true}
-              id="tooltip17"
+              id="tooltip18"
               style={
                 Object {
                   "border": 0,
@@ -3322,7 +3126,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone19"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3420,7 +3224,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone19"
+        data-focuszone-id="FocusZone20"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3464,7 +3268,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </span>
             <div
               hidden={true}
-              id="tooltip20"
+              id="tooltip21"
               style={
                 Object {
                   "border": 0,
@@ -3515,7 +3319,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone21"
+        data-focuszone-id="FocusZone22"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3607,64 +3411,15 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         }
   >
     <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              aria-label="Legends"
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-              data-focuszone-id="FocusZone22"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet
-                    {
-                      display: flex;
-                      flex-wrap: wrap;
-                      justify-content: unset;
-                      position: relative;
-                    }
-                role="group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      aria-label="Graph has no data to display"
+      id="_Legends_24"
+      role="alert"
+      style={
+        Object {
+          "opacity": "0",
+        }
+      }
+    />
   </div>
   <span
     className="ms-layer"
