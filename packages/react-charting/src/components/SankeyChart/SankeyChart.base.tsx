@@ -3,7 +3,6 @@ import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
-import { select as d3Select } from 'd3-selection';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 
@@ -12,36 +11,28 @@ export class SankeyChartBase extends React.Component<
   {
     containerWidth: number;
     containerHeight: number;
+    emptyChart?: boolean;
   }
 > {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
   private chartContainer: HTMLDivElement;
   private _reqID: number;
-  private _isChartEmpty: boolean;
 
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
       containerHeight: 0,
       containerWidth: 0,
+      emptyChart: !(
+        this.props.data &&
+        this.props.data.SankeyChartData &&
+        this.props.data.SankeyChartData.nodes.length &&
+        this.props.data.SankeyChartData.links.length
+      ),
     };
-    this._isChartEmpty = !(
-      this.props.data &&
-      this.props.data.SankeyChartData &&
-      this.props.data.SankeyChartData.nodes.length &&
-      this.props.data.SankeyChartData.links.length
-    );
   }
   public componentDidMount(): void {
-    if (this._isChartEmpty) {
-      d3Select('body')
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', 'ariaLabel_SankeyChart')
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
-    } else {
+    if (this.state.emptyChart) {
       this._fitParentContainer();
     }
   }
@@ -55,7 +46,7 @@ export class SankeyChartBase extends React.Component<
     cancelAnimationFrame(this._reqID);
   }
   public render(): React.ReactNode {
-    if (!this._isChartEmpty) {
+    if (!this.state.emptyChart) {
       const { theme, className, styles, pathColor } = this.props;
       this._classNames = getClassNames(styles!, {
         theme: theme!,
@@ -98,7 +89,9 @@ export class SankeyChartBase extends React.Component<
         </div>
       );
     }
-    return <></>;
+    return (
+      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+    );
   }
 
   private _createLinks(): React.ReactNode[] | undefined {
