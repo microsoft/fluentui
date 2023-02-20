@@ -3,7 +3,11 @@
 exports[`TableResizeHandle renders a default state 1`] = `
 <div>
   <div
+    aria-label="Resize Column, 0 pixels"
+    aria-live="assertive"
     class="fui-TableResizeHandle"
+    role="button"
+    tabindex="0"
   >
     Default TableResizeHandle
   </div>
