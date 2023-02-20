@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `Checkbox`: Toggle activation should be more obvious in high contrast mode. @ling1726 ([#26910](https://github.com/microsoft/fluentui/pull/26910))
+
 <!--------------------------------[ v0.66.1 ]------------------------------- -->
 ## [v0.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.1) (2023-02-06)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.0..@fluentui/react-northstar_v0.66.1)
