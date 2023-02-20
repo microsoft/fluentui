@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 03 Feb 2023 07:50:06 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Feb 2023 01:37:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.7)
+
+Sat, 18 Feb 2023 01:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.6..@fluentui/utilities_v8.13.7)
+
+### Patches
+
+- chore: Removing deprecated React.Props from DelayedRender. ([PR #26821](https://github.com/microsoft/fluentui/pull/26821) by jimsleon@hotmail.com)
 
 ## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.6)
 
