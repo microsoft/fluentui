@@ -93,3 +93,17 @@ describe('Render calling with respective to props', () => {
     renderMock.mockRestore();
   });
 });
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<PieChart data={chartPoints} colors={colors} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<PieChart data={[]} colors={colors} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
+  });
+});
