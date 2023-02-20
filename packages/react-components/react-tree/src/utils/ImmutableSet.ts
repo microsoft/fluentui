@@ -1,33 +1,49 @@
 export class ImmutableSet<Value> {
+  public static readonly emptySet = ImmutableSet.from<never>();
   /**
-   * @returns the number of (unique) elements in a ImmutableSet.
+   * The number of (unique) elements in a ImmutableSet.
    */
   public readonly size: number;
   private _set: Set<Value>;
-  constructor(iterable?: Iterable<Value> | null) {
-    this._set = new Set(iterable);
+
+  /**
+   * properly creates an ImmutableSet instance from an iterable
+   */
+  public static from<T>(iterable?: Iterable<T>) {
+    const internalSet = new Set(iterable);
+    return new ImmutableSet<T>(internalSet);
+  }
+  /**
+   * Avoid using the constructor, use `ImmutableSet.from` instead.
+   * @param internalSet a set that is used internally to store values.
+   */
+  constructor(internalSet: Set<Value>) {
+    this._set = internalSet;
     this.size = this._set.size;
   }
+
   /**
-   * Creates a new ImmutableSet with the original items and appends a new element with a specified value
-   * to the end of the new ImmutableSet
+   * Creates a new ImmutableSet containing all previous element plus the one provided as argument
+   * @param value new value to be included in the new ImmutableSet instance
    */
   public add(value: Value): ImmutableSet<Value> {
-    this._set.add(value);
-    return new ImmutableSet(this);
+    const nextSet = new Set(this);
+    nextSet.add(value);
+    return new ImmutableSet(nextSet);
   }
   /**
-   * Returns a new empty ImmutableSet
+   * Returns a reference to ImmutableSet.emptySet
    */
   public clear(): ImmutableSet<Value> {
-    return new ImmutableSet();
+    return ImmutableSet.emptySet;
   }
   /**
    * Creates a new ImmutableSet with the original items and removes a specified value from the new ImmutableSet.
    */
   public delete(value: Value): ImmutableSet<Value> {
-    this._set.delete(value);
-    return new ImmutableSet(this);
+    const nextSet = new Set(this);
+    nextSet.delete(value);
+    return new ImmutableSet(nextSet);
   }
   /**
    * @returns a boolean indicating whether an element with the specified value exists in the ImmutableSet or not.

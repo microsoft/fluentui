@@ -18,6 +18,7 @@ export { Appearance } from './TreeAppearance.stories';
 export { UseFlatTreeItems as useFlatTreeItems } from './useFlatTreeItems.stories';
 export { FlattenTree as flattenTree } from './flattenTree.stories';
 export { FlattenTreeFromElements as flattenTreeFromElements } from './flattenTreeFromElements.stories';
+export { Virtualization } from './Virtualization.stories';
 
 export default {
   title: 'Preview Components/Tree',

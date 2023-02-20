@@ -10,15 +10,13 @@ export type FlatTreeItem = Required<Pick<TreeItemProps, 'leaf' | 'aria-level' | 
     parentId?: string;
   };
 
-const emptyOpenItems = new ImmutableSet<never>();
-
 export function useFlatTreeItems_unstable(
   items: FlatTreeItem[],
 ): readonly [Pick<TreeProps, 'openItems' | 'onOpenChange'>, () => FlatTreeItem[]] {
-  const [openItems, setOpenItems] = React.useState<ImmutableSet<TreeItemId>>(emptyOpenItems);
-  const onOpenChange = useEventCallback((ev: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenItems(curr => updateOpenItems(data, curr));
-  });
+  const [openItems, setOpenItems] = React.useState<ImmutableSet<TreeItemId>>(ImmutableSet.emptySet);
+  const onOpenChange = useEventCallback((ev: TreeOpenChangeEvent, data: TreeOpenChangeData) =>
+    setOpenItems(curr => updateOpenItems(data, curr)),
+  );
 
   const treeItemMap = React.useMemo(() => initializeFlatTreeItemMap(items), [items]);
 

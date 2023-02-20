@@ -17,7 +17,7 @@ export type TreeContextValue = {
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
-  openItems: new ImmutableSet(),
+  openItems: ImmutableSet.emptySet,
   focusFirstSubtreeItem() {
     /* noop */
   },

@@ -10,6 +10,6 @@ export function updateOpenItems(
   if (data.open ? previousOpenItemsHasId : !previousOpenItemsHasId) {
     return previousOpenItems;
   }
-  const nextOpenItems = new ImmutableSet<TreeItemId>(previousOpenItems);
+  const nextOpenItems = ImmutableSet.from(previousOpenItems);
   return data.open ? nextOpenItems.add(id) : nextOpenItems.delete(id);
 }
