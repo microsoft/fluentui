@@ -32,7 +32,7 @@ export class SankeyChartBase extends React.Component<
     };
   }
   public componentDidMount(): void {
-    if (this.state.emptyChart) {
+    if (!this.state.emptyChart) {
       this._fitParentContainer();
     }
   }
@@ -90,7 +90,12 @@ export class SankeyChartBase extends React.Component<
       );
     }
     return (
-      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={getId('_SankeyChart_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 

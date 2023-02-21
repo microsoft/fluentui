@@ -4,9 +4,8 @@ import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
-import { select as d3Select } from 'd3-selection';
 
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
@@ -15,6 +14,7 @@ export interface ISparklineState {
   _width: number;
   _height: number;
   _valueTextWidth: number;
+  _emptyChart?: boolean;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -40,6 +40,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       _width: this.props.width! || 80,
       _height: this.props.height! || 20,
       _valueTextWidth: this.props.valueTextWidth! || 80,
+      _emptyChart: false,
     };
   }
 
@@ -50,14 +51,8 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       this.props.data.lineChartData.length &&
       !this.props.data.lineChartData.filter(item => !item.data.length).length
     );
-    if (isChartEmpty) {
-      d3Select('body')
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', 'ariaLabel_SparklineChart')
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
+    if (this.state._emptyChart !== isChartEmpty) {
+      this.setState({ _emptyChart: isChartEmpty });
     } else {
       const area = d3Area()
         /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -122,7 +117,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });
-    return (
+    return !this.state._emptyChart ? (
       <FocusZone
         direction={FocusZoneDirection.horizontal}
         isCircularNavigation={true}
@@ -147,6 +142,13 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           )}
         </div>
       </FocusZone>
+    ) : (
+      <div
+        id={getId('_SparklineChart_')}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 }
