@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Panel } from '@fluentui/react/lib/Panel';
 import { useBoolean } from '@fluentui/react-hooks';
 
@@ -8,7 +7,7 @@ export const PanelBasicExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <DefaultButton text="Open panel" onClick={openPanel} />
+      <button onClick={openPanel}> Open panel </button>
       <Panel
         onOpen={() => console.log('onOpen')}
         onOpened={() => console.log('onOpened')}
