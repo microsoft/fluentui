@@ -490,7 +490,11 @@ Composition approach would be difficult to adjust at runtime because css vars ar
 
 ## Decision making
 
-//TODO @Geoff
+Option A: Discarded - too much additional code, circular reference problems, unwieldy for consumers.
+Option A2: Discarded - global function is no-go
+Option A3: Chosen - minmimal introduction of new types, support tree-shaking, provides full styling escape-hatch to consumers.
+Option B: Deferred/Parallel - recomposition is the recommended approach for many scenarios and we should continue making it easier. It is not the centralized escape-hatch solution.
+Option C: Deferred - component-level tokens will require longer term investigation and solution brainstorming, including CSS parts. They would make the existing Fluent 2 tokens more customizable, but would still have built-in limitations that prevent them from being a complete escape-hatch.
 
 ## Appendix: Partner scenarios
 
