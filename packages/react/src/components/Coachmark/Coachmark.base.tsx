@@ -474,7 +474,8 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
     const updateAsyncPosition = (): void => {
       async.requestAnimationFrame(() => setBounds(getBounds({ isPositionForced, positioningContainerProps })));
     };
-    React.useEffect(updateAsyncPosition, [async]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    React.useEffect(updateAsyncPosition, [async, isPositionForced, positioningContainerProps]);
     return bounds;
   }
 
