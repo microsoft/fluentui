@@ -131,6 +131,11 @@ const useRootStyles = makeStyles({
     borderTopStyle: 'none',
     borderRightStyle: 'none',
     borderLeftStyle: 'none',
+    // Make the focus underline (::after) match the width of the bottom border
+    '::after': {
+      left: 0,
+      right: 0,
+    },
   },
   underlineInteractive: {
     ':hover': {
