@@ -342,7 +342,7 @@ function useDismissHandlers(
       if (
         ((preventDismissOnEvent && !preventDismissOnEvent(ev)) ||
           (!preventDismissOnEvent && !preventDismissOnLostFocus)) &&
-        !targetWindow?.document.hasFocus() &&
+        (!targetWindow?.document.hasFocus() || ev.target === targetRef.current) &&
         ev.relatedTarget === null
       ) {
         onDismiss?.(ev);
