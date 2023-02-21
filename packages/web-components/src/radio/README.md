@@ -24,19 +24,26 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 <br />
 
+### **Component Name**
+
+<br />
+
+`fluent-radio`
+
+<br />
+
 ### **Variables**
 
 <br />
 
 ### **Fields**
 
-| Name            | Privacy | Type                | Default   | Description                                                                                                                                                                              |
-| --------------- | ------- | ------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `readOnly`      | public  | `boolean`           |           | When true, the control will be immutable by user interaction. See readonly [HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly) for more information. |
-| `name`          | public  | `string`            |           | The name of the radio. See [name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) for more info.                                              |
-| `disabled`      | public  | `boolean`           |           | Sets disabled state for radio                                                                                                                                                            |
-| `labelPosition` | public  | `"after"` `"below"` | `"below"` | The position of the label relative to the radio indicator.                                                                                                                               |
-| `checked`       | public  | `boolean`           | `false`   | When true, radio button will be checked                                                                                                                                                  |
+| Name            | Privacy | Type                | Default   | Description                                                                                                                                 |
+| --------------- | ------- | ------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`          | public  | `string`            |           | The name of the radio. See [name attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname) for more info. |
+| `disabled`      | public  | `boolean`           |           | Sets disabled state for radio                                                                                                               |
+| `labelPosition` | public  | `"after"` `"below"` | `"below"` | The position of the label relative to the radio indicator.                                                                                  |
+| `checked`       | public  | `boolean`           | `false`   | When true, radio button will be checked                                                                                                     |
 
 <br />
 
@@ -59,9 +66,12 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 ### **Attributes**
 
-| Name       | Field    |
-| ---------- | -------- |
-| `readOnly` | readOnly |
+| Name             | Field         |
+| ---------------- | ------------- |
+| `name`           | name          |
+| `disabled`       | disabled      |
+| `label-position` | labelPosition |
+| `checked`        | checked       |
 
 <br />
 
@@ -78,7 +88,13 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 ### **Suggested Template**
 
+<br />
+
 `radioTemplate` from FastFoundation
+
+<br />
+<hr />
+<br />
 
 ## **Accessibility**
 

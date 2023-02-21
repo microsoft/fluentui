@@ -24,11 +24,18 @@ Radio group allows the user to be presented with a list of all the options visib
 
 <br />
 
+### **Component Name**
+
+<br />
+
+`fluent-radio-group`
+
+<br />
+
 ### **Fields**
 
 | Name          | Privacy | Type                     | Default      | Description                                                                                           |
 | ------------- | ------- | ------------------------ | ------------ | ----------------------------------------------------------------------------------------------------- |
-| `readOnly`    | public  | `boolean`                | `false`      | When true, the child radios will be immutable by user interaction.                                    |
 | `disabled`    | public  | `boolean`                | `false`      | Disables the radio group and child radios.                                                            |
 | `name`        | public  | `string`                 |              | The name of the radio group. Setting this value will set the name value for all child radio elements. |
 | `value`       | public  | `string`                 |              | The value of the checked radio.                                                                       |
@@ -60,7 +67,6 @@ Radio group allows the user to be presented with a list of all the options visib
 
 | Name          | Field       | Inherited From |
 | ------------- | ----------- | -------------- |
-| `readOnly`    | readOnly    |                |
 | `disabled`    | disabled    |                |
 | `named`       | name        |                |
 | `value`       | value       |                |
@@ -90,6 +96,10 @@ Radio group allows the user to be presented with a list of all the options visib
 <br />
 
 ### **WAI-ARIA Roles, States, and Properties**
+
+| Attributes        | value | Description                              |
+| ----------------- | ----- | ---------------------------------------- |
+| `aria-labelledby` |       | used to associate a label with the group |
 
 <br />
 <hr />
