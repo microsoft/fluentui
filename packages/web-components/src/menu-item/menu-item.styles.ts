@@ -9,6 +9,7 @@ import {
   colorNeutralBackground1Pressed,
   colorNeutralBackgroundDisabled,
   colorNeutralForeground2,
+  colorNeutralForeground2BrandSelected,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
   colorNeutralForeground3,
@@ -48,16 +49,7 @@ export const styles = css`
   }
   .content {
     flex-grow: 1;
-  }
-  :host(.header) {
-    background: ${colorNeutralBackground1};
-    pointer-events: none;
-    padding: 0 8px;
-  }
-  :host(.header) .content {
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightSemibold};
-    line-height: ${lineHeightBase200};
+    padding: 0 2px;
   }
   .checkbox,
   .radio {
@@ -109,7 +101,7 @@ export const styles = css`
     color: ${colorCompoundBrandForeground1Hover};
   }
   :host(:active) {
-    background: ${colorNeutralBackground1Pressed};
+    background: ${colorNeutralForeground2BrandSelected};
   }
   :host(:active) .expand-collapse-glyph-container,
   :host(:active) .content,
