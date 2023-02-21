@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Async,
   EventGroup,
-  canUseDOM,
   css,
   divProperties,
   findIndex,
@@ -120,6 +119,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   };
   private _focusedIndex: number;
   private _scrollElement?: HTMLElement;
+  private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
   private _surfaceRect: IRectangle | undefined;
@@ -336,18 +336,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   public componentDidMount(): void {
-    this.setState({ hasMounted: true });
     this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
     this._scrollTop = 0;
-
-    if (!this.props.getPageHeight) {
-      const heightsChanged = this._updatePageMeasurements(this.state.pages!);
-      if (heightsChanged) {
-        this._materializedRect = null;
-        this.setState(this._updatePages(this.props, this.state));
-      }
-    }
-
+    this.setState(this._updatePages(this.props, this.state));
     this._measureVersion++;
 
     this._events.on(window, 'resize', this._onAsyncResize);
@@ -372,9 +363,15 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         // If measured version is invalid since we've updated the DOM
         const heightsChanged = this._updatePageMeasurements(finalState.pages!);
 
+        // On first render, we should re-measure so that we don't get a visual glitch.
         if (heightsChanged) {
           this._materializedRect = null;
-          this._onAsyncScroll();
+          if (!this._hasCompletedFirstRender) {
+            this._hasCompletedFirstRender = true;
+            this.setState(this._updatePages(finalProps, finalState));
+          } else {
+            this._onAsyncScroll();
+          }
         } else {
           // Enqueue an idle bump.
           this._onAsyncIdle();
@@ -494,12 +491,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       nextProps.items !== this.props.items ||
       nextProps.renderCount !== this.props.renderCount ||
       nextProps.startIndex !== this.props.startIndex ||
-      nextProps.version !== this.props.version ||
-      !previousState.hasMounted
+      nextProps.version !== this.props.version
     ) {
-      if (!canUseDOM()) {
-        return previousState;
-      }
       // We have received new items so we want to make sure that initially we only render a single window to
       // fill the currently visible rect, and then later render additional windows.
       this._resetRequiredWindows();
