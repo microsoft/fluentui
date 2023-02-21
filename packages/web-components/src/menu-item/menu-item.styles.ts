@@ -43,6 +43,7 @@ export const styles = css`
     line-height: ${lineHeightBase300};
     border-radius: ${borderRadiusMedium};
     padding: 0 10px;
+    margin: 1px 0;
     cursor: pointer;
   }
   .content {
