@@ -8,7 +8,7 @@ import { isBrowser } from './isBrowser';
  */
 
 // last used input type
-let currentInput = 'initial';
+let currentInput = 'mouse'; // assume happy path
 
 // event buffer timer
 let eventTimer = null;
@@ -108,6 +108,26 @@ const addListeners = (eventTarget: Window) => {
   eventTarget.addEventListener('keyup', eventBuffer, true);
 };
 
+/**
+ *
+ * @param document document to apply the update to
+ * @param eventKey keyboard key passed from the event
+ * @returns true if mode should be switched, false if not (when an input-like element is focused, and the key was not a navigational key)
+ */
+const keyboardInputFocused = (document: Document, eventKey: number) => {
+  if (
+    document.activeElement.tagName === 'INPUT' ||
+    document.activeElement.tagName === 'TEXTAREA' ||
+    document.activeElement.getAttribute('contenteditable')
+  ) {
+    return (
+      eventKey === 9 || // tab
+      eventKey === 117
+    ); // F6
+  }
+  return true;
+};
+
 // checks conditions before updating new input
 const setInput = (event: WhatInputEvents) => {
   // only execute if the event buffer timer isn't running
@@ -120,7 +140,10 @@ const setInput = (event: WhatInputEvents) => {
     }
 
     const ignoreMatch = ignoreMap.indexOf(eventKey) === -1;
-    const shouldUpdate = (value === 'keyboard' && eventKey && ignoreMatch) || value === 'mouse' || value === 'touch';
+    const shouldUpdate =
+      (value === 'keyboard' && eventKey && ignoreMatch && keyboardInputFocused(event.view.document, eventKey)) ||
+      value === 'mouse' ||
+      value === 'touch';
 
     if (currentInput !== value && shouldUpdate) {
       currentInput = value;

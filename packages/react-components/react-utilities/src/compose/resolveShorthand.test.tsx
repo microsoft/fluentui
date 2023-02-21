@@ -32,6 +32,15 @@ describe('resolveShorthand', () => {
     expect(resolvedProps).toEqual({ children: 42 });
   });
 
+  it('resolves an object as its copy', () => {
+    const slotA = {};
+    const props: TestProps = { slotA };
+    const resolvedProps = resolveShorthand(props.slotA);
+
+    expect(resolvedProps).toEqual(slotA);
+    expect(resolvedProps).not.toBe(slotA);
+  });
+
   it('resolves "null" without creating a child element', () => {
     const props: TestProps = { slotA: null, slotB: null };
 

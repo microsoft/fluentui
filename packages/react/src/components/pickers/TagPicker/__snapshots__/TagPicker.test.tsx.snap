@@ -2,7 +2,11 @@
 
 exports[`TagPicker renders correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -174,10 +178,6 @@ exports[`TagPicker renders correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 4px;
@@ -403,7 +403,11 @@ exports[`TagPicker renders correctly 1`] = `
 
 exports[`TagPicker renders picker with selected item correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
@@ -575,10 +579,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 4px;

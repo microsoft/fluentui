@@ -44,6 +44,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   classifier: {
     extensions: ['classifier'],
   },
+  clipchamp: {
+    extensions: ['clipchamp'],
+  },
   code: {
     extensions: [
       'abap',
@@ -538,7 +541,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
   whiteboard: {
-    extensions: ['whiteboard'],
+    extensions: ['whiteboard', 'wbtx'],
   },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],

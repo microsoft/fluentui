@@ -9,7 +9,7 @@ import { IColor } from '@fluentui/react/lib/Color';
 
 export interface IThemeSlotsProps {
   theme?: ITheme;
-  themeRules?: IThemeRules;
+  themeRules: IThemeRules;
   onFabricPaletteColorChange: (newColor: IColor | undefined, fabricSlot: FabricSlots) => void;
 }
 

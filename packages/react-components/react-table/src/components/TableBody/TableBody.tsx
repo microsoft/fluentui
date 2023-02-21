@@ -6,7 +6,7 @@ import type { TableBodyProps } from './TableBody.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableBody component - TODO: add more docs
+ * TableBody component
  */
 export const TableBody: ForwardRefComponent<TableBodyProps> = React.forwardRef((props, ref) => {
   const state = useTableBody_unstable(props, ref);

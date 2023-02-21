@@ -4,7 +4,7 @@ import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@flu
 
 export const SecondaryContentForMenuItems = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
 

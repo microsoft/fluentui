@@ -8,6 +8,14 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
+export type OverridesContextValue_unstable = {
+    inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+};
+
+// @internal (undocumented)
+export const OverridesProvider_unstable: React_2.Provider<OverridesContextValue_unstable | undefined>;
+
+// @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
@@ -25,13 +33,13 @@ export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 // @internal (undocumented)
 export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
 
-// @internal (undocumented)
+// @public (undocumented)
 export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
 
 // @internal (undocumented)
 export const ThemeProvider_unstable: React_2.Provider<ThemeContextValue_unstable>;
 
-// @internal
+// @public
 export type TooltipVisibilityContextValue_unstable = {
     visibleTooltip?: {
         hide: () => void;
@@ -44,10 +52,15 @@ export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibil
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
 
-// @internal (undocumented)
+// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue" which is marked as @internal
+//
+// @public (undocumented)
+export function useOverrides_unstable(): OverridesContextValue_unstable;
+
+// @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;
 
-// @internal (undocumented)
+// @public (undocumented)
 export function useTooltipVisibility_unstable(): TooltipVisibilityContextValue_unstable;
 
 // (No @packageDocumentation comment for this package)

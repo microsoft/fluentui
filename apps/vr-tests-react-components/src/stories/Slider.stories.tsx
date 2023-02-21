@@ -1,11 +1,13 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Slider } from '@fluentui/react-slider';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Slider Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
+    <StoryWright
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.test-class')
@@ -16,7 +18,7 @@ storiesOf('Slider Converged', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <Slider className="test-class" defaultValue={30} />, {
     includeRtl: true,
@@ -31,3 +33,13 @@ storiesOf('Slider Converged', module)
     includeDarkMode: true,
   })
   .addStory('Disabled Vertical', () => <Slider className="test-class" disabled vertical defaultValue={30} />);
+
+storiesOf('Slider Converged', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
+  .addStory('Horizontal - 0%', () => <Slider defaultValue={0} />, { includeRtl: true })
+  .addStory('Horizontal - 100%', () => <Slider defaultValue={100} />, { includeRtl: true })
+  .addStory('Vertical - 0%', () => <Slider vertical defaultValue={0} />, { includeRtl: true })
+  .addStory('Vertical - 100%', () => <Slider vertical defaultValue={100} />, { includeRtl: true });

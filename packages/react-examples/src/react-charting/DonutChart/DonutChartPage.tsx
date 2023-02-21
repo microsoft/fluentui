@@ -61,6 +61,9 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
               <strong>Note:</strong> Donut Charts typically represent two data points. Representing more data in a
               circular chart (as seen in the second example) is known by the MADS team as a Pie Chart.
             </p>
+            <p>
+              The arc labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
+            </p>
           </div>
         }
       />

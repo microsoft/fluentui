@@ -4,7 +4,7 @@ import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, Tooltip } f
 export const MenuTriggerWithTooltip = () => (
   <Menu>
     <Tooltip content="This is a tooltip" relationship="description">
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
     </Tooltip>

@@ -6,7 +6,7 @@ import type { TableRowProps } from './TableRow.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * TableRow component - TODO: add more docs
+ * TableRow component
  */
 export const TableRow: ForwardRefComponent<TableRowProps> = React.forwardRef((props, ref) => {
   const state = useTableRow_unstable(props, ref);

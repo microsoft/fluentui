@@ -19,16 +19,16 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.98.3",
-    "@fluentui/theme": "^2.6.16",
+    "@fluentui/react": "^8.105.11",
+    "@fluentui/theme": "^2.6.23",
     "@storybook/addon-knobs": "6.4.0",
-    "@storybook/addon-essentials": "6.5.5",
-    "@storybook/addons": "6.5.5",
-    "@fluentui/azure-themes": "^8.5.12",
-    "@fluentui/theme-samples": "^8.7.12",
+    "@storybook/addon-essentials": "6.5.15",
+    "@storybook/addons": "6.5.15",
+    "@fluentui/azure-themes": "^8.5.62",
+    "@fluentui/theme-samples": "^8.7.58",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

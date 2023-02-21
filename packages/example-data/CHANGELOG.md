@@ -1,8 +1,17 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Thu, 03 Mar 2022 07:24:26 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Dec 2022 07:53:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.4)
+
+Tue, 20 Dec 2022 07:53:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.3..@fluentui/example-data_v8.4.4)
+
+### Patches
+
+- chore: Updating cdn links to match latest. ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by esteban.230@hotmail.com)
 
 ## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.0)
 

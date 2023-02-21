@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 /**
- * @internal
  * The context provided by TooltipProvider
  */
 export type TooltipVisibilityContextValue = {
@@ -29,9 +28,6 @@ const tooltipVisibilityContextDefaultValue: TooltipVisibilityContextValue = {};
  */
 export const TooltipVisibilityProvider = TooltipVisibilityContext.Provider;
 
-/**
- * @internal
- */
 export function useTooltipVisibility(): TooltipVisibilityContextValue {
   return React.useContext(TooltipVisibilityContext) ?? tooltipVisibilityContextDefaultValue;
 }

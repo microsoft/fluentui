@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2019",

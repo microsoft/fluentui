@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Add documentation for Radio control, in addition to RadioGroup",
-  "packageName": "@fluentui/react-radio",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "none"
-}

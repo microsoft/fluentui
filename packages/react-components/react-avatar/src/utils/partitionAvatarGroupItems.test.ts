@@ -38,7 +38,7 @@ describe('partitionAvatarGroupItems', () => {
     const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
 
     expect(inlineItems).toEqual([0, 1, 2]);
-    expect(overflowItems).toEqual([]);
+    expect(overflowItems).toBeUndefined();
   });
 
   it('partitions the items correctly when there is no overflow when using the pie layout', () => {

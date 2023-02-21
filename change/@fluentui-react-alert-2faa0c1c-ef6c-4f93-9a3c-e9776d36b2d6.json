@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Bump peer deps to support React 18",
-  "packageName": "@fluentui/react-alert",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { AvatarSizes } from '../Avatar/Avatar.types';
+import type { AvatarSize } from '../Avatar/Avatar.types';
 import type { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
@@ -55,8 +55,8 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
  * State used in rendering AvatarGroupPopover
  */
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
-  Required<Pick<AvatarGroupPopoverProps, 'indicator'>> & {
+  Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
-    size: AvatarSizes;
+    size: AvatarSize;
   };

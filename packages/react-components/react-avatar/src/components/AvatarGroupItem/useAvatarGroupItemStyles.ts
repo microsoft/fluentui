@@ -1,9 +1,10 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useSizeStyles } from '../../Avatar';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { AvatarGroupProps } from '../../AvatarGroup';
-import type { AvatarSizes } from '../../Avatar';
+import type { AvatarSize } from '../../Avatar';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
@@ -59,84 +60,14 @@ const useOverflowLabelStyles = makeStyles({
  * Styles for the stack layout
  */
 const useStackStyles = makeStyles({
-  base: {
-    '&::after': {
-      content: "''",
-      position: 'absolute',
-      display: 'inline-flex',
-      // Border is used instead of outline due to a bug in webkit browsers where border-radius is ignored in outline.
-      ...shorthands.borderColor(tokens.colorNeutralBackground2),
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      ...shorthands.borderStyle('solid'),
-
-      '@media (forced-colors: active)': {
-        forcedColorAdjust: 'none',
-      },
-    },
-  },
-  overflowButton: {
-    '&:focus::after': {
-      ...shorthands.borderColor('transparent'),
-    },
-  },
   thick: {
-    '&::after': {
-      width: '100%',
-      height: '100%',
-      left: `calc(-1 * ${tokens.strokeWidthThick})`,
-      top: `calc(-1 * ${tokens.strokeWidthThick})`,
-      ...shorthands.borderWidth(tokens.strokeWidthThick),
-    },
+    boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground2}`,
   },
   thicker: {
-    '&::after': {
-      width: '100%',
-      height: '100%',
-      left: `calc(-1 * ${tokens.strokeWidthThicker})`,
-      top: `calc(-1 * ${tokens.strokeWidthThicker})`,
-      ...shorthands.borderWidth(tokens.strokeWidthThicker),
-    },
+    boxShadow: `0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorNeutralBackground2}`,
   },
   thickest: {
-    '&::after': {
-      width: '100%',
-      height: '100%',
-      left: `calc(-1 * ${tokens.strokeWidthThickest})`,
-      top: `calc(-1 * ${tokens.strokeWidthThickest})`,
-      ...shorthands.borderWidth(tokens.strokeWidthThickest),
-    },
-  },
-  borderThin: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
-      left: `calc(-1 * (${tokens.strokeWidthThick} + ${tokens.strokeWidthThin}))`,
-      top: `calc(-1 * (${tokens.strokeWidthThick} + ${tokens.strokeWidthThin}))`,
-    },
-  },
-  borderThick: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
-      left: `calc(-1 * ${tokens.strokeWidthThick} * 2)`,
-      top: `calc(-1 * ${tokens.strokeWidthThick} * 2)`,
-    },
-  },
-  borderThicker: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
-      left: `calc(-1 * ${tokens.strokeWidthThicker} * 2)`,
-      top: `calc(-1 * ${tokens.strokeWidthThicker} * 2)`,
-    },
-  },
-  borderThickest: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
-      left: `calc(-1 * ${tokens.strokeWidthThickest} * 2)`,
-      top: `calc(-1 * ${tokens.strokeWidthThickest} * 2)`,
-    },
+    boxShadow: `0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorNeutralBackground2}`,
   },
   xxs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
   xs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
@@ -198,6 +129,33 @@ const usePieStyles = makeStyles({
       transformOrigin: '0 0',
     },
   },
+  rtlSlices: {
+    // Two slices
+    // 1st of 2 items
+    '&:nth-of-type(1):nth-last-of-type(2)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+    },
+    // 2nd of 2 items
+    '&:nth-of-type(2):nth-last-of-type(1)': {
+      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
+    },
+
+    // Three slices
+    // 1st of 3 items
+    '&:nth-of-type(1):nth-last-of-type(3)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+    },
+    // 2nd of 3 items
+    '&:nth-of-type(2):nth-last-of-type(2)': {
+      clipPath: `inset(0 var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}) 0)`,
+      left: '0',
+    },
+    // 3rd of 3 items
+    '&:nth-of-type(3):nth-last-of-type(1)': {
+      clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}) 0 0)`,
+      left: '0',
+    },
+  },
   thick: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThick },
   thicker: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThicker },
   thickest: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThickest },
@@ -208,6 +166,7 @@ const usePieStyles = makeStyles({
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
   const { isOverflowItem, layout, size } = state;
+  const { dir } = useFluent();
 
   const avatarStyles = useAvatarStyles();
   const overflowLabelStyles = useOverflowLabelStyles();
@@ -236,6 +195,10 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
       }
 
       rootClasses.push(pieStyles.slices);
+
+      if (dir === 'rtl') {
+        rootClasses.push(pieStyles.rtlSlices);
+      }
     }
   } else {
     rootClasses.push(rootStyles.overflowItem);
@@ -265,41 +228,19 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useGroupChildClassName = (
-  layout: AvatarGroupProps['layout'],
-  size: AvatarSizes,
-  isOverflowButton?: boolean,
-): string => {
+export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSize): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];
 
   if (size) {
     if (layout === 'stack') {
-      layoutClasses.push(stackStyles.base);
-
       if (size < 56) {
         layoutClasses.push(stackStyles.thick);
       } else if (size < 72) {
         layoutClasses.push(stackStyles.thicker);
       } else {
         layoutClasses.push(stackStyles.thickest);
-      }
-
-      // When the child is an overflowButton, we have to calculate the overflowButton's border + width + outline width
-      // since the ::after pseudo-element doesn't take the overflowButton's border for its size.
-      if (isOverflowButton) {
-        layoutClasses.push(stackStyles.overflowButton);
-
-        if (size < 36) {
-          layoutClasses.push(stackStyles.borderThin);
-        } else if (size < 56) {
-          layoutClasses.push(stackStyles.borderThick);
-        } else if (size < 72) {
-          layoutClasses.push(stackStyles.borderThicker);
-        } else {
-          layoutClasses.push(stackStyles.borderThickest);
-        }
       }
 
       if (size < 24) {

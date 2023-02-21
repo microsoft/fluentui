@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Menu trigger should be focused when dismissed by menuitem click",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

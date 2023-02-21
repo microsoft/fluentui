@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { Nav, INavLink } from '@fluentui/react/lib/Nav';
@@ -89,8 +89,8 @@ const disabledLinks: INavLink[] = [
 storiesOf('Nav', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Nav-compositeLink')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -100,13 +100,13 @@ storiesOf('Nav', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
     () => (
       <div style={{ width: '208px' }}>
-        <Nav groups={[{ links: links }]} selectedKey="key3" />
+        <Nav groups={[{ links }]} selectedKey="key3" />
       </div>
     ),
     { includeRtl: true },

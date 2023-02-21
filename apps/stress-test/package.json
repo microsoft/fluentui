@@ -10,13 +10,18 @@
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
-    "@fluentui/react": "^8.98.3",
-    "@fluentui/react-components": "^9.5.1",
+    "@fluentui/react": "^8.105.11",
+    "@fluentui/react-components": "^9.15.5",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/web-components": "^2.5.6",
-    "@microsoft/fast-element": "^1.10.4",
+    "@fluentui/web-components": "^2.5.12",
+    "@microsoft/fast-element": "^1.11.0",
+    "afterframe": "1.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "random-seedable": "1.0.8"
+  },
+  "devDependencies": {
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-storybook": "*"
   }
 }

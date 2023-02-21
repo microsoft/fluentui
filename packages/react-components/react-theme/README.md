@@ -1,6 +1,6 @@
 # @fluentui/react-theme
 
-**React Theme for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Theme for [Fluent UI React](https://react.fluentui.dev)**
 
 ## Usage
 
