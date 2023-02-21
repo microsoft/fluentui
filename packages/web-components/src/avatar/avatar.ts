@@ -134,10 +134,8 @@ export class Avatar extends FASTElement {
       return;
     }
 
-    const colors = Object.keys(AvatarNamedColor);
-
     return this.color === AvatarColor.colorful
-      ? (colors[getHashCode(this.colorId ?? this.name ?? '') % colors.length] as AvatarColor)
+      ? (Avatar.colors[getHashCode(this.colorId ?? this.name ?? '') % Avatar.colors.length] as AvatarColor)
       : this.color;
   }
 
@@ -160,6 +158,11 @@ export class Avatar extends FASTElement {
       })
     );
   }
+
+  /**
+   * An array of the available Avatar named colors
+   */
+  public static colors = Object.keys(AvatarNamedColor);
 }
 
 // copied from React avatar
