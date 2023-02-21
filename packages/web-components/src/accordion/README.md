@@ -22,6 +22,12 @@ Fluent WC3 Accordion extends from the [FAST Accordion](https://explore.fast.desi
 
 <br />
 
+### **Component Name**
+
+`Accordion`
+
+<br />
+
 ### **Variables**
 
 | Name                  | Description               | Type                                   |

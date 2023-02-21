@@ -1,4 +1,4 @@
-## Class: `AccordionItem`
+# Accordion Item
 
 As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 
@@ -15,6 +15,16 @@ As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 ## **Engineering Spec**
 
 Fluent WC3 Accordion Item extends from the [FAST Accordion Item](https://explore.fast.design/components/fast-accordion-item) and is intended to be as close to the Fluent UI React 9 Accordion implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+
+<br />
+
+## Class: `AccordionItem`
+
+<br />
+
+### **Component Name**
+
+`AccordionItem`
 
 <br />
 
