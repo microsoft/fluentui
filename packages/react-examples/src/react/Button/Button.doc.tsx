@@ -8,7 +8,6 @@ import { ButtonCommandExample } from './Button.Command.Example';
 import { ButtonIconExample } from './Button.Icon.Example';
 import { ButtonIconWithTooltipExample } from './Button.IconWithTooltip.Example';
 import { ButtonAnchorExample } from './Button.Anchor.Example';
-import { ButtonScreenReaderExample } from './Button.ScreenReader.Example';
 import { ButtonSplitExample } from './Button.Split.Example';
 import { ButtonSplitCustomExample } from './Button.CustomSplit.Example';
 import { ButtonToggleExample } from './Button.Toggle.Example';
@@ -23,7 +22,6 @@ const ButtonCustomSplitExampleCode = require('!raw-loader?esModule=false!@fluent
 const ButtonDefaultExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Default.Example.tsx') as string;
 const ButtonIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Icon.Example.tsx') as string;
 const ButtonIconWithTooltipExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.IconWithTooltip.Example.tsx') as string;
-const ButtonScreenReaderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.ScreenReader.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Split.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Toggle.Example.tsx') as string;
 const ButtonCommandExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Command.Example.tsx') as string;
@@ -92,11 +90,6 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Button-like Anchor',
       code: ButtonAnchorExampleCode,
       view: <ButtonAnchorExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />,
-    },
-    {
-      title: 'Button with Aria Description for Screen Reader',
-      code: ButtonScreenReaderExampleCode,
-      view: <ButtonScreenReaderExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />,
     },
     {
       title: 'Custom Split Button',

@@ -13,7 +13,7 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
   // Props
-  const { max = 1.0, shape = 'rounded', thickness = 'medium', validationState, value } = props;
+  const { color = 'brand', max = 1.0, shape = 'rounded', thickness = 'medium', value } = props;
 
   const root = getNativeElementProps('div', {
     ref,
@@ -29,11 +29,11 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
   });
 
   const state: ProgressBarState = {
+    color,
     max,
     shape,
     thickness,
     value,
-    validationState,
     components: {
       root: 'div',
       bar: 'div',

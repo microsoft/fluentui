@@ -1,18 +1,23 @@
 import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { InputField_unstable as InputField } from '@fluentui/react-input';
-import { getNativeElementProps, resolveShorthand, useControllableState, useId } from '@fluentui/react-utilities';
-import { Async } from '@fluentui/utilities';
-import { mergeClasses } from '@griffel/react';
+import { Input } from '@fluentui/react-input';
+import { Field } from '@fluentui/react-field';
+import {
+  getNativeElementProps,
+  mergeCallbacks,
+  resolveShorthand,
+  useControllableState,
+  useId,
+} from '@fluentui/react-utilities';
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
-import { useDatePickerStyles_unstable } from './useDatePickerStyles';
-import type { ITextField } from '@fluentui/react';
-import type { InputOnChangeData, InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
-import type { OnOpenChangeData, OpenPopoverEvents } from '@fluentui/react-popover';
-import type { ICalendar } from '../Calendar/Calendar.types';
+import { OnOpenChangeData, OpenPopoverEvents, Popover } from '@fluentui/react-popover';
+import { PopoverSurface } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
+import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
+import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState } from './DatePicker.types';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
@@ -20,7 +25,7 @@ function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean 
 }
 
 function useFocusLogic() {
-  const textFieldRef = React.useRef<ITextField>(null);
+  const textFieldRef = React.useRef<{ focus: () => void }>(null);
   const preventFocusOpeningPicker = React.useRef(false);
 
   const focus = () => {
@@ -37,19 +42,10 @@ function useFocusLogic() {
 function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePickerProps, focus: () => void) {
   const [isCalendarShown, setIsCalendarShown] = React.useState(false);
   const isMounted = React.useRef(false);
-  const asyncRef = React.useRef<Async>();
-  if (!asyncRef.current) {
-    asyncRef.current = new Async();
-  }
 
   React.useEffect(
     () => {
       if (isMounted.current && !isCalendarShown) {
-        // In browsers like IE, textfield gets unfocused when datepicker is collapsed
-        if (allowTextInput) {
-          asyncRef.current?.requestAnimationFrame(focus);
-        }
-
         // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
         onAfterMenuDismiss?.();
       }
@@ -59,13 +55,6 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePicke
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [allowTextInput, isCalendarShown],
   );
-
-  React.useEffect(() => {
-    return () => {
-      asyncRef.current?.dispose();
-      asyncRef.current = undefined;
-    };
-  }, []);
 
   return [isCalendarShown, setIsCalendarShown] as const;
 }
@@ -215,10 +204,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     allFocusable = false,
     ariaLabel,
     borderless = false,
-    calendarAs = Calendar,
-    calendarProps,
-    calloutProps,
-    className,
     dateTimeFormatter,
     disabled,
     disableAutoFocus = true,
@@ -350,17 +335,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
 
-  const onSelectDate = React.useCallback(
-    (date: Date): void => {
-      if (props.calendarProps && props.calendarProps.onSelectDate) {
-        props.calendarProps.onSelectDate(date);
-      }
-
-      calendarDismissed(date);
-    },
-    [calendarDismissed, props.calendarProps],
-  );
-
   // const onCalloutPositioned = React.useCallback((): void => {
   //   let shouldFocus = true;
   //   // If the user has specified that the callout shouldn't use initial focus, then respect
@@ -391,10 +365,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           setFormattedDate(newValue);
         }
       }
-
-      props.textField?.onChange?.(ev, newValue);
     },
-    [allowTextInput, dismissDatePickerPopup, isCalendarShown, props.textField, setFormattedDate],
+    [allowTextInput, dismissDatePickerPopup, isCalendarShown, setFormattedDate],
   );
 
   const onTextFieldKeyDown = React.useCallback(
@@ -500,14 +472,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   //   );
   // };
 
-  const classNames = useDatePickerStyles_unstable({
-    className,
-    disabled,
-    underlined,
-    label: !!label,
-    isDatePickerShown: isCalendarShown,
-  });
-
   // const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
   // // const iconProps = textFieldProps && textFieldProps.iconProps;
   const textFieldId =
@@ -518,8 +482,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   //   (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
-  // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
-  const inputAppearance: InputFieldProps['appearance'] = underlined
+  const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'
     : borderless
     ? 'filled-lighter'
@@ -537,58 +500,73 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const root = getNativeElementProps('div', {
     ref,
     ...props,
-    className: classNames.root,
   });
 
-  const inputFieldShorthand = resolveShorthand(props.inputField, {
+  const inputShorthand = resolveShorthand(props.input, {
+    required: true,
     defaultProps: {
       appearance: inputAppearance,
       'aria-controls': isCalendarShown ? calloutId : undefined,
       'aria-expanded': isCalendarShown,
       'aria-haspopup': 'dialog',
       'aria-label': ariaLabel,
-      contentAfter: (
-        <CalendarMonthRegular
-          // className={mergeClasses(classNames.icon, iconProps?.className)}
-          onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>}
-        />
-      ),
+      contentAfter: <CalendarMonthRegular onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>} />,
       disabled,
-      label,
+      id: textFieldId,
       placeholder,
       readOnly: !allowTextInput,
       required: isRequired,
       role: 'combobox',
       tabIndex,
+      ...textFieldProps,
+    },
+  });
+
+  const inputFieldShorthand = resolveShorthand(props.inputField, {
+    defaultProps: {
+      label,
+      required: isRequired,
       validationMessage: errorMessage ?? statusMessage,
       validationState: errorMessage ? 'error' : undefined,
-      // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
-      ...(textFieldProps as InputFieldProps),
-      className: mergeClasses(classNames.textField, textFieldProps?.className),
-      id: textFieldId,
     },
     required: true,
   });
-  inputFieldShorthand.onBlur = onTextFieldBlur;
-  inputFieldShorthand.onChange = onTextFieldChanged;
-  inputFieldShorthand.onClick = onTextFieldClick;
-  inputFieldShorthand.onFocus = onTextFieldFocus;
-  inputFieldShorthand.onKeyDown = onTextFieldKeyDown;
-  inputFieldShorthand.value = formattedDate;
+  inputShorthand.onBlur = onTextFieldBlur;
+  inputShorthand.onClick = onTextFieldClick;
+  inputShorthand.onFocus = onTextFieldFocus;
+  inputShorthand.onKeyDown = onTextFieldKeyDown;
+  inputShorthand.onChange = mergeCallbacks(onTextFieldChanged, props.textField?.onChange);
+  inputShorthand.value = formattedDate;
 
   const wrapperShorthand = resolveShorthand(props.wrapper, {
     defaultProps: {
       'aria-owns': isCalendarShown ? calloutId : undefined,
-      className: classNames.wrapper,
     },
     required: true,
   });
 
-  return {
-    calendarAs,
+  const popoverShorthand = resolveShorthand(props.popover, {
+    defaultProps: {
+      onOpenChange: onPopoverOpenChange,
+      open: isCalendarShown,
+      positioning: 'below-start',
+      trapFocus: true,
+    },
+    required: true,
+  });
 
-    calendar: {
-      ...calendarProps,
+  const popoverSurfaceShorthand = resolveShorthand(props.popoverSurface, {
+    defaultProps: {
+      'aria-label': pickerAriaLabel,
+      id: calloutId,
+      role: 'dialog',
+    },
+    required: true,
+  });
+
+  const calendarShorthand = resolveShorthand(props.calendar, {
+    required: true,
+    defaultProps: {
       allFocusable,
       componentRef: calendar,
       dateTimeFormatter,
@@ -600,7 +578,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       maxDate,
       minDate,
       onDismiss: calendarDismissed,
-      onSelectDate,
       showCloseButton,
       showGoToToday,
       showMonthPickerAsOverlay,
@@ -609,29 +586,34 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       today,
       value: selectedDate || initialPickerDate,
     },
-    popover: {
-      onOpenChange: onPopoverOpenChange,
-      open: isCalendarShown,
-      positioning: 'below-start',
-      trapFocus: true,
-    },
-    popoverSurface: {
-      'aria-label': pickerAriaLabel,
-      className: mergeClasses(classNames.callout, calloutProps?.className),
-      id: calloutId,
-      role: 'dialog',
-    },
+  });
+
+  const state: DatePickerState = {
+    disabled: !!disabled,
+    isDatePickerShown: isCalendarShown,
+
+    calendar: calendarShorthand,
+    popover: popoverShorthand,
+    popoverSurface: popoverSurfaceShorthand,
 
     // Slots definition
     components: {
       root: 'div',
-      // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
-      inputField: InputField,
+      inputField: Field,
+      input: Input,
       wrapper: 'div',
+      popover: Popover as React.FC<Partial<PopoverProps>>,
+      popoverSurface: PopoverSurface,
+      calendar: Calendar as React.FC<Partial<CalendarProps>>,
     },
 
     inputField: inputFieldShorthand,
+    input: inputShorthand,
     root,
     wrapper: wrapperShorthand,
   };
+
+  state.calendar.onSelectDate = mergeCallbacks(state.calendar.onSelectDate, calendarDismissed);
+
+  return state;
 };

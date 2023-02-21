@@ -8114,7 +8114,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone7"
+                                data-focuszone-id="FocusZone9"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -8124,11 +8124,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8401,7 +8396,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone9"
+                                data-focuszone-id="FocusZone11"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -8411,11 +8406,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8632,7 +8622,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-labelledby="GroupHeader11"
+                        aria-labelledby="GroupHeader7"
                         aria-rowindex={5}
                         className=
                             ms-GroupHeader
@@ -8824,7 +8814,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   white-space: nowrap;
                                 }
                             data-selection-invoke={true}
-                            id="GroupHeader11"
+                            id="GroupHeader7"
                             onClick={[Function]}
                             role="gridcell"
                           >
@@ -8851,7 +8841,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-label="Group 1"
                         className="ms-List"
-                        id="GroupedListSection10"
+                        id="GroupedListSection6"
                         role="rowgroup"
                       >
                         <div
@@ -8956,11 +8946,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9243,11 +9228,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9530,11 +9510,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"

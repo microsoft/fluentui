@@ -741,6 +741,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, ref),
           onBlur: this._handleMouseOut,
           onClick: this._onClick.bind(this, point),
+          role: 'img',
         };
 
         let barHeight = heightValueScale * point.data;
@@ -787,7 +788,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
-            role="img"
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
           />
         );

@@ -107,7 +107,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     // handle selection and updating value if freeform is false
     if (!baseState.open && !freeform) {
       // select matching option, if the value fully matches
-      if (value && activeOption && value.trim().toLowerCase() === activeOption?.value.toLowerCase()) {
+      if (value && activeOption && value.trim().toLowerCase() === activeOption?.text.toLowerCase()) {
         baseState.selectOption(ev, activeOption);
       }
 
@@ -141,11 +141,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setFocusVisible(true);
 
     // clear selection for single-select if the input value no longer matches the selection
-    if (
-      !multiselect &&
-      selectedOptions.length === 1 &&
-      (inputValue.length < 1 || selectedOptions[0].indexOf(inputValue) !== 0)
-    ) {
+    if (!multiselect && selectedOptions.length === 1 && (inputValue.length < 1 || !matchingOption)) {
       clearSelection(ev);
     }
   };

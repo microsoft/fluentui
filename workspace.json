@@ -37,6 +37,13 @@
       "sourceRoot": "packages/react-components/babel-preset-global-context/src",
       "tags": ["vNext", "platform:node"]
     },
+    "@fluentui/babel-preset-storybook-full-source": {
+      "root": "packages/react-components/babel-preset-storybook-full-source",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/babel-preset-storybook-full-source/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
@@ -330,6 +337,13 @@
       "implicitDependencies": [],
       "tags": ["react-northstar"]
     },
+    "@fluentui/react-breadcrumb": {
+      "root": "packages/react-components/react-breadcrumb",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-breadcrumb/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-builder": {
       "root": "packages/fluentui/react-builder",
       "projectType": "library",
@@ -456,6 +470,13 @@
       "root": "packages/react-docsite-components",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/react-drawer": {
+      "root": "packages/react-components/react-drawer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-drawer/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-examples": {
       "root": "packages/react-examples",
@@ -725,6 +746,13 @@
       "sourceRoot": "packages/react-components/react-storybook-addon/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-storybook-addon-codesandbox": {
+      "root": "packages/react-components/react-storybook-addon-codesandbox",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-storybook-addon-codesandbox/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-switch": {
       "root": "packages/react-components/react-switch",

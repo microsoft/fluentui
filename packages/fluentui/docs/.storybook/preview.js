@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as React from 'react';
 import { Provider, teamsTheme } from '@fluentui/react-northstar';
 

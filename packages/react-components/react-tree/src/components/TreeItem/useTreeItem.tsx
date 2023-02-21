@@ -38,6 +38,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
   const groupperProps = useFocusableGroup();
 
   const actionsRef = React.useRef<HTMLElement>(null);
+  const expandIconRef = React.useRef<HTMLElement>(null);
   const subtreeRef = React.useRef<HTMLElement>(null);
 
   const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -73,7 +74,8 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       return;
     }
     if (isBranch) {
-      requestOpenChange({ event, open: !open, type: 'click' });
+      const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
+      requestOpenChange({ event, open: !open, type: isFromExpandIcon ? 'expandIconClick' : 'click' });
     }
     event.stopPropagation();
   });
@@ -172,6 +174,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       defaultProps: {
         children: <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />,
         'aria-hidden': true,
+        ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
       },
     }),
     actions: resolveShorthand(actions, {
