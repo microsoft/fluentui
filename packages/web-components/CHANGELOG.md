@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 26 Jan 2023 07:35:32 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2023 16:51:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.4)
+
+Thu, 16 Feb 2023 16:51:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.3..@fluentui/web-components_v3.0.0-alpha.4)
+
+### Changes
+
+- fix(web-components): dont ship non production assets to npm registry ([PR #26854](https://github.com/microsoft/fluentui/pull/26854) by martinhochel@microsoft.com)
+
+## [3.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.3)
+
+Wed, 15 Feb 2023 04:24:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.2..@fluentui/web-components_v3.0.0-alpha.3)
+
+### Changes
+
+- Adds Spinner as a web component ([PR #26392](https://github.com/microsoft/fluentui/pull/26392) by ryan@ryanmerrill.net)
+- update fast element and foundation versions ([PR #26844](https://github.com/microsoft/fluentui/pull/26844) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.2)
 

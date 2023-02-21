@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Adds Spinner as a web component",
+  "comment": "feat(accordion): Add accordion web component",
   "packageName": "@fluentui/web-components",
-  "email": "ryan@ryanmerrill.net",
+  "email": "brianbrady@microsoft.com",
   "dependentChangeType": "patch"
 }

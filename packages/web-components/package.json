@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.4",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -23,6 +23,14 @@
     ".": {
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
+    },
+    "./accordion": {
+      "types": "./dist/esm/accordion/define.d.ts",
+      "default": "./dist/esm/accordion/define.js"
+    },
+    "./accordion-item": {
+      "types": "./dist/esm/accordion-item/define.d.ts",
+      "default": "./dist/esm/accordion-item/define.js"
     },
     "./badge": {
       "types": "./dist/esm/badge/define.d.ts",
@@ -56,22 +64,19 @@
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
-    "clean": "node ./build/clean.cjs dist",
-    "doc": "api-extractor run --local",
-    "doc:ci": "yarn doc",
-    "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
-    "dev": "tsc -p ./tsconfig.json -w",
-    "tdd": "yarn dev & yarn test-chrome:watch",
-    "prepare": "yarn clean && yarn build",
+    "compile": "node ./scripts/compile",
+    "clean": "node ./scripts/clean dist",
+    "generate-api": "api-extractor run --local",
+    "build": "yarn compile && rollup -c && yarn generate-api",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
-    "start": "yarn start-storybook -p 6006 --docs",
+    "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
     "start-storybook": "node node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
-    "test": "yarn doc:ci && yarn test-chrome:verbose",
+    "test": "yarn test-chrome:verbose",
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-chrome": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage",
@@ -112,8 +117,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.20",
-    "@microsoft/fast-foundation": "^3.0.0-alpha.24",
+    "@microsoft/fast-element": "^2.0.0-beta.21",
+    "@microsoft/fast-foundation": "^3.0.0-alpha.25",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
