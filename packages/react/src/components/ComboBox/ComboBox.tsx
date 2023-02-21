@@ -591,6 +591,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         : placeholderProp;
 
     const labelledBy = [this.props['aria-labelledby'], label && this._id + '-label'].join(' ').trim();
+    const labelProps = {
+      'aria-labelledby': labelledBy ? labelledBy : undefined,
+      'aria-label': ariaLabel && !label ? ariaLabel : undefined,
+    };
 
     return (
       <div
@@ -618,8 +622,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
           readOnly={disabled}
-          aria-labelledby={labelledBy ? labelledBy : undefined}
-          aria-label={ariaLabel && !label ? ariaLabel : undefined}
+          {...labelProps}
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
           }
@@ -643,8 +646,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         <IconButton
           className={'ms-ComboBox-CaretDown-button'}
           styles={this._getCaretButtonStyles()}
-          role="presentation"
+          role={isButtonAriaHidden ? 'presentation' : undefined}
           aria-hidden={isButtonAriaHidden}
+          {...(!isButtonAriaHidden ? labelProps : undefined)}
           data-is-focusable={false}
           tabIndex={-1}
           onClick={this._onComboBoxClick}
