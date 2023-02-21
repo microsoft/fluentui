@@ -648,7 +648,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           styles={this._getCaretButtonStyles()}
           role={isButtonAriaHidden ? 'presentation' : undefined}
           aria-hidden={isButtonAriaHidden}
-          {...(isButtonAriaHidden ? {} : labelProps)}
+          {...(!isButtonAriaHidden ? labelProps : undefined)}
           data-is-focusable={false}
           tabIndex={-1}
           onClick={this._onComboBoxClick}
