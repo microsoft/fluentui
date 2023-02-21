@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 21 Feb 2023 04:21:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.4",
+      "version": "3.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "57f2ea7f8389f1409fba6fb0697708ddf8fb05d9",
+            "comment": "docs: Add landing page"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Feb 2023 04:19:53 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.4",
       "version": "3.0.0-alpha.4",
