@@ -170,8 +170,7 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
   }
 
-  ::slotted(fluent-presence-badge),
-  ::slotted(fluent-badge) {
+  ::slotted([slot='badge']) {
     position: absolute;
     bottom: 0;
     right: 0;
