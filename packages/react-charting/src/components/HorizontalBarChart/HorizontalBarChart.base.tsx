@@ -60,7 +60,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length);
+    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
     }

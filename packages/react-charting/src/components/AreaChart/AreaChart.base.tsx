@@ -116,8 +116,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       emptyChart: !(
         this.props.data &&
         this.props.data.lineChartData &&
-        this.props.data.lineChartData.length &&
-        !this.props.data.lineChartData.filter(item => !item.data.length).length
+        this.props.data.lineChartData.length > 0 &&
+        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
       ),
     };
     warnDeprecations(COMPONENT_NAME, props, {
@@ -128,17 +128,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
-    // console.log('this.state.emptyChart = ', this.state.emptyChart);
-    // const isChartEmpty = !(
-    //   this.props.data &&
-    //   this.props.data.lineChartData &&
-    //   this.props.data.lineChartData.length &&
-    //   !this.props.data.lineChartData.filter(item => !item.data.length).length
-    // );
-    // console.log('isChartEmpty = ', isChartEmpty);
-    // if (this.state.emptyChart !== isChartEmpty) {
-    //   this.setState({ emptyChart: isChartEmpty });
-    // }
   }
 
   public componentDidUpdate() {

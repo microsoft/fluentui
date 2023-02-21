@@ -48,8 +48,8 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     const isChartEmpty: boolean = !(
       this.props.data &&
       this.props.data.lineChartData &&
-      this.props.data.lineChartData.length &&
-      !this.props.data.lineChartData.filter(item => !item.data.length).length
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
     );
     if (this.state._emptyChart !== isChartEmpty) {
       this.setState({ _emptyChart: isChartEmpty });

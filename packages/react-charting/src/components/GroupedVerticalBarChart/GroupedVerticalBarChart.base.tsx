@@ -110,8 +110,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
   public componentDidMount(): void {
     const isChartEmpty = !(
       this.props.data &&
-      this.props.data.length &&
-      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length
+      this.props.data.length > 0 &&
+      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
     );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });

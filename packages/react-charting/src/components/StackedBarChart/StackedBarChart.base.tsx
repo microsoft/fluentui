@@ -60,7 +60,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.chartData && this.props.data.chartData.length);
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.chartData &&
+      this.props.data.chartData.length > 0
+    );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
     }

@@ -87,7 +87,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const isChartEmpty = !(
       this.props.data &&
       this.props.data.chartData &&
-      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length
+      this.props.data.chartData!.filter((d: IChartDataPoint) => d.data! > 0).length > 0
     );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });

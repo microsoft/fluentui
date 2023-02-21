@@ -26,8 +26,8 @@ export class SankeyChartBase extends React.Component<
       emptyChart: !(
         this.props.data &&
         this.props.data.SankeyChartData &&
-        this.props.data.SankeyChartData.nodes.length &&
-        this.props.data.SankeyChartData.links.length
+        this.props.data.SankeyChartData.nodes.length > 0 &&
+        this.props.data.SankeyChartData.links.length > 0
       ),
     };
   }

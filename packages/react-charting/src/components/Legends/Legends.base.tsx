@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { HoverCard, HoverCardType, IExpandingCardProps } from '@fluentui/react/lib/HoverCard';
-import { classNamesFunction, find, getNativeProps, buttonProperties, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, find, getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react/lib/OverflowSet';
@@ -41,7 +41,6 @@ export interface ILegendState {
   activeLegend: string;
   isHoverCardVisible: boolean;
   selectedLegends: string[];
-  emptyChart?: boolean;
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _hoverCardRef: HTMLDivElement;
@@ -54,15 +53,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       activeLegend: '',
       isHoverCardVisible: false,
       selectedLegends: [],
-      emptyChart: false,
     };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.legends && this.props.legends.length);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
   }
 
   public render(): JSX.Element {
@@ -72,7 +63,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
     });
     const dataToRender = this._generateData();
-    return !this.state.emptyChart ? (
+    return (
       <div className={this._classNames.root}>
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
@@ -85,13 +76,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
           />
         )}
       </div>
-    ) : (
-      <div
-        id={getId('_Legends_')}
-        role={'alert'}
-        style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
-      />
     );
   }
 

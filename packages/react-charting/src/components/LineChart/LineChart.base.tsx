@@ -217,8 +217,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const isChartEmpty: boolean = !(
       this.props.data &&
       this.props.data.lineChartData &&
-      this.props.data.lineChartData.length &&
-      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
     );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });

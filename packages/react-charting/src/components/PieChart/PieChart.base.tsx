@@ -27,8 +27,8 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
   public componentDidMount(): void {
     const isChartEmpty = !(
       this.props.data &&
-      this.props.data.length &&
-      this.props.data.filter(item => item.y > 0).length
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.y > 0).length > 0
     );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });

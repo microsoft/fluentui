@@ -71,7 +71,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length);
+    const isChartEmpty: boolean = !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.chartData && item.chartData.length === 0).length === 0
+    );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
     }

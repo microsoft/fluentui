@@ -88,36 +88,6 @@ const emptyChartPoints: IChartProps[] = [
   },
 ];
 
-// const firstChartPoints: IChartDataPoint[] = [
-//   { legend: 'Malware', data: 40, color: '#0099BC' },
-//   { legend: 'Phishing', data: 23, color: '#77004D' },
-//   { legend: 'Spam and bulk', data: 35, color: '#4F68ED' },
-//   { data: 87, placeHolder: true },
-// ];
-
-// const secondChartPoints: IChartDataPoint[] = [
-//   { legend: 'Malicious links', data: 40, color: '#AE8C00' },
-//   {
-//     legend: 'Malicious attachments',
-//     data: 23,
-//     color: '#004E8C',
-//   },
-//   { data: 106, placeHolder: true },
-// ];
-
-// const hideRatio: boolean[] = [true, true];
-
-// const data: IChartProps[] = [
-//   {
-//     chartTitle: 'Currently blocked',
-//     chartData: firstChartPoints,
-//   },
-//   {
-//     chartTitle: 'Increased protection needed against detected threats',
-//     chartData: secondChartPoints,
-//   },
-// ];
-
 describe('MultiStackedBarChart snapShot testing', () => {
   it('renders MultiStackedBarChart correctly', () => {
     const component = renderer.create(<MultiStackedBarChart data={chartPoints} />);

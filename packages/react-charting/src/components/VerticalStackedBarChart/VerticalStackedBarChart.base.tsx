@@ -103,7 +103,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       yCalloutValue: '',
       activeXAxisDataPoint: '',
       calloutLegend: '',
-      emptyChart: false,
+      emptyChart: !(
+        this.props.data &&
+        this.props.data.length > 0 &&
+        this.props.data.filter(item => item.chartData.length === 0).length === 0
+      ),
     };
     warnDeprecations(COMPONENT_NAME, props, {
       colors: 'IVSChartDataPoint.color',
@@ -112,15 +116,9 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    if (
-      this.props.data &&
-      this.props.data.length &&
-      !this.props.data.filter((item: IVerticalStackedChartProps) => item.xAxisPoint === undefined).length
-    ) {
+    if (this.props.data && this.props.data.length > 0) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
-    } else {
-      this.state = { ...this.state, emptyChart: true };
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
   }
