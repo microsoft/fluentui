@@ -65,10 +65,6 @@ export const styles = css`
     padding: ${spacingVerticalXS} ${spacingHorizontalXS};
     cursor: pointer;
   }
-  :host([required]) .label:after {
-    content: '*';
-    color: ${colorPaletteRedForeground3};
-  }
   .switch {
     display: flex;
     align-items: center;
