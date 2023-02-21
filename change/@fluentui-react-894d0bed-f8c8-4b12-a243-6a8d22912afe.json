@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix: Combobox if value is controlled, we should not update state",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
