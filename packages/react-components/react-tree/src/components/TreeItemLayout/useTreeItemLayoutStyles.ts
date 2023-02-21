@@ -18,7 +18,7 @@ const useRootStyles = makeStyles({
   base: {
     display: 'flex',
     alignItems: 'center',
-    minHeight: '24px',
+    minHeight: '32px',
     ...shorthands.flex(1),
   },
   medium: {
@@ -27,6 +27,7 @@ const useRootStyles = makeStyles({
   },
   small: {
     columnGap: tokens.spacingHorizontalXS,
+    minHeight: '24px',
     ...typographyStyles.caption1,
   },
 });
@@ -52,7 +53,7 @@ const useAsideStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.padding(0, tokens.spacingHorizontalM),
     ...shorthands.gap(tokens.spacingHorizontalXS),
   },
 });

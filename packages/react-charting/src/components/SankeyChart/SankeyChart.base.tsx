@@ -531,8 +531,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         isCalloutVisible: true,
         color: (singleLink.source as SNode).color,
         xCalloutValue: (singleLink.target as SNode).name,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        yCalloutValue: ((singleLink.source as SNode).actualValue! as any) as string,
+        yCalloutValue: singleLink.unnormalizedValue!.toString(),
         descriptionMessage: 'from ' + (singleLink.source as SNode).name,
       });
     }

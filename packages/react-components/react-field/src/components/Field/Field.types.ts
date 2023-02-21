@@ -31,10 +31,10 @@ export type FieldSlots = {
    * The icon associated with the `validationMessage`. This will only be displayed if `validationMessage` is set.
    *
    * The default depends on `validationState`:
-   * * `error` - `<ErrorCircle12Filled />`
-   * * `warning` - `<Warning12Filled />`
-   * * `success` - `<CheckmarkCircle12Filled />`
-   * * `none` - `null`
+   * * error: `<ErrorCircle12Filled />`
+   * * warning: `<Warning12Filled />`
+   * * success: `<CheckmarkCircle12Filled />`
+   * * none: `null`
    */
   validationMessageIcon?: Slot<'span'>;
 
@@ -71,14 +71,14 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
   /**
    * The `validationState` affects the display of the `validationMessage` and `validationMessageIcon`.
    *
-   * * `error` - (default) The validation message has a red error icon and red text, with `role="alert"` so it is
+   * * error: (default) The validation message has a red error icon and red text, with `role="alert"` so it is
    *     announced by screen readers. Additionally, the control inside the field has `aria-invalid` set, which adds a
    *     red border to some field components (such as `Input`).
-   * * `success` - The validation message has a green checkmark icon and gray text.
-   * * `warning` - The validation message has a yellow exclamation icon and gray text.
-   * * `none` - The validation message has no icon and gray text.
+   * * success: The validation message has a green checkmark icon and gray text.
+   * * warning: The validation message has a yellow exclamation icon and gray text.
+   * * none: The validation message has no icon and gray text.
    *
-   * @default error when `validationMessage` is set; none otherwise.
+   * @default error when validationMessage is set; none otherwise.
    */
   validationState?: 'error' | 'warning' | 'success' | 'none';
 

@@ -1,7 +1,8 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { InputSlots, InputState } from './Input.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { GriffelResetStyle } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { InputSlots, InputState } from './Input.types';
 
 export const inputClassNames: SlotClassNames<InputSlots> = {
   root: 'fui-Input',
@@ -17,96 +18,106 @@ const fieldHeights = {
   large: '40px',
 };
 
-const useRootStyles = makeStyles({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    flexWrap: 'nowrap',
-    ...shorthands.gap(tokens.spacingHorizontalXXS),
-    fontFamily: tokens.fontFamilyBase,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium), // used for all but underline
-    position: 'relative',
+const rootBaseStyles: GriffelResetStyle = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  flexWrap: 'nowrap',
+  gap: tokens.spacingHorizontalXXS,
+  borderRadius: tokens.borderRadiusMedium, // used for all but underline
+  position: 'relative',
+  boxSizing: 'border-box',
+
+  // size: medium (default)
+  minHeight: fieldHeights.medium,
+  padding: `0 ${tokens.spacingHorizontalMNudge}`,
+  ...typographyStyles.body1,
+
+  // appearance: outline (default)
+  backgroundColor: tokens.colorNeutralBackground1,
+  border: `1px solid ${tokens.colorNeutralStroke1}`,
+  borderBottomColor: tokens.colorNeutralStrokeAccessible,
+};
+
+const rootInteractiveStyles: GriffelResetStyle = {
+  // This is all for the bottom focus border.
+  // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
+  '::after': {
     boxSizing: 'border-box',
-  },
-  interactive: {
-    // This is all for the bottom focus border.
-    // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    '::after': {
-      boxSizing: 'border-box',
-      content: '""',
-      position: 'absolute',
-      left: '-1px',
-      bottom: '-1px',
-      right: '-1px',
+    content: '""',
+    position: 'absolute',
+    left: '-1px',
+    bottom: '-1px',
+    right: '-1px',
 
-      // Maintaining the correct corner radius:
-      // Use the whole border-radius as the height and only put radii on the bottom corners.
-      // (Otherwise the radius would be automatically reduced to fit available space.)
-      // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-      height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+    // Maintaining the correct corner radius:
+    // Use the whole border-radius as the height and only put radii on the bottom corners.
+    // (Otherwise the radius would be automatically reduced to fit available space.)
+    // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
+    height: `max(2px, ${tokens.borderRadiusMedium})`,
+    borderBottomLeftRadius: tokens.borderRadiusMedium,
+    borderBottomRightRadius: tokens.borderRadiusMedium,
 
-      // Flat 2px border:
-      // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
-      // (This could be done without trimming using `background: linear-gradient(...)`, but using
-      // borderBottom makes it easier for people to override the color if needed.)
-      ...shorthands.borderBottom('2px', 'solid', tokens.colorCompoundBrandStroke),
-      clipPath: 'inset(calc(100% - 2px) 0 0 0)',
+    // Flat 2px border:
+    // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
+    // (This could be done without trimming using `background: linear-gradient(...)`, but using
+    // borderBottom makes it easier for people to override the color if needed.)
+    borderBottom: `2px solid ${tokens.colorCompoundBrandStroke}`,
+    clipPath: 'inset(calc(100% - 2px) 0 0 0)',
 
-      // Animation for focus OUT
-      transform: 'scaleX(0)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+    // Animation for focus OUT
+    transform: 'scaleX(0)',
+    transitionProperty: 'transform',
+    transitionDuration: tokens.durationUltraFast,
+    transitionDelay: tokens.curveAccelerateMid,
 
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within::after': {
-      // Animation for focus IN
-      transform: 'scaleX(1)',
-      transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        transitionDuration: '0.01ms',
-        transitionDelay: '0.01ms',
-      },
-    },
-    ':focus-within:active::after': {
-      // This is if the user clicks the field again while it's already focused
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
-    },
-    ':focus-within': {
-      outlineWidth: '2px',
-      outlineStyle: 'solid',
-      outlineColor: 'transparent',
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+      transitionDelay: '0.01ms',
     },
   },
+  ':focus-within::after': {
+    // Animation for focus IN
+    transform: 'scaleX(1)',
+    transitionProperty: 'transform',
+    transitionDuration: tokens.durationNormal,
+    transitionDelay: tokens.curveDecelerateMid,
+
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+      transitionDelay: '0.01ms',
+    },
+  },
+  ':focus-within:active::after': {
+    // This is if the user clicks the field again while it's already focused
+    borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+  },
+  ':focus-within': {
+    outline: '2px solid transparent',
+  },
+};
+
+const useRootNonInteractiveClassName = makeResetStyles(rootBaseStyles);
+const useRootInteractiveClassName = makeResetStyles({ ...rootBaseStyles, ...rootInteractiveStyles });
+
+const useRootStyles = makeStyles({
   small: {
     minHeight: fieldHeights.small,
-    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
     ...typographyStyles.caption1,
   },
   medium: {
-    minHeight: fieldHeights.medium,
-    ...shorthands.padding('0', tokens.spacingHorizontalMNudge),
-    ...typographyStyles.body1,
+    // included in rootBaseStyles
   },
   large: {
     minHeight: fieldHeights.large,
-    ...shorthands.padding('0', tokens.spacingHorizontalM),
+    paddingLeft: tokens.spacingHorizontalM,
+    paddingRight: tokens.spacingHorizontalM,
     ...typographyStyles.body2,
     ...shorthands.gap(tokens.spacingHorizontalSNudge),
   },
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    // included in rootBaseStyles
   },
   outlineInteractive: {
     ':hover': {
@@ -122,7 +133,10 @@ const useRootStyles = makeStyles({
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderRadius(0), // corners look strange if rounded
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
+    // border is specified in rootBaseStyles, but we only want a bottom border here
+    borderTopStyle: 'none',
+    borderRightStyle: 'none',
+    borderLeftStyle: 'none',
   },
   underlineInteractive: {
     ':hover': {
@@ -135,7 +149,7 @@ const useRootStyles = makeStyles({
     '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
-    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   filledInteractive: {
     // DO NOT add a space between the selectors! It changes the behavior of make-styles.
@@ -173,34 +187,34 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useInputClassName = makeResetStyles({
+  boxSizing: 'border-box',
+  flexGrow: 1,
+  minWidth: 0, // required to make the input shrink to fit the wrapper
+  borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
+  padding: `0 ${tokens.spacingHorizontalXXS}`,
+  color: tokens.colorNeutralForeground1,
+  // Use literal "transparent" (not from the theme) to always let the color from the root show through
+  backgroundColor: 'transparent',
+
+  '::placeholder': {
+    color: tokens.colorNeutralForeground4,
+    opacity: 1, // browser style override
+  },
+
+  outlineStyle: 'none', // disable default browser outline
+
+  // Inherit typography styles from root
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontWeight: 'inherit',
+  lineHeight: 'inherit',
+});
+
 const useInputElementStyles = makeStyles({
-  base: {
-    boxSizing: 'border-box',
-    flexGrow: 1,
-    minWidth: 0, // required to make the input shrink to fit the wrapper
-    ...shorthands.borderStyle('none'), // input itself never has a border (this is handled by inputWrapper)
-    ...shorthands.padding('0', tokens.spacingHorizontalXXS),
-    color: tokens.colorNeutralForeground1,
-    // Use literal "transparent" (not from the theme) to always let the color from the root show through
-    backgroundColor: 'transparent',
-
-    '::placeholder': {
-      color: tokens.colorNeutralForeground4,
-      opacity: 1, // browser style override
-    },
-
-    outlineStyle: 'none', // disable default browser outline
-  },
-  small: {
-    // This is set on root but doesn't inherit
-    ...typographyStyles.caption1,
-  },
-  medium: {
-    ...typographyStyles.body1,
-  },
   large: {
-    ...typographyStyles.body2,
-    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingRight: tokens.spacingHorizontalSNudge,
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -212,13 +226,16 @@ const useInputElementStyles = makeStyles({
   },
 });
 
+const useContentClassName = makeResetStyles({
+  boxSizing: 'border-box',
+  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  display: 'flex',
+  // special case styling for icons (most common case) to ensure they're centered vertically
+  // size: medium (default)
+  '> svg': { fontSize: '20px' },
+});
+
 const useContentStyles = makeStyles({
-  base: {
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground3, // "icon color" in design spec
-    display: 'flex',
-    // special case styling for icons (most common case) to ensure they're centered vertically
-  },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
   },
@@ -227,7 +244,7 @@ const useContentStyles = makeStyles({
     '> svg': { fontSize: '16px' },
   },
   medium: {
-    '> svg': { fontSize: '20px' },
+    // included in useContentClassName
   },
   large: {
     '> svg': { fontSize: '24px' },
@@ -243,16 +260,19 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const filled = appearance.startsWith('filled');
 
+  // Call exactly one of the two base className hooks. Each of these hooks is functionally identical, but with
+  // different styles applied, which makes it ok to conditionally change which hook is called.
+  const useRootClassName = disabled ? useRootNonInteractiveClassName : useRootInteractiveClassName;
+
   const rootStyles = useRootStyles();
   const inputStyles = useInputElementStyles();
   const contentStyles = useContentStyles();
 
   state.root.className = mergeClasses(
     inputClassNames.root,
-    rootStyles.base,
+    useRootClassName(),
     rootStyles[size],
     rootStyles[appearance],
-    !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
     !disabled && appearance === 'underline' && rootStyles.underlineInteractive,
     !disabled && filled && rootStyles.filledInteractive,
@@ -264,13 +284,13 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
 
   state.input.className = mergeClasses(
     inputClassNames.input,
-    inputStyles.base,
-    inputStyles[size],
+    useInputClassName(),
+    size === 'large' && inputStyles.large,
     disabled && inputStyles.disabled,
     state.input.className,
   );
 
-  const contentClasses = [contentStyles.base, disabled && contentStyles.disabled, contentStyles[size]];
+  const contentClasses = [useContentClassName(), disabled && contentStyles.disabled, contentStyles[size]];
   if (state.contentBefore) {
     state.contentBefore.className = mergeClasses(
       inputClassNames.contentBefore,
