@@ -331,7 +331,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    // if value is controlled, then we should not update the value in state
+    // if value is controlled in updateValueInWillReceiveProps, then we should not update the value in state now
     // https://github.com/microsoft/fluentui/issues/18499
     updateValueInWillReceiveProps
       ? onInputValueChange?.(newValue, composing)
