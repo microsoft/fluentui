@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

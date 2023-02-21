@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import { KeyCodes } from '../../../Utilities';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import type { IReactProps, IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
 import type { IPersonaProps } from '../../Persona/Persona.types';
 import type { IStyle, ITheme } from '../../../Styling';
 import type { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 import type { ISuggestionItemProps } from './SuggestionsItem.types';
-import type { IReactProps } from '../../../common/React.types';
 import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
