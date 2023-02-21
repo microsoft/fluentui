@@ -1,3 +1,5 @@
+export * from './accordion/index.js';
+export * from './accordion-item/index.js';
 export * from './badge/index.js';
 export * from './counter-badge/index.js';
 export * from './progress-bar/index.js';

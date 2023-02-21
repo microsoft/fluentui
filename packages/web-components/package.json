@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.3",
+  "version": "3.0.0-alpha.4",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -23,6 +23,14 @@
     ".": {
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
+    },
+    "./accordion": {
+      "types": "./dist/esm/accordion/define.d.ts",
+      "default": "./dist/esm/accordion/define.js"
+    },
+    "./accordion-item": {
+      "types": "./dist/esm/accordion-item/define.d.ts",
+      "default": "./dist/esm/accordion-item/define.js"
     },
     "./badge": {
       "types": "./dist/esm/badge/define.d.ts",

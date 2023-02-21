@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(web-components): dont ship non production assets to npm registry",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
