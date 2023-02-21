@@ -37,7 +37,8 @@ export const parameters = {
       excludeDecorators: true,
       type: 'source',
     },
-    // This config reuses sources generated for CodeSandbox export feature (storybook-addon-export-to-codesandbox).
+    // This config reuses sources generated for CodeSandbox export feature
+    // (@fluentui/babel-preset-storybook-full-source).
     transformSource: (snippet, story) => story.parameters.fullSource,
   },
   exportToCodeSandbox: {
