@@ -1,4 +1,4 @@
-import type { ElementViewTemplate } from '@microsoft/fast-element';
+import { ElementViewTemplate } from '@microsoft/fast-element';
 import { html } from '@microsoft/fast-element';
 import { menuItemTemplate } from '@microsoft/fast-foundation';
 import type { MenuItem } from './menu-item.js';

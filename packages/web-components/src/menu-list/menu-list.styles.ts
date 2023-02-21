@@ -14,7 +14,6 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    display: flex;
     flex-direction: column;
     height: fit-content;
     width: auto;

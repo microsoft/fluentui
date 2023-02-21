@@ -40,7 +40,7 @@
       "types": "./dist/esm/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
-    "./menu": {
+    "./menu-list": {
       "types": "./dist/esm/menu/define.d.ts",
       "default": "./dist/esm/menu/define.js"
     },

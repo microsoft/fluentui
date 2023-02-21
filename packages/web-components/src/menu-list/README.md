@@ -1,4 +1,4 @@
-# Menu
+# Menu List
 
 A popup or contextual menu displays a list of options on a temporary surface. They are invoked when users interact with a button, action, or other control.
 
@@ -8,12 +8,12 @@ A popup or contextual menu displays a list of options on a temporary surface. Th
 
 ## Engineering Spec
 
-Fluent WC3 Menu extends from the FAST Menu [FAST Menu](https://explore.fast.design/components/fast-menu) and is intended to be as close to the Fluent UI React 9 Menu implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+Fluent WC3 Menu List extends from the FAST Menu [FAST Menu](https://explore.fast.design/components/fast-menu) and is intended to be as close to the Fluent UI React 9 Menu implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
 
 <hr />
 <br />
 
-### **Menu**
+### **Menu List**
 
 ### Inputs
 
@@ -91,7 +91,7 @@ Due to the nature of Web Components there will not be 100% parity between compon
 **Component, Slot, and Attribute Mapping**
 Component, Slot, or Attribute | Fluent React v9 | Fluent Web Components v3 |
 ---------------------------------| ---------------------| ---------------------------|
-Menu | `<Menu>` | `<fluent-menu>` |
+Menu | `<MenuList>` | `<fluent-menu-list>` |
 Menu item |`<MenuItem>` | `<fluent-menu-item>` |
 Menu item with radio | `<MenuItemRadio>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Menu item with checkbox | `<MenuItemCheckbox>` | `<fluent-menu-item role="menuitemcheckbox">..` |

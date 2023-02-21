@@ -1,11 +1,11 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../__test__/helpers.js';
-import type { Menu as FluentMenu } from './menu.js';
+import { renderComponent } from '../helpers.stories.js';
+import type { MenuList as FluentMenuList } from './menu-list.js';
 import './define.js';
 import '../menu-item/define.js';
 
-type MenuStoryArgs = Args & FluentMenu;
+type MenuStoryArgs = Args & FluentMenuList;
 type MenuStoryMeta = Meta<MenuStoryArgs>;
 
 const Cut20Filled = html`<svg
@@ -81,7 +81,7 @@ const Code20Filled = html`<svg
 
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
-    <fluent-menu>
+    <fluent-menu-list>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
@@ -90,14 +90,13 @@ const storyTemplate = html<MenuStoryArgs>`
         <span slot="start">${Edit20Filled}</span>
         Edit
       </fluent-menu-item>
-      <fluent-menu-item class="header">Submenu Group Header</fluent-menu-item>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         New
         <span slot="end">Ctrl+N</span>
       </fluent-menu-item>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         Open
-        <fluent-menu slot="submenu">
+        <fluent-menu-list slot="submenu">
           <fluent-menu-item>
             File
             <span slot="start">${Folder24Filled}</span>
@@ -106,40 +105,14 @@ const storyTemplate = html<MenuStoryArgs>`
             Workspace
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
-        </fluent-menu>
+        </fluent-menu-list>
       </fluent-menu-item>
-      <fluent-menu-item class="header">Checkbox Group Header</fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Option 1
-        <span slot="start">${Cut20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Option 2
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Option 3
-        <span slot="start">${ClipboardPaste20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item class="header">Radio Group Header</fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Option 1
-        <span slot="start">${Cut20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Option 2
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Option 3
-        <span slot="start">${ClipboardPaste20Filled}</span>
-      </fluent-menu-item>
-    </fluent-menu>
+    </fluent-menu-list>
   </div>
 `;
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/MenuList',
   args: {
     disabled: false,
   },
@@ -159,7 +132,7 @@ export const Menu = renderComponent(storyTemplate).bind({});
 
 export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-menu>
+    <fluent-menu-list>
       <fluent-menu-item role="menuitemcheckbox">
         Option 1
         <span slot="start">${Cut20Filled}</span>
@@ -172,13 +145,13 @@ export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
         Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
-    </fluent-menu>
+    </fluent-menu-list>
   </div>
 `);
 
 export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
-    <fluent-menu>
+    <fluent-menu-list>
       <fluent-menu-item role="menuitemradio">
         Option 1
         <span slot="start">${Cut20Filled}</span>
@@ -191,16 +164,16 @@ export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
         Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
-    </fluent-menu>
+    </fluent-menu-list>
   </div>
 `);
 
 export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
   <div style="width: 260px; position: relative;">
-    <fluent-menu>
+    <fluent-menu-list>
       <fluent-menu-item>
         New
-        <fluent-menu slot="submenu">
+        <fluent-menu-list slot="submenu">
           <fluent-menu-item>
             File
             <span slot="start">${Folder24Filled}</span>
@@ -209,11 +182,11 @@ export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
             Workspace
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
-        </fluent-menu>
+        </fluent-menu-list>
       </fluent-menu-item>
       <fluent-menu-item>
         Open
-        <fluent-menu slot="submenu">
+        <fluent-menu-list slot="submenu">
           <fluent-menu-item>
             Folder
             <span slot="start">${Folder24Filled}</span>
@@ -222,9 +195,9 @@ export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
             Workspace
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
-        </fluent-menu>
+        </fluent-menu-list>
       </fluent-menu-item>
       <fluent-menu-item> Help</fluent-menu-item>
-    </fluent-menu>
+    </fluent-menu-list>
   </div>
 `);
