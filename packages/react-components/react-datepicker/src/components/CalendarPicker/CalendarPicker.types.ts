@@ -1,10 +1,4 @@
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import type { Slot } from '@fluentui/react-utilities';
-import type { IStyle } from '@fluentui/style-utilities';
-
-export type CalendarPickerSlots = {
-  root: Slot<'div'>;
-};
 
 /**
  * {@docCategory Calendar}
@@ -48,25 +42,25 @@ export interface CalendarPickerStyles {
   /**
    * Style for the root element.
    */
-  root: IStyle;
+  root: string;
 
-  headerContainer: IStyle;
+  headerContainer: string;
 
-  currentItemButton: IStyle;
+  currentItemButton: string;
 
-  navigationButtonsContainer: IStyle;
+  navigationButtonsContainer: string;
 
-  navigationButton: IStyle;
+  navigationButton: string;
 
-  gridContainer: IStyle;
+  gridContainer: string;
 
-  buttonRow: IStyle;
+  buttonRow: string;
 
-  itemButton: IStyle;
+  itemButton: string;
 
-  current: IStyle;
+  current: string;
 
-  selected: IStyle;
+  selected: string;
 
-  disabled: IStyle;
+  disabled: string;
 }

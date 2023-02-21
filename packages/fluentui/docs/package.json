@@ -53,6 +53,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-storybook": "*",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
     "@types/faker": "^4.1.3",

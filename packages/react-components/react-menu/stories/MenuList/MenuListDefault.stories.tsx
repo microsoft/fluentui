@@ -18,13 +18,11 @@ export const Default = () => {
   const styles = useMenuListContainerStyles();
   return (
     <div className={styles.container}>
-      <button>Foo</button>
       <MenuList>
         <MenuItem>Cut</MenuItem>
         <MenuItem>Paste</MenuItem>
         <MenuItem>Edit</MenuItem>
       </MenuList>
-      <button>Foo</button>
     </div>
   );
 };
