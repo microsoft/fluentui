@@ -1,6 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../__test__/helpers.js';
+import { renderComponent } from '../helpers.stories.js';
 import type { Avatar as FluentAvatar } from './avatar.js';
 import { AvatarActive, AvatarAppearance, AvatarColor, AvatarShape, AvatarSize } from './avatar.options.js';
 import './define.js';
