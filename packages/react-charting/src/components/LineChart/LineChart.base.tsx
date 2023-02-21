@@ -20,7 +20,6 @@ import {
   ILineChartStyles,
   ILineChartGap,
   ILineChartDataPoint,
-  IModifiedLineChartPoints,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -116,7 +115,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
   return allPointPaths[index];
 };
 
-type LineChartDataWithIndex = IModifiedLineChartPoints & { index: number };
+type LineChartDataWithIndex = ILineChartPoints & { index: number };
 
 export interface ILineChartState extends IBasestate {
   // This array contains data of selected legends for points
@@ -315,7 +314,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
-      ? lineChartData.map((item: IModifiedLineChartPoints, index: number) => {
+      ? lineChartData.map((item: ILineChartPoints, index: number) => {
           let color: string;
           if (typeof item.color === 'undefined') {
             color = getNextColor(index);
@@ -379,7 +378,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: LineChartDataWithIndex) => {
-      const color: string = point.color;
+      const color: string = point.color!;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
@@ -529,7 +528,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const pointsForLine: JSX.Element[] = [];
 
       const legendVal: string = this._points[i].legend;
-      const lineColor: string = this._points[i].color;
+      const lineColor: string = this._points[i].color!;
       const { activePoint } = this.state;
       const { theme } = this.props;
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;

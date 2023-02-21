@@ -16,7 +16,6 @@ import {
   IMargins,
   IAreaChartStyleProps,
   IAreaChartStyles,
-  IModifiedLineChartPoints,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
 import {
@@ -70,7 +69,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _createSet: (
-    data: IModifiedLineChartPoints[],
+    data: ILineChartPoints[],
   ) => {
     colors: string[];
     opacity: number[];
@@ -355,7 +354,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     };
   };
 
-  private _createDataSet = (points: IModifiedLineChartPoints[]) => {
+  private _createDataSet = (points: ILineChartPoints[]) => {
     const allChartPoints: ILineChartDataPoint[] = [];
     const dataSet: IAreaChartDataSetPoint[] = [];
     const colors: string[] = [];
@@ -364,8 +363,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     points &&
       points.length &&
-      points.forEach((singleChartPoint: IModifiedLineChartPoints) => {
-        colors.push(singleChartPoint.color);
+      points.forEach((singleChartPoint: ILineChartPoints) => {
+        colors.push(singleChartPoint.color!);
         opacity.push(singleChartPoint.opacity || 1);
         allChartPoints.push(...singleChartPoint.data);
       });
@@ -454,12 +453,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   }
 
-  private _getLegendData = (points: IModifiedLineChartPoints[]): JSX.Element => {
+  private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
     const data = points;
     const actions: ILegend[] = [];
 
-    data.forEach((singleChartData: IModifiedLineChartPoints) => {
-      const color: string = singleChartData.color;
+    data.forEach((singleChartData: ILineChartPoints) => {
+      const color: string = singleChartData.color!;
       const checkSimilarLegends = actions.filter(
         (leg: ILegend) => leg.title === singleChartData.legend && leg.color === color,
       );
@@ -617,7 +616,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
             const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
             const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
-            lineColor = points[index]!.color;
+            lineColor = points[index]!.color!;
             return (
               <circle
                 key={circleId}
@@ -719,7 +718,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 
-  private _addDefaultColors = (lineChartData?: ILineChartPoints[]): IModifiedLineChartPoints[] => {
+  private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
     return lineChartData
       ? lineChartData.map((item, index) => {
           let color: string;
