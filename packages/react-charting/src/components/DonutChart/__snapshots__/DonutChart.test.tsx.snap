@@ -59,7 +59,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.55,-54.997A55,55,0,0,1,46.729,29.007L0,0Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -101,7 +101,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M46.139,29.936A55,55,0,1,1,-0.55,-54.997L0,0Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -608,7 +608,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.55,-54.997A55,55,0,0,1,46.729,29.007L0,0Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -650,7 +650,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M46.139,29.936A55,55,0,1,1,-0.55,-54.997L0,0Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
@@ -1819,7 +1819,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M0.5499908333791704,-54.99725002291659A55,55,0,0,1,46.728934607128515,29.007010712631306L0,0Z"
+              d="M0.55,-54.997A55,55,0,0,1,46.729,29.007L0,0Z"
               data-is-focusable={true}
               id="_Pie_1first20000"
               onBlur={[Function]}
@@ -1861,7 +1861,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &::-moz-focus-inner {
                     border: 0;
                   }
-              d="M46.13948759271731,29.935725892008794A55,55,0,1,1,-0.5499908333792137,-54.99725002291659L0,0Z"
+              d="M46.139,29.936A55,55,0,1,1,-0.55,-54.997L0,0Z"
               data-is-focusable={true}
               id="_Pie_1second39000"
               onBlur={[Function]}
