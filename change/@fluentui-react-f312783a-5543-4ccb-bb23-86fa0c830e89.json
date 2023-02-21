@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Coachmark remove possible recursive loop",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
