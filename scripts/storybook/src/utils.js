@@ -156,7 +156,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
   };
 
   /**
-   * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
+   * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
    */
   function getCodesandboxBabelOptions() {
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
@@ -169,7 +169,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       }
 
       return acc;
-    }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
+    }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
 
     return {
       ...importMappings,
