@@ -2,7 +2,9 @@ import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
-import { useTableFeatures, useTableSort, useTableSelection } from '../../hooks';
+import { useTableFeatures, useTableSort, useTableSelection, useTableColumnSizing_unstable } from '../../hooks';
+import { CELL_WIDTH } from '../TableSelectionCell';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render DataGrid.
@@ -28,6 +30,9 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     subtleSelection = false,
     selectionAppearance = 'brand',
     getRowId,
+    resizableColumns,
+    columnSizingOptions,
+    onColumnResize,
   } = props;
 
   const navigable = focusMode !== 'none';
@@ -45,11 +50,24 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       onSelectionChange,
       selectionMode: selectionMode ?? 'multiselect',
     }),
+    useTableColumnSizing_unstable({
+      onColumnResize,
+      columnSizingOptions,
+      // The selection cell is not part of the columns, therefore its width needs to be subtracted
+      // from the container to make sure the columns don't overflow the table.
+      containerWidthOffset: selectionMode ? -CELL_WIDTH : 0,
+    }),
   ]);
 
   const baseTableState = useTable_unstable(
-    { role: 'grid', as: 'div', noNativeElements: true, ...(navigable && keyboardNavAttr), ...props },
-    ref,
+    {
+      role: 'grid',
+      as: 'div',
+      noNativeElements: true,
+      ...(navigable && keyboardNavAttr),
+      ...props,
+    },
+    useMergedRefs(ref, tableState.tableRef),
   );
 
   return {
@@ -59,5 +77,6 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     selectableRows: !!selectionMode,
     subtleSelection,
     selectionAppearance,
+    resizableColumns,
   };
 };

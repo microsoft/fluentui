@@ -1,10 +1,42 @@
+// @ts-check
+
 const path = require('path');
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+
+const { registerTsPaths, registerRules, rules } = require('@fluentui/scripts-storybook');
+
+const tsConfigPath = path.resolve(__dirname, '../../../../tsconfig.base.v0.json');
 
 module.exports = /** @type {import('../../../../.storybook/main').StorybookBaseConfig} */ ({
+  addons: [
+    {
+      name: 'storybook-addon-swc',
+      options: /** @type {import('storybook-addon-swc').StoryBookAddonSwcOptions} */ ({
+        swcLoaderOptions: {
+          jsc: {
+            target: 'es2019',
+            parser: {
+              syntax: 'typescript',
+              tsx: true,
+              decorators: true,
+              dynamicImport: true,
+            },
+            transform: {
+              decoratorMetadata: true,
+              legacyDecorator: true,
+            },
+            keepClassNames: true,
+            externalHelpers: true,
+            loose: true,
+          },
+        },
+        swcMinifyOptions: { mangle: false },
+      }),
+    },
+  ],
   stories: ['../src/**/*.stories.tsx'],
   core: {
     builder: 'webpack5',
+    disableTelemetry: true,
   },
   babel: {},
   typescript: {
@@ -12,29 +44,8 @@ module.exports = /** @type {import('../../../../.storybook/main').StorybookBaseC
     reactDocgen: false,
   },
   webpackFinal: config => {
-    const tsPaths = new TsconfigPathsPlugin({
-      configFile: path.resolve(__dirname, '../../../../tsconfig.base.json'),
-    });
-
-    if (config.resolve) {
-      config.resolve.plugins ? config.resolve.plugins.push(tsPaths) : (config.resolve.plugins = [tsPaths]);
-    }
-
-    if (config.module) {
-      config.module.rules?.unshift({
-        test: /\.(ts|tsx)$/,
-        use: [
-          {
-            loader: '@griffel/webpack-loader',
-            options: {
-              babelOptions: {
-                presets: ['@babel/preset-typescript'],
-              },
-            },
-          },
-        ],
-      });
-    }
+    registerTsPaths({ config, configFile: tsConfigPath });
+    registerRules({ config, rules: [rules.griffelRule] });
 
     return config;
   },

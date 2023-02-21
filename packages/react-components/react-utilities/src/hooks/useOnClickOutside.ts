@@ -39,7 +39,7 @@ export type UseOnClickOrScrollOutsideOptions = {
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled, contains: containsProp } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
-  useIFrameFocus(!disabled, element, callback as (e: Event) => void);
+  useIFrameFocus(options);
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const contains: UseOnClickOrScrollOutsideOptions['contains'] =
@@ -106,6 +106,13 @@ const getWindowEvent = (target: Node | Window): Event | undefined => {
 
 const FUI_FRAME_EVENT = 'fuiframefocus';
 
+interface UseIFrameFocusOptions extends UseOnClickOrScrollOutsideOptions {
+  /**
+   * Millisecond duration to poll
+   */
+  pollDuration?: number;
+}
+
 /**
  * Since click events do not propagate past iframes, we use focus to detect if a
  * click has happened inside an iframe, since the only ways of focusing inside an
@@ -115,38 +122,40 @@ const FUI_FRAME_EVENT = 'fuiframefocus';
  *
  * Polls the value of `document.activeElement`. If it is an iframe, then dispatch
  * a custom DOM event. When the custom event is received call the provided callback
- *
- * @param enableFrameFocusDispatch - boolean flag to start dispatching events
- * @param targetDocument - the document to dispatch events and set timeouts
- * @param pollDuration  - in milliseconds
  */
-const useIFrameFocus = (
-  enableFrameFocusDispatch: boolean,
-  targetDocument: Document | undefined,
-  callback: (e: Event) => void,
-  pollDuration: number = 1000,
-) => {
+const useIFrameFocus = (options: UseIFrameFocusOptions) => {
+  const {
+    disabled,
+    element: targetDocument,
+    callback,
+    contains: containsProp = (parent, child) => !!parent?.contains(child),
+    pollDuration = 1000,
+    refs,
+  } = options;
   const timeoutRef = React.useRef<number>();
 
   const listener = useEventCallback((e: Event) => {
-    if (callback) {
-      callback(e);
+    const contains = containsProp || ((parent, child) => !!parent?.contains(child));
+
+    const isOutside = refs.every(ref => !contains(ref.current || null, e.target as HTMLElement));
+    if (isOutside && !disabled) {
+      callback(e as MouseEvent);
     }
   });
 
   // Adds listener to the custom iframe focus event
   React.useEffect(() => {
-    if (enableFrameFocusDispatch) {
+    if (!disabled) {
       targetDocument?.addEventListener(FUI_FRAME_EVENT, listener, true);
+      return () => {
+        targetDocument?.removeEventListener(FUI_FRAME_EVENT, listener, true);
+      };
     }
-    return () => {
-      targetDocument?.removeEventListener(FUI_FRAME_EVENT, listener, true);
-    };
-  }, [targetDocument, enableFrameFocusDispatch, listener]);
+  }, [targetDocument, disabled, listener]);
 
   // Starts polling for the active element
   React.useEffect(() => {
-    if (enableFrameFocusDispatch) {
+    if (!disabled) {
       timeoutRef.current = targetDocument?.defaultView?.setInterval(() => {
         const activeElement = targetDocument?.activeElement;
         if (activeElement?.tagName === 'IFRAME' || activeElement?.tagName === 'WEBVIEW') {
@@ -158,5 +167,5 @@ const useIFrameFocus = (
     return () => {
       targetDocument?.defaultView?.clearTimeout(timeoutRef.current);
     };
-  }, [targetDocument, enableFrameFocusDispatch, pollDuration]);
+  }, [targetDocument, disabled, pollDuration]);
 };

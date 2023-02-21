@@ -32,12 +32,7 @@ const useMediaStyles = makeStyles({
     alignItems: 'center',
     width: '32px',
     height: '32px',
-    ...shorthands.padding(
-      tokens.spacingVerticalMNudge,
-      tokens.spacingHorizontalXS,
-      tokens.spacingVerticalMNudge,
-      tokens.spacingHorizontalXXS,
-    ),
+    ...shorthands.padding(0, tokens.spacingHorizontalXS, 0, tokens.spacingHorizontalXXS),
   },
 });
 
@@ -70,7 +65,7 @@ const useAsideStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     whiteSpace: 'nowrap',
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: tokens.spacingHorizontalM,
     ...typographyStyles.caption1,
   },
 });

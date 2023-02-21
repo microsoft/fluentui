@@ -52,7 +52,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
     ? strings.yearPickerHeaderAriaLabel.replace('{0}', monthAndYear)
     : monthAndYear;
 
-  const { styles: _, ...propsWithoutStyles } = props;
+  const { ...propsWithoutStyles } = props;
 
   return (
     <div className={classNames.root}>
@@ -74,7 +74,6 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
       </div>
       <CalendarDayGrid
         {...propsWithoutStyles}
-        // styles={styles}
         componentRef={dayGrid}
         strings={strings}
         navigatedDate={navigatedDate!}

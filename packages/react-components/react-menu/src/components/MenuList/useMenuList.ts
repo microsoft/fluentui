@@ -15,10 +15,10 @@ import type { MenuListProps, MenuListState } from './MenuList.types';
  * Returns the props and state required to render the component
  */
 export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLElement>): MenuListState => {
-  const focusAttributes = useArrowNavigationGroup({ circular: true, ignoreDefaultKeydown: { Tab: true } });
   const { findAllFocusable } = useFocusFinders();
   const menuContext = useMenuContextSelectors();
   const hasMenuContext = useHasParentContext(MenuContext);
+  const focusAttributes = useArrowNavigationGroup({ circular: true, ignoreDefaultKeydown: { Tab: hasMenuContext } });
 
   if (usingPropsAndMenuContext(props, menuContext, hasMenuContext)) {
     // TODO throw warnings in development safely

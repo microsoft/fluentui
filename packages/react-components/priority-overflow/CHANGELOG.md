@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Wed, 18 Jan 2023 16:32:53 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2023 14:13:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.1)
+
+Tue, 07 Feb 2023 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.0..@fluentui/priority-overflow_v9.0.1)
+
+### Patches
+
+- fix: New overflow items all always dispatch updates to subscriber ([PR #26565](https://github.com/microsoft/fluentui/pull/26565) by lingfangao@hotmail.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.0)
 

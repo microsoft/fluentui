@@ -1249,7 +1249,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#0078d4"
             height={196.15384615384616}
             key="0"
-            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
@@ -1265,7 +1264,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#00188f"
             height={24.51923076923077}
             key="1"
-            role="img"
             transform="translate(0, 0)"
             width={32}
             x={40}
@@ -1295,7 +1293,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#0078d4"
             height={147.1153846153846}
             key="1"
-            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}
@@ -1311,7 +1308,6 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             fill="#00188f"
             height={98.07692307692308}
             key="2"
-            role="img"
             transform="translate(0, 0)"
             width={32}
             x={-52}

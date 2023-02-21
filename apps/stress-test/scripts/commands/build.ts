@@ -14,7 +14,7 @@ const command = 'build';
 
 const run: (argv: CLIBuildOptions) => Promise<void> = async argv => {
   if (argv.buildDeps) {
-    const deps = ['@fluentui/react', '@fluentui/web-components'];
+    const deps = ['@fluentui/web-components'];
     console.log('Building dependencies', deps.join(', '));
     const cmd = `lage build --to ${deps.join(' ')} ${argv.verbose ? '--verbose' : ''}`;
     console.log(`Run: ${cmd}`);

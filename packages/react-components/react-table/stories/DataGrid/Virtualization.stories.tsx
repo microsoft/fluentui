@@ -8,8 +8,15 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
-import { TableColumnDefinition, createTableColumn, TableCellLayout } from '@fluentui/react-components/unstable';
+import {
+  TableColumnDefinition,
+  createTableColumn,
+  TableCellLayout,
+  PresenceBadgeStatus,
+  Avatar,
+  useScrollbarWidth,
+  useFluent,
+} from '@fluentui/react-components';
 import {
   DataGridBody,
   DataGrid,

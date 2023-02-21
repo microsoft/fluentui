@@ -2,6 +2,425 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 16 Feb 2023 19:18:47 GMT",
+      "tag": "@fluentui/react-components_v9.15.5",
+      "version": "9.15.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "Fixing Build issues"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "c6f47613e95f8e43ef00792ea673d673881e14fb",
+            "comment": "fixing build issues"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Feb 2023 16:18:01 GMT",
+      "tag": "@fluentui/react-components_v9.15.4",
+      "version": "9.15.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4af9156bc869948b12610689f15b2a778aa690ca",
+            "comment": "fix: Updating peer dependencies to support React 18."
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "2a39824231365b95ba70991285301a6b83b4f107",
+            "comment": "chore: Update Input to use makeResetStyles and reduce the number of classes applied"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Feb 2023 11:44:51 GMT",
+      "tag": "@fluentui/react-components_v9.15.3",
+      "version": "9.15.3",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2",
+            "comment": "chore: Adds tests for iframe focus"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4e349194f193d7371de6040c7c69cf071b87be56",
+            "comment": "feat: Table - add support for resizing columns with touch"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4e349194f193d7371de6040c7c69cf071b87be56",
+            "comment": "feat: Add event helpers to ease working with mouse and touch"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2",
+            "comment": "fix(useOnClickOutside): iframe focus detection uses `contains`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 23:43:13 GMT",
+      "tag": "@fluentui/react-components_v9.15.2",
+      "version": "9.15.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "433143da85fcbdda8df0aceaadc5b56f4f8c3470",
+            "comment": "chore: update Badge and PresenceBadge to use makeResetStyles"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513",
+            "comment": "chore: update Persona to use makeResetStyles"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "3d12f79c3d790ac28b00f54dd8fc6d23970cf6ed",
+            "comment": "fix: `resolveShorthand` should resolve an object as its copy"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "70a8c39f33f5b5b9ca425ccb00c5c5eec8d7bb0d",
+            "comment": "chore: update Avatar to use makeResetStyles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 09:35:46 GMT",
+      "tag": "@fluentui/react-components_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "01013be09ee21b976963582f112365ae81a33ae0",
+            "comment": "fix: MenuList is a single tabstop"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0565ec044c06af355f951e158c0e68611a1d8861",
+            "comment": "fix: Coordinates should be rounded to device pixels to prevent blurriness"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "48b466e0ba8a55ad6f216127e538076c1e65fd37",
+            "comment": "chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Feb 2023 08:49:57 GMT",
+      "tag": "@fluentui/react-components_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "none": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "30999b8e1a383db0ef254bcaed2f8ee05fc85909",
+            "comment": "fix: Small mistake in docs for Avatar icon prop"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "7db30ce5c8ff56bbcfb01d40e60db382356b6b38",
+            "comment": "chore: Update Field spec and migration guide"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "2a4adf399928df00013a1b58eb5dd1ce77141c57",
+            "comment": "chore: Update Field documentation and stories"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "43a79058970c5e18c912b1a5a47e776ad8b72465",
+            "comment": "fix: keyboard navigation not working for select elements"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "fbe4207b3b40b147e936ecaf1e8fad9a8b357db9",
+            "comment": "feat: TableCellLayout component now supports truncate prop"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c5149e270e02a09eae9b7dfbba4da3aa4ac77a52",
+            "comment": "feat: DataGrid - add support for resizable columns"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "6a925547d8051b7d9a1855d6f20b7920d946fcdf",
+            "comment": "feat: Release `Table` and `DataGrid` as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "95a7b63876ccdc142172d93fe30b035d80f4fe88",
+            "comment": "feat: Add `overflowBoundaryPadding` positioning prop"
+          }
+        ],
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2043f6d0278192d009426549e6cb63dba4b93593",
+            "comment": "fix: Do not add an escape character for colons in the styleTagId since useId now removes colons from the generated id in React 18."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ab3ee4ca37d90bd42ba0c90a444f9f701d76df7f",
+            "comment": "chore: improve SpinButton documentation for home/end hotkeys"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "dc2adec63a4f71534bf9ed51684503ccb507ceb7",
+            "comment": "fix: properly handle single character text input for SpinButton"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6a925547d8051b7d9a1855d6f20b7920d946fcdf",
+            "comment": "feat: Release 9.0.0"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2043f6d0278192d009426549e6cb63dba4b93593",
+            "comment": "fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Feb 2023 14:13:04 GMT",
+      "tag": "@fluentui/react-components_v9.14.0",
+      "version": "9.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "7c106679b0d571df8085e607931fb55c288d24de",
+            "comment": "chore: export SlotRenderFunction type"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c625afa508c0dead93ea2d3cb698b41dc67ec187",
+            "comment": "Added export of column sizing"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66",
+            "comment": "feat: add `unstable_hasDefault` option in `useArrowNavigationGroup` that specifies the arrow navigation group has default focusable item"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "7b7f2cc005b44155e78b9aad071085e1f8db7030",
+            "comment": "feat: Bump keyborg to 2.0.0 and tabster to 4.0.1"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "22ecddb787ec8626605eb9cd79d8905d93ed179f",
+            "comment": "fix: update Combobox and Dropdown to never use the Option value string as a display value; input value must be set if selectedOptions or defaultSelectOptions is set\""
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0b35790d67cad33bd1d52d2418fcca6ef8b4a710",
+            "comment": "feat: exports `useDataGridContextValues_unstable`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "db4be59f6c1677bd9182205dabfcb3e2bb47837f",
+            "comment": "fix(createPositionManager): computePosition should not apply styles after destruction"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "7274228423cc06749b72ab6a8a112db6f18f5378",
+            "comment": "fix: New overflow items all always dispatch updates to subscriber"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "fe583c0be359e23a4ae6c4f1ab69d359800393e5",
+            "comment": "fix: Using correct icon and color for away + out-of-office PresenceBadge."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d75055c94921130a2433ea62f0002f560ef7e610",
+            "comment": "fix: add forced-colors primary button variant"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "787d758ce8a3cf9eef16692969877163af8538f9",
+            "comment": "feat: Initial release react-data-grid-react-window"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746",
+            "comment": "chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "34514e3502e2830d81f9de25956be8b624cd3c20",
+            "comment": "chore: Making the content focusable and updating example's text."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0b35790d67cad33bd1d52d2418fcca6ef8b4a710",
+            "comment": "feat: exports `useDataGridContextValues_unstable`"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c625afa508c0dead93ea2d3cb698b41dc67ec187",
+            "comment": "Add support for column resizing"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "24ed48c6ff8d0340314931cfecd74e3265b47148",
+            "comment": "docs: improve API documentation of card props"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "7274228423cc06749b72ab6a8a112db6f18f5378",
+            "comment": "Export useOverflowContext as @internal for testing purposes"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "7d266a45afded6a702ac86d5cf0722745b882266",
+            "comment": "Updated the story description"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "0cbf85cf12a08ff04ac1807a49ca469f92330211",
+            "comment": "docs: improve a11y of card storybook examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:53 GMT",
       "tag": "@fluentui/react-components_v9.13.0",
       "version": "9.13.0",

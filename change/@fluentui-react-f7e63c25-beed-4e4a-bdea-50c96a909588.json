@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(DatePicker): onLoadValidation can be turned off through textField props ",
-  "packageName": "@fluentui/react",
-  "email": "karlo.sudec@gmail.com",
-  "dependentChangeType": "patch"
-}

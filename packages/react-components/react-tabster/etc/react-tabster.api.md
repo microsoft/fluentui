@@ -53,6 +53,7 @@ export interface UseArrowNavigationGroupOptions {
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
+    unstable_hasDefault?: boolean;
 }
 
 // @public

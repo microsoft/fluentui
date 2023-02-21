@@ -1,14 +1,7 @@
 import * as React from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IBaseProps, IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { CalendarStrings, DateFormatting, DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import type { CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
-
-export type CalendarSlots = {
-  root: Slot<'div'>;
-};
 
 /**
  * {@docCategory Calendar}
@@ -22,17 +15,12 @@ export interface ICalendar {
 /**
  * {@docCategory Calendar}
  */
-export interface CalendarProps extends IBaseProps<ICalendar>, React.RefAttributes<HTMLDivElement> {
+export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendar>;
-
-  /**
-   * Customized styles for the calendar component
-   */
-  styles?: IStyleFunctionOrObject<CalendarStyleProps, CalendarStyles>;
 
   /**
    * Customized props for the calendar day
@@ -43,11 +31,6 @@ export interface CalendarProps extends IBaseProps<ICalendar>, React.RefAttribute
    * Customized props for the calendar month
    */
   calendarMonthProps?: Partial<CalendarMonthProps>;
-
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme?: ITheme;
 
   /**
    * Optional class name to add to the root element.
@@ -278,15 +261,15 @@ export interface CalendarStyles {
   /**
    * Style for the root element.
    */
-  root: IStyle;
+  root: string;
 
-  divider: IStyle;
+  divider: string;
 
-  goTodayButton: IStyle;
+  goTodayButton: string;
 
-  monthPickerWrapper: IStyle;
+  monthPickerWrapper: string;
 
-  liveRegion: IStyle;
+  liveRegion: string;
 }
 
 /**
