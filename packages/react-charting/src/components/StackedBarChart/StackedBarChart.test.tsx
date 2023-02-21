@@ -40,6 +40,11 @@ const chartPoints: IChartProps = {
   chartData: points,
 };
 
+const emptyChartPoints: IChartProps = {
+  chartTitle: chartTitle,
+  chartData: [],
+};
+
 describe('StackedBarChart snapShot testing', () => {
   it('renders StackedBarChart correctly', () => {
     const component = renderer.create(<StackedBarChart data={chartPoints} />);
@@ -214,5 +219,19 @@ describe('StackedBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<StackedBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<StackedBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

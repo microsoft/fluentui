@@ -65,6 +65,7 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   activeXAxisDataPoint: number | string;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  emptyChart?: boolean;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -86,7 +87,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _tooltipId: string;
   private _yMax: number;
   private _calloutAnchorPoint: IVSChartDataPoint | null;
-  private _isChartEmpty: boolean;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -103,6 +103,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       yCalloutValue: '',
       activeXAxisDataPoint: '',
       calloutLegend: '',
+      emptyChart: false,
     };
     warnDeprecations(COMPONENT_NAME, props, {
       colors: 'IVSChartDataPoint.color',
@@ -118,9 +119,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     ) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
-      this._isChartEmpty = false;
     } else {
-      this._isChartEmpty = true;
+      this.state = { ...this.state, emptyChart: true };
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
   }
@@ -136,20 +136,8 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
   }
 
-  public componentDidMount(): void {
-    if (this._isChartEmpty) {
-      d3Select('body')
-        .append('div')
-        .attr('role', 'alert')
-        .attr('id', 'ariaLabel_VerticalStackedBarChart')
-        .style('opacity', 0)
-        .attr('aria-label', 'Graph has no data to display')
-        .attr('tabIndex', 0);
-    }
-  }
-
   public render(): React.ReactNode {
-    if (!this._isChartEmpty) {
+    if (!this.state.emptyChart) {
       this._adjustProps();
       const _isHavingLines = this.props.data.some(
         (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
@@ -222,7 +210,9 @@ export class VerticalStackedBarChartBase extends React.Component<
         />
       );
     }
-    return <></>;
+    return (
+      <div id={getId('_VSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+    );
   }
 
   /**

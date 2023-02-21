@@ -44,6 +44,13 @@ const firstChartPoints: IChartDataPoint[] = [
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '23%',
   },
+  {
+    legend: 'Passport numbers (USA)',
+    data: 25,
+    color: DefaultPalette.green,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '23%',
+  },
 ];
 
 const secondChartPoints: IChartDataPoint[] = [
@@ -73,6 +80,43 @@ const chartPoints: IChartProps[] = [
     chartData: secondChartPoints,
   },
 ];
+
+const emptyChartPoints: IChartProps[] = [
+  {
+    chartTitle: 'Monitored',
+    chartData: [],
+  },
+];
+
+// const firstChartPoints: IChartDataPoint[] = [
+//   { legend: 'Malware', data: 40, color: '#0099BC' },
+//   { legend: 'Phishing', data: 23, color: '#77004D' },
+//   { legend: 'Spam and bulk', data: 35, color: '#4F68ED' },
+//   { data: 87, placeHolder: true },
+// ];
+
+// const secondChartPoints: IChartDataPoint[] = [
+//   { legend: 'Malicious links', data: 40, color: '#AE8C00' },
+//   {
+//     legend: 'Malicious attachments',
+//     data: 23,
+//     color: '#004E8C',
+//   },
+//   { data: 106, placeHolder: true },
+// ];
+
+// const hideRatio: boolean[] = [true, true];
+
+// const data: IChartProps[] = [
+//   {
+//     chartTitle: 'Currently blocked',
+//     chartData: firstChartPoints,
+//   },
+//   {
+//     chartTitle: 'Increased protection needed against detected threats',
+//     chartData: secondChartPoints,
+//   },
+// ];
 
 describe('MultiStackedBarChart snapShot testing', () => {
   it('renders MultiStackedBarChart correctly', () => {
@@ -236,5 +280,22 @@ describe('MultiStackedBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<MultiStackedBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<MultiStackedBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

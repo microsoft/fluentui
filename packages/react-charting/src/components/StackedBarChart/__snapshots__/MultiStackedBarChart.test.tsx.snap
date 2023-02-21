@@ -96,32 +96,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               Monitored
             </div>
           </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
         </div>
       </div>
       <div
@@ -173,7 +147,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 fill="#e81123"
                 height={12}
                 key="0"
-                width="63.49206349206349%"
+                width="45.45454545454545%"
                 x="0%"
                 y={0}
               />
@@ -205,8 +179,40 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 fill="#107c10"
                 height={12}
                 key="1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              key="2"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                key="2"
+                width="28.40909090909091%"
+                x="71.5909090909091%"
                 y={0}
               />
             </g>
@@ -425,15 +431,247 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
         }
   >
     <div
-      aria-label="Graph has no data to display"
-      id="_Legends_9"
-      role="alert"
-      style={
-        Object {
-          "opacity": "0",
-        }
-      }
-    />
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone7"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="0"
+                  role="none"
+                >
+                  <button
+                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #e81123;
+                            border-color: #e81123;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #e81123, #e81123);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Debit card numbers (EU and USA)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="1"
+                  role="none"
+                >
+                  <button
+                    aria-label="Passport numbers (USA) selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Passport numbers (USA)
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className=
@@ -696,32 +934,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               Monitored
             </div>
           </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
         </div>
       </div>
       <div
@@ -773,7 +985,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 fill="#e81123"
                 height={12}
                 key="0"
-                width="63.49206349206349%"
+                width="45.45454545454545%"
                 x="0%"
                 y={0}
               />
@@ -805,8 +1017,40 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 fill="#107c10"
                 height={12}
                 key="1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              key="2"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                key="2"
+                width="28.40909090909091%"
+                x="71.5909090909091%"
                 y={0}
               />
             </g>
@@ -1025,15 +1269,247 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
         }
   >
     <div
-      aria-label="Graph has no data to display"
-      id="_Legends_9"
-      role="alert"
-      style={
-        Object {
-          "opacity": "0",
-        }
-      }
-    />
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone7"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="0"
+                  role="none"
+                >
+                  <button
+                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #e81123;
+                            border-color: #e81123;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #e81123, #e81123);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Debit card numbers (EU and USA)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  key="1"
+                  role="none"
+                >
+                  <button
+                    aria-label="Passport numbers (USA) selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Passport numbers (USA)
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className=
@@ -1213,32 +1689,6 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               Monitored
             </div>
           </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
         </div>
       </div>
       <div
@@ -1288,7 +1738,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#e81123"
                 height={12}
-                width="63.49206349206349%"
+                width="45.45454545454545%"
                 x="0%"
                 y={0}
               />
@@ -1318,8 +1768,38 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="28.40909090909091%"
+                x="71.5909090909091%"
                 y={0}
               />
             </g>
@@ -1532,15 +2012,245 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         }
   >
     <div
-      aria-label="Graph has no data to display"
-      id="_Legends_8"
-      role="alert"
-      style={
-        Object {
-          "opacity": "0",
-        }
-      }
-    />
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone7"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #e81123;
+                            border-color: #e81123;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #e81123, #e81123);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Debit card numbers (EU and USA)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="Passport numbers (USA) selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Passport numbers (USA)
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <span
     className="ms-layer"
@@ -1581,7 +2291,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone34"
+        data-focuszone-id="FocusZone32"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1625,7 +2335,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             </span>
             <div
               hidden={true}
-              id="tooltip35"
+              id="tooltip33"
               style={
                 Object {
                   "border": 0,
@@ -1642,22 +2352,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               Monitored
             </div>
           </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-          </div>
         </div>
       </div>
       <div
@@ -1666,7 +2360,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone36"
+        data-focuszone-id="FocusZone34"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1707,7 +2401,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#e81123"
                 height={12}
-                width="63.49206349206349%"
+                width="45.45454545454545%"
                 x="0%"
                 y={0}
               />
@@ -1737,8 +2431,38 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="28.40909090909091%"
+                x="71.5909090909091%"
                 y={0}
               />
             </g>
@@ -1758,6 +2482,91 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
             width: 100%;
           }
     >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone35"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #171717;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip36"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+          </div>
+        </div>
+      </div>
       <div
         className=
             ms-FocusZone
@@ -1765,902 +2574,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               outline: none;
             }
         data-focuszone-id="FocusZone37"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #171717;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={true}
-              role="text"
-            >
-              Unmonitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip38"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Unmonitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone39"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div>
-          <svg
-            aria-label="Unmonitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#0078d4"
-                height={12}
-                width="63.49206349206349%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-
-        {
-          margin-bottom: 0px;
-          margin-left: 4px;
-          margin-right: 0px;
-          margin-top: 5px;
-        }
-  >
-    <div
-      aria-label="Graph has no data to display"
-      id="_Legends_41"
-      role="alert"
-      style={
-        Object {
-          "opacity": "0",
-        }
-      }
-    />
-  </div>
-  <span
-    className="ms-layer"
-  />
-</div>
-`;
-
-exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
-<div
-  className=
-      ms-StackedBarChart
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100%;
-      }
-  onMouseLeave={[Function]}
->
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone10"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #171717;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={true}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip11"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone12"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div>
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                width="63.49206349206349%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone13"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #171717;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={true}
-              role="text"
-            >
-              Unmonitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip14"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Unmonitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone15"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div>
-          <svg
-            aria-label="Unmonitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#0078d4"
-                height={12}
-                width="63.49206349206349%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <span
-    className="ms-layer"
-  />
-</div>
-`;
-
-exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] = `
-<div
-  className=
-      ms-StackedBarChart
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100%;
-      }
-  onMouseLeave={[Function]}
->
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone26"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #171717;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={true}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip27"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone28"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div>
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                width="63.49206349206349%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-                  &:focus {
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone29"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #171717;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={true}
-              role="text"
-            >
-              Unmonitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip30"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Unmonitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone31"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2788,7 +2701,1082 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone32"
+              data-focuszone-id="FocusZone38"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #e81123;
+                            border-color: #e81123;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #e81123, #e81123);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Debit card numbers (EU and USA)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="Passport numbers (USA) selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Passport numbers (USA)
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone9"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #171717;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip10"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone11"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            aria-label="Monitored"
+            className=
+
+                {
+                  display: block;
+                  height: 12px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-label="2020/04/30, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#e81123"
+                height={12}
+                width="45.45454545454545%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="28.40909090909091%"
+                x="71.5909090909091%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone12"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #171717;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip13"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone14"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            aria-label="Unmonitored"
+            className=
+
+                {
+                  display: block;
+                  height: 12px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-label="2020/04/30, 87%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#0078d4"
+                height={12}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 87%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone24"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #171717;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Monitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip25"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Monitored
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone26"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            aria-label="Monitored"
+            className=
+
+                {
+                  display: block;
+                  height: 12px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-label="2020/04/30, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#e81123"
+                height={12}
+                width="45.45454545454545%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="28.40909090909091%"
+                x="71.5909090909091%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone27"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #171717;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={true}
+              role="text"
+            >
+              Unmonitored
+            </span>
+            <div
+              hidden={true}
+              id="tooltip28"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              Unmonitored
+            </div>
+          </div>
+          <div
+            data-is-focusable={true}
+            role="text"
+          >
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+            >
+              40
+            </span>
+            <span
+              className=
+
+                  {
+                    color: #323130;
+                    font-size: 14px;
+                  }
+            >
+               / 63
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone29"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            aria-label="Unmonitored"
+            className=
+
+                {
+                  display: block;
+                  height: 12px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-label="2020/04/30, 87%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#0078d4"
+                height={12}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 87%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          margin-bottom: 0px;
+          margin-left: 4px;
+          margin-right: 0px;
+          margin-top: 5px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone30"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3031,7 +4019,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone17"
+        data-focuszone-id="FocusZone16"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3075,7 +4063,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </span>
             <div
               hidden={true}
-              id="tooltip18"
+              id="tooltip17"
               style={
                 Object {
                   "border": 0,
@@ -3092,32 +4080,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               Monitored
             </div>
           </div>
-          <div
-            data-is-focusable={true}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
         </div>
       </div>
       <div
@@ -3126,7 +4088,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone19"
+        data-focuszone-id="FocusZone18"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3167,7 +4129,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#e81123"
                 height={12}
-                width="63.49206349206349%"
+                width="45.45454545454545%"
                 x="0%"
                 y={0}
               />
@@ -3197,8 +4159,38 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="26.136363636363637%"
+                x="45.45454545454545%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-label="2020/04/30, 23%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            >
+              <rect
+                fill="#107c10"
+                height={12}
+                width="28.40909090909091%"
+                x="71.5909090909091%"
                 y={0}
               />
             </g>
@@ -3224,7 +4216,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone20"
+        data-focuszone-id="FocusZone19"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3268,7 +4260,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             </span>
             <div
               hidden={true}
-              id="tooltip21"
+              id="tooltip20"
               style={
                 Object {
                   "border": 0,
@@ -3319,7 +4311,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone22"
+        data-focuszone-id="FocusZone21"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3411,15 +4403,245 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         }
   >
     <div
-      aria-label="Graph has no data to display"
-      id="_Legends_24"
-      role="alert"
-      style={
-        Object {
-          "opacity": "0",
-        }
-      }
-    />
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone22"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="Debit card numbers (EU and USA) selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #e81123;
+                            border-color: #e81123;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #e81123, #e81123);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Debit card numbers (EU and USA)
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="Passport numbers (USA) selected"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={2}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #107c10;
+                            border-color: #107c10;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #107c10, #107c10);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      Passport numbers (USA)
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <span
     className="ms-layer"
