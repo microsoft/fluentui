@@ -176,6 +176,7 @@ export const CustomInitials = renderComponent(html<AvatarStoryArgs>` <fluent-ava
 
 export const Size = renderComponent(html<AvatarStoryArgs>`
   <div style="display: flex; gap: 24px">
+    <fluent-avatar name="Jane Doe" size="16">16</fluent-avatar>
     <fluent-avatar name="Lydia Bauer" size="20">20</fluent-avatar>
     <fluent-avatar name="Amanda Brady" size="24">24</fluent-avatar>
     <fluent-avatar name="Henry Brill" size="28">28</fluent-avatar>

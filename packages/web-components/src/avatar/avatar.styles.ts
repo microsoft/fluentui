@@ -177,10 +177,16 @@ export const styles = css`
     box-shadow: 0 0 0 ${strokeWidthThin} ${colorNeutralBackground1};
   }
 
+  :host([size='16']),
   :host([size='20']),
   :host([size='24']) {
     font-size: ${fontSizeBase100};
     font-weight: ${fontWeightRegular};
+  }
+
+  :host([size='16']) {
+    width: 16px;
+    height: 16px;
   }
 
   :host([size='20']) {
@@ -191,6 +197,13 @@ export const styles = css`
   :host([size='24']) {
     width: 24px;
     height: 24px;
+  }
+
+  :host([size='16']) .default-icon,
+  :host([size='16']) ::slotted(svg) {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
   }
 
   :host([size='20']) .default-icon,

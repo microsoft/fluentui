@@ -102,6 +102,7 @@ export type AvatarColor = ValuesOf<typeof AvatarColor>;
  * @public
  */
 export const AvatarSize = {
+  _16: 16,
   _20: 20,
   _24: 24,
   _28: 28,
