@@ -3,7 +3,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { findRepoDeps, findGitRoot } = require('@fluentui/scripts/monorepo');
+const { findRepoDeps, findGitRoot } = require('@fluentui/scripts-monorepo');
 
 const gitRoot = findGitRoot();
 

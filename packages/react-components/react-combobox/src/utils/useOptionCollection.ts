@@ -15,8 +15,11 @@ export const useOptionCollection = (): OptionCollectionState => {
       const item = nodes.current.find(node => node.option.id === id);
       return item?.option;
     };
-    const getOptionsMatchingText = (matcher: (value: string) => boolean) => {
+    const getOptionsMatchingText = (matcher: (text: string) => boolean) => {
       return nodes.current.filter(node => matcher(node.option.text)).map(node => node.option);
+    };
+    const getOptionsMatchingValue = (matcher: (value: string) => boolean) => {
+      return nodes.current.filter(node => matcher(node.option.value)).map(node => node.option);
     };
 
     return {
@@ -25,6 +28,7 @@ export const useOptionCollection = (): OptionCollectionState => {
       getIndexOfId,
       getOptionById,
       getOptionsMatchingText,
+      getOptionsMatchingValue,
     };
   }, []);
 

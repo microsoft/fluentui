@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: setOverrideTarget should be an event callback",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

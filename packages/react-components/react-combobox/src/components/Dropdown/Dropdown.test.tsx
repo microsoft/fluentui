@@ -68,6 +68,19 @@ describe('Dropdown', () => {
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
   });
 
+  it('adds aria-owns pointing to the popup', () => {
+    const { getByRole, container } = render(
+      <Dropdown open className="root">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const listboxId = getByRole('listbox').id;
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+  });
+
   /* open/close tests */
   it('opens the popup on click', () => {
     const { getByRole } = render(
@@ -402,6 +415,20 @@ describe('Dropdown', () => {
       optionText: 'Green',
       selectedOptions: ['test'],
     });
+  });
+
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
   it('calls onOptionSelect with correct data for multi-select', () => {

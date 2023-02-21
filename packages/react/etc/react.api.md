@@ -227,6 +227,7 @@ import { IPoint } from '@fluentui/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IPropsWithStyles } from '@fluentui/utilities';
 import { IRawStyle } from '@fluentui/style-utilities';
+import { IReactProps } from '@fluentui/utilities';
 import { IRectangle } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderComponent } from '@fluentui/utilities';
@@ -506,6 +507,10 @@ export class BaseButton extends React_2.Component<IBaseButtonProps, IBaseButtonS
     componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    context: IFocusRectsContext;
+    // (undocumented)
+    static contextType: React_2.Context<IFocusRectsContext | undefined>;
     // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
@@ -2182,8 +2187,6 @@ export { IAnimationStyles }
 
 export { IAnimationVariables }
 
-// Warning: (ae-forgotten-export) The symbol "IReactProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IAnnouncedProps extends IReactProps<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
@@ -4955,8 +4958,8 @@ export interface IDetailsRowStyles {
     check: IStyle;
     // (undocumented)
     checkCell: IStyle;
-    // (undocumented)
-    checkCover: IStyle;
+    // @deprecated (undocumented)
+    checkCover?: IStyle;
     // (undocumented)
     fields: IStyle;
     // (undocumented)

@@ -1,8 +1,118 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 04 Jan 2023 01:40:09 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2023 19:18:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.6)
+
+Thu, 16 Feb 2023 19:18:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.5..@fluentui/react-input_v9.3.6)
+
+### Patches
+
+- fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.5)
+
+Thu, 16 Feb 2023 16:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.4..@fluentui/react-input_v9.3.5)
+
+### Patches
+
+- chore: Update Input to use makeResetStyles and reduce the number of classes applied ([PR #26815](https://github.com/microsoft/fluentui/pull/26815) by behowell@microsoft.com)
+
+## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.4)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.3..@fluentui/react-input_v9.3.4)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.21 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-text to v9.2.3 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.3)
+
+Mon, 13 Feb 2023 23:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.2..@fluentui/react-input_v9.3.3)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.20 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-text to v9.2.2 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.2)
+
+Fri, 10 Feb 2023 08:50:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.1..@fluentui/react-input_v9.3.2)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.19 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-text to v9.2.1 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.1)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.0..@fluentui/react-input_v9.3.1)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.18 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-text to v9.2.0 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.0)
+
+Thu, 26 Jan 2023 13:30:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.2.13..@fluentui/react-input_v9.3.0)
+
+### Minor changes
+
+- feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.17 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-text to v9.1.14 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+### Patches
+
+- Deprecate InputField_unstable in favor of Field with Input as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+
+## [9.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.13)
+
+Mon, 23 Jan 2023 16:43:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.2.12..@fluentui/react-input_v9.2.13)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.16 ([PR #26434](https://github.com/microsoft/fluentui/pull/26434) by beachball)
+
+## [9.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.12)
+
+Mon, 16 Jan 2023 08:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.2.11..@fluentui/react-input_v9.2.12)
+
+### Patches
+
+- fix: Update contentBefore and contentAfter slot styling for svg ([PR #26115](https://github.com/microsoft/fluentui/pull/26115) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-text to v9.1.13 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.11)
+
+Mon, 09 Jan 2023 14:35:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.2.10..@fluentui/react-input_v9.2.11)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-text to v9.1.12 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.2.10)
 

@@ -1,4 +1,4 @@
-import { CreateColumnOptions } from './types';
+import { CreateTableColumnOptions } from './types';
 
 const defaultCompare = () => 0;
 
@@ -25,7 +25,7 @@ const defaultRenderHeaderCell = () => {
  * @param options - column definition options
  * @returns - column definition with defaults
  */
-export function createColumn<TItem>(options: CreateColumnOptions<TItem>) {
+export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>) {
   const {
     columnId,
     renderCell = defaultRenderCell,

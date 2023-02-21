@@ -2,6 +2,617 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Wed, 15 Feb 2023 11:44:51 GMT",
+      "tag": "@fluentui/react-table_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4e349194f193d7371de6040c7c69cf071b87be56",
+            "comment": "feat: Table - add support for resizing columns with touch"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.10",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.6",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.28",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.10",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.26",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.5.3",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.6.0",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 23:43:14 GMT",
+      "tag": "@fluentui/react-table_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.9",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.5",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.27",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.9",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.25",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.5.2",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.5.3",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 09:35:48 GMT",
+      "tag": "@fluentui/react-table_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.4",
+            "commit": "b24aed22677cb12a74f185feee89edefd1601b9a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Feb 2023 08:50:01 GMT",
+      "tag": "@fluentui/react-table_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6a925547d8051b7d9a1855d6f20b7920d946fcdf",
+            "comment": "feat: Release 9.0.0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.8",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.3",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.26",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.8",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.24",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.5.1",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.5.2",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "fbe4207b3b40b147e936ecaf1e8fad9a8b357db9",
+            "comment": "feat: TableCellLayout component now supports truncate prop"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c5149e270e02a09eae9b7dfbba4da3aa4ac77a52",
+            "comment": "feat: DataGrid - add support for resizable columns"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Feb 2023 14:13:07 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0b35790d67cad33bd1d52d2418fcca6ef8b4a710",
+            "comment": "feat: exports `useDataGridContextValues_unstable`"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "c625afa508c0dead93ea2d3cb698b41dc67ec187",
+            "comment": "Add support for column resizing"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.2",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.25",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.23",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.5.0",
+            "commit": "8a1405562b3328c408f15e3bf511d3eb6a0c0e66"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.7",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.24",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.7",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.22",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.4.2",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 13:31:01 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f5f1f5eed0c4e45333f38fbefc4b1b42580b4836",
+            "comment": "chore(react-table): switch AvatarSizes in favor of AvatarSize"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.3.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.23",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.21",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.4.1",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Jan 2023 16:43:11 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "86a28f6ebcc84819c695f12b841b9377736fb5f7",
+            "comment": "docs: update imports in DataGrid stories"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.16",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.22",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.20",
+            "commit": "828c4260edc4fba07c9ccc8e94f15051c7fd25d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Jan 2023 16:32:55 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "d8caa0e6c6d1e4ace415dec6f767411acca43415",
+            "comment": "Release @fluentui/react-table as RC"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "64989c23309e77e51bb42c00609fd2425cd20680",
+            "comment": "fix(TableCellActions): Background should match rown on hover and active"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.15",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.21",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.19",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.4.0",
+            "commit": "13cf1d07a6df4617106c731ba0379b6102a08104"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Jan 2023 12:22:55 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0d265cf542add3b4895e3ba764bbb22be7843f45",
+            "comment": "BREAKING: API naming changes"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "08ccb46dd03a8871c1234008a5a543cd53f579a9",
+            "comment": "BREAKING(DataGrid): render functions need to by typed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.14",
+            "commit": "64989c23309e77e51bb42c00609fd2425cd20680"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:38:48 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "10942a5764b9f4c599c279fa7da32d6ca1ac501c",
+            "comment": "feat: Export RowIdProvider"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "ac636e8e2f5448a58343f51ad72f9fc5351e4b8e",
+            "comment": "fix(TableSelectionCell): Radios should not change selection on focus"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.13",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.20",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.18",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.7",
+            "commit": "a870d8360e47f3ea03358c4e75e89e08a74845d7"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e3377c295d3dd11293b6a79b8014e80bce473a14",
+            "comment": "chore: Add bundle size fixtures for react-table"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 21:51:24 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.19",
+            "commit": "fb5708446f369a57f48b87a0141d6a651acddbde"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 14:35:00 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "73bd103d70370326286daee55dad5c1c2b9861a7",
+            "comment": "fix: remove Event type in selectionManager"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "2bde4a96454105f8943284b590b6174ccb1aea94",
+            "comment": "refactor: Cleanup unused code"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "87fcaf175c6588438c7f8dc2c2de5a4af5f94d1a",
+            "comment": "BREAKING(TableCellLayout): `wrapper` slot renamed to `content`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.3.5",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.2.12",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.0.18",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.5",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.0.17",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.3.6",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "bffa36e0a7824f1e54d73907912473692c40d70b",
+            "comment": "docs: fix typo in Table.types.ts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "f514d1ff53ea0b2a6e959b3d457f341d7f68575e",
+            "comment": "docs: Fix typos in react-table docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jan 2023 01:40:32 GMT",
       "tag": "@fluentui/react-table_v9.0.0-alpha.16",
       "version": "9.0.0-alpha.16",

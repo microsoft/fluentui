@@ -1,8 +1,43 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 15 Nov 2022 07:44:58 GMT and should not be manually modified.
+This log was last generated on Sat, 18 Feb 2023 01:37:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.7)
+
+Sat, 18 Feb 2023 01:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.6..@fluentui/utilities_v8.13.7)
+
+### Patches
+
+- chore: Removing deprecated React.Props from DelayedRender. ([PR #26821](https://github.com/microsoft/fluentui/pull/26821) by jimsleon@hotmail.com)
+
+## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.6)
+
+Fri, 03 Feb 2023 07:50:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.5..@fluentui/utilities_v8.13.6)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.5 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/merge-styles to v8.5.6 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/set-version to v8.2.5 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.23 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/test-utilities to v8.2.6 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+
+## [8.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.5)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.4..@fluentui/utilities_v8.13.5)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/merge-styles to v8.5.5 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.22 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/test-utilities to v8.2.5 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
 
 ## [8.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.4)
 

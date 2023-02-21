@@ -1,4 +1,4 @@
-const { resources } = require('@fluentui/scripts/webpack');
+const { resources } = require('@fluentui/scripts-webpack');
 
 const BUNDLE_NAME = 'theming-designer';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;

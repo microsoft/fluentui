@@ -93,6 +93,9 @@ export interface AccordionProps extends UIComponentProps, ChildrenComponentProps
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<AccordionBehaviorProps>;
+
+  /** Manage if panels should be rendered always or based on their state. */
+  alwaysRenderPanels?: boolean;
 }
 
 export type AccordionStylesProps = never;
@@ -124,6 +127,7 @@ export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((pr
     panels,
     renderPanelContent,
     renderPanelTitle,
+    alwaysRenderPanels,
   } = props;
   const alwaysActiveIndex = expanded ? 0 : -1;
 
@@ -276,7 +280,7 @@ export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((pr
           render: renderPanelTitle,
         }),
       );
-      if (active) {
+      if (alwaysRenderPanels || active) {
         children.push(
           createShorthand(AccordionContent, content, {
             defaultProps: () => ({

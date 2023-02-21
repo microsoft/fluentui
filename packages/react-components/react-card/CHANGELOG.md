@@ -1,8 +1,106 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Wed, 04 Jan 2023 01:40:54 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.46)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.45..@fluentui/react-card_v9.0.0-beta.46)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.5.3 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-button to v9.2.5 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.45)
+
+Mon, 13 Feb 2023 23:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.44..@fluentui/react-card_v9.0.0-beta.45)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.5.2 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-button to v9.2.4 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.44)
+
+Fri, 10 Feb 2023 08:49:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.43..@fluentui/react-card_v9.0.0-beta.44)
+
+### Changes
+
+- fix: keyboard navigation not working for select elements ([PR #26612](https://github.com/microsoft/fluentui/pull/26612) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.5.1 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-button to v9.2.3 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+
+## [9.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.43)
+
+Tue, 07 Feb 2023 14:13:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.42..@fluentui/react-card_v9.0.0-beta.43)
+
+### Changes
+
+- docs: improve API documentation of card props ([PR #26614](https://github.com/microsoft/fluentui/pull/26614) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.5.0 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+- Bump @fluentui/react-button to v9.2.2 ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by beachball)
+
+## [9.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.42)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.41..@fluentui/react-card_v9.0.0-beta.42)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.4.2 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+- Bump @fluentui/react-button to v9.2.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.41)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.40..@fluentui/react-card_v9.0.0-beta.41)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.4.1 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-button to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.40)
+
+Wed, 18 Jan 2023 16:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.39..@fluentui/react-card_v9.0.0-beta.40)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.4.0 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+- Bump @fluentui/react-button to v9.1.16 ([PR #26377](https://github.com/microsoft/fluentui/pull/26377) by beachball)
+
+## [9.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.39)
+
+Mon, 16 Jan 2023 08:38:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.38..@fluentui/react-card_v9.0.0-beta.39)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.3.7 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+- Bump @fluentui/react-button to v9.1.15 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
+
+## [9.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.38)
+
+Mon, 09 Jan 2023 14:34:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.37..@fluentui/react-card_v9.0.0-beta.38)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.3.6 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-utilities to v9.4.0 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
+- Bump @fluentui/react-button to v9.1.14 ([PR #26255](https://github.com/microsoft/fluentui/pull/26255) by beachball)
 
 ## [9.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.37)
 

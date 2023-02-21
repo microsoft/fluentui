@@ -68,6 +68,86 @@ describe('Combobox', () => {
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
   });
 
+  /* Expand icon name */
+  it('Sets the chevron button name off the aria-label prop', () => {
+    const { container } = render(
+      <Combobox aria-label="test label">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const chevronButton = container.querySelector('[role=button]');
+    expect(chevronButton?.getAttribute('aria-label')).toEqual('Open test label');
+  });
+
+  it('Sets the chevron button name off the aria-labelledby prop', () => {
+    const { container } = render(
+      <Combobox aria-labelledby="testId">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const chevronButton = container.querySelector('[role=button]');
+    const chevronId = chevronButton?.id;
+    expect(chevronButton?.getAttribute('aria-label')).toEqual('Open');
+    expect(chevronButton?.getAttribute('aria-labelledby')).toEqual(chevronId + ' testId');
+  });
+
+  it('Defaults to "Open" as the chevron label', () => {
+    const { container } = render(
+      <Combobox>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const chevronButton = container.querySelector('[role=button]');
+    expect(chevronButton?.getAttribute('aria-label')).toEqual('Open');
+    expect(chevronButton?.getAttribute('aria-labelledby')).toBeFalsy();
+  });
+
+  it('Respects author-provided labels for the chevron button', () => {
+    const renderedCombobox = render(
+      <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-label': 'test label' }}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const chevronButton = renderedCombobox.container.querySelector('[role=button]');
+    expect(chevronButton?.getAttribute('aria-label')).toEqual('test label');
+    expect(chevronButton?.getAttribute('aria-labelledby')).toBeFalsy();
+
+    renderedCombobox.rerender(
+      <Combobox aria-label="not used" aria-labelledby="not-used" expandIcon={{ 'aria-labelledby': 'testId' }}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    expect(chevronButton?.getAttribute('aria-label')).toBeFalsy();
+    expect(chevronButton?.getAttribute('aria-labelledby')).toEqual('testId');
+  });
+
+  it('adds aria-owns pointing to the popup', () => {
+    const { getByRole, container } = render(
+      <Combobox open className="root">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+    const listboxId = getByRole('listbox').id;
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+  });
+
   /* open/close tests */
   it('opens the popup on click', () => {
     const { getByRole } = render(
@@ -325,6 +405,20 @@ describe('Combobox', () => {
     expect(getByTestId('red').getAttribute('aria-checked')).toEqual('true');
     expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('true');
     expect(getByTestId('green').getAttribute('aria-checked')).toEqual('false');
+  });
+
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Combobox defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.click(getByText('Green'));
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
 
   it('should change defaultSelectedOptions on click', () => {

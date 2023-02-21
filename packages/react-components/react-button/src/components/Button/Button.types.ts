@@ -13,6 +13,11 @@ export type ButtonSlots = {
   icon?: Slot<'span'>;
 };
 
+/**
+ * A button supports different sizes.
+ */
+export type ButtonSize = 'small' | 'medium' | 'large';
+
 export type ButtonProps = ComponentProps<ButtonSlots> & {
   /**
    * A button can have its content and borders styled for greater emphasis or to be subtle.
@@ -61,7 +66,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonSize;
 };
 
 export type ButtonState = ComponentState<ButtonSlots> &

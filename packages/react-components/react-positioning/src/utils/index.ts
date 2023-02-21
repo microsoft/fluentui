@@ -3,6 +3,7 @@ export * from './getBoundary';
 export * from './getReactFiberFromNode';
 export * from './getScrollParent';
 export * from './mergeArrowOffset';
+export * from './toFloatingUIPadding';
 export * from './toFloatingUIPlacement';
 export * from './fromFloatingUIPlacement';
 export * from './resolvePositioningShorthand';
