@@ -1,10 +1,14 @@
 import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CalendarSlots, CalendarStyles, CalendarStyleProps } from './Calendar.types';
+import type { CalendarStyles, CalendarStyleProps } from './Calendar.types';
 
-export const calendarClassNames: SlotClassNames<CalendarSlots> & Record<string, string> = {
+export const calendarClassNames: SlotClassNames<CalendarStyles> = {
   root: 'fui-Calendar',
+  divider: 'fui-Calendar__divider',
+  goTodayButton: 'fui-Calendar__goTodayButton',
+  monthPickerWrapper: 'fui-Calendar__monthPickerWrapper',
+  liveRegion: 'fui-Calendar__liveRegion',
 };
 
 const useRootStyles = makeStyles({
@@ -99,7 +103,7 @@ const useLiveRegionStyles = makeStyles({
  * Apply styling to the Calendar slots based on the state
  */
 // export const useCalendarStyles_unstable = (state: CalendarState): CalendarState => {
-export const useCalendarStyles_unstable = (props: CalendarStyleProps): Record<keyof CalendarStyles, string> => {
+export const useCalendarStyles_unstable = (props: CalendarStyleProps): CalendarStyles => {
   const rootStyles = useRootStyles();
   const dividerStyles = useDividerStyles();
   const monthPickerWrapperStyles = useMonthPickerWrapperStyles();
@@ -122,9 +126,9 @@ export const useCalendarStyles_unstable = (props: CalendarStyleProps): Record<ke
         rootStyles.dayAndMonthPickersVisibleAndWeekNumbersShown,
       className,
     ),
-    divider: dividerStyles.base,
-    monthPickerWrapper: monthPickerWrapperStyles.base,
-    goTodayButton: goTodayButtonStyles.base,
-    liveRegion: liveRegionStyles.base,
+    divider: mergeClasses(calendarClassNames.divider, dividerStyles.base),
+    monthPickerWrapper: mergeClasses(calendarClassNames.monthPickerWrapper, monthPickerWrapperStyles.base),
+    goTodayButton: mergeClasses(calendarClassNames.goTodayButton, goTodayButtonStyles.base),
+    liveRegion: mergeClasses(calendarClassNames.liveRegion, liveRegionStyles.base),
   };
 };
