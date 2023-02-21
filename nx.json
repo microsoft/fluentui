@@ -25,7 +25,7 @@
   },
   "pluginsConfig": {
     "@nrwl/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": false
     }
   },
   "targetDependencies": {
@@ -33,6 +33,24 @@
       {
         "target": "build",
         "projects": "dependencies"
+      }
+    ],
+    "lint": [
+      {
+        "target": "build",
+        "projects": "self"
+      }
+    ],
+    "test": [
+      {
+        "target": "build",
+        "projects": "self"
+      }
+    ],
+    "type-check": [
+      {
+        "target": "build",
+        "projects": "self"
       }
     ],
     "package": [

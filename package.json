@@ -24,6 +24,8 @@
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/register ./scripts/executors/check-for-modified-files",
     "check:affected-package": "node ./scripts/executors/checkIfPackagesAffected.js",
+    "affected:get": "node -r ./scripts/ts-node/register ./scripts/executors/get-affected-packages",
+    "affected:run": "node -r ./scripts/ts-node/register ./scripts/executors/run-affected",
     "check:installed-dependencies-versions": "satisfied --no-peers --skip-invalid",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
