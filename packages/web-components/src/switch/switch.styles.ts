@@ -55,7 +55,7 @@ export const styles = css`
   :host([disabled]) .switch {
     cursor: not-allowed;
   }
-  :host .label {
+  .label {
     position: relative;
     color: ${colorNeutralForeground1};
     line-height: ${lineHeightBase300};
@@ -68,9 +68,6 @@ export const styles = css`
   :host([required]) .label:after {
     content: '*';
     color: ${colorPaletteRedForeground3};
-  }
-  :host([disabled]) .status-message {
-    color: ${colorNeutralForegroundDisabled};
   }
   .switch {
     display: flex;
@@ -128,13 +125,8 @@ export const styles = css`
   :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  :host([disabled]) .status-message,
-  :host([readonly]) .status-message {
-    cursor: pointer;
-  }
   .label__hidden {
     display: none;
-    visibility: hidden;
   }
   :host([aria-checked='true']) .switch {
     background: ${colorCompoundBrandBackground};
