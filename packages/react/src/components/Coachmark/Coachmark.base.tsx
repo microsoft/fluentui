@@ -431,6 +431,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
     target,
     color,
     positioningContainerProps,
+    isPositionForced,
     ariaDescribedBy,
     ariaDescribedByText,
     ariaLabelledBy,
@@ -471,9 +472,9 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
     const async = useAsync();
     const [bounds, setBounds] = React.useState<IRectangle | undefined>();
     const updateAsyncPosition = (): void => {
-      async.requestAnimationFrame(() => setBounds(getBounds(props)));
+      async.requestAnimationFrame(() => setBounds(getBounds({ isPositionForced, positioningContainerProps })));
     };
-    React.useEffect(updateAsyncPosition);
+    React.useEffect(updateAsyncPosition, [async]);
     return bounds;
   }
 
@@ -536,7 +537,10 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 });
 CoachmarkBase.displayName = COMPONENT_NAME;
 
-function getBounds({ isPositionForced, positioningContainerProps }: ICoachmarkProps): IRectangle | undefined {
+function getBounds({
+  isPositionForced,
+  positioningContainerProps,
+}: Pick<ICoachmarkProps, 'isPositionForced' | 'positioningContainerProps'>): IRectangle | undefined {
   if (isPositionForced) {
     // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
     // to the window x-axis to have auto positioning work correctly.
