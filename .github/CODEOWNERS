@@ -24,6 +24,9 @@
 *.sh @microsoft/fluentui-react-build
 *.yml @microsoft/fluentui-react-build
 
+#### Change files (no owner)
+/change
+
 #### Build folders
 /.codesandbox @microsoft/fluentui-react-build
 /.devcontainer @microsoft/fluentui-react-build
