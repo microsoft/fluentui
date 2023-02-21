@@ -285,7 +285,7 @@ const customStyles : ComponentStyleHooks = {
 
 ### 👍
 
-- Same benefits of leveraging Griffle and slots. Additionally, leverage FluentProvider.
+- Same benefits of leveraging Griffle and slots. Additionally, this solution leverages FluentProvider.
 - Same benefit of a tree-shakable set of hooks from A2.
 - Same benefit of minimal code and type introduction from A2.
 
@@ -476,14 +476,14 @@ Composition approach would be difficult to adjust at runtime because css vars ar
 
 ### 👍
 
-- Provides increased control of individual aspects of components similar to v8
-- Extends theming without introducing unused CSS vars
-- A less fragile API that the raw CSS customization through className
+- Provides increased control of individual aspects of components similar to v8.
+- Extends theming without introducing unused CSS vars.
+- A less fragile API that the raw CSS customization through className.
 
 ### 👎
 
 - May break Griffel optimization as each var() with default would be a unique style.
-- Adopters providing customization of all components would likely introduce many component vars that would hurt performance.
+- Adopters providing customization of all components would likely introduce a vast number component vars that that could hurt performance.
 - Introduces complexity at every token usage for the component author and for debugging style issues.
 - Does not provide full control over the CSS, adopters still limited to a specific set of tokens.
 
