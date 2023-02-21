@@ -6,7 +6,7 @@ import type { DayInfo } from './CalendarDayGrid';
 
 export interface CalendarDayMonthHeaderRowProps extends CalendarDayGridProps {
   weeks: DayInfo[][];
-  classNames: Record<keyof CalendarDayGridStyles, string>;
+  classNames: CalendarDayGridStyles;
 }
 
 export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHeaderRowProps> = props => {

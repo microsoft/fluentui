@@ -41,7 +41,6 @@
     "@fluentui/react-tabster": "^9.5.3",
     "@fluentui/react-popover": "^9.4.10",
     "@fluentui/react-input": "^9.3.6",
-    "@fluentui/style-utilities": "^8.9.2",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
