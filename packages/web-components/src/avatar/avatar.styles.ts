@@ -154,6 +154,14 @@ export const styles = css`
     box-shadow: 0 0 0 ${strokeWidthThin} ${colorNeutralBackground1};
   }
 
+  :host([size='64']) ::slotted([slot='badge']),
+  :host([size='72']) ::slotted([slot='badge']),
+  :host([size='96']) ::slotted([slot='badge']),
+  :host([size='120']) ::slotted([slot='badge']),
+  :host([size='128']) ::slotted([slot='badge']) {
+    box-shadow: 0 0 0 ${strokeWidthThick} ${colorNeutralBackground1};
+  }
+
   :host([size='16']),
   :host([size='20']),
   :host([size='24']) {
