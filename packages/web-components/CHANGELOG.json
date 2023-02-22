@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 04:22:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.5",
+      "version": "3.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1ad2597f744bf7c3e2eada7720eea793fcee660e",
+            "comment": "feat(accordion): Add accordion web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Feb 2023 04:21:36 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.4",
       "version": "3.0.0-alpha.4",
