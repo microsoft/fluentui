@@ -2,6 +2,7 @@ import type * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
+import { UseModalAttributesOptions } from '@fluentui/react-tabster/src/index';
 
 export type DialogSlots = {};
 
@@ -87,6 +88,15 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Alternatively can only contain {@link DialogSurface} if using trigger outside dialog, or controlling state.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
+  /**
+   * Enables older Fluent UI focus trap behavior where the user
+   * cannot tab into the window outside of the document. This is now
+   * non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+   * where the focus trap involves setting outside elements inert.
+   *
+   * @default false
+   */
+  legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
 };
 
 export type DialogState = ComponentState<DialogSlots> &

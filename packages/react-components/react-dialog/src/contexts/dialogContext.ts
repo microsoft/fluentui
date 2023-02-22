@@ -6,6 +6,7 @@ import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 
 export type DialogContextValue = {
   open: boolean;
+  legacyTrapFocus: boolean;
   dialogTitleId?: string;
   isNestedDialog: boolean;
   dialogRef: React.Ref<DialogSurfaceElement>;
@@ -18,6 +19,7 @@ export type DialogContextValue = {
 
 const defaultContextValue: DialogContextValue = {
   open: false,
+  legacyTrapFocus: false,
   modalType: 'modal',
   isNestedDialog: false,
   dialogRef: { current: null },
