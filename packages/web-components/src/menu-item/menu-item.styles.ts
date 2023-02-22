@@ -6,7 +6,6 @@ import {
   colorCompoundBrandForeground1Pressed,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
-  colorNeutralBackground1Pressed,
   colorNeutralBackgroundDisabled,
   colorNeutralForeground2,
   colorNeutralForeground2BrandSelected,
@@ -20,7 +19,6 @@ import {
   fontSizeBase300,
   fontSizeBase500,
   fontWeightRegular,
-  fontWeightSemibold,
   lineHeightBase200,
   lineHeightBase300,
 } from '../theme/design-tokens.js';
