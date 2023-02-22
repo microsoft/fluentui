@@ -11,20 +11,20 @@ import {
 // import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
 // import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 // import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
-import { AreaChartPerfNineExample } from './AreaChart.PerfAnalysisNine.Example';
+import { AreaChartPerfTenExample } from './AreaChart.PerfAnalysisTen.Example';
 
 // const AreaChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
 // const AreaChartMultipleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Multiple.Example.tsx') as string;
 // const AreaChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Styled.Example.tsx') as string;
 // const AreaChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
-const AreaChartPerfNineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisNine.Example.tsx') as string;
+const AreaChartPerfTenExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisTen.Example.tsx') as string;
 
-export class AreaChartNine extends React.Component<IComponentDemoPageProps, {}> {
+export class AreaChartTen extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Area Chart Page Nine"
-        componentName="AreaChartPerfExampleNine"
+        title="Area Chart Page Ten"
+        componentName="AreaChartPerfExampleTen"
         exampleCards={
           <div>
             {/* <ExampleCard title="Area Chart basic" code={AreaChartBasicExampleCode}>
@@ -36,8 +36,8 @@ export class AreaChartNine extends React.Component<IComponentDemoPageProps, {}> 
             <ExampleCard title="Styled Area chart" code={AreaChartStyledExampleCode}>
               <AreaChartStyledExample />
             </ExampleCard> */}
-            <ExampleCard title="Area chart custom Accessibility" code={AreaChartPerfNineExampleCode}>
-              <AreaChartPerfNineExample />
+            <ExampleCard title="Area chart custom Accessibility" code={AreaChartPerfTenExampleCode}>
+              <AreaChartPerfTenExample />
             </ExampleCard>
           </div>
         }
