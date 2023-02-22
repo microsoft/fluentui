@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "fluentui",
   "implicitDependencies": {
     "package.json": {
@@ -28,42 +29,24 @@
       "analyzeSourceFiles": false
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "lint": [
-      {
-        "target": "build",
-        "projects": "self"
-      }
-    ],
-    "test": [
-      {
-        "target": "build",
-        "projects": "self"
-      }
-    ],
-    "type-check": [
-      {
-        "target": "build",
-        "projects": "self"
-      }
-    ],
-    "package": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "prepare": [
-      {
-        "target": "prepare",
-        "projects": "dependencies"
-      }
-    ]
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    },
+    "type-check": {
+      "dependsOn": ["build"]
+    },
+    "package": {
+      "dependsOn": ["^package"]
+    },
+    "prepare": {
+      "dependsOn": ["^prepare"]
+    }
   }
 }

@@ -2,7 +2,7 @@ import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as chalk from 'chalk';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -60,7 +60,7 @@ describe('migrate-converged-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
     tree = setupCodeowners(tree, { content: `` });
     tree.write(
       'jest.config.js',

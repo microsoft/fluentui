@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
     "@fluentui/a11y-testing": {
@@ -193,20 +194,20 @@
           }
         },
         "lint": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "nx:run-commands",
           "options": {
             "command": "eslint **/*.ts",
             "cwd": "tools"
           }
         },
         "type-check": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "nx:run-commands",
           "options": {
             "command": "tsc -b tools/tsconfig.json"
           }
         },
         "check-graph": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "nx:run-commands",
           "options": {
             "command": "node ./tools/check-dep-graph.js"
           }
