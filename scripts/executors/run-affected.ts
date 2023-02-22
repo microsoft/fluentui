@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { cpus } from 'os';
 import { promisify } from 'util';
 
 import { getAffectedPackages } from '@fluentui/scripts-monorepo';
@@ -12,21 +13,21 @@ main().catch(err => {
 });
 
 async function main() {
+  const cpusCount = cpus().length;
   const args = processArgs();
+  const targetCount = args.target.length;
 
   const affectedPackages = Array.from(getAffectedPackages(args.base)).filter(projectName => {
     return ['@fluentui/noop'].indexOf(projectName) === -1;
   });
 
-  const taskResults = args.target.map(target => {
-    const cmd = `nx run-many --parallel=8 --target=${target} --projects=${affectedPackages}`;
-    console.log(`running: ${cmd}`);
-    // @ts-expect-error - bad promisify type inference
-    return exec(cmd, { stdio: 'inherit' });
-  });
+  const cmd = `nx run-many --parallel=${cpusCount} --target${targetCount > 1 ? 's' : ''}=${
+    args.target
+  } --projects=${affectedPackages}`;
 
   try {
-    const result = await Promise.all(taskResults);
+    // @ts-expect-error - bad promisify type inference
+    const result = await exec(cmd, { stdio: 'inherit' });
     console.log(result);
     console.log('✅ all tasks done');
     process.exit(0);
