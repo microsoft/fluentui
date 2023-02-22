@@ -63,6 +63,14 @@ describe(`Name of the group`, () => {
     expect(consoleErrorSpy).not.toHaveBeenCalled();
   });
 
+  it(`should pass if changes folder is empty`, () => {
+    const { root, consoleErrorSpy, processExitSpy } = setup([]);
+    main(root);
+
+    expect(processExitSpy).not.toHaveBeenCalled();
+    expect(consoleErrorSpy).not.toHaveBeenCalled();
+  });
+
   it(`should fail if there is invalid changefile`, () => {
     const changeFiles: Array<ChangeFile> = [
       {
