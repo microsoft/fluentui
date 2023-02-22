@@ -5,12 +5,8 @@ import { VirtualizerScrollViewSlots, VirtualizerScrollViewState } from './Virtua
 export const renderVirtualizerScrollView_unstable = (state: VirtualizerScrollViewState) => {
   const { slots, slotProps } = getSlots<VirtualizerScrollViewSlots>(state);
 
-  console.log('RENDER: ', state);
-  console.log('slots: ', slots);
-  console.log('slotProps: ', slotProps);
-
   return (
-    <slots.root {...slotProps.root}>
+    <slots.container {...slotProps.container}>
       {/* The 'before' bookend to hold items in place and detect scroll previous */}
       <slots.beforeContainer {...slotProps.beforeContainer}>
         <slots.before {...slotProps.before} />
@@ -21,6 +17,6 @@ export const renderVirtualizerScrollView_unstable = (state: VirtualizerScrollVie
       <slots.afterContainer {...slotProps.afterContainer}>
         <slots.after {...slotProps.after} />
       </slots.afterContainer>
-    </slots.root>
+    </slots.container>
   );
 };

@@ -1,21 +1,36 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { useVirtualizer_unstable } from '../Virtualizer/useVirtualizer';
 import { VirtualizerScrollViewProps, VirtualizerScrollViewState } from './VirtualizerScrollView.types';
 
 export function useVirtualizerScrollView_unstable(
   props: VirtualizerScrollViewProps,
-  ref: React.Ref<HTMLElement>,
+  virtualizerLength: number,
 ): VirtualizerScrollViewState {
-  const virtualizerState = useVirtualizer_unstable(props);
-  const containerComponent = props.as ?? 'div';
+  const virtualizerState = useVirtualizer_unstable({ ...props, virtualizerLength });
+
+  const setScrollRef = React.useCallback(
+    (element: HTMLDivElement) => {
+      if (!element || !props.scrollViewRef || props.scrollViewRef.current === element) {
+        return;
+      }
+      props.scrollViewRef.current = element;
+    },
+    [props.scrollViewRef],
+  );
 
   return {
     ...virtualizerState,
     components: {
       ...virtualizerState.components,
-      root: containerComponent,
+      container: 'div',
     },
-    root: getNativeElementProps(containerComponent, { ref, ...props }),
+    // container: getNativeElementProps(containerComponent, { ref, ...props }),
+    container: resolveShorthand(props.container, {
+      required: true,
+      defaultProps: {
+        ref: setScrollRef,
+      },
+    }),
   };
 }

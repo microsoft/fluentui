@@ -31,7 +31,7 @@ export const Default = () => {
   console.log('Got virtualizerBufferSize:', bufferSize);
 
   return (
-    <span aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollView}>
+    <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollView}>
       <Virtualizer
         numItems={childLength}
         virtualizerLength={virtualizerLength}
@@ -51,6 +51,6 @@ export const Default = () => {
           );
         }}
       </Virtualizer>
-    </span>
+    </div>
   );
 };

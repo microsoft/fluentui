@@ -4,12 +4,8 @@ import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    overflowAnchor: 'none',
-    overflowY: 'auto',
     width: '100%',
-    height: '100%',
+    height: '60vh',
     maxHeight: '60vh',
   },
   child: {
@@ -24,16 +20,8 @@ export const VirtualizerScrollViewDefault = () => {
   const childLength = 1000;
 
   return (
-    <div>
-      <VirtualizerScrollView
-        aria-label="Virtualizer Example"
-        className={styles.container}
-        role={'list'}
-        numItems={childLength}
-        itemSize={100}
-        virtualizerLength={100}
-        axis={'vertical'}
-      >
+    <div aria-label="Virtualizer Example" className={styles.container} role={'list'}>
+      <VirtualizerScrollView aria-label="Virtualizer Example" numItems={childLength} itemSize={100} axis={'vertical'}>
         {(index: number) => {
           return (
             <span

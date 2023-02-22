@@ -8,7 +8,7 @@ const virtualizerScrollViewClassName = 'fui-Virtualizer-Scroll-View';
 
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots> = {
   ...virtualizerClassNames,
-  root: `${virtualizerScrollViewClassName}__root`,
+  container: `${virtualizerScrollViewClassName}__container`,
 };
 
 const useStyles = makeStyles({
@@ -57,14 +57,12 @@ export const useVirtualizerScrollViewStyles_unstable = (
       ? styles.verticalReversed
       : styles.vertical;
 
-  state.root.className = mergeClasses(
-    virtualizerScrollViewClassNames.root,
+  state.container.className = mergeClasses(
+    virtualizerScrollViewClassNames.container,
     styles.base,
     containerStyle,
-    state.root.className,
+    state.container.className,
   );
-
-  console.log('STYLE: ', state);
 
   return state;
 };

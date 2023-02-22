@@ -26,6 +26,7 @@ export const useStaticVirtualizerMeasure = (
 
   // the handler for resize observer
   const handleResize = React.useCallback(() => {
+    console.log('HANDLING RESIZE!');
     const containerSize =
       direction === 'vertical'
         ? container.current?.getBoundingClientRect().height
@@ -56,7 +57,9 @@ export const useStaticVirtualizerMeasure = (
     setVirtualizerLength(totalLength);
     setVirtualizerBufferSize(bufferSize);
     setVirtualizerBufferItems(bufferItems);
-  }, [defaultItemSize, direction]);
+
+    console.log('New RESIZE Length:', totalLength);
+  }, [defaultItemSize, direction, scrollView]);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
@@ -71,8 +74,9 @@ export const useStaticVirtualizerMeasure = (
     // Only observe if not null
     if (container.current) {
       resizeObserver?.observe(container.current);
-      handleResize();
     }
+
+    handleResize();
   }
 
   if (!_scrollView) {
