@@ -26,3 +26,11 @@ const QUALITATIVE_COLORS = Object.values(QualitativePalette);
 export const getNextColor = (index: number, offset: number = 0): string => {
   return QUALITATIVE_COLORS[(index + offset) % QUALITATIVE_COLORS.length];
 };
+
+export const SemanticPalette = {
+  info: '#015cda',
+  success: '#57a300',
+  warning: '#db7500',
+  error: '#e00b1c',
+  disabled: '#8a8886',
+};
