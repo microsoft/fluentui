@@ -7,7 +7,7 @@ interface IAreaChartBasicState {
   isCalloutselected: boolean;
 }
 
-export class AreaChartLiteExample extends React.Component<{}, IAreaChartBasicState> {
+export class AreaChartPerfNineExample extends React.Component<{}, IAreaChartBasicState> {
   constructor(props: IAreaChartProps) {
     super(props);
   }
