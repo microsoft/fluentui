@@ -49,11 +49,6 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 ### **Methods**
 
-| Name              | Privacy | Description | Parameters | Return | Inherited From    |
-| ----------------- | ------- | ----------- | ---------- | ------ | ----------------- |
-| `templateChanged` | public  |             |            | `void` | FoundationElement |
-| `stylesChanged`   | public  |             |            | `void` | FoundationElement |
-
 <br />
 
 ### **Events**
@@ -98,7 +93,7 @@ Used anywhere an author might otherwise use an input[type="radio"]. Used to faci
 
 ## **Accessibility**
 
-[W3 Radio Spec](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_radio_role)
+[W3 Radio Spec](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)
 
 <br />
 

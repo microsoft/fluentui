@@ -1,6 +1,6 @@
 # Radio Group
 
-> RadioGroup lets people select a single option from two or more Radio items. Use RadioGroup to present all available choices if there's enough space. For more than 5 choices, consider using a different component such as Dropdown.
+> RadioGroup lets people select a single option from two or more Radio items. Use RadioGroup to present all available choices if there's enough space..
 
 <br />
 
@@ -12,11 +12,13 @@
 
 ## **Engineering Spec**
 
-A radio group is a set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time. Some implementations may initialize the set with all buttons in the unchecked state in order to force the user to check one of the buttons before moving past a certain point in the workflow.
+As defined by the [W3C](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)..
+
+> A radio group is a set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time. Some implementations may initialize the set with all buttons in the unchecked state in order to force the user to check one of the buttons before moving past a certain point in the workflow.
 
 ### Use Case
 
-Radio group allows the user to be presented with a list of all the options visible which can facilitate the comparison of choice.
+Used anywhere an author might group a list of radio options.
 
 <br />
 
@@ -40,18 +42,16 @@ Radio group allows the user to be presented with a list of all the options visib
 | `name`        | public  | `string`                 |              | The name of the radio group. Setting this value will set the name value for all child radio elements. |
 | `value`       | public  | `string`                 |              | The value of the checked radio.                                                                       |
 | `orientation` | public  | `horizontal \| vertical` | `horizontal` | The orientation of the group                                                                          |
-| `childItems`  | public  | `HTMLElement[]`          |              | The orientation of the group                                                                          |
+| default slot  | public  | `HTMLElement[]`          |              | The default slot expecting Radio items                                                                |
 
 <br />
 
 ### **Methods**
 
-| Name              | Privacy   | Description | Parameters | Return | Inherited From |
-| ----------------- | --------- | ----------- | ---------- | ------ | -------------- |
-| `nameChanged`     | protected |             |            | `void` |                |
-| `valueChanged`    | protected |             |            | `void` |                |
-| `templateChanged` | protected |             |            | `void` |                |
-| `stylesChanged`   | protected |             |            | `void` |                |
+| Name           | Privacy   | Description | Parameters | Return | Inherited From |
+| -------------- | --------- | ----------- | ---------- | ------ | -------------- |
+| `nameChanged`  | protected |             |            | `void` |                |
+| `valueChanged` | protected |             |            | `void` |                |
 
 <br />
 
@@ -78,7 +78,7 @@ Radio group allows the user to be presented with a list of all the options visib
 
 | Name  | Description                       |
 | ----- | --------------------------------- |
-|       | The default slotted content       |
+|       | The default slot for radios       |
 | label | Provide label for the radio group |
 
 <br />
@@ -91,7 +91,7 @@ Radio group allows the user to be presented with a list of all the options visib
 
 ## **Accessibility**
 
-[W3 Radio Spec](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_radio_role)
+[W3 Radio Spec](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)
 
 <br />
 
