@@ -8,8 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { Dispatch } from 'react';
 import type { FC } from 'react';
-import { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { MutableRefObject } from 'react';
+import { MutableRefObject } from 'react';
 import * as React_2 from 'react';
 import type { SetStateAction } from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -29,7 +28,7 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 };
 
 // @public
-export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView: HTMLElement | null, direction: 'vertical' | 'horizontal') => {
+export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView?: HTMLElement | null, direction?: 'vertical' | 'horizontal') => {
     virtualizerLength: number;
     bufferItems: number;
     bufferSize: number;
@@ -39,7 +38,7 @@ export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView: 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
 
 // @public (undocumented)
-export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps, ref: React_2.Ref<HTMLElement>): VirtualizerScrollViewState;
+export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps, virtualizerLength: number): VirtualizerScrollViewState;
 
 // @public
 export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollViewState) => VirtualizerScrollViewState;
@@ -60,17 +59,19 @@ export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & IVirtualizerProps;
 
 // @public
-export const VirtualizerScrollView: ForwardRefComponent<VirtualizerScrollViewProps>;
+export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
 
 // @public (undocumented)
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & IVirtualizerProps;
+export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Omit<IVirtualizerProps, 'virtualizerLength'> & {
+    scrollViewRef?: MutableRefObject<HTMLElement | null>;
+};
 
 // @public (undocumented)
 export type VirtualizerScrollViewSlots = VirtualizerSlots & {
-    root: NonNullable<Slot<'div'>>;
+    container: NonNullable<Slot<'div'>>;
 };
 
 // @public (undocumented)

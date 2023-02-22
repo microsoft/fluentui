@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import { useStaticVirtualizerMeasure, Virtualizer } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -24,9 +24,26 @@ export const RTL = () => {
   const styles = useStyles();
   const childLength = 1000;
 
+  const itemWidth = 100;
+  const scrollView = React.useRef<HTMLDivElement | null>(null);
+
+  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(
+    itemWidth,
+    scrollView.current,
+    'horizontal',
+  );
+
   return (
     <div className={styles.container} role={'list'}>
-      <Virtualizer numItems={childLength} reversed axis={'horizontal'} virtualizerLength={100} itemSize={100}>
+      <Virtualizer
+        numItems={childLength}
+        reversed
+        axis={'horizontal'}
+        virtualizerLength={virtualizerLength}
+        bufferItems={bufferItems}
+        bufferSize={bufferSize}
+        itemSize={100}
+      >
         {index => {
           return (
             <span

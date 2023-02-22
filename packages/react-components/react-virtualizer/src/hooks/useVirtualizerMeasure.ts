@@ -7,8 +7,8 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  */
 export const useStaticVirtualizerMeasure = (
   defaultItemSize: number,
-  scrollView: HTMLElement | null,
-  direction: 'vertical' | 'horizontal',
+  scrollView: HTMLElement | null = null,
+  direction: 'vertical' | 'horizontal' = 'vertical',
 ): {
   virtualizerLength: number;
   bufferItems: number;
@@ -21,12 +21,11 @@ export const useStaticVirtualizerMeasure = (
   const { targetDocument } = useFluent();
 
   // We should always return something valid, document.body provides safe initialization until defined.
-  const _scrollView = scrollView ?? targetDocument?.body ?? null;
+  const _scrollView = scrollView ?? targetDocument?.documentElement ?? null;
   const container = React.useRef<HTMLElement | null>(null);
 
   // the handler for resize observer
   const handleResize = React.useCallback(() => {
-    console.log('HANDLING RESIZE!');
     const containerSize =
       direction === 'vertical'
         ? container.current?.getBoundingClientRect().height
@@ -57,8 +56,7 @@ export const useStaticVirtualizerMeasure = (
     setVirtualizerLength(totalLength);
     setVirtualizerBufferSize(bufferSize);
     setVirtualizerBufferItems(bufferItems);
-
-    console.log('New RESIZE Length:', totalLength);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultItemSize, direction]);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
@@ -79,10 +77,6 @@ export const useStaticVirtualizerMeasure = (
     handleResize();
   }
 
-  if (!_scrollView) {
-    console.log('NO SCROLL VIEW FOUND');
-    return { virtualizerLength: 3, bufferItems: 1, bufferSize: 1 };
-  }
   // Do we want to use a dispatch here?
   return { virtualizerLength, bufferItems: virtualizerBufferItems, bufferSize: virtualizerBufferSize };
 };

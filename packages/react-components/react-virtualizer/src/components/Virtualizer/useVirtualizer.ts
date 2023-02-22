@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { useEffect, useRef, useState, useCallback, useReducer } from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
@@ -72,7 +72,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   };
 
   const batchUpdateNewIndex = (index: number) => {
-    console.log('UPDATING NEW INDEX: ', index);
     // Local updates
     onUpdateIndex?.(index, virtualizerStartIndex);
     updateChildRows(index);
@@ -408,6 +407,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }
 
   const isFullyInitialized = hasInitialized.current && virtualizerStartIndex >= 0;
+  const beforeKey = useId('virtualizer-before-');
+  const afterKey = useId('virtualizer-after-');
   return {
     components: {
       before: 'div',
@@ -434,12 +435,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       required: true,
       defaultProps: {
         role: 'none',
+        key: beforeKey,
       },
     }),
     afterContainer: resolveShorthand(props.afterContainer, {
       required: true,
       defaultProps: {
         role: 'none',
+        key: afterKey,
       },
     }),
     beforeBufferHeight: isFullyInitialized ? calculateBefore() : 0,

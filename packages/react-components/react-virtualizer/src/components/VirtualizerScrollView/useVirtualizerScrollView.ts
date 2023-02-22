@@ -25,11 +25,11 @@ export function useVirtualizerScrollView_unstable(
       ...virtualizerState.components,
       container: 'div',
     },
-    // container: getNativeElementProps(containerComponent, { ref, ...props }),
     container: resolveShorthand(props.container, {
       required: true,
       defaultProps: {
         ref: setScrollRef,
+        role: 'list',
       },
     }),
   };
