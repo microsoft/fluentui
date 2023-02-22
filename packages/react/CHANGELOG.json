@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 00:32:22 GMT",
+      "tag": "@fluentui/react_v8.106.0",
+      "version": "8.106.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e7adfeaa37370b9aebe79d3a0168d0457822b139",
+            "comment": "Fix: Combobox if value is controlled, we should not update state"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "89ac7281e69de3f3caff4dc14f62deb59cf25593",
+            "comment": "fix: Coachmark remove possible recursive loop"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Feb 2023 01:37:02 GMT",
       "tag": "@fluentui/react_v8.105.11",
       "version": "8.105.11",
