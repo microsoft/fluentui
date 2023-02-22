@@ -71,6 +71,18 @@ import {
   colorPaletteSteelForeground2,
   colorPaletteTealBackground2,
   colorPaletteTealForeground2,
+  curveAccelerateMax,
+  curveAccelerateMid,
+  curveAccelerateMin,
+  curveDecelerateMax,
+  curveDecelerateMid,
+  curveDecelerateMin,
+  curveEasyEase,
+  curveEasyEaseMax,
+  curveLinear,
+  durationFaster,
+  durationSlower,
+  durationUltraSlow,
   fontFamilyBase,
   fontSizeBase100,
   fontSizeBase200,
@@ -90,51 +102,16 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
-// TODO: Should all animation constants go to tokens/theme or globals?
-// https://github.com/microsoft/fluentui/issues/16372#issuecomment-778240665
-
-const animationDuration = {
-  duration50: '50ms',
-  duration100: '100ms',
-  duration150: '150ms',
-  duration200: '200ms',
-  duration300: '300ms',
-  duration400: '400ms',
-  duration500: '500ms',
-};
-
-const animationTiming = {
-  ultraFast: animationDuration.duration50,
-  faster: animationDuration.duration100,
-  fast: animationDuration.duration150,
-  normal: animationDuration.duration200,
-  slow: animationDuration.duration300,
-  slower: animationDuration.duration400,
-  ultraSlow: animationDuration.duration500,
-};
-
-const animationLines = {
-  decelerateMax: 'cubic-bezier(0.00,0.00,0.00,1.00)',
-  decelerateMid: 'cubic-bezier(0.10,0.90,0.20,1.00)',
-  decelerateMin: 'cubic-bezier(0.33,0.00,0.10,1.00)',
-  accelerateMax: 'cubic-bezier(1.00,0.00,1.00,1.00)',
-  accelerateMid: 'cubic-bezier(0.90,0.10,1.00,0.20)',
-  accelerateMin: 'cubic-bezier(0.80,0.00,0.78,1.00)',
-  maxEasyEase: 'cubic-bezier(0.80,0.00,0.20,1.00)',
-  easyEase: 'cubic-bezier(0.33,0.00,0.67,1.00)',
-  linear: 'linear',
-};
-
 const animations = {
-  fastOutSlowInMax: animationLines.decelerateMax,
-  fastOutSlowInMid: animationLines.decelerateMid,
-  fastOutSlowInMin: animationLines.decelerateMin,
-  slowOutFastInMax: animationLines.accelerateMax,
-  slowOutFastInMid: animationLines.accelerateMid,
-  slowOutFastInMin: animationLines.accelerateMin,
-  fastEase: animationLines.maxEasyEase,
-  normalEase: animationLines.easyEase,
-  nullEasing: animationLines.linear,
+  fastOutSlowInMax: curveDecelerateMax,
+  fastOutSlowInMid: curveDecelerateMid,
+  fastOutSlowInMin: curveDecelerateMin,
+  slowOutFastInMax: curveAccelerateMax,
+  slowOutFastInMid: curveAccelerateMid,
+  slowOutFastInMin: curveAccelerateMin,
+  fastEase: curveEasyEaseMax,
+  normalEase: curveEasyEase,
+  nullEasing: curveLinear,
 };
 
 /** Avatar styles
@@ -495,7 +472,7 @@ export const styles = css`
     /* Work-around for text pixel snapping at the end of the animation */
     transform: perspective(1px);
     transition-property: transform, opacity;
-    transition-duration: ${animationTiming.ultraSlow}, ${animationTiming.faster};
+    transition-duration: ${durationUltraSlow}, ${durationFaster};
     transition-delay: ${animations.fastEase}, ${animations.nullEasing};
   }
 
@@ -508,7 +485,7 @@ export const styles = css`
     right: 0;
     border-radius: inherit;
     transition-property: margin, opacity;
-    transition-duration: ${animationTiming.ultraSlow}, ${animationTiming.slower};
+    transition-duration: ${durationUltraSlow}, ${durationSlower};
     transition-delay: ${animations.fastEase}, ${animations.nullEasing};
   }
   :host([active])::before {
@@ -567,7 +544,7 @@ export const styles = css`
     opacity: 0.8;
     transform: scale(0.875);
     transition-property: transform, opacity;
-    transition-duration: ${animationTiming.ultraSlow}, ${animationTiming.faster};
+    transition-duration: ${durationUltraSlow}, ${durationFaster};
     transition-delay: ${animations.fastOutSlowInMin}, ${animations.nullEasing};
   }
 
@@ -575,7 +552,7 @@ export const styles = css`
     margin: 0;
     opacity: 0;
     transition-property: margin, opacity;
-    transition-duration: ${animationTiming.ultraSlow}, ${animationTiming.slower};
+    transition-duration: ${durationUltraSlow}, ${durationSlower};
     transition-delay: ${animations.fastOutSlowInMin}, ${animations.nullEasing};
   }
 `;
