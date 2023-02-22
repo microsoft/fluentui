@@ -36,7 +36,7 @@
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.6.0",
     "@griffel/react": "^1.5.2",
-    "@fluentui/react-components": "^9.15.5",
+    "@fluentui/react-components": "^9.15.6",
     "@fluentui/react-northstar": "^0.66.1",
     "@swc/helpers": "^0.4.14"
   },

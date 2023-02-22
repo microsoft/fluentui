@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:06 GMT",
+      "tag": "@fluentui/react-positioning_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9231f2bdb426a3f8223335cccac171a68ecbb485",
+            "comment": "feat: Set overflow on positioned element when `autosize` is applied"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-positioning_v9.4.3",
       "version": "9.4.3",

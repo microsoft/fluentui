@@ -2,6 +2,21 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:04 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.26",
+      "version": "9.0.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "43a00eef7fd853f35d531f57e6a213f0f8c3d48c",
+            "comment": "bugfix: uses min-height instead of height"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-accordion_v9.0.25",
       "version": "9.0.25",
