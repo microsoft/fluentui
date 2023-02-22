@@ -36,4 +36,4 @@ jobs:
         uses: Azure/cli@v1.0.7
         with:
           # Specify the script here
-          inlineScript: az storage blob upload-batch --account-name webcomponentsdocsite --auth-mode key -d '$web' -s ./packages/web-components/dist/storybook
+          inlineScript: az storage blob upload-batch --overwrite --account-name webcomponentsdocsite --auth-mode key -d '$web' -s ./packages/web-components/dist/storybook
