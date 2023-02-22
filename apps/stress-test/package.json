@@ -10,8 +10,8 @@
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
-    "@fluentui/react": "^8.105.5",
-    "@fluentui/react-components": "^9.14.0",
+    "@fluentui/react": "^8.106.1",
+    "@fluentui/react-components": "^9.15.5",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/web-components": "^2.5.12",
     "@microsoft/fast-element": "^1.11.0",
@@ -21,6 +21,7 @@
     "random-seedable": "1.0.8"
   },
   "devDependencies": {
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-storybook": "*"
   }
 }

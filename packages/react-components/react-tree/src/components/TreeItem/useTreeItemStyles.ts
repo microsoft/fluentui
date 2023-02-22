@@ -77,15 +77,11 @@ const useExpandIconStyles = makeStyles({
   base: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     minWidth: '24px',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground3,
-  },
-  medium: {
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-  small: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    ...shorthands.padding(tokens.spacingVerticalXS, 0),
   },
 });
 
@@ -100,7 +96,7 @@ const useActionsStyles = makeStyles({
     right: 0,
     top: 0,
     marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.padding(0, tokens.spacingHorizontalS),
   },
   open: {
     opacity: '1',
@@ -123,7 +119,6 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const actionsStyles = useActionsStyles();
 
   const level = useTreeContext_unstable(ctx => ctx.level) - 1;
-  const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
   const { actions, subtree, expandIcon, isActionsVisible: showActions } = state;
@@ -145,12 +140,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   } as React.CSSProperties;
 
   if (expandIcon) {
-    expandIcon.className = mergeClasses(
-      treeItemClassNames.expandIcon,
-      expandIconStyles.base,
-      expandIconStyles[size],
-      expandIcon.className,
-    );
+    expandIcon.className = mergeClasses(treeItemClassNames.expandIcon, expandIconStyles.base, expandIcon.className);
   }
   if (actions) {
     actions.className = mergeClasses(

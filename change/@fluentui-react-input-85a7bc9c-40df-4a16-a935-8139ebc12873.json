@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Fix the width of Input's focus border with appearance=underline",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

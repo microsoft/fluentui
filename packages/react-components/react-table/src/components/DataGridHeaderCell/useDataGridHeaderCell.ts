@@ -25,6 +25,10 @@ export const useDataGridHeaderCell_unstable = (
   const sortDirection = useDataGridContext_unstable(ctx =>
     sortable ? ctx.sort.getSortDirection(columnId) : undefined,
   );
+
+  const resizableColumns = useDataGridContext_unstable(ctx => ctx.resizableColumns);
+  const columnSizing = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable);
+
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
     if (sortable) {
       toggleColumnSort(e, columnId);
@@ -33,7 +37,14 @@ export const useDataGridHeaderCell_unstable = (
   });
 
   return useTableHeaderCell_unstable(
-    { sortDirection, as: 'div', tabIndex: sortable ? undefined : 0, ...props, onClick },
+    {
+      sortDirection,
+      as: 'div',
+      tabIndex: sortable ? undefined : 0,
+      ...(resizableColumns ? columnSizing.getTableHeaderCellProps(columnId) : {}),
+      ...props,
+      onClick,
+    },
     ref,
   );
 };

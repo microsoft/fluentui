@@ -102,7 +102,6 @@ CalendarYearGridCell.displayName = 'CalendarYearGridCell';
 
 const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props => {
   const {
-    theme,
     className,
     fromYear,
     toYear,
@@ -144,7 +143,6 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
         disabled={disabled}
         onSelectYear={onSelectYear}
         componentRef={selected ? selectedCellRef : current ? currentCellRef : undefined}
-        theme={theme}
       />
     );
   };

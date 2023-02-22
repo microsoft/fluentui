@@ -78,7 +78,7 @@ describe('useTableColumnResizeState', () => {
 
     it('setColumnWidth sets width successfully', () => {
       act(() => {
-        state.current.setColumnWidth(2, 500);
+        state.current.setColumnWidth(undefined, { columnId: 2, width: 500 });
       });
 
       expect(state.current.getColumns()).toMatchInlineSnapshot(`
@@ -110,7 +110,7 @@ describe('useTableColumnResizeState', () => {
 
     it('setColumnWidth smaller than minWidth - minWidth is set', () => {
       act(() => {
-        state.current.setColumnWidth(2, 50);
+        state.current.setColumnWidth(undefined, { columnId: 2, width: 50 });
       });
 
       expect(state.current.getColumns()).toMatchInlineSnapshot(`
@@ -160,9 +160,10 @@ describe('useTableColumnResizeState', () => {
     });
 
     it('onColumnResize is called when a column is resized', () => {
-      act(() => state.current.setColumnWidth(1, 500));
+      const event = new MouseEvent('move');
+      act(() => state.current.setColumnWidth(event, { columnId: 1, width: 500 }));
       expect(onColumnResize).toHaveBeenCalledTimes(1);
-      expect(onColumnResize).toHaveBeenCalledWith(1, 500);
+      expect(onColumnResize).toHaveBeenCalledWith(event, { columnId: 1, width: 500 });
     });
   });
 

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Set overflow on positioned element when `autosize` is applied",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
