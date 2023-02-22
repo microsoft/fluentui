@@ -52,14 +52,14 @@ export const useStaticVirtualizerMeasure = (
      */
     const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
-    const totalLength = length + bufferItems * 2;
+    const totalLength = length + bufferItems * 2 + 1;
 
     setVirtualizerLength(totalLength);
     setVirtualizerBufferSize(bufferSize);
     setVirtualizerBufferItems(bufferItems);
 
     console.log('New RESIZE Length:', totalLength);
-  }, [defaultItemSize, direction, scrollView]);
+  }, [defaultItemSize, direction]);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);

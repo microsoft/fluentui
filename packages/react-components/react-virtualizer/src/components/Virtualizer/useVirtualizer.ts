@@ -277,23 +277,26 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex];
   };
 
-  const updateChildRows = (newIndex: number) => {
-    if (numItems === 0) {
-      /* Nothing to virtualize */
+  const updateChildRows = useCallback(
+    (newIndex: number) => {
+      if (numItems === 0) {
+        /* Nothing to virtualize */
 
-      return [];
-    }
+        return [];
+      }
 
-    if (childArray.current.length !== numItems) {
-      childArray.current = new Array(virtualizerLength);
-    }
-    const actualIndex = Math.max(newIndex, 0);
-    const end = Math.min(actualIndex + virtualizerLength, numItems);
+      if (childArray.current.length !== numItems) {
+        childArray.current = new Array(virtualizerLength);
+      }
+      const actualIndex = Math.max(newIndex, 0);
+      const end = Math.min(actualIndex + virtualizerLength, numItems);
 
-    for (let i = actualIndex; i < end; i++) {
-      childArray.current[i - actualIndex] = renderChild(i);
-    }
-  };
+      for (let i = actualIndex; i < end; i++) {
+        childArray.current[i - actualIndex] = renderChild(i);
+      }
+    },
+    [numItems, renderChild, virtualizerLength],
+  );
 
   const setBeforeRef = useCallback(
     (element: HTMLDivElement) => {
@@ -396,6 +399,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   if (getItemSize && (numItems !== childSizes.current.length || numItems !== childProgressiveSizes.current.length)) {
     // Child length mismatch, repopulate size arrays.
     populateSizeArrays();
+  }
+
+  // Ensure we recalc if virtualizer length changes
+  const maxCompare = Math.min(virtualizerLength, numItems);
+  if (childArray.current.length !== maxCompare && virtualizerStartIndex + childArray.current.length < numItems) {
+    updateChildRows(virtualizerStartIndex);
   }
 
   const isFullyInitialized = hasInitialized.current && virtualizerStartIndex >= 0;

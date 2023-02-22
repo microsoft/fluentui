@@ -29,6 +29,7 @@ export const VirtualizerScrollView: React.FC<VirtualizerScrollViewProps> = (prop
 
   useVirtualizerScrollViewStyles_unstable(state);
 
+  console.log('Re-rendering: ', virtualizerLength);
   return renderVirtualizerScrollView_unstable(state);
 };
 
