@@ -70,9 +70,15 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           component: require<any>('../AreaChart/AreaChartPageEight').AreaChartEight,
-          key: 'AreaChartSeven',
-          name: 'Area Chart Perf Data Seven',
-          url: '#/examples/areachartSeven',
+          key: 'AreaChartEight',
+          name: 'Area Chart Perf Data Eight',
+          url: '#/examples/areachartEight',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageNine').AreaChartNine,
+          key: 'AreaChartNine',
+          name: 'Area Chart Perf Data Nine',
+          url: '#/examples/areachartNine',
         },
         {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
