@@ -10,7 +10,7 @@ import {
   colorNeutralBackground1,
   colorNeutralBackground6,
   colorNeutralForeground3,
-  colorNeutralForegroundInverted,
+  colorNeutralForegroundStaticInverted,
   colorPaletteAnchorBackground2,
   colorPaletteAnchorForeground2,
   colorPaletteBeigeBackground2,
@@ -322,7 +322,7 @@ export const styles = css`
   }
 
   :host([data-color='brand']) {
-    color: ${colorNeutralForegroundInverted};
+    color: ${colorNeutralForegroundStaticInverted};
     background-color: ${colorBrandBackgroundStatic};
   }
 
