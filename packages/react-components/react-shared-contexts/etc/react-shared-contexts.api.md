@@ -8,6 +8,95 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
+export const CustomStyleHooksContext_unstable: React_2.Context<CustomStyleHooksContextValue_unstable | undefined>;
+
+// @public (undocumented)
+export type CustomStyleHooksContextValue_unstable = {
+    useAccordionHeaderStyles_unstable: (state: unknown) => void;
+    useAccordionItemStyles_unstable: (state: unknown) => void;
+    useAccordionPanelStyles_unstable: (state: unknown) => void;
+    useAccordionStyles_unstable: (state: unknown) => void;
+    useAvatarStyles_unstable: (state: unknown) => void;
+    useAvatarGroupStyles_unstable: (state: unknown) => void;
+    useAvatarGroupItemStyles_unstable: (state: unknown) => void;
+    useAvatarGroupPopoverStyles_unstable: (state: unknown) => void;
+    useBadgeStyles_unstable: (state: unknown) => void;
+    useCounterBadgeStyles_unstable: (state: unknown) => void;
+    useButtonStyles_unstable: (state: unknown) => void;
+    useCompoundButtonStyles_unstable: (state: unknown) => void;
+    useMenuButtonStyles_unstable: (state: unknown) => void;
+    useSplitButtonStyles_unstable: (state: unknown) => void;
+    useToggleButtonStyles_unstable: (state: unknown) => void;
+    useCheckboxStyles_unstable: (state: unknown) => void;
+    useComboboxStyles_unstable: (state: unknown) => void;
+    useDropdownStyles_unstable: (state: unknown) => void;
+    useListboxStyles_unstable: (state: unknown) => void;
+    useOptionStyles_unstable: (state: unknown) => void;
+    useOptionGroupStyles_unstable: (state: unknown) => void;
+    useDividerStyles_unstable: (state: unknown) => void;
+    useInputStyles_unstable: (state: unknown) => void;
+    useImageStyles_unstable: (state: unknown) => void;
+    useLabelStyles_unstable: (state: unknown) => void;
+    useLinkStyles_unstable: (state: unknown) => void;
+    useCheckmarkStyles_unstable: (state: unknown) => void;
+    useMenuDividerStyles_unstable: (state: unknown) => void;
+    useMenuGroupHeaderStyles_unstable: (state: unknown) => void;
+    useMenuGroupStyles_unstable: (state: unknown) => void;
+    useMenuItemCheckboxStyles_unstable: (state: unknown) => void;
+    useMenuItemRadioStyles_unstable: (state: unknown) => void;
+    useMenuItemStyles_unstable: (state: unknown) => void;
+    useMenuListStyles_unstable: (state: unknown) => void;
+    useMenuPopoverStyles_unstable: (state: unknown) => void;
+    useMenuSplitGroupStyles_unstable: (state: unknown) => void;
+    usePersonaStyles_unstable: (state: unknown) => void;
+    usePopoverSurfaceStyles_unstable: (state: unknown) => void;
+    useRadioGroupStyles_unstable: (state: unknown) => void;
+    useRadioStyles_unstable: (state: unknown) => void;
+    useSelectStyles_unstable: (state: unknown) => void;
+    useSliderStyles_unstable: (state: unknown) => void;
+    useSpinButtonStyles_unstable: (state: unknown) => void;
+    useSpinnerStyles_unstable: (state: unknown) => void;
+    useSwitchStyles_unstable: (state: unknown) => void;
+    useTabStyles_unstable: (state: unknown) => void;
+    useTabListStyles_unstable: (state: unknown) => void;
+    useTextStyles_unstable: (state: unknown) => void;
+    useTextareaStyles_unstable: (state: unknown) => void;
+    useTooltipStyles_unstable: (state: unknown) => void;
+    useDialogTitleStyles_unstable: (state: unknown) => void;
+    useDialogBodyStyles_unstable: (state: unknown) => void;
+    useDialogActionsStyles_unstable: (state: unknown) => void;
+    useDialogSurfaceStyles_unstable: (state: unknown) => void;
+    useDialogContentStyles_unstable: (state: unknown) => void;
+    useProgressBarStyles_unstable: (state: unknown) => void;
+    useToolbarButtonStyles_unstable: (state: unknown) => void;
+    useToolbarRadioButtonStyles_unstable: (state: unknown) => void;
+    useToolbarGroupStyles_unstable: (state: unknown) => void;
+    useToolbarToggleButtonStyles_unstable: (state: unknown) => void;
+    useToolbarDividerStyles_unstable: (state: unknown) => void;
+    useToolbarStyles_unstable: (state: unknown) => void;
+    useTableCellStyles_unstable: (state: unknown) => void;
+    useTableRowStyles_unstable: (state: unknown) => void;
+    useTableBodyStyles_unstable: (state: unknown) => void;
+    useTableStyles_unstable: (state: unknown) => void;
+    useTableHeaderStyles_unstable: (state: unknown) => void;
+    useTableHeaderCellStyles_unstable: (state: unknown) => void;
+    useTableResizeHandleStyles_unstable: (state: unknown) => void;
+    useTableSelectionCellStyles_unstable: (state: unknown) => void;
+    useTableCellActionsStyles_unstable: (state: unknown) => void;
+    useTableCellLayoutStyles_unstable: (state: unknown) => void;
+    useDataGridCellStyles_unstable: (state: unknown) => void;
+    useDataGridRowStyles_unstable: (state: unknown) => void;
+    useDataGridBodyStyles_unstable: (state: unknown) => void;
+    useDataGridStyles_unstable: (state: unknown) => void;
+    useDataGridHeaderStyles_unstable: (state: unknown) => void;
+    useDataGridHeaderCellStyles_unstable: (state: unknown) => void;
+    useDataGridSelectionCellStyles_unstable: (state: unknown) => void;
+};
+
+// @internal (undocumented)
+export const CustomStyleHooksProvider_unstable: React_2.Provider<CustomStyleHooksContextValue_unstable | undefined>;
+
+// @internal (undocumented)
 export type OverridesContextValue_unstable = {
     inputDefaultAppearance?: 'outline' | 'filled-darker' | 'filled-lighter';
 };
@@ -48,6 +137,9 @@ export type TooltipVisibilityContextValue_unstable = {
 
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
+
+// @public (undocumented)
+export function useCustomStyleHooks_unstable(): CustomStyleHooksContextValue_unstable;
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;

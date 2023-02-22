@@ -24,6 +24,7 @@ export {
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
+  FluentProviderCustomStyleHooks,
   FluentProviderProps,
   FluentProviderSlots,
   FluentProviderState,
