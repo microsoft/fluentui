@@ -25,7 +25,7 @@ export class Avatar extends FASTElement {
   public name: string | undefined;
   protected nameChanged(previous: string, next: string): void {
     if (next !== undefined && !this.initials) {
-      this.setInitials();
+      this.generateInitials();
     }
   }
 
@@ -40,7 +40,7 @@ export class Avatar extends FASTElement {
   public initials: string | undefined;
   protected initialsChanged(previous: string | undefined, next: string | undefined): void {
     if (next !== undefined) {
-      this.setInitials();
+      this.generateInitials();
     }
   }
 
@@ -108,7 +108,7 @@ export class Avatar extends FASTElement {
   @attr
   public color: AvatarColor = 'neutral';
   protected colorChanged(previous: string, next: string): void {
-    this.setColor();
+    this.generateColor();
   }
 
   /**
@@ -122,14 +122,14 @@ export class Avatar extends FASTElement {
       return;
     }
 
-    this.setColor();
+    this.generateColor();
   }
 
   /**
    * Sets the data-color attribute used for the visual presentation
    * @internal
    */
-  public setColor(): AvatarColor | void {
+  public generateColor(): AvatarColor | void {
     if (!this.color) {
       return;
     }
@@ -143,7 +143,7 @@ export class Avatar extends FASTElement {
    * Generates and sets the initials for the template
    * @internal
    */
-  public setInitials(): string | void {
+  public generateInitials(): string | void {
     if (!this.name && !this.initials) {
       return;
     }

@@ -27,16 +27,17 @@ export class Avatar extends FASTElement {
     colorId: AvatarNamedColor | undefined;
     // (undocumented)
     colorIdChanged(): void;
+    static colors: string[];
+    // @internal
+    generateColor(): AvatarColor | void;
+    // @internal
+    generateInitials(): string | void;
     initials: string | undefined;
     // (undocumented)
     protected initialsChanged(previous: string | undefined, next: string | undefined): void;
     name: string | undefined;
     // (undocumented)
     protected nameChanged(previous: string, next: string): void;
-    // @internal
-    setColor(): AvatarColor | void;
-    // @internal
-    setInitials(): string | void;
     shape: AvatarShape | undefined;
     size: AvatarSize | undefined;
 }
@@ -151,6 +152,7 @@ export type AvatarShape = ValuesOf<typeof AvatarShape>;
 
 // @public
 export const AvatarSize: {
+    readonly _16: 16;
     readonly _20: 20;
     readonly _24: 24;
     readonly _28: 28;
