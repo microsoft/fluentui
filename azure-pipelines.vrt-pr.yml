@@ -68,14 +68,16 @@ jobs:
       - powershell: |
           $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
           Write-Host "Looking up latest official build via url: $url"
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+          $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($API_TOKEN)"))
+          $header = @{Authorization = "Basic $token"}
+          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header}
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
           Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
         name: GetLatestGreenCIBuild
         env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
@@ -150,14 +152,16 @@ jobs:
       - powershell: |
           $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
           Write-Host "Looking up latest official build via url: $url"
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+          $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($API_TOKEN)"))
+          $header = @{Authorization = "Basic $token"}
+          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header}
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
           Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
         name: GetLatestGreenCIBuild
         env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
@@ -232,14 +236,16 @@ jobs:
       - powershell: |
           $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
           Write-Host "Looking up latest official build via url: $url"
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+          $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($API_TOKEN)"))
+          $header = @{Authorization = "Basic $token"}
+          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header}
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
           Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
         name: GetLatestGreenCIBuild
         env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+          API_TOKEN: $(fabric-public-pipeline-access-PAT)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
       - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
