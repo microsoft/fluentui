@@ -237,6 +237,7 @@ import { DurationTokens } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
 import { FluentProviderSlots } from '@fluentui/react-provider';
 import { FluentProviderState } from '@fluentui/react-provider';
@@ -1415,6 +1416,8 @@ export { FluentProvider }
 export { fluentProviderClassNames }
 
 export { FluentProviderContextValues }
+
+export { FluentProviderCustomStyleHooks }
 
 export { FluentProviderProps }
 
