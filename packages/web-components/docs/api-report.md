@@ -7,6 +7,8 @@
 import { CSSDesignToken } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
+import { FASTAccordion } from '@microsoft/fast-foundation';
+import { FASTAccordionItem } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
@@ -18,14 +20,70 @@ import type { Theme } from '@fluentui/tokens';
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 // @public
+export class Accordion extends FASTAccordion {
+}
+
+// @public
+export const accordionDefinition: FASTElementDefinition<typeof Accordion>;
+
+// Warning: (ae-internal-missing-underscore) The name "AccordionItem" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export class AccordionItem extends FASTAccordionItem {
+    // @public
+    block: boolean;
+    // @public
+    expandIconPosition: AccordionItemExpandIconPosition;
+    // @public
+    size: AccordionItemSize;
+}
+
+// Warning: (ae-incompatible-release-tags) The symbol "definition" is marked as @public, but its signature references "AccordionItem" which is marked as @internal
+//
+// @public
+export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
+
+// @public
+export const AccordionItemExpandIconPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+
+// @public
+export const AccordionItemSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+};
+
+// @public
+export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
+
+// @public (undocumented)
+export const accordionItemStyles: ElementStyles;
+
+// Warning: (ae-incompatible-release-tags) The symbol "template" is marked as @public, but its signature references "AccordionItem" which is marked as @internal
+//
+// @public
+export const accordionItemTemplate: ElementViewTemplate<AccordionItem>;
+
+// @public (undocumented)
+export const accordionStyles: ElementStyles;
+
+// @public (undocumented)
+export const accordionTemplate: ElementViewTemplate<Accordion>;
+
+// @public
 export class Avatar extends FASTElement {
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
     color: AvatarColor;
     colorId: AvatarNamedColor | undefined;
-    // (undocumented)
-    colorIdChanged(): void;
-    static colors: ("dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum" | "anchor")[];
+    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
     // @internal
     generateColor(): AvatarColor | void;
     // @internal

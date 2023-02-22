@@ -104,13 +104,6 @@ export class Avatar extends FASTElement {
    */
   @attr({ attribute: 'color-id' })
   public colorId: AvatarNamedColor | undefined;
-  public colorIdChanged(): void {
-    if (!this.colorId) {
-      return;
-    }
-
-    this.generateColor();
-  }
 
   /**
    * Sets the data-color attribute used for the visual presentation
