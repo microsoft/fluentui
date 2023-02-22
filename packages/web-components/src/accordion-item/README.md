@@ -131,9 +131,9 @@ Fluent WC3 Accordion Item extends from the [FAST Accordion Item](https://explore
 
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|---------------------------|---------------------------|------------------------------------------------------------------------------------------|
-| `defaultOpenItems: number`| `expand: boolean` | `defaultOpenItems` is a number property set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded.<hr /> `expand` is a boolean property set directly on the `AccordionItem` intended to be expanded.
-| `size` | `size` |
+| ------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------- |
+| `defaultOpenItems: number`| `expand: boolean` | `defaultOpenItems` is a number property set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded.<hr /> `expand` is a boolean property set directly on the `AccordionItem` intended to be expanded. |
+| `size` | `size` | |
 | `as: 'h1'` &#124; `'h2'` &#124; `'h3'` &#124; `'h4'` &#124; `'h5'` &#124; `'h6'` | `headinglevel: 1` &#124; `2` &#124; `3` &#124; `4` &#124; `5` &#124; `6` | `as` property sets a wrapper around the `AccordionItem` header with the corresponding header tag ( `h1`, `h2`, etc. ) <hr /> `headinglevel` sets the `aria-level` attribute to the corresponding heading level.
 | `disabled` | `disabled` |
 | `expandIconPosition` | `expand-icon-position` |
