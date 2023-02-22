@@ -12,7 +12,7 @@
 
 ## **Engineering Spec**
 
-Fluent WC3 Accordion extends from the [FAST Switch](https://www.fast.design/docs/components/switch/) and is intended to be as close to the Fluent UI React 9 Switch implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+Fluent WC3 Switch extends from the [FAST Switch](https://www.fast.design/docs/components/switch/) and is intended to be as close to the Fluent UI React 9 Switch implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
 
 ### Use Case
 
@@ -36,21 +36,16 @@ Typical use cases include, but are not limited to, turning a feature on and off 
 
 ### **Fields**
 
-| Name            | Privacy | Type                           | Default    | Description                               |
-| --------------- | ------- | ------------------------------ | ---------- | ----------------------------------------- |
-| `checked`       | public  | `boolean`                      |            | Specifies whether switch input is checked |
-| `required`      | public  | `boolean`                      | `false`    | Specifies required styling for switch     |
-| `disabled`      | public  | `boolean`                      | `false`    | Sets disabled state for switch            |
-| `labelPosition` | public  | `"small"` `"medium"` `"large"` | `"medium"` | Specifies position of the label           |
+| Name            | Privacy | Type                           | Default    | Description                                            |
+| --------------- | ------- | ------------------------------ | ---------- | ------------------------------------------------------ |
+| `checked`       | public  | `boolean`                      |            | Specifies whether switch input is checked              |
+| `required`      | public  | `boolean`                      | `false`    | Specifies required styling for switch                  |
+| `disabled`      | public  | `boolean`                      | `false`    | Sets disabled state for switch                         |
+| `labelPosition` | public  | `"small"` `"medium"` `"large"` | `"medium"` | Specifies position of the label relative to the switch |
 
 <br />
 
 ### **Methods**
-
-| Name            | Privacy     | Return | Inherited From    |
-| --------------- | ----------- | ------ | ----------------- |
-| templateChanged | `protected` | `void` | FoundationElement |
-| stylesChanged   | `protected` | `void` | FoundationElement |
 
 <br />
 
@@ -85,7 +80,7 @@ Typical use cases include, but are not limited to, turning a feature on and off 
 
 ### **Template**
 
-`switchTemplate` from FAST UI
+`switchTemplate` from FastFoundation
 
 <br />
 
