@@ -56,28 +56,7 @@ Open GitHub issues related to Image component
 
 ## Implementation
 
-@miro - are these necessary?
-
-- [?] Initial conformance and unit tests (validate basic functionality)
-
-  - [?] README.md covering basic usage
+- [?] README.md covering basic usage
 
 - [x] Uses design tokens for styling
 - [?] Renders correctly in High Contrast mode
-
-## Validation
-
-@miro - are these necessary?
-
-- [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
-  - [ ] Unit and conformance tests
-  - [ ] Bundle size fixtures
-  - [ ] Performance test scenario
-  - [ ] Accessibility behavior tests
-  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
-- [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
-- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
-  - [ ] Review and add any missing storybook stories
-  - [ ] Finalize migration guide
-  - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
-  - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`

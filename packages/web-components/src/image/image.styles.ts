@@ -24,7 +24,7 @@ export const styles = css`
     width: 100%;
     height: auto;
   }
-  :host([border]) ::slotted(img) {
+  :host([bordered]) ::slotted(img) {
     border: ${strokeWidthThin} solid ${colorNeutralStroke2};
   }
   :host([fit='none']) ::slotted(img) {

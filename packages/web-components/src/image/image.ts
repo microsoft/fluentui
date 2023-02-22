@@ -23,7 +23,7 @@ export class Image extends FASTElement {
    * HTML attribute: border.
    */
   @attr({ mode: 'boolean' })
-  public border?: boolean;
+  public bordered?: boolean;
   /**
    * Image shadow
    *
