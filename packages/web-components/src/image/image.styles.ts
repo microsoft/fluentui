@@ -69,7 +69,4 @@ export const styles = css`
   :host([shape='rounded'][border-radius='x-large']) ::slotted(img) {
     border-radius: ${borderRadiusXLarge};
   }
-  :host([shape='square']) ::slotted(img) {
-    border-radius: none;
-  }
 `;

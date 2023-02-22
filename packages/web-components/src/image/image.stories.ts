@@ -18,7 +18,7 @@ const imageTemplate = html<ImageStoryArgs>`
       ?shadow=${x => x.shadow}
       shape=${x => x.shape}
     >
-      <img alt="Short image description" src="https://via.placeholder.com/100x100/ddd.png" />
+      <img alt="Short image description" src="https://via.placeholder.com/300x100/ddd.png" />
     </fluent-image>
   </div>
 `;
