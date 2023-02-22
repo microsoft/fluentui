@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
-import { Callout } from '@fluentui/react/lib/Callout';
+//import { Callout } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
-  IYValueHover,
+  //IYValueHover,
 } from '../../index';
 import {
-  ChartHoverCard,
-  convertToLocaleString,
+  // ChartHoverCard,
+  // convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
-  getAccessibleDataObject,
+  //getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -26,10 +26,10 @@ import {
   YAxisType,
   createWrapOfXLabels,
   rotateXAxisLabels,
-  Points,
-  pointTypes,
+  // Points,
+  //pointTypes,
 } from '../../utilities/index';
-import { LegendShape, Shape } from '../Legends/index';
+//import { LegendShape, Shape } from '../Legends/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
@@ -57,7 +57,7 @@ export interface ICartesianChartState {
  * 2.Callout
  * 3.Fit parent Continer
  */
-export class CartesianChartBase extends React.PureComponent<IModifiedCartesianChartProps, ICartesianChartState> {
+export class CartesianChartLiteBase extends React.PureComponent<IModifiedCartesianChartProps, ICartesianChartState> {
   private _classNames: IProcessedStyleSet<ICartesianChartStyles>;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
@@ -135,10 +135,10 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
 
   public render(): JSX.Element {
     const {
-      calloutProps,
+      //calloutProps,
       points,
       chartType,
-      chartHoverProps,
+      //chartHoverProps,
       svgFocusZoneProps,
       svgProps,
       culture,
@@ -326,176 +326,153 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
             {this.props.legendBars}
           </div>
         )}
-        {/** The callout is used for narration, so keep it mounted on the DOM */}
-        <Callout
-          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
-          /** Keep the callout updated with details of focused/hovered chart element */
-          shouldUpdateWhenHidden={true}
-          {...calloutProps}
-        >
-          {/** Given custom callout, then it will render */}
-          {this.props.customizedCallout && this.props.customizedCallout}
-          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-            <ChartHoverCard
-              XValue={calloutProps.XValue}
-              Legend={calloutProps.legend!}
-              YValue={calloutProps.YValue!}
-              color={calloutProps.color!}
-              culture={this.props.culture}
-              {...chartHoverProps}
-            />
-          )}
-        </Callout>
       </div>
     );
   }
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _multiValueCallout = (calloutProps: any) => {
-    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
-    return (
-      <div className={this._classNames.calloutContentRoot}>
-        <div
-          className={this._classNames.calloutDateTimeContainer}
-          style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-        >
-          <div
-            className={this._classNames.calloutContentX}
-            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
-          >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
-          </div>
-        </div>
-        <div
-          className={this._classNames.calloutInfoContainer}
-          style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
-        >
-          {calloutProps!.YValueHover &&
-            calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
-              const isLast: boolean = index + 1 === yValues.length;
-              const { shouldDrawBorderBottom = false } = yValue;
-              return (
-                <div
-                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
-                  key={`callout-content-${index}`}
-                  style={
-                    yValueHoverSubCountsExists
-                      ? {
-                          display: 'inline-block',
-                          ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
-                            paddingBottom: '10px',
-                          }),
-                        }
-                      : {
-                          ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
-                            paddingBottom: '10px',
-                          }),
-                        }
-                  }
-                >
-                  {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                </div>
-              );
-            })}
-          {!!calloutProps.descriptionMessage && (
-            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
-          )}
-        </div>
-      </div>
-    );
-  };
+  // private _multiValueCallout = (calloutProps: any) => {
+  //   const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
+  //   return (
+  //     <div className={this._classNames.calloutContentRoot}>
+  //       <div
+  //         className={this._classNames.calloutDateTimeContainer}
+  //         style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+  //       >
+  //         <div
+  //           className={this._classNames.calloutContentX}
+  //           {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
+  //         >
+  //           {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+  //         </div>
+  //       </div>
+  //       <div
+  //         className={this._classNames.calloutInfoContainer}
+  //         style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+  //       >
+  //         {calloutProps!.YValueHover &&
+  //           calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+  //             const isLast: boolean = index + 1 === yValues.length;
+  //             const { shouldDrawBorderBottom = false } = yValue;
+  //             return (
+  //               <div
+  //                 {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
+  //                 key={`callout-content-${index}`}
+  //                 style={
+  //                   yValueHoverSubCountsExists
+  //                     ? {
+  //                         display: 'inline-block',
+  //                         ...(shouldDrawBorderBottom && {
+  //                           borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+  //                           paddingBottom: '10px',
+  //                         }),
+  //                       }
+  //                     : {
+  //                         ...(shouldDrawBorderBottom && {
+  //                           borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+  //                           paddingBottom: '10px',
+  //                         }),
+  //                       }
+  //                 }
+  //               >
+  //                 {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+  //               </div>
+  //             );
+  //           })}
+  //         {!!calloutProps.descriptionMessage && (
+  //           <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+  //         )}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
-  private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
-    if (yValueHover) {
-      return yValueHover.some(
-        (yValue: {
-          legend?: string;
-          y?: number;
-          color?: string;
-          yAxisCalloutData?: string | { [id: string]: number };
-        }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
-      );
-    }
-    return false;
-  }
+  // private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
+  //   if (yValueHover) {
+  //     return yValueHover.some(
+  //       (yValue: {
+  //         legend?: string;
+  //         y?: number;
+  //         color?: string;
+  //         yAxisCalloutData?: string | { [id: string]: number };
+  //       }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
+  //     );
+  //   }
+  //   return false;
+  // }
 
-  private _getCalloutContent(
-    xValue: IYValueHover,
-    index: number,
-    yValueHoverSubCountsExists: boolean,
-    isLast: boolean,
-  ): React.ReactNode {
-    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
-    const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
-    const _classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-      width: this.state._width,
-      height: this.state._height,
-      className: this.props.className,
-      isRtl: this._isRtl,
-      lineColor: xValue.color,
-      toDrawShape,
-    });
+  // private _getCalloutContent(
+  //   xValue: IYValueHover,
+  //   index: number,
+  //   yValueHoverSubCountsExists: boolean,
+  //   isLast: boolean,
+  // ): React.ReactNode {
+  //   const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
+  //   const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
+  //   const _classNames = getClassNames(this.props.styles!, {
+  //     theme: this.props.theme!,
+  //     width: this.state._width,
+  //     height: this.state._height,
+  //     className: this.props.className,
+  //     isRtl: this._isRtl,
+  //     lineColor: xValue.color,
+  //     toDrawShape,
+  //   });
 
-    const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
-    if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
-      return (
-        <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
-          {yValueHoverSubCountsExists && (
-            <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-              {xValue.legend!} ({yValue})
-            </div>
-          )}
-          <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
-            {toDrawShape && (
-              <Shape
-                svgProps={{
-                  className: _classNames.shapeStyles,
-                }}
-                pathProps={{ fill: xValue.color }}
-                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
-              />
-            )}
-            <div>
-              <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
-              <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
-                  culture,
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
-      return (
-        <div style={marginStyle}>
-          <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-            {xValue.legend!} ({yValue})
-          </div>
-          {Object.keys(subcounts).map((subcountName: string) => {
-            return (
-              <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
-                <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  }
+  //   const { culture } = this.props;
+  //   const yValue = convertToLocaleString(xValue.y, culture);
+  //   if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
+  //     return (
+  //       <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
+  //         {yValueHoverSubCountsExists && (
+  //           <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+  //             {xValue.legend!} ({yValue})
+  //           </div>
+  //         )}
+  //         <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
+  //           {toDrawShape && (
+  //             <Shape
+  //               svgProps={{
+  //                 className: _classNames.shapeStyles,
+  //               }}
+  //               pathProps={{ fill: xValue.color }}
+  //               shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
+  //             />
+  //           )}
+  //           <div>
+  //             <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
+  //             <div className={_classNames.calloutContentY}>
+  //               {convertToLocaleString(
+  //                 xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+  //                 culture,
+  //               )}
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     );
+  //   } else {
+  //     const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
+  //     return (
+  //       <div style={marginStyle}>
+  //         <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+  //           {xValue.legend!} ({yValue})
+  //         </div>
+  //         {Object.keys(subcounts).map((subcountName: string) => {
+  //           return (
+  //             <div key={subcountName} className={_classNames.calloutBlockContainer}>
+  //               <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+  //               <div className={_classNames.calloutContentY}>
+  //                 {convertToLocaleString(subcounts[subcountName], culture)}
+  //               </div>
+  //             </div>
+  //           );
+  //         })}
+  //       </div>
+  //     );
+  //   }
+  // }
 
   /**
    * When screen resizes, along with screen, chart also auto adjusted.

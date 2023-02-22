@@ -520,3 +520,100 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   onChartMouseLeave?: () => void;
 }
+export interface IModifiedCartesianChartLiteProps extends ICartesianChartProps {
+  /**
+   * Define the chart title
+   */
+  chartTitle?: string;
+
+  /**
+   * Only used for Area chart
+   * Value used to draw y axis of that chart.
+   */
+  maxOfYVal?: number;
+
+  /**
+   * Data of the chart
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  points: any;
+
+  /**
+   * Define type of the chart
+   */
+  chartType: ChartTypes;
+
+  /** X axis type */
+  xAxisType: XAxisTypes;
+
+  /** Y axis type */
+  yAxisType?: YAxisType;
+
+  /**
+   * Callback method used for to get margins to the chart.
+   */
+  getmargins?: (margins: IMargins) => void;
+
+  /**
+   * This is a call back method to the chart from cartesian chart.
+   * params are xScale, yScale, containerHeight, containerWidth. These values were used to draw the graph.
+   * It also contians an optional param xAxisElement - defines as x axis scale element.
+   * This param used to enable feature word wrap of Xaxis.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getGraphData?: any;
+
+  /**
+   * Used for bar chart graphs.
+   * To define width of the bar
+   */
+  barwidth?: number;
+
+  /**
+   * Used for tick styles of the x axis of the chart
+   * Tick params are applicable for date axis only.
+   */
+  tickParams?: {
+    tickValues?: number[] | Date[];
+    tickFormat?: string;
+  };
+
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  xAxisPadding?: number;
+
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  yAxisPadding?: number;
+
+  /**
+   * Children elements specific to derived chart types.
+   */
+  children(props: IChildProps): React.ReactNode;
+
+  /** dataset values to find out domain of the String axis
+   * Present using for only vertical stacked bar chart and grouped vertical bar chart
+   */
+  datasetForXAxisDomain?: string[];
+
+  /**
+   * if the data points for the y-axis is of type string, then we need to give this
+   * prop to construct the y-axis
+   */
+  stringDatasetForYAxisDomain?: string[];
+
+  /**
+   * The prop used to define the culture to localize the numbers and date
+   */
+  culture?: string;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getAxisData?: any;
+
+  /**
+   * Callback method used when mouse leaves the chart boundary.
+   */
+  onChartMouseLeave?: () => void;
+}
