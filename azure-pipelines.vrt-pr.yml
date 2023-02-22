@@ -70,7 +70,7 @@ jobs:
           Write-Host "Looking up latest official build via url: $url"
           $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($API_TOKEN)"))
           $header = @{Authorization = "Basic $token"}
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header}
+          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
@@ -154,7 +154,7 @@ jobs:
           Write-Host "Looking up latest official build via url: $url"
           $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($API_TOKEN)"))
           $header = @{Authorization = "Basic $token"}
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header}
+          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
@@ -238,7 +238,7 @@ jobs:
           Write-Host "Looking up latest official build via url: $url"
           $token = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($API_TOKEN)"))
           $header = @{Authorization = "Basic $token"}
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header}
+          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers $header
           Write-Host "Response: $pipelineBuildInfo"
           [int]$latestBuildId = $pipelineBuildInfo.value.id
           Write-Host "Setting variable LatestBuildId=$latestBuildId"
