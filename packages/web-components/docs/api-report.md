@@ -22,22 +22,16 @@ export class Avatar extends FASTElement {
     active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
     color: AvatarColor;
-    // (undocumented)
-    protected colorChanged(previous: string, next: string): void;
     colorId: AvatarNamedColor | undefined;
     // (undocumented)
     colorIdChanged(): void;
-    static colors: string[];
+    static colors: ("dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum" | "anchor")[];
     // @internal
     generateColor(): AvatarColor | void;
     // @internal
     generateInitials(): string | void;
     initials: string | undefined;
-    // (undocumented)
-    protected initialsChanged(previous: string | undefined, next: string | undefined): void;
     name: string | undefined;
-    // (undocumented)
-    protected nameChanged(previous: string, next: string): void;
     shape: AvatarShape | undefined;
     size: AvatarSize | undefined;
 }
@@ -75,7 +69,7 @@ export const AvatarColor: {
     readonly forest: "forest";
     readonly seafoam: "seafoam";
     readonly darkGreen: "dark-green";
-    readonly lighTeal: "light-teal";
+    readonly lightTeal: "light-teal";
     readonly teal: "teal";
     readonly steel: "steel";
     readonly blue: "blue";
@@ -118,7 +112,7 @@ export const AvatarNamedColor: {
     readonly forest: "forest";
     readonly seafoam: "seafoam";
     readonly darkGreen: "dark-green";
-    readonly lighTeal: "light-teal";
+    readonly lightTeal: "light-teal";
     readonly teal: "teal";
     readonly steel: "steel";
     readonly blue: "blue";

@@ -56,7 +56,7 @@ export const AvatarNamedColor = {
   forest: 'forest',
   seafoam: 'seafoam',
   darkGreen: 'dark-green',
-  lighTeal: 'light-teal',
+  lightTeal: 'light-teal',
   teal: 'teal',
   steel: 'steel',
   blue: 'blue',

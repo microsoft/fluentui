@@ -23,11 +23,6 @@ export class Avatar extends FASTElement {
    */
   @attr
   public name: string | undefined;
-  protected nameChanged(previous: string, next: string): void {
-    if (next !== undefined && !this.initials) {
-      this.generateInitials();
-    }
-  }
 
   /**
    * Provide custom initials rather than one generated via the name
@@ -38,11 +33,6 @@ export class Avatar extends FASTElement {
    */
   @attr
   public initials: string | undefined;
-  protected initialsChanged(previous: string | undefined, next: string | undefined): void {
-    if (next !== undefined) {
-      this.generateInitials();
-    }
-  }
 
   /**
    * Size of the avatar in pixels.
@@ -107,9 +97,6 @@ export class Avatar extends FASTElement {
    */
   @attr
   public color: AvatarColor = 'neutral';
-  protected colorChanged(previous: string, next: string): void {
-    this.generateColor();
-  }
 
   /**
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
@@ -162,7 +149,7 @@ export class Avatar extends FASTElement {
   /**
    * An array of the available Avatar named colors
    */
-  public static colors = Object.keys(AvatarNamedColor);
+  public static colors = Object.values(AvatarNamedColor);
 }
 
 // copied from React avatar
