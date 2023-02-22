@@ -4,7 +4,7 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { IPalette } from '@fluentui/react/lib/Styling';
+import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
@@ -89,6 +89,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _yMax: number;
   private _calloutAnchorPoint: IVSChartDataPoint | null;
   private _domainMargin: number;
+  private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -143,7 +144,10 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.theme!.palette,
       this._createLegendsForLine(this.props.data),
     );
-
+    this._classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      href: this.props.href!,
+    });
     const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
@@ -735,7 +739,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const ref: IRefArrayData = {};
 
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
-        const classNames = getClassNames(this.props.styles!, {
+        this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight: shouldHighlight,
           href: this.props.href,
@@ -764,7 +768,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           return (
             <path
               key={index + indexNumber + `${shouldFocusWholeStack}`}
-              className={classNames.opacityChangeOnHover}
+              className={this._classNames.opacityChangeOnHover}
               d={`
                 M ${xPoint} ${yPoint + barCornerRadius}
                 a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
@@ -787,7 +791,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         return (
           <rect
             key={index + indexNumber}
-            className={classNames.opacityChangeOnHover}
+            className={this._classNames.opacityChangeOnHover}
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
@@ -811,9 +815,6 @@ export class VerticalStackedBarChartBase extends React.Component<
         onClick: this._onClick.bind(this, singleChartData),
         role: 'img',
       };
-      const classNames = getClassNames(this.props.styles!, {
-        theme: this.props.theme!,
-      });
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
@@ -824,7 +825,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
-              className={classNames.barLabel}
+              className={this._classNames.barLabel}
               data-is-focusable={true}
               aria-label={`Total: ${barTotalValue}`}
               role="img"
@@ -835,9 +836,6 @@ export class VerticalStackedBarChartBase extends React.Component<
           )}
         </g>
       );
-    });
-    const className = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
     });
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!this.props.showXAxisLablesTooltip) {
@@ -854,7 +852,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         // eslint-disable-next-line no-empty
       } catch (e) {}
       const tooltipProps = {
-        tooltipCls: className.tooltip!,
+        tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
         xAxis: xAxisElement,
       };
