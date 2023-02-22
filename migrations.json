@@ -1,76 +1,36 @@
 {
   "migrations": [
     {
-      "version": "13.9.0-beta.0",
-      "description": "Replace @nrwl/tao with nx",
+      "version": "14.0.0-beta.0",
+      "description": "Changes the presets in nx.json to come from the nx package",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-9-0/replace-tao-with-nx",
+      "implementation": "./src/migrations/update-14-0-0/change-nx-json-presets",
       "package": "@nrwl/workspace",
-      "name": "13-9-0-replace-tao-with-nx"
+      "name": "14-0-0-change-nx-json-presets"
     },
     {
-      "version": "13.10.0-beta.0",
-      "description": "Update the decorate-angular-cli script to require nx instead of @nrwl/cli",
+      "version": "14.0.0-beta.0",
+      "description": "Migrates from @nrwl/workspace:run-script to nx:run-script",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-10-0/update-decorate-cli",
+      "implementation": "./src/migrations/update-14-0-0/change-npm-script-executor",
       "package": "@nrwl/workspace",
-      "name": "13-10-0-update-decorate-cli"
+      "name": "14-0-0-change-npm-script-executor"
     },
     {
-      "version": "13.10.0-beta.0",
-      "description": "Update the tasks runner property to import it from the nx package instead of @nrwl/worksapce",
+      "version": "14.0.0-beta.2",
       "cli": "nx",
-      "implementation": "./src/migrations/update-13-10-0/update-tasks-runner",
-      "package": "@nrwl/workspace",
-      "name": "13-10-0-update-tasks-runner"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/node:build to @nrwl/node:webpack",
-      "factory": "./src/migrations/update-13-8-5/rename-build-to-webpack",
-      "package": "@nrwl/node",
-      "name": "rename-build-to-webpack"
+      "description": "Update move jest config files to .ts files.",
+      "factory": "./src/migrations/update-14-0-0/update-jest-config-ext",
+      "package": "@nrwl/jest",
+      "name": "update-jest-config-extensions"
     },
     {
       "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/node:execute to @nrwl/node:node",
-      "factory": "./src/migrations/update-13-8-5/rename-execute-to-node",
-      "package": "@nrwl/node",
-      "name": "rename-execute-to-node"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/node:package to @nrwl/js:tsc",
-      "factory": "./src/migrations/update-13-8-5/update-package-to-tsc",
-      "package": "@nrwl/node",
-      "name": "update-package-to-tsc"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Renames @nrwl/js:node to @nrwl/node:node",
-      "factory": "./src/migrations/update-13-8-5/update-node-executor",
+      "version": "14.0.0-beta.2",
+      "description": "Exclude jest config from .lib.swcrc",
+      "factory": "./src/migrations/update-14-0-0/exclude-jest-config-swcrc",
       "package": "@nrwl/js",
-      "name": "update-node-executor"
-    },
-    {
-      "cli": "nx",
-      "version": "13.8.5-beta.1",
-      "description": "Adjust .swcrc to .lib.swcrc",
-      "factory": "./src/migrations/update-13-8-5/update-swcrc",
-      "package": "@nrwl/js",
-      "name": "update-swcrc"
-    },
-    {
-      "cli": "nx",
-      "version": "13.10.1-beta.1",
-      "description": "Update .lib.swcrc to exclude missing test files",
-      "factory": "./src/migrations/update-13-10-1/update-lib-swcrc-exclude",
-      "package": "@nrwl/js",
-      "name": "update-swcrc-exclude"
+      "name": "exclude-jest-config-swcrc"
     }
   ]
 }
