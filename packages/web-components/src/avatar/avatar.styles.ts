@@ -555,4 +555,15 @@ export const styles = css`
     transition-duration: ${durationUltraSlow}, ${durationSlower};
     transition-delay: ${animations.fastOutSlowInMin}, ${animations.nullEasing};
   }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    :host([active]) {
+      transition-duration: 0.01ms;
+    }
+
+    :host([active])::before {
+      transition-duration: 0.01ms;
+      transition-delay: 0.01ms;
+    }
+  }
 `;
