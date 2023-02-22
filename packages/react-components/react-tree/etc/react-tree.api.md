@@ -27,7 +27,7 @@ export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[];
 export const flattenTreeFromElements_unstable: (tree: React_2.ReactElement<TreeProps>) => FlatTreeItem[];
 
 // @public (undocumented)
-export type FlatTreeItem = Required<Pick<TreeItemProps, 'leaf' | 'aria-level' | 'aria-setsize' | 'aria-posinset'>> & TreeItemProps & {
+export type FlatTreeItem = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
     parentId?: string;
 };
 
@@ -124,6 +124,9 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
 };
 
 // @public (undocumented)
+export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined>;
+
+// @public (undocumented)
 export type TreeItemSlots = {
     root: Slot<'div'>;
     content: NonNullable<Slot<'div'>>;
@@ -185,7 +188,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public (undocumented)
-export function useFlatTreeItems_unstable(items: FlatTreeItem[]): readonly [Pick<TreeProps, 'openItems' | 'onOpenChange'>, () => FlatTreeItem[]];
+export function useFlatTreeItems_unstable(items: FlatTreeItem[]): readonly [Pick<TreeProps, 'openItems' | 'onOpenChange'>, () => FlatTreeItemWithRequiredProps[]];
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
@@ -193,8 +196,14 @@ export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>)
 // @public (undocumented)
 export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
 
+// @public (undocumented)
+export function useTreeContextValues_unstable(state: TreeState): TreeContextValues;
+
 // @public
 export const useTreeItem_unstable: (props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>) => TreeItemState;
+
+// @public (undocumented)
+export const useTreeItemContext_unstable: () => TreeItemContextValue;
 
 // @public
 export const useTreeItemLayout_unstable: (props: TreeItemLayoutProps, ref: React_2.Ref<HTMLElement>) => TreeItemLayoutState;

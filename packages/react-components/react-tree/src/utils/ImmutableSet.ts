@@ -15,7 +15,7 @@ export class ImmutableSet<Value> {
   }
   /**
    * Avoid using the constructor, use `ImmutableSet.from` instead.
-   * @param internalSet a set that is used internally to store values.
+   * @param internalSet - a set that is used internally to store values.
    */
   constructor(internalSet: Set<Value>) {
     this._set = internalSet;
@@ -24,7 +24,7 @@ export class ImmutableSet<Value> {
 
   /**
    * Creates a new ImmutableSet containing all previous element plus the one provided as argument
-   * @param value new value to be included in the new ImmutableSet instance
+   * @param value - new value to be included in the new ImmutableSet instance
    */
   public add(value: Value): ImmutableSet<Value> {
     const nextSet = new Set(this);
