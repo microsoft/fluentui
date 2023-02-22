@@ -27,7 +27,6 @@
     "@fluentui/react-spinbutton": "^9.2.6",
     "@fluentui/react-theme": "^9.1.7",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "flamegrill": "0.2.0",
     "lodash": "^4.17.15",
     "querystring": "^0.2.0",
     "react": "17.0.2",
