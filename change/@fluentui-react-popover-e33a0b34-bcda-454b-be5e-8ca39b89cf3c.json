@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Popover without focus trap should not be aria-hidden",
+  "packageName": "@fluentui/react-popover",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
