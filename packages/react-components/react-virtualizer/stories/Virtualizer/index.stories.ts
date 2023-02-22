@@ -7,6 +7,7 @@ export { Horizontal } from './Horizontal.stories';
 export { ReversedHorizontal } from './ReversedHorizontal.stories';
 export { Reversed } from './Reversed.stories';
 export { RTL } from './RTL.stories';
+export { VirtualizerScrollViewDefault } from './VirtualizerScrollView.stories';
 
 export default {
   title: 'Preview Components/Virtualizer',

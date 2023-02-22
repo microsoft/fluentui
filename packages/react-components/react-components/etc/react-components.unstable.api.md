@@ -56,6 +56,7 @@ import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
@@ -137,12 +138,20 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
 import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
 import { virtualizerClassNames } from '@fluentui/react-virtualizer';
 import { VirtualizerProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
+import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewState } from '@fluentui/react-virtualizer';
 import { VirtualizerSlots } from '@fluentui/react-virtualizer';
 import { VirtualizerState } from '@fluentui/react-virtualizer';
 
@@ -249,6 +258,8 @@ export { renderTreeItemLayout_unstable }
 export { renderTreeItemPersonaLayout_unstable }
 
 export { renderVirtualizer_unstable }
+
+export { renderVirtualizerScrollView_unstable }
 
 export { SelectField }
 
@@ -412,7 +423,13 @@ export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
 
+export { useStaticVirtualizerMeasure }
+
 export { useVirtualizer_unstable }
+
+export { useVirtualizerScrollView_unstable }
+
+export { useVirtualizerScrollViewStyles_unstable }
 
 export { useVirtualizerStyles_unstable }
 
@@ -423,6 +440,16 @@ export { VirtualizerChildRenderFunction }
 export { virtualizerClassNames }
 
 export { VirtualizerProps }
+
+export { VirtualizerScrollView }
+
+export { virtualizerScrollViewClassNames }
+
+export { VirtualizerScrollViewProps }
+
+export { VirtualizerScrollViewSlots }
+
+export { VirtualizerScrollViewState }
 
 export { VirtualizerSlots }
 

@@ -12,3 +12,17 @@ export type {
   VirtualizerChildRenderFunction,
 } from './Virtualizer';
 export { useIntersectionObserver, useStaticVirtualizerMeasure } from './Hooks';
+
+export {
+  VirtualizerScrollView,
+  virtualizerScrollViewClassNames,
+  useVirtualizerScrollView_unstable,
+  renderVirtualizerScrollView_unstable,
+  useVirtualizerScrollViewStyles_unstable,
+} from './VirtualizerScrollView';
+
+export type {
+  VirtualizerScrollViewProps,
+  VirtualizerScrollViewState,
+  VirtualizerScrollViewSlots,
+} from './VirtualizerScrollView';

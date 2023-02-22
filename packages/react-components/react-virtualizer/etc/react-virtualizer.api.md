@@ -4,18 +4,22 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import type { Dispatch } from 'react';
 import type { FC } from 'react';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { MutableRefObject } from 'react';
 import * as React_2 from 'react';
 import type { SetStateAction } from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
+
+// @public (undocumented)
+export const renderVirtualizerScrollView_unstable: (state: VirtualizerScrollViewState) => JSX.Element;
 
 // @public
 export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined) => {
@@ -25,14 +29,20 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 };
 
 // @public
-export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView: HTMLElement | null) => {
+export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView: HTMLElement | null, direction: 'vertical' | 'horizontal') => {
     virtualizerLength: number;
-    virtualizerBufferItems: number;
-    virtualizerBufferSize: number;
+    bufferItems: number;
+    bufferSize: number;
 };
 
 // @public (undocumented)
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
+
+// @public (undocumented)
+export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps, ref: React_2.Ref<HTMLElement>): VirtualizerScrollViewState;
+
+// @public
+export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollViewState) => VirtualizerScrollViewState;
 
 // @public
 export const useVirtualizerStyles_unstable: (state: VirtualizerState) => VirtualizerState;
@@ -47,20 +57,24 @@ export type VirtualizerChildRenderFunction = (index: number) => React_2.ReactNod
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 
 // @public (undocumented)
-export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & {
-    children: VirtualizerChildRenderFunction;
-    itemSize: number;
-    numItems: number;
-    virtualizerLength: number;
-    bufferItems?: number;
-    bufferSize?: number;
-    intersectionObserverRoot?: React_2.MutableRefObject<HTMLElement | null>;
-    axis?: 'vertical' | 'horizontal';
-    reversed?: boolean;
-    getItemSize?: (index: number) => number;
-    onUpdateIndex?: (index: number, prevIndex: number) => void;
-    onCalculateIndex?: (newIndex: number) => number;
+export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & IVirtualizerProps;
+
+// @public
+export const VirtualizerScrollView: ForwardRefComponent<VirtualizerScrollViewProps>;
+
+// @public (undocumented)
+export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
+
+// @public (undocumented)
+export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & IVirtualizerProps;
+
+// @public (undocumented)
+export type VirtualizerScrollViewSlots = VirtualizerSlots & {
+    root: NonNullable<Slot<'div'>>;
 };
+
+// @public (undocumented)
+export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & IVirtualizerState;
 
 // @public (undocumented)
 export type VirtualizerSlots = {
@@ -71,16 +85,7 @@ export type VirtualizerSlots = {
 };
 
 // @public (undocumented)
-export type VirtualizerState = ComponentState<VirtualizerSlots> & {
-    virtualizedChildren: React_2.ReactNode[];
-    virtualizerStartIndex: number;
-    afterBufferHeight: number;
-    beforeBufferHeight: number;
-    totalVirtualizerHeight: number;
-    axis?: 'vertical' | 'horizontal';
-    reversed?: boolean;
-    bufferSize: number;
-};
+export type VirtualizerState = ComponentState<VirtualizerSlots> & IVirtualizerState;
 
 // (No @packageDocumentation comment for this package)
 

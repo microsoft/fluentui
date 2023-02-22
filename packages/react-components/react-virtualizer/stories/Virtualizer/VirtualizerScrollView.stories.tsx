@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -19,27 +19,22 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const VirtualizerScrollViewDefault = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const scrollView = React.useRef<HTMLElement | null>(null);
-
-  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(100, scrollView.current);
-
-  console.log('Got length:', virtualizerLength);
-  console.log('Got virtualizerBufferItems:', bufferItems);
-  console.log('Got virtualizerBufferSize:', bufferSize);
 
   return (
-    <span aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollView}>
-      <Virtualizer
+    <div>
+      <VirtualizerScrollView
+        aria-label="Virtualizer Example"
+        className={styles.container}
+        role={'list'}
         numItems={childLength}
-        virtualizerLength={virtualizerLength}
-        bufferItems={bufferItems}
-        bufferSize={bufferSize}
         itemSize={100}
+        virtualizerLength={100}
+        axis={'vertical'}
       >
-        {index => {
+        {(index: number) => {
           return (
             <span
               role={'listitem'}
@@ -50,7 +45,7 @@ export const Default = () => {
             >{`Node-${index}`}</span>
           );
         }}
-      </Virtualizer>
-    </span>
+      </VirtualizerScrollView>
+    </div>
   );
 };

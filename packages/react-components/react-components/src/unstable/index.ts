@@ -121,12 +121,20 @@ export {
   useVirtualizerStyles_unstable,
   useIntersectionObserver,
   useStaticVirtualizerMeasure,
+  VirtualizerScrollView,
+  virtualizerScrollViewClassNames,
+  useVirtualizerScrollView_unstable,
+  renderVirtualizerScrollView_unstable,
+  useVirtualizerScrollViewStyles_unstable,
 } from '@fluentui/react-virtualizer';
 export type {
   VirtualizerProps,
   VirtualizerState,
   VirtualizerSlots,
   VirtualizerChildRenderFunction,
+  VirtualizerScrollViewProps,
+  VirtualizerScrollViewState,
+  VirtualizerScrollViewSlots,
 } from '@fluentui/react-virtualizer';
 
 export {
