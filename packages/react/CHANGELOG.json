@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 07:44:35 GMT",
+      "tag": "@fluentui/react_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "a11ac1fd696783c2c18c62c93a012156b99d1bdf",
+            "comment": "fix(ComboBox): fix(react-combobox): Remove _getAriaActiveDescendantValue, compute aria-activedescendantvalue in state, and update currentPendingValue when the options change."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9ad00830c43d33e1dfa7eecb1f8060eb6f012e56",
+            "comment": "fix: update role and accname for non-hidden icon button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 00:32:22 GMT",
       "tag": "@fluentui/react_v8.106.0",
       "version": "8.106.0",
