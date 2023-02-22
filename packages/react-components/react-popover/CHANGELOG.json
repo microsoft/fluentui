@@ -2,6 +2,27 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:06 GMT",
+      "tag": "@fluentui/react-popover_v9.4.11",
+      "version": "9.4.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2d33c558d38690193fd05b7048a1310e00e1f2e0",
+            "comment": "fix: Popover without focus trap should not be aria-hidden"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.5.0",
+            "commit": "9ee6caa17f745e014ecba467a4528181ae49be30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:51 GMT",
       "tag": "@fluentui/react-popover_v9.4.10",
       "version": "9.4.10",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:04 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.47",
+      "version": "9.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "9ee6caa17f745e014ecba467a4528181ae49be30",
+            "comment": "fix: allow elements of card to grow to fill the available space"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.46",
       "version": "9.0.0-beta.46",
