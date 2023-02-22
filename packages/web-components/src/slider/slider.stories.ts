@@ -9,46 +9,52 @@ type SliderStoryArgs = Args & FluentSlider;
 type SliderStoryMeta = Meta<SliderStoryArgs>;
 
 const storyTemplate = html<SliderStoryArgs>`
-  <fluent-slider min=${x => x.max} max=${x => x.max} current-value=${x => x.currentValue}> </fluent-slider>
+  <fluent-slider
+    ?disabled=${x => x.disabled}
+    ?readonly=${x => x.readOnly}
+    size=${x => x.size}
+    min=${x => x.min}
+    max=${x => x.max}
+    orientation=${x => x.orientation}
+    step=${x => x.step}
+    value=${x => x.value}
+  ></fluent-slider>
 `;
 
 export default {
   title: 'Components/Slider',
   args: {
+    disabled: false,
+    readOnly: false,
     min: 0,
     max: 100,
-    currentValue: '50',
     size: SliderSize.medium,
+    orientation: 'horizontal',
   },
   argTypes: {
+    min: {
+      control: 'number',
+      defaultValue: 0,
+    },
+    max: {
+      control: 'number',
+      defaultValue: 100,
+    },
+    step: {
+      control: 'number',
+      defaultValue: 1,
+    },
+    value: { control: 'number', defaultValue: 50 },
     size: {
       control: {
-        type: 'select',
+        type: 'inline-radio',
         options: Object.values(SliderSize),
       },
     },
-    min: {
+    orientation: {
       control: {
-        type: 'range',
-        min: 0,
-        max: 100,
-        step: 1,
-      },
-    },
-    max: {
-      control: {
-        type: 'range',
-        min: 0,
-        max: 100,
-        step: 1,
-      },
-    },
-    currentValue: {
-      control: {
-        type: 'range',
-        min: 0,
-        max: 100,
-        step: 1,
+        type: 'inline-radio',
+        options: ['horizontal', 'vertical'],
       },
     },
   },
@@ -57,5 +63,9 @@ export default {
 export const Slider = renderComponent(storyTemplate).bind({});
 
 export const SliderVertical = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider min="0" max="100"></fluent-progress-bar>
+  <fluent-slider orientation="vertical" current-value="100" min="0" max="100"></fluent-slider>
+`);
+
+export const SliderHorizontal = renderComponent(html<SliderStoryArgs>`
+  <fluent-slider orientation="horizontal" value="10" min="0" max="100"></fluent-slider>
 `);
