@@ -87,6 +87,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/areachartTen',
         },
         {
+          component: require<any>('../AreaChart/AreaChartPageEleven').AreaChartEleven,
+          key: 'AreaChartEleven',
+          name: 'Area Chart Perf Data Eleven',
+          url: '#/examples/areachartEleven',
+        },
+        {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
           key: 'VerticalBarChart',
           name: 'Vertical Bar Chart',
