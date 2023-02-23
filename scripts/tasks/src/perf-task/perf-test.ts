@@ -5,6 +5,7 @@ import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from '
 
 import { getJustArgv as argv } from '../argv';
 
+import { DEPLOYHOST, DEPLOYURL, EnvVariablesByProject, SYSTEM_PULLREQUEST_TARGETBRANCH } from './env';
 import {
   IterationsDefault,
   RenderTypesDefault,
@@ -16,7 +17,6 @@ import {
 type ScenarioSetting = Record<string, { scenarioName: string; iterations: number; renderType: string }>;
 // TODO: consolidate with newer version of fluent perf-test
 
-/* eslint-disable @fluentui/max-len */
 // TODO:
 //  - Results Analysis
 //    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
@@ -105,18 +105,6 @@ type ScenarioSetting = Record<string, { scenarioName: string; iterations: number
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
-// Hardcoded PR deploy URL for local testing
-const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
-
-const EnvVariables: { [projectName: string]: { filePath: string; status: string } } = {
-  '@fluentui/react': { filePath: 'PerfCommentFilePath', status: 'PerfCommentStatus' },
-  '@fluentui/react-components': {
-    filePath: 'PerfCommentStatusReactComponents',
-    status: 'PerfCommentStatusReactComponents',
-  },
-  '@fluentui/react-northstar': { filePath: '', status: '' },
-};
-
 export async function getPerfRegressions(options: {
   scenariosProjectName: string;
   projectName: string;
@@ -137,10 +125,8 @@ export async function getPerfRegressions(options: {
     scenariosSrcDirPath,
   } = options;
 
-  const projectEnvVars = EnvVariables[options.projectName];
-  const urlForDeployPath = process.env.DEPLOYURL
-    ? `${process.env.DEPLOYURL}/${scenariosProjectName}`
-    : 'file://' + outDir;
+  const projectEnvVars = EnvVariablesByProject[options.projectName];
+  const urlForDeployPath = DEPLOYURL ? `${DEPLOYURL}/${scenariosProjectName}` : 'file://' + outDir;
 
   // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
   // At some point perf test should be broken out from CI default pipeline entirely and then can go back to using deploy site.
@@ -148,10 +134,8 @@ export async function getPerfRegressions(options: {
   // const urlForDeploy = urlForDeployPath + '/index.html';
   const urlForDeploy = 'file://' + outDir + '/index.html';
 
-  const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-  const urlForMaster = `https://${
-    process.env.DEPLOYHOST || DEPLOY_URL
-  }/${targetPath}/${scenariosProjectName}/index.html`;
+  const targetPath = `heads/${SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
+  const urlForMaster = `https://${DEPLOYHOST}/${targetPath}/${scenariosProjectName}/index.html`;
 
   // For debugging, in case the environment variables used to generate these have unexpected values
   console.log(`urlForDeployPath: "${urlForDeployPath}"`);

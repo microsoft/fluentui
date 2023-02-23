@@ -10,7 +10,11 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
-  "dependencies": {
-    "flamegrill": "0.2.0"
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0",
+    "webpack": "^5.75.0"
   }
 }
