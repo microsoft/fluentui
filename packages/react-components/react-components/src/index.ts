@@ -233,6 +233,7 @@ export {
   useCounterBadge_unstable,
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
+  usePresenceBadgeStyles_unstable,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
