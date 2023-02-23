@@ -8,6 +8,5 @@ import type { SkeletonItemState, SkeletonItemSlots } from './SkeletonItem.types'
 export const renderSkeletonItem_unstable = (state: SkeletonItemState) => {
   const { slots, slotProps } = getSlots<SkeletonItemSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

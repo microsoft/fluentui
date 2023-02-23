@@ -1,9 +1,38 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SkeletonItemSlots, SkeletonItemState } from './SkeletonItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { tokens } from '@fluentui/react-theme';
 
 export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
   root: 'fui-SkeletonItem',
+};
+
+const skeletonWaveAnimationRTL = {
+  from: {
+    backgroundPositionX: '300% /* @noflip */',
+  },
+  to: {
+    backgroundPositionX: '0% /* @noflip */',
+  },
+};
+
+const skeletonWaveAnimation = {
+  from: {
+    backgroundPositionX: '0% /* @noflip */',
+  },
+  to: {
+    backgroundPositionX: '300% /* @noflip */',
+  },
+};
+
+const skeletonPulseAnimation = {
+  from: {
+    opacity: '1',
+  },
+  to: {
+    opacity: '0.4',
+  },
 };
 
 /**
@@ -11,11 +40,70 @@ export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.borderRadius('2px'),
+    position: 'relative',
+    ...shorthands.overflow('hidden'),
+    backgroundSize: '300% 100%',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'center',
+    backgroundAttachment: 'fixed',
+    animationIterationCount: 'infinite',
+    animationDuration: '3s',
+    animationTimingFunction: 'linear',
+  },
+  wave: {
+    animationName: skeletonWaveAnimation,
+    backgroundImage: `linear-gradient(
+      to right,
+      ${tokens.colorNeutralStencil1} 0%,
+      ${tokens.colorNeutralStencil2} 50%,
+      ${tokens.colorNeutralStencil1} 100%)`,
+    '@media screen and (forced-colors: active)': {
+      backgroundColor: `WindowText
+      linear-gradient(
+        to right,
+        transparent 0%,
+        Window 50%,
+        transparent 100%)
+      `,
+    },
+  },
+  waveRtl: {
+    animationName: skeletonWaveAnimationRTL,
+    backgroundImage: `linear-gradient(
+      to right,
+      ${tokens.colorNeutralStencil1} 0%,
+      ${tokens.colorNeutralStencil2} 50%,
+      ${tokens.colorNeutralStencil1} 100%)`,
+    '@media screen and (forced-colors: active)': {
+      backgroundColor: `WindowText
+      linear-gradient(
+        to right,
+        transparent 0%,
+        Window 50%,
+        transparent 100%)
+      `,
+    },
+  },
+  pulse: {
+    animationName: skeletonPulseAnimation,
+    backgroundColor: tokens.colorNeutralStencil1,
+  },
+  translucent: {
+    backgroundImage: `linear-gradient(
+      to right,
+      ${tokens.colorNeutralStencil1Alpha} 0%,
+      ${tokens.colorNeutralStencil2Alpha} 50%,
+      ${tokens.colorNeutralStencil1Alpha} 100%)`,
+  },
+  translucentPulse: {
+    backgroundColor: tokens.colorNeutralStencil1Alpha,
   },
 });
 
 const useRectangleStyles = makeStyles({
+  root: {
+    width: 'auto',
+  },
   8: { height: '8px' },
   12: { height: '12px' },
   16: { height: '16px' },
@@ -79,16 +167,23 @@ const useCircleSizeStyles = makeStyles({
  * Apply styling to the SkeletonItem slots based on the state
  */
 export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): SkeletonItemState => {
-  const { size, shape } = state;
+  const { animation, appearance, size, shape } = state;
+  const { dir } = useFluent();
 
-  const styles = useStyles();
+  const rootStyles = useStyles();
   const rectStyles = useRectangleStyles();
   const squareStyles = useSquareSizeStyles();
   const circleStyles = useCircleSizeStyles();
 
   state.root.className = mergeClasses(
     skeletonItemClassNames.root,
-    styles.root,
+    rootStyles.root,
+    animation === 'wave' && rootStyles.wave,
+    animation === 'wave' && dir === 'rtl' && rootStyles.waveRtl,
+    animation === 'pulse' && rootStyles.pulse,
+    appearance === 'translucent' && rootStyles.translucent,
+    animation === 'pulse' && appearance === 'translucent' && rootStyles.translucentPulse,
+    shape === 'rectangle' && rectStyles.root,
     shape === 'rectangle' && rectStyles[size],
     shape === 'square' && squareStyles[size],
     shape === 'circle' && circleStyles.root,

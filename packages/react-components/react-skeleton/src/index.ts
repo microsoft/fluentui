@@ -14,3 +14,5 @@ export {
   useSkeletonItem_unstable,
 } from './SkeletonItem';
 export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './SkeletonItem';
+export { SkeletonContextProvider, useSkeletonContext } from './contexts/index';
+export type { SkeletonContextValue } from './contexts/index';

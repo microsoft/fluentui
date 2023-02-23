@@ -34,6 +34,4 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
 /**
  * State used in rendering Skeleton
  */
-export type SkeletonState = ComponentState<SkeletonSlots> &
-  Required<Pick<SkeletonProps, 'animation'>> &
-  Pick<SkeletonProps, 'appearance'>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;

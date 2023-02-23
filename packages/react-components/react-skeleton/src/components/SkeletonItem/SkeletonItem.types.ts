@@ -14,6 +14,18 @@ export type SkeletonItemSize = 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 
  */
 export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
   /**
+   * Sets the animation of the SkeletonItem
+   * @default wave
+   */
+  animation?: 'wave' | 'pulse';
+
+  /**
+   * Sets the appearance of the SkeletonItem
+   * @default opaque
+   */
+  appearance?: 'opaque' | 'translucent';
+
+  /**
    * Sets the size of the SkeletonItem in pixels.
    * Size is restricted to a limited set of values recommended for most uses(see SkeletonItemSize).
    * To set a non-supported size, set `size` to the next-smaller supported size, and set `width` and `height`
@@ -21,13 +33,13 @@ export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
    *
    * For example, to set the SkeletonItem to 45px in size:
    * <SkeletonItem size={40} style={{ width: '45px', height: '45px' }} />
-   * @defaultValue 16
+   * @default 16
    */
   size?: SkeletonItemSize;
 
   /**
    * Sets the shape of the SkeletonItem.
-   * @defaultValue rectangle
+   * @default rectangle
    */
   shape?: 'circle' | 'square' | 'rectangle';
 };
@@ -35,4 +47,5 @@ export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
 /**
  * State used in rendering SkeletonItem
  */
-export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pick<SkeletonItemProps, 'size' | 'shape'>>;
+export type SkeletonItemState = ComponentState<SkeletonItemSlots> &
+  Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>>;

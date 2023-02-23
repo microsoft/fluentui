@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
+import { useSkeletonContext } from '../../contexts/SkeletonContext';
 import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types';
 
 /**
@@ -12,6 +13,7 @@ import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types'
  * @param ref - reference to root HTMLElement of SkeletonItem
  */
 export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Ref<HTMLElement>): SkeletonItemState => {
+  const { appearance = 'opaque', animation = 'wave' } = useSkeletonContext();
   const { size = 16, shape = 'rectangle' } = props;
 
   const root = getNativeElementProps('div', {
@@ -20,6 +22,8 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
   });
 
   return {
+    appearance,
+    animation,
     size,
     shape,
     components: {
