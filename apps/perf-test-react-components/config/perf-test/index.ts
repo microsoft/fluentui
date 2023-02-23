@@ -9,7 +9,7 @@ const tempDir = path.join(projectRoot, './logfiles');
 const scenariosSrcDirPath = path.join(projectRoot, './src/scenarios');
 
 export const config = {
-  scenariosProjectName: 'perf-test',
+  scenariosProjectName: 'perf-test-react-components',
   projectName: '@fluentui/react',
   outDir,
   tempDir,
