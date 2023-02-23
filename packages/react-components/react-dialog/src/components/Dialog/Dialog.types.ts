@@ -2,7 +2,7 @@ import type * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
-import { UseModalAttributesOptions } from '@fluentui/react-tabster/src/index';
+import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 export type DialogSlots = {};
 
