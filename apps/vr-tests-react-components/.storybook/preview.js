@@ -4,6 +4,7 @@ import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
+import { withFluentProvider } from '@fluentui/react-storybook-addon';
 
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
@@ -69,3 +70,6 @@ setAddon({
 
 /** @type {import("@fluentui/react-storybook-addon").FluentParameters} */
 export const parameters = { layout: 'none', mode: 'vr-test' };
+
+/** @type {((StoryFn: () => JSX.Element, context: import('@fluentui/react-storybook-addon').FluentStoryContext) => JSX.Element)[]} */
+export const decorators = [withFluentProvider];
