@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Uncouples default state from their attributes; now handled via CSS.",
+  "packageName": "@fluentui/web-components",
+  "email": "harankin@microsoft.com",
+  "dependentChangeType": "patch"
+}
