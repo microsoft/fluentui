@@ -1,13 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import {
-  borderRadiusLarge,
-  borderRadiusMedium,
-  borderRadiusSmall,
-  borderRadiusXLarge,
-  colorNeutralStroke2,
-  shadow4,
-  strokeWidthThin,
-} from '../theme/design-tokens.js';
+import { colorNeutralStroke2, shadow4, strokeWidthThin } from '../theme/design-tokens.js';
 
 /** Image styles
  *
@@ -56,17 +48,5 @@ export const styles = css`
   }
   :host([shape='circular']) ::slotted(img) {
     border-radius: 999em;
-  }
-  :host([shape='rounded'][border-radius='small']) ::slotted(img) {
-    border-radius: ${borderRadiusSmall};
-  }
-  :host([shape='rounded'][border-radius='medium']) ::slotted(img) {
-    border-radius: ${borderRadiusMedium};
-  }
-  :host([shape='rounded'][border-radius='large']) ::slotted(img) {
-    border-radius: ${borderRadiusLarge};
-  }
-  :host([shape='rounded'][border-radius='x-large']) ::slotted(img) {
-    border-radius: ${borderRadiusXLarge};
   }
 `;

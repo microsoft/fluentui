@@ -22,12 +22,10 @@ Images, like photos and illustrations, help reinforce a message and express your
 
 - @attr public block: boolean | false
 - @attr public border: boolean | false
-- @attr public margin: boolean | false
 - @attr public shadow: boolean | false
 
 **options**
 
-- @attr public border-radius: 'small' | 'medium' | 'large' | 'x-large'
 - @attr public fit: 'none' | 'center' | 'contain' | 'cover' | 'default'
 - @attr public shape: 'square' | 'rounded' | 'circular'
 
@@ -43,12 +41,6 @@ The image element requires an alt tag when not used in role: presentation.
 
 This will extend the FASTElement.
 
-This appears to be indentical to the [Fluent UI React V9 Image component](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-image--default) in terms of props except for the following:
-
-margin: optional 16px margin
-
-However, when looking at the [component code](https://github.com/microsoft/fluentui/blob/master/packages/react/src/components/Image), they differ significantly.
-
 Open GitHub issues related to Image component
 
 - [Feature request](https://github.com/microsoft/fluentui/issues/26452)
@@ -56,7 +48,15 @@ Open GitHub issues related to Image component
 
 ## Implementation
 
-- [?] README.md covering basic usage
+### CSS Guidance
 
 - [x] Uses design tokens for styling
-- [?] Renders correctly in High Contrast mode
+
+An optional border-radius can be expressed using the following design tokens:
+
+- borderRadiusSmall,
+- borderRadiusMedium,
+- borderRadiusLarge
+- borderRadiusXLarge
+
+An optional 16px margin can be added to the image to separate it from surrounding content.

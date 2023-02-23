@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { ImageBorderRadius, ImageFit, ImageShape } from './image.options.js';
+import { ImageFit, ImageShape } from './image.options.js';
 
 /**
  * The base class used for constucting a fluent image custom element
@@ -33,16 +33,6 @@ export class Image extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public shadow?: boolean;
-
-  /**
-   * Border Radius
-   *
-   * @public
-   * @remarks
-   * Degree of border roundness.
-   */
-  @attr({ attribute: 'border-radius' })
-  public borderRadius: ImageBorderRadius;
   /**
    * Image fit
    *

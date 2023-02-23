@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Image as FluentImage } from './image.js';
-import { ImageBorderRadius, ImageFit, ImageShape } from './image.options.js';
+import { ImageFit, ImageShape } from './image.options.js';
 import './define.js';
 
 type ImageStoryArgs = Args & FluentImage;
@@ -13,7 +13,6 @@ const imageTemplate = html<ImageStoryArgs>`
     <fluent-image
       ?block=${x => x.block}
       ?bordered=${x => x.bordered}
-      border-radius=${x => x.borderRadius}
       fit=${x => x.fit}
       ?shadow=${x => x.shadow}
       shape=${x => x.shape}
@@ -29,7 +28,6 @@ export default {
     block: false,
     bordered: false,
     shadow: false,
-    borderRadius: ImageBorderRadius.small,
     fit: ImageFit.default,
     shape: ImageShape.square,
   },
@@ -63,16 +61,6 @@ export default {
         },
       },
     },
-    borderRadius: {
-      description: 'Optional border radius',
-      table: {
-        defaultValue: {
-          summary: 'small',
-        },
-      },
-      options: Object.values(ImageBorderRadius),
-      control: 'select',
-    },
     fit: {
       description: 'Determines how the image will be scaled and positioned within its parent container.',
       table: {
@@ -82,9 +70,6 @@ export default {
       },
       options: Object.values(ImageFit),
       control: 'select',
-    },
-    margin: {
-      description: 'Optional 16px margin -- to be supplied by component consumer',
     },
     role: {
       description: 'Aria role -- to be supplied by component consumer',
