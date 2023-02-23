@@ -6,7 +6,6 @@ import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
 import { wrapTextInsideDonut } from '../../../utilities/index';
-import { IProcessedStyleSet } from '../../../Styling';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -21,7 +20,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   public state: {} = {};
 
-  private _classNames: IProcessedStyleSet<IArcStyles>;
   private currentRef = React.createRef<SVGPathElement>();
 
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
@@ -40,7 +38,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   public render(): JSX.Element {
     const { arc, href, focusedArcId } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
-    this._classNames = getClassNames(getStyles, {
+    const classNames = getClassNames(getStyles, {
       color: this.props.color,
       href: href!,
       theme: this.props.theme!,
@@ -52,13 +50,13 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
-          <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={this._classNames.focusRing} />
+          <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={classNames.focusRing} />
         )}
         <path
           id={id}
           d={arc(this.props.data)}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
-          className={this._classNames.root}
+          className={classNames.root}
           data-is-focusable={true}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
@@ -69,9 +67,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           aria-label={this._getAriaLabel()}
           role="img"
         />
-        <g className={this._classNames.nodeTextContainer}>
-          <text id="Donut_center_text" textAnchor={'middle'} className={this._classNames.insideDonutString} y={5}>
-            {this.props.valueInsideDonut}
+        <g className={classNames.nodeTextContainer}>
+          <text id="Donut_center_text" textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
+            {this.props.valueInsideDonut!}
           </text>
         </g>
       </g>

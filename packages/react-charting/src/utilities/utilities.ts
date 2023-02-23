@@ -1130,7 +1130,8 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number): st
           line = [word];
           tspanEllipsis.text(word);
 
-          // Determine if truncation is appending the text exceeds maximum width vertically or horizontally
+          // Determine if truncation is appending the text exceeds maximum height vertically or
+          // maximum width horizontally. In this case, maximum height vertically is same as maxWidth
           while (
             tspanEllipsis.node()!.getComputedTextLength() > maxWidth - ellipsisLength ||
             tspanEllipsis.node()!.getBoundingClientRect().y > maxWidth
