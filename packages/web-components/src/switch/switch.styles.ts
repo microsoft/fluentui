@@ -18,7 +18,6 @@ import {
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorNeutralStrokeDisabled,
-  colorPaletteRedForeground3,
   colorTransparentBackground,
   curveEasyEase,
   durationNormal,
@@ -105,16 +104,16 @@ export const styles = css`
     background-color: ${colorNeutralForegroundInverted};
     transform: translateX(20px);
   }
-  :host([aria-checked='true']) .switch:hover .checked-indicator {
+  :host([aria-checked='true']:hover) .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};
   }
-  :host([aria-checked='true']) .switch:active .checked-indicator {
+  :host([aria-checked='true']:active) .checked-indicator {
     background: ${colorNeutralForegroundInvertedPressed};
   }
-  .switch:hover .checked-indicator {
+  :host(:hover) .checked-indicator {
     background-color: ${colorNeutralForeground3Hover};
   }
-  .switch:active .checked-indicator {
+  :host(:active) .checked-indicator {
     background-color: ${colorNeutralForeground3Pressed};
   }
   :host([disabled]) .checked-indicator,
@@ -127,16 +126,17 @@ export const styles = css`
   :host([aria-checked='true']) .switch {
     background: ${colorCompoundBrandBackground};
   }
-  :host([aria-checked='true']) .switch:hover {
+  :host([aria-checked='true']:hover) .switch {
     background: ${colorCompoundBrandBackgroundHover};
     border-color: ${colorCompoundBrandBackgroundHover};
   }
-  :host([aria-checked='true']) .switch:active {
+  :host([aria-checked='true']:active) .switch {
     background: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandBackgroundPressed};
   }
   :host([aria-checked='true'][disabled]) .switch {
     background: ${colorNeutralBackgroundDisabled};
+    border-color: ${colorNeutralStrokeDisabled};
   }
   :host([aria-checked='true'][disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
