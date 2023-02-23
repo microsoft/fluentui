@@ -6,9 +6,9 @@ import {
   colorCompoundBrandForeground1Pressed,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
+  colorNeutralBackground1Selected,
   colorNeutralBackgroundDisabled,
   colorNeutralForeground2,
-  colorNeutralForeground2BrandSelected,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
   colorNeutralForeground3,
@@ -44,6 +44,12 @@ export const styles = css`
     padding: 0 10px;
     margin: 1px 0;
     cursor: pointer;
+    overflow: visible;
+    contain: layout;
+  }
+  :host(:hover) {
+    position: relative;
+    z-index: 1;
   }
   .content {
     flex-grow: 1;
@@ -99,7 +105,7 @@ export const styles = css`
     color: ${colorCompoundBrandForeground1Hover};
   }
   :host(:active) {
-    background: ${colorNeutralForeground2BrandSelected};
+    background: ${colorNeutralBackground1Selected};
   }
   :host(:active) .expand-collapse-glyph-container,
   :host(:active) .content,
