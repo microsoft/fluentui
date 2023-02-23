@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { isConvergedPackage, shipsAMD } from '@fluentui/scripts-monorepo';
 import { addResolvePath, condition, option, parallel, series, task } from 'just-scripts';
 
 import { apiExtractor } from './api-extractor';
@@ -12,7 +12,7 @@ import { copy, copyCompiled } from './copy';
 import { eslint } from './eslint';
 import { generateApi } from './generate-api';
 import { jest as jestTask, jestWatch } from './jest';
-import { lintImports } from './lint-imports';
+import { lintImportTaskAll, lintImportTaskAmdOnly } from './lint-imports';
 import { postprocessTask } from './postprocess';
 import { postprocessAmdTask } from './postprocess-amd';
 import { prettier } from './prettier';
@@ -23,7 +23,7 @@ import { ts } from './ts';
 import { webpack, webpackDevServer } from './webpack';
 
 /** Do only the bare minimum setup of options and resolve paths */
-export function basicPreset() {
+function basicPreset() {
   // this adds a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
@@ -65,7 +65,8 @@ export function preset() {
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer(args));
   task('api-extractor', apiExtractor());
-  task('lint-imports', lintImports);
+  task('lint-imports:all', lintImportTaskAll);
+  task('lint-imports:amd', lintImportTaskAmdOnly);
   task('prettier', prettier);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
@@ -104,13 +105,7 @@ export function preset() {
     condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))),
   );
 
-  task(
-    'lint',
-    parallel(
-      condition('lint-imports', () => !isConvergedPackage()),
-      'eslint',
-    ),
-  );
+  task('lint', 'eslint');
 
   task('swc:commonjs', swc.commonjs);
   task('swc:esm', swc.esm);
@@ -132,7 +127,18 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
-  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached!();
+  task(
+    'build',
+    series(
+      'clean',
+      'copy',
+      'sass',
+      'ts',
+      'api-extractor',
+      condition('lint-imports:all', () => !isConvergedPackage() && shipsAMD()),
+      condition('lint-imports:amd', () => isConvergedPackage() && shipsAMD()),
+    ),
+  ).cached!();
 
   task('build:react-components', () => {
     return series(
