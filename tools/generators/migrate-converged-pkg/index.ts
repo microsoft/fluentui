@@ -269,14 +269,16 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<unknown> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets?: Array<unknown>; rootBabelConfigPath?: string }) => {
+    const { extraPresets, platform, rootBabelConfigPath } = options;
     const plugins = ['annotate-pure-calls'];
-    if (options.platform === 'web') {
+    if (platform === 'web') {
       plugins.push('@babel/transform-react-pure-annotations');
     }
 
     return {
-      presets: [...options.extraPresets],
+      extends: rootBabelConfigPath,
+      presets: extraPresets ? [...extraPresets] : undefined,
       plugins,
     };
   },
@@ -1062,30 +1064,10 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
-  const extraPresets = shouldAddGriffelPreset
-    ? [
-        [
-          '@griffel',
-          {
-            babelOptions: {
-              plugins: [
-                [
-                  'babel-plugin-module-resolver',
-                  {
-                    root: ['../../../'],
-                    alias: {
-                      '@fluentui/tokens': 'packages/tokens/lib/index.js',
-                      '^@fluentui/(.+)': 'packages/react-components/\\1/lib/index.js',
-                    },
-                  },
-                ],
-              ],
-            },
-          },
-        ],
-      ]
-    : [];
-  const config = templates.babelConfig({ extraPresets, platform: packageType });
+  const rootBabelConfigPath = shouldAddGriffelPreset
+    ? path.relative(options.projectConfig.root, '.babelrc-v9.json')
+    : undefined;
+  const config = templates.babelConfig({ platform: packageType, rootBabelConfigPath });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);
