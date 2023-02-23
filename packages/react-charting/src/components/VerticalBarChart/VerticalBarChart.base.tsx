@@ -70,7 +70,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
-  private _isChartEmpty: boolean;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -97,16 +96,15 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
-    this._isChartEmpty = false;
   }
 
   public componentDidMount(): void {
-    this._isChartEmpty =
-      this._isChartEmpty ||
+    const isChartEmpty =
+      this.state.emptyChart ||
       this._points.length === 0 ||
       (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
-    if (this.state.emptyChart !== this._isChartEmpty) {
-      this.setState({ emptyChart: this._isChartEmpty });
+    if (this.state.emptyChart !== isChartEmpty) {
+      this.setState({ emptyChart: isChartEmpty });
     }
   }
 
@@ -168,14 +166,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           return (
-            !this._isChartEmpty && (
-              <>
-                <g>{this._bars}</g>
-                {this._isHavingLine && (
-                  <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
-                )}
-              </>
-            )
+            <>
+              <g>{this._bars}</g>
+              {this._isHavingLine && (
+                <g>{this._createLine(props.xScale!, props.yScale!, props.containerHeight, props.containerWidth)}</g>
+              )}
+            </>
           );
         }}
       />
