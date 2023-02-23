@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Added CustomStyleHooks types and context",
+  "comment": "feat: Added CustomStyleHooks types and context",
   "packageName": "@fluentui/react-components",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"

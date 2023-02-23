@@ -3,10 +3,13 @@ import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
   useOverrides_unstable as useOverrides,
-  useCustomStyleHooks_unstable as useCustomStyleHooks,
-  CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
+  useCustomStyleHooks_unstable as useCustomStyleHooks
 } from '@fluentui/react-shared-contexts';
-import type { ThemeContextValue_unstable as ThemeContextValue } from '@fluentui/react-shared-contexts';
+import type {
+  CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
+  ThemeContextValue_unstable as ThemeContextValue
+} from '@fluentui/react-shared-contexts';
+
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';

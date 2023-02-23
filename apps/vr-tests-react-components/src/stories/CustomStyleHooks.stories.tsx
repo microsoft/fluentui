@@ -2,14 +2,16 @@ import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import {
   Button,
-  ButtonState,
   CompoundButton,
-  CompoundButtonState,
   MenuButton,
-  MenuButtonState,
   SplitButton,
-  SplitButtonState,
   ToggleButton,
+} from '@fluentui/react-button';
+import type {
+  ButtonState,
+  CompoundButtonState,
+  MenuButtonState,
+  SplitButtonState,
   ToggleButtonState,
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
