@@ -269,7 +269,7 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { rootBabelConfigPath?: string; platform: 'node' | 'web'; extraPresets: Array<unknown> }) => {
+  babelConfig: (options: { rootBabelConfigPath?: string; platform: 'node' | 'web'; extraPresets?: Array<unknown> }) => {
     const plugins = ['annotate-pure-calls'];
     if (options.platform === 'web') {
       plugins.push('@babel/transform-react-pure-annotations');
@@ -277,7 +277,7 @@ const templates = {
 
     return {
       extends: options.rootBabelConfigPath,
-      presets: [...options.extraPresets],
+      presets: options.extraPresets ? [...options.extraPresets] : undefined,
       plugins,
     };
   },

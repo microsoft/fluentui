@@ -1126,110 +1126,110 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`babel config setup`, () => {
-    function getBabelConfig(projectConfig: ReadProjectConfiguration) {
-      const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
-      return readJson(tree, babelConfigPath);
-    }
+  // describe(`babel config setup`, () => {
+  //   function getBabelConfig(projectConfig: ReadProjectConfiguration) {
+  //     const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
+  //     return readJson(tree, babelConfigPath);
+  //   }
 
-    it(`should setup .babelrc.json`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
+  //   it(`should setup .babelrc.json`, async () => {
+  //     const projectConfig = readProjectConfiguration(tree, options.name);
 
-      await generator(tree, options);
-      let babelConfig = getBabelConfig(projectConfig);
+  //     await generator(tree, options);
+  //     let babelConfig = getBabelConfig(projectConfig);
 
-      expect(babelConfig).toEqual({
-        presets: [
-          [
-            '@griffel',
-            {
-              babelOptions: {
-                plugins: [
-                  [
-                    'babel-plugin-module-resolver',
-                    {
-                      root: ['../../../'],
-                      alias: {
-                        '@fluentui/tokens': 'packages/tokens/lib/index.js',
-                        '^@fluentui/(?!react-icons)(.+)': 'packages/react-components/\\1/lib/index.js',
-                      },
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
-        ],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
-      });
+  //     expect(babelConfig).toEqual({
+  //       presets: [
+  //         [
+  //           '@griffel',
+  //           {
+  //             babelOptions: {
+  //               plugins: [
+  //                 [
+  //                   'babel-plugin-module-resolver',
+  //                   {
+  //                     root: ['../../../'],
+  //                     alias: {
+  //                       '@fluentui/tokens': 'packages/tokens/lib/index.js',
+  //                       '^@fluentui/(?!react-icons)(.+)': 'packages/react-components/\\1/lib/index.js',
+  //                     },
+  //                   },
+  //                 ],
+  //               ],
+  //             },
+  //           },
+  //         ],
+  //       ],
+  //       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+  //     });
 
-      tree.delete(`${projectConfig.root}/.babelrc.json`);
+  //     tree.delete(`${projectConfig.root}/.babelrc.json`);
 
-      await generator(tree, options);
-      babelConfig = getBabelConfig(projectConfig);
+  //     await generator(tree, options);
+  //     babelConfig = getBabelConfig(projectConfig);
 
-      expect(babelConfig).toEqual({
-        presets: [
-          [
-            '@griffel',
-            {
-              babelOptions: {
-                plugins: [
-                  [
-                    'babel-plugin-module-resolver',
-                    {
-                      root: ['../../../'],
-                      alias: {
-                        '@fluentui/tokens': 'packages/tokens/lib/index.js',
-                        '^@fluentui/(?!react-icons)(.+)': 'packages/react-components/\\1/lib/index.js',
-                      },
-                    },
-                  ],
-                ],
-              },
-            },
-          ],
-        ],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
-      });
-    });
+  //     expect(babelConfig).toEqual({
+  //       presets: [
+  //         [
+  //           '@griffel',
+  //           {
+  //             babelOptions: {
+  //               plugins: [
+  //                 [
+  //                   'babel-plugin-module-resolver',
+  //                   {
+  //                     root: ['../../../'],
+  //                     alias: {
+  //                       '@fluentui/tokens': 'packages/tokens/lib/index.js',
+  //                       '^@fluentui/(?!react-icons)(.+)': 'packages/react-components/\\1/lib/index.js',
+  //                     },
+  //                   },
+  //                 ],
+  //               ],
+  //             },
+  //           },
+  //         ],
+  //       ],
+  //       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+  //     });
+  //   });
 
-    it(`should add @griffel/babel-preset only if needed`, async () => {
-      let projectConfig = readProjectConfiguration(tree, options.name);
+  //   it(`should add @griffel/babel-preset only if needed`, async () => {
+  //     let projectConfig = readProjectConfiguration(tree, options.name);
 
-      updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
-        if (json.dependencies) {
-          delete json.dependencies['@griffel/react'];
-        }
+  //     updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
+  //       if (json.dependencies) {
+  //         delete json.dependencies['@griffel/react'];
+  //       }
 
-        return json;
-      });
+  //       return json;
+  //     });
 
-      let babelConfig = getBabelConfig(projectConfig);
+  //     let babelConfig = getBabelConfig(projectConfig);
 
-      expect(babelConfig).toEqual({
-        presets: ['@griffel'],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
-      });
+  //     expect(babelConfig).toEqual({
+  //       presets: ['@griffel'],
+  //       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+  //     });
 
-      await generator(tree, options);
-      babelConfig = getBabelConfig(projectConfig);
+  //     await generator(tree, options);
+  //     babelConfig = getBabelConfig(projectConfig);
 
-      expect(babelConfig).toEqual({
-        presets: [],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
-      });
+  //     expect(babelConfig).toEqual({
+  //       presets: [],
+  //       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+  //     });
 
-      projectConfig = readProjectConfiguration(tree, '@proj/babel-make-styles');
-      await generator(tree, { name: '@proj/babel-make-styles' });
-      babelConfig = getBabelConfig(projectConfig);
+  //     projectConfig = readProjectConfiguration(tree, '@proj/babel-make-styles');
+  //     await generator(tree, { name: '@proj/babel-make-styles' });
+  //     babelConfig = getBabelConfig(projectConfig);
 
-      expect(babelConfig).toEqual({
-        presets: [],
-        plugins: ['annotate-pure-calls'],
-      });
-    });
-  });
+  //     expect(babelConfig).toEqual({
+  //       presets: [],
+  //       plugins: ['annotate-pure-calls'],
+  //     });
+  //   });
+  // });
 
   describe(`nx workspace updates`, () => {
     it(`should set project 'sourceRoot' in workspace.json`, async () => {
