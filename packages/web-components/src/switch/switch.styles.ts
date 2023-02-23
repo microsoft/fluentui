@@ -64,6 +64,9 @@ export const styles = css`
     padding: ${spacingVerticalXS} ${spacingHorizontalXS};
     cursor: pointer;
   }
+  .label__hidden {
+    display: none;
+  }
   .switch {
     display: flex;
     align-items: center;
@@ -78,11 +81,11 @@ export const styles = css`
     cursor: pointer;
     margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  .switch:hover {
+  :host(:hover) .switch {
     background: none;
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  .switch:active {
+  :host(:active) .switch {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([disabled]) .switch,
@@ -90,6 +93,21 @@ export const styles = css`
     border: 1px solid ${colorNeutralStrokeDisabled};
     background-color: none;
     pointer: default;
+  }
+  :host([aria-checked='true']) .switch {
+    background: ${colorCompoundBrandBackground};
+  }
+  :host([aria-checked='true']:hover) .switch {
+    background: ${colorCompoundBrandBackgroundHover};
+    border-color: ${colorCompoundBrandBackgroundHover};
+  }
+  :host([aria-checked='true']:active) .switch {
+    background: ${colorCompoundBrandBackgroundPressed};
+    border-color: ${colorCompoundBrandBackgroundPressed};
+  }
+  :host([aria-checked='true'][disabled]) .switch {
+    background: ${colorNeutralBackgroundDisabled};
+    border-color: ${colorNeutralStrokeDisabled};
   }
   .checked-indicator {
     height: 14px;
@@ -119,24 +137,6 @@ export const styles = css`
   :host([disabled]) .checked-indicator,
   :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
-  }
-  .label__hidden {
-    display: none;
-  }
-  :host([aria-checked='true']) .switch {
-    background: ${colorCompoundBrandBackground};
-  }
-  :host([aria-checked='true']:hover) .switch {
-    background: ${colorCompoundBrandBackgroundHover};
-    border-color: ${colorCompoundBrandBackgroundHover};
-  }
-  :host([aria-checked='true']:active) .switch {
-    background: ${colorCompoundBrandBackgroundPressed};
-    border-color: ${colorCompoundBrandBackgroundPressed};
-  }
-  :host([aria-checked='true'][disabled]) .switch {
-    background: ${colorNeutralBackgroundDisabled};
-    border-color: ${colorNeutralStrokeDisabled};
   }
   :host([aria-checked='true'][disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
