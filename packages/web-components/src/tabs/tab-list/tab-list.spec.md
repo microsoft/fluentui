@@ -22,7 +22,7 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 ### Outputs
 
-- [List all outputs from the component]
+- [selectedValue: unkown] - the selected value of the currently selected tab
 
 ### Events
 
@@ -96,25 +96,69 @@ Tabs allow for navigation between two or more content views and relies on text h
 ## Preparation
 
 - [x] [FAST Tabs Component](https://www.fast.design/docs/components/tabs/) this component will inherit from and document
-- [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
-  - Difference #1
-- [ ] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
-  - Difference #1
-- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
-  - [link to each issue]
+- [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-tabs/docs/Spec.md)
+  - React V9 TabList prefers event handler to be passed into component as a React Prop `onTabSelect`. This event handling will be removed in favor of the TabList web component taking control of the event handling.
+  - React V9 `as` prop (to render the list as html element preferred by developer) will be omited
+  - React V9
+- [x] [Fluent UI React V9 Storybook](https://react.fluentui.dev/?path=/docs/components-tablist--default)
+- [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+TabList)
 - [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
   - [link to draft implementation, if applicable]
 - [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
 
-## Differences from Fluent UI to Fast
+## Differences from Fluent UI to FAST
 
 [Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 
 | fluent api name | fast api Equivalent |
 | --------------- | ------------------- |
-| selected-value  | activeid            |
 | vertical        | orientation         |
+| selected-value  | activeid            |
 | value           | id                  |
+
+## Implementation - Sample Code
+
+### Default
+
+By default Tabs are aranged horizontally. The developer sets `selected-value` Fluent-Tab-List attribute. The Component handles the logic of what is shown and hidden when user clicks on the tabs. For switcing to work correctly the tab list requires that the indexing of the tabs and tab-panels be organized to correspond to their matching items - the order of the tabs must match the order of the tab panels:
+
+```html
+<fluent-tab-list>
+  <fluent-tab>One / Left</fluent-tab>
+  <fluent-tab>Two / Middle</fluent-tab>
+  <fluent-tab>Three / Right</fluent-tab>
+
+  <fluent-tab-panel>Panel One</fluent-tab-panel>
+  <fluent-tab-panel>Panel Two</fluent-tab-panel>
+  <fluent-tab-panel>Panel Three</fluent-tab-panel>
+</fluent-tab-list>
+```
+
+### Controled
+
+If the developer wants to control the selected tab, tab values can be provided.
+
+```html
+<fluent-tab-list selected-value="tab-one">
+  <fluent-tab value="tab-one">One / Left</fluent-tab>
+  <fluent-tab value="tab-two">Two / Middle</fluent-tab>
+  <fluent-tab value="tab-three">Three / Right</fluent-tab>
+
+  <fluent-tab-panel>Panel One</fluent-tab-panel>
+  <fluent-tab-panel>Panel Two</fluent-tab-panel>
+  <fluent-tab-panel>Panthel Three</fluent-tab-panel>
+</fluent-tab-list>
+```
+
+### Vertical
+
+```html
+<fluent-tab-list vertical>
+  <fluent-tab>One / Left</fluent-tab>
+  <fluent-tab>Two / Middle</fluent-tab>
+  <fluent-tab>Three / Right</fluent-tab>
+</fluent-tab-list>
+```
 
 ## Implementation
 
