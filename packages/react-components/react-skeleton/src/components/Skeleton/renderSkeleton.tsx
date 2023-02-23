@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import { SkeletonContextProvider, SkeletonContextValue } from '../../contexts/SkeletonContext';
-import type { SkeletonState, SkeletonSlots } from './Skeleton.types';
+import { SkeletonContextProvider } from '../../contexts/SkeletonContext';
+import type { SkeletonState, SkeletonSlots, SkeletonContextValues } from './Skeleton.types';
 
 /**
  * Render the final JSX of Skeleton
  */
-export const renderSkeleton_unstable = (state: SkeletonState, contextValues: SkeletonContextValue) => {
+export const renderSkeleton_unstable = (state: SkeletonState, contextValues: SkeletonContextValues) => {
   const { slots, slotProps } = getSlots<SkeletonSlots>(state);
 
   return (
-    <SkeletonContextProvider value={contextValues}>
+    <SkeletonContextProvider value={contextValues.skeletonGroup}>
       <slots.root {...slotProps.root} />
     </SkeletonContextProvider>
   );

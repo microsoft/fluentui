@@ -13,8 +13,13 @@ import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types'
  * @param ref - reference to root HTMLElement of SkeletonItem
  */
 export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Ref<HTMLElement>): SkeletonItemState => {
-  const { appearance = 'opaque', animation = 'wave' } = useSkeletonContext();
-  const { size = 16, shape = 'rectangle' } = props;
+  const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
+  const {
+    animation = contextAnimation ?? 'wave',
+    appearance = contextAppearance ?? 'opaque',
+    size = 16,
+    shape = 'rectangle',
+  } = props;
 
   const root = getNativeElementProps('div', {
     ref,

@@ -31,6 +31,12 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
   animation?: 'wave' | 'pulse';
 };
 
+export type SkeletonContextValue = Pick<SkeletonProps, 'animation' | 'appearance'>;
+
+export type SkeletonContextValues = {
+  skeletonGroup: SkeletonContextValue;
+};
+
 /**
  * State used in rendering Skeleton
  */
