@@ -1,25 +1,112 @@
-# Tab List
+# TabList
 
-A tab list provides single selection from tabs. When a tab is selected, the application displays content associated with the selected tab and hides other content.
+## Description
 
-Each tab typically contains a text header and often includes an icon.
+Tabs allow for navigation between two or more content views and relies on text headers to articulate the different sections of content.
 
-## Tab List api
+## Design Spec
 
-[Link to Fluent React API](https://react.fluentui.dev/?path=/docs/components-tablist--default)
+[Link to Design Spec in Figma](https://www.figma.com/file/dK5AnDvvnSTWV9lduQWeDk/TabList?node-id=3942%3A9316&t=we0hQaRaKSJc6IeM-0)
 
+## Engineering Spec
 
-| name                       | desctiption                                                                                                                  | type                           | default       |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------- |
-| appearance                 | optional - "subtle": Minimizes emphasis. "transparent": No background and border styling                                     | 'transparent' \| 'subtle'      | 'transparent' |
-| reserve-selected-tab-space | optional - Tab size may change between unselected and selected states. The default scenario is a selected tab has bold text. | boolean                        | true          |
-| default-selected-value     | optional - The value of the tab to be selected by default.                                                                   | TabValue: unknown              | undefined     |
-| disabled                   | optional - A tab list can be set to disable interaction                                                                      | boolean                        | false         |
-| selected-value             | optional - for setting the selected tab.                                                                                     | TabValue: unknown              | undefined     |
-| size                       | optional - small, medium or large sizes                                                                                      | 'small' \| 'medium' \| 'large' | 'medium'      |
-| vertical                   | optional - to arrange the tab list vertically                                                                                | boolean                        | false         |
+### Inputs
 
-## Tab List - api to Fast mappings:
+- [@attr appearance?: "subtle" | "transparent" ]
+- [@attr reserve-selected-tab-space?: boolean] Tab size may change between unselected and selected states. The deault scenario is a selected tab has bold text.
+- [@attr default-selected-value?: unknown] The value of the tab to be selected by default.
+- [@attr disabled?: boolean]
+- [@attr selected-value?: unknown] sets the selected tab
+- [@attr size?: "small" | "medium" | "large"] defaults to medium
+- [@attr vertical? boolean] defaults to false
+
+### Outputs
+
+- [List all outputs from the component]
+
+### Events
+
+- change: html event handler - event fires on keyboard or mouse click
+
+### Slots
+
+- start - content before the tab list
+- end - content after the tab list
+- tab - slot for the tab itself
+- tabpanel - slot for tab panel
+
+### CSS Variables
+
+| state    | variant                           | destination               | css variable                      |
+| -------- | --------------------------------- | ------------------------- | --------------------------------- |
+| rest     | transparent, rest, selected       | background color          | --transparentBackground           |
+| rest     | transparent, rest, selected       | content color             | --neutralForeground1              |
+| rest     | transparent, rest, selected       | selection indicator color | --compoundBrandStroke1            |
+| rest     | transparent, rest, selected       | icon color                | --compoundBrandForeground1        |
+| -        | --                                | --                        | --                                |
+| rest     | transparent, rest, unselected     | background color          | --transparentBackground           |
+| rest     | transparent, rest, unselected     | content color             | --neutralForeground2              |
+| rest     | transparent, rest, unselected     | selection indicator color | --transparentStroke               |
+| rest     | transparent, rest, unselected     | icon color                | --neutralForeground2              |
+| --       | --                                | --                        | --                                |
+| hover    | transparent, hover, selected      | background color          | --transparentBackgroundHover      |
+| hover    | transparent, hover, selected      | content color             | --neutralForeground1Hover         |
+| hover    | transparent, hover, selected      | selection indicator color | --compoundBrandStroke1Hover       |
+| hover    | transparent, hover, selected      | icon color                | --compoundBrandForeground1Hover   |
+| --       | --                                | --                        | --                                |
+| hover    | transparent, hover, unselected    | background color          | --transparentBackgroundHover      |
+| hover    | transparent, hover, unselected    | content color             | --neutralForeground2Hover         |
+| hover    | transparent, hover, unselected    | selection indicator color | --compoundBrandStroke1Hover       |
+| hover    | transparent, hover, unselected    | icon color                | --compoundBrandForeground2Hover   |
+| --       | --                                | --                        | --                                |
+| pressed  | transparent, hover, selected      | background color          | --transparentBackgroundPressed    |
+| pressed  | transparent, hover, selected      | content color             | --neutralForeground1Pressed       |
+| pressed  | transparent, hover, selected      | selection indicator color | --compoundBrandStroke1Pressed     |
+| pressed  | transparent, hover, selected      | icon color                | --compoundBrandForeground1Pressed |
+| --       | --                                | --                        | --                                |
+| pressed  | transparent, hover, unselected    | background color          | --transparentBackgroundPressed    |
+| pressed  | transparent, hover, unselected    | content color             | --neutralForeground2Pressed       |
+| pressed  | transparent, hover, unselected    | selection indicator color | --neutralStroke1Pressed           |
+| pressed  | transparent, hover, unselected    | icon color                | --compoundBrandForeground1Pressed |
+| --       | --                                | --                        | --                                |
+| disabled | transparent, disabled, selected   | background color          | --transparentBackground           |
+| disabled | transparent, disabled, selected   | content color             | --neutralForegroundDisabled       |
+| disabled | transparent, disabled, selected   | selection indicator color | --neutralForegroundDisabled       |
+| disabled | transparent, disabled, selected   | icon color                | --nuetralForegroundDisabled       |
+| --       | --                                | --                        | --                                |
+| disabled | transparent, disabled, unselected | background color          | --transparentBackground           |
+| disabled | transparent, disabled, unselected | content color             | --neutralForegroundDisabled       |
+| disabled | transparent, disabled, unselected | selection indicator color | --transparentStroke               |
+| disabled | transparent, disabled, unselected | icon color                | --neutralForegroundDisabled       |
+
+---
+
+## Accessibility
+
+- [x] Tabs WCAG's patterns: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
+  - recommended that tabs activate on focus
+  - content of table is preloaded
+  - when tab list is aria-orientation vertical: `down arrow` performs as right arrow and `up arrow` performs as left arrow
+  - Horizontal tab list does not listen for `down arrow` or `up arrow`
+  - when tabpanel does not contain any focusable elements or the first element is not focusable the tab panel should set `tabindex="0"`
+- [x] Are there any accessibility elements unique to this component? yes, many see link above.
+- [x] List ARIA attributes: `role, aria-labelledby, aria-label, aria-controls, aria-selected, aria-haspopup, aria-orientation`
+- [x] Does the component support 400% zoom?
+
+## Preparation
+
+- [x] [FAST Tabs Component](https://www.fast.design/docs/components/tabs/) this component will inherit from and document
+- [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
+  - Difference #1
+- [ ] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
+  - Difference #1
+- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
+  - [link to each issue]
+- [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
+  - [link to draft implementation, if applicable]
+- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
+
+## Differences from Fluent UI to Fast
 
 [Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 
@@ -27,70 +114,29 @@ Each tab typically contains a text header and often includes an icon.
 | --------------- | ------------------- |
 | selected-value  | activeid            |
 | vertical        | orientation         |
+| value           | id                  |
 
-## Tab list events
+## Implementation
 
-| name   | desctiption                                   | type               | default |
-| ------ | --------------------------------------------- | ------------------ | ------- |
-| change | Change event fires on keyboard or mouse click | html event handler | -       |
+- [ ] Initial conformance and unit tests (validate basic functionality)
+- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
+  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
+  - [ ] README.md covering basic usage
+- [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/web-components/unstable`
+- [ ] Uses design tokens for styling
+- [ ] Renders correctly in High Contrast mode
 
+## Validation
 
-## Merging the APIs of the FAST and Fluent React controls could work in two ways:
-
-## Option 1 - Tab List example - more closely resembles Fast component
-
-Component works like this:
-
-- User sets the selected value in the tab list attribute.
-- The Component handles the logic of what is shown and hidden when user clicks on the tabs. The dev only provides the matching panel ids
-- Tab Panels must be children of tab-list.
-
-```html
-<fluent-tab-list selected-value="tab-one">
-  <fluent-tab value="tab-one">One / Left</fluent-tab>
-  <fluent-tab value="tab-two">Two / Middle</fluent-tab>
-  <fluent-tab value="tab-three">Three / Right</fluent-tab>
-
-  <fluent-tab-panel id="tab-one-panel"></fluent-tab-panel>
-  <fluent-tab-panel id="tab-two-panel"></fluent-tab-panel>
-  <fluent-tab-panel id="tab-two-panel"></fluent-tab-panel>
-</fluent-tab-list>
-```
-
-## Option 2 - Tab List - more closely resembles FluentUI React v9 tab-list
-
-Adds aditional component `fluent-tab-panel-group`.
-
-Component works like this:
-
-- It's up to the user to control which panel is selected by utilizing their own mechanism (display: none, conditional rendering, ect).
-- User passes in a click handler to the tab list. The click handler can either be defined on the tab-list html or can be added via element selector and javascript `element.addEventListener("click", function(){})` (just like regular HTMLElement allows for)
-
-```html
-<fluent-tab-list selected-value="tab-one" onclick="onTabSelect(event, selectedValue)">
-  <fluent-tab value="tab-one">One / Left</fluent-tab>
-  <fluent-tab value="tab-two">Two / Middle</fluent-tab>
-  <fluent-tab value="tab-three">Three / Right</fluent-tab>
-</fluent-tab-list>
-
-<fluent-tab-panel-group>
-  <fluent-tab-panel id="tab-one-panel" class="tabpanel"></fluent-tab-panel>
-  <fluent-tab-panel id="tab-two-panel" class="tabpanel"></fluent-tab-panel>
-  <fluent-tab-panel id="tab-three-panel" class="tabpanel"></fluent-tab-panel>
-</fluent-tab-panel-group>
-```
-
-One simple way to hide and show panels:
-
-```javascript
-/**
- * onTabSelect
- * sets the target panel to display block. sets all the others to display none
- */
-function onTabSelect(event, value) {
-  const panels = document.getElementsByClassName('tabpanel');
-  panels.style.display = 'none';
-  const activePanel = document.getElementById(value + "-panel");
-  activePanel.style.display = 'block';
-}
-```
+- [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
+  - [ ] Unit and conformance tests
+  - [ ] Bundle size fixtures
+  - [ ] Performance test scenario
+  - [ ] Accessibility behavior tests
+  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
+- [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
+- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
+  - [ ] Review and add any missing storybook stories
+  - [ ] Finalize migration guide
+  - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
+  - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`
