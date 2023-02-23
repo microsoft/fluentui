@@ -7,26 +7,6 @@ import { LabelSize, LabelWeight } from './label.options.js';
  */
 export class Label extends FASTElement {
   /**
-   * 	Specifies the id of the form element the label should be bound to
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: for
-   */
-  @attr({ attribute: 'for' })
-  public for: string;
-
-  /**
-   * 	Specifies which form the label belongs to
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: form
-   */
-  @attr({ attribute: 'form' })
-  public form: string;
-
-  /**
    * 	Specifies styles for label when associated input is a required field
    *
    * @public

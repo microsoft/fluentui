@@ -105,8 +105,6 @@ Creating a simple label element with an optional info icon and optional required
 
 | Name       | Privacy | Type                           | Default     | Description                                                       |
 | ---------- | ------- | ------------------------------ | ----------- | ----------------------------------------------------------------- |
-| `for`      | public  | `string`                       |             | Specifies the id of the form element the label should be bound to |
-| `form`     | public  | `string`                       |             | Specifies which form the label belongs to                         |
 | `required` | public  | `boolean`                      | `false`     | Specifies required styling for label                              |
 | `disabled` | public  | `boolean`                      | `false`     | Sets disabled state for label                                     |
 | `size`     | public  | `"small"` `"medium"` `"large"` | `"medium"`  | Specifies font size for label                                     |
@@ -126,8 +124,6 @@ Creating a simple label element with an optional info icon and optional required
 
 | Name       | Field    |
 | ---------- | -------- |
-| `for`      | for      |
-| `from`     | from     |
 | `required` | required |
 | `disabled` | disabled |
 | `size`     | size     |
@@ -155,9 +151,7 @@ Creating a simple label element with an optional info icon and optional required
     weight="${(attr: Label) => attr.weight"}>
     <label
       class="label"
-      part="label"
-      for="${(attr: Label) => attr.for}"
-      form="${(attr: Label) => attr.form}">
+      part="label">
     <slot></slot>
     ${(attr: Label) => attr.required
       ? html`<span aria-hidden="true" part="asterisk" class="asterisk">*</span>`
