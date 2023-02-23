@@ -52,6 +52,12 @@ export const slider: {
 };
 
 // @public (undocumented)
+export const spinner: {
+    inline: () => GriffelStyle;
+    v0SpinnerLabelStyle: () => GriffelStyle;
+};
+
+// @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
 
 // (No @packageDocumentation comment for this package)
