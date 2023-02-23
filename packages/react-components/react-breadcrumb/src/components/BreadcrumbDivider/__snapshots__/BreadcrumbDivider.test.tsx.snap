@@ -2,10 +2,10 @@
 
 exports[`BreadcrumbDivider renders a default state 1`] = `
 <div>
-  <div
+  <span
     class="fui-BreadcrumbDivider"
   >
-    Default BreadcrumbDivider
-  </div>
+    &gt;
+  </span>
 </div>
 `;

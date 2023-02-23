@@ -6,6 +6,11 @@ exports[`BreadcrumbItem renders a default state 1`] = `
     class="fui-BreadcrumbItem"
   >
     Default BreadcrumbItem
+    <span
+      class="fui-BreadcrumbDivider fui-BreadcrumbItem__divider"
+    >
+      &gt;
+    </span>
   </div>
 </div>
 `;

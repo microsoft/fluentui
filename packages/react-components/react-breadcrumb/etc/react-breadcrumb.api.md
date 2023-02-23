@@ -28,7 +28,7 @@ export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {}
 
 // @public (undocumented)
 export type BreadcrumbDividerSlots = {
-    root: Slot<'div'>;
+    root: Slot<'span'>;
 };
 
 // @public
@@ -46,17 +46,19 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & {};
 // @public (undocumented)
 export type BreadcrumbItemSlots = {
     root: Slot<'div'>;
+    divider?: Slot<typeof BreadcrumbDivider>;
 };
 
 // @public
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots>;
 
 // @public
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {};
+export type BreadcrumbProps = ComponentProps<Omit<BreadcrumbSlots, 'list'>> & {};
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
-    root: Slot<'div'>;
+    root: Slot<'nav'>;
+    list: Slot<'ol'>;
 };
 
 // @public

@@ -1,13 +1,14 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type BreadcrumbSlots = {
-  root: Slot<'div'>;
+  root: Slot<'nav'>;
+  list: Slot<'ol'>;
 };
 
 /**
  * Breadcrumb Props
  */
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {};
+export type BreadcrumbProps = ComponentProps<Omit<BreadcrumbSlots, 'list'>> & {};
 
 /**
  * State used in rendering Breadcrumb

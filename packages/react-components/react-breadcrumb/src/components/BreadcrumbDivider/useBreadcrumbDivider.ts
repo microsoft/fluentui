@@ -19,7 +19,7 @@ export const useBreadcrumbDivider_unstable = (
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
-      root: 'div',
+      root: 'span',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
