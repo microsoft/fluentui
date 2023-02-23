@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, FlatTreeItem, useFlatTreeItems_unstable } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, FlatTreeItemProps, useFlatTreeItems_unstable } from '@fluentui/react-tree';
 
-const defaultItems: FlatTreeItem[] = [
+const defaultItems: FlatTreeItemProps[] = [
   {
     id: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
@@ -47,15 +47,25 @@ const defaultItems: FlatTreeItem[] = [
   },
   {
     id: '7',
+    parentId: '5',
+    children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
+  },
+  {
+    id: '8',
+    parentId: '5',
+    children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
+  },
+  {
+    id: '9',
     children: <TreeItemLayout>Level 1, item 3</TreeItemLayout>,
   },
 ];
 
 export const UseFlatTreeItems = () => {
-  const [treeProps, getTreeItems] = useFlatTreeItems_unstable(defaultItems);
+  const [treeProps, flatTreeItems] = useFlatTreeItems_unstable(defaultItems);
   return (
     <Tree {...treeProps} aria-label="Tree">
-      {getTreeItems().map(treeItemProps => (
+      {flatTreeItems.map(treeItemProps => (
         <TreeItem {...treeItemProps} key={treeItemProps.id} />
       ))}
     </Tree>

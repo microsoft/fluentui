@@ -36,11 +36,11 @@ const defaultItems = flattenTree_unstable([
   },
 ]);
 export const FlattenTree = () => {
-  const [treeProps, getTreeItems] = useFlatTreeItems_unstable(defaultItems);
+  const [treeProps, flatTreeItems] = useFlatTreeItems_unstable(defaultItems);
   return (
     <Tree {...treeProps} aria-label="Tree">
-      {getTreeItems().map((treeItemProps, index) => (
-        <TreeItem {...treeItemProps} key={index} />
+      {flatTreeItems.map(treeItemProps => (
+        <TreeItem {...treeItemProps} key={treeItemProps.id} />
       ))}
     </Tree>
   );

@@ -3,7 +3,7 @@ import {
   TreeProps,
   TreeItem,
   TreeItemLayout,
-  FlatTreeItem,
+  FlatTreeItemProps,
   useFlatTreeItems_unstable,
   useTree_unstable,
   useTreeStyles_unstable,
@@ -14,38 +14,24 @@ import {
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 
-const item1: FlatTreeItem[] = [
+const item1: FlatTreeItemProps[] = [
   {
-    leaf: false,
-    'aria-level': 1,
-    'aria-setsize': 2,
-    'aria-posinset': 1,
     id: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
   },
-  ...new Array(300).fill(undefined).map<FlatTreeItem>((_, i) => ({
-    leaf: true,
-    'aria-level': 2,
-    'aria-setsize': 300,
-    'aria-posinset': i + 1,
+  ...new Array(300).fill(undefined).map<FlatTreeItemProps>((_, i) => ({
+    id: `flatTreeItem_lvl-1_item-1--child:${i}`,
     parentId: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
   })),
 ];
-const item2: FlatTreeItem[] = [
+const item2: FlatTreeItemProps[] = [
   {
-    leaf: false,
-    'aria-level': 1,
-    'aria-setsize': 2,
-    'aria-posinset': 1,
     id: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
   },
-  ...new Array(300).fill(undefined).map<FlatTreeItem>((_, i) => ({
-    leaf: true,
-    'aria-level': 2,
-    'aria-setsize': 300,
-    'aria-posinset': i + 1,
+  ...new Array(300).fill(undefined).map<FlatTreeItemProps>((_, i) => ({
+    id: `flatTreeItem_lvl-1_item-2--child:${i}`,
     parentId: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
   })),
@@ -70,7 +56,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
 });
 
 const FixedSizeTreeItem = (props: ListChildComponentProps) => {
-  const treeItemProps: FlatTreeItem = props.data[props.index];
+  const treeItemProps: FlatTreeItemProps = props.data[props.index];
   return (
     <TreeItem {...treeItemProps} style={props.style}>
       <TreeItemLayout>Item {props.index}</TreeItemLayout>
@@ -79,12 +65,12 @@ const FixedSizeTreeItem = (props: ListChildComponentProps) => {
 };
 
 export const Virtualization = () => {
-  const [treeProps, getTreeItems] = useFlatTreeItems_unstable([...item1, ...item2]);
-  const items = getTreeItems();
+  const [treeProps, flatTreeItems] = useFlatTreeItems_unstable([...item1, ...item2]);
+  const items = flatTreeItems.toArray();
   return (
     <FixedSizeTree
       listProps={{
-        height: 912,
+        height: 300,
         itemCount: items.length,
         itemData: items,
         itemSize: 32,
