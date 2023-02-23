@@ -126,7 +126,7 @@ storiesOf('Field', module)
   ))
   .addStory('ProgressBar:error', () => (
     <Field label="ProgressBar in a Field with an error" validationMessage="Error message">
-      <ProgressBar value={0.5} validationState="error" />
+      <ProgressBar value={0.5} color="error" />
     </Field>
   ))
   .addStory('RadioGroup:error', () => (

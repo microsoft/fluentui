@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 07 Feb 2023 14:13:10 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.3.7)
+
+Wed, 22 Feb 2023 23:06:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.3.6..@fluentui/react-avatar_v9.3.7)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.4.11 ([PR #26616](https://github.com/microsoft/fluentui/pull/26616) by beachball)
+- Bump @fluentui/react-tooltip to v9.1.18 ([PR #26616](https://github.com/microsoft/fluentui/pull/26616) by beachball)
+
+## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.3.6)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.3.5..@fluentui/react-avatar_v9.3.6)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.0.26 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.10 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-popover to v9.4.10 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-tabster to v9.5.3 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-tooltip to v9.1.17 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.3.5)
+
+Mon, 13 Feb 2023 23:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.3.4..@fluentui/react-avatar_v9.3.5)
+
+### Patches
+
+- chore: update Avatar to use makeResetStyles ([PR #26811](https://github.com/microsoft/fluentui/pull/26811) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-badge to v9.0.25 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.9 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-popover to v9.4.9 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-tabster to v9.5.2 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-tooltip to v9.1.16 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.3.4)
+
+Mon, 13 Feb 2023 09:35:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.3.3..@fluentui/react-avatar_v9.3.4)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.4.8 ([PR #26800](https://github.com/microsoft/fluentui/pull/26800) by beachball)
+- Bump @fluentui/react-tooltip to v9.1.15 ([PR #26800](https://github.com/microsoft/fluentui/pull/26800) by beachball)
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.3.3)
+
+Fri, 10 Feb 2023 08:49:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.3.2..@fluentui/react-avatar_v9.3.3)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.0.24 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.8 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-popover to v9.4.7 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-tabster to v9.5.1 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-tooltip to v9.1.14 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.3.2)
 

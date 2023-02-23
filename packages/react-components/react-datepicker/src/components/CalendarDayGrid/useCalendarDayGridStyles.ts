@@ -17,15 +17,24 @@ import {
   TRANSITION_ROW_DISAPPEARANCE,
 } from '../../utils';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CalendarDayGridSlots, CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
+import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 
-export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridSlots> & Record<string, string> = {
-  root: 'fui-CalendarDayGrid',
-  hover: 'fui-CalendarDayGrid-hover',
-  pressed: 'fui-CalendarDayGrid-pressed',
-  dayIsToday: 'fui-CalendarDayGrid-dayIsToday',
-  daySelected: 'fui-CalendarDayGrid-daySelected',
+export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = {
+  wrapper: 'fui-CalendarDayGrid__wrapper',
+  table: 'fui-CalendarDayGrid__table',
+  dayCell: 'fui-CalendarDayGrid__dayCell',
+  daySelected: 'fui-CalendarDayGrid__daySelected',
+  weekRow: 'fui-CalendarDayGrid__weekRow',
+  weekDayLabelCell: 'fui-CalendarDayGrid__weekDayLabelCell',
+  weekNumberCell: 'fui-CalendarDayGrid__weekNumberCell',
+  dayOutsideBounds: 'fui-CalendarDayGrid__dayOutsideBounds',
+  dayOutsideNavigatedMonth: 'fui-CalendarDayGrid__dayOutsideNavigatedMonth',
+  dayButton: 'fui-CalendarDayGrid__dayButton',
+  dayIsToday: 'fui-CalendarDayGrid__dayIsToday',
+  firstTransitionWeek: 'fui-CalendarDayGrid__firstTransitionWeek',
+  lastTransitionWeek: 'fui-CalendarDayGrid__lastTransitionWeek',
+  dayMarker: 'fui-CalendarDayGrid__dayMarker',
 };
 
 const useWrapperStyles = makeStyles({
@@ -71,7 +80,7 @@ const useDayCellStyles = makeStyles({
       zIndex: 0,
     },
 
-    [`&.${calendarDayGridClassNames.hover}`]: {
+    '&:hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -80,7 +89,7 @@ const useDayCellStyles = makeStyles({
       },
     },
 
-    [`&.${calendarDayGridClassNames.pressed}`]: {
+    '&:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -89,7 +98,7 @@ const useDayCellStyles = makeStyles({
       },
     },
 
-    [`&.${calendarDayGridClassNames.pressed}.${calendarDayGridClassNames.hover}`]: {
+    '&:active:hover': {
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         ...shorthands.outline('1px', 'solid', 'Highlight'),
@@ -112,7 +121,7 @@ const useDaySelectedStyles = makeStyles({
       top: 0,
     },
 
-    [`&:hover, &.${calendarDayGridClassNames.hover}, &.${calendarDayGridClassNames.pressed}`]: {
+    '&:hover, &:active': {
       backgroundColor: tokens.colorNeutralBackground1Selected + ' !important',
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight!important',
@@ -294,50 +303,10 @@ const useDayMarkerStyles = makeStyles({
   },
 });
 
-const useCornerDateStyles = makeStyles({
-  topRight: {
-    borderTopRightRadius: '2px',
-  },
-  topLeft: {
-    borderTopLeftRadius: '2px',
-  },
-  bottomRight: {
-    borderBottomRightRadius: '2px',
-  },
-  bottomLeft: {
-    borderBottomLeftRadius: '2px',
-  },
-});
-
-const useDatesPositionStyles = makeStyles({
-  above: {
-    '&::before': {
-      ...shorthands.borderTop('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-  below: {
-    '&::before': {
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-  left: {
-    '&::before': {
-      ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-  right: {
-    '&::before': {
-      ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-});
-
 /**
  * Apply styling to the CalendarDayGrid slots based on the state
  */
-export const useCalendarDayGridStyles_unstable = (
-  props: CalendarDayGridStyleProps,
-): Record<keyof CalendarDayGridStyles, string> => {
+export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStyleProps): CalendarDayGridStyles => {
   const wrapperStyles = useWrapperStyles();
   const tableStyles = useTableStyles();
   const dayCellStyles = useDayCellStyles();
@@ -352,8 +321,6 @@ export const useCalendarDayGridStyles_unstable = (
   const firstTransitionWeekStyles = useFirstTransitionWeekStyles();
   const lastTransitionWeekStyles = useLastTransitionWeekStyles();
   const dayMarkerStyles = useDayMarkerStyles();
-  const cornerDateStyles = useCornerDateStyles();
-  const datesPositionStyles = useDatesPositionStyles();
 
   const {
     animateBackwards,
@@ -364,11 +331,19 @@ export const useCalendarDayGridStyles_unstable = (
   } = props;
 
   return {
-    wrapper: wrapperStyles.base,
-    table: mergeClasses(tableStyles.base, showWeekNumbers && tableStyles.showWeekNumbers),
-    dayCell: dayCellStyles.base,
-    daySelected: dateRangeType !== DateRangeType.Month ? daySelectedStyles.dateRangeTypeNotMonth : '',
+    wrapper: mergeClasses(calendarDayGridClassNames.wrapper, wrapperStyles.base),
+    table: mergeClasses(
+      calendarDayGridClassNames.table,
+      tableStyles.base,
+      showWeekNumbers && tableStyles.showWeekNumbers,
+    ),
+    dayCell: mergeClasses(calendarDayGridClassNames.dayCell, dayCellStyles.base),
+    daySelected: mergeClasses(
+      calendarDayGridClassNames.daySelected,
+      dateRangeType !== DateRangeType.Month && daySelectedStyles.dateRangeTypeNotMonth,
+    ),
     weekRow: mergeClasses(
+      calendarDayGridClassNames.weekRow,
       animateBackwards !== undefined && weekRowStyles.base,
       animateBackwards !== undefined &&
         (animationDirection === AnimationDirection.Horizontal
@@ -379,15 +354,17 @@ export const useCalendarDayGridStyles_unstable = (
           ? weekRowStyles.verticalBackward
           : weekRowStyles.verticalForward),
     ),
-    weekDayLabelCell: weekDayLabelCellStyles.base,
-    weekNumberCell: weekNumberCellStyles.base,
-    dayOutsideBounds: dayOutsideBoundsStyles.base,
-    dayOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth
-      ? dayOutsideNavigatedMonthStyles.lightenDaysOutsideNavigatedMonth
-      : '',
-    dayButton: dayButtonStyles.base,
-    dayIsToday: dayIsTodayStyles.base,
+    weekDayLabelCell: mergeClasses(calendarDayGridClassNames.weekDayLabelCell, weekDayLabelCellStyles.base),
+    weekNumberCell: mergeClasses(calendarDayGridClassNames.weekNumberCell, weekNumberCellStyles.base),
+    dayOutsideBounds: mergeClasses(calendarDayGridClassNames.dayOutsideBounds, dayOutsideBoundsStyles.base),
+    dayOutsideNavigatedMonth: mergeClasses(
+      calendarDayGridClassNames.dayOutsideNavigatedMonth,
+      lightenDaysOutsideNavigatedMonth && dayOutsideNavigatedMonthStyles.lightenDaysOutsideNavigatedMonth,
+    ),
+    dayButton: mergeClasses(calendarDayGridClassNames.dayButton, dayButtonStyles.base),
+    dayIsToday: mergeClasses(calendarDayGridClassNames.dayIsToday, dayIsTodayStyles.base),
     firstTransitionWeek: mergeClasses(
+      calendarDayGridClassNames.firstTransitionWeek,
       firstTransitionWeekStyles.base,
       animateBackwards !== undefined &&
         animationDirection !== AnimationDirection.Horizontal &&
@@ -395,20 +372,13 @@ export const useCalendarDayGridStyles_unstable = (
         firstTransitionWeekStyles.verticalForward,
     ),
     lastTransitionWeek: mergeClasses(
+      calendarDayGridClassNames.lastTransitionWeek,
       lastTransitionWeekStyles.base,
       animateBackwards !== undefined &&
         animationDirection !== AnimationDirection.Horizontal &&
         animateBackwards &&
         lastTransitionWeekStyles.verticalBackward,
     ),
-    dayMarker: dayMarkerStyles.base,
-    topRightCornerDate: cornerDateStyles.topRight,
-    topLeftCornerDate: cornerDateStyles.topLeft,
-    bottomRightCornerDate: cornerDateStyles.bottomRight,
-    bottomLeftCornerDate: cornerDateStyles.bottomLeft,
-    datesAbove: datesPositionStyles.above,
-    datesBelow: datesPositionStyles.below,
-    datesLeft: datesPositionStyles.left,
-    datesRight: datesPositionStyles.right,
+    dayMarker: mergeClasses(calendarDayGridClassNames.dayMarker, dayMarkerStyles.base),
   };
 };

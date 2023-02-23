@@ -1,18 +1,7 @@
 import * as React from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IBaseProps } from '@fluentui/utilities';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
-import type {
-  CalendarDayGridProps,
-  CalendarDayGridStyleProps,
-  CalendarDayGridStyles,
-} from '../CalendarDayGrid/CalendarDayGrid.types';
-
-export type CalendarDaySlots = {
-  root: Slot<'div'>;
-};
+import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
 
 /**
  * {@docCategory Calendar}
@@ -25,22 +14,12 @@ export interface ICalendarDay {
 /**
  * {@docCategory Calendar}
  */
-export interface CalendarDayProps extends IBaseProps<ICalendarDay>, CalendarDayGridProps {
+export interface CalendarDayProps extends CalendarDayGridProps {
   /**
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendarDay>;
-
-  /**
-   * Customized styles for the calendar day component
-   */
-  // styles?: IStyleFunctionOrObject<CalendarDayStyleProps, CalendarDayStyles>;
-
-  /**
-   * Theme (provided through customization).
-   */
-  theme?: ITheme;
 
   /**
    * Additional CSS class(es) to apply to the CalendarDay.
@@ -149,34 +128,34 @@ export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
 /**
  * {@docCategory Calendar}
  */
-export interface CalendarDayStyles extends Partial<CalendarDayGridStyles> {
+export interface CalendarDayStyles {
   /**
    * Style for the root element.
    */
-  root: IStyle;
+  root: string;
 
   /**
    * The style for the header button and forward/back navigation button container
    */
-  header: IStyle;
+  header: string;
 
   /**
    * The style for the title text inside the header
    */
-  monthAndYear: IStyle;
+  monthAndYear: string;
 
   /**
    * The style for the wrapper around forward/back/close buttons
    */
-  monthComponents: IStyle;
+  monthComponents: string;
 
   /**
    * The style for the forward/back/close buttons
    */
-  headerIconButton: IStyle;
+  headerIconButton: string;
 
   /**
    * The style to apply for disabled elements
    */
-  disabledStyle: IStyle;
+  disabledStyle: string;
 }

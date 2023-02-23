@@ -9267,7 +9267,7 @@ codesandbox-import-util-types@^2.2.3:
   resolved "https://registry.yarnpkg.com/codesandbox-import-util-types/-/codesandbox-import-util-types-2.2.3.tgz#b354b2f732ad130e119ebd9ead3bda3be5981a54"
   integrity sha512-Qj00p60oNExthP2oR3vvXmUGjukij+rxJGuiaKM6tyUmSyimdZsqHI/TUvFFClAffk9s7hxGnQgWQ8KCce27qQ==
 
-codesandbox-import-utils@2.2.3, codesandbox-import-utils@^2.2.3:
+codesandbox-import-utils@2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/codesandbox-import-utils/-/codesandbox-import-utils-2.2.3.tgz#f7b4801245b381cb8c90fe245e336624e19b6c84"
   integrity sha512-ymtmcgZKU27U+nM2qUb21aO8Ut/u2S9s6KorOgG81weP+NA0UZkaHKlaRqbLJ9h4i/4FLvwmEXYAnTjNmp6ogg==
@@ -23527,14 +23527,6 @@ store2@^2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
-
-storybook-addon-export-to-codesandbox@0.8.4:
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.8.4.tgz#7bbbcd88e2776d261f0f6c6322847371a3015139"
-  integrity sha512-l2kRp3ro0j0SAMN/vZWPFXcpJx+FsFtGw87ixG7uf2d0Vig/IrWYZo9oROF10FOhOgCYmrV1XxCU3jujCg9jvw==
-  dependencies:
-    codesandbox-import-utils "^2.2.3"
-    pkg-up "^3.1.0"
 
 storybook-addon-performance@0.16.1:
   version "0.16.1"
