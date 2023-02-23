@@ -41,7 +41,7 @@ export class Image extends FASTElement {
    * HTML attribute: fit.
    */
   @attr
-  public fit: ImageFit;
+  public fit?: ImageFit;
   /**
    * Image shape
    *
@@ -50,5 +50,5 @@ export class Image extends FASTElement {
    * HTML attribute: shape.
    */
   @attr
-  public shape: ImageShape;
+  public shape?: ImageShape;
 }

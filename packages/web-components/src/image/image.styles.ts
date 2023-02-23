@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { colorNeutralStroke2, shadow4, strokeWidthThin } from '../theme/design-tokens.js';
+import { borderRadiusCircular, colorNeutralStroke2, shadow4, strokeWidthThin } from '../theme/design-tokens.js';
 
 /** Image styles
  *
@@ -47,6 +47,6 @@ export const styles = css`
     box-shadow: ${shadow4};
   }
   :host([shape='circular']) ::slotted(img) {
-    border-radius: 999em;
+    border-radius: ${borderRadiusCircular};
   }
 `;
