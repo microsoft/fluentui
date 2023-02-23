@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: uses min-height instead of height",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
