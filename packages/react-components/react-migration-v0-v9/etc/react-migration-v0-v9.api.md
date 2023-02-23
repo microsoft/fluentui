@@ -10,6 +10,14 @@ import { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
 
 // @public (undocumented)
+export const buttonMigrationStyles: {
+    v9Icon: () => GriffelStyle;
+    v9CustomSizeIcon: () => GriffelStyle;
+    v0Icon: () => GriffelStyle;
+    v9DisabledCursor: () => GriffelStyle;
+};
+
+// @public (undocumented)
 export const FormFieldShim: React_2.ForwardRefExoticComponent<{
     errorMessage?: WithContent | undefined;
     required?: boolean | undefined;
