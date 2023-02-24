@@ -21,6 +21,13 @@ export class TabList extends FASTTabs {
 
   @attr({ converter: booleanConverter })
   vertical?: boolean;
+  verticalChanged() {
+    if (this.vertical) {
+      this.orientation = 'vertical';
+    } else {
+      this.orientation = 'horizontal';
+    }
+  }
 
   @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
   reserveSelectedTabSpace?: boolean;
