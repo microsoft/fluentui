@@ -57,7 +57,7 @@ function useTableColumnSizingState<TItem>(
     (columnId: TableColumnId) => (e: React.MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      keyboardResizing.enterInteractiveMode(columnId);
+      keyboardResizing.toggleInteractiveMode(columnId);
     },
     [keyboardResizing],
   );

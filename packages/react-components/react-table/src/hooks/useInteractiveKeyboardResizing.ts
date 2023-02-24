@@ -87,13 +87,18 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
     setNavigationGroupParams(defaultNavigationGroupParams);
   }, [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams]);
 
-  const enterInteractiveMode = (colId: TableColumnId) => {
+  const toggleInteractiveMode = (colId: TableColumnId) => {
     if (!columnId.current) {
       enableInteractiveMode(colId);
+    } else if (colId && columnId.current !== colId) {
+      disableInteractiveMode();
+      enableInteractiveMode(colId);
+    } else {
+      disableInteractiveMode();
     }
   };
 
   return {
-    enterInteractiveMode,
+    toggleInteractiveMode,
   };
 }
