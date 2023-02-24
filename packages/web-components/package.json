@@ -40,6 +40,10 @@
       "types": "./dist/esm/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
+    "./image": {
+      "types": "./dist/esm/image/define.d.ts",
+      "default": "./dist/esm/image/define.js"
+    },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
