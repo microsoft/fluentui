@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: allow elements of card to grow to fill the available space",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

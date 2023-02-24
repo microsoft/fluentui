@@ -2,6 +2,81 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:04 GMT",
+      "tag": "@fluentui/react-components_v9.15.6",
+      "version": "9.15.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "43a00eef7fd853f35d531f57e6a213f0f8c3d48c",
+            "comment": "bugfix: uses min-height instead of height"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "ba7aaecf417043f343933edc159bb5c7e745c8c6",
+            "comment": "feat: Add react-progress to stable"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "fbee0f3858ee67d53ee2540531a0cfb6497165cb",
+            "comment": "chore: Clean up Input's interactive styles"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "29ed7fb57a05a6595835f947193460886e80cfc5",
+            "comment": "fix: Fix the width of Input's focus border with appearance=underline"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2d33c558d38690193fd05b7048a1310e00e1f2e0",
+            "comment": "fix: Popover without focus trap should not be aria-hidden"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "db5fb4be3ed35b18b4874750fe6ad286fb5e41fc",
+            "comment": "chore: update SpinButton to use makeResetStyles"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "9ee6caa17f745e014ecba467a4528181ae49be30",
+            "comment": "fix: allow elements of card to grow to fill the available space"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "90751623b9cac848b95dd624d601e7617f96ba5a",
+            "comment": "chore: enable build-less DX for storybook"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9231f2bdb426a3f8223335cccac171a68ecbb485",
+            "comment": "feat: Set overflow on positioned element when `autosize` is applied"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "ba7aaecf417043f343933edc159bb5c7e745c8c6",
+            "comment": "feat: Move ProgressBar to stable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Feb 2023 19:18:47 GMT",
       "tag": "@fluentui/react-components_v9.15.5",
       "version": "9.15.5",

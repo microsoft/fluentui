@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 16 Feb 2023 19:18:47 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.6)
+
+Wed, 22 Feb 2023 23:06:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.5..@fluentui/react-components_v9.15.6)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Set overflow on positioned element when `autosize` is applied ([PR #26868](https://github.com/microsoft/fluentui/pull/26868) by lingfangao@hotmail.com)
+- `@fluentui/react-progress`
+  - feat: Move ProgressBar to stable ([PR #26008](https://github.com/microsoft/fluentui/pull/26008) by ololubek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - bugfix: uses min-height instead of height ([PR #26862](https://github.com/microsoft/fluentui/pull/26862) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - feat: Add react-progress to stable ([PR #26008](https://github.com/microsoft/fluentui/pull/26008) by ololubek@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Clean up Input's interactive styles ([PR #26865](https://github.com/microsoft/fluentui/pull/26865) by behowell@microsoft.com)
+  - fix: Fix the width of Input's focus border with appearance=underline ([PR #26881](https://github.com/microsoft/fluentui/pull/26881) by behowell@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: Popover without focus trap should not be aria-hidden ([PR #26932](https://github.com/microsoft/fluentui/pull/26932) by lingfangao@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: update SpinButton to use makeResetStyles ([PR #26867](https://github.com/microsoft/fluentui/pull/26867) by seanmonahan@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - fix: allow elements of card to grow to fill the available space ([PR #26616](https://github.com/microsoft/fluentui/pull/26616) by marcosvmmoura@gmail.com)
 
 ## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.5)
 
