@@ -12,7 +12,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
+export const renderSkeleton_unstable: (state: SkeletonState, contextValues: SkeletonContextValues) => JSX.Element;
 
 // @public
 export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSX.Element;
@@ -23,6 +23,17 @@ export const Skeleton: ForwardRefComponent<SkeletonProps>;
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
 
+// @public (undocumented)
+export const SkeletonContextProvider: React_2.Provider<SkeletonContextValue | undefined>;
+
+// @public (undocumented)
+export interface SkeletonContextValue {
+    // (undocumented)
+    animation?: 'wave' | 'pulse';
+    // (undocumented)
+    appearance?: 'opaque' | 'translucent';
+}
+
 // @public
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
 
@@ -31,6 +42,8 @@ export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
 
 // @public
 export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+    animation?: 'wave' | 'pulse';
+    appearance?: 'opaque' | 'translucent';
     size?: SkeletonItemSize;
     shape?: 'circle' | 'square' | 'rectangle';
 };
@@ -41,7 +54,7 @@ export type SkeletonItemSlots = {
 };
 
 // @public
-export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pick<SkeletonItemProps, 'size' | 'shape'>>;
+export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>>;
 
 // @public
 export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
@@ -56,10 +69,13 @@ export type SkeletonSlots = {
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation'>> & Pick<SkeletonProps, 'appearance'>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
+
+// @public (undocumented)
+export const useSkeletonContext: () => SkeletonContextValue;
 
 // @public
 export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
