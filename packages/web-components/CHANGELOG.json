@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 24 Feb 2023 04:20:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.6",
+      "version": "3.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2de60aec984eb2802da76c6c67849da358c0db49",
+            "comment": "feat(switch): Add switch web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 04:22:43 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.5",
       "version": "3.0.0-alpha.5",
