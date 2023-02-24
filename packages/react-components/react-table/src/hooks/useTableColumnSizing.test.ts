@@ -87,36 +87,7 @@ describe('useTableColumnSizing', () => {
     const props = renderHookResult.result.current.columnSizing_unstable.getTableHeaderCellProps(1);
     expect(props).toMatchInlineSnapshot(`
       Object {
-        "aside": <WithTableKeyboardHandler
-          columnResizeState={
-            Object {
-              "getColumnById": [MockFunction] {
-                "calls": Array [
-                  Array [
-                    1,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": Object {
-                      "columnId": 1,
-                      "idealWidth": 150,
-                      "minWidth": 100,
-                      "padding": 16,
-                      "width": 150,
-                    },
-                  },
-                ],
-              },
-              "getColumnWidth": [MockFunction],
-              "getColumns": [MockFunction],
-              "setColumnWidth": [MockFunction],
-            }
-          }
-        >
-          [Function]
-        </WithTableKeyboardHandler>,
+        "aside": <TableResizeHandle />,
         "style": Object {
           "maxWidth": 150,
           "minWidth": 150,

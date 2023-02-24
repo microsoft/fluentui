@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useTableHeaderCell_unstable } from './useTableHeaderCell';
-import type { TableHeaderCellProps } from './TableHeaderCell.types';
 import { renderTableHeaderCell_unstable } from './renderTableHeaderCell';
 import { useTableHeaderCellStyles_unstable } from './useTableHeaderCellStyles';
+import type { TableHeaderCellProps } from './TableHeaderCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**

@@ -10,8 +10,6 @@ import {
 import { useMeasureElement } from './useMeasureElement';
 import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useTableColumnResizeState } from './useTableColumnResizeState';
-import { MenuItem } from '../../../react-menu/src/MenuItem';
-import { WithColumnId } from '../contexts/columnIdContext';
 import { useInteractiveKeyboardResizing } from './useInteractiveKeyboardResizing';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
@@ -89,7 +87,7 @@ function useTableColumnSizingState<TItem>(
             value={col ? col.width : 0}
           />
         );
-        return col ? { style: getColumnStyles(col), aside, columnId } : { columnId };
+        return col ? { style: getColumnStyles(col), aside } : {};
       },
       getTableCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
