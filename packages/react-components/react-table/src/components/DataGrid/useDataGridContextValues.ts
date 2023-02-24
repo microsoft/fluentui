@@ -13,6 +13,7 @@ export function useDataGridContextValues_unstable(state: DataGridState): DataGri
       subtleSelection: state.subtleSelection,
       selectionAppearance: state.selectionAppearance,
       resizableColumns: state.resizableColumns,
+      accessibilityMenuItems: state.tableState.accessibilityMenuItems,
     },
   };
 }

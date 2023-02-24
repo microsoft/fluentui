@@ -20,6 +20,11 @@ import {
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -187,7 +192,22 @@ export const ResizableColumns = () => {
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+          {({ renderHeaderCell, columnId }, state) => (
+            <Menu openOnContext>
+              <MenuTrigger>
+                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  {state.accessibilityMenuItems?.map(item => (
+                    <MenuItem key={item.key} onClick={item.getClickHandler(columnId)}>
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>

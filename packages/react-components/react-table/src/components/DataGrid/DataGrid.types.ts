@@ -9,6 +9,7 @@ import type {
   OnSelectionChangeData,
   TableColumnSizingOptions,
   TableColumnId,
+  TableAccessibilityMenuItemDefinition,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
 import { KeyboardNavigationContextValue } from '../../contexts/keyboardNavigationContext';
@@ -57,6 +58,8 @@ export type DataGridContextValue = TableFeaturesState<any> & {
   resizableColumns?: boolean;
 
   keyboardNavigationContext?: KeyboardNavigationContextValue;
+
+  accessibilityMenuItems?: TableAccessibilityMenuItemDefinition[];
 };
 
 /**

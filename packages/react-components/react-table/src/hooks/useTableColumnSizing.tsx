@@ -64,11 +64,11 @@ function useTableColumnSizingState<TItem>(
     [keyboardResizing],
   );
 
-  tableState.accessibilityMenuOptions?.push(
-    <WithColumnId key="column-sizing">
-      {(columnId: TableColumnId) => <MenuItem onClick={onMenuItemClick(columnId)}>Keyboard Column Resizing</MenuItem>}
-    </WithColumnId>,
-  );
+  tableState.accessibilityMenuItems?.push({
+    key: 'column-sizing',
+    label: 'Keyboard Column Resizing',
+    getClickHandler: onMenuItemClick,
+  });
 
   return {
     ...tableState,

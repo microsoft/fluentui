@@ -142,8 +142,10 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    * Used with column resizing.
    */
   tableRef: React.Ref<HTMLDivElement>;
-
-  accessibilityMenuOptions: React.ReactElement[];
+  /**
+   * Definition of the table's accessibility menu items for keyboard navigation
+   */
+  accessibilityMenuItems: TableAccessibilityMenuItemDefinition[];
 }
 
 export interface UseTableSortOptions {
@@ -229,4 +231,10 @@ export type UseTableColumnSizingParams = {
     data: { columnId: TableColumnId; width: number },
   ) => void;
   containerWidthOffset?: number;
+};
+
+export type TableAccessibilityMenuItemDefinition = {
+  key: React.Key;
+  label: string;
+  getClickHandler: (columnId: TableColumnId) => React.MouseEventHandler;
 };
