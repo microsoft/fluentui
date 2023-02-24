@@ -3,6 +3,8 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import type { TabList as FluentTabList } from './tab-list.js';
 import './define.js';
+import '../tab/define.js';
+import '../tab-panel/define.js';
 
 type TabListStoryArgs = Args & FluentTabList;
 type TabListStoryMeta = Meta<TabListStoryArgs>;
