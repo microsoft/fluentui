@@ -272,7 +272,8 @@
     "@fluentui/public-docsite-v9": {
       "root": "apps/public-docsite-v9",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["platform:web"]
     },
     "@fluentui/react": {
       "root": "packages/react",
@@ -578,14 +579,14 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-migration-v0-v9/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "react-northstar", "platform:web"]
     },
     "@fluentui/react-migration-v8-v9": {
       "root": "packages/react-components/react-migration-v8-v9",
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-migration-v8-v9/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "v8", "platform:web"]
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
@@ -655,14 +656,14 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-portal-compat/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "ships-amd", "platform:web"]
     },
     "@fluentui/react-portal-compat-context": {
       "root": "packages/react-components/react-portal-compat-context",
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-portal-compat-context/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "ships-amd", "platform:web"]
     },
     "@fluentui/react-positioning": {
       "root": "packages/react-components/react-positioning",
