@@ -24,7 +24,7 @@ interface ImportErrorGroup {
 interface ImportErrors {
   /**
    * AMD = checkAmd
-   * This checks is only "helpful" when import is from a folder without specifying explicitly `index`
+   * This check is only "helpful" when import is from a folder without specifying explicitly `index`
    *
    * @example
    * `from './folder'` - invalid (this resolves to 'index' only within NodeJS resolution. ESM spec nor AMD does not support loading folders  - TODO: migrate this to eslint rule and enable everywhere
