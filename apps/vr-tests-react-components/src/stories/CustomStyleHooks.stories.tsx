@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import {
-  Button,
-  CompoundButton,
-  MenuButton,
-  SplitButton,
-  ToggleButton,
-} from '@fluentui/react-button';
+import { Button, CompoundButton, MenuButton, SplitButton, ToggleButton } from '@fluentui/react-button';
 import type {
   ButtonState,
   CompoundButtonState,
