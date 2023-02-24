@@ -84,7 +84,6 @@ function useTableColumnSizingState<TItem>(
           <TableResizeHandle
             onMouseDown={mouseHandler.getOnMouseDown(columnId)}
             onTouchStart={mouseHandler.getOnMouseDown(columnId)}
-            value={col ? col.width : 0}
           />
         );
         return col ? { style: getColumnStyles(col), aside } : {};
