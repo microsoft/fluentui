@@ -91,8 +91,7 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
     if (!columnId.current) {
       enableInteractiveMode(colId);
     } else if (colId && columnId.current !== colId) {
-      disableInteractiveMode();
-      enableInteractiveMode(colId);
+      columnId.current = colId;
     } else {
       disableInteractiveMode();
     }
