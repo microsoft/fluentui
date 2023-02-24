@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(image): Add image web component",
+  "packageName": "@fluentui/web-components",
+  "email": "harankin@microsoft.com",
+  "dependentChangeType": "patch"
+}
