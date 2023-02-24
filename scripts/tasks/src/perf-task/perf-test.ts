@@ -6,13 +6,7 @@ import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from '
 import { getJustArgv as argv } from '../argv';
 
 import { DEPLOYHOST, DEPLOYURL, EnvVariablesByProject, SYSTEM_PULLREQUEST_TARGETBRANCH } from './env';
-import {
-  IterationsDefault,
-  RenderTypesDefault,
-  ScenarioIterations,
-  ScenarioNames,
-  ScenarioRenderTypes,
-} from './settings';
+import { IterationsDefault, PerfRegressionConfig, RenderTypesDefault } from './settings';
 
 type ScenarioSetting = Record<string, { scenarioName: string; iterations: number; renderType: string }>;
 // TODO: consolidate with newer version of fluent perf-test
@@ -105,16 +99,7 @@ type ScenarioSetting = Record<string, { scenarioName: string; iterations: number
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
-export async function getPerfRegressions(options: {
-  scenariosProjectName: string;
-  projectName: string;
-  outDir: string;
-  tempDir: string;
-  scenariosSrcDirPath: string;
-  scenarioNames?: ScenarioNames;
-  scenarioIterations?: ScenarioIterations;
-  scenarioRenderTypes?: ScenarioRenderTypes;
-}) {
+export async function getPerfRegressions(options: PerfRegressionConfig) {
   const {
     scenarioIterations,
     scenarioRenderTypes,

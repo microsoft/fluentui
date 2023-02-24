@@ -94,4 +94,6 @@ export {
   ScenarioIterations,
   ScenarioRenderTypes,
   ScenarioNames,
+  perfTestEnv,
+  PerfRegressionConfig,
 } from './perf-task';

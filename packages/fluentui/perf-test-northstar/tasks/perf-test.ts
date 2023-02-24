@@ -3,10 +3,10 @@ import path from 'path';
 import _ from 'lodash';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
 import { generateUrl } from '@fluentui/digest';
-import { getFluentPerfRegressions } from './fluentPerfRegressions';
+import { perfTestEnv } from '@fluentui/scripts-tasks';
 
-// Hardcoded PR deploy URL for local testing
-const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
+import { getFluentPerfRegressions } from './fluentPerfRegressions';
+import { config } from './perf-test.config';
 
 type ExtendedCookResult = CookResult & {
   extended: {
@@ -35,17 +35,16 @@ const urlForDeployPath = `file://${path.resolve(__dirname, '../dist/')}`;
 const urlForDeploy = `${urlForDeployPath}/index.html`;
 const defaultIterations = 1;
 
-const outDir = path.join(__dirname, '../dist');
-const tempDir = path.join(__dirname, '../logfiles');
-
 console.log(`__dirname: ${__dirname}`);
 
-export default async function getPerfRegressions(baselineOnly: boolean = false) {
+export default async function getPerfRegressions(_config: typeof config, baselineOnly: boolean = false) {
+  const { outDir, tempDir, scenariosSrcDirPath, projectName, scenariosProjectName } = _config;
+  const projectEnvVars = perfTestEnv.EnvVariablesByProject[projectName];
   let urlForMaster: string | undefined;
 
   if (!baselineOnly) {
-    const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-    urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test-northstar/index.html`;
+    const targetPath = `heads/${perfTestEnv.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
+    urlForMaster = `https://${perfTestEnv.DEPLOYHOST}/${targetPath}/${scenariosProjectName}/index.html`;
   }
 
   // For debugging, in case the environment variables used to generate these have unexpected values
@@ -59,7 +58,7 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
   const scenarioList: string[] = [];
 
   // TODO: can this get typing somehow? can't be imported since file is only available after build
-  const test = require('../dist/stories.js');
+  const test = require(scenariosSrcDirPath);
   const { stories } = test.default;
 
   console.log('stories:');
@@ -127,12 +126,15 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
   fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
   console.log(
-    `##vso[task.setvariable variable=PerfCommentFilePathNorthstar;]packages/fluentui/perf-test-northstar/dist/perfCounts.html`,
+    `##vso[task.setvariable variable=${projectEnvVars.filePath};]packages/fluentui/${scenariosProjectName}/dist/perfCounts.html`,
   );
-  console.log(`##vso[task.setvariable variable=PerfCommentStatusNorthstar;]${status}`);
+  console.log(`##vso[task.setvariable variable=${projectEnvVars.status};]${status}`);
 }
 
-function extendCookResults(stories, testResults: CookResults): ExtendedCookResults {
+function extendCookResults(
+  stories: { [x: string]: { [x: string]: any } | { [x: string]: { filename: any } } },
+  testResults: CookResults,
+): ExtendedCookResults {
   return _.mapValues(testResults, (testResult, resultKey) => {
     const kind = getKindKey(resultKey);
     const story = getStoryKey(resultKey);
@@ -158,7 +160,7 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
  * @param {CookResults} testResults
  * @returns {string}
  */
-function createReport(stories, testResults: ExtendedCookResults): string {
+function createReport(stories: any, testResults: ExtendedCookResults): string {
   // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
   // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
   // // Show only significant changes by default.
@@ -179,15 +181,9 @@ function createReport(stories, testResults: ExtendedCookResults): string {
  * @param {boolean} showAll Show only significant results by default.
  * @returns {string}
  */
-function createScenarioTable(stories, testResults: ExtendedCookResults, showAll: boolean): string {
+function createScenarioTable(stories: any, testResults: ExtendedCookResults, showAll: boolean): string {
   const resultsToDisplay = Object.keys(testResults)
-    .filter(
-      key =>
-        showAll ||
-        (testResults[key].analysis &&
-          testResults[key].analysis.regression &&
-          testResults[key].analysis.regression.isRegression),
-    )
+    .filter(key => showAll || testResults[key]?.analysis?.regression?.isRegression)
     .filter(testResultKey => getStoryKey(testResultKey) !== 'Fabric')
     .sort();
 
@@ -272,8 +268,13 @@ function getStoryKey(resultKey: string): string {
   return story;
 }
 
-function getTpiResult(testResults, stories, kind, story): number | undefined {
-  let tpi = undefined;
+function getTpiResult(
+  testResults: CookResults,
+  stories: { [x: string]: { [x: string]: any } },
+  kind: string,
+  story: string,
+): number | undefined {
+  let tpi: number | undefined;
   if (stories[kind][story]) {
     const resultKey = `${kind}.${story}`;
     const testResult = testResults[resultKey];
@@ -284,7 +285,11 @@ function getTpiResult(testResults, stories, kind, story): number | undefined {
   return tpi;
 }
 
-function getIterations(stories, kind, story): number {
+function getIterations(
+  stories: { [x: string]: { [x: string]: any } | { default: { iterations: any } } },
+  kind: string,
+  story: string,
+): number {
   // Give highest priority to most localized definition of iterations. Story => kind => default.
   return (
     stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations
@@ -295,7 +300,7 @@ function getTicks(testResult: CookResult): number | undefined {
   return testResult.analysis && testResult.analysis.numTicks;
 }
 
-function linkifyResult(testResult, resultContent, getBaseline) {
+function linkifyResult(testResult: CookResult, resultContent: string | number | undefined, getBaseline: boolean) {
   let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile;
   let errorFile = testResult.processed.error && testResult.processed.error.errorFile;
 

@@ -20,3 +20,14 @@ export type ScenarioNames = { [scenarioName: string]: string };
 export type ScenarioRenderTypes = { [scenarioName: string]: string[] };
 
 export type ScenarioIterations = { [scenarioName: string]: number };
+
+export type PerfRegressionConfig = {
+  scenariosProjectName: string;
+  projectName: string;
+  outDir: string;
+  tempDir: string;
+  scenariosSrcDirPath: string;
+  scenarioNames?: ScenarioNames;
+  scenarioIterations?: ScenarioIterations;
+  scenarioRenderTypes?: ScenarioRenderTypes;
+};
