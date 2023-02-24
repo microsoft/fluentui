@@ -24,7 +24,7 @@
     "@fluentui/react-avatar": "^9.3.7",
     "@fluentui/react-badge": "^9.0.26",
     "@fluentui/react-button": "^9.2.5",
-    "@fluentui/react-card": "9.0.0-beta.47",
+    "@fluentui/react-card": "9.0.0-rc.0",
     "@fluentui/react-checkbox": "^9.0.28",
     "@fluentui/react-combobox": "^9.1.5",
     "@fluentui/react-dialog": "^9.1.16",
