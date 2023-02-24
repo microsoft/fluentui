@@ -22,6 +22,7 @@ export type CustomStyleHooksContextValue_unstable = {
     useAvatarGroupPopoverStyles_unstable: (state: unknown) => void;
     useBadgeStyles_unstable: (state: unknown) => void;
     useCounterBadgeStyles_unstable: (state: unknown) => void;
+    usePresenceBadgeStyles_unstable: (state: unknown) => void;
     useButtonStyles_unstable: (state: unknown) => void;
     useCompoundButtonStyles_unstable: (state: unknown) => void;
     useMenuButtonStyles_unstable: (state: unknown) => void;

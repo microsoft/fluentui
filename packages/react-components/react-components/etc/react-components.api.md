@@ -869,6 +869,7 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useProgressBar_unstable } from '@fluentui/react-progress';
 import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useRadio_unstable } from '@fluentui/react-radio';
@@ -2680,6 +2681,8 @@ export { usePopoverTrigger_unstable }
 export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
+
+export { usePresenceBadgeStyles_unstable }
 
 export { useProgressBar_unstable }
 
