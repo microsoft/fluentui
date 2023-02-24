@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TimePicker } from './TimePicker';
 // import { ITimeRange } from './TimePicker.types';
-// import { create } from '@fluentui/utilities/lib/test';
+// import { create } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
 import type { IComboBox } from '../ComboBox/ComboBox.types';
 import { KeyCodes } from '../../Utilities';
