@@ -21,7 +21,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 
 // @public (undocumented)
-export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>) => React_2.ReactNode;
+export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, state: DataGridRowState) => React_2.ReactNode;
 
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
@@ -86,6 +86,7 @@ export type DataGridContextValue = TableFeaturesState<any> & {
     selectionAppearance: TableRowProps['appearance'];
     resizableColumns?: boolean;
     keyboardNavigationContext?: KeyboardNavigationContextValue;
+    accessibilityMenuItems?: TableAccessibilityMenuItemDefinition[];
 };
 
 // @public (undocumented)
@@ -159,6 +160,7 @@ export type DataGridRowSlots = TableRowSlots & {
 export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
     columnDefs: TableColumnDefinition<any>[];
+    accessibilityMenuItems: TableAccessibilityMenuItemDefinition[];
 };
 
 // @public
@@ -375,6 +377,7 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 
 // @public (undocumented)
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
+    accessibilityMenuItems: TableAccessibilityMenuItemDefinition[];
     columns: TableColumnDefinition<TItem>[];
     columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
@@ -438,9 +441,7 @@ export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
 export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
 
 // @public
-export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {
-    value?: number;
-};
+export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
 
 // @public (undocumented)
 export type TableResizeHandleSlots = {
