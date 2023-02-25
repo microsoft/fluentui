@@ -22,7 +22,7 @@ export class Avatar extends FASTElement {
    * HTML Attribute: name
    */
   @attr
-  public name: string | undefined;
+  public name?: string | undefined;
 
   /**
    * Provide custom initials rather than one generated via the name
@@ -32,7 +32,7 @@ export class Avatar extends FASTElement {
    * HTML Attribute: name
    */
   @attr
-  public initials: string | undefined;
+  public initials?: string | undefined;
 
   /**
    * Size of the avatar in pixels.
@@ -49,7 +49,7 @@ export class Avatar extends FASTElement {
    *
    */
   @attr({ converter: nullableNumberConverter })
-  public size: AvatarSize | undefined;
+  public size?: AvatarSize | undefined;
 
   /**
    * The avatar can have a circular or square shape.
@@ -59,7 +59,7 @@ export class Avatar extends FASTElement {
    * HTML Attribute: shape
    */
   @attr
-  public shape: AvatarShape | undefined;
+  public shape?: AvatarShape | undefined;
 
   /**
    * Optional activity indicator
@@ -96,14 +96,14 @@ export class Avatar extends FASTElement {
    * HTML Attribute: color
    */
   @attr
-  public color: AvatarColor = 'neutral';
+  public color?: AvatarColor = 'neutral';
 
   /**
    * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
    * Use this when a name is not available, but there is another unique identifier that can be used instead.
    */
   @attr({ attribute: 'color-id' })
-  public colorId: AvatarNamedColor | undefined;
+  public colorId?: AvatarNamedColor | undefined;
 
   /**
    * Sets the data-color attribute used for the visual presentation
