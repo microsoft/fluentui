@@ -2,7 +2,7 @@ export * from './accordion/index.js';
 export * from './accordion-item/index.js';
 export * from './badge/index.js';
 export * from './counter-badge/index.js';
-export * from './menu-list/index.js';
+export * from './menu/index.js';
 export * from './menu-item/index.js';
 export * from './progress-bar/index.js';
 export * from './spinner/index.js';

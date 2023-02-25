@@ -1,7 +1,7 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { MenuList } from './menu-list.js';
-import { styles } from './menu-list.styles.js';
-import { template } from './menu-list.template.js';
+import { Menu } from './menu.js';
+import { styles } from './menu.styles.js';
+import { template } from './menu.template.js';
 
 /**
  * The Fluent Menu Element. Implements {@link @microsoft/fast-foundation#Menu },
@@ -12,8 +12,8 @@ import { template } from './menu-list.template.js';
  * @remarks
  * HTML Element: <fluent-menu>
  */
-export const definition = MenuList.compose({
-  name: `${FluentDesignSystem.prefix}-menu-list`,
+export const definition = Menu.compose({
+  name: `${FluentDesignSystem.prefix}-menu`,
   template,
   styles,
 });
