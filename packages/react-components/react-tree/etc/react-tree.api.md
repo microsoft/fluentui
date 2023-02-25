@@ -32,10 +32,10 @@ export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> & TreeItemPr
 };
 
 // @public (undocumented)
-export type FlatTreeItems = LazyArray<Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps>;
+export type FlatTreeProps = Pick<TreeProps, 'openItems' | 'onOpenChange'>;
 
 // @public (undocumented)
-export type FlatTreeProps = Pick<TreeProps, 'openItems' | 'onOpenChange'>;
+export type LazyFlatTreeItems = LazyArray<Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps>;
 
 // @public (undocumented)
 export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
@@ -194,7 +194,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public (undocumented)
-export function useFlatTreeItems_unstable(items: FlatTreeItemProps[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, FlatTreeItems];
+export function useFlatTreeItems_unstable(items: FlatTreeItemProps[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, LazyFlatTreeItems];
 
 // @public (undocumented)
 export type UseFlatTreeItemsOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems'>;
