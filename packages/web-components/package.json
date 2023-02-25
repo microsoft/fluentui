@@ -32,6 +32,10 @@
       "types": "./dist/esm/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
+    "./avatar": {
+      "types": "./dist/esm/avatar/define.d.ts",
+      "default": "./dist/esm/avatar/define.js"
+    },
     "./badge": {
       "types": "./dist/esm/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
