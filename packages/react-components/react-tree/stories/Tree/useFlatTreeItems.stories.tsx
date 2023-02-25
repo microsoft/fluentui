@@ -3,60 +3,60 @@ import { Tree, TreeItem, TreeItemLayout, FlatTreeItemProps, useFlatTreeItems_uns
 
 const defaultItems: FlatTreeItemProps[] = [
   {
-    id: 'flatTreeItem_lvl-1_item-1',
+    id: '1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
   },
   {
-    id: '1',
-    parentId: 'flatTreeItem_lvl-1_item-1',
+    id: '1-1',
+    parentId: '1',
     children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
   },
   {
-    id: '2',
-    parentId: 'flatTreeItem_lvl-1_item-1',
+    id: '1-2',
+    parentId: '1',
     children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
   },
   {
-    id: '3',
-    parentId: 'flatTreeItem_lvl-1_item-1',
+    id: '1-3',
+    parentId: '1',
     children: <TreeItemLayout>Level 2, item 3</TreeItemLayout>,
   },
   {
-    id: 'flatTreeItem_lvl-1_item-2',
+    id: '2',
     children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
   },
   {
-    id: 'flatTreeItem_lvl-2_item-1',
-    parentId: 'flatTreeItem_lvl-1_item-2',
+    id: '2-1',
+    parentId: '2',
     children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
   },
   {
-    id: '4',
-    parentId: 'flatTreeItem_lvl-2_item-1',
+    id: '2-1-1',
+    parentId: '2-1',
     children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
   },
   {
-    id: '5',
-    parentId: 'flatTreeItem_lvl-1_item-2',
+    id: '2-2',
+    parentId: '2',
     children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
   },
   {
-    id: '6',
-    parentId: '5',
+    id: '2-2-1',
+    parentId: '2-2',
     children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
   },
   {
-    id: '7',
-    parentId: '5',
-    children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
+    id: '2-2-2',
+    parentId: '2-2',
+    children: <TreeItemLayout>Level 3, item 2</TreeItemLayout>,
   },
   {
-    id: '8',
-    parentId: '5',
-    children: <TreeItemLayout>Level 3, item 1</TreeItemLayout>,
+    id: '2-2-3',
+    parentId: '2-2',
+    children: <TreeItemLayout>Level 3, item 3</TreeItemLayout>,
   },
   {
-    id: '9',
+    id: '3',
     children: <TreeItemLayout>Level 1, item 3</TreeItemLayout>,
   },
 ];
