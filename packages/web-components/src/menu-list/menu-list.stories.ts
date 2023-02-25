@@ -81,31 +81,31 @@ const Code20Filled = html`<svg
 
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
-    <fluent-menu-list>
-      <fluent-menu-item ?disabled=${x => x.disabled}>
+    <fluent-menu-list icons>
+      <fluent-menu-item icon ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
+        <span slot="end">Ctrl+X</span>
       </fluent-menu-item>
-      <fluent-menu-item ?disabled=${x => x.disabled}>
+      <fluent-menu-item icon ?disabled=${x => x.disabled}>
         <span slot="start">${Edit20Filled}</span>
         Edit
+        <span slot="end">Ctrl+E</span>
       </fluent-menu-item>
-      <fluent-menu-item ?disabled=${x => x.disabled}>
+      <fluent-menu-item icon ?disabled=${x => x.disabled}> Open </fluent-menu-item>
+      <fluent-menu-item icon ?disabled=${x => x.disabled}>
         New
-        <span slot="end">Ctrl+N</span>
-      </fluent-menu-item>
-      <fluent-menu-item ?disabled=${x => x.disabled}>
-        Open
         <fluent-menu-list slot="submenu">
-          <fluent-menu-item>
+          <fluent-menu-item icon>
             File
             <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
-          <fluent-menu-item>
+          <fluent-menu-item icon>
             Workspace
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu-list>
+        <span slot="end">Ctrl+N</span>
       </fluent-menu-item>
     </fluent-menu-list>
   </div>
@@ -133,15 +133,15 @@ export const Menu = renderComponent(storyTemplate).bind({});
 export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
     <fluent-menu-list>
-      <fluent-menu-item role="menuitemcheckbox">
+      <fluent-menu-item role="menuitemcheckbox" icon>
         Option 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox">
+      <fluent-menu-item role="menuitemcheckbox" icon>
         Option 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox">
+      <fluent-menu-item role="menuitemcheckbox" icon>
         Option 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
