@@ -83,25 +83,25 @@ const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
     <fluent-menu icons>
       <fluent-menu-item icon ?disabled=${x => x.disabled}>
-        Cut
+        Item 1
         <span slot="start">${Cut20Filled}</span>
         <span slot="end">Ctrl+X</span>
       </fluent-menu-item>
       <fluent-menu-item icon ?disabled=${x => x.disabled}>
         <span slot="start">${Edit20Filled}</span>
-        Edit
+        Item 2
         <span slot="end">Ctrl+E</span>
       </fluent-menu-item>
       <fluent-menu-item icon ?disabled=${x => x.disabled}> Open </fluent-menu-item>
       <fluent-menu-item icon ?disabled=${x => x.disabled}>
-        New
+        ITem 3
         <fluent-menu slot="submenu">
           <fluent-menu-item icon>
-            File
+            Subitem 1
             <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
           <fluent-menu-item icon>
-            Workspace
+            Subitem 2
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
@@ -134,17 +134,14 @@ export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
     <fluent-menu>
       <fluent-menu-item role="menuitemcheckbox" icon>
-        Option 1
+        Item 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item role="menuitemcheckbox" icon>
-        Option 2
+        Item 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" icon>
-        Option 3
-        <span slot="start">${ClipboardPaste20Filled}</span>
-      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox" icon> Item 3 </fluent-menu-item>
     </fluent-menu>
   </div>
 `);
@@ -152,16 +149,32 @@ export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
 export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
     <fluent-menu>
-      <fluent-menu-item role="menuitemradio">
-        Option 1
+      <fluent-menu-item role="menuitemradio" icon>
+        Item 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio">
-        Option 2
+      <fluent-menu-item role="menuitemradio" icon>
+        Item 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio">
-        Option 3
+      <fluent-menu-item role="menuitemradio" icon> Item 3 </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuWithIcons = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative">
+    <fluent-menu icons>
+      <fluent-menu-item icon>
+        Item 1
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item icon>
+        Item 2
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item icon>
+        Item 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
     </fluent-menu>
@@ -171,33 +184,34 @@ export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
 export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
   <div style="width: 260px; position: relative;">
     <fluent-menu>
-      <fluent-menu-item>
-        New
+      <fluent-menu-item icon>
+        Item 1
+        <span slot="start">${Edit20Filled}</span>
         <fluent-menu slot="submenu">
-          <fluent-menu-item>
-            File
+          <fluent-menu-item icon>
+            Subitem 1
             <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
-          <fluent-menu-item>
-            Workspace
+          <fluent-menu-item icon>
+            Subitem 2
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
       </fluent-menu-item>
-      <fluent-menu-item>
-        Open
+      <fluent-menu-item icon>
+        Item 2
         <fluent-menu slot="submenu">
           <fluent-menu-item>
-            Folder
+            Subitem 1
             <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
           <fluent-menu-item>
-            Workspace
+            Subitem 1
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
       </fluent-menu-item>
-      <fluent-menu-item> Help</fluent-menu-item>
+      <fluent-menu-item icon>Item 3</fluent-menu-item>
     </fluent-menu>
   </div>
 `);
