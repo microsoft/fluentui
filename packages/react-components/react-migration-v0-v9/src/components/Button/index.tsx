@@ -1,1 +1,1 @@
-export { buttonMigrationStyles } from './ButtonMigration.mixins';
+export * from './ButtonMigration.mixins';

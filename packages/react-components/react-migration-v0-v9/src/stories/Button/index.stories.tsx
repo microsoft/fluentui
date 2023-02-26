@@ -3,7 +3,7 @@ import descriptionMd from './Description.md';
 import { Button, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles, Button as V9Button } from '@fluentui/react-components';
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
-import { buttonMigrationStyles } from '../../components/Button';
+import * as buttonMigrationStyles from '../../components/Button';
 
 const useStyles = makeStyles({
   root: {

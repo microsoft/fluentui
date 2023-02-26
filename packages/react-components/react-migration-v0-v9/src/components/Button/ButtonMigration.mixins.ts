@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { GriffelStyle, shorthands } from '@fluentui/react-components';
 
-const v9HoverClasses = (): GriffelStyle => ({
+export const v9HoverClasses = (): GriffelStyle => ({
   '& .fui-Icon-filled': {
     display: 'none',
   },
@@ -18,7 +18,7 @@ const v9HoverClasses = (): GriffelStyle => ({
   },
 });
 
-const v9Icon = (): GriffelStyle => ({
+export const v9Icon = (): GriffelStyle => ({
   // styles that allow to keep consistent size of v9 icon with v0 icon
   '& svg': {
     width: '100%',
@@ -31,14 +31,14 @@ const v9Icon = (): GriffelStyle => ({
   ...v9HoverClasses(),
 });
 
-const v9CustomSizeIcon = (): GriffelStyle => ({
+export const v9CustomSizeIcon = (): GriffelStyle => ({
   '& svg': {
     ...shorthands.overflow('visible'),
   },
   ...v9HoverClasses(),
 });
 
-const v0Icon = (): GriffelStyle => ({
+export const v0Icon = (): GriffelStyle => ({
   '& .ui-icon__outline': {
     display: 'block',
   },
@@ -55,7 +55,7 @@ const v0Icon = (): GriffelStyle => ({
   },
 });
 
-const v9DisabledCursor = (): GriffelStyle => ({
+export const v9DisabledCursor = (): GriffelStyle => ({
   '&:disabled': {
     cursor: 'default',
     '&:hover': {
@@ -66,10 +66,3 @@ const v9DisabledCursor = (): GriffelStyle => ({
     },
   },
 });
-
-export const buttonMigrationStyles = {
-  v9Icon,
-  v9CustomSizeIcon,
-  v0Icon,
-  v9DisabledCursor,
-};
