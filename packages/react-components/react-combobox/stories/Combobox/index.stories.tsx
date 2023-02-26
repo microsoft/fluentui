@@ -7,6 +7,7 @@ import bestPracticesMd from './ComboboxBestPractices.md';
 export { Default } from './ComboboxDefault.stories';
 export { ComplexOptions } from './ComboboxComplexOptions.stories';
 export { CustomOptions } from './ComboboxCustomOptions.stories';
+export { Controlled } from './ComboboxControlled.stories';
 export { Filtering } from './ComboboxFiltering.stories';
 export { Freeform } from './ComboboxFreeform.stories';
 export { Multiselect } from './ComboboxMultiselect.stories';
@@ -15,9 +16,10 @@ export { MultiselectWithValueString } from './ComboboxMultiselectWithValueString
 export { Grouped } from './ComboboxGrouped.stories';
 export { Appearance } from './ComboboxAppearance.stories';
 export { Size } from './ComboboxSize.stories';
+export { Disabled } from './ComboboxDisabled.stories';
 
 export default {
-  title: 'Preview Components/Combobox',
+  title: 'Components/Combobox',
   component: Combobox,
   parameters: {
     docs: {

@@ -1,121 +1,69 @@
 import * as React from 'react';
-import { teamsLightTheme, typographyStyles } from '@fluentui/react-components';
-import type {
-  FontFamilyTokens,
-  FontSizeTokens,
-  FontWeightTokens,
-  LineHeightTokens,
-  TypographyStyle,
-} from '@fluentui/react-components';
+import { makeStyles, Subtitle2Stronger, Text, typographyStyles } from '@fluentui/react-components';
+import type { TypographyStyles } from '@fluentui/react-components';
 
-const theme = teamsLightTheme;
+type TypographyTokens = [token: keyof TypographyStyles, tokenName: string, values: string[]][];
 
-export const FontFamily = () => (
-  <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
-    {(Object.keys(theme).filter(tokenName => tokenName.startsWith('fontFamily')) as (keyof FontFamilyTokens)[]).map(
-      fontFamily => [
-        <div key={fontFamily}>{fontFamily}</div>,
-        <div key={`${fontFamily}-value`} style={{ fontFamily: `${theme[fontFamily]}` }}>
-          {theme[fontFamily]}Font family {fontFamily}
-        </div>,
-      ],
-    )}
-  </div>
-);
+const useStyles = makeStyles({
+  container: {
+    rowGap: '24px',
+    columnGap: '48px',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto 1fr',
+    alignItems: 'start',
+  },
 
-export const FontSize = () => (
-  <div style={{ fontFamily: theme.fontFamilyBase }}>
-    <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
-      {(Object.keys(theme).filter(tokenName => tokenName.startsWith('fontSize')) as (keyof FontSizeTokens)[]).map(
-        fontSize => [
-          <div key={fontSize}>{fontSize}</div>,
-          <div key={`${fontSize}-value`} style={{ fontSize: theme[fontSize] }}>
-            {fontSize}
-          </div>,
-        ],
-      )}
-    </div>
-  </div>
-);
+  ...typographyStyles,
+});
 
-export const LineHeight = () => (
-  <div style={{ fontFamily: theme.fontFamilyBase }}>
-    <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
-      {(Object.keys(theme).filter(tokenName => tokenName.startsWith('lineHeight')) as (keyof LineHeightTokens)[]).map(
-        lineHeight => [
-          <div key={lineHeight}>{lineHeight}</div>,
-          <div key={`${lineHeight}-value`} style={{ lineHeight: theme[lineHeight], backgroundColor: '#eee' }}>
-            {lineHeight}
-          </div>,
-        ],
-      )}
-    </div>
-  </div>
-);
+const tokenOrder: (keyof TypographyStyles)[] = [
+  'caption2',
+  'caption2Strong',
+  'caption1',
+  'caption1Strong',
+  'caption1Stronger',
+  'body1',
+  'body1Strong',
+  'body1Stronger',
+  'body2',
+  'subtitle2',
+  'subtitle2Stronger',
+  'subtitle1',
+  'title3',
+  'title2',
+  'title1',
+  'largeTitle',
+  'display',
+];
 
-export const FontWeight = () => (
-  <div
-    style={{
-      fontFamily: theme.fontFamilyBase,
-      display: 'grid',
-      gridTemplateColumns: 'auto 1fr',
-      gap: '10px',
-      alignItems: 'center',
-    }}
-  >
-    {(Object.keys(theme).filter(tokenName => tokenName.startsWith('fontWeight')) as (keyof FontWeightTokens)[]).map(
-      fontWeight => [
-        <div key={fontWeight}>{fontWeight}</div>,
-        <div key={`${fontWeight}-value`} style={{ fontWeight: theme[fontWeight] }}>
-          Font weight {fontWeight}
-        </div>,
-      ],
-    )}
-  </div>
-);
+const tokens: TypographyTokens = tokenOrder.map(token => [
+  token,
+  token.replace(/([A-Z\d])/g, ' $1').replace(/^(.)/, firstChar => firstChar.toUpperCase()),
+  Object.values(typographyStyles[token]).map(v => v.replace(/var\(--(.+)\)/, '$1')),
+]);
 
-export const TypographyStyles = () => {
-  // var(--tokenName) => tokenName
-  function formatTypographyStyleValue(typographyStyleValue: TypographyStyle) {
-    return (
-      <div>
-        {Object.values(typographyStyleValue).map(value => (
-          <div key={value}>{value.replace(/var\(--(.+)\)/, '$1')}</div>
-        ))}
-      </div>
-    );
-  }
-
-  // caption1Strong => Caption 1 Strong
-  function formatTypographyStyleName(typographyStyleName: string) {
-    return typographyStyleName.replace(/([A-Z\d])/g, ' $1').replace(/^(.)/, firstChar => firstChar.toUpperCase());
-  }
+export const Typography = () => {
+  const styles = useStyles();
 
   return (
-    <div>
-      <div>
-        <em>Typography style is represented by a set of tokens instead of an individual token.</em>
-      </div>
-      <div
-        style={{
-          marginTop: '2em',
-          fontFamily: theme.fontFamilyBase,
-          display: 'grid',
-          gridTemplateColumns: 'auto auto 1fr',
-          gap: '10px',
-          alignItems: 'center',
-        }}
-      >
-        {(Object.keys(typographyStyles) as (keyof typeof typographyStyles)[]).map(typographyStyleName => [
-          <div key={typographyStyleName}>{typographyStyleName}</div>,
-          <div key={`${typographyStyleName}-value`}>
-            {formatTypographyStyleValue(typographyStyles[typographyStyleName])}
-          </div>,
-          <div key={`${typographyStyleName}-demo`} style={typographyStyles[typographyStyleName]}>
-            Hello, I am {formatTypographyStyleName(typographyStyleName)}
-          </div>,
-        ])}
-      </div>
+    <div className={styles.container}>
+      <Subtitle2Stronger>Name</Subtitle2Stronger>
+      <Subtitle2Stronger>Tokens</Subtitle2Stronger>
+      <Subtitle2Stronger>Example</Subtitle2Stronger>
+
+      {tokens.map(([token, tokenName, values]) => (
+        <React.Fragment key={token}>
+          <Text>{token}</Text>
+
+          <div>
+            {values.map(value => (
+              <div key={`${token}-${value}`}>{value}</div>
+            ))}
+          </div>
+
+          <Text className={styles[token]}>{tokenName}</Text>
+        </React.Fragment>
+      ))}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AlignCenterHorizontal24Regular, AlignLeft24Regular, AlignRight24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarRadioButton } from '@fluentui/react-components/unstable';
-import type { ToolbarProps } from '@fluentui/react-components/unstable';
+import { Toolbar, ToolbarRadioButton, ToolbarRadioGroup } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
 
 export const ControlledRadio = (props: Partial<ToolbarProps>) => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
@@ -15,15 +15,17 @@ export const ControlledRadio = (props: Partial<ToolbarProps>) => {
   };
 
   return (
-    <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
-      <ToolbarRadioButton aria-label="Align left" name="textOptions" value="left" icon={<AlignLeft24Regular />} />
-      <ToolbarRadioButton
-        aria-label="Align Center"
-        name="textOptions"
-        value="center"
-        icon={<AlignCenterHorizontal24Regular />}
-      />
-      <ToolbarRadioButton aria-label="Align Right" name="textOptions" value="right" icon={<AlignRight24Regular />} />
+    <Toolbar aria-label="with controlled Radio Button" checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <ToolbarRadioGroup>
+        <ToolbarRadioButton aria-label="Align left" name="textOptions" value="left" icon={<AlignLeft24Regular />} />
+        <ToolbarRadioButton
+          aria-label="Align Center"
+          name="textOptions"
+          value="center"
+          icon={<AlignCenterHorizontal24Regular />}
+        />
+        <ToolbarRadioButton aria-label="Align Right" name="textOptions" value="right" icon={<AlignRight24Regular />} />
+      </ToolbarRadioGroup>
     </Toolbar>
   );
 };

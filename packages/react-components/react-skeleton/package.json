@@ -20,18 +20,21 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.18",
-    "@fluentui/scripts": "*"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.3.0",
-    "@griffel/react": "^1.4.2",
+    "@fluentui/react-utilities": "^9.6.0",
+    "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

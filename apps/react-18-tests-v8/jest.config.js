@@ -1,5 +1,5 @@
 // @ts-check
-const { createV8Config: createConfig } = require('@fluentui/scripts/jest');
+const { createV8Config: createConfig } = require('@fluentui/scripts-jest');
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
@@ -14,7 +14,7 @@ const config = createConfig({
 if (config.globals) {
   // override ts-jest config, otherwise it gets merged
   config.globals['ts-jest'] = {
-    tsConfig: '<rootDir>/tsconfig.spec.json',
+    tsconfig: '<rootDir>/tsconfig.spec.json',
     diagnostics: { warnOnly: true /* , exclude: ['packages/**']  */ },
   };
 }

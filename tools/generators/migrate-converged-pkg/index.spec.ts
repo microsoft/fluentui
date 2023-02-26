@@ -445,7 +445,7 @@ describe('migrate-converged-pkg generator', () => {
         preset: '../../../jest.preset.js',
         globals: {
         'ts-jest': {
-        tsConfig: '<rootDir>/tsconfig.spec.json',
+        tsconfig: '<rootDir>/tsconfig.spec.json',
         diagnostics: false,
         },
         },
@@ -805,7 +805,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+          "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
         }
       `);
     });
@@ -1372,7 +1372,7 @@ describe('migrate-converged-pkg generator', () => {
               "enabled": true,
               "untrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
             },
-            "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+            "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
             "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
           }
         `);

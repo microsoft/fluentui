@@ -8,7 +8,6 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useArrowNavigationGroup } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -19,12 +18,15 @@ import {
   TableSelectionCell,
   TableCellLayout,
   useTableFeatures,
-  ColumnDefinition,
+  TableColumnDefinition,
   useTableSelection,
   useTableSort,
-  createColumn,
-  ColumnId,
-} from '@fluentui/react-components/unstable';
+  createTableColumn,
+  TableColumnId,
+  PresenceBadgeStatus,
+  Avatar,
+  useArrowNavigationGroup,
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -92,37 +94,34 @@ const items: Item[] = [
   },
 ];
 
-export const DataGrid = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  }),
+];
 
+export const DataGrid = () => {
   const {
     getRows,
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
@@ -159,7 +158,7 @@ export const DataGrid = () => {
     }),
   );
 
-  const headerSortProps = (columnId: ColumnId) => ({
+  const headerSortProps = (columnId: TableColumnId) => ({
     onClick: (e: React.MouseEvent) => {
       toggleColumnSort(e, columnId);
     },
@@ -177,6 +176,7 @@ export const DataGrid = () => {
             aria-checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
             role="checkbox"
             onClick={toggleAllRows}
+            checkboxIndicator={{ 'aria-label': 'Select all rows ' }}
           />
           <TableHeaderCell {...headerSortProps('file')}>File</TableHeaderCell>
           <TableHeaderCell {...headerSortProps('author')}>Author</TableHeaderCell>
@@ -193,12 +193,25 @@ export const DataGrid = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell role="gridcell" aria-selected={selected} checked={selected} />
+            <TableSelectionCell
+              role="gridcell"
+              aria-selected={selected}
+              checked={selected}
+              checkboxIndicator={{ 'aria-label': 'Select row' }}
+            />
             <TableCell tabIndex={0} role="gridcell" aria-selected={selected}>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell tabIndex={0} role="gridcell">
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout
+                media={
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status }}
+                  />
+                }
+              >
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

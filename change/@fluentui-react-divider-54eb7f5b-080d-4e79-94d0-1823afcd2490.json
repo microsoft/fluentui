@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(scripts): use for @fluentui/scripts version within all package.json",
-  "packageName": "@fluentui/react-divider",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

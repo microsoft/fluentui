@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { argv } from 'yargs';
 
-import { findGitRoot, PackageJson } from '../monorepo';
+import { findGitRoot, PackageJson } from '@fluentui/scripts-monorepo';
 
 function fluentuiLernaPublish(bumpType: 'patch' | 'minor' | 'canary', skipConfirm = false, npmTagForCanary = 'beta') {
   const gitRoot = findGitRoot();
@@ -166,7 +166,7 @@ function packFluentTarballs() {
  */
 function run() {
   const task = argv._[0];
-  const skipConfirm = !!argv['yes'];
+  const skipConfirm = !!argv.yes;
   const tag = argv['dist-tag'] as string;
 
   switch (task) {

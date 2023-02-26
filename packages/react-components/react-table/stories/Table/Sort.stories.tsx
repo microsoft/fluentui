@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   TableBody,
   TableCell,
   TableRow,
@@ -17,12 +18,12 @@ import {
   TableHeader,
   TableHeaderCell,
   useTableFeatures,
-  ColumnDefinition,
-  ColumnId,
+  TableColumnDefinition,
+  TableColumnId,
   useTableSort,
   TableCellLayout,
-  createColumn,
-} from '@fluentui/react-components/unstable';
+  createTableColumn,
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -90,37 +91,34 @@ const items: Item[] = [
   },
 ];
 
-export const Sort = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-        compare: (a, b) => {
-          return a.file.label.localeCompare(b.file.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-        compare: (a, b) => {
-          return a.author.label.localeCompare(b.author.label);
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-        compare: (a, b) => {
-          return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
-        },
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-        compare: (a, b) => {
-          return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-        },
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    compare: (a, b) => {
+      return a.file.label.localeCompare(b.file.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    compare: (a, b) => {
+      return a.author.label.localeCompare(b.author.label);
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    compare: (a, b) => {
+      return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
+    },
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    compare: (a, b) => {
+      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
+    },
+  }),
+];
 
+export const Sort = () => {
   const {
     getRows,
     sort: { getSortDirection, toggleColumnSort, sort },
@@ -132,7 +130,7 @@ export const Sort = () => {
     [useTableSort({ defaultSortState: { sortColumn: 'file', sortDirection: 'ascending' } })],
   );
 
-  const headerSortProps = (columnId: ColumnId) => ({
+  const headerSortProps = (columnId: TableColumnId) => ({
     onClick: (e: React.MouseEvent) => {
       toggleColumnSort(e, columnId);
     },
@@ -160,7 +158,11 @@ export const Sort = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
@@ -184,6 +186,11 @@ Sort.parameters = {
         'Using the `sortable` prop will configure all header cells to be buttons and add extra styles.',
         'The `TableHeaderCell` component accepts a `sortDirection` prop that will indicate whether the',
         'header is sorted. Handling the sort of data and column state is handled by `useTableFeatures`.',
+        '',
+        '> Due to screen reader support, the sort status might not be announced once a sortable column header',
+        'is invoked. [This is a known issue.](https://github.com/nvaccess/nvda/issues/10890)',
+        'However the implementation still follows the',
+        '[pattern recommended by the WAI](https://www.w3.org/WAI/ARIA/apg/example-index/table/sortable-table.html)',
       ].join('\n'),
     },
   },

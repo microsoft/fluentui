@@ -150,11 +150,11 @@ const templates = {
     return {
       main: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+        extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
       },
       unstable: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+        extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
         mainEntryPointFilePath:
           // eslint-disable-next-line @fluentui/max-len
           '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
@@ -296,7 +296,7 @@ const templates = {
         preset: '../../../jest.preset.js',
         globals: {
           'ts-jest': {
-            tsConfig: '<rootDir>/tsconfig.spec.json',
+            tsconfig: '<rootDir>/tsconfig.spec.json',
             diagnostics: false,
           },
         },
@@ -669,7 +669,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     return json;
 
     function normalizePackageEntryPointPaths(entryPath: string) {
-      return './' + path.normalize(entryPath);
+      return './' + path.posix.normalize(entryPath);
     }
   }
 }

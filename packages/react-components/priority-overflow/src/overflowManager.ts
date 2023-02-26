@@ -9,7 +9,10 @@ import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOpt
 export function createOverflowManager(): OverflowManager {
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
+  // Set as true when resize observer is observing
   let observing = false;
+  // If true, next update will dispatch to onUpdateOverflow even if queue top states don't change
+  let forceDispatch = false;
   const options: Required<ObserveOptions> = {
     padding: 10,
     overflowAxis: 'horizontal',
@@ -118,11 +121,12 @@ export function createOverflowManager(): OverflowManager {
     options.onUpdateOverflow({ visibleItems, invisibleItems, groupVisibility });
   };
 
-  const processOverflowItems = (availableSize: number) => {
+  const processOverflowItems = (): boolean => {
     if (!container) {
-      return;
+      return false;
     }
 
+    const availableSize = getOffsetSize(container) - options.padding;
     const overflowMenuOffset = overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     // Snapshot of the visible/invisible state to compare for updates
@@ -135,35 +139,41 @@ export function createOverflowManager(): OverflowManager {
       return sum + getOffsetSize(child);
     }, 0);
 
-    // Add items until available width is filled
+    // Add items until available width is filled - can result in overflow
     while (currentWidth < availableSize && invisibleItemQueue.size() > 0) {
       currentWidth += makeItemVisible();
     }
-    // Remove items until there's no more overlap
+
+    // Remove items until there's no more overflow
     while (currentWidth > availableSize && visibleItemQueue.size() > 0) {
-      if (visibleItemQueue.size() === options.minimumVisible) {
+      if (visibleItemQueue.size() <= options.minimumVisible) {
         break;
       }
       currentWidth -= makeItemInvisible();
     }
 
-    if (invisibleItemQueue.size() > 0 && currentWidth + overflowMenuOffset > availableSize) {
+    // make sure the overflow menu can fit
+    if (
+      visibleItemQueue.size() > options.minimumVisible &&
+      invisibleItemQueue.size() > 0 &&
+      currentWidth + overflowMenuOffset > availableSize
+    ) {
       makeItemInvisible();
     }
 
     // only update when the state of visible/invisible items has changed
     if (visibleItemQueue.peek() !== visibleTop || invisibleItemQueue.peek() !== invisibleTop) {
-      dispatchOverflowUpdate();
+      return true;
     }
+
+    return false;
   };
 
   const forceUpdate: OverflowManager['forceUpdate'] = () => {
-    if (!container) {
-      return;
+    if (processOverflowItems() || forceDispatch) {
+      forceDispatch = false;
+      dispatchOverflowUpdate();
     }
-
-    const availableSize = getOffsetSize(container) - options.padding;
-    processOverflowItems(availableSize);
   };
 
   const update: OverflowManager['update'] = debounce(forceUpdate);
@@ -191,6 +201,10 @@ export function createOverflowManager(): OverflowManager {
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
+      // Updates to elements might not change the queue tops
+      // i.e. new element is enqueued but the top of the queue stays the same
+      // force a dispatch on the next batched update
+      forceDispatch = true;
       visibleItemQueue.enqueue(item.id);
     }
 

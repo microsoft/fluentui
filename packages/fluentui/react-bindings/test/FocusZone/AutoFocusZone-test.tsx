@@ -2,15 +2,8 @@ import { FocusZone, AutoFocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-// rAF does not exist in node - let's mock it
-window.requestAnimationFrame = (callback: FrameRequestCallback) => {
-  const r = window.setTimeout(callback, 0);
-  jest.runAllTimers();
-  return r;
-};
-
 const animationFrame = () => new Promise(resolve => window.requestAnimationFrame(resolve));
-jest.useFakeTimers();
+const originalRAF = window.requestAnimationFrame;
 
 describe('AutoFocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -47,7 +40,16 @@ describe('AutoFocusZone', () => {
   };
 
   beforeEach(() => {
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
     lastFocusedElement = undefined;
+  });
+  afterEach(() => {
+    jest.useRealTimers();
+    window.requestAnimationFrame = originalRAF;
   });
 
   describe('Focusing the ATZ', () => {
@@ -96,6 +98,7 @@ describe('AutoFocusZone', () => {
       // @ts-ignore
       autoFocusZone.componentDidMount();
       await animationFrame();
+
       expect(lastFocusedElement).toBe(buttonF);
     });
 

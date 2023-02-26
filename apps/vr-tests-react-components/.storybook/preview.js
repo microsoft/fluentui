@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';

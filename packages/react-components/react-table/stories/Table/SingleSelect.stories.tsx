@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   TableBody,
   TableCell,
   TableRow,
@@ -18,11 +19,11 @@ import {
   TableHeaderCell,
   TableSelectionCell,
   useTableFeatures,
-  ColumnDefinition,
+  TableColumnDefinition,
   useTableSelection,
   TableCellLayout,
-  createColumn,
-} from '@fluentui/react-components/unstable';
+  createTableColumn,
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -90,25 +91,22 @@ const items: Item[] = [
   },
 ];
 
-export const SingleSelect = () => {
-  const columns: ColumnDefinition<Item>[] = React.useMemo(
-    () => [
-      createColumn<Item>({
-        columnId: 'file',
-      }),
-      createColumn<Item>({
-        columnId: 'author',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdated',
-      }),
-      createColumn<Item>({
-        columnId: 'lastUpdate',
-      }),
-    ],
-    [],
-  );
+const columns: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+  }),
+];
 
+export const SingleSelect = () => {
   const {
     getRows,
     selection: { toggleRow, isRowSelected },
@@ -161,12 +159,12 @@ export const SingleSelect = () => {
             aria-selected={selected}
             appearance={appearance}
           >
-            <TableSelectionCell checked={selected} type="radio" />
+            <TableSelectionCell checked={selected} type="radio" radioIndicator={{ 'aria-label': 'Select row' }} />
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
             </TableCell>
             <TableCell>
-              <TableCellLayout media={<Avatar badge={{ status: item.author.status }} />}>
+              <TableCellLayout media={<Avatar aria-label={item.author.label} badge={{ status: item.author.status }} />}>
                 {item.author.label}
               </TableCellLayout>
             </TableCell>

@@ -15,6 +15,7 @@ export type {
 } from './compose/index';
 
 export {
+  IdPrefixProvider,
   resetIdsForTests,
   useControllableState,
   useEventCallback,
@@ -26,6 +27,7 @@ export {
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,
+  useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
@@ -45,3 +47,9 @@ export {
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
 
 export type { FluentTriggerComponent, TriggerProps } from './trigger/index';
+
+/**
+ * Event utils
+ */
+export type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent, TouchOrMouseEvent } from './events/index';
+export { isTouchEvent, isMouseEvent, getEventClientCoords } from './events/index';

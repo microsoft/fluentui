@@ -32,7 +32,8 @@ Bounds.parameters = {
       story: `SpinButton can be bounded with the \`min\` and \`max\` props.
       Using the spin buttons or hotkeys will clamp values in the range of [min, max].
       Users may type a value outside the range into the text input and it will not be clamped
-      by the control.`,
+      by the control. Pressing the "home" key will set the value to \`min\` and pressing the "end"
+      key will set the value to \`max\` when the props are set.`,
     },
   },
 };
