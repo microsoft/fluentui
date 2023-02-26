@@ -14,7 +14,7 @@ describe('SpinnerMigration.mixins', () => {
     const styles = {
       display: 'inline-flex',
     };
-    testMixin(spinner.inline(), styles);
+    testMixin(spinner.v0Inline(), styles);
   });
 
   describe('v0 spinner label style', () => {

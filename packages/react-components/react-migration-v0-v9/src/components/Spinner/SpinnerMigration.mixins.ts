@@ -1,6 +1,6 @@
 import { GriffelStyle, tokens } from '@fluentui/react-components';
 
-const inline = (): GriffelStyle => ({ display: 'inline-flex' });
+const v0Inline = (): GriffelStyle => ({ display: 'inline-flex' });
 
 const v0SpinnerLabelStyle = (): GriffelStyle => ({
   '& .fui-Label': {
@@ -10,6 +10,6 @@ const v0SpinnerLabelStyle = (): GriffelStyle => ({
 });
 
 export const spinner = {
-  inline,
+  v0Inline,
   v0SpinnerLabelStyle,
 };

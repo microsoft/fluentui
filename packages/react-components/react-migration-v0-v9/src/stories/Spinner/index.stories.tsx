@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     width: '100%',
   },
   inline: {
-    ...spinner.inline(),
+    ...spinner.v0Inline(),
   },
   label: {
     ...spinner.v0SpinnerLabelStyle(),
