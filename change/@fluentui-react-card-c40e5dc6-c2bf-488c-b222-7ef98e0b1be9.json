@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: bump to release candidate",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
