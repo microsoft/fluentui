@@ -1,9 +1,9 @@
-import { GriffelStyle, tokens } from '@fluentui/react-components';
+import { GriffelStyle, tokens, labelClassNames } from '@fluentui/react-components';
 
 const v0Inline = (): GriffelStyle => ({ display: 'inline-flex' });
 
 const v0SpinnerLabelStyle = (): GriffelStyle => ({
-  '& .fui-Label': {
+  [`& .${labelClassNames.root}`]: {
     fontSize: '14px',
     fontWeight: tokens.fontWeightMedium,
   },

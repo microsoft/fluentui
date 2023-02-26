@@ -53,7 +53,7 @@ export const slider: {
 
 // @public (undocumented)
 export const spinner: {
-    inline: () => GriffelStyle;
+    v0Inline: () => GriffelStyle;
     v0SpinnerLabelStyle: () => GriffelStyle;
 };
 
