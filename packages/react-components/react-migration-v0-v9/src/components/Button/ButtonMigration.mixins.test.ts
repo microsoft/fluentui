@@ -1,5 +1,5 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { buttonMigrationStyles } from './ButtonMigration.mixins';
+import * as buttonMigrationStyles from './ButtonMigration.mixins';
 
 describe('ButtonMigration.mixins', () => {
   describe('classNames check', () => {
