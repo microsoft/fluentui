@@ -1,18 +1,19 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { GriffelStyle, shorthands } from '@fluentui/react-components';
+import { iconClassNames } from '@fluentui/react-northstar';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 export const v9HoverClasses = (): GriffelStyle => ({
-  '& .fui-Icon-filled': {
+  [`& .${iconFilledClassName}`]: {
     display: 'none',
   },
-  '& .fui-Icon-regular': {
+  [`& .${iconRegularClassName}`]: {
     display: 'inline',
   },
   '&:hover': {
-    '& .fui-Icon-filled': {
+    [`& .${iconFilledClassName}`]: {
       display: 'inline',
     },
-    '& .fui-Icon-regular': {
+    [`& .${iconRegularClassName}`]: {
       display: 'none',
     },
   },
@@ -39,17 +40,17 @@ export const v9CustomSizeIcon = (): GriffelStyle => ({
 });
 
 export const v0Icon = (): GriffelStyle => ({
-  '& .ui-icon__outline': {
+  [`& .${iconClassNames.outline}`]: {
     display: 'block',
   },
-  '& .ui-icon__filled': {
+  [`& .${iconClassNames.filled}`]: {
     display: 'none',
   },
   '&:hover': {
-    '& .ui-icon__outline': {
+    [`& .${iconClassNames.outline}`]: {
       display: 'none',
     },
-    '& .ui-icon__filled': {
+    [`& .${iconClassNames.filled}`]: {
       display: 'block',
     },
   },
