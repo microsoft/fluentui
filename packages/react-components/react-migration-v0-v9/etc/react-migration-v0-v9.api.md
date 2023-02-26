@@ -10,14 +10,6 @@ import { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export const buttonMigrationStyles: {
-    v9Icon: () => GriffelStyle;
-    v9CustomSizeIcon: () => GriffelStyle;
-    v0Icon: () => GriffelStyle;
-    v9DisabledCursor: () => GriffelStyle;
-};
-
-// @public (undocumented)
 export const FormFieldShim: React_2.ForwardRefExoticComponent<{
     errorMessage?: WithContent | undefined;
     required?: boolean | undefined;
@@ -61,6 +53,21 @@ export const slider: {
 
 // @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
+
+// @public (undocumented)
+export const v0Icon: () => GriffelStyle;
+
+// @public (undocumented)
+export const v9CustomSizeIcon: () => GriffelStyle;
+
+// @public (undocumented)
+export const v9DisabledCursor: () => GriffelStyle;
+
+// @public (undocumented)
+export const v9HoverClasses: () => GriffelStyle;
+
+// @public (undocumented)
+export const v9Icon: () => GriffelStyle;
 
 // (No @packageDocumentation comment for this package)
 
