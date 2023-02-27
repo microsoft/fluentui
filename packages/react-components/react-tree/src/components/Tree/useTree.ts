@@ -12,7 +12,7 @@ import { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { filterTreeItemAndSubtree, useTreeWalker } from '../../utils/useTreeWalker';
 import { updateOpenItems } from '../../utils/updateOpenItems';
-import { ImmutableSet } from '../../utils/ImmutableSet';
+import { createImmutableSet, emptyImmutableSet } from '../../utils/ImmutableSet';
 
 /**
  * Create the state required to render Tree.
@@ -81,11 +81,11 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
 
   const { targetDocument } = useFluent_unstable();
   const [openItems, setOpenItems] = useControllableState({
-    state: React.useMemo(() => props.openItems && ImmutableSet.from(props.openItems), [props.openItems]),
-    defaultState: React.useMemo(() => props.defaultOpenItems && ImmutableSet.from(props.defaultOpenItems), [
+    state: React.useMemo(() => props.openItems && createImmutableSet(props.openItems), [props.openItems]),
+    defaultState: React.useMemo(() => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems), [
       props.defaultOpenItems,
     ]),
-    initialState: ImmutableSet.emptySet,
+    initialState: emptyImmutableSet,
   });
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
     props.onOpenChange?.(data.event, data);

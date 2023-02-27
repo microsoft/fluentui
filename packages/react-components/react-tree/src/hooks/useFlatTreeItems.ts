@@ -2,7 +2,7 @@ import { useControllableState, useEventCallback } from '@fluentui/react-utilitie
 import * as React from 'react';
 import { TreeItemId, TreeOpenChangeData, TreeOpenChangeEvent, TreeProps } from '../Tree';
 import { TreeItemProps } from '../TreeItem';
-import { ImmutableSet } from '../utils/ImmutableSet';
+import { createImmutableSet, emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
 import { updateOpenItems } from '../utils/updateOpenItems';
 
 export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> &
@@ -38,13 +38,13 @@ export function useFlatTreeItems_unstable(
   options?: UseFlatTreeItemsOptions,
 ): readonly [FlatTreeProps, LazyFlatTreeItems] {
   const [openItems, setOpenItems] = useControllableState({
-    state: React.useMemo(() => options?.openItems && ImmutableSet.from(options.openItems), [options?.openItems]),
-    defaultState: React.useMemo(() => options?.defaultOpenItems && ImmutableSet.from(options?.defaultOpenItems), [
+    state: React.useMemo(() => options?.openItems && createImmutableSet(options.openItems), [options?.openItems]),
+    defaultState: React.useMemo(() => options?.defaultOpenItems && createImmutableSet(options?.defaultOpenItems), [
       options?.defaultOpenItems,
     ]),
-    initialState: ImmutableSet.emptySet,
+    initialState: emptyImmutableSet,
   });
-  const onOpenChange = useEventCallback((ev: TreeOpenChangeEvent, data: TreeOpenChangeData) =>
+  const handleOpenChange = useEventCallback((ev: TreeOpenChangeEvent, data: TreeOpenChangeData) =>
     setOpenItems(curr => updateOpenItems(data, curr)),
   );
 
@@ -58,7 +58,7 @@ export function useFlatTreeItems_unstable(
     [references, openItems],
   );
 
-  return [{ openItems, onOpenChange }, lazyFlatTreeItems];
+  return [{ openItems, onOpenChange: handleOpenChange }, lazyFlatTreeItems];
 }
 
 function isTreeItemVisible(

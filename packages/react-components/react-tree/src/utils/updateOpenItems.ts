@@ -1,5 +1,5 @@
 import { TreeItemId, TreeOpenChangeData } from '../Tree';
-import { ImmutableSet } from './ImmutableSet';
+import { createImmutableSet, ImmutableSet } from './ImmutableSet';
 
 export function updateOpenItems(
   data: TreeOpenChangeData,
@@ -10,6 +10,6 @@ export function updateOpenItems(
   if (data.open ? previousOpenItemsHasId : !previousOpenItemsHasId) {
     return previousOpenItems;
   }
-  const nextOpenItems = ImmutableSet.from(previousOpenItems);
+  const nextOpenItems = createImmutableSet(previousOpenItems);
   return data.open ? nextOpenItems.add(id) : nextOpenItems.delete(id);
 }

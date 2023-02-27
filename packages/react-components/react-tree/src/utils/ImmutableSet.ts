@@ -1,58 +1,63 @@
-export class ImmutableSet<Value> {
-  public static readonly emptySet = ImmutableSet.from<never>();
+export interface ImmutableSet<Value> {
   /**
    * The number of (unique) elements in a ImmutableSet.
    */
-  public readonly size: number;
-  private _set: Set<Value>;
-
-  /**
-   * properly creates an ImmutableSet instance from an iterable
-   */
-  public static from<T>(iterable?: Iterable<T>) {
-    const internalSet = new Set(iterable);
-    return new ImmutableSet<T>(internalSet);
-  }
-  /**
-   * Avoid using the constructor, use `ImmutableSet.from` instead.
-   * @param internalSet - a set that is used internally to store values.
-   */
-  constructor(internalSet: Set<Value>) {
-    this._set = internalSet;
-    this.size = this._set.size;
-  }
-
+  readonly size: number;
   /**
    * Creates a new ImmutableSet containing all previous element plus the one provided as argument
    * @param value - new value to be included in the new ImmutableSet instance
    */
-  public add(value: Value): ImmutableSet<Value> {
-    const nextSet = new Set(this);
-    nextSet.add(value);
-    return new ImmutableSet(nextSet);
-  }
+  add(value: Value): ImmutableSet<Value>;
   /**
    * Returns a reference to ImmutableSet.emptySet
    */
-  public clear(): ImmutableSet<Value> {
-    return ImmutableSet.emptySet;
-  }
+  clear(): ImmutableSet<Value>;
   /**
    * Creates a new ImmutableSet with the original items and removes a specified value from the new ImmutableSet.
    */
-  public delete(value: Value): ImmutableSet<Value> {
-    const nextSet = new Set(this);
-    nextSet.delete(value);
-    return new ImmutableSet(nextSet);
-  }
+  delete(value: Value): ImmutableSet<Value>;
   /**
    * @returns a boolean indicating whether an element with the specified value exists in the ImmutableSet or not.
    */
-  public has(value: Value): boolean {
-    return this._set.has(value);
-  }
+  has(value: Value): boolean;
   /** Iterates over values in the ImmutableSet. */
-  public [Symbol.iterator](): IterableIterator<Value> {
-    return this._set[Symbol.iterator]();
-  }
+  [Symbol.iterator](): IterableIterator<Value>;
+}
+
+export const emptyImmutableSet = createImmutableSet<never>();
+
+/**
+ * properly creates an ImmutableSet instance from an iterable
+ */
+export function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Value> {
+  const internalSet = new Set(iterable);
+  return dangerouslyCreateImmutableSet(internalSet);
+}
+/**
+ * Avoid using *dangerouslyCreateImmutableSet*, since this method will expose internally used set, use  createImmutableSet instead,
+ * @param internalSet - a set that is used internally to store values.
+ */
+export function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): ImmutableSet<Value> {
+  return {
+    size: internalSet.size,
+    add(value) {
+      const nextSet = new Set(internalSet);
+      nextSet.add(value);
+      return dangerouslyCreateImmutableSet(nextSet);
+    },
+    clear() {
+      return emptyImmutableSet;
+    },
+    delete(value) {
+      const nextSet = new Set(internalSet);
+      nextSet.delete(value);
+      return dangerouslyCreateImmutableSet(nextSet);
+    },
+    has(value) {
+      return internalSet.has(value);
+    },
+    [Symbol.iterator]() {
+      return internalSet[Symbol.iterator]();
+    },
+  };
 }
