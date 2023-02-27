@@ -138,6 +138,11 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   // eslint-disable-next-line @typescript-eslint/naming-convention
   columnSizing_unstable: TableColumnSizingState;
   /**
+   * State and actions to manage column reordering like DnD
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnReordering_unstable: TableColumnReorderingState;
+  /**
    * A React.Ref object to be set as a ref for the table.
    * Used with column resizing.
    */
@@ -210,6 +215,17 @@ export interface TableColumnSizingState {
     onChange?: EnableKeyboardModeOnChangeCallback,
   ) => (e: React.MouseEvent | React.TouchEvent) => void;
 }
+
+export type ColumnReorderingTableHeaderCellProps = TableHeaderCellProps;
+
+export interface TableColumnReorderingState {
+  getTableHeaderCellProps: (columnId: TableColumnId) => ColumnReorderingTableHeaderCellProps;
+}
+
+export type UseTableColumnReorderingParams<TItem> = {
+  onColumnOrderChange?: (columns: TableColumnDefinition<TItem>[]) => void;
+  preview?: boolean;
+};
 
 export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;

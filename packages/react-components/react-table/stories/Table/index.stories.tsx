@@ -34,6 +34,7 @@ export { SelectionWithCellActions } from './SelectionWithCellActions.stories';
 export { Virtualization } from './Virtualization.stories';
 export { DataGrid } from './DataGrid.stories';
 export { Memoization } from './Memoization.stories';
+export { ReorderColumns } from './ReorderColumns.stories';
 
 export default {
   title: 'Components/Table',
