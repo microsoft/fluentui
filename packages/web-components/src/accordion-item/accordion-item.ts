@@ -15,7 +15,7 @@ export class AccordionItem extends FASTAccordionItem {
    * HTML Attribute: size
    */
   @attr
-  public size: AccordionItemSize;
+  public size?: AccordionItemSize;
 
   /**
    * Sets the width of the focus state.
@@ -36,5 +36,5 @@ export class AccordionItem extends FASTAccordionItem {
    * HTML Attribute: expandIconPosition
    */
   @attr({ attribute: 'expand-icon-position' })
-  public expandIconPosition: AccordionItemExpandIconPosition;
+  public expandIconPosition?: AccordionItemExpandIconPosition;
 }

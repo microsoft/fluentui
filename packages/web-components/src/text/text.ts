@@ -77,7 +77,7 @@ export class Text extends FASTElement {
    *
    */
   @attr
-  size: TextSize;
+  size?: TextSize;
 
   /**
    * THe Text font
@@ -87,7 +87,7 @@ export class Text extends FASTElement {
    * HTML Attribute: font
    */
   @attr
-  font: TextFont;
+  font?: TextFont;
 
   /**
    * THe Text weight
@@ -97,7 +97,7 @@ export class Text extends FASTElement {
    * HTML Attribute: weight
    */
   @attr
-  weight: TextWeight;
+  weight?: TextWeight;
 
   /**
    * THe Text align
@@ -107,5 +107,5 @@ export class Text extends FASTElement {
    * HTML Attribute: align
    */
   @attr
-  align: TextAlign;
+  align?: TextAlign;
 }

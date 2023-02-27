@@ -1,7 +1,7 @@
 import type { Theme } from '@fluentui/tokens';
 import * as tokens from './design-tokens.js';
 
-const tokenNames = Object.keys(tokens);
+const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
 /**
  * Sets the theme tokens on defaultNode.
@@ -9,6 +9,6 @@ const tokenNames = Object.keys(tokens);
  */
 export const setTheme = (theme: Theme) => {
   for (const t of tokenNames) {
-    tokens[t].withDefault(theme[t]);
+    tokens[t].withDefault(theme[t] as string);
   }
 };

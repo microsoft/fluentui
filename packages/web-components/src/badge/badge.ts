@@ -34,7 +34,7 @@ export class Badge extends FASTElement {
    * HTML Attribute: shape
    */
   @attr
-  public shape: BadgeShape;
+  public shape?: BadgeShape;
 
   /**
    * The size the badge should have.
@@ -44,7 +44,7 @@ export class Badge extends FASTElement {
    * HTML Attribute: size
    */
   @attr
-  public size: BadgeSize;
+  public size?: BadgeSize;
 }
 
 /**
