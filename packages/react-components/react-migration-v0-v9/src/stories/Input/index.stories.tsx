@@ -30,20 +30,6 @@ const useStyles = makeStyles({
 });
 
 export const Fluid = () => {
-  /**
-   * const useStyles = makeStyles({
-   *  fluid: {
-   *    ...input.fluid();
-   *  }
-   * }),
-   * field: {
-   *  // Stack the label above the field
-   *  display: 'flex',
-   *  flexDirection: 'column',
-   *  // Use 2px gap below the label (per the design system)
-   *  ...shorthands.gap('2px'),
-   * },
-   */
   const styles = useStyles();
 
   return (
@@ -65,24 +51,6 @@ export const Fluid = () => {
 };
 
 export const Error = () => {
-  /**
-   * const useStyles = makeStyles({
-   *  error: {
-   *    ...input.error();
-   *  },
-   *  errorIndicator: {
-   *   ...input.errorIndicator(),
-   *   fontSize: '16px'
-   *  },
-   * }),
-   * field: {
-   *  // Stack the label above the field
-   *  display: 'flex',
-   *  flexDirection: 'column',
-   *  // Use 2px gap below the label (per the design system)
-   *  ...shorthands.gap('2px'),
-   * },
-   */
   const styles = useStyles();
 
   return (
