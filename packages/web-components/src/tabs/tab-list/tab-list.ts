@@ -8,6 +8,10 @@ import { FASTTabs } from '@microsoft/fast-foundation';
  * @public
  */
 export class TabList extends FASTTabs {
+  constructor() {
+    super();
+  }
+
   /**
    * appearance - html attribute
    * @type {"subtle" | "transparent"}

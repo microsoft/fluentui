@@ -6,7 +6,6 @@ import {
   fontFamilyBase,
   fontSizeBase300,
   lineHeightBase300,
-  spacingHorizontalL,
   spacingHorizontalMNudge,
 } from '../../theme/design-tokens.js';
 
