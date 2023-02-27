@@ -1,8 +1,37 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 16 Feb 2023 16:51:48 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Feb 2023 04:27:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.7)
+
+Mon, 27 Feb 2023 04:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.6..@fluentui/web-components_v3.0.0-alpha.7)
+
+### Changes
+
+- feat(avatar): add Avatar web component ([PR #26729](https://github.com/microsoft/fluentui/pull/26729) by chhol@microsoft.com)
+- feat(divider): Add divider web component ([PR #26901](https://github.com/microsoft/fluentui/pull/26901) by harankin@microsoft.com)
+- feat(image): Add image web component ([PR #26936](https://github.com/microsoft/fluentui/pull/26936) by harankin@microsoft.com)
+
+## [3.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.6)
+
+Fri, 24 Feb 2023 04:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.5..@fluentui/web-components_v3.0.0-alpha.6)
+
+### Changes
+
+- feat(switch): Add switch web component ([PR #26517](https://github.com/microsoft/fluentui/pull/26517) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.5)
+
+Wed, 22 Feb 2023 04:22:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.4..@fluentui/web-components_v3.0.0-alpha.5)
+
+### Changes
+
+- feat(accordion): Add accordion web component ([PR #26547](https://github.com/microsoft/fluentui/pull/26547) by brianbrady@microsoft.com)
 
 ## [3.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.4)
 
