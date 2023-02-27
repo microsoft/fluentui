@@ -18,6 +18,7 @@
     "no-prototype-builtins": "off",
     "no-fallthrough": "off",
     "no-unexpected-multiline": "off",
+    "no-useless-escape": "off",
     "import/order": "error",
     "sort-imports": [
       "error",
