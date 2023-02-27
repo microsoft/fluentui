@@ -81,7 +81,7 @@ const Code20Filled = html`<svg
 
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
-    <fluent-menu-list icons>
+    <fluent-menu icons>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
@@ -95,7 +95,7 @@ const storyTemplate = html<MenuStoryArgs>`
       <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         New
-        <fluent-menu-list slot="submenu">
+        <fluent-menu slot="submenu">
           <fluent-menu-item>
             File
             <span slot="start">${Folder24Filled}</span>
@@ -132,7 +132,7 @@ export const Menu = renderComponent(storyTemplate).bind({});
 
 export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-menu-list>
+    <fluent-menu icons>
       <fluent-menu-item role="menuitemcheckbox">
         Item 1
         <span slot="start">${Cut20Filled}</span>
@@ -145,13 +145,13 @@ export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
         Item 3
         <span slot="start">${ClipboardPaste20Filled}</span>
       </fluent-menu-item>
-    </fluent-menu-list>
+    </fluent-menu>
   </div>
 `);
 
 export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
-    <fluent-menu>
+    <fluent-menu icons>
       <fluent-menu-item role="menuitemradio">
         Item 1
         <span slot="start">${Cut20Filled}</span>
@@ -186,7 +186,7 @@ export const MenuWithIcons = renderComponent(html<MenuStoryArgs>`
 
 export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
   <div style="width: 260px; position: relative;">
-    <fluent-menu>
+    <fluent-menu icons>
       <fluent-menu-item>
         Item 1
         <span slot="start">${Edit20Filled}</span>

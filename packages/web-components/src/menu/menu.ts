@@ -1,5 +1,5 @@
 import { FASTMenu } from '@microsoft/fast-foundation';
-import { attr, Updates } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 
 /**
  * The base class used for constructing a fluent-menu custom element
@@ -29,15 +29,11 @@ export class Menu extends FASTMenu {
     });
   }
 
-  public connectedCallback() {
-    super.connectedCallback();
+  public setItems() {
+    super.setItems();
 
     if (this.icons) {
-      Updates.enqueue(() => {
-        // wait until children have had a chance to
-        // connect before setting/checking their props/attributes
-        this.iconsChanged();
-      });
+      this.iconsChanged();
     }
   }
 }
