@@ -7,18 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { createTestContainer } from './test-utils';
 import * as FocusUtilities from '../../src/FocusZone/focusUtilities';
 
-// rAF does not exist in node - let's mock it
-window.requestAnimationFrame = (callback: FrameRequestCallback) => {
-  const r = window.setTimeout(callback, 0);
-  ReactTestUtils.act(() => {
-    jest.runAllTimers();
-  });
-  return r;
-};
-
-// ReactTestUtils.act(() => {
-jest.useFakeTimers();
-// });
+const originalRAF = window.requestAnimationFrame;
 
 class FocusTrapZoneTestComponent extends React.Component<
   {},
@@ -123,11 +112,18 @@ describe('FocusTrapZone', () => {
   }
 
   beforeEach(() => {
+    jest.useFakeTimers();
+    Object.defineProperty(window, 'requestAnimationFrame', {
+      writable: true,
+      value: (callback: FrameRequestCallback) => callback(0),
+    });
     lastFocusedElement = undefined;
   });
 
   afterAll(() => {
     window.addEventListener = addEventListener;
+    window.requestAnimationFrame = originalRAF;
+    jest.useRealTimers();
   });
 
   describe('Tab and shift-tab wrap at extreme ends of the FTZ', () => {

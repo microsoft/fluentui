@@ -9,7 +9,7 @@
     "format:check": "yarn format -c",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "lint": "eslint --ext .js,.ts.,.tsx ./src",
+    "lint": "eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "start": "webpack-dev-server --mode=development"
   },
