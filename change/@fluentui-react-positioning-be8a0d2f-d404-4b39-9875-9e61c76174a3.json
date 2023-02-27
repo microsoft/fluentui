@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Nested submenus will render on top of root menu in small viewports",
+  "comment": "fix: Nested submenus support positioning fallbacks for small viewports",
   "packageName": "@fluentui/react-positioning",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
