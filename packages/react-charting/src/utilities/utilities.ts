@@ -531,8 +531,8 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
       axisNode.selectAll('text').each(() => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const outerHTMLElement = document.getElementById('WordBreakId') as any;
-        const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
-        const boxHeight = BoxCordinates && BoxCordinates.height;
+        //const BoxCordinates = ;
+        const boxHeight = outerHTMLElement && outerHTMLElement.offsetHeight;
         if (boxHeight > maxHeight) {
           maxHeight = boxHeight;
         }
@@ -1056,8 +1056,8 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
         }
       }
 
-      const BoxCordinates = (this as HTMLElement).getBoundingClientRect();
-      const boxHeight = BoxCordinates && BoxCordinates.height;
+      //const BoxCordinates = ;
+      const boxHeight = (this as HTMLElement).offsetHeight;
       if (boxHeight > maxHeight) {
         maxHeight = boxHeight;
       }

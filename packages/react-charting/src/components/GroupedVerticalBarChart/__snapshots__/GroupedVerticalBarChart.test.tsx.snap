@@ -32,7 +32,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -67,7 +67,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -111,7 +111,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
             key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -122,7 +122,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={8.009367681498828}
             x={0.42154566744730637}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -133,7 +133,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
             key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -144,7 +144,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={8.009367681498828}
             x={8.852459016393441}
-            y={0}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -155,7 +155,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
             key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -166,7 +166,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={8.009367681498828}
             x={17.283372365339574}
-            y={0}
+            y={180.76086956521738}
           />
         </g>
         <g
@@ -182,7 +182,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
             key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -193,7 +193,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={8.009367681498828}
             x={0.42154566744730637}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -204,7 +204,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
             key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -215,7 +215,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={8.009367681498828}
             x={8.852459016393441}
-            y={18.80434782608696}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -226,7 +226,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
             key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -237,7 +237,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={8.009367681498828}
             x={17.283372365339574}
-            y={0}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -780,7 +780,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -815,7 +815,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -859,7 +859,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
             key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -870,7 +870,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={8.009367681498828}
             x={0.42154566744730637}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -881,7 +881,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
             key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -892,7 +892,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={8.009367681498828}
             x={8.852459016393441}
-            y={0}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -903,7 +903,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
             key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -914,7 +914,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={8.009367681498828}
             x={17.283372365339574}
-            y={0}
+            y={180.76086956521738}
           />
         </g>
         <g
@@ -930,7 +930,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
             key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -941,7 +941,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={8.009367681498828}
             x={0.42154566744730637}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -952,7 +952,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
             key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -963,7 +963,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={8.009367681498828}
             x={8.852459016393441}
-            y={18.80434782608696}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -974,7 +974,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
             key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -985,7 +985,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={8.009367681498828}
             x={17.283372365339574}
-            y={0}
+            y={183.5326086956522}
           />
         </g>
       </g>

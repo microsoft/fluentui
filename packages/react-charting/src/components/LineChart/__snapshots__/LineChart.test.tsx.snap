@@ -33,7 +33,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -68,7 +68,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               display: none;
             }
         id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -107,7 +107,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
@@ -123,14 +123,14 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             strokeWidth={4}
             x1={40}
             x2={-20}
-            y1={-0.625}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M34.5 -0.625
-     A5.5 5.5 0 1 0 45.5 -0.625
-     M34.5 -0.625
-     A 5.5 5.5 0 1 1 45.5 -0.625
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
@@ -552,7 +552,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -587,7 +587,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
               display: none;
             }
         id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -626,7 +626,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
@@ -642,14 +642,14 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             strokeWidth={4}
             x1={40}
             x2={-20}
-            y1={-0.625}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M34.5 -0.625
-     A5.5 5.5 0 1 0 45.5 -0.625
-     M34.5 -0.625
-     A 5.5 5.5 0 1 1 45.5 -0.625
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
@@ -969,7 +969,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
   >
     <svg
       aria-label="LineChart"
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -1004,7 +1004,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               display: none;
             }
         id="xAxisGElementchart_8"
-        transform="translate(0, -35)"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1043,7 +1043,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           x1={0}
           x2={0}
           y1={0}
-          y2={0}
+          y2={310}
         />
         <g>
           <line
@@ -1059,14 +1059,14 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             strokeWidth={4}
             x1={40}
             x2={-20}
-            y1={-0.625}
+            y1={115.625}
             y2={20}
           />
           <path
-            d="M34.5 -0.625
-     A5.5 5.5 0 1 0 45.5 -0.625
-     M34.5 -0.625
-     A 5.5 5.5 0 1 1 45.5 -0.625
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
