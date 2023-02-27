@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: re-implement early List rendering behind prop flag",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
