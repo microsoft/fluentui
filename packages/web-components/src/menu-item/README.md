@@ -28,7 +28,7 @@ Menu list item options displayed in a Menu component. They are invoked when user
 
 Fluent WC3 Menu extends from the FAST Menu [FAST Menu Item](https://explore.fast.design/components/fast-menu) and is intended to be as close to the Fluent UI React 9 Menu implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
 
-### **Menu Item**
+<br />
 
 ### Inputs
 
