@@ -58,26 +58,19 @@ export const NestedSubmenusResponsiveness = () => {
 
   // Fluent UI handles window resizing by default.
   // Custom boundary resizing is not handled by default.
-  const resizeObserver = React.useState(
-    () =>
-      new ResizeObserver(() => {
-        positioningRefSubmenu.current?.updatePosition();
-        positioningRefRoot.current?.updatePosition();
-      }),
-  )[0];
-
   React.useEffect(() => {
     if (boundary) {
+      const resizeObserver = new ResizeObserver(() => {
+        positioningRefSubmenu.current?.updatePosition();
+        positioningRefRoot.current?.updatePosition();
+      });
       resizeObserver.observe(boundary);
-      return () => resizeObserver.unobserve(boundary);
+      return () => {
+        resizeObserver.unobserve(boundary);
+        resizeObserver.disconnect();
+      };
     }
-  }, [boundary, resizeObserver]);
-
-  React.useEffect(() => {
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [resizeObserver]);
+  }, [boundary]);
 
   React.useEffect(() => {
     if (open) {
