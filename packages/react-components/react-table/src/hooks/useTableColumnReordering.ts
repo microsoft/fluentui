@@ -1,5 +1,9 @@
-import { TableColumnId, TableFeaturesState, UseTableColumnReorderingParams } from './types';
+import { TableColumnId, TableColumnReorderingState, TableFeaturesState, UseTableColumnReorderingParams } from './types';
 import { useTableColumnReorderingDNDState } from './useTableColumnReorderingDNDState';
+
+export const defaultColumnReorderingState: TableColumnReorderingState = {
+  getTableHeaderCellProps: () => ({}),
+};
 
 export function useTableColumnReordering_unstable<TItem>(params: UseTableColumnReorderingParams<TItem>) {
   // False positive, these plugin hooks are intended to be run on every render
