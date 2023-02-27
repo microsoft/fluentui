@@ -282,6 +282,9 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     choiceFieldWrapper: [
       classNames.choiceFieldWrapper,
+      {
+        position: 'relative',
+      },
       focused && getChoiceGroupFocusStyle(focusBorderColor, hasIcon || hasImage),
     ],
     // The hidden input

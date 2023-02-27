@@ -48,6 +48,9 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             class=
                 ms-ChoiceField-wrapper
                 is-inFocus
+                {
+                  position: relative;
+                }
                 .ms-Fabric--isFocusVisible & {
                   outline: transparent;
                   position: relative;
@@ -200,7 +203,11 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               }
         >
           <div
-            class="ms-ChoiceField-wrapper"
+            class=
+                ms-ChoiceField-wrapper
+                {
+                  position: relative;
+                }
           >
             <input
               class=
@@ -331,7 +338,11 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               }
         >
           <div
-            class="ms-ChoiceField-wrapper"
+            class=
+                ms-ChoiceField-wrapper
+                {
+                  position: relative;
+                }
           >
             <input
               class=
@@ -526,6 +537,9 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
             class=
                 ms-ChoiceField-wrapper
                 is-inFocus
+                {
+                  position: relative;
+                }
                 .ms-Fabric--isFocusVisible & {
                   outline: transparent;
                   position: relative;
@@ -678,7 +692,11 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
               }
         >
           <div
-            class="ms-ChoiceField-wrapper"
+            class=
+                ms-ChoiceField-wrapper
+                {
+                  position: relative;
+                }
           >
             <input
               class=
@@ -809,7 +827,11 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
               }
         >
           <div
-            class="ms-ChoiceField-wrapper"
+            class=
+                ms-ChoiceField-wrapper
+                {
+                  position: relative;
+                }
           >
             <input
               class=

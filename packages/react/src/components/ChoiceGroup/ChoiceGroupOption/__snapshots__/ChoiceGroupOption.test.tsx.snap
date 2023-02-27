@@ -26,7 +26,11 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
@@ -153,7 +157,11 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
@@ -282,7 +290,11 @@ exports[`ChoiceGroupOption custom renders correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
@@ -420,7 +432,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
@@ -552,6 +568,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
+          {
+            position: relative;
+          }
           .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
@@ -704,6 +723,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
+          {
+            position: relative;
+          }
           .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
@@ -860,7 +882,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
@@ -975,7 +1001,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         checked={true}
@@ -1108,7 +1138,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
@@ -1313,6 +1347,9 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       className=
           ms-ChoiceField-wrapper
           is-inFocus
+          {
+            position: relative;
+          }
           .ms-Fabric--isFocusVisible & {
             outline: transparent;
             position: relative;
@@ -1535,7 +1572,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         checked={true}
@@ -1762,7 +1803,11 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         }
   >
     <div
-      className="ms-ChoiceField-wrapper"
+      className=
+          ms-ChoiceField-wrapper
+          {
+            position: relative;
+          }
     >
       <input
         className=
