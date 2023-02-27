@@ -30,7 +30,7 @@ import {
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-
+//Test Perf Changes
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

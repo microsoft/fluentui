@@ -17,14 +17,38 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('../LineChart/LineChartPage').LineChartPage,
           key: 'LineChart',
-          name: 'Line Chart',
-          url: '#/examples/linechart',
+          name: 'Line Chart Perf Data One',
+          url: '#/examples/linechartOne',
+        },
+        {
+          component: require<any>('../LineChart/LineChartPageTwo').LineChartPageTwo,
+          key: 'LineChartTwo',
+          name: 'Line Chart Perf Data Two',
+          url: '#/examples/linechartTwo',
+        },
+        {
+          component: require<any>('../LineChart/LineChartPageThree').LineChartPageThree,
+          key: 'LineChartTwo',
+          name: 'Line Chart Perf Data Three',
+          url: '#/examples/linechartThree',
         },
         {
           component: require<any>('../AreaChart/AreaChartPage').AreaChart,
           key: 'AreaChart',
-          name: 'Area Chart',
+          name: 'Area Chart Perf Data One',
           url: '#/examples/areachart',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageTwo').AreaChartTwo,
+          key: 'AreaChartTwo',
+          name: 'Area Chart Perf Data Two',
+          url: '#/examples/areachartTwo',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageThree').AreaChartThree,
+          key: 'AreaChartTwo',
+          name: 'Area Chart Perf Data Three',
+          url: '#/examples/areachartThree',
         },
         {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,

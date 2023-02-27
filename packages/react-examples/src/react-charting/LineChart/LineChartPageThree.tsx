@@ -15,7 +15,7 @@ import {
 // import { LineChartGapsExample } from './LineChart.Gaps.Example';
 // import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 // import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
-import { LineChartPerfOneExample } from './LineChart.PerfAnalysisOne.Example';
+import { LineChartPerfThreeExample } from './LineChart.PerfAnalysisThree.Example';
 //import { LineChartPerfTwoExample } from './LineChart.PerfAnalysisTwo.Example';
 
 // const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -26,17 +26,17 @@ import { LineChartPerfOneExample } from './LineChart.PerfAnalysisOne.Example';
 // const LineChartGapsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
 // const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
 // const LineChartCustomLocaleDateAxisExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
-const LineChartPerfAnalysisOneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysisOne.Example.tsx') as string;
+const LineChartPerfAnalysisThreeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysisThree.Example.tsx') as string;
 //const LineChartPerfAnalysisTwoExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.PerfAnalysisTwo.Example.tsx') as string;
 
 // All line charts locale is impacted.
 
-export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
+export class LineChartPageThree extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="Line Chart Page One"
-        componentName="LineChartPerfOneExample"
+        title="Line Chart Page Three"
+        componentName="LineChartPerfThreeExample"
         exampleCards={
           <div>
             {/* <ExampleCard title="LineChart basic" code={LineChartBasicExampleCode}>
@@ -63,8 +63,8 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             <ExampleCard title="LineChart custom date axis locale" code={LineChartCustomLocaleDateAxisExampleCode}>
               <LineChartCustomLocaleDateAxisExample />
             </ExampleCard> */}
-            <ExampleCard title="LineChart custom Perf Data " code={LineChartPerfAnalysisOneExampleCode}>
-              <LineChartPerfOneExample />
+            <ExampleCard title="LineChart custom Perf Data " code={LineChartPerfAnalysisThreeExampleCode}>
+              <LineChartPerfThreeExample />
             </ExampleCard>
             {/* <ExampleCard title="LineChart custom Perf Two Data " code={LineChartPerfAnalysisTwoExampleCode}>
               <LineChartPerfTwoExample />
