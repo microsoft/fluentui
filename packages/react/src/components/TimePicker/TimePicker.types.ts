@@ -1,4 +1,5 @@
-import type { IComboBoxProps } from '../../ComboBox';
+import * as React from 'react';
+import type { IComboBox, IComboBoxProps } from '../../ComboBox';
 
 /**
  * {@docCategory TimePicker}
@@ -21,6 +22,8 @@ export interface ITimePickerStrings {
   invalidInputErrorMessage: string;
   /** Default placeholder text to render within ComboBox if no placeholder is provided. */
   defaultTimePickerPlaceholder: string;
+  /** Error message to render if the user input date is out of bounds. */
+  timeOutOfBoundsErrorMessage: string;
 }
 
 /**
@@ -29,12 +32,12 @@ export interface ITimePickerStrings {
 export interface ITimePickerProps
   extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'onChange'> {
   /**
-   * Label of the component
+   * Label of the component.
    */
   label?: string;
 
   /**
-   * Time increments, in minutes, of the options in the dropdown
+   * Time increments, in minutes, of the options in the dropdown.
    */
   increments?: number;
 
@@ -58,32 +61,43 @@ export interface ITimePickerProps
   allowFreeform?: boolean;
 
   /**
-   * Custom time range to for time options
+   * Custom time range to for time options.
    */
   timeRange?: ITimeRange;
 
   /**
-   * Localized strings to use in the TimePicker
+   * Localized strings to use in the TimePicker.
    */
   strings?: ITimePickerStrings;
 
   /**
-   * Controlled current date for the TimePicker, if any
+   * The uncontrolled default selected time.
    */
-  currentDate?: Date;
+  defaultValue?: Date;
 
   /**
-   * Callback issued when the time is changed
+   * A Date representing the selected time. If you provide this, you must maintain selection
+   * state by observing onChange events and passing a new value in when changed.
    */
-  onTimeChange?: (time: Date) => void;
+  value?: Date;
 
   /**
-   * Callback to localize the date strings displayed for dropdown options
+   * The date in which all dropdown options are based off of.
+   */
+  dateAnchor?: Date;
+
+  /**
+   * A callback for receiving a notification when the time has been changed.
+   */
+  onChange?: (event?: React.FormEvent<IComboBox>, time?: Date) => void;
+
+  /**
+   * Callback to localize the date strings displayed for dropdown options.
    */
   onFormatDate?: (date: Date) => string;
 
   /**
-   * Callback to use custom user-input validation
+   * Callback to use custom user-input validation.
    */
   onValidateUserInput?: (userInput: string) => string;
 }
