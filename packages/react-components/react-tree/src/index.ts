@@ -45,5 +45,5 @@ export type {
 export { useFlatTreeItems_unstable } from './hooks/index';
 export type { FlatTreeItemProps, FlatTreeProps, UseFlatTreeItemsOptions, LazyFlatTreeItems } from './hooks/index';
 
-export { flattenTree_unstable, flattenTreeFromElements_unstable } from './utils/flattenTree';
+export { flattenTree_unstable } from './utils/flattenTree';
 export type { NestedTreeItem } from './utils/flattenTree';

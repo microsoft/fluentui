@@ -23,9 +23,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProps[];
 
-// @public
-export const flattenTreeFromElements_unstable: (tree: React_2.ReactElement<TreeProps>) => FlatTreeItemProps[];
-
 // @public (undocumented)
 export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
     parentId?: string;
