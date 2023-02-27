@@ -18,6 +18,7 @@ import {
   maxSize as maxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
+  overflowFallback,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
 
@@ -150,7 +151,7 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps {
+interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallback' | 'pinned'> {
   /**
    * If false, does not position anything
    */
@@ -171,6 +172,7 @@ function usePositioningOptions(options: PositioningOptions) {
     unstable_disableTether: disableTether,
     positionFixed,
     overflowBoundaryPadding,
+    fallback,
   } = options;
 
   const { dir } = useFluent();
@@ -198,6 +200,7 @@ function usePositioningOptions(options: PositioningOptions) {
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
+        fallback && overflowFallback({ container, overflowBoundary, positioning: fallback, isRtl }),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -222,6 +225,7 @@ function usePositioningOptions(options: PositioningOptions) {
       position,
       strategy,
       overflowBoundaryPadding,
+      fallback,
     ],
   );
 }

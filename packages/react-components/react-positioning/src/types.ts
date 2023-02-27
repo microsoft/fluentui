@@ -161,11 +161,27 @@ export interface PositioningOptions {
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   unstable_disableTether?: boolean | 'all';
+
+  /**
+   * If all treatments fail to stop the positioned element from overflowing
+   * its boundaries, use a specified fallback position.
+   */
+  fallback?: PositioningShorthandValue;
 }
 
 export interface PositioningProps
-  // "positionFixed" & "unstable_disableTether" are not exported as public API (yet)
-  extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
+  extends Pick<
+    PositioningOptions,
+    | 'align'
+    | 'flipBoundary'
+    | 'overflowBoundary'
+    | 'overflowBoundaryPadding'
+    | 'position'
+    | 'offset'
+    | 'arrowPadding'
+    | 'autoSize'
+    | 'coverTarget'
+  > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;
 
