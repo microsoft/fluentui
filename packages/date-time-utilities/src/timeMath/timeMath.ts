@@ -40,11 +40,11 @@ export const ceilMinuteToIncrement = (date: Date, increments: number) => {
 /**
  * Returns a date object from the selected time.
  * @param useHour12 - If the time picker uses 12 or 24 hour formatting
- * @param baseDate - The baseline date to calculate the offset of the selected time
+ * @param dateStartAnchor - The baseline date to calculate the offset of the selected time
  * @param selectedTime - A string representing the user selected time
  * @returns A new date object offset from the baseDate using the selected time.
  */
-export const getDateFromTimeSelection = (useHour12: boolean, baseDate: Date, selectedTime: string): Date => {
+export const getDateFromTimeSelection = (useHour12: boolean, dateStartAnchor: Date, selectedTime: string): Date => {
   const [, selectedHours, selectedMinutes, selectedSeconds, selectedAp] =
     TimeConstants.TimeFormatRegex.exec(selectedTime) || [];
 
@@ -61,17 +61,20 @@ export const getDateFromTimeSelection = (useHour12: boolean, baseDate: Date, sel
   }
 
   let hoursOffset;
-  if (baseDate.getHours() > hours || (baseDate.getHours() === hours && baseDate.getMinutes() > minutes)) {
-    hoursOffset = TimeConstants.HoursInOneDay - baseDate.getHours() + hours;
+  if (
+    dateStartAnchor.getHours() > hours ||
+    (dateStartAnchor.getHours() === hours && dateStartAnchor.getMinutes() > minutes)
+  ) {
+    hoursOffset = TimeConstants.HoursInOneDay - dateStartAnchor.getHours() + hours;
   } else {
-    hoursOffset = Math.abs(baseDate.getHours() - hours);
+    hoursOffset = Math.abs(dateStartAnchor.getHours() - hours);
   }
 
   const offset =
     TimeConstants.MillisecondsIn1Sec * TimeConstants.MinutesInOneHour * hoursOffset * TimeConstants.SecondsInOneMinute +
     seconds * TimeConstants.MillisecondsIn1Sec;
 
-  const date = new Date(baseDate.getTime() + offset);
+  const date = new Date(dateStartAnchor.getTime() + offset);
   date.setMinutes(minutes);
   date.setSeconds(seconds);
 

@@ -95,31 +95,30 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
     return optionsList.map((_, index) => {
       const option: Date = addMinutes(dateStartAnchor, increments * index);
       option.setSeconds(0);
-      const optionText = onFormatDate ? onFormatDate(option) : formatTimeString(option, showSeconds, useHour12);
+      const formattedTimeString = formatTimeString(option, showSeconds, useHour12);
+      const optionText = onFormatDate ? onFormatDate(option) : formattedTimeString;
       return {
-        key: optionText,
+        key: formattedTimeString,
         text: optionText,
       };
     });
   }, [dateStartAnchor, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
-  const checkComboBoxTextInDropdown = React.useCallback(
-    (formattedTimeString: string) =>
-      timePickerOptions.some((option: IComboBoxOption) => option.key === formattedTimeString),
+  const getComboBoxOptionInDropdown = React.useCallback(
+    (optionKey: string) => timePickerOptions.find((option: IComboBoxOption) => option.key === optionKey),
     [timePickerOptions],
   );
 
   React.useEffect(() => {
     if (selectedTime && !defaultValue) {
-      const formattedTimeString = onFormatDate
-        ? onFormatDate(selectedTime)
-        : formatTimeString(selectedTime, showSeconds, useHour12);
-      if (checkComboBoxTextInDropdown(formattedTimeString)) {
-        setSelectedKey(formattedTimeString);
+      const formattedTimeString = formatTimeString(selectedTime, showSeconds, useHour12);
+      const option = getComboBoxOptionInDropdown(formattedTimeString);
+      if (option) {
+        setSelectedKey(option.key);
+        setComboBoxText(option.text);
       }
-      setComboBoxText(formatTimeString(selectedTime, showSeconds, useHour12));
     }
-  }, [selectedTime, defaultValue, checkComboBoxTextInDropdown, onFormatDate, showSeconds, useHour12]);
+  }, [selectedTime, defaultValue, getComboBoxOptionInDropdown, onFormatDate, showSeconds, useHour12]);
 
   const onInputChange = React.useCallback(
     (_: React.FormEvent<IComboBox>, option?: IComboBoxOption, _index?: number, input?: string): void => {
@@ -166,12 +165,14 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         setSelectedKey(option.key);
       }
 
-      const userInputBoi = input || option?.text || '';
-      const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, userInputBoi);
-      setSelectedTime(updatedTime);
+      if (!errorMessageToDisplay) {
+        const userInputBoi = option?.key || '';
+        const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, userInputBoi);
+        setSelectedTime(updatedTime);
 
-      if (onChange) {
-        onChange(updatedTime);
+        if (onChange) {
+          onChange(updatedTime);
+        }
       }
 
       setErrorMessage(errorMessageToDisplay);
@@ -223,6 +224,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       text={comboBoxText}
       //eslint-disable-next-line
       onKeyPress={evaluatePressedKey}
+      useComboBoxAsMenuWidth
     />
   );
 };
