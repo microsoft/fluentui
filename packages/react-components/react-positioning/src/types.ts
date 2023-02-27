@@ -164,9 +164,9 @@ export interface PositioningOptions {
 
   /**
    * If flip fails to stop the positioned element from overflowing
-   * its boundaries, use a specified fallback position.
+   * its boundaries, use a specified fallback positions.
    */
-  fallback?: PositioningShorthandValue;
+  fallback?: PositioningShorthandValue[];
 }
 
 export interface PositioningProps

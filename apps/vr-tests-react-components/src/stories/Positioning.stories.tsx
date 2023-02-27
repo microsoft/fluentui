@@ -679,7 +679,7 @@ const FallbackPositioning = () => {
   const { containerRef, targetRef } = usePositioning({
     position: 'after',
     align: 'start',
-    fallback: 'below',
+    fallback: ['below'],
     flipBoundary: boundary,
     overflowBoundary: boundary,
     positioningRef,

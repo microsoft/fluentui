@@ -16,10 +16,11 @@ import {
 
 const useStyles = makeStyles({
   container: {
-    width: '350px',
+    width: '500px',
     ...shorthands.border('2px', 'dashed', 'red'),
     height: '400px',
     ...shorthands.padding('10px'),
+    position: 'relative',
   },
 
   resizableArea: {
@@ -79,9 +80,9 @@ export const NestedSubmenusResponsiveness = () => {
 
   return (
     <div id="boundary" className={mergeClasses(styles.container, styles.resizableArea)} ref={setBoundary}>
-      <Menu open positioning={{ positioningRef: positioningRefRoot }}>
+      <Menu open positioning={{ positioningRef: positioningRefRoot, overflowBoundary, flipBoundary: overflowBoundary }}>
         <MenuTrigger disableButtonEnhancement>
-          <Button>Menu</Button>
+          <Button style={{ position: 'absolute', left: '40%' }}>Menu</Button>
         </MenuTrigger>
 
         <MenuPopover>
