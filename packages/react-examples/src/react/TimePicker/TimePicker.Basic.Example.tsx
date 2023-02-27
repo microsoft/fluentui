@@ -4,7 +4,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
 
-const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
+const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
 const timePickerStyles: Partial<IComboBoxStyles> = {
@@ -12,7 +12,7 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
     height: '500px',
   },
   root: {
-    width: '50%',
+    width: '500px',
   },
 };
 
@@ -21,7 +21,6 @@ export const TimePickerBasicExample: React.FC = () => {
   const [nonDefaultOptionsExampleTimeString, setNonDefaultOptionsExampleTimeString] = React.useState<string>('');
 
   const onBasicExampleChange = React.useCallback((time: Date) => {
-    console.log('CLICKEDDD');
     setBasicExampleTimeString(time.toString());
   }, []);
 
@@ -60,6 +59,7 @@ export const TimePickerBasicExample: React.FC = () => {
           label={'TimePicker with non default options'}
           useComboBoxAsMenuWidth
           timeRange={timeRange}
+          dateAnchor={new Date('February 27, 2023 08:12:00')}
           onChange={onNonDefaultOptionsExampleChange}
         />
         <Text>{`Non default options example selected time: ${
