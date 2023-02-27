@@ -1,8 +1,8 @@
-const fs = require('fs-extra');
 const path = require('path');
 
 const { findRepoDeps } = require('@fluentui/scripts-monorepo');
 const { findConfig, merge } = require('@fluentui/scripts-utils');
+const fs = require('fs-extra');
 
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);
@@ -71,6 +71,7 @@ const createConfig = (customConfig = {}) => {
     },
 
     testURL: 'http://localhost',
+    testEnvironment: 'jsdom',
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   };

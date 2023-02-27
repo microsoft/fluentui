@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:07 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "db5fb4be3ed35b18b4874750fe6ad286fb5e41fc",
+            "comment": "chore: update SpinButton to use makeResetStyles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Feb 2023 19:18:48 GMT",
       "tag": "@fluentui/react-spinbutton_v9.1.6",
       "version": "9.1.6",

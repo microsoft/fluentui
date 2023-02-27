@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 27 Feb 2023 07:39:56 GMT",
+      "tag": "@fluentui/react_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1dc9d3f16b58efb2f37e930f71b6b140953cd1ea",
+            "comment": "chore: migrate to jest 27"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 07:44:35 GMT",
       "tag": "@fluentui/react_v8.106.1",
       "version": "8.106.1",
