@@ -28,7 +28,8 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.20",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/react": "^8.106.1"
   },
   "dependencies": {
     "@fluentui/react-utilities": "^9.7.2",
