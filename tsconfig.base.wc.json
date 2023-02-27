@@ -5,7 +5,7 @@
     "moduleResolution": "Node16",
     "esModuleInterop": true,
     "sourceMap": true,
-    "strictNullChecks": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "pretty": true,
