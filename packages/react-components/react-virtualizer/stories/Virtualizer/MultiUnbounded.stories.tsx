@@ -36,30 +36,32 @@ export const MultiUnbounded = () => {
 
   const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(100, null);
 
+  const renderHeader = (index: number) => {
+    return <div key={`virtualizer-header-${index}`} className={styles.block}>{`Virtualizer Instance - ${index}`}</div>;
+  };
+
   const renderVirtualization = (index: number) => {
     return (
-      <>
-        <div key={`virtualizer-header-${index}`} className={styles.block}>{`Virtualizer Instance - ${index}`}</div>
-        <Virtualizer
-          numItems={childLength}
-          virtualizerLength={virtualizerLength}
-          bufferItems={bufferItems}
-          bufferSize={bufferSize}
-          itemSize={100}
-        >
-          {rowIndex => {
-            return (
-              <span
-                role={'listitem'}
-                aria-posinset={index * childLength + rowIndex}
-                aria-setsize={childLength * repeatingVirtualizers}
-                key={`virtualizer-child-${index}-${rowIndex}`}
-                className={styles.child}
-              >{`Node-${index}-${rowIndex}`}</span>
-            );
-          }}
-        </Virtualizer>
-      </>
+      <Virtualizer
+        numItems={childLength}
+        virtualizerLength={virtualizerLength}
+        bufferItems={bufferItems}
+        bufferSize={bufferSize}
+        itemSize={100}
+        key={`virtualizer-container-${index}`}
+      >
+        {rowIndex => {
+          return (
+            <span
+              role={'listitem'}
+              aria-posinset={index * childLength + rowIndex}
+              aria-setsize={childLength * repeatingVirtualizers}
+              key={`virtualizer-child-${index}-${rowIndex}`}
+              className={styles.child}
+            >{`Node-${index}-${rowIndex}`}</span>
+          );
+        }}
+      </Virtualizer>
     );
   };
 
@@ -67,14 +69,20 @@ export const MultiUnbounded = () => {
     // Virtualizer instances can all run independently, even inline a single scroll view.
     const array = [];
     for (let i = 0; i < repeatingVirtualizers; i++) {
+      array.push(renderHeader(i));
       array.push(renderVirtualization(i));
     }
     return array;
   };
 
   return (
-    <ThemeProvider className={styles.root} applyTo="body">
-      <div aria-label="Virtualizer Example" className={styles.container} role={'list'}>
+    <ThemeProvider className={styles.root} applyTo="body" key={'virtualizer-unbounded-theme-provider'}>
+      <div
+        aria-label="Virtualizer Example"
+        className={styles.container}
+        role={'list'}
+        key={'multi-virtualizer-container'}
+      >
         {renderVirtualizerLoop()}
         <div key={`virtualizer-footer`} className={styles.block}>
           Footer
