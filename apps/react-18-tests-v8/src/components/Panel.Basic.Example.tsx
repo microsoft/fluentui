@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Panel } from '@fluentui/react/lib/Panel';
 import { useBoolean } from '@fluentui/react-hooks';
 
+const handleOpen = () => console.log('onOpen');
+const handleOpened = () => console.log('onOpened');
+
 export const PanelBasicExample: React.FunctionComponent = () => {
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
-  const handleOpen = () => console.log('onOpen');
-  const handleOpened = () => console.log('onOpened');
+
   return (
     <div>
       <button onClick={openPanel}> Open panel </button>
