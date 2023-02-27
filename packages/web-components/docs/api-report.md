@@ -1721,12 +1721,11 @@ export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public (undocumented)
 export class Popover extends FASTElement {
+    constructor();
     // (undocumented)
-    anchorRef: HTMLElement[];
+    anchorRef?: HTMLElement[];
     // (undocumented)
-    arrow: boolean;
-    // (undocumented)
-    arrowRef: FASTElement;
+    protected anchorRefChanged(): void;
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -1736,9 +1735,15 @@ export class Popover extends FASTElement {
     // (undocumented)
     protected openChanged(): void;
     // (undocumented)
-    popoverContentRef: FASTElement;
+    popoverContentRef?: FASTElement;
     // (undocumented)
-    position: 'top' | 'bottom' | 'left' | 'right';
+    protected popoverContentRefChanged(): void;
+    // Warning: (ae-forgotten-export) The symbol "PopoverPosition" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    position: PopoverPosition;
+    // (undocumented)
+    protected positionChanged(): void;
 }
 
 // @public (undocumented)

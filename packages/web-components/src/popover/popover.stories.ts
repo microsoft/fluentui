@@ -1,24 +1,25 @@
 import './define.js';
+import { PopoverPosition } from './popover.options.js';
 
 export default {
   title: 'Components/Popover',
   argTypes: {
     position: {
-      options: ['top', 'bottom', 'left', 'right'],
+      options: Object.values(PopoverPosition),
       control: { type: 'radio' },
     },
-    arrow: {
+    open: {
+      defaultValue: false,
       control: { type: 'boolean' },
     },
   },
 };
 
-const PopoverTemplate = ({ arrow, position }) => `
+const PopoverTemplate = ({ open, position }) => `
 <fluent-popover
-  open
+  ${open ? 'open' : ''}
   id="default-popover"
   ${position ? `position="${position}"` : ''}
-  ${arrow ? `arrow` : ''}  
   >
     <div slot="anchor" style="display: inline-block; border: 1px dashed #ccc; height: 80px; width: 80px; margin: 30px 200px">Anchor</div>
     <div>Popover ${position}</div>

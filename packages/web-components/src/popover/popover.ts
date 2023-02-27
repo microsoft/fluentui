@@ -1,129 +1,165 @@
-import { attr, FASTElement, Updates } from '@microsoft/fast-element';
-import { arrow, computePosition, offset } from '@floating-ui/dom';
+import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { autoUpdate, computePosition } from '@floating-ui/dom';
+import { PopoverPosition } from './popover.options.js';
+
+let nextEmoji = 0;
+const getNextEmoji = () => {
+  // prettier-ignore
+  const emojis = ['🍇', '🍉', '🍊', '🍋', '🍌', '🍍', '🥭', '🍎', '🍏', '🍐', '🍑', '🍒', '🍓', '🫐', '🥝', '🍅', '🫒', '🥥', '🥑', '🍆', '🥔', '🥕', '🌽', '🌶', '🫑', '🧄', '🥨', '🚌'];
+
+  return emojis[nextEmoji++ % emojis.length];
+};
 
 export class Popover extends FASTElement {
+  private objId = getNextEmoji();
+
+  public constructor() {
+    super();
+    console.log(this.objId, 'constructor', { open: this.open });
+  }
+
   @attr({ mode: 'boolean' })
   public open: boolean = false;
 
-  @attr({ mode: 'boolean' })
-  public arrow: boolean = false;
+  protected openChanged() {
+    console.group(this.objId, 'openChanged');
 
-  @attr
-  public position: 'top' | 'bottom' | 'left' | 'right' = 'top';
+    // `open` has been set to true, anchor and popover element might already be in DOM (perhaps subsequent open)
+    this.handlePositioningStartStop();
+    console.groupEnd();
+  }
 
-  public popoverContentRef: FASTElement; // @FIXME: what type?
-  public arrowRef: FASTElement;
-  public anchorRef: HTMLElement[];
+  @observable
+  public popoverContentRef?: FASTElement; // @FIXME: what type?
+
+  protected popoverContentRefChanged() {
+    console.group(this.objId, 'popoverContentRefChanged');
+
+    // ref might have changed -> force restart
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
+
+  @observable
+  public anchorRef?: HTMLElement[];
+
+  protected anchorRefChanged() {
+    console.group(this.objId, 'anchorRefChanged');
+
+    // ref might have changed -> force restart
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
 
   public connectedCallback() {
     super.connectedCallback();
-    this.openChanged(); // hack
+    console.group(this.objId, 'connectedCallback');
+
+    // the component might have been mounted with `open` set to true
+    this.handlePositioningStartStop();
+
+    console.groupEnd();
   }
 
   public disconnectedCallback() {
     super.disconnectedCallback();
-    this.hidePopover();
+    console.group(this.objId, 'disconnectedCallback');
+
+    this.handlePositioningStartStop();
+
+    console.groupEnd();
   }
 
-  protected openChanged() {
-    // this is from FAST tooltip: if ((this as FASTElement).$fastController.isConnected) {
-    if ((this as FASTElement).$fastController.isConnected) {
-      if (this.open) {
-        this.showPopover();
-      } else {
-        this.hidePopover();
-      }
+  private isPositioningStarted = false;
+  private autoUpdateCleanup: (() => void) | undefined;
+  private handlePositioningStartStop(forceRestart: boolean = false) {
+    const shouldStart =
+      (this as FASTElement).$fastController.isConnected && this.open && this.popoverContentRef && !!this.anchorRef?.[0];
 
-      Updates.enqueue(() => {
-        if (this.open) {
-          this.updatePosition();
+    console.log(this.objId, 'handlePositioningStartStop', {
+      open: this.open,
+      connected: (this as FASTElement).$fastController.isConnected,
+      anchorRef: this.anchorRef,
+      popoverContentRef: this.popoverContentRef,
+      shouldStart,
+      positioningStarted: this.isPositioningStarted,
+      forceRestart,
+    });
+
+    if (shouldStart) {
+      if (this.isPositioningStarted) {
+        if (!forceRestart) {
+          console.log(this.objId, 'positioning already started, skipping');
+          return;
         }
-      });
+        this.stopPositioning();
+      }
+      this.startPositioning();
+    } else {
+      if (this.isPositioningStarted) {
+        this.stopPositioning();
+      }
     }
   }
 
-  private isOpen: boolean = false;
+  private startPositioning() {
+    console.log(this.objId, 'startPositioning', {
+      open: this.open,
+      connected: (this as FASTElement).$fastController.isConnected,
+      anchorRef: this.anchorRef,
+      popoverContentRef: this.popoverContentRef,
+    });
 
-  private showPopover = (): void => {
-    if (this.isOpen) {
-      return;
-    }
+    this.stopAutoUpdate();
 
-    document.addEventListener('keydown', this.handleDocumentKeyDown);
-    document.addEventListener('click', this.handleOutsideClick, true);
-
-    this.isOpen = true;
-  };
-
-  private hidePopover = (): void => {
-    if (!this.isOpen) {
-      return;
-    }
-
-    document.removeEventListener('click', this.handleOutsideClick, true);
-    document.removeEventListener('keydown', this.handleDocumentKeyDown);
-
-    this.isOpen = false;
-  };
-
-  private handleDocumentKeyDown = (e: KeyboardEvent) => {
-    // @FIXME: should this be imported from @microsoft/fast-web-utilities?
-    if (e.key === 'Escape') {
-      this.$emit('dismiss');
-    }
-  };
-
-  private handleOutsideClick = (e: MouseEvent) => {
-    if (!this.contains(e.target as Node)) {
-      // if (!this.anchorRef[0].contains(e.target as Node) && !this.popoverContentRef.contains(e.target as Node)) {
-      this.$emit('dismiss');
-    }
-  };
-
-  private updatePosition() {
-    if (!this.anchorRef[0] || !this.popoverContentRef) {
-      return;
-    }
-
-    /*
-
-      Arrow hardcoded values
-        Box dimensions: 12px
-        Diagonal: 16.97 (sqrt(12^2 + 12^2))
-        Half diagonal: 8.485
-
-        Border: 4px
-        Half border: 2px
-
-        Offset: 8.485 - 2px
-
-     */
-
-    // TODO: and offset(xxx) for the arrow
-    // TODO: add flip({boundary: xxx }) and shift()
-    computePosition(this.anchorRef[0], this.popoverContentRef, {
-      placement: this.position,
-      middleware: [...(this.arrow ? [offset(8.485 - 2), arrow({ element: this.arrowRef })] : [])],
-    }).then(({ x, y, middlewareData, placement }) => {
-      Object.assign(this.popoverContentRef.style, { left: `${x}px`, top: `${y}px` });
-
-      if (this.arrow) {
-        const staticSide: string = {
-          top: 'bottom',
-          right: 'left',
-          bottom: 'top',
-          left: 'right',
-        }[placement.split('-')[0]] as string;
-
-        const { x: arrowX, y: arrowY } = middlewareData.arrow!;
-        Object.assign(this.arrowRef.style, {
-          left: `${arrowX}px`,
-          top: `${arrowY}px`,
-          right: '',
-          bottom: '',
-          [staticSide]: '-8.485px',
-        });
-      }
+    // wait for the anchor and popover to be in the DOM
+    Updates.enqueue(() => {
+      this.startAutoUpdate();
+      this.isPositioningStarted = true;
     });
   }
+
+  private stopPositioning() {
+    console.log(this.objId, 'stopPositioning', {
+      open: this.open,
+      connected: (this as FASTElement).$fastController.isConnected,
+      anchorRef: this.anchorRef,
+      popoverContentRef: this.popoverContentRef,
+    });
+
+    this.stopAutoUpdate();
+    this.isPositioningStarted = false;
+  }
+
+  private startAutoUpdate() {
+    this.autoUpdateCleanup = autoUpdate(this.anchorRef![0], this.popoverContentRef!, this.updatePosition);
+  }
+
+  private stopAutoUpdate() {
+    this.autoUpdateCleanup?.();
+    this.autoUpdateCleanup = undefined;
+  }
+
+  @attr
+  public position: PopoverPosition = 'top';
+  protected positionChanged() {
+    console.group(this.objId, 'positionChanged');
+
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
+
+  private updatePosition = () => {
+    if (!this.anchorRef?.[0] || !this.popoverContentRef) {
+      return;
+    }
+    computePosition(this.anchorRef[0], this.popoverContentRef, {
+      placement: this.position,
+    }).then(({ x, y, middlewareData, placement }) => {
+      Object.assign(this.popoverContentRef!.style, { left: `${x}px`, top: `${y}px` });
+    });
+  };
 }
