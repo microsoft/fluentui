@@ -2,6 +2,27 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:05 GMT",
+      "tag": "@fluentui/react-input_v9.3.7",
+      "version": "9.3.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "fbee0f3858ee67d53ee2540531a0cfb6497165cb",
+            "comment": "chore: Clean up Input's interactive styles"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "29ed7fb57a05a6595835f947193460886e80cfc5",
+            "comment": "fix: Fix the width of Input's focus border with appearance=underline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Feb 2023 19:18:47 GMT",
       "tag": "@fluentui/react-input_v9.3.6",
       "version": "9.3.6",

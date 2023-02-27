@@ -2,6 +2,51 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Mon, 27 Feb 2023 07:39:55 GMT",
+      "tag": "@fluentui/cra-template_v8.4.61",
+      "version": "8.4.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "1dc9d3f16b58efb2f37e930f71b6b140953cd1ea",
+            "comment": "chore: bump template jest types to v27"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 07:44:35 GMT",
+      "tag": "@fluentui/cra-template_v8.4.60",
+      "version": "8.4.60",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.106.1",
+            "commit": "7596e81eaad95fc96ac7098f848602ace5278e03"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 00:32:23 GMT",
+      "tag": "@fluentui/cra-template_v8.4.59",
+      "version": "8.4.59",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.106.0",
+            "commit": "a11ac1fd696783c2c18c62c93a012156b99d1bdf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Feb 2023 01:37:02 GMT",
       "tag": "@fluentui/cra-template_v8.4.58",
       "version": "8.4.58",

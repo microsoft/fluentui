@@ -16,7 +16,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint && just-scripts lint-imports",
+    "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"

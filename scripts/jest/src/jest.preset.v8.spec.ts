@@ -29,6 +29,7 @@ describe(`v8 preset`, () => {
         setupFiles: [`${workspaceRoot}/scripts/jest/src/v8/jest-setup.js`],
         testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
         testURL: 'http://localhost',
+        testEnvironment: 'jsdom',
         transform: {
           '^.+\\.tsx?$': 'ts-jest',
         },

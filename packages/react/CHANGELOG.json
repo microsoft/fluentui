@@ -2,6 +2,65 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 27 Feb 2023 07:39:56 GMT",
+      "tag": "@fluentui/react_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1dc9d3f16b58efb2f37e930f71b6b140953cd1ea",
+            "comment": "chore: migrate to jest 27"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 07:44:35 GMT",
+      "tag": "@fluentui/react_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "a11ac1fd696783c2c18c62c93a012156b99d1bdf",
+            "comment": "fix(ComboBox): fix(react-combobox): Remove _getAriaActiveDescendantValue, compute aria-activedescendantvalue in state, and update currentPendingValue when the options change."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9ad00830c43d33e1dfa7eecb1f8060eb6f012e56",
+            "comment": "fix: update role and accname for non-hidden icon button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 00:32:22 GMT",
+      "tag": "@fluentui/react_v8.106.0",
+      "version": "8.106.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e7adfeaa37370b9aebe79d3a0168d0457822b139",
+            "comment": "Fix: Combobox if value is controlled, we should not update state"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "89ac7281e69de3f3caff4dc14f62deb59cf25593",
+            "comment": "fix: Coachmark remove possible recursive loop"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 18 Feb 2023 01:37:02 GMT",
       "tag": "@fluentui/react_v8.105.11",
       "version": "8.105.11",

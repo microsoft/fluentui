@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/projects-test",
-  "version": "0.66.1",
+  "version": "0.66.2",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-northstar": "^0.66.1"
+    "@fluentui/react-northstar": "^0.66.2"
   },
   "devDependencies": {
     "@fluentui/scripts-babel": "*",

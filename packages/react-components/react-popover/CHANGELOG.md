@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 15 Feb 2023 11:44:51 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.4.11)
+
+Wed, 22 Feb 2023 23:06:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.4.10..@fluentui/react-popover_v9.4.11)
+
+### Patches
+
+- fix: Popover without focus trap should not be aria-hidden ([PR #26932](https://github.com/microsoft/fluentui/pull/26932) by lingfangao@hotmail.com)
+- Bump @fluentui/react-positioning to v9.5.0 ([PR #26616](https://github.com/microsoft/fluentui/pull/26616) by beachball)
 
 ## [9.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.4.10)
 

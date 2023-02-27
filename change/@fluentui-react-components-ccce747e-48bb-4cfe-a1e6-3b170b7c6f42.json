@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "feat: Add react-progress to stable",
+  "comment": "feat(react-card): bump to release candidate",
   "packageName": "@fluentui/react-components",
-  "email": "ololubek@microsoft.com",
+  "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
 }
