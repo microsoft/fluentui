@@ -1,7 +1,15 @@
-export { Tree, treeClassNames, renderTree_unstable, useTreeStyles_unstable, useTree_unstable } from './Tree';
-export type { TreeProps, TreeState, TreeSlots } from './Tree';
+export {
+  Tree,
+  treeClassNames,
+  renderTree_unstable,
+  useTreeStyles_unstable,
+  useTree_unstable,
+  useTreeContextValues_unstable,
+} from './Tree';
+export type { TreeProps, TreeState, TreeSlots, TreeOpenChangeData, TreeOpenChangeEvent, TreeItemId } from './Tree';
 
-export type { TreeContextValue, useTreeContext_unstable, TreeProvider } from './contexts';
+export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
+export type { TreeContextValue } from './contexts';
 
 export {
   TreeItem,
@@ -33,3 +41,9 @@ export type {
   TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutState,
 } from './TreeItemPersonaLayout';
+
+export { useFlatTreeItems_unstable } from './hooks/index';
+export type { FlatTreeItemProps, FlatTreeProps, UseFlatTreeItemsOptions, LazyFlatTreeItems } from './hooks/index';
+
+export { flattenTree_unstable } from './utils/flattenTree';
+export type { NestedTreeItem } from './utils/flattenTree';
