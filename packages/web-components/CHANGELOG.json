@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 27 Feb 2023 04:27:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.7",
+      "version": "3.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4309a0d5afbe56dab0b1204922a37873fe832c8b",
+            "comment": "feat(avatar): add Avatar web component"
+          },
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7d9573d73b4be010c2b07540fa0c23c27aba2821",
+            "comment": "feat(divider): Add divider web component"
+          },
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e793ad8a7f7ae0239a808439d121cf012dd414e5",
+            "comment": "feat(image): Add image web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Feb 2023 04:20:32 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.6",
       "version": "3.0.0-alpha.6",
