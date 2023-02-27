@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to jest 27",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
