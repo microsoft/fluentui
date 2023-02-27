@@ -29,7 +29,7 @@ export class Menu extends FASTMenu {
     });
   }
 
-  public setItems() {
+  protected setItems(): void {
     super.setItems();
 
     if (this.icons) {
