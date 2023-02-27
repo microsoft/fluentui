@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove AccordionHeaderExpandIcon, and use ChevronRightRegular from @fluentui/react-icons instead",
-  "packageName": "@fluentui/react-accordion",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

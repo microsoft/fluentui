@@ -281,6 +281,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       minDate,
       maxDate,
       restrictedDates,
+      id,
       className,
       showCloseButton,
       allFocusable,
@@ -326,6 +327,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
 
     return (
       <div
+        id={id}
         ref={forwardedRef}
         role="group"
         aria-label={selectionAndTodayString}
@@ -397,7 +399,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
 );
 CalendarBase.displayName = 'CalendarBase';
 
-function getShowMonthPickerAsOverlay(props: ICalendarProps) {
+function getShowMonthPickerAsOverlay({ showMonthPickerAsOverlay, isDayPickerVisible }: ICalendarProps) {
   const win = getWindow();
-  return props.showMonthPickerAsOverlay || (win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
+  return showMonthPickerAsOverlay || (isDayPickerVisible && win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
 }

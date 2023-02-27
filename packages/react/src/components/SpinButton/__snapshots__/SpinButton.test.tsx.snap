@@ -62,6 +62,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
     className=
 
         {
+          border-color: #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -69,10 +70,9 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           position: relative;
         }
         &:after {
-          border-color: #605e5c;
           border-radius: 2px;
-          border-style: solid;
           border-width: 1px;
+          border: 2px solid #605e5c;
           bottom: 0px;
           content: '';
           left: 0px;
@@ -81,10 +81,13 @@ exports[`SpinButton snapshots renders correctly 1`] = `
           right: 0px;
           top: 0px;
         }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+          border-color: GrayText;
+        }
         &:hover:after {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
     data-ktp-target={true}
@@ -130,7 +133,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             background-color: #0078d4;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::selection {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::selection {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
@@ -202,14 +205,14 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -224,7 +227,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               background-color: #f3f2f1;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -232,7 +235,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               background-color: #edebe9;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
@@ -341,14 +344,14 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -363,7 +366,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               background-color: #f3f2f1;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -371,7 +374,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               background-color: #edebe9;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
@@ -503,6 +506,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
     className=
 
         {
+          border-color: #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -510,10 +514,9 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           position: relative;
         }
         &:after {
-          border-color: #605e5c;
           border-radius: 2px;
-          border-style: solid;
           border-width: 1px;
+          border: 2px solid #605e5c;
           bottom: 0px;
           content: '';
           left: 0px;
@@ -522,10 +525,13 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
           right: 0px;
           top: 0px;
         }
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+          border-color: GrayText;
+        }
         &:hover:after {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
     data-ktp-target={true}
@@ -573,7 +579,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             background-color: #0078d4;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::selection {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::selection {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
@@ -645,14 +651,14 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -667,7 +673,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               background-color: #f3f2f1;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -675,7 +681,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               background-color: #edebe9;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
@@ -784,14 +790,14 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -806,7 +812,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               background-color: #f3f2f1;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -814,7 +820,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               background-color: #edebe9;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }

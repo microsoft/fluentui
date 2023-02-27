@@ -14,6 +14,7 @@ export { alertDismissActionVariables as AlertDismissAction } from './components/
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
 export { avatarStatusVariables as AvatarStatus } from './components/Avatar/avatarStatusVariables';
 export { avatarStatusIconVariables as AvatarStatusIcon } from './components/Avatar/avatarStatusIconVariables';
+export { avatarStatusImageVariables as AvatarStatusImage } from './components/Avatar/avatarStatusImageVariables';
 export { avatarImageVariables as AvatarImage } from './components/Avatar/avatarImageVariables';
 export { avatarIconVariables as AvatarIcon } from './components/Avatar/avatarIconVariables';
 export { avatarLabelVariables as AvatarLabel } from './components/Avatar/avatarLabelVariables';
@@ -30,6 +31,7 @@ export { breadcrumbDividerVariables as BreadcrumbDivider } from './components/Br
 export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatItemVariables as ChatItem } from './components/Chat/chatItemVariables';
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';
+export { chatMessageContentVariables as ChatMessageContent } from './components/Chat/chatMessageContentVariables';
 export { chatMessageDetailsVariables as ChatMessageDetails } from './components/Chat/chatMessageDetailsVariables';
 export { chatMessageReadStatusVariables as ChatMessageReadStatus } from './components/Chat/chatMessageReadStatusVariables';
 

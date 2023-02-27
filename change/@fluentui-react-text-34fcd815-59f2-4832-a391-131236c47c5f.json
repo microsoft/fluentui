@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use makeStyles types from proper package",
-  "packageName": "@fluentui/react-text",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

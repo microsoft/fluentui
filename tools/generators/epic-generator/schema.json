@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "epic-generator",
+  "type": "object",
+  "properties": {
+    "repository": {
+      "type": "string",
+      "default": "microsoft/fluentui",
+      "description": "Repository to create issues at."
+    },
+    "title": {
+      "type": "string",
+      "description": "Title used in the creation of the epic"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["title", "repository"]
+}

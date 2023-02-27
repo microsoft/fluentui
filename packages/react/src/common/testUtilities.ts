@@ -51,9 +51,19 @@ export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEve
 
 /**
  * Hack for forcing Jest to run pending promises
- * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
+ * https://github.com/facebook/jest/issues/2157#issuecomment-897935688
  */
 export function flushPromises() {
-  // TODO: in jest 27, change to `new Promise(process.nextTick)` per https://stackoverflow.com/a/51045733
-  return new Promise<void>(resolve => setImmediate(resolve));
+  return new Promise<void>(jest.requireActual('timers').setImmediate);
+}
+
+/**
+ * Verify that the given element and its parents do NOT have `aria-hidden` set.
+ */
+export function expectNoHiddenParents(element: HTMLElement) {
+  let el: HTMLElement | null = element;
+  while (el) {
+    expect(el.getAttribute('aria-hidden')).not.toBe('true');
+    el = el.parentElement;
+  }
 }

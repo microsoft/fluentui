@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Theme: Adding function to programmatically generate tokens object based on a theme.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

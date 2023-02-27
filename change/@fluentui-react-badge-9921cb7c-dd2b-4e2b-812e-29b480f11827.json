@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove component's shorthandProps array",
-  "packageName": "@fluentui/react-badge",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

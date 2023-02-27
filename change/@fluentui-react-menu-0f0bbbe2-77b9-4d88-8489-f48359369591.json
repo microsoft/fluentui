@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: set `aria-expanded` and `aria-haspopup` values correctly",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

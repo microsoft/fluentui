@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Export the default getInitials implementation",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

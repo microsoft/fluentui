@@ -1,17 +1,20 @@
-export * from './dom/IVirtualElement';
-export * from './dom/elementContains';
-export * from './dom/elementContainsAttribute';
-export * from './dom/findElementRecursive';
-export * from './dom/getChildren';
-export * from './dom/getDocument';
-export * from './dom/getFirstVisibleElementFromSelector';
-export * from './dom/getParent';
-export * from './dom/getRect';
-export * from './dom/getVirtualParent';
-export * from './dom/getWindow';
-export * from './dom/isVirtualElement';
-export * from './dom/on';
-export * from './dom/portalContainsElement';
-export * from './dom/raiseClick';
-export * from './dom/setPortalAttribute';
-export * from './dom/setVirtualParent';
+export type { IVirtualElement } from './dom/IVirtualElement';
+export { elementContains } from './dom/elementContains';
+export { elementContainsAttribute } from './dom/elementContainsAttribute';
+export { findElementRecursive } from './dom/findElementRecursive';
+export { getChildren } from './dom/getChildren';
+export { getDocument } from './dom/getDocument';
+export { getFirstVisibleElementFromSelector } from './dom/getFirstVisibleElementFromSelector';
+export { getParent } from './dom/getParent';
+export { getRect } from './dom/getRect';
+export { getVirtualParent } from './dom/getVirtualParent';
+export { getWindow } from './dom/getWindow';
+export { isVirtualElement } from './dom/isVirtualElement';
+export { on } from './dom/on';
+export { portalContainsElement } from './dom/portalContainsElement';
+export {
+  // eslint-disable-next-line deprecation/deprecation
+  raiseClick,
+} from './dom/raiseClick';
+export { DATA_PORTAL_ATTRIBUTE, setPortalAttribute } from './dom/setPortalAttribute';
+export { setVirtualParent } from './dom/setVirtualParent';

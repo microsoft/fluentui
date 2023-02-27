@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "remove inline-style-expand-shorthand from tsconfigs",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

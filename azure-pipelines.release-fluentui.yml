@@ -31,19 +31,24 @@ variables:
     value: true
   - name: nightlyReleaseDate # used by nightly built docsite to setup codesandbox correctly
     value: empty
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
   # below are variables configurable at queue time, so they cannot appear in yml file
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
   #   value: false
-  # - name: version # version to publish to npm; only make sense when publishOfficial=true
+  # - name: releaseVersion # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
-pool: '1ES-Host-Ubuntu'
-
 jobs:
+  - template: .devops/templates/compliance-job.yml
+
   - job: Job_build_publish
+    dependsOn: Compliance
+    pool: '1ES-Host-Ubuntu'
     workspace:
       clean: all
     displayName: Build and Release Fluent Packages
@@ -115,9 +120,20 @@ jobs:
             echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
-            yarn release:fluentui:$(version) --yes
+            yarn release:fluentui:$(releaseVersion) --yes
 
             yarn release:fluentui:post-validation
+
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
+
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest
+        inputs:
+          artifactName: SBom-Build-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
       - template: .devops/templates/cleanup.yml
 
@@ -157,7 +173,7 @@ jobs:
 
       - task: CmdLine@2
         displayName: 'Set base path and version'
-        condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.version, 'canary'))
+        condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.releaseVersion, 'canary'))
         inputs:
           script: |
             ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
@@ -168,7 +184,7 @@ jobs:
 
       - task: CmdLine@2
         displayName: 'Set base path and version for canary'
-        condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.version, 'canary'))
+        condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.releaseVersion, 'canary'))
         inputs:
           script: |
             ver=`node -p "require('./packages/fluentui/lerna.json').version"`
@@ -193,6 +209,18 @@ jobs:
           ContainerName: $web
           BlobPrefix: $(deployBasePath)
           Gzip: true
+
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest Docsite
+        inputs:
+          BuildDropPath: $(System.DefaultWorkingDirectory)
+
+      # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest DocSite
+        inputs:
+          artifactName: SBom-DocSite-$(System.JobAttempt)
+          targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
       - task: PublishPipelineArtifact@1
         displayName: Publish Docsite as Pipeline Artifact

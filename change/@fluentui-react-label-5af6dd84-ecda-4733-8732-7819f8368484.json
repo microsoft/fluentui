@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Relocate comment about props to the correct type, and update spec to accurately reflect props",
-  "packageName": "@fluentui/react-label",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

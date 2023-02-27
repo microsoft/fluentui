@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove unused dependency on Griffel",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added missing descriptions to divider stories",
-  "packageName": "@fluentui/react-divider",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

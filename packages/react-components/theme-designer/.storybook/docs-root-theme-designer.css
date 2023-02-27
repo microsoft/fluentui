@@ -1,0 +1,8 @@
+#docs-root .sbdocs-wrapper {
+  padding: 0;
+}
+
+#docs-root .sbdocs-content {
+  max-width: none;
+  font-family: none;
+}

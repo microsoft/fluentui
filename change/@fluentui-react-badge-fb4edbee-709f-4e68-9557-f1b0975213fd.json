@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Add uniform padding and modify gaps",
-  "packageName": "@fluentui/react-badge",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

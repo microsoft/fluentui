@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  ColorPicker,
-  Toggle,
-  getColorFromString,
-  IColor,
-  IColorPickerStyles,
-  updateA,
-} from '@fluentui/react/lib/index';
+import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from '@fluentui/react';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classNames = mergeStyleSets({

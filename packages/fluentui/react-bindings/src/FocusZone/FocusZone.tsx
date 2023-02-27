@@ -12,15 +12,12 @@ import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 
-import {
-  elementContains,
-  findScrollableParent,
-  getDocument,
-  getParent,
-  getWindow,
-  raiseClick,
-  shouldWrapFocus,
-} from '@uifabric/utilities';
+import { getDocument } from '../utils/getDocument';
+import { getWindow } from '../utils/getWindow';
+import { findScrollableParent } from '../utils/findScrollableParent';
+import { shouldWrapFocus } from '../utils/shouldWrapFocus';
+
+import { elementContains, getParent } from '@fluentui/dom-utilities';
 
 import { getElementType } from '../utils/getElementType';
 import { getUnhandledProps } from '../utils/getUnhandledProps';
@@ -78,11 +75,33 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
 /**
+ * Raises a click on a target element based on a keyboard event.
+ */
+function _raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<HTMLElement>): void {
+  const event = new MouseEvent('click', {
+    ctrlKey: ev?.ctrlKey,
+    metaKey: ev?.metaKey,
+    shiftKey: ev?.shiftKey,
+    altKey: ev?.altKey,
+    bubbles: ev?.bubbles,
+    cancelable: ev?.cancelable,
+  });
+
+  target.dispatchEvent(event);
+}
+
+/**
  * Handle global tab presses so that we can patch tabindexes on the fly.
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
+    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => {
+      if (zone.props.shouldResetActiveElementWhenTabFromZone && document.activeElement !== zone._activeElement) {
+        // when focus is outside of component and shouldResetActiveElementWhenTabFromZone, reset tabIndex
+        zone._activeElement = null;
+      }
+      zone.updateTabIndexes();
+    });
   }
 }
 
@@ -616,7 +635,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
       switch (getCode(ev)) {
         case SpacebarKey:
           // @ts-ignore
-          if (this.tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this.tryInvokeClickForFocusable(ev.target as HTMLElement, ev)) {
             break;
           }
           return undefined;
@@ -733,7 +752,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
 
         case keyboardKey.Enter:
           // @ts-ignore
-          if (this.tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this.tryInvokeClickForFocusable(ev.target as HTMLElement, ev)) {
             break;
           }
           return undefined;
@@ -752,7 +771,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
   /**
    * Walk up the dom try to find a focusable element.
    */
-  tryInvokeClickForFocusable(targetElement: HTMLElement): boolean {
+  tryInvokeClickForFocusable(targetElement: HTMLElement, ev?: React.KeyboardEvent<HTMLElement>): boolean {
     let target = targetElement;
 
     if (target === this._root.current || !this.props.shouldRaiseClicks) {
@@ -774,7 +793,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
       ) {
-        raiseClick(target);
+        _raiseClickFromKeyboardEvent(target, ev);
         return true;
       }
 

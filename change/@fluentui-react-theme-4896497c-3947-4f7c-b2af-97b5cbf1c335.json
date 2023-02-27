@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove mergeThemes API",
-  "packageName": "@fluentui/react-theme",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

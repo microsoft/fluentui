@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-components): make sb start work with babel-make-styles and react-sb-addon",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

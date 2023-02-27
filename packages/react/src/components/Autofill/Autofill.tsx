@@ -95,7 +95,10 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
+    const isFocused = this._inputElement.current && this._inputElement.current === document.activeElement;
+
     if (
+      isFocused &&
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
@@ -107,8 +110,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
-      if (shouldSelectFullRange && this._inputElement.current) {
-        this._inputElement.current.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      if (shouldSelectFullRange) {
+        this._inputElement.current!.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (
           differenceIndex < this.value.length &&
@@ -116,8 +119,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         ) {
           differenceIndex++;
         }
-        if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
+        if (differenceIndex > 0) {
+          this._inputElement.current!.setSelectionRange(
             differenceIndex,
             suggestedDisplayValue.length,
             SELECTION_BACKWARD,
@@ -323,12 +326,16 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     }
 
     // eslint-disable-next-line deprecation/deprecation
-    const { onInputChange, onInputValueChange } = this.props;
+    const { onInputChange, onInputValueChange, updateValueInWillReceiveProps } = this.props;
     if (onInputChange) {
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
+    // if value is controlled in updateValueInWillReceiveProps, then we should not update the value in state now
+    // https://github.com/microsoft/fluentui/issues/18499
+    updateValueInWillReceiveProps
+      ? onInputValueChange?.(newValue, composing)
+      : this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
   };
 
   private _getDisplayValue(): string {

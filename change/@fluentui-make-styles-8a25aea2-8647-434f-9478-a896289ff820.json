@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add casts to work around typescript 4.3 issue",
-  "packageName": "@fluentui/make-styles",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

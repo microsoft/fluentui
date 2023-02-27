@@ -1,1 +1,1 @@
-export { DefaultSpacing } from '@fluentui/theme/lib/spacing/DefaultSpacing';
+export { DefaultSpacing } from '@fluentui/theme';

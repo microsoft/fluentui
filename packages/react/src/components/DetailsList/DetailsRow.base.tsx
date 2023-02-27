@@ -6,6 +6,7 @@ import {
   shallowCompare,
   getNativeProps,
   divProperties,
+  composeComponentAs,
 } from '../../Utilities';
 import { CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
@@ -13,7 +14,6 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { CollapseAllVisibility } from '../../GroupedList';
 import { classNamesFunction } from '../../Utilities';
 import type { IDisposable } from '../../Utilities';
 import type { IColumn } from './DetailsList.types';
@@ -186,17 +186,18 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
+      onRenderField,
       getCellValueKey,
       selectionMode,
-      rowWidth = 0,
       checkboxVisibility,
       getRowAriaLabel,
       getRowAriaDescription,
       getRowAriaDescribedBy,
+      isGridRow,
       checkButtonAriaLabel,
       checkboxCellClassName,
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
-      rowFieldsAs: RowFields = DetailsRowFields,
+      rowFieldsAs,
       selection,
       indentWidth,
       enableUpdateAnimations,
@@ -261,6 +262,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       this._rowClassNames = rowClassNames;
     }
 
+    const RowFields = rowFieldsAs ? composeComponentAs(rowFieldsAs, DetailsRowFields) : DetailsRowFields;
+
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
@@ -269,8 +272,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columns={columns}
         item={item}
         itemIndex={itemIndex}
+        isSelected={isSelected}
         columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
+        onRenderField={onRenderField}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
         cellStyleProps={cellStyleProps}
@@ -280,6 +285,23 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const defaultRole = 'row';
     const role = this.props.role ? this.props.role : defaultRole;
     this._ariaRowDescriptionId = getId('DetailsRow-description');
+
+    // When the user does not specify any column is a row-header in the columns props,
+    // The aria-labelledby of the checkbox does not specify {id}-header.
+    const hasRowHeader = columns.some(column => {
+      return !!column.isRowHeader;
+    });
+    const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
+
+    // additional props for rows within a GroupedList
+    // these are needed for treegrid row semantics, but not grid row semantics
+    const groupedListRowProps = isGridRow
+      ? {}
+      : {
+          'aria-level': (groupNestingDepth && groupNestingDepth + 1) || undefined,
+          'aria-posinset': ariaPositionInSet,
+          'aria-setsize': ariaSetSize,
+        };
 
     return (
       <FocusZone
@@ -292,6 +314,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             }
           : {})}
         {...focusZoneProps}
+        {...groupedListRowProps}
         direction={focusZoneDirection}
         elementRef={this._root}
         componentRef={this._focusZone}
@@ -302,14 +325,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
-        data-selection-disabled={disabled || undefined}
+        data-selection-disabled={(this.props as any)['data-selection-disabled'] ?? (disabled || undefined)}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
-        aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
-        aria-posinset={ariaPositionInSet}
-        aria-setsize={ariaSetSize}
         data-automationid="DetailsRow"
-        style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >
@@ -326,13 +345,13 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
+              'aria-labelledby': id ? ariaLabelledby : undefined,
               canSelect,
               compact,
               className: this._classNames.check,
               theme,
               isVisible: checkboxVisibility === CheckboxVisibility.always,
-              onRenderDetailsCheckbox: onRenderDetailsCheckbox,
+              onRenderDetailsCheckbox,
               useFastIcons,
             })}
           </div>
@@ -341,7 +360,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         <GroupSpacer
           indentWidth={indentWidth}
           role="gridcell"
-          count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
+          count={groupNestingDepth! === 0 ? -1 : groupNestingDepth!}
         />
 
         {item && rowFields}
@@ -363,13 +382,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             />
           </span>
         )}
-
-        <span
-          role="checkbox"
-          className={this._classNames.checkCover}
-          aria-checked={isSelected}
-          data-selection-toggle={true}
-        />
       </FocusZone>
     );
   }
@@ -410,9 +422,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const selectionState = getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
-      this.setState({
-        selectionState: selectionState,
-      });
+      this.setState({ selectionState });
     }
   };
 

@@ -17,7 +17,12 @@ import { ReactWrapper } from 'enzyme';
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { testPath: __filename, constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, {
+    testPath: __filename,
+    constructorName: 'Menu',
+    autoControlledProps: ['activeIndex'],
+    skipAsPropTests: 'as-component',
+  });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [

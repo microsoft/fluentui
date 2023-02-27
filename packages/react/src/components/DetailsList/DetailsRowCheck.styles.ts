@@ -12,7 +12,7 @@ const GlobalClassNames = {
 
 export const CHECK_CELL_WIDTH = 48;
 
-export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
+export const getDetailsRowCheckStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
   const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;

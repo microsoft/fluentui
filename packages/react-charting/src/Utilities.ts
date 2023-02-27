@@ -36,6 +36,7 @@ export {
   baseElementProperties,
   buttonProperties,
   calculatePrecision,
+  canUseDOM,
   classNamesFunction,
   colGroupProperties,
   colProperties,
@@ -134,6 +135,7 @@ export {
   optionProperties,
   portalContainsElement,
   precisionRound,
+  // eslint-disable-next-line deprecation/deprecation
   raiseClick,
   removeIndex,
   replaceElement,
@@ -151,6 +153,7 @@ export {
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
+  // eslint-disable-next-line deprecation/deprecation
   setSSR,
   setVirtualParent,
   setWarningCallback,

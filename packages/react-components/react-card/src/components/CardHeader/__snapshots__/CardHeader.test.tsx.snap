@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardHeader renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CardHeader"
+  >
+    <div
+      class="fui-CardHeader__image"
+    >
+      Image slot
+    </div>
+    <div
+      class="fui-CardHeader__header"
+    >
+      Title slot
+    </div>
+    <div
+      class="fui-CardHeader__description"
+    >
+      Description slot
+    </div>
+    <div
+      class="fui-CardHeader__action"
+    >
+      Action slot
+    </div>
+  </div>
+</div>
+`;

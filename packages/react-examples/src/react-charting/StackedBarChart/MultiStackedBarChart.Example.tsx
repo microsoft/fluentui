@@ -95,9 +95,9 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
     },
   ];
 
-  const hideRatio: boolean[] = [true, false];
+  const hideRatio: boolean[] = [false, true, false];
 
-  const hideDenominator: boolean[] = [true, true];
+  const hideDenominator: boolean[] = [true, true, false];
 
   const data: IChartProps[] = [
     {

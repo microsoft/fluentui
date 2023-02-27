@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use new types from makeStyles core",
-  "packageName": "@fluentui/react-positioning",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

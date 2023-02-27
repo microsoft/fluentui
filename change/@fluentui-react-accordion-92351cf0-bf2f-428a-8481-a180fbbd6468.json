@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removes children as a slot from AccordionHeader",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

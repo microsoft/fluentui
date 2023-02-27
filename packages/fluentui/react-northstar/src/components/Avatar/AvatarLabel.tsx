@@ -19,11 +19,11 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  SizeValue,
 } from '../../utils';
 
 import { FluentComponentStaticProps } from '../../types';
 import { labelClassName } from '../Label/Label';
+import { AvatarSizeValue } from './Avatar';
 
 export interface AvatarLabelProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -38,7 +38,7 @@ export interface AvatarLabelProps extends UIComponentProps, ChildrenComponentPro
   circular?: boolean;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 }
 
 export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'size' | 'square' | 'circular'>;

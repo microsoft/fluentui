@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { IDonutChartProps, DonutChart } from './index';
 import { IDonutChartState, DonutChartBase } from './DonutChart.base';
 import { IChartProps, IChartDataPoint } from '../../index';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the DonutChart to be tested.
 let wrapper: ReactWrapper<IDonutChartProps, IDonutChartState, DonutChartBase> | undefined;
@@ -70,6 +71,18 @@ describe('DonutChart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should render arc labels in percentage format', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} showLabelsInPercent={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render arc labels', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('DonutChart - basic props', () => {
@@ -115,5 +128,47 @@ describe('DonutChart - basic props', () => {
     wrapper = mount(<DonutChart data={chartPoints} />);
     const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
+  });
+});
+
+describe('DonutChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', () => {
+    wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('path[id^="_Pie_"]').at(0).simulate('mousemove');
+    const html1 = wrapper.html();
+    wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseleave');
+    wrapper.find('path[id^="_Pie_"]').at(1).simulate('mousemove');
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <DonutChart
+        data={chartPoints}
+        innerRadius={55}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

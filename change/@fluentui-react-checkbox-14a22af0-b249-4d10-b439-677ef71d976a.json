@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migration to new dx: ts style config",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
-}

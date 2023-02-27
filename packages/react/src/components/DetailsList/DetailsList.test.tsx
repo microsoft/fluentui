@@ -67,6 +67,16 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  let spy: jest.SpyInstance;
+  beforeAll(() => {
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+    spy = jest.spyOn(window, 'scrollTo').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    spy.mockRestore();
+  });
+
   beforeEach(() => {
     resetIds();
   });
@@ -349,6 +359,122 @@ describe('DetailsList', () => {
     );
   });
 
+  it('focuses row by arrow key', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(0);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('does not focus by arrow key when isSelectedOnFocus is `false`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        isSelectedOnFocus={false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(0);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+      },
+    );
+  });
+
+  it('clears selection when escape key is pressed and isSelectedOnFocus is `true`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        selection.setAllSelected(true);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+        expect(selection.getSelectedCount()).toEqual(0);
+      },
+    );
+  });
+
+  it('does not clear selection when escape key is pressed and isSelectedOnFocus is `false`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        isSelectedOnFocus={false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        selection.setAllSelected(true);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+        expect(selection.getSelectedCount()).toEqual(5);
+      },
+    );
+  });
+
   it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = [...mockData(5), null, null];
@@ -599,6 +725,22 @@ describe('DetailsList', () => {
         expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
       },
     );
+  });
+
+  it('calculates DetailsHeader and DetailsFooter in rowcount', () => {
+    const onRenderDetailsHeaderMock = jest.fn();
+    const onRenderDetailsFooterMock = jest.fn();
+
+    const component = renderer.create(
+      <DetailsList
+        items={mockData(5)}
+        onRenderDetailsHeader={onRenderDetailsHeaderMock}
+        onRenderDetailsFooter={onRenderDetailsFooterMock}
+      />,
+    );
+
+    const grid = component.root.findByProps({ role: 'grid' });
+    expect(grid.props[`aria-rowcount`]).toEqual(7);
   });
 
   it('invokes onRenderColumnHeaderTooltip to customize DetailsColumn tooltip rendering when provided', () => {
@@ -934,5 +1076,15 @@ describe('DetailsList', () => {
 
     const groupNameId = checkbox.getAttribute('aria-labelledby')?.split(' ')[1];
     expect(container.querySelector(`#${groupNameId} span`)!.textContent).toEqual('Group 0');
+  });
+
+  it('makes the first row tabbable if isHeaderVisible is false', () => {
+    const component = renderer.create(
+      <DetailsList items={mockData(5)} columns={mockData(5, true)} isHeaderVisible={false} />,
+    );
+
+    const firstRow = component.root.findAllByType(DetailsRow)[0];
+
+    expect(firstRow.props.focusZoneProps?.tabIndex).toEqual(0);
   });
 });

@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@fluentui/react-charting';
+import {
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  VerticalStackedBarChart,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -41,7 +46,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 40,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 40%' },
@@ -68,7 +73,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 30,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 30%' },
@@ -95,7 +100,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 44,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '44%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 44%' },
@@ -125,7 +130,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
 
         ...(showLine && {
           lineData: [
-            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -135,7 +140,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         chartData: secondChartPoints,
         xAxisPoint: 20,
         ...(showLine && {
-          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magenta }],
+          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
         }),
         stackCallOutAccessibilityData: { ariaLabel: 'Bar stack series 2 of 6' },
       },
@@ -144,7 +149,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         xAxisPoint: 40,
         ...(showLine && {
           lineData: [
-            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -152,21 +157,41 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
-        <label>BarGapMax:</label>
+        <label htmlFor="changeWidth_Custom">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Custom"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Custom">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Custom"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
+        <label htmlFor="ChangeBarGapMax_Custom">BarGapMax:</label>
         <input
           type="range"
           value={this.state.barGapMax}
           min={0}
           max={10}
+          id="ChangeBarGapMax_Custom"
           onChange={e => this.setState({ barGapMax: +e.target.value })}
+          aria-valuetext={`ChangebarGapMaxSlider${this.state.barGapMax}`}
         />
         <Checkbox
           label="show the lines (hide or show the lines)"
@@ -181,6 +206,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             data={data}
             height={this.state.height}
             width={this.state.width}
+            lineOptions={lineOptions}
             legendProps={{
               allowFocusOnLegends: true,
             }}

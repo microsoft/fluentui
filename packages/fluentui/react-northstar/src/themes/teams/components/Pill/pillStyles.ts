@@ -82,6 +82,10 @@ export const pillStyles: ComponentSlotStylesPrepared<PillStylesProps, PillVariab
         }),
       }),
 
+      ...(p.actionable && {
+        cursor: 'pointer',
+      }),
+
       ...getBorderFocusStyles({ variables: siteVariables }),
     };
   },

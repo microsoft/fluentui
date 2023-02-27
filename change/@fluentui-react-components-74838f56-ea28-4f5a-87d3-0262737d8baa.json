@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "temporary disable Storybook addon",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

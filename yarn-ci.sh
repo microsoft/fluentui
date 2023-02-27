@@ -19,7 +19,7 @@ while [ $attempt -le $MAX_RETRIES ]; do
 
   # `timeout` is in GNU coreutils. These are installed by default on Linux but not on Mac.
   # https://www.gnu.org/software/coreutils/manual/html_node/timeout-invocation.html#index-timeout
-  timeout -k "$((MAX_TIME+1))m" "${MAX_TIME}m" yarn install
+  timeout -k "$((MAX_TIME+1))m" "${MAX_TIME}m" yarn install --frozen-lockfile
   result=$?
 
   if [ $result = 0 ]; then

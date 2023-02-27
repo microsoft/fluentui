@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update stories to not use CSS shorthands in styles",
-  "packageName": "@fluentui/react-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

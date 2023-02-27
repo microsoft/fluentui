@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: use updated tokens for ghost and outline variants",
-  "packageName": "@fluentui/react-badge",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

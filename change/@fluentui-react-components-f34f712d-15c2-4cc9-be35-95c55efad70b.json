@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove mergeThemes from public API",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Focus on first menu item on click",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

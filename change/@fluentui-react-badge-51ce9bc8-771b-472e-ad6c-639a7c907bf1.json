@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Refactor and re-organize Badge styles; no visual changes.",
-  "packageName": "@fluentui/react-badge",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -5,20 +5,22 @@ import {
   display,
   ElementDefinitionContext,
   forcedColorsStylesheetBehavior,
-  FoundationElementDefinition,
+  SearchOptions,
 } from '@microsoft/fast-foundation';
 import {
+  baseInputStyles,
   heightNumber,
-  inputFilledForcedColorStyles,
   inputFilledStyles,
   inputForcedColorStyles,
+  inputOutlineStyles,
   inputStateStyles,
-  inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { bodyFont, controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
+import { controlCornerRadius, density, designUnit, neutralFillInputRecipe, neutralFillStealthRecipe, neutralForegroundRest } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 import { Swatch } from '../color/swatch';
 
+const logicalControlSelector: string = '.root';
 
 const clearButtonHover = DesignToken.create<Swatch>("clear-button-hover").withDefault(
   (target: HTMLElement) => {
@@ -36,26 +38,17 @@ const clearButtonActive = DesignToken.create<Swatch>("clear-button-active").with
   }
 );
 
-
-export const searchFilledStyles: (
+export const searchStyles: (context: ElementDefinitionContext, definition: SearchOptions) => ElementStyles = (
   context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
-    ${inputFilledStyles(context, definition, '.root')}
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputFilledForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
-  );
-
-export const searchStyles = (context, definition) =>
+  definition: SearchOptions,
+) =>
   css`
     ${display('inline-block')}
-    ${inputStyles(context, definition, '.root')}
-    ${inputStateStyles(context, definition, '.root')}
+
+    ${baseInputStyles(context, definition, logicalControlSelector)}
+
+    ${inputStateStyles(context, definition, logicalControlSelector)}
+
     .root {
       display: flex;
       flex-direction: row;
@@ -85,10 +78,8 @@ export const searchStyles = (context, definition) =>
       border: none;
       border-radius: calc(${controlCornerRadius} * 1px);
       min-width: calc(${heightNumber} * 1px);
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
+      ${typeRampBase}
       outline: none;
-      font-family: ${bodyFont};
       padding: 0 calc((10 + (${designUnit} * 2 * ${density})) * 1px);
     }
     .clear-button:hover {
@@ -138,10 +129,7 @@ export const searchStyles = (context, definition) =>
       margin-inline-end: 1px;
     }
   `.withBehaviors(
-    appearanceBehavior('filled', searchFilledStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputForcedColorStyles(context, definition, '.root')}
-      `,
-    )
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

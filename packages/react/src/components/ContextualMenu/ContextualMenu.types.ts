@@ -47,6 +47,7 @@ export interface IContextualMenuProps
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
+   * @deprecated ContextualMenu has no imperative methods, so componentRef no longer returns a ref
    */
   componentRef?: IRefObject<IContextualMenu>;
 
@@ -235,6 +236,12 @@ export interface IContextualMenuProps
   onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
 
   /**
+   * Method to wrap menu items. Gives the ability to wrap a custom
+   * tooltip to each menu item button.
+   */
+  onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
+
+  /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
    */
   subMenuHoverDelay?: number;
@@ -350,7 +357,8 @@ export interface IContextualMenuItem {
   iconProps?: IIconProps;
 
   /**
-   * Custom render function for the menu item icon
+   * Custom render function for the menu item icon.
+   * iconProps must be present on at least one item for onRenderIcon to be called.
    */
   onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 

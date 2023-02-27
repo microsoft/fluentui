@@ -166,7 +166,7 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
     }
   };
 
-  let semanticSlotsNone = props.theme.semanticColors;
+  let semanticSlotsNone = props.theme!.semanticColors;
   slotNames = trimSemanticSlotsOrNames(Object.keys(semanticSlotsNone)) as ISlotNames;
   noneSlots = fillVariantSlotsList(VariantThemeType.None);
   neutralSlots = fillVariantSlotsList(VariantThemeType.Neutral);

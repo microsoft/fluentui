@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "(fix): Update react-icons dependency to latest version",
-  "packageName": "@fluentui/react-avatar",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

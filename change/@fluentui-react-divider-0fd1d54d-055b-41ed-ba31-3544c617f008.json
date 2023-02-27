@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migration to ts config solution",
-  "packageName": "@fluentui/react-divider",
-  "email": "tkrasniqi@microsoft.com",
-  "dependentChangeType": "none"
-}

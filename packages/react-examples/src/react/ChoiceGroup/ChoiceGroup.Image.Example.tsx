@@ -22,5 +22,15 @@ const options: IChoiceGroupOption[] = [
 ];
 
 export const ChoiceGroupImageExample: React.FunctionComponent = () => {
-  return <ChoiceGroup label="Pick one image" defaultSelectedKey="bar" options={options} />;
+  return (
+    <>
+      <ChoiceGroup label="Pick one image" defaultSelectedKey="bar" options={options} />
+      <p>
+        Warning: this ChoiceGroup option layout restricts the space that label text has to expand and wrap. This can
+        cause issues for accessibility, when zoom and text spacing increase the length of words and lines, and also
+        internationalization, since translated text length will vary.
+      </p>
+      <p>We recommend using the standard layout with an inline image for labels longer than a single short word.</p>
+    </>
+  );
 };

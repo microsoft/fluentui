@@ -19,12 +19,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
       & > * {
         text-overflow: ellipsis;
       }
-      & > *:not(:first-child) {
-        margin-top: 0px;
-      }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
 >
   <div
     className=
@@ -40,12 +34,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 0px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
         }
   >
     <div>
@@ -92,14 +80,14 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -108,7 +96,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -220,14 +208,14 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -236,7 +224,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -327,12 +315,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
       & > * {
         text-overflow: ellipsis;
       }
-      & > *:not(:first-child) {
-        margin-top: 0px;
-      }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
 >
   <div
     className=
@@ -348,12 +330,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 0px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
         }
   >
     <div>
@@ -400,14 +376,14 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -416,7 +392,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -528,14 +504,14 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -544,7 +520,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }

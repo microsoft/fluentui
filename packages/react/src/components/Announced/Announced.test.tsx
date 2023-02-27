@@ -1,85 +1,75 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
 import { Announced } from './Announced';
 
 describe('Announced', () => {
-  let component: renderer.ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper | undefined;
-
   afterEach(() => {
     jest.useRealTimers();
-    if (component) {
-      component.unmount();
-      component = undefined;
-    }
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   it('does not initially render message', () => {
-    component = renderer.create(<Announced message="hello" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Announced message="hello" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('renders message after delay', () => {
     jest.useFakeTimers();
-    component = renderer.create(<Announced message="hello" />);
+    const { container } = render(<Announced message="hello" />);
     jest.runAllTimers();
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   isConformant({
     Component: Announced,
     displayName: 'Announced',
     componentPath: path.join(__dirname, 'Announced.ts'),
-    skipAsPropTests: false,
     // Problem: Ref isn't passed.
     // Solution: Ref should be added and passed onto the root.
     disabledTests: ['component-handles-ref', 'component-has-root-ref'],
   });
 
   it('renders with default settings', () => {
-    wrapper = mount(<Announced message="hello" />);
-    const element = wrapper.getDOMNode() as HTMLElement;
-    expect(element.tagName).toBe('DIV');
-    expect(element.getAttribute('role')).toBe('status');
-    expect(element.getAttribute('aria-live')).toBe('polite');
+    const { getByRole } = render(<Announced message="hello" />);
+    const component = getByRole('status');
+
+    expect(component.tagName).toBe('DIV');
+    expect(component.getAttribute('aria-live')).toBe('polite');
   });
 
   it('delay renders message', () => {
     jest.useFakeTimers();
-    wrapper = mount(<Announced message="hello" />);
-    expect(wrapper.text()).toBeFalsy();
+    const { getByRole } = render(<Announced message="hello" />);
+    const component = getByRole('status');
+    expect(component.textContent).toBeFalsy();
 
     jest.runAllTimers();
-    expect(wrapper.text()).toBe('hello');
+    expect(component.textContent).toBe('hello');
   });
 
   it('renders as custom tag', () => {
     jest.useFakeTimers();
-    wrapper = mount(<Announced as="span" message="hello" />);
-    expect(wrapper.getDOMNode().tagName).toBe('SPAN');
+    const { getByRole } = render(<Announced as="span" message="hello" />);
+    const component = getByRole('status');
+
+    expect(component.tagName).toBe('SPAN');
 
     jest.runAllTimers();
-    expect(wrapper.text()).toBe('hello'); // still renders children
+    expect(component.textContent).toBe('hello'); // still renders children
   });
 
   it('can change aria-live', () => {
-    wrapper = mount(<Announced aria-live="assertive" message="hello" />);
-    expect(wrapper.getDOMNode().getAttribute('aria-live')).toBe('assertive');
+    const { getByRole } = render(<Announced aria-live="assertive" message="hello" />);
+    const component = getByRole('status');
+
+    expect(component.getAttribute('aria-live')).toBe('assertive');
   });
 
   it('can change styles', () => {
     jest.useFakeTimers();
-    wrapper = mount(
+    const { getByRole } = render(
       <Announced
         message="hello"
         className="rootclass1"
@@ -91,9 +81,9 @@ describe('Announced', () => {
     );
     jest.runAllTimers();
 
-    const element = wrapper.getDOMNode();
-    expect(element.className).toContain('rootclass1');
-    expect(element.className).toContain('rootclass2');
-    expect(element.firstElementChild!.className).toContain('textclass');
+    const component = getByRole('status');
+    expect(component.className).toContain('rootclass1');
+    expect(component.className).toContain('rootclass2');
+    expect(component.firstElementChild!.className).toContain('textclass');
   });
 });

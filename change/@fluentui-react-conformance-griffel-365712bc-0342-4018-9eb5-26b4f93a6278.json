@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add conformance tests for Griffel",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

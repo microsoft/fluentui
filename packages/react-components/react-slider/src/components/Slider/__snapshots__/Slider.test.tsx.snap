@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider renders disabled Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
+  >
+    <input
+      class="fui-Slider__input"
+      disabled=""
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders horizontal Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 50%;"
+  >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;
+
+exports[`Slider renders vertical Slider correctly 1`] = `
+<div>
+  <div
+    class="fui-Slider"
+    style="--fui-Slider--direction: 0deg; --fui-Slider--progress: 50%;"
+  >
+    <input
+      class="fui-Slider__input"
+      id="slider-1"
+      max="10"
+      min="0"
+      orient="vertical"
+      type="range"
+      value="5"
+    />
+    <div
+      class="fui-Slider__rail"
+    />
+    <div
+      class="fui-Slider__thumb"
+    />
+  </div>
+</div>
+`;

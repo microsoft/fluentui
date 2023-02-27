@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Button Migration" />
+
+# Button Migration
+
+The v8 button variants share the IButtonProps. When using ButtonBase the resulting variant is rendered based on the buttonType (normal, primary, hero, compound, command, icon, or default) and when using a variant directly then props like primary and split change how the button is rendered.
+
+In v9, there is not a shared button type. Variants have their own props although they may extend ButtonProps. There are not variants for primary and action buttons. This is controlled through the appearance prop.
+
+To migrate a button replace the v8 usage with the corresponding v9 button variant. Use the property mapping to pass the right properties to the v9 button.
+
+## Button Variant Mapping
+
+| v8 Button variant    | v9 Button variant               |
+| -------------------- | ------------------------------- |
+| DefaultButton        | Button                          |
+| ActionButton         | Button appearance="transparent" |
+| CommandButton        | Button                          |
+| CommandBarButton     | Button                          |
+| CompoundButton       | CompoundButton                  |
+| ContextualMenuButton | Menu / MenuButton               |
+| PrimaryButton        | Button appearance="primary"     |
+| Button split         | SplitButton                     |
+| Button toggle        | ToggleButton                    |
+
+## Button Props Mapping
+
+| v8 IButtonProps          | v9 ButtonProps (replacements)              |
+| ------------------------ | ------------------------------------------ |
+| allowDisabledFocus       | disabledFocusable                          |
+| ariaLabel                | HTML aria-label                            |
+| ariaDescription          | (removed)                                  |
+| ariaHidden               | HTML aria-hidden                           |
+| checked                  | (use ToggleButton checked)                 |
+| className                | className                                  |
+| children                 | children                                   |
+| componentRef             | ref                                        |
+| data                     | (removed)                                  |
+| defaultRender            | (removed)                                  |
+| disabled                 | disabled                                   |
+| getClassNames            |                                            |
+| getSplitButtonClassNames | (use SplitButton)                          |
+| href                     | (use Link)                                 |
+| iconProps                | icon (slot)                                |
+| disabled                 | disabled                                   |
+| key                      | key                                        |
+| keyTipProps              |                                            |
+| menuAs                   | (use Menu and HTML as)                     |
+| menuIconProps            | (use MenuButton menuIcon slot)             |
+| menuProps                | (use Menu and MenuButton)                  |
+| menuTriggerKeyCode       |                                            |
+| onMenuClick              | HTML onClick                               |
+| onRenderAriaDescription  | (removed)                                  |
+| onRenderChildren         | children                                   |
+| onRenderDescription      | (use CompoundButton secondaryContent slot) |
+| onRenderIcon             | icon (slot)                                |
+| onRenderMenuIcon         | (use MenuButton icon)                      |
+| onRenderText             | children                                   |
+| persistMenu              | (use Menu)                                 |
+| primary                  | appearance=primary                         |
+| primaryActionButtonProps | (use SplitButton)                          |
+| primaryDisabled          | (use SplitButton)                          |
+| secondaryText            | (use CompoundButton secondaryContent)      |
+| split                    | (use SplitButton)                          |
+| splitButtonAriaLabel     | HTML aria-label                            |
+| splitButtonMenuProps     | (use Menu and SplitButton)                 |
+| styles                   | (use makeStyles and className)             |
+| text                     | children                                   |
+| theme                    | (use FluentProvider)                       |
+| toggle                   | (use ToggleButton)                         |
+| uniqueId                 | HTML key                                   |

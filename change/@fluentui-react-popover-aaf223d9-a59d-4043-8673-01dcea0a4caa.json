@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add workaround for cypress bug",
-  "packageName": "@fluentui/react-popover",
-  "email": "email not defined",
-  "dependentChangeType": "none"
-}

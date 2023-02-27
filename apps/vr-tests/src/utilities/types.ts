@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryApi, StoryName, LegacyStoryFn } from '@storybook/addons';
+import { StoryApi, StoryName, StoryFn, ClientApiReturnFn } from '@storybook/addons';
 
 /** Extra parameters provided by our addon (see `.storybook/preview.js`) */
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -14,7 +14,7 @@ export interface AddStoryConfig {
 
 export type ExtendedStoryFnReturnType = React.ReactElement<unknown>;
 
-export type ExtendedStoryFn = LegacyStoryFn<ExtendedStoryFnReturnType>;
+export type ExtendedStoryFn = StoryFn<ExtendedStoryFnReturnType>;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
@@ -24,5 +24,5 @@ export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
     config?: AddStoryConfig,
   ) => ExtendedStoryApi;
 
-  add: (storyName: StoryName, storyFn: ExtendedStoryFn) => ExtendedStoryApi;
+  add: ClientApiReturnFn<ExtendedStoryFnReturnType>;
 }

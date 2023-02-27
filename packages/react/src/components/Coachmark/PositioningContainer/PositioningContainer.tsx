@@ -34,30 +34,26 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
 
-function useCachedBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
+function useBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
   /** The bounds used when determining if and where the PositioningContainer should be placed. */
-  const positioningBounds = React.useRef<IRectangle>();
 
-  const getCachedBounds = (): IRectangle => {
-    if (!positioningBounds.current) {
-      let currentBounds = props.bounds;
+  const getBounds = (): IRectangle => {
+    let currentBounds = props.bounds;
 
-      if (!currentBounds) {
-        currentBounds = {
-          top: 0 + props.minPagePadding!,
-          left: 0 + props.minPagePadding!,
-          right: targetWindow!.innerWidth - props.minPagePadding!,
-          bottom: targetWindow!.innerHeight - props.minPagePadding!,
-          width: targetWindow!.innerWidth - props.minPagePadding! * 2,
-          height: targetWindow!.innerHeight - props.minPagePadding! * 2,
-        };
-      }
-      positioningBounds.current = currentBounds;
+    if (!currentBounds) {
+      currentBounds = {
+        top: 0 + props.minPagePadding!,
+        left: 0 + props.minPagePadding!,
+        right: targetWindow!.innerWidth - props.minPagePadding!,
+        bottom: targetWindow!.innerHeight - props.minPagePadding!,
+        width: targetWindow!.innerWidth - props.minPagePadding! * 2,
+        height: targetWindow!.innerHeight - props.minPagePadding! * 2,
+      };
     }
-    return positioningBounds.current;
+    return currentBounds;
   };
 
-  return getCachedBounds;
+  return getBounds;
 }
 
 function usePositionState(
@@ -260,8 +256,10 @@ export function useHeightOffset(
   /**
    * Tracks the current height offset and updates during
    * the height animation when props.finalHeight is specified.
+   * State stored as object to ensure re-render even if the value does not change.
+   *  See https://github.com/microsoft/fluentui/issues/23545
    */
-  const [heightOffset, setHeightOffset] = React.useState<number>(0);
+  const [heightOffset, setHeightOffset] = React.useState<{ value: number }>({ value: 0 });
   const async = useAsync();
   const setHeightOffsetTimer = React.useRef<number>(0);
 
@@ -278,7 +276,7 @@ export function useHeightOffset(
         const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        setHeightOffset(heightOffset + scrollDiff);
+        setHeightOffset({ value: heightOffset.value + scrollDiff });
 
         if (positioningContainerMainElem.offsetHeight < finalHeight) {
           setHeightOffsetEveryFrame();
@@ -292,14 +290,14 @@ export function useHeightOffset(
   // eslint-disable-next-line react-hooks/exhaustive-deps -- should only re-run if finalHeight changes
   React.useEffect(setHeightOffsetEveryFrame, [finalHeight]);
 
-  return heightOffset;
+  return heightOffset.value;
 }
 
 export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps> = React.forwardRef<
   HTMLDivElement,
   IPositioningContainerProps
 >((propsWithoutDefaults, forwardedRef) => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const props = getPropsWithDefaults<IPositioningContainerProps>(DEFAULT_PROPS, propsWithoutDefaults);
 
   // @TODO rename to reflect the name of this class
   const contentHost = React.useRef<HTMLDivElement>(null);
@@ -310,7 +308,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
   const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
   const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
-  const getCachedBounds = useCachedBounds(props, targetWindow);
+  const getCachedBounds = useBounds(props, targetWindow);
   const [positions, updateAsyncPosition] = usePositionState(
     props,
     positionedHost,
@@ -370,7 +368,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     </div>
   );
 
-  return doNotLayer ? content : <Layer>{content}</Layer>;
+  return doNotLayer ? content : <Layer {...props.layerProps}>{content}</Layer>;
 });
 PositioningContainer.displayName = 'PositioningContainer';
 

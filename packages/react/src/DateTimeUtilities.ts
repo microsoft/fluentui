@@ -19,12 +19,10 @@ export {
   getYearStart,
   isInDateRangeArray,
   setMonth,
-} from '@fluentui/date-time-utilities/lib/dateMath/dateMath';
-export {
   DAYS_IN_WEEK,
   DateRangeType,
   DayOfWeek,
   FirstWeekOfYear,
   MonthOfYear,
-} from '@fluentui/date-time-utilities/lib/dateValues/dateValues';
-export { TimeConstants } from '@fluentui/date-time-utilities/lib/dateValues/timeConstants';
+  TimeConstants,
+} from '@fluentui/date-time-utilities';

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs(storybook): hide editors in ArgsTable",
-  "packageName": "@fluentui/react-components",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -22,12 +22,13 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           className={styles.callout}
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
+          role="dialog"
           gapSpace={0}
           target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
         >
-          <Text block variant="xLarge" className={styles.title} id={labelId}>
+          <Text as="h1" block variant="xLarge" className={styles.title} id={labelId}>
             Callout title here
           </Text>
           <Text block variant="small" id={descriptionId}>

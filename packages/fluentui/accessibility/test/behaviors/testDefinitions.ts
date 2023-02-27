@@ -593,6 +593,25 @@ definitions.push({
   },
 });
 
+// Triggers 'close' action with 'Escape' on 'trigger' if 'open' property is true.
+definitions.push({
+  regexp: /Triggers '(\w+)' action with '(\S+)' on '(\w+)' if '(\w+)' property is true./g,
+  testMethod: (parameters: TestMethod) => {
+    const [action, key, elementToPerformAction, propertyDependingOn] = [...parameters.props];
+    const propsInOpenState = {};
+    propsInOpenState[propertyDependingOn] = true;
+
+    const expectedResultOpenState = parameters.behavior(propsInOpenState).keyActions[elementToPerformAction][action]
+      .keyCombinations[0].keyCode;
+    expect(expectedResultOpenState).toBe(keysAndAliases[key]);
+
+    const propsInCloseState = {};
+    propsInCloseState[propertyDependingOn] = false;
+    const expectedResultCloseState = parameters.behavior(propsInCloseState).keyActions[elementToPerformAction][action];
+    expect(expectedResultCloseState).toBe(undefined);
+  },
+});
+
 // Triggers 'unsetRowTabbable' action using 'shiftKey' + 'Tab' key on 'root'.
 definitions.push({
   regexp: /Triggers '(\w+)' action using '(\w+)' \+ '(\w+)' key on '(\w+)'\./g,

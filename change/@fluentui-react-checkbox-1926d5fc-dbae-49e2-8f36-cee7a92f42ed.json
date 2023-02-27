@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update styles to not use CSS shorthands",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

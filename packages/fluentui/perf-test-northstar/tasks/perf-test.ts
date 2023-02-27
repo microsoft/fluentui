@@ -3,6 +3,10 @@ import path from 'path';
 import _ from 'lodash';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
 import { generateUrl } from '@fluentui/digest';
+import { getFluentPerfRegressions } from './fluentPerfRegressions';
+
+// Hardcoded PR deploy URL for local testing
+const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
 
 type ExtendedCookResult = CookResult & {
   extended: {
@@ -41,7 +45,7 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
 
   if (!baselineOnly) {
     const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-    urlForMaster = `https://${process.env.DEPLOYHOST}/${targetPath}/perf-test-northstar/index.html`;
+    urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test-northstar/index.html`;
   }
 
   // For debugging, in case the environment variables used to generate these have unexpected values
@@ -122,8 +126,10 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
   // Write results to file
   fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
-  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
-  console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
+  console.log(
+    `##vso[task.setvariable variable=PerfCommentFilePathNorthstar;]packages/fluentui/perf-test-northstar/dist/perfCounts.html`,
+  );
+  console.log(`##vso[task.setvariable variable=PerfCommentStatusNorthstar;]${status}`);
 }
 
 function extendCookResults(stories, testResults: CookResults): ExtendedCookResults {
@@ -153,21 +159,17 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
  * @returns {string}
  */
 function createReport(stories, testResults: ExtendedCookResults): string {
-  const report = ''
+  // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+  // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
+  // // Show only significant changes by default.
+  // .concat(createScenarioTable(testResults, false))
 
-    // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
-    // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
-    // // Show only significant changes by default.
-    // .concat(createScenarioTable(testResults, false))
+  // // Show all results in a collapsible table.
+  // .concat('<details><summary>All results</summary><p>')
+  // .concat(createScenarioTable(testResults, true))
+  // .concat('</p></details>');
 
-    // // Show all results in a collapsible table.
-    // .concat('<details><summary>All results</summary><p>')
-    // .concat(createScenarioTable(testResults, true))
-    // .concat('</p></details>');
-
-    .concat(createScenarioTable(stories, testResults, true));
-
-  return report;
+  return getFluentPerfRegressions();
 }
 
 /**

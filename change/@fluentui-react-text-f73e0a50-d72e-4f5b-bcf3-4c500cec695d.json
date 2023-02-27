@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update styles to not use CSS shorthands",
-  "packageName": "@fluentui/react-text",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

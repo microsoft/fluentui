@@ -22,17 +22,11 @@ export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendPr
   const lineDefs: ILineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
+  const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+  const fill: string | undefined = darkThemeMq.matches ? 'rgb(255,255,255)' : props.strokeColor;
 
   const lines = uniqBy(lineDefs, x => x.date.toString()).map((x, i) => (
-    <line
-      key={i}
-      x1={x.x}
-      x2={x.x}
-      y1={lineTopY}
-      y2={props.chartYBottom}
-      stroke={props.strokeColor}
-      strokeDasharray="8"
-    />
+    <line key={i} x1={x.x} x2={x.x} y1={lineTopY} y2={props.chartYBottom} stroke={fill} strokeDasharray="8" />
   ));
 
   const labelLinks = calculateLabels(lineDefs, textWidth + textPadding, axisRange[1], axisRange[0]).map((x, i) => (

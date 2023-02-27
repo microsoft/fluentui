@@ -19,16 +19,193 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
+- `Dropdown`: Do not use aria-owns for search Dropdown on mac. @jurokapsiar ([#26972](https://github.com/microsoft/fluentui/pull/26972))
+
+<!--------------------------------[ v0.66.2 ]------------------------------- -->
+## [v0.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.2) (2023-02-24)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.1..@fluentui/react-northstar_v0.66.2)
+
+### Fixes
+- `Checkbox`: Toggle activation should be more obvious in high contrast mode. @ling1726 ([#26910](https://github.com/microsoft/fluentui/pull/26910))
+
+<!--------------------------------[ v0.66.1 ]------------------------------- -->
+## [v0.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.1) (2023-02-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.0..@fluentui/react-northstar_v0.66.1)
+
+### Fixes
+- `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
+- Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
+- `Dropdown`: Allow clear on Enter/Space press. @jurokapsiar ([#26685](https://github.com/microsoft/fluentui/pull/26685))
+
+<!--------------------------------[ v0.66.0 ]------------------------------- -->
+## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.65.0..@fluentui/react-northstar_v0.66.0)
+
+### BREAKING CHANGES
+- `createFelaRenderer` is now a function @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+
+### Fixes
+- `Carousel` fix for FZ - Adding data-is-visible prop #25973 @kolaps33 ([#25973](https://github.com/microsoft/fluentui/pull/25973))
+- Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
+- Fix `Button` styles for `disabledFocusable` when `text` @chpalac ([#26012](https://github.com/microsoft/fluentui/pull/26012))
+
+### Features
+- `nonce` can be configured for Fela renderer @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+- Unstyled prop for `Tree`, `TreeItem` and `TreeTitle` @jurokapsiar ([#25886](https://github.com/microsoft/fluentui/pull/25886))
+
+<!--------------------------------[ v0.65.0 ]------------------------------- -->
+## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.64.0..@fluentui/react-northstar_v0.65.0)
+
+### BREAKING CHANGES
+- Styles from `ChatMessage` content slot were moved to exact component `ChatMessageContent` @yuanboxue-amber ([#24691](https://github.com/microsoft/fluentui/pull/24691))
+- Remove `goToToday` prop from `DatePicker` as it had no effect @miroslavstastny ([#25242](https://github.com/microsoft/fluentui/pull/25242))
+
+### Features
+- Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
+- Add `FocusTrapZone` prop `preventScrollOnRestoreFocus` to prevent scroll on focus when `FocusTrapZone` releases @yuanboxue-amber ([#24632](https://github.com/microsoft/fluentui/pull/24632))
+- Add new style to v0 Tooltip to match v9 Tooltip @GianoglioEnrico ([#24908](https://github.com/microsoft/fluentui/pull/24908))
+- Restyling v0 Menu to match v9 Menu @GianoglioEnrico ([#25012](https://github.com/microsoft/fluentui/pull/25012))
+- Limit keyboard detection in inputs @jurokapsiar ([#25087](https://github.com/microsoft/fluentui/pull/25087))
+- Dropdown Freeform search should be case insensitive @jurokapsiar ([#24879](https://github.com/microsoft/fluentui/pull/24879))
+- Update styles to v0 Loader to match v9 Spinner @GianoglioEnrico ([#25169](https://github.com/microsoft/fluentui/pull/25169))
+
+### Fixes
+- Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
+- Fix `FocusTrapZone` to always remove `aria-hidden` on portal wrapper @yuanboxue-amber ([#24414](https://github.com/microsoft/fluentui/pull/24414))
+- Remove `rotate(360deg)` from `PopupContent` content styles @yuanboxue-amber ([#24432](https://github.com/microsoft/fluentui/pull/24432))
+- Fix `FocusZone` to reset tabindex when focus is outside the zone with prop `shouldResetActiveElementWhenTabFromZone` @yuanboxue-amber ([#24463](https://github.com/microsoft/fluentui/pull/24463))
+- Change `useLayoutEffect` in `Dropdown` to `useIsomorphicLayoutEffect` @marwan38 ([#24559](https://github.com/microsoft/fluentui/pull/24559))
+- Fix `Popup` trigger attribute being override @chpalac ([#24794](https://github.com/microsoft/fluentui/pull/24794))
+- Fix styling mutation when merging themes in `Dropdown` @petrjaros ([#24787](https://github.com/microsoft/fluentui/pull/24787))
+- Fix `Toolbar` submenu closing when another submenu is opened @miroslavstastny ([#24836](https://github.com/microsoft/fluentui/pull/24836))
+
+### Performance
+- Avoid memory trashing in `felaExpandCssShorthandsPlugin` @layershifter ([#24663](https://github.com/microsoft/fluentui/pull/24663))
+
+### Documentation
+- Added theming documentation for windows high contrast mode support @ling1726 ([#24744](https://github.com/microsoft/fluentui/pull/24744))
+
+<!--------------------------------[ v0.64.0 ]------------------------------- -->
+## [v0.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.64.0) (2022-08-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.1..@fluentui/react-northstar_v0.64.0)
+
+### Features
+- Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
+- Add `GlobeIcon` and `ArrowSyncIcon` @notandrew ([#23683](https://github.com/microsoft/fluentui/pull/23683))
+- Add size 'medium-large' to `Avatar` @yuanboxue-amber ([#23787](https://github.com/microsoft/fluentui/pull/23787))
+- Allow freeform to better support time picker scenario for `Dropdown` @jurokapsiar ([#23949](https://github.com/microsoft/fluentui/pull/23949))
+
+### Fixes
+- Updating `Chat Message`'s `actionMenu` to use shadow8 @notandrew ([#23100](https://github.com/microsoft/fluentui/pull/23100))
+- Update `Pink` colors to new color palette @notandrew ([#23262](https://github.com/microsoft/fluentui/pull/23262))
+- Fix `Datepicker` hover background for HC theme @chpalac ([#23798](https://github.com/microsoft/fluentui/pull/23798))
+- Fix box-shadow for `Menu` and `Dropdown` component to make it consistent with other components @vitthalr ([#23937](https://github.com/microsoft/fluentui/pull/23937))
+- Align `default` scheme colors between v0 and v9 @yuanboxue-amber ([#23901](https://github.com/microsoft/fluentui/pull/23901))
+- Refactor `Ref` component to flatten React's tree @layershifter ([#24105](https://github.com/microsoft/fluentui/pull/24105))
+- Fix to handle an empty string as an empty value in `Dropdown` @layershifter ([#24274](https://github.com/microsoft/fluentui/pull/24274))
+
+<!--------------------------------[ v0.63.1 ]------------------------------- -->
+## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.0..@fluentui/react-northstar_v0.63.1)
+
+### Fixes
+
+- Remove unnecessary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
+- Render `selectionIndicator` in `TreeTitle` only when it's needed @layershifter ([#23131](https://github.com/microsoft/fluentui/pull/23131))
+- Setting `flex-schrink: 0` on listItemHeaderMediaStyle @simonmysun ([#23338](https://github.com/microsoft/fluentui/pull/23338))
+- Return selected value to the `Dropdown` label @jurokapsiar ([#23407](https://github.com/microsoft/fluentui/pull/23407))
+
+<!--------------------------------[ v0.63.0 ]------------------------------- -->
+## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.62.0..@fluentui/react-northstar_v0.63.0)
+
+### BREAKING CHANGES
+- Change default Divider color in light and dark theme @yuanboxue-amber ([#22665](https://github.com/microsoft/fluentui/pull/22665))
+- Do not pass deprecated `.styles` to slots in `Avatar` @layershifter ([#23034](https://github.com/microsoft/fluentui/pull/23034))
+
+### Features
+- Add the `MicPulse` and `MicPulseOff` icons @sfilipi ([#22944](https://github.com/microsoft/fluentui/pull/22944))
+
+### Fixes
+- Export types for `ChatMessageDetails`, `ChatMessageHeader`, and `ChatMessageReadStatus` styles props @Hirse ([#22491](https://github.com/microsoft/fluentui/pull/22491))
+- Align `ChatMessageReadStatus` position with `ChatMessage` @Hirse ([#22494](https://github.com/microsoft/fluentui/pull/22494))
+- Align @fluentui/react-northstar (v0) and @fluentui/react-theme (v9) colors @jurokapsiar ([#22483](https://github.com/microsoft/fluentui/pull/22483))
+- Add missing export for `PortalContext` @layershifter ([#22448](https://github.com/microsoft/fluentui/pull/22448))
+- Do not stop propagation of letter keys if modifier is used in `Tree` @jurokapsiar ([#22603](https://github.com/microsoft/fluentui/pull/22603))
+- fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
+- Vertical menu background color should not change on focus in dark theme @yuanboxue-amber ([#22707](https://github.com/microsoft/fluentui/pull/22707))
+- Align `default` scheme colors between v0 and v9 @jurokapsiar ([#22699](https://github.com/microsoft/fluentui/pull/22699))
+- Fix `Dropdown`'s `headerMessage` background color @Hirse ([#22758](https://github.com/microsoft/fluentui/pull/22758))
+- Fix `AvatarStatusIcon` sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Fix `Status` icon sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Fix `Dialog` to keep it open when press click on content and release outside @yuanboxue-amber ([#22849](https://github.com/microsoft/fluentui/pull/22849))
+- Align Avatar `font-weight` between v0 and v9 @annabratseiko ([#22822](https://github.com/microsoft/fluentui/pull/22822))
+- Fix `Pill` to be selectable by keyboard @chpalac ([#22839](https://github.com/microsoft/fluentui/pull/22839))
+- Fix the `MicPulseOff` outline path to be what's in the Figma file, it is currently the value of the filled icon @sfilipi ([#23021](https://github.com/microsoft/fluentui/pull/23021))
+
+### Features
+- Add compatibility with components from `@fluentui/react-components` in portals @layershifter ([#22541](https://github.com/microsoft/fluentui/pull/22541))
+- Add `AvatarStatusImage` to use images as `Avatar` status @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Copy utilities from `@fluentui/utilities` to avoid extra dependency on v8 @ling1726 ([#23054](https://github.com/microsoft/fluentui/pull/23054))
+
+### Documentation
+- Use https for Embed and Video examples @Hirse ([#22738](https://github.com/microsoft/fluentui/pull/22738))
+
+<!--------------------------------[ v0.62.0 ]------------------------------- -->
+## [v0.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.62.0) (2022-04-08)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.61.0..@fluentui/react-northstar_v0.62.0)
+
+### BREAKING CHANGES
+- `mergeThemes()` and other `merge*` functions used for styling accept only two parameters @layershifter ([#22123](https://github.com/microsoft/fluentui/pull/22123))
+- Create portal elements in separate elements @layershifter ([#22329](https://github.com/microsoft/fluentui/pull/22329))
+- Do not render styles in Provider when "as" is "React.Fragment" @layershifter ([#22359](https://github.com/microsoft/fluentui/pull/22359))
+
+### Fixes
+- `Tooltip` text size should be 12 by default @petr-duda ([#22407](https://github.com/microsoft/fluentui/pull/22407))
+- Add transparent borders to slider @ling1726 ([#22089](https://github.com/microsoft/fluentui/pull/22089))
+- Fix `Popup` opened from right click (on `context`), to not dismiss when scrolling happens in nested Popup @yaunboxue-amber ([#22087](https://github.com/microsoft/fluentui/pull/22087))
+- Fix `Dropdown` not annoucing placeholder/default value with VoiceOver on macOS @aubreyquinn ([#22173](https://github.com/microsoft/fluentui/pull/22173))
+- Fix `Datepicker` by adding `aria-haspopup="true"` when `allowManualInput` is set to false @chpalac ([#22201](https://github.com/microsoft/fluentui/pull/22201))
+- Fix `Attachment` progress-bar overflow @Hirse ([#22115](https://github.com/microsoft/fluentui/pull/22115))
+- Use v2 theme by default in screener tests @jurokapsiar ([#22286](https://github.com/microsoft/fluentui/pull/22286))
+
+### Features
+- Add selected items count narration by screen reader for search multiple selection Dropdown @adamsamec ([#22269](https://github.com/microsoft/fluentui/pull/22269))
+- Update northstar v2 themes colors @jurokapsiar ([#22328](https://github.com/microsoft/fluentui/pull/22328))
+
+### Documentation
+- Ensure RTL examples show up in rtl direction @Hirse ([#22129](https://github.com/microsoft/fluentui/pull/22129))
+
+<!--------------------------------[ v0.61.0 ]------------------------------- -->
+## [v0.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.61.0) (2022-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.60.1..@fluentui/react-northstar_v0.61.0)
+
+### Fixes
+- Update `FocusZone` to properly pass through event modifiers (`ctrlKey`, etc.) when raising a click event @spmonahan ([#21547](https://github.com/microsoft/fluentui/pull/21547))
 - Fix `AccordionTitle` focus styles @petr-duda ([#21400](https://github.com/microsoft/fluentui/pull/21400))
 - Add border to `Card` in high contrast rest state @jurokapsiar ([#21315](https://github.com/microsoft/fluentui/pull/21315))
 - Use shadow8 for better contrast of `Tooltip` @jurokapsiar ([#21316](https://github.com/microsoft/fluentui/pull/21316))
 - `FocusTrapZone`: add handleRef method instead of function to prevent calling it on each re-render @annabratseiko ([#21337](https://github.com/microsoft/fluentui/pull/21337))
 - Fix color slot titles in docsite @notandrew ([#21378](https://github.com/microsoft/fluentui/pull/21378))
+- Fixed height of `ChatMessage` bar in compact density @Hirse ([#21521](https://github.com/microsoft/fluentui/pull/21521))
 - Fix `menuButtonBehavior` to not set undefined aria attributes @yuanboxue-amber ([#21610](https://github.com/microsoft/fluentui/pull/21610))
 - Fix memory leak in `createFelaRenderer()` @layershifter ([#21536](https://github.com/microsoft/fluentui/pull/21536))
+- Fix `Dropdown` repositioning when always open and have multilines @chpalac ([#21754](https://github.com/microsoft/fluentui/pull/21754))
+- Update `csstype` to version 3 and update corresponding property type references and change `scheduler` to a peer dependency @ecraig12345 ([#21769](https://github.com/microsoft/fluentui/pull/21769))
+- Fix `ToolbarItem` and `ToolbarItemMenu` to show tooltip on hover when `disabledFocusable` @Hirse ([#21795](https://github.com/microsoft/fluentui/pull/21795))
+- Fix `Tooltip` close tooltip with ESC key only when is opened @kolaps33 ([#21936](https://github.com/microsoft/fluentui/pull/21936))
+- Replace ReactNodeArray with ReactNode[] @jurokapsiar ([#21957](https://github.com/microsoft/fluentui/pull/21957))
+- Fix `Dropdown` focus indicator appearance when `highlightFirstItemOnOpen` is true while accessing from keyboard @annabratseiko ([#21991](https://github.com/microsoft/fluentui/pull/21991))
+- Fix `Tooltip` color for HC theme @chpalac ([#21994](https://github.com/microsoft/fluentui/pull/21994))
 
 ### Features
 - Add new Popup prop `closeOnScroll` to close popup when scroll happens outside of the popover element @yuanboxue-amber ([#21453](https://github.com/microsoft/fluentui/pull/21453))
+- Add new `isIntersectingModifier` modifier to `usePopper` @layershifter ([#21829](https://github.com/microsoft/fluentui/pull/21829))
+- Add `SignatureIcon` to iconset @notandrew ([#21946](https://github.com/microsoft/fluentui/pull/21946))
+- Allow users to configure new animations for `Carousel` transitions @chpalac ([#21866](https://github.com/microsoft/fluentui/pull/21866))
+- Support React 17 as a peer dependency @jurokapsiar ([#21955](https://github.com/microsoft/fluentui/pull/21955))
+- feat(theme): Forced colors theme @jurokapsiar ([#22027](https://github.com/microsoft/fluentui/pull/22027))
 
 <!--------------------------------[ v0.60.1 ]------------------------------- -->
 ## [v0.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.60.1) (2022-01-17)

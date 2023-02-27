@@ -1,12 +1,10 @@
 import * as React from 'react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Props, PropValue, TestFacade } from '../types';
-import { ReactWrapper, mount } from 'enzyme';
 
 export class ComponentTestFacade implements TestFacade {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private actual: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private renderedComponent: ReactWrapper<any, any>;
+  private root: HTMLElement;
   private onClickExecuted: boolean;
 
   constructor(private Component: React.FC, private props: Props = {}) {
@@ -14,57 +12,26 @@ export class ComponentTestFacade implements TestFacade {
       this.onClickExecuted = true;
     };
 
-    // reset body
-    document.body.innerHTML = '';
-    const container = document.createElement('div');
-    document.body.appendChild(container);
-
-    // we need to use mount, because then on the rendered component we can simulate keydown events
-    this.renderedComponent = mount(<Component {...props} />, {
-      attachTo: container,
-    });
-    this.actual = container.firstChild;
+    const { container } = render(<Component {...props} />);
+    this.root = container.firstElementChild as HTMLElement;
   }
 
   public slotExists(selector: string) {
-    return selector === 'root' || !!this._getElement(selector);
+    return selector === 'root' || !!this._getElementBySlotId(selector);
   }
 
   public attributeExists(selector: string, attributeName: string) {
-    if (this.slotExists(selector) && selector === 'root') {
-      return this.actual.getAttribute(attributeName) !== undefined && this.actual.getAttribute(attributeName) !== null;
-    }
-
-    const element = this._getElement(selector);
-    if (element) {
-      return element.getAttribute(attributeName) !== undefined && element.getAttribute(attributeName) !== null;
-    }
-    return false;
+    const attr = this.getAttributeValue(selector, attributeName);
+    return attr !== undefined && attr !== null;
   }
 
   public attributeHasValue(selector: string, attributeName: string, value: PropValue) {
-    if (this.attributeExists(selector, attributeName) && selector === 'root') {
-      return this.actual.getAttribute(attributeName) === value;
-    }
-
-    const element = this._getElement(selector);
-    if (element) {
-      return element.getAttribute(attributeName) === value;
-    }
-
-    return false;
+    return this.getAttributeValue(selector, attributeName) === value;
   }
 
   public getAttributeValue = (selector: string, attributeName: string) => {
-    if (selector === 'root') {
-      return this.actual.getAttribute(attributeName) as PropValue;
-    }
-    const element = this._getElement(selector);
-    if (element) {
-      return element.getAttribute(attributeName) as PropValue;
-    }
-
-    return null;
+    const element = selector === 'root' ? this.root : this._getElementBySlotId(selector);
+    return element ? (element.getAttribute(attributeName) as PropValue) : null;
   };
 
   public verifyOnclickExecution = (selector: string) => {
@@ -74,38 +41,34 @@ export class ComponentTestFacade implements TestFacade {
   };
 
   public afterClick(selector: string) {
-    if (selector === 'root') {
-      this.renderedComponent.simulate('click');
-      return;
-    }
-    this.renderedComponent.find(selector).simulate('click');
+    userEvent.click(this._getElementBySelector(selector));
   }
 
   public pressSpaceKey(selector: string) {
-    if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 32, key: ' ' });
-      // TODO: This is required for space clicking with useARIAButton
-      this.renderedComponent.simulate('keyup', { keyCode: 32, key: ' ' });
-      return;
-    }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 32, key: ' ' });
-    // TODO: This is required for space clicking with useARIAButton
-    this.renderedComponent.find(selector).simulate('keyup', { keyCode: 32, key: ' ' });
+    userEvent.type(this._getElementBySelector(selector), ' ');
   }
 
   public pressEnterKey(selector: string) {
-    if (selector === 'root') {
-      this.renderedComponent.simulate('keydown', { keyCode: 13, key: 'Enter' });
-      return;
-    }
-    this.renderedComponent.find(selector).simulate('keydown', { keyCode: 13, key: 'Enter' });
+    userEvent.type(this._getElementBySelector(selector), '{enter}');
   }
 
   public forProps = (props: Props): TestFacade => {
     return new ComponentTestFacade(this.Component, { ...this.props, ...props });
   };
 
-  private _getElement(selector: string) {
+  private _getElementBySlotId(selector: string) {
     return document.querySelector(`[data-slotid="${selector}"]`);
+  }
+
+  private _getElementBySelector(selector: string) {
+    if (selector === 'root') {
+      return this.root;
+    }
+
+    const element = this.root.querySelector(selector);
+    if (!element) {
+      throw new Error(`Could not find element matching selector: "${selector}"`);
+    }
+    return element;
   }
 }

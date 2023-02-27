@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet",
-  "packageName": "@fluentui/react-text",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

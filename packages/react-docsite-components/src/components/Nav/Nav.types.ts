@@ -35,7 +35,7 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
   title: string;
 
   /**
-   * URL for this page, relative to the site's root. Undefined for categories.
+   * Hash route or full external URL for this page. Undefined for categories.
    */
   url?: string;
 

@@ -8,7 +8,9 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["node"]
+    "types": ["node"],
+    "isolatedModules": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["**/fixtures/**/*"]
 }

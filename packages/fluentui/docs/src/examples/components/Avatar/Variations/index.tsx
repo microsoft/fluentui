@@ -45,6 +45,11 @@ const Variations = () => (
       examplePath="components/Avatar/Variations/AvatarExampleStatusCustomization"
     />
     <ComponentExample
+      title="Status Image"
+      description="The status inside the Avatar can use an image."
+      examplePath="components/Avatar/Variations/AvatarExampleStatusImage"
+    />
+    <ComponentExample
       title="Size"
       description="An Avatar can have different sizes."
       examplePath="components/Avatar/Variations/AvatarExampleSize"

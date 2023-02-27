@@ -11,9 +11,10 @@ import {
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { UIComponentProps, commonPropTypes, createShorthandFactory, SizeValue } from '../../utils';
+import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { imageClassName } from '../Image/Image';
+import { AvatarSizeValue } from './Avatar';
 
 export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
   /** Alternative text. */
@@ -37,7 +38,7 @@ export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
   src?: string;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 }
 
 export type AvatarImageStylesProps = Pick<AvatarImageProps, 'avatar' | 'circular' | 'fluid' | 'size'>;

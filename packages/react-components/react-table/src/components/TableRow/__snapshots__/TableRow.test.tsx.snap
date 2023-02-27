@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableRow renders a default state 1`] = `
+<tbody>
+  <tr
+    class="fui-TableRow"
+  >
+    <td>
+      Table Cell
+    </td>
+  </tr>
+</tbody>
+`;

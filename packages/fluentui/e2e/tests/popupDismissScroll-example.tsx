@@ -14,6 +14,11 @@ export const selectors = {
     triggerId: 'trigger-dismiss',
     contentId: 'content-dismiss',
   },
+  nestedPopup: {
+    parentPopupTriggerId: 'nested-parent-trigger',
+    childPopupTriggerId: 'nested-child-trigger',
+    childPopupContentId: 'nested-child-content',
+  },
 };
 
 const PopupClickHandlingExample = () => {
@@ -44,6 +49,20 @@ const PopupClickHandlingExample = () => {
           id: selectors.dismissScrollPopup.contentId,
         }}
         closeOnScroll
+      />
+      nested popup
+      <Popup
+        trigger={<Button id={selectors.nestedPopup.parentPopupTriggerId} content="Open Popup 1" />}
+        content={
+          <Popup
+            trigger={<Button id={selectors.nestedPopup.childPopupTriggerId} content="Open Popup 2" />}
+            content={{
+              content: 'content',
+              id: selectors.nestedPopup.childPopupContentId,
+            }}
+          />
+        }
+        on="context"
       />
     </Flex>
   );

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove `glow` and `ring-glow` from activeAppearance, as their visuals are not yet finalized.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

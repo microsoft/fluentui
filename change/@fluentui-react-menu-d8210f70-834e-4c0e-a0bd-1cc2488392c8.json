@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: implement `MenuSplitGroup` component for split menu items",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

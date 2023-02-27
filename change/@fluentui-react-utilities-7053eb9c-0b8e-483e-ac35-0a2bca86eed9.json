@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update applyTriggerPropsToChildren() to return React.ReactElement or null",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -6,7 +6,9 @@ import * as _ from 'lodash';
  * Not a real performance test, just a temporary POC
  */
 const providerMergeThemesPerf = () => {
-  const merged = mergeThemes(..._.times(100, n => teamsTheme));
+  const merged = _.times(100).reduce(acc => {
+    return mergeThemes(acc, teamsTheme);
+  }, teamsTheme);
   const resolvedStyles = _.mapValues(merged.componentStyles, (componentStyle, componentName) => {
     const compVariables = _.get(merged.componentVariables, componentName, callable({}))(merged.siteVariables);
     const styleParam: ComponentStyleFunctionParam = {

@@ -8,6 +8,7 @@ import { DropdownCustomExample } from './Dropdown.Custom.Example';
 import { DropdownWrappingExample } from './Dropdown.Wrapping.Example';
 import { DropdownErrorExample } from './Dropdown.Error.Example';
 import { DropdownRequiredExample } from './Dropdown.Required.Example';
+import { DropdownSelectStyleExample } from './Dropdown.SelectStyle.Example';
 
 const DropdownBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Basic.Example.tsx') as string;
 const DropdownControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Controlled.Example.tsx') as string;
@@ -16,6 +17,7 @@ const DropdownCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/
 const DropdownWrappingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Wrapping.Example.tsx') as string;
 const DropdownErrorExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Error.Example.tsx') as string;
 const DropdownRequiredExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.Required.Example.tsx') as string;
+const DropdownSelectStyleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dropdown/Dropdown.SelectStyle.Example.tsx') as string;
 
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
@@ -59,6 +61,16 @@ export const DropdownPageProps: IDocPageProps = {
         <>
           <p>This example also demonstrates how to programmatically set focus on and open a Dropdown.</p>
           <DropdownRequiredExample />
+        </>
+      ),
+    },
+    {
+      title: 'Dropdown with custom selected option styles',
+      code: DropdownSelectStyleExampleCode,
+      view: (
+        <>
+          <p>This example demonstrates how to add custom selection styles for better contrast and accessibility.</p>
+          <DropdownSelectStyleExample />
         </>
       ),
     },

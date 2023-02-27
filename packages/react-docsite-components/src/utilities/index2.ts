@@ -4,6 +4,7 @@ export * from './activePage';
 export * from './appInsightsHelper';
 export * from './baseDefinition';
 export * from './getEditUrl';
+export * from './getNormalizedPath';
 export * from './getPageFirstPlatform';
 export * from './getSiteArea';
 export * from './jumpToAnchor';

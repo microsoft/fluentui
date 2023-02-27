@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added aria-orientation to divider",
-  "packageName": "@fluentui/react-divider",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

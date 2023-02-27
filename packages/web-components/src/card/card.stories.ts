@@ -5,7 +5,7 @@ import CardTemplate from './fixtures/card.html';
 import './index';
 
 addons.getChannel().addListener(DOCS_RENDERED, name => {
-  if (name.toLowerCase() === 'components/card') {
+  if (name.toLowerCase().includes('card')) {
     const els = document.getElementsByClassName('darkMode');
     for (let i = 0; i < els.length; i++) {
       const el = els[i];

@@ -87,6 +87,9 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             },
           ],
           color: DefaultPalette.blue,
+          lineOptions: {
+            lineBorderWidth: '4',
+          },
           onLineClick: () => console.log('From_Legacy_to_O365'),
         },
         {
@@ -122,6 +125,9 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             },
           ],
           color: DefaultPalette.green,
+          lineOptions: {
+            lineBorderWidth: '4',
+          },
         },
         {
           legend: 'single point',
@@ -141,10 +147,26 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_basic">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Basic"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <Toggle
           label="Enabled  multiple shapes for each line"
           onText="On"
@@ -162,6 +184,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             height={this.state.height}
             width={this.state.width}
             margins={margins}
+            xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
           />
         </div>

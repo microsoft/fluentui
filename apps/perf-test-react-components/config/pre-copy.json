@@ -1,0 +1,5 @@
+{
+  "copyTo": {
+    "dist": ["./index.html", "react/umd/react.production.min.js", "react-dom/umd/react-dom.production.min.js"]
+  }
+}

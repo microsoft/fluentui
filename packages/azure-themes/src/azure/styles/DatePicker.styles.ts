@@ -1,5 +1,6 @@
 import { IDatePickerStyles, IDatePickerStyleProps } from '@fluentui/react/lib/DatePicker';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import * as StyleConstants from '../Constants';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   const { disabled, theme } = props;
@@ -17,7 +18,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         bottom: '0px',
         top: '0px',
         height: '19px',
-        padding: '2px 2px 0 0',
+        padding: '3px 5px 0 0',
       },
       disabled && {
         color: extendedSemanticColors.calendarTextDisabled,
@@ -28,7 +29,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         fontSize: theme.fonts.medium.fontSize,
         selectors: {
           '.ms-TextField-field': {
-            lineHeight: 22,
+            lineHeight: StyleConstants.calendarHeightInner,
+            height: StyleConstants.calendarHeightInner,
           },
         },
       },
@@ -38,10 +40,20 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         selectors: {
           '.ms-TextField-fieldGroup': {
             borderColor: semanticColors.datePickerDisabledBorder,
-            borderRadius: 2,
+            borderRadius: StyleConstants.borderRadius,
           },
           '.ms-TextField-field': {
             lineHeight: 22,
+          },
+        },
+      },
+    ],
+    callout: [
+      {
+        selectors: {
+          '.ms-CalendarDay-daySelected::before': {
+            display: 'none !important',
+            border: 0,
           },
         },
       },

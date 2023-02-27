@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs(Accessibility): Introduce scanarios for accordion, button and popover",
-  "packageName": "@fluentui/react-components",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "none"
-}

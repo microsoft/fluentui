@@ -14,34 +14,25 @@ export interface IButtonGridCellProps<T> {
   id: string;
 
   /**
-   * Optional, if the this option should be disabled
+   * If the this option should be disabled
    */
   disabled?: boolean;
 
   /**
-   * Optional, if the cell is currently selected
+   * If the cell is currently selected
    */
   selected?: boolean;
 
-  /**
-   * The on click handler
-   */
-  onClick?: (item: T) => void;
+  onClick?: (item: T, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
   /**
    * The render callback to handle rendering the item
    */
   onRenderItem: (item: T) => JSX.Element;
 
-  /**
-   * Optional, the onHover handler
-   */
-  onHover?: (item?: T) => void;
+  onHover?: (item?: T, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
-  /**
-   * Optional, the onFocus handler
-   */
-  onFocus?: (item: T) => void;
+  onFocus?: (item: T, event?: React.FocusEvent<HTMLButtonElement>) => void;
 
   /**
    * The accessible role for this option
@@ -49,17 +40,17 @@ export interface IButtonGridCellProps<T> {
   role?: string;
 
   /**
-   * Optional, className(s) to apply
+   * className(s) to apply
    */
   className?: string;
 
   /**
-   * Optional, the CSS class used for when the cell is disabled
+   * CSS classes to apply when the cell is disabled
    */
   cellDisabledStyle?: string[];
 
   /**
-   * Optional, the CSS class used for when the cell is selected
+   * CSS classes to apply when the cell is selected
    */
   cellIsSelectedStyle?: string[];
 
@@ -70,15 +61,12 @@ export interface IButtonGridCellProps<T> {
 
   /**
    * The label for this item.
-   * Visible text if this item is a header,
-   * tooltip if is this item is normal
    */
   label?: string;
 
   /**
    * Method to provide the classnames to style a button.
-   * The default value for this prop is the getClassnames func
-   * defined in BaseButton.classnames.
+   * The default value for this prop is `getClassnames` defined in `BaseButton.classNames`.
    */
   getClassNames?: (
     theme: ITheme,
@@ -92,30 +80,13 @@ export interface IButtonGridCellProps<T> {
     isSplit: boolean | undefined,
   ) => IButtonClassNames;
 
-  /**
-   * Optional, mouseEnter handler.
-   * @returns true if the event should be processed, false otherwise
-   */
   onMouseEnter?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
 
-  /**
-   * Optional, mouseMove handler
-   * @returns true if the event should be processed, false otherwise
-   */
   onMouseMove?: (ev: React.MouseEvent<HTMLButtonElement>) => boolean;
 
-  /**
-   * Optional, mouseLeave handler
-   */
   onMouseLeave?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 
-  /**
-   * Optional, onWheel handler
-   */
   onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 
-  /**
-   * Optional, onkeydown handler
-   */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 }

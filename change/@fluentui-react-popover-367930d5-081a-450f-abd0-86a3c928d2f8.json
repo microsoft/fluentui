@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix Popover arrow border in high contrast",
-  "packageName": "@fluentui/react-popover",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

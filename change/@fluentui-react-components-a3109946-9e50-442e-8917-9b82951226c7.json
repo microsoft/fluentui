@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove exports of Commons types",
-  "packageName": "@fluentui/react-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

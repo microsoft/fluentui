@@ -29,12 +29,19 @@ jobs:
         displayName: yarn (install packages)
 
       - script: |
-          yarn checkchange
-        displayName: verify change files
+          yarn nx workspace-lint
+          yarn nx run @fluentui/nx-workspace-tools:check-graph
+        displayName: NX workspace lint
 
       - script: |
-          yarn nx workspace-lint
-        displayName: nx:workspace-lint
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts thus it needs to be build in advance
+          yarn workspace @fluentui/api-docs build
+          yarn tsc -p ./tsconfig.json
+        displayName: Type-check just.config.ts files
+
+      - script: |
+          yarn check:installed-dependencies-versions
+        displayName: 'check packages: installed dependencies versions'
 
       - script: |
           if [[ -n "$(targetBranch)" ]]; then
@@ -46,14 +53,14 @@ jobs:
 
       ## Danger.js checks for Fluent UI N*
       - script: |
-          yarn danger ci
+          DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
         displayName: danger
         condition: eq(variables.isPR, true)
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn buildci --no-cache $(sinceArg)
+          yarn buildci  $(sinceArg)
         displayName: build, test, lint
 
       - template: .devops/templates/cleanup.yml
@@ -72,11 +79,11 @@ jobs:
 
       # this also builds FUI N* docs if appropriate
       - script: |
-          yarn bundle --no-cache $(sinceArg)
+          yarn bundle  $(sinceArg)
         displayName: bundle
 
       - script: |
-          yarn lage build-storybook --no-cache --verbose $(sinceArg)
+          yarn lage build-storybook  --verbose $(sinceArg)
         displayName: build Storybooks
 
       ## This runs regardless of scope, the app will adapt to the scope as well
@@ -103,69 +110,8 @@ jobs:
           # This MUST have a trailing slash, or the links to PR deploy site assets won't work
           githubTargetLink: $(deployUrl)/
 
-      # only run e2e tests when converged storybook is published by scoping to the converged suite package
       - script: |
-          yarn e2e $(sinceArg) --scope @fluentui/react-components
+          yarn e2e $(sinceArg)
         displayName: Cypress E2E tests
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: ScreenerNorthstar
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: |
-          yarn workspace @fluentui/docs vr:build
-        displayName: build FUI N* VR Test
-        env:
-          SCREENER_BUILD: 1
-
-      - task: AzureUpload@2
-        displayName: Upload N* VR test site
-        inputs:
-          azureSubscription: $(azureSubscription)
-          BlobPrefix: $(deployBasePath)/react-northstar-screener
-          CacheControl: 'public, max-age=600000'
-          ContainerName: '$web'
-          SourcePath: 'packages/fluentui/docs/dist'
-          storage: $(azureStorage)
-
-      - script: yarn workspace @fluentui/docs vr:test
-        displayName: start FUI N* VR Test
-        env:
-          SCREENER_ENDPOINT: $(screenerApiUri)
-          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
-          SCREENER_API_KEY: $(screener.key)
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: Screener
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: |
-          yarn workspace @fluentui/vr-tests screener:build
-        displayName: build vr-tests storybook
-
-      # Don't use lage here because it eats long output for reasons that are hard to debug
-      - script: |
-          yarn workspace @fluentui/vr-tests screener
-        displayName: run VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml

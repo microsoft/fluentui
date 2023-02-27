@@ -89,10 +89,10 @@ const styles: {
 };
 
 export type BrowserWindowProps = {
-  children: React.ReactNode | React.ReactNodeArray;
+  children: React.ReactNode | React.ReactNode[];
   showNavBar: boolean;
   style?: React.CSSProperties;
-  headerItems?: React.ReactNode | React.ReactNodeArray;
+  headerItems?: React.ReactNode | React.ReactNode[];
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const BrowserWindow: React.FunctionComponent<BrowserWindowProps> = ({

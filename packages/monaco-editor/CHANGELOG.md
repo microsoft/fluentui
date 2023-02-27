@@ -1,8 +1,26 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Apr 2022 07:38:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.0)
+
+Thu, 14 Apr 2022 07:38:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.2.0..@fluentui/monaco-editor_v1.3.0)
+
+### Minor changes
+
+- Add a way to load editor fonts, and remove back-compat code that's no longer needed ([PR #22445](https://github.com/microsoft/fluentui/pull/22445) by elcraig@microsoft.com)
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.2.0)
+
+Tue, 12 Apr 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.1.4..@fluentui/monaco-editor_v1.2.0)
+
+### Minor changes
+
+- Update monaco-editor to 0.33.0 ([PR #22443](https://github.com/microsoft/fluentui/pull/22443) by elcraig@microsoft.com)
 
 ## [1.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.1.4)
 

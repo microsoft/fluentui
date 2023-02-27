@@ -18,13 +18,12 @@ import {
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
-  raiseClick,
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  getWindow,
   findScrollableParent,
   createMergedRef,
+  isElementVisibleAndNotHidden,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { getTheme } from '@fluentui/style-utilities';
@@ -44,6 +43,44 @@ const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 let focusZoneStyles: string;
 
 const focusZoneClass: string = 'ms-FocusZone';
+
+/**
+ * Raises a click on a target element based on a keyboard event.
+ */
+function raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<HTMLElement>): void {
+  let event;
+  if (typeof MouseEvent === 'function') {
+    event = new MouseEvent('click', {
+      ctrlKey: ev?.ctrlKey,
+      metaKey: ev?.metaKey,
+      shiftKey: ev?.shiftKey,
+      altKey: ev?.altKey,
+      bubbles: ev?.bubbles,
+      cancelable: ev?.cancelable,
+    });
+  } else {
+    event = document.createEvent('MouseEvents');
+    event.initMouseEvent(
+      'click',
+      ev ? ev.bubbles : false,
+      ev ? ev.cancelable : false,
+      window, // not using getWindow() since this can only be run client side
+      0, // detail
+      0, // screen x
+      0, // screen y
+      0, // client x
+      0, // client y
+      ev ? ev.ctrlKey : false,
+      ev ? ev.altKey : false,
+      ev ? ev.shiftKey : false,
+      ev ? ev.metaKey : false,
+      0, // button
+      null, // relatedTarget
+    );
+  }
+
+  target.dispatchEvent(event);
+}
 
 // Helper function that will return a class for when the root is focused
 function getRootClass(): string {
@@ -67,7 +104,7 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
+const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search', 'textarea'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
@@ -109,8 +146,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /** Provides granular control over `shouldRaiseClicks` and should be preferred over `props.shouldRaiseClicks`. */
   private _shouldRaiseClicksOnEnter: boolean;
   private _shouldRaiseClicksOnSpace: boolean;
-
-  private _windowElement: Window | undefined;
 
   /** Used for testing purposes only. */
   public static getOuterZones(): number {
@@ -164,7 +199,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     _allInstances[this._id] = this;
 
     if (root) {
-      this._windowElement = getWindow(root);
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== this._getDocument().body && parentElement.nodeType === 1) {
@@ -178,9 +212,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._isInnerZone) {
         _outerZones.add(this);
 
-        if (this._windowElement && _outerZones.size === 1) {
-          this._windowElement.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
-        }
+        this._root.current && this._root.current.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
       }
 
       this._root.current && this._root.current.addEventListener('blur', this._onBlur, true);
@@ -205,6 +237,18 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidUpdate(): void {
     const { current: root } = this._root;
     const doc = this._getDocument();
+
+    // If either _activeElement or _defaultFocusElement are no longer contained by _root,
+    // reset those variables (and update tab indexes) to avoid memory leaks
+    if (
+      (this._activeElement && !elementContains(this._root.current, this._activeElement, ALLOW_VIRTUAL_ELEMENTS)) ||
+      (this._defaultFocusElement &&
+        !elementContains(this._root.current, this._defaultFocusElement, ALLOW_VIRTUAL_ELEMENTS))
+    ) {
+      this._activeElement = null;
+      this._defaultFocusElement = null;
+      this._updateTabIndexes();
+    }
 
     if (
       !this.props.preventFocusRestoration &&
@@ -233,10 +277,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (!this._isInnerZone) {
       _outerZones.delete(this);
 
-      // If this is the last outer zone, remove the keydown listener.
-      if (this._windowElement && _outerZones.size === 0) {
-        this._windowElement.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
-      }
+      this._root.current && this._root.current.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
     }
 
     if (this._root.current) {
@@ -297,9 +338,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Sets focus to the first tabbable item in the zone.
    * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
+   * @param bypassHiddenElements - If true, focus will be not be set on hidden elements.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focus(forceIntoFirstElement: boolean = false): boolean {
+  public focus(forceIntoFirstElement: boolean = false, bypassHiddenElements: boolean = false): boolean {
     if (this._root.current) {
       if (
         !forceIntoFirstElement &&
@@ -319,14 +361,27 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         !forceIntoFirstElement &&
         this._activeElement &&
         elementContains(this._root.current, this._activeElement) &&
-        isElementTabbable(this._activeElement)
+        isElementTabbable(this._activeElement) &&
+        (!bypassHiddenElements || isElementVisibleAndNotHidden(this._activeElement))
       ) {
         this._activeElement.focus();
         return true;
       } else {
         const firstChild = this._root.current.firstChild as HTMLElement;
 
-        return this.focusElement(getNextElement(this._root.current, firstChild, true) as HTMLElement);
+        return this.focusElement(
+          getNextElement(
+            this._root.current,
+            firstChild,
+            true,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            bypassHiddenElements,
+          ) as HTMLElement,
+        );
       }
     }
     return false;
@@ -382,6 +437,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    */
   public setFocusAlignment(point: Point): void {
     this._focusAlignment = point;
+  }
+
+  public get defaultFocusElement() {
+    return this._defaultFocusElement;
+  }
+
+  public get activeElement() {
+    return this._activeElement;
   }
 
   private _evaluateFocusBeforeRender(): void {
@@ -642,7 +705,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // eslint-disable-next-line @fluentui/deprecated-keyboard-event-props, deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.space:
-          if (this._shouldRaiseClicksOnSpace && this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this._shouldRaiseClicksOnSpace && this._tryInvokeClickForFocusable(ev.target as HTMLElement, ev)) {
             break;
           }
           return;
@@ -758,7 +821,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           return;
 
         case KeyCodes.enter:
-          if (this._shouldRaiseClicksOnEnter && this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+          if (this._shouldRaiseClicksOnEnter && this._tryInvokeClickForFocusable(ev.target as HTMLElement, ev)) {
             break;
           }
           return;
@@ -775,7 +838,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /**
    * Walk up the dom try to find a focusable element.
    */
-  private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
+  private _tryInvokeClickForFocusable(targetElement: HTMLElement, ev?: React.KeyboardEvent<HTMLElement>): boolean {
+    let target = targetElement;
     if (target === this._root.current) {
       return false;
     }
@@ -785,7 +849,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||
         target.tagName === 'INPUT' ||
-        target.tagName === 'TEXTAREA'
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SUMMARY'
       ) {
         return false;
       }
@@ -795,7 +860,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
       ) {
-        raiseClick(target);
+        raiseClickFromKeyboardEvent(target, ev);
         return true;
       }
 
@@ -1322,7 +1387,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean): boolean {
+  private _shouldInputLoseFocus(element: HTMLInputElement | HTMLTextAreaElement, isForward?: boolean): boolean {
     // If a tab was used, we want to focus on the next element.
     if (
       !this._processingTabKey &&

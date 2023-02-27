@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeItem renders a default state 1`] = `
+<div>
+  <div
+    aria-level="0"
+    class="fui-TreeItem"
+    id="fui-TreeItem-7"
+    role="treeitem"
+    style="--fluent-TreeItem--level: 0;"
+    tabindex="0"
+  >
+    <div
+      class="fui-TreeItem__content"
+      data-tabster="{\\"groupper\\":{}}"
+    >
+      Default TreeItem
+    </div>
+  </div>
+</div>
+`;

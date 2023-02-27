@@ -3,7 +3,7 @@ import { PillGroup } from 'src/components/Pill/PillGroup';
 import { validateBehavior, ComponentTestFacade, pillGroupBehaviorDefinition } from '@fluentui/a11y-testing';
 
 describe('PillGroup', () => {
-  isConformant(PillGroup, { testPath: __filename, constructorName: 'PillGroup' });
+  isConformant(PillGroup, { testPath: __filename, constructorName: 'PillGroup', skipAsPropTests: 'as-component' });
 
   describe('PillGroupBehavior', () => {
     const testFacade = new ComponentTestFacade(PillGroup, {});

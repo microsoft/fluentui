@@ -18,7 +18,7 @@ import {
 } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
-import { handleRef, Ref, RefFindNode, RefForward } from '@fluentui/react-component-ref';
+import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
@@ -58,7 +58,7 @@ export type RestrictedHoverEvents = 'hover' | 'focus' | 'context';
 export type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[];
 
 function getRealEventProps(element: React.ReactElement) {
-  if (element.type === Ref || element.type === RefFindNode || element.type === RefForward) {
+  if (element.type === Ref) {
     return getRealEventProps(element.props.children as React.ReactElement);
   }
 
@@ -497,7 +497,7 @@ export const Popup: React.FC<PopupProps> &
 
   const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
     // we only need to dismiss if the scroll happens outside the popup
-    if (!popupContentRef.current.contains(e.target as Node)) {
+    if (!elementContains(popupContentRef.current, e.target as HTMLElement)) {
       trySetOpen(false, e);
     }
   };

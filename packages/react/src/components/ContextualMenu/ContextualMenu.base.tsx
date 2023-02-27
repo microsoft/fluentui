@@ -20,6 +20,7 @@ import {
   memoizeFunction,
   getPropsWithDefaults,
   getDocument,
+  FocusRects,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { Callout } from '../../Callout';
@@ -31,7 +32,15 @@ import {
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
-import { useTarget, usePrevious, useAsync, useWarnings, useId, Target } from '@fluentui/react-hooks';
+import {
+  useTarget,
+  usePrevious,
+  useAsync,
+  useWarnings,
+  useId,
+  Target,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-hooks';
 import { useResponsiveMode, ResponsiveMode } from '../../ResponsiveMode';
 import { MenuContext } from '../../utilities/MenuContext/index';
 import type {
@@ -157,21 +166,24 @@ function useSubMenuState(
 ) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
+  /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
+  const [shouldFocusOnContainer, setShouldFocusOnContainer] = React.useState<boolean>();
   const subMenuId = useId(COMPONENT_NAME, id);
 
   const closeSubMenu = React.useCallback(() => {
+    setShouldFocusOnContainer(undefined);
     setExpandedMenuItemKey(undefined);
     setSubmenuTarget(undefined);
   }, []);
 
   const openSubMenu = React.useCallback(
-    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement) => {
+    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement, focusContainer?: boolean) => {
       if (expandedMenuItemKey === submenuItemKey) {
         return;
       }
 
       target.focus();
-
+      setShouldFocusOnContainer(focusContainer);
       setExpandedMenuItemKey(submenuItemKey);
       setSubmenuTarget(target);
     },
@@ -198,6 +210,7 @@ function useSubMenuState(
         isSubMenu: true,
         id: subMenuId,
         shouldFocusOnMount: true,
+        shouldFocusOnContainer,
         directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className,
         gapSpace: 0,
@@ -238,7 +251,11 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
-function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuProps, targetWindow: Window | undefined) {
+function usePreviousActiveElement(
+  { hidden, onRestoreFocus }: IContextualMenuProps,
+  targetWindow: Window | undefined,
+  hostElement: any,
+) {
   const previousActiveElement = React.useRef<undefined | HTMLElement>();
 
   const tryFocusPreviousActiveElement = React.useCallback(
@@ -255,10 +272,12 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
     [onRestoreFocus],
   );
 
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!hidden) {
-      previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
+      const newElement = targetWindow?.document.activeElement as HTMLElement;
+      if (!hostElement.current?.contains(newElement) && newElement.tagName !== 'BODY') {
+        previousActiveElement.current = newElement;
+      }
     } else if (previousActiveElement.current) {
       tryFocusPreviousActiveElement({
         originalElement: previousActiveElement.current,
@@ -268,7 +287,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
 
       previousActiveElement.current = undefined;
     }
-  }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
+  }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement, hostElement]);
 
   return [tryFocusPreviousActiveElement] as const;
 }
@@ -281,7 +300,7 @@ function useKeyHandlers(
   }: IContextualMenuProps,
   dismiss: (ev?: any, dismissAll?: boolean | undefined) => void | undefined,
   hostElement: React.RefObject<HTMLDivElement>,
-  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => void,
+  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement) => void,
 ) {
   /** True if the most recent keydown event was for alt (option) or meta (command). */
   const lastKeyDownWasAltOrMeta = React.useRef<boolean | undefined>();
@@ -408,7 +427,7 @@ function useKeyHandlers(
       // eslint-disable-next-line deprecation/deprecation
       (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
     ) {
-      openSubMenu(item, ev.currentTarget as HTMLElement, false);
+      openSubMenu(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
   };
@@ -630,17 +649,14 @@ function useMouseHandlers(
     } else {
       if (item.key !== expandedMenuItemKey) {
         // This has a collapsed sub menu. Expand it.
-        openSubMenu(
-          item,
-          target,
-          // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
-          // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-          // between a real click event and a keypress event (detail should be the number of mouse clicks).
-          // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
-          // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
-          // and "" for pressing "Enter" with Narrator on.
-          ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse',
-        );
+
+        // focus on the container by default when the menu is opened with a click event
+        // this differentiates from a keyboard interaction triggering the click event
+        const shouldFocusOnContainer =
+          typeof props.shouldFocusOnContainer === 'boolean'
+            ? props.shouldFocusOnContainer
+            : (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
+        openSubMenu(item, target, shouldFocusOnContainer);
       }
     }
 
@@ -706,7 +722,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
     const [targetRef, targetWindow] = useTarget(props.target, hostElement);
-    const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
+    const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow, hostElement);
     const [expandedMenuItemKey, openSubMenu, getSubmenuProps, onSubMenuDismiss] = useSubMenuState(props, dismiss);
     const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
     const [onScroll, isScrollIdle] = useScrollHandler(asyncTracker);
@@ -865,15 +881,20 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
           renderedItems.push(renderSectionItem(item, itemClassNames, menuClassNames, index, hasCheckmarks, hasIcons));
           break;
         default:
-          const menuItem = renderNormalItem(
-            item,
-            itemClassNames,
-            index,
-            focusableElementIndex,
-            totalItemCount,
-            hasCheckmarks,
-            hasIcons,
-          );
+          const defaultRenderNormalItem = () =>
+            renderNormalItem(
+              item,
+              itemClassNames,
+              index,
+              focusableElementIndex,
+              totalItemCount,
+              hasCheckmarks,
+              hasIcons,
+            ) as JSX.Element;
+
+          const menuItem = props.onRenderContextualMenuItem
+            ? props.onRenderContextualMenuItem(item, defaultRenderNormalItem)
+            : defaultRenderNormalItem();
           renderedItems.push(renderListItem(menuItem, item.key || index, itemClassNames, item.title));
           break;
       }
@@ -1273,6 +1294,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
                   : null}
                 {submenuProps && onRenderSubMenu(submenuProps, onDefaultRenderSubMenu)}
               </div>
+              <FocusRects />
             </Callout>
           )}
         </MenuContext.Consumer>

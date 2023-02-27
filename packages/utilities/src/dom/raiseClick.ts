@@ -1,4 +1,6 @@
-/** Raises a click event. */
+/** Raises a click event.
+ * @deprecated Moved to `FocusZone` component since it was the only place internally using this function.
+ */
 export function raiseClick(target: Element): void {
   const event = createNewEvent('MouseEvents');
   event.initEvent('click', true, true);

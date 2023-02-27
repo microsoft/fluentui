@@ -15,6 +15,11 @@ const Variations = () => (
       examplePath="components/Status/Variations/StatusIconExample"
     />
     <ComponentExample
+      title="Size"
+      description="A status can have sizes."
+      examplePath="components/Status/Variations/StatusSizeExample"
+    />
+    <ComponentExample
       title="Custom"
       description="A status can be used to show different colors and icons."
       examplePath="components/Status/Variations/StatusCustomExample"

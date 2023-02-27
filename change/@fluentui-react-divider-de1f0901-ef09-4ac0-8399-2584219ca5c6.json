@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Replace make-styles packages with griffel equivalents.",
-  "packageName": "@fluentui/react-divider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

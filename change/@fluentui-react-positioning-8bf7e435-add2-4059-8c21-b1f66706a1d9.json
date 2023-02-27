@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix tooltip arrow's high contrast border in RTL",
-  "packageName": "@fluentui/react-positioning",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

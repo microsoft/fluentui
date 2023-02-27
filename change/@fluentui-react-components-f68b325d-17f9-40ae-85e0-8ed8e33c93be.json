@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove components' shorthandProps array exports",
-  "packageName": "@fluentui/react-components",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

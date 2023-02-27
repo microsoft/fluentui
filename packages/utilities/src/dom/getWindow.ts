@@ -1,4 +1,4 @@
-import { _isSSR } from './setSSR';
+import { canUseDOM } from './canUseDOM';
 
 let _window: Window | undefined = undefined;
 
@@ -20,7 +20,7 @@ try {
  * @public
  */
 export function getWindow(rootElement?: Element | null): Window | undefined {
-  if (_isSSR || typeof _window === 'undefined') {
+  if (!canUseDOM() || typeof _window === 'undefined') {
     return undefined;
   } else {
     const el = rootElement as Element;

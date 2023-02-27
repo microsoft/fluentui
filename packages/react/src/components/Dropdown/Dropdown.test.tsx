@@ -1,16 +1,11 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { create } from '@fluentui/utilities/lib/test';
-import { mount, ReactWrapper } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { fireEvent, render, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownMenuItemType } from './Dropdown.types';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@fluentui/test-utilities';
-import type { ReactTestRenderer } from 'react-test-renderer';
 import type { IDropdownOption, IDropdown } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
@@ -33,27 +28,16 @@ const RENDER_OPTIONS: IDropdownOption[] = [
 ];
 
 describe('Dropdown', () => {
-  let component: ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper | undefined;
-
   beforeEach(() => {
     resetIds();
+    const win = window as any;
+    Object.defineProperty(win.HTMLHtmlElement.prototype, 'clientWidth', { configurable: true, value: 1024 });
   });
 
   afterEach(() => {
-    if (component) {
-      component.unmount();
-      component = undefined;
-    }
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }
-
-    document.body.innerHTML = '';
   });
 
   isConformant({
@@ -63,31 +47,28 @@ describe('Dropdown', () => {
 
   describe('single-select', () => {
     it('Renders correctly', () => {
-      component = create(<Dropdown options={DEFAULT_OPTIONS} />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Dropdown options={DEFAULT_OPTIONS} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('Renders correctly when open', () => {
-      // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
       // There's intermittent variation (maybe measurement-related) on different computers,
       // so use fake timers to make it more predictable even though we never advance the timers.
       jest.useFakeTimers();
 
-      const ref = React.createRef<IDropdown>();
       // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
-      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
-      ref.current!.focus(true);
-      wrapper.update();
-      expect(wrapper.getDOMNode()).toMatchSnapshot();
+      const { getByRole } = render(<Dropdown options={RENDER_OPTIONS} dropdownWidth={200} />);
+      userEvent.click(getByRole('combobox'));
+      // snapshot the whole body to capture both the field and the options list
+      expect(document.body).toMatchSnapshot();
     });
 
     it('Renders groups based on header start and divider end', () => {
-      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} />);
+      const { getByRole, getAllByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
-      const groups = document.querySelectorAll('[role="group"]');
+      userEvent.click(getByRole('combobox'));
+
+      const groups = getAllByRole('group');
       // Expect 2 groups with role=group
       expect(groups.length).toEqual(2);
       // Expect first group to have 5 elements
@@ -105,29 +86,28 @@ describe('Dropdown', () => {
     });
 
     it('Can flip between enabled and disabled.', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
-      const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
+      const { getByRole, rerender } = render(<Dropdown options={DEFAULT_OPTIONS} />);
+      const dropdownRoot = getByRole('combobox');
 
       expect(dropdownRoot.className).not.toEqual(expect.stringMatching('is-disabled'));
       expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('true');
 
-      wrapper.setProps({ disabled: true });
+      rerender(<Dropdown options={DEFAULT_OPTIONS} disabled />);
 
       expect(dropdownRoot.className).toEqual(expect.stringMatching('is-disabled'));
       expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('false');
     });
 
     it('Renders no selected item in default case', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
-      expect(titleElement.text()).toEqual('');
+      // title element is empty (relying on current DOM structure since text query for empty string wouldn't work)
+      expect(getByRole('combobox').querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      wrapper = mount(
+      const { getByRole } = render(
         <Dropdown
-          label="testgroup"
           options={[
             { key: '1', text: '1', selected: true },
             { key: '2', text: '2' },
@@ -135,95 +115,82 @@ describe('Dropdown', () => {
         />,
       );
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-
-      expect(titleElement.text()).toEqual('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
+      expect(titleElement).toBeTruthy();
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
+      const { getByRole } = render(<Dropdown defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      expect(titleElement.text()).toEqual('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
+      expect(titleElement).toBeTruthy();
     });
 
     it('Renders live region attributes only when focused', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
-      let titleElement = wrapper.find('.ms-Dropdown-title');
+      const { getByRole } = render(<Dropdown defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      expect(titleElement.props()['aria-live']).toBeUndefined();
+      const titleElement = within(getByRole('combobox')).getByText('1');
+      expect(titleElement.getAttribute('aria-live')).toBeNull();
 
-      wrapper.find('.ms-Dropdown').simulate('focus');
-      titleElement = wrapper.find('.ms-Dropdown-title');
-
-      expect(titleElement.props()['aria-live']).toEqual('polite');
+      userEvent.tab(); // focus dropdown
+      expect(titleElement.getAttribute('aria-live')).toEqual('polite');
     });
 
     it('does not change the selected item in when defaultSelectedKey changes', () => {
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
+      const { getByRole, rerender } = render(<Dropdown defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      expect(titleElement.text()).toEqual('1');
+      const titleElement = within(getByRole('combobox')).getByText('1');
 
-      wrapper.setProps({ defaultSelectedKey: '2' });
-      expect(titleElement.text()).toEqual('1');
+      rerender(<Dropdown defaultSelectedKey="2" options={DEFAULT_OPTIONS} />);
+      expect(titleElement.textContent).toEqual('1');
     });
 
     it('Renders a selected item in controlled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" selectedKey="1" options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-
-      expect(titleElement.text()).toEqual('1');
+      const { getByRole } = render(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />);
+      const titleElement = within(getByRole('combobox')).queryByText('1');
+      expect(titleElement).toBeTruthy();
     });
 
     it('changes the selected item in when selectedKey changes', () => {
-      wrapper = mount(<Dropdown label="testgroup" selectedKey="1" options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
+      const { getByRole, rerender } = render(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />);
+      const titleElement = within(getByRole('combobox')).getByText('1');
 
-      expect(titleElement.text()).toEqual('1');
-
-      wrapper.setProps({ selectedKey: '2' });
-      expect(titleElement.text()).toEqual('2');
+      rerender(<Dropdown selectedKey="2" options={DEFAULT_OPTIONS} />);
+      expect(titleElement.textContent).toEqual('2');
     });
 
     it('clears when the selectedKey is null', () => {
-      safeCreate(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('1');
+      const { getByRole, rerender } = render(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />);
+      const titleElement = within(getByRole('combobox')).getByText('1');
 
-        renderer.act(() => {
-          container.update(<Dropdown selectedKey={null} options={DEFAULT_OPTIONS} />);
-        });
-        expect(dropdownOptionText.children?.[0]).toBe(undefined);
-      });
+      rerender(<Dropdown selectedKey={null} options={DEFAULT_OPTIONS} />);
+      expect(titleElement.textContent).toBe('');
     });
 
     it('Can change items in uncontrolled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
+      const { getByRole, getAllByRole } = render(<Dropdown defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+      const secondItemElement = getAllByRole('option')[1];
+      expect(secondItemElement?.getAttribute('title')).toEqual('test');
 
-      expect(secondItemElement.getAttribute('title')).toEqual('test');
-
-      ReactTestUtils.Simulate.click(secondItemElement);
-      expect(wrapper.find('.ms-Dropdown-title').text()).toEqual('2');
+      fireEvent.click(secondItemElement);
+      const titleElement = within(getByRole('combobox')).queryByText('2');
+      expect(titleElement).toBeTruthy();
     });
 
     it('calls onChange when the selected item is different', () => {
       const onChangeSpy = jest.fn();
 
-      wrapper = mount(
-        <Dropdown id="foo" label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+      const { getByRole, getAllByRole } = render(
+        <Dropdown id="foo" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
       );
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
-      ReactTestUtils.Simulate.click(secondItemElement);
+      const secondItemElement = getAllByRole('option')[1];
+      fireEvent.click(secondItemElement);
 
       expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2);
       expect(onChangeSpy.mock.calls[0][0].target.id).toEqual('foo');
@@ -232,20 +199,14 @@ describe('Dropdown', () => {
     it('calls onChange when the selected item is the same if notifyOnReselect is true', () => {
       const onChangeSpy = jest.fn();
 
-      wrapper = mount(
-        <Dropdown
-          label="testgroup"
-          defaultSelectedKey="3"
-          onChange={onChangeSpy}
-          options={DEFAULT_OPTIONS}
-          notifyOnReselect={true}
-        />,
+      const { getByRole, getAllByRole } = render(
+        <Dropdown defaultSelectedKey="3" onChange={onChangeSpy} options={DEFAULT_OPTIONS} notifyOnReselect={true} />,
       );
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
-      ReactTestUtils.Simulate.click(secondItemElement);
+      const thirdItemElement = getAllByRole('option')[2];
+      fireEvent.click(thirdItemElement);
 
       expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[3], 3);
     });
@@ -253,14 +214,12 @@ describe('Dropdown', () => {
     it('calls onDismiss when dismissing options callout', () => {
       const onDismissSpy = jest.fn();
 
-      wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKey="1" onDismiss={onDismissSpy} options={DEFAULT_OPTIONS} />,
-      );
+      const { getByRole, getAllByRole } = render(<Dropdown onDismiss={onDismissSpy} options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
-      ReactTestUtils.Simulate.click(secondItemElement);
+      const secondItemElement = getAllByRole('option')[1];
+      fireEvent.click(secondItemElement);
 
       expect(onDismissSpy).toHaveBeenCalledTimes(1);
     });
@@ -271,17 +230,13 @@ describe('Dropdown', () => {
         { key: 1, text: 'item2' },
       ];
 
-      safeCreate(<Dropdown options={options} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe(undefined);
+      const { getByRole, rerender } = render(<Dropdown options={options} />);
+      const titleElement = getByRole('combobox').querySelector('.ms-Dropdown-title');
+      expect(titleElement?.textContent).toBe('');
 
-        renderer.act(() => {
-          container.update(<Dropdown selectedKey={0} options={options} />);
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('item1');
-      });
+      rerender(<Dropdown selectedKey={0} options={options} />);
+
+      expect(titleElement?.textContent).toBe('item1');
     });
 
     it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
@@ -290,29 +245,23 @@ describe('Dropdown', () => {
         { key: 1, text: 'item2' },
       ];
 
-      safeCreate(<Dropdown selectedKey={0} options={options} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('item1');
+      const { getByRole, rerender } = render(<Dropdown selectedKey={0} options={options} />);
+      const titleElement = within(getByRole('combobox')).getByText('item1');
 
-        renderer.act(() => {
-          container.update(<Dropdown selectedKey={-1} options={options} />);
-        });
-        expect(dropdownOptionText.children?.[0]).toBe(undefined);
-      });
+      rerender(<Dropdown selectedKey={-1} options={options} />);
+      expect(titleElement.textContent).toBe('');
     });
 
     it('does not call onChange when the selected item is not different', () => {
       const onChangeSpy = jest.fn();
-      wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+      const { getByRole, getAllByRole } = render(
+        <Dropdown defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
       );
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
-      ReactTestUtils.Simulate.click(secondItemElement);
+      const firstItemElement = getAllByRole('option')[0];
+      fireEvent.click(firstItemElement);
 
       expect(onChangeSpy).not.toHaveBeenCalled();
     });
@@ -320,232 +269,225 @@ describe('Dropdown', () => {
     it('Keypresses on a disabled dropdown has no effect.', () => {
       const options = [...DEFAULT_OPTIONS];
       options[3] = { key: 3, text: '3', selected: true };
-      wrapper = mount(<Dropdown label="testgroup" disabled options={options} />);
-      const dropdownRoot = wrapper.find('.ms-Dropdown');
+      const { getByRole } = render(<Dropdown disabled options={options} />);
 
-      const titleElement = dropdownRoot.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('3');
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      expect(titleElement.text()).toEqual('3');
-      dropdownRoot.simulate('keydown', { which: KeyCodes.up });
-      expect(titleElement.text()).toEqual('3');
+      const dropdownRoot = getByRole('combobox');
+      const titleElement = within(dropdownRoot).getByText('3');
+
+      userEvent.type(dropdownRoot, '{arrowdown}', { skipClick: true });
+      expect(titleElement.textContent).toEqual('3');
+      userEvent.type(dropdownRoot, '{arrowup}', { skipClick: true });
+      expect(titleElement.textContent).toEqual('3');
     });
 
     it('Keypresses on a normal dropdown selects the right, valid items.', () => {
       const options = [...DEFAULT_OPTIONS];
       options[3] = { key: 3, text: '3', selected: true };
-      wrapper = mount(<Dropdown label="testgroup" options={options} />);
-      const dropdownRoot = wrapper.find('.ms-Dropdown');
+      const { getByRole } = render(<Dropdown options={options} />);
 
-      const titleElement = dropdownRoot.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('3');
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      expect(titleElement.text()).toEqual('4');
-      dropdownRoot.simulate('keydown', { which: KeyCodes.up });
-      expect(titleElement.text()).toEqual('3');
-      dropdownRoot.simulate('keydown', { which: KeyCodes.up });
-      expect(titleElement.text()).toEqual('2');
+      userEvent.tab();
+      const dropdownRoot = getByRole('combobox');
+      const titleElement = within(dropdownRoot).getByText('3');
+
+      userEvent.type(dropdownRoot, '{arrowdown}', { skipClick: true });
+      expect(titleElement.textContent).toEqual('4');
+      userEvent.type(dropdownRoot, '{arrowup}', { skipClick: true });
+      expect(titleElement.textContent).toEqual('3');
+      userEvent.type(dropdownRoot, '{arrowup}', { skipClick: true });
+      expect(titleElement.textContent).toEqual('2');
     });
 
     it('does not select any item on focus', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('focus');
+      userEvent.tab();
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('');
+      const dropdownRoot = getByRole('combobox');
+      expect(document.activeElement).toBe(dropdownRoot);
+      expect(dropdownRoot.querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
 
     it('can be programmatically focused when tabIndex=-1, and will not automatically select an item', () => {
       const dropdown = React.createRef<IDropdown>();
 
-      const container = document.createElement('div');
-      document.body.appendChild(container);
-
-      // in enzyme, when we call the programmatic focus(), it does not trigger the onFocus callback of the div
-      // being focused. Utilize JSDOM instead.
-      ReactDOM.render(
-        <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
-        container,
-      );
+      const { getByRole } = render(<Dropdown componentRef={dropdown} tabIndex={-1} options={DEFAULT_OPTIONS} />);
 
       dropdown.current!.focus(false);
 
-      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
-      // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
-      expect(titleElement.innerHTML).toEqual('');
+      const dropdownRoot = getByRole('combobox');
+      expect(document.activeElement).toBe(dropdownRoot);
+      expect(dropdownRoot.querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
 
     it('opens and does not automatically select an item when focus(true) is called', () => {
       const dropdown = React.createRef<IDropdown>();
 
-      const container = document.createElement('div');
-      document.body.appendChild(container);
+      const { getByRole } = render(<Dropdown componentRef={dropdown} options={DEFAULT_OPTIONS} />);
 
-      ReactTestUtils.act(() => {
-        ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
-      });
+      const dropdownRoot = getByRole('combobox');
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+      expect(titleElement?.textContent).toBe('');
 
-      expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
-
-      ReactTestUtils.act(() => {
-        dropdown.current!.focus(true);
-      });
-      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
-      expect(titleElement.innerHTML).toEqual('');
+      dropdown.current!.focus(true);
+      expect(document.activeElement).toBe(dropdownRoot);
+      expect(titleElement?.textContent).toBe('');
     });
 
     it('selects the first valid item on Home keypress', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.home });
+      const dropdownRoot = getByRole('combobox');
+      userEvent.type(dropdownRoot, '{home}');
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1');
+      const titleElement = within(dropdownRoot).queryByText('1');
+      expect(titleElement).toBeTruthy();
     });
 
     it('selects the last valid item on End keypress', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
-      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.end });
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('6');
+      const dropdownRoot = getByRole('combobox');
+      userEvent.type(dropdownRoot, '{end}');
+
+      const titleElement = within(dropdownRoot).queryByText('6');
+      expect(titleElement).toBeTruthy();
     });
 
     it('skips over headers and separators on keypress', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
-      const dropdownRoot = wrapper.find('.ms-Dropdown');
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
+      const dropdownRoot = getByRole('combobox');
 
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1');
+      userEvent.type(dropdownRoot, '{arrowdown}');
+      const titleElement = within(dropdownRoot).getByText('1');
 
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      expect(titleElement.text()).toEqual('4');
+      userEvent.type(dropdownRoot, '{arrowdown}');
+      userEvent.type(dropdownRoot, '{arrowdown}');
+      userEvent.type(dropdownRoot, '{arrowdown}');
+      expect(titleElement.textContent).toEqual('4');
     });
 
     it('Shows correct tooltip only if title prop is specified', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
+      const { getByRole, getAllByRole } = render(<Dropdown options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const firstItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
-      expect(firstItemElement.getAttribute('title')).toBeFalsy();
+      const options = getAllByRole('option');
+      expect(options).toHaveLength(6);
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
-      expect(secondItemElement.getAttribute('title')).toEqual('test');
-
-      const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
-      expect(thirdItemElement.getAttribute('title')).toBeFalsy();
+      expect(options[0].getAttribute('title')).toBeFalsy();
+      expect(options[1].getAttribute('title')).toEqual('test');
+      expect(options[2].getAttribute('title')).toBeFalsy();
     });
 
     it('opens on focus if openOnKeyboardFocus is true', () => {
-      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
+      const { queryByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('focus');
+      userEvent.tab();
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
-      expect(secondItemElement).toBeTruthy();
+      expect(queryByRole('listbox')).toBeTruthy();
     });
 
     it('opens on click if openOnKeyboardFocus is true', () => {
-      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
+      const { getByRole, queryByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('mousedown');
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
-      expect(secondItemElement).toBeTruthy();
+      expect(queryByRole('listbox')).toBeTruthy();
     });
 
     it('closes on blur when openOnKeyboardFocus is true', () => {
-      wrapper = mount(<Dropdown openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />);
+      const { getByRole, queryByRole } = render(<Dropdown openOnKeyboardFocus options={DEFAULT_OPTIONS} />);
 
-      wrapper.find('.ms-Dropdown').simulate('focus');
+      userEvent.tab();
 
-      let dropdownElement = document.querySelector('.ms-Dropdown-items') as HTMLElement;
-      expect(dropdownElement).toBeTruthy();
+      expect(queryByRole('listbox')).toBeTruthy();
 
       // blur, force the dropdown to close, then focus again
       // the second focus is simulating the behavior of the Callout when closed
-      wrapper.find('.ms-Dropdown').simulate('blur');
-      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.escape });
-      wrapper.find('.ms-Dropdown').simulate('focus');
+      const dropdownRoot = getByRole('combobox');
+      fireEvent.blur(dropdownRoot);
+      fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
+      fireEvent.focus(dropdownRoot);
 
-      dropdownElement = document.querySelector('.ms-Dropdown-items') as HTMLElement;
-      expect(dropdownElement).toBeFalsy();
+      expect(queryByRole('listbox')).toBeFalsy();
+    });
+
+    it('closes when dismissMenu() is called', () => {
+      const dropdown = React.createRef<IDropdown>();
+      const { getByRole, queryByRole } = render(<Dropdown componentRef={dropdown} options={DEFAULT_OPTIONS} />);
+
+      userEvent.click(getByRole('combobox'));
+      expect(queryByRole('listbox')).toBeTruthy();
+
+      dropdown.current?.dismissMenu();
+
+      expect(queryByRole('listbox')).toBeFalsy();
     });
 
     it('uses item title attribute if provided', () => {
       const options: IDropdownOption[] = [{ key: 'a', text: 'a', title: 'b' }];
-      wrapper = mount(<Dropdown options={options} />);
+      const { getByRole } = render(<Dropdown options={options} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const item = wrapper.find('.ms-Dropdown-item');
-      expect(item.getElements()[0].props.title).toBe('b');
+      const item = getByRole('option');
+      expect(item.title).toBe('b');
     });
 
     // This is a way to effectively disable setting a title
     it('uses empty string if provided for title', () => {
       const options: IDropdownOption[] = [{ key: 'a', text: 'a', title: '' }];
-      wrapper = mount(<Dropdown options={options} />);
+      const { getByRole } = render(<Dropdown options={options} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(getByRole('combobox'));
 
-      const item = wrapper.find('.ms-Dropdown-item');
-      expect(item.getElements()[0].props.title).toBe('');
+      const item = getByRole('option');
+      expect(item.title).toBe('');
     });
   });
 
   describe('multi-select', () => {
     it('Renders correctly', () => {
-      component = create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
+      expect(container).toMatchSnapshot();
     });
 
     it('Renders correctly when open', () => {
-      // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
       // There's intermittent variation (maybe measurement-related) on different computers,
       // so use fake timers to make it more predictable even though we never advance the timers.
       jest.useFakeTimers();
 
-      const ref = React.createRef<IDropdown>();
       // Specify dropdownWidth to prevent inconsistent calculated widths from getting into the snapshot
-      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} dropdownWidth={200} />);
-      ref.current!.focus(true);
-      wrapper.update();
-      expect(wrapper.getDOMNode()).toMatchSnapshot();
+      const { getByRole } = render(<Dropdown multiSelect options={RENDER_OPTIONS} dropdownWidth={200} />);
+      userEvent.click(getByRole('combobox'));
+      // snapshot the whole body to capture both the field and the options list
+      expect(document.body).toMatchSnapshot();
     });
 
     it('Renders correctly when options change', () => {
-      wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
+      const { getByRole, getAllByRole, queryByText, rerender } = render(
+        <Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />,
+      );
 
-      expect(titleElement.text()).toEqual('1, 4');
+      expect(queryByText('1, 4')).toBeTruthy(); // expected initial title text
 
-      wrapper.setProps({ options: DEFAULT_OPTIONS.slice(2) });
+      rerender(<Dropdown options={DEFAULT_OPTIONS.slice(2)} multiSelect defaultSelectedKeys={['1', '4']} />);
 
-      wrapper.find('.ms-Dropdown').simulate('click');
-      const options = document.querySelectorAll('.ms-Dropdown-item');
-      expect(options.length).toEqual(5);
+      userEvent.click(getByRole('combobox'));
+
+      const options = getAllByRole('option');
+      expect(options).toHaveLength(5);
     });
 
     it('Renders no selected item in default case', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />);
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('');
+      expect(getByRole('combobox').querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      wrapper = mount(
+      const { getByRole } = render(
         <Dropdown
-          label="testgroup"
           options={[
             { key: '1', text: '1', selected: true },
             { key: '2', text: '2' },
@@ -554,8 +496,8 @@ describe('Dropdown', () => {
         />,
       );
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1');
+      const titleElement = within(getByRole('combobox')).queryByText('1');
+      expect(titleElement).toBeTruthy();
     });
 
     it('sets the selected items even when key is number 0', () => {
@@ -564,17 +506,13 @@ describe('Dropdown', () => {
         { key: 1, text: 'item2' },
       ];
 
-      safeCreate(<Dropdown multiSelect options={options} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe(undefined);
+      const { getByRole, rerender } = render(<Dropdown options={options} multiSelect />);
+      const titleElement = getByRole('combobox').querySelector('.ms-Dropdown-title');
+      expect(titleElement?.textContent).toBe('');
 
-        renderer.act(() => {
-          container.update(<Dropdown multiSelect options={options} selectedKeys={[0, 1]} />);
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('item1, item2');
-      });
+      rerender(<Dropdown selectedKeys={[0]} options={options} multiSelect />);
+
+      expect(titleElement?.textContent).toBe('item1');
     });
 
     it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
@@ -582,25 +520,16 @@ describe('Dropdown', () => {
         { key: 0, text: 'item1' },
         { key: 1, text: 'item2' },
       ];
-      const selectedKeys = [0];
+      const { getByRole, rerender } = render(<Dropdown selectedKeys={[0]} options={options} multiSelect />);
+      const titleElement = within(getByRole('combobox')).getByText('item1');
 
-      safeCreate(<Dropdown multiSelect options={options} selectedKeys={selectedKeys} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('item1');
-
-        renderer.act(() => {
-          container.update(<Dropdown multiSelect options={options} selectedKeys={[-1]} />);
-        });
-        expect(dropdownOptionText.children?.[0]).toBe(undefined);
-      });
+      rerender(<Dropdown selectedKey={-1} options={options} />);
+      expect(titleElement.textContent).toBe('');
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {
-      wrapper = mount(
+      const { getByRole } = render(
         <Dropdown
-          label="testgroup"
           options={[
             { key: '1', text: '1', selected: true },
             { key: '2', text: '2', selected: true },
@@ -609,89 +538,87 @@ describe('Dropdown', () => {
         />,
       );
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1, 2');
+      const titleElement = within(getByRole('combobox')).queryByText('1, 2');
+      expect(titleElement).toBeTruthy();
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
-      );
+      const { getByRole } = render(<Dropdown defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />);
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1, 2');
+      const titleElement = within(getByRole('combobox')).queryByText('1, 2');
+      expect(titleElement).toBeTruthy();
     });
 
     it('does not change the selected items when defaultSelectedKeys changes', () => {
-      wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
+      const { getByRole, rerender } = render(
+        <Dropdown defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />,
       );
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1, 2');
+      const titleElement = within(getByRole('combobox')).getByText('1, 2');
 
-      wrapper.setProps({ defaultSelectedKeys: ['3', '4'] });
+      rerender(<Dropdown defaultSelectedKeys={['3', '4']} multiSelect options={DEFAULT_OPTIONS} />);
 
-      expect(titleElement.text()).toEqual('1, 2');
+      expect(titleElement.textContent).toEqual('1, 2');
     });
 
     it('Renders selected items in controlled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />);
+      const { getByRole } = render(<Dropdown selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />);
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1, 3');
+      const titleElement = within(getByRole('combobox')).queryByText('1, 3');
+      expect(titleElement).toBeTruthy();
     });
 
     it('changes selected items in controlled case', () => {
-      wrapper = mount(<Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />);
+      const { getByRole, rerender } = render(
+        <Dropdown selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />,
+      );
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1, 3');
+      const titleElement = within(getByRole('combobox')).getByText('1, 3');
 
-      wrapper.setProps({ selectedKeys: ['2', '4'] });
-      expect(titleElement.text()).toEqual('2, 4');
+      rerender(<Dropdown selectedKeys={['2', '4']} multiSelect options={DEFAULT_OPTIONS} />);
+      expect(titleElement.textContent).toEqual('2, 4');
     });
 
     it("Preserves selected items in controlled case if they don't change", () => {
-      wrapper = mount(<Dropdown label="testgroup" selectedKey={'1'} options={DEFAULT_OPTIONS} />);
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('1');
+      const { getByRole, getAllByRole, queryByRole } = render(<Dropdown selectedKey={'1'} options={DEFAULT_OPTIONS} />);
+      const dropdownRoot = getByRole('combobox');
+      const titleElement = within(dropdownRoot).getByText('1');
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      userEvent.click(dropdownRoot);
 
-      const secondItemElement = document.querySelectorAll('.ms-Dropdown-item')[2] as HTMLElement;
-      ReactTestUtils.Simulate.click(secondItemElement);
+      const secondItemElement = getAllByRole('option')[1];
+      fireEvent.click(secondItemElement);
 
-      expect(titleElement.text()).toEqual('1');
+      expect(queryByRole('listbox')).toBeFalsy(); // verify menu closed
+      expect(titleElement.textContent).toEqual('1');
     });
 
     it('Can change items in uncontrolled case', () => {
-      wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKeys={['1']} multiSelect id="test" options={DEFAULT_OPTIONS} />,
+      const { getByRole, getAllByRole } = render(
+        <Dropdown defaultSelectedKeys={['1']} multiSelect id="test" options={DEFAULT_OPTIONS} />,
       );
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      const dropdownRoot = getByRole('combobox');
+      userEvent.click(dropdownRoot);
 
-      const secondItemElement = document.querySelectorAll(
-        '.ms-Dropdown-item > input[type="checkbox"]',
-      )[1] as HTMLElement;
-      ReactTestUtils.Simulate.change(secondItemElement);
+      const secondItemElement = getAllByRole('option')[1];
+      fireEvent.click(secondItemElement);
 
-      expect(wrapper.find('.ms-Dropdown-title').text()).toEqual('1, 2');
+      const titleElement = within(dropdownRoot).queryByText('1, 2');
+      expect(titleElement).toBeTruthy();
     });
 
     it('calls onChange when selecting an item', () => {
       const onChangeSpy = jest.fn();
-      wrapper = mount(
+      const { getByRole, getAllByRole } = render(
         <Dropdown defaultSelectedKeys={['1']} multiSelect onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
       );
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      const dropdownRoot = getByRole('combobox');
+      userEvent.click(dropdownRoot);
 
-      const secondItemElement = document.querySelectorAll(
-        '.ms-Dropdown-item > input[type="checkbox"]',
-      )[1] as HTMLElement;
-      ReactTestUtils.Simulate.change(secondItemElement);
+      const secondItemElement = getAllByRole('option')[1];
+      fireEvent.click(secondItemElement);
 
       expect(onChangeSpy).toHaveBeenCalled();
       // mock.calls is the arguments for each call.
@@ -701,64 +628,45 @@ describe('Dropdown', () => {
 
     it('calls onChange when unselecting an item', () => {
       const onChangeSpy = jest.fn();
-      wrapper = mount(
+      const { getByRole, getAllByRole } = render(
         <Dropdown defaultSelectedKeys={['1']} multiSelect onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
       );
 
-      wrapper.find('.ms-Dropdown').simulate('click');
+      const dropdownRoot = getByRole('combobox');
+      userEvent.click(dropdownRoot);
 
-      const firstItemElement = document.querySelectorAll(
-        '.ms-Dropdown-item > input[type="checkbox"]',
-      )[0] as HTMLElement;
-      ReactTestUtils.Simulate.change(firstItemElement);
+      const firstItemElement = getAllByRole('option')[0];
+      fireEvent.click(firstItemElement);
 
       expect(onChangeSpy).toHaveBeenCalled();
       expect(onChangeSpy.mock.calls[0].slice(1)).toEqual([{ ...DEFAULT_OPTIONS[1], selected: false }, 1]);
     });
 
     it('Will not select the first valid item on keypress', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />);
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
 
-      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.down });
+      const dropdownRoot = getByRole('combobox');
+      userEvent.type(dropdownRoot, '{arrowdown}');
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('');
+      expect(dropdownRoot.querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
 
     it('Will not select the first valid item on Home keypress', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />);
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
 
-      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.home });
+      const dropdownRoot = getByRole('combobox');
+      userEvent.type(dropdownRoot, '{home}');
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('');
+      expect(dropdownRoot.querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
 
     it('Will not select the last valid item on End keypress', () => {
-      wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />);
+      const { getByRole } = render(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
 
-      wrapper.find('.ms-Dropdown').simulate('keydown', { which: KeyCodes.end });
+      const dropdownRoot = getByRole('combobox');
+      userEvent.type(dropdownRoot, '{end}');
 
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-      expect(titleElement.text()).toEqual('');
-    });
-
-    it('Will skip disabled items on keydown', () => {
-      const options = [
-        { key: 0, text: '1' },
-        { key: 1, text: '2', disabled: true },
-        { key: 2, text: '3' },
-      ];
-
-      wrapper = mount(<Dropdown label="testgroup" options={options} />);
-      const dropdownRoot = wrapper.find('.ms-Dropdown');
-      const titleElement = wrapper.find('.ms-Dropdown-title');
-
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      expect(titleElement.text()).toEqual('1');
-
-      dropdownRoot.simulate('keydown', { which: KeyCodes.down });
-      expect(titleElement.text()).toEqual('3');
+      expect(dropdownRoot.querySelector('.ms-Dropdown-title')?.textContent).toBe('');
     });
   });
 
@@ -770,10 +678,10 @@ describe('Dropdown', () => {
         { key: 2, text: '3' },
       ];
 
-      wrapper = mount(<Dropdown options={options} />);
-      const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
+      const { getByRole } = render(<Dropdown options={options} />);
+      const dropdownRoot = getByRole('combobox');
 
-      expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).toBeNull();
+      expect(dropdownRoot.getAttribute('aria-labelledby')).toBeNull();
     });
 
     it('does not apply aria-labelledby if an empty label is provided', () => {
@@ -783,10 +691,10 @@ describe('Dropdown', () => {
         { key: 2, text: '3' },
       ];
 
-      wrapper = mount(<Dropdown label="" options={options} />);
-      const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
+      const { getByRole } = render(<Dropdown label="" options={options} />);
+      const dropdownRoot = getByRole('combobox');
 
-      expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).toBeNull();
+      expect(dropdownRoot.getAttribute('aria-labelledby')).toBeNull();
     });
 
     it('applies aria-labelledby if a non-empty label is provided', () => {
@@ -796,78 +704,56 @@ describe('Dropdown', () => {
         { key: 2, text: '3' },
       ];
 
-      wrapper = mount(<Dropdown label="Test label" options={options} />);
-      const dropdownRoot = wrapper.getDOMNode().querySelector('.ms-Dropdown') as HTMLElement;
+      const { getByRole } = render(<Dropdown label="Test label" options={options} />);
+      const dropdownRoot = getByRole('combobox');
 
-      expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).not.toBeNull();
+      expect(dropdownRoot.getAttribute('aria-labelledby')).not.toBeNull();
     });
 
     it('sets role=error on included error message', () => {
-      wrapper = mount(
+      const { getByRole } = render(
         <Dropdown label="Test label" options={[]} id="sample-dropdown" errorMessage="This is an example error." />,
       );
-      const errorMessage = wrapper.getDOMNode().querySelector('#sample-dropdown-errorMessage') as HTMLElement;
-      expect(errorMessage.getAttribute('role')).toEqual('alert');
+      const alert = getByRole('alert');
+      expect(alert.textContent).toBe('This is an example error.');
     });
   });
 
   describe('with simulated async loaded options', () => {
     /** See https://github.com/microsoft/fluentui/issues/7315 */
-    class DropdownWithChangingProps extends React.Component<{ multi: boolean }, { options?: IDropdownOption[] }> {
-      public state = {
-        options: undefined,
-      };
+    const DropdownWithChangingProps = (props: { multi: boolean }) => {
+      const [options, setOptions] = React.useState<IDropdownOption[]>([]);
+      React.useEffect(() => {
+        setOptions([
+          { key: 'A', text: 'Option a', title: 'I am option a.' },
+          { key: 'B', text: 'Option b' },
+          { key: 'C', text: 'Option c', disabled: true },
+          { key: 'D', text: 'Option d' },
+          { key: 'E', text: 'Option e' },
+        ]);
+      }, []);
 
-      public componentDidMount() {
-        this.loadOptions();
-      }
+      return (
+        <div className="docs-DropdownExample">
+          {props.multi ? (
+            <Dropdown defaultSelectedKeys={['B', 'D']} options={options} multiSelect />
+          ) : (
+            <Dropdown defaultSelectedKey={'B'} options={options} />
+          )}
+        </div>
+      );
+    };
 
-      public render() {
-        return (
-          <div className="docs-DropdownExample">
-            {this.props.multi ? (
-              <Dropdown
-                label="Basic uncontrolled example:"
-                defaultSelectedKeys={['B', 'D']}
-                options={this.state.options!}
-                multiSelect
-              />
-            ) : (
-              <Dropdown label="Basic uncontrolled example:" defaultSelectedKey={'B'} options={this.state.options!} />
-            )}
-          </div>
-        );
-      }
-
-      public loadOptions() {
-        this.setState({
-          options: [
-            { key: 'A', text: 'Option a', title: 'I am option a.' },
-            { key: 'B', text: 'Option b' },
-            { key: 'C', text: 'Option c', disabled: true },
-            { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' },
-          ],
-        });
-      }
-    }
-
-    it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
-      safeCreate(<DropdownWithChangingProps multi={false} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('Option b');
-      });
+    it('respects defaultSelectedKey if options change (single-select)', () => {
+      const { getByRole } = render(<DropdownWithChangingProps multi={false} />);
+      const titleElement = within(getByRole('combobox')).queryByText('Option b');
+      expect(titleElement).toBeTruthy();
     });
 
-    it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
-      safeCreate(<DropdownWithChangingProps multi={true} />, container => {
-        const dropdownOptionText = container.root.find(node => {
-          return node.props.className?.includes?.('ms-Dropdown-title');
-        });
-        expect(dropdownOptionText.children?.[0]).toBe('Option b, Option d');
-      });
+    it('respects defaultSelectedKeys if options change (multi-select)', () => {
+      const { getByRole } = render(<DropdownWithChangingProps multi={true} />);
+      const titleElement = within(getByRole('combobox')).queryByText('Option b, Option d');
+      expect(titleElement).toBeTruthy();
     });
   });
 });

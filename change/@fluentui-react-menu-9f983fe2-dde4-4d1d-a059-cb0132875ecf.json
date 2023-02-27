@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Apply fontSize styling to icon slot",
-  "packageName": "@fluentui/react-menu",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -20,7 +20,7 @@ export const menuStyles: (
       border: calc(${strokeWidth} * 1px) solid transparent;
       border-radius: calc(${layerCornerRadius} * 1px);
       box-shadow: ${elevationShadowFlyout};
-      padding: calc(${designUnit} * 1px) 0;
+      padding: calc((${designUnit} - ${strokeWidth}) * 1px) 0;
       max-width: 368px;
       min-width: 64px;
     }

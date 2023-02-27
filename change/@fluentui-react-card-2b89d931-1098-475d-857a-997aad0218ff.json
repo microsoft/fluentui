@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-card: Replacing use of functions in makeStyles with direct use of tokens.",
-  "packageName": "@fluentui/react-card",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

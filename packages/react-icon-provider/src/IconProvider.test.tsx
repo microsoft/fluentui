@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { IconProvider, useIconSubset } from './IconProvider';
 import type { IIconSubset } from '@fluentui/style-utilities';
 
@@ -27,7 +27,7 @@ describe('IconProvider', () => {
       resolvedIcon = useIconSubset();
       return null;
     };
-    mount(
+    render(
       <IconProvider icons={testOverride}>
         <TestComponent />
       </IconProvider>,

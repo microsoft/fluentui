@@ -28,18 +28,21 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
 
   const buttonProps = getNativeProps(props, buttonProperties);
 
-  const handleClick = React.useCallback((): void => {
-    if (onClick && !disabled) {
-      onClick(item);
-    }
-  }, [disabled, item, onClick]);
+  const handleClick = React.useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>): void => {
+      if (onClick && !disabled) {
+        onClick(item, event);
+      }
+    },
+    [disabled, item, onClick],
+  );
 
   const handleMouseEnter = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>): void => {
       const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
 
       if (!didUpdateOnEnter && onHover && !disabled) {
-        onHover(item);
+        onHover(item, ev);
       }
     },
     [disabled, item, onHover, onMouseEnter],
@@ -50,7 +53,7 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
       const didUpdateOnMove = onMouseMove && onMouseMove(ev);
 
       if (!didUpdateOnMove && onHover && !disabled) {
-        onHover(item);
+        onHover(item, ev);
       }
     },
     [disabled, item, onHover, onMouseMove],
@@ -61,17 +64,20 @@ export const ButtonGridCell = <T, P extends IButtonGridCellProps<T>>(props: IBut
       const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
 
       if (!didUpdateOnLeave && onHover && !disabled) {
-        onHover();
+        onHover(undefined, ev);
       }
     },
     [disabled, onHover, onMouseLeave],
   );
 
-  const handleFocus = React.useCallback((): void => {
-    if (onFocus && !disabled) {
-      onFocus(item);
-    }
-  }, [disabled, item, onFocus]);
+  const handleFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLButtonElement>): void => {
+      if (onFocus && !disabled) {
+        onFocus(item, event);
+      }
+    },
+    [disabled, item, onFocus],
+  );
 
   return (
     <CommandButton

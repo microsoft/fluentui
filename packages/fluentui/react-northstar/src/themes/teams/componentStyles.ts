@@ -15,6 +15,7 @@ export { attachmentIconStyles as AttachmentIcon } from './components/Attachment/
 export { avatarStyles as Avatar } from './components/Avatar/avatarStyles';
 export { avatarStatusStyles as AvatarStatus } from './components/Avatar/avatarStatusStyles';
 export { avatarStatusIconStyles as AvatarStatusIcon } from './components/Avatar/avatarStatusIconStyles';
+export { avatarStatusImageStyles as AvatarStatusImage } from './components/Avatar/avatarStatusImageStyles';
 export { avatarImageStyles as AvatarImage } from './components/Avatar/avatarImageStyles';
 export { avatarIconStyles as AvatarIcon } from './components/Avatar/avatarIconStyles';
 export { avatarLabelStyles as AvatarLabel } from './components/Avatar/avatarLabelStyles';
@@ -31,6 +32,7 @@ export { breadcrumbStyles as Breadcrumb } from './components/Breadcrumb/breadcru
 export { chatStyles as Chat } from './components/Chat/chatStyles';
 export { chatItemStyles as ChatItem } from './components/Chat/chatItemStyles';
 export { chatMessageStyles as ChatMessage } from './components/Chat/chatMessageStyles';
+export { chatMessageContentStyles as ChatMessageContent } from './components/Chat/chatMessageContentStyles';
 export { chatMessageDetailsStyles as ChatMessageDetails } from './components/Chat/chatMessageDetailsStyles';
 export { chatMessageReadStatusStyles as ChatMessageReadStatus } from './components/Chat/chatMessageReadStatusStyles';
 

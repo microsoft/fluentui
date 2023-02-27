@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "[breaking] Remove useControllableValue hook (use useControllableState instead)",
-  "packageName": "@fluentui/react-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -3,5 +3,5 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { StackPageProps } from './StackPage.doc';
 
 export const StackPage: React.FunctionComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...StackPageProps[props.platform]} />;
+  return <ControlsAreaPage {...props} {...StackPageProps[props.platform!]} />;
 };

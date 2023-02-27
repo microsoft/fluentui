@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "set minimum line length based on a11y review",
-  "packageName": "@fluentui/react-divider",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

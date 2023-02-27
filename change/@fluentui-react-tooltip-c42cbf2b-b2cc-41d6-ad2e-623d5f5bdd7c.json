@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: implement `content` slot",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

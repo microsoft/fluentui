@@ -1,11 +1,15 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { svgIconClassName } from '@fluentui/react-icons-northstar';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
+import {
+  attachmentProgressBarClassName,
+  attachmentProgressContainerClassName,
+  AttachmentStylesProps,
+} from '../../../../components/Attachment/Attachment';
 import { attachmentActionClassName } from '../../../../components/Attachment/AttachmentAction';
-import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { AttachmentVariables } from './attachmentVariables';
 
 export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -32,15 +36,21 @@ export const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps
 
       ...borderFocusStyles,
 
-      '& .ui-attachment__progress': {
-        transition: 'width 0.2s',
-        position: 'absolute',
-        display: 'block',
+      [`& .${attachmentProgressContainerClassName}`]: {
+        borderBottomLeftRadius: v.borderRadius,
+        borderBottomRightRadius: v.borderRadius,
         bottom: 0,
-        left: 0,
-        maxWidth: '100%',
         height: v.progressHeight,
-        background: v.progressColor,
+        left: 0,
+        overflow: 'hidden',
+        position: 'absolute',
+        right: 0,
+        [`& .${attachmentProgressBarClassName}`]: {
+          background: v.progressColor,
+          height: '100%',
+          maxWidth: '100%',
+          transition: 'width 0.2s',
+        },
       },
 
       ...(p.actionable && {

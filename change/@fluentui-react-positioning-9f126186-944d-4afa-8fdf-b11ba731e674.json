@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds @noflip annotation to data-popper-placement styles",
-  "packageName": "@fluentui/react-positioning",
-  "email": "bsunderhus@microsoft.com",
-  "dependentChangeType": "patch"
-}

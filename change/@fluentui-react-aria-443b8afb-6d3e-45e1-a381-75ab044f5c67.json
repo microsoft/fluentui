@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove Griffel packages",
-  "packageName": "@fluentui/react-aria",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

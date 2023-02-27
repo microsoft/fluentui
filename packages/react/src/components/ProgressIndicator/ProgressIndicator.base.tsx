@@ -85,8 +85,17 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
   }
 
   private _onRenderProgress = (props: IProgressIndicatorProps): JSX.Element => {
-    // eslint-disable-next-line deprecation/deprecation
-    const { ariaValueText, barHeight, className, description, label = this.props.title, styles, theme } = this.props;
+    const {
+      ariaLabel,
+      ariaValueText,
+      barHeight,
+      className,
+      description,
+      // eslint-disable-next-line deprecation/deprecation
+      label = this.props.title,
+      styles,
+      theme,
+    } = this.props;
 
     const percentComplete =
       typeof this.props.percentComplete === 'number'
@@ -117,6 +126,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
           style={progressBarStyles}
           role="progressbar"
           aria-describedby={description ? this._descriptionId : undefined}
+          aria-label={ariaLabel}
           aria-labelledby={label ? this._labelId : undefined}
           aria-valuemin={ariaValueMin}
           aria-valuemax={ariaValueMax}

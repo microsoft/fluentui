@@ -8,6 +8,7 @@ import {
   teamsHighContrastTheme,
   teamsV2Theme,
   teamsDarkV2Theme,
+  teamsForcedColorsTheme,
   RendererContext,
 } from '@fluentui/react-northstar';
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
@@ -22,8 +23,7 @@ import Routes from './routes';
 // Experimental dev-time accessibility attributes integrity validation.
 import { setup } from '@fluentui/ability-attributes';
 
-// Temporarily disabling the validation for Screener.
-if (process.env.NODE_ENV !== 'production' && !process.env.SCREENER) {
+if (process.env.NODE_ENV !== 'production') {
   setup();
 }
 
@@ -33,10 +33,11 @@ const themes = {
   teamsHighContrastTheme,
   teamsV2Theme,
   teamsDarkV2Theme,
+  teamsForcedColorsTheme,
 };
 
 function useRendererFactory(): CreateRenderer {
-  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer() : createFelaRenderer;
+  const rendererFactory = localStorage.fluentRenderer === 'emotion' ? createEmotionRenderer() : createFelaRenderer();
 
   React.useEffect(() => {
     (window as any).setFluentRenderer = (rendererName: 'fela' | 'emotion') => {

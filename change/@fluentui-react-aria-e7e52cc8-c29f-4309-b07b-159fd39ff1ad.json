@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove component's shorthandProps array",
-  "packageName": "@fluentui/react-aria",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

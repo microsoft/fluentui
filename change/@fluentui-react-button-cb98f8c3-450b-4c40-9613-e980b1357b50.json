@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "MenuButton: Updating types so it properly supports ref.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

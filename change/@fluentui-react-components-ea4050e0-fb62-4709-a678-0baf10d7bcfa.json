@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add Input components (exported as /unstable)",
-  "packageName": "@fluentui/react-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
