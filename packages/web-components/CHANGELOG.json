@@ -2,6 +2,63 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 27 Feb 2023 04:27:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.7",
+      "version": "3.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4309a0d5afbe56dab0b1204922a37873fe832c8b",
+            "comment": "feat(avatar): add Avatar web component"
+          },
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7d9573d73b4be010c2b07540fa0c23c27aba2821",
+            "comment": "feat(divider): Add divider web component"
+          },
+          {
+            "author": "harankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e793ad8a7f7ae0239a808439d121cf012dd414e5",
+            "comment": "feat(image): Add image web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Feb 2023 04:20:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.6",
+      "version": "3.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2de60aec984eb2802da76c6c67849da358c0db49",
+            "comment": "feat(switch): Add switch web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 04:22:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.5",
+      "version": "3.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1ad2597f744bf7c3e2eada7720eea793fcee660e",
+            "comment": "feat(accordion): Add accordion web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Feb 2023 04:21:36 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.4",
       "version": "3.0.0-alpha.4",
