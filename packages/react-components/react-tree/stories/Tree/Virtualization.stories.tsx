@@ -10,9 +10,12 @@ import {
   useTreeContextValues_unstable,
   TreeProvider,
   TreeSlots,
+  TreeNavigationData_unstable,
+  TreeNavigationEvent_unstable,
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
+import { ArrowLeft, End, Home } from '@fluentui/keyboard-keys';
 
 const item1: FlatTreeItemProps[] = [
   {
@@ -38,7 +41,7 @@ const item2: FlatTreeItemProps[] = [
 ];
 
 type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
-  listProps: FixedSizeListProps;
+  listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
 };
 
 const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef((props, ref) => {
@@ -70,10 +73,28 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
 
 export const Virtualization = () => {
   const [treeProps, flatTreeItems] = useFlatTreeItems_unstable([...item1, ...item2]);
+  const listRef = React.useRef<FixedSizeList>(null);
   const items = flatTreeItems.toArray();
+
+  // ArrowLeft, Home and End navigation might not work since the element that you navigate to might not be mounted
+  // scrolling into the element to ensure it is mounted before invoking `treeProps.onOpenChange` solves this
+  const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
+    event.preventDefault();
+    if (data.type === ArrowLeft) {
+      listRef.current?.scrollTo(Number(event.currentTarget.getAttribute('aria-posinset')));
+    } else if (data.type === Home) {
+      listRef.current?.scrollToItem(0);
+    } else if (data.type === End) {
+      listRef.current?.scrollToItem(items.length - 1);
+    }
+    requestAnimationFrame(() => {
+      treeProps.onNavigation_unstable(event, data);
+    });
+  };
   return (
     <FixedSizeTree
       listProps={{
+        ref: listRef,
         height: 300,
         itemCount: items.length,
         itemData: items,
@@ -82,6 +103,7 @@ export const Virtualization = () => {
         children: FixedSizeTreeItem,
       }}
       {...treeProps}
+      onNavigation_unstable={handleNavigation}
       aria-label="Tree"
     />
   );

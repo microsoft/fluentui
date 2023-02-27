@@ -6,7 +6,16 @@ export {
   useTree_unstable,
   useTreeContextValues_unstable,
 } from './Tree';
-export type { TreeProps, TreeState, TreeSlots, TreeOpenChangeData, TreeOpenChangeEvent, TreeItemId } from './Tree';
+export type {
+  TreeProps,
+  TreeState,
+  TreeSlots,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+  TreeNavigationEvent_unstable,
+  TreeNavigationData_unstable,
+  TreeItemId,
+} from './Tree';
 
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
 export type { TreeContextValue } from './contexts';
