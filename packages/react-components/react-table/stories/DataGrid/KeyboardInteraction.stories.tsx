@@ -20,6 +20,11 @@ import {
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
+  Menu,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  MenuItem,
 } from '@fluentui/react-components';
 
 type FileCell = {
@@ -157,16 +162,13 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const ResizableColumns = () => {
+export const KeyboardInteraction = () => {
   return (
     <DataGrid
       items={items}
-      ref={el => console.log('__Ref', el)}
       columns={columns}
       sortable
       getRowId={item => item.file.label}
-      selectionMode="multiselect"
-      onSelectionChange={(_, data) => console.log(data)}
       resizableColumns
       columnSizingOptions={{
         file: {
@@ -179,15 +181,25 @@ export const ResizableColumns = () => {
           idealWidth: 180,
         },
       }}
-      onColumnResize={(event, { columnId, width }) => {
-        if (event instanceof MouseEvent) {
-          console.log(event.offsetX, event.offsetY, columnId, width);
-        }
-      }}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+          {({ renderHeaderCell, columnId }, state) => (
+            <Menu openOnContext>
+              <MenuTrigger>
+                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+              </MenuTrigger>
+              <MenuPopover>
+                <MenuList>
+                  {state.accessibilityMenuItems?.map(item => (
+                    <MenuItem key={item.key} onClick={item.getClickHandler(columnId)}>
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          )}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
@@ -201,17 +213,20 @@ export const ResizableColumns = () => {
   );
 };
 
-ResizableColumns.storyName = 'Resizable Columns (preview)';
-ResizableColumns.parameters = {
+KeyboardInteraction.storyName = 'Keyboard Interaction (preview)';
+KeyboardInteraction.parameters = {
   docs: {
     description: {
       story: [
-        'Columns can be made resizable by passing a prop `resizableColumns`. The resizing configuration for each ',
-        'column (like `minWidth` and `defaultWidth`), can be further customized by passing down a ',
-        '`columnSizingOptions` prop.',
+        'For accessibility, the `DataGrid` component supports keyboard navigation and screen reader navigation',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access other DataGrid features.',
         '',
-        'The control over the state of resizing can be achieved with the combination of `onColumnResize` callback ',
-        'and setting the `idealWidth` for a column in `columnSizingOptions`.',
+        'Once an option is selected, the arrows keys can be used to interact with the `DataGrid` (e.g. resize columns).',
+        '`ESC`, `ENTER`, or `SPACE` can be used to return to the original navigation mode.',
+        '',
+        'The `DataGrid` component is a WIP component and is not yet fully accessible. We are working on improving',
+        'the accessibility of this component and welcome any feedback.',
       ].join('\n'),
     },
   },

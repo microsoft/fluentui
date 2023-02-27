@@ -19,7 +19,6 @@ import {
   MenuTrigger,
   MenuPopover,
   MenuList,
-  MenuItem,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -134,7 +133,7 @@ export const ResizableColumnsUncontrolled = () => {
   });
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  const { getRows, columnSizing_unstable, tableRef, accessibilityMenuItems } = useTableFeatures(
+  const { getRows, columnSizing_unstable, tableRef, accessibilityMenuOptions } = useTableFeatures(
     {
       columns,
       items,
@@ -174,13 +173,7 @@ export const ResizableColumnsUncontrolled = () => {
                     </TableHeaderCell>
                   </MenuTrigger>
                   <MenuPopover>
-                    <MenuList>
-                      {accessibilityMenuItems?.map(item => (
-                        <MenuItem key={item.key} onClick={item.getClickHandler(column.columnId)}>
-                          {item.label}
-                        </MenuItem>
-                      ))}
-                    </MenuList>
+                    <MenuList>{accessibilityMenuOptions}</MenuList>
                   </MenuPopover>
                 </Menu>
               </ColumnIdContextProvider>
