@@ -2,6 +2,145 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 07:44:35 GMT",
+      "tag": "@fluentui/react_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "a11ac1fd696783c2c18c62c93a012156b99d1bdf",
+            "comment": "fix(ComboBox): fix(react-combobox): Remove _getAriaActiveDescendantValue, compute aria-activedescendantvalue in state, and update currentPendingValue when the options change."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9ad00830c43d33e1dfa7eecb1f8060eb6f012e56",
+            "comment": "fix: update role and accname for non-hidden icon button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Feb 2023 00:32:22 GMT",
+      "tag": "@fluentui/react_v8.106.0",
+      "version": "8.106.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e7adfeaa37370b9aebe79d3a0168d0457822b139",
+            "comment": "Fix: Combobox if value is controlled, we should not update state"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "89ac7281e69de3f3caff4dc14f62deb59cf25593",
+            "comment": "fix: Coachmark remove possible recursive loop"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Feb 2023 01:37:02 GMT",
+      "tag": "@fluentui/react_v8.105.11",
+      "version": "8.105.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.29",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.9",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.15",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.17",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.2",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.23",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.7",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.18",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Feb 2023 22:05:37 GMT",
+      "tag": "@fluentui/react_v8.105.10",
+      "version": "8.105.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "055d703d6d400235309b038e460d63cadaa3a0c3",
+            "comment": "revert: rollback List rendering change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Feb 2023 07:46:37 GMT",
+      "tag": "@fluentui/react_v8.105.9",
+      "version": "8.105.9",
+      "comments": {
+        "none": [
+          {
+            "author": "jimsleon@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "9e287be4544ad39f0041349a0d1da0e9100800b0",
+            "comment": "chore: Removing deprecated React.Props from DelayedRender."
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ca757212da6f77eb0bfe18cf7bfcc8bbab2a5da5",
+            "comment": "fix: move props object creation to allow for memoization in DetailsList."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 07:42:17 GMT",
       "tag": "@fluentui/react_v8.105.8",
       "version": "8.105.8",

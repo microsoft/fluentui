@@ -1,27 +1,15 @@
 import * as React from 'react';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
-import { useRefEffect } from '../../temp-utils/useRefEffect';
-import {
-  compareDates,
-  getBoundedDateRange,
-  getDateRangeArray,
-  getDayGrid,
-  isRestrictedDate,
-  DateRangeType,
-  DayOfWeek,
-  DAYS_IN_WEEK,
-} from '../../utils';
+import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType, DayOfWeek } from '../../utils';
 import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
+import { useAnimateBackwards } from './useAnimateBackwards';
+import { useWeeks } from './useWeeks';
+import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles';
 import type { Day } from '../../utils';
-import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayGrid.types';
-
-export interface WeekCorners {
-  [key: string]: string;
-}
+import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
 export interface DayInfo extends Day {
   onSelected: () => void;
@@ -40,237 +28,6 @@ function useDayRefs() {
   };
 
   return [daysRef, getSetRefCallback] as const;
-}
-
-function useWeeks(
-  props: CalendarDayGridProps,
-  onSelectDate: (date: Date) => void,
-  getSetRefCallback: (dayKey: string) => (element: HTMLElement | null) => void,
-): DayInfo[][] {
-  /**
-   * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
-   * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
-   */
-  const weeks = React.useMemo((): DayInfo[][] => {
-    const weeksGrid = getDayGrid(props);
-
-    const firstVisibleDay = weeksGrid[1][0].originalDate;
-    const lastVisibleDay = weeksGrid[weeksGrid.length - 1][6].originalDate;
-    const markedDays = props.getMarkedDays?.(firstVisibleDay, lastVisibleDay) || [];
-
-    /**
-     * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
-     * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
-     *
-     * Weeks[1... weeks.length - 2] contains the actual visible data
-     */
-    const returnValue: DayInfo[][] = [];
-
-    for (let weekIndex = 0; weekIndex < weeksGrid.length; weekIndex++) {
-      const week: DayInfo[] = [];
-      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
-        const day = weeksGrid[weekIndex][dayIndex];
-        const dayInfo: DayInfo = {
-          onSelected: () => onSelectDate(day.originalDate),
-          setRef: getSetRefCallback(day.key),
-          ...day,
-          isMarked: day.isMarked || markedDays?.some(markedDay => compareDates(day.originalDate, markedDay)),
-        };
-
-        week.push(dayInfo);
-      }
-      returnValue.push(week);
-    }
-
-    return returnValue;
-    // TODO: this is missing deps on getSetRefCallback and onSelectDate (and depending on the entire
-    // props object may not be a good idea due to likely frequent mutation). It would be easy to
-    // fix getSetRefCallback to not mutate every render, but onSelectDate is passed down from
-    // Calendar and trying to fix it requires a huge cascade of changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props]);
-
-  return weeks;
-}
-
-/**
- * Hook to determine whether to animate the CalendarDayGrid forwards or backwards
- * @returns true if the grid should animate backwards; false otherwise
- */
-function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
-  const previousNavigatedDateRef = React.useRef<Date | undefined>();
-  useRefEffect(() => {
-    previousNavigatedDateRef.current = weeks[0][0].originalDate;
-  });
-  const previousNavigatedDate = previousNavigatedDateRef.current;
-
-  if (!previousNavigatedDate || previousNavigatedDate.getTime() === weeks[0][0].originalDate.getTime()) {
-    return undefined;
-  } else if (previousNavigatedDate <= weeks[0][0].originalDate) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-function useWeekCornerStyles(props: CalendarDayGridProps) {
-  /**
-   *
-   * Section for setting the rounded corner styles on individual day cells. Individual day cells need different
-   * corners to be rounded depending on which date range type and where the cell is located in the current grid.
-   * If we just round all of the corners, there isn't a good overlap and we get gaps between contiguous day boxes
-   * in Edge browser.
-   *
-   */
-  const getWeekCornerStyles = (
-    classNames: Record<keyof CalendarDayGridStyles, string>,
-    initialWeeks: DayInfo[][],
-  ): WeekCorners => {
-    const weekCornersStyled: { [key: string]: string } = {};
-    /* need to handle setting all of the corners on arbitrarily shaped blobs
-          __
-       __|A |
-      |B |C |__
-      |D |E |F |
-
-      in this case, A needs top left rounded, top right rounded
-      B needs top left rounded
-      C doesn't need any rounding
-      D needs bottom left rounded
-      E doesn't need any rounding
-      F needs top right rounding
-    */
-
-    // cut off the animation transition weeks
-    const weeks = initialWeeks.slice(1, initialWeeks.length - 1);
-
-    // if there's an item above, lose both top corners. Item below, lose both bottom corners, etc.
-    weeks.forEach((week: DayInfo[], weekIndex: number) => {
-      week.forEach((day: DayInfo, dayIndex: number) => {
-        const above =
-          weeks[weekIndex - 1] &&
-          weeks[weekIndex - 1][dayIndex] &&
-          isInSameHoverRange(
-            weeks[weekIndex - 1][dayIndex].originalDate,
-            day.originalDate,
-            weeks[weekIndex - 1][dayIndex].isSelected,
-            day.isSelected,
-          );
-        const below =
-          weeks[weekIndex + 1] &&
-          weeks[weekIndex + 1][dayIndex] &&
-          isInSameHoverRange(
-            weeks[weekIndex + 1][dayIndex].originalDate,
-            day.originalDate,
-            weeks[weekIndex + 1][dayIndex].isSelected,
-            day.isSelected,
-          );
-        const left =
-          weeks[weekIndex][dayIndex - 1] &&
-          isInSameHoverRange(
-            weeks[weekIndex][dayIndex - 1].originalDate,
-            day.originalDate,
-            weeks[weekIndex][dayIndex - 1].isSelected,
-            day.isSelected,
-          );
-        const right =
-          weeks[weekIndex][dayIndex + 1] &&
-          isInSameHoverRange(
-            weeks[weekIndex][dayIndex + 1].originalDate,
-            day.originalDate,
-            weeks[weekIndex][dayIndex + 1].isSelected,
-            day.isSelected,
-          );
-
-        const style = [];
-        style.push(calculateRoundedStyles(classNames, above, below, left, right));
-        style.push(calculateBorderStyles(classNames, above, below, left, right));
-
-        weekCornersStyled[weekIndex + '_' + dayIndex] = style.join(' ');
-      });
-    });
-
-    return weekCornersStyled;
-  };
-
-  const { dir } = useFluent_unstable();
-
-  const calculateRoundedStyles = (
-    classNames: Record<keyof CalendarDayGridStyles, string>,
-    above: boolean,
-    below: boolean,
-    left: boolean,
-    right: boolean,
-  ): string => {
-    const style = [];
-    const roundedTopLeft = !above && !left;
-    const roundedTopRight = !above && !right;
-    const roundedBottomLeft = !below && !left;
-    const roundedBottomRight = !below && !right;
-
-    if (roundedTopLeft) {
-      style.push(dir === 'rtl' ? classNames.topRightCornerDate : classNames.topLeftCornerDate);
-    }
-    if (roundedTopRight) {
-      style.push(dir === 'rtl' ? classNames.topLeftCornerDate : classNames.topRightCornerDate);
-    }
-    if (roundedBottomLeft) {
-      style.push(dir === 'rtl' ? classNames.bottomRightCornerDate : classNames.bottomLeftCornerDate);
-    }
-    if (roundedBottomRight) {
-      style.push(dir === 'rtl' ? classNames.bottomLeftCornerDate : classNames.bottomRightCornerDate);
-    }
-
-    return style.join(' ');
-  };
-
-  const calculateBorderStyles = (
-    classNames: Record<keyof CalendarDayGridStyles, string>,
-    above: boolean,
-    below: boolean,
-    left: boolean,
-    right: boolean,
-  ): string => {
-    const style = [];
-
-    if (!above) {
-      style.push(classNames.datesAbove);
-    }
-    if (!below) {
-      style.push(classNames.datesBelow);
-    }
-    if (!left) {
-      style.push(dir === 'rtl' ? classNames.datesRight : classNames.datesLeft);
-    }
-    if (!right) {
-      style.push(dir === 'rtl' ? classNames.datesLeft : classNames.datesRight);
-    }
-
-    return style.join(' ');
-  };
-
-  const isInSameHoverRange = (date1: Date, date2: Date, date1Selected: boolean, date2Selected: boolean): boolean => {
-    const { dateRangeType, firstDayOfWeek, workWeekDays } = props;
-
-    // The hover state looks weird with non-contiguous days in work week view. In work week, show week hover state
-    const dateRangeHoverType = dateRangeType === DateRangeType.WorkWeek ? DateRangeType.Week : dateRangeType;
-
-    // we do not pass daysToSelectInDayView because we handle setting those styles dyanamically in onMouseOver
-    const dateRange = getDateRangeArray(date1, dateRangeHoverType, firstDayOfWeek, workWeekDays);
-
-    if (date1Selected !== date2Selected) {
-      // if one is selected and the other is not, they can't be in the same range
-      return false;
-    } else if (date1Selected && date2Selected) {
-      // if they're both selected at the same time they must be in the same range
-      return true;
-    }
-
-    // otherwise, both must be unselected, so check the dateRange
-    return dateRange.filter((date: Date) => date.getTime() === date2.getTime()).length > 0;
-  };
-
-  return [getWeekCornerStyles, calculateRoundedStyles] as const;
 }
 
 export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = props => {
@@ -358,7 +115,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   });
 
   // When the month is highlighted get the corner dates so that styles can be added to them
-  const weekCorners: WeekCorners = getWeekCornerStyles(classNames, weeks!);
+  const weekCorners: WeekCorners = getWeekCornerStyles(weeks!);
   const partialWeekProps = {
     weeks,
     navigatedDayRef,

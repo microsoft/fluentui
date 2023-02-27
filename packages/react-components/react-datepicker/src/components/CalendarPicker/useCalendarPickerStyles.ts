@@ -13,10 +13,20 @@ import {
 } from '../../utils/animations';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CalendarPickerSlots, CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
+import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
 
-export const calendarPickerClassNames: SlotClassNames<CalendarPickerSlots> & Record<string, string> = {
+export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles> = {
   root: 'fui-CalendarPicker',
+  headerContainer: 'fui-CalendarPicker__headerContainer',
+  currentItemButton: 'fui-CalendarPicker__currentItemButton',
+  navigationButtonsContainer: 'fui-CalendarPicker__navigationButtonsContainer',
+  navigationButton: 'fui-CalendarPicker__navigationButton',
+  gridContainer: 'fui-CalendarPicker__gridContainer',
+  buttonRow: 'fui-CalendarPicker__buttonRow',
+  itemButton: 'fui-CalendarPicker__itemButton',
+  current: 'fui-CalendarPicker__current',
+  selected: 'fui-CalendarPicker__selected',
+  disabled: 'fui-CalendarPicker__disabled',
 };
 
 const useRootStyles = makeStyles({
@@ -273,9 +283,7 @@ const useDisabledStyles = makeStyles({
  * Apply styling to the CalendarPicker slots based on the state
  */
 // export const useCalendarPickerStyles_unstable = (state: CalendarPickerState): CalendarPickerState => {
-export const useCalendarPickerStyles_unstable = (
-  props: CalendarPickerStyleProps,
-): Record<keyof CalendarPickerStyles, string> => {
+export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps): CalendarPickerStyles => {
   const rootStyles = useRootStyles();
   const headerContainerStyles = useHeaderContainerStyles();
   const currentItemButtonStyles = useCurrentItemButtonStyles();
@@ -299,16 +307,21 @@ export const useCalendarPickerStyles_unstable = (
 
   return {
     root: mergeClasses(calendarPickerClassNames.root, rootStyles.normalize, rootStyles.base, className),
-    headerContainer: headerContainerStyles.base,
+    headerContainer: mergeClasses(calendarPickerClassNames.headerContainer, headerContainerStyles.base),
     currentItemButton: mergeClasses(
+      calendarPickerClassNames.currentItemButton,
       currentItemButtonStyles.base,
       animateBackwards !== undefined && currentItemButtonStyles.animation,
       hasHeaderClickCallback && currentItemButtonStyles.hasHeaderClickCallback,
     ),
-    navigationButtonsContainer: navigationButtonsContainerStyles.base,
-    navigationButton: navigationButtonStyles.base,
-    gridContainer: gridContainerStyles.base,
+    navigationButtonsContainer: mergeClasses(
+      calendarPickerClassNames.navigationButtonsContainer,
+      navigationButtonsContainerStyles.base,
+    ),
+    navigationButton: mergeClasses(calendarPickerClassNames.navigationButton, navigationButtonStyles.base),
+    gridContainer: mergeClasses(calendarPickerClassNames.gridContainer, gridContainerStyles.base),
     buttonRow: mergeClasses(
+      calendarPickerClassNames.buttonRow,
       buttonRowStyles.base,
       buttonRowStyles.animation,
       animateBackwards !== undefined &&
@@ -320,9 +333,9 @@ export const useCalendarPickerStyles_unstable = (
           ? buttonRowStyles.verticalBackward
           : buttonRowStyles.verticalForward),
     ),
-    itemButton: itemButtonStyles.base,
-    current: highlightCurrent ? currentStyles.highlightCurrent : '',
-    selected: highlightSelected ? selectedStyles.highlightSelected : '',
-    disabled: disabledStyles.base,
+    itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
+    current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),
+    selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
+    disabled: mergeClasses(calendarPickerClassNames.disabled, disabledStyles.base),
   };
 };

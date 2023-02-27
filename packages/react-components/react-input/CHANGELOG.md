@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.7)
+
+Wed, 22 Feb 2023 23:06:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.6..@fluentui/react-input_v9.3.7)
+
+### Patches
+
+- chore: Clean up Input's interactive styles ([PR #26865](https://github.com/microsoft/fluentui/pull/26865) by behowell@microsoft.com)
+- fix: Fix the width of Input's focus border with appearance=underline ([PR #26881](https://github.com/microsoft/fluentui/pull/26881) by behowell@microsoft.com)
+
+## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.6)
+
+Thu, 16 Feb 2023 19:18:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.5..@fluentui/react-input_v9.3.6)
+
+### Patches
+
+- fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.5)
+
+Thu, 16 Feb 2023 16:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.4..@fluentui/react-input_v9.3.5)
+
+### Patches
+
+- chore: Update Input to use makeResetStyles and reduce the number of classes applied ([PR #26815](https://github.com/microsoft/fluentui/pull/26815) by behowell@microsoft.com)
 
 ## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.4)
 
