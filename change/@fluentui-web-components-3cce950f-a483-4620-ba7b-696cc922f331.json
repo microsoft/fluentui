@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "updates wc3 accordion and accordion item docs",
+  "packageName": "@fluentui/web-components",
+  "email": "brianbrady@microsoft.com",
+  "dependentChangeType": "patch"
+}
