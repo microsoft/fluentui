@@ -11,11 +11,11 @@ import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTAccordion } from '@microsoft/fast-foundation';
 import { FASTAccordionItem } from '@microsoft/fast-foundation';
-import { FASTDivider } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
 import { FASTProgressRing } from '@microsoft/fast-foundation';
+import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTSwitch } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
@@ -37,9 +37,9 @@ export class AccordionItem extends FASTAccordionItem {
     // @public
     block: boolean;
     // @public
-    expandIconPosition?: AccordionItemExpandIconPosition;
+    expandIconPosition: AccordionItemExpandIconPosition;
     // @public
-    size?: AccordionItemSize;
+    size: AccordionItemSize;
 }
 
 // Warning: (ae-incompatible-release-tags) The symbol "definition" is marked as @public, but its signature references "AccordionItem" which is marked as @internal
@@ -80,158 +80,6 @@ export const accordionStyles: ElementStyles;
 
 // @public (undocumented)
 export const accordionTemplate: ElementViewTemplate<Accordion>;
-
-// @public
-export class Avatar extends FASTElement {
-    active?: AvatarActive | undefined;
-    appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor;
-    colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
-    // @internal
-    generateColor(): AvatarColor | void;
-    // @internal
-    generateInitials(): string | void;
-    initials?: string | undefined;
-    name?: string | undefined;
-    shape?: AvatarShape | undefined;
-    size?: AvatarSize | undefined;
-}
-
-// @public
-export const AvatarActive: {
-    readonly active: "active";
-    readonly inactive: "inactive";
-};
-
-// @public
-export type AvatarActive = ValuesOf<typeof AvatarActive>;
-
-// @public
-export const AvatarAppearance: {
-    readonly ring: "ring";
-    readonly shadow: "shadow";
-    readonly ringShadow: "ring-shadow";
-};
-
-// @public
-export type AvatarAppearance = ValuesOf<typeof AvatarAppearance>;
-
-// @public
-export const AvatarColor: {
-    readonly darkRed: "dark-red";
-    readonly cranberry: "cranberry";
-    readonly red: "red";
-    readonly pumpkin: "pumpkin";
-    readonly peach: "peach";
-    readonly marigold: "marigold";
-    readonly gold: "gold";
-    readonly brass: "brass";
-    readonly brown: "brown";
-    readonly forest: "forest";
-    readonly seafoam: "seafoam";
-    readonly darkGreen: "dark-green";
-    readonly lightTeal: "light-teal";
-    readonly teal: "teal";
-    readonly steel: "steel";
-    readonly blue: "blue";
-    readonly royalBlue: "royal-blue";
-    readonly cornflower: "cornflower";
-    readonly navy: "navy";
-    readonly lavender: "lavender";
-    readonly purple: "purple";
-    readonly grape: "grape";
-    readonly lilac: "lilac";
-    readonly pink: "pink";
-    readonly magenta: "magenta";
-    readonly plum: "plum";
-    readonly beige: "beige";
-    readonly mink: "mink";
-    readonly platinum: "platinum";
-    readonly anchor: "anchor";
-    readonly neutral: "neutral";
-    readonly brand: "brand";
-    readonly colorful: "colorful";
-};
-
-// @public
-export type AvatarColor = ValuesOf<typeof AvatarColor>;
-
-// @public
-export const AvatarDefinition: FASTElementDefinition<typeof Avatar>;
-
-// @public
-export const AvatarNamedColor: {
-    readonly darkRed: "dark-red";
-    readonly cranberry: "cranberry";
-    readonly red: "red";
-    readonly pumpkin: "pumpkin";
-    readonly peach: "peach";
-    readonly marigold: "marigold";
-    readonly gold: "gold";
-    readonly brass: "brass";
-    readonly brown: "brown";
-    readonly forest: "forest";
-    readonly seafoam: "seafoam";
-    readonly darkGreen: "dark-green";
-    readonly lightTeal: "light-teal";
-    readonly teal: "teal";
-    readonly steel: "steel";
-    readonly blue: "blue";
-    readonly royalBlue: "royal-blue";
-    readonly cornflower: "cornflower";
-    readonly navy: "navy";
-    readonly lavender: "lavender";
-    readonly purple: "purple";
-    readonly grape: "grape";
-    readonly lilac: "lilac";
-    readonly pink: "pink";
-    readonly magenta: "magenta";
-    readonly plum: "plum";
-    readonly beige: "beige";
-    readonly mink: "mink";
-    readonly platinum: "platinum";
-    readonly anchor: "anchor";
-};
-
-// @public
-export type AvatarNamedColor = ValuesOf<typeof AvatarNamedColor>;
-
-// @public
-export const AvatarShape: {
-    readonly circular: "circular";
-    readonly square: "square";
-};
-
-// @public
-export type AvatarShape = ValuesOf<typeof AvatarShape>;
-
-// @public
-export const AvatarSize: {
-    readonly _16: 16;
-    readonly _20: 20;
-    readonly _24: 24;
-    readonly _28: 28;
-    readonly _32: 32;
-    readonly _36: 36;
-    readonly _40: 40;
-    readonly _48: 48;
-    readonly _56: 56;
-    readonly _64: 64;
-    readonly _72: 72;
-    readonly _96: 96;
-    readonly _120: 120;
-    readonly _128: 128;
-};
-
-// @public
-export type AvatarSize = ValuesOf<typeof AvatarSize>;
-
-// @public
-export const AvatarStyles: ElementStyles;
-
-// @public (undocumented)
-export const AvatarTemplate: ElementViewTemplate<Avatar>;
 
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
 //
@@ -1335,47 +1183,6 @@ export const curveLinear: CSSDesignToken<string>;
 // @public
 export const definition: FASTElementDefinition<typeof Switch>;
 
-// @public
-export class Divider extends FASTDivider {
-    alignContent?: DividerAlignContent;
-    appearance?: DividerAppearance;
-    inset?: boolean;
-}
-
-// @public
-export const DividerAlignContent: {
-    readonly center: "center";
-    readonly start: "start";
-    readonly end: "end";
-};
-
-// @public
-export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
-
-// @public
-export const DividerAppearance: {
-    readonly strong: "strong";
-    readonly brand: "brand";
-    readonly subtle: "subtle";
-    readonly default: "default";
-};
-
-// @public
-export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
-
-// @public
-export const DividerDefinition: FASTElementDefinition<typeof Divider>;
-
-export { DividerOrientation }
-
-export { DividerRole }
-
-// @public
-export const DividerStyles: ElementStyles;
-
-// @public
-export const DividerTemplate: ElementViewTemplate<Divider>;
-
 // @public (undocumented)
 export const durationFast: CSSDesignToken<string>;
 
@@ -1718,6 +1525,27 @@ export const strokeWidthThickest: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const strokeWidthThin: CSSDesignToken<string>;
+
+// @public (undocumented)
+export class Switch extends FASTSwitch {
+    labelPosition: SwitchLabelPosition | undefined;
+}
+
+// @public
+export const SwitchLabelPosition: {
+    readonly above: "above";
+    readonly after: "after";
+    readonly before: "before";
+};
+
+// @public
+export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
+
+// @public (undocumented)
+export const switchStyles: ElementStyles;
+
+// @public (undocumented)
+export const switchTemplate: ElementViewTemplate<Switch>;
 
 // @public (undocumented)
 export class Switch extends FASTSwitch {
