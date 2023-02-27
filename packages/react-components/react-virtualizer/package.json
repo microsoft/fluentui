@@ -28,11 +28,11 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.20",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/react": "^8.106.1"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-utilities": "^9.7.2",
+    "@fluentui/react": "^8.106.1",
     "@fluentui/react-shared-contexts": "^9.2.0",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"
