@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { Dispatch } from 'react';
 import type { FC } from 'react';
-import { MutableRefObject } from 'react';
+import type { MutableRefObject } from 'react';
 import * as React_2 from 'react';
 import type { SetStateAction } from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -65,8 +65,10 @@ export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Omit<IVirtualizerProps, 'virtualizerLength'> & {
-    scrollViewRef?: MutableRefObject<HTMLElement | null>;
+export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<IVirtualizerProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+    itemSize: number;
+    numItems: number;
+    children: VirtualizerChildRenderFunction;
 };
 
 // @public (undocumented)

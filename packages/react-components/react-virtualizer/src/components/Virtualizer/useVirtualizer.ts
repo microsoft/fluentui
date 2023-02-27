@@ -15,7 +15,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     getItemSize,
     bufferItems = Math.round(virtualizerLength / 4.0),
     bufferSize = Math.floor(bufferItems / 2.0) * itemSize,
-    intersectionObserverRoot,
+    scrollViewRef,
     axis = 'vertical',
     reversed = false,
     onUpdateIndex,
@@ -180,7 +180,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       }
     },
     {
-      root: intersectionObserverRoot ? intersectionObserverRoot?.current : null,
+      root: scrollViewRef ? scrollViewRef?.current : null,
       rootMargin: '0px',
       threshold: 0,
     },

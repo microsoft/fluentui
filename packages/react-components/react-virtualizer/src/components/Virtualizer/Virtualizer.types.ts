@@ -115,7 +115,7 @@ export type IVirtualizerProps = {
    * Enables users to override the intersectionObserverRoot.
    * @default null
    */
-  intersectionObserverRoot?: React.MutableRefObject<HTMLElement | null>;
+  scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 
   /**
    * The scroll direction
