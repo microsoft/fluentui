@@ -12,6 +12,12 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 ### Inputs
 
+| attribute                  | type                     | default | description                                                                                                      |
+| -------------------------- | ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
+| appearance                 | "subtle" \| "transparent | -       | -                                                                                                                |
+| reserve-selected-tab-space | boolean                  | -       | Tab size may change between unselected and selected states. The deault scenario is a selected tab has bold text. |
+| defailt-selected-value     | unknown                  | -       | The value of the tab to be selected by default.                                                                  |
+
 - [@attr appearance?: "subtle" | "transparent" ]
 - [@attr reserve-selected-tab-space?: boolean] Tab size may change between unselected and selected states. The deault scenario is a selected tab has bold text.
 - [@attr default-selected-value?: unknown] The value of the tab to be selected by default.
