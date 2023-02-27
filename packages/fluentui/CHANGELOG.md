@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- `Dropdown`: Do not use aria-owns for search Dropdown on mac. @jurokapsiar ([#26972](https://github.com/microsoft/fluentui/pull/26972))
+
 <!--------------------------------[ v0.66.2 ]------------------------------- -->
 ## [v0.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.2) (2023-02-24)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.1..@fluentui/react-northstar_v0.66.2)
