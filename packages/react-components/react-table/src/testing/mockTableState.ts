@@ -12,6 +12,7 @@ export const mockTableState = <TItem = unknown>(options: Partial<TableFeaturesSt
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: defaultColumnSizingState,
     tableRef: React.createRef(),
+    accessibilityMenuItems: [],
     ...options,
   };
 
