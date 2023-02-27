@@ -16,7 +16,7 @@ export class Spinner extends FASTProgressRing {
    * HTML Attribute: size
    */
   @attr
-  public size: SpinnerSize;
+  public size?: SpinnerSize;
 
   /**
    * The appearance of the spinner
@@ -26,5 +26,5 @@ export class Spinner extends FASTProgressRing {
    * HTML Attribute: appearance
    */
   @attr
-  public appearance: SpinnerAppearance;
+  public appearance?: SpinnerAppearance;
 }

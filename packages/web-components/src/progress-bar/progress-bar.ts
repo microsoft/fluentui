@@ -15,7 +15,7 @@ export class ProgressBar extends FASTProgress {
    * HTML Attribute: thickness
    */
   @attr
-  public thickness: ProgressBarThickness;
+  public thickness?: ProgressBarThickness;
 
   /**
    * The shape of the progress bar
@@ -24,7 +24,7 @@ export class ProgressBar extends FASTProgress {
    * HTML Attribute: shape
    */
   @attr
-  public shape: ProgressBarShape;
+  public shape?: ProgressBarShape;
 
   /**
    * The validation state of the progress bar
@@ -33,5 +33,5 @@ export class ProgressBar extends FASTProgress {
    * HTML Attribute: validation-state
    */
   @attr({ attribute: 'validation-state' })
-  public validationState: ProgressBarValidationState | null;
+  public validationState: ProgressBarValidationState | null = null;
 }

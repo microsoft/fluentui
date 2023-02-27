@@ -37,9 +37,9 @@ export class AccordionItem extends FASTAccordionItem {
     // @public
     block: boolean;
     // @public
-    expandIconPosition: AccordionItemExpandIconPosition;
+    expandIconPosition?: AccordionItemExpandIconPosition;
     // @public
-    size: AccordionItemSize;
+    size?: AccordionItemSize;
 }
 
 // Warning: (ae-incompatible-release-tags) The symbol "definition" is marked as @public, but its signature references "AccordionItem" which is marked as @internal
@@ -239,8 +239,8 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
     color: BadgeColor;
-    shape: BadgeShape;
-    size: BadgeSize;
+    shape?: BadgeShape;
+    size?: BadgeSize;
 }
 
 // @internal
@@ -649,7 +649,13 @@ export const colorNeutralShadowKeyLighter: CSSDesignToken<string>;
 export const colorNeutralStencil1: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const colorNeutralStencil1Alpha: CSSDesignToken<string>;
+
+// @public (undocumented)
 export const colorNeutralStencil2: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorNeutralStencil2Alpha: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const colorNeutralStroke1: CSSDesignToken<string>;
@@ -892,6 +898,9 @@ export const colorPaletteGreenForeground2: CSSDesignToken<string>;
 export const colorPaletteGreenForeground3: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const colorPaletteGreenForegroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
 export const colorPaletteLavenderBackground2: CSSDesignToken<string>;
 
 // @public (undocumented)
@@ -1081,6 +1090,9 @@ export const colorPaletteRedForeground2: CSSDesignToken<string>;
 export const colorPaletteRedForeground3: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const colorPaletteRedForegroundInverted: CSSDesignToken<string>;
+
+// @public (undocumented)
 export const colorPaletteRoyalBlueBackground2: CSSDesignToken<string>;
 
 // @public (undocumented)
@@ -1142,6 +1154,9 @@ export const colorPaletteYellowForeground2: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const colorPaletteYellowForeground3: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const colorPaletteYellowForegroundInverted: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const colorScrollbarOverlay: CSSDesignToken<string>;
@@ -1210,8 +1225,8 @@ export const colorTransparentStrokeInteractive: CSSDesignToken<string>;
 //
 // @public
 export class CounterBadge extends FASTElement {
-    appearance: CounterBadgeAppearance;
-    color: CounterBadgeColor;
+    appearance?: CounterBadgeAppearance;
+    color?: CounterBadgeColor;
     count: number;
     // (undocumented)
     protected countChanged(): void;
@@ -1221,9 +1236,9 @@ export class CounterBadge extends FASTElement {
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
-    shape: CounterBadgeShape;
+    shape?: CounterBadgeShape;
     showZero: boolean;
-    size: CounterBadgeSize;
+    size?: CounterBadgeSize;
 }
 
 // @internal
@@ -1506,8 +1521,8 @@ export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
 class ProgressBar_2 extends FASTProgress {
-    shape: ProgressBarShape;
-    thickness: ProgressBarThickness;
+    shape?: ProgressBarShape;
+    thickness?: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
 }
 export { ProgressBar_2 as ProgressBar }
@@ -1656,8 +1671,8 @@ export const spacingVerticalXXXL: CSSDesignToken<string>;
 
 // @public
 export class Spinner extends FASTProgressRing {
-    appearance: SpinnerAppearance;
-    size: SpinnerSize;
+    appearance?: SpinnerAppearance;
+    size?: SpinnerSize;
 }
 
 // @public
@@ -1727,16 +1742,16 @@ export const switchTemplate: ElementViewTemplate<Switch>;
 
 // @public
 class Text_2 extends FASTElement {
-    align: TextAlign;
+    align?: TextAlign;
     block: boolean;
-    font: TextFont;
+    font?: TextFont;
     italic: boolean;
     nowrap: boolean;
-    size: TextSize;
+    size?: TextSize;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
-    weight: TextWeight;
+    weight?: TextWeight;
 }
 export { Text_2 as Text }
 
