@@ -1,18 +1,23 @@
 import { flip as baseFlip } from '@floating-ui/dom';
-import type { PositioningOptions } from '../types';
-import { getBoundary } from '../utils/index';
+import type { PositioningOptions, PositioningShorthandValue } from '../types';
+import { getBoundary, resolvePositioningShorthand, toFloatingUIPlacement } from '../utils/index';
 
 export interface FlipMiddlewareOptions extends Pick<PositioningOptions, 'flipBoundary'> {
   hasScrollableElement?: boolean;
   container: HTMLElement | null;
+  fallback?: PositioningShorthandValue;
+  isRtl?: boolean;
 }
 
 export function flip(options: FlipMiddlewareOptions) {
-  const { hasScrollableElement, flipBoundary, container } = options;
+  const { hasScrollableElement, flipBoundary, container, fallback, isRtl } = options;
+  const { position, align } = resolvePositioningShorthand(fallback);
+  const fallbackPlacement = toFloatingUIPlacement(align, position, isRtl);
 
   return baseFlip({
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
     fallbackStrategy: 'bestFit',
+    fallbackPlacements: fallbackPlacement ? [fallbackPlacement] : undefined,
   });
 }

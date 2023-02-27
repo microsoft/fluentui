@@ -18,7 +18,6 @@ import {
   maxSize as maxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
-  overflowFallback,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
 
@@ -186,7 +185,7 @@ function usePositioningOptions(options: PositioningOptions) {
       const middleware = [
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
-        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement }),
+        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallback }),
         shiftMiddleware({
           container,
           hasScrollableElement,
@@ -200,7 +199,6 @@ function usePositioningOptions(options: PositioningOptions) {
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
-        fallback && overflowFallback({ container, overflowBoundary, positioning: fallback, isRtl }),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);

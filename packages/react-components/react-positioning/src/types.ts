@@ -163,7 +163,7 @@ export interface PositioningOptions {
   unstable_disableTether?: boolean | 'all';
 
   /**
-   * If all treatments fail to stop the positioned element from overflowing
+   * If flip fails to stop the positioned element from overflowing
    * its boundaries, use a specified fallback position.
    */
   fallback?: PositioningShorthandValue;
