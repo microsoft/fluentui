@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: use Iterable instead of a Set for table selection API surface",
+  "packageName": "@fluentui/react-table",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
