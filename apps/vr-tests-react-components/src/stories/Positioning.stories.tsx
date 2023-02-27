@@ -680,6 +680,7 @@ const FallbackPositioning = () => {
     position: 'after',
     align: 'start',
     fallback: 'below',
+    flipBoundary: boundary,
     overflowBoundary: boundary,
     positioningRef,
   });
@@ -692,6 +693,8 @@ const FallbackPositioning = () => {
         height: 300,
         padding: '50px 20px',
         boxSizing: 'border-box',
+        overflow: 'hidden',
+        resize: 'both',
       }}
       ref={setBoundary}
     >
