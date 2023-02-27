@@ -4,8 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { useTreeContext_unstable } from '../../contexts/index';
-import * as React from 'react';
-import { levelToken } from '../../utils/tokens';
+import { treeItemLevelToken } from '../../utils/tokens';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
@@ -26,7 +25,7 @@ const useContentStyles = makeStyles({
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     paddingRight: tokens.spacingHorizontalNone,
-    paddingLeft: `calc(${levelToken.value} * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
@@ -66,7 +65,7 @@ const useContentStyles = makeStyles({
     },
   },
   leaf: {
-    paddingLeft: `calc((${levelToken.value} * ${tokens.spacingHorizontalXXL}) + ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
   },
 });
 
@@ -134,9 +133,9 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   );
 
   state.root.style = {
+    [treeItemLevelToken]: level,
     ...state.root.style,
-    [levelToken.name]: level,
-  } as React.CSSProperties;
+  };
 
   if (expandIcon) {
     expandIcon.className = mergeClasses(treeItemClassNames.expandIcon, expandIconStyles.base, expandIcon.className);
