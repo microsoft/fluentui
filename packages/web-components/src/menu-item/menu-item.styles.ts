@@ -29,51 +29,6 @@ import {
 export const styles = css`
   ${display('flex')}
 
-  :host([icon]) {
-    display: grid;
-    grid-template-columns: 20px auto auto 20px;
-  }
-
-  :host([icon]) .content {
-    grid-column: 2 / span 1;
-  }
-
-  :host([icon]) ::slotted([slot='end']) {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
-  }
-
-  :host([icon][aria-haspopup='menu']) ::slotted([slot='end']) {
-    grid-column: 3 / span 1;
-    justify-self: flex-end;
-  }
-
-  :host([icon]) .expand-collapse-glyph-container {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
-  }
-
-  :host([role='menuitemradio'][icon]),
-  :host([role='menuitemcheckbox'][icon]) {
-    display: grid;
-    grid-template-columns: 20px 20px auto auto;
-  }
-
-  :host([role='menuitemradio'][icon]) .input-container,
-  :host([role='menuitemcheckbox'][icon]) .input-container {
-    grid-column: 1 / span 1;
-  }
-
-  :host([role='menuitemradio'][icon]) ::slotted([slot='start']),
-  :host([role='menuitemcheckbox'][icon]) ::slotted([slot='start']) {
-    grid-column: 2 / span 1;
-  }
-
-  :host([role='menuitemradio'][icon]) .content,
-  :host([role='menuitemcheckbox'][icon]) .content {
-    grid-column: 3 / span 1;
-  }
-
   :host {
     align-items: center;
     row-gap: 4px;
@@ -172,5 +127,50 @@ export const styles = css`
   }
   :host([disabled]) ::slotted([slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
+  }
+
+  :host([icon]) {
+    display: grid;
+    grid-template-columns: 20px auto auto 20px;
+  }
+
+  :host([icon]) .content {
+    grid-column: 2 / span 1;
+  }
+
+  :host([icon]) ::slotted([slot='end']) {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
+  }
+
+  :host([icon][aria-haspopup='menu']) ::slotted([slot='end']) {
+    grid-column: 3 / span 1;
+    justify-self: flex-end;
+  }
+
+  :host([icon]) .expand-collapse-glyph-container {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
+  }
+
+  :host([role='menuitemradio'][icon]),
+  :host([role='menuitemcheckbox'][icon]) {
+    display: grid;
+    grid-template-columns: 20px 20px auto auto;
+  }
+
+  :host([role='menuitemradio'][icon]) .input-container,
+  :host([role='menuitemcheckbox'][icon]) .input-container {
+    grid-column: 1 / span 1;
+  }
+
+  :host([role='menuitemradio'][icon]) ::slotted([slot='start']),
+  :host([role='menuitemcheckbox'][icon]) ::slotted([slot='start']) {
+    grid-column: 2 / span 1;
+  }
+
+  :host([role='menuitemradio'][icon]) .content,
+  :host([role='menuitemcheckbox'][icon]) .content {
+    grid-column: 3 / span 1;
   }
 `;

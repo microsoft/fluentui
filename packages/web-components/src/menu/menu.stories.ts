@@ -82,26 +82,26 @@ const Code20Filled = html`<svg
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
     <fluent-menu icons>
-      <fluent-menu-item icon ?disabled=${x => x.disabled}>
-        Item 1
+      <fluent-menu-item ?disabled=${x => x.disabled}>
+        Cut
         <span slot="start">${Cut20Filled}</span>
         <span slot="end">Ctrl+X</span>
       </fluent-menu-item>
-      <fluent-menu-item icon ?disabled=${x => x.disabled}>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
         <span slot="start">${Edit20Filled}</span>
         Item 2
         <span slot="end">Ctrl+E</span>
       </fluent-menu-item>
-      <fluent-menu-item icon ?disabled=${x => x.disabled}> Open </fluent-menu-item>
-      <fluent-menu-item icon ?disabled=${x => x.disabled}>
-        ITem 3
+      <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
+        New
         <fluent-menu slot="submenu">
-          <fluent-menu-item icon>
-            Subitem 1
+          <fluent-menu-item>
+            File
             <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
-          <fluent-menu-item icon>
-            Subitem 2
+          <fluent-menu-item>
+            Workspace
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
@@ -132,32 +132,35 @@ export const Menu = renderComponent(storyTemplate).bind({});
 
 export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-menu>
-      <fluent-menu-item role="menuitemcheckbox" icon>
+    <fluent-menu icons>
+      <fluent-menu-item role="menuitemcheckbox">
         Item 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" icon>
+      <fluent-menu-item role="menuitemcheckbox">
         Item 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox" icon> Item 3 </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox">
+        Item 3
+        <span slot="start">${ClipboardPaste20Filled}</span>
+      </fluent-menu-item>
     </fluent-menu>
   </div>
 `);
 
 export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
-    <fluent-menu>
-      <fluent-menu-item role="menuitemradio" icon>
+    <fluent-menu icons>
+      <fluent-menu-item role="menuitemradio">
         Item 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" icon>
+      <fluent-menu-item role="menuitemradio">
         Item 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio" icon> Item 3 </fluent-menu-item>
+      <fluent-menu-item role="menuitemradio"> Item 3 </fluent-menu-item>
     </fluent-menu>
   </div>
 `);
@@ -183,22 +186,22 @@ export const MenuWithIcons = renderComponent(html<MenuStoryArgs>`
 
 export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
   <div style="width: 260px; position: relative;">
-    <fluent-menu>
-      <fluent-menu-item icon>
+    <fluent-menu icons>
+      <fluent-menu-item>
         Item 1
         <span slot="start">${Edit20Filled}</span>
         <fluent-menu slot="submenu">
-          <fluent-menu-item icon>
+          <fluent-menu-item>
             Subitem 1
             <span slot="start">${Folder24Filled}</span>
           </fluent-menu-item>
-          <fluent-menu-item icon>
+          <fluent-menu-item>
             Subitem 2
             <span slot="start">${Code20Filled}</span>
           </fluent-menu-item>
         </fluent-menu>
       </fluent-menu-item>
-      <fluent-menu-item icon>
+      <fluent-menu-item>
         Item 2
         <fluent-menu slot="submenu">
           <fluent-menu-item>
@@ -211,7 +214,7 @@ export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
           </fluent-menu-item>
         </fluent-menu>
       </fluent-menu-item>
-      <fluent-menu-item icon>Item 3</fluent-menu-item>
+      <fluent-menu-item>Item 3</fluent-menu-item>
     </fluent-menu>
   </div>
 `);

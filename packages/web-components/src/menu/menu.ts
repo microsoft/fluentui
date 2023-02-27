@@ -15,4 +15,25 @@ export class Menu extends FASTMenu {
    */
   @attr({ mode: 'boolean' })
   public icons: boolean = false;
+  protected iconsChanged(): void {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+
+    this.menuItems?.filter(this.isMenuItemElement).forEach((item: HTMLElement, index: number) => {
+      if (this.icons) {
+        item.setAttribute('icon', '');
+      } else {
+        item.removeAttribute('icon');
+      }
+    });
+  }
+
+  protected setItems(): void {
+    super.setItems();
+
+    if (this.icons) {
+      this.iconsChanged();
+    }
+  }
 }

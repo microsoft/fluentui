@@ -7,7 +7,7 @@ import { attr } from '@microsoft/fast-element';
  */
 export class MenuItem extends FASTMenuItem {
   /**
-   * sets menu item styles for content alignment
+   * Sets menu item styles for content alignment
    *
    * @public
    * @remarks
