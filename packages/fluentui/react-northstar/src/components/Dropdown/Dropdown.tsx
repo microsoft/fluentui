@@ -648,6 +648,10 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     variables,
   ): JSX.Element => {
     const noPlaceholder = searchQuery?.length > 0 || (multiple && value.length > 0);
+    const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+    const comboboxProps = isMac
+      ? { ...accessibilityComboboxProps, 'aria-owns': undefined }
+      : accessibilityComboboxProps;
 
     return DropdownSearchInput.create(searchInput || {}, {
       defaultProps: () => ({
@@ -661,7 +665,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         highlightedIndex,
         selectItemAtIndex,
         toggleMenu,
-        accessibilityComboboxProps,
+        comboboxProps,
         getInputProps,
       ),
     });
