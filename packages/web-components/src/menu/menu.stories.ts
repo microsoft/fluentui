@@ -22,20 +22,6 @@ const Cut20Filled = html`<svg
   ></path>
 </svg>`;
 
-const ClipboardPaste20Filled = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M4.5 4h1.59c.2.58.76 1 1.41 1h3c.65 0 1.2-.42 1.41-1h1.59c.28 0 .5.22.5.5v1a.5.5 0 001 0v-1c0-.83-.67-1.5-1.5-1.5h-1.59c-.2-.58-.76-1-1.41-1h-3c-.65 0-1.2.42-1.41 1H4.5C3.67 3 3 3.67 3 4.5v12c0 .83.67 1.5 1.5 1.5h3a.5.5 0 000-1h-3a.5.5 0 01-.5-.5v-12c0-.28.22-.5.5-.5zm3 0a.5.5 0 010-1h3a.5.5 0 010 1h-3zm3 3C9.67 7 9 7.67 9 8.5v8c0 .83.67 1.5 1.5 1.5h5c.83 0 1.5-.67 1.5-1.5v-8c0-.83-.67-1.5-1.5-1.5h-5z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-
 const Edit20Filled = html`<svg
   fill="currentColor"
   aria-hidden="true"
@@ -81,7 +67,7 @@ const Code20Filled = html`<svg
 
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
-    <fluent-menu icons>
+    <fluent-menu icons ?icons=${x => x.icons}>
       <fluent-menu-item ?disabled=${x => x.disabled}>
         Cut
         <span slot="start">${Cut20Filled}</span>
@@ -94,6 +80,7 @@ const storyTemplate = html<MenuStoryArgs>`
       </fluent-menu-item>
       <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
       <fluent-menu-item ?disabled=${x => x.disabled}>
+        <span slot="start">${Folder24Filled}</span>
         New
         <fluent-menu slot="submenu">
           <fluent-menu-item>
@@ -125,6 +112,14 @@ export default {
       control: 'boolean',
       defaultValue: false,
     },
+    icons: {
+      description: 'Sets icon and content alignment styles',
+      table: {
+        defaultValue: { summary: false },
+      },
+      control: 'boolean',
+      defaultValue: false,
+    },
   },
 } as MenuStoryMeta;
 
@@ -132,7 +127,7 @@ export const Menu = renderComponent(storyTemplate).bind({});
 
 export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative;">
-    <fluent-menu icons>
+    <fluent-menu>
       <fluent-menu-item role="menuitemcheckbox">
         Item 1
         <span slot="start">${Cut20Filled}</span>
@@ -141,17 +136,14 @@ export const MenuWithCheckboxes = renderComponent(html<MenuStoryArgs>`
         Item 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox">
-        Item 3
-        <span slot="start">${ClipboardPaste20Filled}</span>
-      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
     </fluent-menu>
   </div>
 `);
 
 export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
-    <fluent-menu icons>
+    <fluent-menu>
       <fluent-menu-item role="menuitemradio">
         Item 1
         <span slot="start">${Cut20Filled}</span>
@@ -167,26 +159,39 @@ export const MenuWithRadios = renderComponent(html<MenuStoryArgs>`
 
 export const MenuWithIcons = renderComponent(html<MenuStoryArgs>`
   <div style="width: 128px; position: relative">
-    <fluent-menu icons>
-      <fluent-menu-item icon>
+    <fluent-menu>
+      <fluent-menu-item>
         Item 1
         <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item icon>
+      <fluent-menu-item>
         Item 2
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
-      <fluent-menu-item icon>
-        Item 3
-        <span slot="start">${ClipboardPaste20Filled}</span>
+      <fluent-menu-item> Item 3 </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuAligningWithIcons = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative">
+    <fluent-menu icons icons>
+      <fluent-menu-item>
+        Item 1
+        <span slot="start">${Cut20Filled}</span>
       </fluent-menu-item>
+      <fluent-menu-item>
+        Item 2
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item> Item 3 </fluent-menu-item>
     </fluent-menu>
   </div>
 `);
 
 export const MenuWithSubmenu = renderComponent(html<MenuStoryArgs>`
   <div style="width: 260px; position: relative;">
-    <fluent-menu icons>
+    <fluent-menu>
       <fluent-menu-item>
         Item 1
         <span slot="start">${Edit20Filled}</span>

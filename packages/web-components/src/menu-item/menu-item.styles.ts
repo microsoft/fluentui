@@ -27,9 +27,10 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('grid')}
 
   :host {
+    grid-template-columns: 20px 20px auto 20px;
     align-items: center;
     row-gap: 4px;
     column-gap: 4px;
@@ -52,6 +53,7 @@ export const styles = css`
     z-index: 1;
   }
   .content {
+    white-space: nowrap;
     flex-grow: 1;
     padding: 0 2px;
   }
@@ -68,6 +70,13 @@ export const styles = css`
     display: inline-flex;
     justify-content: center;
     align-items: center;
+  }
+  .content {
+    grid-column: auto / span 2;
+  }
+  .expand-collapse-glyph-container {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
   }
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
@@ -92,6 +101,8 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
     white-space: nowrap;
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
   }
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
@@ -143,14 +154,21 @@ export const styles = css`
     justify-self: flex-end;
   }
 
-  :host([icon][aria-haspopup='menu']) ::slotted([slot='end']) {
+  :host([aria-haspopup='menu']) {
+    grid-template-columns: 20px auto auto 20px;
+  }
+
+  :host([aria-haspopup='menu']) .content {
+    grid-column: auto / span 1;
+  }
+
+  :host([aria-haspopup='menu']) ::slotted([slot='end']) {
     grid-column: 3 / span 1;
     justify-self: flex-end;
   }
 
-  :host([icon]) .expand-collapse-glyph-container {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
+  :host([aria-haspopup='menu'][icon]) .content {
+    grid-column: 2 / span 1;
   }
 
   :host([role='menuitemradio'][icon]),

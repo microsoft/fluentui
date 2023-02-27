@@ -47,6 +47,7 @@ Fluent WC3 Menu List extends from the FAST Menu [FAST Menu](https://explore.fast
   - `menuitemradio`
 - `disabled` - the menu item is disabled
 - `checked` - sets the checked value for menuitemcheckbox or menuitemradio items
+- `icons` - set's alignment of menu items if only a subset of menu items contain an icon
 
 ### Outputs
 
@@ -90,10 +91,11 @@ Due to the nature of Web Components there will not be 100% parity between compon
 
 **Component, Slot, and Attribute Mapping**
 Component, Slot, or Attribute | Fluent React v9 | Fluent Web Components v3 |
----------------------------------| ---------------------| ---------------------------|
+------------------------------| -------------------------------| -----------------------------------------------------|
 Menu | `<Menu>` | `<fluent-menu>` |
-Menu item |`<MenuItem>` | `<fluent-menu-item>` |
+Menu item | `<MenuItem>` | `<fluent-menu-item>` |
 Menu item with radio | `<MenuItemRadio>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Menu item with checkbox | `<MenuItemCheckbox>` | `<fluent-menu-item role="menuitemcheckbox">..` |
-Icons | `<MenuItem icon={<MyIcon />}>` | `<slot name ="start">..` <br /> `<slot name="end">..`|
-Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">`|
+Icons | `<MenuItem icon={<MyIcon />}>` | `<slot name ="start">..`<br />`<slot name="end">..` |
+Aligning Icons | `<Menu hasIcons>` | `<Menu icons>` |
+Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">` |
