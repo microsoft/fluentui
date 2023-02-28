@@ -63,7 +63,7 @@ jobs:
           fluentVersion: v9
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
-          shouldBuildstorybookaddon: true
+          shouldBuildstorybookaddon: false
 
       - powershell: |
           $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
