@@ -114,7 +114,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
     state.outOfOffice && state.status === 'away' && styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'offline' && styles.statusOffline,
     state.outOfOffice && state.status === 'out-of-office' && styles.statusOutOfOffice,
-    state.outOfOffice && state.status === 'unknown' && styles.statusUnknown,
+    state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
     state.size === 'tiny' && styles.tiny,
     state.size === 'large' && styles.large,
     state.size === 'extra-large' && styles.extraLarge,
