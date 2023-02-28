@@ -4,7 +4,7 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/re
 import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { withStoryWrightSteps } from '../../utilities/withStoryWrightSteps';
-import { Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   container: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const NestedSubmenusSmallViewportStacked = () => {
+const Example = () => {
   const styles = useStyles();
   const [overflowBoundary, setBoundary] = React.useState<HTMLElement | null>(null);
   const positioningRefSubmenu = React.useRef<PositioningImperativeRef>(null);
@@ -29,42 +29,50 @@ export const NestedSubmenusSmallViewportStacked = () => {
   }, []);
 
   return (
-    <div id="boundary" className={styles.container} ref={setBoundary}>
-      <Menu open positioning={{ positioningRef: positioningRefRoot }}>
-        <MenuTrigger disableButtonEnhancement>
-          <button>Menu</button>
-        </MenuTrigger>
+    <StoryWright steps={steps}>
+      <div id="boundary" className={styles.container} ref={setBoundary}>
+        <Menu open positioning={{ positioningRef: positioningRefRoot }}>
+          <MenuTrigger disableButtonEnhancement>
+            <button>Menu</button>
+          </MenuTrigger>
 
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>New </MenuItem>
-            <MenuItem>New Window</MenuItem>
-            <MenuItem disabled>Open File</MenuItem>
-            <MenuItem>Open Folder</MenuItem>
-            <Menu
-              positioning={{ overflowBoundary, flipBoundary: overflowBoundary, positioningRef: positioningRefSubmenu }}
-            >
-              <MenuTrigger disableButtonEnhancement>
-                <MenuItem id="nested">Nested menu</MenuItem>
-              </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>New </MenuItem>
+              <MenuItem>New Window</MenuItem>
+              <MenuItem disabled>Open File</MenuItem>
+              <MenuItem>Open Folder</MenuItem>
+              <Menu
+                positioning={{
+                  overflowBoundary,
+                  flipBoundary: overflowBoundary,
+                  positioningRef: positioningRefSubmenu,
+                }}
+              >
+                <MenuTrigger disableButtonEnhancement>
+                  <MenuItem id="nested">Nested menu</MenuItem>
+                </MenuTrigger>
 
-              <MenuPopover>
-                <MenuList>
-                  <MenuItem>New </MenuItem>
-                  <MenuItem>New Window</MenuItem>
-                  <MenuItem disabled>Open File</MenuItem>
-                  <MenuItem>Open Folder</MenuItem>
-                </MenuList>
-              </MenuPopover>
-            </Menu>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </div>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem>New </MenuItem>
+                    <MenuItem>New Window</MenuItem>
+                    <MenuItem disabled>Open File</MenuItem>
+                    <MenuItem>Open Folder</MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </div>
+    </StoryWright>
   );
 };
 
 const steps = new Steps().snapshot('default').hover('#nested').snapshot('nested menu').end();
-NestedSubmenusSmallViewportStacked.decorators = [
-  (story: () => React.ReactNode) => withStoryWrightSteps({ story, steps }),
-];
+export const NestedSubmenusSmallViewportStacked = () => (
+  <StoryWright steps={steps}>
+    <Example />
+  </StoryWright>
+);

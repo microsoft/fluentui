@@ -4,7 +4,7 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/re
 import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { withStoryWrightSteps } from '../../utilities/withStoryWrightSteps';
-import { Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
   container: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const NestedSubmenusSmallViewportFlipped = () => {
+const Example = () => {
   const styles = useStyles();
   const [overflowBoundary, setBoundary] = React.useState<HTMLElement | null>(null);
   const positioningRefSubmenu = React.useRef<PositioningImperativeRef>(null);
@@ -70,6 +70,8 @@ export const NestedSubmenusSmallViewportFlipped = () => {
 };
 
 const steps = new Steps().snapshot('default').hover('#nested').snapshot('nested menu').end();
-NestedSubmenusSmallViewportFlipped.decorators = [
-  (story: () => React.ReactNode) => withStoryWrightSteps({ story, steps }),
-];
+export const NestedSubmenusSmallViewportFlipped = () => (
+  <StoryWright steps={steps}>
+    <Example />
+  </StoryWright>
+);
