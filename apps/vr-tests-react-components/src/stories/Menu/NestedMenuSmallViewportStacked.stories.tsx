@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import { withStoryWrightSteps } from '../../utilities/withStoryWrightSteps';
 import { Steps, StoryWright } from 'storywright';
 
 const useStyles = makeStyles({
