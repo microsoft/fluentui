@@ -110,15 +110,18 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   );
 
   React.useEffect(() => {
-    if (selectedTime && !defaultValue) {
+    if (selectedTime) {
       const formattedTimeString = formatTimeString(selectedTime, showSeconds, useHour12);
       const option = getComboBoxOptionInDropdown(formattedTimeString);
+      setSelectedKey(option?.key);
+
       if (option) {
-        setSelectedKey(option.key);
         setComboBoxText(option.text);
+      } else {
+        setComboBoxText(formattedTimeString);
       }
     }
-  }, [selectedTime, defaultValue, getComboBoxOptionInDropdown, onFormatDate, showSeconds, useHour12]);
+  }, [selectedTime, getComboBoxOptionInDropdown, onFormatDate, showSeconds, useHour12]);
 
   const onInputChange = React.useCallback(
     (_: React.FormEvent<IComboBox>, option?: IComboBoxOption, _index?: number, input?: string): void => {
@@ -132,8 +135,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         }
         if (!regex.test(userInput)) {
           errorMessageToDisplay = strings.invalidInputErrorMessage;
-        }
-        if (timeRange) {
+        } else if (timeRange) {
           const optionDate: Date = getDateFromTimeSelection(useHour12, dateStartAnchor, userInput);
           if (!(optionDate >= dateStartAnchor && optionDate <= dateEndAnchor)) {
             errorMessageToDisplay = format(
@@ -160,19 +162,20 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
             }
           }
         }
-        setComboBoxText(input);
-      } else if (option) {
-        setSelectedKey(option.key);
       }
 
       if (!errorMessageToDisplay) {
-        const userInputBoi = option?.key || '';
-        const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, userInputBoi);
+        const timeSelection = (option?.key as string) || input || '';
+        const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
         setSelectedTime(updatedTime);
 
         if (onChange) {
           onChange(updatedTime);
         }
+      } else {
+        const timeSelection = option?.text || input || '';
+        setSelectedKey(option?.key as string);
+        setComboBoxText(timeSelection);
       }
 
       setErrorMessage(errorMessageToDisplay);

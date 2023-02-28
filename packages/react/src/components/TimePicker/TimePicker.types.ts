@@ -30,7 +30,10 @@ export interface ITimePickerStrings {
  * {@docCategory TimePicker}
  */
 export interface ITimePickerProps
-  extends Omit<IComboBoxProps, 'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'onChange'> {
+  extends Omit<
+    IComboBoxProps,
+    'options' | 'selectedKey' | 'defaultSelectedKey' | 'multiSelect' | 'text' | 'onChange' | 'useComboBoxAsMenuWidth'
+  > {
   /**
    * Label of the component.
    */
