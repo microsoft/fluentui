@@ -115,8 +115,16 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * where the focus trap involves setting outside elements inert.
    *
    * @default false
+   * @deprecated this behavior is default provided now, to opt-out of it in favor of standard behavior use the `inertTrapFocus` property
    */
   legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
+  /**
+   * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+   * where the focus trap involves setting outside elements inert.
+   *
+   * @default false
+   */
+  inertTrapFocus?: boolean;
 
   /**
    * By default Popover focuses the first focusable element in PopoverSurface on open.
@@ -140,7 +148,7 @@ export type PopoverState = Pick<
   | 'openOnHover'
   | 'trapFocus'
   | 'withArrow'
-  | 'legacyTrapFocus'
+  | 'inertTrapFocus'
 > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {
