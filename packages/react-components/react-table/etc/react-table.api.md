@@ -18,7 +18,6 @@ import * as React_2 from 'react';
 import { ReactNode } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, state: DataGridRowState) => React_2.ReactNode;
@@ -85,14 +84,12 @@ export type DataGridContextValue = TableFeaturesState<any> & {
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
     resizableColumns?: boolean;
-    keyboardNavigationContext?: KeyboardNavigationContextValue;
     accessibilityMenuItems?: TableAccessibilityMenuItemDefinition[];
 };
 
 // @public (undocumented)
 export type DataGridContextValues = TableContextValues & {
     dataGrid: DataGridContextValue;
-    keyboardNavigationContext?: KeyboardNavigationContextValue;
 };
 
 // @public (undocumented)
@@ -184,7 +181,7 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: TableFeaturesState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'keyboardNavigationContext'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'>;
 
 // @public
 export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
