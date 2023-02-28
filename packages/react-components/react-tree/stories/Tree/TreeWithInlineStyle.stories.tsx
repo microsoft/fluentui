@@ -7,33 +7,13 @@ import {
   TreeItemProps,
   useTreeContext_unstable,
 } from '@fluentui/react-tree';
-import { makeStyles, mergeClasses } from '@fluentui/react-components';
-
-const useStyles = makeStyles({
-  level1: {
-    [treeItemLevelToken]: 1,
-  },
-  level2: {
-    [treeItemLevelToken]: 2,
-  },
-  level3: {
-    [treeItemLevelToken]: 3,
-  },
-});
 
 const TreeItem = (props: TreeItemProps) => {
-  const styles = useStyles();
   const level = useTreeContext_unstable(ctx => ctx.level);
-  return (
-    <BaseTreeItem
-      {...props}
-      style={{ [treeItemLevelToken]: undefined, ...props.style }}
-      className={mergeClasses(styles[`level${level}` as `level${1 | 2 | 3}`], props.className)}
-    />
-  );
+  return <BaseTreeItem {...props} style={{ [treeItemLevelToken]: level }} />;
 };
 
-export const WithoutInlineStyle = () => {
+export const WithInlineStyle = () => {
   return (
     <Tree aria-label="Tree">
       <TreeItem>
