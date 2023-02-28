@@ -155,7 +155,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
-        this.margins,
+        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
         this.state.containerWidth,
         chartType,
         this._isRtl,
@@ -169,6 +169,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xAxistickSize: this.props.xAxistickSize,
       tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
       xAxisPadding: this.props.xAxisPadding,
+      xAxisInnerPadding: this.props.xAxisInnerPadding,
+      xAxisOuterPadding: this.props.xAxisOuterPadding,
     };
 
     const YAxisParams = {

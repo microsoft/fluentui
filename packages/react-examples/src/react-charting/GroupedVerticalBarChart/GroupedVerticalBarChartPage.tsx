@@ -61,6 +61,9 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
               reference point. Having a common reference point helps in better comparison between different values in
               the chart.
             </p>
+            <p>
+              The bar labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
+            </p>
           </div>
         }
       />
