@@ -10,6 +10,22 @@ import { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
 
 // @public (undocumented)
+export const Flex: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & FlexProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const flexClassName = "fui-Flex";
+
+// @public (undocumented)
+export const flexItem: {
+    align: (value: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch') => GriffelStyle;
+    size: (value: 'half' | 'quarter' | 'small' | 'medium' | 'large') => GriffelStyle;
+    grow: (flexGrow: boolean | number) => GriffelStyle | undefined;
+    shrink: (flexShrink: boolean | number) => GriffelStyle | undefined;
+    pushRow: () => GriffelStyle;
+    pushColumn: () => GriffelStyle;
+};
+
+// @public (undocumented)
 export const FormFieldShim: React_2.ForwardRefExoticComponent<{
     errorMessage?: WithContent | undefined;
     required?: boolean | undefined;
@@ -64,6 +80,9 @@ export const spinner: {
     v0Inline: () => GriffelStyle;
     v0SpinnerLabelStyle: () => GriffelStyle;
 };
+
+// @public (undocumented)
+export const useFlexStyles: () => Record<"fill" | "wrap" | "inline" | "flex" | "column" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
 
 // @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;
