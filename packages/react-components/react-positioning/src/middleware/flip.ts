@@ -1,27 +1,29 @@
 import { flip as baseFlip, Placement } from '@floating-ui/dom';
-import type { PositioningOptions, PositioningShorthandValue } from '../types';
+import type { PositioningOptions } from '../types';
 import { getBoundary, resolvePositioningShorthand, toFloatingUIPlacement } from '../utils/index';
 
-export interface FlipMiddlewareOptions extends Pick<PositioningOptions, 'flipBoundary'> {
+export interface FlipMiddlewareOptions extends Pick<PositioningOptions, 'flipBoundary' | 'fallbackPositions'> {
   hasScrollableElement?: boolean;
   container: HTMLElement | null;
-  fallback?: PositioningShorthandValue[];
   isRtl?: boolean;
 }
 
 export function flip(options: FlipMiddlewareOptions) {
-  const { hasScrollableElement, flipBoundary, container, fallback = [], isRtl } = options;
-  const fallbackPlacements = fallback
-    .map(shorthand => {
-      const { position, align } = resolvePositioningShorthand(shorthand);
-      return toFloatingUIPlacement(align, position, isRtl);
-    })
-    .filter(Boolean) as Placement[];
+  const { hasScrollableElement, flipBoundary, container, fallbackPositions = [], isRtl } = options;
+
+  const fallbackPlacements = fallbackPositions.reduce<Placement[]>((acc, shorthand) => {
+    const { position, align } = resolvePositioningShorthand(shorthand);
+    const placement = toFloatingUIPlacement(align, position, isRtl);
+    if (placement) {
+      acc.push(placement);
+    }
+    return acc;
+  }, []);
 
   return baseFlip({
     ...(hasScrollableElement && { boundary: 'clippingAncestors' }),
     ...(flipBoundary && { altBoundary: true, boundary: getBoundary(container, flipBoundary) }),
     fallbackStrategy: 'bestFit',
-    fallbackPlacements,
+    ...(fallbackPlacements.length && { fallbackPlacements }),
   });
 }

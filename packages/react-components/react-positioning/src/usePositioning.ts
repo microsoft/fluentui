@@ -150,7 +150,7 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallback' | 'pinned'> {
+interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallbackPositions' | 'pinned'> {
   /**
    * If false, does not position anything
    */
@@ -171,7 +171,7 @@ function usePositioningOptions(options: PositioningOptions) {
     unstable_disableTether: disableTether,
     positionFixed,
     overflowBoundaryPadding,
-    fallback,
+    fallbackPositions,
   } = options;
 
   const { dir } = useFluent();
@@ -185,7 +185,7 @@ function usePositioningOptions(options: PositioningOptions) {
       const middleware = [
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
-        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallback }),
+        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
         shiftMiddleware({
           container,
           hasScrollableElement,
@@ -223,7 +223,7 @@ function usePositioningOptions(options: PositioningOptions) {
       position,
       strategy,
       overflowBoundaryPadding,
-      fallback,
+      fallbackPositions,
     ],
   );
 }
