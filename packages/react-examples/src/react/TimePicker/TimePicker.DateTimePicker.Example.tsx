@@ -6,15 +6,37 @@ import { Text } from '@fluentui/react/lib/Text';
 
 export const TimePickerDateTimePickerExample: React.FC = () => {
   const [datePickerDate, setDatePickerDate] = React.useState<Date>();
+  const [currentTime, setCurrentTime] = React.useState<Date>();
   const [currentTimeString, setCurrentTimeString] = React.useState<string>('');
 
   const onSelectDate = React.useCallback((selectedDate: Date) => {
     setDatePickerDate(selectedDate);
   }, []);
 
-  const onDateTimePickerChange = React.useCallback((boi: Date) => {
-    setCurrentTimeString(boi.toString());
+  const onDateTimePickerChange = React.useCallback((date: Date) => {
+    setCurrentTime(date);
   }, []);
+
+  React.useEffect(() => {
+    if (currentTime) {
+      setCurrentTimeString(currentTime.toString());
+    }
+  }, [currentTime]);
+
+  React.useEffect(() => {
+    if (currentTime && datePickerDate) {
+      const earlyDatePickerDate = new Date(datePickerDate);
+      const laterDatePickerDate = new Date(datePickerDate);
+      laterDatePickerDate.setDate(datePickerDate.getDate() + 1);
+
+      const updatedCurrentTime = new Date(currentTime);
+
+      if (updatedCurrentTime < earlyDatePickerDate || updatedCurrentTime > laterDatePickerDate) {
+        updatedCurrentTime.setDate(earlyDatePickerDate.getDate());
+        setCurrentTime(updatedCurrentTime);
+      }
+    }
+  }, [currentTime, datePickerDate]);
 
   return (
     <>
@@ -27,7 +49,12 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
             onSelectDate={onSelectDate}
             minDate={new Date()}
           />
-          <TimePicker dateAnchor={datePickerDate} useComboBoxAsMenuWidth onChange={onDateTimePickerChange} />
+          <TimePicker
+            dateAnchor={datePickerDate}
+            value={currentTime}
+            useComboBoxAsMenuWidth
+            onChange={onDateTimePickerChange}
+          />
         </div>
         <Text>{`TimePicker selected time: ${currentTimeString ? currentTimeString : '<no time selected>'}`}</Text>
       </div>

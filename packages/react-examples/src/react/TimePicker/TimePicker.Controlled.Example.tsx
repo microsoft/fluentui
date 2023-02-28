@@ -4,7 +4,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
 
-const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
+const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
 const timePickerStyles: Partial<IComboBoxStyles> = {
