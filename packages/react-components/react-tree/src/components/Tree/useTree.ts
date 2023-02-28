@@ -8,9 +8,11 @@ import {
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import type { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
+import { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
-import { useTreeWalker } from '../../utils/useTreeWalker';
+import { filterTreeItemAndSubtree, useTreeWalker } from '../../utils/useTreeWalker';
+import { updateOpenItems } from '../../utils/updateOpenItems';
+import { createImmutableSet, emptyImmutableSet } from '../../utils/ImmutableSet';
 
 /**
  * Create the state required to render Tree.
@@ -78,16 +80,17 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const { appearance = 'subtle', size = 'medium' } = props;
 
   const { targetDocument } = useFluent_unstable();
-  const { openItems: stateOpenSubtrees, defaultOpenItems: defaultOpenSubtrees, onOpenChange } = props;
-  const [openItems, setOpenSubtrees] = useControllableState({
-    state: React.useMemo(() => normalizeOpenSubtreesOrUndefined(stateOpenSubtrees), [stateOpenSubtrees]),
-    defaultState: () => normalizeOpenSubtrees(defaultOpenSubtrees),
-    initialState: [],
+  const [openItems, setOpenItems] = useControllableState({
+    state: React.useMemo(() => props.openItems && createImmutableSet(props.openItems), [props.openItems]),
+    defaultState: React.useMemo(() => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems), [
+      props.defaultOpenItems,
+    ]),
+    initialState: emptyImmutableSet,
   });
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
-    onOpenChange?.(data.event, data);
+    props.onOpenChange?.(data.event, data);
     if (!data.event.isDefaultPrevented()) {
-      setOpenSubtrees(updateOpenSubtrees(data, openItems));
+      setOpenItems(updateOpenItems(data, openItems));
     }
   });
   const focusFirstSubtreeItem = useEventCallback((target: HTMLElement) => {
@@ -150,11 +153,6 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   };
 }
 
-function filterTreeItemAndSubtree(node: Node) {
-  const element = node as HTMLElement & { role: string };
-  return element.role === 'treeitem' || element.role === 'group' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-}
-
 function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
@@ -162,27 +160,4 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'id' | 'aria-label' 
       console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
     }
   }
-}
-
-function normalizeOpenSubtrees(openSubtrees?: string | string[]) {
-  if (!openSubtrees) {
-    return [];
-  }
-  return Array.isArray(openSubtrees) ? openSubtrees : [openSubtrees];
-}
-
-function normalizeOpenSubtreesOrUndefined(openSubtrees?: string | string[]) {
-  if (!openSubtrees) {
-    return undefined;
-  }
-  return normalizeOpenSubtrees(openSubtrees);
-}
-
-function updateOpenSubtrees(data: TreeOpenChangeData, previousOpenSubtrees: string[]) {
-  const id = data.event.currentTarget.id;
-  if (data.open) {
-    return previousOpenSubtrees.includes(id) ? previousOpenSubtrees : [...previousOpenSubtrees, id];
-  }
-  const nextOpenItems = previousOpenSubtrees.filter(value => value !== id);
-  return nextOpenItems.length === previousOpenSubtrees.length ? previousOpenSubtrees : nextOpenItems;
 }

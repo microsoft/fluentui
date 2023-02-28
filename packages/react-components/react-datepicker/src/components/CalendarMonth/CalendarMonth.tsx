@@ -84,7 +84,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
     onNavigateDate,
     selectedDate,
     strings,
-    styles,
     today = new Date(),
     yearPickerHidden = false,
   } = props;
@@ -181,7 +180,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
         onRenderYear={onRenderYear}
         strings={yearStrings}
         componentRef={calendarYearRef}
-        styles={styles}
         highlightCurrentYear={highlightCurrentMonth}
         highlightSelectedYear={highlightSelectedMonth}
         animationDirection={animationDirection}

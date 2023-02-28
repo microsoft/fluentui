@@ -519,6 +519,15 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Callback method used when mouse leaves the chart boundary.
    */
   onChartMouseLeave?: () => void;
+
+  /** Callback method to get extra margins for domain */
+  getDomainMargins?: (containerWidth: number) => IMargins;
+
+  /** Padding between each bar/line-point */
+  xAxisInnerPadding?: number;
+
+  /** Padding before first bar/line-point and after last bar/line-point */
+  xAxisOuterPadding?: number;
 }
 export interface IModifiedCartesianChartLiteProps extends ICartesianChartProps {
   /**

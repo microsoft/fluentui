@@ -21,23 +21,37 @@ import { useTreeContext_unstable } from '../../contexts/index';
  * @param ref - reference to root HTMLElement of TreeItem
  */
 export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState => {
-  const { content, subtree, expandIcon, actions, as = 'div', onClick, onKeyDown, ...rest } = props;
-  const level = useTreeContext_unstable(ctx => ctx.level);
+  const [children, subtreeChildren] = React.Children.toArray(props.children);
+
+  const contextLevel = useTreeContext_unstable(ctx => ctx.level);
+  const {
+    content,
+    subtree,
+    expandIcon,
+    leaf: isLeaf = subtreeChildren === undefined,
+    actions,
+    as = 'div',
+    onClick,
+    onKeyDown,
+    ['aria-level']: level = contextLevel,
+    ...rest
+  } = props;
+
   const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
   const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
   const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
 
-  const [children, subtreeChildren] = React.Children.toArray(props.children);
-
-  const isBranch = subtreeChildren !== undefined;
   const id = useId('fui-TreeItem-', props.id);
 
-  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.includes(id));
+  const isBranch = !isLeaf;
+
+  const open = useTreeContext_unstable(ctx => isBranch && ctx.openItems.has(id));
   const { dir, targetDocument } = useFluent_unstable();
   const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   const groupperProps = useFocusableGroup();
 
   const actionsRef = React.useRef<HTMLElement>(null);
+  const expandIconRef = React.useRef<HTMLElement>(null);
   const subtreeRef = React.useRef<HTMLElement>(null);
 
   const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -49,7 +63,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     }
   };
   const handleArrowLeft = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!isBranch || !open) {
+    if (isLeaf || !open) {
       focusSubtreeOwnerItem(event.currentTarget);
     }
     if (isBranch && open) {
@@ -73,7 +87,8 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       return;
     }
     if (isBranch) {
-      requestOpenChange({ event, open: !open, type: 'click' });
+      const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
+      requestOpenChange({ event, open: !open, type: isFromExpandIcon ? 'expandIconClick' : 'click' });
     }
     event.stopPropagation();
   });
@@ -125,19 +140,20 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
   }, [targetDocument]);
 
   return {
-    isLeaf: !isBranch,
+    isLeaf,
     open,
+    level,
     buttonSize: 'small',
     isActionsVisible: actions ? isActionsVisible : false,
     components: {
-      content: 'span',
+      content: 'div',
       root: 'div',
       expandIcon: 'span',
       actions: 'span',
       subtree: 'span',
     },
     subtree: resolveShorthand(subtree, {
-      required: Boolean(subtreeChildren && open),
+      required: Boolean(subtreeChildren),
       defaultProps: {
         children: subtreeChildren,
         ref: useMergedRefs(subtreeRef, isResolvedShorthand(subtree) ? subtree.ref : undefined),
@@ -172,6 +188,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       defaultProps: {
         children: <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />,
         'aria-hidden': true,
+        ref: useMergedRefs(isResolvedShorthand(expandIcon) ? expandIcon.ref : undefined, expandIconRef),
       },
     }),
     actions: resolveShorthand(actions, {

@@ -18,6 +18,7 @@ describe(`v0 preset`, () => {
         transform: {
           '^.+\\.tsx?$': 'babel-jest',
         },
+        testEnvironment: 'jsdom',
         verbose: false,
         watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
       }),
