@@ -23,7 +23,7 @@ const Component = () => <ListItem />;
 After:
 
 ```tsx
-import { ItemLayout } from '@fluentui/react-components';
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
 const Component = () => <ItemLayout />;
 ```
 
@@ -52,7 +52,7 @@ const Component = () => <ListItem content="hi" />;
 After:
 
 ```tsx
-import { ItemLayout } from '@fluentui/react-components';
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
 const Component = () => <ItemLayout>hi</ItemLayout>;
 ```
 
@@ -68,7 +68,7 @@ const Component = () => <ListItem content={{ content: 'hi', id: 'content' }} />;
 After:
 
 ```tsx
-import { ItemLayout } from '@fluentui/react-components';
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
 const Component = () => <ItemLayout contentWrapper={{ id: 'content' }}>hi</ItemLayout>;
 ```
 
@@ -101,7 +101,7 @@ After:
 
 ```tsx
 // in COMPONENT_NAME.tsx
-import { ItemLayout } from '@fluentui/react-components';
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
 import { useStyles } from './COMPONENT_NAME.styles.ts';
 
 export const Component = () => {
