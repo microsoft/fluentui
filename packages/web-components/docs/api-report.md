@@ -5,13 +5,10 @@
 ```ts
 
 import { CSSDesignToken } from '@microsoft/fast-foundation';
-import { DividerOrientation } from '@microsoft/fast-foundation';
-import { DividerRole } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTAccordion } from '@microsoft/fast-foundation';
 import { FASTAccordionItem } from '@microsoft/fast-foundation';
-import { FASTDivider } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
@@ -87,8 +84,8 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
     color: BadgeColor;
-    shape?: BadgeShape;
-    size?: BadgeSize;
+    shape: BadgeShape;
+    size: BadgeSize;
 }
 
 // @internal
@@ -497,13 +494,7 @@ export const colorNeutralShadowKeyLighter: CSSDesignToken<string>;
 export const colorNeutralStencil1: CSSDesignToken<string>;
 
 // @public (undocumented)
-export const colorNeutralStencil1Alpha: CSSDesignToken<string>;
-
-// @public (undocumented)
 export const colorNeutralStencil2: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const colorNeutralStencil2Alpha: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const colorNeutralStroke1: CSSDesignToken<string>;
@@ -746,9 +737,6 @@ export const colorPaletteGreenForeground2: CSSDesignToken<string>;
 export const colorPaletteGreenForeground3: CSSDesignToken<string>;
 
 // @public (undocumented)
-export const colorPaletteGreenForegroundInverted: CSSDesignToken<string>;
-
-// @public (undocumented)
 export const colorPaletteLavenderBackground2: CSSDesignToken<string>;
 
 // @public (undocumented)
@@ -938,9 +926,6 @@ export const colorPaletteRedForeground2: CSSDesignToken<string>;
 export const colorPaletteRedForeground3: CSSDesignToken<string>;
 
 // @public (undocumented)
-export const colorPaletteRedForegroundInverted: CSSDesignToken<string>;
-
-// @public (undocumented)
 export const colorPaletteRoyalBlueBackground2: CSSDesignToken<string>;
 
 // @public (undocumented)
@@ -1002,9 +987,6 @@ export const colorPaletteYellowForeground2: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const colorPaletteYellowForeground3: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const colorPaletteYellowForegroundInverted: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const colorScrollbarOverlay: CSSDesignToken<string>;
@@ -1073,8 +1055,8 @@ export const colorTransparentStrokeInteractive: CSSDesignToken<string>;
 //
 // @public
 export class CounterBadge extends FASTElement {
-    appearance?: CounterBadgeAppearance;
-    color?: CounterBadgeColor;
+    appearance: CounterBadgeAppearance;
+    color: CounterBadgeColor;
     count: number;
     // (undocumented)
     protected countChanged(): void;
@@ -1084,9 +1066,9 @@ export class CounterBadge extends FASTElement {
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
-    shape?: CounterBadgeShape;
+    shape: CounterBadgeShape;
     showZero: boolean;
-    size?: CounterBadgeSize;
+    size: CounterBadgeSize;
 }
 
 // @internal
@@ -1255,47 +1237,6 @@ export const fontWeightRegular: CSSDesignToken<string>;
 // @public (undocumented)
 export const fontWeightSemibold: CSSDesignToken<string>;
 
-// @public
-class Image_2 extends FASTElement {
-    block?: boolean;
-    bordered?: boolean;
-    fit?: ImageFit;
-    shadow?: boolean;
-    shape?: ImageShape;
-}
-export { Image_2 as Image }
-
-// @public
-export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
-
-// @public
-export const ImageFit: {
-    readonly none: "none";
-    readonly center: "center";
-    readonly contain: "contain";
-    readonly cover: "cover";
-    readonly default: "default";
-};
-
-// @public
-export type ImageFit = ValuesOf<typeof ImageFit>;
-
-// @public
-export const ImageShape: {
-    readonly circular: "circular";
-    readonly rounded: "rounded";
-    readonly square: "square";
-};
-
-// @public (undocumented)
-export type ImageShape = ValuesOf<typeof ImageShape>;
-
-// @public
-export const ImageStyles: ElementStyles;
-
-// @public
-export const ImageTemplate: ElementViewTemplate<Image_2>;
-
 // @public (undocumented)
 export const lineHeightBase100: CSSDesignToken<string>;
 
@@ -1328,8 +1269,8 @@ export const lineHeightHero900: CSSDesignToken<string>;
 
 // @public
 class ProgressBar_2 extends FASTProgress {
-    shape?: ProgressBarShape;
-    thickness?: ProgressBarThickness;
+    shape: ProgressBarShape;
+    thickness: ProgressBarThickness;
     validationState: ProgressBarValidationState | null;
 }
 export { ProgressBar_2 as ProgressBar }
@@ -1478,8 +1419,8 @@ export const spacingVerticalXXXL: CSSDesignToken<string>;
 
 // @public
 export class Spinner extends FASTProgressRing {
-    appearance?: SpinnerAppearance;
-    size?: SpinnerSize;
+    appearance: SpinnerAppearance;
+    size: SpinnerSize;
 }
 
 // @public
@@ -1549,16 +1490,16 @@ export const switchTemplate: ElementViewTemplate<Switch>;
 
 // @public
 class Text_2 extends FASTElement {
-    align?: TextAlign;
+    align: TextAlign;
     block: boolean;
-    font?: TextFont;
+    font: TextFont;
     italic: boolean;
     nowrap: boolean;
-    size?: TextSize;
+    size: TextSize;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
-    weight?: TextWeight;
+    weight: TextWeight;
 }
 export { Text_2 as Text }
 
