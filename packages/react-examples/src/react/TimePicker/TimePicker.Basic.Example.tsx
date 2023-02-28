@@ -57,7 +57,7 @@ export const TimePickerBasicExample: React.FC = () => {
           increments={15}
           autoComplete="on"
           label={'TimePicker with non default options'}
-          useComboBoxAsMenuWidth
+          placeholder={'Non default options placeholder'}
           timeRange={timeRange}
           dateAnchor={new Date('February 27, 2023 08:12:00')}
           onChange={onNonDefaultOptionsExampleChange}
