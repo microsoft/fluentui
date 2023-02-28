@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { useKeyboardNavigationContext } from '../contexts/keyboardNavigationContext';
 import { ColumnResizeState, TableColumnId } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -10,7 +9,6 @@ const PRECISION_MODIFIER = Shift;
 const PRECISION_FACTOR = 1 / 4;
 
 export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeState) {
-  const { setNavigationGroupParams, defaultNavigationGroupParams } = useKeyboardNavigationContext();
   const columnId = React.useRef<TableColumnId>();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
@@ -72,23 +70,14 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
       columnId.current = colId;
 
       targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
-
-      setNavigationGroupParams({
-        ...defaultNavigationGroupParams,
-        ignoreDefaultKeydown: {
-          ArrowLeft: true,
-          ArrowRight: true,
-        },
-      });
     },
-    [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams, targetDocument?.defaultView],
+    [keyboardHandler, targetDocument?.defaultView],
   );
 
   const disableInteractiveMode = React.useCallback(() => {
     columnId.current = undefined;
     targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
-    setNavigationGroupParams(defaultNavigationGroupParams);
-  }, [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams, targetDocument?.defaultView]);
+  }, [keyboardHandler, targetDocument?.defaultView]);
 
   const toggleInteractiveMode = (colId: TableColumnId) => {
     if (!columnId.current) {

@@ -5,7 +5,6 @@ export function useDataGridContextValues_unstable(state: DataGridState): DataGri
   const tableContextValues = useTableContextValues_unstable(state);
   return {
     ...tableContextValues,
-    keyboardNavigationContext: state.keyboardNavigationContext,
     dataGrid: {
       ...state.tableState,
       focusMode: state.focusMode,

@@ -12,7 +12,6 @@ import type {
   TableAccessibilityMenuItemDefinition,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
-import { KeyboardNavigationContextValue } from '../../contexts/keyboardNavigationContext';
 
 export type DataGridSlots = TableSlots;
 
@@ -20,8 +19,6 @@ export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
 
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
-
-  keyboardNavigationContext?: KeyboardNavigationContextValue;
 };
 
 // Use any here since we can't know the user types
@@ -56,8 +53,6 @@ export type DataGridContextValue = TableFeaturesState<any> & {
    * Enables column resizing
    */
   resizableColumns?: boolean;
-
-  keyboardNavigationContext?: KeyboardNavigationContextValue;
 
   accessibilityMenuItems?: TableAccessibilityMenuItemDefinition[];
 };
@@ -95,11 +90,5 @@ export type DataGridProps = TableProps &
  */
 export type DataGridState = TableState & { tableState: TableFeaturesState<unknown> } & Pick<
     DataGridContextValue,
-    | 'focusMode'
-    | 'selectableRows'
-    | 'subtleSelection'
-    | 'selectionAppearance'
-    | 'getRowId'
-    | 'resizableColumns'
-    | 'keyboardNavigationContext'
+    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns'
   >;
