@@ -49,7 +49,7 @@ const storyTemplate = html<BadgeStoryArgs>`
 `;
 
 export default {
-  title: 'Components/Badge/Badge',
+  title: 'Components/Badge',
   args: {
     content: null,
   },
