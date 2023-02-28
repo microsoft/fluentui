@@ -373,6 +373,7 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 
 // @public (undocumented)
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
+    columnReordering_unstable: TableColumnReorderingState;
     columns: TableColumnDefinition<TItem>[];
     columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
@@ -609,6 +610,9 @@ export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) =>
 
 // @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
+
+// @public (undocumented)
+export function useTableColumnReordering_unstable<TItem>(params: UseTableColumnReorderingParams<TItem>): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 // @public (undocumented)
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;

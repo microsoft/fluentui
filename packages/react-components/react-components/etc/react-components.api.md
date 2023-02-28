@@ -953,6 +953,7 @@ import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
 import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
+import { useTableColumnReordering_unstable } from '@fluentui/react-table';
 import { useTableColumnSizing_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableFeatures } from '@fluentui/react-table';
@@ -2900,6 +2901,8 @@ export { useTableCellLayout_unstable }
 export { useTableCellLayoutStyles_unstable }
 
 export { useTableCellStyles_unstable }
+
+export { useTableColumnReordering_unstable }
 
 export { useTableColumnSizing_unstable }
 
