@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Redo of PR of Slider spec after merge error",
+  "packageName": "@fluentui/web-components",
+  "email": "ryan@ryanmerrill.net",
+  "dependentChangeType": "patch"
+}
