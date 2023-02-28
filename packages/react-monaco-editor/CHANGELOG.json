@@ -2,6 +2,21 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Mon, 27 Feb 2023 07:39:56 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.60",
+      "version": "1.7.60",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "db203b7c6eae1174b0bb910bf49eaee4dde14786",
+            "comment": "chore: re-enable AMD import checks for only mixed and v8 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 07:44:35 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.60",
       "version": "1.7.60",

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 22 Feb 2023 07:44:35 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Feb 2023 07:37:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.0)
+
+Tue, 28 Feb 2023 07:37:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.15.10..@fluentui/react-charting_v5.16.0)
+
+### Minor changes
+
+- Fix svg size in donut chart ([PR #26761](https://github.com/microsoft/fluentui/pull/26761) by kumarkshitij@microsoft.com)
+
+### Patches
+
+- Modify vertical bar charts as per design ([PR #25838](https://github.com/microsoft/fluentui/pull/25838) by kumarkshitij@microsoft.com)
 
 ## [5.15.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.15.10)
 

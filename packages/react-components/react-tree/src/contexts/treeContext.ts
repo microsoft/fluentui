@@ -1,10 +1,12 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeOpenChangeData, TreeProps } from '../Tree';
+import { TreeItemId, TreeOpenChangeData } from '../Tree';
+import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
 
-export type TreeContextValue = Required<Pick<TreeProps, 'openItems'>> & {
+export type TreeContextValue = {
   level: number;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
+  openItems: ImmutableSet<TreeItemId>;
   focusFirstSubtreeItem(target: HTMLElement): void;
   focusSubtreeOwnerItem(target: HTMLElement): void;
   /**
@@ -15,7 +17,7 @@ export type TreeContextValue = Required<Pick<TreeProps, 'openItems'>> & {
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
-  openItems: [],
+  openItems: emptyImmutableSet,
   focusFirstSubtreeItem() {
     /* noop */
   },
