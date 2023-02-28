@@ -84,7 +84,7 @@ export class AreaChartPerfFourExample extends React.Component<{}, IAreaChartBasi
     for (let i: number = 0; i < 1; i++) {
       const chartPoints = [];
       chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 1', 'Title', this._colors[i]));
-      chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 2', 'Title', this._colors[9]));
+      chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 3', 'Title', this._colors[9]));
       //chartPoints.push(this._getChartData(this._getData(i + 1), 'Legend 3', 'Title', this._colors[8]));
 
       const chartData = {
