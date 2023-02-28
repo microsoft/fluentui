@@ -20,8 +20,9 @@ export const useStaticVirtualizerMeasure = (
 
   const { targetDocument } = useFluent();
 
-  // We should always return something valid, document.body provides safe initialization until defined.
+  // If no ref is provided, the virtualizer should be in the main body document's scroll.
   const _scrollView = scrollView ?? targetDocument?.documentElement ?? null;
+
   const container = React.useRef<HTMLElement | null>(null);
 
   // the handler for resize observer
@@ -56,26 +57,27 @@ export const useStaticVirtualizerMeasure = (
     setVirtualizerLength(totalLength);
     setVirtualizerBufferSize(bufferSize);
     setVirtualizerBufferItems(bufferItems);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultItemSize, direction]);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
 
-  if (_scrollView !== container.current) {
-    if (container.current) {
-      resizeObserver?.unobserve(container.current);
-    }
-    // Update
-    container.current = _scrollView;
+  React.useEffect(() => {
+    if (_scrollView !== container.current) {
+      if (container.current) {
+        resizeObserver?.unobserve(container.current);
+      }
+      // Update
+      container.current = _scrollView;
 
-    // Only observe if not null
-    if (container.current) {
-      resizeObserver?.observe(container.current);
-    }
+      // Only observe if not null
+      if (container.current) {
+        resizeObserver?.observe(container.current);
+      }
 
-    handleResize();
-  }
+      handleResize();
+    }
+  }, [_scrollView, handleResize, resizeObserver]);
 
   // Do we want to use a dispatch here?
   return { virtualizerLength, bufferItems: virtualizerBufferItems, bufferSize: virtualizerBufferSize };
