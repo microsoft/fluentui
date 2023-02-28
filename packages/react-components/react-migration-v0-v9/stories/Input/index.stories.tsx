@@ -4,7 +4,7 @@ import { Input, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { Input as V9Input, Label } from '@fluentui/react-components';
 import { ErrorCircleFilled } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { input } from '../../components/Input';
+import { input } from '@fluentui/react-migration-v0-v9';
 
 const useStyles = makeStyles({
   root: {
