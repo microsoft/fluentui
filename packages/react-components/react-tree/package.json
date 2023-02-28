@@ -29,7 +29,8 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "react-window": "^1.8.6"
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.10",

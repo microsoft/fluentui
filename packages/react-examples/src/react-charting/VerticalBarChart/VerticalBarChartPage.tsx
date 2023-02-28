@@ -89,6 +89,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               Use <code>lineLegendText and lineLegendColor</code> to specify the text and color for legends of lines in
               the chart.
             </p>
+            <p>
+              The bar labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
+            </p>
           </div>
         }
       />

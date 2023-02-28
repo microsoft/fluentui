@@ -118,10 +118,9 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const expandIconStyles = useExpandIconStyles();
   const actionsStyles = useActionsStyles();
 
-  const level = useTreeContext_unstable(ctx => ctx.level) - 1;
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
-  const { actions, subtree, expandIcon, isActionsVisible: showActions } = state;
+  const { actions, subtree, expandIcon, isActionsVisible: showActions, level } = state;
 
   state.root.className = mergeClasses(treeItemClassNames.root, state.root.className);
 

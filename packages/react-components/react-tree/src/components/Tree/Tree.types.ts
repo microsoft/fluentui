@@ -35,6 +35,8 @@ export type TreeContextValues = {
   tree: TreeContextValue;
 };
 
+export type TreeItemId = string | number;
+
 export type TreeProps = ComponentProps<TreeSlots> & {
   /**
    * A tree item can have various appearances:
@@ -54,13 +56,13 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * Controls the state of the open tree items.
    * These property is ignored for subtrees.
    */
-  openItems?: string | string[];
+  openItems?: Iterable<TreeItemId>;
   /**
    * This refers to a list of ids of opened tree items.
    * Default value for the uncontrolled state of open tree items.
    * These property is ignored for subtrees.
    */
-  defaultOpenItems?: string | string[];
+  defaultOpenItems?: Iterable<TreeItemId>;
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
