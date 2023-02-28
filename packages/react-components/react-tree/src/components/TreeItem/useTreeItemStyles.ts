@@ -1,11 +1,10 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TreeItemSlots, TreeItemState } from './TreeItem.types';
+import { GriffelStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { useTreeContext_unstable } from '../../contexts/index';
-import * as React from 'react';
-import { levelToken } from '../../utils/tokens';
+import { treeItemLevelToken } from '../../utils/tokens';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
@@ -14,6 +13,18 @@ export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   expandIcon: 'fui-TreeItem__expandIcon',
   actions: 'fui-TreeItem__actions',
 };
+
+type StaticLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+type StaticLevelProperty = `level${StaticLevel}`;
+
+const useRootStyles = makeStyles({
+  ...(Object.fromEntries(
+    Array.from<never, [StaticLevelProperty, TreeItemCSSProperties]>({ length: 10 }, (_, index) => [
+      `level${(index + 1) as StaticLevel}`,
+      { [treeItemLevelToken]: index + 1 },
+    ]),
+  ) as Record<StaticLevelProperty, GriffelStyle>),
+});
 
 /**
  * Styles for the content slot
@@ -26,7 +37,7 @@ const useContentStyles = makeStyles({
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     paddingRight: tokens.spacingHorizontalNone,
-    paddingLeft: `calc(${levelToken.value} * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
@@ -66,7 +77,7 @@ const useContentStyles = makeStyles({
     },
   },
   leaf: {
-    paddingLeft: `calc((${levelToken.value} * ${tokens.spacingHorizontalXXL}) + ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
   },
 });
 
@@ -77,15 +88,11 @@ const useExpandIconStyles = makeStyles({
   base: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
     minWidth: '24px',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground3,
-  },
-  medium: {
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-  small: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    ...shorthands.padding(tokens.spacingVerticalXS, 0),
   },
 });
 
@@ -100,7 +107,7 @@ const useActionsStyles = makeStyles({
     right: 0,
     top: 0,
     marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.padding(0, tokens.spacingHorizontalS),
   },
   open: {
     opacity: '1',
@@ -118,17 +125,20 @@ export const expandIconInlineStyles = {
  * Apply styling to the TreeItem slots based on the state
  */
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
+  const rootStyles = useRootStyles();
   const contentStyles = useContentStyles();
   const expandIconStyles = useExpandIconStyles();
   const actionsStyles = useActionsStyles();
 
-  const level = useTreeContext_unstable(ctx => ctx.level) - 1;
-  const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
-  const { actions, subtree, expandIcon, isActionsVisible: showActions } = state;
+  const { actions, subtree, expandIcon, isActionsVisible: showActions, level } = state;
 
-  state.root.className = mergeClasses(treeItemClassNames.root, state.root.className);
+  state.root.className = mergeClasses(
+    treeItemClassNames.root,
+    isStaticallyDefinedLevel(level) && rootStyles[`level${level}` as StaticLevelProperty],
+    state.root.className,
+  );
 
   state.content.className = mergeClasses(
     treeItemClassNames.content,
@@ -139,18 +149,8 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
     state.content.className,
   );
 
-  state.root.style = {
-    ...state.root.style,
-    [levelToken.name]: level,
-  } as React.CSSProperties;
-
   if (expandIcon) {
-    expandIcon.className = mergeClasses(
-      treeItemClassNames.expandIcon,
-      expandIconStyles.base,
-      expandIconStyles[size],
-      expandIcon.className,
-    );
+    expandIcon.className = mergeClasses(treeItemClassNames.expandIcon, expandIconStyles.base, expandIcon.className);
   }
   if (actions) {
     actions.className = mergeClasses(
@@ -166,3 +166,7 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
 
   return state;
 };
+
+function isStaticallyDefinedLevel(level: number): level is StaticLevel {
+  return level >= 1 && level <= 10;
+}

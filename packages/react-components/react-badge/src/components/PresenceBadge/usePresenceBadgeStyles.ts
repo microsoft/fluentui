@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { BadgeSlots } from '../Badge/Badge.types';
@@ -17,20 +17,21 @@ const getIsBusy = (status: PresenceBadgeStatus): boolean => {
   return false;
 };
 
-const useStyles = makeStyles({
-  root: {
-    ...shorthands.padding(0),
-    display: 'inline-flex',
-    boxSizing: 'border-box',
-    alignItems: 'center',
-    justifyContent: 'center',
+const useRootClassName = makeResetStyles({
+  padding: 0,
+  display: 'inline-flex',
+  boxSizing: 'border-box',
+  alignItems: 'center',
+  justifyContent: 'center',
 
-    '& span': {
-      display: 'flex',
-    },
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    backgroundColor: tokens.colorNeutralBackground1,
+  '& span': {
+    display: 'flex',
   },
+  borderRadius: tokens.borderRadiusCircular,
+  backgroundColor: tokens.colorNeutralBackground1,
+});
+
+const useStyles = makeStyles({
   statusBusy: {
     color: tokens.colorPaletteRedBackground3,
   },
@@ -89,11 +90,12 @@ const useStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
+  const rootClassName = useRootClassName();
   const styles = useStyles();
   const isBusy = getIsBusy(state.status);
   state.root.className = mergeClasses(
     presenceBadgeClassNames.root,
-    styles.root,
+    rootClassName,
     isBusy && styles.statusBusy,
     state.status === 'away' && styles.statusAway,
     state.status === 'available' && styles.statusAvailable,

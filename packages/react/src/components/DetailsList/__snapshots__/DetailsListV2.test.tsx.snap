@@ -7574,11 +7574,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -7861,11 +7856,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -8373,11 +8363,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -8660,11 +8645,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -8947,11 +8927,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"

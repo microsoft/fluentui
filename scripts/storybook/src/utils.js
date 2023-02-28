@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
 const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
 const semver = require('semver');
-const { babelPlugin } = require('storybook-addon-export-to-codesandbox');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
@@ -156,7 +156,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
   };
 
   /**
-   * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
+   * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
    */
   function getCodesandboxBabelOptions() {
     const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
@@ -169,12 +169,21 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       }
 
       return acc;
-    }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
+    }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
 
     return {
       ...importMappings,
+
+      // TODO: https://github.com/microsoft/fluentui/issues/26691
+
       '@fluentui/react-data-grid-react-window': {
         replace: '@fluentui/react-data-grid-react-window',
+      },
+      '@fluentui/react-migration-v8-v9': {
+        replace: '@fluentui/react-migration-v8-v9',
+      },
+      '@fluentui/react-migration-v0-v9': {
+        replace: '@fluentui/react-migration-v0-v9',
       },
     };
   }

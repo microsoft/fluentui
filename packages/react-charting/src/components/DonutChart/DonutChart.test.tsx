@@ -72,14 +72,14 @@ describe('DonutChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should render arc labels in percentage format', () => {
-    const component = renderer.create(<DonutChart data={chartPoints} showLabelsInPercent={true} />);
+  it('Should render arc labels', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should not render arc labels', () => {
-    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={true} />);
+  it('Should render arc labels in percentage format', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={false} showLabelsInPercent={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

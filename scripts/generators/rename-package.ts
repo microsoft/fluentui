@@ -1,16 +1,17 @@
 import { spawnSync } from 'child_process';
+import * as path from 'path';
+
 import * as fs from 'fs-extra';
 import { IOptions as GlobOptions, sync as globSync } from 'glob';
 import _ from 'lodash';
-import * as path from 'path';
-import { sync as replaceInFileSync, ReplaceResult } from 'replace-in-file';
-import { findGitRoot, PackageInfo, listAllTrackedFiles, stageAndCommit } from 'workspace-tools';
+import { ReplaceResult, sync as replaceInFileSync } from 'replace-in-file';
+import { PackageInfo, findGitRoot, listAllTrackedFiles, stageAndCommit } from 'workspace-tools';
 
+const { runPrettier } = require('./prettier');
 const { readConfig: _readConfig, writeConfig: _writeConfig } = require('./utils');
 
 const readConfig: (pth: string) => PackageInfo = _readConfig;
 const writeConfig: (pth: string, newValue: unknown) => void = _writeConfig;
-const { runPrettier } = require('./prettier');
 
 const gitRoot = findGitRoot(process.cwd());
 /**
@@ -231,7 +232,7 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
 
 async function runPrettierForFiles(modifiedFiles: string[]) {
   console.log('\nRunning prettier on changed files...');
-  await runPrettier(modifiedFiles, { runAsync: true, logErrorsOnly: true });
+  await runPrettier(modifiedFiles, { logErrorsOnly: true });
 }
 
 function runYarn() {

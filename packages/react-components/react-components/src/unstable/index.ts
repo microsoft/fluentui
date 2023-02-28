@@ -116,15 +116,6 @@ export {
 export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
-  ProgressBar,
-  progressBarClassNames,
-  renderProgressBar_unstable,
-  useProgressBarStyles_unstable,
-  useProgressBar_unstable,
-} from '@fluentui/react-progress';
-export type { ProgressBarProps, ProgressBarState, ProgressBarSlots } from '@fluentui/react-progress';
-
-export {
   Virtualizer,
   virtualizerClassNames,
   useVirtualizer_unstable,

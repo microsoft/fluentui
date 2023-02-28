@@ -2,10 +2,15 @@ import { tokens } from '@fluentui/react-theme';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CalendarDaySlots, CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
+import type { CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
 
-export const calendarDayClassNames: SlotClassNames<CalendarDaySlots> & Record<string, string> = {
+export const calendarDayClassNames: SlotClassNames<CalendarDayStyles> = {
   root: 'fui-CalendarDay',
+  header: 'fui-CalendarDay__header',
+  monthAndYear: 'fui-CalendarDay__monthAndYear',
+  monthComponents: 'fui-CalendarDay__monthComponents',
+  headerIconButton: 'fui-CalendarDay__headerIconButton',
+  disabledStyle: 'fui-CalendarDay__disabledStyle',
 };
 
 const useRootStyles = makeStyles({
@@ -121,9 +126,7 @@ const useDisabledStyleStyles = makeStyles({
  * Apply styling to the CalendarDay slots based on the state
  */
 // export const useCalendarDayStyles_unstable = (state: CalendarDayState): CalendarDayState => {
-export const useCalendarDayStyles_unstable = (
-  props: CalendarDayStyleProps,
-): Record<keyof CalendarDayStyles, string> => {
+export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): CalendarDayStyles => {
   const rootStyles = useRootStyles();
   const headerStyles = useHeaderStyles();
   const monthAndYearStyles = useMonthAndYearStyles();
@@ -141,36 +144,15 @@ export const useCalendarDayStyles_unstable = (
       showWeekNumbers && rootStyles.showWeekNumbers,
       className,
     ),
-    header: headerStyles.base,
+    header: mergeClasses(calendarDayClassNames.header, headerStyles.base),
     monthAndYear: mergeClasses(
+      calendarDayClassNames.monthAndYear,
       monthAndYearStyles.base,
       monthAndYearStyles.animation,
       headerIsClickable && monthAndYearStyles.headerIsClickable,
     ),
-    monthComponents: monthComponentsStyles.base,
-    headerIconButton: headerIconButtonStyles.base,
-    disabledStyle: disabledStyleStyles.base,
-    table: '',
-    wrapper: '',
-    dayCell: '',
-    daySelected: '',
-    weekRow: '',
-    weekDayLabelCell: '',
-    weekNumberCell: '',
-    dayOutsideBounds: '',
-    dayOutsideNavigatedMonth: '',
-    dayButton: '',
-    dayIsToday: '',
-    firstTransitionWeek: '',
-    lastTransitionWeek: '',
-    dayMarker: '',
-    topLeftCornerDate: '',
-    topRightCornerDate: '',
-    bottomLeftCornerDate: '',
-    bottomRightCornerDate: '',
-    datesAbove: '',
-    datesBelow: '',
-    datesLeft: '',
-    datesRight: '',
+    monthComponents: mergeClasses(calendarDayClassNames.monthComponents, monthComponentsStyles.base),
+    headerIconButton: mergeClasses(calendarDayClassNames.headerIconButton, headerIconButtonStyles.base),
+    disabledStyle: mergeClasses(calendarDayClassNames.disabledStyle, disabledStyleStyles.base),
   };
 };
