@@ -3,6 +3,7 @@ import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { SpinButton, spinButtonClassNames } from '@fluentui/react-spinbutton';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 const cropTo = '.testWrapper';
 
@@ -172,4 +173,12 @@ storiesOf('SpinButton Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Size: medium (default)', () => <SpinButton value={10} />, { includeRtl: true });
+  .addStory('Size: medium (default)', () => <SpinButton value={10} />, { includeRtl: true })
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <SpinButton value={10} />
+        <SpinButton value={10} appearance="outline" />
+      </div>
+    </FluentProvider>
+  ));

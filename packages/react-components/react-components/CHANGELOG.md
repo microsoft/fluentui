@@ -1,8 +1,329 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 Jan 2023 16:43:09 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.6)
+
+Wed, 22 Feb 2023 23:06:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.5..@fluentui/react-components_v9.15.6)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Set overflow on positioned element when `autosize` is applied ([PR #26868](https://github.com/microsoft/fluentui/pull/26868) by lingfangao@hotmail.com)
+- `@fluentui/react-progress`
+  - feat: Move ProgressBar to stable ([PR #26008](https://github.com/microsoft/fluentui/pull/26008) by ololubek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - bugfix: uses min-height instead of height ([PR #26862](https://github.com/microsoft/fluentui/pull/26862) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - feat: Add react-progress to stable ([PR #26008](https://github.com/microsoft/fluentui/pull/26008) by ololubek@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Clean up Input's interactive styles ([PR #26865](https://github.com/microsoft/fluentui/pull/26865) by behowell@microsoft.com)
+  - fix: Fix the width of Input's focus border with appearance=underline ([PR #26881](https://github.com/microsoft/fluentui/pull/26881) by behowell@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: Popover without focus trap should not be aria-hidden ([PR #26932](https://github.com/microsoft/fluentui/pull/26932) by lingfangao@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: update SpinButton to use makeResetStyles ([PR #26867](https://github.com/microsoft/fluentui/pull/26867) by seanmonahan@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - fix: allow elements of card to grow to fill the available space ([PR #26616](https://github.com/microsoft/fluentui/pull/26616) by marcosvmmoura@gmail.com)
+
+## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.5)
+
+Thu, 16 Feb 2023 19:18:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.4..@fluentui/react-components_v9.15.5)
+
+### Patches
+
+- `@fluentui/react-components`
+  - Fixing Build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-input`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-data-grid-react-window`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - fixing build issues ([PR #26877](https://github.com/microsoft/fluentui/pull/26877) by mgodbolt@microsoft.com)
+
+## [9.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.4)
+
+Thu, 16 Feb 2023 16:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.3..@fluentui/react-components_v9.15.4)
+
+### Patches
+
+- `@fluentui/react-input`
+  - chore: Update Input to use makeResetStyles and reduce the number of classes applied ([PR #26815](https://github.com/microsoft/fluentui/pull/26815) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Updating peer dependencies to support React 18. ([PR #26866](https://github.com/microsoft/fluentui/pull/26866) by mgodbolt@microsoft.com)
+
+## [9.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.3)
+
+Wed, 15 Feb 2023 11:44:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.2..@fluentui/react-components_v9.15.3)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: Add event helpers to ease working with mouse and touch ([PR #26784](https://github.com/microsoft/fluentui/pull/26784) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - fix(useOnClickOutside): iframe focus detection uses `contains` ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-table`
+  - feat: Table - add support for resizing columns with touch ([PR #26784](https://github.com/microsoft/fluentui/pull/26784) by jirivyhnalek@microsoft.com)
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.2)
+
+Mon, 13 Feb 2023 23:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.1..@fluentui/react-components_v9.15.2)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - chore: update Badge and PresenceBadge to use makeResetStyles ([PR #26817](https://github.com/microsoft/fluentui/pull/26817) by seanmonahan@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: update Persona to use makeResetStyles ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by seanmonahan@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: `resolveShorthand` should resolve an object as its copy ([PR #26825](https://github.com/microsoft/fluentui/pull/26825) by yuanboxue@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: update Avatar to use makeResetStyles ([PR #26811](https://github.com/microsoft/fluentui/pull/26811) by seanmonahan@microsoft.com)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.1)
+
+Mon, 13 Feb 2023 09:35:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.0..@fluentui/react-components_v9.15.1)
+
+### Patches
+
+- `@fluentui/react-menu`
+  - fix: MenuList is a single tabstop ([PR #26803](https://github.com/microsoft/fluentui/pull/26803) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix: Coordinates should be rounded to device pixels to prevent blurriness ([PR #26766](https://github.com/microsoft/fluentui/pull/26766) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-progress`
+  - chore: Update docs and styling to fix visual bugs and clarify usage of ProgressBar ([PR #26768](https://github.com/microsoft/fluentui/pull/26768) by ololubek@microsoft.com)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.0)
+
+Fri, 10 Feb 2023 08:49:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.14.0..@fluentui/react-components_v9.15.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Release `Table` and `DataGrid` as stable ([PR #26736](https://github.com/microsoft/fluentui/pull/26736) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - feat: Add `overflowBoundaryPadding` positioning prop ([PR #26730](https://github.com/microsoft/fluentui/pull/26730) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-provider`
+  - fix: Do not add an escape character for colons in the styleTagId since useId now removes colons from the generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: improve SpinButton documentation for home/end hotkeys ([PR #26724](https://github.com/microsoft/fluentui/pull/26724) by seanmonahan@microsoft.com)
+  - fix: properly handle single character text input for SpinButton ([PR #26789](https://github.com/microsoft/fluentui/pull/26789) by seanmonahan@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Release 9.0.0 ([PR #26736](https://github.com/microsoft/fluentui/pull/26736) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - fix: Generate id first to avoid hook order mismatch in React 18 and remove colons from generated id in React 18. ([PR #26745](https://github.com/microsoft/fluentui/pull/26745) by esteban.230@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - fix: keyboard navigation not working for select elements ([PR #26612](https://github.com/microsoft/fluentui/pull/26612) by marcosvmmoura@gmail.com)
+- `@fluentui/react-table`
+  - feat: TableCellLayout component now supports truncate prop ([PR #26738](https://github.com/microsoft/fluentui/pull/26738) by jirivyhnalek@microsoft.com)
+  - feat: DataGrid - add support for resizable columns ([PR #26690](https://github.com/microsoft/fluentui/pull/26690) by jirivyhnalek@microsoft.com)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.14.0)
+
+Tue, 07 Feb 2023 14:13:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.13.0..@fluentui/react-components_v9.14.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - chore: export SlotRenderFunction type ([PR #26600](https://github.com/microsoft/fluentui/pull/26600) by seanmonahan@microsoft.com)
+  - Added export of column sizing ([PR #26477](https://github.com/microsoft/fluentui/pull/26477) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: add `unstable_hasDefault` option in `useArrowNavigationGroup` that specifies the arrow navigation group has default focusable item ([PR #26732](https://github.com/microsoft/fluentui/pull/26732) by yuanboxue@microsoft.com)
+  - feat: Bump keyborg to 2.0.0 and tabster to 4.0.1 ([PR #26584](https://github.com/microsoft/fluentui/pull/26584) by lingfangao@hotmail.com)
+- `@fluentui/react-combobox`
+  - fix: update Combobox and Dropdown to never use the Option value string as a display value; input value must be set if selectedOptions or defaultSelectOptions is set" ([PR #26617](https://github.com/microsoft/fluentui/pull/26617) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: exports `useDataGridContextValues_unstable` ([PR #26627](https://github.com/microsoft/fluentui/pull/26627) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix(createPositionManager): computePosition should not apply styles after destruction ([PR #26593](https://github.com/microsoft/fluentui/pull/26593) by lingfangao@hotmail.com)
+- `@fluentui/priority-overflow`
+  - fix: New overflow items all always dispatch updates to subscriber ([PR #26565](https://github.com/microsoft/fluentui/pull/26565) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - fix: Using correct icon and color for away + out-of-office PresenceBadge. ([PR #26655](https://github.com/microsoft/fluentui/pull/26655) by makotom@microsoft.com)
+- `@fluentui/react-button`
+  - fix: add forced-colors primary button variant ([PR #26623](https://github.com/microsoft/fluentui/pull/26623) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-data-grid-react-window`
+  - feat: Initial release react-data-grid-react-window ([PR #26731](https://github.com/microsoft/fluentui/pull/26731) by lingfangao@hotmail.com)
+- `@fluentui/react-infobutton`
+  - chore: Add aria-label to InfoButton's button and add a11y guidance for using InfoButton with a label. ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by esteban.230@hotmail.com)
+  - chore: Making the content focusable and updating example's text. ([PR #26596](https://github.com/microsoft/fluentui/pull/26596) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - feat: exports `useDataGridContextValues_unstable` ([PR #26627](https://github.com/microsoft/fluentui/pull/26627) by lingfangao@hotmail.com)
+  - Add support for column resizing ([PR #26477](https://github.com/microsoft/fluentui/pull/26477) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-card`
+  - docs: improve API documentation of card props ([PR #26614](https://github.com/microsoft/fluentui/pull/26614) by marcosvmmoura@gmail.com)
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.13.0)
+
+Tue, 31 Jan 2023 19:53:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.12.0..@fluentui/react-components_v9.13.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: release Combobox and Dropdown as stable components ([PR #26518](https://github.com/microsoft/fluentui/pull/26518) by sarah.higley@microsoft.com)
+  - feat: expose all typography tokens as components ([PR #26403](https://github.com/microsoft/fluentui/pull/26403) by marcosvmmoura@gmail.com)
+  - chore: Added context exports for react-tabs ([PR #26552](https://github.com/microsoft/fluentui/pull/26552) by gcox@microsoft.com)
+  - feat: release `@fluentui/react-select` as stable ([PR #26491](https://github.com/microsoft/fluentui/pull/26491) by sarah.higley@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Added context exports ([PR #26552](https://github.com/microsoft/fluentui/pull/26552) by gcox@microsoft.com)
+- `@fluentui/react-text`
+  - feat: expose all typography tokens as components ([PR #26403](https://github.com/microsoft/fluentui/pull/26403) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - chore: Updates border-radius to use proper token ([PR #26531](https://github.com/microsoft/fluentui/pull/26531) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - fix: Fixing button padding + minHeight to get correct sizes from design spec. ([PR #26522](https://github.com/microsoft/fluentui/pull/26522) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: release Combobox and Dropdown as stable components ([PR #26518](https://github.com/microsoft/fluentui/pull/26518) by sarah.higley@microsoft.com)
+- `@fluentui/react-components`
+  - feat: re-export useFocusWithin() hook ([PR #26533](https://github.com/microsoft/fluentui/pull/26533) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: properly use tokens for border radius ([PR #26516](https://github.com/microsoft/fluentui/pull/26516) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-persona`
+  - fix: Reduce spacing between first and second line. ([PR #26520](https://github.com/microsoft/fluentui/pull/26520) by esteban.230@hotmail.com)
+  - fix: Make before and after textPositions align correctly when the Avatar size is larger than the text lines together. ([PR #26546](https://github.com/microsoft/fluentui/pull/26546) by esteban.230@hotmail.com)
+- `@fluentui/react-select`
+  - feat: release `@fluentui/react-select` as stable ([PR #26491](https://github.com/microsoft/fluentui/pull/26491) by sarah.higley@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: update definitions for SSRProvider ([PR #25582](https://github.com/microsoft/fluentui/pull/25582) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-field`
+  - chore: Change the default value of validationState to error when a validationMessage is set. ([PR #26523](https://github.com/microsoft/fluentui/pull/26523) by behowell@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.12.0)
+
+Thu, 26 Jan 2023 13:30:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.11.1..@fluentui/react-components_v9.12.0)
+
+### Minor changes
+
+- `@fluentui/react-avatar`
+  - chore: deprecates AvatarSizes in favor of AvatarSize ([PR #26492](https://github.com/microsoft/fluentui/pull/26492) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - feature: creates ButtonContext ([PR #26478](https://github.com/microsoft/fluentui/pull/26478) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - feat: export TextareaOnChangeData type ([PR #26455](https://github.com/microsoft/fluentui/pull/26455) by olfedias@microsoft.com)
+  - feat: add support for appearance overrides (unstable) ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+  - feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+  - chore(react-avatar): deprecates AvatarSizes in favor of AvatarSize ([PR #26492](https://github.com/microsoft/fluentui/pull/26492) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-input`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - Moved to be a v9 convergence package ([PR #26503](https://github.com/microsoft/fluentui/pull/26503) by gcox@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: add support for overrides (unstable) ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Overrides context ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+  - feat: export TextareaOnChangeData type ([PR #26455](https://github.com/microsoft/fluentui/pull/26455) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: add IdPrefixProvider ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: high contrast mode focus styles are applied ([PR #26116](https://github.com/microsoft/fluentui/pull/26116) by sarah.higley@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Deprecate CheckboxField_unstable in favor of Field with Checkbox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - Add Field to react-components/unstable. Deprecate InputField/etc. in favor of Field with Input/etc. as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-input`
+  - Deprecate InputField_unstable in favor of Field with Input as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-link`
+  - fix: handle "tabIndex" from user's input ([PR #26456](https://github.com/microsoft/fluentui/pull/26456) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: update elementContains() to handle circular references ([PR #26483](https://github.com/microsoft/fluentui/pull/26483) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: Update FluentProvider's class name to use backslash when a colon is present. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
+- `@fluentui/react-radio`
+  - Deprecate RadioGroupField_unstable in favor of Field with RadioGroup as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-slider`
+  - Deprecate SliderField_unstable in favor of Field with Slider as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - Deprecate SpinButtonField_unstable in favor of Field with SpinButton as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-switch`
+  - Deprecate SwitchField_unstable in favor of Field with Switch as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-textarea`
+  - Deprecate TextareaField_unstable in favor of Field with Textarea as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: export toolbar hooks as functions, not Typescript types ([PR #26462](https://github.com/microsoft/fluentui/pull/26462) by seanmonahan@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: Leverage React.useId when available for our useId hook. ([PR #26465](https://github.com/microsoft/fluentui/pull/26465) by esteban.230@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-combobox`
+  - fix: add popup maxHeight, and move shadow styles to combobox/dropdown ([PR #26470](https://github.com/microsoft/fluentui/pull/26470) by sarah.higley@microsoft.com)
+  - chore: update spec and migration docs ([PR #26396](https://github.com/microsoft/fluentui/pull/26396) by sarah.higley@microsoft.com)
+  - fix: combobox should recalculate the activedescendant when the children change while open, and clear it when moving text cursor ([PR #26444](https://github.com/microsoft/fluentui/pull/26444) by sarah.higley@microsoft.com)
+  - fix: update multiselect checkbox styles to match checkbox ([PR #26509](https://github.com/microsoft/fluentui/pull/26509) by sarah.higley@microsoft.com)
+  - Deprecate ComboboxField_unstable in favor of Field with Combobox as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-field`
+  - Implement Field component to replace InputField, ComboboxField, etc. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-progress`
+  - Deprecate ProgressField_unstable in favor of Field with Progress as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-select`
+  - feat: Allow default appearance override ([PR #25262](https://github.com/microsoft/fluentui/pull/25262) by miroslav.stastny@microsoft.com)
+  - Deprecate SelectField_unstable in favor of Field with Select as its child. ([PR #26430](https://github.com/microsoft/fluentui/pull/26430) by behowell@microsoft.com)
+- `@fluentui/react-table`
+  - chore(react-table): switch AvatarSizes in favor of AvatarSize ([PR #26492](https://github.com/microsoft/fluentui/pull/26492) by bernardo.sunderhus@gmail.com)
 
 ## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.11.1)
 

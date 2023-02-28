@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
+import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 
 export type TableRowId = string | number;
 export type TableColumnId = string | number;
@@ -131,6 +132,16 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
    * Table columns
    */
   columns: TableColumnDefinition<TItem>[];
+  /**
+   * State and actions to manage column resizing
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnSizing_unstable: TableColumnSizingState;
+  /**
+   * A React.Ref object to be set as a ref for the table.
+   * Used with column resizing.
+   */
+  tableRef: React.Ref<HTMLDivElement>;
 }
 
 export interface UseTableSortOptions {
@@ -156,11 +167,11 @@ export interface UseTableSelectionOptions {
   /**
    * Used in uncontrolled mode to set initial selected rows on mount
    */
-  defaultSelectedItems?: Set<TableRowId>;
+  defaultSelectedItems?: Iterable<TableRowId>;
   /**
    * Used to control row selection
    */
-  selectedItems?: Set<TableRowId>;
+  selectedItems?: Iterable<TableRowId>;
   /**
    * Called when selection changes
    */
@@ -174,3 +185,40 @@ export interface UseTableFeaturesOptions<TItem> {
 }
 
 export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+
+export interface ColumnWidthState {
+  columnId: TableColumnId;
+  width: number;
+  minWidth: number;
+  idealWidth: number;
+  padding: number;
+}
+
+export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
+export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
+
+export interface TableColumnSizingState {
+  getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
+  setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
+  getColumnWidths: () => ColumnWidthState[];
+  getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
+  getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
+}
+
+export type ColumnResizeState = {
+  getColumnWidth: (columnId: TableColumnId) => number;
+  setColumnWidth: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
+  getColumns: () => ColumnWidthState[];
+};
+
+export type TableColumnSizingOptions = Record<
+  TableColumnId,
+  Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
+>;
+
+export type UseTableColumnSizingParams = {
+  columnSizingOptions?: TableColumnSizingOptions;
+  onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  containerWidthOffset?: number;
+};

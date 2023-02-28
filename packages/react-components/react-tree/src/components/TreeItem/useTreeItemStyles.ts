@@ -1,87 +1,58 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TreeItemSlots, TreeItemState } from './TreeItem.types';
+import { GriffelStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { TreeItemCSSProperties, TreeItemSlots, TreeItemState } from './TreeItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { useTreeContext_unstable } from '../../contexts/index';
-import * as React from 'react';
+import { treeItemLevelToken } from '../../utils/tokens';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
+  content: 'fui-TreeItem__content',
+  subtree: 'fui-TreeItem__subtree',
   expandIcon: 'fui-TreeItem__expandIcon',
-  iconBefore: 'fui-TreeItem__iconBefore',
-  iconAfter: 'fui-TreeItem__iconAfter',
   actions: 'fui-TreeItem__actions',
-  badges: 'fui-TreeItem__badges',
-  groupper: 'fui-TreeItem__groupper',
 };
 
-const treeItemTokens = {
-  level: '--fluent-TreeItem--level',
-} as const;
-const treeItemTokenValues = {
-  level: `var(${treeItemTokens.level}, 0)`,
-} as const;
+type StaticLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+type StaticLevelProperty = `level${StaticLevel}`;
+
+const useRootStyles = makeStyles({
+  ...(Object.fromEntries(
+    Array.from<never, [StaticLevelProperty, TreeItemCSSProperties]>({ length: 10 }, (_, index) => [
+      `level${(index + 1) as StaticLevel}`,
+      { [treeItemLevelToken]: index + 1 },
+    ]),
+  ) as Record<StaticLevelProperty, GriffelStyle>),
+});
 
 /**
- * Styles for the root slot
+ * Styles for the content slot
  */
-const useRootStyles = makeStyles({
+const useContentStyles = makeStyles({
   base: {
     position: 'relative',
-    alignItems: 'center',
-    backgroundColor: tokens.colorSubtleBackground,
     cursor: 'pointer',
-    color: tokens.colorNeutralForeground2,
     display: 'flex',
+    backgroundColor: tokens.colorSubtleBackground,
+    color: tokens.colorNeutralForeground2,
     paddingRight: tokens.spacingHorizontalNone,
-    paddingLeft: `calc(${treeItemTokenValues.level} * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
       backgroundColor: tokens.colorSubtleBackgroundPressed,
+      // TODO: stop using treeItemClassNames.expandIcon for styling
       [`& .${treeItemClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Pressed,
-      },
-    },
-    ':focus': {
-      [`& .${treeItemClassNames.actions}`]: {
-        opacity: '1',
-        position: 'relative',
-      },
-    },
-    ':focus-within': {
-      [`& .${treeItemClassNames.actions}`]: {
-        opacity: '1',
-        position: 'relative',
       },
     },
     ':hover': {
       color: tokens.colorNeutralForeground2Hover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
-      [`& .${treeItemClassNames.actions}`]: {
-        opacity: '1',
-        position: 'relative',
-      },
+      // TODO: stop using treeItemClassNames.expandIcon  for styling
       [`& .${treeItemClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Hover,
-      },
-    },
-  },
-  actionsAndBadges: {
-    ':focus': {
-      [`& .${treeItemClassNames.badges}`]: {
-        display: 'none',
-      },
-    },
-    ':focus-within': {
-      [`& .${treeItemClassNames.badges}`]: {
-        display: 'none',
-      },
-    },
-    ':hover': {
-      [`& .${treeItemClassNames.badges}`]: {
-        display: 'none',
       },
     },
   },
@@ -105,20 +76,8 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
-
-  // Size variations
-  medium: {
-    minHeight: '32px',
-    ...typographyStyles.body1,
-  },
-  small: {
-    minHeight: '24px',
-    ...typographyStyles.caption1,
-  },
   leaf: {
-    // FIXME: for some reason prettier is not wrapping this after 120 characters
-    // eslint-disable-next-line @fluentui/max-len
-    paddingLeft: `calc((${treeItemTokenValues.level} * ${tokens.spacingHorizontalXXL}) + ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
   },
 });
 
@@ -129,60 +88,14 @@ const useExpandIconStyles = makeStyles({
   base: {
     display: 'flex',
     alignItems: 'center',
-    paddingRight: tokens.spacingHorizontalXS,
+    justifyContent: 'center',
+    minWidth: '24px',
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground3,
-  },
-  medium: {
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-  small: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    ...shorthands.padding(tokens.spacingVerticalXS, 0),
   },
 });
 
-/**
- * Styles for the before/after icon slot
- */
-const useIconStyles = makeStyles({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    color: tokens.colorNeutralForeground2,
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
-  },
-});
-
-const useIconBefore = makeStyles({
-  medium: {
-    paddingRight: tokens.spacingHorizontalSNudge,
-  },
-  small: {
-    paddingRight: tokens.spacingHorizontalXS,
-  },
-});
-
-const useIconAfter = makeStyles({
-  medium: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
-  },
-  small: {
-    paddingLeft: tokens.spacingHorizontalXS,
-  },
-});
-
-/**
- * Styles for the action icon slot
- */
-const useBadgesStyles = makeStyles({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-  },
-});
 /**
  * Styles for the action icon slot
  */
@@ -194,7 +107,7 @@ const useActionsStyles = makeStyles({
     right: 0,
     top: 0,
     marginLeft: 'auto',
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
+    ...shorthands.padding(0, tokens.spacingHorizontalS),
   },
   open: {
     opacity: '1',
@@ -213,75 +126,47 @@ export const expandIconInlineStyles = {
  */
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
   const rootStyles = useRootStyles();
+  const contentStyles = useContentStyles();
   const expandIconStyles = useExpandIconStyles();
-  const iconStyles = useIconStyles();
-  const iconBeforeStyles = useIconBefore();
-  const iconAfterStyles = useIconAfter();
   const actionsStyles = useActionsStyles();
-  const badgesStyles = useBadgesStyles();
 
-  const level = useTreeContext_unstable(ctx => ctx.level) - 1;
-  const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
 
-  const { iconAfter, actions, iconBefore, expandIcon, badges } = state;
+  const { actions, subtree, expandIcon, isActionsVisible: showActions, level } = state;
 
   state.root.className = mergeClasses(
     treeItemClassNames.root,
-    rootStyles.base,
-    rootStyles[appearance],
-    rootStyles.focusIndicator,
-    rootStyles[size],
-    actions && badges && rootStyles.actionsAndBadges,
-    state.isLeaf && rootStyles.leaf,
+    isStaticallyDefinedLevel(level) && rootStyles[`level${level}` as StaticLevelProperty],
     state.root.className,
   );
 
-  state.groupper.className = mergeClasses(treeItemClassNames.groupper, state.groupper.className);
-
-  state.root.style = {
-    ...state.root.style,
-    [treeItemTokens.level]: level,
-  } as React.CSSProperties;
+  state.content.className = mergeClasses(
+    treeItemClassNames.content,
+    contentStyles.base,
+    contentStyles[appearance],
+    contentStyles.focusIndicator,
+    state.isLeaf && contentStyles.leaf,
+    state.content.className,
+  );
 
   if (expandIcon) {
-    expandIcon.className = mergeClasses(
-      treeItemClassNames.expandIcon,
-      expandIconStyles.base,
-      expandIconStyles[size],
-      expandIcon.className,
-    );
+    expandIcon.className = mergeClasses(treeItemClassNames.expandIcon, expandIconStyles.base, expandIcon.className);
   }
-
-  if (iconBefore) {
-    iconBefore.className = mergeClasses(
-      treeItemClassNames.iconBefore,
-      iconStyles.base,
-      iconBeforeStyles[size],
-      iconBefore.className,
-    );
-  }
-
-  if (iconAfter) {
-    iconAfter.className = mergeClasses(
-      treeItemClassNames.iconAfter,
-      iconStyles.base,
-      iconAfterStyles[size],
-      iconAfter.className,
-    );
-  }
-
   if (actions) {
     actions.className = mergeClasses(
       treeItemClassNames.actions,
       actionsStyles.base,
-      state.keepActionsOpen && actionsStyles.open,
+      showActions && actionsStyles.open,
       actions.className,
     );
   }
-  if (badges) {
-    badges.className = mergeClasses(treeItemClassNames.badges, badgesStyles.base, badges.className);
+  if (subtree) {
+    subtree.className = mergeClasses(treeItemClassNames.subtree, subtree.className);
   }
 
   return state;
 };
+
+function isStaticallyDefinedLevel(level: number): level is StaticLevel {
+  return level >= 1 && level <= 10;
+}

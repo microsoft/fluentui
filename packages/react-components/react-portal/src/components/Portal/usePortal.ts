@@ -27,7 +27,9 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
       setVirtualParent(state.mountNode, state.virtualParentRootRef.current);
     }
     return () => {
-      if (state.mountNode) {setVirtualParent(state.mountNode, undefined);}
+      if (state.mountNode) {
+        setVirtualParent(state.mountNode, undefined);
+      }
     };
   }, [state.virtualParentRootRef, state.mountNode]);
 

@@ -1,4 +1,4 @@
-export const defaultLibPaths = ['lib/**/*.d.ts', 'lib-commonjs/**/*.d.ts', 'lib-amd/**/*.d.ts'];
+const defaultLibPaths = ['lib/**/*.d.ts', 'lib-commonjs/**/*.d.ts', 'lib-amd/**/*.d.ts'];
 
 /**
  * @param libPaths - Globs to .d.ts files which need postprocessing
@@ -9,3 +9,5 @@ export function postprocessTask(libPaths: string[] = defaultLibPaths) {
     // but not for now, while our TS minbar and local version match.
   };
 }
+
+postprocessTask.defaultLibPaths = defaultLibPaths;

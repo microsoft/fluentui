@@ -1,16 +1,66 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type CalendarPickerSlots = {
-  root: Slot<'div'>;
-};
+import { AnimationDirection } from '../Calendar/Calendar.types';
 
 /**
- * CalendarPicker Props
+ * {@docCategory Calendar}
  */
-export type CalendarPickerProps = ComponentProps<CalendarPickerSlots> & {};
+export interface CalendarPickerStyleProps {
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * Whether the header can be clicked
+   */
+  hasHeaderClickCallback?: boolean;
+
+  /**
+   * Whether the picker should highlight the current item
+   */
+  highlightCurrent?: boolean;
+
+  /**
+   * Whether the picker should highlight the selected item
+   */
+  highlightSelected?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
+
+  /**
+   * Whether grid entering animation should be forwards or backwards
+   */
+  animateBackwards?: boolean;
+}
 
 /**
- * State used in rendering CalendarPicker
+ * {@docCategory Calendar}
  */
-export type CalendarPickerState = ComponentState<CalendarPickerSlots>;
-// & Required<Pick<CalendarPickerProps, 'propName'>>
+export interface CalendarPickerStyles {
+  /**
+   * Style for the root element.
+   */
+  root: string;
+
+  headerContainer: string;
+
+  currentItemButton: string;
+
+  navigationButtonsContainer: string;
+
+  navigationButton: string;
+
+  gridContainer: string;
+
+  buttonRow: string;
+
+  itemButton: string;
+
+  current: string;
+
+  selected: string;
+
+  disabled: string;
+}

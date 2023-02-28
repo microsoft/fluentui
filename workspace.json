@@ -37,6 +37,13 @@
       "sourceRoot": "packages/react-components/babel-preset-global-context/src",
       "tags": ["vNext", "platform:node"]
     },
+    "@fluentui/babel-preset-storybook-full-source": {
+      "root": "packages/react-components/babel-preset-storybook-full-source",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/babel-preset-storybook-full-source/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
@@ -265,7 +272,8 @@
     "@fluentui/public-docsite-v9": {
       "root": "apps/public-docsite-v9",
       "projectType": "application",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["platform:web"]
     },
     "@fluentui/react": {
       "root": "packages/react",
@@ -329,6 +337,13 @@
       "projectType": "library",
       "implicitDependencies": [],
       "tags": ["react-northstar"]
+    },
+    "@fluentui/react-breadcrumb": {
+      "root": "packages/react-components/react-breadcrumb",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-breadcrumb/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-builder": {
       "root": "packages/fluentui/react-builder",
@@ -457,6 +472,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-drawer": {
+      "root": "packages/react-components/react-drawer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-drawer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-examples": {
       "root": "packages/react-examples",
       "projectType": "library",
@@ -557,13 +579,14 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-migration-v0-v9/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "react-northstar", "platform:web"]
     },
     "@fluentui/react-migration-v8-v9": {
-      "root": "packages/react-migration-v8-v9",
+      "root": "packages/react-components/react-migration-v8-v9",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-migration-v8-v9/src"
+      "sourceRoot": "packages/react-components/react-migration-v8-v9/src",
+      "tags": ["vNext", "v8", "platform:web"]
     },
     "@fluentui/react-monaco-editor": {
       "root": "packages/react-monaco-editor",
@@ -633,14 +656,14 @@
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-portal-compat/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "ships-amd", "platform:web"]
     },
     "@fluentui/react-portal-compat-context": {
       "root": "packages/react-components/react-portal-compat-context",
       "projectType": "library",
       "implicitDependencies": [],
       "sourceRoot": "packages/react-components/react-portal-compat-context/src",
-      "tags": ["vNext", "platform:web"]
+      "tags": ["vNext", "ships-amd", "platform:web"]
     },
     "@fluentui/react-positioning": {
       "root": "packages/react-components/react-positioning",
@@ -724,6 +747,13 @@
       "sourceRoot": "packages/react-components/react-storybook-addon/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-storybook-addon-codesandbox": {
+      "root": "packages/react-components/react-storybook-addon-codesandbox",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-storybook-addon-codesandbox/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-switch": {
       "root": "packages/react-components/react-switch",

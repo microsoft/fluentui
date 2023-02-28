@@ -25,6 +25,13 @@ export interface UseArrowNavigationGroupOptions {
    * Tabster should ignore default handling of keydown events
    */
   ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+  /**
+   * The default focusable item in the group will be an element with Focusable.isDefault property.
+   * Note that there is no way in \@fluentui/react-tabster to set default focusable element,
+   * and this option is currently for internal testing purposes only.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_hasDefault?: boolean;
 }
 
 /**
@@ -32,7 +39,15 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
-  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown } = options;
+  const {
+    circular,
+    axis,
+    memorizeCurrent,
+    tabbable,
+    ignoreDefaultKeydown,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault,
+  } = options;
   const tabster = useTabster();
 
   if (tabster) {
@@ -43,8 +58,9 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
-      memorizeCurrent: memorizeCurrent,
-      tabbable: tabbable,
+      memorizeCurrent,
+      tabbable,
+      hasDefault: unstable_hasDefault,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {

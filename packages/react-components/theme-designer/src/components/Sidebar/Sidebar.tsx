@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { useId, tokens, Switch } from '@fluentui/react-components';
-import type { CustomAttributes } from '../../useThemeDesignerReducer';
+import { tokens, Switch } from '@fluentui/react-components';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AppContext } from '../../ThemeDesigner';
 import { Form } from './Form';
@@ -28,15 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
-  const sidebarId = useId();
-
   const [isDark, setIsDark] = React.useState<boolean>(false);
-
-  const [formState, setFormState] = React.useState<CustomAttributes>({
-    keyColor: '#0F6CBD',
-    hueTorsion: 0,
-    vibrancy: 0,
-  });
 
   const handleIsDarkChange = () => {
     setIsDark(!isDark);
@@ -45,7 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
-      <Form sidebarId={sidebarId} formState={formState} setFormState={setFormState} />
+      <Form />
       <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
