@@ -6,3 +6,4 @@ export { slider } from './components/Slider';
 export { input } from './components/Input';
 export { v0Icon, v9CustomSizeIcon, v9DisabledCursor, v9HoverClasses, v9Icon } from './components/Button';
 export { spinner } from './components/Spinner';
+export { Flex, flexClassName, flexItem, useFlexStyles } from './components/Flex';
