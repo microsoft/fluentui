@@ -137,7 +137,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       });
     }
   }
-
+  //Render function
   public render(): JSX.Element {
     const { lineChartData, chartTitle } = this.props.data;
     const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
