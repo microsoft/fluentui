@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Modify vertical bar charts as per design",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
