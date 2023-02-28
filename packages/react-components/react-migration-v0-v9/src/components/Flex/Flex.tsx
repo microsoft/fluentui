@@ -1,6 +1,5 @@
 import { mergeClasses } from '@fluentui/react-components';
 import * as React from 'react';
-import { get } from 'lodash';
 
 import { useFlexStyles } from './Flex.styles';
 
@@ -93,7 +92,8 @@ export const Flex = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLEl
   );
 
   const content = React.Children.map(children, child => {
-    const isFlexItemElement: boolean = get(child, 'type.__isFlexItem');
+    // @ts-expect-error __isFlexItem is added to the React type property by N*
+    const isFlexItemElement: boolean = child?.type.__isFlexItem;
 
     return isFlexItemElement
       ? React.cloneElement(child as React.ReactElement, {
