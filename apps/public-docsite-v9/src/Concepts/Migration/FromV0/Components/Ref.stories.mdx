@@ -9,10 +9,10 @@ The `Ref` component from V0 is deprecated as it used the deprecated `findDomNode
 Before:
 
 ```tsx
-import { Flex, Flex } from '@fluentui/react-northstar';
-const Component = ({ popupRef }) => (
-  <Ref innerRef={popupRef}>
-    <Flex>some content</Flex>
+import { Button } from '@fluentui/react-northstar';
+const Component = ({ buttonRef }) => (
+  <Ref innerRef={buttonRef}>
+    <Button content="some content" />
   </Ref>
 );
 ```
@@ -20,10 +20,10 @@ const Component = ({ popupRef }) => (
 After:
 
 ```tsx
-import { Flex } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-components';
 const Component = () => {
   const ref = React.useRef(null);
 
-  return <Flex ref={ref}>some content</Flex>;
+  return <Button ref={ref}>some content</Button>;
 };
 ```
