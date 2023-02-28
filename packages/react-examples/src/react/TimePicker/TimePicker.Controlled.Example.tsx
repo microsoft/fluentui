@@ -18,12 +18,11 @@ const timePickerStyles: Partial<IComboBoxStyles> = {
 
 export const TimePickerControlledExample: React.FC = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
-  const [time, setTime] = React.useState<Date>(new Date(dateAnchor));
+  const [time, setTime] = React.useState<Date>(new Date('February 27, 2023 10:00:00'));
 
   const [controlledTimeString, setControlledTimeString] = React.useState<string>('');
 
   const onControlledExampleChange = React.useCallback((newTime: Date) => {
-    newTime.setHours((newTime.getHours() + 2) % 24);
     setTime(newTime);
   }, []);
 
@@ -40,7 +39,7 @@ export const TimePickerControlledExample: React.FC = () => {
           allowFreeform
           increments={15}
           autoComplete="on"
-          label={'TimePicker with non default options'}
+          label={'Controlled TimePicker with non default options'}
           useComboBoxAsMenuWidth
           dateAnchor={dateAnchor}
           value={time}
