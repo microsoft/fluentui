@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 27 Feb 2023 04:27:02 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Feb 2023 04:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.8)
+
+Tue, 28 Feb 2023 04:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.7..@fluentui/web-components_v3.0.0-alpha.8)
+
+### Changes
+
+- updates wc3 accordion and accordion item docs ([PR #26938](https://github.com/microsoft/fluentui/pull/26938) by brianbrady@microsoft.com)
 
 ## [3.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.7)
 
