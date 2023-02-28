@@ -2,7 +2,7 @@ import * as React from 'react';
 import descriptionMd from './Description.md';
 import { Flex, FlexItem, Provider, teamsTheme } from '@fluentui/react-northstar';
 import { makeStyles } from '@fluentui/react-components';
-import { Flex as FlexShim, flexItem } from '../../components/Flex';
+import { Flex as FlexShim, flexItem } from '@fluentui/react-migration-v0-v9';
 
 const useStyles = makeStyles({
   root: {
