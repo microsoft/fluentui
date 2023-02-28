@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 28 Feb 2023 04:25:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.8",
+      "version": "3.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c0d4b0def168396e9139672146bbadbe408ea4d4",
+            "comment": "updates wc3 accordion and accordion item docs"
+          }
+        ],
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "237267b5ad816d090011c93f2922476c1abfe87f",
+            "comment": "chore: Enable Typescript strict mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Feb 2023 04:27:02 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.7",
       "version": "3.0.0-alpha.7",
