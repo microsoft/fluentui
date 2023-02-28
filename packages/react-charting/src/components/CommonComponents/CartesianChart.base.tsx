@@ -503,32 +503,37 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
    */
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
-    //this._reqID = requestAnimationFrame(() => {
-    let legendContainerHeight;
-    if (this.props.hideLegend) {
-      // If there is no legend, need not to allocate some space from total chart space.
-      legendContainerHeight = 0;
-    } else {
-      const legendContainerComputedStyles = this.legendContainer && getComputedStyle(this.legendContainer);
-      legendContainerHeight =
-        ((this.legendContainer && this.legendContainer.offsetHeight) || this.minLegendContainerHeight) +
-        parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
-        parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
-    }
-    if (this.props.parentRef || this.chartContainer) {
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.offsetWidth;
-      const currentContainerHeight = container.offsetHeight > legendContainerHeight ? container.offsetHeight : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+    this._reqID = requestAnimationFrame(() => {
+      let legendContainerHeight;
+      if (this.props.hideLegend) {
+        // If there is no legend, need not to allocate some space from total chart space.
+        legendContainerHeight = 0;
+      } else {
+        const legendContainerComputedStyles = this.legendContainer && getComputedStyle(this.legendContainer);
+        legendContainerHeight =
+          ((this.legendContainer && this.legendContainer.getBoundingClientRect().height) ||
+            this.minLegendContainerHeight) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
       }
-    }
-    //});
+      if (this.props.parentRef || this.chartContainer) {
+        const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
+        const currentContainerWidth = container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 350;
+        const shouldResize =
+          containerWidth !== currentContainerWidth ||
+          containerHeight !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          });
+        }
+      }
+    });
   }
 
   // Call back to the chart.

@@ -33,7 +33,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
   >
     <svg
       aria-label="AreaChart"
-      height={310}
+      height={0}
       style={
         Object {
           "display": "block",
@@ -68,7 +68,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, 275)"
+        transform="translate(0, -35)"
       />
       <g
         className=
@@ -101,7 +101,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
       <g>
         <rect
           fill="transparent"
-          height={290}
+          height={-20}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -111,7 +111,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M40,-0.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -122,7 +122,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -133,12 +133,12 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           key="0-dots-areaChart_0"
         >
           <circle
             cx={40}
-            cy={115.625}
+            cy={-0.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
@@ -178,7 +178,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           x1={-20}
           x2={-20}
           y1={0}
-          y2={310}
+          y2={0}
         />
       </g>
     </svg>
@@ -565,7 +565,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
   >
     <svg
       aria-label="AreaChart"
-      height={310}
+      height={0}
       style={
         Object {
           "display": "block",
@@ -600,7 +600,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, 275)"
+        transform="translate(0, -35)"
       />
       <g
         className=
@@ -633,7 +633,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
       <g>
         <rect
           fill="transparent"
-          height={290}
+          height={-20}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -643,7 +643,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M40,-0.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -654,7 +654,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -665,12 +665,12 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           key="0-dots-areaChart_0"
         >
           <circle
             cx={40}
-            cy={115.625}
+            cy={-0.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
@@ -710,7 +710,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           x1={-20}
           x2={-20}
           y1={0}
-          y2={310}
+          y2={0}
         />
       </g>
     </svg>
@@ -994,7 +994,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
   >
     <svg
       aria-label="AreaChart"
-      height={310}
+      height={0}
       style={
         Object {
           "display": "block",
@@ -1029,7 +1029,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
               display: none;
             }
         id="xAxisGElementchart_5"
-        transform="translate(0, 275)"
+        transform="translate(0, -35)"
       />
       <g
         className=
@@ -1062,7 +1062,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
       <g>
         <rect
           fill="transparent"
-          height={290}
+          height={-20}
           id="rectangle3"
           onMouseMove={[Function]}
           onMouseOut={[Function]}
@@ -1072,7 +1072,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M40,-0.625L-20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -1083,7 +1083,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -1094,12 +1094,12 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M40,-0.625L-20,20L-20,-35L40,-35Z"
           key="0-dots-areaChart_0"
         >
           <circle
             cx={40}
-            cy={115.625}
+            cy={-0.625}
             data-is-focusable={true}
             fill="red"
             id="circle2_0"
@@ -1139,7 +1139,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           x1={-20}
           x2={-20}
           y1={0}
-          y2={310}
+          y2={0}
         />
       </g>
     </svg>
