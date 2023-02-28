@@ -162,13 +162,14 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const KeyboardInteraction = () => {
+export const KeyboardColumnResizing = () => {
   return (
     <DataGrid
       items={items}
       columns={columns}
       sortable
       getRowId={item => item.file.label}
+      selectionMode="multiselect"
       resizableColumns
       columnSizingOptions={{
         file: {
@@ -213,8 +214,8 @@ export const KeyboardInteraction = () => {
   );
 };
 
-KeyboardInteraction.storyName = 'Keyboard Interaction (preview)';
-KeyboardInteraction.parameters = {
+KeyboardColumnResizing.storyName = 'Keyboard Column Resizing (preview)';
+KeyboardColumnResizing.parameters = {
   docs: {
     description: {
       story: [
