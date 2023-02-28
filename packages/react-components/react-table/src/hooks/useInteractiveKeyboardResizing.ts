@@ -1,19 +1,15 @@
-import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/keyboard-keys';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useKeyboardNavigationContext } from '../contexts/keyboardNavigationContext';
 import { ColumnResizeState, TableColumnId } from './types';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+
+const STEP = 20;
+const PRECISION_MODIFIER = Shift;
+const PRECISION_FACTOR = 1 / 4;
 
 export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeState) {
-  const DECREASE_WIDTH = 'ArrowLeft';
-  const INCREASE_WIDTH = 'ArrowRight';
-  const SPACEBAR = ' ';
-  const ENTER = 'Enter';
-  const ESC = 'Escape';
-
-  const STEP = 20;
-  const PRECISION_MODIFIER = 'Shift';
-  const PRECISION_FACTOR = 1 / 4;
-
   const { setNavigationGroupParams, defaultNavigationGroupParams } = useKeyboardNavigationContext();
   const columnId = React.useRef<TableColumnId>();
 
@@ -22,13 +18,12 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
     columnResizeStateRef.current = columnResizeState;
   }, [columnResizeState]);
 
+  const { targetDocument } = useFluent();
+
   const keyboardHandler = useEventCallback((event: KeyboardEvent) => {
     if (!columnId.current) {
       return;
     }
-
-    event.preventDefault();
-    event.stopPropagation();
 
     const colId = columnId.current;
 
@@ -39,24 +34,32 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
     const width = columnResizeStateRef.current.getColumnWidth(colId);
     const precisionModifier = event.getModifierState(PRECISION_MODIFIER);
 
+    const stopEvent = () => {
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
     switch (event.key) {
-      case DECREASE_WIDTH:
+      case ArrowLeft:
+        stopEvent();
         columnResizeStateRef.current.setColumnWidth(event, {
           columnId: colId,
           width: width - (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
         return;
 
-      case INCREASE_WIDTH:
+      case ArrowRight:
+        stopEvent();
         columnResizeStateRef.current.setColumnWidth(event, {
           columnId: colId,
           width: width + (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
         return;
 
-      case SPACEBAR:
-      case ENTER:
-      case ESC:
+      case Space:
+      case Enter:
+      case Escape:
+        stopEvent();
         if (columnId.current) {
           disableInteractiveMode();
         }
@@ -68,7 +71,7 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
     (colId: TableColumnId) => {
       columnId.current = colId;
 
-      window.addEventListener('keydown', keyboardHandler);
+      targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
 
       setNavigationGroupParams({
         ...defaultNavigationGroupParams,
@@ -78,14 +81,14 @@ export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeSt
         },
       });
     },
-    [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams],
+    [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams, targetDocument?.defaultView],
   );
 
   const disableInteractiveMode = React.useCallback(() => {
     columnId.current = undefined;
-    window.removeEventListener('keydown', keyboardHandler);
+    targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
     setNavigationGroupParams(defaultNavigationGroupParams);
-  }, [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams]);
+  }, [defaultNavigationGroupParams, keyboardHandler, setNavigationGroupParams, targetDocument?.defaultView]);
 
   const toggleInteractiveMode = (colId: TableColumnId) => {
     if (!columnId.current) {
