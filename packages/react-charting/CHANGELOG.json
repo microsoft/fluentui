@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 28 Feb 2023 07:37:42 GMT",
+      "tag": "@fluentui/react-charting_v5.16.0",
+      "version": "5.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "04f08182b2962cac86a7897b895eb4ab88acff4c",
+            "comment": "Fix svg size in donut chart"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d0ed2a639c67c59beba2225f7894376718f4c167",
+            "comment": "Modify vertical bar charts as per design"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 07:44:35 GMT",
       "tag": "@fluentui/react-charting_v5.15.10",
       "version": "5.15.10",

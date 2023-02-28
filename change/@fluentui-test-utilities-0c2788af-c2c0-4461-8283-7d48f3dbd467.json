@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: move private test/ helpers from utilities package to make test pass with jest 28",
+  "packageName": "@fluentui/test-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

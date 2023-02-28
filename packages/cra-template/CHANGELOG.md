@@ -1,8 +1,17 @@
 # Change Log - @fluentui/cra-template
 
-This log was last generated on Wed, 22 Feb 2023 07:44:35 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Feb 2023 07:39:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.61](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.61)
+
+Mon, 27 Feb 2023 07:39:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.60..@fluentui/cra-template_v8.4.61)
+
+### Patches
+
+- chore: bump template jest types to v27 ([PR #26835](https://github.com/microsoft/fluentui/pull/26835) by martinhochel@microsoft.com)
 
 ## [8.4.60](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.60)
 

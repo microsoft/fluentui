@@ -3,7 +3,7 @@
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["ES5", "ES2015.Collection", "dom"],
     "declaration": true,
     "sourceMap": true,
     "importHelpers": true,
