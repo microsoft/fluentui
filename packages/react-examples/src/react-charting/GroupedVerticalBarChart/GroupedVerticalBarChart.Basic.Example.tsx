@@ -2,11 +2,13 @@ import * as React from 'react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { GroupedVerticalBarChart, IGroupedVerticalBarChartProps } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 interface IGroupedBarChartState {
   width: number;
   height: number;
   barwidth: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
+  hideLabels: boolean;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -15,8 +17,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.state = {
       width: 700,
       height: 400,
-      barwidth: 10,
+      barwidth: 16,
       selectedCallout: 'singleCallout',
+      hideLabels: false,
     };
   }
 
@@ -35,6 +38,9 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   };
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
     this.setState({ selectedCallout: option.key as IGroupedBarChartState['selectedCallout'] });
+  };
+  private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -159,8 +165,8 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
         <input
           type="range"
           value={this.state.barwidth}
-          min={10}
-          max={70}
+          min={1}
+          max={50}
           id="changeBarwidth"
           onChange={this._onBarwidthChange}
           aria-valuetext={`ChangeBarwidthslider${this.state.barwidth}`}
@@ -171,6 +177,12 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           selectedKey={this.state.selectedCallout}
           onChange={this._onChange}
           label="Pick one"
+        />
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onCheckChange}
+          styles={{ root: { marginTop: '20px' } }}
         />
         <div style={rootStyle}>
           <GroupedVerticalBarChart
@@ -183,6 +195,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
             barwidth={this.state.barwidth}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>

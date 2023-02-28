@@ -173,8 +173,17 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
 
     return {
       ...importMappings,
+
+      // TODO: https://github.com/microsoft/fluentui/issues/26691
+
       '@fluentui/react-data-grid-react-window': {
         replace: '@fluentui/react-data-grid-react-window',
+      },
+      '@fluentui/react-migration-v8-v9': {
+        replace: '@fluentui/react-migration-v8-v9',
+      },
+      '@fluentui/react-migration-v0-v9': {
+        replace: '@fluentui/react-migration-v0-v9',
       },
     };
   }
