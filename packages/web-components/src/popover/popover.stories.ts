@@ -1,11 +1,16 @@
 import './define.js';
-import { PopoverPosition } from './popover.options.js';
+import { PopoverAlignment, PopoverPosition } from './popover.options.js';
 
 export default {
   title: 'Components/Popover',
   argTypes: {
     position: {
       options: Object.values(PopoverPosition),
+      control: { type: 'radio' },
+    },
+    popoverAlign: {
+      name: 'popover-align',
+      options: Object.values(PopoverAlignment),
       control: { type: 'radio' },
     },
     open: {
@@ -15,11 +20,12 @@ export default {
   },
 };
 
-const PopoverTemplate = ({ open, position }) => `
+const PopoverTemplate = ({ open, position, popoverAlign }) => `
 <fluent-popover
   ${open ? 'open' : ''}
   id="default-popover"
   ${position ? `position="${position}"` : ''}
+  ${popoverAlign ? `popover-align="${popoverAlign}"` : ''}
   >
     <div slot="anchor" style="display: inline-block; border: 1px dashed #ccc; height: 80px; width: 80px; margin: 30px 200px">Anchor</div>
     <div>Popover ${position}</div>
@@ -27,8 +33,5 @@ const PopoverTemplate = ({ open, position }) => `
 `;
 
 export const Popover = PopoverTemplate.bind({});
-Popover.args = {
-  position: 'top',
-};
 
 export const Interactive = (): string => `<fuisb-popover-interactive></fuisb-popover-interactive>`;

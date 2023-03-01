@@ -1,6 +1,7 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { autoUpdate, computePosition } from '@floating-ui/dom';
-import { PopoverPosition } from './popover.options.js';
+import { PopoverAlignment, PopoverPosition } from './popover.options.js';
+import { toFloatingUIPlacement } from './toFloatingUIPlacement.js';
 
 let nextEmoji = 0;
 const getNextEmoji = () => {
@@ -142,8 +143,39 @@ export class Popover extends FASTElement {
     this.autoUpdateCleanup = undefined;
   }
 
+  /**
+   * Alignment for the component. Only has an effect if used with the @see position option
+   *
+   * @public
+   * @default center
+   * @remarks
+   * HTML Attribute: popover-align
+   */
+  @attr({
+    attribute: 'popover-align',
+  }) /* the attribute cannot be named 'align' because that is an intrinsic DOM attribute */
+  public popoverAlign?: PopoverAlignment;
+  protected popoverAlignChanged() {
+    console.group(this.objId, 'popoverAlignChanged');
+
+    this.handlePositioningStartStop(true);
+
+    console.groupEnd();
+  }
+
+  /**
+   * Position for the component. Position has higher priority than popoverAlign. If position is vertical ('above' | 'below')
+   * and popoverAlign is also vertical ('top' | 'bottom') or if both position and popoverAlign are horizontal ('before' | 'after'
+   * and 'start' | 'end' respectively),
+   * then provided value for 'popoverAlign' will be ignored and 'center' will be used instead.
+   *
+   * @public
+   * @default above
+   * @remarks
+   * HTML Attribute: position
+   */
   @attr
-  public position: PopoverPosition = 'top';
+  public position?: PopoverPosition;
   protected positionChanged() {
     console.group(this.objId, 'positionChanged');
 
@@ -156,8 +188,17 @@ export class Popover extends FASTElement {
     if (!this.anchorRef?.[0] || !this.popoverContentRef) {
       return;
     }
+
+    const placement = toFloatingUIPlacement(
+      this.popoverAlign,
+      this.position,
+      window.getComputedStyle((this as unknown) as HTMLElement).direction === 'rtl',
+    );
+    console.log(this.objId, 'updatePosition', {
+      placement,
+    });
     computePosition(this.anchorRef[0], this.popoverContentRef, {
-      placement: this.position,
+      placement,
     }).then(({ x, y, middlewareData, placement }) => {
       Object.assign(this.popoverContentRef!.style, { left: `${x}px`, top: `${y}px` });
     });
