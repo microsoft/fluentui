@@ -17,6 +17,11 @@ const jestAliases = () => {
   // eslint-disable-next-line no-shadow
   for (const { packageJson } of packageDeps) {
     const { name, main } = packageJson;
+    // jest 28 supports exports
+    if (packageJson.exports) {
+      continue;
+    }
+
     if (main && main.includes('lib-commonjs')) {
       // Map package root and lib imports to the commonjs version
       const mainImportPath = `${name}/${main.replace('.js', '')}`;
@@ -69,8 +74,9 @@ const createConfig = (customConfig = {}) => {
         diagnostics: false,
       },
     },
-
-    testURL: 'http://localhost',
+    testEnvironmentOptions: {
+      url: 'http://localhost',
+    },
     testEnvironment: 'jsdom',
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
