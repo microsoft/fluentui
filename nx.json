@@ -27,9 +27,6 @@
     "build": {
       "dependsOn": ["^build"]
     },
-    "lint": {
-      "dependsOn": ["build"]
-    },
     "test": {
       "dependsOn": ["build"],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
