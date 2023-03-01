@@ -127,53 +127,49 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     getRefsFromDayInfos,
   } as const;
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: 'both',
-    ignoreDefaultKeydown: { Enter: true, Escape: true, Tab: true },
-  });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <div {...arrowNavigationAttributes}>
-      <table
-        className={classNames.table}
-        aria-multiselectable="false"
-        aria-labelledby={labelledBy}
-        aria-activedescendant={activeDescendantId}
-        role="grid"
-      >
-        <tbody>
-          <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
+    <table
+      className={classNames.table}
+      aria-multiselectable="false"
+      aria-labelledby={labelledBy}
+      aria-activedescendant={activeDescendantId}
+      role="grid"
+      {...arrowNavigationAttributes}
+    >
+      <tbody>
+        <CalendarMonthHeaderRow {...props} classNames={classNames} weeks={weeks} />
+        <CalendarGridRow
+          {...props}
+          {...partialWeekProps}
+          week={weeks[0]}
+          weekIndex={-1}
+          rowClassName={classNames.firstTransitionWeek}
+          ariaRole="presentation"
+          ariaHidden={true}
+        />
+        {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
           <CalendarGridRow
             {...props}
             {...partialWeekProps}
-            week={weeks[0]}
-            weekIndex={-1}
-            rowClassName={classNames.firstTransitionWeek}
-            ariaRole="presentation"
-            ariaHidden={true}
+            key={weekIndex}
+            week={week}
+            weekIndex={weekIndex}
+            rowClassName={classNames.weekRow}
           />
-          {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
-            <CalendarGridRow
-              {...props}
-              {...partialWeekProps}
-              key={weekIndex}
-              week={week}
-              weekIndex={weekIndex}
-              rowClassName={classNames.weekRow}
-            />
-          ))}
-          <CalendarGridRow
-            {...props}
-            {...partialWeekProps}
-            week={weeks![weeks!.length - 1]}
-            weekIndex={-2}
-            rowClassName={classNames.lastTransitionWeek}
-            ariaRole="presentation"
-            ariaHidden={true}
-          />
-        </tbody>
-      </table>
-    </div>
+        ))}
+        <CalendarGridRow
+          {...props}
+          {...partialWeekProps}
+          week={weeks![weeks!.length - 1]}
+          weekIndex={-2}
+          rowClassName={classNames.lastTransitionWeek}
+          ariaRole="presentation"
+          ariaHidden={true}
+        />
+      </tbody>
+    </table>
   );
 };
 CalendarDayGrid.displayName = 'CalendarDayGrid';

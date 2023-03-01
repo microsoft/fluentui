@@ -53,7 +53,7 @@ const useHeaderContainerStyles = makeStyles({
 const useCurrentItemButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     color: 'inherit',
     flexGrow: 1,
     fontFamily: 'inherit',
@@ -96,7 +96,7 @@ const useNavigationButtonsContainerStyles = makeStyles({
 const useNavigationButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
     color: tokens.colorNeutralForeground1,
     display: 'block',
@@ -157,7 +157,7 @@ const useButtonRowStyles = makeStyles({
 const useItemButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
     color: tokens.colorNeutralForeground1,
     fontFamily: 'inherit',

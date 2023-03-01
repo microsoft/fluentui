@@ -55,7 +55,7 @@ const useGoTodayButtonStyles = makeStyles({
   base: {
     alignSelf: 'flex-end',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     bottom: 0,
     boxSizing: 'content-box',
     color: tokens.colorNeutralForeground1,
