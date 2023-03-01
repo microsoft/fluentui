@@ -80,13 +80,13 @@ const BreadcrumbExampleIconDivider = props => (
 ```jsx
 const BreadcrumbV9Example = props => (
   <Breadcrumb aria-label="breadcrumb">
-    <BreadcrumbItem as="a" href="#">
+    <BreadcrumbItem href="#">
       Home
     </BreadcrumbItem>
-    <BreadcrumbItem as="a" href="#">
+    <BreadcrumbItem onClick={() => {}}>
       Gallery
     </BreadcrumbItem>
-    <BreadcrumbItem as="a" href="#">
+    <BreadcrumbItem href="#">
       About
     </BreadcrumbItem>
   </Breadcrumb>
@@ -140,6 +140,7 @@ Dropdown contains collapsed items.
 | BreadcrumbDivider | Divider component                                                       |
 | BreadcrumbItem    | Contains `li` element as a wrapper. Can contain button and link         |
 | BreadcrumbMenu    | Can contain subfolders or hidden items.                                 |
+| BreadcrumbLink    | Can be used as Button or Link                                           |
 
 ### Breadcrumb
 
@@ -166,17 +167,14 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property           | Values                                  | Default       | Purpose                                                                                  |
-| ------------------ | --------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- |
-| appearance         | `transparent`, `subtle`                 | `transparent` | Sets appearance                                                                          |
-| divider            | _slot_                                  | `chevron`     | Sets type of divider                                                                     |
-| menu               | _slot_                                  | undefined     | Sets custom dropdown menu                                                                |
-| focusMode          | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`         | Sets the focus behavior for the Breadcrumb.                                              |
-| iconPosition       | `before`, `after`                       | `before`      | Sets icon position for all the icons                                                     |
-| maxDisplayedItems  | number                                  | undefined     | If items count more than `maxDisplayedItems` only this number of items will be displayed |
-| overflowIndex      | number                                  | 1             | Index of item where BreadcrumbMenu should be shown                                       |
-| size               | `small`, `medium`, `large`              | `medium`      | Defines size of the Breadcrumb                                                           |
-| truncateNameLength |                                         |               | Amount of symbols for truncated name                                                     |
+| Property          | Values                                  | Default       | Purpose                                                                                  |
+| ----------------- | --------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- |
+| appearance        | `transparent`, `subtle`                 | `transparent` | Sets appearance                                                                          |
+| menu              | _slot_                                  | undefined     | Sets custom dropdown menu                                                                |
+| focusMode         | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`         | Sets the focus behavior for the Breadcrumb.                                              |
+| maxDisplayedItems | number                                  | undefined     | If items count more than `maxDisplayedItems` only this number of items will be displayed |
+| overflowIndex     | number                                  | 1             | Index of item where BreadcrumbMenu should be shown                                       |
+| size              | `small`, `medium`, `large`              | `medium`      | Defines size of the Breadcrumb                                                           |
 
 ### BreadcrumbItem
 
@@ -230,25 +228,25 @@ Usage
 <BreadcrumbItem>
   Item 1
 </BreadcrumbItem>
-<BreadcrumbItem as="button" onClick={() => console.log('smth...')}>
+<BreadcrumbItem onClick={() => console.log('smth...')}>
   Item 2
 </BreadcrumbItem>
-<BreadcrumbItem as="a" href="#">
+<BreadcrumbItem href="#">
   Item 3
 </BreadcrumbItem>
 ```
 
 #### API
 
-| Property     | Values                                  | Default   | Purpose                                          |
-| ------------ | --------------------------------------- | --------- | ------------------------------------------------ |
-| as           | `a`, `button`                           | `button`  | Defines what component to render, button or link |
-| active       | boolean                                 | false     | Indicates if the item is active                  |
-| disabled     | boolean                                 | false     | Disables Breadcrumb item                         |
-| focusMode    | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`     | Sets the focus behavior for the Breadcrumb.      |
-| icon         | _slot_                                  |           | Sets icon                                        |
-| iconPosition | `before`, `after`                       | `before`  | Sets icon position                               |
-| tooltip      | _slot_                                  | undefined | Sets custom tooltip                              |
+| Property     | Values                                  | Default   | Purpose                                     |
+| ------------ | --------------------------------------- | --------- | ------------------------------------------- |
+| active       | boolean                                 | false     | Indicates if the item is active             |
+| disabled     | boolean                                 | false     | Disables Breadcrumb item                    |
+| divider      | _slot_                                  | `chevron` | Sets type of divider                        |
+| focusMode    | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`     | Sets the focus behavior for the Breadcrumb. |
+| icon         | _slot_                                  |           | Sets icon                                   |
+| iconPosition | `before`, `after`                       | `before`  | Sets icon position                          |
+| tooltip      | _slot_                                  | undefined | Sets custom tooltip                         |
 
 #### Breadcrumb icon
 
@@ -284,6 +282,11 @@ The icon might be added as a prop:
 
 Dropdown menu is used for collapsed items and subfolders.
 BreadcrumbMenu uses @fluentui/react-menu component.
+
+### BreadcrumbLink
+
+For Buttons and Link @fluentui/react-link component is used.
+If `href` prop is provided it's rendered as a Link, otherwise as Button.
 
 ## Migration
 
