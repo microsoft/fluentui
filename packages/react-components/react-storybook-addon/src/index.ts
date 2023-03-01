@@ -3,4 +3,3 @@ export type { ThemeIds } from './theme';
 export { themes } from './theme';
 export { THEME_ID } from './constants';
 export { parameters } from './hooks';
-export { withFluentProvider } from './decorators/withFluentProvider';
