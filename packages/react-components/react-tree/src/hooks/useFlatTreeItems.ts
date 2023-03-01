@@ -13,15 +13,21 @@ import { ImmutableSet } from '../utils/ImmutableSet';
 import { useFlatTreeNavigation } from './useFlatTreeNavigation';
 import { useOpenItemsState } from './useOpenItemsState';
 
-export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> &
+export type FlatTreeItem = Required<Pick<TreeItemProps, 'id'>> &
   TreeItemProps & {
     parentId?: string;
   };
+
+export type FlatTreeItemProps = Required<
+  Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>
+> &
+  TreeItemProps;
 
 type TreeItemPropsReference = {
   props: Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf'>> & TreeItemProps;
   parentId?: string;
   childrenSize: number;
+  index: number;
 };
 
 export type TreeItemPropsReferences = {
@@ -38,14 +44,14 @@ type LazyArray<Value> = {
 export type FlatTreeProps = Required<
   Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & { ref: React.Ref<HTMLDivElement> }
 >;
-export type LazyFlatTreeItems = LazyArray<
-  Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps
->;
+export type LazyFlatTreeItems = LazyArray<FlatTreeItemProps> & {
+  get(id: string): TreeItemPropsReference | null;
+};
 
 export type UseFlatTreeItemsOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems'>;
 
 export function useFlatTreeItems_unstable(
-  items: FlatTreeItemProps[],
+  items: FlatTreeItem[],
   options?: UseFlatTreeItemsOptions,
 ): readonly [FlatTreeProps, LazyFlatTreeItems] {
   const references = React.useMemo(() => createTreeItemPropsRefs(items), [items]);
@@ -105,10 +111,11 @@ function isTreeItemVisible(
   return true;
 }
 
-function createTreeItemPropsRefs(flatTreeItemProps: FlatTreeItemProps[]): TreeItemPropsReferences {
+function createTreeItemPropsRefs(flatTreeItemProps: FlatTreeItem[]): TreeItemPropsReferences {
   const root: TreeItemPropsReference = {
     props: { id: 'root', leaf: false, 'aria-level': 0, 'aria-posinset': 0 },
     childrenSize: 0,
+    index: -1,
   };
   const treeItemPropsRefsPerId = new Map<string, TreeItemPropsReference>();
   const refs: TreeItemPropsReference[] = [];
@@ -116,7 +123,7 @@ function createTreeItemPropsRefs(flatTreeItemProps: FlatTreeItemProps[]): TreeIt
   for (let index = 0; index < flatTreeItemProps.length; index++) {
     const { parentId, ...treeItemProps } = flatTreeItemProps[index];
 
-    const nextPartialItem = flatTreeItemProps[index + 1] as FlatTreeItemProps | undefined;
+    const nextPartialItem = flatTreeItemProps[index + 1] as FlatTreeItem | undefined;
     const currentParentRef = parentId ? treeItemPropsRefsPerId.get(parentId) ?? root : root;
     const isLeaf = nextPartialItem?.parentId !== treeItemProps.id;
     const currentLevel = (currentParentRef.props['aria-level'] ?? 0) + 1;
@@ -131,6 +138,7 @@ function createTreeItemPropsRefs(flatTreeItemProps: FlatTreeItemProps[]): TreeIt
       },
       parentId,
       childrenSize: 0,
+      index: -1,
     };
     treeItemPropsRefsPerId.set(treeItemPropsRef.props.id, treeItemPropsRef);
     refs.push(treeItemPropsRef);
@@ -152,6 +160,7 @@ function createLazyFlatTreeItems(
   { filter = () => true }: { filter: (item: TreeItemPropsReference) => boolean },
 ): LazyFlatTreeItems {
   const flatTreeItems: LazyFlatTreeItems = {
+    get: treeItemPropsRefs.get,
     toArray: () => flatTreeItems.map(identity),
     map: fn => {
       const items: ReturnType<typeof fn>[] = [];
@@ -162,6 +171,7 @@ function createLazyFlatTreeItems(
           break;
         }
         if (filter(currentItemRef)) {
+          currentItemRef.index = index;
           items.push(fn({ ...currentItemRef.props, 'aria-setsize': currentParentRef.childrenSize }));
         } else {
           index += currentParentRef.childrenSize - 1 + currentItemRef.childrenSize;

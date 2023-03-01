@@ -29,12 +29,15 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProps[];
+export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[];
 
 // @public (undocumented)
-export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
+export type FlatTreeItem = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
     parentId?: string;
 };
+
+// @public (undocumented)
+export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps;
 
 // @public (undocumented)
 export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & {
@@ -42,7 +45,9 @@ export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange
 }>;
 
 // @public (undocumented)
-export type LazyFlatTreeItems = LazyArray<Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps>;
+export type LazyFlatTreeItems = LazyArray<FlatTreeItemProps> & {
+    get(id: string): TreeItemPropsReference | null;
+};
 
 // @public (undocumented)
 export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
@@ -245,7 +250,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public (undocumented)
-export function useFlatTreeItems_unstable(items: FlatTreeItemProps[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, LazyFlatTreeItems];
+export function useFlatTreeItems_unstable(items: FlatTreeItem[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, LazyFlatTreeItems];
 
 // @public (undocumented)
 export type UseFlatTreeItemsOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems'>;

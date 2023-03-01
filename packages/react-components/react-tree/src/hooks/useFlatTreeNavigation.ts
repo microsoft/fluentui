@@ -1,103 +1,64 @@
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Home } from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { isHTMLElement } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
-import { filterTreeItem } from '../utils/filterTreeItemAndGroup';
-import { isHTMLElementWithRole } from '../utils/isHTMLElementWithRole';
-import { useDOMTreeWalker } from './useDOMTreeWalker';
+import { useTreeItemWalker } from './useTreeItemWalker';
 import type { TreeItemPropsReferences } from './useFlatTreeItems';
-import { focusTypeAhead } from './useNestedTreeNavigation';
+import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
+import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 
 export function useFlatTreeNavigation(references: TreeItemPropsReferences) {
   const { targetDocument } = useFluent_unstable();
-  const [treeWalkerRef, rootRef] = useDOMTreeWalker(NodeFilter.SHOW_ELEMENT, {
-    acceptNode: filterTreeItem,
-  });
+  const [treeWalkerRef, rootRef] = useTreeItemWalker();
 
-  function navigate(data: TreeNavigationData_unstable) {
-    const { current: treeWalker } = treeWalkerRef;
-    if (!treeWalker || !targetDocument) {
+  function navigate({ target, type, event: { key } }: TreeNavigationData_unstable) {
+    const treeWalker = treeWalkerRef.current;
+    if (!targetDocument || !treeWalker) {
       return;
     }
-    switch (data.type) {
-      case ArrowLeft:
-        return focusSubtreeOwnerItem(data.target, { references, document: targetDocument });
-      case ArrowRight:
-        return focusFirstSubtreeItem(data.target, { treeWalker });
+    switch (type) {
       case 'TypeAhead':
-        return focusTypeAhead(data.target, { treeWalker, key: data.event.key });
+        treeWalker.currentElement = target;
+        return nextTypeAheadElement(treeWalker, key)?.focus();
+      case ArrowLeft:
+        return parentElement(references, target)?.focus();
+      case ArrowRight:
+        treeWalker.currentElement = target;
+        return firstChild(target, treeWalker)?.focus();
       case End:
-        return focusLastTreeItem({ treeWalker });
+        treeWalker.currentElement = treeWalker.root;
+        return treeWalker.lastChild()?.focus();
       case Home:
-        return focusFirstTreeItem({ treeWalker });
+        treeWalker.currentElement = treeWalker.root;
+        return treeWalker.firstChild()?.focus();
       case ArrowDown:
-        return focusNextTreeItem(data.target, { treeWalker });
+        treeWalker.currentElement = target;
+        return treeWalker.nextElement()?.focus();
       case ArrowUp:
-        return focusPreviousTreeItem(data.target, { treeWalker });
+        treeWalker.currentElement = target;
+        return treeWalker.previousElement()?.focus();
     }
   }
   return [navigate, rootRef] as const;
 }
 
-type TreeWalkerOptions = { treeWalker: TreeWalker };
-
-function focusFirstSubtreeItem(target: HTMLElement, { treeWalker }: TreeWalkerOptions) {
-  treeWalker.currentNode = target;
-  const nextNode = treeWalker.nextNode();
-  if (!isHTMLElementWithRole(nextNode, 'treeitem')) {
+function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker) {
+  const nextElement = treeWalker.nextElement();
+  if (!nextElement) {
     return;
   }
-  const nextNodeAriaPosInSet = nextNode.getAttribute('aria-posinset');
-  const nextNodeAriaLevel = nextNode.getAttribute('aria-level');
+  const nextElementAriaPosInSet = nextElement.getAttribute('aria-posinset');
+  const nextElementAriaLevel = nextElement.getAttribute('aria-level');
   const targetAriaLevel = target.getAttribute('aria-level');
-  if (nextNodeAriaPosInSet === '1' && Number(nextNodeAriaLevel) === Number(targetAriaLevel) + 1) {
-    nextNode.focus();
+  if (nextElementAriaPosInSet === '1' && Number(nextElementAriaLevel) === Number(targetAriaLevel) + 1) {
+    return nextElement;
   }
+  return null;
 }
 
-function focusSubtreeOwnerItem(
-  target: HTMLElement,
-  { references, document }: { references: TreeItemPropsReferences; document: Document },
-) {
+function parentElement(references: TreeItemPropsReferences, target: HTMLElement) {
   const treeItemPropsRef = references.get(target.id);
   if (treeItemPropsRef && treeItemPropsRef.parentId) {
-    const parentElement = document.getElementById(treeItemPropsRef.parentId);
-    parentElement?.focus();
+    return document.getElementById(treeItemPropsRef.parentId);
   }
-}
-
-function focusFirstTreeItem({ treeWalker }: TreeWalkerOptions) {
-  treeWalker.currentNode = treeWalker.root;
-  const nextNode = treeWalker.firstChild();
-  if (!isHTMLElement(nextNode)) {
-    return;
-  }
-  nextNode.focus();
-}
-
-function focusLastTreeItem({ treeWalker }: TreeWalkerOptions) {
-  treeWalker.currentNode = treeWalker.root;
-  const nextNode = treeWalker.lastChild();
-  if (!isHTMLElement(nextNode)) {
-    return;
-  }
-  nextNode.focus();
-}
-
-function focusPreviousTreeItem(target: HTMLElement, { treeWalker }: TreeWalkerOptions) {
-  treeWalker.currentNode = target;
-  const previousNode = treeWalker.previousNode();
-  if (!isHTMLElement(previousNode)) {
-    return;
-  }
-  previousNode.focus();
-}
-
-function focusNextTreeItem(target: HTMLElement, { treeWalker }: TreeWalkerOptions) {
-  treeWalker.currentNode = target;
-  const nextNode = treeWalker.nextNode();
-  if (!isHTMLElement(nextNode)) {
-    return;
-  }
-  nextNode.focus();
+  return null;
 }

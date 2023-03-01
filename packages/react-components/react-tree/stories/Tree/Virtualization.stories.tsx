@@ -3,7 +3,7 @@ import {
   TreeProps,
   TreeItem,
   TreeItemLayout,
-  FlatTreeItemProps,
+  FlatTreeItem,
   useFlatTreeItems_unstable,
   useTree_unstable,
   useTreeStyles_unstable,
@@ -12,28 +12,29 @@ import {
   TreeSlots,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
+  FlatTreeItemProps,
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 import { ArrowLeft, End, Home } from '@fluentui/keyboard-keys';
 
-const item1: FlatTreeItemProps[] = [
+const item1: FlatTreeItem[] = [
   {
     id: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
   },
-  ...new Array(300).fill(undefined).map<FlatTreeItemProps>((_, i) => ({
+  ...new Array(300).fill(undefined).map<FlatTreeItem>((_, i) => ({
     id: `flatTreeItem_lvl-1_item-1--child:${i}`,
     parentId: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
   })),
 ];
-const item2: FlatTreeItemProps[] = [
+const item2: FlatTreeItem[] = [
   {
     id: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
   },
-  ...new Array(300).fill(undefined).map<FlatTreeItemProps>((_, i) => ({
+  ...new Array(300).fill(undefined).map<FlatTreeItem>((_, i) => ({
     id: `flatTreeItem_lvl-1_item-2--child:${i}`,
     parentId: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,

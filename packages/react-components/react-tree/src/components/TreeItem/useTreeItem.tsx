@@ -9,6 +9,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
+import { treeDataTypes } from '../../utils/tokens';
 
 /**
  * Create the state required to render TreeItem.
@@ -53,33 +54,27 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const handleArrowRight = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (!open && isBranch) {
-      return requestOpenChange({ event, open: true, type: ArrowRight, target: event.currentTarget });
+      return requestOpenChange({ event, open: true, type: treeDataTypes.arrowRight, target: event.currentTarget });
     }
     if (open && isBranch) {
-      return requestNavigation({ event, type: ArrowRight, target: event.currentTarget });
+      return requestNavigation({ event, type: treeDataTypes.arrowRight, target: event.currentTarget });
     }
   };
   const handleArrowLeft = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (open && isBranch) {
-      return requestOpenChange({ event, open: false, type: ArrowLeft, target: event.currentTarget });
+      return requestOpenChange({ event, open: false, type: treeDataTypes.arrowLeft, target: event.currentTarget });
     }
     if (!open && level > 1) {
-      return requestNavigation({ event, target: event.currentTarget, type: ArrowLeft });
+      return requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.arrowLeft });
     }
   };
   const handleEnter = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (isLeaf) {
-      return;
-    }
-    requestOpenChange({ event, open: !open, type: Enter, target: event.currentTarget });
+    requestOpenChange({ event, open: isLeaf ? open : !open, type: treeDataTypes.enter, target: event.currentTarget });
   };
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
 
-    if (isLeaf) {
-      return;
-    }
     const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
     if (isEventFromActions) {
       return;
@@ -91,8 +86,8 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
     const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
     requestOpenChange({
       event,
-      open: !open,
-      type: isFromExpandIcon ? 'ExpandIconClick' : 'Click',
+      open: isLeaf ? open : !open,
+      type: isFromExpandIcon ? treeDataTypes.expandIconClick : treeDataTypes.click,
       target: event.currentTarget,
     });
   });
@@ -113,15 +108,18 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       case ArrowLeft:
         return handleArrowLeft(event);
       case End:
+        return requestNavigation({ event, type: treeDataTypes.end, target: event.currentTarget });
       case Home:
+        return requestNavigation({ event, type: treeDataTypes.home, target: event.currentTarget });
       case ArrowUp:
+        return requestNavigation({ event, type: treeDataTypes.arrowUp, target: event.currentTarget });
       case ArrowDown:
-        return requestNavigation({ event, type: event.key, target: event.currentTarget });
+        return requestNavigation({ event, type: treeDataTypes.arrowDown, target: event.currentTarget });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
-      return requestNavigation({ event, target: event.currentTarget, type: 'TypeAhead' });
+      return requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.typeAhead });
     }
   });
 
@@ -180,14 +178,13 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       },
     }),
     root: getNativeElementProps(as, {
+      tabIndex: 0,
       ...rest,
       id,
       ref,
-      tabIndex: 0,
       children: null,
       'aria-level': level,
-      // FIXME: tabster fails to navigate when aria-expanded is true
-      // 'aria-expanded': isBranch ? isOpen : undefined,
+      'aria-expanded': isBranch ? open : undefined,
       role: 'treeitem',
       onClick: handleClick,
       onKeyDown: handleKeyDown,

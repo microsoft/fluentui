@@ -6,9 +6,10 @@ import { createImmutableSet, emptyImmutableSet, ImmutableSet } from '../utils/Im
 export function useOpenItemsState(props: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>) {
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => props.openItems && createImmutableSet(props.openItems), [props.openItems]),
-    defaultState: React.useMemo(() => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems), [
-      props.defaultOpenItems,
-    ]),
+    defaultState: React.useMemo(
+      () => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems),
+      [props.defaultOpenItems],
+    ),
     initialState: emptyImmutableSet,
   });
   const updateOpenItems = useEventCallback((data: TreeOpenChangeData) =>
