@@ -24,8 +24,15 @@
     }
   },
   "targetDefaults": {
+    "lint": {
+      "dependsOn": []
+    },
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "bundle-size": {
+      "dependsOn": ["build"]
     },
     "test": {
       "dependsOn": ["build"],
@@ -46,9 +53,17 @@
     "sharedGlobals": [],
     "production": [
       "default",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/**/*.md",
+      "!{projectRoot}/.eslintrc.(json|js)",
+      "!{projectRoot}/**/?(*.)+(spec|test|cy).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s"
+      "!{projectRoot}/tsconfig.cy.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/cypress.config.[jt]s",
+      "!{projectRoot}/bundle-size/**",
+      "!{projectRoot}/e2e/**",
+      "!{projectRoot}/.storybook/**",
+      "!{projectRoot}/**/*.stories.tsx?"
     ]
   }
 }
