@@ -190,137 +190,29 @@ The table supports the following sizes that affect the layout and size of its ch
 
 ## API
 
-> Current proposed API, will be eventually be replaced with a hard link to the `Component.types.ts` file
-> more mature into development.
-
 ### Table
 
 The `Table` component is intended to present data in a tabular format. Apart from sortable headers, the component
 is intended to be presentational and not interactive. This component can also be a bail out for end users if
 overriding the default interaction behaviour of the `DataGrid` component is too difficult.
 
-```ts
-interface TableProps {
-  root: Slot<'table' | 'div'>;
-  /**
-   * Determines sizes of child components
-   * @default medium
-   */
-  size: 'small' | 'smaller' | 'medium' | 'large';
-  /**
-   * Whether the columns are sortable
-   */
-  sortable?: boolean;
-
-  /**
-   * Renders all table components as `div` with appropriate roles.
-   * Avoids manual `as` overrides for all table components
-   *
-   * @default true
-   */
-  nativeElements?: boolean;
-
-  /**
-   * Determines if/how the table can be navigated by keyboard
-   *
-   * @default none
-   */
-  navigationMode?: 'none' | 'cell' | 'row' | 'composite';
-}
-
-interface TableHeaderProps {
-  root?: Slot<'thead' | 'div'>;
-}
-
-interface TableBodyProps {
-  root?: Slot<'tbody' | 'div'>;
-}
-
-interface TableRowProps {
-  root?: Slot<'tr' | 'div'>;
-}
-
-interface TableHeaderCellProps {
-  root?: Slot<'th' | 'div'>;
-  button?: Slot<'button'>;
-  /**
-   * Whether the column is sortable overrides the top level table prop
-   */
-  sortable?: boolean;
-  
-  sortDirection: 'ascending' | 'descending';
-}
-
-/**
- * Layout and design sugar for the primary column of a table
- */
-interface TablePrimaryCellProps {
-  root: Slot<'td' | 'div'>;
-  secondary: Slot<'span'>;
-  main: Slot<'span'>;
-  wrapper: Slot<'div'>;
-  media: Slot<'span'>;
-}
-
-interface TableRowProps {
-  root: Slot<'tr' | 'div'>;
-}
-
-interface TableCellProps {
-  root: Slot<'td' | 'div'>;
-  media: Slot<'span'>;
-}
-
-interface TableCellActionsProps {
-  root: Slot<'div'>;
-}
-```
+- [Table](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/Table/Table.types.ts);
+- [TableHeader](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/TableHeader/TableHeader.types.ts);
+- [TableRow](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/TableRow/TableRow.types.ts);
+- [TableCell](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/TableCell/TableCell.types.ts);
+- [TableCellLayout](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/TableCellLayout/TableCellLayout.types.ts);
+- [TableBody](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/TableBody/TableBody.types.ts);
+- [TableSelectionCell](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/TableSelectionCell/TableSelectionCell.types.ts);
 
 ### DataGrid
 
-> ⚒️ Actively in development to figure out how API will look like with more advanced features
-
-The DataGrid component is an extension of the Table component through composition. This component will
-be interactive and support further scenarios such as row selection and different keyboard navigation modes.
-
-```ts
-interface DataGridProps extends Omit<TableProps, 'nativeElements'> {
-  root: Slot<'div'>;
-  /**
-   * Determines if/how the table can be navigated by keyboard
-   *
-   * @default none
-   */
-  navigationMode?: 'none' | 'cell' | 'row' | 'composite';
-}
-
-interface DataGridHeaderProps extends TableHeaderProps {
-  root: Slot<'div'>;
-}
-
-interface DataGridBodyProps extends TableBodyProps {
-  root: Slot<'div'>;
-}
-
-interface DataGridRowProps extends TableRowProps {
-  root: Slot<'div'>;
-}
-
-interface DataGridHeaderCellProps extends TableHeaderCellProps {
-  root: Slot<'div'>;
-}
-
-/**
- * Layout and design sugar for the primary column of a table
- */
-interface DataGridPrimaryCellProps extends DataGridPrimaryCellProps {
-  root: Slot<'div'>;
-}
-
-interface DataGridCellProps extends DataGridCellProps {
-  root: Slot<'div'>;
-}
-```
+- [DataGrid](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGrid/DataGrid.types.ts);
+- [DataGridHeader](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGridHeader/DataGridHeader.types.ts);
+- [DataGridRow](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGridRow/DataGridRow.types.ts);
+- [DataGridCell](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGridCell/DataGridCell.types.ts);
+- [DataGridCellLayout](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGridCellLayout/DataGridCellLayout.types.ts);
+- [DataGridBody](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGridBody/DataGridBody.types.ts);
+- [DataGridSelectionCell](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-table/src/components/DataGridSelectionCell/DataGridSelectionCell.types.ts);
 
 ## Structure
 
@@ -362,7 +254,9 @@ interface DataGridCellProps extends DataGridCellProps {
 
 ```tsx
 <TableRow>
-  <TableCell media={<FileIcon />}>Cell</TableCell>
+  <TableCell>
+    <TableCellLayout media={<FileIcon />}>Cell</TableCellLayout>
+  </TableCell>
 <TableRow>
 ```
 
@@ -375,7 +269,7 @@ interface DataGridCellProps extends DataGridCellProps {
 ### Table without semantic elements
 
 ```tsx
-<Table nativeElements={false}>
+<Table noNativeElements>
   <TableHeader>
     <TableRow>
       <TableHeaderCell>Header</TableHeaderCell>
@@ -432,9 +326,11 @@ interface DataGridCellProps extends DataGridCellProps {
 <Table>
   <TableBody>
     <TableRow>
-      <TablePrimaryCell main="Main content" secondary="Secondary content" media={<FileIcon />}>
-        Children
-      </TablePrimaryCell>
+      <TableCell>
+        <TableCellLayout main="Main content" description="Description" media={<FileIcon />} appearance="primary">
+          Children
+        </TableCellLayout>
+      </TableCell>
     </TableRow>
   </TableBody>
 </Table>
@@ -447,8 +343,8 @@ interface DataGridCellProps extends DataGridCellProps {
       <td>
         <span aria-hidden="true">icon</span>
         <div>
-          <span>Primary content</span>
-          <span>Secondary content</span>
+          <span>Main content</span>
+          <span>Description</span>
         </div>
         Children
       </td>
@@ -479,7 +375,9 @@ interface DataGridCellProps extends DataGridCellProps {
       <td>
         <span aria-hidden="true">icon</span>
         Content
-        <div><button><span>FileIcon</span></button></div>
+        <div>
+          <button><span>FileIcon</span></button>
+        </div>
       </td>
     </tr>
   </tbody>
@@ -489,17 +387,25 @@ interface DataGridCellProps extends DataGridCellProps {
 ### DataGrid
 
 ```tsx
-<DataGrid>
+<DataGrid
+  items={items}
+  columns={columns}
+  sortable
+  selectionMode="multiselect"
+  getRowId={item => item.file.label}
+  onSelectionChange={(e, data) => console.log(data)}
+>
   <DataGridHeader>
-    <DataGridRow>
-      <DataGridCell> </DataGridCell>
-    <DataGridRow>
-  </DataGridHeader>
-
-  <DataGridBody>
-    <DataGridRow>
-      <DataGridCell> </DataGridCell>
+    <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+      {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
     </DataGridRow>
+  </DataGridHeader>
+  <DataGridBody<Item>>
+    {({ item, rowId }) => (
+      <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+        {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+      </DataGridRow>
+    )}
   </DataGridBody>
 </DataGrid>
 ```
@@ -566,26 +472,12 @@ the component
 <img src="./etc/images/table-interactions/Slide13.PNG" width="700" />
 <img src="./etc/images/table-interactions/Slide14.PNG" width="700" />
 
-#### composite
-
-This navigation mode can cause screen reader issues since it is a combination of `row` and `cell` navigation modes.
-There is also no real standardized pattern for any 2 dimenstional navigation that supports both rows and cells. However
-to support existing legacy and product needs, it will be supported in the Table component.
-
-<img src="./etc/images/table-interactions/Slide16.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide17.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide18.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide19.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide20.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide21.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide22.PNG" width="700" />
-
 ### Nested focusables in cells
 
 #### Single focusable
 
-When there is a single focusable element inside a cell, users are recommended to choose `cell` navigation mode. However
-`composite` navigation mode is also possible. In this scenario, cells will be focused on navigation, but the focusable
+When there is a single focusable element inside a cell, users are recommended to choose `cell` navigation mode.
+In this scenario, cells will be focused on navigation, but the focusable
 element inside the cell should be focused if it exists.
 
 <img src="./etc/images/table-interactions/Slide24.PNG" width="700" />
