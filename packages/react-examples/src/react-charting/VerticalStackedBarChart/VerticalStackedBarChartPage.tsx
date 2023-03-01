@@ -83,6 +83,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             <p>
               Use <code>onBarClick</code> handler for callback on click of bars
             </p>
+            <p>
+              The bar labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
+            </p>
           </div>
         }
       />

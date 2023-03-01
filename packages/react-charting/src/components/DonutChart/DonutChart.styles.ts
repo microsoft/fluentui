@@ -16,11 +16,12 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       className,
     ],
     chart: {
-      width: width,
-      height: height,
+      width,
+      height,
       boxSizing: 'content-box',
       overflow: 'visible',
       alignmentAdjust: 'center',
+      display: 'block',
     },
     legendContainer: {
       paddingTop: '16px',
