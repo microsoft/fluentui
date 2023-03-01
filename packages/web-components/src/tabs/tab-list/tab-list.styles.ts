@@ -6,7 +6,14 @@ import {
   colorNeutralForegroundDisabled,
   fontFamilyBase,
   fontSizeBase300,
+  fontSizeBase400,
+  fontWeightRegular,
   lineHeightBase300,
+  lineHeightBase400,
+  spacingHorizontalMNudge,
+  spacingHorizontalSNudge,
+  spacingVerticalL,
+  spacingVerticalSNudge,
 } from '../../theme/design-tokens.js';
 
 export const styles = css`
@@ -30,10 +37,7 @@ export const styles = css`
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled};
   }
-  /* :host([disabled='true']) ::slotted(fluent-tab) {
-    cursor: not-allowed;
-    color: ${colorNeutralForegroundDisabled};
-  } */
+
   :host([disabled='true']) .active-indicator {
     color: ${colorNeutralForegroundDisabled};
     background: ${colorNeutralForegroundDisabled};
@@ -116,5 +120,29 @@ export const styles = css`
   }
   :host([orientation='vertical']) .activeIndicatorTransition {
     transition: transform 0.2s linear;
+  }
+
+  :host([size='small']) ::slotted(fluent-tab) {
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    padding-top: ${spacingVerticalSNudge};
+    padding-bottom: ${spacingVerticalSNudge};
+    padding-left: ${spacingHorizontalSNudge};
+    padding-right: ${spacingHorizontalSNudge};
+    border-radius: ${borderRadiusMedium};
+  }
+
+  :host([size='large']) ::slotted(fluent-tab) {
+    font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
+    padding-top: ${spacingVerticalL};
+    padding-bottom: ${spacingVerticalL};
+    padding-left: ${spacingHorizontalMNudge};
+    padding-right: ${spacingHorizontalMNudge};
+    border-radius: ${borderRadiusMedium};
+  }
+
+  :host([reserve-selected-tab-space='true']) ::slotted(fluent-tab) {
+    font-weight: ${fontWeightRegular};
   }
 `;

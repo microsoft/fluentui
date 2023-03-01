@@ -48,9 +48,9 @@ export default {
   title: 'Components/TabList',
   args: {
     appearance: 'transparent',
-    disabled: true,
+    disabled: false,
     orientation: 'horizontal',
-    'reserve-selected-tab-space': true,
+    'reserve-selected-tab-space': false,
     size: 'medium',
   },
   argTypes: {

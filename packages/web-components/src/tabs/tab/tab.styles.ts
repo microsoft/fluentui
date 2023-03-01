@@ -7,6 +7,8 @@ import {
   colorNeutralForegroundDisabled,
   fontFamilyBase,
   fontSizeBase300,
+  fontWeightBold,
+  fontWeightRegular,
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
@@ -21,7 +23,6 @@ export const styles = css`
     display: inline-flex;
     align-items: center;
     cursor: pointer;
-    line-height: ${lineHeightBase300};
     box-sizing: border-box;
     justify-content: center;
 
@@ -29,14 +30,14 @@ export const styles = css`
 
     fill: currentcolor;
     font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
     grid-row: 1;
 
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
     padding-top: ${spacingHorizontalM};
     padding-bottom: ${spacingHorizontalM};
     padding-left: ${spacingHorizontalMNudge};
     padding-right: ${spacingHorizontalMNudge};
-
     border-radius: ${borderRadiusMedium};
   }
 
@@ -44,9 +45,11 @@ export const styles = css`
     color: var(--neutral-foreground-rest);
     fill: currentcolor;
   } */
-  /* :host([aria-selected="true"]) {
-    border-color: 
-  } */
+
+  :host([aria-selected='true']),
+  :host([aria-selected='true'][disabled]) {
+    font-weight: ${fontWeightBold};
+  }
 
   :host(:active) {
     color: ${colorNeutralForeground1};
