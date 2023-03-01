@@ -2,88 +2,90 @@
 
 import * as React from 'react';
 
-// The list of hooks is built by scraping the exports from react-components/src/index
+type CustomStyleHook = (state: unknown) => void;
+
+// The list of hooks is built from the exports from react-components/src/index
 export type CustomStyleHooksContextValue = {
-  useAccordionHeaderStyles_unstable: (state: unknown) => void;
-  useAccordionItemStyles_unstable: (state: unknown) => void;
-  useAccordionPanelStyles_unstable: (state: unknown) => void;
-  useAccordionStyles_unstable: (state: unknown) => void;
-  useAvatarStyles_unstable: (state: unknown) => void;
-  useAvatarGroupStyles_unstable: (state: unknown) => void;
-  useAvatarGroupItemStyles_unstable: (state: unknown) => void;
-  useAvatarGroupPopoverStyles_unstable: (state: unknown) => void;
-  useBadgeStyles_unstable: (state: unknown) => void;
-  useCounterBadgeStyles_unstable: (state: unknown) => void;
-  usePresenceBadgeStyles_unstable: (state: unknown) => void;
-  useButtonStyles_unstable: (state: unknown) => void;
-  useCompoundButtonStyles_unstable: (state: unknown) => void;
-  useMenuButtonStyles_unstable: (state: unknown) => void;
-  useSplitButtonStyles_unstable: (state: unknown) => void;
-  useToggleButtonStyles_unstable: (state: unknown) => void;
-  useCheckboxStyles_unstable: (state: unknown) => void;
-  useComboboxStyles_unstable: (state: unknown) => void;
-  useDropdownStyles_unstable: (state: unknown) => void;
-  useListboxStyles_unstable: (state: unknown) => void;
-  useOptionStyles_unstable: (state: unknown) => void;
-  useOptionGroupStyles_unstable: (state: unknown) => void;
-  useDividerStyles_unstable: (state: unknown) => void;
-  useInputStyles_unstable: (state: unknown) => void;
-  useImageStyles_unstable: (state: unknown) => void;
-  useLabelStyles_unstable: (state: unknown) => void;
-  useLinkStyles_unstable: (state: unknown) => void;
-  useCheckmarkStyles_unstable: (state: unknown) => void;
-  useMenuDividerStyles_unstable: (state: unknown) => void;
-  useMenuGroupHeaderStyles_unstable: (state: unknown) => void;
-  useMenuGroupStyles_unstable: (state: unknown) => void;
-  useMenuItemCheckboxStyles_unstable: (state: unknown) => void;
-  useMenuItemRadioStyles_unstable: (state: unknown) => void;
-  useMenuItemStyles_unstable: (state: unknown) => void;
-  useMenuListStyles_unstable: (state: unknown) => void;
-  useMenuPopoverStyles_unstable: (state: unknown) => void;
-  useMenuSplitGroupStyles_unstable: (state: unknown) => void;
-  usePersonaStyles_unstable: (state: unknown) => void;
-  usePopoverSurfaceStyles_unstable: (state: unknown) => void;
-  useRadioGroupStyles_unstable: (state: unknown) => void;
-  useRadioStyles_unstable: (state: unknown) => void;
-  useSelectStyles_unstable: (state: unknown) => void;
-  useSliderStyles_unstable: (state: unknown) => void;
-  useSpinButtonStyles_unstable: (state: unknown) => void;
-  useSpinnerStyles_unstable: (state: unknown) => void;
-  useSwitchStyles_unstable: (state: unknown) => void;
-  useTabStyles_unstable: (state: unknown) => void;
-  useTabListStyles_unstable: (state: unknown) => void;
-  useTextStyles_unstable: (state: unknown) => void;
-  useTextareaStyles_unstable: (state: unknown) => void;
-  useTooltipStyles_unstable: (state: unknown) => void;
-  useDialogTitleStyles_unstable: (state: unknown) => void;
-  useDialogBodyStyles_unstable: (state: unknown) => void;
-  useDialogActionsStyles_unstable: (state: unknown) => void;
-  useDialogSurfaceStyles_unstable: (state: unknown) => void;
-  useDialogContentStyles_unstable: (state: unknown) => void;
-  useProgressBarStyles_unstable: (state: unknown) => void;
-  useToolbarButtonStyles_unstable: (state: unknown) => void;
-  useToolbarRadioButtonStyles_unstable: (state: unknown) => void;
-  useToolbarGroupStyles_unstable: (state: unknown) => void;
-  useToolbarToggleButtonStyles_unstable: (state: unknown) => void;
-  useToolbarDividerStyles_unstable: (state: unknown) => void;
-  useToolbarStyles_unstable: (state: unknown) => void;
-  useTableCellStyles_unstable: (state: unknown) => void;
-  useTableRowStyles_unstable: (state: unknown) => void;
-  useTableBodyStyles_unstable: (state: unknown) => void;
-  useTableStyles_unstable: (state: unknown) => void;
-  useTableHeaderStyles_unstable: (state: unknown) => void;
-  useTableHeaderCellStyles_unstable: (state: unknown) => void;
-  useTableResizeHandleStyles_unstable: (state: unknown) => void;
-  useTableSelectionCellStyles_unstable: (state: unknown) => void;
-  useTableCellActionsStyles_unstable: (state: unknown) => void;
-  useTableCellLayoutStyles_unstable: (state: unknown) => void;
-  useDataGridCellStyles_unstable: (state: unknown) => void;
-  useDataGridRowStyles_unstable: (state: unknown) => void;
-  useDataGridBodyStyles_unstable: (state: unknown) => void;
-  useDataGridStyles_unstable: (state: unknown) => void;
-  useDataGridHeaderStyles_unstable: (state: unknown) => void;
-  useDataGridHeaderCellStyles_unstable: (state: unknown) => void;
-  useDataGridSelectionCellStyles_unstable: (state: unknown) => void;
+  useAccordionHeaderStyles_unstable: CustomStyleHook;
+  useAccordionItemStyles_unstable: CustomStyleHook;
+  useAccordionPanelStyles_unstable: CustomStyleHook;
+  useAccordionStyles_unstable: CustomStyleHook;
+  useAvatarStyles_unstable: CustomStyleHook;
+  useAvatarGroupStyles_unstable: CustomStyleHook;
+  useAvatarGroupItemStyles_unstable: CustomStyleHook;
+  useAvatarGroupPopoverStyles_unstable: CustomStyleHook;
+  useBadgeStyles_unstable: CustomStyleHook;
+  useCounterBadgeStyles_unstable: CustomStyleHook;
+  usePresenceBadgeStyles_unstable: CustomStyleHook;
+  useButtonStyles_unstable: CustomStyleHook;
+  useCompoundButtonStyles_unstable: CustomStyleHook;
+  useMenuButtonStyles_unstable: CustomStyleHook;
+  useSplitButtonStyles_unstable: CustomStyleHook;
+  useToggleButtonStyles_unstable: CustomStyleHook;
+  useCheckboxStyles_unstable: CustomStyleHook;
+  useComboboxStyles_unstable: CustomStyleHook;
+  useDropdownStyles_unstable: CustomStyleHook;
+  useListboxStyles_unstable: CustomStyleHook;
+  useOptionStyles_unstable: CustomStyleHook;
+  useOptionGroupStyles_unstable: CustomStyleHook;
+  useDividerStyles_unstable: CustomStyleHook;
+  useInputStyles_unstable: CustomStyleHook;
+  useImageStyles_unstable: CustomStyleHook;
+  useLabelStyles_unstable: CustomStyleHook;
+  useLinkStyles_unstable: CustomStyleHook;
+  useCheckmarkStyles_unstable: CustomStyleHook;
+  useMenuDividerStyles_unstable: CustomStyleHook;
+  useMenuGroupHeaderStyles_unstable: CustomStyleHook;
+  useMenuGroupStyles_unstable: CustomStyleHook;
+  useMenuItemCheckboxStyles_unstable: CustomStyleHook;
+  useMenuItemRadioStyles_unstable: CustomStyleHook;
+  useMenuItemStyles_unstable: CustomStyleHook;
+  useMenuListStyles_unstable: CustomStyleHook;
+  useMenuPopoverStyles_unstable: CustomStyleHook;
+  useMenuSplitGroupStyles_unstable: CustomStyleHook;
+  usePersonaStyles_unstable: CustomStyleHook;
+  usePopoverSurfaceStyles_unstable: CustomStyleHook;
+  useRadioGroupStyles_unstable: CustomStyleHook;
+  useRadioStyles_unstable: CustomStyleHook;
+  useSelectStyles_unstable: CustomStyleHook;
+  useSliderStyles_unstable: CustomStyleHook;
+  useSpinButtonStyles_unstable: CustomStyleHook;
+  useSpinnerStyles_unstable: CustomStyleHook;
+  useSwitchStyles_unstable: CustomStyleHook;
+  useTabStyles_unstable: CustomStyleHook;
+  useTabListStyles_unstable: CustomStyleHook;
+  useTextStyles_unstable: CustomStyleHook;
+  useTextareaStyles_unstable: CustomStyleHook;
+  useTooltipStyles_unstable: CustomStyleHook;
+  useDialogTitleStyles_unstable: CustomStyleHook;
+  useDialogBodyStyles_unstable: CustomStyleHook;
+  useDialogActionsStyles_unstable: CustomStyleHook;
+  useDialogSurfaceStyles_unstable: CustomStyleHook;
+  useDialogContentStyles_unstable: CustomStyleHook;
+  useProgressBarStyles_unstable: CustomStyleHook;
+  useToolbarButtonStyles_unstable: CustomStyleHook;
+  useToolbarRadioButtonStyles_unstable: CustomStyleHook;
+  useToolbarGroupStyles_unstable: CustomStyleHook;
+  useToolbarToggleButtonStyles_unstable: CustomStyleHook;
+  useToolbarDividerStyles_unstable: CustomStyleHook;
+  useToolbarStyles_unstable: CustomStyleHook;
+  useTableCellStyles_unstable: CustomStyleHook;
+  useTableRowStyles_unstable: CustomStyleHook;
+  useTableBodyStyles_unstable: CustomStyleHook;
+  useTableStyles_unstable: CustomStyleHook;
+  useTableHeaderStyles_unstable: CustomStyleHook;
+  useTableHeaderCellStyles_unstable: CustomStyleHook;
+  useTableResizeHandleStyles_unstable: CustomStyleHook;
+  useTableSelectionCellStyles_unstable: CustomStyleHook;
+  useTableCellActionsStyles_unstable: CustomStyleHook;
+  useTableCellLayoutStyles_unstable: CustomStyleHook;
+  useDataGridCellStyles_unstable: CustomStyleHook;
+  useDataGridRowStyles_unstable: CustomStyleHook;
+  useDataGridBodyStyles_unstable: CustomStyleHook;
+  useDataGridStyles_unstable: CustomStyleHook;
+  useDataGridHeaderStyles_unstable: CustomStyleHook;
+  useDataGridHeaderCellStyles_unstable: CustomStyleHook;
+  useDataGridSelectionCellStyles_unstable: CustomStyleHook;
 };
 
 /**
@@ -91,87 +93,88 @@ export type CustomStyleHooksContextValue = {
  */
 export const CustomStyleHooksContext = React.createContext<CustomStyleHooksContextValue | undefined>(undefined);
 
+const noop = () => {};
 const customStyleHooksContextDefaultValue: CustomStyleHooksContextValue = {
-  useAccordionHeaderStyles_unstable: () => {},
-  useAccordionItemStyles_unstable: () => {},
-  useAccordionPanelStyles_unstable: () => {},
-  useAccordionStyles_unstable: () => {},
-  useAvatarStyles_unstable: () => {},
-  useAvatarGroupStyles_unstable: () => {},
-  useAvatarGroupItemStyles_unstable: () => {},
-  useAvatarGroupPopoverStyles_unstable: () => {},
-  useBadgeStyles_unstable: () => {},
-  useCounterBadgeStyles_unstable: () => {},
-  usePresenceBadgeStyles_unstable: () => {},
-  useButtonStyles_unstable: () => {},
-  useCompoundButtonStyles_unstable: () => {},
-  useMenuButtonStyles_unstable: () => {},
-  useSplitButtonStyles_unstable: () => {},
-  useToggleButtonStyles_unstable: () => {},
-  useCheckboxStyles_unstable: () => {},
-  useComboboxStyles_unstable: () => {},
-  useDropdownStyles_unstable: () => {},
-  useListboxStyles_unstable: () => {},
-  useOptionStyles_unstable: () => {},
-  useOptionGroupStyles_unstable: () => {},
-  useDividerStyles_unstable: () => {},
-  useInputStyles_unstable: () => {},
-  useImageStyles_unstable: () => {},
-  useLabelStyles_unstable: () => {},
-  useLinkStyles_unstable: () => {},
-  useCheckmarkStyles_unstable: () => {},
-  useMenuDividerStyles_unstable: () => {},
-  useMenuGroupHeaderStyles_unstable: () => {},
-  useMenuGroupStyles_unstable: () => {},
-  useMenuItemCheckboxStyles_unstable: () => {},
-  useMenuItemRadioStyles_unstable: () => {},
-  useMenuItemStyles_unstable: () => {},
-  useMenuListStyles_unstable: () => {},
-  useMenuPopoverStyles_unstable: () => {},
-  useMenuSplitGroupStyles_unstable: () => {},
-  usePersonaStyles_unstable: () => {},
-  usePopoverSurfaceStyles_unstable: () => {},
-  useRadioGroupStyles_unstable: () => {},
-  useRadioStyles_unstable: () => {},
-  useSelectStyles_unstable: () => {},
-  useSliderStyles_unstable: () => {},
-  useSpinButtonStyles_unstable: () => {},
-  useSpinnerStyles_unstable: () => {},
-  useSwitchStyles_unstable: () => {},
-  useTabStyles_unstable: () => {},
-  useTabListStyles_unstable: () => {},
-  useTextStyles_unstable: () => {},
-  useTextareaStyles_unstable: () => {},
-  useTooltipStyles_unstable: () => {},
-  useDialogTitleStyles_unstable: () => {},
-  useDialogBodyStyles_unstable: () => {},
-  useDialogActionsStyles_unstable: () => {},
-  useDialogSurfaceStyles_unstable: () => {},
-  useDialogContentStyles_unstable: () => {},
-  useProgressBarStyles_unstable: () => {},
-  useToolbarButtonStyles_unstable: () => {},
-  useToolbarRadioButtonStyles_unstable: () => {},
-  useToolbarGroupStyles_unstable: () => {},
-  useToolbarToggleButtonStyles_unstable: () => {},
-  useToolbarDividerStyles_unstable: () => {},
-  useToolbarStyles_unstable: () => {},
-  useTableCellStyles_unstable: () => {},
-  useTableRowStyles_unstable: () => {},
-  useTableBodyStyles_unstable: () => {},
-  useTableStyles_unstable: () => {},
-  useTableHeaderStyles_unstable: () => {},
-  useTableHeaderCellStyles_unstable: () => {},
-  useTableResizeHandleStyles_unstable: () => {},
-  useTableSelectionCellStyles_unstable: () => {},
-  useTableCellActionsStyles_unstable: () => {},
-  useTableCellLayoutStyles_unstable: () => {},
-  useDataGridCellStyles_unstable: () => {},
-  useDataGridRowStyles_unstable: () => {},
-  useDataGridBodyStyles_unstable: () => {},
-  useDataGridStyles_unstable: () => {},
-  useDataGridHeaderStyles_unstable: () => {},
-  useDataGridHeaderCellStyles_unstable: () => {},
-  useDataGridSelectionCellStyles_unstable: () => {},
+  useAccordionHeaderStyles_unstable: noop,
+  useAccordionItemStyles_unstable: noop,
+  useAccordionPanelStyles_unstable: noop,
+  useAccordionStyles_unstable: noop,
+  useAvatarStyles_unstable: noop,
+  useAvatarGroupStyles_unstable: noop,
+  useAvatarGroupItemStyles_unstable: noop,
+  useAvatarGroupPopoverStyles_unstable: noop,
+  useBadgeStyles_unstable: noop,
+  useCounterBadgeStyles_unstable: noop,
+  usePresenceBadgeStyles_unstable: noop,
+  useButtonStyles_unstable: noop,
+  useCompoundButtonStyles_unstable: noop,
+  useMenuButtonStyles_unstable: noop,
+  useSplitButtonStyles_unstable: noop,
+  useToggleButtonStyles_unstable: noop,
+  useCheckboxStyles_unstable: noop,
+  useComboboxStyles_unstable: noop,
+  useDropdownStyles_unstable: noop,
+  useListboxStyles_unstable: noop,
+  useOptionStyles_unstable: noop,
+  useOptionGroupStyles_unstable: noop,
+  useDividerStyles_unstable: noop,
+  useInputStyles_unstable: noop,
+  useImageStyles_unstable: noop,
+  useLabelStyles_unstable: noop,
+  useLinkStyles_unstable: noop,
+  useCheckmarkStyles_unstable: noop,
+  useMenuDividerStyles_unstable: noop,
+  useMenuGroupHeaderStyles_unstable: noop,
+  useMenuGroupStyles_unstable: noop,
+  useMenuItemCheckboxStyles_unstable: noop,
+  useMenuItemRadioStyles_unstable: noop,
+  useMenuItemStyles_unstable: noop,
+  useMenuListStyles_unstable: noop,
+  useMenuPopoverStyles_unstable: noop,
+  useMenuSplitGroupStyles_unstable: noop,
+  usePersonaStyles_unstable: noop,
+  usePopoverSurfaceStyles_unstable: noop,
+  useRadioGroupStyles_unstable: noop,
+  useRadioStyles_unstable: noop,
+  useSelectStyles_unstable: noop,
+  useSliderStyles_unstable: noop,
+  useSpinButtonStyles_unstable: noop,
+  useSpinnerStyles_unstable: noop,
+  useSwitchStyles_unstable: noop,
+  useTabStyles_unstable: noop,
+  useTabListStyles_unstable: noop,
+  useTextStyles_unstable: noop,
+  useTextareaStyles_unstable: noop,
+  useTooltipStyles_unstable: noop,
+  useDialogTitleStyles_unstable: noop,
+  useDialogBodyStyles_unstable: noop,
+  useDialogActionsStyles_unstable: noop,
+  useDialogSurfaceStyles_unstable: noop,
+  useDialogContentStyles_unstable: noop,
+  useProgressBarStyles_unstable: noop,
+  useToolbarButtonStyles_unstable: noop,
+  useToolbarRadioButtonStyles_unstable: noop,
+  useToolbarGroupStyles_unstable: noop,
+  useToolbarToggleButtonStyles_unstable: noop,
+  useToolbarDividerStyles_unstable: noop,
+  useToolbarStyles_unstable: noop,
+  useTableCellStyles_unstable: noop,
+  useTableRowStyles_unstable: noop,
+  useTableBodyStyles_unstable: noop,
+  useTableStyles_unstable: noop,
+  useTableHeaderStyles_unstable: noop,
+  useTableHeaderCellStyles_unstable: noop,
+  useTableResizeHandleStyles_unstable: noop,
+  useTableSelectionCellStyles_unstable: noop,
+  useTableCellActionsStyles_unstable: noop,
+  useTableCellLayoutStyles_unstable: noop,
+  useDataGridCellStyles_unstable: noop,
+  useDataGridRowStyles_unstable: noop,
+  useDataGridBodyStyles_unstable: noop,
+  useDataGridStyles_unstable: noop,
+  useDataGridHeaderStyles_unstable: noop,
+  useDataGridHeaderCellStyles_unstable: noop,
+  useDataGridSelectionCellStyles_unstable: noop,
 };
 
 /**
