@@ -40,7 +40,6 @@ export const TimePickerControlledExample: React.FC = () => {
           increments={15}
           autoComplete="on"
           label={'Controlled TimePicker with non default options'}
-          useComboBoxAsMenuWidth
           dateAnchor={dateAnchor}
           value={time}
           onChange={onControlledExampleChange}

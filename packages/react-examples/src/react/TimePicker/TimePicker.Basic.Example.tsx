@@ -44,7 +44,6 @@ export const TimePickerBasicExample: React.FC = () => {
           label={'TimePicker basic example'}
           onChange={onBasicExampleChange}
           dateAnchor={new Date('November 25, 2021 09:15:00')}
-          useComboBoxAsMenuWidth
         />
         <Text>{`Basic example selected time: ${
           basicExampleTimeString ? basicExampleTimeString : '<no time selected>'

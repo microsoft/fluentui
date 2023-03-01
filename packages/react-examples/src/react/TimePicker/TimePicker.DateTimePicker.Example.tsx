@@ -49,12 +49,7 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
             onSelectDate={onSelectDate}
             minDate={new Date()}
           />
-          <TimePicker
-            dateAnchor={datePickerDate}
-            value={currentTime}
-            useComboBoxAsMenuWidth
-            onChange={onDateTimePickerChange}
-          />
+          <TimePicker dateAnchor={datePickerDate} value={currentTime} onChange={onDateTimePickerChange} />
         </div>
         <Text>{`TimePicker selected time: ${currentTimeString ? currentTimeString : '<no time selected>'}`}</Text>
       </div>
