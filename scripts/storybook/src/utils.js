@@ -32,10 +32,6 @@ function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
   const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
-  if (process.env.NODE_ENV === 'production') {
-    return addonName;
-  }
-
   function getPaths() {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];

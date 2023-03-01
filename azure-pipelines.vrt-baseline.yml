@@ -26,7 +26,7 @@ jobs:
           fluentVersion: v9
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
-          shouldBuildstorybookaddon: true
+          shouldBuildstorybookaddon: false
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv9" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
