@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update tsconfig lib as jest now requires at least ES2015",
-  "packageName": "@fluentui/merge-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

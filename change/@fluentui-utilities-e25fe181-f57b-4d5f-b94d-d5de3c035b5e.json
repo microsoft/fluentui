@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove private test/ helpers used within monorepo tests",
-  "packageName": "@fluentui/utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
