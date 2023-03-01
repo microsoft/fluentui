@@ -108,7 +108,7 @@ Breadcrumb can be:
 - Non-clickable element
 - Button
 - Link
-- Dropdown (added by a user)
+- Dropdown menu (added by a user)
 
 ### Icon
 
@@ -134,12 +134,12 @@ Dropdown contains collapsed items.
 
 ### Components
 
-| Component          | Purpose                                                                 |
-| ------------------ | ----------------------------------------------------------------------- |
-| Breadcrumb         | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements. |
-| BreadcrumbDivider  | Divider component                                                       |
-| BreadcrumbItem     | Contains `li` element as a wrapper. Can contain button and link         |
-| BreadcrumbDropdown | Can contain subfolders or hidden items.                                 |
+| Component         | Purpose                                                                 |
+| ----------------- | ----------------------------------------------------------------------- |
+| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements. |
+| BreadcrumbDivider | Divider component                                                       |
+| BreadcrumbItem    | Contains `li` element as a wrapper. Can contain button and link         |
+| BreadcrumbMenu    | Can contain subfolders or hidden items.                                 |
 
 ### Breadcrumb
 
@@ -162,7 +162,7 @@ Dropdown contains collapsed items.
 - root `nav` element
 - list `ol` element
 - `divider` - a BreadcrumbDivider component
-- `dropdown` - a BreadcrumbDropdown component
+- `menu` - a BreadcrumbMenu component
 
 #### API
 
@@ -170,11 +170,11 @@ Dropdown contains collapsed items.
 | ------------------ | --------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- |
 | appearance         | `transparent`, `subtle`                 | `transparent` | Sets appearance                                                                          |
 | divider            | _slot_                                  | `chevron`     | Sets type of divider                                                                     |
-| dropdown           | _slot_                                  | undefined     | Sets custom dropdown                                                                     |
+| menu               | _slot_                                  | undefined     | Sets custom dropdown menu                                                                |
 | focusMode          | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`         | Sets the focus behavior for the Breadcrumb.                                              |
 | iconPosition       | `before`, `after`                       | `before`      | Sets icon position for all the icons                                                     |
 | maxDisplayedItems  | number                                  | undefined     | If items count more than `maxDisplayedItems` only this number of items will be displayed |
-| overflowIndex      | number                                  | 1             | Index of item where BreadcrumbDropdown should be shown                                   |
+| overflowIndex      | number                                  | 1             | Index of item where BreadcrumbMenu should be shown                                       |
 | size               | `small`, `medium`, `large`              | `medium`      | Defines size of the Breadcrumb                                                           |
 | truncateNameLength |                                         |               | Amount of symbols for truncated name                                                     |
 
@@ -248,7 +248,7 @@ Usage
 | focusMode    | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`     | Sets the focus behavior for the Breadcrumb.      |
 | icon         | _slot_                                  |           | Sets icon                                        |
 | iconPosition | `before`, `after`                       | `before`  | Sets icon position                               |
-| tooltop      | _slot_                                  | undefined | Sets custom tooltip                              |
+| tooltip      | _slot_                                  | undefined | Sets custom tooltip                              |
 
 #### Breadcrumb icon
 
@@ -280,10 +280,10 @@ The icon might be added as a prop:
 | -------- | ------------------------------------ | --------- | -------------------- |
 | divider  | `chevron`, `slash`, custom component | `chevron` | Sets type of divider |
 
-### BreadcrumbDropdown
+### BreadcrumbMenu
 
-Dropdown is used for collapsed items and subfolders.
-BreadcrumbDropdown uses @fluentui/react-menu component.
+Dropdown menu is used for collapsed items and subfolders.
+BreadcrumbMenu uses @fluentui/react-menu component.
 
 ## Migration
 
