@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 01 Mar 2023 04:20:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "d87331975f16754f9debb4e11c6dd4f2b516f130",
+            "comment": "Redo of PR of Slider spec after merge error"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Feb 2023 04:25:15 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.8",
       "version": "3.0.0-alpha.8",
