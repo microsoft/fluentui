@@ -112,7 +112,7 @@ export const styles = css`
   :host(:hover) .input-container {
     color: ${colorNeutralForeground2Hover};
   }
-  :host(:hover) ::slotted([slot='start']) {
+  :host([icon]:hover) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Hover};
   }
   :host(:active) {
@@ -140,55 +140,69 @@ export const styles = css`
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host([icon]) {
+  :host([icon]),
+  :host([checkmark]) {
     display: grid;
-    grid-template-columns: 20px auto auto 20px;
   }
-
+  :host([checkmark][role='menuitemcheckbox']) {
+    display: grid;
+  }
   :host([icon]) .content {
     grid-column: 2 / span 1;
   }
-
-  :host([icon]) ::slotted([slot='end']) {
+  :host([checkmark][icon][aria-haspopup='menu']) {
+    grid-template-columns: 20px 20px auto 20px 20px;
+  }
+  :host([checkmark][icon][aria-haspopup='menu']) ::slotted([slot='end']) {
+    grid-column: 4 / span 1;
+  }
+  :host([checkmark][icon][aria-haspopup='menu']) .expand-collapse-glyph-container {
+    grid-column: 5 / span 1;
+  }
+  :host([checkmark]) .content {
+    grid-column: 2 / span 1;
+  }
+  :host([checkmark][role='menuitemcheckbox']) .content,
+  :host([checkmark][role='menuitemradio']) .content {
+    grid-column: auto / span 1;
+  }
+  :host([icon]) ::slotted([slot='end']) :host([checkmark]) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
     justify-self: flex-end;
   }
-
+  :host([checkmark][icon]),
+  :host([checkmark][icon]) {
+    display: grid;
+    grid-template-columns: 20px 20px auto auto;
+  }
+  :host([checkmark][icon]) .content,
+  :host([role='menuitemcheckbox'][icon]) .content,
+  :host([role='menuitemradio'][icon]) .content {
+    grid-column: 3 / span 1;
+  }
+  :host([checkmark][icon]) .input-container {
+    grid-column: 1 / span 1;
+  }
+  :host([checkmark][icon]) ::slotted([slot='start']),
+  :host([checkbox][icon]) ::slotted([slot='start']) {
+    grid-column: 2 / span 1;
+  }
   :host([aria-haspopup='menu']) {
     grid-template-columns: 20px auto auto 20px;
   }
-
   :host([aria-haspopup='menu']) .content {
     grid-column: auto / span 1;
   }
-
   :host([aria-haspopup='menu']) ::slotted([slot='end']) {
     grid-column: 3 / span 1;
     justify-self: flex-end;
   }
-
-  :host([aria-haspopup='menu'][icon]) .content {
+  :host([aria-haspopup='menu'][icon]) .content,
+  :host([aria-haspopup='menu'][checkmark]) .content {
     grid-column: 2 / span 1;
   }
 
-  :host([role='menuitemradio'][icon]),
-  :host([role='menuitemcheckbox'][icon]) {
-    display: grid;
-    grid-template-columns: 20px 20px auto auto;
-  }
-
-  :host([role='menuitemradio'][icon]) .input-container,
-  :host([role='menuitemcheckbox'][icon]) .input-container {
-    grid-column: 1 / span 1;
-  }
-
-  :host([role='menuitemradio'][icon]) ::slotted([slot='start']),
-  :host([role='menuitemcheckbox'][icon]) ::slotted([slot='start']) {
-    grid-column: 2 / span 1;
-  }
-
-  :host([role='menuitemradio'][icon]) .content,
-  :host([role='menuitemcheckbox'][icon]) .content {
+  :host([aria-haspopup='menu'][checkmark][icon]) .content {
     grid-column: 3 / span 1;
   }
 `;

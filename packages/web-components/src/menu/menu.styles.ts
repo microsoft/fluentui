@@ -24,5 +24,6 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     box-shadow: ${shadow16};
     padding: 4px;
+    row-gap: 2px;
   }
 `;

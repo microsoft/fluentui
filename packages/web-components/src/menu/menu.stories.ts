@@ -4,6 +4,7 @@ import { renderComponent } from '../helpers.stories.js';
 import type { Menu as FluentMenu } from './menu.js';
 import './define.js';
 import '../menu-item/define.js';
+import '../divider/define.js';
 
 type MenuStoryArgs = Args & FluentMenu;
 type MenuStoryMeta = Meta<MenuStoryArgs>;
@@ -67,22 +68,69 @@ const Code20Filled = html`<svg
 
 const storyTemplate = html<MenuStoryArgs>`
   <div style="width: 200px; height: 13em;">
-    <fluent-menu icons ?icons=${x => x.icons}>
+    <fluent-menu ?icons=${x => x.icons} ?checkmarks=${x => x.checkmarks}>
       <fluent-menu-item ?disabled=${x => x.disabled}>
-        Cut
+        Item 1
         <span slot="start">${Cut20Filled}</span>
         <span slot="end">Ctrl+X</span>
       </fluent-menu-item>
+
       <fluent-menu-item ?disabled=${x => x.disabled}>
         <span slot="start">${Edit20Filled}</span>
         Item 2
         <span slot="end">Ctrl+E</span>
       </fluent-menu-item>
+
       <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
+
+      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
+      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
+        Checkbox 1
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+
+      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
+        Checkbox 2
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+
+      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}> Checkbox 3 </fluent-menu-item>
+
+      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
+      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
+        Radio 1
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+
+      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
+        Radio 2
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+
+      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}> Radio 3 </fluent-menu-item>
+
+      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
       <fluent-menu-item ?disabled=${x => x.disabled}>
         <span slot="start">${Folder24Filled}</span>
         New
-        <fluent-menu slot="submenu">
+        <fluent-menu slot="submenu" ?icons=${x => x.icons}>
+          <fluent-menu-item>
+            File
+            <span slot="start">${Folder24Filled}</span>
+          </fluent-menu-item>
+          <fluent-menu-item>
+            Workspace
+            <span slot="start">${Code20Filled}</span>
+          </fluent-menu-item>
+        </fluent-menu>
+        <span slot="end">Ctrl+N</span>
+      </fluent-menu-item>
+      <fluent-menu-item ?disabled=${x => x.disabled}>
+        Create
+        <fluent-menu slot="submenu" ?icons=${x => x.icons}>
           <fluent-menu-item>
             File
             <span slot="start">${Folder24Filled}</span>
@@ -113,7 +161,15 @@ export default {
       defaultValue: false,
     },
     icons: {
-      description: 'Sets icon and content alignment styles',
+      description: 'Sets icon and content alignment styles when icons are present',
+      table: {
+        defaultValue: { summary: false },
+      },
+      control: 'boolean',
+      defaultValue: false,
+    },
+    checkmarks: {
+      description: 'Sets icon and content alignment styles when radio or checkboxes are present',
       table: {
         defaultValue: { summary: false },
       },
@@ -185,6 +241,52 @@ export const MenuAligningWithIcons = renderComponent(html<MenuStoryArgs>`
         <span slot="start">${Edit20Filled}</span>
       </fluent-menu-item>
       <fluent-menu-item> Item 3 </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuAligningWithCheckmarks = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-menu checkmarks>
+      <fluent-menu-item role="menuitemcheckbox">
+        Item 1
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox">
+        Item 2
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuAligningWithIconsAndCheckmarks = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-menu checkmarks icons>
+      <fluent-menu-item role="menuitemcheckbox">
+        Item 1
+        <span slot="start">${Cut20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox">
+        Item 2
+        <span slot="start">${Edit20Filled}</span>
+      </fluent-menu-item>
+      <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
+    </fluent-menu>
+  </div>
+`);
+
+export const MenuAligningWithDivider = renderComponent(html<MenuStoryArgs>`
+  <div style="width: 128px; position: relative">
+    <fluent-menu>
+      <fluent-menu-item> Item 1 </fluent-menu-item>
+      <fluent-menu-item> Item 2 </fluent-menu-item>
+      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
+      <fluent-menu-item> Item 3 </fluent-menu-item>
+      <fluent-menu-item> Item 4 </fluent-menu-item>
+      <fluent-menu-item> Item 5 </fluent-menu-item>
     </fluent-menu>
   </div>
 `);

@@ -7,6 +7,28 @@ import { attr } from '@microsoft/fast-element';
  */
 export class Menu extends FASTMenu {
   /**
+   * sets menuitem styles to align content when checkmarks are present
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: checkmarks
+   */
+  @attr({ mode: 'boolean' })
+  public checkmarks: boolean = false;
+  protected checkmarksChanged(): void {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+    this.menuItems?.filter(this.isMenuItemElement).forEach((item: HTMLElement, index: number) => {
+      if (this.checkmarks) {
+        item.setAttribute('checkmark', '');
+      } else {
+        item.removeAttribute('checkmark');
+      }
+    });
+  }
+
+  /**
    * sets menuitem styles to align content when when icons are present
    *
    * @public
@@ -34,6 +56,9 @@ export class Menu extends FASTMenu {
 
     if (this.icons) {
       this.iconsChanged();
+    }
+    if (this.checkmarks) {
+      this.checkmarksChanged();
     }
   }
 }
