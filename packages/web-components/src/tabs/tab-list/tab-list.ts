@@ -43,17 +43,4 @@ export class TabList extends FASTTabs {
       });
     }
   }
-
-  // attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
-  //   this.setActiveIndicatorContent();
-  // }
-
-  // setActiveIndicatorContent() {
-  //   const tabs = this.querySelectorAll('fluent-tab');
-  //   tabs.forEach(tab => {
-  //     if (tab.ariaSelected === 'true') {
-  //       this.activeIndicatorRef.textContent = tab.textContent;
-  //     }
-  //   });
-  // }
 }
