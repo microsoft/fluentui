@@ -21,7 +21,7 @@ export const renderFluentProvider_unstable = (
 ) => {
   const { slots, slotProps } = getSlots<FluentProviderSlots>(state);
 
-  // Typescript (vscode) incoreectly references the FluentProviderProps.customStyleHooks_unstable
+  // Typescript (vscode) incorrectly references the FluentProviderProps.customStyleHooks_unstable
   // instead of FluentProviderContextValues.customStyleHooks_unstable and thinks it is
   // Partial<CustomStyleHooksContextValue>, so it needs to be cast to Required<CustomStyleHooksContextValue>
 
