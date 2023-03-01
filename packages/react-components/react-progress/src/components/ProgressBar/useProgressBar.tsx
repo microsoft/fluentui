@@ -13,14 +13,29 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
   // Props
-  const { color = 'brand', max = 1.0, shape = 'rounded', thickness = 'medium', value } = props;
+  const { color = 'brand', max = 1, shape = 'rounded', thickness = 'medium', value } = props;
+
+  const internalMax = max && max <= 0 ? 1 : max;
+  const internalValue = value && value > internalMax ? internalMax : value;
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (max <= 0) {
+      // eslint-disable-next-line no-console
+      console.error(`The prop 'max' must be greater than 0. Received max: ${max}`);
+    }
+
+    if (value && value > max) {
+      // eslint-disable-next-line no-console
+      console.error(`The prop 'value' must be less than or equal to 'max'. Received  value: ${value}, max: ${max}`);
+    }
+  }
 
   const root = getNativeElementProps('div', {
     ref,
     role: 'progressbar',
-    'aria-valuemin': value !== undefined ? 0 : undefined,
-    'aria-valuemax': value !== undefined ? max : undefined,
-    'aria-valuenow': value,
+    'aria-valuemin': internalValue !== undefined ? 0 : undefined,
+    'aria-valuemax': internalValue !== undefined ? max : undefined,
+    'aria-valuenow': internalValue,
     ...props,
   });
 
@@ -30,10 +45,10 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
 
   const state: ProgressBarState = {
     color,
-    max,
+    max: internalMax,
     shape,
     thickness,
-    value,
+    value: internalValue,
     components: {
       root: 'div',
       bar: 'div',

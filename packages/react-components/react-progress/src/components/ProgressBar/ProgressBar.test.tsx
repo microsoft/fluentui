@@ -18,7 +18,13 @@ describe('ProgressBar', () => {
       ],
     },
   });
-
+  const originalConsoleError = console.error;
+  beforeEach(() => {
+    console.error = jest.fn();
+  });
+  afterAll(() => {
+    console.error = originalConsoleError;
+  });
   it('has role progressbar', () => {
     const result = render(<ProgressBar />);
     expect(result.getByRole('progressbar')).toBeDefined();
@@ -46,5 +52,28 @@ describe('ProgressBar', () => {
     expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
+  });
+  describe('Max', () => {
+    it('gives the proper error message when max is negative', () => {
+      const max = -1;
+      const errorMsg = `The prop 'max' must be greater than 0. Received max: ${max}`;
+      render(<ProgressBar max={max} />);
+      expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+    it('gives the proper error message when max is zero', () => {
+      const max = 0;
+      const errorMsg = `The prop 'max' must be greater than 0. Received max: ${max}`;
+      render(<ProgressBar max={max} />);
+      expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+  });
+  describe('Value', () => {
+    it('gives the proper error message when value is greater than max', () => {
+      const value = 23;
+      const max = 10;
+      const errorMsg = `The prop 'value' must be less than or equal to 'max'. Received  value: ${value}, max: ${max}`;
+      render(<ProgressBar value={value} max={max} />);
+      expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
   });
 });
