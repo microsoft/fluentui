@@ -14,8 +14,9 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps> = React.forwardRef
   const state = useMenuButton_unstable(props, ref);
 
   useMenuButtonStyles_unstable(state);
-  const componentStyles = useCustomStyleHooks_unstable();
-  componentStyles.useMenuButtonStyles_unstable(state);
+
+  const { useMenuButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderMenuButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

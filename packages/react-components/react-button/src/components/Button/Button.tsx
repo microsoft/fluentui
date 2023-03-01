@@ -13,8 +13,9 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
   const state = useButton_unstable(props, ref);
 
   useButtonStyles_unstable(state);
-  const componentStyles = useCustomStyleHooks_unstable();
-  componentStyles.useButtonStyles_unstable(state);
+
+  const { useButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

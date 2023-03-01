@@ -13,8 +13,9 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwar
   const state = useToggleButton_unstable(props, ref);
 
   useToggleButtonStyles_unstable(state);
-  const componentStyles = useCustomStyleHooks_unstable();
-  componentStyles.useToggleButtonStyles_unstable(state);
+
+  const { useToggleButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderToggleButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react
