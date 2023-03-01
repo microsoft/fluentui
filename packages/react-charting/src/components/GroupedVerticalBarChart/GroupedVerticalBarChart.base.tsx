@@ -487,7 +487,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         }
         const legend: ILegend = {
           title: point.legend,
-          color,
+          color: color,
           action: () => {
             this._onLegendClick(point.legend);
           },

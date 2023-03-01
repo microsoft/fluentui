@@ -37,7 +37,7 @@ const points: IChartDataPoint[] = [
 const chartTitle = 'Stacked Bar chart example';
 
 const chartPoints: IChartProps = {
-  chartTitle,
+  chartTitle: chartTitle,
   chartData: points,
 };
 
