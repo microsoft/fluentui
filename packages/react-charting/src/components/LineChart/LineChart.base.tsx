@@ -317,7 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       ? lineChartData.map((item: ILineChartPoints, index: number) => {
           let color: string;
           if (typeof item.color === 'undefined') {
-            color = getNextColor(index);
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
           } else {
             color = item.color;
           }

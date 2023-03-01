@@ -723,7 +723,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       ? lineChartData.map((item, index) => {
           let color: string;
           if (typeof item.color === 'undefined') {
-            color = getNextColor(index);
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
           } else {
             color = item.color;
           }
