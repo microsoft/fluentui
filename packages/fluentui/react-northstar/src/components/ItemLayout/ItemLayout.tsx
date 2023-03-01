@@ -75,77 +75,77 @@ export type ItemLayoutStylesProps = never;
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
  */
-export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> &
-  FluentComponentStaticProps<ItemLayoutProps> = props => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
-  setStart();
-  const {
-    as,
-    debug,
-    endMedia,
-    media,
-    renderMainArea,
-    rootCSS,
-    mediaCSS,
-    endMediaCSS,
-    className,
-    design,
-    styles,
-    variables,
-  } = props;
-
-  const unhandledProps = useUnhandledProps(ItemLayout.handledProps, props);
-
-  const { classes, styles: resolvedStyles } = useStyles<ItemLayoutStylesProps>(ItemLayout.displayName, {
-    className: itemLayoutClassName,
-    mapPropsToInlineStyles: () => ({
+export const ItemLayout: ComponentWithAs<'div', ItemLayoutProps> & FluentComponentStaticProps<ItemLayoutProps> =
+  props => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(ItemLayout.displayName, context.telemetry);
+    setStart();
+    const {
+      as,
+      debug,
+      endMedia,
+      media,
+      renderMainArea,
+      rootCSS,
+      mediaCSS,
+      endMediaCSS,
       className,
       design,
       styles,
       variables,
-    }),
-    rtl: context.rtl,
-  });
+    } = props;
 
-  const startArea = media;
-  const mainArea = renderMainArea(props, classes);
-  const endArea = endMedia;
+    const unhandledProps = useUnhandledProps(ItemLayout.handledProps, props);
 
-  const mergedMediaClasses = cx(itemLayoutSlotClassNames.media, classes.media);
-  const mergedEndMediaClasses = cx(itemLayoutSlotClassNames.endMedia, classes.endMedia);
+    const { classes, styles: resolvedStyles } = useStyles<ItemLayoutStylesProps>(ItemLayout.displayName, {
+      className: itemLayoutClassName,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
-  const element = (
-    <Layout
-      as={as as React.ElementType}
-      className={classes.root}
-      styles={resolvedStyles.root}
-      rootCSS={rootCSS}
-      alignItems="center"
-      gap={pxToRem(8)}
-      debug={debug}
-      reducing
-      start={
-        startArea && (
-          <span style={mediaCSS} className={mergedMediaClasses}>
-            {rtlTextContainer.createFor({ element: startArea })}
-          </span>
-        )
-      }
-      main={mainArea}
-      end={
-        endArea && (
-          <span style={endMediaCSS} className={mergedEndMediaClasses}>
-            {rtlTextContainer.createFor({ element: endArea })}
-          </span>
-        )
-      }
-      {...unhandledProps}
-    />
-  );
-  setEnd();
-  return element;
-};
+    const startArea = media;
+    const mainArea = renderMainArea(props, classes);
+    const endArea = endMedia;
+
+    const mergedMediaClasses = cx(itemLayoutSlotClassNames.media, classes.media);
+    const mergedEndMediaClasses = cx(itemLayoutSlotClassNames.endMedia, classes.endMedia);
+
+    const element = (
+      <Layout
+        as={as as React.ElementType}
+        className={classes.root}
+        styles={resolvedStyles.root}
+        rootCSS={rootCSS}
+        alignItems="center"
+        gap={pxToRem(8)}
+        debug={debug}
+        reducing
+        start={
+          startArea && (
+            <span style={mediaCSS} className={mergedMediaClasses}>
+              {rtlTextContainer.createFor({ element: startArea })}
+            </span>
+          )
+        }
+        main={mainArea}
+        end={
+          endArea && (
+            <span style={endMediaCSS} className={mergedEndMediaClasses}>
+              {rtlTextContainer.createFor({ element: endArea })}
+            </span>
+          )
+        }
+        {...unhandledProps}
+      />
+    );
+    setEnd();
+    return element;
+  };
 
 ItemLayout.displayName = 'ItemLayout';
 

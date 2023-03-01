@@ -18,26 +18,29 @@ export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnTy
   </div>
 );
 
-export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
-  <div style={{ display: 'flex' }}>
-    <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
-      {story()}
+export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> =
+  story => (
+    <div style={{ display: 'flex' }}>
+      <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
+        {story()}
+      </div>
     </div>
-  </div>
-);
+  );
 
-export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
-  <div style={{ display: 'flex' }}>
-    <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
-      {story()}
+export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> =
+  story => (
+    <div style={{ display: 'flex' }}>
+      <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
+        {story()}
+      </div>
     </div>
-  </div>
-);
+  );
 
-export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
-  <div style={{ display: 'flex' }}>
-    <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
-      {story()}
+export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnReturnType> =
+  story => (
+    <div style={{ display: 'flex' }}>
+      <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
+        {story()}
+      </div>
     </div>
-  </div>
-);
+  );

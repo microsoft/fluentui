@@ -139,7 +139,7 @@ export interface ComponentSlotStylesResolved extends Record<string, ICSSInJSStyl
 
 export interface ComponentStyleFunctionParam<
   TProps extends PropsWithVarsAndStyles = PropsWithVarsAndStyles,
-  TVars extends ComponentVariablesObject = ComponentVariablesObject
+  TVars extends ComponentVariablesObject = ComponentVariablesObject,
 > {
   props: TProps;
   variables: TVars;

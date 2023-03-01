@@ -60,37 +60,40 @@ const overflowButtonProps: IButtonProps = {
 
 /** Command bar which renders the Share button with a coachmark */
 // eslint-disable-next-line @fluentui/max-len
-const IndividualCommandBarButtonAsExample: React.FunctionComponent<IIndividualCommandBarButtonAsExampleProps> = props => {
-  const { onDismissCoachmark, isCoachmarkVisible } = props;
-  const items: ICommandBarItemProps[] = React.useMemo(() => {
-    const CoachmarkButtonWrapper: IComponentAs<ICommandBarItemProps> = (p: IComponentAsProps<ICommandBarItemProps>) => {
-      return (
-        <CoachmarkCommandBarButton {...p} isCoachmarkVisible={isCoachmarkVisible} onDismiss={onDismissCoachmark} />
-      );
-    };
+const IndividualCommandBarButtonAsExample: React.FunctionComponent<IIndividualCommandBarButtonAsExampleProps> =
+  props => {
+    const { onDismissCoachmark, isCoachmarkVisible } = props;
+    const items: ICommandBarItemProps[] = React.useMemo(() => {
+      const CoachmarkButtonWrapper: IComponentAs<ICommandBarItemProps> = (
+        p: IComponentAsProps<ICommandBarItemProps>,
+      ) => {
+        return (
+          <CoachmarkCommandBarButton {...p} isCoachmarkVisible={isCoachmarkVisible} onDismiss={onDismissCoachmark} />
+        );
+      };
 
-    return [
-      { key: 'newItem', text: 'New', iconProps: { iconName: 'Add' }, onClick: () => console.log('New') },
-      { key: 'upload', text: 'Upload', iconProps: { iconName: 'Upload' }, onClick: () => console.log('Upload') },
-      {
-        key: 'share',
-        text: 'Share',
-        iconProps: { iconName: 'Share' },
-        // The Share button will have a coachmark
-        commandBarButtonAs: CoachmarkButtonWrapper,
-        onClick: () => console.log('Share'),
-      },
-      {
-        key: 'download',
-        text: 'Download',
-        iconProps: { iconName: 'Download' },
-        onClick: () => console.log('Download'),
-      },
-    ];
-  }, [onDismissCoachmark, isCoachmarkVisible]);
+      return [
+        { key: 'newItem', text: 'New', iconProps: { iconName: 'Add' }, onClick: () => console.log('New') },
+        { key: 'upload', text: 'Upload', iconProps: { iconName: 'Upload' }, onClick: () => console.log('Upload') },
+        {
+          key: 'share',
+          text: 'Share',
+          iconProps: { iconName: 'Share' },
+          // The Share button will have a coachmark
+          commandBarButtonAs: CoachmarkButtonWrapper,
+          onClick: () => console.log('Share'),
+        },
+        {
+          key: 'download',
+          text: 'Download',
+          iconProps: { iconName: 'Download' },
+          onClick: () => console.log('Download'),
+        },
+      ];
+    }, [onDismissCoachmark, isCoachmarkVisible]);
 
-  return <CommandBar overflowButtonProps={overflowButtonProps} items={items} />;
-};
+    return <CommandBar overflowButtonProps={overflowButtonProps} items={items} />;
+  };
 
 export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent = () => {
   const [isCoachmarkVisible, setIsCoachmarkVisible] = React.useState(true);

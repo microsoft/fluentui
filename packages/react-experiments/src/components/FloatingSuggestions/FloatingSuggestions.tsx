@@ -19,7 +19,8 @@ export interface IFloatingSuggestionsState {
 
 export class FloatingSuggestions<TItem>
   extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
-  implements IFloatingSuggestions<TItem> {
+  implements IFloatingSuggestions<TItem>
+{
   private root = React.createRef<HTMLDivElement>();
   private suggestionStore: SuggestionsStore<TItem>;
   private suggestionsControl: React.RefObject<SuggestionsControl<TItem>> = React.createRef();
@@ -191,8 +192,8 @@ export class FloatingSuggestions<TItem>
   private _renderSuggestions(): JSX.Element | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
-    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined = this
-      .props.onRenderSuggestionControl;
+    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined =
+      this.props.onRenderSuggestionControl;
     if (TypedSuggestionsControl === undefined) {
       TypedSuggestionsControl = SuggestionsControl;
     }

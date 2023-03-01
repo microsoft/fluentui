@@ -429,13 +429,8 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
 
   const width = contentSize.width;
 
-  const {
-    nameplatePadding,
-    nameplateMargin,
-    nameplateActivityHeight,
-    nameplateNameHeight,
-    foregroundMargin,
-  } = TileLayoutSizes[tileSize];
+  const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight, foregroundMargin } =
+    TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

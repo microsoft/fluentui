@@ -101,7 +101,7 @@ export const cardClassName = 'ui-card';
  * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
  *
  */
-export const Card = (React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
+export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
@@ -198,7 +198,7 @@ export const Card = (React.forwardRef<HTMLDivElement, CardProps>((props, ref) =>
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CardProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardProps> &
   FluentComponentStaticProps<CardProps> & {
     Header: typeof CardHeader;
     Body: typeof CardBody;

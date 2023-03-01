@@ -9,10 +9,10 @@ import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag
 jest.mock('@fluentui/react-theme');
 
 describe('useFluentProviderThemeStyleTag', () => {
-  const defaultTheme = ({
+  const defaultTheme = {
     'css-variable-1': '1',
     'css-variable-2': '2',
-  } as unknown) as Theme;
+  } as unknown as Theme;
 
   afterEach(() => {
     resetIdsForTests();
@@ -62,7 +62,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     const { result, rerender } = renderHook(() => useFluentProviderThemeStyleTag({ theme, targetDocument: document }));
 
     // Act
-    theme = ({ 'css-variable-update': 'xxx' } as unknown) as Theme;
+    theme = { 'css-variable-update': 'xxx' } as unknown as Theme;
     rerender();
 
     // Assert

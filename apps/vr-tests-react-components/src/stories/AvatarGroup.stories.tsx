@@ -45,30 +45,29 @@ const names = [
 
 const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
-const AvatarGroupList: React.FC<
-  AvatarGroupProps & { overflowIndicator?: AvatarGroupPopoverProps['indicator'] }
-> = props => {
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: props.layout });
+const AvatarGroupList: React.FC<AvatarGroupProps & { overflowIndicator?: AvatarGroupPopoverProps['indicator'] }> =
+  props => {
+    const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: props.layout });
 
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
-      {sizes.map(size => (
-        <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
-          {inlineItems.map(name => (
-            <AvatarGroupItem key={name} name={name} />
-          ))}
-          {overflowItems && (
-            <AvatarGroupPopover indicator={props.overflowIndicator}>
-              {overflowItems.map(name => (
-                <AvatarGroupItem key={name} name={name} />
-              ))}
-            </AvatarGroupPopover>
-          )}
-        </AvatarGroup>
-      ))}
-    </div>
-  );
-};
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
+        {sizes.map(size => (
+          <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
+            {inlineItems.map(name => (
+              <AvatarGroupItem key={name} name={name} />
+            ))}
+            {overflowItems && (
+              <AvatarGroupPopover indicator={props.overflowIndicator}>
+                {overflowItems.map(name => (
+                  <AvatarGroupItem key={name} name={name} />
+                ))}
+              </AvatarGroupPopover>
+            )}
+          </AvatarGroup>
+        ))}
+      </div>
+    );
+  };
 
 // Non-interactive stories
 storiesOf('AvatarGroup Converged', module)

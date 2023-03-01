@@ -6,7 +6,7 @@ import type { ToggleButtonProps, ToggleButtonState } from '../ToggleButton';
 export function useToggleState<
   TToggleButtonProps extends Pick<ToggleButtonProps, 'checked' | 'defaultChecked' | 'disabled' | 'disabledFocusable'>,
   TButtonState extends Pick<ButtonState, 'root'>,
-  TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>
+  TToggleButtonState extends Pick<ToggleButtonState, 'checked' | 'root'>,
 >(props: TToggleButtonProps, state: TButtonState): TToggleButtonState {
   const { checked, defaultChecked, disabled, disabledFocusable } = props;
   const { onClick, role } = state.root;

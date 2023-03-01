@@ -14,12 +14,18 @@ import { StackedBarChartDynamicExample } from './StackedBarChart.Dynamic.Example
 import { StackedBarChartBaseBarExample } from './StackedBarChart.BaseBar.Example';
 import { StackedBarChartCustomAccessibilityExample } from './StackedBarChart.CustomAccessibility.Example';
 
-const StackedBarChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Basic.Example.tsx') as string;
-const StackedBarChartBenchmarkExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Benchmark.Example.tsx') as string;
-const StackedBarChartMultipleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Multiple.Example.tsx') as string;
-const StackedBarChartDynamicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Dynamic.Example.tsx') as string;
-const StackedBarChartBaseBarExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.BaseBar.Example.tsx') as string;
-const StackedBarChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.CustomAccessibility.Example.tsx') as string;
+const StackedBarChartBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Basic.Example.tsx') as string;
+const StackedBarChartBenchmarkExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Benchmark.Example.tsx') as string;
+const StackedBarChartMultipleExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Multiple.Example.tsx') as string;
+const StackedBarChartDynamicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.Dynamic.Example.tsx') as string;
+const StackedBarChartBaseBarExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.BaseBar.Example.tsx') as string;
+const StackedBarChartCustomAccessibilityExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/StackedBarChart.CustomAccessibility.Example.tsx') as string;
 
 export class StackedBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

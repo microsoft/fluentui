@@ -305,7 +305,10 @@ const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISugg
   );
 };
 
-const log = (text: string): (() => void) => (): void => console.log(text);
+const log =
+  (text: string): (() => void) =>
+  (): void =>
+    console.log(text);
 
 const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (
   documentProps: IPickerItemProps<IFullDocumentCardProps>,
