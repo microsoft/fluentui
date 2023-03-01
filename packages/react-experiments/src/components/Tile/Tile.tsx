@@ -36,7 +36,7 @@ export const TileLayoutValues = {
   foregroundMargin: 16 as 16,
 };
 
-export type TileLayoutValues = typeof TileLayoutValues[keyof typeof TileLayoutValues];
+export type TileLayoutValues = (typeof TileLayoutValues)[keyof typeof TileLayoutValues];
 
 export interface ITileState {
   isSelected?: boolean;

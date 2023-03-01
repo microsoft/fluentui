@@ -11,7 +11,7 @@ export const defaultSelectorTypes = [
   'attribute-value',
 ] as const;
 
-type SelectorType = typeof defaultSelectorTypes[number];
+type SelectorType = (typeof defaultSelectorTypes)[number];
 
 type SelectorParams = {
   seed?: number;

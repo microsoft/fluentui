@@ -43,7 +43,7 @@ const _mapping = rawMapping
     };
   })
   .filter(Boolean);
-const mapping = _mapping.filter(Boolean) as Array<NonNullable<typeof _mapping[number]>>;
+const mapping = _mapping.filter(Boolean) as Array<NonNullable<(typeof _mapping)[number]>>;
 
 const IconCatalogInner: React.FC = () => {
   const styles = useStyles();
