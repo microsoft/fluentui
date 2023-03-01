@@ -28,7 +28,7 @@ export const usePopoverSurface_unstable = (
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const legacyTrapFocus = usePopoverContext_unstable(context => context.legacyTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
-  const { modalAttributes } = useModalAttributes({ trapFocus, legacyTrapFocus });
+  const { modalAttributes } = useModalAttributes({ trapFocus, legacyTrapFocus, alwaysFocusable: !trapFocus });
 
   const state: PopoverSurfaceState = {
     inline,
@@ -42,7 +42,7 @@ export const usePopoverSurface_unstable = (
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, contentRef),
-      role: trapFocus ? 'dialog' : 'complementary',
+      role: trapFocus ? 'dialog' : 'group',
       'aria-modal': trapFocus ? true : undefined,
       ...modalAttributes,
       ...props,

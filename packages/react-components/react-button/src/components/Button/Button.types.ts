@@ -5,13 +5,18 @@ export type ButtonSlots = {
   /**
    * Root of the component that renders as either a `<button>` tag or an `<a>` tag.
    */
-  root: NonNullable<Slot<ARIAButtonSlotProps>>;
+  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
    */
   icon?: Slot<'span'>;
 };
+
+/**
+ * A button supports different sizes.
+ */
+export type ButtonSize = 'small' | 'medium' | 'large';
 
 export type ButtonProps = ComponentProps<ButtonSlots> & {
   /**
@@ -61,7 +66,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonSize;
 };
 
 export type ButtonState = ComponentState<ButtonSlots> &

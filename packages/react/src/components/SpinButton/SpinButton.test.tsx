@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { ReactWrapper, mount } from 'enzyme';
 
 import { SpinButton } from './SpinButton';
@@ -484,6 +484,40 @@ describe('SpinButton', () => {
       simulateInput(['garbages', '8']);
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toBe('8');
+    });
+
+    it('uses last known good value when stepping from invalid value via buttons', () => {
+      wrapper = mount(<SpinButton componentRef={ref} defaultValue="0" />);
+      jest.useFakeTimers();
+
+      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+
+      ReactTestUtils.Simulate.focus(inputDOM);
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('2 2'));
+
+      simulateArrowButton('up');
+      ReactTestUtils.act(() => {
+        jest.runOnlyPendingTimers();
+      });
+
+      verifyValue('1');
+    });
+
+    it('uses last known good value when stepping from invalid value via keyboard', () => {
+      wrapper = mount(<SpinButton componentRef={ref} defaultValue="1" />);
+      jest.useFakeTimers();
+
+      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+
+      ReactTestUtils.Simulate.focus(inputDOM);
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('garbage'));
+
+      simulateArrowKey(KeyCodes.down);
+      ReactTestUtils.act(() => {
+        jest.runOnlyPendingTimers();
+      });
+
+      verifyValue('0');
     });
 
     it('resets value when input is cleared (empty)', () => {

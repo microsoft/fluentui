@@ -9,7 +9,7 @@ const noOutline: IRawStyle = {
 
 const iconStyle = (fontSize?: string | number): IRawStyle => {
   return {
-    fontSize: fontSize,
+    fontSize,
     margin: '0 4px',
     height: '16px',
     lineHeight: '16px',
@@ -43,15 +43,15 @@ export const getStyles = memoizeFunction(
         getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
-          boxSizing: 'border-box',
           border: '1px solid ' + border,
-          userSelect: 'none',
+          borderRadius: effects.roundedCorner2,
+          boxSizing: 'border-box',
+          cursor: 'pointer',
           display: 'inline-block',
+          padding: '0 16px',
           textDecoration: 'none',
           textAlign: 'center',
-          cursor: 'pointer',
-          padding: '0 16px',
-          borderRadius: effects.roundedCorner2,
+          userSelect: 'none',
 
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.

@@ -1,7 +1,11 @@
 import * as React from 'react';
+import { OptionValue } from './OptionCollection.types';
 
 export type SelectionProps = {
-  /* For an uncontrolled component, sets the initial selection */
+  /**
+   * For an uncontrolled component, sets the initial selection.
+   * If this is set, the `defaultValue` prop MUST also be set.
+   */
   defaultSelectedOptions?: string[];
 
   /**
@@ -13,25 +17,35 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
-  onSelect?(event: SelectionEvents, data: OnSelectData): void;
+  onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
   /**
    * An array of selected option keys.
-   * Use this with `onSelect` to directly control the selected option(s)
+   * Use this with `onOptionSelect` to directly control the selected option(s)
+   * If this is set, the `value` prop MUST also be controlled.
    */
   selectedOptions?: string[];
 };
 
-export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>> & Pick<SelectionProps, 'multiselect'>;
-
 /* Values returned by the useSelection hook */
-export type SelectionValue = {
+export type SelectionState = {
+  clearSelection: (event: SelectionEvents) => void;
   selectedOptions: string[];
-  selectOption: (event: SelectionEvents, optionValue: string) => void;
+  selectOption: (event: SelectionEvents, option: OptionValue) => void;
 };
 
-/* Data for the onSelect callback */
-export type OnSelectData = { optionValue: string; selectedOptions: string[] };
+/*
+ * Data for the onOptionSelect callback.
+ * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
+ */
+export type OptionOnSelectData = {
+  optionValue: string | undefined;
+  optionText: string | undefined;
+  selectedOptions: string[];
+};
 
-/* Possible event types for onSelect */
-export type SelectionEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+/* Possible event types for onOptionSelect */
+export type SelectionEvents =
+  | React.ChangeEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.MouseEvent<HTMLElement>;

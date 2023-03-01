@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Label, Input, Slider, tokens } from '@fluentui/react-components';
+import { useId, Label, Input, Slider, tokens } from '@fluentui/react-components';
 import { useDebounce } from '../../utils/useDebounce';
 import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -45,65 +45,58 @@ const useStyles = makeStyles({
   },
 });
 
-export interface FormProps {
-  sidebarId: string;
-  formState: CustomAttributes;
-  setFormState: React.Dispatch<CustomAttributes>;
-}
-
-export const Form: React.FC<FormProps> = props => {
+export const Form: React.FC = () => {
   const styles = useStyles();
+  const sidebarId = useId();
 
-  const { formState, setFormState, sidebarId } = props;
   const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
-  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
-    setFormState(action.attributes);
-    dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
-    return action.attributes;
+  const initialState: CustomAttributes = {
+    keyColor: '#0F6CBD',
+    hueTorsion: 0,
+    vibrancy: 0,
   };
 
-  const [keyColor, setKeyColor] = React.useState<string>(formState.keyColor);
-  const [hueTorsion, setHueTorsion] = React.useState<number>(formState.hueTorsion);
-  const [darkCp, setDarkCp] = React.useState<number>(formState.darkCp * 100);
-  const [lightCp, setLightCp] = React.useState<number>(formState.lightCp * 100);
+  const [keyColor, setKeyColor] = React.useState<string>(initialState.keyColor);
+  const [hueTorsion, setHueTorsion] = React.useState<number>(initialState.hueTorsion);
+  const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
 
-  const [form, dispatchForm] = React.useReducer(formReducer, formState);
-  const debouncedForm = useDebounce(
-    { keyColor, hueTorsion: hueTorsion / 100, darkCp: darkCp / 100, lightCp: lightCp / 100 },
+  const debounceAttributes: CustomAttributes = useDebounce(
+    { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
     10,
   );
+
   React.useEffect(() => {
-    dispatchForm({ attributes: debouncedForm });
-  }, [debouncedForm]);
+    dispatchAppState({ type: 'Custom', customAttributes: debounceAttributes });
+  }, [debounceAttributes, dispatchAppState]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyColor(e.target.value);
+    // check if the newly inputted hex code has a #
+    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+    setKeyColor(newHexColor);
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHueTorsion(parseInt(e.target.value, 10));
   };
-  const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLightCp(parseInt(e.target.value, 10));
-  };
-  const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDarkCp(parseInt(e.target.value, 10));
+  const handleVibrancyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVibrancy(parseInt(e.target.value, 10));
   };
 
   return (
     <div className={styles.root} role="tabpanel" aria-labelledby="Edit">
       <div className={styles.inputs}>
-        <Label htmlFor={props.sidebarId + 'keyColor'}>Key color value</Label>
+        <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
         <div className={styles.labels}>
           <Input
             className={styles.keyColor}
             size="large"
             appearance="underline"
             id={sidebarId + 'keyColor'}
-            value={form.keyColor}
+            value={keyColor}
             onChange={handleKeyColorChange}
+            maxLength={7}
           />
-          <div className={styles.colorPicker} style={{ backgroundColor: form.keyColor }}>
+          <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
             <input
               className={styles.color}
               type="color"
@@ -117,8 +110,8 @@ export const Form: React.FC<FormProps> = props => {
       <div className={styles.slider}>
         <Slider
           size="small"
-          min={-360}
-          max={360}
+          min={-50}
+          max={50}
           id={sidebarId + 'hueTorsion'}
           value={hueTorsion}
           onChange={handleHueTorsionChange}
@@ -126,47 +119,33 @@ export const Form: React.FC<FormProps> = props => {
         <Input
           size="small"
           type="number"
-          min={-360}
-          max={360}
+          min={-50}
+          max={50}
           appearance="outline"
           id={sidebarId + 'hueTorsion input'}
           value={hueTorsion.toString()}
           onChange={handleHueTorsionChange}
         />
       </div>
-      <Label htmlFor={sidebarId + 'lightCp'}>Light Control Point</Label>
+      <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
       <div className={styles.slider}>
         <Slider
           size="small"
-          min={0}
-          max={100}
-          id={sidebarId + 'lightCp'}
-          value={lightCp}
-          onChange={handleLightCpChange}
+          min={-50}
+          max={50}
+          id={sidebarId + 'vibrancy'}
+          value={vibrancy}
+          onChange={handleVibrancyChange}
         />
         <Input
           size="small"
           type="number"
-          min={0}
-          max={100}
+          min={-50}
+          max={50}
           appearance="outline"
-          id={sidebarId + 'lightCp input'}
-          value={lightCp.toString()}
-          onChange={handleLightCpChange}
-        />
-      </div>
-      <Label htmlFor={sidebarId + 'darkCp'}>Dark Control Point</Label>
-      <div className={styles.slider}>
-        <Slider size="small" min={0} max={100} id={sidebarId + 'darkCp'} value={darkCp} onChange={handleDarkCpChange} />
-        <Input
-          size="small"
-          type="number"
-          min={0}
-          max={100}
-          appearance="outline"
-          id={sidebarId + 'darkCp input'}
-          value={darkCp.toString()}
-          onChange={handleDarkCpChange}
+          id={sidebarId + 'vibrancy input'}
+          value={vibrancy.toString()}
+          onChange={handleVibrancyChange}
         />
       </div>
     </div>

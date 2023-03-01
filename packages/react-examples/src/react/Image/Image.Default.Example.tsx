@@ -4,7 +4,7 @@ import { Image, IImageProps } from '@fluentui/react/lib/Image';
 // These props are defined up here so they can easily be applied to multiple Images.
 // Normally specifying them inline would be fine.
 const imageProps: Partial<IImageProps> = {
-  src: 'http://via.placeholder.com/350x150',
+  src: 'https://fabricweb.azureedge.net/fabric-website/placeholders/350x150.png',
   // Show a border around the image (just for demonstration purposes)
   styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
 };

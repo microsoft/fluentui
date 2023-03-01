@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { MoreHorizontalRegular } from '@fluentui/react-icons';
-import { PopoverSurface } from '@fluentui/react-popover';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 
 /**
@@ -14,29 +12,7 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { children, layout = 'spread', maxAvatars = 5, size = defaultAvatarGroupSize } = props;
-  const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
-  const childrenArray = React.Children.toArray(children);
-
-  let rootChildren = childrenArray;
-  let overflowChildren;
-  let overflowButtonChildren;
-
-  if (layout === 'pie') {
-    rootChildren = childrenArray.slice(0, 3);
-    overflowChildren = childrenArray;
-  } else if (childrenArray.length > maxAvatars) {
-    const numOfAvatarsToHide = childrenArray.length - maxAvatars + 1;
-
-    rootChildren = childrenArray.slice(numOfAvatarsToHide);
-    overflowChildren = childrenArray.slice(0, numOfAvatarsToHide);
-
-    if (overflowIndicator === 'icon') {
-      overflowButtonChildren = <MoreHorizontalRegular />;
-    } else {
-      overflowButtonChildren = numOfAvatarsToHide > 99 ? '99+' : `+${numOfAvatarsToHide}`;
-    }
-  }
+  const { layout = 'spread', size = defaultAvatarGroupSize } = props;
 
   const root = getNativeElementProps(
     'div',
@@ -44,52 +20,17 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
       role: 'group',
       ...props,
       ref,
-      children: rootChildren,
     },
     ['size'],
   );
 
-  const overflowButton = resolveShorthand(props.overflowButton, {
-    required: true,
-    defaultProps: {
-      children: overflowButtonChildren,
-      type: 'button',
-    },
-  });
-
-  const overflowContent = resolveShorthand(props.overflowContent, {
-    required: true,
-    defaultProps: {
-      'aria-label': 'Overflow',
-      children: overflowChildren,
-      role: 'list',
-      tabIndex: 0,
-    },
-  });
-
-  const overflowSurface = resolveShorthand(props.overflowSurface, {
-    required: true,
-  });
-
   return {
-    nonOverflowAvatarsCount: rootChildren.length,
-    hasOverflow: !!overflowChildren,
     layout,
-    overflowIndicator,
     size,
-    tooltipContent: 'View more people.',
-
     components: {
       root: 'div',
-      overflowContent: 'div',
-      overflowButton: 'button',
-      overflowSurface: PopoverSurface,
     },
-
     root,
-    overflowButton,
-    overflowContent,
-    overflowSurface,
   };
 };
 

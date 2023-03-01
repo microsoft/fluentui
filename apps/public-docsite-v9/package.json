@@ -2,10 +2,10 @@
   "name": "@fluentui/public-docsite-v9",
   "version": "1.0.0",
   "private": true,
-  "description": "A collection of examples demonstrating how to upgrade from v8 to v9",
+  "description": "Fluent UI React v9 documentation",
   "scripts": {
     "build": "just-scripts build",
-    "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
+    "build-storybook": "build-storybook -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
     "chromatic:branch": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
     "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook --branch-name microsoft:master",
     "clean": "just-scripts clean",
@@ -13,23 +13,27 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook:docs",
-    "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
+    "storybook": "start-storybook --port 3000 --no-manager-cache",
     "storybook:docs": "yarn storybook --docs"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.82.0",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.1.1",
-    "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
-    "@fluentui/react-theme": "^9.0.0",
-    "@griffel/react": "^1.2.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "@fluentui/react-migration-v8-v9": "^9.1.9",
+    "@fluentui/react-migration-v0-v9": "9.0.0-alpha.0",
+    "@fluentui/react": "^8.106.2",
+    "@fluentui/react-northstar": "^0.66.3",
+    "@fluentui/react-icons-northstar": "^0.66.3",
+    "@fluentui/react-components": "^9.15.6",
+    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
+    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
+    "@griffel/react": "^1.5.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-window": "^1.8.6",
     "tslib": "^2.1.0"
   }
 }

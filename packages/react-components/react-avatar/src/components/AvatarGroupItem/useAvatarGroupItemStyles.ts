@@ -1,9 +1,10 @@
-import { useSizeStyles } from '../../Avatar';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { AvatarSizes } from '../../Avatar';
-import type { AvatarGroupProps } from '../../AvatarGroup';
+import { useSizeStyles } from '../../Avatar';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
+import type { AvatarGroupProps } from '../../AvatarGroup';
+import type { AvatarSize } from '../../Avatar';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
@@ -12,7 +13,7 @@ export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
   overflowLabel: 'fui-AvatarGroupItem__overflowLabel',
 };
 
-const avatarGroupItemDividerWidthVar = '--fuiAvatarGroupItem__divier--width';
+const avatarGroupItemDividerWidthVar = '--fuiAvatarGroupItem__divider--width';
 
 /**
  * Styles for the root slot
@@ -56,130 +57,17 @@ const useOverflowLabelStyles = makeStyles({
 });
 
 /**
- * Styles for the pie layout
+ * Styles for the stack layout
  */
-const usePieStyles = makeStyles({
-  base: {
-    position: 'absolute',
-  },
-  twoSlices: {
-    '&:first-child': {
-      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
-      left: '-25%',
-    },
-    '&:nth-child(2)': {
-      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
-      left: '25%',
-    },
-  },
-  threeSlices: {
-    '&:first-child': {
-      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
-      left: '-25%',
-    },
-    '&:not(:first-child)': {
-      // Since the two AvatarGroupItems on the right are scaled by 0.5, the divider width should not be halved.
-      clipPath: `inset(0 0 var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}))`,
-      left: '50%',
-      transform: 'scale(0.5)',
-      transformOrigin: '0 0',
-    },
-    '&:nth-child(3)': {
-      clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) 0 0 var(${avatarGroupItemDividerWidthVar}))`,
-      top: '50%',
-    },
-  },
-  thick: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThick },
-  thicker: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThicker },
-  thickest: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThickest },
-});
-
 const useStackStyles = makeStyles({
-  base: {
-    '&::after': {
-      content: "''",
-      position: 'absolute',
-      display: 'inline-flex',
-      // Border is used instead of outline due to a bug in webkit browsers where border-radius is ignored in outline.
-      ...shorthands.borderColor(tokens.colorNeutralBackground2),
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      ...shorthands.borderStyle('solid'),
-
-      '@media (forced-colors: active)': {
-        forcedColorAdjust: 'none',
-      },
-    },
-  },
-  overflowButton: {
-    // border-color has to be set to transparent when there's focus due to the outline overlapping the focus ring.
-    '&:focus': {
-      '&::after': {
-        ...shorthands.borderColor('transparent'),
-      },
-    },
-    // hide inner border when using high contrast mode and use the outer (::after) to match Avatar's outline
-    '@media (forced-colors: active)': {
-      ...shorthands.borderColor('Canvas'),
-    },
-  },
   thick: {
-    '&::after': {
-      width: '100%',
-      height: '100%',
-      left: `calc(-1 * ${tokens.strokeWidthThick})`,
-      top: `calc(-1 * ${tokens.strokeWidthThick})`,
-      ...shorthands.borderWidth(tokens.strokeWidthThick),
-    },
+    boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground2}`,
   },
   thicker: {
-    '&::after': {
-      width: '100%',
-      height: '100%',
-      left: `calc(-1 * ${tokens.strokeWidthThicker})`,
-      top: `calc(-1 * ${tokens.strokeWidthThicker})`,
-      ...shorthands.borderWidth(tokens.strokeWidthThicker),
-    },
+    boxShadow: `0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorNeutralBackground2}`,
   },
   thickest: {
-    '&::after': {
-      width: '100%',
-      height: '100%',
-      left: `calc(-1 * ${tokens.strokeWidthThickest})`,
-      top: `calc(-1 * ${tokens.strokeWidthThickest})`,
-      ...shorthands.borderWidth(tokens.strokeWidthThickest),
-    },
-  },
-  borderThin: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
-      left: `calc(-1 * (${tokens.strokeWidthThick} + ${tokens.strokeWidthThin}))`,
-      top: `calc(-1 * (${tokens.strokeWidthThick} + ${tokens.strokeWidthThin}))`,
-    },
-  },
-  borderThick: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
-      left: `calc(-1 * ${tokens.strokeWidthThick} * 2)`,
-      top: `calc(-1 * ${tokens.strokeWidthThick} * 2)`,
-    },
-  },
-  borderThicker: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
-      left: `calc(-1 * ${tokens.strokeWidthThicker} * 2)`,
-      top: `calc(-1 * ${tokens.strokeWidthThicker} * 2)`,
-    },
-  },
-  borderThickest: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
-      left: `calc(-1 * ${tokens.strokeWidthThickest} * 2)`,
-      top: `calc(-1 * ${tokens.strokeWidthThickest} * 2)`,
-    },
+    boxShadow: `0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorNeutralBackground2}`,
   },
   xxs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
   xs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
@@ -187,6 +75,9 @@ const useStackStyles = makeStyles({
   l: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalL})` } },
 });
 
+/**
+ * Styles for the spread layout
+ */
 const useSpreadStyles = makeStyles({
   s: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalS } },
   mNudge: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalMNudge } },
@@ -196,16 +87,92 @@ const useSpreadStyles = makeStyles({
 });
 
 /**
+ * Styles for the pie layout
+ */
+const usePieStyles = makeStyles({
+  base: {
+    position: 'absolute',
+  },
+  slices: {
+    // Two slices
+    // 1st of 2 items
+    '&:nth-of-type(1):nth-last-of-type(2)': {
+      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
+      left: '-25%',
+    },
+    // 2nd of 2 items
+    '&:nth-of-type(2):nth-last-of-type(1)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+      left: '25%',
+    },
+
+    // Three slices
+    // 1st of 3 items
+    '&:nth-of-type(1):nth-last-of-type(3)': {
+      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
+      left: '-25%',
+    },
+    // 2nd of 3 items
+    '&:nth-of-type(2):nth-last-of-type(2)': {
+      // Since the two AvatarGroupItems on the right are scaled by 0.5, the divider width should not be halved.
+      clipPath: `inset(0 0 var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}))`,
+      left: '50%',
+      transform: 'scale(0.5)',
+      transformOrigin: '0 0',
+    },
+    // 3rd of 3 items
+    '&:nth-of-type(3):nth-last-of-type(1)': {
+      clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) 0 0 var(${avatarGroupItemDividerWidthVar}))`,
+      left: '50%',
+      top: '50%',
+      transform: 'scale(0.5)',
+      transformOrigin: '0 0',
+    },
+  },
+  rtlSlices: {
+    // Two slices
+    // 1st of 2 items
+    '&:nth-of-type(1):nth-last-of-type(2)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+    },
+    // 2nd of 2 items
+    '&:nth-of-type(2):nth-last-of-type(1)': {
+      clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
+    },
+
+    // Three slices
+    // 1st of 3 items
+    '&:nth-of-type(1):nth-last-of-type(3)': {
+      clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
+    },
+    // 2nd of 3 items
+    '&:nth-of-type(2):nth-last-of-type(2)': {
+      clipPath: `inset(0 var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}) 0)`,
+      left: '0',
+    },
+    // 3rd of 3 items
+    '&:nth-of-type(3):nth-last-of-type(1)': {
+      clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}) 0 0)`,
+      left: '0',
+    },
+  },
+  thick: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThick },
+  thicker: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThicker },
+  thickest: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThickest },
+});
+
+/**
  * Apply styling to the AvatarGroupItem slots based on the state
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
-  const { nonOverflowAvatarsCount, isOverflowItem, layout, size } = state;
+  const { isOverflowItem, layout, size } = state;
+  const { dir } = useFluent();
 
-  const rootStyles = useRootStyles();
-  const pieStyles = usePieStyles();
-  const sizeStyles = useSizeStyles();
-  const overflowLabelStyles = useOverflowLabelStyles();
   const avatarStyles = useAvatarStyles();
+  const overflowLabelStyles = useOverflowLabelStyles();
+  const pieStyles = usePieStyles();
+  const rootStyles = useRootStyles();
+  const sizeStyles = useSizeStyles();
 
   const groupChildClassName = useGroupChildClassName(layout, size);
 
@@ -227,10 +194,10 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
         rootClasses.push(pieStyles.thickest);
       }
 
-      if (nonOverflowAvatarsCount === 2) {
-        rootClasses.push(pieStyles.twoSlices);
-      } else if (nonOverflowAvatarsCount === 3) {
-        rootClasses.push(pieStyles.threeSlices);
+      rootClasses.push(pieStyles.slices);
+
+      if (dir === 'rtl') {
+        rootClasses.push(pieStyles.rtlSlices);
       }
     }
   } else {
@@ -242,7 +209,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   state.avatar.className = mergeClasses(
     avatarGroupItemClassNames.avatar,
     !isOverflowItem && avatarStyles.nonOverflowItem,
-    !isOverflowItem && layout === 'pie' && avatarStyles.pie,
+    layout === 'pie' && avatarStyles.pie,
     state.avatar.className,
   );
 
@@ -261,41 +228,19 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useGroupChildClassName = (
-  layout: AvatarGroupProps['layout'],
-  size: AvatarSizes,
-  isOverflowButton?: boolean,
-): string => {
+export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSize): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];
 
   if (size) {
     if (layout === 'stack') {
-      layoutClasses.push(stackStyles.base);
-
       if (size < 56) {
         layoutClasses.push(stackStyles.thick);
       } else if (size < 72) {
         layoutClasses.push(stackStyles.thicker);
       } else {
         layoutClasses.push(stackStyles.thickest);
-      }
-
-      // When the child is an overflowButton, we have to calculate the overflowButton's border + width + outline width
-      // since the ::after pseudo-element doesn't take the overflowButton's border for its size.
-      if (isOverflowButton) {
-        layoutClasses.push(stackStyles.overflowButton);
-
-        if (size < 36) {
-          layoutClasses.push(stackStyles.borderThin);
-        } else if (size < 56) {
-          layoutClasses.push(stackStyles.borderThick);
-        } else if (size < 72) {
-          layoutClasses.push(stackStyles.borderThicker);
-        } else {
-          layoutClasses.push(stackStyles.borderThickest);
-        }
       }
 
       if (size < 24) {

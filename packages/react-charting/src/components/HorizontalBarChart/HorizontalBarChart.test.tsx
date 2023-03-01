@@ -3,8 +3,16 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IChartProps, IChartDataPoint, IHorizontalBarChartProps, HorizontalBarChart } from './index';
+import {
+  IChartProps,
+  IChartDataPoint,
+  IHorizontalBarChartProps,
+  HorizontalBarChart,
+  HorizontalBarChartVariant,
+} from './index';
 import { IHorizontalBarChartState, HorizontalBarChartBase } from './HorizontalBarChart.base';
+import toJson from 'enzyme-to-json';
+import * as renderer from 'react-test-renderer';
 
 // Wrapper of the HorizontalBarChart to be tested.
 let wrapper: ReactWrapper<IHorizontalBarChartProps, IHorizontalBarChartState, HorizontalBarChartBase> | undefined;
@@ -46,6 +54,31 @@ const chartPoints: IChartProps[] = [
     ],
   },
 ];
+
+describe('HorizontalBarChart snapShot testing', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('Should render absolute-scale variant correctly', () => {
+    const component = renderer.create(
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render bar labels in absolute-scale variant', () => {
+    const component = renderer.create(
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={true} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
 describe('HorizontalBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
@@ -112,5 +145,42 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('HorizontalBarChart - mouse events', () => {
+  beforeEach(() => {
+    sharedBeforeEach();
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    sharedAfterEach();
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('Should render callout correctly on mouseover', () => {
+    wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(2).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <HorizontalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

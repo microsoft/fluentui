@@ -63,10 +63,10 @@ export function getDropdownActionFromKey(
   }
 
   // navigation interactions
-  if (code === keys.ArrowRight || code === keys.ArrowDown) {
+  if (code === keys.ArrowDown) {
     return 'Next';
   }
-  if (code === keys.ArrowLeft || code === keys.ArrowUp) {
+  if (code === keys.ArrowUp) {
     return 'Previous';
   }
   if (code === keys.Home) {
@@ -107,14 +107,6 @@ export function getIndexFromAction(action: DropdownActions, currentIndex: number
       return Math.min(maxIndex, currentIndex + 10);
     case 'PageUp':
       return Math.max(0, currentIndex - 10);
-    // case 'Type':
-    //   // always prevent default and stop propagation when typing
-    //   e.preventDefault();
-    //   e.stopPropagation();
-
-    //   const matchingIndex = findByCharacter(e.key);
-    //   return matchingIndex > -1 ? matchingIndex : activeIndex;
-    //   break;
     default:
       return currentIndex;
   }

@@ -1,14 +1,9 @@
 const rootMain = require('../../../../.storybook/main');
-const utils = require('./main.utils');
 
 module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
-  stories: [
-    ...rootMain.stories,
-    '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(ts|tsx)',
-    ...utils.getVnextStories(),
-  ],
+  stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
+  staticDirs: ['../public'],
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };

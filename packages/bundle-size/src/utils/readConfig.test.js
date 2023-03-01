@@ -34,13 +34,13 @@ describe('prepareFixture', () => {
   it('should read config from package', async () => {
     await setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`);
 
-    const config = await readConfig();
+    const config = await readConfig(true);
 
     expect(config.webpack({})).toEqual({ foo: 'bar' });
   });
 
   it('should return default webpack config if no config file defined', async () => {
-    const config = await readConfig();
+    const config = await readConfig(true);
 
     expect(config.webpack({})).toEqual({});
   });
@@ -49,9 +49,9 @@ describe('prepareFixture', () => {
     process.env.NODE_ENV = 'nottest';
 
     await setup(`module.exports = { webpack: (config) => config }`);
-    const firstConfig = await readConfig();
+    const firstConfig = await readConfig(true);
     await setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`);
-    const config = await readConfig();
+    const config = await readConfig(true);
 
     expect(firstConfig).toBe(config);
     expect(config.webpack({})).toEqual({});
@@ -61,7 +61,7 @@ describe('prepareFixture', () => {
 
   it.each([1, 2, 3])('should cache config for %i layers of nesting', async nesting => {
     await setup(`module.exports = { webpack: (config) => { config.foo = 'bar'; return config; } }`, nesting);
-    const config = await readConfig();
+    const config = await readConfig(true);
 
     expect(config.webpack({})).toEqual({ foo: 'bar' });
   });

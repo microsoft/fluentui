@@ -23,6 +23,7 @@ import {
   windowsLogoColor,
   macLogoColor,
   crossPlatformLogoColor,
+  cdnUrl,
 } from '../../utilities/index';
 import { SiteDefinition } from '../../SiteDefinition/SiteDefinition';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
@@ -41,7 +42,7 @@ registerIcons({
   },
 });
 
-const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/';
+const fabricUsageIconBaseUrl = `${cdnUrl}/assets/brand-icons/product/svg/`;
 
 /**
  * List of App/Brand icon names that use Fluent UI.
@@ -105,7 +106,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const { theme, styles } = this.props;
 
     this._classNames = getClassNames(styles, {
-      theme,
+      theme: theme!,
       isMountedOffset,
     });
 
@@ -125,7 +126,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.heroSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
-            <h2 className={this._classNames.heroTitle}>
+            <h1 className={this._classNames.heroTitle}>
               Fluent{' '}
               <svg width="128" height="92" viewBox="0 0 128 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <text x="0" y="90" fill="url(#paint0_linear)">
@@ -145,7 +146,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   </linearGradient>
                 </defs>
               </svg>
-            </h2>
+            </h1>
           </div>
           <div className={this._classNames.oneFourth} style={{ flexBasis: '31%' }}>
             <p>
@@ -164,15 +165,15 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const { theme, styles } = this.props;
 
     const classNames = getClassNames(styles, {
-      theme,
+      theme: theme!,
       isMountedOffset,
       isInverted: true,
     });
 
-    const { versions, selectedMajorName } = SiteDefinition.versionSwitcherDefinition;
+    const { versions, selectedMajorName } = SiteDefinition.versionSwitcherDefinition!;
 
-    const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
-    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
+    const versionSwitcherColor: IRawStyle = { color: theme!.palette.white };
+    const versionSwitcherActiveColor: IRawStyle = { color: theme!.palette.white };
 
     return (
       <div className={classNames.platformCardsSection}>
@@ -315,10 +316,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>
-                {this._renderLink('#/controls/crossplatform', 'Controls', { ariaLabel: 'Controls: Cross-platform' })}
+                {this._renderLink('#/controls/cross', 'Controls', { ariaLabel: 'Controls: Cross-platform' })}
               </li>
               <li className={classNames.cardListItem}>
-                {this._renderLink('#/get-started/crossplatform', 'Get started', {
+                {this._renderLink('#/get-started/cross', 'Get started', {
                   ariaLabel: 'Get started: Cross-platform',
                 })}
               </li>
@@ -335,7 +336,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     // We need to get classNames within this method for offset transitions and inverted sections.
     const classNames = getClassNames(styles, {
-      theme,
+      theme: theme!,
       isMountedOffset,
       isInverted: true,
     });
@@ -363,8 +364,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
             <Image
-              src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png"
-              srcSet="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png 1x, https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-2x.png 2x"
+              src={`${cdnUrl}/fabric-website/images/discover-resources-1x.png`}
+              srcSet={
+                `${cdnUrl}/fabric/fabric-website/images/discover-resources-1x.png 1x` +
+                `, ${cdnUrl}/fabric-website/images/discover-resources-2x.png 2x`
+              }
               alt="Resources illustration"
               className={this._classNames.illustration}
             />

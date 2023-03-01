@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createVirtualElementFromClick } from './createVirtualElementFromClick';
-import { PositioningVirtualElement } from './types';
+import { PositioningVirtualElement, SetVirtualMouseTarget } from './types';
 
 /**
  * @internal
@@ -16,7 +16,7 @@ export const usePositioningMouseTarget = (
 ) => {
   const [virtualElement, setVirtualElement] = React.useState<PositioningVirtualElement | undefined>(initialState);
 
-  const setVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => {
+  const setVirtualMouseTarget: SetVirtualMouseTarget = event => {
     if (event === undefined || event === null) {
       setVirtualElement(undefined);
       return;

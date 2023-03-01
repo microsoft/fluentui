@@ -15,7 +15,7 @@ import {
   IChildProps,
 } from '../CommonComponents/index';
 
-export { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -64,6 +64,13 @@ export interface ILineChartProps extends ICartesianChartProps {
    * @default false
    */
   allowMultipleShapesForPoints?: boolean;
+
+  /*
+   * Optimize line chart rendering for large data set. If this prop is enabled, line chart
+   * can easily render over 10K datapoints with multiple lines smoothly.
+   * This rendering mechanism does not support gaps in lines.
+   */
+  optimizeLargeData?: boolean;
 
   /**
    * The prop used to define the culture to localized the numbers

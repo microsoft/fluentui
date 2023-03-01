@@ -15,8 +15,7 @@
 Nodes
 
 - Contains main text and subtext, positioned in the middle of rectangle.
-![image](https://user-images.githubusercontent.com/59837325/179209802-e5211059-b144-449f-9160-a98589d34a7e.png)
-
+  ![image](https://user-images.githubusercontent.com/59837325/179209802-e5211059-b144-449f-9160-a98589d34a7e.png)
 
 Branch
 
@@ -27,9 +26,9 @@ Branch
 ```ts
 M${child.x + rectWidth / 2}, ${child.y - gap} H${parent.x + rectWidth / 2} V${ parent.y + rectHeight + gap / 2}
 ```
+
 ![image](https://user-images.githubusercontent.com/59837325/177205587-727bcb6e-805c-4ed8-b9a9-0f00ec7e4d35.png)
 ![image](https://user-images.githubusercontent.com/59837325/177205597-d852e37b-c1f6-4dec-ba7d-0219c2e8e00b.png)
-
 
 ## Structure
 
@@ -115,7 +114,6 @@ interface ITreeProps {
 - Example of the two-layer structure:
 - ![image](https://user-images.githubusercontent.com/59837325/179209918-0769a3b4-ac04-4c3c-95a9-1c7590f89889.png)
 
-
 ## Structure
 
 - If `treeHeight == 2` use parent class addNodeShapetoSVG methods to append data.
@@ -132,11 +130,10 @@ interface ITreeProps {
 
 - The compact composition positions nodes in the form of two stacks, left stack and right stack.
 - The links are generated differently for the leaf nodes.
-![image](https://user-images.githubusercontent.com/59837325/179210047-bcdc5774-8d44-4f93-aaa8-a5ea5285b275.png)
+  ![image](https://user-images.githubusercontent.com/59837325/179210047-bcdc5774-8d44-4f93-aaa8-a5ea5285b275.png)
 
 - The long compositions positions nodes in form of a single stack in the middle.
-![image](https://user-images.githubusercontent.com/59837325/179210095-1d9abbe9-e1ff-417d-81ef-e1d8bea3e0d4.png)
-
+  ![image](https://user-images.githubusercontent.com/59837325/179210095-1d9abbe9-e1ff-417d-81ef-e1d8bea3e0d4.png)
 
 ## Structure
 
@@ -157,7 +154,7 @@ interface ITreeProps {
 
 - When there is constraint on the space for each leaf node.
 - Example:
-![Group 5](https://user-images.githubusercontent.com/59837325/179210459-1dda7117-83ee-4445-9641-74705489b676.png)
+  ![Group 5](https://user-images.githubusercontent.com/59837325/179210459-1dda7117-83ee-4445-9641-74705489b676.png)
 
 # Component Styling
 

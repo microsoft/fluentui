@@ -7,18 +7,21 @@ export function useComboboxPopup(
   props: ComboboxBaseProps,
   triggerShorthand?: ExtractSlotProps<Slot<'button'>>,
   listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+): [trigger: ExtractSlotProps<Slot<'button'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
 export function useComboboxPopup(
   props: ComboboxBaseProps,
   triggerShorthand?: ExtractSlotProps<Slot<'input'>>,
   listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+): [trigger: ExtractSlotProps<Slot<'input'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
 
 export function useComboboxPopup(
   props: ComboboxBaseProps,
   triggerShorthand?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
   listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>] {
+): [
+  trigger: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
+  listbox?: ExtractSlotProps<Slot<typeof Listbox>>,
+] {
   const { positioning } = props;
 
   // popper options
@@ -31,8 +34,8 @@ export function useComboboxPopup(
 
   const { targetRef, containerRef } = usePositioning(popperOptions);
 
-  return [
-    { ...triggerShorthand, ref: useMergedRefs(triggerShorthand?.ref, targetRef) },
-    { ...listboxShorthand, ref: useMergedRefs(listboxShorthand?.ref, containerRef) },
-  ];
+  const listboxRef = useMergedRefs(listboxShorthand?.ref, containerRef);
+  const listbox = listboxShorthand && { ...listboxShorthand, ref: listboxRef };
+
+  return [{ ...triggerShorthand, ref: useMergedRefs(triggerShorthand?.ref, targetRef) }, listbox];
 }

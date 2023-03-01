@@ -32,6 +32,8 @@ import type { IPickerItemProps } from './PickerItem.types';
 
 const legacyStyles: any = stylesImport;
 
+const EXTENDED_LOAD_TIME = 3000;
+
 export interface IBasePickerState<T> {
   items?: any;
   suggestedDisplayValue?: string;
@@ -41,6 +43,7 @@ export interface IBasePickerState<T> {
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
+  suggestionsExtendedLoading?: boolean;
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
   selectionRemoved?: T;
@@ -134,7 +137,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
     this.selection.setItems(items);
     this.state = {
-      items: items,
+      items,
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
@@ -364,6 +367,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           onGetMoreResults={this.onGetMoreResults}
           moreSuggestionsAvailable={this.state.moreSuggestionsAvailable}
           isLoading={this.state.suggestionsLoading}
+          isExtendedLoading={this.state.suggestionsExtendedLoading}
           isSearching={this.state.isSearching}
           isMostRecentlyUsedVisible={this.state.isMostRecentlyUsedVisible}
           isResultsFooterVisible={this.state.isResultsFooterVisible}
@@ -389,9 +393,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         key: item.key ? item.key : index,
         selected: selectedIndices!.indexOf(index) !== -1,
         onRemoveItem: () => this.removeItem(item),
-        disabled: disabled,
+        disabled,
         onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel,
+        removeButtonAriaLabel,
         removeButtonIconProps,
       }),
     );
@@ -409,7 +413,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       if (newEl) {
         newEl.focus();
       }
-    } else if (!this.canAddItems()) {
+    } else if (items.length && !this.canAddItems()) {
       this.resetFocus(items.length - 1);
     } else {
       if (this.input.current) {
@@ -433,7 +437,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   }
 
   protected updateSuggestions(suggestions: any[]) {
-    this.suggestionStore.updateSuggestions(suggestions, 0);
+    const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
+    this.suggestionStore.updateSuggestions(suggestions, 0, maxSuggestionsCount);
     this.forceUpdate();
   }
 
@@ -475,6 +480,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       this.setState({
         suggestionsLoading: true,
       });
+      this._startLoadTimer();
 
       // Clear suggestions
       this.suggestionStore.updateSuggestions([]);
@@ -515,7 +521,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         suggestedDisplayValue: itemValue,
         suggestionsVisible: this._getShowSuggestions(),
       },
-      () => this.setState({ suggestionsLoading: false }),
+      () => this.setState({ suggestionsLoading: false, suggestionsExtendedLoading: false }),
     );
   }
 
@@ -594,7 +600,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
    * Resets focus to last element in wrapper div if clicking back into Picker that has hit item limit
    */
   protected onWrapperClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
-    if (!this.canAddItems()) {
+    if (this.state.items.length && !this.canAddItems()) {
       this.resetFocus(this.state.items.length - 1);
     }
   };
@@ -832,6 +838,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       const newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
       this.setState({ selectionRemoved: item });
       this._updateSelectedItems(newItems);
+
+      // reset selection removed text after a timeout so it isn't reached by screen reader virtual cursor.
+      // the exact timing isn't important, the live region will fully read even if the text is removed.
+      this._async.setTimeout(() => {
+        this.setState({ selectionRemoved: undefined });
+      }, 1000);
     }
   };
 
@@ -940,6 +952,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     );
   }
 
+  /** If suggestions are still loading after a predefined amount of time, set state to show user alert */
+  private _startLoadTimer() {
+    this._async.setTimeout(() => {
+      if (this.state.suggestionsLoading) {
+        this.setState({ suggestionsExtendedLoading: true });
+      }
+    }, EXTENDED_LOAD_TIME);
+  }
+
   /**
    * Takes in the current updated value and either resolves it with the new suggestions
    * or if updated value is undefined then it clears out currently suggested items
@@ -948,10 +969,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     if (updatedValue !== undefined) {
       this.resolveNewValue(updatedValue, newSuggestions);
     } else {
-      this.suggestionStore.updateSuggestions(newSuggestions, -1);
+      const maxSuggestionsCount = this.props.pickerSuggestionsProps?.resultsMaximumNumber;
+      this.suggestionStore.updateSuggestions(newSuggestions, -1, maxSuggestionsCount);
       if (this.state.suggestionsLoading) {
         this.setState({
           suggestionsLoading: false,
+          suggestionsExtendedLoading: false,
         });
       }
     }
@@ -966,7 +989,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       // If the component is a controlled component then the controlling component will need to add or remove the items.
       this.onChange(items);
     } else {
-      this.setState({ items: items }, () => {
+      this.setState({ items }, () => {
         this._onSelectedItemsUpdated(items);
       });
     }
@@ -1071,7 +1094,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           inputClassName: inputProps && inputProps.className,
         })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
+          root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,

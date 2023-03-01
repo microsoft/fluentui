@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Badge } from './Badge';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Badge', () => {
   isConformant({
     Component: Badge,
     displayName: 'Badge',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

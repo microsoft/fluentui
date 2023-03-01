@@ -128,6 +128,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       onDismissed,
       // eslint-disable-next-line deprecation/deprecation
       enableAriaHiddenSiblings,
+      popupProps,
     } = props;
 
     const rootRef = React.useRef<HTMLDivElement>(null);
@@ -183,7 +184,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       eventBubblingEnabled: false,
       ...layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
-      insertFirst: isModeless,
+      insertFirst: layerProps?.insertFirst || isModeless,
       className: classNames.layer,
     };
 
@@ -477,6 +478,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
             // Popup will automatically handle this based on the aria-modal setting.
             enableAriaHiddenSiblings={enableAriaHiddenSiblings}
             aria-modal={!isModeless}
+            {...popupProps}
           >
             <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (

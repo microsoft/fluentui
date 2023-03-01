@@ -13,68 +13,106 @@ import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 
 import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 
+const mappedNeutrals = {
+  black: black,
+  blackTranslucent40: blackAlpha[40],
+  neutralDark: grey[8],
+  neutralPrimary: grey[14],
+  neutralPrimaryAlt: grey[22],
+  neutralSecondary: grey[36],
+  neutralSecondaryAlt: grey[52],
+  neutralTertiary: grey[62],
+  neutralTertiaryAlt: grey[78],
+  neutralQuaternary: grey[82],
+  neutralQuaternaryAlt: grey[88],
+  neutralLight: grey[92],
+  neutralLighter: grey[96],
+  neutralLighterAlt: grey[98],
+  white: white,
+  whiteTranslucent40: whiteAlpha[40],
+};
+
+const invertedMappedNeutrals = {
+  black: white,
+  blackTranslucent40: whiteAlpha[40],
+  neutralDark: grey[98],
+  neutralPrimary: grey[96],
+  neutralPrimaryAlt: grey[84],
+  neutralSecondary: grey[82],
+  neutralSecondaryAlt: grey[74],
+  neutralTertiary: grey[44],
+  neutralTertiaryAlt: grey[26],
+  neutralQuaternary: grey[24],
+  neutralQuaternaryAlt: grey[18],
+  neutralLight: grey[16],
+  neutralLighter: grey[14],
+  neutralLighterAlt: grey[10],
+  white: black,
+  whiteTranslucent40: blackAlpha[40],
+};
+
+const mappedSharedColors = {
+  yellowDark: sharedColors.marigold.shade10,
+  yellow: sharedColors.yellow.primary,
+  yellowLight: sharedColors.yellow.tint40,
+  orange: sharedColors.orange.primary,
+  orangeLight: sharedColors.orange.tint20,
+  orangeLighter: sharedColors.orange.tint40,
+  redDark: sharedColors.darkRed.primary,
+  red: sharedColors.red.primary,
+  magentaDark: sharedColors.magenta.shade30,
+  magenta: sharedColors.magenta.primary,
+  magentaLight: sharedColors.magenta.tint30,
+  purpleDark: sharedColors.darkPurple.primary,
+  purple: sharedColors.purple.primary,
+  purpleLight: sharedColors.purple.tint40,
+  blueDark: sharedColors.darkBlue.primary,
+  blueMid: sharedColors.royalBlue.primary,
+  blue: sharedColors.blue.primary,
+  blueLight: sharedColors.lightBlue.primary,
+  tealDark: sharedColors.darkTeal.primary,
+  teal: sharedColors.teal.primary,
+  tealLight: sharedColors.lightTeal.primary,
+  greenDark: sharedColors.darkGreen.primary,
+  green: sharedColors.green.primary,
+  greenLight: sharedColors.lightGreen.primary,
+};
+
 /**
  * Creates a v8 palette given a brand ramp
  */
-const mapPalette = (brandColors: BrandVariants): IPalette => {
+const mapPalette = (brandColors: BrandVariants, inverted: boolean): IPalette => {
+  const neutrals = inverted ? invertedMappedNeutrals : mappedNeutrals;
+  const brands = inverted
+    ? {
+        themeDarker: brandColors[110],
+        themeDark: brandColors[100],
+        themeDarkAlt: brandColors[100],
+        themePrimary: brandColors[90],
+        themeSecondary: brandColors[90],
+        themeTertiary: brandColors[60],
+        themeLight: brandColors[50],
+        themeLighter: brandColors[40],
+        themeLighterAlt: brandColors[30],
+      }
+    : {
+        themeDarker: brandColors[40],
+        themeDark: brandColors[60],
+        themeDarkAlt: brandColors[70],
+        themePrimary: brandColors[80],
+        themeSecondary: brandColors[90],
+        themeTertiary: brandColors[120],
+        themeLight: brandColors[140],
+        themeLighter: brandColors[150],
+        themeLighterAlt: brandColors[160],
+      };
+
   return {
     ...DefaultPalette,
-
-    // map v9 chromatic
-    black: black,
-    blackTranslucent40: blackAlpha[40],
-    neutralDark: grey[8],
-    neutralPrimary: grey[14],
-    neutralPrimaryAlt: grey[22],
-    neutralSecondary: grey[36],
-    neutralSecondaryAlt: grey[52],
-    neutralTertiary: grey[62],
-    neutralTertiaryAlt: grey[78],
-    neutralQuaternary: grey[82],
-    neutralQuaternaryAlt: grey[88],
-    neutralLight: grey[92],
-    neutralLighter: grey[96],
-    neutralLighterAlt: grey[98],
-    accent: brandColors[80],
-    white: white,
-    whiteTranslucent40: whiteAlpha[40],
-
-    // map v9 shared colors
-    yellowDark: sharedColors.marigold.shade10,
-    yellow: sharedColors.yellow.primary,
-    yellowLight: sharedColors.yellow.tint40,
-    orange: sharedColors.orange.primary,
-    orangeLight: sharedColors.orange.tint20,
-    orangeLighter: sharedColors.orange.tint40,
-    redDark: sharedColors.darkRed.primary,
-    red: sharedColors.red.primary,
-    magentaDark: sharedColors.magenta.shade30,
-    magenta: sharedColors.magenta.primary,
-    magentaLight: sharedColors.magenta.tint30,
-    purpleDark: sharedColors.darkPurple.primary,
-    purple: sharedColors.purple.primary,
-    purpleLight: sharedColors.purple.tint40,
-    blueDark: sharedColors.darkBlue.primary,
-    blueMid: sharedColors.royalBlue.primary,
-    blue: sharedColors.blue.primary,
-    blueLight: sharedColors.lightBlue.primary,
-    tealDark: sharedColors.darkTeal.primary,
-    teal: sharedColors.teal.primary,
-    tealLight: sharedColors.lightTeal.primary,
-    greenDark: sharedColors.darkGreen.primary,
-    green: sharedColors.green.primary,
-    greenLight: sharedColors.lightGreen.primary,
-
-    // map the v9 brand ramp
-    themeDarker: brandColors[40],
-    themeDark: brandColors[60],
-    themeDarkAlt: brandColors[70],
-    themePrimary: brandColors[80],
-    themeSecondary: brandColors[90],
-    themeTertiary: brandColors[120],
-    themeLight: brandColors[140],
-    themeLighter: brandColors[150],
-    themeLighterAlt: brandColors[160],
+    ...neutrals,
+    accent: brands.themePrimary,
+    ...mappedSharedColors,
+    ...brands,
   };
 };
 
@@ -289,14 +327,20 @@ const mapEffects = (baseEffects: IEffects, theme: ThemeV9): IEffects => {
  * The v9 colors, fonts, and effects are applied on top of the v8 theme
  * to allow v8 components to look as much like v9 components as possible.
  */
-export const createv8Theme = (brandColors: BrandVariants, themeV9: ThemeV9, themeV8?: ThemeV8): ThemeV8 => {
-  const baseTheme = themeV8 || createTheme();
+export const createv8Theme = (
+  brandColors: BrandVariants,
+  themeV9: ThemeV9,
+  isDarkTheme: boolean = false,
+  themeV8?: ThemeV8,
+): ThemeV8 => {
+  const baseTheme = themeV8 || createTheme({ isInverted: isDarkTheme });
 
   return {
     ...baseTheme,
-    palette: mapPalette(brandColors),
+    palette: mapPalette(brandColors, isDarkTheme),
     semanticColors: mapSemanticColors(baseTheme.semanticColors, themeV9),
     fonts: mapFonts(baseTheme.fonts, themeV9),
     effects: mapEffects(baseTheme.effects, themeV9),
+    isInverted: isDarkTheme || themeV8?.isInverted === true,
   };
 };

@@ -18,6 +18,7 @@ export const colors = {
     310: '#adadad',
     350: '#949494',
     400: '#8a8a8a',
+    420: '#757575',
     430: '#707070',
     440: '#666',
     450: '#616161',
@@ -116,7 +117,7 @@ export const colorScheme = {
     borderFocusWithin: colors.white,
 
     foregroundDisabled: colors.grey['250'],
-    foregroundDisabled1: colors.grey['250'],
+    foregroundDisabled1: colors.grey['270'],
 
     borderDisabled: colors.grey['200'],
 

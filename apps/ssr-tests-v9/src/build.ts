@@ -1,6 +1,4 @@
-// @ts-expect-error There are no typings for this module
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { getVnextStories } from '@fluentui/public-docsite-v9/.storybook/main.utils';
+import { getPackageStoriesGlob } from '@fluentui/scripts-storybook';
 import { isCI } from 'ci-info';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -27,7 +25,24 @@ async function build() {
 
   const generateStartTime = process.hrtime();
 
-  const rawStoriesGlobs = getVnextStories() as string[];
+  // Portals currently do not support hydration
+  // https://github.com/facebook/react/issues/13097
+  const skippedPaths = ['react-portal'];
+
+  const rawStoriesGlobs = getPackageStoriesGlob({
+    packageName: '@fluentui/react-components',
+    callerPath: __dirname,
+  }).filter(
+    (storyPath: string) =>
+      // only return entries that don't match any of the skippedPaths
+      !skippedPaths.find(skippedPath => {
+        if (storyPath.includes(skippedPath)) {
+          return true;
+        }
+        return false;
+      }),
+  ) as string[];
+
   rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇

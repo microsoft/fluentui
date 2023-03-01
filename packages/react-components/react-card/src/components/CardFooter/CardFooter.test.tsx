@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { CardFooter } from './CardFooter';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('CardFooter', () => {
   isConformant({
     Component: CardFooter,
     displayName: 'CardFooter',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

@@ -92,6 +92,9 @@ const useStyles = makeStyles({
   weightSemibold: {
     fontWeight: tokens.fontWeightSemibold,
   },
+  weightBold: {
+    fontWeight: tokens.fontWeightBold,
+  },
   alignCenter: {
     textAlign: 'center',
   },
@@ -132,6 +135,7 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
     state.font === 'numeric' && styles.numeric,
     state.weight === 'medium' && styles.weightMedium,
     state.weight === 'semibold' && styles.weightSemibold,
+    state.weight === 'bold' && styles.weightBold,
     state.align === 'center' && styles.alignCenter,
     state.align === 'end' && styles.alignEnd,
     state.align === 'justify' && styles.alignJustify,

@@ -43,6 +43,17 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).toHaveTextContent('');
     });
 
+    it('value is cleared at Icon enter press', () => {
+      const { triggerButtonNode, keyDownOnClearIndicator } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      keyDownOnClearIndicator('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+    });
+
     it('calls onChange on Icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const { clickOnClearIndicator } = renderDropdown({
@@ -85,6 +96,25 @@ describe('Dropdown', () => {
 
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
       expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
+    });
+
+    it('is not visible when an empty array is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        multiple: true,
+        value: [],
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
+
+    it('is not visible when an empty string is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        value: '',
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
     });
   });
 
@@ -1196,6 +1226,83 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('allowFreeForm', () => {
+    ['Enter', 'Tab'].forEach(key => {
+      it(`selects item that starts with query prefix on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('it');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(0)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item0');
+      });
+
+      it(`highlights first item matching prefix and selects it on ${key}`, () => {
+        const items = ['item0', 'item1', 'itemA1', 'itemB1'];
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+          items,
+        });
+
+        changeSearchInput('itemA');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemA1');
+      });
+
+      it(`keeps search query value when there is no match on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('itemX');
+        expect(searchInputNode).not.toHaveAttribute('aria-activedescendant');
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemX');
+      });
+
+      it(`keeps search query value when when selected by arrow key on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('item1');
+        keyDownOnSearchInput('ArrowDown');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item2');
+      });
+      return true;
+    });
+
+    it('selects item that starts with query prefix when user clicks on toggle', () => {
+      const { clickOnToggleIndicator, changeSearchInput, searchInputNode } = renderDropdown({
+        search: items => items,
+        allowFreeform: true,
+      });
+
+      changeSearchInput('it');
+      expect(searchInputNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
+      clickOnToggleIndicator();
+      expect(searchInputNode).toHaveValue('item0');
+    });
+  });
+
   describe('getA11ySelectionMessage', () => {
     afterEach(() => {
       jest.runAllTimers();
@@ -1776,6 +1883,14 @@ describe('Dropdown', () => {
 
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getItemNodes()).toHaveLength(items.length - 1);
+    });
+
+    it('should not call onRemove when dropdown is disabled', () => {
+      const onRemove = jest.fn();
+      const value = { header: items[0], onRemove };
+      const { clickOnSelectedItemAtIndex } = renderDropdown({ multiple: true, value, disabled: true });
+      clickOnSelectedItemAtIndex(0);
+      expect(onRemove).not.toHaveBeenCalled();
     });
   });
 

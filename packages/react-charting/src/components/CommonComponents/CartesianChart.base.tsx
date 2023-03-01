@@ -134,7 +134,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
+    const {
+      calloutProps,
+      points,
+      chartType,
+      chartHoverProps,
+      svgFocusZoneProps,
+      svgProps,
+      culture,
+      dateLocalizeOptions,
+      timeFormatLocale,
+      customDateTimeFormatter,
+    } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -144,7 +155,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
-        this.margins,
+        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
         this.state.containerWidth,
         chartType,
         this._isRtl,
@@ -158,6 +169,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       xAxistickSize: this.props.xAxistickSize,
       tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
       xAxisPadding: this.props.xAxisPadding,
+      xAxisInnerPadding: this.props.xAxisInnerPadding,
+      xAxisOuterPadding: this.props.xAxisOuterPadding,
     };
 
     const YAxisParams = {
@@ -188,7 +201,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
+        xScale = createDateXAxis(
+          XAxisParams,
+          this.props.tickParams!,
+          culture,
+          dateLocalizeOptions,
+          timeFormatLocale,
+          customDateTimeFormatter,
+        );
         break;
       case XAxisTypes.StringAxis:
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
@@ -199,7 +219,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this._xScale = xScale;
 
     /*
-     * To enable wrapping of x axis tick values or to disaply complete x axis tick values,
+     * To enable wrapping of x axis tick values or to display complete x axis tick values,
      * we need to calculate how much space it needed to render the text.
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
@@ -308,25 +328,29 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {this.props.legendBars}
           </div>
         )}
-        {!this.props.hideTooltip && calloutProps!.isCalloutVisible && (
-          <Callout {...calloutProps}>
-            {/** Given custom callout, then it will render */}
-            {this.props.customizedCallout && this.props.customizedCallout}
-            {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-            {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-            {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-            {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-              <ChartHoverCard
-                XValue={calloutProps.XValue}
-                Legend={calloutProps.legend!}
-                YValue={calloutProps.YValue!}
-                color={calloutProps.color!}
-                culture={this.props.culture}
-                {...chartHoverProps}
-              />
-            )}
-          </Callout>
-        )}
+        {/** The callout is used for narration, so keep it mounted on the DOM */}
+        <Callout
+          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+          /** Keep the callout updated with details of focused/hovered chart element */
+          shouldUpdateWhenHidden={true}
+          {...calloutProps}
+        >
+          {/** Given custom callout, then it will render */}
+          {this.props.customizedCallout && this.props.customizedCallout}
+          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+            <ChartHoverCard
+              XValue={calloutProps.XValue}
+              Legend={calloutProps.legend!}
+              YValue={calloutProps.YValue!}
+              color={calloutProps.color!}
+              culture={this.props.culture}
+              {...chartHoverProps}
+            />
+          )}
+        </Callout>
       </div>
     );
   }
@@ -487,25 +511,29 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         // If there is no legend, need not to allocate some space from total chart space.
         legendContainerHeight = 0;
       } else {
-        const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
+        const legendContainerComputedStyles = this.legendContainer && getComputedStyle(this.legendContainer);
         legendContainerHeight =
-          (this.legendContainer.getBoundingClientRect().height || this.minLegendContainerHeight) +
-          parseFloat(legendContainerComputedStyles.marginTop || '0') +
-          parseFloat(legendContainerComputedStyles.marginBottom || '0');
+          ((this.legendContainer && this.legendContainer.getBoundingClientRect().height) ||
+            this.minLegendContainerHeight) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
       }
-      const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container.getBoundingClientRect().width;
-      const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight
-          ? container.getBoundingClientRect().height
-          : 350;
-      const shouldResize =
-        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight,
-        });
+      if (this.props.parentRef || this.chartContainer) {
+        const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
+        const currentContainerWidth = container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 350;
+        const shouldResize =
+          containerWidth !== currentContainerWidth ||
+          containerHeight !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - legendContainerHeight,
+          });
+        }
       }
     });
   }

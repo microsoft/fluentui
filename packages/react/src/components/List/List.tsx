@@ -46,6 +46,7 @@ export interface IListState<T = any> {
   getDerivedStateFromProps(nextProps: IListProps<T>, previousState: IListState<T>): IListState<T>;
 
   pagesVersion?: {};
+  hasMounted: boolean;
 }
 
 interface IPageCacheItem<T> {
@@ -98,6 +99,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   public static defaultProps = {
     startIndex: 0,
     onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
+    onRenderCellConditional: undefined,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND,
   };
@@ -158,6 +160,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       pages: [],
       isScrolling: false,
       getDerivedStateFromProps: this._getDerivedStateFromProps,
+      hasMounted: false,
     };
 
     this._async = new Async(this);
@@ -224,7 +227,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
     let itemsPerPage = 1;
     for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
-      const pageSpecification = this._getPageSpecification(itemIndex, allowedRect);
+      const pageSpecification = this._getPageSpecification(this.props, itemIndex, allowedRect);
 
       const pageHeight = pageSpecification.height;
       itemsPerPage = pageSpecification.itemCount;
@@ -533,7 +536,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
     const pageElement = onRenderPage(
       {
-        page: page,
+        page,
         className: 'ms-List-page',
         key: page.key,
         ref: (newRef: unknown) => {
@@ -551,8 +554,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // first 30 items did not change, we still re-rendered all of them in this props.items change.
     if (usePageCache && page.startIndex === 0) {
       this._pageCache[page.key] = {
-        page: page,
-        pageElement: pageElement,
+        page,
+        pageElement,
       };
     }
     return pageElement;
@@ -593,7 +596,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   private _onRenderPage = (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>): any => {
-    const { onRenderCell, role } = this.props;
+    const { onRenderCell, onRenderCellConditional, role } = this.props;
 
     const {
       page: { items = [], startIndex },
@@ -614,18 +617,24 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         itemKey = index;
       }
 
-      cells.push(
-        <div
-          role={cellRole}
-          className={'ms-List-cell'}
-          key={itemKey}
-          data-list-index={index}
-          data-automationid="ListCell"
-        >
-          {onRenderCell &&
-            onRenderCell(item, index, !this.props.ignoreScrollingState ? this.state.isScrolling : undefined)}
-        </div>,
-      );
+      const renderCell = onRenderCellConditional ?? onRenderCell;
+
+      const cell =
+        renderCell?.(item, index, !this.props.ignoreScrollingState ? this.state.isScrolling : undefined) ?? null;
+
+      if (!onRenderCellConditional || cell) {
+        cells.push(
+          <div
+            role={cellRole}
+            className={'ms-List-cell'}
+            key={itemKey}
+            data-list-index={index}
+            data-automationid="ListCell"
+          >
+            {cell}
+          </div>,
+        );
+      }
     }
 
     return <div {...divProps}>{cells}</div>;
@@ -884,7 +893,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const allowedRect = this._allowedRect;
 
     for (let itemIndex = startIndex!; itemIndex < endIndex; itemIndex += itemsPerPage) {
-      const pageSpecification = this._getPageSpecification(itemIndex, allowedRect);
+      const pageSpecification = this._getPageSpecification(props, itemIndex, allowedRect);
       const pageHeight = pageSpecification.height;
       const pageData = pageSpecification.data;
       const key = pageSpecification.key;
@@ -976,12 +985,13 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // console.log('materialized: ', materializedRect);
     return {
       ...state,
-      pages: pages,
+      pages,
       measureVersion: this._measureVersion,
     };
   }
 
   private _getPageSpecification(
+    props: IListProps,
     itemIndex: number,
     visibleRect: IRectangle,
   ): {
@@ -991,7 +1001,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     data?: any;
     key?: string;
   } {
-    const { getPageSpecification } = this.props;
+    const { getPageSpecification } = props;
+
     if (getPageSpecification) {
       const pageData = getPageSpecification(itemIndex, visibleRect);
 
@@ -1000,8 +1011,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       const { height = this._getPageHeight(itemIndex, visibleRect, itemCount) } = pageData;
 
       return {
-        itemCount: itemCount,
-        height: height,
+        itemCount,
+        height,
         data: pageData.data,
         key: pageData.key,
       };
@@ -1009,7 +1020,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       const itemCount = this._getItemCountForPage(itemIndex, visibleRect);
 
       return {
-        itemCount: itemCount,
+        itemCount,
         height: this._getPageHeight(itemIndex, visibleRect, itemCount),
       };
     }
@@ -1054,13 +1065,13 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
     return {
       key: pageKey,
-      startIndex: startIndex,
+      startIndex,
       itemCount: count,
-      items: items,
-      style: style,
+      items,
+      style,
       top: 0,
       height: 0,
-      data: data,
+      data,
       isSpacer: isSpacer || false,
     };
   }
@@ -1137,9 +1148,9 @@ function _expandRect(rect: IRectangle, pagesBefore: number, pagesAfter: number):
   const height = rect.height + (pagesBefore + pagesAfter) * rect.height;
 
   return {
-    top: top,
+    top,
     bottom: top + height,
-    height: height,
+    height,
     left: rect.left,
     right: rect.right,
     width: rect.width,

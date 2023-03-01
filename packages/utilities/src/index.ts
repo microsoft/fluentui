@@ -8,6 +8,7 @@ export {
 } from './BaseComponent';
 export type { IBaseProps } from './BaseComponent.types';
 export { DelayedRender } from './DelayedRender';
+export type { IReactProps } from './React.types';
 export type { IDelayedRenderProps, IDelayedRenderState } from './DelayedRender';
 export { EventGroup } from './EventGroup';
 export type { IDeclaredEventsByName, IEventRecord, IEventRecordList, IEventRecordsByName } from './EventGroup';
@@ -127,9 +128,12 @@ export {
   // eslint-disable-next-line deprecation/deprecation
   initializeFocusRects,
 } from './initializeFocusRects';
-export { FocusRects, useFocusRects } from './useFocusRects';
+export { FocusRectsProvider } from './FocusRectsProvider';
+export type { FocusRectsProviderProps } from './FocusRectsProvider';
+export { FocusRects, FocusRectsContext, useFocusRects } from './useFocusRects';
+export type { IFocusRectsContext } from './useFocusRects';
 export { getInitials } from './initials';
-export { addDirectionalKeyCode, isDirectionalKeyCode } from './keyboard';
+export { addDirectionalKeyCode, isDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
 export {
   getLanguage,
   // eslint-disable-next-line deprecation/deprecation

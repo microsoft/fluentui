@@ -16,21 +16,15 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 // @public (undocumented)
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
-// Warning: (ae-internal-missing-underscore) The name "createArrowHeightStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function createArrowHeightStyles(arrowHeight: number): {
     width: string;
     height: string;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "createArrowStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
 
-// Warning: (ae-internal-missing-underscore) The name "CreateArrowStylesOptions" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export type CreateArrowStylesOptions = {
     arrowHeight: number | undefined;
@@ -42,8 +36,6 @@ export type CreateArrowStylesOptions = {
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
-// Warning: (ae-internal-missing-underscore) The name "mergeArrowOffset" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
 
@@ -76,13 +68,13 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
-    setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
+    setTarget: (target: TargetElement) => void;
 };
 
 // @public (undocumented)
-export interface PositioningProps extends Omit<PositioningOptions, 'positionFixed' | 'unstable_disableTether'> {
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'flipBoundary' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'position' | 'offset' | 'arrowPadding' | 'autoSize' | 'coverTarget'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
-    target?: HTMLElement | PositioningVirtualElement | null;
+    target?: TargetElement | null;
 }
 
 // @public (undocumented)
@@ -109,19 +101,14 @@ export type PositioningVirtualElement = {
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// Warning: (ae-internal-missing-underscore) The name "usePositioning" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export function usePositioning(options?: UsePopperOptions): {
-    targetRef: React_2.MutableRefObject<any>;
-    containerRef: React_2.MutableRefObject<any>;
-    arrowRef: React_2.MutableRefObject<any>;
-};
+// @public (undocumented)
+export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
 
-// Warning: (ae-internal-missing-underscore) The name "usePositioningMouseTarget" should be prefixed with an underscore because the declaration is marked as @internal
-//
+// @internal (undocumented)
+export function usePositioning(options: UsePositioningOptions): UsePositioningReturn;
+
 // @internal
-export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // (No @packageDocumentation comment for this package)
 

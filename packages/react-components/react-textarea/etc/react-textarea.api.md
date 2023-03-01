@@ -4,8 +4,11 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -20,9 +23,30 @@ export const Textarea: ForwardRefComponent<TextareaProps>;
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
 
+// @public @deprecated (undocumented)
+export const TextareaField_unstable: ForwardRefComponent<TextareaFieldProps_unstable>;
+
+// @public @deprecated (undocumented)
+export const textareaFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
+
+// @public @deprecated (undocumented)
+export type TextareaFieldProps_unstable = DeprecatedFieldProps<TextareaProps>;
+
+// @public
+export type TextareaOnChangeData = {
+    value: string;
+};
+
 // @public
 export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textarea'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
-    appearance?: 'outline' | 'filled-darker' | 'filled-lighter';
+    appearance?: 'outline' | 'filled-darker' | 'filled-lighter' | 'filled-darker-shadow' | 'filled-lighter-shadow';
     defaultValue?: string;
     onChange?: (ev: React_2.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
     resize?: 'none' | 'horizontal' | 'vertical' | 'both';

@@ -34,7 +34,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction, getId } from '@fluentui/utilities';
+import { composeComponentAs, composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
 import type { IRenderFunction } from '../../Utilities';
 import type {
@@ -77,6 +77,9 @@ const MIN_COLUMN_WIDTH = 100; // this is the global min width
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
+
+const rowFocusZoneAddTabIndexProps = { tabIndex: 0 };
+const rowFocusZoneNoTabIndexProps = {};
 
 type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
   IDetailsListState & {
@@ -319,7 +322,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     }
   }, [columnReorderOptions, onColumnDragEnd]);
 
-  const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+  const rowCount =
+    (isHeaderVisible ? 1 : 0) +
+    (props.onRenderDetailsFooter ? 1 : 0) +
+    GetGroupCount(groups) +
+    (items ? items.length : 0);
   const colCount =
     (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) +
     (adjustedColumns ? adjustedColumns.length : 0) +
@@ -393,6 +400,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               checkboxVisibility,
               cellStyleProps,
               ariaColSpan: adjustedColumns.length,
+              ariaLevel: undefined,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
               ariaRowCount: undefined,
@@ -413,6 +421,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
+            ariaLevel: undefined,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
             ariaRowCount: undefined,
@@ -480,8 +489,12 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
       const rowRole = role === defaultRole ? undefined : 'presentation';
 
+      // add tabindex="0" to first row if no header exists, to ensure the focuszone is in the tab order
+      const rowFocusZoneProps =
+        isHeaderVisible || index > 0 ? rowFocusZoneNoTabIndexProps : rowFocusZoneAddTabIndexProps;
+
       const rowProps: IDetailsRowProps = {
-        item: item,
+        item,
         itemIndex: index,
         flatIndexOffset: (isHeaderVisible ? 2 : 1) + numOfGroupHeadersBeforeItem,
         compact,
@@ -513,6 +526,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         rowWidth,
         useFastIcons,
         role: rowRole,
+        isGridRow: true,
+        focusZoneProps: rowFocusZoneProps,
       };
 
       if (!item) {
@@ -594,8 +609,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
+  const FinalGroupedList =
+    groups && groupProps?.groupedListAs ? composeComponentAs(groupProps.groupedListAs, GroupedList) : GroupedList;
+
   const list = groups ? (
-    <GroupedList
+    <FinalGroupedList
       focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
@@ -677,7 +695,6 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         aria-label={ariaLabelForGrid || ariaLabel}
         aria-rowcount={isPlaceholderData ? 0 : rowCount}
         aria-colcount={colCount}
-        aria-readonly="true"
         aria-busy={isPlaceholderData}
       >
         <div onKeyDown={onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
@@ -685,27 +702,27 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             onRenderDetailsHeader(
               {
                 componentRef: headerRef,
-                selectionMode: selectionMode,
+                selectionMode,
                 layoutMode: layoutMode!,
-                selection: selection,
+                selection,
                 columns: adjustedColumns,
                 onColumnClick: onColumnHeaderClick,
                 onColumnContextMenu: onColumnHeaderContextMenu,
-                onColumnResized: onColumnResized,
-                onColumnIsSizingChanged: onColumnIsSizingChanged,
-                onColumnAutoResized: onColumnAutoResized,
-                groupNestingDepth: groupNestingDepth,
+                onColumnResized,
+                onColumnIsSizingChanged,
+                onColumnAutoResized,
+                groupNestingDepth,
                 isAllCollapsed: isCollapsed,
                 onToggleCollapseAll: onToggleCollapse,
                 ariaLabel: ariaLabelForListHeader,
-                ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
-                ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-                selectAllVisibility: selectAllVisibility,
+                ariaLabelForSelectAllCheckbox,
+                ariaLabelForSelectionColumn,
+                selectAllVisibility,
                 collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                viewport: viewport,
-                columnReorderProps: columnReorderProps,
-                minimumPixelsForDrag: minimumPixelsForDrag,
-                cellStyleProps: cellStyleProps,
+                viewport,
+                columnReorderProps,
+                minimumPixelsForDrag,
+                cellStyleProps,
                 checkboxVisibility,
                 indentWidth,
                 onRenderDetailsCheckbox: onRenderCheckbox,
@@ -883,8 +900,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       if (isValidTargetIndex) {
         if (columnReorderOptions.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
-            draggedIndex: draggedIndex,
-            targetIndex: targetIndex,
+            draggedIndex,
+            targetIndex,
           };
           columnReorderOptions.onColumnDrop(dragDropDetails);
           /* eslint-disable deprecation/deprecation */
@@ -1076,11 +1093,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
-    this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
+    this.setState({ isSomeGroupExpanded });
   };
 
   private _onColumnIsSizingChanged = (column: IColumn, isSizing: boolean): void => {
-    this.setState({ isSizing: isSizing });
+    this.setState({ isSizing });
   };
 
   private _getGroupNestingDepth(): number {
@@ -1176,7 +1193,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     return {
       ...previousState,
-      adjustedColumns: adjustedColumns,
+      adjustedColumns,
       lastWidth: viewportWidth,
     };
   }
@@ -1294,12 +1311,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
   /** Builds a set of columns to fix within the viewport width. */
   private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
-    const { selectionMode = this._selection.mode, checkboxVisibility } = props;
+    const { selectionMode = this._selection.mode, checkboxVisibility, skipViewportMeasures } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
     let totalWidth = 0; // offset because we have one less inner padding.
-    let minimumWidth = 0;
     const availableWidth = viewportWidth - (rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
       const baseColumn = {
@@ -1312,17 +1328,12 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         ...this._columnOverrides[column.key],
       };
 
-      // eslint-disable-next-line deprecation/deprecation
-      if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
-        minimumWidth += getPaddedWidth(baseColumn, props);
-      }
-
       totalWidth += getPaddedWidth(newColumn, props);
 
       return newColumn;
     });
 
-    if (minimumWidth > availableWidth) {
+    if (skipViewportMeasures) {
       return adjustedColumns;
     }
 
@@ -1503,7 +1514,6 @@ export function buildColumns(
           fieldName: propName,
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
-          isCollapsable: !!columns.length,
           isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
@@ -1511,7 +1521,7 @@ export function buildColumns(
           isRowHeader: false,
           columnActionsMode: columnActionsMode ?? ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
-          onColumnClick: onColumnClick,
+          onColumnClick,
           isGrouped: groupedColumnKey === propName,
         });
       }

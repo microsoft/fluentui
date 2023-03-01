@@ -1,6 +1,6 @@
 # @fluentui/global-context
 
-**Global Context for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Global Context for [Fluent UI React](https://react.fluentui.dev)**
 
 This package contains a shim for `React.createContext` API that will register the context object to the global
 scope (`window` for browsers, `global` for nodejs). This means that contexts will be real singletons.

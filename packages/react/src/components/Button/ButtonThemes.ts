@@ -255,7 +255,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       color: s.primaryButtonText,
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: 'WindowText',
+          backgroundColor: 'Canvas',
         },
         ':hover': {
           backgroundColor: s.primaryButtonBackgroundHovered,

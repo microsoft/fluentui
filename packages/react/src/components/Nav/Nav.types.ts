@@ -103,6 +103,12 @@ export interface INavProps {
   initialSelectedKey?: string;
 
   /**
+   * (Optional) Override the role of the `<nav>` element.
+   * This is only recommended if you're nesting `Nav` inside a parent navigation region.
+   */
+  role?: string;
+
+  /**
    * (Optional) The key of the nav item selected by caller.
    */
   selectedKey?: string;

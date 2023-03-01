@@ -1,8 +1,6 @@
 # @fluentui/react-radio
 
-**React Radio components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**React Radio components for [Fluent UI React](https://react.fluentui.dev)**
 
 A Radio allows a user to select a single value from two or more options. All Radios with the same `name` are considered to be part of the same group. However, a `RadioGroup` is recommended to add a group label, formatting, and other functionality.
 

@@ -3,7 +3,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
-import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
+import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -18,6 +18,7 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createFocusOutlineStyle(),
+  // TODO: this should be extracted to another package
   root: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     position: 'relative',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePositioningMouseTarget } from '@fluentui/react-positioning';
+import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
@@ -22,13 +22,6 @@ export type MenuProps = ComponentProps<MenuSlots> &
     children: [JSX.Element, JSX.Element] | JSX.Element;
 
     /**
-     * Whether the popup is open by default
-     *
-     * @default false
-     */
-    defaultOpen?: boolean;
-
-    /**
      * Sets the delay for mouse open/close for the popover one mouse enter/leave
      */
     hoverDelay?: number;
@@ -45,7 +38,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Call back when the component requests to change value
      * The `open` value is used as a hint when directly controlling the component
      */
-    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
 
     /**
      * Whether the popup is open
@@ -53,6 +46,13 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * @default false
      */
     open?: boolean;
+
+    /**
+     * Whether the popup is open by default
+     *
+     * @default false
+     */
+    defaultOpen?: boolean;
 
     /**
      * Opens the menu on right click (context menu), removes all other menu open interactions
@@ -89,21 +89,26 @@ export type MenuProps = ComponentProps<MenuSlots> &
   };
 
 export type MenuState = ComponentState<MenuSlots> &
-  Pick<
-    MenuProps,
-    | 'defaultCheckedValues'
-    | 'hasCheckmarks'
-    | 'hasIcons'
-    | 'inline'
-    | 'onOpenChange'
-    | 'openOnContext'
-    | 'persistOnItemClick'
-  > &
-  Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll'>> & {
+  Required<
+    Pick<
+      MenuProps,
+      | 'hasCheckmarks'
+      | 'hasIcons'
+      | 'inline'
+      | 'checkedValues'
+      | 'onCheckedValueChange'
+      | 'open'
+      | 'openOnHover'
+      | 'closeOnScroll'
+      | 'hoverDelay'
+      | 'openOnContext'
+      | 'persistOnItemClick'
+    >
+  > & {
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: ReturnType<typeof usePositioningMouseTarget>[0];
+    contextTarget?: PositioningVirtualElement;
 
     /**
      * Whether this menu is a submenu
@@ -128,12 +133,12 @@ export type MenuState = ComponentState<MenuSlots> &
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
+    setContextTarget: SetVirtualMouseTarget;
 
     /**
      * Callback to open/close the popup
      */
-    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+    setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
 
     /**
      * Id for the MenuTrigger element for aria relationship
@@ -144,7 +149,34 @@ export type MenuState = ComponentState<MenuSlots> &
      * The ref for the MenuTrigger, used for popup positioning
      */
     triggerRef: React.MutableRefObject<HTMLElement>;
+
+    /**
+     * Call back when the component requests to change value
+     * The `open` value is used as a hint when directly controlling the component
+     * @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    /**
+     * Default values to be checked on mount
+     @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    defaultCheckedValues?: Record<string, string[]>;
   };
+
+export type MenuContextValues = {
+  menu: MenuContextValue;
+};
+
+/**
+ * The supported events that will trigger open/close of the menu
+ */
+export type MenuOpenEvent = MenuOpenChangeData['event'];
+/**
+ * @deprecated use MenuOpenEvent instead
+ */
+export type MenuOpenEvents = MenuOpenEvent;
 
 /**
  * Data attached to open/close events
@@ -156,21 +188,58 @@ export type MenuOpenChangeData = {
   bubble?: boolean;
   /**
    * Indicates whether the change of state was a keyboard interaction
+   * @deprecated
+   * This should not be used, since `Enter`, `Space` and click should be interpreted as the same thing as a click
    */
   keyboard?: boolean;
   open: boolean;
-};
-
-export type MenuContextValues = {
-  menu: MenuContextValue;
-};
-
-/**
- * The supported events that will trigger open/close of the menu
- */
-export type MenuOpenEvents =
-  | MouseEvent
-  | TouchEvent
-  | React.FocusEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.MouseEvent<HTMLElement>;
+} & (
+  | {
+      type: 'menuTriggerContextMenu';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerClick';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerMouseEnter';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerMouseLeave';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerMouseMove';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuTriggerKeyDown';
+      event: React.KeyboardEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuItemClick';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuPopoverMouseEnter';
+      event: React.MouseEvent<HTMLElement>;
+    }
+  | {
+      type: 'menuPopoverKeyDown';
+      event: React.KeyboardEvent<HTMLElement>;
+    }
+  | {
+      type: 'clickOutside';
+      event: MouseEvent | TouchEvent;
+    }
+  | {
+      type: 'scrollOutside';
+      event: MouseEvent | TouchEvent;
+    }
+  | {
+      type: 'menuMouseEnter';
+      event: MouseEvent | TouchEvent;
+    }
+);

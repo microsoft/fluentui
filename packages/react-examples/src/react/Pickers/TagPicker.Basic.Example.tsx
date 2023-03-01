@@ -89,7 +89,6 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
         onResolveSuggestions={filterSuggestedTags}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
-        itemLimit={2}
         disabled={tagPicker}
         inputProps={{
           ...inputProps,
@@ -108,7 +107,6 @@ export const TagPickerBasicExample: React.FunctionComponent = () => {
         onItemSelected={onItemSelected}
         getTextFromItem={getTextFromItem}
         pickerSuggestionsProps={pickerSuggestionsProps}
-        itemLimit={2}
         disabled={tagPicker}
         inputProps={{
           ...inputProps,

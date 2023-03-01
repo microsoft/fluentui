@@ -1852,4 +1852,66 @@ describe('FocusZone', () => {
     expect(buttonB.tabIndex).toBe(-1);
     expect(buttonC.tabIndex).toBe(0);
   });
+
+  it('Update tabIndex when FocusZone is changed before focused', () => {
+    const { testContainer, removeTestContainer } = createTestContainer();
+
+    // Prepare test component
+    // The test component is a 'Add' button + FocusZone.
+    // Initially there're 2 buttons in FocusZone. Click on the 'Add' button adds a 3rd button in focusZone.
+    // context and memo is used to make sure FocusZone component does not re-render during the process.
+    const ShowButton3Context = React.createContext(false);
+
+    const Button3 = () => {
+      const showButton3 = React.useContext(ShowButton3Context);
+      return showButton3 ? (
+        <button className="button-in-zone" id="button-3">
+          added button 3
+        </button>
+      ) : null;
+    };
+
+    const getDefaultTabbableElement = () => {
+      const buttons = document.body.getElementsByClassName('button-in-zone');
+      return buttons[buttons.length - 1] as HTMLElement;
+    };
+    const FocusZoneMemo = React.memo(() => (
+      <FocusZone shouldResetActiveElementWhenTabFromZone defaultTabbableElement={getDefaultTabbableElement}>
+        <button className="button-in-zone">button 1</button>
+        <button className="button-in-zone">button 2</button>
+        <Button3 />
+      </FocusZone>
+    ));
+
+    const TestComponent = () => {
+      const [showButton3, setShowButton3] = React.useState(false);
+
+      return (
+        <ShowButton3Context.Provider value={showButton3}>
+          <button id="add-button" onClick={() => setShowButton3(true)}>
+            Add
+          </button>
+          <FocusZoneMemo />
+        </ShowButton3Context.Provider>
+      );
+    };
+    ReactTestUtils.act(() => {
+      ReactDOM.render(<TestComponent />, testContainer);
+    });
+
+    // Start test
+    const addButton = document.getElementById('add-button') as HTMLElement;
+    expect(addButton).toBeTruthy();
+
+    ReactTestUtils.Simulate.click(addButton);
+    const button3 = document.getElementById('button-3') as HTMLElement;
+    expect(button3).toBeTruthy();
+
+    // expect tabIndex is recalculated on keydown, button3 now is the default focusable item in FocusZone
+    // (I used dispatchEvent instead of ReactTestUtils.Simulate.keydown because ReactTestUtils doesn't trigger _onKeyDownCapture in focusZone)
+    addButton.dispatchEvent(new KeyboardEvent('keydown', { which: keyboardKey.Tab } as KeyboardEventInit));
+    expect(button3.getAttribute('tabindex')).toBe('0');
+
+    removeTestContainer();
+  });
 });

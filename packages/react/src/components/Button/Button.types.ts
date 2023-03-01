@@ -332,7 +332,7 @@ export interface IButtonProps
    * Style for the description text if applicable (for compound buttons).
    * @deprecated Use `secondaryText` instead.
    */
-  description?: IStyle;
+  description?: string;
 
   /**
    * yet unknown docs

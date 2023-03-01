@@ -388,13 +388,17 @@ export interface ISankeyChartData {
 interface ISNodeExtra {
   nodeId: number | string;
   name: string;
-  color: string;
+  color?: string;
+  borderColor?: string;
+  actualValue?: number;
+  layer?: number;
 }
 
 interface ISLinkExtra {
   source: number;
   target: number;
   value: number;
+  unnormalizedValue?: number;
 }
 
 export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;

@@ -2,13 +2,12 @@ import * as React from 'react';
 import { PresenceBadge } from './PresenceBadge';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('PresenceBadge', () => {
   isConformant({
     Component: PresenceBadge,
     displayName: 'PresenceBadge',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   let wrapper: ReactWrapper | undefined;

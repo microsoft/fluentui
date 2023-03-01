@@ -1,6 +1,6 @@
 # @fluentui/babel-preset-global-context
 
-**Babel Preset Global Context for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Babel Preset Global Context for [Fluent UI React](https://react.fluentui.dev)**
 
 Babel preset that transforms createContext calls to use global context shims
 

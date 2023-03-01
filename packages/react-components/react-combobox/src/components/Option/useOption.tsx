@@ -1,23 +1,34 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import { CheckmarkFilled, CheckboxUncheckedFilled, CheckboxCheckedFilled } from '@fluentui/react-icons';
+import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
+import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
-// TODO: refine this more
-function getValueString(value: string | undefined, children: React.ReactNode) {
-  if (value) {
-    return value;
+function getTextString(text: string | undefined, children: React.ReactNode) {
+  if (text !== undefined) {
+    return text;
   }
 
-  let valueString = '';
+  let textString = '';
+  let hasNonStringChild = false;
   React.Children.forEach(children, child => {
     if (typeof child === 'string') {
-      valueString += child;
+      textString += child;
+    } else {
+      hasNonStringChild = true;
     }
   });
-  return valueString;
+
+  // warn if an Option has non-string children and no text prop
+  if (hasNonStringChild) {
+    // eslint-disable-next-line no-console
+    console.warn('Provide a `text` prop to Option components when they contain non-string children.');
+  }
+
+  return textString;
 }
 
 /**
@@ -30,25 +41,34 @@ function getValueString(value: string | undefined, children: React.ReactNode) {
  * @param ref - reference to root HTMLElement of Option
  */
 export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElement>): OptionState => {
-  const { disabled, value } = props;
+  const { children, disabled, text, value } = props;
   const optionRef = React.useRef<HTMLElement>(null);
-  const optionValue = getValueString(value, props.children);
+  const optionText = getTextString(text, children);
+  const optionValue = value ?? optionText;
+
+  // use the id if provided, otherwise use a generated id
+  const id = useId('fluent-option', props.id);
+
+  // data used for context registration & events
+  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, text: optionText, value: optionValue }), [
+    id,
+    disabled,
+    optionText,
+    optionValue,
+  ]);
 
   // context values
+  const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
-  const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selected = useContextSelector(ListboxContext, ctx => {
     const selectedOptions = ctx.selectedOptions;
 
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
-
-  // use the id if provided, otherwise use a generated id
-  const defaultId = useId('fluent-option');
-  const id = React.useMemo(() => {
-    return props.id || defaultId;
-  }, [props.id, defaultId]);
+  const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
+  const setActiveOption = useContextSelector(ListboxContext, ctx => ctx.setActiveOption);
+  const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
 
   // current active option?
   const active = useContextSelector(ListboxContext, ctx => {
@@ -56,9 +76,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   });
 
   // check icon
-  let CheckIcon = <CheckmarkFilled />;
+  let CheckIcon: React.ReactNode = <CheckmarkFilled />;
   if (multiselect) {
-    CheckIcon = selected ? <CheckboxCheckedFilled /> : <CheckboxUncheckedFilled />;
+    CheckIcon = selected ? <Checkmark12Filled /> : '';
   }
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -67,16 +87,30 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(event, { id, disabled, value: optionValue });
+    // clicked option should always become active option
+    setActiveOption(optionData);
+
+    // close on option click for single-select options in a combobox
+    if (!multiselect) {
+      setOpen?.(event, false);
+    }
+
+    // handle selection change
+    selectOption(event, optionData);
+
     props.onClick?.(event);
   };
 
   // register option data with context
   React.useEffect(() => {
     if (id && optionRef.current) {
-      return registerOption({ id, disabled, value: optionValue }, optionRef.current);
+      return registerOption(optionData, optionRef.current);
     }
-  }, [registerOption, id, disabled, optionValue]);
+  }, [id, optionData, registerOption]);
+
+  const semanticProps = multiselect
+    ? { role: 'menuitemcheckbox', 'aria-checked': selected }
+    : { role: 'option', 'aria-selected': selected };
 
   return {
     components: {
@@ -85,10 +119,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, optionRef),
-      role: 'option',
       'aria-disabled': disabled ? 'true' : undefined,
-      'aria-selected': `${selected}`,
       id,
+      ...semanticProps,
       ...props,
       onClick,
     }),
@@ -101,6 +134,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     }),
     active,
     disabled,
+    focusVisible,
     multiselect,
     selected,
   };

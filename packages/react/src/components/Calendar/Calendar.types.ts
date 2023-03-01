@@ -63,6 +63,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.RefAttribut
   onDismiss?: () => void;
 
   /**
+   * ID for the calendar
+   */
+  id?: string;
+
+  /**
    * Default value of the Calendar, if any
    */
   value?: Date;

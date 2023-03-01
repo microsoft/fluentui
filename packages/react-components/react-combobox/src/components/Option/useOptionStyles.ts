@@ -86,18 +86,30 @@ const useStyles = makeStyles({
     },
   },
 
-  multiselectCheck: {
-    color: tokens.colorNeutralForeground3,
-    fontSize: tokens.fontSizeBase500,
-    visibility: 'visible',
-  },
-
   selectedCheck: {
     visibility: 'visible',
   },
 
+  multiselectCheck: {
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    boxSizing: 'border-box',
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    fill: 'currentColor',
+    fontSize: '12px',
+    height: '16px',
+    width: '16px',
+    visibility: 'visible',
+  },
+
   selectedMultiselectCheck: {
-    color: tokens.colorBrandBackground,
+    backgroundColor: tokens.colorCompoundBrandBackground,
+    color: tokens.colorNeutralForegroundInverted,
+    ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
   },
 
   checkDisabled: {
@@ -113,12 +125,12 @@ const useStyles = makeStyles({
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
-  const { active, disabled, multiselect, selected } = state;
+  const { active, disabled, focusVisible, multiselect, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     optionClassNames.root,
     styles.root,
-    active && styles.active,
+    active && focusVisible && styles.active,
     disabled && styles.disabled,
     selected && styles.selected,
     state.root.className,

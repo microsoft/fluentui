@@ -3,14 +3,13 @@ import * as React from 'react';
 import { MenuGroup } from './MenuGroup';
 import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('MenuGroup', () => {
   isConformant({
     Component: MenuGroup,
     displayName: 'MenuGroup',
     disabledTests: [
-      'component-has-static-classname-exported',
       // MenuGroup does not have own styles
       'make-styles-overrides-win',
     ],

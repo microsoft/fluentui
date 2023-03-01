@@ -14,6 +14,8 @@ export {
   EventGroup,
   FabricPerformance,
   FocusRects,
+  FocusRectsContext,
+  FocusRectsProvider,
   GlobalSettings,
   IsFocusVisibleClassName,
   KeyCodes,
@@ -138,6 +140,7 @@ export {
   precisionRound,
   // eslint-disable-next-line deprecation/deprecation
   raiseClick,
+  removeDirectionalKeyCode,
   removeIndex,
   replaceElement,
   resetControlledWarnings,
@@ -204,6 +207,7 @@ export type {
   IEventRecordList,
   IEventRecordsByName,
   IFitContentToBoundsOptions,
+  IFocusRectsContext,
   IObjectWithKey,
   IPerfData,
   IPerfMeasurement,
@@ -211,6 +215,7 @@ export type {
   // eslint-disable-next-line deprecation/deprecation
   IPoint,
   IPropsWithStyles,
+  IReactProps,
   IRectangle,
   IRefObject,
   IRenderComponent,

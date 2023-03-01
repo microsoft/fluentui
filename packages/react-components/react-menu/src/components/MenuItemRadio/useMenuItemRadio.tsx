@@ -4,51 +4,43 @@ import { Checkmark16Filled } from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import type { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
+import type { ARIAButtonElement, ARIAButtonElementIntersection } from '@fluentui/react-aria';
 
 /**
  * Given user props, returns state and render function for a MenuItemRadio.
  */
 export const useMenuItemRadio_unstable = (
   props: MenuItemRadioProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<ARIAButtonElement<'div'>>,
 ): MenuItemRadioState => {
-  const radioProps = {
-    role: 'menuitemradio',
-  };
+  const { name, value } = props;
 
-  const state = useMenuItem_unstable(
-    {
-      ...radioProps,
-      ...props,
-      checkmark: resolveShorthand(props.checkmark, {
-        defaultProps: { children: <Checkmark16Filled /> },
-        required: true,
-      }),
-    },
-    ref,
-  ) as MenuItemRadioState;
-
-  const selectRadio = useMenuListContext_unstable(context => context.selectRadio);
-  const { onClick: onClickOriginal } = state.root;
   const checked = useMenuListContext_unstable(context => {
-    const checkedItems = context.checkedValues?.[state.name] || [];
-    return checkedItems.indexOf(state.value) !== -1;
+    const checkedItems = context.checkedValues?.[name] || [];
+    return checkedItems.indexOf(value) !== -1;
   });
 
-  state.checked = checked;
-  state.root['aria-checked'] = state.checked;
+  const selectRadio = useMenuListContext_unstable(context => context.selectRadio);
 
-  // MenuItem state already transforms keyDown to click events
-  state.root.onClick = e => {
-    if (state.disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    selectRadio?.(e, state.name, state.value, state.checked);
-    onClickOriginal?.(e);
+  return {
+    ...useMenuItem_unstable(
+      {
+        ...props,
+        role: 'menuitemradio',
+        'aria-checked': checked,
+        checkmark: resolveShorthand(props.checkmark, {
+          defaultProps: { children: <Checkmark16Filled /> },
+          required: true,
+        }),
+        onClick: (e: React.MouseEvent<ARIAButtonElementIntersection<'div'>>) => {
+          selectRadio?.(e, name, value, checked);
+          props.onClick?.(e);
+        },
+      },
+      ref,
+    ),
+    checked,
+    name,
+    value,
   };
-
-  return state;
 };
