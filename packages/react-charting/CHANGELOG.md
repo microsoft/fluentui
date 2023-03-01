@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 28 Feb 2023 07:37:42 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Mar 2023 07:45:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.1)
+
+Wed, 01 Mar 2023 07:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.0..@fluentui/react-charting_v5.16.1)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.16 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/react to v8.106.2 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
 
 ## [5.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.0)
 

@@ -32,10 +32,6 @@ function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
   const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
-  if (process.env.NODE_ENV === 'production') {
-    return addonName;
-  }
-
   function getPaths() {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
@@ -173,8 +169,17 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
 
     return {
       ...importMappings,
+
+      // TODO: https://github.com/microsoft/fluentui/issues/26691
+
       '@fluentui/react-data-grid-react-window': {
         replace: '@fluentui/react-data-grid-react-window',
+      },
+      '@fluentui/react-migration-v8-v9': {
+        replace: '@fluentui/react-migration-v8-v9',
+      },
+      '@fluentui/react-migration-v0-v9': {
+        replace: '@fluentui/react-migration-v0-v9',
       },
     };
   }

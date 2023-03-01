@@ -2,6 +2,27 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Wed, 01 Mar 2023 07:45:39 GMT",
+      "tag": "@fluentui/cra-template_v8.4.62",
+      "version": "8.4.62",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "dd0f5b76fc8905c067cc58556ec1f9626dcfc640",
+            "comment": "chore: bump jest types for template"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/cra-template",
+            "comment": "Bump @fluentui/react to v8.106.2",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Feb 2023 07:39:55 GMT",
       "tag": "@fluentui/cra-template_v8.4.61",
       "version": "8.4.61",
