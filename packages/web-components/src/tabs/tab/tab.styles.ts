@@ -8,7 +8,6 @@ import {
   fontFamilyBase,
   fontSizeBase300,
   fontWeightBold,
-  fontWeightRegular,
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,

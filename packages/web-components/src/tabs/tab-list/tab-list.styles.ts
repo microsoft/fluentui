@@ -39,7 +39,6 @@ export const styles = css`
   }
 
   :host([disabled='true']) .active-indicator {
-    color: ${colorNeutralForegroundDisabled};
     background: ${colorNeutralForegroundDisabled};
   }
 
@@ -98,7 +97,6 @@ export const styles = css`
     justify-self: end;
     align-self: flex-start;
     width: 100%;
-    padding: 0 calc(var(--design-unit) * 4px) calc((var(--height-number) - var(--design-unit)) * 1px) 0;
   }
   :host([orientation='vertical']) .tabpanel {
     grid-column: 2;

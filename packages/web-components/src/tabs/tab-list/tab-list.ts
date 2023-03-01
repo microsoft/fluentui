@@ -13,6 +13,11 @@ export class TabList extends FASTTabs {
   @attr({ converter: booleanConverter })
   disabled?: boolean;
 
+  @attr size?: 'small' | 'medium' | 'large';
+
+  @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
+  reserveSelectedTabSpace?: boolean;
+
   disabledChanged() {
     const tabs = this.querySelectorAll('fluent-tab');
 
@@ -39,8 +44,16 @@ export class TabList extends FASTTabs {
     }
   }
 
-  @attr size?: 'small' | 'medium' | 'large';
+  // attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
+  //   this.setActiveIndicatorContent();
+  // }
 
-  @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
-  reserveSelectedTabSpace?: boolean;
+  // setActiveIndicatorContent() {
+  //   const tabs = this.querySelectorAll('fluent-tab');
+  //   tabs.forEach(tab => {
+  //     if (tab.ariaSelected === 'true') {
+  //       this.activeIndicatorRef.textContent = tab.textContent;
+  //     }
+  //   });
+  // }
 }
