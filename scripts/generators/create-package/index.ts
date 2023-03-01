@@ -1,14 +1,14 @@
-import { NodePlopAPI, AddManyActionConfig } from 'plop';
-import { Actions } from 'node-plop';
+import { spawnSync } from 'child_process';
 import * as path from 'path';
+
+import { PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
+import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
+import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
 import _ from 'lodash';
-import chalk from 'chalk';
-import { spawnSync } from 'child_process';
-import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
-
-import { findGitRoot, PackageJson } from '@fluentui/scripts-monorepo';
+import { Actions } from 'node-plop';
+import { AddManyActionConfig, NodePlopAPI } from 'plop';
 
 const root = findGitRoot();
 
@@ -295,6 +295,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   };
 
   const nxWorkspaceContent = fs.readFileSync(paths.workspace, 'utf-8');
+  // eslint-disable-next-line deprecation/deprecation
   const nxWorkspace: WorkspaceJsonConfiguration = jju.parse(nxWorkspaceContent);
   Object.assign(nxWorkspace.projects, templates.workspace);
 
@@ -304,6 +305,7 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
 }
 
 function getProjectMetadata(options: { root: string; name: string }) {
+  // eslint-disable-next-line deprecation/deprecation
   const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
     fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
   );

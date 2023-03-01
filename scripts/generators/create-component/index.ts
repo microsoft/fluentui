@@ -173,6 +173,7 @@ const appendToPackageIndex = (data: Data): string => {
 //#endregion
 
 function getProjectMetadata(options: { root: string; name: string }) {
+  // eslint-disable-next-line deprecation/deprecation
   const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
     fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
   );
