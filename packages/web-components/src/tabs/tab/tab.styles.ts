@@ -63,9 +63,10 @@ export const styles = css`
     margin-inline-start: 11px;
   }
   :host([disabled]) {
-    cursor: none;
-    /* opacity: var(--disabled-opacity); */
+    cursor: not-allowed;
+    color: ${colorNeutralForegroundDisabled};
   }
+
   :host([disabled]:hover) {
     color: ${colorNeutralForegroundDisabled};
   }
@@ -109,7 +110,7 @@ export const styles = css`
     outline: none;
   }
   :host(.vertical) {
-    justify-content: end;
+    justify-content: start;
     grid-column: 2;
   }
   :host(.vertical[aria-selected='true']) {

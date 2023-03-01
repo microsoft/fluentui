@@ -12,19 +12,14 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 ### Inputs
 
-| attribute                  | type                     | default | description                                                                                                      |
-| -------------------------- | ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
-| appearance                 | "subtle" \| "transparent | -       | -                                                                                                                |
-| reserve-selected-tab-space | boolean                  | -       | Tab size may change between unselected and selected states. The deault scenario is a selected tab has bold text. |
-| defailt-selected-value     | unknown                  | -       | The value of the tab to be selected by default.                                                                  |
-
-- [@attr appearance?: "subtle" | "transparent" ]
-- [@attr reserve-selected-tab-space?: boolean] Tab size may change between unselected and selected states. The deault scenario is a selected tab has bold text.
-- [@attr default-selected-value?: unknown] The value of the tab to be selected by default.
-- [@attr disabled?: boolean]
-- [@attr selected-value?: unknown] sets the selected tab
-- [@attr size?: "small" | "medium" | "large"] defaults to medium
-- [@attr vertical? boolean] defaults to false
+| attribute                  | type                           | default  | description                                                                                                       |
+| -------------------------- | ------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| activeid                   | string                         | -        | sets the selected tab                                                                                             |
+| appearance                 | "subtle" \| "transparent       | -        | -                                                                                                                 |
+| reserve-selected-tab-space | boolean                        | -        | Tab size may change between unselected and selected states. The default scenario is a selected tab has bold text. |
+| disabled                   | boolean                        | -        | blocks control from all keyboard and mouse events.                                                                |
+| size                       | "small" \| "medium" \| "large" | "medium" |                                                                                                                   |
+| vertical                   | boolean                        | false    | sets the orientation of the tab list to vertical display                                                          |
 
 ### Outputs
 

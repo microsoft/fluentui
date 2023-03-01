@@ -11,34 +11,30 @@ export class TabList extends FASTTabs {
   constructor() {
     super();
   }
-
-  /**
-   * appearance - html attribute
-   * @type {"subtle" | "transparent"}
-   * @public
-   * */
   @attr appearance?: 'subtle' | 'transparent';
 
-  @attr disabled?: boolean;
+  @attr({ converter: booleanConverter })
+  disabled?: boolean;
+
+  disabledChanged() {
+    const tabs = this.querySelectorAll('fluent-tab');
+    if (this.disabled === true) {
+      tabs.forEach(function (tab) {
+        tab.setAttribute('disabled', 'true');
+      });
+      window.setTimeout(() => (this.showActiveIndicator = true));
+    } else {
+      tabs.forEach(function (tab) {
+        if (tab.hasAttribute('disabled')) {
+          tab.removeAttribute('disabled');
+        }
+      });
+    }
+    this.hideActiveIndicator = false;
+  }
 
   @attr size?: 'small' | 'medium' | 'large';
 
-  @attr({ converter: booleanConverter })
-  vertical?: boolean;
-  verticalChanged() {
-    if (this.vertical) {
-      this.orientation = 'vertical';
-    } else {
-      this.orientation = 'horizontal';
-    }
-  }
-
   @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
   reserveSelectedTabSpace?: boolean;
-
-  @attr({ attribute: 'selected-value' })
-  selectedValue?: unknown;
-
-  @attr({ attribute: 'default-selected-value' })
-  defaultSelectedValue?: unknown;
 }

@@ -3,10 +3,10 @@ import {
   borderRadiusMedium,
   colorBrandBackgroundSelected,
   colorNeutralForeground2,
+  colorNeutralForegroundDisabled,
   fontFamilyBase,
   fontSizeBase300,
   lineHeightBase300,
-  spacingHorizontalMNudge,
 } from '../../theme/design-tokens.js';
 
 export const styles = css`
@@ -25,6 +25,20 @@ export const styles = css`
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr;
   }
+
+  :host([disabled='true']) {
+    cursor: not-allowed;
+    color: ${colorNeutralForegroundDisabled};
+  }
+  /* :host([disabled='true']) ::slotted(fluent-tab) {
+    cursor: not-allowed;
+    color: ${colorNeutralForegroundDisabled};
+  } */
+  :host([disabled='true']) .active-indicator {
+    color: ${colorNeutralForegroundDisabled};
+    background: ${colorNeutralForegroundDisabled};
+  }
+
   .tablist {
     display: grid;
     grid-template-rows: auto auto;
@@ -49,16 +63,16 @@ export const styles = css`
     grid-row: 2;
     grid-column: 1;
     width: 100%;
-    height: 5px;
+    height: 3px;
     justify-self: center;
     background: var(--tabActiveIndicator);
     border-radius: ${borderRadiusMedium};
-    margin-bottom: ${spacingHorizontalMNudge};
     position: relative;
   }
   .activeIndicatorTransition {
     transition: transform 0.2s ease;
   }
+
   .tabpanel {
     grid-row: 2;
     grid-column-start: 1;
@@ -90,16 +104,15 @@ export const styles = css`
   :host([orientation='vertical']) ::slotted([slot='end']) {
     grid-row: 3;
   }
-  :host([orientation='vertical']) .activeIndicator {
+  :host([orientation='vertical']) .active-indicator {
     grid-column: 1;
     grid-row: 1;
-    width: 5px;
-    height: 100%;
+    width: 3px;
+    height: ${fontSizeBase300};
     margin-inline-end: 10px;
     align-self: center;
-    background: var(--accent-fill-rest);
     margin-top: 0;
-    border-radius: 0 calc(var(--control-corner-radius) * 1px) calc(var(--control-corner-radius) * 1px) 0;
+    border-radius: ${borderRadiusMedium};
   }
   :host([orientation='vertical']) .activeIndicatorTransition {
     transition: transform 0.2s linear;
