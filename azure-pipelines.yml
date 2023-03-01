@@ -60,7 +60,8 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn affected:run --base=$(targetBranch) --target=build --target=test --target=lint --target=type-check
+          yarn nx run-many --all --parallel=8 --targets=build,test,lint,type-check
+          # yarn affected:run --base=$(targetBranch) --target=build --target=test --target=lint --target=type-check
         displayName: build, test, lint
 
       - template: .devops/templates/cleanup.yml
