@@ -52,6 +52,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   onChange,
   onFormatDate,
   onValidateUserInput,
+  onGetErrorMessage,
   placeholder = strings.defaultTimePickerPlaceholder,
   ...rest
 }: ITimePickerProps) => {
@@ -59,12 +60,12 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
-  const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(
-    new Date(dateAnchor || defaultValue || new Date()),
-  );
-  const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(new Date(dateAnchor || defaultValue || new Date()));
+  const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
+  const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
 
-  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue);
+  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue, (_ev, newValue) =>
+    onChange?.(undefined, newValue),
+  );
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
@@ -161,18 +162,19 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         }
       }
 
-      if (!errorMessageToDisplay) {
-        const timeSelection = (option?.key as string) || input || '';
-        const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
-        setSelectedTime(updatedTime);
+      if (onGetErrorMessage) {
+        onGetErrorMessage(errorMessageToDisplay);
+      }
 
-        if (onChange) {
-          onChange(updatedTime);
-        }
-      } else {
+      if (errorMessage || (input !== undefined && !input.length)) {
         const timeSelection = option?.text || input || '';
         setSelectedKey(option?.key as string);
         setComboBoxText(timeSelection);
+        setSelectedTime(errorMessage ? getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection) : undefined);
+      } else {
+        const timeSelection = (option?.key as string) || input || '';
+        const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
+        setSelectedTime(updatedTime);
       }
 
       setErrorMessage(errorMessageToDisplay);
@@ -182,7 +184,6 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       dateStartAnchor,
       dateEndAnchor,
       allowFreeform,
-      onChange,
       onFormatDate,
       onValidateUserInput,
       showSeconds,
@@ -190,6 +191,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       strings.invalidInputErrorMessage,
       strings.timeOutOfBoundsErrorMessage,
       setSelectedTime,
+      onGetErrorMessage,
+      errorMessage,
     ],
   );
 
