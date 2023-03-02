@@ -476,11 +476,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   // // const iconProps = textFieldProps && textFieldProps.iconProps;
   const textFieldId =
     textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
-  // // const readOnly = !allowTextInput && !disabled;
-
-  // const dataIsFocusable =
-  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
   const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'

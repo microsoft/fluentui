@@ -159,7 +159,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
   });
 
   const { dir } = useFluent_unstable();
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'both' });
 
   if (isYearPickerVisible) {
     const [onRenderYear, yearStrings] = getYearStrings({ dateTimeFormatter, navigatedDate, strings });
@@ -205,7 +205,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           onClick={onHeaderSelect}
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           aria-label={headerAriaLabel}
-          // data-is-focusable={!!onUserHeaderSelect || !yearPickerHidden}
           tabIndex={!!onUserHeaderSelect || !yearPickerHidden ? 0 : -1}
           type="button"
         >
@@ -279,7 +278,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
                     onKeyDown={isInBounds ? onButtonKeyDown(selectMonthCallback(monthIndex)) : undefined}
                     aria-label={dateFormatter.formatMonth(indexedMonth, strings!)}
                     aria-selected={isNavigatedMonth}
-                    // data-is-focusable={isInBounds ? true : undefined}
+                    tabIndex={isInBounds ? 0 : -1}
                     type="button"
                   >
                     {month}
