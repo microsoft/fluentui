@@ -105,4 +105,9 @@ export interface ITimePickerProps
    * Callback to use custom user-input validation.
    */
   onValidateUserInput?: (userInput: string) => string;
+
+  /**
+   * Callback to get validation result.
+   */
+  onGetErrorMessage?: (errorMessage: string) => void;
 }
