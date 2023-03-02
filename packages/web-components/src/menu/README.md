@@ -78,7 +78,15 @@ Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">` |
 
 **Additional Deltas:**
 
+**Responsiveness**
+
+The WC3 Menu component does not currently support responsive styling.
+
+**Icons**
+
 In order for icons to render with appropriate styles the `icons` attribute must be present on the Menu.
+
+**Composure**
 
 Complete FUIR9 Menu composure
 
