@@ -41,7 +41,7 @@ export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHea
             key={dayLabels[i] + ' ' + index}
             title={label}
             aria-label={label}
-            tabIndex={allFocusable ? 0 : -1}
+            tabIndex={allFocusable ? 0 : undefined}
           >
             {dayLabels[i]}
           </th>

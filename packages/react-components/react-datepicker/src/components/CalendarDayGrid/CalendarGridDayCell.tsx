@@ -259,7 +259,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       onMouseOut={!ariaHidden ? onMouseOutDay : undefined}
       onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
       role="gridcell"
-      tabIndex={isNavigatedDate || isFocusable ? 0 : -1}
+      tabIndex={isNavigatedDate || isFocusable ? 0 : undefined}
       aria-current={day.isToday ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
     >
