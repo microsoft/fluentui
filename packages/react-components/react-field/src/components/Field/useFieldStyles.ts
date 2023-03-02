@@ -38,16 +38,24 @@ const useRootStyles = makeStyles({
   },
 });
 
-const useLabelStyles = makeStyles({
+const useLabelLayoutStyles = makeStyles({
   base: {
     paddingTop: tokens.spacingVerticalXXS,
     paddingBottom: tokens.spacingVerticalXXS,
-    verticalAlign: 'middle',
+    '& > .fui-InfoButton': {
+      verticalAlign: 'top',
+      marginTop: `calc(0px - ${tokens.spacingVerticalXXS})`,
+      marginBottom: `calc(0px - ${tokens.spacingVerticalXXS})`,
+    },
   },
 
   large: {
     paddingTop: '1px',
     paddingBottom: '1px',
+    '& > .fui-InfoButton': {
+      marginTop: '-1px',
+      marginBottom: '-1px',
+    },
   },
 
   vertical: {
@@ -62,6 +70,12 @@ const useLabelStyles = makeStyles({
     marginRight: tokens.spacingHorizontalM,
     gridRowStart: '1',
     gridRowEnd: '-1',
+  },
+});
+
+const useLabelStyles = makeStyles({
+  base: {
+    verticalAlign: 'top',
   },
 });
 
@@ -122,22 +136,23 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.root.className,
   );
 
-  const labelStyles = useLabelStyles();
+  const labelLayoutStyles = useLabelLayoutStyles();
 
-  // Class name applied to the either the infoButton wrapper (which contains the label and InfoButton) if present,
-  // or the label itself if there is no infoButton.
-  const labelContainerClassName = mergeClasses(
-    horizontal && labelStyles.horizontal,
-    !horizontal && labelStyles.vertical,
-    !horizontal && state.size === 'large' && labelStyles.verticalLarge,
+  // Class name applied to the either the infoButton wrapper if it is present, or the label itself otherwise.
+  const labelLayoutClassName = mergeClasses(
+    labelLayoutStyles.base,
+    horizontal && labelLayoutStyles.horizontal,
+    !horizontal && labelLayoutStyles.vertical,
+    state.size === 'large' && labelLayoutStyles.large,
+    !horizontal && state.size === 'large' && labelLayoutStyles.verticalLarge,
   );
 
+  const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
       labelStyles.base,
-      !state.infoButton && labelContainerClassName,
-      state.label.size === 'large' && labelStyles.large,
+      !state.infoButton && labelLayoutClassName,
       state.label.className,
     );
   }
@@ -145,7 +160,7 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.infoButton) {
     state.infoButton.className = mergeClasses(
       fieldClassNames.infoButton,
-      labelContainerClassName,
+      labelLayoutClassName,
       state.infoButton.className,
     );
   }
