@@ -48,7 +48,7 @@ export const segmentClassName = 'ui-segment';
 /**
  * A Segment visually groups related content.
  */
-export const Segment = (React.forwardRef<HTMLDivElement, SegmentProps>((props, ref) => {
+export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
   setStart();
@@ -92,7 +92,7 @@ export const Segment = (React.forwardRef<HTMLDivElement, SegmentProps>((props, r
 
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, SegmentProps> & FluentComponentStaticProps<SegmentProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SegmentProps> & FluentComponentStaticProps<SegmentProps>;
 
 Segment.displayName = 'Segment';
 

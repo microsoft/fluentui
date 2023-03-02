@@ -9,7 +9,9 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-selected=true' based on the property 'selected'.
  * Adds role='gridcell'.
  */
-export const datepickerCalendarCellButtonBehavior: Accessibility<DatepickerCalendarCellButtonBehaviorProps> = props => ({
+export const datepickerCalendarCellButtonBehavior: Accessibility<
+  DatepickerCalendarCellButtonBehaviorProps
+> = props => ({
   attributes: {
     root: {
       role: 'gridcell',

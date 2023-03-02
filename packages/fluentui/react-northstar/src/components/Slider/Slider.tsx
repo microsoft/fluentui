@@ -126,7 +126,7 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
  * [Slider - JAWS narrates slider value twice when using PageUp / PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/220)
  * [Slider - JAWS narrates current and new value in vertical slider](https://github.com/FreedomScientific/VFO-standards-support/issues/219)
  */
-export const Slider = (React.forwardRef<HTMLInputElement, SliderProps>((props, ref) => {
+export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
@@ -159,7 +159,12 @@ export const Slider = (React.forwardRef<HTMLInputElement, SliderProps>((props, r
       value: value as string,
     }),
   });
-  const { min: numericMin, max: numericMax, value: numericValue, valueAsPercentage } = processInputValues({
+  const {
+    min: numericMin,
+    max: numericMax,
+    value: numericValue,
+    valueAsPercentage,
+  } = processInputValues({
     min,
     max,
     value: state.value || '',
@@ -259,7 +264,7 @@ export const Slider = (React.forwardRef<HTMLInputElement, SliderProps>((props, r
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'input', HTMLInputElement, SliderProps> & FluentComponentStaticProps;
+}) as unknown as ForwardRefWithAs<'input', HTMLInputElement, SliderProps> & FluentComponentStaticProps;
 
 Slider.displayName = 'Slider';
 

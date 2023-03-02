@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase",
+  "packageName": "@fluentui/react-hooks",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

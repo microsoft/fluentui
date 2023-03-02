@@ -108,9 +108,7 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<TableRowId>([1]),
-  );
+  const [selectedRows, setSelectedRows] = React.useState(() => new Set<TableRowId>([1]));
   const {
     getRows,
     selection: { toggleRow, isRowSelected },

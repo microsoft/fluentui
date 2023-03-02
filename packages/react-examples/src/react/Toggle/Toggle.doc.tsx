@@ -4,8 +4,10 @@ import { ToggleCustomLabelExample } from './Toggle.CustomLabel.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const ToggleBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Toggle/Toggle.Basic.Example.tsx') as string;
-const ToggleCustomLabelExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Toggle/Toggle.CustomLabel.Example.tsx') as string;
+const ToggleBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Toggle/Toggle.Basic.Example.tsx') as string;
+const ToggleCustomLabelExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Toggle/Toggle.CustomLabel.Example.tsx') as string;
 
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',

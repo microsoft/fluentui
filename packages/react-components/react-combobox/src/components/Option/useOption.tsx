@@ -50,12 +50,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const id = useId('fluent-option', props.id);
 
   // data used for context registration & events
-  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, text: optionText, value: optionValue }), [
-    id,
-    disabled,
-    optionText,
-    optionValue,
-  ]);
+  const optionData = React.useMemo<OptionValue>(
+    () => ({ id, disabled, text: optionText, value: optionValue }),
+    [id, disabled, optionText, optionValue],
+  );
 
   // context values
   const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);

@@ -7,7 +7,8 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { FolderCoverBasicExample } from './FolderCover.Basic.Example';
-const FolderCoverBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/FolderCover/FolderCover.Basic.Example.tsx') as string;
+const FolderCoverBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/FolderCover/FolderCover.Basic.Example.tsx') as string;
 
 export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -72,53 +72,46 @@ export const elevationShadowCardFocusSize = DesignToken.create<number>('elevatio
   8,
 );
 /** @public */
-export const elevationShadowCardRest = DesignToken.create<string>(
-  'elevation-shadow-card-rest',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardRestSize.getValueFor(element)),
+export const elevationShadowCardRest = DesignToken.create<string>('elevation-shadow-card-rest').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardRestSize.getValueFor(element)),
 );
 /** @public */
-export const elevationShadowCardHover = DesignToken.create<string>(
-  'elevation-shadow-card-hover',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardHoverSize.getValueFor(element)),
+export const elevationShadowCardHover = DesignToken.create<string>('elevation-shadow-card-hover').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardHoverSize.getValueFor(element)),
 );
 /** @public */
-export const elevationShadowCardActive = DesignToken.create<string>(
-  'elevation-shadow-card-active',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardActiveSize.getValueFor(element)),
+export const elevationShadowCardActive = DesignToken.create<string>('elevation-shadow-card-active').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardActiveSize.getValueFor(element)),
 );
 /** @public */
-export const elevationShadowCardFocus = DesignToken.create<string>(
-  'elevation-shadow-card-focus',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardFocusSize.getValueFor(element)),
+export const elevationShadowCardFocus = DesignToken.create<string>('elevation-shadow-card-focus').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowCardFocusSize.getValueFor(element)),
 );
 
 /** @public */
 export const elevationShadowTooltipSize = DesignToken.create<number>('elevation-shadow-tooltip-size').withDefault(16);
 /** @public */
-export const elevationShadowTooltip = DesignToken.create<string>(
-  'elevation-shadow-tooltip',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowTooltipSize.getValueFor(element)),
+export const elevationShadowTooltip = DesignToken.create<string>('elevation-shadow-tooltip').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowTooltipSize.getValueFor(element)),
 );
 
 /** @public */
 export const elevationShadowFlyoutSize = DesignToken.create<number>('elevation-shadow-flyout-size').withDefault(32);
 /** @public */
-export const elevationShadowFlyout = DesignToken.create<string>(
-  'elevation-shadow-flyout',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowFlyoutSize.getValueFor(element)),
+export const elevationShadowFlyout = DesignToken.create<string>('elevation-shadow-flyout').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowFlyoutSize.getValueFor(element)),
 );
 
 /** @public */
 export const elevationShadowDialogSize = DesignToken.create<number>('elevation-shadow-dialog-size').withDefault(128);
 /** @public */
-export const elevationShadowDialog = DesignToken.create<string>(
-  'elevation-shadow-dialog',
-).withDefault((element: HTMLElement) =>
-  elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowDialogSize.getValueFor(element)),
+export const elevationShadowDialog = DesignToken.create<string>('elevation-shadow-dialog').withDefault(
+  (element: HTMLElement) =>
+    elevationShadowRecipe.getValueFor(element).evaluate(element, elevationShadowDialogSize.getValueFor(element)),
 );

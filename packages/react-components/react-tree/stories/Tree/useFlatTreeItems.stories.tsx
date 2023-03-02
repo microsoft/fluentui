@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, FlatTreeItemProps, useFlatTreeItems_unstable } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, useFlatTreeItems_unstable, FlatTreeItem } from '@fluentui/react-tree';
 
-const defaultItems: FlatTreeItemProps[] = [
+const defaultItems: FlatTreeItem[] = [
   {
     id: '1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
