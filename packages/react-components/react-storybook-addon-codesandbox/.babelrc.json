@@ -1,4 +1,3 @@
 {
-  "presets": [],
-  "plugins": ["annotate-pure-calls"]
+  "plugins": ["annotate-pure-calls", "@babel/transform-react-pure-annotations"]
 }

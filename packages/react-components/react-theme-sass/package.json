@@ -20,7 +20,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -35,7 +35,9 @@
       "patch"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "@swc/helpers": "^0.4.14"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
