@@ -132,7 +132,7 @@ This global CSS approach is recommended by MUI -
 https://mui.com/getting-started/faq/#how-can-i-disable-transitions-globally.
 We go further by overriding animation duration to imperceptible levels so that we don't break
 [features that use animation events](https://codesandbox.io/s/disable-animations-important-with-events-dx38w6?file=/src/AnimatedCircle.tsx:496-563),
-this is recommended by [this blog post](<https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites>)
+this is recommended by [this blog post](<https://web.dev/prefers-reduced-motion/#(bonus)-forcing-reduced-motion-on-all-websites>).
 
 Codesandbox: https://codesandbox.io/s/disable-animations-important-dpugv
 
