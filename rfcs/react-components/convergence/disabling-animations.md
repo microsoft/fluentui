@@ -111,7 +111,7 @@ since that gives cross platform support without addtional performance costs
 of specific selectors or javacsript runtime. Additionally, not _**not all animations need to be disabled**_, and limited
 animations like colour change are still acceptable for users that need reduced motion.
 
-Add a CSS rule with `!important` property which will override all the animations and transitions on the page. This can
+As an escape hatch, applications can add a CSS rule with `!important` property which will override all the animations and transitions on the page. This can
 be done on the application side, and will impact all non-Fluent UI styles. This can be useful for browser screenshot
 tests that should not screenshot the state of an animation.
 
