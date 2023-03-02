@@ -50,11 +50,18 @@ export type {
 export {
   InfoButton,
   infoButtonClassNames,
+  InfoButtonContextProvider,
   useInfoButton_unstable,
+  useInfoButtonContext,
   useInfoButtonStyles_unstable,
   renderInfoButton_unstable,
 } from '@fluentui/react-infobutton';
-export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
+export type {
+  InfoButtonContextValue,
+  InfoButtonProps,
+  InfoButtonSlots,
+  InfoButtonState,
+} from '@fluentui/react-infobutton';
 
 // eslint-disable-next-line deprecation/deprecation
 export { CheckboxField_unstable as CheckboxField, checkboxFieldClassNames } from '@fluentui/react-checkbox';
@@ -110,8 +117,9 @@ export {
   Field,
   fieldClassNames,
   renderField_unstable,
-  useFieldStyles_unstable,
   useField_unstable,
+  useFieldContextValues_unstable,
+  useFieldStyles_unstable,
 } from '@fluentui/react-field';
 export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Export new context hooks for InfoButton and Field",
+  "packageName": "@fluentui/react-components",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

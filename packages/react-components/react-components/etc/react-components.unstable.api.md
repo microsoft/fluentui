@@ -44,6 +44,8 @@ import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { infoButtonClassNames } from '@fluentui/react-infobutton';
+import { InfoButtonContextProvider } from '@fluentui/react-infobutton';
+import { InfoButtonContextValue } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
 import { InfoButtonSlots } from '@fluentui/react-infobutton';
 import { InfoButtonState } from '@fluentui/react-infobutton';
@@ -90,8 +92,10 @@ import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
+import { useInfoButtonContext } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
@@ -182,6 +186,10 @@ export { FieldState }
 export { InfoButton }
 
 export { infoButtonClassNames }
+
+export { InfoButtonContextProvider }
+
+export { InfoButtonContextValue }
 
 export { InfoButtonProps }
 
@@ -275,9 +283,13 @@ export { useCardStyles_unstable }
 
 export { useField_unstable }
 
+export { useFieldContextValues_unstable }
+
 export { useFieldStyles_unstable }
 
 export { useInfoButton_unstable }
+
+export { useInfoButtonContext }
 
 export { useInfoButtonStyles_unstable }
 
