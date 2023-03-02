@@ -77,7 +77,7 @@ describe(`utils`, () => {
       pageMock.goto.mockImplementation(() => Promise.reject(new Error('page wont open - mock')));
 
       await expect(
-        visitUrl((pageMock as unknown) as puppeteer.Page, 'https://localhost:8080'),
+        visitUrl(pageMock as unknown as puppeteer.Page, 'https://localhost:8080'),
       ).rejects.toMatchInlineSnapshot(`[Error: page wont open - mock]`);
 
       expect(consoleWarnSpy.mock.calls.flat()).toMatchInlineSnapshot(`
@@ -106,9 +106,7 @@ describe(`utils`, () => {
 
       const { pageMock } = setup();
 
-      await expect(
-        visitUrl((pageMock as unknown) as puppeteer.Page, 'https://localhost:8080'),
-      ).resolves.toBeUndefined();
+      await expect(visitUrl(pageMock as unknown as puppeteer.Page, 'https://localhost:8080')).resolves.toBeUndefined();
       expect(pageMock.goto).toHaveBeenCalledTimes(1);
 
       expect(consoleLogSpy.mock.calls.flat()).toMatchInlineSnapshot(`

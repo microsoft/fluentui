@@ -433,67 +433,69 @@ export const Popup: React.FC<PopupProps> &
     return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
-  const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
-    const content = renderContent ? renderContent(scheduleUpdate) : props.content;
-    const popupContent = Popup.Content.create(content || {}, {
-      defaultProps: () =>
-        getA11yProps('popup', {
-          ...getContentProps(),
-          placement,
-          pointing,
-          pointerRef: pointerTargetRef,
-          trapFocus,
-          autoFocus,
-          autoSize,
-          className: classes,
-        }),
-      overrideProps: getContentProps,
-    });
+  const renderPopperChildren =
+    classes =>
+    ({ placement, scheduleUpdate }: PopperChildrenProps) => {
+      const content = renderContent ? renderContent(scheduleUpdate) : props.content;
+      const popupContent = Popup.Content.create(content || {}, {
+        defaultProps: () =>
+          getA11yProps('popup', {
+            ...getContentProps(),
+            placement,
+            pointing,
+            pointerRef: pointerTargetRef,
+            trapFocus,
+            autoFocus,
+            autoSize,
+            className: classes,
+          }),
+        overrideProps: getContentProps,
+      });
 
-    return (
-      <Unstable_NestingAuto>
-        {(getRefs, nestingRef) => (
-          <>
-            <Ref
-              innerRef={domElement => {
-                popupContentRef.current = domElement;
-                handleRef(contentRef, domElement);
-                nestingRef.current = domElement;
-              }}
-            >
-              {popupContent}
-            </Ref>
+      return (
+        <Unstable_NestingAuto>
+          {(getRefs, nestingRef) => (
+            <>
+              <Ref
+                innerRef={domElement => {
+                  popupContentRef.current = domElement;
+                  handleRef(contentRef, domElement);
+                  nestingRef.current = domElement;
+                }}
+              >
+                {popupContent}
+              </Ref>
 
-            {context.target && (
-              <>
-                <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
-                <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
-                <EventListener
-                  listener={handleDocumentClick(getRefs)}
-                  target={context.target}
-                  type="contextmenu"
-                  capture
-                />
-                <EventListener
-                  listener={handleDocumentKeyDown(getRefs)}
-                  target={context.target}
-                  type="keydown"
-                  capture
-                />
+              {context.target && (
+                <>
+                  <EventListener listener={handleMouseDown} target={context.target} type="mousedown" />
+                  <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+                  <EventListener
+                    listener={handleDocumentClick(getRefs)}
+                    target={context.target}
+                    type="contextmenu"
+                    capture
+                  />
+                  <EventListener
+                    listener={handleDocumentKeyDown(getRefs)}
+                    target={context.target}
+                    type="keydown"
+                    capture
+                  />
 
-                {(isOpenedByRightClick || closeOnScroll) && (
-                  <>
-                    <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
-                    <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
-                  </>
-                )}
-              </>
-            )}
-          </>
-        )}
-      </Unstable_NestingAuto>
-    );
-  };
+                  {(isOpenedByRightClick || closeOnScroll) && (
+                    <>
+                      <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                      <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
+                    </>
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </Unstable_NestingAuto>
+      );
+    };
 
   const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
     // we only need to dismiss if the scroll happens outside the popup

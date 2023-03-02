@@ -27,16 +27,18 @@ describe('SplitButtonBehavior.ts', () => {
       { keyCode: keyboardKey.Tab, shiftKey: false },
       { keyCode: keyboardKey.Tab, shiftKey: true },
     ];
-    const keysFromBehavior = splitButtonBehavior(property)['childBehaviors']['menuButton'](property).keyActions.popup
-      .closeAndFocusTrigger.keyCombinations;
+    const keysFromBehavior =
+      splitButtonBehavior(property)['childBehaviors']['menuButton'](property).keyActions.popup.closeAndFocusTrigger
+        .keyCombinations;
     verifyKeys(supportedKeys, keysFromBehavior);
   });
 
   test('open menu with alt + arrow down ', () => {
     const property = {};
     const supportedKeys = [{ altKey: true, keyCode: keyboardKey.ArrowDown }];
-    const keysFromBehavior = splitButtonBehavior(property)['childBehaviors']['menuButton'](property).keyActions.root
-      .openAndFocusFirst.keyCombinations;
+    const keysFromBehavior =
+      splitButtonBehavior(property)['childBehaviors']['menuButton'](property).keyActions.root.openAndFocusFirst
+        .keyCombinations;
     verifyKeys(supportedKeys, keysFromBehavior);
   });
 });

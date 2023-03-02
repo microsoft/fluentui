@@ -6,8 +6,7 @@ import { ButtonShim } from './ButtonShim';
 /**
  * Shims v8 PrimaryButton to render a v9 Button
  */
-export const PrimaryButtonShim: React.ForwardRefExoticComponent<
-  IButtonProps & React.RefAttributes<HTMLButtonElement>
-> = React.forwardRef((props, _ref) => {
-  return <ButtonShim {...props} primary variantClassName="ms-Button--primary" />;
-});
+export const PrimaryButtonShim: React.ForwardRefExoticComponent<IButtonProps & React.RefAttributes<HTMLButtonElement>> =
+  React.forwardRef((props, _ref) => {
+    return <ButtonShim {...props} primary variantClassName="ms-Button--primary" />;
+  });

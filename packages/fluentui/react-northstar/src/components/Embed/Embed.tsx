@@ -83,7 +83,7 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
  * A `placeholder` slot represents an [`Image`](/components/image/definition) component, please follow recommendations from its
  * accessibility section.
  */
-export const Embed = (React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) => {
+export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
   setStart();
@@ -219,7 +219,7 @@ export const Embed = (React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref)
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, EmbedProps> & FluentComponentStaticProps<EmbedProps>;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, EmbedProps> & FluentComponentStaticProps<EmbedProps>;
 
 Embed.displayName = 'Embed';
 

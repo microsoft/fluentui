@@ -62,27 +62,9 @@ export function initializeIcons(
   baseUrl: string = win?.FabricConfig?.iconBaseUrl || win?.FabricConfig?.fontBaseUrl || DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
-  [
-    i,
-    i0,
-    i1,
-    i2,
-    i3,
-    i4,
-    i5,
-    i6,
-    i7,
-    i8,
-    i9,
-    i10,
-    i11,
-    i12,
-    i13,
-    i14,
-    i15,
-    i16,
-    i17,
-  ].forEach((initialize: (url: string, options?: IIconOptions) => void) => initialize(baseUrl, options));
+  [i, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16, i17].forEach(
+    (initialize: (url: string, options?: IIconOptions) => void) => initialize(baseUrl, options),
+  );
 
   registerIconAliases();
 }
