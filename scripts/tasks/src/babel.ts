@@ -1,14 +1,19 @@
+import fs from 'fs';
+import path from 'path';
+
 import { BabelFileResult, transformAsync } from '@babel/core';
 import * as glob from 'glob';
-import fs from 'fs';
 import { logger } from 'just-scripts';
-import path from 'path';
 
 const EOL_REGEX = /\r?\n/g;
 
 function addSourceMappingUrl(code: string, loc: string): string {
   // Babel keeps stripping this comment, even when correct option is set. Adding manually.
   return code + '\n//# sourceMappingURL=' + path.basename(loc);
+}
+
+export function hasBabel() {
+  return fs.existsSync(path.join(process.cwd(), '.babelrc.json'));
 }
 
 export async function babel() {
