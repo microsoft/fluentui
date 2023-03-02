@@ -57,14 +57,24 @@ describe('ProgressBar', () => {
     it('gives the proper error message when max is negative', () => {
       const max = -1;
       const errorMsg = `The prop 'max' must be greater than 0. Received max: ${max}`;
-      render(<ProgressBar max={max} />);
+      render(<ProgressBar value={-3} max={max} />);
       expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+    it('sets the proper aria-valuemax when max is negative', () => {
+      const max = -1;
+      const result = render(<ProgressBar value={-2} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
     });
     it('gives the proper error message when max is zero', () => {
       const max = 0;
       const errorMsg = `The prop 'max' must be greater than 0. Received max: ${max}`;
-      render(<ProgressBar max={max} />);
+      render(<ProgressBar value={-3} max={max} />);
       expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+    it('sets the proper aria-valuemax when max is zero', () => {
+      const max = 0;
+      const result = render(<ProgressBar value={-5} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
     });
     it('does not give an error message when max is valid', () => {
       const max = 2;
@@ -79,6 +89,24 @@ describe('ProgressBar', () => {
       const errorMsg = `The prop 'value' must be less than or equal to 'max'. Received  value: ${value}, max: ${max}`;
       render(<ProgressBar value={value} max={max} />);
       expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+    it('sets the proper aria-valuenow when value is greater than max', () => {
+      const value = 23;
+      const max = 10;
+      const result = render(<ProgressBar value={value} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('10');
+    });
+    it('gives an error message when value is negative', () => {
+      const value = -5;
+      const errorMsg = `The prop 'value' must be greater than or equal to zero. Received value: ${value}`;
+      render(<ProgressBar value={value} />);
+      expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+    it('sets the proper aria-valuenow when value is negative', () => {
+      const value = -5;
+      const max = -3;
+      const result = render(<ProgressBar value={value} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
     });
     it('does not give an  error message when value is less than or equal to max', () => {
       const value = 5;
