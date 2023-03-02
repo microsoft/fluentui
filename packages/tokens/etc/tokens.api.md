@@ -204,8 +204,9 @@ export type ColorTokens = {
     colorNeutralBackground5Pressed: string;
     colorNeutralBackground5Selected: string;
     colorNeutralBackground6: string;
-    colorNeutralBackgroundStatic: string;
     colorNeutralBackgroundInverted: string;
+    colorNeutralBackgroundStatic: string;
+    colorNeutralBackgroundAlpha: string;
     colorSubtleBackground: string;
     colorSubtleBackgroundHover: string;
     colorSubtleBackgroundPressed: string;
@@ -267,6 +268,7 @@ export type ColorTokens = {
     colorTransparentStroke: string;
     colorTransparentStrokeInteractive: string;
     colorTransparentStrokeDisabled: string;
+    colorNeutralStrokeAlpha: string;
     colorStrokeFocus1: string;
     colorStrokeFocus2: string;
     colorNeutralShadowAmbient: string;
