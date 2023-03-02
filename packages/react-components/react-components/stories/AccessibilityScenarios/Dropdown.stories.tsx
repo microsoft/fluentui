@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { Label, Checkbox, Button } from '@fluentui/react-components';
-
-import { Dropdown, Option, OptionGroup } from '@fluentui/react-components/unstable';
+import { Label, Checkbox, Button, Dropdown, Option, OptionGroup } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
