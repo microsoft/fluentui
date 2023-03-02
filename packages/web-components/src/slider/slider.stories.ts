@@ -28,7 +28,6 @@ export default {
     readOnly: false,
     min: 0,
     max: 100,
-    step: 50,
     size: SliderSize.medium,
     orientation: 'horizontal',
   },
