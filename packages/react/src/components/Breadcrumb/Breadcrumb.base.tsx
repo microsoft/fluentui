@@ -167,20 +167,18 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
-    const contextualItems = renderedOverflowItems.map(
-      (item): IContextualMenuItem => {
-        const isActionable = !!(item.onClick || item.href);
-        return {
-          text: item.text,
-          name: item.text,
-          key: item.key,
-          onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
-          href: item.href,
-          disabled: !isActionable,
-          itemProps: isActionable ? undefined : nonActionableItemProps,
-        };
-      },
-    );
+    const contextualItems = renderedOverflowItems.map((item): IContextualMenuItem => {
+      const isActionable = !!(item.onClick || item.href);
+      return {
+        text: item.text,
+        name: item.text,
+        key: item.key,
+        onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
+        href: item.href,
+        disabled: !isActionable,
+        itemProps: isActionable ? undefined : nonActionableItemProps,
+      };
+    });
 
     // Find index of last rendered item so the divider icon
     // knows not to render on that item

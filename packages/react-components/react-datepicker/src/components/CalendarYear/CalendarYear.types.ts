@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import type { Slot } from '@fluentui/react-utilities';
-import type { ITheme } from '@fluentui/style-utilities';
 import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
-
-export type CalendarYearSlots = {
-  root: Slot<'div'>;
-};
 
 /**
  * {@docCategory Calendar}
@@ -51,11 +45,6 @@ export interface CalendarYearProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendarYear>;
-
-  /**
-   * Theme (provided through customization).
-   */
-  theme?: ITheme;
 
   /**
    * Localized strings to use in the Calendar

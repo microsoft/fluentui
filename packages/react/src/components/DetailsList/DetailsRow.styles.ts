@@ -65,15 +65,8 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
   } = props;
 
   const { palette, fonts } = theme;
-  const {
-    neutralPrimary,
-    white,
-    neutralSecondary,
-    neutralLighter,
-    neutralLight,
-    neutralDark,
-    neutralQuaternaryAlt,
-  } = palette;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } =
+    palette;
   const { focusBorder, linkHovered: focusedLinkColor } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);

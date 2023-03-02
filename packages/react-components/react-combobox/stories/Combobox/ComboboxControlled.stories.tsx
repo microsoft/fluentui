@@ -23,7 +23,7 @@ export const Controlled = (props: Partial<ComboboxProps>) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(['eatkins']);
   const [value, setValue] = React.useState('Elvia Atkins');
 
-  const onOptionSelect: typeof props['onOptionSelect'] = (ev, data) => {
+  const onOptionSelect: (typeof props)['onOptionSelect'] = (ev, data) => {
     setSelectedOptions(data.selectedOptions);
     setValue(data.optionText ?? '');
   };

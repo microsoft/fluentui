@@ -136,11 +136,10 @@ export const Provider: ComponentWithAs<'div', ProviderProps> & {
     }),
     [props.disableAnimations, props.performance, props.rtl, props.target, telemetry, props.theme],
   );
-  const outgoingContext = React.useMemo(() => mergeProviderContexts(createRenderer, incomingContext, inputContext), [
-    createRenderer,
-    incomingContext,
-    inputContext,
-  ]);
+  const outgoingContext = React.useMemo(
+    () => mergeProviderContexts(createRenderer, incomingContext, inputContext),
+    [createRenderer, incomingContext, inputContext],
+  );
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
   // only add dir attribute for top level provider or when direction changes from parent to child

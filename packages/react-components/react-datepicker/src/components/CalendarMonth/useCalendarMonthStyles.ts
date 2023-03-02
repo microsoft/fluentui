@@ -8,8 +8,6 @@ export const calendarMonthClassNames: SlotClassNames<CalendarMonthSlots> = {
 /**
  * Apply styling to the CalendarMonth slots based on the state
  */
-export const useCalendarMonthStyles_unstable = (
-  props: CalendarMonthStyleProps,
-): Record<keyof CalendarMonthStyles, string> => {
+export const useCalendarMonthStyles_unstable = (props: CalendarMonthStyleProps): CalendarMonthStyles => {
   return useCalendarPickerStyles_unstable(props);
 };

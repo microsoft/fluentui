@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { Slot } from '@fluentui/react-utilities';
-import type { ITheme } from '@fluentui/style-utilities';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
@@ -27,11 +26,6 @@ export interface CalendarMonthProps {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<ICalendarMonth>;
-
-  /**
-   * Theme (provided through customization).
-   */
-  theme?: ITheme;
 
   /**
    * Localized strings to use in the Calendar

@@ -4,6 +4,7 @@
   "description": "Storybook addon that enables codesandbox exports for stories",
   "private": true,
   "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
@@ -11,7 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build --module cjs",
+    "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -26,12 +27,21 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "codesandbox-import-utils": "2.2.3",
+    "@types/dedent": "0.7.0",
+    "dedent": "0.7.0"
+  },
+  "peerDependencies": {
+    "@storybook/addons": "^6.5.15"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./lib-commonjs/index.js"
+    },
+    "./preset": {
+      "require": "./preset.js"
     },
     "./package.json": "./package.json"
   }

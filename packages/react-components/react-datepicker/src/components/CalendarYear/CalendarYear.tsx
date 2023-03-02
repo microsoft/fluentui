@@ -102,7 +102,6 @@ CalendarYearGridCell.displayName = 'CalendarYearGridCell';
 
 const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props => {
   const {
-    theme,
     className,
     fromYear,
     toYear,
@@ -144,7 +143,6 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
         disabled={disabled}
         onSelectYear={onSelectYear}
         componentRef={selected ? selectedCellRef : current ? currentCellRef : undefined}
-        theme={theme}
       />
     );
   };
@@ -196,7 +194,7 @@ const CalendarYearNavDirection = {
 };
 
 interface CalendarYearNavArrowProps extends CalendarYearHeaderProps {
-  direction: typeof CalendarYearNavDirection[keyof typeof CalendarYearNavDirection];
+  direction: (typeof CalendarYearNavDirection)[keyof typeof CalendarYearNavDirection];
 }
 
 const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> = props => {
@@ -387,7 +385,7 @@ const NavigationDirection = {
 
 function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
   const [fromYear, navigate] = React.useReducer(
-    (state: number, action: typeof NavigationDirection[keyof typeof NavigationDirection]): number => {
+    (state: number, action: (typeof NavigationDirection)[keyof typeof NavigationDirection]): number => {
       return state + (action === NavigationDirection.Next ? CELL_COUNT : -CELL_COUNT);
     },
     undefined,

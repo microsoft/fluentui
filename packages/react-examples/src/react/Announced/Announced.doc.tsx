@@ -2,16 +2,20 @@ import * as React from 'react';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { AnnouncedSearchResultsExample } from './Announced.SearchResults.Example';
-const AnnouncedSearchResultsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.SearchResults.Example.tsx') as string;
+const AnnouncedSearchResultsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.SearchResults.Example.tsx') as string;
 
 import { AnnouncedLazyLoadingExample } from './Announced.LazyLoading.Example';
-const AnnouncedLazyLoadingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.LazyLoading.Example.tsx') as string;
+const AnnouncedLazyLoadingExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.LazyLoading.Example.tsx') as string;
 
 import { AnnouncedBulkOperationsExample } from './Announced.BulkOperations.Example';
-const AnnouncedBulkOperationsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.BulkOperations.Example.tsx') as string;
+const AnnouncedBulkOperationsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.BulkOperations.Example.tsx') as string;
 
 import { AnnouncedQuickActionsExample } from './Announced.QuickActions.Example';
-const AnnouncedQuickActionsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.QuickActions.Example.tsx') as string;
+const AnnouncedQuickActionsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Announced/Announced.QuickActions.Example.tsx') as string;
 
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',

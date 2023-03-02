@@ -218,9 +218,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
       return;
     }
 
-    const currentBumper = (isFirstBumper === this._hasFocus
-      ? this._lastBumper.current
-      : this._firstBumper.current) as HTMLElement;
+    const currentBumper = (
+      isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current
+    ) as HTMLElement;
 
     const nextFocusable =
       isFirstBumper === this._hasFocus

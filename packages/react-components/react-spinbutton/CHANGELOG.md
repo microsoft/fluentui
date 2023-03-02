@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Thu, 16 Feb 2023 19:18:48 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.1.7)
+
+Wed, 22 Feb 2023 23:06:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.1.6..@fluentui/react-spinbutton_v9.1.7)
+
+### Patches
+
+- chore: update SpinButton to use makeResetStyles ([PR #26867](https://github.com/microsoft/fluentui/pull/26867) by seanmonahan@microsoft.com)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.1.6)
 
