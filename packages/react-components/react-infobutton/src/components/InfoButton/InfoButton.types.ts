@@ -20,6 +20,11 @@ export type InfoButtonSlots = {
  */
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
   /**
+   * The ID of the control label associated with this InfoButton. Used to set the info button's aria-labelledby.
+   */
+  associatedLabelId?: string;
+
+  /**
    * Size of the InfoButton.
    *
    * @default medium

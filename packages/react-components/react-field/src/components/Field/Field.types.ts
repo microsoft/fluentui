@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { InfoButtonContextValue } from '@fluentui/react-infobutton';
 import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
@@ -20,6 +21,16 @@ export type FieldSlots = {
    * The label associated with the field.
    */
   label?: Slot<typeof Label>;
+
+  /**
+   * Container for an InfoButton associated with the field. If supplied, it should be a single `<InfoButton>` control.
+   *
+   * @example
+   * ```
+   * <Field label="..." infoButton={<InfoButton content="..." />} />
+   * ```
+   */
+  infoButton?: Slot<'div'>;
 
   /**
    * A message about the validation state. By default, this is an error message, but it can be a success, warning,
@@ -100,4 +111,8 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
  * State used in rendering Field
  */
 export type FieldState = ComponentState<Required<FieldSlots>> &
-  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+  Required<Pick<FieldProps, 'orientation' | 'validationState' | 'size'>>;
+
+export type FieldContextValues = {
+  infoButton: InfoButtonContextValue;
+};

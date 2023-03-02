@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { InfoButton } from '@fluentui/react-infobutton';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from './index';
@@ -12,9 +13,9 @@ describe('Field', () => {
         {
           props: {
             label: 'Test label',
+            infoButton: <InfoButton content="Test info button" />,
             hint: 'Test hint',
             validationMessage: 'Test validation message',
-            validationState: 'error',
           },
         },
       ],
@@ -188,5 +189,19 @@ describe('Field', () => {
       'aria-invalid': true,
       'aria-required': true,
     });
+  });
+
+  it('passes context to InfoButton to allow it to be labelledby the Field label', () => {
+    const result = render(
+      <Field label="Test label" infoButton={<InfoButton content="test" />}>
+        <input />
+      </Field>,
+    );
+
+    const label = result.getByText('Test label');
+    const infoButton = result.getByRole('button');
+
+    expect(label.id).toBeTruthy();
+    expect(infoButton.getAttribute('aria-labelledby')).toBe(`${label.id} ${infoButton.id}`);
   });
 });

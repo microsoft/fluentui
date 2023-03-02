@@ -27,7 +27,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     orientation = 'vertical',
     required,
     validationState = props.validationMessage ? 'error' : 'none',
-    size,
+    size = 'medium',
   } = props;
 
   const baseId = useId('field-');
@@ -42,6 +42,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
       // htmlFor is handled below
     },
   });
+
+  const infoButton = resolveShorthand(props.infoButton);
 
   const validationMessage = resolveShorthand(props.validationMessage, {
     defaultProps: {
@@ -102,14 +104,17 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   return {
     orientation,
     validationState,
+    size,
     components: {
       root: 'div',
+      infoButton: 'div',
       label: Label,
       validationMessage: 'div',
       validationMessageIcon: 'span',
       hint: 'div',
     },
     root,
+    infoButton,
     label,
     validationMessageIcon,
     validationMessage,

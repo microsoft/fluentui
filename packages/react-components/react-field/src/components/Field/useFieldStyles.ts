@@ -5,6 +5,7 @@ import type { FieldSlots, FieldState } from './Field.types';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
+  infoButton: `fui-Field__infoButton`,
   label: `fui-Field__label`,
   validationMessage: `fui-Field__validationMessage`,
   validationMessageIcon: `fui-Field__validationMessageIcon`,
@@ -41,6 +42,7 @@ const useLabelStyles = makeStyles({
   base: {
     paddingTop: tokens.spacingVerticalXXS,
     paddingBottom: tokens.spacingVerticalXXS,
+    verticalAlign: 'middle',
   },
 
   large: {
@@ -121,15 +123,30 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   );
 
   const labelStyles = useLabelStyles();
+
+  // Class name applied to the either the infoButton wrapper (which contains the label and InfoButton) if present,
+  // or the label itself if there is no infoButton.
+  const labelContainerClassName = mergeClasses(
+    horizontal && labelStyles.horizontal,
+    !horizontal && labelStyles.vertical,
+    !horizontal && state.size === 'large' && labelStyles.verticalLarge,
+  );
+
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
       labelStyles.base,
-      horizontal && labelStyles.horizontal,
-      !horizontal && labelStyles.vertical,
+      !state.infoButton && labelContainerClassName,
       state.label.size === 'large' && labelStyles.large,
-      !horizontal && state.label.size === 'large' && labelStyles.verticalLarge,
       state.label.className,
+    );
+  }
+
+  if (state.infoButton) {
+    state.infoButton.className = mergeClasses(
+      fieldClassNames.infoButton,
+      labelContainerClassName,
+      state.infoButton.className,
     );
   }
 

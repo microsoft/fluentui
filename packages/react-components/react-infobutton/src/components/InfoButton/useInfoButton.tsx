@@ -1,10 +1,17 @@
 import * as React from 'react';
-import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
-import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
-import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import { useControllableState } from '@fluentui/react-utilities';
-import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
+
 import type { PopoverProps } from '@fluentui/react-popover';
+import { Popover, PopoverSurface } from '@fluentui/react-popover';
+import {
+  getNativeElementProps,
+  mergeCallbacks,
+  resolveShorthand,
+  useControllableState,
+  useId,
+} from '@fluentui/react-utilities';
+import { useInfoButtonContext } from '../../contexts/InfoButtonContext';
+import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
+import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 
 const infoButtonIconMap = {
   small: <DefaultInfoButtonIcon12 />,
@@ -28,7 +35,8 @@ const popoverSizeMap = {
  * @param ref - reference to root HTMLElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
-  const { size = 'medium' } = props;
+  const context = useInfoButtonContext();
+  const { associatedLabelId = context.associatedLabelId, size = context.size || 'medium' } = props;
 
   const state: InfoButtonState = {
     size,
@@ -42,6 +50,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     root: getNativeElementProps('button', {
       children: infoButtonIconMap[size],
       type: 'button',
+      id: useId('infobutton-'),
       'aria-label': 'information',
       ...props,
       ref,
@@ -62,6 +71,10 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       },
     }),
   };
+
+  if (associatedLabelId && !state.root['aria-labelledby']) {
+    state.root['aria-labelledby'] = `${associatedLabelId} ${state.root.id}`;
+  }
 
   const [popoverOpen, setPopoverOpen] = useControllableState({
     state: state.popover.open,
