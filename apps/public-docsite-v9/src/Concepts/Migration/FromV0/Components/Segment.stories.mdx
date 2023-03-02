@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Segment Migration" />
+
+# Segment component Migration guide
+
+## Overview:
+
+To help with the migration we also offer a shim that [can be checked here](/docs/migration-shims-v0-segmentshim--default)
+
+Before:
+
+```tsx
+import { Segment, Button } from '@fluentui/react-northstar';
+const Component = () => <Segment content={<Button content="Segment content button" />} />;
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Button } from "@fluentui/react-components";
+import { Segment } from "@fluentui/react-migration-v0-v9";
+
+export const Component = () => {
+  <Segment>
+    <Button>Segment content button</Button>
+  </Segment>;
+```
+
+## How to migrate props:
+
+| `Segment` props           | migrate guide                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                            |
+| content                   | move `content` to JSX children.                                                                          |
+| variables, styles, design | see [Migrate style overrides](#./Migrate-style-overrides) in this document                               |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page) |
+| ref, key                  | keep it as is                                                                                            |
+| color                     | REMOVED: use styles and color tokens to style it properly                                                |
+| disabled                  | REMOVED: use styles and color tokens to style it properly                                                |
+| inverted                  | REMOVED: use styles and color tokens to style it properly                                                |
+
+---
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Segment } from '@fluentui/react-northstar';
+
+export const Component = () => <Segment variables={{ isSpeedDialContactCard: true }} />;
+
+// in segment-styles.ts
+export const segmentStyles1 = {
+  root: ({ variables: { isSpeedDialContactCard } }) => ({
+    ...(isSpeedDialContactCard && {
+      backgroundColor: 'inherit',
+      boxShadow: 'none',
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+import { Segment } from '@fluentui/react-migration-v0-v9';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <Segment className={classes.speedDialContactCard}></Segment>;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  speedDialContactCard: {
+    backgroundColor: 'inherit',
+    boxShadow: 'none',
+  },
+});
+```
