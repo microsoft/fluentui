@@ -66,6 +66,11 @@ describe('ProgressBar', () => {
       render(<ProgressBar max={max} />);
       expect(console.error).toHaveBeenCalledWith(errorMsg);
     });
+    it('does not give an error message when max is valid', () => {
+      const max = 2;
+      render(<ProgressBar max={max} />);
+      expect(console.error).not.toHaveBeenCalled();
+    });
   });
   describe('Value', () => {
     it('gives the proper error message when value is greater than max', () => {
@@ -74,6 +79,12 @@ describe('ProgressBar', () => {
       const errorMsg = `The prop 'value' must be less than or equal to 'max'. Received  value: ${value}, max: ${max}`;
       render(<ProgressBar value={value} max={max} />);
       expect(console.error).toHaveBeenCalledWith(errorMsg);
+    });
+    it('does not give an  error message when value is less than or equal to max', () => {
+      const value = 5;
+      const max = 10;
+      render(<ProgressBar value={value} max={max} />);
+      expect(console.error).not.toHaveBeenCalled();
     });
   });
 });
