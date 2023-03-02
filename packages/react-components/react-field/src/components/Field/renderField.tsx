@@ -11,13 +11,15 @@ export const renderField_unstable = (state: FieldState, contextValues?: FieldCon
 
   return (
     <slots.root {...slotProps.root}>
-      {slots.infoButton ? (
-        <slots.infoButton {...slotProps.infoButton}>
+      {slots.labelWrapper ? (
+        <slots.labelWrapper {...slotProps.labelWrapper}>
           {slots.label && <slots.label {...slotProps.label} />}
-          <InfoButtonContextProvider value={contextValues?.infoButton}>
-            {slotProps.infoButton.children}
-          </InfoButtonContextProvider>
-        </slots.infoButton>
+          {slots.infoButton && (
+            <InfoButtonContextProvider value={contextValues?.infoButton}>
+              <slots.infoButton {...slotProps.infoButton} />
+            </InfoButtonContextProvider>
+          )}
+        </slots.labelWrapper>
       ) : (
         slots.label && <slots.label {...slotProps.label} />
       )}

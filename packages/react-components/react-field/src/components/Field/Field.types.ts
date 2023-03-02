@@ -23,14 +23,21 @@ export type FieldSlots = {
   label?: Slot<typeof Label>;
 
   /**
-   * Container for an InfoButton associated with the field. If supplied, it should be a single `<InfoButton>` control.
+   * Slot to hold an InfoButton associated with the field's label.
+   *
+   * If supplied, it should be a single `<InfoButton />` control.
    *
    * @example
    * ```
    * <Field label="..." infoButton={<InfoButton content="..." />} />
    * ```
    */
-  infoButton?: Slot<'div'>;
+  infoButton?: Slot<'span'>;
+
+  /**
+   * Wrapper around the label and infoButton. Only rendered when there is an infoButton.
+   */
+  labelWrapper?: Slot<'div'>;
 
   /**
    * A message about the validation state. By default, this is an error message, but it can be a success, warning,

@@ -40,7 +40,8 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
-    infoButton?: Slot<'div'>;
+    infoButton?: Slot<'span'>;
+    labelWrapper?: Slot<'div'>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
     hint?: Slot<'div'>;

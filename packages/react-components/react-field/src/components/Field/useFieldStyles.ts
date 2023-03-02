@@ -5,8 +5,9 @@ import type { FieldSlots, FieldState } from './Field.types';
 
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
-  infoButton: `fui-Field__infoButton`,
+  labelWrapper: `fui-Field__labelWrapper`,
   label: `fui-Field__label`,
+  infoButton: `fui-Field__infoButton`,
   validationMessage: `fui-Field__validationMessage`,
   validationMessageIcon: `fui-Field__validationMessageIcon`,
   hint: `fui-Field__hint`,
@@ -38,24 +39,17 @@ const useRootStyles = makeStyles({
   },
 });
 
-const useLabelLayoutStyles = makeStyles({
+const useLabelWrapperStyles = makeStyles({
   base: {
+    // This padding must match the negative margin on infoButton
     paddingTop: tokens.spacingVerticalXXS,
     paddingBottom: tokens.spacingVerticalXXS,
-    '& > .fui-InfoButton': {
-      verticalAlign: 'top',
-      marginTop: `calc(0px - ${tokens.spacingVerticalXXS})`,
-      marginBottom: `calc(0px - ${tokens.spacingVerticalXXS})`,
-    },
   },
 
   large: {
+    // This padding must match the negative margin on infoButton
     paddingTop: '1px',
     paddingBottom: '1px',
-    '& > .fui-InfoButton': {
-      marginTop: '-1px',
-      marginBottom: '-1px',
-    },
   },
 
   vertical: {
@@ -76,6 +70,23 @@ const useLabelLayoutStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     verticalAlign: 'top',
+  },
+});
+
+const useInfoButtonStyles = makeStyles({
+  base: {
+    display: 'inline-block',
+    verticalAlign: 'top',
+
+    // Negative margin to offset the labelWrapper's padding
+    marginTop: `calc(0px - ${tokens.spacingVerticalXXS})`,
+    marginBottom: `calc(0px - ${tokens.spacingVerticalXXS})`,
+  },
+
+  large: {
+    // Negative margin to offset the labelWrapper's padding
+    marginTop: '-1px',
+    marginBottom: '-1px',
   },
 });
 
@@ -136,31 +147,41 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.root.className,
   );
 
-  const labelLayoutStyles = useLabelLayoutStyles();
+  const labelWrapperStyles = useLabelWrapperStyles();
 
-  // Class name applied to the either the infoButton wrapper if it is present, or the label itself otherwise.
-  const labelLayoutClassName = mergeClasses(
-    labelLayoutStyles.base,
-    horizontal && labelLayoutStyles.horizontal,
-    !horizontal && labelLayoutStyles.vertical,
-    state.size === 'large' && labelLayoutStyles.large,
-    !horizontal && state.size === 'large' && labelLayoutStyles.verticalLarge,
+  // Class name applied to the labelWrapper if it is present, or the label itself otherwise.
+  const labelWrapperClassName = mergeClasses(
+    labelWrapperStyles.base,
+    horizontal && labelWrapperStyles.horizontal,
+    !horizontal && labelWrapperStyles.vertical,
+    state.size === 'large' && labelWrapperStyles.large,
+    !horizontal && state.size === 'large' && labelWrapperStyles.verticalLarge,
   );
+
+  if (state.labelWrapper) {
+    state.labelWrapper.className = mergeClasses(
+      fieldClassNames.labelWrapper,
+      labelWrapperClassName,
+      state.labelWrapper.className,
+    );
+  }
 
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
       labelStyles.base,
-      !state.infoButton && labelLayoutClassName,
+      !state.labelWrapper && labelWrapperClassName,
       state.label.className,
     );
   }
 
+  const infoButtonStyles = useInfoButtonStyles();
   if (state.infoButton) {
     state.infoButton.className = mergeClasses(
       fieldClassNames.infoButton,
-      labelLayoutClassName,
+      infoButtonStyles.base,
+      state.size === 'large' && infoButtonStyles.large,
       state.infoButton.className,
     );
   }

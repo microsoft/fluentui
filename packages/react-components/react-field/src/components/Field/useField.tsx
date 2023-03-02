@@ -45,6 +45,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
 
   const infoButton = resolveShorthand(props.infoButton);
 
+  const labelWrapper = resolveShorthand(props.labelWrapper, { required: !!infoButton });
+
   const validationMessage = resolveShorthand(props.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
@@ -107,15 +109,17 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     size,
     components: {
       root: 'div',
-      infoButton: 'div',
+      labelWrapper: 'div',
       label: Label,
+      infoButton: 'span',
       validationMessage: 'div',
       validationMessageIcon: 'span',
       hint: 'div',
     },
     root,
-    infoButton,
+    labelWrapper,
     label,
+    infoButton,
     validationMessageIcon,
     validationMessage,
     hint,
