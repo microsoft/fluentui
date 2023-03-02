@@ -19,7 +19,7 @@ function getEsmOnlyPackagesToCjsMapping() {
 const config = createConfig({
   setupFiles: ['./config/tests.js'],
   snapshotSerializers: ['@fluentui/jest-serializer-merge-styles', 'enzyme-to-json/serializer'],
-
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),
   },

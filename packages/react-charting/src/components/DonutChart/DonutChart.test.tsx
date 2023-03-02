@@ -36,7 +36,7 @@ const points: IChartDataPoint[] = [
 
 const chartTitle = 'Stacked Bar chart example';
 
-const chartPoints: IChartProps = {
+export const chartPoints: IChartProps = {
   chartTitle: chartTitle,
   chartData: points,
 };
@@ -158,5 +158,27 @@ describe('DonutChart - mouse events', () => {
     wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should change value inside donut with the legend value on mouseOver legend ', () => {
+    // Arrange
+    wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} hideLegend={false} valueInsideDonut={1000} />);
+
+    // Act
+    wrapper.find('LegendsBase').find('button').at(0).simulate('mouseover');
+
+    // Assert
+    expect(
+      wrapper
+        .findWhere(node => node.hasClass(/insideDonutString.*?/))
+        .at(0)
+        .text(),
+    ).toBe('20,000');
+    expect(
+      wrapper
+        .findWhere(node => node.hasClass(/insideDonutString.*?/))
+        .at(1)
+        .text(),
+    ).toBe('20,000');
   });
 });
