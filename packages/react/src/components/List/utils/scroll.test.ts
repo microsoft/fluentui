@@ -67,7 +67,7 @@ describe('List scroll utils', () => {
         scrollTo,
       };
 
-      setScrollYPosition((mockWindow as unknown) as Window, 7.5);
+      setScrollYPosition(mockWindow as unknown as Window, 7.5);
 
       expect(scrollTo.mock.calls[0][0]).toBe(5);
       expect(scrollTo.mock.calls[0][1]).toBe(7.5);

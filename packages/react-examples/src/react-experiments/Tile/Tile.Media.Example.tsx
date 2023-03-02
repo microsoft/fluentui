@@ -105,7 +105,7 @@ interface IImageTileProps {
   nameplateOnlyOnHover: boolean;
   linkHref?: string;
   linkTarget?: string;
-  item: typeof ITEMS[0];
+  item: (typeof ITEMS)[0];
 }
 
 const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {

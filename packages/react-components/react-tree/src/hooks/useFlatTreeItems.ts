@@ -39,9 +39,10 @@ export function useFlatTreeItems_unstable(
 ): readonly [FlatTreeProps, LazyFlatTreeItems] {
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => options?.openItems && createImmutableSet(options.openItems), [options?.openItems]),
-    defaultState: React.useMemo(() => options?.defaultOpenItems && createImmutableSet(options?.defaultOpenItems), [
-      options?.defaultOpenItems,
-    ]),
+    defaultState: React.useMemo(
+      () => options?.defaultOpenItems && createImmutableSet(options?.defaultOpenItems),
+      [options?.defaultOpenItems],
+    ),
     initialState: emptyImmutableSet,
   });
   const handleOpenChange = useEventCallback((ev: TreeOpenChangeEvent, data: TreeOpenChangeData) =>

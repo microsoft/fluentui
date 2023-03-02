@@ -22,9 +22,10 @@ export const useFocusFinders = () => {
     [tabster],
   );
 
-  const findLastFocusable = React.useCallback((container: HTMLElement) => tabster?.focusable.findLast({ container }), [
-    tabster,
-  ]);
+  const findLastFocusable = React.useCallback(
+    (container: HTMLElement) => tabster?.focusable.findLast({ container }),
+    [tabster],
+  );
 
   const findNextFocusable = React.useCallback(
     (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {

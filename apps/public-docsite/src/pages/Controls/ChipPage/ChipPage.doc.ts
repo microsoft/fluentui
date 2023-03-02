@@ -12,13 +12,15 @@ const componentUrl =
 export const ChipPageProps: TFabricPlatformPageProps = {
   ios: {
     title: 'Chip',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/ios/ChipOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/ios/ChipOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
     title: 'Chip',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/android/ChipOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/android/ChipOverview.md') as string,
     related,
     componentUrl,
   },

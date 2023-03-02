@@ -52,7 +52,7 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
   TStyleProps,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -64,7 +64,7 @@ export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TRef = unknown
+  TRef = unknown,
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -76,7 +76,7 @@ export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TRef = unknown
+  TRef = unknown,
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,

@@ -89,7 +89,7 @@ export const listClassName = 'ui-list';
  * [JAWS - Listbox options are not reachable in Virtual Cursor PC mode #517](https://github.com/FreedomScientific/VFO-standards-support/issues/517)
  * [JAWS - Aria-selected is not narrated for the single-select listbox, when selection is NOT moved with focus #440](https://github.com/FreedomScientific/VFO-standards-support/issues/440)
  */
-export const List = (React.forwardRef<HTMLUListElement, ListProps & { as: React.ReactNode }>((props, ref) => {
+export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.ReactNode }>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
   setStart();
@@ -182,7 +182,7 @@ export const List = (React.forwardRef<HTMLUListElement, ListProps & { as: React.
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'ul', HTMLUListElement, ListProps> &
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, ListProps> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
     ItemContent: typeof ListItemContent;
