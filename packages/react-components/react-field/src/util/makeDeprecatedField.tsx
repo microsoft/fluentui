@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { FieldProps } from '../Field';
-import { Field, fieldClassNames } from '../Field';
+import { Field } from '../Field';
 
 /**
  * @deprecated Only for use to make deprecated [Control]Field shim components.
@@ -101,6 +101,10 @@ export function makeDeprecatedField<ControlProps>(
  * @internal
  */
 export const getDeprecatedFieldClassNames = (controlRootClassName: string) => ({
-  ...fieldClassNames,
   control: controlRootClassName,
+  root: `fui-Field`,
+  label: `fui-Field__label`,
+  validationMessage: `fui-Field__validationMessage`,
+  validationMessageIcon: `fui-Field__validationMessageIcon`,
+  hint: `fui-Field__hint`,
 });

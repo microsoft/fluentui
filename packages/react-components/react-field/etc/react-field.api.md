@@ -9,6 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InfoButtonContextValue } from '@fluentui/react-infobutton';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -39,13 +40,14 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
+    infoButton?: Slot<'div'>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
     hint?: Slot<'div'>;
 };
 
 // @public
-export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState' | 'size'>>;
 
 // @internal @deprecated (undocumented)
 export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
@@ -64,10 +66,13 @@ export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType
 }): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
+// @public (undocumented)
+export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;

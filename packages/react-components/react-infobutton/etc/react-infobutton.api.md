@@ -21,8 +21,15 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 // @public (undocumented)
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
+// @internal (undocumented)
+export const InfoButtonContextProvider: React_2.Provider<InfoButtonContextValue | undefined>;
+
+// @internal (undocumented)
+export type InfoButtonContextValue = Pick<InfoButtonProps, 'associatedLabelId' | 'size'>;
+
 // @public
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+    associatedLabelId?: string;
     size?: 'small' | 'medium' | 'large';
 };
 
@@ -41,6 +48,9 @@ export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 
 // @public
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
+
+// @internal (undocumented)
+export const useInfoButtonContext: () => InfoButtonContextValue;
 
 // @public
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
