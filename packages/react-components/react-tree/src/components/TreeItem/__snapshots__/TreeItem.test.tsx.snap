@@ -11,7 +11,6 @@ exports[`TreeItem renders a default state 1`] = `
   >
     <div
       class="fui-TreeItem__content"
-      data-tabster="{\\"groupper\\":{}}"
     >
       Default TreeItem
     </div>

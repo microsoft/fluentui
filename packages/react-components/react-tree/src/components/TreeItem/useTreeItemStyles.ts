@@ -101,16 +101,12 @@ const useExpandIconStyles = makeStyles({
  */
 const useActionsStyles = makeStyles({
   base: {
-    display: 'flex',
-    opacity: '0',
-    position: 'absolute',
-    right: 0,
-    top: 0,
+    display: 'none',
     marginLeft: 'auto',
     ...shorthands.padding(0, tokens.spacingHorizontalS),
   },
   open: {
-    opacity: '1',
+    display: 'flex',
     position: 'relative',
   },
 });
