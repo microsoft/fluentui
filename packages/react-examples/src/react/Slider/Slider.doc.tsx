@@ -5,9 +5,12 @@ import { SliderRangedExample } from './Slider.Ranged.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const SliderBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Basic.Example.tsx') as string;
-const SliderVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Vertical.Example.tsx') as string;
-const SliderRangedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Ranged.Example.tsx') as string;
+const SliderBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Basic.Example.tsx') as string;
+const SliderVerticalExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Vertical.Example.tsx') as string;
+const SliderRangedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Ranged.Example.tsx') as string;
 
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',

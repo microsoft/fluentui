@@ -216,19 +216,17 @@ export class App extends FASTElement {
 
     return this.showOnlyLayerBackgrounds
       ? neutralLayers
-      : this.neutralPalette.map(
-          (color: string, index: number): SwatchInfo => {
-            const neutralLayerIndex: number = neutralLayers.findIndex(
-              (config: SwatchInfo): boolean => config.color === color,
-            );
+      : this.neutralPalette.map((color: string, index: number): SwatchInfo => {
+          const neutralLayerIndex: number = neutralLayers.findIndex(
+            (config: SwatchInfo): boolean => config.color === color,
+          );
 
-            return {
-              index,
-              color,
-              title: neutralLayerIndex !== -1 ? neutralLayers[neutralLayerIndex].title : undefined,
-            };
-          },
-        );
+          return {
+            index,
+            color,
+            title: neutralLayerIndex !== -1 ? neutralLayers[neutralLayerIndex].title : undefined,
+          };
+        });
   }
 
   private layerRecipes: Array<[DesignToken<ColorRecipe>, string]> = [
@@ -246,16 +244,14 @@ export class App extends FASTElement {
     baseLayerLuminance.setValueFor(designSystemElement, luminance);
 
     return this.layerRecipes
-      .map(
-        (conf: [DesignToken<ColorRecipe>, string]): SwatchInfo => {
-          const color = conf[0].getValueFor(document.body).evaluate(designSystemElement).toColorString();
-          return {
-            index: this.neutralPalette.indexOf(color),
-            color: color,
-            title: conf[1],
-          };
-        },
-      )
+      .map((conf: [DesignToken<ColorRecipe>, string]): SwatchInfo => {
+        const color = conf[0].getValueFor(document.body).evaluate(designSystemElement).toColorString();
+        return {
+          index: this.neutralPalette.indexOf(color),
+          color: color,
+          title: conf[1],
+        };
+      })
       .reduce((accum: Array<SwatchInfo>, value: SwatchInfo): Array<SwatchInfo> => {
         const colorIndex: number = accum.findIndex((config: SwatchInfo): boolean => config.color === value.color);
 

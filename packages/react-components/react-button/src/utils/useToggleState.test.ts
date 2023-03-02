@@ -76,7 +76,7 @@ describe('useToggleState', () => {
 
     act(() => {
       result.current.root.onClick?.(
-        (new MouseEvent('click') as unknown) as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
+        new MouseEvent('click') as unknown as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
       );
     });
 
@@ -85,7 +85,7 @@ describe('useToggleState', () => {
 
     act(() => {
       result.current.root.onClick?.(
-        (new MouseEvent('click') as unknown) as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
+        new MouseEvent('click') as unknown as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
       );
     });
 
@@ -101,7 +101,7 @@ describe('useToggleState', () => {
 
     act(() => {
       result.current.root.onClick?.(
-        (new MouseEvent('click') as unknown) as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
+        new MouseEvent('click') as unknown as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
       );
     });
 
@@ -117,7 +117,7 @@ describe('useToggleState', () => {
 
     act(() => {
       result.current.root.onClick?.(
-        (new MouseEvent('click') as unknown) as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
+        new MouseEvent('click') as unknown as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
       );
     });
 
@@ -135,7 +135,7 @@ describe('useToggleState', () => {
 
     act(() => {
       result.current.root.onClick?.(
-        (new MouseEvent('click') as unknown) as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
+        new MouseEvent('click') as unknown as React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>,
       );
     });
 
@@ -149,7 +149,7 @@ describe('useToggleState', () => {
     expect(result.current.checked).toBe(true);
     expect(result.current.root['aria-pressed']).toBe(true);
     act(() => {
-      const ev = (new MouseEvent('click', { cancelable: true }) as unknown) as React.MouseEvent<
+      const ev = new MouseEvent('click', { cancelable: true }) as unknown as React.MouseEvent<
         HTMLButtonElement & HTMLAnchorElement
       >;
       ev.preventDefault();

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "8.8.15",
+  "version": "8.8.16",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "^8.2.6",
+    "@fluentui/test-utilities": "^8.3.0",
     "@fluentui/jest-serializer-merge-styles": "^8.0.23",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
@@ -39,8 +39,8 @@
     "@fluentui/keyboard-key": "^0.4.5",
     "@fluentui/merge-styles": "^8.5.6",
     "@fluentui/set-version": "^8.2.5",
-    "@fluentui/style-utilities": "^8.9.2",
-    "@fluentui/utilities": "^8.13.7",
+    "@fluentui/style-utilities": "^8.9.3",
+    "@fluentui/utilities": "^8.13.8",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

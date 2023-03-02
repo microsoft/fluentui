@@ -12,7 +12,8 @@ export const MessageBarPageProps: TFabricPlatformPageProps = {
     related,
   },
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarOverview.md') as string,
     related,
     componentUrl,
   },

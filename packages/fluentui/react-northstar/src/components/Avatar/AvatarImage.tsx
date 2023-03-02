@@ -47,7 +47,7 @@ export const avatarImageClassName = imageClassName;
 /**
  * An AvatarImage is a graphic representation used by Avatar.
  */
-export const AvatarImage = (React.forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
+export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarImage.displayName, context.telemetry);
   setStart();
@@ -99,7 +99,7 @@ export const AvatarImage = (React.forwardRef<HTMLImageElement, AvatarImageProps>
   setEnd();
 
   return result;
-}) as unknown) as ForwardRefWithAs<'img', HTMLImageElement, AvatarImageProps> &
+}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarImageProps> &
   FluentComponentStaticProps<AvatarImageProps>;
 
 AvatarImage.displayName = 'AvatarImage';

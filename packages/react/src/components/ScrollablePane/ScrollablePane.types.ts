@@ -117,7 +117,7 @@ export const ScrollbarVisibility = {
 /**
  * {@docCategory ScrollablePane}
  */
-export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];
+export type ScrollbarVisibility = (typeof ScrollbarVisibility)[keyof typeof ScrollbarVisibility];
 
 export interface IScrollablePaneContext {
   scrollablePane?: {

@@ -5,10 +5,14 @@ import { LayerHostedExample } from './Layer.Hosted.Example';
 import { LayerCustomizedExample } from './Layer.Customized.Example';
 import { LayerNestedLayersExample } from './Layer.NestedLayers.Example';
 
-const LayerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.Basic.Example.tsx') as string;
-const LayerHostedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.Hosted.Example.tsx') as string;
-const LayerCustomizedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.Customized.Example.tsx') as string;
-const LayerNestedLayersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.NestedLayers.Example.tsx') as string;
+const LayerBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.Basic.Example.tsx') as string;
+const LayerHostedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.Hosted.Example.tsx') as string;
+const LayerCustomizedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.Customized.Example.tsx') as string;
+const LayerNestedLayersExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Layer/Layer.NestedLayers.Example.tsx') as string;
 
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',

@@ -4,8 +4,10 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { PopupBasicExample } from './Popup.Basic.Example';
 import { PopupModalExample } from './Popup.Modal.Example';
 
-const PopupBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Popup/Popup.Basic.Example.tsx') as string;
-const PopupModalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Popup/Popup.Modal.Example.tsx') as string;
+const PopupBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Popup/Popup.Basic.Example.tsx') as string;
+const PopupModalExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Popup/Popup.Modal.Example.tsx') as string;
 
 export const PopupPageProps: IDocPageProps = {
   title: 'Popup',

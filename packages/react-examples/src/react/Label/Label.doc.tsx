@@ -3,7 +3,8 @@ import { LabelBasicExample } from './Label.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const LabelBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Label/Label.Basic.Example.tsx') as string;
+const LabelBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Label/Label.Basic.Example.tsx') as string;
 
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',

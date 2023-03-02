@@ -510,7 +510,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       'aria-expanded': isCalendarShown,
       'aria-haspopup': 'dialog',
       'aria-label': ariaLabel,
-      contentAfter: <CalendarMonthRegular onClick={(onIconClick as unknown) as React.MouseEventHandler<SVGElement>} />,
+      contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       disabled,
       id: textFieldId,
       placeholder,
