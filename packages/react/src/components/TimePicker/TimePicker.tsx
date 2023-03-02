@@ -70,8 +70,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
   React.useEffect(() => {
-    const clampedStartAnchor = new Date(dateAnchor || new Date());
-    const clampedEndAnchor = new Date(dateAnchor || new Date());
+    const clampedStartAnchor = dateAnchor ? new Date(dateAnchor) : new Date();
+    const clampedEndAnchor = dateAnchor ? new Date(dateAnchor) : new Date();
 
     if (timeRange) {
       const clampedTimeRange = clampTimeRange(timeRange);
@@ -83,11 +83,33 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         clampedEndAnchor.setHours(clampedTimeRange.end);
         clampedEndAnchor.setMinutes(0);
       }
+    } else {
+      clampedEndAnchor.setDate(clampedStartAnchor.getDate() + 1);
     }
+
+    clampedStartAnchor.setMinutes(0);
+    clampedStartAnchor.setSeconds(0);
+
+    clampedEndAnchor.setMinutes(0);
+    clampedEndAnchor.setSeconds(0);
 
     setDateStartAnchor(ceilMinuteToIncrement(clampedStartAnchor, increments));
     setDateEndAnchor(ceilMinuteToIncrement(clampedEndAnchor, increments));
   }, [dateAnchor, increments, timeRange]);
+
+  React.useEffect(() => {
+    if (selectedTime && !isNaN(selectedTime.valueOf())) {
+      if (selectedTime < dateStartAnchor || selectedTime > dateEndAnchor) {
+        const updatedCurrentTime = new Date(dateStartAnchor);
+        updatedCurrentTime.setHours(selectedTime.getHours());
+        updatedCurrentTime.setMinutes(selectedTime.getMinutes());
+        updatedCurrentTime.setSeconds(selectedTime.getSeconds());
+        updatedCurrentTime.setMilliseconds(selectedTime.getMilliseconds());
+
+        setSelectedTime(updatedCurrentTime);
+      }
+    }
+  }, [selectedTime, dateStartAnchor, dateEndAnchor, setSelectedTime]);
 
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
@@ -113,7 +135,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   );
 
   React.useEffect(() => {
-    if (selectedTime) {
+    if (selectedTime && !isNaN(selectedTime.valueOf())) {
       const formattedTimeString = formatTimeString(selectedTime, showSeconds, useHour12);
       const option = getComboBoxOptionInDropdown(formattedTimeString);
       setSelectedKey(option?.key);
@@ -166,11 +188,11 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         onGetErrorMessage(errorMessageToDisplay);
       }
 
-      if (errorMessage || (input !== undefined && !input.length)) {
-        const timeSelection = option?.text || input || '';
+      if (errorMessageToDisplay || (input !== undefined && !input.length)) {
+        const timeSelection = input || option?.text || '';
         setSelectedKey(option?.key as string);
         setComboBoxText(timeSelection);
-        setSelectedTime(errorMessage ? getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection) : undefined);
+        setSelectedTime(errorMessageToDisplay ? new Date('invalid') : undefined);
       } else {
         const timeSelection = (option?.key as string) || input || '';
         const updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
@@ -192,7 +214,6 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       strings.timeOutOfBoundsErrorMessage,
       setSelectedTime,
       onGetErrorMessage,
-      errorMessage,
     ],
   );
 
