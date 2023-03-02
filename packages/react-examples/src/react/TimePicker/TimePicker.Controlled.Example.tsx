@@ -1,20 +1,7 @@
 import * as React from 'react';
 import { TimePicker, ITimeRange } from '@fluentui/react/lib/TimePicker';
 import { Text } from '@fluentui/react/lib/Text';
-import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
-import { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
-
-const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
-const stackTokens: IStackTokens = { childrenGap: 20 };
-
-const timePickerStyles: Partial<IComboBoxStyles> = {
-  optionsContainerWrapper: {
-    height: '500px',
-  },
-  root: {
-    width: '500px',
-  },
-};
+import { timePickerStyles, TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
 
 export const TimePickerControlledExample: React.FC = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');
@@ -22,7 +9,7 @@ export const TimePickerControlledExample: React.FC = () => {
 
   const [controlledTimeString, setControlledTimeString] = React.useState<string>('');
 
-  const onControlledExampleChange = React.useCallback((newTime: Date) => {
+  const onControlledExampleChange = React.useCallback((_, newTime: Date) => {
     setTime(newTime);
   }, []);
 
@@ -31,23 +18,20 @@ export const TimePickerControlledExample: React.FC = () => {
   }, [time]);
 
   return (
-    <>
-      <Stack tokens={stackTokens} styles={stackStyles}>
-        <TimePicker
-          styles={timePickerStyles}
-          showSeconds
-          allowFreeform
-          increments={15}
-          autoComplete="on"
-          label="Controlled TimePicker with non default options"
-          dateAnchor={dateAnchor}
-          value={time}
-          onChange={onControlledExampleChange}
-        />
-        <Text>{`Controlled example selected time: ${
-          controlledTimeString ? controlledTimeString : '<no time selected>'
-        }`}</Text>
-      </Stack>
-    </>
+    <TimePickerExampleWrapper>
+      <TimePicker
+        styles={timePickerStyles}
+        showSeconds
+        allowFreeform
+        increments={15}
+        autoComplete="on"
+        label="Controlled TimePicker with non default options"
+        dateAnchor={dateAnchor}
+        value={time}
+        onChange={onControlledExampleChange}
+      />
+      <Text>{`⚓ Date anchor: ${dateAnchor.toString()}`}</Text>
+      <Text>{`⌚ Selected time: ${controlledTimeString ? controlledTimeString : '<no time selected>'}`}</Text>
+    </TimePickerExampleWrapper>
   );
 };

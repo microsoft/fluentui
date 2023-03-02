@@ -1,31 +1,20 @@
 import * as React from 'react';
 import { TimePicker, ITimeRange } from '@fluentui/react/lib/TimePicker';
 import { Text } from '@fluentui/react/lib/Text';
-import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
-import { IComboBoxStyles } from '@fluentui/react/lib/ComboBox';
-
-const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
-const stackTokens: IStackTokens = { childrenGap: 20 };
-
-const timePickerStyles: Partial<IComboBoxStyles> = {
-  optionsContainerWrapper: {
-    height: '500px',
-  },
-  root: {
-    width: '500px',
-  },
-};
+import { timePickerStyles, TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
 
 export const TimePickerBasicExample: React.FC = () => {
   const [basicExampleTimeString, setBasicExampleTimeString] = React.useState<string>('');
   const [nonDefaultOptionsExampleTimeString, setNonDefaultOptionsExampleTimeString] = React.useState<string>('');
+  const basicDateAnchor = new Date('November 25, 2021 09:00:00');
+  const nonDefaultOptionsDateAnchor = new Date('February 27, 2023 08:00:00');
 
-  const onBasicExampleChange = React.useCallback((time: Date) => {
-    setBasicExampleTimeString(time.toString());
+  const onBasicExampleChange = React.useCallback((_, basicExampleTime: Date) => {
+    setBasicExampleTimeString(basicExampleTime?.toString());
   }, []);
 
-  const onNonDefaultOptionsExampleChange = React.useCallback((time: Date) => {
-    setNonDefaultOptionsExampleTimeString(time.toString());
+  const onNonDefaultOptionsExampleChange = React.useCallback((_, nonDefaultOptionsExampleTime: Date) => {
+    setNonDefaultOptionsExampleTimeString(nonDefaultOptionsExampleTime?.toString());
   }, []);
 
   const timeRange: ITimeRange = {
@@ -34,37 +23,35 @@ export const TimePickerBasicExample: React.FC = () => {
   };
 
   return (
-    <>
-      <Stack tokens={stackTokens} styles={stackStyles}>
-        <TimePicker
-          styles={timePickerStyles}
-          useHour12
-          allowFreeform
-          autoComplete="on"
-          label="TimePicker basic example"
-          onChange={onBasicExampleChange}
-          dateAnchor={new Date('November 25, 2021 09:15:00')}
-        />
-        <Text>{`Basic example selected time: ${
-          basicExampleTimeString ? basicExampleTimeString : '<no time selected>'
-        }`}</Text>
+    <TimePickerExampleWrapper>
+      <TimePicker
+        styles={timePickerStyles}
+        useHour12
+        allowFreeform
+        autoComplete="on"
+        label="TimePicker basic example"
+        onChange={onBasicExampleChange}
+        dateAnchor={basicDateAnchor}
+      />
+      <Text>{`⚓ Date anchor: ${basicDateAnchor.toString()}`}</Text>
+      <Text>{`⌚ Selected time: ${basicExampleTimeString ? basicExampleTimeString : '<no time selected>'}`}</Text>
 
-        <TimePicker
-          styles={timePickerStyles}
-          showSeconds
-          allowFreeform
-          increments={15}
-          autoComplete="on"
-          label="TimePicker with non default options"
-          placeholder="Non default options placeholder"
-          timeRange={timeRange}
-          dateAnchor={new Date('February 27, 2023 08:12:00')}
-          onChange={onNonDefaultOptionsExampleChange}
-        />
-        <Text>{`Non default options example selected time: ${
-          nonDefaultOptionsExampleTimeString ? nonDefaultOptionsExampleTimeString : '<no time selected>'
-        }`}</Text>
-      </Stack>
-    </>
+      <TimePicker
+        styles={timePickerStyles}
+        showSeconds
+        allowFreeform
+        increments={15}
+        autoComplete="on"
+        label="TimePicker with non default options"
+        placeholder="Non default options placeholder"
+        timeRange={timeRange}
+        dateAnchor={nonDefaultOptionsDateAnchor}
+        onChange={onNonDefaultOptionsExampleChange}
+      />
+      <Text>{`⚓ Date anchor: ${nonDefaultOptionsDateAnchor.toString()}`}</Text>
+      <Text>{`⌚ Selected time: ${
+        nonDefaultOptionsExampleTimeString ? nonDefaultOptionsExampleTimeString : '<no time selected>'
+      }`}</Text>
+    </TimePickerExampleWrapper>
   );
 };
