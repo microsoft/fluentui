@@ -21,7 +21,8 @@ This RFC describes how animations and transitions in Fluent UI components can be
 
 ## Background
 
-Before adding motion tokens to `react-theme`, we should know how to disable applications during runtime.
+Before adding motion tokens to `react-theme`, we should know how to disable applications during runtime. V8 has
+not had a feature disable animations, whereas V0 leverages is CSS in JS framework to strip animations at runtime.
 
 ## Problem statement
 
@@ -39,7 +40,7 @@ There is currently no known requirement to reduce motion (use less or slower/fas
 
 ## Detailed Design or Proposal
 
-The recommended solution is will happen both in Fluent and consumer Apps
+The recommended solution will involved both Fluent and consumer Apps.
 
 ### `prefers-reduced-motion` media query
 
@@ -105,8 +106,14 @@ const Example = (props: ButtonProps) => {
 
 ### Global CSS override in apps
 
+We also recommend users to use the [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion),
+since that gives cross platform support without addtional performance costs
+of specific selectors or javacsript runtime. Additionally, not _**not all animations need to be disabled**_, and limited
+animations like colour change are still acceptable for users that need reduced motion.
+
 Add a CSS rule with `!important` property which will override all the animations and transitions on the page. This can
-be done on the application side, and will impact all non-Fluent UI styles.
+be done on the application side, and will impact all non-Fluent UI styles. This can be useful for browser screenshot
+tests that should not screenshot the state of an animation.
 
 ```css
 *,
@@ -136,18 +143,13 @@ Codesandbox: https://codesandbox.io/s/disable-animations-important-dpugv
 - 👍 Can be used to disable animations
 - 👍 Can be used to customize reduced animations
 - 👍 Supported cross platform
-- 👍 No javascript code executed
+- 👍 No extra javascript execution
 - 👍 Only affects Fluent code
 
 ### Cons
 
 - 👎 Only affects animations in Fluent components
 - 👎 More effort on the developer to do the right thing
-
-## Open Issues
-
-Open question: what is the v8 approach for disabling animations?
-Open question: does any component in the application need to know whether the animations are disabled?
 
 ## Discarded Solutions
 
