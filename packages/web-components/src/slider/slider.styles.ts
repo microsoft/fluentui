@@ -3,6 +3,7 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
+  borderRadiusSmall,
   colorBrandBackground,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
@@ -32,7 +33,7 @@ export const styles = css`
     outline: none;
     cursor: pointer;
     user-select: none;
-    border-radius: ${borderRadiusMedium};
+    border-radius: ${borderRadiusSmall};
   }
   :host([size='small']) {
     --thumb-size: 14px;
@@ -50,10 +51,20 @@ export const styles = css`
     touch-action: pan-x;
     padding: 8px 0;
   }
+
+  :host([disabled]:hover) {
+    cursor: initial;
+  }
+
+  :host(:focus:not(:focus-visible)) {
+    outline: none;
+  }
+
   :host(:focus-visible) {
-    outline-offset: 8px;
+    outline-offset: 4px;
     outline: 2px solid ${colorStrokeFocus2};
   }
+
   /* Thumb Container and Cursor */
   .thumb-container {
     position: absolute;

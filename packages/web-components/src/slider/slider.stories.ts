@@ -66,6 +66,14 @@ export const SliderVertical = renderComponent(html<SliderStoryArgs>`
   <fluent-slider orientation="vertical" current-value="100" min="0" max="100"></fluent-slider>
 `);
 
-export const SliderHorizontal = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider orientation="horizontal" value="10" min="0" max="100"></fluent-slider>
+export const SliderSmall = renderComponent(html<SliderStoryArgs>`
+  <fluent-slider size="small" value="10" min="0" max="100"></fluent-slider>
+`);
+
+export const SliderSteps = renderComponent(html<SliderStoryArgs>`
+  <fluent-slider step="10" value="10" min="0" max="100"></fluent-slider>
+`);
+
+export const SliderDisabled = renderComponent(html<SliderStoryArgs>`
+  <fluent-slider disabled value="10" min="0" max="100"></fluent-slider>
 `);
