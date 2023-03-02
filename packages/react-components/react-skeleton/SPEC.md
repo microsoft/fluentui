@@ -2,7 +2,7 @@
 
 ## Background
 
-The `Skeleton` component is a temporary animation placeholder for when a service call takes time to return data and we don't want to block rendering the rest of the UI.
+The `Skeleton` component is a temporary placeholder for UI that is in a loading state.
 
 ## Prior Art
 
@@ -11,7 +11,7 @@ The `Skeleton` component is a temporary animation placeholder for when a service
 | Library    | Component Name | Spec Link                                                                       | Notes                                                                                                                                                                  |
 | ---------- | -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ant Design | Skeleton       | [Skeleton](https://ant.design/components/skeleton/)                             | Has an `avatar`, `button`, `list`, and `togglebutton`. Has animated and non-animated versions, and shape variants for the component skeletons(rounded or rectangular). |
-| Fast       | Skeleton       | [Skeleton](https://explore.fast.design/components/fast-progress)                | Has three components: `Avatar`, `List`, and `Button`. No shape variants.                                                                                               |
+| Fast       | Skeleton       | [Skeleton](https://explore.fast.design/components/fast-skeleton)                | Has three components: `Avatar`, `List`, and `Button`. No shape variants.                                                                                               |
 | UI Fabric  | Shimmer        | [Shimmer](https://developer.microsoft.com/en-us/fluentui#/controls/web/shimmer) | Shimmer has a way to pass in custom elements as well as the defaults. There is also a prop to change the colors of the Skeleton components.                            |
 
 ### Comparison of v8 and v0
@@ -57,7 +57,7 @@ The `Skeleton` is a combination of any of the two shapes in order to represent t
 
 ### Props
 
-See API at [Skeleton.types.tsx]().
+See API at [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
 
 ## Structure
 
