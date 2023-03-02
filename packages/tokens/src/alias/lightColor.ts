@@ -82,6 +82,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackgroundInverted: grey[16], // #292929 Global.Color.Grey.16
   colorNeutralBackgroundStatic: grey[20], // #333333 Global.Color.Grey.20
   colorNeutralBackgroundAlpha: whiteAlpha[50], // rgba(255, 255, 255, 0.5) Global.Color.WhiteAlpha.50
+  colorNeutralBackgroundAlpha2: whiteAlpha[80], // rgba(255, 255, 255, 0.8) Global.Color.WhiteAlpha.80
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: grey[96], // #f5f5f5 Global.Color.Grey.96
   colorSubtleBackgroundPressed: grey[88], // #e0e0e0 Global.Color.Grey.88

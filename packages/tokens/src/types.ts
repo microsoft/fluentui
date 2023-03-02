@@ -81,6 +81,7 @@ export type ColorTokens = {
   colorNeutralBackgroundInverted: string;
   colorNeutralBackgroundStatic: string;
   colorNeutralBackgroundAlpha: string;
+  colorNeutralBackgroundAlpha2: string;
   colorSubtleBackground: string;
   colorSubtleBackgroundHover: string;
   colorSubtleBackgroundPressed: string;
