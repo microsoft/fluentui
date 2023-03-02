@@ -6,6 +6,8 @@ import type { FieldSlots, FieldState } from './Field.types';
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: `fui-Field`,
   label: `fui-Field__label`,
+  infoButton: `fui-Field__infoButton`,
+  labelWrapper: `fui-Field__labelWrapper`,
   validationMessage: `fui-Field__validationMessage`,
   validationMessageIcon: `fui-Field__validationMessageIcon`,
   hint: `fui-Field__hint`,
@@ -37,7 +39,7 @@ const useRootStyles = makeStyles({
   },
 });
 
-const useLabelStyles = makeStyles({
+const useLabelWrapperStyles = makeStyles({
   base: {
     paddingTop: tokens.spacingVerticalXXS,
     paddingBottom: tokens.spacingVerticalXXS,
@@ -60,6 +62,25 @@ const useLabelStyles = makeStyles({
     marginRight: tokens.spacingHorizontalM,
     gridRowStart: '1',
     gridRowEnd: '-1',
+  },
+});
+
+const useLabelStyles = makeStyles({
+  base: {
+    verticalAlign: 'top',
+  },
+});
+
+const useInfoButtonStyles = makeStyles({
+  base: {
+    verticalAlign: 'top',
+    marginTop: `calc(0px - ${tokens.spacingVerticalXXS})`,
+    marginBottom: `calc(0px - ${tokens.spacingVerticalXXS})`,
+  },
+
+  large: {
+    marginTop: '-1px',
+    marginBottom: '-1px',
   },
 });
 
@@ -120,16 +141,42 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.root.className,
   );
 
+  const labelWrapperStyles = useLabelWrapperStyles();
+
+  // Class name applied to the either the labelWrapper if it is present, or the label itself otherwise.
+  const labelContainerClassName = mergeClasses(
+    labelWrapperStyles.base,
+    horizontal && labelWrapperStyles.horizontal,
+    !horizontal && labelWrapperStyles.vertical,
+    state.size === 'large' && labelWrapperStyles.large,
+    !horizontal && state.size === 'large' && labelWrapperStyles.verticalLarge,
+  );
+
+  if (state.labelWrapper) {
+    state.labelWrapper.className = mergeClasses(
+      fieldClassNames.labelWrapper,
+      labelContainerClassName,
+      state.labelWrapper.className,
+    );
+  }
+
   const labelStyles = useLabelStyles();
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
       labelStyles.base,
-      horizontal && labelStyles.horizontal,
-      !horizontal && labelStyles.vertical,
-      state.label.size === 'large' && labelStyles.large,
-      !horizontal && state.label.size === 'large' && labelStyles.verticalLarge,
+      !state.labelWrapper && labelContainerClassName,
       state.label.className,
+    );
+  }
+
+  const infoButtonStyles = useInfoButtonStyles();
+  if (state.infoButton) {
+    state.infoButton.className = mergeClasses(
+      fieldClassNames.infoButton,
+      infoButtonStyles.base,
+      state.size === 'large' && infoButtonStyles.large,
+      state.infoButton.className,
     );
   }
 

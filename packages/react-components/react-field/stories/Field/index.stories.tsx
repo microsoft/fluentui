@@ -8,6 +8,7 @@ export { Hint } from './FieldHint.stories';
 export { Horizontal } from './FieldHorizontal.stories';
 export { Required } from './FieldRequired.stories';
 export { Size } from './FieldSize.stories';
+export { WithInfoButton } from './FieldWithInfoButton.stories';
 export { ComponentExamples } from './FieldComponentExamples.stories';
 export { RenderFunction } from './FieldRenderFunction.stories';
 

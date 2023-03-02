@@ -109,6 +109,44 @@ storiesOf('Field', module)
       <Checkbox label="Checkbox in a horizontal field" />
     </Field>
   ))
+  .addStory('infoButton', () => (
+    <Field label="With info" infoButton={{ content: 'Example' }}>
+      <Input />
+    </Field>
+  ))
+  .addStory('infoButton+required', () => (
+    <Field label="Required with info" required infoButton={{ content: 'Example' }}>
+      <Input />
+    </Field>
+  ))
+  .addStory('infoButton+longLabel', () => (
+    <Field
+      label="With info button and a very long label that should wrap and the info button to appear on the last line"
+      infoButton={{ content: 'Example' }}
+    >
+      <Input />
+    </Field>
+  ))
+  .addStory('infoButton+size:small', () => (
+    <Field label="Small with info" infoButton={{ content: 'Example' }} size="small">
+      <Input size="small" />
+    </Field>
+  ))
+  .addStory('infoButton+size:large', () => (
+    <Field label="Large with info" infoButton={{ content: 'Example' }} size="large">
+      <Input size="large" />
+    </Field>
+  ))
+  .addStory('infoButton+noLabel', () => (
+    <Field infoButton={{ content: 'Example' }}>
+      <Input />
+    </Field>
+  ))
+  .addStory('infoButton+horizontal', () => (
+    <Field orientation="horizontal" label="With info" infoButton={{ content: 'Example' }}>
+      <Input />
+    </Field>
+  ))
   .addStory('Checkbox:error', () => (
     <Field validationMessage="Error message">
       <Checkbox label="Checkbox in a Field with an error" />

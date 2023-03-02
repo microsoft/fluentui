@@ -9,6 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { InfoButton } from '@fluentui/react-infobutton';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -39,13 +40,15 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
+    infoButton?: Slot<typeof InfoButton>;
+    labelWrapper?: Slot<'div'>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
     hint?: Slot<'div'>;
 };
 
 // @public
-export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState' | 'size'>>;
 
 // @internal @deprecated (undocumented)
 export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {

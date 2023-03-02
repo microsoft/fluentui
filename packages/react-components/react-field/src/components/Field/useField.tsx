@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
+import { InfoButton } from '@fluentui/react-infobutton';
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { FieldChildProps, FieldProps, FieldState } from './Field.types';
@@ -27,7 +28,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     orientation = 'vertical',
     required,
     validationState = props.validationMessage ? 'error' : 'none',
-    size,
+    size = 'medium',
   } = props;
 
   const baseId = useId('field-');
@@ -41,6 +42,21 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
       size,
       // htmlFor is handled below
     },
+  });
+
+  const infoButton = resolveShorthand(props.infoButton, {
+    defaultProps: {
+      id: baseId + '__infoButton',
+      size,
+    },
+  });
+
+  if (label && infoButton && !infoButton['aria-labelledby']) {
+    infoButton['aria-labelledby'] = label.id + ' ' + infoButton.id;
+  }
+
+  const labelWrapper = resolveShorthand(props.labelWrapper, {
+    required: !!infoButton,
   });
 
   const validationMessage = resolveShorthand(props.validationMessage, {
@@ -102,15 +118,20 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   return {
     orientation,
     validationState,
+    size,
     components: {
       root: 'div',
       label: Label,
+      infoButton: InfoButton,
+      labelWrapper: 'div',
       validationMessage: 'div',
       validationMessageIcon: 'span',
       hint: 'div',
     },
     root,
     label,
+    infoButton,
+    labelWrapper,
     validationMessageIcon,
     validationMessage,
     hint,

@@ -13,8 +13,8 @@ describe('Field', () => {
           props: {
             label: 'Test label',
             hint: 'Test hint',
+            infoButton: { content: 'Test info button' },
             validationMessage: 'Test validation message',
-            validationState: 'error',
           },
         },
       ],
@@ -188,5 +188,19 @@ describe('Field', () => {
       'aria-invalid': true,
       'aria-required': true,
     });
+  });
+
+  it('sets infoButton aria-labelledby to the label and the button', () => {
+    const result = render(
+      <Field label="Test label" infoButton={{ content: 'test' }}>
+        <input />
+      </Field>,
+    );
+
+    const label = result.getByText('Test label');
+    const infoButton = result.getByRole('button');
+
+    expect(label.id).toBeTruthy();
+    expect(infoButton.getAttribute('aria-labelledby')).toBe(`${label.id} ${infoButton.id}`);
   });
 });

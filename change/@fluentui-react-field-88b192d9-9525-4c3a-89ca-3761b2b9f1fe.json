@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add infoButton slot to Field",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
