@@ -167,11 +167,11 @@ export interface UseTableSelectionOptions {
   /**
    * Used in uncontrolled mode to set initial selected rows on mount
    */
-  defaultSelectedItems?: Set<TableRowId>;
+  defaultSelectedItems?: Iterable<TableRowId>;
   /**
    * Used to control row selection
    */
-  selectedItems?: Set<TableRowId>;
+  selectedItems?: Iterable<TableRowId>;
   /**
    * Called when selection changes
    */
@@ -198,7 +198,7 @@ export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
 export interface TableColumnSizingState {
-  getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent<HTMLElement>) => void;
+  getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
@@ -207,7 +207,7 @@ export interface TableColumnSizingState {
 
 export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;
-  setColumnWidth: (columnId: TableColumnId, width: number) => void;
+  setColumnWidth: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
   getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
   getColumns: () => ColumnWidthState[];
 };
@@ -219,5 +219,6 @@ export type TableColumnSizingOptions = Record<
 
 export type UseTableColumnSizingParams = {
   columnSizingOptions?: TableColumnSizingOptions;
-  onColumnResize?: (columnId: TableColumnId, width: number) => void;
+  onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  containerWidthOffset?: number;
 };

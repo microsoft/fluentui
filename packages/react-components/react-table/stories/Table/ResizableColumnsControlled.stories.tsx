@@ -13,7 +13,12 @@ import {
   useTableFeatures,
   useTableSort,
   TableColumnSizingOptions,
-} from '@fluentui/react-components/unstable';
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
+  Input,
+  Label,
+} from '@fluentui/react-components';
 import {
   DocumentRegular,
   EditRegular,
@@ -25,14 +30,16 @@ import {
 } from '@fluentui/react-icons';
 import * as React from 'react';
 import { useState } from 'react';
-import { PresenceBadgeStatus } from '../../../react-badge/src';
-import { Avatar, Button, Input, Label } from '@fluentui/react-components';
 
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
     renderHeaderCell: () => <>File</>,
-    renderCell: (item: Item) => <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>,
+    renderCell: (item: Item) => (
+      <TableCellLayout truncate media={item.file.icon}>
+        {item.file.label}
+      </TableCellLayout>
+    ),
     compare: (a, b) => {
       return a.file.label.localeCompare(b.file.label);
     },
@@ -42,6 +49,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
     renderHeaderCell: () => <>Author</>,
     renderCell: (item: Item) => (
       <TableCellLayout
+        truncate
         media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
       >
         {item.author.label}
@@ -54,7 +62,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdated',
     renderHeaderCell: () => <>Last updated</>,
-    renderCell: (item: Item) => item.lastUpdated.label,
+    renderCell: (item: Item) => <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
     },
@@ -62,7 +70,11 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'lastUpdate',
     renderHeaderCell: () => <>Last update</>,
-    renderCell: (item: Item) => <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>,
+    renderCell: (item: Item) => (
+      <TableCellLayout truncate media={item.lastUpdate.icon}>
+        {item.lastUpdate.label}
+      </TableCellLayout>
+    ),
     compare: (a, b) => {
       return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
     },
@@ -192,7 +204,7 @@ export const ResizableColumnsControlled = () => {
     }));
   };
 
-  const onColumnResize = React.useCallback((columnId: TableColumnId, width: number) => {
+  const onColumnResize = React.useCallback((_, { columnId, width }) => {
     setColumnSizingOptions(state => ({
       ...state,
       [columnId]: {

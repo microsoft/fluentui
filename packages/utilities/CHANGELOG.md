@@ -1,8 +1,27 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 03 Feb 2023 07:50:06 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Mar 2023 07:45:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.8](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.8)
+
+Wed, 01 Mar 2023 07:45:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.7..@fluentui/utilities_v8.13.8)
+
+### Patches
+
+- fix: remove private test/ helpers used within monorepo tests ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+- Bump @fluentui/test-utilities to v8.3.0 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+
+## [8.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.7)
+
+Sat, 18 Feb 2023 01:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.6..@fluentui/utilities_v8.13.7)
+
+### Patches
+
+- chore: Removing deprecated React.Props from DelayedRender. ([PR #26821](https://github.com/microsoft/fluentui/pull/26821) by jimsleon@hotmail.com)
 
 ## [8.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.6)
 

@@ -61,7 +61,7 @@ describe('useTableColumnSizing', () => {
         "getOnMouseDown": [MockFunction],
         "getTableCellProps": [Function],
         "getTableHeaderCellProps": [Function],
-        "setColumnWidth": [MockFunction],
+        "setColumnWidth": [Function],
       }
     `);
 
@@ -75,7 +75,7 @@ describe('useTableColumnSizing', () => {
 
   it('setColumnWidth calls the function returned from useTableColumnResizeState hook', () => {
     renderHookResult.result.current.columnSizing_unstable.setColumnWidth(1, 100);
-    expect(mockColumnResizeState.setColumnWidth).toHaveBeenCalledWith(1, 100);
+    expect(mockColumnResizeState.setColumnWidth).toHaveBeenCalledWith(undefined, { columnId: 1, width: 100 });
   });
 
   it('getColumnWidths calls the function returned from useTableColumnResizeState hook', () => {

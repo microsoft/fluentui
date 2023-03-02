@@ -42,8 +42,15 @@ export {
   mergeCallbacks,
   isHTMLElement,
   isInteractiveHTMLElement,
+  omit,
 } from './utils/index';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
 
 export type { FluentTriggerComponent, TriggerProps } from './trigger/index';
+
+/**
+ * Event utils
+ */
+export type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent, TouchOrMouseEvent } from './events/index';
+export { isTouchEvent, isMouseEvent, getEventClientCoords } from './events/index';

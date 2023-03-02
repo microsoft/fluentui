@@ -47,7 +47,7 @@ export const avatarlabelClassName = labelClassName;
 /**
  * A AvatarLabel allows user to classify content.
  */
-export const AvatarLabel = (React.forwardRef<HTMLSpanElement, AvatarLabelProps>((props, ref) => {
+export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();
@@ -89,7 +89,7 @@ export const AvatarLabel = (React.forwardRef<HTMLSpanElement, AvatarLabelProps>(
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, AvatarLabelProps> &
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarLabelProps> &
   FluentComponentStaticProps<AvatarLabelProps>;
 
 AvatarLabel.displayName = 'AvatarLabel';

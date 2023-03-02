@@ -317,14 +317,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
   };
 
   renderCodeEditorMenu = (): JSX.Element => {
-    const {
-      canCodeBeFormatted,
-      currentCode,
-      currentCodeLanguage,
-      currentCodePath,
-      handleCodeFormat,
-      wasCodeChanged,
-    } = this.props;
+    const { canCodeBeFormatted, currentCode, currentCodeLanguage, currentCodePath, handleCodeFormat, wasCodeChanged } =
+      this.props;
 
     // get component name from file path:
     // elements/Button/Types/ButtonButtonExample
@@ -429,15 +423,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       wasCodeChanged,
       resetTheme,
     } = this.props;
-    const {
-      anchorName,
-      componentVariables,
-      usedVariables,
-      showCode,
-      showRtl,
-      showTransparent,
-      showVariables,
-    } = this.state;
+    const { anchorName, componentVariables, usedVariables, showCode, showRtl, showTransparent, showVariables } =
+      this.state;
 
     const newTheme: ThemeInput = {
       componentVariables: {

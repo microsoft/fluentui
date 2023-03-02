@@ -24,7 +24,8 @@ export interface IColorRectangleState {
  */
 export class ColorRectangleBase
   extends React.Component<IColorRectangleProps, IColorRectangleState>
-  implements IColorRectangle {
+  implements IColorRectangle
+{
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,
     ariaLabel: 'Saturation and brightness',

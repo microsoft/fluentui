@@ -49,6 +49,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
             loose: true,
           },
         },
+        swcMinifyOptions: { mangle: false },
       }),
     },
     '@storybook/addon-essentials',
@@ -59,13 +60,11 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     // external custom addons
 
-    /**  @see https://github.com/microsoft/fluentui-storybook-addons */
-    'storybook-addon-export-to-codesandbox',
-
     // internal monorepo custom addons
 
     /**  @see ../packages/react-components/react-storybook-addon */
     loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-codesandbox', { tsConfigPath }),
   ],
   webpackFinal: config => {
     registerTsPaths({ config, configFile: tsConfigPath });

@@ -43,7 +43,7 @@ export type GridStylesProps = Pick<GridProps, 'columns' | 'rows'>;
 /**
  * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
  */
-export const Grid = (React.forwardRef<HTMLDivElement, GridProps>((props, ref) => {
+export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Grid.displayName, context.telemetry);
   setStart();
@@ -85,7 +85,7 @@ export const Grid = (React.forwardRef<HTMLDivElement, GridProps>((props, ref) =>
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, GridProps> & FluentComponentStaticProps<GridProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, GridProps> & FluentComponentStaticProps<GridProps>;
 
 Grid.displayName = 'Grid';
 

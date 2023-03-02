@@ -28,7 +28,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/TextImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
         },
       ];
 
@@ -37,7 +38,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/TextImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
         },
       ];
     case 'cross':

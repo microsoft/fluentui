@@ -7,6 +7,7 @@ import bestPracticesMd from './ComboboxBestPractices.md';
 export { Default } from './ComboboxDefault.stories';
 export { ComplexOptions } from './ComboboxComplexOptions.stories';
 export { CustomOptions } from './ComboboxCustomOptions.stories';
+export { Controlled } from './ComboboxControlled.stories';
 export { Filtering } from './ComboboxFiltering.stories';
 export { Freeform } from './ComboboxFreeform.stories';
 export { Multiselect } from './ComboboxMultiselect.stories';

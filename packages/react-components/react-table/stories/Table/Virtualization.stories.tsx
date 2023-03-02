@@ -9,8 +9,11 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, useScrollbarWidth, useFluent } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  useScrollbarWidth,
+  useFluent,
   TableBody,
   TableCell,
   TableRow,
@@ -23,7 +26,7 @@ import {
   useTableFeatures,
   useTableSelection,
   TableRowData as RowStateBase,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type Item = {
   file: {

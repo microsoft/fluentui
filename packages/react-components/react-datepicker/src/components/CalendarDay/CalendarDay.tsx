@@ -52,7 +52,7 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
     ? strings.yearPickerHeaderAriaLabel.replace('{0}', monthAndYear)
     : monthAndYear;
 
-  const { styles: _, ...propsWithoutStyles } = props;
+  const { ...propsWithoutStyles } = props;
 
   return (
     <div className={classNames.root}>
@@ -61,7 +61,6 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
           aria-label={onHeaderSelect ? headerAriaLabel : undefined}
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
-          data-is-focusable={!!onHeaderSelect}
           tabIndex={onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
@@ -74,7 +73,6 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
       </div>
       <CalendarDayGrid
         {...propsWithoutStyles}
-        // styles={styles}
         componentRef={dayGrid}
         strings={strings}
         navigatedDate={navigatedDate!}
@@ -172,14 +170,12 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
 };
 CalendarDayNavigationButtons.displayName = 'CalendarDayNavigationButtons';
 
-const onButtonKeyDown = (
-  callback?: () => void,
-): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) => (
-  ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>,
-) => {
-  switch (ev.key) {
-    case Enter:
-      callback?.();
-      break;
-  }
-};
+const onButtonKeyDown =
+  (callback?: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) =>
+  (ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => {
+    switch (ev.key) {
+      case Enter:
+        callback?.();
+        break;
+    }
+  };

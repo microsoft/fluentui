@@ -11,6 +11,8 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
+
       "@fluentui/api-docs": ["packages/api-docs/src/index.ts"],
       "@fluentui/azure-themes": ["packages/azure-themes/src/index.ts"],
       "@fluentui/codemods": ["packages/codemods/src/index.ts"],

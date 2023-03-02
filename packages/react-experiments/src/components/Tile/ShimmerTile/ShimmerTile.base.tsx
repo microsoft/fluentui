@@ -69,13 +69,11 @@ export class ShimmerTileBase extends React.Component<IShimmerTileProps, {}> {
       tileSize = 'large',
     } = this.props;
 
-    const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight } = TileLayoutSizes[
-      tileSize
-    ];
+    const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight } =
+      TileLayoutSizes[tileSize];
 
-    const { squareWidth, squareHeight, nameWidth, nameHeight, activityWidth, activityHeight } = PLACEHOLDER_SIZES[
-      tileSize
-    ];
+    const { squareWidth, squareHeight, nameWidth, nameHeight, activityWidth, activityHeight } =
+      PLACEHOLDER_SIZES[tileSize];
 
     let nameplateHeight = 0;
 
