@@ -120,3 +120,7 @@ Menu item with radio | `<MenuItemRadio>` | `<fluent-menu-item role="menuitemchec
 Menu item with checkbox | `<MenuItemCheckbox>` | `<fluent-menu-item role="menuitemcheckbox">..` |
 Icons | `<MenuItem icon={<MyIcon />}>` | `<slot name ="start">..` <br /> `<slot name="end">..`|
 Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">`|
+
+**Additional Deltas**
+
+In order for icons to render with appropriate styles the `icons` attribute must be present on the Menu.

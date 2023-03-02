@@ -78,6 +78,8 @@ Menu group header | `<MenuGroupHeader>` | `<fluent-menu-item class="header">` |
 
 **Additional Deltas:**
 
+In order for icons to render with appropriate styles the `icons` attribute must be present on the Menu.
+
 Complete FUIR9 Menu composure
 
 ```html
