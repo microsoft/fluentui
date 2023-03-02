@@ -322,13 +322,8 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
   const lastTransitionWeekStyles = useLastTransitionWeekStyles();
   const dayMarkerStyles = useDayMarkerStyles();
 
-  const {
-    animateBackwards,
-    animationDirection,
-    dateRangeType,
-    lightenDaysOutsideNavigatedMonth,
-    showWeekNumbers,
-  } = props;
+  const { animateBackwards, animationDirection, dateRangeType, lightenDaysOutsideNavigatedMonth, showWeekNumbers } =
+    props;
 
   return {
     wrapper: mergeClasses(calendarDayGridClassNames.wrapper, wrapperStyles.base),

@@ -31,31 +31,38 @@ export const TemplatePageProps: TFabricPlatformPageProps = {
     related,
 
     // Raw import of overview Markdown file.
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateOverview.md') as string,
 
     // Raw import of best practices Markdown file.
-    bestPractices: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateBestPractices.md') as string,
+    bestPractices:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateBestPractices.md') as string,
 
     // Raw import of do's Markdown file.
     dos: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDos.md') as string,
 
     // Raw import of don'ts Markdown file.
-    donts: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDonts.md') as string,
+    donts:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDonts.md') as string,
 
     // Raw import of usage guidelines Markdown file.
-    usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateUsage.md') as string,
+    usage:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateUsage.md') as string,
 
     // Raw import of design guidelines Markdown file.
-    design: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDesign.md') as string,
+    design:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateDesign.md') as string,
 
     // Optional title of the generic Markdown section.
     addlContentTitle: 'Markdown Section',
 
     // Raw import of the generic Markdown file.
-    addlContent: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateMarkdown.md') as string,
+    addlContent:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateMarkdown.md') as string,
 
     // Raw import of the page contact Markdown file.
-    contact: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateContact.md') as string,
+    contact:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/default/TemplateContact.md') as string,
 
     // Raw import of a types definition file to render the Implementation Section. (Array)
     propertiesTablesSources: [

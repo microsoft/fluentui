@@ -82,7 +82,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
  */
 export const getPartitionedNativeProps = <
   Props extends Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>,
-  ExcludedPropKeys extends Extract<keyof Props, string> = never
+  ExcludedPropKeys extends Extract<keyof Props, string> = never,
 >({
   primarySlotTagName,
   props,

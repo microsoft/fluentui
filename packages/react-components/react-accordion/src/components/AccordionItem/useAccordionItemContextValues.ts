@@ -3,11 +3,10 @@ import type { AccordionItemContextValue, AccordionItemContextValues, AccordionIt
 
 export function useAccordionItemContextValues_unstable(state: AccordionItemState): AccordionItemContextValues {
   const { disabled, onHeaderClick, open } = state;
-  const accordionItem = React.useMemo<AccordionItemContextValue>(() => ({ disabled, onHeaderClick, open }), [
-    disabled,
-    onHeaderClick,
-    open,
-  ]);
+  const accordionItem = React.useMemo<AccordionItemContextValue>(
+    () => ({ disabled, onHeaderClick, open }),
+    [disabled, onHeaderClick, open],
+  );
 
   return { accordionItem };
 }

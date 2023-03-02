@@ -5,9 +5,12 @@ import { BreadcrumbCollapsingExample } from './Breadcrumb.Collapsing.Example';
 import { BreadcrumbStaticExample } from './Breadcrumb.Static.Example';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const BreadcrumbBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Basic.Example.tsx') as string;
-const BreadcrumbCollapsingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Collapsing.Example.tsx') as string;
-const BreadcrumbStaticExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbCollapsingExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Collapsing.Example.tsx') as string;
+const BreadcrumbStaticExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Static.Example.tsx') as string;
 
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',

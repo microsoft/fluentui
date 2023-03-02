@@ -5,11 +5,14 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { FlexBoxResizeGroupExample } from './ResizeGroup.FlexBox.Example';
 import { ResizeGroupVerticalOverflowSetExample } from './ResizeGroup.VerticalOverflowSet.Example';
 
-const ResizeGroupBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/ResizeGroup.OverflowSet.Example.tsx') as string;
+const ResizeGroupBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/ResizeGroup.OverflowSet.Example.tsx') as string;
 
-const ResizeGroupVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/ResizeGroup.VerticalOverflowSet.Example.tsx') as string;
+const ResizeGroupVerticalExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/ResizeGroup.VerticalOverflowSet.Example.tsx') as string;
 
-const ResizeGroupFlexBoxExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/ResizeGroup.FlexBox.Example.tsx') as string;
+const ResizeGroupFlexBoxExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ResizeGroup/ResizeGroup.FlexBox.Example.tsx') as string;
 
 export const ResizeGroupPageProps: IDocPageProps = {
   title: 'ResizeGroup',

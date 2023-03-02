@@ -33,7 +33,7 @@ export const pillImageClassName = 'ui-pill__image';
 /**
  * An PillImage is a graphic representation used by Pill.
  */
-export const PillImage = (React.forwardRef<HTMLImageElement, PillImageProps>((props, ref) => {
+export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((props, ref) => {
   const context = useFluentContext();
 
   const { setStart, setEnd } = useTelemetry(PillImage.displayName, context.telemetry);
@@ -69,8 +69,7 @@ export const PillImage = (React.forwardRef<HTMLImageElement, PillImageProps>((pr
   setEnd();
 
   return result;
-}) as unknown) as ForwardRefWithAs<'img', HTMLImageElement, PillImageProps> &
-  FluentComponentStaticProps<PillImageProps>;
+}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, PillImageProps> & FluentComponentStaticProps<PillImageProps>;
 
 PillImage.displayName = 'PillImage';
 
