@@ -103,19 +103,6 @@ const Example = (props: ButtonProps) => {
 };
 ```
 
-### Pros
-
-- 👍 Can be used to disable animations
-- 👍 Can be used to customize reduced animations
-- 👍 Supported cross platform
-- 👍 No javascript code executed
-- 👍 Only affects Fluent code
-
-### Cons
-
-- 👎 Only affects animations in Fluent components
-- 👎 More effort on the developer to do the right thing
-
 ### Global CSS override in apps
 
 Add a CSS rule with `!important` property which will override all the animations and transitions on the page. This can
@@ -128,7 +115,6 @@ be done on the application side, and will impact all non-Fluent UI styles.
   animation-delay: -1ms !important;
   animation-duration: 1ms !important;
   animation-iteration-count: 1 !important;
-  background-attachment: initial !important;
   scroll-behavior: auto !important;
   transition-duration: 0.1s !important;
   transition-delay: 0.1s !important;
@@ -143,10 +129,20 @@ this is recommended by [this blog post](<https://web.dev/prefers-reduced-motion/
 
 Codesandbox: https://codesandbox.io/s/disable-animations-important-dpugv
 
-#### Pros
+### Pros
 
 - 👍 disables all animations on the page
 - 👍 not coupled with tokens/griffel
+- 👍 Can be used to disable animations
+- 👍 Can be used to customize reduced animations
+- 👍 Supported cross platform
+- 👍 No javascript code executed
+- 👍 Only affects Fluent code
+
+### Cons
+
+- 👎 Only affects animations in Fluent components
+- 👎 More effort on the developer to do the right thing
 
 ## Open Issues
 
