@@ -29,7 +29,7 @@ const storyTemplate = html<CounterBadgeStoryArgs>`
 `;
 
 export default {
-  title: 'Components/Counter Badge',
+  title: 'Components/Badge/Counter Badge',
   args: {
     dot: false,
     showZero: false,
