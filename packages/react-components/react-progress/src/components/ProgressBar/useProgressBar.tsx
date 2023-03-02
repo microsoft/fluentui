@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
+import { clampValue, clampMax } from '../../utils/index';
 
 /**
  * Create the state required to render ProgressBar.
@@ -13,14 +14,16 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
   // Props
-  const { color = 'brand', max = 1.0, shape = 'rounded', thickness = 'medium', value } = props;
+  const { color = 'brand', max = 1, shape = 'rounded', thickness = 'medium', value } = props;
+  const internalMax = clampMax(max);
+  const internalValue = clampValue(value, internalMax);
 
   const root = getNativeElementProps('div', {
     ref,
     role: 'progressbar',
-    'aria-valuemin': value !== undefined ? 0 : undefined,
-    'aria-valuemax': value !== undefined ? max : undefined,
-    'aria-valuenow': value,
+    'aria-valuemin': internalValue !== undefined ? 0 : undefined,
+    'aria-valuemax': internalValue !== undefined ? internalMax : undefined,
+    'aria-valuenow': internalValue,
     ...props,
   });
 
@@ -30,10 +33,10 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
 
   const state: ProgressBarState = {
     color,
-    max,
+    max: internalMax as number,
     shape,
     thickness,
-    value,
+    value: internalValue,
     components: {
       root: 'div',
       bar: 'div',
