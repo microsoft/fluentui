@@ -139,7 +139,7 @@ export interface ComponentSlotStylesResolved extends Record<string, ICSSInJSStyl
 
 export interface ComponentStyleFunctionParam<
   TProps extends PropsWithVarsAndStyles = PropsWithVarsAndStyles,
-  TVars extends ComponentVariablesObject = ComponentVariablesObject
+  TVars extends ComponentVariablesObject = ComponentVariablesObject,
 > {
   props: TProps;
   variables: TVars;
@@ -175,23 +175,19 @@ export type StaticStyles = StaticStyle[];
 
 export type ThemeComponentVariablesInput<ThemeStylesProps = any> = {
   [K in keyof ThemeStylesProps]?: ComponentVariablesInput;
-} &
-  Record<string, any>;
+} & Record<string, any>;
 
 export type ThemeComponentVariablesPrepared<ThemeStylesProps = any> = {
   [K in keyof ThemeStylesProps]?: ComponentVariablesPrepared;
-} &
-  Record<string, any>;
+} & Record<string, any>;
 
 export type ThemeComponentStylesInput<ThemeStylesProps = any> = {
   [K in keyof ThemeStylesProps]?: ComponentSlotStylesInput<ThemeStylesProps[K]>;
-} &
-  Record<string, ComponentSlotStylesInput | undefined>;
+} & Record<string, ComponentSlotStylesInput | undefined>;
 
 export type ThemeComponentStylesPrepared<ThemeStylesProps = any> = {
   [K in keyof ThemeStylesProps]?: ComponentSlotStylesPrepared<ThemeStylesProps[K]>;
-} &
-  Record<string, ComponentSlotStylesPrepared | undefined>;
+} & Record<string, ComponentSlotStylesPrepared | undefined>;
 
 // ========================================================
 // Theme

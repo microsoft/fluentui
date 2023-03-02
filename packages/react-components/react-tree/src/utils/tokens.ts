@@ -1,7 +1,4 @@
-export const levelToken = {
-  name: '--fluent-TreeItem--level',
-  value: 'var(--fluent-TreeItem--level, 0)',
-} as const;
+export const treeItemLevelToken = '--fluent-TreeItem--level' as const;
 
 export const treeAvatarSize = {
   medium: 32,

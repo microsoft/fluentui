@@ -2,6 +2,21 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Wed, 22 Feb 2023 23:06:07 GMT",
+      "tag": "@fluentui/react-persona_v9.1.13",
+      "version": "9.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.3.7",
+            "commit": "9ee6caa17f745e014ecba467a4528181ae49be30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-persona_v9.1.12",
       "version": "9.1.12",

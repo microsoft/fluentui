@@ -21,19 +21,19 @@ const TRANSITION_DURATION_DRAG = 200; // ms
 const TRANSITION_DURATION_DROP = 1500; // ms
 const CLASSNAME_ADD_INTERVAL = 20; // ms
 
-const defaultOnRenderHeader = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (
-  props?: IDetailsColumnProps,
-): JSX.Element | null => {
-  if (!props) {
-    return null;
-  }
+const defaultOnRenderHeader =
+  (classNames: IProcessedStyleSet<IDetailsColumnStyles>) =>
+  (props?: IDetailsColumnProps): JSX.Element | null => {
+    if (!props) {
+      return null;
+    }
 
-  if (props.column.isIconOnly) {
-    return <span className={classNames.accessibleLabel}>{props.column.name}</span>;
-  }
+    if (props.column.isIconOnly) {
+      return <span className={classNames.accessibleLabel}>{props.column.name}</span>;
+    }
 
-  return <>{props.column.name}</>;
-};
+    return <>{props.column.name}</>;
+  };
 
 /**
  * Component for rendering columns in a `DetailsList`.
@@ -241,14 +241,14 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   }
 
-  private _onRenderFilterIcon = (classNames: IProcessedStyleSet<IDetailsColumnStyles>) => (
-    props: IDetailsColumnFilterIconProps,
-  ): JSX.Element => {
-    const { columnProps, ...iconProps } = props;
-    const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
+  private _onRenderFilterIcon =
+    (classNames: IProcessedStyleSet<IDetailsColumnStyles>) =>
+    (props: IDetailsColumnFilterIconProps): JSX.Element => {
+      const { columnProps, ...iconProps } = props;
+      const IconComponent = columnProps?.useFastIcons ? FontIcon : Icon;
 
-    return <IconComponent {...iconProps} />;
-  };
+      return <IconComponent {...iconProps} />;
+    };
 
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: IDetailsColumnRenderTooltipProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;

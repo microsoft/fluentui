@@ -14,3 +14,8 @@ export function useTreeWalker(whatToShow?: number, filter?: NodeFilter | null) {
   }, []);
   return { treeWalker: treeWalkerRef as React.RefObject<TreeWalker>, root: rootRef };
 }
+
+export function filterTreeItemAndSubtree(node: Node) {
+  const element = node as HTMLElement & { role: string };
+  return element.role === 'treeitem' || element.role === 'group' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+}

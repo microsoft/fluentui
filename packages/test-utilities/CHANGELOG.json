@@ -2,6 +2,21 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Wed, 01 Mar 2023 07:45:40 GMT",
+      "tag": "@fluentui/test-utilities_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "dd0f5b76fc8905c067cc58556ec1f9626dcfc640",
+            "comment": "feat: move private test/ helpers from utilities package to make test pass with jest 28"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:48 GMT",
       "tag": "@fluentui/test-utilities_v8.2.5",
       "version": "8.2.5",

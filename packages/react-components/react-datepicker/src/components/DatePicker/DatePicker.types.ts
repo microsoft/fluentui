@@ -6,7 +6,6 @@ import { PopoverSurface } from '@fluentui/react-popover';
 import type { InputProps } from '@fluentui/react-input';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ITheme } from '@fluentui/style-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 
@@ -38,11 +37,6 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<IDatePicker>;
-
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme?: ITheme;
 
   /**
    * Pass textField props to textField component.

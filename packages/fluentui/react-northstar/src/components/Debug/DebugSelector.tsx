@@ -88,15 +88,8 @@ export class DebugSelector extends React.Component<DebugSelectorProps, DebugSele
   };
 
   render() {
-    const {
-      active,
-      mountDocument,
-      renderLabel,
-      showBackground,
-      showClassName,
-      showCropMarks,
-      showElement,
-    } = this.props;
+    const { active, mountDocument, renderLabel, showBackground, showClassName, showCropMarks, showElement } =
+      this.props;
     const { fiberNav } = this.state;
 
     return (
