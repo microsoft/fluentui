@@ -245,7 +245,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
             <div>
               <Checkbox
-                checked={isProblemNotSolved}
+                // checked={isProblemNotSolved}
                 onChange={onProblemNotSolvedChange}
                 label="My problem has not been solved."
               />
