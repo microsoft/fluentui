@@ -41,7 +41,7 @@ export const TimePickerBasicExample: React.FC = () => {
           useHour12
           allowFreeform
           autoComplete="on"
-          label={'TimePicker basic example'}
+          label="TimePicker basic example"
           onChange={onBasicExampleChange}
           dateAnchor={new Date('November 25, 2021 09:15:00')}
         />
@@ -55,8 +55,8 @@ export const TimePickerBasicExample: React.FC = () => {
           allowFreeform
           increments={15}
           autoComplete="on"
-          label={'TimePicker with non default options'}
-          placeholder={'Non default options placeholder'}
+          label="TimePicker with non default options"
+          placeholder="Non default options placeholder"
           timeRange={timeRange}
           dateAnchor={new Date('February 27, 2023 08:12:00')}
           onChange={onNonDefaultOptionsExampleChange}

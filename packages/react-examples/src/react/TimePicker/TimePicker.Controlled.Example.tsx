@@ -39,7 +39,7 @@ export const TimePickerControlledExample: React.FC = () => {
           allowFreeform
           increments={15}
           autoComplete="on"
-          label={'Controlled TimePicker with non default options'}
+          label="Controlled TimePicker with non default options"
           dateAnchor={dateAnchor}
           value={time}
           onChange={onControlledExampleChange}

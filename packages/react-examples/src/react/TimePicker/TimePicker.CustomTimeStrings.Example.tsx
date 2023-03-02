@@ -43,7 +43,7 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
           useHour12
           allowFreeform={false}
           autoComplete="on"
-          label={'TimePicker with custom time strings'}
+          label="TimePicker with custom time strings"
         />
         <Text>{`Custom time strings example selected time: ${
           customTimeString ? customTimeString : '<no time selected>'

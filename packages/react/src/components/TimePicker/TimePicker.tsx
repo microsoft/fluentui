@@ -59,10 +59,12 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
-  const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(new Date(dateAnchor || new Date()));
-  const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(new Date(dateAnchor || new Date()));
+  const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(
+    new Date(dateAnchor || defaultValue || new Date()),
+  );
+  const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(new Date(dateAnchor || defaultValue || new Date()));
 
-  const [selectedTime, setSelectedTime] = useControllableValue<Date>(value, defaultValue);
+  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue);
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
@@ -114,12 +116,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       const formattedTimeString = formatTimeString(selectedTime, showSeconds, useHour12);
       const option = getComboBoxOptionInDropdown(formattedTimeString);
       setSelectedKey(option?.key);
-
-      if (option) {
-        setComboBoxText(option.text);
-      } else {
-        setComboBoxText(formattedTimeString);
-      }
+      setComboBoxText(option ? option.text : formattedTimeString);
     }
   }, [selectedTime, getComboBoxOptionInDropdown, onFormatDate, showSeconds, useHour12]);
 
@@ -137,7 +134,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
           errorMessageToDisplay = strings.invalidInputErrorMessage;
         } else if (timeRange) {
           const optionDate: Date = getDateFromTimeSelection(useHour12, dateStartAnchor, userInput);
-          if (!(optionDate >= dateStartAnchor && optionDate <= dateEndAnchor)) {
+          if (optionDate < dateStartAnchor || optionDate > dateEndAnchor) {
             errorMessageToDisplay = format(
               strings.timeOutOfBoundsErrorMessage,
               dateStartAnchor.toString(),

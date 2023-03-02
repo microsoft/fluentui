@@ -75,12 +75,14 @@ export interface ITimePickerProps
 
   /**
    * The uncontrolled default selected time.
+   * Mutually exclusive with `value`.
    */
   defaultValue?: Date;
 
   /**
    * A Date representing the selected time. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Mutually exclusive with `defaultValue`.
    */
   value?: Date;
 
