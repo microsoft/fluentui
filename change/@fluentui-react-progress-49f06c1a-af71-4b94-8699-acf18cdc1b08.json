@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: align hcm styles for progressbar to figma and fix documentation typo",
+  "comment": "fix: Align WHCM styles with figma and fix documentation typo.",
   "packageName": "@fluentui/react-progress",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
