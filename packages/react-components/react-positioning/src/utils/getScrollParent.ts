@@ -41,7 +41,7 @@ export const getScrollParent = (node: Document | HTMLElement | null): HTMLElemen
     case 'BODY':
       return parentNode.ownerDocument!.body;
     case '#document':
-      return ((parentNode as unknown) as Document).body;
+      return (parentNode as unknown as Document).body;
   }
 
   // If any of the overflow props is defined for the node then we return it as the parent

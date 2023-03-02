@@ -91,7 +91,7 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
  */
-export const AccordionTitle = (React.forwardRef<HTMLDListElement, AccordionTitleProps & { as: React.ReactNode }>(
+export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleProps & { as: React.ReactNode }>(
   (props, ref) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
@@ -219,7 +219,7 @@ export const AccordionTitle = (React.forwardRef<HTMLDListElement, AccordionTitle
     setEnd();
     return element;
   },
-) as unknown) as ForwardRefWithAs<'div', HTMLDListElement, AccordionTitleProps> &
+) as unknown as ForwardRefWithAs<'div', HTMLDListElement, AccordionTitleProps> &
   FluentComponentStaticProps<AccordionTitleProps>;
 
 AccordionTitle.displayName = 'AccordionTitle';

@@ -57,7 +57,7 @@ export const reactionSlotClassNames: ReactionSlotClassNames = {
  * A Reaction indicates user's emotion or perception.
  * Used to display user's reaction for entity in Chat (e.g. message).
  */
-export const Reaction = (React.forwardRef<HTMLSpanElement, ReactionProps>((props, ref) => {
+export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Reaction.displayName, context.telemetry);
   setStart();
@@ -118,7 +118,7 @@ export const Reaction = (React.forwardRef<HTMLSpanElement, ReactionProps>((props
 
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, ReactionProps> &
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, ReactionProps> &
   FluentComponentStaticProps<ReactionProps> & {
     Group: typeof ReactionGroup;
   };

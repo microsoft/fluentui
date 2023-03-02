@@ -68,7 +68,7 @@ export const labelClassName = 'ui-label';
 /**
  * A Label allows user to classify content.
  */
-export const Label = (React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) => {
+export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
   setStart();
@@ -168,7 +168,7 @@ export const Label = (React.forwardRef<HTMLSpanElement, LabelProps>((props, ref)
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, LabelProps> & FluentComponentStaticProps;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, LabelProps> & FluentComponentStaticProps;
 
 Label.displayName = 'Label';
 

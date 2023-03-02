@@ -173,21 +173,23 @@ function multiFormat(date: Date, locale: d3TimeFormat.TimeLocaleObject) {
   const formatMonth = locale.format('%B');
   const formatYear = locale.format('%Y');
 
-  return (d3TimeSecond(date) < date
-    ? formatMillisecond
-    : d3TimeMinute(date) < date
-    ? formatSecond
-    : d3TimeHour(date) < date
-    ? formatMinute
-    : d3TimeDay(date) < date
-    ? formatHour
-    : d3TimeMonth(date) < date
-    ? d3TimeWeek(date) < date
-      ? formatDay
-      : formatWeek
-    : d3TimeYear(date) < date
-    ? formatMonth
-    : formatYear)(date);
+  return (
+    d3TimeSecond(date) < date
+      ? formatMillisecond
+      : d3TimeMinute(date) < date
+      ? formatSecond
+      : d3TimeHour(date) < date
+      ? formatMinute
+      : d3TimeDay(date) < date
+      ? formatHour
+      : d3TimeMonth(date) < date
+      ? d3TimeWeek(date) < date
+        ? formatDay
+        : formatWeek
+      : d3TimeYear(date) < date
+      ? formatMonth
+      : formatYear
+  )(date);
 }
 
 /**
@@ -869,9 +871,10 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
  * @param {IVerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(
-  points: IVerticalBarChartDataPoint[],
-): { startValue: number; endValue: number } {
+export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[]): {
+  startValue: number;
+  endValue: number;
+} {
   const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.y)!;
   const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.y)!;
 

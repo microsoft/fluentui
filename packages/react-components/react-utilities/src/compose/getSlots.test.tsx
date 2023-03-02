@@ -8,9 +8,7 @@ describe('getSlots', () => {
 
   it('returns provided component type for root if the as prop is not provided', () => {
     type Slots = { root: Slot<'div'> };
-    expect(
-      getSlots<Slots>({ root: {}, components: { root: 'div' } }),
-    ).toEqual({
+    expect(getSlots<Slots>({ root: {}, components: { root: 'div' } })).toEqual({
       slots: { root: 'div' },
       slotProps: { root: {} },
     });
@@ -18,9 +16,7 @@ describe('getSlots', () => {
 
   it('returns root slot as a span with no props', () => {
     type Slots = { root: Slot<'div', 'span'> };
-    expect(
-      getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } }),
-    ).toEqual({
+    expect(getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } })).toEqual({
       slots: { root: 'span' },
       slotProps: { root: {} },
     });
@@ -39,9 +35,7 @@ describe('getSlots', () => {
 
   it('returns root slot as an anchor, leaving the href intact', () => {
     type Slots = { root: Slot<'a'> };
-    expect(
-      getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' }, components: { root: 'a' } }),
-    ).toEqual({
+    expect(getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' }, components: { root: 'a' } })).toEqual({
       slots: { root: 'a' },
       slotProps: { root: { id: 'id', href: 'href' } },
     });

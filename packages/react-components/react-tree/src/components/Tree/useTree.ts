@@ -82,9 +82,10 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const { targetDocument } = useFluent_unstable();
   const [openItems, setOpenItems] = useControllableState({
     state: React.useMemo(() => props.openItems && createImmutableSet(props.openItems), [props.openItems]),
-    defaultState: React.useMemo(() => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems), [
-      props.defaultOpenItems,
-    ]),
+    defaultState: React.useMemo(
+      () => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems),
+      [props.defaultOpenItems],
+    ),
     initialState: emptyImmutableSet,
   });
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {

@@ -64,7 +64,7 @@ export const Default = () => {
     try {
       const v8Palette = JSON.parse(v8PaletteText);
       const brand = createBrandVariants(v8Palette, interpolation as 'pairs' | 'primaryAndEnds');
-      setBrandVariants((brand as unknown) as Record<string, string>);
+      setBrandVariants(brand as unknown as Record<string, string>);
     } catch (e) {
       setMessage((e as Error).message);
     }
