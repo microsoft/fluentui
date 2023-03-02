@@ -85,7 +85,7 @@ const useMonthComponentsStyles = makeStyles({
 const useHeaderIconButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
     color: tokens.colorNeutralForeground1,
     display: 'block',
