@@ -11,21 +11,15 @@ export const renderTag_unstable = (state: TagState) => {
   // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
-      <span className="content">
-        <div className="persona">
-          <img
-            height="32"
-            width="32"
-            src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-react-assets/persona-male.png"
-          />
-        </div>
-        <div className="icon">i</div>
-        <div className="primary">Primary Text</div>
-        <div className="secondary">Secondary Text</div>
-      </span>
-      <div className="dismiss">
-        <button>x</button>
-      </div>
+      {slots.content && (
+        <slots.content {...slotProps.content}>
+          {slots.persona && <slots.persona {...slotProps.persona} />}
+          {slots.icon && <slots.icon {...slotProps.icon} />}
+          {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
+          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+        </slots.content>
+      )}
+      {slots.dismiss && <slots.dismiss {...slotProps.dismiss} />}
     </slots.root>
   );
 };

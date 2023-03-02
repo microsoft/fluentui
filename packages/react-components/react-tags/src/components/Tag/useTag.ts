@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { TagProps, TagState } from './Tag.types';
+import { Persona } from '@fluentui/react-persona';
 
 /**
  * Create the state required to render Tag.
@@ -13,16 +14,24 @@ import type { TagProps, TagState } from './Tag.types';
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      content: 'span',
+      persona: Persona,
+      icon: 'span',
+      primaryText: 'span',
+      secondaryText: 'span',
+      dismiss: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
+    content: resolveShorthand(props.content, { required: true }),
+    persona: resolveShorthand(props.persona),
+    icon: resolveShorthand(props.icon),
+    primaryText: resolveShorthand(props.primaryText),
+    secondaryText: resolveShorthand(props.secondaryText),
+    dismiss: resolveShorthand(props.dismiss),
   };
 };
