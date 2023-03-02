@@ -39,7 +39,87 @@ There is currently no known requirement to reduce motion (use less or slower/fas
 
 ## Detailed Design or Proposal
 
-Add a CSS rule with `!important` property which will override all the animations and transitions on the page.
+The recommended solution is will happen both in Fluent and consumer Apps
+
+### `prefers-reduced-motion` media query
+
+For animations/transitions in Fluent,
+we should leverage the [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) media query.
+All animations that should be toned down within Fluent should declare an alternative style using the media
+query. This is the same approach that we follow with high contrast mode proposed in [#17465](https://github.com/microsoft/fluentui/issues/17465).
+
+The below sample code is available on a [demo in codesandbox](https://codesandbox.io/s/pedantic-cdn-dmdgem?file=/example.tsx:111-831).
+
+```ts
+import { Button, ButtonProps, makeStyles } from '@fluentui/react-components';
+import * as React from 'react';
+
+const useStyles = makeStyles({
+  animations: {
+    animationDuration: '2s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+    animationFillMode: 'both',
+    '@media(prefers-reduced-motion)': {
+      animationName: {
+        '0%': {
+          opacity: 1,
+        },
+        '50%': {
+          opacity: 0.8,
+        },
+        '100%': {
+          opacity: 1,
+        },
+      },
+    },
+    animationName: {
+      '0%': {
+        transform: 'scale(1)',
+      },
+      '25%': {
+        transform: 'scale(0.9)',
+      },
+      '50%': {
+        transform: 'scale(1)',
+      },
+      '75%': {
+        transform: 'scale(1.1)',
+      },
+      '100%': {
+        transform: 'scale(1)',
+      },
+    },
+  },
+});
+
+const Example = (props: ButtonProps) => {
+  const styles = useStyles();
+  return (
+    <Button appearance="primary" className={styles.animations}>
+      Example
+    </Button>
+  );
+};
+```
+
+### Pros
+
+- 👍 Can be used to disable animations
+- 👍 Can be used to customize reduced animations
+- 👍 Supported cross platform
+- 👍 No javascript code executed
+- 👍 Only affects Fluent code
+
+### Cons
+
+- 👎 Only affects animations in Fluent components
+- 👎 More effort on the developer to do the right thing
+
+### Global CSS override in apps
+
+Add a CSS rule with `!important` property which will override all the animations and transitions on the page. This can
+be done on the application side, and will impact all non-Fluent UI styles.
 
 ```css
 *,
