@@ -2,7 +2,7 @@
 
 ## Background
 
-The `Skeleton` component is a temporary animation placeholder for when a service call takes time to return data and we don't want to block rendering the rest of the UI.
+The `Skeleton` component is a temporary placeholder for UI that is in a loading state.
 
 ## Prior Art
 
@@ -57,7 +57,7 @@ The `Skeleton` is a combination of any of the two shapes in order to represent t
 
 ### Props
 
-See API at [Skeleton.types.tsx]().
+See API at [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
 
 ## Structure
 
