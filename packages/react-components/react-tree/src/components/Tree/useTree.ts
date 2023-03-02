@@ -1,18 +1,8 @@
 import * as React from 'react';
-import {
-  getNativeElementProps,
-  useControllableState,
-  useEventCallback,
-  useMergedRefs,
-  isHTMLElement,
-} from '@fluentui/react-utilities';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { TreeOpenChangeData, TreeProps, TreeState } from './Tree.types';
-import { useTreeContext_unstable } from '../../contexts/treeContext';
-import { filterTreeItemAndSubtree, useTreeWalker } from '../../utils/useTreeWalker';
-import { updateOpenItems } from '../../utils/updateOpenItems';
-import { createImmutableSet, emptyImmutableSet } from '../../utils/ImmutableSet';
+import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
+import { useTreeContext_unstable } from '../../contexts';
+import { useNestedTreeNavigation, useOpenItemsState } from '../../hooks';
 
 /**
  * Create the state required to render Tree.
@@ -44,10 +34,9 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const { appearance = contextAppearance ?? 'subtle', size = contextSize ?? 'medium' } = props;
 
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);
-  const focusFirstSubtreeItem = useTreeContext_unstable(ctx => ctx.focusFirstSubtreeItem);
-  const focusSubtreeOwnerItem = useTreeContext_unstable(ctx => ctx.focusSubtreeOwnerItem);
   const openItems = useTreeContext_unstable(ctx => ctx.openItems);
   const requestOpenChange = useTreeContext_unstable(ctx => ctx.requestOpenChange);
+  const requestNavigation = useTreeContext_unstable(ctx => ctx.requestNavigation);
 
   return {
     components: {
@@ -63,8 +52,7 @@ function useSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
     }),
     openItems,
     requestOpenChange,
-    focusFirstSubtreeItem,
-    focusSubtreeOwnerItem,
+    requestNavigation,
   };
 }
 
@@ -79,61 +67,26 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
 
   const { appearance = 'subtle', size = 'medium' } = props;
 
-  const { targetDocument } = useFluent_unstable();
-  const [openItems, setOpenItems] = useControllableState({
-    state: React.useMemo(() => props.openItems && createImmutableSet(props.openItems), [props.openItems]),
-    defaultState: React.useMemo(
-      () => props.defaultOpenItems && createImmutableSet(props.defaultOpenItems),
-      [props.defaultOpenItems],
-    ),
-    initialState: emptyImmutableSet,
-  });
+  const [openItems, updateOpenItems] = useOpenItemsState(props);
+  const [navigate, treeRef] = useNestedTreeNavigation();
+
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
     props.onOpenChange?.(data.event, data);
-    if (!data.event.isDefaultPrevented()) {
-      setOpenItems(updateOpenItems(data, openItems));
-    }
-  });
-  const focusFirstSubtreeItem = useEventCallback((target: HTMLElement) => {
-    const treeWalker = treeWalkerRef.current;
-    if (!treeWalker) {
+    if (data.event.isDefaultPrevented()) {
       return;
     }
-    const groupId = target.getAttribute('aria-owns');
-    if (groupId && targetDocument) {
-      const element = targetDocument.getElementById(groupId);
-      if (treeWalker && element) {
-        treeWalker.currentNode = element;
-        const firstTreeItem = treeWalker.firstChild();
-        if (isHTMLElement(firstTreeItem)) {
-          return firstTreeItem?.focus();
-        }
-      }
-    }
+    return updateOpenItems(data);
   });
-  const focusSubtreeOwnerItem = useEventCallback((target: HTMLElement) => {
-    const treeWalker = treeWalkerRef.current;
-    if (!treeWalker) {
+
+  const requestNavigation = useEventCallback((data: TreeNavigationData_unstable) => {
+    props.onNavigation_unstable?.(data.event, data);
+    if (data.event.isDefaultPrevented()) {
       return;
     }
-    treeWalker.currentNode = target;
-    const group = treeWalker.parentNode();
-    if (isHTMLElement(group)) {
-      while (treeWalker.previousNode()) {
-        const treeItem = treeWalker.currentNode;
-        if (isHTMLElement(treeItem) && treeItem.getAttribute('aria-owns') === group.id) {
-          return treeItem.focus();
-        }
-      }
-    }
+    navigate(data);
+    data.event.preventDefault();
   });
-  const { treeWalker: treeWalkerRef, root: treeRef } = useTreeWalker(NodeFilter.SHOW_ELEMENT, {
-    acceptNode: filterTreeItemAndSubtree,
-  });
-  const arrowNavigationProps = useArrowNavigationGroup({
-    tabbable: true,
-    axis: 'vertical',
-  });
+
   return {
     components: {
       root: 'div',
@@ -143,18 +96,16 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
     level: 1,
     openItems,
     requestOpenChange,
-    focusFirstSubtreeItem,
-    focusSubtreeOwnerItem,
+    requestNavigation,
     root: getNativeElementProps('div', {
       ref: useMergedRefs(treeRef, ref),
       role: 'tree',
       ...props,
-      ...arrowNavigationProps,
     }),
   };
 }
 
-function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'id' | 'aria-label' | 'aria-labelledby'>) {
+function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria-labelledby'>) {
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console

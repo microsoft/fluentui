@@ -6,15 +6,22 @@
 
 /// <reference types="react" />
 
+import { ArrowDown } from '@fluentui/keyboard-keys';
+import { ArrowLeft } from '@fluentui/keyboard-keys';
+import { ArrowRight } from '@fluentui/keyboard-keys';
+import { ArrowUp } from '@fluentui/keyboard-keys';
 import type { AvatarContextValue } from '@fluentui/react-avatar';
 import type { AvatarSize } from '@fluentui/react-avatar';
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import { End } from '@fluentui/keyboard-keys';
+import { Enter } from '@fluentui/keyboard-keys';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Home } from '@fluentui/keyboard-keys';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -22,18 +29,25 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProps[];
+export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[];
 
 // @public (undocumented)
-export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
+export type FlatTreeItem = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
     parentId?: string;
 };
 
 // @public (undocumented)
-export type FlatTreeProps = Pick<TreeProps, 'openItems' | 'onOpenChange'>;
+export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps;
 
 // @public (undocumented)
-export type LazyFlatTreeItems = LazyArray<Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps>;
+export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & {
+    ref: React_2.Ref<HTMLDivElement>;
+}>;
+
+// @public (undocumented)
+export type LazyFlatTreeItems = LazyArray<FlatTreeItemProps> & {
+    get(id: string): TreeItemPropsReference | null;
+};
 
 // @public (undocumented)
 export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
@@ -64,9 +78,8 @@ export type TreeContextValue = {
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
     size: 'small' | 'medium';
     openItems: ImmutableSet<TreeItemId>;
-    focusFirstSubtreeItem(target: HTMLElement): void;
-    focusSubtreeOwnerItem(target: HTMLElement): void;
     requestOpenChange(data: TreeOpenChangeData): void;
+    requestNavigation(data: TreeNavigationData_unstable): void;
 };
 
 // @public
@@ -154,23 +167,62 @@ export type TreeItemState = ComponentState<TreeItemSlots> & {
 };
 
 // @public (undocumented)
+export type TreeNavigationData_unstable = {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: 'TypeAhead';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof ArrowRight;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof ArrowLeft;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof ArrowUp;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof ArrowDown;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof Home;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    target: HTMLElement;
+    type: typeof End;
+};
+
+// @public (undocumented)
+export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
+
+// @public (undocumented)
 export type TreeOpenChangeData = {
     open: boolean;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
-    type: 'expandIconClick';
+    target: HTMLElement;
+    type: 'ExpandIconClick';
 } | {
     event: React_2.MouseEvent<HTMLElement>;
-    type: 'click';
+    target: HTMLElement;
+    type: 'Click';
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    type: 'enter';
+    target: HTMLElement;
+    type: typeof Enter;
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    type: 'arrowRight';
+    target: HTMLElement;
+    type: typeof ArrowRight;
 } | {
     event: React_2.KeyboardEvent<HTMLElement>;
-    type: 'arrowLeft';
+    target: HTMLElement;
+    type: typeof ArrowLeft;
 });
 
 // @public (undocumented)
@@ -183,6 +235,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     openItems?: Iterable<TreeItemId>;
     defaultOpenItems?: Iterable<TreeItemId>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
+    onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 };
 
 // @public (undocumented)
@@ -197,7 +250,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public (undocumented)
-export function useFlatTreeItems_unstable(items: FlatTreeItemProps[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, LazyFlatTreeItems];
+export function useFlatTreeItems_unstable(items: FlatTreeItem[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, LazyFlatTreeItems];
 
 // @public (undocumented)
 export type UseFlatTreeItemsOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems'>;
