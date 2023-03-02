@@ -12,6 +12,7 @@ import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
@@ -97,6 +98,9 @@ export type TreeItemLayoutSlots = {
 // @public
 export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & TreeItemContextValue;
 
+// @public (undocumented)
+export const treeItemLevelToken: "--fluent-TreeItem--level";
+
 // @public
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
 
@@ -131,7 +135,9 @@ export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined
 
 // @public (undocumented)
 export type TreeItemSlots = {
-    root: Slot<'div'>;
+    root: Slot<ExtractSlotProps<Slot<'div'> & {
+        style?: TreeItemCSSProperties;
+    }>>;
     content: NonNullable<Slot<'div'>>;
     subtree?: Slot<'span'>;
     expandIcon?: Slot<'span'>;

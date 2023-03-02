@@ -62,7 +62,7 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
               circular chart (as seen in the second example) is known by the MADS team as a Pie Chart.
             </p>
             <p>
-              The arc labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
+              The arc labels are hidden by default. Set the <code>hideLabels</code> prop to false to show them.
             </p>
           </div>
         }

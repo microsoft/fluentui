@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 22 Feb 2023 07:44:35 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Mar 2023 07:45:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.106.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.2)
+
+Wed, 01 Mar 2023 07:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.106.1..@fluentui/react_v8.106.2)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.2.30 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.10 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/react-focus to v8.8.16 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/react-hooks to v8.6.18 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.7 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/style-utilities to v8.9.3 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/theme to v2.6.24 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/utilities to v8.13.8 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/common-styles to v1.2.19 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/test-utilities to v8.3.0 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
 
 ## [8.106.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.1)
 

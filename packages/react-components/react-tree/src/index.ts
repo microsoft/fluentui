@@ -11,6 +11,8 @@ export type { TreeProps, TreeState, TreeSlots, TreeOpenChangeData, TreeOpenChang
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
 export type { TreeContextValue } from './contexts';
 
+export { treeItemLevelToken } from './utils/tokens';
+
 export {
   TreeItem,
   treeItemClassNames,
