@@ -59,16 +59,8 @@ export interface IWarnControlledUsageParams<P> {
  */
 export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): void {
   if (process.env.NODE_ENV !== 'production') {
-    const {
-      componentId,
-      componentName,
-      defaultValueProp,
-      props,
-      oldProps,
-      onChangeProp,
-      readOnlyProp,
-      valueProp,
-    } = params;
+    const { componentId, componentName, defaultValueProp, props, oldProps, onChangeProp, readOnlyProp, valueProp } =
+      params;
 
     // This warning logic closely follows what React does for native <input> elements.
 

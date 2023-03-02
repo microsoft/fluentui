@@ -23,7 +23,7 @@ export function useControlledState<TProps, TProp extends keyof TProps, TDefaultP
   if (options) {
     if (options.defaultPropName && props[options.defaultPropName] !== undefined) {
       // No easy way to coerce TProps[TDefaultProp] to match TProps[TProp] in generic typings, so cast it here.
-      defaultValue = (props[options.defaultPropName] as unknown) as TProps[TProp];
+      defaultValue = props[options.defaultPropName] as unknown as TProps[TProp];
     } else {
       defaultValue = options && options.defaultPropValue;
     }

@@ -59,7 +59,7 @@ export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
  * @accessibility
  * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
  */
-export const CarouselItem = (React.forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
+export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
   setStart();
@@ -122,7 +122,7 @@ export const CarouselItem = (React.forwardRef<HTMLDivElement, CarouselItemProps>
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselItemProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselItemProps> &
   FluentComponentStaticProps<CarouselItemProps>;
 
 CarouselItem.displayName = 'CarouselItem';

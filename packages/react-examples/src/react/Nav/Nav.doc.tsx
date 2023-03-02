@@ -7,12 +7,18 @@ import { NavNestedExample } from './Nav.Nested.Example';
 import { NavCustomGroupHeadersExample } from './Nav.CustomGroupHeaders.Example';
 import { NavFocusZoneExample } from './Nav.FocusZone.Example';
 
-const NavBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Basic.Example.tsx') as string;
-const NavWrappedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Wrapped.Example.tsx') as string;
-const NavFabricDemoAppExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
-const NavNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Nested.Example.tsx') as string;
-const NavFocusZoneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FocusZone.Example.tsx') as string;
-const NavCustomGroupHeadersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
+const NavBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Basic.Example.tsx') as string;
+const NavWrappedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Wrapped.Example.tsx') as string;
+const NavFabricDemoAppExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Nested.Example.tsx') as string;
+const NavFocusZoneExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FocusZone.Example.tsx') as string;
+const NavCustomGroupHeadersExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',

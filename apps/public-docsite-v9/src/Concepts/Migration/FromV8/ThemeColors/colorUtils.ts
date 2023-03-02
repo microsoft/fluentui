@@ -12,7 +12,7 @@ import {
 import { DefaultPalette } from '@fluentui/react';
 
 const palettePrefix = 'palette.';
-const paletteMap = (DefaultPalette as unknown) as Record<string, string>;
+const paletteMap = DefaultPalette as unknown as Record<string, string>;
 
 const blackAlphaPrefix = 'blackAlpha[';
 const greyPrefix = 'grey[';
@@ -20,11 +20,11 @@ const whiteAlphaPrefix = 'whiteAlpha[';
 const sharedColorsPrefix = 'sharedColors.';
 const brandPrefix = 'brand[';
 
-const blackAlphaMap = (blackAlpha as unknown) as Record<string, string>;
-const greyMap = (grey as unknown) as Record<string, string>;
-const whiteAlphaMap = (whiteAlpha as unknown) as Record<string, string>;
-const sharedColorsMap = (sharedColors as unknown) as Record<string, string>;
-const brandMap = (brandWeb as unknown) as Record<string, string>;
+const blackAlphaMap = blackAlpha as unknown as Record<string, string>;
+const greyMap = grey as unknown as Record<string, string>;
+const whiteAlphaMap = whiteAlpha as unknown as Record<string, string>;
+const sharedColorsMap = sharedColors as unknown as Record<string, string>;
+const brandMap = brandWeb as unknown as Record<string, string>;
 
 const getV9BlackAlpha = (name: string): string => {
   const rampNumber = name.substring(blackAlphaPrefix.length, name.length - 1);
@@ -47,7 +47,7 @@ const getV9SharedColor = (name: string): string => {
     throw new Error('Could not get color block info. Unsupported shared color specified.');
   }
   const parent = sharedColorsMap[colorParts[0]];
-  return ((parent as unknown) as Record<string, string>)[colorParts[1]];
+  return (parent as unknown as Record<string, string>)[colorParts[1]];
 };
 
 const getV9BrandColor = (name: string): string => {

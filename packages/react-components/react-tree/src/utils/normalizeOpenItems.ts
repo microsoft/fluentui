@@ -4,12 +4,14 @@ export function normalizeOpenItems(
     keepUndefined?: false;
   },
 ): string[];
+
 export function normalizeOpenItems(
   openSubtrees?: string | string[],
   options?: {
     keepUndefined: true;
   },
 ): string[] | undefined;
+
 export function normalizeOpenItems(
   openSubtrees?: string | string[],
   options?: {

@@ -119,7 +119,7 @@ apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
 apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build @sopranopillow
 
 #### Packages
-packages/azure-themes @robtaft-ms @Jacqueline-ms
+packages/azure-themes @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
@@ -233,11 +233,11 @@ packages/react/src/components/CalendarDayGrid @microsoft/cxe-red
 packages/react/src/components/Check @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal @leddie24
+packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/DatePicker @microsoft/cxe-red
 packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
-packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal @yiminwu
+packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers

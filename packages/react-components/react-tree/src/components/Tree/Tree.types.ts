@@ -1,31 +1,50 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TreeContextValue } from '../../contexts/treeContext';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 
 export type TreeSlots = {
   root: Slot<'div'>;
 };
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type TreeNavigationData_unstable =
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: 'TypeAhead' }
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowRight }
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowLeft }
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowUp }
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowDown }
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof Home }
+  | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof End };
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
+
 export type TreeOpenChangeData = { open: boolean } & (
   | {
       event: React.MouseEvent<HTMLElement>;
-      type: 'expandIconClick';
+      target: HTMLElement;
+      type: 'ExpandIconClick';
     }
   | {
       event: React.MouseEvent<HTMLElement>;
-      type: 'click';
+      target: HTMLElement;
+      type: 'Click';
     }
   | {
       event: React.KeyboardEvent<HTMLElement>;
-      type: 'enter';
+      target: HTMLElement;
+      type: typeof Enter;
     }
   | {
       event: React.KeyboardEvent<HTMLElement>;
-      type: 'arrowRight';
+      target: HTMLElement;
+      type: typeof ArrowRight;
     }
   | {
       event: React.KeyboardEvent<HTMLElement>;
-      type: 'arrowLeft';
+      target: HTMLElement;
+      type: typeof ArrowLeft;
     }
 );
 
@@ -69,10 +88,21 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    *
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
-   * such as open value and type of interaction that created the event
-   * and the id of the subtree that is being opened/closed
+   * such as open value and type of interaction that created the event.
    */
   onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
+
+  /**
+   * Callback fired when navigation happens inside the component.
+   * These property is ignored for subtrees.
+   *
+   * FIXME: This method is not ideal, as navigation should be handled internally by tabster.
+   *
+   * @param event - a React's Synthetic event
+   * @param data - A data object with relevant information,
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 };
 
 /**

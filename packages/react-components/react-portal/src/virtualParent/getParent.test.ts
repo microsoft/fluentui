@@ -61,7 +61,7 @@ describe('getParent', () => {
   it.each([null, undefined])('should return undefined if virtual parent is %s', parent => {
     // Arrange
     const child = document.createElement('div');
-    setVirtualParent(child, (parent as unknown) as HTMLElement);
+    setVirtualParent(child, parent as unknown as HTMLElement);
 
     // Assert
     expect(getParent(child)).toBeNull();

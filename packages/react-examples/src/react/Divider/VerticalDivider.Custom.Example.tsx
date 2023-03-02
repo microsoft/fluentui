@@ -8,28 +8,26 @@ interface ICustomDividerExampleClassNames {
   text: string;
 }
 
-const getExampleClassNames = memoizeFunction(
-  (): ICustomDividerExampleClassNames => {
-    const exampleHeight = 40;
-    const theme = getTheme();
-    return mergeStyleSets({
-      wrapper: {
-        height: 40,
-        backgroundColor: theme.semanticColors.bodyStandoutBackground,
-        color: theme.semanticColors.bodyText,
-        padding: '0',
-      },
-      text: {
-        display: 'inline-block',
-        padding: '0 8px',
-        height: exampleHeight,
-        lineHeight: exampleHeight,
-        verticalAlign: 'top',
-        margin: 'auto',
-      },
-    });
-  },
-);
+const getExampleClassNames = memoizeFunction((): ICustomDividerExampleClassNames => {
+  const exampleHeight = 40;
+  const theme = getTheme();
+  return mergeStyleSets({
+    wrapper: {
+      height: 40,
+      backgroundColor: theme.semanticColors.bodyStandoutBackground,
+      color: theme.semanticColors.bodyText,
+      padding: '0',
+    },
+    text: {
+      display: 'inline-block',
+      padding: '0 8px',
+      height: exampleHeight,
+      lineHeight: exampleHeight,
+      verticalAlign: 'top',
+      margin: 'auto',
+    },
+  });
+});
 
 const VerticalDividerStyles = {
   wrapper: {
