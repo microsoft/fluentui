@@ -1,8 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import {
-  spacingHorizontalM,
-  spacingHorizontalMNudge,
-} from '../../theme/design-tokens.js';
+import { spacingHorizontalM, spacingHorizontalMNudge } from '../../theme/design-tokens.js';
 
 export const styles = css`
   :host([hidden]) {
@@ -11,8 +8,6 @@ export const styles = css`
   :host {
     display: block;
     box-sizing: border-box;
-    font-size: var(--type-ramp-base-font-size);
-    line-height: var(--type-ramp-base-line-height);
     padding-top: ${spacingHorizontalM};
     padding-bottom: ${spacingHorizontalM};
     padding-left: ${spacingHorizontalMNudge};

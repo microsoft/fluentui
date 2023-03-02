@@ -17,12 +17,7 @@ import {
 } from '../../theme/design-tokens.js';
 
 export const styles = css`
-  :host([hidden]) {
-    display: none;
-  }
   :host {
-    --tabActiveIndicator: ${colorBrandBackgroundSelected};
-
     display: grid;
     box-sizing: border-box;
     font-family: ${fontFamilyBase};
@@ -31,6 +26,11 @@ export const styles = css`
     color: ${colorNeutralForeground2};
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr;
+    fill: green;
+  }
+
+  :host([hidden]) {
+    display: none;
   }
 
   :host([disabled='true']) {
@@ -68,7 +68,7 @@ export const styles = css`
     width: 100%;
     height: 3px;
     justify-self: center;
-    background: var(--tabActiveIndicator);
+    background: ${colorBrandBackgroundSelected};
     border-radius: ${borderRadiusMedium};
     position: relative;
   }
@@ -111,9 +111,7 @@ export const styles = css`
     grid-row: 1;
     width: 3px;
     height: ${fontSizeBase300};
-    margin-inline-end: 10px;
     align-self: center;
-    margin-top: 0;
     border-radius: ${borderRadiusMedium};
   }
   :host([orientation='vertical']) .activeIndicatorTransition {

@@ -109,6 +109,15 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 ## Differences from Fluent UI to FAST
 
+The Fluent/FAST web component differs from the Fluent React Control as follows:
+
+| difference                                      | Fluent Web Component                                    | Fluent React Component                                                               |
+| ----------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| active indicator                                | renders as sibling element to tab                       | renders as ::after pseudo element                                                    |
+| active indicator control / id control selection | managed by control                                      | managed by user with application state                                               |
+| keyboard and focus selection                    | selects active tab on arrow key focus change            | reselects tab on spacebar or enter after arrow refocus                               |
+| icon slotting                                   | favors composition (dev chooses how to slot which icon) | favors automation (dev supplies icon name and control handles the rendering of icon) |
+
 [Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 
 | fluent api name | fast api Equivalent |
@@ -140,10 +149,10 @@ By default Tabs are aranged horizontally. The developer sets `selected-value` Fl
 If the developer wants to control the selected tab, tab values can be provided.
 
 ```html
-<fluent-tab-list selected-value="tab-one">
-  <fluent-tab value="tab-one">One / Left</fluent-tab>
-  <fluent-tab value="tab-two">Two / Middle</fluent-tab>
-  <fluent-tab value="tab-three">Three / Right</fluent-tab>
+<fluent-tab-list activeid="tab-one">
+  <fluent-tab id="tab-one">One / Left</fluent-tab>
+  <fluent-tab id="tab-two">Two / Middle</fluent-tab>
+  <fluent-tab id="tab-three">Three / Right</fluent-tab>
 
   <fluent-tab-panel>Panel One</fluent-tab-panel>
   <fluent-tab-panel>Panel Two</fluent-tab-panel>
@@ -154,7 +163,7 @@ If the developer wants to control the selected tab, tab values can be provided.
 ### Vertical
 
 ```html
-<fluent-tab-list vertical>
+<fluent-tab-list orientation="vertical">
   <fluent-tab>One / Left</fluent-tab>
   <fluent-tab>Two / Middle</fluent-tab>
   <fluent-tab>Three / Right</fluent-tab>

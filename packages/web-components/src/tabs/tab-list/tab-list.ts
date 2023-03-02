@@ -8,6 +8,7 @@ import { FASTTabs } from '@microsoft/fast-foundation';
  * @public
  */
 export class TabList extends FASTTabs {
+  // TODO: add TSDOC comments for each class member
   @attr appearance?: 'subtle' | 'transparent';
 
   @attr({ converter: booleanConverter })
@@ -43,4 +44,6 @@ export class TabList extends FASTTabs {
       });
     }
   }
+
+  // TODO: figure out a way to create an active indicator that spans the correct width.
 }

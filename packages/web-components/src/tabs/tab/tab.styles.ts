@@ -5,6 +5,7 @@ import {
   colorNeutralBackground1,
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
+  colorNeutralStroke1Hover,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightBold,
@@ -40,11 +41,6 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
 
-  /* :host(:hover) {
-    color: var(--neutral-foreground-rest);
-    fill: currentcolor;
-  } */
-
   :host([aria-selected='true']),
   :host([aria-selected='true'][disabled]) {
     font-weight: ${fontWeightBold};
@@ -66,31 +62,56 @@ export const styles = css`
   }
   :host([disabled]) {
     cursor: not-allowed;
+    fill: ${colorNeutralForegroundDisabled};
     color: ${colorNeutralForegroundDisabled};
   }
 
   :host([disabled]:hover) {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host([aria-selected='true']) {
-    /* background: var(--neutral-fill-rest);
-    color: var(--accent-foreground-rest);
-    fill: currentcolor; */
+
+  :host([aria-selected='false']:hover)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: 0 3px 0 0 ${colorNeutralStroke1Hover};
+    height: 3px;
+    outline: none;
+    margin-top: auto;
+    border-radius: 3px;
   }
-  :host([aria-selected='true']:hover) {
-    /* background: var(--neutral-fill-hover);
-    color: var(--accent-foreground-hover);
-    fill: currentcolor; */
-  }
-  :host([aria-selected='true']:active) {
-    /* background: var(--neutral-fill-active);
-    color: var(--accent-foreground-active);
-    fill: currentcolor; */
+  :host([disabled][aria-selected='false']:hover)::after {
+    box-shadow: unset;
   }
 
   :host(:focus-visible) {
     outline: none;
   }
+  :host(:focus) {
+    outline: none;
+  }
+  :host(.vertical) {
+    justify-content: start;
+    grid-column: 2;
+  }
+  :host(.vertical[aria-selected='true']) {
+    z-index: 2;
+  }
+  :host([aria-selected='false'].vertical:hover)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: -3px 0 0 0 ${colorNeutralStroke1Hover};
+    height: ${fontSizeBase300};
+    width: 3px;
+    outline: none;
+    border-radius: 3px;
+    margin-bottom: auto;
+  }
+  :host([disabled][aria-selected='false'].vertical:hover)::after {
+    box-shadow: unset;
+  }
+
   :host(:focus-visible)::before {
     content: '';
     position: absolute;
@@ -106,22 +127,5 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
     box-shadow: 0 0 0 2pt ${colorNeutralBackground1};
     outline: none;
-  }
-
-  :host(:focus) {
-    outline: none;
-  }
-  :host(.vertical) {
-    justify-content: start;
-    grid-column: 2;
-  }
-  :host(.vertical[aria-selected='true']) {
-    z-index: 2;
-  }
-  :host(.vertical:hover) {
-    /* color: var(--neutral-foreground-rest); */
-  }
-  :host(.vertical:active) {
-    /* color: var(--neutral-foreground-rest); */
   }
 `;
