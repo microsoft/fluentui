@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Adds SliderLabel spec and folder",
   "packageName": "@fluentui/web-components",
   "email": "ryan@ryanmerrill.net",
