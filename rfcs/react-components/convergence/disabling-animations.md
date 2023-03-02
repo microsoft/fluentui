@@ -106,7 +106,7 @@ const Example = (props: ButtonProps) => {
 
 ### Global CSS override in apps
 
-We also recommend users to use the [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion),
+We recommend users to use the [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion),
 since that gives cross platform support without addtional performance costs
 of specific selectors or javacsript runtime. Additionally, not _**not all animations need to be disabled**_, and limited
 animations like colour change are still acceptable for users that need reduced motion.
