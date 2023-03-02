@@ -34,6 +34,7 @@ import {
   getMinMaxOfYAxis,
   getTypeOfAxis,
   getNextColor,
+  getColorFromToken,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -318,6 +319,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           let color: string;
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else if (!item.color.startsWith('#')) {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
           } else {
             color = item.color;
           }
@@ -410,9 +413,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
           const title = colorFillBar.legend;
+          let color: string;
+          if (!colorFillBar.color.startsWith('#')) {
+            color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
+          } else {
+            color = colorFillBar.color;
+          }
           const legend: ILegend = {
             title,
-            color: colorFillBar.color,
+            color,
             action: () => {
               if (isLegendMultiSelectEnabled) {
                 this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
@@ -912,10 +921,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
       const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+      let color: string;
+      if (!colorFillBar.color.startsWith('#')) {
+        color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
+      } else {
+        color = colorFillBar.color;
+      }
 
       if (colorFillBar.applyPattern) {
         // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
-        colorFillBars.push(this._getStripePattern(colorFillBar.color, i));
+        colorFillBars.push(this._getStripePattern(color, i));
       }
 
       for (let j = 0; j < colorFillBar.data.length; j++) {
@@ -927,7 +942,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             : 0.1;
         colorFillBars.push(
           <rect
-            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : colorFillBar.color}
+            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : color}
             fillOpacity={opacity}
             x={this._xAxisScale(startX)}
             y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}

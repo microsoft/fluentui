@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  IChartProps,
-  ILineChartPoints,
-  ILineChartProps,
-  LineChart,
-  LightQualitativePalette,
-} from '@fluentui/react-charting';
+import { IChartProps, ILineChartPoints, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface ILineChartMultipleExampleState {
@@ -273,7 +267,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
     const colorFillBarData = [
       {
         legend: 'Time range 1',
-        color: LightQualitativePalette.dataVizSlot19,
+        color: DataVizPalette.color19,
         data: [
           {
             startX: new Date('2018/01/06'),
@@ -283,7 +277,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         legend: 'Time range 2',
-        color: LightQualitativePalette.dataVizSlot20,
+        color: DataVizPalette.color20,
         data: [
           {
             startX: new Date('2018/01/18'),

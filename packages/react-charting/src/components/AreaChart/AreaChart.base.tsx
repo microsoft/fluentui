@@ -26,6 +26,7 @@ import {
   getTypeOfAxis,
   tooltipOfXAxislabels,
   getNextColor,
+  getColorFromToken,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -724,6 +725,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           let color: string;
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else if (!item.color.startsWith('#')) {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
           } else {
             color = item.color;
           }
