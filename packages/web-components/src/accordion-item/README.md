@@ -1,4 +1,4 @@
-## Class: `AccordionItem`
+# Accordion Item
 
 As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 
@@ -15,6 +15,16 @@ As defined by the [W3C](https://w3c.github.io/aria-practices/#accordion):
 ## **Engineering Spec**
 
 Fluent WC3 Accordion Item extends from the [FAST Accordion Item](https://explore.fast.design/components/fast-accordion-item) and is intended to be as close to the Fluent UI React 9 Accordion implementation as possible. However, due to the nature of web components there will not be 100% parity between the two.
+
+<br />
+
+## Class: `AccordionItem`
+
+<br />
+
+### **Component Name**
+
+`AccordionItem`
 
 <br />
 
@@ -121,12 +131,11 @@ Fluent WC3 Accordion Item extends from the [FAST Accordion Item](https://explore
 
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|---------------------------|---------------------------|------------------------------------------------------------------------------------------|
-| `defaultOpenItems: number`| `expand: boolean` | _FuiR9_ `defaultOpenItems` is a number property set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded.<hr /> `expand` is a boolean property set directly on the `AccordionItem` intended to be expanded.
-| `multiple: boolean` | `expandmode: "single"` &#124; `"multiple"`| |
-| `size` | `size` |
+| ------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------- |
+| `defaultOpenItems: number`| `expand: boolean` | `defaultOpenItems` is a number property set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded.<hr /> `expand` is a boolean property set directly on the `AccordionItem` intended to be expanded. |
+| `size` | `size` | |
 | `as: 'h1'` &#124; `'h2'` &#124; `'h3'` &#124; `'h4'` &#124; `'h5'` &#124; `'h6'` | `headinglevel: 1` &#124; `2` &#124; `3` &#124; `4` &#124; `5` &#124; `6` | `as` property sets a wrapper around the `AccordionItem` header with the corresponding header tag ( `h1`, `h2`, etc. ) <hr /> `headinglevel` sets the `aria-level` attribute to the corresponding heading level.
 | `disabled` | `disabled` |
-| `expandIconPosition` | `expandIconPosition` |
+| `expandIconPosition` | `expand-icon-position` |
 | `expandIcon` | `named slot: collapsed-icon` + `expanded-icon` | `expandIcon` is a prop that is passed a ternary to render the appropriate icon. <hr /> `collapsed-icon` and `expanded-icon` are named slots to supply the appropriate icons.
 | `icon` | `named slot: start` + `end` | `icon` is a property set on the `AccordionHeader` through which an icon is passed <hr /> `start` and `end` are named slots through which to supply a presentation icon.

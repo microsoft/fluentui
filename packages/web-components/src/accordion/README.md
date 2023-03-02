@@ -22,6 +22,12 @@ Fluent WC3 Accordion extends from the [FAST Accordion](https://explore.fast.desi
 
 <br />
 
+### **Component Name**
+
+`Accordion`
+
+<br />
+
 ### **Variables**
 
 | Name                  | Description               | Type                                   |
@@ -97,4 +103,6 @@ Fluent WC3 Accordion extends from the [FAST Accordion](https://explore.fast.desi
 
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|---------------------------|---------------------------|------------------------------------------------------------------------------------------|
+| ------------------------- | ------------------------------------------ |---------------------------------------------------------- |
+| `defaultOpenItems: number`| `expand: boolean` | `defaultOpenItems` is a number property set on the `Accordion` corresponding to the intended `AccordionItem` to be expanded.<hr /> `expand` is a boolean property set directly on the `AccordionItem` intended to be expanded |
+| `multiple: boolean` | `expand-mode: "single" \| "multiple"` | |
