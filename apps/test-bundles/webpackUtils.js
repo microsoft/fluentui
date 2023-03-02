@@ -1,7 +1,7 @@
 // @ts-check
 const path = require('path');
 const fs = require('fs-extra');
-const resources = require('@fluentui/scripts/webpack/webpack-resources');
+const { resources } = require('@fluentui/scripts-webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -159,7 +159,7 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
     const entryName = itemName.replace(/.js$/, '');
     const entryPath = path.resolve(path.join(packagePath, itemName));
     entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = {
-      entryPath: entryPath,
+      entryPath,
       includeStats,
     };
   });

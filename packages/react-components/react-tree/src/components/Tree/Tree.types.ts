@@ -1,20 +1,31 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { BaseTreeItemElement } from '../BaseTreeItem/BaseTreeItem.types';
 import { TreeContextValue } from '../../contexts/treeContext';
 
 export type TreeSlots = {
   root: Slot<'div'>;
 };
 
-export type TreeOpenChangeData = { open: boolean; id: string } & (
+export type TreeOpenChangeData = { open: boolean } & (
   | {
-      event: React.MouseEvent<BaseTreeItemElement>;
+      event: React.MouseEvent<HTMLElement>;
+      type: 'expandIconClick';
+    }
+  | {
+      event: React.MouseEvent<HTMLElement>;
       type: 'click';
     }
   | {
-      event: React.KeyboardEvent<BaseTreeItemElement>;
-      type: 'arrowRight' | 'arrowLeft';
+      event: React.KeyboardEvent<HTMLElement>;
+      type: 'enter';
+    }
+  | {
+      event: React.KeyboardEvent<HTMLElement>;
+      type: 'arrowRight';
+    }
+  | {
+      event: React.KeyboardEvent<HTMLElement>;
+      type: 'arrowLeft';
     }
 );
 
@@ -24,17 +35,34 @@ export type TreeContextValues = {
   tree: TreeContextValue;
 };
 
+export type TreeItemId = string | number;
+
 export type TreeProps = ComponentProps<TreeSlots> & {
   /**
-   * Controls the state of the open subtrees.
-   * These property is ignored for subtrees.
+   * A tree item can have various appearances:
+   * - 'subtle' (default): The default tree item styles.
+   * - 'subtle-alpha': Minimizes emphasis on hovered or focused states.
+   * - 'transparent': Removes background color.
+   * @default 'subtle'
    */
-  openSubtrees?: string | string[];
+  appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
   /**
-   * Default value for the uncontrolled state of open subtrees.
+   * Size of the tree item.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium';
+  /**
+   * This refers to a list of ids of opened tree items.
+   * Controls the state of the open tree items.
    * These property is ignored for subtrees.
    */
-  defaultOpenSubtrees?: string | string[];
+  openItems?: Iterable<TreeItemId>;
+  /**
+   * This refers to a list of ids of opened tree items.
+   * Default value for the uncontrolled state of open tree items.
+   * These property is ignored for subtrees.
+   */
+  defaultOpenItems?: Iterable<TreeItemId>;
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
@@ -50,7 +78,4 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> &
-  TreeContextValue & {
-    open: boolean;
-  };
+export type TreeState = ComponentState<TreeSlots> & TreeContextValue;

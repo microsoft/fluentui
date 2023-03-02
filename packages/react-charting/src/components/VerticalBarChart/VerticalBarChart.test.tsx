@@ -98,6 +98,12 @@ describe('VerticalBarChart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should not render bar labels', () => {
+    const component = renderer.create(<VerticalBarChart data={chartPoints} hideLabels={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('VerticalBarChart - basic props', () => {

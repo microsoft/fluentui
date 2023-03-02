@@ -1,7 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { StoryWright, Steps } from 'storywright';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Menu } from '@fluentui/react-northstar';
 import MenuExamplePositioningUpdateShorthand from '../../examples/components/Menu/Visual/MenuExamplePositioningUpdate.shorthand';

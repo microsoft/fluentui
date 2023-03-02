@@ -14,7 +14,6 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { CollapseAllVisibility } from '../../GroupedList';
 import { classNamesFunction } from '../../Utilities';
 import type { IDisposable } from '../../Utilities';
 import type { IColumn } from './DetailsList.types';
@@ -190,7 +189,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onRenderField,
       getCellValueKey,
       selectionMode,
-      rowWidth = 0,
       checkboxVisibility,
       getRowAriaLabel,
       getRowAriaDescription,
@@ -331,7 +329,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         data-automationid="DetailsRow"
-        style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >
@@ -363,7 +360,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         <GroupSpacer
           indentWidth={indentWidth}
           role="gridcell"
-          count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
+          count={groupNestingDepth! === 0 ? -1 : groupNestingDepth!}
         />
 
         {item && rowFields}
@@ -385,13 +382,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             />
           </span>
         )}
-
-        <span
-          role="checkbox"
-          className={this._classNames.checkCover}
-          aria-checked={isSelected}
-          data-selection-toggle={true}
-        />
       </FocusZone>
     );
   }

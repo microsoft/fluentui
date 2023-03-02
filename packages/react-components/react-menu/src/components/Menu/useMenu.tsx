@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
+import {
+  usePositioningMouseTarget,
+  usePositioning,
+  resolvePositioningShorthand,
+  PositioningShorthandValue,
+} from '@fluentui/react-positioning';
 import {
   useControllableState,
   useId,
@@ -14,7 +19,17 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
-import { Tab } from '@fluentui/keyboard-keys';
+
+// If it's not possible to position the submenu in smaller viewports, try
+// and fallback to this order of positions
+const submenuFallbackPositions: PositioningShorthandValue[] = [
+  'after',
+  'after-bottom',
+  'before-top',
+  'before',
+  'before-bottom',
+  'above',
+];
 
 /**
  * Create the state required to render Menu.
@@ -44,6 +59,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
+    fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
     ...resolvePositioningShorthand(props.positioning),
   } as const;
 
@@ -159,8 +175,6 @@ const useMenuOpenState = (
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
   const shouldHandleCloseRef = React.useRef(false);
-  const shouldHandleTabRef = React.useRef(false);
-  const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
@@ -180,13 +194,6 @@ const useMenuOpenState = (
     if (!data.open) {
       state.setContextTarget(undefined);
       shouldHandleCloseRef.current = true;
-    }
-
-    if (e.type === 'keydown') {
-      if ((e as React.KeyboardEvent<HTMLElement>).key === Tab) {
-        shouldHandleTabRef.current = true;
-        pressedShiftRef.current = (e as React.KeyboardEvent<HTMLElement>).shiftKey;
-      }
     }
 
     if (data.bubble) {
@@ -261,39 +268,29 @@ const useMenuOpenState = (
   }, []);
 
   // Manage focus for open state
-  const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
+  const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
-
-  const focusAfterMenuTrigger = React.useCallback(() => {
-    const nextFocusable = findNextFocusable(state.triggerRef.current);
-    nextFocusable?.focus();
-  }, [findNextFocusable, state.triggerRef]);
-
-  const focusBeforeMenuTrigger = React.useCallback(() => {
-    const prevFocusable = findPrevFocusable(state.triggerRef.current);
-    prevFocusable?.focus();
-  }, [findPrevFocusable, state.triggerRef]);
 
   React.useEffect(() => {
     if (open) {
       focusFirst();
     } else {
       if (shouldHandleCloseRef.current) {
-        if (shouldHandleTabRef.current && !state.isSubmenu) {
-          pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
-        } else {
-          state.triggerRef.current?.focus();
-        }
+        // We know that React effects are sync so we focus the trigger here
+        // after any event handler (event handlers will update state and re-render).
+        // Since the browser only performs the default behaviour for the Tab key once
+        // keyboard events have fully bubbled up the window, the browser will move
+        // focus to the next tabbable element before/after the trigger if needed.
+        // If the Tab key was not pressed, focus will remain on the trigger as expected.
+        state.triggerRef.current?.focus();
       }
     }
 
     shouldHandleCloseRef.current = false;
-    shouldHandleTabRef.current = false;
-    pressedShiftRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst]);
 
   return [open, setOpen] as const;
 };

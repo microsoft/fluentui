@@ -69,9 +69,7 @@ export interface IAreaChartState extends IBasestate {
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
-  private _createSet: (
-    data: IChartProps,
-  ) => {
+  private _createSet: (data: IChartProps) => {
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -476,6 +474,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           this._onLegendClick(singleChartData.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(singleChartData.legend);
         },
         onMouseOutAction: () => {

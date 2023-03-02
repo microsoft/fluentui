@@ -114,7 +114,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
-            backgroundColor: 'Window',
+            backgroundColor: 'transparent',
             zIndex: 0,
             ...getHighContrastNoAdjustStyle(),
           },

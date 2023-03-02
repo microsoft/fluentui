@@ -177,7 +177,7 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
  * @accessibilityIssues
  * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
  */
-export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
+export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
@@ -225,6 +225,9 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
     [items?.length],
   );
 
+  const nextPaddleHidden = items !== undefined && !circular && activeIndex === items.length - 1;
+  const previousPaddleHidden = items !== undefined && !circular && activeIndex === 0;
+
   const unhandledProps = useUnhandledProps(Carousel.handledProps, props);
   const getA11yProps = useAccessibility<CarouselBehaviorProps>(accessibility, {
     debugName: Carousel.displayName,
@@ -249,6 +252,8 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
       },
     },
     mapPropsToBehavior: () => ({
+      paddlePreviousHidden: previousPaddleHidden,
+      paddleNextHidden: nextPaddleHidden,
       navigation,
       ariaLiveOn,
       'aria-roledescription': ariaRoleDescription,
@@ -428,7 +433,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             getA11yProps('paddlePrevious', {
               className: carouselSlotClassNames.paddlePrevious,
               previous: true,
-              hidden: items !== undefined && !circular && activeIndex === 0,
+              hidden: previousPaddleHidden,
               disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) =>
@@ -441,7 +446,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
             getA11yProps('paddleNext', {
               className: carouselSlotClassNames.paddleNext,
               next: true,
-              hidden: items !== undefined && !circular && activeIndex === items.length - 1,
+              hidden: nextPaddleHidden,
               disableClickableNav,
             }),
           overrideProps: (predefinedProps: CarouselPaddleProps) => handlePaddleOverrides(predefinedProps, 'paddleNext'),
@@ -519,7 +524,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;

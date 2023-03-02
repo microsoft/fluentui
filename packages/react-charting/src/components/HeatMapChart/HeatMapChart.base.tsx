@@ -149,13 +149,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     };
   }
   public render(): React.ReactNode {
-    const {
-      data,
-      xAxisDateFormatString,
-      xAxisNumberFormatString,
-      yAxisDateFormatString,
-      yAxisNumberFormatString,
-    } = this.props;
+    const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
+      this.props;
     this._colorScale = this._getColorScale();
     const { dataSet, xAxisPoints, yAxisPoints } = this._createSet(
       data,
@@ -399,6 +394,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._onLegendClick(item.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(item.legend);
         },
         onMouseOutAction: () => {
@@ -414,7 +410,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     const { domainValuesForColorScale, rangeValuesForColorScale } = this.props;
     return d3ScaleLinear()
       .domain(domainValuesForColorScale)
-      .range((rangeValuesForColorScale as unknown) as number[]);
+      .range(rangeValuesForColorScale as unknown as number[]);
   };
 
   private _getXIndex = (value: string | Date | number): string => {

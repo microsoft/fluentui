@@ -7574,11 +7574,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -7766,21 +7761,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           0
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -7876,11 +7856,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -8068,21 +8043,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           1
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -8403,11 +8363,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -8595,21 +8550,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           2
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -8705,11 +8645,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -8897,21 +8832,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           3
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                   <div
@@ -9007,11 +8927,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
-                      style={
-                        Object {
-                          "minWidth": 300,
-                        }
-                      }
                     >
                       <span
                         className="ms-GroupSpacer"
@@ -9199,21 +9114,6 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           4
                         </div>
                       </div>
-                      <span
-                        aria-checked={false}
-                        className=
-
-                            {
-                              bottom: 0px;
-                              display: none;
-                              left: 0px;
-                              position: absolute;
-                              right: 0px;
-                              top: -1px;
-                            }
-                        data-selection-toggle={true}
-                        role="checkbox"
-                      />
                     </div>
                   </div>
                 </div>

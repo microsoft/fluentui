@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Dropdown', () => {
   isConformant({
@@ -66,6 +66,19 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
+  });
+
+  it('adds aria-owns pointing to the popup', () => {
+    const { getByRole, container } = render(
+      <Dropdown open className="root">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const listboxId = getByRole('listbox').id;
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
   });
 
   /* open/close tests */
@@ -404,6 +417,20 @@ describe('Dropdown', () => {
     });
   });
 
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByRole('combobox').textContent).toEqual('Green');
+  });
+
   it('calls onOptionSelect with correct data for multi-select', () => {
     const onOptionSelect = jest.fn();
 
@@ -472,7 +499,22 @@ describe('Dropdown', () => {
     expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
-  it('should not change value on select', () => {
+  it('should update value after selection for multiselect', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen defaultSelectedOptions={['Red']} multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByRole('combobox').textContent).toEqual('Red, Green');
+  });
+
+  it('should not change controlled value on select', () => {
     const { getByRole, getByText } = render(
       <Dropdown value="Red" defaultOpen>
         <Option>Red</Option>

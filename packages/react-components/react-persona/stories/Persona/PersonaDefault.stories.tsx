@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Persona, PersonaProps } from '@fluentui/react-persona';
+import { Persona } from '@fluentui/react-components';
+import type { PersonaProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<PersonaProps>) => {
   return (
@@ -9,7 +10,7 @@ export const Default = (props: Partial<PersonaProps>) => {
       presence={{ status: 'available' }}
       avatar={{
         image: {
-          src: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png',
+          src: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-react-assets/persona-male.png',
         },
       }}
       {...props}

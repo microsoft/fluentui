@@ -71,6 +71,18 @@ describe('DonutChart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should render arc labels', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={false} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render arc labels in percentage format', () => {
+    const component = renderer.create(<DonutChart data={chartPoints} hideLabels={false} showLabelsInPercent={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('DonutChart - basic props', () => {

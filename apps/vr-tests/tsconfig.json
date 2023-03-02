@@ -10,7 +10,7 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "preserveConstEnums": true,
-    "types": ["webpack-env", "@storybook/react", "screener-storybook"]
+    "types": ["webpack-env", "@storybook/react"]
   },
   "include": ["src"]
 }

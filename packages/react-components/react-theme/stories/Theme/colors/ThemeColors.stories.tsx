@@ -12,11 +12,11 @@ import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
 const theme = {
-  light: webLightTheme,
-  dark: webDarkTheme,
+  webLight: webLightTheme,
+  webDark: webDarkTheme,
   teamsLight: teamsLightTheme,
   teamsDark: teamsDarkTheme,
-  highContrast: teamsHighContrastTheme,
+  teamsHighContrast: teamsHighContrastTheme,
 };
 
 const colorPalette = {
@@ -97,7 +97,7 @@ const ColorButton: React.FunctionComponent<
   />
 );
 
-const neutralTokens = (Object.keys(theme.light) as Array<keyof Theme>).filter(tokenName =>
+const neutralTokens = (Object.keys(theme.webLight) as Array<keyof Theme>).filter(tokenName =>
   tokenName.match(/^color(?!Palette).*/),
 );
 
@@ -109,7 +109,7 @@ export const Colors = () => {
   const tokens: Array<keyof Theme> =
     activeColor === 'neutral'
       ? neutralTokens
-      : (Object.keys(theme.light) as Array<keyof Theme>).filter(tokenName =>
+      : (Object.keys(theme.webLight) as Array<keyof Theme>).filter(tokenName =>
           tokenName.startsWith(`colorPalette${activeColor}`),
         );
 
@@ -123,7 +123,7 @@ export const Colors = () => {
           setColor={setColor}
           setPreviewColor={setPreviewColor}
           style={{
-            background: theme.light.colorNeutralForeground1,
+            background: theme.webLight.colorNeutralForeground1,
           }}
         />
         {(Object.keys(colorPalette) as GlobalSharedColors[]).map(colorName => (
@@ -134,7 +134,7 @@ export const Colors = () => {
             setColor={setColor}
             setPreviewColor={setPreviewColor}
             style={{
-              background: theme.light[`colorPalette${colorName}BorderActive` as keyof Theme],
+              background: theme.webLight[`colorPalette${colorName}BorderActive` as keyof Theme],
             }}
           />
         ))}
@@ -164,7 +164,7 @@ export const Colors = () => {
           Teams Dark
         </h3>
         <h3 key="hrHC" style={{ padding: '1em', margin: 0 }}>
-          High Contrast
+          Teams High Contrast
         </h3>
         {tokens.map(name => [
           <div
@@ -173,11 +173,11 @@ export const Colors = () => {
           >
             {name}
           </div>,
-          <ColorRampItem key={`${name}Light`} value={theme.light[name]} />,
-          <ColorRampItem key={`${name}Dark`} value={theme.dark[name]} />,
+          <ColorRampItem key={`${name}Light`} value={theme.webLight[name]} />,
+          <ColorRampItem key={`${name}Dark`} value={theme.webDark[name]} />,
           <ColorRampItem key={`${name}TeamsLight`} value={theme.teamsLight[name]} />,
           <ColorRampItem key={`${name}TeamsDark`} value={theme.teamsDark[name]} />,
-          <ColorRampItem key={`${name}HC`} value={theme.highContrast[name]} />,
+          <ColorRampItem key={`${name}HC`} value={theme.teamsHighContrast[name]} />,
         ])}
       </div>
     </>

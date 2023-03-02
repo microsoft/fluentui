@@ -35,7 +35,7 @@ const api: yargs.CommandModule = {
     buildDefaultFixtures();
 
     const { $0, _, ...rest } = argv;
-    const args = (rest as unknown) as CLIRunOptions;
+    const args = rest as unknown as CLIRunOptions;
     await handler(args);
 
     if (argv.processResults) {

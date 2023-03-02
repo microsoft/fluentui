@@ -1,4 +1,12 @@
-import { Toolbar } from '@fluentui/react-toolbar';
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+  ToolbarGroup,
+  ToolbarRadioButton,
+  ToolbarRadioGroup,
+  ToolbarToggleButton,
+} from '@fluentui/react-components';
 
 import descriptionMd from './ToolbarDescription.md';
 import bestPracticesMd from './ToolbarBestPractices.md';
@@ -19,8 +27,16 @@ export { VerticalButton } from './ToolbarVerticalButton.stories';
 export { FarGroup } from './ToolbarFarGroup.stories';
 
 export default {
-  title: 'Preview Components/Toolbar',
+  title: 'Components/Toolbar',
   component: Toolbar,
+  subcomponents: {
+    ToolbarButton,
+    ToolbarDivider,
+    ToolbarGroup,
+    ToolbarRadioButton,
+    ToolbarRadioGroup,
+    ToolbarToggleButton,
+  },
   parameters: {
     docs: {
       description: {

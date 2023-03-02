@@ -1,8 +1,35 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 09 Nov 2022 07:48:12 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Feb 2023 07:50:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.13.0)
+
+Fri, 03 Feb 2023 07:50:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.8..@fluentui/eslint-plugin_v1.13.0)
+
+### Minor changes
+
+- feat(eslint-plugin): turn off fluentui/max-lenght rule for v9 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by martinhochel@microsoft.com)
+
+## [1.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.8)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.7..@fluentui/eslint-plugin_v1.12.8)
+
+### Patches
+
+- fix: add cypress.config to config files glob to fix linting ([PR #26212](https://github.com/microsoft/fluentui/pull/26212) by martinhochel@microsoft.com)
+
+## [1.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.7)
+
+Tue, 20 Dec 2022 07:53:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.6..@fluentui/eslint-plugin_v1.12.7)
+
+### Patches
+
+- Turn off react/jsx-no-bind rule for cypress component test files. ([PR #26003](https://github.com/microsoft/fluentui/pull/26003) by tristan.watanabe@gmail.com)
 
 ## [1.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.6)
 

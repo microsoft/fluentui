@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.13.4",
+  "version": "8.13.8",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,14 +25,16 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.21",
-    "@fluentui/test-utilities": "^8.2.4"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.23",
+    "@fluentui/test-utilities": "^8.3.0",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/dom-utilities": "^2.2.3",
-    "@fluentui/merge-styles": "^8.5.4",
-    "@fluentui/set-version": "^8.2.3",
+    "@fluentui/dom-utilities": "^2.2.5",
+    "@fluentui/merge-styles": "^8.5.6",
+    "@fluentui/set-version": "^8.2.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

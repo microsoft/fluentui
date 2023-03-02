@@ -1,11 +1,36 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { CheckboxStylesProps } from '../../../../components/Checkbox/Checkbox';
+import { checkboxSlotClassNames, CheckboxStylesProps } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from '../../../teams/components/Checkbox/checkboxVariables';
 
 export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxVariables> = {
-  toggle: () => ({
+  root: ({ props: p }) => ({
+    ':hover': {
+      [`& .${checkboxSlotClassNames.indicator}`]: {
+        ...(p.toggle &&
+          p.checked && {
+            background: 'Highlight',
+            ':before': {
+              color: 'Canvas',
+            },
+          }),
+      },
+    },
+  }),
+
+  toggle: ({ props: p }) => ({
+    ...(p.checked && {
+      backgroundColor: 'Highlight',
+    }),
     ':before': {
+      background: 'Canvas',
       border: '0.1rem solid transparent',
     },
+    ...(p.checked && {
+      background: 'Highlight',
+      borderColor: 'Highlight',
+      ':before': {
+        borderColor: 'Canvas',
+      },
+    }),
   }),
 };

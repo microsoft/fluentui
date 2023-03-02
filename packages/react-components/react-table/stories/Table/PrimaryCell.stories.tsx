@@ -12,8 +12,10 @@ import {
   MoreHorizontalFilled,
   bundleIcon,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
   TableBody,
   TableCell,
   TableRow,
@@ -22,7 +24,7 @@ import {
   TableHeaderCell,
   TableCellActions,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -99,7 +101,11 @@ export const PrimaryCell = () => {
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}

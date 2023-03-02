@@ -1,4 +1,4 @@
-import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monorepo';
+import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
 
 /**
  * Reads package info from the monorepo and generates the scopes for beachball bump and release.
@@ -8,11 +8,7 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  * @returns {string[]} Array of package paths for beachball scope
  */
 export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
-export function getConfig({
-  version,
-}: {
-  version: 'vNext';
-}): {
+export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
   groupConfig: {
     masterPackageName: string;

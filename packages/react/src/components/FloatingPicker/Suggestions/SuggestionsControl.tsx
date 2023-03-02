@@ -61,9 +61,8 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
   protected _searchForMoreButton: IButton;
   protected _selectedElement = React.createRef<HTMLDivElement>();
   protected _suggestions = React.createRef<SuggestionsCore<T>>();
-  private SuggestionsOfProperType: new (
-    props: ISuggestionsCoreProps<T>,
-  ) => SuggestionsCore<T> = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
+  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> =
+    SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);

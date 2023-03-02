@@ -111,8 +111,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         />
         <g>
           <line
-            id="lineID101"
-            key="lineID101"
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -134,8 +134,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
             data-is-focusable={true}
             fill="#ffffff"
-            id="circle001"
-            key="circle001"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -154,8 +154,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
      "
             data-is-focusable={true}
             fill="red"
-            id="circle0011L"
-            key="circle0011L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -364,7 +364,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           }
       data-is-focusable={true}
       hidden={false}
-      id="toolTipcircle001"
+      id="toolTipcircle0_0_1"
       style={
         Object {
           "filter": "opacity(0)",
@@ -630,8 +630,8 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         />
         <g>
           <line
-            id="lineID101"
-            key="lineID101"
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -653,8 +653,8 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
      "
             data-is-focusable={true}
             fill="#ffffff"
-            id="circle001"
-            key="circle001"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -673,8 +673,8 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
      "
             data-is-focusable={true}
             fill="red"
-            id="circle0011L"
-            key="circle0011L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -883,7 +883,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           }
       data-is-focusable={true}
       hidden={false}
-      id="toolTipcircle001"
+      id="toolTipcircle0_0_1"
       style={
         Object {
           "filter": "opacity(0)",
@@ -1047,8 +1047,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         />
         <g>
           <line
-            id="lineID101"
-            key="lineID101"
+            id="lineID1_0_1"
+            key="lineID1_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1070,8 +1070,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
             data-is-focusable={true}
             fill="#ffffff"
-            id="circle001"
-            key="circle001"
+            id="circle0_0_1"
+            key="circle0_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1090,8 +1090,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
      "
             data-is-focusable={true}
             fill="red"
-            id="circle0011L"
-            key="circle0011L"
+            id="circle0_0_11L"
+            key="circle0_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1300,7 +1300,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           }
       data-is-focusable={true}
       hidden={false}
-      id="toolTipcircle001"
+      id="toolTipcircle0_0_1"
       style={
         Object {
           "filter": "opacity(0)",
@@ -1464,7 +1464,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         />
         <g>
           <line
-            id="lineID101"
+            id="lineID1_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1486,7 +1486,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle001"
+            id="circle0_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1505,7 +1505,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle0011L"
+            id="circle0_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1796,7 +1796,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         />
         <g>
           <line
-            id="lineID3301"
+            id="lineID33_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1818,7 +1818,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
      "
             data-is-focusable={true}
             fill="red"
-            id="circle3201"
+            id="circle32_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1837,7 +1837,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
      "
             data-is-focusable={true}
             fill="red"
-            id="circle32011L"
+            id="circle32_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2108,7 +2108,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         />
         <g>
           <line
-            id="lineID1201"
+            id="lineID12_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2130,7 +2130,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle1101"
+            id="circle11_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2149,7 +2149,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle11011L"
+            id="circle11_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2281,7 +2281,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         />
         <g>
           <line
-            id="lineID2201"
+            id="lineID22_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2303,7 +2303,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle2101"
+            id="circle21_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2322,7 +2322,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle21011L"
+            id="circle21_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2613,7 +2613,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         />
         <g>
           <line
-            id="lineID4401"
+            id="lineID44_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2635,7 +2635,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
      "
             data-is-focusable={true}
             fill="red"
-            id="circle4301"
+            id="circle43_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2654,7 +2654,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
      "
             data-is-focusable={true}
             fill="red"
-            id="circle43011L"
+            id="circle43_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2945,7 +2945,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         />
         <g>
           <line
-            id="lineID5501"
+            id="lineID55_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -2967,7 +2967,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle5401"
+            id="circle54_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -2986,7 +2986,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle54011L"
+            id="circle54_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3277,7 +3277,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         />
         <g>
           <line
-            id="lineID6601"
+            id="lineID66_0_1"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -3299,7 +3299,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle6501"
+            id="circle65_0_1"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -3318,7 +3318,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle65011L"
+            id="circle65_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}

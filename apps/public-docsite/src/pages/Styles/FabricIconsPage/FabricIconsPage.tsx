@@ -33,7 +33,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Usage: Font icons',
           editUrl: `${baseUrl}/web/FabricIconsUsage.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
           jumpLinks: [
             { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
@@ -44,7 +45,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Usage: SVG icons',
           editUrl: `${baseUrl}/web/FabricIconsSvgUsage.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsSvgUsage.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsSvgUsage.md') as string,
         },
 
         {
@@ -69,7 +71,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   )
                 }
               </PivotItem>
-              <PivotItem headerText="SVG icons (branded)" itemKey="svg-branded" className={styles.iconGrid}>
+              <PivotItem headerText="SVG icons (products)" itemKey="svg-branded" className={styles.iconGrid}>
                 {selectedItem === 'svg-branded' && (
                   <IconGrid icons={import('@fluentui/react-icons-mdl2-branded')} iconType="react-svg" />
                 )}

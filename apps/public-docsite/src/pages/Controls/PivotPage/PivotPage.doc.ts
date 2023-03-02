@@ -17,7 +17,8 @@ export const PivotPageProps: TFabricPlatformPageProps = {
   },
   ios: {
     title: 'Pivot',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PivotPage/docs/ios/PivotOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PivotPage/docs/ios/PivotOverview.md') as string,
     related,
     componentUrl,
   },

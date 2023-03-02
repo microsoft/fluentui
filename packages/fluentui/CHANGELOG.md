@@ -18,6 +18,45 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.66.3 ]------------------------------- -->
+## [v0.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.3) (2023-02-27)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.2..@fluentui/react-northstar_v0.66.3)
+
+### Fixes
+- `Dropdown`: Do not use aria-owns for search Dropdown on mac. @jurokapsiar ([#26972](https://github.com/microsoft/fluentui/pull/26972))
+
+<!--------------------------------[ v0.66.2 ]------------------------------- -->
+## [v0.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.2) (2023-02-24)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.1..@fluentui/react-northstar_v0.66.2)
+
+### Fixes
+- `Checkbox`: Toggle activation should be more obvious in high contrast mode. @ling1726 ([#26910](https://github.com/microsoft/fluentui/pull/26910))
+
+<!--------------------------------[ v0.66.1 ]------------------------------- -->
+## [v0.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.1) (2023-02-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.0..@fluentui/react-northstar_v0.66.1)
+
+### Fixes
+- `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
+- Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
+- `Dropdown`: Allow clear on Enter/Space press. @jurokapsiar ([#26685](https://github.com/microsoft/fluentui/pull/26685))
+
+<!--------------------------------[ v0.66.0 ]------------------------------- -->
+## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.65.0..@fluentui/react-northstar_v0.66.0)
+
+### BREAKING CHANGES
+- `createFelaRenderer` is now a function @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+
+### Fixes
+- `Carousel` fix for FZ - Adding data-is-visible prop #25973 @kolaps33 ([#25973](https://github.com/microsoft/fluentui/pull/25973))
+- Fix `Dropdown` allowing interaction with selected items when disabled @chpalac ([#25954](https://github.com/microsoft/fluentui/pull/25954))
+- Fix `Button` styles for `disabledFocusable` when `text` @chpalac ([#26012](https://github.com/microsoft/fluentui/pull/26012))
+
+### Features
+- `nonce` can be configured for Fela renderer @layershifter ([#25992](https://github.com/microsoft/fluentui/pull/25992))
+- Unstyled prop for `Tree`, `TreeItem` and `TreeTitle` @jurokapsiar ([#25886](https://github.com/microsoft/fluentui/pull/25886))
+
 <!--------------------------------[ v0.65.0 ]------------------------------- -->
 ## [v0.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.65.0) (2022-10-31)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.64.0..@fluentui/react-northstar_v0.65.0)
