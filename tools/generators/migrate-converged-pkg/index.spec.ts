@@ -2,14 +2,13 @@ import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as chalk from 'chalk';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
   readJson,
   stripIndents,
   addProjectConfiguration,
-  readWorkspaceConfiguration,
   updateJson,
   logger,
   updateProjectConfiguration,
@@ -17,9 +16,9 @@ import {
   names,
   visitNotIgnoredFiles,
   writeJson,
-  WorkspaceConfiguration,
-  joinPathFragments,
   ProjectConfiguration,
+  readNxJson,
+  NxJsonConfiguration,
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -60,7 +59,7 @@ describe('migrate-converged-pkg generator', () => {
     jest.spyOn(console, 'info').mockImplementation(noop);
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
     tree = setupCodeowners(tree, { content: `` });
     tree.write(
       'jest.config.js',
@@ -118,7 +117,7 @@ describe('migrate-converged-pkg generator', () => {
 
       it(`should throw error if provided name doesn't match existing package`, async () => {
         await expect(generator(tree, { name: '@proj/non-existent-lib' })).rejects.toMatchInlineSnapshot(
-          `[Error: Cannot find configuration for '@proj/non-existent-lib' in /workspace.json.]`,
+          `[Error: Cannot find configuration for '@proj/non-existent-lib']`,
         );
       });
 
@@ -390,7 +389,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should not add 3rd party packages that use same scope as our repo `, async () => {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const workspaceConfig = readNxJson(tree) ?? {};
       const normalizedPkgName = getNormalizedPkgName({ pkgName: options.name, workspaceConfig });
       const thirdPartyPackageName = '@proj/jango-fet';
 
@@ -501,7 +500,7 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`storybook updates`, () => {
     function setup(config: Partial<{ createDummyStories: boolean }> = {}) {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const workspaceConfig = readNxJson(tree) ?? {};
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
@@ -1196,7 +1195,7 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`nx workspace updates`, () => {
-    it(`should set project 'sourceRoot' in workspace.json`, async () => {
+    it(`should set project 'sourceRoot' in project.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(undefined);
@@ -1208,7 +1207,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
     });
 
-    it(`should set project 'implicitDependencies' in workspace.json`, async () => {
+    it(`should set project 'implicitDependencies' in project.json`, async () => {
       let projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.implicitDependencies).toBe(undefined);
@@ -1474,9 +1473,9 @@ describe('migrate-converged-pkg generator', () => {
 // ==== helpers ====
 
 function getScopedPkgName(tree: Tree, pkgName: string) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = readNxJson(tree);
 
-  return `@${workspaceConfig.npmScope}/${pkgName}`;
+  return `@${workspaceConfig?.npmScope}/${pkgName}`;
 }
 
 function setupDummyPackage(
@@ -1490,13 +1489,13 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = readNxJson(tree) ?? {};
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
       [`@griffel/react`]: '1.0.0',
-      [`@${workspaceConfig.npmScope}/react-theme`]: '^9.0.0-alpha.13',
-      [`@${workspaceConfig.npmScope}/react-utilities`]: '^9.0.0-alpha.25',
+      [`@${workspaceConfig?.npmScope}/react-theme`]: '^9.0.0-alpha.13',
+      [`@${workspaceConfig?.npmScope}/react-utilities`]: '^9.0.0-alpha.25',
       tslib: '^2.1.0',
       someThirdPartyDep: '^11.1.2',
     },
@@ -1667,6 +1666,6 @@ function append(tree: Tree, filePath: string, content: string) {
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
+function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
 }

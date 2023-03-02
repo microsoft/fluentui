@@ -55,8 +55,8 @@
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build
-/workspace.json @microsoft/fluentui-react-build
 /migrations.json @microsoft/fluentui-react-build
+
 
 #### Meta and License stuff
 /LICENSE @microsoft/fluentui-react-build @justSlone @jurokapsiar @tudorpopams
@@ -293,3 +293,4 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/api-extractor.json @microsoft/fluentui-react-build
 **/api-extractor.unstable.json @microsoft/fluentui-react-build
 **/.swcrc @microsoft/fluentui-react-build
+**/project.json @microsoft/fluentui-react-build

@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/tokens",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/tokens/src",
+  "tags": ["vNext", "platform:web"]
+}

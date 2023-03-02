@@ -5,15 +5,19 @@ import * as os from 'os';
 import * as path from 'path';
 
 import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
-import { WorkspaceJsonConfiguration, names } from '@nrwl/devkit';
+import { Tree, names, readProjectConfiguration } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import { Actions } from 'node-plop';
+import { FsTree } from 'nx/src/generators/tree';
 import { AddManyActionConfig, NodePlopAPI } from 'plop';
 
 //#endregion
 
 //#region Globals
+const root = findGitRoot();
+const tree: Tree = new FsTree(root, false);
+
 const convergedComponentPackages = Object.entries(getAllPackageInfo())
   .filter(
     ([pkgName, info]) =>
@@ -23,8 +27,6 @@ const convergedComponentPackages = Object.entries(getAllPackageInfo())
       !!info.packageJson.dependencies?.['@fluentui/react-utilities'],
   )
   .map(([packageName]) => packageName);
-
-const root = findGitRoot();
 
 interface Answers {
   packageNpmName: string;
@@ -69,9 +71,9 @@ module.exports = (plop: NodePlopAPI) => {
 
     actions: (answers: Answers): Actions => {
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
-      const packageMetadata = getProjectMetadata({ root, name: answers.packageNpmName });
+      const packageMetadata = getProjectMetadata({ name: answers.packageNpmName });
       if (!packageMetadata.sourceRoot) {
-        throw new Error(`${answers.packageNpmName} has is missing sourceRoot path in workspace.json`);
+        throw new Error(`${answers.packageNpmName} has is missing sourceRoot path in project.json`);
       }
 
       const packageName = answers.packageNpmName.replace('@fluentui/', '');
@@ -172,11 +174,6 @@ const appendToPackageIndex = (data: Data): string => {
 
 //#endregion
 
-function getProjectMetadata(options: { root: string; name: string }) {
-  // eslint-disable-next-line deprecation/deprecation
-  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
-    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
-  );
-
-  return nxWorkspace.projects[options.name];
+function getProjectMetadata(options: { name: string }) {
+  return readProjectConfiguration(tree, options.name);
 }

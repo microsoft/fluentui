@@ -2,12 +2,13 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 
 import { PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
-import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
+import { Tree, addProjectConfiguration, readProjectConfiguration } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
 import _ from 'lodash';
 import { Actions } from 'node-plop';
+import { FsTree } from 'nx/src/generators/tree';
 import { AddManyActionConfig, NodePlopAPI } from 'plop';
 
 const root = findGitRoot();
@@ -20,6 +21,8 @@ const convergedReferencePackages = {
   react: ['@fluentui/react-provider'],
   node: ['@fluentui/react-conformance-griffel'],
 };
+
+const tree: Tree = new FsTree(root, false);
 
 interface Answers {
   /** Package name without scope */
@@ -136,7 +139,7 @@ module.exports = (plop: NodePlopAPI) => {
         },
         // update nx workspace
         () => {
-          updateNxWorkspace(answers, { root, projectName: data.packageNpmName, projectRoot: destination });
+          updateNxProject(answers, { root, projectName: data.packageNpmName, projectRoot: destination });
           return chalk.blue(`nx workspace updated`);
         },
         // run migrations if it's a converged package
@@ -200,7 +203,7 @@ function replaceVersionsFromReference(
   // Read the package.json files of the given reference packages and combine into one object.
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
   const packageJsons = referencePackages.map(pkgName => {
-    const metadata = getProjectMetadata({ root, name: pkgName });
+    const metadata = getProjectMetadata({ name: pkgName });
 
     return fs.readJSONSync(path.join(metadata.root, 'package.json'));
   });
@@ -278,37 +281,14 @@ function updateTsconfig(tsconfigContents: string, hasTests: boolean | undefined)
   return jju.update(tsconfigContents, tsconfig, { mode: 'cjson', indent: 2 });
 }
 
-function updateNxWorkspace(_answers: Answers, config: { root: string; projectName: string; projectRoot: string }) {
-  const paths = {
-    workspace: `${config.root}/workspace.json`,
-    config: `${config.root}/nx.json`,
-  };
-
-  const templates = {
-    workspace: {
-      [config.projectName]: {
-        root: config.projectRoot,
-        projectType: 'library',
-        implicitDependencies: [],
-      },
-    },
-  };
-
-  const nxWorkspaceContent = fs.readFileSync(paths.workspace, 'utf-8');
-  // eslint-disable-next-line deprecation/deprecation
-  const nxWorkspace: WorkspaceJsonConfiguration = jju.parse(nxWorkspaceContent);
-  Object.assign(nxWorkspace.projects, templates.workspace);
-
-  const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
-
-  fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
+function updateNxProject(_answers: Answers, config: { root: string; projectName: string; projectRoot: string }) {
+  addProjectConfiguration(tree, config.projectName, {
+    root: config.projectRoot,
+    projectType: 'library',
+    implicitDependencies: [],
+  });
 }
 
-function getProjectMetadata(options: { root: string; name: string }) {
-  // eslint-disable-next-line deprecation/deprecation
-  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
-    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
-  );
-
-  return nxWorkspace.projects[options.name];
+function getProjectMetadata(options: { name: string }) {
+  return readProjectConfiguration(tree, options.name);
 }

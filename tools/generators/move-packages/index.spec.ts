@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
@@ -36,7 +36,7 @@ describe('move-packages generator', () => {
     jest.restoreAllMocks();
     jest.spyOn(console, 'log').mockImplementation(noop);
 
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
 
     setupCodeowners(tree, { content: `packages/test @dummyOwner` });
 
