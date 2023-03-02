@@ -108,7 +108,7 @@ const Example = (props: ButtonProps) => {
 
 We recommend users to use the [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion),
 since that gives cross platform support without addtional performance costs
-of specific selectors or javacsript runtime. Additionally, not _**not all animations need to be disabled**_, and limited
+of specific selectors or JavaScript runtime. Additionally, not _**not all animations need to be disabled**_, and limited
 animations like colour change are still acceptable for users that need reduced motion.
 
 As an escape hatch, applications can add a CSS rule with `!important` property which will override all the animations and transitions on the page. This can
