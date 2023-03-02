@@ -85,10 +85,10 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       direction = -1;
     } else if (ev.key === ArrowDown) {
       targetDate = addWeeks(date, 1);
-    } else if (getRTLSafeKey(ArrowLeft, dir)) {
+    } else if (ev.key === getRTLSafeKey(ArrowLeft, dir)) {
       targetDate = addDays(date, -1);
       direction = -1;
-    } else if (getRTLSafeKey(ArrowRight, dir)) {
+    } else if (ev.key === getRTLSafeKey(ArrowRight, dir)) {
       targetDate = addDays(date, 1);
     }
 
@@ -232,6 +232,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
   }
 
   const cornersDateAndPositionStyles = useCornersDateAndPositionStyles();
+  const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
 
   return (
     <td
@@ -258,10 +259,9 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       onMouseOut={!ariaHidden ? onMouseOutDay : undefined}
       onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
       role="gridcell"
-      tabIndex={isNavigatedDate ? 0 : undefined}
+      tabIndex={isNavigatedDate || isFocusable ? 0 : undefined}
       aria-current={day.isToday ? 'date' : undefined}
       aria-selected={day.isInBounds ? day.isSelected : undefined}
-      data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
     >
       <button
         key={day.key + 'button'}
@@ -276,7 +276,6 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         disabled={!ariaHidden && !day.isInBounds}
         type="button"
         tabIndex={-1}
-        data-is-focusable="false"
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}

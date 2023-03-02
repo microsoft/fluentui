@@ -61,7 +61,6 @@ export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
           aria-label={onHeaderSelect ? headerAriaLabel : undefined}
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
-          data-is-focusable={!!onHeaderSelect}
           tabIndex={onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"

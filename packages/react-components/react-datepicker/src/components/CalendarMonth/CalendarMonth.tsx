@@ -205,7 +205,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           onClick={onHeaderSelect}
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           aria-label={headerAriaLabel}
-          data-is-focusable={!!onUserHeaderSelect || !yearPickerHidden}
           tabIndex={!!onUserHeaderSelect || !yearPickerHidden ? 0 : -1}
           type="button"
         >
@@ -246,51 +245,49 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           </button>
         </div>
       </div>
-      <div {...arrowNavigationAttributes}>
-        <div className={classNames.gridContainer} role="grid" aria-label={yearString}>
-          {rowIndexes.map((rowNum: number) => {
-            const monthsForRow = strings!.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
-            return (
-              <div key={'monthRow_' + rowNum + navigatedDate.getFullYear()} role="row" className={classNames.buttonRow}>
-                {monthsForRow.map((month: string, index: number) => {
-                  const monthIndex = rowNum * MONTHS_PER_ROW + index;
-                  const indexedMonth = setMonth(navigatedDate, monthIndex);
-                  const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
-                  const isSelectedMonth = selectedDate.getMonth() === monthIndex;
-                  const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
-                  const isInBounds =
-                    (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-                    (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
+      <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={yearString}>
+        {rowIndexes.map((rowNum: number) => {
+          const monthsForRow = strings!.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
+          return (
+            <div key={'monthRow_' + rowNum + navigatedDate.getFullYear()} role="row" className={classNames.buttonRow}>
+              {monthsForRow.map((month: string, index: number) => {
+                const monthIndex = rowNum * MONTHS_PER_ROW + index;
+                const indexedMonth = setMonth(navigatedDate, monthIndex);
+                const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
+                const isSelectedMonth = selectedDate.getMonth() === monthIndex;
+                const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
+                const isInBounds =
+                  (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+                  (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
-                  return (
-                    <button
-                      ref={isNavigatedMonth ? navigatedMonthRef : undefined}
-                      role={'gridcell'}
-                      className={mergeClasses(
-                        classNames.itemButton,
-                        highlightCurrentMonth &&
-                          isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today) &&
-                          classNames.current,
-                        highlightSelectedMonth && isSelectedMonth && isSelectedYear && classNames.selected,
-                        !isInBounds && classNames.disabled,
-                      )}
-                      disabled={!allFocusable && !isInBounds}
-                      key={monthIndex}
-                      onClick={isInBounds ? selectMonthCallback(monthIndex) : undefined}
-                      onKeyDown={isInBounds ? onButtonKeyDown(selectMonthCallback(monthIndex)) : undefined}
-                      aria-label={dateFormatter.formatMonth(indexedMonth, strings!)}
-                      aria-selected={isNavigatedMonth}
-                      data-is-focusable={isInBounds ? true : undefined}
-                      type="button"
-                    >
-                      {month}
-                    </button>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
+                return (
+                  <button
+                    ref={isNavigatedMonth ? navigatedMonthRef : undefined}
+                    role={'gridcell'}
+                    className={mergeClasses(
+                      classNames.itemButton,
+                      highlightCurrentMonth &&
+                        isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today) &&
+                        classNames.current,
+                      highlightSelectedMonth && isSelectedMonth && isSelectedYear && classNames.selected,
+                      !isInBounds && classNames.disabled,
+                    )}
+                    disabled={!allFocusable && !isInBounds}
+                    key={monthIndex}
+                    onClick={isInBounds ? selectMonthCallback(monthIndex) : undefined}
+                    onKeyDown={isInBounds ? onButtonKeyDown(selectMonthCallback(monthIndex)) : undefined}
+                    aria-label={dateFormatter.formatMonth(indexedMonth, strings!)}
+                    aria-selected={isNavigatedMonth}
+                    tabIndex={isInBounds ? 0 : -1}
+                    type="button"
+                  >
+                    {month}
+                  </button>
+                );
+              })}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
