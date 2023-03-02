@@ -144,14 +144,11 @@ export const styles = css`
   :host([checkmark]) {
     display: grid;
   }
-  :host([checkmark][role='menuitemcheckbox']) {
-    display: grid;
-  }
   :host([icon]) .content {
     grid-column: 2 / span 1;
   }
-  :host([checkmark][icon][aria-haspopup='menu']) {
-    grid-template-columns: 20px 20px auto 20px 20px;
+  :host([checkmark][role='menuitemcheckbox']) {
+    display: grid;
   }
   :host([checkmark][icon][aria-haspopup='menu']) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
@@ -203,6 +200,18 @@ export const styles = css`
   }
 
   :host([aria-haspopup='menu'][checkmark][icon]) .content {
+    grid-column: 3 / span 1;
+  }
+  on]) .content,
+  :host([aria-haspopup='menu'][checkmark]) .content {
+    grid-column: 2 / span 1;
+  }
+
+  :host([aria-haspopup='menu'][checkmark][icon]) .content {
+    grid-column: 3 / span 1;
+  }
+
+  con]) .content {
     grid-column: 3 / span 1;
   }
 `;
