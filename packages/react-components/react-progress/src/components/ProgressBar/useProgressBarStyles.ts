@@ -46,7 +46,7 @@ const useRootStyles = makeStyles({
     ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
-      backgroundColor: 'CanvasText',
+      ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
     },
   },
   rounded: {
@@ -112,21 +112,12 @@ const useBarStyles = makeStyles({
 
   error: {
     backgroundColor: tokens.colorPaletteRedBackground3,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-    },
   },
   warning: {
     backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-    },
   },
   success: {
     backgroundColor: tokens.colorPaletteGreenBackground3,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-    },
   },
 });
 
