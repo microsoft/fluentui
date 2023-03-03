@@ -1,4 +1,4 @@
-export const clampValue = (value?: number, max: number): number | undefined => {
+export const clampValue = (value: number| undefined, max: number): number | undefined => {
   const internalValue = value !== undefined && value < 0 ? 0 : value !== undefined && value > max ? max : value;
 
   if (process.env.NODE_ENV !== 'production') {
