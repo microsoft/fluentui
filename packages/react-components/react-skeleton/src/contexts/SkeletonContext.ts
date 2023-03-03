@@ -9,6 +9,6 @@ export interface SkeletonContextValue {
 
 const skeletonContextDefaultValue: SkeletonContextValue = {};
 
-export const SkeletonContextProvider = skeletonContext.Provider;
+export const SkeletonContextProvider = SkeletonContext.Provider;
 
-export const useSkeletonContext = () => React.useContext(skeletonContext) ?? skeletonContextDefaultValue;
+export const useSkeletonContext = () => React.useContext(SkeletonContext) ?? skeletonContextDefaultValue;

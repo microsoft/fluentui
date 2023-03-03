@@ -1,12 +1,16 @@
-import { SkeletonContextValue, SkeletonContextValues, SkeletonState } from '../Skeleton';
+import * as React from 'react';
+import { SkeletonContextValues, SkeletonState } from '../Skeleton';
 
 export const useSkeletonContextValues = (state: SkeletonState): SkeletonContextValues => {
   const { animation, appearance } = state;
 
-  const skeletonGroup = React.useMemo(() => ({
-    animation,
-    appearance,
-  }), [animation, appearance]);
+  const skeletonGroup = React.useMemo(
+    () => ({
+      animation,
+      appearance,
+    }),
+    [animation, appearance],
+  );
 
   return { skeletonGroup };
 };

@@ -6,13 +6,6 @@ export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
 };
 
 /**
- * Styles for the root slot
- */
-// const useRootStyles = makeStyles({
-
-// });
-
-/**
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
