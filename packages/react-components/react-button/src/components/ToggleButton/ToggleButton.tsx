@@ -4,6 +4,7 @@ import { useToggleButton_unstable } from './useToggleButton';
 import { useToggleButtonStyles_unstable } from './useToggleButtonStyles';
 import type { ToggleButtonProps } from './ToggleButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToggleButtons are buttons that toggle between two defined states when triggered.
@@ -12,6 +13,9 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps> = React.forwar
   const state = useToggleButton_unstable(props, ref);
 
   useToggleButtonStyles_unstable(state);
+
+  const { useToggleButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderToggleButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

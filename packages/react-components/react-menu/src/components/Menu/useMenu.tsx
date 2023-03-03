@@ -51,6 +51,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     persistOnItemClick = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
+    mountNode = null,
   } = props;
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
@@ -121,6 +122,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     closeOnScroll,
     menuTrigger,
     menuPopover,
+    mountNode,
     triggerRef,
     menuPopoverRef,
     components: {},
