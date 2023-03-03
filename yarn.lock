@@ -23694,6 +23694,9 @@ tabster@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.1.1.tgz#4ba615098772cdfc568cca3d5440118f18b29580"
   integrity sha512-kuO6cxHpDl889ZyY98Fx4Iofiu2U9z7ii2rvPOQgKH5CJMKJ4GddygaEygRETOQV0IDpg4TWJRiDLMAHeS+hDw==
+  dependencies:
+    keyborg "^2.0.0"
+    tslib "^2.3.1"
 
 tachometer@0.7.0:
   version "0.7.0"
