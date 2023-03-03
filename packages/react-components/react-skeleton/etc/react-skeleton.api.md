@@ -34,7 +34,7 @@ export interface SkeletonContextValue {
     appearance?: 'opaque' | 'translucent';
 }
 
-// @public
+// @public (undocumented)
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
 
 // @public (undocumented)
