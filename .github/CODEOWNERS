@@ -116,7 +116,7 @@ apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/flue
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
-apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build @sopranopillow
+apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
 
 #### Packages
 packages/azure-themes @Jacqueline-ms
