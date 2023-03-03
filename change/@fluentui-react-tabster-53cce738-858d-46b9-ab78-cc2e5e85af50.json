@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Bump tabster version",
-  "packageName": "@fluentui/react-tabster",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
