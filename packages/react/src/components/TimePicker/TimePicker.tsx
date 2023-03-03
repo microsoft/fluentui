@@ -11,7 +11,7 @@ import { ComboBox } from '../../ComboBox';
 import { format } from '../../Utilities';
 import type { IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
-import { useControllableValue } from '@fluentui/react-hooks';
+import { useControllableValue, useConst } from '@fluentui/react-hooks';
 
 const REGEX_SHOW_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):([0-5][0-9]):([0-5][0-9])\s([AaPp][Mm]))$/;
 const REGEX_HIDE_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):[0-5][0-9]\s([AaPp][Mm]))$/;
@@ -60,6 +60,8 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
+  const fallbackDateAnchor = useConst(new Date());
+
   const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
   const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
 
@@ -69,10 +71,11 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const internalDateAnchor = React.useMemo(() => dateAnchor || value || defaultValue || new Date(), [
+  const internalDateAnchor = React.useMemo(() => dateAnchor || value || defaultValue || fallbackDateAnchor, [
     dateAnchor,
     defaultValue,
     value,
+    fallbackDateAnchor,
   ]);
 
   React.useEffect(() => {

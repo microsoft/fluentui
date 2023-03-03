@@ -6,7 +6,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
 
 export const TimePickerDateTimePickerExample: React.FC = () => {
-  const currentDate = new Date();
+  const currentDate = new Date('2023-02-01 05:00:00');
   const [datePickerDate, setDatePickerDate] = React.useState<Date>(currentDate);
   const [currentTime, setCurrentTime] = React.useState<Date>();
   const [currentTimeString, setCurrentTimeString] = React.useState<string>('');
