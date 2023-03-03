@@ -11,7 +11,8 @@ const componentUrl =
 
 export const BottomSheetPageProps: TFabricPlatformPageProps = {
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetOverview.md') as string,
     related,
     componentUrl,
   },

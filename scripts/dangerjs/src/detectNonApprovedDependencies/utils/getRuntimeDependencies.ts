@@ -23,10 +23,12 @@ const getRuntimeDependencies = (packageName: string) => {
     throw new Error(error);
   }
 
-  return (output
-    .split('\n')
-    .map(line => line.match(dependencyRegex))
-    .filter(Boolean) as RegExpMatchArray[]).map(match => match[1]);
+  return (
+    output
+      .split('\n')
+      .map(line => line.match(dependencyRegex))
+      .filter(Boolean) as RegExpMatchArray[]
+  ).map(match => match[1]);
 };
 
 export default getRuntimeDependencies;

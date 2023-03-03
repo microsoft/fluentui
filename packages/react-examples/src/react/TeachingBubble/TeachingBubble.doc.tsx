@@ -9,14 +9,22 @@ import { TeachingBubbleSmallHeadlineExample } from './TeachingBubble.SmallHeadli
 import { TeachingBubbleMultiStepExample } from './TeachingBubble.MultiStep.Example';
 import { TeachingBubbleButtonOrderExample } from './TeachingBubble.ButtonOrder.Example';
 
-const TeachingBubbleBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Basic.Example.tsx') as string;
-const TeachingBubbleWideExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Wide.Example.tsx') as string;
-const TeachingBubbleCondensedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Condensed.Example.tsx') as string;
-const TeachingBubbleIllustrationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Illustration.Example.tsx') as string;
-const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.WideIllustration.Example.tsx') as string;
-const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.SmallHeadline.Example.tsx') as string;
-const TeachingBubbleMultiStepExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.MultiStep.Example.tsx') as string;
-const TeachingBubbleButtonOrderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.ButtonOrder.Example.tsx') as string;
+const TeachingBubbleBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleWideExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Wide.Example.tsx') as string;
+const TeachingBubbleCondensedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Condensed.Example.tsx') as string;
+const TeachingBubbleIllustrationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.Illustration.Example.tsx') as string;
+const TeachingBubbleWideIllustrationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.WideIllustration.Example.tsx') as string;
+const TeachingBubbleSmallHeadlineExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.SmallHeadline.Example.tsx') as string;
+const TeachingBubbleMultiStepExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.MultiStep.Example.tsx') as string;
+const TeachingBubbleButtonOrderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TeachingBubble/TeachingBubble.ButtonOrder.Example.tsx') as string;
 
 export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',

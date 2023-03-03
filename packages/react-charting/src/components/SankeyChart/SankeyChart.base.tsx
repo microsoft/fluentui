@@ -511,7 +511,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         color: singleNode.color,
         xCalloutValue: singleNode.name,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        yCalloutValue: (singleNode.actualValue! as any) as string,
+        yCalloutValue: singleNode.actualValue! as any as string,
       });
     }
   }
@@ -558,7 +558,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       color: (singleLink.source as SNode).color,
       xCalloutValue: (singleLink.target as SNode).name,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      yCalloutValue: ((singleLink.source as SNode).actualValue! as any) as string,
+      yCalloutValue: (singleLink.source as SNode).actualValue! as any as string,
       descriptionMessage: 'from ' + (singleLink.source as SNode).name,
     });
   }

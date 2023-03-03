@@ -27,9 +27,9 @@ function _merge<T extends Object>(target: T, source: T, circularReferences: any[
         const value: T[Extract<keyof T, string>] = source[name];
         if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
           const isCircularReference = circularReferences.indexOf(value) > -1;
-          target[name] = (isCircularReference
-            ? value
-            : _merge(target[name] || {}, value, circularReferences)) as T[Extract<keyof T, string>];
+          target[name] = (
+            isCircularReference ? value : _merge(target[name] || {}, value, circularReferences)
+          ) as T[Extract<keyof T, string>];
         } else {
           target[name] = value;
         }

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage } from '@fluentui/react-docsite-components';
 
 import { FileTypeIconBasicExample } from './FileTypeIcon.Basic.Example';
-const FileTypeIconBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/FileTypeIcon/FileTypeIcon.Basic.Example.tsx') as string;
+const FileTypeIconBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/FileTypeIcon/FileTypeIcon.Basic.Example.tsx') as string;
 
 export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

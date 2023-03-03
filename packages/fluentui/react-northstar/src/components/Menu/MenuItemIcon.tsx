@@ -34,7 +34,7 @@ export const menuItemIconClassName = 'ui-menu__itemicon';
 /**
  * A MenuItemIcon allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemIcon = (React.forwardRef<HTMLSpanElement, MenuItemIconProps>((props, ref) => {
+export const MenuItemIcon = React.forwardRef<HTMLSpanElement, MenuItemIconProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItemIcon.displayName, context.telemetry);
   setStart();
@@ -72,7 +72,7 @@ export const MenuItemIcon = (React.forwardRef<HTMLSpanElement, MenuItemIconProps
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIconProps> &
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIconProps> &
   FluentComponentStaticProps<MenuItemIconProps>;
 
 MenuItemIcon.displayName = 'MenuItemIcon';

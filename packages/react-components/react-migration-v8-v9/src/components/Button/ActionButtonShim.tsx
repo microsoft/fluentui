@@ -9,15 +9,14 @@ import { shimButtonProps } from './shimButtonProps';
 /**
  * Shims a v8 ActionButton to render a v9 Button
  */
-export const ActionButtonShim: React.ForwardRefExoticComponent<
-  IButtonProps & React.RefAttributes<HTMLButtonElement>
-> = React.forwardRef((props, _ref) => {
-  const variantProps = {
-    ...props,
-    variantClassName: 'ms-Button--action ms-Button--command',
-  };
+export const ActionButtonShim: React.ForwardRefExoticComponent<IButtonProps & React.RefAttributes<HTMLButtonElement>> =
+  React.forwardRef((props, _ref) => {
+    const variantProps = {
+      ...props,
+      variantClassName: 'ms-Button--action ms-Button--command',
+    };
 
-  const shimProps = shimButtonProps(variantProps);
+    const shimProps = shimButtonProps(variantProps);
 
-  return <Button {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} appearance="transparent" />;
-});
+    return <Button {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} appearance="transparent" />;
+  });

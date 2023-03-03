@@ -4,7 +4,7 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build": "build-storybook -o dist/storybook",
+    "build": "build-storybook --no-manager-cache -o dist/storybook",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",

@@ -9,6 +9,7 @@ import { Pie } from './Pie/index';
 import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
+const LEGEND_CONTAINER_HEIGHT = 40;
 
 export interface IDonutChartState {
   showHover?: boolean;
@@ -29,6 +30,7 @@ export interface IDonutChartState {
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
   public static defaultProps: Partial<IDonutChartProps> = {
     innerRadius: 0,
+    hideLabels: true,
   };
   public _colors: scale.ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
@@ -50,8 +52,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
     let heightState: { _height: number } | undefined;
     if (nextProps.height && nextProps.height !== prevState._height) {
-      const reducedHeight = nextProps.height / 5;
-      heightState = { _height: nextProps.height - reducedHeight };
+      heightState = { _height: nextProps.height - LEGEND_CONTAINER_HEIGHT };
     }
 
     return { ...widthState, ...heightState };
@@ -63,8 +64,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: false,
       value: '',
       legend: '',
-      _width: this.props.width || 160,
-      _height: this.props.height || 160,
+      _width: this.props.width || 200,
+      _height: this.props.height || 200,
       activeLegend: '',
       color: '',
       xCalloutValue: '',
@@ -79,36 +80,31 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
   }
   public componentDidMount(): void {
-    /* 80% Height to the Chart
-       20% Height to the Legends
-    */
-    const reducedHeight = this._rootElem && this._rootElem.offsetHeight / 5;
-    this.setState({
-      _width: (this._rootElem && this._rootElem!.offsetWidth)!,
-      _height: (this._rootElem && this._rootElem!.offsetHeight - reducedHeight!)!,
-    });
+    if (this._rootElem) {
+      this.setState({
+        _width: this._rootElem.offsetWidth,
+        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+      });
+    }
   }
 
   public render(): JSX.Element {
     const { data, hideLegend = false } = this.props;
     const { palette } = this.props.theme!;
 
-    /**
-     * Resize SVG box to prevent overflow of arc labels
-     */
-    const adjustedWidth = Math.min(this._rootElem ? this._rootElem.offsetWidth : Infinity, this.state._width! + 80);
-    const adjustedHeight = this.state._height! + 40;
-
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
-      width: adjustedWidth,
-      height: adjustedHeight,
+      width: this.state._width!,
+      height: this.state._height!,
       color: this.state.color!,
       className: this.props.className!,
     });
 
     const legendBars = this._createLegends(data!, palette);
-    const outerRadius = Math.min(this.state._width!, this.state._height!) / 2;
+    const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
+    const donutMarginVertical = this.props.hideLabels ? 0 : 40;
+    const outerRadius =
+      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return (
@@ -125,8 +121,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
               ref={(node: SVGElement | null) => this._setViewBox(node)}
             >
               <Pie
-                width={adjustedWidth}
-                height={adjustedHeight}
+                width={this.state._width!}
+                height={this.state._height!}
                 outerRadius={outerRadius}
                 innerRadius={this.props.innerRadius!}
                 data={chartData!}

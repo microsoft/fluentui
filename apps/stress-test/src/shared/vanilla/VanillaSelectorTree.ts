@@ -3,24 +3,22 @@ import { SelectorTreeNode } from '../tree/types';
 import { DOMSelectorTreeComponentRenderer } from './types';
 import { renderVanillaTree } from './VanillaTree';
 
-const itemRenderer = (componentRenderer: DOMSelectorTreeComponentRenderer) => (
-  node: SelectorTreeNode,
-  depth: number,
-  index: number,
-): HTMLElement => {
-  const { value } = node;
+const itemRenderer =
+  (componentRenderer: DOMSelectorTreeComponentRenderer) =>
+  (node: SelectorTreeNode, depth: number, index: number): HTMLElement => {
+    const { value } = node;
 
-  const div = document.createElement('div');
-  div.classList.add(...value.classNames.map(cn => cn.substring(1)));
-  value.attributes.forEach(attr => {
-    div.setAttribute(attr.key, attr.value ?? '');
-  });
+    const div = document.createElement('div');
+    div.classList.add(...value.classNames.map(cn => cn.substring(1)));
+    value.attributes.forEach(attr => {
+      div.setAttribute(attr.key, attr.value ?? '');
+    });
 
-  div.style.marginLeft = `${depth * 10}px`;
-  div.appendChild(componentRenderer(node, depth, index));
+    div.style.marginLeft = `${depth * 10}px`;
+    div.appendChild(componentRenderer(node, depth, index));
 
-  return div;
-};
+    return div;
+  };
 
 export const renderVanillaSelectorTree = (
   tree: SelectorTreeNode,

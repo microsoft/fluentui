@@ -67,7 +67,7 @@ describe('Maybe', () => {
   it('wraps undefined in Maybe correctly', () => {
     expect(
       Maybe('foo')
-        .then<string>(v => (undefined as unknown) as string)
+        .then<string>(v => undefined as unknown as string)
         .orElse('defaultValue'),
     ).toEqual('defaultValue');
   });

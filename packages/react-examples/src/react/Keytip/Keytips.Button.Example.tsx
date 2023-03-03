@@ -38,7 +38,10 @@ const buttonProps: IContextualMenuProps = {
   ],
 };
 
-const log = (text: string): (() => void) => () => console.log(text);
+const log =
+  (text: string): (() => void) =>
+  () =>
+    console.log(text);
 
 export const KeytipsButtonExample: React.FunctionComponent = () => {
   const [btnDisabled, { toggle: toggleBtnDisabled }] = useBoolean(false);

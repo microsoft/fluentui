@@ -102,6 +102,9 @@ export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Arg
 // @public (undocumented)
 export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
 
+// @public
+export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
 // @public (undocumented)
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 

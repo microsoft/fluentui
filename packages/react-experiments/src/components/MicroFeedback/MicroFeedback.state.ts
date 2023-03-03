@@ -62,7 +62,7 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
     setIsThanksVisible(true);
 
     // Hide the Thanks message after 2 seconds
-    setTimerHandle((setTimeout(hideThanksMessage, 2000) as unknown) as number);
+    setTimerHandle(setTimeout(hideThanksMessage, 2000) as unknown as number);
   }, [hideThanksMessage]);
 
   const viewProps: IMicroFeedbackViewProps = {

@@ -22,15 +22,8 @@ import { useMergedRefs } from '@fluentui/react-utilities';
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   const baseState = useComboboxBaseState(props);
-  const {
-    activeOption,
-    getIndexOfId,
-    getOptionsMatchingText,
-    open,
-    setActiveOption,
-    setFocusVisible,
-    setOpen,
-  } = baseState;
+  const { activeOption, getIndexOfId, getOptionsMatchingText, open, setActiveOption, setFocusVisible, setOpen } =
+    baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,

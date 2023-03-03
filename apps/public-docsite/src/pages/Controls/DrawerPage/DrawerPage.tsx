@@ -25,7 +25,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/DrawerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/ios/DrawerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/ios/DrawerImplementation.md') as string,
         },
       ];
     case 'android':
@@ -33,7 +34,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/DrawerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/android/DrawerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/android/DrawerImplementation.md') as string,
         },
       ];
   }
