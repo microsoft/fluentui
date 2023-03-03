@@ -26,7 +26,6 @@ export const styles = css`
     color: ${colorNeutralForeground2};
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr;
-    fill: green;
   }
 
   :host([hidden]) {
