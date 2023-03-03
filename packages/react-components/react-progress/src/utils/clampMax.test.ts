@@ -2,7 +2,7 @@ import { clampMax } from './clampMax';
 
 describe('ProgressBar clampMax util', () => {
   const originalConsoleError = console.error;
-  beforeEach(() => {
+  beforeAll(() => {
     console.error = jest.fn();
   });
   afterAll(() => {
@@ -32,9 +32,8 @@ describe('ProgressBar clampMax util', () => {
   });
   it('does not send an error message when max is valid', () => {
     const max = 7;
-    const errorMsg = `The prop 'max' must be greater than 0. Received max: ${max}`;
     clampMax(max);
-    expect(console.error).not.toHaveBeenCalledWith(errorMsg);
+    expect(console.error).not.toHaveBeenCalled();
   });
   it('sets max to the right value when max is valid', () => {
     const max = 7;

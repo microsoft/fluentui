@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 import { clampValue, clampMax } from '../../utils/index';
+import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
 /**
  * Create the state required to render ProgressBar.

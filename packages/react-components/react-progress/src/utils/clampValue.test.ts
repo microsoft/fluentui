@@ -1,7 +1,7 @@
 import { clampValue } from './clampValue';
 describe('ProgressBar and value', () => {
   const originalConsoleError = console.error;
-  beforeEach(() => {
+  beforeAll(() => {
     console.error = jest.fn();
   });
   afterAll(() => {
@@ -23,7 +23,7 @@ describe('ProgressBar and value', () => {
   it('sends an error message when the value is greater than max', () => {
     const value = 23;
     const max = 10;
-    const errorMsg = `The prop 'value' must be less than or equal to 'max'. Received  value: ${value}, max: ${max}`;
+    const errorMsg = `The prop 'value' must be less than or equal to 'max'. Received value: ${value}, max: ${max}`;
     clampValue(value, max);
     expect(console.error).toHaveBeenCalledWith(errorMsg);
   });
@@ -33,11 +33,10 @@ describe('ProgressBar and value', () => {
     const testValue = clampValue(value, max);
     expect(testValue).toBe(10);
   });
-  it('does not send an error message when the value is valid', () => {
+  it('does not send an error message when the value is not undefined and valid', () => {
     const value = 5;
     const max = 10;
-    const errorMsg = `The prop 'value' must be less than or equal to 'max'. Received  value: ${value}, max: ${max}`;
     clampValue(value, max);
-    expect(console.error).not.toHaveBeenCalledWith(errorMsg);
+    expect(console.error).not.toHaveBeenCalled();
   });
 });
