@@ -6,8 +6,6 @@ The `Skeleton` component is a temporary placeholder for UI that is in a loading 
 
 ## Prior Art
 
-### Open UI
-
 | Library     | Component Name | Spec Link                                                                       | Notes                                                                                                                                                                  |
 | ----------- | -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ant Design  | Skeleton       | [Skeleton](https://ant.design/components/skeleton/)                             | Has an `avatar`, `button`, `list`, and `togglebutton`. Has animated and non-animated versions, and shape variants for the component skeletons(rounded or rectangular). |
