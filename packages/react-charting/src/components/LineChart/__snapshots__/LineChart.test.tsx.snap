@@ -1470,7 +1470,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            stroke="#4F6BED"
+            stroke="#637cef"
             strokeLinecap="round"
             strokeWidth={4}
             x1={40}
@@ -1485,7 +1485,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
      A 0.5 0.5 0 1 1 40.5 -0.625
      "
             data-is-focusable={true}
-            fill="#4F6BED"
+            fill="#637cef"
             id="circle76_0_1"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1494,7 +1494,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            stroke="#4F6BED"
+            stroke="#637cef"
             strokeWidth={4}
           />
           <path
@@ -1504,7 +1504,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
      A 0.5 0.5 0 1 1 -19.5 20
      "
             data-is-focusable={true}
-            fill="#4F6BED"
+            fill="#637cef"
             id="circle76_0_11L"
             onBlur={[Function]}
             onClick={[Function]}
@@ -1513,7 +1513,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            stroke="#4F6BED"
+            stroke="#637cef"
             strokeWidth={4}
           />
         </g>
@@ -1641,8 +1641,8 @@ exports[`LineChart snapShot testing Should render with default colors when line 
                       className=
 
                           {
-                            background-color: #4F6BED;
-                            border-color: #4F6BED;
+                            background-color: #637cef;
+                            border-color: #637cef;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1650,7 +1650,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #4F6BED, #4F6BED);
+                            content: linear-gradient(to right, #637cef, #637cef);
                             opacity: ;
                           }
                     />

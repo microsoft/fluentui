@@ -69,9 +69,7 @@ export interface IAreaChartState extends IBasestate {
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
-  private _createSet: (
-    data: ILineChartPoints[],
-  ) => {
+  private _createSet: (data: ILineChartPoints[]) => {
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -725,10 +723,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           let color: string;
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0, this.props.theme?.isInverted);
-          } else if (!item.color.startsWith('#')) {
-            color = getColorFromToken(item.color, this.props.theme?.isInverted);
           } else {
-            color = item.color;
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
           }
 
           return { ...item, color };

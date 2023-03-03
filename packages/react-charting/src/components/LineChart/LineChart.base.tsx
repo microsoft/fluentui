@@ -319,10 +319,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           let color: string;
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0, this.props.theme?.isInverted);
-          } else if (!item.color.startsWith('#')) {
-            color = getColorFromToken(item.color, this.props.theme?.isInverted);
           } else {
-            color = item.color;
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
           }
 
           return {
@@ -413,12 +411,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
           const title = colorFillBar.legend;
-          let color: string;
-          if (!colorFillBar.color.startsWith('#')) {
-            color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
-          } else {
-            color = colorFillBar.color;
-          }
+          const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
           const legend: ILegend = {
             title,
             color,
@@ -921,12 +914,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
       const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
-      let color: string;
-      if (!colorFillBar.color.startsWith('#')) {
-        color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
-      } else {
-        color = colorFillBar.color;
-      }
+      const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
 
       if (colorFillBar.applyPattern) {
         // Using a pattern element because CSS was unable to render diagonal stripes for rect elements

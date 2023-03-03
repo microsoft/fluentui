@@ -1508,12 +1508,12 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           onMouseOut={[Function]}
           onMouseOver={[Function]}
           opacity={1}
-          stroke="#4F6BED"
+          stroke="#637cef"
           strokeWidth={3}
         />
         <path
           d="M40,-0.625L-20,20L-20,-35L40,-35Z"
-          fill="#4F6BED"
+          fill="#637cef"
           fillOpacity={0.7}
           id="0-graph-areaChart_63"
           onMouseMove={[Function]}
@@ -1529,13 +1529,13 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
             cx={40}
             cy={-0.625}
             data-is-focusable={true}
-            fill="#4F6BED"
+            fill="#637cef"
             id="circle65_0"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={0}
-            stroke="#4F6BED"
+            stroke="#637cef"
             strokeWidth={3}
             visibility="hidden"
           />
@@ -1543,13 +1543,13 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="#4F6BED"
+            fill="#637cef"
             id="circle65_1"
             onClick={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             r={0}
-            stroke="#4F6BED"
+            stroke="#637cef"
             strokeWidth={3}
             visibility="hidden"
           />
@@ -1557,7 +1557,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         <line
           id="verticalLine_64"
           opacity={0.5}
-          stroke="#4F6BED"
+          stroke="#637cef"
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="hidden"
@@ -1690,8 +1690,8 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                       className=
 
                           {
-                            background-color: #4F6BED;
-                            border-color: #4F6BED;
+                            background-color: #637cef;
+                            border-color: #637cef;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1699,7 +1699,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #4F6BED, #4F6BED);
+                            content: linear-gradient(to right, #637cef, #637cef);
                             opacity: ;
                           }
                     />
