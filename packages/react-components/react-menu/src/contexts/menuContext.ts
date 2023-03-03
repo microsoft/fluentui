@@ -15,6 +15,7 @@ const menuContextDefaultValue: MenuContextValue = {
   isSubmenu: false,
   triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
   menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
+  mountNode: null,
   triggerId: '',
   openOnContext: false,
   openOnHover: false,
@@ -37,6 +38,7 @@ export type MenuContextValue = Pick<
   | 'menuPopoverRef'
   | 'setOpen'
   | 'isSubmenu'
+  | 'mountNode'
   | 'triggerId'
   | 'hasIcons'
   | 'hasCheckmarks'
