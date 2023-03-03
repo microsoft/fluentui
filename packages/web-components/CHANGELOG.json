@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 03 Mar 2023 04:23:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9ae245574502f15ed372dc37b0374883f45ccdf2",
+            "comment": "adds radio and radio group spec"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Mar 2023 04:20:20 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.9",
       "version": "3.0.0-alpha.9",
