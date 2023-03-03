@@ -317,6 +317,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return lineChartData
       ? lineChartData.map((item: ILineChartPoints, index: number) => {
           let color: string;
+          // isInverted property is applicable to v8 themes only
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0, this.props.theme?.isInverted);
           } else {
@@ -411,6 +412,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
           const title = colorFillBar.legend;
+          // isInverted property is applicable to v8 themes only
           const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
           const legend: ILegend = {
             title,
@@ -914,6 +916,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
       const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+      // isInverted property is applicable to v8 themes only
       const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
 
       if (colorFillBar.applyPattern) {

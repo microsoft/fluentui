@@ -48,6 +48,12 @@ export const DataVizPalette = {
   highSuccess: 'semantic.highSuccess',
 };
 
+/**
+ * Key: Color code.
+ * Value:
+ * Index 0 - Default color / Color for light theme,
+ * Index 1 - Color for dark theme
+ */
 type Palette = { [key: string]: string[] };
 
 const QualitativePalette: Palette = {

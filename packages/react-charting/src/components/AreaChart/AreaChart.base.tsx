@@ -721,6 +721,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return lineChartData
       ? lineChartData.map((item, index) => {
           let color: string;
+          // isInverted property is applicable to v8 themes only
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0, this.props.theme?.isInverted);
           } else {
