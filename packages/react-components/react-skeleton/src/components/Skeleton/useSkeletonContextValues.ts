@@ -3,10 +3,10 @@ import { SkeletonContextValue, SkeletonContextValues, SkeletonState } from '../S
 export const useSkeletonContextValues = (state: SkeletonState): SkeletonContextValues => {
   const { animation, appearance } = state;
 
-  const skeletonGroup: SkeletonContextValue = {
+  const skeletonGroup = React.useMemo(() => ({
     animation,
     appearance,
-  };
+  }), [animation, appearance]);
 
   return { skeletonGroup };
 };
