@@ -8,15 +8,15 @@ export default {
   title: 'Divider',
 } as ComponentMeta<typeof Divider>;
 
-const DividerExampleSizeTeams = getThemeStoryVariant((DividerExampleSize as unknown) as ComponentStory<any>, 'teamsV2');
+const DividerExampleSizeTeams = getThemeStoryVariant(DividerExampleSize as unknown as ComponentStory<any>, 'teamsV2');
 
 const DividerExampleSizeTeamsDark = getThemeStoryVariant(
-  (DividerExampleSize as unknown) as ComponentStory<any>,
+  DividerExampleSize as unknown as ComponentStory<any>,
   'teamsDarkV2',
 );
 
 const DividerExampleSizeTeamsHighContrast = getThemeStoryVariant(
-  (DividerExampleSize as unknown) as ComponentStory<any>,
+  DividerExampleSize as unknown as ComponentStory<any>,
   'teamsHighContrast',
 );
 

@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 31 Jan 2023 19:53:58 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.0)
+
+Wed, 22 Feb 2023 23:06:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.3..@fluentui/react-positioning_v9.5.0)
+
+### Minor changes
+
+- feat: Set overflow on positioned element when `autosize` is applied ([PR #26868](https://github.com/microsoft/fluentui/pull/26868) by lingfangao@hotmail.com)
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.3)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.2..@fluentui/react-positioning_v9.4.3)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.2)
+
+Mon, 13 Feb 2023 23:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.1..@fluentui/react-positioning_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.1)
+
+Mon, 13 Feb 2023 09:35:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.0..@fluentui/react-positioning_v9.4.1)
+
+### Patches
+
+- fix: Coordinates should be rounded to device pixels to prevent blurriness ([PR #26766](https://github.com/microsoft/fluentui/pull/26766) by behowell@microsoft.com)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.0)
+
+Fri, 10 Feb 2023 08:49:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.11..@fluentui/react-positioning_v9.4.0)
+
+### Minor changes
+
+- feat: Add `overflowBoundaryPadding` positioning prop ([PR #26730](https://github.com/microsoft/fluentui/pull/26730) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+
+## [9.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.11)
+
+Tue, 07 Feb 2023 14:13:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.10..@fluentui/react-positioning_v9.3.11)
+
+### Patches
+
+- fix(createPositionManager): computePosition should not apply styles after destruction ([PR #26593](https://github.com/microsoft/fluentui/pull/26593) by lingfangao@hotmail.com)
 
 ## [9.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.10)
 

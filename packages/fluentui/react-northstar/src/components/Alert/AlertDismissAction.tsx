@@ -77,7 +77,7 @@ export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames 
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-export const AlertDismissAction = (React.forwardRef<
+export const AlertDismissAction = React.forwardRef<
   HTMLButtonElement,
   AlertDismissActionProps & { as: React.ReactNode }
 >((props, ref) => {
@@ -176,7 +176,7 @@ export const AlertDismissAction = (React.forwardRef<
   setEnd();
 
   return result;
-}) as unknown) as ForwardRefWithAs<'button', HTMLButtonElement, AlertDismissActionProps> &
+}) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, AlertDismissActionProps> &
   FluentComponentStaticProps<AlertDismissActionProps>;
 
 AlertDismissAction.defaultProps = {

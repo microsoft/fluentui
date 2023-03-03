@@ -52,13 +52,13 @@ const allColors = [
   'yellow',
 ];
 
-let floatingPickerProps = ({
+let floatingPickerProps = {
   onRenderSuggestion: basicSuggestionRenderer,
   onRenderSuggestionsItem: basicSuggestionRenderer,
   isSuggestionsVisible: false,
   suggestions: [],
   targetElement: null,
-} as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+} as unknown as IBaseFloatingSuggestionsProps<ISimple>;
 
 let selectedItemsListProps = {
   onRenderItem: basicItemRenderer,
@@ -80,7 +80,7 @@ describe('UnifiedPicker', () => {
   });
 
   it('renders correctly with selected and suggested items', () => {
-    floatingPickerProps = ({
+    floatingPickerProps = {
       onRenderSuggestion: basicSuggestionRenderer,
       onRenderSuggestionsItem: basicSuggestionRenderer,
       isSuggestionsVisible: false,
@@ -94,7 +94,7 @@ describe('UnifiedPicker', () => {
         },
       ],
       targetElement: null,
-    } as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+    } as unknown as IBaseFloatingSuggestionsProps<ISimple>;
 
     selectedItemsListProps = {
       onRenderItem: basicItemRenderer,
@@ -122,10 +122,10 @@ describe('UnifiedPicker', () => {
   });
 
   it('force resolves to the first suggestion', () => {
-    floatingPickerProps = ({
+    floatingPickerProps = {
       onRenderSuggestion: basicSuggestionRenderer,
       targetElement: null,
-    } as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+    } as unknown as IBaseFloatingSuggestionsProps<ISimple>;
 
     selectedItemsListProps = {
       onRenderItem: basicItemRenderer,
@@ -139,7 +139,7 @@ describe('UnifiedPicker', () => {
           key: item,
           name: item,
         };
-        return ({ item: newItem, isSelected: false } as unknown) as IFloatingSuggestionItem<ISimple>;
+        return { item: newItem, isSelected: false } as unknown as IFloatingSuggestionItem<ISimple>;
       });
     };
     const wrapper = mount(
@@ -155,11 +155,11 @@ describe('UnifiedPicker', () => {
     expect(wrapper.find('.ms-FloatingSuggestions')).toHaveLength(1);
     const inputElement: InputElementWrapper = wrapper.find('input');
     inputElement.simulate('input', { target: { value: 'bl' } });
-    floatingPickerProps = ({
+    floatingPickerProps = {
       onRenderSuggestion: basicSuggestionRenderer,
       targetElement: null,
       suggestions: suggestionList,
-    } as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+    } as unknown as IBaseFloatingSuggestionsProps<ISimple>;
 
     // Due to https://github.com/enzymejs/enzyme/issues/2042, enzyme does not re-render when
     // we call update. Will use the array to validate the right results are returned, till this
@@ -170,7 +170,7 @@ describe('UnifiedPicker', () => {
     expect(suggestionList[1].item.name).toEqual('blue');
   });
   it('Can hide and show picker', () => {
-    floatingPickerProps = ({
+    floatingPickerProps = {
       onRenderSuggestion: basicSuggestionRenderer,
       targetElement: null,
       suggestions: [
@@ -189,7 +189,7 @@ describe('UnifiedPicker', () => {
           showRemoveButton: true,
         },
       ],
-    } as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+    } as unknown as IBaseFloatingSuggestionsProps<ISimple>;
 
     let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
     const _onInputChange = (filterText: string): void => {
@@ -199,7 +199,7 @@ describe('UnifiedPicker', () => {
           key: item,
           name: item,
         };
-        return ({ item: newItem, isSelected: false } as unknown) as IFloatingSuggestionItem<ISimple>;
+        return { item: newItem, isSelected: false } as unknown as IFloatingSuggestionItem<ISimple>;
       });
     };
 

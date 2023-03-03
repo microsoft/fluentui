@@ -10,8 +10,10 @@ import {
 import { PieChartBasicExample } from './PieChart.Basic.Example';
 import { PieChartDynamicExample } from './PieChart.Dynamic.Example';
 
-const PieChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/PieChart.Basic.Example.tsx') as string;
-const PieChartDynamicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/PieChart.Dynamic.Example.tsx') as string;
+const PieChartBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/PieChart.Basic.Example.tsx') as string;
+const PieChartDynamicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/PieChart.Dynamic.Example.tsx') as string;
 
 export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   DataGridBody,
   DataGridRow,
   DataGrid,
@@ -21,7 +22,7 @@ import {
   createTableColumn,
   TableRowId,
   DataGridProps,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -150,9 +151,7 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const SingleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(
-    new Set<TableRowId>([1]),
-  );
+  const [selectedRows, setSelectedRows] = React.useState(new Set<TableRowId>([1]));
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);
   };

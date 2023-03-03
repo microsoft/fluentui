@@ -16,6 +16,6 @@ describe('getSide', () => {
     ['left-start', { side: 'left', alignment: 'start' }],
     ['left-end', { side: 'left', alignment: 'end' }],
   ])('should return %s from %s', (placement, basePlacement) => {
-    expect(parseFloatingUIPlacement((placement as unknown) as FloatingUI.Placement)).toEqual(basePlacement);
+    expect(parseFloatingUIPlacement(placement as unknown as FloatingUI.Placement)).toEqual(basePlacement);
   });
 });

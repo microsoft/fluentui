@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
@@ -11,6 +12,7 @@ export type MenuSlots = {};
  * Extends and drills down Menulist props to simplify API
  */
 export type MenuProps = ComponentProps<MenuSlots> &
+  Pick<PortalProps, 'mountNode'> &
   Pick<
     MenuListProps,
     'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
@@ -94,6 +96,7 @@ export type MenuState = ComponentState<MenuSlots> &
       MenuProps,
       | 'hasCheckmarks'
       | 'hasIcons'
+      | 'mountNode'
       | 'inline'
       | 'checkedValues'
       | 'onCheckedValueChange'

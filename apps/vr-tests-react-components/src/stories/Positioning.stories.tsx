@@ -273,24 +273,112 @@ const VerticalOverflow = () => {
 const HorizontalOverflow = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
-  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary });
   const { dir } = useFluent();
   const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
 
   return (
-    <div className={styles.boundary} style={{ display: 'flex', width: 400, padding: '50px 5px' }} ref={setBoundary}>
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', width: 400, padding: '50px 20px', boxSizing: 'border-box' }}
+      ref={setBoundary}
+    >
       <button ref={startPopper.targetRef}>Target</button>
-      <Box ref={startPopper.containerRef} style={{ width: 50 }}>
+      <Box ref={startPopper.containerRef} style={{ width: 100 }}>
         Shift
       </Box>
 
       <button style={{ [marginDir]: 'auto' }} ref={endPopper.targetRef}>
         Target
       </button>
-      <Box ref={endPopper.containerRef} style={{ width: 50 }}>
+      <Box ref={endPopper.containerRef} style={{ width: 100 }}>
         Shift
       </Box>
+    </div>
+  );
+};
+
+const HorizontalOverflowPadding = () => {
+  const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const { dir } = useFluent();
+  const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', width: 400, padding: '50px 20px', boxSizing: 'border-box' }}
+      ref={setBoundary}
+    >
+      <button ref={startPopper.targetRef}>Target</button>
+      <Box ref={startPopper.containerRef} style={{ width: 100 }}>
+        Shift
+      </Box>
+
+      <button style={{ [marginDir]: 'auto' }} ref={endPopper.targetRef}>
+        Target
+      </button>
+      <Box ref={endPopper.containerRef} style={{ width: 100 }}>
+        Shift
+      </Box>
+    </div>
+  );
+};
+
+const VerticalOverflowPadding = () => {
+  const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+  const topPopper = usePositioning({ position: 'after', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const bottomPopper = usePositioning({ position: 'after', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', flexDirection: 'column', height: 200, padding: '5px 50px' }}
+      ref={setBoundary}
+    >
+      <button ref={topPopper.targetRef}>Target</button>
+      <Box ref={topPopper.containerRef}>Shift</Box>
+
+      <button style={{ marginTop: 'auto' }} ref={bottomPopper.targetRef}>
+        Target
+      </button>
+      <Box ref={bottomPopper.containerRef}>Shift</Box>
+    </div>
+  );
+};
+
+const ExplicitOverflowPadding = () => {
+  const styles = useStyles();
+  const { dir } = useFluent();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+
+  const right = dir === 'ltr' ? 'right' : 'left';
+
+  const first = usePositioning({
+    position: 'above',
+    overflowBoundary: boundary,
+    overflowBoundaryPadding: { start: 20 },
+  });
+  const second = usePositioning({
+    position: 'before',
+    overflowBoundary: boundary,
+    overflowBoundaryPadding: { top: 20 },
+  });
+
+  return (
+    <div className={styles.boundary} style={{ height: 200, width: 400, position: 'relative' }} ref={setBoundary}>
+      <Box ref={first.containerRef}>Shift</Box>
+      <button style={{ position: 'absolute', top: 50 }} ref={first.targetRef}>
+        Target
+      </button>
+      <Box ref={second.containerRef}>Shift</Box>
+      <button style={{ position: 'absolute', [right]: 0 }} ref={second.targetRef}>
+        Target
+      </button>
     </div>
   );
 };
@@ -561,6 +649,63 @@ const VisibilityModifiers = () => {
   );
 };
 
+const FallbackPositioning = () => {
+  const styles = useStyles();
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+
+  // Fluent UI handles window resizing by default.
+  // Custom boundary resizing is not handled by default.
+  const resizeObserver = React.useState(
+    () =>
+      new ResizeObserver(() => {
+        positioningRef.current?.updatePosition();
+      }),
+  )[0];
+
+  React.useEffect(() => {
+    if (boundary) {
+      resizeObserver.observe(boundary);
+      return () => resizeObserver.unobserve(boundary);
+    }
+  }, [boundary, resizeObserver]);
+
+  React.useEffect(() => {
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [resizeObserver]);
+
+  const { containerRef, targetRef } = usePositioning({
+    position: 'after',
+    align: 'start',
+    fallbackPositions: ['below'],
+    flipBoundary: boundary,
+    overflowBoundary: boundary,
+    positioningRef,
+  });
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{
+        width: 200,
+        height: 300,
+        padding: '50px 20px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        resize: 'both',
+      }}
+      ref={setBoundary}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box style={{ width: 120 }} ref={containerRef}>
+        position: after-start
+      </Box>
+    </div>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -583,6 +728,9 @@ storiesOf('Positioning', module)
   .addStory('vertical flip', () => <VerticalFlip />)
   .addStory('horizontal flip', () => <HorizontalFlip />, { includeRtl: true })
   .addStory('vertical overflow', () => <VerticalOverflow />)
+  .addStory('horizontal overflow padding', () => <HorizontalOverflowPadding />, { includeRtl: true })
+  .addStory('vertical overflow padding', () => <VerticalOverflowPadding />)
+  .addStory('explicit overflow padding', () => <ExplicitOverflowPadding />, { includeRtl: true })
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
@@ -605,4 +753,5 @@ storiesOf('Positioning', module)
       <VisibilityModifiers />
     </StoryWright>
   ))
-  .addStory('arrow', () => <Arrow />, { includeRtl: true });
+  .addStory('arrow', () => <Arrow />, { includeRtl: true })
+  .addStory('fallback positioning', () => <FallbackPositioning />);

@@ -1,6 +1,5 @@
 import { Sticky } from './Sticky';
-import type { IRefObject } from '../../Utilities';
-import type { IReactProps } from '../../common/React.types';
+import type { IReactProps, IRefObject } from '../../Utilities';
 
 export interface IStickyProps extends IReactProps<Sticky> {
   /**

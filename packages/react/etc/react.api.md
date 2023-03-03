@@ -227,6 +227,7 @@ import { IPoint } from '@fluentui/utilities';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IPropsWithStyles } from '@fluentui/utilities';
 import { IRawStyle } from '@fluentui/style-utilities';
+import { IReactProps } from '@fluentui/utilities';
 import { IRectangle } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderComponent } from '@fluentui/utilities';
@@ -1447,7 +1448,7 @@ export const DirectionalHint: {
 };
 
 // @public (undocumented)
-export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
+export type DirectionalHint = (typeof DirectionalHint)[keyof typeof DirectionalHint];
 
 export { disableBodyScroll }
 
@@ -2186,8 +2187,6 @@ export { IAnimationStyles }
 
 export { IAnimationVariables }
 
-// Warning: (ae-forgotten-export) The symbol "IReactProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IAnnouncedProps extends IReactProps<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
@@ -3943,6 +3942,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
 // @public (undocumented)
 export interface IComboBoxState {
+    ariaActiveDescendantValue?: string;
     currentPendingValue?: string;
     currentPendingValueValidIndex: number;
     currentPendingValueValidIndexOnHover: number;
@@ -10565,7 +10565,7 @@ export const ScrollbarVisibility: {
 };
 
 // @public (undocumented)
-export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];
+export type ScrollbarVisibility = (typeof ScrollbarVisibility)[keyof typeof ScrollbarVisibility];
 
 // @public (undocumented)
 export const ScrollToMode: {
@@ -10576,7 +10576,7 @@ export const ScrollToMode: {
 };
 
 // @public (undocumented)
-export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 // @public (undocumented)
 export const SearchBox: React_2.FunctionComponent<ISearchBoxProps>;

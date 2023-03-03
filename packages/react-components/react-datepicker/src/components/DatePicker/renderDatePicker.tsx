@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverTrigger } from '@fluentui/react-popover';
 import { getSlots } from '@fluentui/react-utilities';
+import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
+import type { PopoverProps } from '@fluentui/react-popover';
 
 /**
  * Render the final JSX of DatePicker
@@ -9,23 +11,25 @@ import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 export const renderDatePicker_unstable = (state: DatePickerState) => {
   const { slots, slotProps } = getSlots<DatePickerSlots>(state);
 
-  const { calendar, calendarAs: Calendar, popover, popoverSurface } = state;
-
   return (
     <slots.root {...slotProps.root}>
       <slots.wrapper {...slotProps.wrapper}>
-        <Popover {...popover}>
+        <slots.popover {...(slotProps.popover as PopoverProps)}>
           <PopoverTrigger>
             {popoverTriggerChildProps => {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const rootProps: any = { root: popoverTriggerChildProps };
-              return <slots.inputField {...slotProps.inputField} {...rootProps} />;
+              return (
+                <slots.inputField {...slotProps.inputField}>
+                  <slots.input {...slotProps.input} {...rootProps} />
+                </slots.inputField>
+              );
             }}
           </PopoverTrigger>
-          <PopoverSurface {...popoverSurface}>
-            <Calendar {...calendar} />
-          </PopoverSurface>
-        </Popover>
+          <slots.popoverSurface {...slotProps.popoverSurface}>
+            <slots.calendar {...(slotProps.calendar as CalendarProps)} />
+          </slots.popoverSurface>
+        </slots.popover>
       </slots.wrapper>
     </slots.root>
   );

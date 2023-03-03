@@ -71,7 +71,7 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
 /**
  * A FormField represents a Form element containing a label and an input.
  */
-export const FormField = (React.forwardRef<HTMLDivElement, FormFieldProps>((props, ref) => {
+export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
   setStart();
@@ -184,7 +184,7 @@ export const FormField = (React.forwardRef<HTMLDivElement, FormFieldProps>((prop
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, FormFieldProps> & FluentComponentStaticProps<FormFieldProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, FormFieldProps> & FluentComponentStaticProps<FormFieldProps>;
 
 FormField.displayName = 'FormField';
 

@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
 const { isConvergedPackage, getAllPackageInfo, getProjectMetadata } = require('@fluentui/scripts-monorepo');
 const { stripIndents, offsetFromRoot, workspaceRoot, readJsonFile, writeJsonFile } = require('@nrwl/devkit');
 const semver = require('semver');
-const { babelPlugin } = require('storybook-addon-export-to-codesandbox');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
@@ -31,10 +31,6 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
   const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
-
-  if (process.env.NODE_ENV === 'production') {
-    return addonName;
-  }
 
   function getPaths() {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
@@ -82,13 +78,8 @@ function loadWorkspaceAddon(addonName, options) {
     };
   }
 
-  const {
-    relativePathToSource,
-    packageDistPath,
-    packageTempPath,
-    presetSourcePath,
-    presetMockedSourcePath,
-  } = getPaths();
+  const { relativePathToSource, packageDistPath, packageTempPath, presetSourcePath, presetMockedSourcePath } =
+    getPaths();
 
   if (!fs.existsSync(presetSourcePath)) {
     throw new Error(
@@ -156,10 +147,10 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
   };
 
   /**
-   * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
+   * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
    */
   function getCodesandboxBabelOptions() {
-    return Object.values(allPackageInfo).reduce((acc, cur) => {
+    const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
       if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
         const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
@@ -169,7 +160,23 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       }
 
       return acc;
-    }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
+    }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
+
+    return {
+      ...importMappings,
+
+      // TODO: https://github.com/microsoft/fluentui/issues/26691
+
+      '@fluentui/react-data-grid-react-window': {
+        replace: '@fluentui/react-data-grid-react-window',
+      },
+      '@fluentui/react-migration-v8-v9': {
+        replace: '@fluentui/react-migration-v8-v9',
+      },
+      '@fluentui/react-migration-v0-v9': {
+        replace: '@fluentui/react-migration-v0-v9',
+      },
+    };
   }
 }
 
@@ -189,9 +196,11 @@ function getPackageStoriesGlob(options) {
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  const dependencies = /** @type {Record<string,string>} */ (Object.assign(packageJson.dependencies, {
-    [options.packageName]: '*',
-  }));
+  const dependencies = /** @type {Record<string,string>} */ (
+    Object.assign(packageJson.dependencies, {
+      [options.packageName]: '*',
+    })
+  );
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)

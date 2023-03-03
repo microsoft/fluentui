@@ -191,41 +191,43 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
 });
 PersonaCoinBase.displayName = 'PersonaCoinBase';
 
-const getCoinRenderer = (onLoadingStateChange: (loadState: ImageLoadState) => void) => ({
-  coinSize,
-  styles,
-  imageUrl,
-  imageAlt,
-  imageShouldFadeIn,
-  imageShouldStartVisible,
-  theme,
-  showUnknownPersonaCoin,
-  size = DEFAULT_PROPS.size,
-}: IPersonaCoinProps): JSX.Element | null => {
-  // Render the Image component only if an image URL is provided
-  if (!imageUrl) {
-    return null;
-  }
-  const classNames = getClassNames(styles, {
-    theme: theme!,
-    size,
+const getCoinRenderer =
+  (onLoadingStateChange: (loadState: ImageLoadState) => void) =>
+  ({
+    coinSize,
+    styles,
+    imageUrl,
+    imageAlt,
+    imageShouldFadeIn,
+    imageShouldStartVisible,
+    theme,
     showUnknownPersonaCoin,
-  });
-  const dimension = coinSize || sizeToPixels[size];
-  return (
-    <Image
-      className={classNames.image}
-      imageFit={ImageFit.cover}
-      src={imageUrl}
-      width={dimension}
-      height={dimension}
-      alt={imageAlt}
-      shouldFadeIn={imageShouldFadeIn}
-      shouldStartVisible={imageShouldStartVisible}
-      onLoadingStateChange={onLoadingStateChange}
-    />
-  );
-};
+    size = DEFAULT_PROPS.size,
+  }: IPersonaCoinProps): JSX.Element | null => {
+    // Render the Image component only if an image URL is provided
+    if (!imageUrl) {
+      return null;
+    }
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      size,
+      showUnknownPersonaCoin,
+    });
+    const dimension = coinSize || sizeToPixels[size];
+    return (
+      <Image
+        className={classNames.image}
+        imageFit={ImageFit.cover}
+        src={imageUrl}
+        width={dimension}
+        height={dimension}
+        alt={imageAlt}
+        shouldFadeIn={imageShouldFadeIn}
+        shouldStartVisible={imageShouldStartVisible}
+        onLoadingStateChange={onLoadingStateChange}
+      />
+    );
+  };
 
 const renderPersonaCoinInitials = ({
   imageInitials,

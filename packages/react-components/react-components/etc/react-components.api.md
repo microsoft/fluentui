@@ -137,11 +137,50 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
+import { createTableColumn } from '@fluentui/react-table';
+import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { DataGrid } from '@fluentui/react-table';
+import { DataGridBody } from '@fluentui/react-table';
+import { dataGridBodyClassNames } from '@fluentui/react-table';
+import { DataGridBodyProps } from '@fluentui/react-table';
+import { DataGridBodySlots } from '@fluentui/react-table';
+import { DataGridBodyState } from '@fluentui/react-table';
+import { DataGridCell } from '@fluentui/react-table';
+import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellProps } from '@fluentui/react-table';
+import { DataGridCellSlots } from '@fluentui/react-table';
+import { DataGridCellState } from '@fluentui/react-table';
+import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextValue } from '@fluentui/react-table';
+import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridHeader } from '@fluentui/react-table';
+import { DataGridHeaderCell } from '@fluentui/react-table';
+import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
+import { DataGridHeaderCellProps } from '@fluentui/react-table';
+import { DataGridHeaderCellSlots } from '@fluentui/react-table';
+import { DataGridHeaderCellState } from '@fluentui/react-table';
+import { dataGridHeaderClassNames } from '@fluentui/react-table';
+import { DataGridHeaderProps } from '@fluentui/react-table';
+import { DataGridHeaderSlots } from '@fluentui/react-table';
+import { DataGridHeaderState } from '@fluentui/react-table';
+import { DataGridProps } from '@fluentui/react-table';
+import { DataGridRow } from '@fluentui/react-table';
+import { dataGridRowClassNames } from '@fluentui/react-table';
+import { DataGridRowProps } from '@fluentui/react-table';
+import { DataGridRowSlots } from '@fluentui/react-table';
+import { DataGridRowState } from '@fluentui/react-table';
+import { DataGridSelectionCell } from '@fluentui/react-table';
+import { dataGridSelectionCellClassNames } from '@fluentui/react-table';
+import { DataGridSelectionCellProps } from '@fluentui/react-table';
+import { DataGridSelectionCellSlots } from '@fluentui/react-table';
+import { DataGridSelectionCellState } from '@fluentui/react-table';
+import { DataGridSlots } from '@fluentui/react-table';
+import { DataGridState } from '@fluentui/react-table';
 import { Dialog } from '@fluentui/react-dialog';
 import { DialogActions } from '@fluentui/react-dialog';
 import { dialogActionsClassNames } from '@fluentui/react-dialog';
@@ -198,6 +237,7 @@ import { DurationTokens } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
+import { FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
 import { FluentProviderSlots } from '@fluentui/react-provider';
 import { FluentProviderState } from '@fluentui/react-provider';
@@ -375,6 +415,11 @@ import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { ProgressBar } from '@fluentui/react-progress';
+import { progressBarClassNames } from '@fluentui/react-progress';
+import { ProgressBarProps } from '@fluentui/react-progress';
+import { ProgressBarSlots } from '@fluentui/react-progress';
+import { ProgressBarState } from '@fluentui/react-progress';
 import { Radio } from '@fluentui/react-radio';
 import { radioClassNames } from '@fluentui/react-radio';
 import { RadioGroup } from '@fluentui/react-radio';
@@ -404,6 +449,13 @@ import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
+import { renderDataGrid_unstable } from '@fluentui/react-table';
+import { renderDataGridBody_unstable } from '@fluentui/react-table';
+import { renderDataGridCell_unstable } from '@fluentui/react-table';
+import { renderDataGridHeader_unstable } from '@fluentui/react-table';
+import { renderDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { renderDataGridRow_unstable } from '@fluentui/react-table';
+import { renderDataGridSelectionCell_unstable } from '@fluentui/react-table';
 import { renderDialog_unstable } from '@fluentui/react-dialog';
 import { renderDialogActions_unstable } from '@fluentui/react-dialog';
 import { renderDialogBody_unstable } from '@fluentui/react-dialog';
@@ -439,6 +491,7 @@ import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderProgressBar_unstable } from '@fluentui/react-progress';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSelect_unstable } from '@fluentui/react-select';
@@ -448,6 +501,16 @@ import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
+import { renderTable_unstable } from '@fluentui/react-table';
+import { renderTableBody_unstable } from '@fluentui/react-table';
+import { renderTableCell_unstable } from '@fluentui/react-table';
+import { renderTableCellActions_unstable } from '@fluentui/react-table';
+import { renderTableCellLayout_unstable } from '@fluentui/react-table';
+import { renderTableHeader_unstable } from '@fluentui/react-table';
+import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
+import { renderTableResizeHandle_unstable } from '@fluentui/react-table';
+import { renderTableRow_unstable } from '@fluentui/react-table';
+import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
@@ -483,6 +546,8 @@ import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
+import { SortDirection } from '@fluentui/react-table';
 import { SpacingTokens } from '@fluentui/react-theme';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
@@ -519,6 +584,72 @@ import { SwitchSlots } from '@fluentui/react-switch';
 import { SwitchState } from '@fluentui/react-switch';
 import { Tab } from '@fluentui/react-tabs';
 import { tabClassNames } from '@fluentui/react-tabs';
+import { Table } from '@fluentui/react-table';
+import { TableBody } from '@fluentui/react-table';
+import { tableBodyClassName } from '@fluentui/react-table';
+import { tableBodyClassNames } from '@fluentui/react-table';
+import { TableBodyProps } from '@fluentui/react-table';
+import { TableBodySlots } from '@fluentui/react-table';
+import { TableBodyState } from '@fluentui/react-table';
+import { TableCell } from '@fluentui/react-table';
+import { TableCellActions } from '@fluentui/react-table';
+import { tableCellActionsClassNames } from '@fluentui/react-table';
+import { TableCellActionsProps } from '@fluentui/react-table';
+import { TableCellActionsSlots } from '@fluentui/react-table';
+import { TableCellActionsState } from '@fluentui/react-table';
+import { tableCellClassName } from '@fluentui/react-table';
+import { tableCellClassNames } from '@fluentui/react-table';
+import { TableCellLayout } from '@fluentui/react-table';
+import { tableCellLayoutClassNames } from '@fluentui/react-table';
+import { TableCellLayoutProps } from '@fluentui/react-table';
+import { TableCellLayoutSlots } from '@fluentui/react-table';
+import { TableCellLayoutState } from '@fluentui/react-table';
+import { TableCellProps } from '@fluentui/react-table';
+import { TableCellSlots } from '@fluentui/react-table';
+import { TableCellState } from '@fluentui/react-table';
+import { tableClassName } from '@fluentui/react-table';
+import { tableClassNames } from '@fluentui/react-table';
+import { TableColumnDefinition } from '@fluentui/react-table';
+import { TableColumnId } from '@fluentui/react-table';
+import { TableColumnSizingOptions } from '@fluentui/react-table';
+import { TableContextProvider } from '@fluentui/react-table';
+import { TableContextValue } from '@fluentui/react-table';
+import { TableContextValues } from '@fluentui/react-table';
+import { TableFeaturePlugin } from '@fluentui/react-table';
+import { TableFeaturesState } from '@fluentui/react-table';
+import { TableHeader } from '@fluentui/react-table';
+import { TableHeaderCell } from '@fluentui/react-table';
+import { tableHeaderCellClassName } from '@fluentui/react-table';
+import { tableHeaderCellClassNames } from '@fluentui/react-table';
+import { TableHeaderCellProps } from '@fluentui/react-table';
+import { TableHeaderCellSlots } from '@fluentui/react-table';
+import { TableHeaderCellState } from '@fluentui/react-table';
+import { tableHeaderClassName } from '@fluentui/react-table';
+import { tableHeaderClassNames } from '@fluentui/react-table';
+import { TableHeaderProps } from '@fluentui/react-table';
+import { TableHeaderSlots } from '@fluentui/react-table';
+import { TableHeaderState } from '@fluentui/react-table';
+import { TableProps } from '@fluentui/react-table';
+import { TableResizeHandle } from '@fluentui/react-table';
+import { tableResizeHandleClassNames } from '@fluentui/react-table';
+import { TableRow } from '@fluentui/react-table';
+import { tableRowClassName } from '@fluentui/react-table';
+import { tableRowClassNames } from '@fluentui/react-table';
+import { TableRowData } from '@fluentui/react-table';
+import { TableRowId } from '@fluentui/react-table';
+import { TableRowIdContextProvider } from '@fluentui/react-table';
+import { TableRowProps } from '@fluentui/react-table';
+import { TableRowSlots } from '@fluentui/react-table';
+import { TableRowState } from '@fluentui/react-table';
+import { TableSelectionCell } from '@fluentui/react-table';
+import { tableSelectionCellClassNames } from '@fluentui/react-table';
+import { TableSelectionCellProps } from '@fluentui/react-table';
+import { TableSelectionCellSlots } from '@fluentui/react-table';
+import { TableSelectionCellState } from '@fluentui/react-table';
+import { TableSelectionState } from '@fluentui/react-table';
+import { TableSlots } from '@fluentui/react-table';
+import { TableSortState } from '@fluentui/react-table';
+import { TableState } from '@fluentui/react-table';
 import { TabList } from '@fluentui/react-tabs';
 import { tabListClassNames } from '@fluentui/react-tabs';
 import { TabListContextValue } from '@fluentui/react-tabs';
@@ -635,6 +766,21 @@ import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
 import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useDataGrid_unstable } from '@fluentui/react-table';
+import { useDataGridBody_unstable } from '@fluentui/react-table';
+import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
+import { useDataGridCell_unstable } from '@fluentui/react-table';
+import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContextValues_unstable } from '@fluentui/react-table';
+import { useDataGridHeader_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridHeaderStyles_unstable } from '@fluentui/react-table';
+import { useDataGridRow_unstable } from '@fluentui/react-table';
+import { useDataGridRowStyles_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCell_unstable } from '@fluentui/react-table';
+import { useDataGridSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridStyles_unstable } from '@fluentui/react-table';
 import { useDialog_unstable } from '@fluentui/react-dialog';
 import { useDialogActions_unstable } from '@fluentui/react-dialog';
 import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
@@ -723,6 +869,9 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { usePresenceBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useProgressBar_unstable } from '@fluentui/react-progress';
+import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
@@ -744,6 +893,33 @@ import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
+import { useTable_unstable } from '@fluentui/react-table';
+import { useTableBody_unstable } from '@fluentui/react-table';
+import { useTableBodyStyles_unstable } from '@fluentui/react-table';
+import { useTableCell_unstable } from '@fluentui/react-table';
+import { useTableCellActions_unstable } from '@fluentui/react-table';
+import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
+import { useTableCellLayout_unstable } from '@fluentui/react-table';
+import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
+import { useTableCellStyles_unstable } from '@fluentui/react-table';
+import { useTableColumnSizing_unstable } from '@fluentui/react-table';
+import { useTableContext } from '@fluentui/react-table';
+import { useTableFeatures } from '@fluentui/react-table';
+import { UseTableFeaturesOptions } from '@fluentui/react-table';
+import { useTableHeader_unstable } from '@fluentui/react-table';
+import { useTableHeaderCell_unstable } from '@fluentui/react-table';
+import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
+import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { useTableResizeHandle_unstable } from '@fluentui/react-table';
+import { useTableResizeHandleStyles_unstable } from '@fluentui/react-table';
+import { useTableRow_unstable } from '@fluentui/react-table';
+import { useTableRowIdContext } from '@fluentui/react-table';
+import { useTableRowStyles_unstable } from '@fluentui/react-table';
+import { useTableSelection } from '@fluentui/react-table';
+import { useTableSelectionCell_unstable } from '@fluentui/react-table';
+import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
+import { useTableSort } from '@fluentui/react-table';
+import { useTableStyles_unstable } from '@fluentui/react-table';
 import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListContext_unstable } from '@fluentui/react-tabs';
 import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
@@ -1042,6 +1218,10 @@ export { createHighContrastTheme }
 
 export { createLightTheme }
 
+export { createTableColumn }
+
+export { CreateTableColumnOptions }
+
 export { createTeamsDarkTheme }
 
 export { CurveTokens }
@@ -1051,6 +1231,80 @@ export { DATA_OVERFLOW_ITEM }
 export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
+
+export { DataGrid }
+
+export { DataGridBody }
+
+export { dataGridBodyClassNames }
+
+export { DataGridBodyProps }
+
+export { DataGridBodySlots }
+
+export { DataGridBodyState }
+
+export { DataGridCell }
+
+export { dataGridCellClassNames }
+
+export { DataGridCellProps }
+
+export { DataGridCellSlots }
+
+export { DataGridCellState }
+
+export { dataGridClassNames }
+
+export { DataGridContextValue }
+
+export { DataGridContextValues }
+
+export { DataGridHeader }
+
+export { DataGridHeaderCell }
+
+export { dataGridHeaderCellClassNames }
+
+export { DataGridHeaderCellProps }
+
+export { DataGridHeaderCellSlots }
+
+export { DataGridHeaderCellState }
+
+export { dataGridHeaderClassNames }
+
+export { DataGridHeaderProps }
+
+export { DataGridHeaderSlots }
+
+export { DataGridHeaderState }
+
+export { DataGridProps }
+
+export { DataGridRow }
+
+export { dataGridRowClassNames }
+
+export { DataGridRowProps }
+
+export { DataGridRowSlots }
+
+export { DataGridRowState }
+
+export { DataGridSelectionCell }
+
+export { dataGridSelectionCellClassNames }
+
+export { DataGridSelectionCellProps }
+
+export { DataGridSelectionCellSlots }
+
+export { DataGridSelectionCellState }
+
+export { DataGridSlots }
+
+export { DataGridState }
 
 export { Dialog }
 
@@ -1163,6 +1417,8 @@ export { FluentProvider }
 export { fluentProviderClassNames }
 
 export { FluentProviderContextValues }
+
+export { FluentProviderCustomStyleHooks }
 
 export { FluentProviderProps }
 
@@ -1518,6 +1774,16 @@ export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
 
+export { ProgressBar }
+
+export { progressBarClassNames }
+
+export { ProgressBarProps }
+
+export { ProgressBarSlots }
+
+export { ProgressBarState }
+
 export { Radio }
 
 export { radioClassNames }
@@ -1575,6 +1841,20 @@ export { renderCheckbox_unstable }
 export { renderCombobox_unstable }
 
 export { renderCompoundButton_unstable }
+
+export { renderDataGrid_unstable }
+
+export { renderDataGridBody_unstable }
+
+export { renderDataGridCell_unstable }
+
+export { renderDataGridHeader_unstable }
+
+export { renderDataGridHeaderCell_unstable }
+
+export { renderDataGridRow_unstable }
+
+export { renderDataGridSelectionCell_unstable }
 
 export { renderDialog_unstable }
 
@@ -1646,6 +1926,8 @@ export { renderPopoverTrigger_unstable }
 
 export { renderPortal_unstable }
 
+export { renderProgressBar_unstable }
+
 export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
@@ -1663,6 +1945,26 @@ export { renderSplitButton_unstable }
 export { renderSwitch_unstable }
 
 export { renderTab_unstable }
+
+export { renderTable_unstable }
+
+export { renderTableBody_unstable }
+
+export { renderTableCell_unstable }
+
+export { renderTableCellActions_unstable }
+
+export { renderTableCellLayout_unstable }
+
+export { renderTableHeader_unstable }
+
+export { renderTableHeaderCell_unstable }
+
+export { renderTableResizeHandle_unstable }
+
+export { renderTableRow_unstable }
+
+export { renderTableSelectionCell_unstable }
 
 export { renderTabList_unstable }
 
@@ -1733,6 +2035,10 @@ export { Slot }
 export { SlotClassNames }
 
 export { SlotPropsRecord }
+
+export { SlotRenderFunction }
+
+export { SortDirection }
 
 export { SpacingTokens }
 
@@ -1805,6 +2111,138 @@ export { SwitchState }
 export { Tab }
 
 export { tabClassNames }
+
+export { Table }
+
+export { TableBody }
+
+export { tableBodyClassName }
+
+export { tableBodyClassNames }
+
+export { TableBodyProps }
+
+export { TableBodySlots }
+
+export { TableBodyState }
+
+export { TableCell }
+
+export { TableCellActions }
+
+export { tableCellActionsClassNames }
+
+export { TableCellActionsProps }
+
+export { TableCellActionsSlots }
+
+export { TableCellActionsState }
+
+export { tableCellClassName }
+
+export { tableCellClassNames }
+
+export { TableCellLayout }
+
+export { tableCellLayoutClassNames }
+
+export { TableCellLayoutProps }
+
+export { TableCellLayoutSlots }
+
+export { TableCellLayoutState }
+
+export { TableCellProps }
+
+export { TableCellSlots }
+
+export { TableCellState }
+
+export { tableClassName }
+
+export { tableClassNames }
+
+export { TableColumnDefinition }
+
+export { TableColumnId }
+
+export { TableColumnSizingOptions }
+
+export { TableContextProvider }
+
+export { TableContextValue }
+
+export { TableContextValues }
+
+export { TableFeaturePlugin }
+
+export { TableFeaturesState }
+
+export { TableHeader }
+
+export { TableHeaderCell }
+
+export { tableHeaderCellClassName }
+
+export { tableHeaderCellClassNames }
+
+export { TableHeaderCellProps }
+
+export { TableHeaderCellSlots }
+
+export { TableHeaderCellState }
+
+export { tableHeaderClassName }
+
+export { tableHeaderClassNames }
+
+export { TableHeaderProps }
+
+export { TableHeaderSlots }
+
+export { TableHeaderState }
+
+export { TableProps }
+
+export { TableResizeHandle }
+
+export { tableResizeHandleClassNames }
+
+export { TableRow }
+
+export { tableRowClassName }
+
+export { tableRowClassNames }
+
+export { TableRowData }
+
+export { TableRowId }
+
+export { TableRowIdContextProvider }
+
+export { TableRowProps }
+
+export { TableRowSlots }
+
+export { TableRowState }
+
+export { TableSelectionCell }
+
+export { tableSelectionCellClassNames }
+
+export { TableSelectionCellProps }
+
+export { TableSelectionCellSlots }
+
+export { TableSelectionCellState }
+
+export { TableSelectionState }
+
+export { TableSlots }
+
+export { TableSortState }
+
+export { TableState }
 
 export { TabList }
 
@@ -2038,6 +2476,36 @@ export { useCounterBadge_unstable }
 
 export { useCounterBadgeStyles_unstable }
 
+export { useDataGrid_unstable }
+
+export { useDataGridBody_unstable }
+
+export { useDataGridBodyStyles_unstable }
+
+export { useDataGridCell_unstable }
+
+export { useDataGridCellStyles_unstable }
+
+export { useDataGridContextValues_unstable }
+
+export { useDataGridHeader_unstable }
+
+export { useDataGridHeaderCell_unstable }
+
+export { useDataGridHeaderCellStyles_unstable }
+
+export { useDataGridHeaderStyles_unstable }
+
+export { useDataGridRow_unstable }
+
+export { useDataGridRowStyles_unstable }
+
+export { useDataGridSelectionCell_unstable }
+
+export { useDataGridSelectionCellStyles_unstable }
+
+export { useDataGridStyles_unstable }
+
 export { useDialog_unstable }
 
 export { useDialogActions_unstable }
@@ -2214,6 +2682,12 @@ export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
 
+export { usePresenceBadgeStyles_unstable }
+
+export { useProgressBar_unstable }
+
+export { useProgressBarStyles_unstable }
+
 export { useRadio_unstable }
 
 export { useRadioGroup_unstable }
@@ -2255,6 +2729,60 @@ export { useSwitch_unstable }
 export { useSwitchStyles_unstable }
 
 export { useTab_unstable }
+
+export { useTable_unstable }
+
+export { useTableBody_unstable }
+
+export { useTableBodyStyles_unstable }
+
+export { useTableCell_unstable }
+
+export { useTableCellActions_unstable }
+
+export { useTableCellActionsStyles_unstable }
+
+export { useTableCellLayout_unstable }
+
+export { useTableCellLayoutStyles_unstable }
+
+export { useTableCellStyles_unstable }
+
+export { useTableColumnSizing_unstable }
+
+export { useTableContext }
+
+export { useTableFeatures }
+
+export { UseTableFeaturesOptions }
+
+export { useTableHeader_unstable }
+
+export { useTableHeaderCell_unstable }
+
+export { useTableHeaderCellStyles_unstable }
+
+export { useTableHeaderStyles_unstable }
+
+export { useTableResizeHandle_unstable }
+
+export { useTableResizeHandleStyles_unstable }
+
+export { useTableRow_unstable }
+
+export { useTableRowIdContext }
+
+export { useTableRowStyles_unstable }
+
+export { useTableSelection }
+
+export { useTableSelectionCell_unstable }
+
+export { useTableSelectionCellStyles_unstable }
+
+export { useTableSort }
+
+export { useTableStyles_unstable }
 
 export { useTabList_unstable }
 

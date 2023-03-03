@@ -1,19 +1,22 @@
 import * as React from 'react';
-import { InputField_unstable as InputField } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-input';
+import { Field } from '@fluentui/react-field';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
-import type { ICalloutProps, ITextFieldProps } from '@fluentui/react';
-import type { PopoverProps, PopoverSurfaceProps } from '@fluentui/react-popover';
+import { PopoverSurface } from '@fluentui/react-popover';
+import type { InputProps } from '@fluentui/react-input';
+import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 
 export type DatePickerSlots = {
   root: NonNullable<Slot<'div'>>;
-  // eslint-disable-next-line deprecation/deprecation -- https://github.com/microsoft/fluentui/issues/26505
-  inputField: NonNullable<Slot<typeof InputField>>;
+  inputField: NonNullable<Slot<typeof Field>>;
+  input: NonNullable<Slot<typeof Input>>;
   wrapper: NonNullable<Slot<'div'>>;
+  popover: NonNullable<Slot<Partial<PopoverProps>>>;
+  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  calendar: NonNullable<Slot<Partial<CalendarProps>>>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -36,35 +39,10 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   componentRef?: React.RefObject<IDatePicker>;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<DatePickerStyleProps, DatePickerStyles>;
-
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme?: ITheme;
-
-  /**
-   * Pass callout props to callout component
-   */
-  calloutProps?: ICalloutProps;
-
-  /**
-   * Pass calendar props to calendar component
-   */
-  calendarProps?: CalendarProps;
-
-  /**
    * Pass textField props to textField component.
    * Prop name is "textField" for compatibility with upcoming slots work.
    */
-  textField?: ITextFieldProps;
-
-  /**
-   * Custom Calendar to be used for date picking
-   */
-  calendarAs?: IComponentAs<CalendarProps>;
+  textField?: InputProps;
 
   /**
    * Callback issued when a date is selected
@@ -257,12 +235,10 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   tabIndex?: number;
 };
 
-export type DatePickerState = ComponentState<DatePickerSlots> &
-  Required<Pick<DatePickerProps, 'calendarAs'>> & {
-    calendar: CalendarProps;
-    popover: Partial<PopoverProps>;
-    popoverSurface: PopoverSurfaceProps;
-  };
+export type DatePickerState = ComponentState<DatePickerSlots> & {
+  disabled: boolean;
+  isDatePickerShown: boolean;
+};
 
 /**
  * {@docCategory DatePicker}
@@ -289,37 +265,4 @@ export interface DatePickerStrings extends CalendarStrings {
    *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
    */
   isResetStatusMessage?: string;
-}
-
-/**
- * {@docCategory DatePicker}
- */
-export interface DatePickerStyleProps {
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  // Insert DatePicker style props below
-  disabled?: boolean;
-  underlined?: boolean;
-  label?: boolean;
-  isDatePickerShown?: boolean;
-}
-
-/**
- * {@docCategory DatePicker}
- */
-export interface DatePickerStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
-  textField: IStyle;
-  callout: IStyle;
-  icon: IStyle;
-  statusMessage?: IStyle;
-  wrapper?: IStyle;
-  readOnlyTextField?: IStyle;
-  readOnlyPlaceholder?: IStyle;
 }
