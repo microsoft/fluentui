@@ -8,7 +8,7 @@ This RFC proposes extending the `mountNode` prop in the `Portal` component and i
 
 ## Background
 
-The `Portal` component has a `mountNode` prop that allows customizing the element to which the `Portal` will be attached. However, there is no way to customize classes applied to that element. Customization is needed to apply styles such as custom `z-index`es - `Portal` has a `mountNode` prop that allows to customize an element to which a `Portal` will be attached. We need to customize that element to apply custom styles, for example, custom `z-index`es (([https://github.com/microsoft/fluentui/issues/26758](microsoft/fluentui#26758)).
+The `Portal` component has a `mountNode` prop that allows customizing the element to which the `Portal` will be attached. However, there is no way to customize classes applied to that element. Customization is needed to apply styles such as custom `z-index`es. We need to be able to customize the `mountNode` element to apply this type of custom styles (([https://github.com/microsoft/fluentui/issues/26758](microsoft/fluentui#26758)).
 
 ## Problem statement
 
