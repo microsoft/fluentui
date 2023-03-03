@@ -8,11 +8,12 @@ The `Skeleton` component is a temporary placeholder for UI that is in a loading 
 
 ### Open UI
 
-| Library    | Component Name | Spec Link                                                                       | Notes                                                                                                                                                                  |
-| ---------- | -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ant Design | Skeleton       | [Skeleton](https://ant.design/components/skeleton/)                             | Has an `avatar`, `button`, `list`, and `togglebutton`. Has animated and non-animated versions, and shape variants for the component skeletons(rounded or rectangular). |
-| Fast       | Skeleton       | [Skeleton](https://explore.fast.design/components/fast-skeleton)                | Has three components: `Avatar`, `List`, and `Button`. No shape variants.                                                                                               |
-| UI Fabric  | Shimmer        | [Shimmer](https://developer.microsoft.com/en-us/fluentui#/controls/web/shimmer) | Shimmer has a way to pass in custom elements as well as the defaults. There is also a prop to change the colors of the Skeleton components.                            |
+| Library     | Component Name | Spec Link                                                                       | Notes                                                                                                                                                                  |
+| ----------- | -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ant Design  | Skeleton       | [Skeleton](https://ant.design/components/skeleton/)                             | Has an `avatar`, `button`, `list`, and `togglebutton`. Has animated and non-animated versions, and shape variants for the component skeletons(rounded or rectangular). |
+| Fast        | Skeleton       | [Skeleton](https://explore.fast.design/components/fast-skeleton)                | Has three components: `Avatar`, `List`, and `Button`. No shape variants.                                                                                               |
+| Semantic UI | Placeholder    | [Placeholder](https://react.semantic-ui.com/elements/placeholder/)              | Has `Header` and `Paragraph` subcomponents. The `Header` can take in an image as a prop                                                                                |
+| UI Fabric   | Shimmer        | [Shimmer](https://developer.microsoft.com/en-us/fluentui#/controls/web/shimmer) | Shimmer has a way to pass in custom elements as well as the defaults. There is also a prop to change the colors of the Skeleton components.                            |
 
 ### Comparison of v8 and v0
 
@@ -63,8 +64,10 @@ See API at [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
 
 ```html
 <!-- Container for Skeleton -->
+
 <div class="fui-Skeleton">
   <!-- Container for SkeletonElement -->
+
   <div class="fui-SkeletonItem" />
 </div>
 ```
@@ -87,7 +90,7 @@ See [MIGRATION.md](./MIGRATION.md).
 
 ### Interaction
 
-The Progress is non-interactive.
+The Skeleton is non-interactive.
 
 - **Keyboard** - Not keyboard focusable.
 - **Mouse**
