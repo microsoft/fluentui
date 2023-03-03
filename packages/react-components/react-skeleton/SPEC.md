@@ -33,7 +33,8 @@ import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
 function App() {
   return (
     <Skeleton>
-      <SkeletonItem />
+      <SkeletonItem shape="circle" size={24} />
+      <SkeletonItem shape="rectangle" size={16} />
     </Skeleton>
   );
 }
@@ -58,7 +59,10 @@ The `Skeleton` is a combination of any of the two shapes in order to represent t
 
 ### Props
 
-See API at [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
+See API at:
+
+- [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
+- [SkeletonItem.types.ts](./src/components/SkeletonItem/SkeletonItem.types.ts).
 
 ## Structure
 
