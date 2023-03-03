@@ -33,7 +33,7 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
 
   const state: ProgressBarState = {
     color,
-    max: internalMax as number,
+    max: internalMax,
     shape,
     thickness,
     value: internalValue,
