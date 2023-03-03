@@ -22,6 +22,7 @@ The existing components are:
 - v8
   - `Shimmer`
 - v0
+  - Does not have an existing `Skeleton` component.
 
 ## Sample Code
 
@@ -55,7 +56,7 @@ The `Skeleton` is a combination of any of the two shapes in order to represent t
 
 ### Slots
 
-- `root` - The root slot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton` and any data that the `Skeleton` will load. The default html element is a `svg`.
+- `root` - The root slot of the `Skeleton` is the container that will contain the items that make up a `Skeleton` in representation of the data that is loading. The default html element is a `svg`.
 
 ### Props
 
@@ -89,17 +90,15 @@ See [MIGRATION.md](./MIGRATION.md).
   - The `appearance` prop will allow the use of a `translucent` appearance.
   - Specifying `wave` or `pulse` will change the animation style of the `Skeleton`
   - The component also has `rtl` support and will animate the `Skeleton` from right to left if set.
-  - Setting the `shape` prop in `<SkeletonItem />` will render a `rectangle`, `square`, or a `circle`.
-  - Setting the `size` prop in `<SkeletonItem />` will allow the user to specify the size of the element.
+  - Setting the `shape` prop in `<SkeletonItem />` will render a `rectangle`, `square`, or a `circle` (default is `rectangle`).
+  - Setting the `size` prop in `<SkeletonItem />` will allow the user to specify the size of the element (default is 16).
 
 ### Interaction
 
 The Skeleton is non-interactive.
 
 - **Keyboard** - Not keyboard focusable.
-- **Mouse**
-
-  - Click: No action
+- **Mouse** - Nothing
 
 - **Touch** - Nothing
 
