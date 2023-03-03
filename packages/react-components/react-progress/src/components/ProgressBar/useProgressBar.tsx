@@ -21,9 +21,9 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
   const root = getNativeElementProps('div', {
     ref,
     role: 'progressbar',
-    'aria-valuemin': internalValue !== undefined ? 0 : undefined,
-    'aria-valuemax': internalValue !== undefined ? internalMax : undefined,
-    'aria-valuenow': internalValue,
+    'aria-valuemin': value !== undefined ? 0 : undefined,
+    'aria-valuemax': value !== undefined ? max : undefined,
+    'aria-valuenow': value,
     ...props,
   });
 
@@ -33,10 +33,10 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
 
   const state: ProgressBarState = {
     color,
-    max: internalMax,
+    max,
     shape,
     thickness,
-    value: internalValue,
+    value,
     components: {
       root: 'div',
       bar: 'div',
