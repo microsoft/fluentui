@@ -69,9 +69,14 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
+  const internalDateAnchor = React.useMemo(() => dateAnchor || value || defaultValue || new Date(), [
+    dateAnchor,
+    defaultValue,
+    value,
+  ]);
+
   React.useEffect(() => {
-    const clampedStartAnchor =
-      (dateAnchor && new Date(dateAnchor)) || (defaultValue && new Date(defaultValue)) || new Date();
+    const clampedStartAnchor = new Date(internalDateAnchor);
     const clampedEndAnchor = new Date(clampedStartAnchor);
 
     if (timeRange) {
@@ -96,7 +101,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
 
     setDateStartAnchor(ceilMinuteToIncrement(clampedStartAnchor, increments));
     setDateEndAnchor(ceilMinuteToIncrement(clampedEndAnchor, increments));
-  }, [dateAnchor, increments, timeRange]);
+  }, [internalDateAnchor, increments, timeRange]);
 
   React.useEffect(() => {
     if (selectedTime && !isNaN(selectedTime.valueOf())) {
