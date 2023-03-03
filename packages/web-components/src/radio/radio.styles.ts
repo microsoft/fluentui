@@ -1,8 +1,10 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  colorNeutralForeground2,
   colorNeutralForeground3,
   colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -35,6 +37,9 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
   }
+  :host(:hover) .label {
+    color: ${colorNeutralForeground2};
+  }
   .label__hidden {
     display: none;
     visibility: hidden;
@@ -52,6 +57,9 @@ export const styles = css`
     border: 1px solid ${colorNeutralStrokeAccessible};
     top: 0;
     left: 0;
+  }
+  :host(:hover) .control {
+    border-color: ${colorNeutralStrokeAccessibleHover};
   }
   .checked-indicator {
     opacity: 0;
