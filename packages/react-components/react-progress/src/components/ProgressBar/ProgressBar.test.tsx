@@ -19,7 +19,7 @@ describe('ProgressBar', () => {
     },
   });
   const originalConsoleError = console.error;
-  beforeEach(() => {
+  beforeAll(() => {
     console.error = jest.fn();
   });
   afterAll(() => {
@@ -79,7 +79,7 @@ describe('ProgressBar', () => {
     });
     it('sets the proper aria-valuenow when value is negative', () => {
       const value = -5;
-      const max = -3;
+      const max = 3;
       const result = render(<ProgressBar value={value} max={max} />);
       expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
     });
