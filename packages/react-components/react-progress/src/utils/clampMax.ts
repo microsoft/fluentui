@@ -1,5 +1,5 @@
 export const clampMax = (max: number): number => {
-  const internalMax = max !== undefined && max <= 0 ? 1 : max;
+  const internalMax = max <= 0 ? 1 : max;
 
   if (process.env.NODE_ENV !== 'production') {
     if (max !== undefined && max <= 0) {
