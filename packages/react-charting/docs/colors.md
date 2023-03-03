@@ -1,37 +1,146 @@
 # Colors
 
-The color prop is currently optional for curves and lines in AreaChart and LineChart, respectively. If color is not provided, the chart elements will be rendered with colors from the default palette. The users can provide custom colors or use colors from these palettes:
+We provide the following 3 ways to specify colors for the data series.
 
-## Qualitative Palette
+## 1. Use CSS colors
 
-![Qualitative color palette](colors/1.png)
+The users can supply custom colors for the data series using named colors, hex codes, RGB, HSL, and other browser-supported color formats. In this case, the users will be responsible for managing the contrast ratio between adjacent data series and adjusting the color in relation to the light and dark themes.
 
-This is the default color palette for data visualization. Currently, it has only 20 colors (including extension colors). We cycle through these colors sequentially to paint the chart elements without color.
+```js
+import * as React from 'react';
+import { IChartProps, ILineChartPoints, LineChart } from '@fluentui/react-charting';
+
+const dataSeries: ILineChartPoints[] = [
+  {
+    legend: 'Line 1',
+    data: [
+      { x: 20, y: 50 },
+      { x: 40, y: 80 },
+    ],
+    color: 'red', // #ff0000, rgb(255, 0, 0), hsl(0, 100%, 50%), etc.
+  },
+];
+const chartData: IChartProps = {
+  chartTitle: 'Line chart',
+  lineChartData: dataSeries,
+};
+
+const App = () => {
+  return <LineChart data={chartData} />;
+};
+export default App;
+```
+
+## 2. Omit color prop
+
+The users can omit the color prop for the data series. In this case, the color will be chosen automatically from the default color palette. See below for more details on the palette.
+
+```js
+import * as React from 'react';
+import { IChartProps, ILineChartPoints, LineChart } from '@fluentui/react-charting';
+
+const dataSeries: ILineChartPoints[] = [
+  {
+    legend: 'Line 1',
+    data: [
+      { x: 20, y: 50 },
+      { x: 40, y: 80 },
+    ],
+    // Notice the absent color prop here.
+  },
+];
+const chartData: IChartProps = {
+  chartTitle: 'Line chart',
+  lineChartData: dataSeries,
+};
+
+const App = () => {
+  return <LineChart data={chartData} />;
+};
+export default App;
+```
+
+## 3. Use colors from palette
+
+The users can pick colors from our data visualization color palette, which is categorized into the following two types.
+
+### Qualitative Color Palette
+
+![Qualitative Color Palette](images/colors/1.png)
+
+Each qualitative color is distinct from the others. This type of palette is ideal for visualizations displaying categorical variables that are unrelated to one another. This is our **default color palette**, which totals 40 colors, including 10 base colors and 30 extension colors. We cycle through these colors sequentially to paint the data series without color.
 
 To use colors from this palette:
 
-```
-import { QualitativePalette } from '@fluentui/react-charting';
+1. Import `DataVizPalette` from the charting package.
+2. Choose from the available colors like this:
+   `DataVizPalette.color<slot_number>`, where `slot_number` ranges from 1 to 40.
+
+```js
+import * as React from 'react';
+import { DataVizPalette, IChartProps, ILineChartPoints, LineChart } from '@fluentui/react-charting';
+
+const dataSeries: ILineChartPoints[] = [
+  {
+    legend: 'Line 1',
+    data: [
+      { x: 20, y: 50 },
+      { x: 40, y: 80 },
+    ],
+    color: DataVizPalette.color1, // .color2, .color3, ....., .color40
+  },
+];
+const chartData: IChartProps = {
+  chartTitle: 'Line chart',
+  lineChartData: dataSeries,
+};
+
+const App = () => {
+  return <LineChart data={chartData} />;
+};
+export default App;
 ```
 
-Access colors like this:
+### Semantic Color Palette
 
-```
-color: QualitativePalette.dataVizSlot1,
-```
+![Semantic Color Palette](images/colors/2.png)
 
-## Semantic Palette
-
-![Semantic color palette](colors/2.png)
+Semantic color represents a clear message as well as status, such as success, error, warning, info and so on. Each color has the same basic meaning in all contexts.
 
 To use colors from this palette:
 
-```
-import { SemanticPalette } from '@fluentui/react-charting';
-```
+1. Import `DataVizPalette` from the charting package.
+2. Choose from the 7 available colors like this:
+   `DataVizPalette.<status>`, where `status` can be one of the following:
+   - `info`
+   - `disabled`
+   - `highError`
+   - `error`
+   - `warning`
+   - `success`
+   - `highSuccess`
 
-Access colors like this:
+```js
+import * as React from 'react';
+import { DataVizPalette, IChartProps, ILineChartPoints, LineChart } from '@fluentui/react-charting';
 
-```
-color: SemanticPalette.info,
+const dataSeries: ILineChartPoints[] = [
+  {
+    legend: 'Line 1',
+    data: [
+      { x: 20, y: 50 },
+      { x: 40, y: 80 },
+    ],
+    color: DataVizPalette.info, // .disabled, .highError, .error, .warning, .success, .highSuccess
+  },
+];
+const chartData: IChartProps = {
+  chartTitle: 'Line chart',
+  lineChartData: dataSeries,
+};
+
+const App = () => {
+  return <LineChart data={chartData} />;
+};
+export default App;
 ```
