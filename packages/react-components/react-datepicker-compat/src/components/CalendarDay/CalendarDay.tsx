@@ -170,14 +170,12 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
 };
 CalendarDayNavigationButtons.displayName = 'CalendarDayNavigationButtons';
 
-const onButtonKeyDown = (
-  callback?: () => void,
-): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) => (
-  ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>,
-) => {
-  switch (ev.key) {
-    case Enter:
-      callback?.();
-      break;
-  }
-};
+const onButtonKeyDown =
+  (callback?: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) =>
+  (ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => {
+    switch (ev.key) {
+      case Enter:
+        callback?.();
+        break;
+    }
+  };
