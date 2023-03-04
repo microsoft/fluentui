@@ -82,8 +82,6 @@ jobs:
         condition: eq(variables['vrTestSkip'], 'no')
 
       - template: ./download-vr-cli.yaml
-        parameters:
-          working_directory: ${{ parameters.working_directory }}
 
       - bash: vr-app run-diff --buildType pr --clientType "fluentuiv9" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
@@ -168,8 +166,6 @@ jobs:
         condition: eq(variables['vrTestSkip'], 'no')
 
       - template: ./download-vr-cli.yaml
-        parameters:
-          working_directory: ${{ parameters.working_directory }}
 
       - bash: vr-app run-diff --buildType pr --clientType "fluentuiv8" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'

@@ -1,7 +1,3 @@
-parameters:
-  - name: working_directory
-    type: string
-
 steps:
   - bash: |
       set -exuo pipefail
