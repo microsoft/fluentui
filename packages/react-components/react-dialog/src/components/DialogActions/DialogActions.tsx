@@ -4,6 +4,7 @@ import { renderDialogActions_unstable } from './renderDialogActions';
 import { useDialogActionsStyles_unstable } from './useDialogActionsStyles';
 import type { DialogActionsProps } from './DialogActions.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * `DialogActions` is a container for the actions of the dialog.
@@ -13,6 +14,10 @@ export const DialogActions: ForwardRefComponent<DialogActionsProps> = React.forw
   const state = useDialogActions_unstable(props, ref);
 
   useDialogActionsStyles_unstable(state);
+
+  const { useDialogActionsStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderDialogActions_unstable(state);
 });
 

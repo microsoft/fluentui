@@ -15,6 +15,10 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forw
   const contextValues = useDialogSurfaceContextValues_unstable(state);
 
   useDialogSurfaceStyles_unstable(state);
+
+  const { useDialogSurfaceStyles_unstable: useCustomStyles } = useDialogSurfaceStyles_unstable();
+  useCustomStyles(state);
+
   return renderDialogSurface_unstable(state, contextValues);
 });
 
