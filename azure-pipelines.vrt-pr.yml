@@ -81,7 +81,12 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - template: download-vr-cli.yaml
+      # - template: download-vr-cli.yaml
+      - bash: |
+         set -exuo pipefail
+         npm install -g vr-approval-cli
+        displayName: Download VR App CLI
+        retryCountOnTaskFailure: 3
 
       - bash: vr-app run-diff --buildType pr --clientType "fluentuiv9" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
@@ -165,7 +170,12 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - template: download-vr-cli.yaml
+      # - template: download-vr-cli.yaml
+      - bash: |
+         set -exuo pipefail
+         npm install -g vr-approval-cli
+        displayName: Download VR App CLI
+        retryCountOnTaskFailure: 3
 
       - bash: vr-app run-diff --buildType pr --clientType "fluentuiv8" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
