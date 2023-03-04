@@ -39,7 +39,6 @@ export type CustomStyleHooksContextValue_unstable = {
     useImageStyles_unstable: CustomStyleHook;
     useLabelStyles_unstable: CustomStyleHook;
     useLinkStyles_unstable: CustomStyleHook;
-    useCheckmarkStyles_unstable: CustomStyleHook;
     useMenuDividerStyles_unstable: CustomStyleHook;
     useMenuGroupHeaderStyles_unstable: CustomStyleHook;
     useMenuGroupStyles_unstable: CustomStyleHook;
