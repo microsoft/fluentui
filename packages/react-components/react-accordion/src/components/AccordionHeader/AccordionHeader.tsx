@@ -5,6 +5,7 @@ import { useAccordionHeaderStyles_unstable } from './useAccordionHeaderStyles';
 import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 import type { AccordionHeaderProps } from './AccordionHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled AccordionHeader, using the `useAccordionHeader_unstable` and `useAccordionHeaderStyles_unstable`
@@ -15,6 +16,9 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
   const contextValues = useAccordionHeaderContextValues_unstable(state);
 
   useAccordionHeaderStyles_unstable(state);
+
+  const { useAccordionHeaderStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderAccordionHeader_unstable(state, contextValues);
 });
