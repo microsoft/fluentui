@@ -9,6 +9,7 @@ export {
 } from './FluentProvider';
 export type {
   FluentProviderContextValues,
+  FluentProviderCustomStyleHooks,
   FluentProviderProps,
   FluentProviderState,
   FluentProviderSlots,

@@ -26,7 +26,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/PeoplePickerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerImplementation.md') as string,
         },
       ];
   }

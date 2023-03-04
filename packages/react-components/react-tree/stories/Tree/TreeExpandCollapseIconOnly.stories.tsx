@@ -4,7 +4,7 @@ import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/components/Tr
 
 export const ExpandCollapseIconOnly = () => {
   const onOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    if (data.type === 'click' || data.type === 'enter') {
+    if (data.type === 'Click' || data.type === 'Enter') {
       event.preventDefault();
       // TODO: We might need to add the ID of the treeeItem to the event
       alert('click on item');

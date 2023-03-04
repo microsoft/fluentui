@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Ref Migration" />
+
+# Ref component Migration guide
+
+The `Ref` component from V0 is deprecated as it used the deprecated `findDomNode` utility from React. All V9 components support ref forwarding, so you can simply use `useRef` to the component.
+
+Before:
+
+```tsx
+import { Button } from '@fluentui/react-northstar';
+const Component = ({ buttonRef }) => (
+  <Ref innerRef={buttonRef}>
+    <Button content="some content" />
+  </Ref>
+);
+```
+
+After:
+
+```tsx
+import { Button } from '@fluentui/react-components';
+const Component = () => {
+  const ref = React.useRef(null);
+
+  return <Button ref={ref}>some content</Button>;
+};
+```

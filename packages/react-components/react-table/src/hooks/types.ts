@@ -167,11 +167,11 @@ export interface UseTableSelectionOptions {
   /**
    * Used in uncontrolled mode to set initial selected rows on mount
    */
-  defaultSelectedItems?: Set<TableRowId>;
+  defaultSelectedItems?: Iterable<TableRowId>;
   /**
    * Used to control row selection
    */
-  selectedItems?: Set<TableRowId>;
+  selectedItems?: Iterable<TableRowId>;
   /**
    * Called when selection changes
    */

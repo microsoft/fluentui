@@ -52,15 +52,16 @@ setAddon({
       });
     }
     if (config.includeHighContrast) {
-      this.add(storyName + ' - High Contrast', (
-        /** @type {import('../src/utilities/types').StoryContext} */ context,
-      ) => {
-        return (
-          <FluentProvider applyStylesToPortals={false} theme={teamsHighContrastTheme}>
-            {storyFn(context)}
-          </FluentProvider>
-        );
-      });
+      this.add(
+        storyName + ' - High Contrast',
+        (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
+          return (
+            <FluentProvider applyStylesToPortals={false} theme={teamsHighContrastTheme}>
+              {storyFn(context)}
+            </FluentProvider>
+          );
+        },
+      );
     }
 
     return this;

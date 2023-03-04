@@ -45,7 +45,7 @@ export const pillContentClassName = 'ui-pillcontent';
 /**
  * A PillContent allows user to classify content.
  */
-export const PillContent = (React.forwardRef<HTMLSpanElement, PillContentProps>((props, ref) => {
+export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillContent.displayName, context.telemetry);
   setStart();
@@ -83,7 +83,7 @@ export const PillContent = (React.forwardRef<HTMLSpanElement, PillContentProps>(
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, PillContentProps> &
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillContentProps> &
   FluentComponentStaticProps<PillContentProps>;
 
 PillContent.displayName = 'PillContent';

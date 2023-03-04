@@ -91,7 +91,7 @@ describe('DetailsListV2', () => {
   });
 
   afterEach(() => {
-    if (((setTimeout as unknown) as jest.Mock).mock) {
+    if ((setTimeout as unknown as jest.Mock).mock) {
       jest.runOnlyPendingTimers();
       jest.useRealTimers();
     }

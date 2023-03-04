@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat:Consume Fluent CDN from style-utilities",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}

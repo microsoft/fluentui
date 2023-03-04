@@ -102,7 +102,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
         }
 
         const serializedStyles = serializeStyles(
-          [{ [selector]: (styles as unknown) as CSSObject }],
+          [{ [selector]: styles as unknown as CSSObject }],
           // This looks as a bug in typings as in Emotion code this function can be used with a single param.
           // https://github.com/emotion-js/emotion/blob/a076e7fa5f78fec6515671b78801cfc9d6cf1316/packages/core/src/global.js#L45
           // @ts-ignore

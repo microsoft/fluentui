@@ -25,4 +25,4 @@ export const VariantThemeType = {
   Strong: 3 as 3,
 };
 
-export type VariantThemeType = typeof VariantThemeType[keyof typeof VariantThemeType];
+export type VariantThemeType = (typeof VariantThemeType)[keyof typeof VariantThemeType];

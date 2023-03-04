@@ -1,8 +1,45 @@
 # Change Log - @fluentui/cra-template
 
-This log was last generated on Sat, 18 Feb 2023 01:37:02 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Mar 2023 07:45:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.62](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.62)
+
+Wed, 01 Mar 2023 07:45:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.61..@fluentui/cra-template_v8.4.62)
+
+### Patches
+
+- chore: bump jest types for template ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.106.2 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+
+## [8.4.61](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.61)
+
+Mon, 27 Feb 2023 07:39:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.60..@fluentui/cra-template_v8.4.61)
+
+### Patches
+
+- chore: bump template jest types to v27 ([PR #26835](https://github.com/microsoft/fluentui/pull/26835) by martinhochel@microsoft.com)
+
+## [8.4.60](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.60)
+
+Wed, 22 Feb 2023 07:44:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.59..@fluentui/cra-template_v8.4.60)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.1 ([commit](https://github.com/microsoft/fluentui/commit/7596e81eaad95fc96ac7098f848602ace5278e03) by beachball)
+
+## [8.4.59](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.59)
+
+Wed, 22 Feb 2023 00:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/cra-template_v8.4.58..@fluentui/cra-template_v8.4.59)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.0 ([PR #26574](https://github.com/microsoft/fluentui/pull/26574) by beachball)
 
 ## [8.4.58](https://github.com/microsoft/fluentui/tree/@fluentui/cra-template_v8.4.58)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update SpinButton to use makeResetStyles",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

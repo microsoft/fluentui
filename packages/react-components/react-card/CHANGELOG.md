@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.47)
+
+Wed, 22 Feb 2023 23:06:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.46..@fluentui/react-card_v9.0.0-beta.47)
+
+### Changes
+
+- fix: allow elements of card to grow to fill the available space ([PR #26616](https://github.com/microsoft/fluentui/pull/26616) by marcosvmmoura@gmail.com)
 
 ## [9.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.46)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.26)
+
+Wed, 22 Feb 2023 23:06:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.25..@fluentui/react-accordion_v9.0.26)
+
+### Patches
+
+- bugfix: uses min-height instead of height ([PR #26862](https://github.com/microsoft/fluentui/pull/26862) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.25)
 
