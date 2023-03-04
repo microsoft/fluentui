@@ -28,6 +28,8 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
+
+
       - bash: |
           postPolicy="true";
           response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
@@ -79,7 +81,11 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "fluentuiv9" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
+      - template: ./download-vr-cli.yaml
+        parameters:
+          working_directory: ${{ parameters.working_directory }}
+
+      - bash: vr-app run-diff --buildType pr --clientType "fluentuiv9" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
@@ -161,7 +167,11 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "fluentuiv8" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
+      - template: ./download-vr-cli.yaml
+        parameters:
+          working_directory: ${{ parameters.working_directory }}
+
+      - bash: vr-app run-diff --buildType pr --clientType "fluentuiv8" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)

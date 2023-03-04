@@ -1,0 +1,10 @@
+parameters:
+  - name: working_directory
+    type: string
+
+steps:
+  - bash: |
+      set -exuo pipefail
+      npm install -g vr-approval-cli
+    displayName: Download VR App CLI
+    retryCountOnTaskFailure: 3
