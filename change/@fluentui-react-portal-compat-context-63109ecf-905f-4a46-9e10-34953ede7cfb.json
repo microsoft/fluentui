@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: re-enable AMD import checks for only mixed and v8 packages",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

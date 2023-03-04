@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Adding call to custom styles hook derived from context.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

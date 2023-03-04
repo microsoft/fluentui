@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.1.0)
+
+Wed, 08 Mar 2023 17:42:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.26..@fluentui/react-badge_v9.1.0)
+
+### Minor changes
+
+- feat: Adding calls to custom styles hooks derived from context. ([PR #27061](https://github.com/microsoft/fluentui/pull/27061) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+
+### Patches
+
+- updated colors for unknown variant for presence badge ([PR #26970](https://github.com/microsoft/fluentui/pull/26970) by kakrookaran@gmail.com)
 
 ## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.26)
 

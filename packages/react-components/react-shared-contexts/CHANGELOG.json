@@ -2,6 +2,27 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c245fd66d8ddb61f47ddcde4baab670f2068bbe6",
+            "comment": "fix: Removing internal checkmark custom styles hook"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "27c3cfe8a95bd26541c7c47ad2fd7fbc8ea332df",
+            "comment": "feat: Added CustomStyleHooks types and context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 13:31:00 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.2.0",
       "version": "9.2.0",

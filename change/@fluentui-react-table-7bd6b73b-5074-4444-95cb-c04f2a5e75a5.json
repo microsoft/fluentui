@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement Home/End navigation with Control",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,59 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:39 GMT",
+      "tag": "@fluentui/react-progress_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "34cb9409ea7ac1bb0d88c80312b15b09325e96b3",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.22",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "72b29a2530140bdb11e097d7d7b36f06c66f10fb",
+            "comment": "fix: Align WHCM styles with figma and fix documentation typo."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "efb2274e37c0237f3a10a4630b2696a9880f6398",
+            "comment": "fix: Add error checking for incorrect values of max and value props"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "f2c7257775bf2d17c3f9dc6eae0b834a988f8793",
+            "comment": "fix: Update ProgressBar styling to have width when display is set to flex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 23:06:06 GMT",
       "tag": "@fluentui/react-progress_v9.0.0",
       "version": "9.0.0",

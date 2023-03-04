@@ -2,6 +2,33 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:33 GMT",
+      "tag": "@fluentui/react-label_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "5fa1affa69afbb2f6b9e188e1a8e45b6ebc7b001",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-label_v9.0.22",
       "version": "9.0.22",

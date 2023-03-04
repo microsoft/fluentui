@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove unnecessary devDeps on workspace addon",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

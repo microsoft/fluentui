@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 26 Jan 2023 13:31:00 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.3.0)
+
+Wed, 08 Mar 2023 17:42:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.2.0..@fluentui/react-shared-contexts_v9.3.0)
+
+### Minor changes
+
+- fix: Removing internal checkmark custom styles hook ([PR #27085](https://github.com/microsoft/fluentui/pull/27085) by gcox@microsoft.com)
+- feat: Added CustomStyleHooks types and context ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.2.0)
 
