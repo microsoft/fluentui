@@ -7,15 +7,20 @@ import { IndividualCommandBarButtonAsExampleWrapper } from './CommandBar.Command
 import { CommandBarSplitDisabledExample } from './CommandBar.SplitDisabled.Example';
 import { CommandBarLazyExample } from './CommandBar.Lazy.Example';
 
-const CommandBarBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.Basic.Example.tsx') as string;
+const CommandBarBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.Basic.Example.tsx') as string;
 
-const CommandBarButtonAsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.ButtonAs.Example.tsx') as string;
+const CommandBarButtonAsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.ButtonAs.Example.tsx') as string;
 
-const IndividualCommandBarButtonAsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.CommandBarButtonAs.Example.tsx') as string;
+const IndividualCommandBarButtonAsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.CommandBarButtonAs.Example.tsx') as string;
 
-const CommandBarSplitDisabledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.SplitDisabled.Example.tsx') as string;
+const CommandBarSplitDisabledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.SplitDisabled.Example.tsx') as string;
 
-const CommandBarLazyExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.Lazy.Example.tsx') as string;
+const CommandBarLazyExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/CommandBar/CommandBar.Lazy.Example.tsx') as string;
 
 export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',

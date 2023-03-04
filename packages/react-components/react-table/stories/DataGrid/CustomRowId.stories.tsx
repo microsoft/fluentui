@@ -153,9 +153,7 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const CustomRowId = () => {
-  const [selectedRows, setSelectedRows] = React.useState(
-    new Set<TableRowId>(['Thursday presentation']),
-  );
+  const [selectedRows, setSelectedRows] = React.useState(new Set<TableRowId>(['Thursday presentation']));
   const onSelectionChange: DataGridProps['onSelectionChange'] = (e, data) => {
     setSelectedRows(data.selectedItems);
   };

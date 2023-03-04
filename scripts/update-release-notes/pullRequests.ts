@@ -149,7 +149,7 @@ async function _addCommitInfo(prs: IPullRequest[]): Promise<IExtendedPullRequest
   return results;
 
   function dataWithAuthor(value: RestEndpointMethodTypes['pulls']['listCommits']['response']['data']) {
-    type Commit = typeof value[number];
+    type Commit = (typeof value)[number];
     type FilteredCommit = Omit<Commit, 'author'> & { author: NonNullable<Commit['author']> };
     return value.filter(commit => Boolean(commit.author)) as FilteredCommit[];
   }

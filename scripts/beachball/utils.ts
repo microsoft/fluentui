@@ -8,11 +8,7 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '@fluentui
  * @returns {string[]} Array of package paths for beachball scope
  */
 export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
-export function getConfig({
-  version,
-}: {
-  version: 'vNext';
-}): {
+export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
   groupConfig: {
     masterPackageName: string;

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Wed, 22 Feb 2023 23:06:07 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.0)
+
+Wed, 08 Mar 2023 17:42:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.1.13..@fluentui/react-persona_v9.2.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27069](https://github.com/microsoft/fluentui/pull/27069) by gcox@microsoft.com)
+- Bump @fluentui/react-avatar to v9.4.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-badge to v9.1.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.1.13)
 

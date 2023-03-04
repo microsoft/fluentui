@@ -42,52 +42,54 @@ type ColumnResizeStateAction<T> =
       width: number;
     };
 
-const createReducer = <T>() => (state: ComponentState<T>, action: ColumnResizeStateAction<T>): ComponentState<T> => {
-  switch (action.type) {
-    case 'CONTAINER_WIDTH_UPDATED':
-      return {
-        ...state,
-        containerWidth: action.containerWidth,
-        columnWidthState: adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth),
-      };
+const createReducer =
+  <T>() =>
+  (state: ComponentState<T>, action: ColumnResizeStateAction<T>): ComponentState<T> => {
+    switch (action.type) {
+      case 'CONTAINER_WIDTH_UPDATED':
+        return {
+          ...state,
+          containerWidth: action.containerWidth,
+          columnWidthState: adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth),
+        };
 
-    case 'COLUMNS_UPDATED':
-      const newS = columnDefinitionsToState(action.columns, state.columnWidthState, state.columnSizingOptions);
-      return {
-        ...state,
-        columns: action.columns,
-        columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth),
-      };
+      case 'COLUMNS_UPDATED':
+        const newS = columnDefinitionsToState(action.columns, state.columnWidthState, state.columnSizingOptions);
+        return {
+          ...state,
+          columns: action.columns,
+          columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth),
+        };
 
-    case 'COLUMN_SIZING_OPTIONS_UPDATED':
-      const newState = columnDefinitionsToState(state.columns, state.columnWidthState, action.columnSizingOptions);
-      return {
-        ...state,
-        columnSizingOptions: action.columnSizingOptions,
-        columnWidthState: adjustColumnWidthsToFitContainer(newState, state.containerWidth),
-      };
+      case 'COLUMN_SIZING_OPTIONS_UPDATED':
+        const newState = columnDefinitionsToState(state.columns, state.columnWidthState, action.columnSizingOptions);
+        return {
+          ...state,
+          columnSizingOptions: action.columnSizingOptions,
+          columnWidthState: adjustColumnWidthsToFitContainer(newState, state.containerWidth),
+        };
 
-    case 'SET_COLUMN_WIDTH':
-      const { columnId, width } = action;
-      const { containerWidth } = state;
+      case 'SET_COLUMN_WIDTH':
+        const { columnId, width } = action;
+        const { containerWidth } = state;
 
-      const column = getColumnById(state.columnWidthState, columnId);
-      let newColumnWidthState = [...state.columnWidthState];
+        const column = getColumnById(state.columnWidthState, columnId);
+        let newColumnWidthState = [...state.columnWidthState];
 
-      if (!column) {
-        return state;
-      }
+        if (!column) {
+          return state;
+        }
 
-      // Adjust the column width and measure the new total width
-      newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'width', width);
-      // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
-      newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'idealWidth', width);
-      // Adjust the widths to the container size
-      newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
+        // Adjust the column width and measure the new total width
+        newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'width', width);
+        // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
+        newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'idealWidth', width);
+        // Adjust the widths to the container size
+        newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
 
-      return { ...state, columnWidthState: newColumnWidthState };
-  }
-};
+        return { ...state, columnWidthState: newColumnWidthState };
+    }
+  };
 
 export function useTableColumnResizeState<T>(
   columns: TableColumnDefinition<T>[],

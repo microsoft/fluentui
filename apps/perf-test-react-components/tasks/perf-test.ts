@@ -226,15 +226,16 @@ export async function getPerfRegressions() {
  * Create test summary based on test results.
  */
 function createReport(scenarioSettings: ScenarioSetting, testResults: CookResults) {
-  const report = '## [Perf Analysis (`@fluentui/react-components`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
+  const report =
+    '## [Perf Analysis (`@fluentui/react-components`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
 
-    // Show only significant changes by default.
-    .concat(createScenarioTable(scenarioSettings, testResults, false))
+      // Show only significant changes by default.
+      .concat(createScenarioTable(scenarioSettings, testResults, false))
 
-    // Show all results in a collapsible table.
-    .concat('<details><summary>All results</summary><p>')
-    .concat(createScenarioTable(scenarioSettings, testResults, true))
-    .concat('</p></details>\n\n');
+      // Show all results in a collapsible table.
+      .concat('<details><summary>All results</summary><p>')
+      .concat(createScenarioTable(scenarioSettings, testResults, true))
+      .concat('</p></details>\n\n');
 
   return report;
 }

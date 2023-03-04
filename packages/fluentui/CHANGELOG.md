@@ -19,6 +19,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Fixes
+- `Datepicker`: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))
+
+<!--------------------------------[ v0.66.3 ]------------------------------- -->
+## [v0.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.3) (2023-02-27)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.2..@fluentui/react-northstar_v0.66.3)
+
+### Fixes
+- `Dropdown`: Do not use aria-owns for search Dropdown on mac. @jurokapsiar ([#26972](https://github.com/microsoft/fluentui/pull/26972))
+
+<!--------------------------------[ v0.66.2 ]------------------------------- -->
+## [v0.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.2) (2023-02-24)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.1..@fluentui/react-northstar_v0.66.2)
+
+### Fixes
 - `Checkbox`: Toggle activation should be more obvious in high contrast mode. @ling1726 ([#26910](https://github.com/microsoft/fluentui/pull/26910))
 
 <!--------------------------------[ v0.66.1 ]------------------------------- -->

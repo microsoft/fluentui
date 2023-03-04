@@ -114,169 +114,157 @@ export const never = (props: ObjectOf<any>, propName: string, componentName: str
  * Disallow other props from being defined with this prop.
  * @param disallowedProps - An array of props that cannot be used with this prop.
  */
-export const disallow = (disallowedProps: string[]) => (
-  props: ObjectOf<any>,
-  propName: string,
-  componentName: string,
-) => {
-  if (!Array.isArray(disallowedProps)) {
-    throw new Error(
-      [
-        'Invalid argument supplied to disallow, expected an instance of array.',
-        ` See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(''),
-    );
-  }
-
-  // skip if prop is undefined
-  if (_.isNil(props[propName]) || props[propName] === false) return undefined;
-
-  // find disallowed props with values
-  const disallowed = disallowedProps.reduce((acc, disallowedProp) => {
-    if (!_.isNil(props[disallowedProp]) && props[disallowedProp] !== false) {
-      return [...acc, disallowedProp];
+export const disallow =
+  (disallowedProps: string[]) => (props: ObjectOf<any>, propName: string, componentName: string) => {
+    if (!Array.isArray(disallowedProps)) {
+      throw new Error(
+        [
+          'Invalid argument supplied to disallow, expected an instance of array.',
+          ` See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(''),
+      );
     }
-    return acc;
-  }, []);
 
-  if (disallowed.length > 0) {
-    return new Error(
-      [
-        `Prop \`${propName}\` in \`${componentName}\` conflicts with props: \`${disallowed.join('`, `')}\`.`,
-        'They cannot be defined together, choose one or the other.',
-      ].join(' '),
-    );
-  }
+    // skip if prop is undefined
+    if (_.isNil(props[propName]) || props[propName] === false) return undefined;
 
-  return undefined;
-};
+    // find disallowed props with values
+    const disallowed = disallowedProps.reduce((acc, disallowedProp) => {
+      if (!_.isNil(props[disallowedProp]) && props[disallowedProp] !== false) {
+        return [...acc, disallowedProp];
+      }
+      return acc;
+    }, []);
+
+    if (disallowed.length > 0) {
+      return new Error(
+        [
+          `Prop \`${propName}\` in \`${componentName}\` conflicts with props: \`${disallowed.join('`, `')}\`.`,
+          'They cannot be defined together, choose one or the other.',
+        ].join(' '),
+      );
+    }
+
+    return undefined;
+  };
 
 /**
  * Ensure a prop adherers to multiple prop type validators.
  * @param validators - An array of propType functions.
  */
-export const every = (validators: Function[]) => (
-  props: ObjectOf<any>,
-  propName: string,
-  componentName: string,
-  ...args: any[]
-) => {
-  if (!Array.isArray(validators)) {
-    throw new Error(
-      [
-        'Invalid argument supplied to every, expected an instance of array.',
-        `See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(' '),
-    );
-  }
+export const every =
+  (validators: Function[]) =>
+  (props: ObjectOf<any>, propName: string, componentName: string, ...args: any[]) => {
+    if (!Array.isArray(validators)) {
+      throw new Error(
+        [
+          'Invalid argument supplied to every, expected an instance of array.',
+          `See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(' '),
+      );
+    }
 
-  return _.first(
-    _.compact(
-      _.map(validators, validator => {
-        if (typeof validator !== 'function') {
-          throw new Error(`every() argument "validators" should contain functions, found: ${typeOf(validator)}.`);
-        }
-        return validator(props, propName, componentName, ...args);
-      }),
-    ),
-  ); // we can only return one error at a time
-};
+    return _.first(
+      _.compact(
+        _.map(validators, validator => {
+          if (typeof validator !== 'function') {
+            throw new Error(`every() argument "validators" should contain functions, found: ${typeOf(validator)}.`);
+          }
+          return validator(props, propName, componentName, ...args);
+        }),
+      ),
+    ); // we can only return one error at a time
+  };
 
 /**
  * Ensure a prop adherers to at least one of the given prop type validators.
  * @param validators - An array of propType functions.
  */
-export const some = (validators: Function[]) => (
-  props: ObjectOf<any>,
-  propName: string,
-  componentName: string,
-  ...args: any[]
-) => {
-  if (!Array.isArray(validators)) {
-    throw new Error(
-      [
-        'Invalid argument supplied to some, expected an instance of array.',
-        `See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(' '),
+export const some =
+  (validators: Function[]) =>
+  (props: ObjectOf<any>, propName: string, componentName: string, ...args: any[]) => {
+    if (!Array.isArray(validators)) {
+      throw new Error(
+        [
+          'Invalid argument supplied to some, expected an instance of array.',
+          `See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(' '),
+      );
+    }
+
+    const errors = _.compact(
+      _.map(validators, validator => {
+        if (!_.isFunction(validator)) {
+          throw new Error(`some() argument "validators" should contain functions, found: ${typeOf(validator)}.`);
+        }
+        return validator(props, propName, componentName, ...args);
+      }),
     );
-  }
 
-  const errors = _.compact(
-    _.map(validators, validator => {
-      if (!_.isFunction(validator)) {
-        throw new Error(`some() argument "validators" should contain functions, found: ${typeOf(validator)}.`);
-      }
-      return validator(props, propName, componentName, ...args);
-    }),
-  );
+    // fail only if all validators failed
+    if (errors.length === validators.length) {
+      const error = new Error('One of these validators must pass:');
+      error.message += `\n${_.map(errors, err => `- ${err.message}`).join('\n')}`;
+      return error;
+    }
 
-  // fail only if all validators failed
-  if (errors.length === validators.length) {
-    const error = new Error('One of these validators must pass:');
-    error.message += `\n${_.map(errors, err => `- ${err.message}`).join('\n')}`;
-    return error;
-  }
-
-  return undefined;
-};
+    return undefined;
+  };
 
 /**
  * Ensure a validator passes only when a component has a given propsShape.
  * @param propsShape - An object describing the prop shape.
  * @param validator - A propType function.
  */
-export const givenProps = (propsShape: Record<string, any>, validator: Function) => (
-  props: ObjectOf<any>,
-  propName: string,
-  componentName: string,
-  ...args: any
-) => {
-  if (!_.isPlainObject(propsShape)) {
-    throw new Error(
-      [
-        'Invalid argument supplied to givenProps, expected an object.',
-        `See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(' '),
-    );
-  }
+export const givenProps =
+  (propsShape: Record<string, any>, validator: Function) =>
+  (props: ObjectOf<any>, propName: string, componentName: string, ...args: any) => {
+    if (!_.isPlainObject(propsShape)) {
+      throw new Error(
+        [
+          'Invalid argument supplied to givenProps, expected an object.',
+          `See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(' '),
+      );
+    }
 
-  if (typeof validator !== 'function') {
-    throw new Error(
-      [
-        'Invalid argument supplied to givenProps, expected a function.',
-        `See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(' '),
-    );
-  }
+    if (typeof validator !== 'function') {
+      throw new Error(
+        [
+          'Invalid argument supplied to givenProps, expected a function.',
+          `See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(' '),
+      );
+    }
 
-  const shouldValidate = _.keys(propsShape).every((key: string) => {
-    const val = propsShape[key];
-    // require propShape validators to pass or prop values to match
-    return typeof val === 'function' ? !val(props, key, componentName, ...args) : val === props[propName];
-  });
+    const shouldValidate = _.keys(propsShape).every((key: string) => {
+      const val = propsShape[key];
+      // require propShape validators to pass or prop values to match
+      return typeof val === 'function' ? !val(props, key, componentName, ...args) : val === props[propName];
+    });
 
-  if (!shouldValidate) return undefined;
+    if (!shouldValidate) return undefined;
 
-  const error = validator(props, propName, componentName, ...args);
+    const error = validator(props, propName, componentName, ...args);
 
-  if (error) {
-    // poor mans shallow pretty print, prevents JSON circular reference errors
-    const prettyProps = `{ ${_.keys(_.pick(props, _.keys(propsShape)))
-      .map(key => {
-        const val = props[key];
-        let renderedValue = val;
-        if (typeof val === 'string') renderedValue = `"${val}"`;
-        else if (Array.isArray(val)) renderedValue = `[${val.join(', ')}]`;
-        else if (_.isObject(val)) renderedValue = '{...}';
+    if (error) {
+      // poor mans shallow pretty print, prevents JSON circular reference errors
+      const prettyProps = `{ ${_.keys(_.pick(props, _.keys(propsShape)))
+        .map(key => {
+          const val = props[key];
+          let renderedValue = val;
+          if (typeof val === 'string') renderedValue = `"${val}"`;
+          else if (Array.isArray(val)) renderedValue = `[${val.join(', ')}]`;
+          else if (_.isObject(val)) renderedValue = '{...}';
 
-        return `${key}: ${renderedValue}`;
-      })
-      .join(', ')} }`;
+          return `${key}: ${renderedValue}`;
+        })
+        .join(', ')} }`;
 
-    error.message = `Given props ${prettyProps}: ${error.message}`;
-    return error;
-  }
-};
+      error.message = `Given props ${prettyProps}: ${error.message}`;
+      return error;
+    }
+  };
 
 /**
  * Define prop dependencies by requiring other props.
@@ -309,39 +297,36 @@ export const demand = (requiredProps: string[]) => (props: ObjectOf<any>, propNa
  * Ensure an multiple prop contains a string with only possible values.
  * @param possible - An array of possible values to prop.
  */
-export const multipleProp = (possible: string[]) => (
-  props: ObjectOf<string | false>,
-  propName: string,
-  componentName: string,
-) => {
-  if (!Array.isArray(possible)) {
-    throw new Error(
-      [
-        'Invalid argument supplied to some, expected an instance of array.',
-        `See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(' '),
-    );
-  }
+export const multipleProp =
+  (possible: string[]) => (props: ObjectOf<string | false>, propName: string, componentName: string) => {
+    if (!Array.isArray(possible)) {
+      throw new Error(
+        [
+          'Invalid argument supplied to some, expected an instance of array.',
+          `See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(' '),
+      );
+    }
 
-  const propValue = props[propName];
+    const propValue = props[propName];
 
-  // skip if prop is undefined
-  if (_.isNil(propValue) || propValue === false) return undefined;
+    // skip if prop is undefined
+    if (_.isNil(propValue) || propValue === false) return undefined;
 
-  const values = propValue
-    .replace('large screen', 'large-screen')
-    .replace(/ vertically/g, '-vertically')
-    .split(' ')
-    .map(val => _.trim(val).replace('-', ' '));
-  const invalid = _.difference(values, possible);
+    const values = propValue
+      .replace('large screen', 'large-screen')
+      .replace(/ vertically/g, '-vertically')
+      .split(' ')
+      .map(val => _.trim(val).replace('-', ' '));
+    const invalid = _.difference(values, possible);
 
-  // fail only if there are invalid values
-  if (invalid.length > 0) {
-    return new Error(`\`${propName}\` prop in \`${componentName}\` has invalid values: \`${invalid.join('`, `')}\`.`);
-  }
+    // fail only if there are invalid values
+    if (invalid.length > 0) {
+      return new Error(`\`${propName}\` prop in \`${componentName}\` has invalid values: \`${invalid.join('`, `')}\`.`);
+    }
 
-  return undefined;
-};
+    return undefined;
+  };
 
 /**
  * Ensure a component can render as a node passed as a prop value in place of children.
@@ -407,47 +392,44 @@ export const collectionShorthandWithKindProp = (kindPropValues: string[]) => {
  * @param help - A help message to display with the deprecation warning.
  * @param validator - A propType function.
  */
-export const deprecate = (help: string, validator?: Function) => (
-  props: ObjectOf<any>,
-  propName: string,
-  componentName: string,
-  ...args: any[]
-) => {
-  if (typeof help !== 'string') {
-    throw new Error(
-      [
-        'Invalid `help` argument supplied to deprecate, expected a string.',
-        `See \`${propName}\` prop in \`${componentName}\`.`,
-      ].join(' '),
-    );
-  }
-
-  // skip if prop is undefined
-  if (props[propName] === undefined) return undefined;
-
-  // deprecation error and help
-  const error = new Error(`The \`${propName}\` prop in \`${componentName}\` is deprecated.`);
-  if (help) error.message += ` ${help}`;
-
-  // add optional validation error message
-  if (validator) {
-    if (typeof validator === 'function') {
-      const validationError = validator(props, propName, componentName, ...args);
-      if (validationError) {
-        error.message = `${error.message} ${validationError.message}`;
-      }
-    } else {
+export const deprecate =
+  (help: string, validator?: Function) =>
+  (props: ObjectOf<any>, propName: string, componentName: string, ...args: any[]) => {
+    if (typeof help !== 'string') {
       throw new Error(
         [
-          'Invalid argument supplied to deprecate, expected a function.',
+          'Invalid `help` argument supplied to deprecate, expected a string.',
           `See \`${propName}\` prop in \`${componentName}\`.`,
         ].join(' '),
       );
     }
-  }
 
-  return error;
-};
+    // skip if prop is undefined
+    if (props[propName] === undefined) return undefined;
+
+    // deprecation error and help
+    const error = new Error(`The \`${propName}\` prop in \`${componentName}\` is deprecated.`);
+    if (help) error.message += ` ${help}`;
+
+    // add optional validation error message
+    if (validator) {
+      if (typeof validator === 'function') {
+        const validationError = validator(props, propName, componentName, ...args);
+        if (validationError) {
+          error.message = `${error.message} ${validationError.message}`;
+        }
+      } else {
+        throw new Error(
+          [
+            'Invalid argument supplied to deprecate, expected a function.',
+            `See \`${propName}\` prop in \`${componentName}\`.`,
+          ].join(' '),
+        );
+      }
+    }
+
+    return error;
+  };
 
 export const accessibility = PropTypes.func;
 

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 22 Feb 2023 23:06:06 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.1)
+
+Wed, 08 Mar 2023 17:42:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.0..@fluentui/react-positioning_v9.5.1)
+
+### Patches
+
+- fix: Nested submenus support positioning fallbacks for small viewports ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.0)
 

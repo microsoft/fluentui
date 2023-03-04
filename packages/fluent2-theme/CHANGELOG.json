@@ -2,6 +2,51 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Tue, 07 Mar 2023 07:49:29 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.105.0",
+      "version": "8.105.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "e4d5ec008bf44bfd250d77dd0a18f2f376f7a35a",
+            "comment": "Adding IExtendedSemanticColors with properties for inputBottomBorders since the treatment is different in Fluent 2. Updating focus behavior for TextField to more closley match Fluent 2."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Mar 2023 07:43:04 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.29",
+      "version": "8.104.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.3",
+            "commit": "220b321042b4bcc126c86a91811a34b04934d49b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Mar 2023 07:45:41 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.28",
+      "version": "8.104.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.2",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 07:44:35 GMT",
       "tag": "@fluentui/fluent2-theme_v8.104.27",
       "version": "8.104.27",

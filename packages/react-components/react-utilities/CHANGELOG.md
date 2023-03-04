@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 15 Feb 2023 11:44:51 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.1)
+
+Wed, 08 Mar 2023 17:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.0..@fluentui/react-utilities_v9.6.1)
+
+### Patches
+
+- fix: adjust IntrinsicElementProps type to properly support void elements ([PR #27095](https://github.com/microsoft/fluentui/pull/27095) by bernardo.sunderhus@gmail.com)
+- fix: export omit function ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.0)
 

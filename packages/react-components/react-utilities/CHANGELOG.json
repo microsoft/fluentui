@@ -2,6 +2,35 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b38973143b00f399373027454844ef695fc0091b",
+            "comment": "fix: adjust IntrinsicElementProps type to properly support void elements"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dd0f5b76fc8905c067cc58556ec1f9626dcfc640",
+            "comment": "fix: export omit function"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:51 GMT",
       "tag": "@fluentui/react-utilities_v9.6.0",
       "version": "9.6.0",

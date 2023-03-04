@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.5.4)
+
+Wed, 08 Mar 2023 17:42:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.5.3..@fluentui/react-tabster_v9.5.4)
+
+### Patches
+
+- fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.5.3)
 

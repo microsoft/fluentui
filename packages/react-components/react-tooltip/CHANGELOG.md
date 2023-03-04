@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Wed, 22 Feb 2023 23:06:07 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.0)
+
+Wed, 08 Mar 2023 17:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.1.18..@fluentui/react-tooltip_v9.2.0)
+
+### Minor changes
+
+- feat: Adding calls to custom styles hooks derived from context. ([PR #27080](https://github.com/microsoft/fluentui/pull/27080) by gcox@microsoft.com)
+- Bump @fluentui/react-portal to v9.1.10 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-positioning to v9.5.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.1.18)
 

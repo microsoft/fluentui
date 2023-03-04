@@ -27,7 +27,7 @@ const picker = React.createRef<HTMLDivElement>();
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
-  _suggestions = ([
+  _suggestions = [
     {
       key: '1',
       id: '1',
@@ -46,7 +46,7 @@ beforeEach(() => {
       showRemoveButton: true,
       name: 'Alexis',
     },
-  ] as unknown) as IFloatingSuggestionItem<ISimple>[];
+  ] as unknown as IFloatingSuggestionItem<ISimple>[];
 });
 
 afterEach(() => {
@@ -96,7 +96,7 @@ describe('FloatingSuggestions', () => {
     //
     // see https://github.com/facebook/react/pull/12895
     ReactTestUtils.act(() => {
-      (ReactDOM.render(
+      ReactDOM.render(
         <BaseFloatingSuggestions
           suggestions={_suggestions}
           isSuggestionsVisible={true}
@@ -110,7 +110,7 @@ describe('FloatingSuggestions', () => {
           onRemoveSuggestion={_onSuggestionRemoved}
         />,
         container,
-      ) as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+      ) as unknown as IBaseFloatingSuggestionsProps<ISimple>;
     });
 
     const floatingSuggestions = document.querySelector('.ms-FloatingSuggestions') as HTMLInputElement;
@@ -131,7 +131,7 @@ describe('FloatingSuggestions', () => {
 
   it('renders FloatingSuggestions and updates when suggestions are removed', () => {
     ReactTestUtils.act(() => {
-      (ReactDOM.render(
+      ReactDOM.render(
         <BaseFloatingSuggestions
           suggestions={_suggestions}
           isSuggestionsVisible={true}
@@ -145,7 +145,7 @@ describe('FloatingSuggestions', () => {
           onRemoveSuggestion={_onSuggestionRemoved}
         />,
         container,
-      ) as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+      ) as unknown as IBaseFloatingSuggestionsProps<ISimple>;
     });
 
     const suggestionListButtons = document.querySelectorAll('.ms-FloatingSuggestionsItem-itemButton');
@@ -166,7 +166,7 @@ describe('FloatingSuggestions', () => {
   it('shows no suggestions when no suggestions are provided', () => {
     _suggestions = [];
     ReactTestUtils.act(() => {
-      (ReactDOM.render(
+      ReactDOM.render(
         <BaseFloatingSuggestions
           suggestions={_suggestions}
           isSuggestionsVisible={true}
@@ -180,7 +180,7 @@ describe('FloatingSuggestions', () => {
           onRemoveSuggestion={_onSuggestionRemoved}
         />,
         container,
-      ) as unknown) as IBaseFloatingSuggestionsProps<ISimple>;
+      ) as unknown as IBaseFloatingSuggestionsProps<ISimple>;
     });
     const suggestionsList = document.querySelectorAll('div[id^=FloatingSuggestionsItemId]');
     expect(suggestionsList.length).toEqual(0);
