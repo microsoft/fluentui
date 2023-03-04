@@ -4,6 +4,7 @@ import { useAvatarGroupPopoverContextValues } from './useAvatarGroupPopoverConte
 import { useAvatarGroupPopover_unstable } from './useAvatarGroupPopover';
 import { useAvatarGroupPopoverStyles_unstable } from './useAvatarGroupPopoverStyles';
 import type { AvatarGroupPopoverProps } from './AvatarGroupPopover.types';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The AvatarGroupPopover component provides a button with a Popover containing the children provided.
@@ -13,6 +14,10 @@ export const AvatarGroupPopover: React.FC<AvatarGroupPopoverProps> = props => {
   const contextValues = useAvatarGroupPopoverContextValues(state);
 
   useAvatarGroupPopoverStyles_unstable(state);
+
+  const { useAvatarGroupPopoverStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderAvatarGroupPopover_unstable(state, contextValues);
 };
 

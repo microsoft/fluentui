@@ -4,11 +4,15 @@ import { useAvatar_unstable } from './useAvatar';
 import { useAvatarStyles_unstable } from './useAvatarStyles';
 import type { AvatarProps } from './Avatar.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 export const Avatar: ForwardRefComponent<AvatarProps> = React.forwardRef((props, ref) => {
   const state = useAvatar_unstable(props, ref);
 
   useAvatarStyles_unstable(state);
+
+  const { useAvatarStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderAvatar_unstable(state);
 });

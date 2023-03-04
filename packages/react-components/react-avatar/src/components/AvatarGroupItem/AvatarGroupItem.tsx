@@ -4,6 +4,7 @@ import { useAvatarGroupItem_unstable } from './useAvatarGroupItem';
 import { useAvatarGroupItemStyles_unstable } from './useAvatarGroupItemStyles';
 import type { AvatarGroupItemProps } from './AvatarGroupItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The AvatarGroupItem component represents a single person or entity.
@@ -13,6 +14,10 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps> = React.
   const state = useAvatarGroupItem_unstable(props, ref);
 
   useAvatarGroupItemStyles_unstable(state);
+
+  const { useAvatarGroupItemStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderAvatarGroupItem_unstable(state);
 });
 
