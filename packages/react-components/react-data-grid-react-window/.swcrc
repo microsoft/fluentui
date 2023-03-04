@@ -25,6 +25,11 @@
       "decorators": false,
       "dynamicImport": false
     },
+    "transform": {
+      "react": {
+        "useBuiltins": true
+      }
+    },
     "target": "es2019",
     "externalHelpers": true
   },
