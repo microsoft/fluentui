@@ -32,7 +32,6 @@
       }
     },
     "externalHelpers": true,
-    "loose": true,
     "target": "es2019"
   },
   "minify": false,
