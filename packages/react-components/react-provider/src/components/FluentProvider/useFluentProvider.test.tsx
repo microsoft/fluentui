@@ -5,6 +5,7 @@ import { FluentProvider } from './FluentProvider';
 import { useFluentProvider_unstable } from './useFluentProvider';
 import type { PartialTheme } from '@fluentui/react-theme';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
+import { FluentProviderCustomStyleHooks } from './FluentProvider.types';
 
 describe('useFluentProvider_unstable', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -80,5 +81,68 @@ describe('useFluentProvider_unstable', () => {
         "inputDefaultAppearance": "filled-darker",
       }
     `);
+  });
+
+  it('should merge customStyles', () => {
+    const customStylesA: FluentProviderCustomStyleHooks = {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      useButtonStyles_unstable: (state: unknown) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state as any).testResult = 'useButtonStyles_unstable_A';
+      },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      useCompoundButtonStyles_unstable: (state: unknown) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state as any).testResult = 'useCompoundButtonStyles_unstable_A';
+      },
+    };
+
+    const customStylesB: FluentProviderCustomStyleHooks = {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      useCompoundButtonStyles_unstable: (state: unknown) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state as any).testResult = 'useCompoundButtonStyles_unstable_B';
+      },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      useSplitButtonStyles_unstable: (state: unknown) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state as any).testResult = 'useSplitButtonStyles_unstable_B';
+      },
+    };
+
+    const DefaultWrapper: React.FC = ({ children }) => <FluentProvider>{children}</FluentProvider>;
+
+    const { result: defaultResult } = renderHook(
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      () => useFluentProvider_unstable({}, React.createRef()),
+      {
+        wrapper: DefaultWrapper,
+      },
+    );
+
+    const Wrapper: React.FC = ({ children }) => (
+      <FluentProvider customStyleHooks_unstable={customStylesA}>{children}</FluentProvider>
+    );
+
+    const { result } = renderHook(
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      () => useFluentProvider_unstable({ customStyleHooks_unstable: customStylesB }, React.createRef()),
+      {
+        wrapper: Wrapper,
+      },
+    );
+
+    expect(result.current.customStyleHooks_unstable.useToggleButtonStyles_unstable).toBe(
+      defaultResult.current.customStyleHooks_unstable.useToggleButtonStyles_unstable,
+    );
+    expect(result.current.customStyleHooks_unstable.useButtonStyles_unstable).toEqual(
+      customStylesA.useButtonStyles_unstable,
+    );
+    expect(result.current.customStyleHooks_unstable.useCompoundButtonStyles_unstable).toEqual(
+      customStylesB.useCompoundButtonStyles_unstable,
+    );
+    expect(result.current.customStyleHooks_unstable.useSplitButtonStyles_unstable).toEqual(
+      customStylesB.useSplitButtonStyles_unstable,
+    );
   });
 });
