@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Removed checkmark custom styles hook",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
