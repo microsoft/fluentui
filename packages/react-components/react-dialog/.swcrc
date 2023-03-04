@@ -27,6 +27,7 @@
     },
     "transform": {
       "react": {
+        "runtime": "automatic",
         "useBuiltins": true
       }
     },
