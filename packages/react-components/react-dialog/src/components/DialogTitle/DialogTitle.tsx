@@ -15,7 +15,7 @@ export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardR
 
   useDialogTitleStyles_unstable(state);
 
-  const { use_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  const { useDialogTitleStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
   useCustomStyles(state);
 
   return renderDialogTitle_unstable(state);
