@@ -7,7 +7,8 @@
       "firefox": "69",
       "opera": "64",
       "safari": "13.1"
-    }
+    },
+    "bugfixes": true
   },
   "exclude": [
     "/testing",
@@ -25,12 +26,12 @@
       "decorators": false,
       "dynamicImport": false
     },
+    "externalHelpers": true,
     "transform": {
       "react": {
         "useBuiltins": true
       }
     },
-    "externalHelpers": true,
     "target": "es2019"
   },
   "minify": false,
