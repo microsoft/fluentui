@@ -35,6 +35,7 @@
     "@fluentui/react-field": "9.0.0-alpha.21",
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-label": "^9.0.22",
+    "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-tabster": "^9.5.3",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.6.0",

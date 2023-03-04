@@ -1,17 +1,42 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { SkeletonContextValue } from '../../contexts/index';
 
 export type SkeletonSlots = {
-  root: Slot<'div'>;
+  /**
+   * The root slot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton`
+   * and any data that the `Skeleton` will load. The default html element is a `div`.
+   */
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * Skeleton Props
  */
-export type SkeletonProps = ComponentProps<SkeletonSlots> & {};
+export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
+  /**
+   * The animation type for the Skeleton
+   * @defaultValue wave
+   */
+  animation?: 'wave' | 'pulse';
+
+  /**
+   * Sets the appearance of the Skeleton.
+   * @defaultValue opaque
+   */
+  appearance?: 'opaque' | 'translucent';
+
+  /**
+   * Sets the width value of the skeleton wrapper.
+   * @defaultValue 100%
+   */
+  width?: number | string;
+};
+
+export type SkeletonContextValues = {
+  skeletonGroup: SkeletonContextValue;
+};
 
 /**
  * State used in rendering Skeleton
  */
-export type SkeletonState = ComponentState<SkeletonSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from SkeletonProps.
-// & Required<Pick<SkeletonProps, 'propName'>>
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
