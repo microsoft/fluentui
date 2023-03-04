@@ -2,11 +2,10 @@
   "$schema": "https://json.schemastore.org/swcrc",
   "env": {
     "targets": {
-      "chrome": "79",
-      "edge": "79",
-      "firefox": "69",
-      "opera": "64",
-      "safari": "13.1"
+      "chrome": "84",
+      "edge": "84",
+      "firefox": "75",
+      "opera": "73"
     }
   },
   "exclude": [

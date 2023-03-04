@@ -5,8 +5,7 @@
       "chrome": "84",
       "edge": "84",
       "firefox": "75",
-      "opera": "73",
-      "safari": "14.1"
+      "opera": "73"
     }
   },
   "exclude": [
