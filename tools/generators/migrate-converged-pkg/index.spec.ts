@@ -1123,7 +1123,6 @@ describe('migrate-converged-pkg generator', () => {
               useBuiltins: true,
             },
           },
-          target: 'es2019',
         },
         minify: false,
         sourceMaps: true,

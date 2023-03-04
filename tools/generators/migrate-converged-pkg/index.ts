@@ -419,7 +419,6 @@ const templates = {
             useBuiltins: true,
           },
         },
-        target: 'es2019',
       },
       minify: false,
       sourceMaps: true,
