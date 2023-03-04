@@ -4,6 +4,7 @@ import { renderTooltip_unstable } from './renderTooltip';
 import { useTooltipStyles_unstable } from './useTooltipStyles';
 import type { TooltipProps } from './Tooltip.types';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A tooltip provides light weight contextual information on top of its target element.
@@ -12,6 +13,10 @@ export const Tooltip: React.FC<TooltipProps> = props => {
   const state = useTooltip_unstable(props);
 
   useTooltipStyles_unstable(state);
+
+  const { useTooltipStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderTooltip_unstable(state);
 };
 
