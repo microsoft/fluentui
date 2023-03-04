@@ -30,8 +30,9 @@
         "useBuiltins": true
       }
     },
-    "target": "es2019",
-    "externalHelpers": true
+    "externalHelpers": true,
+    "loose": true,
+    "target": "es2019"
   },
   "minify": false,
   "sourceMaps": true
