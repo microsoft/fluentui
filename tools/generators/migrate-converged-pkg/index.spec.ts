@@ -1117,8 +1117,13 @@ describe('migrate-converged-pkg generator', () => {
             decorators: false,
             dynamicImport: false,
           },
-          target: 'es2019',
           externalHelpers: true,
+          transform: {
+            react: {
+              useBuiltins: true,
+            },
+          },
+          target: 'es2019',
         },
         minify: false,
         sourceMaps: true,
