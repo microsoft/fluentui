@@ -33,6 +33,8 @@ import {
   pointTypes,
   getMinMaxOfYAxis,
   getTypeOfAxis,
+  getNextColor,
+  getColorFromToken,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -313,10 +315,21 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
-      ? lineChartData.map((item: ILineChartPoints, index: number) => ({
-          ...item,
-          index: allowMultipleShapesForPoints ? index : -1,
-        }))
+      ? lineChartData.map((item: ILineChartPoints, index: number) => {
+          let color: string;
+          // isInverted property is applicable to v8 themes only
+          if (typeof item.color === 'undefined') {
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
+          }
+
+          return {
+            ...item,
+            index: allowMultipleShapesForPoints ? index : -1,
+            color,
+          };
+        })
       : [];
   };
 
@@ -367,7 +380,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: LineChartDataWithIndex) => {
-      const color: string = point.color;
+      const color: string = point.color!;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
@@ -399,9 +412,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
           const title = colorFillBar.legend;
+          // isInverted property is applicable to v8 themes only
+          const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
           const legend: ILegend = {
             title,
-            color: colorFillBar.color,
+            color,
             action: () => {
               if (isLegendMultiSelectEnabled) {
                 this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
@@ -517,7 +532,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const pointsForLine: JSX.Element[] = [];
 
       const legendVal: string = this._points[i].legend;
-      const lineColor: string = this._points[i].color;
+      const lineColor: string = this._points[i].color!;
       const { activePoint } = this.state;
       const { theme } = this.props;
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
@@ -901,10 +916,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
       const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+      // isInverted property is applicable to v8 themes only
+      const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
 
       if (colorFillBar.applyPattern) {
         // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
-        colorFillBars.push(this._getStripePattern(colorFillBar.color, i));
+        colorFillBars.push(this._getStripePattern(color, i));
       }
 
       for (let j = 0; j < colorFillBar.data.length; j++) {
@@ -916,7 +933,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             : 0.1;
         colorFillBars.push(
           <rect
-            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : colorFillBar.color}
+            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : color}
             fillOpacity={opacity}
             x={this._xAxisScale(startX)}
             y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}
