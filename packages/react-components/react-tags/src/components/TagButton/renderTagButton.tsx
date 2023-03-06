@@ -3,7 +3,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import type { TagButtonState, TagButtonSlots } from './TagButton.types';
 
 /**
- * Render the final JSX of TagButton
+ * Render the final JSX of Tag
  */
 export const renderTagButton_unstable = (state: TagButtonState) => {
   const { slots, slotProps } = getSlots<TagButtonSlots>(state);
@@ -11,21 +11,15 @@ export const renderTagButton_unstable = (state: TagButtonState) => {
   // TODO Add additional slots in the appropriate place
   return (
     <slots.root {...slotProps.root}>
-      <button className="content">
-        <div className="persona">
-          <img
-            height="32"
-            width="32"
-            src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-react-assets/persona-male.png"
-          />
-        </div>
-        <div className="icon">i</div>
-        <div className="primary">Primary Text</div>
-        <div className="secondary">Secondary Text</div>
-      </button>
-      <div className="dismiss">
-        <button>x</button>
-      </div>
+      {slots.contentButton && (
+        <slots.contentButton {...slotProps.contentButton}>
+          {slots.avatar && <slots.avatar {...slotProps.avatar} />}
+          {slots.icon && <slots.icon {...slotProps.icon} />}
+          {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
+          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+        </slots.contentButton>
+      )}
+      {slots.dismissButton && state.dismissable && <slots.dismissButton {...slotProps.dismissButton} />}
     </slots.root>
   );
 };
