@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useTooltip_unstable } from './useTooltip';
 import { renderTooltip_unstable } from './renderTooltip';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { useTooltipStyles_unstable } from './useTooltipStyles';
 import type { TooltipProps } from './Tooltip.types';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A tooltip provides light weight contextual information on top of its target element.
