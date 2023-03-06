@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useAccordionHeader_unstable } from './useAccordionHeader';
 import { renderAccordionHeader_unstable } from './renderAccordionHeader';
 import { useAccordionHeaderStyles_unstable } from './useAccordionHeaderStyles';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { useAccordionHeaderContextValues_unstable } from './useAccordionHeaderContextValues';
 import type { AccordionHeaderProps } from './AccordionHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -15,6 +16,9 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
   const contextValues = useAccordionHeaderContextValues_unstable(state);
 
   useAccordionHeaderStyles_unstable(state);
+
+  const { useAccordionHeaderStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderAccordionHeader_unstable(state, contextValues);
 });
