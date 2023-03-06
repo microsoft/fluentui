@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { renderAvatarGroupItem_unstable } from './renderAvatarGroupItem';
 import { useAvatarGroupItem_unstable } from './useAvatarGroupItem';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { useAvatarGroupItemStyles_unstable } from './useAvatarGroupItemStyles';
 import type { AvatarGroupItemProps } from './AvatarGroupItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The AvatarGroupItem component represents a single person or entity.
