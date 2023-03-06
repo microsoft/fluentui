@@ -13,13 +13,13 @@ export const renderTag_unstable = (state: TagState) => {
     <slots.root {...slotProps.root}>
       {slots.content && (
         <slots.content {...slotProps.content}>
-          {slots.persona && <slots.persona {...slotProps.persona} />}
+          {slots.avatar && <slots.avatar {...slotProps.avatar} />}
           {slots.icon && <slots.icon {...slotProps.icon} />}
           {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
           {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
         </slots.content>
       )}
-      {slots.dismiss && <slots.dismiss {...slotProps.dismiss} />}
+      {slots.dismissButton && state.dismissable && <slots.dismissButton {...slotProps.dismissButton} />}
     </slots.root>
   );
 };

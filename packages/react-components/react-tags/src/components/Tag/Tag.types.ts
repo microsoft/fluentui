@@ -1,14 +1,14 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Persona } from '@fluentui/react-persona';
+import { Avatar } from '@fluentui/react-avatar';
 
 export type TagSlots = {
   root: NonNullable<Slot<'div'>>;
   content?: Slot<'span'>;
-  persona?: Slot<typeof Persona>;
+  avatar?: Slot<typeof Avatar>;
   icon?: Slot<'span'>;
   primaryText?: Slot<'span'>;
   secondaryText?: Slot<'span'>;
-  dismiss?: Slot<'span'>;
+  dismissButton?: NonNullable<Slot<'button'>>;
 };
 
 /**
@@ -17,13 +17,14 @@ export type TagSlots = {
 export type TagProps = ComponentProps<TagSlots> & {
   size?: 'extra-small' | 'small' | 'medium';
   shape?: 'rounded' | 'circular';
-  style?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+  appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
   disabled?: boolean;
   checked?: boolean;
-  dismissible?: boolean;
+  dismissable?: boolean;
 };
 
 /**
  * State used in rendering Tag
  */
-export type TagState = ComponentState<TagSlots>;
+export type TagState = ComponentState<TagSlots> &
+  Required<Pick<TagProps, 'dismissable' | 'size' | 'shape' | 'disabled' | 'checked' | 'appearance'>>;

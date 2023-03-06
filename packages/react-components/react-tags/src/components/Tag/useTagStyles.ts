@@ -1,15 +1,15 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
   content: 'fui-Tag_content',
-  persona: 'fui-Tag_persona',
+  avatar: 'fui-Tag_avatar',
   icon: 'fui-Tag_icon',
   primaryText: 'fui-Tag_primaryText',
   secondaryText: 'fui-Tag_secondaryText',
-  dismiss: 'fui-Tag_dismiss',
+  dismissButton: 'fui-Tag_dismissButton',
 };
 
 /**
@@ -17,14 +17,30 @@ export const tagClassNames: SlotClassNames<TagSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'inline-flex',
   },
-  content: {},
-  persona: {},
-  icon: {},
-  primaryText: {},
-  secondaryText: {},
-  dismiss: {},
+  content: {
+    display: 'inline-grid',
+    gridTemplateColumns: 'auto 8px auto auto 8px auto',
+    gridTemplateRows: '1fr auto auto 1fr',
+    gridTemplateAreas: `
+    "avatar x icon .         y"
+    "avatar x icon primary   y"
+    "avatar x icon secondary y"
+    "avatar x icon .         y"
+    `,
+  },
+  avatar: {
+    alignSelf: 'center',
+    ...shorthands.gridArea('avatar'),
+  },
+  icon: {
+    alignSelf: 'center',
+    ...shorthands.gridArea('icon'),
+  },
+  primaryText: { ...shorthands.gridArea('primary') },
+  secondaryText: { ...shorthands.gridArea('secondary') },
+  dismissButton: {},
 
   // TODO add additional classes for different states and/or slots
 });
@@ -38,8 +54,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   if (state.content) {
     state.content.className = mergeClasses(tagClassNames.content, styles.content, state.content.className);
   }
-  if (state.persona) {
-    state.persona.className = mergeClasses(tagClassNames.persona, styles.persona, state.persona.className);
+  if (state.avatar) {
+    state.avatar.className = mergeClasses(tagClassNames.avatar, styles.avatar, state.avatar.className);
   }
   if (state.icon) {
     state.icon.className = mergeClasses(tagClassNames.icon, styles.icon, state.icon.className);
@@ -58,8 +74,12 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       state.secondaryText.className,
     );
   }
-  if (state.dismiss) {
-    state.dismiss.className = mergeClasses(tagClassNames.dismiss, styles.dismiss, state.dismiss.className);
+  if (state.dismissButton) {
+    state.dismissButton.className = mergeClasses(
+      tagClassNames.dismissButton,
+      styles.dismissButton,
+      state.dismissButton.className,
+    );
   }
 
   return state;

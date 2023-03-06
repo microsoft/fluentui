@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { TagProps, TagState } from './Tag.types';
-import { Persona } from '@fluentui/react-persona';
+import { Dismiss16Filled } from '@fluentui/react-icons';
+import { Avatar } from '@fluentui/react-avatar';
 
 /**
  * Create the state required to render Tag.
@@ -13,25 +14,47 @@ import { Persona } from '@fluentui/react-persona';
  * @param ref - reference to root HTMLElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
+  const {
+    checked = false,
+    disabled = false,
+    dismissable = false,
+    shape = 'rounded',
+    size = 'medium',
+    appearance = 'filled-lighter',
+  } = props;
+
   return {
     components: {
       root: 'div',
       content: 'span',
-      persona: Persona,
+      avatar: Avatar,
       icon: 'span',
       primaryText: 'span',
       secondaryText: 'span',
-      dismiss: 'span',
+      dismissButton: 'button',
     },
+    checked,
+    disabled,
+    dismissable,
+    shape,
+    size,
+    appearance,
     root: getNativeElementProps('div', {
       ref,
       ...props,
     }),
     content: resolveShorthand(props.content, { required: true }),
-    persona: resolveShorthand(props.persona),
+    avatar: resolveShorthand(props.avatar),
     icon: resolveShorthand(props.icon),
     primaryText: resolveShorthand(props.primaryText),
     secondaryText: resolveShorthand(props.secondaryText),
-    dismiss: resolveShorthand(props.dismiss),
+    dismissButton: resolveShorthand(props.dismissButton, {
+      required: true,
+      defaultProps: {
+        disabled: props.disabled,
+        type: 'button',
+        children: <Dismiss16Filled />,
+      },
+    }),
   };
 };
