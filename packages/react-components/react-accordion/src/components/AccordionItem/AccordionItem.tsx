@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useAccordionItem_unstable } from './useAccordionItem';
 import { useAccordionItemContextValues_unstable } from './useAccordionItemContextValues';
 import { renderAccordionItem_unstable } from './renderAccordionItem';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useAccordionItemStyles_unstable } from './useAccordionItemStyles';
 import type { AccordionItemProps } from './AccordionItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useAccordionItemStyles_unstable } from './useAccordionItemStyles';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled AccordionItem, using the `useAccordionItem_unstable` and `useAccordionItemStyles_unstable` hooks.

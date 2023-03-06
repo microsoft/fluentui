@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useAccordionPanel_unstable } from './useAccordionPanel';
 import { renderAccordionPanel_unstable } from './renderAccordionPanel';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { useAccordionPanelStyles_unstable } from './useAccordionPanelStyles';
 import type { AccordionPanelProps } from './AccordionPanel.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled AccordionPanel, using the `useAccordionPanel_unstable` and `useAccordionPanelStyles_unstable` hooks.
