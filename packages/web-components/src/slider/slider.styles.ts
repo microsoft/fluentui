@@ -56,13 +56,17 @@ export const styles = css`
     cursor: initial;
   }
 
-  :host(:focus:not(:focus-visible)) {
-    outline: none;
+  :host(:focus) {
+    outline: 0;
   }
 
-  :host(:focus-visible) {
+  :host(:has(:focus-visible)) {
     outline-offset: 4px;
     outline: 2px solid ${colorStrokeFocus2};
+  }
+
+  .thumb-cursor:focus {
+    outline: 0;
   }
 
   /* Thumb Container and Cursor */
