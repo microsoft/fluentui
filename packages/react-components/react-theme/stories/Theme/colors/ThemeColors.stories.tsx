@@ -98,7 +98,7 @@ const ColorButton: React.FunctionComponent<
 );
 
 const neutralTokens = (Object.keys(theme.webLight) as Array<keyof Theme>).filter(tokenName =>
-  tokenName.match(/^colorNeutral(Background|Stroke)Alpha.*/),
+  tokenName.match(/^color(?!Palette).*/),
 );
 
 export const Colors = () => {
