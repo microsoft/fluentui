@@ -17,6 +17,24 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
+  - job: Metrics
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn (install packages)
+
+      - script: |
+          yarn nx run @fluentui/react-text:build
+          yarn workspace @fluentui/react-text build
+          yarn workspace @fluentui/react-text test
+
+        displayName: react-text infra data
+
   - job: BuildTestLint
     workspace:
       clean: all
