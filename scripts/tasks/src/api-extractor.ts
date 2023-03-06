@@ -51,11 +51,10 @@ interface ApiExtractorCliRunCommandArgs {
 
 export function apiExtractor(): TaskFunction {
   const { configs, configsToExecute } = getConfig();
-  const messages = {
+  const messages: Record<keyof typeof compilerMessages, string[]> = {
     TS7016: [] as string[],
     TS2305: [] as string[],
   };
-  let configDebug: Parameters<NonNullable<ApiExtractorOptions['onConfigLoaded']>>[0] | null = null;
 
   const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
   const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
@@ -69,8 +68,6 @@ export function apiExtractor(): TaskFunction {
    * Triggers if path aliases will be used or yarn workspaces (that needs to be build based on package dependency tree)
    */
   const isLocalBuild = args.local ?? !(process.env.TF_BUILD || isCI);
-
-  console.log({ isLocalBuild });
 
   const tasks = configsToExecute.map(([configPath, configName]) => {
     const taskName = `api-extractor:${configName}`;
@@ -120,8 +117,6 @@ export function apiExtractor(): TaskFunction {
 
     // NOTE: internally just-tasks calls `options.onConfigLoaded?.(rawConfig);` so we need to mutate object properties (js passes objects by reference)
     config.compiler = compilerConfig;
-
-    configDebug = config;
   }
 
   function messageCallback(message: Parameters<NonNullable<ApiExtractorOptions['messageCallback']>>[0]) {
@@ -148,25 +143,6 @@ export function apiExtractor(): TaskFunction {
 
     if (result.succeeded === true) {
       return;
-    }
-
-    // Log on CI processed configs for better troubleshooting for https://github.com/microsoft/fluentui/issues/25766
-    // if (process.env.TF_BUILD) {
-    logger.info('❌ api-extractor FAIL debug:', {
-      configsToExecute,
-      extractorOptions: JSON.stringify(configDebug, null, 2),
-    });
-    // }
-
-    if (messages.TS2305.length) {
-      const errTitle = [
-        chalk.bgRed.white.bold(`api-extractor | API VIOLATION:`),
-        chalk.red(`  Your package public API uses \`@internal\` marked API's from following packages:`),
-        '\n',
-      ].join('');
-      const logErr = formatApiViolationMessage(messages.TS2305);
-
-      logger.error(errTitle, logErr, '\n');
     }
 
     if (messages.TS7016.length) {
@@ -206,48 +182,6 @@ function getConfig() {
   const configsToExecute = configs.filter(([, configName]) => configName !== 'local');
 
   return { configsToExecute, configs };
-}
-
-/**
- *
- * @example
- *
- * ```
- (TS2305) Module '"@fluentui/react-shared-contexts"' has no exported member 'ThemeContextValue_unstable'.
- (TS2305) Module '"@fluentui/react-shared-contexts"' has no exported member 'TooltipVisibilityContextValue_unstable'.
-
-  ↓ ↓ ↓
-
- @fluentui/react-shared-contexts:
-        - TooltipVisibilityContextValue_unstable
-        - ThemeContextValue_unstable
- ```
- */
-function formatApiViolationMessage(messages: string[]) {
-  const regexPkg = /'"(@fluentui\/[a-z-]+)"'/i;
-  const exportedTokenRegex = /'([a-z-_]+)'/i;
-
-  const byPackage = messages.reduce((acc, curr) => {
-    const [, packageName] = regexPkg.exec(curr) ?? [];
-    const [, exportedToken] = exportedTokenRegex.exec(curr) ?? [];
-    if (acc[packageName]) {
-      acc[packageName].add(exportedToken);
-      return acc;
-    }
-    acc[packageName] = new Set([exportedToken]);
-    return acc;
-  }, {} as Record<string, Set<string>>);
-
-  return Object.entries(byPackage)
-    .map(([packageName, tokens]) => {
-      return [
-        chalk.red.underline(packageName) + ':',
-        Array.from(tokens)
-          .map(token => chalk.italic.red('  - ' + token))
-          .join('\n'),
-      ].join('\n');
-    })
-    .join('\n');
 }
 
 /**
