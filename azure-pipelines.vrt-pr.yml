@@ -180,7 +180,7 @@ jobs:
         displayName: Download VR App CLI
         retryCountOnTaskFailure: 3
 
-      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'e2eLinux-v8' --groupName 'E2E Tests-v8' --workingDirectory midgard
+      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'e2eLinux-v8' --groupName 'E2E Tests-v8'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
