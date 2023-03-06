@@ -5,8 +5,8 @@ import { workspacePaths } from '../../utils';
 import epicGenerator from './index';
 
 jest.mock('child_process');
-const execSyncMock = (execSync as unknown) as jest.Mock<string>;
-const spawnSyncMock = (spawnSync as unknown) as jest.Mock<Partial<SpawnSyncReturns<string[]>>>;
+const execSyncMock = execSync as unknown as jest.Mock<string>;
+const spawnSyncMock = spawnSync as unknown as jest.Mock<Partial<SpawnSyncReturns<string[]>>>;
 
 type Package = {
   name: string;

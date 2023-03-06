@@ -103,7 +103,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
     <div>
       {coveredTokens.map(color => {
         const colorValue: Brands = newColors[color];
-        const usage = ((usageList as unknown) as Record<string, string>)[color];
+        const usage = (usageList as unknown as Record<string, string>)[color];
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;

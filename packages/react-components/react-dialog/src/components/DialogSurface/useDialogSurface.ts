@@ -31,6 +31,7 @@ export const useDialogSurface_unstable = (
 ): DialogSurfaceState => {
   const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
+  const inertTrapFocus = useDialogContext_unstable(ctx => ctx.inertTrapFocus);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
@@ -64,7 +65,10 @@ export const useDialogSurface_unstable = (
     }
   });
 
-  const { modalAttributes } = useModalAttributes({ trapFocus: modalType !== 'non-modal' });
+  const { modalAttributes } = useModalAttributes({
+    trapFocus: modalType !== 'non-modal',
+    legacyTrapFocus: !inertTrapFocus,
+  });
 
   return {
     components: {

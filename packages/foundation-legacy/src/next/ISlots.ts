@@ -12,7 +12,7 @@ export interface IFoundationComponent<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 > extends React.FunctionComponent {
   __options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
 }

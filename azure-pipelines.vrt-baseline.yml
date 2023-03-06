@@ -26,7 +26,6 @@ jobs:
           fluentVersion: v9
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
-          shouldBuildstorybookaddon: true
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv9" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
@@ -54,7 +53,6 @@ jobs:
           fluentVersion: v8
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
-          shouldBuildstorybookaddon: false
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv8" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'
@@ -82,7 +80,6 @@ jobs:
           fluentVersion: v0
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
-          shouldBuildNorthstar: true
 
       - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "FluentUI-v0" --buildId $(Build.BuildId)
         displayName: 'Run Screenshotdiff update baseline'

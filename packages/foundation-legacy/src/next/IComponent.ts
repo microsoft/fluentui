@@ -42,7 +42,7 @@ export interface IComponentOptions<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 > extends IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> {
   /**
    * Slot definition object defining the slot component for each slot.
@@ -60,7 +60,7 @@ export interface IRecompositionComponentOptions<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 > extends IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> {
   /**
    * Slot definition object defining the slot component for each slot.
@@ -81,5 +81,5 @@ export type IComponent<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 > = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>>;
