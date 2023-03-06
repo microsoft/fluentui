@@ -57,6 +57,8 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
     components: {
       root: 'span',
       textarea: 'textarea',
+      contentAbove: 'span',
+      contentBelow: 'span',
     },
     textarea: resolveShorthand(props.textarea, {
       required: true,
@@ -69,6 +71,8 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
       required: true,
       defaultProps: nativeProps.root,
     }),
+    contentAbove: resolveShorthand(props.contentAbove),
+    contentBelow: resolveShorthand(props.contentBelow),
   };
 
   state.textarea.value = value;

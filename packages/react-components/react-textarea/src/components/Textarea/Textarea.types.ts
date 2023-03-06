@@ -14,6 +14,9 @@ export type TextareaSlots = {
    * The `<textarea>` element. This is the primary slot, all native props and ref are applied to this slot.
    */
   textarea: NonNullable<Slot<'textarea'>>;
+
+  contentAbove?: Slot<'span'>;
+  contentBelow?: Slot<'span'>;
 };
 
 /**

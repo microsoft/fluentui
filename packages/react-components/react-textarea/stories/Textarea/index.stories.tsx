@@ -5,6 +5,7 @@ import bestPracticesMd from './TextareaBestPractices.md';
 
 export { Default } from './TextareaDefault.stories';
 export { Appearance } from './TextareaAppearance.stories';
+export { ContentAboveBelow } from './TextareaContentAboveBelow.stories';
 export { Disabled } from './TextareaDisabled.stories';
 export { Placeholder } from './TextareaPlaceholder.stories';
 export { Resize } from './TextareaResize.stories';

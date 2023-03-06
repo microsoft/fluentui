@@ -6,6 +6,8 @@ import type { TextareaSlots, TextareaState } from './Textarea.types';
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   root: 'fui-Textarea',
   textarea: 'fui-Textarea__textarea',
+  contentAbove: 'fui-Textarea__contentAbove',
+  contentBelow: 'fui-Textarea__contentBelow',
 };
 
 const textareaHeight = {
@@ -19,9 +21,11 @@ const textareaHeight = {
  */
 const useRootStyles = makeStyles({
   base: {
-    display: 'inline-flex',
     boxSizing: 'border-box',
+    display: 'inline-flex',
+    flexDirection: 'column',
     position: 'relative',
+    rowGap: tokens.spacingVerticalXS,
     // Padding needed so the focus indicator does not overlap the resize handle, this should match focus indicator size.
     ...shorthands.padding('0', '0', tokens.strokeWidthThick, '0'),
     ...shorthands.margin('0'),
@@ -160,7 +164,7 @@ const useRootStyles = makeStyles({
 const useTextareaStyles = makeStyles({
   base: {
     ...shorthands.borderStyle('none'),
-    ...shorthands.margin('0'),
+    ...shorthands.margin(0),
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
@@ -211,6 +215,47 @@ const useTextareaStyles = makeStyles({
     ),
     ...typographyStyles.body2,
   },
+
+  contentAbove: {
+    paddingTop: 0,
+  },
+  contentBelow: {
+    paddingBottom: 0,
+  },
+});
+
+const useContentAboveStyles = makeStyles({
+  small: {
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalSNudge, 0, tokens.spacingHorizontalSNudge),
+  },
+  medium: {
+    ...shorthands.padding(
+      tokens.spacingVerticalSNudge,
+      tokens.spacingHorizontalMNudge,
+      0,
+      tokens.spacingHorizontalMNudge,
+    ),
+  },
+  large: {
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalM, 0, tokens.spacingHorizontalM),
+  },
+});
+
+const useContentBelowStyles = makeStyles({
+  small: {
+    ...shorthands.padding(0, tokens.spacingHorizontalSNudge, tokens.spacingVerticalXS, tokens.spacingHorizontalSNudge),
+  },
+  medium: {
+    ...shorthands.padding(
+      0,
+      tokens.spacingHorizontalMNudge,
+      tokens.spacingVerticalSNudge,
+      tokens.spacingHorizontalMNudge,
+    ),
+  },
+  large: {
+    ...shorthands.padding(0, tokens.spacingHorizontalM, tokens.spacingVerticalS, tokens.spacingHorizontalM),
+  },
 });
 
 /**
@@ -260,8 +305,28 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     textareaStyles.base,
     textareaStyles[size],
     textareaResizeStyles[resize],
+    state.contentAbove && textareaStyles.contentAbove,
+    state.contentBelow && textareaStyles.contentBelow,
     state.textarea.className,
   );
+
+  const contentAboveStyles = useContentAboveStyles();
+  if (state.contentAbove) {
+    state.contentAbove.className = mergeClasses(
+      textareaClassNames.contentAbove,
+      contentAboveStyles[size],
+      state.contentAbove.className,
+    );
+  }
+
+  const contentBelowStyles = useContentBelowStyles();
+  if (state.contentBelow) {
+    state.contentBelow.className = mergeClasses(
+      textareaClassNames.contentBelow,
+      contentBelowStyles[size],
+      state.contentBelow.className,
+    );
+  }
 
   return state;
 };

@@ -10,7 +10,9 @@ export const renderTextarea_unstable = (state: TextareaState) => {
 
   return (
     <slots.root {...slotProps.root}>
+      {slots.contentAbove && <slots.contentAbove {...slotProps.contentAbove} />}
       <slots.textarea {...slotProps.textarea} />
+      {slots.contentBelow && <slots.contentBelow {...slotProps.contentBelow} />}
     </slots.root>
   );
 };
