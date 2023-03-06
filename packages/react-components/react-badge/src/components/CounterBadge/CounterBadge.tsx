@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useCounterBadge_unstable } from './useCounterBadge';
 import { useCounterBadgeStyles_unstable } from './useCounterBadgeStyles';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from '../Badge/index';
 import type { CounterBadgeProps } from './CounterBadge.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled CounterBadge, using the `useCounterBadge_unstable` hook.

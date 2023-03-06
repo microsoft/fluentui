@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useBadge_unstable } from './useBadge';
 import { useBadgeStyles_unstable } from './useBadgeStyles';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from './renderBadge';
 import type { BadgeProps } from './Badge.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled Badge, using the `useBadge_unstable` hook.
