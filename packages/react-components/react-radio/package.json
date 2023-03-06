@@ -34,7 +34,7 @@
   "dependencies": {
     "@fluentui/react-context-selector": "^9.1.10",
     "@fluentui/react-field": "9.0.0-alpha.21",
-    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-icons": "^2.0.195",
     "@fluentui/react-label": "^9.0.22",
     "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-tabster": "^9.5.3",

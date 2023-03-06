@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-icons": "^2.0.195",
     "@griffel/react": "^1.5.2",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.6.0",
