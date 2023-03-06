@@ -43,7 +43,6 @@ const useRootStyles = makeStyles({
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground6,
     width: '100%',
-    //justifySelf: 'stretch',
     ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
@@ -75,12 +74,6 @@ const useBarStyles = makeStyles({
     ...shorthands.borderRadius('inherit'),
     height: '100%',
   },
-  // medium: {
-  //   height: '100%',
-  // },
-  // large: {
-  //   height: barThicknessValues.large,
-  // },
   nonZeroDeterminate: {
     transitionProperty: 'width',
     transitionDuration: '0.3s',
