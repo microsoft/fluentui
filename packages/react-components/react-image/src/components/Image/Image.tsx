@@ -12,6 +12,7 @@ import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, ref) => {
   const state = useImage_unstable(props, ref);
   useImageStyles_unstable(state);
+
   
   //testing below
   const { useImageStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
