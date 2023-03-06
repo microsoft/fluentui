@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
+import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
@@ -226,7 +226,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             }
             type="button"
           >
-            {dir === 'ltr' ? <ArrowUpRegular /> : <ArrowDownRegular />}
+            {dir === 'ltr' ? <ChevronLeftRegular /> : <ChevronRightRegular />}
           </button>
           <button
             className={mergeClasses(classNames.navigationButton, !isNextYearInBounds && classNames.disabled)}
@@ -241,7 +241,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             }
             type="button"
           >
-            {dir === 'ltr' ? <ArrowDownRegular /> : <ArrowUpRegular />}
+            {dir === 'ltr' ? <ChevronRightRegular /> : <ChevronLeftRegular />}
           </button>
         </div>
       </div>

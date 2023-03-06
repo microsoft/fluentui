@@ -81,7 +81,7 @@ const useDayCellStyles = makeStyles({
     },
 
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         ...shorthands.outline('1px', 'solid', 'Highlight'),
@@ -90,7 +90,7 @@ const useDayCellStyles = makeStyles({
     },
 
     '&:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         ...shorthands.borderColor('Highlight'),
@@ -105,24 +105,14 @@ const useDayCellStyles = makeStyles({
       },
     },
   },
-  // getFocusStyle(theme, { inset: -3 }),
 });
 
 const useDaySelectedStyles = makeStyles({
   dateRangeTypeNotMonth: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-
-    '&::before': {
-      bottom: 0,
-      content: '""',
-      left: 0,
-      position: 'absolute',
-      right: 0,
-      top: 0,
-    },
+    backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
 
     '&:hover, &:active': {
-      backgroundColor: tokens.colorNeutralBackground1Selected + ' !important',
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected + ' !important',
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight!important',
         color: 'HighlightText!important',
@@ -169,7 +159,7 @@ const useWeekDayLabelCellStyles = makeStyles({
 
 const useWeekNumberCellStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorNeutralBackground2,
+    backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
     ...shorthands.borderRight('1px', 'solid'),
     boxSizing: 'border-box',
