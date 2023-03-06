@@ -4,8 +4,10 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { SpinnerBasicExample } from './Spinner.Basic.Example';
 import { SpinnerLabeledExample } from './Spinner.Labeled.Example';
 
-const SpinnerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/Spinner.Basic.Example.tsx') as string;
-const SpinnerLabeledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/Spinner.Labeled.Example.tsx') as string;
+const SpinnerBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/Spinner.Basic.Example.tsx') as string;
+const SpinnerLabeledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Spinner/Spinner.Labeled.Example.tsx') as string;
 
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',

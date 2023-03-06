@@ -17,7 +17,7 @@ export const InjectionMode = {
   appendChild: 2 as 2,
 };
 
-export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 /**
  * CSP settings for the stylesheet

@@ -32,10 +32,6 @@ function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
   const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
-  if (process.env.NODE_ENV === 'production') {
-    return addonName;
-  }
-
   function getPaths() {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
@@ -82,13 +78,8 @@ function loadWorkspaceAddon(addonName, options) {
     };
   }
 
-  const {
-    relativePathToSource,
-    packageDistPath,
-    packageTempPath,
-    presetSourcePath,
-    presetMockedSourcePath,
-  } = getPaths();
+  const { relativePathToSource, packageDistPath, packageTempPath, presetSourcePath, presetMockedSourcePath } =
+    getPaths();
 
   if (!fs.existsSync(presetSourcePath)) {
     throw new Error(
@@ -205,9 +196,11 @@ function getPackageStoriesGlob(options) {
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  const dependencies = /** @type {Record<string,string>} */ (Object.assign(packageJson.dependencies, {
-    [options.packageName]: '*',
-  }));
+  const dependencies = /** @type {Record<string,string>} */ (
+    Object.assign(packageJson.dependencies, {
+      [options.packageName]: '*',
+    })
+  );
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
