@@ -18,7 +18,10 @@ export class RadioGroup extends FASTRadioGroup {
   public stacked: boolean = false;
 
   protected layoutChanged(): void {
-    if (this.$fastController.isConnected && this.slottedRadioButtons !== undefined) {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+    if (this.slottedRadioButtons !== undefined) {
       this.slottedRadioButtons.forEach((item: HTMLElement, index: number) => {
         if (this.stacked && this.orientation === 'horizontal') {
           item.setAttribute('stack', '');
