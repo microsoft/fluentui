@@ -3,6 +3,7 @@ export * from './styles/index';
 export * from './utilities/index';
 export * from './interfaces/index';
 export * from './MergeStyles';
+export * from './cdn';
 
 import './version';
 

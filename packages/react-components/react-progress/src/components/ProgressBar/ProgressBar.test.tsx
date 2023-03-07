@@ -18,7 +18,13 @@ describe('ProgressBar', () => {
       ],
     },
   });
-
+  const originalConsoleError = console.error;
+  beforeAll(() => {
+    console.error = jest.fn();
+  });
+  afterAll(() => {
+    console.error = originalConsoleError;
+  });
   it('has role progressbar', () => {
     const result = render(<ProgressBar />);
     expect(result.getByRole('progressbar')).toBeDefined();
@@ -46,5 +52,42 @@ describe('ProgressBar', () => {
     expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemin')).toEqual('0');
     expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
+  });
+  describe('Max', () => {
+    it('sets the proper aria-valuemax when max is negative', () => {
+      const max = -1;
+      const result = render(<ProgressBar value={-2} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
+    });
+    it('sets the proper aria-valuemax when max is zero', () => {
+      const max = 0;
+      const result = render(<ProgressBar value={-5} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('1');
+    });
+    it('sets the proper aria-valuemax when max is valid', () => {
+      const max = 2;
+      const result = render(<ProgressBar value={0} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuemax')).toEqual('2');
+    });
+  });
+  describe('Value', () => {
+    it('sets the proper aria-valuenow when value is greater than max', () => {
+      const value = 23;
+      const max = 10;
+      const result = render(<ProgressBar value={value} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('10');
+    });
+    it('sets the proper aria-valuenow when value is negative', () => {
+      const value = -5;
+      const max = 3;
+      const result = render(<ProgressBar value={value} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('0');
+    });
+    it('sets the proper aria-valuenow when value is less than or equal to max', () => {
+      const value = 5;
+      const max = 10;
+      const result = render(<ProgressBar value={value} max={max} />);
+      expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('5');
+    });
   });
 });

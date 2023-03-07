@@ -5,6 +5,7 @@ import { useComboboxStyles_unstable } from './useComboboxStyles';
 import type { ComboboxProps } from './Combobox.types';
 import { useComboboxContextValues } from '../../contexts/useComboboxContextValues';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Combobox component: a selection control that allows users to choose from a set of possible options
@@ -14,6 +15,10 @@ export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((pr
   const contextValues = useComboboxContextValues(state);
 
   useComboboxStyles_unstable(state);
+
+  const { useComboboxStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderCombobox_unstable(state, contextValues);
 });
 
