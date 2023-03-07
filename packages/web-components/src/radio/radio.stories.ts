@@ -25,8 +25,37 @@ const storyTemplate = html<RadioStoryArgs>`
 
 export default {
   title: 'Components/Radio',
-  args: {},
-  argTypes: {},
+  args: {
+    disabled: false,
+  },
+  argTypes: {
+    checked: {
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        type: {
+          summary: 'Sets checked state on radio',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        type: {
+          summary: 'Sets default state on radio',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+  },
 } as RadioStoryMeta;
 
 export const Radio = renderComponent(storyTemplate).bind({});
