@@ -4,6 +4,23 @@ import * as ts from 'typescript';
 
 let program: ts.Program;
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+function temporaryTsconfigV9resolve(tsconfigPath: string | undefined) {
+  if (!tsconfigPath) {
+    return;
+  }
+
+  const tsConfigDir = path.dirname(tsconfigPath);
+  const solutionLibConfigPath = path.join(tsConfigDir, 'tsconfig.lib.json');
+  const hasSolutionConfig = fs.existsSync(solutionLibConfigPath);
+  if (hasSolutionConfig) {
+    return solutionLibConfigPath;
+  }
+
+  return tsconfigPath;
+}
+
 /**
  * Creates a ~cached~ TS Program.
  * @remarks this will be never cached with current use/setup as jest creates this for every it/describe() block 🐌
@@ -18,7 +35,10 @@ export function createTsProgram(
     // which can take multiple seconds in a large project. For better performance, we create a single
     // ts.Program per package and pass it to parseWithProgramProvider().
 
-    const tsconfigPath = ts.findConfigFile(configDir ?? sourcePath, fs.existsSync, configName);
+    // const tsconfigPath = ts.findConfigFile(configDir ?? sourcePath, fs.existsSync, configName);
+    const tsconfigPath = temporaryTsconfigV9resolve(
+      ts.findConfigFile(configDir ?? sourcePath, fs.existsSync, configName),
+    );
 
     if (!tsconfigPath) {
       throw new Error(`Cannot find ${configName}`);
