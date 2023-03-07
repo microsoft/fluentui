@@ -42,7 +42,7 @@ export const statusClassName = 'ui-status';
  * @accessibility
  * Implements [ARIA img](https://www.w3.org/TR/wai-aria-1.1/#img) role.
  */
-export const Status = (React.forwardRef<HTMLSpanElement, StatusProps>((props, ref) => {
+export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Status.displayName, context.telemetry);
   setStart();
@@ -86,7 +86,7 @@ export const Status = (React.forwardRef<HTMLSpanElement, StatusProps>((props, re
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, StatusProps> & FluentComponentStaticProps;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, StatusProps> & FluentComponentStaticProps;
 
 Status.displayName = 'Status';
 Status.propTypes = {

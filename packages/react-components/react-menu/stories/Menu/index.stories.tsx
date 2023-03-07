@@ -18,6 +18,7 @@ export { ControlledRadioItems } from './MenuControlledRadioItems.stories';
 export { SelectionGroup } from './MenuSelectionGroup.stories';
 export { NestedSubmenus } from './MenuNestedSubmenus.stories';
 export { NestedSubmenusControlled } from './MenuNestedSubmenusControlled.stories';
+export { NestedSubmenusResponsiveness } from './NestedSubmenusResponsiveness.stories';
 export { AnchorToCustomTarget } from './MenuAnchorToTarget.stories';
 export { CustomTrigger } from './MenuCustomTrigger.stories';
 export { RenderFunctionTrigger } from './MenuRenderFunctionTrigger.stories';

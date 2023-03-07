@@ -1021,17 +1021,13 @@ describe('Dropdown', () => {
 
     it('is set correctly in multiple selection by using Tab on highlighted item', () => {
       const itemSelectedIndex = 3;
-      const {
-        triggerButtonNode,
-        keyDownOnItemsList,
-        getSelectedItemNodeAtIndex,
-        getSelectedItemNodes,
-      } = renderDropdown({
-        defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex,
-        defaultValue: items[4],
-        multiple: true,
-      });
+      const { triggerButtonNode, keyDownOnItemsList, getSelectedItemNodeAtIndex, getSelectedItemNodes } =
+        renderDropdown({
+          defaultOpen: true,
+          defaultHighlightedIndex: itemSelectedIndex,
+          defaultValue: items[4],
+          multiple: true,
+        });
 
       keyDownOnItemsList('Tab');
 
@@ -1043,17 +1039,13 @@ describe('Dropdown', () => {
 
     it('is set correctly in multiple selection by using Shift+Tab on highlighted item', () => {
       const itemSelectedIndex = 2;
-      const {
-        triggerButtonNode,
-        keyDownOnItemsList,
-        getSelectedItemNodeAtIndex,
-        getSelectedItemNodes,
-      } = renderDropdown({
-        defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex,
-        defaultValue: items[4],
-        multiple: true,
-      });
+      const { triggerButtonNode, keyDownOnItemsList, getSelectedItemNodeAtIndex, getSelectedItemNodes } =
+        renderDropdown({
+          defaultOpen: true,
+          defaultHighlightedIndex: itemSelectedIndex,
+          defaultValue: items[4],
+          multiple: true,
+        });
 
       keyDownOnItemsList('Tab', { shiftKey: true });
 
@@ -1143,17 +1135,13 @@ describe('Dropdown', () => {
     });
 
     it('removes last item on backspace when selection range is 0, 0', () => {
-      const {
-        getSelectedItemNodes,
-        getSelectedItemNodeAtIndex,
-        keyDownOnSearchInput,
-        searchInputNode,
-      } = renderDropdown({
-        multiple: true,
-        search: true,
-        defaultSearchQuery: 'bla',
-        defaultValue: [items[0], items[1]],
-      });
+      const { getSelectedItemNodes, getSelectedItemNodeAtIndex, keyDownOnSearchInput, searchInputNode } =
+        renderDropdown({
+          multiple: true,
+          search: true,
+          defaultSearchQuery: 'bla',
+          defaultValue: [items[0], items[1]],
+        });
 
       searchInputNode.setSelectionRange(0, 0);
       keyDownOnSearchInput('Backspace');
@@ -1971,18 +1959,13 @@ describe('Dropdown', () => {
   describe('disabled', () => {
     it('allows no action on the trigger button', () => {
       const { testContainer, removeTestContainer } = createTestContainer();
-      const {
-        clickOnTriggerButton,
-        focusTriggerButton,
-        getItemNodes,
-        triggerButtonNode,
-        keyDownOnTriggerButton,
-      } = renderDropdown(
-        {
-          disabled: true,
-        },
-        testContainer,
-      );
+      const { clickOnTriggerButton, focusTriggerButton, getItemNodes, triggerButtonNode, keyDownOnTriggerButton } =
+        renderDropdown(
+          {
+            disabled: true,
+          },
+          testContainer,
+        );
 
       expect(triggerButtonNode).toHaveAttribute('disabled');
 
@@ -2002,19 +1985,14 @@ describe('Dropdown', () => {
 
     it('allows no action on the search input', () => {
       const { testContainer, removeTestContainer } = createTestContainer();
-      const {
-        keyDownOnSearchInput,
-        clickOnSearchInput,
-        focusSearchInput,
-        getItemNodes,
-        searchInputNode,
-      } = renderDropdown(
-        {
-          disabled: true,
-          search: true,
-        },
-        testContainer,
-      );
+      const { keyDownOnSearchInput, clickOnSearchInput, focusSearchInput, getItemNodes, searchInputNode } =
+        renderDropdown(
+          {
+            disabled: true,
+            search: true,
+          },
+          testContainer,
+        );
 
       expect(searchInputNode).toHaveAttribute('disabled');
 

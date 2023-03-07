@@ -1,0 +1,186 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/SplitButton Migration" />
+
+# SplitButton component Migration guide
+
+`SplitButton` is now a combination of following components: `Menu`, `MenuTrigger`, `SplitButton`, `MenuPopover`, `MenuList` and `MenuItem`.
+
+## Overview:
+
+Before:
+
+```tsx
+import { SplitButton } from '@fluentui/react-northstar';
+const Component = ({ menuItems }) => (
+  <SplitButton
+    menu={menuItems}
+    button={{
+      content: 'Split button',
+    }}
+    onMainButtonClick={() => alert('button was clicked')}
+  />
+);
+```
+
+After:
+
+```tsx
+import {
+  Menu,
+  MenuButtonProps,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+} from '@fluentui/react-components';
+const Component = ({ menuItems }) => (
+  <Menu positioning="below-end">
+    <MenuTrigger>
+      {(triggerProps: MenuButtonProps) => (
+        <SplitButton primaryActionButton={{ onClick: () => alert('button clicked') }} menuButton={triggerProps}>
+          Split button
+        </SplitButton>
+      )}
+    </MenuTrigger>
+
+    <MenuPopover>
+      <MenuList>
+        {menuItems.map(item => (
+          <MenuItem key={item.key}>{item.content}</MenuItem>
+        ))}
+      </MenuList>
+    </MenuPopover>
+  </Menu>
+);
+```
+
+More examples: [Sandbox](https://codesandbox.io/s/splitbutton-migration-fluentui-forked-4tvr9v?file=/example.tsx)
+
+## How to migrate props:
+
+| SplitButton props                       | migrate guide                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| accessibility                           | In V0, we recommended to use `aria-roledescription` and `aria-describedby` on a `button` slot. This is no longer needed in V9 as a `SplitButton` in V9 is two tabs stop. Also see this a11y migration doc: [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page) |
+| as, className                           | keep it as is                                                                                                                                                                                                                                                                                                   |
+| align, autoSize                         | use `positioning` on `Menu` component; see [Migrate positioning props](../migrate-positioning.md)                                                                                                                                                                                                               |
+| button                                  | use `primaryActionButton` instead                                                                                                                                                                                                                                                                               |
+| content                                 | see [Migrate content prop](#./Migrate-`content`-prop) in this document                                                                                                                                                                                                                                          |
+| defaultOpen                             | move `defaultOpen` prop to `Menu` component                                                                                                                                                                                                                                                                     |
+| disabled                                | keep it as is                                                                                                                                                                                                                                                                                                   |
+| flat                                    | use `appearance` prop with `outline` as a value                                                                                                                                                                                                                                                                 |
+| flipBoundary, overflowBoundary          | use `positioning` on `Menu` component; see [Migrate positioning props](../migrate-positioning.md)                                                                                                                                                                                                               |
+| menu                                    | replace with `MenuItem` wrapped in `MenuList` and `MenuPopover`                                                                                                                                                                                                                                                 |
+| offset                                  | use `positioning` on `Menu` component; see [Migrate positioning props](../migrate-positioning.md)                                                                                                                                                                                                               |
+| onMainButtonClick                       | add `primaryActionButton` prop with `onClick`                                                                                                                                                                                                                                                                   |
+| onMenuItemClick                         | use `onClick` on `MenuItem`                                                                                                                                                                                                                                                                                     |
+| onOpenChange                            | use `onOpenChange` on `Menu` component                                                                                                                                                                                                                                                                          |
+| open                                    | use this prop on `Menu` component                                                                                                                                                                                                                                                                               |
+| position, positionFixed                 | use `positioning` on `Menu` component; see [Migrate positioning props](../migrate-positioning.md)                                                                                                                                                                                                               |
+| primary                                 | use `appearance` prop with `primary` as a value                                                                                                                                                                                                                                                                 |
+| secondary                               | it's the default value without any prop needed                                                                                                                                                                                                                                                                  |
+| size                                    | keep it as is                                                                                                                                                                                                                                                                                                   |
+| toggleButton                            | use `ToggleButton` component                                                                                                                                                                                                                                                                                    |
+| variables, styles, design               | see [Migrate style overrides](#./Migrate-style-overrides) in this document                                                                                                                                                                                                                                      |
+| unstable_disableTether, unstable_pinned | use `positioning` on `Menu` component                                                                                                                                                                                                                                                                           |
+
+Postioning props: `align`, `autoSize`, `flipBoundary`, `offset`,`overflowBoundary`,`popperRef`,`position`,`positionFixed`,`target`, `unstable_disableTether`, `unstable_pinned` are now attributes of the `positioning` prop.
+V9 positioning shorthand is recommended when only `positon` or/and `align` is used: `<MenuButton position="below" align="end" />` can be migrate to a string like `<Menu positioning="below-end" />`.
+See [Migrate positioning props](../migrate-positioning.md) for more.
+
+Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/splitbutton-migration-fluentui-forked-4tvr9v?file=/example.tsx)
+
+---
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { SplitButton } from '@fluentui/react-northstar';
+
+export const Component = ({ menuItems }) => (
+  <SplitButton
+    menu={menuItems}
+    button={{
+      content: 'Split button',
+    }}
+    onMainButtonClick={() => alert('button was clicked')}
+    variables={{ isActionButton: true }}
+  />
+);
+
+// in split-button-styles.ts
+export const splitButtonStyles1 = {
+  root: ({ variables: { colorSchemeDefault, isActionButton } }) => ({
+    ...(isActionButton && {
+      color: colorSchemeDefault.foreground,
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import {
+  Button,
+  Menu,
+  MenuButtonProps,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+} from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return (
+    <Menu positioning="below-end">
+      <MenuTrigger>
+        {(triggerProps: MenuButtonProps) => (
+          <SplitButton
+            className={classes.actionButton}
+            menuButton={triggerProps}
+            primaryActionButton={{ onClick: () => alert('button clicked') }}
+          >
+            Split button
+          </SplitButton>
+        )}
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          {menuItems.map(item => (
+            <MenuItem key={item.key}>{item.content}</MenuItem>
+          ))}
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  actionButton: {
+    color: tokens.colorNeutralForeground1,
+  },
+});
+```
+
+### Others
+
+If the `MenuPopover` is not rendered in the correct position or is displaced due to ref changes, you can manually add the ref. This could be also useful if the Menu instance needs to be reused in different places. Please see the [`Anchor to Custom Target` example in the `Menu` V9 documentation](https://react.fluentui.dev/iframe.html?viewMode=docs&id=components-menu-menu--default#anchor-to-custom-target).
+
+Find more examples here: [Sandbox](https://codesandbox.io/s/splitbutton-migration-fluentui-forked-4tvr9v?file=/example.tsx)

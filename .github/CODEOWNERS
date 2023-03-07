@@ -116,10 +116,10 @@ apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/flue
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
-apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build @sopranopillow
+apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
 
 #### Packages
-packages/azure-themes @robtaft-ms @Jacqueline-ms
+packages/azure-themes @Jacqueline-ms
 packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
@@ -140,6 +140,7 @@ packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
 packages/react-file-type-icons @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
+packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
@@ -214,7 +215,7 @@ packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-coastal @TristanWatanabe
 packages/react-components/react-data-grid-react-window @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
-packages/react-components/react-datepicker @microsoft/cxe-red @sopranopillow @khmakoto
+packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-breadcrumb @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg
@@ -233,11 +234,11 @@ packages/react/src/components/CalendarDayGrid @microsoft/cxe-red
 packages/react/src/components/Check @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @khmakoto
 packages/react/src/components/Checkbox @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
 packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal @leddie24
+packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/DatePicker @microsoft/cxe-red
 packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
-packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal @yiminwu
+packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
 packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers

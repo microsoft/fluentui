@@ -339,7 +339,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   };
   return (
     <ButtonGrid
-      {...((props as unknown) as IButtonGridProps)}
+      {...(props as unknown as IButtonGridProps)}
       ref={ref}
       id={id}
       items={itemsWithIndex}

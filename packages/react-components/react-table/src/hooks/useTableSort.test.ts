@@ -127,7 +127,7 @@ describe('useTableSortState', () => {
   });
 
   describe('sort', () => {
-    const createMockCompare = () => (jest.fn() as unknown) as TableColumnDefinition<{}>['compare'];
+    const createMockCompare = () => jest.fn() as unknown as TableColumnDefinition<{}>['compare'];
     it('should use the compare function for the sorted column', () => {
       const compare = createMockCompare();
       const columnDefinition = [

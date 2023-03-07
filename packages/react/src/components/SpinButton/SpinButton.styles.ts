@@ -11,29 +11,27 @@ const DEFAULT_HEIGHT = 32;
 const DEFAULT_MIN_WIDTH = 86;
 const LABEL_MARGIN = 10;
 
-const getDisabledStyles = memoizeFunction(
-  (theme: ITheme): IRawStyle => {
-    const { semanticColors } = theme;
+const getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
+  const { semanticColors } = theme;
 
-    const SpinButtonTextColorDisabled = semanticColors.disabledText;
-    const SpinButtonBackgroundColorDisabled = semanticColors.disabledBackground;
+  const SpinButtonTextColorDisabled = semanticColors.disabledText;
+  const SpinButtonBackgroundColorDisabled = semanticColors.disabledBackground;
 
-    return {
-      backgroundColor: SpinButtonBackgroundColorDisabled,
-      pointerEvents: 'none',
-      cursor: 'default',
-      color: SpinButtonTextColorDisabled,
-      selectors: {
-        ':after': {
-          borderColor: SpinButtonBackgroundColorDisabled,
-        },
-        [HighContrastSelector]: {
-          color: 'GrayText',
-        },
+  return {
+    backgroundColor: SpinButtonBackgroundColorDisabled,
+    pointerEvents: 'none',
+    cursor: 'default',
+    color: SpinButtonTextColorDisabled,
+    selectors: {
+      ':after': {
+        borderColor: SpinButtonBackgroundColorDisabled,
       },
-    };
-  },
-);
+      [HighContrastSelector]: {
+        color: 'GrayText',
+      },
+    },
+  };
+});
 
 export const getArrowButtonStyles = memoizeFunction(
   (theme: ITheme, isUpArrow: boolean, customSpecificArrowStyles?: Partial<IButtonStyles>): IButtonStyles => {

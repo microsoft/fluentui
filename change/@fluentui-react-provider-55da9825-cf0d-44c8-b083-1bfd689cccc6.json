@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Added customstylehooks property",
+  "packageName": "@fluentui/react-provider",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

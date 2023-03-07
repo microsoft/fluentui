@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
-import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/Tree';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemId,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from '@fluentui/react-tree';
 
-export const ControllingOpenAndClose = () => {
-  const [openItems, setOpenItems] = React.useState<string[]>([]);
+export const OpenItemsControlled = () => {
+  const [openItems, setOpenItems] = React.useState<TreeItemId[]>([]);
   const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     setOpenItems(curr =>
       data.open ? [...curr, event.currentTarget.id] : curr.filter(id => id !== event.currentTarget.id),

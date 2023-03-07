@@ -7,15 +7,13 @@ exports[`TreeItem renders a default state 1`] = `
     class="fui-TreeItem"
     id="fui-TreeItem-7"
     role="treeitem"
-    style="--fluent-TreeItem--level: -1;"
     tabindex="0"
   >
-    <span
+    <div
       class="fui-TreeItem__content"
-      data-tabster="{\\"groupper\\":{}}"
     >
       Default TreeItem
-    </span>
+    </div>
   </div>
 </div>
 `;

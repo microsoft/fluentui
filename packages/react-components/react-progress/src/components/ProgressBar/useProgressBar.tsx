@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { clampValue, clampMax } from '../../utils/index';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
 /**
@@ -13,7 +14,9 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
   // Props
-  const { color = 'brand', max = 1.0, shape = 'rounded', thickness = 'medium', value } = props;
+  const { color = 'brand', shape = 'rounded', thickness = 'medium' } = props;
+  const max = clampMax(props.max ?? 1);
+  const value = clampValue(props.value, max);
 
   const root = getNativeElementProps('div', {
     ref,

@@ -41,6 +41,7 @@
     "codesandbox-import-utils": "2.2.3",
     "@types/dedent": "0.7.0",
     "@fluentui/react-alert": "9.0.0-beta.35",
+    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
     "@fluentui/react-context-selector": "^9.1.10"
   },
   "peerDependencies": {

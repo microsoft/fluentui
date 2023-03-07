@@ -31,8 +31,9 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
  * CJK:      CJK Unified Ideographs Extension A, CJK Unified Ideographs, CJK Compatibility Ideographs,
  *             CJK Unified Ideographs Extension B
  */
-// eslint-disable-next-line @fluentui/max-len
-const UNSUPPORTED_TEXT_REGEX: RegExp = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
+const UNSUPPORTED_TEXT_REGEX: RegExp =
+  // eslint-disable-next-line @fluentui/max-len
+  /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
 
 function getInitialsLatin(displayName: string, isRtl: boolean): string {
   let initials = '';

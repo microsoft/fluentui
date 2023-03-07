@@ -4,7 +4,7 @@ import { useConst } from './useConst';
 export type ChangeCallback<
   TElement extends HTMLElement,
   TValue,
-  TEvent extends React.SyntheticEvent<TElement> | undefined
+  TEvent extends React.SyntheticEvent<TElement> | undefined,
 > = (ev: TEvent, newValue: TValue | undefined) => void;
 
 /**
@@ -25,7 +25,7 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TEvent extends React.SyntheticEvent<TElement> | undefined
+  TEvent extends React.SyntheticEvent<TElement> | undefined,
 >(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
@@ -36,7 +36,7 @@ export function useControllableValue<
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TEvent extends React.SyntheticEvent<TElement> | undefined
+  TEvent extends React.SyntheticEvent<TElement> | undefined,
 >(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,

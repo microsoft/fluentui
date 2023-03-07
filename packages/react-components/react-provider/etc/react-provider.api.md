@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -20,6 +21,7 @@ import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-sha
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
     applyStylesToPortals?: boolean | undefined;
+    customStyleHooks_unstable?: Partial<CustomStyleHooksContextValue_unstable> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
@@ -30,7 +32,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 
 // @public (undocumented)
-export type FluentProviderContextValues = Pick<FluentProviderState, 'theme' | 'overrides_unstable'> & {
+export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyleHooks_unstable' | 'theme' | 'overrides_unstable'> & {
     provider: ProviderContextValue_unstable;
     themeClassName: ThemeClassNameContextValue_unstable;
     textDirection: 'ltr' | 'rtl';
@@ -38,8 +40,12 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme' | 'o
 };
 
 // @public (undocumented)
+export type FluentProviderCustomStyleHooks = Partial<CustomStyleHooksContextValue_unstable>;
+
+// @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
     applyStylesToPortals?: boolean;
+    customStyleHooks_unstable?: FluentProviderCustomStyleHooks;
     dir?: 'ltr' | 'rtl';
     targetDocument?: Document;
     theme?: PartialTheme;
@@ -52,7 +58,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'dir' | 'overrides_unstable'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
 };
