@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { useInfoLabel_unstable } from './useInfoLabel';
-import { renderInfoLabel_unstable } from './renderInfoLabel';
-import { useInfoLabelStyles_unstable } from './useInfoLabelStyles';
-import type { InfoLabelProps } from './InfoLabel.types';
+
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InfoLabelProps } from './InfoLabel.types';
+import { renderInfoLabel_unstable } from './renderInfoLabel';
+import { useInfoLabel_unstable } from './useInfoLabel';
+import { useInfoLabelStyles_unstable } from './useInfoLabelStyles';
 
 /**
- * InfoLabel component - TODO: add more docs
+ * InfoLabel component
  */
 export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((props, ref) => {
   const state = useInfoLabel_unstable(props, ref);

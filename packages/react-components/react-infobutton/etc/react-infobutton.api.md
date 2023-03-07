@@ -9,6 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
@@ -43,15 +44,17 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
 
 // @public
-export type InfoLabelProps = ComponentProps<InfoLabelSlots> & {};
+export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'>;
 
 // @public (undocumented)
 export type InfoLabelSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'span'>>;
+    label: NonNullable<Slot<typeof Label>>;
+    infoButton: Slot<typeof InfoButton>;
 };
 
 // @public
-export type InfoLabelState = ComponentState<InfoLabelSlots>;
+export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
 
 // @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
@@ -66,7 +69,7 @@ export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<H
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
 
 // @public
-export const useInfoLabel_unstable: (props: InfoLabelProps, ref: React_2.Ref<HTMLElement>) => InfoLabelState;
+export const useInfoLabel_unstable: (props: InfoLabelProps, ref: React_2.Ref<HTMLLabelElement>) => InfoLabelState;
 
 // @public
 export const useInfoLabelStyles_unstable: (state: InfoLabelState) => InfoLabelState;

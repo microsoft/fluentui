@@ -1,18 +1,31 @@
 import * as React from 'react';
+
 import { render } from '@testing-library/react';
-import { InfoLabel } from './InfoLabel';
 import { isConformant } from '../../testing/isConformant';
+import { InfoLabel } from './InfoLabel';
 
 describe('InfoLabel', () => {
   isConformant({
     Component: InfoLabel,
     displayName: 'InfoLabel',
+    primarySlot: 'label',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            infoButton: { content: 'Test' },
+          },
+        },
+      ],
+    },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  it('sets the infoButton aria-labelledby to the label and infoButton', () => {
+    const result = render(<InfoLabel infoButton={{ content: 'Test' }}>Test label</InfoLabel>);
 
-  it('renders a default state', () => {
-    const result = render(<InfoLabel>Default InfoLabel</InfoLabel>);
-    expect(result.container).toMatchSnapshot();
+    const infoButton = result.getByRole('button');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+
+    expect(infoButton.getAttribute('aria-labelledby')).toBe(`${label.id} ${infoButton.id}`);
   });
 });

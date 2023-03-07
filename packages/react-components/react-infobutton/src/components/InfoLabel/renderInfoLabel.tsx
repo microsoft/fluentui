@@ -1,6 +1,7 @@
 import * as React from 'react';
+
 import { getSlots } from '@fluentui/react-utilities';
-import type { InfoLabelState, InfoLabelSlots } from './InfoLabel.types';
+import type { InfoLabelSlots, InfoLabelState } from './InfoLabel.types';
 
 /**
  * Render the final JSX of InfoLabel
@@ -8,6 +9,10 @@ import type { InfoLabelState, InfoLabelSlots } from './InfoLabel.types';
 export const renderInfoLabel_unstable = (state: InfoLabelState) => {
   const { slots, slotProps } = getSlots<InfoLabelSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.label {...slotProps.label} />
+      {slots.infoButton && <slots.infoButton {...slotProps.infoButton} />}
+    </slots.root>
+  );
 };
