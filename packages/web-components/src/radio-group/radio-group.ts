@@ -29,8 +29,8 @@ export class RadioGroup extends FASTRadioGroup {
     }
   }
 
-  protected slottedRadioButtonsChanged(): void {
-    super.slottedRadioButtonsChanged(this.slottedRadioButtons, this.slottedRadioButtons);
+  protected slottedRadioButtonsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
+    super.slottedRadioButtonsChanged(oldValue, newValue);
     if (this.stacked) {
       this.layoutChanged();
     }
