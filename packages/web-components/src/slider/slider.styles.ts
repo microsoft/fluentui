@@ -28,6 +28,7 @@ export const styles = css`
     --track-overhang: -2px;
     --track-width: 4px;
     --fast-slider-height: calc(var(--thumb-size) * 10);
+    --slider-direction: 90deg;
     align-items: center;
     box-sizing: border-box;
     outline: none;
@@ -35,6 +36,7 @@ export const styles = css`
     user-select: none;
     border-radius: ${borderRadiusSmall};
   }
+
   :host([size='small']) {
     --thumb-size: 14px;
     --track-width: 2px;
@@ -46,6 +48,7 @@ export const styles = css`
     width: 100%;
   }
   :host([orientation='vertical']) {
+    --slider-direction: 0deg;
     height: 160px;
     min-height: var(--thumb-size);
     touch-action: pan-x;
@@ -76,6 +79,7 @@ export const styles = css`
     width: var(--thumb-size);
     transition: all 0.2s ease;
   }
+
   :host([orientation='horizontal']) .thumb-container {
     transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.5));
   }
@@ -99,6 +103,7 @@ export const styles = css`
     background-color: ${colorNeutralForegroundDisabled};
     box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStrokeDisabled};
   }
+
   /* Positioning Region */
   .positioning-region {
     position: relative;
@@ -113,12 +118,36 @@ export const styles = css`
     height: 100%;
     grid-template-columns: var(--thumb-size) var(--thumb-size);
   }
+
   /* Track */
   .track {
     align-self: start;
     position: absolute;
     background-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusMedium};
+  }
+
+  :host(:not([step='1'])) .track::after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: ${borderRadiusMedium};
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 101%;
+    background-image: repeating-linear-gradient(
+      var(--slider-direction),
+      #0000 0%,
+      #0000 calc(var(--step-rate) - 1px),
+      ${colorNeutralBackground1} calc(var(--step-rate) - 1px),
+      ${colorNeutralBackground1} var(--step-rate)
+    );
+  }
+
+  :host([orientation='vertical']:not([step='1'])) .track::after {
+    inset: -1px 0;
   }
 
   :host([disabled]) .track {

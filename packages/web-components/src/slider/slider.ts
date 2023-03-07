@@ -15,4 +15,10 @@ export class Slider extends FASTSlider {
    */
   @attr
   public size: SliderSize = 'medium';
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    const stepRate = (this.step / 100) * 100;
+    this.style.setProperty('--step-rate', stepRate.toString() + '%');
+  }
 }

@@ -12,11 +12,11 @@ const storyTemplate = html<SliderStoryArgs>`
   <fluent-slider
     ?disabled=${x => x.disabled}
     ?readonly=${x => x.readOnly}
+    step=${x => x.step}
     size=${x => x.size}
     min=${x => x.min}
     max=${x => x.max}
     orientation=${x => x.orientation}
-    step=${x => x.step}
     value=${x => x.value}
   ></fluent-slider>
 `;
@@ -63,11 +63,11 @@ export default {
 export const Slider = renderComponent(storyTemplate).bind({});
 
 export const SliderVertical = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider orientation="vertical" current-value="100" min="0" max="100"></fluent-slider>
+  <fluent-slider step="25" orientation="vertical" current-value="100" min="0" max="100"></fluent-slider>
 `);
 
 export const SliderSmall = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider size="small" value="10" min="0" max="100"></fluent-slider>
+  <fluent-slider size="small" value="10" step="25" min="0" max="100"></fluent-slider>
 `);
 
 export const SliderSteps = renderComponent(html<SliderStoryArgs>`
