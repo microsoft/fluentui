@@ -15,7 +15,14 @@ export type TextareaSlots = {
    */
   textarea: NonNullable<Slot<'textarea'>>;
 
+  /**
+   * Element above the textarea, within the Textarea border.
+   */
   contentAbove?: Slot<'span'>;
+
+  /**
+   * Element below the textarea, within the Textarea border.
+   */
   contentBelow?: Slot<'span'>;
 };
 
