@@ -28,11 +28,7 @@ export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
   /**
    * Sets the size of the SkeletonItem in pixels.
    * Size is restricted to a limited set of values recommended for most uses(see SkeletonItemSize).
-   * To set a non-supported size, set `size` to the next-smaller supported size, and set `width` and `height`
-   * to override the rendered size.
-   *
-   * For example, to set the SkeletonItem to 45px in size:
-   * \<SkeletonItem size=\{40\} style=\{\{ width: '45px', height: '45px' \}\} \/\>
+   * To set a non-supported size, set `width` and `height` to override the rendered size.
    * @default 16
    */
   size?: SkeletonItemSize;

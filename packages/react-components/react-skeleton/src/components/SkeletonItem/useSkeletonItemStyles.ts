@@ -69,20 +69,6 @@ const useStyles = makeStyles({
   },
   waveRtl: {
     animationName: skeletonWaveAnimationRTL,
-    backgroundImage: `linear-gradient(
-      to right,
-      ${tokens.colorNeutralStencil1} 0%,
-      ${tokens.colorNeutralStencil2} 50%,
-      ${tokens.colorNeutralStencil1} 100%)`,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: `WindowText
-      linear-gradient(
-        to right,
-        transparent 0%,
-        Window 50%,
-        transparent 100%)
-      `,
-    },
   },
   pulse: {
     animationName: skeletonPulseAnimation,
@@ -122,7 +108,7 @@ const useRectangleStyles = makeStyles({
   128: { height: '128px' },
 });
 
-const useSquareSizeStyles = makeStyles({
+const useSizeStyles = makeStyles({
   8: { width: '8px', height: '8px' },
   12: { width: '12px', height: '12px' },
   16: { width: '16px', height: '16px' },
@@ -145,22 +131,6 @@ const useCircleSizeStyles = makeStyles({
   root: {
     ...shorthands.borderRadius('50%'),
   },
-  8: { width: '8px', height: '8px' },
-  12: { width: '12px', height: '12px' },
-  16: { width: '16px', height: '16px' },
-  20: { width: '20px', height: '20px' },
-  24: { width: '24px', height: '24px' },
-  28: { width: '28px', height: '28px' },
-  32: { width: '32px', height: '32px' },
-  36: { width: '36px', height: '36px' },
-  40: { width: '40px', height: '40px' },
-  48: { width: '48px', height: '48px' },
-  56: { width: '56px', height: '56px' },
-  64: { width: '64px', height: '64px' },
-  72: { width: '72px', height: '72px' },
-  96: { width: '96px', height: '96px' },
-  120: { width: '120px', height: '120px' },
-  128: { width: '128px', height: '128px' },
 });
 
 /**
@@ -172,7 +142,7 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
 
   const rootStyles = useStyles();
   const rectStyles = useRectangleStyles();
-  const squareStyles = useSquareSizeStyles();
+  const sizeStyles = useSizeStyles();
   const circleStyles = useCircleSizeStyles();
 
   state.root.className = mergeClasses(
@@ -185,9 +155,9 @@ export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): Skelet
     animation === 'pulse' && appearance === 'translucent' && rootStyles.translucentPulse,
     shape === 'rectangle' && rectStyles.root,
     shape === 'rectangle' && rectStyles[size],
-    shape === 'square' && squareStyles[size],
+    shape === 'square' && sizeStyles[size],
     shape === 'circle' && circleStyles.root,
-    shape === 'circle' && circleStyles[size],
+    shape === 'circle' && sizeStyles[size],
     state.root.className,
   );
 

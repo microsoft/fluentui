@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     ...shorthands.gap('10px'),
     gridTemplateColumns: 'min-content 80%',
   },
-  secondRow: {
+  secondThirdRow: {
     alignItems: 'center',
     display: 'grid',
     paddingBottom: '10px',
@@ -24,53 +24,29 @@ const useStyles = makeStyles({
   },
 });
 
-const SkeletonElementsFirstRow = () => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.firstRow}>
-      <SkeletonItem shape="circle" size={24} />
-      <SkeletonItem shape="rectangle" size={16} />
-    </div>
-  );
-};
-
-const SkeletonElementsSecondRow = () => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.secondRow}>
-      <SkeletonItem shape="circle" size={24} />
-      <SkeletonItem size={16} />
-      <SkeletonItem size={16} />
-      <SkeletonItem size={16} />
-      <SkeletonItem size={16} />
-    </div>
-  );
-};
-
-const SkeletonElementsThirdRow = () => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.secondRow}>
-      <SkeletonItem shape="square" size={24} />
-      <SkeletonItem size={16} />
-      <SkeletonItem size={16} />
-      <SkeletonItem size={16} />
-      <SkeletonItem size={16} />
-    </div>
-  );
-};
-
 export const Row = (props: Partial<SkeletonProps>) => {
   const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>
       <Skeleton {...props}>
-        <SkeletonElementsFirstRow />
-        <SkeletonElementsSecondRow />
-        <SkeletonElementsThirdRow />
+        <div className={styles.firstRow}>
+          <SkeletonItem shape="circle" size={24} />
+          <SkeletonItem shape="rectangle" size={16} />
+        </div>
+        <div className={styles.secondThirdRow}>
+          <SkeletonItem shape="circle" size={24} />
+          <SkeletonItem size={16} />
+          <SkeletonItem size={16} />
+          <SkeletonItem size={16} />
+          <SkeletonItem size={16} />
+        </div>
+        <div className={styles.secondThirdRow}>
+          <SkeletonItem shape="square" size={24} />
+          <SkeletonItem size={16} />
+          <SkeletonItem size={16} />
+          <SkeletonItem size={16} />
+          <SkeletonItem size={16} />
+        </div>
       </Skeleton>
     </div>
   );
@@ -79,7 +55,7 @@ export const Row = (props: Partial<SkeletonProps>) => {
 Row.parameters = {
   docs: {
     description: {
-      story: `You can make more complex wireframes using the basic building blocks of the Skeleton`,
+      story: `You can make more complex wireframes using the basic building blocks of the Skeleton.`,
     },
   },
 };

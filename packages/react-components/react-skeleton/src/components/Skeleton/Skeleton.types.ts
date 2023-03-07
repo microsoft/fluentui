@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { SkeletonContextValue } from '../../contexts/index';
 
 export type SkeletonSlots = {
   /**
@@ -17,21 +18,19 @@ export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'
    * @defaultValue wave
    */
   animation?: 'wave' | 'pulse';
-  
+
   /**
    * Sets the appearance of the Skeleton.
    * @defaultValue opaque
    */
   appearance?: 'opaque' | 'translucent';
-  
+
   /**
    * Sets the width value of the skeleton wrapper.
    * @defaultValue 100%
    */
   width?: number | string;
 };
-
-export type SkeletonContextValue = Pick<SkeletonProps, 'animation' | 'appearance'>;
 
 export type SkeletonContextValues = {
   skeletonGroup: SkeletonContextValue;

@@ -20,7 +20,7 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
     ref,
     role: 'progressbar',
     'aria-busy': true,
-    'aria-label': 'content is loading',
+    'aria-label': 'Loading Content',
     ...props,
   });
 
