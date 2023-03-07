@@ -23,7 +23,6 @@ import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
-import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -57,8 +56,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     openOnHover?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
-    trapFocus?: UseModalAttributesOptions['trapFocus'];
-    legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
+    trapFocus?: boolean;
+    legacyTrapFocus?: boolean;
     inertTrapFocus?: boolean;
     unstable_disableAutoFocus?: boolean;
 };

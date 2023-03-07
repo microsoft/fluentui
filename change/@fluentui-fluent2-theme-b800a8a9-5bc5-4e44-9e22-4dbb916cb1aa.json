@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding IExtendedSemanticColors with properties for inputBottomBorders since the treatment is different in Fluent 2. Updating focus behavior for TextField to more closley match Fluent 2.",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}
