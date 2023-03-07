@@ -15,6 +15,15 @@ export const styles = css`
     flex-direction: column;
     margin: 2px 0;
   }
+  ::slotted([slot='label']) {
+    color: ${colorNeutralForeground3};
+    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase300};
+    cursor: default;
+  }
   .positioning-region {
     display: flex;
     flex-wrap: wrap;
