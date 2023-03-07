@@ -58,9 +58,9 @@ export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pic
 
 // @public
 export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
-    width?: number | string;
-    appearance?: 'opaque' | 'translucent';
     animation?: 'wave' | 'pulse';
+    appearance?: 'opaque' | 'translucent';
+    width?: number | string;
 };
 
 // @public (undocumented)
