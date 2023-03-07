@@ -4,12 +4,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tagClassNames: SlotClassNames<TagSlots> = {
   root: 'fui-Tag',
-  content: 'fui-Tag_content',
-  avatar: 'fui-Tag_avatar',
-  icon: 'fui-Tag_icon',
-  primaryText: 'fui-Tag_primaryText',
-  secondaryText: 'fui-Tag_secondaryText',
-  dismissButton: 'fui-Tag_dismissButton',
+  content: 'fui-Tag__content',
+  avatar: 'fui-Tag__avatar',
+  icon: 'fui-Tag__icon',
+  primaryText: 'fui-Tag__primaryText',
+  secondaryText: 'fui-Tag__secondaryText',
+  dismissButton: 'fui-Tag__dismissButton',
 };
 
 /**

@@ -4,12 +4,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tagButtonClassNames: SlotClassNames<TagButtonSlots> = {
   root: 'fui-TagButton',
-  contentButton: 'fui-TagButton_contentButton',
-  avatar: 'fui-TagButton_avatar',
-  icon: 'fui-TagButton_icon',
-  primaryText: 'fui-TagButton_primaryText',
-  secondaryText: 'fui-TagButton_secondaryText',
-  dismissButton: 'fui-TagButton_dismissButton',
+  contentButton: 'fui-TagButton__contentButton',
+  avatar: 'fui-TagButton__avatar',
+  icon: 'fui-TagButton__icon',
+  primaryText: 'fui-TagButton__primaryText',
+  secondaryText: 'fui-TagButton__secondaryText',
+  dismissButton: 'fui-TagButton__dismissButton',
 };
 
 /**
