@@ -42,7 +42,6 @@ export class RadioGroup extends FASTRadioGroup {
   }
 
   protected disableChanged(): void {
-    console.log('disableChanged');
     if (!this.$fastController.isConnected) {
       return;
     }
@@ -55,14 +54,10 @@ export class RadioGroup extends FASTRadioGroup {
 
   protected slottedRadioButtonsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
     super.slottedRadioButtonsChanged(oldValue, newValue);
-    console.log('slottedRadioButtonsChanged');
     if (this.disabled) {
-      console.log('slottedRadioButtonsChanged: disabled');
       this.disableChanged();
     }
     if (this.stacked) {
-      console.log('slottedRadioButtonsChanged: layoutChanged');
-
       this.layoutChanged();
     }
   }
