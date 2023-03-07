@@ -17,7 +17,7 @@ const storyTemplate = html<RadioGroupStoryArgs>`
     name="radio-story"
   >
     <span id="label-1" slot="label">Favorite Fruit</span>
-    <fluent-radio value="apple" ?checked=${(x: { checked: boolean }) => x.checked}> Apple </fluent-radio>
+    <fluent-radio ?checked=${(x: { checked: any }) => x.checked} value="apple">Apple</fluent-radio>
     <fluent-radio value="pear"> Pear </fluent-radio>
     <fluent-radio value="banana"> Banana </fluent-radio>
     <fluent-radio value="orange"> Orange </fluent-radio>
