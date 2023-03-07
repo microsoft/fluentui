@@ -12,7 +12,7 @@ const getNextEmoji = () => {
 };
 
 export class Popover extends FASTElement {
-  private objId = getNextEmoji();
+  public objId = getNextEmoji();
 
   public constructor() {
     super();
@@ -54,9 +54,52 @@ export class Popover extends FASTElement {
     console.groupEnd();
   }
 
+  /**
+   * @internal
+   * List of child popovers nested inside this popover.
+   * Used to avoid closing this popover on ESC key press when a child popover is open.
+   */
+  private childPopovers: Popover[] = [];
+
+  /**
+   * @internal
+   * Called by child popovers in their connectedCallback to register themselves.
+   */
+  protected registerChildPopover(popover: Popover) {
+    this.childPopovers.push(popover);
+  }
+
+  /**
+   * @internal
+   * Called by child popovers in their disconnectedCallback to unregister themselves.
+   */
+  protected unregisterChildPopover(popover: Popover) {
+    this.childPopovers = this.childPopovers.filter(x => x !== popover);
+  }
+
+  /**
+   * @internal
+   * Traverses the DOM tree upwards, crossing shadow root boundaries, to find the first parent Popover.
+   */
+  private getParentPopover(): Popover | undefined {
+    let parent = this.parentNode;
+    while (parent) {
+      console.log(parent);
+      if (parent instanceof Popover) {
+        return parent;
+      }
+      parent = parent.parentNode ?? (parent as ShadowRoot).host;
+    }
+  }
+
   public connectedCallback() {
     super.connectedCallback();
-    console.group(this.objId, 'connectedCallback');
+
+    const parentPopover = this.getParentPopover();
+    if (parentPopover) {
+      parentPopover.registerChildPopover(this);
+    }
+    console.group(this.objId, 'connectedCallback', { parentPopover });
 
     // the component might have been mounted with `open` set to true
     this.handlePositioningStartStop();
@@ -69,6 +112,11 @@ export class Popover extends FASTElement {
     console.group(this.objId, 'disconnectedCallback');
 
     this.handlePositioningStartStop();
+
+    const parentPopover = this.getParentPopover();
+    if (parentPopover) {
+      parentPopover.unregisterChildPopover(this);
+    }
 
     console.groupEnd();
   }
@@ -136,12 +184,50 @@ export class Popover extends FASTElement {
 
   private startAutoUpdate() {
     this.autoUpdateCleanup = autoUpdate(this.anchorRef![0], this.popoverContentRef!, this.updatePosition);
+    document.addEventListener('click', this.handleOutsideClick, true);
+    document.addEventListener('keydown', this.handleDocumentKeyDown);
+    this.updatePosition();
   }
 
+  // @FIXME: If there are nested popovers and the outer one closes, nothing stops the autoUpdate on the inner one.
+  //        As a consequence, the Floating autoUpdate is still running and the listeners are still attached.
+  //        This does not happen in a simple case (when the outer popover is closed by an outside click),
+  //        as the inner popover is stopped by its outside click handler.
   private stopAutoUpdate() {
-    this.autoUpdateCleanup?.();
+    if (this.autoUpdateCleanup) {
+      document.removeEventListener('keydown', this.handleDocumentKeyDown);
+      document.removeEventListener('click', this.handleOutsideClick, true);
+      console.log(this.objId, 'stopAutoUpdate', { openedChildren: this.childPopovers.filter(x => x.open).length });
+      this.autoUpdateCleanup();
+    }
     this.autoUpdateCleanup = undefined;
   }
+
+  private handleOutsideClick = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const path = e.composedPath();
+    const isOutsideContent = !this.popoverContentRef || path.indexOf(this.popoverContentRef) < 0;
+    const isOutsideAnchor = !this.anchorRef?.[0] || path.indexOf(this.anchorRef[0]) < 0;
+
+    if (isOutsideContent && isOutsideAnchor) {
+      console.log(this.objId, 'handleOutsideClick - should close', {
+        target,
+        popoverContentRef: this.popoverContentRef,
+      });
+      this.$emit('dismiss');
+    } else {
+      console.log(this.objId, 'handleOutsideClick - should NOT close');
+    }
+  };
+
+  private handleDocumentKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      const hasOpenChild = this.childPopovers.some(x => x.open);
+      if (!hasOpenChild) {
+        this.$emit('dismiss');
+      }
+    }
+  };
 
   /**
    * Alignment for the component. Only has an effect if used with the @see position option
