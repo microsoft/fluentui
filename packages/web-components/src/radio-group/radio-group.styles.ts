@@ -1,6 +1,15 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import {} from '../theme/design-tokens.js';
+import {
+  colorNeutralForeground3,
+  fontFamilyBase,
+  fontSizeBase300,
+  fontWeightRegular,
+  lineHeightBase300,
+  spacingHorizontalS,
+  spacingHorizontalXS,
+  spacingVerticalS,
+} from '../theme/design-tokens.js';
 
 /** Radio styles
  * @public
