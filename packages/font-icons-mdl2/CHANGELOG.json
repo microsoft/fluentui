@@ -2,6 +2,27 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Mon, 06 Mar 2023 07:43:03 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.11",
+      "version": "8.5.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "1dbd373cbbebd29b4186229a6f84f969fb58b02a",
+            "comment": "feat:Consume Fluent CDN from style-utilities"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.4",
+            "commit": "220b321042b4bcc126c86a91811a34b04934d49b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:18 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.5.10",
       "version": "8.5.10",

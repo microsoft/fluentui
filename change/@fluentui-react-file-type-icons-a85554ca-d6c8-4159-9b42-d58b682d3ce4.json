@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat:Consume Fluent CDN from style-utilities",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

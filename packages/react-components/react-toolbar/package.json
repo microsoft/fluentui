@@ -40,6 +40,7 @@
     "@fluentui/react-utilities": "^9.6.0",
     "@fluentui/react-context-selector": "^9.1.10",
     "@fluentui/react-radio": "^9.0.26",
+    "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-tabster": "^9.5.3",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"

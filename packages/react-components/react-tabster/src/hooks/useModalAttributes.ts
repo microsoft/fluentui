@@ -56,7 +56,7 @@ export const useModalAttributes = (
       id,
       isOthersAccessible: !trapFocus,
       isAlwaysAccessible: alwaysFocusable,
-      isTrapped: legacyTrapFocus,
+      isTrapped: legacyTrapFocus && trapFocus,
     },
   });
 
