@@ -37,13 +37,39 @@ export type InfoButtonSlots = {
 export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
 
 // @public
+export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
+
+// @public (undocumented)
+export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
+
+// @public
+export type InfoLabelProps = ComponentProps<InfoLabelSlots> & {};
+
+// @public (undocumented)
+export type InfoLabelSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type InfoLabelState = ComponentState<InfoLabelSlots>;
+
+// @public
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
+
+// @public
+export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
 
 // @public
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
 
 // @public
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
+
+// @public
+export const useInfoLabel_unstable: (props: InfoLabelProps, ref: React_2.Ref<HTMLElement>) => InfoLabelState;
+
+// @public
+export const useInfoLabelStyles_unstable: (state: InfoLabelState) => InfoLabelState;
 
 // (No @packageDocumentation comment for this package)
 

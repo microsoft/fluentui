@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoLabel renders a default state 1`] = `
+<div>
+  <div
+    class="fui-InfoLabel"
+  >
+    Default InfoLabel
+  </div>
+</div>
+`;
