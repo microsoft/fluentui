@@ -11,7 +11,7 @@ import {
   spacingVerticalS,
 } from '../theme/design-tokens.js';
 
-/** Radio styles
+/** RadioGroup styles
  * @public
  */
 export const styles = css`
