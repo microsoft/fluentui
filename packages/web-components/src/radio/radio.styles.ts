@@ -12,6 +12,7 @@ import {
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
+  spacingVerticalXS,
 } from '../theme/design-tokens.js';
 
 /** Radio styles
@@ -55,6 +56,7 @@ export const styles = css`
     height: 16px;
     border-radius: 50%;
     border: 1px solid ${colorNeutralStrokeAccessible};
+    margin: ${spacingVerticalXS} ${spacingHorizontalXS};
     top: 0;
     left: 0;
   }
@@ -75,6 +77,21 @@ export const styles = css`
   :host(:not([disabled])) .control:hover {
     background: darkblue;
     border-color: lightblue;
+
+  :host([stack]) {
+    flex-direction: column;
+    justify-content: center;
+  }
+  :host([stack]) .label {
+    padding: ${spacingVerticalXS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalS};
+  }
+
+  :host([stack]) .control {
+    margin: ${spacingVerticalS} ${spacingHorizontalS};
+  }
+
+  :host(:not([disabled]):hover) .label {
+    color: ${colorNeutralForeground2};
   }
   :host(:not([disabled])) .control:active {
     background: gray;
