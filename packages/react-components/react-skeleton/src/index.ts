@@ -7,18 +7,12 @@ export {
 } from './Skeleton';
 export type { SkeletonProps, SkeletonSlots, SkeletonState } from './Skeleton';
 export {
-  SkeletonLine,
-  renderSkeletonLine_unstable,
-  skeletonLineClassNames,
-  useSkeletonLineStyles_unstable,
-  useSkeletonLine_unstable,
-} from './SkeletonLine';
-export type { SkeletonLineProps, SkeletonLineSlots, SkeletonLineState } from './SkeletonLine';
-export {
-  SkeletonCircle,
-  renderSkeletonCircle_unstable,
-  skeletonCircleClassNames,
-  useSkeletonCircleStyles_unstable,
-  useSkeletonCircle_unstable,
-} from './SkeletonCircle';
-export type { SkeletonCircleProps, SkeletonCircleSlots, SkeletonCircleState } from './SkeletonCircle';
+  SkeletonItem,
+  renderSkeletonItem_unstable,
+  skeletonItemClassNames,
+  useSkeletonItemStyles_unstable,
+  useSkeletonItem_unstable,
+} from './SkeletonItem';
+export type { SkeletonItemProps, SkeletonItemSlots, SkeletonItemState } from './SkeletonItem';
+export { SkeletonContextProvider, useSkeletonContext } from './contexts/index';
+export type { SkeletonContextValue } from './contexts/index';
