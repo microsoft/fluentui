@@ -15,12 +15,10 @@ import {
  * @public
  */
 export const styles = css`
-  :host([hidden]) {
-    display: none;
-  }
+  ${display('flex')}
+
   :host {
     align-items: flex-start;
-    display: flex;
     flex-direction: column;
     margin: 2px 0;
   }

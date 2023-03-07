@@ -90,7 +90,7 @@ export default {
 
 export const RadioGroup = renderComponent(storyTemplate).bind({});
 
-export const RadioGroupLabeled = renderComponent(html<RadioGroupStoryArgs>`
+export const RadioGroupLabelledby = renderComponent(html<RadioGroupStoryArgs>`
   <fluent-radio-group aria-labelledby="label-2" role="radiogroup" name="radio-story">
     <span id="label-2" slot="label">Favorite Fruit</span>
     <fluent-radio value="apple"> Apple </fluent-radio>
