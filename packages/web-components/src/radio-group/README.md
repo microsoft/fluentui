@@ -1,6 +1,6 @@
 # Radio Group
 
-> RadioGroup lets people select a single option from two or more Radio items. Use RadioGroup to present all available choices if there's enough space..
+> RadioGroup lets users select a single option from two or more Radio items. Use RadioGroup to present all available choices if there's enough space..
 
 <br />
 
@@ -42,6 +42,7 @@ Used anywhere an author might group a list of radio options.
 | `name`        | public  | `string`                 |              | The name of the radio group. Setting this value will set the name value for all child radio elements. |
 | `value`       | public  | `string`                 |              | The value of the checked radio.                                                                       |
 | `orientation` | public  | `horizontal \| vertical` | `horizontal` | The orientation of the group                                                                          |
+| `stacked`     | public  | `boolean`                | `false`      | places each radio item in a row, with labels below the radio indicator.                               |
 | default slot  | public  | `HTMLElement[]`          |              | The default slot expecting Radio items                                                                |
 
 <br />
@@ -97,9 +98,10 @@ Used anywhere an author might group a list of radio options.
 
 ### **WAI-ARIA Roles, States, and Properties**
 
-| Attributes        | value | Description                              |
-| ----------------- | ----- | ---------------------------------------- |
-| `aria-labelledby` |       | used to associate a label with the group |
+| Attributes        | value          | Description                              |
+| ----------------- | -------------- | ---------------------------------------- |
+| `aria-labelledby` |                | used to associate a label with the group |
+| `role`            | `"radiogroup"` | used to define a group of radio buttons  |
 
 <br />
 <hr />
@@ -122,6 +124,6 @@ Used anywhere an author might group a list of radio options.
 <br />
 
 **Property Mapping**
-| Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|-------------------|------------------------ |---------------------------|
-| `layout` | `orientation` | React implementation requires user to pass either `"horizontal"` or `"horizontal-stacked"` through `layout` prop. <br /> WC3 implementation requires user to either pass `"vertical"` or "`horizontal"` through `orientation` attribute.
+| Fluent UI React 9 | Fluent Web Components | Description of difference |
+|-------------------|-------------------------- |---------------------------|
+| `layout` | `orientation` + `stacked` | React implementation requires user to pass either `"horizontal"` or `"horizontal-stacked"` through `layout` prop. <br /> WC3 implementation requires user to either pass `"vertical"` or "`horizontal"` through `orientation` attribute. Additionally, adding the `boolean` attribute `stacked` when the orientation is set to `horizontal` will create the `horizontal-stacked` layout available in FUIR9.
