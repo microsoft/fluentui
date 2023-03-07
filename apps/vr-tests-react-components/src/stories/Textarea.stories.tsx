@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
+import { Button } from '@fluentui/react-button';
 import { Textarea } from '@fluentui/react-textarea';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { FluentProvider } from '@fluentui/react-provider';
+import { AttachFilled, DrawTextRegular, EmojiRegular, SendRegular } from '@fluentui/react-icons';
 
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -56,4 +58,29 @@ storiesOf('Textarea Converged', module)
         <Textarea appearance="outline" placeholder="Outline appearance" />
       </div>
     </FluentProvider>
+  ))
+  .addStory('contentAbove', () => (
+    <Textarea
+      contentAbove={
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, max-content) 1fr' }}>
+          <Button appearance="transparent" icon={<DrawTextRegular />} />
+          <Button appearance="transparent" icon={<EmojiRegular />} />
+          <Button appearance="transparent" icon={<AttachFilled />} />
+        </div>
+      }
+      placeholder="Placeholder"
+    />
+  ))
+  .addStory('contentBelow', () => (
+    <Textarea
+      contentBelow={
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, max-content) 1fr' }}>
+          <Button appearance="transparent" icon={<DrawTextRegular />} />
+          <Button appearance="transparent" icon={<EmojiRegular />} />
+          <Button appearance="transparent" icon={<AttachFilled />} />
+          <Button style={{ justifySelf: 'flex-end' }} appearance="transparent" icon={<SendRegular />} />
+        </div>
+      }
+      placeholder="Placeholder"
+    />
   ));
