@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: adjust IntrinsicElementProps type to properly support void elements",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

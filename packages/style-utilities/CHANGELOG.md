@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 01 Mar 2023 07:45:41 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Mar 2023 07:43:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.4)
+
+Mon, 06 Mar 2023 07:43:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.3..@fluentui/style-utilities_v8.9.4)
+
+### Patches
+
+- feat:Consume Fluent CDN from style-utilities ([PR #25396](https://github.com/microsoft/fluentui/pull/25396) by tmichon@microsoft.com)
 
 ## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.3)
 
