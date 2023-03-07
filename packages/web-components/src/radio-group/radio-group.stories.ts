@@ -90,7 +90,7 @@ export default {
 export const RadioGroup = renderComponent(storyTemplate).bind({});
 
 export const RadioGroupLabelledby = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group aria-labelledby="label-2" role="radiogroup" name="radio-story">
+  <fluent-radio-group aria-labelledby="label-2" name="radio-story">
     <span id="label-2" slot="label">Favorite Fruit</span>
     <fluent-radio value="apple"> Apple </fluent-radio>
     <fluent-radio value="pear"> Pear </fluent-radio>
@@ -100,7 +100,7 @@ export const RadioGroupLabelledby = renderComponent(html<RadioGroupStoryArgs>`
 `);
 
 export const RadioGroupLayoutVertical = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group aria-labelledby="label-3" orientation="vertical" role="radiogroup" name="radio-story">
+  <fluent-radio-group aria-labelledby="label-3" orientation="vertical" name="radio-story">
     <span id="label-3" slot="label">Favorite Fruit</span>
     <fluent-radio value="apple"> Apple </fluent-radio>
     <fluent-radio value="pear"> Pear </fluent-radio>
@@ -110,7 +110,7 @@ export const RadioGroupLayoutVertical = renderComponent(html<RadioGroupStoryArgs
 `);
 
 export const RadioGroupLayoutHorizontal = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group aria-labelledby="label-4" orientation="horizontal" role="radiogroup" name="radio-story">
+  <fluent-radio-group aria-labelledby="label-4" orientation="horizontal" name="radio-story">
     <span id="label-4" slot="label">Favorite Fruit</span>
     <fluent-radio value="apple"> Apple </fluent-radio>
     <fluent-radio value="pear"> Pear </fluent-radio>
@@ -120,7 +120,7 @@ export const RadioGroupLayoutHorizontal = renderComponent(html<RadioGroupStoryAr
 `);
 
 export const RadioGroupLayoutHorizontalStacked = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group stacked aria-labelledby="label-5" orientation="horizontal" role="radiogroup" name="radio-story">
+  <fluent-radio-group stacked aria-labelledby="label-5" orientation="horizontal" name="radio-story">
     <span id="label-5" slot="label">Favorite Fruit</span>
     <fluent-radio value="apple"> Apple </fluent-radio>
     <fluent-radio value="pear"> Pear </fluent-radio>
@@ -129,8 +129,18 @@ export const RadioGroupLayoutHorizontalStacked = renderComponent(html<RadioGroup
   </fluent-radio-group>
 `);
 
+export const RadioGroupOnChange = renderComponent(html<RadioGroupStoryArgs>`
+  <fluent-radio-group aria-labelledby="label-2" name="radio-story">
+    <span id="label-2" slot="label">Favorite Fruit</span>
+    <fluent-radio value="apple"> Apple </fluent-radio>
+    <fluent-radio value="pear"> Pear </fluent-radio>
+    <fluent-radio value="banana"> Banana </fluent-radio>
+    <fluent-radio value="orange"> Orange </fluent-radio>
+  </fluent-radio-group>
+`);
+
 export const RadioGroupDefaultChecked = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group aria-labelledby="label-6" orientation="horizontal" role="radiogroup" name="radio-story">
+  <fluent-radio-group aria-labelledby="label-6" orientation="horizontal" name="radio-story">
     <span id="label-6" slot="label">Favorite Fruit</span>
     <fluent-radio value="apple"> Apple </fluent-radio>
     <fluent-radio checked value="pear"> Pear </fluent-radio>
@@ -140,7 +150,7 @@ export const RadioGroupDefaultChecked = renderComponent(html<RadioGroupStoryArgs
 `);
 
 export const RadioGroupDisabled = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group disabled aria-labelledby="label-7" role="radiogroup" name="radio-story">
+  <fluent-radio-group disabled aria-labelledby="label-7" name="radio-story">
     <span id="label-7" slot="label">Favorite Fruit</span>
     <fluent-radio checked value="apple"> Apple </fluent-radio>
     <fluent-radio checked value="pear"> Pear </fluent-radio>
@@ -150,7 +160,7 @@ export const RadioGroupDisabled = renderComponent(html<RadioGroupStoryArgs>`
 `);
 
 export const RadioGroupDisabledItem = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group aria-labelledby="label-8" role="radiogroup" name="radio-story">
+  <fluent-radio-group aria-labelledby="label-8" name="radio-story">
     <span id="label-8" slot="label">Favorite Fruit</span>
     <fluent-radio checked value="apple"> Apple </fluent-radio>
     <fluent-radio disabled value="pear"> Pear </fluent-radio>
