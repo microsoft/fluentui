@@ -11,6 +11,7 @@ import {
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
