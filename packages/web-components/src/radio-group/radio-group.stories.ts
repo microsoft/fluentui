@@ -10,15 +10,14 @@ type RadioGroupStoryMeta = Meta<RadioGroupStoryArgs>;
 
 const storyTemplate = html<RadioGroupStoryArgs>`
   <fluent-radio-group
-    labelledby="label-1"
-    ?disabled=${x => x.disabled}
-    orientation=${x => x.orientation}
-    stacked=${x => x.stacked}
-    role="radiogroup"
+    aria-labelledby="label-1"
+    ?disabled=${(x: { disabled: boolean }) => x.disabled}
+    ?stacked=${(x: { stacked: boolean }) => x.stacked}
+    orientation=${(x: { orientation: 'vertical' | 'horizontal' }) => x.orientation}
     name="radio-story"
   >
     <span id="label-1" slot="label">Favorite Fruit</span>
-    <fluent-radio checked=${x => x.checked} value="apple"> Apple </fluent-radio>
+    <fluent-radio value="apple" ?checked=${(x: { checked: boolean }) => x.checked}> Apple </fluent-radio>
     <fluent-radio value="pear"> Pear </fluent-radio>
     <fluent-radio value="banana"> Banana </fluent-radio>
     <fluent-radio value="orange"> Orange </fluent-radio>
