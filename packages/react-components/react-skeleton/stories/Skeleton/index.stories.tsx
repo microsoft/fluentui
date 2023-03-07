@@ -4,8 +4,8 @@ import descriptionMd from './SkeletonDescription.md';
 import bestPracticesMd from './SkeletonBestPractices.md';
 
 export { Default } from './SkeletonDefault.stories';
-export { Translucent } from './SkeletonTranslucent.stories';
-export { Pulse } from './SkeletonPulse.stories';
+export { Appearance } from './SkeletonAppearance.stories';
+export { Animation } from './SkeletonAnimation.stories';
 export { Row } from './SkeletonRow.stories';
 
 export default {

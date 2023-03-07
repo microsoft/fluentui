@@ -11,8 +11,7 @@ const useStyles = makeStyles({
     display: 'grid',
     paddingBottom: '10px',
     position: 'relative',
-    ...shorthands.gap('5px'),
-    ...shorthands.margin('5px'),
+    ...shorthands.gap('10px'),
     gridTemplateColumns: 'min-content 80%',
   },
   secondRow: {
@@ -20,8 +19,7 @@ const useStyles = makeStyles({
     display: 'grid',
     paddingBottom: '10px',
     position: 'relative',
-    ...shorthands.gap('5px'),
-    ...shorthands.margin('5px'),
+    ...shorthands.gap('10px'),
     gridTemplateColumns: 'min-content 20% 20% 15% 15%',
   },
 });
@@ -76,4 +74,12 @@ export const Row = (props: Partial<SkeletonProps>) => {
       </Skeleton>
     </div>
   );
+};
+
+Row.parameters = {
+  docs: {
+    description: {
+      story: `You can make more complex wireframes using the basic building blocks of the Skeleton`,
+    },
+  },
 };
