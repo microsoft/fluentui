@@ -18,6 +18,40 @@ export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;
 
 // @public
+export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
+
+// @public (undocumented)
+export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>;
+
+// @public
+export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {};
+
+// @public (undocumented)
+export type BreadcrumbDividerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type BreadcrumbDividerState = ComponentState<BreadcrumbDividerSlots>;
+
+// @public
+export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;
+
+// @public (undocumented)
+export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots>;
+
+// @public
+export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & {};
+
+// @public (undocumented)
+export type BreadcrumbItemSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots>;
+
+// @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {};
 
 // @public (undocumented)
@@ -32,7 +66,25 @@ export type BreadcrumbState = ComponentState<BreadcrumbSlots>;
 export const renderBreadcrumb_unstable: (state: BreadcrumbState) => JSX.Element;
 
 // @public
+export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSX.Element;
+
+// @public
+export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.Element;
+
+// @public
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
+
+// @public
+export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbDividerState;
+
+// @public
+export const useBreadcrumbDividerStyles_unstable: (state: BreadcrumbDividerState) => BreadcrumbDividerState;
+
+// @public
+export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbItemState;
+
+// @public
+export const useBreadcrumbItemStyles_unstable: (state: BreadcrumbItemState) => BreadcrumbItemState;
 
 // @public
 export const useBreadcrumbStyles_unstable: (state: BreadcrumbState) => BreadcrumbState;
