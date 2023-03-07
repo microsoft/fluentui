@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SkeletonContextValues, SkeletonState } from '../Skeleton';
+import type { SkeletonContextValues, SkeletonState } from '../Skeleton';
 
 export const useSkeletonContextValues = (state: SkeletonState): SkeletonContextValues => {
   const { animation, appearance } = state;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { SkeletonContextProvider } from '../../contexts/SkeletonContext';
-import type { SkeletonState, SkeletonSlots, SkeletonContextValues } from './Skeleton.types';
+import type { SkeletonContextValues, SkeletonSlots, SkeletonState } from './Skeleton.types';
 
 /**
  * Render the final JSX of Skeleton

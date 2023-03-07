@@ -13,22 +13,22 @@ export type SkeletonSlots = {
  */
 export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
   /**
-   * Sets the width value of the skeleton wrapper.
-   * @defaultValue 100%
+   * The animation type for the Skeleton
+   * @defaultValue wave
    */
-  width?: number | string;
-
+  animation?: 'wave' | 'pulse';
+  
   /**
    * Sets the appearance of the Skeleton.
    * @defaultValue opaque
    */
   appearance?: 'opaque' | 'translucent';
-
+  
   /**
-   * The animation type for the Skeleton
-   * @defaultValue wave
+   * Sets the width value of the skeleton wrapper.
+   * @defaultValue 100%
    */
-  animation?: 'wave' | 'pulse';
+  width?: number | string;
 };
 
 export type SkeletonContextValue = Pick<SkeletonProps, 'animation' | 'appearance'>;
