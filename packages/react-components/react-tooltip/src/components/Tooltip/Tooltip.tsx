@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTooltip_unstable } from './useTooltip';
 import { renderTooltip_unstable } from './renderTooltip';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 import { useTooltipStyles_unstable } from './useTooltipStyles';
 import type { TooltipProps } from './Tooltip.types';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
@@ -12,6 +13,10 @@ export const Tooltip: React.FC<TooltipProps> = props => {
   const state = useTooltip_unstable(props);
 
   useTooltipStyles_unstable(state);
+
+  const { useTooltipStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderTooltip_unstable(state);
 };
 
