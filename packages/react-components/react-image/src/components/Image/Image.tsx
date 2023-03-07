@@ -6,6 +6,7 @@ import type { ImageProps } from './Image.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
+
 /**
  * The Image component ensures the consistent styling of images.
  */
