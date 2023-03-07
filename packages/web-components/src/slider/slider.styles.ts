@@ -114,6 +114,7 @@ export const styles = css`
     background-color: ${colorNeutralForegroundDisabled};
     box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStrokeDisabled};
   }
+
   /* Positioning Region */
   .positioning-region {
     position: relative;
@@ -128,6 +129,7 @@ export const styles = css`
     height: 100%;
     grid-template-columns: var(--thumb-size) var(--thumb-size);
   }
+
   /* Track */
   .track {
     align-self: start;
@@ -136,7 +138,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
 
-  :host(:not([marks='false'])) .track::after {
+  :host([step]) .track::after {
     content: '';
     display: block;
     position: absolute;

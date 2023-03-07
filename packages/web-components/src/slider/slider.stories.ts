@@ -12,6 +12,7 @@ const storyTemplate = html<SliderStoryArgs>`
   <fluent-slider
     ?disabled=${x => x.disabled}
     ?readonly=${x => x.readOnly}
+    step=${x => x.step}
     size=${x => x.size}
     min=${x => x.min}
     max=${x => x.max}

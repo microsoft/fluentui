@@ -18,7 +18,12 @@ export class Slider extends FASTSlider {
 
   connectedCallback(): void {
     super.connectedCallback();
+<<<<<<< HEAD
     const totalSteps = 100 / Math.floor((this.max - this.min) / this.step);
     this.style.setProperty('--step-rate', totalSteps.toString() + '%');
+=======
+    const stepRate = (this.step / 100) * 100;
+    this.style.setProperty('--step-rate', stepRate.toString() + '%');
+>>>>>>> e015e03ddb (Adds stripes to slider for vertical/horizontal. Deletes SliderLabel as we don't need it)
   }
 }
