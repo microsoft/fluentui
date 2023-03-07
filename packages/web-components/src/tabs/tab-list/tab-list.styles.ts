@@ -62,6 +62,7 @@ export const styles = css`
     margin-inline-start: 11px;
   }
   .active-indicator {
+    display: none;
     grid-row: 2;
     grid-column: 1;
     width: 100%;
@@ -71,9 +72,9 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     position: relative;
   }
-  .activeIndicatorTransition {
+  /* .activeIndicatorTransition {
     transition: transform 0.2s ease;
-  }
+  } */
 
   .tabpanel {
     grid-row: 2;

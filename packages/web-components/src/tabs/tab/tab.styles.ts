@@ -1,18 +1,25 @@
 import { css } from '@microsoft/fast-element';
 import {
+  borderRadiusCircular,
   borderRadiusMedium,
   borderRadiusSmall,
+  colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
   colorNeutralStroke1Hover,
+  colorTransparentStroke,
+  curveDecelerateMax,
+  durationSlow,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightBold,
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
+  strokeWidthThicker,
 } from '../../theme/design-tokens.js';
+import { TAB_TOKEN_NAMES } from './tab.js';
 
 export const styles = css`
   :host([hidden]) {
@@ -46,6 +53,34 @@ export const styles = css`
     font-weight: ${fontWeightBold};
   }
 
+  :host::after {
+    /* default size and color */
+    width: calc(100% - 20px);
+    height: ${strokeWidthThicker};
+    background-color: ${colorTransparentStroke};
+    border-radius: ${borderRadiusCircular};
+
+    /* default values for content, position and margin */
+    content: '';
+    inset: 0;
+    margin-top: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    position: absolute;
+    z-index: 1;
+
+    /* animations */
+    transition-property: transform;
+    transition-duration: ${durationSlow};
+    transition-timing-function: ${curveDecelerateMax};
+    transition-delay: 1s;
+    transform-origin: left;
+    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+  }
+  :host([data-selected='true'])::after {
+    background-color: ${colorCompoundBrandStroke};
+  }
+
   :host(:active) {
     color: ${colorNeutralForeground1};
     fill: ${colorNeutralForeground1};
@@ -70,7 +105,7 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([aria-selected='false']:hover)::after {
+  /* :host([aria-selected='false']:hover)::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -82,7 +117,7 @@ export const styles = css`
   }
   :host([disabled][aria-selected='false']:hover)::after {
     box-shadow: unset;
-  }
+  } */
 
   :host(:focus-visible) {
     outline: none;
@@ -97,7 +132,8 @@ export const styles = css`
   :host(.vertical[aria-selected='true']) {
     z-index: 2;
   }
-  :host([aria-selected='false'].vertical:hover)::after {
+
+  /* :host([aria-selected='false'].vertical:hover)::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -110,22 +146,22 @@ export const styles = css`
   }
   :host([disabled][aria-selected='false'].vertical:hover)::after {
     box-shadow: unset;
-  }
+  } */
 
-  :host(:focus-visible)::before {
-    content: '';
+  :host(:focus-visible) {
+    /* content: '';
     position: absolute;
-    inset: 0;
+    inset: 0; */
     border-radius: ${borderRadiusSmall};
-    box-shadow: 0 0 0 4pt ${colorNeutralForeground1};
+    box-shadow: 0 0 0 2pt ${colorNeutralForeground1};
     outline: none;
   }
-  :host(:focus-visible)::after {
+  /* :host(:focus-visible)::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: ${borderRadiusSmall};
     box-shadow: 0 0 0 2pt ${colorNeutralBackground1};
     outline: none;
-  }
+  } */
 `;
