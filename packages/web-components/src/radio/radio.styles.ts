@@ -1,10 +1,20 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  borderRadiusMedium,
+  colorCompoundBrandForeground1,
+  colorCompoundBrandForeground1Pressed,
+  colorCompoundBrandStroke,
+  colorCompoundBrandStrokeHover,
+  colorCompoundBrandStrokePressed,
+  colorNeutralForeground1,
   colorNeutralForeground2,
   colorNeutralForeground3,
   colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -24,7 +34,6 @@ export const styles = css`
   :host {
     align-items: center;
     flex-direction: row;
-    margin: 4px;
     outline: none;
     position: relative;
     user-select: none;
@@ -56,7 +65,7 @@ export const styles = css`
     height: 16px;
     border-radius: 50%;
     border: 1px solid ${colorNeutralStrokeAccessible};
-    margin: ${spacingVerticalXS} ${spacingHorizontalXS};
+    margin: ${spacingVerticalS} ${spacingHorizontalS};
     top: 0;
     left: 0;
   }
@@ -74,9 +83,17 @@ export const styles = css`
     border-radius: 5px;
     background-color: #ccc;
   }
-  :host(:not([disabled])) .control:hover {
-    background: darkblue;
-    border-color: lightblue;
+
+  :host(:focus-visible)::after {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    cursor: pointer;
+    border-radius: ${borderRadiusMedium};
+    outline: none;
+    border: 2px solid ${colorStrokeFocus1};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+  }
 
   :host([stack]) {
     flex-direction: column;
@@ -97,47 +114,69 @@ export const styles = css`
     background: gray;
     border-color: darkgray;
   }
-  :host(:focus-visible) .control {
-    box-shadow: 0 0 0 2px green, 0 0 0 4px green;
+  :host(:not([disabled]):hover) .control {
+    border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host([aria-checked='true']) .control {
-    background: purple;
-    border: 1px solid yellow;
+  :host(:not([disabled]):active) .control {
+    border-color: ${colorNeutralStrokeAccessiblePressed};
   }
+
   :host([aria-checked='true']) .checked-indicator {
     opacity: 1;
   }
-  :host([aria-checked='true']:not([disabled])) .control:hover {
-    background: darkpurple;
-    border: 1px solid darkyellow;
+
+  :host([aria-checked='true']:not([disabled])) .label {
+    color: ${colorNeutralForeground1};
   }
-  :host([aria-checked='true']:not([disabled])) .control:hover .checked-indicator {
-    background: green;
-    fill: lightgreen;
+  :host([aria-checked='true']:not([disabled])) .control {
+    border-color: ${colorCompoundBrandStroke};
   }
-  :host([aria-checked='true']:not([disabled])) .control:active {
-    background: orange;
-    border: 1px solid cyan;
+  :host([aria-checked='true']:not([disabled])) .checked-indicator {
+    display: block;
+    background-color: ${colorCompoundBrandForeground1};
   }
-  :host([aria-checked='true']:not([disabled])) .control:active .checked-indicator {
-    background: magenta;
-    fill: pink;
+
+  :host([aria-checked='true']:hover:not([disabled])) .control {
+    border-color: ${colorCompoundBrandStrokeHover};
   }
-  :host([aria-checked='true']:focus-visible:not([disabled])) .control {
-    box-shadow: 0 0 0 2px red, 0 0 0 4px red;
+  :host([aria-checked='true']:hover:not([disabled])) .checked-indicator {
+    border-color: ${colorCompoundBrandStrokeHover};
+  }
+  :host([aria-checked='true']:hover:not([disabled])) .label {
+    border-color: ${colorNeutralForeground1};
+  }
+
+  :host([aria-checked='true']:active:not([disabled])) .label {
+    color: ${colorNeutralForeground1};
+  }
+  :host([aria-checked='true']:active:not([disabled])) .control {
+    border-color: ${colorCompoundBrandStrokePressed};
+  }
+  :host([aria-checked='true']:active:not([disabled])) .checked-indicator {
+    background: ${colorCompoundBrandForeground1Pressed};
+  }
+
+  :host([disabled][aria-checked='true']) .control {
+    border-color: ${colorNeutralForegroundDisabled};
+  }
+  :host([disabled][aria-checked='true']) .checked-indicator {
+    background-color: ${colorNeutralForegroundDisabled};
+  }
+
+  :host([disabled]),
+  :host([readonly]) {
+    pointer-events: none;
   }
   :host([disabled]) .label,
-  :host([readonly]) .label,
+  :host([readonly]) .label {
+    color: ${colorNeutralForegroundDisabled};
+  }
   :host([readonly]) .control,
   :host([disabled]) .control {
-    cursor: not-allowed;
+    border-color: ${colorNeutralForegroundDisabled};
   }
-
-  :host([disabled]) {
-    opacity: 0.5;
-  }
-
-  :host([aria-checked='true']) .checked-indicator {
-    display: block;
+  :host([disabled]) .checked-indicator,
+  :host([readonly]) .checked-indicator {
+    background-color: ${colorNeutralForegroundDisabled};
   }
 `;
