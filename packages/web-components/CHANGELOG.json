@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 07 Mar 2023 04:24:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "07c70c3cb2253817e70e9b1c4615aee7e69a1816",
+            "comment": "Adds SliderLabel spec and folder"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 04:23:00 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.9",
       "version": "3.0.0-alpha.9",
