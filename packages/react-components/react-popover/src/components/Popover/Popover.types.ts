@@ -5,7 +5,6 @@ import type {
   SetVirtualMouseTarget,
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 /**
  * Determines popover padding and arrow size
@@ -105,7 +104,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    *
    * @default false
    */
-  trapFocus?: UseModalAttributesOptions['trapFocus'];
+  trapFocus?: boolean;
 
   /**
    * Must be used with the `trapFocus` prop
@@ -116,7 +115,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    *
    * @deprecated this behavior is default provided now, to opt-out of it in favor of standard behavior use the `inertTrapFocus` property
    */
-  legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
+  legacyTrapFocus?: boolean;
   /**
    * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
    * where the focus trap involves setting outside elements inert,
