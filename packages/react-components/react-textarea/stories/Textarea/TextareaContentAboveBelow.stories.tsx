@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Button,
   Label,
-  Link,
   makeStyles,
   Textarea,
   Toolbar,

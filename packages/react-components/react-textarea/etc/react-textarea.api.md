@@ -58,6 +58,8 @@ export type TextareaProps = Omit<ComponentProps<Partial<TextareaSlots>, 'textare
 export type TextareaSlots = {
     root: NonNullable<Slot<'span'>>;
     textarea: NonNullable<Slot<'textarea'>>;
+    contentAbove?: Slot<'span'>;
+    contentBelow?: Slot<'span'>;
 };
 
 // @public

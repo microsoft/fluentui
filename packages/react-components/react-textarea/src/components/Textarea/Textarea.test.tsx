@@ -21,6 +21,7 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
+    requiredProps: { contentAbove: 'foo', contentBelow: 'bar' },
   });
 
   // TODO create visual regression tests in /apps/vr-tests
