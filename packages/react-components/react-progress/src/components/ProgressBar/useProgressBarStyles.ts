@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
   root: {
     display: 'block',
     backgroundColor: tokens.colorNeutralBackground6,
-    justifySelf: 'stretch',
+    width: '100%',
     ...shorthands.overflow('hidden'),
 
     '@media screen and (forced-colors: active)': {
@@ -72,12 +72,7 @@ const useBarStyles = makeStyles({
       backgroundColor: 'Highlight',
     },
     ...shorthands.borderRadius('inherit'),
-  },
-  medium: {
-    height: barThicknessValues.medium,
-  },
-  large: {
-    height: barThicknessValues.large,
+    height: '100%',
   },
   nonZeroDeterminate: {
     transitionProperty: 'width',
@@ -145,7 +140,6 @@ export const useProgressBarStyles_unstable = (state: ProgressBarState): Progress
       barStyles.brand,
       value === undefined && barStyles.indeterminate,
       value === undefined && dir === 'rtl' && barStyles.rtl,
-      barStyles[thickness],
       value !== undefined && value > ZERO_THRESHOLD && barStyles.nonZeroDeterminate,
       color && value !== undefined && barStyles[color],
       state.bar.className,

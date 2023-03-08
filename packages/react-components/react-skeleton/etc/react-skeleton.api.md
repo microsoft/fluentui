@@ -12,79 +12,76 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderSkeleton_unstable: (state: SkeletonState) => JSX.Element;
+export const renderSkeleton_unstable: (state: SkeletonState, contextValues: SkeletonContextValues) => JSX.Element;
 
 // @public
-export const renderSkeletonCircle_unstable: (state: SkeletonCircleState) => JSX.Element;
-
-// @public
-export const renderSkeletonLine_unstable: (state: SkeletonLineState) => JSX.Element;
+export const renderSkeletonItem_unstable: (state: SkeletonItemState) => JSX.Element;
 
 // @public
 export const Skeleton: ForwardRefComponent<SkeletonProps>;
 
-// @public
-export const SkeletonCircle: ForwardRefComponent<SkeletonCircleProps>;
-
-// @public (undocumented)
-export const skeletonCircleClassNames: SlotClassNames<SkeletonCircleSlots>;
-
-// @public
-export type SkeletonCircleProps = ComponentProps<SkeletonCircleSlots> & {};
-
-// @public (undocumented)
-export type SkeletonCircleSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type SkeletonCircleState = ComponentState<SkeletonCircleSlots>;
-
 // @public (undocumented)
 export const skeletonClassNames: SlotClassNames<SkeletonSlots>;
 
-// @public
-export const SkeletonLine: ForwardRefComponent<SkeletonLineProps>;
+// @public (undocumented)
+export const SkeletonContextProvider: React_2.Provider<SkeletonContextValue | undefined>;
 
 // @public (undocumented)
-export const skeletonLineClassNames: SlotClassNames<SkeletonLineSlots>;
-
-// @public
-export type SkeletonLineProps = ComponentProps<SkeletonLineSlots> & {};
+export interface SkeletonContextValue {
+    // (undocumented)
+    animation?: 'wave' | 'pulse';
+    // (undocumented)
+    appearance?: 'opaque' | 'translucent';
+}
 
 // @public (undocumented)
-export type SkeletonLineSlots = {
+export const SkeletonItem: ForwardRefComponent<SkeletonItemProps>;
+
+// @public (undocumented)
+export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots>;
+
+// @public
+export type SkeletonItemProps = ComponentProps<SkeletonItemSlots> & {
+    animation?: 'wave' | 'pulse';
+    appearance?: 'opaque' | 'translucent';
+    size?: SkeletonItemSize;
+    shape?: 'circle' | 'square' | 'rectangle';
+};
+
+// @public (undocumented)
+export type SkeletonItemSlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type SkeletonLineState = ComponentState<SkeletonLineSlots>;
+export type SkeletonItemState = ComponentState<SkeletonItemSlots> & Required<Pick<SkeletonItemProps, 'animation' | 'appearance' | 'size' | 'shape'>>;
 
 // @public
-export type SkeletonProps = ComponentProps<SkeletonSlots> & {};
+export type SkeletonProps = Omit<ComponentProps<Partial<SkeletonSlots>>, 'width'> & {
+    animation?: 'wave' | 'pulse';
+    appearance?: 'opaque' | 'translucent';
+    width?: number | string;
+};
 
 // @public (undocumented)
 export type SkeletonSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type SkeletonState = ComponentState<SkeletonSlots>;
+export type SkeletonState = ComponentState<SkeletonSlots> & Required<Pick<SkeletonProps, 'animation' | 'appearance'>>;
 
 // @public
 export const useSkeleton_unstable: (props: SkeletonProps, ref: React_2.Ref<HTMLElement>) => SkeletonState;
 
-// @public
-export const useSkeletonCircle_unstable: (props: SkeletonCircleProps, ref: React_2.Ref<HTMLElement>) => SkeletonCircleState;
+// @public (undocumented)
+export const useSkeletonContext: () => SkeletonContextValue;
 
 // @public
-export const useSkeletonCircleStyles_unstable: (state: SkeletonCircleState) => SkeletonCircleState;
+export const useSkeletonItem_unstable: (props: SkeletonItemProps, ref: React_2.Ref<HTMLElement>) => SkeletonItemState;
 
 // @public
-export const useSkeletonLine_unstable: (props: SkeletonLineProps, ref: React_2.Ref<HTMLElement>) => SkeletonLineState;
-
-// @public
-export const useSkeletonLineStyles_unstable: (state: SkeletonLineState) => SkeletonLineState;
+export const useSkeletonItemStyles_unstable: (state: SkeletonItemState) => SkeletonItemState;
 
 // @public
 export const useSkeletonStyles_unstable: (state: SkeletonState) => SkeletonState;
