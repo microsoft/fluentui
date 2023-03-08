@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { findFirstFocusable } from '@focuskit/react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import {
@@ -33,11 +33,10 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const isSubmenu = useIsSubmenu();
 
-  const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(menuPopoverRef.current);
     firstFocusable?.focus();
-  }, [findFirstFocusable, menuPopoverRef]);
+  }, [menuPopoverRef]);
 
   const openedWithKeyboardRef = React.useRef(false);
   const hasMouseMoved = React.useRef(false);
