@@ -41,10 +41,14 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn (install packages)
+      # - task: Bash@3
+      #   inputs:
+      #     filePath: yarn-ci.sh
+      #   displayName: yarn (install packages)
+
+      - script: |
+          yarn install
+        displayName: yarn
 
       - script: |
           yarn nx workspace-lint
