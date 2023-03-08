@@ -4,6 +4,7 @@ import { renderTableSelectionCell_unstable } from './renderTableSelectionCell';
 import { useTableSelectionCellStyles_unstable } from './useTableSelectionCellStyles';
 import type { TableSelectionCellProps } from './TableSelectionCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TableSelectionCell component
@@ -12,6 +13,10 @@ export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps> = 
   const state = useTableSelectionCell_unstable(props, ref);
 
   useTableSelectionCellStyles_unstable(state);
+
+  const { useTableSelectionCellStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderTableSelectionCell_unstable(state);
 });
 
