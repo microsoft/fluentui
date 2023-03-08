@@ -16,9 +16,17 @@ export class Slider extends FASTSlider {
   @attr
   public size: SliderSize = 'medium';
 
+  /**
+   * The size of the slider
+   * @public
+   * @remarks
+   * HTML Attribute: size
+   */
+  @attr
+  public foobar: string = 'medium';
+
   connectedCallback(): void {
     super.connectedCallback();
-    const stepRate = (this.step / 100) * 100;
-    this.style.setProperty('--step-rate', stepRate.toString() + '%');
+    this.style.setProperty('--step-rate', this.step.toString() + '%');
   }
 }

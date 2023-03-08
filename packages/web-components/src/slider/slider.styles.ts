@@ -127,7 +127,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
 
-  :host(:not([step='1'])) .track::after {
+  :host([step]) .track::after {
     content: '';
     display: block;
     position: absolute;
