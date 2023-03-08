@@ -51,7 +51,7 @@ export const useTagButton_unstable = (props: TagButtonProps, ref: React.Ref<HTML
     dismissButton: resolveShorthand(props.dismissButton, {
       required: true,
       defaultProps: {
-        disabled: props.disabled,
+        disabled,
         type: 'button',
         children: <Dismiss16Filled />,
       },
