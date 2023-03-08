@@ -42,12 +42,13 @@ export const styles = css`
     line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
     text-align: start;
-    display: inline;
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
     margin: 0;
+    display: inline;
   }
+
   :host([nowrap]) ::slotted(*) {
     white-space: nowrap;
     overflow: hidden;
@@ -55,6 +56,7 @@ export const styles = css`
   :host([truncate]) ::slotted(*) {
     text-overflow: ellipsis;
   }
+  :host([block]),
   :host([block]) ::slotted(*) {
     display: block;
   }
