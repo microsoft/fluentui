@@ -73,10 +73,10 @@ export const styles = css`
     transition-duration: ${durationSlow};
     transition-timing-function: ${curveDecelerateMax};
     transform-origin: left;
+    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
   :host([data-selected='true'])::after {
     background-color: ${colorCompoundBrandStroke};
-    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
   :host([data-selected='false']:hover)::before {
     /* default size and color */
