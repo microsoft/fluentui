@@ -46,7 +46,9 @@ export const styles = css`
     overflow: visible;
     text-overflow: clip;
     margin: 0;
+    display: inline;
   }
+
   :host([nowrap]) ::slotted(*) {
     white-space: nowrap;
     overflow: hidden;
