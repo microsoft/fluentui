@@ -4,7 +4,6 @@ import {
   borderRadiusMedium,
   borderRadiusSmall,
   colorCompoundBrandStroke,
-  colorNeutralBackground1,
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
   colorNeutralStroke1Hover,
@@ -83,7 +82,6 @@ export const styles = css`
     /* default size and color */
     width: calc(100% - 20px);
     height: ${strokeWidthThicker};
-    background-color: ${colorTransparentStroke};
     border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
@@ -93,6 +91,10 @@ export const styles = css`
     margin-right: auto;
     z-index: 1;
     background-color: ${colorNeutralStroke1Hover};
+  }
+
+  :host([data-selected='true'][disabled])::after {
+    background-color: ${colorNeutralForegroundDisabled};
   }
 
   :host(:active) {
@@ -116,22 +118,11 @@ export const styles = css`
   }
 
   :host([disabled]:hover) {
-    color: ${colorNeutralForegroundDisabled};
+    color: none;
   }
-
-  /* :host([aria-selected='false']:hover)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    box-shadow: 0 3px 0 0 ${colorNeutralStroke1Hover};
-    height: 3px;
-    outline: none;
-    margin-top: auto;
-    border-radius: 3px;
+  :host([disabled]:hover)::before {
+    background-color: unset;
   }
-  :host([disabled][aria-selected='false']:hover)::after {
-    box-shadow: unset;
-  } */
 
   :host(:focus-visible) {
     outline: none;
@@ -147,35 +138,9 @@ export const styles = css`
     z-index: 2;
   }
 
-  /* :host([aria-selected='false'].vertical:hover)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    box-shadow: -3px 0 0 0 ${colorNeutralStroke1Hover};
-    height: ${fontSizeBase300};
-    width: 3px;
-    outline: none;
-    border-radius: 3px;
-    margin-bottom: auto;
-  }
-  :host([disabled][aria-selected='false'].vertical:hover)::after {
-    box-shadow: unset;
-  } */
-
   :host(:focus-visible) {
-    /* content: '';
-    position: absolute;
-    inset: 0; */
     border-radius: ${borderRadiusSmall};
     box-shadow: 0 0 0 2pt ${colorNeutralForeground1};
     outline: none;
   }
-  /* :host(:focus-visible)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: ${borderRadiusSmall};
-    box-shadow: 0 0 0 2pt ${colorNeutralBackground1};
-    outline: none;
-  } */
 `;

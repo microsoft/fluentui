@@ -2,8 +2,7 @@ import { attr, booleanConverter } from '@microsoft/fast-element';
 import { FASTTabs } from '@microsoft/fast-foundation';
 
 export interface TabData {
-  prevSelected: string;
-  selected: boolean;
+  // currentSelected: string;
   id: string;
   x: number;
   y: number;
@@ -17,7 +16,6 @@ export interface TabData {
  * @public
  */
 export class TabList extends FASTTabs {
-  private _prevSelectedId?: string = undefined;
   // TODO: add TSDOC comments for each class member
   @attr appearance?: 'subtle' | 'transparent';
 
@@ -29,37 +27,37 @@ export class TabList extends FASTTabs {
   @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
   reserveSelectedTabSpace?: boolean;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.registerTabData();
+  }
+
   activeidChanged(oldValue: string, newValue: string) {
     super.activeidChanged(oldValue, newValue);
-    this._prevSelectedId = oldValue;
-
-    console.log('updating tab data');
     this.registerTabData();
   }
 
   tabsChanged(): void {
     super.tabsChanged();
-
-    if (!this.dataset.tabs) {
-      console.log('registering tab data');
-      this.registerTabData();
-    }
+    this.registerTabData();
   }
 
   private registerTabData(): void {
-    const newTabData = this.tabs.map(tab => {
-      const rect = tab.getBoundingClientRect();
-      return {
-        prevSelected: this._prevSelectedId || this.activeid,
-        selected: tab.id === this.activeid,
-        id: tab.id,
-        x: rect.x,
-        y: rect.y,
-        height: rect.height,
-        width: rect.width,
-      } as TabData;
-    });
-    this.dataset.tabs = JSON.stringify(newTabData);
+    if (this.tabs) {
+      const activeTab = this.tabs.filter(tab => tab.id === this.activeid)[0] || this.tabs[0];
+      const activeRect = activeTab?.getBoundingClientRect();
+      const parentRect = this.getBoundingClientRect();
+
+      this.tabs.forEach(tab => {
+        tab.dataset.activeTab = JSON.stringify({
+          id: activeTab.id,
+          x: activeRect.x - parentRect.x,
+          y: activeRect.y - parentRect.y,
+          height: activeRect.height,
+          width: activeRect.width,
+        });
+      });
+    }
   }
 
   disabledChanged() {
@@ -87,6 +85,4 @@ export class TabList extends FASTTabs {
       });
     }
   }
-
-  // TODO: figure out a way to create an active indicator that spans the correct width.
 }
