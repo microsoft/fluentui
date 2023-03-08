@@ -25,7 +25,7 @@
     "@fluentui/react": "^8.106.3",
     "@fluentui/react-experiments": "^8.14.57",
     "@fluentui/react-hooks": "^8.6.18",
-    "@fluentui/react-icons-mdl2": "^1.3.34",
+    "@fluentui/react-icons-mdl2": "^1.3.35",
     "@fluentui/storybook": "^1.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
