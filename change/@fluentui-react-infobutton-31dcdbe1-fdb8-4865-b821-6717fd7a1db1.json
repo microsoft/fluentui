@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add InfoLabel component",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
