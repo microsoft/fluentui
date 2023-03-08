@@ -16,6 +16,7 @@ import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -43,6 +44,9 @@ export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
 
 // @public (undocumented)
 export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
+
+// @public (undocumented)
+export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles>;
 
 // @public (undocumented)
 export interface CalendarDayGridProps extends DayGridOptions {
@@ -473,6 +477,12 @@ export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
 export const defaultDatePickerStrings: DatePickerStrings;
+
+// @public (undocumented)
+export const extraCalendarDayGridClassNames: {
+    hoverStyle: string;
+    pressedStyle: string;
+};
 
 // @public
 export enum FirstWeekOfYear {
