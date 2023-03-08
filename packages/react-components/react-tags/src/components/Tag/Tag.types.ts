@@ -27,4 +27,4 @@ export type TagProps = ComponentProps<TagSlots> & {
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<Pick<TagProps, 'dismissable' | 'size' | 'shape' | 'disabled' | 'checked' | 'appearance'>>;
+  Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
