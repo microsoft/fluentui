@@ -44,7 +44,7 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
 
 // @public
-export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'>;
+export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & Pick<InfoButtonProps, 'content'>;
 
 // @public (undocumented)
 export type InfoLabelSlots = {
