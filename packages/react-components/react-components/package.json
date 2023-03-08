@@ -72,6 +72,7 @@
     "@fluentui/react-utilities": "^9.6.1",
     "@fluentui/react-text": "^9.2.4",
     "@fluentui/react-virtualizer": "9.0.0-alpha.9",
+    "@fluentui/react-tree": "9.0.0-beta.0",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },
