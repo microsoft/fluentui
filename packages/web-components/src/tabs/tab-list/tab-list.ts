@@ -1,6 +1,15 @@
 import { attr, booleanConverter } from '@microsoft/fast-element';
 import { FASTTabs } from '@microsoft/fast-foundation';
 
+export interface TabData {
+  prevSelected: string;
+  selected: boolean;
+  id: string;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+}
 /**
  * TabList extends FASTTabs and is used for constructing a fluent-tab-list custom html element.
  *
@@ -8,6 +17,7 @@ import { FASTTabs } from '@microsoft/fast-foundation';
  * @public
  */
 export class TabList extends FASTTabs {
+  private _prevSelectedId?: string = undefined;
   // TODO: add TSDOC comments for each class member
   @attr appearance?: 'subtle' | 'transparent';
 
@@ -21,29 +31,35 @@ export class TabList extends FASTTabs {
 
   activeidChanged(oldValue: string, newValue: string) {
     super.activeidChanged(oldValue, newValue);
-    console.log('active id changed', this.activeid);
+    this._prevSelectedId = oldValue;
 
-    // onLoad register all tabs
-    // [{id, x, y, width, height}]
+    console.log('updating tab data');
+    this.registerTabData();
   }
 
   tabsChanged(): void {
     super.tabsChanged();
-    this.registerTabData();
+
+    if (!this.dataset.tabs) {
+      console.log('registering tab data');
+      this.registerTabData();
+    }
   }
 
-  private registerTabData() {
-    const tabData = this.tabs.map(tab => {
+  private registerTabData(): void {
+    const newTabData = this.tabs.map(tab => {
       const rect = tab.getBoundingClientRect();
       return {
+        prevSelected: this._prevSelectedId || this.activeid,
+        selected: tab.id === this.activeid,
         id: tab.id,
         x: rect.x,
         y: rect.y,
         height: rect.height,
         width: rect.width,
-      };
+      } as TabData;
     });
-    this.dataset.tabs = JSON.stringify(tabData);
+    this.dataset.tabs = JSON.stringify(newTabData);
   }
 
   disabledChanged() {

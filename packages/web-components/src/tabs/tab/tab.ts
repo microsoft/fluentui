@@ -1,17 +1,14 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTTab } from '@microsoft/fast-foundation';
+import { TabData } from '../index.js';
 
 export const TAB_TOKEN_NAMES = {
-  prevSelectedTabX: '--previousSelectedTabX',
-  selectedTabX: '--selectedTabX',
-  prevSelectedTabWidth: '--previousSelectedTabWidth',
-  tabSelectedWidth: '--selectedTabWidth',
-
   tabIndicatorOffset: '--tabIndicatorOffsetX',
   tabIndicatorScale: '--tabIndicatorScaleX',
 };
 
 export class Tab extends FASTTab {
+  private _tabsData: TabData[] = [];
   private _selectedTabX: number = 0;
   private _previousSelectedTabX: number = 0;
   private _selectedTabWidth: number = 0;
@@ -21,35 +18,30 @@ export class Tab extends FASTTab {
     super.connectedCallback();
 
     // on load get the currently tab values and load them into the class
-    this.syncTabPositions();
-    // this.setPrevSelectedTabWidthCSS();
-    // this.setTabScaleCSS();
-    this.setTabOffsetCSS();
-
-    // when does the new x value need to be loaded?
-    // anytime a new tab is selected all other tabs need to re-render their indicators (even if translucent)
+    // TODO: is this doing anything?
+    this._tabsData = this.getTabsData() || [];
+    // this.syncTabPositions();
   }
 
   @attr 'aria-selected': string | null = 'false';
   'aria-selectedChanged'(oldVal: string, newVal: string) {
+    this._tabsData = this.getTabsData() || [];
     // if selected
+    // console.log(this._tabsData);
     if (newVal === 'true') {
       // get the position of the previous active indicator
-      this.syncTabPositions();
       // set the position of the active indicator to the location of the prev active indicator
-      this.setTabScaleCSS();
       // render active indicator on the location of the previous active indicator
-      this.setSelectedTabCSS();
-      this.setTabOffsetCSS();
+      this.syncTabPositions();
+      // this.setTabOffsetCSS();
+      this.setTabScaleCSS();
 
       this.dataset.selected = 'true';
 
       // animate the active indicator to it's base location
-      setTimeout(() => {
-        this.setTabOffsetCSS(0, 0);
-        this.setPrevSelectedTabCSS();
-        this.setPrevSelectedTabWidthCSS();
-      }, 20);
+      // setTimeout(() => {
+      this.setTabOffsetCSS(0, 0);
+      // }, 20);
     } else {
       // instantly remove the previous active indicator
       this.dataset.selected = 'false';
@@ -57,59 +49,41 @@ export class Tab extends FASTTab {
   }
 
   private syncTabPositions() {
-    this._previousSelectedTabX = this.getPreviousTabPositionX();
+    this._previousSelectedTabX = this.getPreviousSelectedTabPositionX();
     this._selectedTabX = this.getSelectedTabPosition();
 
     this._previousSelectedTabWidth = this.getPreviousTabWidth();
     this._selectedTabWidth = this.getSelectedTabWidth();
   }
 
-  private getPreviousTabPositionX(): number {
-    const prevPosition = Number(document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.prevSelectedTabX));
-    return prevPosition || this.getSelectedTabPosition();
+  private getTabsData(): TabData[] {
+    const tabData = this.parentElement?.dataset.tabs;
+    if (tabData) {
+      return JSON.parse(tabData) as TabData[];
+    }
+    return [];
+  }
+
+  private getPreviousSelectedTabPositionX(): number {
+    const tabsData = this.getTabsData();
+    console.log(tabsData[0]);
+    const prevSelectedID = tabsData[0]?.prevSelected || undefined;
+    return tabsData?.filter(tdata => tdata.id === prevSelectedID)[0]?.x || 0;
   }
 
   private getSelectedTabPosition(): number {
-    if (this['aria-selected'] === 'true') {
-      return this.getBoundingClientRect().x;
-    }
-    return 0;
+    const tabsData = this.getTabsData();
+    return tabsData?.filter(tdata => tdata.id === this.id && tdata.selected)[0]?.x || 0;
   }
 
   private getPreviousTabWidth(): number {
-    return (
-      Number(document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.prevSelectedTabWidth)) ||
-      this.getSelectedTabWidth()
-    );
+    const tabsData = this.getTabsData();
+    return tabsData?.filter(tdata => tdata.selected)[0]?.width || 0;
   }
 
   private getSelectedTabWidth(): number {
-    if (this['aria-selected'] === 'true') {
-      return this.getBoundingClientRect().width;
-    }
-    return this.getPreviousTabWidth();
-  }
-
-  /**
-   * setSelectedTabCSS
-   *
-   * sets the css variable for the currently selected tab if this tab is selected
-   */
-  private setSelectedTabCSS() {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.selectedTabX, this._selectedTabX.toString());
-  }
-
-  /**
-   * setPrevSelectedTabCSS
-   *
-   * sets the css variable for the previously selected tab as the currently selected tab. should only be called if the current tab (this tab) is active/selected and after animations have completed
-   */
-  private setPrevSelectedTabCSS() {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.prevSelectedTabX, this._selectedTabX.toString());
-  }
-
-  private setPrevSelectedTabWidthCSS() {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.prevSelectedTabWidth, this._selectedTabWidth.toString());
+    const tabsData = this.getTabsData();
+    return tabsData?.filter(tdata => tdata.id === this.id && tdata.selected)[0]?.width || 0;
   }
 
   private setTabOffsetCSS(x: number = this._previousSelectedTabX, y: number = this._selectedTabX) {
@@ -117,7 +91,7 @@ export class Tab extends FASTTab {
   }
 
   private setTabScaleCSS() {
-    console.log(this._previousSelectedTabWidth, this._selectedTabWidth);
+    // console.log(this._previousSelectedTabWidth, this._selectedTabWidth);
     document.documentElement.style.setProperty(
       TAB_TOKEN_NAMES.tabIndicatorScale,
       `${this._previousSelectedTabWidth / this._selectedTabWidth}`,
