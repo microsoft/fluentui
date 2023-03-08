@@ -36,11 +36,6 @@ import {
 export const styles = css`
   ${display('inline')}
 
-  ${/* slot defaults display to contents, this ensures slotted items inherit from the host */ ''}
-  slot {
-    display: inherit;
-  }
-
   ::slotted(*) {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
@@ -60,7 +55,8 @@ export const styles = css`
   :host([truncate]) ::slotted(*) {
     text-overflow: ellipsis;
   }
-  :host([block]) {
+  :host([block]),
+  :host([block]) ::slotted(*) {
     display: block;
   }
   :host([italic]) ::slotted(*) {
