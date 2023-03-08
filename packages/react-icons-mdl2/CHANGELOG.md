@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Mon, 06 Mar 2023 07:43:04 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 07:37:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.35)
+
+Wed, 08 Mar 2023 07:37:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.34..@fluentui/react-icons-mdl2_v1.3.35)
+
+### Patches
+
+- TextDocumentSettingsIcon: Fix of the size of an icon component ([PR #21646](https://github.com/microsoft/fluentui/pull/21646) by marek.mihok@h2o.ai)
 
 ## [1.3.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.34)
 

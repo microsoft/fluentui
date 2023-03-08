@@ -2,42 +2,13 @@ import * as React from 'react';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Enter } from '@fluentui/keyboard-keys';
 import { getRTLSafeKey } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import { addDays, addWeeks, compareDates, findAvailableDate, DateRangeType } from '../../utils';
 import { weekCornersClassNames } from './useWeekCornerStyles';
-import { tokens } from '@fluentui/react-theme';
 import type { AvailableDateOptions } from '../../utils';
 import type { DayInfo } from './CalendarDayGrid';
 import type { CalendarGridRowProps } from './CalendarGridRow';
-
-const useCornersDateAndPositionStyles = makeStyles({
-  corners: {
-    [`&.${weekCornersClassNames.topRightCornerDate}`]: {
-      borderTopRightRadius: '2px',
-    },
-    [`&.${weekCornersClassNames.topLeftCornerDate}`]: {
-      borderTopLeftRadius: '2px',
-    },
-    [`&.${weekCornersClassNames.bottomRightCornerDate}`]: {
-      borderBottomRightRadius: '2px',
-    },
-    [`&.${weekCornersClassNames.bottomLeftCornerDate}`]: {
-      borderBottomLeftRadius: '2px',
-    },
-    [`&.${weekCornersClassNames.datesAbove}::before`]: {
-      ...shorthands.borderTop('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-    [`&.${weekCornersClassNames.datesBelow}::before`]: {
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-    [`&.${weekCornersClassNames.datesLeft}::before`]: {
-      ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-    [`&.${weekCornersClassNames.datesRight}::before`]: {
-      ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-  },
-});
+import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles';
 
 export interface CalendarGridDayCellProps extends CalendarGridRowProps {
   day: DayInfo;
@@ -143,7 +114,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
 
     dayRefs.forEach((dayRef: HTMLElement | null, index: number) => {
       if (dayRef) {
-        dayRef.classList.add('ms-CalendarDay-hoverStyle');
+        dayRef.classList.add(extraCalendarDayGridClassNames.hoverStyle);
         if (
           !dayInfos[index].isSelected &&
           dateRangeType === DateRangeType.Day &&
@@ -173,7 +144,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
 
     dayRefs.forEach((dayRef: HTMLElement | null) => {
       if (dayRef) {
-        dayRef.classList.add('ms-CalendarDay-pressedStyle');
+        dayRef.classList.add(extraCalendarDayGridClassNames.pressedStyle);
       }
     });
   };
@@ -184,7 +155,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
 
     dayRefs.forEach((dayRef: HTMLElement | null) => {
       if (dayRef) {
-        dayRef.classList.remove('ms-CalendarDay-pressedStyle');
+        dayRef.classList.remove(extraCalendarDayGridClassNames.pressedStyle);
       }
     });
   };
@@ -195,8 +166,8 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
 
     dayRefs.forEach((dayRef: HTMLElement | null, index: number) => {
       if (dayRef) {
-        dayRef.classList.remove('ms-CalendarDay-hoverStyle');
-        dayRef.classList.remove('ms-CalendarDay-pressedStyle');
+        dayRef.classList.remove(extraCalendarDayGridClassNames.hoverStyle);
+        dayRef.classList.remove(extraCalendarDayGridClassNames.pressedStyle);
         if (
           !dayInfos[index].isSelected &&
           dateRangeType === DateRangeType.Day &&
@@ -231,14 +202,12 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
     ariaLabel = ariaLabel + ', ' + strings.dayMarkedAriaLabel;
   }
 
-  const cornersDateAndPositionStyles = useCornersDateAndPositionStyles();
   const isFocusable = !ariaHidden && (allFocusable || (day.isInBounds ? true : undefined));
 
   return (
     <td
       className={mergeClasses(
         classNames.dayCell,
-        cornersDateAndPositionStyles.corners,
         weekCorners && cornerStyle,
         day.isSelected && classNames.daySelected,
         day.isSelected && 'ms-CalendarDay-daySelected',

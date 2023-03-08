@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:37 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "db203b7c6eae1174b0bb910bf49eaee4dde14786",
+            "comment": "chore: re-enable AMD import checks for only mixed and v8 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:39:06 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.4",
       "version": "9.0.4",

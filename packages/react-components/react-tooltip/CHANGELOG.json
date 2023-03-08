@@ -2,6 +2,45 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:49 GMT",
+      "tag": "@fluentui/react-tooltip_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "7be3d631f067a9bfa7106c5d62d66d206b31358c",
+            "comment": "feat: Adding calls to custom styles hooks derived from context."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.1.10",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-positioning to v9.5.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 23:06:07 GMT",
       "tag": "@fluentui/react-tooltip_v9.1.18",
       "version": "9.1.18",
