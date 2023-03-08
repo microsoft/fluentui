@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.4.0)
+
+Wed, 08 Mar 2023 17:42:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.3.5..@fluentui/react-provider_v9.4.0)
+
+### Minor changes
+
+- feat: Added customstylehooks property ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-tabster to v9.5.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.3.5)
 

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Wed, 22 Feb 2023 23:06:06 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.1.0)
+
+Wed, 08 Mar 2023 17:42:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.0.0..@fluentui/react-progress_v9.1.0)
+
+### Minor changes
+
+- feat: custom styles ([PR #27082](https://github.com/microsoft/fluentui/pull/27082) by gcox@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.22 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+
+### Patches
+
+- fix: Align WHCM styles with figma and fix documentation typo. ([PR #27038](https://github.com/microsoft/fluentui/pull/27038) by ololubek@microsoft.com)
+- fix: Add error checking for incorrect values of max and value props ([PR #27029](https://github.com/microsoft/fluentui/pull/27029) by ololubek@microsoft.com)
+- fix: Update ProgressBar styling to have width when display is set to flex ([PR #27101](https://github.com/microsoft/fluentui/pull/27101) by ololubek@microsoft.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.0.0)
 

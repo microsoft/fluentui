@@ -2,6 +2,33 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:32 GMT",
+      "tag": "@fluentui/react-divider_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "b81f53f998e9485bd7ce9937dc8beec875034989",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-divider_v9.1.16",
       "version": "9.1.16",

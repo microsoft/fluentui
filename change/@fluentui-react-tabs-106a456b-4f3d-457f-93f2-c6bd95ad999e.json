@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed missing outline when forced-colors active",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
