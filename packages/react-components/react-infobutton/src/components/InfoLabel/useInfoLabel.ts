@@ -15,7 +15,15 @@ import { InfoButton } from '../InfoButton/InfoButton';
  * @param ref - reference to label element of InfoLabel
  */
 export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElement>): InfoLabelState => {
-  const { root: rootSlot, label: labelSlot, infoButton: infoButtonSlot, className, style, ...labelProps } = props;
+  const {
+    root: rootSlot,
+    label: labelSlot,
+    infoButton: infoButtonSlot,
+    content,
+    className,
+    style,
+    ...labelProps
+  } = props;
 
   const root = resolveShorthand(rootSlot, {
     required: true,
@@ -35,13 +43,15 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   });
 
   const infoButton = resolveShorthand(infoButtonSlot, {
+    required: !!content,
     defaultProps: {
       id: useId('infobutton-'),
+      content,
     },
   });
 
-  if (infoButton && !infoButton['aria-labelledby']) {
-    infoButton['aria-labelledby'] = `${label.id} ${infoButton.id}`;
+  if (infoButton) {
+    infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
   }
 
   return {

@@ -9,23 +9,11 @@ export const infoLabelClassNames: SlotClassNames<InfoLabelSlots> = {
   infoButton: 'fui-InfoLabel__infoButton',
 };
 
-const useRootStyles = makeStyles({
-  base: {
-    // This padding must match the negative margin on infoButton
-    paddingTop: tokens.spacingVerticalXXS,
-    paddingBottom: tokens.spacingVerticalXXS,
-  },
-
-  large: {
-    // This padding must match the negative margin on infoButton
-    paddingTop: '1px',
-    paddingBottom: '1px',
-  },
-});
-
 const useLabelStyles = makeStyles({
   base: {
     verticalAlign: 'top',
+    cursor: 'inherit',
+    color: 'inherit',
   },
 });
 
@@ -33,13 +21,13 @@ const useInfoButtonStyles = makeStyles({
   base: {
     verticalAlign: 'top',
 
-    // Negative margin to offset the labelWrapper's padding
+    // Negative margin to align with the text
     marginTop: `calc(0px - ${tokens.spacingVerticalXXS})`,
     marginBottom: `calc(0px - ${tokens.spacingVerticalXXS})`,
   },
 
   large: {
-    // Negative margin to offset the labelWrapper's padding
+    // Negative margin to align with the text
     marginTop: '-1px',
     marginBottom: '-1px',
   },
@@ -49,13 +37,7 @@ const useInfoButtonStyles = makeStyles({
  * Apply styling to the InfoLabel slots based on the state
  */
 export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelState => {
-  const rootStyles = useRootStyles();
-  state.root.className = mergeClasses(
-    infoLabelClassNames.root,
-    rootStyles.base,
-    state.size === 'large' && rootStyles.large,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
 
   const labelStyles = useLabelStyles();
   state.label.className = mergeClasses(infoLabelClassNames.label, labelStyles.base, state.label.className);

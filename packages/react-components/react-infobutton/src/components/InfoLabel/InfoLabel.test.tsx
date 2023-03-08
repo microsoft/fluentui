@@ -13,7 +13,7 @@ describe('InfoLabel', () => {
       'has-static-classnames': [
         {
           props: {
-            infoButton: { content: 'Test' },
+            content: 'Test',
           },
         },
       ],
