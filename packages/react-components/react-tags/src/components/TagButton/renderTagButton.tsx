@@ -3,7 +3,7 @@ import { getSlots } from '@fluentui/react-utilities';
 import type { TagButtonState, TagButtonSlots } from './TagButton.types';
 
 /**
- * Render the final JSX of Tag
+ * Render the final JSX of TagButton
  */
 export const renderTagButton_unstable = (state: TagButtonState) => {
   const { slots, slotProps } = getSlots<TagButtonSlots>(state);
