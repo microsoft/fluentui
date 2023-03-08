@@ -36,17 +36,22 @@ import {
 export const styles = css`
   ${display('inline')}
 
+  ${/* slot defaults display to contents, this ensures slotted items inherit from the host */ ''}
+  slot {
+    display: inherit;
+  }
+
   ::slotted(*) {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
     text-align: start;
-    display: inline;
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
     margin: 0;
+    display: inherit;
   }
   :host([nowrap]) ::slotted(*) {
     white-space: nowrap;
@@ -55,7 +60,7 @@ export const styles = css`
   :host([truncate]) ::slotted(*) {
     text-overflow: ellipsis;
   }
-  :host([block]) ::slotted(*) {
+  :host([block]) {
     display: block;
   }
   :host([italic]) ::slotted(*) {
