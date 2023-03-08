@@ -1,130 +1,126 @@
-import { observable, attr, booleanConverter } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { FASTTab } from '@microsoft/fast-foundation';
 
 export const TAB_TOKEN_NAMES = {
   prevSelectedTabX: '--previousSelectedTabX',
   selectedTabX: '--selectedTabX',
+  prevSelectedTabWidth: '--previousSelectedTabWidth',
+  tabSelectedWidth: '--selectedTabWidth',
+
   tabIndicatorOffset: '--tabIndicatorOffsetX',
-  prevSelectedTabScaleX: '--previousSelectedTabScaleX',
-  tabSelectedScaleX: '--selectedTabScaleX',
   tabIndicatorScale: '--tabIndicatorScaleX',
 };
 
 export class Tab extends FASTTab {
   private _selectedTabX: number = 0;
   private _previousSelectedTabX: number = 0;
-
-  private _selectedTabScale: number = 1;
-  private _previousSelectedTabScale: number = 1;
-
-  constructor() {
-    super();
-
-    this.addEventListener('click', () => {
-      this.handleClick();
-    });
-  }
+  private _selectedTabWidth: number = 0;
+  private _previousSelectedTabWidth: number = 0;
 
   connectedCallback(): void {
     super.connectedCallback();
 
-    this.refreshTabPositions();
-    this.setTabCssVars();
+    // on load get the currently tab values and load them into the class
+    this.syncTabPositions();
+    // this.setPrevSelectedTabWidthCSS();
+    // this.setTabScaleCSS();
+    this.setTabOffsetCSS();
+
+    // when does the new x value need to be loaded?
+    // anytime a new tab is selected all other tabs need to re-render their indicators (even if translucent)
   }
 
-  @attr ariaSelected: string | null = 'false';
-  ariaSelectedChanged() {
-    //   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
-    //     super.attributeChangedCallback(name, oldValue, newValue);
+  @attr 'aria-selected': string | null = 'false';
+  'aria-selectedChanged'(oldVal: string, newVal: string) {
+    // if selected
+    if (newVal === 'true') {
+      // get the position of the previous active indicator
+      this.syncTabPositions();
+      // set the position of the active indicator to the location of the prev active indicator
+      this.setTabScaleCSS();
+      // render active indicator on the location of the previous active indicator
+      this.setSelectedTabCSS();
+      this.setTabOffsetCSS();
 
-    console.log(this.ariaSelected);
-    if (this.ariaSelected) {
-      //   this.dataset.selected = 'true';
+      this.dataset.selected = 'true';
+
+      // animate the active indicator to it's base location
+      setTimeout(() => {
+        this.setTabOffsetCSS(0, 0);
+        this.setPrevSelectedTabCSS();
+        this.setPrevSelectedTabWidthCSS();
+      }, 20);
     } else {
+      // instantly remove the previous active indicator
       this.dataset.selected = 'false';
     }
   }
 
-  private refreshTabPositions() {
-    this._selectedTabX = this.getSelectedTabPosition();
+  private syncTabPositions() {
     this._previousSelectedTabX = this.getPreviousTabPositionX();
-    this._previousSelectedTabScale = this.getPreviousPositionScaleX();
-    this._selectedTabScale = this.getTabPositionScaleX();
+    this._selectedTabX = this.getSelectedTabPosition();
+
+    this._previousSelectedTabWidth = this.getPreviousTabWidth();
+    this._selectedTabWidth = this.getSelectedTabWidth();
+  }
+
+  private getPreviousTabPositionX(): number {
+    const prevPosition = Number(document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.prevSelectedTabX));
+    return prevPosition || this.getSelectedTabPosition();
   }
 
   private getSelectedTabPosition(): number {
-    if (this.ariaSelected) {
-      return this.getTabPositionX();
+    if (this['aria-selected'] === 'true') {
+      return this.getBoundingClientRect().x;
     }
     return 0;
   }
 
-  private getTabPositionX(): number {
-    return this.getBoundingClientRect().x;
-  }
-
-  private getPreviousTabPositionX() {
-    return Number(
-      document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.prevSelectedTabX) || this.getTabPositionX(),
+  private getPreviousTabWidth(): number {
+    return (
+      Number(document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.prevSelectedTabWidth)) ||
+      this.getSelectedTabWidth()
     );
   }
 
-  private getTabPositionScaleX(): number {
-    return this.getBoundingClientRect().height;
+  private getSelectedTabWidth(): number {
+    if (this['aria-selected'] === 'true') {
+      return this.getBoundingClientRect().width;
+    }
+    return this.getPreviousTabWidth();
   }
 
-  private getPreviousPositionScaleX(): number {
-    return Number(document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.prevSelectedTabScaleX));
-  }
-
-  private setSelectedTabXCSS() {
+  /**
+   * setSelectedTabCSS
+   *
+   * sets the css variable for the currently selected tab if this tab is selected
+   */
+  private setSelectedTabCSS() {
     document.documentElement.style.setProperty(TAB_TOKEN_NAMES.selectedTabX, this._selectedTabX.toString());
   }
 
-  private setPrevSelectedTabXCSS() {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.prevSelectedTabX, this._previousSelectedTabX.toString());
+  /**
+   * setPrevSelectedTabCSS
+   *
+   * sets the css variable for the previously selected tab as the currently selected tab. should only be called if the current tab (this tab) is active/selected and after animations have completed
+   */
+  private setPrevSelectedTabCSS() {
+    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.prevSelectedTabX, this._selectedTabX.toString());
   }
 
-  private setTabOffsetCSS() {
+  private setPrevSelectedTabWidthCSS() {
+    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.prevSelectedTabWidth, this._selectedTabWidth.toString());
+  }
+
+  private setTabOffsetCSS(x: number = this._previousSelectedTabX, y: number = this._selectedTabX) {
+    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorOffset, `${x - y}px`);
+  }
+
+  private setTabScaleCSS() {
+    console.log(this._previousSelectedTabWidth, this._selectedTabWidth);
     document.documentElement.style.setProperty(
-      TAB_TOKEN_NAMES.tabIndicatorOffset,
-      `${this._previousSelectedTabX - this._selectedTabX}px`,
+      TAB_TOKEN_NAMES.tabIndicatorScale,
+      `${this._previousSelectedTabWidth / this._selectedTabWidth}`,
     );
-  }
-
-  private setTabCssVars() {
-    // set positionX
-    this.setSelectedTabXCSS();
-    this.setPrevSelectedTabXCSS();
-    this.setTabOffsetCSS();
-
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorScale, '1');
-  }
-
-  protected handleClick() {
-    if (this.ariaSelected) {
-      this.parentElement?.querySelectorAll('fluent-tab').forEach(el => {
-        const element: unknown = el;
-        const htmlEl = element as HTMLElement;
-        htmlEl.dataset.selected = 'false';
-      });
-
-      setTimeout(() => {
-        this.dataset.selected = 'true';
-      }, 1000);
-      this.refreshTabPositions();
-      this.setTabCssVars();
-
-      //   console.log(
-      //     '--tabIndicatorOffsetX',
-      //     this._previousSelectedTabX - this._selectedTabX,
-      //     document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.tabIndicatorOffset),
-      //   );
-      //   console.log(
-      //     TAB_TOKEN_NAMES.tabIndicatorScale,
-      //     this._previousSelectedTabScale - this._selectedTabScale,
-      //     document.documentElement.style.getPropertyValue(TAB_TOKEN_NAMES.tabIndicatorScale),
-      //   );
-    }
   }
 }

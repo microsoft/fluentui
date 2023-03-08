@@ -64,8 +64,8 @@ export const styles = css`
     content: '';
     inset: 0;
     margin-top: auto;
-    /* margin-left: auto;
-    margin-right: auto; */
+    margin-left: auto;
+    margin-right: auto;
     position: absolute;
     z-index: 1;
 
@@ -73,12 +73,26 @@ export const styles = css`
     transition-property: transform;
     transition-duration: ${durationSlow};
     transition-timing-function: ${curveDecelerateMax};
-    transition-delay: 1s;
     transform-origin: left;
-    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
   :host([data-selected='true'])::after {
     background-color: ${colorCompoundBrandStroke};
+    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+  }
+  :host([data-selected='false']:hover)::before {
+    /* default size and color */
+    width: calc(100% - 20px);
+    height: ${strokeWidthThicker};
+    background-color: ${colorTransparentStroke};
+    border-radius: ${borderRadiusCircular};
+    content: '';
+    inset: 0;
+    margin-top: auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    background-color: ${colorNeutralStroke1Hover};
   }
 
   :host(:active) {

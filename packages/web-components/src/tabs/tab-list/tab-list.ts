@@ -19,6 +19,33 @@ export class TabList extends FASTTabs {
   @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
   reserveSelectedTabSpace?: boolean;
 
+  activeidChanged(oldValue: string, newValue: string) {
+    super.activeidChanged(oldValue, newValue);
+    console.log('active id changed', this.activeid);
+
+    // onLoad register all tabs
+    // [{id, x, y, width, height}]
+  }
+
+  tabsChanged(): void {
+    super.tabsChanged();
+    this.registerTabData();
+  }
+
+  private registerTabData() {
+    const tabData = this.tabs.map(tab => {
+      const rect = tab.getBoundingClientRect();
+      return {
+        id: tab.id,
+        x: rect.x,
+        y: rect.y,
+        height: rect.height,
+        width: rect.width,
+      };
+    });
+    this.dataset.tabs = JSON.stringify(tabData);
+  }
+
   disabledChanged() {
     const tabs = this.querySelectorAll('fluent-tab');
 
