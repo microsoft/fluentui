@@ -27,4 +27,4 @@ export type TagButtonProps = ComponentProps<TagButtonSlots> & {
  * State used in rendering TagButton
  */
 export type TagButtonState = ComponentState<TagButtonSlots> &
-  Required<Pick<TagButtonProps, 'dismissable' | 'size' | 'shape' | 'disabled' | 'checked' | 'appearance'>>;
+  Required<Pick<TagButtonProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
