@@ -46,8 +46,36 @@ export default {
 
 export const Spinner = renderComponent(storyTemplate).bind({});
 
-export const SpinnerInverted = renderComponent(html<SpinnerStoryArgs>`
-  <div style="background-color: #0f6cbd; padding: 20px;">
-    <fluent-spinner appearance="inverted" size="medium"></fluent-spinner>
+//
+// Attribute stories
+//
+
+export const Appearance = renderComponent(html<SpinnerStoryArgs>`
+  <div>
+    <div style="padding: 20px;">
+      <code>primary</code>
+      <fluent-spinner appearance="primary"></fluent-spinner>
+    </div>
+    <div style="padding: 20px; background-color: #0f6cbd; color: #fff;">
+      <code>inverted</code>
+      <fluent-spinner appearance="inverted" size="medium"></fluent-spinner>
+    </div>
+  </div>
+`);
+
+export const Size = renderComponent(html<SpinnerStoryArgs>`
+  <div style="display: grid; align-items: center; gap: 0 20px; grid-template-columns: 90px min-content;">
+    <code>tiny</code>
+    <fluent-spinner size="tiny"></fluent-spinner>
+    <code>extra-small</code>
+    <fluent-spinner size="extra-small"></fluent-spinner>
+    <code>small</code>
+    <fluent-spinner size="small"></fluent-spinner>
+    <code>medium</code>
+    <fluent-spinner size="medium"></fluent-spinner>
+    <code>large</code>
+    <fluent-spinner size="large"></fluent-spinner>
+    <code>extra-large</code>
+    <fluent-spinner size="extra-large"></fluent-spinner>
   </div>
 `);

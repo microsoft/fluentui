@@ -9,7 +9,7 @@ type DividerStoryArgs = Args & FluentDivider;
 type DividerStoryMeta = Meta<DividerStoryArgs>;
 
 const dividerTemplate = html<DividerStoryArgs>`
-  <div style="border: 30px solid #ccc; height: 9em; display: flex; flex-direction: column; justify-content: center;">
+  <div>
     <fluent-divider
       align-content=${x => x.alignContent}
       appearance=${x => x.appearance}
@@ -23,7 +23,7 @@ const dividerTemplate = html<DividerStoryArgs>`
 `;
 
 const dividerSvgTemplate = html<DividerStoryArgs>`
-  <div style="border: 30px solid #ccc; height: 9em; display: flex; flex-direction: column; justify-content: center;">
+  <div>
     <fluent-divider align-content="start" appearance="brand" role="presentation">
       <svg width="20px" height="20px" viewBox="0 0 32 33" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -143,5 +143,55 @@ export default {
 } as DividerStoryMeta;
 
 export const Divider = renderComponent(dividerTemplate).bind({});
+
+//
+// Attribute Stories
+//
+
+export const Content = renderComponent(html<DividerStoryArgs>`
+  <fluent-divider align-content="center">
+    <em>Wrap your content in an element to render</em>
+  </fluent-divider>
+`);
+export const AlignContent = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider align-content="center"><div>center</div></fluent-divider>
+    <fluent-divider align-content="start"><div>start</div></fluent-divider>
+    <fluent-divider align-content="end"><div>end</div></fluent-divider>
+  </div>
+`);
+export const Appearance = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider appearance="strong"><div>strong</div></fluent-divider>
+    <fluent-divider appearance="brand"><div>brand</div></fluent-divider>
+    <fluent-divider appearance="subtle"><div>subtle</div></fluent-divider>
+    <fluent-divider appearance="default"><div>default</div></fluent-divider>
+  </div>
+`);
+export const Role = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider role="separator"><div>separator</div></fluent-divider>
+    <fluent-divider role="presentation"><div>presentation</div></fluent-divider>
+  </div>
+`);
+
+// TODO: there is no visual difference between inset="true" and inset="false"
+export const Inset = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider inset><div>I'm inset from the edges</div></fluent-divider>
+    <fluent-divider><div>Default</div></fluent-divider>
+  </div>
+`);
+export const Orientation = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider orientation="vertical"><div>vertical</div></fluent-divider>
+    <br />
+    <fluent-divider orientation="horizontal"><div>horizontal</div></fluent-divider>
+  </div>
+`);
+
+//
+// Extra stories - These stories are in addition to the story for each attribute.
+//
 export const DividerWithSvg = renderComponent(dividerSvgTemplate).bind({});
 export const VerticalDividerWithSvg = renderComponent(dividerSvgVerticalTemplate).bind({});
