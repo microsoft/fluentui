@@ -84,8 +84,7 @@ export function useWeekCornerStyles(props: CalendarDayGridProps) {
             day.isSelected,
           );
 
-        const style = mergeClasses(calculateRoundedStyles(above, below, left, right));
-        weekCornersStyled[weekIndex + '_' + dayIndex] = style;
+        weekCornersStyled[weekIndex + '_' + dayIndex] = calculateRoundedStyles(above, below, left, right);
       });
     });
 
