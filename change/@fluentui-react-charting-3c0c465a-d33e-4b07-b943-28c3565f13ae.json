@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update data viz palette",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
