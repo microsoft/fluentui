@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
-import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecoratorPauseAnimation } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Skeleton converged', module)
-  .addDecorator(TestWrapperDecoratorNoAnimation)
+  .addDecorator(TestWrapperDecoratorPauseAnimation)
   .addStory('Opaque Skeleton with rectangle', () => <Skeleton className="test-class" />, {
     includeHighContrast: true,
     includeDarkMode: true,
