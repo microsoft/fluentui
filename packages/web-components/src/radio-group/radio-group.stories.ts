@@ -129,16 +129,6 @@ export const RadioGroupLayoutHorizontalStacked = renderComponent(html<RadioGroup
   </fluent-radio-group>
 `);
 
-export const RadioGroupOnChange = renderComponent(html<RadioGroupStoryArgs>`
-  <fluent-radio-group aria-labelledby="label-2" name="radio-story">
-    <span id="label-2" slot="label">Favorite Fruit</span>
-    <fluent-radio value="apple"> Apple </fluent-radio>
-    <fluent-radio value="pear"> Pear </fluent-radio>
-    <fluent-radio value="banana"> Banana </fluent-radio>
-    <fluent-radio value="orange"> Orange </fluent-radio>
-  </fluent-radio-group>
-`);
-
 export const RadioGroupDefaultChecked = renderComponent(html<RadioGroupStoryArgs>`
   <fluent-radio-group aria-labelledby="label-6" orientation="horizontal" name="radio-story">
     <span id="label-6" slot="label">Favorite Fruit</span>
