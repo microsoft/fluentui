@@ -88,11 +88,11 @@ export function useWeekCornerStyles(props: CalendarDayGridProps) {
             day.isSelected,
           );
 
-        const style = [];
-        style.push(calculateRoundedStyles(above, below, left, right));
-        style.push(calculateBorderStyles(above, below, left, right));
-
-        weekCornersStyled[weekIndex + '_' + dayIndex] = style.join(' ');
+        const style = mergeClasses(
+          calculateRoundedStyles(above, below, left, right),
+          calculateBorderStyles(above, below, left, right),
+        );
+        weekCornersStyled[weekIndex + '_' + dayIndex] = style;
       });
     });
 
@@ -123,7 +123,7 @@ export function useWeekCornerStyles(props: CalendarDayGridProps) {
       );
     }
 
-    return style.join(' ');
+    return mergeClasses(...style);
   };
 
   const calculateBorderStyles = (above: boolean, below: boolean, left: boolean, right: boolean): string => {

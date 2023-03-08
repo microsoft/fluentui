@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, CalendarProps } from '@fluentui/react-datepicker-compat';
+import { Calendar, CalendarProps, DateRangeType } from '@fluentui/react-datepicker-compat';
 import { tokens } from '@fluentui/react-components';
 import { makeResetStyles } from '@griffel/react';
 
@@ -10,6 +10,7 @@ const useStyles = makeResetStyles({
 
 export const Default = (props: Partial<CalendarProps>) => (
   <div className={useStyles()}>
-    <Calendar {...props} />
+    {/* <Calendar {...props} /> */}
+    <Calendar dateRangeType={DateRangeType.Month} highlightSelectedMonth showGoToToday {...props} />
   </div>
 );
