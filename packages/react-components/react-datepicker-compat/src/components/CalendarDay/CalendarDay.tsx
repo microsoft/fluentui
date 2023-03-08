@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { ChevronLeftRegular, ChevronRightRegular, DismissRegular } from '@fluentui/react-icons';
+import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/react-icons';
 import { useId } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { addMonths, compareDatePart, getMonthEnd, getMonthStart } from '../../utils';
@@ -137,7 +137,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
         }
         type="button"
       >
-        <ChevronLeftRegular />
+        <ArrowUpRegular />
       </button>
       <button
         className={mergeClasses(classNames.headerIconButton, !nextMonthInBounds && classNames.disabledStyle)}
@@ -152,7 +152,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
         }
         type="button"
       >
-        <ChevronRightRegular />
+        <ArrowDownRegular />
       </button>
       {showCloseButton && (
         <button

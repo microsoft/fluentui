@@ -16,10 +16,10 @@ import {
   SLIDE_UP_OUT20,
   TRANSITION_ROW_DISAPPEARANCE,
 } from '../../utils';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import { weekCornersClassNames } from './useWeekCornerStyles';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 
 export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = {
   wrapper: 'fui-CalendarDayGrid__wrapper',
@@ -271,7 +271,6 @@ const useLastTransitionWeekStyles = makeStyles({
 
 const useDayMarkerStyles = makeStyles({
   base: {
-    // TODO: Use background instead of foreground token
     backgroundColor: tokens.colorNeutralForeground2,
     ...shorthands.borderRadius('100%'),
     bottom: '1px',
@@ -311,7 +310,6 @@ const useCornerBorderAndRadiusStyles = makeStyles({
       bottom: 0,
       left: 0,
       right: 0,
-      // ...shorthands.borderStyle('none'),
     },
   },
   corners: {
