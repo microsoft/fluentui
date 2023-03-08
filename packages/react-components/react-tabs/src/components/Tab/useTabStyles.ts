@@ -174,17 +174,20 @@ const useFocusStyles = makeStyles({
   // Tab creates a custom focus indicator because the default focus indicator
   // is applied using an ::after pseudo-element on the root. Since the selection
   // indicator uses an ::after pseudo-element on the root, there is a conflict.
-  base: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineWidth: tokens.strokeWidthThick,
-    outlineColor: 'transparent',
-    outlineStyle: 'solid',
-    boxShadow: `
+  base: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderColor('transparent'),
+      outlineWidth: tokens.strokeWidthThick,
+      outlineColor: 'transparent',
+      outlineStyle: 'solid',
+      boxShadow: `
       ${tokens.shadow4},
       0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}
     `,
-    zIndex: 1,
-  }),
+      zIndex: 1,
+    },
+    { enableOutline: true },
+  ),
 });
 
 /** Indicator styles for when pending selection */
