@@ -10,10 +10,6 @@ export const weekCornersClassNames = {
   topLeftCornerDate: 'fui-CalendarDayGrid__topLeftCornerDate',
   bottomRightCornerDate: 'fui-CalendarDayGrid__bottomRightCornerDate',
   bottomLeftCornerDate: 'fui-CalendarDayGrid__bottomLeftCornerDate',
-  datesAbove: 'fui-CalendarDayGrid__datesAbove',
-  datesBelow: 'fui-CalendarDayGrid__datesBelow',
-  datesLeft: 'fui-CalendarDayGrid__datesLeft',
-  datesRight: 'fui-CalendarDayGrid__datesRight',
 };
 
 export interface WeekCorners {
@@ -88,10 +84,7 @@ export function useWeekCornerStyles(props: CalendarDayGridProps) {
             day.isSelected,
           );
 
-        const style = mergeClasses(
-          calculateRoundedStyles(above, below, left, right),
-          calculateBorderStyles(above, below, left, right),
-        );
+        const style = mergeClasses(calculateRoundedStyles(above, below, left, right));
         weekCornersStyled[weekIndex + '_' + dayIndex] = style;
       });
     });
@@ -121,25 +114,6 @@ export function useWeekCornerStyles(props: CalendarDayGridProps) {
       style.push(
         dir === 'rtl' ? weekCornersClassNames.bottomLeftCornerDate : weekCornersClassNames.bottomRightCornerDate,
       );
-    }
-
-    return mergeClasses(...style);
-  };
-
-  const calculateBorderStyles = (above: boolean, below: boolean, left: boolean, right: boolean): string => {
-    const style = [];
-
-    if (!above) {
-      style.push(weekCornersClassNames.datesAbove);
-    }
-    if (!below) {
-      style.push(weekCornersClassNames.datesBelow);
-    }
-    if (!left) {
-      style.push(dir === 'rtl' ? weekCornersClassNames.datesRight : weekCornersClassNames.datesLeft);
-    }
-    if (!right) {
-      style.push(dir === 'rtl' ? weekCornersClassNames.datesLeft : weekCornersClassNames.datesRight);
     }
 
     return mergeClasses(...style);

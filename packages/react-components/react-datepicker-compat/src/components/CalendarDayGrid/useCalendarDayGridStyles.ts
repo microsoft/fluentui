@@ -302,16 +302,6 @@ const useDayMarkerStyles = makeStyles({
 });
 
 const useCornerBorderAndRadiusStyles = makeStyles({
-  borderBase: {
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
-  },
   corners: {
     [`&.${weekCornersClassNames.topRightCornerDate}`]: {
       borderTopRightRadius: '2px',
@@ -324,20 +314,6 @@ const useCornerBorderAndRadiusStyles = makeStyles({
     },
     [`&.${weekCornersClassNames.bottomLeftCornerDate}`]: {
       borderBottomLeftRadius: '2px',
-    },
-  },
-  borders: {
-    [`&.${weekCornersClassNames.datesAbove}::before`]: {
-      ...shorthands.borderTop('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-    [`&.${weekCornersClassNames.datesBelow}::before`]: {
-      ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-    [`&.${weekCornersClassNames.datesLeft}::before`]: {
-      ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    },
-    [`&.${weekCornersClassNames.datesRight}::before`]: {
-      ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralStrokeAccessible),
     },
   },
 });
@@ -372,15 +348,9 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
       tableStyles.base,
       showWeekNumbers && tableStyles.showWeekNumbers,
     ),
-    dayCell: mergeClasses(
-      calendarDayGridClassNames.dayCell,
-      dayCellStyles.base,
-      cornerBorderAndRadiusStyles.corners,
-      cornerBorderAndRadiusStyles.borders,
-    ),
+    dayCell: mergeClasses(calendarDayGridClassNames.dayCell, dayCellStyles.base, cornerBorderAndRadiusStyles.corners),
     daySelected: mergeClasses(
       calendarDayGridClassNames.daySelected,
-      dateRangeType !== DateRangeType.Month && cornerBorderAndRadiusStyles.borderBase,
       dateRangeType !== DateRangeType.Month && daySelectedStyles.dateRangeTypeNotMonth,
     ),
     weekRow: mergeClasses(
