@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import type { TagProps, TagState } from './Tag.types';
 import { Dismiss16Filled } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-avatar';
+import type { TagProps, TagState } from './Tag.types';
 
 /**
  * Create the state required to render Tag.
