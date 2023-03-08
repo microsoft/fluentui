@@ -165,39 +165,6 @@ export const Block = renderComponent(html<TextStoryArgs>`
   </span>
 `);
 
-// TODO: `as` doesn't appear to be attribute or feature but it is being documented as such. If this is true, it should be moved/removed.
-export const As = renderComponent(html<TextStoryArgs>`
-  <div>
-    <fluent-text>
-      <h1>Text as an <code>h1</code> element.</h1>
-    </fluent-text>
-    <fluent-text block>
-      <h2>Text as an <code>h2</code> element.</h2>
-    </fluent-text>
-    <fluent-text block>
-      <h3>Text as an <code>h3</code> element.</h3>
-    </fluent-text>
-    <fluent-text block>
-      <h4>Text as an <code>h4</code> element.</h4>
-    </fluent-text>
-    <fluent-text block>
-      <h5>Text as an <code>h5</code> element.</h5>
-    </fluent-text>
-    <fluent-text block>
-      <h6>Text as an <code>h6</code> element.</h6>
-    </fluent-text>
-    <fluent-text block>
-      <p>Text as a <code>p</code> element.</p>
-    </fluent-text>
-    <fluent-text block>
-      <pre>Text as a <code>pre</code> element.</pre>
-    </fluent-text>
-    <fluent-text block>
-      <span>Text as a <code>span</code> element.</span>
-    </fluent-text>
-  </div>
-`);
-
 export const Size = renderComponent(html<TextStoryArgs>`
   <div>
     <fluent-text block size="100"><span>100</span></fluent-text>
