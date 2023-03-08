@@ -1,4 +1,4 @@
-const resources = require('../../scripts/webpack/webpack-resources');
+const { resources } = require('@fluentui/scripts-webpack');
 
 // The issue here is making readable Flamegraphs that don't have complicated paths like:
 //  ~Fabric.../../packages/react/lib/components/DetailsList/DetailsRow.base.js.DetailsRowBase.render

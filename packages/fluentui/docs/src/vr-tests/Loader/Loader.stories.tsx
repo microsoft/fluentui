@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Loader } from '@fluentui/react-northstar';
 import LoaderExampleRtl from '../../examples/components/Loader/Rtl/LoaderExample.rtl';

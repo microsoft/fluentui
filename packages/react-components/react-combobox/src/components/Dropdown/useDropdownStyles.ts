@@ -68,7 +68,11 @@ const useStyles = makeStyles({
     },
   },
 
-  listbox: {},
+  listbox: {
+    boxShadow: `${tokens.shadow16}`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    maxHeight: '80vh',
+  },
 
   listboxCollapsed: {
     display: 'none',
@@ -176,6 +180,11 @@ const useStyles = makeStyles({
       ...shorthands.borderColor('GrayText'),
     },
   },
+
+  disabledText: {
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -227,6 +236,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     dropdownClassNames.root,
     styles.root,
     styles[appearance],
+    !disabled && appearance === 'outline' && styles.outlineInteractive,
     invalid && appearance !== 'underline' && styles.invalid,
     invalid && appearance === 'underline' && styles.invalidUnderline,
     disabled && styles.disabled,
@@ -238,6 +248,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     styles.button,
     styles[size],
     placeholderVisible && styles.placeholder,
+    disabled && styles.disabledText,
     state.button.className,
   );
 

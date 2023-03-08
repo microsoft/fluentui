@@ -34,8 +34,15 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
   type?: Type,
   props?: Props,
 ): ARIAButtonResultProps<Type, Props> {
-  const { disabled, disabledFocusable = false, ['aria-disabled']: ariaDisabled, onClick, onKeyDown, onKeyUp, ...rest } =
-    props ?? {};
+  const {
+    disabled,
+    disabledFocusable = false,
+    ['aria-disabled']: ariaDisabled,
+    onClick,
+    onKeyDown,
+    onKeyUp,
+    ...rest
+  } = props ?? {};
 
   const normalizedARIADisabled = typeof ariaDisabled === 'string' ? ariaDisabled === 'true' : ariaDisabled;
 

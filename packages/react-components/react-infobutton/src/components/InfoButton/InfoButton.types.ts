@@ -7,7 +7,7 @@ export type InfoButtonSlots = {
   /**
    * The Popover element that wraps the content and root. Use this slot to pass props to the Popover.
    */
-  popover: NonNullable<Slot<PopoverProps>>;
+  popover: NonNullable<Slot<Partial<PopoverProps>>>;
 
   /**
    * The content to be displayed in the PopoverSurface when the button is pressed.

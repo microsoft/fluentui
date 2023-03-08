@@ -66,7 +66,7 @@ export const Something = <T>(value: NonNullable<T>): Something<T> => {
 };
 
 export const MaybeDictionary = <T>(dictionary: { [key: string]: T }): { [key: string]: Maybe<T> } => {
-  return new Proxy<{ [key: string]: Maybe<T> }>((dictionary as unknown) as { [key: string]: Maybe<T> }, {
+  return new Proxy<{ [key: string]: Maybe<T> }>(dictionary as unknown as { [key: string]: Maybe<T> }, {
     get: (target: { [key: string]: Maybe<T> | T }, name: string): Maybe<T> => {
       const value = target[name];
       if (!value || !('__isMaybe' in value)) {

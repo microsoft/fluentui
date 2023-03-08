@@ -61,7 +61,7 @@ export function getSlots<R extends SlotPropsRecord>(
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
-  return { slots, slotProps: (slotProps as unknown) as ObjectSlotProps<R> };
+  return { slots, slotProps: slotProps as unknown as ObjectSlotProps<R> };
 }
 
 function getSlot<R extends SlotPropsRecord, K extends keyof R>(
@@ -73,17 +73,19 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   }
   const { children, as: asProp, ...rest } = state[slotName]!;
 
-  const slot = (state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
-    ? asProp || state.components?.[slotName] || 'div'
-    : state.components[slotName]) as React.ElementType<R[K]>;
+  const slot = (
+    state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
+      ? asProp || state.components?.[slotName] || 'div'
+      : state.components[slotName]
+  ) as React.ElementType<R[K]>;
 
   if (typeof children === 'function') {
     const render = children as SlotRenderFunction<R[K]>;
     return [
       React.Fragment,
-      ({
+      {
         children: render(slot, rest as Omit<R[K], 'children' | 'as'>),
-      } as unknown) as R[K],
+      } as unknown as R[K],
     ];
   }
 

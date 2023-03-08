@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getWindow } from './dom/getWindow';
+import { IReactProps } from './React.types';
 
 /**
  * DelayedRender component props.
@@ -7,7 +8,7 @@ import { getWindow } from './dom/getWindow';
  * @public
  */
 // eslint-disable-next-line deprecation/deprecation
-export interface IDelayedRenderProps extends React.Props<{}> {
+export interface IDelayedRenderProps extends IReactProps<{}> {
   /**
    * Number of milliseconds to delay rendering children.
    */

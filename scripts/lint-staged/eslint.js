@@ -1,10 +1,11 @@
 // @ts-check
 
+// eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
+const child_process = require('child_process');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { promisify } = require('util');
-const child_process = require('child_process');
 const { rollup: lernaAliases } = require('lerna-alias');
 const { default: PQueue } = require('p-queue');
 const exec = promisify(child_process.exec);
@@ -33,6 +34,7 @@ function groupFilesByPackage() {
   );
 
   for (const file of files) {
+    // eslint-disable-next-line no-shadow
     const packagePath = packagesWithEslint.find(packagePath => {
       // if file lives within searched package we will get only shortened absolute path `/src/abc.ts`
       // we add `.` to make it relative and thus have match pattern to check upon
@@ -65,12 +67,16 @@ async function runEslintOnFilesGroupedPerPackage() {
   let hasError = false;
 
   await queue.addAll(
+    // eslint-disable-next-line no-shadow
     Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
+      const cmd = `node ${eslintForPackageScript} ${files.join(' ')}`;
+
       // This script handles running eslint on ONLY the appropriate files for each package.
       // See its comments for more details.
-      return exec(`node ${eslintForPackageScript} ${files.join(' ')}`, { cwd: packagePath }).catch(() => {
+      return exec(cmd, { cwd: packagePath }).catch((/** @type {{ stdout: string, stderr: string }} */ err) => {
         // The subprocess should already have handled logging. Just mark that there was an error.
         hasError = true;
+        throw new Error(err.stderr);
       });
     }),
   );

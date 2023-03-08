@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
@@ -50,15 +52,16 @@ setAddon({
       });
     }
     if (config.includeHighContrast) {
-      this.add(storyName + ' - High Contrast', (
-        /** @type {import('../src/utilities/types').StoryContext} */ context,
-      ) => {
-        return (
-          <FluentProvider applyStylesToPortals={false} theme={teamsHighContrastTheme}>
-            {storyFn(context)}
-          </FluentProvider>
-        );
-      });
+      this.add(
+        storyName + ' - High Contrast',
+        (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
+          return (
+            <FluentProvider applyStylesToPortals={false} theme={teamsHighContrastTheme}>
+              {storyFn(context)}
+            </FluentProvider>
+          );
+        },
+      );
     }
 
     return this;
@@ -67,8 +70,3 @@ setAddon({
 
 /** @type {import("@fluentui/react-storybook-addon").FluentParameters} */
 export const parameters = { layout: 'none', mode: 'vr-test' };
-
-// For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
-if (typeof window === 'object') {
-  /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
-}

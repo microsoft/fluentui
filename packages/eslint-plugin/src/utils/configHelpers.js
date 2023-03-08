@@ -22,6 +22,7 @@ const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
 const configFiles = [
   './just.config.ts',
+  './cypress.config.ts',
   './gulpfile.ts',
   './*.js',
   './.*.js',
@@ -61,7 +62,7 @@ module.exports = {
    * - config/build
    * - stories, for now
    *   - may need to reconsider for converged components depending on website approach
-   *   - the stories suffix is also used for screener stories in `vr-tests`
+   *   - the stories suffix is also used for storywright stories in `vr-tests`
    */
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, '**/*.stories.tsx'],
 

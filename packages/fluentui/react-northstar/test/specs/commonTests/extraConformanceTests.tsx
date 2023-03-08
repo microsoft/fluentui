@@ -1,7 +1,21 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 import { TestObject } from '@fluentui/react-conformance';
-import parseDocblock from '@fluentui/scripts/gulp/plugins/util/parseDocblock';
+
+import * as doctrine from 'doctrine';
+
+// NOTE: copied code from '@fluentui/scripts-gulp/src/plugins/util/parseDocblock'
+// - all scripts-* packages use esModuleInterop flag which will cause issues when used in northstar source/test files (they don't have that flag enabled)
+// - without major rewrite of @fluentui/scripts-gulp to actually not use esModuleImports we cannot use this here thus, copying
+const parseDocblock = (docblock: string) => {
+  const { description = '', tags = [], ...rest } = doctrine.parse(docblock || '', { unwrap: true });
+
+  return {
+    ...rest,
+    description,
+    tags,
+  };
+};
 
 /**
  * northstar-specific tests that run using react-conformance

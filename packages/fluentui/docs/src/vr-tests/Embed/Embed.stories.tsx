@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Embed } from '@fluentui/react-northstar';
 import EmbedExampleVideo from '../../examples/components/Embed/Slots/EmbedExampleVideo.shorthand';

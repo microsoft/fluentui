@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { TableSelectionCell } from './TableSelectionCell';
 import { isConformant } from '../../testing/isConformant';
 import { TableSelectionCellProps } from './TableSelectionCell.types';
@@ -10,6 +11,7 @@ const tr = document.createElement('tr');
 describe('TableSelectionCell', () => {
   beforeEach(() => {
     document.body.appendChild(tr);
+    resetIdsForTests();
   });
 
   isConformant({

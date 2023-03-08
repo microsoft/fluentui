@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown } from '@fluentui/react-northstar';
 import DropdownExampleFreeform from '../../examples/components/Dropdown/Types/DropdownExampleFreeform.shorthand';

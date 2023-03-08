@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { Image } from '@fluentui/react-image';
 import { ComponentMeta } from '@storybook/react';
 
@@ -10,7 +10,7 @@ export default {
 
   decorators: [
     (story: () => React.ReactNode) => (
-      <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Image>;

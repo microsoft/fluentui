@@ -4,7 +4,7 @@ import { isHTMLElement } from './isHTMLElement';
  * @internal
  * Checks that the element has default behaviour from user input on click or 'Enter'/'Space' keys
  */
-export function isInteractiveHTMLElement(element: Node | null | undefined) {
+export function isInteractiveHTMLElement(element: unknown) {
   if (!isHTMLElement(element)) {
     return false;
   }

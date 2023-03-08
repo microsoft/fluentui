@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright } from 'storywright';
 import { makeStyles } from '@griffel/react';
 import {
   Toolbar,
@@ -26,11 +26,11 @@ export default {
   Component: Toolbar,
   decorators: [
     story => (
-      <Screener steps={steps}>
+      <StoryWright steps={steps}>
         <div className="testWrapper" style={{ width: '600px' }}>
           {story()}
         </div>
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Toolbar>;

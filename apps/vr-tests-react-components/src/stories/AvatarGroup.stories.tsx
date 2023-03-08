@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import {
   AvatarGroup,
   AvatarGroupItem,
@@ -74,7 +74,7 @@ const AvatarGroupList: React.FC<
 storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('basic', () => <AvatarGroupList />, {
     includeHighContrast: true,
@@ -136,9 +136,9 @@ storiesOf('AvatarGroup Converged', module)
 storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
+    <StoryWright steps={new Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'overflowContent',

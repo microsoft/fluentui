@@ -34,30 +34,26 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
 
-function useCachedBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
+function useBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
   /** The bounds used when determining if and where the PositioningContainer should be placed. */
-  const positioningBounds = React.useRef<IRectangle>();
 
-  const getCachedBounds = (): IRectangle => {
-    if (!positioningBounds.current) {
-      let currentBounds = props.bounds;
+  const getBounds = (): IRectangle => {
+    let currentBounds = props.bounds;
 
-      if (!currentBounds) {
-        currentBounds = {
-          top: 0 + props.minPagePadding!,
-          left: 0 + props.minPagePadding!,
-          right: targetWindow!.innerWidth - props.minPagePadding!,
-          bottom: targetWindow!.innerHeight - props.minPagePadding!,
-          width: targetWindow!.innerWidth - props.minPagePadding! * 2,
-          height: targetWindow!.innerHeight - props.minPagePadding! * 2,
-        };
-      }
-      positioningBounds.current = currentBounds;
+    if (!currentBounds) {
+      currentBounds = {
+        top: 0 + props.minPagePadding!,
+        left: 0 + props.minPagePadding!,
+        right: targetWindow!.innerWidth - props.minPagePadding!,
+        bottom: targetWindow!.innerHeight - props.minPagePadding!,
+        width: targetWindow!.innerWidth - props.minPagePadding! * 2,
+        height: targetWindow!.innerHeight - props.minPagePadding! * 2,
+      };
     }
-    return positioningBounds.current;
+    return currentBounds;
   };
 
-  return getCachedBounds;
+  return getBounds;
 }
 
 function usePositionState(
@@ -312,7 +308,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
   const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
   const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
-  const getCachedBounds = useCachedBounds(props, targetWindow);
+  const getCachedBounds = useBounds(props, targetWindow);
   const [positions, updateAsyncPosition] = usePositionState(
     props,
     positionedHost,

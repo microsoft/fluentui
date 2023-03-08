@@ -26,7 +26,7 @@ import {
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 
 const items = [
   {
@@ -591,11 +591,54 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
   </Table>
 );
 
+const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativeElements, truncate }) => (
+  <Table noNativeElements={noNativeElements} style={{ width: '400px' }}>
+    <TableHeader>
+      <TableRow>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {items.map((item, i) => (
+        <TableRow key={item.file.label} className={`row-${i}`}>
+          <TableCell>
+            <TableCellLayout truncate={truncate} media={item.file.icon}>
+              {item.file.label}
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout
+              truncate={truncate}
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout truncate={truncate}>{item.lastUpdated.label}</TableCellLayout>
+          </TableCell>
+          <TableCell>
+            <TableCellLayout truncate={truncate} media={item.lastUpdate.icon}>
+              {item.lastUpdate.label}
+            </TableCellLayout>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
 ([true, false] as const).forEach(noNativeElements => {
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().hover('.row-1').snapshot('hover row').end()}>{story()}</StoryWright>
     ))
     .addStory('default', () => <CellActionsDefault noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
@@ -690,15 +733,15 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
 
   storiesOf(`Table ${layoutName} - subtle selection`, module)
     .addDecorator(story => (
-      <Screener steps={new Screener.Steps().hover('.not-selected').snapshot('hover unselected row').end()}>
+      <StoryWright steps={new Steps().hover('.not-selected').snapshot('hover unselected row').end()}>
         {story()}
-      </Screener>
+      </StoryWright>
     ))
     .addStory('rest', () => <SubtleSelection noNativeElements={noNativeElements} />);
   storiesOf(`Table layout ${layoutName} - headers`, module)
     .addDecorator(story => (
-      <Screener
-        steps={new Screener.Steps()
+      <StoryWright
+        steps={new Steps()
           .hover('.columnheader')
           .snapshot('hover header')
           .mouseDown('.columnheader')
@@ -706,10 +749,15 @@ const SubtleSelection: React.FC<SharedVrTestArgs> = ({ noNativeElements }) => (
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     ))
     .addStory('sortable', () => <SortableHeaders noNativeElements={noNativeElements} />, {
       includeDarkMode: true,
       includeHighContrast: true,
     });
+
+  storiesOf(`Table layout ${layoutName} - truncate`, module)
+    .addStory('default (disabled)', () => <Truncate noNativeElements={noNativeElements} />)
+    .addStory('false', () => <Truncate noNativeElements={noNativeElements} truncate={false} />)
+    .addStory('true', () => <Truncate noNativeElements={noNativeElements} truncate={true} />);
 });

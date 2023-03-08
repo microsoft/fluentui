@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Chat } from '@fluentui/react-northstar';
 import ChatExampleHeader from '../../examples/components/Chat/Content/ChatExampleHeader.shorthand';

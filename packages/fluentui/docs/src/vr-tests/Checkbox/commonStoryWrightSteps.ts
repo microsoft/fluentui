@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Keys, Steps } from 'storywright';
 import { checkboxClassName } from '@fluentui/react-northstar';
 

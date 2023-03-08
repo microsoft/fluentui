@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Header } from '@fluentui/react-northstar';
 import HeaderExampleRtl from '../../examples/components/Header/Rtl/HeaderExample.rtl';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Checkbox } from '@fluentui/react-northstar';
 import CheckboxExampleRtl from '../../examples/components/Checkbox/Rtl/CheckboxExample.rtl';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Input } from '@fluentui/react-northstar';
 import InputExampleRtl from '../../examples/components/Input/Rtl/InputExample.rtl';

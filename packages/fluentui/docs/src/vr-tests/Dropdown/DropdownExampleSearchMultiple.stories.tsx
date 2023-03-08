@@ -1,7 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Keys, StoryWright, Steps } from 'storywright';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSearchInputSlotClassNames, dropdownSlotClassNames } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';

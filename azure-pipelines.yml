@@ -34,6 +34,12 @@ jobs:
         displayName: NX workspace lint
 
       - script: |
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts thus it needs to be build in advance
+          yarn workspace @fluentui/api-docs build
+          yarn tsc -p ./tsconfig.json
+        displayName: Type-check just.config.ts files
+
+      - script: |
           yarn check:installed-dependencies-versions
         displayName: 'check packages: installed dependencies versions'
 
@@ -47,7 +53,7 @@ jobs:
 
       ## Danger.js checks for Fluent UI N*
       - script: |
-          yarn danger ci
+          DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
         displayName: danger
         condition: eq(variables.isPR, true)
         env:

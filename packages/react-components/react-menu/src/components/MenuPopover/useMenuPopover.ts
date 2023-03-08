@@ -55,6 +55,8 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   }, []);
 
   const inline = useMenuContext_unstable(context => context.inline) ?? false;
+  const mountNode = useMenuContext_unstable(context => context.mountNode);
+
   const rootProps = getNativeElementProps('div', {
     role: 'presentation',
     ...props,
@@ -85,7 +87,6 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
     if (key === Tab) {
       setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
-      event.preventDefault();
     }
 
     onKeyDownOriginal?.(event);
@@ -93,6 +94,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
   return {
     inline,
+    mountNode,
     components: {
       root: 'div',
     },

@@ -9,7 +9,7 @@ import {
   performBrowserTest,
   workspaceRoot,
   generateFiles,
-} from '@fluentui/scripts/projects-test';
+} from '@fluentui/scripts-projects-test';
 
 export async function nextjs() {
   const logger = log('test:projects:nextjs');
@@ -36,6 +36,7 @@ export async function nextjs() {
   logger(`✔️ Source and bundler's config were created`);
 
   logger('STEP 4. Build test project');
+  await shEcho(`yarn next telemetry disable`, tempPaths.testApp);
   await shEcho(`yarn next build`, tempPaths.testApp);
   await shEcho(`yarn next export`, tempPaths.testApp);
   logger(`✔️ Example project was successfully built: ${tempPaths.testApp}`);

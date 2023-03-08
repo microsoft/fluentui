@@ -65,12 +65,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/TypographyImplementation.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
         },
         {
           sectionName: 'Customization',
           editUrl: `${baseUrl}/web/TypographyCustomization.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
         },
       ];
   }

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Popup } from '@fluentui/react-northstar';
 import PopupControlledExample from '../../examples/components/Popup/Types/PopupControlledExample';

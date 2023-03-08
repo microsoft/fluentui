@@ -141,12 +141,12 @@ function setupDummyPackage(
       ...normalizedOptions.tsConfig,
     },
     jestConfig: stripIndents`
-      const { createConfig, resolveMergeStylesSerializer } = require('@proj/scripts/jest/jest-resources');
+      const { createConfig,   } = require('@proj/scripts/jest/jest-resources');
       const path = require('path');
 
       const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: [resolveMergeStylesSerializer()],
+         setupFiles: ['./config/tests.js'],
+        snapshotSerializers: ['@fluentui/jest-serializer-merge-styles'],
       });
 
       module.exports = config;

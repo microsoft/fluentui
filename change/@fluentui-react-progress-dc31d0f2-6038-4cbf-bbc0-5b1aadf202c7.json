@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update ProgressBar styling to have width when display is set to flex",
+  "packageName": "@fluentui/react-progress",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

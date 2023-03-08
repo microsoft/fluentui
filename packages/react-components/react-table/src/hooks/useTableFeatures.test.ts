@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { createColumn } from './createColumn';
+import { createTableColumn } from './createColumn';
 import { defaultTableSelectionState, useTableSelection } from './useTableSelection';
 import { defaultTableSortState, useTableSort } from './useTableSort';
 import { useTableFeatures } from './useTableFeatures';
@@ -9,7 +9,7 @@ describe('useTableFeatures', () => {
     const { result } = renderHook(() =>
       useTableFeatures(
         {
-          columns: [createColumn({ columnId: 1 })],
+          columns: [createTableColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
         [useTableSort({})],
@@ -33,7 +33,7 @@ describe('useTableFeatures', () => {
     const { result } = renderHook(() =>
       useTableFeatures(
         {
-          columns: [createColumn({ columnId: 1 })],
+          columns: [createTableColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         },
         [useTableSelection({ selectionMode: 'multiselect' })],
@@ -57,7 +57,7 @@ describe('useTableFeatures', () => {
     it('should enahnce rows', () => {
       const { result } = renderHook(() =>
         useTableFeatures({
-          columns: [createColumn({ columnId: 1 })],
+          columns: [createTableColumn({ columnId: 1 })],
           items: [{}, {}, {}],
         }),
       );
@@ -91,7 +91,7 @@ describe('useTableFeatures', () => {
     it('should use custom rowId', () => {
       const { result } = renderHook(() =>
         useTableFeatures({
-          columns: [createColumn({ columnId: 1 })],
+          columns: [createTableColumn({ columnId: 1 })],
           items: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
           getRowId: item => item.value,
         }),
@@ -104,7 +104,7 @@ describe('useTableFeatures', () => {
     it('should return original items', () => {
       const { result } = renderHook(() =>
         useTableFeatures({
-          columns: [createColumn({ columnId: 1 })],
+          columns: [createTableColumn({ columnId: 1 })],
           items: [{ value: 1 }, { value: 2 }, { value: 3 }],
         }),
       );

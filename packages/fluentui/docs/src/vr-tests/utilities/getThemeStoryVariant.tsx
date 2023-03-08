@@ -1,5 +1,4 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentStory } from '@storybook/react';
 import { Provider, teamsDarkV2Theme, teamsHighContrastTheme, teamsV2Theme } from '@fluentui/react-northstar';
 

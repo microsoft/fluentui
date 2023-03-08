@@ -4,9 +4,8 @@ import { Space } from '@fluentui/keyboard-keys';
 import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
 import { useTableRow_unstable } from '../TableRow/useTableRow';
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
-import { ColumnIdContextProvider } from '../../contexts/columnIdContext';
 import { DataGridSelectionCell } from '../DataGridSelectionCell/DataGridSelectionCell';
-import { useRowIdContext } from '../../contexts/rowIdContext';
+import { useTableRowIdContext } from '../../contexts/rowIdContext';
 import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 /**
@@ -19,7 +18,7 @@ import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
  * @param ref - reference to root HTMLElement of DataGridRow
  */
 export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<HTMLElement>): DataGridRowState => {
-  const rowId = useRowIdContext();
+  const rowId = useTableRowIdContext();
   const isHeader = useIsInTableHeader();
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
   const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);
@@ -33,15 +32,6 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     return 'none';
   });
   const toggleRow = useDataGridContext_unstable(ctx => ctx.selection.toggleRow);
-
-  const cellRenderFunction = props.children;
-  const cells = columnDefs.map(columnDef => {
-    return (
-      <ColumnIdContextProvider value={columnDef.columnId} key={columnDef.columnId}>
-        {cellRenderFunction(columnDef)}
-      </ColumnIdContextProvider>
-    );
-  });
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableRowElement>) => {
     if (selectable && !isHeader) {
@@ -68,7 +58,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       ...props,
       onClick,
       onKeyDown,
-      children: cells,
+      children: null,
       as: 'div',
       tabIndex: tabbable && !isHeader ? 0 : undefined,
     },
@@ -82,5 +72,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       selectionCell: DataGridSelectionCell,
     },
     selectionCell: resolveShorthand(props.selectionCell, { required: selectable }),
+    renderCell: props.children,
+    columnDefs,
   };
 };

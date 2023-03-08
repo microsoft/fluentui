@@ -29,7 +29,8 @@ const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollableP
 
 export class ScrollablePaneBase
   extends React.Component<IScrollablePaneProps, IScrollablePaneState>
-  implements IScrollablePane {
+  implements IScrollablePane
+{
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();

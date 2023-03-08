@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/ItemLayout Migration" />
+
+# ItemLayout component Migration guide
+
+## Overview:
+
+When `ListItem` component was used **only** for layouting purposes it can be replaced by `ItemLayout`.
+
+> Notes:
+>
+> - `ItemLayout` uses [CSS Grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+> - `ItemLayout`'s `endMedia` is always visible (`ListItem` makes it visible only on `hover`)
+
+Before:
+
+```tsx
+import { ListItem } from '@fluentui/react-northstar';
+const Component = () => <ListItem />;
+```
+
+After:
+
+```tsx
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
+const Component = () => <ItemLayout />;
+```
+
+## How to migrate props:
+
+| `ItemLayout` props        | migrate guide                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| className                 | keep it as is                                                                                            |
+| content                   | see [Migrate content prop](#./Migrate-`content`-prop) in this document                                   |
+| variables, design, styles | see [Migrate style overrides](#./Migrate-style-overrides) in this document                               |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page) |
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { ListItem } from '@fluentui/react-northstar';
+const Component = () => <ListItem content="hi" />;
+```
+
+After:
+
+```tsx
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
+const Component = () => <ItemLayout>hi</ItemLayout>;
+```
+
+To pass props to a wrapping element use `contentWrapper` slot:
+
+Before:
+
+```tsx
+import { ListItem } from '@fluentui/react-northstar';
+const Component = () => <ListItem content={{ content: 'hi', id: 'content' }} />;
+```
+
+After:
+
+```tsx
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
+const Component = () => <ItemLayout contentWrapper={{ id: 'content' }}>hi</ItemLayout>;
+```
+
+## Migrate style overrides
+
+> Note: **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page). Also check examples in ["how to migrate styles" for Box component](./migrate-Box.md#Migrate-style-overrides).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { ListItem } from '@fluentui/react-northstar';
+
+export const Component = () => <ListItem variables={{ isSomething: true }} />;
+
+// in list-item-styles.ts
+export const itemItemStyles = {
+  root: ({ variables: { isSomething } }) => ({
+    ...(isSomething && { display: 'flex' }),
+  }),
+  endMedia: ({ variables: { isSomething } }) => ({
+    ...(isSomething && { display: 'none' }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+
+  return <ItemLayout className={classes.root} endMedia={{ className: classes.endMedia }} />;
+};
+```
+
+```tsx
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  root: { display: 'flex' },
+  endMedia: { display: 'none' },
+});
+```
