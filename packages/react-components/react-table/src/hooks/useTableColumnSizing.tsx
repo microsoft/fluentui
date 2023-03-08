@@ -53,20 +53,14 @@ function useTableColumnSizingState<TItem>(
   // Creates the keyboard handler for resizing columns
   const keyboardResizing = useInteractiveKeyboardResizing(columnResizeState);
 
-  const onMenuItemClick = React.useCallback(
-    (columnId: TableColumnId) => (e: React.MouseEvent) => {
+  const enableKeyboardMode = React.useCallback(
+    (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => {
       e.preventDefault();
       e.stopPropagation();
       keyboardResizing.toggleInteractiveMode(columnId);
     },
     [keyboardResizing],
   );
-
-  tableState.accessibilityMenuItems?.push({
-    key: 'column-sizing',
-    label: 'Keyboard Column Resizing',
-    getClickHandler: onMenuItemClick,
-  });
 
   return {
     ...tableState,
@@ -92,6 +86,7 @@ function useTableColumnSizingState<TItem>(
         const col = columnResizeState.getColumnById(columnId);
         return col ? { style: getColumnStyles(col) } : {};
       },
+      enableKeyboardMode,
     },
   };
 }

@@ -53,8 +53,6 @@ export type DataGridContextValue = TableFeaturesState<any> & {
    * Enables column resizing
    */
   resizableColumns?: boolean;
-
-  accessibilityMenuItems?: TableAccessibilityMenuItemDefinition[];
 };
 
 /**

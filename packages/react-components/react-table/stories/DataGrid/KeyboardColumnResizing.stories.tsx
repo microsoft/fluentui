@@ -185,22 +185,24 @@ export const KeyboardColumnResizing = () => {
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell, columnId }, state) => (
-            <Menu openOnContext>
-              <MenuTrigger>
-                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-              </MenuTrigger>
-              <MenuPopover>
-                <MenuList>
-                  {state.accessibilityMenuItems?.map(item => (
-                    <MenuItem key={item.key} onClick={item.getClickHandler(columnId)}>
-                      {item.label}
+          {({ renderHeaderCell, columnId }, dataGrid) =>
+            dataGrid.resizableColumns ? (
+              <Menu openOnContext>
+                <MenuTrigger>
+                  <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
+                      Keyboard Column Resizing
                     </MenuItem>
-                  ))}
-                </MenuList>
-              </MenuPopover>
-            </Menu>
-          )}
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            ) : (
+              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+            )
+          }
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>

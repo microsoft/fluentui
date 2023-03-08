@@ -135,7 +135,7 @@ export const KeyboardColumnResizing = () => {
   });
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  const { getRows, columnSizing_unstable, tableRef, accessibilityMenuItems } = useTableFeatures(
+  const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
       items,
@@ -165,11 +165,9 @@ export const KeyboardColumnResizing = () => {
               </MenuTrigger>
               <MenuPopover>
                 <MenuList>
-                  {accessibilityMenuItems?.map(item => (
-                    <MenuItem key={item.key} onClick={item.getClickHandler(column.columnId)}>
-                      {item.label}
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
+                    Keyboard Column Resizing
+                  </MenuItem>
                 </MenuList>
               </MenuPopover>
             </Menu>
