@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: [text] block breaks the style attribute",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
