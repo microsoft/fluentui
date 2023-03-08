@@ -10,43 +10,37 @@ export const TAB_TOKEN_NAMES = {
 export class Tab extends FASTTab {
   private _activeTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _selectedTabX: number = 0;
-  @observable private _previousSelectedTabX: number = 0;
   private _selectedTabWidth: number = 0;
   private _previousSelectedTabWidth: number = 0;
-
   private _offsetX = 0;
   private _scale = 1;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.syncTabPositions();
-  }
-
+  @observable private _previousSelectedTabX: number = 0;
   private _previousSelectedTabXChanged() {
-    this.setTabOffsetCSS(0, 0);
-    this.setTabScaleCSS(1);
+    this.recalcTabPositionsIf(this._activeTab.id, this.id);
     console.log({ offset: this._offsetX, scale: this._scale });
   }
 
-  private recalcTabPositionsIf(selected: boolean, lastAnimatedFromID: string, previousAnimatedFromID: string) {
-    if (selected && lastAnimatedFromID !== previousAnimatedFromID) {
-      console.log(lastAnimatedFromID, previousAnimatedFromID, { offset: this._offsetX, scale: this._scale });
+  private recalcTabPositionsIf(lastAnimatedFromID: string, previousAnimatedFromID: string) {
+    if (lastAnimatedFromID !== previousAnimatedFromID) {
       this.syncTabPositions();
+      this.setTabOffsetCSS(0, 0);
+      this.setTabScaleCSS(1);
     }
   }
 
   @attr 'aria-selected': string | null = 'false';
   'aria-selectedChanged'(oldVal: string, newVal: string) {
-    this.recalcTabPositionsIf(newVal === 'true', this._activeTab.id, this.id);
-
+    this.syncTabPositions();
     if (newVal === 'true') {
       this.dataset.selected = 'true';
       if (this._offsetX === 0 && this._scale === 1) {
-        this.setTabOffsetCSS();
-        this.setTabScaleCSS();
+        setTimeout(() => {
+          this.setTabOffsetCSS();
+          this.setTabScaleCSS();
+        }, 300);
       }
     } else {
-      // instantly remove the previous active indicator
       this.dataset.selected = 'false';
     }
   }
@@ -57,6 +51,7 @@ export class Tab extends FASTTab {
     if (this.dataset.activeTab) {
       this._activeTab = JSON.parse(this.dataset.activeTab);
     }
+    this.syncTabPositions();
   }
 
   private syncTabPositions() {
@@ -69,7 +64,6 @@ export class Tab extends FASTTab {
 
     this._offsetX = this._previousSelectedTabX - this._selectedTabX;
     this._scale = this._previousSelectedTabWidth / this._selectedTabWidth;
-    console.log(this._scale);
   }
 
   private getPreviousSelectedTabPositionX(): number {
