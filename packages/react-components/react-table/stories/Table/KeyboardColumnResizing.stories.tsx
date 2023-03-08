@@ -14,14 +14,12 @@ import {
   useTableFeatures,
   PresenceBadgeStatus,
   Avatar,
-  Input,
   Menu,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
   useArrowNavigationGroup,
-  UseArrowNavigationGroupOptions,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -154,7 +152,7 @@ export const KeyboardColumnResizing = () => {
       <TableHeader>
         <TableRow>
           {columns.map(column => (
-            <Menu openOnContext>
+            <Menu openOnContext key={column.columnId}>
               <MenuTrigger>
                 <TableHeaderCell
                   key={column.columnId}
