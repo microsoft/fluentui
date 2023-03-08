@@ -24,10 +24,10 @@ const useStyles = makeStyles({
     gridTemplateColumns: 'auto 8px auto auto 8px auto',
     gridTemplateRows: '1fr auto auto 1fr',
     gridTemplateAreas: `
-    "avatar x icon .         y"
-    "avatar x icon primary   y"
-    "avatar x icon secondary y"
-    "avatar x icon .         y"
+    "avatar . icon .         ."
+    "avatar . icon primary   ."
+    "avatar . icon secondary ."
+    "avatar . icon .         ."
     `,
   },
   avatar: {
