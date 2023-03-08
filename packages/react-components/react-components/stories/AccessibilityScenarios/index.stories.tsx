@@ -6,7 +6,7 @@ export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
 export { FavoritesComboboxes } from './Combobox.stories';
 export { FavoritesDropdowns } from './Dropdown.stories';
 export { RegistrationFormInputs } from './Input.stories';
-export { TicketOrderFormFields } from './Fields.stories';
+export { TicketOrderFormFields } from './Field.stories';
 export { SiteNavigationLinks } from './Link.stories';
 export { ProfileMenu } from './Menu.stories';
 export { MenuWithSplitItem } from './MenuSplitGroup.stories';
