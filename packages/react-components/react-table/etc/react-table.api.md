@@ -20,7 +20,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, state: DataGridRowState) => React_2.ReactNode;
+export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
 
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
@@ -84,7 +84,6 @@ export type DataGridContextValue = TableFeaturesState<any> & {
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
     resizableColumns?: boolean;
-    accessibilityMenuItems?: TableAccessibilityMenuItemDefinition[];
 };
 
 // @public (undocumented)
@@ -157,7 +156,7 @@ export type DataGridRowSlots = TableRowSlots & {
 export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
     columnDefs: TableColumnDefinition<any>[];
-    accessibilityMenuItems: TableAccessibilityMenuItemDefinition[];
+    dataGridContextValue: DataGridContextValue;
 };
 
 // @public
@@ -374,7 +373,6 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 
 // @public (undocumented)
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
-    accessibilityMenuItems: TableAccessibilityMenuItemDefinition[];
     columns: TableColumnDefinition<TItem>[];
     columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];

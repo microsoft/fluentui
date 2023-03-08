@@ -9,7 +9,6 @@ import type {
   OnSelectionChangeData,
   TableColumnSizingOptions,
   TableColumnId,
-  TableAccessibilityMenuItemDefinition,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
 

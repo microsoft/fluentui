@@ -8,7 +8,7 @@ const STEP = 20;
 const PRECISION_MODIFIER = Shift;
 const PRECISION_FACTOR = 1 / 4;
 
-export function useInteractiveKeyboardResizing(columnResizeState: ColumnResizeState) {
+export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const columnId = React.useRef<TableColumnId>();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);

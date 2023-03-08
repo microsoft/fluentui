@@ -229,9 +229,3 @@ export type UseTableColumnSizingParams = {
   ) => void;
   containerWidthOffset?: number;
 };
-
-export type TableAccessibilityMenuItemDefinition = {
-  key: React.Key;
-  label: string;
-  getClickHandler: (columnId: TableColumnId) => React.MouseEventHandler;
-};
