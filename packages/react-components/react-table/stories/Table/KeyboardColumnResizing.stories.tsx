@@ -147,6 +147,8 @@ export const KeyboardColumnResizing = () => {
     axis: 'grid',
   });
 
+  const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
   return (
     <Table sortable aria-label="Table with sort" ref={tableRef} {...keyboardNavAttr}>
       <TableHeader>
@@ -156,6 +158,7 @@ export const KeyboardColumnResizing = () => {
               <MenuTrigger>
                 <TableHeaderCell
                   key={column.columnId}
+                  ref={el => (refMap.current[column.columnId] = el)}
                   {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
                 >
                   {column.renderHeaderCell()}
@@ -163,7 +166,9 @@ export const KeyboardColumnResizing = () => {
               </MenuTrigger>
               <MenuPopover>
                 <MenuList>
-                  <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
+                  <MenuItem
+                    onClick={columnSizing_unstable.enableKeyboardMode(column.columnId, refMap.current[column.columnId])}
+                  >
                     Keyboard Column Resizing
                   </MenuItem>
                 </MenuList>

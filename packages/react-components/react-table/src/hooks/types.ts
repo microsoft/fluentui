@@ -203,7 +203,10 @@ export interface TableColumnSizingState {
   getColumnWidths: () => ColumnWidthState[];
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
-  enableKeyboardMode: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
+  enableKeyboardMode: (
+    columnId: TableColumnId,
+    element?: HTMLElement | null,
+  ) => (e: React.MouseEvent | React.TouchEvent) => void;
 }
 
 export type ColumnResizeState = {

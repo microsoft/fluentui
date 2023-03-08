@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/ke
 import { useEventCallback } from '@fluentui/react-utilities';
 import { ColumnResizeState, TableColumnId } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 const STEP = 20;
 const PRECISION_MODIFIER = Shift;
@@ -10,6 +11,8 @@ const PRECISION_FACTOR = 1 / 4;
 
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const columnId = React.useRef<TableColumnId>();
+  const elementRef = React.useRef<HTMLElement | null>(null);
+  const { findFirstFocusable } = useFocusFinders();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
@@ -19,10 +22,6 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const { targetDocument } = useFluent();
 
   const keyboardHandler = useEventCallback((event: KeyboardEvent) => {
-    if (!columnId.current) {
-      return;
-    }
-
     const colId = columnId.current;
 
     if (!colId) {
@@ -66,10 +65,15 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   });
 
   const enableInteractiveMode = React.useCallback(
-    (colId: TableColumnId) => {
+    (colId: TableColumnId, element: HTMLElement | null) => {
       columnId.current = colId;
-
-      targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
+      elementRef.current = element;
+      // Create the listener in the next tick, because the event that triggered this is still propagating
+      // when Enter was pressed and would be caught in the keyboardHandler, disabling the keyboard mode immediately.
+      // No idea why this is happening, but this is a working workaround.
+      setTimeout(() => {
+        targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
+      }, 0);
     },
     [keyboardHandler, targetDocument?.defaultView],
   );
@@ -77,13 +81,17 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const disableInteractiveMode = React.useCallback(() => {
     columnId.current = undefined;
     targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
-  }, [keyboardHandler, targetDocument?.defaultView]);
+    if (elementRef.current) {
+      findFirstFocusable(elementRef.current)?.focus();
+    }
+  }, [findFirstFocusable, keyboardHandler, targetDocument?.defaultView]);
 
-  const toggleInteractiveMode = (colId: TableColumnId) => {
+  const toggleInteractiveMode = (colId: TableColumnId, element: HTMLElement | null = null) => {
     if (!columnId.current) {
-      enableInteractiveMode(colId);
+      enableInteractiveMode(colId, element);
     } else if (colId && columnId.current !== colId) {
       columnId.current = colId;
+      elementRef.current = element;
     } else {
       disableInteractiveMode();
     }
