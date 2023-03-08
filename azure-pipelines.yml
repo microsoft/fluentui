@@ -17,74 +17,100 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
-  - job: Metrics
+  - job: Lage_Tests
     workspace:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn (install packages)
-
-      - script: |
-          yarn nx run @fluentui/react-text:build
-          yarn workspace @fluentui/react-text build
-          yarn workspace @fluentui/react-text test
-
-        displayName: react-text infra data
-
-  - job: BuildTestLint
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      # - task: Bash@3
-      #   inputs:
-      #     filePath: yarn-ci.sh
-      #   displayName: yarn (install packages)
 
       - script: |
           yarn install
         displayName: yarn
 
       - script: |
-          yarn nx workspace-lint
-          yarn nx run @fluentui/nx-workspace-tools:check-graph
-        displayName: NX workspace lint
+          yarn lage test
+        displayName: test
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: Lage
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
 
       - script: |
-          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts thus it needs to be build in advance
-          yarn workspace @fluentui/api-docs build
-          yarn tsc -p ./tsconfig.json
-        displayName: Type-check just.config.ts files
+          yarn install
+        displayName: yarn
 
       - script: |
-          yarn check:installed-dependencies-versions
-        displayName: 'check packages: installed dependencies versions'
+          yarn lage build test lint type-check
+        displayName: build, test, lint, type-check
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: Lage_Lint
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
 
       - script: |
-          if [[ -n "$(targetBranch)" ]]; then
-            yarn format --since $(targetBranch) --check
-          else
-            yarn format --all --check
-          fi
-        displayName: check formatting
-
-      ## Danger.js checks for Fluent UI N*
-      - script: |
-          DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
-        displayName: danger
-        condition: eq(variables.isPR, true)
-        env:
-          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+          yarn install
+        displayName: yarn
 
       - script: |
-          yarn nx run-many --all --parallel=8 --targets=build,test,lint,type-check
+          yarn lage lint
+        displayName: lint
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: NX
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - script: |
+          yarn install
+        displayName: yarn
+
+      - script: |
+          yarn nx run-many --targets=build,test,lint,type-check --parallel=8
           # yarn affected:run --base=$(targetBranch) --target=build --target=test --target=lint --target=type-check
-        displayName: build, test, lint
+        displayName: build, test, lint, type-check
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: Nx_Tests
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - script: |
+          yarn install
+        displayName: yarn
+
+      - script: |
+          yarn nx run-many --target=test --parallel=8 --maxWorkers=4
+        displayName: test
+
+      - template: .devops/templates/cleanup.yml
+
+  - job: Nx_Lint
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - script: |
+          yarn install
+        displayName: yarn
+
+      - script: |
+          yarn nx run-many --target=lint --parallel=8
+        displayName: lint
 
       - template: .devops/templates/cleanup.yml
 
