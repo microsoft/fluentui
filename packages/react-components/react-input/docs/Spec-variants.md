@@ -36,7 +36,7 @@ type TextInputSlots<
   TInput extends HTMLInputElement | HTMLTextAreaElement,
   TInputAttributes = TInput extends HTMLInputElement
     ? React.InputHTMLAttributes<TInput>
-    : React.TextAreaHTMLAttributes<TInput>
+    : React.TextAreaHTMLAttributes<TInput>,
 > = {
   root: ComponentSlotProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
   input: ComponentSlotProps<TInputAttributes, TInput>;

@@ -53,16 +53,8 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
   }
 
   public render(): JSX.Element {
-    const {
-      theme,
-      styles,
-      collapseButtonStyles,
-      className,
-      collapseButtonAriaLabel,
-      footerItems,
-      id,
-      items,
-    } = this.props;
+    const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } =
+      this.props;
 
     this._theme = theme!;
     this._colors = this.props.colors !== undefined ? this.props.colors : SidebarColors.Light;

@@ -107,6 +107,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    inertTrapFocus?: boolean;
 };
 
 // @public (undocumented)

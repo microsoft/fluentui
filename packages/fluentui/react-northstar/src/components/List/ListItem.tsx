@@ -82,7 +82,7 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
 /**
  * A ListItem contains a single piece of content within a List.
  */
-export const ListItem = (React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
+export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
@@ -221,7 +221,7 @@ export const ListItem = (React.forwardRef<HTMLLIElement, ListItemProps>((props, 
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, ListItemProps & { index: number }> &
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, ListItemProps & { index: number }> &
   FluentComponentStaticProps<ListItemProps>;
 
 ListItem.displayName = 'ListItem';

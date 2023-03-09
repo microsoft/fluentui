@@ -5,6 +5,7 @@ import { useMenuListContextValues_unstable } from './useMenuListContextValues';
 import { useMenuListStyles_unstable } from './useMenuListStyles';
 import type { MenuListProps } from './MenuList.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled MenuList, using the `useMenuList_unstable` hook.
@@ -12,7 +13,11 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((props, ref) => {
   const state = useMenuList_unstable(props, ref);
   const contextValues = useMenuListContextValues_unstable(state);
+
   useMenuListStyles_unstable(state);
+
+  const { useMenuListStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
 
   return renderMenuList_unstable(state, contextValues);
 });

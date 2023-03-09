@@ -17,18 +17,22 @@ export const TextPageProps: TFabricPlatformPageProps = {
     related,
   },
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextOverview.md') as string,
     related,
     componentUrl,
   },
   cross: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
-    usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
+    usage:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
     related,
     componentUrl,
   },

@@ -70,7 +70,7 @@ function initPageDataForItem(
   fallbackGroup?: string,
 ): void {
   if (
-    supportedApiItems.includes((apiItem.kind as unknown) as ApiItemKind) &&
+    supportedApiItems.includes(apiItem.kind as unknown as ApiItemKind) &&
     apiItem instanceof ApiDocumentedItem &&
     apiItem.tsdocComment
   ) {
