@@ -11,7 +11,7 @@ export const Required = () => (
 Required.parameters = {
   docs: {
     description: {
-      story: 'When marked `required`, the indicator asterisk is placed before the info button.',
+      story: 'When marked `required`, the indicator asterisk is placed before the InfoButton.',
     },
   },
 };

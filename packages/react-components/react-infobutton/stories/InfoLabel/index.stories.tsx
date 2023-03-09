@@ -4,6 +4,7 @@ import descriptionMd from './InfoLabelDescription.md';
 
 export { Default } from './InfoLabelDefault.stories';
 export { Required } from './InfoLabelRequired.stories';
+export { Size } from './InfoLabelSize.stories';
 export { InField } from './InfoLabelInField.stories';
 
 export default {
