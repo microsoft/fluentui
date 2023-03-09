@@ -6,7 +6,7 @@ describe('Calendar', () => {
     Component: Calendar,
     displayName: 'Calendar',
     disabledTests: [
-      // v8 doesn't follow this rule
+      // compat components that are closer to their v8 counterparts do not adhere to this test
       'consistent-callback-args',
     ],
   });
