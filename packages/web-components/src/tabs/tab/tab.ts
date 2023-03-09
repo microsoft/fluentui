@@ -8,6 +8,7 @@ export const TAB_TOKEN_NAMES = {
 };
 
 export class Tab extends FASTTab {
+  private _activeTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _previousActiveTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _selectedTabX: number = 0;
   private _selectedTabWidth: number = 0;
@@ -27,31 +28,59 @@ export class Tab extends FASTTab {
 
   @attr({ attribute: 'data-active-tab' })
   private dataActiveTab: string = '';
-  private dataActiveTabChanged() {
-    if (this.dataset.activeTab && this.dataset.selected === 'false') {
-      this._previousActiveTab = JSON.parse(this.dataset.activeTab);
-    }
-    // this is the active tab
-    if (this.dataset.activeTab && this.dataset.selected === 'true') {
-      this.syncTabPositions();
-      this.setTabScaleCSS();
-      this.setTabOffsetCSS();
 
-      // this set timeout should not be here
-      // setTimeout(() => {
-      if (this._offsetX === 0 && this._scale === 1) {
-        this.syncTabPositions();
-        this.setTabScaleCSS();
-        this.setTabOffsetCSS(0, 0);
+  // every time the data-active-tab attribute changes...
+  private dataActiveTabChanged() {
+    const dataActiveTab = this.dataset.activeTab;
+    // is there an active tab in the data attribute?
+    if (dataActiveTab) {
+      // set the active tab on the class field
+      this._activeTab = JSON.parse(dataActiveTab);
+
+      // if there is not previous tab create a new one on the class field
+      if (!this._previousActiveTab.id) {
+        this._previousActiveTab = JSON.parse(dataActiveTab);
       }
-      // }, 22);
+
+      // calc the tab positions and set the class fields above
+      this.syncTabPositions();
+
+      // if this tab is the active tab
+      if (this.id === this._activeTab.id) {
+        console.log(
+          'previous selected:',
+          this._previousActiveTab.id,
+          this._previousSelectedTabX,
+          'currently selected:',
+          this.id,
+          this._selectedTabX,
+        );
+
+        // uncomment to see broken animations
+        // this.setTabScaleCSS();
+        // this.setTabOffsetCSS();
+
+        if (this._offsetX === 0 && this._scale === 1) {
+          this.setTabScaleCSS();
+          this.setTabOffsetCSS();
+        }
+      } else {
+        // this.clearAnimationProperties();
+        // this.syncTabPositions();
+      }
+
+      this._previousActiveTab = JSON.parse(dataActiveTab);
     }
+  }
+
+  private clearAnimationProperties() {
+    this._offsetX = 0;
+    this._scale = 1;
   }
 
   private syncTabPositions(prevActiveTab?: TabData) {
     this._previousSelectedTabX = this.getPreviousSelectedTabPositionX();
     this._selectedTabX = this.getSelectedTabPosition();
-
     this._previousSelectedTabWidth = this.getPreviousTabWidth();
     this._selectedTabWidth = this.getSelectedTabWidth();
 
