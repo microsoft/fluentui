@@ -38,11 +38,13 @@ export class Tab extends FASTTab {
       this.setTabOffsetCSS();
 
       // this set timeout should not be here
-      setTimeout(() => {
+      // setTimeout(() => {
+      if (this._offsetX === 0 && this._scale === 1) {
         this.syncTabPositions();
-        this.setTabScaleCSS(1);
+        this.setTabScaleCSS();
         this.setTabOffsetCSS(0, 0);
-      }, 22);
+      }
+      // }, 22);
     }
   }
 
