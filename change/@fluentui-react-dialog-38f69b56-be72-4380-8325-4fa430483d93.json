@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: introduces innerTrapFocus",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

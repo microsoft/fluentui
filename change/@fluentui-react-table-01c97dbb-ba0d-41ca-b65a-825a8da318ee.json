@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase",
-  "packageName": "@fluentui/react-table",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
