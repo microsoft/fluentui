@@ -163,6 +163,8 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const KeyboardColumnResizing = () => {
+  const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
   return (
     <DataGrid
       items={items}
@@ -189,11 +191,15 @@ export const KeyboardColumnResizing = () => {
             dataGrid.resizableColumns ? (
               <Menu openOnContext>
                 <MenuTrigger>
-                  <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+                  <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                    {renderHeaderCell()}
+                  </DataGridHeaderCell>
                 </MenuTrigger>
                 <MenuPopover>
                   <MenuList>
-                    <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
+                    <MenuItem
+                      onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId, refMap.current[columnId])}
+                    >
                       Keyboard Column Resizing
                     </MenuItem>
                   </MenuList>
