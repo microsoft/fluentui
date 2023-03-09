@@ -2,6 +2,11 @@
 module.exports = {
   pipeline: {
     build: ['^build'],
+    /**
+     * This task definition exist only in v0 projects - dependent build:info are executed by lerna
+     * It's purpose is to not run build:info on all dependent packages from lage as it is invoked under the hood via gulp (triggers lerna)
+     * TODO: this won't be needed when we switch to NX
+     */
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
@@ -11,7 +16,6 @@ module.exports = {
     'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
-    '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
   },
 
   // Adds some ADO-specific logging commands for reporting failures
