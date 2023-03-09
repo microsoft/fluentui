@@ -116,6 +116,29 @@ export {
 export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
+  Skeleton,
+  renderSkeleton_unstable,
+  skeletonClassNames,
+  useSkeletonStyles_unstable,
+  useSkeleton_unstable,
+  SkeletonItem,
+  renderSkeletonItem_unstable,
+  skeletonItemClassNames,
+  useSkeletonItemStyles_unstable,
+  useSkeletonItem_unstable,
+  SkeletonContextProvider,
+  useSkeletonContext,
+} from '@fluentui/react-skeleton';
+export type {
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonState,
+  SkeletonItemProps,
+  SkeletonItemSlots,
+  SkeletonItemState,
+} from '@fluentui/react-skeleton';
+
+export {
   Virtualizer,
   virtualizerClassNames,
   useVirtualizer_unstable,
