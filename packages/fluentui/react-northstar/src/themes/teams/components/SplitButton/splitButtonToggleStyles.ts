@@ -107,8 +107,7 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonTog
         ...(p.primary && {
           color: v.toggleButtonPrimaryColor,
           backgroundColor: v.toggleButtonPrimaryBackgroundColor,
-          borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
-          borderColor: v.toggleButtonPrimaryBorderColor,
+          borderColor: `transparent transparent transparent ${v.toggleButtonPrimaryBorderColor}`,
 
           ':active': {
             backgroundColor: v.toggleButtonPrimaryBackgroundColorActive,
@@ -138,8 +137,7 @@ export const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonTog
 
           backgroundColor: v.toggleButtonBackgroundColorDisabled,
 
-          borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
-          borderColor: v.borderColorDisabled,
+          borderColor: `transparent transparent transparent ${v.borderColorDisabled}`,
         }),
 
         ...(p.size === 'small' && {
