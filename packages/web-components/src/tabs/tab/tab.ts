@@ -8,7 +8,6 @@ export const TAB_TOKEN_NAMES = {
 };
 
 export class Tab extends FASTTab {
-  private _activeTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _previousActiveTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _selectedTabX: number = 0;
   private _selectedTabWidth: number = 0;
@@ -35,18 +34,17 @@ export class Tab extends FASTTab {
     // is there an active tab in the data attribute?
     if (dataActiveTab) {
       // set the active tab on the class field
-      this._activeTab = JSON.parse(dataActiveTab);
-
+      const dataActiveTabObj: TabData = JSON.parse(dataActiveTab);
       // if there is not previous tab create a new one on the class field
       if (!this._previousActiveTab.id) {
-        this._previousActiveTab = JSON.parse(dataActiveTab);
+        this._previousActiveTab = dataActiveTabObj;
       }
 
       // calc the tab positions and set the class fields above
       this.syncTabPositions();
 
       // if this tab is the active tab
-      if (this.id === this._activeTab.id) {
+      if (this.id === dataActiveTabObj.id) {
         console.log(
           'previous selected:',
           this._previousActiveTab.id,
@@ -65,10 +63,8 @@ export class Tab extends FASTTab {
           this.setTabOffsetCSS();
         }
       } else {
-        // this.clearAnimationProperties();
-        // this.syncTabPositions();
+        this.clearAnimationProperties();
       }
-
       this._previousActiveTab = JSON.parse(dataActiveTab);
     }
   }
