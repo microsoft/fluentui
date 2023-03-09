@@ -67,17 +67,28 @@ export const styles = css`
     margin-right: auto;
     position: absolute;
     z-index: 1;
+  }
 
+  :host(.animated)::after {
     /* animations */
     transition-property: transform;
     transition-duration: ${durationSlow};
     transition-timing-function: ${curveDecelerateMax};
+  }
+
+  :host(.horizontal)::after {
     transform-origin: left;
     transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
+  :host(.vertical)::after {
+    transform-origin: top;
+    transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+  }
+
   :host([data-selected='true'])::after {
     background-color: ${colorCompoundBrandStroke};
   }
+
   :host([data-selected='false']:hover)::before {
     /* default size and color */
     width: calc(100% - 20px);

@@ -40,9 +40,6 @@ export class Tab extends FASTTab {
         this._previousActiveTab = dataActiveTabObj;
       }
 
-      // calc the tab positions and set the class fields above
-      this.syncTabPositions();
-
       // if this tab is the active tab
       if (this.id === dataActiveTabObj.id) {
         console.log(
@@ -54,13 +51,12 @@ export class Tab extends FASTTab {
           this._selectedTabX,
         );
 
-        // uncomment to see broken animations
-        // this.setTabScaleCSS();
-        // this.setTabOffsetCSS();
-
         if (this._offsetX === 0 && this._scale === 1) {
+          // uncomment to see broken animations
+          // this.syncTabPositions();
           this.setTabScaleCSS();
           this.setTabOffsetCSS();
+          this.addAnimationClasses();
         }
       } else {
         this.clearAnimationProperties();
@@ -72,6 +68,16 @@ export class Tab extends FASTTab {
   private clearAnimationProperties() {
     this._offsetX = 0;
     this._scale = 1;
+  }
+
+  private addAnimationClasses() {
+    const orientation = this.parentElement?.getAttribute('orientation');
+    if (orientation === 'horizontal') {
+      this.classList.add('horizontal');
+    } else {
+      this.classList.add('vertical');
+    }
+    this.classList.add('animated');
   }
 
   private syncTabPositions(prevActiveTab?: TabData) {
