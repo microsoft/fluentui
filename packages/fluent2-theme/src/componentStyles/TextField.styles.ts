@@ -51,6 +51,7 @@ export function getTextFieldStyles(
       },
       focused && getFluent2InputFocusStyles(theme, underlined, hasErrorMessage),
       disabled && getFluent2InputDisabledStyles(theme),
+      disabled && { borderBottom: `1px solid ${palette.neutralQuaternaryAlt}` },
     ],
   };
 

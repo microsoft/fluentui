@@ -25,7 +25,8 @@ export const getFluent2InputFocusStyles = (
 
 export const getFluent2InputDisabledStyles = (theme: ITheme): IRawStyle => {
   return {
-    borderBottom: `1px solid ${theme.palette.neutralQuaternaryAlt}`,
+    borderRadius: theme?.effects.roundedCorner4,
+    border: `1px solid ${theme.palette.neutralQuaternaryAlt}`,
     color: theme.palette.neutralQuaternaryAlt,
     backgroundColor: 'unset',
   };
