@@ -9,6 +9,7 @@ import {
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
+  spacingVerticalXS,
 } from '../theme/design-tokens.js';
 
 /** RadioGroup styles
@@ -21,10 +22,11 @@ export const styles = css`
     align-items: flex-start;
     flex-direction: column;
     margin: 2px 0;
+    row-gap: ${spacingVerticalS};
   }
   ::slotted([slot='label']) {
     color: ${colorNeutralForeground3};
-    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
+    padding-inline: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
