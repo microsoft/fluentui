@@ -16,10 +16,23 @@ const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSS
 export const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStylesProps, SplitButtonVariables> =
   {
     root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
+      const { siteVariables } = theme;
+      const { borderWidth } = siteVariables;
+
       return {
         ':before': {
           ...getIndicatorStyles(p.disabled ? 'GrayText' : 'ButtonText', true, v.toggleButtonIndicatorSize),
         },
+
+        ...(p.primary && {
+          borderWidth,
+          borderColor: `transparent`,
+        }),
+
+        ...(p.disabled && {
+          borderWidth,
+          borderColor: `transparent`,
+        }),
       };
     },
   };
