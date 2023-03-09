@@ -13,6 +13,19 @@ describe('BreadcrumbItem', () => {
 
   it('renders a default state', () => {
     const result = render(<BreadcrumbItem>Default BreadcrumbItem</BreadcrumbItem>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          class="fui-BreadcrumbItem"
+        >
+          Default BreadcrumbItem
+          <span
+            class="fui-BreadcrumbDivider fui-BreadcrumbItem__divider"
+          >
+            &gt;
+          </span>
+        </div>
+      </div>
+    `);
   });
 });

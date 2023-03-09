@@ -13,6 +13,14 @@ describe('BreadcrumbDivider', () => {
 
   it('renders a default state', () => {
     const result = render(<BreadcrumbDivider>Default BreadcrumbDivider</BreadcrumbDivider>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-BreadcrumbDivider"
+        >
+          &gt;
+        </span>
+      </div>
+    `);
   });
 });

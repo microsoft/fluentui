@@ -7,9 +7,5 @@ import type { BreadcrumbState, BreadcrumbSlots } from './Breadcrumb.types';
 export const renderBreadcrumb_unstable = (state: BreadcrumbState) => {
   const { slots, slotProps } = getSlots<BreadcrumbSlots>(state);
   const { root, list } = slotProps;
-  return (
-    <slots.root {...root}>
-      <slots.list {...list}>{root.children}</slots.list>
-    </slots.root>
-  );
+  return <slots.root {...root}>{slots.list && <slots.list {...list}>{root.children}</slots.list>}</slots.root>;
 };
