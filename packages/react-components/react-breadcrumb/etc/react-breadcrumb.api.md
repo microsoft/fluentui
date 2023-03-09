@@ -53,12 +53,12 @@ export type BreadcrumbItemSlots = {
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots>;
 
 // @public
-export type BreadcrumbProps = ComponentProps<Omit<BreadcrumbSlots, 'list'>> & {};
+export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {};
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
     root: Slot<'nav'>;
-    list: Slot<'ol'>;
+    list?: Slot<'ol'>;
 };
 
 // @public
