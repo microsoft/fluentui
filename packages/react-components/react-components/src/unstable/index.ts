@@ -156,12 +156,11 @@ export {
   treeItemLayoutClassNames,
   treeItemClassNames,
   treeClassNames,
-  useFlatTreeItems_unstable,
+  useFlatTree_unstable,
   flattenTree_unstable,
 } from '@fluentui/react-tree';
 
 export type {
-  UseFlatTreeItemsOptions,
   TreeState,
   TreeSlots,
   TreeProps,
@@ -181,7 +180,7 @@ export type {
   TreeItemId,
   TreeContextValue,
   NestedTreeItem,
-  LazyFlatTreeItems,
+  FlatTree,
   FlatTreeProps,
   FlatTreeItemProps,
   FlatTreeItem,

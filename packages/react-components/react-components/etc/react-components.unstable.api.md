@@ -43,6 +43,7 @@ import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
 import { flattenTree_unstable } from '@fluentui/react-tree';
+import { FlatTree } from '@fluentui/react-tree';
 import { FlatTreeItem } from '@fluentui/react-tree';
 import { FlatTreeItemProps } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
@@ -54,7 +55,6 @@ import { InfoButtonState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
-import { LazyFlatTreeItems } from '@fluentui/react-tree';
 import { NestedTreeItem } from '@fluentui/react-tree';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
@@ -130,8 +130,7 @@ import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
-import { useFlatTreeItems_unstable } from '@fluentui/react-tree';
-import { UseFlatTreeItemsOptions } from '@fluentui/react-tree';
+import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
@@ -232,6 +231,8 @@ export { FieldState }
 
 export { flattenTree_unstable }
 
+export { FlatTree }
+
 export { FlatTreeItem }
 
 export { FlatTreeItemProps }
@@ -253,8 +254,6 @@ export { InputField }
 export { inputFieldClassNames }
 
 export { InputFieldProps }
-
-export { LazyFlatTreeItems }
 
 export { NestedTreeItem }
 
@@ -406,9 +405,7 @@ export { useField_unstable }
 
 export { useFieldStyles_unstable }
 
-export { useFlatTreeItems_unstable }
-
-export { UseFlatTreeItemsOptions }
+export { useFlatTree_unstable }
 
 export { useInfoButton_unstable }
 
