@@ -5,6 +5,8 @@ const { pathsToModuleNameMapper } = require('ts-jest');
 
 const tsConfig = require('./tsconfig.base.json');
 
+const isCI = Boolean(process.env.TF_BUILD);
+
 const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
   prefix: `<rootDir>/${path.relative(process.cwd(), __dirname)}/`,
 });
@@ -24,6 +26,7 @@ const baseConfig = {
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  ...(isCI ? { maxWorkers: 4 } : null),
 };
 
 module.exports = {
