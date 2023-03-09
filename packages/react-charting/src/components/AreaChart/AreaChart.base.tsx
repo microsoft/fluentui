@@ -3,12 +3,10 @@ import { max as d3Max, bisector } from 'd3-array';
 import { clientPoint } from 'd3-selection';
 import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
-import { IPalette } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
-  IChartProps,
   ICustomizedCalloutData,
   IAreaChartProps,
   IBasestate,
@@ -27,6 +25,8 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  getNextColor,
+  getColorFromToken,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -69,7 +69,7 @@ export interface IAreaChartState extends IBasestate {
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
-  private _createSet: (data: IChartProps) => {
+  private _createSet: (data: ILineChartPoints[]) => {
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -97,7 +97,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public constructor(props: IAreaChartProps) {
     super(props);
-    this._createSet = memoizeFunction((data: IChartProps) => this._createDataSet(data.lineChartData!));
+    this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
       selectedLegend: '',
       activeLegend: '',
@@ -133,13 +133,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public render(): JSX.Element {
     const { lineChartData, chartTitle } = this.props.data;
-    const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
+    const points = this._addDefaultColors(lineChartData);
+    const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
     this._calloutPoints = calloutPoints;
-    const isXAxisDateType = getXAxisType(lineChartData!);
+    const isXAxisDateType = getXAxisType(points);
     this._colors = colors;
     this._opacity = opacity;
     this._stackedData = stackedInfo.stackedData;
-    const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
+    const legends: JSX.Element = this._getLegendData(points);
 
     const tickParams = {
       tickValues: this.props.tickValues,
@@ -165,7 +166,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       <CartesianChart
         {...this.props}
         chartTitle={chartTitle}
-        points={lineChartData!}
+        points={points}
         chartType={ChartTypes.AreaChart}
         calloutProps={calloutProps}
         legendBars={legends}
@@ -362,7 +363,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     points &&
       points.length &&
       points.forEach((singleChartPoint: ILineChartPoints) => {
-        colors.push(singleChartPoint.color);
+        colors.push(singleChartPoint.color!);
         opacity.push(singleChartPoint.opacity || 1);
         allChartPoints.push(...singleChartPoint.data);
       });
@@ -451,15 +452,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   }
 
-  private _getLegendData = (palette: IPalette, points: ILineChartPoints[]): JSX.Element => {
+  private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
     const data = points;
-    const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
     data.forEach((singleChartData: ILineChartPoints) => {
-      const color: string = singleChartData.color
-        ? singleChartData.color
-        : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const color: string = singleChartData.color!;
       const checkSimilarLegends = actions.filter(
         (leg: ILegend) => leg.title === singleChartData.legend && leg.color === color,
       );
@@ -540,7 +538,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
-    const points = this.props.data.lineChartData!;
+    const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -617,7 +615,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
             const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
             const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
-            lineColor = points[index]!.color;
+            lineColor = points[index]!.color!;
             return (
               <circle
                 key={circleId}
@@ -717,5 +715,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
+    return lineChartData
+      ? lineChartData.map((item, index) => {
+          let color: string;
+          // isInverted property is applicable to v8 themes only
+          if (typeof item.color === 'undefined') {
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
+          }
+
+          return { ...item, color };
+        })
+      : [];
   };
 }

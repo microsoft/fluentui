@@ -5,6 +5,7 @@ import { useTabListStyles_unstable } from './useTabListStyles';
 import type { TabListProps } from './TabList.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTabListContextValues_unstable } from './useTabListContextValues';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A tab list provides single selection from a set of tabs.
@@ -14,6 +15,10 @@ export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef((prop
   const contextValues = useTabListContextValues_unstable(state);
 
   useTabListStyles_unstable(state);
+
+  const { useTabListStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderTabList_unstable(state, contextValues);
 });
 
