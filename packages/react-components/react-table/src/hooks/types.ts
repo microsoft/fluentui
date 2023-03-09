@@ -197,6 +197,8 @@ export interface ColumnWidthState {
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
+export type EnableKeyboardModeOnChangeCallback = (columnId: TableColumnId, isKeyboardMode: boolean) => void;
+
 export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
@@ -205,7 +207,7 @@ export interface TableColumnSizingState {
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
   enableKeyboardMode: (
     columnId: TableColumnId,
-    element?: HTMLElement | null,
+    onChange?: EnableKeyboardModeOnChangeCallback,
   ) => (e: React.MouseEvent | React.TouchEvent) => void;
 }
 

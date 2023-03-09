@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
-import { ColumnResizeState, TableColumnId } from './types';
+import { ColumnResizeState, EnableKeyboardModeOnChangeCallback, TableColumnId } from './types';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
 const STEP = 20;
 const PRECISION_MODIFIER = Shift;
@@ -11,8 +10,7 @@ const PRECISION_FACTOR = 1 / 4;
 
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const columnId = React.useRef<TableColumnId>();
-  const elementRef = React.useRef<HTMLElement | null>(null);
-  const { findFirstFocusable } = useFocusFinders();
+  const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
@@ -57,17 +55,15 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       case Enter:
       case Escape:
         stopEvent();
-        if (columnId.current) {
-          disableInteractiveMode();
-        }
+        disableInteractiveMode();
         break;
     }
   });
 
   const enableInteractiveMode = React.useCallback(
-    (colId: TableColumnId, element: HTMLElement | null) => {
+    (colId: TableColumnId) => {
       columnId.current = colId;
-      elementRef.current = element;
+      onChangeRef.current?.(colId, true);
       // Create the listener in the next tick, because the event that triggered this is still propagating
       // when Enter was pressed and would be caught in the keyboardHandler, disabling the keyboard mode immediately.
       // No idea why this is happening, but this is a working workaround.
@@ -79,19 +75,20 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   );
 
   const disableInteractiveMode = React.useCallback(() => {
+    if (columnId.current) {
+      onChangeRef.current?.(columnId.current, false);
+    }
     columnId.current = undefined;
     targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
-    if (elementRef.current) {
-      findFirstFocusable(elementRef.current)?.focus();
-    }
-  }, [findFirstFocusable, keyboardHandler, targetDocument?.defaultView]);
+  }, [keyboardHandler, targetDocument?.defaultView]);
 
-  const toggleInteractiveMode = (colId: TableColumnId, element: HTMLElement | null = null) => {
+  const toggleInteractiveMode = (colId: TableColumnId, onChange: EnableKeyboardModeOnChangeCallback) => {
+    onChangeRef.current = onChange;
     if (!columnId.current) {
-      enableInteractiveMode(colId, element);
+      enableInteractiveMode(colId);
     } else if (colId && columnId.current !== colId) {
       columnId.current = colId;
-      elementRef.current = element;
+      onChange(columnId.current, true);
     } else {
       disableInteractiveMode();
     }

@@ -20,6 +20,8 @@ import {
   MenuPopover,
   MenuTrigger,
   useArrowNavigationGroup,
+  TableColumnId,
+  useFocusFinders,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -147,7 +149,20 @@ export const KeyboardColumnResizing = () => {
     axis: 'grid',
   });
 
+  const { findFirstFocusable } = useFocusFinders();
+
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
+
+  // This will focus on the correct table header cell when the keyboard mode is turned off
+  const onKeyboardModeChange = React.useCallback(
+    (columnId: TableColumnId, isKeyboardMode: boolean) => {
+      const element = refMap.current[columnId];
+      if (!isKeyboardMode && element) {
+        findFirstFocusable(element)?.focus();
+      }
+    },
+    [findFirstFocusable],
+  );
 
   return (
     <Table sortable aria-label="Table with sort" ref={tableRef} {...keyboardNavAttr}>
@@ -166,9 +181,7 @@ export const KeyboardColumnResizing = () => {
               </MenuTrigger>
               <MenuPopover>
                 <MenuList>
-                  <MenuItem
-                    onClick={columnSizing_unstable.enableKeyboardMode(column.columnId, refMap.current[column.columnId])}
-                  >
+                  <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId, onKeyboardModeChange)}>
                     Keyboard Column Resizing
                   </MenuItem>
                 </MenuList>

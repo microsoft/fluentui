@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TableResizeHandle } from '../TableResizeHandle';
 import {
   ColumnWidthState,
+  EnableKeyboardModeOnChangeCallback,
   TableColumnId,
   TableColumnSizingState,
   TableFeaturesState,
@@ -55,10 +56,12 @@ function useTableColumnSizingState<TItem>(
   const keyboardResizing = useKeyboardResizing(columnResizeState);
 
   const enableKeyboardMode = React.useCallback(
-    (columnId: TableColumnId, element?: HTMLElement | null) => (e: React.MouseEvent | React.TouchEvent) => {
+    (columnId: TableColumnId, onChange: EnableKeyboardModeOnChangeCallback) => (
+      e: React.MouseEvent | React.TouchEvent,
+    ) => {
       e.preventDefault();
       e.nativeEvent.stopPropagation();
-      keyboardResizing.toggleInteractiveMode(columnId, element);
+      keyboardResizing.toggleInteractiveMode(columnId, onChange);
     },
     [keyboardResizing],
   );
