@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: updates useModalAttributes flags for legacyTrapFocus",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Wed, 22 Feb 2023 23:06:07 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.2.0)
+
+Wed, 08 Mar 2023 17:42:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.1.5..@fluentui/react-combobox_v9.2.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27063](https://github.com/microsoft/fluentui/pull/27063) by gcox@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.11 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.22 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-portal to v9.1.10 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-positioning to v9.5.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.1.5)
 

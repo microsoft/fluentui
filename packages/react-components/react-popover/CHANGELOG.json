@@ -2,6 +2,77 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:36 GMT",
+      "tag": "@fluentui/react-popover_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "4d536a76b414c5135713127ce707f8676db13fd8",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "5177d2a76ad0c003f03a883022ff5cee62c3e7e3",
+            "comment": "feature: introduces innerTrapFocus and deprecates legacyTrapFocus"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-aria to v9.3.11",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.11",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.1.10",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.5.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.5.4",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e469261b00066074c60d705150e678506f8700f0",
+            "comment": "fix: updates useModalAttributes flags for legacyTrapFocus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 23:06:06 GMT",
       "tag": "@fluentui/react-popover_v9.4.11",
       "version": "9.4.11",

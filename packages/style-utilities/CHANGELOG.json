@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 09 Mar 2023 07:39:12 GMT",
+      "tag": "@fluentui/style-utilities_v8.9.5",
+      "version": "8.9.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "694ce5ed16afc1443eed34813a6aa41903a5ca87",
+            "comment": "Updated FabricCDN url to latest version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Mar 2023 07:43:02 GMT",
       "tag": "@fluentui/style-utilities_v8.9.4",
       "version": "8.9.4",

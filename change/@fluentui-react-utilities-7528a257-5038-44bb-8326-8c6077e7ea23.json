@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: adjust IntrinsicElementProps type to properly support void elements",
+  "comment": "fix: ResolveShorthandOptions type to better reflect implementation",
   "packageName": "@fluentui/react-utilities",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 22 Feb 2023 23:06:06 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.5.0)
+
+Wed, 08 Mar 2023 17:42:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.4.11..@fluentui/react-popover_v9.5.0)
+
+### Minor changes
+
+- feat: custom styles ([PR #27070](https://github.com/microsoft/fluentui/pull/27070) by gcox@microsoft.com)
+- feature: introduces innerTrapFocus and deprecates legacyTrapFocus ([PR #26942](https://github.com/microsoft/fluentui/pull/26942) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.3.11 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.11 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-portal to v9.1.10 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-positioning to v9.5.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-tabster to v9.5.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+
+### Patches
+
+- fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
 
 ## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.4.11)
 

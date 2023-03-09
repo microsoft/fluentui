@@ -3,6 +3,7 @@ import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentu
 import { TreeOpenChangeData, TreeProps, TreeState, TreeNavigationData_unstable } from './Tree.types';
 import { useTreeContext_unstable } from '../../contexts';
 import { useNestedTreeNavigation, useOpenItemsState } from '../../hooks';
+import { treeDataTypes } from '../../utils/tokens';
 
 /**
  * Create the state required to render Tree.
@@ -68,7 +69,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
   const { appearance = 'subtle', size = 'medium' } = props;
 
   const [openItems, updateOpenItems] = useOpenItemsState(props);
-  const [navigate, treeRef] = useNestedTreeNavigation();
+  const [navigate, navigationRef] = useNestedTreeNavigation();
 
   const requestOpenChange = useEventCallback((data: TreeOpenChangeData) => {
     props.onOpenChange?.(data.event, data);
@@ -84,7 +85,9 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
       return;
     }
     navigate(data);
-    data.event.preventDefault();
+    if (data.type === treeDataTypes.arrowDown || data.type === treeDataTypes.arrowUp) {
+      data.event.preventDefault();
+    }
   });
 
   return {
@@ -98,7 +101,7 @@ function useRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
     requestOpenChange,
     requestNavigation,
     root: getNativeElementProps('div', {
-      ref: useMergedRefs(treeRef, ref),
+      ref: useMergedRefs(navigationRef, ref),
       role: 'tree',
       ...props,
     }),

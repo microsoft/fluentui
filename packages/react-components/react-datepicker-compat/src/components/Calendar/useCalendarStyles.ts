@@ -84,7 +84,6 @@ const useGoTodayButtonStyles = makeStyles({
       pointerEvents: 'none',
     },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useLiveRegionStyles = makeStyles({
