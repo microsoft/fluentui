@@ -10,7 +10,7 @@ describe(`v8 preset`, () => {
       expect.objectContaining({
         globals: {
           'ts-jest': {
-            diagnostics: false,
+            isolatedModules: true,
           },
         },
         moduleDirectories: [
