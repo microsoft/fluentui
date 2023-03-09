@@ -19,6 +19,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     root: rootSlot,
     label: labelSlot,
     infoButton: infoButtonSlot,
+    size,
     content,
     className,
     style,
@@ -38,6 +39,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     defaultProps: {
       id: useId('infolabel-'),
       ref,
+      size,
       ...labelProps,
     },
   });
@@ -47,6 +49,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     defaultProps: {
       id: useId('infobutton-'),
       content,
+      size,
     },
   });
 
@@ -55,7 +58,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   }
 
   return {
-    size: props.size,
+    size,
     components: {
       root: 'span',
       label: Label,
