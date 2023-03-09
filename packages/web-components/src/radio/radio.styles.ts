@@ -59,25 +59,21 @@ export const styles = css`
     flex-shrink: 0;
   }
   .control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    display: inline-block;
     width: 16px;
     height: 16px;
     border-radius: 50%;
     border: 1px solid ${colorNeutralStrokeAccessible};
     margin: ${spacingVerticalS} ${spacingHorizontalS};
-    top: 0;
-    left: 0;
   }
   :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
   .checked-indicator {
     opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 10px;
     height: 10px;
     border-radius: 5px;
