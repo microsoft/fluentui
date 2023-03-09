@@ -47,7 +47,7 @@ export const menuItemIndicatorClassName = 'ui-menu__itemindicator';
 /**
  * A MenuItemIndicator allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemIndicator = (React.forwardRef<HTMLSpanElement, MenuItemIndicatorProps>((props, ref) => {
+export const MenuItemIndicator = React.forwardRef<HTMLSpanElement, MenuItemIndicatorProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItemIndicator.displayName, context.telemetry);
   setStart();
@@ -102,7 +102,7 @@ export const MenuItemIndicator = (React.forwardRef<HTMLSpanElement, MenuItemIndi
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIndicatorProps> &
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemIndicatorProps> &
   FluentComponentStaticProps<MenuItemIndicatorProps>;
 
 MenuItemIndicator.displayName = 'MenuItemIndicator';

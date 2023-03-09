@@ -18,16 +18,20 @@ export const LinkPageProps: TFabricPlatformPageProps = {
   mac: {
     title: 'Link',
     fileNamePrefix: 'Link',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/mac/LinkOverview.md') as string,
-    usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/mac/LinkUsage.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/mac/LinkOverview.md') as string,
+    usage:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/mac/LinkUsage.md') as string,
     related,
     componentUrl,
   },
   cross: {
     title: 'Link',
     fileNamePrefix: 'Link',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/cross/LinkOverview.md') as string,
-    usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/cross/LinkUsage.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/cross/LinkOverview.md') as string,
+    usage:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/cross/LinkUsage.md') as string,
     related,
     componentUrl,
   },

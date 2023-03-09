@@ -2,6 +2,63 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:48 GMT",
+      "tag": "@fluentui/react-toolbar_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "5207cd3464c2cff4b3ff2a84fcf96edada5e3677",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-button to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-divider to v9.2.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.11",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.1.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.0",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-tabster to v9.5.4",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 11:44:52 GMT",
       "tag": "@fluentui/react-toolbar_v9.0.7",
       "version": "9.0.7",

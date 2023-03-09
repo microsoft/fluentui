@@ -11,13 +11,15 @@ const componentUrl =
 export const NavBarPageProps: TFabricPlatformPageProps = {
   ios: {
     title: 'Navigation Bar',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/ios/NavBarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/ios/NavBarOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
     title: 'Top App Bar',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/android/NavBarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/android/NavBarOverview.md') as string,
     related,
     componentUrl,
   },

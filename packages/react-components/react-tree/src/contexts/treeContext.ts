@@ -1,5 +1,5 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeItemId, TreeOpenChangeData } from '../Tree';
+import { TreeItemId, TreeOpenChangeData, TreeNavigationData_unstable } from '../Tree';
 import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
 
 export type TreeContextValue = {
@@ -7,29 +7,25 @@ export type TreeContextValue = {
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
   openItems: ImmutableSet<TreeItemId>;
-  focusFirstSubtreeItem(target: HTMLElement): void;
-  focusSubtreeOwnerItem(target: HTMLElement): void;
   /**
    * Requests dialog main component to update it's internal open state
    */
   requestOpenChange(data: TreeOpenChangeData): void;
+  requestNavigation(data: TreeNavigationData_unstable): void;
 };
 
 const defaultContextValue: TreeContextValue = {
   level: 0,
   openItems: emptyImmutableSet,
-  focusFirstSubtreeItem() {
-    /* noop */
-  },
-  focusSubtreeOwnerItem() {
-    /* noop */
-  },
-  requestOpenChange() {
-    /* noop */
-  },
+  requestOpenChange: noop,
+  requestNavigation: noop,
   appearance: 'subtle',
   size: 'medium',
 };
+
+function noop() {
+  /* noop */
+}
 
 export const TreeContext: Context<TreeContextValue | undefined> = createContext<TreeContextValue | undefined>(
   undefined,

@@ -58,7 +58,7 @@ export const avatarClassName = 'ui-avatar';
 /**
  * An Avatar is a graphical representation of a user.
  */
-export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -148,7 +148,7 @@ export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref
   setEnd();
 
   return result;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, AvatarProps> & FluentComponentStaticProps<AvatarProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, AvatarProps> & FluentComponentStaticProps<AvatarProps>;
 
 Avatar.displayName = 'Avatar';
 

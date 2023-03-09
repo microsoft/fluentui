@@ -927,9 +927,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
-      element = (isForward
-        ? getNextElement(this._root.current, element)
-        : getPreviousElement(this._root.current, element)) as HTMLElement;
+      element = (
+        isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element)
+      ) as HTMLElement;
 
       if (isBidirectional) {
         if (element) {

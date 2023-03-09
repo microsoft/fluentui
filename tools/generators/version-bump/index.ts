@@ -193,7 +193,7 @@ export const validbumpTypes = [
 ] as const;
 
 interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude'>> {
-  bumpType: typeof validbumpTypes[number];
+  bumpType: (typeof validbumpTypes)[number];
 
   exclude: string[];
 }

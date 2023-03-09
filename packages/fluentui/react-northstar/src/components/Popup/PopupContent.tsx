@@ -90,7 +90,7 @@ export const popupContentSlotClassNames: PopupContentSlotClassNames = {
 /**
  * A PopupContent displays the content of a Popup component.
  */
-export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>((props, ref) => {
+export const PopupContent = React.forwardRef<HTMLDivElement, PopupContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
   setStart();
@@ -188,7 +188,7 @@ export const PopupContent = (React.forwardRef<HTMLDivElement, PopupContentProps>
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, PopupContentProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PopupContentProps> &
   FluentComponentStaticProps<PopupContentProps>;
 
 PopupContent.displayName = 'PopupContent';
