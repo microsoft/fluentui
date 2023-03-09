@@ -5,9 +5,9 @@ export { CalendarDay, useCalendarDayStyles_unstable } from './CalendarDay';
 export type { CalendarDayProps, CalendarDayStyleProps, CalendarDayStyles, ICalendarDay } from './CalendarDay';
 
 export {
+  CalendarDayGrid,
   calendarDayGridClassNames,
   extraCalendarDayGridClassNames,
-  CalendarDayGrid,
   useCalendarDayGridStyles_unstable,
 } from './CalendarDayGrid';
 export type {

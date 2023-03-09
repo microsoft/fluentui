@@ -28,7 +28,7 @@ describe('CalendarDayGrid', () => {
       // This component is not currently intended to handle a ref
       'component-handles-ref',
       'component-has-root-ref',
-      // This test doesn't apply for v8
+      // This test doesn't apply for compat components that are closer to their v8 counterpart
       'consistent-callback-args',
       // Some classnames are applied conditionally
       'component-has-static-classnames-object',
