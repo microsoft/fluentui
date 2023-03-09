@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Button, Radio } from '@fluentui/react-components';
-import { InputField, CheckboxField, RadioGroupField } from '@fluentui/react-components/unstable';
+import { Input, Checkbox, RadioGroup, Radio, Button } from '@fluentui/react-components';
 import { Field } from '@fluentui/react-components/unstable';
 
 import { Scenario } from './utils';
@@ -11,7 +10,6 @@ import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
 
 const regexes = {
   onlyNameChars: /^[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*$/,
-  // eslint-disable-next-line @fluentui/max-len
   startsAndEndsWithLetter:
     /^(([A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ][A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ -]*[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])|[A-Za-zÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ])?$/,
   noWhitespace: /^\S*$/,
@@ -20,7 +18,6 @@ const regexes = {
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
   validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
-  // eslint-disable-next-line @fluentui/max-len
   validEmail:
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
 };
@@ -41,11 +38,12 @@ interface FormValidation {
   unsubscribe: (channel: string, handler: Handler) => void;
 }
 
-interface ValidationMessageProps {
+interface AlertingFieldProps {
   id: string;
   formValidation: FormValidation;
+  children: (isAlerting: boolean) => React.ReactElement;
 }
-const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidation, children }) => {
+const AlertingField: React.FC<AlertingFieldProps> = ({ id, formValidation, children }) => {
   const [isAlerting, setIsAlerting] = React.useState(true);
 
   const alert = React.useCallback(() => {
@@ -57,17 +55,7 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
     formValidation.subscribe(id, alert);
     return () => formValidation.unsubscribe(id, alert);
   }, [formValidation, alert, id]);
-  return (
-    <>
-      {isAlerting ? (
-        <div role="alert" id={`${id}Errors`}>
-          {children}
-        </div>
-      ) : (
-        <div id={`${id}Errors`}>{children}</div>
-      )}
-    </>
-  );
+  return children(isAlerting);
 };
 
 const useFormValidation = (
@@ -194,282 +182,311 @@ const TicketOrderFormFieldsAccessibility = () => {
         <>
           <p>Please fill the following form to order your ticket.</p>
           <form onSubmit={formValidation.handleSubmit(onSubmit)}>
-            <InputField
-              type="text"
-              id="ticketNumber"
-              value={ticketNumber}
-              readOnly
-              label="Your ticket number:"
+            <Field
+              label="Your ticket number"
               hint="Please remember the ticket number. You will need it for identification."
-            />
+            >
+              <Input type="text" id="ticketNumber" value={ticketNumber} readOnly />
+            </Field>
 
-            <Controller
-              name="fullName"
-              control={control}
-              as={
-                <InputField
-                  type="text"
-                  id="fullName"
-                  label="Full name:"
+            <AlertingField id="fullName" formValidation={formValidation}>
+              {isAlerting => (
+                <Field
+                  label="Full name"
                   hint="Enter your name including first name, middle name and last name."
                   validationState={errors.fullName?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.fullName?.types ? undefined : (
-                      <ValidationMessage id="fullName" formValidation={formValidation}>
-                        {'required' in errors.fullName.types ? (
-                          <p>Full name is required.</p>
-                        ) : (
-                          <>
-                            <p>Full name is invalid. It must:</p>
-                            <ul>
-                              {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
-                                <li>Have between 2 and 50 characters.</li>
+                    !errors.fullName?.types
+                      ? undefined
+                      : {
+                          role: isAlerting ? 'alert' : undefined,
+                          children: (
+                            <div id="fullNameErrors">
+                              {'required' in errors.fullName.types ? (
+                                <p>Full name is required.</p>
+                              ) : (
+                                <>
+                                  <p>Full name is invalid. It must:</p>
+                                  <ul>
+                                    {('minLength' in errors.fullName.types || 'maxLength' in errors.fullName.types) && (
+                                      <li>Have between 2 and 50 characters.</li>
+                                    )}
+                                    {'onlyNameChars' in errors.fullName.types && (
+                                      <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                                    )}
+                                    {'startsAndEndsWithLetter' in errors.fullName.types && (
+                                      <li>Start and end wit letter.</li>
+                                    )}
+                                  </ul>
+                                </>
                               )}
-                              {'onlyNameChars' in errors.fullName.types && (
-                                <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
-                              )}
-                              {'startsAndEndsWithLetter' in errors.fullName.types && <li>Start and end wit letter.</li>}
-                            </ul>
-                          </>
-                        )}
-                      </ValidationMessage>
-                    )
+                            </div>
+                          ),
+                        }
                   }
-                  aria-required="true"
-                  aria-invalid={!!errors.fullName}
-                />
-              }
-              rules={{
-                required: true,
-                minLength: 2,
-                maxLength: 50,
-                validate: {
-                  onlyNameChars: value => regexes.onlyNameChars.test(value),
-                  startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
-                  always: () => {
-                    if (!formState.isSubmitting) {
-                      formValidation.onFieldValidated('fullName');
-                    }
-                    return true;
-                  },
-                },
-              }}
-            />
+                >
+                  <Controller
+                    name="fullName"
+                    control={control}
+                    as={<Input type="text" id="fullName" aria-required="true" />}
+                    rules={{
+                      required: true,
+                      minLength: 2,
+                      maxLength: 50,
+                      validate: {
+                        onlyNameChars: value => regexes.onlyNameChars.test(value),
+                        startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                        always: () => {
+                          if (!formState.isSubmitting) {
+                            formValidation.onFieldValidated('fullName');
+                          }
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                </Field>
+              )}
+            </AlertingField>
 
-            <Controller
-              name="nickname"
-              control={control}
-              as={
-                <InputField
-                  type="text"
-                  id="nickname"
-                  label="Nickname:"
+            <AlertingField id="nickname" formValidation={formValidation}>
+              {isAlerting => (
+                <Field
+                  label="Nickname"
                   hint="Enter how people use to call you."
                   validationState={errors.nickname?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.nickname?.types ? undefined : (
-                      <ValidationMessage id="nickname" formValidation={formValidation}>
-                        <p>Nickname is invalid. It must:</p>
-                        <ul>
-                          {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
-                            <li>Have between 2 and 20 characters.</li>
-                          )}
-                          {'onlyNameChars' in errors.nickname.types && (
-                            <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
-                          )}
-                          {'startsAndEndsWithLetter' in errors.nickname.types && <li>Start and end wit letter.</li>}
-                        </ul>
-                      </ValidationMessage>
-                    )
+                    !errors.nickname?.types
+                      ? undefined
+                      : {
+                          role: isAlerting ? 'alert' : undefined,
+                          children: (
+                            <div id="nicknameErrors">
+                              <p>Nickname is invalid. It must:</p>
+                              <ul>
+                                {('minLength' in errors.nickname.types || 'maxLength' in errors.nickname.types) && (
+                                  <li>Have between 2 and 20 characters.</li>
+                                )}
+                                {'onlyNameChars' in errors.nickname.types && (
+                                  <li>Contain only lowercase or uppercase letters, spaces or hyphens.</li>
+                                )}
+                                {'startsAndEndsWithLetter' in errors.nickname.types && (
+                                  <li>Start and end wit letter.</li>
+                                )}
+                              </ul>
+                            </div>
+                          ),
+                        }
                   }
-                  aria-invalid={!!errors.nickname}
-                />
-              }
-              rules={{
-                minLength: 2,
-                maxLength: 20,
-                validate: {
-                  onlyNameChars: value => regexes.onlyNameChars.test(value),
-                  startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
-                  always: () => {
-                    if (!formState.isSubmitting) {
-                      formValidation.onFieldValidated('nickname');
-                    }
-                    return true;
-                  },
-                },
-              }}
-            />
+                >
+                  <Controller
+                    name="nickname"
+                    control={control}
+                    as={<Input type="text" id="nickname" />}
+                    rules={{
+                      minLength: 2,
+                      maxLength: 20,
+                      validate: {
+                        onlyNameChars: value => regexes.onlyNameChars.test(value),
+                        startsAndEndsWithLetter: value => regexes.startsAndEndsWithLetter.test(value),
+                        always: () => {
+                          if (!formState.isSubmitting) {
+                            formValidation.onFieldValidated('nickname');
+                          }
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                </Field>
+              )}
+            </AlertingField>
 
-            <Controller
-              name="password"
-              control={control}
-              as={
-                <InputField
-                  type={isPasswordVisible ? 'text' : 'password'}
-                  id="password"
-                  label="Password:"
+            <AlertingField id="password" formValidation={formValidation}>
+              {isAlerting => (
+                <Field
+                  label="Password"
                   hint="Use strong password."
                   validationState={errors.password?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.password?.types ? undefined : (
-                      <ValidationMessage id="password" formValidation={formValidation}>
-                        {'required' in errors.password.types ? (
-                          <p>Password is required.</p>
-                        ) : (
-                          <>
-                            <p>Password is invalid. It must:</p>
-                            <ul>
-                              {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
-                                <li>Have between 8 and 20 characters.</li>
+                    !errors.password?.types
+                      ? undefined
+                      : {
+                          role: isAlerting ? 'alert' : undefined,
+                          children: (
+                            <div id="passwordErrors">
+                              {'required' in errors.password.types ? (
+                                <p>Password is required.</p>
+                              ) : (
+                                <>
+                                  <p>Password is invalid. It must:</p>
+                                  <ul>
+                                    {('minLength' in errors.password.types || 'maxLength' in errors.password.types) && (
+                                      <li>Have between 8 and 20 characters.</li>
+                                    )}
+                                    {('hasLowercaseLetter' in errors.password.types ||
+                                      'hasUppercaseLetter' in errors.password.types ||
+                                      'hasSpecialChar' in errors.password.types ||
+                                      'hasNumber' in errors.password.types ||
+                                      'noWhiteSpace' in errors.password.types) && (
+                                      <li>
+                                        Contain at least one lower case letter, upper case letter, number, special
+                                        character and no spaces.
+                                      </li>
+                                    )}
+                                  </ul>
+                                </>
                               )}
-                              {('hasLowercaseLetter' in errors.password.types ||
-                                'hasUppercaseLetter' in errors.password.types ||
-                                'hasSpecialChar' in errors.password.types ||
-                                'hasNumber' in errors.password.types ||
-                                'noWhiteSpace' in errors.password.types) && (
-                                <li>
-                                  Contain at least one lower case letter, upper case letter, number, special character
-                                  and no spaces.
-                                </li>
-                              )}
-                            </ul>
-                          </>
-                        )}
-                      </ValidationMessage>
-                    )
+                            </div>
+                          ),
+                        }
                   }
-                  aria-required="true"
-                  aria-invalid={!!errors.password}
-                />
-              }
-              rules={{
-                required: true,
-                minLength: 8,
-                maxLength: 20,
-                validate: {
-                  hasLowercaseLetter: value => regexes.hasLowercaseLetter.test(value),
-                  hasUppercaseLetter: value => regexes.hasUppercaseLetter.test(value),
-                  hasNumber: value => regexes.hasNumber.test(value),
-                  hasSpecialChar: value => regexes.hasSpecialChar.test(value),
-                  noWhitespace: value => regexes.noWhitespace.test(value),
-                  always: () => {
-                    if (!formState.isSubmitting) {
-                      formValidation.onFieldValidated('password');
-                    }
-                    return true;
-                  },
-                },
-              }}
-            />
+                >
+                  <Controller
+                    name="password"
+                    control={control}
+                    as={<Input type={isPasswordVisible ? 'text' : 'password'} id="password" aria-required="true" />}
+                    rules={{
+                      required: true,
+                      minLength: 8,
+                      maxLength: 20,
+                      validate: {
+                        hasLowercaseLetter: value => regexes.hasLowercaseLetter.test(value),
+                        hasUppercaseLetter: value => regexes.hasUppercaseLetter.test(value),
+                        hasNumber: value => regexes.hasNumber.test(value),
+                        hasSpecialChar: value => regexes.hasSpecialChar.test(value),
+                        noWhitespace: value => regexes.noWhitespace.test(value),
+                        always: () => {
+                          if (!formState.isSubmitting) {
+                            formValidation.onFieldValidated('password');
+                          }
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                </Field>
+              )}
+            </AlertingField>
 
-            <CheckboxField id="showPassword" label="Show password" onChange={onShowPasswordChange} />
+            <Checkbox id="showPassword" label="Show password" onChange={onShowPasswordChange} />
 
-            <Controller
-              name="birthDate"
-              control={control}
-              as={
-                <InputField
-                  type="text"
-                  id="birthDate"
-                  placeholder="E.g. 3/21/1995"
-                  label="Birth date:"
+            <AlertingField id="birthDate" formValidation={formValidation}>
+              {isAlerting => (
+                <Field
+                  label="Birth date"
                   hint="We need this for special birthday offers."
                   validationState={errors.birthDate?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.birthDate?.types ? undefined : (
-                      <ValidationMessage id="birthDate" formValidation={formValidation}>
-                        {'required' in errors.birthDate.types ? (
-                          <p>Birth date is required.</p>
-                        ) : (
-                          <>
-                            <p>Birth date is invalid. It must:</p>
-                            <ul>{'validDate' in errors.birthDate.types && <li>Be in the MM/DD/YYYY format.</li>}</ul>
-                          </>
-                        )}
-                      </ValidationMessage>
-                    )
+                    !errors.birthDate?.types
+                      ? undefined
+                      : {
+                          role: isAlerting ? 'alert' : undefined,
+                          children: (
+                            <div id="birthDateErrors">
+                              {'required' in errors.birthDate.types ? (
+                                <p>Birth date is required.</p>
+                              ) : (
+                                <>
+                                  <p>Birth date is invalid. It must:</p>
+                                  <ul>
+                                    {'validDate' in errors.birthDate.types && <li>Be in the MM/DD/YYYY format.</li>}
+                                  </ul>
+                                </>
+                              )}
+                            </div>
+                          ),
+                        }
                   }
-                  aria-required="true"
-                  aria-invalid={!!errors.birthDate}
-                />
-              }
-              rules={{
-                required: true,
-                validate: {
-                  validDate: value => regexes.validDate.test(value),
-                  always: () => {
-                    if (!formState.isSubmitting) {
-                      formValidation.onFieldValidated('birthDate');
-                    }
-                    return true;
-                  },
-                },
-              }}
-            />
+                >
+                  <Controller
+                    name="birthDate"
+                    control={control}
+                    as={<Input type="text" id="birthDate" placeholder="E.g. 3/21/1995" aria-required="true" />}
+                    rules={{
+                      required: true,
+                      validate: {
+                        validDate: value => regexes.validDate.test(value),
+                        always: () => {
+                          if (!formState.isSubmitting) {
+                            formValidation.onFieldValidated('birthDate');
+                          }
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                </Field>
+              )}
+            </AlertingField>
 
-            <RadioGroupField label="Highest level of education" hint="We need this for better product targetting.">
-              <Radio defaultChecked={true} label="None" />
-              <Radio label="Elementary school" />
-              <Radio label="High school" />
-              <Radio label="University or college" />
-            </RadioGroupField>
+            <Field label="Highest level of education" hint="We need this for better product targetting.">
+              <RadioGroup>
+                <Radio defaultChecked={true} label="None" />
+                <Radio label="Elementary school" />
+                <Radio label="High school" />
+                <Radio label="University or college" />
+              </RadioGroup>
+            </Field>
 
-            <CheckboxField id="sendNewsletter" label="Send me newsletter" onChange={onSendNewsletterChange} />
+            <Field hint="We will send the newsletter approximately once a month">
+              <Checkbox id="sendNewsletter" label="Send me newsletter" onChange={onSendNewsletterChange} />
+            </Field>
 
-            <Controller
-              name="email"
-              control={control}
-              as={
-                <InputField
-                  type="text"
-                  id="email"
-                  disabled={!isSendNewsletter}
-                  label="E-mail:"
+            <AlertingField id="email" formValidation={formValidation}>
+              {isAlerting => (
+                <Field
+                  label="E-mail"
                   hint="We will send you newsletter to this e-mail."
                   validationState={errors.email?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.email?.types ? undefined : (
-                      <ValidationMessage id="email" formValidation={formValidation}>
-                        {'required' in errors.email.types ? (
-                          <p>E-mail is required.</p>
-                        ) : (
-                          <>
-                            <p>E-mail is invalid. It must:</p>
-                            <ul>
-                              {'validEmail' in errors.email.types && (
-                                <li>Be a valid e-mail address, like name@example.com.</li>
+                    !errors.email?.types
+                      ? undefined
+                      : {
+                          role: isAlerting ? 'alert' : undefined,
+                          children: (
+                            <div id="emailErrors">
+                              {'required' in errors.email.types ? (
+                                <p>E-mail is required.</p>
+                              ) : (
+                                <>
+                                  <p>E-mail is invalid. It must:</p>
+                                  <ul>
+                                    {'validEmail' in errors.email.types && (
+                                      <li>Be a valid e-mail address, like name@example.com.</li>
+                                    )}
+                                  </ul>
+                                </>
                               )}
-                            </ul>
-                          </>
-                        )}
-                      </ValidationMessage>
-                    )
+                            </div>
+                          ),
+                        }
                   }
-                  aria-required={isSendNewsletter}
-                  aria-invalid={!!errors.email}
-                />
-              }
-              rules={{
-                required: isSendNewsletter,
-                validate: {
-                  validEmail: value => !isSendNewsletter || regexes.validEmail.test(value),
-                  always: () => {
-                    if (!formState.isSubmitting) {
-                      formValidation.onFieldValidated('email');
-                    }
-                    return true;
-                  },
-                },
-              }}
-            />
+                >
+                  <Controller
+                    name="email"
+                    control={control}
+                    as={<Input type="text" id="email" disabled={!isSendNewsletter} aria-required={isSendNewsletter} />}
+                    rules={{
+                      required: isSendNewsletter,
+                      validate: {
+                        validEmail: value => !isSendNewsletter || regexes.validEmail.test(value),
+                        always: () => {
+                          if (!formState.isSubmitting) {
+                            formValidation.onFieldValidated('email');
+                          }
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                </Field>
+              )}
+            </AlertingField>
 
-            <Controller
-              name="acceptTerms"
-              control={control}
-              as={
-                <CheckboxField
-                  id="acceptTerms"
+            <AlertingField id="acceptTerms" formValidation={formValidation}>
+              {isAlerting => (
+                <Field
                   label="I accept terms and conditions"
                   hint={
                     <>
@@ -478,30 +495,39 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                   validationState={errors.acceptTerms?.types ? 'error' : 'success'}
                   validationMessage={
-                    !errors.acceptTerms?.types ? undefined : (
-                      <ValidationMessage id="acceptTerms" formValidation={formValidation}>
-                        {'required' in errors.acceptTerms.types && (
-                          <p>You have to accept the terms and conditions in order to order your ticket.</p>
-                        )}
-                      </ValidationMessage>
-                    )
+                    !errors.acceptTerms?.types
+                      ? undefined
+                      : {
+                          role: isAlerting ? 'alert' : undefined,
+                          children: (
+                            <div id="acceptTermsErrors">
+                              {'required' in errors.acceptTerms.types && (
+                                <p>You have to accept the terms and conditions in order to order your ticket.</p>
+                              )}
+                            </div>
+                          ),
+                        }
                   }
-                  aria-required="true"
-                  aria-invalid={!!errors.acceptTerms}
-                />
-              }
-              rules={{
-                required: true,
-                validate: {
-                  always: () => {
-                    if (!formState.isSubmitting) {
-                      formValidation.onFieldValidated('acceptTerms');
-                    }
-                    return true;
-                  },
-                },
-              }}
-            />
+                >
+                  <Controller
+                    name="acceptTerms"
+                    control={control}
+                    as={<Checkbox id="acceptTerms" aria-required="true" />}
+                    rules={{
+                      required: true,
+                      validate: {
+                        always: () => {
+                          if (!formState.isSubmitting) {
+                            formValidation.onFieldValidated('acceptTerms');
+                          }
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                </Field>
+              )}
+            </AlertingField>
 
             <Button type="submit">Order ticket</Button>
           </form>
