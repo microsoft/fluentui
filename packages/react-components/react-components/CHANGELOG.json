@@ -2,6 +2,429 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 08 Mar 2023 17:42:23 GMT",
+      "tag": "@fluentui/react-components_v9.16.0",
+      "version": "9.16.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6c124ebd483699e85d070407611848e4d55f0649",
+            "comment": "chore: remove unnecessary devDeps on workspace addon"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "db203b7c6eae1174b0bb910bf49eaee4dde14786",
+            "comment": "chore: re-enable AMD import checks for only mixed and v8 packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "db203b7c6eae1174b0bb910bf49eaee4dde14786",
+            "comment": "chore: re-enable AMD import checks for only mixed and v8 packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "cb0acaa586d84b70a9d2c3a9f4a14d5cdd3022cb",
+            "comment": "spec"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3b37078d657a664f7a55ffff35cdf698d16de144",
+            "comment": "chore: Add README for react-table package"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "ce1a8ce417d71d3063101bfc1dd6b8e09ee38650",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "096600ed000f020406c96703c8c1678515b017c7",
+            "comment": "feat: Adding call to custom styles hook derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "31ac442c7c5f4478999e14181cf4c91db727e4d2",
+            "comment": "feat: Adding calls to custom styles hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "27c3cfe8a95bd26541c7c47ad2fd7fbc8ea332df",
+            "comment": "feat: Added custom style hook call"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "6925b600c03d187294d7a53ffc0e6123963ab7aa",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "1f63507e89fc83b0b82d5ee61a0d775890fcdcc5",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "27c3cfe8a95bd26541c7c47ad2fd7fbc8ea332df",
+            "comment": "feat: Added CustomStyleHooks types and context"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "5177d2a76ad0c003f03a883022ff5cee62c3e7e3",
+            "comment": "feature: introduces innerTrapFocus"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "b81f53f998e9485bd7ce9937dc8beec875034989",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "d489c1a10a96019bbcc3c811f7c853980b727c67",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "5fa1affa69afbb2f6b9e188e1a8e45b6ebc7b001",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3",
+            "comment": "feat: Implements `fallback` positioning option"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "cd60ce9b960b7c107fee94ff41288540e917789a",
+            "comment": "feat: add `mountNode` prop to `Menu`"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "aec274eb0cfe178797c8e832a65370b9d05be909",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "96784d99a27245781bab8a54a3586359e30dd8c1",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "4d536a76b414c5135713127ce707f8676db13fd8",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "5177d2a76ad0c003f03a883022ff5cee62c3e7e3",
+            "comment": "feature: introduces innerTrapFocus and deprecates legacyTrapFocus"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "34cb9409ea7ac1bb0d88c80312b15b09325e96b3",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "27c3cfe8a95bd26541c7c47ad2fd7fbc8ea332df",
+            "comment": "feat: Added customstylehooks property"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "0ec3b66bd7f07f3fdb93e373a11cbb543802cc0a",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "e9df987dba9821cfab8eea8b7da7f3635d6669d5",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c245fd66d8ddb61f47ddcde4baab670f2068bbe6",
+            "comment": "fix: Removing internal checkmark custom styles hook"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "27c3cfe8a95bd26541c7c47ad2fd7fbc8ea332df",
+            "comment": "feat: Added CustomStyleHooks types and context"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "571f842e607e5a42c73b62869a145d6bd55b4df4",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "bfe1448d48e975d7731a63049336c6cdd962c0a0",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "86b28bfb15a9120fc876ab47903713b9d6585dc2",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ff6ce36e73ffe2f5c4bf5ca802e5de132f438ff7",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "bec4c1944ad5d1d857ac7f5f1baf8d12157378ac",
+            "comment": "feat: Implement Home/End navigation with Control"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "d858041352851ffdeb5ac8d51e18cd44b46414ab",
+            "comment": "chore: use Iterable instead of a Set for table selection API surface"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "965fe81c9a7dc161a170dd45cdabb83f934d6534",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "af441d629b1b47b0699c6aa9e977388786f5a40e",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "489dfcbf067fa266ba2046e5e1d5f9644fce9d93",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "5207cd3464c2cff4b3ff2a84fcf96edada5e3677",
+            "comment": "feat: custom styles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "7be3d631f067a9bfa7106c5d62d66d206b31358c",
+            "comment": "feat: Adding calls to custom styles hooks derived from context."
+          }
+        ],
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "52a16d07c3b95eebf39ebe46fa73c4a825f73e29",
+            "comment": "updated colors for unknown variant for presence badge"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "30ad74d01e550256a7f62dd8760d393d54473959",
+            "comment": "feat(react-card): bump to release candidate"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e469261b00066074c60d705150e678506f8700f0",
+            "comment": "fix: updates useModalAttributes flags for legacyTrapFocus"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "6331a0df348dd5c6e834796009215fdbafcef84c",
+            "comment": "updated hover icon styles in MenuItem"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e469261b00066074c60d705150e678506f8700f0",
+            "comment": "fix: updates useModalAttributes flags for legacyTrapFocus"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3",
+            "comment": "fix: Nested submenus support positioning fallbacks for small viewports"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "72b29a2530140bdb11e097d7d7b36f06c66f10fb",
+            "comment": "fix: Align WHCM styles with figma and fix documentation typo."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "efb2274e37c0237f3a10a4630b2696a9880f6398",
+            "comment": "fix: Add error checking for incorrect values of max and value props"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "f2c7257775bf2d17c3f9dc6eae0b834a988f8793",
+            "comment": "fix: Update ProgressBar styling to have width when display is set to flex"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56",
+            "comment": "Fixed missing outline when forced-colors active"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e469261b00066074c60d705150e678506f8700f0",
+            "comment": "fix: updates useModalAttributes flags for legacyTrapFocus"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b38973143b00f399373027454844ef695fc0091b",
+            "comment": "fix: adjust IntrinsicElementProps type to properly support void elements"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dd0f5b76fc8905c067cc58556ec1f9626dcfc640",
+            "comment": "fix: export omit function"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "30ad74d01e550256a7f62dd8760d393d54473959",
+            "comment": "feat: bump to release candidate"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Feb 2023 23:06:04 GMT",
       "tag": "@fluentui/react-components_v9.15.6",
       "version": "9.15.6",

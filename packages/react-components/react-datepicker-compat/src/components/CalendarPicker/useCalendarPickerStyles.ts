@@ -71,19 +71,18 @@ const useCurrentItemButtonStyles = makeStyles({
   },
   hasHeaderClickCallback: {
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
     '&:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Pressed,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useNavigationButtonsContainerStyles = makeStyles({
@@ -113,13 +112,12 @@ const useNavigationButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
   },
-  //  getFocusStyle(theme, { inset: -1 }),
 });
 
 const useGridContainerStyles = makeStyles({
@@ -131,7 +129,7 @@ const useGridContainerStyles = makeStyles({
 const useButtonRowStyles = makeStyles({
   base: {
     marginBottom: '16px',
-    '&:nth-child(n + 3)': {
+    '&:last-of-type': {
       marginBottom: 0,
     },
   },
@@ -181,7 +179,7 @@ const useItemButtonStyles = makeStyles({
       fontWeight: tokens.fontWeightRegular,
     },
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
@@ -203,7 +201,6 @@ const useItemButtonStyles = makeStyles({
       },
     },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useCurrentStyles = makeStyles({

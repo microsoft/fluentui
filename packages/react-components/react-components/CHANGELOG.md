@@ -1,8 +1,109 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.16.0)
+
+Wed, 08 Mar 2023 17:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.6..@fluentui/react-components_v9.16.0)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27059](https://github.com/microsoft/fluentui/pull/27059) by gcox@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: Adding call to custom styles hook derived from context. ([PR #27060](https://github.com/microsoft/fluentui/pull/27060) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - feat: Adding calls to custom styles hooks derived from context. ([PR #27061](https://github.com/microsoft/fluentui/pull/27061) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - feat: Added custom style hook call ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27062](https://github.com/microsoft/fluentui/pull/27062) by gcox@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27063](https://github.com/microsoft/fluentui/pull/27063) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Added CustomStyleHooks types and context ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-dialog`
+  - feature: introduces innerTrapFocus ([PR #26942](https://github.com/microsoft/fluentui/pull/26942) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-divider`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27064](https://github.com/microsoft/fluentui/pull/27064) by gcox@microsoft.com)
+- `@fluentui/react-input`
+  - feat: custom styles ([PR #27065](https://github.com/microsoft/fluentui/pull/27065) by gcox@microsoft.com)
+- `@fluentui/react-label`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27067](https://github.com/microsoft/fluentui/pull/27067) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: Implements `fallback` positioning option ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by lingfangao@hotmail.com)
+  - feat: add `mountNode` prop to `Menu` ([PR #27007](https://github.com/microsoft/fluentui/pull/27007) by olfedias@microsoft.com)
+  - feat: custom styles ([PR #27068](https://github.com/microsoft/fluentui/pull/27068) by gcox@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27069](https://github.com/microsoft/fluentui/pull/27069) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: custom styles ([PR #27070](https://github.com/microsoft/fluentui/pull/27070) by gcox@microsoft.com)
+  - feature: introduces innerTrapFocus and deprecates legacyTrapFocus ([PR #26942](https://github.com/microsoft/fluentui/pull/26942) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - feat: custom styles ([PR #27082](https://github.com/microsoft/fluentui/pull/27082) by gcox@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: Added customstylehooks property ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: custom styles ([PR #27071](https://github.com/microsoft/fluentui/pull/27071) by gcox@microsoft.com)
+- `@fluentui/react-select`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27072](https://github.com/microsoft/fluentui/pull/27072) by gcox@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: Removing internal checkmark custom styles hook ([PR #27085](https://github.com/microsoft/fluentui/pull/27085) by gcox@microsoft.com)
+  - feat: Added CustomStyleHooks types and context ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-slider`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27073](https://github.com/microsoft/fluentui/pull/27073) by gcox@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: custom styles ([PR #27074](https://github.com/microsoft/fluentui/pull/27074) by gcox@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27075](https://github.com/microsoft/fluentui/pull/27075) by gcox@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27076](https://github.com/microsoft/fluentui/pull/27076) by gcox@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Implement Home/End navigation with Control ([PR #26964](https://github.com/microsoft/fluentui/pull/26964) by lingfangao@hotmail.com)
+  - chore: use Iterable instead of a Set for table selection API surface ([PR #26892](https://github.com/microsoft/fluentui/pull/26892) by bernardo.sunderhus@gmail.com)
+  - feat: custom styles ([PR #27084](https://github.com/microsoft/fluentui/pull/27084) by gcox@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27077](https://github.com/microsoft/fluentui/pull/27077) by gcox@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27079](https://github.com/microsoft/fluentui/pull/27079) by gcox@microsoft.com)
+- `@fluentui/react-toolbar`
+  - feat: custom styles ([PR #27083](https://github.com/microsoft/fluentui/pull/27083) by gcox@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: Adding calls to custom styles hooks derived from context. ([PR #27080](https://github.com/microsoft/fluentui/pull/27080) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - updated colors for unknown variant for presence badge ([PR #26970](https://github.com/microsoft/fluentui/pull/26970) by kakrookaran@gmail.com)
+- `@fluentui/react-components`
+  - feat(react-card): bump to release candidate ([PR #26957](https://github.com/microsoft/fluentui/pull/26957) by marcosvmmoura@gmail.com)
+- `@fluentui/react-dialog`
+  - fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - updated hover icon styles in MenuItem ([PR #27028](https://github.com/microsoft/fluentui/pull/27028) by kakrookaran@gmail.com)
+- `@fluentui/react-popover`
+  - fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: Nested submenus support positioning fallbacks for small viewports ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by lingfangao@hotmail.com)
+- `@fluentui/react-progress`
+  - fix: Align WHCM styles with figma and fix documentation typo. ([PR #27038](https://github.com/microsoft/fluentui/pull/27038) by ololubek@microsoft.com)
+  - fix: Add error checking for incorrect values of max and value props ([PR #27029](https://github.com/microsoft/fluentui/pull/27029) by ololubek@microsoft.com)
+  - fix: Update ProgressBar styling to have width when display is set to flex ([PR #27101](https://github.com/microsoft/fluentui/pull/27101) by ololubek@microsoft.com)
+- `@fluentui/react-tabs`
+  - Fixed missing outline when forced-colors active ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - fix: adjust IntrinsicElementProps type to properly support void elements ([PR #27095](https://github.com/microsoft/fluentui/pull/27095) by bernardo.sunderhus@gmail.com)
+  - fix: export omit function ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - feat: bump to release candidate ([PR #26957](https://github.com/microsoft/fluentui/pull/26957) by marcosvmmoura@gmail.com)
 
 ## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.6)
 
