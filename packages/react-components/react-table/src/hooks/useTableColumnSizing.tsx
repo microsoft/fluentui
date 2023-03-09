@@ -56,7 +56,7 @@ function useTableColumnSizingState<TItem>(
   const keyboardResizing = useKeyboardResizing(columnResizeState);
 
   const enableKeyboardMode = React.useCallback(
-    (columnId: TableColumnId, onChange: EnableKeyboardModeOnChangeCallback) => (
+    (columnId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => (
       e: React.MouseEvent | React.TouchEvent,
     ) => {
       e.preventDefault();

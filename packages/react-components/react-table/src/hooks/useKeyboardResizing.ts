@@ -82,13 +82,13 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
   }, [keyboardHandler, targetDocument?.defaultView]);
 
-  const toggleInteractiveMode = (colId: TableColumnId, onChange: EnableKeyboardModeOnChangeCallback) => {
+  const toggleInteractiveMode = (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => {
     onChangeRef.current = onChange;
     if (!columnId.current) {
       enableInteractiveMode(colId);
     } else if (colId && columnId.current !== colId) {
       columnId.current = colId;
-      onChange(columnId.current, true);
+      onChange?.(columnId.current, true);
     } else {
       disableInteractiveMode();
     }
