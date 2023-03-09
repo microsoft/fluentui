@@ -160,20 +160,20 @@ export const MailSettingsOverflowTabList: React.FunctionComponent = () => {
         <Checkbox label="Enable spell-check" />
       </div>
 
-      <Label htmlFor="oofTextarea">Out of office message:</Label>
+      <Label htmlFor="oofTextarea">Out of office message</Label>
       <Textarea id="oofTextarea" />
     </div>
   ));
 
   const AppearancePanel = React.memo(() => (
     <div role="tabpanel" aria-labelledby="appearanceTab">
-      <Label id="themeLabel">Select theme:</Label>
+      <Label id="themeLabel">Select theme</Label>
       <RadioGroup defaultValue="light" aria-labelledby="themeLabel">
         <Radio value="light" label="Light" />
         <Radio value="dark" label="Dark" />
       </RadioGroup>
 
-      <Label id="fontSizeLabel">Font size:</Label>
+      <Label id="fontSizeLabel">Font size</Label>
       <RadioGroup defaultValue="medium" aria-labelledby="fontSizeLabel">
         <Radio value="small" label="Small" />
         <Radio value="medium" label="Medium" />

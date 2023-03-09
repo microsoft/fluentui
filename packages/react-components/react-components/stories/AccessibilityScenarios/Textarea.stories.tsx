@@ -333,7 +333,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
             )}
 
             <div>
-              <Label htmlFor="customerId">Your customer id:</Label>
+              <Label htmlFor="customerId">Your customer id</Label>
               <Textarea id="customerId" defaultValue={customerId} readOnly />
             </div>
 

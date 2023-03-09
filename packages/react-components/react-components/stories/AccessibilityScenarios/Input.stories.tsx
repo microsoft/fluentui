@@ -176,7 +176,7 @@ const RegistrationFormInputsAccessibility = () => {
       <h1>Registration form</h1>
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
-          <Label htmlFor="fullName">Full name:</Label>
+          <Label htmlFor="fullName">Full name</Label>
           <Controller
             name="fullName"
             control={control}
@@ -226,7 +226,7 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="nickname">Nickname:</Label>
+          <Label htmlFor="nickname">Nickname</Label>
           <Controller
             name="nickname"
             control={control}
@@ -261,7 +261,7 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="password">Password:</Label>
+          <Label htmlFor="password">Password</Label>
           <Controller
             name="password"
             control={control}
@@ -323,7 +323,7 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="birthDate">Birth date:</Label>
+          <Label htmlFor="birthDate">Birth date</Label>
           <Controller
             name="birthDate"
             control={control}
@@ -365,7 +365,7 @@ const RegistrationFormInputsAccessibility = () => {
 
           <Checkbox label="Send me newsletter" onChange={onSendNewsletterChange} />
 
-          <Label htmlFor="email">E-mail:</Label>
+          <Label htmlFor="email">E-mail</Label>
           <Controller
             name="email"
             control={control}
@@ -407,7 +407,7 @@ const RegistrationFormInputsAccessibility = () => {
             </ValidationMessage>
           )}
 
-          <Label htmlFor="securityCode">Your security code:</Label>
+          <Label htmlFor="securityCode">Your security code</Label>
           <Input type="text" id="securityCode" value={securityCode} readOnly />
 
           <Button type="submit">Register</Button>

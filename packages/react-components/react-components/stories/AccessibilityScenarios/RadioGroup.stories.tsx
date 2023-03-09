@@ -42,14 +42,14 @@ export const QuestionnaireAboutTransportationRadios: React.FunctionComponent = (
       <h1>Questionnaire about transportation</h1>
       {!isSubmitted ? (
         <form onSubmit={onSubmit}>
-          <Label id="ageLabel">Your age:</Label>
+          <Label id="ageLabel">Your age</Label>
           <RadioGroup defaultValue="ageClass2" onChange={onAgeChange} aria-labelledby="ageLabel">
             <Radio value="ageClass1" label="Under 16" />
             <Radio value="ageClass2" label="Between 16 and 50" />
             <Radio value="ageClass3" label="Over 50" />
           </RadioGroup>
 
-          <Label id="preferredMeansLabel">The most preferred transportation means as a driver/rider:</Label>
+          <Label id="preferredMeansLabel">The most preferred transportation means as a driver/rider</Label>
           <RadioGroup value={preferredMeans} onChange={onPreferredMeansChange} aria-labelledby="preferredMeansLabel">
             <Radio value="bicycle" label="Bicycle" />
             <Radio value="scooter" label="Scooter" />
@@ -58,7 +58,7 @@ export const QuestionnaireAboutTransportationRadios: React.FunctionComponent = (
             <Radio value="motorbike" disabled={!isDrivingAllowed} label="Motorbike" />
           </RadioGroup>
 
-          <Label id="preferredTypeLabel">The most preferred type of motor vehicle:</Label>
+          <Label id="preferredTypeLabel">The most preferred type of motor vehicle</Label>
           <RadioGroup defaultValue="gasoline" disabled={!isMotor} aria-labelledby="preferredTypeLabel">
             <Radio value="gasoline" label="Gasoline" />
             <Radio value="diesel" label="Diesel" />
