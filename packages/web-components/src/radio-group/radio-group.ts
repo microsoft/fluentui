@@ -7,16 +7,6 @@ import { FASTRadioGroup } from '@microsoft/fast-foundation';
  */
 export class RadioGroup extends FASTRadioGroup {
   /**
-   * Describes the ID of the element that labels the current element, as used for accessibility with screen readers.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: aria-labelledby
-   */
-  @attr({ attribute: 'aria-labelledby' })
-  public ariaLabelledby: string = '';
-
-  /**
    * sets radio layout styles
    *
    * @public
