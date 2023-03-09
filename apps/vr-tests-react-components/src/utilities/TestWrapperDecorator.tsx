@@ -53,8 +53,12 @@ const useNoAnimationStyles = makeStyles({
     },
   },
   paused: {
-    animationPlayState: 'paused',
-    animationDelay: '-1s',
+    animationPlayState: 'paused !important',
+    animationDelay: '-1s !important',
+    '& *': {
+      animationPlayState: 'paused !important',
+      animationDelay: '-1s !important',
+    },
   },
 });
 export const TestWrapperDecoratorNoAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {

@@ -9,7 +9,7 @@ storiesOf('Skeleton converged', module)
     'Opaque Skeleton with rectangle',
     () => (
       <Skeleton className="test-class">
-        <SkeletonItem size={96} />
+        <SkeletonItem style={{ width: '96px' }} />
       </Skeleton>
     ),
     {
@@ -48,7 +48,7 @@ storiesOf('Skeleton converged', module)
     'Translucent Skeleton with rectangle',
     () => (
       <Skeleton className="test-class" appearance="translucent">
-        <SkeletonItem size={96} />
+        <SkeletonItem style={{ width: '96px' }} />
       </Skeleton>
     ),
     {
