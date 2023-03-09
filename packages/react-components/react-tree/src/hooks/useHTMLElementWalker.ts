@@ -1,4 +1,5 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
+import * as React from 'react';
 
 export interface HTMLElementWalker {
   readonly root: HTMLElement;
@@ -14,18 +15,21 @@ export interface HTMLElementWalker {
 
 export type HTMLElementFilter = (element: HTMLElement) => number;
 
-export function createHTMLElementWalker(root: HTMLElement, filter?: HTMLElementFilter): HTMLElementWalker {
+export function createHTMLElementWalker(
+  root: HTMLElement,
+  filter: HTMLElementFilter = () => NodeFilter.FILTER_ACCEPT,
+): HTMLElementWalker {
   let temporaryFilter: HTMLElementFilter | undefined;
   const treeWalker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
     acceptNode(node: Node) {
       if (!isHTMLElement(node)) {
         return NodeFilter.FILTER_REJECT;
       }
-      const filterResult = filter?.(node) ?? NodeFilter.FILTER_ACCEPT;
+      const filterResult = filter(node);
       return filterResult === NodeFilter.FILTER_ACCEPT ? temporaryFilter?.(node) ?? filterResult : filterResult;
     },
   });
-  const htmlElementTreeWalker: HTMLElementWalker = {
+  return {
     get root() {
       return treeWalker.root as HTMLElement;
     },
@@ -78,5 +82,17 @@ export function createHTMLElementWalker(root: HTMLElement, filter?: HTMLElementF
       return result;
     },
   };
-  return htmlElementTreeWalker;
 }
+
+export const useHTMLElementWalkerRef = (filter?: HTMLElementFilter) => {
+  const walkerRef = React.useRef<HTMLElementWalker>();
+
+  const rootRefCallback = (element?: HTMLElement) => {
+    if (!element) {
+      walkerRef.current = undefined;
+      return;
+    }
+    walkerRef.current = createHTMLElementWalker(element, filter);
+  };
+  return [walkerRef as React.RefObject<HTMLElementWalker>, rootRefCallback as React.Ref<HTMLElement>] as const;
+};

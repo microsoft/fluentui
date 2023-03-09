@@ -119,12 +119,15 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, true>): ReplaceNullWithUndefined<P>;
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>): ReplaceNullWithUndefined<P> | undefined;
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
 // @public (undocumented)
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
+    required: true;
+    defaultProps?: Props;
+} : {
     required?: Required;
     defaultProps?: Props;
 };
