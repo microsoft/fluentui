@@ -1080,7 +1080,7 @@ describe('migrate-converged-pkg generator', () => {
 
         preset();
 
-        task('build', 'build:react-components').cached!();"
+        task('build', 'build:react-components').cached?.();"
       `);
     });
   });

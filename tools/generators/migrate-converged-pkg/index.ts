@@ -429,7 +429,7 @@ const templates = {
 
     preset();
 
-    task('build', 'build:react-components').cached!();`,
+    task('build', 'build:react-components').cached?.();`,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
