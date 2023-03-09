@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.26)
+
+Wed, 08 Mar 2023 17:42:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.25..@fluentui/react-link_v9.0.26)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.5.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.25)
 

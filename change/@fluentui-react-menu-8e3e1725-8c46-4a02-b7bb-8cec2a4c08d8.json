@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: custom styles",
-  "packageName": "@fluentui/react-menu",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

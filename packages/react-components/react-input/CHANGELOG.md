@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 22 Feb 2023 23:06:05 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.0)
+
+Wed, 08 Mar 2023 17:42:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.3.7..@fluentui/react-input_v9.4.0)
+
+### Minor changes
+
+- feat: custom styles ([PR #27065](https://github.com/microsoft/fluentui/pull/27065) by gcox@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-alpha.22 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-text to v9.2.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.3.7)
 

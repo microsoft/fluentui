@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 17:42:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.1.0)
+
+Wed, 08 Mar 2023 17:42:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.26..@fluentui/react-accordion_v9.1.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27059](https://github.com/microsoft/fluentui/pull/27059) by gcox@microsoft.com)
+- Bump @fluentui/react-aria to v9.3.11 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.11 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-tabster to v9.5.4 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.26)
 
