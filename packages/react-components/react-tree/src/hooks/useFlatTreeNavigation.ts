@@ -1,50 +1,61 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Home } from '@fluentui/keyboard-keys';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { TreeNavigationData_unstable } from '../Tree';
-import { useTreeItemWalker } from './useTreeItemWalker';
 import type { TreeItemPropsReferences } from './useFlatTreeItems';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
+import { treeDataTypes } from '../utils/tokens';
+import { treeItemFilter } from '../utils/treeItemFilter';
+import { useRovingTabIndex } from './useRovingTabIndexes';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
-export function useFlatTreeNavigation(references: TreeItemPropsReferences) {
+export function useFlatTreeNavigation(flatTree: Pick<TreeItemPropsReferences, 'get'>) {
   const { targetDocument } = useFluent_unstable();
-  const [treeWalkerRef, rootRef] = useTreeItemWalker();
+  const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
+  const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
 
-  function navigate({ target, type, event: { key } }: TreeNavigationData_unstable) {
-    const treeWalker = treeWalkerRef.current;
-    if (!targetDocument || !treeWalker) {
-      return;
+  function getNextElement(data: TreeNavigationData_unstable) {
+    if (!targetDocument || !treeItemWalkerRef.current) {
+      return null;
     }
-    switch (type) {
-      case 'TypeAhead':
-        treeWalker.currentElement = target;
-        return nextTypeAheadElement(treeWalker, key)?.focus();
-      case ArrowLeft:
-        return parentElement(references, target)?.focus();
-      case ArrowRight:
-        treeWalker.currentElement = target;
-        return firstChild(target, treeWalker)?.focus();
-      case End:
-        treeWalker.currentElement = treeWalker.root;
-        return treeWalker.lastChild()?.focus();
-      case Home:
-        treeWalker.currentElement = treeWalker.root;
-        return treeWalker.firstChild()?.focus();
-      case ArrowDown:
-        treeWalker.currentElement = target;
-        return treeWalker.nextElement()?.focus();
-      case ArrowUp:
-        treeWalker.currentElement = target;
-        return treeWalker.previousElement()?.focus();
+    const treeItemWalker = treeItemWalkerRef.current;
+    switch (data.type) {
+      case treeDataTypes.click:
+        return data.target;
+      case treeDataTypes.typeAhead:
+        treeItemWalker.currentElement = data.target;
+        return nextTypeAheadElement(treeItemWalker, data.event.key);
+      case treeDataTypes.arrowLeft:
+        return parentElement(flatTree, data.target, targetDocument);
+      case treeDataTypes.arrowRight:
+        treeItemWalker.currentElement = data.target;
+        return firstChild(data.target, treeItemWalker);
+      case treeDataTypes.end:
+        treeItemWalker.currentElement = treeItemWalker.root;
+        return treeItemWalker.lastChild();
+      case treeDataTypes.home:
+        treeItemWalker.currentElement = treeItemWalker.root;
+        return treeItemWalker.firstChild();
+      case treeDataTypes.arrowDown:
+        treeItemWalker.currentElement = data.target;
+        return treeItemWalker.nextElement();
+      case treeDataTypes.arrowUp:
+        treeItemWalker.currentElement = data.target;
+        return treeItemWalker.previousElement();
     }
   }
-  return [navigate, rootRef] as const;
+  function navigate(data: TreeNavigationData_unstable) {
+    const nextElement = getNextElement(data);
+    if (nextElement) {
+      rove(nextElement);
+    }
+  }
+  return [navigate, useMergedRefs(treeItemWalkerRootRef, rovingRootRef)] as const;
 }
 
-function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker) {
+function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLElement | null {
   const nextElement = treeWalker.nextElement();
   if (!nextElement) {
-    return;
+    return null;
   }
   const nextElementAriaPosInSet = nextElement.getAttribute('aria-posinset');
   const nextElementAriaLevel = nextElement.getAttribute('aria-level');
@@ -55,10 +66,14 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker) {
   return null;
 }
 
-function parentElement(references: TreeItemPropsReferences, target: HTMLElement) {
-  const treeItemPropsRef = references.get(target.id);
-  if (treeItemPropsRef && treeItemPropsRef.parentId) {
-    return document.getElementById(treeItemPropsRef.parentId);
+function parentElement(
+  flatTree: Pick<TreeItemPropsReferences, 'get'>,
+  target: HTMLElement,
+  targetDocument: Document,
+): HTMLElement | null {
+  const item = flatTree.get(target.id);
+  if (item && item.parentId) {
+    return targetDocument.getElementById(item.parentId);
   }
   return null;
 }

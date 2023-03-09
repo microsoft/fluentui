@@ -168,6 +168,10 @@ export type TreeItemState = ComponentState<TreeItemSlots> & {
 
 // @public (undocumented)
 export type TreeNavigationData_unstable = {
+    event: React_2.MouseEvent<HTMLElement>;
+    target: HTMLElement;
+    type: 'Click';
+} | {
     event: React_2.KeyboardEvent<HTMLElement>;
     target: HTMLElement;
     type: 'TypeAhead';

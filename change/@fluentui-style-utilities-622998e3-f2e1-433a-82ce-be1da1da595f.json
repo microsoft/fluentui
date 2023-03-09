@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated FabricCDN url to latest version",
-  "packageName": "@fluentui/style-utilities",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

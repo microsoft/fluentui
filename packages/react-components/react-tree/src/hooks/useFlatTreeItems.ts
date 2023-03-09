@@ -79,8 +79,13 @@ export function useFlatTreeItems_unstable(
   );
 
   return [
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    { ref: treeRef, openItems, onOpenChange: handleOpenChange, onNavigation_unstable: handleNavigation },
+    {
+      ref: treeRef as React.Ref<HTMLDivElement>,
+      openItems,
+      onOpenChange: handleOpenChange,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      onNavigation_unstable: handleNavigation,
+    },
     lazyFlatTreeItems,
   ];
 }
