@@ -611,7 +611,7 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
-          node: './lib-commonjs/unstable/index.js',
+          ...(packageJson.main ? { node: './lib-commonjs/unstable/index.js' } : null),
           ...(packageJson.module ? { import: './lib/unstable/index.js' } : null),
           require: './lib-commonjs/unstable/index.js',
         },
