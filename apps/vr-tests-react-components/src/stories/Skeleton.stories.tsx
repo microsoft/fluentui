@@ -5,11 +5,19 @@ import { TestWrapperDecoratorPauseAnimation } from '../utilities/TestWrapperDeco
 
 storiesOf('Skeleton converged', module)
   .addDecorator(TestWrapperDecoratorPauseAnimation)
-  .addStory('Opaque Skeleton with rectangle', () => <Skeleton className="test-class" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-    includeRtl: true,
-  })
+  .addStory(
+    'Opaque Skeleton with rectangle',
+    () => (
+      <Skeleton className="test-class">
+        <SkeletonItem size={96} />
+      </Skeleton>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+      includeRtl: true,
+    },
+  )
   .addStory(
     'Opaque Skeleton with circle',
     () => (
@@ -36,11 +44,19 @@ storiesOf('Skeleton converged', module)
       includeRtl: true,
     },
   )
-  .addStory('Translucent Skeleton with rectangle', () => <Skeleton className="test-class" appearance="translucent" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-    includeRtl: true,
-  })
+  .addStory(
+    'Translucent Skeleton with rectangle',
+    () => (
+      <Skeleton className="test-class" appearance="translucent">
+        <SkeletonItem size={96} />
+      </Skeleton>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+      includeRtl: true,
+    },
+  )
   .addStory(
     'Translucent Skeleton with  circle',
     () => (
