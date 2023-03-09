@@ -4,6 +4,8 @@ const { findRepoDeps } = require('@fluentui/scripts-monorepo');
 const { findConfig, merge } = require('@fluentui/scripts-utils');
 const fs = require('fs-extra');
 
+const isCI = Boolean(process.env.TF_BUILD);
+
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);
 
@@ -78,6 +80,8 @@ const createConfig = (customConfig = {}) => {
       url: 'http://localhost',
     },
     testEnvironment: 'jsdom',
+
+    ...(isCI ? { maxWorkers: 4 } : null),
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   };

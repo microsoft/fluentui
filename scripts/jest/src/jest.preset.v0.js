@@ -1,5 +1,7 @@
 const { getLernaAliases, workspaceRoot } = require('@fluentui/scripts-monorepo');
 
+const isCI = Boolean(process.env.TF_BUILD);
+
 // northstar packages should pull these from npm, not the repo
 const excludedPackages = ['@fluentui/dom-utilities'];
 
@@ -16,6 +18,7 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   verbose: false,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   testEnvironment: 'jsdom',
+  ...(isCI ? { maxWorkers: 4 } : null),
   ...customConfig,
   moduleNameMapper: {
     ...getLernaAliases({
