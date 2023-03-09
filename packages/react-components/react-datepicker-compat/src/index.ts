@@ -4,7 +4,12 @@ export type { CalendarNavigationIcons, CalendarProps, CalendarStyleProps, Calend
 export { CalendarDay, useCalendarDayStyles_unstable } from './CalendarDay';
 export type { CalendarDayProps, CalendarDayStyleProps, CalendarDayStyles, ICalendarDay } from './CalendarDay';
 
-export { CalendarDayGrid, useCalendarDayGridStyles_unstable } from './CalendarDayGrid';
+export {
+  CalendarDayGrid,
+  calendarDayGridClassNames,
+  extraCalendarDayGridClassNames,
+  useCalendarDayGridStyles_unstable,
+} from './CalendarDayGrid';
 export type {
   CalendarDayGridProps,
   CalendarDayGridStyleProps,
