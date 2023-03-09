@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - `Datepicker`: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))
+- `SplitButton`: should display correctly in high contrast mode @ling1726 ([#27137](https://github.com/microsoft/fluentui/pull/27137))
 
 <!--------------------------------[ v0.66.3 ]------------------------------- -->
 ## [v0.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.3) (2023-02-27)
