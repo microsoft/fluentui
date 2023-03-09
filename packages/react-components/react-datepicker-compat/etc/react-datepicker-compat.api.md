@@ -52,6 +52,9 @@ export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
 export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
 
 // @public (undocumented)
+export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles>;
+
+// @public (undocumented)
 export interface CalendarDayGridProps extends DayGridOptions {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
@@ -489,6 +492,12 @@ export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
 export const defaultDatePickerStrings: DatePickerStrings;
+
+// @public (undocumented)
+export const extraCalendarDayGridClassNames: {
+    hoverStyle: string;
+    pressedStyle: string;
+};
 
 // @public
 export enum FirstWeekOfYear {
