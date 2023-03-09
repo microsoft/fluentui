@@ -1,4 +1,4 @@
-import { attr, observable } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { TabData } from '../index.js';
 
@@ -33,15 +33,16 @@ export class Tab extends FASTTab {
     }
     // this is the active tab
     if (this.dataset.activeTab && this.dataset.selected === 'true') {
-      this.animateTab();
       this.syncTabPositions();
-    }
-  }
-
-  private animateTab() {
-    if (this._offsetX === 0 && this._scale === 1) {
-      this.setTabOffsetCSS();
       this.setTabScaleCSS();
+      this.setTabOffsetCSS();
+
+      // this set timeout should not be here
+      setTimeout(() => {
+        this.syncTabPositions();
+        this.setTabScaleCSS(1);
+        this.setTabOffsetCSS(0, 0);
+      }, 22);
     }
   }
 
@@ -68,7 +69,6 @@ export class Tab extends FASTTab {
     if (this['aria-selected'] === 'true' && this.parentElement) {
       return this.getBoundingClientRect().x - this.parentElement.getBoundingClientRect()?.x;
     }
-    // if not selected return previous x
     return this.getPreviousSelectedTabPositionX();
   }
 
@@ -76,14 +76,14 @@ export class Tab extends FASTTab {
     if (this['aria-selected'] === 'true') {
       return this.getBoundingClientRect().width;
     }
-    // if not selected return previous width
     return this.getPreviousTabWidth();
   }
 
   private setTabOffsetCSS(x?: number, y?: number) {
+    const hasXandY = typeof x === 'number' && typeof y === 'number';
     document.documentElement.style.setProperty(
       TAB_TOKEN_NAMES.tabIndicatorOffset,
-      `${x && y ? x - y : this._offsetX}px`,
+      `${hasXandY ? x - y : this._offsetX}px`,
     );
   }
 
