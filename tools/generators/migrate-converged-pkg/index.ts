@@ -396,7 +396,7 @@ const templates = {
   swcConfig: () => {
     return {
       $schema: 'https://json.schemastore.org/swcrc',
-      env: { targets: { chrome: '84', edge: '84', firefox: '75', opera: '73', safari: '14.1' } },
+      env: { targets: { chrome: '84', edge: '84', firefox: '75', opera: '73', safari: '14.1' }, bugfixes: true },
       exclude: [
         '/testing',
         '/**/*.cy.ts',
@@ -413,8 +413,12 @@ const templates = {
           decorators: false,
           dynamicImport: false,
         },
-        target: 'es2019',
         externalHelpers: true,
+        transform: {
+          react: {
+            useBuiltins: true,
+          },
+        },
       },
       minify: false,
       sourceMaps: true,

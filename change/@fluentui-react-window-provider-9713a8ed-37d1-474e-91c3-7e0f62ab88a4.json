@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add explicit children to window provider to ensure react 18 type compat",
+  "packageName": "@fluentui/react-window-provider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
