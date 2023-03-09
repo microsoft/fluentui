@@ -1,7 +1,7 @@
-export { AnimationDirection, Calendar, useCalendarStyles_unstable } from './Calendar';
+export { AnimationDirection, Calendar, calendarClassNames, useCalendarStyles_unstable } from './Calendar';
 export type { CalendarNavigationIcons, CalendarProps, CalendarStyleProps, CalendarStyles, ICalendar } from './Calendar';
 
-export { CalendarDay, useCalendarDayStyles_unstable } from './CalendarDay';
+export { CalendarDay, calendarDayClassNames, useCalendarDayStyles_unstable } from './CalendarDay';
 export type { CalendarDayProps, CalendarDayStyleProps, CalendarDayStyles, ICalendarDay } from './CalendarDay';
 
 export {
@@ -19,10 +19,10 @@ export type {
   WeekCorners,
 } from './CalendarDayGrid';
 
-export { CalendarMonth, useCalendarMonthStyles_unstable } from './CalendarMonth';
+export { CalendarMonth, calendarMonthClassNames, useCalendarMonthStyles_unstable } from './CalendarMonth';
 export type { CalendarMonthProps, CalendarMonthStyleProps, CalendarMonthStyles, ICalendarMonth } from './CalendarMonth';
 
-export { useCalendarPickerStyles_unstable } from './CalendarPicker';
+export { calendarPickerClassNames, useCalendarPickerStyles_unstable } from './CalendarPicker';
 export type { CalendarPickerStyleProps, CalendarPickerStyles } from './CalendarPicker';
 
 export { CalendarYear, useCalendarYearStyles_unstable } from './CalendarYear';
@@ -39,6 +39,7 @@ export type {
 
 export {
   DatePicker,
+  datePickerClassNames,
   defaultDatePickerStrings,
   renderDatePicker_unstable,
   useDatePicker_unstable,

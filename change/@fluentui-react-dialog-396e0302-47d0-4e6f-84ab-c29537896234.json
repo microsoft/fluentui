@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adding calls to custom style hooks derived from context.",
+  "packageName": "@fluentui/react-dialog",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
