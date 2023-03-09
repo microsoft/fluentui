@@ -73,7 +73,8 @@ const createConfig = (customConfig = {}) => {
 
     globals: {
       'ts-jest': {
-        diagnostics: false,
+        /** https://kulshekhar.github.io/ts-jest/docs/28.0/getting-started/options/isolatedModules */
+        isolatedModules: true,
       },
     },
     testEnvironmentOptions: {
