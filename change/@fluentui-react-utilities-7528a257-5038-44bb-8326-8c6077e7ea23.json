@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ResolveShorthandOptions type to better reflect implementation",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

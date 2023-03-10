@@ -40,7 +40,13 @@ export enum AnimationDirection {
 export const Calendar: React_2.FunctionComponent<CalendarProps>;
 
 // @public (undocumented)
+export const calendarClassNames: SlotClassNames<CalendarStyles>;
+
+// @public (undocumented)
 export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
+
+// @public (undocumented)
+export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
 
 // @public (undocumented)
 export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
@@ -148,6 +154,9 @@ export interface CalendarDayStyles {
 export const CalendarMonth: React_2.FunctionComponent<CalendarMonthProps>;
 
 // @public (undocumented)
+export const calendarMonthClassNames: SlotClassNames<CalendarMonthSlots>;
+
+// @public (undocumented)
 export interface CalendarMonthProps {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
@@ -183,6 +192,9 @@ export interface CalendarNavigationIcons {
     leftNavigation?: string;
     rightNavigation?: string;
 }
+
+// @public (undocumented)
+export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles>;
 
 // @public (undocumented)
 export interface CalendarPickerStyleProps {
@@ -385,6 +397,9 @@ export interface DateGridStrings {
 
 // @public (undocumented)
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
+
+// @public (undocumented)
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string>;
 
 // @public (undocumented)
 export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {

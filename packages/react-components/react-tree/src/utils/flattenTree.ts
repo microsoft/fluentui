@@ -1,4 +1,4 @@
-import { FlatTreeItem } from '../hooks/useFlatTreeItems';
+import { FlatTreeItemProps } from '../hooks/useFlatTree';
 import { TreeItemProps } from '../TreeItem';
 
 export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
@@ -8,11 +8,15 @@ export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
 let count = 1;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-function flattenTreeRecursive_unstable(items: NestedTreeItem[], parent?: FlatTreeItem, level = 1): FlatTreeItem[] {
-  const flatTreeItems: FlatTreeItem[] = [];
+function flattenTreeRecursive_unstable(
+  items: NestedTreeItem[],
+  parent?: FlatTreeItemProps,
+  level = 1,
+): FlatTreeItemProps[] {
+  const flatTreeItems: FlatTreeItemProps[] = [];
   for (let index = 0; index < items.length; index++) {
     const { subtree, ...item } = items[index];
-    const flatTreeItem: FlatTreeItem = {
+    const flatTreeItem: FlatTreeItemProps = {
       'aria-level': level,
       'aria-posinset': index + 1,
       'aria-setsize': items.length,
@@ -33,4 +37,4 @@ function flattenTreeRecursive_unstable(items: NestedTreeItem[], parent?: FlatTre
  * Converts a nested structure to a flat one which can be consumed by `useFlatTreeItems`
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[] = flattenTreeRecursive_unstable;
+export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProps[] = flattenTreeRecursive_unstable;
