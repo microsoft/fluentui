@@ -2,6 +2,27 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 13 Mar 2023 08:58:25 GMT",
+      "tag": "@fluentui/react-positioning_v9.5.3",
+      "version": "9.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.7.0",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:14:00 GMT",
       "tag": "@fluentui/react-positioning_v9.5.2",
       "version": "9.5.2",
