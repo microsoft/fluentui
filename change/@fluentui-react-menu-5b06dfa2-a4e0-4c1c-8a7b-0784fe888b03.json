@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Menu trigger should be focused when menu is closed with keyboard",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

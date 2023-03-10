@@ -9,12 +9,18 @@ import { SpinButtonSuffixExample } from './SpinButton.Suffix.Example';
 import { SpinButtonTopPositionExample } from './SpinButton.TopPosition.Example';
 import { SpinButtonControlledExample } from './SpinButton.Controlled.Example';
 
-const SpinButtonBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Basic.Example.tsx') as string;
-const SpinButtonCustomStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.CustomStyled.Example.tsx') as string;
-const SpinButtonIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Icon.Example.tsx') as string;
-const SpinButtonSuffixExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Suffix.Example.tsx') as string;
-const SpinButtonTopPositionExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.TopPosition.Example.tsx') as string;
-const SpinButtonControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Controlled.Example.tsx') as string;
+const SpinButtonBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Basic.Example.tsx') as string;
+const SpinButtonCustomStyledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.CustomStyled.Example.tsx') as string;
+const SpinButtonIconExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Icon.Example.tsx') as string;
+const SpinButtonSuffixExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Suffix.Example.tsx') as string;
+const SpinButtonTopPositionExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.TopPosition.Example.tsx') as string;
+const SpinButtonControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SpinButton/SpinButton.Controlled.Example.tsx') as string;
 
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',

@@ -2,10 +2,10 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { render, fireEvent } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
 import { MenuListProvider } from '../../contexts/menuListContext';
-import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 import type { MenuListContextValue } from '../../contexts/menuListContext';
 import type { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 

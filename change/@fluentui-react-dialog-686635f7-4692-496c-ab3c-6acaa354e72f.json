@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: improves DialogTrigger types",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

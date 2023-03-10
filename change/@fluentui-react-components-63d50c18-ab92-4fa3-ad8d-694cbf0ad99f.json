@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add a bundle size fixture (Button, Provider & theme)",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

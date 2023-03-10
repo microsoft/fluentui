@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
 
 export const tableHeaderCellClassName = 'fui-TableHeaderCell';
@@ -8,6 +9,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
   root: 'fui-TableHeaderCell',
   button: 'fui-TableHeaderCell__button',
   sortIcon: 'fui-TableHeaderCell__sortIcon',
+  aside: 'fui-TableHeaderCell__aside',
 };
 
 const useTableLayoutStyles = makeStyles({
@@ -31,6 +33,23 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus-within', enableOutline: true },
+    ),
+    position: 'relative',
+  },
+
+  rootInteractive: {
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundHover,
+    },
+    ':active': {
+      backgroundColor: tokens.colorSubtleBackgroundPressed,
+    },
   },
 
   resetButton: {
@@ -47,6 +66,7 @@ const useStyles = makeStyles({
     WebkitAppearance: 'button',
     textAlign: 'unset',
   },
+
   button: {
     position: 'relative',
     width: '100%',
@@ -54,10 +74,12 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    minHeight: '44px',
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+    minHeight: '32px',
     ...shorthands.flex(1, 1, '0px'),
+    outlineStyle: 'none',
   },
+
   sortable: {
     cursor: 'pointer',
   },
@@ -65,7 +87,10 @@ const useStyles = makeStyles({
   sortIcon: {
     display: 'flex',
     alignItems: 'center',
+    paddingTop: tokens.spacingVerticalXXS,
   },
+
+  resizeHandle: {},
 });
 
 /**
@@ -80,6 +105,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
   state.root.className = mergeClasses(
     tableHeaderCellClassNames.root,
     styles.root,
+    state.sortable && styles.rootInteractive,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
@@ -97,6 +123,10 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
       styles.sortIcon,
       state.sortIcon.className,
     );
+  }
+
+  if (state.aside) {
+    state.aside.className = mergeClasses(tableHeaderCellClassNames.aside, styles.resizeHandle, state.aside.className);
   }
 
   return state;

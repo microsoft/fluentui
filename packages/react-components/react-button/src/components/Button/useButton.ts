@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useButtonContext } from '../../contexts/ButtonContext';
 import type { ButtonProps, ButtonState } from './Button.types';
 
 /**
@@ -12,6 +13,7 @@ export const useButton_unstable = (
   props: ButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ButtonState => {
+  const { size: contextSize } = useButtonContext();
   const {
     appearance = 'secondary',
     as = 'button',
@@ -20,7 +22,7 @@ export const useButton_unstable = (
     icon,
     iconPosition = 'before',
     shape = 'rounded',
-    size = 'medium',
+    size = contextSize ?? 'medium',
   } = props;
   const iconShorthand = resolveShorthand(icon);
 

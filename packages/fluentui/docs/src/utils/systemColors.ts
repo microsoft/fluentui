@@ -9,6 +9,6 @@ export const systemColors = [
   'ButtonFace',
 ] as const;
 
-export const isSystemColor = (color: string): color is typeof systemColors[number] => {
-  return systemColors.includes(color as typeof systemColors[number]);
+export const isSystemColor = (color: string): color is (typeof systemColors)[number] => {
+  return systemColors.includes(color as (typeof systemColors)[number]);
 };

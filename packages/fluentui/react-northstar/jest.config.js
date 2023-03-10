@@ -1,4 +1,4 @@
-const commonConfig = require('@fluentui/scripts/jest');
+const { createV0Config: commonConfig } = require('@fluentui/scripts-jest');
 
 const config = commonConfig({
   name: 'react',

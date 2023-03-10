@@ -8,10 +8,12 @@ jest.mock('@fluentui/priority-overflow');
 const mockOverflowManager = (options: Partial<OverflowManager> = {}) => {
   const defaultMock: OverflowManager = {
     addItem: jest.fn(),
+    addOverflowMenu: jest.fn(),
     disconnect: jest.fn(),
     forceUpdate: jest.fn(),
     observe: jest.fn(),
     removeItem: jest.fn(),
+    removeOverflowMenu: jest.fn(),
     update: jest.fn(),
   };
   (createOverflowManager as jest.Mock).mockReturnValue({

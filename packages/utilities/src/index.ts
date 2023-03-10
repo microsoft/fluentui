@@ -8,6 +8,7 @@ export {
 } from './BaseComponent';
 export type { IBaseProps } from './BaseComponent.types';
 export { DelayedRender } from './DelayedRender';
+export type { IReactProps } from './React.types';
 export type { IDelayedRenderProps, IDelayedRenderState } from './DelayedRender';
 export { EventGroup } from './EventGroup';
 export type { IDeclaredEventsByName, IEventRecord, IEventRecordList, IEventRecordsByName } from './EventGroup';

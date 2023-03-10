@@ -15,7 +15,7 @@ import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.ty
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, modalType = 'modal', onOpenChange } = props;
+  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -49,12 +49,12 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     components: {
       backdrop: 'div',
     },
+    inertTrapFocus,
     open,
     modalType,
     content: open ? content : null,
     trigger,
     requestOpenChange,
-    dialogContentId: useId('dialog-content-'),
     dialogTitleId: useId('dialog-title-'),
     isNestedDialog: useHasParentContext(DialogContext),
     dialogRef: focusRef,

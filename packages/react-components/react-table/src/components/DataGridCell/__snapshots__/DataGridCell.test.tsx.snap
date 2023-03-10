@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataGridCell renders a default state 1`] = `
+<div>
+  <div
+    class="fui-DataGridCell fui-TableCell"
+    role="gridcell"
+  >
+    Default DataGridCell
+  </div>
+</div>
+`;

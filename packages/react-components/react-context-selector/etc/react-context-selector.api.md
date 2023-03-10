@@ -12,7 +12,7 @@ export type Context<Value> = React_2.Context<Value> & {
     Consumer: never;
 };
 
-// @internal (undocumented)
+// @public (undocumented)
 export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedValue;
 
 // @internal (undocumented)

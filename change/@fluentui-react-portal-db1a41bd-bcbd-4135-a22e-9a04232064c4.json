@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Update docs and prep for addition to react-components package",
-  "packageName": "@fluentui/react-portal",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

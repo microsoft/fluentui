@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: export contexts from react-combobox",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

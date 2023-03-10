@@ -22,8 +22,8 @@ const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props 
   }
   return (
     <Page
-      subTitle={getSubTitle(props.platform)}
-      jsonDocs={jsonDocs}
+      subTitle={getSubTitle(props.platform!)}
+      jsonDocs={jsonDocs!}
       {...props}
       versionSwitcherDefinition={
         props.platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined

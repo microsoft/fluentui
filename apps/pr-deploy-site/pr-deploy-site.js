@@ -92,7 +92,9 @@ if (hrefMatch) {
     link.href = repoUrl + '/tree/' + hrefMatch[2];
     // remove the PR-specific explanation
     var prExplanation = document.getElementById('prExplanation');
-    prExplanation.parentElement.removeChild(prExplanation);
+    if (prExplanation && prExplanation.parentElement) {
+      prExplanation.parentElement.removeChild(prExplanation);
+    }
   } else {
     // PR
     // eslint-disable-next-line @microsoft/sdl/no-inner-html -- Only used during PR publish, not production code.
@@ -118,6 +120,8 @@ siteInfo.forEach(function (info) {
       info.title +
       '</a>';
 
-    siteLink.appendChild(li);
+    if (siteLink) {
+      siteLink.appendChild(li);
+    }
   }
 });

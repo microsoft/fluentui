@@ -1,9 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  SURFACE_BORDER_RADIUS,
   SURFACE_BORDER_WIDTH,
   SURFACE_PADDING,
   useDialogContext_unstable,
@@ -19,6 +19,7 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
+  focusOutline: createFocusOutlineStyle(),
   root: {
     display: 'block',
     userSelect: 'unset',
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
     ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
-    ...shorthands.borderRadius(SURFACE_BORDER_RADIUS),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
     },
@@ -72,6 +73,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   state.root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     styles.root,
+    styles.focusOutline,
     isNestedDialog && styles.nestedNativeDialogBackdrop,
     state.root.className,
   );

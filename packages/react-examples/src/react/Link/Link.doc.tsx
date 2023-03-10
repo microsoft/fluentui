@@ -3,7 +3,8 @@ import { LinkBasicExample } from './Link.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const LinkBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Link/Link.Basic.Example.tsx') as string;
+const LinkBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Link/Link.Basic.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',

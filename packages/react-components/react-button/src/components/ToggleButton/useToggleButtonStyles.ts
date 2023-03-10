@@ -12,7 +12,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-const useCheckedStyles = makeStyles({
+const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
@@ -62,18 +62,16 @@ const useCheckedStyles = makeStyles({
       },
 
       ':focus': {
-        ...shorthands.borderColor('Highlight'),
+        ...shorthands.border('1px', 'solid', 'HighlightText'),
+        outlineColor: 'Highlight',
       },
     },
   },
-  highContrastFocusStyles: createCustomFocusIndicatorStyle({
-    ...shorthands.border('1px', 'solid', 'HighlightText'),
-    outlineColor: 'Highlight',
-  }),
 
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
@@ -144,7 +142,7 @@ const useCheckedStyles = makeStyles({
   },
 });
 
-const useDisabledStyles = makeStyles({
+const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -212,39 +210,60 @@ const useDisabledStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
+const useIconCheckedStyles = makeStyles({
   // Appearance variations
-  subtle: {
+  subtleOrTransparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
+  },
+});
 
-    ':hover': {
-      color: tokens.colorNeutralForeground2BrandHover,
+const usePrimaryHighContrastStyles = makeStyles({
+  // Do not use primary variant high contrast styles for toggle buttons
+  // otherwise there isn't enough difference between on/off states
+  base: {
+    '@media (forced-colors: active)': {
+      backgroundColor: 'ButtonFace',
+      ...shorthands.borderColor('ButtonBorder'),
+      color: 'ButtonText',
+      forcedColorAdjust: 'auto',
     },
+  },
 
-    ':hover:active': {
-      color: tokens.colorNeutralForeground2BrandPressed,
+  disabled: {
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+      color: 'GrayText',
+
+      ':focus': {
+        ...shorthands.borderColor('GrayText'),
+      },
     },
   },
 });
 
 export const useToggleButtonStyles_unstable = (state: ToggleButtonState): ToggleButtonState => {
-  const checkedStyles = useCheckedStyles();
-  const disabledStyles = useDisabledStyles();
-  const iconStyles = useIconStyles();
+  const rootCheckedStyles = useRootCheckedStyles();
+  const rootDisabledStyles = useRootDisabledStyles();
+  const iconCheckedStyles = useIconCheckedStyles();
+  const primaryHighContrastStyles = usePrimaryHighContrastStyles();
 
   const { appearance, checked, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
     toggleButtonClassNames.root,
 
+    // Primary high contrast styles
+    appearance === 'primary' && primaryHighContrastStyles.base,
+    appearance === 'primary' && (disabled || disabledFocusable) && primaryHighContrastStyles.disabled,
+
     // Checked styles
-    checked && checkedStyles.base,
-    checked && checkedStyles.highContrast,
-    appearance && checked && checkedStyles[appearance],
+    checked && rootCheckedStyles.base,
+    checked && rootCheckedStyles.highContrast,
+    appearance && checked && rootCheckedStyles[appearance],
 
     // Disabled styles
-    (disabled || disabledFocusable) && disabledStyles.base,
-    appearance && (disabled || disabledFocusable) && disabledStyles[appearance],
+    (disabled || disabledFocusable) && rootDisabledStyles.base,
+    appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // User provided class name
     state.root.className,
@@ -253,7 +272,7 @@ export const useToggleButtonStyles_unstable = (state: ToggleButtonState): Toggle
   if (state.icon) {
     state.icon.className = mergeClasses(
       toggleButtonClassNames.icon,
-      appearance === 'subtle' && iconStyles.subtle,
+      (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       state.icon.className,
     );
   }

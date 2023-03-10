@@ -1,1 +1,0 @@
-RadioGroup lets people select a single option from two or more choices. Use RadioGroup to present all available choices if there's enough space. For more than 5 choices, consider using a different component such as Dropdown.

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: improves PopoverTrigger types",
-  "packageName": "@fluentui/react-popover",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

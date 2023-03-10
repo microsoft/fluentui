@@ -10,5 +10,6 @@
  */
 
 import { withFluentProvider } from '../decorators/withFluentProvider';
+import { withReactStrictMode } from '../decorators/withReactStrictMode';
 
-export const decorators = [withFluentProvider];
+export const decorators = [withFluentProvider, withReactStrictMode];

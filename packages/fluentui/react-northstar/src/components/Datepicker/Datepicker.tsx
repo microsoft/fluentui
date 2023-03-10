@@ -148,7 +148,7 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
  * @accessibilityIssues
  * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
-export const Datepicker = (React.forwardRef<HTMLDivElement, DatepickerProps>((props, ref) => {
+export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
@@ -170,7 +170,6 @@ export const Datepicker = (React.forwardRef<HTMLDivElement, DatepickerProps>((pr
     isRequiredErrorMessage: props.isRequiredErrorMessage,
     invalidInputErrorMessage: props.invalidInputErrorMessage,
     isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
-    goToToday: props.goToToday,
     openCalendarTitle: props.openCalendarTitle,
     inputPlaceholder: props.inputPlaceholder,
     prevMonthAriaLabel: props.prevMonthAriaLabel,
@@ -426,7 +425,7 @@ export const Datepicker = (React.forwardRef<HTMLDivElement, DatepickerProps>((pr
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DatepickerProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerProps> &
   FluentComponentStaticProps<DatepickerProps> & {
     Calendar: typeof DatepickerCalendar;
     CalendarHeader: typeof DatepickerCalendarHeader;
@@ -489,7 +488,6 @@ Datepicker.propTypes = {
   isRequiredErrorMessage: PropTypes.string,
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
-  goToToday: PropTypes.string,
   openCalendarTitle: PropTypes.string,
   inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,

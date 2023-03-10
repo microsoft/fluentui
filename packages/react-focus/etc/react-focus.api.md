@@ -48,7 +48,7 @@ export const FocusZoneTabbableElements: {
 };
 
 // @public (undocumented)
-export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+export type FocusZoneTabbableElements = (typeof FocusZoneTabbableElements)[keyof typeof FocusZoneTabbableElements];
 
 // @public
 export interface IFocusZone {

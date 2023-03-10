@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: add ScrollIntoView hook for Listbox options",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

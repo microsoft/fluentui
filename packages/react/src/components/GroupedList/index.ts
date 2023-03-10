@@ -11,4 +11,6 @@ export type { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderCheckboxPr
 export type { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types';
 export type { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 
-export { GroupedListV2_unstable } from './GroupedListV2';
+export * from './GroupedListV2';
+export * from './GroupedListV2.base';
+export * from './GroupedListV2.types';

@@ -12,10 +12,10 @@ const menuContextDefaultValue: MenuContextValue = {
   setOpen: () => false,
   checkedValues: {},
   onCheckedValueChange: () => null,
-  defaultCheckedValues: {},
   isSubmenu: false,
-  triggerRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
-  menuPopoverRef: ({ current: null } as unknown) as React.MutableRefObject<HTMLElement>,
+  triggerRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
+  menuPopoverRef: { current: null } as unknown as React.MutableRefObject<HTMLElement>,
+  mountNode: null,
   triggerId: '',
   openOnContext: false,
   openOnHover: false,
@@ -38,6 +38,7 @@ export type MenuContextValue = Pick<
   | 'menuPopoverRef'
   | 'setOpen'
   | 'isSubmenu'
+  | 'mountNode'
   | 'triggerId'
   | 'hasIcons'
   | 'hasCheckmarks'
@@ -45,10 +46,15 @@ export type MenuContextValue = Pick<
   | 'inline'
   | 'checkedValues'
   | 'onCheckedValueChange'
-  | 'defaultCheckedValues'
 > & {
   open: boolean;
   triggerId: string;
+  /**
+   * Default values to be checked on mount
+   * @deprecated this property is not used internally anymore,
+   * the signature remains just to avoid breaking changes
+   */
+  defaultCheckedValues?: Record<string, string[]>;
 };
 
 export const MenuProvider = MenuContext.Provider;

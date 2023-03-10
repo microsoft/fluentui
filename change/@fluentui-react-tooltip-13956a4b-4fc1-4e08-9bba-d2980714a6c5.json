@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: improves Tooltip types",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

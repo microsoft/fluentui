@@ -6,7 +6,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -23,7 +22,7 @@ export type OnVisibleChangeData = {
 export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 
 // @public
-export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
+export const Tooltip: React_2.FC<TooltipProps>;
 
 // @public (undocumented)
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;

@@ -1,13 +1,18 @@
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { registerTsPaths, createPathAliasesConfig, rules } from '@fluentui/scripts-storybook';
 import { configurePages } from './pageConfig.js';
 import { configureGriffel } from './griffelConfig.js';
 import * as WebpackDevServer from 'webpack-dev-server';
 import { GriffelMode } from '../scripts/utils/types';
 
+const enabledReactProfiling = true;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const { tsConfigAllPath } = createPathAliasesConfig();
 
 type WebpackArgs = {
   mode: 'production' | 'development' | 'none';
@@ -27,46 +32,63 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
     output: {
       filename: '[name].[contenthash].bundle.js',
       sourceMapFilename: '[name].[contenthash].map',
-      path: path.resolve(path.dirname(__dirname), 'dist'),
+      path: path.resolve(path.dirname(__dirname), !isProd ? 'dev-build' : 'dist'),
     },
     devtool: 'source-map',
     resolve: {
+      alias: {
+        'react-dom$': 'react-dom/profiling',
+        'scheduler/tracing': 'scheduler/tracing-profiling',
+      },
       extensions: ['.tsx', '.ts', '.js'],
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
-        }),
-      ],
     },
     module: {
       rules: [
+        rules.scssRule,
         {
           test: /\.(ts|tsx)?$/,
           exclude: /node_modules/,
-          oneOf: [
-            {
-              // Match Web Component files
-              // Not sure why babel-loader isn't working but
-              // the FAST docs use ts-loader and it "just works"
-              // so let's roll with it for now.
-              include: /\.wc\.(ts|tsx)?$/,
-              use: 'ts-loader',
+          use: {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                target: 'es2019',
+                parser: {
+                  syntax: 'typescript',
+                  tsx: true,
+                  decorators: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  decoratorMetadata: true,
+                  legacyDecorator: true,
+                },
+                keepClassNames: true,
+                externalHelpers: true,
+                loose: true,
+              },
             },
-            {
-              use: 'swc-loader',
-            },
-          ],
+          },
         },
       ],
     },
     plugins: [new CleanWebpackPlugin()],
 
     optimization: {
+      minimize: isProd,
       splitChunks: {
         chunks: 'all',
       },
     },
   };
+
+  if (enabledReactProfiling) {
+    config.resolve!.alias = {
+      ...config.resolve!.alias,
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
+    };
+  }
 
   if (!isProd) {
     config.devServer = {
@@ -79,6 +101,8 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
 
   config = configureGriffel(config, argv.griffelMode);
   config = configurePages(config);
+
+  registerTsPaths({ config, configFile: tsConfigAllPath });
 
   return config;
 };

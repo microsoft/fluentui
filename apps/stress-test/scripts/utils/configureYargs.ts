@@ -7,11 +7,11 @@ type CongfigureYargs = (command: string, y: yargs.Argv) => yargs.Argv;
 
 const cliOptions = {
   scenario: {
-    describe: 'Scenario to run',
+    describe: 'Name applied to scenario that is about to be run',
     demand: true,
   },
   'test-cases': {
-    describe: 'List of test cases to run for the scenario. E.g., test1 test2',
+    describe: 'List of test cases to run for the scenario. E.g., mount inject-styles',
   },
   sizes: {
     describe: 'Sizes of each test case.',
@@ -44,9 +44,6 @@ const cliOptions = {
   'griffel-mode': {
     describe: 'Optimization mode for Griffel.',
     default: 'buildtime',
-  },
-  renderers: {
-    describe: 'Renderers to use for testing. This determines what is actually tested.',
   },
   'test-options': {
     describe: 'Options to apply to each test. E.g., option1=value1 option2=value2',
@@ -164,7 +161,6 @@ const configureYargs: CongfigureYargs = (command, y) => {
         targets,
         'test-options': testOptions,
         port,
-        renderers,
       } = cliOptions;
       configure(y, {
         scenario,
@@ -175,7 +171,6 @@ const configureYargs: CongfigureYargs = (command, y) => {
         targets,
         'test-options': testOptions,
         port,
-        renderers,
       });
       break;
     }
@@ -192,7 +187,6 @@ const configureYargs: CongfigureYargs = (command, y) => {
         'process-results': processResults,
         port,
         root,
-        renderers,
       } = cliOptions;
       configure(y, {
         scenario,
@@ -205,7 +199,6 @@ const configureYargs: CongfigureYargs = (command, y) => {
         'process-results': processResults,
         port,
         root,
-        renderers,
       });
       break;
     }

@@ -29,7 +29,7 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     borderCollapse: 'collapse',
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorSubtleBackground,
   },
 });
 

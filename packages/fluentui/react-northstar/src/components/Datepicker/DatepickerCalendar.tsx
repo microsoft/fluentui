@@ -99,7 +99,7 @@ const normalizeDateInGrid = (date: Date): Date => {
 /**
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
-export const DatepickerCalendar = (React.forwardRef<HTMLDivElement, DatepickerCalendarProps>((props, ref) => {
+export const DatepickerCalendar = React.forwardRef<HTMLDivElement, DatepickerCalendarProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
   setStart();
@@ -431,7 +431,7 @@ export const DatepickerCalendar = (React.forwardRef<HTMLDivElement, DatepickerCa
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarProps> &
   FluentComponentStaticProps<DatepickerCalendarProps>;
 
 DatepickerCalendar.displayName = 'DatepickerCalendar';
@@ -476,7 +476,6 @@ DatepickerCalendar.propTypes = {
   isRequiredErrorMessage: PropTypes.string,
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
-  goToToday: PropTypes.string,
   openCalendarTitle: PropTypes.string,
   inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,

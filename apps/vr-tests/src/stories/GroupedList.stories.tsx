@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/index';
 import { GroupedList } from '@fluentui/react';
@@ -88,8 +88,8 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
 storiesOf('GroupedList', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-GroupHeader-expand')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -99,7 +99,7 @@ storiesOf('GroupedList', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',

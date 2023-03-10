@@ -1,6 +1,6 @@
 # @fluentui/react-shared-contexts
 
-**Shared contexts for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Shared contexts for [Fluent UI React](https://react.fluentui.dev)**
 
 This package includes a number of exported React Contexts that are shared by Fluent UI components.
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: restricts trigger API types",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

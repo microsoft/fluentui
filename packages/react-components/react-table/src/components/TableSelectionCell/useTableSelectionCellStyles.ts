@@ -1,6 +1,10 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TableSelectionCellSlots, TableSelectionCellState } from './TableSelectionCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
+
+export const CELL_WIDTH = 44;
 
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
   root: 'fui-TableSelectionCell',
@@ -11,7 +15,7 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
 const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-cell',
-    width: '44px',
+    width: `${CELL_WIDTH}px`,
   },
 });
 
@@ -19,8 +23,8 @@ const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
     ...shorthands.flex(1, 1, '0px'),
-    minWidth: '44px',
-    maxWidth: '44px',
+    minWidth: `${CELL_WIDTH}px`,
+    maxWidth: `${CELL_WIDTH}px`,
     justifyContent: 'center',
   },
 });
@@ -33,6 +37,13 @@ const useStyles = makeStyles({
     textAlign: 'center',
     whiteSpace: 'nowrap',
     ...shorthands.padding(0),
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus', enableOutline: true },
+    ),
   },
 
   radioIndicator: {
@@ -40,10 +51,16 @@ const useStyles = makeStyles({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    '& svg': {
-      width: '16px',
-      height: '16px',
-    },
+  },
+
+  subtle: {
+    opacity: 0,
+    ...createCustomFocusIndicatorStyle(
+      {
+        opacity: 1,
+      },
+      { selector: 'focus-within' },
+    ),
   },
 
   hidden: {
@@ -64,6 +81,8 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     tableSelectionCellClassNames.root,
     styles.root,
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
+    state.subtle && state.checked === false && styles.subtle,
+    state.hidden && styles.hidden,
     state.root.className,
   );
   if (state.checkboxIndicator) {
@@ -77,7 +96,6 @@ export const useTableSelectionCellStyles_unstable = (state: TableSelectionCellSt
     state.radioIndicator.className = mergeClasses(
       tableSelectionCellClassNames.radioIndicator,
       styles.radioIndicator,
-      state.checked === false && styles.hidden,
       state.radioIndicator.className,
     );
   }

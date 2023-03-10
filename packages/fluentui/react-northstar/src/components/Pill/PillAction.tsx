@@ -39,7 +39,7 @@ export const pillActionClassName = 'ui-pill__action';
 /**
  * A PillAction allows user to execute an action.
  */
-export const PillAction = (React.forwardRef<HTMLDivElement, PillActionProps>((props, ref) => {
+export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillAction.displayName, context.telemetry);
   setStart();
@@ -77,8 +77,7 @@ export const PillAction = (React.forwardRef<HTMLDivElement, PillActionProps>((pr
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, PillActionProps> &
-  FluentComponentStaticProps<PillActionProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PillActionProps> & FluentComponentStaticProps<PillActionProps>;
 
 PillAction.displayName = 'PillAction';
 

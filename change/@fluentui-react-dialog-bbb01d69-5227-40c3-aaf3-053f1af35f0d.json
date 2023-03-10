@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: cleanups in types",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

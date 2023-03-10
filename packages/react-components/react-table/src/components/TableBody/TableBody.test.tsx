@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableBody } from './TableBody';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableBodyProps } from './TableBody.types';
 import { tableContextDefaultValue, TableContextProvider } from '../../contexts/tableContext';
 
@@ -17,8 +17,6 @@ describe('TableBody', () => {
       container: table,
     },
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(

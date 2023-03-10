@@ -104,7 +104,7 @@ export interface IChartDataPoint {
   onClick?: VoidFunction;
 
   /**
-   * color for the legend in the chart
+   * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
 
@@ -311,7 +311,7 @@ export interface ILineChartPoints {
   /**
    * color for the legend in the chart
    */
-  color: string;
+  color?: string;
 
   /**
    * opacity for chart fill color
@@ -388,13 +388,17 @@ export interface ISankeyChartData {
 interface ISNodeExtra {
   nodeId: number | string;
   name: string;
-  color: string;
+  color?: string;
+  borderColor?: string;
+  actualValue?: number;
+  layer?: number;
 }
 
 interface ISLinkExtra {
   source: number;
   target: number;
   value: number;
+  unnormalizedValue?: number;
 }
 
 export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;

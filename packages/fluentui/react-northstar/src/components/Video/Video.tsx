@@ -47,7 +47,7 @@ export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
 /**
  * A Video provides ability to embed video content.
  */
-export const Video = (React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
+export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
@@ -105,7 +105,7 @@ export const Video = (React.forwardRef<HTMLVideoElement, VideoProps>((props, ref
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'video', HTMLVideoElement, VideoProps> & FluentComponentStaticProps<VideoProps>;
+}) as unknown as ForwardRefWithAs<'video', HTMLVideoElement, VideoProps> & FluentComponentStaticProps<VideoProps>;
 
 Video.create = createShorthandFactory({ Component: Video, mappedProp: 'src' });
 

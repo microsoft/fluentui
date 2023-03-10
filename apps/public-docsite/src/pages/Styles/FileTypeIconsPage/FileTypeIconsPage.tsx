@@ -11,15 +11,15 @@ const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FileTypeIconsPage/docs';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/brand-icons-documents.json');
+const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/product-icons-documents.json');
 
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage
       {...props}
-      {...FileTypeIconsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...FileTypeIconsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       Use file type icons to indicate to users that they are creating a new file of that type. Make sure
                       that a file of the type that the icon represents loads when the user selects the icon. For
                       example, do not use a Word .docx icon to open a .txt file. File type icons should always represent
-                      Microsoft Office files.
+                      Microsoft 365 files.
                       <br />
                       <br />
                       If you're looking for icons for command bars, navigation, status indicators, or similar, check out
@@ -55,10 +55,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       <Link href="#/styles/web/icons" underline>
                         Fluent UI icons page
                       </Link>
-                      . {/* comment to prevent eslint/prettier conflict */}Alternatively, if you're looking for brand
+                      . {/* comment to prevent eslint/prettier conflict */}Alternatively, if you're looking for product
                       logos, or the icons of apps themselves, check out the{' '}
-                      <Link href="#/styles/web/office-brand-icons" underline>
-                        Fluent UI brand icons page
+                      <Link href="#/styles/web/m365-product-icons" underline>
+                        Fluent UI product icons page
                       </Link>
                       .
                     </p>

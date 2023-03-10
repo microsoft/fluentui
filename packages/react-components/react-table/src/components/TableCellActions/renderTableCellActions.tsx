@@ -8,6 +8,5 @@ import type { TableCellActionsState, TableCellActionsSlots } from './TableCellAc
 export const renderTableCellActions_unstable = (state: TableCellActionsState) => {
   const { slots, slotProps } = getSlots<TableCellActionsSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { MenuPopover } from './MenuPopover';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuPopoverProps } from './MenuPopover.types';
 
 describe('MenuPopover', () => {

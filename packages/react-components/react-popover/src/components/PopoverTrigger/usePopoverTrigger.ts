@@ -21,7 +21,7 @@ import { Escape } from '@fluentui/keyboard-keys';
  * @param props - props from this instance of PopoverTrigger
  */
 export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
-  const { children } = props;
+  const { children, disableButtonEnhancement = false } = props;
   const child = getTriggerChild(children);
 
   const open = usePopoverContext_unstable(context => context.open);
@@ -66,7 +66,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     }
   };
 
-  const triggerProps = {
+  const contextMenuProps = {
     ...triggerAttributes,
     'aria-expanded': `${open}`,
     ...child?.props,
@@ -76,13 +76,15 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     ref: useMergedRefs(triggerRef, child?.ref),
   } as const;
 
-  const ariaButtonTriggerProps = useARIAButtonProps(
+  const triggerChildProps = {
+    ...contextMenuProps,
+    onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
+    onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
+  };
+
+  const ariaButtonTriggerChildProps = useARIAButtonProps(
     child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
-    {
-      ...triggerProps,
-      onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),
-    },
+    triggerChildProps,
   );
 
   return {
@@ -90,7 +92,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
       props.children,
       useARIAButtonProps(
         child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
-        openOnContext ? triggerProps : ariaButtonTriggerProps,
+        openOnContext ? contextMenuProps : disableButtonEnhancement ? triggerChildProps : ariaButtonTriggerChildProps,
       ),
     ),
   };

@@ -89,7 +89,7 @@ export const ExportButton = () => {
   return (
     <div className={styles.root}>
       <Popover trapFocus={true}>
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <Button size="small" appearance="outline" icon={<ChevronDownRegular />} iconPosition="after">
             Save
           </Button>

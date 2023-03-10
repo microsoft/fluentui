@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { Slider } from './Slider';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Slider', () => {
   isConformant({

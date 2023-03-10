@@ -10,6 +10,11 @@ const ajv = new Ajv();
 /** @typedef {{ absolutePath: string, relativePath: string, name: string }} PreparedFixture */
 
 /**
+ * @template T
+ * @typedef {NonNullable<T> & {[P in keyof T]-?: NonNullable<T[P]>;}} RequiredNonNullableRecord<T>
+ */
+
+/**
  * Prepares a fixture file to be compiled with Webpack, grabs data from a default export and removes it.
  *
  * @param {string} fixture
@@ -59,7 +64,7 @@ module.exports = async function prepareFixture(fixture) {
 
   /**
    * @param {typeof result} value
-   * @return {value is Required<NonNullable<typeof result>> & {metadata: FixtureMetadata}}
+   * @return {value is RequiredNonNullableRecord<typeof result> & {metadata: FixtureMetadata}}
    */
   function isTransformedFixtureResultHasMetadata(value) {
     return Boolean(value && value.metadata && Object.keys(value.metadata).length);

@@ -33,6 +33,8 @@ import {
   pointTypes,
   getMinMaxOfYAxis,
   getTypeOfAxis,
+  getNextColor,
+  getColorFromToken,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -158,7 +160,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private lines: JSX.Element[];
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
-  private _colorFillBarsOpacity: number;
   private _tooltipId: string;
   private _rectId: string;
   private _staticHighlightCircle: string;
@@ -182,7 +183,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     this._colorFillBars = [];
-    this._colorFillBarsOpacity = 0.5;
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
     this._lineId = getId('lineID');
@@ -315,10 +315,21 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
-      ? lineChartData.map((item: ILineChartPoints, index: number) => ({
-          ...item,
-          index: allowMultipleShapesForPoints ? index : -1,
-        }))
+      ? lineChartData.map((item: ILineChartPoints, index: number) => {
+          let color: string;
+          // isInverted property is applicable to v8 themes only
+          if (typeof item.color === 'undefined') {
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
+          }
+
+          return {
+            ...item,
+            index: allowMultipleShapesForPoints ? index : -1,
+            color,
+          };
+        })
       : [];
   };
 
@@ -349,13 +360,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
     if (this.state.selectedLegend === lineChartItem.legend) {
-      this.setState({ selectedLegend: '', activeLegend: lineChartItem.legend });
+      this.setState({ selectedLegend: '' });
       this._handleLegendClick(lineChartItem, null);
     } else {
-      this.setState({
-        selectedLegend: lineChartItem.legend,
-        activeLegend: lineChartItem.legend,
-      });
+      this.setState({ selectedLegend: lineChartItem.legend });
       this._handleLegendClick(lineChartItem, lineChartItem.legend);
     }
   };
@@ -372,7 +380,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
     const legendDataItems = data.map((point: LineChartDataWithIndex) => {
-      const color: string = point.color;
+      const color: string = point.color!;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
@@ -388,6 +396,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.setState({ activeLegend: '' });
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this.setState({ activeLegend: point.legend });
         },
         ...(point.legendShape && {
@@ -403,9 +412,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
           const title = colorFillBar.legend;
+          // isInverted property is applicable to v8 themes only
+          const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
           const legend: ILegend = {
             title,
-            color: colorFillBar.color,
+            color,
             action: () => {
               if (isLegendMultiSelectEnabled) {
                 this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
@@ -417,9 +428,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               this.setState({ activeLegend: '' });
             },
             hoverAction: () => {
+              this._handleChartMouseLeave();
               this.setState({ activeLegend: title });
             },
-            opacity: this._colorFillBarsOpacity,
+            opacity: this._getColorFillBarOpacity(colorFillBar),
             stripePattern: colorFillBar.applyPattern,
           };
           return legend;
@@ -520,17 +532,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const pointsForLine: JSX.Element[] = [];
 
       const legendVal: string = this._points[i].legend;
-      const lineColor: string = this._points[i].color;
+      const lineColor: string = this._points[i].color!;
       const { activePoint } = this.state;
       const { theme } = this.props;
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
-        const circleId = `${this._circleId}${i}`;
+        const circleId = `${this._circleId}_${i}`;
         pointsForLine.push(
           <circle
-            id={`${this._circleId}${i}`}
-            key={`${this._circleId}${i}`}
+            id={circleId}
+            key={circleId}
             r={activePoint === circleId ? 5.5 : 3.5}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
@@ -572,13 +584,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           .y((d: any) => this._yAxisScale(d[1]))
           .curve(d3curveLinear);
 
-        const lineId = `${this._lineId}${i}`;
-        const borderId = `${this._borderId}${i}`;
+        const lineId = `${this._lineId}_${i}`;
+        const borderId = `${this._borderId}_${i}`;
         const strokeWidth =
           this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
         const isLegendSelected: boolean =
-          this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+          this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
         const lineData: [number, number][] = [];
         for (let k = 0; k < this._points[i].data.length; k++) {
@@ -667,9 +679,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const isInGap = gapResult.isInGap;
           gapIndex = gapResult.gapIndex;
 
-          const lineId = `${this._lineId}${i}${j}`;
-          const borderId = `${this._borderId}${i}${j}`;
-          const circleId = `${this._circleId}${i}${j}`;
+          const lineId = `${this._lineId}_${i}_${j}`;
+          const borderId = `${this._borderId}_${i}_${j}`;
+          const circleId = `${this._circleId}_${i}_${j}`;
           const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[j - 1];
           const { x: x2, y: y2 } = this._points[i].data[j];
           let path = this._getPath(
@@ -684,7 +696,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
           const isLegendSelected: boolean =
-            this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
+            this._legendHighlighted(legendVal) || this._noLegendHighlighted() || this.state.isSelectedLegend;
 
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           pointsForLine.push(
@@ -904,24 +916,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
       const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+      // isInverted property is applicable to v8 themes only
+      const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
 
       if (colorFillBar.applyPattern) {
         // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
-        colorFillBars.push(this._getStripePattern(colorFillBar.color, i));
+        colorFillBars.push(this._getStripePattern(color, i));
       }
 
       for (let j = 0; j < colorFillBar.data.length; j++) {
         const startX = colorFillBar.data[j].startX;
         const endX = colorFillBar.data[j].endX;
         const opacity =
-          this.state.activeLegend === colorFillBar.legend ||
-          this.state.activeLegend === '' ||
-          this.state.isSelectedLegend
-            ? this._colorFillBarsOpacity
+          this._legendHighlighted(colorFillBar.legend) || this._noLegendHighlighted() || this.state.isSelectedLegend
+            ? this._getColorFillBarOpacity(colorFillBar)
             : 0.1;
         colorFillBars.push(
           <rect
-            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}${i})` : colorFillBar.color}
+            fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : color}
             fillOpacity={opacity}
             x={this._xAxisScale(startX)}
             y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}
@@ -943,10 +955,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const stripePath = 'M-4,4 l8,-8 M0,16 l16,-16 M12,20 l8,-8';
     return (
       <pattern
-        id={`${this._colorFillBarPatternId}${id}`}
+        id={`${this._colorFillBarPatternId}_${id}`}
         width={16}
         height={16}
-        key={`${this._colorFillBarPatternId}${id}`}
+        key={`${this._colorFillBarPatternId}_${id}`}
         patternUnits={'userSpaceOnUse'}
       >
         <path d={stripePath} stroke={color} strokeWidth={1.25} />
@@ -1290,5 +1302,28 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       selectedLegendPoints: [],
       isSelectedLegend: false,
     });
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legend: string) => {
+    return (
+      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.activeLegend === legend)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getColorFillBarOpacity = (colorFillBar: IColorFillBarsProps) => {
+    return colorFillBar.applyPattern ? 1 : 0.4;
   };
 }

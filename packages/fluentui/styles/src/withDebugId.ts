@@ -21,10 +21,10 @@ export const withDebugId =
         }
 
         if (typeof data === 'function') {
-          return (((...args) => {
+          return ((...args) => {
             const result = data(...args);
             return withDebugId(result, debugId);
-          }) as unknown) as T;
+          }) as unknown as T;
         }
 
         return data;

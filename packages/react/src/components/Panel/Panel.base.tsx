@@ -227,7 +227,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           ariaLabelledBy={this._headerTextId ? this._headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
-          enableAriaHiddenSiblings={isOpen ? true : undefined}
+          enableAriaHiddenSiblings={isOpen ? true : false}
           {...popupProps}
         >
           <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
