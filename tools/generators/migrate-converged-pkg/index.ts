@@ -416,6 +416,7 @@ const templates = {
         externalHelpers: true,
         transform: {
           react: {
+            runtime: 'classic',
             useBuiltins: true,
           },
         },
@@ -429,7 +430,7 @@ const templates = {
 
     preset();
 
-    task('build', 'build:react-components').cached!();`,
+    task('build', 'build:react-components').cached?.();`,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
