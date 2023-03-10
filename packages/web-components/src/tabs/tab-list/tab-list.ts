@@ -2,7 +2,6 @@ import { attr, booleanConverter } from '@microsoft/fast-element';
 import { FASTTabs } from '@microsoft/fast-foundation';
 
 export interface TabData {
-  // currentSelected: string;
   id: string;
   x: number;
   y: number;
@@ -16,7 +15,6 @@ export interface TabData {
  * @public
  */
 export class TabList extends FASTTabs {
-  // TODO: add TSDOC comments for each class member
   @attr appearance?: 'subtle' | 'transparent';
 
   @attr({ converter: booleanConverter })
