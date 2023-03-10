@@ -1,4 +1,10 @@
 import * as React from 'react';
-import { BreadcrumbDivider, BreadcrumbDividerProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDivider } from '@fluentui/react-breadcrumb';
 
-export const Default = (props: Partial<BreadcrumbDividerProps>) => <BreadcrumbDivider {...props} />;
+export const Default = () => (
+  <>
+    <BreadcrumbDivider />
+    <BreadcrumbDivider size="large" />
+    <BreadcrumbDivider variant="slash" size="small" />
+  </>
+);

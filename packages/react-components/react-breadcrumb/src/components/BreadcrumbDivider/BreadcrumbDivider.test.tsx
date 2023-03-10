@@ -18,7 +18,7 @@ describe('BreadcrumbDivider', () => {
         <span
           class="fui-BreadcrumbDivider"
         >
-          &gt;
+          Default BreadcrumbDivider
         </span>
       </div>
     `);

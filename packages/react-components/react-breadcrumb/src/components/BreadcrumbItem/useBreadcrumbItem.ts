@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BreadcrumbItemProps, BreadcrumbItemState } from './BreadcrumbItem.types';
 import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
+import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 /**
  * Create the state required to render BreadcrumbItem.
  *
@@ -15,18 +16,22 @@ export const useBreadcrumbItem_unstable = (
   props: BreadcrumbItemProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbItemState => {
+  const { divider, ...rest } = props;
+  const { size } = useBreadcrumbContext_unstable();
   return {
-    // TODO add appropriate props/defaults
     components: {
-      root: 'div',
+      root: 'li',
       divider: BreadcrumbDivider,
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
       ref,
-      ...props,
+      ...rest,
     }),
-    divider: {},
+    divider: resolveShorthand(divider, {
+      required: true,
+      defaultProps: {
+        size,
+      },
+    }),
   };
 };

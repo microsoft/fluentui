@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -24,7 +26,10 @@ export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
 export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>;
 
 // @public
-export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {};
+export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {
+    variant?: BreadcrumbVariant;
+    size?: BreadcrumbSize;
+};
 
 // @public (undocumented)
 export type BreadcrumbDividerSlots = {
@@ -45,7 +50,7 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & {};
 
 // @public (undocumented)
 export type BreadcrumbItemSlots = {
-    root: Slot<'div'>;
+    root: Slot<'li'>;
     divider?: Slot<typeof BreadcrumbDivider>;
 };
 
@@ -53,7 +58,9 @@ export type BreadcrumbItemSlots = {
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots>;
 
 // @public
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {};
+export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
+    size?: BreadcrumbSize;
+};
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
@@ -62,10 +69,10 @@ export type BreadcrumbSlots = {
 };
 
 // @public
-export type BreadcrumbState = ComponentState<BreadcrumbSlots>;
+export type BreadcrumbState = ComponentState<BreadcrumbSlots> & BreadcrumbContextValue;
 
 // @public
-export const renderBreadcrumb_unstable: (state: BreadcrumbState) => JSX.Element;
+export const renderBreadcrumb_unstable: (state: BreadcrumbState, breadcrumbContextValue: BreadcrumbContextValue) => JSX.Element;
 
 // @public
 export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSX.Element;

@@ -18,4 +18,4 @@ export const BreadcrumbProvider = breadcrumb.Provider;
 /**
  * @internal
  */
-export const useBreadcrumb_unstable = () => React.useContext(breadcrumb) ?? breadcrumbDefaultValue;
+export const useBreadcrumbContext_unstable = () => React.useContext(breadcrumb) ?? breadcrumbDefaultValue;

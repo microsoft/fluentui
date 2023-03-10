@@ -13,6 +13,7 @@ export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    alignItems: 'center',
   },
   divider: {},
 });
