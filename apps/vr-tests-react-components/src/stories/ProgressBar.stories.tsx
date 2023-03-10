@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { ProgressBar } from '@fluentui/react-progress';
+import { TestWrapperDecoratorPauseAnimation } from '../utilities/TestWrapperDecorator';
 
 storiesOf('ProgressBar converged', module)
+  .addDecorator(TestWrapperDecoratorPauseAnimation)
   .addStory('Indeterminate', () => <ProgressBar />, {
     includeDarkMode: true,
     includeHighContrast: true,
