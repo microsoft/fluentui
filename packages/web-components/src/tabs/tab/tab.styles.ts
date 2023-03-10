@@ -52,11 +52,12 @@ export const styles = css`
     font-weight: ${fontWeightBold};
   }
 
-  :host::after {
+  :host([data-selected='true'])::after {
     /* default size and color */
     width: calc(100% - 20px);
     height: ${strokeWidthThicker};
-    background-color: ${colorTransparentStroke};
+    /* background-color: ${colorTransparentStroke}; */
+    background-color: ${colorCompoundBrandStroke};
     border-radius: ${borderRadiusCircular};
 
     /* default values for content, position and margin */
@@ -83,10 +84,6 @@ export const styles = css`
   :host(.vertical)::after {
     transform-origin: top;
     transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
-  }
-
-  :host([data-selected='true'])::after {
-    background-color: ${colorCompoundBrandStroke};
   }
 
   :host([data-selected='false']:hover)::before {

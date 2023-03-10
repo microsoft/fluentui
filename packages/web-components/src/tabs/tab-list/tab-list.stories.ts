@@ -1,4 +1,4 @@
-import { html, when } from '@microsoft/fast-element';
+import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import type { TabList as FluentTabList } from './tab-list.js';
@@ -9,7 +9,7 @@ import '../tab-panel/define.js';
 type TabListStoryArgs = Args & FluentTabList;
 type TabListStoryMeta = Meta<TabListStoryArgs>;
 
-const defaultTabIds = ['tab-one', 'tab-two', 'tab-three'];
+const defaultTabIds = ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'];
 
 // const calendarFilled = html`<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
 //   <path
@@ -36,21 +36,26 @@ const tabListDefault = html`
   >
     <fluent-tab id=${defaultTabIds[0]}>
       <!-- TODO: add a when statement to conditionally render the filled calendar when the tab is active -->
-      <span slot="start">${calendar}</span>
-      Tab One
+      <!-- <span slot="start">${calendar}</span> -->
+      First Tab
     </fluent-tab>
     <fluent-tab id=${defaultTabIds[1]}>
-      <span slot="start">${calendar}</span>
-      Tab Two</fluent-tab
+      <!-- <span slot="start">${calendar}</span> -->
+      Second Tab</fluent-tab
     >
     <fluent-tab id=${defaultTabIds[2]}>
-      <span slot="start">${calendar}</span>
-      Tab Three</fluent-tab
+      <!-- <span slot="start">${calendar}</span> -->
+      Third Tab</fluent-tab
+    >
+    <fluent-tab id=${defaultTabIds[3]}>
+      <!-- <span slot="start">${calendar}</span> -->
+      Fourth Tab</fluent-tab
     >
 
     <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}>Tab One Content</fluent-tab-panel>
     <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}>Tab Two Content</fluent-tab-panel>
     <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}>Tab Three Content</fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}>Tab Four Content</fluent-tab-panel>
   </fluent-tab-list>
 `;
 export const TabListDefault = renderComponent(tabListDefault).bind({});

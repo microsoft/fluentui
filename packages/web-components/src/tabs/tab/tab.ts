@@ -8,60 +8,52 @@ export const TAB_TOKEN_NAMES = {
 };
 
 export class Tab extends FASTTab {
+  private _activeTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _previousActiveTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
-  private _selectedTabX: number = 0;
-  private _selectedTabWidth: number = 0;
-  private _previousSelectedTabWidth: number = 0;
-  private _previousSelectedTabX: number = 0;
   private _offsetX = 0;
   private _scale = 1;
 
-  @attr 'aria-selected': string | null = 'false';
-  'aria-selectedChanged'(oldVal: string, newVal: string) {
-    if (newVal === 'true') {
-      this.dataset.selected = 'true';
-    } else {
-      this.dataset.selected = 'false';
-    }
-  }
-
   @attr({ attribute: 'data-active-tab' })
   private dataActiveTab: string = '';
-
-  // every time the data-active-tab attribute changes...
   private dataActiveTabChanged() {
     const dataActiveTab = this.dataset.activeTab;
     // is there an active tab in the data attribute?
     if (dataActiveTab) {
       // set the active tab on the class field
-      const dataActiveTabObj: TabData = JSON.parse(dataActiveTab);
+
+      this._activeTab = JSON.parse(dataActiveTab);
       // if there is not previous tab create a new one on the class field
       if (!this._previousActiveTab.id) {
-        this._previousActiveTab = dataActiveTabObj;
+        this._previousActiveTab = this._activeTab;
       }
 
       // if this tab is the active tab
-      if (this.id === dataActiveTabObj.id) {
-        console.log(
-          'previous selected:',
-          this._previousActiveTab.id,
-          this._previousSelectedTabX,
-          'currently selected:',
-          this.id,
-          this._selectedTabX,
-        );
-
-        if (this._offsetX === 0 && this._scale === 1) {
-          // uncomment to see broken animations
-          // this.syncTabPositions();
-          this.setTabScaleCSS();
-          this.setTabOffsetCSS();
-          this.addAnimationClasses();
-        }
+      const isSelected = this.id === this._activeTab.id;
+      this.setSelected(isSelected);
+      if (isSelected) {
+        this.syncTabPositions();
+        this.setTabScaleCSS();
+        this.setTabOffsetCSS();
+        this.addAnimationClasses();
       } else {
         this.clearAnimationProperties();
       }
-      this._previousActiveTab = JSON.parse(dataActiveTab);
+
+      this.syncTabPositions();
+      this._previousActiveTab = this._activeTab;
+
+      if (this._offsetX === 0 && this._scale === 1) {
+        this.setTabScaleCSS();
+        this.setTabOffsetCSS();
+      }
+    }
+  }
+
+  private setSelected(isSelected: boolean) {
+    if (isSelected) {
+      this.dataset.selected = 'true';
+    } else {
+      this.dataset.selected = 'false';
     }
   }
 
@@ -80,36 +72,28 @@ export class Tab extends FASTTab {
     this.classList.add('animated');
   }
 
-  private syncTabPositions(prevActiveTab?: TabData) {
-    this._previousSelectedTabX = this.getPreviousSelectedTabPositionX();
-    this._selectedTabX = this.getSelectedTabPosition();
-    this._previousSelectedTabWidth = this.getPreviousTabWidth();
-    this._selectedTabWidth = this.getSelectedTabWidth();
+  private syncTabPositions() {
+    const previousSelectedTabX = this._previousActiveTab.x;
+    const selectedTabX = this.getSelectedTabPosition();
+    const previousSelectedTabWidth = this._previousActiveTab.width;
+    const selectedTabWidth = this.getSelectedTabWidth();
 
-    this._offsetX = this._previousSelectedTabX - this._selectedTabX;
-    this._scale = this._previousSelectedTabWidth / this._selectedTabWidth;
-  }
-
-  private getPreviousSelectedTabPositionX(): number {
-    return this._previousActiveTab.x;
-  }
-
-  private getPreviousTabWidth(): number {
-    return this._previousActiveTab.width;
+    this._offsetX = previousSelectedTabX - selectedTabX;
+    this._scale = (previousSelectedTabWidth || 1) / (selectedTabWidth || 1);
   }
 
   private getSelectedTabPosition(): number {
-    if (this['aria-selected'] === 'true' && this.parentElement) {
+    if (this.parentElement) {
       return this.getBoundingClientRect().x - this.parentElement.getBoundingClientRect()?.x;
     }
-    return this.getPreviousSelectedTabPositionX();
+    return 0;
   }
 
   private getSelectedTabWidth(): number {
-    if (this['aria-selected'] === 'true') {
+    if (this.id === this._activeTab.id) {
       return this.getBoundingClientRect().width;
     }
-    return this.getPreviousTabWidth();
+    return 0;
   }
 
   private setTabOffsetCSS(x?: number, y?: number) {
