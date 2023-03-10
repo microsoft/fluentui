@@ -117,19 +117,23 @@ export const styles = css`
     color: ${colorCompoundBrandForeground1Hover};
   }
   :host(:active) {
-    background: ${colorNeutralBackground1Selected};
+    background-color: ${colorNeutralBackground1Selected};
   }
+
   :host(:active) .expand-collapse-glyph-container,
   :host(:active) .content,
   :host(:active) .input-container {
     color: ${colorNeutralForeground2Pressed};
   }
+
   :host(:active) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Pressed};
   }
+
   :host([disabled]) {
-    background: ${colorNeutralBackgroundDisabled};
+    background-color: ${colorNeutralBackgroundDisabled};
   }
+
   :host([disabled]) .expand-collapse-glyph-container,
   :host([disabled]) .input-container,
   :host([disabled]) ::slotted([slot='start']),
@@ -137,6 +141,7 @@ export const styles = css`
   :host([disabled]) .content {
     color: ${colorNeutralForegroundDisabled};
   }
+
   :host([disabled]) ::slotted([slot='end']) {
     border-color: ${colorNeutralStrokeDisabled};
   }
@@ -145,64 +150,72 @@ export const styles = css`
   :host([checkmark]) {
     display: grid;
   }
+
   :host([icon]) .content {
     grid-column: 2 / span 1;
   }
+
   :host([checkmark][role='menuitemcheckbox']) {
     display: grid;
   }
+
   :host([checkmark][icon][aria-haspopup='menu']) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
   }
+
   :host([checkmark][icon][aria-haspopup='menu']) .expand-collapse-glyph-container {
     grid-column: 5 / span 1;
   }
+
   :host([checkmark]) .content {
     grid-column: 2 / span 1;
   }
+
   :host([checkmark][role='menuitemcheckbox']) .content,
   :host([checkmark][role='menuitemradio']) .content {
     grid-column: auto / span 1;
   }
+
   :host([icon]) ::slotted([slot='end']) :host([checkmark]) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
     justify-self: flex-end;
   }
+
   :host([checkmark][icon]),
   :host([checkmark][icon]) {
     display: grid;
     grid-template-columns: 20px 20px auto auto;
   }
+
   :host([checkmark][icon]) .content,
   :host([role='menuitemcheckbox'][icon]) .content,
   :host([role='menuitemradio'][icon]) .content {
     grid-column: 3 / span 1;
   }
+
   :host([checkmark][icon]) .input-container {
     grid-column: 1 / span 1;
   }
+
   :host([checkmark][icon]) ::slotted([slot='start']),
   :host([checkbox][icon]) ::slotted([slot='start']) {
     grid-column: 2 / span 1;
   }
+
   :host([aria-haspopup='menu']) {
     grid-template-columns: 20px auto auto 20px;
   }
+
   :host([aria-haspopup='menu']) .content {
     grid-column: auto / span 1;
   }
+
   :host([aria-haspopup='menu']) ::slotted([slot='end']) {
     grid-column: 3 / span 1;
     justify-self: flex-end;
   }
-  :host([aria-haspopup='menu'][icon]) .content,
-  :host([aria-haspopup='menu'][checkmark]) .content {
-    grid-column: 2 / span 1;
-  }
 
-  :host([aria-haspopup='menu'][checkmark][icon]) .content {
-    grid-column: 3 / span 1;
-  }
+  :host([aria-haspopup='menu'][icon]) .content,
   :host([aria-haspopup='menu'][checkmark]) .content {
     grid-column: 2 / span 1;
   }
