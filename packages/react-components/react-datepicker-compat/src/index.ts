@@ -34,6 +34,7 @@ export type {
 
 export {
   DatePicker,
+  datePickerClassNames,
   defaultDatePickerStrings,
   renderDatePicker_unstable,
   useDatePicker_unstable,

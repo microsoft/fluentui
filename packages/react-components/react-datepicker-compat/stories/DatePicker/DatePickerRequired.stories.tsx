@@ -24,7 +24,7 @@ export const Required = () => {
         className={styles.control}
         label="Date required (with label)"
         placeholder="Select a date..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
       />
@@ -32,7 +32,7 @@ export const Required = () => {
         isRequired
         className={styles.control}
         placeholder="Date required with no label..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         strings={defaultDatePickerStrings}
       />
     </div>

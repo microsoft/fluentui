@@ -16,6 +16,7 @@ import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -381,6 +382,9 @@ export interface DateGridStrings {
 
 // @public (undocumented)
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
+
+// @public (undocumented)
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string>;
 
 // @public (undocumented)
 export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
