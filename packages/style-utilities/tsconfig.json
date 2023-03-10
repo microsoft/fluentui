@@ -4,7 +4,7 @@
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["es5", "dom", "ES2015.Iterable"],
     "jsx": "react",
     "declaration": true,
     "isolatedModules": true,

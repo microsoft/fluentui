@@ -1,4 +1,4 @@
-import custom from '@fluentui/scripts/storybook/webpack.config';
+import { createStorybookWebpackConfig } from '@fluentui/scripts-webpack';
 import * as path from 'path';
 import { merge } from 'webpack-merge';
 
@@ -19,7 +19,7 @@ const config = {
     reactDocgen: false,
   },
   webpackFinal: config => {
-    const customConfig = custom(config);
+    const customConfig = createStorybookWebpackConfig(config);
 
     return merge(customConfig, {
       module: {
@@ -44,6 +44,7 @@ const config = {
 
   core: {
     builder: 'webpack5',
+    disableTelemetry: true,
   },
 };
 

@@ -4,7 +4,14 @@ import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
-import { classNamesFunction, getDocument, setPortalAttribute, setVirtualParent } from '../../Utilities';
+import {
+  classNamesFunction,
+  css,
+  getDocument,
+  setPortalAttribute,
+  setVirtualParent,
+  FocusRectsProvider,
+} from '../../Utilities';
 import {
   registerLayer,
   getDefaultTarget,
@@ -24,24 +31,28 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
     const layerRef = React.useRef<HTMLDivElement>();
+    const fabricElementRef = React.useRef<HTMLDivElement>(null);
 
     // Tracks if the layer mount events need to be raised.
     // Required to allow the DOM to render after the layer element is added.
     const [needRaiseLayerMount, setNeedRaiseLayerMount] = React.useState(false);
 
     const {
-      eventBubblingEnabled,
-      styles,
-      theme,
-      className,
       children,
+      className,
+      eventBubblingEnabled,
+      fabricProps,
       hostId,
+      insertFirst,
       onLayerDidMount = () => undefined,
       // eslint-disable-next-line deprecation/deprecation
       onLayerMounted = () => undefined,
       onLayerWillUnmount,
-      insertFirst,
+      styles,
+      theme,
     } = props;
+
+    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -155,11 +166,18 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       <span className="ms-layer" ref={mergedRef}>
         {layerRef.current &&
           ReactDOM.createPortal(
-            /* eslint-disable deprecation/deprecation */
-            <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
-              {children}
-            </Fabric>,
-            /* eslint-enable deprecation/deprecation */
+            <FocusRectsProvider layerRoot providerRef={fabricRef}>
+              {/* eslint-disable deprecation/deprecation */}
+              <Fabric
+                {...(!eventBubblingEnabled && getFilteredEvents())}
+                {...fabricProps}
+                className={css(classNames.content, fabricProps?.className)}
+                ref={fabricRef}
+              >
+                {children}
+              </Fabric>
+              {/* eslint-enable deprecation/deprecation */}
+            </FocusRectsProvider>,
             layerRef.current,
           )}
       </span>

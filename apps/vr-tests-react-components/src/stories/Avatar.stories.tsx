@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
 
@@ -42,7 +42,7 @@ const nameAndImage = [
 /** Arrays of example values for each Avatar prop */
 const examples = {
   size: [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128],
-  nameAndImage: nameAndImage,
+  nameAndImage,
   name: nameAndImage.map(p => p.name),
   image: nameAndImage.map(p => p.image),
   badge: [
@@ -161,6 +161,29 @@ const AvatarCustomSizeList: React.FC<
   );
 };
 
+const AvatarColors: React.FC<Pick<AvatarProps, 'active' | 'activeAppearance'>> = props => {
+  const rowStyles = { display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: '12px', padding: '12px' } as const;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={rowStyles}>
+        <Avatar color="neutral" {...props} />
+        <Avatar color="brand" {...props} />
+      </div>
+      <div style={rowStyles}>
+        {examples.name.map(name => (
+          <Avatar color="colorful" name={name} key={name} {...props} />
+        ))}
+      </div>
+      <div style={rowStyles}>
+        {examples.namedColors.map(color => (
+          <Avatar color={color} key={color} {...props} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 storiesOf('Avatar Converged', module)
   .addDecorator(story => (
     <div style={{ display: 'flex' }}>
@@ -170,7 +193,7 @@ storiesOf('Avatar Converged', module)
     </div>
   ))
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory(
     'basic',
@@ -195,6 +218,9 @@ storiesOf('Avatar Converged', module)
   .addStory('size+inactive+badge', () => (
     <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
   ))
+
+  /* Temporarily disable these stories as these cause noise with storywright
+  The issue is raised against playwright. Till it gets fixed we disabled these. https://github.com/microsoft/playwright/issues/18373
   .addStory('size+active+badge', () => (
     <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
   ))
@@ -203,36 +229,19 @@ storiesOf('Avatar Converged', module)
   ))
   .addStory('size+active+ring-shadow', () => (
     <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
-  ))
+  ))*/
   .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
   .addStory('customSize+name+badge', () => (
     <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
   ))
   .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" />)
-  .addStory(
-    'color',
-    () => {
-      const rowStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '8px' };
-
-      return (
-        <div style={{ display: 'flex', gap: '24px', flexDirection: 'row' }}>
-          <div style={rowStyles}>
-            <Avatar color="neutral" />
-            <Avatar color="brand" />
-          </div>
-          <div style={rowStyles}>
-            {examples.name.map(name => (
-              <Avatar color="colorful" name={name} key={name} />
-            ))}
-          </div>
-          <div style={rowStyles}>
-            {examples.namedColors.map(color => (
-              <Avatar color={color} key={color} />
-            ))}
-          </div>
-        </div>
-      );
-    },
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);
+  .addStory('color', () => <AvatarColors />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('color+active', () => <AvatarColors active="active" />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />)
+  .addStory('image-bad-url+icon', () => <Avatar image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);

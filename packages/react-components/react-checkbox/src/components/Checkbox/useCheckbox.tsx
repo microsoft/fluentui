@@ -17,6 +17,7 @@ import {
   CircleFilled,
 } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Checkbox.
@@ -28,7 +29,7 @@ import { Label } from '@fluentui/react-label';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
-  const { disabled, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
+  const { disabled = false, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
 
   const [checked, setChecked] = useControllableState({
     defaultState: props.defaultChecked,
@@ -52,13 +53,14 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     } else {
       checkmarkIcon = size === 'large' ? <Square16Filled /> : <Square12Filled />;
     }
-  } else {
+  } else if (checked) {
     checkmarkIcon = size === 'large' ? <Checkmark16Filled /> : <Checkmark12Filled />;
   }
 
   const state: CheckboxState = {
     shape,
     checked,
+    disabled,
     size,
     labelPosition,
     components: {
@@ -69,7 +71,10 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: nativeProps.root,
+      defaultProps: {
+        ref: useFocusWithin<HTMLSpanElement>(),
+        ...nativeProps.root,
+      },
     }),
     input: resolveShorthand(props.input, {
       required: true,

@@ -1,5 +1,6 @@
 import {
   HighContrastSelector,
+  HighContrastSelectorWhite,
   ScreenWidthMaxSmall,
   getScreenSelector,
   getGlobalClassNames,
@@ -43,15 +44,6 @@ const backgroundColor: { [key: string]: keyof ISemanticColors } = {
   [MessageBarType.info]: 'infoBackground',
 };
 
-const highContrastBackgroundColor: { [key: string]: string } = {
-  [MessageBarType.error]: 'rgba(255, 0, 0, 0.3)',
-  [MessageBarType.blocked]: 'rgba(255, 0, 0, 0.3)',
-  [MessageBarType.success]: 'rgba(48, 241, 73, 0.3)',
-  [MessageBarType.warning]: 'rgba(255, 254, 57, 0.3)',
-  [MessageBarType.severeWarning]: 'rgba(255, 0, 0, 0.3)',
-  [MessageBarType.info]: 'Window',
-};
-
 const iconColor: { [key: string]: keyof ISemanticColors } = {
   [MessageBarType.error]: 'errorIcon',
   [MessageBarType.blocked]: 'errorIcon',
@@ -59,6 +51,24 @@ const iconColor: { [key: string]: keyof ISemanticColors } = {
   [MessageBarType.warning]: 'warningIcon',
   [MessageBarType.severeWarning]: 'severeWarningIcon',
   [MessageBarType.info]: 'infoIcon',
+};
+
+const highContrastBorderColor: { [key: string]: string } = {
+  [MessageBarType.error]: '#ff0000',
+  [MessageBarType.blocked]: '#ff0000',
+  [MessageBarType.success]: '#bad80a',
+  [MessageBarType.warning]: '#fff100',
+  [MessageBarType.severeWarning]: '#ff0000',
+  [MessageBarType.info]: 'WindowText',
+};
+
+const highContrastWhiteBorderColor: { [key: string]: string } = {
+  [MessageBarType.error]: '#e81123',
+  [MessageBarType.blocked]: '#e81123',
+  [MessageBarType.success]: '#107c10',
+  [MessageBarType.warning]: '#966400',
+  [MessageBarType.severeWarning]: '#d83b01',
+  [MessageBarType.info]: 'WindowText',
 };
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
@@ -130,6 +140,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       !isMultiline && truncated && classNames.expandingSingleLine,
       {
         background: semanticColors[backgroundColor[messageBarType]],
+        boxSizing: 'border-box',
         color: semanticColors.messageText,
         minHeight: 32,
         width: '100%',
@@ -146,9 +157,12 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
           },
           [HighContrastSelector]: {
             ...getHighContrastNoAdjustStyle(),
-            background: highContrastBackgroundColor[messageBarType],
-            border: '1px solid WindowText',
+            background: 'transparent',
+            border: `1px solid ${highContrastBorderColor[messageBarType]}`,
             color: 'WindowText',
+          },
+          [HighContrastSelectorWhite]: {
+            border: `1px solid ${highContrastWhiteBorderColor[messageBarType]}`,
           },
         },
       },
@@ -252,6 +266,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexDirection: 'row-reverse',
         alignItems: 'center',
         margin: '0 12px 0 8px',
+        // reset forced colors to browser control for inner actions
+        forcedColorAdjust: 'auto',
+        MsHighContrastAdjust: 'auto',
         selectors: {
           '& button:nth-child(n+2)': {
             marginLeft: 8,

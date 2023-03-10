@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: release react-skeleton to unstable",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

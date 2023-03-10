@@ -114,6 +114,9 @@ export class LineChartCustomAccessibilityExample extends React.Component<
         ],
         legend: 'First',
         color: DefaultPalette.blue,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -146,6 +149,9 @@ export class LineChartCustomAccessibilityExample extends React.Component<
         ],
         legend: 'Second',
         color: DefaultPalette.green,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
       {
@@ -158,6 +164,9 @@ export class LineChartCustomAccessibilityExample extends React.Component<
         ],
         legend: 'Third',
         color: DefaultPalette.red,
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         onLegendClick: this._onLegendClickHandler,
       },
     ];

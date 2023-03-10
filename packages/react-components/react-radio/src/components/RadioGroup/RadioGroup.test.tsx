@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Radio } from '../../Radio';
 import { RadioGroup } from './RadioGroup';
 
@@ -9,7 +9,6 @@ describe('RadioGroup', () => {
   isConformant({
     Component: RadioGroup,
     displayName: 'RadioGroup',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {

@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Triage Bot Config",
+  "type": "object",
+  "properties": {
+    "params": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assignees": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "keyword": {
+            "type": "string"
+          },
+          "labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["keyword", "labels", "assignees"]
+      }
+    }
+  }
+}

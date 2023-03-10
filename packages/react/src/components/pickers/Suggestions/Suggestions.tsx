@@ -146,16 +146,18 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner),
         };
 
-    const noResults = () => (
-      // This ID can be used by the parent to set aria-activedescendant to this
-      <div id="sug-noResultsFound" role="option">
-        {onRenderNoResultFound ? (
-          onRenderNoResultFound(undefined, noResults)
-        ) : (
-          <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div>
-        )}
-      </div>
-    );
+    const noResults = () => {
+      const defaultRender = () => {
+        return <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div>;
+      };
+
+      return (
+        // This ID can be used by the parent to set aria-activedescendant to this
+        <div id="sug-noResultsFound" role="option">
+          {onRenderNoResultFound ? onRenderNoResultFound(undefined, defaultRender) : defaultRender()}
+        </div>
+      );
+    };
 
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;
@@ -351,7 +353,16 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   }
 
   private _getAlertText = () => {
-    const { isLoading, isSearching, suggestions, suggestionsAvailableAlertText, noResultsFoundText } = this.props;
+    const {
+      isLoading,
+      isSearching,
+      suggestions,
+      suggestionsAvailableAlertText,
+      noResultsFoundText,
+      isExtendedLoading,
+      loadingText,
+    } = this.props;
+
     if (!isLoading && !isSearching) {
       if (suggestions.length > 0) {
         return suggestionsAvailableAlertText || '';
@@ -359,6 +370,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       if (noResultsFoundText) {
         return noResultsFoundText;
       }
+    } else if (isLoading && isExtendedLoading) {
+      return loadingText || '';
     }
     return '';
   };

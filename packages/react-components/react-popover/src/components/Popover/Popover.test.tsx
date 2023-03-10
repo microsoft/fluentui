@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Popover } from './Popover';
 import { renderHook } from '@testing-library/react-hooks';
 import { usePopover_unstable } from './usePopover';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Popover', () => {
   isConformant({
@@ -14,9 +14,7 @@ describe('Popover', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
       'component-has-static-classnames-object',
-      'component-has-static-classname-exported',
       // Popover does not have own styles
       'make-styles-overrides-win',
     ],

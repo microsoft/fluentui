@@ -4,16 +4,20 @@ import { renderDialogTitle_unstable } from './renderDialogTitle';
 import { useDialogTitleStyles_unstable } from './useDialogTitleStyles';
 import type { DialogTitleProps } from './DialogTitle.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
- * The `DialogTitle` component will expect to have a dialog title/header
- * and will show the close (X icon) button if specified so.
- * Apart from styling and presenting `closeButton`, this component does not have other behavior.
+ * The `DialogTitle` component expects to have a title/header
+ * and when `Dialog` is `non-modal` a close (X icon) button is provided through `action` slot by default.
  */
 export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardRef((props, ref) => {
   const state = useDialogTitle_unstable(props, ref);
 
   useDialogTitleStyles_unstable(state);
+
+  const { useDialogTitleStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderDialogTitle_unstable(state);
 });
 

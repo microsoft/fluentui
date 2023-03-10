@@ -421,11 +421,12 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
+      popupProps,
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
     const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
-    const calloutCallback = React.useCallback(calloutEl => {
+    const calloutCallback = React.useCallback((calloutEl: any) => {
       setCalloutElement(calloutEl);
     }, []);
     const rootRef = useMergedRefs(hostElement, forwardedRef);
@@ -522,6 +523,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            {...popupProps}
           >
             {children}
           </Popup>

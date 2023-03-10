@@ -11,10 +11,14 @@ export type ProviderContextValue = {
 /**
  * @internal
  */
-const ProviderContext = React.createContext<ProviderContextValue>({
+const ProviderContext = React.createContext<ProviderContextValue | undefined>(
+  undefined,
+) as React.Context<ProviderContextValue>;
+
+const providerContextDefaultValue: ProviderContextValue = {
   targetDocument: typeof document === 'object' ? document : undefined,
-  dir: 'ltr',
-});
+  dir: 'ltr' as const,
+};
 
 /**
  * @internal
@@ -22,5 +26,5 @@ const ProviderContext = React.createContext<ProviderContextValue>({
 export const Provider = ProviderContext.Provider;
 
 export function useFluent(): ProviderContextValue {
-  return React.useContext(ProviderContext);
+  return React.useContext(ProviderContext) ?? providerContextDefaultValue;
 }

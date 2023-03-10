@@ -4,8 +4,11 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -26,6 +29,22 @@ export const sliderCSSVars: {
     sliderProgressVar: string;
     sliderStepsPercentVar: string;
 };
+
+// @public @deprecated (undocumented)
+export const SliderField_unstable: ForwardRefComponent<SliderFieldProps_unstable>;
+
+// @public @deprecated (undocumented)
+export const sliderFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
+
+// @public @deprecated (undocumented)
+export type SliderFieldProps_unstable = DeprecatedFieldProps<SliderProps>;
 
 // @public (undocumented)
 export type SliderOnChangeData = {

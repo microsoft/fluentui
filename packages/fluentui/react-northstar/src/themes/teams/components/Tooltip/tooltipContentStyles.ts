@@ -51,7 +51,7 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
     fontSize: pxToRem(12),
     padding: v.padding,
     textAlign: 'left',
-
+    lineHeight: pxToRem(16),
     color: v.color,
     background: v.backgroundColor,
     borderRadius: v.borderRadius,

@@ -17,7 +17,7 @@ export const InjectionMode = {
   appendChild: 2 as 2,
 };
 
-export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 /**
  * CSP settings for the stylesheet
@@ -104,7 +104,10 @@ let _global: (Window | {}) & {
 
 // Grab window.
 try {
-  _global = window || {};
+  // Why the cast?
+  // if compiled/type checked in same program with `@fluentui/font-icons-mdl2` which extends `Window` on global
+  // ( check packages/font-icons-mdl2/src/index.ts ) the definitions don't match! Thus the need of this extra assertion
+  _global = (window || {}) as typeof _global;
 } catch {
   /* leave as blank object */
 }

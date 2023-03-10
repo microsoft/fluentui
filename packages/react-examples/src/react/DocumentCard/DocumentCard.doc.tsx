@@ -7,11 +7,16 @@ import { DocumentCardCompleteExample } from './DocumentCard.Complete.Example';
 import { DocumentCardImageExample } from './DocumentCard.Image.Example';
 import { DocumentCardConversationExample } from './DocumentCard.Conversation.Example';
 
-const DocumentCardBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Compact.Example.tsx') as string;
-const DocumentCardCompleteExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardImageExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Image.Example.tsx') as string;
-const DocumentCardConversationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Conversation.Example.tsx') as string;
+const DocumentCardBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardCompactExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardCompleteExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardImageExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Image.Example.tsx') as string;
+const DocumentCardConversationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DocumentCard/DocumentCard.Conversation.Example.tsx') as string;
 
 export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',

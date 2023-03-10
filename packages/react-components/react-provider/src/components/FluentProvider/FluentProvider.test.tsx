@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { FluentProvider } from './FluentProvider';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -15,7 +15,7 @@ describe('FluentProvider', () => {
   });
 
   isConformant({
-    disabledTests: ['component-handles-classname', 'component-has-static-classname-exported'],
+    disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
   });

@@ -5,11 +5,18 @@ import * as platformPickerStyles from '@fluentui/react-docsite-components/lib/co
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLogo } from './utilities/index';
+import { androidLogo, appleLogo, webLogo, macLogo, windowsLogo, crossPlatformLogo, cdnUrl } from './utilities/index';
 
 // TODO: handle redirects
 
-initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types/');
+// Remove MWF stylesheet as it is unused by the site and causes conflicts with our styles
+for (const tag of Array.from(document.getElementsByTagName('link'))) {
+  if (tag.href.includes('mwf-main')) {
+    tag.remove();
+  }
+}
+
+initializeFileTypeIcons(cdnUrl + '/assets/item-types/');
 
 setRTL(false);
 

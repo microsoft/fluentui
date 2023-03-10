@@ -15,7 +15,6 @@ const useRootStyles = makeStyles({
   // Base styles
   base: {
     height: 'auto',
-    maxWidth: 'unset',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
@@ -71,6 +70,12 @@ const useRootStyles = makeStyles({
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
+
+    '@media (forced-colors: active)': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: 'HighlightText',
+      },
+    },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */
@@ -82,13 +87,13 @@ const useRootStyles = makeStyles({
 
     ':hover': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: tokens.colorNeutralForeground2Hover,
       },
     },
 
     ':hover:active': {
       [`& .${compoundButtonClassNames.secondaryContent}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: tokens.colorNeutralForeground2Pressed,
       },
     },
   },

@@ -61,7 +61,7 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
         {...detailsFooterProps}
         columns={detailsFooterProps.columns}
         item={{}}
-        itemIndex={-1}
+        itemIndex={5}
         groupNestingDepth={detailsFooterProps.groupNestingDepth}
         selectionMode={SelectionMode.single}
         selection={detailsFooterProps.selection}

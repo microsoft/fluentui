@@ -25,13 +25,12 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: unset;
             left: 0px;
-            position: static;
+            pointer-events: none;
+            position: fixed;
             right: 0px;
             top: 0px;
             visibility: hidden;
-            width: unset;
             z-index: 1000000;
           }
       data-portal-element="true"
@@ -81,8 +80,8 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                   opacity: 1;
-                  pointer-events: auto;
-                  position: absolute;
+                  pointer-events: none;
+                  position: fixed;
                   transition: opacity 0.267s;
                   width: 100%;
                 }
@@ -103,6 +102,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
                     min-width: 288px;
                     outline: 3px solid transparent;
                     overflow-y: auto;
+                    pointer-events: auto;
                     position: relative;
                     text-align: left;
                     z-index: 1000000;
@@ -345,13 +345,12 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: unset;
             left: 0px;
-            position: static;
+            pointer-events: none;
+            position: fixed;
             right: 0px;
             top: 0px;
             visibility: hidden;
-            width: unset;
             z-index: 1000000;
           }
       data-portal-element="true"
@@ -401,8 +400,8 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                   opacity: 1;
-                  pointer-events: auto;
-                  position: absolute;
+                  pointer-events: none;
+                  position: fixed;
                   transition: opacity 0.267s;
                   width: 100%;
                 }
@@ -422,6 +421,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                     min-width: 288px;
                     outline: 3px solid transparent;
                     overflow-y: auto;
+                    pointer-events: auto;
                     position: relative;
                     text-align: left;
                     z-index: 1000000;

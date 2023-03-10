@@ -1,5 +1,4 @@
-import { copyTask } from '@fluentui/scripts';
-import { expandSourcePath } from '@fluentui/scripts/tasks/copy';
+import { copyTask, expandSourcePath } from '@fluentui/scripts-tasks';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -7,15 +6,15 @@ import * as path from 'path';
 // so we can more easily load them into the editor later.
 export function copyTypes() {
   const packagesToResolve = ['@fluentui/react', '@fluentui/react-hooks', '@fluentui/example-data'];
-  const resolvedPackages = [];
-  const pathsToCopy = [];
+  const resolvedPackages: string[] = [];
+  const pathsToCopy: string[] = [];
 
-  while (packagesToResolve.length) {
-    const pkg = packagesToResolve.shift();
+  let pkg: string | undefined;
+  while ((pkg = packagesToResolve.shift())) {
+    const [, packageNameWithoutScope] = pkg.match(/^@fluentui\/([\w-]+)/) as RegExpMatchArray;
+    const dtsPath = expandSourcePath(`${pkg}/dist/${packageNameWithoutScope}.d.ts`) as string;
+
     resolvedPackages.push(pkg);
-
-    const packageMatch = pkg.match(/^@fluentui\/([\w-]+)/);
-    const dtsPath = expandSourcePath(`${pkg}/dist/${packageMatch[1]}.d.ts`);
 
     if (fs.existsSync(dtsPath)) {
       // copy this .d.ts

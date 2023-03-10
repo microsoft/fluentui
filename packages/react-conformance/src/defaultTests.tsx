@@ -10,7 +10,6 @@ import { getPackagePath, getCallbackArguments, validateCallbackArguments } from 
 import { act } from 'react-dom/test-utils';
 
 const CALLBACK_REGEX = /^on(?!Render[A-Z])[A-Z]/;
-const DEFAULT_CLASSNAME_PREFIX = 'fui-';
 
 /**
  * Find the target element where the attribute is applied using either `getTargetElement`,
@@ -247,59 +246,7 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** Component file has assigned and exported static class */
-  'component-has-static-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    const {
-      Component,
-      requiredProps,
-      renderOptions,
-      testOptions: { 'component-has-static-classname': { prefix = DEFAULT_CLASSNAME_PREFIX } = {} } = {},
-    } = testInfo;
-    const componentClassName = `${prefix}${componentInfo.displayName}`;
-
-    it(`has static classname (component-has-static-classname)`, () => {
-      const result = render(<Component {...requiredProps} />, renderOptions);
-      const rootEl = getTargetElement(testInfo, result, 'className');
-      expect(rootEl).toBeTruthy();
-      const classNames = classListToStrings(rootEl.classList);
-
-      try {
-        expect(classNames).toContain(componentClassName);
-      } catch (e) {
-        throw new Error(
-          defaultErrorMessages['component-has-static-classname'](testInfo, e, componentClassName, classNames),
-        );
-      }
-    });
-  },
-
-  'component-has-static-classname-exported': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (testInfo.isInternal) {
-      return;
-    }
-
-    const {
-      componentPath,
-      testOptions: { 'component-has-static-classname': { prefix = DEFAULT_CLASSNAME_PREFIX } = {} } = {},
-    } = testInfo;
-    const componentClassName = `${prefix}${componentInfo.displayName}`;
-
-    it(`static classname is exported at top-level (component-has-static-classname-exported)`, () => {
-      const exportName =
-        componentInfo.displayName.slice(0, 1).toLowerCase() + componentInfo.displayName.slice(1) + 'ClassName';
-
-      try {
-        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
-
-        expect(indexFile[exportName]).toBe(componentClassName);
-      } catch (e) {
-        throw new Error(
-          defaultErrorMessages['component-has-static-classname-exported'](testInfo, e, componentClassName, exportName),
-        );
-      }
-    });
-  },
-
+  /** Component file has assigned and exported static classnames object */
   'component-has-static-classnames-object': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { componentPath, Component, requiredProps, renderOptions } = testInfo;
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { AccordionItemContext } from '../AccordionItem';
 
 describe('AccordionPanel', () => {
@@ -14,7 +14,6 @@ describe('AccordionPanel', () => {
   isConformant({
     Component: AccordionPanel,
     displayName: 'AccordionPanel',
-    disabledTests: ['component-has-static-classname-exported'],
     renderOptions: { wrapper: Wrapper },
   });
 

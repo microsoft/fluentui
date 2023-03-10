@@ -2,8 +2,8 @@ import * as React from 'react';
 import { DialogTrigger } from './DialogTrigger';
 import * as renderer from 'react-test-renderer';
 import { createEvent, fireEvent, render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
-import { mockUseDialogContext } from '../../contexts/dialogContext.mock';
+import { isConformant } from '../../testing/isConformant';
+import { mockUseDialogContext } from '../../testing/mockUseDialogContext';
 import { Enter } from '@fluentui/keyboard-keys';
 import { DialogTriggerProps } from './DialogTrigger.types';
 
@@ -18,9 +18,7 @@ describe('DialogTrigger', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
       'component-has-static-classnames-object',
-      'component-has-static-classname-exported',
       // DialogTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -36,7 +34,7 @@ describe('DialogTrigger', () => {
    */
   it('renders a default state', () => {
     const component = renderer.create(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button>Dialog trigger</button>
       </DialogTrigger>,
     );
@@ -48,7 +46,7 @@ describe('DialogTrigger', () => {
     // Arrange
     const ref = jest.fn();
     render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button ref={ref}>Trigger</button>
       </DialogTrigger>,
     );
@@ -58,7 +56,7 @@ describe('DialogTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-haspopup="dialog"
+          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
@@ -76,7 +74,7 @@ describe('DialogTrigger', () => {
         cb(ref.current);
       }, []);
       return (
-        <DialogTrigger>
+        <DialogTrigger disableButtonEnhancement>
           <button ref={ref}>Trigger</button>
         </DialogTrigger>
       );
@@ -88,7 +86,7 @@ describe('DialogTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-haspopup="dialog"
+          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
@@ -97,26 +95,12 @@ describe('DialogTrigger', () => {
     `);
   });
 
-  it('should not open dialog when aria-disabled is true', () => {
-    const requestOpenChange = jest.fn();
-    mockUseDialogContext({ requestOpenChange });
-
-    const { getByRole } = render(
-      <DialogTrigger>
-        <button aria-disabled>trigger</button>
-      </DialogTrigger>,
-    );
-    fireEvent.click(getByRole('button'));
-
-    expect(requestOpenChange).toBeCalledTimes(0);
-  });
-
   it('should open dialog when aria-disabled is false', () => {
     const requestOpenChange = jest.fn();
     mockUseDialogContext({ requestOpenChange });
 
     const { getByRole } = render(
-      <DialogTrigger action="open">
+      <DialogTrigger disableButtonEnhancement action="open">
         <button aria-disabled={false}>trigger</button>
       </DialogTrigger>,
     );
@@ -131,7 +115,7 @@ describe('DialogTrigger', () => {
     mockUseDialogContext({ requestOpenChange });
 
     const { getByRole } = render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <button disabled>trigger</button>
       </DialogTrigger>,
     );
@@ -143,7 +127,7 @@ describe('DialogTrigger', () => {
   it('should not keyboard click when event is default prevented', () => {
     const onClick = jest.fn();
     const { getByRole } = render(
-      <DialogTrigger>
+      <DialogTrigger disableButtonEnhancement>
         <div role="button" onClick={onClick}>
           trigger
         </div>

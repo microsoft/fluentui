@@ -1,5 +1,5 @@
-export interface VirtualElement extends HTMLElement {
+export interface VirtualElement extends Node {
   _virtual: {
-    parent?: HTMLElement;
+    parent?: Node;
   };
 }

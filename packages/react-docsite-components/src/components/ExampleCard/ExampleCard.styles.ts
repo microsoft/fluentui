@@ -73,7 +73,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         alignItems: 'center',
         display: 'flex',
         height: 40,
-        width: 150,
+        width: 200,
         selectors: {
           [`&.${globalClassNames.themeDropdown}:focus`]: {
             borderColor: theme.palette.neutralDark,

@@ -17,7 +17,7 @@ import type { AlertProps, AlertState } from './Alert.types';
  * @param ref - reference to root HTMLElement of Alert
  */
 export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>): AlertState => {
-  const { intent } = props;
+  const { appearance = 'primary', intent } = props;
 
   /** Determine the role and icon to render based on the intent */
   let defaultIcon;
@@ -39,6 +39,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
       break;
   }
 
+  const action = resolveShorthand(props.action, { defaultProps: { appearance: 'transparent' } });
   const avatar = resolveShorthand(props.avatar);
   let icon;
   /** Avatar prop takes precedence over the icon or intent prop */
@@ -52,21 +53,22 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
   }
 
   return {
+    action,
+    appearance,
+    avatar,
     components: {
       root: 'div',
       icon: 'span',
       action: Button,
       avatar: Avatar,
     },
+    icon,
+    intent,
     root: getNativeElementProps('div', {
       ref,
       role: defaultRole,
       children: props.children,
       ...props,
     }),
-    icon,
-    avatar,
-    action: resolveShorthand(props.action, { defaultProps: { appearance: 'transparent' } }),
-    intent,
   };
 };

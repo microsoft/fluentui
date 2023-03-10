@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DialogBody } from './DialogBody';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import type { DialogBodyProps } from './DialogBody.types';
 
 describe('DialogBody', () => {
   isConformant<DialogBodyProps>({
     Component: DialogBody,
     displayName: 'DialogBody',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

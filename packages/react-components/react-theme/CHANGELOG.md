@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Tue, 28 Jun 2022 15:13:21 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2022 10:20:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.5)
+
+Wed, 21 Dec 2022 10:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.4..@fluentui/react-theme_v9.1.5)
+
+### Patches
+
+- chore: re-export theme from tokens package ([PR #25966](https://github.com/microsoft/fluentui/pull/25966) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.2 ([commit](https://github.com/microsoft/fluentui/commit/66bf89f634cad4a275e957d7a2214c7e73ff8c2e) by beachball)
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.4)
+
+Tue, 20 Dec 2022 14:59:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.3..@fluentui/react-theme_v9.1.4)
+
+### Patches
+
+- fix: update theme tokens ([PR #25903](https://github.com/microsoft/fluentui/pull/25903) by miroslav.stastny@microsoft.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.3)
+
+Mon, 05 Dec 2022 18:29:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.2..@fluentui/react-theme_v9.1.3)
+
+### Patches
+
+- refactor: Use Object.assign to reduce loop runtime ([PR #25433](https://github.com/microsoft/fluentui/pull/25433) by tigeroakes@microsoft.com)
+- chore: Migrate to new package structure. ([PR #25812](https://github.com/microsoft/fluentui/pull/25812) by tristan.watanabe@gmail.com)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.2)
+
+Fri, 11 Nov 2022 14:57:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.1..@fluentui/react-theme_v9.1.2)
+
+### Patches
+
+- Fixed incorrect typography style ([PR #25577](https://github.com/microsoft/fluentui/pull/25577) by gcox@microsoft.com)
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.1)
+
+Thu, 20 Oct 2022 08:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.0..@fluentui/react-theme_v9.1.1)
+
+### Patches
+
+- chore: Bump peer deps to support React 18 ([PR #24972](https://github.com/microsoft/fluentui/pull/24972) by mgodbolt@microsoft.com)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.0)
+
+Thu, 15 Sep 2022 09:49:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0..@fluentui/react-theme_v9.1.0)
+
+### Minor changes
+
+- feat: Add fontWeightBold, add Body2, fix font weight for *Stronger typography ([PR #24378](https://github.com/microsoft/fluentui/pull/24378) by miroslav.stastny@microsoft.com)
+
+### Patches
+
+- fix: update token values to fix failing color contrast ([PR #24027](https://github.com/microsoft/fluentui/pull/24027) by seanmonahan@microsoft.com)
+- fix: update color neutral background inverted color in teams dark ([PR #24494](https://github.com/microsoft/fluentui/pull/24494) by seanmonahan@microsoft.com)
+- fix: Update color tokens mapping ([PR #24608](https://github.com/microsoft/fluentui/pull/24608) by miroslav.stastny@microsoft.com)
+- fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted ([PR #24611](https://github.com/microsoft/fluentui/pull/24611) by miroslav.stastny@microsoft.com)
+- fix: Change colorBrandForeground2 mapping in teamsDark theme ([PR #24579](https://github.com/microsoft/fluentui/pull/24579) by miroslav.stastny@microsoft.com)
+- fix: Swap Background1 and Foreground1 in HC color palette ([PR #24498](https://github.com/microsoft/fluentui/pull/24498) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0)
 

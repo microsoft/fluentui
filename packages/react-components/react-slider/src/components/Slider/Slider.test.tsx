@@ -2,14 +2,13 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { Slider } from './Slider';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Slider', () => {
   isConformant({
     Component: Slider,
     displayName: 'Slider',
     primarySlot: 'input',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   afterEach(() => {

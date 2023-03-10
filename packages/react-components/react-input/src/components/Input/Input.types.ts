@@ -47,8 +47,16 @@ export type InputProps = Omit<
   /**
    * Controls the colors and borders of the input.
    * @default 'outline'
+   *
+   * Note: 'filled-darker-shadow' and 'filled-lighter-shadow' are deprecated and will be removed in the future.
    */
-  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
+  appearance?:
+    | 'outline'
+    | 'underline'
+    | 'filled-darker'
+    | 'filled-lighter'
+    | 'filled-darker-shadow'
+    | 'filled-lighter-shadow';
 
   /**
    * Default value of the input. Provide this if the input should be an uncontrolled component

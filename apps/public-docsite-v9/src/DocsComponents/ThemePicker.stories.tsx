@@ -32,15 +32,18 @@ const useStyles = makeStyles({
  */
 export const ThemePicker: React.FC<{ selectedThemeId?: string }> = ({ selectedThemeId }) => {
   const styles = useStyles();
+  const [currentThemeId, setCurrentThemeId] = React.useState(selectedThemeId ?? null);
 
   const setGlobalTheme = (themeId: ThemeIds): void => {
     addons.getChannel().emit('updateGlobals', { globals: { [THEME_ID]: themeId } });
   };
   const onCheckedValueChange: MenuProps['onCheckedValueChange'] = (e, data) => {
-    setGlobalTheme(data.checkedItems[0] as ThemeIds);
+    const newThemeId = data.checkedItems[0] as ThemeIds;
+    setGlobalTheme(newThemeId);
+    setCurrentThemeId(newThemeId);
   };
 
-  const selectedTheme = themes.find(theme => theme.id === selectedThemeId);
+  const selectedTheme = themes.find(theme => theme.id === currentThemeId);
 
   return (
     <Menu

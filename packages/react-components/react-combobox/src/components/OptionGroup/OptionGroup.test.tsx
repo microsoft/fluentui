@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { OptionGroup } from './OptionGroup';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('OptionGroup', () => {
   isConformant({
     Component: OptionGroup,
     displayName: 'OptionGroup',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

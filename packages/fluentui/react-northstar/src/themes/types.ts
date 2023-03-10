@@ -142,7 +142,7 @@ export type ColorScheme<T extends string | number | symbol = ComponentAreaName> 
 
 export type ColorSchemeMapping<
   Scheme = ColorScheme,
-  Colors extends string | number | symbol = ColorNames
+  Colors extends string | number | symbol = ColorNames,
 > = ColorValues<Extendable<Scheme, string>, Colors> & {
   default?: Extendable<Scheme, string>;
 };
@@ -151,14 +151,14 @@ export type StrictColorScheme<T extends string | number | symbol = ComponentArea
 
 export type StrictColorSchemeMapping<
   Scheme = StrictColorScheme,
-  Colors extends string | number | symbol = ColorNames
+  Colors extends string | number | symbol = ColorNames,
 > = ColorValues<Scheme, Colors> & {
   default?: Scheme;
 };
 
 export type ColorSchemeMappingOverrides<
   Scheme = ColorScheme,
-  Colors extends string | number | symbol = ColorNames
+  Colors extends string | number | symbol = ColorNames,
 > = ColorValues<Partial<Extendable<Scheme, string>>, Colors> & {
   default?: Partial<Extendable<ColorScheme, string>>;
 };

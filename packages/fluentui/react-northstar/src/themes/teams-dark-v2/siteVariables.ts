@@ -24,7 +24,7 @@ export const colorScheme = {
     background6: colors.grey['910'],
     background7: colors.grey['850'],
 
-    border: colors.grey['450'],
+    border: colors.grey['440'],
     border1: colors.grey['850'],
     border2: colors.grey['900'],
     border3: colors.grey['550'],
@@ -36,15 +36,15 @@ export const colorScheme = {
     foregroundHover2: colors.white,
 
     backgroundHover: colors.grey['550'],
-    backgroundHover1: colors.grey['750'],
+    backgroundHover1: colors.grey['700'],
     backgroundHover2: 'transparent',
     backgroundHover3: colors.grey['650'],
     backgroundHover4: colors.grey['700'],
     backgroundHover6: colors.grey['550'],
-    borderHover: colors.grey['430'],
+    borderHover: colors.grey['420'],
 
     foregroundPressed: colors.white,
-    backgroundPressed: colors.grey['650'],
+    backgroundPressed: colors.grey['800'],
     backgroundPressed2: colors.grey['850'],
     backgroundPressed3: colors.grey['800'],
 
@@ -52,10 +52,10 @@ export const colorScheme = {
     foregroundActive1: colors.white,
 
     backgroundActive: colors.grey['600'],
-    backgroundActive1: colors.grey['800'],
+    backgroundActive1: colors.grey['750'],
     backgroundActive2: colors.grey['575'],
 
-    borderActive: colors.grey['440'],
+    borderActive: colors.grey['430'],
 
     // foregroundFocus: not specified,
     foregroundFocus1: colors.grey['220'],
@@ -75,7 +75,7 @@ export const colorScheme = {
     borderDisabled: colors.grey['500'],
 
     backgroundDisabled: colors.grey['800'],
-    backgroundDisabled1: colors.grey['800'],
+    backgroundDisabled1: colors.grey['870'],
   },
   brand: {
     background: colors.brand['700'],

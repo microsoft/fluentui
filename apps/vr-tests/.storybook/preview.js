@@ -40,8 +40,3 @@ setAddon({
 });
 
 export const parameters = { layout: 'none' };
-
-// For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
-if (typeof window === 'object') {
-  /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
-}

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Text } from './Text';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TextProps } from './Text.types';
 
 describe('Text', () => {
   isConformant<TextProps>({
     Component: Text,
     displayName: 'Text',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
     testOptions: {
       'make-styles-overrides-win': {
         callCount: 1,
@@ -21,7 +20,15 @@ describe('Text', () => {
   it('renders a default state', () => {
     const { container, getByText } = render(<Text>Test</Text>);
 
-    expect(container).toMatchSnapshot();
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <span
+          class="fui-Text"
+        >
+          Test
+        </span>
+      </div>
+    `);
 
     const textElement = getByText('Test');
     expect(textElement.nodeName).toBe('SPAN');
@@ -146,6 +153,7 @@ describe('Text', () => {
     ['regular', 'Regular'],
     ['medium', 'Medium'],
     ['semibold', 'Semibold'],
+    ['bold', 'Bold'],
   ] as const)('applies %s weight', (input, expectedValue) => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
 

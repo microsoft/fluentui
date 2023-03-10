@@ -20,6 +20,7 @@ import {
   memoizeFunction,
   getPropsWithDefaults,
   getDocument,
+  FocusRects,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { Callout } from '../../Callout';
@@ -182,7 +183,6 @@ function useSubMenuState(
       }
 
       target.focus();
-
       setShouldFocusOnContainer(focusContainer);
       setExpandedMenuItemKey(submenuItemKey);
       setSubmenuTarget(target);
@@ -251,7 +251,11 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
   return [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] as const;
 }
 
-function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuProps, targetWindow: Window | undefined) {
+function usePreviousActiveElement(
+  { hidden, onRestoreFocus }: IContextualMenuProps,
+  targetWindow: Window | undefined,
+  hostElement: any,
+) {
   const previousActiveElement = React.useRef<undefined | HTMLElement>();
 
   const tryFocusPreviousActiveElement = React.useCallback(
@@ -270,7 +274,10 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
 
   useIsomorphicLayoutEffect(() => {
     if (!hidden) {
-      previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
+      const newElement = targetWindow?.document.activeElement as HTMLElement;
+      if (!hostElement.current?.contains(newElement) && newElement.tagName !== 'BODY') {
+        previousActiveElement.current = newElement;
+      }
     } else if (previousActiveElement.current) {
       tryFocusPreviousActiveElement({
         originalElement: previousActiveElement.current,
@@ -280,7 +287,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
 
       previousActiveElement.current = undefined;
     }
-  }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
+  }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement, hostElement]);
 
   return [tryFocusPreviousActiveElement] as const;
 }
@@ -715,7 +722,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const dismiss = (ev?: any, dismissAll?: boolean) => props.onDismiss?.(ev, dismissAll);
     const [targetRef, targetWindow] = useTarget(props.target, hostElement);
-    const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow);
+    const [tryFocusPreviousActiveElement] = usePreviousActiveElement(props, targetWindow, hostElement);
     const [expandedMenuItemKey, openSubMenu, getSubmenuProps, onSubMenuDismiss] = useSubMenuState(props, dismiss);
     const [shouldUpdateFocusOnMouseEvent, gotMouseMove, onMenuFocusCapture] = useShouldUpdateFocusOnMouseMove(props);
     const [onScroll, isScrollIdle] = useScrollHandler(asyncTracker);
@@ -1287,6 +1294,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
                   : null}
                 {submenuProps && onRenderSubMenu(submenuProps, onDefaultRenderSubMenu)}
               </div>
+              <FocusRects />
             </Callout>
           )}
         </MenuContext.Consumer>

@@ -8,15 +8,19 @@ type StoryImport = {
   path: string;
 };
 
-// TODO: Once will be solved, can be simplified https://github.com/microsoft/fluentui/issues/23393
 function getImportPrefix(filename: string): string {
-  const importPrefixByFile = path.basename(filename).split('.')[0];
+  const importPrefix = path.basename(path.dirname(filename));
 
-  if (importPrefixByFile === 'index') {
-    return path.basename(path.dirname(filename));
+  if (importPrefix === 'stories' || importPrefix[0].toLowerCase() === importPrefix[0]) {
+    throw new Error(
+      [
+        `The file "${filename}" has an incorrect location a directory name.`,
+        `All stories should be placed in "/src/stories/ComponentName" directory.`,
+      ].join(' '),
+    );
   }
 
-  return importPrefixByFile;
+  return importPrefix;
 }
 
 export async function getImportsFromIndexFile(distDir: string, filename: string): Promise<StoryImport[]> {
@@ -57,11 +61,16 @@ export async function getImportsFromIndexFile(distDir: string, filename: string)
         }
 
         const importName = specifierPath.get('local').node.name;
+        // These paths should be always POSIX-like as backslashes are not valid to be used in imports
+        const importPath = path
+          .relative(distDir, path.resolve(path.dirname(filename), sourcePath.node.value))
+          .split(path.sep)
+          .join(path.posix.sep);
 
         imports.push({
           local: importName,
           imported: importPrefix + importName,
-          path: path.relative(distDir, path.resolve(path.dirname(filename), sourcePath.node.value)),
+          path: importPath,
         });
       },
     },

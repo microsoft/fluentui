@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Avatar } from '../Avatar/Avatar';
-import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { AvatarGroupContext, useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
 /**
@@ -19,10 +19,9 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
-  const nonOverflowAvatarsCount = useContextSelector(AvatarGroupContext, ctx => ctx.nonOverflowAvatarsCount);
-  const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
-  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
-  const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  const groupIsOverflow = useAvatarGroupContext_unstable(ctx => ctx.isOverflow);
+  const groupSize = useAvatarGroupContext_unstable(ctx => ctx.size);
+  const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
   const { style, className, ...avatarSlotProps } = props;
   const size = groupSize ?? defaultAvatarGroupSize;
@@ -34,12 +33,11 @@ export const useAvatarGroupItem_unstable = (
   }
 
   return {
-    nonOverflowAvatarsCount: nonOverflowAvatarsCount ?? 1,
+    isOverflowItem: groupIsOverflow,
     layout,
     size,
-    isOverflowItem: groupIsOverflow,
     components: {
-      root: 'div',
+      root: groupIsOverflow ? 'li' : 'div',
       avatar: Avatar,
       overflowLabel: 'span',
     },
@@ -48,7 +46,6 @@ export const useAvatarGroupItem_unstable = (
       defaultProps: {
         style,
         className,
-        role: groupIsOverflow ? 'listitem' : undefined,
       },
     }),
     avatar: resolveShorthand(props.avatar, {
@@ -63,6 +60,8 @@ export const useAvatarGroupItem_unstable = (
     overflowLabel: resolveShorthand(props.overflowLabel, {
       required: true,
       defaultProps: {
+        // Avatar already has its aria-label set to the name, this will prevent the name to be read twice.
+        'aria-hidden': true,
         children: props.name,
       },
     }),

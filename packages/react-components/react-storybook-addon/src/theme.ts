@@ -8,8 +8,6 @@ import {
 
 import type { Theme } from '@fluentui/react-theme';
 
-export { FluentProvider } from '@fluentui/react-provider';
-
 export const themes = [
   { id: 'web-light', label: 'Web Light', theme: webLightTheme },
   { id: 'web-dark', label: 'Web Dark', theme: webDarkTheme },
@@ -20,7 +18,7 @@ export const themes = [
 
 export const defaultTheme = themes[0];
 
-export type ThemeIds = typeof themes[number]['id'];
-export type ThemeLabels = typeof themes[number]['label'];
+export type ThemeIds = (typeof themes)[number]['id'];
+export type ThemeLabels = (typeof themes)[number]['label'];
 
 export type { Theme };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Tab } from '../Tab/index';
 import { TabList } from './index';
 
@@ -8,7 +8,6 @@ describe('TabList', () => {
   isConformant({
     Component: TabList,
     displayName: 'TabList',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders with tabs', () => {

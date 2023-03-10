@@ -17,12 +17,12 @@ export type CardHeaderSlots = {
   /**
    * Element used to render the main header title.
    */
-  header: Slot<'span'>;
+  header: Slot<'div'>;
 
   /**
    * Element used to render short descriptions related to the title.
    */
-  description: Slot<'span'>;
+  description: Slot<'div'>;
 
   /**
    * Container that renders on the far end of the footer, used for action buttons.

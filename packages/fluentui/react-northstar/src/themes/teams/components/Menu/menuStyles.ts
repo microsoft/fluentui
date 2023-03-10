@@ -23,7 +23,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
       ...(vertical && {
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
-        padding: `${pxToRem(8)} 0`,
+        padding: `${pxToRem(8)} ${pxToRem(4)}`,
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),

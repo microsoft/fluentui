@@ -1,11 +1,11 @@
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { brandRamp } from '../components/ColorTokens/getOverridableTokenBrandColors';
 
-export const getBrandValues = (brand: BrandVariants, overrideList: Partial<Theme>, spacer: string) => {
+export const getBrandValues = (brand: BrandVariants, overrideList: Partial<Theme>, name: string, spacer: string) => {
   const hexToBrand: Record<string, string> = {};
 
   brandRamp.map(i => {
-    hexToBrand[brand[i]] = 'brand[' + `${i as number}` + ']';
+    hexToBrand[brand[i]] = name + '[' + `${i as number}` + ']';
     return;
   });
 

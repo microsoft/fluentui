@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { MenuDivider } from './MenuDivider';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('MenuDivider', () => {
   isConformant({
     Component: MenuDivider,
-    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuDivider',
   });
 

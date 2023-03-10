@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { MenuPopover } from './MenuPopover';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { MenuPopoverProps } from './MenuPopover.types';
 
 describe('MenuPopover', () => {
@@ -9,7 +9,6 @@ describe('MenuPopover', () => {
 
   isConformant({
     Component: MenuPopover,
-    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuPopover',
     requiredProps: { 'data-testid': testid } as MenuPopoverProps,
     getTargetElement: result => result.getByTestId(testid),

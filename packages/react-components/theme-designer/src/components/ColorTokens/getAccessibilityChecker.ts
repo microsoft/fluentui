@@ -11,7 +11,7 @@ export type ContrastRatio = {
 export type ContrastRatioList = Record<string, ContrastRatio[]>;
 
 export const getAccessibilityChecker = (theme: Partial<Theme>) => {
-  const currTheme = (theme as unknown) as Record<string, string>;
+  const currTheme = theme as unknown as Record<string, string>;
 
   const calculateContrastRatio = (curr: string, comp: string, desiredRatio: number) => {
     const currHex: string = currTheme[curr];
@@ -58,7 +58,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     }
   };
 
-  const pass: string[] = [];
+  const all: string[] = [];
   const fail: ContrastRatioList = {};
 
   Object.keys(accessiblePairs).map(token => {
@@ -76,12 +76,12 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     // Check if there are any accessibility failures
     if (failList.length > 0) {
       fail[token] = failList;
-    } else {
-      pass.push(token);
     }
+
+    all.push(token);
 
     return failList;
   });
 
-  return { pass, fail };
+  return { all, fail };
 };

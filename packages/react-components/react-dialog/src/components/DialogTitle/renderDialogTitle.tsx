@@ -11,10 +11,7 @@ export const renderDialogTitle_unstable = (state: DialogTitleState) => {
   return (
     <>
       <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>
-      {slots.closeButton && (
-        // TODO: Wrap around DialogTrigger component
-        <slots.closeButton {...slotProps.closeButton} />
-      )}
+      {slots.action && <slots.action {...slotProps.action} />}
     </>
   );
 };

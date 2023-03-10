@@ -1,0 +1,5 @@
+import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
+
+export function isConformant<TProps = {}>(
+  testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string }
+){}

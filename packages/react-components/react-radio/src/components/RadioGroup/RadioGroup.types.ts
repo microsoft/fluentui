@@ -48,7 +48,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   disabled?: boolean;
 
   /**
-   * Require all Radio items in this group.
+   * Require a selection in this group. Adds the `required` prop to all child Radio items.
    */
   required?: boolean;
 };

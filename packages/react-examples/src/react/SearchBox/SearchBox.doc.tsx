@@ -7,11 +7,16 @@ import { SearchBoxDisabledExample } from './SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './SearchBox.CustomIcon.Example';
 import { SearchBoxSmallExample } from './SearchBox.Small.Example';
 
-const SearchBoxFullSizeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.FullSize.Example.tsx') as string;
-const SearchBoxUnderlinedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Underlined.Example.tsx') as string;
-const SearchBoxDisabledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Disabled.Example.tsx') as string;
-const SearchBoxCustomIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.CustomIcon.Example.tsx') as string;
-const SearchBoxSmallExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Small.Example.tsx') as string;
+const SearchBoxFullSizeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxUnderlinedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Underlined.Example.tsx') as string;
+const SearchBoxDisabledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Disabled.Example.tsx') as string;
+const SearchBoxCustomIconExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.CustomIcon.Example.tsx') as string;
+const SearchBoxSmallExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Small.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',

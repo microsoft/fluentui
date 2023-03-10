@@ -45,6 +45,7 @@ export const createContext = <T>(defaultValue: T, name: string, packageName: str
   const globalSymbols = Object.getOwnPropertySymbols(globalObject);
   if (!globalSymbols.includes(sym)) {
     // @ts-expect-error - Indexing object with symbols not supported until TS 4.4
+    // eslint-disable-next-line @fluentui/no-context-default-value
     globalObject[sym] = baseCreateContext(defaultValue);
   }
 

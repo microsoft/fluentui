@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DialogTitle } from './DialogTitle';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import type { DialogTitleProps } from './DialogTitle.types';
 
 describe('DialogTitle', () => {
@@ -9,7 +9,6 @@ describe('DialogTitle', () => {
     Component: DialogTitle,
     displayName: 'DialogTitle',
     disabledTests: [
-      'component-has-static-classname-exported',
       // TODO: having problems due to the fact root of DialogTitle is Fragment
       'component-has-static-classnames-object',
     ],

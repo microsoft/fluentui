@@ -6,36 +6,27 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
-  inputFilledForcedColorStyles,
+  baseInputStyles,
   inputFilledStyles,
   inputForcedColorStyles,
+  inputOutlineStyles,
   inputStateStyles,
-  inputStyles,
 } from '../styles';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
 
-export const textFieldFilledStyles: (
+const logicalControlSelector: string = '.root';
+
+export const textFieldStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-  css`
-    ${inputFilledStyles(context, definition, '.root')}
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputFilledForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
-  );
-
-export const textFieldStyles = (context, definition) =>
+) =>
   css`
     ${display('inline-block')}
 
-    ${inputStyles(context, definition, '.root')}
+    ${baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${inputStateStyles(context, definition, '.root')}
+    ${inputStateStyles(context, definition, logicalControlSelector)}
 
     .root {
       display: flex;
@@ -72,10 +63,7 @@ export const textFieldStyles = (context, definition) =>
       margin-inline-end: 11px;
     }
   `.withBehaviors(
-    appearanceBehavior('filled', textFieldFilledStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

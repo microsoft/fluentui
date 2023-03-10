@@ -1,5 +1,5 @@
 {
-  "extends": "@fluentui/scripts/api-extractor/api-extractor.common.json",
+  "extends": "@fluentui/scripts-api-extractor/api-extractor.common.json",
   "messages": {
     "extractorMessageReporting": {
       "ae-internal-missing-underscore": {

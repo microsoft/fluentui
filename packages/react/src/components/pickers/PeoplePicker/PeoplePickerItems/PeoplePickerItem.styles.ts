@@ -17,6 +17,7 @@ const GlobalClassNames = {
 };
 
 const REMOVE_BUTTON_SIZE = 24;
+const PICKER_PERSONA_RADIUS = 15;
 
 export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
   const { className, theme, selected, invalid, disabled } = props;
@@ -91,7 +92,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       classNames.root,
       getFocusStyle(theme, { inset: -2 }),
       {
-        borderRadius: 15,
+        borderRadius: PICKER_PERSONA_RADIUS,
         display: 'inline-flex',
         alignItems: 'center',
         background: palette.neutralLighter,
@@ -144,7 +145,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
     removeButton: [
       classNames.removeButton,
       {
-        borderRadius: 15,
+        borderRadius: PICKER_PERSONA_RADIUS,
         color: palette.neutralPrimary,
         flex: '0 0 auto',
         width: REMOVE_BUTTON_SIZE,
@@ -157,6 +158,13 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         },
       },
       selected && [
+        getFocusStyle(theme, {
+          inset: 2,
+          borderColor: 'transparent',
+          highContrastStyle: { inset: 2, left: 1, top: 1, bottom: 1, right: 1, outlineColor: 'ButtonText' },
+          outlineColor: palette.white,
+          borderRadius: PICKER_PERSONA_RADIUS,
+        }),
         {
           color: palette.white,
           selectors: {

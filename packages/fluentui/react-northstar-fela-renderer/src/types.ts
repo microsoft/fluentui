@@ -16,6 +16,8 @@ export type FelaRenderer = IRenderer & {
     media?: string,
     support?: string,
   ): string;
+
+  styleNodeAttributes: Record<string, string | number | boolean>;
 };
 
 export type FelaRendererChange = {

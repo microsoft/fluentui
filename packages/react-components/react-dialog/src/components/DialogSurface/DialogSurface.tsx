@@ -4,6 +4,8 @@ import { renderDialogSurface_unstable } from './renderDialogSurface';
 import { useDialogSurfaceStyles_unstable } from './useDialogSurfaceStyles';
 import type { DialogSurfaceProps } from './DialogSurface.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useDialogSurfaceContextValues_unstable } from './useDialogSurfaceContextValues';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DialogSurface component represents the visual part of a `Dialog` as a whole,
@@ -11,9 +13,14 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  */
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forwardRef((props, ref) => {
   const state = useDialogSurface_unstable(props, ref);
+  const contextValues = useDialogSurfaceContextValues_unstable(state);
 
   useDialogSurfaceStyles_unstable(state);
-  return renderDialogSurface_unstable(state);
+
+  const { useDialogSurfaceStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
+  return renderDialogSurface_unstable(state, contextValues);
 });
 
 DialogSurface.displayName = 'DialogSurface';

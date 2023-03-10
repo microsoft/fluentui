@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { Radio } from './Radio';
 
 describe('Radio', () => {
@@ -10,7 +10,6 @@ describe('Radio', () => {
   isConformant({
     Component: Radio,
     displayName: 'Radio',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'input',
     testOptions: {
       'has-static-classnames': [

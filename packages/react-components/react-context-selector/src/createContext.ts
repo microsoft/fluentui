@@ -41,13 +41,14 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
     Provider.displayName = 'ContextSelector.Provider';
   }
 
-  return (Provider as unknown) as React.Provider<ContextValue<Value>>;
+  return Provider as unknown as React.Provider<ContextValue<Value>>;
 };
 
 /**
  * @internal
  */
 export const createContext = <Value>(defaultValue: Value): Context<Value> => {
+  // eslint-disable-next-line @fluentui/no-context-default-value
   const context = React.createContext<ContextValue<Value>>({
     value: { current: defaultValue },
     version: { current: -1 },
@@ -57,7 +58,7 @@ export const createContext = <Value>(defaultValue: Value): Context<Value> => {
   context.Provider = createProvider<Value>(context.Provider);
 
   // We don't support Consumer API
-  delete ((context as unknown) as Context<Value>).Consumer;
+  delete (context as unknown as Context<Value>).Consumer;
 
-  return (context as unknown) as Context<Value>;
+  return context as unknown as Context<Value>;
 };

@@ -11,7 +11,7 @@ export const MessageBarPage: React.FunctionComponent<IControlsPageProps> = props
   return (
     <ControlsAreaPage
       {...props}
-      {...MessageBarPageProps[props.platform]}
+      {...MessageBarPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );
@@ -24,7 +24,8 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/MessageBarImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
         },
       ];
   }

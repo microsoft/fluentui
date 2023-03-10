@@ -25,29 +25,29 @@ const headingStackTokens: IStackTokens = { childrenGap: 30 };
 
 export const VerticalStackVerticalAlignExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={sectionStackTokens}>
-      <Stack horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>
-        <Stack grow>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>
+        <Stack enableScopedSelectors grow>
           <span>Top-aligned</span>
-          <Stack verticalAlign="start" styles={stackStyles}>
+          <Stack enableScopedSelectors verticalAlign="start" styles={stackStyles}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack grow>
+        <Stack enableScopedSelectors grow>
           <span>Vertically centered</span>
-          <Stack verticalAlign="center" styles={stackStyles}>
+          <Stack enableScopedSelectors verticalAlign="center" styles={stackStyles}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack grow>
+        <Stack enableScopedSelectors grow>
           <span>Bottom-aligned</span>
-          <Stack verticalAlign="end" styles={stackStyles}>
+          <Stack enableScopedSelectors verticalAlign="end" styles={stackStyles}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
@@ -55,28 +55,28 @@ export const VerticalStackVerticalAlignExample: React.FunctionComponent = () => 
         </Stack>
       </Stack>
 
-      <Stack horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>
-        <Stack grow>
+      <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>
+        <Stack enableScopedSelectors grow>
           <span>Vertical space around items</span>
-          <Stack verticalAlign="space-around" styles={stackStyles}>
+          <Stack enableScopedSelectors verticalAlign="space-around" styles={stackStyles}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack grow>
+        <Stack enableScopedSelectors grow>
           <span>Vertical space between items</span>
-          <Stack verticalAlign="space-between" styles={stackStyles}>
+          <Stack enableScopedSelectors verticalAlign="space-between" styles={stackStyles}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack grow>
+        <Stack enableScopedSelectors grow>
           <span>Items vertically evenly spaced</span>
-          <Stack verticalAlign="space-evenly" styles={stackStyles}>
+          <Stack enableScopedSelectors verticalAlign="space-evenly" styles={stackStyles}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>

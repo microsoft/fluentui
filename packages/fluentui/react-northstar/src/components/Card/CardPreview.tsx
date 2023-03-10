@@ -33,7 +33,7 @@ export const cardPreviewClassName = 'ui-card__preview';
 /**
  * A CardPreview is used to display data Card preview.
  */
-export const CardPreview = (React.forwardRef<HTMLDivElement, CardPreviewProps>((props, ref) => {
+export const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardPreview.displayName, context.telemetry);
   setStart();
@@ -71,7 +71,7 @@ export const CardPreview = (React.forwardRef<HTMLDivElement, CardPreviewProps>((
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CardPreviewProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardPreviewProps> &
   FluentComponentStaticProps<CardPreviewProps>;
 
 CardPreview.displayName = 'CardPreview';

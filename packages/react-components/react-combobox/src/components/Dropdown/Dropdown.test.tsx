@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Dropdown', () => {
   isConformant({
     Component: Dropdown,
     displayName: 'Dropdown',
     primarySlot: 'button',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -69,6 +68,19 @@ describe('Dropdown', () => {
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
   });
 
+  it('adds aria-owns pointing to the popup', () => {
+    const { getByRole, container } = render(
+      <Dropdown open className="root">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const listboxId = getByRole('listbox').id;
+    expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+  });
+
   /* open/close tests */
   it('opens the popup on click', () => {
     const { getByRole } = render(
@@ -86,7 +98,7 @@ describe('Dropdown', () => {
   });
 
   it('closes the popup on click with defaultOpen', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -101,7 +113,6 @@ describe('Dropdown', () => {
 
     fireEvent.click(combobox);
 
-    expect(queryByRole('listbox')).toBeNull();
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
@@ -114,11 +125,15 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByRole('listbox')).not.toBeNull();
-
-    fireEvent.click(getByRole('combobox'));
+    const combobox = getByRole('combobox');
 
     expect(getByRole('listbox')).not.toBeNull();
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
+
+    fireEvent.click(combobox);
+
+    expect(getByRole('listbox')).not.toBeNull();
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
   });
 
   it('opens the popup on enter', () => {
@@ -137,7 +152,7 @@ describe('Dropdown', () => {
   });
 
   it('opens and closes the popup with alt + arrow keys', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -145,17 +160,17 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowDown', altKey: true });
+    const combobox = getByRole('combobox');
 
-    expect(getByRole('listbox')).not.toBeNull();
+    fireEvent.keyDown(combobox, { key: 'ArrowDown', altKey: true });
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowUp', altKey: true });
-
-    expect(queryByRole('listbox')).toBeNull();
+    fireEvent.keyDown(combobox, { key: 'ArrowUp', altKey: true });
+    expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
   it('closes the popup with escape', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -165,7 +180,7 @@ describe('Dropdown', () => {
 
     fireEvent.keyDown(getByRole('combobox'), { key: 'Escape' });
 
-    expect(queryByRole('listbox')).toBeNull();
+    expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('false');
   });
 
   it('fires onOpen callback', () => {
@@ -207,9 +222,26 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
-    expect(getByTestId('blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('false');
+  });
+
+  it('should set defaultSelectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Dropdown open multiselect defaultSelectedOptions={['b', 'c']}>
+        <Option value="a">Red</Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should set selectedOptions', () => {
@@ -222,6 +254,26 @@ describe('Dropdown', () => {
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
+  });
+
+  it('should set selectedOptions based on Option `value`', () => {
+    const { getByTestId } = render(
+      <Dropdown open multiselect selectedOptions={['a', 'c']}>
+        <Option data-testid="red" value="a">
+          Red
+        </Option>
+        <Option data-testid="green" value="b">
+          Green
+        </Option>
+        <Option data-testid="blue" value="c">
+          Blue
+        </Option>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('red').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('blue').getAttribute('aria-checked')).toEqual('true');
+    expect(getByTestId('green').getAttribute('aria-checked')).toEqual('false');
   });
 
   it('should change defaultSelectedOptions on click', () => {
@@ -274,6 +326,22 @@ describe('Dropdown', () => {
     expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
+  it('does not select a disabled option with the keyboard', () => {
+    const { getByTestId, getByRole } = render(
+      <Dropdown open data-testid="combobox">
+        <Option disabled>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    fireEvent.keyDown(combobox, { key: ' ' });
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
+  });
+
   it('selects an option when tabbing away from an open combobox', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown defaultOpen data-testid="combobox">
@@ -300,9 +368,95 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByText('Red', { selector: '[role=option]' }).getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
-    expect(getByText('Blue').getAttribute('aria-selected')).toEqual('false');
+    expect(getByText('Red', { selector: '[role=menuitemcheckbox]' }).getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByText('Blue').getAttribute('aria-checked')).toEqual('false');
+  });
+
+  it('calls onOptionSelect with correct data for single-select', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Dropdown value="Red" onOptionSelect={onOptionSelect}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'Green',
+      optionText: 'Green',
+      selectedOptions: ['Green'],
+    });
+  });
+
+  it('calls onOptionSelect with Option value prop', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Dropdown value="Red" onOptionSelect={onOptionSelect}>
+        <Option>Red</Option>
+        <Option value="test">Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(1);
+    expect(onOptionSelect).toHaveBeenCalledWith(expect.anything(), {
+      optionValue: 'test',
+      optionText: 'Green',
+      selectedOptions: ['test'],
+    });
+  });
+
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByRole('combobox').textContent).toEqual('Green');
+  });
+
+  it('calls onOptionSelect with correct data for multi-select', () => {
+    const onOptionSelect = jest.fn();
+
+    const { getByRole, getByText } = render(
+      <Dropdown value="Red" onOptionSelect={onOptionSelect} multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    userEvent.click(getByText('Green'));
+    userEvent.click(getByText('Blue'));
+
+    expect(onOptionSelect).toHaveBeenCalledTimes(2);
+    expect(onOptionSelect).toHaveBeenNthCalledWith(1, expect.anything(), {
+      optionValue: 'Green',
+      optionText: 'Green',
+      selectedOptions: ['Green'],
+    });
+    expect(onOptionSelect).toHaveBeenNthCalledWith(2, expect.anything(), {
+      optionValue: 'Blue',
+      optionText: 'Blue',
+      selectedOptions: ['Green', 'Blue'],
+    });
   });
 
   it('stays open on click for multiselect', () => {
@@ -316,7 +470,7 @@ describe('Dropdown', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByRole('listbox')).not.toBeNull();
+    expect(getByRole('menu')).not.toBeNull();
   });
 
   it('should respect value over selected options', () => {
@@ -345,7 +499,22 @@ describe('Dropdown', () => {
     expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
-  it('should not change value on select', () => {
+  it('should update value after selection for multiselect', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen defaultSelectedOptions={['Red']} multiselect>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByText('Green').getAttribute('aria-checked')).toEqual('true');
+    expect(getByRole('combobox').textContent).toEqual('Red, Green');
+  });
+
+  it('should not change controlled value on select', () => {
     const { getByRole, getByText } = render(
       <Dropdown value="Red" defaultOpen>
         <Option>Red</Option>
@@ -405,5 +574,82 @@ describe('Dropdown', () => {
 
     fireEvent.keyDown(combobox, { key: 'ArrowUp' });
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should move to first matching active option by typing a matching string', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Groot</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'gr');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should clear active option when typing a string with no matches', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.click(combobox);
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
+
+    userEvent.keyboard('t');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toBeFalsy();
+  });
+
+  it('should cycle through options by repeating the same letter', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown open>
+        <Option>Cat</Option>
+        <Option>Dog</Option>
+        <Option>Dolphin</Option>
+        <Option>Duck</Option>
+        <Option>Horse</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'dd');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Dolphin').id);
+
+    userEvent.type(combobox, 'dd');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Dog').id);
+  });
+
+  it('should not move active option when typing a matching string', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Redder</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.tab();
+    userEvent.keyboard('red');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
   });
 });

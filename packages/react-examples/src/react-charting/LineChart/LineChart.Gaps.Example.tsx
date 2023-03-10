@@ -45,6 +45,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
             strokeDasharray: '5',
             strokeLinecap: 'butt',
             strokeWidth: '2',
+            lineBorderWidth: '4',
           },
           data: [
             {

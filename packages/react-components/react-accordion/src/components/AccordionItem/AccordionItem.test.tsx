@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { AccordionItem } from './AccordionItem';
 import * as renderer from 'react-test-renderer';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('AccordionItem', () => {
   isConformant({
     Component: AccordionItem,
     displayName: 'AccordionItem',
     // Accordion does not have own styles
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classname-exported'],
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   /**

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { MenuTrigger } from './MenuTrigger';
 import * as renderer from 'react-test-renderer';
 import { createEvent, fireEvent, render } from '@testing-library/react';
-import { isConformant } from '../../common/isConformant';
-import { mockUseMenuContext } from '../../common/mockUseMenuContext';
+import { isConformant } from '../../testing/isConformant';
+import { mockUseMenuContext } from '../../testing/mockUseMenuContext';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
 import { Enter } from '@fluentui/keyboard-keys';
 
@@ -18,9 +18,7 @@ describe('MenuTrigger', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
       'component-has-static-classnames-object',
-      'component-has-static-classname-exported',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -36,7 +34,7 @@ describe('MenuTrigger', () => {
    */
   it('renders a default state', () => {
     const component = renderer.create(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button>Menu trigger</button>
       </MenuTrigger>,
     );
@@ -48,7 +46,7 @@ describe('MenuTrigger', () => {
     // Arrange
     const ref = jest.fn();
     render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button ref={ref}>Trigger</button>
       </MenuTrigger>,
     );
@@ -76,7 +74,7 @@ describe('MenuTrigger', () => {
         cb(ref.current);
       }, []);
       return (
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <button ref={ref}>Trigger</button>
         </MenuTrigger>
       );
@@ -102,7 +100,7 @@ describe('MenuTrigger', () => {
     mockUseMenuContext({ setOpen });
 
     const { getByRole } = render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button aria-disabled>trigger</button>
       </MenuTrigger>,
     );
@@ -116,7 +114,7 @@ describe('MenuTrigger', () => {
     mockUseMenuContext({ setOpen });
 
     const { getByRole } = render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button aria-disabled={false}>trigger</button>
       </MenuTrigger>,
     );
@@ -131,7 +129,7 @@ describe('MenuTrigger', () => {
     mockUseMenuContext({ setOpen });
 
     const { getByRole } = render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button disabled>trigger</button>
       </MenuTrigger>,
     );
@@ -150,7 +148,7 @@ describe('MenuTrigger', () => {
     };
 
     render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button>
           <TestComponent />
         </button>
@@ -170,7 +168,7 @@ describe('MenuTrigger', () => {
     };
 
     render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <button>
           <TestComponent />
         </button>
@@ -183,7 +181,7 @@ describe('MenuTrigger', () => {
   it('should not keyboard click when event is default prevented', () => {
     const onClick = jest.fn();
     const { getByRole } = render(
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <div role="button" onClick={onClick}>
           trigger
         </div>

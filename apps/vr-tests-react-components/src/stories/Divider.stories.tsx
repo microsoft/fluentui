@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Divider } from '@fluentui/react-divider';
 import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
@@ -7,7 +7,7 @@ import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utiliti
 storiesOf('Divider Converged - Horizontal', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('without content', () => <Divider />, { includeRtl: true })
   .addStory('with content', () => <Divider>Today</Divider>, {
@@ -37,7 +37,7 @@ storiesOf('Divider Converged - Vertical', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <div style={{ height: '200px' }}>
-      <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
     </div>
   ))
   .addStory('Center Aligned', () => <Divider vertical>Today</Divider>)

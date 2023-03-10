@@ -21,7 +21,6 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
   css`
     ${display('flex')} :host {
       align-items: center;
-      outline: none;
       height: calc((${strokeWidth} * 3) * 1px);
     }
 

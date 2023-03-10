@@ -138,7 +138,7 @@ export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>
       <div
         className={css('ms-Suggestions-container', styles.suggestionsContainer)}
         id="suggestion-list"
-        role="list"
+        role="listbox"
         aria-label={suggestionsContainerAriaLabel}
       >
         {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
@@ -146,8 +146,6 @@ export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>
             ref={suggestion.selected || index === this.currentIndex ? this._selectedElement : undefined}
             key={(suggestion.item as any).key ? (suggestion.item as any).key : index}
             id={'sug-' + index}
-            role="listitem"
-            aria-label={suggestion.ariaLabel}
           >
             <TypedSuggestionsItem
               id={'sug-item' + index}

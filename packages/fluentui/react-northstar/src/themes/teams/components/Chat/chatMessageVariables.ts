@@ -37,6 +37,7 @@ export interface ChatMessageVariables {
   reactionGroupMarginLeft: string;
   showActionMenu?: boolean;
   zIndex: number;
+  hasReducedHorizontalSpace: boolean;
 }
 
 export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
@@ -76,4 +77,5 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   reactionGroupMarginLeft: pxToRem(12),
   showActionMenu: undefined,
   zIndex: siteVars.zIndexes.foreground,
+  hasReducedHorizontalSpace: false,
 });

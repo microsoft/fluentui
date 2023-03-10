@@ -2,8 +2,8 @@ import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { PopoverTrigger } from './PopoverTrigger';
 import * as renderer from 'react-test-renderer';
-import { mockPopoverContext } from '../../common/mockUsePopoverContext';
-import { isConformant } from '../../common/isConformant';
+import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
+import { isConformant } from '../../testing/isConformant';
 
 jest.mock('../../popoverContext');
 
@@ -17,9 +17,7 @@ describe('PopoverTrigger', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
       'component-has-static-classnames-object',
-      'component-has-static-classname-exported',
       // PopoverTrigger does not have own styles
       'make-styles-overrides-win',
     ],
@@ -34,7 +32,7 @@ describe('PopoverTrigger', () => {
    */
   it('renders a default state', () => {
     const component = renderer.create(
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <button>Popover trigger</button>
       </PopoverTrigger>,
     );
@@ -52,7 +50,7 @@ describe('PopoverTrigger', () => {
     // Arrange
     const spy = jest.fn();
     const { getByRole } = render(
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <button {...{ [handler]: spy }}>Trigger</button>
       </PopoverTrigger>,
     );
@@ -67,7 +65,7 @@ describe('PopoverTrigger', () => {
   it('should set aria-expanded on trigger element', () => {
     // Arrange
     const { getByRole } = render(
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <button>Trigger</button>
       </PopoverTrigger>,
     );
@@ -81,7 +79,7 @@ describe('PopoverTrigger', () => {
 
     // Arrange
     const { getByRole } = render(
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <button>Trigger</button>
       </PopoverTrigger>,
     );
@@ -93,7 +91,7 @@ describe('PopoverTrigger', () => {
   it('should allow user to override aria-expanded on trigger element', () => {
     // Arrange
     const { getByRole } = render(
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <button aria-expanded={undefined}>Trigger</button>
       </PopoverTrigger>,
     );
@@ -106,7 +104,7 @@ describe('PopoverTrigger', () => {
     // Arrange
     const ref = jest.fn();
     render(
-      <PopoverTrigger>
+      <PopoverTrigger disableButtonEnhancement>
         <button ref={ref}>Trigger</button>
       </PopoverTrigger>,
     );
@@ -134,7 +132,7 @@ describe('PopoverTrigger', () => {
         cb(ref.current);
       }, []);
       return (
-        <PopoverTrigger>
+        <PopoverTrigger disableButtonEnhancement>
           <button ref={ref}>Trigger</button>
         </PopoverTrigger>
       );

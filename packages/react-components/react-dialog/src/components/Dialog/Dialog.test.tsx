@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Dialog } from './Dialog';
 import { DialogProps } from './Dialog.types';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 
 describe('Dialog', () => {
   isConformant<DialogProps>({
@@ -13,9 +13,7 @@ describe('Dialog', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
       'component-has-static-classnames-object',
-      'component-has-static-classname-exported',
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
       'consistent-callback-args',
