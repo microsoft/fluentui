@@ -36,10 +36,7 @@ export const styles = css`
     column-gap: 4px;
     height: 32px;
     background: ${colorNeutralBackground1};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
+    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
     padding: 0 10px;
     margin: 1px 0;
@@ -94,9 +91,7 @@ export const styles = css`
   ::slotted([slot='end']) {
     width: fit-content;
     color: ${colorNeutralForeground3};
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
+    font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     white-space: nowrap;
     grid-column: 4 / span 1;
     justify-self: flex-end;
