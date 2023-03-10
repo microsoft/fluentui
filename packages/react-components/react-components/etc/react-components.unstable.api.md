@@ -82,6 +82,7 @@ import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-s
 import { Skeleton } from '@fluentui/react-skeleton';
 import { skeletonClassNames } from '@fluentui/react-skeleton';
 import { SkeletonContextProvider } from '@fluentui/react-skeleton';
+import { SkeletonContextValue } from '@fluentui/react-skeleton';
 import { SkeletonItem } from '@fluentui/react-skeleton';
 import { skeletonItemClassNames } from '@fluentui/react-skeleton';
 import { SkeletonItemProps } from '@fluentui/react-skeleton';
@@ -327,6 +328,8 @@ export { Skeleton }
 export { skeletonClassNames }
 
 export { SkeletonContextProvider }
+
+export { SkeletonContextValue }
 
 export { SkeletonItem }
 
