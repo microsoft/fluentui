@@ -9,28 +9,6 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
-import { Card } from '@fluentui/react-card';
-import { cardClassNames } from '@fluentui/react-card';
-import { cardCSSVars } from '@fluentui/react-card';
-import { CardFooter } from '@fluentui/react-card';
-import { cardFooterClassNames } from '@fluentui/react-card';
-import { CardFooterProps } from '@fluentui/react-card';
-import { CardFooterSlots } from '@fluentui/react-card';
-import { CardFooterState } from '@fluentui/react-card';
-import { CardHeader } from '@fluentui/react-card';
-import { cardHeaderClassNames } from '@fluentui/react-card';
-import { cardHeaderCSSVars } from '@fluentui/react-card';
-import { CardHeaderProps } from '@fluentui/react-card';
-import { CardHeaderSlots } from '@fluentui/react-card';
-import { CardHeaderState } from '@fluentui/react-card';
-import { CardPreview } from '@fluentui/react-card';
-import { cardPreviewClassNames } from '@fluentui/react-card';
-import { CardPreviewProps } from '@fluentui/react-card';
-import { CardPreviewSlots } from '@fluentui/react-card';
-import { CardPreviewState } from '@fluentui/react-card';
-import { CardProps } from '@fluentui/react-card';
-import { CardSlots } from '@fluentui/react-card';
-import { CardState } from '@fluentui/react-card';
 import { CheckboxField_unstable as CheckboxField } from '@fluentui/react-checkbox';
 import { checkboxFieldClassNames } from '@fluentui/react-checkbox';
 import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/react-checkbox';
@@ -63,12 +41,10 @@ import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-rad
 import { radioGroupFieldClassNames } from '@fluentui/react-radio';
 import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
-import { renderCard_unstable } from '@fluentui/react-card';
-import { renderCardFooter_unstable } from '@fluentui/react-card';
-import { renderCardHeader_unstable } from '@fluentui/react-card';
-import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
+import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
+import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderTree_unstable } from '@fluentui/react-tree';
 import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
@@ -77,6 +53,18 @@ import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
+import { Skeleton } from '@fluentui/react-skeleton';
+import { skeletonClassNames } from '@fluentui/react-skeleton';
+import { SkeletonContextProvider } from '@fluentui/react-skeleton';
+import { SkeletonContextValue } from '@fluentui/react-skeleton';
+import { SkeletonItem } from '@fluentui/react-skeleton';
+import { skeletonItemClassNames } from '@fluentui/react-skeleton';
+import { SkeletonItemProps } from '@fluentui/react-skeleton';
+import { SkeletonItemSlots } from '@fluentui/react-skeleton';
+import { SkeletonItemState } from '@fluentui/react-skeleton';
+import { SkeletonProps } from '@fluentui/react-skeleton';
+import { SkeletonSlots } from '@fluentui/react-skeleton';
+import { SkeletonState } from '@fluentui/react-skeleton';
 import { SliderField_unstable as SliderField } from '@fluentui/react-slider';
 import { sliderFieldClassNames } from '@fluentui/react-slider';
 import { SliderFieldProps_unstable as SliderFieldProps } from '@fluentui/react-slider';
@@ -120,20 +108,17 @@ import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
-import { useCard_unstable } from '@fluentui/react-card';
-import { useCardFooter_unstable } from '@fluentui/react-card';
-import { useCardFooterStyles_unstable } from '@fluentui/react-card';
-import { useCardHeader_unstable } from '@fluentui/react-card';
-import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
-import { useCardPreview_unstable } from '@fluentui/react-card';
-import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
-import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
+import { useSkeleton_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonContext } from '@fluentui/react-skeleton';
+import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
+import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
@@ -162,50 +147,6 @@ export { AlertProps }
 export { AlertSlots }
 
 export { AlertState }
-
-export { Card }
-
-export { cardClassNames }
-
-export { cardCSSVars }
-
-export { CardFooter }
-
-export { cardFooterClassNames }
-
-export { CardFooterProps }
-
-export { CardFooterSlots }
-
-export { CardFooterState }
-
-export { CardHeader }
-
-export { cardHeaderClassNames }
-
-export { cardHeaderCSSVars }
-
-export { CardHeaderProps }
-
-export { CardHeaderSlots }
-
-export { CardHeaderState }
-
-export { CardPreview }
-
-export { cardPreviewClassNames }
-
-export { CardPreviewProps }
-
-export { CardPreviewSlots }
-
-export { CardPreviewState }
-
-export { CardProps }
-
-export { CardSlots }
-
-export { CardState }
 
 export { CheckboxField }
 
@@ -271,17 +212,13 @@ export { RadioGroupFieldProps }
 
 export { renderAlert_unstable }
 
-export { renderCard_unstable }
-
-export { renderCardFooter_unstable }
-
-export { renderCardHeader_unstable }
-
-export { renderCardPreview_unstable }
-
 export { renderField_unstable }
 
 export { renderInfoButton_unstable }
+
+export { renderSkeleton_unstable }
+
+export { renderSkeletonItem_unstable }
 
 export { renderTree_unstable }
 
@@ -298,6 +235,30 @@ export { SelectField }
 export { selectFieldClassNames }
 
 export { SelectFieldProps }
+
+export { Skeleton }
+
+export { skeletonClassNames }
+
+export { SkeletonContextProvider }
+
+export { SkeletonContextValue }
+
+export { SkeletonItem }
+
+export { skeletonItemClassNames }
+
+export { SkeletonItemProps }
+
+export { SkeletonItemSlots }
+
+export { SkeletonItemState }
+
+export { SkeletonProps }
+
+export { SkeletonSlots }
+
+export { SkeletonState }
 
 export { SliderField }
 
@@ -385,22 +346,6 @@ export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
 
-export { useCard_unstable }
-
-export { useCardFooter_unstable }
-
-export { useCardFooterStyles_unstable }
-
-export { useCardHeader_unstable }
-
-export { useCardHeaderStyles_unstable }
-
-export { useCardPreview_unstable }
-
-export { useCardPreviewStyles_unstable }
-
-export { useCardStyles_unstable }
-
 export { useField_unstable }
 
 export { useFieldStyles_unstable }
@@ -412,6 +357,16 @@ export { useInfoButton_unstable }
 export { useInfoButtonStyles_unstable }
 
 export { useIntersectionObserver }
+
+export { useSkeleton_unstable }
+
+export { useSkeletonContext }
+
+export { useSkeletonItem_unstable }
+
+export { useSkeletonItemStyles_unstable }
+
+export { useSkeletonStyles_unstable }
 
 export { useTree_unstable }
 
