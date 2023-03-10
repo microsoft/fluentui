@@ -13,7 +13,9 @@ import {
   spacingHorizontalSNudge,
   spacingVerticalL,
   spacingVerticalSNudge,
+  strokeWidthThicker,
 } from '../../theme/design-tokens.js';
+import { TAB_TOKEN_NAMES } from '../index.js';
 
 export const styles = css`
   :host {
@@ -113,5 +115,29 @@ export const styles = css`
 
   :host([reserve-selected-tab-space='true']) ::slotted(fluent-tab) {
     font-weight: ${fontWeightRegular};
+  }
+
+  :host([orientation='horizontal']) ::slotted(fluent-tab)::after {
+    width: calc(100% - 20px);
+    height: ${strokeWidthThicker};
+
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    transform-origin: left;
+    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+  }
+
+  :host([orientation='vertical']) ::slotted(fluent-tab)::after {
+    width: ${strokeWidthThicker};
+    height: calc(100% - 20px);
+
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    transform-origin: top;
+    transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleY(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
 `;

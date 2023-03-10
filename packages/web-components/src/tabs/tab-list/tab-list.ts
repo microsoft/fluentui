@@ -29,20 +29,20 @@ export class TabList extends FASTTabs {
 
   connectedCallback() {
     super.connectedCallback();
-    this.registerTabData();
+    this.setTabData();
   }
 
   activeidChanged(oldValue: string, newValue: string) {
     super.activeidChanged(oldValue, newValue);
-    this.registerTabData();
+    this.setTabData();
   }
 
   tabsChanged(): void {
     super.tabsChanged();
-    this.registerTabData();
+    this.setTabData();
   }
 
-  private registerTabData(): void {
+  private setTabData(): void {
     if (this.tabs) {
       const activeTab = this.tabs.filter(tab => tab.id === this.activeid)[0] || this.tabs[0];
       const activeRect = activeTab?.getBoundingClientRect();
@@ -56,16 +56,11 @@ export class TabList extends FASTTabs {
           height: activeRect.height,
           width: activeRect.width,
         });
-
-        if (this.orientation === 'horizontal') {
-          tab.classList.add('horizontal');
-        } else {
-          tab.classList.add('vertical');
-        }
       });
     }
   }
 
+  // Remove this method after updates to Fast Tabs Control are completed
   disabledChanged() {
     const tabs = this.querySelectorAll('fluent-tab');
 

@@ -51,7 +51,7 @@ export const styles = css`
     font-weight: ${fontWeightBold};
   }
 
-  :host([data-selected='true'])::after {
+  :host([aria-selected='true'])::after {
     background-color: ${colorCompoundBrandStroke};
     border-radius: ${borderRadiusCircular};
     content: '';
@@ -66,30 +66,7 @@ export const styles = css`
     transition-timing-function: ${curveDecelerateMax};
   }
 
-  :host(.horizontal)::after {
-    width: calc(100% - 20px);
-    height: ${strokeWidthThicker};
-
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-
-    transform-origin: left;
-    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
-  }
-  :host(.vertical)::after {
-    width: ${strokeWidthThicker};
-    height: calc(100% - 20px);
-
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-
-    transform-origin: top;
-    transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
-  }
-
-  :host([data-selected='false']:hover)::before {
+  :host([aria-selected='false']:hover)::before {
     /* default size and color */
     width: calc(100% - 20px);
     height: ${strokeWidthThicker};
@@ -104,7 +81,7 @@ export const styles = css`
     background-color: ${colorNeutralStroke1Hover};
   }
 
-  :host([data-selected='true'][disabled])::after {
+  :host([aria-selected='true'][disabled])::after {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
