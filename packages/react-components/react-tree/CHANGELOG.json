@@ -1,0 +1,62 @@
+{
+  "name": "@fluentui/react-tree",
+  "entries": [
+    {
+      "date": "Fri, 10 Mar 2023 07:14:01 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7e71b6784e771470f88aa319e85da77e054584d2",
+            "comment": "release @fluentui/react-tree unstable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.12",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.4.1",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-aria to v9.3.12",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-tabster to v9.5.5",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-portal to v9.1.11",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.1",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-utilities to v9.6.2",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          }
+        ]
+      }
+    }
+  ]
+}

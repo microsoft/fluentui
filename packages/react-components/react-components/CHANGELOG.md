@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 08 Mar 2023 17:42:23 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2023 07:13:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.17.0)
+
+Fri, 10 Mar 2023 07:13:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.16.0..@fluentui/react-components_v9.17.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - release @fluentui/react-tree unstable ([PR #27126](https://github.com/microsoft/fluentui/pull/27126) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27081](https://github.com/microsoft/fluentui/pull/27081) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: Export `pinned` prop from `PositioningProps` ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - fix: ResolveShorthandOptions type to better reflect implementation ([PR #27112](https://github.com/microsoft/fluentui/pull/27112) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - release @fluentui/react-tree unstable ([PR #27126](https://github.com/microsoft/fluentui/pull/27126) by bernardo.sunderhus@gmail.com)
 
 ## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.16.0)
 

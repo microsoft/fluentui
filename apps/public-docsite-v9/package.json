@@ -22,12 +22,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-migration-v8-v9": "^9.1.10",
+    "@fluentui/react-migration-v8-v9": "^9.1.11",
     "@fluentui/react-migration-v0-v9": "9.0.0-alpha.0",
     "@fluentui/react": "^8.106.4",
     "@fluentui/react-northstar": "^0.66.3",
     "@fluentui/react-icons-northstar": "^0.66.3",
-    "@fluentui/react-components": "^9.16.0",
+    "@fluentui/react-components": "^9.17.0",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
     "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
     "@griffel/react": "^1.5.2",
