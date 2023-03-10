@@ -13,8 +13,7 @@ export function isHTMLElement<ConstructorName extends HTMLElementConstructorName
 ): element is InstanceType<(typeof globalThis)[ConstructorName]> {
   const typedElement = element as Node | null | undefined;
   return Boolean(
-    typedElement !== null &&
-      typedElement?.ownerDocument?.defaultView &&
+    typedElement?.ownerDocument?.defaultView &&
       typedElement instanceof typedElement.ownerDocument.defaultView[options?.constructorName ?? 'HTMLElement'],
   );
 }
