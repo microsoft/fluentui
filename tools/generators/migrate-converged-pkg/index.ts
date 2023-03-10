@@ -416,6 +416,7 @@ const templates = {
         externalHelpers: true,
         transform: {
           react: {
+            runtime: 'classic',
             useBuiltins: true,
           },
         },
