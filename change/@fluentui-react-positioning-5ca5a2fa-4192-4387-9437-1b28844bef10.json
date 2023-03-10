@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Export `pinned` prop from `PositioningProps`",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
