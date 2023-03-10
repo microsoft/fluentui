@@ -1120,6 +1120,7 @@ describe('migrate-converged-pkg generator', () => {
           externalHelpers: true,
           transform: {
             react: {
+              runtime: 'classic',
               useBuiltins: true,
             },
           },
