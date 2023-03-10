@@ -34,7 +34,6 @@ export const styles = css`
     align-items: center;
     row-gap: 4px;
     column-gap: 4px;
-    width: auto;
     height: 32px;
     background: ${colorNeutralBackground1};
     font-family: ${fontFamilyBase};
@@ -48,19 +47,26 @@ export const styles = css`
     overflow: visible;
     contain: layout;
   }
+
   :host(:hover) {
     position: relative;
     z-index: 1;
+    background: ${colorNeutralBackground1Hover};
   }
+
   .content {
     white-space: nowrap;
     flex-grow: 1;
+    grid-column: auto / span 2;
+    color: ${colorNeutralForeground2};
     padding: 0 2px;
   }
+
   .checkbox,
   .radio {
     display: none;
   }
+
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']),
@@ -70,14 +76,9 @@ export const styles = css`
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    color: ${colorNeutralForeground2};
   }
-  .content {
-    grid-column: auto / span 2;
-  }
-  .expand-collapse-glyph-container {
-    grid-column: 4 / span 1;
-    justify-self: flex-end;
-  }
+
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
@@ -85,15 +86,11 @@ export const styles = css`
     height: 32px;
     font-size: ${fontSizeBase500};
   }
+
   .input-container {
     width: 20px;
   }
-  ::slotted([slot='start']),
-  .expand-collapse-glyph-container,
-  .content,
-  .input-container {
-    color: ${colorNeutralForeground2};
-  }
+
   ::slotted([slot='end']) {
     width: fit-content;
     color: ${colorNeutralForeground3};
@@ -104,14 +101,18 @@ export const styles = css`
     grid-column: 4 / span 1;
     justify-self: flex-end;
   }
-  :host(:hover) {
-    background: ${colorNeutralBackground1Hover};
+
+  .expand-collapse-glyph-container {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
   }
+
   :host(:hover) .expand-collapse-glyph-container,
   :host(:hover) .content,
   :host(:hover) .input-container {
     color: ${colorNeutralForeground2Hover};
   }
+
   :host([icon]:hover) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Hover};
   }
@@ -202,16 +203,11 @@ export const styles = css`
   :host([aria-haspopup='menu'][checkmark][icon]) .content {
     grid-column: 3 / span 1;
   }
-  on]) .content,
   :host([aria-haspopup='menu'][checkmark]) .content {
     grid-column: 2 / span 1;
   }
 
   :host([aria-haspopup='menu'][checkmark][icon]) .content {
-    grid-column: 3 / span 1;
-  }
-
-  con]) .content {
     grid-column: 3 / span 1;
   }
 `;
