@@ -136,6 +136,7 @@ export type {
   SkeletonItemProps,
   SkeletonItemSlots,
   SkeletonItemState,
+  SkeletonContextValue,
 } from '@fluentui/react-skeleton';
 
 export {
