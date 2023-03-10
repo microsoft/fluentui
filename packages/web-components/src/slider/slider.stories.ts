@@ -17,18 +17,18 @@ const storyTemplate = html<SliderStoryArgs>`
     max=${x => x.max}
     orientation=${x => x.orientation}
     value=${x => x.value}
+    step=${x => x.step}
   ></fluent-slider>
 `;
 
 export default {
   title: 'Components/Slider',
   args: {
-    marks: false,
     disabled: false,
     readOnly: false,
     min: 0,
     max: 100,
-    step: 1,
+    step: 50,
     size: SliderSize.medium,
     orientation: 'horizontal',
   },
@@ -70,7 +70,7 @@ export const SliderVertical = renderComponent(html<SliderStoryArgs>`
 `);
 
 export const SliderSmall = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider size="small" value="10" min="0" max="100"></fluent-slider>
+  <fluent-slider size="small" value="10" min="0" max="10"></fluent-slider>
 `);
 
 export const SliderSteps = renderComponent(html<SliderStoryArgs>`

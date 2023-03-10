@@ -42,11 +42,13 @@ export const styles = css`
     --track-width: 2px;
     --thumb-padding: 3px;
   }
+
   :host([orientation='horizontal']) {
     touch-action: pan-y;
     min-width: calc(var(--thumb-size) * 1px);
     width: 100%;
   }
+
   :host([orientation='vertical']) {
     --slider-direction: 0deg;
     height: 160px;
@@ -83,9 +85,19 @@ export const styles = css`
   :host([orientation='horizontal']) .thumb-container {
     transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.5));
   }
+
+  :host([orientation='horizontal'][size='small']) .thumb-container {
+    transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.35));
+  }
+
   :host([orientation='vertical']) .thumb-container {
     transform: translateX(calc(var(--thumb-translate) * -1.5)) translateY(calc(var(--thumb-size) * 0.5));
   }
+
+  :host([orientation='vertical'][size='small']) .thumb-container {
+    transform: translateX(calc(var(--thumb-translate) * -1.35)) translateY(calc(var(--thumb-size) * 0.5));
+  }
+
   .thumb-cursor {
     height: var(--thumb-size);
     width: var(--thumb-size);
