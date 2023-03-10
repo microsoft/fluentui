@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: release react-skeleton to unstable",
+  "comment": "feat: release react-skeleton to unstable",
   "packageName": "@fluentui/react-components",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
