@@ -16,10 +16,10 @@ export const styles = css`
   :host {
     flex-direction: column;
     height: fit-content;
-    width: auto;
-    min-width: 160px;
     max-width: 300px;
-    background: ${colorNeutralBackground1};
+    min-width: 160px;
+    width: auto;
+    background-color: ${colorNeutralBackground1};
     border: 1px solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
     box-shadow: ${shadow16};
