@@ -27,11 +27,6 @@ export class TabList extends FASTTabs {
   @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
   reserveSelectedTabSpace?: boolean;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.setTabData();
-  }
-
   activeidChanged(oldValue: string, newValue: string) {
     super.activeidChanged(oldValue, newValue);
     this.setTabData();
@@ -43,7 +38,7 @@ export class TabList extends FASTTabs {
   }
 
   private setTabData(): void {
-    if (this.tabs) {
+    if (this.tabs && this.tabs.length > 0 && this.activeid) {
       const activeTab = this.tabs.filter(tab => tab.id === this.activeid)[0] || this.tabs[0];
       const activeRect = activeTab?.getBoundingClientRect();
       const parentRect = this.getBoundingClientRect();
