@@ -31,16 +31,16 @@ export class Tab extends FASTTab {
       const isSelected = this.id === this._activeTab.id;
       this.setSelected(isSelected);
       if (isSelected) {
-        this.syncTabPositions();
+        this.syncAnimationProperties();
+        console.log({ offset: this._offsetX, scale: this._scale });
         this.setTabScaleCSS();
         this.setTabOffsetCSS();
-        this.addCSSClasses();
-      } else {
-        // this.clearAnimationProperties();
+      } else if (this.id === this._previousActiveTab.id) {
+        this.clearAnimationProperties();
       }
 
       this._previousActiveTab = this._activeTab;
-      this.syncTabPositions();
+      this.syncAnimationProperties();
 
       if (this._offsetX === 0 && this._scale === 1) {
         this.classList.add('animated');
@@ -48,6 +48,11 @@ export class Tab extends FASTTab {
         this.setTabOffsetCSS();
       }
     }
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.addCSSClasses();
   }
 
   private setSelected(isSelected: boolean) {
@@ -59,8 +64,10 @@ export class Tab extends FASTTab {
   }
 
   private clearAnimationProperties() {
+    this._previousActiveTab = { id: '', x: 0, y: 0, height: 0, width: 0 };
     this._offsetX = 0;
     this._scale = 1;
+    this.classList.remove('animated');
   }
 
   private addCSSClasses() {
@@ -72,7 +79,7 @@ export class Tab extends FASTTab {
     }
   }
 
-  private syncTabPositions() {
+  private syncAnimationProperties() {
     const previousSelectedTabX = this._previousActiveTab.x;
     const selectedTabX = this.getSelectedTabPosition();
     const previousSelectedTabWidth = this._previousActiveTab.width;

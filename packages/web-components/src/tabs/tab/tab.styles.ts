@@ -7,7 +7,6 @@ import {
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
   colorNeutralStroke1Hover,
-  colorTransparentStroke,
   curveDecelerateMax,
   durationSlow,
   fontFamilyBase,
