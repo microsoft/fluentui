@@ -12,7 +12,6 @@ const storyTemplate = html<SliderStoryArgs>`
   <fluent-slider
     ?disabled=${x => x.disabled}
     ?readonly=${x => x.readOnly}
-    step=${x => x.step}
     size=${x => x.size}
     min=${x => x.min}
     max=${x => x.max}
@@ -24,14 +23,18 @@ const storyTemplate = html<SliderStoryArgs>`
 export default {
   title: 'Components/Slider',
   args: {
+    marks: false,
     disabled: false,
     readOnly: false,
     min: 0,
     max: 100,
+    step: 1,
     size: SliderSize.medium,
     orientation: 'horizontal',
   },
   argTypes: {
+    disabled: { control: 'boolean' },
+    readOnly: { control: 'boolean' },
     min: {
       control: 'number',
       defaultValue: 0,
@@ -67,7 +70,7 @@ export const SliderVertical = renderComponent(html<SliderStoryArgs>`
 `);
 
 export const SliderSmall = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider size="small" value="10" step="25" min="0" max="100"></fluent-slider>
+  <fluent-slider size="small" value="10" min="0" max="100"></fluent-slider>
 `);
 
 export const SliderSteps = renderComponent(html<SliderStoryArgs>`
