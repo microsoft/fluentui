@@ -5,6 +5,7 @@ import type { TabList as FluentTabList } from './tab-list.js';
 import './define.js';
 import '../tab/define.js';
 import '../tab-panel/define.js';
+import { TabListAppearance, TabListOrientation, TabListSize } from './tab-list.options.js';
 
 type TabListStoryArgs = Args & FluentTabList;
 type TabListStoryMeta = Meta<TabListStoryArgs>;
@@ -50,9 +51,10 @@ export const TabListDefault = renderComponent(tabListDefault).bind({});
 
 const tabListDisabledTabs = html`
   <fluent-tab-list>
-    <fluent-tab id=${defaultTabIds[0]}>Tab One</fluent-tab>
-    <fluent-tab id=${defaultTabIds[1]} disabled>Tab Two</fluent-tab>
-    <fluent-tab id=${defaultTabIds[2]}>Tab Three</fluent-tab>
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]} disabled> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
 
     <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}>Tab One Content</fluent-tab-panel>
     <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}>Tab Two Content</fluent-tab-panel>
@@ -72,7 +74,7 @@ export default {
   },
   argTypes: {
     appearance: {
-      options: ['subtle', 'transparent'],
+      options: Object.values(TabListAppearance),
       defaultValue: 'transparent',
       control: {
         type: 'select',
@@ -95,12 +97,12 @@ export default {
       control: { type: 'select' },
     },
     size: {
-      options: ['small', 'medium', 'large'],
+      options: Object.values(TabListSize),
       defaultValue: 'medium',
       control: { type: 'select' },
     },
     orientation: {
-      options: ['vertical', 'horizontal'],
+      options: Object.values(TabListOrientation),
       defaultValue: 'horizontal',
       control: { type: 'select' },
     },

@@ -9,9 +9,13 @@ import {
   fontWeightRegular,
   lineHeightBase300,
   lineHeightBase400,
+  spacingHorizontalL,
+  spacingHorizontalM,
   spacingHorizontalMNudge,
+  spacingHorizontalS,
   spacingHorizontalSNudge,
   spacingVerticalL,
+  spacingVerticalMNudge,
   spacingVerticalSNudge,
   strokeWidthThicker,
 } from '../../theme/design-tokens.js';
@@ -118,26 +122,40 @@ export const styles = css`
   }
 
   :host([orientation='horizontal']) ::slotted(fluent-tab)::after {
-    width: calc(100% - 20px);
     height: ${strokeWidthThicker};
-
     margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-
     transform-origin: left;
     transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+  }
+  :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab)::after {
+    right: ${spacingHorizontalMNudge};
+    left: ${spacingHorizontalMNudge};
+  }
+  :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab)::after {
+    right: ${spacingHorizontalSNudge};
+    left: ${spacingHorizontalSNudge};
+  }
+  :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab)::after {
+    right: ${spacingHorizontalMNudge};
+    left: ${spacingHorizontalMNudge};
   }
 
   :host([orientation='vertical']) ::slotted(fluent-tab)::after {
     width: ${strokeWidthThicker};
-    height: calc(100% - 20px);
-
     margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-
     transform-origin: top;
     transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleY(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+  }
+  :host([orientation='vertical'][size='small']) ::slotted(fluent-tab)::after {
+    top: ${spacingVerticalSNudge};
+    bottom: ${spacingVerticalSNudge};
+  }
+  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab)::after {
+    top: ${spacingVerticalMNudge};
+    bottom: ${spacingVerticalMNudge};
+  }
+  :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::after {
+    top: ${spacingVerticalL};
+    bottom: ${spacingHorizontalL};
   }
 `;
