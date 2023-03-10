@@ -19,9 +19,9 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.106.4",
+    "@fluentui/react": "^8.106.5",
     "@fluentui/merge-styles": "^8.5.6",
-    "@fluentui/react-docsite-components": "^8.11.28",
+    "@fluentui/react-docsite-components": "^8.11.29",
     "@fluentui/foundation-legacy": "^8.2.32",
     "@fluentui/scheme-utilities": "^8.3.25",
     "@fluentui/set-version": "^8.2.5",
