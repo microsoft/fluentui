@@ -17,7 +17,7 @@
     "test:unit": "jest",
     "test:ssr": "ts-node --swc ./src/test.ts",
     "test": "yarn test:unit && yarn test:ssr",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check"
   },
   "dependencies": {
     "@fluentui/react-components": "^9.18.6"

@@ -18,8 +18,8 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
-    "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
     "start": "yarn storybook"
   },

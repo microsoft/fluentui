@@ -1,6 +1,9 @@
+import * as fs from 'fs';
 import * as path from 'path';
 
 import { TscTaskOptions, logger, tscTask } from 'just-scripts';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { exec } from 'just-scripts-utils';
 
 import { getJustArgv } from './argv';
 import { getTsPathAliasesConfig, getTsPathAliasesConfigV8 } from './utils';
@@ -77,3 +80,45 @@ export const ts = {
     return tscTask(options);
   },
 };
+
+export function typeCheck() {
+  const cwd = process.cwd();
+
+  const tsConfigPath = path.join(cwd, 'tsconfig.json');
+  const tempPath = path.join(cwd, 'temp');
+
+  if (!fs.existsSync(tsConfigPath)) {
+    return;
+  }
+
+  const tsConfigContent = fs.readFileSync(tsConfigPath, 'utf-8');
+
+  const tsConfig = JSON.parse(tsConfigContent);
+  const isUsingTsSolutionConfigs = Boolean(tsConfig.references);
+
+  if (!isUsingTsSolutionConfigs) {
+    return;
+  }
+
+  if (!fs.existsSync(tempPath)) {
+    fs.mkdirSync(tempPath);
+  }
+
+  tsConfig.compilerOptions.paths = {};
+
+  fs.writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2), 'utf-8');
+
+  const cmd = 'tsc';
+  const args = ['-b', '--pretty', tsConfigPath];
+  const program = `${cmd} ${args.join(' ')}`;
+
+  return exec(program)
+    .catch(err => {
+      console.error(err.stdout);
+      process.exit(1);
+    })
+    .finally(() => {
+      // delete tsConfig.compilerOptions.paths;
+      fs.writeFileSync(tsConfigPath, tsConfigContent, 'utf-8');
+    });
+}

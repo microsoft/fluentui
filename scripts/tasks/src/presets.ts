@@ -19,7 +19,7 @@ import { prettier } from './prettier';
 import { hasSass, sass } from './sass';
 import { buildStorybookTask, startStorybookTask } from './storybook';
 import { swc } from './swc';
-import { ts } from './ts';
+import { ts, typeCheck } from './ts';
 import { webpack, webpackDevServer } from './webpack';
 
 /** Do only the bare minimum setup of options and resolve paths */
@@ -72,6 +72,7 @@ export function preset() {
   task('storybook:build', buildStorybookTask());
   task('babel:postprocess', babel);
   task('generate-api', generateApi);
+  task('type-check', typeCheck);
 
   task('ts:compile', () => {
     const moduleFlag = args.module;
