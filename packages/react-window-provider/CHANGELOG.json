@@ -2,6 +2,21 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Fri, 10 Mar 2023 07:38:25 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.8",
+      "version": "2.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-window-provider",
+            "commit": "6a59e4cd39d42b8c20ea60af0fdb677575fbf0bd",
+            "comment": "fix: add explicit children to window provider to ensure react 18 type compat"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Mar 2023 07:45:41 GMT",
       "tag": "@fluentui/react-window-provider_v2.2.7",
       "version": "2.2.7",

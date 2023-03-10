@@ -1,8 +1,22 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Thu, 09 Mar 2023 07:39:12 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2023 07:38:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.106.0](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.106.0)
+
+Fri, 10 Mar 2023 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.105.1..@fluentui/fluent2-theme_v8.106.0)
+
+### Minor changes
+
+- Adds focus styles to SearchBox, extracts duplicated focus and disabled code from TextField to utils. ([PR #27144](https://github.com/microsoft/fluentui/pull/27144) by matejera@microsoft.com)
+- Bump @fluentui/react to v8.106.5 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+
+### Patches
+
+- Updating drown down focused and disabled styles. ([PR #27148](https://github.com/microsoft/fluentui/pull/27148) by matejera@microsoft.com)
 
 ## [8.105.1](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.105.1)
 
