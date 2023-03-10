@@ -53,10 +53,8 @@ export const styles = css`
   }
 
   :host([data-selected='true'])::after {
-    /* default size and color */
     width: calc(100% - 20px);
     height: ${strokeWidthThicker};
-    /* background-color: ${colorTransparentStroke}; */
     background-color: ${colorCompoundBrandStroke};
     border-radius: ${borderRadiusCircular};
 
@@ -71,7 +69,6 @@ export const styles = css`
   }
 
   :host(.animated)::after {
-    /* animations */
     transition-property: transform;
     transition-duration: ${durationSlow};
     transition-timing-function: ${curveDecelerateMax};

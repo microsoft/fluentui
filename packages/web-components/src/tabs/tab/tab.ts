@@ -34,15 +34,16 @@ export class Tab extends FASTTab {
         this.syncTabPositions();
         this.setTabScaleCSS();
         this.setTabOffsetCSS();
-        this.addAnimationClasses();
+        this.addCSSClasses();
       } else {
-        this.clearAnimationProperties();
+        // this.clearAnimationProperties();
       }
 
-      this.syncTabPositions();
       this._previousActiveTab = this._activeTab;
+      this.syncTabPositions();
 
       if (this._offsetX === 0 && this._scale === 1) {
+        this.classList.add('animated');
         this.setTabScaleCSS();
         this.setTabOffsetCSS();
       }
@@ -62,14 +63,13 @@ export class Tab extends FASTTab {
     this._scale = 1;
   }
 
-  private addAnimationClasses() {
+  private addCSSClasses() {
     const orientation = this.parentElement?.getAttribute('orientation');
     if (orientation === 'horizontal') {
       this.classList.add('horizontal');
     } else {
       this.classList.add('vertical');
     }
-    this.classList.add('animated');
   }
 
   private syncTabPositions() {
