@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.17.0",
+  "version": "9.17.1",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -72,7 +72,7 @@
     "@fluentui/react-utilities": "^9.6.2",
     "@fluentui/react-text": "^9.2.5",
     "@fluentui/react-virtualizer": "9.0.0-alpha.10",
-    "@fluentui/react-tree": "9.0.0-beta.1",
+    "@fluentui/react-tree": "9.0.0-beta.2",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },

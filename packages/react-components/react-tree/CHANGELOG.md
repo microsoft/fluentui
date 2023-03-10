@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Fri, 10 Mar 2023 07:14:01 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2023 13:28:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.2)
+
+Fri, 10 Mar 2023 13:28:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.1..@fluentui/react-tree_v9.0.0-beta.2)
+
+### Changes
+
+- feat: creates useFlatTree hook to improve API ([PR #27146](https://github.com/microsoft/fluentui/pull/27146) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.1)
 

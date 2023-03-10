@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: updates react-tree unstable API",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

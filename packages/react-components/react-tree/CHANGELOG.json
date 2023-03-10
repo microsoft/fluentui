@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Fri, 10 Mar 2023 13:28:40 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4e092355bfa9457409d7fc3b4e617681bc9d3c85",
+            "comment": "feat: creates useFlatTree hook to improve API"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:14:01 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.1",
       "version": "9.0.0-beta.1",
