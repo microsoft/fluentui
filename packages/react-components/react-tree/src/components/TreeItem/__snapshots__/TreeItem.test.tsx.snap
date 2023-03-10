@@ -7,7 +7,7 @@ exports[`TreeItem renders a default state 1`] = `
     class="fui-TreeItem"
     id="fui-TreeItem-7"
     role="treeitem"
-    tabindex="0"
+    tabindex="-1"
   >
     <div
       class="fui-TreeItem__content"

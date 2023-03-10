@@ -42,6 +42,10 @@ import { fieldClassNames } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
+import { flattenTree_unstable } from '@fluentui/react-tree';
+import { FlatTreeItem } from '@fluentui/react-tree';
+import { FlatTreeItemProps } from '@fluentui/react-tree';
+import { FlatTreeProps } from '@fluentui/react-tree';
 import { InfoButton } from '@fluentui/react-infobutton';
 import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
@@ -50,6 +54,8 @@ import { InfoButtonState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+import { LazyFlatTreeItems } from '@fluentui/react-tree';
+import { NestedTreeItem } from '@fluentui/react-tree';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
 import { ProgressFieldProps_unstable as ProgressFieldProps } from '@fluentui/react-progress';
@@ -63,6 +69,10 @@ import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
+import { renderTree_unstable } from '@fluentui/react-tree';
+import { renderTreeItem_unstable } from '@fluentui/react-tree';
+import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
+import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
@@ -79,6 +89,35 @@ import { SwitchFieldProps_unstable as SwitchFieldProps } from '@fluentui/react-s
 import { TextareaField_unstable as TextareaField } from '@fluentui/react-textarea';
 import { textareaFieldClassNames } from '@fluentui/react-textarea';
 import { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentui/react-textarea';
+import { Tree } from '@fluentui/react-tree';
+import { treeClassNames } from '@fluentui/react-tree';
+import { TreeContextValue } from '@fluentui/react-tree';
+import { TreeItem } from '@fluentui/react-tree';
+import { treeItemClassNames } from '@fluentui/react-tree';
+import { TreeItemId } from '@fluentui/react-tree';
+import { TreeItemLayout } from '@fluentui/react-tree';
+import { treeItemLayoutClassNames } from '@fluentui/react-tree';
+import { TreeItemLayoutProps } from '@fluentui/react-tree';
+import { TreeItemLayoutSlots } from '@fluentui/react-tree';
+import { TreeItemLayoutState } from '@fluentui/react-tree';
+import { treeItemLevelToken } from '@fluentui/react-tree';
+import { TreeItemPersonaLayout } from '@fluentui/react-tree';
+import { treeItemPersonaLayoutClassNames } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutProps } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutSlots } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutState } from '@fluentui/react-tree';
+import { TreeItemProps } from '@fluentui/react-tree';
+import { TreeItemProvider } from '@fluentui/react-tree';
+import { TreeItemSlots } from '@fluentui/react-tree';
+import { TreeItemState } from '@fluentui/react-tree';
+import { TreeNavigationData_unstable } from '@fluentui/react-tree';
+import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
+import { TreeOpenChangeData } from '@fluentui/react-tree';
+import { TreeOpenChangeEvent } from '@fluentui/react-tree';
+import { TreeProps } from '@fluentui/react-tree';
+import { TreeProvider } from '@fluentui/react-tree';
+import { TreeSlots } from '@fluentui/react-tree';
+import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useCard_unstable } from '@fluentui/react-card';
@@ -91,9 +130,21 @@ import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
+import { useFlatTreeItems_unstable } from '@fluentui/react-tree';
+import { UseFlatTreeItemsOptions } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
+import { useTree_unstable } from '@fluentui/react-tree';
+import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeItem_unstable } from '@fluentui/react-tree';
+import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
+import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
+import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
+import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
+import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
+import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
@@ -179,6 +230,14 @@ export { FieldSlots }
 
 export { FieldState }
 
+export { flattenTree_unstable }
+
+export { FlatTreeItem }
+
+export { FlatTreeItemProps }
+
+export { FlatTreeProps }
+
 export { InfoButton }
 
 export { infoButtonClassNames }
@@ -194,6 +253,10 @@ export { InputField }
 export { inputFieldClassNames }
 
 export { InputFieldProps }
+
+export { LazyFlatTreeItems }
+
+export { NestedTreeItem }
 
 export { ProgressField }
 
@@ -220,6 +283,14 @@ export { renderCardPreview_unstable }
 export { renderField_unstable }
 
 export { renderInfoButton_unstable }
+
+export { renderTree_unstable }
+
+export { renderTreeItem_unstable }
+
+export { renderTreeItemLayout_unstable }
+
+export { renderTreeItemPersonaLayout_unstable }
 
 export { renderVirtualizer_unstable }
 
@@ -253,6 +324,64 @@ export { textareaFieldClassNames }
 
 export { TextareaFieldProps }
 
+export { Tree }
+
+export { treeClassNames }
+
+export { TreeContextValue }
+
+export { TreeItem }
+
+export { treeItemClassNames }
+
+export { TreeItemId }
+
+export { TreeItemLayout }
+
+export { treeItemLayoutClassNames }
+
+export { TreeItemLayoutProps }
+
+export { TreeItemLayoutSlots }
+
+export { TreeItemLayoutState }
+
+export { treeItemLevelToken }
+
+export { TreeItemPersonaLayout }
+
+export { treeItemPersonaLayoutClassNames }
+
+export { TreeItemPersonaLayoutProps }
+
+export { TreeItemPersonaLayoutSlots }
+
+export { TreeItemPersonaLayoutState }
+
+export { TreeItemProps }
+
+export { TreeItemProvider }
+
+export { TreeItemSlots }
+
+export { TreeItemState }
+
+export { TreeNavigationData_unstable }
+
+export { TreeNavigationEvent_unstable }
+
+export { TreeOpenChangeData }
+
+export { TreeOpenChangeEvent }
+
+export { TreeProps }
+
+export { TreeProvider }
+
+export { TreeSlots }
+
+export { TreeState }
+
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
@@ -277,11 +406,35 @@ export { useField_unstable }
 
 export { useFieldStyles_unstable }
 
+export { useFlatTreeItems_unstable }
+
+export { UseFlatTreeItemsOptions }
+
 export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
 
 export { useIntersectionObserver }
+
+export { useTree_unstable }
+
+export { useTreeContext_unstable }
+
+export { useTreeItem_unstable }
+
+export { useTreeItemContext_unstable }
+
+export { useTreeItemLayout_unstable }
+
+export { useTreeItemLayoutStyles_unstable }
+
+export { useTreeItemPersonaLayout_unstable }
+
+export { useTreeItemPersonaLayoutStyles_unstable }
+
+export { useTreeItemStyles_unstable }
+
+export { useTreeStyles_unstable }
 
 export { useVirtualizer_unstable }
 
