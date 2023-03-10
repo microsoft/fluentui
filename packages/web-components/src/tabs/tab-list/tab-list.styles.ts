@@ -1,7 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import {
   borderRadiusMedium,
-  colorBrandBackgroundSelected,
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
   fontFamilyBase,
@@ -37,10 +36,6 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled='true']) .active-indicator {
-    background: ${colorNeutralForegroundDisabled};
-  }
-
   .tablist {
     display: grid;
     grid-template-rows: auto auto;
@@ -63,18 +58,7 @@ export const styles = css`
   }
   .active-indicator {
     display: none;
-    grid-row: 2;
-    grid-column: 1;
-    width: 100%;
-    height: 3px;
-    justify-self: center;
-    background: ${colorBrandBackgroundSelected};
-    border-radius: ${borderRadiusMedium};
-    position: relative;
   }
-  /* .activeIndicatorTransition {
-    transition: transform 0.2s ease;
-  } */
 
   .tabpanel {
     grid-row: 2;
@@ -105,17 +89,6 @@ export const styles = css`
   }
   :host([orientation='vertical']) ::slotted([slot='end']) {
     grid-row: 3;
-  }
-  :host([orientation='vertical']) .active-indicator {
-    grid-column: 1;
-    grid-row: 1;
-    width: 3px;
-    height: ${fontSizeBase300};
-    align-self: center;
-    border-radius: ${borderRadiusMedium};
-  }
-  :host([orientation='vertical']) .activeIndicatorTransition {
-    transition: transform 0.2s linear;
   }
 
   :host([size='small']) ::slotted(fluent-tab) {

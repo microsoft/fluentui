@@ -32,9 +32,8 @@ export class Tab extends FASTTab {
       this.setSelected(isSelected);
       if (isSelected) {
         this.syncAnimationProperties();
-        console.log({ offset: this._offsetX, scale: this._scale });
-        this.setTabScaleCSS();
-        this.setTabOffsetCSS();
+        this.setTabScaleCSSVar();
+        this.setTabOffsetCSSVar();
       } else if (this.id === this._previousActiveTab.id) {
         this.clearAnimationProperties();
       }
@@ -44,15 +43,10 @@ export class Tab extends FASTTab {
 
       if (this._offsetX === 0 && this._scale === 1) {
         this.classList.add('animated');
-        this.setTabScaleCSS();
-        this.setTabOffsetCSS();
+        this.setTabScaleCSSVar();
+        this.setTabOffsetCSSVar();
       }
     }
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.addCSSClasses();
   }
 
   private setSelected(isSelected: boolean) {
@@ -70,40 +64,40 @@ export class Tab extends FASTTab {
     this.classList.remove('animated');
   }
 
-  private addCSSClasses() {
-    const orientation = this.parentElement?.getAttribute('orientation');
-    if (orientation === 'horizontal') {
-      this.classList.add('horizontal');
-    } else {
-      this.classList.add('vertical');
-    }
+  classListChanged() {
+    console.log(this.classList);
   }
-
   private syncAnimationProperties() {
-    const previousSelectedTabX = this._previousActiveTab.x;
-    const selectedTabX = this.getSelectedTabPosition();
-    const previousSelectedTabWidth = this._previousActiveTab.width;
-    const selectedTabWidth = this.getSelectedTabWidth();
+    const isHorizontal = this.classList.contains('horizontal');
+    console.log(isHorizontal);
+    const previousSelectedTabPosition = isHorizontal ? this._previousActiveTab.x : this._previousActiveTab.y;
+    const selectedTabPosition = this.getSelectedTabPosition(isHorizontal);
+    const previousSelectedTabSize = isHorizontal ? this._previousActiveTab.width : this._previousActiveTab.height;
+    const selectedTabWidth = this.getSelectedTabSize(isHorizontal);
 
-    this._offsetX = previousSelectedTabX - selectedTabX;
-    this._scale = (previousSelectedTabWidth || 1) / (selectedTabWidth || 1);
+    this._offsetX = previousSelectedTabPosition - selectedTabPosition;
+    this._scale = (previousSelectedTabSize || 1) / (selectedTabWidth || 1);
   }
 
-  private getSelectedTabPosition(): number {
+  private getSelectedTabPosition(isHorizontal: boolean): number {
     if (this.parentElement) {
-      return this.getBoundingClientRect().x - this.parentElement.getBoundingClientRect()?.x;
+      if (isHorizontal) {
+        return this.getBoundingClientRect().x - this.parentElement.getBoundingClientRect().x;
+      } else return this.getBoundingClientRect().y - this.parentElement.getBoundingClientRect().y;
     }
     return 0;
   }
 
-  private getSelectedTabWidth(): number {
+  private getSelectedTabSize(isHorizontal: boolean): number {
     if (this.id === this._activeTab.id) {
-      return this.getBoundingClientRect().width;
+      if (isHorizontal) {
+        return this.getBoundingClientRect().width;
+      } else return this.getBoundingClientRect().y;
     }
     return 0;
   }
 
-  private setTabOffsetCSS(x?: number, y?: number) {
+  private setTabOffsetCSSVar(x?: number, y?: number) {
     const hasXandY = typeof x === 'number' && typeof y === 'number';
     document.documentElement.style.setProperty(
       TAB_TOKEN_NAMES.tabIndicatorOffset,
@@ -111,7 +105,7 @@ export class Tab extends FASTTab {
     );
   }
 
-  private setTabScaleCSS(newScale?: number) {
+  private setTabScaleCSSVar(newScale?: number) {
     document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorScale, `${newScale || this._scale}`);
   }
 }

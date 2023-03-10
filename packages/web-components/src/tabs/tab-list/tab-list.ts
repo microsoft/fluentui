@@ -56,6 +56,12 @@ export class TabList extends FASTTabs {
           height: activeRect.height,
           width: activeRect.width,
         });
+
+        if (this.orientation === 'horizontal') {
+          tab.classList.add('horizontal');
+        } else {
+          tab.classList.add('vertical');
+        }
       });
     }
   }

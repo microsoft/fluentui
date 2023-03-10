@@ -52,17 +52,10 @@ export const styles = css`
   }
 
   :host([data-selected='true'])::after {
-    width: calc(100% - 20px);
-    height: ${strokeWidthThicker};
     background-color: ${colorCompoundBrandStroke};
     border-radius: ${borderRadiusCircular};
-
-    /* default values for content, position and margin */
     content: '';
     inset: 0;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
     position: absolute;
     z-index: 1;
   }
@@ -74,10 +67,24 @@ export const styles = css`
   }
 
   :host(.horizontal)::after {
+    width: calc(100% - 20px);
+    height: ${strokeWidthThicker};
+
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+
     transform-origin: left;
     transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
   :host(.vertical)::after {
+    width: ${strokeWidthThicker};
+    height: calc(100% - 20px);
+
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
     transform-origin: top;
     transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
   }
