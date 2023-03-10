@@ -2,6 +2,35 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Fri, 10 Mar 2023 07:38:24 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.0",
+      "version": "8.106.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "02178627cd4a8c7d0a76bdf8b22333d2954417e7",
+            "comment": "Updating drown down focused and disabled styles."
+          }
+        ],
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "cb36fda9e47e3244dec3525f7ed0145423d74b6a",
+            "comment": "Adds focus styles to SearchBox, extracts duplicated focus and disabled code from TextField to utils."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.5",
+            "commit": "684dafbd5d9efa1dd61330eed7a503d61b1184f3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Mar 2023 07:39:12 GMT",
       "tag": "@fluentui/fluent2-theme_v8.105.1",
       "version": "8.105.1",

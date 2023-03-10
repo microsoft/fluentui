@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "release @fluentui/react-tree unstable",
+  "comment": "feat: Release Card as stable",
   "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
+  "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
 }

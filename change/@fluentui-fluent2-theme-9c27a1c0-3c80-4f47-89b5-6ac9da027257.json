@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adds focus styles to SearchBox, extracts duplicated focus and disabled code from TextField to utils.",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

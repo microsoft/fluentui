@@ -2,6 +2,41 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Fri, 10 Mar 2023 07:14:00 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d11b9e38fee14ef5a0bb3dd6f2e7a70c015b4796",
+            "comment": "chore: clean up comments in SpinButton source code"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.23",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-utilities to v9.6.2",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.1.1",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Mar 2023 17:42:43 GMT",
       "tag": "@fluentui/react-spinbutton_v9.2.0",
       "version": "9.2.0",
