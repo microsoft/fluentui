@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 08 Mar 2023 17:42:38 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2023 07:14:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.2)
+
+Fri, 10 Mar 2023 07:14:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.1..@fluentui/react-positioning_v9.5.2)
+
+### Patches
+
+- fix: Export `pinned` prop from `PositioningProps` ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.6.2 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
 
 ## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.1)
 

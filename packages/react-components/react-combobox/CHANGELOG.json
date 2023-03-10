@@ -2,6 +2,45 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Fri, 10 Mar 2023 07:14:01 GMT",
+      "tag": "@fluentui/react-combobox_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.12",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.23",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.1.11",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.5.2",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.6.2",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Mar 2023 17:42:29 GMT",
       "tag": "@fluentui/react-combobox_v9.2.0",
       "version": "9.2.0",
