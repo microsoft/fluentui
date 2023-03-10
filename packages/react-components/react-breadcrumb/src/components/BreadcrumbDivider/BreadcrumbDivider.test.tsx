@@ -1,29 +1,25 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Breadcrumb } from './Breadcrumb';
+import { BreadcrumbDivider } from './BreadcrumbDivider';
 import { isConformant } from '../../testing/isConformant';
 
-describe('Breadcrumb', () => {
+describe('BreadcrumbDivider', () => {
   isConformant({
-    Component: Breadcrumb,
-    displayName: 'Breadcrumb',
+    Component: BreadcrumbDivider,
+    displayName: 'BreadcrumbDivider',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<Breadcrumb>Default Breadcrumb</Breadcrumb>);
+    const result = render(<BreadcrumbDivider>Default BreadcrumbDivider</BreadcrumbDivider>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <nav
-          class="fui-Breadcrumb"
+        <span
+          class="fui-BreadcrumbDivider"
         >
-          <ol
-            class="fui-Breadcrumb__list"
-          >
-            Default Breadcrumb
-          </ol>
-        </nav>
+          &gt;
+        </span>
       </div>
     `);
   });
