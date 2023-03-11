@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 14 Mar 2023 07:38:48 GMT",
+      "tag": "@fluentui/react_v8.106.6",
+      "version": "8.106.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "56f81e3cd545ee3c307825335d4643b06a877ce5",
+            "comment": "fix: Panel async and events to work in concurrent mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:38:25 GMT",
       "tag": "@fluentui/react_v8.106.5",
       "version": "8.106.5",

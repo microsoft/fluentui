@@ -2,6 +2,33 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Tue, 14 Mar 2023 07:38:48 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "41d1b1dc1c750b397a78a4f660f1b2b0292fbdb4",
+            "comment": "Updating spin button focused and disabled styles."
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "349c420b582843a2be7f0553afcb497570955590",
+            "comment": "Fixing bugs in the spinner size. All 4 sizes were hard coded to 32px. Now Medium and large are 32px & 36px respectivley.xSmall back to 12px and small to 16px."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.6",
+            "commit": "56f81e3cd545ee3c307825335d4643b06a877ce5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:38:24 GMT",
       "tag": "@fluentui/fluent2-theme_v8.106.0",
       "version": "8.106.0",

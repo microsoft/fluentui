@@ -4,7 +4,7 @@ import descriptionMd from './CardHeaderDescription.md';
 export { Default } from './CardHeaderDefault.stories';
 
 export default {
-  title: 'Preview Components/Card/CardHeader',
+  title: 'Components/Card/CardHeader',
   component: CardHeader,
   parameters: {
     docs: {
