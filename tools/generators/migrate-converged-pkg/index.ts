@@ -417,7 +417,7 @@ const templates = {
         transform: {
           react: {
             runtime: 'classic',
-            useBuiltins: true,
+            useSpread: true,
           },
         },
       },
