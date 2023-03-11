@@ -1,14 +1,14 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
-import type { TreeItemPropsReferences } from './useFlatTreeItems';
+import { UnfilteredFlatTree } from '../utils/createUnfilteredFlatTree';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
-import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { treeDataTypes } from '../utils/tokens';
 import { treeItemFilter } from '../utils/treeItemFilter';
+import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { useRovingTabIndex } from './useRovingTabIndexes';
-import { useMergedRefs } from '@fluentui/react-utilities';
 
-export function useFlatTreeNavigation(flatTree: Pick<TreeItemPropsReferences, 'get'>) {
+export function useFlatTreeNavigation(flatTree: UnfilteredFlatTree) {
   const { targetDocument } = useFluent_unstable();
   const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
@@ -66,14 +66,10 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement(
-  flatTree: Pick<TreeItemPropsReferences, 'get'>,
-  target: HTMLElement,
-  targetDocument: Document,
-): HTMLElement | null {
-  const item = flatTree.get(target.id);
-  if (item && item.parentId) {
-    return targetDocument.getElementById(item.parentId);
+function parentElement(flatTree: UnfilteredFlatTree, target: HTMLElement, document: Document) {
+  const flatTreeItem = flatTree.itemsPerId.get(target.id);
+  if (flatTreeItem && flatTreeItem.parentId) {
+    return document.getElementById(flatTreeItem.parentId);
   }
   return null;
 }

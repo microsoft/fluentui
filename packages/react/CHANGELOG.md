@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 09 Mar 2023 07:39:12 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 07:38:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.106.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.6)
+
+Tue, 14 Mar 2023 07:38:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.106.5..@fluentui/react_v8.106.6)
+
+### Patches
+
+- fix: Panel async and events to work in concurrent mode ([PR #26749](https://github.com/microsoft/fluentui/pull/26749) by mgodbolt@microsoft.com)
+
+## [8.106.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.5)
+
+Fri, 10 Mar 2023 07:38:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.106.4..@fluentui/react_v8.106.5)
+
+### Patches
+
+- Bump @fluentui/react-hooks to v8.6.19 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.8 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
 
 ## [8.106.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.4)
 

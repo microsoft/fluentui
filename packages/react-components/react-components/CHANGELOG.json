@@ -2,6 +2,141 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 13 Mar 2023 08:58:23 GMT",
+      "tag": "@fluentui/react-components_v9.18.0",
+      "version": "9.18.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: release 9.0.0"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: Release Card as stable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "feat: isHTMLElement to support all HTMLElement classes"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Mar 2023 13:28:39 GMT",
+      "tag": "@fluentui/react-components_v9.17.1",
+      "version": "9.17.1",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "4e092355bfa9457409d7fc3b4e617681bc9d3c85",
+            "comment": "chore: updates react-tree unstable API"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4e092355bfa9457409d7fc3b4e617681bc9d3c85",
+            "comment": "feat: creates useFlatTree hook to improve API"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Mar 2023 07:13:59 GMT",
+      "tag": "@fluentui/react-components_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "7e71b6784e771470f88aa319e85da77e054584d2",
+            "comment": "release @fluentui/react-tree unstable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "181ce7afa80e62f574b10efc5fe977323620a56b",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584",
+            "comment": "fix: Export `pinned` prop from `PositioningProps`"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e42e534acb58ef98a4a0ea1c7d8c0cf7a49d70ac",
+            "comment": "fix: ResolveShorthandOptions type to better reflect implementation"
+          }
+        ],
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d11b9e38fee14ef5a0bb3dd6f2e7a70c015b4796",
+            "comment": "chore: clean up comments in SpinButton source code"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7e71b6784e771470f88aa319e85da77e054584d2",
+            "comment": "release @fluentui/react-tree unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Mar 2023 17:42:23 GMT",
       "tag": "@fluentui/react-components_v9.16.0",
       "version": "9.16.0",
