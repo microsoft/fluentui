@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "updated tokens for strong and subtle variants",
+  "packageName": "@fluentui/react-divider",
+  "email": "kakrookaran@gmail.com",
+  "dependentChangeType": "patch"
+}

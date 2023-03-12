@@ -99,7 +99,7 @@ const useBaseStyles = makeStyles({
     },
   },
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground3,
 
     '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke3),
@@ -110,7 +110,7 @@ const useBaseStyles = makeStyles({
     },
   },
   strong: {
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralForeground1,
 
     '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
