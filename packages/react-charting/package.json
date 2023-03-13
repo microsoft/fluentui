@@ -33,7 +33,8 @@
     "@fluentui/jest-serializer-merge-styles": "^8.0.23",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-webpack": "*",
+    "worker-loader": "^3.0.8"
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.15",

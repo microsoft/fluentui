@@ -24,7 +24,7 @@ import {
   getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
-  createWrapOfXLabels,
+  // createWrapOfXLabels,
   rotateXAxisLabels,
   // Points,
   //pointTypes,

@@ -16,7 +16,7 @@ import {
   createStringXAxis,
   IAxisData,
   getAccessibleDataObject,
-  getDomainNRangeValues,
+  // getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
   createStringYAxis,
@@ -24,12 +24,17 @@ import {
   getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
-  createWrapOfXLabels,
   rotateXAxisLabels,
   Points,
   pointTypes,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
+// import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MyWorker from 'worker-loader!./workers/createXScale.worker';
+
+//import * as worker from './workers/createXScale';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
@@ -49,6 +54,28 @@ export interface ICartesianChartState {
    * Defalut value is 0. And this values calculted when 'wrapXAxisLables' or 'showXAxisLablesTooltip' is true.
    */
   _removalValueForTextTuncate?: number;
+  /* this state is used to communicate with the worker task
+   * such that the chart is re-rendered when the worker task completes its processing of
+   * creating the Xaxis Scale.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  XAxisParams?: any;
+
+  xAxisElement: SVGElement | null;
+}
+
+export interface ICreateXAxisWorkerMessage {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  props: any;
+  margins: IMargins;
+  containerWidth: number;
+  rtl: boolean;
+}
+
+export interface ICreateXAxisWorkerResponse {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  XAxisParams: any;
+  XAxisElement: SVGElement | null;
 }
 
 /**
@@ -62,12 +89,13 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
-  private xAxisElement: SVGElement | null;
+  //private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
+  private _createXAxisWorker: Worker;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
@@ -81,6 +109,8 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
       _height: this.props.height || 350,
       _removalValueForTextTuncate: 0,
       isRemoveValCalculated: true,
+      XAxisParams: undefined,
+      xAxisElement: null,
     };
     this.idForGraph = getId('chart_');
     /**
@@ -95,14 +125,51 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
       right: this._isRtl ? this.props.margins?.left ?? 40 : this.props.margins?.right ?? 20,
       left: this._isRtl ? this.props.margins?.right ?? 20 : this.props.margins?.left ?? 40,
     };
+    // let code = worker.toString();
+    // code = code.substring(code.indexOf("{")+1, code.lastIndexOf("}"));
+    // const blob = new Blob([code]);
+    this._createXAxisWorker = new MyWorker();
   }
 
   public componentDidMount(): void {
     this._fitParentContainer();
+    const request: ICreateXAxisWorkerMessage = {
+      props: {
+        points: this.props.points,
+        chartType: this.props.chartType,
+        xAxisType: this.props.xAxisType,
+        barwidth: this.props.barwidth,
+        tickValues: this.props.tickValues,
+        xAxisTickCount: this.props.xAxisTickCount,
+        xAxistickSize: this.props.xAxistickSize,
+        tickPadding: this.props.tickPadding,
+        xAxisPadding: this.props.xAxisPadding,
+        culture: this.props.culture,
+        dateLocalizeOptions: this.props.dateLocalizeOptions,
+        timeFormatLocale: this.props.timeFormatLocale,
+        customDateTimeFormatter: this.props.customDateTimeFormatter,
+        tickParams: this.props.tickParams,
+        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip,
+        datasetForXAxisDomain: this.props.datasetForXAxisDomain,
+      },
+      margins: this.margins,
+      containerWidth: this.state.containerWidth,
+      rtl: this._isRtl,
+    };
+    this._createXAxisWorker.postMessage(request);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this._createXAxisWorker.onmessage = (e: MessageEvent<any>) => {
+      // eslint-disable-next-line no-console
+      console.log(e.data);
+      const response = e.data as ICreateXAxisWorkerResponse;
+      this.setState({ XAxisParams: response.XAxisParams, xAxisElement: response.XAxisElement });
+    };
   }
 
   public componentWillUnmount(): void {
     cancelAnimationFrame(this._reqID);
+    this._createXAxisWorker.terminate();
   }
 
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
@@ -110,13 +177,46 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
       this._fitParentContainer();
     }
 
+    const request: ICreateXAxisWorkerMessage = {
+      props: {
+        points: this.props.points,
+        chartType: this.props.chartType,
+        xAxisType: this.props.xAxisType,
+        barwidth: this.props.barwidth,
+        tickValues: this.props.tickValues,
+        xAxisTickCount: this.props.xAxisTickCount,
+        xAxistickSize: this.props.xAxistickSize,
+        tickPadding: this.props.tickPadding,
+        xAxisPadding: this.props.xAxisPadding,
+        culture: this.props.culture,
+        dateLocalizeOptions: this.props.dateLocalizeOptions,
+        timeFormatLocale: this.props.timeFormatLocale,
+        customDateTimeFormatter: this.props.customDateTimeFormatter,
+        tickParams: this.props.tickParams,
+        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip,
+        datasetForXAxisDomain: this.props.datasetForXAxisDomain,
+      },
+      margins: this.margins,
+      containerWidth: this.state.containerWidth,
+      rtl: this._isRtl,
+    };
+    this._createXAxisWorker.postMessage(request);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this._createXAxisWorker.onmessage = (e: MessageEvent<any>) => {
+      // eslint-disable-next-line no-console
+      console.log(e.data);
+      const response = e.data as ICreateXAxisWorkerResponse;
+      this.setState({ XAxisParams: response.XAxisParams, xAxisElement: response.XAxisElement });
+    };
+
     if (
       !this.props.wrapXAxisLables &&
       this.props.rotateXAxisLables &&
       this.props.xAxisType! === XAxisTypes.StringAxis
     ) {
       const rotateLabelProps = {
-        node: this.xAxisElement,
+        node: this.state.xAxisElement,
         xAxis: this._xScale,
       };
       const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
@@ -152,26 +252,24 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(this.margins);
 
-    const XAxisParams = {
-      domainNRangeValues: getDomainNRangeValues(
-        points,
-        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
-        this.state.containerWidth,
-        chartType,
-        this._isRtl,
-        this.props.xAxisType,
-        this.props.barwidth!,
-        this.props.tickValues!,
-      ),
-      xAxisElement: this.xAxisElement!,
-      showRoundOffXTickValues: true,
-      xAxisCount: this.props.xAxisTickCount,
-      xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
-      xAxisPadding: this.props.xAxisPadding,
-      xAxisInnerPadding: this.props.xAxisInnerPadding,
-      xAxisOuterPadding: this.props.xAxisOuterPadding,
-    };
+    // const XAxisParams = {
+    //   domainNRangeValues: getDomainNRangeValues(
+    //     points,
+    //     this.margins,
+    //     this.state.containerWidth,
+    //     chartType,
+    //     this._isRtl,
+    //     this.props.xAxisType,
+    //     this.props.barwidth!,
+    //     this.props.tickValues!,
+    //   ),
+    //   xAxisElement: this.xAxisElement!,
+    //   showRoundOffXTickValues: true,
+    //   xAxisCount: this.props.xAxisTickCount,
+    //   xAxistickSize: this.props.xAxistickSize,
+    //   tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
+    //   xAxisPadding: this.props.xAxisPadding,
+    // };
 
     const YAxisParams = {
       margins: this.margins,
@@ -188,35 +286,42 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
       yAxisPadding: this.props.yAxisPadding,
     };
 
-    /**
-     * These scales used for 2 purposes.
-     * 1. To create x and y axis
-     * 2. To draw the graph.
-     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
-     */
+    // /**
+    //  * These scales used for 2 purposes.
+    //  * 1. To create x and y axis
+    //  * 2. To draw the graph.
+    //  * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+    //  */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let xScale: any;
-    switch (this.props.xAxisType!) {
-      case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams, culture);
-        break;
-      case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(
-          XAxisParams,
-          this.props.tickParams!,
-          culture,
-          dateLocalizeOptions,
-          timeFormatLocale,
-          customDateTimeFormatter,
-        );
-        break;
-      case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
-        break;
-      default:
-        xScale = createNumericXAxis(XAxisParams, culture);
+    if (this.state.XAxisParams) {
+      switch (this.props.xAxisType!) {
+        case XAxisTypes.NumericAxis:
+          xScale = createNumericXAxis(this.state.XAxisParams, culture);
+          break;
+        case XAxisTypes.DateAxis:
+          xScale = createDateXAxis(
+            this.state.XAxisParams,
+            this.props.tickParams!,
+            culture,
+            dateLocalizeOptions,
+            timeFormatLocale,
+            customDateTimeFormatter,
+          );
+          break;
+        case XAxisTypes.StringAxis:
+          xScale = createStringXAxis(
+            this.state.XAxisParams,
+            this.props.tickParams!,
+            this.props.datasetForXAxisDomain!,
+            culture,
+          );
+          break;
+        default:
+          xScale = createNumericXAxis(this.state.XAxisParams, culture);
+      }
+      this._xScale = xScale;
     }
-    this._xScale = xScale;
 
     /*
      * To enable wrapping of x axis tick values or to display complete x axis tick values,
@@ -224,19 +329,23 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
      * */
-    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
-      const wrapLabelProps = {
-        node: this.xAxisElement,
-        xAxis: xScale,
-        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
-        noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
-      };
-      const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
-      // this value need to be updated for draw graph updated. So instead of using private value, using set state.
-      if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
-        this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
-      }
-    }
+    // if (
+    //   this.state.Xscale &&
+    //   this.state.xAxisElement &&
+    //   (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip)
+    // ) {
+    //   const wrapLabelProps = {
+    //     node: this.state.xAxisElement,
+    //     xAxis: this.state.Xscale as ScaleBand<string>,
+    //     showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+    //     noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+    //   };
+    //   const temp = createWrapOfXLabels(wrapLabelProps) as number;
+    //   // this value need to be updated for draw graph updated. So instead of using private value, using set state.
+    //   if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
+    //     this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
+    //   }
+    // }
 
     /**
      * These scales used for 2 purposes.
@@ -253,8 +362,9 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
       yScale = createYAxis(YAxisParams, this._isRtl, axisData);
     }
     this.props.getAxisData && this.props.getAxisData(axisData);
+
     // Callback function for chart, returns axis
-    this._getData(xScale, yScale);
+    this._xScale && this._getData(this._xScale, yScale);
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -269,11 +379,13 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
       height: this.state.containerHeight,
     };
 
-    const children = this.props.children({
-      ...this.state,
-      xScale,
-      yScale,
-    });
+    const children =
+      this._xScale &&
+      this.props.children({
+        ...this.state,
+        xScale: this._xScale,
+        yScale,
+      });
 
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
@@ -301,7 +413,7 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
           >
             <g
               ref={(e: SVGElement | null) => {
-                this.xAxisElement = e;
+                this.setState({ xAxisElement: e });
               }}
               id={`xAxisGElement${this.idForGraph}`}
               // To add wrap of x axis lables feature, need to remove word height from svg height.
@@ -547,7 +659,7 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
         yScale,
         this.state.containerHeight - this.state._removalValueForTextTuncate!,
         this.state.containerWidth,
-        this.xAxisElement,
+        this.state.xAxisElement,
       );
   };
 }

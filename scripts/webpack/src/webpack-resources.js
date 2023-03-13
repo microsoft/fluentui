@@ -221,6 +221,19 @@ const api = {
         module: {
           rules: [
             cssRule,
+            // Place this *before* the `ts-loader`.
+            {
+              test: [/\.worker\.ts$/],
+              use: {
+                loader: 'worker-loader',
+                options: {
+                  experimentalWatchApi: true,
+                  transpileOnly: true,
+                },
+              },
+              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
+              //loader: "worker-loader",
+            },
             {
               test: [/\.tsx?$/],
               use: {
