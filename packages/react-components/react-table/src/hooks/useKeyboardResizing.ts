@@ -64,7 +64,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   // On component unmout, cancel any timer for adding a listener (if it exists) and remove the listener
   React.useEffect(
     () => () => {
-      clearTimeout(addListenerTimeout.current);
+      targetDocument?.defaultView?.clearTimeout(addListenerTimeout.current);
       targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
     },
     [keyboardHandler, targetDocument?.defaultView],
