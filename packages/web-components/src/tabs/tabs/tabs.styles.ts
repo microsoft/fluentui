@@ -22,7 +22,7 @@ import {
   spacingVerticalSNudge,
   strokeWidthThicker,
 } from '../../theme/design-tokens.js';
-import { TAB_TOKEN_NAMES } from '../index.js';
+import { TAB_TOKEN_NAMES } from '../tab/tab.js';
 
 export const styles = css`
   :host {
