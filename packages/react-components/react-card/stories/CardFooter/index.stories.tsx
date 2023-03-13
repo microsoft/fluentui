@@ -4,7 +4,7 @@ import descriptionMd from './CardFooterDescription.md';
 export { Default } from './CardFooterDefault.stories';
 
 export default {
-  title: 'Preview Components/Card/CardFooter',
+  title: 'Components/Card/CardFooter',
   component: CardFooter,
   parameters: {
     docs: {
