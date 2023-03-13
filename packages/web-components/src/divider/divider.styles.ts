@@ -21,6 +21,10 @@ import {
 export const styles = css`
   ${display('flex')}
 
+  :host {
+    contain: content;
+  }
+
   :host::after,
   :host::before {
     align-self: center;

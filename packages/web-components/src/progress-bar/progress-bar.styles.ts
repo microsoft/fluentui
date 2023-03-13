@@ -24,6 +24,7 @@ export const styles = css`
     height: 2px;
     overflow-x: hidden;
     border-radius: ${borderRadiusMedium};
+    contain: content;
   }
 
   :host([thickness='large']),
