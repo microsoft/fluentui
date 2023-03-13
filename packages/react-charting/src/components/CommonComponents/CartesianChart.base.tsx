@@ -24,6 +24,7 @@ import {
   getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
+  createWrapOfXLabels,
   rotateXAxisLabels,
   Points,
   pointTypes,
@@ -33,6 +34,7 @@ import { LegendShape, Shape } from '../Legends/index';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MyWorker from 'worker-loader!./workers/createXScale.worker';
+//import { ScaleBand } from 'd3-scale';
 
 //import * as worker from './workers/createXScale';
 
@@ -329,23 +331,19 @@ export class CartesianChartBase extends React.PureComponent<IModifiedCartesianCh
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
      * */
-    // if (
-    //   this.state.Xscale &&
-    //   this.state.xAxisElement &&
-    //   (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip)
-    // ) {
-    //   const wrapLabelProps = {
-    //     node: this.state.xAxisElement,
-    //     xAxis: this.state.Xscale as ScaleBand<string>,
-    //     showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
-    //     noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
-    //   };
-    //   const temp = createWrapOfXLabels(wrapLabelProps) as number;
-    //   // this value need to be updated for draw graph updated. So instead of using private value, using set state.
-    //   if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
-    //     this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
-    //   }
-    // }
+    if (this._xScale && this.state.xAxisElement && (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip)) {
+      const wrapLabelProps = {
+        node: this.state.xAxisElement,
+        xAxis: this._xScale,
+        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+        noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+      };
+      const temp = createWrapOfXLabels(wrapLabelProps) as number;
+      // this value need to be updated for draw graph updated. So instead of using private value, using set state.
+      if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
+        this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
+      }
+    }
 
     /**
      * These scales used for 2 purposes.

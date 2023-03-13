@@ -5,7 +5,7 @@ import {
   scaleTime as d3ScaleTime,
   scaleBand as d3ScaleBand,
   //ScaleLinear,
-  ScaleBand,
+  //ScaleBand,
   // ScaleTime,
 } from 'd3-scale';
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
@@ -55,7 +55,7 @@ export enum YAxisType {
 
 export interface IWrapLabelProps {
   node: SVGElement | null;
-  xAxis: ScaleBand<string>;
+  xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
 }
@@ -375,7 +375,7 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   let combinedResult: (ILineChartDataPoint & {
     legend: string;
-    color: string;
+    color: string | undefined;
     index?: number;
   })[] = [];
 
@@ -412,7 +412,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       xValToDataPoints[xValue].push({
         legend: ele.legend,
         y: ele.y,
-        color: ele.color,
+        color: ele.color!,
         yAxisCalloutData: ele.yAxisCalloutData,
         callOutAccessibilityData: ele.callOutAccessibilityData,
         index: ele.index,
@@ -422,7 +422,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
         {
           legend: ele.legend,
           y: ele.y,
-          color: ele.color,
+          color: ele.color!,
           yAxisCalloutData: ele.yAxisCalloutData,
           callOutAccessibilityData: ele.callOutAccessibilityData,
           index: ele.index,
@@ -482,96 +482,96 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
  * @param {IWrapLabelProps} wrapLabelProps
  * @returns
  */
-// export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
-//   const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
-//   if (node === null) {
-//     return;
-//   }
-//   const axisNode = d3Select(node).call(xAxis);
-//   let removeVal = 0;
-//   const width = 10;
-//   const arr: number[] = [];
-//   axisNode.selectAll('.tick text').each(function () {
-//     const text = d3Select(this);
-//     const totalWord = text.text();
-//     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
-//     const totalWordLength = text.text().length;
-//     const words = text.text().split(/\s+/).reverse();
-//     arr.push(words.length);
-//     let word: string = '';
-//     let line: string[] = [];
-//     let lineNumber: number = 0;
-//     const lineHeight = 1.1; // ems
-//     const y = text.attr('y');
-//     const dy = parseFloat(text.attr('dy'));
-//     let tspan = text
-//       .text(null)
-//       .append('tspan')
-//       .attr('x', 0)
-//       .attr('y', y)
-//       .attr('id', 'BaseSpan')
-//       .attr('dy', dy + 'em')
-//       .attr('data-', totalWord);
+export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
+  if (node === null) {
+    return;
+  }
+  const axisNode = d3Select(node).call(xAxis);
+  let removeVal = 0;
+  const width = 10;
+  const arr: number[] = [];
+  axisNode.selectAll('.tick text').each(function () {
+    const text = d3Select(this);
+    const totalWord = text.text();
+    const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
+    const totalWordLength = text.text().length;
+    const words = text.text().split(/\s+/).reverse();
+    arr.push(words.length);
+    let word: string = '';
+    let line: string[] = [];
+    let lineNumber: number = 0;
+    const lineHeight = 1.1; // ems
+    const y = text.attr('y');
+    const dy = parseFloat(text.attr('dy'));
+    let tspan = text
+      .text(null)
+      .append('tspan')
+      .attr('x', 0)
+      .attr('y', y)
+      .attr('id', 'BaseSpan')
+      .attr('dy', dy + 'em')
+      .attr('data-', totalWord);
 
-//     if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
-//       tspan = text
-//         .append('tspan')
-//         .attr('id', 'showDots')
-//         .attr('x', 0)
-//         .attr('y', y)
-//         .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-//         .text(truncatedWord);
-//     } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
-//       tspan = text
-//         .append('tspan')
-//         .attr('id', 'LessLength')
-//         .attr('x', 0)
-//         .attr('y', y)
-//         .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-//         .text(totalWord);
-//     } else {
-//       while ((word = words.pop()!)) {
-//         line.push(word);
-//         tspan.text(line.join(' '));
-//         if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
-//           line.pop();
-//           tspan.text(line.join(' '));
-//           line = [word];
-//           tspan = text
-//             .append('tspan')
-//             .attr('id', 'WordBreakId')
-//             .attr('x', 0)
-//             .attr('y', y)
-//             .attr('dy', ++lineNumber * lineHeight + dy + 'em')
-//             .text(word);
-//         }
-//       }
-//       const maxDigit = Math.max(...arr);
-//       let maxHeight: number = 12; // intial value to render corretly first time
-//       axisNode.selectAll('text').each(() => {
-//         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//         const outerHTMLElement = document.getElementById('WordBreakId') as any;
-//         const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
-//         const boxHeight = BoxCordinates && BoxCordinates.height;
-//         if (boxHeight > maxHeight) {
-//           maxHeight = boxHeight;
-//         }
-//       });
-//       // If we take directly maxDigit * maxheight, then it will show more height between x axis tick values and bottom.
-//       // To avoid this, reducing maxDigit value by removing some digit based on legth of word.
-//       let removeDigit: number = 4;
-//       if (maxDigit <= 2) {
-//         removeDigit = 1;
-//       } else if (maxDigit > 2 && maxDigit <= 6) {
-//         removeDigit = 2;
-//       } else if (maxDigit > 6 && maxDigit <= 9) {
-//         removeDigit = 3;
-//       }
-//       removeVal = (maxDigit - removeDigit) * maxHeight;
-//     }
-//   });
-//   return removeVal > 0 ? removeVal : 0;
-// }
+    if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'showDots')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .text(truncatedWord);
+    } else if (showXAxisLablesTooltip && totalWordLength <= noOfCharsToTruncate) {
+      tspan = text
+        .append('tspan')
+        .attr('id', 'LessLength')
+        .attr('x', 0)
+        .attr('y', y)
+        .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+        .text(totalWord);
+    } else {
+      while ((word = words.pop()!)) {
+        line.push(word);
+        tspan.text(line.join(' '));
+        if (tspan.node()!.getComputedTextLength() > width && line.length > 1) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          tspan = text
+            .append('tspan')
+            .attr('id', 'WordBreakId')
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+            .text(word);
+        }
+      }
+      const maxDigit = Math.max(...arr);
+      let maxHeight: number = 12; // intial value to render corretly first time
+      axisNode.selectAll('text').each(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const outerHTMLElement = document.getElementById('WordBreakId') as any;
+        const BoxCordinates = outerHTMLElement && outerHTMLElement.getBoundingClientRect();
+        const boxHeight = BoxCordinates && BoxCordinates.height;
+        if (boxHeight > maxHeight) {
+          maxHeight = boxHeight;
+        }
+      });
+      // If we take directly maxDigit * maxheight, then it will show more height between x axis tick values and bottom.
+      // To avoid this, reducing maxDigit value by removing some digit based on legth of word.
+      let removeDigit: number = 4;
+      if (maxDigit <= 2) {
+        removeDigit = 1;
+      } else if (maxDigit > 2 && maxDigit <= 6) {
+        removeDigit = 2;
+      } else if (maxDigit > 6 && maxDigit <= 9) {
+        removeDigit = 3;
+      }
+      removeVal = (maxDigit - removeDigit) * maxHeight;
+    }
+  });
+  return removeVal > 0 ? removeVal : 0;
+}
 
 /**
  * This method displays a tooltip to the x axis lables(tick values)
