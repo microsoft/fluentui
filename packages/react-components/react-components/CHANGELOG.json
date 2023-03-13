@@ -2,6 +2,67 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 13 Mar 2023 08:58:23 GMT",
+      "tag": "@fluentui/react-components_v9.18.0",
+      "version": "9.18.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: release 9.0.0"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: Release Card as stable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "feat: isHTMLElement to support all HTMLElement classes"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 13:28:39 GMT",
       "tag": "@fluentui/react-components_v9.17.1",
       "version": "9.17.1",
