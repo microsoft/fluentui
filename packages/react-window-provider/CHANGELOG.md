@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Fri, 03 Feb 2023 07:50:06 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2023 07:38:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.8)
+
+Fri, 10 Mar 2023 07:38:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.7..@fluentui/react-window-provider_v2.2.8)
+
+### Patches
+
+- fix: add explicit children to window provider to ensure react 18 type compat ([PR #27117](https://github.com/microsoft/fluentui/pull/27117) by mgodbolt@microsoft.com)
+
+## [2.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.7)
+
+Wed, 01 Mar 2023 07:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.6..@fluentui/react-window-provider_v2.2.7)
+
+### Patches
+
+- Bump @fluentui/test-utilities to v8.3.0 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
 
 ## [2.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.6)
 

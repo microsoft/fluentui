@@ -17,10 +17,10 @@ export const useAccordionItem_unstable = (
 
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
   const open = useAccordionContext_unstable(ctx => ctx.openItems.includes(value));
-  const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { value }), [
-    requestToggle,
-    value,
-  ]);
+  const onAccordionHeaderClick = React.useCallback(
+    (ev: AccordionToggleEvent) => requestToggle(ev, { value }),
+    [requestToggle, value],
+  );
 
   return {
     open,

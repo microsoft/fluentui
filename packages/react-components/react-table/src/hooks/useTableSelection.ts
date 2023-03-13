@@ -33,9 +33,10 @@ export function useTableSelectionState<TItem>(
 
   const [selected, setSelected] = useControllableState<Set<TableRowId>>({
     initialState: new Set(),
-    defaultState: React.useMemo(() => defaultSelectedItems && createSetFromIterable(defaultSelectedItems), [
-      defaultSelectedItems,
-    ]),
+    defaultState: React.useMemo(
+      () => defaultSelectedItems && createSetFromIterable(defaultSelectedItems),
+      [defaultSelectedItems],
+    ),
     state: React.useMemo(() => selectedItems && createSetFromIterable(selectedItems), [selectedItems]),
   });
 

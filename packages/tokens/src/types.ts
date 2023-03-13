@@ -440,9 +440,9 @@ export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 12
 
 export type BrandVariants = Record<Brands, string>;
 
-type StatusSharedColorNames = typeof statusSharedColorNames[number];
-type PersonaSharedColorNames = typeof personaSharedColorNames[number];
-type UnusedSharedColorNames = typeof unusedSharedColorNames[number];
+type StatusSharedColorNames = (typeof statusSharedColorNames)[number];
+type PersonaSharedColorNames = (typeof personaSharedColorNames)[number];
+type UnusedSharedColorNames = (typeof unusedSharedColorNames)[number];
 
 export type StatusSharedColors = Record<StatusSharedColorNames, ColorVariants>;
 export type PersonaSharedColors = Record<PersonaSharedColorNames, ColorVariants>;

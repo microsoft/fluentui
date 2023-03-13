@@ -72,36 +72,32 @@ export function transpileAndEval(
 ): Promise<ITransformedExample> {
   const exampleTs = model.getValue();
   return transpile(model)
-    .then(
-      (transpileOutput: ITransformedCode): ITransformedExample => {
-        if (transpileOutput.error) {
-          return transpileOutput;
-        }
+    .then((transpileOutput: ITransformedCode): ITransformedExample => {
+      if (transpileOutput.error) {
+        return transpileOutput;
+      }
 
-        /* eslint-disable no-eval */
-        const transformedExample = transformExample({
-          tsCode: exampleTs,
-          jsCode: transpileOutput.output,
-          returnFunction: true,
-          supportedPackages,
-        });
-        if (transformedExample.output) {
-          return {
-            ...transformedExample,
-            // Pass in the right React in case there's a different global one on the page...
-            component: eval(transformedExample.output)(React),
-          };
-        } else {
-          return { error: transformedExample.error || 'Unknown error transforming example' };
-        }
-      },
-    )
-    .catch(
-      (err: string | Error): ITransformedExample => {
-        // Log the error to the console so people can see the full stack/etc if they want
-        // eslint-disable-next-line no-console
-        console.error(err);
-        return { error: typeof err === 'string' ? err : err.message };
-      },
-    );
+      /* eslint-disable no-eval */
+      const transformedExample = transformExample({
+        tsCode: exampleTs,
+        jsCode: transpileOutput.output,
+        returnFunction: true,
+        supportedPackages,
+      });
+      if (transformedExample.output) {
+        return {
+          ...transformedExample,
+          // Pass in the right React in case there's a different global one on the page...
+          component: eval(transformedExample.output)(React),
+        };
+      } else {
+        return { error: transformedExample.error || 'Unknown error transforming example' };
+      }
+    })
+    .catch((err: string | Error): ITransformedExample => {
+      // Log the error to the console so people can see the full stack/etc if they want
+      // eslint-disable-next-line no-console
+      console.error(err);
+      return { error: typeof err === 'string' ? err : err.message };
+    });
 }

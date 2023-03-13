@@ -29,6 +29,12 @@ export const DefaultOpenTrees = () => {
               <TreeItem>
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
+              <TreeItem>
+                <TreeItemLayout>level 3, item 2</TreeItemLayout>
+              </TreeItem>
+              <TreeItem>
+                <TreeItemLayout>level 3, item 3</TreeItemLayout>
+              </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>

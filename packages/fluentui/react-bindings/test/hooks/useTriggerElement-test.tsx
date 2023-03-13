@@ -24,7 +24,7 @@ describe('useTriggerElement', () => {
   });
 
   it('"trigger" can be null', () => {
-    const wrapper = mount(<TestComponent trigger={(null as unknown) as React.ReactElement} />);
+    const wrapper = mount(<TestComponent trigger={null as unknown as React.ReactElement} />);
 
     expect(wrapper.children()).toHaveLength(0);
   });

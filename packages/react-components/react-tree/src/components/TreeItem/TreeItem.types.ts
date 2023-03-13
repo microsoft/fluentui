@@ -1,9 +1,13 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { TreeItemContextValue } from '../../contexts';
+import { treeItemLevelToken } from '../../utils/tokens';
+import * as React from 'react';
+
+export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
 
 export type TreeItemSlots = {
-  root: Slot<'div'>;
+  root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;
   content: NonNullable<Slot<'div'>>;
   subtree?: Slot<'span'>;
   /**

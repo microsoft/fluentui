@@ -97,9 +97,7 @@ describe('FocusTrapZone', () => {
    * Helper to get FocusTrapZone bumpers. Requires classname attribute of
    * 'ftzClassname' on FTZ.
    */
-  function getFtzBumpers(
-    element: HTMLElement,
-  ): {
+  function getFtzBumpers(element: HTMLElement): {
     firstBumper: Element;
     lastBumper: Element;
   } {

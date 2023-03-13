@@ -1,0 +1,157 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/TabList Migration" />
+
+# TabList component Migration guide
+
+## Overview:
+
+This document will guide you how to migrate from `Menu` component with `TabList` accessibility behavior from Fluent V0 to the `TabList` component in Fluent V9.
+
+Before:
+
+```tsx
+import { Menu, tabListBehavior } from "@fluentui/react-northstar";
+const Component = ({items}) => (
+  <Menu
+    defaultActiveIndex={0}
+    items={items}
+    primary
+    underlined
+    accessibility={tabListBehavior}
+  />;
+)
+```
+
+After:
+
+```tsx
+import { Tab, TabList } from '@fluentui/react-components';
+const Component = props => (
+  <TabList {...props} defaultSelectedValue={'tab1'}>
+    <Tab value="tab1">First Tab</Tab>
+    <Tab value="tab2">Second Tab</Tab>
+    <Tab value="tab3">Third Tab</Tab>
+  </TabList>
+);
+```
+
+## How to migrate props:
+
+| Menu props                | migrate guide                                                                                                                       |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                                                       |
+| accessibility             | remove tabListBehavior and see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page) |
+| variables, design, styles | see [Migrate style overrides](#./Migrate-style-overrides) in this document                                                          |
+| activeIndex               | replace with `selectedValue` prop                                                                                                   |
+| disabled                  | you can either disable the entire `TabList` or individual `TabItem` components                                                      |
+| defaultActiveIndex        | replace with `defaultSelectedValue` prop                                                                                            |
+| fluid                     | irrelevant (see Menu migration) or use styles                                                                                       |
+| icon                      | move to `Tab` component                                                                                                             |
+| items                     | map items to `Tab` component                                                                                                        |
+| onActiveIndexChange       | remove, use `onTabSelect`                                                                                                           |
+| onItemClick               | replace with `onTabSelect`                                                                                                          |
+| ref, key                  | keep it as is                                                                                                                       |
+| underlined                | remove, has underlined by default or use styles                                                                                     |
+| vertical                  | keep it as is                                                                                                                       |
+
+Here is a comparison for both versions: [Sandbox](https://codesandbox.io/s/tablist-migration-fluentui-forked-lmdx81?file=/example.tsx)
+
+---
+
+## Migrate `Menu` with `tabListBehavior` a11y prop
+
+Replace `Menu` with `TabList` component and `items` props with `Tab` components as JSX children of `TabList`.
+
+Before:
+
+```tsx
+import { Menu, tabListBehavior } from "@fluentui/react-northstar";
+const Component = ({items}) => (
+  <Menu
+    defaultActiveIndex={0}
+    items={items}
+    primary
+    underlined
+    accessibility={tabListBehavior}
+  />;
+)
+```
+
+After:
+
+```tsx
+import { Tab, TabList } from '@fluentui/react-components';
+const Component = ({ items }) => (
+  <TabList>
+    {items.map(({ id, content }) => (
+      <Tab key={id} value={id}>
+        {content}
+      </Tab>
+    ))}
+  </TabList>
+);
+```
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Menu, tabListBehavior } from '@fluentui/react-northstar';
+
+export const Component = () => (
+  <Menu
+    defaultActiveIndex={0}
+    variables={{ chatTabList: true }}
+    items={items}
+    primary
+    underlined
+    accessibility={tabListBehavior}
+  />
+);
+
+// in menu-styles.ts
+export const menuStyles1 = {
+  root: ({ variables: { chatTabList } }) => ({
+    ...(chatTabList && {
+      width: '100%',
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Tab, TabList } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = ({ items }) => {
+  const classes = useStyles();
+  return (
+    <TabList className={classes.chatTabList} defaultSelectedValue={items[0].id}>
+      {items.map(({ id, content }) => (
+        <Tab key={id} value={id}>
+          {content}
+        </Tab>
+      ))}
+    </TabList>
+  );
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  chatTabList: {
+    width: '100%',
+  },
+});
+```

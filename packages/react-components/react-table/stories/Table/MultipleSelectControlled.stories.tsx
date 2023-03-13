@@ -108,9 +108,7 @@ const columns: TableColumnDefinition<Item>[] = [
 ];
 
 export const MultipleSelectControlled = () => {
-  const [selectedRows, setSelectedRows] = React.useState(
-    () => new Set<TableRowId>([0, 1]),
-  );
+  const [selectedRows, setSelectedRows] = React.useState(() => new Set<TableRowId>([0, 1]));
 
   const {
     getRows,

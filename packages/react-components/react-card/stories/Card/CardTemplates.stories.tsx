@@ -19,7 +19,7 @@ import {
   Comment16Regular,
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
