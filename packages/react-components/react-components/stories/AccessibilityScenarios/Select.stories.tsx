@@ -67,7 +67,7 @@ export const FavoritesSelects: React.FunctionComponent = () => {
               <option>Lentils</option>
             </optgroup>
           </Select>
-          <p id="ingredientsHint">You can select more than one ingredient.</p>
+          <p id="ingredientsHint">The available options depend on whether you are a vegetarian or not.</p>
 
           <Button type="submit">Submit</Button>
         </form>

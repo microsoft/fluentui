@@ -15,6 +15,7 @@ export { QuestionnaireAboutTransportationRadios } from './RadioGroup.stories';
 export { FavoritesSelects } from './Select.stories';
 export { SoundControlSliders } from './Slider.stories';
 export { PostsLoadingSpinner } from './Spinner.stories';
+export { DonationFormSpinButtons } from './SpinButton.stories';
 export { EventReminderSplitButton } from './SplitButton.stories';
 export { DeviceControlsSwitches } from './Switch.stories';
 export { MailSettingsHorizontalTabList } from './TabListHorizontal.stories';
