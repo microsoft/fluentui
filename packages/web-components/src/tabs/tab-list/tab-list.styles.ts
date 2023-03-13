@@ -42,11 +42,11 @@ export const styles = css`
 
   :host([disabled]) {
     cursor: not-allowed;
-    pointer-events: none;
     color: ${colorNeutralForegroundDisabled} !important;
   }
 
   :host([disabled]) ::slotted(fluent-tab) {
+    pointer-events: none;
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled} !important;
   }
