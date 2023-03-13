@@ -11,7 +11,7 @@ const PRECISION_FACTOR = 1 / 4;
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const columnId = React.useRef<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
-  const addListenerTimeout = React.useRef(0);
+  const addListenerTimeout = React.useRef<number>();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
@@ -78,7 +78,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       // when Enter was pressed and would be caught in the keyboardHandler, disabling the keyboard mode immediately.
       // No idea why this is happening, but this is a working workaround.
       // Tracked here: https://github.com/microsoft/fluentui/issues/27177
-      addListenerTimeout.current = setTimeout(() => {
+      addListenerTimeout.current = targetDocument?.defaultView?.setTimeout(() => {
         targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
       }, 0);
     },
