@@ -1,10 +1,8 @@
-# @fluentui/react-card [ALPHA]
+# @fluentui/react-card
 
 **React Card components for [Fluent UI React](https://react.fluentui.dev)**
 
-**⚠️ Please note that functionality is still being added to this package. Due to lockstep versioning, the version of this package is aligned with the others in _react-components_.**
-
-These are not production-ready components and **should never be used in a product**. This space is useful for testing new components whose APIs might change before final release.
+A card is a container that holds information and actions related to a single concept or object, like a document or a contact.
 
 ## Usage
 
