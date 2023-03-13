@@ -2,6 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -26,21 +27,30 @@ export const styles = css`
   }
   ::slotted([slot='label']) {
     color: ${colorNeutralForeground3};
-    padding-inline: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
+    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
+    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     cursor: default;
   }
+
   .positioning-region {
     display: flex;
     flex-wrap: wrap;
   }
+
   :host([orientation='vertical']) .positioning-region {
     flex-direction: column;
   }
+
   :host([orientation='horizontal']) .positioning-region {
     flex-direction: row;
+  }
+
+  :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  :host([disabled]) ::slotted([role='radio'] ::slotted(.label)) {
+    color: ${colorNeutralForegroundDisabled};
   }
 `;
