@@ -131,6 +131,7 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
     color: ${colorNeutralForeground3};
     background-color: ${colorNeutralBackground6};
+    contain: layout style;
   }
 
   .default-icon,

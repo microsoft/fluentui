@@ -7,5 +7,6 @@ export const styles = css`
   :host {
     flex-direction: column;
     width: 100%;
+    contain: content;
   }
 `;

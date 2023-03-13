@@ -69,6 +69,7 @@ export const badgeBaseStyles = css.partial`
     border-color: ${colorTransparentStroke};
     background-color: ${colorBrandBackground};
     color: ${colorNeutralForegroundOnBrand};
+    contain: content;
   }
 
   ::slotted(svg) {
