@@ -75,7 +75,7 @@ export const DonationFormSpinButtons: React.FunctionComponent = () => {
           <Label htmlFor="recurrence">Recurrence in months</Label>
           <SpinButton id="recurrence" defaultValue={1} min={1} max={12} aria-describedby="recurrenceText" />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Donate</Button>
         </form>
       ) : (
         <p id="formSubmittedText" tabIndex={-1}>
