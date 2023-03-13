@@ -36,7 +36,7 @@ export class TabList extends FASTTabs {
   }
 
   private setTabData(): void {
-    if (this.tabs && this.tabs.length > 0 && this.activeid) {
+    if (this.tabs && this.tabs.length > 0) {
       const activeTab = this.tabs.filter(tab => tab.id === this.activeid)[0] || this.tabs[0];
       const activeRect = activeTab?.getBoundingClientRect();
       const parentRect = this.getBoundingClientRect();
