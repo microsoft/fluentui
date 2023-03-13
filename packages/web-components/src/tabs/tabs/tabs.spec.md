@@ -4,6 +4,8 @@
 
 Tabs allow for navigation between two or more content views and relies on text headers to articulate the different sections of content.
 
+A note on the naming of this component. The closest equivalent from Fluent UI React is the TabList control. The Web Component Tabs control is named differently because the control comprises of Tabs, Tab List and a Tab Panel. Whereas the react equivalent does not include tab panels. Therefore, a fully equivalent name, in this case, would be inaccurate.
+
 ## Design Spec
 
 [Link to Design Spec in Figma](https://www.figma.com/file/dK5AnDvvnSTWV9lduQWeDk/TabList?node-id=3942%3A9316&t=we0hQaRaKSJc6IeM-0)
@@ -111,13 +113,13 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 The Fluent/FAST web component differs from the Fluent React Control as follows:
 
-| difference                                      | Fluent Web Component                                                                                            | Fluent React Component                                                                       |
+| difference                                      | Tabs - Fluent Web Component                                                                                     | TabList - Fluent React Component                                                             |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | active indicator control / id control selection | managed by control                                                                                              | managed by user with application state                                                       |
 | keyboard and focus selection                    | selects active tab on arrow key focus change                                                                    | reselects tab on space bar or enter after arrow refocus                                      |
 | icon slotting                                   | favors composition (dev chooses how to slot which icon)                                                         | favors automation (dev supplies icon name and control handles the rendering of icon)         |
 | icon slotting filled / unfilled icons           | favors composition over automated handling. requires dev to add interactivity to render filled or unfilled icon | favors automated handling of icons and provides filled and unfilled iconography on selection |
-| tab-panel                                       | requires tab panel control to set content on tab selection                                                      | does not require or include a tab panel control / template                                   |
+| tab-panels                                      | requires tab panel control to set content on tab selection                                                      | does not require or include a tab panel control / template                                   |
 
 [Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 
