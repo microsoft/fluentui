@@ -14,15 +14,11 @@ and will be capable of properly rendering with children render function.
 
 By our [documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--page#replacing-the-entire-slot):
 
-When you pass content or props to a slot,
-the component renders the content within a component or element based on the slot type.
-If you need to replace the slot's entire content, including the containing element,
-pass a render function as the children.
-
-This is an escape hatch in the slots API, so prefer the other techniques whenever possible.
-If you replace the entire slot, very accessibility, layout, and styling still work properly.
-
-By passing `renderBigLetterIcon` as the `children`, the `span` that normally contains the icon is replaced with an `b` (bold).
+> When you pass content or props to a slot, the component renders the content within a component or element based on the slot type.
+> If you need to replace the slot's entire content, including the containing element, pass a render function as the children.
+> This is an escape hatch in the slots API, so prefer the other techniques whenever possible.
+> If you replace the entire slot, accessibility, layout, and styling still work properly.
+> By passing `renderBigLetterIcon` as the `children`, the `span` that normally contains the icon is replaced with an `b` (bold).
 
 ```tsx
 const renderBigLetterIcon (Component, props) => {
@@ -322,36 +318,18 @@ In this case we have some alternatives:
 
 Instead of mutating the merged properties, simply mutate the External properties from the slot component:
 
-Before:
-
-```ts
+```diff
 // useAccordionHeader
 export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(
+- state.root.className = mergeClasses(
++ state.root.props.className = mergeClasses(
     accordionHeaderClassNames.root,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,
-    state.root.className,
-  );
-
-  return state;
-};
-```
-
-After:
-
-```ts
-// useAccordionHeader
-export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
-  const styles = useStyles();
-  state.root.props.className = mergeClasses(
-    accordionHeaderClassNames.root,
-    styles.root,
-    state.inline && styles.rootInline,
-    state.disabled && styles.rootDisabled,
-    state.root.props.className,
+-   state.root.className,
++   state.root.props.className,
   );
 
   return state;
@@ -360,24 +338,29 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
 
 ##### Option 2 mutate overrides
 
-By introducing an `overrides` property on the `ComponentState` we can create a layer of override that can me mutate
+By introducing an `overrides` property on the `ComponentState` we can create a layer of override that can be mutated:
 
-After:
-
-```tsx
+```diff
+// useAccordionHeader
 export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
   const styles = useStyles();
-  state.overrides.root.className = mergeClasses(
+- state.root.className = mergeClasses(
++ state.overrides.root.className = mergeClasses(
     accordionHeaderClassNames.root,
     styles.root,
     state.inline && styles.rootInline,
     state.disabled && styles.rootDisabled,
-    state.root.props.className,
+-   state.root.className,
++   state.root.props.className,
   );
 
   return state;
 };
+```
 
+On the render function side, we just need to spread the overrides:
+
+```tsx
 export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
   <state.root {...state.overrides.root}>
     <state.button>
@@ -395,31 +378,42 @@ export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
 Let's just stop mutating, and since we require a layer of custom styling through classNames
 let's just properly use an argument on the render method exclusively for this:
 
-After:
+Before:
 
-```tsx
-export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.forwardRef((props, ref) => {
-  const state = useAccordionHeader_unstable(props, ref);
-  const styles = useAccordionHeaderStyles_unstable(state);
-  const contextValues = useAccordionHeaderContextValues_unstable(state);
-  return renderAccordionHeader_unstable(state, styles, contextValues);
-});
-
-export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderStyles => {
+```diff
+// useAccordionHeader
+-export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
++export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderStyles => {
   const styles = useStyles();
-  return {
-    root: mergeClasses(
++ return {
+- state.root.className = mergeClasses(
++   root: mergeClasses(
       accordionHeaderClassNames.root,
       styles.root,
       state.inline && styles.rootInline,
       state.disabled && styles.rootDisabled,
-      state.root.props.className,
-    ),
-  };
+-     state.root.className,
++     state.root.props.className,
+    );
++ }
+- return state;
 };
 
-export const renderAccordionHeader_unstable = (state: AccordionHeaderState, styles: AccordionHeaderStyles) => (
-  <state.root className={styles.root}>
+// AccordionHeader
+export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.forwardRef((props, ref) => {
+  const state = useAccordionHeader_unstable(props, ref);
+- useAccordionHeaderStyles_unstable(state);
++ const styles = useAccordionHeaderStyles_unstable(state);
+  const contextValues = useAccordionHeaderContextValues_unstable(state);
+- return renderAccordionHeader_unstable(state, contextValues);
++ return renderAccordionHeader_unstable(state, styles, contextValues);
+});
+
+// renderAccordionHeader
+- export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
++ export const renderAccordionHeader_unstable = (state: AccordionHeaderState, styles: AccordionHeaderStyles) => (
+-  <state.root>
++  <state.root className={styles.root}>
     <state.button>
       {state.expandIconPosition === 'start' && state.expandIcon && <state.expandIcon />}
       {state.icon && <state.icon />}
@@ -524,6 +518,8 @@ function jsxFromSlotComponent<Props extends UnknownSlotProps>(
 1. Simple to use
 2. Less code than what we currently have
 3. No iteration over `state.components` is required to define slots
+4. Will simplify the whole underlying architecture
+5. No Breaking changes, the consumers will not have any impact (besides allowing the children render function to work properly)
 
 ### Cons
 
