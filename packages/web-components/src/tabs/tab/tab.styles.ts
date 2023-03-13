@@ -15,7 +15,6 @@ import {
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
-  strokeWidthThicker,
 } from '../../theme/design-tokens.js';
 
 export const styles = css`
@@ -66,16 +65,10 @@ export const styles = css`
   }
 
   :host([aria-selected='false']:hover)::before {
-    /* default size and color */
-    width: calc(100% - 20px);
-    height: ${strokeWidthThicker};
     border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
-    margin-top: auto;
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
     z-index: 1;
     background-color: ${colorNeutralStroke1Hover};
   }

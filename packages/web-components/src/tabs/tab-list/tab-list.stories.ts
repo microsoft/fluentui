@@ -5,7 +5,7 @@ import type { TabList as FluentTabList } from './tab-list.js';
 import './define.js';
 import '../tab/define.js';
 import '../tab-panel/define.js';
-import { TabListAppearance, TabListOrientation, TabListSize } from './tab-list.options.js';
+import { TabListAppearance as TabListAppearanceValues, TabListOrientation, TabListSize } from './tab-list.options.js';
 
 type TabListStoryArgs = Args & FluentTabList;
 type TabListStoryMeta = Meta<TabListStoryArgs>;
@@ -30,7 +30,7 @@ const tabListDefault = html`
   <fluent-tab-list
     orientation=${component => component.orientation}
     appearance=${component => component.appearance}
-    disabled=${component => component.disabled}
+    ?disabled=${component => component.disabled}
     size=${component => component.size}
     reserve-selected-tab-space=${component => component['reserve-selected-tab-space']}
     activeid=${component => component.activeid}
@@ -48,20 +48,166 @@ const tabListDefault = html`
 `;
 export const TabListDefault = renderComponent(tabListDefault).bind({});
 
+const tabListHorizontal = html`
+  <fluent-tab-list orientation="horizontal">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+`;
+export const TabListHorizontal = renderComponent(tabListHorizontal).bind({});
+
+const tabListVertical = html`
+  <fluent-tab-list orientation="vertical">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+`;
+export const TabListVertical = renderComponent(tabListVertical).bind({});
+
+const tabListAppearance = html`
+  <fluent-tab-list appearance="transparent">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+  <fluent-tab-list appearance="subtle">
+    <fluent-tab id=${defaultTabIds[0]} active> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+`;
+export const TabListAppearance = renderComponent(tabListAppearance).bind({});
+
 const tabListDisabledTabs = html`
+  <fluent-tab-list disabled>
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+
   <fluent-tab-list>
     <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
     <fluent-tab id=${defaultTabIds[1]} disabled> Second Tab</fluent-tab>
     <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
     <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
 
-    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}>Tab One Content</fluent-tab-panel>
-    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}>Tab Two Content</fluent-tab-panel>
-    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}>Tab Three Content</fluent-tab-panel>
-    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}>Tab Four Content</fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
   </fluent-tab-list>
 `;
 export const TabListDisabled = renderComponent(tabListDisabledTabs).bind({});
+
+const tabListSizeSmall = html`
+  <fluent-tab-list size="small">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+  <fluent-tab-list size="small" orientation="vertical">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+`;
+export const TabListSizeSmall = renderComponent(tabListSizeSmall).bind({});
+
+const tabListSizeMedium = html`
+  <fluent-tab-list size="medium">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+  <fluent-tab-list size="medium" orientation="vertical">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+`;
+export const TabListSizeMedium = renderComponent(tabListSizeMedium).bind({});
+
+const tabListSizeLarge = html`
+  <fluent-tab-list size="large">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+  <fluent-tab-list size="large" orientation="vertical">
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tab-list>
+`;
+export const TabListSizeLarge = renderComponent(tabListSizeLarge).bind({});
 
 export default {
   title: 'Components/TabList',
@@ -74,7 +220,7 @@ export default {
   },
   argTypes: {
     appearance: {
-      options: Object.values(TabListAppearance),
+      options: Object.values(TabListAppearanceValues),
       defaultValue: 'transparent',
       control: {
         type: 'select',
