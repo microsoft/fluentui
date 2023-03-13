@@ -40,6 +40,7 @@ export const styles = css`
     flex-direction: row-reverse;
     outline: none;
     user-select: none;
+    contain: content;
   }
   :host([label-position='before']) {
     flex-direction: row;
