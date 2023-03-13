@@ -3,7 +3,8 @@ import * as React from 'react';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { TimePickerBasicExample } from './TimePicker.Example';
-const TimePickerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Example.tsx') as string;
+const TimePickerExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Example.tsx') as string;
 
 export const TimePickerPageProps: IDocPageProps = {
   title: 'TimePicker',

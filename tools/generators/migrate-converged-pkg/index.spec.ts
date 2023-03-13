@@ -1209,7 +1209,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
 
       expect(configs['@proj/react-foo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-bar'].sourceRoot).toBeDefined();
@@ -1233,7 +1233,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
 
       expect(configs[projects[0]].sourceRoot).toBeDefined();
       expect(configs[projects[1]].sourceRoot).toBeDefined();

@@ -12,12 +12,14 @@ const componentUrl =
 
 export const DrawerPageProps: TFabricPlatformPageProps = {
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/ios/DrawerOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/ios/DrawerOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/android/DrawerOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DrawerPage/docs/android/DrawerOverview.md') as string,
     related,
     componentUrl,
   },

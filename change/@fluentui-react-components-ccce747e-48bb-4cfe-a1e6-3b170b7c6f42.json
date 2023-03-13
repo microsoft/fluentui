@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(react-card): bump to release candidate",
-  "packageName": "@fluentui/react-components",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

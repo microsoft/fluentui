@@ -125,11 +125,10 @@ export const useCardSelectable = (
     };
   }, [isSelectable, onChangeHandler, onClick, onKeyDown, onKeyDownHandler]);
 
-  React.useEffect(() => setIsCardSelected(Boolean(defaultSelected ?? selected)), [
-    defaultSelected,
-    selected,
-    setIsCardSelected,
-  ]);
+  React.useEffect(
+    () => setIsCardSelected(Boolean(defaultSelected ?? selected)),
+    [defaultSelected, selected, setIsCardSelected],
+  );
 
   return {
     selected: isCardSelected,

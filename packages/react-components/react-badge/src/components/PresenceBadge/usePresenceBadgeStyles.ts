@@ -10,7 +10,7 @@ export const presenceBadgeClassNames: SlotClassNames<BadgeSlots> = {
 };
 
 const getIsBusy = (status: PresenceBadgeStatus): boolean => {
-  if (status === 'busy' || status === 'do-not-disturb' || status === 'unknown' || status === 'blocked') {
+  if (status === 'busy' || status === 'do-not-disturb' || status === 'blocked') {
     return true;
   }
 
@@ -47,6 +47,9 @@ const useStyles = makeStyles({
   statusOutOfOffice: {
     color: tokens.colorPaletteBerryForeground3,
   },
+  statusUnknown: {
+    color: tokens.colorNeutralForeground3,
+  },
   outOfOffice: {
     color: tokens.colorNeutralBackground1,
   },
@@ -55,6 +58,9 @@ const useStyles = makeStyles({
   },
   outOfOfficeBusy: {
     color: tokens.colorPaletteRedBackground3,
+  },
+  outOfOfficeUnknown: {
+    color: tokens.colorNeutralForeground3,
   },
 
   // Icons are not resizeable, and these sizes are currently missing
@@ -101,12 +107,14 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
     state.status === 'available' && styles.statusAvailable,
     state.status === 'offline' && styles.statusOffline,
     state.status === 'out-of-office' && styles.statusOutOfOffice,
+    state.status === 'unknown' && styles.statusUnknown,
     state.outOfOffice && styles.outOfOffice,
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && isBusy && styles.outOfOfficeBusy,
     state.outOfOffice && state.status === 'away' && styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'offline' && styles.statusOffline,
     state.outOfOffice && state.status === 'out-of-office' && styles.statusOutOfOffice,
+    state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
     state.size === 'tiny' && styles.tiny,
     state.size === 'large' && styles.large,
     state.size === 'extra-large' && styles.extraLarge,

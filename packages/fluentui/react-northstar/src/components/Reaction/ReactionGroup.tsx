@@ -41,7 +41,7 @@ export type ReactionGroupStylesProps = never;
 /**
  * A ReactionGroup groups multiple Reaction elements.
  */
-export const ReactionGroup = (React.forwardRef<HTMLDivElement, ReactionGroupProps>((props, ref) => {
+export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ReactionGroup.displayName, context.telemetry);
   setStart();
@@ -91,7 +91,7 @@ export const ReactionGroup = (React.forwardRef<HTMLDivElement, ReactionGroupProp
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, ReactionGroupProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ReactionGroupProps> &
   FluentComponentStaticProps<ReactionGroupProps>;
 
 ReactionGroup.displayName = 'ReactionGroup';

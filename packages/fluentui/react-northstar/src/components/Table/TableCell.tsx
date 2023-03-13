@@ -55,7 +55,7 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
 /**
  * Component represents a table cell.
  */
-export const TableCell = (React.forwardRef<HTMLDivElement, TableCellProps>((props, ref) => {
+export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
@@ -117,7 +117,7 @@ export const TableCell = (React.forwardRef<HTMLDivElement, TableCellProps>((prop
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TableCellProps> & FluentComponentStaticProps<TableCellProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableCellProps> & FluentComponentStaticProps<TableCellProps>;
 
 TableCell.displayName = 'TableCell';
 

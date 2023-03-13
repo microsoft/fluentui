@@ -1,6 +1,6 @@
-import type { IPalette, ISemanticColors, ITheme } from '@fluentui/react';
+import type { IPalette, ITheme } from '@fluentui/react';
 import { createTheme } from '@fluentui/react';
-import { IExtendedEffects } from './types';
+import { IExtendedEffects, IExtendedSemanticColors } from './types';
 
 import { fluent2ComponentStyles } from './fluent2ComponentStyles';
 import { fluent2SharedColors } from './fluent2SharedColors';
@@ -59,7 +59,15 @@ const fluent2LightPalette: Partial<IPalette> = {
 
 const p = fluent2LightPalette;
 
-const semanticColorMappingOverridesForLight: Partial<ISemanticColors> = {
+const semanticColorMappingOverridesForLight: Partial<IExtendedSemanticColors> = {
+  // Extended slots
+  inputBottomBorderFocus: p.themePrimary,
+  inputBottomBorderRest: p.neutralLighter,
+
+  // Base slot mapping changes
+  // focusBorder seems to be used for keyboard focus on components that don't have text input.
+  // inputFocusBorder seems to be used for keyboard focus on text input components.
+  focusBorder: p.neutralTertiary,
   inputBorder: p.neutralQuaternary,
 
   // Checkbox

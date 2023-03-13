@@ -1,10 +1,14 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import type { ButtonContextValue } from '@fluentui/react-button';
 import type { TreeItemContextValue } from '../../contexts';
+import { treeItemLevelToken } from '../../utils/tokens';
+import * as React from 'react';
+
+export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
 
 export type TreeItemSlots = {
-  root: Slot<'div'>;
-  content: NonNullable<Slot<'span'>>;
+  root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;
+  content: NonNullable<Slot<'div'>>;
   subtree?: Slot<'span'>;
   /**
    * Expand icon slot,
@@ -26,7 +30,14 @@ export type TreeItemContextValues = {
 /**
  * TreeItem Props
  */
-export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
+  /**
+   * If a TreeItem is a leaf, it'll not present the `expandIcon` slot by default.
+   * This attribute is used to force the decision if a TreeItem is a leaf or not. By not providing this property
+   * this will be inferred by the presence of a subtree as part of the TreeItem children.
+   */
+  leaf?: boolean;
+};
 
 /**
  * State used in rendering TreeItem
@@ -34,6 +45,7 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>>;
 export type TreeItemState = ComponentState<TreeItemSlots> & {
   open: boolean;
   isLeaf: boolean;
+  level: number;
   /**
    * By design, a button included on the actions slot should be small
    */

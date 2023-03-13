@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardHeader } from '@fluentui/react-card';
+import { CardHeader } from '@fluentui/react-components';
 import { makeStyles, shorthands, Button, Body1, Caption1 } from '@fluentui/react-components';
 import { MoreHorizontal20Filled } from '@fluentui/react-icons';
 

@@ -10,12 +10,14 @@ const componentUrl =
 
 export const ListCellsPageProps: TFabricPlatformPageProps = {
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/ios/ListCellsOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/ios/ListCellsOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/android/ListCellsOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/android/ListCellsOverview.md') as string,
     related,
     componentUrl,
   },
