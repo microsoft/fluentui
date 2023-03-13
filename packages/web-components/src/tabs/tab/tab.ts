@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTTab } from '@microsoft/fast-foundation';
-import { TabData, TabList } from '../index.js';
+import { TabData, Tabs } from '../index.js';
 
 export const TAB_TOKEN_NAMES = {
   tabIndicatorOffset: '--tabIndicatorOffsetX',
@@ -94,7 +94,7 @@ export class Tab extends FASTTab {
    * These values will be applied to css variables that control the tab active indicator position animations
    */
   private syncAnimationProperties() {
-    const tabList = this.parentElement as TabList;
+    const tabList = this.parentElement as Tabs;
     const isHorizontal = tabList.orientation === 'horizontal';
     const previousSelectedTabPosition = isHorizontal ? this._previousActiveTab.x : this._previousActiveTab.y;
     const selectedTabPosition = this.getSelectedTabPosition(isHorizontal);

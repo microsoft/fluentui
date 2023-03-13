@@ -36,10 +36,6 @@ export const styles = css`
     grid-template-rows: auto 1fr;
   }
 
-  :host([hidden]) {
-    display: none;
-  }
-
   :host([disabled]) {
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled} !important;

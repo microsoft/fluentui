@@ -1,36 +1,32 @@
-import { attr, booleanConverter } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { FASTTabs } from '@microsoft/fast-foundation';
+import { TabData, TabListAppearance, TabListSize } from './tabs.options.js';
 
-export interface TabData {
-  id: string;
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-}
 /**
  * TabList extends FASTTabs and is used for constructing a fluent-tab-list custom html element.
  *
  * @class TabList component
  * @public
  */
-export class TabList extends FASTTabs {
-  @attr appearance?: 'subtle' | 'transparent';
+export class Tabs extends FASTTabs {
+  @attr
+  public appearance?: TabListAppearance = TabListAppearance.transparent;
 
-  @attr({ converter: booleanConverter })
-  disabled?: boolean;
+  @attr({ mode: 'boolean' })
+  public disabled?: boolean;
 
-  @attr size?: 'small' | 'medium' | 'large' = 'medium';
+  @attr
+  public size?: TabListSize = 'medium';
 
-  @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
-  reserveSelectedTabSpace?: boolean;
+  @attr({ attribute: 'reserve-selected-tab-space', mode: 'boolean' })
+  public reserveSelectedTabSpace?: boolean;
 
-  activeidChanged(oldValue: string, newValue: string) {
+  public activeidChanged(oldValue: string, newValue: string) {
     super.activeidChanged(oldValue, newValue);
     this.setTabData();
   }
 
-  tabsChanged(): void {
+  public tabsChanged(): void {
     super.tabsChanged();
     this.setTabData();
   }
@@ -48,7 +44,7 @@ export class TabList extends FASTTabs {
           y: activeRect.y - parentRect.y,
           height: activeRect.height,
           width: activeRect.width,
-        });
+        } as TabData);
       });
     }
   }

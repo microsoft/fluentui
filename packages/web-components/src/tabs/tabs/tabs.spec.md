@@ -1,4 +1,4 @@
-# TabList
+# Tabs
 
 ## Description
 
