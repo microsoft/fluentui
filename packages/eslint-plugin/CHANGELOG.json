@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 03 Mar 2023 07:47:18 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.13.0",
+      "version": "1.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Feb 2023 07:50:05 GMT",
       "tag": "@fluentui/eslint-plugin_v1.13.0",
       "version": "1.13.0",

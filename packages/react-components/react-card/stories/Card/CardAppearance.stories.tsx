@@ -11,7 +11,7 @@ import {
   mergeClasses,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Filled } from '@fluentui/react-icons';
-import { Card, CardHeader, CardProps } from '@fluentui/react-card';
+import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =

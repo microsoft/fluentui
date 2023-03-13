@@ -11,7 +11,7 @@ These are not production-ready components and **should never be used in a produc
 To import React Card components:
 
 ```js
-import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-components/unstable';
+import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-components';
 ```
 
 Example Card usage:
@@ -21,7 +21,7 @@ Example Card usage:
 ```jsx
 import { Share16Regular, ArrowReply16Regular } from '@fluentui/react-icons';
 import { Button, Body1, Caption1 } from '@fluentui/react-components';
-import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
+import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components';
 
 const App = () => (
   <>

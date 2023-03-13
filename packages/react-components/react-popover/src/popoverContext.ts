@@ -39,7 +39,7 @@ export type PopoverContextValue = Pick<
   | 'size'
   | 'appearance'
   | 'trapFocus'
-  | 'legacyTrapFocus'
+  | 'inertTrapFocus'
   | 'inline'
 >;
 
