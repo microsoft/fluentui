@@ -4,6 +4,7 @@ import { renderDialogBody_unstable } from './renderDialogBody';
 import { useDialogBodyStyles_unstable } from './useDialogBodyStyles';
 import type { DialogBodyProps } from './DialogBody.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `DialogBody` is a container where the content of the dialog is rendered.
@@ -13,6 +14,10 @@ export const DialogBody: ForwardRefComponent<DialogBodyProps> = React.forwardRef
   const state = useDialogBody_unstable(props, ref);
 
   useDialogBodyStyles_unstable(state);
+
+  const { useDialogBodyStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderDialogBody_unstable(state);
 });
 

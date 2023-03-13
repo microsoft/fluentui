@@ -17,11 +17,11 @@ import { initializeIcons as i14 } from './fabric-icons-14';
 import { initializeIcons as i15 } from './fabric-icons-15';
 import { initializeIcons as i16 } from './fabric-icons-16';
 import { initializeIcons as i17 } from './fabric-icons-17';
-
-import { IIconOptions } from '@fluentui/style-utilities';
+import { IIconOptions, FLUENT_CDN_BASE_URL } from '@fluentui/style-utilities';
 import { registerIconAliases } from './iconAliases';
 import { getWindow } from '@fluentui/utilities';
-const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
+
+const DEFAULT_BASE_URL = `${FLUENT_CDN_BASE_URL}/assets/icons/`;
 
 /*
  * The Window variable has the iconBaseUrl prop in order to allow for users to redirect icon font downloads to a new
