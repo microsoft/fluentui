@@ -12,14 +12,14 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 ### Inputs
 
-| attribute                  | type                           | default  | description                                                                                                       |
-| -------------------------- | ------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------- |
-| activeid                   | string                         | -        | sets the selected tab                                                                                             |
-| appearance                 | "subtle" \| "transparent       | -        | -                                                                                                                 |
-| reserve-selected-tab-space | boolean                        | -        | Tab size may change between unselected and selected states. The default scenario is a selected tab has bold text. |
-| disabled                   | boolean                        | -        | blocks control from all keyboard and mouse events.                                                                |
-| size                       | "small" \| "medium" \| "large" | "medium" |                                                                                                                   |
-| vertical                   | boolean                        | false    | sets the orientation of the tab list to vertical display                                                          |
+| attribute                  | type                           | default       | description                                                                                                       |
+| -------------------------- | ------------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| activeid                   | string                         | -             | sets the selected tab                                                                                             |
+| appearance                 | "subtle" \| "transparent       | "transparent" | -                                                                                                                 |
+| reserve-selected-tab-space | boolean                        | -             | Tab size may change between unselected and selected states of the tab. By default the selected tab has bold text. |
+| disabled                   | boolean                        | -             | blocks control and all tab children from all keyboard and mouse events.                                           |
+| size                       | "small" \| "medium" \| "large" | "medium"      |                                                                                                                   |
+| orientation                | "vertical" \| "horizontal"     | "horizontal"  | sets the orientation of the tab list to vertical display                                                          |
 
 ### Outputs
 
@@ -99,7 +99,7 @@ Tabs allow for navigation between two or more content views and relies on text h
 - [x] [FAST Tabs Component](https://www.fast.design/docs/components/tabs/) this component will inherit from and document
 - [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-tabs/docs/Spec.md)
   - React V9 TabList prefers event handler to be passed into component as a React Prop `onTabSelect`. This event handling will be removed in favor of the TabList web component taking control of the event handling.
-  - React V9 `as` prop (to render the list as html element preferred by developer) will be omited
+  - React V9 `as` prop (to render the list as HTML element preferred by developer) will be omitted
   - React V9
 - [x] [Fluent UI React V9 Storybook](https://react.fluentui.dev/?path=/docs/components-tablist--default)
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+TabList)
@@ -111,12 +111,13 @@ Tabs allow for navigation between two or more content views and relies on text h
 
 The Fluent/FAST web component differs from the Fluent React Control as follows:
 
-| difference                                      | Fluent Web Component                                    | Fluent React Component                                                               |
-| ----------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| active indicator                                | renders as sibling element to tab                       | renders as ::after pseudo element                                                    |
-| active indicator control / id control selection | managed by control                                      | managed by user with application state                                               |
-| keyboard and focus selection                    | selects active tab on arrow key focus change            | reselects tab on spacebar or enter after arrow refocus                               |
-| icon slotting                                   | favors composition (dev chooses how to slot which icon) | favors automation (dev supplies icon name and control handles the rendering of icon) |
+| difference                                      | Fluent Web Component                                                                                            | Fluent React Component                                                                       |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| active indicator control / id control selection | managed by control                                                                                              | managed by user with application state                                                       |
+| keyboard and focus selection                    | selects active tab on arrow key focus change                                                                    | reselects tab on space bar or enter after arrow refocus                                      |
+| icon slotting                                   | favors composition (dev chooses how to slot which icon)                                                         | favors automation (dev supplies icon name and control handles the rendering of icon)         |
+| icon slotting filled / unfilled icons           | favors composition over automated handling. requires dev to add interactivity to render filled or unfilled icon | favors automated handling of icons and provides filled and unfilled iconography on selection |
+| tab-panel                                       | requires tab panel control to set content on tab selection                                                      | does not require or include a tab panel control / template                                   |
 
 [Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 
@@ -130,7 +131,7 @@ The Fluent/FAST web component differs from the Fluent React Control as follows:
 
 ### Default
 
-By default Tabs are aranged horizontally. The developer sets `selected-value` Fluent-Tab-List attribute. The Component handles the logic of what is shown and hidden when user clicks on the tabs. For switcing to work correctly the tab list requires that the indexing of the tabs and tab-panels be organized to correspond to their matching items - the order of the tabs must match the order of the tab panels:
+By default Tabs are arranged horizontally. The developer sets `selected-value` Fluent-Tab-List attribute. The Component handles the logic of what is shown and hidden when user clicks on the tabs. For switcing to work correctly the tab list requires that the indexing of the tabs and tab-panels be organized to correspond to their matching items - the order of the tabs must match the order of the tab panels:
 
 ```html
 <fluent-tab-list>
@@ -144,7 +145,7 @@ By default Tabs are aranged horizontally. The developer sets `selected-value` Fl
 </fluent-tab-list>
 ```
 
-### Controled
+### Controlled
 
 If the developer wants to control the selected tab, tab values can be provided.
 
@@ -156,7 +157,7 @@ If the developer wants to control the selected tab, tab values can be provided.
 
   <fluent-tab-panel>Panel One</fluent-tab-panel>
   <fluent-tab-panel>Panel Two</fluent-tab-panel>
-  <fluent-tab-panel>Panthel Three</fluent-tab-panel>
+  <fluent-tab-panel>Panel Three</fluent-tab-panel>
 </fluent-tab-list>
 ```
 
@@ -173,11 +174,11 @@ If the developer wants to control the selected tab, tab values can be provided.
 ## Implementation
 
 - [ ] Initial conformance and unit tests (validate basic functionality)
-- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
-  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
-  - [ ] README.md covering basic usage
+- [x] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
+  - [x] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
+  - [x] README.md covering basic usage
 - [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/web-components/unstable`
-- [ ] Uses design tokens for styling
+- [x] Uses design tokens for styling
 - [ ] Renders correctly in High Contrast mode
 
 ## Validation
