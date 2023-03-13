@@ -13,23 +13,8 @@ export class RadioGroup extends FASTRadioGroup {
    * @remarks
    * HTML Attribute: stacked
    */
-  @attr({ attribute: 'stacked', mode: 'boolean' })
+  @attr({ mode: 'boolean' })
   public stacked: boolean = false;
-
-  protected layoutChanged(): void {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-    if (this.slottedRadioButtons !== undefined) {
-      this.slottedRadioButtons.forEach((item: HTMLElement, index: number) => {
-        if (this.stacked && this.orientation === 'horizontal') {
-          item.setAttribute('stack', '');
-        } else {
-          item.removeAttribute('stack');
-        }
-      });
-    }
-  }
 
   protected disableChanged(): void {
     if (!this.$fastController.isConnected) {
@@ -46,9 +31,6 @@ export class RadioGroup extends FASTRadioGroup {
     super.slottedRadioButtonsChanged(oldValue, newValue);
     if (this.disabled) {
       this.disableChanged();
-    }
-    if (this.stacked) {
-      this.layoutChanged();
     }
   }
 }

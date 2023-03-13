@@ -175,9 +175,4 @@ export const styles = css`
   :host([disabled]) .control {
     border-color: ${colorNeutralForegroundDisabled};
   }
-
-  :host([disabled]) .checked-indicator,
-  :host([readonly]) .checked-indicator {
-    background-color: ${colorNeutralForegroundDisabled};
-  }
 `;
