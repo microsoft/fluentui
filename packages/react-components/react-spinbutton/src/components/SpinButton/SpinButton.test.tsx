@@ -311,6 +311,22 @@ describe('SpinButton', () => {
     });
   });
 
+  describe('aria labels', () => {
+    it('sets the aria-label on the increment/decrement button', () => {
+      const incrementButtonAriaLabel = 'Customize increment button aria label';
+      const decreementButtonAriaLabel = 'Customize decrement button aria label';
+      const { getAllByRole } = render(
+        <SpinButton
+          incrementButtonAriaLabel={incrementButtonAriaLabel}
+          decrementButtonAriaLabel={decreementButtonAriaLabel}
+        />,
+      );
+      const [incrementButton, decrementButton] = getAllByRole('button');
+      expect(incrementButton.getAttribute('aria-label')).toEqual(incrementButtonAriaLabel);
+      expect(decrementButton.getAttribute('aria-label')).toEqual(decreementButtonAriaLabel);
+    });
+  });
+
   describe('precision', () => {
     it('applies the correct precision to the displayed value when uncontrolled', () => {
       const { rerender } = render(<SpinButton defaultValue={1.23456} precision={2} />);

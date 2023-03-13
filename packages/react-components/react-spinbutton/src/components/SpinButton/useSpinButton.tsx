@@ -70,6 +70,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     input,
     incrementButton,
     decrementButton,
+    incrementButtonAriaLabel,
+    decrementButtonAriaLabel,
   } = props;
 
   const precision = React.useMemo(() => {
@@ -274,7 +276,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronUp16Regular />,
         disabled: nativeProps.primary.disabled,
-        'aria-label': 'Increment value',
+        'aria-label': incrementButtonAriaLabel || 'Increment value',
         type: 'button',
       },
     }),
@@ -284,7 +286,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         tabIndex: -1,
         children: <ChevronDown16Regular />,
         disabled: nativeProps.primary.disabled,
-        'aria-label': 'Decrement value',
+        'aria-label': decrementButtonAriaLabel || 'Decrement value',
         type: 'button',
       },
     }),

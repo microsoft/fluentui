@@ -123,6 +123,16 @@ export type SpinButtonProps = Omit<
    * Mutually exclusive with `defaultValue`.
    */
   value?: number | null;
+
+  /**
+   * Accessible label text for the increment button (for screen reader users).
+   */
+  incrementButtonAriaLabel?: string;
+
+  /**
+   * Accessible label text for the decrement button (for screen reader users).
+   */
+  decrementButtonAriaLabel?: string;
 };
 
 /**
