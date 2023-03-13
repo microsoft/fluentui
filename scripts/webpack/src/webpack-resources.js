@@ -231,7 +231,7 @@ const api = {
                   transpileOnly: true,
                 },
               },
-              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
+              exclude: [/node_modules/, /\.scss.ts$/],
               //loader: "worker-loader",
             },
             {

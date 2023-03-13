@@ -70,9 +70,7 @@ export interface IAreaChartState extends IBasestate {
 export class AreaChartLiteBase extends React.PureComponent<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   //private _calloutPoints: any;
-  private _createSet: (
-    data: IChartProps,
-  ) => {
+  private _createSet: (data: IChartProps) => {
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -353,7 +351,7 @@ export class AreaChartLiteBase extends React.PureComponent<IAreaChartProps, IAre
     points &&
       points.length &&
       points.forEach((singleChartPoint: ILineChartPoints) => {
-        colors.push(singleChartPoint.color);
+        colors.push(singleChartPoint.color!);
         opacity.push(singleChartPoint.opacity || 1);
         allChartPoints.push(...singleChartPoint.data);
       });
