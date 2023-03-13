@@ -29,25 +29,36 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItem[];
+export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProps[];
 
-// @public (undocumented)
-export type FlatTreeItem = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
-    parentId?: string;
+// @public
+export type FlatTree = {
+    getTreeProps(): FlatTreeProps;
+    navigate(data: TreeNavigationData_unstable): void;
+    getNextNavigableItem(data: TreeNavigationData_unstable): FlatTreeItem | null;
+    getItem(id: string): FlatTreeItem | null;
+    items(): Iterable<FlatTreeItem>;
 };
 
 // @public (undocumented)
-export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id' | 'aria-level' | 'aria-posinset' | 'leaf' | 'aria-setsize'>> & TreeItemProps;
+export type FlatTreeItem = {
+    getTreeItemProps(): Required<Pick<TreeItemProps, 'id' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>> & TreeItemProps;
+    parentId?: string;
+    childrenSize: number;
+    index: number;
+    id: string;
+    level: number;
+};
+
+// @public (undocumented)
+export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
+    parentId?: string;
+};
 
 // @public (undocumented)
 export type FlatTreeProps = Required<Pick<TreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable'> & {
     ref: React_2.Ref<HTMLDivElement>;
 }>;
-
-// @public (undocumented)
-export type LazyFlatTreeItems = LazyArray<FlatTreeItemProps> & {
-    get(id: string): TreeItemPropsReference | null;
-};
 
 // @public (undocumented)
 export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
@@ -253,11 +264,8 @@ export type TreeSlots = {
 // @public
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
-// @public (undocumented)
-export function useFlatTreeItems_unstable(items: FlatTreeItem[], options?: UseFlatTreeItemsOptions): readonly [FlatTreeProps, LazyFlatTreeItems];
-
-// @public (undocumented)
-export type UseFlatTreeItemsOptions = Pick<TreeProps, 'openItems' | 'defaultOpenItems'>;
+// @public
+export function useFlatTree_unstable(items: FlatTreeItemProps[], options?: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>): FlatTree;
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;

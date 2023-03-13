@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, useFlatTreeItems_unstable, flattenTree_unstable } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, flattenTree_unstable } from '@fluentui/react-tree';
 
 const defaultItems = flattenTree_unstable([
   {
@@ -36,11 +36,11 @@ const defaultItems = flattenTree_unstable([
   },
 ]);
 export const FlattenTree = () => {
-  const [treeProps, flatTreeItems] = useFlatTreeItems_unstable(defaultItems);
+  const flatTree = useFlatTree_unstable(defaultItems);
   return (
-    <Tree {...treeProps} aria-label="Tree">
-      {flatTreeItems.map(treeItemProps => (
-        <TreeItem {...treeItemProps} key={treeItemProps.id} />
+    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), item => (
+        <TreeItem {...item.getTreeItemProps()} key={item.id} />
       ))}
     </Tree>
   );

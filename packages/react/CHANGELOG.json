@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 10 Mar 2023 07:38:25 GMT",
+      "tag": "@fluentui/react_v8.106.5",
+      "version": "8.106.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.19",
+            "commit": "684dafbd5d9efa1dd61330eed7a503d61b1184f3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.8",
+            "commit": "684dafbd5d9efa1dd61330eed7a503d61b1184f3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Mar 2023 07:39:12 GMT",
       "tag": "@fluentui/react_v8.106.4",
       "version": "8.106.4",
