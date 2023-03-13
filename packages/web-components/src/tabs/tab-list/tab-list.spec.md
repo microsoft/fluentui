@@ -195,3 +195,4 @@ If the developer wants to control the selected tab, tab values can be provided.
   - [ ] Finalize migration guide
   - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
   - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`
+- [x] [Fluent Design Guidelines](https://www.figma.com/file/dK5AnDvvnSTWV9lduQWeDk/TabList?node-id=3942%3A9316&t=0maCSaKYbXs7BoLo-1)

@@ -1,8 +1,12 @@
 import { css } from '@microsoft/fast-element';
 import {
   borderRadiusMedium,
+  colorNeutralForeground1,
+  colorNeutralForeground1Hover,
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
+  colorSubtleBackground,
+  colorSubtleBackgroundHover,
   fontFamilyBase,
   fontSizeBase300,
   fontSizeBase400,
@@ -60,6 +64,8 @@ export const styles = css`
   ::slotted([slot='end']) {
     margin-inline-start: 11px;
   }
+
+  // TODO: remove active-indicator styling when FAST Pr to remove active indicator is completed.
   .active-indicator {
     display: none;
   }
@@ -93,6 +99,15 @@ export const styles = css`
   }
   :host([orientation='vertical']) ::slotted([slot='end']) {
     grid-row: 3;
+  }
+
+  :host([appearance='subtle']) ::slotted(fluent-tab) {
+    background-color: ${colorSubtleBackground};
+    color: ${colorNeutralForeground1};
+  }
+  :host([appearance='subtle']) ::slotted(fluent-tab:hover) {
+    background-color: ${colorSubtleBackgroundHover};
+    color: ${colorNeutralForeground1Hover};
   }
 
   :host([size='small']) ::slotted(fluent-tab) {

@@ -27,7 +27,6 @@ const defaultTabIds = ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'];
 // </svg> `;
 
 const tabListDefault = html`
-  <!-- TODO: Implement subtle appearance  -->
   <fluent-tab-list
     orientation=${component => component.orientation}
     appearance=${component => component.appearance}
@@ -59,6 +58,7 @@ const tabListDisabledTabs = html`
     <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}>Tab One Content</fluent-tab-panel>
     <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}>Tab Two Content</fluent-tab-panel>
     <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}>Tab Three Content</fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}>Tab Four Content</fluent-tab-panel>
   </fluent-tab-list>
 `;
 export const TabListDisabled = renderComponent(tabListDisabledTabs).bind({});

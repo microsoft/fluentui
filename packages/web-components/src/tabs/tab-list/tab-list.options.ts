@@ -1,6 +1,6 @@
 export const TabListAppearance = {
   subtle: 'subtle',
-  transparent: 'transparen',
+  transparent: 'transparent',
 } as const;
 
 export const TabListSize = {

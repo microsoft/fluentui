@@ -17,7 +17,6 @@ import {
   spacingHorizontalMNudge,
   strokeWidthThicker,
 } from '../../theme/design-tokens.js';
-import { TAB_TOKEN_NAMES } from './tab.js';
 
 export const styles = css`
   :host([hidden]) {

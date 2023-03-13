@@ -20,7 +20,7 @@ export class TabList extends FASTTabs {
   @attr({ converter: booleanConverter })
   disabled?: boolean;
 
-  @attr size?: 'small' | 'medium' | 'large';
+  @attr size?: 'small' | 'medium' | 'large' = 'medium';
 
   @attr({ attribute: 'reserve-selected-tab-space', converter: booleanConverter })
   reserveSelectedTabSpace?: boolean;
