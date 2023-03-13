@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: stops using instaceof in favor of isHTMLElement",
-  "packageName": "@fluentui/react-radio",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

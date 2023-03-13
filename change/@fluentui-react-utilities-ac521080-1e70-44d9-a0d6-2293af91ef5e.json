@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: isHTMLElement to support all HTMLElement classes",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

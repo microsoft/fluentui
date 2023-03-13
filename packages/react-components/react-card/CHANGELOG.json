@@ -2,6 +2,39 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Mon, 13 Mar 2023 08:58:23 GMT",
+      "tag": "@fluentui/react-card_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: release 9.0.0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.5.6",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.7.0",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.3.2",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:14:01 GMT",
       "tag": "@fluentui/react-card_v9.0.0-rc.2",
       "version": "9.0.0-rc.2",
