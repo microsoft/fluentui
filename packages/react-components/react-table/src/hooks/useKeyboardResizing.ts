@@ -11,6 +11,7 @@ const PRECISION_FACTOR = 1 / 4;
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const columnId = React.useRef<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
+  const addListenerTimeout = React.useRef<number>();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
@@ -60,6 +61,12 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     }
   });
 
+  // On component unmout, cancel any timer for adding a listener (if it exists) and remove the listener
+  React.useEffect(() => () => {
+    clearTimeout(addListenerTimeout.current);
+    targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
+  });
+
   const enableInteractiveMode = React.useCallback(
     (colId: TableColumnId) => {
       columnId.current = colId;
@@ -67,7 +74,8 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       // Create the listener in the next tick, because the event that triggered this is still propagating
       // when Enter was pressed and would be caught in the keyboardHandler, disabling the keyboard mode immediately.
       // No idea why this is happening, but this is a working workaround.
-      setTimeout(() => {
+      // Tracked here: https://github.com/microsoft/fluentui/issues/27177
+      addListenerTimeout.current = setTimeout(() => {
         targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
       }, 0);
     },
