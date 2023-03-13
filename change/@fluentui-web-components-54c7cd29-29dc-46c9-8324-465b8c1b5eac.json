@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update FAST dependencies to latest package versions",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
