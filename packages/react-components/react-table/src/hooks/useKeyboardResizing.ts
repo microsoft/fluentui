@@ -11,7 +11,7 @@ const PRECISION_FACTOR = 1 / 4;
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const columnId = React.useRef<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
-  const addListenerTimeout = React.useRef<number>();
+  const addListenerTimeout = React.useRef(0);
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
