@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Mar 2023 08:58:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.2)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.1..@fluentui/react-divider_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.0 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.1)
+
+Fri, 10 Mar 2023 07:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.0..@fluentui/react-divider_v9.2.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.6.2 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.0)
+
+Wed, 08 Mar 2023 17:42:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.1.16..@fluentui/react-divider_v9.2.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27064](https://github.com/microsoft/fluentui/pull/27064) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.1.16)
 

@@ -1,15 +1,17 @@
 import * as React from 'react';
+import { TableResizeHandle } from '../TableResizeHandle';
 import {
-  TableColumnId,
   ColumnWidthState,
+  EnableKeyboardModeOnChangeCallback,
+  TableColumnId,
   TableColumnSizingState,
   TableFeaturesState,
   UseTableColumnSizingParams,
 } from './types';
-import { useTableColumnResizeState } from './useTableColumnResizeState';
-import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
 import { useMeasureElement } from './useMeasureElement';
-import { TableResizeHandle } from '../TableResizeHandle';
+import { useTableColumnResizeMouseHandler } from './useTableColumnResizeMouseHandler';
+import { useTableColumnResizeState } from './useTableColumnResizeState';
+import { useKeyboardResizing } from './useKeyboardResizing';
 
 export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
@@ -17,6 +19,7 @@ export const defaultColumnSizingState: TableColumnSizingState = {
   setColumnWidth: () => null,
   getTableHeaderCellProps: () => ({ style: {}, columnId: '' }),
   getTableCellProps: () => ({ style: {}, columnId: '' }),
+  enableKeyboardMode: () => () => null,
 };
 
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
@@ -49,6 +52,18 @@ function useTableColumnSizingState<TItem>(
   const columnResizeState = useTableColumnResizeState(columns, width + (params?.containerWidthOffset || 0), params);
   // Creates the mouse handler and attaches the state to it
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
+  // Creates the keyboard handler for resizing columns
+  const keyboardResizing = useKeyboardResizing(columnResizeState);
+
+  const enableKeyboardMode = React.useCallback(
+    (columnId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) =>
+      (e: React.MouseEvent | React.TouchEvent) => {
+        e.preventDefault();
+        e.nativeEvent.stopPropagation();
+        keyboardResizing.toggleInteractiveMode(columnId, onChange);
+      },
+    [keyboardResizing],
+  );
 
   return {
     ...tableState,
@@ -61,6 +76,7 @@ function useTableColumnSizingState<TItem>(
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
+
         const aside = (
           <TableResizeHandle
             onMouseDown={mouseHandler.getOnMouseDown(columnId)}
@@ -73,6 +89,7 @@ function useTableColumnSizingState<TItem>(
         const col = columnResizeState.getColumnById(columnId);
         return col ? { style: getColumnStyles(col) } : {};
       },
+      enableKeyboardMode,
     },
   };
 }

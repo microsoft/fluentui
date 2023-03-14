@@ -13,6 +13,18 @@ describe('Breadcrumb', () => {
 
   it('renders a default state', () => {
     const result = render(<Breadcrumb>Default Breadcrumb</Breadcrumb>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <nav
+          class="fui-Breadcrumb"
+        >
+          <ol
+            class="fui-Breadcrumb__list"
+          >
+            Default Breadcrumb
+          </ol>
+        </nav>
+      </div>
+    `);
   });
 });

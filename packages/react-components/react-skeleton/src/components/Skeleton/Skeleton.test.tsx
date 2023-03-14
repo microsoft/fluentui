@@ -15,4 +15,16 @@ describe('Skeleton', () => {
     const result = render(<Skeleton>Default Skeleton</Skeleton>);
     expect(result.container).toMatchSnapshot();
   });
+  it('has role progressbar', () => {
+    const result = render(<Skeleton />);
+    expect(result.getByRole('progressbar')).toBeDefined();
+  });
+  it('adds aria-busy to Skeleton', () => {
+    const result = render(<Skeleton />);
+    expect(result.getByRole('progressbar').getAttribute('aria-busy')).toBeDefined();
+  });
+  it('adds a proper aria-label to Skeleton', () => {
+    const result = render(<Skeleton />);
+    expect(result.getByRole('progressbar').getAttribute('aria-label')).toEqual('Loading Content');
+  });
 });

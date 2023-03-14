@@ -14,7 +14,7 @@ export const renderDataGridRow_unstable = (state: DataGridRowState) => {
       {slots.selectionCell && <slots.selectionCell {...slotProps.selectionCell} />}
       {state.columnDefs.map(columnDef => (
         <ColumnIdContextProvider value={columnDef.columnId} key={columnDef.columnId}>
-          {state.renderCell(columnDef)}
+          {state.renderCell(columnDef, state.dataGridContextValue)}
         </ColumnIdContextProvider>
       ))}
     </slots.root>

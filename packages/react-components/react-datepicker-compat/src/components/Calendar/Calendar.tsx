@@ -329,7 +329,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
         ref={forwardedRef}
         role="group"
         aria-label={selectionAndTodayString}
-        className={mergeClasses(classes.root, className, 'ms-slideDownIn10')}
+        className={classes.root}
         onKeyDown={onDatePickerPopupKeyDown}
       >
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">

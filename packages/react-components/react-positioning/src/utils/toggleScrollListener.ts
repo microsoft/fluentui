@@ -1,3 +1,4 @@
+import { isHTMLElement } from '@fluentui/react-utilities';
 import type { PositioningVirtualElement } from '../types';
 import { getScrollParent } from './getScrollParent';
 
@@ -16,11 +17,11 @@ export function toggleScrollListener(
     return;
   }
 
-  if (prev instanceof HTMLElement) {
+  if (isHTMLElement(prev)) {
     const prevScrollParent = getScrollParent(prev);
     prevScrollParent.removeEventListener('scroll', handler);
   }
-  if (next instanceof HTMLElement) {
+  if (isHTMLElement(next)) {
     const scrollParent = getScrollParent(next);
     scrollParent.addEventListener('scroll', handler);
   }

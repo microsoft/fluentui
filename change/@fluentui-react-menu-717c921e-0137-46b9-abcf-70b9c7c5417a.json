@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated hover icon styles in MenuItem",
-  "packageName": "@fluentui/react-menu",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}
