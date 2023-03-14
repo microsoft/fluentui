@@ -56,6 +56,8 @@ const p = fluent2ForV8DarkPalette;
 const grey36 = '#5C5C5C';
 
 const semanticColorMappingOverridesForDark: Partial<IExtendedSemanticColors> = {
+  link: p.themeDark,
+
   // Extended semantic colors
   inputBottomBorderFocus: p.themePrimary,
   inputBottomBorderRest: p.neutralLighter,
