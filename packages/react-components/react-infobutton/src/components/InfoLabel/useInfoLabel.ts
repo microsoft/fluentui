@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
-import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 import { Label } from '@fluentui/react-label';
+import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
+import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
 /**
  * Create the state required to render InfoLabel.
@@ -16,9 +16,9 @@ import { InfoButton } from '../InfoButton/InfoButton';
  */
 export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElement>): InfoLabelState => {
   const {
-    root: rootSlot,
-    label: labelSlot,
-    infoButton: infoButtonSlot,
+    root: rootShorthand,
+    label: labelShorthand,
+    infoButton: infoButtonShorthand,
     size,
     content,
     className,
@@ -26,7 +26,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     ...labelProps
   } = props;
 
-  const root = resolveShorthand(rootSlot, {
+  const root = resolveShorthand(rootShorthand, {
     required: true,
     defaultProps: {
       className,
@@ -34,7 +34,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     },
   });
 
-  const label = resolveShorthand(labelSlot, {
+  const label = resolveShorthand(labelShorthand, {
     required: true,
     defaultProps: {
       id: useId('infolabel-'),
@@ -44,7 +44,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     },
   });
 
-  const infoButton = resolveShorthand(infoButtonSlot, {
+  const infoButton = resolveShorthand(infoButtonShorthand, {
     required: !!content,
     defaultProps: {
       id: useId('infobutton-'),
