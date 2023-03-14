@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, useFlatTreeItems_unstable, FlatTreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
 
-const defaultItems: FlatTreeItem[] = [
+const defaultItems: FlatTreeItemProps[] = [
   {
     id: '1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
@@ -62,11 +62,12 @@ const defaultItems: FlatTreeItem[] = [
 ];
 
 export const UseFlatTreeItems = () => {
-  const [treeProps, flatTreeItems] = useFlatTreeItems_unstable(defaultItems);
+  const flatTree = useFlatTree_unstable(defaultItems);
+
   return (
-    <Tree {...treeProps} aria-label="Tree">
-      {flatTreeItems.map(treeItemProps => (
-        <TreeItem {...treeItemProps} key={treeItemProps.id} />
+    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), flatTreeItem => (
+        <TreeItem {...flatTreeItem.getTreeItemProps()} key={flatTreeItem.id} />
       ))}
     </Tree>
   );

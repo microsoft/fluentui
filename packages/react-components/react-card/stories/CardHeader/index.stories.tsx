@@ -1,4 +1,4 @@
-import { CardHeader } from '@fluentui/react-card';
+import { CardHeader } from '@fluentui/react-components';
 import descriptionMd from './CardHeaderDescription.md';
 
 export { Default } from './CardHeaderDefault.stories';

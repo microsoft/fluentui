@@ -14,7 +14,7 @@ export const renderMenuPopover_unstable = (state: MenuPopoverState) => {
   }
 
   return (
-    <Portal>
+    <Portal mountNode={state.mountNode}>
       <slots.root {...slotProps.root} />
     </Portal>
   );

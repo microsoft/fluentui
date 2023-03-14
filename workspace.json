@@ -446,11 +446,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/react-datepicker": {
-      "root": "packages/react-components/react-datepicker",
+    "@fluentui/react-datepicker-compat": {
+      "root": "packages/react-components/react-datepicker-compat",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-datepicker/src",
+      "sourceRoot": "packages/react-components/react-datepicker-compat/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-dialog": {

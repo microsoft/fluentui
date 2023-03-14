@@ -9,6 +9,7 @@ export type TreeSlots = {
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type TreeNavigationData_unstable =
+  | { event: React.MouseEvent<HTMLElement>; target: HTMLElement; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowRight }
   | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowLeft }

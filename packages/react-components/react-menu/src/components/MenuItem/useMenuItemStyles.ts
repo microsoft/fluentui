@@ -89,6 +89,15 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
       color: tokens.colorNeutralForegroundDisabled,
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${menuItemClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
 
     ':focus': {
