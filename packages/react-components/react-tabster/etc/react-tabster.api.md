@@ -19,7 +19,6 @@ export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | Gr
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
     enableOutline?: boolean;
-    // (undocumented)
     selector?: 'focus' | 'focus-within';
 }
 
