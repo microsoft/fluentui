@@ -52,6 +52,7 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePicke
       isMounted.current = true;
     },
     // Should only run on allowTextInput or isCalendarShown change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [allowTextInput, isCalendarShown],
   );
 
@@ -470,7 +471,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   inputShorthand.onFocus = onInputFocus;
   inputShorthand.onKeyDown = onInputKeyDown;
   inputShorthand.onChange = mergeCallbacks(onInputChange, props.input?.onChange);
-  // This is the problem....
   inputShorthand.value = formattedDate;
 
   const inputFieldShorthand = resolveShorthand(props.inputField, {
