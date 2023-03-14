@@ -40,4 +40,5 @@ storiesOf('InfoLabel', module)
     {
       includeRtl: true,
     },
-  );
+  )
+  .addStory('no-content', () => <InfoLabel>With no info button, this is just a label</InfoLabel>);
