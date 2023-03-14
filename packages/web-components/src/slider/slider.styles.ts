@@ -60,11 +60,7 @@ export const styles = css`
     cursor: initial;
   }
 
-  :host(:focus) {
-    outline: 0;
-  }
-
-  :host(:has(:focus-visible)) {
+  :host(:focus-visible) {
     outline-offset: 4px;
     outline: 2px solid ${colorStrokeFocus2};
   }
@@ -90,11 +86,11 @@ export const styles = css`
   }
 
   :host([orientation='vertical']) .thumb-container {
-    transform: translateX(calc(var(--thumb-translate) * -1.5)) translateY(calc(var(--thumb-size) * 0.5));
+    transform: translateX(calc(var(--thumb-translate) * -1.5)) translateY(calc(var(--thumb-size) * -0.5));
   }
 
   :host([orientation='vertical'][size='small']) .thumb-container {
-    transform: translateX(calc(var(--thumb-translate) * -1.35)) translateY(calc(var(--thumb-size) * 0.5));
+    transform: translateX(calc(var(--thumb-translate) * -1.35)) translateY(calc(var(--thumb-size) * -0.5));
   }
 
   .thumb-cursor {
@@ -147,7 +143,8 @@ export const styles = css`
     left: 0;
     right: 0;
     bottom: 0;
-    width: 101%;
+    width: 100%;
+    inset: 0 -2px;
     background-image: repeating-linear-gradient(
       var(--slider-direction),
       #0000 0%,
@@ -157,8 +154,8 @@ export const styles = css`
     );
   }
 
-  :host([orientation='vertical']:not([step='1'])) .track::after {
-    inset: -1px 0;
+  :host([orientation='vertical'][step]) .track::after {
+    inset: -2px 0;
   }
 
   :host([disabled]) .track {
@@ -172,6 +169,7 @@ export const styles = css`
     height: var(--track-width);
     grid-row: 2 / auto;
   }
+
   :host([orientation='vertical']) .track {
     top: var(--track-overhang);
     bottom: var(--track-overhang);
@@ -201,6 +199,6 @@ export const styles = css`
   :host([orientation='vertical']) .track-start {
     height: auto;
     width: 100%;
-    top: 0;
+    bottom: 0;
   }
 `;

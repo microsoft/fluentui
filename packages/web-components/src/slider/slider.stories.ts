@@ -18,7 +18,6 @@ const storyTemplate = html<SliderStoryArgs>`
     max=${x => x.max}
     orientation=${x => x.orientation}
     value=${x => x.value}
-    step=${x => x.step}
   ></fluent-slider>
 `;
 
@@ -43,10 +42,6 @@ export default {
       control: 'number',
       defaultValue: 100,
     },
-    step: {
-      control: 'number',
-      defaultValue: 1,
-    },
     value: { control: 'number', defaultValue: 50 },
     size: {
       control: {
@@ -66,7 +61,7 @@ export default {
 export const Slider = renderComponent(storyTemplate).bind({});
 
 export const SliderVertical = renderComponent(html<SliderStoryArgs>`
-  <fluent-slider step="25" orientation="vertical" current-value="100" min="0" max="100"></fluent-slider>
+  <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>
 `);
 
 export const SliderSmall = renderComponent(html<SliderStoryArgs>`
@@ -79,4 +74,8 @@ export const SliderSteps = renderComponent(html<SliderStoryArgs>`
 
 export const SliderDisabled = renderComponent(html<SliderStoryArgs>`
   <fluent-slider disabled value="10" min="0" max="100"></fluent-slider>
+`);
+
+export const SliderDisabledWithSteps = renderComponent(html<SliderStoryArgs>`
+  <fluent-slider step="25" disabled value="50" min="0" max="100"></fluent-slider>
 `);
