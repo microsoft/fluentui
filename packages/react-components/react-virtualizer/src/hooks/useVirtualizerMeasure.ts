@@ -2,6 +2,8 @@ import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
 import { IVirtualizerMeasureDynamicProps, IVirtualizerMeasureProps } from './useVirtualizerMeasure.types';
 import { debounce } from '../utilities/debounce';
+import { flushSync } from 'react-dom';
+import * as ReactDOM from 'react-dom';
 
 /**
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
@@ -20,15 +22,14 @@ export const useStaticVirtualizerMeasure = (
   const [virtualizerBufferItems, setVirtualizerBufferItems] = React.useState(0);
   const [virtualizerBufferSize, setVirtualizerBufferSize] = React.useState(0);
 
-  // A ref for the previously set container, we use this to check if the container has changed (re-observe).
-  // const prevContainer: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
-
-  // // The ref the user sets on their scrollView.
+  // The ref the user sets on their scrollView.
   const container: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
 
   const useVirtualizerScrollRef = (ref: React.MutableRefObject<HTMLElement | null>) => {
+    console.log('Using virtualizer');
     React.useEffect(() => {
       if (ref.current !== container.current) {
+        console.log('ref.current !== container.current');
         if (container.current) {
           resizeObserver?.unobserve(container.current);
         }
@@ -38,9 +39,11 @@ export const useStaticVirtualizerMeasure = (
 
         // Only observe if not null
         if (container.current) {
+          console.log('Observing');
           resizeObserver?.observe(container.current);
         }
 
+        console.log('Call init resize');
         handleResize();
       }
     });
@@ -77,9 +80,14 @@ export const useStaticVirtualizerMeasure = (
       const totalLength = length + bufferItems * 2 + 1;
 
       console.log('Setting new length:', totalLength);
-      setVirtualizerLength(totalLength);
-      setVirtualizerBufferSize(bufferSize);
-      setVirtualizerBufferItems(bufferItems);
+      console.log('Setting new bufferSize:', bufferSize);
+      console.log('Setting new bufferItems:', bufferItems);
+
+      ReactDOM.unstable_batchedUpdates(() => {
+        setVirtualizerLength(totalLength);
+        setVirtualizerBufferSize(bufferSize);
+        setVirtualizerBufferItems(bufferItems);
+      });
     }, [defaultItemSize, direction]),
   );
 
