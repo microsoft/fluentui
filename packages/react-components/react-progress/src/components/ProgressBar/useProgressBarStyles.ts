@@ -83,10 +83,10 @@ const useBarStyles = makeStyles({
     animationDuration: '3s',
     animationTimingFunction: 'linear',
     animationIterationCount: 'infinite',
-    // '@media screen and (prefers-reduced-motion: reduce)': {
-    //   animationDuration: '0.01ms',
-    //   animationIterationCount: '1',
-    // },
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      animationDuration: '0.01ms',
+      animationIterationCount: '1',
+    },
   },
 
   brand: {
