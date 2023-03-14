@@ -32,6 +32,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     return 'none';
   });
   const toggleRow = useDataGridContext_unstable(ctx => ctx.selection.toggleRow);
+  const dataGridContextValue = useDataGridContext_unstable(ctx => ctx);
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableRowElement>) => {
     if (selectable && !isHeader) {
@@ -74,5 +75,6 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     selectionCell: resolveShorthand(props.selectionCell, { required: selectable }),
     renderCell: props.children,
     columnDefs,
+    dataGridContextValue,
   };
 };

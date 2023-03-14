@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 08 Mar 2023 17:42:23 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Mar 2023 08:58:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.0)
+
+Mon, 13 Mar 2023 08:58:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.17.1..@fluentui/react-components_v9.18.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Release Card as stable ([PR #27111](https://github.com/microsoft/fluentui/pull/27111) by marcosvmmoura@gmail.com)
+- `@fluentui/react-utilities`
+  - feat: isHTMLElement to support all HTMLElement classes ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - feat: release 9.0.0 ([PR #27111](https://github.com/microsoft/fluentui/pull/27111) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: release react-skeleton to unstable ([PR #27150](https://github.com/microsoft/fluentui/pull/27150) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-skeleton`
+  - feat: release react-skeleton to unstable ([PR #27150](https://github.com/microsoft/fluentui/pull/27150) by ololubek@microsoft.com)
+
+## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.17.1)
+
+Fri, 10 Mar 2023 13:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.17.0..@fluentui/react-components_v9.17.1)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - feat: creates useFlatTree hook to improve API ([PR #27146](https://github.com/microsoft/fluentui/pull/27146) by bernardo.sunderhus@gmail.com)
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.17.0)
+
+Fri, 10 Mar 2023 07:13:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.16.0..@fluentui/react-components_v9.17.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - release @fluentui/react-tree unstable ([PR #27126](https://github.com/microsoft/fluentui/pull/27126) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27081](https://github.com/microsoft/fluentui/pull/27081) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: Export `pinned` prop from `PositioningProps` ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - fix: ResolveShorthandOptions type to better reflect implementation ([PR #27112](https://github.com/microsoft/fluentui/pull/27112) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - release @fluentui/react-tree unstable ([PR #27126](https://github.com/microsoft/fluentui/pull/27126) by bernardo.sunderhus@gmail.com)
 
 ## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.16.0)
 

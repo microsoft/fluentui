@@ -8,6 +8,7 @@ import { CalendarGridRow } from './CalendarGridRow';
 import { useAnimateBackwards } from './useAnimateBackwards';
 import { useWeeks } from './useWeeks';
 import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles';
+import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
@@ -131,7 +132,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   return (
     <table
-      className={classNames.table}
+      className={mergeClasses(classNames.table, props.className)}
       aria-multiselectable="false"
       aria-labelledby={labelledBy}
       aria-activedescendant={activeDescendantId}

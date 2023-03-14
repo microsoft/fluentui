@@ -1,42 +1,53 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Home } from '@fluentui/keyboard-keys';
 import { TreeNavigationData_unstable } from '../Tree';
-import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
-import { useTreeItemWalker } from './useTreeItemWalker';
+import { treeDataTypes } from '../utils/tokens';
+import { treeItemFilter } from '../utils/treeItemFilter';
+import { useRovingTabIndex } from './useRovingTabIndexes';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
 export function useNestedTreeNavigation() {
-  const [treeWalkerRef, rootRef] = useTreeItemWalker();
+  const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
+  const [walkerRef, rootRef] = useHTMLElementWalkerRef(treeItemFilter);
 
-  function navigate({ type, target, event: { key } }: TreeNavigationData_unstable) {
-    const treeItemWalker = treeWalkerRef.current;
-    if (!treeItemWalker) {
+  const getNextElement = (data: TreeNavigationData_unstable) => {
+    if (!walkerRef.current) {
       return;
     }
-    switch (type) {
-      case 'TypeAhead':
-        treeItemWalker.currentElement = target;
-        return nextTypeAheadElement(treeItemWalker, key)?.focus();
-      case ArrowLeft:
-        treeItemWalker.currentElement = target;
-        return treeItemWalker.parentElement()?.focus();
-      case ArrowRight:
-        treeItemWalker.currentElement = target;
-        return treeItemWalker.firstChild()?.focus();
-      case End:
+    const treeItemWalker = walkerRef.current;
+    switch (data.type) {
+      case treeDataTypes.click:
+        return data.target;
+      case treeDataTypes.typeAhead:
+        treeItemWalker.currentElement = data.target;
+        return nextTypeAheadElement(treeItemWalker, data.event.key);
+      case treeDataTypes.arrowLeft:
+        treeItemWalker.currentElement = data.target;
+        return treeItemWalker.parentElement();
+      case treeDataTypes.arrowRight:
+        treeItemWalker.currentElement = data.target;
+        return treeItemWalker.firstChild();
+      case treeDataTypes.end:
         treeItemWalker.currentElement = treeItemWalker.root;
-        return lastChildRecursive(treeItemWalker)?.focus();
-      case Home:
+        return lastChildRecursive(treeItemWalker);
+      case treeDataTypes.home:
         treeItemWalker.currentElement = treeItemWalker.root;
-        return treeItemWalker.firstChild()?.focus();
-      case ArrowDown:
-        treeItemWalker.currentElement = target;
-        return treeItemWalker.nextElement()?.focus();
-      case ArrowUp:
-        treeItemWalker.currentElement = target;
-        return treeItemWalker.previousElement()?.focus();
+        return treeItemWalker.firstChild();
+      case treeDataTypes.arrowDown:
+        treeItemWalker.currentElement = data.target;
+        return treeItemWalker.nextElement();
+      case treeDataTypes.arrowUp:
+        treeItemWalker.currentElement = data.target;
+        return treeItemWalker.previousElement();
+    }
+  };
+  function navigate(data: TreeNavigationData_unstable) {
+    const nextElement = getNextElement(data);
+    if (nextElement) {
+      rove(nextElement);
     }
   }
-  return [navigate, rootRef] as const;
+  return [navigate, useMergedRefs(rootRef, rovingRootRef)] as const;
 }
 
 function lastChildRecursive(walker: HTMLElementWalker) {
