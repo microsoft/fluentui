@@ -41,7 +41,8 @@ The following table will help you navigate the 3 projects and understand their d
 
 ## Licenses
 
-All files on the Fluent UI React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
+All files on the Fluent UI React GitHub repository are subject to the MIT license. 
+Please read the License file at the root of the project.
 
 Usage of the fonts and icons referenced in Fluent UI React is subject to the terms of the [assets license agreement](https://aka.ms/fluentui-assets-license).
 
