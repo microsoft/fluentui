@@ -50,8 +50,8 @@ function _processStackChildren(
     }
 
     if (child.type === React.Fragment) {
-      return child.props.children
-        ? _processStackChildren(child.props.children, { disableShrink, enableScopedSelectors })
+      return (child.props as any).children
+        ? _processStackChildren((child.props as any).children, { disableShrink, enableScopedSelectors })
         : null;
     }
 

@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2019",
+    "outDir": "lib",
+    "jsx": "react",
+    "lib": ["ES5", "DOM", "ES2015.Promise"],
+    "types": ["jest"]
+  },
+  "include": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "./src/common/isConformant.ts",
+    "./src/common/testUtilities.ts"
+  ]
+}

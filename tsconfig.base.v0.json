@@ -16,6 +16,7 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["node_modules/@types", "./typings"],
+    "emitDeclarationOnly": true,
     "baseUrl": ".",
     "paths": {
       "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],

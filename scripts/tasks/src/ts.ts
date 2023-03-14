@@ -36,12 +36,17 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.project = tsConfigFileV8;
   }
 
-  const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, isUsingPathAliases, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
 
   if (isUsingTsSolutionConfigs && tsConfig) {
-    logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
+    logger.info(`📣 TSC: package is using TS Solution config. Using ${tsConfigFile} for compilation.`);
+    isUsingPathAliases && logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
 
-    const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
+    /**
+     * set outDirt package root "." for projects that use solution configs without path aliases.
+     * - old packages (v8) have defined `outDir:lib`, which would create double nesting lib/lib, lib/lib-commonjs, lib/lib-amd
+     */
+    const tsConfigOutDir = isUsingPathAliases ? (tsConfig.compilerOptions.outDir as string) : '.';
 
     options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     options.project = tsConfigFile;
