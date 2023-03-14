@@ -5,7 +5,7 @@ export function getSearchBoxStyles(
   props: ISearchBoxStyleProps,
 ): IStyleFunctionOrObject<ISearchBoxStyleProps, ISearchBoxStyles> {
   const { hasFocus, underlined, disabled, theme } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const restBottomBorder = `1px solid ${palette.neutralPrimary}`;
 
@@ -25,12 +25,16 @@ export function getSearchBoxStyles(
         getFluent2InputFocusStyles(theme),
       ],
 
-      disabled && ['is-disabled', getFluent2InputDisabledStyles(theme)],
+      disabled && [
+        'is-disabled',
+        getFluent2InputDisabledStyles(theme),
+        { borderBottom: `1px solid ${semanticColors.disabledBorder}` },
+      ],
     ],
     field: [
       disabled && {
         '::placeholder': {
-          color: palette.neutralQuaternaryAlt,
+          color: semanticColors.disabledText,
         },
       },
     ],
@@ -41,7 +45,7 @@ export function getSearchBoxStyles(
       disabled && [
         'is-disabled',
         {
-          color: palette.neutralQuaternaryAlt,
+          color: semanticColors.disabledText,
         },
       ],
     ],

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: clean up comments in SpinButton source code",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "none"
-}

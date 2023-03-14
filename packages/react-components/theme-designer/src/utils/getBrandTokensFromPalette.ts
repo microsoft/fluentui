@@ -1,5 +1,5 @@
 import { BrandVariants } from '@fluentui/react-theme';
-import { Palette, hexColorsFromPalette, hex_to_LCH } from '@fluent-blocks/colors';
+import { Palette, hexColorsFromPalette, hex_to_LCH } from '../colors';
 
 type Options = {
   darkCp?: number;
