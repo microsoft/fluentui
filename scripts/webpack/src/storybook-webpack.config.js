@@ -21,19 +21,6 @@ const createStorybookWebpackConfig = config => {
 
   config.module?.rules?.push(
     {
-      test: [/\.chartingworker\.ts$/],
-      use: {
-        loader: 'worker-loader',
-        //options: { inline: 'no-fallback' },
-        // options: {
-        //   experimentalWatchApi: true,
-        //   transpileOnly: true,
-        // },
-      },
-      //exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
-      //loader: "worker-loader",
-    },
-    {
       test: /\.(ts|tsx)$/,
       use: [
         {
