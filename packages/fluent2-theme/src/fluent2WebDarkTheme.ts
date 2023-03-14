@@ -56,6 +56,7 @@ const p = fluent2ForV8DarkPalette;
 const grey36 = '#5C5C5C';
 
 const semanticColorMappingOverridesForDark: Partial<IExtendedSemanticColors> = {
+  // This hex matches the v9 theme.
   link: p.themeDark,
 
   // Extended semantic colors
