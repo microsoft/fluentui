@@ -1652,11 +1652,6 @@
   dependencies:
     "@floating-ui/core" "^1.2.0"
 
-"@fluent-blocks/colors@9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@fluent-blocks/colors/-/colors-9.2.0.tgz#8aeb30f93f5f827b2842b9cff43541a87e304e18"
-  integrity sha512-NgK+n4IHRj35ttJjN3UBF8oqk2ZT8xwCdT52+nTXvVSL5yHDtKwQlgb+zvrNFhYNajbqEeqYdj4QA3XSkytLww==
-
 "@fluentui/dom-utilities@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
