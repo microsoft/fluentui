@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Added custom style hook call",
-  "packageName": "@fluentui/react-button",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

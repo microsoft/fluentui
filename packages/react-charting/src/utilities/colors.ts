@@ -76,7 +76,7 @@ const QualitativePalette: Palette = {
   '17': ['#9a3d0c', '#d77440'], // [pumpkin.shade20, pumpkin.tint20],
   '18': ['#405f14', '#73aa24'], // [lime.shade30, lime.primary],
   '19': ['#863593', '#c36bd1'], // [lilac.shade20, lilac.tint20],
-  '20': ['#6c5700', '#d0b232'], // [gold.shade30, gold.tint20],
+  '20': ['#6d5700', '#d0b232'], // [gold.shade30, gold.tint20],
   '21': ['#4f6bed'], // [cornflower.primary],
   '22': ['#ea38a6'], // [hotPink.tint20],
   '23': ['#038387'], // [teal.primary],
@@ -90,18 +90,18 @@ const QualitativePalette: Palette = {
   '31': ['#2c3c85', '#c8d1fa'], // [cornflower.shade30, cornflower.tint40],
   '32': ['#7f004e', '#f7adda'], // [hotPink.shade30, hotPink.tint40],
   '33': ['#02494c', '#9bd9db'], // [teal.shade30, teal.tint40],
-  '34': ['#4c3867', '#d7caea'], // [orchid.shade30, orchid.tint40],
+  '34': ['#4c3867', '#b29ad4'], // [orchid.shade30, orchid.tint30],
   '35': ['#0b5a08', '#a7e3a5'], // [lightGreen.shade30, lightGreen.tint40],
   '36': ['#20547c', '#83bdeb'], // [lightBlue.shade30, lightBlue.tint30],
   '37': ['#712d09', '#df8e64'], // [pumpkin.shade30, pumpkin.tint30],
   '38': ['#23330b', '#a4cc6c'], // [lime.shade40, lime.tint30],
   '39': ['#63276d', '#cf87da'], // [lilac.shade30, lilac.tint30],
-  '40': ['#3a2f00', '#ecdfa5'], // [gold.shade40, gold.tint40],
+  '40': ['#3a2f00', '#dac157'], // [gold.shade40, gold.tint30],
 };
 
 const SemanticPalette: Palette = {
   info: ['#015cda'],
-  disabled: ['#8a8886'],
+  disabled: ['#dbdbdb', '#4d4d4d'], // [grey[86], grey[30]]
   highError: ['#6e0811', '#cc2635'], // [cranberry.shade30, cranberry.tint10],
   error: ['#c50f1f', '#dc626d'], // [cranberry.primary, cranberry.tint30],
   warning: ['#f7630c', '#f87528'], // [orange.primary, orange.tint10],

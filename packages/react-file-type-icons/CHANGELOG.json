@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Thu, 09 Mar 2023 07:39:12 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.8.12",
+      "version": "8.8.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "694ce5ed16afc1443eed34813a6aa41903a5ca87",
+            "comment": "Updated FabricCDN url to pick up new PowerBI and Loop filetype icons"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.9.5",
+            "commit": "64f86cc11c16cb8743c0445fd4d5095d23874dcf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Mar 2023 07:43:04 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.8.11",
       "version": "8.8.11",
