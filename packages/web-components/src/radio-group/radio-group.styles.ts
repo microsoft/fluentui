@@ -49,8 +49,4 @@ export const styles = css`
     flex-direction: column;
     justify-content: center;
   }
-
-  :host([disabled]) ::slotted([role='radio'] ::slotted(.label)) {
-    color: ${colorNeutralForegroundDisabled};
-  }
 `;
