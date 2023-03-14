@@ -4,6 +4,7 @@ import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
 import { datePickerClassNames } from './useDatePickerStyles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { calendarMonthClassNames } from '../CalendarMonth/useCalendarMonthStyles';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {
@@ -70,20 +71,121 @@ describe('DatePicker', () => {
     const result = render(<DatePicker isRequired allowTextInput onSelectDate={onSelectDate} />);
     const input = result.getByRole('combobox');
 
-    fireEvent.change(input, {
-      target: {
-        value: 'Jan 1 2030',
-      },
-    });
+    fireEvent.change(input, { target: { value: 'Jan 1 2030' } });
     fireEvent.blur(input);
 
-    fireEvent.change(input, {
-      target: {
-        value: '',
-      },
-    });
+    fireEvent.change(input, { target: { value: '' } });
     fireEvent.blur(input);
 
     expect(onSelectDate).toHaveBeenCalledTimes(2);
+  });
+
+  it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+    const onSelectDate = jest.fn();
+    const result = render(<DatePicker allowTextInput onSelectDate={onSelectDate} />);
+
+    fireEvent.click(result.getByRole('combobox'));
+    result.getAllByRole('gridcell')[10].click();
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+  });
+
+  it('should set "Calendar" as the Callout\'s aria-label', () => {
+    const result = render(<DatePicker />);
+    const input = result.getByRole('combobox');
+
+    fireEvent.click(input);
+    fireEvent.blur(input);
+
+    expect(result.getByRole('dialog').getAttribute('aria-label')).toBe('Calendar');
+  });
+
+  it('should reflect the correct date in the input field when selecting a value', () => {
+    const today = new Date('January 15, 2020');
+    const initiallySelectedDate = new Date('January 10, 2020');
+    const result = render(<DatePicker allowTextInput today={today} initialPickerDate={initiallySelectedDate} />);
+
+    const input = result.getByRole('combobox');
+
+    fireEvent.click(input);
+    result.getByText('15').click();
+
+    expect(input.getAttribute('value')).toBe('Wed Jan 15 2020');
+  });
+
+  it('reflects the correct date in the input field when selecting a value and a different format is given', () => {
+    const today = new Date('January 15, 2020');
+    const initiallySelectedDate = new Date('January 10, 2020');
+    const onFormatDate = (date: Date): string => {
+      return date.getDate() + '/' + (date.getMonth() + 1) + '/' + (date.getFullYear() % 100);
+    };
+
+    const result = render(
+      <DatePicker
+        allowTextInput={true}
+        today={today}
+        formatDate={onFormatDate}
+        initialPickerDate={initiallySelectedDate}
+      />,
+    );
+    const input = result.getByRole('combobox');
+
+    fireEvent.click(input);
+    result.getByText('15').click();
+
+    expect(input.getAttribute('value')).toBe('15/1/20');
+  });
+});
+
+describe('When boundaries are specified', () => {
+  let result: RenderResult;
+  const defaultDate = new Date('Dec 15 2017');
+  const minDate = new Date('Jan 1 2017');
+  const maxDate = new Date('Dec 31 2017');
+  const strings = {
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    goToToday: 'Go to today',
+    isOutOfBoundsErrorMessage: 'out of bounds',
+  };
+
+  beforeEach(() => {
+    result = render(
+      <DatePicker allowTextInput minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />,
+    );
+  });
+
+  afterEach(() => {
+    result.unmount();
+  });
+
+  it('should throw validation error for date outside boundary', () => {
+    const input = result.getByRole('combobox');
+    // before min date
+    fireEvent.change(input, { target: { value: 'Jan 1 2010' } });
+    fireEvent.blur(input);
+    expect(result.getByRole('alert')).toBeDefined();
+    expect(result.getByRole('alert').textContent).toBe('out of bounds');
+
+    // after max date
+    fireEvent.change(input, { target: { value: 'Jan 1 2020' } });
+    fireEvent.blur(input);
+    expect(result.getByRole('alert')).toBeDefined();
+    expect(result.getByRole('alert').textContent).toBe('out of bounds');
   });
 });
