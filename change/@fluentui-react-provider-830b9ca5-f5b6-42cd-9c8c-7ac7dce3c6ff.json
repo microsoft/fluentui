@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: pass proper document instance to useFocusVisible()",
+  "packageName": "@fluentui/react-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

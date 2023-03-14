@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add options to useFocusVisible() hook",
+  "packageName": "@fluentui/react-tabster",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
