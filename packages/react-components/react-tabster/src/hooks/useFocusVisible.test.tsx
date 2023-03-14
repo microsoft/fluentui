@@ -7,6 +7,16 @@ jest.mock('../focus/focusVisiblePolyfill', () => ({ applyFocusVisiblePolyfill: j
 import { applyFocusVisiblePolyfill } from '../focus/focusVisiblePolyfill';
 import { useFocusVisible } from './useFocusVisible';
 
+const createDocumentMock = (): Document => {
+  const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+
+  // `defaultView` is read-only by spec, getter is used as workaround
+  // https://github.com/facebook/jest/issues/2227#issuecomment-430435133
+  jest.spyOn(externalDocument, 'defaultView', 'get').mockReturnValue({} as typeof document.defaultView);
+
+  return externalDocument;
+};
+
 describe('useFocusVisible', () => {
   describe('targetWindow', () => {
     it('uses a window from context by default', () => {
@@ -15,7 +25,9 @@ describe('useFocusVisible', () => {
           {props.children}
         </Provider_unstable>
       );
-      const element = document.createElement('div');
+
+      const targetDocument = createDocumentMock();
+      const element = targetDocument.createElement('div');
 
       const { result, rerender } = renderHook<
         { targetDocument: Document | undefined },
@@ -26,14 +38,16 @@ describe('useFocusVisible', () => {
       });
 
       result.current.current = element;
-      rerender({ targetDocument: document });
+      rerender({ targetDocument });
 
       expect(applyFocusVisiblePolyfill).toHaveBeenCalledTimes(1);
-      expect(applyFocusVisiblePolyfill).toHaveBeenCalledWith(element, document.defaultView);
+      expect(applyFocusVisiblePolyfill).toHaveBeenCalledWith(element, targetDocument.defaultView);
     });
 
     it('uses a window from options', () => {
-      const element = document.createElement('div');
+      const targetDocument = createDocumentMock();
+      const element = targetDocument.createElement('div');
+
       const { result, rerender } = renderHook<
         { targetDocument: Document | undefined },
         React.MutableRefObject<HTMLElement | null>
@@ -45,10 +59,10 @@ describe('useFocusVisible', () => {
       });
 
       result.current.current = element;
-      rerender({ targetDocument: document });
+      rerender({ targetDocument });
 
       expect(applyFocusVisiblePolyfill).toHaveBeenCalledTimes(1);
-      expect(applyFocusVisiblePolyfill).toHaveBeenCalledWith(element, document.defaultView);
+      expect(applyFocusVisiblePolyfill).toHaveBeenCalledWith(element, targetDocument.defaultView);
     });
   });
 });
