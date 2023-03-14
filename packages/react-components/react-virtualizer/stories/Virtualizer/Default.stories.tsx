@@ -17,11 +17,6 @@ const useStyles = makeStyles({
     lineHeight: '100px',
     width: '100%',
   },
-  block: {
-    height: '1250px',
-    width: '100%',
-    backgroundColor: 'red',
-  },
 });
 
 export const Default = () => {
@@ -37,7 +32,6 @@ export const Default = () => {
 
   return (
     <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
-      <div className={styles.block} />
       <Virtualizer
         numItems={childLength}
         virtualizerLength={virtualizerLength}
