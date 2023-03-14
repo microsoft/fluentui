@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Panel async and events to work in concurrent mode",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

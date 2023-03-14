@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing bugs in the spinner size. All 4 sizes were hard coded to 32px. Now Medium and large are 32px & 36px respectivley.xSmall back to 12px and small to 16px.",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

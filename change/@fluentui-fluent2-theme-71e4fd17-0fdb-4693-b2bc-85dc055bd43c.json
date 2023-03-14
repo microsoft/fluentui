@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating spin button focused and disabled styles.",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}
