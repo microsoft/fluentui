@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated colors for unknown variant for presence badge",
-  "packageName": "@fluentui/react-badge",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

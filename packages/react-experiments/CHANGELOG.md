@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 06 Mar 2023 07:43:03 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 07:38:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.60)
+
+Tue, 14 Mar 2023 07:38:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.59..@fluentui/react-experiments_v8.14.60)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.6 ([PR #26749](https://github.com/microsoft/fluentui/pull/26749) by beachball)
+
+## [8.14.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.59)
+
+Fri, 10 Mar 2023 07:38:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.58..@fluentui/react-experiments_v8.14.59)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.5 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+- Bump @fluentui/react-hooks to v8.6.19 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+
+## [8.14.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.58)
+
+Thu, 09 Mar 2023 07:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.57..@fluentui/react-experiments_v8.14.58)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.4 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.32 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.12 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+- Bump @fluentui/style-utilities to v8.9.5 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+- Bump @fluentui/common-styles to v1.2.21 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
 
 ## [8.14.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.57)
 

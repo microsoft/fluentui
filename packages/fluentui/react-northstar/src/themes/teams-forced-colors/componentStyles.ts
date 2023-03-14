@@ -6,6 +6,9 @@ export { menuItemWrapperStyles as MenuItemWrapper } from './components/Menu/menu
 export { toolbarItemStyles as ToolbarItem } from './components/Toolbar/toolbarItemStyles';
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
 
+export { splitButtonToggleStyles as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
+export { splitButtonDividerStyles as SplitButtonDivider } from './components/SplitButton/splitButtonDividerStyles';
+
 export { datepickerCalendarCellButtonStyles as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonStyles';
 export { datepickerCalendarCellStyles as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellStyles';
 export { datepickerCalendarGridRowStyles as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowStyles';
