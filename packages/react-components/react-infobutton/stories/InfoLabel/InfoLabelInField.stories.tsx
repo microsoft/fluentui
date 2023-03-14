@@ -7,7 +7,7 @@ export const InField = () => (
   <Field
     label={{
       children: (_: unknown, props: LabelProps) => (
-        <InfoLabel {...props} content="Example info">
+        <InfoLabel {...props} info="Example info">
           Field with info label
         </InfoLabel>
       ),

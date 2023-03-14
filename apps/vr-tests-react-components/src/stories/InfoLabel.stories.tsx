@@ -10,35 +10,34 @@ storiesOf('InfoLabel', module)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory('default', () => <InfoLabel content="Test">This is an info label</InfoLabel>, {
+  .addStory('default', () => <InfoLabel info="Test">This is an info label</InfoLabel>, {
     includeHighContrast: true,
     includeDarkMode: true,
     includeRtl: true,
   })
   .addStory('wrap', () => (
-    <InfoLabel content="Test">
+    <InfoLabel info="Test">
       This is a very long info label that should wrap to multiple lines and put the info button on the last line
     </InfoLabel>
   ))
   .addStory('size:small', () => (
-    <InfoLabel size="small" content="Test">
+    <InfoLabel size="small" info="Test">
       This is a small info label
     </InfoLabel>
   ))
   .addStory('size:large', () => (
-    <InfoLabel size="large" content="Test">
+    <InfoLabel size="large" info="Test">
       This is a large info label
     </InfoLabel>
   ))
   .addStory(
     'required',
     () => (
-      <InfoLabel required content="Test">
+      <InfoLabel required info="Test">
         This is a required info label
       </InfoLabel>
     ),
     {
       includeRtl: true,
     },
-  )
-  .addStory('no-content', () => <InfoLabel>With no info button, this is just a label</InfoLabel>);
+  );

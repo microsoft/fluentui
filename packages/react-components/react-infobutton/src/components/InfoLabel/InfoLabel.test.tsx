@@ -13,15 +13,15 @@ describe('InfoLabel', () => {
       'has-static-classnames': [
         {
           props: {
-            content: 'Test',
+            info: 'Test',
           },
         },
       ],
     },
   });
 
-  it('renders an InfoButton when content is set', () => {
-    const result = render(<InfoLabel content="Test">Test label</InfoLabel>);
+  it('renders an InfoButton when info is set', () => {
+    const result = render(<InfoLabel info="Test">Test label</InfoLabel>);
     expect(result.getByRole('button')).toBeTruthy();
   });
 
@@ -30,13 +30,13 @@ describe('InfoLabel', () => {
     expect(result.getByRole('button')).toBeTruthy();
   });
 
-  it('does not render an InfoButton when content is not set', () => {
+  it('does not render an InfoButton when info is not set', () => {
     const result = render(<InfoLabel>Test label</InfoLabel>);
     expect(result.queryByRole('button')).toBeNull();
   });
 
   it('sets the infoButton aria-labelledby to the label and infoButton', () => {
-    const result = render(<InfoLabel content="Test">Test label</InfoLabel>);
+    const result = render(<InfoLabel info="Test">Test label</InfoLabel>);
 
     const infoButton = result.getByRole('button');
     const label = result.getByText('Test label') as HTMLLabelElement;

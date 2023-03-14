@@ -5,7 +5,7 @@ import { InfoLabel, InfoLabelProps } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<InfoLabelProps>) => (
   <InfoLabel
-    content={
+    info={
       <>
         This is example content for an InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>
       </>

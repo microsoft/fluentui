@@ -20,7 +20,7 @@ export type InfoLabelSlots = {
   /**
    * The InfoButton component.
    *
-   * It is not typically necessary to use this prop. The content can be set using the `content` prop of the InfoLabel.
+   * It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel.
    */
   infoButton: Slot<typeof InfoButton>;
 };
@@ -28,7 +28,12 @@ export type InfoLabelSlots = {
 /**
  * InfoLabel Props
  */
-export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & Pick<InfoButtonProps, 'content'>;
+export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
+  /**
+   * The content of the InfoButton's popover.
+   */
+  info?: InfoButtonProps['content'];
+};
 
 /**
  * State used in rendering InfoLabel
