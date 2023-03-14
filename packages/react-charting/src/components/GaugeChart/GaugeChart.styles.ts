@@ -2,7 +2,7 @@ import { FontWeights } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const { theme } = props;
+  const { theme, fontSize } = props;
 
   return {
     limits: {
@@ -12,6 +12,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     chartValue: {
       ...theme.fonts.xLarge,
+      fontSize,
       fontWeight: FontWeights.semibold,
     },
 

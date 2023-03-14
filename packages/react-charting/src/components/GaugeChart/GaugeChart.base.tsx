@@ -5,6 +5,9 @@ import { IGaugeChartProps, IGaugeChartStyleProps, IGaugeChartStyles } from './Ga
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { getColorFromToken } from '../../utilities/colors';
 
+const BREAKPOINTS = [142, 124, 106, 88, 70, 52];
+const ARC_WIDTHS = [32, 28, 24, 20, 16, 12];
+const FONT_SIZES = [40, 40, 32, 32, 24, 20];
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
 interface IGaugeChartState {}
@@ -13,17 +16,33 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _classNames: IProcessedStyleSet<IGaugeChartStyles>;
 
   public render(): React.ReactNode {
-    this._classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-    });
+    const width = this.props.width || 220;
+    const height = this.props.height || 110;
+    const gaugeMarginHorizontal = 80;
+    const gaugeMarginVertical = 40;
 
-    const innerRadius = 54;
-    const outerRadius = 70;
+    const outerRadius = Math.min((width - gaugeMarginHorizontal) / 2, height - gaugeMarginVertical);
+
+    let innerRadius = outerRadius - ARC_WIDTHS[ARC_WIDTHS.length - 1];
+    let fontSize = FONT_SIZES[FONT_SIZES.length - 1];
+    for (let idx = 0; idx < BREAKPOINTS.length; idx += 1) {
+      if (outerRadius >= BREAKPOINTS[idx]) {
+        innerRadius = outerRadius - ARC_WIDTHS[idx];
+        fontSize = FONT_SIZES[idx];
+        break;
+      }
+    }
+
     const { minValue, maxValue, segments, needleRotation } = this._initProps(innerRadius, outerRadius);
 
+    this._classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      fontSize,
+    });
+
     return (
-      <svg style={{ height: 600, width: 600 }}>
-        <g transform="translate(200, 200)">
+      <svg style={{ width, height }}>
+        <g transform={`translate(${width / 2}, ${height - gaugeMarginVertical / 2})`}>
           {segments.map((segment, i) => (
             <path key={i} d={segment.d} fill={segment.color} />
           ))}

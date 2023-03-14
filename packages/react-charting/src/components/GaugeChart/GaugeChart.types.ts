@@ -13,6 +13,16 @@ export interface IGaugeChartSegment {
 }
 
 export interface IGaugeChartProps {
+  /**
+   * Width of the chart
+   */
+  width?: number;
+
+  /**
+   * Height of the chart
+   */
+  height?: number;
+
   /** */
   chartTitle?: string;
 
@@ -27,6 +37,11 @@ export interface IGaugeChartProps {
 
   /** */
   maxValue?: number;
+
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
+  className?: string;
 
   /**
    * Theme (provided through customization.)
@@ -44,6 +59,9 @@ export interface IGaugeChartStyleProps {
    * Theme (provided through customization.)
    */
   theme: ITheme;
+
+  /** */
+  fontSize: number;
 }
 
 export interface IGaugeChartStyles {
