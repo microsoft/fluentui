@@ -136,13 +136,8 @@ export const styles = css`
 
   :host([step]) .track::after {
     content: '';
-    display: block;
     position: absolute;
     border-radius: ${borderRadiusMedium};
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     width: 100%;
     inset: 0 -2px;
     background-image: repeating-linear-gradient(
