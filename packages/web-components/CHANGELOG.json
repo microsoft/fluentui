@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 14 Mar 2023 04:21:22 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.11",
+      "version": "3.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6e51be008ee479451431421eaf2e3e63744b6d5c",
+            "comment": "update FAST dependencies to latest package versions"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc86569d1d96d6deff9188fa0702d173150dd5dd",
+            "comment": "Adds css containment to implemented web components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Mar 2023 04:19:45 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.10",
       "version": "3.0.0-alpha.10",

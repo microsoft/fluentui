@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 09 Mar 2023 04:19:45 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 04:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.11)
+
+Tue, 14 Mar 2023 04:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.10..@fluentui/web-components_v3.0.0-alpha.11)
+
+### Changes
+
+- update FAST dependencies to latest package versions ([PR #27187](https://github.com/microsoft/fluentui/pull/27187) by chhol@microsoft.com)
+- Adds css containment to implemented web components ([PR #27190](https://github.com/microsoft/fluentui/pull/27190) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.10)
 
