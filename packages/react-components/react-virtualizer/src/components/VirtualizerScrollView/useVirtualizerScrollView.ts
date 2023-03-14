@@ -29,7 +29,6 @@ export function useVirtualizerScrollView_unstable(
       required: true,
       defaultProps: {
         ref: setScrollRef,
-        role: 'list',
       },
     }),
   };

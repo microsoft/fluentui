@@ -407,8 +407,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }
 
   const isFullyInitialized = hasInitialized.current && virtualizerStartIndex >= 0;
-  const beforeKey = useId('virtualizer-before-');
-  const afterKey = useId('virtualizer-after-');
   return {
     components: {
       before: 'div',
@@ -435,14 +433,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       required: true,
       defaultProps: {
         role: 'none',
-        key: beforeKey,
+        key: 'fui-virtualizer-before',
       },
     }),
     afterContainer: resolveShorthand(props.afterContainer, {
       required: true,
       defaultProps: {
         role: 'none',
-        key: afterKey,
+        key: 'fui-virtualizer-after',
       },
     }),
     beforeBufferHeight: isFullyInitialized ? calculateBefore() : 0,

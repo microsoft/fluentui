@@ -20,7 +20,11 @@ export const Default = () => {
 
   return (
     <ThemeProvider className={styles.root} applyTo="body">
-      <VirtualizerScrollView numItems={childLength} itemSize={100}>
+      <VirtualizerScrollView
+        numItems={childLength}
+        itemSize={100}
+        container={{ role: 'list', style: { maxHeight: '100vh' } }}
+      >
         {(index: number) => {
           return (
             <div
