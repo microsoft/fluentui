@@ -8,7 +8,7 @@ type GriffelResetStyle = Parameters<typeof makeResetStyles>[0];
 
 export interface CreateCustomFocusIndicatorStyleOptions {
   /**
-   * Control if the indicator appears when the corresponding element is focused, 
+   * Control if the indicator appears when the corresponding element is focused,
    * or any child is focused within the corresponding element.
    * @default 'focus'
    */
