@@ -1,8 +1,80 @@
 # Change Log - @fluentui/vr-tests-react-components
 
-This log was last generated on Wed, 03 Aug 2022 16:04:10 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests-react-components_v9.0.0-rc.0)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests-react-components_v9.0.0-rc.0..@fluentui/vr-tests-react-components_v9.0.0-rc.0)
+
+### Patches
+
+- Bump @fluentui/react-accordion to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-avatar to v9.1.1 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-badge to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-button to v9.1.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-card to v9.0.0-beta.26 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-divider to v9.1.0 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-image to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-input to v9.1.1 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-label to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-link to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-menu to v9.2.0 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-popover to v9.1.1 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-provider to v9.1.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-radio to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-select to v9.0.0-beta.10 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-slider to v9.0.5 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-spinner to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-switch to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-tabs to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-table to v9.0.0-alpha.3 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-text to v9.1.1 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-textarea to v9.1.0 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-tooltip to v9.0.6 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests-react-components_v9.0.0-rc.0)
+
+Thu, 15 Sep 2022 09:50:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/vr-tests-react-components_v9.0.0-rc.0..@fluentui/vr-tests-react-components_v9.0.0-rc.0)
+
+### Patches
+
+- Bump @fluentui/react-accordion to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-avatar to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-badge to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-button to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-card to v9.0.0-beta.25 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-checkbox to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-divider to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-image to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-input to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-label to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-link to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-menu to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-popover to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-positioning to v9.2.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-provider to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-radio to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-select to v9.0.0-beta.9 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-slider to v9.0.4 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-spinner to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-switch to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tabs to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-table to v9.0.0-alpha.2 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-text to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-textarea to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-tooltip to v9.0.5 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-utilities to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/vr-tests-react-components_v9.0.0-rc.0)
 

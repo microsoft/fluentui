@@ -29,16 +29,6 @@ export type MenuItemSelectableProps = {
  */
 export type MenuItemSelectableState = MenuItemSelectableProps & {
   /**
-   * Checked items for a value with `name`
-   */
-  checkedItems: string[];
-
-  /**
-   * Callback when checked items changes for a given value with `name`
-   */
-  onCheckedValueChange: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
-
-  /**
    * Selectable is checked
    */
   checked: boolean;

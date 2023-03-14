@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  css,
   KeyCodes,
   classNamesFunction,
   divProperties,
@@ -315,6 +316,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       onRenderContainer = this._onRenderContainer,
       onRenderCaretDown = this._onRenderCaretDown,
       onRenderLabel = this._onRenderLabel,
+      onRenderItem = this._onRenderItem,
       hoisted: { selectedIndices },
     } = props;
     const { isOpen, calloutRenderEdge, hasFocus } = this.state;
@@ -332,11 +334,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const disabled = this._isDisabled();
 
     const errorMessageId = id + '-errorMessage';
-    const ariaActiveDescendant = disabled
-      ? undefined
-      : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
-      ? this._listId + selectedIndices[0]
-      : undefined;
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -349,7 +346,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       isRenderingPlaceholder: !selectedOptions.length,
       panelClassName: panelProps ? panelProps.className : undefined,
       calloutClassName: calloutProps ? calloutProps.className : undefined,
-      calloutRenderEdge: calloutRenderEdge,
+      calloutRenderEdge,
     });
 
     const hasErrorMessage: boolean = !!errorMessage && errorMessage.length > 0;
@@ -373,7 +370,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
-          aria-activedescendant={ariaActiveDescendant}
           aria-required={required}
           aria-disabled={disabled}
           aria-controls={isOpen ? this._listId : undefined}
@@ -402,7 +398,15 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           </span>
           <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
         </div>
-        {isOpen && onRenderContainer({ ...props, onDismiss: this._onDismiss }, this._onRenderContainer)}
+        {isOpen &&
+          onRenderContainer(
+            {
+              ...props,
+              onDismiss: this._onDismiss,
+              onRenderItem,
+            },
+            this._onRenderContainer,
+          )}
         {hasErrorMessage && (
           <div role="alert" id={errorMessageId} className={this._classNames.errorMessage}>
             {errorMessage}
@@ -792,6 +796,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     const { title } = item;
 
+    // define the id and label id (for multiselect checkboxes)
+    const id = this._listId + item.index;
+    const labelId = item.id ?? id + '-label';
+
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<
           ICheckboxStyleProps,
@@ -801,7 +809,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     return !this.props.multiSelect ? (
       <CommandButton
-        id={this._listId + item.index}
+        id={id}
         key={item.key}
         data-index={item.index}
         data-is-focusable={!item.disabled}
@@ -825,7 +833,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       </CommandButton>
     ) : (
       <Checkbox
-        id={this._listId + item.index}
+        id={id}
         key={item.key}
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
@@ -843,13 +851,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         label={item.text}
         title={title}
         // eslint-disable-next-line react/jsx-no-bind
-        onRenderLabel={this._onRenderItemLabel.bind(this, item)}
-        className={itemClassName}
+        onRenderLabel={this._onRenderItemLabel.bind(this, { ...item, id: labelId })}
+        className={css(itemClassName, 'is-multi-select')}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
         ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}
         ariaSetSize={!item.hidden ? this._sizePosCache.optionSetSize : undefined}
         ariaLabel={item.ariaLabel}
+        ariaLabelledBy={item.ariaLabel ? undefined : labelId}
       />
     );
   };
@@ -859,10 +868,22 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     return <span className={this._classNames.dropdownOptionText}>{item.text}</span>;
   };
 
-  /** Render custom label for drop down item */
+  /*
+   * Render content of a multiselect item label.
+   * Text within the label is aria-hidden, to prevent duplicate input/label exposure
+   */
+  private _onRenderMultiselectOption = (item: IDropdownOption): JSX.Element => {
+    return (
+      <span id={item.id} aria-hidden="true" className={this._classNames.dropdownOptionText}>
+        {item.text}
+      </span>
+    );
+  };
+
+  /** Render custom label for multiselect checkbox items */
   private _onRenderItemLabel = (item: IDropdownOption): JSX.Element | null => {
-    const { onRenderOption = this._onRenderOption } = this.props;
-    return onRenderOption(item, this._onRenderOption);
+    const { onRenderOption = this._onRenderMultiselectOption } = this.props;
+    return onRenderOption(item, this._onRenderMultiselectOption);
   };
 
   private _onPositioned = (positions?: ICalloutPositionedInfo): void => {

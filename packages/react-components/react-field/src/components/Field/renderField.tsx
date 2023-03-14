@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { FieldState, FieldSlots } from './Field.types';
+import type { FieldSlots, FieldState } from './Field.types';
 
 /**
  * Render the final JSX of Field
@@ -8,6 +8,17 @@ import type { FieldState, FieldSlots } from './Field.types';
 export const renderField_unstable = (state: FieldState) => {
   const { slots, slotProps } = getSlots<FieldSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slots.label && <slots.label {...slotProps.label} />}
+      {slotProps.root.children}
+      {slots.validationMessage && (
+        <slots.validationMessage {...slotProps.validationMessage}>
+          {slots.validationMessageIcon && <slots.validationMessageIcon {...slotProps.validationMessageIcon} />}
+          {slotProps.validationMessage.children}
+        </slots.validationMessage>
+      )}
+      {slots.hint && <slots.hint {...slotProps.hint} />}
+    </slots.root>
+  );
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { IComboBox, IComboBoxProps } from '../../ComboBox';
 
 /**
+ * {@docCategory TimePicker}
  * Range of start and end hours to be shown in the TimePicker.
  */
 export interface ITimeRange {
@@ -13,6 +14,7 @@ export interface ITimeRange {
 }
 
 /**
+ * {@docCategory TimePicker}
  * Localized strings to use in the TimePicker
  */
 export interface ITimePickerStrings {
@@ -20,6 +22,9 @@ export interface ITimePickerStrings {
   invalidInputErrorMessage: string;
 }
 
+/**
+ * {@docCategory TimePicker}
+ */
 export interface ITimePickerProps
   extends Omit<
     IComboBoxProps,

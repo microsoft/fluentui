@@ -1,8 +1,8 @@
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
-import { MenuItemSlots } from '../index';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { MenuItemSlots } from '../index';
 import type { MenuItemCheckboxState } from './MenuItemCheckbox.types';
 
 export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>> = {

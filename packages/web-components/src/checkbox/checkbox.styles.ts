@@ -16,8 +16,6 @@ import {
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  fillColor,
-  focusStrokeOuter,
   foregroundOnAccentRest,
   neutralFillInputAltActive,
   neutralFillInputAltFocus,
@@ -30,6 +28,7 @@ import {
   strokeWidth,
 } from '../design-tokens';
 import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentTight } from '../styles/focus';
 
 export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -55,7 +54,6 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
       border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
       background: ${neutralFillInputAltRest};
-      outline: none;
       cursor: pointer;
     }
 
@@ -107,9 +105,8 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
     }
 
     :host(:${focusVisible}) .control {
-      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
       background: ${neutralFillInputAltFocus};
-      border-color: ${focusStrokeOuter};
+      ${focusTreatmentTight}
     }
 
     :host(.checked) .control {
@@ -160,7 +157,7 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
         }
         :host(:${focusVisible}) .control {
           forced-color-adjust: none;
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
+          outline-color: ${SystemColors.FieldText};
           background: ${SystemColors.Field};
           border-color: ${SystemColors.Highlight};
         }
@@ -172,9 +169,6 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
         :host(.checked:not(.disabled):active) .control {
           background: ${SystemColors.HighlightText};
           border-color: ${SystemColors.Highlight};
-        }
-        :host(.checked:${focusVisible}) .control {
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
         }
         :host(.checked) slot[name='checked-indicator'],
         :host(.checked) slot[name='indeterminate-indicator'] {

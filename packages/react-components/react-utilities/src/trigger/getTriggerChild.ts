@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { isFluentTrigger } from './isFluentTrigger';
+import type { TriggerProps } from './types';
 
 /**
  * @internal
@@ -19,11 +20,22 @@ import { isFluentTrigger } from './isFluentTrigger';
  *   </Tooltip>
  * );
  * ```
+ *
+ * In the case where the immediate child is not a valid element,
+ * null is returned
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getTriggerChild = <P = any>(
-  children: React.ReactNode,
-): React.ReactElement<P> & { ref?: React.Ref<unknown> } => {
-  const child = React.Children.only(children) as React.ReactElement;
-  return isFluentTrigger(child) ? getTriggerChild(child.props.children) : child;
-};
+export function getTriggerChild<TriggerChildProps>(
+  children: TriggerProps<TriggerChildProps>['children'],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): (React.ReactElement<Partial<TriggerChildProps>> & { ref?: React.Ref<any> }) | null {
+  if (!React.isValidElement<TriggerChildProps>(children)) {
+    return null;
+  }
+  return isFluentTrigger(children)
+    ? getTriggerChild(
+        // FIXME: This casting should be unnecessary as isFluentTrigger is a guard type method,
+        // but for some reason it's failing on build
+        (children.props as TriggerProps).children,
+      )
+    : children;
+}

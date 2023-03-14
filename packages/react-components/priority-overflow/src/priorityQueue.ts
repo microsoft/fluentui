@@ -88,13 +88,14 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
   };
 
   const contains = (item: T) => {
-    return arr.indexOf(item) >= 0;
+    const index = arr.indexOf(item);
+    return index >= 0 && index < size;
   };
 
   const remove = (item: T) => {
     const i = arr.indexOf(item);
 
-    if (i === -1) {
+    if (i === -1 || i >= size) {
       return;
     }
 

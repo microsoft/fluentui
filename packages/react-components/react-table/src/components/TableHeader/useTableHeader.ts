@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { TableHeaderProps, TableHeaderState } from './TableHeader.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -14,9 +13,7 @@ import { useTableContext } from '../../contexts/tableContext';
  * @param ref - reference to root HTMLElement of TableHeader
  */
 export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<HTMLElement>): TableHeaderState => {
-  const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
-  const sortable = useTableContext(ctx => ctx.sortable);
-  const keyboardNavAttr = useArrowNavigationGroup({ axis: 'horizontal', circular: true });
+  const { noNativeElements } = useTableContext();
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'thead';
   return {
@@ -26,8 +23,8 @@ export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'rowgroup' : undefined,
-      ...(sortable && keyboardNavAttr),
       ...props,
     }),
+    noNativeElements,
   };
 };

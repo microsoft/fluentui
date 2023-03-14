@@ -1,0 +1,35 @@
+name: 'Build workspaces'
+description: 'Runs the build command for specific workspaces.'
+inputs:
+  # Because Github Actions doesn't support arrays as inputs we need to pass the workspaces as a string and split them
+  # by spaces https://github.com/community/community/discussions/11692
+  workspaces:
+    required: true
+    description: 'The workspaces you want to build. This parameter accepts multiple workspaces separated by a space.'
+  # This is based on the backfill cache provider options: https://github.com/microsoft/backfill#set-up-remote-cache
+  backfill-cache-provider:
+    required: false
+    description: 'The backfill cache provider'
+    default: 'azure-blob'
+  # Depending on the chosen cache provider there are multiple types of available options. In our case we use Azure Blob
+  # Storage. https://github.com/microsoft/backfill#microsoft-azure-blob-storage
+  backfill-cache-provider-options:
+    required: false
+    description: 'The backfill cache provider options'
+  # Flag to toggle backfill remote caching on / off
+  lage-write-remote-cache:
+    required: true
+    description: 'Whether to write to the remote cache'
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: build package dependency tree (scripts:build)
+      working-directory: .
+      shell: bash
+      run: yarn build --to ${{ inputs.workspaces }}
+      env:
+        BACKFILL_CACHE_PROVIDER: ${{ inputs.backfill-cache-provider }}
+        BACKFILL_CACHE_PROVIDER_OPTIONS: ${{ inputs.backfill-cache-provider-options }}
+        LAGE_WRITE_REMOTE_CACHE: ${{ inputs.lage-write-remote-cache }}

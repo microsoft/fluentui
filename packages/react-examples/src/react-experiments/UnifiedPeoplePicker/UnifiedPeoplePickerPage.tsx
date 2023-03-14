@@ -10,8 +10,10 @@ import { UnifiedPeoplePickerWithEditExample } from './UnifiedPeoplePicker.WithEd
 import { DoubleUnifiedPeoplePickerExample } from './DoubleUnifiedPeoplePicker.Example';
 
 const UnifiedPeoplePickerExampleCode = require('!raw-loader?esModule=false!./UnifiedPeoplePicker.Example') as string;
-const UnifiedPeoplePickerWithEditExampleCode = require('!raw-loader?esModule=false!./UnifiedPeoplePicker.WithEdit.Example') as string;
-const DoubleUnifiedPeoplePickerExampleCode = require('!raw-loader?esModule=false!./DoubleUnifiedPeoplePicker.Example') as string;
+const UnifiedPeoplePickerWithEditExampleCode =
+  require('!raw-loader?esModule=false!./UnifiedPeoplePicker.WithEdit.Example') as string;
+const DoubleUnifiedPeoplePickerExampleCode =
+  require('!raw-loader?esModule=false!./DoubleUnifiedPeoplePicker.Example') as string;
 
 export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

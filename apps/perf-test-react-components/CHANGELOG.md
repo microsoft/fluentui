@@ -1,8 +1,33 @@
 # Change Log - @fluentui/perf-test-react-components
 
-This log was last generated on Wed, 03 Aug 2022 16:04:10 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 20:55:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test-react-components_v9.0.0-rc.0)
+
+Tue, 20 Sep 2022 20:55:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test-react-components_v9.0.0-rc.0..@fluentui/perf-test-react-components_v9.0.0-rc.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.1.1 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-button to v9.1.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-provider to v9.1.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.2 ([PR #24869](https://github.com/microsoft/fluentui/pull/24869) by beachball)
+
+## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test-react-components_v9.0.0-rc.0)
+
+Thu, 15 Sep 2022 09:50:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test-react-components_v9.0.0-rc.0..@fluentui/perf-test-react-components_v9.0.0-rc.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-button to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-provider to v9.1.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-spinbutton to v9.0.1 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
+- Bump @fluentui/react-theme to v9.1.0 ([PR #24808](https://github.com/microsoft/fluentui/pull/24808) by beachball)
 
 ## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test-react-components_v9.0.0-rc.0)
 

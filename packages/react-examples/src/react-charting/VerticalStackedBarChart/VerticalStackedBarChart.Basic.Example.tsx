@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@fluentui/react-charting';
+import {
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  VerticalStackedBarChart,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -8,6 +13,7 @@ interface IVerticalStackedBarState {
   height: number;
   barGapMax: number;
   showLine: boolean;
+  hideLabels: boolean;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -18,6 +24,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       height: 350,
       showLine: true,
       barGapMax: 2,
+      hideLabels: false,
     };
   }
   public render(): JSX.Element {
@@ -33,6 +40,9 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
   private _onShowLineChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ showLine: checked });
+  };
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -188,6 +198,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -228,6 +240,12 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           onChange={this._onShowLineChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         <div style={rootStyle}>
           <VerticalStackedBarChart
             culture={window.navigator.language}
@@ -236,9 +254,11 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
             data={data}
             height={this.state.height}
             width={this.state.width}
+            lineOptions={lineOptions}
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>

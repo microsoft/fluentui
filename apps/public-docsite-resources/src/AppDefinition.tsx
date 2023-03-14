@@ -224,6 +224,13 @@ export const AppDefinition: IAppDefinition = {
               name: 'DetailsList - Keyboard Overrides',
               url: '#/examples/detailslist/keyboardoverrides',
             },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListProportionalColumnsPage')
+                .DetailsListProportionalColumnsPage,
+              key: 'DetailsList - Proportional Columns',
+              name: 'DetailsList - Proportional Columns',
+              url: '#/examples/detailslist/proportionalcolumns',
+            },
           ],
         },
         {
@@ -377,6 +384,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/pivot',
         },
         {
+          component: require<any>('./components/pages/PopupPage').PopupPage,
+          key: 'Popup',
+          name: 'Popup',
+          url: '#/examples/Popup',
+        },
+        {
           component: require<any>('./components/pages/ProgressIndicatorPage').ProgressIndicatorPage,
           key: 'ProgressIndicator',
           name: 'ProgressIndicator',
@@ -471,6 +484,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TextField',
           name: 'TextField',
           url: '#/examples/textfield',
+        },
+        {
+          component: require<any>('./components/pages/TimePickerPage').TimePickerPage,
+          key: 'TimePicker',
+          name: 'TimePicker',
+          url: '#/examples/timepicker',
         },
         {
           component: require<any>('./components/pages/TogglePage').TogglePage,

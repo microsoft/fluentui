@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { Dismiss24Regular } from '@fluentui/react-icons';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
+import { useDialogTitleInternalStyles } from './useDialogTitleStyles';
 
 /**
  * Create the state required to render DialogTitle.
@@ -15,25 +17,34 @@ import { Dismiss24Regular } from '@fluentui/react-icons';
  * @param ref - reference to root HTMLElement of DialogTitle
  */
 export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<HTMLElement>): DialogTitleState => {
-  const { as = 'div', closeButton } = props;
+  const { as, action } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
+  const internalStyles = useDialogTitleInternalStyles();
 
   return {
     components: {
       root: 'div',
-      closeButton: 'button',
+      action: 'div',
     },
-    root: getNativeElementProps(as, {
+    root: getNativeElementProps(as ?? 'div', {
       ref,
-      id: useDialogContext_unstable(ctx => ctx.dialogTitleID),
+      id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
       ...props,
     }),
-    closeButton: useARIAButtonShorthand(closeButton, {
+    action: resolveShorthand(action, {
       required: modalType === 'non-modal',
       defaultProps: {
-        type: 'button', // This is added because the default for type is 'submit'
-        'aria-label': 'close', // TODO: find a better way to add internal labels
-        children: <Dismiss24Regular />,
+        children: (
+          <DialogTrigger disableButtonEnhancement action="close">
+            <button
+              className={internalStyles.button}
+              // TODO: find a better way to add internal labels
+              aria-label="close"
+            >
+              <Dismiss24Regular />
+            </button>
+          </DialogTrigger>
+        ),
       },
     }),
   };

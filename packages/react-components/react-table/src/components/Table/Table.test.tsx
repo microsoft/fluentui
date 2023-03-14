@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Table } from './Table';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { TableProps } from './Table.types';
 import { TableRow } from '../TableRow/TableRow';
 import { TableCell } from '../TableCell/TableCell';
@@ -12,8 +12,6 @@ describe('Table', () => {
     Component: Table as React.FC<TableProps>,
     displayName: 'Table',
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(

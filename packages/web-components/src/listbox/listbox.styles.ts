@@ -8,10 +8,10 @@ import {
 import {
   controlCornerRadius,
   designUnit,
-  focusStrokeOuter,
   neutralStrokeRest,
   strokeWidth,
 } from '../design-tokens';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const listboxStyles: (
   context: ElementDefinitionContext,
@@ -24,7 +24,6 @@ export const listboxStyles: (
       box-sizing: border-box;
       flex-direction: column;
       padding: calc(${designUnit} * 1px) 0;
-      outline: none;
     }
 
     ::slotted(${context.tagFor(ListboxOption)}) {
@@ -32,7 +31,6 @@ export const listboxStyles: (
     }
 
     :host(:focus-within:not([disabled])) {
-      border-color: ${focusStrokeOuter};
-      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
+      ${focusTreatmentBase}
     }
   `

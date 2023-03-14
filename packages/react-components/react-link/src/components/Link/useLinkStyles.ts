@@ -10,7 +10,6 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    borderBottomColor: 'transparent',
     textDecorationColor: tokens.colorStrokeFocus2,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
@@ -18,12 +17,6 @@ const useStyles = makeStyles({
   // Common styles.
   root: {
     backgroundColor: 'transparent',
-    borderTopStyle: 'none',
-    borderLeftStyle: 'none',
-    borderRightStyle: 'none',
-    borderBottomColor: 'transparent',
-    borderBottomStyle: 'solid',
-    borderBottomWidth: tokens.strokeWidthThin,
     boxSizing: 'border-box',
     color: tokens.colorBrandForegroundLink,
     cursor: 'pointer',
@@ -36,18 +29,23 @@ const useStyles = makeStyles({
     ...shorthands.overflow('inherit'),
     textAlign: 'left',
     textDecorationLine: 'none',
+    textDecorationThickness: tokens.strokeWidthThin,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
-      borderBottomColor: tokens.colorBrandForegroundLinkHover,
+      textDecorationLine: 'underline',
       color: tokens.colorBrandForegroundLinkHover,
     },
 
     ':active': {
-      borderBottomColor: tokens.colorBrandForegroundLinkPressed,
+      textDecorationLine: 'underline',
       color: tokens.colorBrandForegroundLinkPressed,
     },
+  },
+  // Overrides when the Link renders as a button.
+  button: {
+    ...shorthands.borderStyle('none'),
   },
   // Overrides when an href is present so the Link renders as an anchor.
   href: {
@@ -58,36 +56,32 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
-      borderBottomColor: tokens.colorNeutralForeground2Hover,
+      textDecorationLine: 'underline',
       color: tokens.colorNeutralForeground2Hover,
     },
 
     ':active': {
-      borderBottomColor: tokens.colorNeutralForeground2Pressed,
+      textDecorationLine: 'underline',
       color: tokens.colorNeutralForeground2Pressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
   inline: {
-    borderBottomColor: tokens.colorBrandForegroundLink,
-  },
-  // Overrides when the Link is rendered inline within text and appears subtle.
-  inlineSubtle: {
-    borderBottomColor: tokens.colorNeutralForeground2,
+    textDecorationLine: 'underline',
   },
   // Overrides when the Link is disabled.
   disabled: {
-    borderBottomColor: 'transparent',
+    textDecorationLine: 'none',
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
-      borderBottomColor: 'transparent',
+      textDecorationLine: 'none',
       color: tokens.colorNeutralForegroundDisabled,
     },
 
     ':active': {
-      borderBottomColor: 'transparent',
+      textDecorationLine: 'none',
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
@@ -102,9 +96,9 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     styles.root,
     styles.focusIndicator,
     root.as === 'a' && root.href && styles.href,
+    root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
     inline && styles.inline,
-    appearance === 'subtle' && inline && styles.inlineSubtle,
     disabled && styles.disabled,
     state.root.className,
   );

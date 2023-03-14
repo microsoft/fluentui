@@ -2,10 +2,9 @@
 
 exports[`DialogTrigger renders a default state 1`] = `
 <button
-  aria-haspopup="dialog"
+  aria-expanded={false}
   data-tabster="{\\"deloser\\":{}}"
   onClick={[Function]}
-  onKeyDown={[Function]}
 >
   Dialog trigger
 </button>

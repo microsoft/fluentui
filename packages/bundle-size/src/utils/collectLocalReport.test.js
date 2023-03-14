@@ -16,9 +16,6 @@ jest.mock('glob', () => ({
 
 const collectLocalReport = require('./collectLocalReport');
 
-/**
- * @return {string}
- */
 function mkPackagesDir() {
   const projectDir = tmp.dirSync({ prefix: 'collectLocalReport', unsafeCleanup: true });
   const packagesDir = tmp.dirSync({ dir: projectDir.name, name: 'packages', unsafeCleanup: true });
@@ -28,10 +25,7 @@ function mkPackagesDir() {
   const spy = jest.spyOn(process, 'cwd');
   spy.mockReturnValue(projectDir.name);
 
-  // is required as root directory is determined based on Git project
-  tmp.dirSync({ dir: projectDir.name, name: '.git', unsafeCleanup: true });
-
-  return packagesDir.name;
+  return { packagesDir: packagesDir.name, rootDir: projectDir.name };
 }
 
 /**
@@ -53,7 +47,7 @@ describe('collectLocalReport', () => {
   });
 
   it('aggregates all local reports to a single one', async () => {
-    const packagesDir = mkPackagesDir();
+    const { packagesDir, rootDir } = mkPackagesDir();
 
     const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-a', unsafeCleanup: true }).name);
     const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-b', unsafeCleanup: true }).name);
@@ -75,7 +69,7 @@ describe('collectLocalReport', () => {
     await fs.writeFile(reportBPath, JSON.stringify(reportB));
     await fs.writeFile(reportCPath, JSON.stringify(reportC));
 
-    expect(await collectLocalReport()).toMatchInlineSnapshot(`
+    expect(await collectLocalReport({ root: rootDir })).toMatchInlineSnapshot(`
       Array [
         Object {
           "gzippedSize": 50,
@@ -110,7 +104,7 @@ describe('collectLocalReport', () => {
   });
 
   it('throws an error if a report file contains invalid JSON', async () => {
-    const packagesDir = mkPackagesDir();
+    const { packagesDir, rootDir } = mkPackagesDir();
 
     const reportAPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-a', unsafeCleanup: true }).name);
     const reportBPath = mkReportDir(tmp.dirSync({ dir: packagesDir, name: 'package-b', unsafeCleanup: true }).name);
@@ -127,6 +121,6 @@ describe('collectLocalReport', () => {
     await fs.writeFile(reportBPath, JSON.stringify(reportB));
     await fs.writeFile(reportCPath, JSON.stringify(reportC));
 
-    await expect(collectLocalReport()).rejects.toThrow(/Failed to read JSON/);
+    await expect(collectLocalReport({ root: rootDir })).rejects.toThrow(/Failed to read JSON/);
   });
 });

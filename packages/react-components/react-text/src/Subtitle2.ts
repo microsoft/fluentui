@@ -1,1 +1,1 @@
-export * from './components/Subtitle2/index';
+export * from './components/presets/Subtitle2/index';

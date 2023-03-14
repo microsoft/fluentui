@@ -51,13 +51,11 @@ exports[`TagItem accepts title override 1`] = `
       &:hover .ms-TagItem-close {
         color: #323130;
       }
-      &:focus-within {
-        background: #0078d4;
-        color: #ffffff;
-      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border: 1px solid WindowText;
       }
+  data-selection-index={0}
+  onClick={[Function]}
   role="listitem"
 >
   <span
@@ -153,12 +151,15 @@ exports[`TagItem accepts title override 1`] = `
           background-color: #005a9e;
           color: #ffffff;
         }
+        .is-selected & {
+          background: #0078d4;
+          color: #ffffff;
+        }
         &:focus:hover {
           background: #005a9e;
           color: #ffffff;
         }
     data-is-focusable={true}
-    data-selection-index={0}
     id="id__0"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -276,13 +277,11 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
       &:hover .ms-TagItem-close {
         color: #323130;
       }
-      &:focus-within {
-        background: #0078d4;
-        color: #ffffff;
-      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border: 1px solid WindowText;
       }
+  data-selection-index={0}
+  onClick={[Function]}
   role="listitem"
 >
   <span
@@ -402,12 +401,15 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           background-color: #005a9e;
           color: #ffffff;
         }
+        .is-selected & {
+          background: #0078d4;
+          color: #ffffff;
+        }
         &:focus:hover {
           background: #005a9e;
           color: #ffffff;
         }
     data-is-focusable={true}
-    data-selection-index={0}
     id="id__0"
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -525,13 +527,11 @@ exports[`TagItem renders correctly 1`] = `
       &:hover .ms-TagItem-close {
         color: #323130;
       }
-      &:focus-within {
-        background: #0078d4;
-        color: #ffffff;
-      }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         border: 1px solid WindowText;
       }
+  data-selection-index={0}
+  onClick={[Function]}
   role="listitem"
 >
   <span
@@ -627,12 +627,15 @@ exports[`TagItem renders correctly 1`] = `
           background-color: #005a9e;
           color: #ffffff;
         }
+        .is-selected & {
+          background: #0078d4;
+          color: #ffffff;
+        }
         &:focus:hover {
           background: #005a9e;
           color: #ffffff;
         }
     data-is-focusable={true}
-    data-selection-index={0}
     id="id__0"
     onClick={[Function]}
     onKeyDown={[Function]}

@@ -235,6 +235,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           ':hover': {
             color: v.textColorDisabled,
           },
+          ':active': {
+            color: v.textColorDisabled,
+          },
         }),
 
         ...(!p.text && {
@@ -295,19 +298,9 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
       width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
       height: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
     },
-    [`& .${loaderSlotClassNames.svg}`]: {
-      ':before': {
-        animationName: {
-          to: {
-            transform: `translate3d(0, ${
-              p.size === 'small' ? v.sizeSmallLoaderSvgAnimationHeight : v.loaderSvgAnimationHeight
-            }, 0)`,
-          },
-        },
-        borderWidth: p.size === 'small' ? v.sizeSmallLoaderBorderSize : v.loaderBorderSize,
-        width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
-        height: p.size === 'small' ? v.sizeSmallLoaderSvgHeight : v.loaderSvgHeight,
-      },
+    [`& .${loaderSlotClassNames.indicator} > svg`]: {
+      width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
+      height: p.size === 'small' ? v.sizeSmallLoaderSvgHeight : v.loaderSvgHeight,
     },
 
     ...(p.hasContent && {

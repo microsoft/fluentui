@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { useFocusVisible, useFocusWithin } from '@fluentui/react-tabster';
 import type { TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
+import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 /**
  * Create the state required to render TableRow.
@@ -13,19 +15,24 @@ import { useTableContext } from '../../contexts/tableContext';
  * @param ref - reference to root HTMLElement of TableRow
  */
 export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLElement>): TableRowState => {
-  const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
-  const size = useTableContext(ctx => ctx.size);
+  const { noNativeElements, size } = useTableContext();
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'tr';
+  const focusVisibleRef = useFocusVisible();
+  const focusWithinRef = useFocusWithin();
+  const isHeaderRow = useIsInTableHeader();
 
   return {
     components: {
       root: rootComponent,
     },
     root: getNativeElementProps(rootComponent, {
-      ref,
+      ref: useMergedRefs(ref, focusVisibleRef, focusWithinRef),
       role: rootComponent === 'div' ? 'row' : undefined,
       ...props,
     }),
     size,
+    noNativeElements,
+    appearance: props.appearance ?? 'none',
+    isHeaderRow,
   };
 };

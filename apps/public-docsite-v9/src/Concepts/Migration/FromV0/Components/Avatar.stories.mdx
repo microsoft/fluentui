@@ -1,0 +1,192 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Avatar Migration" />
+
+# Avatar Migration
+
+## Overview:
+
+Before:
+
+```tsx
+import { Avatar } from '@fluentui/react-northstar';
+const Component = () => <Avatar />;
+```
+
+After:
+
+```tsx
+import { Avatar } from '@fluentui/react-components';
+const Component = () => <Avatar />;
+```
+
+## How to migrate props:
+
+| Avatar props              | migrate guide                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                            |
+| variables, design, styles | see Migrate style overrides in this document                                                             |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migrating-from-v0-custom-accessibility--page) |
+| key, ref                  | keep it as is                                                                                            |
+| getInitials               | use `initials` prop instead                                                                              |
+| icon                      | keep it as is                                                                                            |
+| image                     | see Migrate image prop in this document                                                                  |
+| label                     | use `initials` prop instead                                                                              |
+| name                      | keep it as is                                                                                            |
+| size                      | see Migrate size prop in this document                                                                   |
+| square                    | replace with `shape="square"`                                                                            |
+| status                    | see Migrate status prop in this document                                                                 |
+
+---
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Avatar } from '@fluentui/react-northstar';
+
+export const Component = () => <Avatar variables={{ isCustomVariable: true }} />;
+
+// in avatar-styles.ts
+export const avatarStyles = {
+  root: ({ variables: { isCustomVariable } }) => ({
+    ...(isCustomVariable && {
+      ':focus': {
+        outlineColor: colorSchemeBrand.borderFocus,
+      },
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Avatar } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <Avatar className={classes.customAvatar} />;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  customAvatar: {
+    ':focus': {
+      outlineColor: tokens.colorNeutralBackground3Pressed,
+    },
+  },
+});
+```
+
+## Migrate `image` prop
+
+To migrate `image` prop use following object structure:
+
+Before:
+
+```tsx
+import { Avatar } from '@fluentui/react-northstar';
+const Component = () => (
+  <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" />
+);
+```
+
+After:
+
+```tsx
+import { Avatar } from '@fluentui/react-components';
+const Component = () => (
+  <Avatar
+    image={{
+      alt: 'profile image',
+      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+    }}
+  />
+);
+```
+
+## Migrate `size` prop
+
+Introduced new size values:
+
+| Value before | Value after |
+| ------------ | ----------- |
+| smallest     | 20          |
+| smaller      | 24          |
+| small        | 28          |
+| medium       | 32          |
+| large        | 64          |
+| largest      | 96          |
+
+Before:
+
+```tsx
+import { Avatar } from '@fluentui/react-northstar';
+const Component = () => <Avatar size="small" />;
+```
+
+After:
+
+```tsx
+import { Avatar } from '@fluentui/react-components';
+const Component = () => <Avatar size={28} />;
+```
+
+## Migrate `status` prop
+
+`status` property was replaced with `badge` property.
+There were introduced simplified status indicators:
+`busy`, `outOfOffice`, `away`, `available`, `offline`, `doNotDisturb`.
+
+Before:
+
+```tsx
+import { Avatar } from '@fluentui/react-northstar';
+const Component = () => (
+  <Avatar
+    status={{
+      color: 'green',
+      icon: <AcceptIcon />,
+      title: 'Available',
+    }}
+  />
+);
+```
+
+After:
+
+```tsx
+import { Avatar } from '@fluentui/react-components';
+const Component = () => (
+  <Avatar
+    badge={{
+      status: 'available',
+    }}
+  />
+);
+```
+
+All status indicators can be used with `outOfOffice` property:
+
+```tsx
+import { Avatar } from '@fluentui/react-components';
+const Component = () => (
+  <Avatar
+    badge={{
+      outOfOffice: true,
+      status: 'busy',
+    }}
+  />
+);
+```

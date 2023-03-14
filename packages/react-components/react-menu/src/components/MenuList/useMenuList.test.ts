@@ -39,7 +39,7 @@ describe('useMenuList_unstable', () => {
 
     // Act
     const { result } = renderHook(() => useMenuList_unstable({ defaultCheckedValues }, null));
-    act(() => result.current.selectRadio(({} as unknown) as React.MouseEvent, 'foo', '2', false));
+    act(() => result.current.selectRadio({} as unknown as React.MouseEvent, 'foo', '2', false));
 
     // Assert
     expect(result.current.checkedValues).toEqual(expectedCheckedValues);
@@ -106,7 +106,7 @@ describe('useMenuList_unstable', () => {
       const { result } = renderHook(() =>
         useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: undefined }, null),
       );
-      act(() => result.current.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, false));
+      act(() => result.current.toggleCheckbox({} as unknown as React.MouseEvent, name, value, false));
 
       // Assert
       expect(result.current.checkedValues).toEqual({ [name]: [value] });
@@ -122,16 +122,21 @@ describe('useMenuList_unstable', () => {
       const name = 'test';
       const value = '1';
 
+      const handleCheckedValueChange = jest.fn();
+
       // Act
       const { result } = renderHook(() =>
-        useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
+        useMenuList_unstable(
+          { onCheckedValueChange: handleCheckedValueChange, checkedValues: { [name]: checkedItems } },
+          null,
+        ),
       );
       const state = result.current;
-      act(() => state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked));
+      act(() => state.toggleCheckbox({} as unknown as React.MouseEvent, name, value, checked));
 
       // Assert
-      expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+      expect(handleCheckedValueChange).toHaveBeenCalledTimes(1);
+      expect(handleCheckedValueChange).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({ name, checkedItems: expectedResult }),
       );
@@ -163,16 +168,22 @@ describe('useMenuList_unstable', () => {
       // Arrange
       const name = 'test';
       const value = '1';
+
+      const handleCheckedValueChange = jest.fn();
+
       // Act
       const { result } = renderHook(() =>
-        useMenuList_unstable({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
+        useMenuList_unstable(
+          { onCheckedValueChange: handleCheckedValueChange, checkedValues: { [name]: checkedItems } },
+          null,
+        ),
       );
       const state = result.current;
-      act(() => state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true));
+      act(() => state.selectRadio({} as unknown as React.MouseEvent, name, value, true));
 
       // Assert
-      expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-      expect(state.onCheckedValueChange).toHaveBeenCalledWith(
+      expect(handleCheckedValueChange).toHaveBeenCalledTimes(1);
+      expect(handleCheckedValueChange).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({ name, checkedItems: expectedResult }),
       );

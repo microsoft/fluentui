@@ -8,9 +8,6 @@ export type Context<Value> = React.Context<Value> & {
   Consumer: never;
 };
 
-/**
- * @internal
- */
 export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedValue;
 
 /**

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { FocusRects, FocusRectsProvider } from './useFocusRects';
+import { FocusRects } from './useFocusRects';
+import { FocusRectsProvider } from './FocusRectsProvider';
 import { IsFocusHiddenClassName, IsFocusVisibleClassName } from './setFocusVisibility';
 import { KeyCodes } from './KeyCodes';
 import { addDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
@@ -69,7 +70,7 @@ describe('useFocusRects', () => {
       defaultView: mockWindow,
     },
   };
-  const mockRefObject = ({ current: mockTarget } as unknown) as React.RefObject<HTMLElement>;
+  const mockRefObject = { current: mockTarget } as unknown as React.RefObject<HTMLElement>;
 
   const mockWindow2 = new MockWindow();
   const mockTarget2 = {
@@ -77,7 +78,7 @@ describe('useFocusRects', () => {
       defaultView: mockWindow2,
     },
   };
-  const mockRefObject2 = ({ current: mockTarget2 } as unknown) as React.RefObject<HTMLElement>;
+  const mockRefObject2 = { current: mockTarget2 } as unknown as React.RefObject<HTMLElement>;
 
   beforeEach(() => {
     mockWindow.reset();
@@ -361,7 +362,7 @@ describe('useFocusRects', () => {
       rootRef?: React.RefObject<HTMLElement>;
     }> = ({ providerRef, rootRef }) => {
       return (
-        <FocusRectsProvider value={{ providerRef }}>
+        <FocusRectsProvider providerRef={providerRef}>
           <MockProvider ref={providerRef}>
             <FocusRects rootRef={rootRef} />
           </MockProvider>

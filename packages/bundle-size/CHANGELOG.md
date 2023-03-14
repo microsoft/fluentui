@@ -1,8 +1,26 @@
 # Change Log - @fluentui/bundle-size
 
-This log was last generated on Thu, 12 May 2022 07:41:44 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Nov 2022 07:55:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.2.0)
+
+Thu, 10 Nov 2022 07:55:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.7..@fluentui/bundle-size_v1.2.0)
+
+### Minor changes
+
+- fix(typings): fix type errors exposed by node 14 typings ([PR #25510](https://github.com/microsoft/fluentui/pull/25510) by martinhochel@microsoft.com)
+
+## [1.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.7)
+
+Wed, 28 Sep 2022 07:37:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/bundle-size_v1.1.6..@fluentui/bundle-size_v1.1.7)
+
+### Patches
+
+- fix: bump workspace-tools and add options to collectLocalReport api ([PR #24891](https://github.com/microsoft/fluentui/pull/24891) by martinhochel@microsoft.com)
 
 ## [1.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/bundle-size_v1.1.6)
 

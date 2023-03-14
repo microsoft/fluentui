@@ -62,7 +62,8 @@ const HIDE_ICON_NAME = 'Hide';
 
 export class TextFieldBase
   extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
-  implements ITextField {
+  implements ITextField
+{
   public static defaultProps: ITextFieldProps = {
     resizable: true,
     deferredValidationTime: 200,
@@ -672,7 +673,7 @@ function _browserNeedsRevealButton() {
 
     if (win?.navigator) {
       // Edge, Chromium Edge
-      const isEdge = /^Edg/.test(win.navigator.userAgent || '');
+      const isEdge = /Edg/.test(win.navigator.userAgent || '');
 
       __browserNeedsRevealButton = !(isIE11() || isEdge);
     } else {

@@ -24,6 +24,7 @@ import {
   htmlElementProperties,
   getNativeProps,
   timeProperties,
+  dialogProperties,
 } from './properties';
 
 const nativeElementMap: Record<string, Record<string, number>> = {
@@ -49,6 +50,7 @@ const nativeElementMap: Record<string, Record<string, number>> = {
   iframe: iframeProperties,
   img: imgProperties,
   time: timeProperties,
+  dialog: dialogProperties,
 };
 
 /**
@@ -80,7 +82,7 @@ export function getNativeElementProps<TAttributes extends React.HTMLAttributes<a
  */
 export const getPartitionedNativeProps = <
   Props extends Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>,
-  ExcludedPropKeys extends Extract<keyof Props, string> = never
+  ExcludedPropKeys extends Extract<keyof Props, string> = never,
 >({
   primarySlotTagName,
   props,

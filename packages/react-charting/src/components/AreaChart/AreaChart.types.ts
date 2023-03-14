@@ -15,7 +15,7 @@ import {
   IChildProps,
 } from '../CommonComponents/CartesianChart.types';
 
-export { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
+export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
 export interface IAreaChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

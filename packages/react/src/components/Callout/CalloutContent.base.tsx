@@ -421,6 +421,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
+      popupProps,
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
@@ -522,6 +523,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            {...popupProps}
           >
             {children}
           </Popup>

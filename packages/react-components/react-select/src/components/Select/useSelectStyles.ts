@@ -15,20 +15,41 @@ const iconSizes = {
   large: '24px',
 };
 
-// TODO: This 400 style is not in the typography styles.
-// May need a design change
-const contentSizes = {
-  400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-};
-
 //TODO: Should fieldHeights be a set of global design tokens or constants?
 const fieldHeights = {
   small: '24px',
   medium: '32px',
   large: '40px',
+};
+
+/* Since the <select> element must span the full width and cannot have children,
+ * the right padding needs to be calculated from the sum of the following:
+ * 1. Field padding-right
+ * 2. Icon width
+ * 3. Content-icon spacing
+ * 4. Content inner padding
+ */
+const paddingRight = {
+  small: `calc(${tokens.spacingHorizontalSNudge}
+    + ${iconSizes.small}
+    + ${tokens.spacingHorizontalXXS}
+    + ${tokens.spacingHorizontalXXS})`,
+  medium: `calc(${tokens.spacingHorizontalMNudge}
+    + ${iconSizes.medium}
+    + ${tokens.spacingHorizontalXXS}
+    + ${tokens.spacingHorizontalXXS})`,
+  large: `calc(${tokens.spacingHorizontalM}
+    + ${iconSizes.large}
+    + ${tokens.spacingHorizontalSNudge}
+    + ${tokens.spacingHorizontalSNudge})`,
+};
+
+/* Left padding is calculated from the outer padding + inner content padding values
+ * since <select> can't have additional child content or custom inner layout */
+const paddingLeft = {
+  small: `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+  medium: `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+  large: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
 };
 
 /* end of shared values */
@@ -91,7 +112,11 @@ const useSelectStyles = makeStyles({
     boxShadow: 'none',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
+    cursor: 'pointer',
     flexGrow: 1,
+    maxWidth: '100%',
+    paddingBottom: 0,
+    paddingTop: 0,
 
     ':focus': {
       outlineWidth: '2px',
@@ -101,32 +126,54 @@ const useSelectStyles = makeStyles({
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
     },
   },
+  disabledUnderline: {
+    ...shorthands.borderColor(
+      tokens.colorTransparentStrokeDisabled,
+      tokens.colorTransparentStrokeDisabled,
+      tokens.colorNeutralStrokeDisabled,
+    ),
+  },
+
   small: {
     height: fieldHeights.small,
-    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    paddingLeft: paddingLeft.small,
+    paddingRight: paddingRight.small,
     ...typographyStyles.caption1,
   },
   medium: {
     height: fieldHeights.medium,
-    ...shorthands.padding('0', tokens.spacingHorizontalMNudge),
+    paddingLeft: paddingLeft.medium,
+    paddingRight: paddingRight.medium,
     ...typographyStyles.body1,
   },
   large: {
     height: fieldHeights.large,
-    ...shorthands.padding('0', tokens.spacingHorizontalM),
-    ...contentSizes[400],
+    paddingLeft: paddingLeft.large,
+    paddingRight: paddingRight.large,
+    ...typographyStyles.body2,
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  },
+  outlineInteractive: {
+    '&:hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    '&:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -139,6 +186,16 @@ const useSelectStyles = makeStyles({
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -147,7 +204,6 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     position: 'absolute',
-    right: tokens.spacingHorizontalMNudge,
     pointerEvents: 'none',
 
     // the SVG must have display: block for accurate positioning
@@ -165,22 +221,19 @@ const useIconStyles = makeStyles({
   small: {
     fontSize: iconSizes.small,
     height: iconSizes.small,
-    paddingRight: tokens.spacingHorizontalSNudge,
-    paddingLeft: tokens.spacingHorizontalXXS,
+    right: tokens.spacingHorizontalSNudge,
     width: iconSizes.small,
   },
   medium: {
     fontSize: iconSizes.medium,
     height: iconSizes.medium,
-    paddingRight: tokens.spacingHorizontalM,
-    paddingLeft: tokens.spacingHorizontalXXS,
+    right: tokens.spacingHorizontalMNudge,
     width: iconSizes.medium,
   },
   large: {
     fontSize: iconSizes.large,
     height: iconSizes.large,
-    paddingRight: tokens.spacingHorizontalM,
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    right: tokens.spacingHorizontalM,
     width: iconSizes.large,
   },
 });
@@ -191,6 +244,7 @@ const useIconStyles = makeStyles({
 export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   const { size, appearance } = state;
   const disabled = state.select.disabled;
+  const invalid = `${state.select['aria-invalid']}` === 'true';
 
   const iconStyles = useIconStyles();
   const rootStyles = useRootStyles();
@@ -203,7 +257,11 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
     selectStyles.base,
     selectStyles[size],
     selectStyles[appearance],
+    !disabled && appearance === 'outline' && selectStyles.outlineInteractive,
+    !disabled && invalid && appearance !== 'underline' && selectStyles.invalid,
+    !disabled && invalid && appearance === 'underline' && selectStyles.invalidUnderline,
     disabled && selectStyles.disabled,
+    disabled && appearance === 'underline' && selectStyles.disabledUnderline,
     state.select.className,
   );
 

@@ -41,7 +41,7 @@ const ITEMS: { name: string; activity: string }[] = [
 interface IDocumentTileWithThumbnailProps {
   originalImageSize: ISize;
   showForeground: boolean;
-  item: typeof ITEMS[0];
+  item: (typeof ITEMS)[0];
 }
 
 const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
@@ -142,7 +142,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
             itemActivity={<SignalField before={<SharedSignal />}>{ITEMS[3].activity}</SignalField>}
             foreground={
               <img
-                src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/64/docx.svg`}
+                src={`https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/item-types/64/docx.svg`}
                 style={{
                   display: 'block',
                   width: '64px',

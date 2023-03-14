@@ -139,7 +139,14 @@ export const libraryInfo: LibraryInfo = {
         {
           name: 'react-dialog',
           newColumn: true,
-          codeItems: [{ name: 'Dialog', componentType: 'component' }],
+          codeItems: [
+            { name: 'Dialog', componentType: 'component' },
+            { name: 'DialogTrigger', componentType: 'component' },
+            { name: 'DialogSurface', componentType: 'component' },
+            { name: 'DialogTitle', componentType: 'component' },
+            { name: 'DialogBody', componentType: 'component' },
+            { name: 'DialogActions', componentType: 'component' },
+          ],
         },
         {
           name: 'react-popover',

@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
@@ -10,6 +15,7 @@ interface IVerticalChartState {
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  hideLabels: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -25,6 +31,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      hideLabels: false,
     };
   }
 
@@ -48,6 +55,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   };
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ useSingleColor: checked });
+  };
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -142,6 +152,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         },
       },
     ];
+
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -173,6 +186,12 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         <div style={rootStyle}>
           <VerticalBarChart
             culture={window.navigator.language}
@@ -183,12 +202,14 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             height={this.state.height}
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
+            lineOptions={lineOptions}
             {...(this.state.isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IVerticalBarChartDataPoint,
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>

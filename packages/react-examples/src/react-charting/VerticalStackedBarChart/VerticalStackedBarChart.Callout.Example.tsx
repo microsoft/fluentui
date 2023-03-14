@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalStackedBarChart, IVSChartDataPoint, IVerticalStackedChartProps } from '@fluentui/react-charting';
+import {
+  VerticalStackedBarChart,
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
@@ -18,6 +23,7 @@ interface IVerticalStackedBarState {
   selectedCallout: 'singleCallout' | 'MultiCallout' | 'MultiCustomCallout' | 'singleCustomCallout';
   showLine: boolean;
   barGapMax: number;
+  barWidth: number;
 }
 
 export class VerticalStackedBarChartCalloutExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -29,6 +35,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
       barGapMax: 2,
       showLine: true,
       selectedCallout: 'MultiCallout',
+      barWidth: 16,
     };
   }
   public render(): JSX.Element {
@@ -185,6 +192,8 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -219,6 +228,17 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
           onChange={e => this.setState({ barGapMax: +e.target.value })}
           aria-valuetext={`ChangebarGapMaxSlider${this.state.barGapMax}`}
         />
+        <label htmlFor="barWidthSlider">BarWidth:</label>
+        <input
+          type="range"
+          value={this.state.barWidth}
+          min={1}
+          max={50}
+          id="barWidthSlider"
+          onChange={e => this.setState({ barWidth: +e.target.value })}
+          aria-valuetext={`BarWidthSlider${this.state.barWidth}`}
+        />
+        <span>{this.state.barWidth}</span>
         <ChoiceGroup
           options={options}
           selectedKey={this.state.selectedCallout}
@@ -239,6 +259,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             height={this.state.height}
             width={this.state.width}
             yAxisTickCount={10}
+            lineOptions={lineOptions}
             isCalloutForStack={
               this.state.selectedCallout === 'MultiCallout' || this.state.selectedCallout === 'MultiCustomCallout'
             }
@@ -269,6 +290,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
               },
             })}
             allowHoverOnLegend={false}
+            barWidth={this.state.barWidth}
           />
         </div>
       </>

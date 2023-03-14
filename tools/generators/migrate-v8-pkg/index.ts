@@ -10,7 +10,6 @@ import {
   joinPathFragments,
   ProjectConfiguration,
 } from '@nrwl/devkit';
-import { fileExists } from '@nrwl/tao/src/utils/app-root';
 
 import { printStats } from '../print-stats';
 

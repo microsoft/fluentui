@@ -10,7 +10,7 @@ export const PivotPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <ControlsAreaPage
       {...props}
-      {...PivotPageProps[props.platform]}
+      {...PivotPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );

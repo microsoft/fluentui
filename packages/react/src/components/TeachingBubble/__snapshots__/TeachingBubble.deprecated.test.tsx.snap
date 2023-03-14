@@ -121,12 +121,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             & > * {
               text-overflow: ellipsis;
             }
-            & > *:not(:first-child) {
-              margin-left: 0px;
-            }
-            & > *:not(.ms-StackItem) {
-              flex-shrink: 1;
-            }
             & .ms-Button:not(:first-child) {
               margin-left: 10px;
             }

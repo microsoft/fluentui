@@ -72,11 +72,6 @@ export interface ICalendarStrings extends IDateFormatting {
   isOutOfBoundsErrorMessage?: string;
 
   /**
-   * String to render for button to direct the user to today's date.
-   */
-  goToToday: string;
-
-  /**
    * Title for button to open the calendar.
    */
   openCalendarTitle: string;

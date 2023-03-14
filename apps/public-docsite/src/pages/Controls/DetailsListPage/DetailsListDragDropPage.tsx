@@ -17,7 +17,7 @@ export const DetailsListDragDropPage: React.FunctionComponent<IControlsPageProps
   });
   return (
     <div className={className}>
-      <ControlsAreaPage {...props} {...DetailsListDragDropPageProps[props.platform]} />;
+      <ControlsAreaPage {...props} {...DetailsListDragDropPageProps[props.platform!]} />;
     </div>
   );
 };

@@ -43,6 +43,17 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).toHaveTextContent('');
     });
 
+    it('value is cleared at Icon enter press', () => {
+      const { triggerButtonNode, keyDownOnClearIndicator } = renderDropdown({
+        clearable: true,
+        defaultValue: items[0],
+      });
+
+      keyDownOnClearIndicator('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+    });
+
     it('calls onChange on Icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const { clickOnClearIndicator } = renderDropdown({
@@ -85,6 +96,25 @@ describe('Dropdown', () => {
 
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
       expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
+    });
+
+    it('is not visible when an empty array is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        multiple: true,
+        value: [],
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
+
+    it('is not visible when an empty string is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        value: '',
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
     });
   });
 
@@ -991,17 +1021,13 @@ describe('Dropdown', () => {
 
     it('is set correctly in multiple selection by using Tab on highlighted item', () => {
       const itemSelectedIndex = 3;
-      const {
-        triggerButtonNode,
-        keyDownOnItemsList,
-        getSelectedItemNodeAtIndex,
-        getSelectedItemNodes,
-      } = renderDropdown({
-        defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex,
-        defaultValue: items[4],
-        multiple: true,
-      });
+      const { triggerButtonNode, keyDownOnItemsList, getSelectedItemNodeAtIndex, getSelectedItemNodes } =
+        renderDropdown({
+          defaultOpen: true,
+          defaultHighlightedIndex: itemSelectedIndex,
+          defaultValue: items[4],
+          multiple: true,
+        });
 
       keyDownOnItemsList('Tab');
 
@@ -1013,17 +1039,13 @@ describe('Dropdown', () => {
 
     it('is set correctly in multiple selection by using Shift+Tab on highlighted item', () => {
       const itemSelectedIndex = 2;
-      const {
-        triggerButtonNode,
-        keyDownOnItemsList,
-        getSelectedItemNodeAtIndex,
-        getSelectedItemNodes,
-      } = renderDropdown({
-        defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex,
-        defaultValue: items[4],
-        multiple: true,
-      });
+      const { triggerButtonNode, keyDownOnItemsList, getSelectedItemNodeAtIndex, getSelectedItemNodes } =
+        renderDropdown({
+          defaultOpen: true,
+          defaultHighlightedIndex: itemSelectedIndex,
+          defaultValue: items[4],
+          multiple: true,
+        });
 
       keyDownOnItemsList('Tab', { shiftKey: true });
 
@@ -1113,17 +1135,13 @@ describe('Dropdown', () => {
     });
 
     it('removes last item on backspace when selection range is 0, 0', () => {
-      const {
-        getSelectedItemNodes,
-        getSelectedItemNodeAtIndex,
-        keyDownOnSearchInput,
-        searchInputNode,
-      } = renderDropdown({
-        multiple: true,
-        search: true,
-        defaultSearchQuery: 'bla',
-        defaultValue: [items[0], items[1]],
-      });
+      const { getSelectedItemNodes, getSelectedItemNodeAtIndex, keyDownOnSearchInput, searchInputNode } =
+        renderDropdown({
+          multiple: true,
+          search: true,
+          defaultSearchQuery: 'bla',
+          defaultValue: [items[0], items[1]],
+        });
 
       searchInputNode.setSelectionRange(0, 0);
       keyDownOnSearchInput('Backspace');
@@ -1854,6 +1872,14 @@ describe('Dropdown', () => {
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getItemNodes()).toHaveLength(items.length - 1);
     });
+
+    it('should not call onRemove when dropdown is disabled', () => {
+      const onRemove = jest.fn();
+      const value = { header: items[0], onRemove };
+      const { clickOnSelectedItemAtIndex } = renderDropdown({ multiple: true, value, disabled: true });
+      clickOnSelectedItemAtIndex(0);
+      expect(onRemove).not.toHaveBeenCalled();
+    });
   });
 
   describe('items', () => {
@@ -1933,18 +1959,13 @@ describe('Dropdown', () => {
   describe('disabled', () => {
     it('allows no action on the trigger button', () => {
       const { testContainer, removeTestContainer } = createTestContainer();
-      const {
-        clickOnTriggerButton,
-        focusTriggerButton,
-        getItemNodes,
-        triggerButtonNode,
-        keyDownOnTriggerButton,
-      } = renderDropdown(
-        {
-          disabled: true,
-        },
-        testContainer,
-      );
+      const { clickOnTriggerButton, focusTriggerButton, getItemNodes, triggerButtonNode, keyDownOnTriggerButton } =
+        renderDropdown(
+          {
+            disabled: true,
+          },
+          testContainer,
+        );
 
       expect(triggerButtonNode).toHaveAttribute('disabled');
 
@@ -1964,19 +1985,14 @@ describe('Dropdown', () => {
 
     it('allows no action on the search input', () => {
       const { testContainer, removeTestContainer } = createTestContainer();
-      const {
-        keyDownOnSearchInput,
-        clickOnSearchInput,
-        focusSearchInput,
-        getItemNodes,
-        searchInputNode,
-      } = renderDropdown(
-        {
-          disabled: true,
-          search: true,
-        },
-        testContainer,
-      );
+      const { keyDownOnSearchInput, clickOnSearchInput, focusSearchInput, getItemNodes, searchInputNode } =
+        renderDropdown(
+          {
+            disabled: true,
+            search: true,
+          },
+          testContainer,
+        );
 
       expect(searchInputNode).toHaveAttribute('disabled');
 

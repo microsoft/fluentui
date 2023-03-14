@@ -2,6 +2,102 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Mon, 16 Jan 2023 08:38:53 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:46 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Nov 2022 23:05:32 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:57:50 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 22:09:50 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 09:49:44 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Aug 2022 16:03:35 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0",
       "version": "9.0.0",

@@ -7,16 +7,12 @@
 import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
-// Warning: (ae-internal-missing-underscore) The name "applyTriggerPropsToChildren" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
-export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactElement | null) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactElement | null;
+export function applyTriggerPropsToChildren<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children'], triggerChildProps: TriggerChildProps): React_2.ReactElement | null;
 
 // @public
 export function canUseDOM(): boolean;
 
-// Warning: (ae-internal-missing-underscore) The name "clamp" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const clamp: (value: number, min: number, max: number) => number;
 
@@ -35,8 +31,6 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
-// Warning: (ae-internal-missing-underscore) The name "FluentTriggerComponent" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export type FluentTriggerComponent = {
     isFluentTriggerComponent?: boolean;
@@ -44,6 +38,12 @@ export type FluentTriggerComponent = {
 
 // @public
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
+
+// @public
+export function getEventClientCoords(event: TouchOrMouseEvent): {
+    clientX: number;
+    clientY: number;
+};
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -61,8 +61,6 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
     primary: Omit<Props, ExcludedPropKeys>;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "getRTLSafeKey" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
@@ -72,16 +70,47 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slotProps: ObjectSlotProps<R>;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "getTriggerChild" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
-export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> & {
-    ref?: React_2.Ref<unknown> | undefined;
-};
+export function getTriggerChild<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children']): (React_2.ReactElement<Partial<TriggerChildProps>> & {
+    ref?: React_2.Ref<any>;
+}) | null;
 
-// Warning: (ae-internal-missing-underscore) The name "RefObjectFunction" should be prefixed with an underscore because the declaration is marked as @internal
-//
+// @public
+export const IdPrefixProvider: React_2.Provider<string | undefined>;
+
 // @internal
+export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
+
+// @internal
+export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
+    constructorName?: ConstructorName;
+}): element is InstanceType<(typeof globalThis)[ConstructorName]>;
+
+// @internal
+export function isInteractiveHTMLElement(element: unknown): boolean;
+
+// @public
+export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | React_2.MouseEvent;
+
+// @public
+export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
+
+// @public
+export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
+
+// @internal
+export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
+
+// @public (undocumented)
+export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
+
+// @public
+export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
+// @public (undocumented)
+export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
+
+// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
@@ -92,28 +121,26 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, true>): ReplaceNullWithUndefined<P>;
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>): ReplaceNullWithUndefined<P> | undefined;
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
 // @public (undocumented)
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
+    required: true;
+    defaultProps?: Props;
+} : {
     required?: Required;
     defaultProps?: Props;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "shouldPreventDefaultOnKeyDown" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
-
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
+} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
     [As in AlternateAs]: {
         as: As;
-    } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
@@ -133,18 +160,24 @@ export type Slots<S extends SlotPropsRecord> = {
 };
 
 // @public
-export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal;
+export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | React_2.ReactPortal;
 
 // @public
-export const SSRProvider: React_2.FC;
+export const SSRProvider: React_2.FC<{
+    children: React_2.ReactNode;
+}>;
 
-// Warning: (ae-internal-missing-underscore) The name "useControllableState" should be prefixed with an underscore because the declaration is marked as @internal
-//
+// @public (undocumented)
+export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent;
+
+// @public
+export type TriggerProps<TriggerChildProps = unknown> = {
+    children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
+};
+
 // @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
-// Warning: (ae-internal-missing-underscore) The name "UseControllableStateOptions" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export type UseControllableStateOptions<State> = {
     defaultState?: State | (() => State);
@@ -152,44 +185,27 @@ export type UseControllableStateOptions<State> = {
     initialState: State;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "useEventCallback" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
 
-// Warning: (ae-internal-missing-underscore) The name "useFirstMount" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function useFirstMount(): boolean;
 
-// Warning: (ae-internal-missing-underscore) The name "useForceUpdate" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function useForceUpdate(): DispatchWithoutAction;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
-// Warning: (ae-internal-missing-underscore) The name "useIsomorphicLayoutEffect" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function useIsSSR(): boolean;
 
-// Warning: (ae-internal-missing-underscore) The name "useMergedEventCallbacks" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export function useMergedEventCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
-
-// Warning: (ae-internal-missing-underscore) The name "useMergedRefs" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
-// Warning: (ae-internal-missing-underscore) The name "UseOnClickOrScrollOutsideOptions" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;
@@ -199,23 +215,18 @@ export type UseOnClickOrScrollOutsideOptions = {
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "useOnClickOutside" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
 
-// Warning: (ae-internal-missing-underscore) The name "useOnScrollOutside" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
 
-// Warning: (ae-internal-missing-underscore) The name "usePrevious" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
-// Warning: (ae-internal-missing-underscore) The name "useTimeout" should be prefixed with an underscore because the declaration is marked as @internal
-//
+// @public (undocumented)
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
+
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
 

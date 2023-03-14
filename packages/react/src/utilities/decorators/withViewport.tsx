@@ -71,7 +71,7 @@ const MAX_RESIZE_ATTEMPTS = 3;
 /**
  * A decorator to update decorated component on viewport or window resize events.
  *
- * @param ComposedComponent decorated React component reference.
+ * @param ComposedComponent - decorated React component reference.
  */
 export function withViewport<TProps extends { viewport?: IViewport }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,

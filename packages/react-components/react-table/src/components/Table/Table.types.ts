@@ -1,23 +1,31 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 export type TableSlots = {
   root: Slot<'table', 'div'>;
 };
 
 export type TableContextValue = {
-  size: 'small' | 'smaller' | 'medium';
+  /**
+   * Affects the sizes of all table subcomponents
+   * @default medium
+   */
+  size: 'extra-small' | 'small' | 'medium';
 
+  /**
+   * Render all table elements as divs instead of semantic table elements
+   * Using divs no longer uses `display: table` layout but `display: flex`
+   * @default false
+   */
   noNativeElements: boolean;
 
+  /**
+   * Whether the table is sortable
+   * @default false
+   */
   sortable: boolean;
 };
 
 export type SortDirection = 'ascending' | 'descending';
-export type SortState = {
-  sortColumn: string | undefined;
-  sortDirection: 'ascending' | 'descending';
-};
 
 export type TableContextValues = {
   table: TableContextValue;
@@ -26,19 +34,7 @@ export type TableContextValues = {
 /**
  * Table Props
  */
-export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue> & {
-    /**
-     * Called when the sorted column changes
-     */
-    onSortColumnChange?: (
-      e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-      data: { sortState: SortState },
-    ) => void;
-
-    sortState?: SortState;
-
-    defaultSortState?: SortState;
-  };
+export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
 
 /**
  * State used in rendering Table

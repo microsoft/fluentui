@@ -1,5 +1,3 @@
-import config from '@fluentui/scripts/config';
-import fs from 'fs-extra';
 import path from 'path';
 
 import {
@@ -10,7 +8,9 @@ import {
   shEcho,
   performBrowserTest,
   prepareCreateReactApp,
-} from '@fluentui/scripts/projects-test';
+  workspaceRoot,
+  generateFiles,
+} from '@fluentui/scripts-projects-test';
 
 /**
  * Tests the following scenario:
@@ -21,7 +21,7 @@ import {
  */
 export async function createReactApp() {
   const logger = log('test:projects:cra-ts');
-  const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/cra'));
+  const scaffoldPathRoot = path.resolve(__dirname, '../assets/cra');
 
   const tempPaths = prepareTempDirs('project-cra-');
   logger(`✔️ Temporary directories created under ${tempPaths.root}`);
@@ -29,24 +29,24 @@ export async function createReactApp() {
   logger('STEP 1. Create test React project with TSX scripts..');
 
   await prepareCreateReactApp(tempPaths, 'typescript');
-  const testAppPath = config.paths.withRootAt(tempPaths.testApp);
-  logger(`Test React project is successfully created: ${testAppPath()}`);
+  const testAppPathRoot = tempPaths.testApp;
+  logger(`Test React project is successfully created: ${testAppPathRoot}`);
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
 
-  const packedPackages = await packProjectPackages(logger, config.paths.base(), ['@fluentui/react-northstar']);
-  await addResolutionPathsForProjectPackages(testAppPath());
+  const packedPackages = await packProjectPackages(logger, workspaceRoot, ['@fluentui/react-northstar']);
+  await addResolutionPathsForProjectPackages(testAppPathRoot);
 
-  await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPath());
+  await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPathRoot);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger("STEP 3. Reference Fluent UI components in test project's App.tsx");
-  fs.copyFileSync(scaffoldPath('App.tsx'), testAppPath('src', 'App.tsx'));
+  generateFiles(scaffoldPathRoot, testAppPathRoot);
 
   logger('STEP 4. Build test project..');
-  await shEcho(`yarn build`, testAppPath());
+  await shEcho(`yarn build`, testAppPathRoot);
 
   logger('STEP 5. Load the test app in the browser');
-  await performBrowserTest(testAppPath('build'));
+  await performBrowserTest(path.resolve(testAppPathRoot, 'build'));
   logger(`✔️ Browser test was passed`);
 }

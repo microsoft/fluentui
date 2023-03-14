@@ -6,7 +6,7 @@ import { Image, IImageProps, ImageFit } from '@fluentui/react/lib/Image';
 const imageProps: IImageProps = {
   maximizeFrame: true,
   imageFit: ImageFit.cover,
-  src: 'http://via.placeholder.com/500x500',
+  src: 'https://fabricweb.azureedge.net/fabric-website/placeholders/500x500.png',
   // Show a border around the image (just for demonstration purposes)
   styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
 };

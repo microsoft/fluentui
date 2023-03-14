@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TableState } from '../Table/Table.types';
+import { TableContextValue } from '../Table/Table.types';
 
 export type TableRowSlots = {
   root: Slot<'tr', 'div'>;
@@ -8,9 +8,20 @@ export type TableRowSlots = {
 /**
  * TableRow Props
  */
-export type TableRowProps = ComponentProps<TableRowSlots> & {};
+export type TableRowProps = ComponentProps<TableRowSlots> & {
+  /**
+   * A table row can have different variants. These appearances are
+   * intended to be used with selection.
+   * @default none
+   */
+  appearance?: 'brand' | 'neutral' | 'none';
+};
 
 /**
  * State used in rendering TableRow
  */
-export type TableRowState = ComponentState<TableRowSlots> & { size: TableState['size'] };
+export type TableRowState = ComponentState<TableRowSlots> &
+  Pick<TableContextValue, 'noNativeElements' | 'size'> &
+  Pick<Required<TableRowProps>, 'appearance'> & {
+    isHeaderRow: boolean;
+  };

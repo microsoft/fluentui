@@ -18,7 +18,8 @@
     "skipLibCheck": true,
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
-    "types": ["jest"]
+    "types": ["jest"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

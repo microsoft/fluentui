@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import { KeyCodes } from '../../../Utilities';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import type { IReactProps, IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
 import type { IPersonaProps } from '../../Persona/Persona.types';
 import type { IStyle, ITheme } from '../../../Styling';
 import type { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 import type { ISuggestionItemProps } from './SuggestionsItem.types';
-import type { IReactProps } from '../../../common/React.types';
 import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
@@ -146,6 +145,11 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
   isLoading?: boolean;
 
   /**
+   * Used to indicate whether or not the suggestions are taking an extended amount of time to load.
+   */
+  isExtendedLoading?: boolean;
+
+  /**
    * Used to indicate whether or not the component is searching for more results.
    */
   isSearching?: boolean;
@@ -185,11 +189,13 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
+   * This should not include interactive elements as the footer is not focusable.
    */
   resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has fewer items than resultsMaximumNumber.
+   * This should not include interactive elements as the footer is not focusable.
    */
   resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
 

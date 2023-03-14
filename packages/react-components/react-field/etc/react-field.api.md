@@ -4,41 +4,73 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
-export const Field: ForwardRefComponent<FieldProps>;
+// @internal @deprecated (undocumented)
+export type DeprecatedFieldProps<ControlProps> = ControlProps & {
+    root?: FieldProps;
+    control?: ControlProps;
+} & Pick<FieldProps, 'className' | 'hint' | 'label' | 'orientation' | 'style' | 'validationMessage' | 'validationMessageIcon' | 'validationState'>;
 
 // @public (undocumented)
-export const fieldClassName = "fui-Field";
+export const Field: ForwardRefComponent<FieldProps>;
 
 // @public (undocumented)
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public
-export type FieldProps = ComponentProps<FieldSlots> & {};
-
-// @public (undocumented)
-export type FieldSlots = {
-    root: Slot<'div'>;
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+    children?: React_2.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React_2.ReactNode);
+    orientation?: 'vertical' | 'horizontal';
+    validationState?: 'error' | 'warning' | 'success' | 'none';
+    required?: boolean;
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public
-export type FieldState = ComponentState<FieldSlots>;
+export type FieldSlots = {
+    root: NonNullable<Slot<'div'>>;
+    label?: Slot<typeof Label>;
+    validationMessage?: Slot<'div'>;
+    validationMessageIcon?: Slot<'span'>;
+    hint?: Slot<'div'>;
+};
+
+// @public
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+
+// @internal @deprecated (undocumented)
+export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
+
+// @internal @deprecated (undocumented)
+export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType<ControlProps>, options?: {
+    mapProps?: (props: DeprecatedFieldProps<ControlProps>) => DeprecatedFieldProps<ControlProps>;
+    displayName?: string;
+}): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
 
 // @public
 export const renderField_unstable: (state: FieldState) => JSX.Element;
 
 // @public
-export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
+export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public
-export const useFieldStyles_unstable: (state: FieldState) => FieldState;
+export const useFieldStyles_unstable: (state: FieldState) => void;
 
 // (No @packageDocumentation comment for this package)
 

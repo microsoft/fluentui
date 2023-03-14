@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useSliderState_unstable } from './useSliderState';
 import { SliderProps, SliderState } from './Slider.types';
 import { useFocusWithin } from '@fluentui/react-tabster';
@@ -34,10 +34,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     },
     root: resolveShorthand(root, {
       required: true,
-      defaultProps: {
-        ref: useFocusWithin<HTMLDivElement>(),
-        ...nativeProps.root,
-      },
+      defaultProps: nativeProps.root,
     }),
     input: resolveShorthand(input, {
       required: true,
@@ -52,6 +49,8 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     rail: resolveShorthand(rail, { required: true }),
     thumb: resolveShorthand(thumb, { required: true }),
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
 
   useSliderState_unstable(state, props);
 

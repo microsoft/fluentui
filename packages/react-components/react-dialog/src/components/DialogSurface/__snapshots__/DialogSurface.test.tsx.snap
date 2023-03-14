@@ -2,13 +2,8 @@
 
 exports[`DialogSurface renders a default state 1`] = `
 <div>
-  <div
-    aria-modal="true"
-    class="fui-DialogSurface"
-    data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-1\\",\\"isOthersAccessible\\":false}}"
-    role="dialog"
-  >
-    Default DialogSurface
-  </div>
+  <span
+    hidden=""
+  />
 </div>
 `;

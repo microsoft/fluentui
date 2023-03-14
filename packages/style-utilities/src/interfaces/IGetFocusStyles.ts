@@ -42,4 +42,15 @@ export interface IGetFocusStylesOptions {
    * @defaultvalue true
    */
   isFocusedOnly?: boolean;
+
+  /**
+   * If the style should include a rounded border.
+   */
+  borderRadius?: string | number | undefined;
+
+  /**
+   * If default pointer events should be overridden.
+   * @defaultvalue undefined
+   */
+  pointerEvents?: IRawStyle['pointerEvents'];
 }

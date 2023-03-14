@@ -15,6 +15,7 @@ import {
 import {
   Avatar,
   Chat,
+  ChatItem,
   ChatItemProps,
   ChatMessageProps,
   MenuProps,
@@ -126,17 +127,13 @@ const ChatPlayground: React.FunctionComponent = () => {
   };
 
   return (
-    <Chat
-      density={density}
-      items={[
-        {
-          gutter: <Avatar icon={<PersonIcon />} size={size} />,
-          key: '1',
-          message: <Chat.Message mine={mine} reactionGroupPosition={reactionGroupPosition} {...chatMessageProps} />,
-          ...chatItemProps,
-        },
-      ]}
-    />
+    <Chat density={density}>
+      <ChatItem
+        gutter={<Avatar icon={<PersonIcon />} size={size} />}
+        message={<Chat.Message mine={mine} reactionGroupPosition={reactionGroupPosition} {...chatMessageProps} />}
+        {...chatItemProps}
+      />
+    </Chat>
   );
 };
 

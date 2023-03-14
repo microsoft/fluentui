@@ -12,7 +12,22 @@ export const toolbarClassNames: SlotClassNames<ToolbarSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    alignItems: 'center',
+    ...shorthands.padding('4px', '8px', '4px', '8px'),
     ...shorthands.gap('8px'),
+  },
+  vertical: {
+    flexDirection: 'column',
+    width: 'fit-content',
+  },
+  small: {
+    height: '32px',
+  },
+  medium: {
+    height: '40px',
+  },
+  large: {
+    height: '48px',
   },
 });
 
@@ -21,7 +36,16 @@ const useStyles = makeStyles({
  */
 export const useToolbarStyles_unstable = (state: ToolbarState): ToolbarState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(toolbarClassNames.root, styles.root, state.root.className);
+  const { vertical, size } = state;
+  state.root.className = mergeClasses(
+    toolbarClassNames.root,
+    styles.root,
+    vertical && styles.vertical,
+    size === 'small' && !vertical && styles.small,
+    size === 'medium' && !vertical && styles.medium,
+    size === 'large' && !vertical && styles.large,
+    state.root.className,
+  );
 
   return state;
 };

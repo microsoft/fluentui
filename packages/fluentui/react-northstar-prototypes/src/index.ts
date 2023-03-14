@@ -10,6 +10,9 @@ export const ChatMessagesPrototype = React.lazy(
 export const CompactChatPrototype = React.lazy(
   () => import(/* webpackChunkName: "prototypes" */ './prototypes/compactChat'),
 );
+export const ChatRefreshPrototype = React.lazy(
+  () => import(/* webpackChunkName: "prototypes" */ './prototypes/chatRefresh'),
+);
 export const AsyncShorthandPrototype = React.lazy(
   () => import(/* webpackChunkName: "prototypes" */ './prototypes/AsyncShorthand'),
 );

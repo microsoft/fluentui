@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { DialogBodyProps, DialogBodyState } from './DialogBody.types';
-import { useDialogContext_unstable } from '../../contexts';
 
 /**
  * Create the state required to render DialogBody.
@@ -17,9 +16,8 @@ export const useDialogBody_unstable = (props: DialogBodyProps, ref: React.Ref<HT
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps(props.as ?? 'div', {
       ref,
-      id: useDialogContext_unstable(ctx => ctx.dialogBodyID),
       ...props,
     }),
   };

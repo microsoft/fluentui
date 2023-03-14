@@ -40,6 +40,7 @@ import {
   ChatMessagesPrototype,
   ChatPanePrototype,
   CompactChatPrototype,
+  ChatRefreshPrototype,
   CopyToClipboardPrototype,
   CustomScrollbarPrototype,
   CustomToolbarPrototype,
@@ -110,6 +111,7 @@ const Routes = () => (
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-compact-chat" component={CompactChatPrototype} />
+                <Route exact path="/prototype-chat-refresh" component={ChatRefreshPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
                 <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
                 <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />

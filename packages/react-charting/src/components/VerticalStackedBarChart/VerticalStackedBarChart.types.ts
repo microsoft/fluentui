@@ -6,6 +6,7 @@ import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
+  ILineChartLineOptions,
   IVerticalStackedChartProps,
   IVSChartDataPoint,
 } from '../../index';
@@ -106,6 +107,17 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * it's padding between bar's or lines in the graph
    */
   xAxisPadding?: number;
+
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}
@@ -115,6 +127,11 @@ export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover?: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
 
   /**
    * Style for the chart.

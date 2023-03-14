@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
+import { TableHeaderContextProvider } from '../../contexts/tableHeaderContext';
 import type { TableHeaderState, TableHeaderSlots } from './TableHeader.types';
 
 /**
@@ -8,5 +9,9 @@ import type { TableHeaderState, TableHeaderSlots } from './TableHeader.types';
 export const renderTableHeader_unstable = (state: TableHeaderState) => {
   const { slots, slotProps } = getSlots<TableHeaderSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <TableHeaderContextProvider value="">
+      <slots.root {...slotProps.root} />
+    </TableHeaderContextProvider>
+  );
 };

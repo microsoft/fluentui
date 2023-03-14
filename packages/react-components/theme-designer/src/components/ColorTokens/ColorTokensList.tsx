@@ -103,7 +103,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
     <div>
       {coveredTokens.map(color => {
         const colorValue: Brands = newColors[color];
-        const usage = ((usageList as unknown) as Record<string, string>)[color];
+        const usage = (usageList as unknown as Record<string, string>)[color];
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
@@ -124,7 +124,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
               </div>
               <div>
                 <Menu>
-                  <MenuTrigger>
+                  <MenuTrigger disableButtonEnhancement>
                     <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
                       {name} {colorValue}
                     </MenuButton>

@@ -8,6 +8,7 @@ import type { ILayerProps } from '../../Layer';
 import type { IOverlayProps } from '../../Overlay';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IPopupProps } from '../Popup/Popup.types';
 
 export interface IDragOptions {
   /**
@@ -195,6 +196,11 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
    * @default `{}`
    */
   focusTrapZoneProps?: IFocusTrapZoneProps;
+
+  /**
+   * Props to be passed through to Popup
+   */
+  popupProps?: IPopupProps;
 }
 
 /**

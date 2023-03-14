@@ -33,13 +33,6 @@ export type MenuItemSlots = {
 
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
   /**
-   * Applies disabled styles to menu item but remains focusable
-   *
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
    * If the menu item is a trigger for a submenu
    *
    * @default false
@@ -52,7 +45,14 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
    * @default false
    */
   persistOnClick?: boolean;
+
+  disabled?: boolean;
+  /**
+   * @deprecated this property does nothing.
+   * disabled focusable is by default by simply using `disabled` property
+   */
+  disabledFocusable?: boolean;
 };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
-  Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>;
+  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
