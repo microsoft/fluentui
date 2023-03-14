@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { InfoLabel } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-components/unstable';
 
 export const Required = () => (
   <InfoLabel content="Example info" required>

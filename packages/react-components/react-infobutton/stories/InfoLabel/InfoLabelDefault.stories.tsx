@@ -1,9 +1,17 @@
 import * as React from 'react';
 
-import { InfoLabel, InfoLabelProps } from '@fluentui/react-infobutton';
+import { Link } from '@fluentui/react-components';
+import { InfoLabel, InfoLabelProps } from '@fluentui/react-components/unstable';
 
 export const Default = (props: Partial<InfoLabelProps>) => (
-  <InfoLabel content="Example info" {...props}>
-    Example info label
+  <InfoLabel
+    content={
+      <>
+        This is example content for an InfoButton. <Link href="https://react.fluentui.dev">Learn more</Link>
+      </>
+    }
+    {...props}
+  >
+    Example label
   </InfoLabel>
 );

@@ -1,13 +1,12 @@
 import * as React from 'react';
 
 import { Input, LabelProps } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
-import { InfoLabel } from '@fluentui/react-infobutton';
+import { Field, InfoLabel } from '@fluentui/react-components/unstable';
 
 export const InField = () => (
   <Field
     label={{
-      children: (_Component: React.ComponentType<LabelProps>, props: LabelProps) => (
+      children: (_: unknown, props: LabelProps) => (
         <InfoLabel {...props} content="Example info">
           Field with info label
         </InfoLabel>

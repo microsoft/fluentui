@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { InfoLabel } from '@fluentui/react-infobutton';
+
 import { makeStyles, tokens } from '@fluentui/react-components';
+import { InfoLabel } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   container: {
@@ -16,13 +17,13 @@ export const Size = () => {
 
   return (
     <div className={styles.container}>
-      <InfoLabel size="small" content="Example info">
+      <InfoLabel size="small" content="Example small InfoButton">
         Small label
       </InfoLabel>
-      <InfoLabel size="medium" content="Example info">
+      <InfoLabel size="medium" content="Example medium InfoButton">
         Medium label
       </InfoLabel>
-      <InfoLabel size="large" content="Example info">
+      <InfoLabel size="large" content="Example large InfoButton">
         Large label
       </InfoLabel>
     </div>
