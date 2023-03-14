@@ -1,20 +1,36 @@
 import * as React from 'react';
-import { makeStyles, Subtitle2Stronger, Text, typographyStyles } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Subtitle2Stronger,
+  Text,
+  Theme,
+  typographyStyles,
+  webLightTheme,
+} from '@fluentui/react-components';
 import type { TypographyStyles } from '@fluentui/react-components';
 
-type TypographyTokens = [token: keyof TypographyStyles, tokenName: string, values: string[]][];
+type TypographyTokens = [token: keyof TypographyStyles, tokenName: string, entries: [string, string][]][];
 
 const useStyles = makeStyles({
   container: {
     rowGap: '24px',
     columnGap: '48px',
     display: 'grid',
-    gridTemplateColumns: 'auto auto 1fr',
+    gridTemplateColumns: 'auto auto auto 1fr',
     alignItems: 'start',
+  },
+  value: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflowX: 'hidden',
+    maxWidth: '10.5em',
   },
 
   ...typographyStyles,
 });
+
+// FIXME: hardcoded theme
+const theme = webLightTheme;
 
 const tokenOrder: (keyof TypographyStyles)[] = [
   'caption2',
@@ -39,7 +55,7 @@ const tokenOrder: (keyof TypographyStyles)[] = [
 const tokens: TypographyTokens = tokenOrder.map(token => [
   token,
   token.replace(/([A-Z\d])/g, ' $1').replace(/^(.)/, firstChar => firstChar.toUpperCase()),
-  Object.values(typographyStyles[token]).map(v => v.replace(/var\(--(.+)\)/, '$1')),
+  Object.entries(typographyStyles[token]).map(([k, v]) => [k, v.replace(/var\(--(.+)\)/, '$1')]),
 ]);
 
 export const Typography = () => {
@@ -49,15 +65,24 @@ export const Typography = () => {
     <div className={styles.container}>
       <Subtitle2Stronger>Name</Subtitle2Stronger>
       <Subtitle2Stronger>Tokens</Subtitle2Stronger>
+      <Subtitle2Stronger>Default Values</Subtitle2Stronger>
       <Subtitle2Stronger>Example</Subtitle2Stronger>
 
-      {tokens.map(([token, tokenName, values]) => (
+      {tokens.map(([token, tokenName, entries]) => (
         <React.Fragment key={token}>
           <Text>{token}</Text>
 
           <div>
-            {values.map(value => (
-              <div key={`${token}-${value}`}>{value}</div>
+            {entries.map(([key, value]) => (
+              <div key={`${token}-${key}`}>{value}</div>
+            ))}
+          </div>
+
+          <div>
+            {entries.map(([key, value]) => (
+              <div key={`${token}-${key}`} className={styles.value}>
+                {key}: {theme[value as keyof Theme]}
+              </div>
             ))}
           </div>
 

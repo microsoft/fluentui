@@ -90,6 +90,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       type: isFromExpandIcon ? treeDataTypes.expandIconClick : treeDataTypes.click,
       target: event.currentTarget,
     });
+    requestNavigation({ event, target: event.currentTarget, type: treeDataTypes.click });
   });
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -178,7 +179,7 @@ export const useTreeItem_unstable = (props: TreeItemProps, ref: React.Ref<HTMLDi
       },
     }),
     root: getNativeElementProps(as, {
-      tabIndex: 0,
+      tabIndex: -1,
       ...rest,
       id,
       ref,

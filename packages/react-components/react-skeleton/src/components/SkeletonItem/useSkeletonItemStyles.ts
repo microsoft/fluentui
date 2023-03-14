@@ -58,13 +58,7 @@ const useStyles = makeStyles({
       ${tokens.colorNeutralStencil2} 50%,
       ${tokens.colorNeutralStencil1} 100%)`,
     '@media screen and (forced-colors: active)': {
-      backgroundColor: `WindowText
-      linear-gradient(
-        to right,
-        transparent 0%,
-        Window 50%,
-        transparent 100%)
-      `,
+      backgroundColor: 'WindowText',
     },
   },
   waveRtl: {
@@ -88,7 +82,8 @@ const useStyles = makeStyles({
 
 const useRectangleStyles = makeStyles({
   root: {
-    width: 'auto',
+    width: '100%',
+    ...shorthands.borderRadius('4px'),
   },
   8: { height: '8px' },
   12: { height: '12px' },

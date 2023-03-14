@@ -1,0 +1,32 @@
+{
+  "name": "@fluentui/react-skeleton",
+  "entries": [
+    {
+      "date": "Mon, 13 Mar 2023 08:58:25 GMT",
+      "tag": "@fluentui/react-skeleton_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.24",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-utilities to v9.7.0",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          }
+        ]
+      }
+    }
+  ]
+}
