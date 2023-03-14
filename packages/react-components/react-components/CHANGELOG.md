@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 10 Mar 2023 13:28:39 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Mar 2023 08:58:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.0)
+
+Mon, 13 Mar 2023 08:58:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.17.1..@fluentui/react-components_v9.18.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Release Card as stable ([PR #27111](https://github.com/microsoft/fluentui/pull/27111) by marcosvmmoura@gmail.com)
+- `@fluentui/react-utilities`
+  - feat: isHTMLElement to support all HTMLElement classes ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - feat: release 9.0.0 ([PR #27111](https://github.com/microsoft/fluentui/pull/27111) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: release react-skeleton to unstable ([PR #27150](https://github.com/microsoft/fluentui/pull/27150) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-skeleton`
+  - feat: release react-skeleton to unstable ([PR #27150](https://github.com/microsoft/fluentui/pull/27150) by ololubek@microsoft.com)
 
 ## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.17.1)
 

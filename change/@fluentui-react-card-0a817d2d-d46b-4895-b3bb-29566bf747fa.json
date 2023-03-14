@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat: release 9.0.0",
+  "comment": "docs: improve readme description",
   "packageName": "@fluentui/react-card",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"

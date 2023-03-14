@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Mon, 13 Mar 2023 08:58:26 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.13",
+      "version": "9.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.7.0",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:14:01 GMT",
       "tag": "@fluentui/react-context-selector_v9.1.12",
       "version": "9.1.12",

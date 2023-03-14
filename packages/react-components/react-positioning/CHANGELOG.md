@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 10 Mar 2023 07:14:00 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Mar 2023 08:58:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.3)
+
+Mon, 13 Mar 2023 08:58:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.2..@fluentui/react-positioning_v9.5.3)
+
+### Patches
+
+- fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.7.0 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.2)
 
