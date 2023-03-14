@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Mon, 06 Mar 2023 07:43:02 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Mar 2023 07:39:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.5)
+
+Thu, 09 Mar 2023 07:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.4..@fluentui/style-utilities_v8.9.5)
+
+### Patches
+
+- Updated FabricCDN url to latest version ([PR #26990](https://github.com/microsoft/fluentui/pull/26990) by caperez@microsoft.com)
 
 ## [8.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.4)
 

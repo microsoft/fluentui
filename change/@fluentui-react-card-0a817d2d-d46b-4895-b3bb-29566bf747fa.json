@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: improve readme description",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
