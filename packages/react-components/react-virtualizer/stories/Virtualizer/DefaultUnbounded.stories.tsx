@@ -33,7 +33,12 @@ export const DefaultUnbounded = () => {
   const styles = useStyles();
   const childLength = 1000;
 
-  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(100, null);
+  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: 100,
+  });
+
+  const scrollRef = React.useRef<HTMLElement | null>(document.body);
+  useScrollRef(scrollRef);
 
   return (
     <ThemeProvider className={styles.root} applyTo="body">

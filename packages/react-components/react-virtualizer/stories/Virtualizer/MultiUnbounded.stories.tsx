@@ -34,7 +34,12 @@ export const MultiUnbounded = () => {
   const childLength = 100;
   const repeatingVirtualizers = 5;
 
-  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(100, null);
+  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: 100,
+  });
+
+  const scrollView = React.useRef<HTMLElement | null>(document.body);
+  useScrollRef(scrollView);
 
   const renderHeader = (index: number) => {
     return <div key={`virtualizer-header-${index}`} className={styles.block}>{`Virtualizer Instance - ${index}`}</div>;

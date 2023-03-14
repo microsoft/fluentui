@@ -28,7 +28,7 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 };
 
 // @public
-export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView?: HTMLElement | null, direction?: 'vertical' | 'horizontal') => {
+export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView?: HTMLElement, direction?: 'vertical' | 'horizontal') => {
     virtualizerLength: number;
     bufferItems: number;
     bufferSize: number;

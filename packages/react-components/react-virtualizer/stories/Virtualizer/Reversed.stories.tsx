@@ -25,7 +25,10 @@ export const Reversed = () => {
   const itemSize = 100;
   const scrollView = React.useRef<HTMLDivElement | null>(null);
 
-  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(itemSize, scrollView.current);
+  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: itemSize,
+  });
+  useScrollRef(scrollView);
 
   return (
     <div aria-label="Reversed Virtualizer Example" className={styles.container} role={'list'} ref={scrollView}>

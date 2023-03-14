@@ -27,12 +27,16 @@ const useStyles = makeStyles({
 export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const scrollView = React.useRef<HTMLDivElement | null>(null);
 
-  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(100, scrollView.current);
+  const scrollRef = React.useRef<HTMLDivElement | null>(null);
+  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: 100,
+  });
+
+  useScrollRef(scrollRef);
 
   return (
-    <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollView}>
+    <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
       <div className={styles.block} />
       <Virtualizer
         numItems={childLength}

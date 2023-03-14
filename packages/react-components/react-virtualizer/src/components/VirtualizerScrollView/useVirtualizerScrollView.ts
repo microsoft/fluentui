@@ -2,22 +2,32 @@ import * as React from 'react';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useVirtualizer_unstable } from '../Virtualizer/useVirtualizer';
 import { VirtualizerScrollViewProps, VirtualizerScrollViewState } from './VirtualizerScrollView.types';
+import { useStaticVirtualizerMeasure } from '../../Hooks';
 
-export function useVirtualizerScrollView_unstable(
-  props: VirtualizerScrollViewProps,
-  virtualizerLength: number,
-): VirtualizerScrollViewState {
-  const virtualizerState = useVirtualizer_unstable({ ...props, virtualizerLength });
+export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState {
+  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: props.itemSize,
+    direction: props.axis ?? 'vertical',
+  });
 
-  const setScrollRef = React.useCallback(
-    (element: HTMLDivElement) => {
-      if (!element || !props.scrollViewRef || props.scrollViewRef.current === element) {
-        return;
-      }
-      props.scrollViewRef.current = element;
-    },
-    [props.scrollViewRef],
-  );
+  const iScrollRef = React.useRef<HTMLElement | null>(null);
+
+  const setScrollRef = React.useCallback((element: HTMLDivElement) => {
+    if (!element || !iScrollRef || iScrollRef.current === element) {
+      return;
+    }
+    iScrollRef.current = element;
+  }, []);
+
+  useScrollRef(iScrollRef);
+
+  const virtualizerState = useVirtualizer_unstable({
+    ...props,
+    virtualizerLength,
+    bufferItems,
+    bufferSize,
+    scrollViewRef: iScrollRef,
+  });
 
   return {
     ...virtualizerState,

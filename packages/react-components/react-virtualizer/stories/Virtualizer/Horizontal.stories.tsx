@@ -25,11 +25,12 @@ export const Horizontal = () => {
   const itemWidth = 100;
   const scrollView = React.useRef<HTMLDivElement | null>(null);
 
-  const { virtualizerLength, bufferItems, bufferSize } = useStaticVirtualizerMeasure(
-    itemWidth,
-    scrollView.current,
-    'horizontal',
-  );
+  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: itemWidth,
+    direction: 'horizontal',
+  });
+
+  useScrollRef(scrollView);
 
   return (
     <div aria-label="Horizontal Virtualizer Example" className={styles.container} role={'list'} ref={scrollView}>
