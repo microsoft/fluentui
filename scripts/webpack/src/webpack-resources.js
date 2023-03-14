@@ -221,19 +221,6 @@ const api = {
         module: {
           rules: [
             cssRule,
-            // Place this *before* the `ts-loader`.
-            {
-              test: [/\.worker\.ts$/],
-              use: {
-                loader: 'worker-loader',
-                options: {
-                  experimentalWatchApi: true,
-                  transpileOnly: true,
-                },
-              },
-              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
-              //loader: "worker-loader",
-            },
             {
               test: [/\.tsx?$/],
               use: {
@@ -289,13 +276,166 @@ const api = {
   },
 
   /**
+   * Create a standard serve config for a legacy demo app.
+   * Note that this assumes a base directory (for serving and output) of `dist/demo`.
+   * @param {Partial<WebpackServeConfig>} customConfig - partial custom webpack config, merged into the full config
+   * @param {string} [outputFolder] - output folder (package-relative) if not `dist/demo`
+   * @returns {WebpackServeConfig}
+   */
+  createServeConfigForCharting(customConfig, outputFolder = 'dist/demo', workerLoaderRule = null) {
+    const outputPath = path.join(process.cwd(), outputFolder);
+    const listOfRules = workerLoaderRule === null ? [cssRule] : [cssRule, workerLoaderRule];
+    const restOfRules = [
+      {
+        test: [/\.tsx?$/],
+        use: {
+          loader: 'ts-loader',
+          options: {
+            experimentalWatchApi: true,
+            transpileOnly: true,
+          },
+        },
+        exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
+      },
+      {
+        test: /\.scss$/,
+        enforce: 'pre',
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+            options: {
+              esModule: false,
+              modules: true,
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: ['autoprefixer'],
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ];
+
+    return merge(
+      {
+        devServer: {
+          // As of Webpack 5, this will open the browser at 127.0.0.1 by default
+          host: 'localhost',
+          port: 4322,
+          static: outputPath,
+        },
+
+        mode: 'development',
+
+        output: {
+          filename: `[name].js`,
+          libraryTarget: 'umd',
+          path: outputPath,
+        },
+
+        resolve: {
+          extensions: ['.ts', '.tsx', '.js'],
+        },
+
+        resolveLoader: {
+          modules: module.exports.getResolveLoaderDirs(),
+        },
+
+        devtool: 'eval',
+
+        module: {
+          rules: [
+            ...listOfRules,
+            ...restOfRules,
+            // // Place this *before* the `ts-loader`.
+            // {
+            //   test: [/\.worker\.ts$/],
+            //   use: {
+            //     loader: 'worker-loader',
+            //     //options: { inline: 'no-fallback' }
+            //     // options: {
+            //     //   experimentalWatchApi: true,
+            //     //   transpileOnly: true,
+            //     // },
+            //   },
+            //   exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
+            //   //loader: "worker-loader",
+            // },
+            //   {
+            //     test: [/\.tsx?$/],
+            //     use: {
+            //       loader: 'ts-loader',
+            //       options: {
+            //         experimentalWatchApi: true,
+            //         transpileOnly: true,
+            //       },
+            //     },
+            //     exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
+            //   },
+            //   {
+            //     test: /\.scss$/,
+            //     enforce: 'pre',
+            //     exclude: [/node_modules/],
+            //     use: [
+            //       {
+            //         loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+            //       },
+            //       {
+            //         loader: 'css-loader', // translates CSS into CommonJS
+            //         options: {
+            //           esModule: false,
+            //           modules: true,
+            //           importLoaders: 2,
+            //         },
+            //       },
+            //       {
+            //         loader: 'postcss-loader',
+            //         options: {
+            //           postcssOptions: {
+            //             plugins: ['autoprefixer'],
+            //           },
+            //         },
+            //       },
+            //       {
+            //         loader: 'sass-loader',
+            //       },
+            //     ],
+            //   },
+          ],
+        },
+
+        plugins: [
+          ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
+        ],
+
+        target,
+      },
+      customConfig,
+    );
+  },
+
+  /**
    * Create a serve config for a package with a legacy demo app in the examples package at
    * `packages/react-examples/src/some-package/demo/index.tsx`.
    * Note that this assumes a base directory (for serving and output) of `dist/demo` and will
    * include `react-app-polyfill/ie11` for IE 11 support.
    * @returns {WebpackServeConfig}
+   * @param {any} extraResolver
    */
-  createLegacyDemoAppConfig() {
+  createLegacyDemoAppConfig(extraResolver) {
     const packageName = path.basename(process.cwd());
 
     const reactExamples = path.join(gitRoot, 'packages/react-examples');
@@ -305,25 +445,29 @@ const api = {
       throw new Error(`${packageName} does not have a legacy demo app (expected location: ${demoEntryInExamples})`);
     }
 
-    return module.exports.createServeConfig({
-      entry: {
-        'demo-app': ['react-app-polyfill/ie11', demoEntryInExamples],
-      },
+    return module.exports.createServeConfigForCharting(
+      {
+        entry: {
+          'demo-app': ['react-app-polyfill/ie11', demoEntryInExamples],
+        },
 
-      output: {
-        path: path.join(process.cwd(), 'dist/demo'),
-        filename: 'demo-app.js',
-      },
+        output: {
+          path: path.join(process.cwd(), 'dist/demo'),
+          filename: 'demo-app.js',
+        },
 
-      resolve: {
-        // Use the aliases for react-examples since the examples and demo may depend on some things
-        // that the package itself doesn't (and it will include the aliases for all the package's deps)
-        alias: getResolveAlias(false /*useLib*/, reactExamples),
-        fallback: {
-          path: require.resolve('path-browserify'),
+        resolve: {
+          // Use the aliases for react-examples since the examples and demo may depend on some things
+          // that the package itself doesn't (and it will include the aliases for all the package's deps)
+          alias: getResolveAlias(false /*useLib*/, reactExamples),
+          fallback: {
+            path: require.resolve('path-browserify'),
+          },
         },
       },
-    });
+      'dist/demo',
+      extraResolver,
+    );
   },
 };
 

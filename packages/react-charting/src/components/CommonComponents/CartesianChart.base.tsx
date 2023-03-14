@@ -33,7 +33,7 @@ import { LegendShape, Shape } from '../Legends/index';
 // import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import MyWorker from 'worker-loader!./workers/createXScale.worker';
+import MyWorker from 'worker-loader!./workers/createXScale.chartingworker';
 //import { ScaleBand } from 'd3-scale';
 
 //import * as worker from './workers/createXScale';
