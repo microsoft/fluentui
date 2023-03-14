@@ -6,4 +6,8 @@ export { slider } from './components/Slider';
 export { input } from './components/Input';
 export { v0Icon, v9CustomSizeIcon, v9DisabledCursor, v9HoverClasses, v9Icon } from './components/Button';
 export { spinner } from './components/Spinner';
+export { StyledText, styledTextClassName } from './components/StyledText';
+export type { StyledTextProps, StyledTextSlots } from './components/StyledText';
+export { Primitive, primitiveClassName } from './components/Primitive';
+export { ItemLayout, itemLayoutClassName, useItemLayoutStyles } from './components/ItemLayout';
 export { Flex, flexClassName, flexItem, useFlexStyles } from './components/Flex';

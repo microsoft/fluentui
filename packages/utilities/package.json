@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.13.7",
+  "version": "8.13.8",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/jest-serializer-merge-styles": "^8.0.23",
-    "@fluentui/test-utilities": "^8.2.6",
+    "@fluentui/test-utilities": "^8.3.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*"

@@ -54,16 +54,14 @@ describe('GroupedListV2', () => {
         <DetailsRow
           columns={Object.keys(item)
             .slice(0, 2)
-            .map(
-              (value): IColumn => {
-                return {
-                  key: value,
-                  name: value,
-                  fieldName: value,
-                  minWidth: 300,
-                };
-              },
-            )}
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
           groupNestingDepth={nestingDepth}
           item={item}
           itemIndex={itemIndex}
@@ -103,16 +101,14 @@ describe('GroupedListV2', () => {
         <DetailsRow
           columns={Object.keys(item)
             .slice(0, 2)
-            .map(
-              (value): IColumn => {
-                return {
-                  key: value,
-                  name: value,
-                  fieldName: value,
-                  minWidth: 300,
-                };
-              },
-            )}
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
           groupNestingDepth={nestingDepth}
           item={item}
           itemIndex={itemIndex}
@@ -153,16 +149,14 @@ describe('GroupedListV2', () => {
         <DetailsRow
           columns={Object.keys(item)
             .slice(0, 2)
-            .map(
-              (value): IColumn => {
-                return {
-                  key: value,
-                  name: value,
-                  fieldName: value,
-                  minWidth: 300,
-                };
-              },
-            )}
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
           groupNestingDepth={nestingDepth}
           item={item}
           itemIndex={itemIndex}
@@ -207,16 +201,14 @@ describe('GroupedListV2', () => {
         <DetailsRow
           columns={Object.keys(item)
             .slice(0, 2)
-            .map(
-              (value): IColumn => {
-                return {
-                  key: value,
-                  name: value,
-                  fieldName: value,
-                  minWidth: 300,
-                };
-              },
-            )}
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
           groupNestingDepth={nestingDepth}
           item={item}
           itemIndex={itemIndex}
@@ -257,16 +249,14 @@ describe('GroupedListV2', () => {
         <DetailsRow
           columns={Object.keys(item)
             .slice(0, 2)
-            .map(
-              (value): IColumn => {
-                return {
-                  key: value,
-                  name: value,
-                  fieldName: value,
-                  minWidth: 300,
-                };
-              },
-            )}
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
           groupNestingDepth={nestingDepth}
           item={item}
           itemIndex={itemIndex}

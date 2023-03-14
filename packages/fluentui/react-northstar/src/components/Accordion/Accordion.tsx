@@ -111,7 +111,7 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
  * @accessibility
  * Implements [ARIA Accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) design pattern (keyboard navigation not yet supported).
  */
-export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((props, ref) => {
+export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Accordion.displayName, context.telemetry);
   setStart();
@@ -313,7 +313,7 @@ export const Accordion = (React.forwardRef<HTMLDListElement, AccordionProps>((pr
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'dl', HTMLDListElement, AccordionProps> &
+}) as unknown as ForwardRefWithAs<'dl', HTMLDListElement, AccordionProps> &
   FluentComponentStaticProps<AccordionProps> & {
     Title: typeof AccordionTitle;
     Content: typeof AccordionContent;

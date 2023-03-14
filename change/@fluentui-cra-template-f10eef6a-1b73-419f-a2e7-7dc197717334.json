@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: bump jest types for template",
-  "packageName": "@fluentui/cra-template",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

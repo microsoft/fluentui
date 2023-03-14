@@ -25,7 +25,7 @@ export const cardColumnClassName = 'ui-card__column';
 /**
  * A CardColumn is used to display content in card as column
  */
-export const CardColumn = (React.forwardRef<HTMLDivElement, CardColumnProps>((props, ref) => {
+export const CardColumn = React.forwardRef<HTMLDivElement, CardColumnProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardColumn.displayName, context.telemetry);
   setStart();
@@ -62,8 +62,7 @@ export const CardColumn = (React.forwardRef<HTMLDivElement, CardColumnProps>((pr
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CardColumnProps> &
-  FluentComponentStaticProps<CardColumnProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardColumnProps> & FluentComponentStaticProps<CardColumnProps>;
 
 CardColumn.displayName = 'CardColumn';
 

@@ -41,7 +41,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/ElevationImplementation.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string,
         },
       ];
 

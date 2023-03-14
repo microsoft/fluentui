@@ -289,7 +289,7 @@ export const FocusZoneTabbableElements = {
 /**
  * {@docCategory FocusZone}
  */
-export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+export type FocusZoneTabbableElements = (typeof FocusZoneTabbableElements)[keyof typeof FocusZoneTabbableElements];
 
 /**
  * {@docCategory FocusZone}

@@ -48,14 +48,14 @@ export const menuItemContentClassName = 'ui-menu__itemcontent';
 /**
  * A MenuItemContent allows a user to have a dedicated component that can be targeted from the theme.
  */
-export const MenuItemContent = (React.forwardRef<HTMLSpanElement, MenuItemContentProps>((props, ref) => {
+export const MenuItemContent = React.forwardRef<HTMLSpanElement, MenuItemContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItemContent.displayName, context.telemetry);
   setStart();
 
-  const parentProps = (useContextSelectors(MenuContext, {
+  const parentProps = useContextSelectors(MenuContext, {
     vertical: v => v.vertical,
-  }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+  }) as unknown as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
   const { className, children, design, styles, variables, content, hasMenu, hasIcon, vertical, inSubmenu } = props;
 
@@ -99,7 +99,7 @@ export const MenuItemContent = (React.forwardRef<HTMLSpanElement, MenuItemConten
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemContentProps> &
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, MenuItemContentProps> &
   FluentComponentStaticProps<MenuItemContentProps>;
 
 MenuItemContent.displayName = 'MenuItemContent';

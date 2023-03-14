@@ -1,4 +1,4 @@
-import { FlatTreeItemProps } from '../hooks/useFlatTreeItems';
+import { FlatTreeItemProps } from '../hooks/useFlatTree';
 import { TreeItemProps } from '../TreeItem';
 
 export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
