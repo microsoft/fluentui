@@ -1,13 +1,22 @@
 import * as React from 'react';
 
-import { Label, Button, Checkbox, SpinButton, SpinButtonProps } from '@fluentui/react-components';
+import {
+  Label,
+  Button,
+  SpinButton,
+  SpinButtonProps,
+  RadioGroup,
+  Radio,
+  RadioGroupOnChangeData,
+} from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
 type Formatter = (value: number) => string;
 type Parser = (formattedValue: string) => number;
+
 export const DonationFormSpinButtons: React.FunctionComponent = () => {
-  const [isRecurrenceLimit, setIsRecurrenceLimit] = React.useState(false);
+  const [isRepeatingType, setIsRepeatingType] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const formatter: Formatter = value => {
@@ -40,6 +49,10 @@ export const DonationFormSpinButtons: React.FunctionComponent = () => {
     }
   };
 
+  const onTypeChange = (event: React.BaseSyntheticEvent, data: RadioGroupOnChangeData) => {
+    setIsRepeatingType(data.value === 'repeating');
+  };
+
   React.useEffect(() => {
     if (isSubmitted) {
       document.getElementById('formSubmittedText')?.focus();
@@ -52,7 +65,7 @@ export const DonationFormSpinButtons: React.FunctionComponent = () => {
   };
 
   return (
-    <Scenario pageTitle="Site navigation links">
+    <Scenario pageTitle="Donation form spin buttons">
       <h1>Donation form</h1>
       {!isSubmitted ? (
         <form onSubmit={onSubmit}>
@@ -70,10 +83,23 @@ export const DonationFormSpinButtons: React.FunctionComponent = () => {
             aria-describedby="howMuchText"
           />
 
-          <p id="recurrenceText">Choose the payment recurrence in months.</p>
+          <Label id="typeLabel">Payment type</Label>
+          <RadioGroup defaultValue="oneTime" onChange={onTypeChange} aria-labelledby="typeLabel">
+            <Radio value="oneTime" label="One-time" />
+            <Radio value="repeating" label="Repeating" />
+          </RadioGroup>
+
+          <p id="recurrenceText">Choose after how many months you want to repeat the payment.</p>
 
           <Label htmlFor="recurrence">Recurrence in months</Label>
-          <SpinButton id="recurrence" defaultValue={1} min={1} max={12} aria-describedby="recurrenceText" />
+          <SpinButton
+            id="recurrence"
+            defaultValue={1}
+            min={1}
+            max={12}
+            disabled={!isRepeatingType}
+            aria-describedby="recurrenceText"
+          />
 
           <Button type="submit">Donate</Button>
         </form>
