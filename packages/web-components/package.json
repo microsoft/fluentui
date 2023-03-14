@@ -52,7 +52,7 @@
       "types": "./dist/esm/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
-    "./menu-list": {
+    "./menu": {
       "types": "./dist/esm/menu/define.d.ts",
       "default": "./dist/esm/menu/define.js"
     },
