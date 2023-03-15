@@ -3,7 +3,6 @@ import { Input } from '@fluentui/react-input';
 import { Field } from '@fluentui/react-field';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { PopoverSurface } from '@fluentui/react-popover';
-import type { InputProps } from '@fluentui/react-input';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
@@ -37,12 +36,6 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
    * the public methods and properties of the component.
    */
   componentRef?: React.RefObject<IDatePicker>;
-
-  /**
-   * Pass textField props to textField component.
-   * Prop name is "textField" for compatibility with upcoming slots work.
-   */
-  textField?: InputProps;
 
   /**
    * Callback issued when a date is selected

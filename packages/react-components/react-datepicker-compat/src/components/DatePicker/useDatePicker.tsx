@@ -13,30 +13,31 @@ import {
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
-import { OnOpenChangeData, OpenPopoverEvents, Popover } from '@fluentui/react-popover';
+import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverTrigger } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState } from './DatePicker.types';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
   return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
 }
 
 function useFocusLogic() {
-  const textFieldRef = React.useRef<{ focus: () => void }>(null);
+  const inputRef = React.useRef<{ focus: () => void }>(null);
   const preventFocusOpeningPicker = React.useRef(false);
 
   const focus = () => {
-    textFieldRef.current?.focus?.();
+    inputRef.current?.focus?.();
   };
 
   const preventNextFocusOpeningPicker = () => {
     preventFocusOpeningPicker.current = true;
   };
 
-  return [textFieldRef, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] as const;
+  return [inputRef, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] as const;
 }
 
 function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePickerProps, focus: () => void) {
@@ -229,7 +230,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     showWeekNumbers = false,
     strings = defaultDatePickerStrings,
     tabIndex,
-    input: inputProps,
     today,
     underlined = false,
     value,
@@ -425,7 +425,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   };
 
-  const inputId = inputProps && inputProps.id && inputProps.id !== id ? inputProps.id : id + '-label';
+  const inputId = props.id && props.id !== id ? props.id : id + '-label';
 
   const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'
@@ -447,9 +447,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ...props,
   });
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const inputShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
+      ref: inputRef,
       appearance: inputAppearance,
       'aria-controls': isCalendarShown ? calloutId : undefined,
       'aria-expanded': isCalendarShown,
@@ -463,7 +465,14 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       required: isRequired,
       role: 'combobox',
       tabIndex,
-      ...inputProps,
+      input: {
+        // Needs to be of type any since the union becomes too complex for TS to resolve
+        children: (Component: any, componentProps: any) => (
+          <PopoverTrigger>
+            <Component {...componentProps} />
+          </PopoverTrigger>
+        ),
+      },
     },
   });
   inputShorthand.onBlur = onInputBlur;
@@ -490,11 +499,17 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     required: true,
   });
 
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  React.useEffect(() => {
+    if (inputRef.current) {
+      positioningRef.current?.setTarget(inputRef.current);
+    }
+  }, [inputRef, positioningRef]);
   const popoverShorthand = resolveShorthand(props.popover, {
     defaultProps: {
       onOpenChange: onPopoverOpenChange,
       open: isCalendarShown,
-      positioning: 'below-start',
+      positioning: { align: 'start', position: 'below', positioningRef },
       trapFocus: true,
     },
     required: true,
