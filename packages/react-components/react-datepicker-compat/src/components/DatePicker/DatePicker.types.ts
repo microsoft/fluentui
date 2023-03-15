@@ -10,7 +10,7 @@ import type { CalendarStrings, DateFormatting } from '../../utils';
 
 export type DatePickerSlots = {
   root: NonNullable<Slot<'div'>>;
-  inputField: NonNullable<Slot<typeof Field>>;
+  field: NonNullable<Slot<typeof Field>>;
   input: NonNullable<Slot<typeof Input>>;
   wrapper: NonNullable<Slot<'div'>>;
   popover: NonNullable<Slot<Partial<PopoverProps>>>;

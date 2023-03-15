@@ -485,7 +485,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   inputShorthand.onChange = mergeCallbacks(onInputChange, props.input?.onChange);
   inputShorthand.value = formattedDate;
 
-  const inputFieldShorthand = resolveShorthand(props.inputField, {
+  const fieldShorthand = resolveShorthand(props.field, {
     defaultProps: {
       label,
       required: isRequired,
@@ -557,7 +557,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     // Slots definition
     components: {
       root: 'div',
-      inputField: Field,
+      field: Field,
       input: Input,
       wrapper: 'div',
       popover: Popover as React.FC<Partial<PopoverProps>>,
@@ -565,7 +565,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar: Calendar as React.FC<Partial<CalendarProps>>,
     },
 
-    inputField: inputFieldShorthand,
+    field: fieldShorthand,
     input: inputShorthand,
     root,
     wrapper: wrapperShorthand,
