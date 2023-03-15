@@ -15,8 +15,6 @@ const useStyles = makeStyles({
 });
 
 export const TextInput = () => {
-  const minDate = new Date('Jan 1 2017');
-  const maxDate = new Date('Dec 31 2017');
   const styles = useStyles();
 
   const [value, setValue] = React.useState<Date | undefined>();
@@ -44,8 +42,6 @@ export const TextInput = () => {
         onSelectDate={setValue as (date: Date | null | undefined) => void}
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
-        minDate={minDate}
-        maxDate={maxDate}
       />
       <Button onClick={onClick}>Clear</Button>
     </div>
