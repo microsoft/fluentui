@@ -18,8 +18,19 @@ export const observeResize = (
   target: Element | Element[],
   onResize: (entries: readonly ResizeObserverEntry[] | undefined) => void,
 ): (() => void) => {
+  const win: Window | undefined = getWindow(Array.isArray(target) ? target[0] : target);
+
+  if (!win) {
+    // Can't listen resize if we can't get the window object
+    return () => {
+      // nothing to clean up
+    };
+  }
   if (typeof ResizeObserver !== 'undefined') {
-    const observer = new ResizeObserver(onResize);
+    let animationFrameId: number;
+    const observer = new ResizeObserver(entries => {
+      animationFrameId = win.requestAnimationFrame(() => onResize(entries));
+    });
 
     if (Array.isArray(target)) {
       target.forEach(t => observer.observe(t));
@@ -27,12 +38,14 @@ export const observeResize = (
       observer.observe(target);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      win.cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
+    };
   } else {
     // Fallback for browsers that don't support ResizeObserver
     const onResizeWrapper = () => onResize(undefined);
 
-    const win = getWindow(Array.isArray(target) ? target[0] : target);
     if (!win) {
       // Can't listen for resize if we can't get the window object
       return () => {
