@@ -23,6 +23,7 @@ import {
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
+  spacingVerticalSNudge,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
 
@@ -33,6 +34,7 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    height: 32px;
     align-items: center;
     cursor: pointer;
     display: flex;
@@ -48,7 +50,7 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
+    padding: ${spacingVerticalSNudge} ${spacingHorizontalS} ${spacingVerticalSNudge} ${spacingHorizontalXS};
   }
 
   .label__hidden {
@@ -56,6 +58,7 @@ export const styles = css`
     visibility: hidden;
   }
   .control {
+    box-sizing: border-box;
     align-items: center;
     border: 1px solid ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusCircular};

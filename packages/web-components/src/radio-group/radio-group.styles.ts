@@ -1,8 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
-  colorNeutralForeground3,
-  colorNeutralForegroundDisabled,
+  colorNeutralForeground1,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -10,7 +9,6 @@ import {
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
-  spacingVerticalXS,
 } from '../theme/design-tokens.js';
 
 /** RadioGroup styles
@@ -26,7 +24,7 @@ export const styles = css`
     row-gap: ${spacingVerticalS};
   }
   ::slotted([slot='label']) {
-    color: ${colorNeutralForeground3};
+    color: ${colorNeutralForeground1};
     padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     cursor: default;
@@ -48,5 +46,6 @@ export const styles = css`
   :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
     flex-direction: column;
     justify-content: center;
+    height: auto;
   }
 `;
