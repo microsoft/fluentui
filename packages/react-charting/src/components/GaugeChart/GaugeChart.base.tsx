@@ -4,6 +4,7 @@ import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IGaugeChartProps, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { getColorFromToken } from '../../utilities/colors';
+import { formatValueWithSIPrefix } from '../../utilities/utilities';
 
 const BREAKPOINTS = [142, 124, 106, 88, 70, 52];
 const ARC_WIDTHS = [32, 28, 24, 20, 16, 12];
@@ -22,7 +23,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     const gaugeMarginVertical = 40;
 
     const outerRadius = Math.min((width - gaugeMarginHorizontal) / 2, height - gaugeMarginVertical);
-
     let innerRadius = outerRadius - ARC_WIDTHS[ARC_WIDTHS.length - 1];
     let fontSize = FONT_SIZES[FONT_SIZES.length - 1];
     for (let idx = 0; idx < BREAKPOINTS.length; idx += 1) {
@@ -33,7 +33,9 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       }
     }
 
-    const { minValue, maxValue, segments, needleRotation } = this._initProps(innerRadius, outerRadius);
+    const { minValue, maxValue, segments, sublabel } = this._initProps(innerRadius, outerRadius);
+    const fraction = [this.props.currentValue - minValue, maxValue - minValue];
+    const needleRotation = (fraction[0] / fraction[1]) * 180;
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -46,27 +48,29 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {segments.map((segment, i) => (
             <path key={i} d={segment.d} fill={segment.color} />
           ))}
-          <text x={-(outerRadius + 4)} textAnchor="end" data-is-focusable={true} className={this._classNames.limits}>
-            {minValue}
-          </text>
-          <text x={outerRadius + 4} textAnchor="start" data-is-focusable={true} className={this._classNames.limits}>
-            {maxValue}
-          </text>
-          <text y={0} textAnchor="middle" data-is-focusable={true} className={this._classNames.chartValue}>
-            45%
-          </text>
-          <text
-            y={8}
-            textAnchor="middle"
-            dominantBaseline="hanging"
-            data-is-focusable={true}
-            className={this._classNames.sublabel}
-          >
-            Medium risk
-          </text>
           <g transform={`rotate(${needleRotation}, 0, 0)`}>
             {this._renderNeedle(innerRadius, outerRadius, 2, 'black')}
           </g>
+          <text x={-(outerRadius + 4)} textAnchor="end" data-is-focusable={true} className={this._classNames.limits}>
+            {formatValueWithSIPrefix(minValue)}
+          </text>
+          <text x={outerRadius + 4} textAnchor="start" data-is-focusable={true} className={this._classNames.limits}>
+            {formatValueWithSIPrefix(maxValue)}
+          </text>
+          <text y={0} textAnchor="middle" data-is-focusable={true} className={this._classNames.chartValue}>
+            {`${((fraction[0] / fraction[1]) * 100).toFixed()}%`}
+          </text>
+          {sublabel && (
+            <text
+              y={8}
+              textAnchor="middle"
+              dominantBaseline="hanging"
+              data-is-focusable={true}
+              className={this._classNames.sublabel}
+            >
+              {sublabel}
+            </text>
+          )}
         </g>
       </svg>
     );
@@ -95,11 +99,17 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     const { minValue = 0, maxValue, segments = [], theme, currentValue } = this.props;
 
     let maxVal = minValue;
+    let sublabel: string | undefined;
     segments.forEach(segment => {
+      const prevVal = maxVal;
       maxVal += segment.size;
+      if (currentValue >= prevVal && currentValue <= maxVal) {
+        sublabel = segment.label;
+      }
     });
     if (typeof maxValue !== 'undefined' && maxVal < maxValue) {
       segments.push({ size: maxValue - maxVal });
+      maxVal = maxValue;
     }
 
     const arcGenerator = shape
@@ -107,7 +117,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       .padAngle(2 / outerRadius)
       .padRadius(outerRadius);
     let prevAngle = -Math.PI / 2;
-    const arcData = segments.map(segment => {
+    const arcsData = segments.map(segment => {
       const endAngle = prevAngle + (segment.size / (maxVal - minValue)) * Math.PI;
       const d = arcGenerator({
         innerRadius,
@@ -125,13 +135,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       };
     });
 
-    const needleRotation = ((currentValue - minValue) / (maxVal - minValue)) * 180;
-
     return {
       minValue,
       maxValue: maxVal,
-      segments: arcData,
-      needleRotation,
+      segments: arcsData,
+      sublabel,
     };
   };
 }

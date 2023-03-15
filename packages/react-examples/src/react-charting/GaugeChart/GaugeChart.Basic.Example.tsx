@@ -66,9 +66,9 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
 
         <GaugeChart
           segments={[
-            { size: 33, color: DataVizPalette.success },
-            { size: 34, color: DataVizPalette.warning },
-            { size: 33, color: DataVizPalette.error },
+            { size: 33, color: DataVizPalette.success, label: 'Low Risk' },
+            { size: 34, color: DataVizPalette.warning, label: 'Medium Risk' },
+            { size: 33, color: DataVizPalette.error, label: 'High Risk' },
           ]}
           currentValue={this.state.currentValue}
           width={this.state.width}
