@@ -15,11 +15,15 @@ export const Portal: React_2.FC<PortalProps>;
 // @public (undocumented)
 export type PortalProps = {
     children?: React_2.ReactNode;
-    mountNode?: HTMLElement | null;
+    mountNode?: HTMLElement | null | {
+        element?: HTMLElement | null;
+        className?: string;
+    };
 };
 
 // @public (undocumented)
-export type PortalState = Pick<PortalProps, 'children'> & Required<Pick<PortalProps, 'mountNode'>> & {
+export type PortalState = Pick<PortalProps, 'children'> & {
+    mountNode: HTMLElement | null | undefined;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 };
 

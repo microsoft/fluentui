@@ -197,17 +197,26 @@ export interface ColumnWidthState {
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
+export type EnableKeyboardModeOnChangeCallback = (columnId: TableColumnId, isKeyboardMode: boolean) => void;
+
 export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
+  enableKeyboardMode: (
+    columnId: TableColumnId,
+    onChange?: EnableKeyboardModeOnChangeCallback,
+  ) => (e: React.MouseEvent | React.TouchEvent) => void;
 }
 
 export type ColumnResizeState = {
   getColumnWidth: (columnId: TableColumnId) => number;
-  setColumnWidth: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  setColumnWidth: (
+    e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+    data: { columnId: TableColumnId; width: number },
+  ) => void;
   getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
   getColumns: () => ColumnWidthState[];
 };
@@ -219,6 +228,9 @@ export type TableColumnSizingOptions = Record<
 
 export type UseTableColumnSizingParams = {
   columnSizingOptions?: TableColumnSizingOptions;
-  onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: { columnId: TableColumnId; width: number }) => void;
+  onColumnResize?: (
+    e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+    data: { columnId: TableColumnId; width: number },
+  ) => void;
   containerWidthOffset?: number;
 };

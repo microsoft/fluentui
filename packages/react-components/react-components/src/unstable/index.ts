@@ -8,44 +8,6 @@ export {
   useAlert_unstable,
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
-export {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardPreview,
-  cardClassNames,
-  cardCSSVars,
-  cardFooterClassNames,
-  cardHeaderClassNames,
-  cardHeaderCSSVars,
-  cardPreviewClassNames,
-  renderCard_unstable,
-  renderCardFooter_unstable,
-  renderCardHeader_unstable,
-  renderCardPreview_unstable,
-  useCard_unstable,
-  useCardFooter_unstable,
-  useCardFooterStyles_unstable,
-  useCardHeader_unstable,
-  useCardHeaderStyles_unstable,
-  useCardPreview_unstable,
-  useCardPreviewStyles_unstable,
-  useCardStyles_unstable,
-} from '@fluentui/react-card';
-export type {
-  CardFooterProps,
-  CardFooterSlots,
-  CardFooterState,
-  CardHeaderProps,
-  CardHeaderSlots,
-  CardHeaderState,
-  CardPreviewProps,
-  CardPreviewSlots,
-  CardPreviewState,
-  CardProps,
-  CardSlots,
-  CardState,
-} from '@fluentui/react-card';
 
 export {
   InfoButton,
@@ -116,6 +78,30 @@ export {
 export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
 
 export {
+  Skeleton,
+  renderSkeleton_unstable,
+  skeletonClassNames,
+  useSkeletonStyles_unstable,
+  useSkeleton_unstable,
+  SkeletonItem,
+  renderSkeletonItem_unstable,
+  skeletonItemClassNames,
+  useSkeletonItemStyles_unstable,
+  useSkeletonItem_unstable,
+  SkeletonContextProvider,
+  useSkeletonContext,
+} from '@fluentui/react-skeleton';
+export type {
+  SkeletonProps,
+  SkeletonSlots,
+  SkeletonState,
+  SkeletonItemProps,
+  SkeletonItemSlots,
+  SkeletonItemState,
+  SkeletonContextValue,
+} from '@fluentui/react-skeleton';
+
+export {
   Virtualizer,
   virtualizerClassNames,
   useVirtualizer_unstable,
@@ -156,12 +142,11 @@ export {
   treeItemLayoutClassNames,
   treeItemClassNames,
   treeClassNames,
-  useFlatTreeItems_unstable,
+  useFlatTree_unstable,
   flattenTree_unstable,
 } from '@fluentui/react-tree';
 
 export type {
-  UseFlatTreeItemsOptions,
   TreeState,
   TreeSlots,
   TreeProps,
@@ -181,7 +166,7 @@ export type {
   TreeItemId,
   TreeContextValue,
   NestedTreeItem,
-  LazyFlatTreeItems,
+  FlatTree,
   FlatTreeProps,
   FlatTreeItemProps,
   FlatTreeItem,
