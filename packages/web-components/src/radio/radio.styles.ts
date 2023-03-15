@@ -1,6 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  borderRadiusCircular,
   borderRadiusMedium,
   colorCompoundBrandForeground1,
   colorCompoundBrandForeground1Pressed,
@@ -57,7 +58,7 @@ export const styles = css`
   .control {
     align-items: center;
     border: 1px solid ${colorNeutralStrokeAccessible};
-    border-radius: 50%;
+    border-radius: ${borderRadiusCircular};
     display: flex;
     height: 16px;
     justify-content: center;
@@ -66,7 +67,7 @@ export const styles = css`
     width: 16px;
   }
   .checked-indicator {
-    border-radius: 5px;
+    border-radius: ${borderRadiusCircular};
     height: 10px;
     opacity: 0;
     width: 10px;
