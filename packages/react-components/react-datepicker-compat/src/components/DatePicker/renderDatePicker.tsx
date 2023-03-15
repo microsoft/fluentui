@@ -17,8 +17,11 @@ export const renderDatePicker_unstable = (state: DatePickerState) => {
         <slots.popover {...(slotProps.popover as PopoverProps)}>
           <PopoverTrigger>
             {popoverTriggerChildProps => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              const rootProps: any = { root: popoverTriggerChildProps };
+              // onKeyDown is not needed as DatePicker handles closing the popover with ESC internally. onKeyDown also
+              // causes issues when typing in the input, not letting the user type SPACE and bugs with BACKSPACE.
+              const { onKeyDown, ...inputTriggerProps } = popoverTriggerChildProps;
+              const rootProps = { root: { ...inputTriggerProps } };
+
               return (
                 <slots.inputField {...slotProps.inputField}>
                   <slots.input {...slotProps.input} {...rootProps} />

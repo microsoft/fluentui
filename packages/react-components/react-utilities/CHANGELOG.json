@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 13 Mar 2023 08:58:26 GMT",
+      "tag": "@fluentui/react-utilities_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "feat: isHTMLElement to support all HTMLElement classes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Mar 2023 07:14:01 GMT",
       "tag": "@fluentui/react-utilities_v9.6.2",
       "version": "9.6.2",

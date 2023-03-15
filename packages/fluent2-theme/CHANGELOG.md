@@ -1,8 +1,19 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Fri, 10 Mar 2023 07:38:24 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Mar 2023 07:38:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.106.1](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.106.1)
+
+Tue, 14 Mar 2023 07:38:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.106.0..@fluentui/fluent2-theme_v8.106.1)
+
+### Patches
+
+- Updating spin button focused and disabled styles. ([PR #27188](https://github.com/microsoft/fluentui/pull/27188) by matejera@microsoft.com)
+- Fixing bugs in the spinner size. All 4 sizes were hard coded to 32px. Now Medium and large are 32px & 36px respectivley.xSmall back to 12px and small to 16px. ([PR #27182](https://github.com/microsoft/fluentui/pull/27182) by matejera@microsoft.com)
+- Bump @fluentui/react to v8.106.6 ([PR #26749](https://github.com/microsoft/fluentui/pull/26749) by beachball)
 
 ## [8.106.0](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.106.0)
 
