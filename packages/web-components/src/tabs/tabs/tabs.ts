@@ -1,6 +1,15 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTTabs } from '@microsoft/fast-foundation';
-import { TabData, TabListAppearance, TabListSize } from './tabs.options.js';
+import { Tab } from '../index.js';
+import { TabsAppearance, TabsSize } from './tabs.options.js';
+
+export interface TabData {
+  id: string;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+}
 
 /**
  * TabList extends FASTTabs and is used for constructing a fluent-tab-list custom html element.
@@ -10,13 +19,13 @@ import { TabData, TabListAppearance, TabListSize } from './tabs.options.js';
  */
 export class Tabs extends FASTTabs {
   @attr
-  public appearance?: TabListAppearance = TabListAppearance.transparent;
+  public appearance?: TabsAppearance = TabsAppearance.transparent;
 
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
   @attr
-  public size?: TabListSize = 'medium';
+  public size?: TabsSize = 'medium';
 
   @attr({ attribute: 'reserve-selected-tab-space', mode: 'boolean' })
   public reserveSelectedTabSpace?: boolean;
@@ -33,18 +42,27 @@ export class Tabs extends FASTTabs {
 
   private setTabData(): void {
     if (this.tabs && this.tabs.length > 0) {
-      const activeTab = this.tabs.filter(tab => tab.id === this.activeid)[0] || this.tabs[0];
+      const tabs = this.tabs as Tab[];
+      const activeTab = tabs.filter(tab => tab.id === this.activeid)[0] || this.tabs[0];
       const activeRect = activeTab?.getBoundingClientRect();
       const parentRect = this.getBoundingClientRect();
 
-      this.tabs.forEach(tab => {
-        tab.dataset.activeTab = JSON.stringify({
-          id: activeTab.id,
-          x: activeRect.x - parentRect.x,
-          y: activeRect.y - parentRect.y,
-          height: activeRect.height,
-          width: activeRect.width,
-        } as TabData);
+      const activeTabData = {
+        id: activeTab.id,
+        x: activeRect.x - parentRect.x,
+        y: activeRect.y - parentRect.y,
+        height: activeRect.height,
+        width: activeRect.width,
+      } as TabData;
+
+      tabs.forEach((tab: Tab) => {
+        tab.activeTab = activeTabData;
+        tab.isHorizontal = this.orientation === 'horizontal';
+        tab.parentX = this.getBoundingClientRect().x;
+        tab.parentY = this.getBoundingClientRect().y;
+        if (!tab.previousActiveTab) {
+          tab.previousActiveTab = activeTabData;
+        }
       });
     }
   }

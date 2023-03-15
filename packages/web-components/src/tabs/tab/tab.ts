@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTTab } from '@microsoft/fast-foundation';
-import { TabData, Tabs } from '../index.js';
+import { TabData } from '../index.js';
 
 export const TAB_TOKEN_NAMES = {
   tabIndicatorOffset: '--tabIndicatorOffsetX',
@@ -11,29 +11,47 @@ export const TAB_TOKEN_NAMES = {
  * Tab extends the FASTTab and is a child of the TabList
  */
 export class Tab extends FASTTab {
-  private _activeTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
+  private _isHorizontal: boolean = false;
+  @attr private _activeTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
   private _previousActiveTab: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
-  private _offset = 0;
-  private _scale = 1;
+  private _parentX = 0;
+  private _parentY = 0;
+  private offset = 0;
+  private scale = 1;
 
-  @attr({ attribute: 'data-active-tab' })
-  private dataActiveTab: string = '';
+  public set isHorizontal(isHorizontal: boolean) {
+    this._isHorizontal = isHorizontal;
+  }
+
+  public set activeTab(newActiveTab: TabData) {
+    this._activeTab = newActiveTab;
+  }
+
+  public set previousActiveTab(newActiveTab: TabData) {
+    this._previousActiveTab = newActiveTab;
+  }
+
+  public set parentX(newParentX: number) {
+    this._parentX = newParentX;
+  }
+
+  public set parentY(newParentY: number) {
+    this._parentY = newParentY;
+  }
 
   /**
-   * dataActiveTabChanged
+   * activeTabChanged
    *
-   * runs when the data-active-tab attribute updates.
-   * it syncs the values of the activeTab to the local class
+   * syncs the values of the activeTab to the local class
    * calculates the active indicator position
    * and runs the animation loop
    */
-  private dataActiveTabChanged() {
-    const dataActiveTab = this.dataset.activeTab;
-    if (dataActiveTab) {
-      // set the active tab on the class field
-      this._activeTab = JSON.parse(dataActiveTab);
+  private _activeTabChanged() {
+    // const dataActiveTab = this.dataset.activeTab;
+    // if (dataActiveTab) {
+    if (this._activeTab) {
       // if there is not previous tab create a new one on the class field
-      if (!this._previousActiveTab.id) {
+      if (!this._previousActiveTab?.id) {
         this._previousActiveTab = this._activeTab;
       }
       this.animationLoop();
@@ -65,7 +83,7 @@ export class Tab extends FASTTab {
     this.syncAnimationProperties();
 
     // add the animate css class if the calculated offset is 0 and scale is 1
-    if (this._offset === 0 && this._scale === 1) {
+    if (this.offset === 0 && this.scale === 1) {
       this.classList.add('animated');
       // update the css vars
       this.setTabScaleCSSVar();
@@ -82,8 +100,8 @@ export class Tab extends FASTTab {
    */
   private clearAnimationProperties() {
     this._previousActiveTab = { id: '', x: 0, y: 0, height: 0, width: 0 };
-    this._offset = 0;
-    this._scale = 1;
+    this.offset = 0;
+    this.scale = 1;
     this.classList.remove('animated');
   }
 
@@ -94,23 +112,21 @@ export class Tab extends FASTTab {
    * These values will be applied to css variables that control the tab active indicator position animations
    */
   private syncAnimationProperties() {
-    const tabList = this.parentElement as Tabs;
-    const isHorizontal = tabList.orientation === 'horizontal';
-    const previousSelectedTabPosition = isHorizontal ? this._previousActiveTab.x : this._previousActiveTab.y;
-    const selectedTabPosition = this.getSelectedTabPosition(isHorizontal);
-    const previousSelectedTabScale = isHorizontal ? this._previousActiveTab.width : this._previousActiveTab.height;
-    const selectedTabScale = this.getSelectedTabScale(isHorizontal);
+    const previousSelectedTabPosition = this._isHorizontal ? this._previousActiveTab.x : this._previousActiveTab.y;
+    const selectedTabPosition = this.getSelectedTabPosition(this._isHorizontal);
+    const previousSelectedTabScale = this._isHorizontal
+      ? this._previousActiveTab.width
+      : this._previousActiveTab.height;
+    const selectedTabScale = this.getSelectedTabScale(this._isHorizontal);
 
-    this._offset = previousSelectedTabPosition - selectedTabPosition;
-    this._scale = (previousSelectedTabScale || 1) / (selectedTabScale || 1);
+    this.offset = previousSelectedTabPosition - selectedTabPosition;
+    this.scale = (previousSelectedTabScale || 1) / (selectedTabScale || 1);
   }
 
   private getSelectedTabPosition(isHorizontal: boolean): number {
-    if (this.parentElement) {
-      if (isHorizontal) {
-        return this.getBoundingClientRect().x - this.parentElement.getBoundingClientRect().x;
-      } else return this.getBoundingClientRect().y - this.parentElement.getBoundingClientRect().y;
-    }
+    if (isHorizontal) {
+      return this.getBoundingClientRect().x - this._parentX;
+    } else return this.getBoundingClientRect().y - this._parentY;
     return 0;
   }
 
@@ -124,10 +140,10 @@ export class Tab extends FASTTab {
   }
 
   private setTabOffsetCSSVar() {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorOffset, `${this._offset}px`);
+    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorOffset, `${this.offset}px`);
   }
 
   private setTabScaleCSSVar(newScale?: number) {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorScale, `${newScale || this._scale}`);
+    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorScale, `${newScale || this.scale}`);
   }
 }

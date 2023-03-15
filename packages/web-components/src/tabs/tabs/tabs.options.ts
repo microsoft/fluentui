@@ -1,31 +1,19 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
+import { TabsOrientation } from '@microsoft/fast-foundation';
 
-export const TabListAppearance = {
+export const TabsAppearance = {
   subtle: 'subtle',
   transparent: 'transparent',
 } as const;
 
-export type TabListAppearance = ValuesOf<typeof TabListAppearance>;
+export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
 
-export const TabListSize = {
+export const TabsSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
 
-export type TabListSize = ValuesOf<typeof TabListSize>;
+export type TabsSize = ValuesOf<typeof TabsSize>;
 
-export const TabListOrientation = {
-  vertical: 'vertical',
-  horizontal: 'horizontal',
-} as const;
-
-export type TabListOrientation = ValuesOf<typeof TabListOrientation>;
-
-export interface TabData {
-  id: string;
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-}
+export { TabsOrientation };

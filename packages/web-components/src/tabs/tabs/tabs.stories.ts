@@ -1,14 +1,15 @@
 import { html } from '@microsoft/fast-element';
+import { TabsOrientation } from '@microsoft/fast-foundation';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import type { Tabs as FluentTabs } from './tabs.js';
 import './define.js';
 import '../tab/define.js';
 import '../tab-panel/define.js';
-import { TabListAppearance as TabListAppearanceValues, TabListOrientation, TabListSize } from './tabs.options.js';
+import { TabsAppearance as TabsAppearanceValues, TabsSize } from './tabs.options.js';
 
-type TabListStoryArgs = Args & FluentTabs;
-type TabListStoryMeta = Meta<TabListStoryArgs>;
+type TabsStoryArgs = Args & FluentTabs;
+type TabsStoryMeta = Meta<TabsStoryArgs>;
 
 const defaultTabIds = ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'];
 
@@ -27,7 +28,7 @@ const defaultTabIds = ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'];
 //   />
 // </svg> `;
 
-const tabListDefault = html`
+const tabsDefault = html`
   <fluent-tabs
     orientation=${component => component.orientation}
     appearance=${component => component.appearance}
@@ -47,9 +48,9 @@ const tabListDefault = html`
     <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}>Tab Four Content</fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabListDefault = renderComponent(tabListDefault).bind({});
+export const TabsDefault = renderComponent(tabsDefault).bind({});
 
-const tabListHorizontal = html`
+const tabsHorizontal = html`
   <fluent-tabs orientation="horizontal">
     <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
     <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
@@ -62,9 +63,9 @@ const tabListHorizontal = html`
     <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabListHorizontal = renderComponent(tabListHorizontal).bind({});
+export const TabsHorizontal = renderComponent(tabsHorizontal).bind({});
 
-const tabListVertical = html`
+const tabsVertical = html`
   <fluent-tabs orientation="vertical">
     <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
     <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
@@ -77,9 +78,9 @@ const tabListVertical = html`
     <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabListVertical = renderComponent(tabListVertical).bind({});
+export const TabsVertical = renderComponent(tabsVertical).bind({});
 
-const tabListAppearance = html`
+const tabsAppearance = html`
   <div>
     <fluent-tabs appearance="transparent">
       <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
@@ -105,9 +106,9 @@ const tabListAppearance = html`
     </fluent-tabs>
   </div>
 `;
-export const TabListAppearance = renderComponent(tabListAppearance).bind({});
+export const TabsAppearance = renderComponent(tabsAppearance).bind({});
 
-const tabListDisabledTabs = html`
+const tabsDisabledTabs = html`
   <div>
     <fluent-tabs disabled>
       <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
@@ -134,9 +135,9 @@ const tabListDisabledTabs = html`
     </fluent-tabs>
   </div>
 `;
-export const TabListDisabled = renderComponent(tabListDisabledTabs).bind({});
+export const TabsDisabled = renderComponent(tabsDisabledTabs).bind({});
 
-const tabListSizeSmall = html`
+const tabsSizeSmall = html`
   <div>
     <fluent-tabs size="small">
       <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
@@ -162,9 +163,9 @@ const tabListSizeSmall = html`
     </fluent-tabs>
   </div>
 `;
-export const TabListSizeSmall = renderComponent(tabListSizeSmall).bind({});
+export const TabsSizeSmall = renderComponent(tabsSizeSmall).bind({});
 
-const tabListSizeMedium = html`
+const tabsSizeMedium = html`
   <div>
     <fluent-tabs size="medium">
       <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
@@ -190,9 +191,9 @@ const tabListSizeMedium = html`
     </fluent-tabs>
   </div>
 `;
-export const TabListSizeMedium = renderComponent(tabListSizeMedium).bind({});
+export const TabsSizeMedium = renderComponent(tabsSizeMedium).bind({});
 
-const tabListSizeLarge = html`
+const tabsSizeLarge = html`
   <div>
     <fluent-tabs size="large">
       <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
@@ -218,10 +219,10 @@ const tabListSizeLarge = html`
     </fluent-tabs>
   </div>
 `;
-export const TabListSizeLarge = renderComponent(tabListSizeLarge).bind({});
+export const TabsSizeLarge = renderComponent(tabsSizeLarge).bind({});
 
 export default {
-  title: 'Components/TabList',
+  title: 'Components/Tabs',
   args: {
     appearance: 'transparent',
     disabled: false,
@@ -231,7 +232,7 @@ export default {
   },
   argTypes: {
     appearance: {
-      options: Object.values(TabListAppearanceValues),
+      options: Object.values(TabsAppearanceValues),
       defaultValue: 'transparent',
       control: {
         type: 'select',
@@ -254,14 +255,14 @@ export default {
       control: { type: 'select' },
     },
     size: {
-      options: Object.values(TabListSize),
+      options: Object.values(TabsSize),
       defaultValue: 'medium',
       control: { type: 'select' },
     },
     orientation: {
-      options: Object.values(TabListOrientation),
+      options: Object.values(TabsOrientation),
       defaultValue: 'horizontal',
       control: { type: 'select' },
     },
   },
-} as TabListStoryMeta;
+} as TabsStoryMeta;
