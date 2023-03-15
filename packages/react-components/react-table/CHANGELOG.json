@@ -2,6 +2,57 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:52 GMT",
+      "tag": "@fluentui/react-table_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "55230fb45b3e30941ee9f4005cf3ada071a4f626",
+            "comment": "Added support for keyboard navigation in Table/DataGrid"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.4.3",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.1.3",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.1.3",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.1",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.5.7",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-theme to v9.1.6",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:26 GMT",
       "tag": "@fluentui/react-table_v9.1.2",
       "version": "9.1.2",

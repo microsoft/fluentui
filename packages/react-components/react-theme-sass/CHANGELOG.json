@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:53 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.6",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:51 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.8",
       "version": "9.0.0-alpha.8",
