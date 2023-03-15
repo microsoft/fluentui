@@ -451,7 +451,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const inputShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
-      ref: inputRef,
       appearance: inputAppearance,
       'aria-controls': isCalendarShown ? calloutId : undefined,
       'aria-expanded': isCalendarShown,
@@ -473,6 +472,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
             <Component {...componentProps} />
           </PopoverTrigger>
         ),
+      },
+      root: {
+        ref: inputRef,
       },
     },
   });
@@ -501,11 +503,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   });
 
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
-  React.useEffect(() => {
-    if (inputRef.current) {
-      positioningRef.current?.setTarget(inputRef.current);
-    }
-  }, [inputRef, positioningRef]);
   const popoverShorthand = resolveShorthand(props.popover, {
     defaultProps: {
       onOpenChange: onPopoverOpenChange,
@@ -575,6 +572,12 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   };
 
   state.calendar.onSelectDate = mergeCallbacks(state.calendar.onSelectDate, calendarDismissed);
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      positioningRef.current?.setTarget(inputRef.current);
+    }
+  }, [inputRef, positioningRef]);
 
   return state;
 };
