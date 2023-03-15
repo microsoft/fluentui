@@ -11,3 +11,4 @@ export type { StyledTextProps, StyledTextSlots } from './components/StyledText';
 export { Primitive, primitiveClassName } from './components/Primitive';
 export { ItemLayout, itemLayoutClassName, useItemLayoutStyles } from './components/ItemLayout';
 export { Flex, flexClassName, flexItem, useFlexStyles } from './components/Flex';
+export { ChatLegacy, ChatMessageLegacy, ChatMyMessageLegacy } from './components/ChatLegacy';
