@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 13 Mar 2023 08:58:23 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Mar 2023 10:19:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.1)
+
+Wed, 15 Mar 2023 10:19:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.0..@fluentui/react-components_v9.18.1)
+
+### Minor changes
+
+- `@fluentui/react-image`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27066](https://github.com/microsoft/fluentui/pull/27066) by gcox@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - feat: Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: accept a className in mountNode in Portal ([PR #27008](https://github.com/microsoft/fluentui/pull/27008) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - Added support for keyboard navigation in Table/DataGrid ([PR #26956](https://github.com/microsoft/fluentui/pull/26956) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-text`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27078](https://github.com/microsoft/fluentui/pull/27078) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - docs: improve readme description ([PR #27181](https://github.com/microsoft/fluentui/pull/27181) by marcosvmmoura@gmail.com)
+- `@fluentui/react-progress`
+  - fix: Smooth out animation of indeterminate progress bar ([PR #27201](https://github.com/microsoft/fluentui/pull/27201) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-theme-sass`
+  - feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- `@fluentui/tokens`
+  - feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
 
 ## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.0)
 

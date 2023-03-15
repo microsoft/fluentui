@@ -2,6 +2,39 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:52 GMT",
+      "tag": "@fluentui/react-progress_v9.1.3",
+      "version": "9.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5420a75a4a56f6004ef69b755ed2924edd98167e",
+            "comment": "fix: Smooth out animation of indeterminate progress bar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.0.0-alpha.25",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.1",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-theme to v9.1.6",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:26 GMT",
       "tag": "@fluentui/react-progress_v9.1.2",
       "version": "9.1.2",
