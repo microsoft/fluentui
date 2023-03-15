@@ -1121,7 +1121,7 @@ describe('migrate-converged-pkg generator', () => {
           transform: {
             react: {
               runtime: 'classic',
-              useBuiltins: true,
+              useSpread: true,
             },
           },
         },
