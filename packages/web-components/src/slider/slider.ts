@@ -16,6 +16,12 @@ export class Slider extends FASTSlider {
   @attr
   public size?: SliderSize;
 
+  /**
+   * The number of steps in the slider
+   * @public
+   * @remarks
+   * HTML Attribute: step
+   */
   @attr
   public step?: number;
   stepChanged(): void {
