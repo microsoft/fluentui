@@ -23,7 +23,7 @@ export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
 
-  const scrollRef = React.useRef<HTMLDivElement | null>(null);
+  const scrollRef = React.useRef<HTMLDivElement>();
   const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 100,
   });

@@ -13,7 +13,7 @@ export const useStaticVirtualizerMeasure = (
   virtualizerLength: number;
   bufferItems: number;
   bufferSize: number;
-  useScrollRef: (ref: React.MutableRefObject<HTMLElement | HTMLDivElement>) => void;
+  useScrollRef: (ref: React.MutableRefObject<HTMLElement | HTMLDivElement | null>) => void;
 } => {
   const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
 
@@ -22,9 +22,9 @@ export const useStaticVirtualizerMeasure = (
   const [virtualizerBufferSize, setVirtualizerBufferSize] = React.useState(0);
 
   // The ref the user sets on their scrollView - Defaults to document.body to ensure no null on init
-  const container: React.MutableRefObject<HTMLElement> = React.useRef<HTMLElement>(document.body);
+  const container: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
 
-  const useVirtualizerScrollRef = (ref: React.MutableRefObject<HTMLElement>) => {
+  const useVirtualizerScrollRef = (ref: React.MutableRefObject<HTMLElement | HTMLDivElement | null>) => {
     React.useEffect(() => {
       if (ref.current !== container.current) {
         if (container.current) {
@@ -45,6 +45,10 @@ export const useStaticVirtualizerMeasure = (
   // the handler for resize observer
   const handleResize = debounce(
     React.useCallback(() => {
+      if (!container.current) {
+        return;
+      }
+
       const containerSize =
         direction === 'vertical'
           ? container.current.getBoundingClientRect().height

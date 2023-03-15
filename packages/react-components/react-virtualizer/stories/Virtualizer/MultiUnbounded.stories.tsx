@@ -38,7 +38,7 @@ export const MultiUnbounded = () => {
     defaultItemSize: 100,
   });
 
-  const scrollView = React.useRef<HTMLElement | null>(document.body);
+  const scrollView = React.useRef<HTMLElement | null>(null);
   useScrollRef(scrollView);
 
   const renderHeader = (index: number) => {

@@ -37,7 +37,7 @@ export const DefaultUnbounded = () => {
     defaultItemSize: 100,
   });
 
-  const scrollRef = React.useRef<HTMLElement | null>(document.body);
+  const scrollRef = React.useRef<HTMLElement | null>(null);
   useScrollRef(scrollRef);
 
   return (
