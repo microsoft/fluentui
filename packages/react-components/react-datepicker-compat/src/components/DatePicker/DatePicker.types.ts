@@ -67,11 +67,6 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   disabled?: boolean;
 
   /**
-   * Aria Label for TextField of the DatePicker for screen reader users.
-   */
-  ariaLabel?: string;
-
-  /**
    * Whether or not the Textfield of the DatePicker is underlined.
    * @defaultvalue false
    */

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 16 Mar 2023 14:36:58 GMT",
+      "tag": "@fluentui/react-tabster_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fe1014bbcd770a7b38a3a9a09595e93297c2da26",
+            "comment": "feat: add options to useFocusVisible() hook"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.7.1",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Mar 2023 10:19:52 GMT",
       "tag": "@fluentui/react-tabster_v9.5.7",
       "version": "9.5.7",

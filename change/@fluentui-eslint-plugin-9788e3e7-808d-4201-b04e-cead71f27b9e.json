@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: rule to ban usage of instanceof HTMLElement",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
