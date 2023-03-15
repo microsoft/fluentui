@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { useEffect, useRef, useState, useCallback, useReducer } from 'react';
 
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {

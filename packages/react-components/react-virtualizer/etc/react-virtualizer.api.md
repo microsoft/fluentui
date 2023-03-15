@@ -28,17 +28,18 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 };
 
 // @public
-export const useStaticVirtualizerMeasure: (defaultItemSize: number, scrollView?: HTMLElement, direction?: 'vertical' | 'horizontal') => {
+export const useStaticVirtualizerMeasure: (virtualizerProps: IVirtualizerMeasureProps) => {
     virtualizerLength: number;
     bufferItems: number;
     bufferSize: number;
+    useScrollRef: (ref: React_2.MutableRefObject<HTMLElement | HTMLDivElement>) => void;
 };
 
 // @public (undocumented)
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
 
 // @public (undocumented)
-export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps, virtualizerLength: number): VirtualizerScrollViewState;
+export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState;
 
 // @public
 export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollViewState) => VirtualizerScrollViewState;
