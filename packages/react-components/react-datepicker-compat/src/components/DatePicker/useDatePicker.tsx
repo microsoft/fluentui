@@ -467,6 +467,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       tabIndex,
       input: {
         // Needs to be of type any since the union becomes too complex for TS to resolve
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         children: (Component: any, componentProps: any) => (
           <PopoverTrigger>
             <Component {...componentProps} />
