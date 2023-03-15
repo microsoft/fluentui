@@ -4,6 +4,7 @@ import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup as FluentRadioGroup } from './radio-group.js';
 import './define.js';
 import '../radio/define.js';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation';
 
 type RadioGroupStoryArgs = Args & FluentRadioGroup;
 type RadioGroupStoryMeta = Meta<RadioGroupStoryArgs>;
@@ -73,8 +74,9 @@ export default {
     orientation: {
       control: {
         type: 'select',
-        options: ['horizontal', 'vertical'],
+        options: Object.values(RadioGroupOrientation),
       },
+      defaultValue: 'primary',
       table: {
         type: {
           summary: 'Sets orientation of radio group',
