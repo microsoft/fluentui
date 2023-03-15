@@ -2,6 +2,33 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:51 GMT",
+      "tag": "@fluentui/react-portal_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "6d89241afb94c8f50514a396763be5c798047d80",
+            "comment": "feat: accept a className in mountNode in Portal"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.1",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.5.7",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:26 GMT",
       "tag": "@fluentui/react-portal_v9.1.12",
       "version": "9.1.12",

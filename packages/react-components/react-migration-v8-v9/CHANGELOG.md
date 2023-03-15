@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Mon, 13 Mar 2023 08:58:26 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Mar 2023 10:19:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.2.0)
+
+Wed, 15 Mar 2023 10:19:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.1.13..@fluentui/react-migration-v8-v9_v9.2.0)
+
+### Minor changes
+
+- feat: Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-components to v9.18.1 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
 
 ## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.1.13)
 

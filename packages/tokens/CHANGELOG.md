@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Mar 2023 10:19:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.3)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.2..@fluentui/tokens_v1.0.0-alpha.3)
+
+### Changes
+
+- feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.2)
 
