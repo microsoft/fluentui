@@ -106,6 +106,8 @@ jobs:
 
       - script: |
           yarn install
+          git diff yarn.lock
+          git diff package.json
         displayName: yarn
 
       - script: |
