@@ -102,7 +102,7 @@ As detailed in the _/Concepts/Developer/Styling Components_ topic, you can creat
 If you do create custom styles, we strongly recommend using design tokens.
 This ensures styles update with theme changes.
 
-## You can recompose components with custom styles
+## You can recompose components with different styles
 
 Fluent v9 has a powerful composition model using React hooks.
 Each component is separated into a hook that maps props to state, a hook that uses state to set className styles on each slot, and a render function that outputs each slot with applied props.
@@ -145,3 +145,43 @@ export const MyButton: ForwardRefComponent<ButtonProps> = React.forwardRef((prop
 ```
 
 This is the most advanced form of customization in Fluent UI React v9, but provides you complete control over components.
+
+## You can set custom style hooks per component type
+
+**⚠ Avoid custom style hooks**
+
+Prefer creating custom themes, setting className, replacing slots, extending theme tokens, and component recomposition.
+This approach is meant as an escape-hatch when all other customizations are not enough for your use case.
+
+**⚠ Be careful **
+
+- Never change any state properties other than `className`.
+- Never dynamically change hooks at runtime. This will lead to unstable hook calls.
+- Custom style hooks are called from within the component and receive the component state.
+- Be judicious with creating styles and making `mergeClasses` call as you may affect the performance.
+
+You can pass `FluentProvider.customStyleHooks_unstable` a set of custom style hooks. The custom style hooks are considered unstable and the API may change at any time.
+Each custom style hook can update root or slot class names.
+
+```tsx
+const myButtonStyles = makeStyles({
+  root: {
+    //...
+  },
+});
+
+const myCustomStyles: FluentProviderCustomStyleHooks = {
+  useButtonStyles_unstable: state => {
+    const myButtonStyles = useMyButtonStyles();
+    const buttonState = state as ButtonState;
+    buttonState.root.className = mergeClasses(buttonState.root.className, myButtonStyles.root);
+  },
+};
+
+<FluentProvider customStyleHooks_unstable={myCustomStyles}></FluentProvider>;
+```
+
+To override existing styles, use `makeStyles` to create your custom styles and then call `mergeClasses` with state `className` and the your new styles.
+To completely replace existing styles, overwrite the state `className`.
+
+When `FluentProvider` are nested, custom style hooks will be shallow merged.
