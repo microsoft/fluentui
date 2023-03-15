@@ -15,11 +15,11 @@ import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverTrigger } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState } from './DatePicker.types';
-import { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
   return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
