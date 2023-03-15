@@ -30,7 +30,7 @@ const renderBigLetterIcon (Component, props) => {
 
 ## Background
 
-There are 3 instances of properties that will be provided to a slot in different phases of the slot creation;
+There are 3 instances of properties that will be provided to a slot in different phases of the slot creation:
 
 1. External properties (`props`)
 2. Internal properties (`defaultProps`)
