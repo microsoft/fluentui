@@ -511,9 +511,9 @@ function jsxFromSlotComponent<Props extends UnknownSlotProps>(
 }
 ```
 
-## Pros and Cons
+#### Pros and Cons
 
-### Pros
+##### Pros
 
 1. Simple to use
 2. Less code than what we currently have
@@ -521,6 +521,45 @@ function jsxFromSlotComponent<Props extends UnknownSlotProps>(
 4. Will simplify the whole underlying architecture
 5. No Breaking changes, the consumers will not have any impact (besides allowing the children render function to work properly)
 
-### Cons
+#### Cons
 
 1. Requires extra build steps
+
+### Option B: Refactor getSlots + helper method
+
+An alternative solution would be to stop children function rendering on `getSlots` method (since we don't have enough information at that moment)
+and then wrapping all children overrides with a helper method (let's call it `resolveChildren`):
+
+```tsx
+// renderAccordionHeader
+<slots.root {...slotProps.root}>
+  {resolveChildren(
+    slotProps.root.children,
+    <slots.button {...slotProps.button}>
+      {resolveChildren(
+        slotProps.button.children,
+        <>
+          {state.expandIconPosition === 'start' && (
+            <slots.expandIcon {...slotProps.expandIcon}>
+              {resolveChildren(
+                slotProps.expandIcon.children,
+                <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
+              )}
+            </slots.expandIcon>
+          )}
+          {slots.icon && <slots.icon {...slotProps.icon} />}
+          {typeof slotProps.root.children !== 'function' && slotProps.root.children}
+          {state.expandIconPosition === 'end' && (
+            <slots.expandIcon {...slotProps.expandIcon}>
+              {resolveChildren(
+                slotProps.expandIcon.children,
+                <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
+              )}
+            </slots.expandIcon>
+          )}
+        </>,
+      )}
+    </slots.button>,
+  )}
+</slots.root>
+```
