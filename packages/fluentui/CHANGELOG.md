@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.66.4 ]------------------------------- -->
+## [v0.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.4) (2023-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.3..@fluentui/react-northstar_v0.66.4)
+
 ### Fixes
 - `Datepicker`: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))
 - `Datepicker`: Disabled buttons should be green in HC theme. @jurokapsiar ([#27114](https://github.com/microsoft/fluentui/pull/27114))
