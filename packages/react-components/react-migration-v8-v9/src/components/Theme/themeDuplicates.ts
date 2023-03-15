@@ -233,6 +233,32 @@ export const blackAlpha: Record<AlphaColors, string> = {
   '90': 'rgba(0, 0, 0, 0.9)',
 };
 
+export const grey10Alpha: Record<AlphaColors, string> = {
+  '5': 'rgba(26, 26, 26, 0.05)',
+  '10': 'rgba(26, 26, 26, 0.1)',
+  '20': 'rgba(26, 26, 26, 0.2)',
+  '30': 'rgba(26, 26, 26, 0.3)',
+  '40': 'rgba(26, 26, 26, 0.4)',
+  '50': 'rgba(26, 26, 26, 0.5)',
+  '60': 'rgba(26, 26, 26, 0.6)',
+  '70': 'rgba(26, 26, 26, 0.7)',
+  '80': 'rgba(26, 26, 26, 0.8)',
+  '90': 'rgba(26, 26, 26, 0.9)',
+};
+
+export const grey12Alpha: Record<AlphaColors, string> = {
+  '5': 'rgba(31, 31, 31, 0.05)',
+  '10': 'rgba(31, 31, 31, 0.1)',
+  '20': 'rgba(31, 31, 31, 0.2)',
+  '30': 'rgba(31, 31, 31, 0.3)',
+  '40': 'rgba(31, 31, 31, 0.4)',
+  '50': 'rgba(31, 31, 31, 0.5)',
+  '60': 'rgba(31, 31, 31, 0.6)',
+  '70': 'rgba(31, 31, 31, 0.7)',
+  '80': 'rgba(31, 31, 31, 0.8)',
+  '90': 'rgba(31, 31, 31, 0.9)',
+};
+
 export const grey14Alpha: Record<AlphaColors, string> = {
   '5': 'rgba(36, 36, 36, 0.05)',
   '10': 'rgba(36, 36, 36, 0.1)',
