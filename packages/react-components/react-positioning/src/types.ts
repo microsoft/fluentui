@@ -181,6 +181,7 @@ export interface PositioningProps
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'pinned'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

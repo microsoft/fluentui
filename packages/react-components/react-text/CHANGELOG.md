@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Wed, 15 Feb 2023 11:44:52 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Mar 2023 10:19:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.0)
+
+Wed, 15 Mar 2023 10:19:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.2.6..@fluentui/react-text_v9.3.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27078](https://github.com/microsoft/fluentui/pull/27078) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.3.1 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+
+## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.2.6)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.2.5..@fluentui/react-text_v9.2.6)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.0 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+
+## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.2.5)
+
+Fri, 10 Mar 2023 07:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.2.4..@fluentui/react-text_v9.2.5)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.6.2 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+
+## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.2.4)
+
+Wed, 08 Mar 2023 17:42:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.2.3..@fluentui/react-text_v9.2.4)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
 
 ## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.2.3)
 

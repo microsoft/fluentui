@@ -100,6 +100,28 @@ import { Caption2 } from '@fluentui/react-text';
 import { caption2ClassNames } from '@fluentui/react-text';
 import { Caption2Strong } from '@fluentui/react-text';
 import { caption2StrongClassNames } from '@fluentui/react-text';
+import { Card } from '@fluentui/react-card';
+import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
+import { CardFooter } from '@fluentui/react-card';
+import { cardFooterClassNames } from '@fluentui/react-card';
+import { CardFooterProps } from '@fluentui/react-card';
+import { CardFooterSlots } from '@fluentui/react-card';
+import { CardFooterState } from '@fluentui/react-card';
+import { CardHeader } from '@fluentui/react-card';
+import { cardHeaderClassNames } from '@fluentui/react-card';
+import { cardHeaderCSSVars } from '@fluentui/react-card';
+import { CardHeaderProps } from '@fluentui/react-card';
+import { CardHeaderSlots } from '@fluentui/react-card';
+import { CardHeaderState } from '@fluentui/react-card';
+import { CardPreview } from '@fluentui/react-card';
+import { cardPreviewClassNames } from '@fluentui/react-card';
+import { CardPreviewProps } from '@fluentui/react-card';
+import { CardPreviewSlots } from '@fluentui/react-card';
+import { CardPreviewState } from '@fluentui/react-card';
+import { CardProps } from '@fluentui/react-card';
+import { CardSlots } from '@fluentui/react-card';
+import { CardState } from '@fluentui/react-card';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -446,6 +468,10 @@ import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
+import { renderCard_unstable } from '@fluentui/react-card';
+import { renderCardFooter_unstable } from '@fluentui/react-card';
+import { renderCardHeader_unstable } from '@fluentui/react-card';
+import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
@@ -756,6 +782,14 @@ import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useCard_unstable } from '@fluentui/react-card';
+import { useCardFooter_unstable } from '@fluentui/react-card';
+import { useCardFooterStyles_unstable } from '@fluentui/react-card';
+import { useCardHeader_unstable } from '@fluentui/react-card';
+import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
+import { useCardPreview_unstable } from '@fluentui/react-card';
+import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
+import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
@@ -1143,6 +1177,50 @@ export { caption2ClassNames }
 export { Caption2Strong }
 
 export { caption2StrongClassNames }
+
+export { Card }
+
+export { cardClassNames }
+
+export { cardCSSVars }
+
+export { CardFooter }
+
+export { cardFooterClassNames }
+
+export { CardFooterProps }
+
+export { CardFooterSlots }
+
+export { CardFooterState }
+
+export { CardHeader }
+
+export { cardHeaderClassNames }
+
+export { cardHeaderCSSVars }
+
+export { CardHeaderProps }
+
+export { CardHeaderSlots }
+
+export { CardHeaderState }
+
+export { CardPreview }
+
+export { cardPreviewClassNames }
+
+export { CardPreviewProps }
+
+export { CardPreviewSlots }
+
+export { CardPreviewState }
+
+export { CardProps }
+
+export { CardSlots }
+
+export { CardState }
 
 export { Checkbox }
 
@@ -1836,6 +1914,14 @@ export { renderBadge_unstable }
 
 export { renderButton_unstable }
 
+export { renderCard_unstable }
+
+export { renderCardFooter_unstable }
+
+export { renderCardHeader_unstable }
+
+export { renderCardPreview_unstable }
+
 export { renderCheckbox_unstable }
 
 export { renderCombobox_unstable }
@@ -2455,6 +2541,22 @@ export { useBadgeStyles_unstable }
 export { useButton_unstable }
 
 export { useButtonStyles_unstable }
+
+export { useCard_unstable }
+
+export { useCardFooter_unstable }
+
+export { useCardFooterStyles_unstable }
+
+export { useCardHeader_unstable }
+
+export { useCardHeaderStyles_unstable }
+
+export { useCardPreview_unstable }
+
+export { useCardPreviewStyles_unstable }
+
+export { useCardStyles_unstable }
 
 export { useCheckbox_unstable }
 

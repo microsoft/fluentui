@@ -920,6 +920,7 @@ describe('migrate-converged-pkg generator', () => {
                   Object {
                     ".": Object {
                       "import": "./lib/index.js",
+                      "node": "./lib-commonjs/index.js",
                       "require": "./lib-commonjs/index.js",
                       "types": "./dist/index.d.ts",
                     },
@@ -1300,6 +1301,7 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
           Object {
             "import": "./lib/unstable/index.js",
+            "node": "./lib-commonjs/unstable/index.js",
             "require": "./lib-commonjs/unstable/index.js",
             "types": "./dist/unstable.d.ts",
           }
