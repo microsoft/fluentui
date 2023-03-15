@@ -1,8 +1,8 @@
 import * as path from 'path';
 
-import { findGitRoot, getProjectMetadata } from '@fluentui/scripts-monorepo';
+import { workspaceRoot } from '@nrwl/devkit';
 import * as fs from 'fs-extra';
-import { TaskFunction, copyInstructionsTask, copyTask, logger, resolveCwd, series } from 'just-scripts';
+import { TaskFunction, copyInstructionsTask, copyTask, logger, parallel, resolveCwd, series } from 'just-scripts';
 
 import { getTsPathAliasesConfig } from './utils';
 
@@ -41,7 +41,6 @@ export function expandSourcePath(pattern: string): string | null {
  */
 export function copyCompiled() {
   const { isUsingTsSolutionConfigs, packageJson, tsConfig } = getTsPathAliasesConfig();
-  const root = findGitRoot();
 
   const packageDir = process.cwd();
 
@@ -59,11 +58,10 @@ export function copyCompiled() {
     return;
   }
 
-  const projectMetadata = getProjectMetadata({ root, name: packageJson.name });
-
-  if (!projectMetadata.sourceRoot) {
-    throw new Error(`${packageJson.name} is missing 'sourceRoot' in project.json`);
-  }
+  /**
+   * This mimics getProjectMetadata that acquires project.json config. Parsing project.json within this task adds 0.4s time (atm this takes 0.02s)
+   */
+  const projectMetadata = { sourceRoot: path.join(path.relative(workspaceRoot, packageDir), 'src') };
 
   const paths = {
     esm: packageJson.module
@@ -112,7 +110,7 @@ export function copyCompiled() {
       : null,
   ].filter(Boolean) as TaskFunction[];
 
-  return series(...tasks);
+  return parallel(...tasks);
 }
 export function copy() {
   const configPath = path.resolve(process.cwd(), 'config/pre-copy.json');
