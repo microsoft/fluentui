@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
   "comment": "fix: add node field to package.json exports map.",
-  "packageName": "@fluentui/react-card",
+  "packageName": "@fluentui/react-skeleton",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch"
 }
