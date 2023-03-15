@@ -44,7 +44,7 @@ implementation.
 
 `props.button` is called a shorthand and can be either:
 
-1. External properties of the slot
+1. External properties of the slot (an object)
 2. `string`, `number`, `Array` or `JSX element` value that will be provided to slot's `children`
 3. `null` or `undefined`
 
