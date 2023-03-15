@@ -46,13 +46,6 @@ export const observeResize = (
     // Fallback for browsers that don't support ResizeObserver
     const onResizeWrapper = () => onResize(undefined);
 
-    if (!win) {
-      // Can't listen for resize if we can't get the window object
-      return () => {
-        // Nothing to clean up
-      };
-    }
-
     // Listen for the first animation frame, which will happen after layout is complete
     const animationFrameId = win.requestAnimationFrame(onResizeWrapper);
     win.addEventListener('resize', onResizeWrapper, false);
