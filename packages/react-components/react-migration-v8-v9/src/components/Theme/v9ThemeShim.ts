@@ -2,7 +2,7 @@ import { Theme as ThemeV8 } from '@fluentui/react';
 import type { IEffects, IPalette } from '@fluentui/react';
 import { Theme as ThemeV9, webLightTheme } from '@fluentui/react-components';
 import type { BorderRadiusTokens, ColorTokens, ShadowTokens } from '@fluentui/react-components';
-import { blackAlpha, whiteAlpha, grey } from './themeDuplicates';
+import { blackAlpha, whiteAlpha, grey, grey10Alpha, grey12Alpha } from './themeDuplicates';
 
 /**
  * Creates v9 color tokens from a v8 palette.
@@ -85,6 +85,8 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorNeutralBackground6: palette.neutralLight,
     colorNeutralBackgroundStatic: grey[20],
     colorNeutralBackgroundInverted: palette.neutralSecondary,
+    colorNeutralBackgroundAlpha: inverted ? grey10Alpha[50] : whiteAlpha[50],
+    colorNeutralBackgroundAlpha2: inverted ? grey12Alpha[70] : whiteAlpha[80],
     colorSubtleBackground: 'transparent',
     colorSubtleBackgroundHover: palette.neutralLighter,
     colorSubtleBackgroundPressed: palette.neutralQuaternaryAlt,
@@ -146,6 +148,7 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorTransparentStroke: 'transparent',
     colorTransparentStrokeInteractive: 'transparent',
     colorTransparentStrokeDisabled: 'transparent',
+    colorNeutralStrokeAlpha: inverted ? whiteAlpha[10] : blackAlpha[5],
     colorStrokeFocus1: palette.white,
     colorStrokeFocus2: palette.black,
     colorNeutralShadowAmbient: 'rgba(0,0,0,0.12)',

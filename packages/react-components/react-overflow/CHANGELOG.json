@@ -2,6 +2,21 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:53 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.10",
+      "version": "9.0.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.6",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:26 GMT",
       "tag": "@fluentui/react-overflow_v9.0.9",
       "version": "9.0.9",

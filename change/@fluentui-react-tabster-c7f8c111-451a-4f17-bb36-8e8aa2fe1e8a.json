@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add JSDoc for tabster focus indicator selector",
-  "packageName": "@fluentui/react-tabster",
-  "email": "tigeroakes@microsoft.com",
-  "dependentChangeType": "patch"
-}
