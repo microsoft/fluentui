@@ -5,7 +5,6 @@ export { svgIconStyles as SvgIcon } from './components/SvgIcon/svgIconStyles';
 export { menuItemWrapperStyles as MenuItemWrapper } from './components/Menu/menuItemWrapperStyles';
 export { toolbarItemStyles as ToolbarItem } from './components/Toolbar/toolbarItemStyles';
 export { sliderStyles as Slider } from './components/Slider/sliderStyles';
-export { embedStyles as Embed } from './components/Embed/embedStyles';
 
 export { splitButtonToggleStyles as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
 export { splitButtonDividerStyles as SplitButtonDivider } from './components/SplitButton/splitButtonDividerStyles';
