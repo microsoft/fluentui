@@ -37,7 +37,8 @@ describe('DatePicker', () => {
     mount(<DatePicker isRequired allowTextInput />);
 
     // Open DatePicker and dismiss
-    cy.get(inputSelector).click().get('body').click('bottomRight').get(fieldErrorMessageSelector).should('exist');
+    cy.get(inputSelector).click().get('body').click('bottomRight');
+    cy.get(fieldErrorMessageSelector).should('exist');
 
     // Type a date and dismiss
     cy.get(inputSelector).click().click().type('Jan 1 2030').get('body').click('bottomRight');
@@ -49,7 +50,8 @@ describe('DatePicker', () => {
     mount(<DatePicker isRequired allowTextInput />);
 
     // Open picker and dismiss to show error message
-    cy.get(inputSelector).click().get('body').click('bottomRight').get(fieldErrorMessageSelector).should('exist');
+    cy.get(inputSelector).click().get('body').click('bottomRight');
+    cy.get(fieldErrorMessageSelector).should('exist');
 
     // Select a date from calendar, we choose 10 since the first 0-6 days in the grid are not really dates, and dismiss
     cy.get(inputSelector).click().get('[role="gridcell"]').its(10).click().get('body').click('bottomRight');
