@@ -30,6 +30,11 @@ import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
 import { InfoButtonSlots } from '@fluentui/react-infobutton';
 import { InfoButtonState } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-infobutton';
+import { infoLabelClassNames } from '@fluentui/react-infobutton';
+import { InfoLabelProps } from '@fluentui/react-infobutton';
+import { InfoLabelSlots } from '@fluentui/react-infobutton';
+import { InfoLabelState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
@@ -43,6 +48,7 @@ import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
+import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderTree_unstable } from '@fluentui/react-tree';
@@ -113,6 +119,8 @@ import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useSkeleton_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonContext } from '@fluentui/react-skeleton';
@@ -190,6 +198,16 @@ export { InfoButtonSlots }
 
 export { InfoButtonState }
 
+export { InfoLabel }
+
+export { infoLabelClassNames }
+
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
+
 export { InputField }
 
 export { inputFieldClassNames }
@@ -215,6 +233,8 @@ export { renderAlert_unstable }
 export { renderField_unstable }
 
 export { renderInfoButton_unstable }
+
+export { renderInfoLabel_unstable }
 
 export { renderSkeleton_unstable }
 
@@ -355,6 +375,10 @@ export { useFlatTree_unstable }
 export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
+
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
 
 export { useIntersectionObserver }
 
