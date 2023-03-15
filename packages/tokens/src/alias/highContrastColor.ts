@@ -91,6 +91,8 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground6: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundInverted: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackgroundAlpha: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackgroundAlpha2: hcCanvas, // Canvas Global.Color.hcCanvas
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorSubtleBackgroundPressed: hcHighlight, // Highlight Global.Color.hcHighlight
@@ -152,6 +154,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorTransparentStroke: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorTransparentStrokeInteractive: hcHighlight, // Highlight Global.Color.hcHighlight
   colorTransparentStrokeDisabled: hcDisabled, // GrayText Global.Color.hcDisabled
+  colorNeutralStrokeAlpha: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorStrokeFocus1: hcCanvas, // Canvas Global.Color.hcCanvas
   colorStrokeFocus2: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
