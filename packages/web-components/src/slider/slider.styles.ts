@@ -35,17 +35,15 @@ export const styles = css`
     cursor: pointer;
     user-select: none;
     border-radius: ${borderRadiusSmall};
+    touch-action: pan-y;
+    min-width: calc(var(--thumb-size) * 1px);
+    width: 100%;
   }
 
   :host([size='small']) {
     --thumb-size: 14px;
     --track-width: 2px;
     --thumb-padding: 3px;
-  }
-  :host([orientation='horizontal']) {
-    touch-action: pan-y;
-    min-width: calc(var(--thumb-size) * 1px);
-    width: 100%;
   }
 
   :host([orientation='vertical']) {
@@ -54,6 +52,8 @@ export const styles = css`
     min-height: var(--thumb-size);
     touch-action: pan-x;
     padding: 8px 0;
+    width: auto;
+    min-width: auto;
   }
 
   :host([disabled]:hover) {
@@ -77,11 +77,11 @@ export const styles = css`
     transition: all 0.2s ease;
   }
 
-  :host([orientation='horizontal']) .thumb-container {
+  .thumb-container {
     transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.5));
   }
 
-  :host([orientation='horizontal'][size='small']) .thumb-container {
+  :host([size='small']) .thumb-container {
     transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.35));
   }
 

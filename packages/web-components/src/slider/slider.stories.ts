@@ -1,7 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import { SliderSize } from './slider.options.js';
+import { SliderSize as SliderSetSize } from './slider.options.js';
 import type { Slider as FluentSlider } from './slider.js';
 import './define.js';
 
@@ -28,7 +28,7 @@ export default {
     readOnly: false,
     min: 0,
     max: 100,
-    size: SliderSize.medium,
+    size: SliderSetSize.medium,
     orientation: 'horizontal',
   },
   argTypes: {
@@ -46,7 +46,7 @@ export default {
     size: {
       control: {
         type: 'inline-radio',
-        options: Object.values(SliderSize),
+        options: Object.values(SliderSetSize),
       },
     },
     orientation: {
@@ -60,12 +60,14 @@ export default {
 
 export const Slider = renderComponent(storyTemplate).bind({});
 
-export const SliderVertical = renderComponent(html<SliderStoryArgs>`
+export const SliderOrientation = renderComponent(html<SliderStoryArgs>`
   <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>
+  <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
 `);
 
-export const SliderSmall = renderComponent(html<SliderStoryArgs>`
+export const SliderSize = renderComponent(html<SliderStoryArgs>`
   <fluent-slider size="small" value="10" min="0" max="10"></fluent-slider>
+  <fluent-slider size="medium" value="10" min="0" max="10"></fluent-slider>
 `);
 
 export const SliderSteps = renderComponent(html<SliderStoryArgs>`
@@ -74,8 +76,5 @@ export const SliderSteps = renderComponent(html<SliderStoryArgs>`
 
 export const SliderDisabled = renderComponent(html<SliderStoryArgs>`
   <fluent-slider disabled value="10" min="0" max="100"></fluent-slider>
-`);
-
-export const SliderDisabledWithSteps = renderComponent(html<SliderStoryArgs>`
   <fluent-slider step="25" disabled value="50" min="0" max="100"></fluent-slider>
 `);

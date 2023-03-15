@@ -14,10 +14,9 @@ export class Slider extends FASTSlider {
    * HTML Attribute: size
    */
   @attr
-  public size: SliderSize = 'medium';
+  public size?: SliderSize;
 
-  connectedCallback(): void {
-    super.connectedCallback();
+  sizeChanged(): void {
     if (this.step) {
       const totalSteps = 100 / Math.floor((this.max - this.min) / this.step);
       this.style.setProperty('--step-rate', totalSteps.toString() + '%');
