@@ -2,6 +2,33 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:52 GMT",
+      "tag": "@fluentui/react-text_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "32e934b7443ca457be0e760c6380ec20f03976c3",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.1",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-theme to v9.1.6",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:26 GMT",
       "tag": "@fluentui/react-text_v9.2.6",
       "version": "9.2.6",

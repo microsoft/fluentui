@@ -229,7 +229,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     showWeekNumbers = false,
     strings = defaultDatePickerStrings,
     tabIndex,
-    textField: textFieldProps,
+    input: inputProps,
     today,
     underlined = false,
     value,
@@ -322,7 +322,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, setStatusMessage, showDatePickerPopup],
   );
 
-  const onTextFieldFocus = React.useCallback((): void => {
+  const onInputFocus = React.useCallback((): void => {
     if (disableAutoFocus) {
       return;
     }
@@ -335,24 +335,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
 
-  // const onCalloutPositioned = React.useCallback((): void => {
-  //   let shouldFocus = true;
-  //   // If the user has specified that the callout shouldn't use initial focus, then respect
-  //   // that and don't attempt to set focus. That will default to true within the callout
-  //   // so we need to check if it's undefined here.
-  //   if (props.calloutProps && props.calloutProps.setInitialFocus !== undefined) {
-  //     shouldFocus = props.calloutProps.setInitialFocus;
-  //   }
-  //   if (calendar.current && shouldFocus) {
-  //     calendar.current.focus();
-  //   }
-  // }, [props.calloutProps]);
-
-  const onTextFieldBlur = React.useCallback((): void => {
+  const onInputBlur = React.useCallback((): void => {
     validateTextInput();
   }, [validateTextInput]);
 
-  const onTextFieldChanged = React.useCallback(
+  const onInputChange = React.useCallback(
     (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, data: InputOnChangeData): void => {
       const { value: newValue } = data;
 
@@ -361,15 +348,13 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           dismissDatePickerPopup();
         }
 
-        if (newValue) {
-          setFormattedDate(newValue);
-        }
+        setFormattedDate(newValue);
       }
     },
     [allowTextInput, dismissDatePickerPopup, isCalendarShown, setFormattedDate],
   );
 
-  const onTextFieldKeyDown = React.useCallback(
+  const onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
       switch (ev.key) {
         case Enter:
@@ -411,7 +396,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ],
   );
 
-  const onTextFieldClick = React.useCallback((): void => {
+  const onInputClick = React.useCallback((): void => {
     // default openOnClick to !props.disableAutoFocus for legacy support of disableAutoFocus behavior
     const openOnClick = props.openOnClick || !props.disableAutoFocus;
     if (openOnClick && !isCalendarShown && !props.disabled) {
@@ -440,42 +425,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   };
 
-  // const renderTextfieldDescription = (
-  //   inputProps?: ITextFieldProps,
-  //   defaultRender?: (
-  //     props?: ITextFieldProps,
-  //     defaultRender?: (props: ITextFieldProps) => JSX.Element | null,
-  //   ) => JSX.Element | null,
-  // ) => {
-  //   return (
-  //     <>
-  //       {inputProps?.description ? defaultRender?.(inputProps) : null}
-  //       <div aria-live="assertive" className={classNames.statusMessage}>
-  //         {statusMessage}
-  //       </div>
-  //     </>
-  //   );
-  // };
-
-  // const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
-  //   const divProps = getNativeProps(inputProps!, divProperties);
-
-  //   // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
-  //   // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
-  //   return (
-  //    <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
-  //       {formattedDate || (
-  //         // Putting the placeholder in a separate span fixes specificity issues for the text color
-  //         <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
-  //       )}
-  //     </div>
-  //   );
-  // };
-
-  // const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
-  // // const iconProps = textFieldProps && textFieldProps.iconProps;
-  const textFieldId =
-    textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
+  const inputId = inputProps && inputProps.id && inputProps.id !== id ? inputProps.id : id + '-label';
 
   const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'
@@ -507,15 +457,21 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       'aria-label': ariaLabel,
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       disabled,
-      id: textFieldId,
+      id: inputId,
       placeholder,
       readOnly: !allowTextInput,
       required: isRequired,
       role: 'combobox',
       tabIndex,
-      ...textFieldProps,
+      ...inputProps,
     },
   });
+  inputShorthand.onBlur = onInputBlur;
+  inputShorthand.onClick = onInputClick;
+  inputShorthand.onFocus = onInputFocus;
+  inputShorthand.onKeyDown = onInputKeyDown;
+  inputShorthand.onChange = mergeCallbacks(onInputChange, props.input?.onChange);
+  inputShorthand.value = formattedDate;
 
   const inputFieldShorthand = resolveShorthand(props.inputField, {
     defaultProps: {
@@ -526,12 +482,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     },
     required: true,
   });
-  inputShorthand.onBlur = onTextFieldBlur;
-  inputShorthand.onClick = onTextFieldClick;
-  inputShorthand.onFocus = onTextFieldFocus;
-  inputShorthand.onKeyDown = onTextFieldKeyDown;
-  inputShorthand.onChange = mergeCallbacks(onTextFieldChanged, props.textField?.onChange);
-  inputShorthand.value = formattedDate;
 
   const wrapperShorthand = resolveShorthand(props.wrapper, {
     defaultProps: {

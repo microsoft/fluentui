@@ -2,6 +2,81 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:50 GMT",
+      "tag": "@fluentui/react-components_v9.18.1",
+      "version": "9.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "5835524f6f0ed2e463e8cae0b5ae29252b6bfbc4",
+            "comment": "docs: improve readme description"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5420a75a4a56f6004ef69b755ed2924edd98167e",
+            "comment": "fix: Smooth out animation of indeterminate progress bar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "d0c590d2b6ed7bc1df92ffbf7e157d197cedd547",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat: Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "6d89241afb94c8f50514a396763be5c798047d80",
+            "comment": "feat: accept a className in mountNode in Portal"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "55230fb45b3e30941ee9f4005cf3ada071a4f626",
+            "comment": "Added support for keyboard navigation in Table/DataGrid"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "32e934b7443ca457be0e760c6380ec20f03976c3",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          }
+        ],
+        "none": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5b6822abdd478455086630785d35d464ca68a1cc",
+            "comment": "Add JSDoc for tabster focus indicator selector"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:23 GMT",
       "tag": "@fluentui/react-components_v9.18.0",
       "version": "9.18.0",
