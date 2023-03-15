@@ -4,14 +4,13 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build": "build-storybook --no-manager-cache -o dist/storybook",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
     "start": "start-storybook",
     "test": "just-scripts test",
     "type-check": "tsc",
-    "vr:build": "yarn build",
+    "vr:build": "build-storybook --no-manager-cache -o dist/storybook",
     "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
