@@ -2,7 +2,6 @@ import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
 import { IVirtualizerMeasureDynamicProps, IVirtualizerMeasureProps } from './useVirtualizerMeasure.types';
 import { debounce } from '../utilities/debounce';
-import { flushSync } from 'react-dom';
 import * as ReactDOM from 'react-dom';
 
 /**
@@ -14,7 +13,7 @@ export const useStaticVirtualizerMeasure = (
   virtualizerLength: number;
   bufferItems: number;
   bufferSize: number;
-  useScrollRef: (ref: React.MutableRefObject<HTMLElement | HTMLDivElement | null>) => void;
+  useScrollRef: (ref: React.MutableRefObject<HTMLElement | HTMLDivElement>) => void;
 } => {
   const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
 
@@ -22,14 +21,12 @@ export const useStaticVirtualizerMeasure = (
   const [virtualizerBufferItems, setVirtualizerBufferItems] = React.useState(0);
   const [virtualizerBufferSize, setVirtualizerBufferSize] = React.useState(0);
 
-  // The ref the user sets on their scrollView.
-  const container: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
+  // The ref the user sets on their scrollView - Defaults to document.body to ensure no null on init
+  const container: React.MutableRefObject<HTMLElement> = React.useRef<HTMLElement>(document.body);
 
-  const useVirtualizerScrollRef = (ref: React.MutableRefObject<HTMLElement | null>) => {
-    console.log('Using virtualizer');
+  const useVirtualizerScrollRef = (ref: React.MutableRefObject<HTMLElement>) => {
     React.useEffect(() => {
       if (ref.current !== container.current) {
-        console.log('ref.current !== container.current');
         if (container.current) {
           resizeObserver?.unobserve(container.current);
         }
@@ -39,12 +36,8 @@ export const useStaticVirtualizerMeasure = (
 
         // Only observe if not null
         if (container.current) {
-          console.log('Observing');
           resizeObserver?.observe(container.current);
         }
-
-        console.log('Call init resize');
-        handleResize();
       }
     });
   };
@@ -54,13 +47,8 @@ export const useStaticVirtualizerMeasure = (
     React.useCallback(() => {
       const containerSize =
         direction === 'vertical'
-          ? container.current?.getBoundingClientRect().height
-          : container.current?.getBoundingClientRect().width;
-
-      if (!containerSize) {
-        // Error? ignore?
-        return;
-      }
+          ? container.current.getBoundingClientRect().height
+          : container.current.getBoundingClientRect().width;
 
       /*
        * Number of items required to cover viewport.
@@ -78,10 +66,6 @@ export const useStaticVirtualizerMeasure = (
       const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
       const totalLength = length + bufferItems * 2 + 1;
-
-      console.log('Setting new length:', totalLength);
-      console.log('Setting new bufferSize:', bufferSize);
-      console.log('Setting new bufferItems:', bufferItems);
 
       ReactDOM.unstable_batchedUpdates(() => {
         setVirtualizerLength(totalLength);

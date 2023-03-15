@@ -28,11 +28,6 @@ export const Default = () => {
     defaultItemSize: 100,
   });
 
-  console.log('RENDER - virtualizerLength', virtualizerLength);
-  console.log('RENDER - bufferItems', bufferItems);
-  console.log('RENDER - bufferSize', bufferSize);
-  console.log('RENDER - useScrollRef', useScrollRef);
-
   useScrollRef(scrollRef);
 
   return (
