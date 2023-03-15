@@ -50,6 +50,11 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
     options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     options.project = tsConfigFile;
+
+    // turn off using path aliases ( there is no way how to set compilerOptions.path from CLI, so overriding baseUrl is the only option)
+    // why? - using path aliases is extremely slow. turning them off improves tsc speed by 40%
+    // TODO: explore creating TS Program via api which could give us more options. Would be useful also for {@see typeCheck}
+    options.baseUrl = '.';
   }
 
   return options;
@@ -90,7 +95,6 @@ export function typeCheck() {
   const cwd = process.cwd();
 
   const tsConfigPath = path.join(cwd, 'tsconfig.json');
-  const tempPath = path.join(cwd, 'temp');
 
   if (!fs.existsSync(tsConfigPath)) {
     return;
@@ -105,10 +109,7 @@ export function typeCheck() {
     return;
   }
 
-  if (!fs.existsSync(tempPath)) {
-    fs.mkdirSync(tempPath);
-  }
-
+  tsConfig.compilerOptions.baseUrl = '.';
   tsConfig.compilerOptions.paths = {};
 
   fs.writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2), 'utf-8');
