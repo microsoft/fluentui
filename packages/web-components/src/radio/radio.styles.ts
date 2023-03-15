@@ -79,7 +79,7 @@ export const styles = css`
   :host(:focus-visible)::after {
     border: 2px solid ${colorStrokeFocus1};
     border-radius: ${borderRadiusMedium};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+    box-shadow: inset 0 0 0 2px ${colorStrokeFocus2};
     content: '';
     cursor: pointer;
     inset: 0px;
