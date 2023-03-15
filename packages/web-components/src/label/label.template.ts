@@ -10,10 +10,9 @@ export const template = html`
     required="${(attr: Label) => attr.required}"
     size="${(attr: Label) => attr.size}"
     weight="${(attr: Label) => attr.weight}"
+    id="${(attr: Label) => attr.id}"
   >
-    <label class="label" part="label" for="${(attr: Label) => attr.for}" form="${(attr: Label) => attr.form}">
-      <slot></slot>
-      ${(attr: Label) => (attr.required ? html`<span part="asterisk" class="asterisk">*</span>` : null)}
-    </label>
+    <slot></slot>
+    ${(attr: Label) => (attr.required ? html`<span part="asterisk" class="asterisk">*</span>` : null)}
   </template>
 `;

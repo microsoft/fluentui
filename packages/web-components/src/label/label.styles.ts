@@ -21,7 +21,7 @@ import {
 export const styles = css`
   ${display('flex')}
 
-  .label {
+  :host {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -29,33 +29,24 @@ export const styles = css`
     color: ${colorNeutralForeground1};
   }
   .asterisk {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
     color: ${colorPaletteRedForeground1};
   }
-  :host([size='small']) .label,
-  :host([size='small']) .asterisk {
+  :host([size='small']) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
-  :host([size='large']) .label,
-  :host([size='large']) .asterisk {
+  :host([size='large']) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
     font-weight: ${fontWeightSemibold};
   }
-  :host([weight='semibold']) .label,
-  :host([weight='semibold']) .asterisk {
+  :host([weight='semibold']) {
     font-weight: ${fontWeightSemibold};
   }
-  :host([weight='semibold']) .label,
-  :host([weight='semibold']) .asterisk {
+  :host([weight='semibold']) {
     font-weight: ${fontWeightSemibold};
   }
-  :host([disabled]) .label,
-  :host([disabled]) .asterisk {
+  :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
   }
 `;
