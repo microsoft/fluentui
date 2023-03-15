@@ -112,7 +112,7 @@ https://github.com/microsoft/fluentui/blob/220b321042b4bcc126c86a91811a34b04934d
 
 Requirements for children render function:
 
-- should be able to override the entire slot
+- Should be able to override the entire slot.
 - When rendering the original children, should respect nested slots.
 
 ## Problem statement
