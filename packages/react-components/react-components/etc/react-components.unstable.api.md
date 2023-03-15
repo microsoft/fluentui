@@ -128,6 +128,7 @@ import { useSkeletonContext } from '@fluentui/react-skeleton';
 import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
+import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
@@ -138,7 +139,6 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
-import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
@@ -403,6 +403,8 @@ export { useSkeletonItemStyles_unstable }
 
 export { useSkeletonStyles_unstable }
 
+export { useStaticVirtualizerMeasure }
+
 export { useTree_unstable }
 
 export { useTreeContext_unstable }
@@ -422,8 +424,6 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
-
-export { useStaticVirtualizerMeasure }
 
 export { useVirtualizer_unstable }
 

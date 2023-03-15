@@ -10,7 +10,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
     direction: props.axis ?? 'vertical',
   });
 
-  const iScrollRef = React.useRef<HTMLElement>(document.body);
+  const iScrollRef = React.useRef<HTMLElement | null>(null);
 
   const setScrollRef = React.useCallback((element: HTMLDivElement) => {
     if (!element || !iScrollRef || iScrollRef.current === element) {
