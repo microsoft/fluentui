@@ -13,7 +13,7 @@ export const useStaticVirtualizerMeasure = (
   virtualizerLength: number;
   bufferItems: number;
   bufferSize: number;
-  useScrollRef: (ref: React.MutableRefObject<HTMLElement | HTMLDivElement | null>) => void;
+  useScrollRef: (ref: React.MutableRefObject<HTMLElement | null>) => void;
 } => {
   const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
 
