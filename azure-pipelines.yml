@@ -116,6 +116,24 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
+  - job: E2E_new
+    displayName: E2E new
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn
+
+      - script: |
+          yarn e2e $(sinceArg)
+        displayName: Cypress E2E tests
+
+      - template: .devops/templates/cleanup.yml
+
   - job: DeployE2E
     displayName: Deploy and E2E
     workspace:
