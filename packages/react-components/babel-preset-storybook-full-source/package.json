@@ -34,6 +34,7 @@
   "exports": {
     ".": {
       "types": "./src/index.dev.d.ts",
+      "node": "./src/index.dev.js",
       "require": "./src/index.dev.js"
     },
     "./package.json": "./package.json"
