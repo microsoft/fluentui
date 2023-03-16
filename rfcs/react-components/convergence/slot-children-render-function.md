@@ -516,14 +516,16 @@ function jsxFromSlotComponent<Props extends UnknownSlotProps>(
 ##### Pros
 
 1. Simple to use
-2. Less code than what we currently have
-3. No iteration over `state.components` is required to define slots
+2. Reduces codebase size (`getSlots` invocations can be stripped)
+3. No iteration over `state.components` is required to define slots (the slots used are the slots being processed)
 4. Will simplify the whole underlying architecture
 5. No Breaking changes, the consumers will not have any impact (besides allowing the children render function to work properly)
+6. couples together `state.components` with the slot itself
 
-#### Cons
+##### Cons
 
 1. Requires extra build steps
+2. Requires a small migration (but it can be done granularly, nothing will break)
 
 ### Option B: Refactor getSlots + helper method
 
@@ -534,25 +536,25 @@ and then wrapping all children overrides with a helper method (let's call it `re
 // renderAccordionHeader
 <slots.root {...slotProps.root}>
   {resolveChildren(
-    slotProps.root.children,
+    slotProps.root,
     <slots.button {...slotProps.button}>
       {resolveChildren(
-        slotProps.button.children,
+        slotProps.button,
         <>
           {state.expandIconPosition === 'start' && (
             <slots.expandIcon {...slotProps.expandIcon}>
               {resolveChildren(
-                slotProps.expandIcon.children,
+                slotProps.expandIcon,
                 <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
               )}
             </slots.expandIcon>
           )}
           {slots.icon && <slots.icon {...slotProps.icon} />}
-          {typeof slotProps.root.children !== 'function' && slotProps.root.children}
+          {slotProps.root.children}
           {state.expandIconPosition === 'end' && (
             <slots.expandIcon {...slotProps.expandIcon}>
               {resolveChildren(
-                slotProps.expandIcon.children,
+                slotProps.expandIcon,
                 <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
               )}
             </slots.expandIcon>
@@ -563,3 +565,36 @@ and then wrapping all children overrides with a helper method (let's call it `re
   )}
 </slots.root>
 ```
+
+#### Pros and Cons
+
+##### Pros
+
+1. It would solve the problem?!
+
+##### Cons
+
+1. Render methods will become more complex
+
+### Option C: Custom JSX Pragma without internal changes
+
+A minimal version of option A, but without introducing internal changes. If we focus on the problem itself,
+slot children render function, the main requirement would be to maintain `defaultProps.children` until the last possible
+moment so that it can be introduced once again back to a children render function.
+
+This proposal would take advantage of `Symbol` to introduce a "private" method to the result of `resolveShorthand`,
+to maintain the value of `defaultProps.children`. That value would then later on be consumed by a minimal custom JSX pragma
+that on the specific case of children render function this pragma would consume this `defaultProps.children` to ensure proper functionality.
+
+https://codesandbox.io/s/wispy-leftpad-f8yi37?file=/example.tsx.
+
+#### Pros and Cons
+
+##### Pros
+
+1. No internal changes required
+2. No migration is required
+
+##### Cons
+
+1. Requires extra build step
