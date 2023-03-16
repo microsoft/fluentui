@@ -203,7 +203,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const {
     allowTextInput = false,
     allFocusable = false,
-    ariaLabel,
     borderless = false,
     dateTimeFormatter,
     disabled,
@@ -455,7 +454,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       'aria-controls': isCalendarShown ? calloutId : undefined,
       'aria-expanded': isCalendarShown,
       'aria-haspopup': 'dialog',
-      'aria-label': ariaLabel,
+      'aria-label': props['aria-label'],
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       disabled,
       id: inputId,
@@ -541,10 +540,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     disabled: !!disabled,
     isDatePickerShown: isCalendarShown,
 
-    calendar: calendarShorthand,
-    popover: popoverShorthand,
-    popoverSurface: popoverSurfaceShorthand,
-
     // Slots definition
     components: {
       root: 'div',
@@ -556,8 +551,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar: Calendar as React.FC<Partial<CalendarProps>>,
     },
 
-    field: fieldShorthand,
+    calendar: calendarShorthand,
     input: inputShorthand,
+    field: fieldShorthand,
+    popover: popoverShorthand,
+    popoverSurface: popoverSurfaceShorthand,
     root,
     wrapper: wrapperShorthand,
   };

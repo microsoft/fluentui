@@ -2,6 +2,33 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 16 Mar 2023 14:36:58 GMT",
+      "tag": "@fluentui/react-provider_v9.4.4",
+      "version": "9.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "fe1014bbcd770a7b38a3a9a09595e93297c2da26",
+            "comment": "fix: pass proper document instance to useFocusVisible()"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.6.0",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.7.1",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Mar 2023 10:19:53 GMT",
       "tag": "@fluentui/react-provider_v9.4.3",
       "version": "9.4.3",
