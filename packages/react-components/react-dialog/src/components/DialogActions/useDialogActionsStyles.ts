@@ -31,6 +31,12 @@ const useStyles = makeStyles({
     justifySelf: 'start',
     ...shorthands.gridArea(ACTIONS_START_GRID_AREA),
   },
+  fluidStart: {
+    gridColumnEnd: ACTIONS_END_GRID_AREA,
+  },
+  fluidEnd: {
+    gridColumnStart: ACTIONS_START_GRID_AREA,
+  },
 });
 
 /**
@@ -43,6 +49,8 @@ export const useDialogActionsStyles_unstable = (state: DialogActionsState): Dial
     styles.root,
     state.position === 'start' && styles.gridPositionStart,
     state.position === 'end' && styles.gridPositionEnd,
+    state.fluid && state.position === 'start' && styles.fluidStart,
+    state.fluid && state.position === 'end' && styles.fluidEnd,
     state.root.className,
   );
   return state;
