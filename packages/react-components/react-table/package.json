@@ -22,9 +22,7 @@
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
     "start": "yarn storybook",
-    "generate-api": "just-scripts generate-api",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
