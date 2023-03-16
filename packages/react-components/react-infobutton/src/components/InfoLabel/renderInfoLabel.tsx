@@ -12,7 +12,7 @@ export const renderInfoLabel_unstable = (state: InfoLabelState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.label {...slotProps.label} />
-      {slots.infoButton && <slots.infoButton {...slotProps.infoButton} />}
+      {slots.info && <slots.info {...slotProps.info} />}
     </slots.root>
   );
 };

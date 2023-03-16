@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 
@@ -10,21 +11,26 @@ export type InfoButtonSlots = {
   popover: NonNullable<Slot<Partial<PopoverProps>>>;
 
   /**
-   * The content to be displayed in the PopoverSurface when the button is pressed.
+   * The information to be displayed in the PopoverSurface when the button is pressed.
    */
-  content: NonNullable<Slot<typeof PopoverSurface>>;
+  info: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**
  * InfoButton Props
  */
-export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'children'> & {
   /**
    * Size of the InfoButton.
    *
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
+
+  /**
+   * Content to be forwarded to the PopoverSurface.
+   */
+  children?: React.ReactNode;
 };
 
 /**

@@ -26,7 +26,7 @@ describe('InfoLabel', () => {
   });
 
   it("renders an InfoButton when the infoButton slot's content is set", () => {
-    const result = render(<InfoLabel infoButton={{ content: 'Test' }}>Test label</InfoLabel>);
+    const result = render(<InfoLabel info="Test">Test label</InfoLabel>);
     expect(result.getByRole('button')).toBeTruthy();
   });
 

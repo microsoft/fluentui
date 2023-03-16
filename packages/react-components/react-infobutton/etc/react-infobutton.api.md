@@ -23,15 +23,16 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
 // @public
-export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
+export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled' | 'children'> & {
     size?: 'small' | 'medium' | 'large';
+    children?: React_2.ReactNode;
 };
 
 // @public (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
     popover: NonNullable<Slot<Partial<PopoverProps>>>;
-    content: NonNullable<Slot<typeof PopoverSurface>>;
+    info: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
@@ -44,15 +45,13 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
 
 // @public
-export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
-    info?: InfoButtonProps['content'];
-};
+export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'>;
 
 // @public (undocumented)
 export type InfoLabelSlots = {
     root: NonNullable<Slot<'span'>>;
     label: NonNullable<Slot<typeof Label>>;
-    infoButton: Slot<typeof InfoButton>;
+    info?: Slot<typeof InfoButton>;
 };
 
 // @public

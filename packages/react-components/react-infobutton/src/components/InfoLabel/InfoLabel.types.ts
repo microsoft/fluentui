@@ -1,7 +1,6 @@
 import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton';
-import type { InfoButtonProps } from '../InfoButton';
 
 export type InfoLabelSlots = {
   root: NonNullable<Slot<'span'>>;
@@ -22,18 +21,13 @@ export type InfoLabelSlots = {
    *
    * It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel.
    */
-  infoButton: Slot<typeof InfoButton>;
+  info?: Slot<typeof InfoButton>;
 };
 
 /**
  * InfoLabel Props
  */
-export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
-  /**
-   * The content of the InfoButton's popover.
-   */
-  info?: InfoButtonProps['content'];
-};
+export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'>;
 
 /**
  * State used in rendering InfoLabel

@@ -6,7 +6,7 @@ import type { InfoLabelSlots, InfoLabelState } from './InfoLabel.types';
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots> = {
   root: 'fui-InfoLabel',
   label: 'fui-InfoLabel__label',
-  infoButton: 'fui-InfoLabel__infoButton',
+  info: 'fui-InfoLabel__info',
 };
 
 const useLabelStyles = makeStyles({
@@ -43,12 +43,12 @@ export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelSta
   state.label.className = mergeClasses(infoLabelClassNames.label, labelStyles.base, state.label.className);
 
   const infoButtonStyles = useInfoButtonStyles();
-  if (state.infoButton) {
-    state.infoButton.className = mergeClasses(
-      infoLabelClassNames.infoButton,
+  if (state.info) {
+    state.info.className = mergeClasses(
+      infoLabelClassNames.info,
       infoButtonStyles.base,
       state.size === 'large' && infoButtonStyles.large,
-      state.infoButton.className,
+      state.info.className,
     );
   }
 
