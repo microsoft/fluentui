@@ -64,6 +64,7 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
+  activePoint: string;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
@@ -110,6 +111,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isCircleClicked: false,
       nearestCircleToHighlight: null,
       isShowCalloutPending: false,
+      activePoint: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -156,7 +158,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       id: `toolTip${this._uniqueCallOutID}`,
       gapSpace: 15,
       isBeakVisible: false,
-      setInitialFocus: true,
       onDismiss: this._closeCallout,
       'data-is-focusable': true,
       xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
@@ -526,7 +527,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
-    if (this.state.nearestCircleToHighlight === xDataPoint) {
+    if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
       this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
         fillColor = this.props.theme!.palette.white;
@@ -625,13 +626,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 cy={yScale(singlePoint.values[1])}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
+                // opacity={this.state.nearestCircleToHighlight ? 1 : 0}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                onFocus={() => this._handleFocus(index, pointIndex, circleId)}
+                onBlur={this._handleBlur}
                 {...pointOptions}
-                r={this._getCircleRadius(xDataPoint, circleRadius)}
+                r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
+                role="img"
+                aria-label={this._getAriaLabel(index, pointIndex)}
               />
             );
           })}
@@ -681,11 +686,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return graph;
   };
 
-  private _getCircleRadius = (xDataPoint: number, circleRadius: number): number => {
-    const { isCircleClicked, nearestCircleToHighlight } = this.state;
+  private _getCircleRadius = (xDataPoint: number, circleRadius: number, circleId: string): number => {
+    const { isCircleClicked, nearestCircleToHighlight, activePoint } = this.state;
     if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
       return 1;
-    } else if (nearestCircleToHighlight === xDataPoint) {
+    } else if (nearestCircleToHighlight === xDataPoint || activePoint === circleId) {
       return circleRadius;
     } else {
       return 0;
@@ -731,5 +736,48 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           return { ...item, color };
         })
       : [];
+  };
+
+  private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
+    const { xAxisCalloutData, y, x } = this.props.data.lineChartData![lineIndex].data[pointIndex];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = this._calloutPoints[pointIndex];
+    found.values = found.values.filter((e: ILineChartDataPoint) => e.y === y);
+    const formattedDate = x instanceof Date ? x.toLocaleString() : x;
+    // const modifiedXVal = x instanceof Date ? x.getTime() : x;
+
+    this.setState({
+      refSelected: `#${circleId}`,
+      isCalloutVisible: true,
+      // nearestCircleToHighlight: modifiedXVal,
+      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+      YValueHover: found.values,
+      stackCalloutProps: found,
+      dataPointCalloutProps: found,
+      activePoint: circleId,
+    });
+  };
+
+  private _handleBlur = () => {
+    this.setState({
+      refSelected: null,
+      isCalloutVisible: false,
+      // nearestCircleToHighlight: null,
+      hoverXValue: undefined,
+      YValueHover: [],
+      stackCalloutProps: undefined,
+      dataPointCalloutProps: undefined,
+      activePoint: '',
+    });
+  };
+
+  private _getAriaLabel = (lineIndex: number, pointIndex: number): string => {
+    const line = this.props.data.lineChartData![lineIndex];
+    const point = line.data[pointIndex];
+    const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+    const xValue = point.xAxisCalloutData || formattedDate;
+    const legend = line.legend;
+    const yValue = point.yAxisCalloutData || point.y;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 }
