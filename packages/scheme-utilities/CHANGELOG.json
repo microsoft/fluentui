@@ -2,6 +2,27 @@
   "name": "@fluentui/scheme-utilities",
   "entries": [
     {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/scheme-utilities_v8.3.26",
+      "version": "8.3.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/scheme-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.25",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/scheme-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.6",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:16 GMT",
       "tag": "@fluentui/scheme-utilities_v8.3.25",
       "version": "8.3.25",

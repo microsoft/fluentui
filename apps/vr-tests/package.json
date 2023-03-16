@@ -20,12 +20,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/example-data": "^8.4.6",
-    "@fluentui/font-icons-mdl2": "^8.5.12",
-    "@fluentui/react": "^8.106.6",
-    "@fluentui/react-experiments": "^8.14.60",
-    "@fluentui/react-hooks": "^8.6.19",
-    "@fluentui/react-icons-mdl2": "^1.3.36",
+    "@fluentui/example-data": "^8.4.7",
+    "@fluentui/font-icons-mdl2": "^8.5.13",
+    "@fluentui/react": "^8.106.7",
+    "@fluentui/react-experiments": "^8.14.61",
+    "@fluentui/react-hooks": "^8.6.20",
+    "@fluentui/react-icons-mdl2": "^1.3.37",
     "@fluentui/storybook": "^1.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
