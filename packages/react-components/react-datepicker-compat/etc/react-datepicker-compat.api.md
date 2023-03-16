@@ -409,7 +409,6 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     label?: string;
     isRequired?: boolean;
     disabled?: boolean;
-    ariaLabel?: string;
     underlined?: boolean;
     pickerAriaLabel?: string;
     isMonthPickerVisible?: boolean;

@@ -33,7 +33,7 @@ export const DateBoundaries = () => {
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={strings}
         placeholder="Select a date..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         minDate={minDate}
         maxDate={maxDate}
         allowTextInput
