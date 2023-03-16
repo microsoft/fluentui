@@ -13,7 +13,7 @@ import {
 import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
-import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverTrigger } from '@fluentui/react-popover';
+import { OnOpenChangeData, OpenPopoverEvents, Popover } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -240,7 +240,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const calendar = React.useRef<ICalendar>(null);
 
-  const [, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
+  const [focus, _, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }, focus);
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
     formatDate,
