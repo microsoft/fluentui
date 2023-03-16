@@ -396,7 +396,6 @@ const templates = {
   swcConfig: () => {
     return {
       $schema: 'https://json.schemastore.org/swcrc',
-      env: { targets: { chrome: '84', edge: '84', firefox: '75', opera: '73', safari: '14.1' }, bugfixes: true },
       exclude: [
         '/testing',
         '/**/*.cy.ts',
@@ -420,6 +419,7 @@ const templates = {
             useSpread: true,
           },
         },
+        target: 'es2019',
       },
       minify: false,
       sourceMaps: true,
