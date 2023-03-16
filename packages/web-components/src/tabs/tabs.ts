@@ -171,11 +171,11 @@ export class Tabs extends FASTTabs {
   }
 
   private setTabOffsetCSSVar() {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorOffset, `${this.activeTabOffset}px`);
+    document.documentElement.style.setProperty(TabTokenNames.tabIndicatorOffset, `${this.activeTabOffset}px`);
   }
 
   private setTabScaleCSSVar(newScale?: number) {
-    document.documentElement.style.setProperty(TAB_TOKEN_NAMES.tabIndicatorScale, `${newScale || this.activeTabScale}`);
+    document.documentElement.style.setProperty(TabTokenNames.tabIndicatorScale, `${newScale || this.activeTabScale}`);
   }
 
   public activeidChanged(oldValue: string, newValue: string) {
