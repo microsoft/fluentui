@@ -1,4 +1,4 @@
-import { selectors } from './carouselClickableContent-example';
+import { selectors } from './carouselClickableContent-selectors';
 
 describe('Carousel with clickable content', () => {
   const carousel = `.${selectors.CarouselClass}`;

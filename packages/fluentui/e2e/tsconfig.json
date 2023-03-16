@@ -1,11 +1,10 @@
 {
-  "extends": "../../../tsconfig.base.v0.json",
+  "extends": "./tsconfig.common.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": true,
     "isolatedModules": false,
-    "module": "esnext",
-    "types": ["node", "webpack-env", "cypress", "cypress-real-events"],
-    "skipLibCheck": true
+    "types": ["node", "cypress", "cypress-real-events"]
   },
-  "include": ["."]
+  "include": ["./cypress.config.ts", "./cypress", "tests/*.spec.ts", "tests/*-selectors.ts"]
 }

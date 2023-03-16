@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.common.json",
+  "compilerOptions": {
+    "types": ["node", "webpack-env"]
+  },
+  "include": ["server/", "tests/*-example.tsx", "tests/*-selectors.ts"]
+}

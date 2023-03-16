@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Button, Dialog } from '@fluentui/react-northstar';
 
-export const selectors = {
-  trigger: 'trigger',
-  cancelButton: 'cancelButton',
-};
+import { selectors } from './dialog-selectors';
 
 const DialogBlockBodyScrollExample = () => (
   <Dialog

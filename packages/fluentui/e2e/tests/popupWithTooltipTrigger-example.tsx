@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Popup, Tooltip } from '@fluentui/react-northstar';
 
-export const selectors = {
-  trigger: 'tooltip-trigger',
-  content: 'tooltip-content',
-};
+import { selectors } from './popupWithTooltipTrigger-selectors';
 
 const PopupWithTooltipTriggerExample = () => {
   return (

@@ -1,4 +1,4 @@
-import { selectors } from './popupIframeDismiss-example';
+import { selectors } from './popupIframeDismiss-selectors';
 
 describe('Popup - Dismiss on iframe click', () => {
   const popupTrigger = `#${selectors.popupTriggerId}`;

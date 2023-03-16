@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig.base.v0.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "module": "esnext",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "emitDeclarationOnly": false
+  }
+}

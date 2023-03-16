@@ -1,4 +1,4 @@
-import { selectors } from './popupDismissScroll-example';
+import { selectors } from './popupDismissScroll-selectors';
 
 describe('Popup - dismiss on scroll container', () => {
   beforeEach(() => {
