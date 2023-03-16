@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Mon, 13 Mar 2023 08:58:26 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Mar 2023 14:36:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.1)
+
+Thu, 16 Mar 2023 14:36:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.3.0..@fluentui/react-text_v9.3.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.1 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.0)
+
+Wed, 15 Mar 2023 10:19:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.2.6..@fluentui/react-text_v9.3.0)
+
+### Minor changes
+
+- feat: Adding calls to custom style hooks derived from context. ([PR #27078](https://github.com/microsoft/fluentui/pull/27078) by gcox@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.3.1 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
 
 ## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.2.6)
 

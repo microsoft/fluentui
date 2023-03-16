@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: accept a className in mountNode in Portal",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

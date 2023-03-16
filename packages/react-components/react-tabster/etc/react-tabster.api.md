@@ -11,7 +11,7 @@ import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @internal (undocumented)
-export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
+export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
 
 // @public
 export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
@@ -73,7 +73,7 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
 
 // @public
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;

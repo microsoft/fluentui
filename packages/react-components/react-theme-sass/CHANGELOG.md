@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Wed, 21 Dec 2022 10:20:33 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Mar 2023 10:19:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.9)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.8..@fluentui/react-theme-sass_v9.0.0-alpha.9)
+
+### Changes
+
+- feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
 
 ## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.7)
 

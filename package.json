@@ -87,7 +87,7 @@
     "@ctrl/tinycolor": "3.3.4",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.3",
-    "@fluentui/react-icons": "^2.0.195",
+    "@fluentui/react-icons": "^2.0.196",
     "@griffel/babel-preset": "1.4.8",
     "@griffel/eslint-plugin": "1.0.0",
     "@griffel/jest-serializer": "1.1.4",
@@ -379,7 +379,8 @@
     "eslint": "7.25.0",
     "@mdx-js/loader/loader-utils": "~2.0.4",
     "swc-loader": "^0.2.3",
-    "prettier": "2.8.4"
+    "prettier": "2.8.4",
+    "puppeteer": "19.6.0"
   },
   "syncpack": {
     "prod": true,

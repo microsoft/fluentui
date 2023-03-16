@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 16 Mar 2023 14:36:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.7.1",
+      "version": "9.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "d3418e0a4afe8fbe4d9e375e85c3b6eccc6ccd68",
+            "comment": "fix(getSlots): stops slotProps.slot to be typed as never"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Mar 2023 08:58:26 GMT",
       "tag": "@fluentui/react-utilities_v9.7.0",
       "version": "9.7.0",
