@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Wed, 15 Mar 2023 10:19:53 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.3",
+      "version": "1.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Mar 2023 17:42:50 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.2",
       "version": "1.0.0-alpha.2",

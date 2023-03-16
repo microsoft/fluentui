@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 10 Mar 2023 07:14:01 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Mar 2023 14:36:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.1)
+
+Thu, 16 Mar 2023 14:36:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.0..@fluentui/react-utilities_v9.7.1)
+
+### Patches
+
+- fix(getSlots): stops slotProps.slot to be typed as never ([PR #27231](https://github.com/microsoft/fluentui/pull/27231) by bernardo.sunderhus@gmail.com)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.0)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.2..@fluentui/react-utilities_v9.7.0)
+
+### Minor changes
+
+- feat: isHTMLElement to support all HTMLElement classes ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.2)
 

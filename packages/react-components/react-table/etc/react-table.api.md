@@ -20,7 +20,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>) => React_2.ReactNode;
+export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
 
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
@@ -130,7 +130,7 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
     columnSizingOptions?: TableColumnSizingOptions;
-    onColumnResize?: (e: TouchEvent | MouseEvent | undefined, data: {
+    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
         columnId: TableColumnId;
         width: number;
     }) => void;
@@ -156,6 +156,7 @@ export type DataGridRowSlots = TableRowSlots & {
 export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
     columnDefs: TableColumnDefinition<any>[];
+    dataGridContextValue: DataGridContextValue;
 };
 
 // @public

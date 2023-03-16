@@ -12,7 +12,7 @@ export { FocusMode } from './CardFocusMode.stories';
 export { Templates } from './CardTemplates.stories';
 
 export default {
-  title: 'Preview Components/Card/Card',
+  title: 'Components/Card/Card',
   component: Card,
   parameters: {
     docs: {

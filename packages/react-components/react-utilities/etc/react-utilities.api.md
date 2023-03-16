@@ -81,8 +81,10 @@ export const IdPrefixProvider: React_2.Provider<string | undefined>;
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
-// @internal
-export function isHTMLElement(element?: unknown): element is HTMLElement;
+// @public
+export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
+    constructorName?: ConstructorName;
+}): element is InstanceType<(typeof globalThis)[ConstructorName]>;
 
 // @internal
 export function isInteractiveHTMLElement(element: unknown): boolean;

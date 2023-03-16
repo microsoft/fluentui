@@ -60,7 +60,7 @@ export const CustomDateFormatting = () => {
         componentRef={datePickerRef}
         label="Start date"
         allowTextInput
-        ariaLabel="Select a date. Input format is day slash month slash year."
+        aria-label="Select a date. Input format is day slash month slash year."
         value={value}
         onSelectDate={setValue as (date?: Date | null) => void}
         formatDate={onFormatDate}
