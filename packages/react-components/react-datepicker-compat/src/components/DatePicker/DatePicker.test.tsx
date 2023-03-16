@@ -38,7 +38,7 @@ describe('DatePicker', () => {
           props: {},
           expectedClassNames: {
             root: datePickerClassNames.root,
-            inputField: datePickerClassNames.inputField,
+            field: datePickerClassNames.field,
             wrapper: datePickerClassNames.wrapper,
             popoverSurface: datePickerClassNames.popoverSurface,
             input: datePickerClassNames.input,
