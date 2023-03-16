@@ -8,6 +8,8 @@ import {
   colorSubtleBackground,
   colorSubtleBackgroundHover,
   colorSubtleBackgroundPressed,
+  curveDecelerateMax,
+  durationSlow,
   fontFamilyBase,
   fontSizeBase300,
   fontSizeBase400,
@@ -113,6 +115,15 @@ export const styles = css`
     grid-row: 3;
   }
 
+  :host ::slotted(fluent-tab.animated)::after {
+    transition-property: transform;
+    transition-duration: ${durationSlow};
+    transition-timing-function: ${curveDecelerateMax};
+  }
+  :host ::slotted(fluent-tab:active) {
+    color: ${colorNeutralForeground1};
+    fill: ${colorNeutralForeground1};
+  }
   :host([appearance='subtle']) ::slotted(fluent-tab) {
     background-color: ${colorSubtleBackground};
     color: ${colorNeutralForeground1};

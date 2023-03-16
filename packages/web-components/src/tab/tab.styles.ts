@@ -7,8 +7,6 @@ import {
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
   colorNeutralStroke1Hover,
-  curveDecelerateMax,
-  durationSlow,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightBold,
@@ -55,12 +53,6 @@ export const styles = css`
     z-index: 1;
   }
 
-  :host(.animated)::after {
-    transition-property: transform;
-    transition-duration: ${durationSlow};
-    transition-timing-function: ${curveDecelerateMax};
-  }
-
   :host([aria-selected='false']:hover)::before {
     border-radius: ${borderRadiusCircular};
     content: '';
@@ -74,10 +66,6 @@ export const styles = css`
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(:active) {
-    color: ${colorNeutralForeground1};
-    fill: ${colorNeutralForeground1};
-  }
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
     display: flex;
