@@ -9,6 +9,7 @@ import {
   DialogContent,
   Button,
 } from '@fluentui/react-components';
+import story from './DialogFluidDialogActions.md';
 
 export const FluidActions = () => {
   return (
@@ -36,4 +37,12 @@ export const FluidActions = () => {
       </DialogSurface>
     </Dialog>
   );
+};
+
+FluidActions.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };
