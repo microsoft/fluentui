@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Renaming content slot to info and updating InfoLabel to use InfoButton's shorthand.",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
