@@ -1,7 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import { TabsOrientation } from '@microsoft/fast-foundation';
 import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../../helpers.stories.js';
+import { renderComponent } from '../helpers.stories.js';
 import type { Tabs as FluentTabs } from './tabs.js';
 import './define.js';
 import '../tab/define.js';

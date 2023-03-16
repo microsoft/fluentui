@@ -15,7 +15,7 @@ import {
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
-} from '../../theme/design-tokens.js';
+} from '../theme/design-tokens.js';
 
 export const styles = css`
   :host([hidden]) {

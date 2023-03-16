@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { spacingHorizontalM, spacingHorizontalMNudge } from '../../theme/design-tokens.js';
+import { spacingHorizontalM, spacingHorizontalMNudge } from '../theme/design-tokens.js';
 
 export const styles = css`
   :host([hidden]) {
