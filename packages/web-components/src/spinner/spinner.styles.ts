@@ -10,6 +10,7 @@ export const styles = css`
     align-items: center;
     height: 32px;
     width: 32px;
+    contain: content;
   }
   :host([size='tiny']) {
     height: 20px;

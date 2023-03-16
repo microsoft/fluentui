@@ -36,6 +36,10 @@ import {
 export const styles = css`
   ${display('inline')}
 
+  :host {
+    contain: content;
+  }
+
   ::slotted(*) {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
