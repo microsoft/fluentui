@@ -22,7 +22,7 @@ import {
   spacingVerticalSNudge,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
-import { TAB_TOKEN_NAMES } from './tabs.js';
+import { TabTokenNames } from './tabs.js';
 
 export const styles = css`
   :host {
@@ -188,11 +188,15 @@ export const styles = css`
     left: ${spacingHorizontalMNudge};
   }
 
+  :host([orientation='vertical']) ::slotted(fluent-tab) {
+    justify-content: start;
+    grid-column: 2;
+  }
   :host([orientation='vertical']) ::slotted(fluent-tab)::after {
     width: ${strokeWidthThicker};
     margin-right: auto;
     transform-origin: top;
-    transform: translateY(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleY(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+    transform: translateY(var(${TabTokenNames.tabIndicatorOffset})) scaleY(var(${TabTokenNames.tabIndicatorScale}));
   }
   :host([orientation='vertical']) ::slotted(fluent-tab:hover):before {
     width: ${strokeWidthThicker};

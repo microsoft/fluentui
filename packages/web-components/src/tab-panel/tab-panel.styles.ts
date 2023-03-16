@@ -8,9 +8,6 @@ export const styles = css`
   :host {
     display: block;
     box-sizing: border-box;
-    padding-top: ${spacingHorizontalM};
-    padding-bottom: ${spacingHorizontalM};
-    padding-left: ${spacingHorizontalMNudge};
-    padding-right: ${spacingHorizontalMNudge};
+    padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
   }
 `;

@@ -28,13 +28,10 @@ export const styles = css`
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
-
     color: ${colorNeutralForeground1};
-
     fill: currentcolor;
     font-family: ${fontFamilyBase};
     grid-row: 1;
-
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     padding-top: ${spacingHorizontalM};
@@ -97,9 +94,6 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]:hover) {
-    color: none;
-  }
   :host([disabled]:hover)::before {
     background-color: unset;
   }
@@ -109,13 +103,6 @@ export const styles = css`
   }
   :host(:focus) {
     outline: none;
-  }
-  :host(.vertical) {
-    justify-content: start;
-    grid-column: 2;
-  }
-  :host(.vertical[aria-selected='true']) {
-    z-index: 2;
   }
 
   :host(:focus-visible) {

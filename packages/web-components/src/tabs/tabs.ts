@@ -3,10 +3,10 @@ import { FASTTabs } from '@microsoft/fast-foundation';
 import { Tab } from '../index.js';
 import { TabsAppearance, TabsSize } from './tabs.options.js';
 
-export const TAB_TOKEN_NAMES = {
+export const TabTokenNames = {
   tabIndicatorOffset: '--tabIndicatorOffsetX',
   tabIndicatorScale: '--tabIndicatorScaleX',
-};
+} as const;
 
 export interface TabData {
   id: string;
