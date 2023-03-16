@@ -153,7 +153,7 @@ export const styles = css`
     height: ${strokeWidthThicker};
     margin-top: auto;
     transform-origin: left;
-    transform: translateX(var(${TAB_TOKEN_NAMES.tabIndicatorOffset})) scaleX(var(${TAB_TOKEN_NAMES.tabIndicatorScale}));
+    transform: translateX(var(${TabTokenNames.tabIndicatorOffset})) scaleX(var(${TabTokenNames.tabIndicatorScale}));
   }
   :host([orientation='horizontal']) ::slotted(fluent-tab:hover):before {
     height: ${strokeWidthThicker};
