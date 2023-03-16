@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(DialogBody): Remove `maxWidth` style",
+  "packageName": "@fluentui/react-dialog",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
