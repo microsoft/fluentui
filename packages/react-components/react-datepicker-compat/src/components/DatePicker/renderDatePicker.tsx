@@ -17,10 +17,11 @@ export const renderDatePicker_unstable = (state: DatePickerState) => {
         <slots.popover {...(slotProps.popover as PopoverProps)}>
           <PopoverTrigger>
             {popoverTriggerChildProps => {
-              // onKeyDown and onClick are not needed as DatePicker handles opening and closing the popover internally.
-              // These also cause issues when typing in the input and clicking the input to open, not letting the user
-              // open the popover by clicking the input and causing issues with BACKSPACE and SPACE keys.
-              const { onKeyDown, onClick, ...inputTriggerProps } = popoverTriggerChildProps;
+              // onKeyDown/Up and onClick are not needed as DatePicker handles opening and closing the popover
+              // internally. These also cause issues when typing in the input and clicking the input to open, not
+              // letting the user open the popover by clicking the input and causing issues with BACKSPACE and SPACE
+              // keys.
+              const { onClick, onKeyDown, onKeyUp, role, ...inputTriggerProps } = popoverTriggerChildProps;
               const inputProps = { input: { ...inputTriggerProps } };
 
               return (

@@ -12,22 +12,20 @@ Object {
           class="fui-DatePicker__wrapper"
         >
           <div
-            class="fui-Field fui-DatePicker__inputField"
+            class="fui-Field fui-DatePicker__field"
           >
             <span
-              aria-expanded="false"
               class="fui-Input fui-DatePicker__input"
-              data-tabster="{\\"deloser\\":{}}"
-              role="button"
-              tabindex="0"
             >
               <input
                 aria-expanded="false"
                 aria-haspopup="dialog"
                 class="fui-Input__input"
+                data-tabster="{\\"deloser\\":{}}"
                 id="DatePicker1-label"
                 readonly=""
                 role="combobox"
+                tabindex="0"
                 type="text"
                 value=""
               />
@@ -63,22 +61,20 @@ Object {
         class="fui-DatePicker__wrapper"
       >
         <div
-          class="fui-Field fui-DatePicker__inputField"
+          class="fui-Field fui-DatePicker__field"
         >
           <span
-            aria-expanded="false"
             class="fui-Input fui-DatePicker__input"
-            data-tabster="{\\"deloser\\":{}}"
-            role="button"
-            tabindex="0"
           >
             <input
               aria-expanded="false"
               aria-haspopup="dialog"
               class="fui-Input__input"
+              data-tabster="{\\"deloser\\":{}}"
               id="DatePicker1-label"
               readonly=""
               role="combobox"
+              tabindex="0"
               type="text"
               value=""
             />

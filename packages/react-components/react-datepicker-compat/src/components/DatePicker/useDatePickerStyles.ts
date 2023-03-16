@@ -67,7 +67,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     state.input.className,
   );
 
-  state.field.className = mergeClasses(datePickerClassNames.inputField, state.field.className);
+  state.field.className = mergeClasses(datePickerClassNames.field, state.field.className);
 
   state.popoverSurface.className = mergeClasses(datePickerClassNames.popoverSurface, state.popoverSurface.className);
 
