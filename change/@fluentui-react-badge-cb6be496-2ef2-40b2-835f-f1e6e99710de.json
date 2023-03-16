@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Adding the correct icons to away+out-of-office PresenceBadges and adding the correct icons to use in large PresenceBadges.",
+  "packageName": "@fluentui/react-badge",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
