@@ -39,9 +39,9 @@
     "@fluentui/react-theme": "^9.1.6",
     "@fluentui/react-utilities": "^9.7.1",
     "@griffel/react": "^1.5.2",
+    "@swc/helpers": "^0.4.14",
     "@types/dedent": "0.7.0",
-    "codesandbox-import-utils": "2.2.3",
-    "@swc/helpers": "^0.4.14"
+    "codesandbox-import-utils": "2.2.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

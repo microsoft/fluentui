@@ -31,8 +31,8 @@
   "dependencies": {
     "@fluentui/react-table": "^9.2.1",
     "@fluentui/react-utilities": "^9.7.1",
-    "react-window": "^1.8.6",
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.4.14",
+    "react-window": "^1.8.6"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.18.2",

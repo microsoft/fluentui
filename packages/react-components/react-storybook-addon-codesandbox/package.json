@@ -27,10 +27,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "codesandbox-import-utils": "2.2.3",
+    "@swc/helpers": "^0.4.14",
     "@types/dedent": "0.7.0",
-    "dedent": "0.7.0",
-    "@swc/helpers": "^0.4.14"
+    "codesandbox-import-utils": "2.2.3",
+    "dedent": "0.7.0"
   },
   "peerDependencies": {
     "@storybook/addons": "^6.5.15"
