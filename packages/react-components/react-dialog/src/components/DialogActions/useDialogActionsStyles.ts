@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     ...shorthands.gridArea(ACTIONS_START_GRID_AREA),
   },
   fluidStart: {
-    gridColumnEnd: ACTIONS_START_GRID_AREA,
+    gridColumnEnd: ACTIONS_END_GRID_AREA,
   },
   fluidEnd: {
     gridColumnStart: ACTIONS_START_GRID_AREA,
