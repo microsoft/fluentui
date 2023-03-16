@@ -2,6 +2,51 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Thu, 16 Mar 2023 14:36:59 GMT",
+      "tag": "@fluentui/react-avatar_v9.4.4",
+      "version": "9.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.1.4",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.14",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.5.4",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.6.0",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.2.4",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-utilities to v9.7.1",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Mar 2023 10:19:53 GMT",
       "tag": "@fluentui/react-avatar_v9.4.3",
       "version": "9.4.3",
