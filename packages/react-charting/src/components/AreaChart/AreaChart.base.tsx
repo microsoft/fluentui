@@ -599,6 +599,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
+              {...(this.props.optimizeLargeData && {
+                'data-is-focusable': true,
+              })}
             />
           )}
         </React.Fragment>,
@@ -606,22 +609,59 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
-      if (points.length === index) {
-        return;
-      }
-      graph.push(
-        <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
-          {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
+    if (!this.props.optimizeLargeData) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+        if (points.length === index) {
+          return;
+        }
+        graph.push(
+          <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
+            {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
+              const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+              const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
+              lineColor = points[index]!.color!;
+              return (
+                <circle
+                  key={circleId}
+                  id={circleId}
+                  data-is-focusable={true}
+                  cx={xScale(singlePoint.xVal)}
+                  cy={yScale(singlePoint.values[1])}
+                  stroke={lineColor}
+                  strokeWidth={3}
+                  // opacity={this.state.nearestCircleToHighlight ? 1 : 0}
+                  fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
+                  onMouseOut={this._onRectMouseOut}
+                  onMouseOver={this._onRectMouseMove}
+                  onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                  onFocus={() => this._handleFocus(index, pointIndex, circleId)}
+                  onBlur={this._handleBlur}
+                  {...pointOptions}
+                  r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
+                  role="img"
+                  aria-label={this._getAriaLabel(index, pointIndex)}
+                />
+              );
+            })}
+          </g>,
+        );
+      });
+    } else {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+        if (points.length === index) {
+          return;
+        }
+        singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
+          const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
+          if (this.state.nearestCircleToHighlight === xDataPoint) {
             const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
-            const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
             lineColor = points[index]!.color!;
-            return (
+            graph.push(
               <circle
                 key={circleId}
                 id={circleId}
-                data-is-focusable={true}
                 cx={xScale(singlePoint.xVal)}
                 cy={yScale(singlePoint.values[1])}
                 stroke={lineColor}
@@ -631,18 +671,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
-                onFocus={() => this._handleFocus(index, pointIndex, circleId)}
-                onBlur={this._handleBlur}
                 {...pointOptions}
                 r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
-                role="img"
-                aria-label={this._getAriaLabel(index, pointIndex)}
-              />
+              />,
             );
-          })}
-        </g>,
-      );
-    });
+          }
+        });
+      });
+    }
     graph.push(
       <line
         id={this._verticalLineId}

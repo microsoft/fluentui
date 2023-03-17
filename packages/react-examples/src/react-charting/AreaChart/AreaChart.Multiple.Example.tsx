@@ -211,6 +211,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            optimizeLargeData
           />
         </div>
       </>
