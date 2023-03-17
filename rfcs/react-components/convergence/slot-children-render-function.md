@@ -586,6 +586,20 @@ This proposal would take advantage of `Symbol` to introduce a "private" method t
 to maintain the value of `defaultProps.children`. That value would then later on be consumed by a minimal custom JSX pragma
 that on the specific case of children render function this pragma would consume this `defaultProps.children` to ensure proper functionality.
 
+```diff
+const defaultPropsChildrenSymbol = Symbol('fuiSlotDefaultPropsChildren')
+
+export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
+  //...
+
+  return defaultProps ? {
+    ...defaultProps,
+    ...resolvedShorthand,
++   [defaultPropsChildrenSymbol]: defaultProps?.children
+  } : resolvedShorthand;
+};
+```
+
 https://codesandbox.io/s/wispy-leftpad-f8yi37?file=/example.tsx.
 
 #### Pros and Cons
@@ -598,3 +612,39 @@ https://codesandbox.io/s/wispy-leftpad-f8yi37?file=/example.tsx.
 ##### Cons
 
 1. Requires extra build step
+
+### Option D: Option A + Option C
+
+Taking the strategy provided on Option C to hide required data with `Symbol` inside the result value of `resolveShorthand`
+and applying it to not only move forward the `defaultProps.children` (from Option C) but also `componentType` (from Option A)
+we can completely get rid of `getSlots` invocation, as all the data required to render a slot will be provided by `resolveShorthand` and only consumed at render by a custom pragma.
+
+```diff
+const defaultPropsChildrenSymbol = Symbol('fuiSlotDefaultPropsChildren')
+const componentTypeSymbol = Symbol('fuiSlotComponentType')
+
+export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
+  //...
+
+  return defaultProps ? {
+    ...defaultProps,
+    ...resolvedShorthand,
++   [defaultPropsChildrenSymbol]: defaultProps?.children
++   [componentTypeSymbol]: options.componentType
+  } : resolvedShorthand;
+};
+```
+
+##### Pros
+
+1. Simple to use
+2. Reduces codebase size (`getSlots` invocations can be stripped)
+3. No iteration over `state.components` is required to define slots (the slots used are the slots being processed)
+4. Will simplify the whole underlying architecture
+5. No Breaking changes, the consumers will not have any impact (besides allowing the children render function to work properly)
+6. couples together `state.components` with the slot itself
+
+##### Cons
+
+1. Requires extra build steps
+2. Requires to remove `getSlots` usage (but it can be done granularly, nothing will break)
