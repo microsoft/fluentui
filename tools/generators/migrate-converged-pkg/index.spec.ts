@@ -840,6 +840,21 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.typings).toEqual('./dist/index.d.ts');
     });
 
+    it(`should update dependencies`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).not.toBeDefined();
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).not.toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).toBeDefined();
+    });
+
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       const pkgJsonPath = `${projectConfig.root}/package.json`;
@@ -876,7 +891,7 @@ describe('migrate-converged-pkg generator', () => {
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.scripts).toEqual({
-        'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+        'generate-api': 'just-scripts generate-api',
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
@@ -1043,6 +1058,80 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`just-scripts config setup`, () => {
+    it(`should update just.config.ts`, async () => {
+      function getJustConfig(projectConfig: ReadProjectConfiguration) {
+        return tree.read(`${projectConfig.root}/just.config.ts`)?.toString('utf-8');
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset } from '@fluentui/scripts-tasks';
+
+        preset();"
+      `);
+
+      await generator(tree, options);
+
+      justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset, task } from '@fluentui/scripts-tasks';
+
+        preset();
+
+        task('build', 'build:react-components').cached?.();"
+      `);
+    });
+  });
+
+  describe(`swcrc config setup`, () => {
+    it(`should create an swcrc config file`, async () => {
+      function getSwcConfig(projectConfig: ReadProjectConfiguration) {
+        return readJson(tree, `${projectConfig.root}/.swcrc`);
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/.swcrc`)).toBeTruthy();
+
+      const swcConfig = getSwcConfig(projectConfig);
+
+      expect(swcConfig).toEqual({
+        $schema: 'https://json.schemastore.org/swcrc',
+        env: { targets: { chrome: '84', edge: '84', firefox: '75', opera: '73', safari: '14.1' }, bugfixes: true },
+        exclude: [
+          '/testing',
+          '/**/*.cy.ts',
+          '/**/*.cy.tsx',
+          '/**/*.spec.ts',
+          '/**/*.spec.tsx',
+          '/**/*.test.ts',
+          '/**/*.test.tsx',
+        ],
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: false,
+            dynamicImport: false,
+          },
+          externalHelpers: true,
+          transform: {
+            react: {
+              runtime: 'classic',
+              useSpread: true,
+            },
+          },
+        },
+        minify: false,
+        sourceMaps: true,
+      });
+    });
+  });
+
   describe(`babel config setup`, () => {
     function getBabelConfig(projectConfig: ReadProjectConfiguration) {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
@@ -1056,7 +1145,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1066,7 +1155,7 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
     });
@@ -1085,7 +1174,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1093,7 +1182,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1102,7 +1190,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls'],
       });
     });
@@ -1414,7 +1501,7 @@ function setupDummyPackage(
       someThirdPartyDep: '^11.1.2',
     },
     babelConfig: {
-      presets: ['@griffel'],
+      extends: '../../.babelrc-v9.json',
       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     },
     tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
@@ -1499,6 +1586,11 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
+    justConfig: stripIndents`
+      import { preset } from '@fluentui/scripts-tasks';
+
+      preset();
+    `,
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
@@ -1507,6 +1599,7 @@ function setupDummyPackage(
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
+  tree.write(`${paths.root}/just.config.ts`, templates.justConfig);
   tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
   tree.write(
     `${paths.root}/src/index.test.ts`,

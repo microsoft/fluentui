@@ -141,6 +141,9 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   updateNxWorkspace(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
+
+  setupSwcConfig(tree, options);
+  setupJustConfig(tree, options);
 }
 
 // ==== helpers ====
@@ -266,14 +269,16 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets?: Array<unknown>; rootBabelConfigPath?: string }) => {
+    const { extraPresets, platform, rootBabelConfigPath } = options;
     const plugins = ['annotate-pure-calls'];
-    if (options.platform === 'web') {
+    if (platform === 'web') {
       plugins.push('@babel/transform-react-pure-annotations');
     }
 
     return {
-      presets: [...options.extraPresets],
+      extends: rootBabelConfigPath,
+      presets: extraPresets ? [...extraPresets] : undefined,
       plugins,
     };
   },
@@ -388,6 +393,44 @@ const templates = {
     .git*
     .prettierignore
   ` + os.EOL,
+  swcConfig: () => {
+    return {
+      $schema: 'https://json.schemastore.org/swcrc',
+      env: { targets: { chrome: '84', edge: '84', firefox: '75', opera: '73', safari: '14.1' }, bugfixes: true },
+      exclude: [
+        '/testing',
+        '/**/*.cy.ts',
+        '/**/*.cy.tsx',
+        '/**/*.spec.ts',
+        '/**/*.spec.tsx',
+        '/**/*.test.ts',
+        '/**/*.test.tsx',
+      ],
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          tsx: true,
+          decorators: false,
+          dynamicImport: false,
+        },
+        externalHelpers: true,
+        transform: {
+          react: {
+            runtime: 'classic',
+            useSpread: true,
+          },
+        },
+      },
+      minify: false,
+      sourceMaps: true,
+    };
+  },
+  justConfig: stripIndents`
+    import { preset, task } from '@fluentui/scripts-tasks';
+
+    preset();
+
+    task('build', 'build:react-components').cached?.();`,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -552,6 +595,19 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
+function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
+  const swcConfig = templates.swcConfig();
+  writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
+
+  return tree;
+}
+
+function setupJustConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.justConfig, templates.justConfig);
+
+  return tree;
+}
+
 interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
   tsconfigs: ReturnType<typeof updatedLocalTsConfig>['configs'];
 }
@@ -629,6 +685,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   packageJson = setupScripts(packageJson);
   packageJson = setupExportMaps(packageJson);
+  packageJson = addSwcHelpers(packageJson);
 
   writeJson(tree, options.paths.packageJson, packageJson);
 
@@ -676,10 +733,17 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 }
 
+//TODO: remove after migration to swc transpilation is complete
+function addSwcHelpers(json: PackageJson) {
+  delete json.dependencies?.tslib;
+  json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.14' };
+  return json;
+}
+
 function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const apiExtractor = templates.apiExtractor();
   const scripts = {
-    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+    'generate-api': 'just-scripts generate-api',
   };
 
   tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
@@ -1007,8 +1071,10 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
-  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
-  const config = templates.babelConfig({ extraPresets, platform: packageType });
+  const rootBabelConfigPath = shouldAddGriffelPreset
+    ? path.relative(options.projectConfig.root, '.babelrc-v9.json')
+    : undefined;
+  const config = templates.babelConfig({ platform: packageType, rootBabelConfigPath });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);
