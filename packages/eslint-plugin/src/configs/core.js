@@ -19,7 +19,7 @@ const config = {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
       typescript: {
         alwaysTryTypes: true,
-        project: './tsconfig.json',
+        project: ['./tsconfig.json', './tsconfig.*.json', './*/tsconfig.json'],
       },
     },
     jsdoc: {
