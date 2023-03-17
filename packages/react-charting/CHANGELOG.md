@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 14 Mar 2023 07:38:49 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.6)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.5..@fluentui/react-charting_v5.16.6)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.8.19 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/react to v8.106.7 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.24 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
 
 ## [5.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.5)
 
