@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update ESLint config to include story and test files ",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}
