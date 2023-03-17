@@ -92,11 +92,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
     "./unstable": {
       "types": "./dist/unstable.d.ts",
+      "node": "./lib-commonjs/unstable/index.js",
       "import": "./lib/unstable/index.js",
       "require": "./lib-commonjs/unstable/index.js"
     },

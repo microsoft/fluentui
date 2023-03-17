@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.14.0",
+      "version": "1.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a3463ec7ba84fce450b4a03c989806ba4e11c5e1",
+            "comment": "feat: rule to ban usage of instanceof HTMLElement"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:18 GMT",
       "tag": "@fluentui/eslint-plugin_v1.13.0",
       "version": "1.13.0",
