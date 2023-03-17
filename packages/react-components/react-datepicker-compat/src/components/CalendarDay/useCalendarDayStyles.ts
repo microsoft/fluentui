@@ -44,7 +44,7 @@ const useMonthAndYearStyles = makeStyles({
   base: {
     alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
     color: tokens.colorNeutralForeground1,
     display: 'inline-block',
@@ -67,12 +67,14 @@ const useMonthAndYearStyles = makeStyles({
   },
   headerIsClickable: {
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
     },
+    '&:active': {
+      backgroundColor: tokens.colorBrandBackground2,
+    },
   },
-  // getFocusStyle(theme, { inset: 1 }),
 });
 
 const useMonthComponentsStyles = makeStyles({
@@ -87,7 +89,7 @@ const useHeaderIconButtonStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground3,
     display: 'block',
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,
@@ -100,13 +102,15 @@ const useHeaderIconButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
+    '&:active': {
+      backgroundColor: tokens.colorBrandBackground2,
+    },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useDisabledStyleStyles = makeStyles({

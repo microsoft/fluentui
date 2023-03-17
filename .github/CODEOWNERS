@@ -116,6 +116,8 @@ apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/flue
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
+apps/react-18-tests-v8 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
+apps/react-18-tests-v9 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
 apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
 
 #### Packages
@@ -138,8 +140,9 @@ packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
-packages/react-file-type-icons @jahnp @bigbadcapers
+packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
+packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
@@ -289,3 +292,4 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/cypress.config.ts @microsoft/fluentui-react-build
 **/api-extractor.json @microsoft/fluentui-react-build
 **/api-extractor.unstable.json @microsoft/fluentui-react-build
+**/.swcrc @microsoft/fluentui-react-build

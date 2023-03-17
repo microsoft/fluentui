@@ -11,11 +11,11 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { Field } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
-import type { InputProps } from '@fluentui/react-input';
 import type { PopoverProps } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -39,10 +39,19 @@ export enum AnimationDirection {
 export const Calendar: React_2.FunctionComponent<CalendarProps>;
 
 // @public (undocumented)
+export const calendarClassNames: SlotClassNames<CalendarStyles>;
+
+// @public (undocumented)
 export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
 
 // @public (undocumented)
+export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
+
+// @public (undocumented)
 export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
+
+// @public (undocumented)
+export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles>;
 
 // @public (undocumented)
 export interface CalendarDayGridProps extends DayGridOptions {
@@ -144,6 +153,9 @@ export interface CalendarDayStyles {
 export const CalendarMonth: React_2.FunctionComponent<CalendarMonthProps>;
 
 // @public (undocumented)
+export const calendarMonthClassNames: SlotClassNames<CalendarMonthSlots>;
+
+// @public (undocumented)
 export interface CalendarMonthProps {
     allFocusable?: boolean;
     animationDirection?: AnimationDirection;
@@ -179,6 +191,9 @@ export interface CalendarNavigationIcons {
     leftNavigation?: string;
     rightNavigation?: string;
 }
+
+// @public (undocumented)
+export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles>;
 
 // @public (undocumented)
 export interface CalendarPickerStyleProps {
@@ -383,14 +398,15 @@ export interface DateGridStrings {
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
 // @public (undocumented)
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string>;
+
+// @public (undocumented)
 export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     componentRef?: React_2.RefObject<IDatePicker>;
-    textField?: InputProps;
     onSelectDate?: (date: Date | null | undefined) => void;
     label?: string;
     isRequired?: boolean;
     disabled?: boolean;
-    ariaLabel?: string;
     underlined?: boolean;
     pickerAriaLabel?: string;
     isMonthPickerVisible?: boolean;
@@ -473,6 +489,12 @@ export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
 export const defaultDatePickerStrings: DatePickerStrings;
+
+// @public (undocumented)
+export const extraCalendarDayGridClassNames: {
+    hoverStyle: string;
+    pressedStyle: string;
+};
 
 // @public
 export enum FirstWeekOfYear {

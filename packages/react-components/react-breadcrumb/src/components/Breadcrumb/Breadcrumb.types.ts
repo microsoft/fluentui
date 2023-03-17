@@ -1,7 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type BreadcrumbSlots = {
-  root: Slot<'div'>;
+  root: Slot<'nav'>;
+  list?: Slot<'ol'>;
 };
 
 /**
