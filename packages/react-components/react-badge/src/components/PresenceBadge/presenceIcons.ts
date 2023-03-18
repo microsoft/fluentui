@@ -3,62 +3,35 @@ import {
   PresenceAvailable10Regular,
   PresenceAvailable12Regular,
   PresenceAvailable16Regular,
-  PresenceAvailable20Regular,
   PresenceAvailable10Filled,
   PresenceAvailable12Filled,
   PresenceAvailable16Filled,
-  PresenceAvailable20Filled,
-  PresenceAway10Regular,
-  PresenceAway12Regular,
-  PresenceAway16Regular,
-  PresenceAway20Regular,
   PresenceAway10Filled,
   PresenceAway12Filled,
   PresenceAway16Filled,
-  PresenceAway20Filled,
   PresenceBlocked10Regular,
   PresenceBlocked12Regular,
   PresenceBlocked16Regular,
-  PresenceBlocked20Regular,
   PresenceBusy10Filled,
   PresenceBusy12Filled,
   PresenceBusy16Filled,
-  PresenceBusy20Filled,
   PresenceDnd10Regular,
   PresenceDnd12Regular,
   PresenceDnd16Regular,
-  PresenceDnd20Regular,
   PresenceDnd10Filled,
   PresenceDnd12Filled,
   PresenceDnd16Filled,
-  PresenceDnd20Filled,
   PresenceOof10Regular,
   PresenceOof12Regular,
   PresenceOof16Regular,
-  PresenceOof20Regular,
   PresenceOffline10Regular,
   PresenceOffline12Regular,
   PresenceOffline16Regular,
-  PresenceOffline20Regular,
   PresenceUnknown10Regular,
   PresenceUnknown12Regular,
   PresenceUnknown16Regular,
-  PresenceUnknown20Regular,
 } from '@fluentui/react-icons';
 import type { PresenceBadgeState } from './PresenceBadge.types';
-
-export const presenceAwayRegular: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
-  // FIXME not all presence icon sizes are available
-  // https://github.com/microsoft/fluentui/issues/20650
-  tiny: PresenceAway10Regular,
-  'extra-small': PresenceAway10Regular,
-  small: PresenceAway12Regular,
-  medium: PresenceAway16Regular,
-  large: PresenceAway20Regular,
-  // FIXME not all presence icon sizes are available
-  // https://github.com/microsoft/fluentui/issues/20650
-  'extra-large': PresenceAway16Regular,
-};
 
 export const presenceAwayFilled: Record<PresenceBadgeState['size'], React.FunctionComponent> = {
   // FIXME not all presence icon sizes are available
@@ -67,7 +40,9 @@ export const presenceAwayFilled: Record<PresenceBadgeState['size'], React.Functi
   'extra-small': PresenceAway10Filled,
   small: PresenceAway12Filled,
   medium: PresenceAway16Filled,
-  large: PresenceAway20Filled,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceAway16Filled,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceAway16Filled,
@@ -80,7 +55,9 @@ export const presenceAvailableRegular: Record<PresenceBadgeState['size'], React.
   'extra-small': PresenceAvailable10Regular,
   small: PresenceAvailable12Regular,
   medium: PresenceAvailable16Regular,
-  large: PresenceAvailable20Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceAvailable16Regular,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceAvailable16Regular,
@@ -93,7 +70,9 @@ export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React.F
   'extra-small': PresenceAvailable10Filled,
   small: PresenceAvailable12Filled,
   medium: PresenceAvailable16Filled,
-  large: PresenceAvailable20Filled,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceAvailable16Filled,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceAvailable16Filled,
@@ -106,7 +85,9 @@ export const presenceBlockedRegular: Record<PresenceBadgeState['size'], React.Fu
   'extra-small': PresenceBlocked10Regular,
   small: PresenceBlocked12Regular,
   medium: PresenceBlocked16Regular,
-  large: PresenceBlocked20Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceBlocked16Regular,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceBlocked16Regular,
@@ -119,7 +100,9 @@ export const presenceBusyFilled: Record<PresenceBadgeState['size'], React.Functi
   'extra-small': PresenceBusy10Filled,
   small: PresenceBusy12Filled,
   medium: PresenceBusy16Filled,
-  large: PresenceBusy20Filled,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceBusy16Filled,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceBusy16Filled,
@@ -132,7 +115,9 @@ export const presenceDndFilled: Record<PresenceBadgeState['size'], React.Functio
   'extra-small': PresenceDnd10Filled,
   small: PresenceDnd12Filled,
   medium: PresenceDnd16Filled,
-  large: PresenceDnd20Filled,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceDnd16Filled,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceDnd16Filled,
@@ -145,7 +130,9 @@ export const presenceDndRegular: Record<PresenceBadgeState['size'], React.Functi
   'extra-small': PresenceDnd10Regular,
   small: PresenceDnd12Regular,
   medium: PresenceDnd16Regular,
-  large: PresenceDnd20Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceDnd16Regular,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceDnd16Regular,
@@ -158,7 +145,9 @@ export const presenceOofRegular: Record<PresenceBadgeState['size'], React.Functi
   'extra-small': PresenceOof10Regular,
   small: PresenceOof12Regular,
   medium: PresenceOof16Regular,
-  large: PresenceOof20Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceOof16Regular,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceOof16Regular,
@@ -171,7 +160,9 @@ export const presenceOfflineRegular: Record<PresenceBadgeState['size'], React.Fu
   'extra-small': PresenceOffline10Regular,
   small: PresenceOffline12Regular,
   medium: PresenceOffline16Regular,
-  large: PresenceOffline20Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceOffline16Regular,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceOffline16Regular,
@@ -184,7 +175,9 @@ export const presenceUnknownRegular: Record<PresenceBadgeState['size'], React.Fu
   'extra-small': PresenceUnknown10Regular,
   small: PresenceUnknown12Regular,
   medium: PresenceUnknown16Regular,
-  large: PresenceUnknown20Regular,
+  // FIXME not all presence icon sizes are available
+  // https://github.com/microsoft/fluentui/issues/20650
+  large: PresenceUnknown16Regular,
   // FIXME not all presence icon sizes are available
   // https://github.com/microsoft/fluentui/issues/20650
   'extra-large': PresenceUnknown16Regular,
