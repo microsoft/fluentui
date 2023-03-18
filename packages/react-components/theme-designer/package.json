@@ -31,17 +31,17 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-alert": "9.0.0-beta.40",
+    "@fluentui/react-components": "^9.18.2",
+    "@fluentui/react-context-selector": "^9.1.14",
+    "@fluentui/react-icons": "^2.0.196",
+    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
     "@fluentui/react-theme": "^9.1.6",
     "@fluentui/react-utilities": "^9.7.1",
     "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.18.2",
-    "@fluentui/react-icons": "^2.0.175",
-    "codesandbox-import-utils": "2.2.3",
     "@types/dedent": "0.7.0",
-    "@fluentui/react-alert": "9.0.0-beta.40",
-    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
-    "@fluentui/react-context-selector": "^9.1.14"
+    "codesandbox-import-utils": "2.2.3",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
