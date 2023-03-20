@@ -32,10 +32,10 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.106.1",
-    "@fluentui/react": "^8.106.6",
+    "@fluentui/fluent2-theme": "^8.106.2",
+    "@fluentui/react": "^8.106.7",
     "@fluentui/react-components": "^9.18.2",
-    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-theme": "^9.1.6",
     "@fluentui/react-utilities": "^9.7.1",
     "@griffel/react": "^1.5.2",
@@ -55,6 +55,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
