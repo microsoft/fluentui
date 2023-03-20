@@ -2,6 +2,57 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 14 Mar 2023 04:21:22 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.11",
+      "version": "3.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6e51be008ee479451431421eaf2e3e63744b6d5c",
+            "comment": "update FAST dependencies to latest package versions"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc86569d1d96d6deff9188fa0702d173150dd5dd",
+            "comment": "Adds css containment to implemented web components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Mar 2023 04:19:45 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.10",
+      "version": "3.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "443b8d8e35429ffbabda35cbe7d4704adaaf8ab4",
+            "comment": "fix: [text] block breaks the style attribute"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Mar 2023 04:24:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.9",
+      "version": "3.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "07c70c3cb2253817e70e9b1c4615aee7e69a1816",
+            "comment": "Adds SliderLabel spec and folder"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 04:23:00 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.9",
       "version": "3.0.0-alpha.9",

@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.9",
+  "version": "3.0.0-alpha.11",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -125,8 +125,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.21",
-    "@microsoft/fast-foundation": "^3.0.0-alpha.25",
+    "@microsoft/fast-element": "^2.0.0-beta.22",
+    "@microsoft/fast-foundation": "^3.0.0-alpha.26",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"

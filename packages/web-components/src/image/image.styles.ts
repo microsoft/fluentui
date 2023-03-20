@@ -6,6 +6,10 @@ import { borderRadiusCircular, colorNeutralStroke2, shadow4, strokeWidthThin } f
  * @public
  */
 export const styles = css`
+  :host {
+    contain: content;
+  }
+
   :host ::slotted(img) {
     box-sizing: border-box;
     min-height: 8px;

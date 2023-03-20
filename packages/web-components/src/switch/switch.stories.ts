@@ -86,3 +86,21 @@ export default {
 } as SwitchStoryMeta;
 
 export const Switch = renderComponent(storyTemplate).bind({});
+
+//
+// Attribute stories
+//
+
+export const Checked = renderComponent(html<SwitchStoryArgs>`<fluent-switch checked>Checked</fluent-switch>`);
+
+export const Disabled = renderComponent(html<SwitchStoryArgs>`<fluent-switch disabled>Disabled</fluent-switch>`);
+
+export const Required = renderComponent(html<SwitchStoryArgs>`<fluent-switch required>Required</fluent-switch>`);
+
+export const LabelPosition = renderComponent(html<SwitchStoryArgs>`
+  <div style="display: flex; align-items: end;">
+    <fluent-switch label-position="before">before</fluent-switch>
+    <fluent-switch label-position="above">above</fluent-switch>
+    <fluent-switch label-position="after">after</fluent-switch>
+  </div>
+`);

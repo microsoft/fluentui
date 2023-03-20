@@ -28,6 +28,7 @@ export const styles = css`
 
   :host {
     max-width: fit-content;
+    contain: content;
   }
 
   .heading {
