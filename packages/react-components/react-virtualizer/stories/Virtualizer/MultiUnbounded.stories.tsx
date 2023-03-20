@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles, useFluent } from '@fluentui/react-components';
 import { ThemeProvider } from '@fluentui/react';
 
 const useStyles = makeStyles({
@@ -38,7 +38,10 @@ export const MultiUnbounded = () => {
     defaultItemSize: 100,
   });
 
-  scrollRef(document.body);
+  const { targetDocument } = useFluent();
+  if (targetDocument) {
+    scrollRef(targetDocument.body);
+  }
 
   const renderHeader = (index: number) => {
     return <div key={`virtualizer-header-${index}`} className={styles.block}>{`Virtualizer Instance - ${index}`}</div>;

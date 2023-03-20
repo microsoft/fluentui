@@ -2,7 +2,6 @@ import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
 import { VirtualizerMeasureProps } from './useVirtualizerMeasure.types';
 import { debounce } from '../utilities/debounce';
-import * as ReactDOM from 'react-dom';
 
 /**
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
@@ -53,7 +52,7 @@ export const useStaticVirtualizerMeasure = (
      */
     const newBufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
-    const totalLength = length + newBufferSize * 2 + 1;
+    const totalLength = length + newBufferItems * 2 + 1;
 
     setState({
       virtualizerLength: totalLength,

@@ -3,6 +3,8 @@ import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-compon
 import { makeStyles } from '@fluentui/react-components';
 import { ThemeProvider } from '@fluentui/react';
 
+import { useFluent } from '@fluentui/react-components';
+
 const useStyles = makeStyles({
   root: {
     maxHeight: '100vh',
@@ -37,7 +39,10 @@ export const DefaultUnbounded = () => {
     defaultItemSize: 100,
   });
 
-  scrollRef(document.body);
+  const { targetDocument } = useFluent();
+  if (targetDocument) {
+    scrollRef(targetDocument.body);
+  }
 
   return (
     <ThemeProvider className={styles.root} applyTo="body">
