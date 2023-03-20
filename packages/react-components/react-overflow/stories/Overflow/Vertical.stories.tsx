@@ -79,7 +79,6 @@ const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'>> = props => {
     return null;
   }
 
-  // As an union between button props and div props may be conflicting, casting is required
   return <MenuItem>Item {id}</MenuItem>;
 };
 
