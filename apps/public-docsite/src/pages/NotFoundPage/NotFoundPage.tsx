@@ -12,11 +12,12 @@ import {
 } from '@fluentui/react-docsite-components/lib/index2';
 import { SiteDefinition } from '../../SiteDefinition/index';
 import { topNavHeight, mediaQuery } from '../../styles/constants';
+import { cdnUrl } from '../../utilities/cdn';
 
 const illustrations = [
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error1.svg',
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error2.svg',
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error3.svg',
+  `${cdnUrl}/office-ui-fabric-react-assets/images/error/error1.svg`,
+  `${cdnUrl}/office-ui-fabric-react-assets/images/error/error2.svg`,
+  `${cdnUrl}/office-ui-fabric-react-assets/images/error/error3.svg`,
 ];
 
 const rootClass = mergeStyles({
@@ -70,7 +71,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   ];
 
   /** Gets the top level page from the current URL and returns a link to it. */
-  private _getAreaLink = (): JSX.Element => {
+  private _getAreaLink = (): JSX.Element | undefined => {
     const area = getSiteArea(SiteDefinition.pages);
     const pageForArea = SiteDefinition.pages.filter(page => page.title === area)[0];
     if (pageForArea) {
@@ -78,7 +79,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
 
       return (
         <li>
-          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)} underline>
+          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url!)} underline>
             {title}
           </Link>
         </li>
@@ -87,7 +88,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   };
 
   /** Renders a button to go back in the browser history only if there is a page to go back to. */
-  private _renderBackButton = (): JSX.Element => {
+  private _renderBackButton = (): JSX.Element | undefined => {
     if (window.history.length > 1) {
       return (
         <p>

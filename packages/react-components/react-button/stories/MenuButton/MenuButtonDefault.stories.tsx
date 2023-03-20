@@ -3,7 +3,7 @@ import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '
 
 export const Default = () => (
   <Menu>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <MenuButton>Example</MenuButton>
     </MenuTrigger>
 

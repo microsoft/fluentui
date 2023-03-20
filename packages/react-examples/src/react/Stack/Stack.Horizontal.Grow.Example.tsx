@@ -26,7 +26,7 @@ const stackTokens: IStackTokens = {
 
 export const HorizontalStackGrowExample: React.FunctionComponent = () => {
   return (
-    <Stack horizontal styles={stackStyles} tokens={stackTokens}>
+    <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={stackTokens}>
       <Stack.Item grow={3} styles={stackItemStyles}>
         Grow is 3
       </Stack.Item>

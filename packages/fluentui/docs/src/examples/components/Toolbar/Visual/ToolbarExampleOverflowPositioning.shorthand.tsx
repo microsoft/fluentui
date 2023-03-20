@@ -144,8 +144,8 @@ const EditorToolbar: React.FC<Pick<ToolbarProps, 'overflowSentinel'>> = ({ overf
 const ToolbarExampleOverflowPositioningShorthand: React.FC<{ dir: 'ltr' | 'rtl' }> = ({ dir }) => (
   <FrameRenderer
     frameBorder="0"
-    width="400px"
-    height="400px"
+    width="300px"
+    height="300px"
     scrolling="no"
     style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
   >

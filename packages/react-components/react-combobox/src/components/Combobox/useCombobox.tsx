@@ -1,12 +1,15 @@
 import * as React from 'react';
+import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
   mergeCallbacks,
   useEventCallback,
+  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
@@ -26,12 +29,12 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
-  const baseState = useComboboxBaseState(props);
+  const baseState = useComboboxBaseState({ ...props, editable: true });
   const {
     activeOption,
     clearSelection,
     getIndexOfId,
-    getOptionsMatchingValue,
+    getOptionsMatchingText,
     hasFocus,
     open,
     selectOption,
@@ -42,7 +45,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
-  const { freeform, multiselect } = props;
+  const { disabled, freeform, inlinePopup, multiselect } = props;
+  const comboId = useId('combobox-');
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -53,31 +57,33 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const rootRef = React.useRef<HTMLDivElement>(null);
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
+  // NVDA and JAWS have bugs that suppress reading the input value text when aria-activedescendant is set
+  // To prevent this, we clear the HTML attribute (but save the state) when a user presses left/right arrows
+  // ref: https://github.com/microsoft/fluentui/issues/26359#issuecomment-1397759888
+  const [hideActiveDescendant, setHideActiveDescendant] = React.useState(false);
+
   // calculate listbox width style based on trigger width
-  const [popupWidth, setPopupWidth] = React.useState<string>();
+  const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
   React.useEffect(() => {
-    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
-    setPopupWidth(width);
-  }, [open]);
-
-  // handle input type-to-select
-  const getSearchString = (inputValue: string): string => {
-    // if there are commas in the value string, take the text after the last comma
-    const searchString = inputValue.split(',').pop();
-
-    return searchString?.trim().toLowerCase() || '';
-  };
+    // only recalculate width when opening
+    if (open) {
+      const width = `${rootRef.current?.clientWidth}px`;
+      if (width !== popupDimensions?.width) {
+        setPopupDimensions({ width });
+      }
+    }
+  }, [open, popupDimensions]);
 
   // set active option and selection based on typing
   const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
-    const searchString = getSearchString(inputValue);
+    const searchString = inputValue?.trim().toLowerCase();
 
-    if (searchString.length === 0) {
+    if (!searchString || searchString.length === 0) {
       return;
     }
 
-    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString) === 0;
-    const matches = getOptionsMatchingValue(matcher);
+    const matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString) === 0;
+    const matches = getOptionsMatchingText(matcher);
 
     // return first matching option after the current active option, looping back to the top
     if (matches.length > 1 && activeOption) {
@@ -101,7 +107,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     // handle selection and updating value if freeform is false
     if (!baseState.open && !freeform) {
       // select matching option, if the value fully matches
-      if (value && activeOption && getSearchString(value) === activeOption?.value.toLowerCase()) {
+      if (value && activeOption && value.trim().toLowerCase() === activeOption?.text.toLowerCase()) {
         baseState.selectOption(ev, activeOption);
       }
 
@@ -111,6 +117,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   baseState.setOpen = (ev, newState: boolean) => {
+    if (disabled) {
+      return;
+    }
+
     if (!newState && !freeform) {
       setValue(undefined);
     }
@@ -131,12 +141,22 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setFocusVisible(true);
 
     // clear selection for single-select if the input value no longer matches the selection
-    if (
-      !multiselect &&
-      selectedOptions.length === 1 &&
-      (inputValue.length < 1 || selectedOptions[0].indexOf(inputValue) !== 0)
-    ) {
+    if (!multiselect && selectedOptions.length === 1 && (inputValue.length < 1 || !matchingOption)) {
       clearSelection(ev);
+    }
+  };
+
+  // open Combobox when typing
+  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!open && getDropdownActionFromKey(ev) === 'Type') {
+      baseState.setOpen(ev, true);
+    }
+
+    // clear activedescendant when moving the text insertion cursor
+    if (ev.key === ArrowLeft || ev.key === ArrowRight) {
+      setHideActiveDescendant(true);
+    } else {
+      setHideActiveDescendant(false);
     }
   };
 
@@ -156,6 +176,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
+  triggerSlot.onKeyDown = mergeCallbacks(triggerSlot.onKeyDown, onTriggerKeyDown);
 
   // only resolve listbox slot if needed
   listboxSlot =
@@ -164,13 +185,17 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
           required: true,
           defaultProps: {
             children: props.children,
-            style: { width: popupWidth },
+            style: popupDimensions,
           },
         })
       : undefined;
 
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+
+  if (hideActiveDescendant) {
+    triggerSlot['aria-activedescendant'] = undefined;
+  }
 
   const state: ComboboxState = {
     components: {
@@ -182,6 +207,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
+        'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
         ...rootNativeProps,
       },
     }),
@@ -190,11 +216,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {
+        'aria-expanded': open,
         children: <ChevronDownIcon />,
+        role: 'button',
       },
     }),
     ...baseState,
-    setOpen,
   };
 
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
@@ -203,8 +230,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};
   const onExpandIconMouseDown = useEventCallback(
     mergeCallbacks(onIconMouseDown, () => {
-      // do not dismiss on blur when clicking the icon
-      baseState.ignoreNextBlur.current = true;
+      // do not dismiss on blur when closing via clicking the icon
+      if (open) {
+        baseState.ignoreNextBlur.current = true;
+      }
     }),
   );
 
@@ -213,12 +242,38 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       // open and set focus
       state.setOpen(event, !state.open);
       triggerRef.current?.focus();
+
+      // set focus visible=false, since this can only be done with the mouse/pointer
+      setFocusVisible(false);
     }),
   );
 
   if (state.expandIcon) {
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
     state.expandIcon.onClick = onExpandIconClick;
+
+    // If there is no explicit aria-label, calculate default accName attribute for expandIcon button,
+    // using the following steps:
+    // 1. If there is an aria-label, it is "Open [aria-label]"
+    // 2. If there is an aria-labelledby, it is "Open [aria-labelledby target]" (using aria-labelledby + ids)
+    // 3. If there is no aria-label/ledby attr, it falls back to "Open"
+    // We can't fall back to a label/htmlFor name because of https://github.com/w3c/accname/issues/179
+    const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
+    const defaultOpenString = 'Open'; // this is english-only since it is the fallback
+    if (!hasExpandLabel) {
+      if (props['aria-labelledby']) {
+        const chevronId = state.expandIcon.id ?? `${comboId}-chevron`;
+        const chevronLabelledBy = `${chevronId} ${state.input['aria-labelledby']}`;
+
+        state.expandIcon['aria-label'] = defaultOpenString;
+        state.expandIcon.id = chevronId;
+        state.expandIcon['aria-labelledby'] = chevronLabelledBy;
+      } else if (props['aria-label']) {
+        state.expandIcon['aria-label'] = `${defaultOpenString} ${props['aria-label']}`;
+      } else {
+        state.expandIcon['aria-label'] = defaultOpenString;
+      }
+    }
   }
 
   return state;

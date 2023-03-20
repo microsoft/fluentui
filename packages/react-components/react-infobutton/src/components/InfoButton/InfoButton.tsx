@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useInfoButton_unstable } from './useInfoButton';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderInfoButton_unstable } from './renderInfoButton';
+import { useInfoButton_unstable } from './useInfoButton';
 import { useInfoButtonStyles_unstable } from './useInfoButtonStyles';
 import type { InfoButtonProps } from './InfoButton.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * InfoButton component - TODO: add more docs
+ * InfoButtons provide a way to display additional information about a form field or an area in the UI.
  */
 export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef((props, ref) => {
   const state = useInfoButton_unstable(props, ref);

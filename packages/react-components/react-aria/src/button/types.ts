@@ -5,9 +5,6 @@ type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends 
 
 export type ARIAButtonType = 'button' | 'a' | 'div';
 
-/**
- * @internal
- */
 export type ARIAButtonElement<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
   | HTMLButtonElement
   | (AlternateAs extends 'a' ? HTMLAnchorElement : never)
@@ -44,7 +41,6 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
   Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
 
 /**
- * @internal
  * Props that will be modified internally by `useARIAButtonProps` by each case.
  * This typing is to ensure a well specified return value for `useARIAbButtonProps`
  */

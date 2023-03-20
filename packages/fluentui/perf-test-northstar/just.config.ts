@@ -1,8 +1,7 @@
 import path from 'path';
-import { preset, series, task, argv } from '@fluentui/scripts';
-import { getResolveLoaderDirs } from '@fluentui/scripts/webpack/webpack-resources';
+import { series, task, argv, taskPresets } from 'just-scripts';
 
-preset();
+taskPresets.lib();
 
 // TODO: FUR integration issues
 // - FUR build fails when it comes across these new packages inside of packages/
@@ -16,7 +15,6 @@ function bundleStories() {
     await digestStories({
       configDir: path.join(__dirname, '.digest'),
       outputDir: path.join(__dirname, 'dist'),
-      resolveDirs: getResolveLoaderDirs(),
     });
   };
 }

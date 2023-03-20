@@ -7,7 +7,7 @@ const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 
 export const AligningWithIcons = () => (
   <Menu hasIcons>
-    <MenuTrigger>
+    <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>
     <MenuPopover>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react';
@@ -22,13 +22,13 @@ storiesOf('Dialog', module)
   .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-Dialog-main' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Root',

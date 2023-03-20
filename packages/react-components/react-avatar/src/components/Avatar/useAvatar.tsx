@@ -44,28 +44,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     /* excludedPropNames: */ ['name'],
   );
 
-  // Resolve the initials slot, defaulted to getInitials.
-  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
-    required: true,
-    defaultProps: {
-      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
-      id: baseId + '__initials',
-    },
-  });
-
-  // Render the icon slot *only if* there aren't any initials to display.
-  let icon: AvatarState['icon'] = undefined;
-  if (!initials?.children) {
-    initials = undefined;
-    icon = resolveShorthand(props.icon, {
-      required: true,
-      defaultProps: {
-        children: <PersonRegular />,
-        'aria-hidden': true,
-      },
-    });
-  }
-
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
   const image: AvatarState['image'] = resolveShorthand(props.image, {
     defaultProps: {
@@ -80,6 +58,32 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   if (image) {
     image.onError = mergeCallbacks(image.onError, () => setImageHidden(true));
     image.onLoad = mergeCallbacks(image.onLoad, () => setImageHidden(undefined));
+  }
+
+  // Resolve the initials slot, defaulted to getInitials.
+  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
+    required: true,
+    defaultProps: {
+      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
+      id: baseId + '__initials',
+    },
+  });
+
+  // Don't render the initials slot if it's empty
+  if (!initials?.children) {
+    initials = undefined;
+  }
+
+  // Render the icon slot *only if* there aren't any initials or image to display
+  let icon: AvatarState['icon'] = undefined;
+  if (!initials && (!image || imageHidden)) {
+    icon = resolveShorthand(props.icon, {
+      required: true,
+      defaultProps: {
+        children: <PersonRegular />,
+        'aria-hidden': true,
+      },
+    });
   }
 
   const badge: AvatarState['badge'] = resolveShorthand(props.badge, {

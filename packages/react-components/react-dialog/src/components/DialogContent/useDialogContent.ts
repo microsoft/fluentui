@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useDialogContext_unstable } from '../../contexts';
 import { DialogContentProps, DialogContentState } from './DialogContent.types';
 
 /**
@@ -16,14 +15,12 @@ export const useDialogContent_unstable = (
   props: DialogContentProps,
   ref: React.Ref<HTMLElement>,
 ): DialogContentState => {
-  const dialogContentId = useDialogContext_unstable(ctx => ctx.dialogContentId);
   return {
     components: {
       root: 'div',
     },
     root: getNativeElementProps(props.as ?? 'div', {
       ref,
-      id: dialogContentId,
       ...props,
     }),
   };

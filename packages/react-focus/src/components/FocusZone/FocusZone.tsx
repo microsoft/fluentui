@@ -849,7 +849,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         target.tagName === 'BUTTON' ||
         target.tagName === 'A' ||
         target.tagName === 'INPUT' ||
-        target.tagName === 'TEXTAREA'
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SUMMARY'
       ) {
         return false;
       }
@@ -926,9 +927,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
-      element = (isForward
-        ? getNextElement(this._root.current, element)
-        : getPreviousElement(this._root.current, element)) as HTMLElement;
+      element = (
+        isForward ? getNextElement(this._root.current, element) : getPreviousElement(this._root.current, element)
+      ) as HTMLElement;
 
       if (isBidirectional) {
         if (element) {

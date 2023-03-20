@@ -57,7 +57,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const disabledOverlayColor = 'rgba(218, 218, 218, 0.29)';
 
   return {
-    root: [classNames.root, className],
+    root: [classNames.root, className, { position: 'relative' }],
     text: [
       classNames.text,
       {

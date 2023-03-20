@@ -40,6 +40,12 @@ export type FluentTriggerComponent = {
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
 // @public
+export function getEventClientCoords(event: TouchOrMouseEvent): {
+    clientX: number;
+    clientY: number;
+};
+
+// @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @public
@@ -69,16 +75,42 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
     ref?: React_2.Ref<any>;
 }) | null;
 
+// @public
+export const IdPrefixProvider: React_2.Provider<string | undefined>;
+
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
 // @public
+export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
+    constructorName?: ConstructorName;
+}): element is InstanceType<(typeof globalThis)[ConstructorName]>;
+
+// @internal
+export function isInteractiveHTMLElement(element: unknown): boolean;
+
+// @public
+export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | React_2.MouseEvent;
+
+// @public
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
+
+// @public
+export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
 
 // @internal
 export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
 
-// @internal
+// @public (undocumented)
+export type NativeTouchOrMouseEvent = MouseEvent | TouchEvent;
+
+// @public
+export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
+
+// @public (undocumented)
+export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
+
+// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 
 // @public
@@ -89,26 +121,26 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, true>): ReplaceNullWithUndefined<P>;
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>): ReplaceNullWithUndefined<P> | undefined;
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
 // @public (undocumented)
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
+    required: true;
+    defaultProps?: Props;
+} : {
     required?: Required;
     defaultProps?: Props;
 };
 
-// @internal
-export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
-
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
+} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
     [As in AlternateAs]: {
         as: As;
-    } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public
@@ -131,9 +163,14 @@ export type Slots<S extends SlotPropsRecord> = {
 export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | React_2.ReactPortal;
 
 // @public
-export const SSRProvider: React_2.FC;
+export const SSRProvider: React_2.FC<{
+    children: React_2.ReactNode;
+}>;
 
-// @internal
+// @public (undocumented)
+export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent;
+
+// @public
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
 };
@@ -160,13 +197,13 @@ export function useForceUpdate(): DispatchWithoutAction;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
-// @internal
+// @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function useIsSSR(): boolean;
 
-// @internal
+// @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)
@@ -186,6 +223,9 @@ export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => 
 
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
+
+// @public (undocumented)
+export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | undefined;
 
 // @internal
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];

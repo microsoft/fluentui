@@ -5,7 +5,7 @@ import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@flu
 const EditorLayoutSubMenu = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <MenuItem>Editor Layout</MenuItem>
       </MenuTrigger>
 
@@ -23,7 +23,7 @@ const EditorLayoutSubMenu = () => {
 const AppearanceSubMenu = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <MenuItem>Appearance</MenuItem>
       </MenuTrigger>
 
@@ -42,7 +42,7 @@ const AppearanceSubMenu = () => {
 const PreferencesSubMenu = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <MenuItem>Preferences</MenuItem>
       </MenuTrigger>
 
@@ -62,7 +62,7 @@ const PreferencesSubMenu = () => {
 export const NestedSubmenus = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
 

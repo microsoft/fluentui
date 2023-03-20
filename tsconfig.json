@@ -1,4 +1,8 @@
 {
-  "extends": "./scripts/tsconfig.json",
-  "include": ["./{apps,packages}/*/just.config.ts"]
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["./apps/*/just.config.ts", "./packages/**/just.config.ts"],
+  "files": ["./typings/find-free-port/index.d.ts"]
 }

@@ -104,24 +104,6 @@ describe('version-string-replace generator', () => {
     expect(packageJson.dependencies).toMatchInlineSnapshot(`Object {}`);
   });
 
-  it('should throw error when if package is not converged', async () => {
-    tree = setupDummyPackage(tree, {
-      name: '@proj/babel-make-styles',
-      version: '8.0.0-alpha.0',
-      dependencies: {
-        '@proj/make-styles': '^9.0.0-alpha.1',
-      },
-      projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
-    });
-
-    const result = generator(tree, { name: '@proj/babel-make-styles', ...defaultTestOptions });
-
-    await expect(result).rejects.toMatchInlineSnapshot(`
-            [Error: @proj/babel-make-styles is not converged package consumed by customers.
-                    Make sure to run the migration on packages with version 9.x.x and has the alpha tag]
-          `);
-  });
-
   it('should downgrade the version to 0.0.0 when `nightly` is selected as the bump type', async () => {
     tree = setupDummyPackage(tree, {
       name: '@proj/make-styles',
@@ -228,7 +210,15 @@ describe('version-string-replace generator', () => {
         dependencies: {
           '@proj/make-styles': '^9.0.0-alpha.1',
         },
-        projectConfiguration: { tags: ['vNext', 'platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
+        projectConfiguration: { tags: ['platform:node'], sourceRoot: 'packages/babel-make-styles/src' },
+      });
+      tree = setupDummyPackage(tree, {
+        name: '@proj/tokens',
+        version: '1.0.0',
+        dependencies: {
+          '@proj/make-styles': '^9.0.0-alpha.1',
+        },
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/tokens/src' },
       });
       tree = setupDummyPackage(tree, {
         name: '@proj/react-menu',
@@ -245,6 +235,13 @@ describe('version-string-replace generator', () => {
 
       const packageJson = readJson(tree, 'packages/babel-make-styles/package.json');
       expect(packageJson.version).toMatchInlineSnapshot(`"1.0.0"`);
+    });
+
+    it('should bump packages that have tag vNext but not version 9', async () => {
+      await generator(tree, { all: true, ...defaultTestOptions });
+
+      const packageJson = readJson(tree, 'packages/tokens/package.json');
+      expect(packageJson.version).toMatchInlineSnapshot(`"1.0.1-beta.0"`);
     });
 
     it('should bump all packages to beta', async () => {

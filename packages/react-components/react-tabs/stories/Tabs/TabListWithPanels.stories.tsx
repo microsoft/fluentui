@@ -1,7 +1,19 @@
 import * as React from 'react';
 import { makeStyles, shorthands, tokens, Tab, TabList } from '@fluentui/react-components';
-import { AirplaneRegular, AirplaneTakeOffRegular, TimeAndWeatherRegular } from '@fluentui/react-icons';
+import {
+  AirplaneRegular,
+  AirplaneFilled,
+  AirplaneTakeOffRegular,
+  AirplaneTakeOffFilled,
+  TimeAndWeatherRegular,
+  TimeAndWeatherFilled,
+  bundleIcon,
+} from '@fluentui/react-icons';
 import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-components';
+
+const Airplane = bundleIcon(AirplaneFilled, AirplaneRegular);
+const AirplaneTakeOff = bundleIcon(AirplaneTakeOffFilled, AirplaneTakeOffRegular);
+const TimeAndWeather = bundleIcon(TimeAndWeatherFilled, TimeAndWeatherRegular);
 
 const useStyles = makeStyles({
   root: {
@@ -124,13 +136,13 @@ export const WithPanels = () => {
   return (
     <div className={styles.root}>
       <TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
-        <Tab id="Arrivals" icon={<AirplaneRegular />} value="arrivals">
+        <Tab id="Arrivals" icon={<Airplane />} value="arrivals">
           Arrivals
         </Tab>
-        <Tab id="Departures" icon={<AirplaneTakeOffRegular />} value="departures">
+        <Tab id="Departures" icon={<AirplaneTakeOff />} value="departures">
           Departures
         </Tab>
-        <Tab id="Conditions" icon={<TimeAndWeatherRegular />} value="conditions">
+        <Tab id="Conditions" icon={<TimeAndWeather />} value="conditions">
           Conditions
         </Tab>
       </TabList>

@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/react-portal-compat",
-  "version": "9.0.12",
+  "version": "9.0.45",
   "description": "A package that contains compatibility layer for React Portals",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -19,25 +19,26 @@
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
     "just": "just-scripts",
-    "lint": "just-scripts lint && just-scripts lint-imports",
+    "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-portal-compat/src && yarn docs",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-components": "^9.5.2",
-    "@fluentui/react-shared-contexts": "^9.0.2",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/react-components": "^9.18.2",
+    "@fluentui/react-shared-contexts": "^9.3.1",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-portal-compat-context": "^9.0.3",
-    "@fluentui/react-tabster": "^9.2.0",
+    "@fluentui/react-portal-compat-context": "^9.0.4",
+    "@fluentui/react-tabster": "^9.6.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.5.2",
+    "@fluentui/react-components": "^9.18.2",
     "@types/react": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0"
   },
@@ -46,5 +47,14 @@
       "major",
       "prerelease"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

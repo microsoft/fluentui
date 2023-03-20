@@ -18,7 +18,7 @@ export const CustomTrigger = () => {
 
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <CustomMenuTrigger />
       </MenuTrigger>
 

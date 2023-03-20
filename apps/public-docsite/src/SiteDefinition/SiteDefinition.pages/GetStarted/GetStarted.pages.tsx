@@ -87,7 +87,7 @@ export const GetStartedPages: INavPage = {
     cross: [
       {
         title: 'Get started',
-        url: '#/get-started/crossplatform',
+        url: '#/get-started/cross',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
         getComponent: cb =>

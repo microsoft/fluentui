@@ -43,6 +43,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       cursor: pointer;
       border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${strokeWidth} * 1px) solid transparent;
+      position: relative;
     }
 
     :host(.indent-0) {
@@ -95,6 +96,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     :host(.expanded) {
       background: ${neutralFillStealthActive};
       color: ${neutralForegroundRest};
+      z-index: 2;
     }
 
     :host([disabled]) {

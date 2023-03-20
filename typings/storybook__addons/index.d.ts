@@ -2,6 +2,7 @@
 // Project: https://github.com/storybookjs/storybook/tree/main/lib/addons
 
 import { ViewMode } from '@storybook/addons';
+import { StoryContextForEnhancers } from '@storybook/csf';
 import * as React from 'react';
 
 declare module '@storybook/addons' {
@@ -39,7 +40,14 @@ declare module '@storybook/addons' {
          * enable/disable rendering decorators in Docs mode
          */
         excludeDecorators: boolean;
+        type: 'source' | 'auto' | 'dynamic';
       };
+
+      /**
+       * Allows to override code that will be used for "Show Code" tab.
+       * @see https://github.com/storybookjs/storybook/blob/main/addons/docs/docs/recipes.md#customizing-source-snippets
+       */
+      transformSource: (snippet: string, story: StoryContextForEnhancers) => string | undefined;
 
       container?: React.ComponentType<any>;
       page?: React.ComponentType<any>;

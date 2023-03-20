@@ -1,0 +1,17 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "overrides": [
+    {
+      "files": "**/*.stories.{tsx,ts}",
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": ["src/"]
+          }
+        ]
+      }
+    }
+  ]
+}

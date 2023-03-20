@@ -1,4 +1,4 @@
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
@@ -16,7 +16,6 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -69,7 +68,11 @@ const useStyles = makeStyles({
     },
   },
 
-  listbox: {},
+  listbox: {
+    boxShadow: `${tokens.shadow16}`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    maxHeight: '80vh',
+  },
 
   listboxCollapsed: {
     display: 'none',
@@ -101,8 +104,7 @@ const useStyles = makeStyles({
 
   // size variants
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    ...typographyStyles.caption1,
     ...shorthands.padding(
       '3px',
       tokens.spacingHorizontalSNudge,
@@ -111,8 +113,7 @@ const useStyles = makeStyles({
     ),
   },
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    ...typographyStyles.body1,
     ...shorthands.padding(
       '5px',
       tokens.spacingHorizontalMNudge,
@@ -122,8 +123,7 @@ const useStyles = makeStyles({
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    ...typographyStyles.body2,
     ...shorthands.padding(
       '7px',
       tokens.spacingHorizontalM,
@@ -137,7 +137,8 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
-
+  },
+  outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
       borderBottomColor: tokens.colorNeutralStrokeAccessible,
@@ -155,9 +156,11 @@ const useStyles = makeStyles({
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -168,6 +171,19 @@ const useStyles = makeStyles({
     ':not(:focus-within),:hover:not(:focus-within)': {
       borderBottomColor: tokens.colorPaletteRedBorder2,
     },
+  },
+  disabled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
+  },
+
+  disabledText: {
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
   },
 });
 
@@ -200,6 +216,10 @@ const useIconStyles = makeStyles({
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
   },
+
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
 });
 
 /**
@@ -208,6 +228,7 @@ const useIconStyles = makeStyles({
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
   const { appearance, open, placeholderVisible, size } = state;
   const invalid = `${state.button['aria-invalid']}` === 'true';
+  const disabled = state.button.disabled;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
@@ -215,8 +236,10 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     dropdownClassNames.root,
     styles.root,
     styles[appearance],
+    !disabled && appearance === 'outline' && styles.outlineInteractive,
     invalid && appearance !== 'underline' && styles.invalid,
     invalid && appearance === 'underline' && styles.invalidUnderline,
+    disabled && styles.disabled,
     state.root.className,
   );
 
@@ -225,6 +248,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     styles.button,
     styles[size],
     placeholderVisible && styles.placeholder,
+    disabled && styles.disabledText,
     state.button.className,
   );
 
@@ -242,6 +266,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
       dropdownClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[size],
+      disabled && iconStyles.disabled,
       state.expandIcon.className,
     );
   }

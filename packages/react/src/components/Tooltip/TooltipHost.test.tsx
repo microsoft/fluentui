@@ -119,4 +119,14 @@ describe('TooltipHost', () => {
     const descriptionText = component.find('#tooltipId').at(0).text();
     expect(descriptionText).toEqual('test');
   });
+
+  it('passes props and render function to onRenderContent', () => {
+    const tooltipProps: ITooltipProps = {
+      onRenderContent: (props, render) => render?.({ ...props, content: props?.content + ' suffix' }) || null,
+    };
+
+    const component = mount(<TooltipHost content={'prefix'} id="tooltipId" tooltipProps={tooltipProps} />);
+    const descriptionText = component.find('#tooltipId').at(0).text();
+    expect(descriptionText).toEqual('prefix suffix');
+  });
 });

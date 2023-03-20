@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add support for validationState to ProgressField",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

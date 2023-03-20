@@ -120,6 +120,10 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const { findFirstFocusable } = useFocusFinders();
 
   React.useEffect(() => {
+    if (props.unstable_disableAutoFocus) {
+      return;
+    }
+
     if (open && positioningRefs.contentRef.current) {
       const containerTabIndex = positioningRefs.contentRef.current.getAttribute('tabIndex') ?? undefined;
       const firstFocusable = isNaN(containerTabIndex)
@@ -127,7 +131,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
         : positioningRefs.contentRef.current;
       firstFocusable?.focus();
     }
-  }, [findFirstFocusable, open, positioningRefs.contentRef]);
+  }, [findFirstFocusable, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   return {
     ...initialState,
@@ -169,15 +173,8 @@ function useOpenState(
         setContextTarget(undefined);
       }
 
-      setOpenState(prevOpen => {
-        // More than one event (mouse, focus, keyboard) can request the Popover to close
-        // We assume the first event is the correct one
-        if (prevOpen !== shouldOpen) {
-          onOpenChange?.(e, { open: shouldOpen });
-        }
-
-        return shouldOpen;
-      });
+      setOpenState(shouldOpen);
+      onOpenChange?.(e, { open: shouldOpen });
     },
     [setOpenState, onOpenChange, setContextTarget],
   );

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { ToolbarRadioGroup } from './ToolbarRadioGroup';
-import { isConformant } from '../../common/isConformant';
+import { isConformant } from '../../testing/isConformant';
+import { ButtonProps } from '@fluentui/react-button';
 
 describe('ToolbarRadioGroup', () => {
   isConformant({
-    Component: ToolbarRadioGroup,
+    Component: ToolbarRadioGroup as React.FunctionComponent<ButtonProps>,
     displayName: 'ToolbarRadioGroup',
     disabledTests: ['component-has-static-classnames-object'],
   });

@@ -14,7 +14,7 @@ export const RenderFunctionTrigger = () => {
 
   return (
     <Menu open={open} onOpenChange={onOpenChange}>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         {(props: MenuTriggerChildProps<'button'>) => (
           <div>
             <button style={buttonStyle}>Custom Trigger</button>

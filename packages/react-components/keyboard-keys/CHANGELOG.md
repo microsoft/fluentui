@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Tue, 28 Jun 2022 15:14:09 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Nov 2022 14:57:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.1)
+
+Fri, 11 Nov 2022 14:57:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.0..@fluentui/keyboard-keys_v9.0.1)
+
+### Patches
+
+- fix: create valid export maps ([PR #25558](https://github.com/microsoft/fluentui/pull/25558) by martinhochel@microsoft.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.0)
 

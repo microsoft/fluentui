@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add undefined option to overflowItems in partitionAvatarGroupItems.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

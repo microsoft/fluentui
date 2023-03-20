@@ -8,6 +8,7 @@ export { Default } from './SliderDefault.stories';
 export { Size } from './SliderSize.stories';
 export { Controlled } from './SliderControlled.stories';
 export { Step } from './SliderStep.stories';
+export { MinMax } from './SliderMinMax.stories';
 export { Vertical } from './SliderVertical.stories';
 export { Disabled } from './SliderDisabled.stories';
 

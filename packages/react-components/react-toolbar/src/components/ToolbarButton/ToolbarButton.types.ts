@@ -7,9 +7,13 @@ import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> &
   Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
     appearance?: 'primary' | 'subtle';
+  } & {
+    vertical?: boolean;
   };
 
 /**
  * State used in rendering ToolbarButton
  */
-export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonState;
+export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> &
+  ButtonState &
+  Required<Pick<ToolbarButtonProps, 'vertical'>>;

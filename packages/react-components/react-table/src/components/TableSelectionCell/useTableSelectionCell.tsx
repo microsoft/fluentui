@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useId } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';
 import type { TableSelectionCellProps, TableSelectionCellState } from './TableSelectionCell.types';
@@ -36,7 +36,7 @@ export const useTableSelectionCell_unstable = (
     }),
     radioIndicator: resolveShorthand(props.radioIndicator, {
       required: type === 'radio',
-      defaultProps: { checked: !!checked },
+      defaultProps: { checked: !!checked, input: { name: useId('table-selection-radio') } },
     }),
     type,
     checked,

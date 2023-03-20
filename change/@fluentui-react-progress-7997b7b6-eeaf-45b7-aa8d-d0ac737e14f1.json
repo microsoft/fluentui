@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add validationState to Progress, to make the bar red or green",
-  "packageName": "@fluentui/react-progress",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

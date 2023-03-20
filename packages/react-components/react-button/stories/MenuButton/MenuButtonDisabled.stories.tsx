@@ -14,7 +14,7 @@ export const Disabled = () => {
   return (
     <div className={styles.wrapper}>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton>Enabled state</MenuButton>
         </MenuTrigger>
 
@@ -26,7 +26,7 @@ export const Disabled = () => {
         </MenuPopover>
       </Menu>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton disabled>Disabled state</MenuButton>
         </MenuTrigger>
 
@@ -38,7 +38,7 @@ export const Disabled = () => {
         </MenuPopover>
       </Menu>
       <Menu>
-        <MenuTrigger>
+        <MenuTrigger disableButtonEnhancement>
           <MenuButton disabledFocusable>Disabled focusable state</MenuButton>
         </MenuTrigger>
 

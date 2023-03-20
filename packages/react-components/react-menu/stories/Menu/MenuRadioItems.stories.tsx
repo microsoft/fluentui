@@ -18,7 +18,7 @@ const EditIcon = bundleIcon(EditFilled, EditRegular);
 export const RadioItems = () => {
   return (
     <Menu>
-      <MenuTrigger>
+      <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>

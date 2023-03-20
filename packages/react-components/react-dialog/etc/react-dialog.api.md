@@ -10,7 +10,6 @@ import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
@@ -34,6 +33,7 @@ export type DialogActionsPosition = 'start' | 'end';
 // @public
 export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
     position?: DialogActionsPosition;
+    fluid?: boolean;
 };
 
 // @public (undocumented)
@@ -42,9 +42,7 @@ export type DialogActionsSlots = {
 };
 
 // @public
-export type DialogActionsState = ComponentState<DialogActionsSlots> & {
-    position: DialogActionsPosition;
-};
+export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -82,10 +80,6 @@ export type DialogContentState = ComponentState<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogOpenChangeData = {
-    type: 'dialogCancel';
-    open: boolean;
-    event: React_2.SyntheticEvent<DialogSurfaceElement>;
-} | {
     type: 'escapeKeyDown';
     open: boolean;
     event: React_2.KeyboardEvent<DialogSurfaceElement>;
@@ -112,6 +106,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    inertTrapFocus?: boolean;
 };
 
 // @public (undocumented)
@@ -163,7 +158,7 @@ export type DialogTitleSlots = {
 export type DialogTitleState = ComponentState<DialogTitleSlots>;
 
 // @public
-export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
+export const DialogTrigger: React_2.FC<DialogTriggerProps>;
 
 // @public (undocumented)
 export type DialogTriggerAction = 'open' | 'close';

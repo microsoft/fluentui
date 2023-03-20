@@ -29,12 +29,19 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
-const BAR_SPACE = 2.5;
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
 type StringAxis = D3Axis<string>;
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
+
+const MIN_DOMAIN_MARGIN = 8;
+const X1_INNER_PADDING = 0.1;
+// x1_inner_padding = space_between_bars / (space_between_bars + bar_width)
+// => space_between_bars = (x1_inner_padding / (1 - x1_inner_padding)) * bar_width
+/** Rate at which the space between the bars in a group changes wrt the bar width */
+const BAR_GAP_RATE = X1_INNER_PADDING / (1 - X1_INNER_PADDING);
 
 // This interface used for - While forming datapoints from given prop "data" in code
 interface IGVDataPoint {
@@ -46,9 +53,9 @@ interface IGVSingleDataPoint {
   [key: string]: IGVDataPoint;
 }
 export interface IGroupedVerticalBarChartState extends IBasestate {
-  titleForHoverCard: string;
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -71,11 +78,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _yMax: number;
   private _calloutId: string;
   private _tooltipId: string;
-  private _isNumeric: XAxisTypes;
+  private _xAxisType: XAxisTypes;
   private _isRtl: boolean = getRTL();
-  private _isCustomBarWidth: boolean;
-  private _x1TotalBandWidth: number;
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
+  private _barWidth: number;
+  private _domainMargin: number;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -84,14 +91,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: false,
-      isLegendHovered: false,
       refSelected: null,
-      titleForHoverCard: '',
+      selectedLegend: '',
       xCalloutValue: '',
       yCalloutValue: '',
       YValueHover: [],
       hoverXValue: '',
+      calloutLegend: '',
+      activeLegend: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -103,6 +110,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._refArray = [];
     this._calloutId = getId('callout');
     this._tooltipId = getId('GVBCTooltipId_');
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public render(): React.ReactNode {
@@ -111,7 +119,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._keys = keys;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
-    this._isNumeric = getTypeOfAxis(points[0].name, true) as XAxisTypes;
+    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -130,7 +138,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       isBeakVisible: false,
       setInitialFocus: true,
       color: this.state.color,
-      Legend: this.state.titleForHoverCard,
+      Legend: this.state.calloutLegend,
       XValue: this.state.xCalloutValue,
       YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
       YValueHover: this.state.YValueHover,
@@ -152,7 +160,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         chartType={ChartTypes.GroupedVerticalBarChart}
         calloutProps={calloutProps}
         legendBars={legends}
-        xAxisType={this._isNumeric}
+        xAxisType={this._xAxisType}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
         tickPadding={this.props.tickPadding || 5}
@@ -165,6 +173,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
+        getDomainMargins={this._getDomainMargins}
+        xAxisInnerPadding={2 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE)}
+        xAxisOuterPadding={0}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -213,11 +224,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _getOpacity = (legendTitle: string): string => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = this.state.titleForHoverCard === legendTitle;
-    }
-    return shouldHighlight ? '' : '0.1';
+    const opacity = this._legendHighlighted(legendTitle) || this._noLegendHighlighted() ? '' : '0.1';
+    return opacity;
   };
 
   private _onBarHover = (
@@ -227,16 +235,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void => {
     mouseEvent.persist();
-    if (
-      (this.state.isLegendSelected === false ||
-        (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)) &&
-      this._calloutAnchorPoint !== pointData
-    ) {
+    if (this._calloutAnchorPoint !== pointData) {
       this._calloutAnchorPoint = pointData;
       this.setState({
         refSelected: mouseEvent,
-        isCalloutVisible: true,
-        titleForHoverCard: pointData.legend,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === pointData.legend,
+        calloutLegend: pointData.legend,
         dataForHoverCard: pointData.data,
         color: pointData.color,
         xCalloutValue: pointData.xAxisCalloutData,
@@ -266,30 +271,26 @@ export class GroupedVerticalBarChartBase extends React.Component<
     groupData: any,
     refArrayIndexNumber: number,
   ): void => {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.titleForHoverCard === pointData.legend)
-    ) {
-      this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (obj.index === pointData.legend && refArrayIndexNumber === index) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            titleForHoverCard: pointData.legend,
-            dataForHoverCard: pointData.data,
-            color: pointData.color,
-            xCalloutValue: pointData.xAxisCalloutData,
-            yCalloutValue: pointData.yAxisCalloutData,
-            dataPointCalloutProps: pointData,
-            callOutAccessibilityData: this.props.isCalloutForStack
-              ? groupData.stackCallOutAccessibilityData
-              : pointData.callOutAccessibilityData,
-            YValueHover: groupData.groupSeries,
-            hoverXValue: pointData.xAxisCalloutData,
-          });
-        }
-      });
-    }
+    this._refArray.forEach((obj: IRefArrayData, index: number) => {
+      if (obj.index === pointData.legend && refArrayIndexNumber === index) {
+        this.setState({
+          refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === pointData.legend,
+          calloutLegend: pointData.legend,
+          dataForHoverCard: pointData.data,
+          color: pointData.color,
+          xCalloutValue: pointData.xAxisCalloutData,
+          yCalloutValue: pointData.yAxisCalloutData,
+          dataPointCalloutProps: pointData,
+          callOutAccessibilityData: this.props.isCalloutForStack
+            ? groupData.stackCallOutAccessibilityData
+            : pointData.callOutAccessibilityData,
+          YValueHover: groupData.groupSeries,
+          hoverXValue: pointData.xAxisCalloutData,
+        });
+      }
+    });
   };
 
   private _redirectToUrl = (href: string | undefined): void => {
@@ -311,21 +312,18 @@ export class GroupedVerticalBarChartBase extends React.Component<
     xElement: SVGElement,
   ): JSX.Element => {
     const singleGroup: JSX.Element[] = [];
+    const barLabelsForGroup: JSX.Element[] = [];
 
     const yBarScale = d3ScaleLinear()
       .domain([0, this._yMax])
       .range([0, containerHeight! - this.margins.bottom! - this.margins.top!]);
 
-    let widthOfBar: number;
-    if (this.props.barwidth && this.props.barwidth < xScale1.bandwidth()) {
-      widthOfBar = this.props.barwidth;
-    } else {
-      widthOfBar = xScale1.bandwidth();
-    }
     const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
+      const xPoint = xScale1(datasetKey)!;
+      const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
       // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
@@ -333,9 +331,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
             className={this._classNames.opacityChangeOnHover}
             key={`${singleSet.indexNum}-${index}`}
             height={Math.max(yBarScale(pointData.data), 0)}
-            width={widthOfBar}
-            x={xScale1(datasetKey)!}
-            y={Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0)}
+            width={this._barWidth}
+            x={xPoint}
+            y={yPoint}
             data-is-focusable={!this.props.hideTooltip}
             opacity={this._getOpacity(pointData.legend)}
             ref={(e: SVGRectElement | null) => {
@@ -348,10 +346,23 @@ export class GroupedVerticalBarChartBase extends React.Component<
             onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
-            aria-labelledby={`toolTip${this._calloutId}`}
-            role="text"
+            aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
+            role="img"
           />,
         );
+      if (pointData.data && !this.props.hideLabels && this._barWidth >= 16) {
+        barLabelsForGroup.push(
+          <text
+            x={xPoint + this._barWidth / 2}
+            y={yPoint - 6}
+            textAnchor="middle"
+            className={this._classNames.barLabel}
+            aria-hidden={true}
+          >
+            {d3FormatPrefix(pointData.data < 1000 ? '.2~' : '.1', pointData.data)(pointData.data)}
+          </text>,
+        );
+      }
     });
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
@@ -367,10 +378,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
-    const customXScale = this._isCustomBarWidth ? (xScale0.bandwidth() - this._x1TotalBandWidth) / 2 : 0;
     return (
-      <g key={singleSet.indexNum} transform={`translate(${xScale0(singleSet.xAxisPoint) + customXScale}, 0)`}>
+      <g key={singleSet.indexNum} transform={`translate(${xScale0(singleSet.xAxisPoint)}, 0)`}>
         {singleGroup}
+        {barLabelsForGroup}
       </g>
     );
   };
@@ -412,28 +423,24 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .domain(this._xAxisLabels)
       .range(
         this._isRtl
-          ? [containerWidth! - this.margins.right!, this.margins.left!]
-          : [this.margins.left!, containerWidth! - this.margins.right!],
+          ? [containerWidth! - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+          : [this.margins.left! + this._domainMargin, containerWidth! - this.margins.right! - this._domainMargin],
       )
-      .padding(0.1);
+      // x0_inner_padding = space_between_groups / (space_between_groups + group_width)
+      // space_between_groups = 2 * bar_width
+      // group_width = this._keys.length * bar_width + (this._keys.length - 1) * space_between_bars
+      .paddingInner(2 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE));
     return x0Axis;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createX1Scale = (xScale0: any): any => {
-    let bandWidth = xScale0.bandwidth();
-    if (this.props.barwidth) {
-      const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
-      const totalWidth = (this.props.barwidth! + BAR_SPACE) * tempDataSet.length;
-      this._isCustomBarWidth = totalWidth < xScale0.bandwidth();
-      bandWidth = this._isCustomBarWidth ? totalWidth : xScale0.bandwidth();
-      this._x1TotalBandWidth = bandWidth;
-    }
+    const bandWidth = xScale0.bandwidth();
 
     return d3ScaleBand()
       .domain(this._keys)
       .range(this._isRtl ? [bandWidth, 0] : [0, bandWidth])
-      .padding(0.05);
+      .paddingInner(X1_INNER_PADDING);
   };
 
   private _closeCallout = () => {
@@ -442,43 +449,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
     });
   };
 
-  private _onLegendClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.titleForHoverCard === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          titleForHoverCard: customMessage,
-        });
-      } else {
-        this.setState({
-          titleForHoverCard: customMessage,
-        });
-      }
+  private _onLegendClick(legendTitle: string): void {
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        isLegendSelected: true,
-        titleForHoverCard: customMessage,
+        selectedLegend: legendTitle,
       });
     }
   }
 
-  private _onLegendHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        titleForHoverCard: customMessage,
-      });
-    }
+  private _onLegendHover(legendTitle: string): void {
+    this.setState({
+      activeLegend: legendTitle,
+    });
   }
 
-  private _onLegendLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        titleForHoverCard: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave(): void {
+    this.setState({
+      activeLegend: '',
+    });
   }
 
   private _getLegendData = (points: IGroupedVerticalBarChartData[], palette: IPalette): JSX.Element => {
@@ -500,10 +492,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
             this._onLegendClick(point.legend);
           },
           hoverAction: () => {
+            this._handleChartMouseLeave();
             this._onLegendHover(point.legend);
           },
-          onMouseOutAction: (isLegendSelected?: boolean) => {
-            this._onLegendLeave(isLegendSelected);
+          onMouseOutAction: () => {
+            this._onLegendLeave();
           },
         };
 
@@ -526,5 +519,65 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
     }
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: IGVBarChartSeriesPoint, xAxisPoint: string): string => {
+    const xValue = point.xAxisCalloutData || xAxisPoint;
+    const legend = point.legend;
+    const yValue = point.yAxisCalloutData || point.data;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+  };
+
+  private _getDomainMargins = (containerWidth: number): IMargins => {
+    /** Total width available to render the bars */
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    let barWidth = Math.min(this.props.barwidth || 16, 24);
+    let groupWidth = this._keys.length * barWidth + (this._keys.length - 1) * BAR_GAP_RATE * barWidth; // (i)
+    /** Total width required to render the bars. Directly proportional to bar width */
+    const reqWidth = this._xAxisLabels.length * groupWidth + (this._xAxisLabels.length - 1) * 2 * barWidth; // (ii)
+
+    this._domainMargin = MIN_DOMAIN_MARGIN;
+    if (totalWidth >= reqWidth) {
+      // Center align the chart by setting equal left and right margins for domain
+      this._domainMargin += (totalWidth - reqWidth) / 2;
+    } else {
+      // From (i) and (ii)
+      /** Maximum possible group width to maintain 2:1 spacing */
+      const maxBandwidth =
+        totalWidth /
+        (this._xAxisLabels.length +
+          (this._xAxisLabels.length - 1) * (2 / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE)));
+      groupWidth = maxBandwidth;
+      // From (i)
+      barWidth = groupWidth / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE);
+    }
+    this._barWidth = barWidth;
+
+    return {
+      ...this.margins,
+      left: this.margins.left! + this._domainMargin,
+      right: this.margins.right! + this._domainMargin,
+    };
   };
 }

@@ -6,7 +6,7 @@ export {
   useCardStyles_unstable,
   useCard_unstable,
 } from './Card';
-export type { CardProps, CardSlots, CardState } from './Card';
+export type { CardProps, CardSlots, CardState, CardOnSelectionChangeEvent } from './Card';
 export {
   CardFooter,
   cardFooterClassNames,
@@ -32,3 +32,5 @@ export {
   useCardPreview_unstable,
 } from './CardPreview';
 export type { CardPreviewProps, CardPreviewSlots, CardPreviewState } from './CardPreview';
+export { CardProvider, useCardContext_unstable } from './Card';
+export type { CardContextValue } from './Card';

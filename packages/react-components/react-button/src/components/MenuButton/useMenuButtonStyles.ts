@@ -1,7 +1,8 @@
-import { mergeClasses, makeStyles } from '@griffel/react';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-theme';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
 
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
@@ -9,6 +10,59 @@ export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
   icon: 'fui-MenuButton__icon',
   menuIcon: 'fui-MenuButton__menuIcon',
 };
+
+const useRootExpandedStyles = makeStyles({
+  base: {
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+  },
+
+  // Appearance variations
+  outline: {
+    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    color: tokens.colorNeutralForeground1Selected,
+  },
+  primary: {
+    backgroundColor: tokens.colorBrandBackgroundSelected,
+  },
+  secondary: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    color: tokens.colorNeutralForeground1Selected,
+  },
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+    color: tokens.colorNeutralForeground2Selected,
+  },
+  transparent: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
+});
+
+const useIconExpandedStyles = makeStyles({
+  // Appearance variations
+  outline: {
+    color: tokens.colorNeutralForeground1Selected,
+  },
+  primary: {
+    /* The primary styles are exactly the same as the base styles. */
+  },
+  secondary: {
+    color: tokens.colorNeutralForeground1Selected,
+  },
+  subtle: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
+  transparent: {
+    color: tokens.colorNeutralForeground2BrandSelected,
+  },
+});
 
 const useMenuIconStyles = makeStyles({
   base: {
@@ -42,12 +96,23 @@ const useMenuIconStyles = makeStyles({
 });
 
 export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButtonState => {
+  const rootExpandedStyles = useRootExpandedStyles();
+  const iconExpandedStyles = useIconExpandedStyles();
   const menuIconStyles = useMenuIconStyles();
 
-  state.root.className = mergeClasses(menuButtonClassNames.root, state.root.className);
+  state.root.className = mergeClasses(
+    menuButtonClassNames.root,
+    state.root['aria-expanded'] && rootExpandedStyles.base,
+    state.root['aria-expanded'] && rootExpandedStyles[state.appearance],
+    state.root.className,
+  );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(menuButtonClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(
+      menuButtonClassNames.icon,
+      state.root['aria-expanded'] && iconExpandedStyles[state.appearance],
+      state.icon.className,
+    );
   }
 
   if (state.menuIcon) {

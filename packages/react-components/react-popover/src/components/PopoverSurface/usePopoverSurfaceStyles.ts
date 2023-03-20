@@ -1,6 +1,6 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createArrowHeightStyles, createArrowStyles } from '@fluentui/react-positioning';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -20,10 +20,12 @@ export const arrowHeights: Record<PopoverSize, number> = {
  */
 const useStyles = makeStyles({
   root: {
+    color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow16,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+    ...typographyStyles.body1,
   },
 
   inverted: {

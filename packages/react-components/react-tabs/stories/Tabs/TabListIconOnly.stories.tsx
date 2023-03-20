@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Tab, TabList } from '@fluentui/react-components';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { CalendarMonthRegular, CalendarMonthFilled, bundleIcon } from '@fluentui/react-icons';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const useStyles = makeStyles({
   root: {
@@ -19,10 +21,10 @@ export const IconOnly = () => {
   const renderTabs = () => {
     return (
       <>
-        <Tab icon={<CalendarMonthRegular />} value="tab1" aria-label="First Tab" />
-        <Tab icon={<CalendarMonthRegular />} value="tab2" aria-label="Second Tab" />
-        <Tab icon={<CalendarMonthRegular />} value="tab3" aria-label="Third Tab" />
-        <Tab icon={<CalendarMonthRegular />} value="tab4" aria-label="Fourth Tab" />
+        <Tab icon={<CalendarMonth />} value="tab1" aria-label="First Tab" />
+        <Tab icon={<CalendarMonth />} value="tab2" aria-label="Second Tab" />
+        <Tab icon={<CalendarMonth />} value="tab3" aria-label="Third Tab" />
+        <Tab icon={<CalendarMonth />} value="tab4" aria-label="Fourth Tab" />
       </>
     );
   };

@@ -44,11 +44,12 @@ export default () => <Button appearance="primary">Get started</Button>;
 
 ### Strict mode
 
-Strict mode is currently not supported. Plese remove any `React.StrictMode` wrappers from your app.
+We are aware of some strict mode bugs when using Fluent UI v9 in React 18. These bugs only show up in strict mode, and they will not stop the rest of your app from running.
+You can [track the bugs on Github](https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Area%3A+Strict+Mode%22+label%3A%22React+18%22) and learn how they will affect your application.
 
 #### SSR with Next.js
 
-To avoid hydration issues, disable strict mode in your app by adding the following configuration to your `next.config.js` file:
+To avoid strict mode hydration issues, you can disable strict mode in your Next.js app by adding the following configuration to your `next.config.js` file:
 
 ```js
 module.exports = {

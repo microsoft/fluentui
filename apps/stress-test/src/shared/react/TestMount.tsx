@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styleInjector } from '../css/injectStyles';
-// import { requestPostAnimationFrame } from '../utils/requestPostAnimationFrame';
 import { ReactSelectorTree } from './ReactSelectorTree';
 import type { TestProps } from './types';
 

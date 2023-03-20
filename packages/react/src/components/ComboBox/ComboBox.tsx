@@ -63,6 +63,12 @@ export interface IComboBoxState {
 
   /** When taking input, this will store the actual text that is being entered */
   currentPendingValue?: string;
+
+  /**
+   * The id of the current focused combo item, otherwise the id of the currently selected element,
+   * null otherwise
+   */
+  ariaActiveDescendantValue?: string;
 }
 
 enum SearchDirection {
@@ -343,12 +349,13 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   public componentDidUpdate(prevProps: IComboBoxInternalProps, prevState: IComboBoxState) {
     const {
       allowFreeform,
+      allowFreeInput,
       text,
       onMenuOpen,
       onMenuDismissed,
-      hoisted: { selectedIndices },
+      hoisted: { currentOptions, selectedIndices },
     } = this.props;
-    const { isOpen, currentPendingValueValidIndex } = this.state;
+    const { currentPendingValue, currentPendingValueValidIndex, isOpen } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
     // make sure the currently selected/pending option is scrolled into view
@@ -376,7 +383,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     //   just opened/closed the menu OR
     //   are focused AND
     //     updated the selectedIndex with the menu closed OR
-    //     are not allowing freeform OR
+    //     are not allowing freeform or free input OR
     //     the value changed
     // we need to set selection
     if (
@@ -388,7 +395,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
             prevProps.hoisted.selectedIndices &&
             selectedIndices &&
             prevProps.hoisted.selectedIndices[0] !== selectedIndices[0]) ||
-            !allowFreeform ||
+            (!allowFreeform && !allowFreeInput) ||
             text !== prevProps.text)))
     ) {
       this._onFocus();
@@ -402,6 +409,33 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
       onMenuDismissed();
+    }
+
+    let newCurrentPendingValueValidIndex = currentPendingValueValidIndex;
+    const options = currentOptions.map((item, index) => ({ ...item, index }));
+
+    // If currentOptions differs from the previous currentOptions we need to update the currentPendingValueValidIndex
+    // otherwise, it will be out of sync with the currentOptions. This can happen when the options are filtered.
+    if (!shallowCompare(prevProps.hoisted.currentOptions, currentOptions) && currentPendingValue) {
+      newCurrentPendingValueValidIndex =
+        this.props.allowFreeform || this.props.allowFreeInput
+          ? this._processInputChangeWithFreeform(currentPendingValue)
+          : this._updateAutocompleteIndexWithoutFreeform(currentPendingValue);
+    }
+
+    let descendantText = undefined;
+
+    if (isOpen && selectedIndices.length) {
+      descendantText = options[selectedIndices[0]]?.id ?? this._id + '-list' + selectedIndices[0];
+    } else if (isOpen && this._hasFocus() && newCurrentPendingValueValidIndex !== -1) {
+      descendantText =
+        options[newCurrentPendingValueValidIndex].id ?? this._id + '-list' + newCurrentPendingValueValidIndex;
+    }
+
+    if (descendantText !== this.state.ariaActiveDescendantValue) {
+      this.setState({
+        ariaActiveDescendantValue: descendantText,
+      });
     }
   }
 
@@ -485,7 +519,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: currentOptions.map((item, index) => ({ ...item, index: index })),
+              options: currentOptions.map((item, index) => ({ ...item, index })),
               onDismiss: this._onDismiss,
             },
             this._onRenderContainer,
@@ -554,12 +588,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return null;
     }
 
-    const visibleValue = normalizeToString(this._currentVisibleValue);
-    if (comboBox.value !== visibleValue) {
-      return visibleValue;
-    }
-
-    return comboBox.value;
+    return normalizeToString(this._currentVisibleValue);
   };
 
   private _renderComboBoxWrapper = (
@@ -574,7 +603,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       required,
       errorMessage,
       buttonIconProps,
-      isButtonAriaHidden = true,
+      isButtonAriaHidden,
       title,
       placeholder: placeholderProp,
       tabIndex,
@@ -583,7 +612,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       hoisted: { suggestedDisplayValue },
     } = this.props;
 
-    const { isOpen } = this.state;
+    const { ariaActiveDescendantValue, isOpen } = this.state;
 
     // If the combo box has focus, is multiselect, and has a display string, then use that placeholder
     // so that the selected items don't appear to vanish. This is not ideal but it's the only reasonable way
@@ -595,6 +624,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         : placeholderProp;
 
     const labelledBy = [this.props['aria-labelledby'], label && this._id + '-label'].join(' ').trim();
+    const labelProps = {
+      'aria-labelledby': labelledBy ? labelledBy : undefined,
+      'aria-label': ariaLabel && !label ? ariaLabel : undefined,
+    };
 
     return (
       <div
@@ -622,12 +655,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-autocomplete={this._getAriaAutoCompleteValue()}
           role="combobox"
           readOnly={disabled}
-          aria-labelledby={labelledBy ? labelledBy : undefined}
-          aria-label={ariaLabel && !label ? ariaLabel : undefined}
+          {...labelProps}
           aria-describedby={
             errorMessage !== undefined ? mergeAriaAttributeValues(ariaDescribedBy, errorMessageId) : ariaDescribedBy
           }
-          aria-activedescendant={this._getAriaActiveDescendantValue()}
+          aria-activedescendant={ariaActiveDescendantValue}
           aria-required={required}
           aria-disabled={disabled}
           aria-controls={isOpen ? this._id + '-list' : undefined}
@@ -647,8 +679,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         <IconButton
           className={'ms-ComboBox-CaretDown-button'}
           styles={this._getCaretButtonStyles()}
-          role="presentation"
+          role={isButtonAriaHidden ? 'presentation' : undefined}
           aria-hidden={isButtonAriaHidden}
+          {...(!isButtonAriaHidden ? labelProps : undefined)}
           data-is-focusable={false}
           tabIndex={-1}
           onClick={this._onComboBoxClick}
@@ -683,6 +716,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const {
       text,
       allowFreeform,
+      allowFreeInput,
       autoComplete,
       hoisted: { suggestedDisplayValue, selectedIndices, currentOptions },
     } = this.props;
@@ -694,7 +728,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // unless we are open and have a valid current pending index
     if (
       !(isOpen && currentPendingIndexValid) &&
-      text &&
+      (text || text === '') &&
       (currentPendingValue === null || currentPendingValue === undefined)
     ) {
       return text;
@@ -714,8 +748,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     } else {
       // Single-select
       let index: number = this._getFirstSelectedIndex();
-      if (allowFreeform) {
-        // If we are allowing freeform and autocomplete is also true
+      if (allowFreeform || allowFreeInput) {
+        // If we are allowing freeform/free input and autocomplete is also true
         // and we've got a pending value that matches an option, remember
         // the matched option's index
         if (autoComplete === 'on' && currentPendingIndexValid) {
@@ -796,7 +830,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this.props.onInputValueChange(updatedValue);
     }
 
-    this.props.allowFreeform
+    this.props.allowFreeform || this.props.allowFreeInput
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);
   };
@@ -804,8 +838,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Process the new input's new value when the combo box allows freeform entry
    * @param updatedValue - the input's newly changed value
+   * @returns the index of the matched option, -1 if no match was found
    */
-  private _processInputChangeWithFreeform(updatedValue: string): void {
+  private _processInputChangeWithFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
     let newCurrentPendingValueValidIndex = -1;
 
@@ -813,7 +848,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     if (updatedValue === '') {
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter(option => isNormalOption(option) && getPreviewText(option) === updatedValue);
+        .filter(option => isNormalOption(option) && !option.disabled && getPreviewText(option) === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -821,7 +856,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       }
 
       this._setPendingInfo(updatedValue, newCurrentPendingValueValidIndex, updatedValue);
-      return;
+      return newCurrentPendingValueValidIndex;
     }
 
     // Remember the original value and then make the value lowercase for comparison
@@ -836,7 +871,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+          option =>
+            isNormalOption(option) &&
+            !option.disabled &&
+            getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -852,7 +890,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter(option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase() === updatedValue);
+        .filter(
+          option =>
+            isNormalOption(option) && !option.disabled && getPreviewText(option).toLocaleLowerCase() === updatedValue,
+        );
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -862,14 +903,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     // Set the updated state
     this._setPendingInfo(originalUpdatedValue, newCurrentPendingValueValidIndex, newSuggestedDisplayValue);
+    return newCurrentPendingValueValidIndex;
   }
 
   /**
    * Process the new input's new value when the combo box does not allow freeform entry
    * @param updatedValue - the input's newly changed value
+   * @returns the index of the matched option
    */
-  private _processInputChangeWithoutFreeform(updatedValue: string): void {
-    const { currentOptions } = this.props.hoisted;
+  private _processInputChangeWithoutFreeform(updatedValue: string): number {
     const { currentPendingValue, currentPendingValueValidIndex } = this.state;
 
     if (this.props.autoComplete === 'on') {
@@ -889,29 +931,18 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           updatedValue = normalizeToString(currentPendingValue) + updatedValue;
         }
 
-        const originalUpdatedValue: string = updatedValue;
-        updatedValue = updatedValue.toLocaleLowerCase();
-
-        // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-        const items = currentOptions
-          .map((item, i) => ({ ...item, index: i }))
-
-          .filter(option => isNormalOption(option) && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
-
-        // If we found a match, update the state
-        if (items.length > 0) {
-          this._setPendingInfo(originalUpdatedValue, items[0].index, getPreviewText(items[0]));
-        }
+        const matchingIndex = this._updateAutocompleteIndexWithoutFreeform(updatedValue);
 
         // Schedule a timeout to clear the pending value after the timeout span
         this._autoCompleteTimeout = this._async.setTimeout(() => {
           this._autoCompleteTimeout = undefined;
         }, ReadOnlyPendingAutoCompleteTimeout);
-        return;
+
+        return matchingIndex;
       }
     }
 
-    // If we get here, either autoComplete is on or we did not find a match with autoComplete on.
+    // If we get here, autoComplete is off.
     // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
     const index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
@@ -921,6 +952,30 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // to allow us to select all content in the input to
     // give the illusion that we are readonly (e.g. freeform off)
     this._setPendingInfoFromIndex(index);
+    return index;
+  }
+
+  private _updateAutocompleteIndexWithoutFreeform(updatedValue: string): number {
+    const { currentOptions } = this.props.hoisted;
+    const originalUpdatedValue: string = updatedValue;
+    updatedValue = updatedValue.toLocaleLowerCase();
+
+    // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
+    const items = currentOptions
+      .map((item, i) => ({ ...item, index: i }))
+
+      .filter(
+        option =>
+          isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
+      );
+
+    // If we found a match, update the state
+    if (items.length > 0) {
+      this._setPendingInfo(originalUpdatedValue, items[0].index, getPreviewText(items[0]));
+      return items[0].index;
+    }
+
+    return -1;
   }
 
   private _getFirstSelectedIndex(): number {
@@ -1481,9 +1536,14 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     );
   }
 
+  private _renderCheckboxLabel(item: IComboBoxOption): JSX.Element | null {
+    const { onRenderOption = this._onRenderMultiselectOptionContent } = this.props;
+    return onRenderOption(item, this._onRenderMultiselectOptionContent);
+  }
+
   private _renderOption = (item: IComboBoxOption): JSX.Element => {
     const { onRenderOption = this._onRenderOptionContent } = this.props;
-    const id = this._id;
+    const id = item.id ?? this._id + '-list' + item.index;
     const isSelected: boolean = this._isOptionSelected(item.index);
     const isChecked: boolean = this._isOptionChecked(item.index);
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
@@ -1491,12 +1551,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     const title = item.title;
 
-    const onRenderCheckboxLabel = () => onRenderOption(item, this._onRenderOptionContent);
-
     const getOptionComponent = () => {
       return !this.props.multiSelect ? (
         <CommandButton
-          id={id + '-list' + item.index}
+          id={id}
           key={item.key}
           data-index={item.index}
           styles={optionStyles}
@@ -1523,8 +1581,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         </CommandButton>
       ) : (
         <Checkbox
-          id={id + '-list' + item.index}
+          id={id}
           ariaLabel={item.ariaLabel}
+          ariaLabelledBy={item.ariaLabel ? undefined : id + '-label'}
           key={item.key}
           styles={optionStyles}
           className={'ms-ComboBox-option'}
@@ -1535,7 +1594,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           title={title}
           disabled={item.disabled}
           // eslint-disable-next-line react/jsx-no-bind
-          onRenderLabel={onRenderCheckboxLabel}
+          onRenderLabel={this._renderCheckboxLabel.bind(this, { ...item, id: id + '-label' })}
           inputProps={{
             // aria-selected should only be applied to checked items, not hovered items
             'aria-selected': isChecked ? 'true' : 'false',
@@ -1654,7 +1713,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       (includeCurrentPendingValue && currentPendingValue !== null && currentPendingValue !== undefined)
       ? currentPendingValueValidIndex
       : this.props.multiSelect
-      ? 0
+      ? -1
       : this._getFirstSelectedIndex();
   }
 
@@ -1742,6 +1801,19 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _onRenderOptionContent = (item: IComboBoxOption): JSX.Element => {
     const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
     return <span className={optionClassNames.optionText}>{item.text}</span>;
+  };
+
+  /*
+   * Render content of a multiselect item label.
+   * Text within the label is aria-hidden, to prevent duplicate input/label exposure
+   */
+  private _onRenderMultiselectOptionContent = (item: IComboBoxOption): JSX.Element => {
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    return (
+      <span id={item.id} aria-hidden="true" className={optionClassNames.optionText}>
+        {item.text}
+      </span>
+    );
   };
 
   /**
@@ -1851,7 +1923,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     this.props.hoisted.setSuggestedDisplayValue(suggestedDisplayValue);
     this.setState({
       currentPendingValue: normalizeToString(currentPendingValue),
-      currentPendingValueValidIndex: currentPendingValueValidIndex,
+      currentPendingValueValidIndex,
       currentPendingValueValidIndexOnHover: HoverStatus.default,
     });
   }
@@ -1954,9 +2026,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean): void {
     this._focusInputAfterClose = focusInputAfterClose;
-    this.setState({
-      isOpen: isOpen,
-    });
+    this.setState({ isOpen });
   }
 
   /**
@@ -1967,6 +2037,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const {
       disabled,
       allowFreeform,
+      allowFreeInput,
       autoComplete,
       hoisted: { currentOptions },
     } = this.props;
@@ -2095,7 +2166,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       case KeyCodes.home:
       case KeyCodes.end:
-        if (allowFreeform) {
+        if (allowFreeform || allowFreeInput) {
           return;
         }
 
@@ -2118,7 +2189,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       /* eslint-disable no-fallthrough */
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
-        if (!allowFreeform && autoComplete === 'off') {
+        if (!allowFreeform && !allowFreeInput && autoComplete === 'off') {
           break;
         }
 
@@ -2137,10 +2208,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           return;
         }
 
-        // If we are not allowing freeform and
+        // If we are not allowing freeform or free input and
         // allowing autoComplete, handle the input here
-        // since we have marked the input as readonly
-        if (!allowFreeform && autoComplete === 'on') {
+        if (!allowFreeform && !allowFreeInput && autoComplete === 'on') {
           this._onInputChange(ev.key);
           break;
         }
@@ -2158,7 +2228,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * @param ev - the keyboard event that was fired
    */
   private _onInputKeyUp = (ev: React.KeyboardEvent<HTMLElement | Autofill>): void => {
-    const { disabled, allowFreeform, autoComplete } = this.props;
+    const { disabled, allowFreeform, allowFreeInput, autoComplete } = this.props;
     const isOpen = this.state.isOpen;
 
     // We close the menu on key up only if ALL of the following are true:
@@ -2180,10 +2250,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.space:
-        // If we are not allowing freeform and are not autoComplete
+        // If we are not allowing freeform or free input, and autoComplete is off
         // make space expand/collapse the combo box
         // and allow the event to propagate
-        if (!allowFreeform && autoComplete === 'off') {
+        if (!allowFreeform && !allowFreeInput && autoComplete === 'off') {
           this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
         }
         return;
@@ -2354,21 +2424,6 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       item.hidden,
       this._isOptionHighlighted(item.index),
     );
-  }
-
-  /**
-   * Get the aria-activedescendant value for the combo box.
-   * @returns the id of the current focused combo item, otherwise the id of the currently selected element,
-   * null otherwise
-   */
-  private _getAriaActiveDescendantValue(): string | undefined {
-    const { selectedIndices } = this.props.hoisted;
-    const { isOpen, currentPendingValueValidIndex } = this.state;
-    let descendantText = isOpen && selectedIndices?.length ? this._id + '-list' + selectedIndices[0] : undefined;
-    if (isOpen && this._hasFocus() && currentPendingValueValidIndex !== -1) {
-      descendantText = this._id + '-list' + currentPendingValueValidIndex;
-    }
-    return descendantText;
   }
 
   /**

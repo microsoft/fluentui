@@ -82,7 +82,7 @@ describe('DetailsList', () => {
   });
 
   afterEach(() => {
-    if (((setTimeout as unknown) as jest.Mock).mock) {
+    if ((setTimeout as unknown as jest.Mock).mock) {
       jest.runOnlyPendingTimers();
       jest.useRealTimers();
     }
@@ -1076,5 +1076,15 @@ describe('DetailsList', () => {
 
     const groupNameId = checkbox.getAttribute('aria-labelledby')?.split(' ')[1];
     expect(container.querySelector(`#${groupNameId} span`)!.textContent).toEqual('Group 0');
+  });
+
+  it('makes the first row tabbable if isHeaderVisible is false', () => {
+    const component = renderer.create(
+      <DetailsList items={mockData(5)} columns={mockData(5, true)} isHeaderVisible={false} />,
+    );
+
+    const firstRow = component.root.findAllByType(DetailsRow)[0];
+
+    expect(firstRow.props.focusZoneProps?.tabIndex).toEqual(0);
   });
 });

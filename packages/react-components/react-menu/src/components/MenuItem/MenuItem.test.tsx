@@ -176,7 +176,13 @@ describe('MenuItem', () => {
 
     // Assert
     expect(setOpen).toHaveBeenCalledTimes(1);
-    expect(setOpen).toHaveBeenCalledWith(expect.anything(), { open: false, bubble: true, keyboard: false });
+    expect(setOpen).toHaveBeenCalledWith(expect.anything(), {
+      open: false,
+      bubble: true,
+      keyboard: false,
+      type: 'menuItemClick',
+      event: expect.anything(),
+    });
   });
 
   it('should not call setOpen if persistOnItemClick is true in context', () => {
