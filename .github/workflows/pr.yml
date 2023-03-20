@@ -1,0 +1,198 @@
+name: PR CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  prepare_env:
+    name: Prepare environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18.1'
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-binary-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-binary-${{ hashFiles('**/yarn.lock') }}
+            ${{ runner.os }}-cypress-binary-
+
+      - name: Install packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true' || steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        run: yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: List the state of node modules
+        run: yarn list
+
+      - name: List node modules bin
+        continue-on-error: true
+        run: |
+          pwd
+          ls -la ~/.cache/
+          find . -name "node_modules" -prune
+
+  build_test_lint:
+    needs: [prepare_env]
+    name: Build, Test, Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18.1'
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: List node modules bin
+        run: |
+          pwd
+          find . -name "node_modules" -prune
+
+      - name: Install packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: Build, Test, Lint
+        run: yarn nx run-many --targets=build,test,lint,type-check --parallel=8
+
+  build:
+    needs: [prepare_env]
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18.1'
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: List node modules bin
+        run: |
+          pwd
+          find . -name "node_modules" -prune
+
+      - name: Install packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: Build
+        run: yarn nx run-many --targets=build --parallel=8
+
+  e2e:
+    needs: [prepare_env]
+    name: E2E target
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18.1'
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-binary-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-binary-${{ hashFiles('**/yarn.lock') }}
+            ${{ runner.os }}-cypress-binary-
+
+      - name: Install packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true' || steps.cache-cypress-binary.outputs.cache-hit != 'true'
+        run: yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: E2E
+        run: yarn nx run-many --targets=e2e
+
+  deploy:
+    needs: [prepare_env]
+    name: Deploy PR web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.18.1'
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install --prefer-offline --frozen-lockfile --non-interactive
+
+      - name: Build storybook
+        run: yarn nx run-many --targets=build-storybook --parallel=8
+
+      - name: Bundle
+        run: yarn nx run-many --targets=bundle --parallel=8
+
+    # - uses: actions/checkout@v3
+    # - uses: actions/setup-node@v3
+    #   with:
+    #     node-version-file: 'package.json'
+    #     cache: 'yarn'
+    #     cache-dependency-path: '**/yarn.lock'
+    # - name: install dependencies
+    #   run: yarn install --frozen-lockfile
+    # - name: NX run-many
+    #   run: yarn nx run-many --targets=build,test,lint,type-check --parallel=8
+
+    # - name: Upload npm package
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: npm-package
+    #     path: abc
