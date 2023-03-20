@@ -67,6 +67,13 @@ export const useStaticVirtualizerMeasure = (
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
 
+  React.useEffect(() => {
+    return () => {
+      resizeObserver?.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const scrollRef = React.useCallback(
     (el: HTMLElement | null) => {
       if (container.current !== el) {
