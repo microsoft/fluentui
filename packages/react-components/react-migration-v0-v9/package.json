@@ -33,8 +33,8 @@
     "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-theme": "^9.1.6",
-    "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-utilities": "^9.7.1",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0",
