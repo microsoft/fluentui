@@ -2,8 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { BreadcrumbDividerProps, BreadcrumbDividerState } from './BreadcrumbDivider.types';
 import { ChevronRight20Regular, ChevronRight16Regular, ChevronRight12Regular } from '@fluentui/react-icons';
-import { BreadcrumbSize } from '../Breadcrumb/Breadcrumb.types';
-import { BreadcrumbVariant } from './BreadcrumbDivider.types';
+import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
 /**
  * Create the state required to render BreadcrumbDivider.
@@ -40,7 +39,7 @@ export const useBreadcrumbDivider_unstable = (
  * @param size - size of the Breadcrumb
  * @param variant - variant of the divider, can be `slash` or `chevron`
  */
-function getDividerIcon(size: BreadcrumbSize = 'medium', variant: BreadcrumbVariant) {
+function getDividerIcon(size: BreadcrumbProps['size'] = 'medium', variant: BreadcrumbDividerProps['variant']) {
   if (size === 'small') {
     return variant === 'slash' ? '/' : <ChevronRight12Regular />;
   }

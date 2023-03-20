@@ -1,7 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { BreadcrumbSize } from '../Breadcrumb/Breadcrumb.types';
+import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
-export type BreadcrumbVariant = 'chevron' | 'slash' | null | undefined;
 export type BreadcrumbDividerSlots = {
   root: Slot<'span'>;
 };
@@ -10,13 +9,13 @@ export type BreadcrumbDividerSlots = {
  * BreadcrumbDivider Props
  */
 export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {
-  variant?: BreadcrumbVariant;
+  variant?: 'chevron' | 'slash' | null | undefined;
   /**
    * Size of the divider.
    *
    * @default 'medium'
    */
-  size?: BreadcrumbSize;
+  size?: BreadcrumbProps['size'];
 };
 
 /**

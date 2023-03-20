@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type BreadcrumbSize = 'small' | 'medium' | 'large';
+type BreadcrumbSize = 'small' | 'medium' | 'large';
 
 /**
  * Data shared between breadcrumb components
