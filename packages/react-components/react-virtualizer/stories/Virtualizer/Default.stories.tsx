@@ -23,12 +23,9 @@ export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
 
-  const scrollRef = React.useRef<HTMLDivElement | null>(null);
-  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 100,
   });
-
-  useScrollRef(scrollRef);
 
   return (
     <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>

@@ -13,7 +13,7 @@ export const useStaticVirtualizerMeasure = (
   virtualizerLength: number;
   bufferItems: number;
   bufferSize: number;
-  useScrollRef: (ref: React.MutableRefObject<HTMLElement | null>) => void;
+  scrollRef: (instance: HTMLElement | HTMLDivElement | null) => void;
 } => {
   const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
 
@@ -23,24 +23,6 @@ export const useStaticVirtualizerMeasure = (
 
   // The ref the user sets on their scrollView - Defaults to document.body to ensure no null on init
   const container: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
-
-  const useVirtualizerScrollRef = (ref: React.MutableRefObject<HTMLElement | HTMLDivElement | null>) => {
-    React.useEffect(() => {
-      if (ref.current !== container.current) {
-        if (container.current) {
-          resizeObserver?.unobserve(container.current);
-        }
-
-        // Update
-        container.current = ref.current;
-
-        // Only observe if not null
-        if (container.current) {
-          resizeObserver?.observe(container.current);
-        }
-      }
-    });
-  };
 
   // the handler for resize observer
   const handleResize = debounce(
@@ -82,11 +64,27 @@ export const useStaticVirtualizerMeasure = (
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
 
+  const scrollRef = React.useCallback(
+    (el: HTMLElement | null) => {
+      if (container.current !== el) {
+        if (container.current) {
+          resizeObserver?.unobserve(container.current);
+        }
+
+        container.current = el;
+        if (container.current) {
+          resizeObserver?.observe(container.current);
+        }
+      }
+    },
+    [resizeObserver],
+  );
+
   return {
     virtualizerLength,
     bufferItems: virtualizerBufferItems,
     bufferSize: virtualizerBufferSize,
-    useScrollRef: useVirtualizerScrollRef,
+    scrollRef,
   };
 };
 

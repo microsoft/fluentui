@@ -24,17 +24,14 @@ export const ReversedHorizontal = () => {
   const childLength = 1000;
 
   const itemWidth = 100;
-  const scrollView = React.useRef<HTMLDivElement | null>(null);
 
-  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemWidth,
     direction: 'horizontal',
   });
 
-  useScrollRef(scrollView);
-
   return (
-    <div className={styles.container} role={'list'} ref={scrollView}>
+    <div className={styles.container} role={'list'} ref={scrollRef}>
       <Virtualizer
         numItems={childLength}
         reversed

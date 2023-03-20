@@ -5,21 +5,23 @@ import { VirtualizerScrollViewProps, VirtualizerScrollViewState } from './Virtua
 import { useStaticVirtualizerMeasure } from '../../Hooks';
 
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState {
-  const { virtualizerLength, bufferItems, bufferSize, useScrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
   });
 
   const iScrollRef = React.useRef<HTMLElement | null>(null);
 
-  const setScrollRef = React.useCallback((element: HTMLDivElement) => {
-    if (!element || !iScrollRef || iScrollRef.current === element) {
-      return;
-    }
-    iScrollRef.current = element;
-  }, []);
-
-  useScrollRef(iScrollRef);
+  const setScrollRef = React.useCallback(
+    (element: HTMLDivElement) => {
+      if (iScrollRef.current === element) {
+        return;
+      }
+      scrollRef(element);
+      iScrollRef.current = element;
+    },
+    [scrollRef],
+  );
 
   const virtualizerState = useVirtualizer_unstable({
     ...props,
