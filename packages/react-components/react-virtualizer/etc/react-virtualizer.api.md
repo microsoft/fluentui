@@ -32,7 +32,7 @@ export const useStaticVirtualizerMeasure: (virtualizerProps: IVirtualizerMeasure
     virtualizerLength: number;
     bufferItems: number;
     bufferSize: number;
-    useScrollRef: (ref: React_2.MutableRefObject<HTMLElement | null>) => void;
+    scrollRef: (instance: HTMLElement | HTMLDivElement | null) => void;
 };
 
 // @public (undocumented)
