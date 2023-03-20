@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { LockClosed20Regular } from '@fluentui/react-icons';
-import story from './TreeIconAfter.md';
 
 export const IconAfter = () => {
   return (
@@ -35,12 +34,4 @@ export const IconAfter = () => {
       </TreeItem>
     </Tree>
   );
-};
-
-IconAfter.parameters = {
-  docs: {
-    description: {
-      story,
-    },
-  },
 };
