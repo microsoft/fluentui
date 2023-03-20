@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import story from './TreeSize.md';
 
 export const Size = () => {
   return (
@@ -44,7 +45,7 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: 'A tree item supports `small` and `medium` sizes.',
+      story,
     },
   },
 };

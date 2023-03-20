@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/components/Tree/Tree.types';
+import story from './TreeExpandCollapseIconOnly.md';
 
 export const ExpandCollapseIconOnly = () => {
   const onOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
@@ -42,4 +43,12 @@ export const ExpandCollapseIconOnly = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+ExpandCollapseIconOnly.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };
