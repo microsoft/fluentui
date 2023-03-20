@@ -24,6 +24,6 @@ import { InfoButton } from '@fluentui/react-components';
 
 ```jsx
 const InfoButtonExample = () => {
-  return <InfoButton content="This is an InfoButton's content." />;
+  return <InfoButton>This is an InfoButton's content.</InfoButton>;
 };
 ```
