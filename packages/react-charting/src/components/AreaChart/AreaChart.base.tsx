@@ -64,6 +64,7 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
+  /** focused point */
   activePoint: string;
 }
 
@@ -614,6 +615,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
     if (!this.props.optimizeLargeData) {
+      // Render all data points for small dataset
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
         if (points.length === index) {
@@ -651,6 +653,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         );
       });
     } else {
+      // Render data points close to the mouse pointer for large dataset
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
         if (points.length === index) {
@@ -782,6 +785,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const modifiedXVal = x instanceof Date ? x.getTime() : x;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
+    // Show details in the callout for the focused point only
     found.values = found.values.filter((e: { y: number }) => e.y === y);
 
     this.setState({
