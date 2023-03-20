@@ -175,4 +175,4 @@ Fluent WC3 Input extends from the [FAST Text Field](https://explore.fast.design/
 
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-| ------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------- |
+| ----------------- | ----------------------- | ------------------------- |
