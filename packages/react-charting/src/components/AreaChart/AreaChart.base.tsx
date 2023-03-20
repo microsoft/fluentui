@@ -601,6 +601,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
                 'data-is-focusable': true,
+                role: 'img',
+                'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
+                  points[index].data.length
+                } data points.`,
               })}
             />
           )}
@@ -630,7 +634,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
                   strokeWidth={3}
-                  // opacity={this.state.nearestCircleToHighlight ? 1 : 0}
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
@@ -666,7 +669,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 cy={yScale(singlePoint.values[1])}
                 stroke={lineColor}
                 strokeWidth={3}
-                // opacity={this.state.nearestCircleToHighlight ? 1 : 0}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
@@ -775,17 +777,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
-    const { xAxisCalloutData, y, x } = this.props.data.lineChartData![lineIndex].data[pointIndex];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found: any = this._calloutPoints[pointIndex];
-    found.values = found.values.filter((e: ILineChartDataPoint) => e.y === y);
+    const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
     const formattedDate = x instanceof Date ? x.toLocaleString() : x;
-    // const modifiedXVal = x instanceof Date ? x.getTime() : x;
+    const modifiedXVal = x instanceof Date ? x.getTime() : x;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
+    found.values = found.values.filter((e: { y: number }) => e.y === y);
 
     this.setState({
       refSelected: `#${circleId}`,
       isCalloutVisible: true,
-      // nearestCircleToHighlight: modifiedXVal,
       hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
       YValueHover: found.values,
       stackCalloutProps: found,
@@ -798,7 +799,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this.setState({
       refSelected: null,
       isCalloutVisible: false,
-      // nearestCircleToHighlight: null,
       hoverXValue: undefined,
       YValueHover: [],
       stackCalloutProps: undefined,
