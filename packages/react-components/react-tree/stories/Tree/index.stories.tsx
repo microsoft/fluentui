@@ -16,7 +16,6 @@ export { Layout } from './TreeLayout.stories';
 export { Size } from './TreeSize.stories';
 export { Appearance } from './TreeAppearance.stories';
 export { WithInlineStyle } from './TreeWithInlineStyle.stories';
-export { UseFlatTreeItems as useFlatTreeItems } from './useFlatTreeItems.stories';
 export { FlattenTree as flattenTree } from './flattenTree.stories';
 export { Virtualization } from './Virtualization.stories';
 

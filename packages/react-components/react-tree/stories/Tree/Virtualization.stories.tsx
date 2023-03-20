@@ -16,6 +16,7 @@ import {
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots, useFluent } from '@fluentui/react-components';
+import story from './Virtualization.md';
 
 const defaultItems: FlatTreeItemProps[] = [
   {
@@ -103,4 +104,12 @@ export const Virtualization = () => {
       aria-label="Tree"
     />
   );
+};
+
+Virtualization.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

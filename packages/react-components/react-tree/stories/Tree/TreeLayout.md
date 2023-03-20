@@ -1,0 +1,5 @@
+An example of a tree with combinations of props `actions` in `TreeItem` and `aside` in `TreeItemLayout` component.
+
+This example demonstrates how to combine multiple props to customize the appearance and behavior of a `Tree` component. It includes the use of `icons`, `badges`, `actions`, and layouts, which can be composed together to create a more complex and flexible user interface.
+
+Each prop is described individually and can be overridden as needed.
