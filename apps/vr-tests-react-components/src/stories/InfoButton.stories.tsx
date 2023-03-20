@@ -26,7 +26,7 @@ storiesOf('InfoButton', module)
     'default',
     () => (
       <div style={{ display: 'flex', alignItems: 'flex-end', padding: '10px', minHeight: '80px' }}>
-        <InfoButton className="info-button" info="This is the content of an InfoButton." />
+        <InfoButton className="info-button">This is the content of an InfoButton.</InfoButton>
       </div>
     ),
     {
@@ -52,8 +52,14 @@ storiesOf('InfoButton', module)
         alignItems: 'start',
       }}
     >
-      <InfoButton size="small" info="This is the content of an InfoButton." popover={{ open: true }} />
-      <InfoButton size="medium" info="This is the content of an InfoButton." popover={{ open: true }} />
-      <InfoButton size="large" info="This is the content of an InfoButton." popover={{ open: true }} />
+      <InfoButton size="small" popover={{ open: true }}>
+        This is the content of an InfoButton.
+      </InfoButton>
+      <InfoButton size="medium" popover={{ open: true }}>
+        This is the content of an InfoButton.
+      </InfoButton>
+      <InfoButton size="large" popover={{ open: true }}>
+        This is the content of an InfoButton.
+      </InfoButton>
     </div>
   ));
