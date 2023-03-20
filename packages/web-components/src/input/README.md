@@ -130,6 +130,6 @@ This component supports ARIA attributes that inherit from the [ARIA Global State
 
 | Fluent UI React 9 | Fluent Web Components 3 |
 | ----------------- | ----------------------- |
-| `<Input>`         | `<fluent-input>`        |
+| `<Input>`         | `<fluent-text-input>`   |
 | `contentBefore`   | `start`                 |
 | `contentAfter`    | `end`                   |
