@@ -39,55 +39,58 @@ Fluent WC3 Input extends from the [FAST Text Field](https://explore.fast.design/
 
 ### **Fields**
 
-| Name          | Privacy | Type              | Default              | Description                                                                                                                         |
-| ------------- | ------- | ----------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `appearance`  | public  | `InputAppearance` | `outline`            | Sets appearance of input.                                                                                                           |
-| `autofocus`   | public  | `boolean`         | `false`              | Indicates element should get focus after the page finishes loading..                                                                |
-| `disabled`    | public  | `boolean`         | `false`              | Disables input                                                                                                                      |
-| `layout`      | public  | `InputLayout`     | `InputLayout.block`  | Sets layout display property on input                                                                                               |
-| `list`        | public  | `string`          |                      | Allows associating a `datalist` to an element by `id`                                                                               |
-| `maxlength`   | public  | `number`          |                      | The maximum number of characters a user can enter                                                                                   |
-| `minlength`   | public  | `number`          |                      | The minimum number of characters a user can enter                                                                                   |
-| `name`        | public  | `number`          |                      | The name of the control                                                                                                             |
-| `pattern`     | public  | `string`          |                      | A regular expression the input's contents must match in order to be valid                                                           |
-| `placeholder` | public  | `string`          |                      | An exemplar value to display in the input field whenever it is empty                                                                |
-| `readonly`    | public  | `boolean`         | `false`              | The text field should be submitted with the form but should not be editable                                                         |
-| `required`    | public  | `boolean`         | `false`              | Sets the field as required                                                                                                          |
-| `size`        | public  | `InputSize`       | `medium`             | Sets the size of the text input                                                                                                     |
-| `spellcheck`  | public  | `boolean`         | `false`              | Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used |
-| `type`        | public  | `TextFieldType`   | `TextFieldType.text` | Sets the size of the text input                                                                                                     |
-| `value`       | public  | `string`          |                      | String value of the text field, can be an empty string                                                                              |
+| Name            | Privacy | Type              | Default              | Description                                                                                                                         |
+| --------------- | ------- | ----------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `appearance`    | public  | `InputAppearance` | `outline`            | Sets appearance of input.                                                                                                           |
+| `autofocus`     | public  | `boolean`         | `false`              | Indicates element should get focus after the page finishes loading..                                                                |
+| `disabled`      | public  | `boolean`         | `false`              | Disables input                                                                                                                      |
+| `labelPosition` | public  | `boolean`         | `false`              | Disables input                                                                                                                      |
+| `layout`        | public  | `InputLayout`     | `InputLayout.block`  | Sets layout display property on input                                                                                               |
+| `list`          | public  | `string`          |                      | Allows associating a `datalist` to an element by `id`                                                                               |
+| `maxlength`     | public  | `number`          |                      | The maximum number of characters a user can enter                                                                                   |
+| `minlength`     | public  | `number`          |                      | The minimum number of characters a user can enter                                                                                   |
+| `name`          | public  | `number`          |                      | The name of the control                                                                                                             |
+| `pattern`       | public  | `string`          |                      | A regular expression the input's contents must match in order to be valid                                                           |
+| `placeholder`   | public  | `string`          |                      | An exemplar value to display in the input field whenever it is empty                                                                |
+| `readonly`      | public  | `boolean`         | `false`              | The text field should be submitted with the form but should not be editable                                                         |
+| `required`      | public  | `boolean`         | `false`              | Sets the field as required                                                                                                          |
+| `size`          | public  | `InputSize`       | `medium`             | Sets the size of the text input                                                                                                     |
+| `spellcheck`    | public  | `boolean`         | `false`              | Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used |
+| `type`          | public  | `TextFieldType`   | `TextFieldType.text` | Sets the size of the text input                                                                                                     |
 
 <br />
 
+### **Methods**
+
+| Name       | Privacy | Description                                       |
+| ---------- | ------- | ------------------------------------------------- |
+| `select`   | public  | Selects all the text in the text field            |
+| `validate` | public  | {@inheritDoc (FormAssociated:interface).validate} |
+
 ### **Events**
 
-| Name     | Type | Description                        | Inherited From |
-| -------- | ---- | ---------------------------------- | -------------- |
-| `change` |      | Fires a custom change event        |                |
-| `input`  |      | Fires a custom input changed event |                |
+| Name     | Type | Description                 | Inherited From |
+| -------- | ---- | --------------------------- | -------------- |
+| `change` |      | Fires a custom change event |                |
 
 <br />
 
 ### **Attributes**
 
-| Name          | Field       |
-| ------------- | ----------- |
-| `appearance`  | appearance  |
-| `autofocus`   | autofocus   |
-| `disabled`    | disabled    |
-| `list`        | list        |
-| `maxlength`   | maxlength   |
-| `minlength`   | minlength   |
-| `name`        | name        |
-| `pattern`     | pattern     |
-| `placeholder` | placeholder |
-| `readonly `   | readonly    |
-| `required `   | required    |
-| `size`        | size        |
-| `spellcheck`  | spellcheck  |
-| `type`        | type        |
-| `value `      | value       |
+| Name             | Field          |
+| ---------------- | -------------- |
+| `appearance`     | appearance     |
+| `autofocus`      | autofocus      |
+| `label-position` | label-position |
+| `list`           | list           |
+| `maxlength`      | maxlength      |
+| `minlength`      | minlength      |
+| `pattern`        | pattern        |
+| `placeholder`    | placeholder    |
+| `readonly `      | readonly       |
+| `size`           | size           |
+| `spellcheck`     | spellcheck     |
+| `type`           | type           |
 
 <br />
 
@@ -155,8 +158,6 @@ Fluent WC3 Input extends from the [FAST Text Field](https://explore.fast.design/
 <br />
 
 ## **Preparation**
-
-<br />
 
 ### **Fluent Web Component v3 v.s Fluent React 9**
 
