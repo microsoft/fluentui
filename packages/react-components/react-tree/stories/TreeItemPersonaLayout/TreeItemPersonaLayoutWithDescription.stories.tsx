@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemPersonaLayout } from '@fluentui/react-tree';
+import story from './TreeItemPersonaLayoutWithDescription.md';
 
 export const WithDescription = () => {
   return (
@@ -48,4 +49,12 @@ export const WithDescription = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+WithDescription.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };
