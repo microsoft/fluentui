@@ -57,7 +57,7 @@ export type VirtualizerChildRenderFunction = (index: number) => React_2.ReactNod
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 
 // @public (undocumented)
-export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & IVirtualizerProps;
+export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
 
 // @public
 export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
@@ -66,7 +66,7 @@ export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<IVirtualizerProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
     itemSize: number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
@@ -78,7 +78,7 @@ export type VirtualizerScrollViewSlots = VirtualizerSlots & {
 };
 
 // @public (undocumented)
-export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & IVirtualizerState;
+export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;
 
 // @public (undocumented)
 export type VirtualizerSlots = {
@@ -89,7 +89,7 @@ export type VirtualizerSlots = {
 };
 
 // @public (undocumented)
-export type VirtualizerState = ComponentState<VirtualizerSlots> & IVirtualizerState;
+export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
 // (No @packageDocumentation comment for this package)
 

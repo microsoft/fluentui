@@ -20,7 +20,7 @@ export type VirtualizerSlots = {
   afterContainer: NonNullable<Slot<'div', 'tr'>>;
 };
 
-export type IVirtualizerState = {
+export type VirtualizerConfigState = {
   /**
    * The current virtualized array of children to show in the DOM.
    */
@@ -57,13 +57,13 @@ export type IVirtualizerState = {
   bufferSize: number;
 };
 
-export type VirtualizerState = ComponentState<VirtualizerSlots> & IVirtualizerState;
+export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
 // Virtualizer render function to procedurally generate children elements as rows or columns via index.
 // Q: Use generic typing and passing through object data or a simple index system?
 export type VirtualizerChildRenderFunction = (index: number) => React.ReactNode;
 
-export type IVirtualizerProps = {
+export type VirtualizerConfigProps = {
   /**
    * Child render function.
    * Iteratively called to return current virtualizer DOM children.
@@ -145,4 +145,4 @@ export type IVirtualizerProps = {
   onCalculateIndex?: (newIndex: number) => number;
 };
 
-export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & IVirtualizerProps;
+export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

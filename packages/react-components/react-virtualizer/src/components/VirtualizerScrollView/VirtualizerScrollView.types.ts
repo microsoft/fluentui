@@ -1,8 +1,8 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import {
   VirtualizerSlots,
-  IVirtualizerProps,
-  IVirtualizerState,
+  VirtualizerConfigProps,
+  VirtualizerConfigState,
   VirtualizerChildRenderFunction,
 } from '../Virtualizer/Virtualizer.types';
 
@@ -14,7 +14,7 @@ export type VirtualizerScrollViewSlots = VirtualizerSlots & {
 };
 
 export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> &
-  Partial<Omit<IVirtualizerProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+  Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
     /**
      * Virtualizer item size in pixels - static.
      * Axis: 'vertical' = Height
@@ -33,4 +33,4 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
     children: VirtualizerChildRenderFunction;
   };
 
-export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & IVirtualizerState;
+export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;
