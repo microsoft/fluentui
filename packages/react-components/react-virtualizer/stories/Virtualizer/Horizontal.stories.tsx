@@ -23,7 +23,6 @@ export const Horizontal = () => {
   const styles = useStyles();
   const childLength = 1000;
   const itemWidth = 100;
-  const scrollView = React.useRef<HTMLDivElement | null>(null);
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemWidth,
