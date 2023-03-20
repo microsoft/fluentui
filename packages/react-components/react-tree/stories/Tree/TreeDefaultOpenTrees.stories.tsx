@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import story from './TreeDefaultOpenTrees.md';
 
 export const DefaultOpenTrees = () => {
   const defaultOpenTrees = ['default-subtree-1', 'default-subtree-2', 'default-subtree-2-1'];
@@ -41,4 +42,12 @@ export const DefaultOpenTrees = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+DefaultOpenTrees.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

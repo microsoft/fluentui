@@ -1,0 +1,1 @@
+The style applied to the `TreeItem` component can be easily overridden by passing a custom style object as a prop to the `TreeItem` component. This allows for greater flexibility in customizing the styling of the tree items.
