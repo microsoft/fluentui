@@ -28,7 +28,7 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
 };
 
 // @public
-export const useStaticVirtualizerMeasure: (virtualizerProps: IVirtualizerMeasureProps) => {
+export const useStaticVirtualizerMeasure: (virtualizerProps: VirtualizerMeasureProps) => {
     virtualizerLength: number;
     bufferItems: number;
     bufferSize: number;

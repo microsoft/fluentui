@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { canUseDOM } from '@fluentui/react-utilities';
-import { IVirtualizerMeasureDynamicProps, IVirtualizerMeasureProps } from './useVirtualizerMeasure.types';
+import { VirtualizerMeasureProps } from './useVirtualizerMeasure.types';
 import { debounce } from '../utilities/debounce';
 import * as ReactDOM from 'react-dom';
 
@@ -8,7 +8,7 @@ import * as ReactDOM from 'react-dom';
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
  */
 export const useStaticVirtualizerMeasure = (
-  virtualizerProps: IVirtualizerMeasureProps,
+  virtualizerProps: VirtualizerMeasureProps,
 ): {
   virtualizerLength: number;
   bufferItems: number;
@@ -17,49 +17,53 @@ export const useStaticVirtualizerMeasure = (
 } => {
   const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
 
-  const [virtualizerLength, setVirtualizerLength] = React.useState(0);
-  const [virtualizerBufferItems, setVirtualizerBufferItems] = React.useState(0);
-  const [virtualizerBufferSize, setVirtualizerBufferSize] = React.useState(0);
+  const [state, setState] = React.useState({
+    virtualizerLength: 0,
+    bufferSize: 0,
+    bufferItems: 0,
+  });
+
+  const { virtualizerLength, bufferItems, bufferSize } = state;
 
   // The ref the user sets on their scrollView - Defaults to document.body to ensure no null on init
   const container: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
 
+  const resizeCallback = () => {
+    if (!container.current) {
+      return;
+    }
+
+    const containerSize =
+      direction === 'vertical'
+        ? container.current.getBoundingClientRect().height
+        : container.current.getBoundingClientRect().width;
+
+    /*
+     * Number of items required to cover viewport.
+     */
+    const length = Math.ceil(containerSize / defaultItemSize + 1);
+
+    /*
+     * Number of items to append at each end, i.e. 'preload' each side before entering view.
+     */
+    const newBufferItems = Math.max(Math.floor(length / 4), 2);
+
+    /*
+     * This is how far we deviate into the bufferItems to detect a redraw.
+     */
+    const newBufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
+
+    const totalLength = length + newBufferSize * 2 + 1;
+
+    setState({
+      virtualizerLength: totalLength,
+      bufferItems: newBufferItems,
+      bufferSize: newBufferSize,
+    });
+  };
+
   // the handler for resize observer
-  const handleResize = debounce(
-    React.useCallback(() => {
-      if (!container.current) {
-        return;
-      }
-
-      const containerSize =
-        direction === 'vertical'
-          ? container.current.getBoundingClientRect().height
-          : container.current.getBoundingClientRect().width;
-
-      /*
-       * Number of items required to cover viewport.
-       */
-      const length = Math.ceil(containerSize / defaultItemSize + 1);
-
-      /*
-       * Number of items to append at each end, i.e. 'preload' each side before entering view.
-       */
-      const bufferItems = Math.max(Math.floor(length / 4), 2);
-
-      /*
-       * This is how far we deviate into the bufferItems to detect a redraw.
-       */
-      const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
-
-      const totalLength = length + bufferItems * 2 + 1;
-
-      ReactDOM.unstable_batchedUpdates(() => {
-        setVirtualizerLength(totalLength);
-        setVirtualizerBufferSize(bufferSize);
-        setVirtualizerBufferItems(bufferItems);
-      });
-    }, [defaultItemSize, direction]),
-  );
+  const handleResize = debounce(resizeCallback);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
@@ -82,23 +86,8 @@ export const useStaticVirtualizerMeasure = (
 
   return {
     virtualizerLength,
-    bufferItems: virtualizerBufferItems,
-    bufferSize: virtualizerBufferSize,
+    bufferItems,
+    bufferSize,
     scrollRef,
   };
-};
-
-/**
- * React hook that measures virtualized space dynamically to ensure optimized virtualization length.
- */
-
-export const useDynamicVirtualizerMeasure = (
-  virtualizerProps: IVirtualizerMeasureDynamicProps,
-): {
-  virtualizerLength: number;
-  virtualizerBufferItems: number;
-  virtualizerBufferSize: number;
-} => {
-  // TODO Add resize observer and update sizes as resize observer callback occurs - dispatch?
-  return { virtualizerLength: 10, virtualizerBufferItems: 10, virtualizerBufferSize: 10 };
 };
