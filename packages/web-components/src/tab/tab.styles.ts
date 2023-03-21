@@ -16,8 +16,8 @@ import {
   spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalSNudge,
-  spacingVerticalL,
   spacingVerticalMNudge,
+  spacingVerticalS,
   spacingVerticalSNudge,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
@@ -100,12 +100,12 @@ export const styles = css`
     bottom: ${spacingVerticalSNudge};
   }
   :host([aria-selected='true']):host-context([orientation='vertical'][size='medium'])::part(indicator-placeholder) {
-    top: ${spacingVerticalMNudge};
-    bottom: ${spacingVerticalMNudge};
+    top: ${spacingVerticalS};
+    bottom: ${spacingVerticalS};
   }
   :host([aria-selected='true']):host-context([orientation='vertical'][size='large'])::part(indicator-placeholder) {
-    top: ${spacingVerticalL};
-    bottom: ${spacingVerticalL};
+    top: ${spacingVerticalMNudge};
+    bottom: ${spacingVerticalMNudge};
   }
 
   :host([aria-selected='true'])::after {

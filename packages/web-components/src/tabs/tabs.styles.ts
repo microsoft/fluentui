@@ -16,12 +16,13 @@ import {
   fontWeightRegular,
   lineHeightBase300,
   lineHeightBase400,
-  spacingHorizontalL,
   spacingHorizontalMNudge,
   spacingHorizontalSNudge,
   spacingVerticalL,
   spacingVerticalMNudge,
+  spacingVerticalS,
   spacingVerticalSNudge,
+  spacingVerticalXXS,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
 import { TabTokenNames } from './tabs.js';
@@ -177,19 +178,16 @@ export const styles = css`
     right: ${spacingHorizontalSNudge};
     left: ${spacingHorizontalSNudge};
   }
-
   :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab)::after,
   :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab:hover)::after {
     right: ${spacingHorizontalMNudge};
     left: ${spacingHorizontalMNudge};
   }
-
   :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab)::after,
   :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab:hover)::after {
     right: ${spacingHorizontalMNudge};
     left: ${spacingHorizontalMNudge};
   }
-
   :host([orientation='vertical']) ::slotted(fluent-tab) {
     align-items: flex-start;
     grid-column: 2;
@@ -206,6 +204,19 @@ export const styles = css`
     transform-origin: top;
   }
 
+  :host([orientation='vertical'][size='small']) ::slotted(fluent-tab) {
+    padding-top: ${spacingVerticalXXS};
+    padding-bottom: ${spacingVerticalXXS};
+  }
+  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab) {
+    padding-top: ${spacingVerticalSNudge};
+    padding-bottom: ${spacingVerticalSNudge};
+  }
+  :host([orientation='vertical'][size='large']) ::slotted(fluent-tab) {
+    padding-top: ${spacingVerticalS};
+    padding-bottom: ${spacingVerticalS};
+  }
+
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab:hover)::after {
     top: ${spacingVerticalSNudge};
@@ -213,12 +224,12 @@ export const styles = css`
   }
   :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab:hover)::after {
-    top: ${spacingVerticalMNudge};
-    bottom: ${spacingVerticalMNudge};
+    top: ${spacingVerticalS};
+    bottom: ${spacingVerticalS};
   }
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab:hover)::after {
-    top: ${spacingVerticalL};
-    bottom: ${spacingHorizontalL};
+    top: ${spacingVerticalMNudge};
+    bottom: ${spacingVerticalMNudge};
   }
 `;
