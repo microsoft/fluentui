@@ -27,13 +27,12 @@ export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>
 
 // @public
 export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {
-    variant?: BreadcrumbVariant;
-    size?: BreadcrumbSize;
+    variant?: 'chevron' | 'slash';
 };
 
 // @public (undocumented)
 export type BreadcrumbDividerSlots = {
-    root: Slot<'span'>;
+    root: Slot<'li'>;
 };
 
 // @public
@@ -51,7 +50,6 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & {};
 // @public (undocumented)
 export type BreadcrumbItemSlots = {
     root: Slot<'li'>;
-    divider?: Slot<typeof BreadcrumbDivider>;
 };
 
 // @public

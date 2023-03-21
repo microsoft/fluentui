@@ -3,6 +3,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { BreadcrumbDividerProps, BreadcrumbDividerState } from './BreadcrumbDivider.types';
 import { ChevronRight20Regular, ChevronRight16Regular, ChevronRight12Regular } from '@fluentui/react-icons';
 import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
+import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
 /**
  * Create the state required to render BreadcrumbDivider.
@@ -17,16 +18,18 @@ export const useBreadcrumbDivider_unstable = (
   props: BreadcrumbDividerProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbDividerState => {
-  const { variant, size, ...rest } = props;
-  const icon = variant !== null ? getDividerIcon(size, variant) : null;
+  const { variant, ...rest } = props;
+  const { size } = useBreadcrumbContext_unstable();
+  const icon = getDividerIcon(size, variant);
 
   return {
     components: {
-      root: 'span',
+      root: 'li',
     },
-    root: getNativeElementProps('span', {
+    root: getNativeElementProps('li', {
       ref,
       required: true,
+      'aria-hidden': true,
       children: icon,
       ...rest,
     }),

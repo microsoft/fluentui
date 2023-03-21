@@ -4,7 +4,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
   root: 'fui-BreadcrumbItem',
-  divider: 'fui-BreadcrumbItem__divider',
 };
 
 /**
@@ -15,7 +14,6 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
   },
-  divider: {},
 });
 
 /**
@@ -25,8 +23,5 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
   const styles = useStyles();
   state.root.className = mergeClasses(breadcrumbItemClassNames.root, styles.root, state.root.className);
 
-  if (state.divider) {
-    state.divider.className = mergeClasses(breadcrumbItemClassNames.divider, styles.divider, state.divider.className);
-  }
   return state;
 };
