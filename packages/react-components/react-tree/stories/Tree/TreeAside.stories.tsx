@@ -24,7 +24,7 @@ const Actions = () => (
 
 export const Aside = () => (
   <Tree aria-label="Tree">
-    <TreeItem actions={<Actions />}>
+    <TreeItem>
       <TreeItemLayout aside={<RenderAside />}>level 1, item 1</TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
@@ -38,7 +38,7 @@ export const Aside = () => (
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem actions={<Actions />}>
+    <TreeItem>
       <TreeItemLayout aside={<RenderAside />}>level 1, item 2</TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
