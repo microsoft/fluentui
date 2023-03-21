@@ -407,6 +407,7 @@
           "@babel/generator",
           "@babel/traverse",
           "@rnx-kit/eslint-plugin",
+          "@swc/helpers",
           "@types/react-test-renderer",
           "@typescript-eslint/eslint-plugin",
           "@typescript-eslint/experimental-utils",

@@ -20,7 +20,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -35,8 +35,8 @@
     "@babel/template": "^7.12.13",
     "@babel/traverse": "^7.12.13",
     "@emotion/hash": "^0.8.0",
-    "find-up": "^5.0.0",
-    "tslib": "^2.1.0"
+    "@swc/helpers": "^0.4.14",
+    "find-up": "^5.0.0"
   },
   "peerDependencies": {
     "@fluentui/global-context": "9.0.0-beta.21"

@@ -19,9 +19,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
-    "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -33,8 +31,8 @@
   "dependencies": {
     "@fluentui/react-table": "^9.2.1",
     "@fluentui/react-utilities": "^9.7.1",
-    "react-window": "^1.8.6",
-    "tslib": "^2.1.0"
+    "@swc/helpers": "^0.4.14",
+    "react-window": "^1.8.6"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.18.2",
