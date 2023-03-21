@@ -45,6 +45,9 @@ export const styles = css`
     padding-right: ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
   }
+  :host::part(tab-content) {
+    padding: 0 2px;
+  }
 
   :host([aria-selected='true']),
   :host([aria-selected='true'][disabled]) {
