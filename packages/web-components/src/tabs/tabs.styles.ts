@@ -115,10 +115,9 @@ export const styles = css`
     grid-row: 3;
   }
 
-  :host ::slotted(fluent-tab.animated)::after {
-    transition-property: transform;
-    transition-duration: ${durationSlow};
-    transition-timing-function: ${curveDecelerateMax};
+  :host([appearance='subtle']) ::slotted(fluent-tab:hover) {
+    background-color: ${colorSubtleBackgroundHover};
+    color: ${colorNeutralForeground1Hover};
   }
 
   :host([appearance='subtle']) ::slotted(fluent-tab:active) {
@@ -126,9 +125,11 @@ export const styles = css`
     fill: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground1};
   }
-  :host([appearance='subtle']) ::slotted(fluent-tab:hover) {
-    background-color: ${colorSubtleBackgroundHover};
-    color: ${colorNeutralForeground1Hover};
+
+  :host ::slotted(fluent-tab.animated)::after {
+    transition-property: transform;
+    transition-duration: ${durationSlow};
+    transition-timing-function: ${curveDecelerateMax};
   }
 
   :host([size='small']) ::slotted(fluent-tab) {

@@ -10,7 +10,6 @@ import {
   colorNeutralStroke1Hover,
   colorStrokeFocus1,
   colorStrokeFocus2,
-  colorSubtleBackgroundPressed,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightSemibold,
@@ -49,12 +48,6 @@ export const styles = css`
   }
   :host::part(tab-content) {
     padding: 0 2px;
-  }
-
-  :host:host-context([appearance='subtle']) :active {
-    color: ${colorNeutralForeground1};
-    fill: ${colorSubtleBackgroundPressed};
-    background-color: ${colorSubtleBackgroundPressed};
   }
 
   :host([aria-selected='true']) {
