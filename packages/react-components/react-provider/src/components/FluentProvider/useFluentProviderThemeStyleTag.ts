@@ -66,6 +66,8 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
   const rule = `.${styleTagId} { ${cssVarsAsString} }`;
 
   if (!isInSSRContext) {
+    // Not really breaking the rules of hooks here, this condition will only change if the parent
+    // tree is different (i.e. an SSRProvider is added/removed)
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useInsertionEffect(() => {
       styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
