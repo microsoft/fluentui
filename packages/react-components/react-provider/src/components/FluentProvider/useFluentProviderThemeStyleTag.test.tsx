@@ -25,7 +25,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     );
 
     // Assert
-    expect(document.getElementById(result.current)).not.toBeNull();
+    expect(document.getElementById(result.current.styleTagId)).not.toBeNull();
   });
 
   it('should remove style tag on unmount', () => {
@@ -38,7 +38,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     unmount();
 
     // Assert
-    expect(document.getElementById(result.current)).toBeNull();
+    expect(document.getElementById(result.current.styleTagId)).toBeNull();
   });
 
   it('should render css variables in theme', () => {
@@ -48,11 +48,11 @@ describe('useFluentProviderThemeStyleTag', () => {
     );
 
     // Assert
-    const tag = document.getElementById(result.current) as HTMLStyleElement;
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
     const sheet = tag.sheet as CSSStyleSheet;
     const rule = sheet.cssRules[0] as CSSStyleRule;
 
-    expect(rule.selectorText).toEqual(`.${result.current}`);
+    expect(rule.selectorText).toEqual(`.${result.current.styleTagId}`);
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-1: 1; --css-variable-2: 2;}"`);
   });
 
@@ -66,10 +66,10 @@ describe('useFluentProviderThemeStyleTag', () => {
     rerender();
 
     // Assert
-    const tag = document.getElementById(result.current) as HTMLStyleElement;
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
     const sheet = tag.sheet as CSSStyleSheet;
     const rule = sheet.cssRules[0] as CSSStyleRule;
-    expect(rule.selectorText).toEqual(`.${result.current}`);
+    expect(rule.selectorText).toEqual(`.${result.current.styleTagId}`);
     expect(rule.cssText).toMatchInlineSnapshot(`".fui-FluentProvider1 {--css-variable-update: xxx;}"`);
   });
 
@@ -82,7 +82,7 @@ describe('useFluentProviderThemeStyleTag', () => {
       () => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
       { wrapper: props => <RendererProvider renderer={renderer}>{props.children}</RendererProvider> },
     );
-    const tag = document.getElementById(result.current) as HTMLStyleElement;
+    const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
 
     expect(tag.getAttribute('id')).toBe('fui-FluentProvider1');
     expect(tag.getAttribute('nonce')).toBe('random');

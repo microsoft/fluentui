@@ -11,6 +11,10 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type FluentProviderSlots = {
   root: Slot<'div'>;
+  /**
+   * HTMLStyleElement rendered during SSR that contains theme CSS variables
+   */
+  serverStyle?: Slot<'style'>;
 };
 
 // exported for callers to avoid referencing react-shared-context

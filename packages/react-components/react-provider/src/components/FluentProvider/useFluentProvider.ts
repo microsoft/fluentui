@@ -10,7 +10,7 @@ import type {
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
 
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useIsInSSRContext, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
@@ -69,6 +69,7 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { styleTagId, rule } = useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument });
   return {
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -78,16 +79,25 @@ export const useFluentProvider_unstable = (
     theme: mergedTheme,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     overrides_unstable: mergedOverrides,
-    themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
+    themeClassName: styleTagId,
 
     components: {
       root: 'div',
+      serverStyle: 'style',
     },
 
     root: getNativeElementProps('div', {
       ...props,
       dir,
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
+    }),
+
+    serverStyle: resolveShorthand(props.serverStyle, {
+      required: useIsInSSRContext(),
+      defaultProps: {
+        id: styleTagId,
+        dangerouslySetInnerHTML: { __html: rule },
+      },
     }),
   };
 };

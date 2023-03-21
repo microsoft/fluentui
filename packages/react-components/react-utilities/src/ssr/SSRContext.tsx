@@ -42,6 +42,13 @@ export const SSRProvider: React.FC<{ children: React.ReactNode }> = props => {
 };
 
 /**
+ * @returns Whether the current component is wrapped by an SSRProvider.
+ */
+export function useIsInSSRContext(): boolean {
+  return useSSRContext() !== defaultSSRContextValue;
+}
+
+/**
  * Returns whether the component is currently being server side rendered or hydrated on the client. Can be used to delay
  * browser-specific rendering until after hydration. May cause re-renders on a client when is used within SSRProvider.
  */

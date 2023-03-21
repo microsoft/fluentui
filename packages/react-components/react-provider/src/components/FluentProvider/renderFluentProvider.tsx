@@ -35,7 +35,10 @@ export const renderFluentProvider_unstable = (
             <TooltipVisibilityProvider value={contextValues.tooltip}>
               <TextDirectionProvider dir={contextValues.textDirection}>
                 <OverridesProvider value={contextValues.overrides_unstable}>
-                  <slots.root {...slotProps.root}>{state.root.children}</slots.root>
+                  <slots.root {...slotProps.root}>
+                    {slots.serverStyle && <slots.serverStyle {...slotProps.serverStyle} />}
+                    {slotProps.root.children}
+                  </slots.root>
                 </OverridesProvider>
               </TextDirectionProvider>
             </TooltipVisibilityProvider>

@@ -1,4 +1,4 @@
-import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useId, useIsInSSRContext, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useRenderer_unstable } from '@griffel/react';
 import * as React from 'react';
 
@@ -46,6 +46,7 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
+  const isInSSRContext = useIsInSSRContext();
 
   const renderer = useRenderer_unstable();
   const styleTag = React.useRef<HTMLStyleElement>();
@@ -64,17 +65,20 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
 
   const rule = `.${styleTagId} { ${cssVarsAsString} }`;
 
-  useInsertionEffect(() => {
-    styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
+  if (!isInSSRContext) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useInsertionEffect(() => {
+      styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
 
-    if (styleTag.current) {
-      insertSheet(styleTag.current, rule);
+      if (styleTag.current) {
+        insertSheet(styleTag.current, rule);
 
-      return () => {
-        styleTag.current?.remove();
-      };
-    }
-  }, [styleTagId, targetDocument, rule, styleElementAttributes]);
+        return () => {
+          styleTag.current?.remove();
+        };
+      }
+    }, [styleTagId, targetDocument, rule, styleElementAttributes]);
+  }
 
-  return styleTagId;
+  return { styleTagId, rule };
 };

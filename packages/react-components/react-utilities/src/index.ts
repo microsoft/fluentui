@@ -32,7 +32,7 @@ export {
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
 
-export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
+export { canUseDOM, useIsSSR, useIsInSSRContext, SSRProvider } from './ssr/index';
 
 export {
   clamp,
