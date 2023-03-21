@@ -14,6 +14,7 @@ import { getNativeElementProps, resolveShorthand, useIsInSSRContext, useMergedRe
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
+import { useRenderer_unstable } from '@griffel/react';
 
 /**
  * Create the state required to render FluentProvider.
@@ -69,6 +70,7 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const renderer = useRenderer_unstable();
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument });
   return {
     applyStylesToPortals,
@@ -97,6 +99,7 @@ export const useFluentProvider_unstable = (
       defaultProps: {
         id: styleTagId,
         dangerouslySetInnerHTML: { __html: rule },
+        nonce: renderer.styleElementAttributes?.nonce,
       },
     }),
   };

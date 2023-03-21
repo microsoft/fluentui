@@ -1,11 +1,14 @@
 import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import * as reactTestRenderer from 'react-test-renderer';
 
 import { FluentProvider } from './FluentProvider';
 import { isConformant } from '../../testing/isConformant';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import { createDOMRenderer } from '@griffel/core';
+import { RendererProvider } from '@griffel/react';
+import { fluentProviderClassNames } from './useFluentProviderStyles';
 
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -32,7 +35,7 @@ describe('FluentProvider', () => {
    * Note: see more visual regression tests for FluentProvider in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(
+    const component = reactTestRenderer.create(
       <FluentProvider theme={{ colorBrandBackground2: '#fff' }}>Default FluentProvider</FluentProvider>,
     );
     const tree = component.toJSON();
@@ -76,6 +79,23 @@ describe('FluentProvider', () => {
         />
       </div>
     `);
+  });
+
+  it('renders nonce with SSR style element', () => {
+    const nonce = 'random';
+    const renderer = createDOMRenderer(document, {
+      styleElementAttributes: { nonce },
+    });
+
+    const { container } = render(
+      <SSRProvider>
+        <RendererProvider renderer={renderer}>
+          <FluentProvider theme={{ colorNeutralBackground1: 'white', colorNeutralForeground1: 'black' }} />
+        </RendererProvider>
+      </SSRProvider>,
+    );
+
+    expect(container.querySelector(`.${fluentProviderClassNames.serverStyle}`)?.getAttribute('nonce')).toEqual(nonce);
   });
 
   describe('applies "dir" attribute', () => {
