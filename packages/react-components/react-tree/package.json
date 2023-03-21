@@ -18,6 +18,8 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
@@ -29,6 +31,7 @@
     "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-cypress": "*",
     "react-window": "^1.8.6"
   },
   "dependencies": {
