@@ -1,5 +1,5 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
-import { SliderOrientation } from '@microsoft/fast-foundation';
+export { SliderOrientation } from '@microsoft/fast-foundation';
 
 /**
  * SliderSize Constants
@@ -15,9 +15,3 @@ export const SliderSize = {
  * @public
  */
 export type SliderSize = ValuesOf<typeof SliderSize>;
-
-/**
- * Applies orientation to the slider
- * @public
- */
-export type SliderOrientation = ValuesOf<typeof SliderOrientation>;
