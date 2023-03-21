@@ -10,7 +10,6 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * It provides a consistent visual structure for tree items in a `Tree` component.
  * This component should only be used as a direct child of `TreeItem`.
  */
-
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps> = React.forwardRef((props, ref) => {
   const state = useTreeItemLayout_unstable(props, ref);
 
