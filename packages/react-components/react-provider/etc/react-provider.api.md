@@ -55,6 +55,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 // @public (undocumented)
 export type FluentProviderSlots = {
     root: Slot<'div'>;
+    serverStyle?: Slot<'style'>;
 };
 
 // @public (undocumented)
@@ -76,7 +77,10 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
 // @public
-export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => string;
+export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
+    styleTagId: string;
+    rule: string;
+};
 
 // (No @packageDocumentation comment for this package)
 

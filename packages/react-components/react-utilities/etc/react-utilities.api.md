@@ -197,6 +197,9 @@ export function useForceUpdate(): DispatchWithoutAction;
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
+// @internal (undocumented)
+export function useIsInSSRContext(): boolean;
+
 // @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 

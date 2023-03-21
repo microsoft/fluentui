@@ -43,6 +43,7 @@ export const SSRProvider: React.FC<{ children: React.ReactNode }> = props => {
 
 /**
  * @returns Whether the current component is wrapped by an SSRProvider.
+ * @internal
  */
 export function useIsInSSRContext(): boolean {
   return useSSRContext() !== defaultSSRContextValue;
