@@ -12,7 +12,7 @@
 
 ## **Engineering Spec**
 
-Due to the cost of associating elements across the shadow DOM boundary the `fluent-label` will not have access to the element it is intended to reference. For this reason the `fluent-label` is for visual purposes only.
+Due to the infeasibility of associating elements across the shadow DOM boundary the `fluent-label` will not have access to the element it is intended to reference. For this reason the `fluent-label` is for visual purposes only.
 
 The fluent-label has several visual font size (small, medium, large) and font weight(regular, semibold) options. The fluent-label also provides appearances for required and disabled states.
 
@@ -34,7 +34,6 @@ Creating a simple label element with an optional info icon and optional required
 
 | Name       | Privacy | Type                           | Default     | Description                          |
 | ---------- | ------- | ------------------------------ | ----------- | ------------------------------------ |
-| `id`       | public  | `string`                       |             | Specifies the id of label            |
 | `required` | public  | `boolean`                      | `false`     | Specifies required styling for label |
 | `disabled` | public  | `boolean`                      | `false`     | Sets disabled state for label        |
 | `size`     | public  | `"small"` `"medium"` `"large"` | `"medium"`  | Specifies font size for label        |
@@ -83,7 +82,7 @@ Creating a simple label element with an optional info icon and optional required
     id="${(attr: Label) => attr.id}"
   >
     <slot></slot>
-    ${(attr: Label) => (attr.required ? html`<span part="asterisk" class="asterisk">*</span>` : null)}
+    <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
 </template>`;
 ```
 
