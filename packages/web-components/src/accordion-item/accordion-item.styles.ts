@@ -108,7 +108,7 @@ export const styles = css`
     position: absolute;
     inset: 0px;
     cursor: pointer;
-    border-radius: ${borderRadiusMedium};
+    border-radius: ${borderRadiusSmall};
     outline: none;
     border: 2px solid ${colorStrokeFocus1};
     box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
