@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Render theme CSS variables in new SSR style slot",
+  "packageName": "@fluentui/react-provider",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
