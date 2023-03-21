@@ -106,7 +106,7 @@ function loadWorkspaceAddon(addonName, options) {
     const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
     function managerWebpack(config, options) {
-      registerTsPaths({config, tsConfigPath: '${posixTsConfigPath}'});
+      registerTsPaths({config, configFile: '${posixTsConfigPath}'});
       return config;
     }
 
