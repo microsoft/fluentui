@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate to swc transpilation approach.",
-  "packageName": "@fluentui/react-utilities",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

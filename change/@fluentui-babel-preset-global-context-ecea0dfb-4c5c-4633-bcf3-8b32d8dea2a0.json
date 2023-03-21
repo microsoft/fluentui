@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: migrate to swc transpilation approach.",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

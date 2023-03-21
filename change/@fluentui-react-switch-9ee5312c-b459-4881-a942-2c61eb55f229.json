@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make checked switch more visible in high contrast mode",
-  "packageName": "@fluentui/react-switch",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

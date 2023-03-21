@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: migrate to swc transpilation approach.",
-  "packageName": "@fluentui/react-alert",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

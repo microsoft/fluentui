@@ -53,7 +53,7 @@
     "@fluentui/merge-styles": "^8.5.7",
     "@fluentui/react-focus": "^8.8.19",
     "@fluentui/react-hooks": "^8.6.20",
-    "@fluentui/react-portal-compat-context": "^9.0.4",
+    "@fluentui/react-portal-compat-context": "^9.0.5",
     "@fluentui/react-window-provider": "^2.2.9",
     "@fluentui/set-version": "^8.2.6",
     "@fluentui/style-utilities": "^8.9.6",

@@ -27,17 +27,17 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.20",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.196",
-    "@fluentui/react-theme": "^9.1.6",
-    "@fluentui/react-utilities": "^9.7.1",
+    "@fluentui/react-theme": "^9.1.7",
+    "@fluentui/react-utilities": "^9.7.2",
     "@griffel/react": "^1.5.2",
-    "@fluentui/react-components": "^9.18.2",
+    "@fluentui/react-components": "^9.18.3",
     "@fluentui/react-northstar": "^0.66.4",
     "@swc/helpers": "^0.4.14"
   },

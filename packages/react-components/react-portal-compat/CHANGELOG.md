@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Thu, 16 Mar 2023 14:36:59 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.46)
+
+Tue, 21 Mar 2023 21:23:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.45..@fluentui/react-portal-compat_v9.0.46)
+
+### Patches
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-portal-compat-context to v9.0.5 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-tabster to v9.6.1 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-components to v9.18.3 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.3.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
 
 ## [9.0.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.45)
 
