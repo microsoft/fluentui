@@ -7,6 +7,8 @@ import {
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
   colorNeutralStroke1Hover,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightSemibold,
@@ -157,7 +159,7 @@ export const styles = css`
 
   :host(:focus-visible) {
     border-radius: ${borderRadiusSmall};
-    box-shadow: 0 0 0 2pt ${colorNeutralForeground1};
-    outline: none;
+    box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
   }
 `;
