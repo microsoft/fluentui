@@ -5,10 +5,12 @@ import {
   borderRadiusSmall,
   colorCompoundBrandStroke,
   colorNeutralForeground1,
+  colorNeutralForeground2,
   colorNeutralForegroundDisabled,
   colorNeutralStroke1Hover,
   colorStrokeFocus1,
   colorStrokeFocus2,
+  colorSubtleBackgroundPressed,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightSemibold,
@@ -33,7 +35,7 @@ export const styles = css`
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
-    color: ${colorNeutralForeground1};
+    color: ${colorNeutralForeground2};
     fill: currentcolor;
     font-family: ${fontFamilyBase};
     grid-row: 1;
@@ -47,6 +49,16 @@ export const styles = css`
   }
   :host::part(tab-content) {
     padding: 0 2px;
+  }
+
+  :host:host-context([appearance='subtle']) :active {
+    color: ${colorNeutralForeground1};
+    fill: ${colorSubtleBackgroundPressed};
+    background-color: ${colorSubtleBackgroundPressed};
+  }
+
+  :host([aria-selected='true']) {
+    color: ${colorNeutralForeground1};
   }
 
   :host([aria-selected='true']),

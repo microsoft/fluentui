@@ -5,7 +5,6 @@ import {
   colorNeutralForeground1Hover,
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
-  colorSubtleBackground,
   colorSubtleBackgroundHover,
   colorSubtleBackgroundPressed,
   curveDecelerateMax,
@@ -121,16 +120,11 @@ export const styles = css`
     transition-duration: ${durationSlow};
     transition-timing-function: ${curveDecelerateMax};
   }
-  :host ::slotted(fluent-tab:active) {
-    color: ${colorNeutralForeground1};
-    fill: ${colorNeutralForeground1};
-  }
-  :host([appearance='subtle']) ::slotted(fluent-tab) {
-    background-color: ${colorSubtleBackground};
-    color: ${colorNeutralForeground1};
-  }
+
   :host([appearance='subtle']) ::slotted(fluent-tab:active) {
     background-color: ${colorSubtleBackgroundPressed};
+    fill: ${colorSubtleBackgroundPressed};
+    color: ${colorNeutralForeground1};
   }
   :host([appearance='subtle']) ::slotted(fluent-tab:hover) {
     background-color: ${colorSubtleBackgroundHover};
