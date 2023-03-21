@@ -9,7 +9,7 @@ import {
   colorNeutralStroke1Hover,
   fontFamilyBase,
   fontSizeBase300,
-  fontWeightBold,
+  fontWeightSemibold,
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
@@ -22,7 +22,7 @@ export const styles = css`
   :host {
     position: relative;
     display: inline-flex;
-    align-items: center;
+    flex-direction: column;
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
@@ -41,7 +41,16 @@ export const styles = css`
 
   :host([aria-selected='true']),
   :host([aria-selected='true'][disabled]) {
-    font-weight: ${fontWeightBold};
+    font-weight: ${fontWeightSemibold};
+  }
+
+  /* adds hidden textContent to prevent shifting ui on bold / unbolding of text */
+  :host::before {
+    content: var(--textContent);
+    font-weight: ${fontWeightSemibold};
+    height: 0;
+    line-height: ${lineHeightBase300};
+    visibility: hidden;
   }
 
   :host([aria-selected='true'])::after {
@@ -53,13 +62,13 @@ export const styles = css`
     z-index: 1;
   }
 
-  :host([aria-selected='false']:hover)::before {
+  :host([aria-selected='false']:hover)::after {
+    background-color: ${colorNeutralStroke1Hover};
     border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
     position: absolute;
     z-index: 1;
-    background-color: ${colorNeutralStroke1Hover};
   }
 
   :host([aria-selected='true'][disabled])::after {
@@ -82,7 +91,7 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]:hover)::before {
+  :host([disabled]:hover)::after {
     background-color: unset;
   }
 
