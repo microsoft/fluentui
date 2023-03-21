@@ -139,7 +139,7 @@ export const styles = css`
     position: absolute;
     border-radius: ${borderRadiusMedium};
     width: 100%;
-    inset: 0 -2px;
+    inset: 0 2px;
     background-image: repeating-linear-gradient(
       var(--slider-direction),
       #0000 0%,
