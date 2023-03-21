@@ -29,7 +29,7 @@ async function build() {
   // https://github.com/facebook/react/issues/13097
   const skippedPaths = ['react-portal'];
 
-  let rawStoriesGlobs = getPackageStoriesGlob({
+  const rawStoriesGlobs = getPackageStoriesGlob({
     packageName: '@fluentui/react-components',
     callerPath: __dirname,
   }).filter(
@@ -44,7 +44,6 @@ async function build() {
   ) as string[];
 
   rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
-  rawStoriesGlobs = rawStoriesGlobs.filter(x => x.includes('react-button'));
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
     .map(pattern => path.resolve(__dirname, pattern));
