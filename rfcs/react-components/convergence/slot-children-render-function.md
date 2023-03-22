@@ -7,7 +7,7 @@ _@bsunderhus @ling1726 @layershifter_
 ## TL;DR
 
 Slot children render function is a complex API that is not properly supported. To support this the best alternative so far,
-is to create a custom JSX pragma to ensure slot declaration will not lose any property
+is to create a custom [JSX pragma](https://www.gatsbyjs.com/blog/2019-08-02-what-is-jsx-pragma/) to ensure slot declaration will not lose any property
 and will be capable of properly rendering with children render function.
 
 ## Summary
