@@ -175,6 +175,21 @@ At `render` method after `getSlots` invocation we have all `slots` and `slotProp
 we'll also provide an override for `children`, taking precedence over External properties and also Internal properties.
 This will cause us to lose any children provided by a `render` function passed as a children.
 
+```js
+function renderComponent(state) {
+  const { slots, slotProps } = getSlots(state)
+
+  return <slots.root {...slotProps.root}>Foo</slots.root>
+}
+
+const template = renderComponent({ root: { children: 'Baz' }})
+
+template.props.children === 'Baz' // false
+template.props.children === 'Foo' // true
+
+// 💥 "Foo" wins over input passed by a user
+```
+
 ### Sum up
 
 At the moment the merging of the 3 instances of properties is done in 3 different steps:
