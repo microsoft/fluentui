@@ -35,23 +35,16 @@ export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProp
 export type FlatTree = {
     getTreeProps(): FlatTreeProps;
     navigate(data: TreeNavigationData_unstable): void;
-    getNextNavigableItem(data: TreeNavigationData_unstable): FlatTreeItem | null;
-    getItem(id: string): FlatTreeItem | null;
-    items(): Iterable<FlatTreeItem>;
+    getNextNavigableItem(visibleItems: FlatTreeItem[], data: TreeNavigationData_unstable): FlatTreeItem | undefined;
+    items(): IterableIterator<FlatTreeItem>;
 };
 
 // @public (undocumented)
-export type FlatTreeItem = {
-    getTreeItemProps(): Required<Pick<TreeItemProps, 'id' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'leaf'>> & TreeItemProps;
-    parentId?: string;
-    childrenSize: number;
-    index: number;
-    id: string;
-    level: number;
-};
+export type FlatTreeItem = Readonly<MutableFlatTreeItem>;
 
 // @public (undocumented)
-export type FlatTreeItemProps = Required<Pick<TreeItemProps, 'id'>> & TreeItemProps & {
+export type FlatTreeItemProps = TreeItemProps & {
+    id: TreeItemId;
     parentId?: string;
 };
 
@@ -100,7 +93,7 @@ export const TreeItem: ForwardRefComponent<TreeItemProps>;
 export const treeItemClassNames: SlotClassNames<TreeItemSlots>;
 
 // @public (undocumented)
-export type TreeItemId = string | number;
+export type TreeItemId = string;
 
 // @public
 export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps>;
@@ -265,7 +258,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public
-export function useFlatTree_unstable(items: FlatTreeItemProps[], options?: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>): FlatTree;
+export function useFlatTree_unstable(flatTreeItemProps: FlatTreeItemProps[], options?: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>): FlatTree;
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
