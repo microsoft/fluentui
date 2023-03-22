@@ -28,12 +28,12 @@ Fluent WC3 Text Input extends from the [FAST Text Field](https://explore.fast.de
 
 ### **Variables**
 
-| Name         | Description                          | Type                                                                                                             |
-| ------------ | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `size`       | Size variations for text input       | `{ small: "small", medium: "medium", large: "large" }`                                                           |
-| `appearance` | Appearance variations for text input | `{ outline: "outline", underline: "underline", filledLighter: "filled-lighter", filledDarker: "filled-darker" }` |
-| `type`       | Text input types                     | `{ email: "email", password: "password", tel: "tel", text: "text", url: "url" }`                                 |
-| `layout`     | Layout variations for text input     | `{ block: "block", inline: "inline"`                                                                             |
+| Name              | Description                          | Type                                                                                                             |
+| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `InputSize`       | Size variations for text input       | `{ small: "small", medium: "medium", large: "large" }`                                                           |
+| `InputAppearance` | Appearance variations for text input | `{ outline: "outline", underline: "underline", filledLighter: "filled-lighter", filledDarker: "filled-darker" }` |
+| `TextInputType`   | Text input types                     | `{ email: "email", password: "password", tel: "tel", text: "text", url: "url" }`                                 |
+| `InputLayout`     | Layout variations for text input     | `{ block: "block", inline: "inline"`                                                                             |
 
 <br />
 
