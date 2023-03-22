@@ -72,6 +72,9 @@ export const Palette: React.FC<PaletteProps> = props => {
                 backgroundColor: brandColor,
                 color: textColor,
               }}
+              onClick={() => {
+                navigator.clipboard.writeText(brandColor);
+              }}
             >
               <div className={`${styles.hexCopy} ${hexCopyClassName}`}>
                 <Text>{brandColor}</Text>
