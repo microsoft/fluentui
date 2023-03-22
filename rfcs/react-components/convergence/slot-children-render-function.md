@@ -98,6 +98,34 @@ any previous values that was passed either by Internal properties or External pr
 their children are normally referred to as `wrappers` since they're normally used for the case of
 wrapping other slots inside of them.
 
+#### What happens behind the scenes?
+
+```js
+function render() {
+  return (
+    <slots.button {...slotProps.button}>
+      {slotProps.root.children}
+    </slots.button>
+  );
+}
+```
+
+Code above will be compiled to following:
+
+```js
+function render() {
+  return React.createElement(
+    slots.button,
+    slotProps.button,
+    slotProps.root.children
+  );
+}
+```
+
+If `children` specified (third argument of `React.createElement()` i.e. `slotProps.root.children`) they will win over `props` (second argument i.e. `slotProps.button`)
+
+https://github.com/facebook/react/blob/c0b34bc5fb67fd689383b07ef9d8378814348cd5/packages/react/src/ReactElement.js#L404-L406
+
 ## Current issues
 
 [Slot children render function won't override existing children. #27089](https://github.com/microsoft/fluentui/issues/27089)
