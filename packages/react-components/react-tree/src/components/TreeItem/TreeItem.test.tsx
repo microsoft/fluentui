@@ -9,7 +9,6 @@ describe('TreeItem', () => {
   isConformant<TreeItemProps>({
     Component: TreeItem,
     displayName: 'TreeItem',
-    // primarySlot: 'groupper',
     getTargetElement(renderResult, attr) {
       return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
     },

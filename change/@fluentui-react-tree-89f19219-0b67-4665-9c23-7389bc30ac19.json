@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: improves internals mechanism to ensure memoization",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
