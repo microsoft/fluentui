@@ -10,7 +10,9 @@ Slot children render function is a complex API that is not properly supported. T
 is to create a custom [JSX pragma](https://www.gatsbyjs.com/blog/2019-08-02-what-is-jsx-pragma/) to ensure slot declaration will not lose any property
 and will be capable of properly rendering with children render function.
 
-## Summary
+## Background
+
+---
 
 By our [documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--page#replacing-the-entire-slot):
 
@@ -28,7 +30,7 @@ const renderBigLetterIcon (Component, props) => {
 <Button icon={{ children: renderBigLetterIcon }}>Bold</Button>;
 ```
 
-## Background
+---
 
 There are 3 instances of properties that will be provided to a slot in different phases of the slot creation:
 
@@ -102,11 +104,7 @@ wrapping other slots inside of them.
 
 ```js
 function render() {
-  return (
-    <slots.button {...slotProps.button}>
-      {slotProps.root.children}
-    </slots.button>
-  );
+  return <slots.button {...slotProps.button}>{slotProps.root.children}</slots.button>;
 }
 ```
 
@@ -114,11 +112,7 @@ Code above will be compiled to following:
 
 ```js
 function render() {
-  return React.createElement(
-    slots.button,
-    slotProps.button,
-    slotProps.root.children
-  );
+  return React.createElement(slots.button, slotProps.button, slotProps.root.children);
 }
 ```
 
@@ -185,12 +179,12 @@ There's no way to provide such the default declared `children` to the render fun
 ```js
 function useComponent(props) {
   return {
-    slot: resolveShorthand(props.slot, { children: 'foo' })
-  }
+    slot: resolveShorthand(props.slot, { children: 'foo' }),
+  };
 }
 
-const state = useComponent({ children: () => {} })
-typeof state.slot.children === 'function' // true
+const state = useComponent({ children: () => {} });
+typeof state.slot.children === 'function'; // true
 
 // 💥 We lost `defaultProps.children` i.e. `children: "foo"`
 ```
@@ -203,15 +197,15 @@ This will cause us to lose any children provided by a `render` function passed a
 
 ```js
 function renderComponent(state) {
-  const { slots, slotProps } = getSlots(state)
+  const { slots, slotProps } = getSlots(state);
 
-  return <slots.root {...slotProps.root}>Foo</slots.root>
+  return <slots.root {...slotProps.root}>Foo</slots.root>;
 }
 
-const template = renderComponent({ root: { children: 'Baz' }})
+const template = renderComponent({ root: { children: 'Baz' } });
 
-template.props.children === 'Baz' // false
-template.props.children === 'Foo' // true
+template.props.children === 'Baz'; // false
+template.props.children === 'Foo'; // true
 
 // 💥 "Foo" wins over input passed by a user
 ```
@@ -386,6 +380,16 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
 +   state.root.props.className,
   );
 
+  if (state.icon) {
+-    state.icon.className = mergeClasses(
++    state.icon.props.className = mergeClasses(
+      accordionHeaderClassNames.icon,
+      styles.icon,
+-      state.icon.className
++      state.icon.props.className
+    );
+  }
+
   return state;
 };
 ```
@@ -407,6 +411,16 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
 -   state.root.className,
 +   state.root.props.className,
   );
+
+    if (state.icon) {
+-    state.icon.className = mergeClasses(
++    state.overrides.icon.className = mergeClasses(
+      accordionHeaderClassNames.icon,
+      styles.icon,
+-      state.icon.className
++      state.icon.props.className
+    );
+  }
 
   return state;
 };
@@ -439,18 +453,36 @@ Before:
 -export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
 +export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState): AccordionHeaderStyles => {
   const styles = useStyles();
-+ return {
 - state.root.className = mergeClasses(
-+   root: mergeClasses(
-      accordionHeaderClassNames.root,
-      styles.root,
-      state.inline && styles.rootInline,
-      state.disabled && styles.rootDisabled,
--     state.root.className,
-+     state.root.props.className,
-    );
-+ }
+-   accordionHeaderClassNames.root,
+-   styles.root,
+-   state.inline && styles.rootInline,
+-   state.disabled && styles.rootDisabled,
+-   state.root.className,
+- );
+
+- if (state.icon) {
+-    state.icon.className = mergeClasses(
+-     accordionHeaderClassNames.icon,
+-     styles.icon,
+-      state.icon.className
+-   );
+- }
 - return state;
++ return {
++   root: mergeClasses(
++     accordionHeaderClassNames.root,
++     styles.root,
++     state.inline && styles.rootInline,
++     state.disabled && styles.rootDisabled,
++     state.root.props.className,
++   );
++   icon: state.icon && mergeClasses(
++     accordionHeaderClassNames.icon,
++     styles.icon,
++     state.icon.props.className
++   )
++ }
 };
 
 // AccordionHeader
@@ -667,7 +699,7 @@ https://codesandbox.io/s/wispy-leftpad-f8yi37?file=/example.tsx.
 
 1. Requires extra build step
 
-### Option D: Option A + Option C
+### Option D: Option A (partially) + Option C
 
 Taking the strategy provided on Option C to hide required data with `Symbol` inside the result value of `resolveShorthand`
 and applying it to not only move forward the `defaultProps.children` (from Option C) but also `componentType` (from Option A)
@@ -693,10 +725,11 @@ export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
 
 1. Simple to use
 2. Reduces codebase size (`getSlots` invocations can be stripped)
-3. No iteration over `state.components` is required to define slots (the slots used are the slots being processed)
-4. Will simplify the whole underlying architecture
-5. No Breaking changes, the consumers will not have any impact (besides allowing the children render function to work properly)
-6. couples together `state.components` with the slot itself
+3. `state.components` can be stripped
+4. No iteration over `state.components` is required to define slots (the slots used are the slots being processed)
+5. Will simplify the whole underlying architecture
+6. No Breaking changes, the consumers will not have any impact (besides allowing the children render function to work properly)
+7. couples together `state.components` with the slot itself
 
 ##### Cons
 
