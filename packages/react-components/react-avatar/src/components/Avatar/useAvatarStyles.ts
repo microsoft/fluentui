@@ -193,21 +193,6 @@ const useStyles = makeStyles({
     },
   },
 
-  'badgeBorderClip-16': { clipPath: badgeBorderClip(16) },
-  'badgeBorderClip-20': { clipPath: badgeBorderClip(20) },
-  'badgeBorderClip-24': { clipPath: badgeBorderClip(24) },
-  'badgeBorderClip-28': { clipPath: badgeBorderClip(28) },
-  'badgeBorderClip-32': { clipPath: badgeBorderClip(32) },
-  'badgeBorderClip-36': { clipPath: badgeBorderClip(36) },
-  'badgeBorderClip-40': { clipPath: badgeBorderClip(40) },
-  'badgeBorderClip-48': { clipPath: badgeBorderClip(48) },
-  'badgeBorderClip-56': { clipPath: badgeBorderClip(56) },
-  'badgeBorderClip-64': { clipPath: badgeBorderClip(64) },
-  'badgeBorderClip-72': { clipPath: badgeBorderClip(72) },
-  'badgeBorderClip-96': { clipPath: badgeBorderClip(96) },
-  'badgeBorderClip-120': { clipPath: badgeBorderClip(120) },
-  'badgeBorderClip-128': { clipPath: badgeBorderClip(128) },
-
   badge: {
     position: 'absolute',
     bottom: 0,
@@ -221,6 +206,23 @@ const useStyles = makeStyles({
   icon28: { fontSize: '28px' },
   icon32: { fontSize: '32px' },
   icon48: { fontSize: '48px' },
+});
+
+export const useBadgeBorderClipStyles = makeStyles({
+  16: { clipPath: badgeBorderClip(16) },
+  20: { clipPath: badgeBorderClip(20) },
+  24: { clipPath: badgeBorderClip(24) },
+  28: { clipPath: badgeBorderClip(28) },
+  32: { clipPath: badgeBorderClip(32) },
+  36: { clipPath: badgeBorderClip(36) },
+  40: { clipPath: badgeBorderClip(40) },
+  48: { clipPath: badgeBorderClip(48) },
+  56: { clipPath: badgeBorderClip(56) },
+  64: { clipPath: badgeBorderClip(64) },
+  72: { clipPath: badgeBorderClip(72) },
+  96: { clipPath: badgeBorderClip(96) },
+  120: { clipPath: badgeBorderClip(120) },
+  128: { clipPath: badgeBorderClip(128) },
 });
 
 export const useSizeStyles = makeStyles({
@@ -412,6 +414,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const iconInitialsClassName = useIconInitialsClassName();
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
+  const badgeBorderClipStyles = useBadgeBorderClipStyles();
   const colorStyles = useColorStyles();
 
   const rootClasses = [rootClassName, size !== 32 && sizeStyles[size], colorStyles[color]];
@@ -476,7 +479,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   }
 
   if (state.badge) {
-    rootClasses.push(styles[`badgeBorderClip-${size}`]);
+    rootClasses.push(badgeBorderClipStyles[size]);
   }
 
   state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
