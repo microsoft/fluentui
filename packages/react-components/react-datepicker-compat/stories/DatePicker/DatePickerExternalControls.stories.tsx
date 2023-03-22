@@ -33,7 +33,7 @@ export const ExternalControls = () => {
         value={selectedDate}
         onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
         placeholder="Select a date..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
       />

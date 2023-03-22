@@ -37,7 +37,7 @@ export const TextInput = () => {
         componentRef={datePickerRef}
         label="Start date"
         allowTextInput
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         value={value}
         onSelectDate={setValue as (date: Date | null | undefined) => void}
         // DatePicker uses English strings by default. For localized apps, you must override this prop.

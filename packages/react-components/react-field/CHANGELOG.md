@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Mon, 13 Mar 2023 08:58:26 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.27)
+
+Tue, 21 Mar 2023 21:23:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.26..@fluentui/react-field_v9.0.0-alpha.27)
+
+### Changes
+
+- chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-context-selector to v9.1.15 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-label to v9.1.5 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-theme to v9.1.7 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-utilities to v9.7.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.20 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.26)
+
+Thu, 16 Mar 2023 14:36:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.25..@fluentui/react-field_v9.0.0-alpha.26)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.14 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-label to v9.1.4 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+- Bump @fluentui/react-utilities to v9.7.1 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+
+## [9.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.25)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.24..@fluentui/react-field_v9.0.0-alpha.25)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.3 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
 
 ## [9.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.24)
 
