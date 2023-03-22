@@ -66,9 +66,7 @@ export const useThemeDesignerReducer = () => {
   const [overrideState, dispatchOverrideState] = React.useReducer(overrideReducer, initialOverrideState);
 
   const appStateReducer = (state: AppState, action: DispatchTheme): AppState => {
-    // console.log(`action: ${JSON.stringify(action)}`);
-
-    console.log(`action type: ${action.type}`);
+    // console.log(`action type: ${action.type}`);
 
     // check if isDark is changed
     if (action.type === 'isDark' && typeof action.isDark !== 'undefined') {
@@ -114,9 +112,6 @@ export const useThemeDesignerReducer = () => {
       dispatchOverrideState({ type: themeName + 'Light' });
       dispatchOverrideState({ type: themeName + 'Dark' });
     }
-
-    console.log(`initial app state`);
-    console.log(initialAppState);
 
     return {
       themeName,
