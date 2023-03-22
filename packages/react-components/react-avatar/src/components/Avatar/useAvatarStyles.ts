@@ -1,7 +1,8 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { AvatarSize, AvatarSlots, AvatarState } from './Avatar.types';
+import { getBadgeSize } from './useAvatar';
 
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   root: 'fui-Avatar',
@@ -21,6 +22,24 @@ const animations = {
   fastEase: tokens.curveEasyEaseMax,
   normalEase: tokens.curveEasyEase,
   nullEasing: tokens.curveLinear,
+};
+
+const badgeBorderClip = (size: AvatarSize) => {
+  const radius = getBadgeSize(size).value / 2;
+  const width = size >= 64 ? /*tokens.strokeWidthThick =*/ 2 : /*tokens.strokeWidthThin =*/ 1;
+
+  // This path will clip out ONLY the outline around the badge.
+  // It is a large square with a donut punched out that surrounds the badge.
+  return (
+    'path("' +
+    // A box that has a {size} margin around the avatar. The margin is to avoid clipping the ring and/or shadow.
+    `M -${size},-${size} H ${2 * size} V ${2 * size} H -${size} V -${size} ` +
+    // A circle that is the size of the badge.
+    `M ${size},${size - radius} a ${radius} ${radius} 0 1 0 0,0.1 ` +
+    // A circle that is bigger than the badge by the width of the line.
+    `m ${width},0 a ${radius + width} ${radius + width} 0 1 0 0,0.1 ` +
+    'Z")'
+  );
 };
 
 const useRootClassName = makeResetStyles({
@@ -174,15 +193,25 @@ const useStyles = makeStyles({
     },
   },
 
+  'badgeBorderClip-16': { clipPath: badgeBorderClip(16) },
+  'badgeBorderClip-20': { clipPath: badgeBorderClip(20) },
+  'badgeBorderClip-24': { clipPath: badgeBorderClip(24) },
+  'badgeBorderClip-28': { clipPath: badgeBorderClip(28) },
+  'badgeBorderClip-32': { clipPath: badgeBorderClip(32) },
+  'badgeBorderClip-36': { clipPath: badgeBorderClip(36) },
+  'badgeBorderClip-40': { clipPath: badgeBorderClip(40) },
+  'badgeBorderClip-48': { clipPath: badgeBorderClip(48) },
+  'badgeBorderClip-56': { clipPath: badgeBorderClip(56) },
+  'badgeBorderClip-64': { clipPath: badgeBorderClip(64) },
+  'badgeBorderClip-72': { clipPath: badgeBorderClip(72) },
+  'badgeBorderClip-96': { clipPath: badgeBorderClip(96) },
+  'badgeBorderClip-120': { clipPath: badgeBorderClip(120) },
+  'badgeBorderClip-128': { clipPath: badgeBorderClip(128) },
+
   badge: {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralBackground1}`,
-  },
-
-  badgeLarge: {
-    boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground1}`,
   },
 
   icon12: { fontSize: '12px' },
@@ -446,15 +475,14 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
     }
   }
 
+  if (state.badge) {
+    rootClasses.push(styles[`badgeBorderClip-${size}`]);
+  }
+
   state.root.className = mergeClasses(avatarClassNames.root, ...rootClasses, state.root.className);
 
   if (state.badge) {
-    state.badge.className = mergeClasses(
-      avatarClassNames.badge,
-      styles.badge,
-      size >= 64 && styles.badgeLarge,
-      state.badge.className,
-    );
+    state.badge.className = mergeClasses(avatarClassNames.badge, styles.badge, state.badge.className);
   }
 
   if (state.image) {

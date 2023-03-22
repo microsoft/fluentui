@@ -88,7 +88,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
 
   const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
     defaultProps: {
-      size: getBadgeSize(size),
+      size: getBadgeSize(size).name,
       id: baseId + '__badge',
     },
   });
@@ -152,19 +152,19 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   };
 };
 
-const getBadgeSize = (size: AvatarState['size']) => {
+export const getBadgeSize = (size: AvatarState['size']) => {
   if (size >= 96) {
-    return 'extra-large';
+    return { name: 'extra-large', value: 28 } as const;
   } else if (size >= 64) {
-    return 'large';
+    return { name: 'large', value: 20 } as const;
   } else if (size >= 56) {
-    return 'medium';
+    return { name: 'medium', value: 16 } as const;
   } else if (size >= 40) {
-    return 'small';
+    return { name: 'small', value: 12 } as const;
   } else if (size >= 28) {
-    return 'extra-small';
+    return { name: 'extra-small', value: 10 } as const;
   } else {
-    return 'tiny';
+    return { name: 'tiny', value: 6 } as const;
   }
 };
 
