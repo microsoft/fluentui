@@ -10,7 +10,7 @@ import {
   SquareMultiple20Regular,
 } from '@fluentui/react-icons';
 import { Button, CounterBadge, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import story from './TreeLayout.md';
+import story from './TreeItemLayout.md';
 
 const iconStyleProps: FluentIconsProps = {
   primaryFill: 'red',

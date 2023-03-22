@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemPersonaLayout } from '@fluentui/react-tree';
 
-export const Default = () => {
+export const DefaultTreeItemPersonaLayout = () => {
   return (
     <Tree aria-label="Tree">
       <TreeItem>

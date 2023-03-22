@@ -1,13 +1,24 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
-import { CheckboxChecked20Filled, CheckboxUnchecked20Filled } from '@fluentui/react-icons';
-import story from './TreeIconBefore.md';
+import {
+  Tree,
+  TreeItem as BaseTreeItem,
+  TreeItemLayout,
+  treeItemLevelToken,
+  TreeItemProps,
+  useTreeContext_unstable,
+} from '@fluentui/react-tree';
+import story from './TreeItemWithInlineStyle.md';
 
-export const IconBefore = () => {
+const TreeItem = (props: TreeItemProps) => {
+  const level = useTreeContext_unstable(ctx => ctx.level);
+  return <BaseTreeItem {...props} style={{ [treeItemLevelToken]: level }} />;
+};
+
+export const WithInlineStyle = () => {
   return (
     <Tree aria-label="Tree">
       <TreeItem>
-        <TreeItemLayout iconBefore={<CheckboxUnchecked20Filled />}>level 1, item 1</TreeItemLayout>
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
           <TreeItem>
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -21,10 +32,10 @@ export const IconBefore = () => {
         </Tree>
       </TreeItem>
       <TreeItem>
-        <TreeItemLayout iconBefore={<CheckboxChecked20Filled />}>level 1, item 2</TreeItemLayout>
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
           <TreeItem>
-            level 2, item 1
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
               <TreeItem>
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
@@ -37,7 +48,7 @@ export const IconBefore = () => {
   );
 };
 
-IconBefore.parameters = {
+WithInlineStyle.parameters = {
   docs: {
     description: {
       story,
