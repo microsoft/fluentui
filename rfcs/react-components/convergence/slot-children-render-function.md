@@ -156,6 +156,19 @@ as the name suggests is all the properties provided by the `resolveShorthand` in
 Since we lost the Internal properties on the merging between it and the External ones
 There's no way to provide such the default declared `children` to the render function!
 
+```js
+function useComponent(props) {
+  return {
+    slot: resolveShorthand(props.slot, { children: 'foo' })
+  }
+}
+
+const state = useComponent({ children: () => {} })
+typeof state.slot.children === 'function' // true
+
+// 💥 We lost `defaultProps.children` i.e. `children: "foo"`
+```
+
 ### Problem 2
 
 At `render` method after `getSlots` invocation we have all `slots` and `slotProps` well defined. For the case of wrappers
