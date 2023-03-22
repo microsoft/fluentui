@@ -14,6 +14,7 @@ import {
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
   colorNeutralStrokeDisabled,
+  colorStrokeFocus1,
   colorStrokeFocus2,
 } from '../theme/design-tokens.js';
 
@@ -61,8 +62,8 @@ export const styles = css`
   }
 
   :host(:focus-visible) {
-    outline-offset: 4px;
-    outline: 2px solid ${colorStrokeFocus2};
+    box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
   }
 
   .thumb-cursor:focus {
@@ -116,6 +117,7 @@ export const styles = css`
     position: relative;
     display: grid;
   }
+
   :host([orientation='horizontal']) .positioning-region {
     margin: 0 8px;
     grid-template-rows: var(--thumb-size) var(--thumb-size);
@@ -132,6 +134,7 @@ export const styles = css`
     position: absolute;
     background-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusMedium};
+    overflow: hidden;
   }
 
   :host([step]) .track::after {
