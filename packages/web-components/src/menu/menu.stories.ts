@@ -140,7 +140,6 @@ const storyTemplate = html<MenuStoryArgs>`
           <span slot="start">${Code20Filled}</span>
         </fluent-menu-item>
       </fluent-menu>
-      <span slot="end">Ctrl+N</span>
     </fluent-menu-item>
     </fluent-menu>
   </div>

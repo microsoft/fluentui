@@ -46,8 +46,6 @@ export const styles = css`
   }
 
   :host(:hover) {
-    position: relative;
-    z-index: 1;
     background: ${colorNeutralBackground1Hover};
   }
 
@@ -64,12 +62,12 @@ export const styles = css`
     display: none;
   }
 
+  .input-container,
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']),
   :host([checked]) .checkbox,
-  :host([checked]) .radio,
-  .input-container {
+  :host([checked]) .radio {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -79,9 +77,9 @@ export const styles = css`
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
-    width: fit-content;
     height: 32px;
     font-size: ${fontSizeBase500};
+    width: fit-content;
   }
 
   .input-container {
@@ -89,7 +87,6 @@ export const styles = css`
   }
 
   ::slotted([slot='end']) {
-    width: fit-content;
     color: ${colorNeutralForeground3};
     font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     white-space: nowrap;
@@ -102,22 +99,23 @@ export const styles = css`
     justify-self: flex-end;
   }
 
+  :host(:hover) .input-container,
   :host(:hover) .expand-collapse-glyph-container,
-  :host(:hover) .content,
-  :host(:hover) .input-container {
+  :host(:hover) .content {
     color: ${colorNeutralForeground2Hover};
   }
 
   :host([icon]:hover) ::slotted([slot='start']) {
     color: ${colorCompoundBrandForeground1Hover};
   }
+
   :host(:active) {
     background-color: ${colorNeutralBackground1Selected};
   }
 
+  :host(:active) .input-container,
   :host(:active) .expand-collapse-glyph-container,
-  :host(:active) .content,
-  :host(:active) .input-container {
+  :host(:active) .content {
     color: ${colorNeutralForeground2Pressed};
   }
 
@@ -127,13 +125,6 @@ export const styles = css`
 
   :host([disabled]) {
     background-color: ${colorNeutralBackgroundDisabled};
-  }
-
-  :host([disabled]) .expand-collapse-glyph-container,
-  :host([disabled]) .input-container,
-  :host([disabled]) ::slotted([slot='start']),
-  :host([disabled]) ::slotted([slot='end']),
-  :host([disabled]) .content {
     color: ${colorNeutralForegroundDisabled};
   }
 
