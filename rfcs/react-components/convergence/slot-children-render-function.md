@@ -68,8 +68,6 @@ const buttonShorthand = useARIAButtonShorthand(props.button, {
   required: true,
   // internal properties
   defaultProps: {
-    disabled,
-    disabledFocusable,
     'aria-expanded': open,
     type: 'button',
   },
