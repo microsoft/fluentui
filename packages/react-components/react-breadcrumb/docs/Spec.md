@@ -82,18 +82,18 @@ By default BreadcrumbButton should be used.
 ```jsx
 const BreadcrumbV9Example = props => (
   <Breadcrumb aria-label="breadcrumb">
-    <BreadcrumbItem onClick={() => {}}>
-      <BreadcrumbButton>
+    <BreadcrumbItem>
+      <BreadcrumbButton onClick={() => {}}>
         Home
       </BreadcrumbButton>
     </BreadcrumbItem>
-    <BreadcrumbItem onClick={() => {}}>
-      <BreadcrumbButton>
+    <BreadcrumbItem>
+      <BreadcrumbButton onClick={() => {}}>
         Gallery
       </BreadcrumbButton>
     </BreadcrumbItem>
-    <BreadcrumbItem onClick={() => {}}>
-      <BreadcrumbButton>
+    <BreadcrumbItem>
+      <BreadcrumbButton onClick={() => {}}>
         About
       </BreadcrumbButton>
     </BreadcrumbItem>
