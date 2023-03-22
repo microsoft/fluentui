@@ -14,7 +14,6 @@ import { useTreeItemContextValues_unstable } from './useTreeItemContextValues';
  *
  * When a TreeItem has child items, an expand/collapse control is displayed,
  * allowing the user to show or hide the children.
- * This provides a convenient way to navigate hierarchical data, such as a file system or a category tree.
  */
 export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((props, ref) => {
   const state = useTreeItem_unstable(props, ref);
