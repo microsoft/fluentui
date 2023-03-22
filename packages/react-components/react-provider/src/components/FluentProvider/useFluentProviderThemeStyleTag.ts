@@ -43,7 +43,7 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
 
 /**
  * Writes a theme as css variables in a style tag on the provided targetDocument as a rule applied to a CSS class
- *
+ * @internal
  * @returns CSS class to apply the rule
  */
 export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {

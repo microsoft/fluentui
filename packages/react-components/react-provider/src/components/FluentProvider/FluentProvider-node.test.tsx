@@ -80,7 +80,7 @@ describe('FluentProvider (node)', () => {
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
-        <style data-fui-theme="" id="fui-FluentProvider1" nonce="random">
+        <style nonce="random" data-fui-theme="" id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
             --colorNeutralBackground1: white;

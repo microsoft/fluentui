@@ -10,7 +10,7 @@ import type {
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
 
-import { canUseDOM, getNativeElementProps, resolveShorthand, Slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
@@ -86,7 +86,6 @@ export const useFluentProvider_unstable = (
 
     components: {
       root: 'div',
-      serverStyle: 'style',
     },
 
     root: getNativeElementProps('div', {
@@ -95,18 +94,14 @@ export const useFluentProvider_unstable = (
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
     }),
 
-    serverStyle: resolveShorthand<React.HTMLAttributes<HTMLElement> & { 'data-fui-theme'?: '' }>(
-      undefined as undefined | Slot<'style'>,
-      {
-        required: !canUseDOM(),
-        defaultProps: {
-          [FUI_THEME_STYLE_ATTR]: '',
-          id: styleTagId,
-          dangerouslySetInnerHTML: { __html: rule },
-          ...renderer.styleElementAttributes,
-        },
+    serverStyleProps: {
+      cssRule: rule,
+      rendererAttributes: {
+        ...renderer.styleElementAttributes,
+        [FUI_THEME_STYLE_ATTR]: '',
+        id: styleTagId,
       },
-    ),
+    },
   };
 };
 
