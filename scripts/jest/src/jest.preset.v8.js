@@ -78,6 +78,8 @@ const createConfig = (customConfig = {}) => {
       url: 'http://localhost',
     },
     testEnvironment: 'jsdom',
+    restoreMocks: true,
+    clearMocks: true,
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   };
