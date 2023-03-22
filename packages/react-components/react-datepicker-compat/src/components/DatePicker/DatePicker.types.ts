@@ -171,11 +171,6 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   borderless?: boolean;
 
   /**
-   * Optional CSS class for the DatePicker root element.
-   */
-  className?: string;
-
-  /**
    * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: DateFormatting;

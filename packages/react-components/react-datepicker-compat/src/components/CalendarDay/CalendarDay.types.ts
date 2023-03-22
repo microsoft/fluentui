@@ -106,8 +106,6 @@ export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
    */
   className?: string;
 
-  // Insert CalendarDay style props below
-
   /**
    * Whether the header is clickable
    */

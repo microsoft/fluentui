@@ -66,7 +66,7 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
   today?: Date;
 
   /**
-   * The date range type indicating how  many days should be selected as the user
+   * The date range type indicating how many days should be selected as the user
    * selects days
    * @defaultValue DateRangeType.Day
    */
