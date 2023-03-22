@@ -56,7 +56,7 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
 
 ### Internal properties
 
-Internal properties (`defaultProps`) are the properties provided by the `useState` hook, that should be overridden by
+Internal properties (`defaultProps`) are the properties provided by the `use_COMPONENT_` hook, that should be overridden by
 External properties, those are the basic properties that ensure proper functioning of a slot but allowing the user
 to opt out of them.
 
