@@ -164,26 +164,24 @@ export const styles = css`
     transform-origin: left;
     transform: translateX(var(${TabTokenNames.tabIndicatorOffset})) scaleX(var(${TabTokenNames.tabIndicatorScale}));
   }
+  /* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
+  :host ::slotted(fluent-tab)::before {
+    height: ${strokeWidthThicker};
+    border-radius: ${borderRadiusCircular};
+    content: '';
+    inset: 0;
+    position: absolute;
+    margin-top: auto;
+  }
+
   :host([orientation='horizontal']) ::slotted(fluent-tab[aria-selected='false']:hover)::after {
     height: ${strokeWidthThicker};
     margin-top: auto;
     transform-origin: left;
   }
 
-  /* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
-  :host ::slotted(fluent-tab)::before {
-    border-radius: ${borderRadiusCircular};
-    content: '';
-    inset: 0;
-    position: absolute;
-    margin-top: auto;
-    z-index: 0;
-  }
   :host ::slotted(fluent-tab[aria-selected='true'])::before {
     background-color: ${colorNeutralForegroundDisabled};
-  }
-  :host ::slotted(fluent-tab)::before {
-    height: ${strokeWidthThicker};
   }
   :host([orientation='vertical']) ::slotted(fluent-tab)::before {
     height: unset;
