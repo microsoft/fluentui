@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Add12Regular, Subtract12Regular } from '@fluentui/react-icons';
 import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/Tree';
-import story from './TreeExpandIcon.md';
+import story from './TreeItemExpandIcon.md';
 
 export const ExpandIcon = () => {
   const [openItems, setOpenItems] = React.useState<string[]>([]);

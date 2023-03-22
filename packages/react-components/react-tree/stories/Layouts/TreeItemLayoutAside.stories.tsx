@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Button, CounterBadge } from '@fluentui/react-components';
 import { Edit20Regular, FluentIconsProps, Important16Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
-import story from './TreeAside.md';
+import story from './TreeItemLayoutAside.md';
 
 const iconStyleProps: FluentIconsProps = {
   primaryFill: 'red',
