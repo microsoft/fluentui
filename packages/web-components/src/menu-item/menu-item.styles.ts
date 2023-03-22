@@ -141,59 +141,54 @@ export const styles = css`
     border-color: ${colorNeutralStrokeDisabled};
   }
 
-  :host([icon]),
-  :host([checkmark]) {
+  :host([data-indent]) {
     display: grid;
   }
 
-  :host([icon]) .content {
+  :host([data-indent='1']) .content {
     grid-column: 2 / span 1;
   }
 
-  :host([checkmark][role='menuitemcheckbox']) {
+  :host([data-indent='1'][role='menuitemcheckbox']) {
     display: grid;
   }
 
-  :host([checkmark][icon][aria-haspopup='menu']) ::slotted([slot='end']) {
+  :host([data-indent='2'][aria-haspopup='menu']) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
   }
 
-  :host([checkmark][icon][aria-haspopup='menu']) .expand-collapse-glyph-container {
+  :host([data-indent='2'][aria-haspopup='menu']) .expand-collapse-glyph-container {
     grid-column: 5 / span 1;
   }
 
-  :host([checkmark]) .content {
+  :host([data-indent='1']) .content {
     grid-column: 2 / span 1;
   }
 
-  :host([checkmark][role='menuitemcheckbox']) .content,
-  :host([checkmark][role='menuitemradio']) .content {
+  :host([data-indent='1'][role='menuitemcheckbox']) .content,
+  :host([data-indent='1'][role='menuitemradio']) .content {
     grid-column: auto / span 1;
   }
 
-  :host([icon]) ::slotted([slot='end']) :host([checkmark]) ::slotted([slot='end']) {
+  :host([icon]) ::slotted([slot='end']) :host([data-indent='1']) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
     justify-self: flex-end;
   }
 
-  :host([checkmark][icon]),
-  :host([checkmark][icon]) {
+  :host([data-indent='2']) {
     display: grid;
     grid-template-columns: 20px 20px auto auto;
   }
 
-  :host([checkmark][icon]) .content,
-  :host([role='menuitemcheckbox'][icon]) .content,
-  :host([role='menuitemradio'][icon]) .content {
+  :host([data-indent='2']) .content {
     grid-column: 3 / span 1;
   }
 
-  :host([checkmark][icon]) .input-container {
+  :host([data-indent='2']) .input-container {
     grid-column: 1 / span 1;
   }
 
-  :host([checkmark][icon]) ::slotted([slot='start']),
-  :host([checkbox][icon]) ::slotted([slot='start']) {
+  :host([data-indent='2']) ::slotted([slot='start']) {
     grid-column: 2 / span 1;
   }
 
@@ -201,8 +196,8 @@ export const styles = css`
     grid-template-columns: 20px auto auto 20px;
   }
 
-  :host([aria-haspopup='menu']) .content {
-    grid-column: auto / span 1;
+  :host([data-indent='2'][aria-haspopup='menu']) {
+    grid-template-columns: 20px 20px auto auto 20px;
   }
 
   :host([aria-haspopup='menu']) ::slotted([slot='end']) {
@@ -210,12 +205,8 @@ export const styles = css`
     justify-self: flex-end;
   }
 
-  :host([aria-haspopup='menu'][icon]) .content,
-  :host([aria-haspopup='menu'][checkmark]) .content {
-    grid-column: 2 / span 1;
-  }
-
-  :host([aria-haspopup='menu'][checkmark][icon]) .content {
-    grid-column: 3 / span 1;
+  :host([data-indent='2'][aria-haspopup='menu']) ::slotted([slot='end']) {
+    grid-column: 4 / span 1;
+    justify-self: flex-end;
   }
 `;
