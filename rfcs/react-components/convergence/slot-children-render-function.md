@@ -4,6 +4,53 @@
 
 _@bsunderhus @ling1726 @layershifter_
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+- [RFC: Slot children render function](#rfc-slot-children-render-function)
+  - [TL;DR](#tldr)
+  - [Background](#background)
+    - [External properties](#external-properties)
+    - [Internal properties](#internal-properties)
+    - [Overrides](#overrides)
+      - [What happens behind the scenes?](#what-happens-behind-the-scenes)
+  - [Current issues](#current-issues)
+  - [Problem statement](#problem-statement)
+    - [Problem 1](#problem-1)
+    - [Problem 2](#problem-2)
+    - [Sum up](#sum-up)
+  - [Detailed Design or Proposal](#detailed-design-or-proposal)
+    - [Option A: Custom JSX Pragma](#option-a-custom-jsx-pragma)
+      - [slot method over resolveShorthand](#slot-method-over-resolveshorthand)
+      - [render methods](#render-methods)
+      - [Types](#types)
+        - [Introduction of the `SlotComponent` type.](#introduction-of-the-slotcomponent-type)
+        - [ComponentState](#componentstate)
+      - [Styles hooks](#styles-hooks)
+        - [Option 1 mutate external properties](#option-1-mutate-external-properties)
+        - [Option 2 mutate overrides](#option-2-mutate-overrides)
+        - [Option 3 stop mutating](#option-3-stop-mutating)
+      - [Passing overrides from state to render](#passing-overrides-from-state-to-render)
+      - [Custom Pragma implementation](#custom-pragma-implementation)
+      - [Pros and Cons](#pros-and-cons)
+        - [Pros](#pros)
+        - [Cons](#cons)
+    - [Option B: Refactor getSlots + helper method](#option-b-refactor-getslots--helper-method)
+      - [Pros and Cons](#pros-and-cons-1)
+        - [Pros](#pros-1)
+        - [Cons](#cons-1)
+    - [Option C: Custom JSX Pragma without internal changes](#option-c-custom-jsx-pragma-without-internal-changes)
+      - [Pros and Cons](#pros-and-cons-2)
+        - [Pros](#pros-2)
+        - [Cons](#cons-2)
+    - [Option D: Option A (partially) + Option C](#option-d-option-a-partially--option-c)
+      - [Pros](#pros-3)
+      - [Cons](#cons-3)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## TL;DR
 
 Slot children render function is a complex API that is not properly supported. To support this the best alternative so far,
