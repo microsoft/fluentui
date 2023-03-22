@@ -35,7 +35,7 @@ export const Default = (props: Partial<DatePickerProps>) => {
       <DatePicker
         firstDayOfWeek={firstDayOfWeek}
         placeholder="Select a date..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
         {...props}
