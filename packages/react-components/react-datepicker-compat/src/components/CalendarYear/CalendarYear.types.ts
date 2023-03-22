@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 /**
@@ -66,11 +65,6 @@ export interface CalendarYearProps {
    * @param year - The year the user selected
    */
   onSelectYear?: (year: number) => void;
-
-  /**
-   * Custom navigation icons.
-   */
-  navigationIcons?: CalendarNavigationIcons;
 
   /**
    * Callback action when the header is selected

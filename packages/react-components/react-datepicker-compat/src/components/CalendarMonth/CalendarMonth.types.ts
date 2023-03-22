@@ -2,7 +2,6 @@ import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { Slot } from '@fluentui/react-utilities';
 import type { CalendarStrings, DateFormatting } from '../../utils';
-import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 export type CalendarMonthSlots = {
@@ -56,11 +55,6 @@ export interface CalendarMonthProps {
    * @param focusOnNavigatedDay - Whether to set the focus to the navigated date.
    */
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
-
-  /**
-   * Custom navigation icons.
-   */
-  navigationIcons?: CalendarNavigationIcons;
 
   /**
    * Value of today. If unspecified, current time in client machine will be used.

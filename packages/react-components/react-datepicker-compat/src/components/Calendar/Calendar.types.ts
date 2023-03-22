@@ -119,11 +119,6 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
   strings?: CalendarStrings;
 
   /**
-   * Custom navigation icons.
-   */
-  navigationIcons?: CalendarNavigationIcons;
-
-  /**
    * Apply additional formatting to dates, for example localized date formatting.
    */
   dateTimeFormatter?: DateFormatting;
@@ -179,29 +174,6 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
    * @defaultvalue false
    */
   allFocusable?: boolean;
-}
-
-/**
- * {@docCategory Calendar}
- */
-export interface CalendarNavigationIcons {
-  /**
-   * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
-   * @defaultvalue  'Up'
-   */
-  leftNavigation?: string;
-
-  /**
-   * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
-   * @defaultvalue  'Down'
-   */
-  rightNavigation?: string;
-
-  /**
-   * Close icon
-   * @defaultvalue  'CalculatorMultiply'
-   */
-  closeIcon?: string;
 }
 
 /**

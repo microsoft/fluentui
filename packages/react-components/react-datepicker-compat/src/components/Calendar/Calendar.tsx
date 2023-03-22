@@ -15,7 +15,6 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { defaultCalendarNavigationIcons } from './defaults';
 import { useCalendarStyles_unstable } from './useCalendarStyles';
 import type { ICalendarDay } from '../CalendarDay/CalendarDay.types';
 import type { ICalendarMonth } from '../CalendarMonth/CalendarMonth.types';
@@ -150,7 +149,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       isMonthPickerVisible: isMonthPickerVisibleProp = true,
       maxDate,
       minDate,
-      navigationIcons = defaultCalendarNavigationIcons,
       onDismiss,
       onSelectDate,
       restrictedDates,
@@ -349,7 +347,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
             strings={strings!}
             // eslint-disable-next-line react/jsx-no-bind
             onHeaderSelect={onHeaderSelect}
-            navigationIcons={navigationIcons!}
             showWeekNumbers={showWeekNumbers}
             firstWeekOfYear={firstWeekOfYear!}
             dateTimeFormatter={dateTimeFormatter!}
@@ -378,7 +375,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
               highlightSelectedMonth={highlightSelectedMonth!}
               // eslint-disable-next-line react/jsx-no-bind
               onHeaderSelect={onHeaderSelect}
-              navigationIcons={navigationIcons!}
               dateTimeFormatter={dateTimeFormatter!}
               minDate={minDate}
               maxDate={maxDate}

@@ -36,19 +36,10 @@ export enum AnimationDirection {
 }
 
 // @public (undocumented)
-export const Calendar: React_2.FunctionComponent<CalendarProps>;
-
-// @public (undocumented)
 export const calendarClassNames: SlotClassNames<CalendarStyles>;
 
 // @public (undocumented)
-export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
-
-// @public (undocumented)
 export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
-
-// @public (undocumented)
-export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
 
 // @public (undocumented)
 export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles>;
@@ -121,7 +112,6 @@ export interface CalendarDayProps extends CalendarDayGridProps {
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
-    navigationIcons: CalendarNavigationIcons;
     onDismiss?: () => void;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
@@ -150,9 +140,6 @@ export interface CalendarDayStyles {
 }
 
 // @public (undocumented)
-export const CalendarMonth: React_2.FunctionComponent<CalendarMonthProps>;
-
-// @public (undocumented)
 export const calendarMonthClassNames: SlotClassNames<CalendarMonthSlots>;
 
 // @public (undocumented)
@@ -167,7 +154,6 @@ export interface CalendarMonthProps {
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
-    navigationIcons?: CalendarNavigationIcons;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
@@ -183,13 +169,6 @@ export interface CalendarMonthStyleProps extends CalendarPickerStyleProps {
 
 // @public (undocumented)
 export interface CalendarMonthStyles extends CalendarPickerStyles {
-}
-
-// @public (undocumented)
-export interface CalendarNavigationIcons {
-    closeIcon?: string;
-    leftNavigation?: string;
-    rightNavigation?: string;
 }
 
 // @public (undocumented)
@@ -248,7 +227,6 @@ export interface CalendarProps extends React_2.RefAttributes<HTMLDivElement> {
     isMonthPickerVisible?: boolean;
     maxDate?: Date;
     minDate?: Date;
-    navigationIcons?: CalendarNavigationIcons;
     onDismiss?: () => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];
@@ -282,36 +260,6 @@ export interface CalendarStrings extends DateGridStrings {
 }
 
 // @public (undocumented)
-export interface CalendarStyleProps {
-    className?: string;
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    monthPickerOnly?: boolean;
-    overlaidWithButton?: boolean;
-    // @deprecated (undocumented)
-    overlayedWithButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showWeekNumbers?: boolean;
-}
-
-// @public (undocumented)
-export interface CalendarStyles {
-    // (undocumented)
-    divider: string;
-    // (undocumented)
-    goTodayButton: string;
-    // (undocumented)
-    liveRegion: string;
-    // (undocumented)
-    monthPickerWrapper: string;
-    root: string;
-}
-
-// @public (undocumented)
-export const CalendarYear: React_2.FunctionComponent<CalendarYearProps>;
-
-// @public (undocumented)
 export interface CalendarYearHeaderProps extends CalendarYearProps, CalendarYearRange {
     animateBackwards?: boolean;
     onSelectNext?: () => void;
@@ -328,7 +276,6 @@ export interface CalendarYearProps {
     maxYear?: number;
     minYear?: number;
     navigatedYear?: number;
-    navigationIcons?: CalendarNavigationIcons;
     onHeaderSelect?: (focus: boolean) => void;
     onRenderTitle?: (props: CalendarYearHeaderProps) => React_2.ReactNode;
     onRenderYear?: (year: number) => React_2.ReactNode;
@@ -408,7 +355,6 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
     isRequired?: boolean;
     disabled?: boolean;
     underlined?: boolean;
-    pickerAriaLabel?: string;
     isMonthPickerVisible?: boolean;
     showMonthPickerAsOverlay?: boolean;
     allowTextInput?: boolean;
@@ -625,24 +571,6 @@ export const TimeConstants: {
     OffsetTo24HourFormat: number;
     TimeFormatRegex: RegExp;
 };
-
-// @public
-export const useCalendarDayGridStyles_unstable: (props: CalendarDayGridStyleProps) => CalendarDayGridStyles;
-
-// @public
-export const useCalendarDayStyles_unstable: (props: CalendarDayStyleProps) => CalendarDayStyles;
-
-// @public
-export const useCalendarMonthStyles_unstable: (props: CalendarMonthStyleProps) => CalendarMonthStyles;
-
-// @public
-export const useCalendarPickerStyles_unstable: (props: CalendarPickerStyleProps) => CalendarPickerStyles;
-
-// @public
-export const useCalendarStyles_unstable: (props: CalendarStyleProps) => CalendarStyles;
-
-// @public
-export const useCalendarYearStyles_unstable: (props: CalendarYearStyleProps) => CalendarYearStyles;
 
 // @public
 export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;

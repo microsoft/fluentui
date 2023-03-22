@@ -101,7 +101,6 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
     navigatedDate,
     allFocusable,
     strings,
-    // navigationIcons,
     showCloseButton,
     classNames,
     onNavigateDate,

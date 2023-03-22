@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { CalendarStrings, DateFormatting } from '../../utils';
-import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
 
 /**
@@ -47,11 +46,6 @@ export interface CalendarDayProps extends CalendarDayGridProps {
    * Callback issued when calendar day is closed
    */
   onDismiss?: () => void;
-
-  /**
-   * Custom navigation icons.
-   */
-  navigationIcons: CalendarNavigationIcons;
 
   /**
    * Callback function when the header is selected

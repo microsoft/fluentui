@@ -1,5 +1,5 @@
 export { AnimationDirection, calendarClassNames } from './Calendar';
-export type { CalendarNavigationIcons, CalendarProps, CalendarStyleProps, CalendarStyles, ICalendar } from './Calendar';
+export type { CalendarProps, ICalendar } from './Calendar';
 
 export { calendarDayClassNames } from './CalendarDay';
 export type { CalendarDayProps, CalendarDayStyleProps, CalendarDayStyles, ICalendarDay } from './CalendarDay';

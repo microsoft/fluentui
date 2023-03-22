@@ -200,7 +200,6 @@ interface CalendarYearNavArrowProps extends CalendarYearHeaderProps {
 const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> = props => {
   const {
     className,
-    // navigationIcons = defaultCalendarNavigationIcons,
     strings = DefaultCalendarYearStrings,
     direction,
     onSelectPrev,

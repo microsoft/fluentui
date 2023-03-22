@@ -60,16 +60,10 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   disabled?: boolean;
 
   /**
-   * Whether or not the Textfield of the DatePicker is underlined.
+   * Whether or not the Input of the DatePicker is underlined.
    * @defaultvalue false
    */
   underlined?: boolean;
-
-  /**
-   * Aria label for date picker popup for screen reader users.
-   * @defaultvalue Calendar
-   */
-  pickerAriaLabel?: string;
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
@@ -218,7 +212,7 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   showCloseButton?: boolean;
 
   /**
-   * The tabIndex of the TextField
+   * The tabIndex of the Input
    */
   tabIndex?: number;
 };
@@ -233,22 +227,22 @@ export type DatePickerState = ComponentState<DatePickerSlots> & {
  */
 export interface DatePickerStrings extends CalendarStrings {
   /**
-   * Error message to render for TextField if isRequired validation fails.
+   * Error message to render for Input if isRequired validation fails.
    */
   isRequiredErrorMessage?: string;
 
   /**
-   * Error message to render for TextField if input date string parsing fails.
+   * Error message to render for Input if input date string parsing fails.
    */
   invalidInputErrorMessage?: string;
 
   /**
-   * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
+   * Error message to render for Input if date boundary (minDate, maxDate) validation fails.
    */
   isOutOfBoundsErrorMessage?: string;
 
   /**
-   * Status message to render for TextField the input date parsing fails,
+   * Status message to render for Input the input date parsing fails,
    * and the typed value is cleared and reset to the previous value.
    *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
    */
