@@ -77,17 +77,25 @@ const BreadcrumbExampleIconDivider = props => (
 
 ## Sample Code
 
+By default BreadcrumbButton should be used.
+
 ```jsx
 const BreadcrumbV9Example = props => (
   <Breadcrumb aria-label="breadcrumb">
-    <BreadcrumbItem href="#">
-      Home
+    <BreadcrumbItem onClick={() => {}}>
+      <BreadcrumbButton>
+        Home
+      </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem onClick={() => {}}>
-      Gallery
+      <BreadcrumbButton>
+        Gallery
+      </BreadcrumbButton>
     </BreadcrumbItem>
-    <BreadcrumbItem href="#">
-      About
+    <BreadcrumbItem onClick={() => {}}>
+      <BreadcrumbButton>
+        About
+      </BreadcrumbButton>
     </BreadcrumbItem>
   </Breadcrumb>
   </>
@@ -105,10 +113,10 @@ Breadcrumb can be:
 
 ### BreadcrumbItem variants
 
-- Non-clickable element
-- Button
-- Link
-- Dropdown menu (added by a user)
+- Non-clickable element which is BreadcrumbItem component.
+- Button - BreadcrumbButton component.
+- Link - BreadcrumbLink component.
+- Dropdown menu - can be added by a partner using JSX composition.
 
 ### Icon
 
@@ -132,13 +140,13 @@ Dropdown contains collapsed items.
 
 ### Components
 
-| Component         | Purpose                                                                 |
-| ----------------- | ----------------------------------------------------------------------- |
-| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements. |
-| BreadcrumbDivider | Divider component                                                       |
-| BreadcrumbItem    | `li` element. Can contain button or link.                               |
-| BreadcrumbLink    | Breadcrumb Link                                                         |
-| BreadcrumbButton  | Breadcrumb Button                                                       |
+| Component         | Purpose                                                                  |
+| ----------------- | ------------------------------------------------------------------------ |
+| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements.  |
+| BreadcrumbDivider | Divider component                                                        |
+| BreadcrumbItem    | `li` element. Can contain BreadcrumbButton or BreadcrumbLink components. |
+| BreadcrumbLink    | Breadcrumb Link                                                          |
+| BreadcrumbButton  | Breadcrumb Button                                                        |
 
 ### Breadcrumb
 
@@ -163,13 +171,11 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property          | Values                                  | Default       | Purpose                                                                                  |
-| ----------------- | --------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- |
-| appearance        | `transparent`, `subtle`                 | `transparent` | Sets appearance                                                                          |
-| focusMode         | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`         | Sets the focus behavior for the Breadcrumb.                                              |
-| maxDisplayedItems | number                                  | undefined     | If items count more than `maxDisplayedItems` only this number of items will be displayed |
-| overflowIndex     | number                                  | 1             | Index of item where BreadcrumbMenu should be shown                                       |
-| size              | `small`, `medium`, `large`              | `medium`      | Defines size of the Breadcrumb                                                           |
+| Property   | Values                                  | Default       | Purpose                                     |
+| ---------- | --------------------------------------- | ------------- | ------------------------------------------- |
+| appearance | `transparent`, `subtle`                 | `transparent` | Sets appearance                             |
+| focusMode  | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`         | Sets the focus behavior for the Breadcrumb. |
+| size       | `small`, `medium`, `large`              | `medium`      | Defines size of the Breadcrumb              |
 
 ### BreadcrumbItem
 
@@ -179,8 +185,8 @@ Dropdown contains collapsed items.
 
 BreadcrumbItem can be:
 
-- Button
-- Link
+- Button - BreadcrumbButton component is used inside BreadcrumbItem.
+- Link - BreadcrumbLink is used inside BreadcrumbItem.
 - Non-clickable content
 - Dropdown Menu
 - Icon (optional)
@@ -247,16 +253,10 @@ Usage
 
 #### Breadcrumb icon
 
-An icon can be SVG or image.
-The icon might be added as a prop:
-
 ```jsx
 <BreadcrumbItem icon={<IconComponent />}>Item 1</BreadcrumbItem>
-<BreadcrumbItem icon="../path/name.png">Item 1</BreadcrumbItem>
-<BreadcrumbItem>
-  <SomeSVG />
-  Item 1
-</BreadcrumbItem>
+<BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item 1</BreadcrumbButton>
+<BreadcrumbLink icon={<IconComponent />}>Item 1</BreadcrumbLink>
 ```
 
 ### BreadcrumbDivider
@@ -285,12 +285,15 @@ The icon might be added as a prop:
 | variant  | `chevron`, `slash` | `chevron` | Sets type of divider |
 
 ```jsx
-<BreadcrumbDivider />
-<BreadcrumbDivider size="large" />
-<BreadcrumbDivider variant="slash" size="small" />
-<BreadcrumbDivider>
-  <ArrowRight16Filled />
-</BreadcrumbDivider>
+<Breadcrumb size="large">
+  <BreadcrumbDivider />
+  <BreadcrumbDivider>
+    <ArrowRight16Filled />
+  </BreadcrumbDivider>
+</Breadcrumb>
+<Breadcrumb size="small">
+  <BreadcrumbDivider variant="slash" />
+</Breadcrumb>
 ```
 
 ### BreadcrumbButton
@@ -311,11 +314,6 @@ Under the hood @fluentui/react-button component is used.
 
 For Link @fluentui/react-link component is used.
 
-### BreadcrumbMenu
-
-Dropdown menu is used for collapsed items and subfolders.
-BreadcrumbMenu uses @fluentui/react-menu component.
-
 ## Migration
 
 ### Fabric (v8) property mapping
@@ -323,38 +321,28 @@ BreadcrumbMenu uses @fluentui/react-menu component.
 This should be moved to MIGRATION.md later.
 Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrumb` component:
 
-#### Props that remain as is
-
-- `maxDisplayedItems`
-- `overflowIndex` => Optional index where overflow items will be collapsed.
-
 #### New props
 
 - `appearance`
-- `iconPosition`
-- `truncateNameLength`
 
 #### Props no longer supported with an equivalent functionality in Breadcrumb V9:
 
+- `maxDisplayedItems`and `overflowIndex` - will be part of `partitionBreadcrumbItems` method
 - `className` => Slot system supports it by default. We don't need to provide it explicitly.
 - `items` => Use `children` prop instead.
 - `componentRef`
 - `dividerAs` => Divider is a separate component. Type of divider is passed to the Breadcrumb component.
 - `focusZoneProps` => use `focusMode` instead.
-
 - `overflowButtonAs` => Custom component for the overflow button. - use custom overflow button instead.
 - `styles`
 - `theme`
-
-  TODO: decide what to do with the folliwing props:
-
-- `onGrowData` => Method that determines how to group the length of the breadcrumb. Return undefined to never increase breadcrumb length.
-- `onReduceData` => Method that determines how to reduce the length of the breadcrumb. Return undefined to never reduce breadcrumb length.
 - `overflowAriaLabel` => Aria label for the overflow button.
 
 #### Props no longer supported
 
 - `onRenderOverflowIcon` => Render a custom overflow icon in place of the default icon `...`.
+- `onGrowData` => Method that determines how to group the length of the breadcrumb. Return undefined to never increase breadcrumb length.
+- `onReduceData` => Method that determines how to reduce the length of the breadcrumb. Return undefined to never reduce breadcrumb length.
 
 As BreadcrumbItem part of `children` prop, a user decides how to render an item.
 The following props are not needed anymore.
@@ -378,14 +366,14 @@ BreadcrumbItem component contains similar props in V9.
 
 #### Property Mapping
 
-| v8 `Breadcrumb`     | v9 `Breadcrumb`     |
-| ------------------- | ------------------- |
-| `ariaLabel`         |                     |
-| `className`         |                     |
-| `componentRef`      |                     |
-| `dividerAs`         | `divider`           |
-| `focusZoneProps`    | `focusMode`         |
-| `maxDisplayedItems` | `maxDisplayedItems` |
+| v8 `Breadcrumb`     | v9 `Breadcrumb` |
+| ------------------- | --------------- |
+| `ariaLabel`         |                 |
+| `className`         |                 |
+| `componentRef`      |                 |
+| `dividerAs`         |                 |
+| `focusZoneProps`    | `focusMode`     |
+| `maxDisplayedItems` |                 |
 
 ### Northstar property mapping
 
@@ -408,7 +396,7 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 | Northstar `Breadcrumb` | v9 `Breadcrumb` |
 | ---------------------- | --------------- |
 | `accessibility`        |                 |
-| `as`                   | `as`            |
+| `as`                   |                 |
 | `className`            |                 |
 | `content`              |                 |
 | `design`               |                 |
@@ -437,16 +425,36 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 
 The default position of ellipses should be the second element because from a UX perspective root folder should be shown.
 
-#### Collapse functionality:
-
-Collapse turns on when:
+#### Collapse functionality turns on when:
 
 - There's not enough space
 - When `maxDisplayedItems` prop is provided and number of items is bigger than `maxDisplayedItems`.
 
+```jsx
+const { startDisplayedItems, overflowItems, endDisplayedItems } = partitionBreadcrumbItems({
+  items,
+  maxDisplayedItems: 4,
+  overflowIndex: 2,
+});
+<Breadcrumb size="large">
+  {startDisplayedItems.map(item => renderButton(item))}
+  {overflowItems && renderMenu(overflowItems)}
+  {endDisplayedItems &&
+    endDisplayedItems.map(item => {
+      const isLastItem = item.key === buttonItems.length - 1;
+      return renderButton(item, isLastItem);
+    })}
+</Breadcrumb>;
+```
+
+It should be done by the partners using JSX composition.
+For Menu `@fluentui/react-menu` component should be used.
+
+`maxDisplayedItems` and `overflowIndex` are part of `partitionBreadcrumbItems` which is helper in Breadcrumb utils.
+
 #### Truncate long names:
 
-This value should be customizable
+Currently truncation of long names should be done by partners. It's recommended to truncate a name when there are more than 30 symbols.
 
 ### Mouse
 
@@ -479,6 +487,7 @@ Non-interactive style variation for places where the Breadcrumb is purely repres
 
 Tooltip is shown `onHover` on collapsed menu or items with long names.
 ![Breadcrumb Tooltip](./assets/breadcrumb-tooltip.png)
+Tooltipls can be multiline. It is recommended to use not more than 80 symbols in the Tooltip.
 
 ### Keyboard
 
