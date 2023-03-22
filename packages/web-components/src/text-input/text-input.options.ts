@@ -1,75 +1,49 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 /**
- * TextInputSize constants
+ * TextInput size constants
  * @public
  */
 export const TextInputSize = {
-  _100: '100',
-  _200: '200',
-  _300: '300',
-  _400: '400',
-  _500: '500',
-  _600: '600',
-  _700: '700',
-  _800: '800',
-  _900: '900',
-  _1000: '1000',
-} as const;
-
-/**
- * The type for TextSize
- * The font size and line height based on the theme tokens
- * @public
- */
-export type TextSize = ValuesOf<typeof TextSize>;
-
-/**
- * TextFont Constants
- * @public
- */
-export const TextFont = {
-  base: 'base',
-  numeric: 'numeric',
-  monospace: 'monospace',
-} as const;
-
-/**
- * Applies font family to the content
- * @public
- */
-export type TextFont = ValuesOf<typeof TextFont>;
-
-/**
- * TextWeight Constants
- * @public
- */
-export const TextWeight = {
+  small: 'small',
   medium: 'medium',
-  regular: 'regular',
-  semibold: 'semibold',
-  bold: 'bold',
+  large: 'large',
 } as const;
 
 /**
- * Applies font weight to the content
+ * The type for TextInputSize
  * @public
  */
-export type TextWeight = ValuesOf<typeof TextWeight>;
+export type TextInputSize = ValuesOf<typeof TextInputSize>;
 
 /**
- * TextAlign Constants
+ * TextInput appearance Constants
  * @public
  */
-export const TextAlign = {
-  start: 'start',
-  end: 'end',
-  center: 'center',
-  justify: 'justify',
+export const TextInputAppearance = {
+  outline: 'base',
+  underline: 'numeric',
+  filledLighter: 'filled-lighter',
+  filledDarker: 'filled-darker',
 } as const;
 
 /**
- * Aligns the content
+ * Applies styling to TextInput
  * @public
  */
-export type TextAlign = ValuesOf<typeof TextAlign>;
+export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
+
+/**
+ * TextInput layout Constants
+ * @public
+ */
+export const TextInputLayout = {
+  block: 'block',
+  inline: 'inline',
+} as const;
+
+/**
+ * Applies display style property
+ * @public
+ */
+export type TextInputLayout = ValuesOf<typeof TextInputLayout>;
