@@ -2,6 +2,45 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 21 Mar 2023 21:23:45 GMT",
+      "tag": "@fluentui/react-positioning_v9.5.6",
+      "version": "9.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.3.2",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-theme to v9.1.7",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.7.2",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Mar 2023 14:36:59 GMT",
       "tag": "@fluentui/react-positioning_v9.5.5",
       "version": "9.5.5",
