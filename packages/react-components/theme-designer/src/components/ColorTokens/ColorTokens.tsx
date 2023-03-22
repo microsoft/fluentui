@@ -15,6 +15,12 @@ export type ColorOverrideBrands = Record<string, Brands>;
 
 export type ColorOverrides = Record<string, ColorOverrideBrands>;
 
+export enum ColorOverrideAction {
+  AddOverride = 'Add Override',
+  ResetOverrides = 'Reset Overrides',
+  ResetCustomeOverrides = 'Reset Custom Overrides',
+}
+
 export type DispatchColorOverrides = {
   type: string;
   colorToken?: string;
@@ -60,7 +66,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
     action: { type: string; colorToken?: string; newValue?: Brands },
   ) => ColorOverrides = (state, action) => {
     switch (action.type) {
-      case 'Add Override':
+      case ColorOverrideAction.AddOverride:
         if (!action.colorToken || !action.newValue) {
           return state;
         }
@@ -68,9 +74,9 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
           ...state,
           [themeLabel]: { ...state[themeLabel], [action.colorToken]: action.newValue },
         };
-      case 'Reset Overrides':
+      case ColorOverrideAction.ResetOverrides:
         return { ...state, [themeLabel]: {} };
-      case 'Reset Custom Overrides':
+      case ColorOverrideAction.ResetCustomeOverrides:
         return { ...state, [themeName + 'Light']: {}, [themeName + 'Dark']: {} };
       default:
         return state;
@@ -81,12 +87,12 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   const onNewOverride = (color: string, newColor: Brands) => {
     dispatchAppState({ type: 'Override', overrides: { [color]: brand[newColor] } });
-    dispatchColorOverride({ type: 'Add Override', colorToken: color, newValue: newColor });
+    dispatchColorOverride({ type: ColorOverrideAction.AddOverride, colorToken: color, newValue: newColor });
   };
 
   const handleResetClick = () => {
     dispatchAppState({ type: 'Override' });
-    dispatchColorOverride({ type: 'Reset Overrides' });
+    dispatchColorOverride({ type: ColorOverrideAction.ResetOverrides });
   };
 
   React.useEffect(() => {
@@ -98,7 +104,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
       Object.keys(appState.darkOverrides).length === 0
     ) {
       dispatchAppState({ type: 'Override' });
-      dispatchColorOverride({ type: 'Reset Custom Overrides' });
+      dispatchColorOverride({ type: ColorOverrideAction.ResetCustomeOverrides });
     }
   }, [appState]); // eslint-disable-line react-hooks/exhaustive-deps
 

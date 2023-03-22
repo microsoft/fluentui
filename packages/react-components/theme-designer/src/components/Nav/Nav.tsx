@@ -60,7 +60,7 @@ export const Nav: React.FC<NavProps> = props => {
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
       <div className={styles.logo}>
         <CircleRegular />
-        <Text>Color Tool2</Text>
+        <Text>Color Tool</Text>
       </div>
       <div className={styles.element}>
         UI Colors <ChevronRightRegular /> New palette

@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
+import { useEffect } from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useId, Label, Input, Slider, tokens } from '@fluentui/react-components';
-import { useDebounce } from '../../utils/useDebounce';
 import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import type { CustomAttributes } from '../../useThemeDesignerReducer';
@@ -61,14 +61,9 @@ export const Form: React.FC = () => {
   const [hueTorsion, setHueTorsion] = React.useState<number>(initialState.hueTorsion);
   const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
 
-  const debounceAttributes: CustomAttributes = useDebounce(
-    { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
-    10,
-  );
-
-  React.useEffect(() => {
-    dispatchAppState({ type: 'Custom', customAttributes: debounceAttributes });
-  }, [debounceAttributes, dispatchAppState]);
+  useEffect(() => {
+    dispatchAppState({ type: 'Custom', customAttributes: { keyColor, hueTorsion, vibrancy } });
+  }, [keyColor, hueTorsion, vibrancy]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
