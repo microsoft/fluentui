@@ -6,7 +6,6 @@ export function tabTemplate<T extends FASTTab>(options: TabOptions = {}): Elemen
     <template slot="tab" role="tab" aria-disabled="${x => x.disabled}">
       ${startSlotTemplate(options)}
       <span part="tab-content"><slot></slot></span>
-      <span part="indicator-placeholder" aria-hidden="true"></span>
       ${endSlotTemplate(options)}
     </template>
   `;

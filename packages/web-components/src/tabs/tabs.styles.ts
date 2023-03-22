@@ -1,5 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import {
+  borderRadiusCircular,
   borderRadiusMedium,
   colorNeutralForeground1,
   colorNeutralForeground1Hover,
@@ -156,6 +157,7 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
   }
 
+  /* ::after adds the active indicator  */
   :host([orientation='horizontal']) ::slotted(fluent-tab)::after {
     height: ${strokeWidthThicker};
     margin-top: auto;
@@ -168,17 +170,42 @@ export const styles = css`
     transform-origin: left;
   }
 
+  /* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
+  :host ::slotted(fluent-tab)::before {
+    border-radius: ${borderRadiusCircular};
+    content: '';
+    inset: 0;
+    position: absolute;
+    margin-top: auto;
+    z-index: 0;
+  }
+  :host ::slotted(fluent-tab[aria-selected='true'])::before {
+    background-color: ${colorNeutralForegroundDisabled};
+  }
+  :host ::slotted(fluent-tab)::before {
+    height: ${strokeWidthThicker};
+  }
+  :host([orientation='vertical']) ::slotted(fluent-tab)::before {
+    height: unset;
+    width: ${strokeWidthThicker};
+    margin-right: auto;
+    transform-origin: top;
+  }
+
   :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab)::after,
+  :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab)::before,
   :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab:hover)::after {
     right: ${spacingHorizontalSNudge};
     left: ${spacingHorizontalSNudge};
   }
   :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab)::after,
+  :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab)::before,
   :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab:hover)::after {
     right: ${spacingHorizontalMNudge};
     left: ${spacingHorizontalMNudge};
   }
   :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab)::after,
+  :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab)::before,
   :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab:hover)::after {
     right: ${spacingHorizontalMNudge};
     left: ${spacingHorizontalMNudge};
@@ -213,16 +240,19 @@ export const styles = css`
   }
 
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab)::after,
+  :host([orientation='vertical'][size='small']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab:hover)::after {
     top: ${spacingVerticalSNudge};
     bottom: ${spacingVerticalSNudge};
   }
   :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab)::after,
+  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab:hover)::after {
     top: ${spacingVerticalS};
     bottom: ${spacingVerticalS};
   }
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::after,
+  :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab:hover)::after {
     top: ${spacingVerticalMNudge};
     bottom: ${spacingVerticalMNudge};

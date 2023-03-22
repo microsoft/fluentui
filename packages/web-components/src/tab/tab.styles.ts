@@ -16,11 +16,6 @@ import {
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
-  spacingHorizontalSNudge,
-  spacingVerticalMNudge,
-  spacingVerticalS,
-  spacingVerticalSNudge,
-  strokeWidthThicker,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
@@ -34,12 +29,12 @@ export const styles = css`
     cursor: pointer;
     box-sizing: border-box;
     justify-content: center;
+    line-height: ${lineHeightBase300};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
     color: ${colorNeutralForeground2};
     fill: currentcolor;
-    font-family: ${fontFamilyBase};
     grid-row: 1;
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
     padding-top: ${spacingHorizontalM};
     padding-bottom: ${spacingHorizontalM};
     padding-left: ${spacingHorizontalMNudge};
@@ -47,6 +42,8 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
   :host::part(tab-content) {
+    display: inline-flex;
+    flex-direction: column;
     padding: 0 2px;
   }
 
@@ -60,60 +57,12 @@ export const styles = css`
   }
 
   /* adds hidden textContent to prevent shifting ui on bold / unbolding of text */
-  :host::before {
+  :host::part(tab-content)::after {
     content: var(--textContent);
-    font-weight: ${fontWeightSemibold};
+    visibility: hidden;
     height: 0;
     line-height: ${lineHeightBase300};
-    visibility: hidden;
-  }
-
-  /* adds a secondary indicator placeholder that appears right after click on the active tab */
-  :host::part(indicator-placeholder) {
-    border-radius: ${borderRadiusCircular};
-    content: '';
-    inset: 0;
-    position: absolute;
-    margin-top: auto;
-    z-index: 2;
-  }
-  :host([aria-selected='true'])::part(indicator-placeholder) {
-    background-color: ${colorNeutralForegroundDisabled};
-  }
-
-  :host::part(indicator-placeholder) {
-    height: ${strokeWidthThicker};
-  }
-  :host(.vertical)::part(indicator-placeholder) {
-    height: unset;
-    width: ${strokeWidthThicker};
-    margin-right: auto;
-    transform-origin: top;
-  }
-
-  :host([aria-selected='true']):host-context([orientation='horizontal'][size='small'])::part(indicator-placeholder) {
-    right: ${spacingHorizontalSNudge};
-    left: ${spacingHorizontalSNudge};
-  }
-  :host([aria-selected='true']):host-context([orientation='horizontal'][size='medium'])::part(indicator-placeholder) {
-    right: ${spacingHorizontalMNudge};
-    left: ${spacingHorizontalMNudge};
-  }
-  :host([aria-selected='true']):host-context([orientation='horizontal'][size='large'])::part(indicator-placeholder) {
-    right: ${spacingHorizontalMNudge};
-    left: ${spacingHorizontalMNudge};
-  }
-  :host([aria-selected='true']):host-context([orientation='vertical'][size='small'])::part(indicator-placeholder) {
-    top: ${spacingVerticalSNudge};
-    bottom: ${spacingVerticalSNudge};
-  }
-  :host([aria-selected='true']):host-context([orientation='vertical'][size='medium'])::part(indicator-placeholder) {
-    top: ${spacingVerticalS};
-    bottom: ${spacingVerticalS};
-  }
-  :host([aria-selected='true']):host-context([orientation='vertical'][size='large'])::part(indicator-placeholder) {
-    top: ${spacingVerticalMNudge};
-    bottom: ${spacingVerticalMNudge};
+    font-weight: ${fontWeightSemibold};
   }
 
   :host([aria-selected='true'])::after {
