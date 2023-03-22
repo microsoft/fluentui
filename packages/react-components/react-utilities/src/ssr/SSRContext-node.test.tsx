@@ -5,7 +5,7 @@
 // 👆 this is intentionally to test in SSR like environment
 
 import { renderHook } from '@testing-library/react-hooks';
-import { SSRProvider, useIsSSR, useIsInSSRContext } from './SSRContext';
+import { SSRProvider, useIsSSR } from './SSRContext';
 
 describe('useIsSSR (node)', () => {
   afterEach(() => {
@@ -25,17 +25,5 @@ describe('useIsSSR (node)', () => {
     const { result } = renderHook(() => useIsSSR(), { wrapper: SSRProvider });
 
     expect(result.current).toBe(true);
-  });
-});
-
-describe('useIsInSSRContext (node)', () => {
-  it('returns true if wrapped by an SSRProvider', () => {
-    const { result } = renderHook(() => useIsInSSRContext(), { wrapper: SSRProvider });
-    expect(result.current).toBe(true);
-  });
-
-  it('returns false if not wrapped by an SSRProvider', () => {
-    const { result } = renderHook(() => useIsInSSRContext());
-    expect(result.current).toBe(false);
   });
 });

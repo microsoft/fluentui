@@ -1,6 +1,7 @@
-import { useId, useIsInSSRContext, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useRenderer_unstable } from '@griffel/react';
 import * as React from 'react';
+import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles';
@@ -17,6 +18,7 @@ const createStyleTag = (target: Document | undefined, elementAttributes: Record<
 
   const tag = target.createElement('style');
 
+  elementAttributes[FUI_THEME_STYLE_ATTR] = '';
   Object.keys(elementAttributes).forEach(attrName => {
     tag.setAttribute(attrName, elementAttributes[attrName]);
   });
@@ -46,10 +48,10 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
-  const isInSSRContext = useIsInSSRContext();
+  useHandleSSRStyleElements(targetDocument);
 
   const renderer = useRenderer_unstable();
-  const styleTag = React.useRef<HTMLStyleElement>();
+  const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
 
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = renderer.styleElementAttributes;
@@ -65,22 +67,41 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
 
   const rule = `.${styleTagId} { ${cssVarsAsString} }`;
 
-  if (!isInSSRContext) {
-    // Not really breaking the rules of hooks here, this condition will only change if the parent
-    // tree is different (i.e. an SSRProvider is added/removed)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useInsertionEffect(() => {
-      styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
+  useInsertionEffect(() => {
+    // The style element could already have been created during SSR - no need to recreate it
+    const ssrStyleElement = targetDocument?.getElementById(styleTagId) as HTMLStyleElement;
+    if (ssrStyleElement) {
+      styleTag.current = ssrStyleElement;
+      return () => styleTag.current?.remove();
+    }
 
-      if (styleTag.current) {
-        insertSheet(styleTag.current, rule);
+    styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
 
-        return () => {
-          styleTag.current?.remove();
-        };
-      }
-    }, [styleTagId, targetDocument, rule, styleElementAttributes]);
-  }
+    if (styleTag.current) {
+      insertSheet(styleTag.current, rule);
+
+      return () => {
+        styleTag.current?.remove();
+      };
+    }
+  }, [styleTagId, targetDocument, rule, styleElementAttributes]);
 
   return { styleTagId, rule };
 };
+
+function useHandleSSRStyleElements(targetDocument: Document | undefined | null) {
+  // Using a state factory so that this logic only runs once per render
+  // Each FluentProvider can create its own style element during SSR as a slot
+  // Moves all theme style elements to document head during render to avoid hydration errors.
+  // Should be strict mode safe since the logic is idempotent.
+  React.useState(() => {
+    if (!targetDocument) {
+      return;
+    }
+
+    const themeStyleElements = targetDocument.body.querySelectorAll(`[${FUI_THEME_STYLE_ATTR}]`);
+    themeStyleElements.forEach(styleElement => {
+      targetDocument.head.append(styleElement);
+    });
+  });
+}

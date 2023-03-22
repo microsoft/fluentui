@@ -10,17 +10,12 @@ import type {
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
 
-import {
-  getNativeElementProps,
-  resolveShorthand,
-  Slot,
-  useIsInSSRContext,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { canUseDOM, getNativeElementProps, resolveShorthand, Slot, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 import { useRenderer_unstable } from '@griffel/react';
+import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
 /**
  * Create the state required to render FluentProvider.
@@ -100,15 +95,18 @@ export const useFluentProvider_unstable = (
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
     }),
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    serverStyle: resolveShorthand(undefined as undefined | Slot<'style'>, {
-      required: useIsInSSRContext(),
-      defaultProps: {
-        id: styleTagId,
-        dangerouslySetInnerHTML: { __html: rule },
-        ...renderer.styleElementAttributes,
+    serverStyle: resolveShorthand<React.HTMLAttributes<HTMLElement> & { 'data-fui-theme'?: '' }>(
+      undefined as undefined | Slot<'style'>,
+      {
+        required: !canUseDOM(),
+        defaultProps: {
+          [FUI_THEME_STYLE_ATTR]: '',
+          id: styleTagId,
+          dangerouslySetInnerHTML: { __html: rule },
+          ...renderer.styleElementAttributes,
+        },
       },
-    }),
+    ),
   };
 };
 

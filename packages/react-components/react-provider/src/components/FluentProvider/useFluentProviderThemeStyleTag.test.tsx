@@ -5,8 +5,17 @@ import { renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
+import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
 jest.mock('@fluentui/react-theme');
+const createDocumentMock = (): Document => {
+  const externalDocument = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+  const body = document.createElement('body');
+  const head = document.createElement('head');
+  externalDocument.documentElement.appendChild(head);
+  externalDocument.documentElement.appendChild(body);
+  return externalDocument;
+};
 
 describe('useFluentProviderThemeStyleTag', () => {
   const defaultTheme = {
@@ -86,5 +95,22 @@ describe('useFluentProviderThemeStyleTag', () => {
 
     expect(tag.getAttribute('id')).toBe('fui-FluentProvider1');
     expect(tag.getAttribute('nonce')).toBe('random');
+  });
+
+  it('should move style tags in body to head on first render', () => {
+    const targetDocument = createDocumentMock();
+    const ssrStyleElement = targetDocument.createElement('style');
+    ssrStyleElement.setAttribute(FUI_THEME_STYLE_ATTR, '');
+    // Kinda hacky - assume the useId call returns as expected (ids are reset after each test)
+    ssrStyleElement.setAttribute('id', 'fui-FluentProvider1');
+    targetDocument.body.append(ssrStyleElement);
+
+    jest.spyOn(targetDocument, 'createElement');
+    renderHook(() => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument }));
+
+    expect(targetDocument.body.querySelector('style')).toBeNull();
+    expect(targetDocument.head.querySelectorAll('style').length).toBe(1);
+    // eslint-disable-next-line deprecation/deprecation
+    expect(targetDocument.createElement).toHaveBeenCalledTimes(0);
   });
 });
