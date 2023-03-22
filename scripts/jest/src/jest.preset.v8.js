@@ -81,6 +81,8 @@ const createConfig = (customConfig = {}) => {
       url: 'http://localhost',
     },
     testEnvironment: 'jsdom',
+    restoreMocks: true,
+    clearMocks: true,
 
     ...(isCI ? { maxWorkers: 4 } : null),
 
