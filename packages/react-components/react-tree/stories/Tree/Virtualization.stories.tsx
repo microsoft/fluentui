@@ -15,7 +15,7 @@ import {
   FlatTreeItem,
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
-import { ForwardRefComponent, getSlots, useFluent } from '@fluentui/react-components';
+import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 
 const defaultItems: FlatTreeItemProps[] = [
   {
@@ -70,18 +70,17 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
 };
 
 export const Virtualization = () => {
-  const { targetDocument } = useFluent();
   const flatTree = useFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
-  const visibleItems = Array.from(flatTree.items());
+  const items = React.useMemo(() => Array.from(flatTree.items()), [flatTree]);
 
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
     event.preventDefault();
-    const nextItem = flatTree.getNextNavigableItem(data);
-    if (!nextItem || !targetDocument) {
+    const nextItem = flatTree.getNextNavigableItem(items, data);
+    if (!nextItem) {
       return;
     }
-    if (!targetDocument.getElementById(nextItem.id)) {
+    if (document.getElementById(nextItem.id)) {
       listRef.current?.scrollToItem(nextItem.index);
       return requestAnimationFrame(() => flatTree.navigate(data));
     }
@@ -93,8 +92,8 @@ export const Virtualization = () => {
       listProps={{
         ref: listRef,
         height: 300,
-        itemCount: visibleItems.length,
-        itemData: visibleItems,
+        itemCount: items.length,
+        itemData: items,
         itemSize: 32,
         width: 300,
         children: FixedSizeTreeItem,
