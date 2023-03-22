@@ -81,10 +81,10 @@ export const styles = css`
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host:host-context([orientation='horizontal'])::part(indicator-placeholder) {
+  :host::part(indicator-placeholder) {
     height: ${strokeWidthThicker};
   }
-  :host:host-context([orientation='vertical'])::part(indicator-placeholder) {
+  :host(.vertical)::part(indicator-placeholder) {
     height: unset;
     width: ${strokeWidthThicker};
     margin-right: auto;
