@@ -31,7 +31,7 @@ export function createFlatTreeItems(flatTreeItemProps: FlatTreeItemProps[]): Fla
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
         console.error(
-          `useFlatTree: item ${flatTreeItemProps[index].id} not properly initialized, make sure provided items are organized`,
+          `useFlatTree: item ${flatTreeItemProps[index].id} is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized`,
         );
       }
       break;
@@ -73,7 +73,7 @@ function createFlatTreeRootItem(): FlatTreeItem {
   return {
     id: flatTreeRootId,
     getTreeItemProps: () => {
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
         console.error('useFlatTree: internal error, trying to access treeitem props from invalid root element');
       }
@@ -81,7 +81,7 @@ function createFlatTreeRootItem(): FlatTreeItem {
     },
     childrenSize: 0,
     get index() {
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
         console.error('useFlatTree: internal error, trying to access treeitem props from invalid root element');
       }
