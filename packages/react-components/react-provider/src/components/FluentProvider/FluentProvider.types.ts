@@ -11,8 +11,12 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type FluentProviderSlots = {
   root: Slot<'div'>;
+};
+
+export type FluentProviderInternalSlots = {
   /**
    * HTMLStyleElement rendered during SSR that contains theme CSS variables
+   * @internal
    */
   serverStyle?: Slot<'style'>;
 };
@@ -45,7 +49,7 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
   overrides_unstable?: OverridesContextValue;
 };
 
-export type FluentProviderState = ComponentState<FluentProviderSlots> &
+export type FluentProviderState = ComponentState<FluentProviderSlots & FluentProviderInternalSlots> &
   Pick<FluentProviderProps, 'targetDocument'> &
   Required<
     Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>

@@ -10,7 +10,12 @@ import {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
 import { getSlots } from '@fluentui/react-utilities';
-import type { FluentProviderSlots, FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
+import type {
+  FluentProviderInternalSlots,
+  FluentProviderContextValues,
+  FluentProviderState,
+  FluentProviderSlots,
+} from './FluentProvider.types';
 
 /**
  * Render the final JSX of FluentProvider
@@ -19,7 +24,7 @@ export const renderFluentProvider_unstable = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
 ) => {
-  const { slots, slotProps } = getSlots<FluentProviderSlots>(state);
+  const { slots, slotProps } = getSlots<FluentProviderSlots & FluentProviderInternalSlots>(state);
 
   // Typescript (vscode) incorrectly references the FluentProviderProps.customStyleHooks_unstable
   // instead of FluentProviderContextValues.customStyleHooks_unstable and thinks it is

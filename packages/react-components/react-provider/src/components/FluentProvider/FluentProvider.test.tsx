@@ -8,7 +8,6 @@ import { isConformant } from '../../testing/isConformant';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/core';
 import { RendererProvider } from '@griffel/react';
-import { fluentProviderClassNames } from './useFluentProviderStyles';
 
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -58,7 +57,6 @@ describe('FluentProvider', () => {
           dir="ltr"
         >
           <style
-            class="fui-FluentProvider__serverStyle"
             id="fui-FluentProvider1"
           >
             .fui-FluentProvider1 { --colorNeutralBackground1: white; --colorNeutralForeground1: black;  }
@@ -95,7 +93,7 @@ describe('FluentProvider', () => {
       </SSRProvider>,
     );
 
-    expect(container.querySelector(`.${fluentProviderClassNames.serverStyle}`)?.getAttribute('nonce')).toEqual(nonce);
+    expect(container.querySelector('style')?.getAttribute('nonce')).toEqual(nonce);
   });
 
   describe('applies "dir" attribute', () => {

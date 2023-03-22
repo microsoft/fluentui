@@ -6,7 +6,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
   root: 'fui-FluentProvider',
-  serverStyle: 'fui-FluentProvider__serverStyle',
 };
 
 const useStyles = makeStyles({
@@ -29,10 +28,6 @@ export const useFluentProviderStyles_unstable = (state: FluentProviderState) => 
     styles.root,
     state.root.className,
   );
-
-  if (state.serverStyle) {
-    state.serverStyle.className = mergeClasses(fluentProviderClassNames.serverStyle, state.serverStyle.className);
-  }
 
   return state;
 };

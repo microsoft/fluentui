@@ -33,7 +33,7 @@ describe('FluentProvider (node)', () => {
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
-        <style id="fui-FluentProvider1" class="fui-FluentProvider__serverStyle">
+        <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
             --colorNeutralBackground1: white;
@@ -73,11 +73,7 @@ describe('FluentProvider (node)', () => {
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
-        <style
-          id="fui-FluentProvider1"
-          nonce="random"
-          class="fui-FluentProvider__serverStyle"
-        >
+        <style id="fui-FluentProvider1" nonce="random">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
             --colorNeutralBackground1: white;

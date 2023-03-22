@@ -10,7 +10,13 @@ import type {
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
 
-import { getNativeElementProps, resolveShorthand, useIsInSSRContext, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  resolveShorthand,
+  Slot,
+  useIsInSSRContext,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
@@ -94,12 +100,13 @@ export const useFluentProvider_unstable = (
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
     }),
 
-    serverStyle: resolveShorthand(props.serverStyle, {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    serverStyle: resolveShorthand(undefined as undefined | Slot<'style'>, {
       required: useIsInSSRContext(),
       defaultProps: {
         id: styleTagId,
         dangerouslySetInnerHTML: { __html: rule },
-        nonce: renderer.styleElementAttributes?.nonce,
+        ...renderer.styleElementAttributes,
       },
     }),
   };

@@ -55,11 +55,10 @@ export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir
 // @public (undocumented)
 export type FluentProviderSlots = {
     root: Slot<'div'>;
-    serverStyle?: Slot<'style'>;
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots & FluentProviderInternalSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
 };
