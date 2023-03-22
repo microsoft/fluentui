@@ -390,7 +390,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [renderChild]);
+  }, [renderChild, updateChildRows]);
 
   // Ensure we have run through and updated the whole size list array at least once.
   initializeSizeArray();
@@ -433,14 +433,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       required: true,
       defaultProps: {
         role: 'none',
-        key: 'fui-virtualizer-before',
       },
     }),
     afterContainer: resolveShorthand(props.afterContainer, {
       required: true,
       defaultProps: {
         role: 'none',
-        key: 'fui-virtualizer-after',
       },
     }),
     beforeBufferHeight: isFullyInitialized ? calculateBefore() : 0,

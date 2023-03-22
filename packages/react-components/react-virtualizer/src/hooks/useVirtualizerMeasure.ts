@@ -25,7 +25,7 @@ export const useStaticVirtualizerMeasure = (
   const { virtualizerLength, bufferItems, bufferSize } = state;
 
   // The ref the user sets on their scrollView - Defaults to document.body to ensure no null on init
-  const container: React.MutableRefObject<HTMLElement | null> = React.useRef<HTMLElement | null>(null);
+  const container = React.useRef<HTMLElement | null>(null);
 
   const resizeCallback = () => {
     if (!container.current) {
