@@ -1,3 +1,4 @@
+/* eslint-disable @fluentui/ban-instanceof-html-element */
 import { isHTMLElement } from './isHTMLElement';
 
 class CustomHTMLElement {

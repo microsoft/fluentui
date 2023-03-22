@@ -5,7 +5,7 @@ import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
 export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string> = {
   root: 'fui-DatePicker',
-  inputField: 'fui-DatePicker__inputField',
+  field: 'fui-DatePicker__field',
   wrapper: 'fui-DatePicker__wrapper',
   popover: 'fui-DatePicker__popover',
   popoverSurface: 'fui-DatePicker__popoverSurface',
@@ -67,7 +67,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     state.input.className,
   );
 
-  state.inputField.className = mergeClasses(datePickerClassNames.inputField, state.inputField.className);
+  state.field.className = mergeClasses(datePickerClassNames.field, state.field.className);
 
   state.popoverSurface.className = mergeClasses(datePickerClassNames.popoverSurface, state.popoverSurface.className);
 

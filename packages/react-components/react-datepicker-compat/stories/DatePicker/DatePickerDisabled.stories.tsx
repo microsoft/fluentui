@@ -19,7 +19,7 @@ export const Disabled = () => {
       <DatePicker
         disabled
         placeholder="Select a date..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         // DatePicker uses English strings by default. For localized apps, you must override this prop.
         strings={defaultDatePickerStrings}
       />
@@ -28,7 +28,7 @@ export const Disabled = () => {
         disabled
         label="Disabled (with label)"
         placeholder="Select a date..."
-        ariaLabel="Select a date"
+        aria-label="Select a date"
         strings={defaultDatePickerStrings}
       />
     </div>
