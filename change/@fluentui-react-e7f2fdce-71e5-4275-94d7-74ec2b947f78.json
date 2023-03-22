@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Calculating correct gap space when Tooltips have isBeakVisible set to false.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
