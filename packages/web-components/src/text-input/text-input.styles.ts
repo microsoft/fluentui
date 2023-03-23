@@ -1,139 +1,233 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  borderRadiusMedium,
+  colorCompoundBrandStroke,
+  colorCompoundBrandStrokePressed,
+  colorNeutralBackground1,
+  colorNeutralBackground3,
+  colorNeutralBackgroundInverted,
+  colorNeutralForeground1,
+  colorNeutralForeground3,
+  colorNeutralForeground4,
+  colorNeutralForegroundDisabled,
+  colorNeutralForegroundInverted,
+  colorNeutralStroke1,
+  colorNeutralStroke1Hover,
+  colorNeutralStroke1Pressed,
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeDisabled,
+  colorTransparentBackground,
+  colorTransparentStroke,
+  colorTransparentStrokeInteractive,
+  curveAccelerateMid,
+  curveDecelerateMid,
+  durationNormal,
+  durationUltraFast,
   fontFamilyBase,
-  fontFamilyMonospace,
-  fontFamilyNumeric,
-  fontSizeBase100,
-  fontSizeBase200,
   fontSizeBase300,
-  fontSizeBase400,
-  fontSizeBase500,
-  fontSizeBase600,
-  fontSizeHero1000,
-  fontSizeHero700,
-  fontSizeHero800,
-  fontSizeHero900,
-  fontWeightBold,
-  fontWeightMedium,
   fontWeightRegular,
-  fontWeightSemibold,
-  lineHeightBase100,
-  lineHeightBase200,
   lineHeightBase300,
-  lineHeightBase400,
-  lineHeightBase500,
-  lineHeightBase600,
-  lineHeightHero1000,
-  lineHeightHero700,
-  lineHeightHero800,
-  lineHeightHero900,
+  shadow2,
+  spacingHorizontalMNudge,
+  spacingHorizontalXS,
+  spacingHorizontalXXS,
+  spacingVerticalS,
+  spacingVerticalXS,
+  strokeWidthThick,
+  strokeWidthThin,
 } from '../theme/design-tokens.js';
 
-/** Text styles
+/** TextInput styles
  * @public
  */
 export const styles = css`
-  ${display('inline')}
+  ${display('inline-flex')}
 
   :host {
-    contain: content;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
-
-  ::slotted(*) {
+  .label {
+    line-height: ${lineHeightBase300};
+    font-size: ${fontSizeBase300};
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightRegular};
+    color: ${colorNeutralForeground1};
+    padding-bottom: ${spacingVerticalXS};
+  }
+  .root {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
+    border-bottom-color: ${colorNeutralStrokeAccessible};
+    border-radius: ${borderRadiusMedium};
+    gap: ${spacingHorizontalXXS};
+    padding: 0 ${spacingHorizontalMNudge};
+    width: 100%;
+    position: relative;
+  }
+  .control {
+    box-sizing: border-box;
+    height: 32px;
+    vertical-align: center;
+    background: transparent;
+    color: ${colorNeutralForeground1};
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
-    text-align: start;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-    margin: 0;
-    display: inline;
+    line-height: ${lineHeightBase300};
+    border-radius: ${borderRadiusMedium};
+    background: ${colorTransparentBackground};
+    border: none;
+    width: 100%;
+  }
+  .control:focus-visible {
+    outline: 0;
+    border: 0;
+  }
+  .control::placeholder {
+    color: ${colorNeutralForeground4};
+  }
+  :host ::slotted([slot='start']) {
+    padding-right: ${spacingHorizontalXXS};
+  }
+  :host ::slotted([slot='end']) {
+    padding-left: ${spacingHorizontalXXS};
+    gap: ${spacingHorizontalXS};
+  }
+  :host ::slotted([slot='start']),
+  :host ::slotted([slot='end']) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${colorNeutralForeground3};
   }
 
-  :host([nowrap]) ::slotted(*) {
-    white-space: nowrap;
-    overflow: hidden;
+  :host(:hover) .root {
+    border-color: ${colorNeutralStroke1Hover};
+    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host([truncate]) ::slotted(*) {
-    text-overflow: ellipsis;
+  :host(:active) .root {
+    border-color: ${colorNeutralStroke1Pressed};
   }
-  :host([block]),
-  :host([block]) ::slotted(*) {
-    display: block;
+
+  :host(:focus-within:not([disabled])) .control {
+    color: ${colorNeutralForeground1};
   }
-  :host([italic]) ::slotted(*) {
-    font-style: italic;
+  :host(:focus-within:not([disabled])) .root {
+    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
+    border-bottom-width: ${strokeWidthThick};
   }
-  :host([underline]) ::slotted(*) {
-    text-decoration-line: underline;
+
+  .root::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    height: max(2px, ${borderRadiusMedium});
+    border-bottom-left-radius: ${borderRadiusMedium};
+    border-bottom-right-radius: ${borderRadiusMedium};
+    border-bottom: 2px solid ${colorCompoundBrandStroke};
+    clip-path: inset(calc(100% - 2px) 0px 0px);
+    transform: scaleX(0);
+    transition-property: transform;
+    transition-duration: ${durationUltraFast};
+    transition-delay: ${curveAccelerateMid};
   }
-  :host([strikethrough]) ::slotted(*) {
-    text-decoration-line: line-through;
+
+  .root:focus-within::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: ${durationNormal};
+    transition-delay: ${curveDecelerateMid};
   }
-  :host([underline][strikethrough]) ::slotted(*) {
-    text-decoration-line: line-through underline;
+
+  .root:focus-within:active::after {
+    border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
-  :host([size='100']) ::slotted(*) {
-    font-size: ${fontSizeBase100};
-    line-height: ${lineHeightBase100};
+
+  :host([layout='inline']) {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
   }
-  :host([size='200']) ::slotted(*) {
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
+  :host([layout='inline']) .root,
+  :host([layout='inline']) .control {
+    width: fit-content;
   }
-  :host([size='400']) ::slotted(*) {
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
+  :host([layout='inline']) .label {
+    padding-inline-end: 12px;
   }
-  :host([size='500']) ::slotted(*) {
-    font-size: ${fontSizeBase500};
-    line-height: ${lineHeightBase500};
+
+  :host([appearance='underline']) .root {
+    background: ${colorTransparentBackground};
+    border: 0;
+    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
   }
-  :host([size='600']) ::slotted(*) {
-    font-size: ${fontSizeBase600};
-    line-height: ${lineHeightBase600};
+  :host([appearance='underline']:hover) .root {
+    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessibleHover};
   }
-  :host([size='700']) ::slotted(*) {
-    font-size: ${fontSizeHero700};
-    line-height: ${lineHeightHero700};
+  :host([appearance='underline']:active) .root {
+    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([size='800']) ::slotted(*) {
-    font-size: ${fontSizeHero800};
-    line-height: ${lineHeightHero800};
+  :host([appearance='underline']:focus-within) .root {
+    border: 0;
+    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([size='900']) ::slotted(*) {
-    font-size: ${fontSizeHero900};
-    line-height: ${lineHeightHero900};
+  :host([appearance='underline'][disabled]) .root {
+    border-bottom-color: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
-  :host([size='1000']) ::slotted(*) {
-    font-size: ${fontSizeHero1000};
-    line-height: ${lineHeightHero1000};
+
+  :host([appearance='filledLighter']) .root {
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    background: ${colorNeutralBackground1};
+    box-shadow: ${shadow2};
   }
-  :host([font='monospace']) ::slotted(*) {
-    font-family: ${fontFamilyMonospace};
+  :host([appearance='filledLighter']:hover):not(:active) .root {
+    border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([font='numeric']) ::slotted(*) {
-    font-family: ${fontFamilyNumeric};
+  :host([appearance='filledLighter']:active) .root {
+    border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([weight='medium']) ::slotted(*) {
-    font-weight: ${fontWeightMedium};
+
+  :host([appearance='filledDarker']) .root {
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    background: ${colorNeutralBackground3};
+    box-shadow: ${shadow2};
   }
-  :host([weight='semibold']) ::slotted(*) {
-    font-weight: ${fontWeightSemibold};
+  :host([appearance='filledDarker']:hover):not(:active) .root {
+    border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([weight='bold']) ::slotted(*) {
-    font-weight: ${fontWeightBold};
+  :host([appearance='filledDarker']:active) .root {
+    border-color: ${colorTransparentStrokeInteractive};
+    background: ${colorNeutralBackground3};
   }
-  :host([align='center']) ::slotted(*) {
-    text-align: center;
+
+  :host([disabled]) .root {
+    background: ${colorTransparentBackground};
+    border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
-  :host([align='end']) ::slotted(*) {
-    text-align: end;
+  :host([disabled]) .control::placeholder {
+    color: ${colorNeutralForegroundDisabled};
   }
-  :host([align='justify']) ::slotted(*) {
-    text-align: justify;
+  :host([disabled]) .control::placeholder,
+  :host([disabled]) ::slotted([slot='start']),
+  :host([disabled]) ::slotted([slot='end']) {
+    color: ${colorNeutralForegroundDisabled};
+  }
+
+  ::selection {
+    color: ${colorNeutralForegroundInverted};
+    background-color: ${colorNeutralBackgroundInverted};
   }
 `;

@@ -1,7 +1,8 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import type { Text } from './text-input.js';
+import { textFieldTemplate } from '@microsoft/fast-foundation';
+import type { TextInput } from './text-input.js';
 
 /**
  * @internal
  */
-export const template: ElementViewTemplate<Text> = html<Text>`<slot></slot>`;
+export const template: ElementViewTemplate<TextInput> = textFieldTemplate({});

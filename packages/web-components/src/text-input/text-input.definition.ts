@@ -1,5 +1,5 @@
 import { FluentDesignSystem } from '../fluent-design-system.js';
-import { Text } from './text-input.js';
+import { TextInput } from './text-input.js';
 import { styles } from './text-input.styles.js';
 import { template } from './text-input.template.js';
 
@@ -11,7 +11,7 @@ import { template } from './text-input.template.js';
  * @remarks
  * HTML Element: \<fluent-text-input\>
  */
-export const definition = Text.compose({
+export const definition = TextInput.compose({
   name: `${FluentDesignSystem.prefix}-text-input`,
   template,
   styles,
