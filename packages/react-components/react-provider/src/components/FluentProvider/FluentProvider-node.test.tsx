@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
-import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { FluentProvider } from './FluentProvider';
 import * as prettier from 'prettier';
 import { createDOMRenderer } from '@griffel/core';
@@ -52,11 +52,9 @@ describe('FluentProvider (node)', () => {
     });
 
     const html = ReactDOM.renderToStaticMarkup(
-      <SSRProvider>
-        <RendererProvider renderer={renderer}>
-          <FluentProvider theme={testTheme} />
-        </RendererProvider>
-      </SSRProvider>,
+      <RendererProvider renderer={renderer}>
+        <FluentProvider theme={testTheme} />
+      </RendererProvider>,
     );
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
