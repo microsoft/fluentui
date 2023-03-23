@@ -82,6 +82,22 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
+  - job: NX_Affected
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml
+
+      - script: |
+          yarn install
+        displayName: yarn
+
+      - script: |
+          yarn nx affected --targets=build,test,lint,type-check --parallel=8 --base=$(targetBranch)
+        displayName: build, test, lint, type-check
+
+      - template: .devops/templates/cleanup.yml
+
   - job: Nx_Tests
     workspace:
       clean: all
