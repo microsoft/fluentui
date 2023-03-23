@@ -1,3 +1,10 @@
+import {
+  colorCompoundBrandForeground1,
+  colorCompoundBrandStroke,
+  colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
+  colorNeutralStrokeAccessible,
+} from '@fluentui/web-components';
 import { attr } from '@microsoft/fast-element';
 import { FASTRadioGroup } from '@microsoft/fast-foundation';
 
@@ -16,21 +23,28 @@ export class RadioGroup extends FASTRadioGroup {
   @attr({ mode: 'boolean' })
   public stacked: boolean = false;
 
-  protected disableChanged(): void {
+  protected createLocalTokens(): void {
     if (!this.$fastController.isConnected) {
       return;
     }
-    this.slottedRadioButtons.forEach((item: HTMLElement, index: number) => {
-      if (this.disabled) {
-        item.setAttribute('disabled', '');
-      }
-    });
+
+    if (this.disabled) {
+      this.style.setProperty('--control-border-color-checked', `${colorNeutralForegroundDisabled.$value}`);
+      this.style.setProperty('--control-border-color', `${colorNeutralForegroundDisabled.$value}`);
+      this.style.setProperty('--checked-indicator-background-color', `${colorNeutralForegroundDisabled.$value}`);
+      this.style.setProperty('--label-color', `${colorNeutralForegroundDisabled.$value}`);
+    }
   }
 
   protected slottedRadioButtonsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
     super.slottedRadioButtonsChanged(oldValue, newValue);
+    this.style.setProperty('--control-border-color-checked', `${colorCompoundBrandStroke.$value}`);
+    this.style.setProperty('--control-border-color', `${colorNeutralStrokeAccessible.$value}`);
+    this.style.setProperty('--checked-indicator-background-color', `${colorCompoundBrandForeground1.$value}`);
+    this.style.setProperty('--label-color', `${colorNeutralForeground3.$value}`);
+
     if (this.disabled) {
-      this.disableChanged();
+      this.createLocalTokens();
     }
   }
 }
