@@ -96,7 +96,7 @@ export const useFluentProvider_unstable = (
 
     serverStyleProps: {
       cssRule: rule,
-      rendererAttributes: {
+      attributes: {
         ...renderer.styleElementAttributes,
         [FUI_THEME_STYLE_ATTR]: '',
         id: styleTagId,

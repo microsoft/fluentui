@@ -57,9 +57,9 @@ export type FluentProviderState = ComponentState<FluentProviderSlots> &
        */
       cssRule: string;
       /**
-       * Configured by the Griffel renderer
+       * Additional attributes applied to the style element
        */
-      rendererAttributes: Record<string, string>;
+      attributes: Record<string, string>;
     };
   };
 

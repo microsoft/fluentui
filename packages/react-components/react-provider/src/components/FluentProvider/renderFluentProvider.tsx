@@ -42,7 +42,7 @@ export const renderFluentProvider_unstable = (
                         // which can lead to invalid CSS.
                         // eslint-disable-next-line react/no-danger
                         dangerouslySetInnerHTML={{ __html: state.serverStyleProps.cssRule }}
-                        {...state.serverStyleProps.rendererAttributes}
+                        {...state.serverStyleProps.attributes}
                       />
                     )}
                     {slotProps.root.children}

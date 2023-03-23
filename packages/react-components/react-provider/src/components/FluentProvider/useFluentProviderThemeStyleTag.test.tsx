@@ -1,8 +1,7 @@
-import { createDOMRenderer, RendererProvider } from '@griffel/react';
+import { createDOMRenderer } from '@griffel/react';
 import type { Theme } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
-import * as React from 'react';
 
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import { FUI_THEME_STYLE_ATTR } from '../../constants';
