@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Card, CardHeader, CardFooter } from '@fluentui/react-components/unstable';
-import { Button } from '@fluentui/react-components';
+import { Card, CardHeader, CardFooter, Button } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
@@ -33,7 +32,7 @@ const CardTemplate: React.FunctionComponent<CardTemplateProps> = ({
     >
       <CardHeader
         image={{ as: 'img', src: '#', alt: 'Face of a person' }}
-        header={{ as: 'h3', children: name }}
+        header={<h3>{name}</h3>}
         description={`Last seen ${lastSeen} ago.`}
       />
       <CardFooter>
