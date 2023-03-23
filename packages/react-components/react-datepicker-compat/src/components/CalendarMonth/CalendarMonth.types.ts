@@ -72,19 +72,19 @@ export interface CalendarMonthProps {
 
   /**
    * Whether the month picker should highlight the current month
-   * @defaultvalue false
+   * @default false
    */
   highlightCurrentMonth?: boolean;
 
   /**
    * Whether the month picker should highlight the selected month
-   * @defaultvalue false
+   * @default false
    */
   highlightSelectedMonth?: boolean;
 
   /**
    * Allows all dates and buttons to be focused, including disabled ones
-   * @defaultvalue false
+   * @default false
    */
   allFocusable?: boolean;
 
@@ -95,7 +95,7 @@ export interface CalendarMonthProps {
 
   /**
    * Whether the year picker is hidden
-   * @defaultvalue false
+   * @default false
    */
   yearPickerHidden?: boolean;
 

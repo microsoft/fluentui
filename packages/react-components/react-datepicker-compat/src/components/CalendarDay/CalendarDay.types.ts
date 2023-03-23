@@ -48,7 +48,7 @@ export interface CalendarDayProps extends CalendarDayGridProps {
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   * @defaultvalue false
+   * @default false
    */
   showWeekNumbers?: boolean;
 
@@ -59,7 +59,7 @@ export interface CalendarDayProps extends CalendarDayGridProps {
 
   /**
    * Whether the calendar should show 6 weeks by default.
-   * @defaultvalue false
+   * @default false
    */
   showSixWeeksByDefault?: boolean;
 
@@ -80,13 +80,13 @@ export interface CalendarDayProps extends CalendarDayGridProps {
 
   /**
    * Whether the close button should be shown or not
-   * @defaultvalue false
+   * @default false
    */
   showCloseButton?: boolean;
 
   /**
    * Allows all dates and buttons to be focused, including disabled ones
-   * @defaultvalue false
+   * @default false
    */
   allFocusable?: boolean;
 }

@@ -62,37 +62,37 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * The date range type indicating how many days should be selected as the user
    * selects days
-   * @defaultValue DateRangeType.Day
+   * @default DateRangeType.Day
    */
   dateRangeType?: DateRangeType;
 
   /**
    * The first day of the week for your locale.
-   * @defaultvalue DayOfWeek.Sunday
+   * @default DayOfWeek.Sunday
    */
   firstDayOfWeek?: DayOfWeek;
 
   /**
    * Defines when the first week of the year should start.
-   * @defaultvalue FirstWeekOfYear.FirstDay
+   * @default FirstWeekOfYear.FirstDay
    */
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
-   * @defaultvalue true
+   * @default true
    */
   isMonthPickerVisible?: boolean;
 
   /**
    * Whether the day picker is shown beside the month picker or hidden.
-   * @defaultvalue true
+   * @default true
    */
   isDayPickerVisible?: boolean;
 
   /**
    * Show month picker on top of date picker when visible.
-   * @defaultvalue false
+   * @default false
    */
   showMonthPickerAsOverlay?: boolean;
 
@@ -103,7 +103,7 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   * @defaultvalue false
+   * @default false
    */
   showWeekNumbers?: boolean;
 
@@ -134,38 +134,38 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
 
   /**
    * Whether the calendar should show 6 weeks by default.
-   * @defaultvalue false
+   * @default false
    */
   showSixWeeksByDefault?: boolean;
 
   /**
    * The days that are selectable when `dateRangeType` is `WorkWeek`.
    * If `dateRangeType` is not `WorkWeek` this property does nothing.
-   * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
+   * @default [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
 
   /**
    * Whether the month picker should highlight the current month
-   * @defaultvalue false
+   * @default false
    */
   highlightCurrentMonth?: boolean;
 
   /**
    * Whether the month picker should highlight the selected month
-   * @defaultvalue false
+   * @default false
    */
   highlightSelectedMonth?: boolean;
 
   /**
    * Whether the close button should be shown or not
-   * @defaultvalue false
+   * @default false
    */
   showCloseButton?: boolean;
 
   /**
    * Allows all dates and buttons to be focused, including disabled ones
-   * @defaultvalue false
+   * @default false
    */
   allFocusable?: boolean;
 }

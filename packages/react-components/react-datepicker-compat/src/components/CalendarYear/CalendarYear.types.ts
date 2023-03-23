@@ -83,13 +83,13 @@ export interface CalendarYearProps {
 
   /**
    * Whether the year picker should highlight the current year
-   * @defaultvalue false
+   * @default false
    */
   highlightCurrentYear?: boolean;
 
   /**
    * Whether the year picker should highlight the selected year
-   * @defaultvalue false
+   * @default false
    */
   highlightSelectedYear?: boolean;
 
