@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Button, CounterBadge } from '@fluentui/react-components';
 import { Edit20Regular, FluentIconsProps, Important16Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+import story from './TreeItemLayoutAside.md';
 
 const iconStyleProps: FluentIconsProps = {
   primaryFill: 'red',
@@ -23,7 +24,7 @@ const Actions = () => (
 
 export const Aside = () => (
   <Tree aria-label="Tree">
-    <TreeItem actions={<Actions />}>
+    <TreeItem>
       <TreeItemLayout aside={<RenderAside />}>level 1, item 1</TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
@@ -37,7 +38,7 @@ export const Aside = () => (
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem actions={<Actions />}>
+    <TreeItem>
       <TreeItemLayout aside={<RenderAside />}>level 1, item 2</TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
@@ -67,3 +68,11 @@ export const Aside = () => (
     </TreeItem>
   </Tree>
 );
+
+Aside.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
+};

@@ -7,6 +7,7 @@ import {
   TreeItemProps,
   useTreeContext_unstable,
 } from '@fluentui/react-tree';
+import story from './TreeItemWithInlineStyle.md';
 
 const TreeItem = (props: TreeItemProps) => {
   const level = useTreeContext_unstable(ctx => ctx.level);
@@ -45,4 +46,12 @@ export const WithInlineStyle = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+WithInlineStyle.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

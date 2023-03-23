@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Avatar, makeStyles } from '@fluentui/react-components';
+import { Avatar, makeStyles, tokens } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemPersonaLayout } from '@fluentui/react-tree';
+import story from './TreeItemPersonaLayoutReadUnread.md';
 
 const useStyles = makeStyles({
   unread: {
-    fontWeight: 'bold',
+    fontWeight: tokens.fontWeightSemibold,
   },
 });
 
@@ -28,4 +29,12 @@ export const ReadUnread = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+ReadUnread.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

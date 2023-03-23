@@ -14,6 +14,7 @@ import {
 } from '@fluentui/react-components';
 import { Tree, TreeItem, TreeItemPersonaLayout } from '@fluentui/react-tree';
 import { Flag20Regular, FluentIconsProps, Important16Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
+import story from './TreeItemPersonaLayout.md';
 
 const useBadgeStyles = makeStyles({
   base: {
@@ -131,4 +132,12 @@ export const TreePersonaLayout = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+TreePersonaLayout.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };
