@@ -1,5 +1,4 @@
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { GriffelRenderer } from '@griffel/react';
 import * as React from 'react';
 
 import type { FluentProviderState } from './FluentProvider.types';

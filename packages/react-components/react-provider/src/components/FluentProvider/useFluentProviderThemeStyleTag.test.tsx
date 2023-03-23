@@ -1,4 +1,3 @@
-import { createDOMRenderer } from '@griffel/react';
 import type { Theme } from '@fluentui/react-theme';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
@@ -27,9 +26,12 @@ describe('useFluentProviderThemeStyleTag', () => {
 
   it('should render style tag', () => {
     // Act
-    const renderer = createDOMRenderer(document);
     const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
+      useFluentProviderThemeStyleTag({
+        theme: defaultTheme,
+        targetDocument: document,
+        rendererAttributes: {},
+      }),
     );
 
     // Assert
@@ -38,9 +40,8 @@ describe('useFluentProviderThemeStyleTag', () => {
 
   it('should remove style tag on unmount', () => {
     // Arrange
-    const renderer = createDOMRenderer(document);
     const { result, unmount } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, rendererAttributes: {} }),
     );
 
     // Act
@@ -52,9 +53,8 @@ describe('useFluentProviderThemeStyleTag', () => {
 
   it('should render css variables in theme', () => {
     // Act
-    const renderer = createDOMRenderer(document);
     const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, rendererAttributes: {} }),
     );
 
     // Assert
@@ -69,9 +69,8 @@ describe('useFluentProviderThemeStyleTag', () => {
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;
-    const renderer = createDOMRenderer(document);
     const { result, rerender } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme, targetDocument: document, renderer }),
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, rendererAttributes: {} }),
     );
 
     // Act
@@ -87,12 +86,12 @@ describe('useFluentProviderThemeStyleTag', () => {
   });
 
   it('should update style tag on theme change', () => {
-    const renderer = createDOMRenderer(document, {
-      styleElementAttributes: { nonce: 'random' },
-    });
-
     const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
+      useFluentProviderThemeStyleTag({
+        theme: defaultTheme,
+        targetDocument: document,
+        rendererAttributes: { nonce: 'random' },
+      }),
     );
     const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
 
@@ -108,8 +107,7 @@ describe('useFluentProviderThemeStyleTag', () => {
     targetDocument.body.append(ssrStyleElement);
 
     jest.spyOn(targetDocument, 'createElement');
-    const renderer = createDOMRenderer(targetDocument);
-    renderHook(() => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument, renderer }));
+    renderHook(() => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument, rendererAttributes: {} }));
 
     expect(targetDocument.body.querySelector('style')).toBeNull();
     expect(targetDocument.head.querySelectorAll('style').length).toBe(1);
