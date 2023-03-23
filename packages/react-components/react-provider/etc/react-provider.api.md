@@ -7,7 +7,6 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
-import { GriffelRenderer } from '@griffel/react';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -82,7 +81,7 @@ export const useFluentProviderStyles_unstable: (state: FluentProviderState) => F
 
 // @internal
 export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & {
-    renderer: GriffelRenderer;
+    rendererAttributes: Record<string, string>;
 }) => {
     styleTagId: string;
     rule: string;
