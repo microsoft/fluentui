@@ -118,7 +118,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       },
     };
     return (
-      <FocusZone {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}>
+      <FocusZone
+        {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends', 'aria-multiselectable': true })}
+      >
         <OverflowSet
           items={data.primary}
           overflowItems={data.overflow}
@@ -205,7 +207,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     });
     const hoverCardData = (
       <FocusZone
-        {...(allowFocusOnLegends && { role: 'listbox' })}
+        {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends', 'aria-multiselectable': true })}
         direction={FocusZoneDirection.vertical}
         {...this.props.focusZonePropsInHoverCard}
         className={classNames.hoverCardRoot}
@@ -334,7 +336,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...(allowFocusOnLegends && {
           'aria-selected': this.state.selectedLegend === legend.title,
           role: 'option',
-          'aria-label': `${legend.title} selected`,
+          'aria-label': `${legend.title}`,
           'aria-setsize': data['aria-setsize'],
           'aria-posinset': data['aria-posinset'],
         })}
