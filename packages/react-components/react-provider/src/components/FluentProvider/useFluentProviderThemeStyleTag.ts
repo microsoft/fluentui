@@ -1,5 +1,5 @@
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useRenderer_unstable } from '@griffel/react';
+import { GriffelRenderer } from '@griffel/react';
 import * as React from 'react';
 import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
@@ -46,10 +46,11 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  * @internal
  * @returns CSS class to apply the rule
  */
-export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
-  const { targetDocument, theme } = options;
+export const useFluentProviderThemeStyleTag = (
+  options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { renderer: GriffelRenderer },
+) => {
+  const { targetDocument, theme, renderer } = options;
 
-  const renderer = useRenderer_unstable();
   const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
 
   const styleTagId = useId(fluentProviderClassNames.root);
@@ -99,7 +100,7 @@ function useHandleSSRStyleElements(targetDocument: Document | undefined | null, 
       return;
     }
 
-    const themeStyleElement = targetDocument.getElementById(`[${FUI_THEME_STYLE_ATTR}]`);
+    const themeStyleElement = targetDocument.getElementById(styleTagId);
     if (themeStyleElement) {
       targetDocument.head.append(themeStyleElement);
     }

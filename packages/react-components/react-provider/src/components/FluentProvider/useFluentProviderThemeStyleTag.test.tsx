@@ -29,8 +29,9 @@ describe('useFluentProviderThemeStyleTag', () => {
 
   it('should render style tag', () => {
     // Act
+    const renderer = createDOMRenderer(document);
     const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
     );
 
     // Assert
@@ -39,8 +40,9 @@ describe('useFluentProviderThemeStyleTag', () => {
 
   it('should remove style tag on unmount', () => {
     // Arrange
+    const renderer = createDOMRenderer(document);
     const { result, unmount } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
     );
 
     // Act
@@ -52,8 +54,9 @@ describe('useFluentProviderThemeStyleTag', () => {
 
   it('should render css variables in theme', () => {
     // Act
+    const renderer = createDOMRenderer(document);
     const { result } = renderHook(() =>
-      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
     );
 
     // Assert
@@ -68,7 +71,10 @@ describe('useFluentProviderThemeStyleTag', () => {
   it('should update style tag on theme change', () => {
     // Arrange
     let theme = defaultTheme;
-    const { result, rerender } = renderHook(() => useFluentProviderThemeStyleTag({ theme, targetDocument: document }));
+    const renderer = createDOMRenderer(document);
+    const { result, rerender } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme, targetDocument: document, renderer }),
+    );
 
     // Act
     theme = { 'css-variable-update': 'xxx' } as unknown as Theme;
@@ -87,9 +93,8 @@ describe('useFluentProviderThemeStyleTag', () => {
       styleElementAttributes: { nonce: 'random' },
     });
 
-    const { result } = renderHook(
-      () => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document }),
-      { wrapper: props => <RendererProvider renderer={renderer}>{props.children}</RendererProvider> },
+    const { result } = renderHook(() =>
+      useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument: document, renderer }),
     );
     const tag = document.getElementById(result.current.styleTagId) as HTMLStyleElement;
 
@@ -106,7 +111,8 @@ describe('useFluentProviderThemeStyleTag', () => {
     targetDocument.body.append(ssrStyleElement);
 
     jest.spyOn(targetDocument, 'createElement');
-    renderHook(() => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument }));
+    const renderer = createDOMRenderer(targetDocument);
+    renderHook(() => useFluentProviderThemeStyleTag({ theme: defaultTheme, targetDocument, renderer }));
 
     expect(targetDocument.body.querySelector('style')).toBeNull();
     expect(targetDocument.head.querySelectorAll('style').length).toBe(1);
