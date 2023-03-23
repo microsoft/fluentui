@@ -31,7 +31,7 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'di
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
     popover: NonNullable<Slot<Partial<PopoverProps>>>;
-    content: NonNullable<Slot<typeof PopoverSurface>>;
+    info: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
@@ -45,7 +45,7 @@ export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
 
 // @public
 export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
-    info?: InfoButtonProps['content'];
+    info?: InfoButtonProps['info'];
 };
 
 // @public (undocumented)
