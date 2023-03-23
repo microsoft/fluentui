@@ -5,7 +5,6 @@ import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType
 import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
-import { useAnimateBackwards } from './useAnimateBackwards';
 import { useWeeks } from './useWeeks';
 import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles';
 import { mergeClasses } from '@griffel/react';
@@ -29,6 +28,22 @@ function useDayRefs() {
   };
 
   return [daysRef, getSetRefCallback] as const;
+}
+
+function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
+  const previousNavigatedDateRef = React.useRef<Date | undefined>();
+  React.useEffect(() => {
+    previousNavigatedDateRef.current = weeks[0][0].originalDate;
+  });
+  const previousNavigatedDate = previousNavigatedDateRef.current;
+
+  if (!previousNavigatedDate || previousNavigatedDate.getTime() === weeks[0][0].originalDate.getTime()) {
+    return undefined;
+  } else if (previousNavigatedDate <= weeks[0][0].originalDate) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = props => {
