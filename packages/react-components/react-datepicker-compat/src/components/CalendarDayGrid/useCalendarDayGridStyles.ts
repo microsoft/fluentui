@@ -21,6 +21,9 @@ import { weekCornersClassNames } from './useWeekCornerStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 
+/**
+ * @internal
+ */
 export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = {
   wrapper: 'fui-CalendarDayGrid__wrapper',
   table: 'fui-CalendarDayGrid__table',
@@ -38,6 +41,9 @@ export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = 
   dayMarker: 'fui-CalendarDayGrid__dayMarker',
 };
 
+/**
+ * @internal
+ */
 export const extraCalendarDayGridClassNames = {
   hoverStyle: 'fui-CalendarDayGrid__hoverStyle',
   pressedStyle: 'fui-CalendarDayGrid__pressedStyle',
@@ -319,6 +325,8 @@ const useCornerBorderAndRadiusStyles = makeStyles({
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the CalendarDayGrid slots based on the state
  */
 export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStyleProps): CalendarDayGridStyles => {

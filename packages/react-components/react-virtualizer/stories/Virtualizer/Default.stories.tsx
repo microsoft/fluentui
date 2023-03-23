@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     width: '100%',
     height: '100%',
-    maxHeight: '750px',
+    maxHeight: '60vh',
   },
   child: {
     height: '100px',
@@ -23,9 +23,19 @@ export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
 
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: 100,
+  });
+
   return (
-    <div aria-label="Virtualizer Example" className={styles.container} role={'list'}>
-      <Virtualizer numItems={childLength} virtualizerLength={100} itemSize={100}>
+    <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
+      <Virtualizer
+        numItems={childLength}
+        virtualizerLength={virtualizerLength}
+        bufferItems={bufferItems}
+        bufferSize={bufferSize}
+        itemSize={100}
+      >
         {index => {
           return (
             <span

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: adds initial e2e cypress tests",
-  "packageName": "@fluentui/react-tree",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}
