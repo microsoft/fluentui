@@ -45,14 +45,14 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  * @returns CSS class to apply the rule
  */
 export const useFluentProviderThemeStyleTag = (
-  options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { renderer: GriffelRenderer },
+  options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & { rendererAttributes: Record<string, string> },
 ) => {
-  const { targetDocument, theme, renderer } = options;
+  const { targetDocument, theme, rendererAttributes } = options;
 
   const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
 
   const styleTagId = useId(fluentProviderClassNames.root);
-  const styleElementAttributes = renderer.styleElementAttributes;
+  const styleElementAttributes = rendererAttributes;
 
   const cssVarsAsString = React.useMemo(() => {
     return theme

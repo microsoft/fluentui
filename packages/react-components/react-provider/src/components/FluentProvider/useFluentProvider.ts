@@ -71,7 +71,11 @@ export const useFluentProvider_unstable = (
   }, []);
 
   const renderer = useRenderer_unstable();
-  const { styleTagId, rule } = useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument, renderer });
+  const { styleTagId, rule } = useFluentProviderThemeStyleTag({
+    theme: mergedTheme,
+    targetDocument,
+    rendererAttributes: renderer.styleElementAttributes ?? {},
+  });
   return {
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention
