@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@fluentui/react-utilities": "^9.7.2",
+    "@fluentui/react": "^8.106.8",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"
   },

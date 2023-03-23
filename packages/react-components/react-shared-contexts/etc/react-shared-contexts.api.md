@@ -22,6 +22,10 @@ export type CustomStyleHooksContextValue_unstable = {
     useAvatarGroupPopoverStyles_unstable: CustomStyleHook;
     useBadgeStyles_unstable: CustomStyleHook;
     useCounterBadgeStyles_unstable: CustomStyleHook;
+    useCardHeaderStyles_unstable: CustomStyleHook;
+    useCardStyles_unstable: CustomStyleHook;
+    useCardFooterStyles_unstable: CustomStyleHook;
+    useCardPreviewStyles_unstable: CustomStyleHook;
     usePresenceBadgeStyles_unstable: CustomStyleHook;
     useButtonStyles_unstable: CustomStyleHook;
     useCompoundButtonStyles_unstable: CustomStyleHook;

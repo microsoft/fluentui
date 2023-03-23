@@ -61,6 +61,10 @@ export type FluentProviderSlots = {
 export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'applyStylesToPortals' | 'customStyleHooks_unstable' | 'dir' | 'overrides_unstable'>> & {
     theme: ThemeContextValue_unstable;
     themeClassName: string;
+    serverStyleProps: {
+        cssRule: string;
+        attributes: Record<string, string>;
+    };
 };
 
 // @public
@@ -75,8 +79,13 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
 // @public
 export const useFluentProviderStyles_unstable: (state: FluentProviderState) => FluentProviderState;
 
-// @public
-export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => string;
+// @internal
+export const useFluentProviderThemeStyleTag: (options: Pick<FluentProviderState, 'theme' | 'targetDocument'> & {
+    rendererAttributes: Record<string, string>;
+}) => {
+    styleTagId: string;
+    rule: string;
+};
 
 // (No @packageDocumentation comment for this package)
 

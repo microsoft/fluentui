@@ -9,8 +9,8 @@ import {
   CustomStyleHooksProvider_unstable as CustomStyleHooksProvider,
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
-import { getSlots } from '@fluentui/react-utilities';
-import type { FluentProviderSlots, FluentProviderContextValues, FluentProviderState } from './FluentProvider.types';
+import { canUseDOM, getSlots } from '@fluentui/react-utilities';
+import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
 
 /**
  * Render the final JSX of FluentProvider
@@ -35,7 +35,18 @@ export const renderFluentProvider_unstable = (
             <TooltipVisibilityProvider value={contextValues.tooltip}>
               <TextDirectionProvider dir={contextValues.textDirection}>
                 <OverridesProvider value={contextValues.overrides_unstable}>
-                  <slots.root {...slotProps.root}>{state.root.children}</slots.root>
+                  <slots.root {...slotProps.root}>
+                    {canUseDOM() ? null : (
+                      <style
+                        // Using dangerous HTML because react can escape characters
+                        // which can lead to invalid CSS.
+                        // eslint-disable-next-line react/no-danger
+                        dangerouslySetInnerHTML={{ __html: state.serverStyleProps.cssRule }}
+                        {...state.serverStyleProps.attributes}
+                      />
+                    )}
+                    {slotProps.root.children}
+                  </slots.root>
                 </OverridesProvider>
               </TextDirectionProvider>
             </TooltipVisibilityProvider>
