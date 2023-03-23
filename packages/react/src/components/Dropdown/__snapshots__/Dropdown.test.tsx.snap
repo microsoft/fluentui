@@ -440,6 +440,15 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           &.is-multi-select:hover {
                             background-color: #edebe9;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
                           &:active:hover {
                             background-color: #f3f2f1;
                             color: #201f1e;
@@ -688,6 +697,15 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         }
                         &.is-multi-select:hover {
                           background-color: transparent;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                          -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                         &:active:hover {
                           background-color: #edebe9;
@@ -1665,6 +1683,15 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           &.is-multi-select:hover {
                             background-color: #edebe9;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
                           &:active:hover {
                             background-color: #f3f2f1;
                             color: #201f1e;
@@ -1829,6 +1856,15 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         }
                         &.is-multi-select:hover {
                           background-color: transparent;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                          -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                         &:active:hover {
                           background-color: #edebe9;
