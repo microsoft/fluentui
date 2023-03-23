@@ -21,8 +21,8 @@ _@bsunderhus @ling1726 @layershifter_
 - [Detailed Design or Proposal](#detailed-design-or-proposal)
   - [Option A: Custom JSX Pragma](#option-a-custom-jsx-pragma)
     - [Required changes](#required-changes)
-      - [slot method over resolveShorthand](#slot-method-over-resolveshorthand)
-      - [simplify render methods](#simplify-render-methods)
+      - [`slot` over `resolveShorthand`](#slot-over-resolveshorthand)
+      - [simplify render methods (get rid of `getSlots`)](#simplify-render-methods-get-rid-of-getslots)
       - [SlotComponent type & ComponentState change](#slotcomponent-type--componentstate-change)
         - [Introduction of the `SlotComponent` type.](#introduction-of-the-slotcomponent-type)
         - [ComponentState](#componentstate)
@@ -301,7 +301,7 @@ we can provide a custom exotic component, similar to what happens when `React.me
 We can split this proposal by the required changes that need to be done. They can be listed as:
 
 1. [slot method over resolveShorthand](#slot-method-over-resolveshorthand)
-2. [simplify render methods](#simplify-render-methods)
+2. [simplify render methods (get rid of `getSlots`)](#simplify-render-methods-get-rid-of-getslots)
 3. [SlotComponent type & ComponentState change](#slotcomponent-type--componentstate-change)
 4. [Styles hooks `.props` access](#styles-hooks-props-access)
 5. [Passing overrides from state to render when needed](#passing-overrides-from-state-to-render-when-needed)
@@ -342,10 +342,30 @@ const state = {
 };
 ```
 
-##### simplify render methods
+##### simplify render methods (get rid of `getSlots`)
 
 Since there'll be a custom pragma which will understand what is provided by `slot`, there's no need for `getSlots` anymore!
 The components provided by the `slot` method will be renderable, meaning we can simply use them in the render!
+
+Before:
+
+```tsx
+export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => {
+  const { slots, slotProps } = getSlots<AccordionHeaderSlots>(state);
+  return (
+    <slots.root {...slotProps.root}>
+      <slots.button {...slotProps.button}>
+        {state.expandIconPosition === 'start' && slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+        {slots.icon && <slots.icon {...slotProps.icon} />}
+        {slotProps.root.props.children}
+        {state.expandIconPosition === 'end' && slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+      </slots.button>
+    </slots.root>
+  );
+};
+```
+
+After:
 
 ```tsx
 export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
