@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Button, Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import story from './TreeItemActions.md';
 
 const RenderActions = () => {
   return (
@@ -71,3 +72,11 @@ export const Actions = () => (
     </TreeItem>
   </Tree>
 );
+
+Actions.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
+};

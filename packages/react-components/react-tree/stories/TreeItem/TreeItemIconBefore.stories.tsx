@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import { CheckboxChecked20Filled, CheckboxUnchecked20Filled } from '@fluentui/react-icons';
+import story from './TreeItemIconBefore.md';
 
 export const IconBefore = () => {
   return (
@@ -34,4 +35,12 @@ export const IconBefore = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+IconBefore.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

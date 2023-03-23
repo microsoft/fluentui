@@ -1,19 +1,10 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
-import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/components/Tree/Tree.types';
 
-export const ExpandCollapseIconOnly = () => {
-  const onOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    if (data.type === 'Click' || data.type === 'Enter') {
-      event.preventDefault();
-      // TODO: We might need to add the ID of the treeeItem to the event
-      alert('click on item');
-    }
-  };
-
+export const Default = () => {
   return (
-    <Tree aria-label="Tree" onOpenChange={onOpenChange}>
-      <TreeItem id="default-subtree-1">
+    <Tree aria-label="Tree">
+      <TreeItem>
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
           <TreeItem>
@@ -27,10 +18,10 @@ export const ExpandCollapseIconOnly = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem id="default-subtree-2">
+      <TreeItem>
         <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
-          <TreeItem id="default-subtree-2-1">
+          <TreeItem>
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
               <TreeItem>

@@ -1,24 +1,20 @@
 import * as React from 'react';
-import {
-  Tree,
-  TreeItem,
-  TreeItemLayout,
-  TreeItemId,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
-} from '@fluentui/react-tree';
-import story from './TreeControllingOpenAndClose.md';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/components/Tree/Tree.types';
+import story from './TreeItemExpandCollapseIconOnly.md';
 
-export const OpenItemsControlled = () => {
-  const [openItems, setOpenItems] = React.useState<TreeItemId[]>([]);
-  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenItems(curr =>
-      data.open ? [...curr, event.currentTarget.id] : curr.filter(id => id !== event.currentTarget.id),
-    );
+export const ExpandCollapseIconOnly = () => {
+  const onOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    if (data.type === 'Click' || data.type === 'Enter') {
+      event.preventDefault();
+      // TODO: We might need to add the ID of the treeeItem to the event
+      alert('click on item');
+    }
   };
+
   return (
-    <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
-      <TreeItem id="tree-item-1">
+    <Tree aria-label="Tree" onOpenChange={onOpenChange}>
+      <TreeItem id="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
           <TreeItem>
@@ -32,10 +28,10 @@ export const OpenItemsControlled = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem id="tree-item-2">
+      <TreeItem id="default-subtree-2">
         <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
-          <TreeItem id="tree-item-3">
+          <TreeItem id="default-subtree-2-1">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
               <TreeItem>
@@ -49,7 +45,7 @@ export const OpenItemsControlled = () => {
   );
 };
 
-OpenItemsControlled.parameters = {
+ExpandCollapseIconOnly.parameters = {
   docs: {
     description: {
       story,
