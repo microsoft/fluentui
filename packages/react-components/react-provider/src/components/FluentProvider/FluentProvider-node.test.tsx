@@ -6,7 +6,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
-import { SSRProvider } from '@fluentui/react-utilities';
+import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
 import { FluentProvider } from './FluentProvider';
 import * as prettier from 'prettier';
 import { createDOMRenderer } from '@griffel/core';
@@ -22,29 +22,12 @@ describe('FluentProvider (node)', () => {
     colorNeutralForeground1: 'black',
     colorNeutralBackground1: 'white',
   };
-  it('should render CSS variables as inline style when wrapped with SSRPRovider', () => {
-    const html = ReactDOM.renderToStaticMarkup(
-      <SSRProvider>
-        <FluentProvider theme={testTheme} />
-      </SSRProvider>,
-    );
 
-    expect(parseHTMLString(html)).toMatchInlineSnapshot(`
-      "<div
-        dir="ltr"
-        class="fui-FluentProvider fui-FluentProvider1 "
-      >
-        <style id="fui-FluentProvider1">
-          .fui-FluentProvider1 {
-            --colorNeutralForeground1: black;
-            --colorNeutralBackground1: white;
-          }
-        </style>
-      </div>"
-    `);
+  afterEach(() => {
+    resetIdsForTests();
   });
 
-  it('should not render CSS variables as inline style when not wrapped with SSRPRovider', () => {
+  it('should render CSS variables as inline style', () => {
     const html = ReactDOM.renderToStaticMarkup(<FluentProvider theme={testTheme} />);
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
