@@ -47,64 +47,72 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    align-items: center;
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     align-items: flex-start;
   }
+
   .label {
-    line-height: ${lineHeightBase300};
-    font-size: ${fontSizeBase300};
     font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase300};
     color: ${colorNeutralForeground1};
     padding-bottom: ${spacingVerticalXS};
   }
+
   .root {
-    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     flex-direction: row;
+    width: 100%;
+    padding: 0 ${spacingHorizontalMNudge};
+    position: relative;
+    box-sizing: border-box;
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusMedium};
     gap: ${spacingHorizontalXXS};
-    padding: 0 ${spacingHorizontalMNudge};
-    width: 100%;
-    position: relative;
   }
+
   .control {
-    box-sizing: border-box;
     height: 32px;
-    vertical-align: center;
-    background: transparent;
-    color: ${colorNeutralForeground1};
+    width: 100%;
+    box-sizing: border-box;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
+    color: ${colorNeutralForeground1};
     border-radius: ${borderRadiusMedium};
     background: ${colorTransparentBackground};
     border: none;
-    width: 100%;
+    background: transparent;
+    vertical-align: center;
   }
+
   .control:focus-visible {
     outline: 0;
     border: 0;
   }
+
   .control::placeholder {
     color: ${colorNeutralForeground4};
   }
+
   :host ::slotted([slot='start']) {
     padding-right: ${spacingHorizontalXXS};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${colorNeutralForeground3};
   }
+
   :host ::slotted([slot='end']) {
     padding-left: ${spacingHorizontalXXS};
     gap: ${spacingHorizontalXS};
-  }
-  :host ::slotted([slot='start']),
-  :host ::slotted([slot='end']) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,6 +123,7 @@ export const styles = css`
     border-color: ${colorNeutralStroke1Hover};
     border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
+
   :host(:active) .root {
     border-color: ${colorNeutralStroke1Pressed};
   }
@@ -122,13 +131,13 @@ export const styles = css`
   :host(:focus-within:not([disabled])) .control {
     color: ${colorNeutralForeground1};
   }
+
   :host(:focus-within:not([disabled])) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-width: ${strokeWidthThick};
   }
 
   .root::after {
-    box-sizing: border-box;
     content: '';
     position: absolute;
     left: -1px;
@@ -143,17 +152,6 @@ export const styles = css`
     transition-property: transform;
     transition-duration: ${durationUltraFast};
     transition-delay: ${curveAccelerateMid};
-  }
-
-  .root:focus-within::after {
-    transform: scaleX(1);
-    transition-property: transform;
-    transition-duration: ${durationNormal};
-    transition-delay: ${curveDecelerateMid};
-  }
-
-  .root:focus-within:active::after {
-    border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
 
   :host([layout='inline']) {
@@ -180,7 +178,7 @@ export const styles = css`
   :host([appearance='underline']:active) .root {
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([appearance='underline']:focus-within) .root {
+  :host([appearance='underline']):focus-within .root {
     border: 0;
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessiblePressed};
   }
@@ -188,27 +186,23 @@ export const styles = css`
     border-bottom-color: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
 
-  :host([appearance='filledLighter']) .root {
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    background: ${colorNeutralBackground1};
-    box-shadow: ${shadow2};
-  }
-  :host([appearance='filledLighter']:hover):not(:active) .root {
-    border-color: ${colorTransparentStrokeInteractive};
-  }
-  :host([appearance='filledLighter']:active) .root {
-    border-color: ${colorTransparentStrokeInteractive};
-  }
-
+  :host([appearance='filledLighter']) .root,
   :host([appearance='filledDarker']) .root {
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    background: ${colorNeutralBackground3};
     box-shadow: ${shadow2};
   }
-  :host([appearance='filledDarker']:hover):not(:active) .root {
+  :host([appearance='filledLighter']) .root {
+    background: ${colorNeutralBackground1};
+  }
+  :host([appearance='filledDarker']) .root {
+    background: ${colorNeutralBackground3};
+  }
+  :host([appearance='filledLighter']):hover:not(:active) .root,
+  :host([appearance='filledDarker']):hover:not(:active) .root {
     border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([appearance='filledDarker']:active) .root {
+  :host([appearance='filledLighter']):active .root,
+  :host([appearance='filledDarker']):active .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
   }
@@ -217,13 +211,19 @@ export const styles = css`
     background: ${colorTransparentBackground};
     border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
-  :host([disabled]) .control::placeholder {
-    color: ${colorNeutralForegroundDisabled};
-  }
   :host([disabled]) .control::placeholder,
   :host([disabled]) ::slotted([slot='start']),
   :host([disabled]) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
+  }
+
+  :host(:focus-within) .root::after {
+    transform: scaleX(1);
+    transition: transform ${durationNormal} ${curveDecelerateMid};
+  }
+
+  :host(:focus-within:active) .root::after {
+    border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
 
   ::selection {
