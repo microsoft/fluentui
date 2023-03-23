@@ -70,21 +70,19 @@ export const useFluentProviderThemeStyleTag = (
   useHandleSSRStyleElements(targetDocument, styleTagId);
   useInsertionEffect(() => {
     // The style element could already have been created during SSR - no need to recreate it
-    const ssrStyleElement = targetDocument?.getElementById(styleTagId) as HTMLStyleElement;
+    const ssrStyleElement = targetDocument?.getElementById(styleTagId);
     if (ssrStyleElement) {
-      styleTag.current = ssrStyleElement;
-      return () => styleTag.current?.remove();
+      styleTag.current = ssrStyleElement as HTMLStyleElement;
+    } else {
+      styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
+      if (styleTag.current) {
+        insertSheet(styleTag.current, rule);
+      }
     }
 
-    styleTag.current = createStyleTag(targetDocument, { ...styleElementAttributes, id: styleTagId });
-
-    if (styleTag.current) {
-      insertSheet(styleTag.current, rule);
-
-      return () => {
-        styleTag.current?.remove();
-      };
-    }
+    return () => {
+      styleTag.current?.remove();
+    };
   }, [styleTagId, targetDocument, rule, styleElementAttributes]);
 
   return { styleTagId, rule };
