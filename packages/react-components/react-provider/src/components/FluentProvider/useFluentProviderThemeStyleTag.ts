@@ -48,7 +48,6 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
  */
 export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState, 'theme' | 'targetDocument'>) => {
   const { targetDocument, theme } = options;
-  useHandleSSRStyleElements(targetDocument);
 
   const renderer = useRenderer_unstable();
   const styleTag = React.useRef<HTMLStyleElement | undefined | null>();
@@ -67,6 +66,7 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
 
   const rule = `.${styleTagId} { ${cssVarsAsString} }`;
 
+  useHandleSSRStyleElements(targetDocument, styleTagId);
   useInsertionEffect(() => {
     // The style element could already have been created during SSR - no need to recreate it
     const ssrStyleElement = targetDocument?.getElementById(styleTagId) as HTMLStyleElement;
@@ -89,7 +89,7 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
   return { styleTagId, rule };
 };
 
-function useHandleSSRStyleElements(targetDocument: Document | undefined | null) {
+function useHandleSSRStyleElements(targetDocument: Document | undefined | null, styleTagId: string) {
   // Using a state factory so that this logic only runs once per render
   // Each FluentProvider can create its own style element during SSR as a slot
   // Moves all theme style elements to document head during render to avoid hydration errors.
@@ -99,9 +99,9 @@ function useHandleSSRStyleElements(targetDocument: Document | undefined | null) 
       return;
     }
 
-    const themeStyleElements = targetDocument.body.querySelectorAll(`[${FUI_THEME_STYLE_ATTR}]`);
-    themeStyleElements.forEach(styleElement => {
-      targetDocument.head.append(styleElement);
-    });
+    const themeStyleElement = targetDocument.getElementById(`[${FUI_THEME_STYLE_ATTR}]`);
+    if (themeStyleElement) {
+      targetDocument.head.append(themeStyleElement);
+    }
   });
 }
