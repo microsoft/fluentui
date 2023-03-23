@@ -226,9 +226,10 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                 >
                   <Controller
+                    id="fullName"
                     name="fullName"
                     control={control}
-                    as={<Input type="text" id="fullName" aria-required="true" />}
+                    as={<Input type="text" aria-required="true" />}
                     rules={{
                       required: true,
                       minLength: 2,
@@ -280,9 +281,10 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                 >
                   <Controller
+                    id="nickname"
                     name="nickname"
                     control={control}
-                    as={<Input type="text" id="nickname" />}
+                    as={<Input type="text" />}
                     rules={{
                       minLength: 2,
                       maxLength: 20,
@@ -343,9 +345,10 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                 >
                   <Controller
+                    id="password"
                     name="password"
                     control={control}
-                    as={<Input type={isPasswordVisible ? 'text' : 'password'} id="password" aria-required="true" />}
+                    as={<Input type={isPasswordVisible ? 'text' : 'password'} aria-required="true" />}
                     rules={{
                       required: true,
                       minLength: 8,
@@ -400,9 +403,10 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                 >
                   <Controller
+                    id="birthDate"
                     name="birthDate"
                     control={control}
-                    as={<Input type="text" id="birthDate" placeholder="E.g. 3/21/1995" aria-required="true" />}
+                    as={<Input type="text" placeholder="E.g. 3/21/1995" aria-required="true" />}
                     rules={{
                       required: true,
                       validate: {
@@ -464,9 +468,10 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                 >
                   <Controller
+                    id="email"
                     name="email"
                     control={control}
-                    as={<Input type="text" id="email" disabled={!isSendNewsletter} aria-required={isSendNewsletter} />}
+                    as={<Input type="text" disabled={!isSendNewsletter} aria-required={isSendNewsletter} />}
                     rules={{
                       required: isSendNewsletter,
                       validate: {
@@ -510,9 +515,10 @@ const TicketOrderFormFieldsAccessibility = () => {
                   }
                 >
                   <Controller
+                    id="acceptTerms"
                     name="acceptTerms"
                     control={control}
-                    as={<Checkbox id="acceptTerms" aria-required="true" />}
+                    as={<Checkbox aria-required="true" />}
                     rules={{
                       required: true,
                       validate: {
