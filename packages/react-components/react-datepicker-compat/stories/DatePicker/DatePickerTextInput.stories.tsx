@@ -28,7 +28,7 @@ TextInput.parameters = {
     description: {
       story:
         'A DatePicker supports user input. Clicking the input field will open the DatePicker, and clicking the' +
-        'field again will dismiss the DatePicker and allow text input. When using keyboard navigation (tabbing into' +
+        ' field again will dismiss the DatePicker and allow text input. When using keyboard navigation (tabbing into' +
         ' the field), text input is allowed by default, and pressing Enter will open the DatePicker.',
     },
   },

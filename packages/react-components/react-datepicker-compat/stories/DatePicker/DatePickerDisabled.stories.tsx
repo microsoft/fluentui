@@ -21,3 +21,11 @@ export const Disabled = () => {
     />
   );
 };
+
+Disabled.parameters = {
+  docs: {
+    description: {
+      story: 'DatePicker can be disabled to restrict user interaction.',
+    },
+  },
+};
