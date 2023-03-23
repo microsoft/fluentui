@@ -430,6 +430,43 @@ The default position of ellipses should be the second element because from a UX 
 - There's not enough space
 - When `maxDisplayedItems` prop is provided and number of items is bigger than `maxDisplayedItems`.
 
+Getting `overflowItems` is handled by `partitionBreadcrumbItems` method.
+
+```js
+const DEFAULT_OVERFLOW_INDEX = 1;
+export type PartitionBreadcrumbItemsOptions<T> = {
+  items: readonly T[];
+  maxDisplayedItems?: number;
+  overflowIndex?: number;
+};
+
+export type PartitionBreadcrumbItems<T> = {
+  startDisplayedItems: readonly T[];
+  overflowItems?: readonly T[];
+  endDisplayedItems?: readonly T[];
+};
+
+/**
+ * Get the displayed items and overflow items based on the array of BreadcrumbItems.
+ *
+ * @param options - Configure the partition options
+ *
+ * @returns Three arrays split into displayed items and overflow items based on maxDisplayedItems.
+ */
+export const partitionBreadcrumbItems = <T>(
+  options: PartitionBreadcrumbItemsOptions<T>,
+): PartitionBreadcrumbItems<T> => {
+  // implementation
+  return {
+    startDisplayedItems,
+    overflowItems,
+    endDisplayedItems,
+  };
+};
+```
+
+In case if there are no overflowItems original array is returned.
+
 ```jsx
 const { startDisplayedItems, overflowItems, endDisplayedItems } = partitionBreadcrumbItems({
   items,
@@ -481,13 +518,15 @@ Breadcrumb can have the folloing states:
 #### Non-interactive Breadcrumb Item
 
 Non-interactive style variation for places where the Breadcrumb is purely representational or informational. Usually this instance is mostly used to describe file path location, etc.
+
 ![Non-interactive Breadcrumb](./assets/breadcrumb-not-interactive.png)
 
 #### Tooltip
 
 Tooltip is shown `onHover` on collapsed menu or items with long names.
 ![Breadcrumb Tooltip](./assets/breadcrumb-tooltip.png)
-Tooltipls can be multiline. It is recommended to use not more than 80 symbols in the Tooltip.
+
+Tooltipls can be multiline. It is recommended to use content no longer than 80 symbols.
 
 ### Keyboard
 
