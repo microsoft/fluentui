@@ -27,11 +27,18 @@ import {
   durationNormal,
   durationUltraFast,
   fontFamilyBase,
+  fontSizeBase200,
   fontSizeBase300,
+  fontSizeBase400,
+  fontSizeBase600,
   fontWeightRegular,
+  lineHeightBase200,
   lineHeightBase300,
+  lineHeightBase400,
   shadow2,
   spacingHorizontalMNudge,
+  spacingHorizontalS,
+  spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalS,
@@ -64,6 +71,7 @@ export const styles = css`
   }
 
   .root {
+    height: 32px;
     display: inline-flex;
     align-items: center;
     flex-direction: row;
@@ -78,16 +86,15 @@ export const styles = css`
   }
 
   .control {
-    height: 32px;
     width: 100%;
     box-sizing: border-box;
+    color: ${colorNeutralForeground1};
+    border-radius: ${borderRadiusMedium};
+    background: ${colorTransparentBackground};
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    color: ${colorNeutralForeground1};
-    border-radius: ${borderRadiusMedium};
-    background: ${colorTransparentBackground};
     border: none;
     background: transparent;
     vertical-align: center;
@@ -102,21 +109,55 @@ export const styles = css`
     color: ${colorNeutralForeground4};
   }
 
-  :host ::slotted([slot='start']) {
-    padding-right: ${spacingHorizontalXXS};
+  :host([input-size='small']) .control {
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase200};
+  }
+
+  :host([input-size='small']) .root {
+    height: 24px;
+    gap: ${spacingHorizontalXXS};
+    padding: 0 ${spacingHorizontalSNudge};
+  }
+
+  :host([input-size='small']) ::slotted([slot='start']),
+  :host([input-size='small']) ::slotted([slot='end']) {
+    font-size: ${fontSizeBase400};
+  }
+
+  :host([input-size='large']) .control {
+    font-size: ${fontSizeBase400};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase400};
+  }
+
+  :host([input-size='large']) .root {
+    height: 40px;
+    gap: ${spacingHorizontalS};
+    padding: 0 ${spacingHorizontalMNudge};
+  }
+
+  :host([input-size='large']) ::slotted([slot='start']),
+  :host([input-size='large']) ::slotted([slot='end']) {
+    font-size: ${fontSizeBase600};
+  }
+
+  :host ::slotted([slot='start']),
+  :host ::slotted([slot='end']) {
     display: flex;
     align-items: center;
     justify-content: center;
     color: ${colorNeutralForeground3};
   }
 
+  :host ::slotted([slot='start']) {
+    padding-right: ${spacingHorizontalXXS};
+  }
+
   :host ::slotted([slot='end']) {
     padding-left: ${spacingHorizontalXXS};
     gap: ${spacingHorizontalXS};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${colorNeutralForeground3};
   }
 
   :host(:hover) .root {

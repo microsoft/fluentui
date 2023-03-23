@@ -6,4 +6,15 @@ import { TextInputAppearance, TextInputLayout, TextInputSize } from './text-inpu
  * The base class used for constructing a fluent-text-input custom element
  * @public
  */
-export class TextInput extends FASTTextField {}
+export class TextInput extends FASTTextField {
+  /**
+   * Defines accordion header font size.
+   *
+   * @public
+   * @default 'medium'
+   * @remarks
+   * HTML Attribute: size
+   */
+  @attr({ attribute: 'input-size' })
+  public inputSize?: TextInputSize = TextInputSize.medium;
+}

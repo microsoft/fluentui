@@ -29,8 +29,8 @@ const storyTemplate = html<TextInputStoryArgs>`
     type=${x => x.type}
     ?disabled=${x => x.disabled}
     ?block=${x => x.block}
-    size=${x => x.size}
-    appearance=${x => x.appearance}
+    input-size="${x => x.inputSize}"
+    appearance="${x => x.appearance}"
     layout=${x => x.layout}
     placeholder=${x => x.placeholder}
   >
@@ -49,7 +49,7 @@ export default {
         type: 'select',
       },
     },
-    size: {
+    inputSize: {
       options: Object.values(TextInputSize),
       control: {
         type: 'select',
