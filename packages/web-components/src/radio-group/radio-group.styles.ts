@@ -48,4 +48,8 @@ export const styles = css`
     justify-content: center;
     height: auto;
   }
+
+  :host([disabled]) ::slotted([role='radio']) {
+    pointer-events: none;
+  }
 `;
