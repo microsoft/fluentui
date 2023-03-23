@@ -217,9 +217,6 @@ export type DatePickerState = ComponentState<DatePickerSlots> & {
   isDatePickerShown: boolean;
 };
 
-/**
- * {@docCategory DatePicker}
- */
 export interface DatePickerStrings extends CalendarStrings {
   /**
    * Error message to render for Input if isRequired validation fails.

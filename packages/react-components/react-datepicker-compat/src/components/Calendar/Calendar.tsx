@@ -130,6 +130,9 @@ function useFocusLogic({ componentRef }: CalendarProps, isDayPickerVisible: bool
   return [dayPicker, monthPicker, focusOnNextUpdate] as const;
 }
 
+/**
+ * @internal
+ */
 export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef<HTMLDivElement, CalendarProps>(
   (props, forwardedRef) => {
     const {

@@ -66,6 +66,9 @@ function useFocusLogic({ componentRef }: { componentRef: CalendarMonthProps['com
   return [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] as const;
 }
 
+/**
+ * @internal
+ */
 export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props => {
   const {
     allFocusable,

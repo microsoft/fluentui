@@ -1,10 +1,8 @@
-export { AnimationDirection, calendarClassNames } from './Calendar';
+export { AnimationDirection, defaultCalendarStrings } from './Calendar';
 export type { CalendarProps, ICalendar } from './Calendar';
 
-export { calendarDayClassNames } from './CalendarDay';
 export type { CalendarDayProps, ICalendarDay } from './CalendarDay';
 
-export { calendarMonthClassNames } from './CalendarMonth';
 export type { CalendarMonthProps, ICalendarMonth } from './CalendarMonth';
 
 export {

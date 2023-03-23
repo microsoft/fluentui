@@ -4,7 +4,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utils';
 import type { CalendarStrings, DateFormatting, DayGridOptions } from '../../utils';
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarDayGrid {
@@ -12,7 +12,7 @@ export interface ICalendarDayGrid {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayGridProps extends DayGridOptions {
   /**
@@ -176,7 +176,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayGridStyleProps {
   /**
@@ -211,7 +211,7 @@ export interface CalendarDayGridStyleProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayGridStyles {
   /**

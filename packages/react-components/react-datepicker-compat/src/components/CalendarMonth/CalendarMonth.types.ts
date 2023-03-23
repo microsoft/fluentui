@@ -1,24 +1,13 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import type { Slot } from '@fluentui/react-utilities';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
-export type CalendarMonthSlots = {
-  root: Slot<'div'>;
-};
-
-/**
- * {@docCategory Calendar}
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarMonth {
   focus(): void;
 }
 
-/**
- * {@docCategory Calendar}
- */
 export interface CalendarMonthProps {
   /**
    * Optional callback to access the ICalendarMonth interface. Use this instead of ref for accessing
@@ -117,11 +106,11 @@ export interface CalendarMonthProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarMonthStyleProps extends CalendarPickerStyleProps {}
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarMonthStyles extends CalendarPickerStyles {}

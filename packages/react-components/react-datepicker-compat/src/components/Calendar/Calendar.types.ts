@@ -3,18 +3,12 @@ import type { CalendarStrings, DateFormatting, DateRangeType, DayOfWeek, FirstWe
 import type { CalendarDayProps } from '../CalendarDay/CalendarDay.types';
 import type { CalendarMonthProps } from '../CalendarMonth/CalendarMonth.types';
 
-/**
- * {@docCategory Calendar}
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendar {
   /** Sets focus to the selected date. */
   focus: () => void;
 }
 
-/**
- * {@docCategory Calendar}
- */
 export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
@@ -177,7 +171,7 @@ export interface CalendarProps extends React.RefAttributes<HTMLDivElement> {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarStyleProps {
   /**
@@ -227,7 +221,7 @@ export interface CalendarStyleProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarStyles {
   /**
@@ -244,9 +238,6 @@ export interface CalendarStyles {
   liveRegion: string;
 }
 
-/**
- * {@docCategory Calendar}
- */
 export enum AnimationDirection {
   /**
    * Grid will transition out and in horizontally

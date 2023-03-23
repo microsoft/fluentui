@@ -2,17 +2,11 @@ import * as React from 'react';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
 
-/**
- * {@docCategory Calendar}
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarDay {
   focus(): void;
 }
 
-/**
- * {@docCategory Calendar}
- */
 export interface CalendarDayProps extends CalendarDayGridProps {
   /**
    * Optional callback to access the ICalendarDay interface. Use this instead of ref for accessing
@@ -98,7 +92,7 @@ export interface CalendarDayProps extends CalendarDayGridProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
   /**
@@ -118,7 +112,7 @@ export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayStyles {
   /**

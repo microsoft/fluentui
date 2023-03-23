@@ -36,12 +36,6 @@ export enum AnimationDirection {
 }
 
 // @public (undocumented)
-export const calendarClassNames: SlotClassNames<CalendarStyles>;
-
-// @public (undocumented)
-export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
-
-// @public (undocumented)
 export interface CalendarDayProps extends CalendarDayGridProps {
     allFocusable?: boolean;
     className?: string;
@@ -59,9 +53,6 @@ export interface CalendarDayProps extends CalendarDayGridProps {
     showWeekNumbers?: boolean;
     strings: CalendarStrings;
 }
-
-// @public (undocumented)
-export const calendarMonthClassNames: SlotClassNames<CalendarMonthSlots>;
 
 // @public (undocumented)
 export interface CalendarMonthProps {
@@ -161,7 +152,7 @@ export interface DateGridStrings {
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
 
 // @public (undocumented)
-export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string>;
+export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
 // @public (undocumented)
 export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
@@ -239,6 +230,9 @@ export enum DayOfWeek {
 
 // @public (undocumented)
 export const DAYS_IN_WEEK = 7;
+
+// @public (undocumented)
+export const defaultCalendarStrings: CalendarStrings;
 
 // @public (undocumented)
 export const defaultDatePickerStrings: DatePickerStrings;

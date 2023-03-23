@@ -3,7 +3,7 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarYear {
@@ -11,7 +11,7 @@ export interface ICalendarYear {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearRange {
   fromYear: number;
@@ -19,14 +19,14 @@ export interface CalendarYearRange {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearRangeToString {
   (range: CalendarYearRange): string;
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearStrings {
   rangeAriaLabel?: string | CalendarYearRangeToString;
@@ -36,7 +36,7 @@ export interface CalendarYearStrings {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearProps {
   /**
@@ -114,10 +114,19 @@ export interface CalendarYearProps {
   animationDirection?: AnimationDirection;
 }
 
+/**
+ * @internal
+ */
 export interface CalendarYearStyleProps extends CalendarPickerStyleProps {}
 
+/**
+ * @internal
+ */
 export interface CalendarYearStyles extends CalendarPickerStyles {}
 
+/**
+ * @internal
+ */
 export interface CalendarYearHeaderProps extends CalendarYearProps, CalendarYearRange {
   /**
    * Callback action when the 'previous' navigation button is selected
