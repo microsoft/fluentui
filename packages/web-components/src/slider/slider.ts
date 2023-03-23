@@ -47,7 +47,7 @@ export class Slider extends FASTSlider {
     Observable.getNotifier(this).unsubscribe(this, 'step');
   }
 
-  private stepStyles: ElementStyles;
+  private stepStyles?: ElementStyles;
 
   /**
    * Handles changes to step styling based on the step value
@@ -55,15 +55,16 @@ export class Slider extends FASTSlider {
    */
   private handleStepStyles(): void {
     if (this.step) {
-      const totalSteps = 100 / Math.floor((this.max - this.min) / this.step);
+      const totalSteps = (100 / Math.floor((this.max - this.min) / this.step)) as any;
 
-      if (this.styles !== undefined) {
+      if (this.stepStyles !== undefined) {
         this.$fastController.removeStyles(this.stepStyles);
       }
 
       this.stepStyles = css/**css*/ `
         :host {
           --step-rate: ${totalSteps}%;
+          color: blue;
         }
       `;
 
