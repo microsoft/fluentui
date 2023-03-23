@@ -11,13 +11,14 @@ import { FluentProvider } from './FluentProvider';
 import * as prettier from 'prettier';
 import { createDOMRenderer } from '@griffel/core';
 import { RendererProvider } from '@griffel/react';
+import { PartialTheme } from '@fluentui/react-theme';
 
 const parseHTMLString = (html: string) => {
   return prettier.format(html, { parser: 'html' });
 };
 
 describe('FluentProvider (node)', () => {
-  const testTheme = {
+  const testTheme: PartialTheme = {
     colorNeutralForeground1: 'black',
     colorNeutralBackground1: 'white',
   };
