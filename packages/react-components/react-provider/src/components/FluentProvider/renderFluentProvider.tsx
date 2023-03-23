@@ -36,7 +36,7 @@ export const renderFluentProvider_unstable = (
               <TextDirectionProvider dir={contextValues.textDirection}>
                 <OverridesProvider value={contextValues.overrides_unstable}>
                   <slots.root {...slotProps.root}>
-                    {!canUseDOM() && (
+                    {canUseDOM() ? null : (
                       <style
                         // Using dangerous HTML because react can escape characters
                         // which can lead to invalid CSS.
