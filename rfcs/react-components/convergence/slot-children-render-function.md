@@ -218,8 +218,8 @@ The `slot` argument will represent the merging between `state.component.button` 
 as the name suggests is all the properties provided by the `resolveShorthand` invocation without including `as` and also `children`
 (since `children` by itself is the render function).
 
-Since we lost the Internal properties on the merging between it and the External ones
-There's no way to provide such the default declared `children` to the render function!
+Since we lost the Internal properties (`defaultProps`) on the merging with the External properties,
+there's no way to provide `defaultProps.children` to the render function!
 
 ```js
 function useComponent(props) {
