@@ -7,47 +7,45 @@ _@bsunderhus @ling1726 @layershifter_
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents**
-
-- [RFC: Slot children render function](#rfc-slot-children-render-function)
-  - [TL;DR](#tldr)
-  - [Background](#background)
-    - [External properties](#external-properties)
-    - [Internal properties](#internal-properties)
-    - [Overrides](#overrides)
-      - [What happens behind the scenes?](#what-happens-behind-the-scenes)
-  - [Current issues](#current-issues)
-  - [Problem statement](#problem-statement)
-    - [Problem 1](#problem-1)
-    - [Problem 2](#problem-2)
-    - [Sum up](#sum-up)
-  - [Detailed Design or Proposal](#detailed-design-or-proposal)
-    - [Option A: Custom JSX Pragma](#option-a-custom-jsx-pragma)
+- [TL;DR](#tldr)
+- [Background](#background)
+  - [External properties](#external-properties)
+  - [Internal properties](#internal-properties)
+  - [Overrides](#overrides)
+    - [What happens behind the scenes?](#what-happens-behind-the-scenes)
+- [Current issues](#current-issues)
+- [Problem statement](#problem-statement)
+  - [Problem 1](#problem-1)
+  - [Problem 2](#problem-2)
+  - [Sum up](#sum-up)
+- [Detailed Design or Proposal](#detailed-design-or-proposal)
+  - [Option A: Custom JSX Pragma](#option-a-custom-jsx-pragma)
+    - [Required changes](#required-changes)
       - [slot method over resolveShorthand](#slot-method-over-resolveshorthand)
-      - [render methods](#render-methods)
-      - [Types](#types)
+      - [simplify render methods](#simplify-render-methods)
+      - [SlotComponent type & ComponentState change](#slotcomponent-type--componentstate-change)
         - [Introduction of the `SlotComponent` type.](#introduction-of-the-slotcomponent-type)
         - [ComponentState](#componentstate)
-      - [Styles hooks](#styles-hooks)
+      - [Styles hooks `.props` access](#styles-hooks-props-access)
         - [Option 1 mutate external properties](#option-1-mutate-external-properties)
         - [Option 2 mutate overrides](#option-2-mutate-overrides)
         - [Option 3 stop mutating](#option-3-stop-mutating)
-      - [Passing overrides from state to render](#passing-overrides-from-state-to-render)
-      - [Custom Pragma implementation](#custom-pragma-implementation)
-      - [Pros and Cons](#pros-and-cons)
-        - [Pros](#pros)
-        - [Cons](#cons)
-    - [Option B: Refactor getSlots + helper method](#option-b-refactor-getslots--helper-method)
-      - [Pros and Cons](#pros-and-cons-1)
-        - [Pros](#pros-1)
-        - [Cons](#cons-1)
-    - [Option C: Custom JSX Pragma without internal changes](#option-c-custom-jsx-pragma-without-internal-changes)
-      - [Pros and Cons](#pros-and-cons-2)
-        - [Pros](#pros-2)
-        - [Cons](#cons-2)
-    - [Option D: Option A (partially) + Option C](#option-d-option-a-partially--option-c)
-      - [Pros](#pros-3)
-      - [Cons](#cons-3)
+      - [Passing overrides from state to render when needed](#passing-overrides-from-state-to-render-when-needed)
+    - [Custom Pragma implementation](#custom-pragma-implementation)
+    - [Pros and Cons](#pros-and-cons)
+      - [Pros](#pros)
+      - [Cons](#cons)
+  - [Option B: Refactor getSlots + helper method](#option-b-refactor-getslots--helper-method)
+    - [Pros and Cons](#pros-and-cons-1)
+      - [Pros](#pros-1)
+      - [Cons](#cons-1)
+  - [Option C: Custom JSX Pragma without internal changes](#option-c-custom-jsx-pragma-without-internal-changes)
+    - [Pros and Cons](#pros-and-cons-2)
+      - [Pros](#pros-2)
+      - [Cons](#cons-2)
+  - [Option D: Option A (partially) + Option C](#option-d-option-a-partially--option-c)
+    - [Pros](#pros-3)
+    - [Cons](#cons-3)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -293,11 +291,22 @@ The last provided properties are the Overrides, which are provided on rendering 
 
 Since we only have access to the Overrides on the declaration of the jsx element itself, the only way to postpone
 merging of the properties after we have the Overrides is by changing the intrinsic mechanism of how a jsx element is consumed.
+This can be done by providing a custom [JSX pragma](https://www.gatsbyjs.com/blog/2019-08-02-what-is-jsx-pragma/).
 
-Instead of having a `resolveShorthand` that will return a merge between External properties and Internal properties,
+Instead of having a `resolveShorthand` that returns a merge between External properties and Internal properties,
 we can provide a custom exotic component, similar to what happens when `React.memo` or `React.forwardRef` does.
 
-#### slot method over resolveShorthand
+#### Required changes
+
+We can split this proposal by the required changes that need to be done. They can be listed as:
+
+1. [slot method over resolveShorthand](#slot-method-over-resolveshorthand)
+2. [simplify render methods](#simplify-render-methods)
+3. [SlotComponent type & ComponentState change](#slotcomponent-type--componentstate-change)
+4. [Styles hooks `.props` access](#styles-hooks-props-access)
+5. [Passing overrides from state to render when needed](#passing-overrides-from-state-to-render-when-needed)
+
+##### `slot` over `resolveShorthand`
 
 The `slot` method will return a slot component, similar to a component declaration when using `React.memo` or `React.forwardRef`,
 and in that slot component declaration, both External properties and Internal properties will coexist without merging,
@@ -333,10 +342,10 @@ const state = {
 };
 ```
 
-#### render methods
+##### simplify render methods
 
-Since there'll be a custom pragma, there's no need for `getSlots` anymore, the components provided by the `slot` method will
-be renderable, meaning we can simply use them in the render!
+Since there'll be a custom pragma which will understand what is provided by `slot`, there's no need for `getSlots` anymore!
+The components provided by the `slot` method will be renderable, meaning we can simply use them in the render!
 
 ```tsx
 export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
@@ -351,11 +360,11 @@ export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
 );
 ```
 
-#### Types
+##### SlotComponent type & ComponentState change
 
 Some type changes will be required:
 
-##### Introduction of the `SlotComponent` type.
+###### Introduction of the `SlotComponent` type.
 
 Slot components are exotic components (like `React.forwardRef` and `React.memo` components),
 that will have intrinsically associated with them External properties, Internal properties and the base component type.
@@ -372,7 +381,7 @@ type SlotComponent<Props extends UnknownSlotProps = UnknownSlotProps> = React.Ex
 };
 ```
 
-##### ComponentState
+###### ComponentState
 
 `ComponentState` should map provided slots to `SlotComponent`s instead of mapping to resolved shorthands! And `components` property can be dropped.
 
@@ -402,14 +411,14 @@ type ComponentState<Slots extends SlotPropsRecord> = {
 };
 ```
 
-#### Styles hooks
+##### Styles hooks `.props` access
 
 A minor modification in style hooks are required. at the moment we mutate the merged properties provided by `resolveShorthand`
 to include our custom `className` property.
 
 In this case we have some alternatives:
 
-##### Option 1 mutate external properties
+###### Option 1 mutate external properties
 
 Instead of mutating the merged properties, simply mutate the External properties from the slot component:
 
@@ -441,7 +450,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
 };
 ```
 
-##### Option 2 mutate overrides
+###### Option 2 mutate overrides
 
 By introducing an `overrides` property on the `ComponentState` we can create a layer of override that can be mutated:
 
@@ -488,7 +497,7 @@ export const renderAccordionHeader_unstable = (state: AccordionHeaderState) => (
 );
 ```
 
-##### Option 3 stop mutating
+###### Option 3 stop mutating
 
 Let's just stop mutating, and since we require a layer of custom styling through classNames
 let's just properly use an argument on the render method exclusively for this:
@@ -557,7 +566,7 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
 );
 ```
 
-#### Passing overrides from state to render
+##### Passing overrides from state to render when needed
 
 Since our logic lies on the state hooks, the override methods will be implemented on those state hooks, although it should be
 declared on the render method explicitly to properly work as an override.
