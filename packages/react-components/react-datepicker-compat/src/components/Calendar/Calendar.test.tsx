@@ -10,6 +10,9 @@ describe('Calendar', () => {
       'consistent-callback-args',
       // Calendar is not exported at the top level since it's an internal component
       'exported-top-level',
+      // Calendar classnames are not exported since they are internal and are used differently compared to how v9
+      // uses classnames
+      'component-has-static-classnames-object',
     ],
   });
 });
