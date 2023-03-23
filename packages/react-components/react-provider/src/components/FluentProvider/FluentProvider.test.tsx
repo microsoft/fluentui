@@ -1,4 +1,4 @@
-import { resetIdsForTests, SSRProvider } from '@fluentui/react-utilities';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import * as reactTestRenderer from 'react-test-renderer';
@@ -18,9 +18,6 @@ describe('FluentProvider', () => {
   isConformant({
     disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
-    renderOptions: {
-      wrapper: SSRProvider,
-    },
     displayName: 'FluentProvider',
   });
 
