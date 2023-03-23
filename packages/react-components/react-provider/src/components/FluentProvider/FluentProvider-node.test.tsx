@@ -33,7 +33,7 @@ describe('FluentProvider (node)', () => {
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
-        <style data-fui-theme="" id="fui-FluentProvider1">
+        <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
             --colorNeutralBackground1: white;
@@ -51,7 +51,7 @@ describe('FluentProvider (node)', () => {
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
-        <style data-fui-theme="" id="fui-FluentProvider1">
+        <style id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
             --colorNeutralBackground1: white;
@@ -80,7 +80,7 @@ describe('FluentProvider (node)', () => {
         dir="ltr"
         class="fui-FluentProvider fui-FluentProvider1 "
       >
-        <style nonce="random" data-fui-theme="" id="fui-FluentProvider1">
+        <style nonce="random" id="fui-FluentProvider1">
           .fui-FluentProvider1 {
             --colorNeutralForeground1: black;
             --colorNeutralBackground1: white;

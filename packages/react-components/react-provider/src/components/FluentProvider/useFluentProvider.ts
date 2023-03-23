@@ -15,7 +15,6 @@ import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 import { useRenderer_unstable } from '@griffel/react';
-import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
 /**
  * Create the state required to render FluentProvider.
@@ -98,7 +97,6 @@ export const useFluentProvider_unstable = (
       cssRule: rule,
       attributes: {
         ...renderer.styleElementAttributes,
-        [FUI_THEME_STYLE_ATTR]: '',
         id: styleTagId,
       },
     },

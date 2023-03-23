@@ -4,7 +4,6 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
-import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
 jest.mock('@fluentui/react-theme');
 const createDocumentMock = (): Document => {
@@ -104,7 +103,6 @@ describe('useFluentProviderThemeStyleTag', () => {
   it('should move style tags in body to head on first render', () => {
     const targetDocument = createDocumentMock();
     const ssrStyleElement = targetDocument.createElement('style');
-    ssrStyleElement.setAttribute(FUI_THEME_STYLE_ATTR, '');
     // Kinda hacky - assume the useId call returns as expected (ids are reset after each test)
     ssrStyleElement.setAttribute('id', 'fui-FluentProvider1');
     targetDocument.body.append(ssrStyleElement);

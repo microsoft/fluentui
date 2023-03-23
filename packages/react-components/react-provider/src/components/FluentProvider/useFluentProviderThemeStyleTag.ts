@@ -1,7 +1,6 @@
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import * as React from 'react';
-import { FUI_THEME_STYLE_ATTR } from '../../constants';
 
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles';
@@ -18,7 +17,6 @@ const createStyleTag = (target: Document | undefined, elementAttributes: Record<
 
   const tag = target.createElement('style');
 
-  elementAttributes[FUI_THEME_STYLE_ATTR] = '';
   Object.keys(elementAttributes).forEach(attrName => {
     tag.setAttribute(attrName, elementAttributes[attrName]);
   });
