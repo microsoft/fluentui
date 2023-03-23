@@ -6,15 +6,11 @@ import {
   ToolbarToggleButton,
   ToolbarRadioButton,
   ToolbarDivider,
-} from '@fluentui/react-toolbar';
-import type {
-  ToolbarProps,
-  ToolbarButtonProps,
-  ToolbarToggleButtonProps,
-  ToolbarRadioButtonProps,
-} from '@fluentui/react-toolbar';
-
-import {
+  Overflow,
+  OverflowItem,
+  useOverflowMenu,
+  useIsOverflowItemVisible,
+  useIsOverflowGroupVisible,
   Button,
   Text,
   Menu,
@@ -29,14 +25,12 @@ import {
   PopoverTrigger,
   PopoverSurface,
 } from '@fluentui/react-components';
-
-import {
-  Overflow,
-  OverflowItem,
-  useOverflowMenu,
-  useIsOverflowItemVisible,
-  useIsOverflowGroupVisible,
-} from '@fluentui/react-overflow';
+import type {
+  ToolbarProps,
+  ToolbarButtonProps,
+  ToolbarToggleButtonProps,
+  ToolbarRadioButtonProps,
+} from '@fluentui/react-components';
 
 import {
   TextBold24Regular,
