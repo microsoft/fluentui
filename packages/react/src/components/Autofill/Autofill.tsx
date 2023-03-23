@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import {
+  Async,
+  getDocument,
+  getNativeProps,
+  initializeComponentRef,
+  inputProperties,
+  isIE11,
+  KeyCodes,
+} from '../../Utilities';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
@@ -95,7 +103,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    const isFocused = this._inputElement.current && this._inputElement.current === document.activeElement;
+    const document = getDocument(this._inputElement.current);
+    const isFocused = this._inputElement.current && this._inputElement.current === document?.activeElement;
 
     if (
       isFocused &&
