@@ -27,14 +27,14 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-components": "^9.18.3",
-    "@fluentui/react-shared-contexts": "^9.3.2",
+    "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/react-portal-compat-context": "^9.0.5",
-    "@fluentui/react-tabster": "^9.6.1",
+    "@fluentui/react-tabster": "^9.6.2",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
