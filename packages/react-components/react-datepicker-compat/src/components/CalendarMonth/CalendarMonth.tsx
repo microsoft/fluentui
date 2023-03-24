@@ -15,7 +15,6 @@ import {
   DEFAULT_DATE_FORMATTING,
 } from '../../utils';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
-import { defaultCalendarNavigationIcons } from '../Calendar/defaults';
 import { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 import type { CalendarYearRange, ICalendarYear } from '../CalendarYear/CalendarYear.types';
@@ -67,6 +66,9 @@ function useFocusLogic({ componentRef }: { componentRef: CalendarMonthProps['com
   return [navigatedMonthRef, calendarYearRef, focusOnNextUpdate] as const;
 }
 
+/**
+ * @internal
+ */
 export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props => {
   const {
     allFocusable,
@@ -79,7 +81,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
     maxDate,
     minDate,
     navigatedDate,
-    navigationIcons = defaultCalendarNavigationIcons,
     onHeaderSelect: onUserHeaderSelect,
     onNavigateDate,
     selectedDate,
@@ -171,7 +172,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
         maxYear={maxDate ? maxDate.getFullYear() : undefined}
         // eslint-disable-next-line react/jsx-no-bind
         onSelectYear={onSelectYear}
-        navigationIcons={navigationIcons}
         // eslint-disable-next-line react/jsx-no-bind
         onHeaderSelect={onYearPickerHeaderSelect}
         selectedYear={

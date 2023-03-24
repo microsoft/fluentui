@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TreeContextValue } from '../../contexts/treeContext';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import { TreeItemId } from '../TreeItem/TreeItem.types';
 
 export type TreeSlots = {
   root: Slot<'div'>;
@@ -54,8 +55,6 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 export type TreeContextValues = {
   tree: TreeContextValue;
 };
-
-export type TreeItemId = string | number;
 
 export type TreeProps = ComponentProps<TreeSlots> & {
   /**
