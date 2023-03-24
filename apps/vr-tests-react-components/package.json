@@ -26,7 +26,7 @@
     "@fluentui/react-button": "^9.3.6",
     "@fluentui/react-card": "^9.0.4",
     "@fluentui/react-checkbox": "^9.1.6",
-    "@fluentui/react-combobox": "^9.2.5",
+    "@fluentui/react-combobox": "^9.2.6",
     "@fluentui/react-dialog": "^9.4.2",
     "@fluentui/react-divider": "^9.2.6",
     "@fluentui/react-field": "9.0.0-alpha.28",
