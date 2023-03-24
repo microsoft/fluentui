@@ -56,7 +56,7 @@
     "@fluentui/react-progress": "^9.1.6",
     "@fluentui/react-provider": "^9.5.0",
     "@fluentui/react-radio": "^9.1.6",
-    "@fluentui/react-select": "^9.1.5",
+    "@fluentui/react-select": "^9.1.6",
     "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-skeleton": "9.0.0-beta.5",
     "@fluentui/react-slider": "^9.1.6",
