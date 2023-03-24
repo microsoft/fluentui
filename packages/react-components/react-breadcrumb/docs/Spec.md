@@ -171,11 +171,11 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property   | Values                                  | Default       | Purpose                                     |
-| ---------- | --------------------------------------- | ------------- | ------------------------------------------- |
-| appearance | `transparent`, `subtle`                 | `transparent` | Sets appearance                             |
-| focusMode  | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`         | Sets the focus behavior for the Breadcrumb. |
-| size       | `small`, `medium`, `large`              | `medium`      | Defines size of the Breadcrumb              |
+| Property    | Values                     | Default       | Purpose                        |
+| ----------- | -------------------------- | ------------- | ------------------------------ |
+| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
+| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
+| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 
@@ -243,13 +243,12 @@ Usage
 
 #### API
 
-| Property     | Values                                  | Default  | Purpose                                     |
-| ------------ | --------------------------------------- | -------- | ------------------------------------------- |
-| active       | boolean                                 | false    | Indicates if the item is active             |
-| disabled     | boolean                                 | false    | Disables Breadcrumb item                    |
-| focusMode    | `off`, `no-tab`, `tab-exit`, `tab-only` | `off`    | Sets the focus behavior for the Breadcrumb. |
-| icon         | _slot_                                  |          | Sets icon                                   |
-| iconPosition | `before`, `after`                       | `before` | Sets icon position                          |
+| Property     | Values            | Default  | Purpose                         |
+| ------------ | ----------------- | -------- | ------------------------------- |
+| active       | boolean           | false    | Indicates if the item is active |
+| disabled     | boolean           | false    | Disables Breadcrumb item        |
+| icon         | _slot_            |          | Sets icon                       |
+| iconPosition | `before`, `after` | `before` | Sets icon position              |
 
 #### Breadcrumb icon
 
@@ -278,21 +277,21 @@ Usage
   </li>
 ```
 
-#### API
-
-| Property | Values             | Default   | Purpose              |
-| -------- | ------------------ | --------- | -------------------- |
-| variant  | `chevron`, `slash` | `chevron` | Sets type of divider |
+Type of the divider is passed from the `Breadcrumb` component. In case if partner wants to have a custom divider it should be passed as `children` prop.
+Slash divider can be only for small Breadcrumb.
 
 ```jsx
-<Breadcrumb size="large">
-  <BreadcrumbDivider />
+<Breadcrumb size="large" >
+  <BreadcrumbItem>Item</BreadcrumbItem>
   <BreadcrumbDivider>
     <ArrowRight16Filled />
   </BreadcrumbDivider>
+  <BreadcrumbItem>Item</BreadcrumbItem>
 </Breadcrumb>
-<Breadcrumb size="small">
-  <BreadcrumbDivider variant="slash" />
+<Breadcrumb size="small" dividerType="slash">
+  <BreadcrumbItem>Item</BreadcrumbItem>
+  <BreadcrumbDivider />
+  <BreadcrumbItem>Item</BreadcrumbItem>
 </Breadcrumb>
 ```
 
@@ -372,7 +371,7 @@ BreadcrumbItem component contains similar props in V9.
 | `className`         |                 |
 | `componentRef`      |                 |
 | `dividerAs`         |                 |
-| `focusZoneProps`    | `focusMode`     |
+| `focusZoneProps`    |                 |
 | `maxDisplayedItems` |                 |
 
 ### Northstar property mapping
@@ -547,18 +546,15 @@ If the overflow button is in focus, `Enter`, `Arrow down` or `Space` activate th
 
 ## Accessibility
 
-Design WIP
+Use the `tab` key to navigate to the first item of the string and `arrow` keys to move through previous and next items.
+Each item is conisdered a ListItem with nested links.
+Tab stops don't apply for non-interactive Breadcrumbs.
 
-### Narrator guidance
+![Breadcrumb Accessibility](./assets/a11y-breadcrumb.png)
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+Use button roles for actions in the same space (overflow).
+![Breadcrumb Accessibility Overflow](./assets/a11y-breadcrumb-overflow.png)
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+### Truncated text
+
+![Breadcrumb Accessibility Truncated Text](./assets/a11y-breadcrumb-truncated-text.png)
