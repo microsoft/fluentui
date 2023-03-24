@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -28,8 +29,9 @@ import {
 import { TabTokenNames } from './tabs.js';
 
 export const styles = css`
+  ${display('grid')}
+
   :host {
-    display: grid;
     box-sizing: border-box;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
