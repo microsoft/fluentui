@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Dialog } from './Dialog';
 import { DialogProps } from './Dialog.types';
 import { isConformant } from '../../testing/isConformant';
+import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
+import { DialogSurface } from '../DialogSurface/DialogSurface';
 
 describe('Dialog', () => {
   isConformant<DialogProps>({
@@ -31,5 +33,24 @@ describe('Dialog', () => {
       </Dialog>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('should focus on first element', () => {
+    const result = render(
+      <Dialog>
+        <DialogTrigger disableButtonEnhancement>
+          <button data-testid="btn-open-dialog">Open dialog</button>
+        </DialogTrigger>
+        <DialogSurface>
+          <button data-testid="btn-inside-dialog">focusable element inside dialog</button>
+        </DialogSurface>
+      </Dialog>,
+    );
+    expect(result.queryByTestId('btn-inside-dialog')).not.toBeInTheDocument();
+
+    fireEvent.click(result.getByTestId('btn-open-dialog'));
+
+    expect(result.getByTestId('btn-inside-dialog')).toBeInTheDocument();
+    expect(result.getByTestId('btn-inside-dialog')).toHaveFocus();
   });
 });
