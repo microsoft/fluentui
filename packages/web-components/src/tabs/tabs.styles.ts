@@ -82,11 +82,6 @@ export const styles = css`
     margin-inline-start: 11px;
   }
 
-  // TODO: remove active-indicator styling when FAST Pr to remove active indicator is completed.
-  .active-indicator {
-    display: none;
-  }
-
   .tabpanel {
     grid-row: 2;
     grid-column-start: 1;
