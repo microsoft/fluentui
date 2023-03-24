@@ -1,12 +1,19 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 type BreadcrumbSize = 'small' | 'medium' | 'large';
-
+type BreadcrumbDividerType = 'chevron' | 'slash';
 /**
  * Data shared between breadcrumb components
  */
 export interface BreadcrumbContextValue {
+  /**
+   * Controls size of Breadcrumb items and dividers.
+   *
+   * @default 'medium'
+   */
   size?: BreadcrumbSize;
+
+  dividerType?: BreadcrumbDividerType;
 }
 export type BreadcrumbSlots = {
   /**
@@ -22,14 +29,7 @@ export type BreadcrumbSlots = {
 /**
  * Breadcrumb Props
  */
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
-  /**
-   * Controls size of Breadcrumb items and dividers.
-   *
-   * @default 'medium'
-   */
-  size?: BreadcrumbSize;
-};
+export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & Partial<BreadcrumbContextValue> & {};
 
 /**
  * State used in rendering Breadcrumb

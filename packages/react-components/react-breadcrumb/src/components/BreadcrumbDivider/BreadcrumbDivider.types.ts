@@ -7,9 +7,7 @@ export type BreadcrumbDividerSlots = {
 /**
  * BreadcrumbDivider Props
  */
-export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {
-  variant?: 'chevron' | 'slash';
-};
+export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {};
 
 /**
  * State used in rendering BreadcrumbDivider

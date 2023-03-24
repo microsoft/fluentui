@@ -33,7 +33,9 @@ function renderItem(item: Item, size: BreadcrumbProps['size']) {
 }
 export const Default = () => (
   <>
-    <Breadcrumb size="small">{items.map(item => renderItem(item, 'small'))}</Breadcrumb>
+    <Breadcrumb size="small" dividerType="slash">
+      {items.map(item => renderItem(item, 'small'))}
+    </Breadcrumb>
     <Breadcrumb>{items.map(item => renderItem(item, 'medium'))}</Breadcrumb>
     <Breadcrumb size="large">{items.map(item => renderItem(item, 'large'))}</Breadcrumb>
   </>

@@ -26,9 +26,7 @@ export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
 export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>;
 
 // @public
-export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {
-    variant?: 'chevron' | 'slash';
-};
+export type BreadcrumbDividerProps = ComponentProps<BreadcrumbDividerSlots> & {};
 
 // @public (undocumented)
 export type BreadcrumbDividerSlots = {
@@ -56,9 +54,7 @@ export type BreadcrumbItemSlots = {
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots>;
 
 // @public
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
-    size?: BreadcrumbSize;
-};
+export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & Partial<BreadcrumbContextValue> & {};
 
 // @public (undocumented)
 export type BreadcrumbSlots = {

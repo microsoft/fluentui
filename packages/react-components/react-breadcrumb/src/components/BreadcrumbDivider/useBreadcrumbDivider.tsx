@@ -18,9 +18,8 @@ export const useBreadcrumbDivider_unstable = (
   props: BreadcrumbDividerProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbDividerState => {
-  const { variant, ...rest } = props;
-  const { size } = useBreadcrumbContext_unstable();
-  const icon = getDividerIcon(size, variant);
+  const { size, dividerType } = useBreadcrumbContext_unstable();
+  const icon = getDividerIcon(size, dividerType);
 
   return {
     components: {
@@ -31,7 +30,7 @@ export const useBreadcrumbDivider_unstable = (
       required: true,
       'aria-hidden': true,
       children: icon,
-      ...rest,
+      ...props,
     }),
   };
 };
@@ -40,11 +39,11 @@ export const useBreadcrumbDivider_unstable = (
  * Get icon of the divider
  *
  * @param size - size of the Breadcrumb
- * @param variant - variant of the divider, can be `slash` or `chevron`
+ * @param dividerType - type of the divider, can be `slash` or `chevron`
  */
-function getDividerIcon(size: BreadcrumbProps['size'] = 'medium', variant: BreadcrumbDividerProps['variant']) {
+function getDividerIcon(size: BreadcrumbProps['size'] = 'medium', dividerType: BreadcrumbProps['dividerType']) {
   if (size === 'small') {
-    return variant === 'slash' ? '/' : <ChevronRight12Regular />;
+    return dividerType === 'slash' ? '/' : <ChevronRight12Regular />;
   }
   if (size === 'large') {
     return <ChevronRight20Regular />;

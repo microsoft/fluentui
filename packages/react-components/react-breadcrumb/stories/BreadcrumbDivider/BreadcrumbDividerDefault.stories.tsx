@@ -4,11 +4,11 @@ import { ArrowRight16Filled } from '@fluentui/react-icons';
 
 export const Default = () => (
   <>
-    <Breadcrumb size="small">
+    <Breadcrumb size="small" dividerType="slash">
       <BreadcrumbItem>Item</BreadcrumbItem>
-      <BreadcrumbDivider variant="slash" />
+      <BreadcrumbDivider />
       <BreadcrumbItem>Item</BreadcrumbItem>
-      <BreadcrumbDivider variant="slash" />
+      <BreadcrumbDivider />
       <BreadcrumbItem>Item</BreadcrumbItem>
     </Breadcrumb>
     <Breadcrumb size="large">

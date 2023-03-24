@@ -12,21 +12,18 @@ import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
-  const { size, ...rest } = props;
+  const { size, dividerType, ...rest } = props;
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'nav',
       list: 'ol',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('nav', {
       ref,
       ...rest,
     }),
     list: {},
     size,
+    dividerType,
   };
 };
