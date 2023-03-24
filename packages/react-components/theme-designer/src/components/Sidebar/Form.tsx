@@ -91,6 +91,7 @@ export const Form: React.FC = () => {
   const themeNameInputId = useId('themeNameInputId');
 
   const handleIsDarkChange = () => {
+    console.log(`handleIsDarkChange isDark: ${isDark}`);
     dispatch({ type: 'isDark', payload: !isDark });
   };
 
@@ -134,14 +135,13 @@ export const Form: React.FC = () => {
     const newName = e.target.value;
 
     if (newName.length === 0) {
-      //   setThemeName(defaultThemePlaceholderName);
+      dispatch({ type: 'themeName', payload: newName });
     } else {
       const camelizeName = e.target.value
         .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
         .replace(/\s+/g, '')
         .replace(/[^A-Za-z0-9@]*/g, ``);
-
-      //   setThemeName(camelizeName);
+      dispatch({ type: 'themeName', payload: camelizeName });
     }
   };
 

@@ -2,17 +2,16 @@ import * as React from 'react';
 import { Link } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AppContext } from '../../ThemeDesigner';
 import { getBrandValues, objectToString } from '../../utils/toString';
+import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
-  const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const { brand, darkOverrides, lightOverrides } = appState;
-
-  const name = useContextSelector(AppContext, ctx => ctx.name);
+  const {
+    dispatch,
+    state: { isDark, themeName, brand, darkThemeOverrides, lightThemeOverrides },
+  } = useThemeDesigner();
 
   const content = dedent`
   import * as React from "react";
@@ -286,13 +285,13 @@ export const ExportLink = () => {
   import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
-  const ${name}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
+  const ${themeName}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
   const lightTheme: Theme = {
-    ...createLightTheme(${name}), ${getBrandValues(brand, lightOverrides, name, '\u00A0\u00A0')} };
+    ...createLightTheme(${themeName}), ${getBrandValues(brand, lightThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkTheme(${name}), ${getBrandValues(brand, darkOverrides, name, '\u00A0\u00A0')} };
+    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
