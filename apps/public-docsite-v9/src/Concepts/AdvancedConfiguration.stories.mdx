@@ -66,6 +66,27 @@ const renderer = createDOMRenderer(document, {
 </html>
 ```
 
+For mobile-first methodology, consider using [`sort-css-media-queries`](https://github.com/dutchenkoOleg/sort-css-media-queries):
+
+```js
+import { createDOMRenderer } from '@griffel/react';
+import sortCSSmq from 'sort-css-media-queries';
+
+const renderer = createDOMRenderer(document, {
+  compareMediaQueries: sortCSSmq,
+});
+```
+
+```html
+<html>
+  <head>
+    <style media="only screen and (min-width: 1px)" data-make-styles-bucket="m"></style>
+    <style media="only screen and (min-width: 480px)" data-make-styles-bucket="m"></style>
+    <style media="only screen and (min-width: 640px)" data-make-styles-bucket="m"></style>
+  </head>
+</html>
+```
+
 ### Content Security Policies (CSP)
 
 To add `nonce` attribute need for [Content Security Policies](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), please use `styleElementAttributes` to specify it:
