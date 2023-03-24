@@ -4,9 +4,9 @@ import { spacingHorizontalM, spacingHorizontalMNudge } from '../theme/design-tok
 
 export const styles = css`
   ${display('none')}
+  ${display('block')}
 
   :host {
-    display: block;
     box-sizing: border-box;
     padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
   }
