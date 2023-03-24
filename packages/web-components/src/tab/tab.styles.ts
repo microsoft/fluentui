@@ -104,14 +104,12 @@ export const styles = css`
     background-color: unset;
   }
 
-  :host(:focus-visible) {
-    outline: none;
-  }
   :host(:focus) {
     outline: none;
   }
 
   :host(:focus-visible) {
+    outline: none;
     border-radius: ${borderRadiusSmall};
     box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
