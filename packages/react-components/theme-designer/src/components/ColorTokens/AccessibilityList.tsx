@@ -11,17 +11,20 @@ import {
 } from '@fluentui/react-components';
 import { getAccessibilityChecker } from './getAccessibilityChecker';
 import { ColorTokensList } from './ColorTokensList';
-import { ColorOverrideBrands } from './ColorTokens';
 import { sortOverrideableColorTokens } from './getOverridableTokenBrandColors';
 import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
-import { Brands } from '@fluentui/tokens';
+import { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
+import { Brands } from '@fluentui/react-theme';
 
 export interface AccessibilityListProps {
   brand: BrandVariants;
-  brandColors: ColorOverrideBrands;
   colorOverride: ColorOverrideBrands;
+
+  themeOverrides: Partial<Theme>;
   onNewOverride: (color: string, newColor: Brands) => void;
   theme: Theme;
+
+  themeName: string;
 }
 
 const useStyles = makeStyles({
@@ -33,7 +36,7 @@ const useStyles = makeStyles({
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, theme, colorOverride, onNewOverride } = props;
+  const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
 
   const { all, fail } = getAccessibilityChecker(theme);
   const failKeys = Object.keys(fail);
@@ -61,8 +64,9 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionPanel>
             <ColorTokensList
               brand={brand}
-              brandColors={brandColors}
-              colorOverride={colorOverride}
+              themeName={themeName}
+              colorOverrides={colorOverride}
+              themeOverrides={themeOverrides}
               onNewOverride={onNewOverride}
               coveredTokens={sortOverrideableColorTokens(failKeys)}
               failList={fail}
@@ -74,8 +78,10 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionPanel>
             <ColorTokensList
               brand={brand}
+              themeName={themeName}
+              themeOverrides={themeOverrides}
+              colorOverrides={colorOverride}
               onNewOverride={onNewOverride}
-              brandColors={brandColors}
               coveredTokens={sortOverrideableColorTokens(all)}
             />
           </AccordionPanel>

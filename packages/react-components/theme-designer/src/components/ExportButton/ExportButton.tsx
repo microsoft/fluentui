@@ -48,7 +48,7 @@ export const ExportButton = () => {
   const styles = useStyles();
 
   const {
-    state: { brand, darkOverrides, lightOverrides, themeName },
+    state: { brand, darkThemeOverrides, lightThemeOverrides, themeName },
   } = useThemeDesigner();
 
   const [selectedValue, setSelectedValue] = React.useState<TabValue>('Code');
@@ -61,16 +61,19 @@ export const ExportButton = () => {
   const ${themeName}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
   const lightTheme: Theme = {
-    ...createLightTheme(${themeName}), ${getBrandValues(brand, lightOverrides, themeName, '\u00A0\u00A0')} };
+    ...createLightTheme(${themeName}), ${getBrandValues(brand, lightThemeOverrides, themeName, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkOverrides, themeName, '\u00A0\u00A0')} };
+    ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
   `;
 
   const jsonValue = dedent`
-  const lightTheme: Theme = { ${themeToString({ ...createLightTheme(brand), ...lightOverrides }, '\u00A0\u00A0')} };
+  const lightTheme: Theme = { ${themeToString(
+    { ...createLightTheme(brand), ...lightThemeOverrides },
+    '\u00A0\u00A0',
+  )} };
 
-  const darkTheme: Theme = { ${themeToString({ ...createDarkTheme(brand), ...darkOverrides }, '\u00A0\u00A0')} };
+  const darkTheme: Theme = { ${themeToString({ ...createDarkTheme(brand), ...darkThemeOverrides }, '\u00A0\u00A0')} };
   `;
 
   const exportedValue = React.useMemo(() => {

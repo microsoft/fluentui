@@ -3,27 +3,23 @@ import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { brandWeb } from '../utils/brandColors';
 import { getBrandTokensFromPalette } from '../utils/getBrandTokensFromPalette';
-import { Brands } from '@fluentui/tokens';
-import { themeNames } from '../utils/themeList';
+import { getOverridableTokenBrandColors } from '../components/ColorTokens/getOverridableTokenBrandColors';
+import { Brands } from '@fluentui/react-theme';
 
 export type ColorOverrideBrands = Record<string, Brands>;
 
-export type ColorOverrides = Record<string, ColorOverrideBrands>;
-
 // TODO -- merge this into the main reducer
 export type ColorOverridePayload = {
-  type: string;
-  colorToken?: string;
-  newValue?: Brands;
+  colorToken: string;
+  newColor: string;
+
+  brand: number;
 };
 
-const getCurrentOverride = (themeLabel: string, colorOverride: ColorOverrides) => {
-  return colorOverride[themeLabel];
-};
+// const getCurrentOverride = (themeLabel: string, colorOverride: ColorOverrides) => {
+//   return colorOverride[themeLabel];
+// };
 
-const initialColorOverride: ColorOverrides = Object.fromEntries(themeNames.map(currTheme => [currTheme, {}]));
-
-console.log('Initial overrides', initialColorOverride, themeNames);
 export type CustomAttributes = {
   keyColor: string;
   hueTorsion: number;
@@ -82,24 +78,31 @@ export type ThemeDesignerState = {
   themeName: string;
   brand: BrandVariants;
   theme: Theme;
+  themeWithOverrides: Theme;
   isDark: boolean;
-  lightOverrides: Partial<Theme>;
-  darkOverrides: Partial<Theme>;
+  lightThemeOverrides: Partial<Theme>;
+  darkThemeOverrides: Partial<Theme>;
+
+  lightBrandOverrides: ColorOverrideBrands;
+
+  darkBrandOverrides: ColorOverrideBrands;
 };
 
-export const initialThemeDesignerState = {
+export const initialThemeDesignerState: ThemeDesignerState = {
   themeName: 'Custom',
   brand: brandWeb,
   theme: createLightTheme(brandWeb),
+  themeWithOverrides: createLightTheme(brandWeb),
   isDark: false,
-  lightOverrides: {},
-  darkOverrides: {},
+  lightThemeOverrides: {},
+  darkThemeOverrides: {},
+  lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(brandWeb), brandWeb),
+  darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(brandWeb), brandWeb),
 };
 
-export const ThemeDesignerContext = React.createContext<{ state: ThemeDesignerState; dispatch: Dispatch }>({
-  state: initialThemeDesignerState,
-  dispatch: () => true,
-});
+export const ThemeDesignerContext = React.createContext<{ state: ThemeDesignerState; dispatch: Dispatch } | undefined>(
+  undefined,
+);
 
 const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes): BrandVariants => {
   return getBrandTokensFromPalette(keyColor, {
@@ -109,19 +112,27 @@ const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes)
   });
 };
 
-export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action) => {
+export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action): ThemeDesignerState => {
   switch (action.type) {
     case 'isDark':
+      const theme = action.payload ? createDarkTheme(state.brand) : createLightTheme(state.brand);
       return {
         ...state,
-        theme: action.payload ? createDarkTheme(state.brand) : createLightTheme(state.brand),
+        theme,
         isDark: action.payload,
-        // lightOverrides: state[state.themeName + 'Light'],
-        // darkOverrides: state[state.themeName + 'Dark'],
+        themeWithOverrides: {
+          ...theme,
+          ...state.themeWithOverrides,
+        },
       };
-    case 'override':
+    case 'reset':
+      const resetTheme = state.isDark ? createDarkTheme(state.brand) : createLightTheme(state.brand);
       return {
         ...state,
+        theme: resetTheme,
+        themeWithOverrides: resetTheme,
+        lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(brandWeb), brandWeb),
+        darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(brandWeb), brandWeb),
       };
     case 'updateThemeWithCustomerAttributes':
       const newBrand = createCustomTheme(action.payload);
@@ -131,9 +142,46 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action) 
         theme: state.isDark ? createDarkTheme(newBrand) : createLightTheme(newBrand),
       };
     case 'addOverride':
-      return {
-        ...state,
-      };
+      if (state.isDark) {
+        const overrides = {
+          ...state.darkThemeOverrides,
+          // This overrides a THEME token to a new color
+          [action.payload.colorToken]: action.payload.newColor,
+        };
+        return {
+          ...state,
+          darkBrandOverrides: {
+            ...state.darkBrandOverrides,
+            // this is signifying for e.g. 'colorBrandBackground2' = 8 (which is the 8th sqaure in the color wheel)
+            [action.payload.colorToken]: action.payload.brand,
+          } as ColorOverrideBrands,
+          darkThemeOverrides: overrides,
+          themeWithOverrides: {
+            ...state.themeWithOverrides,
+            ...overrides,
+          },
+        };
+      } else {
+        const overrides = {
+          ...state.lightThemeOverrides,
+          // This overrides a THEME token to a new color
+          [action.payload.colorToken]: action.payload.newColor,
+        };
+        return {
+          ...state,
+          lightBrandOverrides: {
+            ...state.lightBrandOverrides,
+            // this is signifying for e.g. 'colorBrandBackground2' = 8 (which is the 8th sqaure in the color wheel)
+            [action.payload.colorToken]: action.payload.brand,
+          } as ColorOverrideBrands,
+          lightThemeOverrides: overrides,
+          themeWithOverrides: {
+            ...state.themeWithOverrides,
+            ...overrides,
+          },
+        };
+      }
+
     default:
       return {
         ...state,

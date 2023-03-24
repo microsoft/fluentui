@@ -61,6 +61,7 @@ export const Form: React.FC = () => {
   const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
 
   // as the user moves through the wheel, we want the page to react in real time
+  // TODO -- fix
   const debounceAttributes: CustomAttributes = useDebounce(
     { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
     100,

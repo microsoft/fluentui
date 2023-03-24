@@ -25,11 +25,11 @@ const useStyles = makeStyles({
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
   const {
-    state: { theme },
+    state: { themeWithOverrides },
   } = useThemeDesigner();
-  console.log('theme', theme);
+
   return (
-    <FluentProvider theme={theme}>
+    <FluentProvider theme={themeWithOverrides}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
