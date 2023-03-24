@@ -3,9 +3,8 @@ import { display } from '@microsoft/fast-foundation';
 import { spacingHorizontalM, spacingHorizontalMNudge } from '../theme/design-tokens.js';
 
 export const styles = css`
-  :host([hidden]) {
-    ${display('none')}
-  }
+  ${display('none')}
+
   :host {
     display: block;
     box-sizing: border-box;
