@@ -2,10 +2,9 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useId, Label, Input, Slider, tokens } from '@fluentui/react-components';
+import type { CustomAttributes } from '../../Context/ThemeDesignerContext';
 import { useDebounce } from '../../utils/useDebounce';
-import { AppContext } from '../../ThemeDesigner';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import type { CustomAttributes } from '../../useThemeDesignerReducer';
+import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +48,7 @@ export const Form: React.FC = () => {
   const styles = useStyles();
   const sidebarId = useId();
 
-  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
+  const { dispatch } = useThemeDesigner();
 
   const initialState: CustomAttributes = {
     keyColor: '#0F6CBD',
@@ -61,14 +60,18 @@ export const Form: React.FC = () => {
   const [hueTorsion, setHueTorsion] = React.useState<number>(initialState.hueTorsion);
   const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
 
+  // as the user moves through the wheel, we want the page to react in real time
   const debounceAttributes: CustomAttributes = useDebounce(
     { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
-    10,
+    100,
   );
 
   React.useEffect(() => {
-    dispatchAppState({ type: 'Custom', customAttributes: debounceAttributes });
-  }, [debounceAttributes, dispatchAppState]);
+    dispatch({
+      type: 'updateThemeWithCustomerAttributes',
+      payload: { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
+    });
+  }, [dispatch, keyColor, hueTorsion, vibrancy]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #

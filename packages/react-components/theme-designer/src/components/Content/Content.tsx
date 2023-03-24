@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands, tokens, Divider } from '@fluentui/react-components';
+import { Divider, FluentProvider, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
+import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface ContentProps {
   className?: string;
@@ -23,9 +24,12 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-
+  const {
+    state: { theme },
+  } = useThemeDesigner();
+  console.log('theme', theme);
   return (
-    <>
+    <FluentProvider theme={theme}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
@@ -35,6 +39,6 @@ export const Content: React.FC<ContentProps> = props => {
         <Divider />
         <ColorTokens />
       </div>
-    </>
+    </FluentProvider>
   );
 };

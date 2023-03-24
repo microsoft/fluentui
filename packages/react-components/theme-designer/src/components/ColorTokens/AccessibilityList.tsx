@@ -11,10 +11,10 @@ import {
 } from '@fluentui/react-components';
 import { getAccessibilityChecker } from './getAccessibilityChecker';
 import { ColorTokensList } from './ColorTokensList';
-import { Brands } from '@fluentui/react-theme';
 import { ColorOverrideBrands } from './ColorTokens';
 import { sortOverrideableColorTokens } from './getOverridableTokenBrandColors';
 import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
+import { Brands } from '@fluentui/tokens';
 
 export interface AccessibilityListProps {
   brand: BrandVariants;
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, colorOverride, onNewOverride, theme } = props;
+  const { brand, brandColors, theme, colorOverride, onNewOverride } = props;
 
   const { all, fail } = getAccessibilityChecker(theme);
   const failKeys = Object.keys(fail);
@@ -63,8 +63,8 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
               brand={brand}
               brandColors={brandColors}
               colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(failKeys)}
               onNewOverride={onNewOverride}
+              coveredTokens={sortOverrideableColorTokens(failKeys)}
               failList={fail}
             />
           </AccordionPanel>
@@ -74,10 +74,9 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionPanel>
             <ColorTokensList
               brand={brand}
-              brandColors={brandColors}
-              colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(all)}
               onNewOverride={onNewOverride}
+              brandColors={brandColors}
+              coveredTokens={sortOverrideableColorTokens(all)}
             />
           </AccordionPanel>
         </AccordionItem>

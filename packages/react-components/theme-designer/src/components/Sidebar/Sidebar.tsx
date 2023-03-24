@@ -2,9 +2,8 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, Switch } from '@fluentui/react-components';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AppContext } from '../../ThemeDesigner';
 import { Form } from './Form';
+import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface SidebarProps {
   className?: string;
@@ -25,13 +24,12 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
-  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
-
-  const [isDark, setIsDark] = React.useState<boolean>(false);
-
+  const {
+    state: { isDark },
+    dispatch,
+  } = useThemeDesigner();
   const handleIsDarkChange = () => {
-    setIsDark(!isDark);
-    dispatchAppState({ type: 'isDark', isDark: !isDark });
+    dispatch({ type: 'isDark', payload: !isDark });
   };
 
   return (
