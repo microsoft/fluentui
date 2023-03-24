@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 24 Mar 2023 14:58:55 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 17:36:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.6)
+
+Fri, 24 Mar 2023 17:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.5..@fluentui/react-components_v9.18.6)
+
+### Patches
+
+- `@fluentui/react-components`
+  - Bump react-select to 9.1.6 ([PR #27321](https://github.com/microsoft/fluentui/pull/27321) by lingfangao@hotmail.com)
 
 ## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.5)
 
