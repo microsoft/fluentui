@@ -15,11 +15,16 @@ export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
    * @default 'end'
    */
   position?: DialogActionsPosition;
+
+  /**
+   * Makes the actions expand the entire width of the DialogBody
+   * @default false
+   */
+  fluid?: boolean;
 };
 
 /**
  * State used in rendering DialogActions
  */
-export type DialogActionsState = ComponentState<DialogActionsSlots> & {
-  position: DialogActionsPosition;
-};
+export type DialogActionsState = ComponentState<DialogActionsSlots> &
+  Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Wed, 15 Mar 2023 10:19:53 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.4)
+
+Tue, 21 Mar 2023 21:23:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.3..@fluentui/tokens_v1.0.0-alpha.4)
+
+### Changes
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
 
 ## [1.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.3)
 

@@ -27,7 +27,6 @@ const useStyles = makeStyles({
     },
     width: `100%`,
     height: 'fit-content',
-    maxWidth: '600px',
     maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
     boxSizing: 'border-box',
     gridTemplateRows: 'auto 1fr auto',
