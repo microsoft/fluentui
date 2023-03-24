@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Tue, 21 Mar 2023 21:23:30 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.20",
+      "version": "9.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:59 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.19",
       "version": "9.0.0-beta.19",

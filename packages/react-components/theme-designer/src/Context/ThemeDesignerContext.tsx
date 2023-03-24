@@ -70,7 +70,8 @@ type Action =
   | { type: 'override'; payload: Partial<Theme> }
   | { type: 'reset' }
   | { type: 'updateThemeWithCustomerAttributes'; payload: CustomAttributes }
-  | { type: 'addOverride'; payload: ColorOverridePayload };
+  | { type: 'addOverride'; payload: ColorOverridePayload }
+  | { type: 'themeName'; payload: string };
 
 type Dispatch = (action: Action) => void;
 
@@ -181,6 +182,11 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
           },
         };
       }
+    case 'themeName':
+      return {
+        ...state,
+        themeName: action.payload,
+      };
 
     default:
       return {

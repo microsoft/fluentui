@@ -7,6 +7,22 @@ import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface ColorTokensProps {}
 
+export type ColorOverrideBrands = Record<string, Brands>;
+
+export type ColorOverrides = Record<string, ColorOverrideBrands>;
+
+export enum ColorOverrideAction {
+  AddOverride = 'Add Override',
+  ResetOverrides = 'Reset Overrides',
+  ResetCustomeOverrides = 'Reset Custom Overrides',
+}
+
+export type DispatchColorOverrides = {
+  type: string;
+  colorToken?: string;
+  newValue?: Brands;
+};
+
 const useStyles = makeStyles({
   root: {},
   row: {

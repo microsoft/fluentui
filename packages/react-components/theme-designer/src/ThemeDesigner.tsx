@@ -3,7 +3,7 @@ import type { ThemeDesignerProps } from './ThemeDesigner.types';
 import { useStaticStyles, useStyles } from './ThemeDesigner.styles';
 import { ThemeDesignerContextProvider } from './Context/ThemeDesignerContext';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-import { Nav } from './components/Nav/Nav';
+import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
 
@@ -18,7 +18,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     <FluentProvider theme={webLightTheme}>
       <ThemeDesignerContextProvider>
         <div className={styles.root}>
-          <Nav className={styles.nav} />
+          <Header className={styles.nav} />
           <Sidebar className={styles.sidebar} />
           <Content className={styles.content} />
         </div>
