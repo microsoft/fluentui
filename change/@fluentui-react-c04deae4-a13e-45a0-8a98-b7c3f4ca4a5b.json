@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "revert pr #26931",
+  "comment": "Fix: Fix issue with ComboBox not accepting IME input in allowFreeform (revert PR #26931)",
   "packageName": "@fluentui/react",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
