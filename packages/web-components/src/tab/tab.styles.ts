@@ -41,7 +41,7 @@ export const styles = css`
     padding-right: ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
   }
-  :host::part(tab-content) {
+  :host .tab-content {
     display: inline-flex;
     flex-direction: column;
     padding: 0 2px;
@@ -57,7 +57,7 @@ export const styles = css`
   }
 
   /* adds hidden textContent to prevent shifting ui on bold / unbolding of text */
-  :host::part(tab-content)::after {
+  :host .tab-content::after {
     content: var(--textContent);
     visibility: hidden;
     height: 0;
