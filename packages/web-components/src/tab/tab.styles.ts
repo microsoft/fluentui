@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -19,9 +20,8 @@ import {
 } from '../theme/design-tokens.js';
 
 export const styles = css`
-  :host([hidden]) {
-    display: none;
-  }
+  ${display('none')}
+
   :host {
     position: relative;
     display: inline-flex;
