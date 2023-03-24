@@ -7,27 +7,12 @@ import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
 
-// eslint-disable-next-line @fluentui/no-Context-default-value
-// export const AppContext = createContext<AppContextValue>({
-//   appState: initialThemeDesignerState,
-//   dispatchAppState: () => null,
-//   name: 'Untitled',
-//   setName: () => null,
-// });
-
 /**
  * ThemeDesigner component - TODO: add more docs
  */
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
   useStaticStyles();
-
-  // const [appState, dispatchAppState] = themeDesignerContext();
-  // const [name, setName] = React.useState<string>('myTheme');
-  //
-  // const { darkOverrides, isDark, lightOverrides, theme } = appState;
-  // const overrides = isDark ? darkOverrides : lightOverrides;
-  // const overridenTheme = { ...theme, ...overrides };
 
   return (
     <FluentProvider theme={webLightTheme}>

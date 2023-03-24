@@ -1,9 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { useEffect } from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import type { CustomAttributes } from '../../Context/ThemeDesignerContext';
-import { useDebounce } from '../../utils/useDebounce';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import {
   useId,

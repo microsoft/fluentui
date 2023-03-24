@@ -27,7 +27,6 @@ export const Content: React.FC<ContentProps> = props => {
   const {
     state: { themeWithOverrides },
   } = useThemeDesigner();
-
   return (
     <FluentProvider theme={themeWithOverrides}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
