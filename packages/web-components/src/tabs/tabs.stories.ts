@@ -92,31 +92,29 @@ const tabsAppearance = html`
 export const TabsAppearance = renderComponent(tabsAppearance).bind({});
 
 const tabsDisabledTabs = html`
-  <div>
-    <fluent-tabs disabled>
-      <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
-      <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
-      <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
-      <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+  <fluent-tabs disabled>
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]}> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
 
-      <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
-      <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
-      <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
-      <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
-    </fluent-tabs>
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tabs>
 
-    <fluent-tabs>
-      <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
-      <fluent-tab id=${defaultTabIds[1]} disabled> Second Tab</fluent-tab>
-      <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
-      <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
+  <fluent-tabs>
+    <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
+    <fluent-tab id=${defaultTabIds[1]} disabled> Second Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[2]}> Third Tab</fluent-tab>
+    <fluent-tab id=${defaultTabIds[3]}> Fourth Tab</fluent-tab>
 
-      <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
-      <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
-      <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
-      <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
-    </fluent-tabs>
-  </div>
+    <fluent-tab-panel id=${defaultTabIds[0] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[1] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[2] + '-panel'}></fluent-tab-panel>
+    <fluent-tab-panel id=${defaultTabIds[3] + '-panel'}></fluent-tab-panel>
+  </fluent-tabs>
 `;
 export const TabsDisabled = renderComponent(tabsDisabledTabs).bind({});
 
