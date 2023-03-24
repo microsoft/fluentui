@@ -122,7 +122,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
         isDark: action.payload,
         themeWithOverrides: {
           ...theme,
-          ...state.themeWithOverrides,
+          ...(state.isDark ? state.darkThemeOverrides : state.lightThemeOverrides),
         },
       };
     case 'reset':
