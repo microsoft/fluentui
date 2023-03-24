@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Bump @fluenti/react-combobox to 9.2.6",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Sync with latest released version on npm",
-  "packageName": "@fluentui/react-combobox",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}

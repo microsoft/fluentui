@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 24 Mar 2023 10:15:26 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 14:58:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.5)
+
+Fri, 24 Mar 2023 14:58:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.4..@fluentui/react-components_v9.18.5)
+
+### Patches
+
+- `@fluentui/react-components`
+  - fix: Bump @fluenti/react-combobox to 9.2.6 ([PR #27319](https://github.com/microsoft/fluentui/pull/27319) by lingfangao@hotmail.com)
 
 ## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.4)
 

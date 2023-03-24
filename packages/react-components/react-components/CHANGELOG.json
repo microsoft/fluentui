@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 14:58:55 GMT",
+      "tag": "@fluentui/react-components_v9.18.5",
+      "version": "9.18.5",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0f198d87130e4f9fcacdaa187b850e507e0b1ec8",
+            "comment": "Sync with latest released version on npm"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0f198d87130e4f9fcacdaa187b850e507e0b1ec8",
+            "comment": "fix: Bump @fluenti/react-combobox to 9.2.6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Mar 2023 10:15:26 GMT",
       "tag": "@fluentui/react-components_v9.18.4",
       "version": "9.18.4",
