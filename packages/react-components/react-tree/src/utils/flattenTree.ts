@@ -6,16 +6,8 @@ export type NestedTreeItem = Omit<TreeItemProps, 'subtree'> & {
 };
 
 let count = 1;
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-function flattenTreeRecursive_unstable(
-  items: NestedTreeItem[],
-  parent?: FlatTreeItemProps,
-  level = 1,
-): FlatTreeItemProps[] {
-  const flatTreeItems: FlatTreeItemProps[] = [];
-  for (let index = 0; index < items.length; index++) {
-    const { subtree, ...item } = items[index];
+function flattenTreeRecursive(items: NestedTreeItem[], parent?: FlatTreeItemProps, level = 1): FlatTreeItemProps[] {
+  return items.reduce<FlatTreeItemProps[]>((acc, { subtree, ...item }, index) => {
     const flatTreeItem: FlatTreeItemProps = {
       'aria-level': level,
       'aria-posinset': index + 1,
@@ -25,16 +17,53 @@ function flattenTreeRecursive_unstable(
       leaf: subtree === undefined,
       ...item,
     };
-    flatTreeItems.push(flatTreeItem);
+    acc.push(flatTreeItem);
     if (subtree !== undefined) {
-      flatTreeItems.push(...flattenTreeRecursive_unstable(subtree, flatTreeItem, level + 1));
+      acc.push(...flattenTreeRecursive(subtree, flatTreeItem, level + 1));
     }
-  }
-  return flatTreeItems;
+    return acc;
+  }, []);
 }
 
 /**
  * Converts a nested structure to a flat one which can be consumed by `useFlatTreeItems`
+ * @example
+ * ```tsx
+ * const defaultItems = flattenTree_unstable([
+ *  {
+ *    children: <TreeItemLayout>level 1, item 1</TreeItemLayout>,
+ *    subtree: [
+ *      {
+ *        children: <TreeItemLayout>level 2, item 1</TreeItemLayout>,
+ *      },
+ *      {
+ *        children: <TreeItemLayout>level 2, item 2</TreeItemLayout>,
+ *      },
+ *      {
+ *        children: <TreeItemLayout>level 2, item 3</TreeItemLayout>,
+ *      },
+ *    ],
+ *  },
+ *  {
+ *    children: <TreeItemLayout>level 1, item 2</TreeItemLayout>,
+ *    subtree: [
+ *      {
+ *        children: <TreeItemLayout>level 2, item 1</TreeItemLayout>,
+ *        subtree: [
+ *          {
+ *            children: <TreeItemLayout>level 3, item 1</TreeItemLayout>,
+ *            subtree: [
+ *              {
+ *                children: <TreeItemLayout>level 4, item 1</TreeItemLayout>,
+ *              },
+ *            ],
+ *          },
+ *        ],
+ *      },
+ *    ],
+ *  },
+ * ]);
+ * ```
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const flattenTree_unstable: (items: NestedTreeItem[]) => FlatTreeItemProps[] = flattenTreeRecursive_unstable;
+export const flattenTree_unstable = (items: NestedTreeItem[]): FlatTreeItemProps[] => flattenTreeRecursive(items);
