@@ -1,8 +1,17 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Wed, 22 Mar 2023 08:03:46 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 07:40:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.106.4](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.106.4)
+
+Fri, 24 Mar 2023 07:40:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.106.3..@fluentui/fluent2-theme_v8.106.4)
+
+### Patches
+
+- Updating Link text color in dark theme to match Fluent 2. ([PR #27203](https://github.com/microsoft/fluentui/pull/27203) by matejera@microsoft.com)
 
 ## [8.106.3](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.106.3)
 

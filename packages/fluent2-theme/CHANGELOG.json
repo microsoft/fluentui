@@ -2,6 +2,21 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 07:40:28 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.4",
+      "version": "8.106.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "ffb73565db8eb8ad0a5e2bdb383306519ade8116",
+            "comment": "Updating Link text color in dark theme to match Fluent 2."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Mar 2023 08:03:46 GMT",
       "tag": "@fluentui/fluent2-theme_v8.106.3",
       "version": "8.106.3",

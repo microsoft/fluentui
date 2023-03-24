@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/fluent2-theme",
-  "version": "8.106.3",
+  "version": "8.106.4",
   "description": "A Fluent2 theme for Fluent UI React 8.x",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
