@@ -30,7 +30,7 @@ export type InfoLabelSlots = {
  */
 export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
   /**
-   * The information of the InfoButton's popover.
+   * The content of the InfoButton's popover.
    */
   info?: InfoButtonProps['info'];
 };
