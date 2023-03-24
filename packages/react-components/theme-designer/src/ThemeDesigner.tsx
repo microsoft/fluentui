@@ -4,7 +4,7 @@ import { useStaticStyles, useStyles } from './ThemeDesigner.styles';
 import { AppState, DispatchTheme, initialAppState, useThemeDesignerReducer } from './useThemeDesignerReducer';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { createContext } from '@fluentui/react-context-selector';
-import { Nav } from './components/Nav/Nav';
+import { Header } from './components/Header/Header';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
 
@@ -41,7 +41,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     <FluentProvider theme={webLightTheme}>
       <AppContext.Provider value={{ appState, dispatchAppState, name, setName }}>
         <div className={styles.root}>
-          <Nav className={styles.nav} />
+          <Header className={styles.nav} />
           <Sidebar className={styles.sidebar} />
           <FluentProvider theme={overridenTheme}>
             <Content className={styles.content} />

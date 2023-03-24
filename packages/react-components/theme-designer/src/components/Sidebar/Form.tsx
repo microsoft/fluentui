@@ -2,13 +2,27 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { useId, Label, Input, Slider, tokens } from '@fluentui/react-components';
+import {
+  useId,
+  Label,
+  Input,
+  Slider,
+  tokens,
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  Switch,
+} from '@fluentui/react-components';
+import { ExportButton } from '../ExportButton/ExportButton';
 import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import type { CustomAttributes } from '../../useThemeDesignerReducer';
+import { EditRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
+    backgroundColor: tokens.colorSubtleBackground, // todo: find proper token for this hex e.g. tokens.colorNeutralBackground1
     display: 'flex',
     flexDirection: 'column',
     ...shorthands.gap(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL),
@@ -43,13 +57,42 @@ const useStyles = makeStyles({
     gridTemplateColumns: '115px 50px',
     columnGap: '15px',
   },
+  element: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  labelName: {
+    // Stack the label above the field
+    display: 'flex',
+    flexDirection: 'column',
+    // Use 2px gap below the label (per the design system)
+    ...shorthands.gap('2px'),
+    // Prevent the example from taking the full width of the page (optional)
+    maxWidth: '400px',
+  },
+  export: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    paddingRight: '20px',
+  },
 });
 
 export const Form: React.FC = () => {
   const styles = useStyles();
   const sidebarId = useId();
-
+  const [isDark, setIsDark] = React.useState<boolean>(false);
+  const defaultThemePlaceholderName = 'MyNewTheme';
+  const themeNameInputId = useId('themeNameInputId');
+  const themeName = useContextSelector(AppContext, ctx => ctx.name);
+  const setThemeName = useContextSelector(AppContext, ctx => ctx.setName);
   const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
+
+  const handleIsDarkChange = () => {
+    setIsDark(!isDark);
+    dispatchAppState({ type: 'isDark', isDark: !isDark });
+  };
 
   const initialState: CustomAttributes = {
     keyColor: '#0F6CBD',
@@ -77,72 +120,120 @@ export const Form: React.FC = () => {
     setVibrancy(parseInt(e.target.value, 10));
   };
 
+  const handleThemeNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.target.value;
+
+    if (newName.length === 0) {
+      setThemeName(defaultThemePlaceholderName);
+    } else {
+      const camelizeName = e.target.value
+        .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
+        .replace(/\s+/g, '')
+        .replace(/[^A-Za-z0-9@]*/g, ``);
+
+      setThemeName(camelizeName);
+    }
+  };
+
   return (
     <div className={styles.root} role="tabpanel" aria-labelledby="Edit">
-      <div className={styles.inputs}>
-        <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
-        <div className={styles.labels}>
-          <Input
-            className={styles.keyColor}
-            size="large"
-            appearance="underline"
-            id={sidebarId + 'keyColor'}
-            value={keyColor}
-            onChange={handleKeyColorChange}
-            maxLength={7}
-          />
-          <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
-            <input
-              className={styles.color}
-              type="color"
-              id={sidebarId + 'keyColor Color'}
-              onChange={handleKeyColorChange}
-            />
-          </div>
-        </div>
-      </div>
-      <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
-      <div className={styles.slider}>
-        <Slider
-          size="small"
-          min={-50}
-          max={50}
-          id={sidebarId + 'hueTorsion'}
-          value={hueTorsion}
-          onChange={handleHueTorsionChange}
-        />
-        <Input
-          size="small"
-          type="number"
-          min={-50}
-          max={50}
-          appearance="outline"
-          id={sidebarId + 'hueTorsion input'}
-          value={hueTorsion.toString()}
-          onChange={handleHueTorsionChange}
-        />
-      </div>
-      <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
-      <div className={styles.slider}>
-        <Slider
-          size="small"
-          min={-50}
-          max={50}
-          id={sidebarId + 'vibrancy'}
-          value={vibrancy}
-          onChange={handleVibrancyChange}
-        />
-        <Input
-          size="small"
-          type="number"
-          min={-50}
-          max={50}
-          appearance="outline"
-          id={sidebarId + 'vibrancy input'}
-          value={vibrancy.toString()}
-          onChange={handleVibrancyChange}
-        />
-      </div>
+      <Accordion defaultOpenItems={['1']} multiple>
+        {/* `multiple` allows for toggle of collapse as well as open multiple panels */}
+        <AccordionItem value="1">
+          <AccordionHeader>Step 1 - Color settings</AccordionHeader>
+          <AccordionPanel>
+            <div className={styles.inputs}>
+              <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
+              <div className={styles.labels}>
+                <Input
+                  className={styles.keyColor}
+                  size="large"
+                  appearance="underline"
+                  id={sidebarId + 'keyColor'}
+                  value={keyColor}
+                  onChange={handleKeyColorChange}
+                  maxLength={7}
+                />
+                <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+                  <input
+                    className={styles.color}
+                    type="color"
+                    id={sidebarId + 'keyColor Color'}
+                    onChange={handleKeyColorChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
+            <div className={styles.slider}>
+              <Slider
+                size="small"
+                min={-50}
+                max={50}
+                id={sidebarId + 'hueTorsion'}
+                value={hueTorsion}
+                onChange={handleHueTorsionChange}
+              />
+              <Input
+                size="small"
+                type="number"
+                min={-50}
+                max={50}
+                appearance="outline"
+                id={sidebarId + 'hueTorsion input'}
+                value={hueTorsion.toString()}
+                onChange={handleHueTorsionChange}
+              />
+            </div>
+            <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
+            <div className={styles.slider}>
+              <Slider
+                size="small"
+                min={-50}
+                max={50}
+                id={sidebarId + 'vibrancy'}
+                value={vibrancy}
+                onChange={handleVibrancyChange}
+              />
+              <Input
+                size="small"
+                type="number"
+                min={-50}
+                max={50}
+                appearance="outline"
+                id={sidebarId + 'vibrancy input'}
+                value={vibrancy.toString()}
+                onChange={handleVibrancyChange}
+              />
+            </div>
+            <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="2">
+          <AccordionHeader>Step 2 - Contrast check</AccordionHeader>
+          <AccordionPanel>
+            <div>Contrast Check Panel</div>
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="3">
+          <AccordionHeader>Step 3 - Export</AccordionHeader>
+          <AccordionPanel>
+            <div className={styles.labelName}>
+              <Label htmlFor={themeNameInputId}>Theme name</Label>
+              <Input
+                appearance="outline"
+                id={themeNameInputId}
+                // eslint-disable-next-line react/jsx-no-bind
+                onChange={handleThemeNameChange}
+                contentAfter={<EditRegular />}
+                placeholder={defaultThemePlaceholderName}
+                value={themeName === defaultThemePlaceholderName ? '' : themeName}
+              />
+            </div>
+            <ExportButton />
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 };
