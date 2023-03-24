@@ -11,7 +11,7 @@ export class Menu extends FASTMenu {
     super.setItems();
 
     /**
-     * TSet the indent attribute on MenuItem elements based on their
+     * Set the indent attribute on MenuItem elements based on their
      * position in the Menu. Each MenuItem element has a data-indent attribute that is
      * used to set the indent of the element's start slot content.
      */
@@ -35,9 +35,9 @@ export class Menu extends FASTMenu {
     const startSlot = el.querySelector('[slot=start]');
 
     if (role && role !== MenuItemRole.menuitem) {
-      return !startSlot ? 1 : 2;
+      return startSlot ? 2 : 1;
     }
 
-    return !startSlot ? 0 : 1;
+    return startSlot ? 1 : 0;
   }
 }
