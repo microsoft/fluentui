@@ -2,6 +2,43 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 10:15:26 GMT",
+      "tag": "@fluentui/react-components_v9.18.4",
+      "version": "9.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "19801e7edc22f433eeace3cf636f4722ea02a36b",
+            "comment": "feat: Add static measurement hooks and embedded scroll option to react-virtualizer"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "64d2ec1f40281eab9337df6d6065edef9ad0d312",
+            "comment": "feat: Render theme CSS variables in SSR style element"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b19ad44388b93ade650d5c46802b82fa7419e6b4",
+            "comment": "tree stories and doc update"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "19801e7edc22f433eeace3cf636f4722ea02a36b",
+            "comment": "[feat] Add static measurement hooks and embedded scroll option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:22:58 GMT",
       "tag": "@fluentui/react-components_v9.18.3",
       "version": "9.18.3",
