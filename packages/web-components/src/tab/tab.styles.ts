@@ -35,10 +35,7 @@ export const styles = css`
     color: ${colorNeutralForeground2};
     fill: currentcolor;
     grid-row: 1;
-    padding-top: ${spacingHorizontalM};
-    padding-bottom: ${spacingHorizontalM};
-    padding-left: ${spacingHorizontalMNudge};
-    padding-right: ${spacingHorizontalMNudge};
+    padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
     border-radius: ${borderRadiusMedium};
   }
   :host .tab-content {
