@@ -7,6 +7,7 @@ import {
   TreeOpenChangeData,
   TreeOpenChangeEvent,
 } from '@fluentui/react-tree';
+import story from './TreeControllingOpenAndClose.md';
 
 export const OpenItemsControlled = () => {
   const [openItems, setOpenItems] = React.useState<TreeItemId[]>([]);
@@ -46,4 +47,12 @@ export const OpenItemsControlled = () => {
       </TreeItem>
     </Tree>
   );
+};
+
+OpenItemsControlled.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

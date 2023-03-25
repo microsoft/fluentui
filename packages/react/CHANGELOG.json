@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 22:25:03 GMT",
+      "tag": "@fluentui/react_v8.106.9",
+      "version": "8.106.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0f112dce6a19b7124dd95f58d9096f40aeaedf9c",
+            "comment": "Fix: Fix issue with ComboBox not accepting IME input in allowFreeform (revert PR #26931)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Mar 2023 08:03:46 GMT",
+      "tag": "@fluentui/react_v8.106.8",
+      "version": "8.106.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5",
+            "comment": "fix: Calculating correct gap space when Tooltips have isBeakVisible set to false."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Mar 2023 08:15:56 GMT",
       "tag": "@fluentui/react_v8.106.7",
       "version": "8.106.7",
