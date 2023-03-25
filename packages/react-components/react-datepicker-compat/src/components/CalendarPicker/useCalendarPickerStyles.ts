@@ -157,7 +157,7 @@ const useItemButtonStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground3,
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,
     height: '40px',
@@ -180,7 +180,7 @@ const useItemButtonStyles = makeStyles({
     },
     '&:hover': {
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorNeutralForeground1Hover,
+      color: tokens.colorNeutralForeground1Static,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
 
@@ -206,13 +206,11 @@ const useItemButtonStyles = makeStyles({
 const useCurrentStyles = makeStyles({
   highlightCurrent: {
     backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: tokens.colorNeutralForegroundOnBrand + '!important',
+    fontWeight: tokens.fontWeightSemibold,
 
-    '& div': {
-      fontWeight: tokens.fontWeightSemibold,
-    },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: tokens.colorBrandBackground,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'WindowText',
@@ -231,14 +229,15 @@ const useCurrentStyles = makeStyles({
 const useSelectedStyles = makeStyles({
   highlightSelected: {
     backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground1Static,
     fontWeight: tokens.fontWeightSemibold,
 
     '& div': {
       fontWeight: tokens.fontWeightSemibold,
     },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      color: tokens.colorNeutralForeground1Static,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
@@ -331,8 +330,8 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
           : buttonRowStyles.verticalForward),
     ),
     itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
-    current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),
     selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
+    current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),
     disabled: mergeClasses(calendarPickerClassNames.disabled, disabledStyles.base),
   };
 };
