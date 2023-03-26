@@ -2,6 +2,21 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 10:15:27 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "19801e7edc22f433eeace3cf636f4722ea02a36b",
+            "comment": "[feat] Add static measurement hooks and embedded scroll option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:16 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.13",
       "version": "9.0.0-alpha.13",

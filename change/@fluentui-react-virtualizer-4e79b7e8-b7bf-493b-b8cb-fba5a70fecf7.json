@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "[feat] Add static measurement hooks and embedded scroll option",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

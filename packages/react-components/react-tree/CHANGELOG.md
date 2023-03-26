@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 21 Mar 2023 21:23:13 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 10:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.8)
+
+Fri, 24 Mar 2023 10:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.6..@fluentui/react-tree_v9.0.0-beta.8)
+
+### Changes
+
+- tree stories and doc update ([PR #27270](https://github.com/microsoft/fluentui/pull/27270) by petrduda@microsoft.com)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.6)
 
