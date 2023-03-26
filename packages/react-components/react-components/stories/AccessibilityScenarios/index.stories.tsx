@@ -2,6 +2,7 @@ export { PersonalFormAccordion } from './Accordion.stories';
 export { FAQAccordion } from './AccordionFaq.stories';
 export { MessengerButtons } from './Button.stories';
 export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
+export { UserPromptingDialogs } from './Dialog.stories';
 export { TicketOrderFormInputs } from './Input.stories';
 export { SiteNavigationLinks } from './Link.stories';
 export { ProfileMenu } from './Menu.stories';
