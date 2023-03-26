@@ -239,7 +239,7 @@ const SortableTable = () => {
   );
 };
 
-const columns: TableColumnDefinition<Item>[] = [
+const selectColumns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
   }),
@@ -260,7 +260,7 @@ const MultipleSelectTable = () => {
     selection: { allRowsSelected, someRowsSelected, toggleAllRows, toggleRow, isRowSelected },
   } = useTableFeatures(
     {
-      columns,
+      columns: selectColumns,
       items,
     },
     [
@@ -343,6 +343,79 @@ const MultipleSelectTable = () => {
   );
 };
 
+const SingleSelectTable = () => {
+  const {
+    getRows,
+    selection: { toggleRow, isRowSelected },
+  } = useTableFeatures(
+    {
+      columns: selectColumns,
+      items,
+    },
+    [
+      useTableSelection({
+        selectionMode: 'single',
+        defaultSelectedItems: new Set([1]),
+      }),
+    ],
+  );
+
+  const rows = getRows(row => {
+    const selected = isRowSelected(row.rowId);
+    return {
+      ...row,
+      onClick: (e: React.MouseEvent) => toggleRow(e, row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleRow(e, row.rowId);
+        }
+      },
+      selected,
+      appearance: selected ? ('brand' as const) : ('none' as const),
+    };
+  });
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableSelectionCell type="radio" hidden />
+          <TableHeaderCell>File</TableHeaderCell>
+          <TableHeaderCell>Author</TableHeaderCell>
+          <TableHeaderCell>Last updated</TableHeaderCell>
+          <TableHeaderCell>Last update</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {rows.map(({ item, selected, onClick, onKeyDown, appearance }) => (
+          <TableRow
+            key={item.file.label}
+            onClick={onClick}
+            onKeyDown={onKeyDown}
+            aria-selected={selected}
+            appearance={appearance}
+          >
+            <TableSelectionCell checked={selected} type="radio" radioIndicator={{ 'aria-label': 'Select row' }} />
+            <TableCell>
+              <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
+            </TableCell>
+            <TableCell>
+              <TableCellLayout media={<Avatar aria-label={item.author.label} badge={{ status: item.author.status }} />}>
+                {item.author.label}
+              </TableCellLayout>
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell>
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+
 export const UserActivityTables = () => {
   return (
     <Scenario pageTitle="User activity tables">
@@ -353,8 +426,11 @@ export const UserActivityTables = () => {
       <h2>Sortable table</h2>
       <SortableTable />
 
-      <h2>Row multiple select table</h2>
+      <h2>Multiple select row table</h2>
       <MultipleSelectTable />
+
+      <h2>Single select row table</h2>
+      <SingleSelectTable />
     </Scenario>
   );
 };
