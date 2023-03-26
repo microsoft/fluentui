@@ -9,7 +9,7 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
   root: 'fui-InfoButton',
   // this className won't be used, but it's needed to satisfy the type checker
   popover: 'fui-InfoButton__popover',
-  content: 'fui-InfoButton__content',
+  info: 'fui-InfoButton__info',
 };
 
 /**
@@ -107,10 +107,10 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
   const buttonStyles = useButtonStyles();
   const popoverSurfaceStyles = usePopoverSurfaceStyles();
 
-  state.content.className = mergeClasses(
-    infoButtonClassNames.content,
+  state.info.className = mergeClasses(
+    infoButtonClassNames.info,
     size === 'large' && popoverSurfaceStyles.large,
-    state.content.className,
+    state.info.className,
   );
 
   state.root.className = mergeClasses(

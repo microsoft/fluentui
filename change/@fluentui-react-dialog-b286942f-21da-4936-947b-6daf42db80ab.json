@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(DialogContent): adds padding to allow focus visibility",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
