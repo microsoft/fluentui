@@ -13,6 +13,7 @@ export { SoundControlSliders } from './Slider.stories';
 export { PostsLoadingSpinner } from './Spinner.stories';
 export { EventReminderSplitButton } from './SplitButton.stories';
 export { DeviceControlsSwitches } from './Switch.stories';
+export { UserActivityTables } from './Table.stories';
 export { MailSettingsHorizontalTabList } from './TabListHorizontal.stories';
 export { MailSettingsOverflowTabList } from './TabListOverflow.stories';
 export { MailSettingsVerticalTabList } from './TabListVertical.stories';
