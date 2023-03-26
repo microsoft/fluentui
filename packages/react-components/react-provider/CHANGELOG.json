@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 10:15:27 GMT",
+      "tag": "@fluentui/react-provider_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "64d2ec1f40281eab9337df6d6065edef9ad0d312",
+            "comment": "feat: Render theme CSS variables in SSR style element"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:47 GMT",
       "tag": "@fluentui/react-provider_v9.4.5",
       "version": "9.4.5",

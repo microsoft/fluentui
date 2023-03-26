@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "9.4.5",
+  "version": "9.4.6",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,14 +36,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-badge": "^9.1.5",
+    "@fluentui/react-badge": "^9.1.6",
     "@fluentui/react-context-selector": "^9.1.15",
     "@fluentui/react-icons": "^2.0.196",
-    "@fluentui/react-popover": "^9.5.5",
-    "@fluentui/react-shared-contexts": "^9.3.2",
-    "@fluentui/react-tabster": "^9.6.1",
+    "@fluentui/react-popover": "^9.5.6",
+    "@fluentui/react-shared-contexts": "^9.3.3",
+    "@fluentui/react-tabster": "^9.6.2",
     "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-tooltip": "^9.2.5",
+    "@fluentui/react-tooltip": "^9.2.6",
     "@fluentui/react-utilities": "^9.7.2",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"

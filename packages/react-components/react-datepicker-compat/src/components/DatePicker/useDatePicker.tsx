@@ -221,7 +221,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     onAfterMenuDismiss,
     onSelectDate: onUserSelectDate,
     parseDateFromString = defaultParseDateFromString,
-    pickerAriaLabel = 'Calendar',
     placeholder,
     showCloseButton = false,
     showGoToToday = true,
@@ -505,7 +504,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const popoverSurfaceShorthand = resolveShorthand(props.popoverSurface, {
     defaultProps: {
-      'aria-label': pickerAriaLabel,
+      'aria-label': 'Calendar',
       id: calloutId,
       role: 'dialog',
     },
