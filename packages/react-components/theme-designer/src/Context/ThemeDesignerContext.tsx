@@ -92,15 +92,24 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
         ...state,
         theme: resetTheme,
         themeWithOverrides: resetTheme,
+        lightThemeOverrides: {},
+        darkThemeOverrides: {},
         lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(brandWeb), brandWeb),
         darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(brandWeb), brandWeb),
       };
     case 'updateThemeWithCustomerAttributes':
       const newBrand = createCustomTheme(action.payload);
+      const newTheme = state.isDark ? createDarkTheme(newBrand) : createLightTheme(newBrand);
       return {
         ...state,
         brand: newBrand,
-        theme: state.isDark ? createDarkTheme(newBrand) : createLightTheme(newBrand),
+        theme: newTheme,
+        themeWithOverrides: newTheme,
+        lightThemeOverrides: {},
+        darkThemeOverrides: {},
+        // new overrides -- reset
+        lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(brandWeb), brandWeb),
+        darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(brandWeb), brandWeb),
       };
     case 'addOverride':
       if (state.isDark) {
