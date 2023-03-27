@@ -37,7 +37,7 @@ export class RadioGroup extends FASTRadioGroup {
       this.style.setProperty('--control-border-color-checked', `${colorNeutralForegroundDisabled.$value}`);
       this.style.setProperty('--control-border-color', `${colorNeutralForegroundDisabled.$value}`);
       this.style.setProperty('--checked-indicator-background-color', `${colorNeutralForegroundDisabled.$value}`);
-      this.style.setProperty('--label-color', `${colorNeutralForegroundDisabled.$value}`);
+      this.style.setProperty('--state-color', `${colorNeutralForegroundDisabled.$value}`);
     }
     if (this.stacked) {
       this.style.setProperty(
@@ -52,7 +52,7 @@ export class RadioGroup extends FASTRadioGroup {
     this.style.setProperty('--control-border-color-checked', `${colorCompoundBrandStroke.$value}`);
     this.style.setProperty('--control-border-color', `${colorNeutralStrokeAccessible.$value}`);
     this.style.setProperty('--checked-indicator-background-color', `${colorCompoundBrandForeground1.$value}`);
-    this.style.setProperty('--label-color', `${colorNeutralForeground3.$value}`);
+    this.style.setProperty('--state-color', `${colorNeutralForeground3.$value}`);
     this.style.setProperty(
       '--stacked-padding',
       `${spacingVerticalSNudge.$value} ${spacingHorizontalS.$value} ${spacingVerticalSNudge.$value} ${spacingHorizontalXS.$value}`,

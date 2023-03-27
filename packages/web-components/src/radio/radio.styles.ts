@@ -42,7 +42,11 @@ export const styles = css`
     outline: none;
     position: relative;
     user-select: none;
-    color: ${colorNeutralForeground1};
+    color: var(--state-color);
+  }
+  :host([disabled]),
+  :host([required]) {
+    color: ${colorNeutralForegroundDisabled};
   }
   .label {
     cursor: pointer;
@@ -103,7 +107,6 @@ export const styles = css`
     background-color: var(--checked-indicator-background-color);
     display: block;
   }
-  :host([readonly]) .control,
   :host([disabled]) .control {
     pointer-events: none;
   }
@@ -119,9 +122,11 @@ export const styles = css`
   :host([aria-checked='true']:active) .checked-indicator {
     background: ${colorCompoundBrandForeground1Pressed};
   }
-  :host([readonly]) .control,
   :host([disabled]) .control {
     pointer-events: none;
     border-color: ${colorNeutralForegroundDisabled};
+  }
+  :host([required]) .checked-indicator {
+    background-color: ${colorNeutralForegroundDisabled};
   }
 `;
