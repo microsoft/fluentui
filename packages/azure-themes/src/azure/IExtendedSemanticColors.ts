@@ -71,6 +71,9 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   datePickerSelectionText: string;
   disabledBackground: string;
   disabledBodyText: string;
+  dropdownBackground: string;
+  dropdownItemHover: string;
+  dropdownTextHovered: string;
   errorBackground: string;
   errorText: string;
   focusBorder: string;
