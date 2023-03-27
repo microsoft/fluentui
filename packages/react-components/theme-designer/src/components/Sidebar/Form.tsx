@@ -18,6 +18,7 @@ import {
 } from '@fluentui/react-components';
 import { EditRegular } from '@fluentui/react-icons';
 import { AccessibilityPanel } from './AccessibilityPanel';
+import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
   root: {
@@ -104,18 +105,14 @@ export const Form: React.FC = () => {
   const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
 
   // as the user moves through the wheel, we want the page to react in real time
-  // TODO -- fix
-  //   const debounceAttributes: CustomAttributes = useDebounce(
-  //     { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
-  //     100,
-  //   );
+  const debounceKeyColor: string = useDebounce(keyColor, 100);
 
   React.useEffect(() => {
     dispatch({
       type: 'updateThemeWithCustomerAttributes',
-      payload: { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
+      payload: { keyColor: debounceKeyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
     });
-  }, [dispatch, keyColor, hueTorsion, vibrancy]);
+  }, [dispatch, debounceKeyColor, hueTorsion, vibrancy]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
