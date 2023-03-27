@@ -6,6 +6,7 @@ import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportPanel } from '../Export/ExportPanel';
+import { KeyColorBanner } from '../ColorTokens/KeyColorBanner';
 
 export interface ContentProps {
   className?: string;
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
   const {
-    state: { themeWithOverrides },
+    state: { themeWithOverrides, brand },
   } = useThemeDesigner();
   return (
     <FluentProvider theme={themeWithOverrides}>
@@ -36,6 +37,7 @@ export const Content: React.FC<ContentProps> = props => {
       </Alert>
       <div className={mergeClasses(styles.root, props.className)}>
         <Palette />
+        <KeyColorBanner keyColor={brand[80]} />
         <Demo />
         <Divider />
         <ColorTokens />
