@@ -379,6 +379,26 @@ export {
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
 export {
+  InfoButton,
+  infoButtonClassNames,
+  useInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  renderInfoButton_unstable,
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+} from '@fluentui/react-infobutton';
+export type {
+  InfoButtonProps,
+  InfoButtonSlots,
+  InfoButtonState,
+  InfoLabelProps,
+  InfoLabelSlots,
+  InfoLabelState,
+} from '@fluentui/react-infobutton';
+export {
   Label,
   labelClassNames,
   renderLabel_unstable,

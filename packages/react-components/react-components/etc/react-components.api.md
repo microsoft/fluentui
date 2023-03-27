@@ -279,6 +279,16 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { InfoButton } from '@fluentui/react-infobutton';
+import { infoButtonClassNames } from '@fluentui/react-infobutton';
+import { InfoButtonProps } from '@fluentui/react-infobutton';
+import { InfoButtonSlots } from '@fluentui/react-infobutton';
+import { InfoButtonState } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-infobutton';
+import { infoLabelClassNames } from '@fluentui/react-infobutton';
+import { InfoLabelProps } from '@fluentui/react-infobutton';
+import { InfoLabelSlots } from '@fluentui/react-infobutton';
+import { InfoLabelState } from '@fluentui/react-infobutton';
 import { Input } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
 import { InputOnChangeData } from '@fluentui/react-input';
@@ -494,6 +504,8 @@ import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
+import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
@@ -842,6 +854,10 @@ import { useFocusWithin } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInfoButton_unstable } from '@fluentui/react-infobutton';
+import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
@@ -1536,6 +1552,26 @@ export { ImageSlots }
 
 export { ImageState }
 
+export { InfoButton }
+
+export { infoButtonClassNames }
+
+export { InfoButtonProps }
+
+export { InfoButtonSlots }
+
+export { InfoButtonState }
+
+export { InfoLabel }
+
+export { infoLabelClassNames }
+
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
+
 export { Input }
 
 export { inputClassNames }
@@ -1965,6 +2001,10 @@ export { RendererProvider }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderInfoButton_unstable }
+
+export { renderInfoLabel_unstable }
 
 export { renderInput_unstable }
 
@@ -2661,6 +2701,14 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useInfoButton_unstable }
+
+export { useInfoButtonStyles_unstable }
+
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
 
 export { useInput_unstable }
 
