@@ -1,11 +1,12 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DrawerSlots, DrawerState } from './Drawer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const drawerClassNames: SlotClassNames<DrawerSlots> = {
   root: 'fui-Drawer',
-  // TODO: add class names for all slots on DrawerSlots.
-  // Should be of the form `<slotName>: 'fui-Drawer__<slotName>`
+  dialog: 'fui-Drawer__dialog',
+  dialogSurface: 'fui-Drawer__dialogSurface',
 };
 
 /**
@@ -13,21 +14,95 @@ export const drawerClassNames: SlotClassNames<DrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding('16px'),
+    ...shorthands.borderRadius(0),
+    ...shorthands.border(0),
+
+    boxSizing: 'border-box',
+    width: '320px',
+    height: 'auto',
+    top: 0,
+    bottom: 0,
+
+    opacity: 0,
+
+    transitionDuration: '200ms',
+    transitionTimingFunction: 'ease-out',
+    transitionProperty: 'margin-left, margin-right, opacity',
   },
 
-  // TODO add additional classes for different states and/or slots
+  leftDrawer: {
+    left: 0,
+    right: 'auto',
+    marginLeft: '-320px',
+  },
+
+  rightDrawer: {
+    right: 0,
+    left: 'auto',
+    marginRight: '-320px',
+  },
+
+  visible: {
+    marginLeft: 0,
+    marginRight: 0,
+    opacity: 1,
+  },
+
+  persistent: {
+    position: 'relative',
+    alignItems: 'stretch',
+    justifyContent: 'stretch',
+  },
+
+  persistentLeft: {
+    ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
+  },
+
+  persistentRight: {
+    ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
+  },
+
+  temporary: {
+    position: 'fixed',
+  },
 });
+
+function getPersistentClasses(state: DrawerState, styles: ReturnType<typeof useStyles>) {
+  const classes = [styles.persistent];
+
+  if (state.position === 'left') {
+    classes.push(styles.persistentLeft);
+  }
+
+  if (state.position === 'right') {
+    classes.push(styles.persistentRight);
+  }
+
+  return mergeClasses(...classes);
+}
 
 /**
  * Apply styling to the Drawer slots based on the state
  */
 export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(drawerClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const baseClasses = [
+    drawerClassNames.root,
+    styles.root,
+    state.position === 'left' ? styles.leftDrawer : styles.rightDrawer,
+  ];
+
+  if (state.isVisible) {
+    baseClasses.push(styles.visible);
+  }
+
+  if (state.type === 'persistent') {
+    state.root.className = mergeClasses(...baseClasses, getPersistentClasses(state, styles), state.root.className);
+  } else {
+    state.dialogSurface.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
+  }
 
   return state;
 };

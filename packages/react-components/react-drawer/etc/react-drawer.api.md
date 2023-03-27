@@ -4,8 +4,11 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DialogProps } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -18,7 +21,10 @@ export const Drawer: ForwardRefComponent<DrawerProps>;
 export const drawerClassNames: SlotClassNames<DrawerSlots>;
 
 // @public
-export type DrawerProps = ComponentProps<DrawerSlots> & {};
+export type DrawerProps = ComponentProps<DrawerSlots> & {
+    position?: 'left' | 'right';
+    type?: 'persistent' | 'temporary';
+} & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
 // @public (undocumented)
 export type DrawerSlots = {
@@ -26,10 +32,10 @@ export type DrawerSlots = {
 };
 
 // @public
-export type DrawerState = ComponentState<DrawerSlots>;
+export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open'>>;
 
 // @public
-export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
+export const renderDrawer_unstable: (state: DrawerState) => JSX.Element | null;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;

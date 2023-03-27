@@ -1,9 +1,10 @@
 import { Drawer } from '@fluentui/react-drawer';
 import descriptionMd from './DrawerDescription.md';
-import DrawerBestpracticesMd from './DrawerBestPractices.md';
+import bestPracticesMd from './DrawerBestPractices.md';
 import previewMd from './DrawerPreview.md';
 
 export { Default } from './DrawerDefault.stories';
+export { Persistent } from './DrawerPersistent.stories';
 
 export default {
   title: 'Preview Components/Drawer/Drawer',
@@ -11,7 +12,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, DrawerBestpracticesMd, previewMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, previewMd].join('\n'),
       },
     },
   },
