@@ -9,8 +9,7 @@ const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
   const {
-    dispatch,
-    state: { isDark, themeName, brand, darkThemeOverrides, lightThemeOverrides },
+    state: { themeName, brand, darkThemeOverrides, lightThemeOverrides },
   } = useThemeDesigner();
 
   const content = dedent`
