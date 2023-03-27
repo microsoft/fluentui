@@ -11,7 +11,7 @@ import { useBreadcrumbContextValue } from './useBreadcrumbContextValue';
  */
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumb_unstable(props, ref);
-  const breadcrumbContextValue = useBreadcrumbContextValue(state);
+  const contextValues = useBreadcrumbContextValues_unstable(state);
 
   useBreadcrumbStyles_unstable(state);
   return renderBreadcrumb_unstable(state, breadcrumbContextValue);
