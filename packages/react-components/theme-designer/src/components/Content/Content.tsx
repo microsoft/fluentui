@@ -5,6 +5,7 @@ import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
+import { ExportPanel } from '../Export/ExportPanel';
 
 export interface ContentProps {
   className?: string;
@@ -29,6 +30,7 @@ export const Content: React.FC<ContentProps> = props => {
   } = useThemeDesigner();
   return (
     <FluentProvider theme={themeWithOverrides}>
+      <ExportPanel />
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>

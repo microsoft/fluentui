@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text, Input, useId } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular, EditRegular } from '@fluentui/react-icons';
-import { ExportButton } from '../ExportButton/ExportButton';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface NavProps {
@@ -78,7 +77,6 @@ export const Nav: React.FC<NavProps> = props => {
           value={themeName === 'myTheme' ? '' : themeName}
         />
       </div>
-      <ExportButton />
     </FluentProvider>
   );
 };

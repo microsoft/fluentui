@@ -31,7 +31,8 @@ type Action =
   | { type: 'reset' }
   | { type: 'updateThemeWithCustomerAttributes'; payload: CustomAttributes }
   | { type: 'addOverride'; payload: ColorOverridePayload }
-  | { type: 'themeName'; payload: string };
+  | { type: 'themeName'; payload: string }
+  | { type: 'showExportPanel'; payload: boolean };
 
 type Dispatch = (action: Action) => void;
 
@@ -47,6 +48,7 @@ export type ThemeDesignerState = {
   lightBrandOverrides: ColorOverrideBrands;
 
   darkBrandOverrides: ColorOverrideBrands;
+  showExportPanel: boolean;
 };
 
 export const initialThemeDesignerState: ThemeDesignerState = {
@@ -59,6 +61,7 @@ export const initialThemeDesignerState: ThemeDesignerState = {
   darkThemeOverrides: {},
   lightBrandOverrides: getOverridableTokenBrandColors(createLightTheme(brandWeb), brandWeb),
   darkBrandOverrides: getOverridableTokenBrandColors(createDarkTheme(brandWeb), brandWeb),
+  showExportPanel: false,
 };
 
 export const ThemeDesignerContext = React.createContext<{ state: ThemeDesignerState; dispatch: Dispatch } | undefined>(
@@ -155,6 +158,11 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
       return {
         ...state,
         themeName: action.payload,
+      };
+    case 'showExportPanel':
+      return {
+        ...state,
+        showExportPanel: action.payload,
       };
 
     default:

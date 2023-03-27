@@ -14,8 +14,8 @@ import {
   AccordionItem,
   AccordionPanel,
   Switch,
+  Button,
 } from '@fluentui/react-components';
-import { ExportButton } from '../ExportButton/ExportButton';
 import { EditRegular } from '@fluentui/react-icons';
 import { AccessibilityPanel } from './AccessibilityPanel';
 
@@ -143,6 +143,10 @@ export const Form: React.FC = () => {
     }
   };
 
+  const showExportButton = () => {
+    dispatch({ type: 'showExportPanel', payload: true });
+  };
+
   return (
     <div className={styles.root} role="tabpanel" aria-labelledby="Edit">
       <Accordion defaultOpenItems={['1']} multiple>
@@ -242,7 +246,9 @@ export const Form: React.FC = () => {
                 value={themeName === defaultThemePlaceholderName ? '' : themeName}
               />
             </div>
-            <ExportButton />
+            <Button size="small" appearance="outline" onClick={showExportButton}>
+              Export
+            </Button>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
