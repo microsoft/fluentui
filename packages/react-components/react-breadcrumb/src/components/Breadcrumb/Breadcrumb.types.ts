@@ -11,9 +11,9 @@ export interface BreadcrumbContextValue {
    *
    * @default 'medium'
    */
-  size?: BreadcrumbSize;
+  size?: 'small' | 'medium' | 'large';
 
-  dividerType?: BreadcrumbDividerType;
+  dividerType?: 'chevron' | 'slash';
 }
 export type BreadcrumbSlots = {
   /**
