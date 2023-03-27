@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 import { makeStyles, useFluent } from '@fluentui/react-components';
+// @ts-expect-error - we don support path aliases for libraries with both v8 and v9 as dependencies
 import { ThemeProvider } from '@fluentui/react';
 
 const useStyles = makeStyles({
