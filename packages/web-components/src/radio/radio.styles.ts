@@ -38,14 +38,13 @@ export const styles = css`
     height: 32px;
     align-items: center;
     cursor: pointer;
-    display: flex;
     flex-direction: row;
     outline: none;
     position: relative;
     user-select: none;
+    color: ${colorNeutralForeground1};
   }
   .label {
-    color: var(--label-color);
     cursor: pointer;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
@@ -53,7 +52,6 @@ export const styles = css`
     line-height: ${lineHeightBase300};
     padding: ${spacingVerticalSNudge} ${spacingHorizontalS} ${spacingVerticalSNudge} ${spacingHorizontalXS};
   }
-
   .label__hidden {
     display: none;
     visibility: hidden;
@@ -76,7 +74,9 @@ export const styles = css`
     opacity: 0;
     width: 10px;
   }
-
+  :host([aria-checked='false']:hover) {
+    color: ${colorNeutralForeground2};
+  }
   :host(:focus-visible)::after {
     border: 2px solid ${colorStrokeFocus1};
     border-radius: ${borderRadiusMedium};
@@ -87,85 +87,51 @@ export const styles = css`
     outline: none;
     position: absolute;
   }
-
   :host([stack]) {
     flex-direction: column;
     justify-content: center;
   }
-
   :host([stack]) .label {
     padding: ${spacingVerticalXS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalS};
   }
-
   :host([stack]) .control {
     margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
-
-  :host(:hover) .label {
-    color: ${colorNeutralForeground2};
-  }
-
-  :host(:active) .label {
-    color: ${colorNeutralForeground1};
-  }
-
   :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-
   :host(:active) .control {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-
   :host([aria-checked='true']) .checked-indicator {
     opacity: 1;
   }
-
-  :host([aria-checked='true']) .label {
-    color: ${colorNeutralForeground1};
-  }
-
   :host([aria-checked='true']) .control {
     border-color: var(--control-border-color);
   }
-
   :host([aria-checked='true']) .checked-indicator {
     background-color: var(--checked-indicator-background-color);
     display: block;
   }
-
   :host([readonly]) .control,
   :host([disabled]) .control {
-    pointer-events; None;
+    pointer-events: none;
   }
-
   :host([aria-checked='true']:hover) .control {
     border-color: ${colorCompoundBrandStrokeHover};
   }
-
   :host([aria-checked='true']:hover) .checked-indicator {
     background-color: ${colorCompoundBrandStrokeHover};
   }
-
-  :host([aria-checked='true']:hover) .label {
-    border-color: ${colorNeutralForeground1};
-  }
-
-  :host([aria-checked='true']:active) .label {
-    color: ${colorNeutralForeground1};
-  }
-
   :host([aria-checked='true']:active) .control {
     border-color: ${colorCompoundBrandStrokePressed};
   }
-
   :host([aria-checked='true']:active) .checked-indicator {
     background: ${colorCompoundBrandForeground1Pressed};
   }
-
   :host([readonly]) .control,
   :host([disabled]) .control {
-    pointer-events; None;
+    pointer-events: none;
     border-color: ${colorNeutralForegroundDisabled};
   }
 `;
