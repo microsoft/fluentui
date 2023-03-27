@@ -102,8 +102,12 @@ export const ExportPanel = () => {
               <Text as="h1" id="headingID" size={500}>
                 Export Theme
               </Text>
-
-              {<Button onClick={onCloseExportPanel}>X</Button>}
+              <Button
+                // eslint-disable-next-line react/jsx-no-bind
+                onClick={onCloseExportPanel}
+              >
+                X
+              </Button>
               <br />
               <br />
               <Body1>
@@ -139,7 +143,12 @@ export const ExportPanel = () => {
               />
               <br />
               <ExportLink />
-              <Button onClick={onClickCopyToClipboard}>Copy to clipboard</Button>
+              <Button
+                // eslint-disable-next-line react/jsx-no-bind
+                onClick={onClickCopyToClipboard}
+              >
+                Copy to clipboard
+              </Button>
             </FluentProvider>
           </div>
         </div>
