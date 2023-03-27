@@ -1,9 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, Switch } from '@fluentui/react-components';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AppContext } from '../../ThemeDesigner';
+import { tokens } from '@fluentui/react-components';
 import { Form } from './Form';
 
 export interface SidebarProps {
@@ -25,19 +23,9 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
-  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
-
-  const [isDark, setIsDark] = React.useState<boolean>(false);
-
-  const handleIsDarkChange = () => {
-    setIsDark(!isDark);
-    dispatchAppState({ type: 'isDark', isDark: !isDark });
-  };
-
   return (
     <div className={mergeClasses(styles.root, props.className)}>
       <Form />
-      <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
 };

@@ -3,7 +3,8 @@ import { BrandVariants } from '@fluentui/react-components';
 export type ThemeList = Record<string, { brand?: BrandVariants }>;
 
 export const themeList: ThemeList = {
-  Custom: {},
+  CustomLight: {},
+  CustomDark: {},
 };
 
 const lightThemes = Object.keys(themeList).map(currTheme => {

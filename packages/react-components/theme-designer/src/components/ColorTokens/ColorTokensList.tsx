@@ -13,23 +13,24 @@ import {
   MenuTrigger,
   tokens,
   Subtitle2,
+  Theme,
 } from '@fluentui/react-components';
 import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
-import { ColorOverrideBrands } from './ColorTokens';
 import { ContrastRatioList } from './getAccessibilityChecker';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AppContext } from '../../ThemeDesigner';
-
+import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 export interface ColorTokensListProps {
   brand: BrandVariants;
-  brandColors: ColorOverrideBrands;
-  colorOverride: ColorOverrideBrands;
+
+  themeName: string;
+  themeOverrides: Partial<Theme>;
+  colorOverrides: ColorOverrideBrands;
   coveredTokens: string[];
-  onNewOverride: (color: string, newColor: Brands) => void;
   failList?: ContrastRatioList;
+
+  onNewOverride: (color: string, newColor: Brands) => void;
 }
 
 export interface ColorTokenRowProps {
@@ -77,7 +78,10 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
   const { brand, brandValue, brandValueString, selected } = props;
 
-  const name = useContextSelector(AppContext, ctx => ctx.name);
+  const {
+    state: { themeName },
+  } = useThemeDesigner();
+
   return (
     <MenuItemRadio
       icon={<CircleFilled primaryFill={brand[brandValue]} />}
@@ -85,7 +89,7 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
       value={brandValueString}
     >
       <span className={selected ? styles.selected : ''}>
-        {name} {brandValueString}
+        {themeName} {brandValueString}
       </span>
     </MenuItemRadio>
   );
@@ -94,23 +98,18 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, colorOverride, coveredTokens, failList, onNewOverride } = props;
-  const newColors: ColorOverrideBrands = { ...brandColors, ...colorOverride };
-
-  const name = useContextSelector(AppContext, ctx => ctx.name);
-
+  const { brand, coveredTokens, failList, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
   return (
     <div>
       {coveredTokens.map(color => {
-        const colorValue: Brands = newColors[color];
+        const colorValue: Brands = colorOverrides[color];
         const usage = (usageList as unknown as Record<string, string>)[color];
-
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
           onNewOverride?.(color, newColor);
         };
 
-        const overridenTokens = Object.keys(colorOverride);
+        const overridenTokens = Object.keys(themeOverrides);
 
         return (
           <div key={color.toString()}>
@@ -126,7 +125,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                 <Menu>
                   <MenuTrigger disableButtonEnhancement>
                     <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
-                      {name} {colorValue}
+                      {themeName} {colorValue}
                     </MenuButton>
                   </MenuTrigger>
                   <MenuPopover>
