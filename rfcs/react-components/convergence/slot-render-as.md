@@ -1,12 +1,12 @@
-# RFC: Your proposal name here
+# RFC: Use `as` instead of `children` for slot render function
 
 Contributors: behowell
 
-Follow-on to RFC https://github.com/microsoft/fluentui/pull/27164 by bsunderhus
-
 ## Summary
 
-<!-- Explain the proposed change -->
+This proposes modifying the slot render function API to pass a render function via the slot's `as` prop instead of the `children` prop. This has several benefits, the primary of which is that it allows the user to write a render function for a slot without overriding the children added by the component.
+
+This is a complementary proposal to bsunderhus's [RFC #27164: slot children render function support](https://github.com/microsoft/fluentui/pull/27164). Both proposals solve the primary issue in different ways, but they do not conflict with each other. It would be possible to merge the two proposals and combine ideas from both.
 
 ## Background
 
@@ -16,27 +16,20 @@ The render function is passed in as the slot's `children` prop. This has led to 
 
 - https://github.com/microsoft/fluentui/issues/27089
 
-This RFC is related to another RFC that also solves the above issue in a different way:
-
-- https://github.com/microsoft/fluentui/pull/27164
-- Either this RFC or the above RFC could be implemented independently to solve the issue; they don't have dependencies on each other.
-- Or, they could both be implemented together, to gain the benefits described in both RFCs.
-
 ## Problem statement
 
 A few problems with render functions as they are today:
 
-1. Using `children` as the render function props overrides any default children provided by the component's internals.
-   - This issue: https://github.com/microsoft/fluentui/issues/27089
+1. Using `children` as the render function will override any default children provided by the component's internals.
+   - Tracked by: https://github.com/microsoft/fluentui/issues/27089
 2. It is confusing (IMO) that passing a render function as `children` would override the _whole slot_, and not just its children.
 3. The root slot's render function conflicts the use of children as a function, which certain components use for custom rendering of their children.
    - For example, Tooltip and Field both accept a function as a child of their root, in order to pass props to the children. However, this breaks the ability to use a slot render function for the root slot of those controls.
    - See: https://react.fluentui.dev/?path=/docs/preview-components-field--default#complex-content-in-a-field
 
-There are some secondary issues that are addressed in the Appendices of this proposal:
+And and a less important issue that's addressed in Appendix A of this proposal:
 
-A. The order of the arguments is `(Component, props)`, but one of the primary use cases is to replace the given slot component with something else, in which case you ignore the first argument. You'd rarely/never(?) want to ignore the second argument `props`.
-B. There is no way to pass a React component to the `as` prop.
+4. The order of the arguments is `(Component, props)`, but one of the primary use cases is to replace the given slot component with something else, in which case you ignore the first argument. You'd rarely/never(?) want to ignore the second argument `props`.
 
 ## Proposal
 
@@ -44,9 +37,10 @@ The core proposal in this RFC is to use the `as` prop as the render function ins
 
 ```jsx
 <>
-  {/* Existing behavior: */}
+  {/* Existing behavior: unintentioanally overwrites default children of the button slot. */}
   <AccordionHeader button={{ children: (Component, props) => <Component {...props} /> }} />
-  {/* New behavior, use 'as' instead, and `props` includes the slot's default `children`: */}
+
+  {/* New behavior, use 'as' instead, and `props` includes the slot's default `children`. */}
   <AccordionHeader button={{ as: (Component, props) => <Component {...props} /> }} />
 </>
 ```
@@ -56,42 +50,13 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
 - If the slot's type is an intrinsic element like `'button'`, it replaces that element with the given one.
 - If the slot's type is a component like `Button`, it forwards the `as` prop to the component.
 
-🤔 What if you want to provide a render function _and_ override the component's `as` prop? Write a render function that adds your own `as` and spreads props:
+> 🤔 What if you want to provide a render function _and_ override the component's `as` prop? Write a render function that adds your own `as` and spreads props:
+>
+> ```jsx
+> <Checkbox label={{ children: 'Label text', as: (_ignored, props) => <MyLabel as="span" {...props} /> }} />
+> ```
 
-```jsx
-<Checkbox label={{ children: 'Label text', as: (_ignored, props) => <MyLabel as="span" {...props} /> }} />
-```
-
-#### Implementation
-
-The WithSlotRenderFunction type would be expanded to apply the render function support to the `as` prop:
-
-```ts
-type WithSlotRenderFunction<Props> = Props & {
-  as?: (Props extends { as?: string } ? Props['as'] : never) | SlotRenderFunction<Props>;
-
-  // Existing [deprecated] support for a render function on children:
-  children?: (Props extends { children?: unknown } ? Props['children'] : never) | SlotRenderFunction<Props>;
-};
-```
-
-The getSlot function would support `as` being a function:
-
-```ts
-if (typeof asProp === 'function') {
-  const render = asProp as SlotRenderFunction<R[K]>;
-  return [
-    React.Fragment,
-    {
-      children: render(slot, propsWithoutAs),
-    } as unknown as R[K],
-  ];
-}
-```
-
-All existing support for `children` as a render function would still be included, for backwards compatibility.
-
-#### Pros
+### Pros
 
 1. It allows us to pass the slot's default `children` to the render function, because it doesn't require overriding the default children. This fixes https://github.com/microsoft/fluentui/issues/27089.
 
@@ -120,14 +85,42 @@ All existing support for `children` as a render function would still be included
    </Field>
    ```
 
-#### Cons
+### Cons
 
 1. It overloads the `as` prop, which may run into issues in implementation, if there are any other uses of `as` as a function.
    - One alternative would be to add a `render` prop instead, and leave the `as` prop unchanged.
+     ```jsx
+     <Avatar badge={{ status: 'busy', render: (_ignored, props) => <MyBadgeComponent {...props} /> }} />
+     ```
 
-```jsx
-<Avatar badge={{ render: MyBadgeComponent, status: 'busy' }} />
+### Implementation
+
+The WithSlotRenderFunction type would be expanded to apply the render function support to the `as` prop:
+
+```ts
+type WithSlotRenderFunction<Props> = Props & {
+  as?: (Props extends { as?: string } ? Props['as'] : never) | SlotRenderFunction<Props>;
+
+  // Existing [deprecated] support for a render function on children:
+  children?: (Props extends { children?: unknown } ? Props['children'] : never) | SlotRenderFunction<Props>;
+};
 ```
+
+The getSlot function would support `as` being a function:
+
+```ts
+if (typeof asProp === 'function') {
+  const render = asProp as SlotRenderFunction<R[K]>;
+  return [
+    React.Fragment,
+    {
+      children: render(slot, propsWithoutAs),
+    } as unknown as R[K],
+  ];
+}
+```
+
+All existing support for `children` as a render function would still be included, for backwards compatibility.
 
 ## Appendix A: Change the order of arguments
 
@@ -135,6 +128,8 @@ As mentioned in the problem statement, the order of arguments to the render func
 
 - Current: `(DefaultComponent, props)`
 - Proposed: `(props, DefaultComponent)`
+
+This makes it simpler to write a render function that ignores and replaces the component, since it can simply omit the second argument.
 
 For example, before this RFC, a render function might look like:
 
@@ -160,57 +155,4 @@ With the proposal in this RFC, it would be:
     children: 'Field with an info button',
   }}
 />
-```
-
-### Appendix B: Allowing React.Component for the as prop
-
-A further refinement would be to allow `React.ComponentType<Props>` for the `as` prop. This would allow for swapping the component for a slot:
-
-```jsx
-<>
-  <Button icon={{ as: SomeIcon }} />
-  <Avatar badge={{ as: MyBadgeComponent, status: 'busy' }} />
-</>
-```
-
-You can still pass in a string to the `as` prop, and it would work as it does today.
-
-```jsx
-<Checkbox label={{ as: 'span' }} /> // works the same as it does today: the label slot is rendered as a <span>
-```
-
-But now you could also use a component, which would effectively replace the component for the slot.
-
-```jsx
-<Checkbox label={{ as: MyLabel }} />
-```
-
-🤔 What if you want to provide a custom component to the slot _and_ override its `as` prop? Write a render function that adds your own `as` and spreads props:
-
-```jsx
-<Checkbox label={{ as: props => <MyLabel as="span" {...props} /> }} />
-```
-
-#### Implementation
-
-The WithSlotRenderFunction type would be further expanded to allow a component for the `as` prop with `| React.ComponentType<Props>`:
-
-```ts
-type WithSlotRenderFunction<Props> = Props & {
-  as?: (Props extends { as?: string } ? Props['as'] : never) | SlotRenderFunction<Props> | React.ComponentType<Props>;
-
-  // Existing [deprecated] support for a render function on children:
-  children?: (Props extends { children?: unknown } ? Props['children'] : never) | SlotRenderFunction<Props>;
-};
-```
-
-The getSlot function would check if `as` was a component and render that:
-
-```diff
-if (typeof asProp === 'function') {
-  // (as above)
-}
-else if (asProp && typeof asProp === 'object') {
-  slot = asProp;
-}
 ```
