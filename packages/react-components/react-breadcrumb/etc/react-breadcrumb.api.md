@@ -54,7 +54,10 @@ export type BreadcrumbItemSlots = {
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots>;
 
 // @public
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & Partial<BreadcrumbContextValue> & {};
+export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
+    size?: 'small' | 'medium' | 'large';
+    dividerType?: 'chevron' | 'slash';
+};
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
@@ -66,7 +69,7 @@ export type BreadcrumbSlots = {
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> & BreadcrumbContextValue;
 
 // @public
-export const renderBreadcrumb_unstable: (state: BreadcrumbState, breadcrumbContextValue: BreadcrumbContextValue) => JSX.Element;
+export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSX.Element;
 
 // @public
 export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSX.Element;
@@ -78,7 +81,7 @@ export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
 
 // @public
-export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbDividerState;
+export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
 
 // @public
 export const useBreadcrumbDividerStyles_unstable: (state: BreadcrumbDividerState) => BreadcrumbDividerState;

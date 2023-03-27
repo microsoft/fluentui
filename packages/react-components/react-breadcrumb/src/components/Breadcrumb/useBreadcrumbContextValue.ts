@@ -1,9 +1,12 @@
-import type { BreadcrumbContextValue, BreadcrumbState } from './Breadcrumb.types';
+import * as React from 'react';
+import type { BreadcrumbContextValues, BreadcrumbState } from './Breadcrumb.types';
 
-export function useBreadcrumbContextValue(state: BreadcrumbState): BreadcrumbContextValues {
-  const { size, dividerType } = state
+export function useBreadcrumbContextValues_unstable(state: BreadcrumbState): BreadcrumbContextValues {
+  const { size, dividerType } = state;
 
-  const breadcrumb = React.useMemo(() => ({ size, dividerType }, [size, dividerType])
-  
-  return { breadcrumb }
+  const breadcrumb = React.useMemo(() => {
+    return { size, dividerType };
+  }, [size, dividerType]);
+
+  return { breadcrumb };
 }
