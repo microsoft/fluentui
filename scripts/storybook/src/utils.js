@@ -176,6 +176,9 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       '@fluentui/react-migration-v0-v9': {
         replace: '@fluentui/react-migration-v0-v9',
       },
+      '@fluentui/react-datepicker-compat': {
+        replace: '@fluentui/react-datepicker-compat',
+      },
     };
   }
 }
