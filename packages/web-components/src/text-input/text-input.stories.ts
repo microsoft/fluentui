@@ -3,7 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputLayout, TextInputSize } from './text-input.options.js';
-import { TextFieldType } from '@microsoft/fast-foundation';
+import { TextInputType } from './index.js';
 
 import './define.js';
 
@@ -44,7 +44,7 @@ export default {
   title: 'Components/TextInput',
   argTypes: {
     type: {
-      options: Object.values(TextFieldType),
+      options: Object.values(TextInputType),
       control: {
         type: 'select',
       },
