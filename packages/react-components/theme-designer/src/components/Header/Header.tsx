@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text, Input, useId } from '@fluentui/react-components';
 
-export interface IHeader {
+export interface HeaderProps {
   className?: string;
 }
 
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Header: React.FC<IHeader> = props => {
+export const Header: React.FC<HeaderProps> = props => {
   const styles = useStyles();
 
   return (

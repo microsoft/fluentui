@@ -14,8 +14,8 @@ import {
   AccordionItem,
   AccordionPanel,
   Switch,
+  Button,
 } from '@fluentui/react-components';
-import { ExportButton } from '../ExportButton/ExportButton';
 import { EditRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -89,7 +89,6 @@ export const Form: React.FC = () => {
   const themeNameInputId = useId('themeNameInputId');
 
   const handleIsDarkChange = () => {
-    console.log(`handleIsDarkChange isDark: ${isDark}`);
     dispatch({ type: 'isDark', payload: !isDark });
   };
 
@@ -141,6 +140,10 @@ export const Form: React.FC = () => {
         .replace(/[^A-Za-z0-9@]*/g, ``);
       dispatch({ type: 'themeName', payload: camelizeName });
     }
+  };
+
+  const showExportButton = () => {
+    dispatch({ type: 'showExportPanel', payload: true });
   };
 
   return (
@@ -238,7 +241,9 @@ export const Form: React.FC = () => {
                 value={themeName === defaultThemePlaceholderName ? '' : themeName}
               />
             </div>
-            <ExportButton />
+            <Button size="small" appearance="outline" onClick={showExportButton}>
+              Export
+            </Button>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
