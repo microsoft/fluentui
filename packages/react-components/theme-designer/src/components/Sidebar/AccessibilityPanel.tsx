@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
 import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
-import { BrandVariants, createDarkTheme, createLightTheme, Theme } from '@fluentui/tokens';
 import { AccessibilityContrastChip } from '../ColorTokens/AccessibilityList';
+import { BrandVariants, createDarkTheme, createLightTheme, Label, Theme } from '@fluentui/react-components';
 export interface AccessibilityPanelProps {
   lightThemeOverrides: Partial<Theme>;
 
