@@ -10,7 +10,7 @@ export const renderBreadcrumb_unstable = (state: BreadcrumbState, breadcrumbCont
   const { root, list } = slotProps;
   return (
     <slots.root {...root}>
-      <BreadcrumbProvider value={breadcrumbContextValue}>
+      <BreadcrumbProvider value={contextValues.breacrumb}>
         {slots.list && <slots.list {...list}>{root.children}</slots.list>}
       </BreadcrumbProvider>
     </slots.root>
