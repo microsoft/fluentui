@@ -13,6 +13,6 @@ export const template = html`
     id="${(attr: Label) => attr.id}"
   >
     <slot></slot>
-    ${(attr: Label) => (attr.required ? html`<span part="asterisk" class="asterisk">*</span>` : null)}
+    <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
   </template>
 `;
