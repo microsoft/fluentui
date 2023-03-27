@@ -50,7 +50,7 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    padding: ${spacingVerticalSNudge} ${spacingHorizontalS} ${spacingVerticalSNudge} ${spacingHorizontalXS};
+    padding: var(--stacked-padding);
   }
   .label__hidden {
     display: none;
@@ -86,16 +86,6 @@ export const styles = css`
     inset: 0px;
     outline: none;
     position: absolute;
-  }
-  :host([stack]) {
-    flex-direction: column;
-    justify-content: center;
-  }
-  :host([stack]) .label {
-    padding: ${spacingVerticalXS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalS};
-  }
-  :host([stack]) .control {
-    margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
   :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
