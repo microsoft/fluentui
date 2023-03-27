@@ -2083,7 +2083,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {

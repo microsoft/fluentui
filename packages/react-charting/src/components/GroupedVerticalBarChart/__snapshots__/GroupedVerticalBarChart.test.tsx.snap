@@ -283,7 +283,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1032,7 +1032,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1693,7 +1693,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2257,7 +2257,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={true}
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -3076,7 +3076,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3657,7 +3657,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4238,7 +4238,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4819,7 +4819,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {

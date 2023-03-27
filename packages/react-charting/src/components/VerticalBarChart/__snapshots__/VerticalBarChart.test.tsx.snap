@@ -238,7 +238,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={true}
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -942,7 +942,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={true}
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -1471,7 +1471,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1921,7 +1921,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2354,7 +2354,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={true}
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -2911,7 +2911,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3361,7 +3361,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3811,7 +3811,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4261,7 +4261,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {

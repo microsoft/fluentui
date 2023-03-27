@@ -212,7 +212,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -764,7 +764,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1100,7 +1100,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1702,7 +1702,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2038,7 +2038,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {

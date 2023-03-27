@@ -470,7 +470,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1134,7 +1134,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1653,7 +1653,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2130,7 +2130,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2623,7 +2623,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3096,7 +3096,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3985,7 +3985,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4659,7 +4659,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {

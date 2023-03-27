@@ -210,7 +210,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -730,7 +730,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1148,7 +1148,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1563,7 +1563,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1896,7 +1896,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2212,7 +2212,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
     >
       <div
         aria-label="Legends"
-        aria-multiselectable={true}
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -2715,7 +2715,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3048,7 +3048,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3381,7 +3381,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3714,7 +3714,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           >
             <div
               aria-label="Legends"
-              aria-multiselectable={true}
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {

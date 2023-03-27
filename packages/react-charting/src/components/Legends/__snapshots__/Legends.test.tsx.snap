@@ -33,7 +33,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       >
         <div
           aria-label="Legends"
-          aria-multiselectable={true}
+          aria-multiselectable={false}
           className=
               ms-FocusZone
               &:focus {
@@ -1627,7 +1627,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       >
         <div
           aria-label="Legends"
-          aria-multiselectable={true}
+          aria-multiselectable={false}
           className=
               ms-FocusZone
               &:focus {
@@ -4815,7 +4815,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       >
         <div
           aria-label="Legends"
-          aria-multiselectable={true}
+          aria-multiselectable={false}
           className=
               ms-FocusZone
               &:focus {
