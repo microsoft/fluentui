@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import { useStaticVirtualizerMeasure, Virtualizer } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -22,10 +22,23 @@ const useStyles = makeStyles({
 export const Horizontal = () => {
   const styles = useStyles();
   const childLength = 1000;
+  const itemWidth = 100;
+
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: itemWidth,
+    direction: 'horizontal',
+  });
 
   return (
-    <div aria-label="Horizontal Virtualizer Example" className={styles.container} role={'list'}>
-      <Virtualizer numItems={childLength} axis={'horizontal'} virtualizerLength={100} itemSize={100}>
+    <div aria-label="Horizontal Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
+      <Virtualizer
+        numItems={childLength}
+        axis={'horizontal'}
+        virtualizerLength={virtualizerLength}
+        bufferItems={bufferItems}
+        bufferSize={bufferSize}
+        itemSize={itemWidth}
+      >
         {index => {
           return (
             <span

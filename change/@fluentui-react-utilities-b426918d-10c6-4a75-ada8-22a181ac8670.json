@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(getSlots): stops slotProps.slot to be typed as never",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

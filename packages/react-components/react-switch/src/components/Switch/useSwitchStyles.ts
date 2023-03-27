@@ -184,6 +184,19 @@ const useInputBaseClassName = makeResetStyles({
         color: 'GrayText',
       },
     },
+
+    ':enabled:checked': {
+      ':hover': {
+        [`& ~ .${switchClassNames.indicator}`]: {
+          backgroundColor: 'Highlight',
+          color: 'Canvas',
+        },
+      },
+      [`& ~ .${switchClassNames.indicator}`]: {
+        backgroundColor: 'Highlight',
+        color: 'Canvas',
+      },
+    },
   },
 });
 

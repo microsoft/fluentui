@@ -1,7 +1,8 @@
 import { useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { TreeItemId, TreeOpenChangeData, TreeProps } from '../Tree';
 import { createImmutableSet, emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
+import type { TreeItemId } from '../TreeItem';
+import type { TreeOpenChangeData, TreeProps } from '../Tree';
 
 export function useOpenItemsState(props: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>) {
   const [openItems, setOpenItems] = useControllableState({

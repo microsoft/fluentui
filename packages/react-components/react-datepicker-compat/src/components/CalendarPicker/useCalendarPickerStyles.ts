@@ -15,6 +15,9 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
 
+/**
+ * @internal
+ */
 export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles> = {
   root: 'fui-CalendarPicker',
   headerContainer: 'fui-CalendarPicker__headerContainer',
@@ -277,9 +280,10 @@ const useDisabledStyles = makeStyles({
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the CalendarPicker slots based on the state
  */
-// export const useCalendarPickerStyles_unstable = (state: CalendarPickerState): CalendarPickerState => {
 export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps): CalendarPickerStyles => {
   const rootStyles = useRootStyles();
   const headerContainerStyles = useHeaderContainerStyles();
