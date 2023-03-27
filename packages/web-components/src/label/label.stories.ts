@@ -74,7 +74,7 @@ export default {
 
 export const Label = renderComponent(storyTemplate).bind({});
 
-export const LabelSizes = renderComponent(html<LabelStoryArgs>`
+export const Size = renderComponent(html<LabelStoryArgs>`
   <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; gap: 10px;">
     <fluent-label size="small">Small Label</fluent-label>
     <fluent-label size="medium">Medium Label</fluent-label>
@@ -82,17 +82,17 @@ export const LabelSizes = renderComponent(html<LabelStoryArgs>`
   </div>
 `);
 
-export const LabelWeights = renderComponent(html<LabelStoryArgs>`
+export const Weight = renderComponent(html<LabelStoryArgs>`
   <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; gap: 10px;">
     <fluent-label weight="regular">Regular Label</fluent-label>
     <fluent-label weight="semibold">Semibold Label</fluent-label>
   </div>
 `);
 
-export const RequiredLabel = renderComponent(html<LabelStoryArgs>`
+export const Required = renderComponent(html<LabelStoryArgs>`
   <fluent-label required="true">Required Label</fluent-label>
 `);
 
-export const DisabledLabel = renderComponent(html<LabelStoryArgs>`
+export const Disabled = renderComponent(html<LabelStoryArgs>`
   <fluent-label disabled="true">Disabled Label</fluent-label>
 `);
