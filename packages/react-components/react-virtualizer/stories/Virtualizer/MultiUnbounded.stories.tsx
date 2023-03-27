@@ -5,9 +5,6 @@ import { makeStyles, useFluent } from '@fluentui/react-components';
 import { ThemeProvider } from '@fluentui/react';
 
 const useStyles = makeStyles({
-  root: {
-    maxHeight: '100vh',
-  },
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -84,18 +81,16 @@ export const MultiUnbounded = () => {
   };
 
   return (
-    <ThemeProvider className={styles.root} applyTo="body" key={'virtualizer-unbounded-theme-provider'}>
-      <div
-        aria-label="Virtualizer Example"
-        className={styles.container}
-        role={'list'}
-        key={'multi-virtualizer-container'}
-      >
-        {renderVirtualizerLoop()}
-        <div key={`virtualizer-footer`} className={styles.block}>
-          Footer
-        </div>
+    <div
+      aria-label="Virtualizer Example"
+      className={styles.container}
+      role={'list'}
+      key={'multi-virtualizer-container'}
+    >
+      {renderVirtualizerLoop()}
+      <div key={`virtualizer-footer`} className={styles.block}>
+        Footer
       </div>
-    </ThemeProvider>
+    </div>
   );
 };
