@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BreadcrumbContextValue } from './Breadcrumb.types';
 
-const breadcrumb = React.createContext<BreadcrumbContextValue | undefined>(undefined);
+const BreadcrumbContext = React.createContext<BreadcrumbContextValue | undefined>(undefined);
 
 /**
  * @internal
