@@ -9,7 +9,7 @@ import {
   Badge,
   makeStyles,
 } from '@fluentui/react-components';
-import { getAccessibilityChecker } from './getAccessibilityChecker';
+import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
 import { ColorTokensList } from './ColorTokensList';
 import { sortOverrideableColorTokens } from './getOverridableTokenBrandColors';
 import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
@@ -33,15 +33,14 @@ const useStyles = makeStyles({
   },
 });
 
-export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
+export interface AccessibilityContrastChipProps {
+  failKeys: string[];
+}
+export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
   const styles = useStyles();
 
-  const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
-
-  const { all, fail } = getAccessibilityChecker(theme);
-  const failKeys = Object.keys(fail);
-
-  const failContrastNum = (
+  const { failKeys } = props;
+  return (
     <Badge appearance="outline" color="important">
       {failKeys.length > 0 ? (
         <>
@@ -55,12 +54,21 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
       )}
     </Badge>
   );
+};
+
+export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
+  const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
+
+  const { all, fail } = getAccessibilityChecker(theme);
+  const failKeys = Object.keys(fail);
 
   return (
     <>
       <Accordion multiple defaultOpenItems="Fail">
         <AccordionItem value="Fail">
-          <AccordionHeader>Contrast Issues &nbsp; {failContrastNum}</AccordionHeader>
+          <AccordionHeader>
+            Contrast Issues &nbsp; <AccessibilityContrastChip failKeys={failKeys} />
+          </AccordionHeader>
           <AccordionPanel>
             <ColorTokensList
               brand={brand}

@@ -19,7 +19,7 @@ import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
-import { ContrastRatioList } from './getAccessibilityChecker';
+import { ContrastRatioList } from '../../utils/getAccessibilityChecker';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 export interface ColorTokensListProps {
   brand: BrandVariants;
@@ -99,6 +99,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
   const styles = useStyles();
 
   const { brand, coveredTokens, failList, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
+
   return (
     <div>
       {coveredTokens.map(color => {

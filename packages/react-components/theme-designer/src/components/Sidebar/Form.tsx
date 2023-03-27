@@ -17,6 +17,7 @@ import {
 } from '@fluentui/react-components';
 import { ExportButton } from '../ExportButton/ExportButton';
 import { EditRegular } from '@fluentui/react-icons';
+import { AccessibilityPanel } from './AccessibilityPanel';
 
 const useStyles = makeStyles({
   root: {
@@ -83,13 +84,12 @@ export const Form: React.FC = () => {
 
   const {
     dispatch,
-    state: { isDark, themeName },
+    state: { isDark, themeName, darkThemeOverrides, lightThemeOverrides, brand },
   } = useThemeDesigner();
   const defaultThemePlaceholderName = 'MyNewTheme';
   const themeNameInputId = useId('themeNameInputId');
 
   const handleIsDarkChange = () => {
-    console.log(`handleIsDarkChange isDark: ${isDark}`);
     dispatch({ type: 'isDark', payload: !isDark });
   };
 
@@ -220,7 +220,11 @@ export const Form: React.FC = () => {
         <AccordionItem value="2">
           <AccordionHeader>Step 2 - Contrast check</AccordionHeader>
           <AccordionPanel>
-            <div>Contrast Check Panel</div>
+            <AccessibilityPanel
+              darkThemeOverrides={darkThemeOverrides}
+              brand={brand}
+              lightThemeOverrides={lightThemeOverrides}
+            />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="3">

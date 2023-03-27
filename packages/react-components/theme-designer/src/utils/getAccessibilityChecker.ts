@@ -1,6 +1,6 @@
-import { contrast, hex_to_sRGB, Vec3 } from '../../colors';
+import { contrast, hex_to_sRGB, Vec3 } from '../colors';
 import { Theme } from '@fluentui/react-components';
-import { accessiblePairs } from './AccessiblePairs';
+import { accessiblePairs } from '../components/ColorTokens/AccessiblePairs';
 
 export type ContrastRatio = {
   compHex: string;
