@@ -16,7 +16,7 @@ import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
  */
 export const useBreadcrumbDivider_unstable = (
   props: BreadcrumbDividerProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbDividerState => {
   const { size, dividerType } = useBreadcrumbContext_unstable();
   const icon = getDividerIcon(size, dividerType);
