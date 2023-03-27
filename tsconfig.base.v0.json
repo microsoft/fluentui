@@ -18,7 +18,7 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
-      "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index"],
+      "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
 
       "@fluentui/a11y-testing": ["packages/a11y-testing/src/index.ts"],
       "@fluentui/ability-attributes": ["packages/fluentui/ability-attributes/src/index.ts"],

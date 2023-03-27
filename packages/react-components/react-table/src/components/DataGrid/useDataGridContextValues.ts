@@ -11,6 +11,7 @@ export function useDataGridContextValues_unstable(state: DataGridState): DataGri
       selectableRows: state.selectableRows,
       subtleSelection: state.subtleSelection,
       selectionAppearance: state.selectionAppearance,
+      resizableColumns: state.resizableColumns,
     },
   };
 }

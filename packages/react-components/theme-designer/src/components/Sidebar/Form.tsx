@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Label, Input, Slider, tokens } from '@fluentui/react-components';
+import { useId, Label, Input, Slider, tokens } from '@fluentui/react-components';
 import { useDebounce } from '../../utils/useDebounce';
 import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -45,43 +45,30 @@ const useStyles = makeStyles({
   },
 });
 
-export interface FormProps {
-  sidebarId: string;
-  formState: CustomAttributes;
-  setFormState: React.Dispatch<CustomAttributes>;
-}
-
-export const Form: React.FC<FormProps> = props => {
+export const Form: React.FC = () => {
   const styles = useStyles();
+  const sidebarId = useId();
 
-  const { formState, setFormState, sidebarId } = props;
   const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
-  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
-    setFormState(action.attributes);
-
-    // returns true if form is the same
-    const sameForm =
-      state.keyColor === action.attributes.keyColor &&
-      state.hueTorsion === action.attributes.hueTorsion &&
-      state.vibrancy === action.attributes.vibrancy;
-
-    // only dispatch if form changes
-    if (!sameForm) {
-      dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
-    }
-    return action.attributes;
+  const initialState: CustomAttributes = {
+    keyColor: '#0F6CBD',
+    hueTorsion: 0,
+    vibrancy: 0,
   };
 
-  const [keyColor, setKeyColor] = React.useState<string>(formState.keyColor);
-  const [hueTorsion, setHueTorsion] = React.useState<number>(formState.hueTorsion);
-  const [vibrancy, setVibrancy] = React.useState<number>(formState.vibrancy * 100);
+  const [keyColor, setKeyColor] = React.useState<string>(initialState.keyColor);
+  const [hueTorsion, setHueTorsion] = React.useState<number>(initialState.hueTorsion);
+  const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
 
-  const [form, dispatchForm] = React.useReducer(formReducer, formState);
-  const debouncedForm = useDebounce({ keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 }, 10);
+  const debounceAttributes: CustomAttributes = useDebounce(
+    { keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
+    10,
+  );
+
   React.useEffect(() => {
-    dispatchForm({ attributes: debouncedForm });
-  }, [debouncedForm]);
+    dispatchAppState({ type: 'Custom', customAttributes: debounceAttributes });
+  }, [debounceAttributes, dispatchAppState]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
@@ -98,18 +85,18 @@ export const Form: React.FC<FormProps> = props => {
   return (
     <div className={styles.root} role="tabpanel" aria-labelledby="Edit">
       <div className={styles.inputs}>
-        <Label htmlFor={props.sidebarId + 'keyColor'}>Key color value</Label>
+        <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
         <div className={styles.labels}>
           <Input
             className={styles.keyColor}
             size="large"
             appearance="underline"
             id={sidebarId + 'keyColor'}
-            value={form.keyColor}
+            value={keyColor}
             onChange={handleKeyColorChange}
             maxLength={7}
           />
-          <div className={styles.colorPicker} style={{ backgroundColor: form.keyColor }}>
+          <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
             <input
               className={styles.color}
               type="color"

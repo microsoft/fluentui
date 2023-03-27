@@ -3,7 +3,7 @@
  * They are necessary to build the theme shims.
  */
 
-import { BrandVariants } from '@fluentui/react-theme';
+import { BrandVariants } from '@fluentui/react-components';
 
 /**
  * Possible color variant values

@@ -42,6 +42,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     root: getNativeElementProps('button', {
       children: infoButtonIconMap[size],
       type: 'button',
+      'aria-label': 'information',
       ...props,
       ref,
     }),
@@ -57,6 +58,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       required: true,
       defaultProps: {
         role: 'note',
+        tabIndex: -1,
       },
     }),
   };

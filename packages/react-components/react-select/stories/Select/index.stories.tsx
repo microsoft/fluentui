@@ -11,7 +11,7 @@ export { InitialValue } from './SelectInitialValue.stories';
 export { Size } from './SelectSize.stories';
 
 export default {
-  title: 'Preview Components/Select',
+  title: 'Components/Select',
   component: Select,
   parameters: {
     docs: {

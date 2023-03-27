@@ -9,6 +9,8 @@ import {
   Input,
   Button,
   Caption1,
+  Dropdown,
+  Option,
   Slider,
   Badge,
   Switch,
@@ -19,7 +21,6 @@ import {
   useId,
   Caption2,
 } from '@fluentui/react-components';
-import { Dropdown, Option } from '@fluentui/react-components/unstable';
 import {
   SearchRegular,
   bundleIcon,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import { CheckmarkFilled, CheckboxUncheckedFilled, CheckboxCheckedFilled } from '@fluentui/react-icons';
+import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
@@ -50,12 +50,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const id = useId('fluent-option', props.id);
 
   // data used for context registration & events
-  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, text: optionText, value: optionValue }), [
-    id,
-    disabled,
-    optionText,
-    optionValue,
-  ]);
+  const optionData = React.useMemo<OptionValue>(
+    () => ({ id, disabled, text: optionText, value: optionValue }),
+    [id, disabled, optionText, optionValue],
+  );
 
   // context values
   const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);
@@ -76,9 +74,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   });
 
   // check icon
-  let CheckIcon = <CheckmarkFilled />;
+  let CheckIcon: React.ReactNode = <CheckmarkFilled />;
   if (multiselect) {
-    CheckIcon = selected ? <CheckboxCheckedFilled /> : <CheckboxUncheckedFilled />;
+    CheckIcon = selected ? <Checkmark12Filled /> : '';
   }
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {

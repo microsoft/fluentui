@@ -55,7 +55,6 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     isSelected,
     canSelect,
     droppingClassName,
-    anySelected,
     isCheckVisible,
     checkboxCellClassName,
     compact,
@@ -66,15 +65,8 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
   } = props;
 
   const { palette, fonts } = theme;
-  const {
-    neutralPrimary,
-    white,
-    neutralSecondary,
-    neutralLighter,
-    neutralLight,
-    neutralDark,
-    neutralQuaternaryAlt,
-  } = palette;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } =
+    palette;
   const { focusBorder, linkHovered: focusedLinkColor } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
@@ -389,14 +381,6 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
         flexShrink: 0,
       },
     ],
-    checkCover: {
-      position: 'absolute',
-      top: -1,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      display: anySelected ? 'block' : 'none',
-    },
     fields: [
       classNames.fields,
       {

@@ -11,6 +11,10 @@ export type TableHeaderCellSlots = {
    * Button handles correct narration and interactions for sorting;
    */
   button: NonNullable<Slot<ARIAButtonSlotProps>>;
+  /**
+   * aside content for anything that should be after main content of the table header cell
+   */
+  aside: Slot<'span'>;
 };
 
 /**

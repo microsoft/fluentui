@@ -57,7 +57,7 @@ export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> &
  * Other considerations:
  *  - when the description property is used in header, readers will narrate both header content and description within the element. In addition to that, both will be displayed in the list of headings.
  */
-export const Header = (React.forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
+export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Header.displayName, context.telemetry);
   setStart();
@@ -111,7 +111,7 @@ export const Header = (React.forwardRef<HTMLHeadingElement, HeaderProps>((props,
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'h1', HTMLHeadingElement, HeaderProps> &
+}) as unknown as ForwardRefWithAs<'h1', HTMLHeadingElement, HeaderProps> &
   FluentComponentStaticProps<HeaderProps> & {
     Description: typeof HeaderDescription;
   };

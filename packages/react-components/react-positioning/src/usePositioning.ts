@@ -150,7 +150,7 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps {
+interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallbackPositions' | 'pinned'> {
   /**
    * If false, does not position anything
    */
@@ -170,6 +170,8 @@ function usePositioningOptions(options: PositioningOptions) {
     position,
     unstable_disableTether: disableTether,
     positionFixed,
+    overflowBoundaryPadding,
+    fallbackPositions,
   } = options;
 
   const { dir } = useFluent();
@@ -180,18 +182,26 @@ function usePositioningOptions(options: PositioningOptions) {
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
-      const placement = toFloatingUIPlacement(align, position, isRtl);
       const middleware = [
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
-        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement }),
-        shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
+        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
+        shiftMiddleware({
+          container,
+          hasScrollableElement,
+          overflowBoundary,
+          disableTether,
+          overflowBoundaryPadding,
+          isRtl,
+        }),
         autoSize && maxSizeMiddleware(autoSize, { container, overflowBoundary }),
         intersectingMiddleware(),
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
       ].filter(Boolean) as Middleware[];
+
+      const placement = toFloatingUIPlacement(align, position, isRtl);
 
       return {
         placement,
@@ -212,6 +222,8 @@ function usePositioningOptions(options: PositioningOptions) {
       pinned,
       position,
       strategy,
+      overflowBoundaryPadding,
+      fallbackPositions,
     ],
   );
 }

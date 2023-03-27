@@ -57,10 +57,6 @@ const useStyles = makeStyles({
   noAppearanceFocusWithin: {
     ...createCustomFocusIndicatorStyle(
       {
-        [`& .${tableCellActionsClassNames.root}`]: {
-          backgroundColor: tokens.colorSubtleBackgroundHover,
-        },
-
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
       { selector: 'focus-within', enableOutline: true },
@@ -72,7 +68,6 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground1Pressed,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundPressed,
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
@@ -83,7 +78,6 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
@@ -136,10 +130,13 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
+
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
   },
 

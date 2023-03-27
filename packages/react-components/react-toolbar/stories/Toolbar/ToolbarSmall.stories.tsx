@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { FontIncrease24Regular, FontDecrease24Regular, TextFont24Regular } from '@fluentui/react-icons';
-import { Toolbar, ToolbarButton } from '@fluentui/react-components/unstable';
-import type { ToolbarProps } from '@fluentui/react-components/unstable';
+import { Toolbar, ToolbarButton } from '@fluentui/react-components';
+import type { ToolbarProps } from '@fluentui/react-components';
 
 export const Small = (props: Partial<ToolbarProps>) => (
   <Toolbar
     {...props}
+    aria-label="Small"
     size="small"
     style={{
       border: '2px solid black',
@@ -17,3 +18,11 @@ export const Small = (props: Partial<ToolbarProps>) => (
     <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
   </Toolbar>
 );
+
+Small.parameters = {
+  docs: {
+    description: {
+      story: ['Height of the container is 32px'].join('\n'),
+    },
+  },
+};

@@ -4,6 +4,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 
+export const CELL_WIDTH = 44;
+
 export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots> = {
   root: 'fui-TableSelectionCell',
   checkboxIndicator: 'fui-TableSelectionCell__checkboxIndicator',
@@ -13,7 +15,7 @@ export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlot
 const useTableLayoutStyles = makeStyles({
   root: {
     display: 'table-cell',
-    width: '44px',
+    width: `${CELL_WIDTH}px`,
   },
 });
 
@@ -21,8 +23,8 @@ const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
     ...shorthands.flex(1, 1, '0px'),
-    minWidth: '44px',
-    maxWidth: '44px',
+    minWidth: `${CELL_WIDTH}px`,
+    maxWidth: `${CELL_WIDTH}px`,
     justifyContent: 'center',
   },
 });

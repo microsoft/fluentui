@@ -2,40 +2,52 @@
 
 ## Background
 
-The basic purpose of a Combobox is to allow users to select one or more values from among a set of options. The semantics and behavior are roughly similar to a more complex version of an HTML `<select>` element, with more functionality and styling control.
+The basic purpose of a Combobox or Dropdown is to allow users to select one or more values from among a set of options. The semantics and behavior are roughly similar to a more complex version of an HTML `<select>` element, with more functionality and styling control.
 
-A combobox can be single or multi-select, and it can be editable or select-only. More options are covered in the [Variants section](#variants).
+A combobox can be single or multi-select, and it can be editable (`<Combobox>`) or select-only (`<Dropdown>`). More options are covered in the [Variants section](#variants).
 
-The basic structure of a Combobox has two pieces: the faceplate, which is always rendered on the page, and displays the current selection, and the popup Listbox, which contains the set of options.
+The basic structure of a Combobox or Dropdown has two pieces: the faceplate, which is always rendered on the page, and displays the current selection, and the popup that contains a list of options.
 
-The Listbox can also be used as a standalone inline selection widget, similar to a `<select size="n > 1">` or `<select multiple>`. The Listbox has the same options and functionality whether used on its own, or within a Combobox.
+### In this package: Combobox vs. Dropdown
 
-### Combobox vs. Select vs. Menu
+The `@fluentui/react-combobox` package provides two combobox-like selection controls: `<Combobox>` and `<Dropdown>`. While they share the bulk of their logic under the hood, they differ in the primary slot (`input` vs. `button`), and in whether the user can insert typed characters.
 
-Combobox, Select, and Menu all share some common pieces of interaction: a trigger element opens a popup with a list of interactive items. Despite that similarity, they cannot be used interchangeably.
+Use `<Combobox>` when the user should be able to type custom strings into the control, or type to filter options. Use `<Dropdown>` when the user should only be able to select from the available options. Dropdown will allow users to type one letter or multiple letters in quick succession to quickly jump to an option, but does not otherwise allow text input.
+
+### Select vs. Menu vs. Combobox & Dropdown
+
+Combobox, Dropdown, Select, and Menu all share some common pieces of interaction: a trigger element opens a popup with a list of interactive items. Despite that similarity, they cannot be used interchangeably.
 
 ### When to use Select
 
-The [Select component](https://github.com/microsoft/fluentui/blob/master/packages/react-select/Spec.md) shares most of its underlying semantics with the Combobox. The main difference is that under the hood it uses the HTML `<select>` element, so its functionality is more limited.
+The [Select component](https://github.com/microsoft/fluentui/blob/master/packages/react-select/Spec.md) from `@fluentui/react-select` shares most of its underlying semantics with Combobox and Dropdown. The main difference is that under the hood it uses the HTML `<select>` element, so its functionality is more limited.
 
 Select provides better mobile support and accessibility than Combobox, and has the same visual appearance when collapsed. When expanded, it displays the native OS select menu, which cannot be styled.
 
-Use Select when a basic single-select form component with no freeform text input or filtering is needed.
+Use Select when a basic single-select form component with no freeform text input or filtering is needed. Select is also the ideal choice when you need the best possible mobile support.
 
-### When to use Combobox
+### When to use Combobox or Dropdown
 
-Combobox is a more feature-rich version of Select, which comes at the cost a larger code footprint, and less robust support for accessibility compared to the native `<select>` element.
+The components in this package (`@fluentui/react-combobox`) are more customizable and provide more features than Select, and are intended to be used in scenarios where Select is not sufficient.
 
-Use Combobox when any of the following are required:
+Dropdown is a more feature-rich version of Select, which comes at the cost a larger code footprint, and less robust support for accessibility compared to the native `<select>` element. Combobox is essentially a Dropdown that allows text input.
 
-- Filtering or freeform text input
+Use Dropdown over Select when any of the following are required:
+
 - Virtualization
 - Control over styling the dropdown and options
 - Multiple selection
 
+Combobox also supports all of the above, and should be used instead of Dropdown for:
+
+- filtering
+- freeform text input
+
 ### When to use Menu
 
-Unlike Select and Combobox, [Menu](https://github.com/microsoft/fluentui/blob/master/packages/react-menu/Spec.md) is not primarily a selection component or a form component. Menu should be used when the purpose is to allow the user to perform an immediate action on the page, rather than save a selected value.
+Unlike Select, Dropdown, and Combobox, [Menu](https://github.com/microsoft/fluentui/blob/master/packages/react-menu/Spec.md) (`@fluentui/react-menu`) is not primarily a selection component or a form control. Menu should be used when the purpose is to allow the user to perform an immediate action on the page, rather than save a selected value.
+
+One exception: selection that occurs within the context of a larger menubar or menu should use Menu components (specifically `MenuItemCheckbox` and `MenuItemRadio`). Select, Dropdown, and Combobox should never be nested inside a Menu, and Menu components should never be nested inside a Select, Dropdown, or Combobox.
 
 Examples of appropriate Menu usage include:
 
@@ -85,13 +97,18 @@ const filterSuggestedOptions = (filterText: string, tagList: ITag[]): ITag[] => 
 <TagPicker onResolveSuggestions={filterSuggestedOptions} />;
 ```
 
-In contrast, v9 defines options as children of the Combobox control:
+In contrast, v9 defines options as children of the Combobox or Dropdown control:
 
 ```tsx
 <Combobox>
   <Option>Option A</Option>
   <Option>Option B</Option>
 </Combobox>
+
+<Dropdown>
+  <Option>Option A</Option>
+  <Option>Option B</Option>
+</Dropdown>
 ```
 
 Groups of options in v9 are also defined as children, rather than through the `options` or `items` prop:
@@ -109,6 +126,15 @@ Groups of options in v9 are also defined as children, rather than through the `o
 </Combobox>
 ```
 
+#### Non-Option children
+
+The v9 Combobox and Dropdown have a far more flexible approach to content within the popup than v8 or v0, since any JSX children will be rendered into the popup. However, this comes with the potential to severely impact the keyboard interaction and accessibility of the control. In practice, content within the Combobox or Dropdown should always adhere to the following limits:
+
+- Static (non-interactive, non-focusable) decorative content is always OK
+- Text content should either be implemented using the OptionGroup's `label` slot when appropriate, or consult with an accessibility SME on how to expose the information to screen reader users.
+- Any interactive controls (e.g. a "load more" button) _must_ be implemented by wrapping or extending the Option component.
+- Non-combobox interactive controls (e.g. Menu, Checkbox, Tab, Link, etc.) should _never_ be placed within Combobox/Dropdown, OptionGroup, or Option components. Static controls (Image, Persona, Avatar) are fine.
+
 #### Customizing Option Render
 
 Because v8 and v0 Combobox, Dropdown, and Pickers defined options as props, they used `onRenderX` props to customize option render:
@@ -122,14 +148,19 @@ The v9 Combobox approach of options as children allows option render to be direc
 
 ```tsx
 <Combobox>
-  <Option key="A">
+  <Option key="A" text="Option A">
     Option A <CalendarIcon />
   </Option>
-  <Option key="B" style={{ color: 'red' }}>
+  <Option key="B" text="Option B" style={{ color: 'red' }}>
     Option <i>B</i>
   </Option>
 </Combobox>
 ```
+
+When using non-string children inside Option, it is very important to provide a `text` prop with the human-readable string version of the Option. This is used in two ways:
+
+1. When a user types into either a Dropdown or Combobox, `text` is used to find a matching option
+2. When an option is selected, `text` is used by default as the display value of the Dropdown button or Combobox input
 
 #### Positioning
 
@@ -139,17 +170,31 @@ Combobox uses [Popper JS](https://popper.js.org/) through `@fluentui/react-posit
 
 Combobox in v9 allows both controlled and uncontrolled selection, as do the corresponding v8 and v0 components.
 
-| Concept              | v9 Combobox         | v8 Dropdown         | v8 Combobox        | v8 Pickers           | v0 Dropdown  |
-| -------------------- | ------------------- | ------------------- | ------------------ | -------------------- | ------------ |
-| Initial selection    | initialSelectedKeys | defaultSelectedKeys | defaultSelectedKey | defaultSelectedItems | defaultValue |
-| Controlled selection | selectedKeys        | selectedKey         | selectedKey        | selectedItems        | value        |
-| Callback             | onOptionSelect      | onChange            | onChange           | onChange             | onChange     |
+| Concept              | v9 Combobox            | v8 Dropdown         | v8 Combobox        | v8 Pickers           | v0 Dropdown  |
+| -------------------- | ---------------------- | ------------------- | ------------------ | -------------------- | ------------ |
+| Initial selection    | defaultSelectedOptions | defaultSelectedKeys | defaultSelectedKey | defaultSelectedItems | defaultValue |
+| Controlled selection | selectedOptions        | selectedKey         | selectedKey        | selectedItems        | value        |
+| Callback             | onOptionSelect         | onChange            | onChange           | onChange             | onChange     |
 
-The reason to move to `onOptionSelect` over `onChange` in the v9 Combobox is because the editable Combobox uses an `<input>` element as its primary slot. Using `onOptionSelect` allows the input to retain it's built-in `onChange` event.
+The reason to move to `onOptionSelect` over `onChange` in the v9 Combobox is because the editable Combobox uses an `<input>` element as its primary slot. Using `onOptionSelect` allows the input to retain its native `onChange` event.
+
+Controlling `selectedOptions` or setting `defaultSelectedOptions` is done by passing in an array of string Option values. The value for an Option is one of the following:
+
+1. The `value` prop if provided
+2. The `text` prop if provided, and there is no `value` prop
+3. The children of the Option, converted to a string
+
+## Components
+
+The following components are exported from the `react-combobox` package:
+
+- `Combobox`: a top-level editable selection component.
+- `Dropdown`: a top-level select-only selection component.
+- `Listbox`: an internal component wrapping the options. Primarily useful if recomposing Combobox or Dropdown.
+- `OptionGroup`: a component for semantically and visually group sets of options with an optional group label. Should only be used as a child of Combobox or Dropdown.
+- `Option`: a component for individual options within Combobox or Dropdown. Should only be used as a child of Combobox, Dropdown, or OptionGroup.
 
 ## Sample Code
-
-The following example code will not necessarily work in the current package, and is subject to change.
 
 ### Basic Combobox
 
@@ -161,6 +206,18 @@ The following example code will not necessarily work in the current package, and
   <Option key="ferret">Ferret</Option>
   <Option key="fish">Fish</Option>
 </Combobox>
+```
+
+### Basic Dropdown
+
+```tsx
+<label id="pets">Best pet</label>
+<Dropdown aria-labelledby="pets" placeholder="Select an animal">
+  <Option key="cat">Cat</Option>
+  <Option key="dog">Dog</Option>
+  <Option key="ferret">Ferret</Option>
+  <Option key="fish">Fish</Option>
+</Dropdown>
 ```
 
 ### Grouped Options
@@ -192,55 +249,31 @@ The following example code will not necessarily work in the current package, and
 </Combobox>
 ```
 
-### Option with icon and description
+### Option with a Persona layout and `text` attribute
 
 ```tsx
-<label id="pets">Best pet</label>
-<Combobox aria-labelledby="pets">
-  <Option key="cat" icon={<CatIcon />} description="Felis catus">Cat</Option>
-  <Option key="dog" icon={<DogIcon />} description="Canis familiaris">Dog</Option>
-</Combobox>
-```
-
-### Standalone Listbox
-
-This will render a listbox inline in the page, rather than as a popup. This component does not have a separate trigger/faceplate displaying selected items.
-
-```tsx
-<label id="pets">Best pet</label>
-<Listbox aria-labelledby="pets">
-  <Option key="cat">Cat</Option>
-  <Option key="dog">Dog</Option>
-  <Option key="ferret">Ferret</Option>
-  <Option key="fish">Fish</Option>
-</Listbox>
-```
-
-### Select-only Combobox
-
-Note: the approach for authoring editable vs. select-only comboboxes is still undecided. There are roughly two likely ways this could be authored.
-
-Option 1 (preferred), using a separate Dropdown component that shares all functionality apart from the trigger with Combobox:
-
-```tsx
-<label id="pets">Best pet</label>
-<Dropdown aria-labelledby="pets">
-  <Option key="cat">Cat</Option>
-  <Option key="dog">Dog</Option>
-  <Option key="ferret">Ferret</Option>
-  <Option key="fish">Fish</Option>
-</Dropdown>
-```
-
-Option 2, using slots:
-
-```tsx
-<label id="pets">Best pet</label>
-<Combobox aria-labelledby="pets" trigger={<ComboInput>}>
-  <Option key="cat">Cat</Option>
-  <Option key="dog">Dog</Option>
-  <Option key="ferret">Ferret</Option>
-  <Option key="fish">Fish</Option>
+<label id="people">Send to:</label>
+<Combobox aria-labelledby="people">
+  <Option text="Katri Athokas">
+    <Persona
+      avatar={{ color: 'colorful' }}
+      name="Katri Athokas"
+      presence={{
+        status: 'available',
+      }}
+      secondaryText="Available"
+    />
+  </Option>
+  <Option text="Elvia Atkins">
+    <Persona
+      avatar={{ color: 'colorful' }}
+      name="Elvia Atkins"
+      presence={{
+        status: 'busy',
+      }}
+      secondaryText="Busy"
+    />
+  </Option>
 </Combobox>
 ```
 
@@ -248,12 +281,7 @@ Option 2, using slots:
 
 ### Visual variants
 
-Visual variants are very similar to `@fluentui/react-select` and `@fluentui/react-input` variants. They can be controlled through the `inline`, `size`, and `appearance` props:
-
-### Inline
-
-- `true`/Inline: the Combobox is rendered inline with text and other controls
-- `false`/Block (default): the Combobox has a block layout
+Visual variants are very similar to `@fluentui/react-select` and `@fluentui/react-input` variants. They can be controlled through the `size` and `appearance` props:
 
 ### Size
 
@@ -266,17 +294,13 @@ Visual variants are very similar to `@fluentui/react-select` and `@fluentui/reac
 - `outline` (default)
 - `filledDarker`
 - `filledLighter`
-- `transparent`
+- `underline`
 
 The design spec for Combobox has more visual details on each of these.
 
-### Editable vs. Select-only
-
-A Combobox can allow text input, or be select-only. If it allows text input, the focusable element and slot will be an `<input>`. If select-only, the primary slot will be a `<button>` element.
-
 ### Multiple selection
 
-A Combobox supports single and multiple selection through the `multiselect` prop. Multiselect Combobox options have a slightly different visual check style, and the listbox popup does not close when individual options are selected or deselected.
+Combobox and Dropdown support single and multiple selection through the `multiselect` prop. Multiselect options have a slightly different visual check style, and the popup does not close when individual options are selected or deselected.
 
 ### Disabled options
 
@@ -286,13 +310,15 @@ Individual Option children may be set to a disabled state using the `disabled` p
 
 Options may be grouped with an optional group label using the `<OptionGroup>` component. This creates a semantic grouping for options in addition to the visual style.
 
-While visual groupings of options could be achieved with a divider and static header text, using `<OptionGroup>` is recommended because it provides group and label semantics to screen readers.
+While visual groupings of options could be achieved with a custom divider and static header text, using `<OptionGroup>` is recommended because it provides group and label information to screen reader users.
 
 ### Non-Option children
 
-Combobox supports arbitrary non-Option and non-OptionGroup children, but for screen reader and keyboard accessibility, this should be used with caution.
+Combobox and Dropdown support arbitrary non-Option and non-OptionGroup children, but for screen reader and keyboard accessibility they should be used with caution.
 
-Interactive, focusable elements (aside from `<Option>`) should never be added as children, since they will not be reachable with the keyboard, and may interfere with screen reader accessibility. It is recommended to add `role="presentation"` or `role="none"` to any static children added to Combobox to avoid unintentional side effects for screen reader users:
+Interactive, focusable elements (aside from `<Option>`) should never be added as children, since they will not be reachable with the keyboard, and may interfere with screen reader accessibility.
+
+We recommended adding `role="presentation"` or `role="none"` to any static children within Combobox or Dropdown to avoid unintentional side effects for screen reader users:
 
 ```tsx
 <Combobox>
@@ -302,102 +328,41 @@ Interactive, focusable elements (aside from `<Option>`) should never be added as
 </Combobox>
 ```
 
+If an interactive non-selectable item is needed within Combobox or Dropdown, the best way to achieve this is by extending the Option component and adding special logic for it within `onOptionSelect`. This will ensure it is still accessible with the keyboard, a screen reader, voice control, and other assistive tech.
+
 ## API
+
+Dropdown and Combobox share the same basic structure, with the main difference being the primary slot on Dropdown is `button` instead of `input` on Combobox. Combobox also supports the `freeform` prop that allows user-defined values in the text field.
+
+Combobox and Dropdown provide a context that is consumed by options
 
 ### Combobox
 
-The primary slot for combobox is the `trigger`, which is a `<button>` element for select-only comboboxes, and an `<input>` element for editable comboboxes. More slot information is provided in the [Structure section](#structure).
+See API at [Combobox.types.ts](./src/components/Combobox/Combobox.types.ts).
 
-For the full current set of props, see the [Combobox types file](https://github.com/microsoft/fluentui/blob/master/packages/react-combobox/src/components/Combobox/Combobox.types.ts) and [Selection types file](https://github.com/microsoft/fluentui/blob/master/packages/react-combobox/src/utils/Selection.types.ts).
+### Dropdown
 
-```ts
-// A simplified version of relevant props
-type SimpleComboboxProps = {
-  /** Controls the colors and borders of the field (default `outline`) */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-
-  /* For an uncontrolled component, sets the initial selection */
-  initialSelectedKeys?: string[];
-
-  /** Render the listbox popup inline in the DOM, for accessibility-related edge cases (default false) */
-  inline?: boolean;
-
-  /** Sets the selection type to multiselect */
-  multiselect?: boolean;
-
-  /** Controlled open state */
-  open?: boolean;
-
-  /** The placeholder will show when no value is selected */
-  placeholder?: string;
-
-  /** Controlled array of selected option keys. */
-  selectedKeys?: string[];
-
-  /** Size of the trigger (default `medium`) */
-  size?: 'small' | 'medium' | 'large';
-
-  /** Controlled value displayed by the Combobox */
-  value?: string;
-
-  /** Callback when the open/closed state of the dropdown changes */
-  onOpenChange?(event: OpenEvents, data: OnOpenChangeData): void;
-
-  /* Callback when an option is selected */
-  onOptionSelect?(event: SelectionEvents, optionKey: string): void;
-};
-```
+See API at [Dropdown.types.ts](./src/components/Dropdown/Dropdown.types.ts).
 
 ### Listbox
 
-Listbox shares the same API for selection and option children as Combobox. When used within Combobox, selection should be managed solely through Combobox props, and not through the listbox slot.
+Listbox is an internal component, and should not be used outside of a Combobox or Dropdown. It is the type of the `listbox` slot in both components.
 
-For the full current set of props, see the [Listbox types file](https://github.com/microsoft/fluentui/blob/master/packages/react-combobox/src/components/Listbox/Listbox.types.ts) and [Selection types file](https://github.com/microsoft/fluentui/blob/master/packages/react-combobox/src/utils/Selection.types.ts).
-
-```ts
-// A simplified version of relevant props
-type SimpleListboxProps = {
-  /* For an uncontrolled component, sets the initial selection */
-  initialSelectedKeys?: string[];
-
-  /** Sets the selection type to multiselect */
-  multiselect?: boolean;
-
-  /** Controlled array of selected option keys. */
-  selectedKeys?: string[];
-
-  /* Callback when an option is selected */
-  onOptionSelect?(event: SelectionEvents, optionKey: string): void;
-};
-```
+See API at [Listbox.types.ts](./src/components/Listbox/Listbox.types.ts).
 
 ### OptionGroup
 
 OptionGroup is functionally a wrapper for options, with a single `label` slot prop.
 
-For the full current set of props, see the [OptionGroup types file](https://github.com/microsoft/fluentui/blob/master/packages/react-combobox/src/components/OptionGroup/OptionGroup.types.ts).
+See API at [OptionGroup.types.ts](./src/components/OptionGroup/OptionGroup.types.ts).
 
 ### Option
 
-Options have slots for `check`, `icon`, and `description`.
+Options have a slot for the `checkIcon`, which uses a checkmark icon when selected and single-select, and a checkbox icon when multiselect.
 
-For the full current set of props, see the [Option types file](https://github.com/microsoft/fluentui/blob/master/packages/react-combobox/src/components/Option/Option.types.ts).
+See API at [Option.types.ts](./src/components/Option/Option.types.ts).
 
-```ts
-// A simplified version of relevant props
-type SimpleOptionProps = {
-  /* Sets an option to the `disabled` state */
-  disabled?: boolean;
-
-  /** The id of the Option */
-  id: string;
-
-  /** Defines a string value for the option, used for the parent Combobox's value */
-  value?: string;
-};
-```
-
-## Structure
+## Combobox Structure
 
 ### Public
 
@@ -416,22 +381,27 @@ type SimpleOptionProps = {
 
 ### DOM
 
-This shows the DOM structure of the Combobox after being opened:
+This shows the DOM structure of the Combobox after being opened. If `inlinePopup` is set to true, the listbox will render immediately after the `expandIcon` slot, within the root slot.
 
 ```html
-<div>
+<div aria-owns="listbox-id">
   <!-- root slot, combobox wrapper -->
-  <button role="combobox" type="button" aria-expanded="true" aria-activedescendant="option1-id">
-    <!-- primary slot -->
-    Select an option
-  </button>
-  <span
-    ><svg><!-- dropdown icon --></svg></span
-  >
+  <input
+    type="text"
+    role="combobox"
+    aria-expanded="true"
+    aria-activedescendant="option1-id"
+    placeholder="Select an Option"
+    value=""
+  /><!-- input slot (primary slot) -->
+  <span role="button" aria-expanded="true" aria-label="Open">
+    <!-- expandIcon slot -->
+    <svg aria-hidden="true"><!-- dropdown icon --></svg>
+  </span>
 </div>
 
 <!-- in a portal: -->
-<div role="listbox">
+<div role="listbox" id="listbox-id">
   <!-- listbox root slot -->
   <div role="group" aria-labelledby="group1-label-id">
     <!-- optiongroup root slot -->
@@ -439,15 +409,77 @@ This shows the DOM structure of the Combobox after being opened:
     ><!-- optiongroup label slot -->
     <div role="option" aria-selected="false" id="option1-id">
       <!-- option root slot -->
-      <span aria-hidden="true"
-        ><svg><!-- check icon --></svg></span
-      ><!-- option check slot -->
+      <span aria-hidden="true">
+        <!-- option check slot -->
+        <svg><!-- check icon --></svg>
+      </span>
       Option A
     </div>
     <div role="option" aria-selected="false" id="option2-id">
-      <span aria-hidden="true"
-        ><svg><!-- check icon --></svg></span
-      >
+      <span aria-hidden="true">
+        <svg><!-- check icon --></svg>
+      </span>
+      Option B
+    </div>
+  </div>
+</div>
+```
+
+## Dropdown Structure
+
+### Public
+
+```tsx
+<Dropdown placeholder="Select an option">
+  <OptionGroup label="Group 1">
+    <Option key="A">Option A</Option>
+    <Option key="B">Option B</Option>
+  </OptionGroup>
+  <OptionGroup label="Group 2">
+    <Option key="C">Option C</Option>
+    <Option key="D">Option D</Option>
+  </OptionGroup>
+</Dropdown>
+```
+
+### DOM
+
+This shows the DOM structure of the Combobox after being opened. The primary difference between the DOM of Dropdown and Combobox is in the render of the primary slot and expandIcon slot.
+
+If `inlinePopup` is set to true, the listbox will render immediately after the `button` slot, within the root slot.
+
+```html
+<div aria-owns="listbox-id">
+  <!-- root slot, combobox wrapper -->
+  <button role="combobox" type="button" aria-expanded="true" aria-activedescendant="option1-id">
+    <!-- button slot (primary slot) -->
+    Select an option
+    <span>
+      <!-- expandIcon slot -->
+      <svg aria-hidden="true"><!-- dropdown icon --></svg>
+    </span>
+  </button>
+</div>
+
+<!-- in a portal: -->
+<div role="listbox" id="listbox-id">
+  <!-- listbox root slot -->
+  <div role="group" aria-labelledby="group1-label-id">
+    <!-- optiongroup root slot -->
+    <span id="group1-label-id" role="presentation">Group 1</span
+    ><!-- optiongroup label slot -->
+    <div role="option" aria-selected="false" id="option1-id">
+      <!-- option root slot -->
+      <span aria-hidden="true">
+        <!-- option check slot -->
+        <svg><!-- check icon --></svg>
+      </span>
+      Option A
+    </div>
+    <div role="option" aria-selected="false" id="option2-id">
+      <span aria-hidden="true">
+        <svg><!-- check icon --></svg>
+      </span>
       Option B
     </div>
   </div>
@@ -458,14 +490,14 @@ This shows the DOM structure of the Combobox after being opened:
 
 The following v7/v8 and v0 components can be migrated to the v9 Combobox:
 
-- **v8 Dropdown**: Use the v9 Select or v9 Combobox, [depending on the required features](#combobox-vs-select-vs-menu). If using Combobox, use the [select-only variation](#select-only-combobox).
-- **v8 Combobox**: The v8 Combobox should be replaced by the editable variant of the v9 Combobox.
-- **v8 Pickers**: v8 Pickers should be replaced by the multiselect variant of the v9 Combobox. There is a design spec for adding selected tags to the v9 Combobox.
-- **v0 Dropdown**: The v0 Dropdown should be replaced by the v9 Combobox.
+- **v8 Dropdown**: Use the v9 Select or v9 Dropdown, [depending on the required features](#combobox-vs-select-vs-menu).
+- **v8 Combobox**: The v8 Combobox should be replaced by the v9 Combobox.
+- **v8 Pickers**: v8 Pickers can be partly replicated with the mutliselect variation of the v9 Combobox, together with custom tags as shown in the "Multiselect With Tags" example. A separate tagpicker component is being spec'd.
+- **v0 Dropdown**: The v0 Dropdown should be replaced by the v9 Dropdown or v9 Combobox, depending on whether it should allow user typing.
 
-The primary difference between v7/v8 and v0 components vs. the v9 Combobox is the definition of options as children in v9.
+The primary difference between v7/v8 and v0 components vs. the v9 Combobox/Dropdown is the definition of options as children in v9.
 
-For a full migration guide, see [the migration spec](./Spec-migration.md).
+For a full migration guide, see [the migration spec](./Migration.md).
 
 ## Behaviors
 
@@ -497,24 +529,23 @@ Most Combobox-specific accessibility considerations are built in to the rest of 
 
 ### Using an inline popup
 
-The inline vs. portal behavior of the listbox popup has a particularly large impact on Combobox accessibility because keyboard focus does not enter the popup. This, coupled with the lack of support for `aria-owns` in Safari, means that iOS VoiceOver users will not be able to access the options unless they either swipe to the end of the DOM, or use touch exploration to try to find the popup on the screen.
+The inline vs. portal behavior of the listbox popup has a particularly large impact on Combobox and Dropdown accessibility because keyboard focus does not enter the popup. This, coupled with the lack of support for `aria-owns` in Safari, means that iOS VoiceOver users will not be able to access the options unless they either swipe to the end of the DOM, or use touch exploration to try to find the popup on the screen.
 
-If `inline` is set to true, the listbox will follow the trigger in the DOM, and swipe access will work.
+If `inlinePopup` is set to true, the listbox will follow the trigger in the DOM, and swipe access will work.
 
-The other scenario where `inline` is important is if the Combobox is used inside a modal of any sort. VoiceOver will not allow the cursor to leave a modal, so if the listbox is _not_ rendered inline, it will be fully impossible for an iOS VoiceOver user to use the combobox.
+The other scenario where `inlinePopup` is important is if the Combobox is used inside a modal of any sort. VoiceOver will not allow the cursor to leave a modal, so if the listbox is _not_ rendered inline, it will be fully impossible for an iOS VoiceOver user to use the combobox.
 
 ### Semantic structure
 
-The Fluent Combobox uses the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-1.2/#combobox), which differs significantly from ARIA 1.1. The ARIA 1.2 pattern has [better practical support](https://www.24a11y.com/2019/select-your-poison-part-2/), and as of writing, the 1.2 spec is headed towards Candidate Recommendation.
+The Fluent Combobox and Dropdown are based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-1.2/#combobox), which differs significantly from ARIA 1.1. The ARIA 1.2 pattern has [better practical support](https://www.24a11y.com/2019/select-your-poison-part-2/), and as of writing, the 1.2 spec is headed towards Candidate Recommendation.
+
+The main difference between the Fluent Combobox/Dropdown and the ARIA 1.2 pattern is that when they are multiselect, we use `menu` and `menuitemcheckbox` semantics for the popup and options. This decision was based on both extensive internal tests and external user testing.
 
 ### Known issues
 
-(TODO: expand this section with more testing once the Combobox implementation is stable)
-
-Accessibility support for comboboxes in particular changes frequently, so known issues may quickly go out of date either by being fixed, or be being superceded by new issues. Here are some known accessibility bugs as of early 2022:
+Accessibility support for comboboxes in particular changes frequently, so known issues may quickly go out of date either by being fixed, or be being superceded by new issues. Here are some known accessibility bugs as of early 2023:
 
 - NVDA does not read the value of the select-only Combobox
 - VoiceOver on macOS does not consistently expose active options when arrowing through an open combobox
-- `aria-multiselectable` is not announced by multiple screen readers
-- Safari does not respect `aria-owns`, so someone using VoiceOver on iOS will not be able to swipe from the combobox trigger to the options unless `inline` is set to `true`.
+- Safari does not respect `aria-owns`, so someone using VoiceOver on iOS will not be able to swipe from the combobox trigger to the options unless `inlinePopup` is set to `true`.
 - If the number of options in the listbox changes while it is open, that change is not consistently exposed by screen readers.

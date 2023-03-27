@@ -1,4 +1,4 @@
-import { task, parallel } from 'gulp';
+import { parallel, task } from 'gulp';
 
 export function preset() {
   // load tasks in order of dependency usage
@@ -7,7 +7,6 @@ export function preset() {
   require('./tasks/docs');
   require('./tasks/stats');
   require('./tasks/test-unit');
-  require('./tasks/perf');
   require('./tasks/test-e2e');
   require('./tasks/test-circulars');
   require('./tasks/test-dependencies');
