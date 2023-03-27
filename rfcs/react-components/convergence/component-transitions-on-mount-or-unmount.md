@@ -31,7 +31,7 @@ In order to display that a content is showing or hiding from screen, CSS transit
 
 ### A `useAnimationState` hook based solution
 
-To differentiate the animation state of a component, a hook could be created and be part of the react-utilities.
+To differentiate the animation state of a component, a hook could be created and be part of the react-utilities. Note that every time a status change (from not visible to entering for example) the component will rerender.
 
 Usage in the component:
 
