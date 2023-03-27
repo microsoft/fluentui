@@ -16,7 +16,9 @@ import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
 import { FASTProgress } from '@microsoft/fast-foundation';
 import { FASTProgressRing } from '@microsoft/fast-foundation';
+import { FASTSlider } from '@microsoft/fast-foundation';
 import { FASTSwitch } from '@microsoft/fast-foundation';
+import { SliderOrientation } from '@microsoft/fast-foundation';
 import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
@@ -1602,6 +1604,37 @@ export const shadow8: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const shadow8Brand: CSSDesignToken<string>;
+
+// @public
+export class Slider extends FASTSlider {
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    handleChange(source: any, propertyName: string): void;
+    size?: SliderSize;
+}
+
+// @public
+export const SliderDefinition: FASTElementDefinition<typeof Slider>;
+
+export { SliderOrientation }
+
+// @public
+export const SliderSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+};
+
+// @public
+export type SliderSize = ValuesOf<typeof SliderSize>;
+
+// @public
+export const SliderStyles: ElementStyles;
+
+// @public (undocumented)
+export const SliderTemplate: ElementViewTemplate<FASTSlider>;
 
 // @public (undocumented)
 export const spacingHorizontalL: CSSDesignToken<string>;
