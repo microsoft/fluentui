@@ -246,7 +246,6 @@ Usage
 | Property     | Values            | Default  | Purpose                         |
 | ------------ | ----------------- | -------- | ------------------------------- |
 | active       | boolean           | false    | Indicates if the item is active |
-| disabled     | boolean           | false    | Disables Breadcrumb item        |
 | icon         | _slot_            |          | Sets icon                       |
 | iconPosition | `before`, `after` | `before` | Sets icon position              |
 
