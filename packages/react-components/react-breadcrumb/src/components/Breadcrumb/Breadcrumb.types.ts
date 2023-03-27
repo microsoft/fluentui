@@ -29,7 +29,7 @@ export type BreadcrumbSlots = {
 /**
  * Breadcrumb Props
  */
-export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & Partial<BreadcrumbContextValue> & {};
+export type BreadcrumbProps = ComponentProps<BreadcrumbSlots>;
 
 /**
  * State used in rendering Breadcrumb
