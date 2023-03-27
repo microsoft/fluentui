@@ -9,7 +9,7 @@ export { Size } from './InfoLabelSize.stories';
 export { InField } from './InfoLabelInField.stories';
 
 export default {
-  title: 'Preview Components/InfoLabel',
+  title: 'Components/InfoLabel',
   component: InfoLabel,
   parameters: {
     docs: {

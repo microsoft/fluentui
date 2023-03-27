@@ -7,7 +7,7 @@ export { Default } from './InfoButtonDefault.stories';
 export { Size } from './InfoButtonSize.stories';
 
 export default {
-  title: 'Preview Components/InfoButton',
+  title: 'Components/InfoButton',
   component: InfoButton,
   parameters: {
     docs: {

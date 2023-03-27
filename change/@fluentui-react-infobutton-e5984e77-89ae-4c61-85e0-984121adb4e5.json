@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "chore: Rename content slot to info.",
   "packageName": "@fluentui/react-infobutton",
   "email": "esteban.230@hotmail.com",
