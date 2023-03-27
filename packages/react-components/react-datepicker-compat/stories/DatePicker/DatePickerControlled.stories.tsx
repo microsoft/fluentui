@@ -1,20 +1,22 @@
 import * as React from 'react';
 import { makeStyles, Button } from '@fluentui/react-components';
-import { addDays, defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
+import { addDays, DatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
+  },
+  control: {
     maxWidth: '300px',
-    '> *': {
-      marginBottom: '15px',
-    },
   },
   button: {
     marginRight: '10px',
   },
 });
 
-export const ExternalControls = () => {
+export const Controlled = () => {
   const styles = useStyles();
 
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
@@ -34,8 +36,7 @@ export const ExternalControls = () => {
         onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
         placeholder="Select a date..."
         aria-label="Select a date"
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={defaultDatePickerStrings}
+        className={styles.control}
       />
       <div>
         <Button className={styles.button} onClick={goPrevious}>
@@ -47,4 +48,12 @@ export const ExternalControls = () => {
       </div>
     </div>
   );
+};
+
+Controlled.parameters = {
+  docs: {
+    description: {
+      story: 'A DatePicker can be controlled by manually keeping track of the state and updating it.',
+    },
+  },
 };

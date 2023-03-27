@@ -93,7 +93,7 @@ const useDayCellStyles = makeStyles({
     },
 
     [`&.${extraCalendarDayGridClassNames.hoverStyle}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -103,7 +103,7 @@ const useDayCellStyles = makeStyles({
     },
 
     [`&.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -124,9 +124,10 @@ const useDayCellStyles = makeStyles({
 const useDaySelectedStyles = makeStyles({
   dateRangeTypeNotMonth: {
     backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    color: tokens.colorNeutralForeground1Static,
 
     [`&:hover, &.${extraCalendarDayGridClassNames.hoverStyle}, &.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected + ' !important',
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight!important',
@@ -178,7 +179,7 @@ const useWeekNumberCellStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
     ...shorthands.borderRight('1px', 'solid'),
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralBackgroundStatic,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     height: '28px',
