@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text, Input, useId } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text } from '@fluentui/react-components';
 
 export interface HeaderProps {
   className?: string;
@@ -39,16 +39,8 @@ export const Header: React.FC<HeaderProps> = props => {
   return (
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
       <div className={styles.title}>
-        <Text>Theme Provider</Text>
+        <Text>Theme Designer</Text>
       </div>
-
-      {/* <div className={styles.logo}>
-        <CircleRegular />
-        <Text>Color Tool</Text>
-      </div>
-      <div className={styles.element}>
-        UI Colors <ChevronRightRegular /> New palette
-      </div> */}
     </FluentProvider>
   );
 };
