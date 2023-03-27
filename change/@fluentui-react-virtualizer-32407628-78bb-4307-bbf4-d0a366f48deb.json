@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix(reat-virtualizer): remove disallowed v9 react-fabric/v8 from dependency to mitigate dep-tree creep",
+  "comment": "fix: remove disallowed v9 react-fabric/v8 from dependency to mitigate dep-tree creep",
   "packageName": "@fluentui/react-virtualizer",
   "email": "martinhochel@microsoft.com",
   "dependentChangeType": "patch"
