@@ -44,8 +44,8 @@ async function build() {
       // Portals currently do not support hydration
       // https://github.com/facebook/react/issues/13097
       '**/react-portal/**',
-      '**/react-table/stories/DataGrid/Virtualization.stories',
-      '**/react-table/stories/Table/Virtualization.stories',
+      // '**/react-table/stories/DataGrid/Virtualization.stories',
+      // '**/react-table/stories/Table/Virtualization.stories',
     ],
   });
 
