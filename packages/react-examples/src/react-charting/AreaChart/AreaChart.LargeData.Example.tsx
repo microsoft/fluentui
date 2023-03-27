@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
-import { ILineChartProps } from '@fluentui/react-charting';
 
-interface IAreaChartBasicState {
+interface IACLargeDataExampleState {
   width: number;
   height: number;
 }
 
-export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasicState> {
-  constructor(props: ILineChartProps) {
+export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataExampleState> {
+  constructor(props = {}) {
     super(props);
     this.state = {
       width: 700,
@@ -174,30 +173,30 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
     ];
 
     const chartData = {
-      chartTitle: 'Area chart multiple example',
+      chartTitle: 'Area chart large data example',
       lineChartData: chartPoints,
     };
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label htmlFor="changeWidth_Multiple">Change Width:</label>
+        <label htmlFor="changeWidth_Large">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
           min={200}
           max={1000}
-          id="changeWidth_Multiple"
+          id="changeWidth_Large"
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthslider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Multiple">Change Height:</label>
+        <label htmlFor="changeHeight_Large">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
           min={200}
           max={1000}
-          id="changeHeight_Multiple"
+          id="changeHeight_Large"
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
@@ -211,6 +210,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            optimizeLargeData
           />
         </div>
       </>

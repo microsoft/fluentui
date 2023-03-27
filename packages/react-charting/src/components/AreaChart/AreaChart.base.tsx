@@ -279,6 +279,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         dataPointCalloutProps: found!,
         hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
         xAxisCalloutAccessibilityData,
+        activePoint: '',
       });
     } else {
       /*
@@ -614,13 +615,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
-    if (!this.props.optimizeLargeData) {
-      // Render all data points for small dataset
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
-        if (points.length === index) {
-          return;
-        }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+      if (points.length === index) {
+        return;
+      }
+
+      if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
+        // Render circles for all data points
         graph.push(
           <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
             {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
@@ -651,14 +653,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             })}
           </g>,
         );
-      });
-    } else {
-      // Render data points close to the mouse pointer for large dataset
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
-        if (points.length === index) {
-          return;
-        }
+      } else {
+        // Render circles for data points close to the mouse pointer only
         singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
           const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
           if (this.state.nearestCircleToHighlight === xDataPoint) {
@@ -682,8 +678,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             );
           }
         });
-      });
-    }
+      }
+    });
     graph.push(
       <line
         id={this._verticalLineId}
