@@ -24,7 +24,7 @@ export class Label extends FASTElement {
    * @remarks
    * HTML Attribute: size
    */
-  @attr({ attribute: 'size' })
+  @attr()
   public size: LabelSize = LabelSize.medium;
 
   /**
@@ -35,6 +35,6 @@ export class Label extends FASTElement {
    * @remarks
    * HTML Attribute: weight
    */
-  @attr({ attribute: 'weight' })
+  @attr()
   public weight: LabelWeight = LabelWeight.regular;
 }

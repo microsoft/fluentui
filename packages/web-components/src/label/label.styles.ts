@@ -43,9 +43,6 @@ export const styles = css`
   :host([weight='semibold']) {
     font-weight: ${fontWeightSemibold};
   }
-  :host([weight='semibold']) {
-    font-weight: ${fontWeightSemibold};
-  }
   :host([disabled]),
   :host([disabled]) .asterisk {
     color: ${colorNeutralForegroundDisabled};
