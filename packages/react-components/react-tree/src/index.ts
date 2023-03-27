@@ -14,7 +14,6 @@ export type {
   TreeOpenChangeEvent,
   TreeNavigationEvent_unstable,
   TreeNavigationData_unstable,
-  TreeItemId,
 } from './Tree';
 
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
@@ -29,7 +28,7 @@ export {
   useTreeItemStyles_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+export type { TreeItemId, TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
 
 export {
   TreeItemLayout,

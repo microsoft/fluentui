@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 14:58:55 GMT",
+      "tag": "@fluentui/react-combobox_v9.2.6",
+      "version": "9.2.6",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0f198d87130e4f9fcacdaa187b850e507e0b1ec8",
+            "comment": "Sync with latest released version on npm"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:28 GMT",
       "tag": "@fluentui/react-combobox_v9.2.5",
       "version": "9.2.5",

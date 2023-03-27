@@ -16,6 +16,10 @@ export type CustomStyleHooksContextValue = {
   useAvatarGroupPopoverStyles_unstable: CustomStyleHook;
   useBadgeStyles_unstable: CustomStyleHook;
   useCounterBadgeStyles_unstable: CustomStyleHook;
+  useCardHeaderStyles_unstable: CustomStyleHook;
+  useCardStyles_unstable: CustomStyleHook;
+  useCardFooterStyles_unstable: CustomStyleHook;
+  useCardPreviewStyles_unstable: CustomStyleHook;
   usePresenceBadgeStyles_unstable: CustomStyleHook;
   useButtonStyles_unstable: CustomStyleHook;
   useCompoundButtonStyles_unstable: CustomStyleHook;
@@ -104,6 +108,10 @@ const customStyleHooksContextDefaultValue: CustomStyleHooksContextValue = {
   useAvatarGroupPopoverStyles_unstable: noop,
   useBadgeStyles_unstable: noop,
   useCounterBadgeStyles_unstable: noop,
+  useCardHeaderStyles_unstable: noop,
+  useCardStyles_unstable: noop,
+  useCardFooterStyles_unstable: noop,
+  useCardPreviewStyles_unstable: noop,
   usePresenceBadgeStyles_unstable: noop,
   useButtonStyles_unstable: noop,
   useCompoundButtonStyles_unstable: noop,

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 21 Mar 2023 21:23:47 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 10:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.5.0)
+
+Fri, 24 Mar 2023 10:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.4.5..@fluentui/react-provider_v9.5.0)
+
+### Minor changes
+
+- feat: Render theme CSS variables in SSR style element ([PR #27277](https://github.com/microsoft/fluentui/pull/27277) by lingfangao@hotmail.com)
 
 ## [9.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.4.5)
 

@@ -14,6 +14,7 @@ import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities'
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
+import { useRenderer_unstable } from '@griffel/react';
 
 /**
  * Create the state required to render FluentProvider.
@@ -69,6 +70,12 @@ export const useFluentProvider_unstable = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const renderer = useRenderer_unstable();
+  const { styleTagId, rule } = useFluentProviderThemeStyleTag({
+    theme: mergedTheme,
+    targetDocument,
+    rendererAttributes: renderer.styleElementAttributes ?? {},
+  });
   return {
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -78,7 +85,7 @@ export const useFluentProvider_unstable = (
     theme: mergedTheme,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     overrides_unstable: mergedOverrides,
-    themeClassName: useFluentProviderThemeStyleTag({ theme: mergedTheme, targetDocument }),
+    themeClassName: styleTagId,
 
     components: {
       root: 'div',
@@ -89,6 +96,14 @@ export const useFluentProvider_unstable = (
       dir,
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
     }),
+
+    serverStyleProps: {
+      cssRule: rule,
+      attributes: {
+        ...renderer.styleElementAttributes,
+        id: styleTagId,
+      },
+    },
   };
 };
 
