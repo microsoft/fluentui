@@ -4,24 +4,23 @@ Contributors: behowell
 
 ## Summary
 
-This proposes modifying the slot render function API to pass a render function via the slot's `as` prop instead of the `children` prop. This has several benefits, the primary of which is that it allows the user to write a render function for a slot without overriding the children added by the component.
+This proposes modifying the slot render function API to pass a render function via the slot's `as` prop instead of the `children` prop. This has several benefits, the primary of which is that it allows the user to write a render function for a slot without overriding the default children of a slot.
 
-This is a complementary proposal to bsunderhus's [RFC #27164: slot children render function support](https://github.com/microsoft/fluentui/pull/27164). Both proposals solve the primary issue in different ways, but they do not conflict with each other. It would be possible to merge the two proposals and combine ideas from both.
+This is a complementary proposal to bsunderhus's [RFC #27164: slot children render function support](https://github.com/microsoft/fluentui/pull/27164). It provides an alternative way to avoid having a render function override a slot's default `children` prop.
+
+However, this RFC has no dependencies on the other RFC, and could be adopted separately if needed.
 
 ## Background
 
 Slots accept render functions that allow them to override the component and/or props used when rendering the slot. For more background, see https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--page#replacing-the-entire-slot
 
-The render function is passed in as the slot's `children` prop. This has led to the following issue:
-
-- https://github.com/microsoft/fluentui/issues/27089
+The render function is passed in as the slot's `children` prop.
 
 ## Problem statement
 
 A few problems with render functions as they are today:
 
-1. Using `children` as the render function will override any default children provided by the component's internals.
-   - Tracked by: https://github.com/microsoft/fluentui/issues/27089
+1. Using `children` as the render function will override any default children provided by the component's internals
 2. It is confusing (IMO) that passing a render function as `children` would override the _whole slot_, and not just its children.
 3. The root slot's render function conflicts the use of children as a function, which certain components use for custom rendering of their children.
    - For example, Tooltip and Field both accept a function as a child of their root, in order to pass props to the children. However, this breaks the ability to use a slot render function for the root slot of those controls.
@@ -58,7 +57,7 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
 
 ### Pros
 
-1. It allows us to pass the slot's default `children` to the render function, because it doesn't require overriding the default children. This fixes https://github.com/microsoft/fluentui/issues/27089.
+1. It allows us to pass the slot's default `children` to the render function, because it doesn't require overriding the default children.
 
    ```jsx
    <AccordionHeader
