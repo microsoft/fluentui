@@ -10,14 +10,14 @@ export const renderDrawer_unstable = (state: DrawerState) => {
   const { slots, slotProps } = getSlots<DrawerSlots>(state);
 
   if (state.type === 'temporary') {
-    return (
+    return slots.dialog ? (
       <slots.dialog {...(slotProps.dialog as DialogProps)}>
-        <slots.dialogSurface {...slotProps.dialogSurface} />
+        {slots.dialogSurface ? <slots.dialogSurface {...slotProps.dialogSurface} /> : <></>}
       </slots.dialog>
-    );
+    ) : null;
   }
 
-  if (!state.isMounted) {
+  if (!state.mounted) {
     return null;
   }
 

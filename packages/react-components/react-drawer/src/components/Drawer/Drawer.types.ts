@@ -22,6 +22,6 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
  */
 export type DrawerState = ComponentState<DrawerSlots> &
   Required<Pick<DrawerProps, 'type' | 'position' | 'open'>> & {
-    isVisible: boolean;
-    isMounted: boolean;
+    visible: boolean;
+    mounted: boolean;
   };

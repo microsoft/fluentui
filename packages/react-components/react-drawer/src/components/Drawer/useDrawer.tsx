@@ -3,7 +3,7 @@ import { getNativeElementProps, useControllableState } from '@fluentui/react-uti
 import { Dialog, DialogSurface } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
-import { usePresence } from './usePresence';
+import { useAnimationState } from './useAnimationState';
 
 /**
  * Create the state required to render Drawer.
@@ -29,7 +29,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const { visible, mounted, animating } = usePresence(open, { duration: 200 });
+  const { visible, mounted, animating } = useAnimationState(open, { duration: 200 });
 
   return {
     components: {
@@ -57,7 +57,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     open,
     position,
 
-    isVisible: visible,
-    isMounted: mounted,
+    visible,
+    mounted,
   };
 };

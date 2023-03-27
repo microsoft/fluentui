@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-type UsePresenceOptions = {
+type AnimationStateOptions = {
   /** Duration in milliseconds used both for enter and exit transitions. */
   duration: number;
 
@@ -13,7 +13,7 @@ type UsePresenceOptions = {
 
 const defaultDuration = 200;
 
-export function usePresence(isPresent: boolean, options: UsePresenceOptions) {
+export function useAnimationState(isPresent: boolean, options: AnimationStateOptions) {
   const { duration = defaultDuration, enterDuration = duration, exitDuration = duration } = options;
 
   const [mounted, setMounted] = React.useState(isPresent);

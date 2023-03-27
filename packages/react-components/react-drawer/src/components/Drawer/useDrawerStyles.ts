@@ -94,13 +94,13 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
     state.position === 'left' ? styles.leftDrawer : styles.rightDrawer,
   ];
 
-  if (state.isVisible) {
+  if (state.visible) {
     baseClasses.push(styles.visible);
   }
 
   if (state.type === 'persistent') {
     state.root.className = mergeClasses(...baseClasses, getPersistentClasses(state, styles), state.root.className);
-  } else {
+  } else if (state.dialogSurface) {
     state.dialogSurface.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
   }
 
