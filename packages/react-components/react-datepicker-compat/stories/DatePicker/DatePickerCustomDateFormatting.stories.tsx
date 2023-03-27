@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { makeStyles, Button } from '@fluentui/react-components';
-import { defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 import type { IDatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
-    '> *': {
-      marginBottom: '15px',
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
   },
   control: {
     maxWidth: '300px',
+  },
+  clearButton: {
+    marginBottom: '5px',
   },
 });
 
@@ -50,13 +53,7 @@ export const CustomDateFormatting = () => {
 
   return (
     <div className={styles.root}>
-      <div>
-        Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control
-        will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In this
-        example, we are formatting and parsing dates as dd/MM/yy.
-      </div>
       <DatePicker
-        className={styles.control}
         componentRef={datePickerRef}
         label="Start date"
         allowTextInput
@@ -65,11 +62,25 @@ export const CustomDateFormatting = () => {
         onSelectDate={setValue as (date?: Date | null) => void}
         formatDate={onFormatDate}
         parseDateFromString={onParseDateFromString}
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={defaultDatePickerStrings}
+        className={styles.control}
       />
-      <Button onClick={onClick}>Clear</Button>
-      <div>Selected date: {(value || '').toString()}</div>
+      <div>
+        <Button onClick={onClick} className={styles.clearButton}>
+          Clear
+        </Button>
+        <div>Selected date: {(value || '').toString()}</div>
+      </div>
     </div>
   );
+};
+
+CustomDateFormatting.parameters = {
+  docs: {
+    description: {
+      story:
+        'Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the' +
+        ' control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed.' +
+        ' In this example, we are formatting and parsing dates as dd/MM/yy.',
+    },
+  },
 };

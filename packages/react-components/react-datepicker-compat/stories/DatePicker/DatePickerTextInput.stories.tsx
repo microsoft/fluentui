@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
-import { defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
-import type { IDatePicker } from '@fluentui/react-datepicker-compat';
+import { makeStyles } from '@fluentui/react-components';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
-    '> *': {
-      marginBottom: '15px',
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
   },
   control: {
     maxWidth: '300px',
@@ -17,33 +16,20 @@ const useStyles = makeStyles({
 export const TextInput = () => {
   const styles = useStyles();
 
-  const [value, setValue] = React.useState<Date | undefined>();
-  const datePickerRef = React.useRef<IDatePicker>(null);
-
-  const onClick = React.useCallback((): void => {
-    setValue(undefined);
-    datePickerRef.current?.focus();
-  }, []);
-
   return (
     <div className={styles.root}>
-      <div>
-        Clicking the input field will open the DatePicker, and clicking the field again will dismiss the DatePicker and
-        allow text input. When using keyboard navigation (tabbing into the field), text input is allowed by default, and
-        pressing Enter will open the DatePicker.
-      </div>
-      <DatePicker
-        className={styles.control}
-        componentRef={datePickerRef}
-        label="Start date"
-        allowTextInput
-        aria-label="Select a date"
-        value={value}
-        onSelectDate={setValue as (date: Date | null | undefined) => void}
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={defaultDatePickerStrings}
-      />
-      <Button onClick={onClick}>Clear</Button>
+      <DatePicker className={styles.control} label="Start date" allowTextInput aria-label="Select a date" />
     </div>
   );
+};
+
+TextInput.parameters = {
+  docs: {
+    description: {
+      story:
+        'A DatePicker supports user input. Clicking the input field will open the DatePicker, and clicking the' +
+        ' field again will dismiss the DatePicker and allow text input. When using keyboard navigation (tabbing into' +
+        ' the field), text input is allowed by default, and pressing Enter will open the DatePicker.',
+    },
+  },
 };
