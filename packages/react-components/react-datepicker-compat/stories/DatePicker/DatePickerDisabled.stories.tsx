@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
-  root: {
+  control: {
     maxWidth: '300px',
-    '> *': {
-      marginBottom: '15px',
-    },
   },
 });
 
@@ -15,22 +12,20 @@ export const Disabled = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
-      <DatePicker
-        disabled
-        placeholder="Select a date..."
-        aria-label="Select a date"
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={defaultDatePickerStrings}
-      />
-
-      <DatePicker
-        disabled
-        label="Disabled (with label)"
-        placeholder="Select a date..."
-        aria-label="Select a date"
-        strings={defaultDatePickerStrings}
-      />
-    </div>
+    <DatePicker
+      disabled
+      label="Disabled (with label)"
+      placeholder="Select a date..."
+      aria-label="Select a date"
+      className={styles.control}
+    />
   );
+};
+
+Disabled.parameters = {
+  docs: {
+    description: {
+      story: 'DatePicker can be disabled to restrict user interaction.',
+    },
+  },
 };
