@@ -36,7 +36,7 @@ const storyTemplate = html<TextInputStoryArgs>`
   >
     <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}${Person20Regular}</span>
-    First Name
+    Sample Input
   </fluent-text-input>
 `;
 
@@ -79,26 +79,84 @@ export default {
 
 export const TextInput = renderComponent(storyTemplate).bind({});
 
-// //
-// // Attribute stories
-// //
+export const Appearance = renderComponent(html<TextInputStoryArgs>`
+  <div style="display: flex; flex-direction: column; gap: 30px;">
+    <fluent-text-input appearance="outline" placeholder="Outline">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Outlined Input
+    </fluent-text-input>
 
-// export const Appearance = renderComponent(html<TextInputStoryArgs>`
+    <fluent-text-input appearance="underline" placeholder="Underline">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Underlined Input
+    </fluent-text-input>
 
-// `);
+    <fluent-text-input appearance="filledLighter" placeholder="Filled Lighter">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Filled Lighter Input
+    </fluent-text-input>
 
-// export const Size = renderComponent(html<TextInputStoryArgs>`
+    <fluent-text-input appearance="filledDarker" placeholder="Filled Darker">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Filled Darker Input
+    </fluent-text-input>
+  </div>
+`);
 
-// `);
+export const Size = renderComponent(html<TextInputStoryArgs>`
+  <div style="display: flex; flex-direction: column; gap: 30px;">
+    <fluent-text-input input-size="small" placeholder="Small">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Small Input
+    </fluent-text-input>
 
-// export const Layout = renderComponent(html<TextInputStoryArgs>`
+    <fluent-text-input input-size="medium" placeholder="Medium">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Medium Input
+    </fluent-text-input>
 
-// `);
+    <fluent-text-input input-size="large" placeholder="Large">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Large Input
+    </fluent-text-input>
+  </div>
+`);
 
-// export const Disabled = renderComponent(html<TextInputStoryArgs>`
+export const LayoutBlock = renderComponent(html<TextInputStoryArgs>`
+  <fluent-text-input layout="block" placeholder="Block">
+    <span slot="start">${Person20Regular}</span>
+    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    Layout Block Input
+  </fluent-text-input>
+`);
 
-// `);
+export const LayoutInline = renderComponent(html<TextInputStoryArgs>`
+  <fluent-text-input layout="inline" placeholder="Inline">
+    <span slot="start">${Person20Regular}</span>
+    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    Layout Inline Input
+  </fluent-text-input>
+`);
 
-// export const Placeholder = renderComponent(html<TextInputStoryArgs>`
+export const Disabled = renderComponent(html<TextInputStoryArgs>`
+  <fluent-text-input disabled="true" placeholder="Disabled">
+    <span slot="start">${Person20Regular}</span>
+    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    Disabled Input
+  </fluent-text-input>
+`);
 
-// `);
+export const Required = renderComponent(html<TextInputStoryArgs>`
+  <fluent-text-input required="true" placeholder="Required">
+    <span slot="start">${Person20Regular}</span>
+    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    Required Input
+  </fluent-text-input>
+`);
