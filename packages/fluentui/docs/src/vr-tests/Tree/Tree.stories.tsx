@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Tree } from '@fluentui/react-northstar';
 import TreeExclusiveExample from '../../examples/components/Tree/Types/TreeExclusiveExample.shorthand';

@@ -4,7 +4,11 @@ import { Meta, Source } from '@storybook/addon-docs';
 
 ## Styling components
 
-To style Fluent UI React v9 components `makeStyles` is used. `makeStyles` comes from [`Griffel`](https://griffel.js.org) a homegrown CSS-in-JS implementation which generates atomic CSS classes.
+Visit the **[Styling handbook](https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/styles-handbook.md)** for a comprehensive styling guide, as this article only introduces basics to get you started quickly.
+
+### Getting started
+
+To style Fluent UI React v9 components `makeStyles` is used. `makeStyles` comes from [Griffel](https://griffel.js.org) a homegrown CSS-in-JS implementation which generates atomic CSS classes.
 
 Get started by simply importing:
 
@@ -136,9 +140,13 @@ function Component(props) {
 
 [Griffel devtools chrome extension](https://chrome.google.com/webstore/detail/griffel-devtools/bejhagjehnpgagkaaeehdpdadmffbigb) can be used to debug style overrides. It shows all griffel styles applied on the currently selected DOM element, including the styles that are overridden in `mergeClasses`.
 
+### Limitations
+
+Griffel's approach to styling comes with certain [limitations](https://griffel.js.org/react/guides/limitations). One of which is the lack of support for [CSS shorthand properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties). To work around this, Griffel [provides a collection of shorthand functions](https://griffel.js.org/react/api/shorthands) to write css shorthand. Their usage is demonstrated in the next example.
+
 ## Overriding FUI component styles
 
-To override an appearance of a FUI component, you use the exactly same approach - You call makeStyles/useStyles in your code and pass the resulting classes through `props`.
+To override an appearance of a FUI component, you use the exactly same approach - You call `makeStyles`/`useStyles` in your code and pass the resulting classes through `props`.
 
 ```jsx
 import { makeStyles, tokens, shorthands } from '@fluentui/react-components';

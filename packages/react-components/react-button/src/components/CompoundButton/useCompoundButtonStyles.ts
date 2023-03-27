@@ -70,6 +70,12 @@ const useRootStyles = makeStyles({
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
+
+    '@media (forced-colors: active)': {
+      [`& .${compoundButtonClassNames.secondaryContent}`]: {
+        color: 'HighlightText',
+      },
+    },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */

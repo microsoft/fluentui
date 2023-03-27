@@ -6,7 +6,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const semver = require('semver');
-const { getAllPackageInfo, findGitRoot } = require('../monorepo');
+const { getAllPackageInfo, findGitRoot } = require('@fluentui/scripts-monorepo');
 
 // Generate "manifest" file with package.jsons of all the monorepo packages (mainly for ODSP)
 
@@ -14,6 +14,7 @@ const ommittedPackagePaths = ['react-components', 'packages/fluentui', 'web-comp
 
 const allPackageInfo = getAllPackageInfo();
 
+// eslint-disable-next-line guard-for-in
 for (const key in allPackageInfo) {
   const normalizedPath = allPackageInfo[key]?.packagePath.split('\\').join('/');
   ommittedPackagePaths.forEach(omittedPath => {

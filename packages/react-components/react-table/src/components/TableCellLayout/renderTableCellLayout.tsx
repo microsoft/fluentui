@@ -19,11 +19,11 @@ export const renderTableCellLayout_unstable = (
           <slots.media {...slotProps.media} />
         </AvatarContextProvider>
       )}
-      {slots.wrapper && (
-        <slots.wrapper {...slotProps.wrapper}>
+      {slots.content && (
+        <slots.content {...slotProps.content}>
           {slots.main && <slots.main {...slotProps.main}>{slotProps.root.children}</slots.main>}
           {slots.description && <slots.description {...slotProps.description} />}
-        </slots.wrapper>
+        </slots.content>
       )}
     </slots.root>
   );

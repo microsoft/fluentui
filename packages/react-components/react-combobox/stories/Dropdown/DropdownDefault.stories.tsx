@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
-import { Dropdown, Option } from '@fluentui/react-combobox';
-import type { DropdownProps } from '@fluentui/react-combobox';
+import { Dropdown, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
+import type { DropdownProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -16,7 +15,7 @@ const useStyles = makeStyles({
 
 export const Default = (props: Partial<DropdownProps>) => {
   const dropdownId = useId('dropdown-default');
-  const options = ['Cat', 'Caterpiller', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
+  const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
   const styles = useStyles();
   return (
     <div className={styles.root}>

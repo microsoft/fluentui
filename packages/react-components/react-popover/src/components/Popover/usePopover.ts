@@ -120,6 +120,10 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   const { findFirstFocusable } = useFocusFinders();
 
   React.useEffect(() => {
+    if (props.unstable_disableAutoFocus) {
+      return;
+    }
+
     if (open && positioningRefs.contentRef.current) {
       const containerTabIndex = positioningRefs.contentRef.current.getAttribute('tabIndex') ?? undefined;
       const firstFocusable = isNaN(containerTabIndex)
@@ -127,7 +131,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
         : positioningRefs.contentRef.current;
       firstFocusable?.focus();
     }
-  }, [findFirstFocusable, open, positioningRefs.contentRef]);
+  }, [findFirstFocusable, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   return {
     ...initialState,

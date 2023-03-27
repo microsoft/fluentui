@@ -12,10 +12,14 @@ import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarCha
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVerticalBarChart.CustomAccessibility.Example';
 
-const GroupedVerticalBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
-const GroupedVerticalStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
-const GroupedVerticalTruncatedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
-const GroupedVerticalCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.CustomAccessibility.Example.tsx') as string;
+const GroupedVerticalBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
+const GroupedVerticalStyledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Styled.Example.tsx') as string;
+const GroupedVerticalTruncatedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
+const GroupedVerticalCustomAccessibilityExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.CustomAccessibility.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -60,6 +64,9 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
               either the x axis or another bar in the stack. For grouped vertical bar chart, each bar has x axis as the
               reference point. Having a common reference point helps in better comparison between different values in
               the chart.
+            </p>
+            <p>
+              The bar labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
             </p>
           </div>
         }

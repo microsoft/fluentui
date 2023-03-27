@@ -2,92 +2,62 @@
 
 ## Background
 
-Field adds a label, validation text, and hint text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
+Field adds a label, validation text, and hint text to form input components. It can be added around any input components, such as `<Input>` or `<Combobox>` from this library, or intrinsic `<input>` elements, or custom form controls.
 
 Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues/19627
 
 ## Prior Art
 
-Existing libraries tend to take one of the following approaches to field.
+Existing libraries take one of several approaches to Field. The basic problem that all are trying to solve is to (a) render a label and some descriptive text around a control, and (b) connect that text to the control via `for`/`aria-labelledby`/`aria-describedby`.
 
 1. Include support for label, error text, etc. in the base input component. Libraries using this approach include:
    - **FluentUI v8** - [`TextField`](https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield), [`Dropdown`](https://developer.microsoft.com/en-us/fluentui#/controls/web/dropdown), [`ChoiceGroup`](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup), etc.
    - **Spectrum** - [`TextField`](https://react-spectrum.adobe.com/react-spectrum/TextField.html), [`Slider`](https://react-spectrum.adobe.com/react-spectrum/Slider.html), [`RadioGroup`](https://react-spectrum.adobe.com/react-spectrum/RadioGroup.html), etc.
 2. Provide a set of components that are manually constructed into a field. This requires manually hooking up the components using props like `htmlFor` and `aria-describedby`. Libraries using this approach include:
    - **FluentUI v0** - [`FormField`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-field), [`FormLabel`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-label), [`FormMessage`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-message)
-   - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the item and the field component).
 3. Provide base components without a label or descriptive text, and then Field versions of those controls. Libraries using this approach include:
    - **FluentUI v0** - [`Input`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/input/props) and [`FormInput`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-input), for example.
    - **Evergreen UI** - [`TextInput`](https://evergreen.segment.com/components/text-input) and [`TextInputField`](https://evergreen.segment.com/components/text-input#textinputfield), for example.
+4. Provide base components without a label or descriptive text, and have a Field (FormItem) component that passes props to its child via context, a render function, or cloneElement.
+   - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the control and the Form.Item component).
+   - **Atlaskit** - [`Field`](https://atlaskit.atlassian.com/packages/design-system/form/docs/fields) (uses a render function as the child of the Field to pass props).
 
-The Field implementation in this spec follows pattern (3). There are Field versions of all components that can be used as form inputs. There are several reasons, including:
+The Field implementation in this spec follows pattern (4). Field passes props to its child to connect the field's label and message text. There are several reasons:
 
-- **Accessibility**: By combining a base component with the field props into a single component, all of the accessibility props like `htmlFor` and `aria-describedby` are set correctly for "free".
-- **Simplicity**: All props related to the component (such as `label`, `id`, `validationState="error"`, etc.) are on the same component, rather than split between multiple components (like separate `Field` and `Input` components).
-- **Consistency**: All of the Field components share a common set of props for the label, validationState, hint, etc.
-- **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the base components without pulling in unnecessary dependencies (like `Label` and the field styling).
+- **Accessibility**: All of the accessibility props like `aria-labelledby` and `aria-describedby` are set correctly on the child for "free".
+- **Simplicity**: Passing props down to the children allows any form control to be used as the child of Field.
+- **Consistency**: The Field component provides props like label, validationState, hint, etc. for any form control.
+- **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the core components like `Input` without pulling in unnecessary dependencies (like `Label` and the field styling).
 
 ## Sample Code
 
-Each input component has a field version (such as `InputField`, `ComboboxField`, etc.) that includes the features of Field added to that component.
-
 ```jsx
 <>
-  <InputField
-    // Field-specific props
-    label="This is the field label"
-    orientation="horizontal"
-    validationState="error"
-    validationMessage="This is error text"
-    // All props and slots of the underlying Input component are supported
-    required
-    size="small"
-    contentBefore="$"
-    contentAfter=".00"
-  />
-  <RadioGroupField label="Radio group field">
-    <Radio value="one" label="Option one" />
-    <Radio value="two" label="Option two" />
-    <Radio value="three" label="Option three" />
-  </RadioGroupField>
-  <ComboboxField label="Combobox field" validationState="success" validationMessage="Success text">
-    <Option value="one">Option one</Option>
-    <Option value="two">Option two</Option>
-    <Option value="three">Option three</Option>
-  </ComboboxField>
-  <SliderField label="Slider field" validationState="warning" validationMessage="Warning text" />
-  <SpinButtonField label="Spin button field" hint="Hint text" />
+  <Field label="This is the field label" orientation="horizontal" validationMessage="This is error text" required>
+    <Input size="small" contentBefore="$" contentAfter=".00" />
+  </Field>
+  <Field label="Radio group field">
+    <RadioGroup>
+      <Radio value="one" label="Option one" />
+      <Radio value="two" label="Option two" />
+      <Radio value="three" label="Option three" />
+    </RadioGroup>
+  </Field>
+  <Field label="Combobox field" validationState="success" validationMessage="Success text">
+    <Combobox>
+      <Option value="one">Option one</Option>
+      <Option value="two">Option two</Option>
+      <Option value="three">Option three</Option>
+    </Combobox>
+  </Field>
+  <Field label="Slider field" validationState="warning" validationMessage="Warning text">
+    <Slider defaultValue={25} />
+  </Field>
+  <Field label="Spin button field" hint="Hint text">
+    <SpinButton />
+  </Field>
 </>
 ```
-
-These field versions of the components use a common set of Field hooks, and can be defined using very little code.
-
-```ts
-export type InputFieldProps = FieldProps<typeof Input>;
-
-export const InputField: ForwardRefComponent<InputFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, Input);
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
-});
-
-InputField.displayName = 'InputField';
-```
-
-## Components
-
-The following field components will be defined. If more form components are added in the future, they should also include a Field version.
-
-- `CheckboxField`
-- `ComboboxField`
-- `DropdownField`
-- `InputField`
-- `RadioGroupField`
-- `SelectField`
-- `SliderField`
-- `SpinButtonField`
-- `SwitchField`
-- `TextareaField`
 
 ## Variants
 
@@ -95,53 +65,53 @@ The following field components will be defined. If more form components are adde
   - `'vertical'` (default) - label is above the field component
   - `'horizontal'` - label is to the left of the field component, and is 33% the width of the field (this allows multiple stacked fields to all align their labels)
 - **Validation state**: The `validationState` prop affects the icon and color used by the `validationMessage`:
-  - `'error'` - Red x icon, red text color
+  - `'error'` - (default when there is a `validationMessage`): Red x icon, red text color
+    - In the error state, Field also sets `aria-invalid` on the child element. Some controls such as `Input` and `Combobox` draw a red border when `aria-invalid` is set.
   - `'warning'` - Yellow exclamation icon, neutral color text
   - `'success'` - Green check icon, neutral color text
-  - `undefined` (default): No validation message icon, neutral color text
-- **Error**: Some control types (like `Input` and `Combobox`) have a prop that makes the border red. This prop will be set `validationState="error"`.
+  - `'none'` - No validation message icon, neutral color text
 
-Field also forwards some props from the wrapped component to the label as well:
+Field also forwards some props to its Label:
 
-- **Size**: If the wrapped component supports a `size` prop, it will also be applied to the field's label.
+- **Size**: Affects the size of the Label text (but not validationMessage or hint text).
 - **Required**: If set, the Label will get a required asterisk: `*`
 
 ## API
 
-### FieldComponent
+`Field` applies props to its child component, to connect the label and message text to the control, and make the component accessible by default.
 
-The `FieldComponent` type defines the minimum set of props that the wrapped component must support. This is used for the generic types as the requirement for the type parameter: `FieldProps<T extends FieldComponent>`
+The props added are:
+
+- `id` - Uses the child's `id` prop if set; otherwise generates an ID and sets it on the child. This is used as the label's `htmlFor`.
+- `aria-labelledby` - The label's ID.
+- `aria-describedby` - The validationMessage and/or hint's ID.
+- `aria-invalid` - If validationState is error (which is the default when a validationMessage is set).
+- `aria-required` - If the required prop is set.
+
+This is done one of two ways:
+
+- If the child is a component, uses `cloneElement` to add the props to the child's props.
+- If the child is a render function, passes the props to the render function. That function is expected to spread the props in the appropriate place in its render tree.
+
+### FieldChildProps
+
+The `FieldChildProps` type defines the props that may be set on the child of Field (or passed to the child render function).
 
 ```ts
 /**
- * The minimum requirement for a component used by Field.
- *
- * Note: the use of VoidFunctionComponent means that component is not *required* to have a children prop,
- * but it is still allowed to have a children prop.
+ * The props added to the Field's child element. Or if the child is a render function, the props passed to the function.
  */
-export type FieldComponent = React.VoidFunctionComponent<
-  Pick<
-    React.HTMLAttributes<HTMLElement>,
-    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'
-  >
+export type FieldChildProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
 >;
 ```
 
 ### Slots
 
-_Note: TypeScript crashes if the `Slot` type is used with a template type parameter. The `SlotComponent` type is a simplified version of that type, which only supports `React.ComponentType`/`React.VoidFunctionComponent`._
-
 ```ts
-export type FieldSlots<T extends FieldComponent> = {
+export type FieldSlots = {
   root: NonNullable<Slot<'div'>>;
-
-  /**
-   * The underlying component wrapped by this field.
-   *
-   * This is the PRIMARY slot: all intrinsic HTML properties will be applied to this slot,
-   * except `className` and `style`, which remain on the root slot.
-   */
-  control: SlotComponent<T>;
 
   /**
    * The label associated with the field.
@@ -149,29 +119,45 @@ export type FieldSlots<T extends FieldComponent> = {
   label?: Slot<typeof Label>;
 
   /**
-   * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
+   * A message about the validation state. By default, this is an error message, but it can be a success, warning,
+   * or custom message by setting `validationState`.
    */
-  validationMessage?: Slot<'span'>;
+  validationMessage?: Slot<'div'>;
 
   /**
-   * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
-   * icon corresponding to that state.
+   * The icon associated with the `validationMessage`. This will only be displayed if `validationMessage` is set.
    *
-   * This will only be displayed if `validationMessage` is set.
+   * The default depends on `validationState`:
+   * * `error` - `<ErrorCircle12Filled />`
+   * * `warning` - `<Warning12Filled />`
+   * * `success` - `<CheckmarkCircle12Filled />`
+   * * `none` - `null`
    */
   validationMessageIcon?: Slot<'span'>;
 
   /**
    * Additional hint text below the field.
    */
-  hint?: Slot<'span'>;
+  hint?: Slot<'div'>;
 };
 ```
 
 ### Props
 
 ```ts
-export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+  /**
+   * The Field's child can be a single form control, or a render function that takes the props that should be spread on
+   * a form control.
+   *
+   * All form controls in this library can be used directly as children (such as `<Input>` or `<RadioGroup>`), as well
+   * as intrinsic form controls like `<input>` or `<textarea>`. Custom controls can also be used as long as they
+   * accept FieldChildProps and spread them on the appropriate element.
+   *
+   * For more complex scenarios, a render function can be used to pass the FieldChildProps to the appropriate control.
+   */
+  children?: React.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React.ReactNode);
+
   /**
    * The orientation of the label relative to the field component.
    * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
@@ -181,81 +167,84 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
   orientation?: 'vertical' | 'horizontal';
 
   /**
-   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`, and for some
-   * field components, an `validationState="error"` causes the border to become red.
+   * The `validationState` affects the display of the `validationMessage` and `validationMessageIcon`.
    *
-   * @default undefined
+   * * `error` - (default) The validation message has a red error icon and red text, with `role="alert"` so it is
+   *     announced by screen readers. Additionally, the control inside the field has `aria-invalid` set, which adds a
+   *     red border to some field components (such as `Input`).
+   * * `success` - The validation message has a green checkmark icon and gray text.
+   * * `warning` - The validation message has a yellow exclamation icon and gray text.
+   * * `none` - The validation message has no icon and gray text.
+   *
+   * @default error when `validationMessage` is set; none otherwise.
    */
-  validationState?: 'error' | 'warning' | 'success';
-};
-```
+  validationState?: 'error' | 'warning' | 'success' | 'none';
 
-Field also reads some props from the underlying component. These are not part of `FieldProps` because they are not added to the components that don't support them. However, they are accepted by `useField`:
-
-```ts
-/**
- * Props that are supported by Field, but not required to be supported by the component that implements field.
- */
-export type OptionalFieldComponentProps = {
   /**
-   * Whether the field label should be marked as required.
+   * Marks the Field as required. If `true`, an asterisk will be appended to the label, and `aria-required` will be set
+   * on the Field's child.
    */
   required?: boolean;
 
   /**
-   * Size of the field label.
+   * The size of the Field's label.
    *
-   * Number sizes will be ignored, but are allowed because the HTML <input> element has a `size` prop of type `number`.
+   * @default medium
    */
-  size?: 'small' | 'medium' | 'large' | number;
+  size?: 'small' | 'medium' | 'large';
 };
 ```
 
 ### State
 
 ```ts
-export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> &
-  Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
-    classNames: SlotClassNames<FieldSlots<T>>;
-  };
+export type FieldState = ComponentState<Required<FieldSlots>> &
+  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
 ```
-
-### Label for Checkbox and Switch
-
-The Checkbox and Switch components already have a `label` prop, which conflicts with the Field's `label`.
-
-#### `CheckboxField`
-
-- The `label` prop will go to the Checkbox and NOT the Field
-- New `fieldLabel` prop for the label of the Field
-
-#### `SwitchField`
-
-- The `label` prop will go to the Field and NOT the Switch
-- The Switch's `labelPosition` prop is therefore not supported, and is omitted from SwitchField.
 
 ## Structure
 
 ### Public API
 
+With a child element:
+
 ```jsx
-<InputField
+<Field
   label="This is the field label"
   orientation="horizontal"
   validationState="error"
   validationMessage="This is a validation message"
   hint="This is a hint message"
-/>
+>
+  <Input /> {/* Or any other form control */}
+</Field>
 ```
 
-(similar API for other Field components)
+With a child render function:
+
+```jsx
+<Field
+  label="This is the field label"
+  orientation="horizontal"
+  validationState="error"
+  validationMessage="This is a validation message"
+  hint="This is a hint message"
+>
+  {fieldProps => (
+     {/* Render any JSX and spread the props in the appropriate place */}
+    <div>
+      <Input {...fieldProps} />
+    </div>
+  )}
+</Field>
+```
 
 ### Slot structure
 
 ```jsx
 <slots.root>
   <slots.label {...slotProps.label} />
-  <slots.control {...slotProps.control} />
+  {slotProps.root.children}
   <slots.validationMessage {...slotProps.validationMessage}>
     <slots.validationMessageIcon {...slotProps.validationMessageIcon} />
     {slotProps.validationMessage.children}
@@ -269,7 +258,7 @@ The Checkbox and Switch components already have a `label` prop, which conflicts 
 ```html
 <div className="fui-Field">
   <label className="fui-Field__label fui-Label">This is the field label</label>
-  <!-- wrapped field component goes here -->
+  <!-- child field component goes here -->
   <span className="fui-Field__validationMessage">
     <span className="fui-Field__validationMessageIcon"><svg>...</svg></span>
     This is a validation message
@@ -297,18 +286,17 @@ The Field itself is not interactive. The wrapped component has the same interact
 - **ARIA pattern**
   - Field itself does not implement a defined ARIA pattern. It has no role applied to the root element.
 - **Attributes**
-  - The following are applied on the wrapped component:
-    - `aria-labelledby={label.id}`, if the label is present.
-    - `aria-describedby` is set to one of:
-      - `aria-describedby={validationMessage.id}`, if validationMessage is present, and _only if_ `validationState !== 'error'`
-      - `aria-describedby={hint.id}`, if hint is present
-      - `aria-describedby={validationMessage.id + ' ' + hint.id}`, if both conditions above apply
-    - `aria-errormessage={validationMessage.id}`, if validationMessage is present, and _only if_ `validationState === 'error'`
-    - `aria-invalid={true}`, _only if_ `validationState === 'error'`
+  - The following are applied on the child component:
+    - `id={generatedChildID}` - if the label is present, and the child doesn't have an `id` already.
+    - `aria-labelledby={label.id}` - if the label is present.
+    - `aria-describedby={validationMessage.id + ' ' + hint.id}` - if the validationMessage and/or hint are present.
+    - `aria-invalid={true}` - if validationMessage is present, unless validationState set to something _other than_ `error`.
   - On the `label` slot:
-    - `htmlFor={control.id}` - the wrapped component's `id` (an ID is generated if not supplied via props).
+    - `htmlFor={child.id}`
+  - On the `validationMessage` slot:
+    - `role="alert"` - unless validationState set to something _other than_ `error`.
 - **Live regions** (state change announcements)
-  - TBD: Need to determine if the validation message should be an aria live region.
+  - `role="alert"` on the `validationMessage` when it is an error causes the message to be announced by screen readers when it appears.
 - **UI parts appearing on hover or focus**
   - None.
 - **Focus behavior**

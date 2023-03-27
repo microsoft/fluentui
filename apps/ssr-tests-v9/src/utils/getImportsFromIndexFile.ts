@@ -61,11 +61,16 @@ export async function getImportsFromIndexFile(distDir: string, filename: string)
         }
 
         const importName = specifierPath.get('local').node.name;
+        // These paths should be always POSIX-like as backslashes are not valid to be used in imports
+        const importPath = path
+          .relative(distDir, path.resolve(path.dirname(filename), sourcePath.node.value))
+          .split(path.sep)
+          .join(path.posix.sep);
 
         imports.push({
           local: importName,
           imported: importPrefix + importName,
-          path: path.relative(distDir, path.resolve(path.dirname(filename), sourcePath.node.value)),
+          path: importPath,
         });
       },
     },

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Breadcrumb } from '@fluentui/react-northstar';
 import BreadcrumbExampleIconDivider from '../../examples/components/Breadcrumb/Content/BreadcrumbExampleIconDivider';

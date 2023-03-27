@@ -8,9 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -31,14 +29,21 @@ export type SpinButtonChangeEvent = React_2.MouseEvent<HTMLButtonElement> | Reac
 // @public (undocumented)
 export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const SpinButtonField_unstable: ForwardRefComponent<SpinButtonFieldProps_unstable>;
 
-// @public (undocumented)
-export const spinButtonFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+// @public @deprecated (undocumented)
+export const spinButtonFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
 
-// @public (undocumented)
-export type SpinButtonFieldProps_unstable = FieldProps<typeof SpinButton>;
+// @public @deprecated (undocumented)
+export type SpinButtonFieldProps_unstable = DeprecatedFieldProps<SpinButtonProps>;
 
 // @public (undocumented)
 export type SpinButtonOnChangeData = {

@@ -8,4 +8,5 @@ export * from './useMergedRefs';
 export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
 export * from './usePrevious';
+export * from './useScrollbarWidth';
 export * from './useTimeout';

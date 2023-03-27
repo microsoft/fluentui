@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { SvgIcon } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Menu } from '@fluentui/react-northstar';
 import MenuPlayground from '../../examples/components/Menu/Playground';

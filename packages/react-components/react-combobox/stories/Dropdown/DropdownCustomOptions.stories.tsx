@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
+import { Dropdown, makeStyles, Option, OptionGroup, shorthands, useId } from '@fluentui/react-components';
+import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import {
   AnimalCat24Filled,
   AnimalDog24Filled,
@@ -8,8 +9,6 @@ import {
   FoodFish24Filled,
   CheckboxChecked24Regular,
 } from '@fluentui/react-icons';
-import { Dropdown, Option, OptionGroup } from '@fluentui/react-combobox';
-import type { DropdownProps, OptionProps, OptionGroupProps } from '@fluentui/react-combobox';
 
 const animalIcons = {
   Cat: AnimalCat24Filled,
@@ -48,11 +47,12 @@ const CustomOption = (props: CustomOptionProps) => {
 };
 
 const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: (keyof typeof animalIcons)[] }) => {
-  const labelSlot = typeof props.label === 'object' ? props.label : { children: props.label };
+  const { label, options, ...optionGroupProps } = props;
+  const labelSlot = typeof label === 'object' ? label : { children: label };
 
   return (
-    <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }}>
-      {props.options.map(option => (
+    <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }} {...optionGroupProps}>
+      {options.map(option => (
         <CustomOption key={option} animal={option} />
       ))}
     </OptionGroup>
@@ -98,8 +98,11 @@ CustomOptions.parameters = {
   docs: {
     description: {
       story:
-        'Options and OptionGroups can be extended and customized. ' +
-        'The `value` prop is used here, since the children of `<Option>` include JSX.',
+        'Options and OptionGroups can be extended and customized.' +
+        'Here `OptionGroup` is wrapped in `CustomOptionGroup`,' +
+        'which adds a custom label style and takes an `options` array prop which is mapped to child Option elements.' +
+        '`Option` is also wrapped in `CustomOption`, which adds a custom check icon and animal icon.' +
+        'The `text` prop is added to `<Option>`, since the children of `<Option>` are not a simple string.',
     },
   },
 };

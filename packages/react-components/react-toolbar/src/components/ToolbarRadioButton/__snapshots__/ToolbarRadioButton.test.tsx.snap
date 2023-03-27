@@ -3,9 +3,10 @@
 exports[`ToolbarRadioButton renders a default state 1`] = `
 <div>
   <button
-    aria-pressed="false"
+    aria-checked="false"
     class="fui-Button fui-ToggleButton"
     name="name"
+    role="radio"
     type="button"
     value="value"
   >

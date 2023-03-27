@@ -1,7 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { StoryWright, Steps } from 'storywright';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Accordion, accordionTitleSlotClassNames } from '@fluentui/react-northstar';
 import AccordionExampleCustomTitle from '../../examples/components/Accordion/Visual/AccordionExampleCustomTitle.shorthand';

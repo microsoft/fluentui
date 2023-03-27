@@ -1,7 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { StoryWright, Steps } from 'storywright';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames, dropdownSelectedItemSlotClassNames } from '@fluentui/react-northstar';
 import DropdownExampleMultiple from '../../examples/components/Dropdown/Types/DropdownExampleMultiple.shorthand';

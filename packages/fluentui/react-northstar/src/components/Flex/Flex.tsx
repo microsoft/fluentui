@@ -54,7 +54,7 @@ export const flexClassName = 'ui-flex';
 /**
  * A Flex is a layout component that arranges group of items aligned towards common direction (either row or column).
  */
-export const Flex = (React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
+export const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
   setStart();
@@ -120,7 +120,7 @@ export const Flex = (React.forwardRef<HTMLDivElement, FlexProps>((props, ref) =>
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, FlexProps> & {
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, FlexProps> & {
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 };

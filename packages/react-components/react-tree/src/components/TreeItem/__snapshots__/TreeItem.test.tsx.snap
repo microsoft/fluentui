@@ -5,10 +5,15 @@ exports[`TreeItem renders a default state 1`] = `
   <div
     aria-level="0"
     class="fui-TreeItem"
+    id="fui-TreeItem-7"
     role="treeitem"
-    tabindex="0"
+    tabindex="-1"
   >
-    Default TreeItem
+    <div
+      class="fui-TreeItem__content"
+    >
+      Default TreeItem
+    </div>
   </div>
 </div>
 `;

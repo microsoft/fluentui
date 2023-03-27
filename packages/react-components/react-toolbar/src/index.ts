@@ -6,13 +6,8 @@ export {
   useToolbar_unstable,
 } from './Toolbar';
 export type { ToolbarContextValue, ToolbarContextValues, ToolbarProps, ToolbarSlots, ToolbarState } from './Toolbar';
-export { ToolbarButton } from './ToolbarButton';
-export type {
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  useToolbarButtonStyles_unstable,
-  useToolbarButton_unstable,
-} from './ToolbarButton';
+export { ToolbarButton, useToolbarButtonStyles_unstable, useToolbarButton_unstable } from './ToolbarButton';
+export type { ToolbarButtonProps, ToolbarButtonState } from './ToolbarButton';
 export { ToolbarDivider, useToolbarDividerStyles_unstable, useToolbarDivider_unstable } from './ToolbarDivider';
 export type { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider';
 export {
@@ -35,3 +30,5 @@ export {
   toolbarGroupClassNames,
 } from './ToolbarGroup';
 export type { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup';
+export { ToolbarRadioGroup } from './ToolbarRadioGroup';
+export type { ToolbarRadioGroupProps, ToolbarRadioGroupState } from './ToolbarRadioGroup';

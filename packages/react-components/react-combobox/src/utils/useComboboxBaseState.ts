@@ -8,9 +8,12 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } fro
 /**
  * State shared between Combobox and Dropdown components
  */
-export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boolean }): ComboboxBaseState => {
+export const useComboboxBaseState = (
+  props: ComboboxBaseProps & { children?: React.ReactNode; editable?: boolean },
+): ComboboxBaseState => {
   const {
     appearance = 'outline',
+    children,
     editable = false,
     inlinePopup = false,
     multiselect,
@@ -19,7 +22,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boo
   } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionsMatchingText } = optionCollection;
+  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -53,13 +56,22 @@ export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boo
       return props.defaultValue;
     }
 
+    const selectedOptionsText = getOptionsMatchingValue(optionValue => {
+      return selectedOptions.includes(optionValue);
+    }).map(option => option.text);
+
     if (multiselect) {
       // editable inputs should not display multiple selected options in the input as text
-      return editable ? '' : selectedOptions.join(', ');
+      return editable ? '' : selectedOptionsText.join(', ');
     }
 
-    return selectedOptions[0];
-  }, [controllableValue, editable, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
+    return selectedOptionsText[0];
+
+    // do not change value after isFirstMount changes,
+    // we do not want to accidentally override defaultValue on a second render
+    // unless another value is intentionally set
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [controllableValue, editable, getOptionsMatchingValue, multiselect, props.defaultValue, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
@@ -68,18 +80,21 @@ export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boo
     initialState: false,
   });
 
-  const setOpen = (event: ComboboxBaseOpenEvents, newState: boolean) => {
-    onOpenChange?.(event, { open: newState });
-    setOpenState(newState);
-  };
+  const setOpen = React.useCallback(
+    (event: ComboboxBaseOpenEvents, newState: boolean) => {
+      onOpenChange?.(event, { open: newState });
+      setOpenState(newState);
+    },
+    [onOpenChange, setOpenState],
+  );
 
-  // update active option based on change in open state
+  // update active option based on change in open state or children
   React.useEffect(() => {
     if (open && !activeOption) {
-      // if there is a selection, start at the most recently selected item
-      if (selectedOptions.length > 0) {
-        const lastSelectedOption = getOptionsMatchingText(v => v === selectedOptions[selectedOptions.length - 1]).pop();
-        lastSelectedOption && setActiveOption(lastSelectedOption);
+      // if it is single-select and there is a selected option, start at the selected option
+      if (!multiselect && selectedOptions.length > 0) {
+        const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
+        selectedOption && setActiveOption(selectedOption);
       }
       // default to starting at the first option
       else {
@@ -89,9 +104,9 @@ export const useComboboxBaseState = (props: ComboboxBaseProps & { editable?: boo
       // reset the active option when closing
       setActiveOption(undefined);
     }
-    // this should only be run in response to changes in the open state
+    // this should only be run in response to changes in the open state or children
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open, children]);
 
   return {
     ...optionCollection,

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
-import { Combobox, Option } from '@fluentui/react-combobox';
-import type { ComboboxProps } from '@fluentui/react-combobox';
+import { Combobox, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
+import type { ComboboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -69,7 +68,11 @@ export const MultiselectWithValueString = (props: Partial<ComboboxProps>) => {
 MultiselectWithValueString.parameters = {
   docs: {
     description: {
-      story: 'Multiselect Combobox supports using a controlled value to display selected options when not in focus.',
+      story:
+        'Multiselect Combobox supports using a controlled value to' +
+        'display selected options when not in focus, similar to v8 behavior.' +
+        'We recommend using tags rather than the value string when possible,' +
+        'since they have better UX and accessibility.',
     },
   },
 };

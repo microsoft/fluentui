@@ -5,14 +5,19 @@ import { useDataGridStyles_unstable } from './useDataGridStyles';
 import type { DataGridProps } from './DataGrid.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useDataGridContextValues_unstable } from './useDataGridContextValues';
+import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 /**
- * DataGrid component - TODO: add more docs
+ * DataGrid component
  */
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
   const state = useDataGrid_unstable(props, ref);
 
   useDataGridStyles_unstable(state);
+
+  const { useDataGridStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
+  useCustomStyles(state);
+
   return renderDataGrid_unstable(state, useDataGridContextValues_unstable(state));
 });
 

@@ -6,7 +6,7 @@ const yargs = require('yargs');
 const { execSync } = require('child_process');
 const chalk = require('chalk');
 
-const { findGitRoot } = require('../monorepo');
+const { findGitRoot } = require('@fluentui/scripts-monorepo');
 
 const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
@@ -38,6 +38,7 @@ if (fs.existsSync(configPath)) {
   const port = webpackConfig.devServer.port || 8080;
 
   server.listen(port, '127.0.0.1', async () => {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     const url = await ngrok.connect({ port, host_header: 'localhost:' + port });
     console.log(`Starting server on http://${url}`);
     // Put the script tag in a big yellow box so it's easier to find

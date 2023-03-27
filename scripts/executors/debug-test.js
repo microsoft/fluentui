@@ -1,6 +1,6 @@
 const path = require('path');
-const { findConfig } = require('../utils');
-const { findGitRoot } = require('../monorepo');
+const { findConfig } = require('@fluentui/scripts-utils');
+const { findGitRoot } = require('@fluentui/scripts-monorepo');
 
 const configPath = findConfig('jest.config.js');
 const rootPath = findGitRoot();

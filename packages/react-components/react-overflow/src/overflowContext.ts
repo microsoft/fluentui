@@ -1,6 +1,9 @@
 import type { OverflowGroupState, OverflowItemEntry } from '@fluentui/priority-overflow';
 import { ContextSelector, createContext, useContextSelector, Context } from '@fluentui/react-context-selector';
 
+/**
+ * @internal
+ */
 export interface OverflowContextValue {
   itemVisibility: Record<string, boolean>;
   groupVisibility: Record<string, OverflowGroupState>;
@@ -23,5 +26,8 @@ const overflowContextDefaultValue: OverflowContextValue = {
   registerOverflowMenu: () => () => null,
 };
 
+/**
+ * @internal
+ */
 export const useOverflowContext = <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) =>
   useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));

@@ -74,5 +74,5 @@
   "typescript.preferences.importModuleSpecifierEnding": "index",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.reportStyleChecksAsWarnings": false,
-  "cSpell.words": ["beachball", "fluentui", "griffel", "spinbutton", "tabster"]
+  "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"]
 }

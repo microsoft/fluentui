@@ -527,7 +527,8 @@ const GroupItem = <T,>({
 
 export class GroupedListV2Wrapper
   extends React.Component<IGroupedListV2Props, IGroupedListV2State>
-  implements IGroupedList {
+  implements IGroupedList
+{
   public static displayName: string = 'GroupedListV2';
   private _list = React.createRef<List>();
 

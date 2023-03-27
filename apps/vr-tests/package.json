@@ -4,29 +4,28 @@
   "private": true,
   "description": "Visual regression tests for Fluent UI React",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "build-storybook --no-manager-cache -o dist/storybook",
     "clean": "just-scripts clean",
-    "test:component": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true",
     "code-style": "just-scripts code-style",
-    "convert": "bash convertStoriesToStoryWright.sh",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
-    "start": "just-scripts dev:storybook",
-    "type-check": "tsc"
+    "start": "start-storybook -p 3000",
+    "type-check": "tsc",
+    "vr:build": "yarn build",
+    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "storywright": "0.0.26-beta.1"
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/example-data": "^8.4.4",
-    "@fluentui/font-icons-mdl2": "^8.5.5",
-    "@fluentui/react": "^8.104.0",
-    "@fluentui/react-experiments": "^8.14.33",
-    "@fluentui/react-hooks": "^8.6.14",
-    "@fluentui/react-icons-mdl2": "^1.3.28",
-    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/example-data": "^8.4.7",
+    "@fluentui/font-icons-mdl2": "^8.5.13",
+    "@fluentui/react": "^8.106.9",
+    "@fluentui/react-experiments": "^8.14.63",
+    "@fluentui/react-hooks": "^8.6.20",
+    "@fluentui/react-icons-mdl2": "^1.3.37",
     "@fluentui/storybook": "^1.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

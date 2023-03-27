@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Divider } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
@@ -9,15 +8,15 @@ export default {
   title: 'Divider',
 } as ComponentMeta<typeof Divider>;
 
-const DividerExampleSizeTeams = getThemeStoryVariant((DividerExampleSize as unknown) as ComponentStory<any>, 'teamsV2');
+const DividerExampleSizeTeams = getThemeStoryVariant(DividerExampleSize as unknown as ComponentStory<any>, 'teamsV2');
 
 const DividerExampleSizeTeamsDark = getThemeStoryVariant(
-  (DividerExampleSize as unknown) as ComponentStory<any>,
+  DividerExampleSize as unknown as ComponentStory<any>,
   'teamsDarkV2',
 );
 
 const DividerExampleSizeTeamsHighContrast = getThemeStoryVariant(
-  (DividerExampleSize as unknown) as ComponentStory<any>,
+  DividerExampleSize as unknown as ComponentStory<any>,
   'teamsHighContrast',
 );
 

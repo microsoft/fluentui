@@ -8,7 +8,7 @@ import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
 
-import { findGitRoot, PackageJson } from '../../monorepo';
+import { findGitRoot, PackageJson } from '@fluentui/scripts-monorepo';
 
 const root = findGitRoot();
 
@@ -84,7 +84,9 @@ module.exports = (plop: NodePlopAPI) => {
       },
     ],
     actions: (answers: Answers): Actions => {
-      if (answers.target === 'react') answers = { hasTests: true, ...answers };
+      if (answers.target === 'react') {
+        answers = { hasTests: true, ...answers };
+      }
       const { packageName, target, hasTests } = answers;
 
       const destination = answers.isConverged ? `packages/react-components/${packageName}` : `packages/${packageName}`;
@@ -266,7 +268,9 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
 }
 
 function updateTsconfig(tsconfigContents: string, hasTests: boolean | undefined): string {
-  if (hasTests) return tsconfigContents;
+  if (hasTests) {
+    return tsconfigContents;
+  }
   // Remove jest types if there aren't tests (use jju since tsconfig might have comments)
   const tsconfig = jju.parse(tsconfigContents);
   const types: string[] = tsconfig.compilerOptions.types;

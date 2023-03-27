@@ -18,7 +18,7 @@ export type TableSelectionCellSlots = {
 /**
  * TableSelectionCell Props
  */
-export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
+export type TableSelectionCellProps = ComponentProps<Partial<TableSelectionCellSlots>> & {
   /**
    * A table can have two kinds of selection modes.
    * @default checkbox

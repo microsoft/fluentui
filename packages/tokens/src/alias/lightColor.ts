@@ -81,6 +81,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground6: grey[90], // #e6e6e6 Global.Color.Grey.90
   colorNeutralBackgroundInverted: grey[16], // #292929 Global.Color.Grey.16
   colorNeutralBackgroundStatic: grey[20], // #333333 Global.Color.Grey.20
+  colorNeutralBackgroundAlpha: whiteAlpha[50], // rgba(255, 255, 255, 0.5) Global.Color.WhiteAlpha.50
+  colorNeutralBackgroundAlpha2: whiteAlpha[80], // rgba(255, 255, 255, 0.8) Global.Color.WhiteAlpha.80
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: grey[96], // #f5f5f5 Global.Color.Grey.96
   colorSubtleBackgroundPressed: grey[88], // #e0e0e0 Global.Color.Grey.88
@@ -142,6 +144,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorTransparentStroke: 'transparent', // transparent undefined
   colorTransparentStrokeInteractive: 'transparent', // transparent undefined
   colorTransparentStrokeDisabled: 'transparent', // transparent undefined
+  colorNeutralStrokeAlpha: blackAlpha[5], // rgba(0, 0, 0, 0.05) Global.Color.BlackAlpha.5
   colorStrokeFocus1: white, // #ffffff Global.Color.White
   colorStrokeFocus2: black, // #000000 Global.Color.Black
   colorNeutralShadowAmbient: 'rgba(0,0,0,0.12)', // rgba(0,0,0,0.12) undefined

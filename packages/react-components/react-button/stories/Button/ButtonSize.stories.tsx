@@ -4,6 +4,7 @@ import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   innerWrapper: {
+    alignItems: 'start',
     columnGap: '15px',
     display: 'flex',
   },

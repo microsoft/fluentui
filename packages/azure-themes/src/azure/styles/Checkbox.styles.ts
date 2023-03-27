@@ -13,7 +13,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       {
         fontSize: theme.fonts.medium.fontSize,
         color: semanticColors.bodyText,
-        lineHeight: StyleConstants.inputHeight,
+        lineHeight: StyleConstants.choiceFieldHeight,
       },
       disabled && {
         color: semanticColors.disabledBodyText,
@@ -28,8 +28,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
             backgroundColor: BaseColors.BLUE_0078D4,
           },
         },
-        width: StyleConstants.inputHeight,
-        height: StyleConstants.inputHeight,
+        width: StyleConstants.choiceFieldHeight,
+        height: StyleConstants.choiceFieldHeight,
       },
       indeterminate && {
         selectors: {

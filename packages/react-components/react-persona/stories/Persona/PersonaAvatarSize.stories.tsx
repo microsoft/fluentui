@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Persona } from '@fluentui/react-persona';
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles, Persona } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

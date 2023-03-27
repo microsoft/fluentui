@@ -1,7 +1,7 @@
 // @ts-check
 
 const path = require('path');
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { pathsToModuleNameMapper } = require('ts-jest');
 
 const tsConfig = require('./tsconfig.base.json');
 
@@ -19,6 +19,7 @@ const baseConfig = {
   testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
+  testEnvironment: 'jsdom',
   moduleNameMapper: { ...tsPathAliases },
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,

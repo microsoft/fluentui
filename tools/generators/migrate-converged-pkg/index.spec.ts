@@ -445,7 +445,7 @@ describe('migrate-converged-pkg generator', () => {
         preset: '../../../jest.preset.js',
         globals: {
         'ts-jest': {
-        tsConfig: '<rootDir>/tsconfig.spec.json',
+        tsconfig: '<rootDir>/tsconfig.spec.json',
         diagnostics: false,
         },
         },
@@ -790,54 +790,6 @@ describe('migrate-converged-pkg generator', () => {
         expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
       );
     });
-
-    it(`should migrate existing files in e2e folder to new setup`, async () => {
-      const { paths, projectConfig } = setup({ projectName: options.name });
-      const sourceRoot = joinPathFragments(projectConfig.root, 'src');
-      const e2eFolderPath = joinPathFragments(projectConfig.root, 'e2e');
-
-      function createOldE2eSetup() {
-        writeJson<TsConfig>(tree, joinPathFragments(e2eFolderPath, 'tsconfig.json'), {
-          extends: '../../tsconfig.base.json',
-          compilerOptions: {},
-        });
-        tree.write(
-          `${e2eFolderPath}/Dummy.e2e.ts`,
-          stripIndents`
-         describe('Cypress test', () => {
-           before(() => {
-            cy.visitStorybook();
-           });
-         });
-        `,
-        );
-
-        tree.write(
-          `${e2eFolderPath}/selectors.ts`,
-          stripIndents`
-          export const dummySelector = '[role="dummy"]';
-        `,
-        );
-
-        return tree;
-      }
-
-      createOldE2eSetup();
-
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'tsconfig.json'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'selectors.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'Dummy.e2e.ts'))).toBeTruthy();
-
-      await generator(tree, { name: options.name });
-
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'tsconfig.json'))).toBeFalsy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'selectors.ts'))).toBeFalsy();
-      expect(tree.exists(joinPathFragments(e2eFolderPath, 'Dummy.e2e.ts'))).toBeFalsy();
-
-      expect(tree.exists(paths.tsconfig.cypress)).toBeTruthy();
-      expect(tree.exists(joinPathFragments(sourceRoot, 'components', 'Dummy', 'Dummy.cy.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(sourceRoot, 'testing', 'selectors.ts'))).toBeTruthy();
-    });
   });
 
   describe(`api-extractor.json updates`, () => {
@@ -853,7 +805,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+          "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
         }
       `);
     });
@@ -886,6 +838,21 @@ describe('migrate-converged-pkg generator', () => {
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
       expect(pkgJson.typings).toEqual('./dist/index.d.ts');
+    });
+
+    it(`should update dependencies`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).not.toBeDefined();
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.dependencies.tslib).not.toBeDefined();
+      expect(pkgJson.dependencies?.['@swc/helpers']).toBeDefined();
     });
 
     it(`should update package npm scripts`, async () => {
@@ -924,7 +891,7 @@ describe('migrate-converged-pkg generator', () => {
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.scripts).toEqual({
-        'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
+        'generate-api': 'just-scripts generate-api',
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
@@ -968,6 +935,7 @@ describe('migrate-converged-pkg generator', () => {
                   Object {
                     ".": Object {
                       "import": "./lib/index.js",
+                      "node": "./lib-commonjs/index.js",
                       "require": "./lib-commonjs/index.js",
                       "types": "./dist/index.d.ts",
                     },
@@ -1090,6 +1058,80 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`just-scripts config setup`, () => {
+    it(`should update just.config.ts`, async () => {
+      function getJustConfig(projectConfig: ReadProjectConfiguration) {
+        return tree.read(`${projectConfig.root}/just.config.ts`)?.toString('utf-8');
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset } from '@fluentui/scripts-tasks';
+
+        preset();"
+      `);
+
+      await generator(tree, options);
+
+      justConfig = getJustConfig(projectConfig);
+
+      expect(justConfig).toMatchInlineSnapshot(`
+        "import { preset, task } from '@fluentui/scripts-tasks';
+
+        preset();
+
+        task('build', 'build:react-components').cached?.();"
+      `);
+    });
+  });
+
+  describe(`swcrc config setup`, () => {
+    it(`should create an swcrc config file`, async () => {
+      function getSwcConfig(projectConfig: ReadProjectConfiguration) {
+        return readJson(tree, `${projectConfig.root}/.swcrc`);
+      }
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/.swcrc`)).toBeTruthy();
+
+      const swcConfig = getSwcConfig(projectConfig);
+
+      expect(swcConfig).toEqual({
+        $schema: 'https://json.schemastore.org/swcrc',
+        exclude: [
+          '/testing',
+          '/**/*.cy.ts',
+          '/**/*.cy.tsx',
+          '/**/*.spec.ts',
+          '/**/*.spec.tsx',
+          '/**/*.test.ts',
+          '/**/*.test.tsx',
+        ],
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: false,
+            dynamicImport: false,
+          },
+          externalHelpers: true,
+          transform: {
+            react: {
+              runtime: 'classic',
+              useSpread: true,
+            },
+          },
+          target: 'es2019',
+        },
+        minify: false,
+        sourceMaps: true,
+      });
+    });
+  });
+
   describe(`babel config setup`, () => {
     function getBabelConfig(projectConfig: ReadProjectConfiguration) {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
@@ -1103,7 +1145,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1113,7 +1155,7 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
     });
@@ -1132,7 +1174,7 @@ describe('migrate-converged-pkg generator', () => {
       let babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: ['@griffel'],
+        extends: '../../.babelrc-v9.json',
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1140,7 +1182,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
       });
 
@@ -1149,7 +1190,6 @@ describe('migrate-converged-pkg generator', () => {
       babelConfig = getBabelConfig(projectConfig);
 
       expect(babelConfig).toEqual({
-        presets: [],
         plugins: ['annotate-pure-calls'],
       });
     });
@@ -1257,7 +1297,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
 
       expect(configs['@proj/react-foo'].sourceRoot).toBeDefined();
       expect(configs['@proj/react-bar'].sourceRoot).toBeDefined();
@@ -1281,7 +1321,7 @@ describe('migrate-converged-pkg generator', () => {
         acc[projectName] = readProjectConfiguration(tree, projectName);
 
         return acc;
-      }, {} as Record<typeof projects[number], ReadProjectConfiguration>);
+      }, {} as Record<(typeof projects)[number], ReadProjectConfiguration>);
 
       expect(configs[projects[0]].sourceRoot).toBeDefined();
       expect(configs[projects[1]].sourceRoot).toBeDefined();
@@ -1305,76 +1345,6 @@ describe('migrate-converged-pkg generator', () => {
       const content = tree.read(workspacePaths.github.codeowners, 'utf8');
 
       expect(content).toContain(`packages/react-dummy @org/team-awesome`);
-    });
-  });
-
-  describe(`common folder migration`, () => {
-    function setup(config: { projectName: string }) {
-      const projectConfig = readProjectConfiguration(tree, config.projectName);
-      const sourceRoot = projectConfig.sourceRoot ?? joinPathFragments(projectConfig.root, 'src');
-      const paths = {
-        packageJson: `${projectConfig.root}/package.json`,
-        commonFolder: joinPathFragments(sourceRoot, 'common'),
-        testingFolder: joinPathFragments(sourceRoot, 'testing'),
-        components: joinPathFragments(sourceRoot, 'components'),
-      };
-
-      function createCommonFolderTestSetup() {
-        tree.write(
-          `${paths.commonFolder}/isConformant.ts`,
-          stripIndents`
-         export const isConformant(){}
-        `,
-        );
-        tree.write(
-          `${paths.commonFolder}/mockDummy.ts`,
-          stripIndents`
-         export const mockDummy(){}
-        `,
-        );
-        tree.write(
-          `${paths.components}/Dummy/Dummy.test.tsx`,
-          stripIndents`
-           import { isConformant } from "../../common/isConformant"
-           import { mockDummy } from "../../common/mockDummy"
-        `,
-        );
-
-        return tree;
-      }
-
-      return { projectConfig, paths, createCommonFolderTestSetup };
-    }
-
-    it(`should move all files from src/common to src/testing`, async () => {
-      const { paths, createCommonFolderTestSetup } = setup({ projectName: options.name });
-
-      createCommonFolderTestSetup();
-
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'isConformant.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'mockDummy.ts'))).toBeTruthy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'isConformant.ts'))).toBeFalsy();
-      expect(tree.exists(joinPathFragments(paths.commonFolder, 'mockDummy.ts'))).toBeFalsy();
-
-      expect(tree.exists(joinPathFragments(paths.testingFolder, 'isConformant.ts'))).toBeTruthy();
-      expect(tree.exists(joinPathFragments(paths.testingFolder, 'mockDummy.ts'))).toBeTruthy();
-    });
-
-    it(`should update imports of files from common/ to testing/ correctly `, async () => {
-      const { paths, createCommonFolderTestSetup } = setup({ projectName: options.name });
-
-      createCommonFolderTestSetup();
-      const testFilePath = joinPathFragments(paths.components, 'Dummy', 'Dummy.test.tsx');
-
-      await generator(tree, options);
-
-      expect(tree.read(testFilePath)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import { isConformant } from \\"../../testing/isConformant\\"
-        import { mockDummy } from \\"../../testing/mockDummy\\""
-      `);
     });
   });
 
@@ -1418,6 +1388,7 @@ describe('migrate-converged-pkg generator', () => {
         expect(pkgJson.exports['./unstable']).toMatchInlineSnapshot(`
           Object {
             "import": "./lib/unstable/index.js",
+            "node": "./lib-commonjs/unstable/index.js",
             "require": "./lib-commonjs/unstable/index.js",
             "types": "./dist/unstable.d.ts",
           }
@@ -1490,7 +1461,7 @@ describe('migrate-converged-pkg generator', () => {
               "enabled": true,
               "untrimmedFilePath": "<projectFolder>/dist/unstable.d.ts",
             },
-            "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+            "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
             "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
           }
         `);
@@ -1530,7 +1501,7 @@ function setupDummyPackage(
       someThirdPartyDep: '^11.1.2',
     },
     babelConfig: {
-      presets: ['@griffel'],
+      extends: '../../.babelrc-v9.json',
       plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
     },
     tsConfig: { compilerOptions: { baseUrl: '.', typeRoots: ['../../node_modules/@types', '../../typings'] } },
@@ -1615,6 +1586,11 @@ function setupDummyPackage(
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
+    justConfig: stripIndents`
+      import { preset } from '@fluentui/scripts-tasks';
+
+      preset();
+    `,
   };
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
@@ -1623,6 +1599,7 @@ function setupDummyPackage(
   tree.write(`${paths.root}/jest.config.js`, templates.jestConfig);
   tree.write(`${paths.root}/config/tests.js`, templates.jestSetupFile);
   tree.write(`${paths.root}/.npmignore`, templates.npmConfig);
+  tree.write(`${paths.root}/just.config.ts`, templates.justConfig);
   tree.write(`${paths.root}/src/index.ts`, `export const greet = 'hello' `);
   tree.write(
     `${paths.root}/src/index.test.ts`,

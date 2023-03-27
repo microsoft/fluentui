@@ -13,6 +13,7 @@ module.exports = {
      * @see https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin
      */
     ...getNamingConventionRule(),
+    '@fluentui/max-len': 'off',
   },
   overrides: [
     {

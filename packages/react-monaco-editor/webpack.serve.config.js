@@ -1,7 +1,6 @@
 // @ts-check
 const path = require('path');
-const resources = require('../../scripts/webpack/webpack-resources');
-const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
+const { getResolveAlias, resources } = require('@fluentui/scripts-webpack');
 const { addMonacoWebpackConfig } = require('@fluentui/monaco-editor/scripts/addMonacoWebpackConfig');
 
 const BUNDLE_NAME = 'demo-app';

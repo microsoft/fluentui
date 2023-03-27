@@ -12,7 +12,14 @@ const MenuTemplate = () => `
       Menu item 2
       <fluent-menu>
         <fluent-menu-item>Nested Menu item 2.1</fluent-menu-item>
-        <fluent-menu-item>Nested Menu item 2.2</fluent-menu-item>
+        <fluent-menu-item>
+          Nested Menu item 2.2
+          <fluent-menu>
+            <fluent-menu-item>Nested Menu item 2.2.1</fluent-menu-item>
+            <fluent-menu-item>Nested Menu item 2.2.2</fluent-menu-item>
+            <fluent-menu-item>Nested Menu item 2.2.3</fluent-menu-item>
+          </fluent-menu>
+        </fluent-menu-item>
         <fluent-menu-item>Nested Menu item 2.3</fluent-menu-item>
       </fluent-menu>
     </fluent-menu-item>

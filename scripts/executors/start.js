@@ -1,6 +1,6 @@
 const { spawnSync } = require('child_process');
 const prompts = require('prompts');
-const { getAllPackageInfo } = require('../monorepo');
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
 
 const allPackages = getAllPackageInfo();
 const extraArgs = process.argv.slice(2);

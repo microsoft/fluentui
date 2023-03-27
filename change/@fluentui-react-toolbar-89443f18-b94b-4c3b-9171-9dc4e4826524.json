@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Export all relevant Toolbar components and utilities",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

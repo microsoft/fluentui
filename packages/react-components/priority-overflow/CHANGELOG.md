@@ -1,8 +1,45 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Thu, 17 Nov 2022 23:05:32 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.2)
+
+Tue, 21 Mar 2023 21:23:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.1..@fluentui/priority-overflow_v9.0.2)
+
+### Patches
+
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.1)
+
+Tue, 07 Feb 2023 14:13:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.0..@fluentui/priority-overflow_v9.0.1)
+
+### Patches
+
+- fix: New overflow items all always dispatch updates to subscriber ([PR #26565](https://github.com/microsoft/fluentui/pull/26565) by lingfangao@hotmail.com)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.0)
+
+Wed, 18 Jan 2023 16:32:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.0-rc.2..@fluentui/priority-overflow_v9.0.0)
+
+### Patches
+
+- Release as stable ([PR #26380](https://github.com/microsoft/fluentui/pull/26380) by lingfangao@hotmail.com)
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.0-rc.2)
+
+Mon, 09 Jan 2023 14:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.0.0-rc.1..@fluentui/priority-overflow_v9.0.0-rc.2)
+
+### Changes
+
+- fix: Minimum visible overflow items should be respected ([PR #26194](https://github.com/microsoft/fluentui/pull/26194) by lingfangao@hotmail.com)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.0.0-rc.1)
 

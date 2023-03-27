@@ -9,6 +9,7 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #f3f2f1;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -27,10 +28,13 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: Window;
+        background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid WindowText;
       }
 >
   <div
@@ -136,6 +140,7 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #FDE7E9;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -154,10 +159,13 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(255, 0, 0, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #e81123;
       }
 >
   <div
@@ -262,6 +270,7 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #f3f2f1;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -280,10 +289,13 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: Window;
+        background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid WindowText;
       }
 >
   <div
@@ -388,6 +400,7 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #f3f2f1;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -406,10 +419,13 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: Window;
+        background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid WindowText;
       }
 >
   <div
@@ -515,6 +531,7 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #FDE7E9;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -533,10 +550,13 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(255, 0, 0, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #e81123;
       }
 >
   <div
@@ -641,6 +661,7 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #f3f2f1;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -659,10 +680,13 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: Window;
+        background: transparent;
         border: 1px solid WindowText;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid WindowText;
       }
 >
   <div
@@ -768,6 +792,7 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #FED9CC;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -786,10 +811,13 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(255, 0, 0, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #d83b01;
       }
 >
   <div
@@ -895,6 +923,7 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #DFF6DD;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -913,10 +942,13 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(48, 241, 73, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #bad80a;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #107c10;
       }
 >
   <div
@@ -1022,6 +1054,7 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #FFF4CE;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -1040,10 +1073,13 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(255, 254, 57, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #fff100;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #966400;
       }
 >
   <div
@@ -1149,6 +1185,7 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #FED9CC;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -1167,10 +1204,13 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(255, 0, 0, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #ff0000;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #d83b01;
       }
 >
   <div
@@ -1276,6 +1316,7 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #DFF6DD;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -1294,10 +1335,13 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(48, 241, 73, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #bad80a;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #107c10;
       }
 >
   <div
@@ -1403,6 +1447,7 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background: #FFF4CE;
+        box-sizing: border-box;
         color: #323130;
         display: flex;
         flex-direction: column;
@@ -1421,10 +1466,13 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
-        background: rgba(255, 254, 57, 0.3);
-        border: 1px solid WindowText;
+        background: transparent;
+        border: 1px solid #fff100;
         color: WindowText;
         forced-color-adjust: none;
+      }
+      @media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
+        border: 1px solid #966400;
       }
 >
   <div

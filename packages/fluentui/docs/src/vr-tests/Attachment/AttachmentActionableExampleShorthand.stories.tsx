@@ -1,7 +1,5 @@
 import * as React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { StoryWright } from 'storywright';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
 import StoryWrightSteps from './commonStoryWrightSteps';

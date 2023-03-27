@@ -33,7 +33,7 @@ export const pillGroupClassName = 'ui-pills';
 /**
  * A PillGroup can be used as container for Pill.
  */
-export const PillGroup = (React.forwardRef<HTMLDivElement, PillGroupProps>((props, ref) => {
+export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillGroup.displayName, context.telemetry);
   setStart();
@@ -78,7 +78,7 @@ export const PillGroup = (React.forwardRef<HTMLDivElement, PillGroupProps>((prop
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, PillGroupProps> & FluentComponentStaticProps<PillGroupProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PillGroupProps> & FluentComponentStaticProps<PillGroupProps>;
 
 PillGroup.displayName = 'PillGroup';
 

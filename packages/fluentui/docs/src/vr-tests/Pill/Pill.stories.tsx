@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentMeta } from '@storybook/react';
 import { Pill } from '@fluentui/react-northstar';
 import PillExampleDisabled from '../../examples/components/Pill/State/PillExampleDisabled';

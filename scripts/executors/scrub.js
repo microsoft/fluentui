@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
 const child_process = require('child_process');
 const fs = require('fs');
 const os = require('os');

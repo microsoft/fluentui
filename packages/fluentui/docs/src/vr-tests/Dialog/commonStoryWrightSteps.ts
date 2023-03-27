@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Steps } from 'storywright';
 import { buttonClassName } from '@fluentui/react-northstar';
 

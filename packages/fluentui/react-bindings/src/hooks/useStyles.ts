@@ -1,6 +1,7 @@
 import { ComposePreparedOptions } from '../compose';
 import { ComponentSlotStyle, ComponentSlotStylesResolved, ComponentVariablesInput, DebugData } from '@fluentui/styles';
 import * as React from 'react';
+import cx from 'classnames';
 
 import { useFluentContext } from '../context';
 import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps } from '../styles/types';
@@ -33,6 +34,8 @@ type UseStylesOptions<StyleProps extends PrimitiveProps> = {
 
   /** A current mode for text direction (ltr or rtl). */
   rtl?: boolean;
+
+  unstyled?: boolean;
 };
 
 export type UseStylesResult = {
@@ -59,6 +62,15 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
 ): UseStylesResult => {
   const context = useFluentContext();
 
+  // Stores debug information for component.
+  const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
+
+  if (options.unstyled) {
+    const componentClassName = options.composeOptions?.className || options.className;
+    const classNameProp = options.mapPropsToInlineStyles?.().className;
+    return { classes: { root: cx(componentClassName, classNameProp) }, styles: {} };
+  }
+
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
     composeOptions,
@@ -76,8 +88,6 @@ export const useStyles = <StyleProps extends PrimitiveProps>(
     {},
   );
 
-  // Stores debug information for component.
-  const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
     allDisplayNames: composeOptions?.displayNames || [displayName],

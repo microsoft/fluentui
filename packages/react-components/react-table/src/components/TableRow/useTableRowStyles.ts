@@ -5,7 +5,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
 import { tableSelectionCellClassNames } from '../TableSelectionCell/useTableSelectionCellStyles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { useIsInTableHeader } from '../../contexts/tableHeaderContext';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
@@ -58,10 +57,6 @@ const useStyles = makeStyles({
   noAppearanceFocusWithin: {
     ...createCustomFocusIndicatorStyle(
       {
-        [`& .${tableCellActionsClassNames.root}`]: {
-          backgroundColor: tokens.colorSubtleBackgroundHover,
-        },
-
         backgroundColor: tokens.colorSubtleBackgroundHover,
       },
       { selector: 'focus-within', enableOutline: true },
@@ -73,7 +68,6 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground1Pressed,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundPressed,
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
@@ -84,7 +78,6 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${tableCellActionsClassNames.root}`]: {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
         opacity: 1,
       },
       [`& .${tableSelectionCellClassNames.root}`]: {
@@ -137,10 +130,13 @@ const useStyles = makeStyles({
     },
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     color: tokens.colorNeutralForeground1Hover,
-
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
+    },
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
+
     ...shorthands.borderColor(tokens.colorNeutralStrokeOnBrand),
   },
 
@@ -151,7 +147,6 @@ const useStyles = makeStyles({
  * Apply styling to the TableRow slots based on the state
  */
 export const useTableRowStyles_unstable = (state: TableRowState): TableRowState => {
-  const isHeaderRow = useIsInTableHeader();
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),
@@ -160,11 +155,11 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
   state.root.className = mergeClasses(
     tableRowClassNames.root,
     styles.root,
-    !isHeaderRow && styles.rootInteractive,
+    !state.isHeaderRow && styles.rootInteractive,
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     styles[state.appearance],
-    state.appearance === 'none' && !isHeaderRow && styles.noAppearanceFocusWithin,
+    state.appearance === 'none' && !state.isHeaderRow && styles.noAppearanceFocusWithin,
     state.root.className,
   );
 

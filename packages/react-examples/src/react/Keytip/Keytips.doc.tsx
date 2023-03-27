@@ -7,11 +7,16 @@ import { KeytipsCommandBarExample } from './Keytips.CommandBar.Example';
 import { KeytipsOverflowExample } from './Keytips.Overflow.Example';
 import { KeytipsDynamicExample } from './Keytips.Dynamic.Example';
 
-const KeytipsBasicCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Basic.Example.tsx') as string;
-const KeytipsButtonCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Button.Example.tsx') as string;
-const KeytipsCommandBarCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.CommandBar.Example.tsx') as string;
-const KeytipsOverflowCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Overflow.Example.tsx') as string;
-const KeytipsDynamicCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Dynamic.Example.tsx') as string;
+const KeytipsBasicCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Basic.Example.tsx') as string;
+const KeytipsButtonCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Button.Example.tsx') as string;
+const KeytipsCommandBarCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.CommandBar.Example.tsx') as string;
+const KeytipsOverflowCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Overflow.Example.tsx') as string;
+const KeytipsDynamicCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Keytip/Keytips.Dynamic.Example.tsx') as string;
 
 export const KeytipsPageProps: IDocPageProps = {
   title: 'Keytips',
