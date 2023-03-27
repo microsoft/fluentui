@@ -41,7 +41,6 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
   spacingHorizontalXXS,
-  spacingVerticalS,
   spacingVerticalXS,
   strokeWidthThick,
   strokeWidthThin,
@@ -211,6 +210,7 @@ export const styles = css`
   :host([appearance='underline']) .root {
     background: ${colorTransparentBackground};
     border: 0;
+    border-radius: 0;
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
   }
   :host([appearance='underline']:hover) .root {
