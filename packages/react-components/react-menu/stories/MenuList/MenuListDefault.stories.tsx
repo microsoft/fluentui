@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, tokens, MenuList, MenuItem } from '@fluentui/react-components';
 
-export const useMenuListContainerStyles = makeStyles({
+const useMenuListContainerStyles = makeStyles({
   container: {
     backgroundColor: tokens.colorNeutralBackground1,
     minWidth: '128px',

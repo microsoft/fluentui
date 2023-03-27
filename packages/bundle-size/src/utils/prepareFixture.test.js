@@ -48,7 +48,7 @@ export default { foo: 'bar' }
 `);
 
     await expect(prepareFixture(fixturePath)).rejects.toMatchInlineSnapshot(
-      `[Error: unknown: Validation failed for a schema in a component: data must have required property 'name']`,
+      `[Error: unknown file: Validation failed for a schema in a component: data must have required property 'name']`,
     );
   });
 

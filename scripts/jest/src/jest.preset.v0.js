@@ -12,8 +12,10 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   transform: {
     '^.+\\.tsx?$': 'babel-jest',
   },
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   verbose: false,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  testEnvironment: 'jsdom',
   ...customConfig,
   moduleNameMapper: {
     ...getLernaAliases({

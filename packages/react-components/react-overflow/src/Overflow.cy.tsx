@@ -7,7 +7,9 @@ import {
   OverflowProps,
   useIsOverflowGroupVisible,
   useOverflowMenu,
+  useOverflowContext,
 } from '@fluentui/react-overflow';
+import { Portal } from '@fluentui/react-portal';
 
 const selectors = {
   container: 'data-test-container',
@@ -72,6 +74,7 @@ const Item: React.FC<{ children?: React.ReactNode; width?: number } & Omit<Overf
 
 const Menu: React.FC<{ width?: number }> = ({ width }) => {
   const { isOverflowing, ref, overflowCount } = useOverflowMenu<HTMLButtonElement>();
+  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
   const selector = {
     [selectors.menu]: '',
   };
@@ -82,9 +85,21 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
 
   // No need to actually render a menu, we're testing state
   return (
-    <button {...selector} ref={ref} style={{ width: width ?? 50, height: 20 }}>
-      +{overflowCount}
-    </button>
+    <>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 20 }}>
+        +{overflowCount}
+      </button>
+      <Portal>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: 200 }}>
+          {Object.entries(itemVisibility).map(([id, visible]) => (
+            <>
+              <div>{id}</div>
+              <div id={`${id}-visibility`}>{visible ? 'visible' : 'invisible'}</div>
+            </>
+          ))}
+        </div>
+      </Portal>
+    </>
   );
 };
 
@@ -451,5 +466,52 @@ describe('Overflow', () => {
     setContainerSize(195);
     cy.get(`[${selectors.menu}]`).should('not.be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+  });
+
+  // Container will fit 4 items with width 100 and the overflow menu
+  // Once the priority of the foo item is updated it should have more
+  // priority than Item 5 (width 100 item), so the foo item should be visible
+  // once this foo item is visible, make sure that the subscriber is in sync.
+  it('should dispatch update when updating priority of an item', () => {
+    const Example = () => {
+      const [priority, setPriority] = React.useState<number | undefined>();
+
+      return (
+        <>
+          <Container>
+            <Item id="1" width={100}>
+              Item 1
+            </Item>
+            <Item id="2" width={100}>
+              Item 2
+            </Item>
+            <Item id="3" width={100}>
+              Item 3
+            </Item>
+            <Item id="4" width={100}>
+              Item 4
+            </Item>
+            <Item id="5" width={100}>
+              Item 5
+            </Item>
+            <Item id="foo" width={50} priority={priority}>
+              Foo
+            </Item>
+            <Item id="7" width={50}>
+              Item
+            </Item>
+            <Item id="8" width={50}>
+              Item
+            </Item>
+            <Menu width={32} />
+          </Container>
+          <button onClick={() => setPriority(2)}>Update priority</button>
+        </>
+      );
+    };
+    mount(<Example />);
+
+    setContainerSize(500);
+    cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
   });
 });

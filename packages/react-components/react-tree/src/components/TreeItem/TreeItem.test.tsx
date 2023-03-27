@@ -22,7 +22,7 @@ describe('TreeItem', () => {
             iconBefore: 'Test Icon Before',
             iconAfter: 'Test Icon After',
             actions: 'test Actions',
-            badges: 'test Badges',
+            aside: 'test Aside',
           },
         },
       ],

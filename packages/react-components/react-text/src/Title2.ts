@@ -1,1 +1,1 @@
-export * from './components/Title2/index';
+export * from './components/presets/Title2/index';

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Tab should focus the window if trigger is the last focusable element",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

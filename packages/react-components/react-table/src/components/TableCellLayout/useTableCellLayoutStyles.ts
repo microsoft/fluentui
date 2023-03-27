@@ -22,9 +22,18 @@ const useStyles = makeStyles({
     ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
+
+  rootTruncate: {
+    overflowX: 'hidden',
+  },
+
   content: {
     display: 'flex',
     flexDirection: 'column',
+  },
+
+  contentTruncate: {
+    overflowX: 'hidden',
   },
 
   media: {
@@ -48,6 +57,12 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
+  mainTruncate: {
+    overflowX: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+
   description: {
     color: tokens.colorNeutralForeground2,
     ...typographyStyles.caption1,
@@ -59,7 +74,14 @@ const useStyles = makeStyles({
  */
 export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): TableCellLayoutState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableCellLayoutClassNames.root, styles.root, state.root.className);
+  const { truncate } = state;
+
+  state.root.className = mergeClasses(
+    tableCellLayoutClassNames.root,
+    styles.root,
+    truncate && styles.rootTruncate,
+    state.root.className,
+  );
   const primary = state.appearance === 'primary';
 
   if (state.media) {
@@ -81,6 +103,7 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   if (state.main) {
     state.main.className = mergeClasses(
       tableCellLayoutClassNames.main,
+      truncate && styles.mainTruncate,
       primary && styles.mainPrimary,
       state.main.className,
     );
@@ -95,7 +118,12 @@ export const useTableCellLayoutStyles_unstable = (state: TableCellLayoutState): 
   }
 
   if (state.content) {
-    state.content.className = mergeClasses(tableCellLayoutClassNames.content, styles.content, state.content.className);
+    state.content.className = mergeClasses(
+      tableCellLayoutClassNames.content,
+      styles.content,
+      truncate && styles.contentTruncate,
+      state.content.className,
+    );
   }
 
   return state;

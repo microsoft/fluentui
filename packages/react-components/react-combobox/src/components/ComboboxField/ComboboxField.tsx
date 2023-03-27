@@ -1,22 +1,11 @@
-import * as React from 'react';
-import type { FieldProps } from '@fluentui/react-field';
-import {
-  getFieldClassNames,
-  renderField_unstable,
-  useFieldStyles_unstable,
-  useField_unstable,
-} from '@fluentui/react-field';
+/* eslint-disable deprecation/deprecation */
+import { DeprecatedFieldProps, getDeprecatedFieldClassNames, makeDeprecatedField } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Combobox } from '../../Combobox';
+import { Combobox, comboboxClassNames, ComboboxProps } from '../../Combobox';
 
-export type ComboboxFieldProps = FieldProps<typeof Combobox>;
-
-export const comboboxFieldClassNames = getFieldClassNames('ComboboxField');
-
-export const ComboboxField: ForwardRefComponent<ComboboxFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable(props, ref, { component: Combobox, classNames: comboboxFieldClassNames });
-  useFieldStyles_unstable(state);
-  return renderField_unstable(state);
-});
-
-ComboboxField.displayName = 'ComboboxField';
+/** @deprecated Use Field with Combobox: `<Field><Combobox /></Field>` */
+export type ComboboxFieldProps = DeprecatedFieldProps<ComboboxProps>;
+/** @deprecated Use Field with Combobox: `<Field><Combobox /></Field>` */
+export const comboboxFieldClassNames = getDeprecatedFieldClassNames(comboboxClassNames.root);
+/** @deprecated Use Field with Combobox: `<Field><Combobox /></Field>` */
+export const ComboboxField: ForwardRefComponent<ComboboxFieldProps> = makeDeprecatedField(Combobox);

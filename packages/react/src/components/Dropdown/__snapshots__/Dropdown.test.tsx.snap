@@ -459,12 +459,16 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             right: 0px;
                             top: 0px;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            inset: 2px;
+                          }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
                     >
                       <input
+                        aria-labelledby="Dropdown0-list1-label"
                         aria-posinset="1"
                         aria-selected="true"
                         aria-setsize="2"
@@ -579,6 +583,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           </i>
                         </div>
                         <span
+                          aria-hidden="true"
                           class=
                               ms-Dropdown-optionText
                               {
@@ -594,6 +599,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                                 white-space: nowrap;
                                 word-wrap: break-word;
                               }
+                          id="Dropdown0-list1-label"
                         >
                           1
                         </span>
@@ -702,12 +708,16 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           right: 0px;
                           top: 0px;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          inset: 2px;
+                        }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           border: none;
                         }
                     title="test"
                   >
                     <input
+                      aria-labelledby="Dropdown0-list3-label"
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="2"
@@ -819,6 +829,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         </i>
                       </div>
                       <span
+                        aria-hidden="true"
                         class=
                             ms-Dropdown-optionText
                             {
@@ -834,6 +845,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                               white-space: nowrap;
                               word-wrap: break-word;
                             }
+                        id="Dropdown0-list3-label"
                       >
                         2
                       </span>
@@ -1608,6 +1620,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             bottom: -2px;
+                            inset: 2px;
                             left: -2px;
                             outline-color: ButtonText;
                             right: -2px;
@@ -1774,6 +1787,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           bottom: -2px;
+                          inset: 2px;
                           left: -2px;
                           outline-color: ButtonText;
                           right: -2px;

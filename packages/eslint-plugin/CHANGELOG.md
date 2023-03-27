@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Feb 2023 07:50:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.13.0)
+
+Fri, 03 Feb 2023 07:50:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.8..@fluentui/eslint-plugin_v1.13.0)
+
+### Minor changes
+
+- feat(eslint-plugin): turn off fluentui/max-lenght rule for v9 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by martinhochel@microsoft.com)
 
 ## [1.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.8)
 

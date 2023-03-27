@@ -15,7 +15,7 @@ import { ICollectedData } from './types-private';
 import { createTableRowJson, createEnumTableRowJson } from './tableRowJson';
 
 export function createTableJson(collectedData: ICollectedData, apiItem: ApiItem): ITableJson | undefined {
-  switch ((apiItem.kind as unknown) as ApiItemKind) {
+  switch (apiItem.kind as unknown as ApiItemKind) {
     case ApiItemKind.Interface: {
       return createInterfacePageJson(collectedData, apiItem as ApiInterface);
     }

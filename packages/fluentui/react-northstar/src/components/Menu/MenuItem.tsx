@@ -180,19 +180,19 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
 /**
  * A MenuItem is an actionable item within a Menu.
  */
-export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
+export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItem.displayName, context.telemetry);
   setStart();
 
-  const parentProps = (useContextSelectors(MenuContext, {
+  const parentProps = useContextSelectors(MenuContext, {
     active: v => v.activeIndex === inputProps.index,
     onItemClick: v => v.onItemClick,
     onItemSelect: v => v.onItemSelect,
     variables: v => v.variables,
     slotProps: v => v.slotProps.item,
     accessibility: v => v.behaviors.item,
-  }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+  }) as unknown as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
   const props = {
     ...parentProps.slotProps,
@@ -323,7 +323,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   const performClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu) {
-      if (doesNodeContainClick(menuRef.current, (e as unknown) as MouseEvent, context.target)) {
+      if (doesNodeContainClick(menuRef.current, e as unknown as MouseEvent, context.target)) {
         // submenu was clicked => close it and propagate
         trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
       } else {
@@ -585,7 +585,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   setEnd();
   return menuItemInner;
-}) as unknown) as ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
+}) as unknown as ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
 
 MenuItem.displayName = 'MenuItem';
 

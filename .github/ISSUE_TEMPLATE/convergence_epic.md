@@ -42,6 +42,7 @@ completed as part of creating a v9 component. More info can be found here: https
   - [ ] Accessibility behavior tests
   - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
 - [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
+- [ ] [Run a bug bash with other FUI crews](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#bug-bash)
 - [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
   - [ ] Review and add any missing storybook stories
   - [ ] Finalize migration guide

@@ -4,6 +4,7 @@
 
 ```ts
 
+import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import { OverflowGroupState } from '@fluentui/priority-overflow';
@@ -53,6 +54,9 @@ export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpda
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu'> {
     containerRef: React_2.RefObject<TElement>;
 }
+
+// @internal (undocumented)
+export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
 
 // @public (undocumented)
 export const useOverflowCount: () => number;

@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -23,26 +23,56 @@ const animations = {
   nullEasing: tokens.curveLinear,
 };
 
-const useStyles = makeStyles({
-  root: {
-    display: 'inline-block',
-    flexShrink: 0,
-    position: 'relative',
-    verticalAlign: 'middle',
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    fontFamily: tokens.fontFamilyBase,
-    fontWeight: tokens.fontWeightSemibold,
-  },
+const useRootClassName = makeResetStyles({
+  display: 'inline-block',
+  flexShrink: 0,
+  position: 'relative',
+  verticalAlign: 'middle',
+  borderRadius: tokens.borderRadiusCircular,
+  fontFamily: tokens.fontFamilyBase,
+  fontWeight: tokens.fontWeightSemibold,
+  fontSize: tokens.fontSizeBase300,
+  width: '32px',
+  height: '32px',
+});
 
-  textCaption2Strong: {
-    fontSize: tokens.fontSizeBase100,
-    fontWeight: tokens.fontWeightSemibold,
-  },
+const useImageClassName = makeResetStyles({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+
+  borderRadius: 'inherit',
+  objectFit: 'cover',
+  verticalAlign: 'top',
+});
+
+const useIconInitialsClassName = makeResetStyles({
+  position: 'absolute',
+  boxSizing: 'border-box',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  lineHeight: '1',
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'center',
+  textAlign: 'center',
+  userSelect: 'none',
+  borderRadius: 'inherit',
+});
+
+const useStyles = makeStyles({
+  textCaption2Strong: { fontSize: tokens.fontSizeBase100 },
   textCaption1Strong: { fontSize: tokens.fontSizeBase200 },
-  textBody1Strong: { fontSize: tokens.fontSizeBase300 },
   textSubtitle2: { fontSize: tokens.fontSizeBase400 },
   textSubtitle1: { fontSize: tokens.fontSizeBase500 },
-  textTitle: { fontSize: tokens.fontSizeBase600 },
+  textTitle3: { fontSize: tokens.fontSizeBase600 },
 
   squareSmall: {
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
@@ -150,39 +180,9 @@ const useStyles = makeStyles({
     right: 0,
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralBackground1}`,
   },
+
   badgeLarge: {
     boxShadow: `0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralBackground1}`,
-  },
-
-  image: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-
-    ...shorthands.borderRadius('inherit'),
-    objectFit: 'cover',
-    verticalAlign: 'top',
-  },
-
-  iconInitials: {
-    position: 'absolute',
-    boxSizing: 'border-box',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    lineHeight: '1',
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    verticalAlign: 'center',
-    textAlign: 'center',
-    userSelect: 'none',
-    ...shorthands.borderRadius('inherit'),
   },
 
   icon12: { fontSize: '12px' },
@@ -378,24 +378,27 @@ const useColorStyles = makeStyles({
 export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   const { size, shape, active, activeAppearance, color } = state;
 
+  const rootClassName = useRootClassName();
+  const imageClassName = useImageClassName();
+  const iconInitialsClassName = useIconInitialsClassName();
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const colorStyles = useColorStyles();
 
-  const rootClasses = [styles.root, sizeStyles[size], colorStyles[color]];
+  const rootClasses = [rootClassName, size !== 32 && sizeStyles[size], colorStyles[color]];
 
   if (size <= 24) {
     rootClasses.push(styles.textCaption2Strong);
   } else if (size <= 28) {
     rootClasses.push(styles.textCaption1Strong);
   } else if (size <= 40) {
-    rootClasses.push(styles.textBody1Strong);
+    // Default text size included in useRootClassName
   } else if (size <= 56) {
     rootClasses.push(styles.textSubtitle2);
   } else if (size <= 96) {
     rootClasses.push(styles.textSubtitle1);
   } else {
-    rootClasses.push(styles.textTitle);
+    rootClasses.push(styles.textTitle3);
   }
 
   if (shape === 'square') {
@@ -455,11 +458,11 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
   }
 
   if (state.image) {
-    state.image.className = mergeClasses(avatarClassNames.image, styles.image, state.image.className);
+    state.image.className = mergeClasses(avatarClassNames.image, imageClassName, state.image.className);
   }
 
   if (state.initials) {
-    state.initials.className = mergeClasses(avatarClassNames.initials, styles.iconInitials, state.initials.className);
+    state.initials.className = mergeClasses(avatarClassNames.initials, iconInitialsClassName, state.initials.className);
   }
 
   if (state.icon) {
@@ -482,7 +485,7 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
     state.icon.className = mergeClasses(
       avatarClassNames.icon,
-      styles.iconInitials,
+      iconInitialsClassName,
       iconSizeClass,
       state.icon.className,
     );

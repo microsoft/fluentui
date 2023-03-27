@@ -27,8 +27,8 @@ const ChatContext = createContext<ChatContextValue>({
 export const ChatContextProvider = ChatContext.Provider;
 
 export const useChatContextSelectors = <
-  Selectors extends Record<ChatSelectorProperties, ContextSelector<ChatContextValue, any>>
+  Selectors extends Record<ChatSelectorProperties, ContextSelector<ChatContextValue, any>>,
 >(
   selectors: Selectors,
 ): Record<ChatSelectorProperties, any> =>
-  (useContextSelectors(ChatContext, selectors) as unknown) as ChatContextSubscribedValue;
+  useContextSelectors(ChatContext, selectors) as unknown as ChatContextSubscribedValue;

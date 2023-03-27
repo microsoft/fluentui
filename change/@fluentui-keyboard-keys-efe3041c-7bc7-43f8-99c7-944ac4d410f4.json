@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate to packaged scripts",
-  "packageName": "@fluentui/keyboard-keys",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

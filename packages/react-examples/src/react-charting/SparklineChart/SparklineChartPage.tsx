@@ -9,7 +9,8 @@ import {
 
 import { SparklineChartBasicExample } from './SparklineChart.Basic.Example';
 
-const SparklineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/SparklineChart.Basic.Example.tsx') as string;
+const SparklineChartBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/SparklineChart.Basic.Example.tsx') as string;
 
 export class SparklineChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

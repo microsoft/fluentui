@@ -23,7 +23,7 @@ import {
 
 export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiItem): ITableRowJson | undefined {
   let tableRowJson: ITableRowJson | undefined;
-  const apiKind = (apiItem.kind as unknown) as ApiItemKind;
+  const apiKind = apiItem.kind as unknown as ApiItemKind;
 
   switch (apiKind) {
     case ApiItemKind.Property:
@@ -51,7 +51,7 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
         apiMethod.excerpt.tokenRange,
       );
 
-      if (((apiMethod.kind as unknown) as ApiItemKind) === ApiItemKind.Constructor) {
+      if ((apiMethod.kind as unknown as ApiItemKind) === ApiItemKind.Constructor) {
         // The constructor is similar to a method, but we have to manually add the name.
         tableRowJson.name = 'constructor';
       }

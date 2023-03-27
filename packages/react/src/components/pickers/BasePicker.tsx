@@ -93,7 +93,8 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
  */
 export class BasePicker<T, P extends IBasePickerProps<T>>
   extends React.Component<P, IBasePickerState<T>>
-  implements IBasePicker<T> {
+  implements IBasePicker<T>
+{
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
@@ -1094,7 +1095,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           inputClassName: inputProps && inputProps.className,
         })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
+          root: css('ms-BasePicker', legacyStyles.picker, className ? className : ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,

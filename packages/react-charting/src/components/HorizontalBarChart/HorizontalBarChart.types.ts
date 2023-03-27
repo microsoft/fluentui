@@ -76,6 +76,18 @@ export interface IHorizontalBarChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Prop to define the variant of HorizontalBarChart to render
+   * @default HorizontalBarChartVariant.PartToWhole
+   */
+  variant?: HorizontalBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IHorizontalBarChartStyleProps {
@@ -109,6 +121,16 @@ export interface IHorizontalBarChartStyleProps {
    * prop to check if benchmark data is provided
    */
   showTriangle?: boolean;
+
+  /**
+   * Prop to define the variant of HorizontalBarChart to render
+   */
+  variant?: HorizontalBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   */
+  hideLabels?: boolean;
 }
 
 export interface IHorizontalBarChartStyles {
@@ -161,6 +183,16 @@ export interface IHorizontalBarChartStyles {
    * Style for the benchmark triangle
    */
   triangle: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
+
+  /**
+   * Style for the div containing the chart
+   */
+  chartWrapper: IStyle;
 }
 
 /**
@@ -170,3 +202,8 @@ export interface IHorizontalBarChartStyles {
  * percentage: show the percentage of (datapoint.x/datapoint.y)%
  */
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+
+export enum HorizontalBarChartVariant {
+  PartToWhole = 'part-to-whole',
+  AbsoluteScale = 'absolute-scale',
+}

@@ -12,8 +12,10 @@ import {
   MoreHorizontalFilled,
   bundleIcon,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
   TableBody,
   TableCell,
   TableRow,
@@ -22,7 +24,7 @@ import {
   TableHeaderCell,
   TableCellActions,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);

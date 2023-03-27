@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
+import {
+  usePositioningMouseTarget,
+  usePositioning,
+  resolvePositioningShorthand,
+  PositioningShorthandValue,
+} from '@fluentui/react-positioning';
 import {
   useControllableState,
   useId,
@@ -14,6 +19,17 @@ import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+
+// If it's not possible to position the submenu in smaller viewports, try
+// and fallback to this order of positions
+const submenuFallbackPositions: PositioningShorthandValue[] = [
+  'after',
+  'after-bottom',
+  'before-top',
+  'before',
+  'before-bottom',
+  'above',
+];
 
 /**
  * Create the state required to render Menu.
@@ -35,6 +51,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     persistOnItemClick = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
+    mountNode = null,
   } = props;
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
@@ -43,6 +60,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
+    fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
     ...resolvePositioningShorthand(props.positioning),
   } as const;
 
@@ -104,6 +122,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     closeOnScroll,
     menuTrigger,
     menuPopover,
+    mountNode,
     triggerRef,
     menuPopoverRef,
     components: {},
