@@ -27,6 +27,11 @@ if (isExecutedFromCli) {
  * - Usage needs to be removed from .github/workflows/check-packages.yml
  */
 function main(/** @type {string} */ root) {
+  if (!fs.existsSync(root)) {
+    console.log('✅ Changes folder does not exist, skipping check.');
+    return;
+  }
+
   const changeFiles = fs.readdirSync(root, 'utf8');
 
   const invalidChangeFiles = /** @type string [] */ (changeFiles

@@ -20,7 +20,7 @@ export class CounterBadge extends FASTElement {
    * HTML Attribute: appearance
    */
   @attr
-  public appearance: CounterBadgeAppearance;
+  public appearance?: CounterBadgeAppearance;
 
   /**
    * The color the badge should have.
@@ -30,7 +30,7 @@ export class CounterBadge extends FASTElement {
    * HTML Attribute: color
    */
   @attr
-  public color: CounterBadgeColor;
+  public color?: CounterBadgeColor;
   /**
    * The shape the badge should have.
    *
@@ -39,7 +39,7 @@ export class CounterBadge extends FASTElement {
    * HTML Attribute: shape
    */
   @attr
-  public shape: CounterBadgeShape;
+  public shape?: CounterBadgeShape;
 
   /**
    * The size the badge should have.
@@ -49,7 +49,7 @@ export class CounterBadge extends FASTElement {
    * HTML Attribute: size
    */
   @attr
-  public size: CounterBadgeSize;
+  public size?: CounterBadgeSize;
 
   /**
    * The count the badge should have.

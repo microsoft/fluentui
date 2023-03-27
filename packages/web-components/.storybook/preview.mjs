@@ -20,8 +20,15 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: [],
       method: 'alphabetical',
+      order: [
+        'Concepts',
+        [
+          'Introduction',
+        ],
+        'Components',
+        'Theme',
+      ],
     },
   },
   docs: {

@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   build_and_deploy:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
@@ -26,6 +25,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
           action: 'upload'
           app_build_command: 'yarn workspace @fluentui/web-components build-storybook'
-          app_location: '/packages/web-components' # App source code path relative to repository root
-          output_location: 'dist/storybook' # Built app content directory, relative to app_location - optional
+          output_location: 'packages/web-components/dist/storybook' # Built app content directory, relative to app_location - optional
           skip_api_build: true

@@ -13,7 +13,7 @@ import {
   colorPaletteRedBackground3,
 } from '../theme/design-tokens.js';
 
-/** Text styles
+/** ProgressBar styles
  * @public
  */
 export const styles = css`
@@ -24,6 +24,7 @@ export const styles = css`
     height: 2px;
     overflow-x: hidden;
     border-radius: ${borderRadiusMedium};
+    contain: content;
   }
 
   :host([thickness='large']),
