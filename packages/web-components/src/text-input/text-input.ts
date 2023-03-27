@@ -8,7 +8,7 @@ import { TextInputAppearance, TextInputLayout, TextInputSize } from './text-inpu
  */
 export class TextInput extends FASTTextField {
   /**
-   * Defines accordion header font size.
+   * Defines TextInput size
    *
    * @public
    * @default 'medium'
@@ -17,4 +17,26 @@ export class TextInput extends FASTTextField {
    */
   @attr({ attribute: 'input-size' })
   public inputSize?: TextInputSize = TextInputSize.medium;
+
+  /**
+   * Defines TextInput appearance.
+   *
+   * @public
+   * @default 'outline'
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  @attr
+  public appearance?: TextInputAppearance = TextInputAppearance.outline;
+
+  /**
+   * Defines TextInput display property.
+   *
+   * @public
+   * @default 'block'
+   * @remarks
+   * HTML Attribute: layout
+   */
+  @attr
+  public layout?: TextInputLayout = TextInputLayout.block;
 }
