@@ -7,7 +7,6 @@ import { buildAssets } from './utils/buildAssets';
 import { generateEntryPoints } from './utils/generateEntryPoints';
 import { hrToSeconds } from './utils/helpers';
 import { renderToHTML } from './utils/renderToHTML';
-import { getChromeVersion } from './utils/getChromeVersion';
 
 async function build() {
   const distDirectory = path.resolve(__dirname, '..', 'dist');
@@ -25,44 +24,44 @@ async function build() {
 
   const generateStartTime = process.hrtime();
 
-  // Portals currently do not support hydration
-  // https://github.com/facebook/react/issues/13097
-  const skippedPaths = ['react-portal'];
-
-  const rawStoriesGlobs = getPackageStoriesGlob({
+  const rawStoriesGlobs: string[] = getPackageStoriesGlob({
     packageName: '@fluentui/react-components',
     callerPath: __dirname,
-  }).filter(
-    (storyPath: string) =>
-      // only return entries that don't match any of the skippedPaths
-      !skippedPaths.find(skippedPath => {
-        if (storyPath.includes(skippedPath)) {
-          return true;
-        }
-        return false;
-      }),
-  ) as string[];
+  });
 
+  // Add stories defined in the package
   rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
+
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
     .map(pattern => path.resolve(__dirname, pattern));
 
-  await generateEntryPoints({
+  const { ignoredStories } = await generateEntryPoints({
     esmEntryPoint,
     cjsEntryPoint,
     storiesGlobs,
+    ignore: [
+      // Portals currently do not support hydration
+      // https://github.com/facebook/react/issues/13097
+      '**/react-portal/**',
+      '**/react-table/stories/DataGrid/Virtualization.stories',
+      '**/react-table/stories/Table/Virtualization.stories',
+    ],
   });
+
+  if (ignoredStories.length > 0) {
+    console.log('Following stories were excluded by config:');
+    console.log(ignoredStories.map(filepath => `- ${filepath}`).join('\n'));
+  }
 
   console.log(`Entry points were generated in ${hrToSeconds(process.hrtime(generateStartTime))}`);
 
   // ---
 
-  const chromeVersion = await getChromeVersion();
   const buildStartTime = process.hrtime();
 
   await buildAssets({
-    chromeVersion,
+    chromeVersion: 100,
 
     esmEntryPoint,
     cjsEntryPoint,

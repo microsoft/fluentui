@@ -960,6 +960,12 @@
       "projectType": "library",
       "tags": ["tools"]
     },
+    "@fluentui/scripts-playwright": {
+      "root": "scripts/playwright",
+      "sourceRoot": "scripts/playwright/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
     "@fluentui/scripts-prettier": {
       "root": "scripts/prettier",
       "sourceRoot": "scripts/prettier/src",

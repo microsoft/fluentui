@@ -1,10 +1,10 @@
+import { launchChromium } from '@fluentui/scripts-playwright';
+import type { Browser } from '@fluentui/scripts-playwright';
 import * as chalk from 'chalk';
 import * as fs from 'fs';
 import * as path from 'path';
-import type { Browser } from 'puppeteer';
 
 import { hrToSeconds } from './utils/helpers';
-import { launchBrowser } from './utils/launchBrowser';
 import { visitPage } from './utils/visitPage';
 
 class RenderError extends Error {
@@ -24,8 +24,7 @@ async function test(): Promise<void> {
   let browser: Browser | undefined;
 
   try {
-    browser = await launchBrowser();
-    console.log('Using', await browser.version());
+    browser = await launchChromium();
 
     const url =
       process.platform === 'win32'

@@ -1,5 +1,6 @@
-import type { Browser } from 'puppeteer';
-import { visitUrl } from '@fluentui/scripts-puppeteer';
+import { visitUrl } from '@fluentui/scripts-playwright';
+import type { Browser } from '@fluentui/scripts-playwright';
+
 import { PROVIDER_ID } from './constants';
 
 class RenderError extends Error {
@@ -7,9 +8,12 @@ class RenderError extends Error {
 }
 
 export async function visitPage(browser: Browser, url: string) {
-  const page = await browser.newPage();
-  await page.setRequestInterception(true);
+  const context = await browser.newContext();
 
+  // Our interceptor blocks loading images from CDN
+  await context.route('**/*.{png,jpg,svg}', route => route.abort());
+
+  const page = await context.newPage();
   let error: Error | undefined;
 
   page.on('console', message => {
@@ -21,22 +25,12 @@ export async function visitPage(browser: Browser, url: string) {
     }
   });
 
-  page.on('request', request => {
-    // Our interceptor allows only our HTML and JS output
-    if (request.url() === url || request.url().endsWith('/out-esm.js')) {
-      return request.continue();
-    }
-
-    return request.abort();
-  });
-
   page.on('pageerror', err => {
     error = err;
   });
 
   await visitUrl(page, url);
 
-  // @ts-expect-error - https://github.com/puppeteer/puppeteer/issues/9582
   await page.waitForSelector(`#${PROVIDER_ID}`);
   await page.close();
 
