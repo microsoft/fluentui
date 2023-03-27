@@ -5,16 +5,22 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { mergeClasses } from '@griffel/react';
 import { addDays, addWeeks, compareDates, findAvailableDate, DateRangeType } from '../../utils';
 import { weekCornersClassNames } from './useWeekCornerStyles';
+import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles';
 import type { AvailableDateOptions } from '../../utils';
 import type { DayInfo } from './CalendarDayGrid';
 import type { CalendarGridRowProps } from './CalendarGridRow';
-import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles';
 
+/**
+ * @internal
+ */
 export interface CalendarGridDayCellProps extends CalendarGridRowProps {
   day: DayInfo;
   dayIndex: number;
 }
 
+/**
+ * @internal
+ */
 export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellProps> = props => {
   const {
     navigatedDate,

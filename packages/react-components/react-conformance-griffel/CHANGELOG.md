@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Wed, 04 Jan 2023 01:41:00 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.20)
+
+Tue, 21 Mar 2023 21:23:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.19..@fluentui/react-conformance-griffel_v9.0.0-beta.20)
+
+### Changes
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
 
 ## [9.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.19)
 

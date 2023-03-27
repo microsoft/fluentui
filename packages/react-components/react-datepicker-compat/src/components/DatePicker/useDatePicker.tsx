@@ -15,6 +15,7 @@ import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
 import { OnOpenChangeData, OpenPopoverEvents, Popover } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
@@ -25,18 +26,18 @@ function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean 
 }
 
 function useFocusLogic() {
-  const textFieldRef = React.useRef<{ focus: () => void }>(null);
+  const inputRef = React.useRef<{ focus: () => void }>(null);
   const preventFocusOpeningPicker = React.useRef(false);
 
   const focus = () => {
-    textFieldRef.current?.focus?.();
+    inputRef.current?.focus?.();
   };
 
   const preventNextFocusOpeningPicker = () => {
     preventFocusOpeningPicker.current = true;
   };
 
-  return [textFieldRef, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] as const;
+  return [focus, inputRef, preventFocusOpeningPicker, preventNextFocusOpeningPicker] as const;
 }
 
 function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: DatePickerProps, focus: () => void) {
@@ -202,7 +203,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const {
     allowTextInput = false,
     allFocusable = false,
-    ariaLabel,
     borderless = false,
     dateTimeFormatter,
     disabled,
@@ -221,7 +221,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     onAfterMenuDismiss,
     onSelectDate: onUserSelectDate,
     parseDateFromString = defaultParseDateFromString,
-    pickerAriaLabel = 'Calendar',
     placeholder,
     showCloseButton = false,
     showGoToToday = true,
@@ -229,7 +228,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     showWeekNumbers = false,
     strings = defaultDatePickerStrings,
     tabIndex,
-    textField: textFieldProps,
     today,
     underlined = false,
     value,
@@ -240,7 +238,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const calendar = React.useRef<ICalendar>(null);
 
-  const [, focus, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
+  const [focus, _, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [isCalendarShown, setIsCalendarShown] = useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }, focus);
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
     formatDate,
@@ -322,7 +320,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, setStatusMessage, showDatePickerPopup],
   );
 
-  const onTextFieldFocus = React.useCallback((): void => {
+  const onInputFocus = React.useCallback((): void => {
     if (disableAutoFocus) {
       return;
     }
@@ -335,24 +333,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
 
-  // const onCalloutPositioned = React.useCallback((): void => {
-  //   let shouldFocus = true;
-  //   // If the user has specified that the callout shouldn't use initial focus, then respect
-  //   // that and don't attempt to set focus. That will default to true within the callout
-  //   // so we need to check if it's undefined here.
-  //   if (props.calloutProps && props.calloutProps.setInitialFocus !== undefined) {
-  //     shouldFocus = props.calloutProps.setInitialFocus;
-  //   }
-  //   if (calendar.current && shouldFocus) {
-  //     calendar.current.focus();
-  //   }
-  // }, [props.calloutProps]);
-
-  const onTextFieldBlur = React.useCallback((): void => {
+  const onInputBlur = React.useCallback((): void => {
     validateTextInput();
   }, [validateTextInput]);
 
-  const onTextFieldChanged = React.useCallback(
+  const onInputChange = React.useCallback(
     (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, data: InputOnChangeData): void => {
       const { value: newValue } = data;
 
@@ -361,15 +346,13 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           dismissDatePickerPopup();
         }
 
-        if (newValue) {
-          setFormattedDate(newValue);
-        }
+        setFormattedDate(newValue);
       }
     },
     [allowTextInput, dismissDatePickerPopup, isCalendarShown, setFormattedDate],
   );
 
-  const onTextFieldKeyDown = React.useCallback(
+  const onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
       switch (ev.key) {
         case Enter:
@@ -411,7 +394,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ],
   );
 
-  const onTextFieldClick = React.useCallback((): void => {
+  const onInputClick = React.useCallback((): void => {
     // default openOnClick to !props.disableAutoFocus for legacy support of disableAutoFocus behavior
     const openOnClick = props.openOnClick || !props.disableAutoFocus;
     if (openOnClick && !isCalendarShown && !props.disabled) {
@@ -440,42 +423,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   };
 
-  // const renderTextfieldDescription = (
-  //   inputProps?: ITextFieldProps,
-  //   defaultRender?: (
-  //     props?: ITextFieldProps,
-  //     defaultRender?: (props: ITextFieldProps) => JSX.Element | null,
-  //   ) => JSX.Element | null,
-  // ) => {
-  //   return (
-  //     <>
-  //       {inputProps?.description ? defaultRender?.(inputProps) : null}
-  //       <div aria-live="assertive" className={classNames.statusMessage}>
-  //         {statusMessage}
-  //       </div>
-  //     </>
-  //   );
-  // };
-
-  // const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
-  //   const divProps = getNativeProps(inputProps!, divProperties);
-
-  //   // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
-  //   // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
-  //   return (
-  //    <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
-  //       {formattedDate || (
-  //         // Putting the placeholder in a separate span fixes specificity issues for the text color
-  //         <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
-  //       )}
-  //     </div>
-  //   );
-  // };
-
-  // const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['value']);
-  // // const iconProps = textFieldProps && textFieldProps.iconProps;
-  const textFieldId =
-    textFieldProps && textFieldProps.id && textFieldProps.id !== id ? textFieldProps.id : id + '-label';
+  const inputId = props.id && props.id !== id ? props.id : id + '-label';
 
   const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'
@@ -497,6 +445,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ...props,
   });
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const inputShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
@@ -504,20 +453,28 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       'aria-controls': isCalendarShown ? calloutId : undefined,
       'aria-expanded': isCalendarShown,
       'aria-haspopup': 'dialog',
-      'aria-label': ariaLabel,
+      'aria-label': props['aria-label'],
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       disabled,
-      id: textFieldId,
+      id: inputId,
       placeholder,
       readOnly: !allowTextInput,
       required: isRequired,
       role: 'combobox',
       tabIndex,
-      ...textFieldProps,
+      root: {
+        ref: inputRef,
+      },
     },
   });
+  inputShorthand.onBlur = onInputBlur;
+  inputShorthand.onClick = onInputClick;
+  inputShorthand.onFocus = onInputFocus;
+  inputShorthand.onKeyDown = onInputKeyDown;
+  inputShorthand.onChange = mergeCallbacks(onInputChange, props.input?.onChange);
+  inputShorthand.value = formattedDate;
 
-  const inputFieldShorthand = resolveShorthand(props.inputField, {
+  const fieldShorthand = resolveShorthand(props.field, {
     defaultProps: {
       label,
       required: isRequired,
@@ -526,12 +483,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     },
     required: true,
   });
-  inputShorthand.onBlur = onTextFieldBlur;
-  inputShorthand.onClick = onTextFieldClick;
-  inputShorthand.onFocus = onTextFieldFocus;
-  inputShorthand.onKeyDown = onTextFieldKeyDown;
-  inputShorthand.onChange = mergeCallbacks(onTextFieldChanged, props.textField?.onChange);
-  inputShorthand.value = formattedDate;
 
   const wrapperShorthand = resolveShorthand(props.wrapper, {
     defaultProps: {
@@ -540,11 +491,12 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     required: true,
   });
 
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const popoverShorthand = resolveShorthand(props.popover, {
     defaultProps: {
       onOpenChange: onPopoverOpenChange,
       open: isCalendarShown,
-      positioning: 'below-start',
+      positioning: { align: 'start', position: 'below', positioningRef },
       trapFocus: true,
     },
     required: true,
@@ -552,7 +504,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const popoverSurfaceShorthand = resolveShorthand(props.popoverSurface, {
     defaultProps: {
-      'aria-label': pickerAriaLabel,
+      'aria-label': 'Calendar',
       id: calloutId,
       role: 'dialog',
     },
@@ -587,14 +539,10 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     disabled: !!disabled,
     isDatePickerShown: isCalendarShown,
 
-    calendar: calendarShorthand,
-    popover: popoverShorthand,
-    popoverSurface: popoverSurfaceShorthand,
-
     // Slots definition
     components: {
       root: 'div',
-      inputField: Field,
+      field: Field,
       input: Input,
       wrapper: 'div',
       popover: Popover as React.FC<Partial<PopoverProps>>,
@@ -602,13 +550,22 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       calendar: Calendar as React.FC<Partial<CalendarProps>>,
     },
 
-    inputField: inputFieldShorthand,
+    calendar: calendarShorthand,
     input: inputShorthand,
+    field: fieldShorthand,
+    popover: popoverShorthand,
+    popoverSurface: popoverSurfaceShorthand,
     root,
     wrapper: wrapperShorthand,
   };
 
   state.calendar.onSelectDate = mergeCallbacks(state.calendar.onSelectDate, calendarDismissed);
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+      positioningRef.current?.setTarget(inputRef.current);
+    }
+  }, [inputRef, positioningRef]);
 
   return state;
 };

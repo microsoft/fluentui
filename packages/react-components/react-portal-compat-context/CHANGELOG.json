@@ -2,6 +2,27 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Tue, 21 Mar 2023 21:23:45 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Mar 2023 17:42:37 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.4",
       "version": "9.0.4",

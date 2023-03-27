@@ -1,6 +1,3 @@
-/**
- * {@docCategory DateTimeUtilities}
- */
 export interface DateGridStrings {
   /**
    * An array of strings for the full names of months.
@@ -27,9 +24,6 @@ export interface DateGridStrings {
   shortDays: string[];
 }
 
-/**
- * {@docCategory DateTimeUtilities}
- */
 export interface DateFormatting {
   /**
    * Get a localized string for a day.
@@ -57,9 +51,6 @@ export interface DateFormatting {
   formatMonthYear: (date: Date, strings: DateGridStrings) => string;
 }
 
-/**
- * {@docCategory DateTimeUtilities}
- */
 export interface CalendarStrings extends DateGridStrings {
   /**
    * String to render for button to direct the user to today's date.
