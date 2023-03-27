@@ -75,7 +75,6 @@ None
   - no `defaultValue` or `value` attributes, instead only `current-value` that specifies the selected range of the slider
   - `rail` is in Fluent React; `track` is in FAST Foundation
   - No value indicators to the left/right of slider in FAST Slider. These should be present in Fluent version. This will be handled through slotting in the the SliderLabel component.
-  - No default support for the ticks on the slider when `step` is set. This will be handled through slotting in the SliderLabel component.
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
   - [Fluent React V9 Slider](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-slider--default)
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
