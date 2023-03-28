@@ -22,10 +22,7 @@ import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorSubtleBackground, // todo: find proper token for this hex e.g. tokens.colorNeutralBackground1
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL),
+    backgroundColor: tokens.colorSubtleBackground,
   },
   inputs: {
     display: 'flex',
@@ -38,6 +35,7 @@ const useStyles = makeStyles({
     rowGap: tokens.spacingVerticalL,
     marginTop: tokens.spacingVerticalL,
     marginBottom: tokens.spacingVerticalL,
+    paddingRight: tokens.spacingHorizontalXXXL,
   },
   keyColor: {
     paddingLeft: '0px',
