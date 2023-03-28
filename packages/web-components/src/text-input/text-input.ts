@@ -16,7 +16,7 @@ export class TextInput extends FASTTextField {
    * HTML Attribute: size
    */
   @attr({ attribute: 'input-size' })
-  public inputSize?: TextInputSize = TextInputSize.medium;
+  public inputSize?: TextInputSize;
 
   /**
    * Defines TextInput appearance.
@@ -27,7 +27,7 @@ export class TextInput extends FASTTextField {
    * HTML Attribute: appearance
    */
   @attr
-  public appearance?: TextInputAppearance = TextInputAppearance.outline;
+  public appearance?: TextInputAppearance;
 
   /**
    * Defines TextInput display property.
@@ -38,5 +38,5 @@ export class TextInput extends FASTTextField {
    * HTML Attribute: layout
    */
   @attr
-  public layout?: TextInputLayout = TextInputLayout.block;
+  public layout?: TextInputLayout;
 }

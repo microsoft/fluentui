@@ -146,7 +146,7 @@ export const LayoutInline = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Disabled = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input disabled="true" placeholder="Disabled">
+  <fluent-text-input disabled placeholder="Disabled">
     <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}${Person20Regular}</span>
     Disabled Input
@@ -154,7 +154,7 @@ export const Disabled = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Required = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input required="true" placeholder="Required">
+  <fluent-text-input required placeholder="Required">
     <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}${Person20Regular}</span>
     Required Input
