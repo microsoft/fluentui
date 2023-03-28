@@ -1,8 +1,11 @@
 # TextInput
 
 > An implementation of a [text input](https://w3c.github.io/html-reference/input.text.html) as a form-connected web-component.
+> <br />
 
-<br />
+**Remaining work items**
+
+1. block v.s inline text input styling
 
 ## **Design Spec**
 
@@ -39,23 +42,22 @@ Fluent WC3 Text Input extends from the [FAST Text Field](https://explore.fast.de
 
 ### **Fields**
 
-| Name            | Privacy | Type                  | Default                 | Description                                                                                                                        |
-| --------------- | ------- | --------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `appearance`    | public  | `TextInputAppearance` | `outline`               | Sets appearance of text input.                                                                                                     |
-| `autofocus`     | public  | `boolean`             | `false`                 | Indicates element should get focus after the page finishes loading..                                                               |
-| `disabled`      | public  | `boolean`             | `false`                 | Disables text input                                                                                                                                                                                                                        
-| `layout`        | public  | `TextInputLayout`     | `TextInputLayout.block` | Sets layout display property on text input                                                                                         |
-| `list`          | public  | `string`              |                         | Allows associating a `datalist` to an element by `id`                                                                              |
-| `maxlength`     | public  | `number`              |                         | The maximum number of characters a user can enter                                                                                  |
-| `minlength`     | public  | `number`              |                         | The minimum number of characters a user can enter                                                                                  |
-| `name`          | public  | `number`              |                         | The name of the control                                                                                                            |
-| `pattern`       | public  | `string`              |                         | A regular expression the text input's contents must match in order to be valid                                                     |
-| `placeholder`   | public  | `string`              |                         | An exemplar value to display in the text input field whenever it is empty                                                          |
-| `readonly`      | public  | `boolean`             | `false`                 | The text input should be submitted with the form but should not be editable                                                        |
-| `required`      | public  | `boolean`             | `false`                 | Sets the text input as required                                                                                                    |
-| `size`          | public  | `InputSize`           | `medium`                | Sets the size of the text input                                                                                                    |
-| `spellcheck`    | public  | `boolean`             | `false`                 | Controls whether or not to enable spell checking for the text input, or if the default spell checking configuration should be used |
-| `type`          | public  | `TextInputType`       | `TextInputType.text`    | Sets the size of the text input                                                                                                    |
+| Name          | Privacy | Type                  | Default                 | Description                                                                                                                        |
+| ------------- | ------- | --------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `appearance`  | public  | `TextInputAppearance` | `outline`               | Sets appearance of text input.                                                                                                     |
+| `autofocus`   | public  | `boolean`             | `false`                 | Indicates element should get focus after the page finishes loading..                                                               |
+| `disabled`    | public  | `boolean`             | `false`                 | Disables text input                                                                                                                |
+| `list`        | public  | `string`              |                         | Allows associating a `datalist` to an element by `id`                                                                              |
+| `maxlength`   | public  | `number`              |                         | The maximum number of characters a user can enter                                                                                  |
+| `minlength`   | public  | `number`              |                         | The minimum number of characters a user can enter                                                                                  |
+| `name`        | public  | `number`              |                         | The name of the control                                                                                                            |
+| `pattern`     | public  | `string`              |                         | A regular expression the text input's contents must match in order to be valid                                                     |
+| `placeholder` | public  | `string`              |                         | An exemplar value to display in the text input field whenever it is empty                                                          |
+| `readonly`    | public  | `boolean`             | `false`                 | The text input should be submitted with the form but should not be editable                                                        |
+| `required`    | public  | `boolean`             | `false`                 | Sets the text input as required                                                                                                    |
+| `size`        | public  | `InputSize`           | `medium`                | Sets the size of the text input                                                                                                    |
+| `spellcheck`  | public  | `boolean`             | `false`                 | Controls whether or not to enable spell checking for the text input, or if the default spell checking configuration should be used |
+| `type`        | public  | `TextInputType`       | `TextInputType.text`    | Sets the size of the text input                                                                                                    |
 
 <br />
 
@@ -80,7 +82,6 @@ Fluent WC3 Text Input extends from the [FAST Text Field](https://explore.fast.de
 | ---------------- | -------------- |
 | `appearance`     | appearance     |
 | `autofocus`      | autofocus      |
-| `label-position` | label-position |
 | `list`           | list           |
 | `maxlength`      | maxlength      |
 | `minlength`      | minlength      |
