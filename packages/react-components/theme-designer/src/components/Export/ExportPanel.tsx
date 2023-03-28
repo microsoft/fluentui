@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as dedent from 'dedent';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import {
   Body1,
   Button,
   createDarkTheme,
   createLightTheme,
-  FluentProvider,
   SelectTabData,
   SelectTabEvent,
   Tab,
