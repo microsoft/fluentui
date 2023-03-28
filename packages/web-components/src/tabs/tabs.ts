@@ -73,23 +73,23 @@ export class Tabs extends FASTTabs {
    * These values will be applied to css variables that control the tab active indicator position animations
    */
   private calculateAnimationProperties(tab: Tab) {
-    this.activeTabOffset = this.getSelectedTabPosition(tab);
-    this.activeTabScale = this.getSelectedTabScale(tab);
+    this.activeTabOffset = this.getTabPosition(tab);
+    this.activeTabScale = this.getTabScale(tab);
   }
 
   /**
    * getSelectedTabPosition - gets the x or y coordinates of the tab
    */
-  private getSelectedTabPosition(tab: Tab): number {
+  private getTabPosition(tab: Tab): number {
     if (this.orientation === TabsOrientation.horizontal) {
       return this.previousActiveTabData.x - (tab.getBoundingClientRect().x - this.getBoundingClientRect().x);
     } else return this.previousActiveTabData.y - (tab.getBoundingClientRect().y - this.getBoundingClientRect().y);
   }
 
   /**
-   * getSelectedTabScale - gets the scale of the
+   * getSelectedTabScale - gets the scale of the tab
    */
-  private getSelectedTabScale(tab: Tab): number {
+  private getTabScale(tab: Tab): number {
     if (this.orientation === TabsOrientation.horizontal) {
       return this.previousActiveTabData.width / tab.getBoundingClientRect().width;
     } else return this.previousActiveTabData.height / tab.getBoundingClientRect().height;
