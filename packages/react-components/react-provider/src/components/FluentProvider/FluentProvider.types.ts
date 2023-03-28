@@ -48,6 +48,19 @@ export type FluentProviderState = ComponentState<FluentProviderSlots> &
   > & {
     theme: ThemeContextValue;
     themeClassName: string;
+    /**
+     * Props used to render SSR theme variables style element
+     */
+    serverStyleProps: {
+      /**
+       * CSS rule containing CSS variables
+       */
+      cssRule: string;
+      /**
+       * Additional attributes applied to the style element
+       */
+      attributes: Record<string, string>;
+    };
   };
 
 export type FluentProviderContextValues = Pick<

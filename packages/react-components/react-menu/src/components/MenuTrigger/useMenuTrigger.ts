@@ -8,6 +8,7 @@ import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-key
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  isHTMLElement,
   mergeCallbacks,
   useEventCallback,
   useMergedRefs,
@@ -153,12 +154,12 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   };
 };
 
-const isTargetDisabled = (e: React.SyntheticEvent | Event) => {
+const isTargetDisabled = (event: React.SyntheticEvent | Event) => {
   const isDisabled = (el: HTMLElement) =>
     el.hasAttribute('disabled') || (el.hasAttribute('aria-disabled') && el.getAttribute('aria-disabled') === 'true');
-  if (e.target instanceof HTMLElement && isDisabled(e.target)) {
+  if (isHTMLElement(event.target) && isDisabled(event.target)) {
     return true;
   }
 
-  return e.currentTarget instanceof HTMLElement && isDisabled(e.currentTarget);
+  return isHTMLElement(event.currentTarget) && isDisabled(event.currentTarget);
 };

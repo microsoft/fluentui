@@ -33,6 +33,7 @@ export type DialogActionsPosition = 'start' | 'end';
 // @public
 export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
     position?: DialogActionsPosition;
+    fluid?: boolean;
 };
 
 // @public (undocumented)
@@ -41,9 +42,7 @@ export type DialogActionsSlots = {
 };
 
 // @public
-export type DialogActionsState = ComponentState<DialogActionsSlots> & {
-    position: DialogActionsPosition;
-};
+export type DialogActionsState = ComponentState<DialogActionsSlots> & Pick<Required<DialogActionsProps>, 'position' | 'fluid'>;
 
 // @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
@@ -126,10 +125,10 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public
-export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
+export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
