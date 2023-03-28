@@ -8,6 +8,5 @@ import type { BreadcrumbDividerState, BreadcrumbDividerSlots } from './Breadcrum
 export const renderBreadcrumbDivider_unstable = (state: BreadcrumbDividerState) => {
   const { slots, slotProps } = getSlots<BreadcrumbDividerSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root}>&gt;</slots.root>;
+  return <slots.root {...slotProps.root} />;
 };
