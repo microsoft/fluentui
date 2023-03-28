@@ -16,13 +16,26 @@ The render function is passed in as the slot's `children` prop.
 
 ## Problem statement
 
-A few problems with render functions as they are today:
+This RFC seeks to solve some problems with render functions as they are today.
 
-1. Using `children` as the render function will override any default children provided by the component's internals.
-2. It is confusing that passing a render function as `children` would override the _whole slot_, and not just its children.
-3. The root slot's render function conflicts the use of children as a function, which certain components use for custom rendering of their children.
-   - For example, Tooltip and Field both accept a function as a child of their root, in order to pass props to the children. However, this breaks the ability to use a slot render function for the root slot of those controls.
-   - See: https://react.fluentui.dev/?path=/docs/preview-components-field--default#complex-content-in-a-field
+> ℹ️ NOTE: [RFC #27164: slot children render function support](https://github.com/microsoft/fluentui/pull/27164) solves _additional_ problems with slot render functions beyond what's listed here. The two RFCs complement each other; but don't solve all of the same issues.
+
+1. Using `children` as the render function will override any default children provided by the component's internals. (This is listed as Problem 1 in [RFC #27164](https://github.com/microsoft/fluentui/pull/27164)).
+2. The root slot's render function conflicts with the use of children as a render-props function.
+
+   - For example, `Field`'s children can be a render function that is given props to spread on the child:
+     ```jsx
+     // Field uses a custom render-props style function as its children
+     <Field>{props => <Input {...props} />}</Field>
+     ```
+   - However, that now makes it impossible to add a render function that _replaces_ the root slot, which would typically be done as:
+     ```jsx
+     // Label doesn't override the root slot's render function
+     <Label>{(Component, props) => <MyLabelComponent {...props} />}</Label>
+     ```
+     See the Pros section (number 2) for an example of how this RFC enables a render function for the root slot.
+
+3. It is confusing (IMO) that passing a render function as `children` would override the _whole slot_, and not just its children.
 
 And a less important issue that's addressed in Appendix A of this proposal:
 
@@ -58,12 +71,12 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
 1. It allows us to pass the slot's default `children` to the render function, because it doesn't require overriding the default children.
 
    ```jsx
-   <AccordionHeader
-     button={{
+   <AvatarGroup
+     overflowLabel={{
        as: (Component, props) => (
          <Component {...props}>
-           <div>extra child</div>
            {...props.children}
+           <span>extra text</span>
          </Component>
        ),
      }}
@@ -73,7 +86,7 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
 2. It allows the component to use children as a function if it needs to, without interfering with the ability for the user to write a slot render function for the root slot:
 
    ```jsx
-   <Field as={(_ignored, props) => <MyCustomRoot foo="bar" {...props} />}>
+   <Field as={(_, props) => <MyCustomRoot foo="bar" {...props} />}>
      {inputProps => (
        <div>
          <input {...inputProps} />
@@ -82,17 +95,15 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
    </Field>
    ```
 
+3. The slot's `children` prop is no longer "special": it's treated the same as any other prop. This reduces the slot API to a single "special" prop: `as`.
+
 ### Cons
 
-1. It overloads the `as` prop, which may run into issues in implementation, if there are any other uses of `as` as a function.
-   - One alternative would be to add a `render` prop instead, and leave the `as` prop unchanged.
-     ```jsx
-     <Avatar badge={{ status: 'busy', render: (_ignored, props) => <MyBadgeComponent {...props} /> }} />
-     ```
+1. It overloads the `as` prop, which may run into issues in implementation, if there are any other uses of `as` as a function. See "Appendix B" for an alternative proposal that uses a prop `render` instead of `as`.
 
 ### Implementation
 
-The WithSlotRenderFunction type would be expanded to apply the render function support to the `as` prop:
+The `WithSlotRenderFunction` type would be expanded to apply the render function support to the `as` prop:
 
 ```ts
 type WithSlotRenderFunction<Props> = Props & {
@@ -117,7 +128,11 @@ if (typeof asProp === 'function') {
 }
 ```
 
-All existing support for `children` as a render function would still be included, for backwards compatibility.
+### Adoption Plan
+
+A render function on the `as` prop is a new feature, and does not require any changes to existing code. We can add this feature without needing to change existing uses of `children` as a render function.
+
+We will continue to support `children` as a render function, with a `console.warning` about deprecation. It will be removed in the next major release.
 
 ## Appendix A: Change the order of arguments
 
@@ -153,3 +168,16 @@ With the proposal in this RFC, it would be:
   }}
 />
 ```
+
+## Appendix B: `render` prop instead of `as`
+
+If we wanted to keep the `as` prop scoped to just the DOM element that a slot is rendered as, we could optionally add a new special prop `render`, which has a single purpose of being the render function.
+
+### Pros
+
+1. Doesn't overload the `as` prop with multiple purposes.
+
+### Cons
+
+1. Adds another "special" prop into the slots API.
+2. If a slot's component itself has a `render` prop, then this will hide that prop.
