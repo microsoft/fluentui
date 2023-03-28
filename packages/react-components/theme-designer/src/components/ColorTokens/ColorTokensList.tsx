@@ -15,7 +15,7 @@ import {
   Subtitle2,
   Theme,
 } from '@fluentui/react-components';
-import { brandRamp } from './getOverridableTokenBrandColors';
+import { brandRamp } from '../../utils/getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';

@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-components';
 import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
 import { ColorTokensList } from './ColorTokensList';
-import { sortOverrideableColorTokens } from './getOverridableTokenBrandColors';
+import { sortOverrideableColorTokens } from '../../utils/getOverridableTokenBrandColors';
 import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
 import { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
 import { Brands } from '@fluentui/react-theme';

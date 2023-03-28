@@ -3,7 +3,7 @@ import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { brandWeb } from '../utils/brandColors';
 import { getBrandTokensFromPalette } from '../utils/getBrandTokensFromPalette';
-import { getOverridableTokenBrandColors } from '../components/ColorTokens/getOverridableTokenBrandColors';
+import { getOverridableTokenBrandColors } from '../utils/getOverridableTokenBrandColors';
 import { Brands } from '@fluentui/react-theme';
 
 export type ColorOverrideBrands = Record<string, Brands>;
