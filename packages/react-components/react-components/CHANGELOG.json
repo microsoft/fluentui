@@ -2,6 +2,1193 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 17:36:41 GMT",
+      "tag": "@fluentui/react-components_v9.18.6",
+      "version": "9.18.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "899de68739acdff9e641a1baedec097a6bc07309",
+            "comment": "Bump react-select to 9.1.6"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "899de68739acdff9e641a1baedec097a6bc07309",
+            "comment": "Sync with npm released version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Mar 2023 14:58:55 GMT",
+      "tag": "@fluentui/react-components_v9.18.5",
+      "version": "9.18.5",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0f198d87130e4f9fcacdaa187b850e507e0b1ec8",
+            "comment": "Sync with latest released version on npm"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0f198d87130e4f9fcacdaa187b850e507e0b1ec8",
+            "comment": "fix: Bump @fluenti/react-combobox to 9.2.6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Mar 2023 10:15:26 GMT",
+      "tag": "@fluentui/react-components_v9.18.4",
+      "version": "9.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "19801e7edc22f433eeace3cf636f4722ea02a36b",
+            "comment": "feat: Add static measurement hooks and embedded scroll option to react-virtualizer"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "64d2ec1f40281eab9337df6d6065edef9ad0d312",
+            "comment": "feat: Render theme CSS variables in SSR style element"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b19ad44388b93ade650d5c46802b82fa7419e6b4",
+            "comment": "tree stories and doc update"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "19801e7edc22f433eeace3cf636f4722ea02a36b",
+            "comment": "[feat] Add static measurement hooks and embedded scroll option"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:22:58 GMT",
+      "tag": "@fluentui/react-components_v9.18.3",
+      "version": "9.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "1a45088ee3492f352e23748539bf207af57f99a8",
+            "comment": "fix: Make checked switch more visible in high contrast mode"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a3463ec7ba84fce450b4a03c989806ba4e11c5e1",
+            "comment": "chore: exports isHTMLElement as public"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "9bba9cabc4f410930d3acb18cbe5f1d9c867c7f0",
+            "comment": "fix: Adding the correct icons to away+out-of-office PresenceBadges and adding the correct icons to use in large PresenceBadges."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "d015b6f9f91acc08c496f265ff9a102dc4c823f6",
+            "comment": "fix(DialogTitle): adds type=\"button\" to close action"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c0dd0a6ee291bd38efc4d4a37de6bdfef3bf10da",
+            "comment": "fix(MenuItem): Disabled should render correctly in high contrast mode"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-tree",
+            "commit": "d7016bf89107ba2c8b22596b5e4b5ce4d32f99b0",
+            "comment": "chore: adds initial e2e cypress tests"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-data-grid-react-window",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "7fde5c94869ff9841b142b7ff1d0a3df0ab58f74",
+            "comment": "chore: Bumping version of @fluentui/react-icons to ^2.0.196."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Mar 2023 14:36:56 GMT",
+      "tag": "@fluentui/react-components_v9.18.2",
+      "version": "9.18.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b106479e831318cfb3ddf10871e4240530498f31",
+            "comment": "chore: Export InfoLabel from react-components/unstable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "a3ad6f25502d8ec77c9376eaa09ed7d1238f6c73",
+            "comment": "fix(DialogBody): Remove `maxWidth` style"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "fe1014bbcd770a7b38a3a9a09595e93297c2da26",
+            "comment": "fix: pass proper document instance to useFocusVisible()"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "d3418e0a4afe8fbe4d9e375e85c3b6eccc6ccd68",
+            "comment": "fix(getSlots): stops slotProps.slot to be typed as never"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81",
+            "comment": "feat(DialogActions): Implment `fluid` prop"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "fe1014bbcd770a7b38a3a9a09595e93297c2da26",
+            "comment": "feat: add options to useFocusVisible() hook"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "b106479e831318cfb3ddf10871e4240530498f31",
+            "comment": "feat: Add InfoLabel component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Mar 2023 10:19:50 GMT",
+      "tag": "@fluentui/react-components_v9.18.1",
+      "version": "9.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "5835524f6f0ed2e463e8cae0b5ae29252b6bfbc4",
+            "comment": "docs: improve readme description"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5420a75a4a56f6004ef69b755ed2924edd98167e",
+            "comment": "fix: Smooth out animation of indeterminate progress bar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "d0c590d2b6ed7bc1df92ffbf7e157d197cedd547",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat: Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "6d89241afb94c8f50514a396763be5c798047d80",
+            "comment": "feat: accept a className in mountNode in Portal"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "55230fb45b3e30941ee9f4005cf3ada071a4f626",
+            "comment": "Added support for keyboard navigation in Table/DataGrid"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "32e934b7443ca457be0e760c6380ec20f03976c3",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          }
+        ],
+        "none": [
+          {
+            "author": "tigeroakes@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5b6822abdd478455086630785d35d464ca68a1cc",
+            "comment": "Add JSDoc for tabster focus indicator selector"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Mar 2023 08:58:23 GMT",
+      "tag": "@fluentui/react-components_v9.18.0",
+      "version": "9.18.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: release 9.0.0"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "fix: stops using instaceof in favor of isHTMLElement"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "bd95bf8602d7cf036fbdd7c718343bf1bc43367d",
+            "comment": "feat: Release Card as stable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e",
+            "comment": "feat: isHTMLElement to support all HTMLElement classes"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4fffed69a86831eb04a3a9adff78fdb266f4c3a0",
+            "comment": "feat: release react-skeleton to unstable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Mar 2023 13:28:39 GMT",
+      "tag": "@fluentui/react-components_v9.17.1",
+      "version": "9.17.1",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "4e092355bfa9457409d7fc3b4e617681bc9d3c85",
+            "comment": "chore: updates react-tree unstable API"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4e092355bfa9457409d7fc3b4e617681bc9d3c85",
+            "comment": "feat: creates useFlatTree hook to improve API"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Mar 2023 07:13:59 GMT",
+      "tag": "@fluentui/react-components_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "7e71b6784e771470f88aa319e85da77e054584d2",
+            "comment": "release @fluentui/react-tree unstable"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "181ce7afa80e62f574b10efc5fe977323620a56b",
+            "comment": "feat: Adding calls to custom style hooks derived from context."
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584",
+            "comment": "fix: Export `pinned` prop from `PositioningProps`"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e42e534acb58ef98a4a0ea1c7d8c0cf7a49d70ac",
+            "comment": "fix: ResolveShorthandOptions type to better reflect implementation"
+          }
+        ],
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d11b9e38fee14ef5a0bb3dd6f2e7a70c015b4796",
+            "comment": "chore: clean up comments in SpinButton source code"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7e71b6784e771470f88aa319e85da77e054584d2",
+            "comment": "release @fluentui/react-tree unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Mar 2023 17:42:23 GMT",
       "tag": "@fluentui/react-components_v9.16.0",
       "version": "9.16.0",

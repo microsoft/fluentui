@@ -326,16 +326,12 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     }
 
     // eslint-disable-next-line deprecation/deprecation
-    const { onInputChange, onInputValueChange, updateValueInWillReceiveProps } = this.props;
+    const { onInputChange, onInputValueChange } = this.props;
     if (onInputChange) {
       newValue = onInputChange?.(newValue, composing) || '';
     }
 
-    // if value is controlled in updateValueInWillReceiveProps, then we should not update the value in state now
-    // https://github.com/microsoft/fluentui/issues/18499
-    updateValueInWillReceiveProps
-      ? onInputValueChange?.(newValue, composing)
-      : this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
+    this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
   };
 
   private _getDisplayValue(): string {

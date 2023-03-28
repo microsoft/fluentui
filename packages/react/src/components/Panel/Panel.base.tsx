@@ -88,8 +88,6 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     const { allowTouchBodyScroll = false } = this.props;
     this._allowTouchBodyScroll = allowTouchBodyScroll;
 
-    this._async = new Async(this);
-    this._events = new EventGroup(this);
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
@@ -107,6 +105,9 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   }
 
   public componentDidMount(): void {
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+
     this._events.on(window, 'resize', this._updateFooterPosition);
 
     if (this._shouldListenForOuterClick(this.props)) {
@@ -428,7 +429,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
     this._animationCallback = this._async.setTimeout(() => {
       this.setState({ visibility: newVisibilityState });
-      this._onTransitionComplete();
+      this._onTransitionComplete(newVisibilityState);
     }, 200);
   };
 
@@ -442,14 +443,13 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this.dismiss(ev);
   };
 
-  private _onTransitionComplete = (): void => {
+  private _onTransitionComplete = (newVisibilityState: PanelVisibilityState): void => {
     this._updateFooterPosition();
-
-    if (this.state.visibility === PanelVisibilityState.open && this.props.onOpened) {
+    if (newVisibilityState === PanelVisibilityState.open && this.props.onOpened) {
       this.props.onOpened();
     }
 
-    if (this.state.visibility === PanelVisibilityState.closed && this.props.onDismissed) {
+    if (newVisibilityState === PanelVisibilityState.closed && this.props.onDismissed) {
       this.props.onDismissed();
     }
   };

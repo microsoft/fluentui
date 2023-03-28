@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated FabricCDN url to pick up new PowerBI and Loop filetype icons",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}

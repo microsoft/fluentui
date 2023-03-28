@@ -5,9 +5,9 @@ import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType
 import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
-import { useAnimateBackwards } from './useAnimateBackwards';
 import { useWeeks } from './useWeeks';
 import { useWeekCornerStyles, WeekCorners } from './useWeekCornerStyles';
+import { mergeClasses } from '@griffel/react';
 import type { Day } from '../../utils';
 import type { CalendarDayGridProps } from './CalendarDayGrid.types';
 
@@ -28,6 +28,22 @@ function useDayRefs() {
   };
 
   return [daysRef, getSetRefCallback] as const;
+}
+
+function useAnimateBackwards(weeks: DayInfo[][]): boolean | undefined {
+  const previousNavigatedDateRef = React.useRef<Date | undefined>();
+  React.useEffect(() => {
+    previousNavigatedDateRef.current = weeks[0][0].originalDate;
+  });
+  const previousNavigatedDate = previousNavigatedDateRef.current;
+
+  if (!previousNavigatedDate || previousNavigatedDate.getTime() === weeks[0][0].originalDate.getTime()) {
+    return undefined;
+  } else if (previousNavigatedDate <= weeks[0][0].originalDate) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = props => {
@@ -131,7 +147,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
 
   return (
     <table
-      className={classNames.table}
+      className={mergeClasses(classNames.table, props.className)}
       aria-multiselectable="false"
       aria-labelledby={labelledBy}
       aria-activedescendant={activeDescendantId}
@@ -146,8 +162,8 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           week={weeks[0]}
           weekIndex={-1}
           rowClassName={classNames.firstTransitionWeek}
-          ariaRole="presentation"
-          ariaHidden={true}
+          aria-role="presentation"
+          aria-hidden={true}
         />
         {weeks!.slice(1, weeks!.length - 1).map((week: DayInfo[], weekIndex: number) => (
           <CalendarGridRow
@@ -165,8 +181,8 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
           week={weeks![weeks!.length - 1]}
           weekIndex={-2}
           rowClassName={classNames.lastTransitionWeek}
-          ariaRole="presentation"
-          ariaHidden={true}
+          aria-role="presentation"
+          aria-hidden={true}
         />
       </tbody>
     </table>
