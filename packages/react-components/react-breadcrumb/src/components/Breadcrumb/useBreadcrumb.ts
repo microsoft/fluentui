@@ -22,7 +22,7 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
       ref,
       ...rest,
     }),
-    list: {},
+    list: resolveShorthand(props.list, { required: true }),
     size,
     dividerType,
   };
