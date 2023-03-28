@@ -56,6 +56,10 @@
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
+    "./text-input": {
+      "types": "./dist/esm/text-input/define.d.ts",
+      "default": "./dist/esm/text-input/define.js"
+    },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"

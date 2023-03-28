@@ -9,5 +9,6 @@ export * from './progress-bar/index.js';
 export * from './spinner/index.js';
 export * from './switch/index.js';
 export * from './text/index.js';
+export * from './text-input/index.js';
 
 export * from './theme/index.js';
