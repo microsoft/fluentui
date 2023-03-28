@@ -4,8 +4,7 @@ import { addMonths, addYears, defaultDatePickerStrings, DatePicker } from '@flue
 import type { DatePickerStrings } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
-  root: {
-    marginTop: '15px',
+  inputControl: {
     maxWidth: '300px',
   },
 });
@@ -22,22 +21,27 @@ export const DateBoundaries = () => {
   const styles = useStyles();
 
   return (
-    <div>
-      <div>
-        When date boundaries are set (via <code>minDate</code> and <code>maxDate</code> props) the DatePicker will not
-        allow out-of-bounds dates to be picked or entered. In this example, the allowed dates are{' '}
-        {minDate.toLocaleDateString()} to {maxDate.toLocaleDateString()}.
-      </div>
-      <DatePicker
-        className={styles.root}
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={strings}
-        placeholder="Select a date..."
-        aria-label="Select a date"
-        minDate={minDate}
-        maxDate={maxDate}
-        allowTextInput
-      />
-    </div>
+    <DatePicker
+      minDate={minDate}
+      maxDate={maxDate}
+      label={`The date boundaries for this example are ${minDate.toLocaleDateString()} to ${maxDate.toLocaleDateString()}.`}
+      aria-label="Select a date"
+      placeholder="Select a date..."
+      allowTextInput
+      // DatePicker uses English strings by default. For localized apps, you must override this prop.
+      strings={strings}
+      input={{ className: styles.inputControl }}
+    />
   );
+};
+
+DateBoundaries.parameters = {
+  docs: {
+    description: {
+      story:
+        'A DatePicker allows setting date boundaries. To set a max boundary, use the `maxDate` prop. To set a minimum' +
+        ' boundary, use the `minDate` prop. When date boundaries are set the DatePicker will not allow out-of-bounds' +
+        ' dates to be picked or entered.',
+    },
+  },
 };

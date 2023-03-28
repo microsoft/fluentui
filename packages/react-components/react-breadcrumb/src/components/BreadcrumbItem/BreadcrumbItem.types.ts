@@ -1,9 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
 
 export type BreadcrumbItemSlots = {
-  root: Slot<'div'>;
-  divider?: Slot<typeof BreadcrumbDivider>;
+  root: Slot<'li'>;
 };
 
 /**
