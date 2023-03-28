@@ -41,6 +41,7 @@ export const styles = css`
   }
   :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
   }
   .label {
     cursor: pointer;
