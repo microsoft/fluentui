@@ -148,7 +148,10 @@ export class Tabs extends FASTTabs {
         width: activeRect.width,
       } as TabData;
 
-      if (!(this.previousActiveTabData?.x !== this.activeTabData?.x)) {
+      if (
+        this.previousActiveTabData?.x !== this.activeTabData?.x &&
+        this.previousActiveTabData?.y !== this.activeTabData?.y
+      ) {
         this.previousActiveTabData = this.activeTabData;
       }
     }
