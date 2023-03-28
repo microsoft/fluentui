@@ -15,6 +15,9 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarPickerStyles, CalendarPickerStyleProps } from './CalendarPicker.types';
 
+/**
+ * @internal
+ */
 export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles> = {
   root: 'fui-CalendarPicker',
   headerContainer: 'fui-CalendarPicker__headerContainer',
@@ -71,19 +74,18 @@ const useCurrentItemButtonStyles = makeStyles({
   },
   hasHeaderClickCallback: {
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
     '&:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Pressed,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useNavigationButtonsContainerStyles = makeStyles({
@@ -113,13 +115,12 @@ const useNavigationButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
   },
-  //  getFocusStyle(theme, { inset: -1 }),
 });
 
 const useGridContainerStyles = makeStyles({
@@ -131,7 +132,7 @@ const useGridContainerStyles = makeStyles({
 const useButtonRowStyles = makeStyles({
   base: {
     marginBottom: '16px',
-    '&:nth-child(n + 3)': {
+    '&:last-of-type': {
       marginBottom: 0,
     },
   },
@@ -159,7 +160,7 @@ const useItemButtonStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground3,
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,
     height: '40px',
@@ -181,8 +182,8 @@ const useItemButtonStyles = makeStyles({
       fontWeight: tokens.fontWeightRegular,
     },
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+      color: tokens.colorNeutralForeground1Static,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
 
@@ -203,19 +204,16 @@ const useItemButtonStyles = makeStyles({
       },
     },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useCurrentStyles = makeStyles({
   highlightCurrent: {
     backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: tokens.colorNeutralForegroundOnBrand + '!important',
+    fontWeight: tokens.fontWeightSemibold,
 
-    '& div': {
-      fontWeight: tokens.fontWeightSemibold,
-    },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: tokens.colorBrandBackground,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'WindowText',
@@ -234,14 +232,15 @@ const useCurrentStyles = makeStyles({
 const useSelectedStyles = makeStyles({
   highlightSelected: {
     backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground1Static,
     fontWeight: tokens.fontWeightSemibold,
 
     '& div': {
       fontWeight: tokens.fontWeightSemibold,
     },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      color: tokens.colorNeutralForeground1Static,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
@@ -280,9 +279,10 @@ const useDisabledStyles = makeStyles({
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the CalendarPicker slots based on the state
  */
-// export const useCalendarPickerStyles_unstable = (state: CalendarPickerState): CalendarPickerState => {
 export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps): CalendarPickerStyles => {
   const rootStyles = useRootStyles();
   const headerContainerStyles = useHeaderContainerStyles();
@@ -334,8 +334,8 @@ export const useCalendarPickerStyles_unstable = (props: CalendarPickerStyleProps
           : buttonRowStyles.verticalForward),
     ),
     itemButton: mergeClasses(calendarPickerClassNames.itemButton, itemButtonStyles.base),
-    current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),
     selected: mergeClasses(calendarPickerClassNames.selected, highlightSelected && selectedStyles.highlightSelected),
+    current: mergeClasses(calendarPickerClassNames.current, highlightCurrent && currentStyles.highlightCurrent),
     disabled: mergeClasses(calendarPickerClassNames.disabled, disabledStyles.base),
   };
 };

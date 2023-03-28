@@ -31,7 +31,7 @@ const DEFAULT_SPIN_DELAY_MS = 150;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
 
-// This is here to give an ease the mouse held down case.
+// This is here to give an ease for the mouse held down case.
 // Exact easing it to be defined. Once it is we'll likely
 // pull this out into a util function in the SpinButton package.
 const lerp = (start: number, end: number, percent: number): number => start + (end - start) * percent;

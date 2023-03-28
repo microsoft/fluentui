@@ -30,7 +30,7 @@ Because the Popover isn't always visible, it should not contain information that
 ## Sample Code
 
 ```jsx
-<InfoButton content="This is some additional information." />
+<InfoButton info="This is some additional information." />
 ```
 
 ## API
@@ -45,7 +45,7 @@ _**Public**_
 
 ```jsx
 <InfoButton
-  content={
+  info={
     <>
       Popover above-start lorem ipsum dolor sit amet consectetur.
       <Link href="https://react.fluentui.dev">Learn more</Link>
@@ -62,7 +62,7 @@ return (
     <PopoverTrigger>
       <slots.root {...slotProps.root} />
     </PopoverTrigger>
-    <slots.content {...slotProps.content} />
+    <slots.info {...slotProps.info} />
   </slots.popover>
 );
 ```
@@ -75,7 +75,7 @@ _**DOM**_
 </button>
 
 <!-- on document.body -->
-<div role="tooltip" class="fui-PopoverSurface fui-InfoButton__content">
+<div role="tooltip" class="fui-PopoverSurface fui-InfoButton__info">
   Popover above-start lorem ipsum dolor sit amet consectetur.
   <a href="https://react.fluentui.dev">Learn more</a>
 </div>

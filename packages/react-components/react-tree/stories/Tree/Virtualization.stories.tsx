@@ -3,8 +3,6 @@ import {
   TreeProps,
   TreeItem,
   TreeItemLayout,
-  FlatTreeItem,
-  useFlatTreeItems_unstable,
   useTree_unstable,
   useTreeStyles_unstable,
   useTreeContextValues_unstable,
@@ -13,31 +11,31 @@ import {
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   FlatTreeItemProps,
+  useFlatTree_unstable,
+  FlatTreeItem,
 } from '@fluentui/react-tree';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
-import { ArrowLeft, End, Home } from '@fluentui/keyboard-keys';
+import story from './Virtualization.md';
 
-const item1: FlatTreeItem[] = [
+const defaultItems: FlatTreeItemProps[] = [
   {
     id: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
   },
-  ...new Array(300).fill(undefined).map<FlatTreeItem>((_, i) => ({
+  ...Array.from({ length: 300 }, (_, i) => ({
     id: `flatTreeItem_lvl-1_item-1--child:${i}`,
     parentId: 'flatTreeItem_lvl-1_item-1',
     children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
   })),
-];
-const item2: FlatTreeItem[] = [
   {
     id: 'flatTreeItem_lvl-1_item-2',
     children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
   },
-  ...new Array(300).fill(undefined).map<FlatTreeItem>((_, i) => ({
-    id: `flatTreeItem_lvl-1_item-2--child:${i}`,
+  ...Array.from({ length: 300 }, (_, index) => ({
+    id: `flatTreeItem_lvl-1_item-2--child:${index}`,
     parentId: 'flatTreeItem_lvl-1_item-2',
-    children: <TreeItemLayout>Item {i + 1}</TreeItemLayout>,
+    children: <TreeItemLayout>Item {index + 1}</TreeItemLayout>,
   })),
 ];
 
@@ -60,40 +58,38 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
 });
 
 interface FixedSizeTreeItemProps extends ListChildComponentProps {
-  data: FlatTreeItemProps[];
+  data: FlatTreeItem[];
 }
 
 const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
-  const treeItemProps = props.data[props.index];
+  const flatTreeItem = props.data[props.index];
   return (
-    <TreeItem {...treeItemProps} style={props.style}>
+    <TreeItem {...flatTreeItem.getTreeItemProps()} style={props.style}>
       <TreeItemLayout>Item {props.index}</TreeItemLayout>
     </TreeItem>
   );
 };
 
 export const Virtualization = () => {
-  const [treeProps, flatTreeItems] = useFlatTreeItems_unstable([...item1, ...item2]);
+  const flatTree = useFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
-  const items = flatTreeItems.toArray();
+  const items = React.useMemo(() => Array.from(flatTree.items()), [flatTree]);
 
-  // ArrowLeft, Home and End navigation might not work since the element that you navigate to might not be mounted
-  // scrolling into the element to ensure it is mounted before invoking `treeProps.onOpenChange` solves this
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
     event.preventDefault();
-    if (data.type === ArrowLeft) {
-      listRef.current?.scrollTo(Number(event.currentTarget.getAttribute('aria-posinset')));
-    } else if (data.type === Home) {
-      listRef.current?.scrollToItem(0);
-    } else if (data.type === End) {
-      listRef.current?.scrollToItem(items.length - 1);
+    const nextItem = flatTree.getNextNavigableItem(items, data);
+    if (!nextItem) {
+      return;
     }
-    requestAnimationFrame(() => {
-      treeProps.onNavigation_unstable(event, data);
-    });
+    if (document.getElementById(nextItem.id)) {
+      listRef.current?.scrollToItem(nextItem.index);
+      return requestAnimationFrame(() => flatTree.navigate(data));
+    }
+    flatTree.navigate(data);
   };
   return (
     <FixedSizeTree
+      {...flatTree.getTreeProps()}
       listProps={{
         ref: listRef,
         height: 300,
@@ -103,9 +99,16 @@ export const Virtualization = () => {
         width: 300,
         children: FixedSizeTreeItem,
       }}
-      {...treeProps}
       onNavigation_unstable={handleNavigation}
       aria-label="Tree"
     />
   );
+};
+
+Virtualization.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };

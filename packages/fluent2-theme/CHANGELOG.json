@@ -2,6 +2,188 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Tue, 28 Mar 2023 07:38:27 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.6",
+      "version": "8.106.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.10",
+            "commit": "3e4575b1092ad3bdf0b34275748f2b41566ebe4b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Mar 2023 22:25:03 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.5",
+      "version": "8.106.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.9",
+            "commit": "0f112dce6a19b7124dd95f58d9096f40aeaedf9c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Mar 2023 07:40:28 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.4",
+      "version": "8.106.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "ffb73565db8eb8ad0a5e2bdb383306519ade8116",
+            "comment": "Updating Link text color in dark theme to match Fluent 2."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Mar 2023 08:03:46 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.3",
+      "version": "8.106.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.8",
+            "commit": "298c2a3a12ee95c78650b4a8cf70990844768602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.2",
+      "version": "8.106.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.7",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/set-version to v8.2.6",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Mar 2023 07:38:48 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.1",
+      "version": "8.106.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "41d1b1dc1c750b397a78a4f660f1b2b0292fbdb4",
+            "comment": "Updating spin button focused and disabled styles."
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "349c420b582843a2be7f0553afcb497570955590",
+            "comment": "Fixing bugs in the spinner size. All 4 sizes were hard coded to 32px. Now Medium and large are 32px & 36px respectivley.xSmall back to 12px and small to 16px."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.6",
+            "commit": "56f81e3cd545ee3c307825335d4643b06a877ce5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Mar 2023 07:38:24 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.106.0",
+      "version": "8.106.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "02178627cd4a8c7d0a76bdf8b22333d2954417e7",
+            "comment": "Updating drown down focused and disabled styles."
+          }
+        ],
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "cb36fda9e47e3244dec3525f7ed0145423d74b6a",
+            "comment": "Adds focus styles to SearchBox, extracts duplicated focus and disabled code from TextField to utils."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.5",
+            "commit": "684dafbd5d9efa1dd61330eed7a503d61b1184f3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Mar 2023 07:39:12 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.105.1",
+      "version": "8.105.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.4",
+            "commit": "64f86cc11c16cb8743c0445fd4d5095d23874dcf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Mar 2023 07:49:29 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.105.0",
+      "version": "8.105.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "e4d5ec008bf44bfd250d77dd0a18f2f376f7a35a",
+            "comment": "Adding IExtendedSemanticColors with properties for inputBottomBorders since the treatment is different in Fluent 2. Updating focus behavior for TextField to more closley match Fluent 2."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Mar 2023 07:43:04 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.104.29",
+      "version": "8.104.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.106.3",
+            "commit": "220b321042b4bcc126c86a91811a34b04934d49b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Mar 2023 07:45:41 GMT",
       "tag": "@fluentui/fluent2-theme_v8.104.28",
       "version": "8.104.28",

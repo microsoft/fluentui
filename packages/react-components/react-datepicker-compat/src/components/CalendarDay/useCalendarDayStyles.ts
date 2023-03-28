@@ -4,6 +4,9 @@ import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
 
+/**
+ * @internal
+ */
 export const calendarDayClassNames: SlotClassNames<CalendarDayStyles> = {
   root: 'fui-CalendarDay',
   header: 'fui-CalendarDay__header',
@@ -44,7 +47,7 @@ const useMonthAndYearStyles = makeStyles({
   base: {
     alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('none'),
+    ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
     color: tokens.colorNeutralForeground1,
     display: 'inline-block',
@@ -67,12 +70,14 @@ const useMonthAndYearStyles = makeStyles({
   },
   headerIsClickable: {
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
     },
+    '&:active': {
+      backgroundColor: tokens.colorBrandBackground2,
+    },
   },
-  // getFocusStyle(theme, { inset: 1 }),
 });
 
 const useMonthComponentsStyles = makeStyles({
@@ -87,7 +92,7 @@ const useHeaderIconButtonStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderStyle('none'),
     ...shorthands.borderRadius('2px'),
-    color: tokens.colorNeutralForeground1,
+    color: tokens.colorNeutralForeground3,
     display: 'block',
     fontFamily: 'inherit',
     fontSize: tokens.fontSizeBase200,
@@ -100,13 +105,15 @@ const useHeaderIconButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
+      backgroundColor: tokens.colorBrandBackground2,
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
+    '&:active': {
+      backgroundColor: tokens.colorBrandBackground2,
+    },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useDisabledStyleStyles = makeStyles({
@@ -123,9 +130,10 @@ const useDisabledStyleStyles = makeStyles({
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the CalendarDay slots based on the state
  */
-// export const useCalendarDayStyles_unstable = (state: CalendarDayState): CalendarDayState => {
 export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): CalendarDayStyles => {
   const rootStyles = useRootStyles();
   const headerStyles = useHeaderStyles();

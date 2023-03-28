@@ -3,7 +3,7 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-import { ILineChartProps, LineChart } from './index';
+import { ILineChartPoints, ILineChartProps, LineChart } from './index';
 import { ILineChartState, LineChartBase } from './LineChart.base';
 import { ICustomizedCalloutData } from '../../index';
 import toJson from 'enzyme-to-json';
@@ -29,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-const points = [
+const points: ILineChartPoints[] = [
   {
     legend: 'metaData1',
     data: [
@@ -85,6 +85,17 @@ describe('LineChart snapShot testing', () => {
     const component = renderer.create(<LineChart data={chartPoints} yAxisTickFormat={'/%d'} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render with default colors when line color is not provided', () => {
+    const lineColor = points[0].color;
+    delete points[0].color;
+
+    const component = renderer.create(<LineChart data={chartPoints} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    points[0].color = lineColor;
   });
 });
 

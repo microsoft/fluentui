@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-icons-mdl2-branded
 
-This log was last generated on Wed, 01 Mar 2023 07:45:41 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.38)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2-branded_v1.2.37..@fluentui/react-icons-mdl2-branded_v1.2.38)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.3.37 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+
+## [1.2.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.37)
+
+Thu, 09 Mar 2023 07:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2-branded_v1.2.36..@fluentui/react-icons-mdl2-branded_v1.2.37)
+
+### Patches
+
+- Bump @fluentui/react-icons-mdl2 to v1.3.36 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+
+## [1.2.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.36)
+
+Wed, 08 Mar 2023 07:37:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2-branded_v1.2.35..@fluentui/react-icons-mdl2-branded_v1.2.36)
+
+### Patches
+
+- Bump @fluentui/react-icons-mdl2 to v1.3.35 ([PR #25447](https://github.com/microsoft/fluentui/pull/25447) by beachball)
+
+## [1.2.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.35)
+
+Mon, 06 Mar 2023 07:43:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2-branded_v1.2.34..@fluentui/react-icons-mdl2-branded_v1.2.35)
+
+### Patches
+
+- Bump @fluentui/react-icons-mdl2 to v1.3.34 ([PR #26869](https://github.com/microsoft/fluentui/pull/26869) by beachball)
 
 ## [1.2.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2-branded_v1.2.34)
 

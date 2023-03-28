@@ -54,9 +54,10 @@ describe('useTableColumnSizing', () => {
     renderHookResult = renderHook(() => useTableColumnSizing()(mockTableState({ columns: columnDefinition })));
   });
 
-  it('enhances tabel state properly', () => {
+  it('enhances table state properly', () => {
     expect(renderHookResult.result.current.columnSizing_unstable).toMatchInlineSnapshot(`
       Object {
+        "enableKeyboardMode": [Function],
         "getColumnWidths": [MockFunction],
         "getOnMouseDown": [MockFunction],
         "getTableCellProps": [Function],

@@ -9,6 +9,9 @@ import { useCalendarDayStyles_unstable } from './useCalendarDayStyles';
 import type { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
 import type { CalendarDayProps, CalendarDayStyles } from './CalendarDay.types';
 
+/**
+ * @internal
+ */
 export const CalendarDay: React.FunctionComponent<CalendarDayProps> = props => {
   const dayGrid = React.useRef<ICalendarDayGrid>(null);
 
@@ -101,7 +104,6 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
     navigatedDate,
     allFocusable,
     strings,
-    // navigationIcons,
     showCloseButton,
     classNames,
     onNavigateDate,

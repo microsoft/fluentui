@@ -3,6 +3,9 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarStyles, CalendarStyleProps } from './Calendar.types';
 
+/**
+ * @internal
+ */
 export const calendarClassNames: SlotClassNames<CalendarStyles> = {
   root: 'fui-Calendar',
   divider: 'fui-Calendar__divider',
@@ -84,7 +87,6 @@ const useGoTodayButtonStyles = makeStyles({
       pointerEvents: 'none',
     },
   },
-  // getFocusStyle(theme, { inset: -1 }),
 });
 
 const useLiveRegionStyles = makeStyles({
@@ -100,9 +102,10 @@ const useLiveRegionStyles = makeStyles({
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the Calendar slots based on the state
  */
-// export const useCalendarStyles_unstable = (state: CalendarState): CalendarState => {
 export const useCalendarStyles_unstable = (props: CalendarStyleProps): CalendarStyles => {
   const rootStyles = useRootStyles();
   const dividerStyles = useDividerStyles();

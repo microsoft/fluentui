@@ -81,8 +81,10 @@ export const IdPrefixProvider: React_2.Provider<string | undefined>;
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
 
-// @internal
-export function isHTMLElement(element?: unknown): element is HTMLElement;
+// @public
+export function isHTMLElement<ConstructorName extends HTMLElementConstructorName = 'HTMLElement'>(element?: unknown, options?: {
+    constructorName?: ConstructorName;
+}): element is InstanceType<(typeof globalThis)[ConstructorName]>;
 
 // @internal
 export function isInteractiveHTMLElement(element: unknown): boolean;
@@ -119,12 +121,15 @@ export const resolveShorthand: ResolveShorthandFunction;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, true>): ReplaceNullWithUndefined<P>;
-    <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>): ReplaceNullWithUndefined<P> | undefined;
+    <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+    <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
 // @public (undocumented)
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
+    required: true;
+    defaultProps?: Props;
+} : {
     required?: Required;
     defaultProps?: Props;
 };
@@ -132,10 +137,10 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
-} & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
+} & WithSlotRenderFunction<IntrinsicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
     [As in AlternateAs]: {
         as: As;
-    } & WithSlotRenderFunction<IntrisicElementProps<As>>;
+    } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @public

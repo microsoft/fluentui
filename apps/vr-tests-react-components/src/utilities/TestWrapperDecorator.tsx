@@ -52,12 +52,37 @@ const useNoAnimationStyles = makeStyles({
       transitionDuration: '0s !important',
     },
   },
+  paused: {
+    animationPlayState: 'paused !important',
+    animationDelay: '-1s !important',
+    '& *': {
+      animationPlayState: 'paused !important',
+      animationDelay: '-1s !important',
+    },
+  },
 });
 export const TestWrapperDecoratorNoAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
   const noAnimationStyles = useNoAnimationStyles();
   const className = mergeClasses(noAnimationStyles.root, 'testWrapper');
   return (
     <div style={{ display: 'flex' }}>
+      <div
+        className={className}
+        style={{
+          padding: '10px',
+          overflow: 'hidden',
+        }}
+      >
+        {story()}
+      </div>
+    </div>
+  );
+};
+export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
+  const noAnimationStyles = useNoAnimationStyles();
+  const className = mergeClasses(noAnimationStyles.paused, 'testWrapper');
+  return (
+    <div style={{ display: 'grid' }}>
       <div
         className={className}
         style={{
