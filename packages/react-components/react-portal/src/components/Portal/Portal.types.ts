@@ -11,13 +11,14 @@ export type PortalProps = {
    *
    * @default a new element on document.body without any styling
    */
-  mountNode?: HTMLElement | null;
+  mountNode?: HTMLElement | null | { element?: HTMLElement | null; className?: string };
 };
 
-export type PortalState = Pick<PortalProps, 'children'> &
-  Required<Pick<PortalProps, 'mountNode'>> & {
-    /**
-     * Ref to the root span element as virtual parent
-     */
-    virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
-  };
+export type PortalState = Pick<PortalProps, 'children'> & {
+  mountNode: HTMLElement | null | undefined;
+
+  /**
+   * Ref to the root span element as virtual parent
+   */
+  virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
+};

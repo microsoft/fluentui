@@ -103,6 +103,19 @@ const useStyles = makeStyles({
     ':focus': {
       color: tokens.colorNeutralForegroundDisabled,
     },
+
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+      ':hover': {
+        color: 'GrayText',
+        [`& .${menuItemClassNames.icon}`]: {
+          color: 'GrayText',
+        },
+      },
+      ':focus': {
+        color: 'GrayText',
+      },
+    },
   },
 });
 

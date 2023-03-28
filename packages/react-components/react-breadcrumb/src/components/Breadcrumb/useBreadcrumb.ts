@@ -16,13 +16,15 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
-      root: 'div',
+      root: 'nav',
+      list: 'ol',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('nav', {
       ref,
       ...props,
     }),
+    list: {},
   };
 };

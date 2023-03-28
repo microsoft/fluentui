@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import story from './TreeAppearance.md';
 
 export const Appearance = () => {
   return (
@@ -26,10 +27,7 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story:
-        '- `(undefined)`: the tree item appears with the default style\n' +
-        '- `subtle`: minimizes emphasis on hovered or focused states\n' +
-        '- `transparent`: removes background color.\n',
+      story,
     },
   },
 };

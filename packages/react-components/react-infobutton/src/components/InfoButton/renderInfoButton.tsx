@@ -15,7 +15,7 @@ export const renderInfoButton_unstable = (state: InfoButtonState) => {
       <PopoverTrigger>
         <slots.root {...slotProps.root} />
       </PopoverTrigger>
-      <slots.content {...slotProps.content} />
+      <slots.info {...slotProps.info} />
     </slots.popover>
   );
 };
