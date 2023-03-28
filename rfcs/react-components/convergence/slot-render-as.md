@@ -6,9 +6,7 @@ Contributors: behowell
 
 This proposes modifying the slot render function API to pass a render function via the slot's `as` prop instead of the `children` prop. This has several benefits, the primary of which is that it allows the user to write a render function for a slot without overriding the default children of a slot.
 
-This is a complementary proposal to bsunderhus's [RFC #27164: slot children render function support](https://github.com/microsoft/fluentui/pull/27164). It provides an alternative way to avoid having a render function override a slot's default `children` prop.
-
-However, this RFC has no dependencies on the other RFC, and could be adopted separately if needed.
+This is a complementary proposal to bsunderhus's [RFC #27164: slot children render function support](https://github.com/microsoft/fluentui/pull/27164). It provides an alternative way to avoid having a render function override a slot's default `children` prop. This RFC has no dependencies on it, and could be adopted separately if needed.
 
 ## Background
 
@@ -20,13 +18,13 @@ The render function is passed in as the slot's `children` prop.
 
 A few problems with render functions as they are today:
 
-1. Using `children` as the render function will override any default children provided by the component's internals
-2. It is confusing (IMO) that passing a render function as `children` would override the _whole slot_, and not just its children.
+1. Using `children` as the render function will override any default children provided by the component's internals.
+2. It is confusing that passing a render function as `children` would override the _whole slot_, and not just its children.
 3. The root slot's render function conflicts the use of children as a function, which certain components use for custom rendering of their children.
    - For example, Tooltip and Field both accept a function as a child of their root, in order to pass props to the children. However, this breaks the ability to use a slot render function for the root slot of those controls.
    - See: https://react.fluentui.dev/?path=/docs/preview-components-field--default#complex-content-in-a-field
 
-And and a less important issue that's addressed in Appendix A of this proposal:
+And a less important issue that's addressed in Appendix A of this proposal:
 
 4. The order of the arguments is `(Component, props)`, but one of the primary use cases is to replace the given slot component with something else, in which case you ignore the first argument. You'd rarely/never(?) want to ignore the second argument `props`.
 
@@ -36,7 +34,7 @@ The core proposal in this RFC is to use the `as` prop as the render function ins
 
 ```jsx
 <>
-  {/* Existing behavior: unintentioanally overwrites default children of the button slot. */}
+  {/* Existing behavior: unintentionally overwrites default children of the button slot. */}
   <AccordionHeader button={{ children: (Component, props) => <Component {...props} /> }} />
 
   {/* New behavior, use 'as' instead, and `props` includes the slot's default `children`. */}
