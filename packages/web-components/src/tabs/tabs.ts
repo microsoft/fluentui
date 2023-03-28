@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTTabs, TabsOrientation } from '@microsoft/fast-foundation';
 import { Tab } from '../index.js';
 import { TabsAppearance, TabsSize } from './tabs.options.js';
 
@@ -60,17 +60,11 @@ export class Tabs extends FASTTabs {
 
   /**
    * size
+   * defaults to medium.
    * Used to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.
    */
   @attr
-  public size?: TabsSize = 'medium';
-
-  /**
-   * reserve-selected-tab-space
-   * Controls whether or not to make the text of the active tab bold. Bold text will cause a slight movement in the ui of the tabs. Defaults to false.
-   */
-  @attr({ attribute: 'reserve-selected-tab-space', mode: 'boolean' })
-  public reserveSelectedTabSpace?: boolean;
+  public size?: TabsSize;
 
   /**
    * calculateAnimationProperties
@@ -87,7 +81,7 @@ export class Tabs extends FASTTabs {
    * getSelectedTabPosition - gets the x or y coordinates of the tab
    */
   private getSelectedTabPosition(tab: Tab): number {
-    if (this.orientation === 'horizontal') {
+    if (this.orientation === TabsOrientation.horizontal) {
       return this.previousActiveTabData.x - (tab.getBoundingClientRect().x - this.getBoundingClientRect().x);
     } else return this.previousActiveTabData.y - (tab.getBoundingClientRect().y - this.getBoundingClientRect().y);
   }
@@ -96,7 +90,7 @@ export class Tabs extends FASTTabs {
    * getSelectedTabScale - gets the scale of the
    */
   private getSelectedTabScale(tab: Tab): number {
-    if (this.orientation === 'horizontal') {
+    if (this.orientation === TabsOrientation.horizontal) {
       return this.previousActiveTabData.width / tab.getBoundingClientRect().width;
     } else return this.previousActiveTabData.height / tab.getBoundingClientRect().height;
   }
@@ -119,23 +113,20 @@ export class Tabs extends FASTTabs {
    */
   private animationLoop(tab: Tab) {
     // If selected, set the animation properties.
-    if (tab.ariaSelected && tab.ariaSelected === 'true') {
-      // get the offset for active indicator
-      // the offset at the start of the animation will be at the location of the previously selected tab
-      this.calculateAnimationProperties(tab);
-      // set the active indicator offset and scale of the active indicator to css vars
-      this.setTabScaleCSSVar();
-      this.setTabOffsetCSSVar();
-
-      // clear properties for next animation
-      this.clearAnimationProperties(tab);
-    }
-
-    this.previousActiveTabData = this.activeTabData;
+    // get the offset for active indicator
+    // the offset at the start of the animation will be at the location of the previously selected tab
     this.calculateAnimationProperties(tab);
+    // set the active indicator offset and scale of the active indicator to css vars
+    this.setTabScaleCSSVar();
+    this.setTabOffsetCSSVar();
+
+    // clear properties for next animation
+    this.clearAnimationProperties(tab);
+    this.previousActiveTabData = this.activeTabData;
 
     // add the animate css class if the calculated offset is 0 and scale is 1
     if (this.activeTabOffset === 0 && this.activeTabScale === 1) {
+      this.calculateAnimationProperties(tab);
       tab.classList.add('animated');
       // update the css vars
       this.setTabScaleCSSVar();
@@ -174,8 +165,8 @@ export class Tabs extends FASTTabs {
     document.documentElement.style.setProperty(TabTokenNames.tabIndicatorOffset, `${this.activeTabOffset}px`);
   }
 
-  private setTabScaleCSSVar(newScale?: number) {
-    document.documentElement.style.setProperty(TabTokenNames.tabIndicatorScale, `${newScale || this.activeTabScale}`);
+  private setTabScaleCSSVar() {
+    document.documentElement.style.setProperty(TabTokenNames.tabIndicatorScale, `${this.activeTabScale}`);
   }
 
   public activeidChanged(oldValue: string, newValue: string) {

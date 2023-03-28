@@ -14,14 +14,13 @@ A note on the naming of this component. The closest equivalent from Fluent UI Re
 
 ### Inputs
 
-| attribute                  | type                           | default       | description                                                                                                       |
-| -------------------------- | ------------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------- |
-| activeid                   | string                         | -             | sets the selected tab                                                                                             |
-| appearance                 | "subtle" \| "transparent       | "transparent" | -                                                                                                                 |
-| reserve-selected-tab-space | boolean                        | -             | Tab size may change between unselected and selected states of the tab. By default the selected tab has bold text. |
-| disabled                   | boolean                        | -             | blocks control and all tab children from all keyboard and mouse events.                                           |
-| size                       | "small" \| "medium" \| "large" | "medium"      |                                                                                                                   |
-| orientation                | "vertical" \| "horizontal"     | "horizontal"  | sets the orientation of the tab list to vertical display                                                          |
+| attribute   | type                           | default       | description                                                             |
+| ----------- | ------------------------------ | ------------- | ----------------------------------------------------------------------- |
+| activeid    | string                         | -             | sets the selected tab                                                   |
+| appearance  | "subtle" \| "transparent       | "transparent" | -                                                                       |
+| disabled    | boolean                        | -             | blocks control and all tab children from all keyboard and mouse events. |
+| size        | "small" \| "medium" \| "large" | "medium"      |                                                                         |
+| orientation | "vertical" \| "horizontal"     | "horizontal"  | sets the orientation of the tab list to vertical display                |
 
 ### Outputs
 
@@ -120,6 +119,7 @@ The Fluent/FAST web component differs from the Fluent React Control as follows:
 | icon slotting                                   | favors composition (dev chooses how to slot which icon)                                                         | favors automation (dev supplies icon name and control handles the rendering of icon)         |
 | icon slotting filled / unfilled icons           | favors composition over automated handling. requires dev to add interactivity to render filled or unfilled icon | favors automated handling of icons and provides filled and unfilled iconography on selection |
 | tab-panels                                      | requires tab panel control to set content on tab selection                                                      | does not require or include a tab panel control / template                                   |
+| reserve-selected-tab-space                      | has reserve selected tab space defaulting to true and gives user the option to set to false                     | removes attribute                                                                            |
 
 [Link to FAST Web Component API](https://www.fast.design/docs/components/tabs/#class-tab)
 

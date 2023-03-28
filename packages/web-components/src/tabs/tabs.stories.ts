@@ -19,7 +19,6 @@ const tabsDefault = html`
     appearance=${component => component.appearance}
     ?disabled=${component => component.disabled}
     size=${component => component.size}
-    reserve-selected-tab-space=${component => component['reserve-selected-tab-space']}
     activeid=${component => component.activeid}
   >
     <fluent-tab id=${defaultTabIds[0]}> First Tab </fluent-tab>
@@ -202,19 +201,12 @@ export default {
     appearance: 'transparent',
     disabled: false,
     orientation: 'horizontal',
-    'reserve-selected-tab-space': false,
     size: 'medium',
   },
   argTypes: {
     appearance: {
       options: Object.values(TabsAppearanceValues),
       defaultValue: 'transparent',
-      control: {
-        type: 'select',
-      },
-    },
-    'reserve-selected-tab-space': {
-      options: [true, false],
       control: {
         type: 'select',
       },

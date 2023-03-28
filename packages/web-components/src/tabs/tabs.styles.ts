@@ -14,7 +14,6 @@ import {
   fontFamilyBase,
   fontSizeBase300,
   fontSizeBase400,
-  fontWeightRegular,
   lineHeightBase300,
   lineHeightBase400,
   spacingHorizontalMNudge,
@@ -150,10 +149,6 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
 
-  :host([reserve-selected-tab-space='true']) ::slotted(fluent-tab) {
-    font-weight: ${fontWeightRegular};
-  }
-
   /* ::after adds the active indicator  */
   :host([orientation='horizontal']) ::slotted(fluent-tab)::after {
     height: ${strokeWidthThicker};
@@ -193,9 +188,9 @@ export const styles = css`
     right: ${spacingHorizontalSNudge};
     left: ${spacingHorizontalSNudge};
   }
-  :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab)::after,
-  :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab)::before,
-  :host([orientation='horizontal'][size='medium']) ::slotted(fluent-tab:hover)::after {
+  :host([orientation='horizontal']) ::slotted(fluent-tab)::after,
+  :host([orientation='horizontal']) ::slotted(fluent-tab)::before,
+  :host([orientation='horizontal']) ::slotted(fluent-tab:hover)::after {
     right: ${spacingHorizontalMNudge};
     left: ${spacingHorizontalMNudge};
   }
@@ -225,7 +220,7 @@ export const styles = css`
     padding-top: ${spacingVerticalXXS};
     padding-bottom: ${spacingVerticalXXS};
   }
-  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab) {
+  :host([orientation='vertical']) ::slotted(fluent-tab) {
     padding-top: ${spacingVerticalSNudge};
     padding-bottom: ${spacingVerticalSNudge};
   }
@@ -240,9 +235,9 @@ export const styles = css`
     top: ${spacingVerticalSNudge};
     bottom: ${spacingVerticalSNudge};
   }
-  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab)::after,
-  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab)::before,
-  :host([orientation='vertical'][size='medium']) ::slotted(fluent-tab:hover)::after {
+  :host([orientation='vertical']) ::slotted(fluent-tab)::after,
+  :host([orientation='vertical']) ::slotted(fluent-tab)::before,
+  :host([orientation='vertical']) ::slotted(fluent-tab:hover)::after {
     top: ${spacingVerticalS};
     bottom: ${spacingVerticalS};
   }
