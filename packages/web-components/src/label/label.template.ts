@@ -7,5 +7,5 @@ import { Label } from './label.js';
  */
 export const template = html`
   <slot></slot>
-  <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
+  <span part="asterisk" class="asterisk" ?hidden="${x => !x.required}">*</span>
 `;

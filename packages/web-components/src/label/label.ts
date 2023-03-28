@@ -25,7 +25,7 @@ export class Label extends FASTElement {
    * HTML Attribute: size
    */
   @attr
-  public size: LabelSize = LabelSize.medium;
+  public size?: LabelSize;
 
   /**
    * 	Specifies font weight of a label
@@ -36,5 +36,5 @@ export class Label extends FASTElement {
    * HTML Attribute: weight
    */
   @attr
-  public weight: LabelWeight = LabelWeight.regular;
+  public weight?: LabelWeight;
 }
