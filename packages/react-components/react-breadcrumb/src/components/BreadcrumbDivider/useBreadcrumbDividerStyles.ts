@@ -4,8 +4,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots> = {
   root: 'fui-BreadcrumbDivider',
-  // TODO: add class names for all slots on BreadcrumbDividerSlots.
-  // Should be of the form `<slotName>: 'fui-BreadcrumbDivider__<slotName>`
 };
 
 /**
@@ -13,10 +11,8 @@ export const breadcrumbDividerClassNames: SlotClassNames<BreadcrumbDividerSlots>
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -25,9 +21,6 @@ const useStyles = makeStyles({
 export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerState): BreadcrumbDividerState => {
   const styles = useStyles();
   state.root.className = mergeClasses(breadcrumbDividerClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };
