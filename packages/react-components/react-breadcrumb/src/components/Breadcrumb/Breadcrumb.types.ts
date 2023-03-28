@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 /**
  * Data shared between breadcrumb components
  */
-export type BreadcrumbContextValue = Pick<BreadcrumbProps, 'size' | 'dividerType'>;
+export type BreadcrumbContextValue = Required<Pick<BreadcrumbProps, 'size' | 'dividerType'>>;
 
 export type BreadcrumbContextValues = {
   breadcrumb: BreadcrumbContextValue;
