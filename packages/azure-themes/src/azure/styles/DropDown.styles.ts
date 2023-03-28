@@ -132,7 +132,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     ],
     dropdownItemsWrapper: {
-      backgroundColor: semanticColors.dropdownBackground,
+      backgroundColor: extendedSemanticColors.dropdownBackground,
       borderColor: semanticColors.inputBorder,
       border: 0,
     },
