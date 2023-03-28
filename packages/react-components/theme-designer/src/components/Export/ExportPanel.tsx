@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as dedent from 'dedent';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
 import {
   Body1,
   Button,
@@ -14,9 +14,10 @@ import {
   TabValue,
   Text,
   Textarea,
-  webLightTheme,
-  //   Panel,
+  tokens,
 } from '@fluentui/react-components';
+import { DismissSquare24Regular } from '@fluentui/react-icons';
+
 import { getBrandValues, objectToString, themeToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportLink } from '../Export/ExportLink';
@@ -96,62 +97,75 @@ export const ExportPanel = () => {
   return (
     <>
       {showExportPanel && (
-        <div style={{ zIndex: 100, position: 'absolute', top: '0px', right: '0px', width: '300px' }}>
-          <div style={{ margin: '0px' }}>
-            <FluentProvider theme={webLightTheme}>
-              <Text as="h1" id="headingID" size={500}>
-                Export Theme
-              </Text>
-              <Button
-                // eslint-disable-next-line react/jsx-no-bind
-                onClick={onCloseExportPanel}
-              >
-                X
-              </Button>
-              <br />
-              <br />
-              <Body1>
-                Passing this theme to a FluentProvider will automatically apply it to any Fluent components below it.
-                You can also export this to CodeSandbox with a few component examples below.
-              </Body1>
-              <br />
-              <TabList
-                defaultSelectedValue="Code"
-                selectedValue={selectedValue}
-                onTabSelect={onTabSelect} // eslint-disable-line react/jsx-no-bind
-              >
-                {' '}
-                <Tab value="Code">Code</Tab>
-                <Tab value="JSON">JSON</Tab>
-                <Tab value="Swift" disabled>
-                  Swift
-                </Tab>
-                <Tab value="KT" disabled>
-                  KT
-                </Tab>
-                <Tab value="XAML" disabled>
-                  XAML
-                </Tab>
-              </TabList>
-              <Textarea
-                className={styles.text}
-                size="small"
-                value={exportedValue}
-                id={'textArea'}
-                textarea={{ className: styles.textarea }}
-                readOnly
-              />
-              <br />
-              <ExportLink />
-              <Button
-                // eslint-disable-next-line react/jsx-no-bind
-                onClick={onClickCopyToClipboard}
-              >
-                Copy to clipboard
-              </Button>
-            </FluentProvider>
+        // <FluentProvider theme={webLightTheme}>
+        <div
+          style={{
+            zIndex: 100,
+            position: 'absolute',
+            top: '0px',
+            right: '0px',
+            width: '400px',
+            border: `1px solid ${tokens.colorNeutralStroke1}`,
+            borderRadius: tokens.borderRadiusXLarge,
+            backgroundColor: tokens.colorNeutralBackground1,
+            boxShadow: tokens.shadow64,
+          }}
+        >
+          <div style={{ margin: '16px' }}>
+            <Text as="h1" id="headingID" size={500}>
+              Export Theme
+            </Text>
+            <Button
+              size="small"
+              appearance="subtle"
+              icon={<DismissSquare24Regular />}
+              // eslint-disable-next-line react/jsx-no-bind
+              onClick={onCloseExportPanel}
+            />
+            <br />
+            <br />
+            <Body1>
+              Passing this theme to a FluentProvider will automatically apply it to any Fluent components below it. You
+              can also export this to CodeSandbox with a few component examples below.
+            </Body1>
+            <br />
+            <TabList
+              defaultSelectedValue="Code"
+              selectedValue={selectedValue}
+              onTabSelect={onTabSelect} // eslint-disable-line react/jsx-no-bind
+            >
+              <Tab value="Code">Code</Tab>
+              <Tab value="JSON">JSON</Tab>
+              <Tab value="Swift" disabled>
+                Swift
+              </Tab>
+              <Tab value="KT" disabled>
+                KT
+              </Tab>
+              <Tab value="XAML" disabled>
+                XAML
+              </Tab>
+            </TabList>
+            <Textarea
+              className={styles.text}
+              size="small"
+              value={exportedValue}
+              id={'textArea'}
+              textarea={{ className: styles.textarea }}
+              readOnly
+            />
+            <br />
+            <ExportLink />
+            <Button
+              appearance="primary"
+              // eslint-disable-next-line react/jsx-no-bind
+              onClick={onClickCopyToClipboard}
+            >
+              Copy to clipboard
+            </Button>
           </div>
         </div>
+        // </FluentProvider>
       )}
     </>
   );
