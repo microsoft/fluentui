@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 28 Mar 2023 04:20:01 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.12",
+      "version": "3.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "d63779409cf8b7565b415fdac51e09cf4dbc6e08",
+            "comment": "Adds Slider as a web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Mar 2023 04:21:22 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.11",
       "version": "3.0.0-alpha.11",
