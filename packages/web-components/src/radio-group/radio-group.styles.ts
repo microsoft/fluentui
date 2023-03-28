@@ -40,14 +40,21 @@ export const styles = css`
   }
   :host([orientation='vertical']) .positioning-region {
     flex-direction: column;
+    justify-content: flex-start;
   }
   :host([orientation='horizontal']) .positioning-region {
     flex-direction: row;
   }
+  :host([orientation='horizontal']:not([stacked])) ::slotted([role='radio']) {
+    padding-inline-end: ${spacingHorizontalS};
+  }
   :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
-    grid-auto-flow: row;
-    padding-inline-start: ${spacingHorizontalS};
+    display: flex;
+    flex-direction: column;
+    padding-inline: ${spacingHorizontalS};
     height: auto;
+    align-items: center;
+    justify-content: center;
   }
   :host([disabled]) ::slotted([role='radio']) {
     pointer-events: none;

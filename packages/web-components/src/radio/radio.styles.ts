@@ -49,7 +49,6 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    margin-inline-end: ${spacingHorizontalS};
   }
   .label__hidden {
     display: none;
@@ -66,6 +65,7 @@ export const styles = css`
     margin: ${spacingVerticalS} ${spacingHorizontalS};
     position: relative;
     width: 16px;
+    justify-self: center;
   }
   .checked-indicator {
     border-radius: ${borderRadiusCircular};
@@ -100,7 +100,6 @@ export const styles = css`
   }
   :host([aria-checked='true']:not([disabled])) .checked-indicator {
     background-color: var(--checked-indicator-background-color);
-    display: block;
   }
   :host([aria-checked='true']:hover:not([disabled])) .control {
     border-color: ${colorCompoundBrandStrokeHover};
