@@ -2,6 +2,7 @@ import { computePosition } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates, getScrollParent } from './utils';
+import { isHTMLElement } from '@fluentui/react-utilities';
 
 interface PositionManagerOptions {
   /**
@@ -62,7 +63,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
 
     if (isFirstUpdate) {
       scrollParents.add(getScrollParent(container));
-      if (target instanceof HTMLElement) {
+      if (isHTMLElement(target)) {
         scrollParents.add(getScrollParent(target));
       }
 
