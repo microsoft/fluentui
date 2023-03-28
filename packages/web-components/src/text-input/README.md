@@ -6,6 +6,7 @@
 **Remaining work items**
 
 1. block v.s inline text input styling
+2. Add additional input types
 
 ## **Design Spec**
 
