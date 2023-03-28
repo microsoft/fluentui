@@ -30,6 +30,7 @@ import {
   fontSizeBase200,
   fontSizeBase300,
   fontSizeBase400,
+  fontSizeBase500,
   fontSizeBase600,
   fontWeightRegular,
   lineHeightBase200,
@@ -59,7 +60,6 @@ export const styles = css`
     align-items: center;
     align-items: flex-start;
   }
-
   .label {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
@@ -68,7 +68,6 @@ export const styles = css`
     color: ${colorNeutralForeground1};
     padding-bottom: ${spacingVerticalXS};
   }
-
   .root {
     height: 32px;
     display: inline-flex;
@@ -83,100 +82,6 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     gap: ${spacingHorizontalXXS};
   }
-
-  .control {
-    width: 100%;
-    box-sizing: border-box;
-    color: ${colorNeutralForeground1};
-    border-radius: ${borderRadiusMedium};
-    background: ${colorTransparentBackground};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
-    border: none;
-    background: transparent;
-    vertical-align: center;
-  }
-
-  .control:focus-visible {
-    outline: 0;
-    border: 0;
-  }
-
-  .control::placeholder {
-    color: ${colorNeutralForeground4};
-  }
-
-  :host([input-size='small']) .control {
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
-  }
-
-  :host([input-size='small']) .root {
-    height: 24px;
-    gap: ${spacingHorizontalXXS};
-    padding: 0 ${spacingHorizontalSNudge};
-  }
-
-  :host([input-size='small']) ::slotted([slot='start']),
-  :host([input-size='small']) ::slotted([slot='end']) {
-    font-size: ${fontSizeBase400};
-  }
-
-  :host([input-size='large']) .control {
-    font-size: ${fontSizeBase400};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase400};
-  }
-
-  :host([input-size='large']) .root {
-    height: 40px;
-    gap: ${spacingHorizontalS};
-    padding: 0 ${spacingHorizontalMNudge};
-  }
-
-  :host([input-size='large']) ::slotted([slot='start']),
-  :host([input-size='large']) ::slotted([slot='end']) {
-    font-size: ${fontSizeBase600};
-  }
-
-  :host ::slotted([slot='start']),
-  :host ::slotted([slot='end']) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${colorNeutralForeground3};
-  }
-
-  :host ::slotted([slot='start']) {
-    padding-right: ${spacingHorizontalXXS};
-  }
-
-  :host ::slotted([slot='end']) {
-    padding-left: ${spacingHorizontalXXS};
-    gap: ${spacingHorizontalXS};
-  }
-
-  :host(:hover) .root {
-    border-color: ${colorNeutralStroke1Hover};
-    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
-  }
-
-  :host(:active) .root {
-    border-color: ${colorNeutralStroke1Pressed};
-  }
-
-  :host(:focus-within:not([disabled])) .control {
-    color: ${colorNeutralForeground1};
-  }
-
-  :host(:focus-within:not([disabled])) .root {
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-    border-bottom-width: ${strokeWidthThick};
-  }
-
   .root::after {
     content: '';
     position: absolute;
@@ -193,7 +98,102 @@ export const styles = css`
     transition-duration: ${durationUltraFast};
     transition-delay: ${curveAccelerateMid};
   }
-
+  .control {
+    width: 100%;
+    box-sizing: border-box;
+    color: ${colorNeutralForeground1};
+    border-radius: ${borderRadiusMedium};
+    background: ${colorTransparentBackground};
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightRegular};
+    border: none;
+    background: transparent;
+    vertical-align: center;
+  }
+  .control:focus-visible {
+    outline: 0;
+    border: 0;
+  }
+  .control::placeholder {
+    color: ${colorNeutralForeground4};
+  }
+  :host ::slotted([slot='start']),
+  :host ::slotted([slot='end']) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${colorNeutralForeground3};
+    font-size: ${fontSizeBase500};
+  }
+  :host ::slotted([slot='start']) {
+    padding-right: ${spacingHorizontalXXS};
+  }
+  :host ::slotted([slot='end']) {
+    padding-left: ${spacingHorizontalXXS};
+    gap: ${spacingHorizontalXS};
+  }
+  :host(:hover) .root {
+    border-color: ${colorNeutralStroke1Hover};
+    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
+  }
+  :host(:active) .root {
+    border-color: ${colorNeutralStroke1Pressed};
+  }
+  :host(:focus-within:not([disabled])) .root {
+    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
+    border-bottom-width: ${strokeWidthThick};
+  }
+  :host(:focus-within:not([disabled])) .control {
+    color: ${colorNeutralForeground1};
+  }
+  :host([disabled]) .root {
+    background: ${colorTransparentBackground};
+    border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
+  }
+  :host([disabled]) .control::placeholder,
+  :host([disabled]) ::slotted([slot='start']),
+  :host([disabled]) ::slotted([slot='end']) {
+    color: ${colorNeutralForegroundDisabled};
+  }
+  :host(:focus-within) .root::after {
+    transform: scaleX(1);
+    transition: transform ${durationNormal} ${curveDecelerateMid};
+  }
+  :host(:focus-within:active) .root::after {
+    border-bottom-color: ${colorCompoundBrandStrokePressed};
+  }
+  ::selection {
+    color: ${colorNeutralForegroundInverted};
+    background-color: ${colorNeutralBackgroundInverted};
+  }
+  :host([input-size='small']) .control {
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase200};
+  }
+  :host([input-size='small']) .root {
+    height: 24px;
+    gap: ${spacingHorizontalXXS};
+    padding: 0 ${spacingHorizontalSNudge};
+  }
+  :host([input-size='small']) ::slotted([slot='start']),
+  :host([input-size='small']) ::slotted([slot='end']) {
+    font-size: ${fontSizeBase400};
+  }
+  :host([input-size='large']) .control {
+    font-size: ${fontSizeBase400};
+    font-weight: ${fontWeightRegular};
+    line-height: ${lineHeightBase400};
+  }
+  :host([input-size='large']) .root {
+    height: 40px;
+    gap: ${spacingHorizontalS};
+    padding: 0 ${spacingHorizontalMNudge};
+  }
+  :host([input-size='large']) ::slotted([slot='start']),
+  :host([input-size='large']) ::slotted([slot='end']) {
+    font-size: ${fontSizeBase600};
+  }
   :host([layout='inline']) {
     display: inline-flex;
     flex-direction: row;
@@ -206,7 +206,6 @@ export const styles = css`
   :host([layout='inline']) .label {
     padding-inline-end: 12px;
   }
-
   :host([appearance='underline']) .root {
     background: ${colorTransparentBackground};
     border: 0;
@@ -226,7 +225,6 @@ export const styles = css`
   :host([appearance='underline'][disabled]) .root {
     border-bottom-color: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
-
   :host([appearance='filledLighter']) .root,
   :host([appearance='filledDarker']) .root {
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
@@ -246,29 +244,5 @@ export const styles = css`
   :host([appearance='filledDarker']):active .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
-  }
-
-  :host([disabled]) .root {
-    background: ${colorTransparentBackground};
-    border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
-  }
-  :host([disabled]) .control::placeholder,
-  :host([disabled]) ::slotted([slot='start']),
-  :host([disabled]) ::slotted([slot='end']) {
-    color: ${colorNeutralForegroundDisabled};
-  }
-
-  :host(:focus-within) .root::after {
-    transform: scaleX(1);
-    transition: transform ${durationNormal} ${curveDecelerateMid};
-  }
-
-  :host(:focus-within:active) .root::after {
-    border-bottom-color: ${colorCompoundBrandStrokePressed};
-  }
-
-  ::selection {
-    color: ${colorNeutralForegroundInverted};
-    background-color: ${colorNeutralBackgroundInverted};
   }
 `;

@@ -81,7 +81,7 @@ export const TextInput = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
-    <fluent-text-input appearance="outline" placeholder="Outline">
+    <fluent-text-input placeholder="Outline">
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}${Person20Regular}</span>
       Outlined Input
@@ -115,7 +115,7 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
       Small Input
     </fluent-text-input>
 
-    <fluent-text-input input-size="medium" placeholder="Medium">
+    <fluent-text-input placeholder="Medium">
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}${Person20Regular}</span>
       Medium Input
@@ -130,7 +130,7 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const LayoutBlock = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input layout="block" placeholder="Block">
+  <fluent-text-input placeholder="Block">
     <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}${Person20Regular}</span>
     Layout Block Input
