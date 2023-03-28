@@ -9,8 +9,6 @@ type LabelStoryMeta = Meta<LabelStoryArgs>;
 
 const storyTemplate = html<LabelStoryArgs>`
   <fluent-label
-    for="abc"
-    form="def"
     weight="${x => x.weight}"
     size="${x => x.size}"
     ?required="${x => x.required}"
@@ -89,10 +87,6 @@ export const Weight = renderComponent(html<LabelStoryArgs>`
   </div>
 `);
 
-export const Required = renderComponent(html<LabelStoryArgs>`
-  <fluent-label required="true">Required Label</fluent-label>
-`);
+export const Required = renderComponent(html<LabelStoryArgs>` <fluent-label required>Required Label</fluent-label> `);
 
-export const Disabled = renderComponent(html<LabelStoryArgs>`
-  <fluent-label disabled="true">Disabled Label</fluent-label>
-`);
+export const Disabled = renderComponent(html<LabelStoryArgs>` <fluent-label disabled>Disabled Label</fluent-label> `);

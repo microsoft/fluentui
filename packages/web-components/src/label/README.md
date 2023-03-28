@@ -57,7 +57,6 @@ Creating a simple label element with an optional info icon and optional required
 | `disabled` | disabled |
 | `size`     | size     |
 | `weight`   | weight   |
-| `id`       | id       |
 
 <br />
 
@@ -79,7 +78,6 @@ Creating a simple label element with an optional info icon and optional required
     ?required="${(attr: Label) => attr.required}"
     size="${(attr: Label) => attr.size}"
     weight="${(attr: Label) => attr.weight}"
-    id="${(attr: Label) => attr.id}"
   >
     <slot></slot>
     <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
