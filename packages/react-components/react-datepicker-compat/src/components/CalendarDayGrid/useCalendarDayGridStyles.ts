@@ -21,6 +21,9 @@ import { weekCornersClassNames } from './useWeekCornerStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
 
+/**
+ * @internal
+ */
 export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = {
   wrapper: 'fui-CalendarDayGrid__wrapper',
   table: 'fui-CalendarDayGrid__table',
@@ -38,6 +41,9 @@ export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles> = 
   dayMarker: 'fui-CalendarDayGrid__dayMarker',
 };
 
+/**
+ * @internal
+ */
 export const extraCalendarDayGridClassNames = {
   hoverStyle: 'fui-CalendarDayGrid__hoverStyle',
   pressedStyle: 'fui-CalendarDayGrid__pressedStyle',
@@ -87,7 +93,7 @@ const useDayCellStyles = makeStyles({
     },
 
     [`&.${extraCalendarDayGridClassNames.hoverStyle}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -97,7 +103,7 @@ const useDayCellStyles = makeStyles({
     },
 
     [`&.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -118,9 +124,10 @@ const useDayCellStyles = makeStyles({
 const useDaySelectedStyles = makeStyles({
   dateRangeTypeNotMonth: {
     backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    color: tokens.colorNeutralForeground1Static,
 
     [`&:hover, &.${extraCalendarDayGridClassNames.hoverStyle}, &.${extraCalendarDayGridClassNames.pressedStyle}`]: {
-      color: tokens.colorNeutralForeground2,
+      color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected + ' !important',
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight!important',
@@ -172,7 +179,7 @@ const useWeekNumberCellStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
     ...shorthands.borderRight('1px', 'solid'),
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground2,
+    color: tokens.colorNeutralBackgroundStatic,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     height: '28px',
@@ -319,6 +326,8 @@ const useCornerBorderAndRadiusStyles = makeStyles({
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the CalendarDayGrid slots based on the state
  */
 export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStyleProps): CalendarDayGridStyles => {

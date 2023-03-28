@@ -5,6 +5,9 @@ import { getDateRangeArray } from '../../utils/index';
 import { DayInfo } from './CalendarDayGrid';
 import { CalendarDayGridProps } from './CalendarDayGrid.types';
 
+/**
+ * @internal
+ */
 export const weekCornersClassNames = {
   topRightCornerDate: 'fui-CalendarDayGrid__topRightCornerDate',
   topLeftCornerDate: 'fui-CalendarDayGrid__topLeftCornerDate',
@@ -12,10 +15,16 @@ export const weekCornersClassNames = {
   bottomLeftCornerDate: 'fui-CalendarDayGrid__bottomLeftCornerDate',
 };
 
+/**
+ * @internal
+ */
 export interface WeekCorners {
   [key: string]: string;
 }
 
+/**
+ * @internal
+ */
 export function useWeekCornerStyles(props: CalendarDayGridProps) {
   const { dir } = useFluent_unstable();
 

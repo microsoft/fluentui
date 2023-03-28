@@ -87,7 +87,7 @@
     "@ctrl/tinycolor": "3.3.4",
     "@cypress/react": "5.12.4",
     "@cypress/webpack-dev-server": "1.8.3",
-    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-icons": "^2.0.196",
     "@griffel/babel-preset": "1.4.8",
     "@griffel/eslint-plugin": "1.0.0",
     "@griffel/jest-serializer": "1.1.4",
@@ -124,6 +124,7 @@
     "@storybook/manager-webpack5": "6.5.15",
     "@storybook/react": "6.5.15",
     "@storybook/theming": "6.5.15",
+    "@swc/cli": "0.1.59",
     "@swc/core": "1.3.30",
     "@swc/helpers": "0.4.14",
     "@testing-library/dom": "8.11.3",
@@ -196,6 +197,7 @@
     "babel-plugin-annotate-pure-imports": "1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "1.0.0-5",
     "babel-plugin-lodash": "3.3.4",
+    "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-tester": "10.1.0",
     "beachball": "2.31.0",
     "chalk": "4.1.0",
@@ -379,7 +381,8 @@
     "eslint": "7.25.0",
     "@mdx-js/loader/loader-utils": "~2.0.4",
     "swc-loader": "^0.2.3",
-    "prettier": "2.8.4"
+    "prettier": "2.8.4",
+    "puppeteer": "19.6.0"
   },
   "syncpack": {
     "prod": true,
@@ -404,6 +407,7 @@
           "@babel/generator",
           "@babel/traverse",
           "@rnx-kit/eslint-plugin",
+          "@swc/helpers",
           "@types/react-test-renderer",
           "@typescript-eslint/eslint-plugin",
           "@typescript-eslint/experimental-utils",
