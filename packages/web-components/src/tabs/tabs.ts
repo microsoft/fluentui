@@ -1,11 +1,11 @@
-import { attr } from '@microsoft/fast-element';
+import { attr, css, ElementStyles } from '@microsoft/fast-element';
 import { FASTTabs, TabsOrientation } from '@microsoft/fast-foundation';
 import { Tab } from '../index.js';
 import { TabsAppearance, TabsSize } from './tabs.options.js';
 
 export const TabTokenNames = {
-  tabIndicatorOffset: '--tabIndicatorOffsetX',
-  tabIndicatorScale: '--tabIndicatorScaleX',
+  tabIndicatorOffset: '--tabIndicatorOffset',
+  tabIndicatorScale: '--tabIndicatorScale',
 } as const;
 
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
@@ -37,6 +37,12 @@ export class Tabs extends FASTTabs {
    * Used to scale the tab active indicator up or down as animations of the active indicator occur.
    */
   private activeTabScale = 1;
+
+  /**
+   * styles
+   * used in the class for storing the css variables required for animations
+   */
+  private styles: ElementStyles | undefined;
 
   /**
    * appearance
@@ -158,11 +164,21 @@ export class Tabs extends FASTTabs {
   }
 
   private setTabOffsetCSSVar() {
-    document.documentElement.style.setProperty(TabTokenNames.tabIndicatorOffset, `${this.activeTabOffset}px`);
+    this.styles = css/**css*/ `
+      :host {
+        --tabIndicatorOffset: ${this.activeTabOffset.toString()}px;
+      }
+    `;
+    this.$fastController.addStyles(this.styles);
   }
 
   private setTabScaleCSSVar() {
-    document.documentElement.style.setProperty(TabTokenNames.tabIndicatorScale, `${this.activeTabScale}`);
+    this.styles = css/**css*/ `
+      :host {
+        --tabIndicatorScale: ${this.activeTabScale.toString()};
+      }
+    `;
+    this.$fastController.addStyles(this.styles);
   }
 
   public activeidChanged(oldValue: string, newValue: string) {
