@@ -15,7 +15,7 @@ export const KeyColorBanner = (props: KeyColorBannerProps) => {
       }}
     >
       <Text style={{ color: contrast(hex_to_sRGB(props.keyColor), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white' }}>
-        Key Color
+        Key color
       </Text>
     </div>
   );

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
 import { AccessibilityContrastChip } from '../ColorTokens/AccessibilityList';
-import { BrandVariants, createDarkTheme, createLightTheme, Label, Theme } from '@fluentui/react-components';
+import { BrandVariants, createDarkTheme, createLightTheme, Label, Theme, tokens } from '@fluentui/react-components';
+
 export interface AccessibilityPanelProps {
   lightThemeOverrides: Partial<Theme>;
 
@@ -16,7 +17,14 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
   const { fail: failDark } = getAccessibilityChecker({ ...createDarkTheme(brand), ...darkThemeOverrides });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: tokens.spacingVerticalL,
+        marginBottom: tokens.spacingVerticalL,
+      }}
+    >
       <Label>Light mode</Label>
       <AccessibilityContrastChip failKeys={Object.keys(failLight)} />
       <Label>Dark mode</Label>
