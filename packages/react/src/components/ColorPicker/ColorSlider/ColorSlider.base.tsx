@@ -223,7 +223,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     }
 
     const lastTouch = ev.touches[ev.touches.length - 1];
-    if (lastTouch.clientX !== undefined && lastTouch.clientY !== undefined) {
+    if (lastTouch.clientX !== undefined) {
       const maxValue = this._maxValue;
       const rectSize = this._root.current.getBoundingClientRect();
 
