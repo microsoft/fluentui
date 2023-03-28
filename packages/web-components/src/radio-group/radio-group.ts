@@ -34,7 +34,6 @@ export class RadioGroup extends FASTRadioGroup {
     }
 
     if (this.disabled) {
-      this.style.setProperty('--control-border-color-checked', `${colorNeutralForegroundDisabled.$value}`);
       this.style.setProperty('--control-border-color', `${colorNeutralForegroundDisabled.$value}`);
       this.style.setProperty('--checked-indicator-background-color', `${colorNeutralForegroundDisabled.$value}`);
       this.style.setProperty('--state-color', `${colorNeutralForegroundDisabled.$value}`);
@@ -49,15 +48,6 @@ export class RadioGroup extends FASTRadioGroup {
 
   protected slottedRadioButtonsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
     super.slottedRadioButtonsChanged(oldValue, newValue);
-    this.style.setProperty('--control-border-color-checked', `${colorCompoundBrandStroke.$value}`);
-    this.style.setProperty('--control-border-color', `${colorNeutralStrokeAccessible.$value}`);
-    this.style.setProperty('--checked-indicator-background-color', `${colorCompoundBrandForeground1.$value}`);
-    this.style.setProperty('--state-color', `${colorNeutralForeground3.$value}`);
-    this.style.setProperty(
-      '--stacked-padding',
-      `${spacingVerticalSNudge.$value} ${spacingHorizontalS.$value} ${spacingVerticalSNudge.$value} ${spacingHorizontalXS.$value}`,
-    );
-
     if (this.disabled || this.stacked) {
       this.createLocalTokens();
     }

@@ -1,7 +1,10 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
+  colorCompoundBrandForeground1,
   colorNeutralForeground1,
+  colorNeutralForeground3,
+  colorNeutralStrokeAccessible,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
@@ -9,6 +12,7 @@ import {
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
+  spacingVerticalSNudge,
 } from '../theme/design-tokens.js';
 
 /** RadioGroup styles
@@ -18,6 +22,10 @@ export const styles = css`
   ${display('flex')}
 
   :host {
+    --control-border-color: ${colorNeutralStrokeAccessible};
+    --checked-indicator-background-color: ${colorCompoundBrandForeground1};
+    --state-color: ${colorNeutralForeground3};
+    --stacked-padding: ${spacingVerticalSNudge} ${spacingHorizontalS} ${spacingVerticalSNudge} ${spacingHorizontalXS};
     align-items: flex-start;
     flex-direction: column;
     margin: 2px 0;

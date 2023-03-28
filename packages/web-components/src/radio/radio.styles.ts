@@ -3,16 +3,11 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
-  colorCompoundBrandForeground1,
   colorCompoundBrandForeground1Pressed,
-  colorCompoundBrandStroke,
   colorCompoundBrandStrokeHover,
   colorCompoundBrandStrokePressed,
-  colorNeutralForeground1,
   colorNeutralForeground2,
-  colorNeutralForeground3,
   colorNeutralForegroundDisabled,
-  colorNeutralStrokeAccessible,
   colorNeutralStrokeAccessibleHover,
   colorNeutralStrokeAccessiblePressed,
   colorStrokeFocus1,
@@ -22,10 +17,7 @@ import {
   fontWeightRegular,
   lineHeightBase300,
   spacingHorizontalS,
-  spacingHorizontalXS,
   spacingVerticalS,
-  spacingVerticalSNudge,
-  spacingVerticalXS,
 } from '../theme/design-tokens.js';
 
 /** Radio styles
