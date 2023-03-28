@@ -1,15 +1,4 @@
-import {
-  colorCompoundBrandForeground1,
-  colorCompoundBrandStroke,
-  colorNeutralForeground3,
-  colorNeutralForegroundDisabled,
-  colorNeutralStrokeAccessible,
-  spacingHorizontalS,
-  spacingHorizontalXS,
-  spacingVerticalS,
-  spacingVerticalSNudge,
-  spacingVerticalXS,
-} from '@fluentui/web-components';
+import { colorNeutralForegroundDisabled } from '@fluentui/web-components';
 import { attr } from '@microsoft/fast-element';
 import { FASTRadioGroup } from '@microsoft/fast-foundation';
 
@@ -38,17 +27,11 @@ export class RadioGroup extends FASTRadioGroup {
       this.style.setProperty('--checked-indicator-background-color', `${colorNeutralForegroundDisabled.$value}`);
       this.style.setProperty('--state-color', `${colorNeutralForegroundDisabled.$value}`);
     }
-    if (this.stacked) {
-      this.style.setProperty(
-        '--stacked-padding',
-        `${spacingVerticalXS.$value} ${spacingHorizontalS.$value} ${spacingVerticalS.$value} ${spacingHorizontalS.$value}`,
-      );
-    }
   }
 
   protected slottedRadioButtonsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
     super.slottedRadioButtonsChanged(oldValue, newValue);
-    if (this.disabled || this.stacked) {
+    if (this.disabled) {
       this.createLocalTokens();
     }
   }
