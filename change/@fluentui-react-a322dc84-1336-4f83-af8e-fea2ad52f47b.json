@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add blur function to ISearchBox componentRef",
+  "packageName": "@fluentui/react",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
