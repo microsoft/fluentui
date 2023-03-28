@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Data set for perf",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}

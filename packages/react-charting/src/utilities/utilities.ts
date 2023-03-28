@@ -1,6 +1,13 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
+import {
+  scaleLinear as d3ScaleLinear,
+  scaleTime as d3ScaleTime,
+  scaleBand as d3ScaleBand,
+  //ScaleLinear,
+  //ScaleBand,
+  // ScaleTime,
+} from 'd3-scale';
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -145,7 +152,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, culture?: string) 
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
-    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
+    .rangeRound([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   showRoundOffXTickValues && xAxisScale.nice();
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -365,65 +372,69 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  * This methos creates an object for those 2 charts.
  * @param values
  */
-
-type DataPoint = {
-  legend: string;
-  y: number;
-  x: number | Date | string;
-  color: string;
-  yAxisCalloutData: string;
-  index?: number;
-  callOutAccessibilityData?: IAccessibilityProps;
-};
-
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: {
+  let combinedResult: (ILineChartDataPoint & {
     legend: string;
-    y: number;
-    x: number | Date | string;
-    color: string;
-    yAxisCalloutData?: string | { [id: string]: number };
-    callOutAccessibilityData?: IAccessibilityProps;
-  }[] = [];
+    color: string | undefined;
+    index?: number;
+  })[] = [];
 
-  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data
-      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
-      .map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+  values.forEach((line: ILineChartPoints & { index?: number }) => {
+    const elements = line.data
+      .filter((point: ILineChartDataPoint) => !point.hideCallout)
+      .map((point: ILineChartDataPoint) => {
+        return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
   });
 
-  const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach((e1: DataPoint, index: number) => {
-    e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
-    const filteredValues = [
-      {
-        legend: e1.legend,
-        y: e1.y,
-        color: e1.color,
-        yAxisCalloutData: e1.yAxisCalloutData,
-        callOutAccessibilityData: e1.callOutAccessibilityData,
-        index: e1.index,
-      },
-    ];
-    combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
-      e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
-      if (e1.x === e2.x) {
-        filteredValues.push({
-          legend: e2.legend,
-          y: e2.y,
-          color: e2.color,
-          yAxisCalloutData: e2.yAxisCalloutData,
-          callOutAccessibilityData: e2.callOutAccessibilityData,
-          index: e2.index,
-        });
-      }
-    });
-    result.push({ x: e1.x, values: filteredValues });
+  const xValToDataPoints: {
+    [key: number]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+    [key: string]: {
+      legend: string;
+      y: number;
+      color: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+  } = {};
+  combinedResult.forEach(ele => {
+    const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
+    if (xValue in xValToDataPoints) {
+      xValToDataPoints[xValue].push({
+        legend: ele.legend,
+        y: ele.y,
+        color: ele.color!,
+        yAxisCalloutData: ele.yAxisCalloutData,
+        callOutAccessibilityData: ele.callOutAccessibilityData,
+        index: ele.index,
+      });
+    } else {
+      xValToDataPoints[xValue] = [
+        {
+          legend: ele.legend,
+          y: ele.y,
+          color: ele.color!,
+          yAxisCalloutData: ele.yAxisCalloutData,
+          callOutAccessibilityData: ele.callOutAccessibilityData,
+          index: ele.index,
+        },
+      ];
+    }
   });
-  return getUnique(result, 'x');
+
+  const result = Object.keys(xValToDataPoints).map(xValue => {
+    return { x: Number(xValue), values: xValToDataPoints[xValue] };
+  });
+  return result;
 }
 
 export function getUnique(
