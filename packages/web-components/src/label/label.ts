@@ -7,16 +7,6 @@ import { LabelSize, LabelWeight } from './label.options.js';
  */
 export class Label extends FASTElement {
   /**
-   * 	Specifies styles for label when associated input is a required field
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: required
-   */
-  @attr({ mode: 'boolean' })
-  public required: boolean = false;
-
-  /**
    * 	Specifies font size of a label
    *
    * @public
@@ -37,4 +27,24 @@ export class Label extends FASTElement {
    */
   @attr
   public weight?: LabelWeight;
+
+  /**
+   * 	Specifies styles for label when associated input is disabled
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: disabled
+   */
+  @attr({ mode: 'boolean' })
+  public disabled: boolean = false;
+
+  /**
+   * 	Specifies styles for label when associated input is a required field
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: required
+   */
+  @attr({ mode: 'boolean' })
+  public required: boolean = false;
 }
