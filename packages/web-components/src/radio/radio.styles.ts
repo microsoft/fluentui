@@ -17,6 +17,7 @@ import {
   fontWeightRegular,
   lineHeightBase300,
   spacingHorizontalS,
+  spacingHorizontalXS,
   spacingVerticalS,
 } from '../theme/design-tokens.js';
 
@@ -24,13 +25,15 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('inline-flex')}
+  ${display('inline-grid')}
 
   :host {
-    height: 32px;
+    grid-auto-flow: column;
+    grid-template-columns: max-content;
+    gap: ${spacingHorizontalXS};
     align-items: center;
+    height: 32px;
     cursor: pointer;
-    flex-direction: row;
     outline: none;
     position: relative;
     user-select: none;
@@ -46,7 +49,7 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    padding: var(--stacked-padding);
+    margin-inline-end: ${spacingHorizontalS};
   }
   .label__hidden {
     display: none;

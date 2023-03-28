@@ -12,7 +12,6 @@ import {
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
-  spacingVerticalSNudge,
 } from '../theme/design-tokens.js';
 
 /** RadioGroup styles
@@ -25,7 +24,6 @@ export const styles = css`
     --control-border-color: ${colorNeutralStrokeAccessible};
     --checked-indicator-background-color: ${colorCompoundBrandForeground1};
     --state-color: ${colorNeutralForeground3};
-    --stacked-padding: ${spacingVerticalSNudge} ${spacingHorizontalS} ${spacingVerticalSNudge} ${spacingHorizontalXS};
     align-items: flex-start;
     flex-direction: column;
     margin: 2px 0;
@@ -52,8 +50,8 @@ export const styles = css`
   }
 
   :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
-    flex-direction: column;
-    justify-content: center;
+    grid-auto-flow: row;
+    padding-inline-start: ${spacingHorizontalS};
     height: auto;
   }
 
