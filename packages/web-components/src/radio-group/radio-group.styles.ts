@@ -34,26 +34,21 @@ export const styles = css`
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     cursor: default;
   }
-
   .positioning-region {
     display: flex;
     flex-wrap: wrap;
   }
-
   :host([orientation='vertical']) .positioning-region {
     flex-direction: column;
   }
-
   :host([orientation='horizontal']) .positioning-region {
     flex-direction: row;
   }
-
   :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
     grid-auto-flow: row;
     padding-inline-start: ${spacingHorizontalS};
     height: auto;
   }
-
   :host([disabled]) ::slotted([role='radio']) {
     pointer-events: none;
   }
