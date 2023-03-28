@@ -62,14 +62,18 @@ export class ColorRectangleBase
   }
 
   public componentDidMount(): void {
-    // with Chrome's passive DOM listeners, stopPropagation and preventDefault only work if passive is false.
-    addEventListener('touchstart', this._onTouchStart, { capture: true, passive: false });
-    addEventListener('touchmove', this._onTouchMove, { capture: true, passive: false });
+    if (this._root.current) {
+      // with Chrome's passive DOM listeners, stopPropagation and preventDefault only work if passive is false.
+      this._root.current.addEventListener('touchstart', this._onTouchStart, { capture: true, passive: false });
+      this._root.current.addEventListener('touchmove', this._onTouchMove, { capture: true, passive: false });
+    }
   }
 
   public componentWillUnmount() {
-    removeEventListener('touchstart', this._onTouchStart);
-    removeEventListener('touchmove', this._onTouchMove);
+    if (this._root.current) {
+      this._root.current.removeEventListener('touchstart', this._onTouchStart);
+      this._root.current.removeEventListener('touchmove', this._onTouchMove);
+    }
     this._disposeListeners();
   }
 
