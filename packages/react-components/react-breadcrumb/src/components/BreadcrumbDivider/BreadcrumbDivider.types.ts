@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type BreadcrumbDividerSlots = {
-  root: Slot<'span'>;
+  root: Slot<'li'>;
 };
 
 /**

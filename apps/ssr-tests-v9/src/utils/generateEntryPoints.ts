@@ -1,5 +1,6 @@
 import * as glob from 'glob';
 import * as fs from 'fs';
+import * as match from 'micromatch';
 import * as path from 'path';
 import * as prettier from 'prettier';
 
@@ -10,17 +11,27 @@ type GenerateEntryPointsConfig = {
   cjsEntryPoint: string;
   esmEntryPoint: string;
   storiesGlobs: string[];
+  ignore: string[];
 };
 
-export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<void> {
+export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<{ ignoredStories: string[] }> {
   const storiesFiles = config.storiesGlobs.map(pattern => glob.sync(pattern)).flatMap(pattern => pattern);
-
   const indexStoriesFiles = storiesFiles.filter(filename => filename.includes('index.stories.ts'));
 
   const distDir = path.dirname(config.cjsEntryPoint);
-  const imports = (
-    await Promise.all(indexStoriesFiles.map(filename => getImportsFromIndexFile(distDir, filename)))
-  ).flatMap(entries => entries);
+  const ignoredStories: string[] = [];
+
+  const imports = (await Promise.all(indexStoriesFiles.map(filename => getImportsFromIndexFile(distDir, filename))))
+    .flatMap(entries => entries)
+    .filter(entry => {
+      const isIgnoredStory = match.isMatch(entry.filepath, config.ignore);
+
+      if (isIgnoredStory) {
+        ignoredStories.push(entry.filepath);
+      }
+
+      return !isIgnoredStory;
+    });
 
   const appTemplate = `
   import { RendererProvider, createDOMRenderer } from '@griffel/react';
@@ -57,4 +68,8 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
 
   fs.writeFileSync(config.esmEntryPoint, prettier.format(appTemplate, { parser: 'typescript' }));
   fs.writeFileSync(config.cjsEntryPoint, prettier.format(storiesTemplate, { parser: 'typescript' }));
+
+  return {
+    ignoredStories,
+  };
 }
