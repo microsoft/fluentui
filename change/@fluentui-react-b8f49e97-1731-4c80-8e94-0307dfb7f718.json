@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Ensure click event object is not passed to calendarDismissed callback in DatePicker.",
+  "packageName": "@fluentui/react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
