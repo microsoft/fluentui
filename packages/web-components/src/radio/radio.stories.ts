@@ -58,13 +58,13 @@ export default {
 export const Radio = renderComponent(storyTemplate).bind({});
 
 export const Checked = renderComponent(html<RadioStoryArgs>`
-  <fluent-radio-group nname="radio-story">
+  <fluent-radio-group name="radio-story">
     <fluent-radio checked="true" value="Apple"> Option 1 </fluent-radio>
   </fluent-radio-group>
 `);
 
 export const Disabled = renderComponent(html<RadioStoryArgs>`
-  <fluent-radio-group nname="radio-story">
+  <fluent-radio-group name="radio-story">
     <fluent-radio disabled="true" value="Apple"> Option 1 </fluent-radio>
   </fluent-radio-group>
 `);

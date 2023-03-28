@@ -39,8 +39,7 @@ export const styles = css`
     user-select: none;
     color: var(--state-color);
   }
-  :host([disabled]),
-  :host([required]) {
+  :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
   }
   .label {
@@ -102,9 +101,6 @@ export const styles = css`
     background-color: var(--checked-indicator-background-color);
     display: block;
   }
-  :host([disabled]) .control {
-    pointer-events: none;
-  }
   :host([aria-checked='true']:hover:not([disabled])) .control {
     border-color: ${colorCompoundBrandStrokeHover};
   }
@@ -120,8 +116,6 @@ export const styles = css`
   :host([disabled]) .control {
     pointer-events: none;
     border-color: ${colorNeutralForegroundDisabled};
-  }
-  :host([required]) .checked-indicator {
-    background-color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
   }
 `;
