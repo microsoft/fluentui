@@ -8,13 +8,7 @@ export const TabTokenNames = {
   tabIndicatorScale: '--tabIndicatorScaleX',
 } as const;
 
-export interface TabData {
-  id: string;
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-}
+type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
  * TabList extends FASTTabs and is used for constructing a fluent-tab-list custom html element.
@@ -27,12 +21,12 @@ export class Tabs extends FASTTabs {
    * activeTabData
    * The positional coordinates and size dimensions of the active tab. Used for calculating the offset and scale of the tab active indicator.
    */
-  private activeTabData: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
+  private activeTabData: TabData = { x: 0, y: 0, height: 0, width: 0 };
   /**
    * previousActiveTabData
    * The positional coordinates and size dimensions of the active tab. Used for calculating the offset and scale of the tab active indicator.
    */
-  private previousActiveTabData: TabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
+  private previousActiveTabData: TabData = { x: 0, y: 0, height: 0, width: 0 };
   /**
    * activeTabOffset
    * Used to position the active indicator for animations of the active indicator on active tab changes.
@@ -100,7 +94,7 @@ export class Tabs extends FASTTabs {
    * resets animation values to defaults. removes the animated css class
    */
   private clearAnimationProperties(tab: Tab) {
-    this.previousActiveTabData = { id: '', x: 0, y: 0, height: 0, width: 0 };
+    this.previousActiveTabData = { x: 0, y: 0, height: 0, width: 0 };
     this.activeTabOffset = 0;
     this.activeTabScale = 1;
     tab.classList.remove('animated');
@@ -148,14 +142,13 @@ export class Tabs extends FASTTabs {
       const parentRect = this.getBoundingClientRect();
 
       this.activeTabData = {
-        id: activeTab.id,
         x: activeRect.x - parentRect.x,
         y: activeRect.y - parentRect.y,
         height: activeRect.height,
         width: activeRect.width,
       } as TabData;
 
-      if (!this.previousActiveTabData?.id) {
+      if (!(this.previousActiveTabData?.x !== this.activeTabData?.x)) {
         this.previousActiveTabData = this.activeTabData;
       }
     }
