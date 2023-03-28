@@ -29,6 +29,11 @@ const useStyles = makeStyles({
     justifyContent: 'flex-end',
     paddingRight: '20px',
   },
+  exportHeader: {
+    display: 'grid',
+    gridTemplateColumns: '350px 50px',
+    alignItems: 'top',
+  },
   popover: {
     width: '300px',
   },
@@ -112,17 +117,19 @@ export const ExportPanel = () => {
           }}
         >
           <div style={{ margin: '16px' }}>
-            <Text as="h1" id="headingID" size={500}>
-              Export Theme
-            </Text>
-            <Button
-              size="small"
-              appearance="subtle"
-              icon={<DismissSquare24Regular />}
-              // eslint-disable-next-line react/jsx-no-bind
-              onClick={onCloseExportPanel}
-            />
-            <br />
+            <div className={styles.exportHeader}>
+              <Text as="h1" id="headingID" size={500}>
+                Export Theme
+              </Text>
+              <Button
+                size="small"
+                appearance="subtle"
+                icon={<DismissSquare24Regular />}
+                // eslint-disable-next-line react/jsx-no-bind
+                onClick={onCloseExportPanel}
+              />
+            </div>
+
             <br />
             <Body1>
               Passing this theme to a FluentProvider will automatically apply it to any Fluent components below it. You
@@ -156,6 +163,7 @@ export const ExportPanel = () => {
             />
             <br />
             <ExportLink />
+            <br />
             <Button
               appearance="primary"
               // eslint-disable-next-line react/jsx-no-bind
