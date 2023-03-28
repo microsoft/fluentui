@@ -15,14 +15,15 @@ import {
   Switch,
   tokens,
   useId,
+  Caption1Stronger,
 } from '@fluentui/react-components';
-import { EditRegular } from '@fluentui/react-icons';
+import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
 import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   inputs: {
     display: 'flex',
@@ -92,7 +93,6 @@ export const Form: React.FC = () => {
     dispatch,
     state: { isDark, themeName, darkThemeOverrides, lightThemeOverrides, brand },
   } = useThemeDesigner();
-  const defaultThemePlaceholderName = 'MyNewTheme';
   const themeNameInputId = useId('themeNameInputId');
 
   const handleIsDarkChange = () => {
@@ -154,7 +154,10 @@ export const Form: React.FC = () => {
       <Accordion defaultOpenItems={['1']} multiple>
         {/* `multiple` allows for toggle of collapse as well as open multiple panels */}
         <AccordionItem value="1">
-          <AccordionHeader>Step 1 - Color settings</AccordionHeader>
+          <AccordionHeader>
+            <Caption1Stronger>Step 1 - Color settings</Caption1Stronger>
+          </AccordionHeader>
+
           <AccordionPanel className={styles.accordianContainer}>
             <div className={styles.inputs}>
               <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
@@ -228,7 +231,9 @@ export const Form: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="2">
-          <AccordionHeader>Step 2 - Contrast check</AccordionHeader>
+          <AccordionHeader>
+            <Caption1Stronger>Step 2 - Contrast check</Caption1Stronger>
+          </AccordionHeader>
           <AccordionPanel>
             <AccessibilityPanel
               darkThemeOverrides={darkThemeOverrides}
@@ -238,7 +243,9 @@ export const Form: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="3">
-          <AccordionHeader>Step 3 - Export</AccordionHeader>
+          <AccordionHeader>
+            <Caption1Stronger>Step 3 - Export</Caption1Stronger>
+          </AccordionHeader>
           <AccordionPanel>
             <div className={styles.labelName}>
               <Label htmlFor={themeNameInputId}>Theme name</Label>
@@ -247,12 +254,13 @@ export const Form: React.FC = () => {
                 id={themeNameInputId}
                 // eslint-disable-next-line react/jsx-no-bind
                 onChange={handleThemeNameChange}
-                contentAfter={<EditRegular />}
+                // contentAfter={<EditRegular />}
                 placeholder={defaultThemePlaceholderName}
                 value={themeName === defaultThemePlaceholderName ? '' : themeName}
               />
             </div>
-            <Button size="small" appearance="outline" onClick={showExportButton}>
+            <br />
+            <Button size="small" appearance="primary" onClick={showExportButton}>
               Export
             </Button>
           </AccordionPanel>
