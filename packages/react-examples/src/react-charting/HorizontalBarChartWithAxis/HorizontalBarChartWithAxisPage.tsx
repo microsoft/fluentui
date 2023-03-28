@@ -68,15 +68,11 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
               Use <code>useSingleColor</code> to use a single color for all bars.
             </p>
             <p>
-              Use <code>lineLegendText and lineLegendColor</code> to specify the text and color for legends of lines in
-              the chart.
-            </p>
-            <p>
               See <code>onRenderCalloutPerHorizontalBar</code> prop to customize the hover callout.
             </p>
             <p>
               If the y data points are of String there are 2 modes to view them, the first to truncates y axis labels
-              and the second enables to view the complete labels.
+              using showYAxisLablesTooltip and the second enables to view the complete labels using expandYAxisLabels.
             </p>
           </div>
         }

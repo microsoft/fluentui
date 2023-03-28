@@ -40,7 +40,7 @@ export interface IHorizontalBarChartWithAxisState extends IBasestate {
   /**
    * data point of x, where rectangle is hovered or focused
    */
-  activeXdataPoint: number | string | null;
+  activeXdataPoint: number | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
@@ -87,12 +87,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       hoverXValue: '',
     };
     this._calloutId = getId('callout');
-    this._tooltipId = getId('VCTooltipID_');
+    this._tooltipId = getId('HBCWATooltipID_');
     this._refArray = [];
     this._xAxisType =
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
-        : XAxisTypes.StringAxis;
+        : XAxisTypes.NumericAxis;
     this._yAxisType =
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
@@ -199,8 +199,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   };
 
   private _getGraphData = (
-    xScale: StringAxis,
-    yScale: NumericAxis,
+    xScale: NumericAxis,
+    yScale: NumericAxis | StringAxis,
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
@@ -233,7 +233,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     this._refArray.push({ index: legendTitle, refElement: element });
   };
 
-  private _getCalloutContentForLineAndBar = (
+  private _getCalloutContentForBar = (
     point: IHorizontalBarChartWithAxisDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
     const YValueHover: IYValueHover[] = [];
@@ -243,6 +243,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     // callout data for the bar
     YValueHover.push({
       legend: selectedPoint[0].legend,
+      // For HBCWA x and y Values are swapped
       y: selectedPoint[0].x,
       color: !useSingleColor
         ? selectedPoint[0].color
@@ -262,7 +263,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   ): void {
     mouseEvent.persist();
 
-    const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
+    const { YValueHover, hoverXValue } = this._getCalloutContentForBar(point);
     if (
       (this.state.isLegendSelected === false ||
         (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)) &&
@@ -310,12 +311,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.state.isLegendSelected === false ||
       (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend)
     ) {
-      const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
+      const { YValueHover, hoverXValue } = this._getCalloutContentForBar(point);
       this._refArray.forEach((obj: IRefArrayData, index: number) => {
-        if (
-          //obj.index === point.legend! &&
-          refArrayIndexNumber === index
-        ) {
+        if (refArrayIndexNumber === index) {
           this.setState({
             refSelected: obj.refElement,
             isCalloutVisible: true,
@@ -357,7 +355,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       const yBarScale = d3ScaleBand()
         .domain(this._yAxisLabels)
         .range([containerHeight - this.margins.bottom! - this._barWidth / 2, this.margins.top! + this._barWidth / 2])
-        .padding(0.1);
+        .padding(this.props.yAxisPadding || 0.1);
 
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
@@ -392,7 +390,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       }
       return (
         <rect
-          key={point.x}
+          key={point.y}
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
           y={yBarScale(point.y) - this._barWidth / 2}
@@ -472,7 +470,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         <rect
           key={point.x}
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
-          y={yBarScale(point.y) + this._barWidth / 2}
+          y={yBarScale(point.y) + this._barWidth / 3}
           width={
             this._isRtl
               ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
@@ -603,6 +601,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
+      // For HBCWA x and y Values are swapped
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._xMax = Math.max(domainValue[domainValue.length - 1], this.props.xMaxValue || 0);
     }

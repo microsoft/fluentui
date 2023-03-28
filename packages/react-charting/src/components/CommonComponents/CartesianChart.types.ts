@@ -240,7 +240,7 @@ export interface ICartesianChartProps {
   yMaxValue?: number;
 
   /**
-   * maximum data value point in y-axis
+   * maximum data value point in x-axis
    */
   xMaxValue?: number;
 

@@ -136,9 +136,6 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
             width={this.state.width}
             useSingleColor={this.state.useSingleColor}
             height={this.state.height}
-            // lineLegendText={'just line'}
-            //lineLegendColor={'brown'}
-            //lineOptions={lineOptions}
             {...(this.state.isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IHorizontalBarChartWithAxisDataPoint,

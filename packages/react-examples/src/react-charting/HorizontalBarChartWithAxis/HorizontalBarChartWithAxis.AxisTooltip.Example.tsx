@@ -6,15 +6,15 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
-interface IVerticalBarState {
-  selectedCallout: string;
+interface IHorizontalBarChartWithAxisState {
+  selectedOption: string;
 }
 
-export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}, IVerticalBarState> {
+export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}, IHorizontalBarChartWithAxisState> {
   constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
     this.state = {
-      selectedCallout: 'showTooltip',
+      selectedOption: 'showTooltip',
     };
   }
   public render(): JSX.Element {

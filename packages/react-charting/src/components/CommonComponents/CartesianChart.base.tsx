@@ -30,6 +30,7 @@ import {
   pointTypes,
   calculateLongestYAxisLabel,
   createYAxisLabels,
+  ChartTypes,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 
@@ -103,8 +104,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    if (this.props.showYAxisLables) {
-      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.props.theme!);
+    if (
+      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      this.props.showYAxisLables &&
+      this.yAxisElement
+    ) {
+      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.yAxisElement!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -147,8 +152,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         });
       }
     }
-    if (this.props.showYAxisLables) {
-      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.props.theme!);
+    if (
+      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      this.props.showYAxisLables &&
+      this.yAxisElement
+    ) {
+      const maxYAxisLabelLength = calculateLongestYAxisLabel(this.props.points, this.yAxisElement!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -179,10 +188,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     const margin = { ...this.margins };
-    if (!this._isRtl) {
-      margin.left! += this.state.startFromX;
-    } else {
-      margin.right! += this.state.startFromX;
+    if (this.props.chartType === ChartTypes.HorizontalBarChartWithAxis) {
+      if (!this._isRtl) {
+        margin.left! += this.state.startFromX;
+      } else {
+        margin.right! += this.state.startFromX;
+      }
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(margin);
@@ -304,7 +315,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-    yScale &&
+    this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+      yScale &&
       createYAxisLabels(
         this.yAxisElement,
         yScale,

@@ -184,14 +184,14 @@ export interface IVerticalBarChartDataPoint {
 
 export interface IHorizontalBarChartWithAxisDataPoint {
   /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If x is a string, then the data is evenly spaced along the x-axis.
+   * Dependent value of the data point, rendered along the x-axis.
    */
   x: number;
 
   /**
-   * Dependent value of the data point, rendered along the y-axis.
+   * Independent value of the data point, rendered along the y-axis.
+   * If y is a number, then each y-coordinate is plotted at its y-coordinate.
+   * If y is a string, then the data is evenly spaced along the y-axis.
    */
   y: number | string;
 

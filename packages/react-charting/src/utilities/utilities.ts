@@ -22,7 +22,6 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../index';
-import { ITheme } from '@fluentui/react';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -140,54 +139,6 @@ export interface IYAxisParams {
  * @param {IXAxisParams} xAxisParams
  */
 export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTypes, culture?: string) {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createNumericXAxisForHBCWA(xAxisParams, culture);
-    default:
-      return createNumericXAxisForOtherCharts(xAxisParams, culture);
-  }
-}
-
-/**
- * Create Numeric X axis for Horizontal Bar Chart With Axis
- * @export
- * @param {IXAxisParams} xAxisParams
- */
-export function createNumericXAxisForHBCWA(xAxisParams: IXAxisParams, culture?: string) {
-  const {
-    domainNRangeValues,
-    showRoundOffXTickValues = false,
-    xAxistickSize = 6,
-    tickPadding = 10,
-    xAxisCount = 6,
-    xAxisElement,
-  } = xAxisParams;
-  const xAxisScale = d3ScaleLinear()
-    .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
-    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
-  showRoundOffXTickValues && xAxisScale.nice();
-
-  const xAxis = d3AxisBottom(xAxisScale)
-    .tickSize(xAxistickSize)
-    .tickPadding(tickPadding)
-    .ticks(xAxisCount)
-    .tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!))
-    .tickFormat((domainValue, index) => {
-      const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-      return convertToLocaleString(xAxisValue, culture) as string;
-    });
-  if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
-  }
-  return xAxisScale;
-}
-
-/**
- * Create Numeric X axis for All Other Charts
- * @export
- * @param {IXAxisParams} xAxisParams
- */
-export function createNumericXAxisForOtherCharts(xAxisParams: IXAxisParams, culture?: string) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
@@ -209,6 +160,9 @@ export function createNumericXAxisForOtherCharts(xAxisParams: IXAxisParams, cult
       const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
       return convertToLocaleString(xAxisValue, culture) as string;
     });
+  if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
+    xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
+  }
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
@@ -771,12 +725,15 @@ export function createYAxisLabels(
  * @returns
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calculateLongestYAxisLabel(points: IHorizontalBarChartWithAxisDataPoint[], theme: ITheme): number {
+export function calculateLongestYAxisLabel(
+  points: IHorizontalBarChartWithAxisDataPoint[],
+  yAxisElement: SVGElement,
+): number {
   let maxLabelLength = 0;
   points.forEach((point: IHorizontalBarChartWithAxisDataPoint) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    ctx!.font = theme.fonts.tiny.key;
+    ctx!.font = window.getComputedStyle(yAxisElement, null).getPropertyValue('font-size');
     const wordLengthInPixel = ctx!.measureText(point.y as string).width;
     maxLabelLength = Math.max(wordLengthInPixel, maxLabelLength);
   });
@@ -1167,7 +1124,7 @@ export function getMinMaxOfYAxis(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   points: any,
   chartType: ChartTypes,
-  yAxisType: YAxisType | undefined,
+  yAxisType: YAxisType | undefined = YAxisType.NumericAxis,
 ): { startValue: number; endValue: number } {
   let minMaxValues: { startValue: number; endValue: number };
 

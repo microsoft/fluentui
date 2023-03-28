@@ -6,7 +6,6 @@ import {
   ICartesianChartStyles,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
-import { ILineChartLineOptions } from '../../types/index';
 
 export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   /**
@@ -40,13 +39,6 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   lineLegendText?: string;
 
   /**
-   * color for the legend  of the line in the chart
-   * @default theme.yellow
-   */
-
-  lineLegendColor?: string;
-
-  /**
    * This prop makes sure that all the bars are of same color.
    * it will take the first color from the array of colors in
    * prop `colors` or if  `colors` prop is not given then default color is  palette.blueLight
@@ -67,12 +59,7 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   /**
    * it's padding between bar's or lines in the graph
    */
-  xAxisPadding?: number;
-
-  /**
-   * options for the line drawn
-   */
-  lineOptions?: ILineChartLineOptions;
+  yAxisPadding?: number;
 
   /**
    *@default false
