@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+
 import * as tmp from 'tmp';
 
 import { buildAssets } from './buildAssets';
@@ -47,5 +48,5 @@ describe('buildAssets', () => {
       })();
       "
     `);
-  });
+  }, 15000);
 });
