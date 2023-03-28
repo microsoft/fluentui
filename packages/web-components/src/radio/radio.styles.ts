@@ -73,7 +73,7 @@ export const styles = css`
     opacity: 0;
     width: 10px;
   }
-  :host([aria-checked='false']:hover) {
+  :host([aria-checked='false']:hover:not([disabled])) .control {
     color: ${colorNeutralForeground2};
   }
   :host(:focus-visible)::after {
@@ -86,35 +86,35 @@ export const styles = css`
     outline: none;
     position: absolute;
   }
-  :host(:hover) .control {
+  :host(:hover:not([disabled])) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host(:active) .control {
+  :host(:active:not([disabled])) .control {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([aria-checked='true']) .checked-indicator {
+  :host([aria-checked='true']:not([disabled])) .checked-indicator {
     opacity: 1;
   }
-  :host([aria-checked='true']) .control {
+  :host([aria-checked='true']:not([disabled])) .control {
     border-color: var(--control-border-color);
   }
-  :host([aria-checked='true']) .checked-indicator {
+  :host([aria-checked='true']:not([disabled])) .checked-indicator {
     background-color: var(--checked-indicator-background-color);
     display: block;
   }
   :host([disabled]) .control {
     pointer-events: none;
   }
-  :host([aria-checked='true']:hover) .control {
+  :host([aria-checked='true']:hover:not([disabled])) .control {
     border-color: ${colorCompoundBrandStrokeHover};
   }
-  :host([aria-checked='true']:hover) .checked-indicator {
+  :host([aria-checked='true']:hover:not([disabled])) .checked-indicator {
     background-color: ${colorCompoundBrandStrokeHover};
   }
-  :host([aria-checked='true']:active) .control {
+  :host([aria-checked='true']:active:not([disabled])) .control {
     border-color: ${colorCompoundBrandStrokePressed};
   }
-  :host([aria-checked='true']:active) .checked-indicator {
+  :host([aria-checked='true']:active:not([disabled])) .checked-indicator {
     background: ${colorCompoundBrandForeground1Pressed};
   }
   :host([disabled]) .control {
