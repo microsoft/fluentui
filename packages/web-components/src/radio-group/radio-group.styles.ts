@@ -26,7 +26,6 @@ export const styles = css`
     --state-color: ${colorNeutralForeground3};
     align-items: flex-start;
     flex-direction: column;
-    margin: 2px 0;
     row-gap: ${spacingVerticalS};
   }
   ::slotted([slot='label']) {
