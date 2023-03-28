@@ -35,9 +35,9 @@ const useStyles = makeStyles({
   accordianContainer: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: '16px',
-    marginTop: '16px',
-    marginBottom: '16px',
+    rowGap: tokens.spacingVerticalL,
+    marginTop: tokens.spacingVerticalL,
+    marginBottom: tokens.spacingVerticalL,
   },
   keyColor: {
     paddingLeft: '0px',
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   labels: {
     display: 'grid',
     gridTemplateColumns: '135px 30px',
-    columnGap: '15px',
+    columnGap: tokens.spacingVerticalL,
   },
   colorPicker: {
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
@@ -157,78 +157,76 @@ export const Form: React.FC = () => {
         {/* `multiple` allows for toggle of collapse as well as open multiple panels */}
         <AccordionItem value="1">
           <AccordionHeader>Step 1 - Color settings</AccordionHeader>
-          <AccordionPanel>
-            <div className={styles.accordianContainer}>
-              <div className={styles.inputs}>
-                <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
-                <div className={styles.labels}>
-                  <Input
-                    className={styles.keyColor}
-                    size="large"
-                    appearance="underline"
-                    id={sidebarId + 'keyColor'}
-                    value={keyColor}
+          <AccordionPanel className={styles.accordianContainer}>
+            <div className={styles.inputs}>
+              <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
+              <div className={styles.labels}>
+                <Input
+                  className={styles.keyColor}
+                  size="large"
+                  appearance="underline"
+                  id={sidebarId + 'keyColor'}
+                  value={keyColor}
+                  onChange={handleKeyColorChange}
+                  maxLength={7}
+                />
+                <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+                  <input
+                    className={styles.color}
+                    type="color"
+                    id={sidebarId + 'keyColor Color'}
                     onChange={handleKeyColorChange}
-                    maxLength={7}
-                  />
-                  <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
-                    <input
-                      className={styles.color}
-                      type="color"
-                      id={sidebarId + 'keyColor Color'}
-                      onChange={handleKeyColorChange}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
-                <div className={styles.slider}>
-                  <Slider
-                    size="small"
-                    min={-50}
-                    max={50}
-                    id={sidebarId + 'hueTorsion'}
-                    value={hueTorsion}
-                    onChange={handleHueTorsionChange}
-                  />
-                  <Input
-                    size="small"
-                    type="number"
-                    min={-50}
-                    max={50}
-                    appearance="outline"
-                    id={sidebarId + 'hueTorsion input'}
-                    value={hueTorsion.toString()}
-                    onChange={handleHueTorsionChange}
                   />
                 </div>
               </div>
-              <div>
-                <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
-                <div className={styles.slider}>
-                  <Slider
-                    size="small"
-                    min={-50}
-                    max={50}
-                    id={sidebarId + 'vibrancy'}
-                    value={vibrancy}
-                    onChange={handleVibrancyChange}
-                  />
-                  <Input
-                    size="small"
-                    type="number"
-                    min={-50}
-                    max={50}
-                    appearance="outline"
-                    id={sidebarId + 'vibrancy input'}
-                    value={vibrancy.toString()}
-                    onChange={handleVibrancyChange}
-                  />
-                </div>
-              </div>
-              <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
             </div>
+            <div>
+              <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
+              <div className={styles.slider}>
+                <Slider
+                  size="small"
+                  min={-50}
+                  max={50}
+                  id={sidebarId + 'hueTorsion'}
+                  value={hueTorsion}
+                  onChange={handleHueTorsionChange}
+                />
+                <Input
+                  size="small"
+                  type="number"
+                  min={-50}
+                  max={50}
+                  appearance="outline"
+                  id={sidebarId + 'hueTorsion input'}
+                  value={hueTorsion.toString()}
+                  onChange={handleHueTorsionChange}
+                />
+              </div>
+            </div>
+            <div>
+              <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
+              <div className={styles.slider}>
+                <Slider
+                  size="small"
+                  min={-50}
+                  max={50}
+                  id={sidebarId + 'vibrancy'}
+                  value={vibrancy}
+                  onChange={handleVibrancyChange}
+                />
+                <Input
+                  size="small"
+                  type="number"
+                  min={-50}
+                  max={50}
+                  appearance="outline"
+                  id={sidebarId + 'vibrancy input'}
+                  value={vibrancy.toString()}
+                  onChange={handleVibrancyChange}
+                />
+              </div>
+            </div>
+            <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="2">
