@@ -11,7 +11,6 @@ export type ColorOverrideBrands = Record<string, Brands>;
 export type ColorOverridePayload = {
   colorToken: string;
   newColor: string;
-
   brand: number;
 };
 
@@ -51,8 +50,10 @@ export type ThemeDesignerState = {
   showExportPanel: boolean;
 };
 
+export const defaultThemePlaceholderName = 'myNewTheme';
+
 export const initialThemeDesignerState: ThemeDesignerState = {
-  themeName: 'Custom',
+  themeName: defaultThemePlaceholderName,
   brand: brandWeb,
   theme: createLightTheme(brandWeb),
   themeWithOverrides: createLightTheme(brandWeb),

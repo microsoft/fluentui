@@ -8,7 +8,6 @@ import {
   tokens,
   Text,
 } from '@fluentui/react-components';
-import { Alert } from '@fluentui/react-alert';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
@@ -40,9 +39,6 @@ export const Content: React.FC<ContentProps> = props => {
   return (
     <FluentProvider theme={themeWithOverrides}>
       <ExportPanel />
-      <Alert intent="warning" action={{ appearance: 'transparent' }}>
-        This tool is still a work in progress - colors are still subject to adjustment.
-      </Alert>
       <div className={mergeClasses(styles.root, props.className)}>
         <h1 style={{ marginBottom: 0 }}>Fluent Theme Designer</h1>
         <Text>

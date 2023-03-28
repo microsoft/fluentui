@@ -10,13 +10,13 @@ export interface SidebarProps {
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '25px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
     ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralStroke1),
     ...shorthands.gap(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL),
+    backgroundColor: tokens.colorNeutralBackground3,
   },
 });
 

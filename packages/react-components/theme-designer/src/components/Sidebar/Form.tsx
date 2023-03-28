@@ -16,13 +16,13 @@ import {
   tokens,
   useId,
 } from '@fluentui/react-components';
-import { EditRegular } from '@fluentui/react-icons';
+import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
 import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: tokens.colorNeutralBackground3,
   },
   inputs: {
     display: 'flex',
@@ -92,7 +92,6 @@ export const Form: React.FC = () => {
     dispatch,
     state: { isDark, themeName, darkThemeOverrides, lightThemeOverrides, brand },
   } = useThemeDesigner();
-  const defaultThemePlaceholderName = 'MyNewTheme';
   const themeNameInputId = useId('themeNameInputId');
 
   const handleIsDarkChange = () => {
@@ -247,12 +246,13 @@ export const Form: React.FC = () => {
                 id={themeNameInputId}
                 // eslint-disable-next-line react/jsx-no-bind
                 onChange={handleThemeNameChange}
-                contentAfter={<EditRegular />}
+                // contentAfter={<EditRegular />}
                 placeholder={defaultThemePlaceholderName}
                 value={themeName === defaultThemePlaceholderName ? '' : themeName}
               />
             </div>
-            <Button size="small" appearance="outline" onClick={showExportButton}>
+            <br />
+            <Button size="small" appearance="primary" onClick={showExportButton}>
               Export
             </Button>
           </AccordionPanel>
