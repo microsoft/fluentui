@@ -37,4 +37,4 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
 /**
  * State used in rendering Breadcrumb
  */
-export type BreadcrumbState = ComponentState<BreadcrumbSlots> & BreadcrumbContextValue;
+export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'size' | 'dividerType'>>;
