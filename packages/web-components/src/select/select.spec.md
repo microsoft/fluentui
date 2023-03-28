@@ -42,14 +42,10 @@ None
 - [x] Are there any accessibility elements unique to this component?
 - [x] List ARIA attributes
   - [x] role="option" for elements that are not `option` elements
-- [ ] Does the component support 400% zoom?
+- [x] Does the component support 400% zoom?
 - [ ] What keyboard behaviors does the component support?
-  - [ ] Up / Right : Increments slider by Step amount
-  - [ ] Down / Left: Decrements slider by Step amount
-  - [ ] PageUp/Up/Right & Shift : Increments the value of the slider by 10 \_ step.
-  - [ ] PageDown /Down/Left & Shift : Decrements the value of the slider by 10 \_ step.
-  - [ ] Home : Sets value to the min prop.
-  - [ ] End : Sets value to the max prop.
+  - [ ] Up / Down to choose value
+  - [ ] Enter to select chosen value
 
 ## Preparation
 
@@ -65,7 +61,7 @@ None
       - No `start` slot for the an icon prepending the control
       - No `end` slot for an icon appending the control
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
-  - [Slider](https://github.com/orgs/microsoft/projects/652/views/2?pane=issue&itemId=18315933)
+  - [Select](https://github.com/orgs/microsoft/projects/652/views/2?pane=issue&itemId=18315933)
 - [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
   - [link to draft implementation, if applicable]
 - [x] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec)
