@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
 
 /**
@@ -12,7 +12,7 @@ import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
-  const { size, dividerType, ...rest } = props;
+  const { size = 'medium', dividerType = 'chevron', ...rest } = props;
   return {
     components: {
       root: 'nav',
