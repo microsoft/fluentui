@@ -6,8 +6,6 @@ import { Label } from './label.js';
  * @public
  */
 export const template = html`
-  <template>
-    <slot></slot>
-    <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
-  </template>
+  <slot></slot>
+  <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
 `;
