@@ -50,11 +50,11 @@ None
 ## Preparation
 
 - [x] [Find the base FAST Component](https://explore.fast.design/components/) this component will inherit from and document
-  - [FAST Slider Component](https://explore.fast.design/components/fast-select)
+  - [FAST Select Component](https://explore.fast.design/components/fast-select)
 - [] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
   - No spec available
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
-  - [Fluent React V9 Slider](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-select--default)
+  - [Fluent React V9 Select](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-select--default)
   - Differences
     - FAST Select has an `indicator` slot that is named `icon` in Fluent Select
     - FAST Select has a few slots that aren't present in the Fluent Select
