@@ -27,7 +27,6 @@ export const useBreadcrumbDivider_unstable = (
     },
     root: getNativeElementProps('li', {
       ref,
-      required: true,
       'aria-hidden': true,
       children: icon,
       ...props,
