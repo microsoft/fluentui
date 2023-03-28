@@ -166,7 +166,7 @@ export class Tabs extends FASTTabs {
   private setTabOffsetCSSVar() {
     this.styles = css/**css*/ `
       :host {
-        --tabIndicatorOffset: ${this.activeTabOffset.toString()}px;
+        ${`${TabTokenNames.tabIndicatorOffset}: ${this.activeTabOffset.toString()}px`};
       }
     `;
     this.$fastController.addStyles(this.styles);
@@ -175,7 +175,7 @@ export class Tabs extends FASTTabs {
   private setTabScaleCSSVar() {
     this.styles = css/**css*/ `
       :host {
-        --tabIndicatorScale: ${this.activeTabScale.toString()};
+        ${`${TabTokenNames.tabIndicatorScale}: ${this.activeTabScale.toString()}`};
       }
     `;
     this.$fastController.addStyles(this.styles);
