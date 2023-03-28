@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 14 Mar 2023 04:21:22 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Mar 2023 04:20:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.12)
+
+Tue, 28 Mar 2023 04:20:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.11..@fluentui/web-components_v3.0.0-alpha.12)
+
+### Changes
+
+- Adds Slider as a web component ([PR #27165](https://github.com/microsoft/fluentui/pull/27165) by ryan@ryanmerrill.net)
 
 ## [3.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.11)
 
