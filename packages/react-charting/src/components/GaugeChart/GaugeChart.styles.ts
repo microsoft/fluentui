@@ -38,5 +38,10 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     },
 
     legendContainer: {},
+
+    segment: {
+      outline: 'none',
+      stroke: theme.semanticColors.focusBorder,
+    },
   };
 };

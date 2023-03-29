@@ -123,4 +123,7 @@ export interface IGaugeChartStyles {
 
   /** */
   legendContainer: IStyle;
+
+  /** */
+  segment: IStyle;
 }

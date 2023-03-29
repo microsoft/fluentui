@@ -3,8 +3,10 @@ import * as shape from 'd3-shape';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { getColorFromToken, formatValueWithSIPrefix } from '../../utilities/index';
+import { getColorFromToken } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
 const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
@@ -14,6 +16,7 @@ const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyle
 interface IGaugeChartState {
   hoveredLegend: string;
   selectedLegend: string;
+  focusedSegment: string;
 }
 
 export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> {
@@ -25,6 +28,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     this.state = {
       hoveredLegend: '',
       selectedLegend: '',
+      focusedSegment: '',
     };
   }
 
@@ -68,67 +72,100 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     return (
       <div className={this._classNames.root}>
-        <svg className={this._classNames.chart}>
-          <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendContainerHeight)})`}>
-            {arcsData.map((segment, i) => (
-              <path
-                key={i}
-                d={segment.d}
-                fill={segment.color}
-                opacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
-              />
-            ))}
-            <g transform={`rotate(${needleRotation}, 0, 0)`}>{this._renderNeedle(innerRadius, outerRadius, 2)}</g>
-            {this.props.chartTitle && (
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <svg
+            className={this._classNames.chart}
+            role="presentation"
+            aria-label="Gauge"
+            aria-description={`This is a gauge chart with ${arcsData.length} section represented.`}
+          >
+            <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendContainerHeight)})`}>
+              {this.props.chartTitle && (
+                <text
+                  x={0}
+                  y={-(outerRadius + 11)}
+                  textAnchor="middle"
+                  data-is-focusable={true}
+                  className={this._classNames.chartTitle}
+                >
+                  {this.props.chartTitle}
+                </text>
+              )}
+              {!this.props.hideLimits && (
+                <>
+                  <text
+                    x={-(outerRadius + 4)}
+                    y={0}
+                    textAnchor="end"
+                    className={this._classNames.limits}
+                    data-is-focusable={true}
+                    role="img"
+                    aria-label={`Min value: ${minValue}`}
+                  >
+                    {d3FormatPrefix(minValue < 1000 ? '.2~' : '.1', minValue)(minValue)}
+                  </text>
+                  <text
+                    x={outerRadius + 4}
+                    y={0}
+                    textAnchor="start"
+                    className={this._classNames.limits}
+                    data-is-focusable={true}
+                    role="img"
+                    aria-label={`Max value: ${maxValue}`}
+                  >
+                    {d3FormatPrefix(maxValue < 1000 ? '.2~' : '.1', maxValue)(maxValue)}
+                  </text>
+                </>
+              )}
+              {arcsData.map((segment, i) => (
+                <path
+                  key={i}
+                  d={segment.d}
+                  fill={segment.color}
+                  fillOpacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
+                  strokeWidth={this.state.focusedSegment === segment.legend ? 2 : 0}
+                  className={this._classNames.segment}
+                  onFocus={() => this._onSegmentFocus(segment.legend)}
+                  onBlur={this._onSegmentBlur}
+                  data-is-focusable={true}
+                  role="img"
+                  aria-label={segment.legend}
+                  aria-description={`${segment.size} out of ${maxValue - minValue}, or ${(
+                    (segment.size / (maxValue - minValue)) *
+                    100
+                  ).toFixed()}%`}
+                />
+              ))}
+              <g transform={`rotate(${needleRotation}, 0, 0)`}>{this._renderNeedle(innerRadius, outerRadius, 2)}</g>
               <text
                 x={0}
-                y={-(outerRadius + 11)}
+                y={0}
                 textAnchor="middle"
+                className={this._classNames.chartValue}
                 data-is-focusable={true}
-                className={this._classNames.chartTitle}
+                role="img"
+                aria-label={`Current value: ${sweptFraction[0]} out of ${sweptFraction[1]}, or ${(
+                  (sweptFraction[0] / sweptFraction[1]) *
+                  100
+                ).toFixed()}%`}
               >
-                {this.props.chartTitle}
+                {`${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`}
               </text>
-            )}
-            {!this.props.hideLimits && (
-              <>
+              {this.props.sublabel && (
                 <text
-                  x={-(outerRadius + 4)}
-                  y={0}
-                  textAnchor="end"
+                  x={0}
+                  y={4}
+                  textAnchor="middle"
+                  dominantBaseline="hanging"
+                  className={this._classNames.sublabel}
                   data-is-focusable={true}
-                  className={this._classNames.limits}
                 >
-                  {formatValueWithSIPrefix(minValue)}
+                  {this.props.sublabel}
                 </text>
-                <text
-                  x={outerRadius + 4}
-                  y={0}
-                  textAnchor="start"
-                  data-is-focusable={true}
-                  className={this._classNames.limits}
-                >
-                  {formatValueWithSIPrefix(maxValue)}
-                </text>
-              </>
-            )}
-            <text x={0} y={0} textAnchor="middle" data-is-focusable={true} className={this._classNames.chartValue}>
-              {`${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`}
-            </text>
-            {this.props.sublabel && (
-              <text
-                x={0}
-                y={4}
-                textAnchor="middle"
-                dominantBaseline="hanging"
-                data-is-focusable={true}
-                className={this._classNames.sublabel}
-              >
-                {this.props.sublabel}
-              </text>
-            )}
-          </g>
-        </svg>
+              )}
+            </g>
+          </svg>
+        </FocusZone>
         {this._renderLegends(arcsData)}
       </div>
     );
@@ -222,11 +259,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       };
     });
 
-    return (
-      <div className={this._classNames.legendContainer}>
-        <Legends legends={legends} centerLegends {...this.props.legendProps} />
-      </div>
-    );
+    return <Legends legends={legends} centerLegends {...this.props.legendProps} />;
   };
 
   /**
@@ -246,5 +279,13 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.hoveredLegend === '';
+  };
+
+  private _onSegmentFocus = (segmentLegend: string) => {
+    this.setState({ focusedSegment: segmentLegend });
+  };
+
+  private _onSegmentBlur = () => {
+    this.setState({ focusedSegment: '' });
   };
 }
