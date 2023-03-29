@@ -3,7 +3,6 @@ import { display } from '@microsoft/fast-foundation';
 import { spacingHorizontalM, spacingHorizontalMNudge } from '../theme/design-tokens.js';
 
 export const styles = css`
-  ${display('none')}
   ${display('block')}
 
   :host {
