@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
-import { DatePicker, DateRangeType } from '@fluentui/react-datepicker-compat';
+import { DatePicker as DatePickerBase, DateRangeType } from '@fluentui/react-datepicker-compat';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
+
+const DatePicker = (props: DatePickerProps) => <DatePickerBase today={new Date('3/15/2023')} {...props} />;
 
 storiesOf('DatePicker Compat', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -33,7 +36,7 @@ storiesOf('DatePicker Compat', module)
     },
   )
   .addStory(
-    'DateRange: work week',
+    'DateRange: week',
     () => <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} popover={{ open: true }} />,
     {
       includeDarkMode: true,
@@ -41,7 +44,7 @@ storiesOf('DatePicker Compat', module)
     },
   )
   .addStory(
-    'DateRange: week',
+    'DateRange: work week',
     () => <DatePicker calendar={{ dateRangeType: DateRangeType.WorkWeek }} popover={{ open: true }} />,
     {
       includeDarkMode: true,
@@ -60,7 +63,6 @@ storiesOf('DatePicker Compat', module)
     'marked dates',
     () => (
       <DatePicker
-        today={new Date('3/15/2023')}
         calendar={{
           calendarDayProps: { getMarkedDays: (start, end) => [new Date('3/15/2023'), new Date('3/10/2023')] },
         }}
