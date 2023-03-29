@@ -216,7 +216,6 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         classNames.dayCell,
         weekCorners && cornerStyle,
         day.isSelected && classNames.daySelected,
-        day.isSelected && 'ms-CalendarDay-daySelected',
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
@@ -241,11 +240,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       <button
         key={day.key + 'button'}
         aria-hidden={ariaHidden}
-        className={mergeClasses(
-          classNames.dayButton,
-          day.isToday && classNames.dayIsToday,
-          day.isToday && 'ms-CalendarDay-dayIsToday',
-        )}
+        className={mergeClasses(classNames.dayButton, day.isToday && classNames.dayIsToday)}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
         disabled={!ariaHidden && !day.isInBounds}

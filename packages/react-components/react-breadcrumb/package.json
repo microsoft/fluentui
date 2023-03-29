@@ -32,6 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-theme": "^9.1.7",
     "@fluentui/react-utilities": "^9.7.2",

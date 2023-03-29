@@ -11,12 +11,11 @@ export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
+  root: {},
   list: {
     listStyleType: 'none',
     display: 'flex',
+    alignItems: 'center',
   },
 });
 
