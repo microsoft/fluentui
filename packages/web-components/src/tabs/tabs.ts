@@ -96,14 +96,15 @@ export class Tabs extends FASTTabs {
   }
 
   /**
-   * clearAnimationProperties
-   * resets animation values to defaults. removes the animated css class
+   * applyUpdatedCSSValues
+   *
+   * calculates and applies updated values to CSS variables
+   * @param tab
    */
-  private clearAnimationProperties(tab: Tab) {
-    this.previousActiveTabData = { x: 0, y: 0, height: 0, width: 0 };
-    this.activeTabOffset = 0;
-    this.activeTabScale = 1;
-    tab.classList.remove('animated');
+  private applyUpdatedCSSValues(tab: Tab) {
+    this.calculateAnimationProperties(tab);
+    this.setTabScaleCSSVar();
+    this.setTabOffsetCSSVar();
   }
 
   /**
@@ -112,28 +113,15 @@ export class Tabs extends FASTTabs {
    * @param tab
    */
   private animationLoop(tab: Tab) {
-    // If selected, set the animation properties.
-    // get the offset for active indicator
-    // the offset at the start of the animation will be at the location of the previously selected tab
-    this.calculateAnimationProperties(tab);
-    // set the active indicator offset and scale of the active indicator to css vars
-    this.setTabScaleCSSVar();
-    this.setTabOffsetCSSVar();
-
-    // clear properties for next animation
-    this.clearAnimationProperties(tab);
+    // remove the animated class so nothing animates yet
+    tab.classList.remove('animated');
+    // animation start - this applyUpdeatedCSSValues sets the active indicator to the location of the previously selected tab
+    this.applyUpdatedCSSValues(tab);
+    // calculate and apply updated css values for animation
     this.previousActiveTabData = this.activeTabData;
-
-    // add the animate css class if the calculated offset is 0 and scale is 1
-    if (this.activeTabOffset === 0 && this.activeTabScale === 1) {
-      this.calculateAnimationProperties(tab);
-      tab.classList.add('animated');
-      // update the css vars
-      this.setTabScaleCSSVar();
-      this.setTabOffsetCSSVar();
-      // now when the css class is added the active indicator ::after element will animate
-      // from the previous tab location to its starting location
-    }
+    this.applyUpdatedCSSValues(tab);
+    // add the css class and active indicator will animate from the previous tab location to its tab location
+    tab.classList.add('animated');
   }
 
   /**
