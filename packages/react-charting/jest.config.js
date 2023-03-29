@@ -6,7 +6,7 @@ function getEsmOnlyPackagesToCjsMapping() {
    */
   const prefix = `<rootDir>/`;
   /**
-   * map of packages that ship only as ESM
+   * map of packages that ship only  as ESM
    */
   const cjsPathsToEsmOnlyPackages = {
     '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js',
@@ -17,7 +17,7 @@ function getEsmOnlyPackagesToCjsMapping() {
 }
 
 const config = createConfig({
-  setupFiles: ['./config/tests.js','jest-canvas-mock'],
+  setupFiles: ['./config/tests.js', 'jest-canvas-mock'],
   snapshotSerializers: ['@fluentui/jest-serializer-merge-styles', 'enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['./config/setup-env.js'],
   moduleNameMapper: {
