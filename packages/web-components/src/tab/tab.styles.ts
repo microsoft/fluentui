@@ -20,11 +20,10 @@ import {
 } from '../theme/design-tokens.js';
 
 export const styles = css`
-  ${display('none')}
+  ${display('inline-flex')}
 
   :host {
     position: relative;
-    display: inline-flex;
     flex-direction: column;
     cursor: pointer;
     box-sizing: border-box;
