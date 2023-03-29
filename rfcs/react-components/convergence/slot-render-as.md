@@ -68,7 +68,7 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
 
 ### Pros
 
-1. It allows us to pass the slot's default `children` to the render function, because it doesn't require overriding the default children.
+1. 👍 Allows us to pass the slot's default `children` to the render function, because it doesn't require overriding the default children.
 
    ```jsx
    <AvatarGroup
@@ -83,7 +83,7 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
    />
    ```
 
-2. It allows the component to use children as a function if it needs to, without interfering with the ability for the user to write a slot render function for the root slot:
+2. 👍 Allows the component to use children as a function if it needs to, without interfering with the ability for the user to write a slot render function for the root slot:
 
    ```jsx
    <Field as={(_, props) => <MyCustomRoot foo="bar" {...props} />}>
@@ -95,11 +95,17 @@ You can still pass in a string to the `as` prop (e.g. `as="a"` to render an `<a>
    </Field>
    ```
 
-3. The slot's `children` prop is no longer "special": it's treated the same as any other prop. This reduces the slot API to a single "special" prop: `as`.
+3. 👍 The slot's `children` prop is no longer "special": it's treated the same as any other prop. This reduces the slot API to a single "special" prop: `as`.
+
+4. 👍 Opinion: it's easier to understand the API. The `as` prop implies that the render function is rendering the whole slot. Whereas `children` implies that it's rendering just the children, which is not the case.
 
 ### Cons
 
-1. It overloads the `as` prop, which may run into issues in implementation, if there are any other uses of `as` as a function. See "Appendix B" for an alternative proposal that uses a prop `render` instead of `as`.
+1. 👎 Overloads the `as` prop, which may run into issues in implementation, if there are any other uses of `as` as a function. See "Appendix B" for an alternative proposal that uses a prop `render` instead of `as`.
+
+2. 👎 Requires maintaining the deprecated codepath of supporting `children` as a render function until the next major release. This includes:
+   - Types: `children` prop in the slot type definitions
+   - Code: Handling the case where `children` is a render function in `getSlots`.
 
 ### Implementation
 
@@ -114,7 +120,7 @@ type WithSlotRenderFunction<Props> = Props & {
 };
 ```
 
-The getSlot function would support `as` being a function:
+The `getSlot` function would support `as` being a function:
 
 ```ts
 if (typeof asProp === 'function') {
@@ -134,7 +140,9 @@ A render function on the `as` prop is a new feature, and does not require any ch
 
 We will continue to support `children` as a render function, with a `console.warning` about deprecation. It will be removed in the next major release.
 
-## Appendix A: Change the order of arguments
+## Appendix A: [REJECTED] Change the order of arguments
+
+> ❌ This Appendix was rejected due to the possibility of accidentally passing a FunctionComponent as the render function (which could break the rules of hooks).
 
 As mentioned in the problem statement, the order of arguments to the render function could be swapped for improved ergonomics:
 
@@ -172,6 +180,8 @@ With the proposal in this RFC, it would be:
 ## Appendix B: `render` prop instead of `as`
 
 If we wanted to keep the `as` prop scoped to just the DOM element that a slot is rendered as, we could optionally add a new special prop `render`, which has a single purpose of being the render function.
+
+If we do choose to go with a `render` prop, then I'd propse following the argument order from Appendix A: `(props, DefaultComponent)`. It would have the benefits listed in Appendix A, with a lower likelihood that someone would pass in a FunctionComponent by mistake, because the prop is named `render`.
 
 ### Pros
 
