@@ -304,6 +304,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -337,7 +338,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -428,7 +429,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -740,6 +741,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -773,7 +775,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -864,7 +866,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1131,6 +1133,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1163,7 +1166,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1253,7 +1256,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1520,6 +1523,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1552,7 +1556,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1642,7 +1646,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1877,6 +1881,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1909,7 +1914,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -1999,7 +2004,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2234,6 +2239,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2266,7 +2272,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2356,7 +2362,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2699,6 +2705,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2731,7 +2738,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2821,7 +2828,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -3074,6 +3081,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3106,7 +3114,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="first selected"
+                    aria-label="first"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -3196,7 +3204,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="second selected"
+                    aria-label="second"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}

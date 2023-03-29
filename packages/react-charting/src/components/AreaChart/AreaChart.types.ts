@@ -48,6 +48,11 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /*
+   * Optimize area chart rendering for large data set.
+   */
+  optimizeLargeData?: boolean;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}

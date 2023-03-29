@@ -283,6 +283,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -316,7 +317,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -407,7 +408,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -498,7 +499,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1031,6 +1032,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1064,7 +1066,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1155,7 +1157,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1246,7 +1248,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1691,6 +1693,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1723,7 +1726,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1813,7 +1816,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -1903,7 +1906,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -2254,6 +2257,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -2286,7 +2290,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="none"
           >
             <button
-              aria-label="MetaData1 selected"
+              aria-label="MetaData1"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={3}
@@ -2376,7 +2380,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="none"
           >
             <button
-              aria-label="MetaData2 selected"
+              aria-label="MetaData2"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={3}
@@ -2466,7 +2470,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="none"
           >
             <button
-              aria-label="MetaData3 selected"
+              aria-label="MetaData3"
               aria-posinset={3}
               aria-selected={false}
               aria-setsize={3}
@@ -3072,6 +3076,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3104,7 +3109,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3194,7 +3199,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3284,7 +3289,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3652,6 +3657,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3684,7 +3690,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3774,7 +3780,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -3864,7 +3870,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4232,6 +4238,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4264,7 +4271,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4354,7 +4361,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4444,7 +4451,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4812,6 +4819,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4844,7 +4852,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   role="none"
                 >
                   <button
-                    aria-label="MetaData1 selected"
+                    aria-label="MetaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={3}
@@ -4934,7 +4942,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   role="none"
                 >
                   <button
-                    aria-label="MetaData2 selected"
+                    aria-label="MetaData2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={3}
@@ -5024,7 +5032,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   role="none"
                 >
                   <button
-                    aria-label="MetaData3 selected"
+                    aria-label="MetaData3"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={3}
