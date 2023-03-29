@@ -52,7 +52,6 @@ export const styles = css`
   }
   .label__hidden {
     display: none;
-    visibility: hidden;
   }
   .control {
     box-sizing: border-box;
