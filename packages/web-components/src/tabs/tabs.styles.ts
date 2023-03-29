@@ -178,7 +178,7 @@ export const styles = css`
   :host([orientation='vertical']) ::slotted(fluent-tab)::before {
     height: unset;
     width: ${strokeWidthThicker};
-    margin-right: auto;
+    margin-inline-end: auto;
     transform-origin: top;
   }
 
