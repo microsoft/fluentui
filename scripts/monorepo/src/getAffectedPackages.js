@@ -1,4 +1,5 @@
 const { spawnSync } = require('child_process');
+
 const findGitRoot = require('./findGitRoot');
 
 /**
@@ -27,4 +28,4 @@ function getAffectedPackages(since = 'origin/master') {
   return new Set(info.scope);
 }
 
-module.exports = getAffectedPackages;
+exports.getAffectedPackages = getAffectedPackages;

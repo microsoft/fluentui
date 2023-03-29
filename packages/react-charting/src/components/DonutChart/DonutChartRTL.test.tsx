@@ -195,5 +195,4 @@ test('Should change value inside donut with the legend value on mouseOver legend
 
   // Assert
   expect(getByClass(container, /insideDonutString.*?/)[0].textContent).toBe('20,000');
-  expect(getByClass(container, /insideDonutString.*?/)[1].textContent).toBe('20,000');
 });

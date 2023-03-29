@@ -277,6 +277,7 @@ type EditingItemProps<T> = Pick<
   Exclude<keyof IDefaultEditingItemInnerProps<T>, keyof EditingItemComponentProps<T>>
 >;
 
-export const DefaultEditingItem = <T extends any>(outerProps: EditingItemProps<T>) => (
-  innerProps: EditingItemComponentProps<T>,
-) => <DefaultEditingItemInner {...outerProps} {...innerProps} />;
+export const DefaultEditingItem =
+  <T extends any>(outerProps: EditingItemProps<T>) =>
+  (innerProps: EditingItemComponentProps<T>) =>
+    <DefaultEditingItemInner {...outerProps} {...innerProps} />;

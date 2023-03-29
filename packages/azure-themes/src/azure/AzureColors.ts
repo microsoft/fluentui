@@ -92,6 +92,7 @@ export namespace BaseColors {
   export const GRAY_AFAFAF = '#afafaf';
   export const GRAY_A19F9D = '#A19F9D';
   export const GRAY_C8C6C4 = '#C8C6C4';
+  export const GRAY_E5E5E5 = '#E5E5E5';
   export const GRAY_EDEBE9 = '#EDEBE9';
   export const GRAY_E1DFDD = '#E1DFDD';
   export const GRAY_F3F2F1 = '#F3F2F1';
@@ -132,7 +133,7 @@ export namespace CommonSemanticColors {
     upsell: BaseColors.PURPLE_8A2DA5,
   };
   export const dividers = {
-    lineSeparator: BaseColors.GRAY_6B849C_025,
+    lineSeparator: BaseColors.GRAY_E5E5E5,
     sectionDivider: BaseColors.GRAY_6B849C_035,
   };
   export const backgrounds = {

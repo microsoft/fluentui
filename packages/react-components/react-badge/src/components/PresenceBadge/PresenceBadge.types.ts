@@ -8,7 +8,8 @@ export type PresenceBadgeStatus =
   | 'available'
   | 'offline'
   | 'do-not-disturb'
-  | 'unknown';
+  | 'unknown'
+  | 'blocked';
 
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> &
   Pick<BadgeProps, 'size'> & {

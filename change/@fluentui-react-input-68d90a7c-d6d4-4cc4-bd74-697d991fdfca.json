@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Update contentBefore and contentAfter slot styling for svg",
-  "packageName": "@fluentui/react-input",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

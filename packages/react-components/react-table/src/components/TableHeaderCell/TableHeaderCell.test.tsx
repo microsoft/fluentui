@@ -20,6 +20,7 @@ describe('TableHeaderCell', () => {
         {
           props: {
             sortIcon: 'Test Icon',
+            aside: 'Test aside',
           },
         },
       ],

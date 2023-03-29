@@ -105,158 +105,156 @@ function hasContextSelectorImport(path: NodePath<types.ImportDeclaration>): bool
   return path.node.source.value === CONTEXT_SELECTOR_PACKAGE;
 }
 
-export const transformPlugin = declare(
-  (api): PluginObj<BabelPluginState> => {
-    api.assertVersion(7);
+export const transformPlugin = declare((api): PluginObj<BabelPluginState> => {
+  api.assertVersion(7);
 
-    return {
-      name: 'global-context',
+  return {
+    name: 'global-context',
 
-      pre() {
-        this.importDeclarationPaths = [];
-        this.nativeExpressionPaths = [];
-        this.contextSelectorExpressionPaths = [];
-      },
+    pre() {
+      this.importDeclarationPaths = [];
+      this.nativeExpressionPaths = [];
+      this.contextSelectorExpressionPaths = [];
+    },
 
-      visitor: {
-        Program: {
-          exit(path, state) {
-            if (
-              state.filename === undefined ||
-              !state.importDeclarationPaths?.length ||
-              !state.nativeExpressionPaths ||
-              !state.contextSelectorExpressionPaths
-            ) {
-              return;
-            }
-
-            const packageJsonPath = findUp.sync('package.json', { cwd: dirname(state.filename) });
-            if (packageJsonPath === undefined) {
-              return;
-            }
-
-            if (state.importDeclarationPaths.some(hasReactImport)) {
-              // Adds import for global context
-              path.unshiftContainer('body', createGlobalContextImportDeclaration(GLOBAL_CONTEXT_PACKAGE, false));
-            }
-
-            if (state.importDeclarationPaths.some(hasContextSelectorImport)) {
-              // Adds import for global context selector
-              path.unshiftContainer('body', createGlobalContextImportDeclaration(GLOBAL_CONTEXT_PACKAGE, true));
-            }
-
-            const packageJson: PackageJSON = JSON.parse(readFileSync(packageJsonPath).toString());
-            // substitutes expressions of react createContext to global context
-            for (const expressionPath of state.contextSelectorExpressionPaths) {
-              expressionPath.replaceWith(
-                createGlobalContextCallExpression({
-                  expressionPath,
-                  packageJson,
-                  packageJsonPath,
-                  filePath: state.filename,
-                  functionName: GLOBAL_CONTEXT_SELECTOR_ALIAS,
-                }),
-              );
-            }
-
-            for (const expressionPath of state.nativeExpressionPaths) {
-              expressionPath.replaceWith(
-                createGlobalContextCallExpression({
-                  expressionPath,
-                  packageJson,
-                  packageJsonPath,
-                  filePath: state.filename,
-                  functionName: GLOBAL_CONTEXT_ALIAS,
-                }),
-              );
-            }
-          },
-        },
-
-        /**
-         * Finds imports of `react` or `@fluentui/react-context-selector`.
-         * If `createContext` is explicitly imported, stores its imported name in state
-         *
-         * @example import { createContext as createMyContext } from 'react';
-         */
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        ImportDeclaration(path, state) {
-          if (!hasReactImport(path) && !hasContextSelectorImport(path)) {
+    visitor: {
+      Program: {
+        exit(path, state) {
+          if (
+            state.filename === undefined ||
+            !state.importDeclarationPaths?.length ||
+            !state.nativeExpressionPaths ||
+            !state.contextSelectorExpressionPaths
+          ) {
             return;
           }
 
-          const native = hasReactImport(path);
-          state.importDeclarationPaths?.push(path);
-
-          for (const importSpecifier of path.node.specifiers) {
-            if (
-              types.isImportSpecifier(importSpecifier) &&
-              types.isIdentifier(importSpecifier.imported) &&
-              types.isIdentifier(importSpecifier.local) &&
-              importSpecifier.imported.name === CREATE_CONTEXT_CALL
-            ) {
-              const localName = importSpecifier.local.name;
-              if (native) {
-                state.nativeLocalName = localName;
-              } else {
-                state.contextSelectorLocalName = localName;
-              }
-            }
-          }
-        },
-        /**
-         * Handles case when `createContext()` is `CallExpression`.
-         *
-         * @example createContext({})
-         */
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        CallExpression(path, state) {
-          if (state.importDeclarationPaths?.length === 0) {
+          const packageJsonPath = findUp.sync('package.json', { cwd: dirname(state.filename) });
+          if (packageJsonPath === undefined) {
             return;
           }
 
-          const calleePath = path.get('callee');
-
-          if (!isCreateContextCallee(calleePath)) {
-            return;
+          if (state.importDeclarationPaths.some(hasReactImport)) {
+            // Adds import for global context
+            path.unshiftContainer('body', createGlobalContextImportDeclaration(GLOBAL_CONTEXT_PACKAGE, false));
           }
 
-          if (types.isCallExpression(path.node) && types.isIdentifier(path.node.callee)) {
-            if (path.node.callee.name === state.nativeLocalName) {
-              state.nativeExpressionPaths?.push(path);
-            }
-            if (path.node.callee.name === state.contextSelectorLocalName) {
-              state.contextSelectorExpressionPaths?.push(path);
-            }
-          }
-        },
-
-        /**
-         * Handles case when `createContext()` is inside `MemberExpression`.
-         * Assumes that context selector is not used this way
-         *
-         * @example module.createContext({})
-         */
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        MemberExpression(expressionPath, state) {
-          const objectPath = expressionPath.get('object');
-          const propertyPath = expressionPath.get('property');
-
-          const isCreateContextCall =
-            objectPath.isIdentifier({ name: 'React' }) && propertyPath.isIdentifier({ name: 'createContext' });
-
-          if (!isCreateContextCall) {
-            return;
+          if (state.importDeclarationPaths.some(hasContextSelectorImport)) {
+            // Adds import for global context selector
+            path.unshiftContainer('body', createGlobalContextImportDeclaration(GLOBAL_CONTEXT_PACKAGE, true));
           }
 
-          const parentPath = expressionPath.parentPath;
-
-          if (!parentPath.isCallExpression()) {
-            return;
+          const packageJson: PackageJSON = JSON.parse(readFileSync(packageJsonPath).toString());
+          // substitutes expressions of react createContext to global context
+          for (const expressionPath of state.contextSelectorExpressionPaths) {
+            expressionPath.replaceWith(
+              createGlobalContextCallExpression({
+                expressionPath,
+                packageJson,
+                packageJsonPath,
+                filePath: state.filename,
+                functionName: GLOBAL_CONTEXT_SELECTOR_ALIAS,
+              }),
+            );
           }
-          state.nativeExpressionPaths?.push(parentPath);
+
+          for (const expressionPath of state.nativeExpressionPaths) {
+            expressionPath.replaceWith(
+              createGlobalContextCallExpression({
+                expressionPath,
+                packageJson,
+                packageJsonPath,
+                filePath: state.filename,
+                functionName: GLOBAL_CONTEXT_ALIAS,
+              }),
+            );
+          }
         },
       },
-    };
-  },
-);
+
+      /**
+       * Finds imports of `react` or `@fluentui/react-context-selector`.
+       * If `createContext` is explicitly imported, stores its imported name in state
+       *
+       * @example import { createContext as createMyContext } from 'react';
+       */
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      ImportDeclaration(path, state) {
+        if (!hasReactImport(path) && !hasContextSelectorImport(path)) {
+          return;
+        }
+
+        const native = hasReactImport(path);
+        state.importDeclarationPaths?.push(path);
+
+        for (const importSpecifier of path.node.specifiers) {
+          if (
+            types.isImportSpecifier(importSpecifier) &&
+            types.isIdentifier(importSpecifier.imported) &&
+            types.isIdentifier(importSpecifier.local) &&
+            importSpecifier.imported.name === CREATE_CONTEXT_CALL
+          ) {
+            const localName = importSpecifier.local.name;
+            if (native) {
+              state.nativeLocalName = localName;
+            } else {
+              state.contextSelectorLocalName = localName;
+            }
+          }
+        }
+      },
+      /**
+       * Handles case when `createContext()` is `CallExpression`.
+       *
+       * @example createContext({})
+       */
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      CallExpression(path, state) {
+        if (state.importDeclarationPaths?.length === 0) {
+          return;
+        }
+
+        const calleePath = path.get('callee');
+
+        if (!isCreateContextCallee(calleePath)) {
+          return;
+        }
+
+        if (types.isCallExpression(path.node) && types.isIdentifier(path.node.callee)) {
+          if (path.node.callee.name === state.nativeLocalName) {
+            state.nativeExpressionPaths?.push(path);
+          }
+          if (path.node.callee.name === state.contextSelectorLocalName) {
+            state.contextSelectorExpressionPaths?.push(path);
+          }
+        }
+      },
+
+      /**
+       * Handles case when `createContext()` is inside `MemberExpression`.
+       * Assumes that context selector is not used this way
+       *
+       * @example module.createContext({})
+       */
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      MemberExpression(expressionPath, state) {
+        const objectPath = expressionPath.get('object');
+        const propertyPath = expressionPath.get('property');
+
+        const isCreateContextCall =
+          objectPath.isIdentifier({ name: 'React' }) && propertyPath.isIdentifier({ name: 'createContext' });
+
+        if (!isCreateContextCall) {
+          return;
+        }
+
+        const parentPath = expressionPath.parentPath;
+
+        if (!parentPath.isCallExpression()) {
+          return;
+        }
+        state.nativeExpressionPaths?.push(parentPath);
+      },
+    },
+  };
+});

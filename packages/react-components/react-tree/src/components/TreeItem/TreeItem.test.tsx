@@ -9,7 +9,6 @@ describe('TreeItem', () => {
   isConformant<TreeItemProps>({
     Component: TreeItem,
     displayName: 'TreeItem',
-    // primarySlot: 'groupper',
     getTargetElement(renderResult, attr) {
       return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
     },
@@ -22,7 +21,7 @@ describe('TreeItem', () => {
             iconBefore: 'Test Icon Before',
             iconAfter: 'Test Icon After',
             actions: 'test Actions',
-            badges: 'test Badges',
+            aside: 'test Aside',
           },
         },
       ],

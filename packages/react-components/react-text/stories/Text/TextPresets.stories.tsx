@@ -3,12 +3,19 @@ import {
   makeStyles,
   shorthands,
   Body1,
+  Body1Strong,
+  Body1Stronger,
+  Body2,
   Caption1,
+  Caption1Strong,
+  Caption1Stronger,
   Caption2,
+  Caption2Strong,
   Display,
   LargeTitle,
   Subtitle1,
   Subtitle2,
+  Subtitle2Stronger,
   Title1,
   Title2,
   Title3,
@@ -29,16 +36,23 @@ export const Presets = () => {
 
   return (
     <div className={styles.container}>
-      <Display>Display - semibold, base1000</Display>
-      <LargeTitle>LargeTitle - semibold, base900</LargeTitle>
-      <Title1>Title1 - semibold, base800</Title1>
-      <Title2>Title2 - semibold, base700</Title2>
-      <Title3>Title3 - semibold, base600</Title3>
-      <Subtitle1>Subtitle1 - semibold, base500</Subtitle1>
-      <Subtitle2>Subtitle2 - semibold, base400</Subtitle2>
-      <Body1>Body1 - regular, base300</Body1>
-      <Caption1>Caption1 - regular, base200</Caption1>
-      <Caption2>Caption2 - regular, base100</Caption2>
+      <Caption2>Caption2</Caption2>
+      <Caption2Strong>Caption2Strong</Caption2Strong>
+      <Caption1>Caption1</Caption1>
+      <Caption1Strong>Caption1Strong</Caption1Strong>
+      <Caption1Stronger>Caption1Stronger</Caption1Stronger>
+      <Body1>Body1</Body1>
+      <Body1Strong>Body1Strong</Body1Strong>
+      <Body1Stronger>Body1Stronger</Body1Stronger>
+      <Body2>Body2</Body2>
+      <Subtitle2>Subtitle2</Subtitle2>
+      <Subtitle2Stronger>Subtitle2Stronger</Subtitle2Stronger>
+      <Subtitle1>Subtitle1</Subtitle1>
+      <Title3>Title3</Title3>
+      <Title2>Title2</Title2>
+      <Title1>Title1</Title1>
+      <LargeTitle>LargeTitle</LargeTitle>
+      <Display>Display</Display>
     </div>
   );
 };

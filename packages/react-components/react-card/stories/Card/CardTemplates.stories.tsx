@@ -19,15 +19,12 @@ import {
   Comment16Regular,
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  mainContainer: {
+  container: {
     ...shorthands.gap('16px'),
-    width: 'fit-content',
-    height: '256px',
     display: 'flex',
-    flexDirection: 'column',
     flexWrap: 'wrap',
   },
 
@@ -59,6 +56,12 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'flex-start',
   },
+
+  grid: {
+    ...shorthands.gap('16px'),
+    display: 'flex',
+    flexDirection: 'column',
+  },
 });
 
 const resolveAsset = (asset: string) => {
@@ -76,13 +79,7 @@ export const Templates = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.mainContainer}>
-      <Card className={styles.card}>
-        <CardPreview>
-          <img src={resolveAsset('intelligence.png')} alt="Intelligence - Design to Amplify" />
-        </CardPreview>
-      </Card>
-
+    <div className={styles.container}>
       <Card className={styles.card}>
         <header className={mergeClasses(styles.flex, styles.labels)}>
           <Badge color="severe" shape="rounded" appearance="tint">
@@ -146,32 +143,48 @@ export const Templates = () => {
         </footer>
       </Card>
 
-      <Card className={styles.card} size="small">
-        <CardHeader
-          image={{ as: 'img', src: powerpointLogoURL }}
-          header={<Text weight="semibold">Team Offsite 2020</Text>}
-          description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
-        />
+      <Card className={styles.card}>
+        <CardPreview>
+          <img src={resolveAsset('intelligence.png')} alt="Intelligence - Design to Amplify" />
+        </CardPreview>
       </Card>
 
-      <Card className={styles.card} size="small">
-        <CardHeader
-          image={{ as: 'img', src: excelLogo }}
-          header={<Text weight="semibold">Team Budget</Text>}
-          description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
-        />
-      </Card>
+      <div className={styles.grid} role="list">
+        <Card className={styles.card} size="small" role="listitem">
+          <CardHeader
+            image={{ as: 'img', src: powerpointLogoURL, alt: 'PowerPoint app logo' }}
+            header={<Text weight="semibold">Team Offsite 2020</Text>}
+            description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+          />
+        </Card>
 
-      <Card className={styles.card} size="small">
-        <CardHeader
-          image={{ as: 'img', src: wordLogo }}
-          header={<Text weight="semibold">Secret Project Briefing</Text>}
-          description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-          action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
-        />
-      </Card>
+        <Card className={styles.card} size="small" role="listitem">
+          <CardHeader
+            image={{ as: 'img', src: excelLogo, alt: 'Excel app logo' }}
+            header={<Text weight="semibold">Team Budget</Text>}
+            description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+          />
+        </Card>
+
+        <Card className={styles.card} size="small" role="listitem">
+          <CardHeader
+            image={{ as: 'img', src: wordLogo, alt: 'Word app logo' }}
+            header={<Text weight="semibold">Secret Project Briefing</Text>}
+            description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+          />
+        </Card>
+      </div>
     </div>
   );
+};
+
+Templates.parameters = {
+  docs: {
+    description: {
+      story: 'Cards can be composed with other components to build rich elements for a page.',
+    },
+  },
 };

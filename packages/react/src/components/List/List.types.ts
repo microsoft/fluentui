@@ -27,7 +27,7 @@ export const ScrollToMode = {
 /**
  * {@docCategory List}
  */
-export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 /**
  * Props passed to the render override for the list root.

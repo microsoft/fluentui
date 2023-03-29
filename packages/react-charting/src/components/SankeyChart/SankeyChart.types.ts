@@ -49,6 +49,16 @@ export interface ISankeyChartProps {
    * Color for path
    */
   pathColor?: string;
+
+  /**
+   * Colors for nodes
+   */
+  colorsForNodes?: string[];
+
+  /**
+   * Colors for nodes border
+   */
+  borderColorsForNodes?: string[];
 }
 
 export interface ISankeyChartStyleProps {
@@ -74,4 +84,20 @@ export interface ISankeyChartStyles {
    *  Style for the links.
    */
   links?: IStyle;
+
+  /**
+   *  Style for the text inside node.
+   */
+  nodeTextContainer?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+  toolTip?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+
+  calloutContentRoot?: IStyle;
 }

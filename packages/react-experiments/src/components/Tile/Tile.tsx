@@ -36,7 +36,7 @@ export const TileLayoutValues = {
   foregroundMargin: 16 as 16,
 };
 
-export type TileLayoutValues = typeof TileLayoutValues[keyof typeof TileLayoutValues];
+export type TileLayoutValues = (typeof TileLayoutValues)[keyof typeof TileLayoutValues];
 
 export interface ITileState {
   isSelected?: boolean;
@@ -429,13 +429,8 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
 
   const width = contentSize.width;
 
-  const {
-    nameplatePadding,
-    nameplateMargin,
-    nameplateActivityHeight,
-    nameplateNameHeight,
-    foregroundMargin,
-  } = TileLayoutSizes[tileSize];
+  const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight, foregroundMargin } =
+    TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

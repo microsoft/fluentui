@@ -36,12 +36,13 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     components: {
       root: 'button',
       popover: Popover as React.FC<Partial<PopoverProps>>,
-      content: PopoverSurface,
+      info: PopoverSurface,
     },
 
     root: getNativeElementProps('button', {
       children: infoButtonIconMap[size],
       type: 'button',
+      'aria-label': 'information',
       ...props,
       ref,
     }),
@@ -53,10 +54,11 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         withArrow: true,
       },
     }),
-    content: resolveShorthand(props.content, {
+    info: resolveShorthand(props.info, {
       required: true,
       defaultProps: {
         role: 'note',
+        tabIndex: -1,
       },
     }),
   };

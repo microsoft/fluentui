@@ -4,7 +4,7 @@ import { useSizeStyles } from '../../Avatar';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { AvatarGroupProps } from '../../AvatarGroup';
-import type { AvatarSizes } from '../../Avatar';
+import type { AvatarSize } from '../../Avatar';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
@@ -228,7 +228,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSizes): string => {
+export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSize): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];
