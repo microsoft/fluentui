@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';
-import { mergeClasses } from '@griffel/react';
 import {
   addMonths,
   addYears,
@@ -196,7 +195,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       return (
         showGoToToday && (
           <button
-            className={mergeClasses('js-goToday', classes.goTodayButton)}
+            className={classes.goTodayButton}
             onClick={onGotoToday}
             onKeyDown={onButtonKeyDown(onGotoToday)}
             type="button"
