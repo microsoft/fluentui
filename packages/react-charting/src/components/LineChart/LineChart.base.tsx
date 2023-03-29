@@ -35,7 +35,6 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
-  YAxisType,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;

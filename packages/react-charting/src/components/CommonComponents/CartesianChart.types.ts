@@ -534,9 +534,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /** Padding before first bar/line-point and after last bar/line-point */
   xAxisOuterPadding?: number;
 
-  //starting point of x axis
-  startFromX?: number;
-
   /**
    *@default false
    *Used for to elipse y axis labes and show tooltip on x axis labels
