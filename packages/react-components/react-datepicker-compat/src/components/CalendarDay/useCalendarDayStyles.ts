@@ -122,10 +122,6 @@ const useDisabledStyleStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
     },
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-      forcedColorAdjust: 'none',
-    },
   },
 });
 

@@ -212,6 +212,11 @@ const useCurrentStyles = makeStyles({
     color: tokens.colorNeutralForegroundOnBrand + '!important',
     fontWeight: tokens.fontWeightSemibold,
 
+    '@media (forced-colors: active)': {
+      backgroundColor: 'WindowText',
+      color: 'Window!important',
+      forcedColorAdjust: 'none',
+    },
     '&:hover': {
       backgroundColor: tokens.colorBrandBackground,
 
@@ -220,11 +225,6 @@ const useCurrentStyles = makeStyles({
         color: 'Window',
         forcedColorAdjust: 'none',
       },
-    },
-    '@media (forced-colors: active)': {
-      backgroundColor: 'WindowText',
-      color: 'Window',
-      forcedColorAdjust: 'none',
     },
   },
 });
@@ -235,6 +235,11 @@ const useSelectedStyles = makeStyles({
     color: tokens.colorNeutralForeground1Static,
     fontWeight: tokens.fontWeightSemibold,
 
+    '@media (forced-colors: active)': {
+      backgroundColor: 'Highlight',
+      color: 'Window',
+      forcedColorAdjust: 'none',
+    },
     '& div': {
       fontWeight: tokens.fontWeightSemibold,
     },
@@ -250,17 +255,6 @@ const useSelectedStyles = makeStyles({
     },
     '&:active': {
       backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-
-      '@media (forced-colors: active)': {
-        backgroundColor: 'Highlight',
-        color: 'Window',
-        forcedColorAdjust: 'none',
-      },
-    },
-    '@media (forced-colors: active)': {
-      backgroundColor: 'Highlight',
-      color: 'Window',
-      forcedColorAdjust: 'none',
     },
   },
 });
