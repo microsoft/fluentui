@@ -98,6 +98,34 @@ Fluent WC3 Text Input extends from the [FAST Text Field](https://explore.fast.de
 |         | The default slot for text input content                                      |
 
 <br />
+
+### **Additional Styling Variations**
+
+For performance considerations, we have avoided the addition of explicit attributes for appearance variations that modify only one CSS property. Instead, opting to provide guidance for users to apply their own CSS to achieve these appearance variations.
+
+<br />
+
+**Block v.s Inline**
+
+The Fluent UI `TextInput` component offers two appearance variations for the display property - block (default) and inline. To achieve the inline variation, users should apply their own custom CSS.
+
+```css
+/* all instances */
+
+fluent-text-input {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* class instances */
+
+fluent-text-input.inline {
+  display: inline-flex;
+  align-items: center;
+}
+```
+
+<br />
 <hr />
 <br />
 
