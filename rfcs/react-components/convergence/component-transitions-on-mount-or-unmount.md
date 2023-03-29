@@ -115,6 +115,7 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 #### Pros
 
 - 👍 Simple hook.
+- 👍 Use Griffel styles to create transitions
 - 👍 Easy to style components based on state.
 - 👍 Freedom to declare transitions as well as animations.
 
