@@ -348,7 +348,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, domainValues[domainValues.length - 1]])
+    .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
@@ -380,7 +380,7 @@ export function createYAxisForOtherCharts(yAxisParams: IYAxisParams, isRtl: bool
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, finalYmax])
+    .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis
