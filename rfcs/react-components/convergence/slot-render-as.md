@@ -1,6 +1,7 @@
 # RFC: Use `as` instead of `children` for slot render function
 
 Contributors: behowell
+RFC Issue: https://github.com/microsoft/fluentui/pull/27353
 
 ## Summary
 
