@@ -206,7 +206,7 @@ export default {
   argTypes: {
     appearance: {
       options: Object.values(TabsAppearanceValues),
-      defaultValue: 'transparent',
+      defaultValue: TabsAppearanceValues.transparent,
       control: {
         type: 'select',
       },
@@ -223,12 +223,12 @@ export default {
     },
     size: {
       options: Object.values(TabsSize),
-      defaultValue: 'medium',
+      defaultValue: TabsSize.medium,
       control: { type: 'select' },
     },
     orientation: {
       options: Object.values(TabsOrientation),
-      defaultValue: 'horizontal',
+      defaultValue: TabsOrientation.horizontal,
       control: { type: 'select' },
     },
   },
