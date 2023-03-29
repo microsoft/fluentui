@@ -196,7 +196,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       return (
         showGoToToday && (
           <button
-            className={mergeClasses('js-goToday', classes.goTodayButton)}
+            className={classes.goTodayButton}
             onClick={onGotoToday}
             onKeyDown={onButtonKeyDown(onGotoToday)}
             type="button"
