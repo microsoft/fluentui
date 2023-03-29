@@ -93,7 +93,7 @@ const useDayCellStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundInvertedHover,
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
-        color: 'WindowText!important',
+        color: 'WindowText',
         ...shorthands.outline('1px', 'solid', 'Highlight'),
         zIndex: 3,
       },
@@ -194,7 +194,7 @@ const useDayOutsideBoundsStyles = makeStyles({
       pointerEvents: 'none',
     },
     '@media (forced-colors: active)': {
-      color: 'DisabledText',
+      color: 'GrayText',
     },
   },
 });
