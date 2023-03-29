@@ -2,19 +2,19 @@ import * as React from 'react';
 import { DataVizPalette, GaugeChart } from '@fluentui/react-charting';
 import { Stack, StackItem } from '@fluentui/react';
 
-interface IGCBasicExampleState {
+interface IGCVariantExampleState {
   width: number;
   height: number;
   currentValue: number;
 }
 
-export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleState> {
+export class GaugeChartVariantExample extends React.Component<{}, IGCVariantExampleState> {
   constructor(props = {}) {
     super(props);
 
     this.state = {
       width: 252,
-      height: 128,
+      height: 173,
       currentValue: 50,
     };
   }
@@ -68,11 +68,12 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           width={this.state.width}
           height={this.state.height}
           segments={[
-            { size: 33, color: DataVizPalette.success, legend: 'Low Risk' },
-            { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
-            { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
+            { size: this.state.currentValue, color: DataVizPalette.color6, legend: 'Used' },
+            { size: 100 - this.state.currentValue, legend: 'Available' },
           ]}
           currentValue={this.state.currentValue}
+          chartTitle="Storage capacity"
+          sublabel="used"
         />
       </>
     );

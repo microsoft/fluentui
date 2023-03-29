@@ -1,31 +1,52 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
-import { IGaugeChartProps, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
+import { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { getColorFromToken } from '../../utilities/colors';
-import { formatValueWithSIPrefix } from '../../utilities/utilities';
+import { getColorFromToken, formatValueWithSIPrefix } from '../../utilities/index';
+import { ILegend, Legends } from '../Legends/index';
 
-const BREAKPOINTS = [142, 124, 106, 88, 70, 52];
-const ARC_WIDTHS = [32, 28, 24, 20, 16, 12];
-const FONT_SIZES = [40, 40, 32, 32, 24, 20];
+const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
+const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
+const FONT_SIZES = [20, 24, 32, 32, 40, 40];
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
-interface IGaugeChartState {}
+interface IGaugeChartState {
+  hoveredLegend: string;
+  selectedLegend: string;
+}
 
 export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> {
   private _classNames: IProcessedStyleSet<IGaugeChartStyles>;
 
-  public render(): React.ReactNode {
-    const width = this.props.width || 220;
-    const height = this.props.height || 110;
-    const gaugeMarginHorizontal = 80;
-    const gaugeMarginVertical = 40;
+  constructor(props: IGaugeChartProps) {
+    super(props);
 
-    const outerRadius = Math.min((width - gaugeMarginHorizontal) / 2, height - gaugeMarginVertical);
-    let innerRadius = outerRadius - ARC_WIDTHS[ARC_WIDTHS.length - 1];
-    let fontSize = FONT_SIZES[FONT_SIZES.length - 1];
-    for (let idx = 0; idx < BREAKPOINTS.length; idx += 1) {
+    this.state = {
+      hoveredLegend: '',
+      selectedLegend: '',
+    };
+  }
+
+  public render(): React.ReactNode {
+    const margins = {
+      left: (!this.props.hideLimits ? 4 + 36 : 0) + 16,
+      right: (!this.props.hideLimits ? 4 + 36 : 0) + 16,
+      top: (this.props.chartTitle ? 11 + 16 : 2) + 16,
+      bottom: (this.props.sublabel ? 4 + 16 : 0) + 16,
+    };
+    const legendContainerHeight = !this.props.hideLegend ? 24 : 0;
+
+    const width = this.props.width || 140 + margins.left + margins.right;
+    const height = this.props.height || 70 + margins.top + margins.bottom + legendContainerHeight;
+    const outerRadius = Math.min(
+      (width - (margins.left + margins.right)) / 2,
+      height - (margins.top + margins.bottom + legendContainerHeight),
+    );
+
+    let innerRadius = outerRadius - ARC_WIDTHS[0];
+    let fontSize = FONT_SIZES[0];
+    for (let idx = BREAKPOINTS.length - 1; idx >= 0; idx -= 1) {
       if (outerRadius >= BREAKPOINTS[idx]) {
         innerRadius = outerRadius - ARC_WIDTHS[idx];
         fontSize = FONT_SIZES[idx];
@@ -33,50 +54,87 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       }
     }
 
-    const { minValue, maxValue, segments, sublabel } = this._initProps(innerRadius, outerRadius);
-    const fraction = [this.props.currentValue - minValue, maxValue - minValue];
-    const needleRotation = (fraction[0] / fraction[1]) * 180;
+    const { minValue, maxValue, arcsData } = this._initProps(innerRadius, outerRadius);
+    const sweptFraction = [this.props.currentValue - minValue, maxValue - minValue];
+    const needleRotation = (sweptFraction[0] / sweptFraction[1]) * 180;
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       fontSize,
+      width,
+      height: height - legendContainerHeight,
+      className: this.props.className,
     });
 
     return (
-      <svg style={{ width, height }}>
-        <g transform={`translate(${width / 2}, ${height - gaugeMarginVertical / 2})`}>
-          {segments.map((segment, i) => (
-            <path key={i} d={segment.d} fill={segment.color} />
-          ))}
-          <g transform={`rotate(${needleRotation}, 0, 0)`}>
-            {this._renderNeedle(innerRadius, outerRadius, 2, 'black')}
-          </g>
-          <text x={-(outerRadius + 4)} textAnchor="end" data-is-focusable={true} className={this._classNames.limits}>
-            {formatValueWithSIPrefix(minValue)}
-          </text>
-          <text x={outerRadius + 4} textAnchor="start" data-is-focusable={true} className={this._classNames.limits}>
-            {formatValueWithSIPrefix(maxValue)}
-          </text>
-          <text y={0} textAnchor="middle" data-is-focusable={true} className={this._classNames.chartValue}>
-            {`${((fraction[0] / fraction[1]) * 100).toFixed()}%`}
-          </text>
-          {sublabel && (
-            <text
-              y={8}
-              textAnchor="middle"
-              dominantBaseline="hanging"
-              data-is-focusable={true}
-              className={this._classNames.sublabel}
-            >
-              {sublabel}
+      <div className={this._classNames.root}>
+        <svg className={this._classNames.chart}>
+          <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendContainerHeight)})`}>
+            {arcsData.map((segment, i) => (
+              <path
+                key={i}
+                d={segment.d}
+                fill={segment.color}
+                opacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
+              />
+            ))}
+            <g transform={`rotate(${needleRotation}, 0, 0)`}>{this._renderNeedle(innerRadius, outerRadius, 2)}</g>
+            {this.props.chartTitle && (
+              <text
+                x={0}
+                y={-(outerRadius + 11)}
+                textAnchor="middle"
+                data-is-focusable={true}
+                className={this._classNames.chartTitle}
+              >
+                {this.props.chartTitle}
+              </text>
+            )}
+            {!this.props.hideLimits && (
+              <>
+                <text
+                  x={-(outerRadius + 4)}
+                  y={0}
+                  textAnchor="end"
+                  data-is-focusable={true}
+                  className={this._classNames.limits}
+                >
+                  {formatValueWithSIPrefix(minValue)}
+                </text>
+                <text
+                  x={outerRadius + 4}
+                  y={0}
+                  textAnchor="start"
+                  data-is-focusable={true}
+                  className={this._classNames.limits}
+                >
+                  {formatValueWithSIPrefix(maxValue)}
+                </text>
+              </>
+            )}
+            <text x={0} y={0} textAnchor="middle" data-is-focusable={true} className={this._classNames.chartValue}>
+              {`${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`}
             </text>
-          )}
-        </g>
-      </svg>
+            {this.props.sublabel && (
+              <text
+                x={0}
+                y={4}
+                textAnchor="middle"
+                dominantBaseline="hanging"
+                data-is-focusable={true}
+                className={this._classNames.sublabel}
+              >
+                {this.props.sublabel}
+              </text>
+            )}
+          </g>
+        </svg>
+        {this._renderLegends(arcsData)}
+      </div>
     );
   }
 
-  private _renderNeedle = (innerRadius: number, outerRadius: number, strokeWidth: number, fill: string) => {
+  private _renderNeedle = (innerRadius: number, outerRadius: number, strokeWidth: number) => {
     const needleLength = outerRadius - innerRadius + 4;
     strokeWidth /= 2;
     return (
@@ -96,19 +154,14 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   };
 
   private _initProps = (innerRadius: number, outerRadius: number) => {
-    const { minValue = 0, maxValue, segments = [], theme, currentValue } = this.props;
+    const { minValue = 0, maxValue, segments = [], theme } = this.props;
 
     let maxVal = minValue;
-    let sublabel: string | undefined;
     segments.forEach(segment => {
-      const prevVal = maxVal;
       maxVal += segment.size;
-      if (currentValue >= prevVal && currentValue <= maxVal) {
-        sublabel = segment.label;
-      }
     });
     if (typeof maxValue !== 'undefined' && maxVal < maxValue) {
-      segments.push({ size: maxValue - maxVal });
+      segments.push({ legend: 'Unknown', size: maxValue - maxVal });
       maxVal = maxValue;
     }
 
@@ -128,6 +181,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       prevAngle = endAngle;
       return {
         d,
+        legend: segment.legend,
+        size: segment.size,
         color:
           typeof segment.color !== 'undefined'
             ? getColorFromToken(segment.color, theme!.isInverted)
@@ -138,8 +193,58 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return {
       minValue,
       maxValue: maxVal,
-      segments: arcsData,
-      sublabel,
+      arcsData,
     };
+  };
+
+  private _renderLegends = (segments: IGaugeChartSegment[]) => {
+    if (this.props.hideLegend) {
+      return null;
+    }
+
+    const legends: ILegend[] = segments.map(segment => {
+      return {
+        title: segment.legend,
+        color: segment.color!,
+        action: () => {
+          if (this.state.selectedLegend === segment.legend) {
+            this.setState({ selectedLegend: '' });
+          } else {
+            this.setState({ selectedLegend: segment.legend });
+          }
+        },
+        hoverAction: () => {
+          this.setState({ hoveredLegend: segment.legend });
+        },
+        onMouseOutAction: () => {
+          this.setState({ hoveredLegend: '' });
+        },
+      };
+    });
+
+    return (
+      <div className={this._classNames.legendContainer}>
+        <Legends legends={legends} centerLegends {...this.props.legendProps} />
+      </div>
+    );
+  };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legend: string) => {
+    return (
+      this.state.selectedLegend === legend || (this.state.selectedLegend === '' && this.state.hoveredLegend === legend)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.hoveredLegend === '';
   };
 }

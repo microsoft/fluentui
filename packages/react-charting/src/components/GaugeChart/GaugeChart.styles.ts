@@ -1,23 +1,30 @@
-import { FontWeights } from '@fluentui/react';
+import { FontSizes, FontWeights } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const { theme, fontSize } = props;
+  const { theme, fontSize, width, height, className } = props;
 
   return {
+    root: [theme.fonts.medium, 'ms-GaugeChart', { width }, className],
+
+    chart: {
+      display: 'block',
+      width,
+      height,
+    },
+
     limits: {
-      ...theme.fonts.small,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
     },
 
     chartValue: {
-      ...theme.fonts.xLarge,
       fontSize,
       fontWeight: FontWeights.semibold,
     },
 
     sublabel: {
-      ...theme.fonts.small,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
     },
 
@@ -25,5 +32,11 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       fill: theme.palette.black,
       stroke: theme.palette.white,
     },
+
+    chartTitle: {
+      fontSize: FontSizes.small,
+    },
+
+    legendContainer: {},
   };
 };

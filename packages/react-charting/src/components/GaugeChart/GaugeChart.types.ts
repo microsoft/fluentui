@@ -1,15 +1,16 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { ILegendsProps } from '../Legends/index';
 
 export interface IGaugeChartSegment {
+  /** */
+  legend: string;
+
   /** */
   size: number;
 
   /** */
   color?: string;
-
-  /** */
-  label?: string;
 }
 
 export interface IGaugeChartProps {
@@ -38,6 +39,23 @@ export interface IGaugeChartProps {
   /** */
   maxValue?: number;
 
+  /** */
+  sublabel?: string;
+
+  /** */
+  hideLimits?: boolean;
+
+  /**
+   * Decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
+
+  /*
+   * Props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
+
   /**
    * Additional CSS class(es) to apply to the Chart.
    */
@@ -62,9 +80,24 @@ export interface IGaugeChartStyleProps {
 
   /** */
   fontSize: number;
+
+  /** */
+  width: number;
+
+  /** */
+  height: number;
+
+  /** */
+  className?: string;
 }
 
 export interface IGaugeChartStyles {
+  /** */
+  root: IStyle;
+
+  /** */
+  chart: IStyle;
+
   /**
    * Style for the min and max values
    */
@@ -84,4 +117,10 @@ export interface IGaugeChartStyles {
    * Style for the needle
    */
   needle: IStyle;
+
+  /** */
+  chartTitle: IStyle;
+
+  /** */
+  legendContainer: IStyle;
 }
