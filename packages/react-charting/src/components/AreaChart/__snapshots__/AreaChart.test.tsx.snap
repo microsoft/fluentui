@@ -229,6 +229,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -262,7 +263,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -767,6 +768,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -800,7 +802,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -1202,6 +1204,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1235,7 +1238,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -1946,6 +1949,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1978,7 +1982,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -2296,6 +2300,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2328,7 +2333,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -2633,6 +2638,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2665,7 +2671,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -2966,6 +2972,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -2998,7 +3005,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             role="none"
           >
             <button
-              aria-label="metaData1 selected"
+              aria-label="metaData1"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={1}
@@ -3504,6 +3511,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3536,7 +3544,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -3854,6 +3862,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3886,7 +3895,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -4204,6 +4213,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4236,7 +4246,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
@@ -4554,6 +4564,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4586,7 +4597,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}
