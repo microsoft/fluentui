@@ -1444,12 +1444,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           transform="translate(0, 0)"
           x1={56}
           x2={-36}
-          y1={198.5}
-          y2={122}
+          y1={201.4423076923077}
+          y2={127.88461538461539}
         />
         <circle
           cx={56}
-          cy={198.5}
+          cy={201.4423076923077}
           fill="#ffffff"
           key="0-0-dot"
           onMouseOver={[Function]}
@@ -1461,7 +1461,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         />
         <circle
           cx={-36}
-          cy={122}
+          cy={127.88461538461539}
           fill="#ffffff"
           key="0-1-dot"
           onMouseOver={[Function]}
@@ -1959,7 +1959,6 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
             & line {
               opacity: 0.2;
               stroke: #323130;
-              width: 1px;
             }
             @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;

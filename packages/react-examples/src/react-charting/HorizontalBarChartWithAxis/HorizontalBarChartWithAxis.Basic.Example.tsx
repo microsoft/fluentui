@@ -3,7 +3,6 @@ import {
   HorizontalBarChartWithAxis,
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisDataPoint,
-  //ILineChartLineOptions,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';

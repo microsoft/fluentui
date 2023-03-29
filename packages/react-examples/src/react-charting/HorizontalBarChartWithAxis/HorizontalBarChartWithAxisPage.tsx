@@ -11,9 +11,12 @@ import { HorizontalBarChartWithAxisBasicExample } from './HorizontalBarChartWith
 import { HorizontalBarChartWithAxisTooltipExample } from './HorizontalBarChartWithAxis.AxisTooltip.Example';
 import { HorizontalBarChartWithAxisStringAxisTooltipExample } from './HorizontalBarChartWithAxis.StringAxisTooltip.Example';
 
-const HorizontalBarChartWithAxisBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
-const HorizontalBarChartWithAxisTooltipExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.AxisTooltip.Example.tsx') as string;
-const HorizontalBarChartWithAxisStringAxisTooltipExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.StringAxisTooltip.Example.tsx') as string;
+const HorizontalBarChartWithAxisBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
+const HorizontalBarChartWithAxisTooltipExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.AxisTooltip.Example.tsx') as string;
+const HorizontalBarChartWithAxisStringAxisTooltipExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.StringAxisTooltip.Example.tsx') as string;
 
 export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -71,7 +74,7 @@ export class HorizontalBarChartWithAxisPage extends React.Component<IComponentDe
               See <code>onRenderCalloutPerHorizontalBar</code> prop to customize the hover callout.
             </p>
             <p>
-              If the y data points are of String there are 2 modes to view them, the first to truncates y axis labels
+              If the y data points are of String there are 2 modes to view them, the first to truncates yaxis labels
               using showYAxisLablesTooltip and the second enables to view the complete labels using expandYAxisLabels.
             </p>
           </div>
