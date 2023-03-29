@@ -9,10 +9,5 @@ export const renderBreadcrumbItem_unstable = (state: BreadcrumbItemState) => {
   const { slots, slotProps } = getSlots<BreadcrumbItemSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return (
-    <slots.root {...slotProps.root}>
-      {slotProps.root.children}
-      {slots.divider && <slots.divider {...slotProps.divider} />}
-    </slots.root>
-  );
+  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
 };
