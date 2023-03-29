@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 28 Mar 2023 07:38:26 GMT",
+      "tag": "@fluentui/react_v8.106.10",
+      "version": "8.106.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3e4575b1092ad3bdf0b34275748f2b41566ebe4b",
+            "comment": "fix: Ensure click event object is not passed to calendarDismissed callback in DatePicker."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Mar 2023 22:25:03 GMT",
       "tag": "@fluentui/react_v8.106.9",
       "version": "8.106.9",
