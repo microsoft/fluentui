@@ -92,7 +92,7 @@ const BreadcrumbV9Example = props => (
         Gallery
       </BreadcrumbButton>
     </BreadcrumbItem>
-    <BreadcrumbItem>
+    <BreadcrumbItem current={true}>
       <BreadcrumbButton onClick={() => {}}>
         About
       </BreadcrumbButton>
@@ -171,11 +171,12 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property    | Values                     | Default       | Purpose                        |
-| ----------- | -------------------------- | ------------- | ------------------------------ |
-| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
-| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
-| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
+| Property     | Values                     | Default       | Purpose                          |
+| ------------ | -------------------------- | ------------- | -------------------------------- |
+| appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
+| dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
+| iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
+| size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
 
 ### BreadcrumbItem
 
@@ -243,18 +244,22 @@ Usage
 
 #### API
 
-| Property     | Values            | Default  | Purpose                         |
-| ------------ | ----------------- | -------- | ------------------------------- |
-| active       | boolean           | false    | Indicates if the item is active |
-| icon         | _slot_            |          | Sets icon                       |
-| iconPosition | `before`, `after` | `before` | Sets icon position              |
+| Property     | Values            | Default  | Purpose                |
+| ------------ | ----------------- | -------- | ---------------------- |
+| current      | boolean           | false    | Indicates current page |
+| icon         | _slot_            |          | Sets icon              |
+| iconPosition | `before`, `after` | `before` | Sets icon position     |
 
 #### Breadcrumb icon
 
 ```jsx
-<BreadcrumbItem icon={<IconComponent />}>Item 1</BreadcrumbItem>
-<BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item 1</BreadcrumbButton>
-<BreadcrumbLink icon={<IconComponent />}>Item 1</BreadcrumbLink>
+<BreadcrumbItem icon={<IconComponent />}>Item</BreadcrumbItem>
+<BreadcrumbItem icon={<IconComponent />} iconPosition="after">
+  <BreadcrumbButton>Item</BreadcrumbButton>
+</BreadcrumbItem>
+<BreadcrumbItem icon={<IconComponent />}>
+  <BreadcrumbLink>Item</BreadcrumbLink>
+</BreadcrumbItem>
 ```
 
 ### BreadcrumbDivider
@@ -414,7 +419,7 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 
 | Northstar `BreadcrumbItem` | v9 `BreadcrumbItem` |
 | -------------------------- | ------------------- |
-| `active`                   | `active`            |
+| `active`                   | `current`           |
 | `disabled`                 | `disabled`          |
 
 ## Behaviors
@@ -427,6 +432,10 @@ The default position of ellipses should be the second element because from a UX 
 
 - There's not enough space
 - When `maxDisplayedItems` prop is provided and number of items is bigger than `maxDisplayedItems`.
+
+By default `Overflow` component is used to hide items when there's not enough space.
+Also, `maxDisplayedItems` prop can be provided. By default `maxDisplayedItems` is equal `6` elements.
+This logic can be combined with `Overflow` component.
 
 Getting `overflowItems` is handled by `partitionBreadcrumbItems` method.
 
