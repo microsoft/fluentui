@@ -48,6 +48,11 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
       borderColor: 'Highlight',
       color: 'HighlightText',
     },
+    ['.ms-Checkbox-checkbox']: {
+      [HighContrastSelector]: {
+        borderColor: 'HighlightText',
+      },
+    },
     ...highContrastAdjustMixin,
   },
 };
