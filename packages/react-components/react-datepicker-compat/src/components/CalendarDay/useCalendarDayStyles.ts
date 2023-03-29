@@ -74,7 +74,7 @@ const useMonthAndYearStyles = makeStyles({
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
     },
-    '&:active': {
+    '&:hover:active': {
       backgroundColor: tokens.colorBrandBackground2,
     },
   },
@@ -105,13 +105,14 @@ const useHeaderIconButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackground2,
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+      color: tokens.colorBrandForegroundOnLightHover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
-    '&:active': {
-      backgroundColor: tokens.colorBrandBackground2,
+    '&:hover:active': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+      color: tokens.colorBrandForegroundOnLightPressed,
     },
   },
 });

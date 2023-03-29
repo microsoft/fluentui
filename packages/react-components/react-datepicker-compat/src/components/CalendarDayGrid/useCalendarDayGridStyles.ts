@@ -125,7 +125,7 @@ const useDaySelectedStyles = makeStyles({
 
     [`&:hover, &.${extraCalendarDayGridClassNames.hoverStyle}, &.${extraCalendarDayGridClassNames.pressedStyle}`]: {
       color: tokens.colorNeutralForeground1Static,
-      backgroundColor: tokens.colorBrandBackgroundInvertedSelected + ' !important',
+      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight!important',
         color: 'HighlightText!important',
@@ -171,7 +171,7 @@ const useWeekDayLabelCellStyles = makeStyles({
 
 const useWeekNumberCellStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
     ...shorthands.borderRight('1px', 'solid'),
     boxSizing: 'border-box',
@@ -187,7 +187,9 @@ const useWeekNumberCellStyles = makeStyles({
 
 const useDayOutsideBoundsStyles = makeStyles({
   base: {
-    '&, &:disabled, & button': {
+    [`&, &:disabled, & button, &.${extraCalendarDayGridClassNames.hoverStyle}` +
+    `, &.${extraCalendarDayGridClassNames.pressedStyle}`]: {
+      backgroundColor: tokens.colorTransparentBackground,
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
     },
