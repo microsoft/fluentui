@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Make area chart keyboard accessible",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -110,7 +110,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   }
 
   private _onRenderData = (data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element => {
-    const { overflowProps, allowFocusOnLegends = true } = this.props;
+    const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = this.props;
     const rootStyles = {
       root: {
         justifyContent: this.props.centerLegends ? 'center' : 'unset',
@@ -118,7 +118,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       },
     };
     return (
-      <FocusZone {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}>
+      <FocusZone
+        {...(allowFocusOnLegends && {
+          role: 'listbox',
+          'aria-label': 'Legends',
+          'aria-multiselectable': canSelectMultipleLegends,
+        })}
+      >
         <OverflowSet
           items={data.primary}
           overflowItems={data.overflow}
@@ -193,7 +199,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
-    const { allowFocusOnLegends = true, className, styles, theme } = this.props;
+    const { allowFocusOnLegends = true, className, styles, theme, canSelectMultipleLegends = false } = this.props;
     const overflowHoverCardLegends: JSX.Element[] = [];
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -205,7 +211,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     });
     const hoverCardData = (
       <FocusZone
-        {...(allowFocusOnLegends && { role: 'listbox' })}
+        {...(allowFocusOnLegends && {
+          role: 'listbox',
+          'aria-label': 'Legends',
+          'aria-multiselectable': canSelectMultipleLegends,
+        })}
         direction={FocusZoneDirection.vertical}
         {...this.props.focusZonePropsInHoverCard}
         className={classNames.hoverCardRoot}
@@ -334,7 +344,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...(allowFocusOnLegends && {
           'aria-selected': this.state.selectedLegend === legend.title,
           role: 'option',
-          'aria-label': `${legend.title} selected`,
+          'aria-label': `${legend.title}`,
           'aria-setsize': data['aria-setsize'],
           'aria-posinset': data['aria-posinset'],
         })}

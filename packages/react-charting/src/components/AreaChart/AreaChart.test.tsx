@@ -115,6 +115,12 @@ describe('AreaChart snapShot testing', () => {
 
     points[0].color = lineColor;
   });
+
+  it('Should not render circles when optimizeLargeData is true', () => {
+    const component = renderer.create(<AreaChart data={chartPoints} optimizeLargeData />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('AreaChart - basic props', () => {
