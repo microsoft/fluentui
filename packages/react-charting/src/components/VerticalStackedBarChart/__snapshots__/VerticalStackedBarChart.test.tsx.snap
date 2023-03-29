@@ -273,6 +273,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -306,7 +307,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="none"
           >
             <button
-              aria-label="Metadata1 selected"
+              aria-label="Metadata1"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={2}
@@ -397,7 +398,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="none"
           >
             <button
-              aria-label="Metadata2 selected"
+              aria-label="Metadata2"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={2}
@@ -920,6 +921,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -953,7 +955,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="none"
           >
             <button
-              aria-label="Metadata1 selected"
+              aria-label="Metadata1"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={2}
@@ -1044,7 +1046,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="none"
           >
             <button
-              aria-label="Metadata2 selected"
+              aria-label="Metadata2"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={2}
@@ -1504,6 +1506,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -1537,7 +1540,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="none"
           >
             <button
-              aria-label="Line1 selected"
+              aria-label="Line1"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={3}
@@ -1628,7 +1631,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="none"
           >
             <button
-              aria-label="Metadata1 selected"
+              aria-label="Metadata1"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={3}
@@ -1719,7 +1722,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="none"
           >
             <button
-              aria-label="Metadata2 selected"
+              aria-label="Metadata2"
               aria-posinset={3}
               aria-selected={false}
               aria-setsize={3}
@@ -2049,6 +2052,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2081,7 +2085,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2171,7 +2175,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2405,6 +2409,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2437,7 +2442,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2527,7 +2532,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2744,6 +2749,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
     >
       <div
         aria-label="Legends"
+        aria-multiselectable={false}
         className=
             ms-FocusZone
             &:focus {
@@ -2776,7 +2782,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             role="none"
           >
             <button
-              aria-label="Metadata1 selected"
+              aria-label="Metadata1"
               aria-posinset={1}
               aria-selected={false}
               aria-setsize={2}
@@ -2866,7 +2872,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             role="none"
           >
             <button
-              aria-label="Metadata2 selected"
+              aria-label="Metadata2"
               aria-posinset={2}
               aria-selected={false}
               aria-setsize={2}
@@ -3204,6 +3210,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3236,7 +3243,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -3326,7 +3333,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -3560,6 +3567,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3592,7 +3600,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -3682,7 +3690,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -3916,6 +3924,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -3948,7 +3957,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4038,7 +4047,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4272,6 +4281,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4304,7 +4314,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4394,7 +4404,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4628,6 +4638,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -4660,7 +4671,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   role="none"
                 >
                   <button
-                    aria-label="Metadata1 selected"
+                    aria-label="Metadata1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -4750,7 +4761,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   role="none"
                 >
                   <button
-                    aria-label="Metadata2 selected"
+                    aria-label="Metadata2"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}
