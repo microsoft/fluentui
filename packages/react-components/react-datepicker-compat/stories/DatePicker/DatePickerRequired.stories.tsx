@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   root: {
-    '> *': {
-      marginBottom: '15px',
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '15px',
   },
   control: {
     maxWidth: '300px',
@@ -18,23 +18,21 @@ export const Required = () => {
 
   return (
     <div className={styles.root}>
-      <div>Validation will happen when the DatePicker loses focus.</div>
       <DatePicker
         isRequired
         className={styles.control}
-        label="Date required (with label)"
+        label="Date required"
         placeholder="Select a date..."
         aria-label="Select a date"
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={defaultDatePickerStrings}
-      />
-      <DatePicker
-        isRequired
-        className={styles.control}
-        placeholder="Date required with no label..."
-        aria-label="Select a date"
-        strings={defaultDatePickerStrings}
       />
     </div>
   );
+};
+
+Required.parameters = {
+  docs: {
+    description: {
+      story: 'DatePicker supports required validation. The validation will happen when the DatePicker loses focus.',
+    },
+  },
 };

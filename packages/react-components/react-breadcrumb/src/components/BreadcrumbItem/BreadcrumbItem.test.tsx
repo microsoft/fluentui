@@ -15,16 +15,11 @@ describe('BreadcrumbItem', () => {
     const result = render(<BreadcrumbItem>Default BreadcrumbItem</BreadcrumbItem>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <div
+        <li
           class="fui-BreadcrumbItem"
         >
           Default BreadcrumbItem
-          <span
-            class="fui-BreadcrumbDivider fui-BreadcrumbItem__divider"
-          >
-            &gt;
-          </span>
-        </div>
+        </li>
       </div>
     `);
   });
