@@ -117,8 +117,9 @@ export class Tabs extends FASTTabs {
     tab.classList.remove('animated');
     // animation start - this applyUpdeatedCSSValues sets the active indicator to the location of the previously selected tab
     this.applyUpdatedCSSValues(tab);
-    // calculate and apply updated css values for animation
+    // changing the previously active tab allows the applyUpdatedCSSValues method to calculate the correct end to the animation.
     this.previousActiveTabData = this.activeTabData;
+    // calculate and apply updated css values for animation.
     this.applyUpdatedCSSValues(tab);
     // add the css class and active indicator will animate from the previous tab location to its tab location
     tab.classList.add('animated');
