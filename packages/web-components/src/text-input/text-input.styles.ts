@@ -55,14 +55,14 @@ export const styles = css`
 
   :host {
     vertical-align: middle;
-    gap: 4px;
-  }
-  .label {
-    display: flex;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
+    gap: 4px;
+  }
+  .label {
+    display: flex;
     color: ${colorNeutralForeground1};
     padding-bottom: ${spacingVerticalXS};
     flex-shrink: 0;
@@ -127,6 +127,10 @@ export const styles = css`
     align-items: center;
     justify-content: center;
     color: ${colorNeutralForeground3};
+    font-size: ${fontSizeBase400};
+  }
+  :host ::slotted([slot='start']) svg,
+  :host ::slotted([slot='end']) svg {
     font-size: ${fontSizeBase500};
   }
   :host ::slotted([slot='start']) {
@@ -180,9 +184,13 @@ export const styles = css`
     gap: ${spacingHorizontalXXS};
     padding: 0 ${spacingHorizontalSNudge};
   }
+  :host([input-size='small']) ::slotted([slot='start']) svg,
+  :host([input-size='small']) ::slotted([slot='end']) svg {
+    font-size: ${fontSizeBase400};
+  }
   :host([input-size='small']) ::slotted([slot='start']),
   :host([input-size='small']) ::slotted([slot='end']) {
-    font-size: ${fontSizeBase400};
+    font-size: ${fontSizeBase200};
   }
   :host([input-size='large']) .control {
     font-size: ${fontSizeBase400};
@@ -194,9 +202,13 @@ export const styles = css`
     gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalMNudge};
   }
+  :host([input-size='large']) ::slotted([slot='start']) svg,
+  :host([input-size='large']) ::slotted([slot='end']) svg {
+    font-size: ${fontSizeBase600};
+  }
   :host([input-size='large']) ::slotted([slot='start']),
   :host([input-size='large']) ::slotted([slot='end']) {
-    font-size: ${fontSizeBase600};
+    font-size: ${fontSizeBase400};
   }
   :host([appearance='underline']) .root {
     background: ${colorTransparentBackground};
