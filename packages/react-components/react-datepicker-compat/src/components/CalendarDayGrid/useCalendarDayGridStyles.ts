@@ -117,9 +117,9 @@ const useDaySelectedStyles = makeStyles({
     color: tokens.colorNeutralForeground1Static,
 
     '@media (forced-colors: active)': {
-      backgroundColor: 'Highlight!important',
-      ...shorthands.borderColor('Highlight!important'),
-      color: 'HighlightText!important',
+      backgroundColor: 'Highlight',
+      ...shorthands.borderColor('Highlight'),
+      color: 'HighlightText',
       forcedColorAdjust: 'none',
     },
 
@@ -127,8 +127,8 @@ const useDaySelectedStyles = makeStyles({
       color: tokens.colorNeutralForeground1Static,
       backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
       '@media (forced-colors: active)': {
-        backgroundColor: 'Highlight!important',
-        color: 'HighlightText!important',
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
       },
     },
 
@@ -234,15 +234,15 @@ const useDayButtonStyles = makeStyles({
 
 const useDayIsTodayStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorBrandBackground + '!important',
+    backgroundColor: tokens.colorBrandBackground,
     ...shorthands.borderRadius('100%'),
-    color: tokens.colorNeutralForegroundOnBrand + '!important',
-    fontWeight: tokens.fontWeightSemibold + '!important',
+    color: tokens.colorNeutralForegroundOnBrand,
+    fontWeight: tokens.fontWeightSemibold,
 
     '@media (forced-colors: active)': {
-      backgroundColor: 'WindowText!important',
-      ...shorthands.borderColor('WindowText!important'),
-      color: 'Window!important',
+      backgroundColor: 'WindowText',
+      ...shorthands.borderColor('WindowText'),
+      color: 'Window',
       forcedColorAdjust: 'none',
     },
 

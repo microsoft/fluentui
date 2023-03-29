@@ -214,16 +214,17 @@ const useItemButtonStyles = makeStyles({
 const useCurrentStyles = makeStyles({
   highlightCurrent: {
     backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand + '!important',
+    color: tokens.colorNeutralForegroundOnBrand,
     fontWeight: tokens.fontWeightSemibold,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'WindowText',
-      color: 'Window!important',
+      color: 'Window',
       forcedColorAdjust: 'none',
     },
-    '&:hover': {
+    '&:hover, &:hover:active': {
       backgroundColor: tokens.colorBrandBackground,
+      color: tokens.colorNeutralForegroundOnBrand,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'WindowText',
