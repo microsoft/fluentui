@@ -28,15 +28,4 @@ export class TextInput extends FASTTextField {
    */
   @attr
   public appearance?: TextInputAppearance;
-
-  /**
-   * Defines TextInput display property.
-   *
-   * @public
-   * @default 'block'
-   * @remarks
-   * HTML Attribute: layout
-   */
-  @attr
-  public layout?: TextInputLayout;
 }

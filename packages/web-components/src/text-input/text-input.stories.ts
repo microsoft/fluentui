@@ -6,6 +6,7 @@ import { TextInputAppearance, TextInputLayout, TextInputSize } from './text-inpu
 import { TextInputType } from './index.js';
 
 import './define.js';
+import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
 
 type TextInputStoryArgs = Args & FluentTextInput;
 type TextInputStoryMeta = Meta<TextInputStoryArgs>;
@@ -57,13 +58,6 @@ export default {
     },
     appearance: {
       options: Object.keys(TextInputAppearance),
-      control: {
-        type: 'select',
-      },
-    },
-    layout: {
-      options: Object.keys(TextInputLayout),
-      defaultValue: TextInputLayout.block,
       control: {
         type: 'select',
       },
@@ -129,20 +123,20 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
   </div>
 `);
 
-export const LayoutBlock = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input placeholder="Block">
+export const Inline = renderComponent(html<TextInputStoryArgs>`
+  <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="Inline">
     <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Layout Block Input
+    Inline Input
   </fluent-text-input>
-`);
-
-export const LayoutInline = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input layout="inline" placeholder="Inline">
-    <span slot="start">${Person20Regular}</span>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Layout Inline Input
-  </fluent-text-input>
+  <p style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}">
+    This input is
+    <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="Inline">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+    </fluent-text-input>
+    with a paragraph of text.
+  </p>
 `);
 
 export const Disabled = renderComponent(html<TextInputStoryArgs>`

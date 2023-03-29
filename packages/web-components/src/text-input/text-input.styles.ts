@@ -51,22 +51,26 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('inline-flex')}
+  ${display('block')}
 
   :host {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-items: flex-start;
+    vertical-align: middle;
+    gap: 4px;
   }
   .label {
+    display: flex;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
     color: ${colorNeutralForeground1};
     padding-bottom: ${spacingVerticalXS};
+    flex-shrink: 0;
+    vertical-align: middle;
+    padding-inline-end: ${spacingHorizontalXS};
+  }
+  .label__hidden {
+    display: none;
   }
   .root {
     height: 32px;
@@ -193,18 +197,6 @@ export const styles = css`
   :host([input-size='large']) ::slotted([slot='start']),
   :host([input-size='large']) ::slotted([slot='end']) {
     font-size: ${fontSizeBase600};
-  }
-  :host([layout='inline']) {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  :host([layout='inline']) .root,
-  :host([layout='inline']) .control {
-    width: fit-content;
-  }
-  :host([layout='inline']) .label {
-    padding-inline-end: 12px;
   }
   :host([appearance='underline']) .root {
     background: ${colorTransparentBackground};
