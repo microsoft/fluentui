@@ -2,6 +2,39 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 30 Mar 2023 07:43:51 GMT",
+      "tag": "@fluentui/react-charting_v5.16.10",
+      "version": "5.16.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "4fd1fd74be8ad379daa3f1d986071adfefe19ba6",
+            "comment": "Make area chart keyboard accessible"
+          },
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ecb5c13e68baa7b4ef19a19850465e96ee0e57cb",
+            "comment": "Accessibility bug fix"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1b57d6b81f576b9787c3d611d08ace9f6dcd59e9",
+            "comment": "Fix wrong narration for legend state"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.107.0",
+            "commit": "ecb5c13e68baa7b4ef19a19850465e96ee0e57cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Mar 2023 07:38:27 GMT",
       "tag": "@fluentui/react-charting_v5.16.9",
       "version": "5.16.9",

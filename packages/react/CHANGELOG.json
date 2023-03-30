@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 30 Mar 2023 07:43:50 GMT",
+      "tag": "@fluentui/react_v8.107.0",
+      "version": "8.107.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a9e738b4004a59b252893d472caed84b1c336b9d",
+            "comment": "Added touch support to ColorPicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "98cb97736517c9041c95e13bd7bb27d9c0c1daa4",
+            "comment": "feat: Add blur function to ISearchBox componentRef"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Mar 2023 07:38:26 GMT",
       "tag": "@fluentui/react_v8.106.10",
       "version": "8.106.10",
