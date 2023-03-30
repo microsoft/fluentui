@@ -78,7 +78,7 @@ export const styles = css`
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-    padding-inline: ${spacingHorizontalM};
+    padding: 0 ${spacingHorizontalM};
     min-width: 96px;
     border-radius: ${borderRadiusMedium};
     font-size: ${fontSizeBase300};
@@ -145,7 +145,7 @@ export const styles = css`
   :host([size='small']) .control {
     min-height: 24px;
     min-width: 64px;
-    padding-inline: ${spacingHorizontalS};
+    padding: 0 ${spacingHorizontalS};
     border-radius: ${borderRadiusSmall};
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
@@ -160,7 +160,7 @@ export const styles = css`
   :host([size='large']) .control {
     min-height: 40px;
     border-radius: ${borderRadiusLarge};
-    padding-inline: ${spacingHorizontalL};
+    padding: 0 ${spacingHorizontalL};
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
