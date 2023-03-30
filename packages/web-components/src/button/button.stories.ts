@@ -14,9 +14,9 @@ const storyTemplate = html<ButtonStoryArgs>`
     shape="${x => x.shape}"
     size="${x => x.size}"
     ?disabled="${x => x.disabled}"
-    ?disabledFocusable="${x => x.disabledFocusable}"
+    ?disabled-focusable="${x => x.disabledFocusable}"
     ?icon-only="${x => x.iconOnly}"
-    ?icon="${x => x.icon}
+    ?icon="${x => x.icon}"
   >
     ${x => x.content}
   </fluent-button>

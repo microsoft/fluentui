@@ -68,10 +68,36 @@ export class Button extends FASTButton {
   @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
   public disabledFocusable?: boolean = false;
   protected disabledFocusableChanged(prev: boolean, next: boolean): void {
-    if (this.disabledFocusable) {
-      ((this as unknown) as HTMLElement).setAttribute('aria-disabled', 'true');
-    } else {
-      ((this as unknown) as HTMLElement).removeAttribute('aria-disabled');
+    if (!this.$fastController.isConnected) {
+      return;
     }
+
+    if (this.disabledFocusable) {
+      this.ariaDisabled = true;
+    } else {
+      this.ariaDisabled = false;
+    }
+  }
+
+  /**
+   * Prevents disabledFocusable click events
+   */
+  private handleDisabledFocusableClick = (e: MouseEvent): void => {
+    if (e && this.disabledFocusable) {
+      e.stopImmediatePropagation();
+      return;
+    }
+  };
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    ((this as unknown) as HTMLElement).addEventListener('click', this.handleDisabledFocusableClick);
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    ((this as unknown) as HTMLElement).removeEventListener('click', this.handleDisabledFocusableClick);
   }
 }
