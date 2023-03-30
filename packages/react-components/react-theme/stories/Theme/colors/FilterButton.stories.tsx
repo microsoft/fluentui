@@ -20,7 +20,7 @@ interface FilterButtonInterface {
 
 const tokensUseCase = {
   usage: ['background', 'foreground', 'stencil', 'shadow', 'stroke', 'border'],
-  state: ['rest', 'hover', 'pressed', 'selected', 'focus', 'disabled'],
+  state: ['hover', 'pressed', 'selected', 'focus', 'disabled'],
   styles: ['inverted', 'static', 'transparent', 'alpha', 'link', 'accessible', 'subtle'],
 };
 

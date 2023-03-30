@@ -38,22 +38,8 @@ const tokens: Array<keyof Theme> = (Object.keys(theme.webLight) as Array<keyof T
   tokenName => tokenName.match(/^color(?!Palette).*/) || tokenName.startsWith(`colorPalette`),
 );
 
-// It goes through all the existing tokens and returns the tokens matching the input value
-const searchToken = (inputValue: string) => {
-  const tokensFoundBySearch = tokens.filter(
-    token =>
-      token.toLowerCase().includes(inputValue) ||
-      theme.webLight[token].toString().includes(inputValue) ||
-      theme.webDark[token].toString().includes(inputValue) ||
-      theme.teamsLight[token].toString().includes(inputValue) ||
-      theme.teamsDark[token].toString().includes(inputValue) ||
-      theme.teamsHighContrast[token].toString().includes(inputValue),
-  );
-  return tokensFoundBySearch;
-};
-
 export const Colors = () => {
-  const [tokensSearchResult, setTokensSearchResult] = React.useState<Array<keyof Theme>>(tokens);
+  const [tokensSearchResult, setTokensSearchResult] = React.useState<Array<keyof Theme> | undefined>(tokens);
 
   // Text typed in the input bar
   const [inputValue, setInputValue] = React.useState('');
@@ -63,28 +49,49 @@ export const Colors = () => {
 
   const styles = useStyles();
 
-  const onInputChange: InputProps['onChange'] = (_, data) => {
-    setInputValue(data.value.trim().toLocaleLowerCase());
-    setCheckedValue(undefined);
-  };
+  // It returns tokens matching the input value.
+  const searchToken = React.useCallback(
+    newSearchValue => {
+      const tokensFoundBySearch = tokens.filter(
+        token =>
+          token.toLowerCase().includes(newSearchValue) ||
+          theme.webLight[token].toString().includes(newSearchValue) ||
+          theme.webDark[token].toString().includes(newSearchValue) ||
+          theme.teamsLight[token].toString().includes(newSearchValue) ||
+          theme.teamsDark[token].toString().includes(newSearchValue) ||
+          theme.teamsHighContrast[token].toString().includes(newSearchValue),
+      );
+      setTokensSearchResult(tokensFoundBySearch);
+    },
+    [setTokensSearchResult],
+  );
 
-  React.useEffect(() => {
-    // Trigger the token's search
-    setTokensSearchResult(searchToken(inputValue));
-  }, [inputValue]);
+  const updateSearchDebounced = useDebounce(searchToken, 220);
 
-  const applyFilter: MenuProps['onCheckedValueChange'] = (_, { name, checkedItems }) => {
-    // Filteringchecked items remove the selection and display the full list of tokens
-    if (checkedItems[0] === checkedValue?.usecase[0]) {
+  const onInputChange: InputProps['onChange'] = React.useCallback(
+    (_, { value }) => {
+      updateSearchDebounced(value.trim().toLocaleLowerCase());
+      setInputValue(value.trim().toLocaleLowerCase());
       setCheckedValue(undefined);
-      setTokensSearchResult(tokens);
-      setInputValue('');
-    } else {
-      setCheckedValue(s => ({ ...s, [name]: checkedItems }));
-      setTokensSearchResult(searchToken(checkedItems[0]));
-      setInputValue(checkedItems[0]);
-    }
-  };
+    },
+    [updateSearchDebounced],
+  );
+
+  const applyFilter: MenuProps['onCheckedValueChange'] = React.useCallback(
+    (_, { name, checkedItems }) => {
+      // Filteringchecked items remove the selection and display the full list of tokens
+      if (checkedItems[0] === checkedValue?.usecase[0]) {
+        setCheckedValue(undefined);
+        setTokensSearchResult(tokens);
+        setInputValue('');
+      } else {
+        setCheckedValue(s => ({ ...s, [name]: checkedItems }));
+        searchToken(checkedItems[0]);
+        setInputValue(checkedItems[0]);
+      }
+    },
+    [checkedValue, searchToken],
+  );
 
   return (
     <>
@@ -144,3 +151,16 @@ export const Colors = () => {
 };
 
 Colors.args = {};
+
+const useDebounce = (fn: (...args: unknown[]) => void, duration: number) => {
+  const timeoutRef = React.useRef(0);
+  return React.useCallback(
+    (...args: unknown[]) => {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = window.setTimeout(() => {
+        fn(...args);
+      }, duration);
+    },
+    [duration, fn],
+  );
+};
