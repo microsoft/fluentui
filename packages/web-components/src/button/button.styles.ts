@@ -274,11 +274,11 @@ export const styles = css`
   }
 
   :host([appearance='subtle']:hover) ::slotted(svg) {
-    color: ${colorNeutralForeground2BrandHover};
+    fill: ${colorNeutralForeground2BrandHover};
   }
 
   :host([appearance='subtle']:hover:active) ::slotted(svg) {
-    color: ${colorNeutralForeground2BrandPressed};
+    fill: ${colorNeutralForeground2BrandPressed};
   }
 
   :host([appearance='transparent']) .control {
