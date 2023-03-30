@@ -45,9 +45,6 @@ export const styles = css`
 
   :host([aria-selected='true']) {
     color: ${colorNeutralForeground1};
-  }
-
-  :host([aria-selected='true']) {
     font-weight: ${fontWeightSemibold};
   }
 

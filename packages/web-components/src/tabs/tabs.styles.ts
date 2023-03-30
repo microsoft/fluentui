@@ -3,6 +3,7 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
+  colorCompoundBrandForeground1Hover,
   colorNeutralForeground1,
   colorNeutralForeground1Hover,
   colorNeutralForeground2,
@@ -25,7 +26,6 @@ import {
   spacingVerticalXXS,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
-import { TabTokenNames } from './tabs.js';
 
 export const styles = css`
   ${display('grid')}
@@ -58,6 +58,14 @@ export const styles = css`
   }
   :host([disabled]) ::slotted(fluent-tab:hover):before {
     content: unset;
+  }
+
+  :host ::slotted(fluent-tab) {
+    border-radius: ${borderRadiusMedium};
+  }
+
+  :host ::slotted(fluent-tab[aria-selected='true'])::before {
+    background-color: ${colorNeutralForegroundDisabled};
   }
 
   .tablist {
@@ -115,18 +123,13 @@ export const styles = css`
   :host([appearance='subtle']) ::slotted(fluent-tab:hover) {
     background-color: ${colorSubtleBackgroundHover};
     color: ${colorNeutralForeground1Hover};
+    fill: ${colorCompoundBrandForeground1Hover};
   }
 
   :host([appearance='subtle']) ::slotted(fluent-tab:active) {
     background-color: ${colorSubtleBackgroundPressed};
     fill: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground1};
-  }
-
-  :host ::slotted(fluent-tab.animated)::after {
-    transition-property: transform;
-    transition-duration: ${durationSlow};
-    transition-timing-function: ${curveDecelerateMax};
   }
 
   :host([size='small']) ::slotted(fluent-tab) {
@@ -136,7 +139,6 @@ export const styles = css`
     padding-bottom: ${spacingVerticalSNudge};
     padding-left: ${spacingHorizontalSNudge};
     padding-right: ${spacingHorizontalSNudge};
-    border-radius: ${borderRadiusMedium};
   }
 
   :host([size='large']) ::slotted(fluent-tab) {
@@ -146,16 +148,29 @@ export const styles = css`
     padding-bottom: ${spacingVerticalL};
     padding-left: ${spacingHorizontalMNudge};
     padding-right: ${spacingHorizontalMNudge};
-    border-radius: ${borderRadiusMedium};
   }
 
-  /* ::after adds the active indicator  */
-  :host([orientation='horizontal']) ::slotted(fluent-tab)::after {
+  /* indicator animation  */
+  :host ::slotted(fluent-tab[data-animate='true'])::after {
+    transition-property: transform;
+    transition-duration: ${durationSlow};
+    transition-timing-function: ${curveDecelerateMax};
+  }
+  :host ::slotted(fluent-tab)::after {
     height: ${strokeWidthThicker};
     margin-top: auto;
     transform-origin: left;
-    transform: translateX(var(${TabTokenNames.tabIndicatorOffset})) scaleX(var(${TabTokenNames.tabIndicatorScale}));
+    transform: translateX(var(--tabIndicatorOffset)) scaleX(var(--tabIndicatorScale));
   }
+  :host([orientation='vertical']) ::slotted(fluent-tab)::after {
+    width: ${strokeWidthThicker};
+    height: unset;
+    margin-top: unset;
+    margin-right: auto;
+    transform-origin: top;
+    transform: translateY(var(--tabIndicatorOffset)) scaleY(var(--tabIndicatorScale));
+  }
+
   /* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
   :host ::slotted(fluent-tab)::before {
     height: ${strokeWidthThicker};
@@ -165,16 +180,6 @@ export const styles = css`
     position: absolute;
     margin-top: auto;
   }
-
-  :host([orientation='horizontal']) ::slotted(fluent-tab[aria-selected='false']:hover)::after {
-    height: ${strokeWidthThicker};
-    margin-top: auto;
-    transform-origin: left;
-  }
-
-  :host ::slotted(fluent-tab[aria-selected='true'])::before {
-    background-color: ${colorNeutralForegroundDisabled};
-  }
   :host([orientation='vertical']) ::slotted(fluent-tab)::before {
     height: unset;
     width: ${strokeWidthThicker};
@@ -182,68 +187,75 @@ export const styles = css`
     transform-origin: top;
   }
 
-  :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab)::after,
-  :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab)::before,
-  :host([orientation='horizontal'][size='small']) ::slotted(fluent-tab:hover)::after {
-    right: ${spacingHorizontalSNudge};
-    left: ${spacingHorizontalSNudge};
+  :host ::slotted(fluent-tab[aria-selected='false']:hover)::after {
+    height: ${strokeWidthThicker};
+    margin-top: auto;
+    transform-origin: left;
   }
-  :host([orientation='horizontal']) ::slotted(fluent-tab)::after,
-  :host([orientation='horizontal']) ::slotted(fluent-tab)::before,
-  :host([orientation='horizontal']) ::slotted(fluent-tab:hover)::after {
-    right: ${spacingHorizontalMNudge};
-    left: ${spacingHorizontalMNudge};
+  :host([orientation='vertical']) ::slotted(fluent-tab[aria-selected='false']:hover)::after {
+    height: unset;
+    margin-right: auto;
+    transform-origin: top;
+    width: ${strokeWidthThicker};
   }
-  :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab)::after,
-  :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab)::before,
-  :host([orientation='horizontal'][size='large']) ::slotted(fluent-tab:hover)::after {
-    right: ${spacingHorizontalMNudge};
-    left: ${spacingHorizontalMNudge};
-  }
+
   :host([orientation='vertical']) ::slotted(fluent-tab) {
     align-items: flex-start;
     grid-column: 2;
+    padding-top: ${spacingVerticalSNudge};
+    padding-bottom: ${spacingVerticalSNudge};
   }
-  :host([orientation='vertical']) ::slotted(fluent-tab)::after {
-    width: ${strokeWidthThicker};
-    margin-right: auto;
-    transform-origin: top;
-    transform: translateY(var(${TabTokenNames.tabIndicatorOffset})) scaleY(var(${TabTokenNames.tabIndicatorScale}));
-  }
-  :host([orientation='vertical']) ::slotted(fluent-tab:hover)::after {
-    width: ${strokeWidthThicker};
-    margin-right: auto;
-    transform-origin: top;
-  }
-
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab) {
     padding-top: ${spacingVerticalXXS};
     padding-bottom: ${spacingVerticalXXS};
-  }
-  :host([orientation='vertical']) ::slotted(fluent-tab) {
-    padding-top: ${spacingVerticalSNudge};
-    padding-bottom: ${spacingVerticalSNudge};
   }
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab) {
     padding-top: ${spacingVerticalS};
     padding-bottom: ${spacingVerticalS};
   }
 
+  /* horizontal spacing for indicator */
+  :host([size='small']) ::slotted(fluent-tab)::after,
+  :host([size='small']) ::slotted(fluent-tab)::before,
+  :host([size='small']) ::slotted(fluent-tab:hover)::after {
+    right: ${spacingHorizontalSNudge};
+    left: ${spacingHorizontalSNudge};
+  }
+  :host ::slotted(fluent-tab)::after,
+  :host ::slotted(fluent-tab)::before,
+  :host ::slotted(fluent-tab:hover)::after {
+    right: ${spacingHorizontalMNudge};
+    left: ${spacingHorizontalMNudge};
+  }
+  :host([size='large']) ::slotted(fluent-tab)::after,
+  :host([size='large']) ::slotted(fluent-tab)::before,
+  :host([size='large']) ::slotted(fluent-tab:hover)::after {
+    right: ${spacingHorizontalMNudge};
+    left: ${spacingHorizontalMNudge};
+  }
+
+  /* vertical spacing for indicator */
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab:hover)::after {
+    right: 0;
+    left: 0;
     top: ${spacingVerticalSNudge};
     bottom: ${spacingVerticalSNudge};
   }
   :host([orientation='vertical']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical']) ::slotted(fluent-tab:hover)::after {
+    right: 0;
+    left: 0;
     top: ${spacingVerticalS};
     bottom: ${spacingVerticalS};
   }
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab:hover)::after {
+    right: 0;
+    left: 0;
     top: ${spacingVerticalMNudge};
     bottom: ${spacingVerticalMNudge};
   }

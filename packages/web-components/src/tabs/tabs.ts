@@ -3,11 +3,6 @@ import { FASTTabs, TabsOrientation } from '@microsoft/fast-foundation';
 import { Tab } from '../index.js';
 import { TabsAppearance, TabsSize } from './tabs.options.js';
 
-export const TabTokenNames = {
-  tabIndicatorOffset: '--tabIndicatorOffset',
-  tabIndicatorScale: '--tabIndicatorScale',
-} as const;
-
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
@@ -114,7 +109,7 @@ export class Tabs extends FASTTabs {
    */
   private animationLoop(tab: Tab) {
     // remove the animated class so nothing animates yet
-    tab.classList.remove('animated');
+    tab.setAttribute('data-animate', 'false');
     // animation start - this applyUpdeatedCSSValues sets the active indicator to the location of the previously selected tab
     this.applyUpdatedCSSValues(tab);
     // changing the previously active tab allows the applyUpdatedCSSValues method to calculate the correct end to the animation.
@@ -122,7 +117,7 @@ export class Tabs extends FASTTabs {
     // calculate and apply updated css values for animation.
     this.applyUpdatedCSSValues(tab);
     // add the css class and active indicator will animate from the previous tab location to its tab location
-    tab.classList.add('animated');
+    tab.setAttribute('data-animate', 'true');
   }
 
   /**
@@ -155,7 +150,7 @@ export class Tabs extends FASTTabs {
   private setTabOffsetCSSVar() {
     this.styles = css/**css*/ `
       :host {
-        ${`${TabTokenNames.tabIndicatorOffset}: ${this.activeTabOffset.toString()}px`};
+        --tabIndicatorOffset: ${this.activeTabOffset.toString()}px;
       }
     `;
     this.$fastController.addStyles(this.styles);
@@ -164,7 +159,7 @@ export class Tabs extends FASTTabs {
   private setTabScaleCSSVar() {
     this.styles = css/**css*/ `
       :host {
-        ${`${TabTokenNames.tabIndicatorScale}: ${this.activeTabScale.toString()}`};
+        --tabIndicatorScale: ${this.activeTabScale.toString()};
       }
     `;
     this.$fastController.addStyles(this.styles);
