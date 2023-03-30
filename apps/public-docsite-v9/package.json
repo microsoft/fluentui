@@ -25,7 +25,7 @@
     "@fluentui/react-datepicker-compat": "0.0.0-alpha.0",
     "@fluentui/react-migration-v8-v9": "^9.2.5",
     "@fluentui/react-migration-v0-v9": "9.0.0-alpha.0",
-    "@fluentui/react": "^8.106.10",
+    "@fluentui/react": "^8.107.0",
     "@fluentui/react-northstar": "^0.66.4",
     "@fluentui/react-icons-northstar": "^0.66.4",
     "@fluentui/react-components": "^9.18.6",

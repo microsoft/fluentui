@@ -108,21 +108,27 @@ export type FlatTree = {
  */
 export function useFlatTree_unstable(
   flatTreeItemProps: FlatTreeItemProps[],
-  options: Pick<TreeProps, 'openItems' | 'defaultOpenItems'> = {},
+  options: Pick<TreeProps, 'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'> = {},
 ): FlatTree {
   const [openItems, updateOpenItems] = useOpenItemsState(options);
   const flatTreeItems = React.useMemo(() => createFlatTreeItems(flatTreeItemProps), [flatTreeItemProps]);
   const [navigate, navigationRef] = useFlatTreeNavigation(flatTreeItems);
 
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    options.onOpenChange?.(event, data);
+    if (!event.isDefaultPrevented()) {
+      updateOpenItems(data);
+    }
     event.preventDefault();
-    updateOpenItems(data);
   });
 
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
+      options.onNavigation_unstable?.(event, data);
+      if (!event.isDefaultPrevented()) {
+        navigate(data);
+      }
       event.preventDefault();
-      navigate(data);
     },
   );
 

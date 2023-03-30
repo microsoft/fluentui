@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 28 Mar 2023 07:38:27 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Mar 2023 07:43:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.10)
+
+Thu, 30 Mar 2023 07:43:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.9..@fluentui/react-charting_v5.16.10)
+
+### Patches
+
+- Make area chart keyboard accessible ([PR #27234](https://github.com/microsoft/fluentui/pull/27234) by kumarkshitij@microsoft.com)
+- Accessibility bug fix ([PR #26254](https://github.com/microsoft/fluentui/pull/26254) by srmukher@microsoft.com)
+- Fix wrong narration for legend state ([PR #27303](https://github.com/microsoft/fluentui/pull/27303) by kumarkshitij@microsoft.com)
+- Bump @fluentui/react to v8.107.0 ([PR #26254](https://github.com/microsoft/fluentui/pull/26254) by beachball)
 
 ## [5.16.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.9)
 
