@@ -78,6 +78,10 @@ storiesOf('DatePicker Compat', module)
       includeHighContrast: true,
     },
   )
+  .addStory('showWeekNumbers', () => <DatePicker showWeekNumbers popover={{ open: true }} />, {
+    includeDarkMode: true,
+    includeHighContrast: true,
+  })
   .addStory('allowTextInput', () => <DatePicker allowTextInput />)
   .addStory('Required', () => <DatePicker isRequired />)
   .addStory('Underlined', () => <DatePicker underlined />)
