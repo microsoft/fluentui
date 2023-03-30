@@ -103,7 +103,7 @@ export const SubtleDisabledHighContrast = getStoryVariant(SubtleDisabled, HIGH_C
 export const SubtleDisabledDarkMode = getStoryVariant(SubtleDisabled, DARK_MODE);
 
 export const TransparentDisabled = () => (
-  <Button id={buttonId} appearance="transparent" disabled>
+  <Button id={buttonId} appearance="subtle" disabled>
     Hello, world, This is it.
   </Button>
 );
