@@ -16,6 +16,7 @@ const storyTemplate = html<ButtonStoryArgs>`
     ?disabled="${x => x.disabled}"
     ?disabledFocusable="${x => x.disabledFocusable}"
     ?icon-only="${x => x.iconOnly}"
+    ?icon="${x => x.icon}
   >
     ${x => x.content}
   </fluent-button>

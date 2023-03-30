@@ -115,10 +115,8 @@ export const styles = css`
 
   :host .control:focus-visible {
     border-color: ${colorTransparentStroke};
-    border-radius: ${borderRadiusMedium};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
-    z-index: 1;
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
@@ -145,24 +143,6 @@ export const styles = css`
     max-width: 32px;
   }
 
-  :host([size='small']) .control:focus-visible {
-    border-radius: ${borderRadiusSmall};
-  }
-
-  :host([size='large']) .control:focus-visible {
-    border-radius: ${borderRadiusLarge};
-  }
-
-  :host([shape='circular']) .control,
-  :host([shape='circular']) .control:focus-visible {
-    border-radius: ${borderRadiusCircular};
-  }
-
-  :host([shape='square']) .control,
-  :host([shape='square']) .control:focus-visible {
-    border-radius: ${borderRadiusNone};
-  }
-
   :host([size='small']) {
     --icon-spacing: ${spacingHorizontalXS};
   }
@@ -170,7 +150,7 @@ export const styles = css`
   :host([size='small']) .control {
     min-width: 64px;
     padding: ${buttonSpacingSmall} ${spacingHorizontalS};
-    border-radius: ${buttonSpacingSmall};
+    border-radius: ${borderRadiusSmall};
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
     font-weight: ${fontWeightRegular};
@@ -192,6 +172,7 @@ export const styles = css`
   }
 
   :host([size='large']) .control {
+    border-radius: ${borderRadiusLarge};
     padding: ${buttonSpacingLarge} ${spacingHorizontalL};
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
@@ -206,6 +187,16 @@ export const styles = css`
     font-size: 24px;
     height: 24px;
     width: 24px;
+  }
+
+  :host([shape='circular']) .control,
+  :host([shape='circular']) .control:focus-visible {
+    border-radius: ${borderRadiusCircular};
+  }
+
+  :host([shape='square']) .control,
+  :host([shape='square']) .control:focus-visible {
+    border-radius: ${borderRadiusNone};
   }
 
   :host([appearance='primary']) .control {
@@ -233,12 +224,9 @@ export const styles = css`
     box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
   }
 
-  :host([disabled][appearance='primary']) .control,
-  :host([disabled][appearance='primary']:hover) .control,
-  :host([disabled][appearance='primary']:hover:active) .control,
-  :host([disabled-focusable][appearance='primary']) .control,
-  :host([disabled-focusable][appearance='primary']:hover) .control,
-  :host([disabled-focusable][appearance='primary']:hover:active) .control {
+  :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"])) .control,
+  :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"]):hover) .control,
+  :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"]):hover:active) .control {
     border-color: transparent;
   }
 
@@ -254,9 +242,9 @@ export const styles = css`
     background-color: ${colorTransparentBackgroundPressed};
   }
 
-  :host([disabled][appearance='outline']) .control,
-  :host([disabled][appearance='outline']:hover) .control,
-  :host([disabled][appearance='outline']:hover:active) .control {
+  :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"])) .control,
+  :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"]):hover) .control,
+  :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"]):hover:active) .control {
     background-color: ${colorTransparentBackground};
   }
 
@@ -278,12 +266,9 @@ export const styles = css`
     border-color: transparent;
   }
 
-  :host([disabled][appearance='subtle']) .control,
-  :host([disabled][appearance='subtle']:hover) .control,
-  :host([disabled][appearance='subtle']:hover:active) .control,
-  :host([disabled-focusable][appearance='subtle']) .control,
-  :host([disabled-focusable][appearance='subtle']:hover) .control,
-  :host([disabled-focusable][appearance='subtle']:hover:active) .control {
+  :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"])) .control,
+  :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover) .control,
+  :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover:active) .control {
     background-color: ${colorTransparentBackground};
     border-color: transparent;
   }
