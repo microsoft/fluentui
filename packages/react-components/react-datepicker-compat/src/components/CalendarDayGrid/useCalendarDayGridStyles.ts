@@ -73,7 +73,7 @@ const useTableStyles = makeStyles({
 
 const useDayCellStyles = makeStyles({
   base: {
-    color: tokens.colorNeutralForeground3,
+    color: tokens.colorNeutralForeground1,
     cursor: 'pointer',
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
@@ -175,7 +175,7 @@ const useWeekNumberCellStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
     ...shorthands.borderRight('1px', 'solid'),
     boxSizing: 'border-box',
-    color: tokens.colorNeutralBackgroundStatic,
+    color: tokens.colorNeutralForeground4,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     height: '28px',
