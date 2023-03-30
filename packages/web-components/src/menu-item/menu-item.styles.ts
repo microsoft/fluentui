@@ -161,7 +161,8 @@ export const styles = css`
     grid-column: auto / span 1;
   }
 
-  :host([icon]) ::slotted([slot='end']) :host([data-indent='1']) ::slotted([slot='end']) {
+  :host([icon]) ::slotted([slot='end']),
+  :host([data-indent='1']) ::slotted([slot='end']) {
     grid-column: 4 / span 1;
     justify-self: flex-end;
   }
