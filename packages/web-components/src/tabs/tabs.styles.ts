@@ -194,7 +194,7 @@ export const styles = css`
   }
   :host([orientation='vertical']) ::slotted(fluent-tab[aria-selected='false']:hover)::after {
     height: unset;
-    margin-right: auto;
+    margin-inline-end: auto;
     transform-origin: top;
     width: ${strokeWidthThicker};
   }
