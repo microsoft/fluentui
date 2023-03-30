@@ -8,8 +8,7 @@
     "bundle": "just-scripts perf-test:bundle",
     "clean": "just-scripts clean",
     "test": "just-scripts test",
-    "perf:test": "just-scripts perf-test",
-    "perf:test:base": "just-scripts perf-test --base"
+    "perf:test": "just-scripts perf-test"
   },
   "dependencies": {
     "@fluentui/react-northstar": "^0.66.4",

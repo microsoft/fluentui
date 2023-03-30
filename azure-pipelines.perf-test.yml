@@ -56,7 +56,7 @@ jobs:
         displayName: Build to Perf Test (Northstar)
 
       - script: |
-          yarn perf:test:base
+          yarn perf:test --base
         condition: eq(variables.isPR, false)
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test Base (Northstar)
