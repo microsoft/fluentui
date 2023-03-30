@@ -29,19 +29,19 @@ AsAnAnchor.storyName = 'As an anchor';
 
 export const Circular = () => (
   <Button id={buttonId} shape="circular">
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
 export const Outline = () => (
   <Button id={buttonId} appearance="outline">
-    Hello, world
+    Hello, world, Hello, world, This is it.
   </Button>
 );
 
 export const Primary = () => (
   <Button id={buttonId} appearance="primary">
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -50,7 +50,7 @@ export const PrimaryDarkMode = getStoryVariant(Primary, DARK_MODE);
 
 export const Subtle = () => (
   <Button id={buttonId} appearance="subtle">
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -59,7 +59,7 @@ export const SubtleDarkMode = getStoryVariant(Subtle, DARK_MODE);
 
 export const Transparent = () => (
   <Button id={buttonId} appearance="transparent">
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -68,7 +68,7 @@ export const TransparentDarkMode = getStoryVariant(Transparent, DARK_MODE);
 
 export const Disabled = () => (
   <Button id={buttonId} disabled>
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -77,7 +77,7 @@ export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 
 export const OutlineDisabled = () => (
   <Button id={buttonId} appearance="outline" disabled>
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -86,7 +86,7 @@ export const OutlineDisabledDarkMode = getStoryVariant(OutlineDisabled, DARK_MOD
 
 export const PrimaryDisabled = () => (
   <Button id={buttonId} appearance="primary" disabled>
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -95,7 +95,7 @@ export const PrimaryDisabledDarkMode = getStoryVariant(PrimaryDisabled, DARK_MOD
 
 export const SubtleDisabled = () => (
   <Button id={buttonId} appearance="subtle" disabled>
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
@@ -104,7 +104,7 @@ export const SubtleDisabledDarkMode = getStoryVariant(SubtleDisabled, DARK_MODE)
 
 export const TransparentDisabled = () => (
   <Button id={buttonId} appearance="transparent" disabled>
-    Hello, world
+    Hello, world, This is it.
   </Button>
 );
 
