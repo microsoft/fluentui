@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: exports isHTMLElement as public",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

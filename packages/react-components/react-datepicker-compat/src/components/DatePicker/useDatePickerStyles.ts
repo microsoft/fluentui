@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
-export const datePickerClassNames: SlotClassNames<DatePickerSlots> & Record<string, string> = {
+export const datePickerClassNames: SlotClassNames<DatePickerSlots> = {
   root: 'fui-DatePicker',
   field: 'fui-DatePicker__field',
   wrapper: 'fui-DatePicker__wrapper',

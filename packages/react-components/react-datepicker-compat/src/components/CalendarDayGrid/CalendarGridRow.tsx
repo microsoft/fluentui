@@ -5,6 +5,9 @@ import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayG
 import type { DayInfo } from './CalendarDayGrid';
 import type { WeekCorners } from './useWeekCornerStyles';
 
+/**
+ * @internal
+ */
 export interface CalendarGridRowProps extends CalendarDayGridProps {
   classNames: CalendarDayGridStyles;
   weeks: DayInfo[][];
@@ -21,6 +24,9 @@ export interface CalendarGridRowProps extends CalendarDayGridProps {
   getRefsFromDayInfos(dayInfosInRange: DayInfo[]): (HTMLElement | null)[];
 }
 
+/**
+ * @internal
+ */
 export const CalendarGridRow: React.FunctionComponent<CalendarGridRowProps> = props => {
   const {
     classNames,

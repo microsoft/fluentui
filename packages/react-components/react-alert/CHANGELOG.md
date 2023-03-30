@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Thu, 16 Mar 2023 14:36:59 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.41)
+
+Tue, 21 Mar 2023 21:23:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.40..@fluentui/react-alert_v9.0.0-beta.41)
+
+### Changes
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-avatar to v9.4.5 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-button to v9.3.5 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-tabster to v9.6.1 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-theme to v9.1.7 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-utilities to v9.7.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.20 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
 
 ## [9.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.40)
 

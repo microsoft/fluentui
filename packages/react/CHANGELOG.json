@@ -2,6 +2,74 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 30 Mar 2023 07:43:50 GMT",
+      "tag": "@fluentui/react_v8.107.0",
+      "version": "8.107.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a9e738b4004a59b252893d472caed84b1c336b9d",
+            "comment": "Added touch support to ColorPicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "98cb97736517c9041c95e13bd7bb27d9c0c1daa4",
+            "comment": "feat: Add blur function to ISearchBox componentRef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Mar 2023 07:38:26 GMT",
+      "tag": "@fluentui/react_v8.106.10",
+      "version": "8.106.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3e4575b1092ad3bdf0b34275748f2b41566ebe4b",
+            "comment": "fix: Ensure click event object is not passed to calendarDismissed callback in DatePicker."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Mar 2023 22:25:03 GMT",
+      "tag": "@fluentui/react_v8.106.9",
+      "version": "8.106.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0f112dce6a19b7124dd95f58d9096f40aeaedf9c",
+            "comment": "Fix: Fix issue with ComboBox not accepting IME input in allowFreeform (revert PR #26931)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Mar 2023 08:03:46 GMT",
+      "tag": "@fluentui/react_v8.106.8",
+      "version": "8.106.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5",
+            "comment": "fix: Calculating correct gap space when Tooltips have isBeakVisible set to false."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Mar 2023 08:15:56 GMT",
       "tag": "@fluentui/react_v8.106.7",
       "version": "8.106.7",

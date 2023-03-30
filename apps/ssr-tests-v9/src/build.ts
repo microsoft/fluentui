@@ -25,34 +25,36 @@ async function build() {
 
   const generateStartTime = process.hrtime();
 
-  // Portals currently do not support hydration
-  // https://github.com/facebook/react/issues/13097
-  const skippedPaths = ['react-portal'];
-
-  const rawStoriesGlobs = getPackageStoriesGlob({
+  const rawStoriesGlobs: string[] = getPackageStoriesGlob({
     packageName: '@fluentui/react-components',
     callerPath: __dirname,
-  }).filter(
-    (storyPath: string) =>
-      // only return entries that don't match any of the skippedPaths
-      !skippedPaths.find(skippedPath => {
-        if (storyPath.includes(skippedPath)) {
-          return true;
-        }
-        return false;
-      }),
-  ) as string[];
+  });
 
+  // Add stories defined in the package
   rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
+
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
     .map(pattern => path.resolve(__dirname, pattern));
 
-  await generateEntryPoints({
+  const { ignoredStories } = await generateEntryPoints({
     esmEntryPoint,
     cjsEntryPoint,
     storiesGlobs,
+    ignore: [
+      // Portals currently do not support hydration
+      // https://github.com/facebook/react/issues/13097
+      '**/react-portal/**',
+      // https://github.com/microsoft/fluentui/issues/27338
+      '**/react-table/stories/DataGrid/Virtualization.stories',
+      '**/react-table/stories/Table/Virtualization.stories',
+    ],
   });
+
+  if (ignoredStories.length > 0) {
+    console.log('Following stories were excluded by config:');
+    console.log(ignoredStories.map(filepath => `- ${filepath}`).join('\n'));
+  }
 
   console.log(`Entry points were generated in ${hrToSeconds(process.hrtime(generateStartTime))}`);
 
