@@ -83,6 +83,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
   }
   public componentDidMount(): void {
+    if (this._rootElem) {
+      this.setState({
+        _width: this._rootElem.offsetWidth,
+        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+      });
+    }
     const isChartEmpty = !(
       this.props.data &&
       this.props.data.chartData &&
@@ -90,12 +96,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
-    }
-    if (this._rootElem) {
-      this.setState({
-        _width: this._rootElem.offsetWidth,
-        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
-      });
     }
   }
 
