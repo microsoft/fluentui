@@ -324,7 +324,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
       colorOnSelectedState: color,
       borderColor: legend.color,
-      overflow,
+      overflow: overflow,
       stripePattern: legend.stripePattern,
       isLineLegendInBarChart: legend.isLineLegendInBarChart,
       opacity: legend.opacity,
