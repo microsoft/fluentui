@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "  \"comment\": feat(button): add button web component",
+  "comment": "feat(button): add button web component",
   "packageName": "@fluentui/web-components",
   "email": "chhol@microsoft.com",
   "dependentChangeType": "patch"

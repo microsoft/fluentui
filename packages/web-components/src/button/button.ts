@@ -38,17 +38,6 @@ export class Button extends FASTButton {
   public size?: ButtonSize;
 
   /**
-   * The button has an icon
-   * This attribute is not required if icon-only is true
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: icon
-   */
-  @attr({ mode: 'boolean' })
-  public icon: boolean = false;
-
-  /**
    * The button has an icon only, no text content
    *
    * @public

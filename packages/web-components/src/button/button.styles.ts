@@ -57,12 +57,6 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
-const buttonSpacingSmall = '3px';
-const buttonSpacingSmallWithIcon = '1px';
-const buttonSpacingMedium = '5px';
-const buttonSpacingLarge = '8px';
-const buttonSpacingLargeWithIcon = '7px';
-
 // Need to support icon hover styles
 export const styles = css`
   ${display('inline-flex')}
@@ -79,11 +73,12 @@ export const styles = css`
     justify-content: center;
     text-decoration-line: none;
     margin: 0;
+    min-height: 32px;
     outline-style: none;
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-    padding: ${buttonSpacingMedium} ${spacingHorizontalM};
+    padding-inline: ${spacingHorizontalM};
     min-width: 96px;
     border-radius: ${borderRadiusMedium};
     font-size: ${fontSizeBase300};
@@ -148,8 +143,9 @@ export const styles = css`
   }
 
   :host([size='small']) .control {
+    min-height: 24px;
     min-width: 64px;
-    padding: ${buttonSpacingSmall} ${spacingHorizontalS};
+    padding-inline: ${spacingHorizontalS};
     border-radius: ${borderRadiusSmall};
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
@@ -161,19 +157,10 @@ export const styles = css`
     max-width: 24px;
   }
 
-  :host([size='small'][icon]) .control,
-  :host([size='small'][icon-only]) .control {
-    padding-block: ${buttonSpacingSmallWithIcon};
-  }
-
-  :host([size='large'][icon]) .control,
-  :host([size='large'][icon-only]) .control {
-    padding-block: ${buttonSpacingLargeWithIcon};
-  }
-
   :host([size='large']) .control {
+    min-height: 40px;
     border-radius: ${borderRadiusLarge};
-    padding: ${buttonSpacingLarge} ${spacingHorizontalL};
+    padding-inline: ${spacingHorizontalL};
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
