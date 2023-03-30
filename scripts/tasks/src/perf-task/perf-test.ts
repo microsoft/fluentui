@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import { workspaceRoot } from '@nrwl/devkit';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
 
 import { getJustArgv as argv } from '../argv';
@@ -100,19 +101,22 @@ type ScenarioSetting = Record<string, { scenarioName: string; iterations: number
 //        await page.tracing.stop();
 
 export async function getPerfRegressions(options: PerfRegressionConfig) {
+  validatePerfOptions(options);
+
   const {
     scenarioIterations,
     scenarioRenderTypes,
     outDir,
     tempDir,
     projectName,
-    scenariosProjectName,
+    projectRootPath,
     scenariosSrcDirPath,
     excludeScenarios,
   } = options;
+  const projectRootDirectoryName = path.basename(projectRootPath);
 
-  const projectEnvVars = EnvVariablesByProject[options.projectName];
-  const urlForDeployPath = DEPLOYURL ? `${DEPLOYURL}/${scenariosProjectName}` : 'file://' + outDir;
+  const projectEnvVars = EnvVariablesByProject[projectName];
+  const urlForDeployPath = DEPLOYURL ? `${DEPLOYURL}/${projectRootDirectoryName}` : 'file://' + outDir;
 
   // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
   // At some point perf test should be broken out from CI default pipeline entirely and then can go back to using deploy site.
@@ -121,7 +125,7 @@ export async function getPerfRegressions(options: PerfRegressionConfig) {
   const urlForDeploy = 'file://' + outDir + '/index.html';
 
   const targetPath = `heads/${SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-  const urlForMaster = `https://${DEPLOYHOST}/${targetPath}/${scenariosProjectName}/index.html`;
+  const urlForMaster = `https://${DEPLOYHOST}/${targetPath}/${projectRootDirectoryName}/index.html`;
 
   // For debugging, in case the environment variables used to generate these have unexpected values
   console.log(`urlForDeployPath: "${urlForDeployPath}"`);
@@ -228,9 +232,7 @@ export async function getPerfRegressions(options: PerfRegressionConfig) {
   // Write results to file
   fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
-  console.log(
-    `##vso[task.setvariable variable=${projectEnvVars.filePath};]apps/${scenariosProjectName}/dist/perfCounts.html`,
-  );
+  console.log(`##vso[task.setvariable variable=${projectEnvVars.filePath};]${projectRootPath}/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=${projectEnvVars.status};]${status}`);
 }
 
@@ -351,4 +353,26 @@ function getRegression(testResult: CookResult, options: ReportOptions) {
       : '';
 
   return `<td>${cell}</td>`;
+}
+
+function validatePerfOptions(options: PerfRegressionConfig) {
+  const packageJsonPath = path.join(workspaceRoot, options.projectRootPath, 'package.json');
+  if (!fs.existsSync(packageJsonPath)) {
+    throw new Error('');
+  }
+
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+  const projectName = packageJson.name;
+
+  if (projectName === options.projectName) {
+    throw new Error(
+      `ProjectName/ProjectRootPath mismatch. You provided projectName:${options.projectName} which doesn't exist at ${options.projectRootPath} `,
+    );
+  }
+
+  if (!fs.existsSync(options.outDir)) {
+    throw new Error(
+      `${options.outDir} doesn't exist. Make sure to run bundling process to be able to generate perf suite.`,
+    );
+  }
 }

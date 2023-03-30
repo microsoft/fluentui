@@ -22,7 +22,13 @@ export type ScenarioRenderTypes = { [scenarioName: string]: string[] };
 export type ScenarioIterations = { [scenarioName: string]: number };
 
 export type PerfRegressionConfig = {
-  scenariosProjectName: string;
+  /**
+   * path from workspace root -> example `apps/my-app`
+   */
+  projectRootPath: string;
+  /**
+   * name used within package.json#name
+   */
   projectName: string;
   outDir: string;
   tempDir: string;
