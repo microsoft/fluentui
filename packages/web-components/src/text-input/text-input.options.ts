@@ -21,10 +21,12 @@ export type TextInputSize = ValuesOf<typeof TextInputSize>;
  * @public
  */
 export const TextInputAppearance = {
-  outline: 'base',
-  underline: 'numeric',
+  outline: 'outline',
+  underline: 'underline',
   filledLighter: 'filled-lighter',
+  filledLighterShadow: 'filled-lighter--shadow',
   filledDarker: 'filled-darker',
+  filledDarkerShadow: 'filled-darker--shadow',
 } as const;
 
 /**

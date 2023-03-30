@@ -37,6 +37,7 @@ import {
   lineHeightBase300,
   lineHeightBase400,
   shadow2,
+  spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalS,
   spacingHorizontalSNudge,
@@ -95,7 +96,7 @@ export const styles = css`
     height: 2px;
     border-bottom-left-radius: ${borderRadiusMedium};
     border-bottom-right-radius: ${borderRadiusMedium};
-    border-bottom: 2px solid ${colorCompoundBrandStroke};
+    border-bottom: ${strokeWidthThick} solid ${colorCompoundBrandStroke};
     clip-path: inset(calc(100% - 2px) 0px 0px);
     transform: scaleX(0);
     transition-property: transform;
@@ -110,6 +111,7 @@ export const styles = css`
     background: ${colorTransparentBackground};
     font-family: ${fontFamilyBase};
     font-weight: ${fontWeightRegular};
+    font-size: ${fontSizeBase300};
     border: none;
     background: transparent;
     vertical-align: center;
@@ -127,10 +129,6 @@ export const styles = css`
     align-items: center;
     justify-content: center;
     color: ${colorNeutralForeground3};
-    font-size: ${fontSizeBase400};
-  }
-  :host ::slotted([slot='start']) svg,
-  :host ::slotted([slot='end']) svg {
     font-size: ${fontSizeBase500};
   }
   :host ::slotted([slot='start']) {
@@ -147,7 +145,7 @@ export const styles = css`
   :host(:active) .root {
     border-color: ${colorNeutralStroke1Pressed};
   }
-  :host(:focus-within:not([disabled])) .root {
+  :host([appearance='outline']:focus-within:not([disabled])) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
   :host(:focus-within:not([disabled])) .control {
@@ -183,13 +181,9 @@ export const styles = css`
     gap: ${spacingHorizontalXXS};
     padding: 0 ${spacingHorizontalSNudge};
   }
-  :host([input-size='small']) ::slotted([slot='start']) svg,
-  :host([input-size='small']) ::slotted([slot='end']) svg {
-    font-size: ${fontSizeBase400};
-  }
   :host([input-size='small']) ::slotted([slot='start']),
   :host([input-size='small']) ::slotted([slot='end']) {
-    font-size: ${fontSizeBase200};
+    font-size: ${fontSizeBase400};
   }
   :host([input-size='large']) .control {
     font-size: ${fontSizeBase400};
@@ -199,15 +193,11 @@ export const styles = css`
   :host([input-size='large']) .root {
     height: 40px;
     gap: ${spacingHorizontalS};
-    padding: 0 ${spacingHorizontalMNudge};
-  }
-  :host([input-size='large']) ::slotted([slot='start']) svg,
-  :host([input-size='large']) ::slotted([slot='end']) svg {
-    font-size: ${fontSizeBase600};
+    padding: 0 ${spacingHorizontalM};
   }
   :host([input-size='large']) ::slotted([slot='start']),
   :host([input-size='large']) ::slotted([slot='end']) {
-    font-size: ${fontSizeBase400};
+    font-size: ${fontSizeBase600};
   }
   :host([appearance='underline']) .root {
     background: ${colorTransparentBackground};
@@ -228,23 +218,35 @@ export const styles = css`
   :host([appearance='underline'][disabled]) .root {
     border-bottom-color: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
   }
-  :host([appearance='filledLighter']) .root,
-  :host([appearance='filledDarker']) .root {
+  :host([appearance='filled-lighter']) .root,
+  :host([appearance='filled-lighter--shadow']) .root,
+  :host([appearance='filled-darker']) .root,
+  :host([appearance='filled-darker--shadow']) .root {
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
+  }
+  :host([appearance='filled-lighter--shadow']) .root,
+  :host([appearance='filled-darker--shadow']) .root {
     box-shadow: ${shadow2};
   }
-  :host([appearance='filledLighter']) .root {
+
+  :host([appearance='filled-lighter']) .root,
+  :host([appearance='filled-lighter--shadow']) .root {
     background: ${colorNeutralBackground1};
   }
-  :host([appearance='filledDarker']) .root {
+  :host([appearance='filled-darker']) .root,
+  :host([appearance='filled-darker--shadow']) .root {
     background: ${colorNeutralBackground3};
   }
-  :host([appearance='filledLighter']):hover:not(:active) .root,
-  :host([appearance='filledDarker']):hover:not(:active) .root {
+  :host([appearance='filled-lighter']):hover:not(:active) .root,
+  :host([appearance='filled-lighter--shadow']):hover:not(:active) .root,
+  :host([appearance='filled-darker']):hover:not(:active) .root,
+  :host([appearance='filled-darkers--shadow']):hover:not(:active) .root {
     border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([appearance='filledLighter']):active .root,
-  :host([appearance='filledDarker']):active .root {
+  :host([appearance='filled-lighter']):active .root,
+  :host([appearance='filled-lighter-shadow']):active .root,
+  :host([appearance='filled-darker']):active .root,
+  :host([appearance='filled-darker-shadow']):active .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
   }

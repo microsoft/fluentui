@@ -2,9 +2,8 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
-import { TextInputAppearance, TextInputLayout, TextInputSize } from './text-input.options.js';
+import { TextInputAppearance, TextInputSize } from './text-input.options.js';
 import { TextInputType } from './index.js';
-
 import './define.js';
 import { fontFamilyBase, fontSizeBase300, lineHeightBase300 } from '../theme/design-tokens.js';
 
@@ -25,18 +24,6 @@ const Person20Regular = html`<svg
   ></path>
 </svg>`;
 
-const Mic16Regular = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  viewBox="0 0 16 16"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M5.5 4.5a2.5 2.5 0 0 1 5 0V8a2.5 2.5 0 0 1-5 0V4.5ZM8 3c-.83 0-1.5.67-1.5 1.5V8a1.5 1.5 0 1 0 3 0V4.5C9.5 3.67 8.83 3 8 3ZM4 7.5c.28 0 .5.22.5.5a3.5 3.5 0 1 0 7 0 .5.5 0 0 1 1 0 4.5 4.5 0 0 1-4 4.47v1.03a.5.5 0 0 1-1 0v-1.03A4.5 4.5 0 0 1 3.5 8c0-.28.22-.5.5-.5Z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-
 const storyTemplate = html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; width: 300px;">
     <fluent-text-input
@@ -45,7 +32,7 @@ const storyTemplate = html<TextInputStoryArgs>`
       ?block=${x => x.block}
       input-size="${x => x.inputSize}"
       appearance="${x => x.appearance}"
-      placeholder=${x => x.placeholder}
+      placeholder="${x => x.placeholder}"
     >
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}</span>
@@ -70,7 +57,7 @@ export default {
       },
     },
     appearance: {
-      options: Object.keys(TextInputAppearance),
+      options: Object.values(TextInputAppearance),
       control: {
         type: 'select',
       },
@@ -93,13 +80,13 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
       Content Start
     </fluent-text-input>
     <fluent-text-input>
-      <span slot="end">${Mic16Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Content After
     </fluent-text-input>
     <fluent-text-input>
-      <span slot="start">$</span>
-      <span slot="end">.00</span>
-      Content After
+      <fluent-text slot="start" size="400"><span>$</span></fluent-text>
+      <fluent-text slot="end" size="400"><span>.00</span></fluent-text>
+      Content Before + After
     </fluent-text-input>
   </div>
 `);
@@ -128,16 +115,28 @@ export const Appearance = renderComponent(html<TextInputStoryArgs>`
       Underlined Input
     </fluent-text-input>
 
-    <fluent-text-input appearance="filledLighter">
+    <fluent-text-input appearance="filled-lighter">
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}${Person20Regular}</span>
       Filled Lighter Input
     </fluent-text-input>
 
-    <fluent-text-input appearance="filledDarker">
+    <fluent-text-input appearance="filled-lighter--shadow">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Filled Lighter with Shadow Input
+    </fluent-text-input>
+
+    <fluent-text-input appearance="filled-darker">
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}${Person20Regular}</span>
       Filled Darker Input
+    </fluent-text-input>
+
+    <fluent-text-input appearance="filled-darker--shadow">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Filled Darker with Shadow Input
     </fluent-text-input>
   </div>
 `);
