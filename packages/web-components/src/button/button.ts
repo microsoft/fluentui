@@ -73,9 +73,9 @@ export class Button extends FASTButton {
     }
 
     if (this.disabledFocusable) {
-      this.ariaDisabled = true;
+      ((this as unknown) as HTMLElement).setAttribute('aria-disabled', 'true');
     } else {
-      this.ariaDisabled = false;
+      ((this as unknown) as HTMLElement).removeAttribute('aria-disabled');
     }
   }
 
