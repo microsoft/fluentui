@@ -356,18 +356,8 @@ function getRegression(testResult: CookResult, options: ReportOptions) {
 }
 
 function validatePerfOptions(options: PerfRegressionConfig) {
-  const packageJsonPath = path.join(workspaceRoot, options.projectRootPath, 'package.json');
-  if (!fs.existsSync(packageJsonPath)) {
-    throw new Error('');
-  }
-
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-  const projectName = packageJson.name;
-
-  if (projectName === options.projectName) {
-    throw new Error(
-      `ProjectName/ProjectRootPath mismatch. You provided projectName:${options.projectName} which doesn't exist at ${options.projectRootPath} `,
-    );
+  if (!fs.existsSync(path.join(workspaceRoot, options.projectRootPath))) {
+    throw new Error(`Invalid ProjectRootPath. ${options.projectRootPath} doesn't exists`);
   }
 
   if (!fs.existsSync(options.outDir)) {

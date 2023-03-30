@@ -29,9 +29,10 @@ export function getFluentPerfRegressions() {
 }
 
 function linkToFlamegraph(value: string, filename: string) {
+  const projectRootDirectoryName = path.basename(config.projectRootPath);
   const urlForDeployPath = perfTestEnv.DEPLOYURL
-    ? `${perfTestEnv.DEPLOYURL}/${config.scenariosProjectName}`
-    : 'file://' + path.resolve(workspaceRoot, `packages/fluentui/${config.scenariosProjectName}/dist`);
+    ? `${perfTestEnv.DEPLOYURL}/${projectRootDirectoryName}`
+    : 'file://' + path.resolve(workspaceRoot, `${config.projectRootPath}/dist`);
 
   return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;
 }
@@ -111,7 +112,7 @@ const checkPerfRegressions = (reporter: Reporter) => {
   reporter.markdown(`## Perf Analysis (\`${config.projectName}\`)`);
 
   try {
-    perfCounts = require(path.resolve(workspaceRoot, `packages/${config.scenariosProjectName}/dist/perfCounts.json`));
+    perfCounts = require(path.resolve(workspaceRoot, `${config.projectRootPath}/dist/perfCounts.json`));
   } catch {
     reporter.warn('No perf measurements available');
     return;

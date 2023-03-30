@@ -3,10 +3,9 @@ import path from 'path';
 import _ from 'lodash';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
 import { generateUrl } from '@fluentui/digest';
-import { perfTestEnv } from '@fluentui/scripts-tasks';
+import { perfTestEnv, PerfRegressionConfig } from '@fluentui/scripts-tasks';
 
 import { getFluentPerfRegressions } from './fluentPerfRegressions';
-import { config } from './perf-test.config';
 
 type ExtendedCookResult = CookResult & {
   extended: {
@@ -37,15 +36,15 @@ const defaultIterations = 1;
 
 console.log(`__dirname: ${__dirname}`);
 
-export default async function getPerfRegressions(_config: typeof config, baselineOnly: boolean = false) {
-  const { outDir, tempDir, scenariosSrcDirPath, projectName, scenariosProjectName } = _config;
+export async function getPerfRegressions(config: PerfRegressionConfig, baselineOnly = false) {
+  const { outDir, tempDir, scenariosSrcDirPath, projectName, projectRootPath } = config;
+  const projectRootDirectoryName = path.basename(projectRootPath);
   const projectEnvVars = perfTestEnv.EnvVariablesByProject[projectName];
-  let urlForMaster: string | undefined;
 
-  if (!baselineOnly) {
-    const targetPath = `heads/${perfTestEnv.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-    urlForMaster = `https://${perfTestEnv.DEPLOYHOST}/${targetPath}/${scenariosProjectName}/index.html`;
-  }
+  const targetPath = `heads/${perfTestEnv.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
+  const urlForMaster = baselineOnly
+    ? undefined
+    : `https://${perfTestEnv.DEPLOYHOST}/${targetPath}/${projectRootDirectoryName}/index.html`;
 
   // For debugging, in case the environment variables used to generate these have unexpected values
   console.log(`urlForDeployPath: "${urlForDeployPath}"`);
@@ -74,8 +73,13 @@ export default async function getPerfRegressions(_config: typeof config, baselin
           scenario: generateUrl(urlForDeploy, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
           ...(!baselineOnly &&
             storyKey !== 'Fabric' && {
-              // Optimization: skip baseline comparision for Fabric
-              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
+              // Optimization: skip baseline comparison for Fabric
+              baseline: generateUrl(
+                urlForMaster as string,
+                kindKey,
+                storyKey,
+                getIterations(stories, kindKey, storyKey),
+              ),
             }),
         };
       });
@@ -125,9 +129,7 @@ export default async function getPerfRegressions(_config: typeof config, baselin
   // Write results to file
   fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
-  console.log(
-    `##vso[task.setvariable variable=${projectEnvVars.filePath};]packages/fluentui/${scenariosProjectName}/dist/perfCounts.html`,
-  );
+  console.log(`##vso[task.setvariable variable=${projectEnvVars.filePath};]${projectRootPath}/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=${projectEnvVars.status};]${status}`);
 }
 
