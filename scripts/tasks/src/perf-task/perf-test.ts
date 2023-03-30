@@ -108,6 +108,7 @@ export async function getPerfRegressions(options: PerfRegressionConfig) {
     projectName,
     scenariosProjectName,
     scenariosSrcDirPath,
+    excludeScenarios,
   } = options;
 
   const projectEnvVars = EnvVariablesByProject[options.projectName];
@@ -131,8 +132,20 @@ export async function getPerfRegressions(options: PerfRegressionConfig) {
 
   const scenariosAvailable = fs
     .readdirSync(scenariosSrcDirPath)
-    .filter(name => name.indexOf('scenarioList') === -1)
-    .map(name => path.basename(name, '.tsx'));
+    .filter(fileName => {
+      if (excludeScenarios) {
+        const shouldExclude = excludeScenarios.some(scenarioName => {
+          return fileName.indexOf(scenarioName) !== -1;
+        });
+
+        if (shouldExclude) {
+          return false;
+        }
+      }
+
+      return true;
+    })
+    .map(fileName => path.basename(fileName, '.tsx'));
 
   const scenariosArgv: string = argv().scenarios;
   const scenariosArg = scenariosArgv?.split?.(',') || [];
@@ -142,9 +155,7 @@ export async function getPerfRegressions(options: PerfRegressionConfig) {
     }
   });
 
-  let scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
-  // TeachingBubble perf test is hanging after puppeteer pin to v19. Disabling for now to unblock SWC migration work.
-  scenarioList = scenarioList.filter(scenario => scenario !== 'TeachingBubble');
+  const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
   const scenarios: Scenarios = {};
   const scenarioSettings: ScenarioSetting = {};
@@ -231,15 +242,16 @@ interface ReportOptions {
  * Create test summary based on test results.
  */
 function createReport(scenarioSettings: ScenarioSetting, testResults: CookResults, options: ReportOptions) {
-  const report = `## [Perf Analysis (\`${options.projectName}\`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n`
+  const report =
+    `## [Perf Analysis (\`${options.projectName}\`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n`
 
-    // Show only significant changes by default.
-    .concat(createScenarioTable(scenarioSettings, testResults, false, options))
+      // Show only significant changes by default.
+      .concat(createScenarioTable(scenarioSettings, testResults, false, options))
 
-    // Show all results in a collapsible table.
-    .concat('<details><summary>All results</summary><p>')
-    .concat(createScenarioTable(scenarioSettings, testResults, true, options))
-    .concat('</p></details>\n\n');
+      // Show all results in a collapsible table.
+      .concat('<details><summary>All results</summary><p>')
+      .concat(createScenarioTable(scenarioSettings, testResults, true, options))
+      .concat('</p></details>\n\n');
 
   return report;
 }

@@ -30,4 +30,9 @@ export type PerfRegressionConfig = {
   scenarioNames?: ScenarioNames;
   scenarioIterations?: ScenarioIterations;
   scenarioRenderTypes?: ScenarioRenderTypes;
+  /**
+   * array of scenario names to be excluded.
+   * NOTE: array item needs to match scenario filename without extension. So to exclude `Foo.tsx` , you need to define `['Foo']` etc.
+   */
+  excludeScenarios?: string[];
 };
