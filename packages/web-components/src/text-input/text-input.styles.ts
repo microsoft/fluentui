@@ -89,10 +89,10 @@ export const styles = css`
   .root::after {
     content: '';
     position: absolute;
-    left: -1px;
+    left: 0px;
     bottom: -1px;
-    right: -1px;
-    height: max(2px, ${borderRadiusMedium});
+    right: 0px;
+    height: 2px;
     border-bottom-left-radius: ${borderRadiusMedium};
     border-bottom-right-radius: ${borderRadiusMedium};
     border-bottom: 2px solid ${colorCompoundBrandStroke};
@@ -149,7 +149,6 @@ export const styles = css`
   }
   :host(:focus-within:not([disabled])) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-    border-bottom-width: ${strokeWidthThick};
   }
   :host(:focus-within:not([disabled])) .control {
     color: ${colorNeutralForeground1};
@@ -163,12 +162,12 @@ export const styles = css`
   :host([disabled]) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
   }
+  :host:focus-within) .root {
+    outline: transparent solid 2px;
+  }
   :host(:focus-within) .root::after {
     transform: scaleX(1);
     transition: transform ${durationNormal} ${curveDecelerateMid};
-  }
-  :host(:focus-within:active) .root::after {
-    border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
   ::selection {
     color: ${colorNeutralForegroundInverted};
