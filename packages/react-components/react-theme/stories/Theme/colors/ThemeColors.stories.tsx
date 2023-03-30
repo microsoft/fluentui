@@ -6,9 +6,14 @@ import {
   webLightTheme,
   webDarkTheme,
   Theme,
+  Input,
+  makeStyles,
+  InputProps,
+  MenuProps,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';
+import { TokensFilterButton } from './FilterButton.stories';
 
 // FIXME: hardcoded theme
 const theme = {
@@ -19,125 +24,86 @@ const theme = {
   teamsHighContrast: teamsHighContrastTheme,
 };
 
-const colorPalette = {
-  Red: 'colorPaletteRed',
-  Green: 'colorPaletteGreen',
-  LightGreen: 'colorPaletteLightGreen',
-  DarkOrange: 'colorPaletteDarkOrange',
-  Marigold: 'colorPaletteMarigold',
-  Yellow: 'colorPaletteYellow',
-  Berry: 'colorPaletteBerry',
-
-  DarkRed: `colorPaletteDarkRed`,
-  Cranberry: 'colorPaletteCranberry',
-  Pumpkin: 'colorPalettePumpkin',
-  Peach: 'colorPalettePeach',
-  Gold: 'colorPaletteGold',
-  Brass: 'colorPaletteBrass',
-  Brown: 'colorPaletteBrown',
-  Forest: 'colorPaletteForest',
-  Seafoam: 'colorPaletteSeafoam',
-  DarkGreen: 'colorPaletteDarkGreen',
-  LightTeal: 'colorPaletteLightTeal',
-  Teal: 'colorPaletteTeal',
-  Steel: 'colorPaletteSteel',
-  Blue: 'colorPaletteBlue',
-  RoyalBlue: 'colorPaletteRoyalBlue',
-  Cornflower: 'colorPaletteCornflower',
-  Navy: 'colorPaletteNavy',
-  Lavender: 'colorPaletteLavender',
-  Purple: 'colorPalettePurple',
-  Grape: 'colorPaletteGrape',
-  Lilac: 'colorPaletteLilac',
-  Pink: 'colorPalettePink',
-  Magenta: 'colorPaletteMagenta',
-  Plum: 'colorPalettePlum',
-  Beige: 'colorPaletteBeige',
-  Mink: 'colorPaletteMink',
-  Platinum: 'colorPalettePlatinum',
-  Anchor: 'colorPaletteAnchor',
-} as const;
-
-type GlobalSharedColors = keyof typeof colorPalette;
-
-const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
-  position: 'relative',
-  verticalAlign: 'middle',
-  padding: 0,
-  margin: 0,
-  width: 40,
-  height: 40,
-  border: 'none',
-  boxShadow: active ? '0 0 0 1px white, 0 0 0 2px black' : 'none',
-  borderRadius: 0,
-  outline: 'none ',
-  zIndex: active ? 2 : 1,
+const useStyles = makeStyles({
+  searchContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  inputSearch: {
+    width: '100%',
+  },
 });
 
-const ColorButton: React.FunctionComponent<
-  {
-    color: 'neutral' | GlobalSharedColors;
-    active: boolean;
-    setPreviewColor: (color: 'neutral' | GlobalSharedColors | null) => void;
-    setColor: (color: 'neutral' | GlobalSharedColors) => void;
-  } & React.ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ style = {}, color, active, setPreviewColor, setColor, ...rest }) => (
-  <button
-    style={{
-      ...style,
-      ...buttonStyle({ active }),
-    }}
-    onClick={() => {
-      setColor(color);
-      setPreviewColor(null);
-    }}
-    onMouseEnter={() => setPreviewColor(color)}
-    onMouseLeave={() => setPreviewColor(null)}
-    {...rest}
-  />
-);
-
-const neutralTokens = (Object.keys(theme.webLight) as Array<keyof Theme>).filter(tokenName =>
-  tokenName.match(/^color(?!Palette).*/),
+const tokens: Array<keyof Theme> = (Object.keys(theme.webLight) as Array<keyof Theme>).filter(
+  tokenName => tokenName.match(/^color(?!Palette).*/) || tokenName.startsWith(`colorPalette`),
 );
 
 export const Colors = () => {
-  const [color, setColor] = React.useState<'neutral' | GlobalSharedColors>('neutral');
-  const [previewColor, setPreviewColor] = React.useState<'neutral' | GlobalSharedColors | null>(null);
-  const activeColor = previewColor || color;
+  const [tokensSearchResult, setTokensSearchResult] = React.useState<Array<keyof Theme> | undefined>(tokens);
 
-  const tokens: Array<keyof Theme> =
-    activeColor === 'neutral'
-      ? neutralTokens
-      : (Object.keys(theme.webLight) as Array<keyof Theme>).filter(tokenName =>
-          tokenName.startsWith(`colorPalette${activeColor}`),
-        );
+  // Text typed in the input bar
+  const [inputValue, setInputValue] = React.useState('');
+
+  // Value checked from the filter menu button
+  const [checkedValue, setCheckedValue] = React.useState<Record<string, string[]>>();
+
+  const styles = useStyles();
+
+  // It returns tokens matching the input value.
+  const searchToken = React.useCallback(
+    newSearchValue => {
+      const tokensFoundBySearch = tokens.filter(
+        token =>
+          token.toLowerCase().includes(newSearchValue) ||
+          theme.webLight[token].toString().includes(newSearchValue) ||
+          theme.webDark[token].toString().includes(newSearchValue) ||
+          theme.teamsLight[token].toString().includes(newSearchValue) ||
+          theme.teamsDark[token].toString().includes(newSearchValue) ||
+          theme.teamsHighContrast[token].toString().includes(newSearchValue),
+      );
+      setTokensSearchResult(tokensFoundBySearch);
+    },
+    [setTokensSearchResult],
+  );
+
+  const updateSearchDebounced = useDebounce(searchToken, 220);
+
+  const onInputChange: InputProps['onChange'] = React.useCallback(
+    (_, { value }) => {
+      updateSearchDebounced(value.trim().toLocaleLowerCase());
+      setInputValue(value.trim().toLocaleLowerCase());
+      setCheckedValue(undefined);
+    },
+    [updateSearchDebounced],
+  );
+
+  const applyFilter: MenuProps['onCheckedValueChange'] = React.useCallback(
+    (_, { name, checkedItems }) => {
+      // Filteringchecked items remove the selection and display the full list of tokens
+      if (checkedItems[0] === checkedValue?.usecase[0]) {
+        setCheckedValue(undefined);
+        setTokensSearchResult(tokens);
+        setInputValue('');
+      } else {
+        setCheckedValue(s => ({ ...s, [name]: checkedItems }));
+        searchToken(checkedItems[0]);
+        setInputValue(checkedItems[0]);
+      }
+    },
+    [checkedValue, searchToken],
+  );
 
   return (
     <>
-      <div>
-        <h2 style={{ color: previewColor ? '#888' : '#000' }}>{activeColor}</h2>
-        <ColorButton
-          color="neutral"
-          active={color === 'neutral'}
-          setColor={setColor}
-          setPreviewColor={setPreviewColor}
-          style={{
-            background: theme.webLight.colorNeutralForeground1,
-          }}
+      <div className={styles.searchContainer}>
+        <TokensFilterButton checkedValues={checkedValue} onChange={applyFilter} />
+        <Input
+          placeholder={'Search for tokens by name or color'}
+          size={'large'}
+          onChange={onInputChange}
+          value={inputValue}
+          className={styles.inputSearch}
         />
-        {(Object.keys(colorPalette) as GlobalSharedColors[]).map(colorName => (
-          <ColorButton
-            key={colorName}
-            color={colorName}
-            active={color === colorName}
-            setColor={setColor}
-            setPreviewColor={setPreviewColor}
-            style={{
-              background: theme.webLight[`colorPalette${colorName}BorderActive` as keyof Theme],
-            }}
-          />
-        ))}
       </div>
 
       <div
@@ -166,7 +132,7 @@ export const Colors = () => {
         <h3 key="hrHC" style={{ padding: '1em', margin: 0 }}>
           Teams High Contrast
         </h3>
-        {tokens.map(name => [
+        {tokensSearchResult?.map(name => [
           <div
             key={`${name}Token`}
             style={{ padding: '0 1em', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
@@ -185,3 +151,16 @@ export const Colors = () => {
 };
 
 Colors.args = {};
+
+const useDebounce = (fn: (...args: unknown[]) => void, duration: number) => {
+  const timeoutRef = React.useRef(0);
+  return React.useCallback(
+    (...args: unknown[]) => {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = window.setTimeout(() => {
+        fn(...args);
+      }, duration);
+    },
+    [duration, fn],
+  );
+};
