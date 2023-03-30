@@ -34,7 +34,6 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
     position: 'fixed',
-    width: '100%',
     height: 'fit-content',
     maxWidth: '600px',
     maxHeight: '100vh',

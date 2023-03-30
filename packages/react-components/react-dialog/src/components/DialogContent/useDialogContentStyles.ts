@@ -13,7 +13,6 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '100%',
     overflowY: 'auto',
     minHeight: '32px',
     boxSizing: 'border-box',
