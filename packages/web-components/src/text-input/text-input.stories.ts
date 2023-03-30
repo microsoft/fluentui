@@ -38,18 +38,20 @@ const Mic16Regular = html`<svg
 </svg>`;
 
 const storyTemplate = html<TextInputStoryArgs>`
-  <fluent-text-input
-    type=${x => x.type}
-    ?disabled=${x => x.disabled}
-    ?block=${x => x.block}
-    input-size="${x => x.inputSize}"
-    appearance="${x => x.appearance}"
-    placeholder=${x => x.placeholder}
-  >
-    <span slot="start">${Person20Regular}</span>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Sample Input
-  </fluent-text-input>
+  <div style="display: flex; flex-direction: column; width: 300px;">
+    <fluent-text-input
+      type=${x => x.type}
+      ?disabled=${x => x.disabled}
+      ?block=${x => x.block}
+      input-size="${x => x.inputSize}"
+      appearance="${x => x.appearance}"
+      placeholder=${x => x.placeholder}
+    >
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
+      Sample Input
+    </fluent-text-input>
+  </div>
 `;
 
 export default {
@@ -85,7 +87,7 @@ export default {
 export const TextInput = renderComponent(storyTemplate).bind({});
 
 export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px;">
+  <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
       Content Start
@@ -94,7 +96,7 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
       <span slot="end">${Mic16Regular}</span>
       Content After
     </fluent-text-input>
-    <fluent-text-input input-size="large">
+    <fluent-text-input>
       <span slot="start">$</span>
       <span slot="end">.00</span>
       Content After
@@ -103,15 +105,17 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Placeholder = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input placeholder="This is a placeholder">
-    <span slot="start">${Person20Regular}</span>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Disabled Input
-  </fluent-text-input>
+  <div style="width: 300px;">
+    <fluent-text-input placeholder="This is a placeholder">
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Disabled Input
+    </fluent-text-input>
+  </div>
 `);
 
 export const Appearance = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px;">
+  <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}${Person20Regular}</span>
@@ -139,7 +143,7 @@ export const Appearance = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Size = renderComponent(html<TextInputStoryArgs>`
-  <div style="display: flex; flex-direction: column; gap: 30px;">
+  <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
     <fluent-text-input input-size="small">
       <span slot="start">${Person20Regular}</span>
       <span slot="end">${Person20Regular}</span>
@@ -177,17 +181,21 @@ export const Inline = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Disabled = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input disabled>
-    <span slot="start">${Person20Regular}</span>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Disabled Input
-  </fluent-text-input>
+  <div style="width: 300px;">
+    <fluent-text-input disabled>
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Disabled Input
+    </fluent-text-input>
+  </div>
 `);
 
 export const Required = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input required>
-    <span slot="start">${Person20Regular}</span>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
-    Required Input
-  </fluent-text-input>
+  <div style="width: 300px;">
+    <fluent-text-input required>
+      <span slot="start">${Person20Regular}</span>
+      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      Required Input
+    </fluent-text-input>
+  </div>
 `);
