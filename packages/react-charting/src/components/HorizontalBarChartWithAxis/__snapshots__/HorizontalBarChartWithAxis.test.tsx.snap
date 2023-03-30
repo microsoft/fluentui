@@ -223,6 +223,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -256,7 +257,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Oranges selected"
+                    aria-label="Oranges"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={4}
@@ -347,7 +348,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Dogs selected"
+                    aria-label="Dogs"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={4}
@@ -438,7 +439,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Apples selected"
+                    aria-label="Apples"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={4}
@@ -529,7 +530,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Bananas selected"
+                    aria-label="Bananas"
                     aria-posinset={4}
                     aria-selected={false}
                     aria-setsize={4}
@@ -617,6 +618,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -650,7 +652,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Oranges selected"
+                    aria-label="Oranges"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={4}
@@ -741,7 +743,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Dogs selected"
+                    aria-label="Dogs"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={4}
@@ -832,7 +834,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Apples selected"
+                    aria-label="Apples"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={4}
@@ -923,7 +925,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   role="none"
                 >
                   <button
-                    aria-label="Bananas selected"
+                    aria-label="Bananas"
                     aria-posinset={4}
                     aria-selected={false}
                     aria-setsize={4}
@@ -1339,6 +1341,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1371,7 +1374,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   role="none"
                 >
                   <button
-                    aria-label="Oranges selected"
+                    aria-label="Oranges"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={4}
@@ -1461,7 +1464,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   role="none"
                 >
                   <button
-                    aria-label="Dogs selected"
+                    aria-label="Dogs"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={4}
@@ -1551,7 +1554,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   role="none"
                 >
                   <button
-                    aria-label="Apples selected"
+                    aria-label="Apples"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={4}
@@ -1641,7 +1644,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   role="none"
                 >
                   <button
-                    aria-label="Bananas selected"
+                    aria-label="Bananas"
                     aria-posinset={4}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2021,6 +2024,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2053,7 +2057,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2141,7 +2145,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2229,7 +2233,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2317,7 +2321,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={4}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2566,6 +2570,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2598,7 +2603,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2686,7 +2691,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2774,7 +2779,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={3}
                     aria-selected={false}
                     aria-setsize={4}
@@ -2862,7 +2867,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   role="none"
                 >
                   <button
-                    aria-label="undefined selected"
+                    aria-label="undefined"
                     aria-posinset={4}
                     aria-selected={false}
                     aria-setsize={4}
