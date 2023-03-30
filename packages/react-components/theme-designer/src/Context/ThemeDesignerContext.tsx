@@ -43,9 +43,7 @@ export type ThemeDesignerState = {
   isDark: boolean;
   lightThemeOverrides: Partial<Theme>;
   darkThemeOverrides: Partial<Theme>;
-
   lightBrandOverrides: ColorOverrideBrands;
-
   darkBrandOverrides: ColorOverrideBrands;
   showExportPanel: boolean;
 };
