@@ -68,7 +68,7 @@ export const TransparentDarkMode = getStoryVariant(Transparent, DARK_MODE);
 
 export const Disabled = () => (
   <Button id={buttonId} disabled>
-    Hello, world, This is it.
+    Hello, world, This is itsss.
   </Button>
 );
 
