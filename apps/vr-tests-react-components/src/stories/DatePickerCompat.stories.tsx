@@ -30,31 +30,22 @@ storiesOf('DatePicker Compat', module)
   .addStory('default', () => <DatePicker input={{ className: 'datepicker-input' }} />, {
     includeHighContrast: true,
     includeDarkMode: true,
-  })
-  .addStory(
-    'DateRange: day',
-    () => <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} popover={{ open: true }} />,
-    {
-      includeDarkMode: true,
-      includeHighContrast: true,
-    },
-  )
-  .addStory(
-    'DateRange: week',
-    () => <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} popover={{ open: true }} />,
-    {
-      includeDarkMode: true,
-      includeHighContrast: true,
-    },
-  )
-  .addStory(
-    'DateRange: work week',
-    () => <DatePicker calendar={{ dateRangeType: DateRangeType.WorkWeek }} popover={{ open: true }} />,
-    {
-      includeDarkMode: true,
-      includeHighContrast: true,
-    },
-  )
+  });
+
+storiesOf('DatePicker Compat', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
+  .addStory('DateRange: day', () => (
+    <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} popover={{ open: true }} />
+  ))
+  .addStory('DateRange: week', () => (
+    <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} popover={{ open: true }} />
+  ))
+  .addStory('DateRange: work week', () => (
+    <DatePicker calendar={{ dateRangeType: DateRangeType.WorkWeek }} popover={{ open: true }} />
+  ))
   .addStory(
     'DateRange: month',
     () => <DatePicker calendar={{ dateRangeType: DateRangeType.Month }} popover={{ open: true }} />,
