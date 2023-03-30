@@ -173,6 +173,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           top: 0,
           bottom: 0,
           right: 0,
+          [HighContrastSelector]: {
+            inset: '2px',
+          },
         },
         [HighContrastSelector]: {
           border: 'none',
@@ -382,8 +385,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
     dropdownItem: [...dropdownItemStyle, itemSelectors()],
-    dropdownItemSelected: dropdownItemSelected,
-    dropdownItemDisabled: dropdownItemDisabled,
+    dropdownItemSelected,
+    dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
     dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],

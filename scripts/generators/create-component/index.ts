@@ -1,15 +1,15 @@
 // Plop script for templating out a converged React component
 //#region Imports
-import { NodePlopAPI, AddManyActionConfig } from 'plop';
-import { Actions } from 'node-plop';
-import * as fs from 'fs-extra';
+import { execSync } from 'child_process';
 import * as os from 'os';
 import * as path from 'path';
-import { execSync } from 'child_process';
-import chalk from 'chalk';
-import { names, WorkspaceJsonConfiguration } from '@nrwl/devkit';
 
 import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorepo';
+import { WorkspaceJsonConfiguration, names } from '@nrwl/devkit';
+import chalk from 'chalk';
+import * as fs from 'fs-extra';
+import { Actions } from 'node-plop';
+import { AddManyActionConfig, NodePlopAPI } from 'plop';
 
 //#endregion
 
@@ -117,6 +117,11 @@ module.exports = (plop: NodePlopAPI) => {
             stdio: 'inherit',
           });
 
+          execSync(`yarn workspace ${data.packageNpmName} lint --fix`, {
+            cwd: root,
+            stdio: 'inherit',
+          });
+
           return 'Component ready!';
         },
       ];
@@ -139,18 +144,32 @@ const checkIfComponentAlreadyExists = (data: Data): string => {
 const appendToPackageIndex = (data: Data): string => {
   const { componentName, packageName, packagePath } = data;
 
-  // get the package index file path
   const indexPath = path.join(packagePath, 'src/index.ts');
+  const indexContent = cleanCreatePackageTemplate(indexPath);
+
   const appendLine = `export * from './${componentName}';`;
+
   // read contents and see if line is exists
-  const contents = fs.readFileSync(indexPath, { encoding: 'utf8' });
-  if (!contents.includes(appendLine)) {
+  if (!indexContent.includes(appendLine)) {
     // doesn't exist so append
     fs.writeFileSync(indexPath, `${appendLine}${os.EOL}`, { flag: 'a' });
     return `Updated package ${packageName} index.ts to include ${componentName}`;
   }
+
   return `Package ${packageName} index.ts already contains reference to ${componentName}`;
+
+  function cleanCreatePackageTemplate(filePath: string) {
+    const content = fs.readFileSync(filePath, { encoding: 'utf8' });
+    const templateContent = 'export {}';
+
+    if (content.indexOf(templateContent) !== -1) {
+      fs.writeFileSync(filePath, '');
+      return '';
+    }
+    return content;
+  }
 };
+
 //#endregion
 
 function getProjectMetadata(options: { root: string; name: string }) {

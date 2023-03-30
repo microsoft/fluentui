@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Card Migration/CardFooter" />
+
+# Card Footer Migration
+
+## Overview
+
+Before:
+
+```tsx
+import { CardFooter } from '@fluentui/react-northstar';
+
+const Component = () => <CardFooter>Lorem ipsum</CardFooter>;
+```
+
+After:
+
+```tsx
+import { CardFooter } from '@fluentui/react-components/unstable';
+
+const Component = () => <CardFooter Footer="Lorem ipsum" />;
+```
+
+## How to migrate props:
+
+| CardFooter props  | migration guide                                                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| as, className     | keep it as is                                                                                                                               |
+| variables, styles | see Migrate `style` overrides in this document                                                                                              |
+| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-migrating-from-v0-custom-accessibility--page). Also check the focusMode new prop |
+| fitted            | REMOVED: By default, all Footers are fitted                                                                                                 |
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Follow the same patterns as in the Card [migration guide](?path=/docs/concepts-migration-from-v0-components-card-migration-card--page).

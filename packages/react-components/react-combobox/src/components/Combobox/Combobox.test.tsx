@@ -407,6 +407,20 @@ describe('Combobox', () => {
     expect(getByTestId('green').getAttribute('aria-checked')).toEqual('false');
   });
 
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Combobox defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Combobox>,
+    );
+
+    userEvent.click(getByText('Green'));
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
   it('should change defaultSelectedOptions on click', () => {
     const { getByTestId } = render(
       <Combobox open defaultSelectedOptions={['Green']}>

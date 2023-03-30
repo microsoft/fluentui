@@ -13,9 +13,11 @@ const SpacingHorizontal = () => (
       alignItems: 'center',
     }}
   >
-    {(Object.keys(theme).filter(tokenName =>
-      tokenName.startsWith('spacingHorizontal'),
-    ) as (keyof HorizontalSpacingTokens)[]).map(spacingToken => [
+    {(
+      Object.keys(theme).filter(tokenName =>
+        tokenName.startsWith('spacingHorizontal'),
+      ) as (keyof HorizontalSpacingTokens)[]
+    ).map(spacingToken => [
       <div key={spacingToken}>{spacingToken}</div>,
       <div key={`${spacingToken}-value`}>{theme[spacingToken]}</div>,
       <div
@@ -39,9 +41,9 @@ const SpacingVertical = () => (
       alignItems: 'center',
     }}
   >
-    {(Object.keys(theme).filter(tokenName =>
-      tokenName.startsWith('spacingVertical'),
-    ) as (keyof VerticalSpacingTokens)[]).map(spacingToken => [
+    {(
+      Object.keys(theme).filter(tokenName => tokenName.startsWith('spacingVertical')) as (keyof VerticalSpacingTokens)[]
+    ).map(spacingToken => [
       <div key={spacingToken}>{spacingToken}</div>,
       <div key={`${spacingToken}-value`}>{theme[spacingToken]}</div>,
       <div

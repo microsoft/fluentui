@@ -46,7 +46,7 @@ export const buttonGroupClassName = 'ui-buttons';
 /**
  * A ButtonGroup represents multiple related actions as a group.
  */
-export const ButtonGroup = (React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
+export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();
@@ -117,7 +117,7 @@ export const ButtonGroup = (React.forwardRef<HTMLDivElement, ButtonGroupProps>((
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, ButtonGroupProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ButtonGroupProps> &
   FluentComponentStaticProps<ButtonGroupProps>;
 
 ButtonGroup.displayName = 'ButtonGroup';

@@ -2,6 +2,7 @@ import { computePosition } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates, getScrollParent } from './utils';
+import { isHTMLElement } from '@fluentui/react-utilities';
 
 interface PositionManagerOptions {
   /**
@@ -37,6 +38,7 @@ interface PositionManagerOptions {
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   const { container, target, arrow, strategy, middleware, placement } = options;
+  let isDestroyed = false;
   if (!target || !container) {
     return {
       updatePosition: () => undefined,
@@ -52,10 +54,16 @@ export function createPositionManager(options: PositionManagerOptions): Position
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
   Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
 
-  let forceUpdate = () => {
+  const forceUpdate = () => {
+    // debounced update can still occur afterwards
+    // early return to avoid memory leaks
+    if (isDestroyed) {
+      return;
+    }
+
     if (isFirstUpdate) {
       scrollParents.add(getScrollParent(container));
-      if (target instanceof HTMLElement) {
+      if (isHTMLElement(target)) {
         scrollParents.add(getScrollParent(target));
       }
 
@@ -69,6 +77,12 @@ export function createPositionManager(options: PositionManagerOptions): Position
     Object.assign(container.style, { position: strategy });
     computePosition(target, container, { placement, middleware, strategy })
       .then(({ x, y, middlewareData, placement: computedPlacement }) => {
+        // Promise can still resolve after destruction
+        // early return to avoid applying outdated position
+        if (isDestroyed) {
+          return;
+        }
+
         writeArrowUpdates({ arrow, middlewareData });
         writeContainerUpdates({
           container,
@@ -97,9 +111,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   const updatePosition = debounce(() => forceUpdate());
 
   const dispose = () => {
-    // debounced update can still occur afterwards
-    // so destroy the reference to forceUpdate
-    forceUpdate = () => null;
+    isDestroyed = true;
 
     if (targetWindow) {
       targetWindow.removeEventListener('scroll', updatePosition);

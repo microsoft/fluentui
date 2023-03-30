@@ -68,7 +68,11 @@ const useStyles = makeStyles({
     },
   },
 
-  listbox: {},
+  listbox: {
+    boxShadow: `${tokens.shadow16}`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    maxHeight: '80vh',
+  },
 
   listboxCollapsed: {
     display: 'none',

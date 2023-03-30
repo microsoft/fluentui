@@ -20,7 +20,7 @@ export async function rollup() {
 
   logger('STEP 1. Add dependencies to test project');
 
-  const rollupVersion = '2.7.3';
+  const rollupVersion = '2.68.0';
   const dependencies = [
     `rollup@${rollupVersion}`,
     'rollup-plugin-replace',

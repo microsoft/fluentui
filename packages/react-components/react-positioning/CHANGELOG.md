@@ -1,8 +1,154 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 09 Jan 2023 14:34:59 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Mar 2023 21:23:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.6)
+
+Tue, 21 Mar 2023 21:23:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.5..@fluentui/react-positioning_v9.5.6)
+
+### Patches
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.3.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-theme to v9.1.7 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-utilities to v9.7.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.5)
+
+Thu, 16 Mar 2023 14:36:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.4..@fluentui/react-positioning_v9.5.5)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.1 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.4)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.3..@fluentui/react-positioning_v9.5.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.3.1 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+- Bump @fluentui/react-theme to v9.1.6 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.3)
+
+Mon, 13 Mar 2023 08:58:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.2..@fluentui/react-positioning_v9.5.3)
+
+### Patches
+
+- fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.7.0 ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by beachball)
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.2)
+
+Fri, 10 Mar 2023 07:14:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.1..@fluentui/react-positioning_v9.5.2)
+
+### Patches
+
+- fix: Export `pinned` prop from `PositioningProps` ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.6.2 ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by beachball)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.1)
+
+Wed, 08 Mar 2023 17:42:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.0..@fluentui/react-positioning_v9.5.1)
+
+### Patches
+
+- fix: Nested submenus support positioning fallbacks for small viewports ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.3.0 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+- Bump @fluentui/react-utilities to v9.6.1 ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.0)
+
+Wed, 22 Feb 2023 23:06:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.3..@fluentui/react-positioning_v9.5.0)
+
+### Minor changes
+
+- feat: Set overflow on positioned element when `autosize` is applied ([PR #26868](https://github.com/microsoft/fluentui/pull/26868) by lingfangao@hotmail.com)
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.3)
+
+Wed, 15 Feb 2023 11:44:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.2..@fluentui/react-positioning_v9.4.3)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.6.0 ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by beachball)
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.2)
+
+Mon, 13 Feb 2023 23:43:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.1..@fluentui/react-positioning_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.3 ([PR #26814](https://github.com/microsoft/fluentui/pull/26814) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.1)
+
+Mon, 13 Feb 2023 09:35:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.4.0..@fluentui/react-positioning_v9.4.1)
+
+### Patches
+
+- fix: Coordinates should be rounded to device pixels to prevent blurriness ([PR #26766](https://github.com/microsoft/fluentui/pull/26766) by behowell@microsoft.com)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.4.0)
+
+Fri, 10 Feb 2023 08:49:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.11..@fluentui/react-positioning_v9.4.0)
+
+### Minor changes
+
+- feat: Add `overflowBoundaryPadding` positioning prop ([PR #26730](https://github.com/microsoft/fluentui/pull/26730) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.5.2 ([commit](https://github.com/microsoft/fluentui/commit/cc62f050f8231e8f21a2cf7dddf33003e0ba3931) by beachball)
+
+## [9.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.11)
+
+Tue, 07 Feb 2023 14:13:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.10..@fluentui/react-positioning_v9.3.11)
+
+### Patches
+
+- fix(createPositionManager): computePosition should not apply styles after destruction ([PR #26593](https://github.com/microsoft/fluentui/pull/26593) by lingfangao@hotmail.com)
+
+## [9.3.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.10)
+
+Tue, 31 Jan 2023 19:53:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.9..@fluentui/react-positioning_v9.3.10)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.5.1 ([PR #26557](https://github.com/microsoft/fluentui/pull/26557) by beachball)
+
+## [9.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.9)
+
+Thu, 26 Jan 2023 13:31:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.8..@fluentui/react-positioning_v9.3.9)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.2.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+- Bump @fluentui/react-utilities to v9.5.0 ([PR #26496](https://github.com/microsoft/fluentui/pull/26496) by beachball)
+
+## [9.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.8)
+
+Mon, 16 Jan 2023 08:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.3.7..@fluentui/react-positioning_v9.3.8)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.1.5 ([commit](https://github.com/microsoft/fluentui/commit/a870d8360e47f3ea03358c4e75e89e08a74845d7) by beachball)
 
 ## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.3.7)
 

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Select } from '@fluentui/react-select';
-import { makeStyles, mergeClasses, shorthands, tokens, useId } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, Select, shorthands, tokens, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {

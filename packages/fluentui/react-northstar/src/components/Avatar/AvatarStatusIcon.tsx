@@ -32,7 +32,7 @@ export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 /**
  * A AvatarStatusIcon provides a status icon for the Avatar.
  */
-export const AvatarStatusIcon = (React.forwardRef<HTMLSpanElement, AvatarStatusIconProps>((props, ref) => {
+export const AvatarStatusIcon = React.forwardRef<HTMLSpanElement, AvatarStatusIconProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatusIcon.displayName, context.telemetry);
   setStart();
@@ -68,7 +68,7 @@ export const AvatarStatusIcon = (React.forwardRef<HTMLSpanElement, AvatarStatusI
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusIconProps> & FluentComponentStaticProps;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusIconProps> & FluentComponentStaticProps;
 
 AvatarStatusIcon.displayName = 'AvatarStatusIcon';
 AvatarStatusIcon.propTypes = {

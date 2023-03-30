@@ -3,12 +3,10 @@ import { max as d3Max, bisector } from 'd3-array';
 import { clientPoint } from 'd3-selection';
 import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
-import { IPalette } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
-  IChartProps,
   ICustomizedCalloutData,
   IAreaChartProps,
   IBasestate,
@@ -27,6 +25,8 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  getNextColor,
+  getColorFromToken,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -65,14 +65,14 @@ export interface IAreaChartState extends IBasestate {
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
   emptyChart?: boolean;
+  /** focused point */
+  activePoint: string;
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
-  private _createSet: (
-    data: IChartProps,
-  ) => {
+  private _createSet: (data: ILineChartPoints[]) => {
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -100,7 +100,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public constructor(props: IAreaChartProps) {
     super(props);
-    this._createSet = memoizeFunction((data: IChartProps) => this._createDataSet(data.lineChartData!));
+    this._createSet = memoizeFunction(this._createDataSet);
     this.state = {
       selectedLegend: '',
       activeLegend: '',
@@ -119,6 +119,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         this.props.data.lineChartData.length > 0 &&
         this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
       ),
+      activePoint: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -143,13 +144,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   public render(): JSX.Element {
     if (!this.state.emptyChart) {
       const { lineChartData, chartTitle } = this.props.data;
-      const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(this.props.data);
+      const points = this._addDefaultColors(lineChartData);
+      const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
       this._calloutPoints = calloutPoints;
-      const isXAxisDateType = getXAxisType(lineChartData!);
+      const isXAxisDateType = getXAxisType(points);
       this._colors = colors;
       this._opacity = opacity;
       this._stackedData = stackedInfo.stackedData;
-      const legends: JSX.Element = this._getLegendData(this.props.theme!.palette, lineChartData!);
+      const legends: JSX.Element = this._getLegendData(points);
 
       const tickParams = {
         tickValues: this.props.tickValues,
@@ -165,7 +167,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         id: `toolTip${this._uniqueCallOutID}`,
         gapSpace: 15,
         isBeakVisible: false,
-        setInitialFocus: true,
         onDismiss: this._closeCallout,
         'data-is-focusable': true,
         xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
@@ -175,7 +176,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         <CartesianChart
           {...this.props}
           chartTitle={chartTitle}
-          points={lineChartData!}
+          points={points}
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
@@ -295,21 +296,22 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         dataPointCalloutProps: found!,
         hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
         xAxisCalloutAccessibilityData,
+        activePoint: '',
       });
     } else {
       /*
       When above if condition is false but found=true, it means either
-
+  
       1). pointToHighlightUpdated is false.
       For this case we dont need to do anything.
-
+  
       2). isShowCalloutPending is true.
       For this case there will be no callout updation for the event.
       This condition has been added to prevent repeated callout flashing.
       Currently there is a fraction of second delay between hover event and subsequent callout refresh.
       In the meantime if another event is received, the callout continues to flash for the set of
       intermediate hover events.
-
+  
       This does not cause any issue as the user interaction takes atleast a fraction of second and the final
       callout state is ultimately achieved.
       If a user performs very swift mouse maneuver, the intermediate events will be lost but the callout experience
@@ -381,7 +383,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     points &&
       points.length &&
       points.forEach((singleChartPoint: ILineChartPoints) => {
-        colors.push(singleChartPoint.color);
+        colors.push(singleChartPoint.color!);
         opacity.push(singleChartPoint.opacity || 1);
         allChartPoints.push(...singleChartPoint.data);
       });
@@ -470,15 +472,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   }
 
-  private _getLegendData = (palette: IPalette, points: ILineChartPoints[]): JSX.Element => {
+  private _getLegendData = (points: ILineChartPoints[]): JSX.Element => {
     const data = points;
-    const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
     data.forEach((singleChartData: ILineChartPoints) => {
-      const color: string = singleChartData.color
-        ? singleChartData.color
-        : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const color: string = singleChartData.color!;
       const checkSimilarLegends = actions.filter(
         (leg: ILegend) => leg.title === singleChartData.legend && leg.color === color,
       );
@@ -547,7 +546,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
-    if (this.state.nearestCircleToHighlight === xDataPoint) {
+    if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
       this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
         fillColor = this.props.theme!.palette.white;
@@ -559,7 +558,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
-    const points = this.props.data.lineChartData!;
+    const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -619,6 +618,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
+              {...(this.props.optimizeLargeData && {
+                'data-is-focusable': true,
+                role: 'img',
+                'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
+                  points[index].data.length
+                } data points.`,
+              })}
             />
           )}
         </React.Fragment>,
@@ -631,33 +637,65 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       if (points.length === index) {
         return;
       }
-      graph.push(
-        <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
-          {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
+
+      if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
+        // Render circles for all data points
+        graph.push(
+          <g key={`${index}-dots-${this._uniqueIdForGraph}`} d={area(singleStackedData)!} clipPath="url(#clip)">
+            {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
+              const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+              const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
+              lineColor = points[index]!.color!;
+              return (
+                <circle
+                  key={circleId}
+                  id={circleId}
+                  data-is-focusable={true}
+                  cx={xScale(singlePoint.xVal)}
+                  cy={yScale(singlePoint.values[1])}
+                  stroke={lineColor}
+                  strokeWidth={3}
+                  fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
+                  onMouseOut={this._onRectMouseOut}
+                  onMouseOver={this._onRectMouseMove}
+                  onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                  onFocus={() => this._handleFocus(index, pointIndex, circleId)}
+                  onBlur={this._handleBlur}
+                  {...pointOptions}
+                  r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
+                  role="img"
+                  aria-label={this._getAriaLabel(index, pointIndex)}
+                />
+              );
+            })}
+          </g>,
+        );
+      } else {
+        // Render circles for data points close to the mouse pointer only
+        singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
+          const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
+          if (this.state.nearestCircleToHighlight === xDataPoint) {
             const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
-            const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
-            lineColor = points[index]!.color;
-            return (
+            lineColor = points[index]!.color!;
+            graph.push(
               <circle
                 key={circleId}
                 id={circleId}
-                data-is-focusable={true}
                 cx={xScale(singlePoint.xVal)}
                 cy={yScale(singlePoint.values[1])}
                 stroke={lineColor}
                 strokeWidth={3}
-                visibility={this.state.nearestCircleToHighlight ? 'visibility' : 'hidden'}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
                 onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
                 {...pointOptions}
-                r={this._getCircleRadius(xDataPoint, circleRadius)}
-              />
+                r={this._getCircleRadius(xDataPoint, circleRadius, circleId)}
+              />,
             );
-          })}
-        </g>,
-      );
+          }
+        });
+      }
     });
     graph.push(
       <line
@@ -702,11 +740,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return graph;
   };
 
-  private _getCircleRadius = (xDataPoint: number, circleRadius: number): number => {
-    const { isCircleClicked, nearestCircleToHighlight } = this.state;
+  private _getCircleRadius = (xDataPoint: number, circleRadius: number, circleId: string): number => {
+    const { isCircleClicked, nearestCircleToHighlight, activePoint } = this.state;
     if (isCircleClicked && nearestCircleToHighlight === xDataPoint) {
       return 1;
-    } else if (nearestCircleToHighlight === xDataPoint) {
+    } else if (nearestCircleToHighlight === xDataPoint || activePoint === circleId) {
       return circleRadius;
     } else {
       return 0;
@@ -736,5 +774,63 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
+    return lineChartData
+      ? lineChartData.map((item, index) => {
+          let color: string;
+          // isInverted property is applicable to v8 themes only
+          if (typeof item.color === 'undefined') {
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
+          }
+
+          return { ...item, color };
+        })
+      : [];
+  };
+
+  private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
+    const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
+    const formattedDate = x instanceof Date ? x.toLocaleString() : x;
+    const modifiedXVal = x instanceof Date ? x.getTime() : x;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
+    // Show details in the callout for the focused point only
+    found.values = found.values.filter((e: { y: number }) => e.y === y);
+
+    this.setState({
+      refSelected: `#${circleId}`,
+      isCalloutVisible: true,
+      hoverXValue: xAxisCalloutData ? xAxisCalloutData : formattedDate,
+      YValueHover: found.values,
+      stackCalloutProps: found,
+      dataPointCalloutProps: found,
+      activePoint: circleId,
+    });
+  };
+
+  private _handleBlur = () => {
+    this.setState({
+      refSelected: null,
+      isCalloutVisible: false,
+      hoverXValue: undefined,
+      YValueHover: [],
+      stackCalloutProps: undefined,
+      dataPointCalloutProps: undefined,
+      activePoint: '',
+    });
+  };
+
+  private _getAriaLabel = (lineIndex: number, pointIndex: number): string => {
+    const line = this.props.data.lineChartData![lineIndex];
+    const point = line.data[pointIndex];
+    const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+    const xValue = point.xAxisCalloutData || formattedDate;
+    const legend = line.legend;
+    const yValue = point.yAxisCalloutData || point.y;
+    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 }

@@ -10,6 +10,7 @@ import { IChartDataPoint, IChartProps, IDonutChartProps, IDonutChartStyleProps, 
 import { convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
+const LEGEND_CONTAINER_HEIGHT = 40;
 
 export interface IDonutChartState {
   showHover?: boolean;
@@ -31,6 +32,7 @@ export interface IDonutChartState {
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
   public static defaultProps: Partial<IDonutChartProps> = {
     innerRadius: 0,
+    hideLabels: true,
   };
   public _colors: scale.ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
@@ -45,11 +47,17 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     nextProps: Readonly<IDonutChartProps>,
     prevState: Readonly<IDonutChartState>,
   ): Partial<IDonutChartState> | null {
-    if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
-      const reducedHeight = nextProps.height / 5;
-      return { _width: nextProps.width, _height: nextProps.height - reducedHeight };
+    let widthState: { _width: number } | undefined;
+    if (nextProps.width && nextProps.width !== prevState._width) {
+      widthState = { _width: nextProps.width };
     }
-    return null;
+
+    let heightState: { _height: number } | undefined;
+    if (nextProps.height && nextProps.height !== prevState._height) {
+      heightState = { _height: nextProps.height - LEGEND_CONTAINER_HEIGHT };
+    }
+
+    return { ...widthState, ...heightState };
   }
 
   constructor(props: IDonutChartProps) {
@@ -75,15 +83,6 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._uniqText = getId('_Pie_');
   }
   public componentDidMount(): void {
-    /* 80% Height to the Chart
-       20% Height to the Legends
-    */
-    const reducedHeight = this._rootElem && this._rootElem.offsetHeight / 5;
-    this.setState({
-      _width: (this._rootElem && this._rootElem!.offsetWidth)!,
-      _height: (this._rootElem && this._rootElem!.offsetHeight - reducedHeight!)!,
-    });
-
     const isChartEmpty = !(
       this.props.data &&
       this.props.data.chartData &&
@@ -91,6 +90,12 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     );
     if (this.state.emptyChart !== isChartEmpty) {
       this.setState({ emptyChart: isChartEmpty });
+    }
+    if (this._rootElem) {
+      this.setState({
+        _width: this._rootElem.offsetWidth,
+        _height: this._rootElem.offsetHeight - LEGEND_CONTAINER_HEIGHT,
+      });
     }
   }
 
@@ -107,7 +112,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     });
 
     const legendBars = this._createLegends(data!, palette);
-    const outerRadius = Math.min(this.state._width!, this.state._height!) / 2;
+    const donutMarginHorizontal = this.props.hideLabels ? 0 : 80;
+    const donutMarginVertical = this.props.hideLabels ? 0 : 40;
+    const outerRadius =
+      Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return !this.state.emptyChart ? (
@@ -140,6 +148,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 calloutId={this._calloutId}
                 valueInsideDonut={this._toLocaleString(valueInsideDonut)}
                 theme={this.props.theme!}
+                showLabelsInPercent={this.props.showLabelsInPercent}
+                hideLabels={this.props.hideLabels}
               />
             </svg>
           </div>

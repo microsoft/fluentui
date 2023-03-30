@@ -64,6 +64,24 @@ const useRootStyles = makeStyles({
         borderRightColor: tokens.colorNeutralForegroundOnBrand,
       },
     },
+
+    '@media (forced-colors: active)': {
+      [`& .${splitButtonClassNames.primaryActionButton}`]: {
+        borderRightColor: 'HighlightText',
+      },
+
+      ':hover': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: 'Highlight',
+        },
+      },
+
+      ':hover:active': {
+        [`& .${splitButtonClassNames.primaryActionButton}`]: {
+          borderRightColor: 'Highlight',
+        },
+      },
+    },
   },
   secondary: {
     /* The secondary styles are exactly the same as the base styles. */

@@ -1,8 +1,79 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Tue, 10 Jan 2023 07:50:15 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.6)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.5..@fluentui/style-utilities_v8.9.6)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.25 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/merge-styles to v8.5.7 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/utilities to v8.13.9 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+
+## [8.9.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.5)
+
+Thu, 09 Mar 2023 07:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.4..@fluentui/style-utilities_v8.9.5)
+
+### Patches
+
+- Updated FabricCDN url to latest version ([PR #26990](https://github.com/microsoft/fluentui/pull/26990) by caperez@microsoft.com)
+
+## [8.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.4)
+
+Mon, 06 Mar 2023 07:43:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.3..@fluentui/style-utilities_v8.9.4)
+
+### Patches
+
+- feat:Consume Fluent CDN from style-utilities ([PR #25396](https://github.com/microsoft/fluentui/pull/25396) by tmichon@microsoft.com)
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.3)
+
+Wed, 01 Mar 2023 07:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.2..@fluentui/style-utilities_v8.9.3)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.24 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/utilities to v8.13.8 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+
+## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.2)
+
+Sat, 18 Feb 2023 01:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.1..@fluentui/style-utilities_v8.9.2)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.23 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+- Bump @fluentui/utilities to v8.13.7 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+
+## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.1)
+
+Fri, 03 Feb 2023 07:50:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.0..@fluentui/style-utilities_v8.9.1)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.22 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/merge-styles to v8.5.6 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/set-version to v8.2.5 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/utilities to v8.13.6 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.0)
+
+Fri, 27 Jan 2023 07:37:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.8.5..@fluentui/style-utilities_v8.9.0)
+
+### Minor changes
+
+- feat(getFocusStyle): Optionally tweak pointer-events on the focus ring ([PR #25088](https://github.com/microsoft/fluentui/pull/25088) by miroslav.stastny@microsoft.com)
 
 ## [8.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.8.5)
 

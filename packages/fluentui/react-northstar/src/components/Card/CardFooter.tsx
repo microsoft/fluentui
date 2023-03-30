@@ -29,7 +29,7 @@ export const cardFooterClassName = 'ui-card__footer';
 /**
  * A CardFooter is used to display data in Card component footer
  */
-export const CardFooter = (React.forwardRef<HTMLDivElement, CardFooterProps>((props, ref) => {
+export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
@@ -67,8 +67,7 @@ export const CardFooter = (React.forwardRef<HTMLDivElement, CardFooterProps>((pr
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CardFooterProps> &
-  FluentComponentStaticProps<CardFooterProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardFooterProps> & FluentComponentStaticProps<CardFooterProps>;
 
 CardFooter.displayName = 'CardFooter';
 

@@ -8,13 +8,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const renderSlider_unstable: (state: SliderState) => JSX.Element;
@@ -32,14 +30,21 @@ export const sliderCSSVars: {
     sliderStepsPercentVar: string;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const SliderField_unstable: ForwardRefComponent<SliderFieldProps_unstable>;
 
-// @public (undocumented)
-export const sliderFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+// @public @deprecated (undocumented)
+export const sliderFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
 
-// @public (undocumented)
-export type SliderFieldProps_unstable = FieldProps<typeof Slider>;
+// @public @deprecated (undocumented)
+export type SliderFieldProps_unstable = DeprecatedFieldProps<SliderProps>;
 
 // @public (undocumented)
 export type SliderOnChangeData = {

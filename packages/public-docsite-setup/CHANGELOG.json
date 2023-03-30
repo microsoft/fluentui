@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Thu, 02 Feb 2023 07:35:41 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.16",
+      "version": "0.3.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "3fde9b804e88388518524d3cb60e8f3b9f58a99f",
+            "comment": "fix: remove mwf styles causing conflicts with react components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jan 2023 07:50:54 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.15",
       "version": "0.3.15",

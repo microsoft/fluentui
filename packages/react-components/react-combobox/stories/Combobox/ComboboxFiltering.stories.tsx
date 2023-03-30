@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
-import { Combobox, ComboboxProps, Option } from '@fluentui/react-combobox';
+import { Combobox, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
+import type { ComboboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -15,7 +15,25 @@ const useStyles = makeStyles({
 
 export const Filtering = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
-  const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
+  const options = [
+    'Cat',
+    'Caterpillar',
+    'Catfish',
+    'Cheetah',
+    'Chicken',
+    'Cockatiel',
+    'Cow',
+    'Dog',
+    'Dolphin',
+    'Ferret',
+    'Firefly',
+    'Fish',
+    'Fox',
+    'Fox Terrier',
+    'Frog',
+    'Hamster',
+    'Snake',
+  ];
   const [matchingOptions, setMatchingOptions] = React.useState([...options]);
   const styles = useStyles();
 
@@ -34,6 +52,11 @@ export const Filtering = (props: Partial<ComboboxProps>) => {
             {option}
           </Option>
         ))}
+        {matchingOptions.length === 0 ? (
+          <Option key="no-results" text="">
+            No results found
+          </Option>
+        ) : null}
       </Combobox>
     </div>
   );
@@ -42,7 +65,9 @@ export const Filtering = (props: Partial<ComboboxProps>) => {
 Filtering.parameters = {
   docs: {
     description: {
-      story: 'Filtering based on the user-typed string can be achieved by modifying the child Options directly.',
+      story:
+        'Filtering based on the user-typed string can be achieved by modifying the child Options directly.' +
+        'We recommend implementing filtering when creating a freeform Combobox.',
     },
   },
 };

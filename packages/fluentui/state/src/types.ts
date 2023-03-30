@@ -8,7 +8,7 @@ export type SideEffect<State> = (prevState: State, nextState: State) => void;
 export type EnhancedAction<
   State,
   Actions extends AnyActions,
-  Action extends AnyAction = AnyActions[keyof AnyActions]
+  Action extends AnyAction = AnyActions[keyof AnyActions],
 > = (...args: Parameters<Action>) => (state: State, actions: Actions) => Partial<State> | void;
 
 export type EnhancedActions<State, Actions extends AnyActions> = {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import type { DataGridBodyState, DataGridBodySlots } from './DataGridBody.types';
-import { RowIdContextProvider } from '../../contexts/rowIdContext';
+import { TableRowIdContextProvider } from '../../contexts/rowIdContext';
 
 /**
  * Render the final JSX of DataGridBody
@@ -12,9 +12,9 @@ export const renderDataGridBody_unstable = (state: DataGridBodyState) => {
   return (
     <slots.root {...slotProps.root}>
       {state.rows.map(row => (
-        <RowIdContextProvider key={row.rowId} value={row.rowId}>
+        <TableRowIdContextProvider key={row.rowId} value={row.rowId}>
           {state.renderRow(row)}
-        </RowIdContextProvider>
+        </TableRowIdContextProvider>
       ))}
     </slots.root>
   );
