@@ -134,7 +134,7 @@ export async function getPerfRegressions(config: PerfRegressionConfig, baselineO
 }
 
 function extendCookResults(
-  stories: { [x: string]: { [x: string]: any } | { [x: string]: { filename: any } } },
+  stories: { [x: string]: { [x: string]: any } },
   testResults: CookResults,
 ): ExtendedCookResults {
   return _.mapValues(testResults, (testResult, resultKey) => {
@@ -288,14 +288,17 @@ function getTpiResult(
 }
 
 function getIterations(
-  stories: { [x: string]: { [x: string]: any } | { default: { iterations: any } } },
+  stories: {
+    [x: string]: Partial<{
+      default: { iterations?: number };
+      [x: string]: { iterations?: number };
+    }>;
+  },
   kind: string,
   story: string,
 ): number {
   // Give highest priority to most localized definition of iterations. Story => kind => default.
-  return (
-    stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations
-  );
+  return stories[kind][story]?.iterations || stories[kind].default?.iterations || defaultIterations;
 }
 
 function getTicks(testResult: CookResult): number | undefined {
