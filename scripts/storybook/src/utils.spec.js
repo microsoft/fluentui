@@ -109,7 +109,7 @@ describe(`utils`, () => {
         const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
         function managerWebpack(config, options) {
-        registerTsPaths({config, tsConfigPath: '${tsConfigRoot}'});
+        registerTsPaths({config, configFile: '${tsConfigRoot}'});
         return config;
         }
 
