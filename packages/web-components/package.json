@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.12",
+  "version": "3.0.0-alpha.13",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -39,6 +39,10 @@
     "./badge": {
       "types": "./dist/esm/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
+    },
+    "./button": {
+      "types": "./dist/esm/button/define.d.ts",
+      "default": "./dist/esm/button/define.js"
     },
     "./counter-badge": {
       "types": "./dist/esm/counter-badge/define.d.ts",
@@ -133,8 +137,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.22",
-    "@microsoft/fast-foundation": "^3.0.0-alpha.26",
+    "@microsoft/fast-element": "^2.0.0-beta.23",
+    "@microsoft/fast-foundation": "^3.0.0-alpha.27",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
