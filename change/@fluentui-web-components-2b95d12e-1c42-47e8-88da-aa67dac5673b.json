@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adds Label v3 Web Component",
+  "comment": "feat(label): adds Label as a new web component",
   "packageName": "@fluentui/web-components",
   "email": "brianbrady@microsoft.com",
   "dependentChangeType": "patch"
