@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating Link text color in dark theme to match Fluent 2.",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -28,9 +28,6 @@ export interface AvailableDateOptions extends RestrictedDatesOptions {
   direction: number;
 }
 
-/**
- * {@docCategory DateTimeUtilities}
- */
 export interface RestrictedDatesOptions {
   /**
    * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
@@ -48,9 +45,6 @@ export interface RestrictedDatesOptions {
   restrictedDates?: Date[];
 }
 
-/**
- * {@docCategory DateTimeUtilities}
- */
 export interface DayGridOptions extends RestrictedDatesOptions {
   /**
    * The first day of the week for your locale.

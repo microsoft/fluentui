@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 21 Mar 2023 21:22:58 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 17:36:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.6)
+
+Fri, 24 Mar 2023 17:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.5..@fluentui/react-components_v9.18.6)
+
+### Patches
+
+- `@fluentui/react-components`
+  - Bump react-select to 9.1.6 ([PR #27321](https://github.com/microsoft/fluentui/pull/27321) by lingfangao@hotmail.com)
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.5)
+
+Fri, 24 Mar 2023 14:58:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.4..@fluentui/react-components_v9.18.5)
+
+### Patches
+
+- `@fluentui/react-components`
+  - fix: Bump @fluenti/react-combobox to 9.2.6 ([PR #27319](https://github.com/microsoft/fluentui/pull/27319) by lingfangao@hotmail.com)
+
+## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.4)
+
+Fri, 24 Mar 2023 10:15:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.3..@fluentui/react-components_v9.18.4)
+
+### Minor changes
+
+- `@fluentui/react-provider`
+  - feat: Render theme CSS variables in SSR style element ([PR #27277](https://github.com/microsoft/fluentui/pull/27277) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: Add static measurement hooks and embedded scroll option to react-virtualizer ([PR #26985](https://github.com/microsoft/fluentui/pull/26985) by mifraser@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - tree stories and doc update ([PR #27270](https://github.com/microsoft/fluentui/pull/27270) by petrduda@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - [feat] Add static measurement hooks and embedded scroll option ([PR #26985](https://github.com/microsoft/fluentui/pull/26985) by mifraser@microsoft.com)
 
 ## [9.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.3)
 

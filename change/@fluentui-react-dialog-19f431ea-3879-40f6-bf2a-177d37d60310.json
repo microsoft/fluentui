@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(DialogContent): adds padding to allow focus visibility",
+  "comment": "fix: DialogContent scrollbar always visible",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

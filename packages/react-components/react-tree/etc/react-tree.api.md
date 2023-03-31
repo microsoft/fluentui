@@ -258,7 +258,7 @@ export type TreeSlots = {
 export type TreeState = ComponentState<TreeSlots> & TreeContextValue;
 
 // @public
-export function useFlatTree_unstable(flatTreeItemProps: FlatTreeItemProps[], options?: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>): FlatTree;
+export function useFlatTree_unstable(flatTreeItemProps: FlatTreeItemProps[], options?: Pick<TreeProps, 'openItems' | 'defaultOpenItems' | 'onOpenChange' | 'onNavigation_unstable'>): FlatTree;
 
 // @public
 export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Fri, 24 Mar 2023 17:36:41 GMT",
+      "tag": "@fluentui/react-select_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "899de68739acdff9e641a1baedec097a6bc07309",
+            "comment": "Sync with npm released version"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:49 GMT",
       "tag": "@fluentui/react-select_v9.1.5",
       "version": "9.1.5",
