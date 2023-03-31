@@ -76,13 +76,13 @@ export default {
         type: 'select',
         options: Object.values(RadioGroupOrientation),
       },
-      defaultValue: 'primary',
+      defaultValue: RadioGroupOrientation.horizontal,
       table: {
         type: {
           summary: 'Sets orientation of radio group',
         },
         defaultValue: {
-          summary: 'horizontal',
+          summary: RadioGroupOrientation.horizontal,
         },
       },
     },
