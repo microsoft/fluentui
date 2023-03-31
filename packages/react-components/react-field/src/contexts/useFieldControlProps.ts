@@ -4,7 +4,7 @@ import { useFieldContext_unstable } from './FieldContext';
 /**
  * Options for `useFieldControlProps_unstable`.
  */
-type FieldControlPropsOptions = {
+export type FieldControlPropsOptions = {
   /**
    * Skips setting aria-labelledby on the control if the label.htmlFor is the same as the control's id.
    *

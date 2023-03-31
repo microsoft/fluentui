@@ -91,7 +91,15 @@ export {
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-field';
-export type { FieldContextValue, FieldContextValues, FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
+export type {
+  FieldContextValue,
+  FieldContextValues,
+  FieldControlProps,
+  FieldControlPropsOptions,
+  FieldProps,
+  FieldSlots,
+  FieldState,
+} from '@fluentui/react-field';
 
 export {
   Skeleton,

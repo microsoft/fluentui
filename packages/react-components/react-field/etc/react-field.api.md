@@ -48,6 +48,15 @@ export type FieldContextValues = {
 };
 
 // @public
+export type FieldControlProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'>;
+
+// @public
+export type FieldControlPropsOptions = {
+    supportsLabelFor?: boolean;
+    supportsSize?: boolean;
+};
+
+// @public
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
     children?: React_2.ReactNode | ((props: FieldControlProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
@@ -107,7 +116,7 @@ export const useFieldContextValues: (state: FieldState) => FieldContextValues;
 export function useFieldControlProps_unstable(): FieldControlProps | undefined;
 
 // @public
-export function useFieldControlProps_unstable<P extends FieldControlProps>(props: P, options?: Options<P>): P;
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(props: Props, options?: FieldControlPropsOptions): Props;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;

@@ -20,6 +20,8 @@ import { fieldClassNames } from '@fluentui/react-field';
 import { FieldContextProvider } from '@fluentui/react-field';
 import { FieldContextValue } from '@fluentui/react-field';
 import { FieldContextValues } from '@fluentui/react-field';
+import { FieldControlProps } from '@fluentui/react-field';
+import { FieldControlPropsOptions } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
@@ -192,6 +194,10 @@ export { FieldContextProvider }
 export { FieldContextValue }
 
 export { FieldContextValues }
+
+export { FieldControlProps }
+
+export { FieldControlPropsOptions }
 
 export { FieldProps }
 
