@@ -13,6 +13,7 @@ import {
   lineHeightBase200,
   lineHeightBase300,
   lineHeightBase400,
+  spacingHorizontalXS,
 } from '../theme/design-tokens.js';
 
 /** Label styles
@@ -30,6 +31,7 @@ export const styles = css`
   }
   .asterisk {
     color: ${colorPaletteRedForeground1};
+    margin-left: ${spacingHorizontalXS};
   }
   :host([size='small']) {
     font-size: ${fontSizeBase200};
