@@ -39,10 +39,6 @@ export const styles = css`
     user-select: none;
     color: var(--state-color);
   }
-  :host([disabled]) {
-    color: ${colorNeutralForegroundDisabled};
-    pointer-events: none;
-  }
   .label {
     cursor: pointer;
     font-family: ${fontFamilyBase};
@@ -72,7 +68,7 @@ export const styles = css`
     opacity: 0;
     width: 10px;
   }
-  :host([aria-checked='false']:hover:not([disabled])) .control {
+  :host([aria-checked='false']:hover) .control {
     color: ${colorNeutralForeground2};
   }
   :host(:focus-visible)::after {
@@ -85,36 +81,40 @@ export const styles = css`
     outline: none;
     position: absolute;
   }
-  :host(:hover:not([disabled])) .control {
+  :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host(:active:not([disabled])) .control {
+  :host(:active) .control {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([aria-checked='true']:not([disabled])) .checked-indicator {
+  :host([aria-checked='true']) .checked-indicator {
     opacity: 1;
   }
-  :host([aria-checked='true']:not([disabled])) .control {
+  :host([aria-checked='true']) .control {
     border-color: var(--control-border-color);
   }
-  :host([aria-checked='true']:not([disabled])) .checked-indicator {
+  :host([aria-checked='true']) .checked-indicator {
     background-color: var(--checked-indicator-background-color);
   }
-  :host([aria-checked='true']:hover:not([disabled])) .control {
+  :host([aria-checked='true']:hover) .control {
     border-color: ${colorCompoundBrandStrokeHover};
   }
-  :host([aria-checked='true']:hover:not([disabled])) .checked-indicator {
+  :host([aria-checked='true']:hover) .checked-indicator {
     background-color: ${colorCompoundBrandStrokeHover};
   }
-  :host([aria-checked='true']:active:not([disabled])) .control {
+  :host([aria-checked='true']:active) .control {
     border-color: ${colorCompoundBrandStrokePressed};
   }
-  :host([aria-checked='true']:active:not([disabled])) .checked-indicator {
+  :host([aria-checked='true']:active) .checked-indicator {
     background: ${colorCompoundBrandForeground1Pressed};
   }
   :host([disabled]) .control {
     pointer-events: none;
     border-color: ${colorNeutralForegroundDisabled};
+    pointer-events: none;
+  }
+  :host([disabled]) {
+    color: ${colorNeutralForegroundDisabled};
     pointer-events: none;
   }
 `;

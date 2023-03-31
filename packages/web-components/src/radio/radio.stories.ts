@@ -10,13 +10,7 @@ type RadioStoryMeta = Meta<RadioStoryArgs>;
 
 const storyTemplate = html<RadioStoryArgs>`
   <fluent-radio-group orientation="vertical" role="radiogroup" name="radio-story">
-    <fluent-radio
-      ?disabled=${(x: { disabled: boolean }) => x.disabled}
-      ?checked=${(x: { checked: boolean }) => x.checked}
-      value="Apple"
-    >
-      Option 1
-    </fluent-radio>
+    <fluent-radio ?disabled=${x => x.disabled} ?checked=${x => x.checked} value="Apple"> Option 1 </fluent-radio>
   </fluent-radio-group>
 `;
 
@@ -59,12 +53,12 @@ export const Radio = renderComponent(storyTemplate).bind({});
 
 export const Checked = renderComponent(html<RadioStoryArgs>`
   <fluent-radio-group name="radio-story">
-    <fluent-radio checked="true" value="Apple"> Option 1 </fluent-radio>
+    <fluent-radio checked="true" value="Apple">Apple</fluent-radio>
   </fluent-radio-group>
 `);
 
 export const Disabled = renderComponent(html<RadioStoryArgs>`
   <fluent-radio-group name="radio-story">
-    <fluent-radio disabled="true" value="Apple"> Option 1 </fluent-radio>
+    <fluent-radio disabled="true" value="Apple">Apple</fluent-radio>
   </fluent-radio-group>
 `);
