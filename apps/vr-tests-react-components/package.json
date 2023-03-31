@@ -27,6 +27,7 @@
     "@fluentui/react-card": "^9.0.4",
     "@fluentui/react-checkbox": "^9.1.6",
     "@fluentui/react-combobox": "^9.2.6",
+    "@fluentui/react-datepicker-compat": "0.0.0-alpha.0",
     "@fluentui/react-dialog": "^9.4.2",
     "@fluentui/react-divider": "^9.2.6",
     "@fluentui/react-field": "9.0.0-alpha.28",
