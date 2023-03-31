@@ -103,6 +103,10 @@
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
+    },
+    "./toggle-button": {
+      "types": "./dist/esm/toggle-button/define.d.ts",
+      "default": "./dist/esm/toggle-button/define.js"
     }
   },
   "scripts": {
