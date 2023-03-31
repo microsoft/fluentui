@@ -56,13 +56,9 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
    *
    * For other controls, there are two options:
    * 1. The child of Field can be a render function that is given the props that should be spread on the control.
-   *    ```jsx
-   *    <Field>{(props) => <MyInput {...props} />}</Field>
-   *    ```
+   *    `<Field>{(props) => <MyInput {...props} />}</Field>`
    * 2. The control itself can merge props from field with useFieldControlProps_unstable().
-   *    ```ts
-   *    props = useFieldControlProps_unstable(props);
-   *    ```
+   *    `props = useFieldControlProps_unstable(props);`
    */
   children?: React.ReactNode | ((props: FieldControlProps) => React.ReactNode);
 

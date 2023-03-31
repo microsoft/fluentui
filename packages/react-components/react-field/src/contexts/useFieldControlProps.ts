@@ -31,8 +31,8 @@ export function useFieldControlProps_unstable(): FieldControlProps | undefined;
 /**
  * Copies and merges the FieldControlProps with the given props, if this inside a `<Field>`.
  *
- * @param props The existing props for the control. These will be merged with the control props from the field context.
- * @param options Option to include the size prop.
+ * @param props - The existing props for the control. These will be merged with the control props from the field context.
+ * @param options - Option to include the size prop.
  * @returns Merged props if inside a `<Field>`, otherwise the original props, or undefined if no props given.
  */
 export function useFieldControlProps_unstable<P extends FieldControlProps>(props: P, options?: Options<P>): P;
