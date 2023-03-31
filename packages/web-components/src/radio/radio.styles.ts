@@ -115,7 +115,6 @@ export const styles = css`
   :host([disabled]) .control {
     pointer-events: none;
     border-color: ${colorNeutralForegroundDisabled};
-    pointer-events: none;
   }
   :host([disabled]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
