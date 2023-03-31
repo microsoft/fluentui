@@ -1,4 +1,4 @@
-import { selectors } from './dialog-example';
+import { selectors } from './dialog-selectors';
 
 describe('Dialog', () => {
   const trigger = `#${selectors.trigger}`;

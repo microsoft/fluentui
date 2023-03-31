@@ -4,11 +4,11 @@ import {
   joinPathFragments,
   logger,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   Tree,
   getProjects as getAllProjects,
   ProjectConfiguration,
   readJson,
+  readNxJson,
 } from '@nrwl/devkit';
 import { PackageJson, PackageJsonWithBeachball } from './types';
 import * as semver from 'semver';
@@ -84,7 +84,7 @@ export { updateJestConfig } from '@nrwl/jest/src/generators/jest-project/lib/upd
 
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = readNxJson(tree) ?? {};
   const paths = {
     configRoot: joinPathFragments(projectConfig.root, 'config'),
     packageJson: joinPathFragments(projectConfig.root, 'package.json'),
@@ -130,7 +130,6 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
 }
 
 export const workspacePaths = {
-  workspace: '/workspace.json',
   nx: '/nx.json',
   tsconfig: '/tsconfig.base.json',
   packageJson: '/package.json',

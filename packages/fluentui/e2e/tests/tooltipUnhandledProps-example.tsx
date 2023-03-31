@@ -1,10 +1,7 @@
 import React from 'react';
 import { MenuButton, Tooltip, Button } from '@fluentui/react-northstar';
 
-export const selectors = {
-  menuItemClassName: 'menu-item',
-  triggerClassName: 'trigger-button',
-};
+import { selectors } from './tooltipUnhandledProps-selectors';
 
 const TooltipUnhandledProps = () => {
   return (

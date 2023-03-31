@@ -14,7 +14,12 @@ module.exports = {
   },
   testEnvironment: 'jest-environment-node-single-context',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': [
+      '@swc/jest',
+      {
+        swcrc: false,
+      },
+    ],
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],

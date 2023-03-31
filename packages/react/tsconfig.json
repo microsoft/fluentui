@@ -1,25 +1,31 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "lib",
-    "target": "es5",
-    "module": "commonjs",
-    "jsx": "react",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ES5",
+    "noEmit": true,
     "isolatedModules": true,
-    "declaration": true,
-    "sourceMap": true,
+    "jsx": "react",
     "experimentalDecorators": true,
+    "preserveConstEnums": true,
     "importHelpers": true,
-    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "lib": ["es5", "dom", "es2015.promise"],
+    "sourceMap": true,
+    "noUnusedLocals": true,
     "skipLibCheck": true,
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"]
   },
-  "include": ["src"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

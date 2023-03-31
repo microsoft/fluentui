@@ -9,7 +9,7 @@
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
     "start": "start-storybook",
-    "type-check": "tsc"
+    "type-check": "just-scripts type-check"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-context-selector",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-context-selector/src",
+  "tags": ["vNext", "platform:web"],
+  "implicitDependencies": []
+}

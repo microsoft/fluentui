@@ -1,11 +1,6 @@
 {
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "fluentui",
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    }
-  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
@@ -25,27 +20,50 @@
   },
   "pluginsConfig": {
     "@nrwl/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": false
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ],
-    "package": [
-      {
-        "target": "package",
-        "projects": "dependencies"
-      }
-    ],
-    "prepare": [
-      {
-        "target": "prepare",
-        "projects": "dependencies"
-      }
+  "targetDefaults": {
+    "lint": {
+      "dependsOn": []
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "bundle-size": {
+      "dependsOn": ["build"]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+    },
+    "type-check": {
+      "dependsOn": ["build"]
+    },
+    "package": {
+      "dependsOn": ["^package"]
+    },
+    "prepare": {
+      "dependsOn": ["^prepare"]
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": [
+      "default",
+      "!{projectRoot}/**/*.md",
+      "!{projectRoot}/.eslintrc.(json|js)",
+      "!{projectRoot}/**/?(*.)+(spec|test|cy).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.cy.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/cypress.config.[jt]s",
+      "!{projectRoot}/bundle-size/**",
+      "!{projectRoot}/e2e/**",
+      "!{projectRoot}/.storybook/**",
+      "!{projectRoot}/**/*.stories.tsx?"
     ]
   }
 }

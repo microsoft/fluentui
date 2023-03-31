@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
-    "module": "CommonJS",
     "target": "ES2019",
     "noEmit": true,
     "isolatedModules": true,

@@ -1,6 +1,9 @@
+import * as fs from 'fs';
 import * as path from 'path';
 
 import { TscTaskOptions, logger, tscTask } from 'just-scripts';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { exec } from 'just-scripts-utils';
 
 import { getJustArgv } from './argv';
 import { getTsPathAliasesConfig, getTsPathAliasesConfigV8 } from './utils';
@@ -33,15 +36,25 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.project = tsConfigFileV8;
   }
 
-  const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, isUsingPathAliases, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
 
   if (isUsingTsSolutionConfigs && tsConfig) {
-    logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
+    logger.info(`📣 TSC: package is using TS Solution config. Using ${tsConfigFile} for compilation.`);
+    isUsingPathAliases && logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
 
-    const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
+    /**
+     * set outDirt package root "." for projects that use solution configs without path aliases.
+     * - old packages (v8) have defined `outDir:lib`, which would create double nesting lib/lib, lib/lib-commonjs, lib/lib-amd
+     */
+    const tsConfigOutDir = isUsingPathAliases ? (tsConfig.compilerOptions.outDir as string) : '.';
 
     options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     options.project = tsConfigFile;
+
+    // turn off using path aliases ( there is no way how to set compilerOptions.path from CLI, so overriding baseUrl is the only option)
+    // why? - using path aliases is extremely slow. turning them off improves tsc speed by 40%
+    // TODO: explore creating TS Program via api which could give us more options. Would be useful also for {@see typeCheck}
+    options.baseUrl = '.';
   }
 
   return options;
@@ -77,3 +90,41 @@ export const ts = {
     return tscTask(options);
   },
 };
+
+export function typeCheck() {
+  const cwd = process.cwd();
+
+  const tsConfigPath = path.join(cwd, 'tsconfig.json');
+
+  if (!fs.existsSync(tsConfigPath)) {
+    return;
+  }
+
+  const tsConfigContent = fs.readFileSync(tsConfigPath, 'utf-8');
+
+  const tsConfig = JSON.parse(tsConfigContent);
+  const isUsingTsSolutionConfigs = Boolean(tsConfig.references);
+
+  if (!isUsingTsSolutionConfigs) {
+    return;
+  }
+
+  tsConfig.compilerOptions.baseUrl = '.';
+  tsConfig.compilerOptions.paths = {};
+
+  fs.writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2), 'utf-8');
+
+  const cmd = 'tsc';
+  const args = ['-b', '--pretty', tsConfigPath];
+  const program = `${cmd} ${args.join(' ')}`;
+
+  return exec(program)
+    .catch(err => {
+      console.error(err.stdout);
+      process.exit(1);
+    })
+    .finally(() => {
+      // delete tsConfig.compilerOptions.paths;
+      fs.writeFileSync(tsConfigPath, tsConfigContent, 'utf-8');
+    });
+}

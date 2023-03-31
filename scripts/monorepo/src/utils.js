@@ -1,11 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const { workspaceRoot } = require('nx/src/utils/app-root');
+const { workspaceRoot, readProjectConfiguration } = require('@nrwl/devkit');
+const { FsTree } = require('nx/src/generators/tree');
 
 const findGitRoot = require('./findGitRoot');
 
 /**
- * Gets project metadata from monorepo source of truth which is `workspace.json`
+ * Gets project metadata from monorepo source of truth which is `project.json` per project
  * @param {Object} options
  * @param {string} [options.root] - repo root path
  * @param {string} options.name - package name
@@ -13,11 +12,12 @@ const findGitRoot = require('./findGitRoot');
  */
 function getProjectMetadata(options) {
   const { root = findGitRoot() } = options;
+  /**
+   * @type {import('@nrwl/devkit').Tree}
+   */
+  const tree = new FsTree(root, false);
 
-  /**@type {import('@nrwl/devkit').WorkspaceJsonConfiguration} */
-  const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
-
-  return nxWorkspace.projects[options.name];
+  return readProjectConfiguration(tree, options.name);
 }
 
 exports.getProjectMetadata = getProjectMetadata;

@@ -1,4 +1,4 @@
-import { clickSelectors, hoverSelectors } from './toolbarWithPopupTooltip-example';
+import { clickSelectors, hoverSelectors } from './toolbarWithPopupTooltip-selectors';
 
 const firstItem = `#${clickSelectors.triggerId}`;
 const secondItem = `#${hoverSelectors.triggerId}`;

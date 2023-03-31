@@ -1,13 +1,7 @@
 import * as React from 'react';
-import { Carousel, Button, carouselNavigationItemClassName } from '@fluentui/react-northstar';
+import { Carousel, Button } from '@fluentui/react-northstar';
 
-export const selectors = {
-  CarouselClass: 'carousel',
-  ItemButton: 'item-button',
-  HiddenContent: 'hidden-content',
-  Navigation: carouselNavigationItemClassName,
-  second: 'second',
-};
+import { selectors } from './carouselClickableContent-selectors';
 
 const CarouselClickableContentExample = () => {
   const [clicked, setClicked] = React.useState(false);

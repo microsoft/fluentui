@@ -3,7 +3,7 @@ import {
   formatFiles,
   updateJson,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
+  readNxJson,
   joinPathFragments,
   readJson,
   stripIndents,
@@ -1036,8 +1036,8 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
-  const publishedNpmScope = `@${workspaceConfig.npmScope}`;
+  const workspaceConfig = readNxJson(tree);
+  const publishedNpmScope = `@${workspaceConfig?.npmScope}`;
   const allProjects = getProjects(tree);
 
   const projectPkgJson = readJson<PackageJson>(tree, options.paths.packageJson);

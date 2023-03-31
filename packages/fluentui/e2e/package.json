@@ -27,6 +27,7 @@
     "e2e": "gulp test:e2e",
     "e2e:local": "cypress open --config baseUrl=http://localhost:8082",
     "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "type-check": "tsc -p tsconfig.app.json --baseUrl . && tsc -p tsconfig.json --baseUrl ."
   }
 }

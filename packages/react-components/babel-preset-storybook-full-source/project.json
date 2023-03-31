@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/babel-preset-storybook-full-source",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/babel-preset-storybook-full-source/src",
+  "tags": ["vNext", "platform:node"]
+}

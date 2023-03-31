@@ -2,10 +2,9 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "lib",
-    "module": "commonjs",
-    "lib": ["es5", "es2015.promise", "dom"],
+    "module": "ESNext",
     "jsx": "react",
-    "declaration": true,
+    "noEmit": true,
     "sourceMap": true,
     "strict": true,
     "isolatedModules": true,
@@ -17,8 +16,16 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "custom-global"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"]
   },
-  "include": ["src"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

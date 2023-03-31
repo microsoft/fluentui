@@ -4,19 +4,44 @@ import * as ts from 'typescript';
 
 let program: ts.Program;
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+function temporaryTsconfigV9resolve(tsconfigPath: string | undefined) {
+  if (!tsconfigPath) {
+    return;
+  }
+
+  const tsConfigDir = path.dirname(tsconfigPath);
+  const solutionLibConfigPath = path.join(tsConfigDir, 'tsconfig.lib.json');
+  const hasSolutionConfig = fs.existsSync(solutionLibConfigPath);
+  if (hasSolutionConfig) {
+    return solutionLibConfigPath;
+  }
+
+  return tsconfigPath;
+}
+
 /**
- * Creates a cached TS Program.
+ * Creates a ~cached~ TS Program.
+ * @remarks this will be never cached with current use/setup as jest creates this for every it/describe() block 🐌
  */
-export function createTsProgram(componentPath: string, tsconfigDir?: string): ts.Program {
+export function createTsProgram(
+  sourcePath: string,
+  options: Partial<{ configDir: string; configName: string }> = {},
+): ts.Program {
+  const { configName, configDir } = options;
   if (!program) {
     // Calling parse() from react-docgen-typescript would create a new ts.Program for every component,
     // which can take multiple seconds in a large project. For better performance, we create a single
     // ts.Program per package and pass it to parseWithProgramProvider().
 
-    const tsconfigPath = ts.findConfigFile(tsconfigDir ?? componentPath, fs.existsSync);
+    // const tsconfigPath = ts.findConfigFile(configDir ?? sourcePath, fs.existsSync, configName);
+    const tsconfigPath = temporaryTsconfigV9resolve(
+      ts.findConfigFile(configDir ?? sourcePath, fs.existsSync, configName),
+    );
 
     if (!tsconfigPath) {
-      throw new Error('Cannot find tsconfig.json');
+      throw new Error(`Cannot find ${configName}`);
     }
 
     const compilerOptions = getCompilerOptions(tsconfigPath);
@@ -33,9 +58,9 @@ export function createTsProgram(componentPath: string, tsconfigDir?: string): ts
     program = ts.createProgram([rootFile], compilerOptions);
   }
 
-  if (!program.getSourceFile(componentPath)) {
+  if (!program.getSourceFile(sourcePath)) {
     // See earlier comment for why it's handled this way (can reconsider if it becomes a problem)
-    throw new Error(`Component file "${componentPath}" does not appear to be referenced from the project index file`);
+    throw new Error(`Component file "${sourcePath}" does not appear to be referenced from the project index file`);
   }
 
   return program;

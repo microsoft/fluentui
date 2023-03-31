@@ -7,6 +7,7 @@ import {
   readJson,
   writeJson,
   logger,
+  updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { moveGenerator } from '@nrwl/workspace/generators';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
@@ -61,17 +62,18 @@ function movePackage(tree: Tree, schema: AssertedSchema) {
     updateImportPath: updateImportPath,
   });
 
+  const projects = getProjects(tree);
+  const newProjectName = getNewProjectName(schema.destination);
+
   // moveGenerator automatically renames the package so this overwrites that change
   // and sets it back to the original package name.
-  updateJson(tree, 'workspace.json', json => {
-    const newProjectName = getNewProjectName(schema.destination);
-    for (const [projectName, value] of Object.entries(json.projects)) {
-      if (projectName === newProjectName) {
-        json.projects[schema.name as string] = value;
-        delete json.projects[newProjectName];
-      }
+  projects.forEach((projectConfig, projectName) => {
+    if (projectName === newProjectName) {
+      updateProjectConfiguration(tree, projectName, {
+        ...projectConfig,
+        name: schema.name,
+      });
     }
-    return json;
   });
 
   // moveGenerator automatically updates the Readme file of the packages to replace

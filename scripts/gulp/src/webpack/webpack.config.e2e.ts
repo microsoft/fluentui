@@ -1,12 +1,52 @@
+import { getDefaultEnvironmentVars, workspaceRoot } from '@fluentui/scripts-monorepo';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import webpack from 'webpack';
-
-import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 
 import config from '../config';
 
+const aliases = {
+  ...config.lernaAliases({ type: 'webpack', directory: workspaceRoot }),
+};
+
 const { paths } = config;
+
+/**
+ * TODO: make it  generic. ATM this lives within scripts/storybook domain
+ * v8 uses SCSS/CSS modules
+ */
+const scssRule: import('webpack').RuleSetRule = {
+  test: /\.scss$/,
+  enforce: 'pre',
+  include: [/packages\/react\/src/],
+  exclude: [/node_modules/],
+  use: [
+    {
+      // creates style nodes from JS strings
+      loader: '@microsoft/loader-load-themed-styles',
+    },
+    {
+      // translates CSS into CommonJS
+      loader: 'css-loader',
+      options: {
+        esModule: false,
+        modules: true,
+        importLoaders: 2,
+      },
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: ['autoprefixer'],
+        },
+      },
+    },
+    {
+      loader: 'sass-loader',
+    },
+  ],
+};
+
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
@@ -25,28 +65,21 @@ const webpackConfig: webpack.Configuration = {
     global: true,
   },
   module: {
-    noParse: [
-      /anchor-js/,
-      /prettier\/parser-typescript/, // prettier issue, should be solved after upgrade prettier to version 2 https://github.com/prettier/prettier/issues/6903
-    ],
+    noParse: [/anchor-js/],
     rules: [
+      scssRule,
       {
-        test: /\.(js|ts|tsx)$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
+        test: /\.tsx?$/,
+        loader: 'esbuild-loader',
         options: {
-          cacheDirectory: true,
+          loader: 'tsx',
+          target: 'es2019',
         },
       },
     ],
   },
   plugins: [
     new webpack.DefinePlugin(getDefaultEnvironmentVars(true)),
-    new ForkTsCheckerWebpackPlugin({
-      typescript: {
-        configFile: paths.e2e('tsconfig.json'),
-      },
-    }),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -61,7 +94,7 @@ const webpackConfig: webpack.Configuration = {
       path: require.resolve('path-browserify'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: config.lernaAliases({ type: 'webpack' }),
+    alias: aliases,
   },
   performance: {
     hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")

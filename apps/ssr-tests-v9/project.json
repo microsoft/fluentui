@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/ssr-tests-v9",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "sourceRoot": "apps/ssr-tests-v9/src",
+  "tags": ["vNext", "platform:node"]
+}

@@ -33,10 +33,9 @@ function loadWorkspaceAddon(addonName, options) {
   const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
   function getPaths() {
-    const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
-    const addonMetadata = workspaceJson.projects[addonName];
+    const addonMetadata = getProjectMetadata({ name: addonName, root: workspaceRoot });
     const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
-    const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
+    const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot ?? '');
     const packageJsonPath = path.join(packageRootPath, 'package.json');
 
     if (!fs.existsSync(packageJsonPath)) {

@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "noEmit": false,
+    "declaration": true,
+    "lib": ["ES5", "DOM", "ES2015.Iterable", "ES2015.Promise", "ES2015.Core", "ES2015.Collection"],
+    "types": ["environment"]
+  },
+  "exclude": [
+    "./src/common/isConformant.ts",
+    "./src/common/testUtilities.ts",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

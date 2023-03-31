@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { Popup, popupContentClassName, Button } from '@fluentui/react-northstar';
+import { Popup, Button } from '@fluentui/react-northstar';
 
-export const selectors = {
-  popupTriggerId: 'trigger',
-  popupContentClass: popupContentClassName,
-  iframe: 'iframe',
-};
+import { selectors } from './popupIframeDismiss-selectors';
 
 const iframeContent = `<div id="iframecontent">
   <p>Hello World!</p>

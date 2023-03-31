@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-portal-compat",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/react-portal-compat/src",
+  "tags": ["vNext", "ships-amd", "platform:web"]
+}

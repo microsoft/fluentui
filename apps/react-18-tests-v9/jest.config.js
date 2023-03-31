@@ -9,7 +9,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
-      diagnostics: { warnOnly: true, exclude: ['packages/**'] },
+      isolatedModules: true,
     },
   },
   transform: {

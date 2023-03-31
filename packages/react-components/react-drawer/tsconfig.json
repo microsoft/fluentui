@@ -20,6 +20,9 @@
     },
     {
       "path": "./.storybook/tsconfig.json"
+    },
+    {
+      "path": "./tsconfig.cy.json"
     }
   ]
 }

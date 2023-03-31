@@ -1,4 +1,4 @@
-import { selectors } from './tooltipUnhandledProps-example';
+import { selectors } from './tooltipUnhandledProps-selectors';
 
 const trigger = `.${selectors.triggerClassName}`;
 const menuItem = `.${selectors.menuItemClassName}`;

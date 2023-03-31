@@ -14,11 +14,6 @@ describe('Dialog', () => {
     resetIds();
   });
 
-  afterEach(() => {
-    setWarningCallback();
-    jest.useRealTimers();
-  });
-
   afterAll(() => {
     resetIds();
   });
@@ -86,11 +81,14 @@ describe('Dialog', () => {
 
     expect(queryByRole('dialog')).toBeFalsy();
     expect(onDismissed).toHaveBeenCalledTimes(1);
+
+    jest.useRealTimers();
   });
 
   it('deprecated isOpen controls open state of the dialog', () => {
     // suppress deprecation warning as error
-    setWarningCallback(() => undefined);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
     jest.useFakeTimers();
     const onDismissed = jest.fn();
 
@@ -106,6 +104,9 @@ describe('Dialog', () => {
 
     expect(queryByRole('dialog')).toBeFalsy();
     expect(onDismissed).toHaveBeenCalledTimes(1);
+
+    jest.useRealTimers();
+    setWarningCallback();
   });
 
   it('Properly attaches auto-generated aria attributes IDs', () => {
@@ -154,7 +155,7 @@ describe('Dialog', () => {
       <DialogBase
         hidden={false}
         modalProps={{
-          titleAriaId: titleAriaId,
+          titleAriaId,
         }}
         dialogContentProps={{
           title: 'sample title',
@@ -170,7 +171,8 @@ describe('Dialog', () => {
 
   it('deprecated titleId prop should be used if titleProps.id is not passed', () => {
     // Prevent warn deprecations from failing test
-    setWarningCallback(() => undefined);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
 
     const titleId = 'title_id';
     render(
@@ -185,10 +187,13 @@ describe('Dialog', () => {
 
     const dialogTitle = document.getElementById(titleId);
     expect(dialogTitle).toBeTruthy();
+
+    setWarningCallback();
   });
 
   it('deprecated titleId prop should not be used if titleProps.id is undefined', () => {
-    setWarningCallback(() => undefined);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
 
     const titleId = 'title_id';
     render(
@@ -204,10 +209,13 @@ describe('Dialog', () => {
 
     const dialogTitle = document.getElementById(titleId);
     expect(dialogTitle).toBeFalsy();
+
+    setWarningCallback();
   });
 
   it('titleProps.id should be used if deprecated titleId is also passed', () => {
-    setWarningCallback(() => undefined);
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
 
     const titleId = 'title_id';
     render(
@@ -223,6 +231,8 @@ describe('Dialog', () => {
 
     const dialogTitle = document.getElementById(titleId);
     expect(dialogTitle).toBeTruthy();
+
+    setWarningCallback();
   });
 
   describe('enableAriaHiddenSiblings', () => {

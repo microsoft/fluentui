@@ -1,17 +1,7 @@
 import * as React from 'react';
 import { Toolbar, Tooltip, HighlightIcon, FontColorIcon } from '@fluentui/react-northstar';
 
-export const clickSelectors = {
-  triggerId: 'trigger-click',
-  contentId: 'content-click',
-  popupId: 'popup-click',
-};
-
-export const hoverSelectors = {
-  triggerId: 'trigger-hover',
-  contentId: 'content-hover',
-  popupId: 'popup-hover',
-};
+import { clickSelectors, hoverSelectors } from './toolbarWithPopupTooltip-selectors';
 
 const ToolbarWithPopupTooltipExample = () => {
   const [fontOpen, setFontOpen] = React.useState(false);

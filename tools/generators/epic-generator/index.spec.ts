@@ -58,7 +58,7 @@ function setupTest(packages: Package[]) {
    * Only accepts teams as owners (discards owners with no '/')
    */
   packages
-    .filter(pckg => pckg.projectType == 'library')
+    .filter(pckg => pckg.projectType === 'library')
     .flatMap(pckg => (pckg.owners.length > 0 ? pckg.owners : ['unknown']))
     .reduce<string[]>((acc, owner) => {
       if (owner.includes('/') && !acc.includes(owner)) {

@@ -26,6 +26,8 @@ src/**/*
 !src/**/*.types.ts
 temp
 tsconfig.json
+tsconfig.lib.json
+tsconfig.spec.json
 tsd.json
 tslint.json
 typings

@@ -7,16 +7,22 @@ import type { TscTaskOptions } from 'just-scripts';
 
 export function getTsPathAliasesConfig() {
   const cwd = process.cwd();
+  const tsConfigFileRoot = 'tsconfig.json';
+  const tsConfigRootPath = path.join(cwd, tsConfigFileRoot);
   const tsConfigFile = 'tsconfig.lib.json';
   const tsConfigPath = path.join(cwd, './tsconfig.lib.json');
+  const tsConfigRoot: TsConfig | null = fs.existsSync(tsConfigRootPath)
+    ? jju.parse(fs.readFileSync(tsConfigRootPath, 'utf-8'))
+    : null;
   const tsConfig: TsConfig | null = fs.existsSync(tsConfigPath)
     ? jju.parse(fs.readFileSync(tsConfigPath, 'utf-8'))
     : null;
   const packageJson: PackageJson = JSON.parse(fs.readFileSync(path.join(cwd, './package.json'), 'utf-8'));
 
   const isUsingTsSolutionConfigs = Boolean(tsConfig);
+  const isUsingPathAliases = Boolean(tsConfigRoot?.extends && tsConfigRoot?.extends.includes('.base.'));
 
-  return { tsConfig, isUsingTsSolutionConfigs, tsConfigFile, tsConfigPath, packageJson };
+  return { tsConfig, isUsingTsSolutionConfigs, isUsingPathAliases, tsConfigFile, tsConfigPath, packageJson };
 }
 
 export function getTsPathAliasesConfigV8() {

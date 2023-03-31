@@ -4,8 +4,6 @@
     "noEmit": false,
     "lib": ["ES2019", "dom"],
     "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "dist/types",
     "inlineSources": true,
     "types": ["static-assets", "environment", "node"]
   },
