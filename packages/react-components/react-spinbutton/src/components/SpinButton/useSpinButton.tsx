@@ -48,7 +48,7 @@ const lerp = (start: number, end: number, percent: number): number => start + (e
  */
 export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: ['small', 'medium'] });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
 
   const nativeProps = getPartitionedNativeProps({
     props,

@@ -16,7 +16,7 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: ['small', 'medium', 'large'] });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
 
   const overrides = useOverrides();
 

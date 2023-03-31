@@ -4,7 +4,7 @@ import { useFieldContext_unstable } from './FieldContext';
 /**
  * Options for `useFieldControlProps_unstable`.
  */
-type Options<Props extends FieldControlProps> = {
+type FieldControlPropsOptions = {
   /**
    * Skips setting aria-labelledby on the control if the label.htmlFor is the same as the control's id.
    *
@@ -13,10 +13,9 @@ type Options<Props extends FieldControlProps> = {
   supportsLabelFor?: boolean;
 
   /**
-   * A list of sizes that this control supports.
-   * If provided, the control props returned from `useFieldControlProps_unstable` will include the size from the field context.
+   * True if the control has a size prop that matches Field's size prop.
    */
-  supportsSize?: Props extends { size?: FieldContextValue['size'] } ? Props['size'][] : never;
+  supportsSize?: boolean;
 };
 
 /**
@@ -35,11 +34,14 @@ export function useFieldControlProps_unstable(): FieldControlProps | undefined;
  * @param options - Option to include the size prop.
  * @returns Merged props if inside a `<Field>`, otherwise the original props, or undefined if no props given.
  */
-export function useFieldControlProps_unstable<P extends FieldControlProps>(props: P, options?: Options<P>): P;
-export function useFieldControlProps_unstable<P extends FieldControlProps>(
-  props?: P,
-  options?: Options<P>,
-): P | undefined {
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(
+  props: Props,
+  options?: FieldControlPropsOptions,
+): Props;
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(
+  props?: Props,
+  options?: FieldControlPropsOptions,
+): Props | undefined {
   const context = useFieldContext_unstable();
   return context ? getFieldControlProps(context, props, options) : props;
 }
@@ -52,7 +54,7 @@ export function useFieldControlProps_unstable<P extends FieldControlProps>(
 export function getFieldControlProps<Props extends FieldControlProps>(
   context: FieldContextValue,
   props?: Props,
-  options?: Options<Props>,
+  options?: FieldControlPropsOptions,
 ): Props {
   // Create a copy of props so we don't modify the original
   props = { ...props } as Props;
@@ -86,8 +88,8 @@ export function getFieldControlProps<Props extends FieldControlProps>(
     props['aria-required'] ??= true;
   }
 
-  // Include the size prop if it matches one of the sizes this control supports
-  if (options?.supportsSize?.includes(context.size)) {
+  // Include the size prop if this control supports it
+  if (options?.supportsSize) {
     (props as { size?: FieldContextValue['size'] }).size ??= context.size;
   }
 

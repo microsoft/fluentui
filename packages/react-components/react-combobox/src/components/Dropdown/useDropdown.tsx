@@ -23,7 +23,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: ['small', 'medium', 'large'] });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
 
   const baseState = useComboboxBaseState(props);
   const { activeOption, getIndexOfId, getOptionsMatchingText, open, setActiveOption, setFocusVisible, setOpen } =
