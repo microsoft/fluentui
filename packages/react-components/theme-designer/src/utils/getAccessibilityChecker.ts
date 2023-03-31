@@ -168,9 +168,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
   };
 
   const contrastTests = checkContrastRatios();
-  console.log(`all contrast tests: ${JSON.stringify(contrastTests)}`);
   const luminosityTests = checkLuminosityDifferences();
-  console.log(`all luminosity tests: ${JSON.stringify(luminosityTests)}`);
   const failedLuminosityTests = luminosityTests.filter(test => !test.isPass);
   const failedContrastTests = contrastTests.filter(test => !test.isPass);
 
