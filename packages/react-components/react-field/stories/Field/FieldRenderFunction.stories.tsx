@@ -20,7 +20,7 @@ RenderFunction.parameters = {
   docs: {
     description: {
       story:
-        'Normally, the child of Field must be a single form control that can take `FieldChildProps` to associate it ' +
+        'Normally, the child of Field must be a single form control that can take `FieldControlProps` to associate it ' +
         'with its label and message text. If the props need to be spread on a different element, use a render ' +
         'function as the child of Field. See the code in this example for more details.',
     },

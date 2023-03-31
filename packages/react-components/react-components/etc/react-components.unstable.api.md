@@ -17,6 +17,9 @@ import { comboboxFieldClassNames } from '@fluentui/react-combobox';
 import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
+import { FieldContextProvider } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
@@ -116,6 +119,9 @@ import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable } from '@fluentui/react-field';
+import { useFieldContextValues } from '@fluentui/react-field';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
@@ -180,6 +186,12 @@ export { ComboboxFieldProps }
 export { Field }
 
 export { fieldClassNames }
+
+export { FieldContextProvider }
+
+export { FieldContextValue }
+
+export { FieldContextValues }
 
 export { FieldProps }
 
@@ -378,6 +390,12 @@ export { useAlert_unstable }
 export { useAlertStyles_unstable }
 
 export { useField_unstable }
+
+export { useFieldContext_unstable }
+
+export { useFieldContextValues }
+
+export { useFieldControlProps_unstable }
 
 export { useFieldStyles_unstable }
 

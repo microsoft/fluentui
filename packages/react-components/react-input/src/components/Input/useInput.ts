@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
@@ -18,6 +19,8 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: ['small', 'medium', 'large'] });
+
   const overrides = useOverrides();
 
   const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;

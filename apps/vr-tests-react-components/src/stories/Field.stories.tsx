@@ -12,8 +12,16 @@ import { Slider } from '@fluentui/react-slider';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { Switch } from '@fluentui/react-switch';
 import { Textarea } from '@fluentui/react-textarea';
+import { tokens } from '@fluentui/react-theme';
+import { makeResetStyles } from '@griffel/react';
 import { storiesOf } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
+
+const useStackClass = makeResetStyles({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: tokens.spacingVerticalL,
+});
 
 storiesOf('Field', module)
   .addDecorator(story => (
@@ -33,12 +41,12 @@ storiesOf('Field', module)
   ))
   .addStory('size:small', () => (
     <Field label="Small field" size="small">
-      <Input size="small" />
+      <Input />
     </Field>
   ))
   .addStory('size:large', () => (
     <Field label="Large field" size="large">
-      <Input size="large" />
+      <Input />
     </Field>
   ))
   .addStory('validation:error', () => (
@@ -109,57 +117,157 @@ storiesOf('Field', module)
       <Checkbox label="Checkbox in a horizontal field" />
     </Field>
   ))
-  .addStory('Checkbox:error', () => (
-    <Field validationMessage="Error message">
-      <Checkbox label="Checkbox in a Field with an error" />
-    </Field>
+  .addStory('Checkbox', () => (
+    <div className={useStackClass()}>
+      <Field size="large">
+        <Checkbox label="Checkbox in a large Field" />
+      </Field>
+      <Field validationMessage="Error message">
+        <Checkbox label="Checkbox in a Field with an error" />
+      </Field>
+    </div>
   ))
-  .addStory('Combobox:error', () => (
-    <Field label="Combobox in a Field with an error" validationMessage="Error message">
-      <Combobox />
-    </Field>
+  .addStory('Combobox', () => (
+    <div className={useStackClass()}>
+      <Field label="Combobox in a small Field" size="small">
+        <Combobox />
+      </Field>
+      <Field label="Combobox in a medium Field" size="medium">
+        <Combobox />
+      </Field>
+      <Field label="Combobox in a large Field" size="large">
+        <Combobox />
+      </Field>
+      <Field label="Combobox in a Field with an error" validationMessage="Error message">
+        <Combobox />
+      </Field>
+    </div>
   ))
-  .addStory('Dropdown:error', () => (
-    <Field label="Dropdown in a Field with an error" validationMessage="Error message">
-      <Dropdown />
-    </Field>
+  .addStory('Dropdown', () => (
+    <div className={useStackClass()}>
+      <Field label="Dropdown in a small Field" size="small">
+        <Dropdown />
+      </Field>
+      <Field label="Dropdown in a medium Field" size="medium">
+        <Dropdown />
+      </Field>
+      <Field label="Dropdown in a large Field" size="large">
+        <Dropdown />
+      </Field>
+      <Field label="Dropdown in a Field with an error" validationMessage="Error message">
+        <Dropdown />
+      </Field>
+    </div>
   ))
-  .addStory('ProgressBar:error', () => (
-    <Field label="ProgressBar in a Field with an error" validationMessage="Error message">
-      <ProgressBar value={0.5} color="error" />
-    </Field>
+  .addStory('ProgressBar', () => (
+    <div className={useStackClass()}>
+      <Field label="ProgressBar in a Field with a hint" hint="Hint message">
+        <ProgressBar value={0.5} />
+      </Field>
+      <Field label="ProgressBar in a Field with success" validationMessage="Success message" validationState="success">
+        <ProgressBar value={0.5} />
+      </Field>
+      <Field
+        label="ProgressBar in a Field with a warning"
+        validationMessage="Warning message"
+        validationState="warning"
+      >
+        <ProgressBar value={0.5} />
+      </Field>
+      <Field label="ProgressBar in a Field with an error" validationMessage="Error message">
+        <ProgressBar value={0.5} />
+      </Field>
+    </div>
   ))
-  .addStory('RadioGroup:error', () => (
-    <Field label="RadioGroup in a Field with an error" validationMessage="Error message">
-      <RadioGroup>
-        <Radio label="Option one" />
-        <Radio label="Option two" />
-        <Radio label="Option three" />
-      </RadioGroup>
-    </Field>
+  .addStory('RadioGroup', () => (
+    <div className={useStackClass()}>
+      <Field label="RadioGroup in a Field">
+        <RadioGroup>
+          <Radio label="Option one" />
+          <Radio label="Option two" />
+          <Radio label="Option three" />
+        </RadioGroup>
+      </Field>
+      <Field label="RadioGroup in a Field with an error" validationMessage="Error message">
+        <RadioGroup>
+          <Radio label="Option one" />
+          <Radio label="Option two" />
+          <Radio label="Option three" />
+        </RadioGroup>
+      </Field>
+    </div>
   ))
-  .addStory('Select:error', () => (
-    <Field label="Select in a Field with an error" validationMessage="Error message">
-      <Select />
-    </Field>
+  .addStory('Select', () => (
+    <div className={useStackClass()}>
+      <Field label="Select in a small Field" size="small">
+        <Select />
+      </Field>
+      <Field label="Select in a medium Field" size="medium">
+        <Select />
+      </Field>
+      <Field label="Select in a large Field" size="large">
+        <Select />
+      </Field>
+      <Field label="Select in a Field with an error" validationMessage="Error message">
+        <Select />
+      </Field>
+    </div>
   ))
-  .addStory('Slider:error', () => (
-    <Field label="Slider in a Field with an error" validationMessage="Error message">
-      <Slider />
-    </Field>
+  .addStory('Slider', () => (
+    <div className={useStackClass()}>
+      <Field label="Slider in a small Field" size="small">
+        <Slider />
+      </Field>
+      <Field label="Slider in a medium Field" size="medium">
+        <Slider />
+      </Field>
+      <Field label="Slider in a large Field" size="large">
+        <Slider />
+      </Field>
+      <Field label="Slider in a Field with an error" validationMessage="Error message">
+        <Slider />
+      </Field>
+    </div>
   ))
-  .addStory('SpinButton:error', () => (
-    <Field label="SpinButton in a Field with an error" validationMessage="Error message">
-      <SpinButton />
-    </Field>
+  .addStory('SpinButton', () => (
+    <div className={useStackClass()}>
+      <Field label="SpinButton in a small Field" size="small">
+        <SpinButton />
+      </Field>
+      <Field label="SpinButton in a medium Field" size="medium">
+        <SpinButton />
+      </Field>
+      <Field label="SpinButton in a large Field" size="large">
+        <SpinButton />
+      </Field>
+      <Field label="SpinButton in a Field with an error" validationMessage="Error message">
+        <SpinButton />
+      </Field>
+    </div>
   ))
-  .addStory('Switch:error', () => (
-    <Field label="Switch in a Field with an error" validationMessage="Error message">
-      <Switch />
-    </Field>
+  .addStory('Switch', () => (
+    <div className={useStackClass()}>
+      <Field label="Switch in a Field">
+        <Switch />
+      </Field>
+      <Field label="Switch in a Field with an error" validationMessage="Error message">
+        <Switch />
+      </Field>
+    </div>
   ))
-  .addStory('Textarea:error', () => (
-    <Field label="Textarea in a Field with an error" validationMessage="Error message">
-      <Textarea />
-    </Field>
+  .addStory('Textarea', () => (
+    <div className={useStackClass()}>
+      <Field label="Textarea in a small Field" size="small">
+        <Textarea />
+      </Field>
+      <Field label="Textarea in a medium Field" size="medium">
+        <Textarea />
+      </Field>
+      <Field label="Textarea in a large Field" size="large">
+        <Textarea />
+      </Field>
+      <Field label="Textarea in a Field with an error" validationMessage="Error message">
+        <Textarea />
+      </Field>
+    </div>
   ));

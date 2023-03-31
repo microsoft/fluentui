@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
+
+const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` : a ?? b);
 
 /**
  * Create the state required to render ProgressBar.
@@ -13,8 +16,14 @@ import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
  * @param ref - reference to root HTMLElement of ProgressBar
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
-  // Props
-  const { color = 'brand', shape = 'rounded', thickness = 'medium' } = props;
+  const fieldProps = useFieldControlProps_unstable();
+  const fieldState = useFieldContext_unstable()?.validationState;
+
+  const {
+    color = fieldState === 'error' || fieldState === 'warning' || fieldState === 'success' ? fieldState : 'brand',
+    shape = 'rounded',
+    thickness = 'medium',
+  } = props;
   const max = clampMax(props.max ?? 1);
   const value = clampValue(props.value, max);
 
@@ -24,7 +33,9 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
     'aria-valuemin': value !== undefined ? 0 : undefined,
     'aria-valuemax': value !== undefined ? max : undefined,
     'aria-valuenow': value,
+    'aria-labelledby': fieldProps?.['aria-labelledby'],
     ...props,
+    'aria-describedby': mergeAriaDescribedBy(fieldProps?.['aria-describedby'], props['aria-describedby']),
   });
 
   const bar = resolveShorthand(props.bar, {
