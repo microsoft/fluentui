@@ -10,6 +10,13 @@ export const drawerClassNames: SlotClassNames<DrawerSlots> = {
 };
 
 /**
+ * CSS variable names used internally for uniform styling in Drawer.
+ */
+export const drawerCSSVars = {
+  size: '--fui-Drawer--size',
+};
+
+/**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
@@ -19,34 +26,21 @@ const useStyles = makeStyles({
     ...shorthands.border(0),
 
     boxSizing: 'border-box',
-    width: '320px',
+    width: `var(${drawerCSSVars.size})`,
+    maxWidth: '100vw',
     height: 'auto',
     top: 0,
     bottom: 0,
-
-    opacity: 0,
-
-    transitionDuration: '200ms',
-    transitionTimingFunction: 'ease-out',
-    transitionProperty: 'margin-left, margin-right, opacity',
   },
 
   leftDrawer: {
     left: 0,
     right: 'auto',
-    marginLeft: '-320px',
   },
 
   rightDrawer: {
     right: 0,
     left: 'auto',
-    marginRight: '-320px',
-  },
-
-  visible: {
-    marginLeft: 0,
-    marginRight: 0,
-    opacity: 1,
   },
 
   persistent: {
@@ -66,6 +60,19 @@ const useStyles = makeStyles({
   temporary: {
     position: 'fixed',
   },
+
+  sizeSmall: {
+    [drawerCSSVars.size]: '320px',
+  },
+  sizeMedium: {
+    [drawerCSSVars.size]: '592px',
+  },
+  sizeLarge: {
+    [drawerCSSVars.size]: '940px',
+  },
+  sizeFull: {
+    [drawerCSSVars.size]: '100vw',
+  },
 });
 
 function getPersistentClasses(state: DrawerState, styles: ReturnType<typeof useStyles>) {
@@ -82,6 +89,13 @@ function getPersistentClasses(state: DrawerState, styles: ReturnType<typeof useS
   return mergeClasses(...classes);
 }
 
+const sizeMap = {
+  small: 'sizeSmall',
+  medium: 'sizeMedium',
+  large: 'sizeLarge',
+  full: 'sizeFull',
+} as const;
+
 /**
  * Apply styling to the Drawer slots based on the state
  */
@@ -92,11 +106,8 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
     drawerClassNames.root,
     styles.root,
     state.position === 'left' ? styles.leftDrawer : styles.rightDrawer,
+    typeof state.size !== 'number' && styles[sizeMap[state.size]],
   ];
-
-  if (state.visible) {
-    baseClasses.push(styles.visible);
-  }
 
   if (state.type === 'persistent') {
     state.root.className = mergeClasses(...baseClasses, getPersistentClasses(state, styles), state.root.className);

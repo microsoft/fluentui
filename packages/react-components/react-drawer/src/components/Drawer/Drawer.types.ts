@@ -8,6 +8,8 @@ export type DrawerSlots = {
   dialogSurface?: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
+export type DrawerSizes = 'small' | 'medium' | 'large' | 'full';
+
 /**
  * Drawer Props
  */
@@ -15,13 +17,12 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
   position?: 'left' | 'right';
 
   type?: 'persistent' | 'temporary';
+
+  size?: DrawerSizes | number;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
 /**
  * State used in rendering Drawer
  */
 export type DrawerState = ComponentState<DrawerSlots> &
-  Required<Pick<DrawerProps, 'type' | 'position' | 'open'>> & {
-    visible: boolean;
-    mounted: boolean;
-  };
+  Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>>;

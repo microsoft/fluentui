@@ -5,6 +5,8 @@ import previewMd from './DrawerPreview.md';
 
 export { Default } from './DrawerDefault.stories';
 export { Persistent } from './DrawerPersistent.stories';
+export { Size } from './DrawerSize.stories';
+export { CustomSize } from './DrawerCustomSize.stories';
 
 export default {
   title: 'Preview Components/Drawer/Drawer',

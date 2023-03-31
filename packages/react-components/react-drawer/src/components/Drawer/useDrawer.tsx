@@ -3,7 +3,6 @@ import { getNativeElementProps, useControllableState } from '@fluentui/react-uti
 import { Dialog, DialogSurface } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
-import { useAnimationState } from './useAnimationState';
 
 /**
  * Create the state required to render Drawer.
@@ -18,6 +17,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
   const {
     type = 'temporary',
     position = 'left',
+    size = 'small',
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
     onOpenChange,
@@ -29,7 +29,17 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const { visible, mounted, animating } = useAnimationState(open, { duration: 200 });
+  const customSizeStyle = React.useMemo(() => {
+    if (typeof size === 'number') {
+      return {
+        style: {
+          width: `${size}px`,
+        },
+      };
+    }
+
+    return null;
+  }, [size]);
 
   return {
     components: {
@@ -44,20 +54,19 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     }),
 
     dialog: {
-      open: open ? open : animating,
+      open,
       onOpenChange,
       children: <></>,
     },
 
     dialogSurface: {
       children: props.children,
+      ...customSizeStyle,
     },
 
     type,
     open,
     position,
-
-    visible,
-    mounted,
+    size,
   };
 };

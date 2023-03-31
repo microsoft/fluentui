@@ -16,7 +16,7 @@ export const renderDrawer_unstable = (state: DrawerState) => {
     ) : null;
   }
 
-  if (!state.mounted) {
+  if (!state.open) {
     return null;
   }
 
