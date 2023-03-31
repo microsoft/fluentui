@@ -120,7 +120,7 @@ Creating a simple label element with an optional info icon and optional required
 
 <br />
 
-**Additional Delta**
+**Additional Deltas**
 | | Fluent UI React 9 | Fluent Web Components 3 |
 |---------------------| --------------------------------------------------------------------------------------- |---------------------------------------------------------------------------------------- |
 | Renders | `HTMLLabelElement` | `HTMLElement` |
