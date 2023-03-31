@@ -12,7 +12,7 @@
 
 ## **Engineering Spec**
 
-Due to the infeasibility of associating elements across the shadow DOM boundary the `fluent-label` will not have access to the element it is intended to reference. For this reason the `fluent-label` is for visual purposes only.
+In web components, when using the shadow DOM, it's not feasible to associate elements across the shadow DOM boundary using the traditional `for` attribute, since the shadow DOM creates a boundary that prevents the label element from accessing the input element's id attribute. Instead, the WC3 Label component uses the `aria-labelledby` attribute to associate the label element with the input element. This attribute has a value that matches the id of another element on the page, which serves as a label for the input element.
 
 The fluent-label has several visual font size (small, medium, large) and font weight(regular, semibold) options. The fluent-label also provides appearances for required and disabled states.
 
@@ -116,4 +116,5 @@ Creating a simple label element with an optional info icon and optional required
 
 **Property Mapping**
 | Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-|-------------------|------------------------ |---------------------------|
+| ------------------- |------------------------ |--------------------------------------------------------------------------------------------------- |
+| `HTMLLabelElement` | `HTMLElement` | The FUIR9 implimentation of Label renders a [`HTMLLabelElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement)<br /><hr />The WC3 Label renders a [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) |
