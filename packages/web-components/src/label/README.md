@@ -71,21 +71,11 @@ Creating a simple label element with an optional info icon and optional required
 |      | Default slotted content for label text |
 
 <br />
-<hr />
-<br />
 
-### **Suggested Template**
+### **Template**
 
-```ts
-`<template
-    ?disabled="${(attr: Label) => attr.disabled}"
-    ?required="${(attr: Label) => attr.required}"
-    size="${(attr: Label) => attr.size}"
-    weight="${(attr: Label) => attr.weight}"
-  >
-    <slot></slot>
-    <span part="asterisk" class="asterisk" ?hidden="${(attr: Label) => !attr.required}">*</span>
-</template>`;
+```html
+<slot></slot> <span part="asterisk" class="asterisk" ?hidden="${x => !x.required}">*</span>
 ```
 
 ## **Accessibility**
