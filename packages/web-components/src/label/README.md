@@ -12,11 +12,15 @@
 
 ## **Engineering Spec**
 
-**notes**
-
-In web components, when using the shadow DOM, it's not feasible to associate elements across the shadow DOM boundary using the traditional `for` attribute, since the shadow DOM creates a boundary that prevents the label element from accessing the input element's id attribute. Instead, the WC3 Label component uses the `aria-labelledby` attribute to associate the label element with the input element. This attribute has a value that matches the id of another element on the page, which serves as a label for the input element.
+<br />
 
 The fluent-label has several visual font size (small, medium, large) and font weight(regular, semibold) options. The fluent-label also provides appearances for required and disabled states.
+
+<br />
+
+_Note about form association_
+
+In web components, when using the shadow DOM, it's not feasible to associate elements across the shadow DOM boundary using the traditional `for` attribute, since the shadow DOM creates a boundary that prevents the label element from accessing the input element's id attribute. Instead, the WC3 Label component uses the `aria-labelledby` attribute to associate the label element with the input element. This attribute has a value that matches the id of another element on the page, which serves as a label for the input element.
 
 <br />
 
