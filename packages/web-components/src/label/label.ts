@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import { LabelSize, LabelWeight } from './label.options.js';
-// import { LabelSize, LabelWeight } from "./label.options.js";
+
 /**
  * The base class used for constructing a fluent-label custom element
  * @public
