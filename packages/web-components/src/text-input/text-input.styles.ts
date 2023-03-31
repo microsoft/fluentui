@@ -3,7 +3,6 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorCompoundBrandStroke,
-  colorCompoundBrandStrokePressed,
   colorNeutralBackground1,
   colorNeutralBackground3,
   colorNeutralBackgroundInverted,
