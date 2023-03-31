@@ -95,7 +95,7 @@ export const Placeholder = renderComponent(html<TextInputStoryArgs>`
   <div style="width: 300px;">
     <fluent-text-input placeholder="This is a placeholder">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Disabled Input
     </fluent-text-input>
   </div>
@@ -105,37 +105,37 @@ export const Appearance = renderComponent(html<TextInputStoryArgs>`
   <div style="display: flex; flex-direction: column; gap: 30px; width: 300px;">
     <fluent-text-input>
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Outlined Input
     </fluent-text-input>
 
     <fluent-text-input appearance="underline">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Underlined Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-lighter">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Filled Lighter Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-lighter--shadow">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Filled Lighter with Shadow Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-darker">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Filled Darker Input
     </fluent-text-input>
 
     <fluent-text-input appearance="filled-darker--shadow">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Filled Darker with Shadow Input
     </fluent-text-input>
   </div>
@@ -166,14 +166,14 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 export const Inline = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input style="display: inline-flex; align-items: center;">
     <span slot="start">${Person20Regular}</span>
-    <span slot="end">${Person20Regular}${Person20Regular}</span>
+    <span slot="end">${Person20Regular}</span>
     Inline Input
   </fluent-text-input>
   <p style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}">
     This input is
     <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="Inline">
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
     </fluent-text-input>
     with a paragraph of text.
   </p>
@@ -183,7 +183,7 @@ export const Disabled = renderComponent(html<TextInputStoryArgs>`
   <div style="width: 300px;">
     <fluent-text-input disabled>
       <span slot="start">${Person20Regular}</span>
-      <span slot="end">${Person20Regular}${Person20Regular}</span>
+      <span slot="end">${Person20Regular}</span>
       Disabled Input
     </fluent-text-input>
   </div>
