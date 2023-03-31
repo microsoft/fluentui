@@ -1,0 +1,92 @@
+import { attr } from '@microsoft/fast-element';
+import { FASTAnchor } from '@microsoft/fast-foundation';
+import { AnchorAppearance, AnchorShape, AnchorSize } from './anchor.options.js';
+
+/**
+ * The base class used for constructing a fluent-anchor custom element
+ * @public
+ */
+export class Anchor extends FASTAnchor {
+  /**
+   * The appearance the anchor should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  @attr
+  public appearance?: AnchorAppearance | undefined;
+
+  /**
+   * The shape the anchor should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: shape
+   */
+  @attr
+  public shape?: AnchorShape | undefined;
+
+  /**
+   * The size the anchor should have.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: size
+   */
+  @attr
+  public size?: AnchorSize;
+
+  /**
+   * The anchor has an icon only, no text content
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: icon-only
+   */
+  @attr({ attribute: 'icon-only', mode: 'boolean' })
+  public iconOnly: boolean = false;
+
+  /**
+   * The anchor is disabled but focusable
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: disabled-focusable
+   */
+  @attr({ attribute: 'disabled-focusable', mode: 'boolean' })
+  public disabledFocusable?: boolean = false;
+  protected disabledFocusableChanged(prev: boolean, next: boolean): void {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+
+    if (this.disabledFocusable) {
+      ((this as unknown) as HTMLElement).setAttribute('aria-disabled', 'true');
+    } else {
+      ((this as unknown) as HTMLElement).removeAttribute('aria-disabled');
+    }
+  }
+
+  /**
+   * Prevents disabledFocusable click events
+   */
+  private handleDisabledFocusableClick = (e: MouseEvent): void => {
+    if (e && this.disabledFocusable) {
+      e.stopImmediatePropagation();
+      return;
+    }
+  };
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    ((this as unknown) as HTMLElement).addEventListener('click', this.handleDisabledFocusableClick);
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    ((this as unknown) as HTMLElement).removeEventListener('click', this.handleDisabledFocusableClick);
+  }
+}
