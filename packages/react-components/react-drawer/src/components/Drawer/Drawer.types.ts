@@ -57,9 +57,18 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
    * - 'large' - Drawer is 940px wide.
    * - 'full' - Drawer is 100vw wide.
    * - number - Drawer is the given number of pixels wide.
-   *
    */
   size?: DrawerSizes | number;
+
+  /**
+   * When this is set, the rest of the page is dimmed out and cannot be interacted with.
+   * The tab sequence is kept within the dialog and moving the focus outside
+   * the dialog will imply closing it. This is the default type of the component.
+   * This prop is only used when `type` is `temporary`.
+   *
+   * @defaultvalue true
+   */
+  modal?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
 /**

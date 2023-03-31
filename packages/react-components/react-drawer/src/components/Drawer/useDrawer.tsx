@@ -1,8 +1,40 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
-import { Dialog, DialogSurface } from '@fluentui/react-dialog';
+import { Dialog, DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
+
+/**
+ * @internal
+ * Create the state required to render DrawerDialog.
+ * @param props - props from this instance of Drawer
+ */
+const useDrawerDialog = ({ size, open, onOpenChange, modal, children }: DrawerProps) => {
+  const dialog = React.useMemo<DialogProps>(() => {
+    return {
+      open,
+      onOpenChange,
+      modalType: modal ? 'modal' : 'non-modal',
+      children: <></>,
+    };
+  }, [modal, onOpenChange, open]);
+
+  const dialogSurface = React.useMemo(() => {
+    const surfaceProps: DialogSurfaceProps = {
+      children,
+    };
+
+    if (typeof size === 'number') {
+      surfaceProps.style = {
+        width: `${size}px`,
+      };
+    }
+
+    return surfaceProps;
+  }, [children, size]);
+
+  return { dialog, dialogSurface };
+};
 
 /**
  * Create the state required to render Drawer.
@@ -20,7 +52,6 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     size = 'small',
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
-    onOpenChange,
   } = props;
 
   const [open] = useControllableState({
@@ -29,17 +60,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const customSizeStyle = React.useMemo(() => {
-    if (typeof size === 'number') {
-      return {
-        style: {
-          width: `${size}px`,
-        },
-      };
-    }
-
-    return null;
-  }, [size]);
+  const { dialog, dialogSurface } = useDrawerDialog(props);
 
   return {
     components: {
@@ -53,16 +74,8 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
       ...props,
     }),
 
-    dialog: {
-      open,
-      onOpenChange,
-      children: <></>,
-    },
-
-    dialogSurface: {
-      children: props.children,
-      ...customSizeStyle,
-    },
+    dialog,
+    dialogSurface,
 
     type,
     open,
