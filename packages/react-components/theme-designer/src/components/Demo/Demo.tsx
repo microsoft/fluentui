@@ -2,13 +2,10 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
   tokens,
-  Body1,
-  Title3,
   TabList,
   Tab,
   Input,
   Button,
-  Caption1,
   Dropdown,
   Option,
   Slider,
@@ -20,11 +17,13 @@ import {
   Avatar,
   useId,
   Caption2,
+  Spinner,
+  Label,
+  Link,
 } from '@fluentui/react-components';
 import {
   SearchRegular,
   bundleIcon,
-  ChevronRightRegular,
   MeetNowRegular,
   MeetNowFilled,
   CalendarLtrFilled,
@@ -37,43 +36,34 @@ export interface ContentProps {
 
 const useStyles = makeStyles({
   root: {
-    display: 'grid',
-    alignItems: 'start',
-    justifyContent: 'center',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridTemplateRows: 'auto',
-    gridColumnGap: tokens.spacingHorizontalXXXL,
-  },
-  col1: {
     display: 'flex',
     justifyContent: 'space-between',
-    flexDirection: 'column',
-    ...shorthands.gap(tokens.spacingVerticalL),
   },
-  col2: {
+  column: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    justifyContent: 'start',
+    boxSizing: 'border-box',
     ...shorthands.gap(tokens.spacingVerticalL),
   },
-  col3: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: 'repeat(4, auto)',
-    gridRowGap: tokens.spacingVerticalS,
-    gridColumnGap: tokens.spacingHorizontalS,
+  controlRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'start',
     justifyContent: 'center',
-    alignItems: 'center',
+    ...shorthands.gap(tokens.spacingHorizontalL),
   },
-  twoCol: {
-    gridColumnStart: 1,
-    gridColumnEnd: 3,
-  },
-  controls: {
+  controlColumn: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'start',
     justifyContent: 'center',
+  },
+  inputLabel: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'start',
+    ...shorthands.gap(tokens.spacingVerticalS),
   },
   icons: {
     display: 'grid',
@@ -96,13 +86,9 @@ const useStyles = makeStyles({
 
 export const Column1 = () => {
   const styles = useStyles();
+  const dropdownId = useId('dropdown-default');
   return (
-    <div className={styles.col1}>
-      <Title3 block>Make an impression</Title3>
-      <Body1 block>
-        Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to
-        people inside or outside your team. Share your ideas, results, and more in this visually compelling format.
-      </Body1>
+    <div className={styles.column}>
       <div className={styles.avatar}>
         <Avatar
           color="brand"
@@ -117,15 +103,6 @@ export const Column1 = () => {
           <Caption2>Senior Researcher at Contoso</Caption2>
         </div>
       </div>
-    </div>
-  );
-};
-
-export const Column2 = () => {
-  const styles = useStyles();
-  const dropdownId = useId('dropdown-default');
-  return (
-    <div className={styles.col2}>
       <TabList defaultSelectedValue="tab1">
         <Tab value="tab1">Home</Tab>
         <Tab value="tab2">Pages</Tab>
@@ -144,6 +121,35 @@ export const Column2 = () => {
   );
 };
 
+export const Column2 = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.column}>
+      <div className={styles.controlRow}>
+        <Button appearance="primary">Text</Button>
+        <div className={styles.controlColumn}>
+          <Switch defaultChecked={true} label="On" />
+          <Switch label="Off" />
+        </div>
+      </div>
+      <Slider defaultValue={50} />
+      <div className={styles.controlRow}>
+        <div className={styles.controlColumn}>
+          <Checkbox defaultChecked={true} label="Option 1" />
+          <Checkbox label="Option 2" />
+        </div>
+        <div className={styles.controlColumn}>
+          <RadioGroup>
+            <Radio defaultChecked={true} label="Option 1" />
+            <Radio label="Option 2" />
+          </RadioGroup>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// We may use these later.
 export const DemoIcons = () => {
   const styles = useStyles();
   const MeetNowIcon = bundleIcon(MeetNowFilled, MeetNowRegular);
@@ -159,29 +165,19 @@ export const DemoIcons = () => {
 };
 
 export const Column3 = () => {
+  const inputId = useId('input');
   const styles = useStyles();
+
   return (
-    <div className={styles.col3}>
-      <Button appearance="primary">Sign Up</Button>
-      <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
-        Learn More
-      </Button>
-      <Slider className={styles.twoCol} defaultValue={50} />
-      <DemoIcons />
-      <div className={styles.controls}>
-        <Switch defaultChecked={true} label="On" />
-        <Switch label="Off" />
+    <div className={styles.column}>
+      <div className={styles.inputLabel}>
+        <Label htmlFor={inputId} required>
+          Description
+        </Label>
+        <Input id={inputId} placeholder="Example Text" />
       </div>
-      <div className={styles.controls}>
-        <Checkbox defaultChecked={true} label="Option 1" />
-        <Checkbox label="Option 2" />
-      </div>
-      <div className={styles.controls}>
-        <RadioGroup>
-          <Radio defaultChecked={true} label="Option 1" />
-          <Radio label="Option 2" />
-        </RadioGroup>
-      </div>
+      <Link href="https://www.microsoft.com">Example link - www.microsoft.com</Link>
+      <Spinner />
     </div>
   );
 };
@@ -190,8 +186,8 @@ export const Demo: React.FC<ContentProps> = props => {
   const styles = useStyles();
   return (
     <div>
-      <Caption1>Examples</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
+        {/* <Title3 block>Component Examples</Title3> */}
         <Column1 />
         <Column2 />
         <Column3 />

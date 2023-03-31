@@ -102,3 +102,33 @@ export const accessiblePairs: AccessiblePairs = {
     ['colorSubtleBackgroundPressed', 3],
   ],
 };
+
+export const lightnessPairs: AccessiblePairs = {
+  colorCompoundBrandBackground: [
+    ['colorCompoundBrandBackgroundHover', -5],
+    ['colorCompoundBrandBackgroundPressed', -10],
+  ],
+  colorBrandBackground: [
+    ['colorBrandBackgroundHover', -5],
+    ['colorBrandBackgroundPressed', -20],
+    ['colorBrandBackgroundSelected', -10],
+  ],
+  colorBrandForegroundLink: [
+    ['colorBrandForegroundLinkHover', -5],
+    ['colorBrandForegroundLinkPressed', -15],
+    ['colorBrandForegroundLinkSelected', -5],
+  ],
+  // note these are in the web stickersheet but not in theme
+  // colorBrandBackground2: [
+  // 	['colorBrandBackground2Hover', -5],
+  // 	['colorBrandBackground2Pressed', -20],
+  // ],
+  // colorBrandForeground2: [
+  // 	['colorBrandForeground2Hover', -5],
+  // 	['colorBrandForeground2Pressed', -15],
+  // ],
+  // colorCompoundBrandStroke1: [
+  // 	['colorCompoundBrandStroke1Hover', -5],
+  // 	['colorCompoundBrandStroke1Pressed', -10],
+  // ]
+};
