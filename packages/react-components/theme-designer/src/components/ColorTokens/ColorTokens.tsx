@@ -85,7 +85,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         themeName={themeName}
         colorOverride={brandColorOverrides}
         onNewOverride={onNewOverride}
-        isDark={isDark}
+        theme={themeWithOverrides}
       />
     </div>
   );

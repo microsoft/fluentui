@@ -85,7 +85,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
         isDark: action.payload,
         themeWithOverrides: {
           ...theme,
-          ...(state.isDark ? state.darkThemeOverrides : state.lightThemeOverrides),
+          ...(action.payload ? state.darkThemeOverrides : state.lightThemeOverrides),
         },
       };
     case 'reset':
@@ -129,7 +129,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
           } as ColorOverrideBrands,
           darkThemeOverrides: overrides,
           themeWithOverrides: {
-            ...state.themeWithOverrides,
+            ...createDarkTheme(state.brand),
             ...overrides,
           },
         };
@@ -148,7 +148,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
           } as ColorOverrideBrands,
           lightThemeOverrides: overrides,
           themeWithOverrides: {
-            ...state.themeWithOverrides,
+            ...createLightTheme(state.brand),
             ...overrides,
           },
         };

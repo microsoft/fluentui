@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {
   Accordion,
-  AccordionHeader,
-  AccordionItem,
   AccordionPanel,
-  Badge,
-  BrandVariants,
-  createDarkTheme,
-  createLightTheme,
-  makeStyles,
+  AccordionItem,
+  AccordionHeader,
   Theme,
+  BrandVariants,
+  Badge,
+  makeStyles,
 } from '@fluentui/react-components';
 import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
 import { ColorTokensList } from './ColorTokensList';
@@ -24,7 +22,7 @@ export interface AccessibilityListProps {
 
   themeOverrides: Partial<Theme>;
   onNewOverride: (color: string, newColor: Brands) => void;
-  isDark: boolean;
+  theme: Theme;
 
   themeName: string;
 }
@@ -38,7 +36,6 @@ const useStyles = makeStyles({
 export interface AccessibilityContrastChipProps {
   failKeys: string[];
 }
-
 export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
   const styles = useStyles();
 
@@ -60,13 +57,9 @@ export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityCon
 };
 
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
-  const { brand, colorOverride, onNewOverride, themeOverrides, themeName, isDark } = props;
+  const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
 
-  const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
-  const { all, failedLuminosityTests, failedContrastTests } = getAccessibilityChecker({
-    ...theme,
-    ...themeOverrides,
-  });
+  const { all, failedLuminosityTests, failedContrastTests } = getAccessibilityChecker(theme);
 
   const failedContrastKeys = failedContrastTests.map(test => test.testInfo!.currToken);
   const failedLuminosityKeys = failedLuminosityTests.map(test => test.testInfo!.currToken);
