@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added proxy for default custom hook noop",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
