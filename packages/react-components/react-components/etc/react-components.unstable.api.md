@@ -122,7 +122,7 @@ import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
-import { useFieldContextValues } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
@@ -399,7 +399,7 @@ export { useField_unstable }
 
 export { useFieldContext_unstable }
 
-export { useFieldContextValues }
+export { useFieldContextValues_unstable }
 
 export { useFieldControlProps_unstable }
 

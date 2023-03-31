@@ -86,7 +86,7 @@ export {
   FieldContextProvider,
   renderField_unstable,
   useFieldContext_unstable,
-  useFieldContextValues,
+  useFieldContextValues_unstable,
   useFieldControlProps_unstable,
   useFieldStyles_unstable,
   useField_unstable,

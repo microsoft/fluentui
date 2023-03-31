@@ -110,7 +110,7 @@ export const useFieldContext_unstable: () => Readonly<Partial<Pick<FieldState, "
 }> | undefined;
 
 // @public
-export const useFieldContextValues: (state: FieldState) => FieldContextValues;
+export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
 
 // @public
 export function useFieldControlProps_unstable(): FieldControlProps | undefined;

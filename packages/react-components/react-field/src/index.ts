@@ -10,7 +10,7 @@ export type {
 export {
   FieldContextProvider,
   useFieldContext_unstable,
-  useFieldContextValues,
+  useFieldContextValues_unstable,
   useFieldControlProps_unstable,
 } from './contexts/index';
 export type { FieldControlPropsOptions } from './contexts/index';
