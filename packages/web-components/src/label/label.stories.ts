@@ -22,8 +22,8 @@ export default {
   title: 'Components/Label',
   args: {
     required: false,
-    size: 'medium',
-    weight: 'regular',
+    size: LabelSize.medium,
+    weight: LabelWeight.regular,
   },
   argTypes: {
     required: {
