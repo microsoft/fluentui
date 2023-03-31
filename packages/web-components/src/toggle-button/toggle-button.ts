@@ -28,7 +28,7 @@ export class ToggleButton extends Button {
   }
 
   @observable
-  public defaultChecked: boolean;
+  public defaultChecked: boolean = false;
   protected defaultCheckedChanged(): void {
     if (!this.dirtyChecked) {
       // Setting this.checked will cause us to enter a dirty state,
@@ -53,7 +53,7 @@ export class ToggleButton extends Button {
 
     this.currentChecked = this.checked;
 
-    this.setAttribute('aria-pressed', this.currentChecked);
+    ((this as unknown) as HTMLElement).setAttribute('aria-pressed', `${this.currentChecked}`);
 
     if (prev !== undefined) {
       this.$emit('change');
@@ -92,20 +92,6 @@ export class ToggleButton extends Button {
 
     ((this as unknown) as HTMLElement).removeEventListener('click', this.handleToggleButtonClick);
   }
-
-  /**
-   * @internal
-   */
-  // public keypressHandler = (e: KeyboardEvent): void => {
-  //   if (!this.disabled && !this.disabledFocusable) {
-  //     switch (e.key) {
-  //       case 'Enter':
-  //       case ' ':
-  //         this.checked = !this.checked;
-  //         break;
-  //     }
-  //   }
-  // };
 
   /**
    * @internal

@@ -22,7 +22,7 @@ import {
   colorTransparentBackgroundPressed,
   colorTransparentBackgroundSelected,
   strokeWidthThin,
-} from '../theme/design-tokens';
+} from '../theme/design-tokens.js';
 
 // Need to support icon hover styles
 export const styles = css`
