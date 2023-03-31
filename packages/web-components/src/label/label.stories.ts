@@ -3,6 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Label as FluentLabel } from './label.js';
 import './define.js';
+import { LabelSize, LabelWeight } from './label.options.js';
 
 type LabelStoryArgs = Args & FluentLabel;
 type LabelStoryMeta = Meta<LabelStoryArgs>;
@@ -48,24 +49,24 @@ export default {
     size: {
       description: 'Sets label font size',
       table: {
-        defaultValue: { summary: 'medium' },
+        defaultValue: { summary: LabelSize.medium },
       },
       control: {
         type: 'select',
-        options: ['small', 'medium', 'large'],
+        options: Object.values(LabelSize),
       },
-      defaultValue: 'medium',
+      defaultValue: LabelSize.medium,
     },
     weight: {
       description: 'Sets label font weight',
       table: {
-        defaultValue: { summary: 'regular' },
+        defaultValue: { summary: LabelWeight.regular },
       },
       control: {
         type: 'select',
-        options: ['regular', 'semibold'],
+        options: Object.values(LabelWeight),
       },
-      defaultValue: 'regular',
+      defaultValue: LabelWeight.regular,
     },
   },
 } as LabelStoryMeta;
