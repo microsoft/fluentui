@@ -42,8 +42,7 @@ export function useFieldControlProps_unstable<Props extends FieldControlProps>(
   props?: Props,
   options?: FieldControlPropsOptions,
 ): Props | undefined {
-  const context = useFieldContext_unstable();
-  return context ? getFieldControlProps(context, props, options) : props;
+  return getFieldControlProps(useFieldContext_unstable(), props, options);
 }
 
 /**
@@ -52,10 +51,14 @@ export function useFieldControlProps_unstable<Props extends FieldControlProps>(
  * Split out so it can be used directly in renderField_unstable.
  */
 export function getFieldControlProps<Props extends FieldControlProps>(
-  context: FieldContextValue,
+  context: FieldContextValue | undefined,
   props?: Props,
   options?: FieldControlPropsOptions,
-): Props {
+): Props | undefined {
+  if (!context) {
+    return props;
+  }
+
   // Create a copy of props so we don't modify the original
   props = { ...props } as Props;
 
