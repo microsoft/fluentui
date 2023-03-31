@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 31 Mar 2023 04:19:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.13",
+      "version": "3.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f5a5e507a3902a9703d5198a13cc96335c82eaa",
+            "comment": "update fast-element and fast-foundation dependencies"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d901fa95e8f90c1b5dabda8602a72ecb77288f0c",
+            "comment": "feat(button): add button web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Mar 2023 04:20:01 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.12",
       "version": "3.0.0-alpha.12",
