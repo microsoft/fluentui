@@ -32,8 +32,7 @@ export const styles = css`
   :host {
     grid-template-columns: 20px 20px auto 20px;
     align-items: center;
-    row-gap: 4px;
-    column-gap: 4px;
+    grid-gap: 4px;
     height: 32px;
     background: ${colorNeutralBackground1};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
