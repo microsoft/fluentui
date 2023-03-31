@@ -19,17 +19,15 @@ import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
-import { ContrastRatioList } from '../../utils/getAccessibilityChecker';
+import { TestResult, TestType, ContrastRatioTest, LuminosityTest } from '../../utils/getAccessibilityChecker';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 export interface ColorTokensListProps {
   brand: BrandVariants;
-
   themeName: string;
   themeOverrides: Partial<Theme>;
   colorOverrides: ColorOverrideBrands;
   coveredTokens: string[];
-  failList?: ContrastRatioList;
-
+  tests?: TestResult[];
   onNewOverride: (color: string, newColor: Brands) => void;
 }
 
@@ -98,8 +96,7 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
-  const { brand, coveredTokens, failList, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
-
+  const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
   return (
     <div>
       {coveredTokens.map(color => {
@@ -151,19 +148,31 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
               </div>
               <div className={styles.col}>{usage}</div>
               <div className={styles.row2}>
-                {failList ? (
-                  failList[color].map(fail => {
-                    const { compHex, ratio, desiredRatio } = fail;
+                {tests ? (
+                  tests.map(testResult => {
+                    const testType = testResult.testType;
+                    var hex;
+                    var output;
+                    var desiredOutput;
+                    if (testType === TestType.contrastRatio) {
+                      const testInfo = testResult.testInfo as ContrastRatioTest;
+                      hex = testInfo.compHex;
+                      output = testInfo.ratio;
+                      desiredOutput = testInfo.desiredRatio;
+                    } else if (testType == TestType.luminosity) {
+                      const testInfo = testResult.testInfo as LuminosityTest;
+                      hex = testInfo.compHex;
+                      output = testInfo.percentDiff;
+                      desiredOutput = testInfo.desiredPercentDiff;
+                    }
+
                     return (
-                      <div key={color + ' ' + compHex}>
-                        <WarningRegular color="red" /> Contrast against{' '}
-                        <div
-                          className={styles.colorPreview}
-                          style={{ backgroundColor: brand[colorValue], color: compHex }}
-                        >
-                          {compHex}
-                        </div>{' '}
-                        is {ratio} - expected {desiredRatio}
+                      <div key={color + ' ' + hex}>
+                        <WarningRegular color="red" /> Contrast against
+                        <div className={styles.colorPreview} style={{ backgroundColor: brand[colorValue], color: hex }}>
+                          {hex}
+                        </div>
+                        is {output} - expected {desiredOutput}
                       </div>
                     );
                   })

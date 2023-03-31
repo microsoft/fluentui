@@ -59,15 +59,20 @@ export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityCon
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
   const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
 
-  const { all, fail } = getAccessibilityChecker(theme);
-  const failKeys = Object.keys(fail);
+  const { all, failedLuminosityTests, failedContrastTests } = getAccessibilityChecker(theme);
+  //   console.log(`all: ${JSON.stringify(all)}`);
+  //   console.log(`failedLuminosityTests: ${JSON.stringify(failedLuminosityTests)}`);
+  //   console.log(`failedContrastTests: ${JSON.stringify(failedContrastTests)}`);
+
+  const failedContrastKeys = failedContrastTests.map(test => test.testInfo!.currToken);
+  const failedLuminosityKeys = failedLuminosityTests.map(test => test.testInfo!.currToken);
 
   return (
     <>
-      <Accordion multiple defaultOpenItems="Fail">
-        <AccordionItem value="Fail">
+      <Accordion multiple>
+        <AccordionItem value="FailContrast">
           <AccordionHeader>
-            Contrast Issues &nbsp; <AccessibilityContrastChip failKeys={failKeys} />
+            Contrast Issues &nbsp; <AccessibilityContrastChip failKeys={failedContrastKeys} />
           </AccordionHeader>
           <AccordionPanel>
             <ColorTokensList
@@ -76,8 +81,24 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
               colorOverrides={colorOverride}
               themeOverrides={themeOverrides}
               onNewOverride={onNewOverride}
-              coveredTokens={sortOverrideableColorTokens(failKeys)}
-              failList={fail}
+              coveredTokens={sortOverrideableColorTokens(failedContrastKeys)}
+              tests={failedContrastTests}
+            />
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="FailLuminosity">
+          <AccordionHeader>
+            Luminosity Issues &nbsp; <AccessibilityContrastChip failKeys={failedLuminosityKeys} />
+          </AccordionHeader>
+          <AccordionPanel>
+            <ColorTokensList
+              brand={brand}
+              themeName={themeName}
+              colorOverrides={colorOverride}
+              themeOverrides={themeOverrides}
+              onNewOverride={onNewOverride}
+              coveredTokens={sortOverrideableColorTokens(failedLuminosityKeys)}
+              tests={failedLuminosityTests}
             />
           </AccordionPanel>
         </AccordionItem>
