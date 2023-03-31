@@ -32,9 +32,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.4.5",
-    "@fluentui/react-badge": "^9.1.5",
-    "@fluentui/react-shared-contexts": "^9.3.2",
+    "@fluentui/react-avatar": "^9.4.6",
+    "@fluentui/react-badge": "^9.1.6",
+    "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-theme": "^9.1.7",
     "@fluentui/react-utilities": "^9.7.2",
     "@griffel/react": "^1.5.2",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-combobox",
-  "version": "9.2.5",
+  "version": "9.2.6",
   "description": "Fluent UI React Combobox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,11 +34,11 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.2",
     "@fluentui/react-context-selector": "^9.1.15",
-    "@fluentui/react-field": "9.0.0-alpha.27",
+    "@fluentui/react-field": "9.0.0-alpha.28",
     "@fluentui/react-icons": "^2.0.196",
-    "@fluentui/react-portal": "^9.2.2",
-    "@fluentui/react-positioning": "^9.5.6",
-    "@fluentui/react-shared-contexts": "^9.3.2",
+    "@fluentui/react-portal": "^9.2.3",
+    "@fluentui/react-positioning": "^9.5.7",
+    "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-theme": "^9.1.7",
     "@fluentui/react-utilities": "^9.7.2",
     "@griffel/react": "^1.5.2",
@@ -52,7 +52,6 @@
     "scheduler": "^0.19.0 || ^0.20.0"
   },
   "beachball": {
-    "tag": "beta",
     "disallowedChangeTypes": [
       "major",
       "prerelease"

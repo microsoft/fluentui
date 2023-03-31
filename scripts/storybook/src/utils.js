@@ -106,7 +106,7 @@ function loadWorkspaceAddon(addonName, options) {
     const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
     function managerWebpack(config, options) {
-      registerTsPaths({config, tsConfigPath: '${posixTsConfigPath}'});
+      registerTsPaths({config, configFile: '${posixTsConfigPath}'});
       return config;
     }
 
@@ -175,6 +175,9 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
       },
       '@fluentui/react-migration-v0-v9': {
         replace: '@fluentui/react-migration-v0-v9',
+      },
+      '@fluentui/react-datepicker-compat': {
+        replace: '@fluentui/react-datepicker-compat',
       },
     };
   }

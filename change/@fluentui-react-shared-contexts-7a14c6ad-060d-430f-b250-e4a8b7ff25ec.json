@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding card related custom style hooks to the shared contexts package.",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { ThemeProvider } from '@fluentui/react';
 
 import { useFluent } from '@fluentui/react-components';
 
@@ -45,32 +44,30 @@ export const DefaultUnbounded = () => {
   }
 
   return (
-    <ThemeProvider className={styles.root} applyTo="body">
-      <div aria-label="Virtualizer Example" className={styles.container} role={'list'}>
-        <div key={`virtualizer-header`} className={styles.block}>{`Virtualizer`}</div>
-        <Virtualizer
-          numItems={childLength}
-          virtualizerLength={virtualizerLength}
-          bufferItems={bufferItems}
-          bufferSize={bufferSize}
-          itemSize={100}
-        >
-          {index => {
-            return (
-              <span
-                role={'listitem'}
-                aria-posinset={index}
-                aria-setsize={childLength}
-                key={`test-virtualizer-child-${index}`}
-                className={styles.child}
-              >{`Node-${index}`}</span>
-            );
-          }}
-        </Virtualizer>
-        <div key={`virtualizer-footer`} className={styles.block}>
-          Footer
-        </div>
+    <div aria-label="Virtualizer Example" className={styles.container} role={'list'}>
+      <div key={`virtualizer-header`} className={styles.block}>{`Virtualizer`}</div>
+      <Virtualizer
+        numItems={childLength}
+        virtualizerLength={virtualizerLength}
+        bufferItems={bufferItems}
+        bufferSize={bufferSize}
+        itemSize={100}
+      >
+        {index => {
+          return (
+            <span
+              role={'listitem'}
+              aria-posinset={index}
+              aria-setsize={childLength}
+              key={`test-virtualizer-child-${index}`}
+              className={styles.child}
+            >{`Node-${index}`}</span>
+          );
+        }}
+      </Virtualizer>
+      <div key={`virtualizer-footer`} className={styles.block}>
+        Footer
       </div>
-    </ThemeProvider>
+    </div>
   );
 };
