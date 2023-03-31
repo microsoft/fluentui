@@ -48,6 +48,25 @@ export class Anchor extends FASTAnchor {
   public iconOnly: boolean = false;
 
   /**
+   * The anchor is disabled
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: disabled-focusable
+   */
+  @attr({ mode: 'boolean' })
+  public disabled?: boolean = false;
+  protected disabledChanged(prev: boolean, next: boolean): void {
+    if (this.disabled) {
+      ((this as unknown) as HTMLElement).setAttribute('aria-disabled', 'true');
+      ((this as unknown) as HTMLElement).setAttribute('tabindex', '-1');
+    } else {
+      ((this as unknown) as HTMLElement).removeAttribute('aria-disabled');
+      ((this as unknown) as HTMLElement).removeAttribute('tabindex');
+    }
+  }
+
+  /**
    * The anchor is disabled but focusable
    *
    * @public
@@ -72,7 +91,7 @@ export class Anchor extends FASTAnchor {
    * Prevents disabledFocusable click events
    */
   private handleDisabledFocusableClick = (e: MouseEvent): void => {
-    if (e && this.disabledFocusable) {
+    if ((e && this.disabled) || this.disabledFocusable) {
       e.stopImmediatePropagation();
       return;
     }

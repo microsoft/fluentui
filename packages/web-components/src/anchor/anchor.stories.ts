@@ -10,6 +10,7 @@ type AnchorStoryMeta = Meta<AnchorStoryArgs>;
 
 const storyTemplate = html<AnchorStoryArgs>`
   <fluent-anchor
+    href="${x => x.href}"
     appearance="${x => x.appearance}"
     shape="${x => x.shape}"
     size="${x => x.size}"
@@ -26,6 +27,7 @@ export default {
   title: 'Components/Button/Anchor',
   args: {
     content: 'Anchor',
+    href: '#',
     disabled: false,
     disabledFocusable: false,
   },
@@ -70,6 +72,9 @@ export default {
         },
       },
     },
+    href: {
+      control: 'text',
+    },
     content: {
       control: 'Anchor text',
     },
@@ -79,22 +84,22 @@ export default {
 export const Anchor = renderComponent(storyTemplate).bind({});
 
 export const Appearance = renderComponent(html<AnchorStoryArgs>`
-  <fluent-anchor>Default</fluent-anchor>
-  <fluent-anchor appearance="primary">Primary</fluent-anchor>
-  <fluent-anchor appearance="outline">Outline</fluent-anchor>
-  <fluent-anchor appearance="subtle">Subtle</fluent-anchor>
-  <fluent-anchor appearance="transparent">Transparent</fluent-anchor>
+  <fluent-anchor href="#">Default</fluent-anchor>
+  <fluent-anchor href="#" appearance="primary">Primary</fluent-anchor>
+  <fluent-anchor href="#" appearance="outline">Outline</fluent-anchor>
+  <fluent-anchor href="#" appearance="subtle">Subtle</fluent-anchor>
+  <fluent-anchor href="#" appearance="transparent">Transparent</fluent-anchor>
 `);
 
 export const Shape = renderComponent(html<ButtonStoryArgs>`
-  <fluent-anchor shape="rounded">Rounded</fluent-anchor>
-  <fluent-anchor shape="circular">Circular</fluent-anchor>
-  <fluent-anchor shape="square">Square</fluent-anchor>
+  <fluent-anchor href="#" shape="rounded">Rounded</fluent-anchor>
+  <fluent-anchor href="#" shape="circular">Circular</fluent-anchor>
+  <fluent-anchor href="#" shape="square">Square</fluent-anchor>
 `);
 
 export const Size = renderComponent(html<ButtonStoryArgs>`
-  <fluent-anchor size="small">Small</fluent-anchor>
-  <fluent-anchor size="small" icon
+  <fluent-anchor href="#" size="small">Small</fluent-anchor>
+  <fluent-anchor href="#" size="small" icon
     ><svg
       fill="currentColor"
       slot="start"
@@ -110,7 +115,7 @@ export const Size = renderComponent(html<ButtonStoryArgs>`
       ></path></svg
     >Small with calendar icon</fluent-anchor
   >
-  <fluent-anchor size="small" icon-only aria-label="Small icon only button"
+  <fluent-anchor href="#" size="small" icon-only aria-label="Small icon only button"
     ><svg
       fill="currentColor"
       aria-hidden="true"
@@ -124,8 +129,8 @@ export const Size = renderComponent(html<ButtonStoryArgs>`
         fill="currentColor"
       ></path></svg
   ></fluent-anchor>
-  <fluent-anchor size="medium">Medium</fluent-anchor>
-  <fluent-anchor size="medium" icon
+  <fluent-anchor href="#" size="medium">Medium</fluent-anchor>
+  <fluent-anchor href="#" size="medium" icon
     ><svg
       fill="currentColor"
       slot="start"
@@ -141,7 +146,7 @@ export const Size = renderComponent(html<ButtonStoryArgs>`
       ></path></svg
     >Medium with calendar icon</fluent-anchor
   >
-  <fluent-anchor size="medium" icon-only aria-label="Medium icon only button"
+  <fluent-anchor href="#" size="medium" icon-only aria-label="Medium icon only button"
     ><svg
       fill="currentColor"
       aria-hidden="true"
@@ -155,8 +160,8 @@ export const Size = renderComponent(html<ButtonStoryArgs>`
         fill="currentColor"
       ></path></svg
   ></fluent-anchor>
-  <fluent-anchor size="large">Large</fluent-anchor>
-  <fluent-anchor size="large" icon
+  <fluent-anchor href="#" size="large">Large</fluent-anchor>
+  <fluent-anchor href="#" size="large" icon
     ><svg
       fill="currentColor"
       slot="start"
@@ -172,7 +177,7 @@ export const Size = renderComponent(html<ButtonStoryArgs>`
       ></path></svg
     >Large with calendar icon</fluent-anchor
   >
-  <fluent-anchor size="large" icon-only aria-label="Large icon only button"
+  <fluent-anchor href="#" size="large" icon-only aria-label="Large icon only button"
     ><svg
       fill="currentColor"
       aria-hidden="true"
@@ -189,12 +194,12 @@ export const Size = renderComponent(html<ButtonStoryArgs>`
 `);
 
 export const Disabled = renderComponent(html<ButtonStoryArgs>`
-  <fluent-anchor>Enabled state</fluent-anchor>
-  <fluent-anchor disabled>Disabled state</fluent-anchor>
-  <fluent-anchor disabled-focusable>Disabled focusable state</fluent-anchor>
-  <fluent-anchor appearance="primary">Enabled state</fluent-anchor>
-  <fluent-anchor appearance="primary" disabled>Disabled state</fluent-anchor>
-  <fluent-anchor appearance="primary" disabled-focusable>Disabled focusable state</fluent-anchor>
+  <fluent-anchor href="#">Enabled state</fluent-anchor>
+  <fluent-anchor href="#" disabled>Disabled state</fluent-anchor>
+  <fluent-anchor href="#" disabled-focusable>Disabled focusable state</fluent-anchor>
+  <fluent-anchor href="#" appearance="primary">Enabled state</fluent-anchor>
+  <fluent-anchor href="#" appearance="primary" disabled>Disabled state</fluent-anchor>
+  <fluent-anchor href="#" appearance="primary" disabled-focusable>Disabled focusable state</fluent-anchor>
 `);
 
 export const WithLongText = renderComponent(html<ButtonStoryArgs>`
@@ -203,6 +208,6 @@ export const WithLongText = renderComponent(html<ButtonStoryArgs>`
       width: 280px;
     }
   </style>
-  <fluent-anchor>Short text</fluent-anchor>
-  <fluent-anchor class="max-width">Long text wraps after it hits the max width of the component</fluent-anchor>
+  <fluent-anchor href="#">Short text</fluent-anchor>
+  <fluent-anchor href="#" class="max-width">Long text wraps after it hits the max width of the component</fluent-anchor>
 `);
