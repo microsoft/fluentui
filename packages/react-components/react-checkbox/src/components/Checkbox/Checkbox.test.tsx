@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { Checkbox } from './Checkbox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
@@ -163,6 +164,21 @@ describe('Checkbox', () => {
     fireEvent.change(input);
 
     expect(input.indeterminate).toEqual(true);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const renderedComponent = render(
+      <Field validationMessage="Test error message">
+        <Checkbox label="Checkbox" />
+      </Field>,
+    );
+
+    const checkbox = renderedComponent.getByRole('checkbox');
+    const message = renderedComponent.getByText('Test error message');
+
+    expect(message.id).toBeTruthy();
+    expect(checkbox.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(checkbox.getAttribute('aria-invalid')).toEqual('true');
   });
 
   describe('Accessibility Tests', () => {

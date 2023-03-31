@@ -1,16 +1,16 @@
 import * as React from 'react';
 
 import { render } from '@testing-library/react';
-import { useFieldControlProps } from '../../contexts/useFieldControlProps';
+import { useFieldControlProps_unstable } from '../../contexts/useFieldControlProps';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from './index';
 
 const TestInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => (
-  <input {...useFieldControlProps(props, { supportsLabelFor: true })} />
+  <input {...useFieldControlProps_unstable(props, { supportsLabelFor: true })} />
 );
 
 const TestGroup: React.FC<React.HTMLAttributes<HTMLDivElement>> = props => (
-  <div role="group" {...useFieldControlProps(props)} />
+  <div role="group" {...useFieldControlProps_unstable(props)} />
 );
 
 describe('Field', () => {
