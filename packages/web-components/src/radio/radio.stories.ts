@@ -39,7 +39,7 @@ export default {
       },
       table: {
         type: {
-          summary: 'Sets default state on radio',
+          summary: 'Sets disabled state on radio',
         },
         defaultValue: {
           summary: 'false',
