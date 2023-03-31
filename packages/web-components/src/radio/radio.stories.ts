@@ -10,7 +10,7 @@ type RadioStoryMeta = Meta<RadioStoryArgs>;
 
 const storyTemplate = html<RadioStoryArgs>`
   <fluent-radio-group orientation="vertical" role="radiogroup" name="radio-story">
-    <fluent-radio ?disabled=${x => x.disabled} ?checked=${x => x.checked} value="Apple"> Option 1 </fluent-radio>
+    <fluent-radio ?disabled=${x => x.disabled} ?checked=${x => x.checked} value="Apple">Option 1</fluent-radio>
   </fluent-radio-group>
 `;
 
