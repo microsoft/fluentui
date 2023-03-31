@@ -612,7 +612,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <div
@@ -1729,7 +1729,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <button
