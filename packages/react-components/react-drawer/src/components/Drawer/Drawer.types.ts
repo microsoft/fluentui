@@ -2,9 +2,25 @@ import type { DialogProps, DialogSurfaceProps } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DrawerSlots = {
+  /**
+   * Root slot of the Drawer.
+   * This slot is rendered as a `div` by default.
+   * Only renders if `type` is `persistent`.
+   */
   root: Slot<'div'>;
 
+  /**
+   * Dialog component that renders for temporary drawer.
+   * The default is an instance of Dialog component
+   * This slot expects a compatible Dialog which will replace the default dialog component.
+   */
   dialog?: NonNullable<Slot<DialogProps>>;
+
+  /**
+   * DialogSurface component that renders for temporary drawer.
+   * The default is an instance of DialogSurface component
+   * This slot expects a compatible DialogSurface which will replace the default dialog component.
+   */
   dialogSurface?: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
@@ -14,10 +30,35 @@ export type DrawerSizes = 'small' | 'medium' | 'large' | 'full';
  * Drawer Props
  */
 export type DrawerProps = ComponentProps<DrawerSlots> & {
+  /**
+   * Position of the drawer.
+   * @defaultvalue 'left'
+   *
+   * - 'left' - Drawer is positioned on the left side of the screen.
+   * - 'right' - Drawer is positioned on the right side of the screen.
+   */
   position?: 'left' | 'right';
 
+  /**
+   * Type of the drawer.
+   * @defaultvalue 'temporary'
+   *
+   * - 'temporary' - Drawer is hidden by default and can be opened by clicking on the trigger.
+   * - 'persistent' - Drawer is stacked with the content
+   */
   type?: 'persistent' | 'temporary';
 
+  /**
+   * Size of the drawer.
+   * @defaultvalue 'small'
+   *
+   * - 'small' - Drawer is 320px wide.
+   * - 'medium' - Drawer is 592px wide.
+   * - 'large' - Drawer is 940px wide.
+   * - 'full' - Drawer is 100vw wide.
+   * - number - Drawer is the given number of pixels wide.
+   *
+   */
   size?: DrawerSizes | number;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
