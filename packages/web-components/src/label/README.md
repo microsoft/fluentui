@@ -12,9 +12,13 @@
 
 ## **Engineering Spec**
 
+**notes**
+
 In web components, when using the shadow DOM, it's not feasible to associate elements across the shadow DOM boundary using the traditional `for` attribute, since the shadow DOM creates a boundary that prevents the label element from accessing the input element's id attribute. Instead, the WC3 Label component uses the `aria-labelledby` attribute to associate the label element with the input element. This attribute has a value that matches the id of another element on the page, which serves as a label for the input element.
 
 The fluent-label has several visual font size (small, medium, large) and font weight(regular, semibold) options. The fluent-label also provides appearances for required and disabled states.
+
+<br />
 
 ### Use Case
 
@@ -92,7 +96,9 @@ Creating a simple label element with an optional info icon and optional required
 
 ### **WAI-ARIA Roles, States, and Properties**
 
-- No corresponding roles
+<br />
+
+- [`aria-labelledby`](https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby)
 
 <br />
 <hr />
@@ -114,7 +120,10 @@ Creating a simple label element with an optional info icon and optional required
 
 <br />
 
-**Property Mapping**
-| Fluent UI React 9 | Fluent Web Components 3 | Description of difference |
-| ------------------- |------------------------ |--------------------------------------------------------------------------------------------------- |
-| `HTMLLabelElement` | `HTMLElement` | The FUIR9 implimentation of Label renders a [`HTMLLabelElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement)<br /><hr />The WC3 Label renders a [`HTMLElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) |
+**Additional Delta**
+| | Fluent UI React 9 | Fluent Web Components 3 |
+|---------------------| --------------------------------------------------------------------------------------- |---------------------------------------------------------------------------------------- |
+| Renders | `HTMLLabelElement` | `HTMLElement` |
+| API | [`HTMLLabelElement` Spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement) | [`HTMLElement` Spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) |
+| Shadow DOM | n/a | uses Shadow DOM |
+| Accessibility | Uses `for` attribute to associate with form elements | Uses `aria-labelledby` to associate with form elements, does not have a `for` attribute |
