@@ -135,7 +135,7 @@ export const Form: React.FC = () => {
     const newName = e.target.value;
 
     if (newName.length === 0) {
-      dispatch({ type: 'themeName', payload: newName });
+      dispatch({ type: 'themeName', payload: defaultThemePlaceholderName });
     } else {
       const camelizeName = e.target.value
         .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
@@ -227,7 +227,7 @@ export const Form: React.FC = () => {
                 />
               </div>
             </div>
-            <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
+            <Switch checked={isDark} onChange={handleIsDarkChange} label={'dark theme'} />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="2">
