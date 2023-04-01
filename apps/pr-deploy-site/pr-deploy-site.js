@@ -55,6 +55,12 @@ var siteInfo = [
     title: 'Charting',
   },
   {
+    package: '@fluentui/react-charting',
+    link: './react-charting-perf/demo/index.html',
+    icon: 'BarChart4',
+    title: 'ChartingPerformance',
+  },
+  {
     package: '@fluentui/theming-designer',
     link: './theming-designer/index.html',
     icon: 'CheckMark',
