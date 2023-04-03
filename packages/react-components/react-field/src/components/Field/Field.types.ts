@@ -104,14 +104,21 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 export type FieldState = ComponentState<Required<FieldSlots>> &
   Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> &
   Pick<FieldProps, 'children'> & {
-    generatedControlId: string | undefined;
+    /**
+     * The ID generated for the control inside the field, and the default value of label.htmlFor prop.
+     */
+    generatedControlId: string;
   };
 
 export type FieldContextValue = Readonly<
-  Partial<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'>> & {
+  Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
+    /** The label's for prop. Undefined if there is no label. */
     labelFor?: string;
+    /** The label's id prop. Undefined if there is no label. */
     labelId?: string;
+    /** The validationMessage's id prop. Undefined if there is no validationMessage. */
     validationMessageId?: string;
+    /** The hint's id prop. Undefined if there is no hint. */
     hintId?: string;
   }
 >;

@@ -6,9 +6,9 @@ import { useFieldContext_unstable } from './FieldContext';
  */
 export type FieldControlPropsOptions = {
   /**
-   * Skips setting aria-labelledby on the control if the label.htmlFor is the same as the control's id.
+   * Skips setting aria-labelledby on the control if the label.htmlFor refers to the control.
    *
-   * This should only be used with input controls that can be the target of a label's htmlFor.
+   * This should be used with controls that can be the target of a label's htmlFor (e.g. input, textarea).
    */
   supportsLabelFor?: boolean;
 
@@ -64,15 +64,14 @@ export function getFieldControlProps<Props extends FieldControlProps>(
 
   const { generatedControlId, hintId, labelFor, labelId, required, validationMessageId, validationState } = context;
 
-  // Only use the generated id and aria-labelledby if the label's htmlFor refers to the generated id.
-  if (generatedControlId && labelFor === generatedControlId) {
+  if (generatedControlId) {
     props.id ??= generatedControlId;
+  }
 
-    // Need to set aria-labelledby if the control doesn't support label.htmlFor, or if the label's htmlFor doesn't
-    // refer to this control (the user set this control's id prop without also setting the Field's label.htmlFor).
-    if (!options?.supportsLabelFor || labelFor !== props.id) {
-      props['aria-labelledby'] ??= labelId;
-    }
+  // Set aria-labelledby if the control doesn't support label.htmlFor, or if the label's htmlFor doesn't refer
+  // to this control (i.e. the user set this control's id prop without also setting the Field's label.htmlFor).
+  if (labelId && (!options?.supportsLabelFor || labelFor !== props.id)) {
+    props['aria-labelledby'] ??= labelId;
   }
 
   // The control is described by the validation message, or hint, or both.

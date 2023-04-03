@@ -27,7 +27,7 @@ export const Field: ForwardRefComponent<FieldProps>;
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
-export const FieldContextProvider: React_2.Provider<Readonly<Partial<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId">> & {
+export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
     labelFor?: string | undefined;
     labelId?: string | undefined;
     validationMessageId?: string | undefined;
@@ -35,7 +35,7 @@ export const FieldContextProvider: React_2.Provider<Readonly<Partial<Pick<FieldS
 }> | undefined>;
 
 // @public (undocumented)
-export type FieldContextValue = Readonly<Partial<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'>> & {
+export type FieldContextValue = Readonly<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
     labelFor?: string;
     labelId?: string;
     validationMessageId?: string;
@@ -76,7 +76,7 @@ export type FieldSlots = {
 
 // @public
 export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> & Pick<FieldProps, 'children'> & {
-    generatedControlId: string | undefined;
+    generatedControlId: string;
 };
 
 // @internal @deprecated (undocumented)
@@ -102,7 +102,7 @@ export const renderField_unstable: (state: FieldState, contextValues?: FieldCont
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public (undocumented)
-export const useFieldContext_unstable: () => Readonly<Partial<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId">> & {
+export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
     labelFor?: string | undefined;
     labelId?: string | undefined;
     validationMessageId?: string | undefined;
