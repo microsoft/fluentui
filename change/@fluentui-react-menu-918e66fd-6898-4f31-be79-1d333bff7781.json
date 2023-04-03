@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Menu should not steal focus on close",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
