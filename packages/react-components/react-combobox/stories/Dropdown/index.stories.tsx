@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Dropdown } from '@fluentui/react-combobox';
+import { Dropdown, Listbox, Option } from '@fluentui/react-combobox';
 
 import descriptionMd from './DropdownDescription.md';
 import bestPracticesMd from './DropdownBestPractices.md';
@@ -18,6 +18,10 @@ export { Disabled } from './DropdownDisabled.stories';
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
+  subcomponents: {
+    Option,
+    Listbox,
+  },
   parameters: {
     docs: {
       description: {
