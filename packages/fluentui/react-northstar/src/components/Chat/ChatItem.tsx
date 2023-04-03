@@ -68,7 +68,7 @@ export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosit
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
  */
-export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputProps, ref) => {
+export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
@@ -161,7 +161,7 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, ChatItemProps> & FluentComponentStaticProps<ChatItemProps>;
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, ChatItemProps> & FluentComponentStaticProps<ChatItemProps>;
 
 ChatItem.displayName = 'ChatItem';
 

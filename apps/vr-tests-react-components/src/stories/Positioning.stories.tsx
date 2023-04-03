@@ -649,6 +649,63 @@ const VisibilityModifiers = () => {
   );
 };
 
+const FallbackPositioning = () => {
+  const styles = useStyles();
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+
+  // Fluent UI handles window resizing by default.
+  // Custom boundary resizing is not handled by default.
+  const resizeObserver = React.useState(
+    () =>
+      new ResizeObserver(() => {
+        positioningRef.current?.updatePosition();
+      }),
+  )[0];
+
+  React.useEffect(() => {
+    if (boundary) {
+      resizeObserver.observe(boundary);
+      return () => resizeObserver.unobserve(boundary);
+    }
+  }, [boundary, resizeObserver]);
+
+  React.useEffect(() => {
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [resizeObserver]);
+
+  const { containerRef, targetRef } = usePositioning({
+    position: 'after',
+    align: 'start',
+    fallbackPositions: ['below'],
+    flipBoundary: boundary,
+    overflowBoundary: boundary,
+    positioningRef,
+  });
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{
+        width: 200,
+        height: 300,
+        padding: '50px 20px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        resize: 'both',
+      }}
+      ref={setBoundary}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box style={{ width: 120 }} ref={containerRef}>
+        position: after-start
+      </Box>
+    </div>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -696,4 +753,5 @@ storiesOf('Positioning', module)
       <VisibilityModifiers />
     </StoryWright>
   ))
-  .addStory('arrow', () => <Arrow />, { includeRtl: true });
+  .addStory('arrow', () => <Arrow />, { includeRtl: true })
+  .addStory('fallback positioning', () => <FallbackPositioning />);

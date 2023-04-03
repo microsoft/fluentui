@@ -54,7 +54,7 @@ export type FormStylesProps = never;
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
  */
-export const Form = (React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
+export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
   setStart();
@@ -108,7 +108,7 @@ export const Form = (React.forwardRef<HTMLFormElement, FormProps>((props, ref) =
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'form', HTMLFormElement, FormProps> & FluentComponentStaticProps<FormProps>;
+}) as unknown as ForwardRefWithAs<'form', HTMLFormElement, FormProps> & FluentComponentStaticProps<FormProps>;
 
 Form.displayName = 'Form';
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 03 Mar 2023 07:47:17 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Feb 2023 07:37:39 GMT",
       "tag": "@fluentui/web-components_v2.5.12",
       "version": "2.5.12",

@@ -15,5 +15,6 @@ export * from './HeatMapChart';
 export * from './SankeyChart';
 export * from './TreeChart';
 export * from './Sparkline';
+export * from './utilities/colors';
 
 import './version';

@@ -15,6 +15,7 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   verbose: false,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  testEnvironment: 'jsdom',
   ...customConfig,
   moduleNameMapper: {
     ...getLernaAliases({

@@ -18,6 +18,7 @@ export type {
   TableSortState,
   TableFeaturePlugin,
   TableColumnSizingOptions,
+  UseTableSelectionOptions,
 } from './hooks';
 
 export {

@@ -42,6 +42,7 @@ export {
   mergeCallbacks,
   isHTMLElement,
   isInteractiveHTMLElement,
+  omit,
 } from './utils/index';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';

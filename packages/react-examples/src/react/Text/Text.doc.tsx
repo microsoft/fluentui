@@ -5,11 +5,14 @@ import { TextBlockExample } from './Text.Block.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const TextRampExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Ramp.Example.tsx') as string;
+const TextRampExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Ramp.Example.tsx') as string;
 
-const TextWrapExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Wrap.Example.tsx') as string;
+const TextWrapExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Wrap.Example.tsx') as string;
 
-const TextBlockExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Block.Example.tsx') as string;
+const TextBlockExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Block.Example.tsx') as string;
 
 export const TextPageProps: IDocPageProps = {
   title: 'Text',

@@ -104,7 +104,7 @@ export interface IComponentOptions<
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
-  TStatics = {}
+  TStatics = {},
 > {
   /**
    * Display name to identify component in React hierarchy. This parameter is required for targeted component styling
@@ -145,7 +145,7 @@ export type IComponent<
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
-  TStatics = {}
+  TStatics = {},
 > = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>> & {
   /**
    * Component that generates view output.

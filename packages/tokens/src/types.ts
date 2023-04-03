@@ -78,8 +78,10 @@ export type ColorTokens = {
   colorNeutralBackground5Pressed: string;
   colorNeutralBackground5Selected: string;
   colorNeutralBackground6: string;
-  colorNeutralBackgroundStatic: string;
   colorNeutralBackgroundInverted: string;
+  colorNeutralBackgroundStatic: string;
+  colorNeutralBackgroundAlpha: string;
+  colorNeutralBackgroundAlpha2: string;
   colorSubtleBackground: string;
   colorSubtleBackgroundHover: string;
   colorSubtleBackgroundPressed: string;
@@ -141,6 +143,7 @@ export type ColorTokens = {
   colorTransparentStroke: string;
   colorTransparentStrokeInteractive: string;
   colorTransparentStrokeDisabled: string;
+  colorNeutralStrokeAlpha: string;
   colorStrokeFocus1: string;
   colorStrokeFocus2: string;
   colorNeutralShadowAmbient: string;
@@ -440,9 +443,9 @@ export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 12
 
 export type BrandVariants = Record<Brands, string>;
 
-type StatusSharedColorNames = typeof statusSharedColorNames[number];
-type PersonaSharedColorNames = typeof personaSharedColorNames[number];
-type UnusedSharedColorNames = typeof unusedSharedColorNames[number];
+type StatusSharedColorNames = (typeof statusSharedColorNames)[number];
+type PersonaSharedColorNames = (typeof personaSharedColorNames)[number];
+type UnusedSharedColorNames = (typeof unusedSharedColorNames)[number];
 
 export type StatusSharedColors = Record<StatusSharedColorNames, ColorVariants>;
 export type PersonaSharedColors = Record<PersonaSharedColorNames, ColorVariants>;
@@ -638,7 +641,6 @@ export type ShadowBrandTokens = {
 };
 
 export type Greys =
-  | 0
   | 2
   | 4
   | 6
@@ -687,8 +689,7 @@ export type Greys =
   | 92
   | 94
   | 96
-  | 98
-  | 100;
+  | 98;
 
 export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 

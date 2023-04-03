@@ -1,8 +1,481 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 22 Feb 2023 23:06:04 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2023 17:36:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.6)
+
+Fri, 24 Mar 2023 17:36:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.5..@fluentui/react-components_v9.18.6)
+
+### Patches
+
+- `@fluentui/react-components`
+  - Bump react-select to 9.1.6 ([PR #27321](https://github.com/microsoft/fluentui/pull/27321) by lingfangao@hotmail.com)
+
+## [9.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.5)
+
+Fri, 24 Mar 2023 14:58:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.4..@fluentui/react-components_v9.18.5)
+
+### Patches
+
+- `@fluentui/react-components`
+  - fix: Bump @fluenti/react-combobox to 9.2.6 ([PR #27319](https://github.com/microsoft/fluentui/pull/27319) by lingfangao@hotmail.com)
+
+## [9.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.4)
+
+Fri, 24 Mar 2023 10:15:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.3..@fluentui/react-components_v9.18.4)
+
+### Minor changes
+
+- `@fluentui/react-provider`
+  - feat: Render theme CSS variables in SSR style element ([PR #27277](https://github.com/microsoft/fluentui/pull/27277) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: Add static measurement hooks and embedded scroll option to react-virtualizer ([PR #26985](https://github.com/microsoft/fluentui/pull/26985) by mifraser@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - tree stories and doc update ([PR #27270](https://github.com/microsoft/fluentui/pull/27270) by petrduda@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - [feat] Add static measurement hooks and embedded scroll option ([PR #26985](https://github.com/microsoft/fluentui/pull/26985) by mifraser@microsoft.com)
+
+## [9.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.3)
+
+Tue, 21 Mar 2023 21:22:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.2..@fluentui/react-components_v9.18.3)
+
+### Patches
+
+- `@fluentui/react-shared-contexts`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-slider`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-switch`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - fix: Make checked switch more visible in high contrast mode ([PR #27257](https://github.com/microsoft/fluentui/pull/27257) by lingfangao@hotmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-table`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-tabster`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-text`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-theme`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-toolbar`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-tooltip`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-utilities`
+  - chore: exports isHTMLElement as public ([PR #27178](https://github.com/microsoft/fluentui/pull/27178) by bernardo.sunderhus@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/keyboard-keys`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/priority-overflow`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-accordion`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-aria`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-avatar`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: Adding the correct icons to away+out-of-office PresenceBadges and adding the correct icons to use in large PresenceBadges. ([PR #27253](https://github.com/microsoft/fluentui/pull/27253) by makotom@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-card`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-components`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-context-selector`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-dialog`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix(DialogTitle): adds type="button" to close action ([PR #27247](https://github.com/microsoft/fluentui/pull/27247) by bernardo.sunderhus@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-divider`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-image`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-input`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-label`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-link`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-menu`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix(MenuItem): Disabled should render correctly in high contrast mode ([PR #27258](https://github.com/microsoft/fluentui/pull/27258) by lingfangao@hotmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-persona`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-popover`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-portal`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-portal-compat`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-portal-compat-context`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-positioning`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-progress`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-provider`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-radio`
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-select`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-skeleton`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-theme-sass`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-tree`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by olfedias@microsoft.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: adds initial e2e cypress tests ([PR #27266](https://github.com/microsoft/fluentui/pull/27266) by email not defined)
+- `@fluentui/react-virtualizer`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/tokens`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/babel-preset-global-context`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/global-context`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-alert`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-data-grid-react-window`
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- `@fluentui/react-field`
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- `@fluentui/react-infobutton`
+  - chore: Bumping version of @fluentui/react-icons to ^2.0.196. ([PR #27100](https://github.com/microsoft/fluentui/pull/27100) by makotom@microsoft.com)
+  - fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+  - chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+
+## [9.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.2)
+
+Thu, 16 Mar 2023 14:36:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.1..@fluentui/react-components_v9.18.2)
+
+### Minor changes
+
+- `@fluentui/react-dialog`
+  - feat(DialogActions): Implment `fluid` prop ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - feat: add options to useFocusVisible() hook ([PR #27198](https://github.com/microsoft/fluentui/pull/27198) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-components`
+  - chore: Export InfoLabel from react-components/unstable ([PR #27118](https://github.com/microsoft/fluentui/pull/27118) by behowell@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix(DialogBody): Remove `maxWidth` style ([PR #27230](https://github.com/microsoft/fluentui/pull/27230) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - fix: pass proper document instance to useFocusVisible() ([PR #27198](https://github.com/microsoft/fluentui/pull/27198) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix(getSlots): stops slotProps.slot to be typed as never ([PR #27231](https://github.com/microsoft/fluentui/pull/27231) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - feat: Add InfoLabel component ([PR #27118](https://github.com/microsoft/fluentui/pull/27118) by behowell@microsoft.com)
+
+## [9.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.1)
+
+Wed, 15 Mar 2023 10:19:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.0..@fluentui/react-components_v9.18.1)
+
+### Minor changes
+
+- `@fluentui/react-image`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27066](https://github.com/microsoft/fluentui/pull/27066) by gcox@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - feat: Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: accept a className in mountNode in Portal ([PR #27008](https://github.com/microsoft/fluentui/pull/27008) by olfedias@microsoft.com)
+- `@fluentui/react-table`
+  - Added support for keyboard navigation in Table/DataGrid ([PR #26956](https://github.com/microsoft/fluentui/pull/26956) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-text`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27078](https://github.com/microsoft/fluentui/pull/27078) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - docs: improve readme description ([PR #27181](https://github.com/microsoft/fluentui/pull/27181) by marcosvmmoura@gmail.com)
+- `@fluentui/react-progress`
+  - fix: Smooth out animation of indeterminate progress bar ([PR #27201](https://github.com/microsoft/fluentui/pull/27201) by behowell@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-theme-sass`
+  - feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+- `@fluentui/tokens`
+  - feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens ([PR #27034](https://github.com/microsoft/fluentui/pull/27034) by miroslav.stastny@microsoft.com)
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.0)
+
+Mon, 13 Mar 2023 08:58:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.17.1..@fluentui/react-components_v9.18.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Release Card as stable ([PR #27111](https://github.com/microsoft/fluentui/pull/27111) by marcosvmmoura@gmail.com)
+- `@fluentui/react-utilities`
+  - feat: isHTMLElement to support all HTMLElement classes ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - feat: release 9.0.0 ([PR #27111](https://github.com/microsoft/fluentui/pull/27111) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: release react-skeleton to unstable ([PR #27150](https://github.com/microsoft/fluentui/pull/27150) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - fix: stops using instaceof in favor of isHTMLElement ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-skeleton`
+  - feat: release react-skeleton to unstable ([PR #27150](https://github.com/microsoft/fluentui/pull/27150) by ololubek@microsoft.com)
+
+## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.17.1)
+
+Fri, 10 Mar 2023 13:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.17.0..@fluentui/react-components_v9.17.1)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - feat: creates useFlatTree hook to improve API ([PR #27146](https://github.com/microsoft/fluentui/pull/27146) by bernardo.sunderhus@gmail.com)
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.17.0)
+
+Fri, 10 Mar 2023 07:13:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.16.0..@fluentui/react-components_v9.17.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - release @fluentui/react-tree unstable ([PR #27126](https://github.com/microsoft/fluentui/pull/27126) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27081](https://github.com/microsoft/fluentui/pull/27081) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: Export `pinned` prop from `PositioningProps` ([PR #27157](https://github.com/microsoft/fluentui/pull/27157) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - fix: ResolveShorthandOptions type to better reflect implementation ([PR #27112](https://github.com/microsoft/fluentui/pull/27112) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-tree`
+  - release @fluentui/react-tree unstable ([PR #27126](https://github.com/microsoft/fluentui/pull/27126) by bernardo.sunderhus@gmail.com)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.16.0)
+
+Wed, 08 Mar 2023 17:42:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.15.6..@fluentui/react-components_v9.16.0)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27059](https://github.com/microsoft/fluentui/pull/27059) by gcox@microsoft.com)
+- `@fluentui/react-avatar`
+  - feat: Adding call to custom styles hook derived from context. ([PR #27060](https://github.com/microsoft/fluentui/pull/27060) by gcox@microsoft.com)
+- `@fluentui/react-badge`
+  - feat: Adding calls to custom styles hooks derived from context. ([PR #27061](https://github.com/microsoft/fluentui/pull/27061) by gcox@microsoft.com)
+- `@fluentui/react-button`
+  - feat: Added custom style hook call ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-checkbox`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27062](https://github.com/microsoft/fluentui/pull/27062) by gcox@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27063](https://github.com/microsoft/fluentui/pull/27063) by gcox@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Added CustomStyleHooks types and context ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-dialog`
+  - feature: introduces innerTrapFocus ([PR #26942](https://github.com/microsoft/fluentui/pull/26942) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-divider`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27064](https://github.com/microsoft/fluentui/pull/27064) by gcox@microsoft.com)
+- `@fluentui/react-input`
+  - feat: custom styles ([PR #27065](https://github.com/microsoft/fluentui/pull/27065) by gcox@microsoft.com)
+- `@fluentui/react-label`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27067](https://github.com/microsoft/fluentui/pull/27067) by gcox@microsoft.com)
+- `@fluentui/react-menu`
+  - feat: Implements `fallback` positioning option ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by lingfangao@hotmail.com)
+  - feat: add `mountNode` prop to `Menu` ([PR #27007](https://github.com/microsoft/fluentui/pull/27007) by olfedias@microsoft.com)
+  - feat: custom styles ([PR #27068](https://github.com/microsoft/fluentui/pull/27068) by gcox@microsoft.com)
+- `@fluentui/react-persona`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27069](https://github.com/microsoft/fluentui/pull/27069) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - feat: custom styles ([PR #27070](https://github.com/microsoft/fluentui/pull/27070) by gcox@microsoft.com)
+  - feature: introduces innerTrapFocus and deprecates legacyTrapFocus ([PR #26942](https://github.com/microsoft/fluentui/pull/26942) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - feat: custom styles ([PR #27082](https://github.com/microsoft/fluentui/pull/27082) by gcox@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: Added customstylehooks property ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: custom styles ([PR #27071](https://github.com/microsoft/fluentui/pull/27071) by gcox@microsoft.com)
+- `@fluentui/react-select`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27072](https://github.com/microsoft/fluentui/pull/27072) by gcox@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: Removing internal checkmark custom styles hook ([PR #27085](https://github.com/microsoft/fluentui/pull/27085) by gcox@microsoft.com)
+  - feat: Added CustomStyleHooks types and context ([PR #26943](https://github.com/microsoft/fluentui/pull/26943) by gcox@microsoft.com)
+- `@fluentui/react-slider`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27073](https://github.com/microsoft/fluentui/pull/27073) by gcox@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: custom styles ([PR #27074](https://github.com/microsoft/fluentui/pull/27074) by gcox@microsoft.com)
+- `@fluentui/react-spinner`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27075](https://github.com/microsoft/fluentui/pull/27075) by gcox@microsoft.com)
+- `@fluentui/react-switch`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27076](https://github.com/microsoft/fluentui/pull/27076) by gcox@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Implement Home/End navigation with Control ([PR #26964](https://github.com/microsoft/fluentui/pull/26964) by lingfangao@hotmail.com)
+  - chore: use Iterable instead of a Set for table selection API surface ([PR #26892](https://github.com/microsoft/fluentui/pull/26892) by bernardo.sunderhus@gmail.com)
+  - feat: custom styles ([PR #27084](https://github.com/microsoft/fluentui/pull/27084) by gcox@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27077](https://github.com/microsoft/fluentui/pull/27077) by gcox@microsoft.com)
+- `@fluentui/react-textarea`
+  - feat: Adding calls to custom style hooks derived from context. ([PR #27079](https://github.com/microsoft/fluentui/pull/27079) by gcox@microsoft.com)
+- `@fluentui/react-toolbar`
+  - feat: custom styles ([PR #27083](https://github.com/microsoft/fluentui/pull/27083) by gcox@microsoft.com)
+- `@fluentui/react-tooltip`
+  - feat: Adding calls to custom styles hooks derived from context. ([PR #27080](https://github.com/microsoft/fluentui/pull/27080) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - updated colors for unknown variant for presence badge ([PR #26970](https://github.com/microsoft/fluentui/pull/26970) by kakrookaran@gmail.com)
+- `@fluentui/react-components`
+  - feat(react-card): bump to release candidate ([PR #26957](https://github.com/microsoft/fluentui/pull/26957) by marcosvmmoura@gmail.com)
+- `@fluentui/react-dialog`
+  - fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - updated hover icon styles in MenuItem ([PR #27028](https://github.com/microsoft/fluentui/pull/27028) by kakrookaran@gmail.com)
+- `@fluentui/react-popover`
+  - fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - fix: Nested submenus support positioning fallbacks for small viewports ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by lingfangao@hotmail.com)
+- `@fluentui/react-progress`
+  - fix: Align WHCM styles with figma and fix documentation typo. ([PR #27038](https://github.com/microsoft/fluentui/pull/27038) by ololubek@microsoft.com)
+  - fix: Add error checking for incorrect values of max and value props ([PR #27029](https://github.com/microsoft/fluentui/pull/27029) by ololubek@microsoft.com)
+  - fix: Update ProgressBar styling to have width when display is set to flex ([PR #27101](https://github.com/microsoft/fluentui/pull/27101) by ololubek@microsoft.com)
+- `@fluentui/react-tabs`
+  - Fixed missing outline when forced-colors active ([PR #27127](https://github.com/microsoft/fluentui/pull/27127) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: updates useModalAttributes flags for legacyTrapFocus ([PR #27109](https://github.com/microsoft/fluentui/pull/27109) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - fix: adjust IntrinsicElementProps type to properly support void elements ([PR #27095](https://github.com/microsoft/fluentui/pull/27095) by bernardo.sunderhus@gmail.com)
+  - fix: export omit function ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-card`
+  - feat: bump to release candidate ([PR #26957](https://github.com/microsoft/fluentui/pull/26957) by marcosvmmoura@gmail.com)
 
 ## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.15.6)
 
