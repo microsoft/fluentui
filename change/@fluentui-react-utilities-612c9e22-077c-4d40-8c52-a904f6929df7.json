@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: useFirstMount sets ref in an effect",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
