@@ -71,7 +71,8 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
       <Accordion multiple>
         <AccordionItem value="FailContrast">
           <AccordionHeader>
-            Contrast Issues &nbsp; <AccessibilityContrastChip failKeys={failedContrastKeys} />
+            Contrast Issues &nbsp;{' '}
+            <AccessibilityContrastChip accessibilityName="contrast" failKeys={failedContrastKeys} />
           </AccordionHeader>
           <AccordionPanel>
             <ColorTokensList

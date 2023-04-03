@@ -154,7 +154,9 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
   const contrastTests = checkContrastRatios();
   const luminosityTests = checkLuminosityDifferences();
   const failedLuminosityTests = luminosityTests.filter(test => !test.isPass);
+  //   console.log('failedLuminosityTests', JSON.stringify(failedLuminosityTests));
   const failedContrastTests = contrastTests.filter(test => !test.isPass);
+  //   console.log('failedContrastTests', JSON.stringify(failedContrastTests));
 
   const all: string[] = Object.keys(accessiblePairs); // todo: check if this is an exhaustive list of all tokens
 

@@ -189,7 +189,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
               <div className={styles.col}>{usage}</div>
               <div className={styles.row2}>
                 {tests ? (
-                  tests.map(testResult => {
+                  tests.forEach(testResult => {
                     const testType = testResult.testType;
                     var hex: string = '';
                     var output;
