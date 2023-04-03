@@ -38,13 +38,11 @@ export const styles = css`
   :host([aria-pressed='true']:hover) .control {
     border-color: ${colorNeutralStroke1Hover};
     background-color: ${colorNeutralBackground1Hover};
-    color: ${colorNeutralForeground1};
   }
 
   :host([aria-pressed='true']:active) .control {
     border-color: ${colorNeutralStroke1Pressed};
     background-color: ${colorNeutralBackground1Pressed};
-    color: ${colorNeutralForeground1};
   }
 
   :host([aria-pressed='true'][appearance='primary']) .control {
@@ -62,7 +60,7 @@ export const styles = css`
   }
 
   :host([aria-pressed='true'][appearance='subtle']) .control {
-    --button-border-color: transparent;
+    border-color: transparent;
     background-color: ${colorSubtleBackgroundSelected};
     color: ${colorNeutralForeground2BrandSelected};
   }
