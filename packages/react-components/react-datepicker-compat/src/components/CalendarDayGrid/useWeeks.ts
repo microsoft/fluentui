@@ -3,6 +3,9 @@ import { compareDates, DAYS_IN_WEEK, getDayGrid } from '../../utils/index';
 import { DayInfo } from './CalendarDayGrid';
 import { CalendarDayGridProps } from './CalendarDayGrid.types';
 
+/**
+ * @internal
+ */
 export function useWeeks(
   props: CalendarDayGridProps,
   onSelectDate: (date: Date) => void,

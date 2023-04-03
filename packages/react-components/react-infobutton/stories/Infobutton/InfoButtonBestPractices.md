@@ -3,9 +3,10 @@
 Best Practices
 </summary>
 
-### Do's
+### Do
 
-- Set `aria-labelledby` to the id of the label that the InfoButton provides more information about and the button's id. See the `InfoButton with Label` example below for more information.
+- Prefer using an `InfoLabel` if the `InfoButton` is intended to be associated with a label.
+- Set `aria-label` to an appropriate value if the `InfoButton` is not associated with a label.
 
 ### Don't
 

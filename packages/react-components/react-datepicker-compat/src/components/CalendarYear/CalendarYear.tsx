@@ -200,7 +200,6 @@ interface CalendarYearNavArrowProps extends CalendarYearHeaderProps {
 const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> = props => {
   const {
     className,
-    // navigationIcons = defaultCalendarNavigationIcons,
     strings = DefaultCalendarYearStrings,
     direction,
     onSelectPrev,
@@ -402,6 +401,9 @@ function useYearRangeState({ selectedYear, navigatedYear }: CalendarYearProps) {
   return [fromYear, toYear, onNavNext, onNavPrevious] as const;
 }
 
+/**
+ * @internal
+ */
 export const CalendarYear: React.FunctionComponent<CalendarYearProps> = props => {
   const animateBackwards = useAnimateBackwards(props);
   const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
