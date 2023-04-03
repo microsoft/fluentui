@@ -1,5 +1,5 @@
 import { ButtonOptions, ValuesOf } from '@microsoft/fast-foundation';
-import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options';
+import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 
 /**
  * Compound Button Appearance constants

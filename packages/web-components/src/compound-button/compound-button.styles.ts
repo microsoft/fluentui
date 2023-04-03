@@ -28,9 +28,8 @@ export const styles = css`
     gap: 12px;
     height: auto;
     padding-top: 14px;
-    padding-inline-end: 12px;
+    padding-inline: 12px;
     padding-bottom: 16px;
-    padding-inline-start: 12px;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
   }
@@ -38,7 +37,7 @@ export const styles = css`
   .content {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align: start;
   }
 
   ::slotted([slot='description']) {
@@ -111,9 +110,8 @@ export const styles = css`
 
   :host([size='large']) .control {
     padding-top: 18px;
-    padding-inline-end: 16px;
+    padding-inline: 16px;
     padding-bottom: 20px;
-    padding-inline-start: 16px;
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
