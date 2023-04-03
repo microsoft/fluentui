@@ -48,7 +48,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     required: !!info,
     defaultProps: {
       id: useId('infobutton-'),
-      content: info,
+      info,
       size,
     },
   });

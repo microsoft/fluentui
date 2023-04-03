@@ -4,6 +4,9 @@ import { DURATION_2, EASING_FUNCTION_2, FADE_IN } from '../../utils/animations';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayStyles, CalendarDayStyleProps } from './CalendarDay.types';
 
+/**
+ * @internal
+ */
 export const calendarDayClassNames: SlotClassNames<CalendarDayStyles> = {
   root: 'fui-CalendarDay',
   header: 'fui-CalendarDay__header',
@@ -71,7 +74,7 @@ const useMonthAndYearStyles = makeStyles({
       color: tokens.colorNeutralForeground1Hover,
       cursor: 'pointer',
     },
-    '&:active': {
+    '&:hover:active': {
       backgroundColor: tokens.colorBrandBackground2,
     },
   },
@@ -102,13 +105,14 @@ const useHeaderIconButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackground2,
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
+      color: tokens.colorBrandForegroundOnLightHover,
       cursor: 'pointer',
       ...shorthands.outline('1px', 'solid', tokens.colorTransparentStroke),
     },
-    '&:active': {
-      backgroundColor: tokens.colorBrandBackground2,
+    '&:hover:active': {
+      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+      color: tokens.colorBrandForegroundOnLightPressed,
     },
   },
 });
@@ -119,17 +123,14 @@ const useDisabledStyleStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
       pointerEvents: 'none',
     },
-    '@media (forced-colors: active)': {
-      color: 'GrayText',
-      forcedColorAdjust: 'none',
-    },
   },
 });
 
 /**
+ * @internal
+ *
  * Apply styling to the CalendarDay slots based on the state
  */
-// export const useCalendarDayStyles_unstable = (state: CalendarDayState): CalendarDayState => {
 export const useCalendarDayStyles_unstable = (props: CalendarDayStyleProps): CalendarDayStyles => {
   const rootStyles = useRootStyles();
   const headerStyles = useHeaderStyles();

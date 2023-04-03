@@ -2,6 +2,21 @@
   "name": "@fluentui/monaco-editor",
   "entries": [
     {
+      "date": "Mon, 03 Apr 2023 07:37:17 GMT",
+      "tag": "@fluentui/monaco-editor_v1.3.6",
+      "version": "1.3.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/monaco-editor",
+            "commit": "ffe1c8becb670b463e1b1c3d6575d596d83a4fe8",
+            "comment": "fix(scripts-tasks): format and update API usage which was modified by eslint export * rule unwrap autofix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 27 Feb 2023 07:39:55 GMT",
       "tag": "@fluentui/monaco-editor_v1.3.5",
       "version": "1.3.5",

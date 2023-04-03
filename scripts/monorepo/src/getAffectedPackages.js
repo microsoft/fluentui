@@ -1,6 +1,7 @@
 const { spawnSync } = require('child_process');
 
 const findGitRoot = require('./findGitRoot');
+const { getUncommittedFiles, getUntrackedFiles } = require('./utils');
 
 /**
  * Indicator of what packages have been affected by changes
@@ -10,6 +11,7 @@ const findGitRoot = require('./findGitRoot');
  * @returns {Set<string>} - Set of packages that are affected by in the current branch
  */
 function getAffectedPackages(since = 'origin/master') {
+  reportLageAffectedSinceResolution();
   const gitRoot = findGitRoot();
   const res = spawnSync('yarn', ['lage', 'info', '--since', since], { cwd: gitRoot, shell: true });
   if (res.status !== 0) {
@@ -26,6 +28,21 @@ function getAffectedPackages(since = 'origin/master') {
   }
 
   return new Set(info.scope);
+}
+
+/**
+ * @see https://github.com/microsoft/fluentui/issues/26147
+ */
+function reportLageAffectedSinceResolution() {
+  const uncommittedGitFiles = [...getUncommittedFiles(), ...getUntrackedFiles()];
+  if (uncommittedGitFiles.length > 0) {
+    console.warn(
+      '⚠️ NOTE:\n',
+      'You workspace contains uncommitted or untracked files!\n',
+      'This gives you false positives about true affected tree.\n',
+      'To get proper results make sure you have clean git tree.\n\n',
+    );
+  }
 }
 
 exports.getAffectedPackages = getAffectedPackages;

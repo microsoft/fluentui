@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, flattenTree_unstable } from '@fluentui/react-tree';
+import story from './flattenTree.md';
 
 const defaultItems = flattenTree_unstable([
   {
@@ -35,6 +36,7 @@ const defaultItems = flattenTree_unstable([
     ],
   },
 ]);
+
 export const FlattenTree = () => {
   const flatTree = useFlatTree_unstable(defaultItems);
   return (
@@ -44,4 +46,12 @@ export const FlattenTree = () => {
       ))}
     </Tree>
   );
+};
+
+FlattenTree.parameters = {
+  docs: {
+    description: {
+      story,
+    },
+  },
 };
