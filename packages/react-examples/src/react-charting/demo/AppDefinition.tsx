@@ -21,10 +21,46 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/linechart',
         },
         {
+          component: require<any>('../LineChart/LineChartPageOne').LineChartPageOne,
+          key: 'LineChartExampleOne',
+          name: 'Line Chart example one',
+          url: '#/examples/linechartone',
+        },
+        {
+          component: require<any>('../LineChart/LineChartPageTwo').LineChartPageTwo,
+          key: 'LineChartExampleTwo',
+          name: 'Line Chart Example Two',
+          url: '#/examples/linecharttwo',
+        },
+        {
+          component: require<any>('../LineChart/LineChartPageThree').LineChartPageThree,
+          key: 'LineChartExampleThree',
+          name: 'Line Chart Example Three',
+          url: '#/examples/linechartthree',
+        },
+        {
           component: require<any>('../AreaChart/AreaChartPage').AreaChart,
           key: 'AreaChart',
           name: 'Area Chart',
           url: '#/examples/areachart',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageOne').AreaChartPageOne,
+          key: 'AreaChartExampleOne',
+          name: 'Area Chart Example One',
+          url: '#/examples/areachartone',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageTwo').AreaChartPageTwo,
+          key: 'AreaChartExampleTwo',
+          name: 'Area Chart Example Two',
+          url: '#/examples/areacharttwo',
+        },
+        {
+          component: require<any>('../AreaChart/AreaChartPageThree').AreaChartPageThree,
+          key: 'AreaChartExampleThree',
+          name: 'Area Chart Example Three',
+          url: '#/examples/areachartthree',
         },
         {
           component: require<any>('../VerticalBarChart/VerticalBarChartPage').VerticalBarChartPage,
