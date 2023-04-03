@@ -21,6 +21,7 @@ import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
 import { TestResult, TestType, ContrastRatioTest, LuminosityTest } from '../../utils/getAccessibilityChecker';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
+import { contrast, hex_to_sRGB } from '../../colors';
 export interface ColorTokensListProps {
   brand: BrandVariants;
   themeName: string;
@@ -151,7 +152,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                 {tests ? (
                   tests.map(testResult => {
                     const testType = testResult.testType;
-                    var hex;
+                    var hex: string = '';
                     var output;
                     var desiredOutput;
                     if (testType === TestType.contrastRatio) {
@@ -168,8 +169,15 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
                     return (
                       <div key={color + ' ' + hex}>
-                        <WarningRegular color="red" /> Contrast against
-                        <div className={styles.colorPreview} style={{ backgroundColor: brand[colorValue], color: hex }}>
+                        <WarningRegular color="red" /> {testType === TestType.contrastRatio ? 'Contrast' : 'Luminosity'}{' '}
+                        {' against'}
+                        <div
+                          className={styles.colorPreview}
+                          style={{
+                            backgroundColor: brand[colorValue],
+                            color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
+                          }}
+                        >
                           {hex}
                         </div>
                         is {output} - expected {desiredOutput}

@@ -83,12 +83,13 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     const value2 = compLCH[0];
 
     const percentDiff = ((value2 - value1) / value1) * 100;
+    const roundedPercentDiff = Math.floor(percentDiff * 10) / 10;
 
     var isPass = false;
     if (desiredPercentDiff < 0) {
-      isPass = percentDiff <= desiredPercentDiff;
+      isPass = roundedPercentDiff <= desiredPercentDiff;
     } else {
-      isPass = percentDiff >= desiredPercentDiff;
+      isPass = roundedPercentDiff >= desiredPercentDiff;
     }
 
     return {
@@ -99,7 +100,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
         compToken: compToken,
         currHex: currTheme[currToken],
         compHex: currTheme[compToken],
-        percentDiff: percentDiff,
+        percentDiff: roundedPercentDiff,
         desiredPercentDiff: desiredPercentDiff,
       },
     };

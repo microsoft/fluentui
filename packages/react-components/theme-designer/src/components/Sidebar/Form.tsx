@@ -221,7 +221,6 @@ export const Form: React.FC = () => {
                 />
               </div>
             </div>
-            <Switch checked={isDark} onChange={handleIsDarkChange} label={'dark theme'} />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="2">
@@ -229,6 +228,7 @@ export const Form: React.FC = () => {
             <Caption1Stronger>Step 2 - Contrast check</Caption1Stronger>
           </AccordionHeader>
           <AccordionPanel>
+            <Switch checked={isDark} onChange={handleIsDarkChange} label={'dark theme'} />
             <AccessibilityPanel
               darkThemeOverrides={darkThemeOverrides}
               brand={brand}
