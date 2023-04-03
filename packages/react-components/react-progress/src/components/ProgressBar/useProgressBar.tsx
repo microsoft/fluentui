@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { useFieldContext_unstable, useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable } from '@fluentui/react-field';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
-
-const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` : a ?? b);
 
 /**
  * Create the state required to render ProgressBar.
@@ -16,8 +14,8 @@ const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` :
  * @param ref - reference to root HTMLElement of ProgressBar
  */
 export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<HTMLElement>): ProgressBarState => {
-  const fieldProps = useFieldControlProps_unstable();
-  const fieldState = useFieldContext_unstable()?.validationState;
+  const field = useFieldContext_unstable();
+  const fieldState = field?.validationState;
 
   const {
     color = fieldState === 'error' || fieldState === 'warning' || fieldState === 'success' ? fieldState : 'brand',
@@ -33,10 +31,16 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
     'aria-valuemin': value !== undefined ? 0 : undefined,
     'aria-valuemax': value !== undefined ? max : undefined,
     'aria-valuenow': value,
-    'aria-labelledby': fieldProps?.['aria-labelledby'],
+    'aria-labelledby': field?.labelId,
     ...props,
-    'aria-describedby': mergeAriaDescribedBy(fieldProps?.['aria-describedby'], props['aria-describedby']),
   });
+
+  if (field && (field.validationMessageId || field.hintId)) {
+    // Prepend the field's validation message and/or hint to the user's aria-describedby
+    root['aria-describedby'] = [field?.validationMessageId, field?.hintId, root['aria-describedby']]
+      .filter(Boolean)
+      .join(' ');
+  }
 
   const bar = resolveShorthand(props.bar, {
     required: true,
