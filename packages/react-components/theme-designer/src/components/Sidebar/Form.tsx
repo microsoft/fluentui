@@ -126,10 +126,10 @@ export const Form: React.FC = () => {
     setKeyColor(keyColorHex.padEnd(6, '0'));
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setHueTorsion(parseInt(e.target.value, 10));
+    setHueTorsion(parseInt(e.target.value || '0', 10));
   };
   const handleVibrancyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVibrancy(parseInt(e.target.value, 10));
+    setVibrancy(parseInt(e.target.value || '0', 10));
   };
 
   const handleThemeNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
