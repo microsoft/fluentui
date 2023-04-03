@@ -109,14 +109,21 @@ export const Form: React.FC = () => {
   React.useEffect(() => {
     dispatch({
       type: 'updateThemeWithCustomerAttributes',
-      payload: { keyColor: debounceKeyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
+      payload: { keyColor: debounceKeyColor.padEnd(7, '0'), hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
     });
   }, [dispatch, debounceKeyColor, hueTorsion, vibrancy, keyColor]);
 
+  const generateHexColor = (e: React.ChangeEvent<HTMLInputElement>) =>
+    '#' + e.target.value.replace(/\W/g, '').toUpperCase();
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
-    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+    const newHexColor = generateHexColor(e);
     setKeyColor(newHexColor);
+  };
+
+  const handleKeyColorBlur = () => {
+    // Force padding if they blur
+    setKeyColor(keyColorHex.padEnd(6, '0'));
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHueTorsion(parseInt(e.target.value, 10));
@@ -164,6 +171,7 @@ export const Form: React.FC = () => {
                   value={keyColor}
                   onChange={handleKeyColorChange}
                   maxLength={7}
+                  onBlur={handleKeyColorBlur}
                 />
                 <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
                   <input
