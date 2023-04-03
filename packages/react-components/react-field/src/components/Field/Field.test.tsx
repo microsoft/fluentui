@@ -1,17 +1,20 @@
 import * as React from 'react';
 
+import { Tooltip } from '@fluentui/react-tooltip';
 import { render } from '@testing-library/react';
 import { useFieldControlProps_unstable } from '../../contexts/useFieldControlProps';
 import { isConformant } from '../../testing/isConformant';
 import { Field } from './index';
 
-const TestInput: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = props => (
-  <input {...useFieldControlProps_unstable(props, { supportsLabelFor: true })} />
-);
+const TestInput = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+  return <input ref={ref} {...props} />;
+});
 
-const TestGroup: React.FC<React.HTMLAttributes<HTMLDivElement>> = props => (
-  <div role="group" {...useFieldControlProps_unstable(props)} />
-);
+const TestGroup = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: false });
+  return <div role="group" ref={ref} {...props} />;
+});
 
 describe('Field', () => {
   isConformant({
@@ -31,21 +34,6 @@ describe('Field', () => {
     },
   });
 
-  it('does not set id or aria-labelledby if label.htmlFor is set', () => {
-    const result = render(
-      <Field label={{ children: 'Test label', htmlFor: 'test-label-for' }}>
-        <TestInput />
-      </Field>,
-    );
-
-    const input = result.getByRole('textbox');
-    const label = result.getByText('Test label') as HTMLLabelElement;
-
-    expect(input.id).toBeFalsy();
-    expect(input.getAttribute('aria-labelledby')).toBeFalsy();
-    expect(label.htmlFor).toBe('test-label-for');
-  });
-
   it('generates an id for the control and uses it as the label.htmlFor', () => {
     const result = render(
       <Field label="Test label">
@@ -61,6 +49,21 @@ describe('Field', () => {
     expect(input.getAttribute('aria-labelledby')).toBeFalsy();
   });
 
+  it('does not set aria-labelledby if label.htmlFor matches the control id', () => {
+    const result = render(
+      <Field label={{ children: 'Test label', htmlFor: 'test-label-for' }}>
+        <TestInput id="test-label-for" />
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+
+    expect(label.htmlFor).toBe('test-label-for');
+    expect(input.id).toBe('test-label-for');
+    expect(input.getAttribute('aria-labelledby')).toBeFalsy();
+  });
+
   it('falls back to aria-labelledby if the control has an id that does not match the label.htmlFor', () => {
     const result = render(
       <Field label="Test label">
@@ -73,6 +76,7 @@ describe('Field', () => {
 
     expect(label.id).toBeTruthy();
     expect(input.getAttribute('aria-labelledby')).toBe(label.id);
+    expect(input.id).toBe('test-id');
   });
 
   it('sets aria-labelledby on a control that does not support label.htmlFor', () => {
@@ -164,10 +168,11 @@ describe('Field', () => {
     expect(input.getAttribute('aria-invalid')).toBeTruthy();
   });
 
-  it('does not override user aria props, EXCEPT aria-describedby', () => {
+  it('does not override user props (other than aria-describedby)', () => {
     const result = render(
       <Field label="test label" validationMessage="test description" hint="test hint" required>
         <TestInput
+          id="test-id"
           aria-labelledby="test-labelledby"
           aria-errormessage="test-errormessage"
           aria-invalid={false}
@@ -178,10 +183,46 @@ describe('Field', () => {
 
     const input = result.getByRole('textbox');
 
+    expect(input.id).toBe('test-id');
     expect(input.getAttribute('aria-labelledby')).toBe('test-labelledby');
     expect(input.getAttribute('aria-errormessage')).toBe('test-errormessage');
     expect(input.getAttribute('aria-invalid')).toBe('false');
     expect(input.getAttribute('aria-required')).toBe('false');
+    // aria-describedby gets merged with the hint and validationMessage; that is tested above
+  });
+
+  it('passes props through other component(s) using context', () => {
+    const result = render(
+      <Field label="Test label" hint="test hint" required>
+        <div>
+          <span>...</span>
+          <TestInput />
+        </div>
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const hint = result.getByText('test hint');
+
+    expect(label.htmlFor).toBe(input.id);
+    expect(input.getAttribute('aria-describedby')).toBe(hint.id);
+  });
+
+  it('merges Field describedby with Tooltip describedby', () => {
+    const result = render(
+      <Field hint="Test hint">
+        <Tooltip relationship="description" content="Test tooltip">
+          <TestInput />
+        </Tooltip>
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox');
+    const hint = result.getByText('Test hint');
+    const tooltip = result.getByText('Test tooltip');
+
+    expect(input.getAttribute('aria-describedby')).toBe(`${hint.id} ${tooltip.id}`);
   });
 
   it.each([
