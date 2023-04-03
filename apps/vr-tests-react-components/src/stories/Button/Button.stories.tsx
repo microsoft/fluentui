@@ -28,8 +28,8 @@ export const AsAnAnchor = () => (
 AsAnAnchor.storyName = 'As an anchor';
 
 export const Circular = () => (
-  <Button id={buttonId} shape="outline">
-    Hello, world, This is it asdasdasd.
+  <Button id={buttonId} shape="circular">
+    Hello, world, This is itasdasdasdas .
   </Button>
 );
 
