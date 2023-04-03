@@ -23,7 +23,7 @@
     "change": "beachball change --no-commit",
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/register ./scripts/executors/check-for-modified-files",
-    "check:affected-package": "node ./scripts/executors/checkIfPackagesAffected.js",
+    "check:affected": "node ./scripts/executors/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --no-peers --skip-invalid",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
