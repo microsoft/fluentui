@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: overflow item style should be applied when overflow items are nested in wrapper elements",
+  "packageName": "@fluentui/react-overflow",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
