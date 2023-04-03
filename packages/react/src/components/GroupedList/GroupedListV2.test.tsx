@@ -337,4 +337,78 @@ describe('GroupedListV2', () => {
     wrapper.setProps({ items: initialItems });
     expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(true);
   });
+
+  it('toggles all groups when `toggleCollapseAll` is called', () => {
+    const _selection = new Selection();
+    const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }];
+    const _groups: Array<IGroup> = [
+      {
+        count: 0,
+        hasMoreData: true,
+        isCollapsed: false,
+        key: 'group0',
+        name: 'group 0',
+        startIndex: 0,
+        level: 0,
+        children: [
+          {
+            count: 3,
+            hasMoreData: true,
+            isCollapsed: false,
+            key: 'subgroup0',
+            name: 'subgroup 0',
+            startIndex: 0,
+            level: 1,
+            children: [],
+          },
+        ],
+      },
+    ];
+
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+      return (
+        <DetailsRow
+          columns={Object.keys(item)
+            .slice(0, 2)
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
+          groupNestingDepth={nestingDepth}
+          item={item}
+          itemIndex={itemIndex}
+          selection={_selection}
+          selectionMode={SelectionMode.multiple}
+        />
+      );
+    }
+
+    const ref = React.createRef<IGroupedList | null>(null);
+
+    const wrapper = mount(
+      <GroupedListV2
+        componentRef={ref}
+        items={_items}
+        groups={_groups}
+        onRenderCell={_onRenderCell}
+        selection={_selection}
+      />,
+    );
+
+    expect(wrapper.find(DetailsRow)).toHaveLength(3);
+
+    ref.current.toggleCollapseAll(true);
+    wrapper.update();
+    expect(wrapper.find(DetailsRow)).toHaveLength(0);
+
+    ref.current.toggleCollapseAll(false);
+    wrapper.update();
+    expect(wrapper.find(DetailsRow)).toHaveLength(3);
+
+    wrapper.unmount();
+  });
 });
