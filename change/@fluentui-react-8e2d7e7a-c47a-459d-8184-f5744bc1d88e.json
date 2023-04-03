@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ColorPicker preview box updated to ignore forced colors to display chosen color",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
