@@ -33,47 +33,51 @@ export type TestResult = {
 
 // export type TestRecord = Record<string, TestResult[]>;
 
-export const getAccessibilityChecker = (theme: Partial<Theme>) => {
-  const currTheme = theme as unknown as Record<string, string>;
+export const calculateContrastRatio = (
+  currTheme: Record<string, string>,
+  currToken: string,
+  compToken: string,
+  desiredRatio: number,
+): TestResult => {
+  const currHex: string = currTheme[currToken];
+  const compHex: string = currTheme[compToken];
 
-  const calculateContrastRatio = (currToken: string, compToken: string, desiredRatio: number): TestResult => {
-    const currHex: string = currTheme[currToken];
-    const compHex: string = currTheme[compToken];
-
-    if (!currHex || !compHex || currHex === 'transparent' || compHex === 'transparent') {
-      return {
-        isPass: true,
-        testType: TestType.contrastRatio,
-        testInfo: {
-          currToken: currToken,
-          compToken: compToken,
-          currHex: currHex,
-          compHex: compHex,
-          ratio: desiredRatio,
-          desiredRatio: desiredRatio,
-        },
-      };
-    }
-
-    const currSRGB: Vec3 = hex_to_sRGB(currHex);
-    const compSRGB: Vec3 = hex_to_sRGB(compHex);
-
-    const contrastRatio = contrast(currSRGB, compSRGB);
-    const roundedContrastRatio = Math.floor(contrastRatio * 10) / 10;
-
+  if (!currHex || !compHex || currHex === 'transparent' || compHex === 'transparent') {
     return {
-      isPass: contrastRatio >= desiredRatio,
+      isPass: true,
       testType: TestType.contrastRatio,
       testInfo: {
         currToken: currToken,
         compToken: compToken,
         currHex: currHex,
         compHex: compHex,
-        ratio: roundedContrastRatio,
+        ratio: desiredRatio,
         desiredRatio: desiredRatio,
       },
     };
+  }
+
+  const currSRGB: Vec3 = hex_to_sRGB(currHex);
+  const compSRGB: Vec3 = hex_to_sRGB(compHex);
+
+  const contrastRatio = contrast(currSRGB, compSRGB);
+  const roundedContrastRatio = Math.floor(contrastRatio * 10) / 10;
+
+  return {
+    isPass: contrastRatio >= desiredRatio,
+    testType: TestType.contrastRatio,
+    testInfo: {
+      currToken: currToken,
+      compToken: compToken,
+      currHex: currHex,
+      compHex: compHex,
+      ratio: roundedContrastRatio,
+      desiredRatio: desiredRatio,
+    },
   };
+};
+export const getAccessibilityChecker = (theme: Partial<Theme>) => {
+  const currTheme = theme as unknown as Record<string, string>;
 
   const testPercentDiff = (currToken: string, compToken: string, desiredPercentDiff: number): TestResult => {
     const currLCH: Vec3 = hex_to_LCH(currTheme[currToken]);
@@ -128,11 +132,11 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
   const checkContrastRatios = (): TestResult[] => {
     const tests: TestResult[] = [];
     const added: string[] = [];
-    Object.keys(accessiblePairs).map(token => {
+    Object.keys(accessiblePairs).forEach(token => {
       // Go through all comparisons for each token
       for (let i = 0; i < accessiblePairs[token].length; i++) {
         const [compToken, ratio] = accessiblePairs[token][i];
-        const { isPass, testInfo } = calculateContrastRatio(token, compToken, ratio);
+        const { isPass, testInfo } = calculateContrastRatio(currTheme, token, compToken, ratio);
 
         if (!added.includes(testInfo!.compHex)) {
           tests.push({
@@ -145,27 +149,6 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
       }
     });
     return tests;
-  };
-
-  const checkDuplicate = (failList: ContrastRatioTest[], failInfo: ContrastRatioTest): ContrastRatioTest[] => {
-    let exists = false;
-    const newFailList = failList.map(ratio => {
-      if (ratio.compHex === failInfo.compHex) {
-        exists = true;
-        ratio = {
-          ...ratio,
-          desiredRatio: ratio.desiredRatio > failInfo.desiredRatio ? ratio.desiredRatio : failInfo.desiredRatio,
-        };
-      }
-      return ratio;
-    });
-
-    if (exists) {
-      return newFailList;
-    } else {
-      failList.push(failInfo);
-      return failList;
-    }
   };
 
   const contrastTests = checkContrastRatios();

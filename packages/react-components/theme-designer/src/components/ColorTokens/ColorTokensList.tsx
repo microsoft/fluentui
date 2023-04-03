@@ -11,17 +11,25 @@ import {
   MenuPopover,
   MenuProps,
   MenuTrigger,
-  tokens,
   Subtitle2,
   Theme,
+  tokens,
 } from '@fluentui/react-components';
 import { brandRamp } from '../../utils/getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
-import { TestResult, TestType, ContrastRatioTest, LuminosityTest } from '../../utils/getAccessibilityChecker';
+import {
+  calculateContrastRatio,
+  ContrastRatioTest,
+  LuminosityTest,
+  TestResult,
+  TestType,
+} from '../../utils/getAccessibilityChecker';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { contrast, hex_to_sRGB } from '../../colors';
+import { accessiblePairs } from './AccessiblePairs';
+
 export interface ColorTokensListProps {
   brand: BrandVariants;
   themeName: string;
@@ -35,8 +43,11 @@ export interface ColorTokensListProps {
 export interface ColorTokenRowProps {
   brand: BrandVariants;
   brandValue: Brands;
+  token: string;
   brandValueString: string;
   selected: boolean;
+
+  showContrast?: boolean;
 }
 
 const useStyles = makeStyles({
@@ -75,11 +86,39 @@ const useStyles = makeStyles({
 
 const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
-  const { brand, brandValue, brandValueString, selected } = props;
+  const { brand, brandValue, brandValueString, selected, token, showContrast } = props;
 
   const {
-    state: { themeName },
+    state: { themeName, themeWithOverrides },
   } = useThemeDesigner();
+  const calculateContrast = () => {
+    const theme = {
+      ...themeWithOverrides,
+      [token]: brand[brandValue],
+    };
+    // eslint-disable-next-line prefer-spread
+    return Math.min.apply(
+      Math,
+      accessiblePairs[token].map(tokenPair => {
+        const [compToken, ratio] = tokenPair;
+        const { testInfo } = calculateContrastRatio(
+          theme as unknown as Record<string, string>,
+          token,
+          compToken,
+          ratio,
+        );
+        return (testInfo as ContrastRatioTest).ratio;
+      }),
+    );
+  };
+
+  const generateContrast = () => {
+    if (showContrast) {
+      return <> - Contrast: {calculateContrast()}</>;
+    } else {
+      return <></>;
+    }
+  };
 
   return (
     <MenuItemRadio
@@ -88,7 +127,7 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
       value={brandValueString}
     >
       <span className={selected ? styles.selected : ''}>
-        {themeName} {brandValueString}
+        {themeName} {brandValueString} {generateContrast()}
       </span>
     </MenuItemRadio>
   );
@@ -100,24 +139,24 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
   const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
   return (
     <div>
-      {coveredTokens.map(color => {
-        const colorValue: Brands = colorOverrides[color];
-        const usage = (usageList as unknown as Record<string, string>)[color];
+      {coveredTokens.map(token => {
+        const colorValue: Brands = colorOverrides[token];
+        const usage = (usageList as unknown as Record<string, string>)[token];
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          onNewOverride?.(color, newColor);
+          onNewOverride?.(token, newColor);
         };
 
         const overridenTokens = Object.keys(themeOverrides);
 
         return (
-          <div key={color.toString()}>
+          <div key={token.toString()}>
             <div className={styles.row}>
               <div className={styles.col}>
-                {overridenTokens.includes(color) ? <Badge appearance="filled" color="success" size="tiny" /> : <> </>}
+                {overridenTokens.includes(token) ? <Badge appearance="filled" color="success" size="tiny" /> : <> </>}
               </div>
               <div className={styles.col}>
-                <Subtitle2 className={styles.colorLabel}>{color}</Subtitle2>
+                <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
                 <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2>
               </div>
               <div>
@@ -135,7 +174,9 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                         return (
                           <div key={brandValueString}>
                             <ColorTokenRow
+                              token={token}
                               brand={brand}
+                              showContrast={!!tests}
                               brandValue={brandValue}
                               brandValueString={brandValueString}
                               selected={selected}
@@ -168,7 +209,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                     }
 
                     return (
-                      <div key={color + ' ' + hex}>
+                      <div key={token + ' ' + hex}>
                         <WarningRegular color="red" /> {testType === TestType.contrastRatio ? 'Contrast' : 'Luminosity'}{' '}
                         {' against'}
                         <div
