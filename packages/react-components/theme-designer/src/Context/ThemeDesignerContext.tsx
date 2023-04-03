@@ -37,6 +37,7 @@ type Dispatch = (action: Action) => void;
 
 export type ThemeDesignerState = {
   themeName: string;
+  keyColorHex: string;
   brand: BrandVariants;
   theme: Theme;
   themeWithOverrides: Theme;
@@ -52,6 +53,7 @@ export const defaultThemePlaceholderName = 'myNewTheme';
 
 export const initialThemeDesignerState: ThemeDesignerState = {
   themeName: defaultThemePlaceholderName,
+  keyColorHex: '#0F6CBD',
   brand: brandWeb,
   theme: createLightTheme(brandWeb),
   themeWithOverrides: createLightTheme(brandWeb),
@@ -104,6 +106,7 @@ export const ThemeDesignerReducer = (state: ThemeDesignerState, action: Action):
       const newTheme = state.isDark ? createDarkTheme(newBrand) : createLightTheme(newBrand);
       return {
         ...state,
+        keyColorHex: action.payload.keyColor,
         brand: newBrand,
         theme: newTheme,
         themeWithOverrides: newTheme,

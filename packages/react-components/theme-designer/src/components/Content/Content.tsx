@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
   const {
-    state: { themeWithOverrides, brand },
+    state: { themeWithOverrides, keyColorHex },
   } = useThemeDesigner();
   return (
     <FluentProvider theme={themeWithOverrides}>
@@ -48,7 +48,7 @@ export const Content: React.FC<ContentProps> = props => {
           2 components.
         </Text>
         <Palette />
-        <KeyColorBanner keyColor={brand[80]} />
+        <KeyColorBanner keyColor={keyColorHex} />
         <Demo />
         <Divider />
         <ColorTokens />

@@ -174,7 +174,7 @@ export const Column3 = () => {
         <Label htmlFor={inputId} required>
           Description
         </Label>
-        <Input id={inputId} placeholder="Example Text" />
+        <Input id={inputId} placeholder="Example Text" appearance="filled-darker" />
       </div>
       <Link href="https://www.microsoft.com">Example link - www.microsoft.com</Link>
       <Spinner />

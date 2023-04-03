@@ -91,7 +91,7 @@ export const Form: React.FC = () => {
 
   const {
     dispatch,
-    state: { isDark, themeName, darkThemeOverrides, lightThemeOverrides, brand },
+    state: { isDark, themeName, darkThemeOverrides, lightThemeOverrides, brand, keyColorHex },
   } = useThemeDesigner();
   const themeNameInputId = useId('themeNameInputId');
 
@@ -99,15 +99,9 @@ export const Form: React.FC = () => {
     dispatch({ type: 'isDark', payload: !isDark });
   };
 
-  const initialState: CustomAttributes = {
-    keyColor: '#0F6CBD',
-    hueTorsion: 0,
-    vibrancy: 0,
-  };
-
-  const [keyColor, setKeyColor] = React.useState<string>(initialState.keyColor);
-  const [hueTorsion, setHueTorsion] = React.useState<number>(initialState.hueTorsion);
-  const [vibrancy, setVibrancy] = React.useState<number>(initialState.vibrancy * 100);
+  const [keyColor, setKeyColor] = React.useState<string>(keyColorHex);
+  const [hueTorsion, setHueTorsion] = React.useState<number>(0);
+  const [vibrancy, setVibrancy] = React.useState<number>(0);
 
   // as the user moves through the wheel, we want the page to react in real time
   const debounceKeyColor: string = useDebounce(keyColor, 100);
@@ -117,7 +111,7 @@ export const Form: React.FC = () => {
       type: 'updateThemeWithCustomerAttributes',
       payload: { keyColor: debounceKeyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
     });
-  }, [dispatch, debounceKeyColor, hueTorsion, vibrancy]);
+  }, [dispatch, debounceKeyColor, hueTorsion, vibrancy, keyColor]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
