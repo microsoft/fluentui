@@ -56,7 +56,7 @@ jobs:
         displayName: Build to Perf Test (Northstar)
 
       - script: |
-          yarn perf:test:base
+          yarn perf:test --base
         condition: eq(variables.isPR, false)
         workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test Base (Northstar)
@@ -83,8 +83,8 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathNorthstar)'
-          status: '$(PerfCommentStatusNorthstar)'
+          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathReactNorthstar)'
+          status: '$(PerfCommentStatusReactNorthstar)'
           uniqueId: 'perfComment9424'
 
       - script: |
@@ -147,8 +147,8 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
-          status: '$(PerfCommentStatus)'
+          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathReact)'
+          status: '$(PerfCommentStatusReact)'
           uniqueId: 'perfComment9423'
 
       - template: .devops/templates/cleanup.yml

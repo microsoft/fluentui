@@ -1020,6 +1020,12 @@
       "projectType": "library",
       "tags": ["tools"]
     },
+    "@fluentui/scripts-perf-test-flamegrill": {
+      "root": "scripts/perf-test-flamegrill",
+      "sourceRoot": "scripts/perf-test-flamegrill/src",
+      "projectType": "library",
+      "tags": ["tools", "platform:any"]
+    },
     "@fluentui/set-version": {
       "root": "packages/set-version",
       "projectType": "library",
