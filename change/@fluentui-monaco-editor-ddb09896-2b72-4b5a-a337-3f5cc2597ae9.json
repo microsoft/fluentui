@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(scripts-tasks): format and update API usage which was modified by eslint export * rule unwrap autofix",
-  "packageName": "@fluentui/monaco-editor",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
