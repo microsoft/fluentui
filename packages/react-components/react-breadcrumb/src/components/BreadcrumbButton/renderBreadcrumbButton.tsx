@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { BreadcrumbItemState, BreadcrumbItemSlots } from './BreadcrumbItem.types';
+import type { BreadcrumbButtonState, BreadcrumbButtonSlots } from './BreadcrumbButton.types';
 
 /**
- * Render the final JSX of BreadcrumbItem
+ * Render the final JSX of BreadcrumbButton
  */
-export const renderBreadcrumbItem_unstable = (state: BreadcrumbItemState) => {
-  const { slots, slotProps } = getSlots<BreadcrumbItemSlots>(state);
+export const renderBreadcrumbButton_unstable = (state: BreadcrumbButtonState) => {
+  const { slots, slotProps } = getSlots<BreadcrumbButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 
   return (

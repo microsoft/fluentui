@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BreadcrumbLink renders a default state 1`] = `
+<div>
+  <button
+    class="fui-Link fui-BreadcrumbLink"
+    type="button"
+  >
+    Default BreadcrumbLink
+  </button>
+</div>
+`;

@@ -7,6 +7,7 @@ const BreadcrumbContext = React.createContext<BreadcrumbContextValue | undefined
  * @internal
  */
 export const breadcrumbDefaultValue: BreadcrumbContextValue = {
+  appearance: 'transparent',
   size: 'medium',
   dividerType: 'chevron',
 };

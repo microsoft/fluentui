@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BreadcrumbItemProps, BreadcrumbItemState } from './BreadcrumbItem.types';
-
+import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 /**
  * Create the state required to render BreadcrumbItem.
  *
@@ -15,13 +15,22 @@ export const useBreadcrumbItem_unstable = (
   props: BreadcrumbItemProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbItemState => {
+  const { icon, iconPosition = 'before', ...rest } = props;
+  const { size } = useBreadcrumbContext_unstable();
+  const iconShorthand = resolveShorthand(icon);
+
   return {
     components: {
       root: 'li',
+      icon: 'span',
     },
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('li', {
       ref,
-      ...props,
+      ...rest,
     }),
+    icon: iconShorthand,
+    size,
+    iconPosition,
+    iconOnly: Boolean(iconShorthand?.children && !props.children),
   };
 };

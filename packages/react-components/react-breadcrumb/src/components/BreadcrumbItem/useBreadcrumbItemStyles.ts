@@ -1,9 +1,11 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
   root: 'fui-BreadcrumbItem',
+  icon: 'fui-BreadcrumbItem__icon',
 };
 
 /**
@@ -13,6 +15,22 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalNone),
+  },
+  small: {
+    height: '24px',
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...typographyStyles.caption1,
+  },
+  medium: {
+    height: '32px',
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...typographyStyles.body1,
+  },
+  large: {
+    height: '40px',
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...typographyStyles.body2,
   },
 });
 
@@ -21,7 +39,8 @@ const useStyles = makeStyles({
  */
 export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): BreadcrumbItemState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(breadcrumbItemClassNames.root, styles.root, state.root.className);
+  const size = state.size || 'medium';
+  state.root.className = mergeClasses(breadcrumbItemClassNames.root, styles.root, styles[size], state.root.className);
 
   return state;
 };
