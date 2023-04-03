@@ -21,7 +21,7 @@ import {
   IDataPoint,
   IVerticalBarChartDataPoint,
 } from '../index';
-
+//test
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
