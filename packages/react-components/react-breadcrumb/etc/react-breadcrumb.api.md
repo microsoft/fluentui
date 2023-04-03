@@ -16,6 +16,23 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps>;
 
+// @public
+export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
+
+// @public (undocumented)
+export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
+
+// @public
+export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & {};
+
+// @public (undocumented)
+export type BreadcrumbButtonSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots>;
+
 // @public (undocumented)
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;
 
@@ -72,6 +89,9 @@ export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<Br
 export const renderBreadcrumb_unstable: (state: BreadcrumbState, contextValues: BreadcrumbContextValues) => JSX.Element;
 
 // @public
+export const renderBreadcrumbButton_unstable: (state: BreadcrumbButtonState) => JSX.Element;
+
+// @public
 export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) => JSX.Element;
 
 // @public
@@ -79,6 +99,12 @@ export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.
 
 // @public
 export const useBreadcrumb_unstable: (props: BreadcrumbProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbState;
+
+// @public
+export const useBreadcrumbButton_unstable: (props: BreadcrumbButtonProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbButtonState;
+
+// @public
+export const useBreadcrumbButtonStyles_unstable: (state: BreadcrumbButtonState) => BreadcrumbButtonState;
 
 // @public
 export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
