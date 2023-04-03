@@ -1,3 +1,5 @@
+import { ScenarioRenderTypes, AllRenderTypes } from '@fluentui/scripts-tasks';
+
 /**
  * You don't have to add scenarios to this structure unless
  * you want their render types to differ from the default (mount only).
@@ -8,10 +10,7 @@
  * memoization logic help avoid certain code paths.
  */
 
-const AllRenderTypes = ['mount', 'virtual-rerender', 'virtual-rerender-with-unmount'];
-export const DefaultRenderTypes = ['mount'];
-
-export const scenarioRenderTypes = {
+export const scenarioRenderTypes: ScenarioRenderTypes = {
   ThemeProvider: AllRenderTypes,
   GroupedList: AllRenderTypes,
   GroupedListV2: AllRenderTypes,

@@ -1,5 +1,6 @@
 import path from 'path';
 import { series, task, argv, taskPresets } from 'just-scripts';
+import { config } from './tasks/perf-test.config';
 
 taskPresets.lib();
 
@@ -26,9 +27,9 @@ task('perf-test:bundle', bundleStories());
 
 task('perf-test:run', () => {
   // delay require in case digest isn't built yet
-  const runPerfTest = require('./tasks/perf-test').default;
+  const { getPerfRegressions } = require('./tasks/perf-test') as typeof import('./tasks/perf-test');
 
-  return runPerfTest(argv().base);
+  return getPerfRegressions(config, (argv() as { base?: boolean }).base);
 });
 
 // TOOD: is build doing anything meaningful? only if there's source that's not a just script?
