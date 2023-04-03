@@ -160,7 +160,6 @@ export const styles = css`
     width: ${strokeWidthThicker};
     height: unset;
     margin-top: unset;
-    margin-right: auto;
     transform-origin: top;
     transform: translateY(var(--tabIndicatorOffset)) scaleY(var(--tabIndicatorScale));
   }
