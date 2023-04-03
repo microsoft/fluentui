@@ -19,7 +19,7 @@
   "dependencies": {
     "@fluentui/scripts-perf-test-flamegrill": "*",
     "@fluentui/example-data": "^8.4.7",
-    "@fluentui/react": "^8.107.0",
+    "@fluentui/react": "^8.107.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "17.0.2",
     "react-dom": "17.0.2",
