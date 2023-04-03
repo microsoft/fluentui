@@ -1350,7 +1350,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     });
 
     if (skipViewportMeasures) {
-      // if (minimumWidth > availableWidth) {
       return adjustedColumns;
     }
 
