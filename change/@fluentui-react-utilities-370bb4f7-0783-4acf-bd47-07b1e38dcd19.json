@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: increments SlotRenderFunction signature to include children",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
