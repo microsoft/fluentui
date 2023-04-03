@@ -10,7 +10,7 @@
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
-    "@fluentui/react": "^8.107.0",
+    "@fluentui/react": "^8.107.1",
     "@fluentui/react-components": "^9.18.6",
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/web-components": "^2.5.12",

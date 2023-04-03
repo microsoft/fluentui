@@ -1,18 +1,17 @@
 import fs from 'fs';
 import path from 'path';
-import flamegrill, { CookResults, Scenarios, ScenarioConfig, CookResult } from 'flamegrill';
-import { scenarioIterations } from '../src/scenarioIterations';
-import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
-import { argv } from '@fluentui/scripts-tasks';
+
+import { workspaceRoot } from '@nrwl/devkit';
+import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
+
+import { getJustArgv as argv } from '../argv';
+
+import { DEPLOYHOST, DEPLOYURL, EnvVariablesByProject, SYSTEM_PULLREQUEST_TARGETBRANCH } from './env';
+import { IterationsDefault, PerfRegressionConfig, RenderTypesDefault } from './settings';
 
 type ScenarioSetting = Record<string, { scenarioName: string; iterations: number; renderType: string }>;
 // TODO: consolidate with newer version of fluent perf-test
 
-// A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
-// Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
-const iterationsDefault = 5000;
-
-/* eslint-disable @fluentui/max-len */
 // TODO:
 //  - Results Analysis
 //    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
@@ -101,26 +100,33 @@ const iterationsDefault = 5000;
 //        await page.goto(testUrl);
 //        await page.tracing.stop();
 
-// Hardcoded PR deploy URL for local testing
-const DEPLOY_URL = 'fluentuipr.z22.web.core.windows.net';
+export async function getPerfRegressions(options: PerfRegressionConfig) {
+  validatePerfOptions(options);
 
-const urlForDeployPath = process.env.DEPLOYURL
-  ? `${process.env.DEPLOYURL}/perf-test`
-  : 'file://' + path.resolve(__dirname, '../dist/');
+  const {
+    scenarioIterations,
+    scenarioRenderTypes,
+    outDir,
+    tempDir,
+    projectName,
+    projectRootPath,
+    scenariosSrcDirPath,
+    excludeScenarios,
+  } = options;
+  const projectRootDirectoryName = path.basename(projectRootPath);
 
-// Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
-// At some point perf test should be broken out from CI default pipeline entirely and then can go back to using deploy site.
-// For now, use local perf-test bundle so that perf-test job can run ASAP instead of waiting for the perf-test bundle to be deployed.
-// const urlForDeploy = urlForDeployPath + '/index.html';
-const urlForDeploy = 'file://' + path.resolve(__dirname, '../dist/') + '/index.html';
+  const projectEnvVars = EnvVariablesByProject[projectName];
+  const urlForDeployPath = DEPLOYURL ? `${DEPLOYURL}/${projectRootDirectoryName}` : 'file://' + outDir;
 
-const targetPath = `heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
-const urlForMaster = `https://${process.env.DEPLOYHOST || DEPLOY_URL}/${targetPath}/perf-test/index.html`;
+  // Temporarily comment out deploy site usage to speed up CI build time and support parallelization.
+  // At some point perf test should be broken out from CI default pipeline entirely and then can go back to using deploy site.
+  // For now, use local perf-test bundle so that perf-test job can run ASAP instead of waiting for the perf-test bundle to be deployed.
+  // const urlForDeploy = urlForDeployPath + '/index.html';
+  const urlForDeploy = 'file://' + outDir + '/index.html';
 
-const outDir = path.join(__dirname, '../dist');
-const tempDir = path.join(__dirname, '../logfiles');
+  const targetPath = `heads/${SYSTEM_PULLREQUEST_TARGETBRANCH || 'master'}`;
+  const urlForMaster = `https://${DEPLOYHOST}/${targetPath}/${projectRootDirectoryName}/index.html`;
 
-export async function getPerfRegressions() {
   // For debugging, in case the environment variables used to generate these have unexpected values
   console.log(`urlForDeployPath: "${urlForDeployPath}"`);
   console.log(`urlForMaster: "${urlForMaster}"`);
@@ -129,9 +135,21 @@ export async function getPerfRegressions() {
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
 
   const scenariosAvailable = fs
-    .readdirSync(path.join(__dirname, '../src/scenarios'))
-    .filter(name => name.indexOf('scenarioList') < 0)
-    .map(name => path.basename(name, '.tsx'));
+    .readdirSync(scenariosSrcDirPath)
+    .filter(fileName => {
+      if (excludeScenarios) {
+        const shouldExclude = excludeScenarios.some(scenarioName => {
+          return fileName.indexOf(scenarioName) !== -1;
+        });
+
+        if (shouldExclude) {
+          return false;
+        }
+      }
+
+      return true;
+    })
+    .map(fileName => path.basename(fileName, '.tsx'));
 
   const scenariosArgv: string = argv().scenarios;
   const scenariosArg = scenariosArgv?.split?.(',') || [];
@@ -141,9 +159,7 @@ export async function getPerfRegressions() {
     }
   });
 
-  let scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
-  // TeachingBubble perf test is hanging after puppeteer pin to v19. Disabling for now to unblock SWC migration work.
-  scenarioList = scenarioList.filter(scenario => scenario !== 'TeachingBubble');
+  const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
   const scenarios: Scenarios = {};
   const scenarioSettings: ScenarioSetting = {};
@@ -152,9 +168,9 @@ export async function getPerfRegressions() {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     const iterations: number =
-      iterationsArg || scenarioIterations[scenarioName as keyof typeof scenarioIterations] || iterationsDefault;
-    const renderTypes: string[] =
-      scenarioRenderTypes[scenarioName as keyof typeof scenarioRenderTypes] || DefaultRenderTypes;
+      iterationsArg || (scenarioIterations && scenarioIterations[scenarioName]) || IterationsDefault;
+
+    const renderTypes: string[] = (scenarioRenderTypes && scenarioRenderTypes[scenarioName]) || RenderTypesDefault;
 
     renderTypes.forEach(renderType => {
       const scenarioKey = `${scenarioName}-${renderType}`;
@@ -192,6 +208,7 @@ export async function getPerfRegressions() {
   const scenarioConfig: ScenarioConfig = {
     outDir,
     tempDir,
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     pageActions: async (page, options) => {
       // Occasionally during our CI, page takes unexpected amount of time to navigate (unsure about the root cause).
       // Removing the timeout to avoid perf-test failures but be cautious about long test runs.
@@ -204,7 +221,7 @@ export async function getPerfRegressions() {
 
   const scenarioResults: CookResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createReport(scenarioSettings, scenarioResults);
+  const comment = createReport(scenarioSettings, scenarioResults, { projectName, urlForDeployPath });
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -215,23 +232,28 @@ export async function getPerfRegressions() {
   // Write results to file
   fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
-  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
-  console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
+  console.log(`##vso[task.setvariable variable=${projectEnvVars.filePath};]${projectRootPath}/dist/perfCounts.html`);
+  console.log(`##vso[task.setvariable variable=${projectEnvVars.status};]${status}`);
 }
 
+interface ReportOptions {
+  projectName: string;
+  urlForDeployPath: string;
+}
 /**
  * Create test summary based on test results.
  */
-function createReport(scenarioSettings: ScenarioSetting, testResults: CookResults) {
-  const report = '## [Perf Analysis (`@fluentui/react`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
+function createReport(scenarioSettings: ScenarioSetting, testResults: CookResults, options: ReportOptions) {
+  const report =
+    `## [Perf Analysis (\`${options.projectName}\`)](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n`
 
-    // Show only significant changes by default.
-    .concat(createScenarioTable(scenarioSettings, testResults, false))
+      // Show only significant changes by default.
+      .concat(createScenarioTable(scenarioSettings, testResults, false, options))
 
-    // Show all results in a collapsible table.
-    .concat('<details><summary>All results</summary><p>')
-    .concat(createScenarioTable(scenarioSettings, testResults, true))
-    .concat('</p></details>\n\n');
+      // Show all results in a collapsible table.
+      .concat('<details><summary>All results</summary><p>')
+      .concat(createScenarioTable(scenarioSettings, testResults, true, options))
+      .concat('</p></details>\n\n');
 
   return report;
 }
@@ -240,7 +262,12 @@ function createReport(scenarioSettings: ScenarioSetting, testResults: CookResult
  * Create a table of scenario results.
  * @param showAll Show only significant results by default.
  */
-function createScenarioTable(scenarioSettings: ScenarioSetting, testResults: CookResults, showAll: boolean) {
+function createScenarioTable(
+  scenarioSettings: ScenarioSetting,
+  testResults: CookResults,
+  showAll: boolean,
+  options: ReportOptions,
+) {
   const resultsToDisplay = Object.keys(testResults).filter(
     key => showAll || testResults[key].analysis?.regression?.isRegression,
   );
@@ -271,10 +298,10 @@ function createScenarioTable(scenarioSettings: ScenarioSetting, testResults: Coo
         return `<tr>
             <td>${scenarioName}</td>
             <td>${renderType}</td>
-            ${getCell(testResult, true)}
-            ${getCell(testResult, false)}
+            ${getCell(testResult, true, options)}
+            ${getCell(testResult, false, options)}
             <td>${iterations}</td>
-            ${getRegression(testResult)}
+            ${getRegression(testResult, options)}
            </tr>`;
       })
       .join('\n')
@@ -289,7 +316,8 @@ function createScenarioTable(scenarioSettings: ScenarioSetting, testResults: Coo
 /**
  * Helper that renders an output cell based on a test result.
  */
-function getCell(testResult: CookResult, getBaseline: boolean) {
+function getCell(testResult: CookResult, getBaseline: boolean, options: ReportOptions) {
+  const { urlForDeployPath } = options;
   let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile;
   let errorFile = testResult.processed.error && testResult.processed.error.errorFile;
   let numTicks = testResult.analysis && testResult.analysis.numTicks;
@@ -313,7 +341,8 @@ function getCell(testResult: CookResult, getBaseline: boolean) {
 /**
  * Helper that renders an output cell based on a test result.
  */
-function getRegression(testResult: CookResult) {
+function getRegression(testResult: CookResult, options: ReportOptions) {
+  const { urlForDeployPath } = options;
   const cell =
     testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
       ? testResult.analysis.regression.regressionFile
@@ -324,4 +353,16 @@ function getRegression(testResult: CookResult) {
       : '';
 
   return `<td>${cell}</td>`;
+}
+
+function validatePerfOptions(options: PerfRegressionConfig) {
+  if (!fs.existsSync(path.join(workspaceRoot, options.projectRootPath))) {
+    throw new Error(`Invalid ProjectRootPath. ${options.projectRootPath} doesn't exists`);
+  }
+
+  if (!fs.existsSync(options.outDir)) {
+    throw new Error(
+      `${options.outDir} doesn't exist. Make sure to run bundling process to be able to generate perf suite.`,
+    );
+  }
 }
