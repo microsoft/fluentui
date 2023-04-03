@@ -1,6 +1,5 @@
 import * as path from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { argv } from 'yargs';
 import webpack from 'webpack';
 
@@ -42,11 +41,6 @@ export const webpackConfig: webpack.Configuration = {
   },
   plugins: [
     new webpack.DefinePlugin(getDefaultEnvironmentVars(!argv.debug)),
-    new ForkTsCheckerWebpackPlugin({
-      typescript: {
-        configFile: path.join(packageRoot, 'tsconfig.json'),
-      },
-    }),
     new CopyWebpackPlugin({
       patterns: [
         {
