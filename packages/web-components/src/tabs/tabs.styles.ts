@@ -135,19 +135,13 @@ export const styles = css`
   :host([size='small']) ::slotted(fluent-tab) {
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
-    padding-top: ${spacingVerticalSNudge};
-    padding-bottom: ${spacingVerticalSNudge};
-    padding-left: ${spacingHorizontalSNudge};
-    padding-right: ${spacingHorizontalSNudge};
+    padding: ${spacingVerticalSNudge} ${spacingHorizontalSNudge};
   }
 
   :host([size='large']) ::slotted(fluent-tab) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
-    padding-top: ${spacingVerticalL};
-    padding-bottom: ${spacingVerticalL};
-    padding-left: ${spacingHorizontalMNudge};
-    padding-right: ${spacingHorizontalMNudge};
+    padding: ${spacingVerticalL} ${spacingHorizontalMNudge};
   }
 
   /* indicator animation  */
