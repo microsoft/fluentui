@@ -21,10 +21,10 @@ const tabsDefault = html`
     size=${x => x.size}
     activeid=${x => x.activeid}
   >
-    <fluent-tab id=${tabIds[0]}> First Tab </fluent-tab>
-    <fluent-tab id=${tabIds[1]}> Second Tab</fluent-tab>
-    <fluent-tab id=${tabIds[2]}> Third Tab</fluent-tab>
-    <fluent-tab id=${tabIds[3]}> Fourth Tab</fluent-tab>
+    <fluent-tab id=${tabIds[0]}>First Tab </fluent-tab>
+    <fluent-tab id=${tabIds[1]}>Second Tab</fluent-tab>
+    <fluent-tab id=${tabIds[2]}>Third Tab</fluent-tab>
+    <fluent-tab id=${tabIds[3]}>Fourth Tab</fluent-tab>
 
     <fluent-tab-panel id=${tabIds[0] + '-panel'}>Tab One Content</fluent-tab-panel>
     <fluent-tab-panel id=${tabIds[1] + '-panel'}>Tab Two Content</fluent-tab-panel>
@@ -36,10 +36,10 @@ export const TabsDefault = renderComponent(tabsDefault).bind({});
 
 const tabsHorizontal = html`
   <fluent-tabs orientation="horizontal">
-    <fluent-tab> First Tab </fluent-tab>
-    <fluent-tab> Second Tab</fluent-tab>
-    <fluent-tab> Third Tab</fluent-tab>
-    <fluent-tab> Fourth Tab</fluent-tab>
+    <fluent-tab>First Tab </fluent-tab>
+    <fluent-tab>Second Tab</fluent-tab>
+    <fluent-tab>Third Tab</fluent-tab>
+    <fluent-tab>Fourth Tab</fluent-tab>
 
     <fluent-tab-panel></fluent-tab-panel>
     <fluent-tab-panel></fluent-tab-panel>
