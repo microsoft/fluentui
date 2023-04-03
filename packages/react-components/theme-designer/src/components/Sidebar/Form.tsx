@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
