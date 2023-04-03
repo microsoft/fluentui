@@ -209,9 +209,9 @@ describe('Overflow', () => {
 
     cy.get(`[${selectors.item}]`).each((value, index) => {
       if (index >= overflowElementIndex) {
-        cy.get(value).should('have.css', 'display', 'none');
+        expect(Cypress.$(value).css('display')).to.equal('none');
       } else {
-        cy.get(value).should('have.css', 'display', 'inline-block');
+        expect(Cypress.$(value).css('display')).to.equal('inline-block');
       }
     });
   });
