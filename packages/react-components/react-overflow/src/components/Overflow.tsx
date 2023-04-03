@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 
   overflowingItems: {
-    [`& > [${DATA_OVERFLOWING}]`]: {
+    [`& [${DATA_OVERFLOWING}]`]: {
       display: 'none',
     },
   },

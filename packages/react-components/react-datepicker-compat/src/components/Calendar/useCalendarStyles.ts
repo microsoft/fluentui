@@ -79,7 +79,7 @@ const useGoTodayButtonStyles = makeStyles({
       color: tokens.colorBrandForeground1,
       cursor: 'pointer',
     },
-    '&:active': {
+    '&:hover:active': {
       color: tokens.colorBrandForeground2,
     },
     '&:disabled': {

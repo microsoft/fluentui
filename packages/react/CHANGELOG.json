@@ -2,6 +2,59 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 03 Apr 2023 07:37:18 GMT",
+      "tag": "@fluentui/react_v8.107.1",
+      "version": "8.107.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cbc6188edbe994d00fd4448c5200a85ce97d7388",
+            "comment": "fix: ColorPicker preview box updated to ignore forced colors to display chosen color"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Mar 2023 07:43:50 GMT",
+      "tag": "@fluentui/react_v8.107.0",
+      "version": "8.107.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a9e738b4004a59b252893d472caed84b1c336b9d",
+            "comment": "Added touch support to ColorPicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "98cb97736517c9041c95e13bd7bb27d9c0c1daa4",
+            "comment": "feat: Add blur function to ISearchBox componentRef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Mar 2023 07:38:26 GMT",
+      "tag": "@fluentui/react_v8.106.10",
+      "version": "8.106.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3e4575b1092ad3bdf0b34275748f2b41566ebe4b",
+            "comment": "fix: Ensure click event object is not passed to calendarDismissed callback in DatePicker."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Mar 2023 22:25:03 GMT",
       "tag": "@fluentui/react_v8.106.9",
       "version": "8.106.9",
