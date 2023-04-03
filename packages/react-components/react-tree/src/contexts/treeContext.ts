@@ -1,5 +1,6 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { TreeItemId, TreeOpenChangeData, TreeNavigationData_unstable } from '../Tree';
+import { TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
+import { TreeItemId } from '../TreeItem';
 import { emptyImmutableSet, ImmutableSet } from '../utils/ImmutableSet';
 
 export type TreeContextValue = {

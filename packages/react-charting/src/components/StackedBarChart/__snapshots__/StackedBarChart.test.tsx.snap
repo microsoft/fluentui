@@ -2083,6 +2083,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -2115,7 +2116,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   role="none"
                 >
                   <button
-                    aria-label="first Lorem ipsum dolor sit amet selected"
+                    aria-label="first Lorem ipsum dolor sit amet"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={2}
@@ -2205,7 +2206,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   role="none"
                 >
                   <button
-                    aria-label="Winter is coming selected"
+                    aria-label="Winter is coming"
                     aria-posinset={2}
                     aria-selected={false}
                     aria-setsize={2}

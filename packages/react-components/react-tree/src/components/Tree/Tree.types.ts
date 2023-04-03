@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TreeContextValue } from '../../contexts/treeContext';
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import { TreeItemId } from '../TreeItem/TreeItem.types';
 
 export type TreeSlots = {
   root: Slot<'div'>;
@@ -9,6 +10,7 @@ export type TreeSlots = {
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type TreeNavigationData_unstable =
+  | { event: React.MouseEvent<HTMLElement>; target: HTMLElement; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowRight }
   | { event: React.KeyboardEvent<HTMLElement>; target: HTMLElement; type: typeof ArrowLeft }
@@ -53,8 +55,6 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 export type TreeContextValues = {
   tree: TreeContextValue;
 };
-
-export type TreeItemId = string | number;
 
 export type TreeProps = ComponentProps<TreeSlots> & {
   /**

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: introduces innerTrapFocus and deprecates legacyTrapFocus",
-  "packageName": "@fluentui/react-popover",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

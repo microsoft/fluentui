@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';
-import { mergeClasses } from '@griffel/react';
 import {
   addMonths,
   addYears,
@@ -15,7 +14,6 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { defaultCalendarNavigationIcons } from './defaults';
 import { useCalendarStyles_unstable } from './useCalendarStyles';
 import type { ICalendarDay } from '../CalendarDay/CalendarDay.types';
 import type { ICalendarMonth } from '../CalendarMonth/CalendarMonth.types';
@@ -131,6 +129,9 @@ function useFocusLogic({ componentRef }: CalendarProps, isDayPickerVisible: bool
   return [dayPicker, monthPicker, focusOnNextUpdate] as const;
 }
 
+/**
+ * @internal
+ */
 export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef<HTMLDivElement, CalendarProps>(
   (props, forwardedRef) => {
     const {
@@ -150,7 +151,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       isMonthPickerVisible: isMonthPickerVisibleProp = true,
       maxDate,
       minDate,
-      navigationIcons = defaultCalendarNavigationIcons,
       onDismiss,
       onSelectDate,
       restrictedDates,
@@ -195,7 +195,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       return (
         showGoToToday && (
           <button
-            className={mergeClasses('js-goToday', classes.goTodayButton)}
+            className={classes.goTodayButton}
             onClick={onGotoToday}
             onKeyDown={onButtonKeyDown(onGotoToday)}
             type="button"
@@ -329,7 +329,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
         ref={forwardedRef}
         role="group"
         aria-label={selectionAndTodayString}
-        className={mergeClasses(classes.root, className, 'ms-slideDownIn10')}
+        className={classes.root}
         onKeyDown={onDatePickerPopupKeyDown}
       >
         <div className={classes.liveRegion} aria-live="polite" aria-atomic="true">
@@ -349,7 +349,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
             strings={strings!}
             // eslint-disable-next-line react/jsx-no-bind
             onHeaderSelect={onHeaderSelect}
-            navigationIcons={navigationIcons!}
             showWeekNumbers={showWeekNumbers}
             firstWeekOfYear={firstWeekOfYear!}
             dateTimeFormatter={dateTimeFormatter!}
@@ -378,7 +377,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
               highlightSelectedMonth={highlightSelectedMonth!}
               // eslint-disable-next-line react/jsx-no-bind
               onHeaderSelect={onHeaderSelect}
-              navigationIcons={navigationIcons!}
               dateTimeFormatter={dateTimeFormatter!}
               minDate={minDate}
               maxDate={maxDate}
