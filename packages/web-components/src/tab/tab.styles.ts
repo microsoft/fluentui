@@ -41,7 +41,6 @@ export const styles = css`
     display: inline-flex;
     flex-direction: column;
     padding: 0 2px;
-    max-width: 155px;
   }
 
   :host([aria-selected='true']) {
