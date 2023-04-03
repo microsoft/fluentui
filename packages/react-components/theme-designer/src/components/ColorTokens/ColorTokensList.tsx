@@ -96,10 +96,8 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
       ...themeWithOverrides,
       [token]: brand[brandValue],
     };
-    // eslint-disable-next-line prefer-spread
-    return Math.min.apply(
-      Math,
-      accessiblePairs[token].map(tokenPair => {
+    return Math.min(
+      ...accessiblePairs[token].map(tokenPair => {
         const [compToken, ratio] = tokenPair;
         const { testInfo } = calculateContrastRatio(
           theme as unknown as Record<string, string>,
