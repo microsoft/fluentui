@@ -105,7 +105,7 @@ export const styles = css`
 
   :host(:focus-visible) {
     border-radius: ${borderRadiusSmall};
-    box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
+    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
   }
 `;
