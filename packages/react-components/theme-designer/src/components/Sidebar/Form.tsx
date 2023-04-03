@@ -232,7 +232,7 @@ export const Form: React.FC = () => {
         </AccordionItem>
         <AccordionItem value="2">
           <AccordionHeader>
-            <Caption1Stronger>Step 2 - Contrast check</Caption1Stronger>
+            <Caption1Stronger>Step 2 - Accessibility checks</Caption1Stronger>
           </AccordionHeader>
           <AccordionPanel>
             <Switch checked={isDark} onChange={handleIsDarkChange} label={'dark theme'} />

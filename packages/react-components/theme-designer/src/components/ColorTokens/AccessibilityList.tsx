@@ -35,21 +35,23 @@ const useStyles = makeStyles({
 
 export interface AccessibilityContrastChipProps {
   failKeys: string[];
+  accessibilityName: string;
 }
 export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
   const styles = useStyles();
 
-  const { failKeys } = props;
+  const { failKeys, accessibilityName } = props;
   return (
     <Badge appearance="outline" color="important">
       {failKeys.length > 0 ? (
         <>
           <WarningRegular className={styles.icon} color="red" />
-          {failKeys.length} token{failKeys.length > 1 ? 's' : ''} miss required contrast &nbsp;
+          {failKeys.length} token{failKeys.length > 1 ? 's' : ''} miss required {accessibilityName} &nbsp;
         </>
       ) : (
         <>
-          <CheckmarkCircleRegular className={styles.icon} color="green" /> All contrast requirements met &nbsp;
+          <CheckmarkCircleRegular className={styles.icon} color="green" /> All {accessibilityName} requirements met
+          &nbsp;
         </>
       )}
     </Badge>
@@ -85,7 +87,8 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
         </AccordionItem>
         <AccordionItem value="FailLuminosity">
           <AccordionHeader>
-            Luminosity Issues &nbsp; <AccessibilityContrastChip failKeys={failedLuminosityKeys} />
+            Luminosity Issues &nbsp;{' '}
+            <AccessibilityContrastChip accessibilityName={'luminosity'} failKeys={failedLuminosityKeys} />
           </AccordionHeader>
           <AccordionPanel>
             <ColorTokensList
