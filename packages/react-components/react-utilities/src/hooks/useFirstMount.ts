@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
  * @internal
@@ -14,10 +15,9 @@ import * as React from 'react';
 export function useFirstMount(): boolean {
   const isFirst = React.useRef(true);
 
-  if (isFirst.current) {
+  useIsomorphicLayoutEffect(() => {
     isFirst.current = false;
-    return true;
-  }
+  }, []);
 
   return isFirst.current;
 }
