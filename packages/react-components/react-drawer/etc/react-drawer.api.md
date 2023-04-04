@@ -8,7 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DialogProps } from '@fluentui/react-dialog';
+import type { DialogProps } from '@fluentui/react-dialog';
+import type { DialogSurfaceProps } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -21,18 +22,30 @@ export const Drawer: ForwardRefComponent<DrawerProps>;
 export const drawerClassNames: SlotClassNames<DrawerSlots>;
 
 // @public
+export const drawerCSSVars: {
+    size: string;
+};
+
+// @public
 export type DrawerProps = ComponentProps<DrawerSlots> & {
     position?: 'left' | 'right';
     type?: 'persistent' | 'temporary';
+    size?: DrawerSizes | number;
+    modal?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
+
+// @public (undocumented)
+export type DrawerSizes = 'small' | 'medium' | 'large' | 'full';
 
 // @public (undocumented)
 export type DrawerSlots = {
     root: Slot<'div'>;
+    dialog?: NonNullable<Slot<DialogProps>>;
+    dialogSurface?: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
 // @public
-export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open'>>;
+export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>>;
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState) => JSX.Element | null;
