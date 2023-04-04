@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
     boxSizing: 'border-box',
     width: `var(${drawerCSSVars.size})`,
-    maxWidth: '100vw',
+    maxWidth: 'calc(100vw - 48px)',
     height: 'auto',
     top: 0,
     bottom: 0,
@@ -72,6 +72,7 @@ const useStyles = makeStyles({
   },
   sizeFull: {
     [drawerCSSVars.size]: '100vw',
+    maxWidth: '100vw',
   },
 });
 
