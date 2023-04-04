@@ -34,8 +34,8 @@ RenderFunction.parameters = {
     description: {
       story:
         'Field uses context to associate its label and message text with its child form control. All of the form ' +
-        'controls in this library use the context.<br/>' +
-        'To use a third party control that does not use FieldContext, the child of Field may be a function that ' +
+        'controls in this library support FieldContext.<br/>' +
+        'To use a third party control that does not support FieldContext, the child of Field may be a function that ' +
         'takes props to pass to the control. See the code in this example for more details.',
     },
   },
