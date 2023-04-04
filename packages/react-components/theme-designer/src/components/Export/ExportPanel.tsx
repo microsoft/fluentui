@@ -76,25 +76,25 @@ export const ExportPanel = () => {
     ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
   `;
 
-  const jsonValue = dedent`
-  const lightTheme: Theme = { ${themeToString(
-    { ...createLightTheme(brand), ...lightThemeOverrides },
-    '\u00A0\u00A0',
-  )} };
+  const jsonLightValue = dedent`
+   ${JSON.stringify({ ...createLightTheme(brand), ...lightThemeOverrides }, null, '\t')}`;
 
-  const darkTheme: Theme = { ${themeToString({ ...createDarkTheme(brand), ...darkThemeOverrides }, '\u00A0\u00A0')} };
+  const jsonDarkValue = dedent`
+     ${JSON.stringify({ ...createDarkTheme(brand), ...darkThemeOverrides }, null, '\t')} 
   `;
 
   const exportedValue = React.useMemo(() => {
     switch (selectedValue) {
       case 'Code':
         return codeValue;
-      case 'JSON':
-        return jsonValue;
+      case 'JSONLight':
+        return jsonLightValue;
+      case 'JSONDark':
+        return jsonDarkValue;
       default:
         return '';
     }
-  }, [codeValue, jsonValue, selectedValue]);
+  }, [codeValue, jsonLightValue, jsonDarkValue, selectedValue]);
 
   const onClickCopyToClipboard = () => {
     navigator.clipboard.writeText(exportedValue);
@@ -143,16 +143,8 @@ export const ExportPanel = () => {
                 onTabSelect={onTabSelect} // eslint-disable-line react/jsx-no-bind
               >
                 <Tab value="Code">Code</Tab>
-                <Tab value="JSON">JSON</Tab>
-                <Tab value="Swift" disabled>
-                  Swift
-                </Tab>
-                <Tab value="KT" disabled>
-                  KT
-                </Tab>
-                <Tab value="XAML" disabled>
-                  XAML
-                </Tab>
+                <Tab value="JSONLight">JSON (light)</Tab>
+                <Tab value="JSONDark">JSON (dark)</Tab>
               </TabList>
               <Textarea
                 className={styles.text}
