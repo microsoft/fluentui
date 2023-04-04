@@ -42,7 +42,7 @@ export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityCon
 
   const { failKeys, accessibilityName } = props;
   return (
-    <Badge appearance="outline" color="important">
+    <Badge appearance="outline" color="important" style={{ justifyContent: 'unset' }}>
       {failKeys.length > 0 ? (
         <>
           <WarningRegular className={styles.icon} color="red" />
