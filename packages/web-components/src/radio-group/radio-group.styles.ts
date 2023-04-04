@@ -4,6 +4,7 @@ import {
   colorCompoundBrandForeground1,
   colorNeutralForeground1,
   colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
   colorNeutralStrokeAccessible,
   fontFamilyBase,
   fontSizeBase300,
@@ -27,6 +28,11 @@ export const styles = css`
     align-items: flex-start;
     flex-direction: column;
     row-gap: ${spacingVerticalS};
+  }
+  :host([disabled]) {
+    --control-border-color: ${colorNeutralForegroundDisabled};
+    --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
+    --state-color: ${colorNeutralForegroundDisabled};
   }
   ::slotted([slot='label']) {
     color: ${colorNeutralForeground1};

@@ -16,23 +16,4 @@ export class RadioGroup extends FASTRadioGroup {
    */
   @attr({ mode: 'boolean' })
   public stacked: boolean = false;
-
-  protected createLocalTokens(): void {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-
-    if (this.disabled) {
-      this.style.setProperty('--control-border-color', `${colorNeutralForegroundDisabled.$value}`);
-      this.style.setProperty('--checked-indicator-background-color', `${colorNeutralForegroundDisabled.$value}`);
-      this.style.setProperty('--state-color', `${colorNeutralForegroundDisabled.$value}`);
-    }
-  }
-
-  protected slottedRadioButtonsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void {
-    super.slottedRadioButtonsChanged(oldValue, newValue);
-    if (this.disabled) {
-      this.createLocalTokens();
-    }
-  }
 }
