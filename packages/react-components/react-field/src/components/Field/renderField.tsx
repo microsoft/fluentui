@@ -7,7 +7,7 @@ import type { FieldContextValues, FieldSlots, FieldState } from './Field.types';
 /**
  * Render the final JSX of Field
  */
-export const renderField_unstable = (state: FieldState, contextValues?: FieldContextValues) => {
+export const renderField_unstable = (state: FieldState, contextValues: FieldContextValues) => {
   const { slots, slotProps } = getSlots<FieldSlots>(state);
 
   let { children } = state;
