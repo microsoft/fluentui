@@ -1,17 +1,6 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 /**
- * Checkbox Label position
- * @public
- */
-export const LabelPosition = {
-  before: 'before',
-  after: 'after',
-} as const;
-
-export type LabelPosition = ValuesOf<typeof LabelPosition>;
-
-/**
  * Checkbox shape
  * @public
  */
@@ -32,3 +21,14 @@ export const CheckboxSize = {
 } as const;
 
 export type CheckboxSize = ValuesOf<typeof CheckboxSize>;
+
+/**
+ * Checkbox label position
+ * @public
+ */
+export const CheckboxLabelPosition = {
+  before: 'before',
+  after: 'after',
+} as const;
+
+export type CheckboxLabelPosition = ValuesOf<typeof CheckboxLabelPosition>;
