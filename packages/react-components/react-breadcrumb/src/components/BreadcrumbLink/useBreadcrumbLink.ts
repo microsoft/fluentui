@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { BreadcrumbLinkProps, BreadcrumbLinkState } from './BreadcrumbLink.types';
-
+import { Link } from '@fluentui/react-link';
+import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 /**
  * Create the state required to render BreadcrumbLink.
  *
@@ -15,17 +16,26 @@ export const useBreadcrumbLink_unstable = (
   props: BreadcrumbLinkProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbLinkState => {
+  const { iconPosition, size } = useBreadcrumbContext_unstable();
+  const { current = false, disabled = false, icon, overflow = false, ...rest } = props;
+
+  const iconShorthand = resolveShorthand(icon);
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: Link,
+      icon: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
+    root: getNativeElementProps('a', {
       ref,
-      ...props,
+      ...rest,
     }),
+    current,
+    disabled,
+    icon: iconShorthand,
+    iconOnly: Boolean(iconShorthand?.children && !props.children),
+    iconPosition: props.iconPosition || iconPosition,
+    overflow,
+    size: props.size || size,
   };
 };

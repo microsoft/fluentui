@@ -1,11 +1,11 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbLinkSlots, BreadcrumbLinkState } from './BreadcrumbLink.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
   root: 'fui-BreadcrumbLink',
-  // TODO: add class names for all slots on BreadcrumbLinkSlots.
-  // Should be of the form `<slotName>: 'fui-BreadcrumbLink__<slotName>`
+  icon: 'fui-BreadcrumbLink__icon',
 };
 
 /**
@@ -13,10 +13,43 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
   },
-
-  // TODO add additional classes for different states and/or slots
+  icon: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.padding(tokens.spacingHorizontalXS),
+  },
+  small: {
+    height: '24px',
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...typographyStyles.caption1,
+  },
+  medium: {
+    height: '32px',
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...typographyStyles.body1,
+  },
+  large: {
+    height: '40px',
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...typographyStyles.body2,
+  },
+  overflow: {
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    '&:hover': {
+      textDecorationLine: 'none',
+    },
+  },
+  currentSmall: {
+    ...typographyStyles.caption1Strong,
+  },
+  currentMedium: {
+    ...typographyStyles.body1Strong,
+  },
+  currentLarge: {
+    ...typographyStyles.subtitle2,
+  },
 });
 
 /**
@@ -24,10 +57,25 @@ const useStyles = makeStyles({
  */
 export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): BreadcrumbLinkState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(breadcrumbLinkClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const currentSizeMap = {
+    small: styles.currentSmall,
+    medium: styles.currentMedium,
+    large: styles.currentLarge,
+  };
+
+  state.root.className = mergeClasses(
+    breadcrumbLinkClassNames.root,
+    styles.root,
+    styles[state.size],
+    state.overflow && styles.overflow,
+    state.current && currentSizeMap[state.size],
+    state.root.className,
+  );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+  }
 
   return state;
 };

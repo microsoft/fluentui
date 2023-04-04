@@ -7,7 +7,12 @@ import type { BreadcrumbLinkState, BreadcrumbLinkSlots } from './BreadcrumbLink.
  */
 export const renderBreadcrumbLink_unstable = (state: BreadcrumbLinkState) => {
   const { slots, slotProps } = getSlots<BreadcrumbLinkSlots>(state);
-
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  const { iconOnly, iconPosition } = state;
+  return (
+    <slots.root {...slotProps.root}>
+      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+      {!iconOnly && state.root.children}
+      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+    </slots.root>
+  );
 };
