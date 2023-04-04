@@ -13,7 +13,7 @@ import {
   colorPaletteRedBackground3,
 } from '../theme/design-tokens.js';
 
-/** Text styles
+/** ProgressBar styles
  * @public
  */
 export const styles = css`
