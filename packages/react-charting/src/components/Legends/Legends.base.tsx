@@ -45,6 +45,7 @@ export interface ILegendState {
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
+  private _selectedLegendsSet: { [key: string]: boolean };
 
   public constructor(props: ILegendsProps) {
     super(props);
@@ -62,6 +63,12 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       theme: theme!,
       className,
     });
+
+    this._selectedLegendsSet = {};
+    this.state.selectedLegends.forEach(legend => {
+      this._selectedLegendsSet[legend] = true;
+    });
+
     const dataToRender = this._generateData();
     return (
       <div className={this._classNames.root}>
@@ -318,7 +325,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       opacity: data.opacity,
     };
     const color = this._getColor(legend.title, legend.color);
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, canSelectMultipleLegends = false } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -342,7 +349,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     return (
       <button
         {...(allowFocusOnLegends && {
-          'aria-selected': this.state.selectedLegend === legend.title,
+          'aria-selected': canSelectMultipleLegends
+            ? !!this._selectedLegendsSet[legend.title]
+            : this.state.selectedLegend === legend.title,
           role: 'option',
           'aria-label': `${legend.title}`,
           'aria-setsize': data['aria-setsize'],
