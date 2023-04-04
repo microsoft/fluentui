@@ -123,7 +123,7 @@ apps/react-18-tests-v9 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
 apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
 
 #### Packages
-packages/azure-themes @Jacqueline-ms
+packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
