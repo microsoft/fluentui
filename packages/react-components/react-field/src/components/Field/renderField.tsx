@@ -12,7 +12,7 @@ export const renderField_unstable = (state: FieldState, contextValues: FieldCont
 
   let { children } = state;
   if (typeof children === 'function') {
-    children = children(getFieldControlProps(contextValues?.field) || {});
+    children = children(getFieldControlProps(contextValues.field) || {});
   }
 
   return (
