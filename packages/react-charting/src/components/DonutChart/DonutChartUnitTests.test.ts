@@ -7,14 +7,17 @@ describe('Unit test to convert data to localized string', () => {
 
   test('Should return the localised data in the given culture when input data is a string', () => {
     expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
+    expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
   });
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
     expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
+    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('٢٬٥٦٠');
   });
 
   test('Should return the localised data when the input data is a string containing a number', () => {
     expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
+    expect(utils.convertToLocaleString('1234', 'ar-SY')).toBe('١٬٢٣٤');
   });
 });
 
