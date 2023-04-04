@@ -20,7 +20,7 @@ import { AreaChartPerfThreeExample } from './AreaChart.PerfAnalysisThree.Example
 const AreaChartPerfThreeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.PerfAnalysisThree.Example.tsx') as string;
 
-export class AreaChartThree extends React.Component<IComponentDemoPageProps, {}> {
+export class AreaChartPageThree extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
