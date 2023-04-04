@@ -1,27 +1,11 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { Button, Caption1, makeStyles } from '@fluentui/react-components';
+import { Button, makeStyles } from '@fluentui/react-components';
 import type { Brands } from '@fluentui/react-theme';
 import { AccessibilityList } from './AccessibilityList';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 
 export interface ColorTokensProps {}
-
-export type ColorOverrideBrands = Record<string, Brands>;
-
-export type ColorOverrides = Record<string, ColorOverrideBrands>;
-
-export enum ColorOverrideAction {
-  AddOverride = 'Add Override',
-  ResetOverrides = 'Reset Overrides',
-  ResetCustomeOverrides = 'Reset Custom Overrides',
-}
-
-export type DispatchColorOverrides = {
-  type: string;
-  colorToken?: string;
-  newValue?: Brands;
-};
 
 const useStyles = makeStyles({
   root: {},
@@ -71,14 +55,9 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.row}>
-        <Caption1 className={styles.col}>Color tokens</Caption1>
-        <Caption1>Assigned values</Caption1>
-        <Caption1>Usage examples</Caption1>
-        <Button size="small" onClick={handleResetClick}>
-          Reset Customizations
-        </Button>
-      </div>
+      <Button size="small" onClick={handleResetClick}>
+        Reset Customizations
+      </Button>
       <AccessibilityList
         themeOverrides={themeOverrides}
         brand={brand}

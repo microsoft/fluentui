@@ -3,7 +3,6 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import {
   Badge,
-  Divider,
   Menu,
   MenuButton,
   MenuItemRadio,
@@ -12,6 +11,13 @@ import {
   MenuProps,
   MenuTrigger,
   Subtitle2,
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+  Text,
   Theme,
   tokens,
 } from '@fluentui/react-components';
@@ -84,7 +90,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
+const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
   const { brand, brandValue, brandValueString, selected, token, showContrast } = props;
 
@@ -134,104 +140,224 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
+  const columns = [
+    { columnKey: 'colorTokens', label: 'Color tokens' },
+    { columnKey: 'assignedValues', label: 'Assigned values' },
+    { columnKey: 'usageExamples', label: 'Usage examples' },
+  ];
+
   const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
+
+  if (coveredTokens.length === 0) {
+    return <Text>N/A</Text>;
+  }
+
   return (
-    <div>
-      {coveredTokens.map(token => {
-        const colorValue: Brands = colorOverrides[token];
-        const usage = (usageList as unknown as Record<string, string>)[token];
-        const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
-          const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          onNewOverride?.(token, newColor);
-        };
+    <>
+      <Table size="medium" aria-label="Table with color token and description">
+        <TableHeader>
+          <TableRow>
+            {columns.map(column => (
+              <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {coveredTokens.map(token => {
+            const colorValue: Brands = colorOverrides[token];
+            const usage = (usageList as unknown as Record<string, string>)[token];
+            const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
+              const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
+              onNewOverride?.(token, newColor);
+            };
 
-        const overridenTokens = Object.keys(themeOverrides);
+            const overridenTokens = Object.keys(themeOverrides);
 
-        return (
-          <div key={token.toString()}>
-            <div className={styles.row}>
-              <div className={styles.col}>
-                {overridenTokens.includes(token) ? <Badge appearance="filled" color="success" size="tiny" /> : <> </>}
-              </div>
-              <div className={styles.col}>
-                <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
-                <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2>
-              </div>
-              <div>
-                <Menu>
-                  <MenuTrigger disableButtonEnhancement>
-                    <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
-                      {themeName} {colorValue}
-                    </MenuButton>
-                  </MenuTrigger>
-                  <MenuPopover>
-                    <MenuList onCheckedValueChange={handleColorChange}>
-                      {brandRamp.map(brandValue => {
-                        const selected = colorValue === brandValue;
-                        const brandValueString = brandValue.toString();
-                        return (
-                          <div key={brandValueString}>
-                            <ColorTokenRow
-                              token={token}
-                              brand={brand}
-                              showContrast={!!tests}
-                              brandValue={brandValue}
-                              brandValueString={brandValueString}
-                              selected={selected}
-                            />
+            return (
+              <TableRow key={token}>
+                <TableCell>
+                  <div className={styles.col}>
+                    {overridenTokens.includes(token) ? (
+                      <Badge appearance="filled" color="success" size="tiny" />
+                    ) : (
+                      <> </>
+                    )}
+                  </div>
+                  <div className={styles.col}>
+                    <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
+                    <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <Menu>
+                    <MenuTrigger disableButtonEnhancement>
+                      <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
+                        {themeName} {colorValue}
+                      </MenuButton>
+                    </MenuTrigger>
+                    <MenuPopover>
+                      <MenuList onCheckedValueChange={handleColorChange}>
+                        {brandRamp.map(brandValue => {
+                          const selected = colorValue === brandValue;
+                          const brandValueString = brandValue.toString();
+                          return (
+                            <div key={brandValueString}>
+                              <ColorTokenCol
+                                token={token}
+                                brand={brand}
+                                showContrast={!!tests}
+                                brandValue={brandValue}
+                                brandValueString={brandValueString}
+                                selected={selected}
+                              />
+                            </div>
+                          );
+                        })}
+                      </MenuList>
+                    </MenuPopover>
+                  </Menu>
+                  {tests &&
+                    tests.map(testResult => {
+                      const testType = testResult.testType;
+                      let hex: string = '';
+                      let output;
+                      let desiredOutput;
+                      if (testType === TestType.contrastRatio) {
+                        const testInfo = testResult.testInfo as ContrastRatioTest;
+                        hex = testInfo.compHex;
+                        output = testInfo.ratio;
+                        desiredOutput = testInfo.desiredRatio;
+                      } else if (testType === TestType.luminosity) {
+                        const testInfo = testResult.testInfo as LuminosityTest;
+                        hex = testInfo.compHex;
+                        output = testInfo.percentDiff;
+                        desiredOutput = testInfo.desiredPercentDiff;
+                      }
+
+                      return (
+                        <div key={token + ' ' + hex}>
+                          <WarningRegular color="red" />{' '}
+                          {testType === TestType.contrastRatio ? 'Contrast' : 'Luminosity'} {' against'}
+                          <div
+                            className={styles.colorPreview}
+                            style={{
+                              backgroundColor: brand[colorValue],
+                              color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
+                            }}
+                          >
+                            {hex}
                           </div>
-                        );
-                      })}
-                    </MenuList>
-                  </MenuPopover>
-                </Menu>
-              </div>
-              <div className={styles.col}>{usage}</div>
-              <div className={styles.row2}>
-                {tests ? (
-                  tests.forEach(testResult => {
-                    const testType = testResult.testType;
-                    var hex: string = '';
-                    var output;
-                    var desiredOutput;
-                    if (testType === TestType.contrastRatio) {
-                      const testInfo = testResult.testInfo as ContrastRatioTest;
-                      hex = testInfo.compHex;
-                      output = testInfo.ratio;
-                      desiredOutput = testInfo.desiredRatio;
-                    } else if (testType == TestType.luminosity) {
-                      const testInfo = testResult.testInfo as LuminosityTest;
-                      hex = testInfo.compHex;
-                      output = testInfo.percentDiff;
-                      desiredOutput = testInfo.desiredPercentDiff;
-                    }
-
-                    return (
-                      <div key={token + ' ' + hex}>
-                        <WarningRegular color="red" /> {testType === TestType.contrastRatio ? 'Contrast' : 'Luminosity'}{' '}
-                        {' against'}
-                        <div
-                          className={styles.colorPreview}
-                          style={{
-                            backgroundColor: brand[colorValue],
-                            color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
-                          }}
-                        >
-                          {hex}
+                          is {output} - expected {desiredOutput}
                         </div>
-                        is {output} - expected {desiredOutput}
-                      </div>
-                    );
-                  })
-                ) : (
-                  <></>
-                )}
-              </div>
-            </div>
-            <Divider />
-          </div>
-        );
-      })}
-    </div>
+                      );
+                    })}
+                </TableCell>
+                <TableCell>{usage}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+      {/*<div>*/}
+      {/*    {coveredTokens.map(token => {*/}
+      {/*        const colorValue: Brands = colorOverrides[token];*/}
+      {/*        const usage = (usageList as unknown as Record<string, string>)[token];*/}
+      {/*        const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {*/}
+      {/*            const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;*/}
+      {/*            onNewOverride?.(token, newColor);*/}
+      {/*        };*/}
+
+      {/*        const overridenTokens = Object.keys(themeOverrides);*/}
+
+      {/*        return (*/}
+      {/*            <div key={token.toString()}>*/}
+      {/*                <div className={styles.row}>*/}
+      {/*                    <div className={styles.col}>*/}
+      {/*                        {overridenTokens.includes(token) ?*/}
+      {/*                            <Badge appearance="filled" color="success" size="tiny"/> : <> </>}*/}
+      {/*                    </div>*/}
+      {/*                    <div className={styles.col}>*/}
+      {/*                        <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>*/}
+      {/*                        <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2>*/}
+      {/*                    </div>*/}
+      {/*                    <div>*/}
+      {/*                        <Menu>*/}
+      {/*                            <MenuTrigger disableButtonEnhancement>*/}
+      {/*                                <MenuButton shape="circular"*/}
+      {/*                                            icon={<CircleFilled primaryFill={brand[colorValue]}/>}>*/}
+      {/*                                    {themeName} {colorValue}*/}
+      {/*                                </MenuButton>*/}
+      {/*                            </MenuTrigger>*/}
+      {/*                            <MenuPopover>*/}
+      {/*                                <MenuList onCheckedValueChange={handleColorChange}>*/}
+      {/*                                    {brandRamp.map(brandValue => {*/}
+      {/*                                        const selected = colorValue === brandValue;*/}
+      {/*                                        const brandValueString = brandValue.toString();*/}
+      {/*                                        return (*/}
+      {/*                                            <div key={brandValueString}>*/}
+      {/*                                                <ColorTokenCol*/}
+      {/*                                                    token={token}*/}
+      {/*                                                    brand={brand}*/}
+      {/*                                                    showContrast={!!tests}*/}
+      {/*                                                    brandValue={brandValue}*/}
+      {/*                                                    brandValueString={brandValueString}*/}
+      {/*                                                    selected={selected}*/}
+      {/*                                                />*/}
+      {/*                                            </div>*/}
+      {/*                                        );*/}
+      {/*                                    })}*/}
+      {/*                                </MenuList>*/}
+      {/*                            </MenuPopover>*/}
+      {/*                        </Menu>*/}
+      {/*                    </div>*/}
+      {/*                    <div className={styles.col}>{usage}</div>*/}
+      {/*                    <div className={styles.row2}>*/}
+      {/*                        {tests ? (*/}
+      {/*                            tests.forEach(testResult => {*/}
+      {/*                                const testType = testResult.testType;*/}
+      {/*                                let hex: string = '';*/}
+      {/*                                let output;*/}
+      {/*                                let desiredOutput;*/}
+      {/*                                if (testType === TestType.contrastRatio) {*/}
+      {/*                                    const testInfo = testResult.testInfo as ContrastRatioTest;*/}
+      {/*                                    hex = testInfo.compHex;*/}
+      {/*                                    output = testInfo.ratio;*/}
+      {/*                                    desiredOutput = testInfo.desiredRatio;*/}
+      {/*                                } else if (testType === TestType.luminosity) {*/}
+      {/*                                    const testInfo = testResult.testInfo as LuminosityTest;*/}
+      {/*                                    hex = testInfo.compHex;*/}
+      {/*                                    output = testInfo.percentDiff;*/}
+      {/*                                    desiredOutput = testInfo.desiredPercentDiff;*/}
+      {/*                                }*/}
+
+      {/*                                return (*/}
+      {/*                                    <div key={token + ' ' + hex}>*/}
+      {/*                                        <WarningRegular*/}
+      {/*                                            color="red"/> {testType === TestType.contrastRatio ? 'Contrast' : 'Luminosity'}{' '}*/}
+      {/*                                        {' against'}*/}
+      {/*                                        <div*/}
+      {/*                                            className={styles.colorPreview}*/}
+      {/*                                            style={{*/}
+      {/*                                                backgroundColor: brand[colorValue],*/}
+      {/*                                                color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',*/}
+      {/*                                            }}*/}
+      {/*                                        >*/}
+      {/*                                            {hex}*/}
+      {/*                                        </div>*/}
+      {/*                                        is {output} - expected {desiredOutput}*/}
+      {/*                                    </div>*/}
+      {/*                                );*/}
+      {/*                            })*/}
+      {/*                        ) : (*/}
+      {/*                            <></>*/}
+      {/*                        )}*/}
+      {/*                    </div>*/}
+      {/*                </div>*/}
+      {/*                <Divider/>*/}
+      {/*            </div>*/}
+      {/*        );*/}
+      {/*    })}*/}
+      {/*</div>*/}
+    </>
   );
 };
