@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Fri, 24 Mar 2023 10:15:27 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.15)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.14..@fluentui/react-virtualizer_v9.0.0-alpha.15)
+
+### Changes
+
+- fix: remove disallowed v9 react-fabric/v8 from dependency to mitigate dep-tree creep ([PR #27334](https://github.com/microsoft/fluentui/pull/27334) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.14)
 

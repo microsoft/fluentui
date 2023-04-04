@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Hook up FieldContext for use inside a Field",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

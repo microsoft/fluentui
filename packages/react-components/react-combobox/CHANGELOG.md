@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Tue, 21 Mar 2023 21:23:28 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2023 18:44:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.2.7)
+
+Tue, 04 Apr 2023 18:44:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.2.6..@fluentui/react-combobox_v9.2.7)
+
+### Patches
+
+- fix: make Option's checkIcon slot render conditionally ([PR #27409](https://github.com/microsoft/fluentui/pull/27409) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-field to v9.0.0-alpha.29 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-portal to v9.2.4 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-positioning to v9.5.8 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.2.5)
 

@@ -35,7 +35,7 @@
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-shared-contexts": "^9.3.3",
     "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.7.2",
+    "@fluentui/react-utilities": "^9.7.3",
     "@griffel/react": "^1.5.2",
     "@swc/helpers": "^0.4.14"
   },
