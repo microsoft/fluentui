@@ -181,6 +181,23 @@ describe('Checkbox', () => {
     expect(checkbox.required).toBe(true);
   });
 
+  it('is labelled by both the Field and Checkbox labels, if both are present', () => {
+    const renderedComponent = render(
+      <Field label="Field label">
+        <Checkbox label="Checkbox label" />
+      </Field>,
+    );
+
+    const fieldLabel = renderedComponent.getByText('Field label') as HTMLLabelElement;
+    const checkboxLabel = renderedComponent.getByText('Checkbox label') as HTMLLabelElement;
+    const checkbox = renderedComponent.getByRole('checkbox') as HTMLInputElement;
+
+    // The checkbox should be labelled by both labels using htmlFor and not aria-labelledby
+    expect(checkbox.id).toEqual(fieldLabel.htmlFor);
+    expect(checkbox.id).toEqual(checkboxLabel.htmlFor);
+    expect(checkbox.getAttribute('aria-labelledby')).toBeNull();
+  });
+
   describe('Accessibility Tests', () => {
     it('renders the input slot (as input)', () => {
       const { container } = render(<Checkbox input={{ className: 'test' }} />);
