@@ -656,7 +656,7 @@ describe('Dropdown', () => {
 
   it('gets props from a surrounding Field', () => {
     const result = render(
-      <Field label="Test label" validationMessage="Test error message">
+      <Field label="Test label" validationMessage="Test error message" required>
         <Dropdown>
           <Option>Red</Option>
           <Option>Green</Option>
@@ -665,12 +665,13 @@ describe('Dropdown', () => {
       </Field>,
     );
 
-    const combobox = result.getByRole('combobox');
+    const combobox = result.getByRole('combobox') as HTMLInputElement;
     const label = result.getByText('Test label') as HTMLLabelElement;
     const message = result.getByText('Test error message');
 
     expect(combobox.id).toEqual(label.htmlFor);
     expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
     expect(combobox.getAttribute('aria-invalid')).toEqual('true');
+    expect(combobox.getAttribute('aria-required')).toEqual('true');
   });
 });

@@ -101,7 +101,7 @@ describe('Select', () => {
 
   it('gets props from a surrounding Field', () => {
     const result = render(
-      <Field label="Test label" validationMessage="Test error message">
+      <Field label="Test label" validationMessage="Test error message" required>
         <Select data-testid="select">
           <option>A</option>
           <option>B</option>
@@ -110,12 +110,13 @@ describe('Select', () => {
       </Field>,
     );
 
-    const select = result.getByTestId('select');
+    const select = result.getByTestId('select') as HTMLSelectElement;
     const label = result.getByText('Test label') as HTMLLabelElement;
     const message = result.getByText('Test error message');
 
     expect(select.id).toEqual(label.htmlFor);
     expect(select.getAttribute('aria-describedby')).toEqual(message.id);
     expect(select.getAttribute('aria-invalid')).toEqual('true');
+    expect(select.required).toBe(true);
   });
 });

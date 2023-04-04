@@ -99,17 +99,18 @@ describe('Input', () => {
 
   it('gets props from a surrounding Field', () => {
     renderedComponent = render(
-      <Field label="Test label" validationMessage="Test error message">
+      <Field label="Test label" validationMessage="Test error message" required>
         <Input />
       </Field>,
     );
 
-    const input = renderedComponent.getByRole('textbox');
+    const input = renderedComponent.getByRole('textbox') as HTMLInputElement;
     const label = renderedComponent.getByText('Test label') as HTMLLabelElement;
     const message = renderedComponent.getByText('Test error message');
 
     expect(input.id).toEqual(label.htmlFor);
     expect(input.getAttribute('aria-describedby')).toEqual(message.id);
     expect(input.getAttribute('aria-invalid')).toEqual('true');
+    expect(input.required).toBe(true);
   });
 });

@@ -168,17 +168,17 @@ describe('Checkbox', () => {
 
   it('gets props from a surrounding Field', () => {
     const renderedComponent = render(
-      <Field validationMessage="Test error message">
+      <Field validationMessage="Test error message" required>
         <Checkbox label="Checkbox" />
       </Field>,
     );
 
-    const checkbox = renderedComponent.getByRole('checkbox');
+    const checkbox = renderedComponent.getByRole('checkbox') as HTMLInputElement;
     const message = renderedComponent.getByText('Test error message');
 
-    expect(message.id).toBeTruthy();
     expect(checkbox.getAttribute('aria-describedby')).toEqual(message.id);
     expect(checkbox.getAttribute('aria-invalid')).toEqual('true');
+    expect(checkbox.required).toBe(true);
   });
 
   describe('Accessibility Tests', () => {

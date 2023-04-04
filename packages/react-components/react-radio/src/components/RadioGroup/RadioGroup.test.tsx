@@ -247,7 +247,7 @@ describe('RadioGroup', () => {
 
   it('gets props from a surrounding Field', () => {
     const result = render(
-      <Field label="Test label" validationMessage="Test error message">
+      <Field label="Test label" validationMessage="Test error message" required>
         <RadioGroup>
           <Radio value="a" />
           <Radio value="b" />
@@ -262,5 +262,6 @@ describe('RadioGroup', () => {
 
     expect(radiogroup.getAttribute('aria-labelledby')).toEqual(label.id);
     expect(radiogroup.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(radiogroup.getAttribute('aria-required')).toEqual('true');
   });
 });

@@ -157,17 +157,18 @@ describe('Switch', () => {
 
   it('gets props from a surrounding Field', () => {
     const result = render(
-      <Field label="Test label" validationMessage="Test error message">
+      <Field label="Test label" validationMessage="Test error message" required>
         <Switch />
       </Field>,
     );
 
-    const input = result.getByRole('switch');
+    const input = result.getByRole('switch') as HTMLInputElement;
     const label = result.getByText('Test label') as HTMLLabelElement;
     const message = result.getByText('Test error message');
 
     expect(input.id).toEqual(label.htmlFor);
     expect(input.getAttribute('aria-describedby')).toEqual(message.id);
     expect(input.getAttribute('aria-invalid')).toEqual('true');
+    expect(input.required).toBe(true);
   });
 });
