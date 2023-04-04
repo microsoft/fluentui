@@ -10,7 +10,7 @@ import {
   makeStyles,
 } from '@fluentui/react-components';
 import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
-import { ColorTokensList } from './ColorTokensList';
+import { TokenIssueList } from './TokenIssueList';
 import { sortOverrideableColorTokens } from '../../utils/getOverridableTokenBrandColors';
 import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
 import { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
@@ -75,7 +75,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
             <AccessibilityContrastChip accessibilityName="contrast" failKeys={failedContrastKeys} />
           </AccordionHeader>
           <AccordionPanel>
-            <ColorTokensList
+            <TokenIssueList
               brand={brand}
               themeName={themeName}
               colorOverrides={colorOverride}
@@ -92,7 +92,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
             <AccessibilityContrastChip accessibilityName={'luminosity'} failKeys={failedLuminosityKeys} />
           </AccordionHeader>
           <AccordionPanel>
-            <ColorTokensList
+            <TokenIssueList
               brand={brand}
               themeName={themeName}
               colorOverrides={colorOverride}
@@ -106,7 +106,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
         <AccordionItem value="All Tokens">
           <AccordionHeader>All Tokens</AccordionHeader>
           <AccordionPanel>
-            <ColorTokensList
+            <TokenIssueList
               brand={brand}
               themeName={themeName}
               themeOverrides={themeOverrides}
