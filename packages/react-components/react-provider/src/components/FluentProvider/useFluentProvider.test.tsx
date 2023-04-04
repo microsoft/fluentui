@@ -83,66 +83,72 @@ describe('useFluentProvider_unstable', () => {
     `);
   });
 
-  it('should merge customStyles', () => {
+  describe('customStyles', () => {
     const customStylesA: FluentProviderCustomStyleHooks = {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      useButtonStyles_unstable: (state: unknown) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (state as any).testResult = 'useButtonStyles_unstable_A';
+      useButtonStyles_unstable: () => {
+        return 'useButtonStyles_unstable_A';
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      useCompoundButtonStyles_unstable: (state: unknown) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (state as any).testResult = 'useCompoundButtonStyles_unstable_A';
+      useImageStyles_unstable: () => {
+        return 'useImageStyles_unstable_A';
       },
     };
 
     const customStylesB: FluentProviderCustomStyleHooks = {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      useCompoundButtonStyles_unstable: (state: unknown) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (state as any).testResult = 'useCompoundButtonStyles_unstable_B';
+      useButtonStyles_unstable: () => {
+        return 'useButtonStyles_unstable_B';
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      useSplitButtonStyles_unstable: (state: unknown) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (state as any).testResult = 'useSplitButtonStyles_unstable_B';
+      useLinkStyles_unstable: () => {
+        return 'useLinkStyles_unstable_B';
       },
     };
 
-    const DefaultWrapper: React.FC = ({ children }) => <FluentProvider>{children}</FluentProvider>;
+    it('keeps functions when custom hooks are not defined', () => {
+      const { result } = renderHook(
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        () => useFluentProvider_unstable({ customStyleHooks_unstable: customStylesA }, React.createRef()),
+      );
 
-    const { result: defaultResult } = renderHook(
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      () => useFluentProvider_unstable({}, React.createRef()),
-      {
-        wrapper: DefaultWrapper,
-      },
-    );
+      // Default hooks are still defined
+      expect(result.current.customStyleHooks_unstable.useAvatarStyles_unstable).toBeInstanceOf(Function);
 
-    const Wrapper: React.FC = ({ children }) => (
-      <FluentProvider customStyleHooks_unstable={customStylesA}>{children}</FluentProvider>
-    );
+      expect(result.current.customStyleHooks_unstable.useButtonStyles_unstable).toEqual(
+        customStylesA.useButtonStyles_unstable,
+      );
+      expect(result.current.customStyleHooks_unstable.useImageStyles_unstable).toEqual(
+        customStylesA.useImageStyles_unstable,
+      );
+    });
 
-    const { result } = renderHook(
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      () => useFluentProvider_unstable({ customStyleHooks_unstable: customStylesB }, React.createRef()),
-      {
-        wrapper: Wrapper,
-      },
-    );
+    it('should merge nested customStyles', () => {
+      const { result } = renderHook(
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        () => useFluentProvider_unstable({ customStyleHooks_unstable: customStylesB }, React.createRef()),
+        {
+          wrapper: ({ children }) => (
+            <FluentProvider customStyleHooks_unstable={customStylesA}>{children}</FluentProvider>
+          ),
+        },
+      );
 
-    expect(result.current.customStyleHooks_unstable.useToggleButtonStyles_unstable).toBe(
-      defaultResult.current.customStyleHooks_unstable.useToggleButtonStyles_unstable,
-    );
-    expect(result.current.customStyleHooks_unstable.useButtonStyles_unstable).toEqual(
-      customStylesA.useButtonStyles_unstable,
-    );
-    expect(result.current.customStyleHooks_unstable.useCompoundButtonStyles_unstable).toEqual(
-      customStylesB.useCompoundButtonStyles_unstable,
-    );
-    expect(result.current.customStyleHooks_unstable.useSplitButtonStyles_unstable).toEqual(
-      customStylesB.useSplitButtonStyles_unstable,
-    );
+      // Default hooks are still defined
+      expect(result.current.customStyleHooks_unstable.useAvatarStyles_unstable).toBeInstanceOf(Function);
+
+      // Overrides from outer FluentProvider are preserved
+      expect(result.current.customStyleHooks_unstable.useImageStyles_unstable).toEqual(
+        customStylesA.useImageStyles_unstable,
+      );
+
+      // Overrides from inner FluentProvider win
+      expect(result.current.customStyleHooks_unstable.useButtonStyles_unstable).toEqual(
+        customStylesB.useButtonStyles_unstable,
+      );
+      expect(result.current.customStyleHooks_unstable.useLinkStyles_unstable).toEqual(
+        customStylesB.useLinkStyles_unstable,
+      );
+    });
   });
 });
