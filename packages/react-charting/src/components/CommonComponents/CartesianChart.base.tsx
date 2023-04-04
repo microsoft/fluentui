@@ -134,6 +134,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
+    const start = performance.now();
     const {
       calloutProps,
       points,
