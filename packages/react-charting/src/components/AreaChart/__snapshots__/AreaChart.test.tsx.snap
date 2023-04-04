@@ -1599,6 +1599,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           >
             <div
               aria-label="Legends"
+              aria-multiselectable={false}
               className=
                   ms-FocusZone
                   &:focus {
@@ -1631,7 +1632,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                   role="none"
                 >
                   <button
-                    aria-label="metaData1 selected"
+                    aria-label="metaData1"
                     aria-posinset={1}
                     aria-selected={false}
                     aria-setsize={1}

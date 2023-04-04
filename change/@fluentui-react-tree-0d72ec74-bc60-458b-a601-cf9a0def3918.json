@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: adds e2e flat tree tests",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
