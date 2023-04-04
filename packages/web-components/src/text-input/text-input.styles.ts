@@ -90,11 +90,10 @@ export const styles = css`
     content: '';
     position: absolute;
     left: 0px;
-    bottom: -1px;
+    bottom: 1px;
     right: 0px;
     height: 2px;
-    border-bottom-left-radius: ${borderRadiusMedium};
-    border-bottom-right-radius: ${borderRadiusMedium};
+    border-bottom-radius: ${borderRadiusMedium};
     border-bottom: ${strokeWidthThick} solid ${colorCompoundBrandStroke};
     clip-path: inset(calc(100% - 2px) 0px 0px);
     transform: scaleX(0);
@@ -159,8 +158,9 @@ export const styles = css`
   :host([disabled]) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host:focus-within) .root {
+  :host(:focus-within) .root {
     outline: transparent solid 2px;
+    border-bottom: 0;
   }
   :host(:focus-within) .root::after {
     transform: scaleX(1);
@@ -205,17 +205,17 @@ export const styles = css`
     border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
   }
   :host([appearance='underline']:hover) .root {
-    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessibleHover};
+    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
   }
   :host([appearance='underline']:active) .root {
-    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessiblePressed};
+    border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([appearance='underline']):focus-within .root {
     border: 0;
-    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessiblePressed};
+    border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([appearance='underline'][disabled]) .root {
-    border-bottom-color: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
+    border-bottom-color: ${colorNeutralStrokeDisabled};
   }
   :host([appearance='filled-lighter']) .root,
   :host([appearance='filled-lighter--shadow']) .root,

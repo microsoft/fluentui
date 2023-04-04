@@ -164,12 +164,14 @@ export const Size = renderComponent(html<TextInputStoryArgs>`
 `);
 
 export const Inline = renderComponent(html<TextInputStoryArgs>`
-  <fluent-text-input style="display: inline-flex; align-items: center;">
+  <fluent-text-input style="display: flex; align-items: center;">
     <span slot="start">${Person20Regular}</span>
     <span slot="end">${Person20Regular}</span>
     Inline Input
   </fluent-text-input>
-  <p style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}">
+  <p
+    style="font-family: ${fontFamilyBase}; font-size: ${fontSizeBase300}; line-height: ${lineHeightBase300}; display: flex; align-items: center; gap: 4px;"
+  >
     This input is
     <fluent-text-input style="display: inline-flex; align-items: center;" placeholder="Inline">
       <span slot="start">${Person20Regular}</span>
