@@ -19,7 +19,7 @@ import {
 } from '@fluentui/react-components';
 import { DismissSquare24Regular } from '@fluentui/react-icons';
 
-import { getBrandValues, objectToString, themeToString } from '../../utils/toString';
+import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { ExportLink } from '../Export/ExportLink';
 
