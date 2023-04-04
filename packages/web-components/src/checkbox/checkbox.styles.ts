@@ -4,6 +4,8 @@ import {
   borderRadiusSmall,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundPressed,
+  colorCompoundBrandForeground1,
+  colorCompoundBrandStroke,
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorNeutralForeground3,
@@ -69,26 +71,28 @@ export const styles = css`
     display: none;
     visibility: hidden;
   }
-  .checked-indicator {
-    width: 100%;
-    height: 100%;
+  .checked-indicator,
+  .indeterminate-indicator {
     display: block;
-    opacity: 0;
     pointer-events: none;
+    opacity: 0;
+  }
+  .checked-indicator {
+    color: ${colorNeutralForegroundInverted};
     height: 12px;
     width: 12px;
-    color: ${colorNeutralForegroundInverted};
   }
   .indeterminate-indicator {
-    border-radius: 0;
-    background: cyan;
+    background-color: ${colorCompoundBrandForeground1};
+    border-radiuis: ${borderRadiusSmall};
+    height: 8px;
+    width: 12px;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 50%;
     height: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
   }
   :host(:hover) .label {
     color: ${colorNeutralForeground2};
@@ -99,7 +103,7 @@ export const styles = css`
   :host(:disabled) .label {
     color: ${colorNeutralForegroundDisabled};
   }
-  :host([aria-checked='true']:not([disabled])) .label {
+  :host([aria-checked='true']) .label {
     color: ${colorNeutralForeground1};
   }
 
@@ -112,15 +116,15 @@ export const styles = css`
   :host(:disabled) .control {
     color: ${colorNeutralStrokeDisabled};
   }
-  :host([aria-checked='true']:not([disabled])) .control {
+  :host([aria-checked='true']) .control {
     background-color: ${colorCompoundBrandBackground};
   }
-
+  :host([aria-checked='true']) .control,
+  :host([aria-checked='mixed']) .control {
+    border-color: ${colorCompoundBrandStroke};
+  }
   :host([aria-checked='true']) .checked-indicator,
   :host([aria-checked='mixed']) .indeterminate-indicator {
     opacity: 1;
-  }
-  :host([disabled]) {
-    opacity: 0.5;
   }
 `;
