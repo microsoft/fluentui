@@ -17,7 +17,7 @@ import type { SwitchProps, SwitchState } from './Switch.types';
  */
 export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
   const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
 

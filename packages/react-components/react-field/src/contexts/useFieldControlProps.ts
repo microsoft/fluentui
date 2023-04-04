@@ -6,14 +6,25 @@ import { useFieldContext_unstable } from './FieldContext';
  */
 export type FieldControlPropsOptions = {
   /**
-   * Skips setting aria-labelledby on the control if the label.htmlFor refers to the control.
+   * Skips setting `aria-labelledby` on the control if the `label.htmlFor` refers to the control.
    *
-   * This should be used with controls that can be the target of a label's htmlFor (e.g. input, textarea).
+   * This should be used with controls that can be the target of a label's `for` prop:
+   * `<button>`, `<input>`, `<progress>`, `<select>`, `<textarea>`.
    */
   supportsLabelFor?: boolean;
 
   /**
-   * True if the control has a size prop that matches Field's size prop.
+   * Sets `required` instead of `aria-required` when the Field is marked required.
+   *
+   * This should be used with controls that support the `required` prop:
+   * `<input>` (except `range` or `color`), `<select>`, `<textarea>`.
+   */
+  supportsRequired?: boolean;
+
+  /**
+   * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
+   *
+   * This should be used with controls that have a custom size prop that matches the Field's size prop.
    */
   supportsSize?: boolean;
 };
@@ -87,7 +98,11 @@ export function getFieldControlProps<Props extends FieldControlProps>(
   }
 
   if (required) {
-    props['aria-required'] ??= true;
+    if (options?.supportsRequired) {
+      (props as { required?: boolean }).required ??= true;
+    } else {
+      props['aria-required'] ??= true;
+    }
   }
 
   // Include the size prop if this control supports it

@@ -31,7 +31,7 @@ import { useFocusWithin } from '@fluentui/react-tabster';
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
 
   const { disabled = false, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
 

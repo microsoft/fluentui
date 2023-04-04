@@ -31,7 +31,7 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   // Merge props from surrounding <Field>, if any
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
 
   const baseState = useComboboxBaseState({ ...props, editable: true });
   const {

@@ -7,12 +7,12 @@ import { isConformant } from '../../testing/isConformant';
 import { Field } from './index';
 
 const TestInput = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
   return <input ref={ref} {...props} />;
 });
 
 const TestGroup = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: false });
+  props = useFieldControlProps_unstable(props);
   return <div role="group" ref={ref} {...props} />;
 });
 
@@ -92,17 +92,40 @@ describe('Field', () => {
     expect(group.getAttribute('aria-labelledby')).toBe(label.id);
   });
 
-  it('adds a required asterisk * to the label, and aria-required on the control when required is set', () => {
+  it('adds a required asterisk * to the label when required is set', () => {
     const result = render(
       <Field label="Test label" required>
         <TestInput />
       </Field>,
     );
 
-    const input = result.getByRole('textbox');
-
     expect(result.getByText('*')).toBeTruthy();
-    expect(input.getAttribute('aria-required')).toBe('true');
+  });
+
+  it('sets `required` on a control that supports the `required` prop', () => {
+    const result = render(
+      <Field required>
+        <TestInput />
+      </Field>,
+    );
+
+    const input = result.getByRole('textbox') as HTMLInputElement;
+
+    expect(input.required).toBe(true);
+    expect(input.getAttribute('aria-required')).toBeNull();
+  });
+
+  it('sets `aria-required` on a control that does not support the `required` prop', () => {
+    const result = render(
+      <Field required>
+        <TestGroup /> {/* Groups do not support the required prop */}
+      </Field>,
+    );
+
+    const group = result.getByRole('group');
+
+    expect(group.getAttribute('aria-required')).toBe('true');
+    expect(group.getAttribute('required')).toBeNull();
   });
 
   it('sets aria-describedby to the hint', () => {

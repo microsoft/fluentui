@@ -53,6 +53,7 @@ export type FieldControlProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'id' |
 // @public
 export type FieldControlPropsOptions = {
     supportsLabelFor?: boolean;
+    supportsRequired?: boolean;
     supportsSize?: boolean;
 };
 
