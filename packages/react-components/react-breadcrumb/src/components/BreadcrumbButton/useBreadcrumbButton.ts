@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
+import { useButton_unstable, ButtonProps } from '@fluentui/react-button';
+import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
 /**
  * Create the state required to render BreadcrumbButton.
@@ -13,19 +14,25 @@ import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbB
  */
 export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
+  const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
+
+  const { current = false, ...rest } = props;
+  const newProps = {
+    ...rest,
+    appearance: (props.appearance || appearance) as ButtonProps['appearance'],
+    iconOnly: Boolean(!props.children),
+    iconPosition,
+  };
+  const buttonState = useButton_unstable(newProps, ref);
   return {
-    // TODO add appropriate props/defaults
+    ...buttonState,
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: 'button',
+      icon: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    current,
+    size,
   };
 };

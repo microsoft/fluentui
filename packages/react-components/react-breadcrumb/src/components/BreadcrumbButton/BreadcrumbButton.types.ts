@@ -1,17 +1,27 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
+import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
 
-export type BreadcrumbButtonSlots = {
-  root: Slot<'div'>;
-};
+export type BreadcrumbButtonSlots = ButtonSlots;
 
 /**
  * BreadcrumbButton Props
  */
-export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & {};
+export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> &
+  Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size'> &
+  Pick<ButtonProps, 'disabled'> & {
+    /**
+     * Defines current sate of BreadcrumbButton.
+     *
+     * @default false
+     */
+    current?: boolean;
+  };
 
 /**
  * State used in rendering BreadcrumbButton
  */
-export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from BreadcrumbButtonProps.
-// & Required<Pick<BreadcrumbButtonProps, 'propName'>>
+export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> &
+  Omit<ButtonState, keyof ButtonSlots | 'components'> &
+  Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>> &
+  Required<Pick<ButtonProps, 'appearance'>>;

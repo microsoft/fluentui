@@ -120,7 +120,8 @@ Breadcrumb can be:
 
 ### Icon
 
-BreadcrumbItem can have an icon with text or just icon.
+Non-clickable items can't have icon.
+Only BreadcrumButton and BreadcrumbLink can have an icon with text or just icon.
 
 ### Size
 
@@ -190,7 +191,6 @@ BreadcrumbItem can be:
 - Link - BreadcrumbLink is used inside BreadcrumbItem.
 - Non-clickable content
 - Dropdown Menu
-- Icon (optional)
 
 It can contain a tooltip.
 
@@ -244,21 +244,18 @@ Usage
 
 #### API
 
-| Property     | Values            | Default  | Purpose                |
-| ------------ | ----------------- | -------- | ---------------------- |
-| current      | boolean           | false    | Indicates current page |
-| icon         | _slot_            |          | Sets icon              |
-| iconPosition | `before`, `after` | `before` | Sets icon position     |
+| Property | Values  | Default | Purpose                |
+| -------- | ------- | ------- | ---------------------- |
+| current  | boolean | false   | Indicates current page |
 
 #### Breadcrumb icon
 
 ```jsx
-<BreadcrumbItem icon={<IconComponent />}>Item</BreadcrumbItem>
-<BreadcrumbItem icon={<IconComponent />} iconPosition="after">
-  <BreadcrumbButton>Item</BreadcrumbButton>
+<BreadcrumbItem>
+  <BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item</BreadcrumbButton>
 </BreadcrumbItem>
-<BreadcrumbItem icon={<IconComponent />}>
-  <BreadcrumbLink>Item</BreadcrumbLink>
+<BreadcrumbItem>
+  <BreadcrumbLink icon={<IconComponent />}>Item</BreadcrumbLink>
 </BreadcrumbItem>
 ```
 
@@ -314,6 +311,14 @@ Under the hood @fluentui/react-button component is used.
   Link Item
 <BreadcrumbLink>
 ```
+
+#### API
+
+| Property     | Values            | Default  | Purpose                |
+| ------------ | ----------------- | -------- | ---------------------- |
+| current      | boolean           | false    | Indicates current page |
+| icon         | _slot_            |          | Sets icon              |
+| iconPosition | `before`, `after` | `before` | Sets icon position     |
 
 For Link @fluentui/react-link component is used.
 

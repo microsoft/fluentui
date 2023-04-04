@@ -7,7 +7,13 @@ import type { BreadcrumbButtonState, BreadcrumbButtonSlots } from './BreadcrumbB
  */
 export const renderBreadcrumbButton_unstable = (state: BreadcrumbButtonState) => {
   const { slots, slotProps } = getSlots<BreadcrumbButtonSlots>(state);
+  const { iconOnly, iconPosition } = state;
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root}>
+      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+      {!iconOnly && state.root.children}
+      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+    </slots.root>
+  );
 };

@@ -1,22 +1,43 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> = {
   root: 'fui-BreadcrumbButton',
-  // TODO: add class names for all slots on BreadcrumbButtonSlots.
-  // Should be of the form `<slotName>: 'fui-BreadcrumbButton__<slotName>`
+  icon: 'fui-BreadcrumbButton__icon',
 };
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  root: {},
+  small: {
+    height: '24px',
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...typographyStyles.caption1,
   },
-
-  // TODO add additional classes for different states and/or slots
+  medium: {
+    height: '32px',
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...typographyStyles.body1,
+  },
+  large: {
+    height: '40px',
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...typographyStyles.body2,
+  },
+  currentSmall: {
+    ...typographyStyles.caption1Strong,
+  },
+  currentMedium: {
+    ...typographyStyles.body1Strong,
+  },
+  currentLarge: {
+    ...typographyStyles.subtitle2,
+  },
 });
 
 /**
@@ -24,10 +45,20 @@ const useStyles = makeStyles({
  */
 export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState): BreadcrumbButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(breadcrumbButtonClassNames.root, styles.root, state.root.className);
+  const currentSizeMap = {
+    small: styles.currentSmall,
+    medium: styles.currentMedium,
+    large: styles.currentLarge,
+  };
+  state.root.className = mergeClasses(
+    breadcrumbButtonClassNames.root,
+    styles[state.size],
+    styles.root,
+    state.current && currentSizeMap[state.size],
+    state.root.className,
+  );
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  useButtonStyles_unstable({ ...state });
 
   return state;
 };
