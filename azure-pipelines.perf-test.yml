@@ -50,12 +50,6 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      # - script: |
-      #     # yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
-      #     yarn workspace @fluentui/digest build
-      #   condition: eq(variables.isPR, true)
-      #   displayName: Build to Perf Test (Northstar)
-
       - script: |
           yarn workspace @fluentui/perf-test-northstar perf:test --base
         condition: eq(variables.isPR, false)
