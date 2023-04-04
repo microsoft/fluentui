@@ -3,20 +3,35 @@ import * as shape from 'd3-shape';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { getColorFromToken } from '../../utilities/index';
-import { ILegend, Legends } from '../Legends/index';
+import {
+  Points,
+  convertToLocaleString,
+  getAccessibleDataObject,
+  getColorFromToken,
+  pointTypes,
+} from '../../utilities/index';
+import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
+import { IYValueHover } from '../../index';
 
 const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
 const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
 const FONT_SIZES = [20, 24, 32, 32, 40, 40];
 const getClassNames = classNamesFunction<IGaugeChartStyleProps, IGaugeChartStyles>();
 
+interface IYValue extends Omit<IYValueHover, 'y'> {
+  y?: string | number;
+}
 interface IGaugeChartState {
   hoveredLegend: string;
   selectedLegend: string;
   focusedSegment: string;
+  hoveredElement: SVGElement | null;
+  isCalloutVisible: boolean;
+  hoverXValue: string | number;
+  hoverYValues: IYValue[];
 }
 
 export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChartState> {
@@ -29,6 +44,10 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       hoveredLegend: '',
       selectedLegend: '',
       focusedSegment: '',
+      hoveredElement: null,
+      isCalloutVisible: false,
+      hoverXValue: '',
+      hoverYValues: [],
     };
   }
 
@@ -75,6 +94,9 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
+            onMouseEnter={e => this._onChartMouseOver(e, sweptFraction, arcsData, minValue)}
+            onMouseMove={e => this._onChartMouseOver(e, sweptFraction, arcsData, minValue)}
+            onMouseLeave={this._onChartMouseOut}
             role="presentation"
             aria-label="Gauge"
             aria-description={`This is a gauge chart with ${arcsData.length} section represented.`}
@@ -167,6 +189,20 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           </svg>
         </FocusZone>
         {this._renderLegends(arcsData)}
+        {!this.props.hideTooltip && this.state.isCalloutVisible && (
+          <Callout
+            target={this.state.hoveredElement}
+            directionalHint={DirectionalHint.topAutoEdge}
+            gapSpace={15}
+            isBeakVisible={false}
+            onDismiss={this._onCalloutDismiss}
+          >
+            {this._multiValueCallout({
+              hoverXValue: this.state.hoverXValue,
+              YValueHover: this.state.hoverYValues,
+            })}
+          </Callout>
+        )}
       </div>
     );
   }
@@ -288,4 +324,182 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
   private _onSegmentBlur = () => {
     this.setState({ focusedSegment: '' });
   };
+
+  private _onCalloutDismiss = () => {
+    this.setState({ isCalloutVisible: false });
+  };
+
+  private _onChartMouseOver = (
+    mouseEvent: React.MouseEvent<SVGElement>,
+    sweptFraction: number[],
+    arcsData: IGaugeChartSegment[],
+    minValue: number,
+  ) => {
+    if (this.state.isCalloutVisible) {
+      return;
+    }
+
+    const target = mouseEvent.target as SVGElement;
+    const hoverXValue: string = `Current value is ${sweptFraction[0]}/${sweptFraction[1]}`;
+    let total = minValue;
+    const hoverYValues: IYValue[] = arcsData.map(segment => {
+      const yValue: IYValue = {
+        legend: segment.legend,
+        y: `${total} - ${total + segment.size}`,
+        color: segment.color,
+      };
+      total += segment.size;
+      return yValue;
+    });
+    this.setState({
+      hoveredElement: target,
+      isCalloutVisible: true,
+      hoverXValue,
+      hoverYValues,
+    });
+  };
+
+  private _onChartMouseOut = () => {
+    this.setState({ hoveredElement: null, isCalloutVisible: false, hoverXValue: '', hoverYValues: [] });
+  };
+
+  // TO DO: Write a common functional component for Multi value callout and divide sub count method
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _multiValueCallout = (calloutProps: any) => {
+    const yValueHoverSubCountsExists: boolean = this._yValueHoverSubCountsExists(calloutProps.YValueHover);
+    return (
+      <div className={this._classNames.calloutContentRoot}>
+        <div
+          className={this._classNames.calloutDateTimeContainer}
+          style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
+        >
+          <div
+            className={this._classNames.calloutContentX}
+            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
+          >
+            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+          </div>
+        </div>
+        <div
+          className={this._classNames.calloutInfoContainer}
+          style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
+        >
+          {calloutProps!.YValueHover &&
+            calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
+              const isLast: boolean = index + 1 === yValues.length;
+              const { shouldDrawBorderBottom = false } = yValue;
+              return (
+                <div
+                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
+                  key={`callout-content-${index}`}
+                  style={
+                    yValueHoverSubCountsExists
+                      ? {
+                          display: 'inline-block',
+                          ...(shouldDrawBorderBottom && {
+                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+                            paddingBottom: '10px',
+                          }),
+                        }
+                      : {
+                          ...(shouldDrawBorderBottom && {
+                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+                            paddingBottom: '10px',
+                          }),
+                        }
+                  }
+                >
+                  {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
+                </div>
+              );
+            })}
+          {!!calloutProps.descriptionMessage && (
+            <div className={this._classNames.descriptionMessage}>{calloutProps.descriptionMessage}</div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
+    if (yValueHover) {
+      return yValueHover.some(
+        (yValue: {
+          legend?: string;
+          y?: number;
+          color?: string;
+          yAxisCalloutData?: string | { [id: string]: number };
+        }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
+      );
+    }
+    return false;
+  }
+
+  private _getCalloutContent(
+    xValue: IYValueHover,
+    index: number,
+    yValueHoverSubCountsExists: boolean,
+    isLast: boolean,
+  ): React.ReactNode {
+    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
+    const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
+    const _classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      lineColor: xValue.color,
+      toDrawShape,
+    });
+
+    const { culture } = this.props;
+    const yValue = convertToLocaleString(xValue.y, culture);
+    if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
+      return (
+        <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
+          {yValueHoverSubCountsExists && (
+            <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+              {xValue.legend!} ({yValue})
+            </div>
+          )}
+          <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
+            {toDrawShape && (
+              <Shape
+                svgProps={{
+                  className: _classNames.shapeStyles,
+                }}
+                pathProps={{ fill: xValue.color }}
+                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
+              />
+            )}
+            <div>
+              <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
+              <div className={_classNames.calloutContentY}>
+                {convertToLocaleString(
+                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                  culture,
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
+      return (
+        <div style={marginStyle}>
+          <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
+            {xValue.legend!} ({yValue})
+          </div>
+          {Object.keys(subcounts).map((subcountName: string) => {
+            return (
+              <div key={subcountName} className={_classNames.calloutBlockContainer}>
+                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutContentY}>
+                  {convertToLocaleString(subcounts[subcountName], culture)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+  }
 }

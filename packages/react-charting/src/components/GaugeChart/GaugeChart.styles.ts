@@ -1,8 +1,8 @@
-import { FontSizes, FontWeights } from '@fluentui/react';
+import { FontSizes, FontWeights, HighContrastSelector, HighContrastSelectorBlack } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const { theme, fontSize, width, height, className } = props;
+  const { theme, fontSize, width, height, className, lineColor, toDrawShape } = props;
 
   return {
     root: [theme.fonts.medium, 'ms-GaugeChart', { width }, className],
@@ -16,16 +16,19 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     limits: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
 
     chartValue: {
       fontSize,
       fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
 
     sublabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
 
     needle: {
@@ -35,6 +38,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     chartTitle: {
       fontSize: FontSizes.small,
+      fill: theme.palette.neutralPrimary,
     },
 
     legendContainer: {},
@@ -43,5 +47,86 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       outline: 'none',
       stroke: theme.semanticColors.focusBorder,
     },
+
+    calloutContentRoot: [
+      {
+        display: 'grid',
+        overflow: 'hidden',
+        padding: '11px 16px 10px 16px',
+        backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundBlendMode: 'normal, luminosity',
+      },
+    ],
+    calloutDateTimeContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    calloutContentX: [
+      {
+        ...theme.fonts.small,
+        lineHeight: '16px',
+        opacity: '0.8',
+        color: theme.semanticColors.bodySubtext,
+      },
+    ],
+    calloutBlockContainer: [
+      theme.fonts.mediumPlus,
+      {
+        marginTop: '13px',
+        color: theme.semanticColors.bodyText,
+      },
+      !toDrawShape && {
+        selectors: {
+          [HighContrastSelector]: {
+            forcedColorAdjust: 'none',
+          },
+        },
+        borderLeft: `4px solid ${lineColor}`,
+        paddingLeft: '8px',
+      },
+      toDrawShape && {
+        display: 'flex',
+      },
+    ],
+    shapeStyles: {
+      marginRight: '8px',
+    },
+    calloutlegendText: {
+      ...theme.fonts.small,
+      lineHeight: '16px',
+      selectors: {
+        [HighContrastSelectorBlack]: {
+          color: 'rgb(255, 255, 255)',
+        },
+      },
+      color: theme.semanticColors.bodySubtext,
+    },
+    calloutContentY: [
+      {
+        ...theme.fonts.mediumPlus,
+        fontWeight: 'bold',
+        lineHeight: '22px',
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: 'rgb(255, 255, 255)',
+          },
+        },
+      },
+    ],
+    descriptionMessage: [
+      theme.fonts.small,
+      {
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            color: 'rgb(255, 255, 255)',
+          },
+        },
+        color: theme.semanticColors.bodyText,
+        marginTop: '10px',
+        paddingTop: '10px',
+        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
+      },
+    ],
   };
 };
