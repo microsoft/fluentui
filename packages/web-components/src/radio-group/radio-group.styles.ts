@@ -45,7 +45,7 @@ export const styles = css`
   :host([orientation='horizontal']) .positioning-region {
     flex-direction: row;
   }
-  :host([orientation='horizontal']:not([stacked])) ::slotted([role='radio']) {
+  :host([orientation='horizontal']) ::slotted([role='radio']) {
     padding-inline-end: ${spacingHorizontalS};
   }
   :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
