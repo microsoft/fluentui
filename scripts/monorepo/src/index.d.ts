@@ -7,6 +7,6 @@ export { isConvergedPackage, shipsAMD } from './isConvergedPackage';
 export { getAffectedPackages } from './getAffectedPackages';
 export { getLernaAliases } from './get-lerna-aliases';
 export { getDefaultEnvironmentVars } from './getDefaultEnvironmentVars';
-export { getProjectMetadata, workspaceRoot } from './utils';
+export { getProjectMetadata, workspaceRoot, getUncommittedFiles, getUntrackedFiles } from './utils';
 export * as eslintConstants from './eslint-constants';
 export { getNthCommit } from './getNthCommit';

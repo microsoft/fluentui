@@ -38,5 +38,5 @@ Compat components are not added in the `@fluentui/react-components` package suit
 
 We will take a similar approach as v0 where we will follow this pattern:
 
-- `breaking change (major)`: Since this is a compat component, we will allow breaking changes if absolutely necessary. To accommodate for this, we will denote those changes as a minor version in semver, i.e. `1.(change will be reflected here).x`.
-- `minor and patch`: These changes will be reflected in the patch version in semver as `1.x.(change will be reflected here)`.
+- `breaking change (major)`: Since this is a compat component, we will allow breaking changes if absolutely necessary. To accommodate for this, we will denote those changes as a minor version in semver, i.e. `0.(change will be reflected here).x`.
+- `minor and patch`: These changes will be reflected in the patch version in semver as `0.x.(change will be reflected here)`.

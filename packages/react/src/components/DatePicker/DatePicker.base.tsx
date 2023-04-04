@@ -453,6 +453,10 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     }
   };
 
+  const onCalendarDismissed = (ev?: React.MouseEvent<HTMLElement>): void => {
+    calendarDismissed();
+  };
+
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
@@ -538,7 +542,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
               // eslint-disable-next-line react/jsx-no-bind
               onSelectDate={onSelectDate}
               // eslint-disable-next-line react/jsx-no-bind
-              onDismiss={calendarDismissed}
+              onDismiss={onCalendarDismissed}
               isMonthPickerVisible={props.isMonthPickerVisible}
               showMonthPickerAsOverlay={props.showMonthPickerAsOverlay}
               today={props.today}
