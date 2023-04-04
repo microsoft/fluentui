@@ -1,8 +1,9 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
+import type { Args, Meta, Story } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import './define.js';
+import { CheckboxLabelPosition, CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 type CheckboxStoryArgs = Args & FluentCheckbox;
 type CheckboxStoryMeta = Meta<CheckboxStoryArgs>;
@@ -14,8 +15,12 @@ const storyTemplate = html<CheckboxStoryArgs>`
       :indeterminate="${x => x.indeterminate}"
       ?checked="${x => x.checked}"
       ?disabled="${x => x.disabled}"
-      >Checkbox</fluent-checkbox
+      shape="${x => x.shape}"
+      size="${x => x.size}"
+      label-position="${x => x.labelPosition}"
     >
+      Apple
+    </fluent-checkbox>
   </form>
 `;
 
@@ -25,6 +30,9 @@ export default {
     disabled: false,
     checked: false,
     indeterminate: false,
+    shape: CheckboxShape.square,
+    size: CheckboxSize.medium,
+    labelPosition: CheckboxLabelPosition.after,
   },
   argTypes: {
     disabled: {
@@ -51,22 +59,125 @@ export default {
         },
       },
     },
+    shape: {
+      description: 'Sets the shape of the checkbox',
+      table: {
+        defaultValue: { summary: 'square' },
+      },
+      control: {
+        type: 'select',
+        options: Object.values(CheckboxShape),
+      },
+      defaultValue: CheckboxShape.square,
+    },
+    size: {
+      description: 'Sets the size of the checkbox',
+      table: {
+        defaultValue: { summary: 'medium' },
+      },
+      control: {
+        type: 'select',
+        options: Object.values(CheckboxSize),
+      },
+      defaultValue: CheckboxSize.medium,
+    },
+    labelPosition: {
+      description: 'Sets the position of the label relative to the input',
+      table: {
+        defaultValue: { summary: 'after' },
+      },
+      control: {
+        type: 'select',
+        options: Object.values(CheckboxLabelPosition),
+      },
+      defaultValue: CheckboxLabelPosition.after,
+    },
   },
 } as CheckboxStoryMeta;
 
 export const Checkbox = renderComponent(storyTemplate).bind({});
 
-// Disabled layout
-const CheckboxDisabled = html<CheckboxStoryArgs>`
-  <fluent-checkbox disabled>disabled</fluent-checkbox>
-  <fluent-checkbox disabled checked>disabled</fluent-checkbox>
+// checked
+const CheckboxChecked = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column; gap: 4px;">
+    <fluent-checkbox checked>Checked</fluent-checkbox>
+    <fluent-checkbox checked shape="${CheckboxShape.circular}">Checked circular</fluent-checkbox>
+  </form>
 `;
-export const Disabled = renderComponent(CheckboxDisabled).bind({});
+export const Checked = renderComponent(CheckboxChecked).bind({});
 
-// Disabled layout
-const CheckboxIndeterminate = html<CheckboxStoryArgs>`
-  <div style="align-items: start; display: flex; flex-direction: column">
-    <fluent-checkbox checked="" indeterminate> Disabled (unchecked) </fluent-checkbox>
-  </div>
+// mixed
+const mixedTemplate = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column; gap: 4px;">
+    <fluent-checkbox name="checkbox-group" :indeterminate="${x => x.indeterminate}"> Indeterminate </fluent-checkbox>
+    <fluent-checkbox name="checkbox-group" :indeterminate="${x => x.indeterminate}" shape="${x => x.shape}">
+      Indeterminate circular
+    </fluent-checkbox>
+  </form>
 `;
-export const Indeterminate = renderComponent(CheckboxIndeterminate).bind({});
+
+export const Mixed: Args = renderComponent(mixedTemplate).bind({});
+Mixed.args = { indeterminate: true, shape: CheckboxShape.circular };
+
+// Disabled
+const CheckboxDisabled = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column;">
+    <fluent-checkbox name="checkbox-group" ?disabled="${x => x.disabled}"> Disabled </fluent-checkbox>
+
+    <fluent-checkbox name="checkbox-group" ?disabled="${x => x.disabled}" shape="${x => x.shape}">
+      Disabled circular
+    </fluent-checkbox>
+
+    <fluent-checkbox ?checked="${x => x.checked}" ?disabled="${x => x.disabled}"> disabled checked </fluent-checkbox>
+
+    <fluent-checkbox ?checked="${x => x.checked}" ?disabled="${x => x.disabled}" shape="${x => x.shape}">
+      disabled checked circular
+    </fluent-checkbox>
+
+    <fluent-checkbox ?disabled="${x => x.disabled}" :indeterminate="${x => x.indeterminate}">
+      indeterminate disabled
+    </fluent-checkbox>
+
+    <fluent-checkbox ?disabled="${x => x.disabled}" :indeterminate="${x => x.indeterminate}" shape="${x => x.shape}">
+      circular indeterminate disabled
+    </fluent-checkbox>
+  </form>
+`;
+
+export const Disabled: Args = renderComponent(CheckboxDisabled).bind({});
+Disabled.args = { indeterminate: true, disabled: true, checked: true, shape: CheckboxShape.circular };
+
+// large
+const CheckboxSizes = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column;">
+    <fluent-checkbox size="${CheckboxSize.large}">Large</fluent-checkbox>
+    <fluent-checkbox size="${CheckboxSize.large}" shape="${CheckboxShape.circular}">Large circular</fluent-checkbox>
+  </form>
+`;
+export const Size = renderComponent(CheckboxSizes).bind({});
+
+// label before
+const labelBeforeTemplate = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}">
+    <fluent-checkbox label-position="${CheckboxLabelPosition.before}">Label before</fluent-checkbox>
+  </form>
+`;
+export const LabelBefore = renderComponent(labelBeforeTemplate).bind({});
+
+// label wrapping
+const labelWrappingTemplate = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}">
+    <fluent-checkbox style="max-width: 400px"
+      >Here is an example of a checkbox with a long label and it starts to wrap to a second line</fluent-checkbox
+    >
+  </form>
+`;
+export const LabelWrapping = renderComponent(labelWrappingTemplate).bind({});
+
+// circular
+const CheckboxCircular = html<CheckboxStoryArgs>`
+  <form class="checkbox-group" @submit="${() => false}">
+    <fluent-checkbox shape="${CheckboxShape.circular}">Circular</fluent-checkbox>
+  </form>
+`;
+export const Circular = renderComponent(CheckboxCircular).bind({});
