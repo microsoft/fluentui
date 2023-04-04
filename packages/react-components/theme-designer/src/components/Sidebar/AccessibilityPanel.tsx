@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getAccessibilityChecker } from '../../utils/getAccessibilityChecker';
+import { getAccessibilityChecker, TestType } from '../../utils/getAccessibilityChecker';
 import { AccessibilityContrastChip } from '../ColorTokens/AccessibilityList';
 import { BrandVariants, createDarkTheme, createLightTheme, Label, Theme, tokens } from '@fluentui/react-components';
 
@@ -12,7 +12,7 @@ export interface AccessibilityPanelProps {
 }
 
 export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
-  const { lightThemeOverrides, darkThemeOverrides, brand, state } = props;
+  const { lightThemeOverrides, darkThemeOverrides, brand } = props;
   const { failedContrastTests: failLight, failedLuminosityTests: failedLightLuminosityTests } = getAccessibilityChecker(
     {
       ...createLightTheme(brand),
@@ -34,11 +34,11 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
       }}
     >
       <Label>Light mode</Label>
-      <AccessibilityContrastChip accessibilityName={'contrast'} failKeys={Object.keys(failLight)} />
-      <AccessibilityContrastChip accessibilityName={'luminosity'} failKeys={Object.keys(failedLightLuminosityTests)} />
+      <AccessibilityContrastChip failKeys={Object.keys(failLight)} testType={TestType.contrastRatio} />
+      <AccessibilityContrastChip failKeys={Object.keys(failedLightLuminosityTests)} testType={TestType.luminosity} />
       <Label>Dark mode</Label>
-      <AccessibilityContrastChip accessibilityName={'contrast'} failKeys={Object.keys(failDark)} />
-      <AccessibilityContrastChip accessibilityName={'luminosity'} failKeys={Object.keys(failedDarkLuminosityTests)} />
+      <AccessibilityContrastChip failKeys={Object.keys(failDark)} testType={TestType.contrastRatio} />
+      <AccessibilityContrastChip failKeys={Object.keys(failedDarkLuminosityTests)} testType={TestType.luminosity} />
     </div>
   );
 };

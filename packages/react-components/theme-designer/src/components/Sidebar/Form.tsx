@@ -151,7 +151,7 @@ export const Form: React.FC = () => {
 
   return (
     <div className={styles.root} role="tabpanel" aria-labelledby="Edit">
-      <Accordion defaultOpenItems={['1']} multiple>
+      <Accordion defaultOpenItems={['1', '2', '3']} multiple>
         {/* `multiple` allows for toggle of collapse as well as open multiple panels */}
         <AccordionItem value="1">
           <AccordionHeader>

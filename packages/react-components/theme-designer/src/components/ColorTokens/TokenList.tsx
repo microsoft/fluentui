@@ -20,8 +20,6 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-  TableRowData,
-  Text,
   Theme,
   tokens,
   useTableColumnSizing_unstable,
@@ -31,24 +29,14 @@ import { brandRamp } from '../../utils/getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
-import {
-  calculateContrastRatio,
-  ContrastRatioTest,
-  LuminosityTest,
-  TestResult,
-  TestType,
-} from '../../utils/getAccessibilityChecker';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
-import { contrast, hex_to_sRGB } from '../../colors';
-import { accessiblePairs } from './AccessiblePairs';
 
-export interface ColorTokensListProps {
+export interface TokenIssueListProps {
   brand: BrandVariants;
   themeName: string;
   themeOverrides: Partial<Theme>;
   colorOverrides: ColorOverrideBrands;
   coveredTokens: string[];
-  tests?: TestResult[];
   onNewOverride: (color: string, newColor: Brands) => void;
 }
 
@@ -58,8 +46,6 @@ export interface ColorTokenRowProps {
   token: string;
   brandValueString: string;
   selected: boolean;
-
-  showContrast?: boolean;
 }
 
 const useStyles = makeStyles({
@@ -98,37 +84,11 @@ const useStyles = makeStyles({
 
 const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
-  const { brand, brandValue, brandValueString, selected, token, showContrast } = props;
+  const { brand, brandValue, brandValueString, selected } = props;
 
   const {
-    state: { themeName, themeWithOverrides },
+    state: { themeName },
   } = useThemeDesigner();
-  const calculateContrast = () => {
-    const theme = {
-      ...themeWithOverrides,
-      [token]: brand[brandValue],
-    };
-    return Math.min(
-      ...accessiblePairs[token].map(tokenPair => {
-        const [compToken, ratio] = tokenPair;
-        const { testInfo } = calculateContrastRatio(
-          theme as unknown as Record<string, string>,
-          token,
-          compToken,
-          ratio,
-        );
-        return (testInfo as ContrastRatioTest).ratio;
-      }),
-    );
-  };
-
-  const generateContrast = () => {
-    if (showContrast) {
-      return <> - Contrast: {calculateContrast()}</>;
-    } else {
-      return <></>;
-    }
-  };
 
   return (
     <MenuItemRadio
@@ -137,59 +97,48 @@ const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
       value={brandValueString}
     >
       <span className={selected ? styles.selected : ''}>
-        {themeName} {brandValueString} {generateContrast()}
+        {themeName} {brandValueString}
       </span>
     </MenuItemRadio>
   );
 };
 
-const columnsDef: TableColumnDefinition<TestResult>[] = [
-  createTableColumn<TestResult>({
+const columnsDef: TableColumnDefinition<string>[] = [
+  createTableColumn<string>({
     columnId: 'colorTokens',
     renderHeaderCell: () => <>Token</>,
   }),
-  createTableColumn<TestResult>({
-    columnId: 'check',
-    renderHeaderCell: () => <>Check</>,
-  }),
-  createTableColumn<TestResult>({
+  createTableColumn<string>({
     columnId: 'usageExample',
     renderHeaderCell: () => <>Usage example</>,
   }),
 ];
 
-export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = props => {
+export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => {
   const styles = useStyles();
 
-  const [columns] = React.useState<TableColumnDefinition<TestResult>[]>(columnsDef);
+  const [columns] = React.useState<TableColumnDefinition<string>[]>(columnsDef);
 
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
     colorTokens: {
-      defaultWidth: 240,
-    },
-    check: {
-      defaultWidth: 240,
+      minWidth: 320,
     },
     usageExample: {
-      defaultWidth: 240,
+      minWidth: 240,
     },
   });
 
-  const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
+  const { brand, coveredTokens, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
 
-  if (coveredTokens.length === 0) {
-    return <Text>N/A</Text>;
-  }
-
-  const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
+  const { columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
-      items: tests!,
+      items: coveredTokens,
     },
     [useTableColumnSizing_unstable({ columnSizingOptions })],
   );
 
-  const rows = getRows();
+  // TODO: use getRows below
 
   return (
     <>
@@ -247,7 +196,6 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                               <ColorTokenCol
                                 token={token}
                                 brand={brand}
-                                showContrast={!!tests}
                                 brandValue={brandValue}
                                 brandValueString={brandValueString}
                                 selected={selected}
@@ -258,44 +206,6 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                       </MenuList>
                     </MenuPopover>
                   </Menu>
-                </TableCell>
-                <TableCell>
-                  {rows &&
-                    rows.map((rowData: TableRowData<TestResult>) => {
-                      const testType = rowData.item.testType;
-                      let hex: string = '';
-                      let output;
-                      let desiredOutput;
-                      const compToken = rowData.item.testInfo?.compToken;
-                      if (testType === TestType.contrastRatio) {
-                        const testInfo = rowData.item.testInfo as ContrastRatioTest;
-                        hex = testInfo.compHex;
-                        output = testInfo.ratio;
-                        desiredOutput = testInfo.desiredRatio;
-                      } else if (testType === TestType.luminosity) {
-                        const testInfo = rowData.item.testInfo as LuminosityTest;
-                        hex = testInfo.compHex;
-                        output = testInfo.percentDiff;
-                        desiredOutput = testInfo.desiredPercentDiff;
-                      }
-
-                      return (
-                        <div key={token + ' ' + hex}>
-                          {compToken}
-                          <div
-                            className={styles.colorPreview}
-                            style={{
-                              backgroundColor: brand[colorValue],
-                              color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
-                            }}
-                          >
-                            {hex}
-                          </div>{' '}
-                          <br />
-                          {output} - expected {desiredOutput}
-                        </div>
-                      );
-                    })}
                 </TableCell>
                 <TableCell>
                   <div>{usage}</div>

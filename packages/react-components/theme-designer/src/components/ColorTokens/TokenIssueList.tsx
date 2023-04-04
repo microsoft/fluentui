@@ -21,7 +21,6 @@ import {
   TableHeaderCell,
   TableRow,
   TableRowData,
-  Text,
   Theme,
   tokens,
   useTableColumnSizing_unstable,
@@ -165,21 +164,17 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
 
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
     colorTokens: {
-      defaultWidth: 240,
+      minWidth: 320,
     },
     check: {
-      defaultWidth: 240,
+      minWidth: 320,
     },
     usageExample: {
-      defaultWidth: 240,
+      minWidth: 240,
     },
   });
 
   const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
-
-  if (coveredTokens.length === 0) {
-    return <Text>N/A</Text>;
-  }
 
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
@@ -229,7 +224,6 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                   </div>
                   <div className={styles.col}>
                     <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
-                    {/* <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2> */}
                   </div>
                   <Menu>
                     <MenuTrigger disableButtonEnhancement>
@@ -266,6 +260,7 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                       let hex: string = '';
                       let output;
                       let desiredOutput;
+                      const testUnits = testType === TestType.contrastRatio ? 'ratio' : '% dif';
                       const compToken = rowData.item.testInfo?.compToken;
                       if (testType === TestType.contrastRatio) {
                         const testInfo = rowData.item.testInfo as ContrastRatioTest;
@@ -290,9 +285,10 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                             }}
                           >
                             {hex}
-                          </div>{' '}
+                          </div>
                           <br />
-                          {output} - expected {desiredOutput}
+                          {`${testUnits}: `}
+                          {output}, expected: {desiredOutput}
                         </div>
                       );
                     })}

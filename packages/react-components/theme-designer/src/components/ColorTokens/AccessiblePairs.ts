@@ -116,7 +116,7 @@ export const lightnessPairs: AccessiblePairs = {
   colorBrandForegroundLink: [
     ['colorBrandForegroundLinkHover', -5],
     ['colorBrandForegroundLinkPressed', -15],
-    ['colorBrandForegroundLinkSelected', -5],
+    // ['colorBrandForegroundLinkSelected', -5],
   ],
   // note these are in the web stickersheet but not in theme
   // colorBrandBackground2: [
