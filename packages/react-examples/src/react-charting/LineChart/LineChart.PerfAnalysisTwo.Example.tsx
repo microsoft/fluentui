@@ -209,6 +209,7 @@ export class LineChartPerfTwoExample extends React.Component<{}, ILineChartBasic
           margins={margins}
           xAxisTickCount={10}
           allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+          optimizeLargeData={true}
         />,
       );
     }
