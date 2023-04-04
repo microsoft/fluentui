@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { ProgressBar } from './ProgressBar';
 import { isConformant } from '../../testing/isConformant';
 
@@ -89,5 +90,20 @@ describe('ProgressBar', () => {
       const result = render(<ProgressBar value={value} max={max} />);
       expect(result.getByRole('progressbar').getAttribute('aria-valuenow')).toEqual('5');
     });
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message">
+        <ProgressBar aria-describedby="test-describedby" />
+      </Field>,
+    );
+
+    const progressbar = result.getByRole('progressbar');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(progressbar.getAttribute('aria-labelledby')).toEqual(label.id);
+    expect(progressbar.getAttribute('aria-describedby')).toEqual(message.id + ' test-describedby');
   });
 });
