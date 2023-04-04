@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Make contextValues argument required on renderField_unstable",
+  "packageName": "@fluentui/react-field",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
