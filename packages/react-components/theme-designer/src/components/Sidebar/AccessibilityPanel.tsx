@@ -29,14 +29,13 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: tokens.spacingVerticalL,
-        marginBottom: tokens.spacingVerticalL,
+        gap: tokens.spacingVerticalM,
       }}
     >
       <Label>Light mode</Label>
       <AccessibilityContrastChip failKeys={Object.keys(failLight)} testType={TestType.contrastRatio} />
       <AccessibilityContrastChip failKeys={Object.keys(failedLightLuminosityTests)} testType={TestType.luminosity} />
-      <Label>Dark mode</Label>
+      <Label style={{ paddingTop: tokens.spacingVerticalXS }}>Dark mode</Label>
       <AccessibilityContrastChip failKeys={Object.keys(failDark)} testType={TestType.contrastRatio} />
       <AccessibilityContrastChip failKeys={Object.keys(failedDarkLuminosityTests)} testType={TestType.luminosity} />
     </div>

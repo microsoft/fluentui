@@ -29,13 +29,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
-  accordianContainer: {
+  accordionContainer: {
     display: 'flex',
     flexDirection: 'column',
     rowGap: tokens.spacingVerticalL,
-    marginTop: tokens.spacingVerticalL,
-    marginBottom: tokens.spacingVerticalL,
-    paddingRight: tokens.spacingHorizontalXXXL,
+    minWidth: '200px',
   },
   keyColor: {
     paddingLeft: '0px',
@@ -158,7 +156,7 @@ export const Form: React.FC = () => {
             <Caption1Stronger>Step 1 - Color settings</Caption1Stronger>
           </AccordionHeader>
 
-          <AccordionPanel className={styles.accordianContainer}>
+          <AccordionPanel className={styles.accordionContainer}>
             <div className={styles.inputs}>
               <Label htmlFor={sidebarId + 'keyColor'}>Key color value</Label>
               <div className={styles.labels}>
@@ -234,8 +232,8 @@ export const Form: React.FC = () => {
           <AccordionHeader>
             <Caption1Stronger>Step 2 - Accessibility checks</Caption1Stronger>
           </AccordionHeader>
-          <AccordionPanel>
-            <Switch checked={isDark} onChange={handleIsDarkChange} label={'dark theme'} />
+          <AccordionPanel className={styles.accordionContainer}>
+            <Switch checked={isDark} onChange={handleIsDarkChange} label={'Dark theme'} />
             <AccessibilityPanel
               darkThemeOverrides={darkThemeOverrides}
               brand={brand}
@@ -247,7 +245,7 @@ export const Form: React.FC = () => {
           <AccordionHeader>
             <Caption1Stronger>Step 3 - Export</Caption1Stronger>
           </AccordionHeader>
-          <AccordionPanel>
+          <AccordionPanel className={styles.accordionContainer}>
             <div className={styles.labelName}>
               <Label htmlFor={themeNameInputId}>Theme name</Label>
               <Input
@@ -255,12 +253,10 @@ export const Form: React.FC = () => {
                 id={themeNameInputId}
                 // eslint-disable-next-line react/jsx-no-bind
                 onChange={handleThemeNameChange}
-                // contentAfter={<EditRegular />}
                 placeholder={defaultThemePlaceholderName}
                 value={themeName === defaultThemePlaceholderName ? '' : themeName}
               />
             </div>
-            <br />
             <Button size="small" appearance="primary" onClick={showExportButton}>
               Export
             </Button>
