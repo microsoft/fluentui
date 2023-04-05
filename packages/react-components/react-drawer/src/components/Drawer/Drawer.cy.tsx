@@ -11,7 +11,7 @@ const mountFluent = (element: JSX.Element) => {
 
 describe('Drawer', () => {
   it('render drawer component', () => {
-    mountFluent(<Drawer id="drawer" />);
+    mountFluent(<Drawer open id="drawer" />);
 
     cy.get('#drawer').should('exist');
   });
