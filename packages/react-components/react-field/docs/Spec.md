@@ -32,8 +32,14 @@ The Field implementation in this spec follows pattern (4). Field uses context fo
 
 ```jsx
 <>
-  <Field label="This is the field label" orientation="horizontal" validationMessage="This is error text" required>
-    <Input size="small" contentBefore="$" contentAfter=".00" />
+  <Field
+    label="This is the field label"
+    validationMessage="This is error text"
+    size="small"
+    orientation="horizontal"
+    required
+  >
+    <Input contentBefore="$" contentAfter=".00" />
   </Field>
   <Field label="Radio group field">
     <RadioGroup>
