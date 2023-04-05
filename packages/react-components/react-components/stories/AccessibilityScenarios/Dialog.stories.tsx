@@ -18,7 +18,7 @@ import {
 
 import { Scenario } from './utils';
 
-const CookiesDialog = () => {
+const ModalDialog = () => {
   return (
     <Dialog>
       <DialogTrigger disableButtonEnhancement>
@@ -47,13 +47,21 @@ const CookiesDialog = () => {
   );
 };
 
-const SignInDialog = () => {
+const NoModalDialog = () => {
   const [open, setOpen] = React.useState(false);
   const [isSignedIn, setIsSignedIn] = React.useState(false);
+
+  const emailRef = React.useRef<HTMLInputElement>(null);
 
   const handleOpenChange = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => {
     setOpen(data.open);
   };
+
+  React.useEffect(() => {
+    if (open) {
+      emailRef.current?.focus();
+    }
+  }, [open]);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -93,7 +101,7 @@ const SignInDialog = () => {
                   <Label htmlFor="email" required>
                     Email
                   </Label>
-                  <Input type="email" id="email" required />
+                  <Input type="email" id="email" required ref={emailRef} />
                   <Label htmlFor="password" required>
                     Password
                   </Label>
@@ -120,7 +128,25 @@ const SignInDialog = () => {
   );
 };
 
-const AutoSignOutDialog = () => {
+const NoFocusableElementDialog = () => {
+  return (
+    <Dialog>
+      <DialogTrigger disableButtonEnhancement>
+        <Button>Open shopping cart update dialog</Button>
+      </DialogTrigger>
+      <DialogSurface aria-describedby="focusableBody">
+        <DialogBody id="focusableBody">
+          <DialogTitle>Item added</DialogTitle>
+          <DialogContent>
+            <p>The item has been added to the shopping cart.</p>
+          </DialogContent>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+
+const AlertDialog = () => {
   return (
     <Dialog modalType="alert">
       <DialogTrigger disableButtonEnhancement>
@@ -147,11 +173,27 @@ export const UserPromptingDialogs = () => {
   return (
     <Scenario pageTitle="User prompting dialogs">
       <h1>User prompting dialogs</h1>
-      <CookiesDialog />
+      <p>Simple modal dialog example:</p>
+      <ModalDialog />
       <Divider />
-      <SignInDialog />
+
+      <p>Non-modal dialog example with focus placement on the first edit field upon dialog open:</p>
+      <NoModalDialog />
       <Divider />
-      <AutoSignOutDialog />
+
+      <p>Alert dialog example:</p>
+      <AlertDialog />
+      <Divider />
+
+      <p>
+        Dialog example with no focusable element. Such dialog is not recommended. It can be closed only by clicking on
+        the backdrop or by pressing Escape.
+      </p>
+      <p>
+        It is also recommended to set aria-describedby on the dialoag to reference the dialog content. This ensures the
+        content of the dialog will be read upon open.
+      </p>
+      <NoFocusableElementDialog />
     </Scenario>
   );
 };
