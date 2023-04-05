@@ -358,16 +358,27 @@ function overrideDefaultBabelLoader(options) {
  * Create tsconfig.json with merged "compilerOptions.paths" from v0,v8,v9 tsconfigs.
  *
  * Main purpose of this is to be used for build-less DX in webpack in tandem with {@link registerTsPaths}
- * @returns
+ *
+ * @param {{relativeFolderPathFromRoot?:string}} options
  */
-function createPathAliasesConfig() {
-  const { tsConfigAllPath } = createMergedTsConfig();
-  return { tsConfigAllPath };
+function createPathAliasesConfig(options = {}) {
+  const rootPath = workspaceRoot;
+  const { relativeFolderPathFromRoot = './dist' } = options;
+  const mergedTsConfig = createMergedTsConfig({ rootPath });
+  const tsConfigAllPath = path.join(rootPath, relativeFolderPathFromRoot, 'tsconfig.base.all.json');
+
+  writeJsonFile(tsConfigAllPath, mergedTsConfig);
+
+  return { tsConfigAllPath, mergedTsConfig };
 }
 
-function createMergedTsConfig() {
-  const rootPath = workspaceRoot;
-  const tsConfigAllPath = path.join(rootPath, 'dist/tsconfig.base.all.json');
+/**
+ *
+ * @param {{rootPath:string}} options
+ * @returns
+ */
+function createMergedTsConfig(options) {
+  const { rootPath } = options;
   const baseConfigs = {
     v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
     v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
@@ -387,9 +398,7 @@ function createMergedTsConfig() {
     },
   };
 
-  writeJsonFile(tsConfigAllPath, mergedTsConfig);
-
-  return { tsConfigAllPath, mergedTsConfig };
+  return mergedTsConfig;
 }
 
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
