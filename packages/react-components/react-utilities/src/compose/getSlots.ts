@@ -23,10 +23,10 @@ type ObjectSlotProps<S extends SlotPropsRecord> = {
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
-      UnionToIntersection<JSX.IntrinsicElements[As]>
+      UnionToIntersection<JSX.IntrinsicElements[As]> // Slot<'div', 'span'>
     : ExtractSlotProps<S[K]> extends React.ComponentType<infer P>
-    ? P
-    : never;
+    ? P // Slot<typeof Button>
+    : ExtractSlotProps<S[K]>; // Slot<ButtonProps>
 };
 
 /**
@@ -84,7 +84,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
     return [
       React.Fragment,
       {
-        children: render(slot, rest as Omit<R[K], 'children' | 'as'>),
+        children: render(slot, rest as Omit<R[K], 'as'>),
       } as unknown as R[K],
     ];
   }

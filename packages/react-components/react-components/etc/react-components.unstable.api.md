@@ -17,6 +17,11 @@ import { comboboxFieldClassNames } from '@fluentui/react-combobox';
 import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
+import { FieldContextProvider } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
+import { FieldControlProps } from '@fluentui/react-field';
+import { FieldControlPropsOptions } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
@@ -30,6 +35,11 @@ import { infoButtonClassNames } from '@fluentui/react-infobutton';
 import { InfoButtonProps } from '@fluentui/react-infobutton';
 import { InfoButtonSlots } from '@fluentui/react-infobutton';
 import { InfoButtonState } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-infobutton';
+import { infoLabelClassNames } from '@fluentui/react-infobutton';
+import { InfoLabelProps } from '@fluentui/react-infobutton';
+import { InfoLabelSlots } from '@fluentui/react-infobutton';
+import { InfoLabelState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
@@ -43,6 +53,7 @@ import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
+import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderTree_unstable } from '@fluentui/react-tree';
@@ -50,6 +61,7 @@ import { renderTreeItem_unstable } from '@fluentui/react-tree';
 import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
@@ -109,16 +121,22 @@ import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useInfoButton_unstable } from '@fluentui/react-infobutton';
 import { useInfoButtonStyles_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useIntersectionObserver } from '@fluentui/react-virtualizer';
 import { useSkeleton_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonContext } from '@fluentui/react-skeleton';
 import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonItemStyles_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonStyles_unstable } from '@fluentui/react-skeleton';
+import { useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useTree_unstable } from '@fluentui/react-tree';
 import { useTreeContext_unstable } from '@fluentui/react-tree';
 import { useTreeItem_unstable } from '@fluentui/react-tree';
@@ -130,11 +148,18 @@ import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
 import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
 import { virtualizerClassNames } from '@fluentui/react-virtualizer';
 import { VirtualizerProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
+import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewState } from '@fluentui/react-virtualizer';
 import { VirtualizerSlots } from '@fluentui/react-virtualizer';
 import { VirtualizerState } from '@fluentui/react-virtualizer';
 
@@ -164,6 +189,16 @@ export { Field }
 
 export { fieldClassNames }
 
+export { FieldContextProvider }
+
+export { FieldContextValue }
+
+export { FieldContextValues }
+
+export { FieldControlProps }
+
+export { FieldControlPropsOptions }
+
 export { FieldProps }
 
 export { FieldSlots }
@@ -189,6 +224,16 @@ export { InfoButtonProps }
 export { InfoButtonSlots }
 
 export { InfoButtonState }
+
+export { InfoLabel }
+
+export { infoLabelClassNames }
+
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
 
 export { InputField }
 
@@ -216,6 +261,8 @@ export { renderField_unstable }
 
 export { renderInfoButton_unstable }
 
+export { renderInfoLabel_unstable }
+
 export { renderSkeleton_unstable }
 
 export { renderSkeletonItem_unstable }
@@ -229,6 +276,8 @@ export { renderTreeItemLayout_unstable }
 export { renderTreeItemPersonaLayout_unstable }
 
 export { renderVirtualizer_unstable }
+
+export { renderVirtualizerScrollView_unstable }
 
 export { SelectField }
 
@@ -348,6 +397,12 @@ export { useAlertStyles_unstable }
 
 export { useField_unstable }
 
+export { useFieldContext_unstable }
+
+export { useFieldContextValues_unstable }
+
+export { useFieldControlProps_unstable }
+
 export { useFieldStyles_unstable }
 
 export { useFlatTree_unstable }
@@ -355,6 +410,10 @@ export { useFlatTree_unstable }
 export { useInfoButton_unstable }
 
 export { useInfoButtonStyles_unstable }
+
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
 
 export { useIntersectionObserver }
 
@@ -367,6 +426,8 @@ export { useSkeletonItem_unstable }
 export { useSkeletonItemStyles_unstable }
 
 export { useSkeletonStyles_unstable }
+
+export { useStaticVirtualizerMeasure }
 
 export { useTree_unstable }
 
@@ -390,6 +451,10 @@ export { useTreeStyles_unstable }
 
 export { useVirtualizer_unstable }
 
+export { useVirtualizerScrollView_unstable }
+
+export { useVirtualizerScrollViewStyles_unstable }
+
 export { useVirtualizerStyles_unstable }
 
 export { Virtualizer }
@@ -399,6 +464,16 @@ export { VirtualizerChildRenderFunction }
 export { virtualizerClassNames }
 
 export { VirtualizerProps }
+
+export { VirtualizerScrollView }
+
+export { virtualizerScrollViewClassNames }
+
+export { VirtualizerScrollViewProps }
+
+export { VirtualizerScrollViewSlots }
+
+export { VirtualizerScrollViewState }
 
 export { VirtualizerSlots }
 
