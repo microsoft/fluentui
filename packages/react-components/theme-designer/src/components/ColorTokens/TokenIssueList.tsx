@@ -167,6 +167,7 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
 
   const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
@@ -252,43 +253,45 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                 </div>
                 <TableCell>
                   {rows &&
-                    rows.map((rowData: TableRowData<TestResult>) => {
-                      const testType = rowData.item.testType;
-                      let hex: string = '';
-                      let output;
-                      let desiredOutput;
-                      const testUnits = testType === TestType.contrastRatio ? 'ratio' : '% dif';
-                      const compToken = rowData.item.testInfo?.compToken;
-                      if (testType === TestType.contrastRatio) {
-                        const testInfo = rowData.item.testInfo as ContrastRatioTest;
-                        hex = testInfo.compHex;
-                        output = testInfo.ratio;
-                        desiredOutput = testInfo.desiredRatio;
-                      } else if (testType === TestType.luminosity) {
-                        const testInfo = rowData.item.testInfo as LuminosityTest;
-                        hex = testInfo.compHex;
-                        output = testInfo.percentDiff;
-                        desiredOutput = testInfo.desiredPercentDiff;
-                      }
+                    rows
+                      .filter(o => o.item.testInfo!.currToken === token)
+                      .map((rowData: TableRowData<TestResult>) => {
+                        const testType = rowData.item.testType;
+                        let hex: string = '';
+                        let output;
+                        let desiredOutput;
+                        const testUnits = testType === TestType.contrastRatio ? 'ratio' : '% dif';
+                        const compToken = rowData.item.testInfo?.compToken;
+                        if (testType === TestType.contrastRatio) {
+                          const testInfo = rowData.item.testInfo as ContrastRatioTest;
+                          hex = testInfo.compHex;
+                          output = testInfo.ratio;
+                          desiredOutput = testInfo.desiredRatio;
+                        } else if (testType === TestType.luminosity) {
+                          const testInfo = rowData.item.testInfo as LuminosityTest;
+                          hex = testInfo.compHex;
+                          output = testInfo.percentDiff;
+                          desiredOutput = testInfo.desiredPercentDiff;
+                        }
 
-                      return (
-                        <div key={token + ' ' + hex}>
-                          {compToken}
-                          <div
-                            className={styles.colorPreview}
-                            style={{
-                              backgroundColor: brand[colorValue],
-                              color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
-                            }}
-                          >
-                            {hex}
+                        return (
+                          <div key={token + ' ' + hex}>
+                            {compToken}
+                            <div
+                              className={styles.colorPreview}
+                              style={{
+                                backgroundColor: brand[colorValue],
+                                color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
+                              }}
+                            >
+                              {hex.toUpperCase()}
+                            </div>
+                            <br />
+                            {`${testUnits}: `}
+                            {output}, expected: {desiredOutput}
                           </div>
-                          <br />
-                          {`${testUnits}: `}
-                          {output}, expected: {desiredOutput}
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
                 </TableCell>
                 <TableCell>
                   <div>{usage}</div>
