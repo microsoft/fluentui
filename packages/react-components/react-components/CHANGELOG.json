@@ -2,6 +2,71 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 04 Apr 2023 18:44:47 GMT",
+      "tag": "@fluentui/react-components_v9.18.7",
+      "version": "9.18.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "4fad4cbbcbdb48847857c388135a3abda472add7",
+            "comment": "fix: Fix vertical alignment of inline Checkbox when checked vs. unchecked"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "83c18ac81b068a45f6ea4d3b7912d5d6873e9d06",
+            "comment": "fix: make Option's checkIcon slot render conditionally"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "263ea175b5da60d0abacc0eec88d7c338ce5c74a",
+            "comment": "fix: DialogContent scrollbar always visible"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "15a497fda9801df50990a42c9fe09d6b98b51144",
+            "comment": "fix: Menu should not steal focus on close"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "34124853ca638421e5b90d6c3b1ad2611b78b4f7",
+            "comment": "fix: overflow item style should be applied when overflow items are nested in wrapper elements"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "60f71394c7ac9aa81e6e243cbd011845b43c705f",
+            "comment": "bugfix: increments SlotRenderFunction signature to include children"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "df9564ee42c12b0dfab646f9e4dd4038c636d3ee",
+            "comment": "chore: Rename content slot to info."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7dc03924c99ea14c4df43e56454fc7781e1fdb89",
+            "comment": "chore: adds e2e flat tree tests"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "5c53cfd7875712af78dd5bca396ce0d24030973c",
+            "comment": "fix: remove disallowed v9 react-fabric/v8 from dependency to mitigate dep-tree creep"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Mar 2023 17:36:41 GMT",
       "tag": "@fluentui/react-components_v9.18.6",
       "version": "9.18.6",
