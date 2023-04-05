@@ -73,8 +73,10 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
 
   const { all, failedLuminosityTests, failedContrastTests } = getAccessibilityChecker(theme);
 
-  const failedContrastKeys = failedContrastTests.map(test => test.testInfo!.currToken);
-  const failedLuminosityKeys = failedLuminosityTests.map(test => test.testInfo!.currToken);
+  const failedContrastKeys = Array.from(new Set(failedContrastTests.map(test => test.testInfo!.currToken)).values());
+  const failedLuminosityKeys = Array.from(
+    new Set(failedLuminosityTests.map(test => test.testInfo!.currToken)).values(),
+  );
 
   return (
     <>

@@ -113,7 +113,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
   const checkLuminosityDifferences = (): TestResult[] => {
     const tests: TestResult[] = [];
 
-    Object.keys(lightnessPairs).map(token => {
+    Object.keys(lightnessPairs).forEach(token => {
       // Go through all comparisons for each token
       for (let i = 0; i < lightnessPairs[token].length; i++) {
         const [compToken, ratio] = lightnessPairs[token][i];
@@ -154,9 +154,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
   const contrastTests = checkContrastRatios();
   const luminosityTests = checkLuminosityDifferences();
   const failedLuminosityTests = luminosityTests.filter(test => !test.isPass);
-  //   console.log('failedLuminosityTests', JSON.stringify(failedLuminosityTests));
   const failedContrastTests = contrastTests.filter(test => !test.isPass);
-  //   console.log('failedContrastTests', JSON.stringify(failedContrastTests));
 
   const all: string[] = Object.keys(accessiblePairs); // todo: check if this is an exhaustive list of all tokens
 
