@@ -43,17 +43,17 @@ const useStyles = makeStyles({
     left: 'auto',
   },
 
-  persistent: {
+  inline: {
     position: 'relative',
     alignItems: 'stretch',
     justifyContent: 'stretch',
   },
 
-  persistentLeft: {
+  inlineLeft: {
     ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
   },
 
-  persistentRight: {
+  inlineRight: {
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
   },
 
@@ -76,15 +76,15 @@ const useStyles = makeStyles({
   },
 });
 
-function getPersistentClasses(state: DrawerState, styles: ReturnType<typeof useStyles>) {
-  const classes = [styles.persistent];
+function getInlineClasses(state: DrawerState, styles: ReturnType<typeof useStyles>) {
+  const classes = [styles.inline];
 
   if (state.position === 'left') {
-    classes.push(styles.persistentLeft);
+    classes.push(styles.inlineLeft);
   }
 
   if (state.position === 'right') {
-    classes.push(styles.persistentRight);
+    classes.push(styles.inlineRight);
   }
 
   return mergeClasses(...classes);
@@ -110,8 +110,8 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
     typeof state.size !== 'number' && styles[sizeMap[state.size]],
   ];
 
-  if (state.type === 'persistent') {
-    state.root.className = mergeClasses(...baseClasses, getPersistentClasses(state, styles), state.root.className);
+  if (state.type === 'inline') {
+    state.root.className = mergeClasses(...baseClasses, getInlineClasses(state, styles), state.root.className);
   } else if (state.dialogSurface) {
     state.dialogSurface.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
   }

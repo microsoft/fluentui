@@ -5,19 +5,19 @@ export type DrawerSlots = {
   /**
    * Root slot of the Drawer.
    * This slot is rendered as a `div` by default.
-   * Only renders if `type` is `persistent`.
+   * Only renders if `type` is `inline`.
    */
   root: Slot<'div'>;
 
   /**
-   * Dialog component that renders for temporary drawer.
+   * Dialog component that renders for overlay drawer.
    * The default is an instance of Dialog component
    * This slot expects a compatible Dialog which will replace the default dialog component.
    */
   dialog?: NonNullable<Slot<DialogProps>>;
 
   /**
-   * DialogSurface component that renders for temporary drawer.
+   * DialogSurface component that renders for overlay drawer.
    * The default is an instance of DialogSurface component
    * This slot expects a compatible DialogSurface which will replace the default dialog component.
    */
@@ -41,12 +41,12 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
 
   /**
    * Type of the drawer.
-   * @defaultvalue 'temporary'
+   * @defaultvalue 'overlay'
    *
-   * - 'temporary' - Drawer is hidden by default and can be opened by clicking on the trigger.
-   * - 'persistent' - Drawer is stacked with the content
+   * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
+   * - 'inline' - Drawer is stacked with the content
    */
-  type?: 'persistent' | 'temporary';
+  type?: 'inline' | 'overlay';
 
   /**
    * Size of the drawer.
@@ -64,7 +64,7 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
    * When this is set, the rest of the page is dimmed out and cannot be interacted with.
    * The tab sequence is kept within the dialog and moving the focus outside
    * the dialog will imply closing it. This is the default type of the component.
-   * This prop is only used when `type` is `temporary`.
+   * This prop is only used when `type` is `overlay`.
    *
    * @defaultvalue true
    */

@@ -47,7 +47,7 @@ const useDrawerDialog = ({ size, open, onOpenChange, modal, children }: DrawerPr
  */
 export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
   const {
-    type = 'temporary',
+    type = 'overlay',
     position = 'left',
     size = 'small',
     open: initialOpen = false,
