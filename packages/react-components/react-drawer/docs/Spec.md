@@ -219,9 +219,9 @@ No props
 
 ## Behaviors
 
-A drawer can be triggered by any button on the screen. When invoked, it slides in from either the left or right side of the screen. How they will behave depends from its `type`:
-
 ### `Drawer`
+
+A drawer can be triggered by any button on the screen. When invoked, it slides in from either the left or right side of the screen. How they will behave depends from its `type`:
 
 TODO: Add examples
 
