@@ -87,7 +87,7 @@ jobs:
         displayName: Download VR App CLI
         retryCountOnTaskFailure: 3
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./dist/screenshots --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./dist/screenshots --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
