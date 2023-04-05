@@ -38,6 +38,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Line Chart Example Three',
           url: '#/examples/linechartthree',
         },
+        {
+          component: require<any>('../LineChart/LineChartPageFour').LineChartPageFour,
+          key: 'LineChartExampleFour',
+          name: 'Line Chart Example Four',
+          url: '#/examples/linechartfour',
+        },
         // {
         //   component: require<any>('../AreaChart/AreaChartPage').AreaChart,
         //   key: 'AreaChart',
