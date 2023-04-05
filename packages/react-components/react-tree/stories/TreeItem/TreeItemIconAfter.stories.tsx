@@ -6,7 +6,9 @@ export const IconAfter = () => {
   return (
     <Tree aria-label="Tree">
       <TreeItem>
-        <TreeItemLayout iconAfter={<LockClosed20Regular />}>level 1, item 1</TreeItemLayout>
+        <TreeItemLayout aria-description="Private" iconAfter={<LockClosed20Regular />}>
+          level 1, item 1
+        </TreeItemLayout>
         <Tree>
           <TreeItem>
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
@@ -20,7 +22,9 @@ export const IconAfter = () => {
         </Tree>
       </TreeItem>
       <TreeItem>
-        <TreeItemLayout iconAfter={<LockClosed20Regular />}>level 1, item 2</TreeItemLayout>
+        <TreeItemLayout aria-description="Private" iconAfter={<LockClosed20Regular />}>
+          level 1, item 2
+        </TreeItemLayout>
         <Tree>
           <TreeItem>
             <TreeItemLayout>level 2, item 1</TreeItemLayout>

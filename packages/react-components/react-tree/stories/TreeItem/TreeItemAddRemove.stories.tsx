@@ -16,6 +16,45 @@ type RemoveableTreeItemProps = TreeItemProps & {
   onRemove: (id: string) => void;
 };
 
+const data = [
+  {
+    name: 'level 1, item 1',
+    children: [
+      {
+        name: 'level 2, item 1',
+        children: [],
+      },
+      {
+        name: 'level 2, item 2',
+        children: [],
+      },
+      {
+        name: 'level 2, item 3',
+        children: [],
+      },
+    ],
+  },
+  {
+    name: 'level 1, item 2',
+    children: [
+      {
+        name: 'level 2, item 1',
+        children: [
+          {
+            name: 'level 3, item 1',
+            children: [
+              {
+                name: 'level 4, item 1',
+                children: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
 const defaultItems = flattenTree_unstable([
   {
     children: <TreeItemLayout>level 1, item 1</TreeItemLayout>,

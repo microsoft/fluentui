@@ -8,41 +8,59 @@ const iconStyleProps: FluentIconsProps = {
   primaryFill: 'red',
 };
 
-const RenderAside = () => (
+const RenderAside = ({ isImportant, messageCount }: { isImportant?: boolean; messageCount?: number }) => (
   <>
-    <Important16Regular {...iconStyleProps} />
-    <CounterBadge count={1} color="danger" size="small" />
+    {isImportant && <Important16Regular {...iconStyleProps} />}
+    {messageCount && messageCount > 0 && <CounterBadge count={messageCount} color="danger" size="small" />}
   </>
 );
 
 const Actions = () => (
   <>
-    <Button appearance="subtle" icon={<Edit20Regular />} />
-    <Button appearance="subtle" icon={<MoreHorizontal20Regular />} />
+    <Button appearance="subtle" icon={<Edit20Regular aria-label="Edit" />} />
+    <Button appearance="subtle" icon={<MoreHorizontal20Regular aria-label="More options" />} />
   </>
 );
 
 export const Aside = () => (
   <Tree aria-label="Tree">
     <TreeItem>
-      <TreeItemLayout aside={<RenderAside />}>level 1, item 1</TreeItemLayout>
+      <TreeItemLayout
+        aria-description="Important, 3 message"
+        aside={<RenderAside isImportant={true} messageCount={3} />}
+      >
+        level 1, item 1
+      </TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderAside />}>level 2, item 1</TreeItemLayout>
+          <TreeItemLayout aria-description="Important" aside={<RenderAside isImportant={true} />}>
+            level 2, item 1
+          </TreeItemLayout>
         </TreeItem>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderAside />}>level 2, item 2</TreeItemLayout>
+          <TreeItemLayout aria-description="2 messages" aside={<RenderAside messageCount={2} />}>
+            level 2, item 2
+          </TreeItemLayout>
         </TreeItem>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderAside />}>level 2, item 3</TreeItemLayout>
+          <TreeItemLayout aria-description="1 messages" aside={<RenderAside messageCount={1} />}>
+            level 2, item 3
+          </TreeItemLayout>
         </TreeItem>
       </Tree>
     </TreeItem>
     <TreeItem>
-      <TreeItemLayout aside={<RenderAside />}>level 1, item 2</TreeItemLayout>
+      <TreeItemLayout
+        aria-description="Important, 1 message"
+        aside={<RenderAside isImportant={true} messageCount={1} />}
+      >
+        level 1, item 2
+      </TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderAside />}>level 2, item 1</TreeItemLayout>
+          <TreeItemLayout aria-description="=1 message" aside={<RenderAside messageCount={1} />}>
+            level 2, item 1
+          </TreeItemLayout>
           <Tree>
             <TreeItem actions={<Actions />}>
               <TreeItemLayout aside={<RenderAside />}>level 3, item 1</TreeItemLayout>
@@ -51,16 +69,18 @@ export const Aside = () => (
         </TreeItem>
 
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aside={<RenderAside />}>level 2, item 2</TreeItemLayout>
+          <TreeItemLayout aria-description="Important" aside={<RenderAside isImportant={true} />}>
+            level 2, item 2
+          </TreeItemLayout>
           <Tree>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderAside />}>level 3, item 1</TreeItemLayout>
+              <TreeItemLayout>level 3, item 1</TreeItemLayout>
             </TreeItem>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderAside />}>level 3, item 2</TreeItemLayout>
+              <TreeItemLayout>level 3, item 2</TreeItemLayout>
             </TreeItem>
             <TreeItem actions={<Actions />}>
-              <TreeItemLayout aside={<RenderAside />}>level 3, item 3</TreeItemLayout>
+              <TreeItemLayout>level 3, item 3</TreeItemLayout>
             </TreeItem>
           </Tree>
         </TreeItem>

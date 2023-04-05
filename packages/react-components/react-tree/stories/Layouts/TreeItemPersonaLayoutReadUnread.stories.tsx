@@ -21,6 +21,7 @@ export const ReadUnread = () => {
       </TreeItem>
       <TreeItem>
         <TreeItemPersonaLayout
+          aria-description="New message"
           description={<div className={styles.unread}>Secondary text content</div>}
           media={<Avatar />}
         >
