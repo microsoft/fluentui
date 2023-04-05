@@ -8,7 +8,7 @@ import type { DrawerState, DrawerSlots } from './Drawer.types';
 export const renderDrawer_unstable = (state: DrawerState) => {
   const { slots, slotProps } = getSlots<DrawerSlots>(state);
 
-  if (state.type === 'temporary') {
+  if (state.type === 'overlay') {
     return slots.dialog && slots.dialogSurface ? (
       <slots.dialog {...slotProps.dialog}>
         <slots.dialogSurface {...slotProps.dialogSurface} />
