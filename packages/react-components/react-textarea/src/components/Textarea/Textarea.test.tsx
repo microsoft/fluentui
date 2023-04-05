@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render, RenderResult, screen } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { Textarea } from './Textarea';
 import { isConformant } from '../../testing/isConformant';
 
@@ -86,5 +87,22 @@ describe('Textarea', () => {
     renderedComponent = render(<Textarea value="foo" onChange={onChange} />);
     renderedComponent.rerender(<Textarea value="bar" onChange={onChange} />);
     expect(onChange).toHaveBeenCalledTimes(0);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Textarea />
+      </Field>,
+    );
+
+    const textarea = result.getByRole('textbox') as HTMLTextAreaElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(textarea.id).toEqual(label.htmlFor);
+    expect(textarea.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(textarea.getAttribute('aria-invalid')).toEqual('true');
+    expect(textarea.required).toBe(true);
   });
 });

@@ -7,7 +7,7 @@ import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';
 
 const CLASS_NAME_REGEX = new RegExp(`(${fluentProviderClassNames.root}\\d+)`);
 
-export const PortalCompatProvider: React.FC = props => {
+export const PortalCompatProvider: React.FC<{ children?: React.ReactNode }> = props => {
   const { children } = props;
 
   const themeClassName = useThemeClassName();

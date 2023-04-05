@@ -26,9 +26,40 @@ export const Field: ForwardRefComponent<FieldProps>;
 // @public (undocumented)
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
+// @public (undocumented)
+export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
+    labelFor?: string | undefined;
+    labelId?: string | undefined;
+    validationMessageId?: string | undefined;
+    hintId?: string | undefined;
+}> | undefined>;
+
+// @public (undocumented)
+export type FieldContextValue = Readonly<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
+    labelFor?: string;
+    labelId?: string;
+    validationMessageId?: string;
+    hintId?: string;
+}>;
+
+// @public (undocumented)
+export type FieldContextValues = {
+    field: FieldContextValue;
+};
+
+// @public
+export type FieldControlProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'>;
+
+// @public
+export type FieldControlPropsOptions = {
+    supportsLabelFor?: boolean;
+    supportsRequired?: boolean;
+    supportsSize?: boolean;
+};
+
 // @public
 export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
-    children?: React_2.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React_2.ReactNode);
+    children?: React_2.ReactNode | ((props: FieldControlProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success' | 'none';
     required?: boolean;
@@ -45,7 +76,9 @@ export type FieldSlots = {
 };
 
 // @public
-export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> & Pick<FieldProps, 'children'> & {
+    generatedControlId: string;
+};
 
 // @internal @deprecated (undocumented)
 export const getDeprecatedFieldClassNames: (controlRootClassName: string) => {
@@ -64,10 +97,27 @@ export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType
 }): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export const renderField_unstable: (state: FieldState, contextValues?: FieldContextValues | undefined) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
+// @public (undocumented)
+export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
+    labelFor?: string | undefined;
+    labelId?: string | undefined;
+    validationMessageId?: string | undefined;
+    hintId?: string | undefined;
+}> | undefined;
+
+// @public
+export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
+
+// @public
+export function useFieldControlProps_unstable(): FieldControlProps | undefined;
+
+// @public
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(props: Props, options?: FieldControlPropsOptions): Props;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;
