@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
-import { Dialog, DialogProps, DialogSurface } from '@fluentui/react-dialog';
+import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
+import { DialogProps } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
 
@@ -10,29 +10,23 @@ import type { DrawerProps, DrawerState } from './Drawer.types';
  * @param props - props from this instance of Drawer
  */
 const useDrawerDialogProps = (props: DrawerProps) => {
-  const { dialog, dialogSurface, open, onOpenChange, modal, children, style } = props;
+  const { open, onOpenChange, modal, children, ...otherProps } = props;
 
   const dialogProps = React.useMemo(() => {
-    return resolveShorthand(dialog, {
-      required: true,
-      defaultProps: {
-        open,
-        onOpenChange,
-        modalType: modal ? 'modal' : 'non-modal',
-        children,
-      } as DialogProps,
-    });
-  }, [children, modal, onOpenChange, open, dialog]);
+    return {
+      open,
+      onOpenChange,
+      modalType: modal ? 'modal' : 'non-modal',
+      children,
+    } as DialogProps;
+  }, [children, modal, onOpenChange, open]);
 
   const dialogSurfaceProps = React.useMemo(() => {
-    return resolveShorthand(dialogSurface, {
-      required: true,
-      defaultProps: {
-        children,
-        style,
-      },
-    });
-  }, [children, dialogSurface, style]);
+    return {
+      ...otherProps,
+      children,
+    };
+  }, [children, otherProps]);
 
   return {
     dialog: dialogProps,
@@ -74,8 +68,6 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
   return {
     components: {
       root: 'div',
-      dialog: Dialog,
-      dialogSurface: DialogSurface,
     },
 
     root: getNativeElementProps('div', {

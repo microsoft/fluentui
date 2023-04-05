@@ -8,20 +8,6 @@ export type DrawerSlots = {
    * Only renders if `type` is `inline`.
    */
   root: Slot<'div'>;
-
-  /**
-   * Dialog component that renders for overlay drawer.
-   * The default is an instance of Dialog component
-   * This slot expects a compatible Dialog which will replace the default dialog component.
-   */
-  dialog: NonNullable<Slot<DialogProps>>;
-
-  /**
-   * DialogSurface component that renders for overlay drawer.
-   * The default is an instance of DialogSurface component
-   * This slot expects a compatible DialogSurface which will replace the default dialog component.
-   */
-  dialogSurface: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
 /**
@@ -72,4 +58,7 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
  * State used in rendering Drawer
  */
 export type DrawerState = ComponentState<DrawerSlots> &
-  Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>>;
+  Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>> & {
+    dialog: DialogProps;
+    dialogSurface: DialogSurfaceProps;
+  };

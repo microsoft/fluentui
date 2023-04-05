@@ -5,8 +5,6 @@ import { tokens } from '@fluentui/react-theme';
 
 export const drawerClassNames: SlotClassNames<DrawerSlots> = {
   root: 'fui-Drawer',
-  dialog: 'fui-Drawer__dialog',
-  dialogSurface: 'fui-Drawer__dialogSurface',
 };
 
 /**
@@ -111,7 +109,7 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
   ];
 
   if (state.type === 'overlay') {
-    state.dialogSurface.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
+    state.root.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
   }
 
   if (state.type === 'inline') {
