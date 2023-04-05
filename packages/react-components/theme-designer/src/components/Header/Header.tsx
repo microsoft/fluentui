@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text, tokens } from '@fluentui/react-components';
+import { shorthands } from '@griffel/react';
 
 const MFSTLogo = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
       <path fill="#F1511B" d="M121.666 121.666H0V0h121.666z" />
       <path fill="#80CC28" d="M256 121.666H134.335V0H256z" />
       <path fill="#00ADEF" d="M121.663 256.002H0V134.336h121.663z" />
@@ -16,9 +17,6 @@ export interface HeaderProps {
 }
 
 const useStyles = makeStyles({
-  title: {
-    paddingLeft: '16px',
-  },
   root: {
     alignItems: 'center',
     display: 'grid',
@@ -28,18 +26,9 @@ const useStyles = makeStyles({
   logo: {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'space-evenly',
-  },
-  element: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  export: {
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    paddingRight: '20px',
+    justifyContent: 'start',
+    paddingLeft: tokens.spacingHorizontalL,
+    ...shorthands.gap(tokens.spacingHorizontalS),
   },
 });
 
@@ -48,7 +37,7 @@ export const Header: React.FC<HeaderProps> = props => {
 
   return (
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
-      <div className={styles.title}>
+      <div className={styles.logo}>
         <MFSTLogo />
         <Text>Theme Designer</Text>
       </div>
