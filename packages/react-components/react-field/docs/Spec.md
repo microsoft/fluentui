@@ -83,94 +83,6 @@ Field also forwards some props to its Label:
 
 ## API
 
-### FieldContext
-
-The `FieldContext` provides some of the props passed to the Field, as well the IDs that were generated for the control, field, validationMessage, and hint. This can be used by a control inside the Field to set its accessibility properties, or use the `useFieldControlProps` hook (below) that handles the prop merging.
-
-```ts
-export type FieldContextValue = Readonly<
-  Pick<FieldState, 'orientation' | 'required' | 'size' | 'validationState'> & {
-    /** The ID generated for the control inside the field, and the default value of label's for prop. */
-    generatedControlId: string;
-    /** The label's for prop. Undefined if there is no label. */
-    labelFor?: string;
-    /** The label's id prop. Undefined if there is no label. */
-    labelId?: string;
-    /** The validationMessage's id prop. Undefined if there is no validationMessage. */
-    validationMessageId?: string;
-    /** The hint's id prop. Undefined if there is no hint. */
-    hintId?: string;
-  }
->;
-```
-
-### FieldControlProps
-
-The `FieldControlProps` type defines the props that may be set by `useFieldControlProps`, or passed to the child render function.
-
-```ts
-/**
- * The props added to the control inside the Field.
- */
-export type FieldControlProps = Pick<
-  React.HTMLAttributes<HTMLElement>,
-  'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
->;
-```
-
-### useFieldControlProps
-
-The `useFieldControlProps` hook reads the FieldContext, and merges the control's props with props from the Field.
-
-This is the mechanism that all form components in this library, including `<Input>`, `<RadioGroup>`, etc. get props from the Field. It is also one of two ways a third party component could be used inside a Field (the other being a render function as the child of Field).
-
-```ts
-/**
- * Gets the control props from the field context, if this inside a `<Field>`.
- *
- * If `props` is provided: copies and merges the FieldControlProps with the given props, if this inside a `<Field>`.
- * Otherwise, returns the FieldControlProps that should be applied to the control.
- *
- * It is preferred to pass a `props` object if available, to improve the resulting merged props.
- *
- * @param props - The existing props for the control. These will be merged with the control props from the field context.
- * @param options - Option to include the size prop.
- * @returns Merged props if inside a `<Field>`, otherwise the original props, or undefined if no props given.
- */
-export function useFieldControlProps_unstable<Props extends FieldControlProps>(
-  props?: Props,
-  options?: FieldControlPropsOptions,
-): Props | undefined;
-
-/**
- * Options for `useFieldControlProps_unstable`.
- */
-export type FieldControlPropsOptions = {
-  /**
-   * Skips setting `aria-labelledby` on the control if the `label.htmlFor` refers to the control.
-   *
-   * This should be used with controls that can be the target of a label's `for` prop:
-   * `<button>`, `<input>`, `<progress>`, `<select>`, `<textarea>`.
-   */
-  supportsLabelFor?: boolean;
-
-  /**
-   * Sets `required` instead of `aria-required` when the Field is marked required.
-   *
-   * This should be used with controls that support the `required` prop:
-   * `<input>` (except `range` or `color`), `<select>`, `<textarea>`.
-   */
-  supportsRequired?: boolean;
-
-  /**
-   * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
-   *
-   * This should be used with controls that have a custom size prop that matches the Field's size prop.
-   */
-  supportsSize?: boolean;
-};
-```
-
 ### Slots
 
 ```ts
@@ -272,6 +184,92 @@ export type FieldState = ComponentState<Required<FieldSlots>> &
   };
 ```
 
+### FieldContext
+
+The `FieldContext` provides some of the props passed to the Field, as well the IDs that were generated for the control, field, validationMessage, and hint. This can be used by a control inside the Field to set its accessibility properties, or use the `useFieldControlProps` hook (below) that handles the prop merging.
+
+```ts
+export type FieldContextValue = Readonly<
+  Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
+    /** The label's for prop. Undefined if there is no label. */
+    labelFor?: string;
+    /** The label's id prop. Undefined if there is no label. */
+    labelId?: string;
+    /** The validationMessage's id prop. Undefined if there is no validationMessage. */
+    validationMessageId?: string;
+    /** The hint's id prop. Undefined if there is no hint. */
+    hintId?: string;
+  }
+>;
+```
+
+### FieldControlProps
+
+The `FieldControlProps` type defines the props that may be set by `useFieldControlProps`, or passed to the child render function.
+
+```ts
+/**
+ * The props added to the control inside the Field.
+ */
+export type FieldControlProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
+>;
+```
+
+### useFieldControlProps
+
+The `useFieldControlProps` hook reads the FieldContext, and merges the control's props with props from the Field.
+
+This is the mechanism that all form components in this library, including `<Input>`, `<RadioGroup>`, etc. get props from the Field. It is also one of two ways a third party component could be used inside a Field (the other being a render function as the child of Field).
+
+```ts
+/**
+ * Gets the control props from the field context, if this inside a `<Field>`.
+ *
+ * If `props` is provided: copies and merges the FieldControlProps with the given props, if this inside a `<Field>`.
+ * Otherwise, returns the FieldControlProps that should be applied to the control.
+ *
+ * It is preferred to pass a `props` object if available, to improve the resulting merged props.
+ *
+ * @param props - The existing props for the control. These will be merged with the control props from the field context.
+ * @param options - Option to include the size prop.
+ * @returns Merged props if inside a `<Field>`, otherwise the original props, or undefined if no props given.
+ */
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(
+  props?: Props,
+  options?: FieldControlPropsOptions,
+): Props | undefined;
+
+/**
+ * Options for `useFieldControlProps_unstable`.
+ */
+export type FieldControlPropsOptions = {
+  /**
+   * Skips setting `aria-labelledby` on the control if the `label.htmlFor` refers to the control.
+   *
+   * This should be used with controls that can be the target of a label's `for` prop:
+   * `<button>`, `<input>`, `<progress>`, `<select>`, `<textarea>`.
+   */
+  supportsLabelFor?: boolean;
+
+  /**
+   * Sets `required` instead of `aria-required` when the Field is marked required.
+   *
+   * This should be used with controls that support the `required` prop:
+   * `<input>` (except `range` or `color`), `<select>`, `<textarea>`.
+   */
+  supportsRequired?: boolean;
+
+  /**
+   * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
+   *
+   * This should be used with controls that have a custom size prop that matches the Field's size prop.
+   */
+  supportsSize?: boolean;
+};
+```
+
 ## Structure
 
 ### Public API
@@ -364,7 +362,7 @@ The Field itself is not interactive. The wrapped component has the same interact
       - `invalid={true}` - if the control supports the `invalid` prop
       - `aria-invalid={true}` - if the control does NOT support the `invalid` prop (or a render function is used).
   - On the `label` slot:
-    - `htmlFor={child.id}`
+    - `htmlFor={generatedChildID}`
   - On the `validationMessage` slot:
     - `role="alert"` - unless validationState set to something _other than_ `error`.
 - **Live regions** (state change announcements)
