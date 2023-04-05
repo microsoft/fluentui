@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 import {
-  Image20Regular,
   Flag20Regular,
   FluentIconsProps,
+  Image20Regular,
   Important16Regular,
   LockClosed20Regular,
   MoreHorizontal20Regular,

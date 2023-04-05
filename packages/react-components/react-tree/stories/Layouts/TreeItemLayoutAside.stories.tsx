@@ -58,7 +58,7 @@ export const Aside = () => (
       </TreeItemLayout>
       <Tree>
         <TreeItem actions={<Actions />}>
-          <TreeItemLayout aria-description="=1 message" aside={<RenderAside messageCount={1} />}>
+          <TreeItemLayout aria-description="1 message" aside={<RenderAside messageCount={1} />}>
             level 2, item 1
           </TreeItemLayout>
           <Tree>
