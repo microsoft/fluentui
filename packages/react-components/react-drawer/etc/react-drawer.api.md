@@ -37,12 +37,13 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
 // @public (undocumented)
 export type DrawerSlots = {
     root: Slot<'div'>;
-    dialog: NonNullable<Slot<DialogProps>>;
-    dialogSurface: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
 // @public
-export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>>;
+export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>> & {
+    dialog: DialogProps;
+    dialogSurface: DialogSurfaceProps;
+};
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState) => JSX.Element | null;
