@@ -80,7 +80,7 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      #  - template: download-vr-cli.yaml1
+      #  - template: download-vr-cli.yaml
       - bash: |
          set -exuo pipefail
          npm install -g vr-approval-cli
