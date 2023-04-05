@@ -111,6 +111,7 @@ export const styles = css`
   }
 
   :host([aria-checked='true']) .label,
+  :host([aria-checked='mixed']) .label,
   :host(:active) .label {
     color: ${colorNeutralForeground1};
   }
@@ -162,7 +163,6 @@ export const styles = css`
   :host([shape='circular']) .indeterminate-indicator {
     border-radius: ${borderRadiusCircular};
   }
-
   :host([disabled]) .control,
   :host([aria-checked='mixed'][disabled]) .control,
   :host([aria-checked='true'][disabled]) .control {
@@ -172,10 +172,10 @@ export const styles = css`
   :host([aria-checked='true'][disabled]) .checked-indicator,
   :host([disabled]) ::slotted([slot='start']),
   :host([disabled]) .label,
+  :host([aria-checked='mixed'][disabled]) .label,
   :host([aria-checked='true'][disabled]) .label {
     color: ${colorNeutralForegroundDisabled};
   }
-
   :host([disabled]) .indeterminate-indicator {
     background-color: ${colorNeutralForegroundDisabled};
   }

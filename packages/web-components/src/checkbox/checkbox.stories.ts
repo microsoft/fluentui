@@ -122,20 +122,20 @@ Mixed.args = { indeterminate: true };
 // Disabled
 const CheckboxDisabled = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column;">
-    <fluent-checkbox name="checkbox-group" disabled> Disabled </fluent-checkbox>
+    <fluent-checkbox name="checkbox-group" disabled> Disabled unchecked </fluent-checkbox>
 
     <fluent-checkbox name="checkbox-group" disabled shape="${CheckboxShape.circular}">
-      Disabled circular
+      Disabled circular unchecked
     </fluent-checkbox>
 
-    <fluent-checkbox checked disabled> disabled checked </fluent-checkbox>
+    <fluent-checkbox checked disabled> Disabled checked </fluent-checkbox>
 
-    <fluent-checkbox checked disabled shape="${CheckboxShape.circular}"> disabled checked circular </fluent-checkbox>
+    <fluent-checkbox checked disabled shape="${CheckboxShape.circular}"> Disabled circular checked </fluent-checkbox>
 
-    <fluent-checkbox disabled :indeterminate="${x => x.indeterminate}"> indeterminate disabled </fluent-checkbox>
+    <fluent-checkbox disabled :indeterminate="${x => x.indeterminate}"> Disabled indeterminate </fluent-checkbox>
 
     <fluent-checkbox disabled :indeterminate="${x => x.indeterminate}" shape="${CheckboxShape.circular}">
-      circular indeterminate disabled
+      Disabled circular indeterminate
     </fluent-checkbox>
   </form>
 `;
@@ -145,17 +145,41 @@ Disabled.args = { indeterminate: true };
 
 // large
 const CheckboxSizes = html<CheckboxStoryArgs>`
-  <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column;">
-    <fluent-checkbox size="${CheckboxSize.large}">Large</fluent-checkbox>
-    <fluent-checkbox size="${CheckboxSize.large}" shape="${CheckboxShape.circular}">Large circular</fluent-checkbox>
+  <form class="checkbox-group" @submit="${() => false}" style="display: flex; gap: 50px">
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <fluent-checkbox checked>Medium</fluent-checkbox>
+      <fluent-checkbox checked shape="${CheckboxShape.circular}">Medium circular</fluent-checkbox>
+
+      <fluent-checkbox :indeterminate="${x => x.indeterminate}">Medium indeterminate</fluent-checkbox>
+      <fluent-checkbox :indeterminate="${x => x.indeterminate}" shape="${CheckboxShape.circular}"
+        >Medium circular indeterminate</fluent-checkbox
+      >
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <fluent-checkbox checked size="${CheckboxSize.large}">Large checkbox</fluent-checkbox>
+      <fluent-checkbox checked size="${CheckboxSize.large}" shape="${CheckboxShape.circular}"
+        >Large circular</fluent-checkbox
+      >
+
+      <fluent-checkbox size="${CheckboxSize.large}" :indeterminate="${x => x.indeterminate}"
+        >Large indeterminate</fluent-checkbox
+      >
+      <fluent-checkbox
+        size="${CheckboxSize.large}"
+        :indeterminate="${x => x.indeterminate}"
+        shape="${CheckboxShape.circular}"
+        >Large circular indeterminate</fluent-checkbox
+      >
+    </div>
   </form>
 `;
-export const Size = renderComponent(CheckboxSizes).bind({});
+export const Size: Args = renderComponent(CheckboxSizes).bind({});
+Size.args = { indeterminate: true };
 
 // label before
 const labelBeforeTemplate = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}">
-    <fluent-checkbox label-position="${CheckboxLabelPosition.before}">Label before</fluent-checkbox>
+    <fluent-checkbox checked label-position="${CheckboxLabelPosition.before}">Label before</fluent-checkbox>
   </form>
 `;
 export const LabelBefore = renderComponent(labelBeforeTemplate).bind({});
@@ -163,9 +187,9 @@ export const LabelBefore = renderComponent(labelBeforeTemplate).bind({});
 // label wrapping
 const labelWrappingTemplate = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}">
-    <fluent-checkbox style="max-width: 400px"
-      >Here is an example of a checkbox with a long label and it starts to wrap to a second line</fluent-checkbox
-    >
+    <fluent-checkbox checked style="max-width: 400px">
+      Here is an example of a checkbox with a long label and it starts to wrap to a second line
+    </fluent-checkbox>
   </form>
 `;
 export const LabelWrapping = renderComponent(labelWrappingTemplate).bind({});
@@ -173,7 +197,11 @@ export const LabelWrapping = renderComponent(labelWrappingTemplate).bind({});
 // circular
 const CheckboxCircular = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}">
-    <fluent-checkbox shape="${CheckboxShape.circular}">Circular</fluent-checkbox>
+    <fluent-checkbox checked shape="${CheckboxShape.circular}">Circular</fluent-checkbox>
+    <fluent-checkbox :indeterminate="${x => x.indeterminate}" shape="${CheckboxShape.circular}"
+      >Circular indeterminate</fluent-checkbox
+    >
   </form>
 `;
-export const Circular = renderComponent(CheckboxCircular).bind({});
+export const Circular: Args = renderComponent(CheckboxCircular).bind({});
+Circular.args = { indeterminate: true };
