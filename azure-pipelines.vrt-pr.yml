@@ -87,7 +87,7 @@ jobs:
         displayName: Download VR App CLI
         retryCountOnTaskFailure: 3
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./dist/screenshots --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./dist/screenshots --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
@@ -179,7 +179,7 @@ jobs:
         displayName: Download VR App CLI
         retryCountOnTaskFailure: 3
 
-      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8'
+      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
@@ -263,7 +263,7 @@ jobs:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)'
+      - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
