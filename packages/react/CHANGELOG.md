@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 28 Mar 2023 07:38:26 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Apr 2023 07:37:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.1)
+
+Mon, 03 Apr 2023 07:37:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.0..@fluentui/react_v8.107.1)
+
+### Patches
+
+- fix: ColorPicker preview box updated to ignore forced colors to display chosen color ([PR #27394](https://github.com/microsoft/fluentui/pull/27394) by gcox@microsoft.com)
+
+## [8.107.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.0)
+
+Thu, 30 Mar 2023 07:43:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.106.10..@fluentui/react_v8.107.0)
+
+### Minor changes
+
+- feat: Add blur function to ISearchBox componentRef ([PR #27330](https://github.com/microsoft/fluentui/pull/27330) by behowell@microsoft.com)
+
+### Patches
+
+- Added touch support to ColorPicker ([PR #27349](https://github.com/microsoft/fluentui/pull/27349) by gcox@microsoft.com)
 
 ## [8.106.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.10)
 

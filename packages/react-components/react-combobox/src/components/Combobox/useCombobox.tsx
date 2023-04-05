@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
@@ -29,6 +30,9 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+
   const baseState = useComboboxBaseState({ ...props, editable: true });
   const {
     activeOption,

@@ -35,23 +35,31 @@
 /.githooks @microsoft/fluentui-react-build
 /.storybook @microsoft/fluentui-react-build
 /.vscode @microsoft/fluentui-react-build
+/.yarn @microsoft/fluentui-react-build
 /tools @microsoft/fluentui-react-build
+/typings @microsoft/fluentui-react-build
 
 #### Root Build files
 /.eslintrc.* @microsoft/fluentui-react-build
+/.yarnrc @microsoft/fluentui-react-build
 /.gitattributes @microsoft/fluentui-react-build
 /.gitignore @microsoft/fluentui-react-build
 /.npmrc @microsoft/fluentui-react-build
 /.npmignore @microsoft/fluentui-react-build
+/.prettierignore @microsoft/fluentui-react-build
+/.nxignore @microsoft/fluentui-react-build
 /jest.preset.js @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /sizeauditor.json @microsoft/fluentui-react-build
 /tsconfig.json @microsoft/fluentui-react-build
+/tsconfig.*.json @microsoft/fluentui-react-build
 /tsconfig.base.json @microsoft/fluentui-react-build
 /yarn.lock @microsoft/fluentui-react-build
 /*.config.js @microsoft/fluentui-react-build
-/typings @microsoft/fluentui-react-build
+/.babelrc-v9.json @microsoft/fluentui-react-build
+/*.js @microsoft/fluentui-react-build
+/*.json @microsoft/fluentui-react-build
 
 #### NX related files
 /nx.json @microsoft/fluentui-react-build
@@ -90,6 +98,7 @@ scripts/ts-node @microsoft/fluentui-react-build
 scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
+scripts/perf-test-flamegrill @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -122,7 +131,7 @@ apps/react-18-tests-v9 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
 apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
 
 #### Packages
-packages/azure-themes @Jacqueline-ms
+packages/azure-themes @Jacqueline-ms @robtaft-ms
 packages/bundle-size @microsoft/teams-prg
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
