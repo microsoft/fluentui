@@ -2,7 +2,7 @@
 
 ## Background
 
-Field adds a label, validation text, and hint text to form input components. It can be added around any input components, such as `<Input>` or `<Combobox>` from this library, or intrinsic `<input>` elements, or custom form controls.
+Field adds a label, validation text, and hint text to form input components. It can be added around any form components from this library, such as `<Input>` or `<Combobox>`. Its child can also be a render function, which allows it to be used with intrinsic `<input>` elements, or custom form controls.
 
 Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues/19627
 
