@@ -29,6 +29,8 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
     root: getNativeElementProps(as ?? 'div', {
       ref,
       id: useDialogContext_unstable(ctx => ctx.dialogTitleId),
+      role: 'heading',
+      'aria-level': '2',
       ...props,
     }),
     action: resolveShorthand(action, {
