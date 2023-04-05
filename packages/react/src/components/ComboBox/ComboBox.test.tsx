@@ -542,6 +542,7 @@ describe('ComboBox', () => {
     userEvent.tab();
     userEvent.keyboard('{enter}');
     expect(combobox.getAttribute('aria-expanded')).toEqual('true');
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual('one');
 
     // arrow down
     userEvent.keyboard('{arrowdown}');
