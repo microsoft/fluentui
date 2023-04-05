@@ -4,7 +4,7 @@
   "version": "0.66.4",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
+    "type-check": "tsc -p . --noEmit",
     "bundle": "just-scripts perf-test:bundle",
     "clean": "just-scripts clean",
     "test": "just-scripts test",
