@@ -92,6 +92,7 @@ scripts/projects-test @microsoft/fluentui-react-build
 scripts/puppeteer @microsoft/fluentui-react-build
 scripts/storybook @microsoft/fluentui-react-build
 scripts/tasks @microsoft/fluentui-react-build
+scripts/test-ssr @microsoft/fluentui-react-build
 scripts/triage-bot @microsoft/fluentui-react-build @microsoft/cxe-prg
 scripts/ts-node @microsoft/fluentui-react-build
 scripts/update-release-notes @microsoft/fluentui-react-build
