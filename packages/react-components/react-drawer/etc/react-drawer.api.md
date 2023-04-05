@@ -29,7 +29,7 @@ export const drawerCSSVars: {
 // @public
 export type DrawerProps = ComponentProps<DrawerSlots> & {
     position?: 'left' | 'right';
-    type?: 'persistent' | 'temporary';
+    type?: 'inline' | 'overlay';
     size?: DrawerSizes | number;
     modal?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
