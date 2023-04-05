@@ -12,36 +12,43 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    display: 'flex',
+  },
+  icon: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.padding(tokens.spacingHorizontalXS),
+  },
   small: {
     height: '24px',
     ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.caption1,
-    ':active': {
-      ...typographyStyles.caption1Strong,
-    },
   },
   medium: {
     height: '32px',
     ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.body1,
-    ':active': {
-      ...typographyStyles.body1Strong,
-    },
   },
   large: {
     height: '40px',
     ...shorthands.padding(tokens.spacingHorizontalS),
     ...typographyStyles.body2,
-    ':active': {
-      ...typographyStyles.subtitle2,
-    },
   },
   overflow: {
     ...shorthands.padding(tokens.spacingHorizontalSNudge),
     '&:hover': {
       textDecorationLine: 'none',
     },
+  },
+  currentSmall: {
+    ...typographyStyles.caption1Strong,
+  },
+  currentMedium: {
+    ...typographyStyles.body1Strong,
+  },
+  currentLarge: {
+    ...typographyStyles.subtitle2,
   },
 });
 
@@ -50,15 +57,25 @@ const useStyles = makeStyles({
  */
 export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): BreadcrumbLinkState => {
   const styles = useStyles();
+
+  const currentSizeMap = {
+    small: styles.currentSmall,
+    medium: styles.currentMedium,
+    large: styles.currentLarge,
+  };
+
   state.root.className = mergeClasses(
     breadcrumbLinkClassNames.root,
     styles.root,
-    state.root.className,
+    styles[state.size],
     state.overflow && styles.overflow,
+    state.current && currentSizeMap[state.size],
+    state.root.className,
   );
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(styles.icon, state.icon.className);
+  }
 
   return state;
 };

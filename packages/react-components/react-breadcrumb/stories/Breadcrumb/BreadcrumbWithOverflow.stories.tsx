@@ -139,7 +139,7 @@ const BreadcrumbOverflowExample = () => {
   );
 };
 
-const ControlledOverflowMenu = (props: Items) => {
+const ControlledOverflowMenu = (props: readonly Item[]) => {
   const { overflowItems, startDisplayedItems, endDisplayedItems } = props;
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
 
@@ -163,9 +163,11 @@ const ControlledOverflowMenu = (props: Items) => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList className={styles.menu}>
-          {isOverflowing && startDisplayedItems.map(item => <OverflowBreadcrumbButton key={item.key} item={item} />)}
-          {overflowItems && overflowItems.map(item => <OverflowBreadcrumbButton key={item.key} item={item} />)}
-          {isOverflowing && endDisplayedItems.map(item => <OverflowBreadcrumbButton key={item.key} item={item} />)}
+          {isOverflowing &&
+            startDisplayedItems.map((item: Item) => <OverflowBreadcrumbButton key={item.key} item={item} />)}
+          {overflowItems && overflowItems.map((item: Item) => <OverflowBreadcrumbButton key={item.key} item={item} />)}
+          {isOverflowing &&
+            endDisplayedItems.map((item: Item) => <OverflowBreadcrumbButton key={item.key} item={item} />)}
         </MenuList>
       </MenuPopover>
     </Menu>

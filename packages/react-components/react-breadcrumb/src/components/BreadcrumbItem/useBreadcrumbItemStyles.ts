@@ -5,7 +5,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
   root: 'fui-BreadcrumbItem',
-  icon: 'fui-BreadcrumbItem__icon',
 };
 
 /**
@@ -15,7 +14,6 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalNone),
   },
   small: {
     height: '24px',
@@ -32,6 +30,15 @@ const useStyles = makeStyles({
     ...shorthands.padding(tokens.spacingHorizontalS),
     ...typographyStyles.body2,
   },
+  currentSmall: {
+    ...typographyStyles.caption1Strong,
+  },
+  currentMedium: {
+    ...typographyStyles.body1Strong,
+  },
+  currentLarge: {
+    ...typographyStyles.subtitle2,
+  },
 });
 
 /**
@@ -40,7 +47,18 @@ const useStyles = makeStyles({
 export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): BreadcrumbItemState => {
   const styles = useStyles();
   const size = state.size || 'medium';
-  state.root.className = mergeClasses(breadcrumbItemClassNames.root, styles.root, styles[size], state.root.className);
+  const currentSizeMap = {
+    small: styles.currentSmall,
+    medium: styles.currentMedium,
+    large: styles.currentLarge,
+  };
+  state.root.className = mergeClasses(
+    breadcrumbItemClassNames.root,
+    styles.root,
+    styles[size],
+    state.current && currentSizeMap[size],
+    state.root.className,
+  );
 
   return state;
 };

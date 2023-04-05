@@ -75,6 +75,8 @@ function renderMenu(items: Items) {
 
 export const Default = () => (
   <>
+    <Breadcrumb size="small">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
+    <Breadcrumb>{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
     <Breadcrumb size="large">{linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}</Breadcrumb>
 
     <Breadcrumb size="large">

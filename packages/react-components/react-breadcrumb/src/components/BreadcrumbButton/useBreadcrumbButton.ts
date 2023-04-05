@@ -16,20 +16,15 @@ export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  const { appearance = 'transparent', size = 'medium' } = useBreadcrumbContext_unstable();
+  const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
 
-  const newProps = {
-    appearance: props.appearance || appearance,
-    ...props,
-  };
-  const buttonState = useButton_unstable(newProps, ref);
+  const { current = false, ...rest } = props;
   return {
-    ...buttonState,
-    iconOnly: Boolean(!props.children),
-    components: {
-      root: 'button',
-    },
+    ...useButton_unstable(
+      { ...rest, appearance: props.appearance || appearance, iconPosition: props.iconPosition || iconPosition },
+      ref,
+    ),
+    current,
     size,
-    selected: props.selected ?? false,
   };
 };

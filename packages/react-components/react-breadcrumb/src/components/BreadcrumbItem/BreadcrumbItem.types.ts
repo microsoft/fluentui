@@ -1,9 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { BreadcrumbProps } from '../Breadcrumb/Breadcrumb.types';
+import type { BreadcrumbProps } from '../Breadcrumb';
 
 export type BreadcrumbItemSlots = {
   root: Slot<'li'>;
-  icon?: Slot<'span'>;
 };
 
 /**
@@ -11,13 +10,16 @@ export type BreadcrumbItemSlots = {
  */
 export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
   Pick<BreadcrumbProps, 'size'> & {
-    iconPosition?: 'before' | 'after';
+    /**
+     * Defines current sate of the BreadcrumbItem.
+     *
+     * @default false
+     */
+    current?: boolean;
   };
 
 /**
  * State used in rendering BreadcrumbItem
  */
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size' | 'iconPosition'>> & {
-    iconOnly: boolean;
-  };
+  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;

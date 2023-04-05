@@ -6,29 +6,15 @@ import {
   partitionBreadcrumbItems,
   BreadcrumbButton,
 } from '@fluentui/react-breadcrumb';
-import {
-  bundleIcon,
-  CalendarMonthFilled,
-  CalendarMonthRegular,
-  GridDots20Regular,
-  ArrowRight16Filled,
-} from '@fluentui/react-icons';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, Tooltip, OverflowItem } from '@fluentui/react-components';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
-
-const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 type Item = {
   key: number;
-  item: any;
-  icon?: any;
-  disabled?: boolean;
-  iconPosition?: 'before' | 'after';
+  item: string;
 };
 
-type Items = Item[];
-
-const items: Items = [
+const items: Item[] = [
   {
     key: 0,
     item: 'Item 0',
@@ -36,12 +22,10 @@ const items: Items = [
   {
     key: 1,
     item: 'Item 1',
-    icon: <CalendarMonth />,
   },
   {
     key: 2,
     item: 'Item 2',
-    icon: <GridDots20Regular />,
   },
   {
     key: 3,
@@ -50,13 +34,10 @@ const items: Items = [
   {
     key: 4,
     item: 'Item 4',
-    icon: <CalendarMonthRegular />,
-    iconPosition: 'after',
   },
   {
     key: 5,
     item: 'Item 5',
-    disabled: true,
   },
   {
     key: 6,
@@ -74,20 +55,14 @@ function renderItem(el: Item, isLastItem: boolean = false) {
   return (
     <React.Fragment key={`${el.key}-item`}>
       <BreadcrumbItem>
-        <BreadcrumbItem icon={el.icon} iconPosition={el.iconPosition}>
-          {el.item}
-        </BreadcrumbItem>
+        <BreadcrumbItem>{el.item}</BreadcrumbItem>
       </BreadcrumbItem>
-      {!isLastItem && (
-        <BreadcrumbDivider>
-          <ArrowRight16Filled />
-        </BreadcrumbDivider>
-      )}
+      {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>
   );
 }
 
-function renderMenu(items: Items) {
+function renderMenu(menuItems: readonly Item[]) {
   return (
     <>
       <BreadcrumbItem>
@@ -99,10 +74,8 @@ function renderMenu(items: Items) {
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
-              {items.map(overflowItem => (
-                <MenuItem icon={overflowItem.icon} key={`menu-item-${overflowItem.key}`}>
-                  {overflowItem.item}
-                </MenuItem>
+              {menuItems.map(overflowItem => (
+                <MenuItem key={`menu-item-${overflowItem.key}`}>{overflowItem.item}</MenuItem>
               ))}
             </MenuList>
           </MenuPopover>

@@ -1,7 +1,21 @@
 import * as React from 'react';
-
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  ButtonProps,
+  MenuButton,
+} from '@fluentui/react-components';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbButton,
+  BreadcrumbDivider,
+  partitionBreadcrumbItems,
+} from '@fluentui/react-breadcrumb';
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const EditorLayoutSubMenu = () => {
   return (
@@ -25,7 +39,7 @@ export const NestedSubmenus = () => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <MenuItem>Toggle menu</MenuItem>
+        <MenuButton appearance="transparent">Item 4 Menu</MenuButton>
       </MenuTrigger>
 
       <MenuPopover>
@@ -41,11 +55,11 @@ export const NestedSubmenus = () => {
 };
 export type Item = {
   key: number;
-  item: any;
+  item?: ButtonProps['icon'] | string | JSX.Element;
   href?: string;
   buttonProps?: {
     onClick?: () => void;
-    icon?: any;
+    icon?: ButtonProps['icon'];
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
   };
@@ -64,8 +78,8 @@ export const buttonItems: Items = [
   {
     key: 1,
     item: 'Item 1',
-    icon: <CalendarMonth />,
     buttonProps: {
+      icon: <CalendarMonth />,
       onClick: () => console.log('item 1 was clicked'),
     },
   },
@@ -93,9 +107,9 @@ export const buttonItems: Items = [
   {
     key: 5,
     item: 'Item 5',
-    icon: <CalendarMonthRegular />,
-    iconPosition: 'after',
     buttonProps: {
+      icon: <CalendarMonthRegular />,
+      iconPosition: 'after',
       onClick: () => console.log('item 5 was clicked'),
     },
   },

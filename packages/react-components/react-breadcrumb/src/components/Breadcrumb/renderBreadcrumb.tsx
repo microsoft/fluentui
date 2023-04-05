@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { BreadcrumbProvider } from './BreadcrumbContext';
 import type { BreadcrumbState, BreadcrumbSlots, BreadcrumbContextValues } from './Breadcrumb.types';
-
 /**
  * Render the final JSX of Breadcrumb
  */
