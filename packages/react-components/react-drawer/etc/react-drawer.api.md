@@ -27,7 +27,7 @@ export const drawerCSSVars: {
 };
 
 // @public
-export type DrawerProps = ComponentProps<DrawerSlots> & {
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
     position?: 'left' | 'right';
     type?: 'inline' | 'overlay';
     size?: 'small' | 'medium' | 'large' | 'full';
@@ -37,8 +37,8 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
 // @public (undocumented)
 export type DrawerSlots = {
     root: Slot<'div'>;
-    dialog?: NonNullable<Slot<DialogProps>>;
-    dialogSurface?: NonNullable<Slot<DialogSurfaceProps>>;
+    dialog: NonNullable<Slot<DialogProps>>;
+    dialogSurface: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
 // @public
