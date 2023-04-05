@@ -57,11 +57,11 @@ Push the siblings content when open and it is non-blocking. Can be hidden to bri
 
 ### Size
 
-`small` (default): 320px
-`medium`: 592px
-`large`: 940px
-`full`: 100vw
-`custom`: Can be freely customized by providing a number. It cannot be extended beyond screen limits. If the size is larger than the screen size, it'll act as a `full` Drawer.
+- `small` (default): 320px
+- `medium`: 592px
+- `large`: 940px
+- `full`: 100vw
+- `custom`: Can be freely customized by providing a number. It cannot be extended beyond screen limits. If the size is larger than the screen size, it'll act as a `full` Drawer.
 
 ### Modal
 
