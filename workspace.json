@@ -996,6 +996,12 @@
       "projectType": "library",
       "tags": ["tools"]
     },
+    "@fluentui/scripts-test-ssr": {
+      "root": "scripts/test-ssr",
+      "sourceRoot": "scripts/test-ssr/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
     "@fluentui/scripts-triage-bot": {
       "root": "scripts/triage-bot",
       "sourceRoot": "scripts/triage-bot/src",
