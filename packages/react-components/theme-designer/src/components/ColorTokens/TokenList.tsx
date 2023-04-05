@@ -60,13 +60,6 @@ const useStyles = makeStyles({
     paddingTop: tokens.spacingVerticalS,
     paddingBottom: tokens.spacingVerticalS,
   },
-  //   cellCol: {
-  // 	display: 'flex',
-  //     flexDirection: 'column',
-  //     justifyContent: 'start',
-  //     boxSizing: 'border-box',
-  //     ...shorthands.gap(tokens.spacingVerticalL),
-  //   },
   row: {
     paddingLeft: '5px',
     paddingRight: '5px',
@@ -140,8 +133,6 @@ export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => 
     },
     [useTableColumnSizing_unstable({ columnSizingOptions })],
   );
-
-  // TODO: use getRows below
 
   return (
     <>
