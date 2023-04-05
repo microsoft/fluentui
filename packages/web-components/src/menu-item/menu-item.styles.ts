@@ -37,6 +37,7 @@ export const styles = css`
     background: ${colorNeutralBackground1};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
+    color: ${colorNeutralForeground2};
     padding: 0 10px;
     cursor: pointer;
     overflow: visible;
@@ -51,7 +52,6 @@ export const styles = css`
     white-space: nowrap;
     flex-grow: 1;
     grid-column: auto / span 2;
-    color: ${colorNeutralForeground2};
     padding: 0 2px;
   }
 
@@ -123,11 +123,13 @@ export const styles = css`
 
   :host([disabled]) {
     background-color: ${colorNeutralBackgroundDisabled};
-    color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([slot='end']) {
-    border-color: ${colorNeutralStrokeDisabled};
+  :host([disabled]) .content,
+  :host([disabled]) .expand-collapse-glyph-container,
+  :host([disabled]) ::slotted([slot='end']),
+  :host([disabled]) ::slotted([slot='start']) {
+    color: ${colorNeutralForegroundDisabled};
   }
 
   :host([data-indent]) {
