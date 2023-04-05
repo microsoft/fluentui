@@ -54,7 +54,6 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
    * - 'medium' - Drawer is 592px wide.
    * - 'large' - Drawer is 940px wide.
    * - 'full' - Drawer is 100vw wide.
-   * - number - Drawer is the given number of pixels wide.
    */
   size?: 'small' | 'medium' | 'large' | 'full';
 
