@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 21 Mar 2023 21:23:45 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.8)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.5.6..@fluentui/react-positioning_v9.5.8)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.5.6)
 
