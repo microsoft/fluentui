@@ -17,7 +17,6 @@ const storyTemplate = html<ToggleButtonStoryArgs>`
     ?disabled="${x => x.disabled}"
     ?disabled-focusable="${x => x.disabledFocusable}"
     ?icon-only="${x => x.iconOnly}"
-    ?icon="${x => x.icon}"
   >
     ${x => x.content}
   </fluent-toggle-button>
