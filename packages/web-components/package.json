@@ -60,6 +60,10 @@
       "types": "./dist/esm/menu/define.d.ts",
       "default": "./dist/esm/menu/define.js"
     },
+    "./menu-button": {
+      "types": "./dist/esm/menu-button/define.d.ts",
+      "default": "./dist/esm/menu-button/define.js"
+    },
     "./menu-item": {
       "types": "./dist/esm/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
