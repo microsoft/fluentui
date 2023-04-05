@@ -3,7 +3,9 @@
 exports[`DialogTitle renders a default state 1`] = `
 <div>
   <div
+    aria-level="2"
     class="fui-DialogTitle"
+    role="heading"
   >
     Default DialogTitle
   </div>
