@@ -64,9 +64,9 @@ storiesOf('Field', module)
     <Field
       label="Validation success"
       validationState="success"
-      validationMessage={`This success message wraps to multiple lines. All lines of this message should be left
-        aligned with each other, and the icon should be in its own column to the left of the message. None of the text
-        of the message should be directly below the icon.`}
+      validationMessage={`This success message wraps to multiple lines. All lines of this message should be left aligned
+        with each other, and the icon should be in its own column to the left of the message. None of the text of the
+        message should be directly below the icon.`}
     >
       <Input />
     </Field>
