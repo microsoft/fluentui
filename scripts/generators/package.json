@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-storybook": "*",
     "@fluentui/scripts-projects-test": "*"
   }
 }
