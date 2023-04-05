@@ -15,6 +15,14 @@ describe('Drawer', () => {
     resetIdsForTests();
   });
 
+  /**
+   * Note: see more visual regression tests for Drawer in /apps/vr-tests.
+   *
+   * Why these tests are disabled:
+   * component-handles-ref|component-has-root-ref: Drawer uses the Dialog under the hood and Dialog do not handle ref, as it is a renderless component
+   * component-handles-classname|component-has-static-classnames-object|make-styles-overrides-win: Drawer uses the DialogSurface component to render the classname, so the main component do not handle classname.
+   * consistent-callback-args: Disabled that as the Drawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
+   */
   isConformant({
     Component: Drawer,
     displayName: 'Drawer',
