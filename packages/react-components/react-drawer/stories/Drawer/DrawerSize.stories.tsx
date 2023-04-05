@@ -24,7 +24,7 @@ export const Size = () => {
 
   return (
     <div>
-      <Drawer size={size} open={open} onOpenChange={(_, state) => setOpen(state.open)}>
+      <Drawer size={size} position="right" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
         <Button appearance="outline" onClick={() => setOpen(false)}>
           Close
         </Button>

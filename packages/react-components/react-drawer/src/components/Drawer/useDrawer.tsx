@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
-import { Dialog, DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
+import { Dialog, DialogProps, DialogSurface } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
 
@@ -9,7 +9,7 @@ import type { DrawerProps, DrawerState } from './Drawer.types';
  * Create the state required to render DrawerDialog.
  * @param props - props from this instance of Drawer
  */
-const useDrawerDialog = ({ size, open, onOpenChange, modal, children }: DrawerProps) => {
+const useDrawerDialog = ({ open, onOpenChange, modal, children, style }: DrawerProps) => {
   const dialog = React.useMemo<DialogProps>(() => {
     return {
       open,
@@ -19,19 +19,7 @@ const useDrawerDialog = ({ size, open, onOpenChange, modal, children }: DrawerPr
     };
   }, [modal, onOpenChange, open]);
 
-  const dialogSurface = React.useMemo(() => {
-    const surfaceProps: DialogSurfaceProps = {
-      children,
-    };
-
-    if (typeof size === 'number') {
-      surfaceProps.style = {
-        width: `${size}px`,
-      };
-    }
-
-    return surfaceProps;
-  }, [children, size]);
+  const dialogSurface = { children, style };
 
   return { dialog, dialogSurface };
 };
@@ -50,6 +38,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     type = 'overlay',
     position = 'left',
     size = 'small',
+    modal = true,
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
   } = props;
@@ -60,7 +49,11 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const { dialog, dialogSurface } = useDrawerDialog(props);
+  const { dialog, dialogSurface } = useDrawerDialog({
+    ...props,
+    open,
+    modal,
+  });
 
   return {
     components: {

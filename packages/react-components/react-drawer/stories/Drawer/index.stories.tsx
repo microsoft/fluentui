@@ -4,7 +4,7 @@ import bestPracticesMd from './DrawerBestPractices.md';
 import previewMd from './DrawerPreview.md';
 
 export { Default } from './DrawerDefault.stories';
-export { Persistent } from './DrawerPersistent.stories';
+export { Inline } from './DrawerInline.stories';
 export { Size } from './DrawerSize.stories';
 export { CustomSize } from './DrawerCustomSize.stories';
 

@@ -24,8 +24,6 @@ export type DrawerSlots = {
   dialogSurface?: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
-export type DrawerSizes = 'small' | 'medium' | 'large' | 'full';
-
 /**
  * Drawer Props
  */
@@ -58,7 +56,7 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
    * - 'full' - Drawer is 100vw wide.
    * - number - Drawer is the given number of pixels wide.
    */
-  size?: DrawerSizes | number;
+  size?: 'small' | 'medium' | 'large' | 'full';
 
   /**
    * When this is set, the rest of the page is dimmed out and cannot be interacted with.

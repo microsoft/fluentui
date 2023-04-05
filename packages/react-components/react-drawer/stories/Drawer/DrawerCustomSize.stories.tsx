@@ -21,19 +21,16 @@ export const CustomSize = () => {
   const inputId = useId('custom-size-label');
 
   const [open, setOpen] = React.useState(false);
-  const [customSize, setCustomSize] = React.useState(0);
-
-  const drawerSize = React.useMemo(() => {
-    if (!customSize) {
-      return 'small';
-    }
-
-    return customSize;
-  }, [customSize]);
+  const [customSize, setCustomSize] = React.useState(250);
 
   return (
     <div>
-      <Drawer size={drawerSize} open={open} onOpenChange={(_, state) => setOpen(state.open)}>
+      <Drawer
+        open={open}
+        position="right"
+        onOpenChange={(_, state) => setOpen(state.open)}
+        style={{ width: `${customSize}px` }}
+      >
         <Button appearance="outline" onClick={() => setOpen(false)}>
           Close
         </Button>

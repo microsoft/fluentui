@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Persistent = () => {
+export const Inline = () => {
   const styles = useStyles();
 
   const [leftOpen, setLeftOpen] = React.useState(false);
@@ -28,7 +28,7 @@ export const Persistent = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer type="persistent" position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
+      <Drawer type="inline" position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
         <Button appearance="outline" onClick={() => setLeftOpen(false)}>
           Close
         </Button>
@@ -45,7 +45,7 @@ export const Persistent = () => {
         </Button>
       </div>
 
-      <Drawer type="persistent" position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
+      <Drawer type="inline" position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
         <Button appearance="outline" onClick={() => setRightOpen(false)}>
           Close
         </Button>
