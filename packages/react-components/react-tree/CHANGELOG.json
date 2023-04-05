@@ -2,6 +2,63 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Tue, 04 Apr 2023 18:44:49 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7dc03924c99ea14c4df43e56454fc7781e1fdb89",
+            "comment": "chore: adds e2e flat tree tests"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-aria to v9.3.16",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.4.7",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.7",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.16",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-portal to v9.2.4",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-tabster to v9.6.3",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-utilities to v9.7.3",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Mar 2023 10:15:27 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.8",
       "version": "9.0.0-beta.8",

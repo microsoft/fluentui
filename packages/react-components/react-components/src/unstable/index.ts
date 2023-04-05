@@ -83,11 +83,23 @@ export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentu
 export {
   Field,
   fieldClassNames,
+  FieldContextProvider,
   renderField_unstable,
+  useFieldContext_unstable,
+  useFieldContextValues_unstable,
+  useFieldControlProps_unstable,
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-field';
-export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
+export type {
+  FieldContextValue,
+  FieldContextValues,
+  FieldControlProps,
+  FieldControlPropsOptions,
+  FieldProps,
+  FieldSlots,
+  FieldState,
+} from '@fluentui/react-field';
 
 export {
   Skeleton,
