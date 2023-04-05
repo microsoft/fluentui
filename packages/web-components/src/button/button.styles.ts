@@ -125,10 +125,12 @@ export const styles = css`
     fill: currentColor;
   }
 
+  [slot='start'],
   ::slotted([slot='start']) {
     margin-inline-end: var(--icon-spacing);
   }
 
+  [slot='end'],
   ::slotted([slot='end']) {
     margin-inline-start: var(--icon-spacing);
   }
