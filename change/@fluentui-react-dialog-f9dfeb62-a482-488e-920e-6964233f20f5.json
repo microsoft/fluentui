@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add default heading role and level to DialogTitle",
+  "packageName": "@fluentui/react-dialog",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
