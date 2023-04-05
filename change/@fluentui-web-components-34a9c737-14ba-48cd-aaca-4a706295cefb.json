@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Adds Slider as a web component",
+  "comment": "Adding TabList, Tab, and TabPanel web components",
   "packageName": "@fluentui/web-components",
-  "email": "ryan@ryanmerrill.net",
+  "email": "mibaraka@microsoft.com",
   "dependentChangeType": "patch"
 }
