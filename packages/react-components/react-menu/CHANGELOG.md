@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 21 Mar 2023 21:23:39 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2023 18:44:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.7.7)
+
+Tue, 04 Apr 2023 18:44:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.7.5..@fluentui/react-menu_v9.7.7)
+
+### Patches
+
+- fix: Menu should not steal focus on close ([PR #27414](https://github.com/microsoft/fluentui/pull/27414) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-portal to v9.2.4 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-positioning to v9.5.8 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-tabster to v9.6.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.7.5)
 

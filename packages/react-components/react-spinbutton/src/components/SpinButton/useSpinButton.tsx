@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
@@ -46,6 +47,9 @@ const lerp = (start: number, end: number, percent: number): number => start + (e
  * @param ref - reference to root HTMLElement of SpinButton
  */
 export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',

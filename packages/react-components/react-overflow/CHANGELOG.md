@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Tue, 21 Mar 2023 21:23:41 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2023 18:44:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.13)
+
+Tue, 04 Apr 2023 18:44:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.12..@fluentui/react-overflow_v9.0.13)
+
+### Patches
+
+- fix: overflow item style should be applied when overflow items are nested in wrapper elements ([PR #27402](https://github.com/microsoft/fluentui/pull/27402) by vkozlova@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.16 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.12)
 
