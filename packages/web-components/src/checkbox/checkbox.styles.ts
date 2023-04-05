@@ -109,9 +109,6 @@ export const styles = css`
   :host(:active) .indeterminate-indicator {
     background-color: ${colorCompoundBrandForeground1Pressed};
   }
-  :host(:disabled) .indeterminate-indicator {
-    background-color: ${colorNeutralForegroundDisabled};
-  }
 
   :host([aria-checked='true']) .label,
   :host(:active) .label {
@@ -166,15 +163,20 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
   }
 
-  :host([aria-checked='true']:disabled) .control {
+  :host([aria-checked='true'][disabled]) .control {
     background-color: ${colorTransparentBackgroundHover};
   }
-  :host(:disabled) .control {
+  :host([disabled]) .control {
     border-color: ${colorNeutralStrokeDisabled};
   }
-  :host([aria-checked='true']:disabled) .checked-indicator,
-  :host(:disabled) .label,
-  :host([aria-checked='true']:disabled) .label {
+  :host([aria-checked='true'][disabled]) .checked-indicator,
+  :host([disabled]) ::slotted([slot='start']),
+  :host([disabled]) .label,
+  :host([aria-checked='true'][disabled]) .label {
     color: ${colorNeutralForegroundDisabled};
+  }
+
+  :host([disabled]) .indeterminate-indicator {
+    background-color: ${colorNeutralForegroundDisabled};
   }
 `;
