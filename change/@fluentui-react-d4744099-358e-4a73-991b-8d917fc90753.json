@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ComboBox updates activeDescendant value",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
