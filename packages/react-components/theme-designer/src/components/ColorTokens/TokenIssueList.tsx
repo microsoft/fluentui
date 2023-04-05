@@ -69,23 +69,14 @@ const useStyles = makeStyles({
   selected: {
     fontWeight: 'bold',
   },
+  cellRow: {
+    paddingTop: tokens.spacingVerticalS,
+    paddingBottom: tokens.spacingVerticalS,
+  },
   col: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
-  },
-  row: {
-    paddingLeft: '5px',
-    paddingRight: '5px',
-    display: 'grid',
-    gridTemplateColumns: '15px 1fr 1fr 1.5fr',
-    gridTemplateRows: 'auto auto',
-    alignItems: 'center',
-    paddingTop: tokens.spacingVerticalXL,
-    paddingBottom: tokens.spacingVerticalXL,
-  },
-  row2: {
-    gridColumnStart: '3',
   },
   colorPreview: {
     display: 'inline',
@@ -214,45 +205,51 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
 
             return (
               <TableRow key={token}>
-                <TableCell>
-                  <div className={styles.col}>
-                    {overridenTokens.includes(token) ? (
-                      <Badge appearance="filled" color="success" size="tiny" />
-                    ) : (
-                      <> </>
-                    )}
-                  </div>
-                  <div className={styles.col}>
-                    <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
-                  </div>
-                  <Menu>
-                    <MenuTrigger disableButtonEnhancement>
-                      <MenuButton size="small" shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
-                        {themeName} {colorValue}
-                      </MenuButton>
-                    </MenuTrigger>
-                    <MenuPopover>
-                      <MenuList onCheckedValueChange={handleColorChange}>
-                        {brandRamp.map(brandValue => {
-                          const selected = colorValue === brandValue;
-                          const brandValueString = brandValue.toString();
-                          return (
-                            <div key={brandValueString}>
-                              <ColorTokenCol
-                                token={token}
-                                brand={brand}
-                                showContrast={!!tests}
-                                brandValue={brandValue}
-                                brandValueString={brandValueString}
-                                selected={selected}
-                              />
-                            </div>
-                          );
-                        })}
-                      </MenuList>
-                    </MenuPopover>
-                  </Menu>
-                </TableCell>
+                <div className={styles.cellRow}>
+                  <TableCell>
+                    <div className={styles.col}>
+                      {overridenTokens.includes(token) ? (
+                        <Badge appearance="filled" color="success" size="tiny" />
+                      ) : (
+                        <> </>
+                      )}
+                    </div>
+                    <div className={styles.col}>
+                      <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
+                    </div>
+                    <Menu>
+                      <MenuTrigger disableButtonEnhancement>
+                        <MenuButton
+                          size="small"
+                          shape="circular"
+                          icon={<CircleFilled primaryFill={brand[colorValue]} />}
+                        >
+                          {themeName} {colorValue}
+                        </MenuButton>
+                      </MenuTrigger>
+                      <MenuPopover>
+                        <MenuList onCheckedValueChange={handleColorChange}>
+                          {brandRamp.map(brandValue => {
+                            const selected = colorValue === brandValue;
+                            const brandValueString = brandValue.toString();
+                            return (
+                              <div key={brandValueString}>
+                                <ColorTokenCol
+                                  token={token}
+                                  brand={brand}
+                                  showContrast={!!tests}
+                                  brandValue={brandValue}
+                                  brandValueString={brandValueString}
+                                  selected={selected}
+                                />
+                              </div>
+                            );
+                          })}
+                        </MenuList>
+                      </MenuPopover>
+                    </Menu>
+                  </TableCell>
+                </div>
                 <TableCell>
                   {rows &&
                     rows.map((rowData: TableRowData<TestResult>) => {
