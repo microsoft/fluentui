@@ -41,10 +41,11 @@ export const ExportLink = () => {
     Tab,
     TabList,
     Title3,
-    useId
+    useId,
+    Dropdown, 
+    Option 
   } from "@fluentui/react-components";
   import type { Theme } from "@fluentui/react-components";
-  import { Dropdown, Option } from '@fluentui/react-components/unstable';
   import {
     bundleIcon,
     CalendarLtrFilled,
