@@ -60,9 +60,9 @@
       "types": "./dist/esm/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
-    "./text": {
-      "types": "./dist/esm/text/define.d.ts",
-      "default": "./dist/esm/text/define.js"
+    "./menu-button": {
+      "types": "./dist/esm/menu-button/define.d.ts",
+      "default": "./dist/esm/menu-button/define.js"
     },
     "./progress-bar": {
       "types": "./dist/esm/progress-bar/define.d.ts",
@@ -79,6 +79,10 @@
     "./switch": {
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
+    },
+    "./text": {
+      "types": "./dist/esm/text/define.d.ts",
+      "default": "./dist/esm/text/define.js"
     }
   },
   "scripts": {
