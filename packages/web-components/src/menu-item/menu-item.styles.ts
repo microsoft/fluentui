@@ -38,7 +38,6 @@ export const styles = css`
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
     padding: 0 10px;
-    margin: 1px 0;
     cursor: pointer;
     overflow: visible;
     contain: layout;
