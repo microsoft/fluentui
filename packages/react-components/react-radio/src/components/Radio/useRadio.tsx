@@ -22,6 +22,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const disabledGroup = useRadioGroupContext_unstable(ctx => ctx.disabled);
   const layout = useRadioGroupContext_unstable(ctx => ctx.layout);
   const requiredGroup = useRadioGroupContext_unstable(ctx => ctx.required);
+  const describedByGroup = useRadioGroupContext_unstable(ctx => ctx['aria-describedby']);
 
   const {
     name = nameGroup,
@@ -58,6 +59,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       defaultChecked,
       disabled,
       required,
+      'aria-describedby': describedByGroup,
       ...nativeProps.primary,
     },
   });
