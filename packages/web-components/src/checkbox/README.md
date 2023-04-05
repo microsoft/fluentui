@@ -44,16 +44,15 @@ FAST `checkboxTemplate`
 
 ### **Fields**
 
-| Name             | Privacy | Type                    | Default                       | Description                                        |
-| ---------------- | ------- | ----------------------- | ----------------------------- | -------------------------------------------------- |
-| `labelPosition`  | public  | `CheckboxLabelPosition` | `CheckboxLabelPosition.after` | Indicates postion of label                         |
-| `checked`        | public  | `boolean`               | `false`                       | Indicates whether input is checked                 |
-| `defaultChecked` | public  | `boolean`               | `false`                       | Indicates if the checkbox is checked by default    |
-| `indeterminate`  | public  | `boolean`               | `false`                       | Indicates whether input is initially indeterminate |
-| `disabled`       | public  | `boolean`               | `false`                       | Indicates whether input is disabled                |
-| `required`       | public  | `boolean`               | `false`                       | Indicates whether input is required                |
-| `size`           | public  | `CheckboxSize`          | `CheckboxSize.medium`         | Indicates the size of the checkbox                 |
-| `shape`          | public  | `CheckboxShape`         | `CheckboxShape.square`        | Indicates shape of the checkbox                    |
+| Name            | Privacy | Type                    | Default                       | Description                                        |
+| --------------- | ------- | ----------------------- | ----------------------------- | -------------------------------------------------- |
+| `labelPosition` | public  | `CheckboxLabelPosition` | `CheckboxLabelPosition.after` | Indicates postion of label                         |
+| `checked`       | public  | `boolean`               | `false`                       | Indicates whether input is checked                 |
+| `indeterminate` | public  | `boolean`               | `false`                       | Indicates whether input is initially indeterminate |
+| `disabled`      | public  | `boolean`               | `false`                       | Indicates whether input is disabled                |
+| `required`      | public  | `boolean`               | `false`                       | Indicates whether input is required                |
+| `size`          | public  | `CheckboxSize`          | `CheckboxSize.medium`         | Indicates the size of the checkbox                 |
+| `shape`         | public  | `CheckboxShape`         | `CheckboxShape.square`        | Indicates shape of the checkbox                    |
 
 <br />
 
@@ -87,10 +86,9 @@ FAST `checkboxTemplate`
 
 ### **IDL Attributes**
 
-| Name | Field | Type | Description |
-| ---------------- | | ------------- | ---------------------------------------------------------------------------------------- |
-| `defaultChecked` | | `boolean` | If the checkbox is checked by default. Synchronized with the `checked` content attribute |
-| `checked` | checked | `boolean` | The current checked state of the checkbox |
+| Name            | Field         | Type      | Description                                     |
+| --------------- | ------------- | --------- | ----------------------------------------------- |
+| `checked`       | checked       | `boolean` | The current checked state of the checkbox       |
 | `indeterminate` | indeterminate | `boolean` | The indeterminate state. Independent of checked |
 
 <br />
