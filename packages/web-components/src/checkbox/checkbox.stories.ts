@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta, Story } from '@storybook/html';
+import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import './define.js';
@@ -19,7 +19,7 @@ const storyTemplate = html<CheckboxStoryArgs>`
       size="${x => x.size}"
       label-position="${x => x.labelPosition}"
     >
-      Apple
+      Label
     </fluent-checkbox>
   </form>
 `;
@@ -62,7 +62,7 @@ export default {
     shape: {
       description: 'Sets the shape of the checkbox',
       table: {
-        defaultValue: { summary: 'square' },
+        defaultValue: { summary: CheckboxShape.square },
       },
       control: {
         type: 'select',
@@ -73,7 +73,7 @@ export default {
     size: {
       description: 'Sets the size of the checkbox',
       table: {
-        defaultValue: { summary: 'medium' },
+        defaultValue: { summary: CheckboxSize.medium },
       },
       control: {
         type: 'select',
@@ -84,7 +84,7 @@ export default {
     labelPosition: {
       description: 'Sets the position of the label relative to the input',
       table: {
-        defaultValue: { summary: 'after' },
+        defaultValue: { summary: CheckboxLabelPosition.after },
       },
       control: {
         type: 'select',
@@ -110,42 +110,38 @@ export const Checked = renderComponent(CheckboxChecked).bind({});
 const mixedTemplate = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column; gap: 4px;">
     <fluent-checkbox name="checkbox-group" :indeterminate="${x => x.indeterminate}"> Indeterminate </fluent-checkbox>
-    <fluent-checkbox name="checkbox-group" :indeterminate="${x => x.indeterminate}" shape="${x => x.shape}">
+    <fluent-checkbox name="checkbox-group" :indeterminate="${x => x.indeterminate}" shape="${CheckboxShape.circular}">
       Indeterminate circular
     </fluent-checkbox>
   </form>
 `;
 
 export const Mixed: Args = renderComponent(mixedTemplate).bind({});
-Mixed.args = { indeterminate: true, shape: CheckboxShape.circular };
+Mixed.args = { indeterminate: true };
 
 // Disabled
 const CheckboxDisabled = html<CheckboxStoryArgs>`
   <form class="checkbox-group" @submit="${() => false}" style="display: flex; flex-direction: column;">
-    <fluent-checkbox name="checkbox-group" ?disabled="${x => x.disabled}"> Disabled </fluent-checkbox>
+    <fluent-checkbox name="checkbox-group" disabled> Disabled </fluent-checkbox>
 
-    <fluent-checkbox name="checkbox-group" ?disabled="${x => x.disabled}" shape="${x => x.shape}">
+    <fluent-checkbox name="checkbox-group" disabled shape="${CheckboxShape.circular}">
       Disabled circular
     </fluent-checkbox>
 
-    <fluent-checkbox ?checked="${x => x.checked}" ?disabled="${x => x.disabled}"> disabled checked </fluent-checkbox>
+    <fluent-checkbox checked disabled> disabled checked </fluent-checkbox>
 
-    <fluent-checkbox ?checked="${x => x.checked}" ?disabled="${x => x.disabled}" shape="${x => x.shape}">
-      disabled checked circular
-    </fluent-checkbox>
+    <fluent-checkbox checked disabled shape="${CheckboxShape.circular}"> disabled checked circular </fluent-checkbox>
 
-    <fluent-checkbox ?disabled="${x => x.disabled}" :indeterminate="${x => x.indeterminate}">
-      indeterminate disabled
-    </fluent-checkbox>
+    <fluent-checkbox disabled :indeterminate="${x => x.indeterminate}"> indeterminate disabled </fluent-checkbox>
 
-    <fluent-checkbox ?disabled="${x => x.disabled}" :indeterminate="${x => x.indeterminate}" shape="${x => x.shape}">
+    <fluent-checkbox disabled :indeterminate="${x => x.indeterminate}" shape="${CheckboxShape.circular}">
       circular indeterminate disabled
     </fluent-checkbox>
   </form>
 `;
 
 export const Disabled: Args = renderComponent(CheckboxDisabled).bind({});
-Disabled.args = { indeterminate: true, disabled: true, checked: true, shape: CheckboxShape.circular };
+Disabled.args = { indeterminate: true };
 
 // large
 const CheckboxSizes = html<CheckboxStoryArgs>`

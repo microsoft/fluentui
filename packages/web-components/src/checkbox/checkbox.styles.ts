@@ -163,10 +163,10 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
   }
 
+  :host([disabled]) .control,
+  :host([aria-checked='mixed'][disabled]) .control,
   :host([aria-checked='true'][disabled]) .control {
     background-color: ${colorTransparentBackgroundHover};
-  }
-  :host([disabled]) .control {
     border-color: ${colorNeutralStrokeDisabled};
   }
   :host([aria-checked='true'][disabled]) .checked-indicator,
