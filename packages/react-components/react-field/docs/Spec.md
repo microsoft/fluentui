@@ -22,12 +22,11 @@ Existing libraries take one of several approaches to Field. The basic problem th
    - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the control and the Form.Item component).
    - **Atlaskit** - [`Field`](https://atlaskit.atlassian.com/packages/design-system/form/docs/fields) (uses a render function as the child of the Field to pass props).
 
-The Field implementation in this spec follows pattern (4). Field passes props to its child to connect the field's label and message text. There are several reasons:
+The Field implementation in this spec follows pattern (4). Field uses context for its child child to connect the field's label and message text. There are several reasons:
 
-- **Accessibility**: All of the accessibility props like `aria-labelledby` and `aria-describedby` are set correctly on the child for "free".
-- **Simplicity**: Passing props down to the children allows any form control to be used as the child of Field.
-- **Consistency**: The Field component provides props like label, validationState, hint, etc. for any form control.
+- **Accessibility**: All of the accessibility props like `aria-labelledby` and `aria-describedby` can be set correctly on the child via context.
 - **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the core components like `Input` without pulling in unnecessary dependencies (like `Label` and the field styling).
+- **Flexibility**: Using a context allows other components like Form validators or Tooltips between the field and its component.
 
 ## Sample Code
 
@@ -74,37 +73,96 @@ The Field implementation in this spec follows pattern (4). Field passes props to
 Field also forwards some props to its Label:
 
 - **Size**: Affects the size of the Label text (but not validationMessage or hint text).
-- **Required**: If set, the Label will get a required asterisk: `*`
+- **Required**: If set, the Label will get a required asterisk: `*`, and the component will set either `required` (if supported), or `aria-required`.
 
 ## API
 
-`Field` applies props to its child component, to connect the label and message text to the control, and make the component accessible by default.
+### FieldContext
 
-The props added are:
+The `FieldContext` provides some of the props passed to the Field, as well the IDs that were generated for the control, field, validationMessage, and hint. This can be used by a control inside the Field to set its accessibility properties, or use the `useFieldControlProps` hook (below) that handles the prop merging.
 
-- `id` - Uses the child's `id` prop if set; otherwise generates an ID and sets it on the child. This is used as the label's `htmlFor`.
-- `aria-labelledby` - The label's ID.
-- `aria-describedby` - The validationMessage and/or hint's ID.
-- `aria-invalid` - If validationState is error (which is the default when a validationMessage is set).
-- `aria-required` - If the required prop is set.
+```ts
+export type FieldContextValue = Readonly<
+  Pick<FieldState, 'orientation' | 'required' | 'size' | 'validationState'> & {
+    /** The ID generated for the control inside the field, and the default value of label's for prop. */
+    generatedControlId: string;
+    /** The label's for prop. Undefined if there is no label. */
+    labelFor?: string;
+    /** The label's id prop. Undefined if there is no label. */
+    labelId?: string;
+    /** The validationMessage's id prop. Undefined if there is no validationMessage. */
+    validationMessageId?: string;
+    /** The hint's id prop. Undefined if there is no hint. */
+    hintId?: string;
+  }
+>;
+```
 
-This is done one of two ways:
+### FieldControlProps
 
-- If the child is a component, uses `cloneElement` to add the props to the child's props.
-- If the child is a render function, passes the props to the render function. That function is expected to spread the props in the appropriate place in its render tree.
-
-### FieldChildProps
-
-The `FieldChildProps` type defines the props that may be set on the child of Field (or passed to the child render function).
+The `FieldControlProps` type defines the props that may be set by `useFieldControlProps`, or passed to the child render function.
 
 ```ts
 /**
- * The props added to the Field's child element. Or if the child is a render function, the props passed to the function.
+ * The props added to the control inside the Field.
  */
-export type FieldChildProps = Pick<
+export type FieldControlProps = Pick<
   React.HTMLAttributes<HTMLElement>,
   'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
 >;
+```
+
+### useFieldControlProps
+
+The `useFieldControlProps` hook reads the FieldContext, and merges the control's props with props from the Field.
+
+This is the mechanism that all form components in this library, including `<Input>`, `<RadioGroup>`, etc. get props from the Field. It is also one of two ways a third party component could be used inside a Field (the other being a render function as the child of Field).
+
+```ts
+/**
+ * Gets the control props from the field context, if this inside a `<Field>`.
+ *
+ * If `props` is provided: copies and merges the FieldControlProps with the given props, if this inside a `<Field>`.
+ * Otherwise, returns the FieldControlProps that should be applied to the control.
+ *
+ * It is preferred to pass a `props` object if available, to improve the resulting merged props.
+ *
+ * @param props - The existing props for the control. These will be merged with the control props from the field context.
+ * @param options - Option to include the size prop.
+ * @returns Merged props if inside a `<Field>`, otherwise the original props, or undefined if no props given.
+ */
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(
+  props?: Props,
+  options?: FieldControlPropsOptions,
+): Props | undefined;
+
+/**
+ * Options for `useFieldControlProps_unstable`.
+ */
+export type FieldControlPropsOptions = {
+  /**
+   * Skips setting `aria-labelledby` on the control if the `label.htmlFor` refers to the control.
+   *
+   * This should be used with controls that can be the target of a label's `for` prop:
+   * `<button>`, `<input>`, `<progress>`, `<select>`, `<textarea>`.
+   */
+  supportsLabelFor?: boolean;
+
+  /**
+   * Sets `required` instead of `aria-required` when the Field is marked required.
+   *
+   * This should be used with controls that support the `required` prop:
+   * `<input>` (except `range` or `color`), `<select>`, `<textarea>`.
+   */
+  supportsRequired?: boolean;
+
+  /**
+   * Sets the size prop on the control to match the Field's size: `'small' | 'medium' | 'large'`.
+   *
+   * This should be used with controls that have a custom size prop that matches the Field's size prop.
+   */
+  supportsSize?: boolean;
+};
 ```
 
 ### Slots
@@ -152,11 +210,11 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
    *
    * All form controls in this library can be used directly as children (such as `<Input>` or `<RadioGroup>`), as well
    * as intrinsic form controls like `<input>` or `<textarea>`. Custom controls can also be used as long as they
-   * accept FieldChildProps and spread them on the appropriate element.
+   * accept FieldControlProps and spread them on the appropriate element.
    *
-   * For more complex scenarios, a render function can be used to pass the FieldChildProps to the appropriate control.
+   * For more complex scenarios, a render function can be used to pass the FieldControlProps to the appropriate control.
    */
-  children?: React.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React.ReactNode);
+  children?: React.ReactNode | ((props: FieldControlProps) => React.ReactNode);
 
   /**
    * The orientation of the label relative to the field component.
@@ -199,7 +257,13 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
 
 ```ts
 export type FieldState = ComponentState<Required<FieldSlots>> &
-  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+  Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> &
+  Pick<FieldProps, 'children'> & {
+    /**
+     * The ID generated for the control inside the field, and the default value of label.htmlFor prop.
+     */
+    generatedControlId: string;
+  };
 ```
 
 ## Structure
@@ -216,7 +280,7 @@ With a child element:
   validationMessage="This is a validation message"
   hint="This is a hint message"
 >
-  <Input /> {/* Or any other form control */}
+  <Input /> {/* Or any other form control from this library */}
 </Field>
 ```
 
@@ -233,7 +297,7 @@ With a child render function:
   {fieldProps => (
      {/* Render any JSX and spread the props in the appropriate place */}
     <div>
-      <Input {...fieldProps} />
+      <input {...fieldProps} />
     </div>
   )}
 </Field>
@@ -286,11 +350,13 @@ The Field itself is not interactive. The wrapped component has the same interact
 - **ARIA pattern**
   - Field itself does not implement a defined ARIA pattern. It has no role applied to the root element.
 - **Attributes**
-  - The following are applied on the child component:
+  - The following are applied by `useFieldControlProps` or the child render function:
     - `id={generatedChildID}` - if the label is present, and the child doesn't have an `id` already.
-    - `aria-labelledby={label.id}` - if the label is present.
+    - `aria-labelledby={label.id}` - if the label is present. ONLY added if the child is NOT a control that supports being the target of `label.htmlFor`.
     - `aria-describedby={validationMessage.id + ' ' + hint.id}` - if the validationMessage and/or hint are present.
-    - `aria-invalid={true}` - if validationMessage is present, unless validationState set to something _other than_ `error`.
+    - if validationMessage is present, unless validationState set to something _other than_ `error`, sets ONE of:
+      - `invalid={true}` - if the control supports the `invalid` prop
+      - `aria-invalid={true}` - if the control does NOT support the `invalid` prop (or a render function is used).
   - On the `label` slot:
     - `htmlFor={child.id}`
   - On the `validationMessage` slot:
