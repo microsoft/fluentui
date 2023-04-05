@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Drawer, DrawerSizes } from '@fluentui/react-drawer';
+import { Drawer, DrawerProps } from '@fluentui/react-drawer';
 import { Button, Label, RadioGroup, Radio, useId, tokens, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ export const Size = () => {
   const labelId = useId('size-label');
 
   const [open, setOpen] = React.useState(false);
-  const [size, setSize] = React.useState<DrawerSizes>('small');
+  const [size, setSize] = React.useState<DrawerProps['size']>('small');
 
   return (
     <div>
@@ -43,8 +43,8 @@ export const Size = () => {
         <div className={styles.field}>
           <Label id={labelId}>Size</Label>
           <RadioGroup
-            value={size.toString()}
-            onChange={(_, data) => setSize(data.value as DrawerSizes)}
+            value={size}
+            onChange={(_, data) => setSize(data.value as DrawerProps['size'])}
             aria-labelledby={labelId}
           >
             <Radio value="small" label="Small (Default)" />

@@ -8,4 +8,4 @@ export {
   useDrawer_unstable,
 } from './Drawer';
 
-export type { DrawerProps, DrawerSizes, DrawerSlots, DrawerState } from './Drawer';
+export type { DrawerProps, DrawerSlots, DrawerState } from './Drawer';
