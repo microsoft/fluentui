@@ -36,10 +36,9 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('block')}
+  ${display('inline-flex')}
   :host {
     align-items: center;
-    display: inline-flex;
     outline: none;
     user-select: none;
     vertical-align: middle;
@@ -48,38 +47,31 @@ export const styles = css`
   .control {
     position: relative;
     box-sizing: border-box;
-    border-radius: 0;
     display: flex;
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
-    border-radius: ${borderRadiusSmall};
     margin: ${spacingVerticalS} ${spacingHorizontalS};
-    outline: none;
     fill: currentcolor;
     height: 16px;
     width: 16px;
+    border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
+    border-radius: ${borderRadiusSmall};
+    outline: none;
   }
   .label {
-    font-family: ${fontFamilyBase};
-    color: ${colorNeutralForeground3};
-    cursor: inherit;
     align-self: center;
+    cursor: inherit;
+    font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
+    color: ${colorNeutralForeground3};
     padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
   }
   .label__hidden {
     display: none;
     visibility: hidden;
-  }
-  .checked-indicator,
-  .indeterminate-indicator {
-    display: block;
-    pointer-events: none;
-    opacity: 0;
   }
   .checked-indicator {
     display: flex;
@@ -89,11 +81,9 @@ export const styles = css`
     height: 16px;
     font-size: 12px;
     margin: auto;
+    opacity: 0;
   }
   .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1};
-    height: 8px;
-    width: 12px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -101,7 +91,58 @@ export const styles = css`
     height: 8px;
     transform: translate(-50%, -50%);
     border-radius: ${borderRadiusSmall};
+    background-color: ${colorCompoundBrandForeground1};
+    opacity: 0;
   }
+  :host(:hover) .indeterminate-indicator {
+    background-color: ${colorCompoundBrandForeground1Hover};
+  }
+  :host(:hover) .label {
+    color: ${colorNeutralForeground2};
+  }
+  :host(:hover) .control {
+    border-color: ${colorNeutralStrokeAccessibleHover};
+  }
+  :host(:active) .control {
+    border-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+  :host(:active) .indeterminate-indicator {
+    background-color: ${colorCompoundBrandForeground1Pressed};
+  }
+  :host(:disabled) .indeterminate-indicator {
+    background-color: ${colorNeutralForegroundDisabled};
+  }
+
+  :host([aria-checked='true']) .label,
+  :host(:active) .label {
+    color: ${colorNeutralForeground1};
+  }
+  :host([aria-checked='true']) .control {
+    background-color: ${colorCompoundBrandBackground};
+  }
+  :host([aria-checked='true']:hover) .control {
+    border-color: ${colorCompoundBrandStrokeHover};
+    background-color: ${colorCompoundBrandBackgroundHover};
+  }
+  :host([aria-checked='true']:active) .control {
+    background-color: ${colorCompoundBrandBackgroundPressed};
+  }
+  :host([aria-checked='mixed']:hover) .control {
+    border-color: ${colorCompoundBrandStrokeHover};
+  }
+  :host([aria-checked='true']) .checked-indicator,
+  :host([aria-checked='mixed']) .indeterminate-indicator {
+    opacity: 1;
+  }
+  :host([aria-checked='true']) .control,
+  :host([aria-checked='mixed']) .control {
+    border-color: ${colorCompoundBrandStroke};
+  }
+  :host([aria-checked='mixed']:active) .control,
+  :host([aria-checked='true']:active) .control {
+    border-color: ${colorCompoundBrandStrokePressed};
+  }
+
   :host([label-position='before']) {
     flex-direction: row-reverse;
   }
@@ -120,70 +161,20 @@ export const styles = css`
     width: 10px;
     height: 10px;
   }
-  :host([shape='circular']) .indeterminate-indicator,
-  :host([shape='circular']) .control {
+  :host([shape='circular']) .control,
+  :host([shape='circular']) .indeterminate-indicator {
     border-radius: ${borderRadiusCircular};
   }
 
-  :host([aria-checked='mixed']:hover) .control {
-    border-color: ${colorCompoundBrandStrokeHover};
-  }
-  :host(:hover) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Hover};
-  }
-  :host([aria-checked='mixed']:active) .control {
-    border-color: ${colorCompoundBrandStrokePressed};
-  }
-  :host(:active) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Pressed};
-  }
-  :host([aria-checked='mixed']:disabled) .control {
-    border-color: ${colorNeutralStrokeDisabled};
-  }
-  :host(:disabled) .indeterminate-indicator {
-    background-color: ${colorNeutralForegroundDisabled};
-  }
-  :host(:hover) .label {
-    color: ${colorNeutralForeground2};
-  }
-  :host(:active) .label {
-    color: ${colorNeutralForeground1};
-  }
-  :host([aria-checked='true']) .label {
-    color: ${colorNeutralForeground1};
-  }
-  :host(:hover) .control {
-    border-color: ${colorNeutralStrokeAccessibleHover};
-  }
-  :host(:active) .control {
-    border-color: ${colorNeutralStrokeAccessiblePressed};
-  }
-  :host([aria-checked='true']) .control {
-    background-color: ${colorCompoundBrandBackground};
-  }
-  :host([aria-checked='true']:hover) .control {
-    background-color: ${colorCompoundBrandBackgroundHover};
-  }
-  :host([aria-checked='true']:active) .control {
-    background-color: ${colorCompoundBrandBackgroundPressed};
-  }
-  :host([aria-checked='true']) .control,
-  :host([aria-checked='mixed']) .control {
-    border-color: ${colorCompoundBrandStroke};
-  }
   :host([aria-checked='true']:disabled) .control {
     background-color: ${colorTransparentBackgroundHover};
+  }
+  :host(:disabled) .control {
+    border-color: ${colorNeutralStrokeDisabled};
   }
   :host([aria-checked='true']:disabled) .checked-indicator,
   :host(:disabled) .label,
   :host([aria-checked='true']:disabled) .label {
     color: ${colorNeutralForegroundDisabled};
-  }
-  :host(:disabled) .control {
-    border-color: ${colorNeutralStrokeDisabled};
-  }
-  :host([aria-checked='true']) .checked-indicator,
-  :host([aria-checked='mixed']) .indeterminate-indicator {
-    opacity: 1;
   }
 `;
