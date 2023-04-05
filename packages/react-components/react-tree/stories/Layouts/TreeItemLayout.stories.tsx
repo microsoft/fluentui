@@ -57,12 +57,8 @@ const treeItemLayoutProps = {
 
 export const Layout = () => (
   <Tree aria-label="Tree">
-    <TreeItem actions={<Actions />}>
-      <TreeItemLayout
-        aria-description="Private, 1 message"
-        {...treeItemLayoutProps}
-        aside={<Badges isImportant={true} messageCount={1} />}
-      >
+    <TreeItem aria-description="Private, 1 message" actions={<Actions />}>
+      <TreeItemLayout {...treeItemLayoutProps} aside={<Badges isImportant={true} messageCount={1} />}>
         Content
       </TreeItemLayout>
       <Tree>
@@ -88,12 +84,8 @@ export const Layout = () => (
         </TreeItem>
       </Tree>
     </TreeItem>
-    <TreeItem actions={<Actions />}>
-      <TreeItemLayout
-        aria-description="Private"
-        {...treeItemLayoutProps}
-        aside={<Important16Regular {...iconStyleProps} />}
-      >
+    <TreeItem aria-description="Private" actions={<Actions />}>
+      <TreeItemLayout {...treeItemLayoutProps} aside={<Important16Regular {...iconStyleProps} />}>
         Content
       </TreeItemLayout>
       <Tree>

@@ -73,9 +73,8 @@ export const TreePersonaLayout = () => {
 
   return (
     <Tree aria-label="Tree">
-      <TreeItem actions={<RenderActions />}>
+      <TreeItem aria-description="1 new message, important" actions={<RenderActions />}>
         <TreeItemPersonaLayout
-          aria-description="1 new message, important"
           description={<div className={styles.unread}>Secondary text slot</div>}
           aside={
             <>
@@ -102,9 +101,8 @@ export const TreePersonaLayout = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem actions={<RenderActions />}>
+      <TreeItem aria-description="1 message, important" actions={<RenderActions />}>
         <TreeItemPersonaLayout
-          aria-description="1 message, important"
           description="Secondary text slot"
           aside={
             <>
