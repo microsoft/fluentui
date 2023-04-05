@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { Dialog, DialogProps, DialogSurface } from '@fluentui/react-dialog';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
@@ -9,19 +9,35 @@ import type { DrawerProps, DrawerState } from './Drawer.types';
  * Create the state required to render DrawerDialog.
  * @param props - props from this instance of Drawer
  */
-const useDrawerDialog = ({ open, onOpenChange, modal, children, style }: DrawerProps) => {
-  const dialog = React.useMemo<DialogProps>(() => {
-    return {
-      open,
-      onOpenChange,
-      modalType: modal ? 'modal' : 'non-modal',
-      children: <></>,
-    };
-  }, [modal, onOpenChange, open]);
+const useDrawerDialogProps = (props: DrawerProps) => {
+  const { dialog, dialogSurface, open, onOpenChange, modal, children, style } = props;
 
-  const dialogSurface = { children, style };
+  const dialogProps = React.useMemo(() => {
+    return resolveShorthand(dialog, {
+      required: true,
+      defaultProps: {
+        open,
+        onOpenChange,
+        modalType: modal ? 'modal' : 'non-modal',
+        children,
+      } as DialogProps,
+    });
+  }, [children, modal, onOpenChange, open, dialog]);
 
-  return { dialog, dialogSurface };
+  const dialogSurfaceProps = React.useMemo(() => {
+    return resolveShorthand(dialogSurface, {
+      required: true,
+      defaultProps: {
+        children,
+        style,
+      },
+    });
+  }, [children, dialogSurface, style]);
+
+  return {
+    dialog: dialogProps,
+    dialogSurface: dialogSurfaceProps,
+  };
 };
 
 /**
@@ -49,7 +65,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     initialState: false,
   });
 
-  const { dialog, dialogSurface } = useDrawerDialog({
+  const { dialog, dialogSurface } = useDrawerDialogProps({
     ...props,
     open,
     modal,

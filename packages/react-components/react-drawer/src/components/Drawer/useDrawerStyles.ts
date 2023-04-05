@@ -110,7 +110,7 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
     typeof state.size !== 'number' && styles[sizeMap[state.size]],
   ];
 
-  if (state.type === 'overlay' && state.dialogSurface) {
+  if (state.type === 'overlay') {
     state.dialogSurface.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
   }
 

@@ -14,20 +14,20 @@ export type DrawerSlots = {
    * The default is an instance of Dialog component
    * This slot expects a compatible Dialog which will replace the default dialog component.
    */
-  dialog?: NonNullable<Slot<DialogProps>>;
+  dialog: NonNullable<Slot<DialogProps>>;
 
   /**
    * DialogSurface component that renders for overlay drawer.
    * The default is an instance of DialogSurface component
    * This slot expects a compatible DialogSurface which will replace the default dialog component.
    */
-  dialogSurface?: NonNullable<Slot<DialogSurfaceProps>>;
+  dialogSurface: NonNullable<Slot<DialogSurfaceProps>>;
 };
 
 /**
  * Drawer Props
  */
-export type DrawerProps = ComponentProps<DrawerSlots> & {
+export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
   /**
    * Position of the drawer.
    * @defaultvalue 'left'
