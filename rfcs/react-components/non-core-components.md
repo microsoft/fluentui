@@ -12,7 +12,7 @@ Future design iterations might introduce components that are either:
 - Composed of multiple primitive components
 - Specializations of primitive components
 
-We need to formalize the how we will deliver these components not only as first party packages but also second party
+We need to formalise how we will deliver these components not only as first party packages but also second party
 packages with our partners who might need more situational components powered by V9. This RFC refers to these kinds
 of components as `non-core`.
 
