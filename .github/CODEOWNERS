@@ -92,6 +92,7 @@ scripts/projects-test @microsoft/fluentui-react-build
 scripts/puppeteer @microsoft/fluentui-react-build
 scripts/storybook @microsoft/fluentui-react-build
 scripts/tasks @microsoft/fluentui-react-build
+scripts/test-ssr @microsoft/fluentui-react-build
 scripts/triage-bot @microsoft/fluentui-react-build @microsoft/cxe-prg
 scripts/ts-node @microsoft/fluentui-react-build
 scripts/update-release-notes @microsoft/fluentui-react-build
@@ -232,6 +233,7 @@ packages/react-components/react-breadcrumb @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg
 packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
+packages/react-components/react-jsx-runtime @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
