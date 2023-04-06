@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 06 Apr 2023 04:22:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.14",
+      "version": "3.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "55024b9a8799834f6d102445218ffd724a125913",
+            "comment": "Adding TabList, Tab, and TabPanel web components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2a1f8f60205b064140fab122cced18b06177546d",
+            "comment": "feat(menu-button): add menu button as new component"
+          }
+        ],
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ca6e4dd7ed8476810a51384f0e44b54989cc0b66",
+            "comment": "chore(web-components): fixes the alphabetical order of package exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 31 Mar 2023 04:19:43 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.13",
       "version": "3.0.0-alpha.13",
