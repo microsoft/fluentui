@@ -115,7 +115,7 @@ export function preset() {
     const moduleFlag = args.module;
     return series(
       'swc:esm',
-      condition('babel:postprocess', () => hasBabel()),
+      // condition('babel:postprocess', () => hasBabel()),
       resolveModuleCompilation(moduleFlag),
     );
   });
@@ -142,10 +142,11 @@ export function preset() {
 
   task('build:react-components', () => {
     return series(
-      'clean',
-      'copy',
-      condition('sass', () => hasSass()),
-      parallel('swc:compile', 'generate-api'),
+      // 'clean',
+      // 'copy',
+      // condition('sass', () => hasSass()),
+      // parallel('swc:compile', 'generate-api'),
+      'swc:compile',
     );
   }).cached!();
 
