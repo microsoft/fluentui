@@ -62,7 +62,7 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn lage build --to @fluentui/react-components
+          yarn lage build --to @fluentui/react-components --verbose
         displayName: build with ts transpilation
 
       - template: .devops/templates/cleanup.yml
