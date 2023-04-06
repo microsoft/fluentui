@@ -41,7 +41,7 @@ with technical implementation by following concrete requirements.
 ### Deviating from v9 core concepts
 
 It's difficult to formalize what 'deviating' means here, and any attempt to do so will probably not be
-very future proof as the library continues to evolve. The main objective of this section to decide whether or not
+very future proof as the library continues to evolve. The main objective of this section is to decide whether or not
 we should allow deviations from v9 core concepts (whatever they are or might be in the future). Here are some
 examples of current deviations that could happen based on the current situation:
 
