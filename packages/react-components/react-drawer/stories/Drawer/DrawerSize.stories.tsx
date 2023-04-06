@@ -51,7 +51,6 @@ export const Size = () => {
             <Radio value="medium" label="Medium" />
             <Radio value="large" label="Large" />
             <Radio value="full" label="Full" />
-            <Radio value="custom" label="Custom" />
           </RadioGroup>
         </div>
       </div>
