@@ -29,6 +29,7 @@ const useStyles = makeStyles({
     height: 'auto',
     top: 0,
     bottom: 0,
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 
   leftDrawer: {
