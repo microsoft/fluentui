@@ -28,7 +28,7 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
-
+      - template: download-vr-cli.yml
 
       - bash: |
           postPolicy="true";
@@ -80,12 +80,12 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      #  - template: download-vr-cli.yaml
-      - bash: |
-          set -exuo pipefail
-          npm install -g vr-approval-cli
-        displayName: Download VR App CLI
-        retryCountOnTaskFailure: 3
+      # - template: download-vr-cli.yml
+      # - bash: |
+      #     set -exuo pipefail
+      #     npm install -g vr-approval-cli
+      #   displayName: Download VR App CLI
+      #   retryCountOnTaskFailure: 3
 
       - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9'
         displayName: 'Run fluentui-screenshotdiff'
@@ -121,6 +121,8 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
+
+      - template: download-vr-cli.yml
 
       - bash: |
           postPolicy="true";
@@ -172,12 +174,11 @@ jobs:
           BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
-      # - template: download-vr-cli.yaml
-      - bash: |
-         set -exuo pipefail
-         npm install -g vr-approval-cli
-        displayName: Download VR App CLI
-        retryCountOnTaskFailure: 3
+      # - bash: |
+      #    set -exuo pipefail
+      #    npm install -g vr-approval-cli
+      #   displayName: Download VR App CLI
+      #   retryCountOnTaskFailure: 3
 
       - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8'
         displayName: 'Run fluentui-screenshotdiff'
