@@ -156,11 +156,9 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
       minWidth: 320,
     },
     check: {
-      minWidth: 320,
+      minWidth: 330,
     },
-    usageExample: {
-      minWidth: 240,
-    },
+    usageExample: {},
   });
 
   const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
@@ -266,7 +264,7 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
 
                         return (
                           <div key={token + ' ' + hex}>
-                            {compToken}
+                            {compToken} &nbsp;
                             <div
                               className={styles.colorPreview}
                               style={{
