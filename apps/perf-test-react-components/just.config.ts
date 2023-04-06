@@ -5,4 +5,4 @@ import { config } from './config/perf-test';
 preset();
 
 task('run-perf-test', () => getPerfRegressions(config));
-task('perf-test', series('build', 'bundle', 'run-perf-test'));
+task('perf-test', series('clean', 'copy', 'bundle', 'run-perf-test'));

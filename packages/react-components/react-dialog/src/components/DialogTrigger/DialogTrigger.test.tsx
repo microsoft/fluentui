@@ -56,7 +56,6 @@ describe('DialogTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
@@ -86,7 +85,6 @@ describe('DialogTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger

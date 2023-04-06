@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: DialogContent scrollbar always visible",
+  "type": "minor",
+  "comment": "feat: removes aria-expanded from DialogTrigger",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

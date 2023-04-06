@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { isConformant } from '../../testing/isConformant';
 import { Radio } from '../../Radio';
 import { RadioGroup } from './RadioGroup';
@@ -242,5 +243,25 @@ describe('RadioGroup', () => {
     userEvent.click(getByRole('checkbox'));
 
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <RadioGroup>
+          <Radio value="a" />
+          <Radio value="b" />
+          <Radio value="c" />
+        </RadioGroup>
+      </Field>,
+    );
+
+    const radiogroup = result.getByRole('radiogroup');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(radiogroup.getAttribute('aria-labelledby')).toEqual(label.id);
+    expect(radiogroup.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(radiogroup.getAttribute('aria-required')).toEqual('true');
   });
 });

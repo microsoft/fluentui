@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Export hooks for FieldContext",
+  "packageName": "@fluentui/react-components",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
