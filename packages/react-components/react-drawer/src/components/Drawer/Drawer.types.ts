@@ -52,6 +52,13 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
    * @defaultvalue true
    */
   modal?: boolean;
+
+  /**
+   * When this is true, the drawer will be closed on a click on the overlay.
+   * This prop is only used when `type` is `overlay`.
+   * @defaultvalue true
+   */
+  lightDismiss?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
 /**

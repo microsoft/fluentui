@@ -7,6 +7,7 @@ export { Default } from './DrawerDefault.stories';
 export { Inline } from './DrawerInline.stories';
 export { Size } from './DrawerSize.stories';
 export { CustomSize } from './DrawerCustomSize.stories';
+export { PreventClose } from './DrawerPreventClose.stories';
 
 export default {
   title: 'Preview Components/Drawer/Drawer',
