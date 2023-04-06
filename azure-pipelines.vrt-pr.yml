@@ -82,12 +82,12 @@ jobs:
 
       #  - template: download-vr-cli.yaml
       - bash: |
-         set -exuo pipefail
-         npm install -g vr-approval-cli
+          set -exuo pipefail
+          npm install -g vr-approval-cli
         displayName: Download VR App CLI
         retryCountOnTaskFailure: 3
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./dist/screenshots --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
