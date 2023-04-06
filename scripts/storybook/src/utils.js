@@ -359,37 +359,34 @@ function overrideDefaultBabelLoader(options) {
  *
  * Main purpose of this is to be used for build-less DX in webpack in tandem with {@link registerTsPaths}
  *
- * @param {{relativeFolderPathFromRoot?:string}} options
+ * @param {{relativeFolderPathFromRoot?:string,writeFileToDisk?:boolean}} options
  */
 function createPathAliasesConfig(options = {}) {
+  const { relativeFolderPathFromRoot = './dist', writeFileToDisk = true } = options;
   const rootPath = workspaceRoot;
-  const { relativeFolderPathFromRoot = './dist' } = options;
-  const mergedTsConfig = createMergedTsConfig({ rootPath });
-  const tsConfigAllPath = path.join(rootPath, relativeFolderPathFromRoot, 'tsconfig.base.all.json');
+  const mergedTsConfigRoot = path.join(rootPath, relativeFolderPathFromRoot);
+  const tsConfigAllFileName = 'tsconfig.base.all.json';
+  const tsConfigAllPath = path.join(mergedTsConfigRoot, tsConfigAllFileName);
+  const existingTsConfig = readJsonFile(tsConfigAllPath);
 
-  writeJsonFile(tsConfigAllPath, mergedTsConfig);
-
-  return { tsConfigAllPath, mergedTsConfig };
-}
-
-/**
- *
- * @param {{rootPath:string}} options
- * @returns
- */
-function createMergedTsConfig(options) {
-  const { rootPath } = options;
   const baseConfigs = {
     v0: readJsonFile(path.join(rootPath, 'tsconfig.base.v0.json')),
     v8: readJsonFile(path.join(rootPath, 'tsconfig.base.v8.json')),
     v9: readJsonFile(path.join(rootPath, 'tsconfig.base.json')),
   };
+  const tsConfigBase = rootPath === mergedTsConfigRoot ? '.' : rootPath;
   const mergedTsConfig = {
     compilerOptions: {
       moduleResolution: 'node',
       forceConsistentCasingInFileNames: true,
       skipLibCheck: true,
-      baseUrl: workspaceRoot,
+      typeRoots: ['node_modules/@types', './typings'],
+      isolatedModules: true,
+      preserveConstEnums: true,
+      sourceMap: true,
+      pretty: true,
+      rootDir: tsConfigBase,
+      baseUrl: tsConfigBase,
       paths: {
         ...baseConfigs.v0.compilerOptions.paths,
         ...baseConfigs.v8.compilerOptions.paths,
@@ -398,7 +395,11 @@ function createMergedTsConfig(options) {
     },
   };
 
-  return mergedTsConfig;
+  if (writeFileToDisk) {
+    writeJsonFile(tsConfigAllPath, mergedTsConfig);
+  }
+
+  return { tsConfigAllPath, tsConfigAllFileName, mergedTsConfig, existingTsConfig };
 }
 
 exports.getPackageStoriesGlob = getPackageStoriesGlob;

@@ -2,7 +2,6 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 
 import { PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
-import { createPathAliasesConfig } from '@fluentui/scripts-storybook';
 import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
@@ -10,6 +9,8 @@ import * as jju from 'jju';
 import _ from 'lodash';
 import { Actions } from 'node-plop';
 import { AddManyActionConfig, NodePlopAPI } from 'plop';
+
+import { main as generateTsBaseAllJson } from '../generate-ts-base-all-json';
 
 const root = findGitRoot();
 
@@ -161,6 +162,8 @@ module.exports = (plop: NodePlopAPI) => {
           if (migrateResult.status !== 0) {
             throw new Error('Something went wrong running the migration. Please check previous logs for details.');
           }
+
+          generateTsBaseAllJson();
           return 'Successfully migrated package';
         },
         () => {
@@ -302,8 +305,6 @@ function updateNxWorkspace(_answers: Answers, config: { root: string; projectNam
   const updatedNxWorkspace = jju.update(nxWorkspaceContent, nxWorkspace, { mode: 'json', indent: 2 });
 
   fs.writeFileSync(paths.workspace, updatedNxWorkspace, 'utf-8');
-
-  createPathAliasesConfig({ relativeFolderPathFromRoot: '.' });
 }
 
 function getProjectMetadata(options: { root: string; name: string }) {

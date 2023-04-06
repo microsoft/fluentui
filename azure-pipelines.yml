@@ -42,6 +42,10 @@ jobs:
         displayName: Type-check just.config.ts files
 
       - script: |
+          yarn ts-node --swc scripts/generators/generate-ts-base-all-json.ts --verify
+        displayName: Check tsconfig.base.all.json integrity
+
+      - script: |
           yarn check:installed-dependencies-versions
         displayName: 'check packages: installed dependencies versions'
 
