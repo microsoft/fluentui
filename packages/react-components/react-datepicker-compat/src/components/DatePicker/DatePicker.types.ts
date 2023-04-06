@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Input } from '@fluentui/react-input';
-import { Field } from '@fluentui/react-field';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { PopoverSurface } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -9,10 +7,10 @@ import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 
 export type DatePickerSlots = {
-  root: NonNullable<Slot<'div'>>;
-  field: NonNullable<Slot<typeof Field>>;
-  input: NonNullable<Slot<typeof Input>>;
-  wrapper: NonNullable<Slot<'div'>>;
+  // root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'input'>>;
+  // input: NonNullable<Slot<typeof Input>>;
+  // wrapper: NonNullable<Slot<'div'>>;
   popover: NonNullable<Slot<Partial<PopoverProps>>>;
   popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
   calendar: NonNullable<Slot<Partial<CalendarProps>>>;
@@ -45,7 +43,7 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   /**
    * Label for the DatePicker
    */
-  label?: string;
+  // label?: string;
 
   /**
    * Whether the DatePicker is a required field or not
