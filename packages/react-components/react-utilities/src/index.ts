@@ -1,4 +1,11 @@
-export { getSlots, resolveShorthand, isResolvedShorthand } from './compose/index';
+export {
+  getSlots,
+  getSlotsNext,
+  resolveShorthand,
+  isResolvedShorthand,
+  SLOT_EXTERNAL_CHILDREN_SYMBOL,
+  SLOT_INTERNAL_CHILDREN_SYMBOL,
+} from './compose/index';
 export type {
   ExtractSlotProps,
   ComponentProps,
@@ -12,6 +19,7 @@ export type {
   SlotPropsRecord,
   SlotRenderFunction,
   SlotShorthandValue,
+  UnknownSlotProps,
 } from './compose/index';
 
 export {

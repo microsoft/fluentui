@@ -8,7 +8,9 @@ import type {
   SlotPropsRecord,
   SlotRenderFunction,
   UnionToIntersection,
+  UnknownSlotProps,
 } from './types';
+import { SLOT_EXTERNAL_CHILDREN_SYMBOL, SLOT_INTERNAL_CHILDREN_SYMBOL } from './constants';
 
 export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
@@ -19,7 +21,7 @@ export type Slots<S extends SlotPropsRecord> = {
     : React.ElementType<ExtractSlotProps<S[K]>>;
 };
 
-type ObjectSlotProps<S extends SlotPropsRecord> = {
+export type ObjectSlotProps<S extends SlotPropsRecord> = {
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
       // element's props, to be compatible with the As type returned by Slots<>
@@ -68,10 +70,17 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,
 ): readonly [React.ElementType<R[K]> | null, R[K]] {
-  if (state[slotName] === undefined) {
+  const props = state[slotName];
+
+  if (props === undefined) {
     return [null, undefined as R[K]];
   }
-  const { children, as: asProp, ...rest } = state[slotName]!;
+
+  // Symbols must be deleted to ensure new custom pragma won't recognize this as the new version element
+  delete (props as { [SLOT_EXTERNAL_CHILDREN_SYMBOL]: unknown })[SLOT_EXTERNAL_CHILDREN_SYMBOL];
+  delete (props as { [SLOT_INTERNAL_CHILDREN_SYMBOL]: unknown })[SLOT_INTERNAL_CHILDREN_SYMBOL];
+
+  const { children, as: asProp, ...rest } = props;
 
   const slot = (
     state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'
@@ -89,8 +98,7 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
     ];
   }
 
-  const shouldOmitAsProp = typeof slot === 'string' && state[slotName]?.as;
-  const slotProps = (shouldOmitAsProp ? omit(state[slotName]!, ['as']) : state[slotName]) as R[K];
-
+  const shouldOmitAsProp = typeof slot === 'string' && asProp;
+  const slotProps = (shouldOmitAsProp ? omit(props, ['as']) : (props as UnknownSlotProps)) as R[K];
   return [slot, slotProps];
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand } from './resolveShorthand';
 import type { Slot } from './types';
+import { SLOT_EXTERNAL_CHILDREN_SYMBOL, SLOT_INTERNAL_CHILDREN_SYMBOL } from './constants';
 
 type TestProps = {
   slotA?: Slot<'div'>;
@@ -15,21 +16,33 @@ describe('resolveShorthand', () => {
     const props: TestProps = { slotA: 'hello' };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ children: 'hello' });
+    expect(resolvedProps).toEqual({
+      children: 'hello',
+      [SLOT_EXTERNAL_CHILDREN_SYMBOL]: 'hello',
+      [SLOT_INTERNAL_CHILDREN_SYMBOL]: undefined,
+    });
   });
 
   it('resolves a JSX element', () => {
     const props: TestProps = { slotA: <div>hello</div> };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ children: <div>hello</div> });
+    expect(resolvedProps).toEqual({
+      children: <div>hello</div>,
+      [SLOT_EXTERNAL_CHILDREN_SYMBOL]: <div>hello</div>,
+      [SLOT_INTERNAL_CHILDREN_SYMBOL]: undefined,
+    });
   });
 
   it('resolves a number', () => {
     const props: TestProps = { slotA: 42 };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual({ children: 42 });
+    expect(resolvedProps).toEqual({
+      children: 42,
+      [SLOT_EXTERNAL_CHILDREN_SYMBOL]: 42,
+      [SLOT_INTERNAL_CHILDREN_SYMBOL]: undefined,
+    });
   });
 
   it('resolves an object as its copy', () => {

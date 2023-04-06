@@ -1,5 +1,6 @@
 import { isValidElement } from 'react';
 import type { SlotShorthandValue, UnknownSlotProps } from './types';
+import { SLOT_EXTERNAL_CHILDREN_SYMBOL, SLOT_INTERNAL_CHILDREN_SYMBOL } from './constants';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true
   ? { required: true; defaultProps?: Props }
@@ -26,11 +27,17 @@ export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
 
   let resolvedShorthand = {} as UnknownSlotProps;
 
-  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement<any>(value)) {
     resolvedShorthand.children = value;
   } else if (typeof value === 'object') {
     resolvedShorthand = { ...value };
   }
 
-  return defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand;
+  return {
+    ...defaultProps,
+    ...resolvedShorthand,
+    [SLOT_EXTERNAL_CHILDREN_SYMBOL]: resolvedShorthand.children,
+    [SLOT_INTERNAL_CHILDREN_SYMBOL]: defaultProps?.children,
+  };
 };
