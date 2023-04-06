@@ -67,7 +67,9 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     color: ${colorNeutralForeground3};
-    padding-inline: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
+    padding-inline: ${spacingHorizontalS} ${spacingHorizontalXS};
+    padding-bottom: ${spacingVerticalS};
+    padding-top: ${spacingVerticalS};
   }
   .label__hidden {
     display: none;
