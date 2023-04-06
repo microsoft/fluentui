@@ -78,6 +78,9 @@ const useStyles = makeStyles({
   badge: {
     marginRight: tokens.spacingHorizontalS,
   },
+  menu: {
+    marginTop: tokens.spacingVerticalXS,
+  },
   colorPreview: {
     display: 'inline',
     paddingLeft: '5px',
@@ -213,33 +216,39 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
                     )}
                     <Subtitle2 className={styles.colorLabel}>{token}</Subtitle2>
                   </div>
-                  <Menu>
-                    <MenuTrigger disableButtonEnhancement>
-                      <MenuButton size="small" shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
-                        {themeName} {colorValue}
-                      </MenuButton>
-                    </MenuTrigger>
-                    <MenuPopover>
-                      <MenuList onCheckedValueChange={handleColorChange}>
-                        {brandRamp.map(brandValue => {
-                          const selected = colorValue === brandValue;
-                          const brandValueString = brandValue.toString();
-                          return (
-                            <div key={brandValueString}>
-                              <ColorTokenCol
-                                token={token}
-                                brand={brand}
-                                showContrast={testType === TestType.contrastRatio}
-                                brandValue={brandValue}
-                                brandValueString={brandValueString}
-                                selected={selected}
-                              />
-                            </div>
-                          );
-                        })}
-                      </MenuList>
-                    </MenuPopover>
-                  </Menu>
+                  <div className={styles.menu}>
+                    <Menu>
+                      <MenuTrigger disableButtonEnhancement>
+                        <MenuButton
+                          size="small"
+                          shape="circular"
+                          icon={<CircleFilled primaryFill={brand[colorValue]} />}
+                        >
+                          {themeName} {colorValue}
+                        </MenuButton>
+                      </MenuTrigger>
+                      <MenuPopover>
+                        <MenuList onCheckedValueChange={handleColorChange}>
+                          {brandRamp.map(brandValue => {
+                            const selected = colorValue === brandValue;
+                            const brandValueString = brandValue.toString();
+                            return (
+                              <div key={brandValueString}>
+                                <ColorTokenCol
+                                  token={token}
+                                  brand={brand}
+                                  showContrast={testType === TestType.contrastRatio}
+                                  brandValue={brandValue}
+                                  brandValueString={brandValueString}
+                                  selected={selected}
+                                />
+                              </div>
+                            );
+                          })}
+                        </MenuList>
+                      </MenuPopover>
+                    </Menu>
+                  </div>
                 </TableCell>
                 <TableCell className={styles.cellRow}>
                   {testResults
