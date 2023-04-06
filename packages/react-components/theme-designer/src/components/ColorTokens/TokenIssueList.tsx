@@ -41,13 +41,15 @@ import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesign
 import { contrast, hex_to_sRGB } from '../../colors';
 import { accessiblePairs } from './AccessiblePairs';
 
-export interface ColorTokensListProps {
+export interface TokenIssueListProps {
   brand: BrandVariants;
   themeName: string;
   themeOverrides: Partial<Theme>;
   colorOverrides: ColorOverrideBrands;
+
+  testType: TestType;
   coveredTokens: string[];
-  tests?: TestResult[];
+  tests: TestResult[];
   onNewOverride: (color: string, newColor: Brands) => void;
 }
 
@@ -146,7 +148,7 @@ const columnsDef: TableColumnDefinition<TestResult>[] = [
   }),
 ];
 
-export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = props => {
+export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = props => {
   const styles = useStyles();
 
   const [columns] = React.useState<TableColumnDefinition<TestResult>[]>(columnsDef);
@@ -161,18 +163,18 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
     usageExample: {},
   });
 
-  const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
+  const { brand, coveredTokens, tests, colorOverrides, onNewOverride, themeOverrides, themeName, testType } = props;
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
-      items: tests!,
+      items: tests,
     },
     [useTableColumnSizing_unstable({ columnSizingOptions })],
   );
 
-  const rows = getRows();
+  const testResults = getRows();
 
   return (
     <>
@@ -227,7 +229,7 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                               <ColorTokenCol
                                 token={token}
                                 brand={brand}
-                                showContrast={!!tests}
+                                showContrast={testType === TestType.contrastRatio}
                                 brandValue={brandValue}
                                 brandValueString={brandValueString}
                                 selected={selected}
@@ -239,49 +241,47 @@ export const TokenIssueList: React.FunctionComponent<ColorTokensListProps> = pro
                     </MenuPopover>
                   </Menu>
                 </TableCell>
-                <TableCell>
-                  {rows &&
-                    rows
-                      .filter(o => o.item.testInfo!.currToken === token)
-                      .map((rowData: TableRowData<TestResult>) => {
-                        const testType = rowData.item.testType;
-                        let hex: string = '';
-                        let output;
-                        let desiredOutput;
-                        const testUnits = testType === TestType.contrastRatio ? 'ratio' : '% dif';
-                        const compToken = rowData.item.testInfo?.compToken;
-                        if (testType === TestType.contrastRatio) {
-                          const testInfo = rowData.item.testInfo as ContrastRatioTest;
-                          hex = testInfo.compHex;
-                          output = testInfo.ratio;
-                          desiredOutput = testInfo.desiredRatio;
-                        } else if (testType === TestType.luminosity) {
-                          const testInfo = rowData.item.testInfo as LuminosityTest;
-                          hex = testInfo.compHex;
-                          output = testInfo.percentDiff;
-                          desiredOutput = testInfo.desiredPercentDiff;
-                        }
+                <TableCell className={styles.cellRow}>
+                  {testResults
+                    .filter(o => o.item.testInfo!.currToken === token)
+                    .map((rowData: TableRowData<TestResult>) => {
+                      let hex: string = '';
+                      let output;
+                      let desiredOutput;
+                      const testUnits = testType === TestType.contrastRatio ? 'ratio' : '% dif';
+                      const compToken = rowData.item.testInfo?.compToken;
+                      if (testType === TestType.contrastRatio) {
+                        const testInfo = rowData.item.testInfo as ContrastRatioTest;
+                        hex = testInfo.compHex;
+                        output = testInfo.ratio;
+                        desiredOutput = testInfo.desiredRatio;
+                      } else if (testType === TestType.luminosity) {
+                        const testInfo = rowData.item.testInfo as LuminosityTest;
+                        hex = testInfo.compHex;
+                        output = testInfo.percentDiff;
+                        desiredOutput = testInfo.desiredPercentDiff;
+                      }
 
-                        return (
-                          <div key={token + ' ' + hex}>
-                            {compToken} &nbsp;
-                            <div
-                              className={styles.colorPreview}
-                              style={{
-                                backgroundColor: brand[colorValue],
-                                color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
-                              }}
-                            >
-                              {hex.toUpperCase()}
-                            </div>
-                            <br />
-                            {`${testUnits}: `}
-                            {output}, expected: {desiredOutput}
+                      return (
+                        <div key={token + ' ' + hex}>
+                          {compToken} &nbsp;
+                          <div
+                            className={styles.colorPreview}
+                            style={{
+                              backgroundColor: brand[colorValue],
+                              color: contrast(hex_to_sRGB(hex), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white',
+                            }}
+                          >
+                            {hex.toUpperCase()}
                           </div>
-                        );
-                      })}
+                          <br />
+                          {`${testUnits}: `}
+                          {output}, expected: {desiredOutput}
+                        </div>
+                      );
+                    })}
                 </TableCell>
-                <TableCell>
+                <TableCell className={styles.cellRow}>
                   <div>{usage}</div>
                 </TableCell>
               </TableRow>

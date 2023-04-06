@@ -192,7 +192,7 @@ export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => 
                     </MenuPopover>
                   </Menu>
                 </TableCell>
-                <TableCell>
+                <TableCell className={styles.cellRow}>
                   <div>{usage}</div>
                 </TableCell>
               </TableRow>

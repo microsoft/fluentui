@@ -95,6 +95,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
             <AccordionPanel>
               <TokenIssueList
                 brand={brand}
+                testType={TestType.contrastRatio}
                 themeName={themeName}
                 colorOverrides={colorOverride}
                 themeOverrides={themeOverrides}
@@ -113,6 +114,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
             </AccordionHeader>
             <AccordionPanel>
               <TokenIssueList
+                testType={TestType.luminosity}
                 brand={brand}
                 themeName={themeName}
                 colorOverrides={colorOverride}
