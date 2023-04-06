@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, Button, Avatar, shorthands, tokens } from '@fluentui/react-components';
 import { EmojiSmileSlightRegular, Question20Regular } from '@fluentui/react-icons';
-import { ChatLegacy, ChatMessageLegacy } from '../../src/index';
+import { ChatLegacy, ChatMessageLegacy } from '@fluentui/react-migration-v0-v9';
 
 const useReactionStyles = makeStyles({
   button: {
