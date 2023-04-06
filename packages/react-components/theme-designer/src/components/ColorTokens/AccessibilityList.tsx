@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {
   Accordion,
-  AccordionPanel,
-  AccordionItem,
   AccordionHeader,
-  Theme,
-  BrandVariants,
+  AccordionItem,
+  AccordionPanel,
   Badge,
+  BrandVariants,
   makeStyles,
+  Theme,
   tokens,
 } from '@fluentui/react-components';
 import { getAccessibilityChecker, TestType } from '../../utils/getAccessibilityChecker';
 import { TokenIssueList } from './TokenIssueList';
 import { TokenList } from './TokenList';
 import { sortOverrideableColorTokens } from '../../utils/getOverridableTokenBrandColors';
-import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
+import { CheckmarkCircleRegular, ErrorCircleRegular, WarningRegular } from '@fluentui/react-icons';
 import { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
 import { Brands } from '@fluentui/react-theme';
 
@@ -37,6 +37,7 @@ export interface AccessibilityContrastChipProps {
   failKeys: string[];
   testType: TestType;
 }
+
 export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
   const styles = useStyles();
   const { failKeys, testType } = props;
@@ -55,7 +56,11 @@ export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityCon
     <Badge appearance="outline" color="important" style={{ justifyContent: 'unset' }}>
       {failKeys.length > 0 ? (
         <>
-          <WarningRegular className={styles.icon} color={tokens.colorPaletteRedForeground1} />
+          {testType === TestType.contrastRatio ? (
+            <ErrorCircleRegular className={styles.icon} color={tokens.colorPaletteRedForeground1} />
+          ) : (
+            <WarningRegular className={styles.icon} color={tokens.colorPaletteRedForeground1} />
+          )}
           {detailText()}
         </>
       ) : (
