@@ -6,6 +6,7 @@ export * from './button/index.js';
 export * from './counter-badge/index.js';
 export * from './divider/index.js';
 export * from './image/index.js';
+export * from './label/index.js';
 export * from './menu-button/index.js';
 export * from './progress-bar/index.js';
 export * from './slider/index.js';
