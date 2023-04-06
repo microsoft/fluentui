@@ -16,21 +16,15 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const nameGroup = useRadioGroupContext_unstable(ctx => ctx.name);
-  const value = useRadioGroupContext_unstable(ctx => ctx.value);
-  const defaultValue = useRadioGroupContext_unstable(ctx => ctx.defaultValue);
-  const disabledGroup = useRadioGroupContext_unstable(ctx => ctx.disabled);
-  const layout = useRadioGroupContext_unstable(ctx => ctx.layout);
-  const requiredGroup = useRadioGroupContext_unstable(ctx => ctx.required);
-  const describedByGroup = useRadioGroupContext_unstable(ctx => ctx['aria-describedby']);
+  const group = useRadioGroupContext_unstable();
 
   const {
-    name = nameGroup,
-    checked = value !== undefined ? value === props.value : undefined,
-    defaultChecked = defaultValue !== undefined ? defaultValue === props.value : undefined,
-    labelPosition = layout === 'horizontal-stacked' ? 'below' : 'after',
-    disabled = disabledGroup,
-    required = requiredGroup,
+    name = group.name,
+    checked = group.value !== undefined ? group.value === props.value : undefined,
+    defaultChecked = group.defaultValue !== undefined ? group.defaultValue === props.value : undefined,
+    labelPosition = group.layout === 'horizontal-stacked' ? 'below' : 'after',
+    disabled = group.disabled,
+    required = group.required,
     onChange,
   } = props;
 
@@ -59,7 +53,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       defaultChecked,
       disabled,
       required,
-      'aria-describedby': describedByGroup,
+      'aria-describedby': group['aria-describedby'],
       ...nativeProps.primary,
     },
   });
