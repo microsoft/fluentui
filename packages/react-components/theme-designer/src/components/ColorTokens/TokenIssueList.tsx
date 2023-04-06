@@ -87,6 +87,9 @@ const useStyles = makeStyles({
     paddingRight: '5px',
     ...shorthands.borderRadius('10px'),
   },
+  output: {
+    fontSize: tokens.fontSizeBase200,
+  },
 });
 
 const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
@@ -284,8 +287,7 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
                             {hex.toUpperCase()}
                           </div>
                           <br />
-                          {`${testUnits}: `}
-                          {output}, expected: {desiredOutput}
+                          <div className={styles.output}>{`${testUnits}: ${output}, expected: ${desiredOutput}`}</div>
                         </div>
                       );
                     })}
