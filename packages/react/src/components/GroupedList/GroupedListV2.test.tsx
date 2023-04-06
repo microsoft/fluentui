@@ -10,7 +10,7 @@ import { GroupHeader } from './GroupHeader';
 import { getTheme } from '../../Styling';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
-import type { IGroup } from './GroupedList.types';
+import type { IGroup, IGroupedList } from './GroupedList.types';
 import type { IColumn } from '../DetailsList/DetailsList.types';
 
 describe('GroupedListV2', () => {
@@ -387,7 +387,7 @@ describe('GroupedListV2', () => {
       );
     }
 
-    const ref = React.createRef<IGroupedList | null>(null);
+    const ref = React.createRef<IGroupedList>();
 
     const wrapper = mount(
       <GroupedListV2
@@ -401,11 +401,11 @@ describe('GroupedListV2', () => {
 
     expect(wrapper.find(DetailsRow)).toHaveLength(3);
 
-    ref.current.toggleCollapseAll(true);
+    ref.current?.toggleCollapseAll(true);
     wrapper.update();
     expect(wrapper.find(DetailsRow)).toHaveLength(0);
 
-    ref.current.toggleCollapseAll(false);
+    ref.current?.toggleCollapseAll(false);
     wrapper.update();
     expect(wrapper.find(DetailsRow)).toHaveLength(3);
 
