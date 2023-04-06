@@ -227,7 +227,7 @@ Each non-core component should depend on the individual core components
 
 #### Pros
 
-- 👍 No unnecessary depdencies - we expect users to have core suite package installed
+- 👍 No unnecessary dependencies - we expect users to have core suite package installed
 - 👍 Other examples in OSS - Material UI/React all recommend peer dependencies
 - 👍 Easy for users to consume as long as core does not break
 - 👍 We test how 'complete' our public API is
