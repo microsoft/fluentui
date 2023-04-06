@@ -15,8 +15,20 @@ export {
   useInfoButton_unstable,
   useInfoButtonStyles_unstable,
   renderInfoButton_unstable,
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
 } from '@fluentui/react-infobutton';
-export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
+export type {
+  InfoButtonProps,
+  InfoButtonSlots,
+  InfoButtonState,
+  InfoLabelProps,
+  InfoLabelSlots,
+  InfoLabelState,
+} from '@fluentui/react-infobutton';
 
 // eslint-disable-next-line deprecation/deprecation
 export { CheckboxField_unstable as CheckboxField, checkboxFieldClassNames } from '@fluentui/react-checkbox';
@@ -71,11 +83,23 @@ export type { TextareaFieldProps_unstable as TextareaFieldProps } from '@fluentu
 export {
   Field,
   fieldClassNames,
+  FieldContextProvider,
   renderField_unstable,
+  useFieldContext_unstable,
+  useFieldContextValues_unstable,
+  useFieldControlProps_unstable,
   useFieldStyles_unstable,
   useField_unstable,
 } from '@fluentui/react-field';
-export type { FieldProps, FieldSlots, FieldState } from '@fluentui/react-field';
+export type {
+  FieldContextValue,
+  FieldContextValues,
+  FieldControlProps,
+  FieldControlPropsOptions,
+  FieldProps,
+  FieldSlots,
+  FieldState,
+} from '@fluentui/react-field';
 
 export {
   Skeleton,
@@ -108,12 +132,21 @@ export {
   renderVirtualizer_unstable,
   useVirtualizerStyles_unstable,
   useIntersectionObserver,
+  useStaticVirtualizerMeasure,
+  VirtualizerScrollView,
+  virtualizerScrollViewClassNames,
+  useVirtualizerScrollView_unstable,
+  renderVirtualizerScrollView_unstable,
+  useVirtualizerScrollViewStyles_unstable,
 } from '@fluentui/react-virtualizer';
 export type {
   VirtualizerProps,
   VirtualizerState,
   VirtualizerSlots,
   VirtualizerChildRenderFunction,
+  VirtualizerScrollViewProps,
+  VirtualizerScrollViewState,
+  VirtualizerScrollViewSlots,
 } from '@fluentui/react-virtualizer';
 
 export {

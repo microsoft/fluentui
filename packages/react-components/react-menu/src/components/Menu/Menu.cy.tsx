@@ -391,6 +391,27 @@ describe('MenuItemRadio', () => {
 });
 
 describe('Menu', () => {
+  it('should not focus trigger on dismiss if another elemnt is focused', () => {
+    mount(
+      <>
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <button id={menuTriggerId}>Menu</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <input type="text" />
+      </>,
+    );
+    cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').get('input').realClick();
+
+    cy.get('input').should('be.focused');
+  });
+
   it('should be dismissed with Escape', () => {
     mount(
       <Menu>

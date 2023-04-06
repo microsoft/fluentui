@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
@@ -847,5 +848,26 @@ describe('Combobox', () => {
     userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Combobox>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+      </Field>,
+    );
+
+    const combobox = result.getByRole('combobox') as HTMLInputElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(combobox.id).toEqual(label.htmlFor);
+    expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(combobox.getAttribute('aria-invalid')).toEqual('true');
+    expect(combobox.required).toBe(true);
   });
 });

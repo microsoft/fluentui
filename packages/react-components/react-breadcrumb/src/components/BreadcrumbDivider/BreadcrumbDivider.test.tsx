@@ -15,11 +15,12 @@ describe('BreadcrumbDivider', () => {
     const result = render(<BreadcrumbDivider>Default BreadcrumbDivider</BreadcrumbDivider>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <span
+        <li
+          aria-hidden="true"
           class="fui-BreadcrumbDivider"
         >
-          &gt;
-        </span>
+          Default BreadcrumbDivider
+        </li>
       </div>
     `);
   });

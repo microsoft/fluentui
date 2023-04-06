@@ -2,6 +2,27 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Tue, 21 Mar 2023 21:23:17 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.4",
+      "version": "1.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Mar 2023 10:19:53 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.3",
       "version": "1.0.0-alpha.3",
