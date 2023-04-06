@@ -18,7 +18,7 @@ import { render } from '@testing-library/react';
 type TestComponentSlots = { slot: Slot<'div'> };
 type TestComponentState = ComponentState<TestComponentSlots>;
 type TestComponentProps = ComponentProps<Partial<TestComponentSlots>> & {
-  getSlots: typeof getSlots;
+  getSlots: typeof getSlots | typeof getSlotsNext;
 };
 
 const TestComponent = (props: TestComponentProps) => {
