@@ -140,15 +140,18 @@ export function preset() {
     ),
   ).cached!();
 
-  task('build:react-components', () => {
-    return series(
+  task(
+    'build:react-components',
+    series(
       'clean',
       'copy',
-      condition('sass', () => hasSass()),
-      parallel('swc:compile', 'generate-api'),
-    );
-  }).cached!();
-
+      'sass',
+      'ts',
+      'api-extractor',
+      condition('lint-imports:all', () => !isConvergedPackage() && shipsAMD()),
+      condition('lint-imports:amd', () => isConvergedPackage() && shipsAMD()),
+    ),
+  ).cached!();
   task(
     'bundle',
     condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
