@@ -3,6 +3,7 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorCompoundBrandStroke,
+  colorCompoundBrandStrokePressed,
   colorNeutralBackground1,
   colorNeutralBackground3,
   colorNeutralBackgroundInverted,
@@ -87,15 +88,17 @@ export const styles = css`
     gap: ${spacingHorizontalXXS};
   }
   .root::after {
+    box-sizing: border-box;
     content: '';
     position: absolute;
-    left: 0px;
-    bottom: 1px;
-    right: 0px;
-    height: 2px;
-    border-bottom-radius: ${borderRadiusMedium};
-    border-bottom: ${strokeWidthThick} solid ${colorCompoundBrandStroke};
-    clip-path: inset(calc(100% - 2px) 0px 0px);
+    left: -1px;
+    bottom: 0px;
+    right: -1px;
+    height: max(2px, ${borderRadiusMedium});
+    border-bottom-left-radius: ${borderRadiusMedium};
+    border-bottom-right-radius: ${borderRadiusMedium};
+    border-bottom: 2px solid ${colorCompoundBrandStroke};
+    clip-path: inset(calc(100% - 2px) 1px 0px);
     transform: scaleX(0);
     transition-property: transform;
     transition-duration: ${durationUltraFast};
@@ -143,6 +146,19 @@ export const styles = css`
   :host(:active) .root {
     border-color: ${colorNeutralStroke1Pressed};
   }
+  :host(:focus-within) .root {
+    outline: transparent solid 2px;
+    border-bottom: 0;
+  }
+  :host(:focus-within) .root::after {
+    transform: scaleX(1);
+    transition-property: transform;
+    transition-duration: ${durationNormal};
+    transition-delay: ${curveDecelerateMid};
+  }
+  :host(:focus-within:active) .root:after {
+    border-bottom-color: ${colorCompoundBrandStrokePressed};
+  }
   :host([appearance='outline']:focus-within:not([disabled])) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
@@ -157,14 +173,6 @@ export const styles = css`
   :host([disabled]) ::slotted([slot='start']),
   :host([disabled]) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
-  }
-  :host(:focus-within) .root {
-    outline: transparent solid 2px;
-    border-bottom: 0;
-  }
-  :host(:focus-within) .root::after {
-    transform: scaleX(1);
-    transition: transform ${durationNormal} ${curveDecelerateMid};
   }
   ::selection {
     color: ${colorNeutralForegroundInverted};
