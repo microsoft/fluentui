@@ -47,12 +47,12 @@ export const calculateContrastRatio = (
       isPass: true,
       testType: TestType.contrastRatio,
       testInfo: {
-        currToken: currToken,
-        compToken: compToken,
-        currHex: currHex,
-        compHex: compHex,
+        currToken,
+        compToken,
+        currHex,
+        compHex,
         ratio: desiredRatio,
-        desiredRatio: desiredRatio,
+        desiredRatio,
       },
     };
   }
@@ -67,12 +67,12 @@ export const calculateContrastRatio = (
     isPass: contrastRatio >= desiredRatio,
     testType: TestType.contrastRatio,
     testInfo: {
-      currToken: currToken,
-      compToken: compToken,
-      currHex: currHex,
-      compHex: compHex,
+      currToken,
+      compToken,
+      currHex,
+      compHex,
       ratio: roundedContrastRatio,
-      desiredRatio: desiredRatio,
+      desiredRatio,
     },
   };
 };
@@ -89,7 +89,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     const percentDiff = ((value2 - value1) / value1) * 100;
     const roundedPercentDiff = Math.floor(percentDiff * 10) / 10;
 
-    var isPass = false;
+    let isPass = false;
     if (desiredPercentDiff < 0) {
       isPass = roundedPercentDiff <= desiredPercentDiff;
     } else {
@@ -97,15 +97,15 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     }
 
     return {
-      isPass: isPass,
+      isPass,
       testType: TestType.luminosity,
       testInfo: {
-        currToken: currToken,
-        compToken: compToken,
+        currToken,
+        compToken,
         currHex: currTheme[currToken],
         compHex: currTheme[compToken],
         percentDiff: roundedPercentDiff,
-        desiredPercentDiff: desiredPercentDiff,
+        desiredPercentDiff,
       },
     };
   };
@@ -120,9 +120,9 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
         const { isPass, testInfo } = testPercentDiff(token, compToken, ratio);
 
         tests.push({
-          isPass: isPass,
+          isPass,
           testType: TestType.luminosity,
-          testInfo: testInfo,
+          testInfo,
         });
       }
     });
@@ -140,9 +140,9 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
 
         if (!added.includes(testInfo!.compHex)) {
           tests.push({
-            isPass: isPass,
+            isPass,
             testType: TestType.contrastRatio,
-            testInfo: testInfo,
+            testInfo,
           });
           added.push(testInfo!.compHex);
         }
@@ -158,5 +158,5 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
 
   const all: string[] = Object.keys(accessiblePairs); // todo: check if this is an exhaustive list of all tokens
 
-  return { all: all, failedLuminosityTests: failedLuminosityTests, failedContrastTests: failedContrastTests };
+  return { all, failedLuminosityTests, failedContrastTests };
 };

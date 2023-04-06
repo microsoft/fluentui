@@ -25,17 +25,3 @@ export const objectToString = (input: Record<string, string>, spacer: string) =>
     }) + '\n'
   );
 };
-
-export const themeToString = (theme: Theme, spacer: string) => {
-  const indexableTheme: Record<string, string | number> = theme;
-  return (
-    // don't put quotes around numbers
-    Object.keys(theme).map(key => {
-      if (!Number(indexableTheme[key])) {
-        return '\n' + spacer + key + ': "' + indexableTheme[key] + '"';
-      } else {
-        return '\n' + spacer + key + ': ' + indexableTheme[key];
-      }
-    }) + '\n'
-  );
-};

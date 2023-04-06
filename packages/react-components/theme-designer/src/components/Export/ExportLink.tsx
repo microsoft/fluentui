@@ -308,7 +308,7 @@ export const ExportLink = () => {
       files: {
         'example.tsx': {
           isBinary: false,
-          content: content,
+          content,
         },
         'index.html': {
           isBinary: false,

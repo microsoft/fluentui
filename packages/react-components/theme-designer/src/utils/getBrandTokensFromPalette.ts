@@ -26,9 +26,9 @@ export function getBrandTokensFromPalette(keyColor: string, options: Options = {
   const { darkCp = 2 / 3, lightCp = 1 / 3, hueTorsion = 0 } = options;
   const brandPalette: Palette = {
     keyColor: hex_to_LCH(keyColor),
-    darkCp: darkCp,
-    lightCp: lightCp,
-    hueTorsion: hueTorsion,
+    darkCp,
+    lightCp,
+    hueTorsion,
   };
   const hexColors = hexColorsFromPalette(brandPalette, 16, [0, 100], 1);
   return hexColors.reduce((acc: Record<string, string>, hexColor, h) => {

@@ -251,7 +251,6 @@ export const Form: React.FC = () => {
               <Input
                 appearance="outline"
                 id={themeNameInputId}
-                // eslint-disable-next-line react/jsx-no-bind
                 onChange={handleThemeNameChange}
                 placeholder={defaultThemePlaceholderName}
                 value={themeName === defaultThemePlaceholderName ? '' : themeName}
