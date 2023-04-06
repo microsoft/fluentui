@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
@@ -35,6 +36,11 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   });
 
+  const { modalAttributes, triggerAttributes } = useModalAttributes({
+    trapFocus: modalType !== 'non-modal',
+    legacyTrapFocus: !inertTrapFocus,
+  });
+
   const focusRef = useFocusFirstElement(open, modalType);
   const disableBodyScroll = useDisableBodyScroll();
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
@@ -49,6 +55,8 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     components: {
       backdrop: 'div',
     },
+    modalAttributes,
+    triggerAttributes,
     inertTrapFocus,
     open,
     modalType,

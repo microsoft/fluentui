@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useModalAttributes } from '@fluentui/react-tabster';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
 import type { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
@@ -19,9 +18,8 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   const child = getTriggerChild(children);
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
+  const triggerAttributes = useDialogContext_unstable(ctx => ctx.triggerAttributes);
   const open = useDialogContext_unstable(ctx => ctx.open);
-
-  const { triggerAttributes } = useModalAttributes();
 
   const handleClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {

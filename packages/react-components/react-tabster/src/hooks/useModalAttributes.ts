@@ -48,6 +48,7 @@ export const useModalAttributes = (
     getModalizer(tabster);
     getDeloser(tabster);
   }
+  console.log('after getModalizer call', Boolean(tabster));
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({

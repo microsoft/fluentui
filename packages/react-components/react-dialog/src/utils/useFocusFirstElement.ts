@@ -19,6 +19,7 @@ export function useFocusFirstElement(open: boolean, modalType: DialogModalType) 
     }
     triggerRef.current = targetDocument?.activeElement as HTMLElement | undefined;
     const element = dialogRef.current && findFirstFocusable(dialogRef.current);
+    console.log(element);
     if (element) {
       element.focus();
     } else {

@@ -57,7 +57,6 @@ describe('DialogTrigger', () => {
       Array [
         <button
           aria-expanded="false"
-          data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
         </button>,
@@ -87,7 +86,6 @@ describe('DialogTrigger', () => {
       Array [
         <button
           aria-expanded="false"
-          data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
         </button>,

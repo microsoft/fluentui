@@ -3,6 +3,9 @@ import { createContext, ContextSelector, useContextSelector } from '@fluentui/re
 import { DialogSurfaceElement } from '../DialogSurface';
 import type { Context } from '@fluentui/react-context-selector';
 import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
+import type { useModalAttributes } from '@fluentui/react-tabster';
+
+type ModalAttributes = ReturnType<typeof useModalAttributes>;
 
 export type DialogContextValue = {
   open: boolean;
@@ -11,6 +14,8 @@ export type DialogContextValue = {
   isNestedDialog: boolean;
   dialogRef: React.Ref<DialogSurfaceElement>;
   modalType: DialogModalType;
+  modalAttributes: ModalAttributes['modalAttributes'];
+  triggerAttributes: ModalAttributes['triggerAttributes'];
   /**
    * Requests dialog main component to update it's internal open state
    */
@@ -23,6 +28,8 @@ const defaultContextValue: DialogContextValue = {
   modalType: 'modal',
   isNestedDialog: false,
   dialogRef: { current: null },
+  modalAttributes: { 'data-tabster': '' },
+  triggerAttributes: { 'data-tabster': '' },
   requestOpenChange() {
     /* noop */
   },
