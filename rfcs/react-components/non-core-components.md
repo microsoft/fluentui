@@ -64,7 +64,7 @@ follow the V9 spec driven approach.
 
 #### Pros
 
-- 👍 Can enforce design across microsft more strictly
+- 👍 Can enforce design across Microsoft more strictly
 - 👍 Can be more flexible than core components
 - 👍 Can be done on a case-by-case basis depending on requirements
 
