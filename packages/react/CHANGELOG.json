@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 06 Apr 2023 07:39:05 GMT",
+      "tag": "@fluentui/react_v8.107.2",
+      "version": "8.107.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5540f06227b9750fa3089dc9ca0f8ef080a52a7d",
+            "comment": "fix: ComboBox updates activeDescendant value"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 03 Apr 2023 07:37:18 GMT",
       "tag": "@fluentui/react_v8.107.1",
       "version": "8.107.1",

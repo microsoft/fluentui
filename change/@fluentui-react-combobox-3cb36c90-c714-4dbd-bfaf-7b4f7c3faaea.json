@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Update package version of react-field",
+  "packageName": "@fluentui/react-combobox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
