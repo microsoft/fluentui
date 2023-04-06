@@ -44,7 +44,6 @@ import {
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalXS,
-  strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
@@ -55,33 +54,30 @@ export const styles = css`
   ${display('block')}
 
   :host {
-    vertical-align: middle;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase300};
-    gap: 4px;
   }
   .label {
     display: flex;
     color: ${colorNeutralForeground1};
     padding-bottom: ${spacingVerticalXS};
     flex-shrink: 0;
-    vertical-align: middle;
     padding-inline-end: ${spacingHorizontalXS};
   }
   .label__hidden {
     display: none;
   }
   .root {
+    position: relative;
+    box-sizing: border-box;
     height: 32px;
     display: inline-flex;
     align-items: center;
     flex-direction: row;
     width: 100%;
     padding: 0 ${spacingHorizontalMNudge};
-    position: relative;
-    box-sizing: border-box;
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     border-bottom-color: ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusMedium};
@@ -159,10 +155,10 @@ export const styles = css`
   :host(:focus-within:active) .root:after {
     border-bottom-color: ${colorCompoundBrandStrokePressed};
   }
-  :host([appearance='outline']:focus-within:not([disabled])) .root {
+  :host([appearance='outline']:focus-within) .root {
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
-  :host(:focus-within:not([disabled])) .control {
+  :host(:focus-within) .control {
     color: ${colorNeutralForeground1};
   }
   :host([disabled]) .root {
@@ -218,7 +214,7 @@ export const styles = css`
   :host([appearance='underline']:active) .root {
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([appearance='underline']):focus-within .root {
+  :host([appearance='underline']:focus-within) .root {
     border: 0;
     border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
   }
@@ -244,16 +240,16 @@ export const styles = css`
   :host([appearance='filled-darker--shadow']) .root {
     background: ${colorNeutralBackground3};
   }
-  :host([appearance='filled-lighter']):hover:not(:active) .root,
-  :host([appearance='filled-lighter--shadow']):hover:not(:active) .root,
-  :host([appearance='filled-darker']):hover:not(:active) .root,
-  :host([appearance='filled-darkers--shadow']):hover:not(:active) .root {
+  :host([appearance='filled-lighter']:hover) .root,
+  :host([appearance='filled-lighter--shadow']:hover) .root,
+  :host([appearance='filled-darker']:hover) .root,
+  :host([appearance='filled-darkers--shadow']:hover) .root {
     border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([appearance='filled-lighter']):active .root,
-  :host([appearance='filled-lighter-shadow']):active .root,
-  :host([appearance='filled-darker']):active .root,
-  :host([appearance='filled-darker-shadow']):active .root {
+  :host([appearance='filled-lighter']:active) .root,
+  :host([appearance='filled-lighter-shadow']:active) .root,
+  :host([appearance='filled-darker']:active) .root,
+  :host([appearance='filled-darker-shadow']:active) .root {
     border-color: ${colorTransparentStrokeInteractive};
     background: ${colorNeutralBackground3};
   }
