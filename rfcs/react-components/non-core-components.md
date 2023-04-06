@@ -160,8 +160,7 @@ Non-core packages would be published under the same `@fluentui/` NPM scope.
 
 #### New package scope
 
-Creates a new package scope, `@fluentui-banana/` (name pending) for all components/packages that are core
-or non-core.
+Creates a new package scope, `@fluentui-banana/` (name pending) for all components/packages that are non-core.
 
 ##### Pros
 
