@@ -42,7 +42,7 @@ export const styles = css`
     outline: none;
     user-select: none;
     vertical-align: middle;
-    pointer-events: pointer;
+    cursor: pointer;
   }
   .control {
     position: relative;
@@ -67,7 +67,7 @@ export const styles = css`
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     color: ${colorNeutralForeground3};
-    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
+    padding-inline: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
   }
   .label__hidden {
     display: none;
@@ -85,11 +85,8 @@ export const styles = css`
   }
   .indeterminate-indicator {
     position: absolute;
-    top: 50%;
-    left: 50%;
     width: 8px;
     height: 8px;
-    transform: translate(-50%, -50%);
     border-radius: ${borderRadiusSmall};
     background-color: ${colorCompoundBrandForeground1};
     opacity: 0;
@@ -145,7 +142,7 @@ export const styles = css`
     flex-direction: row-reverse;
   }
   :host([label-position='before']) .label {
-    padding: ${spacingVerticalS} ${spacingHorizontalXS} ${spacingVerticalS} ${spacingHorizontalS};
+    padding-inline: ${spacingVerticalS} ${spacingHorizontalXS} ${spacingVerticalS} ${spacingHorizontalS};
   }
   :host([size='large']) .control {
     width: 20px;
