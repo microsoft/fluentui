@@ -66,20 +66,6 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      # - powershell: |
-      #     $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
-      #     Write-Host "Looking up latest official build via url: $url"
-      #     $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-      #     Write-Host "Response: $pipelineBuildInfo"
-      #     [int]$latestBuildId = $pipelineBuildInfo.value.id
-      #     Write-Host "Setting variable LatestBuildId=$latestBuildId"
-      #     Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
-      #   name: GetLatestGreenCIBuild
-      #   env:
-      #     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-      #     BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
-      #   condition: eq(variables['vrTestSkip'], 'no')
-
       - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9'
         displayName: 'Run fluentui-screenshotdiff'
         env:
@@ -152,20 +138,6 @@ jobs:
           fluentVersion: v8
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
-
-      # - powershell: |
-      #     $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
-      #     Write-Host "Looking up latest official build via url: $url"
-      #     $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-      #     Write-Host "Response: $pipelineBuildInfo"
-      #     [int]$latestBuildId = $pipelineBuildInfo.value.id
-      #     Write-Host "Setting variable LatestBuildId=$latestBuildId"
-      #     Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
-      #   name: GetLatestGreenCIBuild
-      #   env:
-      #     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-      #     BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
-      #   condition: eq(variables['vrTestSkip'], 'no')
 
       - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8'
         displayName: 'Run fluentui-screenshotdiff'
@@ -240,20 +212,6 @@ jobs:
           fluentVersion: v0
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
-
-      # - powershell: |
-      #     $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
-      #     Write-Host "Looking up latest official build via url: $url"
-      #     $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-      #     Write-Host "Response: $pipelineBuildInfo"
-      #     [int]$latestBuildId = $pipelineBuildInfo.value.id
-      #     Write-Host "Setting variable LatestBuildId=$latestBuildId"
-      #     Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
-      #   name: GetLatestGreenCIBuild
-      #   env:
-      #     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-      #     BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
-      #   condition: eq(variables['vrTestSkip'], 'no')
 
       # - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0'
       #   displayName: 'Run fluentui-screenshotdiff'
