@@ -63,7 +63,7 @@ jobs:
 
       - script: |
           yarn lage build --to @fluentui/react-components --verbose
-        displayName: build with ts transpilation
+        displayName: only ts transpilation
 
       - template: .devops/templates/cleanup.yml
 
