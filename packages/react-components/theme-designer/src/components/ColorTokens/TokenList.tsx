@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
 import {
   Badge,
   createTableColumn,
@@ -9,7 +8,6 @@ import {
   MenuItemRadio,
   MenuList,
   MenuPopover,
-  MenuProps,
   MenuTrigger,
   Subtitle2,
   Table,
@@ -21,15 +19,15 @@ import {
   TableHeaderCell,
   TableRow,
   Theme,
-  tokens,
   useTableColumnSizing_unstable,
   useTableFeatures,
 } from '@fluentui/react-components';
 import { brandRamp } from '../../utils/getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
-import { usageList } from './UsageList';
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
+import { useStyles } from './TokenList.style';
+import { constructRowParameters } from './TokenIssueList';
 
 export interface TokenIssueListProps {
   brand: BrandVariants;
@@ -47,32 +45,6 @@ export interface ColorTokenRowProps {
   brandValueString: string;
   selected: boolean;
 }
-
-const useStyles = makeStyles({
-  root: {},
-  colorLabel: {
-    color: tokens.colorBrandForeground1,
-  },
-  selected: {
-    fontWeight: 'bold',
-  },
-  cellRow: {
-    paddingTop: tokens.spacingVerticalS,
-    paddingBottom: tokens.spacingVerticalS,
-  },
-  badge: {
-    marginRight: tokens.spacingHorizontalS,
-  },
-  colorPreview: {
-    display: 'inline',
-    paddingLeft: '5px',
-    paddingRight: '5px',
-    ...shorthands.borderRadius('10px'),
-  },
-  menu: {
-    marginTop: tokens.spacingVerticalXS,
-  },
-});
 
 const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
@@ -123,7 +95,7 @@ export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => 
   const { brand, coveredTokens, colorOverrides, onNewOverride, themeOverrides, themeName } = props;
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  const { columnSizing_unstable, tableRef } = useTableFeatures(
+  const { columnSizing_unstable, tableRef, getRows } = useTableFeatures(
     {
       columns,
       items: coveredTokens,
@@ -147,15 +119,14 @@ export const TokenList: React.FunctionComponent<TokenIssueListProps> = props => 
           </TableRow>
         </TableHeader>
         <TableBody>
-          {coveredTokens.map(token => {
-            const colorValue: Brands = colorOverrides[token];
-            const usage = (usageList as unknown as Record<string, string>)[token];
-            const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
-              const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-              onNewOverride?.(token, newColor);
-            };
-
-            const overridenTokens = Object.keys(themeOverrides);
+          {getRows().map(row => {
+            const token = row.item;
+            const { colorValue, usage, handleColorChange, overridenTokens } = constructRowParameters(
+              colorOverrides,
+              token,
+              onNewOverride,
+              themeOverrides,
+            );
 
             return (
               <TableRow key={token}>

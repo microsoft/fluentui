@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
 import {
   Badge,
   createTableColumn,
@@ -20,9 +19,7 @@ import {
   TableHeader,
   TableHeaderCell,
   TableRow,
-  TableRowData,
   Theme,
-  tokens,
   useTableColumnSizing_unstable,
   useTableFeatures,
 } from '@fluentui/react-components';
@@ -40,6 +37,7 @@ import {
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { accessiblePairs } from './AccessiblePairs';
+import { useStyles } from './TokenList.style';
 
 export interface TokenIssueListProps {
   brand: BrandVariants;
@@ -62,35 +60,6 @@ export interface ColorTokenRowProps {
 
   showContrast?: boolean;
 }
-
-const useStyles = makeStyles({
-  root: {},
-  colorLabel: {
-    color: tokens.colorBrandForeground1,
-  },
-  selected: {
-    fontWeight: 'bold',
-  },
-  cellRow: {
-    paddingTop: tokens.spacingVerticalS,
-    paddingBottom: tokens.spacingVerticalS,
-  },
-  badge: {
-    marginRight: tokens.spacingHorizontalS,
-  },
-  menu: {
-    marginTop: tokens.spacingVerticalXS,
-  },
-  colorPreview: {
-    display: 'inline',
-    paddingLeft: '5px',
-    paddingRight: '5px',
-    ...shorthands.borderRadius('10px'),
-  },
-  output: {
-    fontSize: tokens.fontSizeBase200,
-  },
-});
 
 const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
@@ -139,25 +108,42 @@ const ColorTokenCol: React.FunctionComponent<ColorTokenRowProps> = props => {
   );
 };
 
-const columnsDef: TableColumnDefinition<TestResult>[] = [
-  createTableColumn<TestResult>({
+const columnsDef: TableColumnDefinition<string>[] = [
+  createTableColumn<string>({
     columnId: 'colorTokens',
     renderHeaderCell: () => <>Token</>,
   }),
-  createTableColumn<TestResult>({
+  createTableColumn<string>({
     columnId: 'check',
     renderHeaderCell: () => <>Check</>,
   }),
-  createTableColumn<TestResult>({
+  createTableColumn<string>({
     columnId: 'usageExample',
     renderHeaderCell: () => <>Usage example</>,
   }),
 ];
 
+export const constructRowParameters = (
+  colorOverrides: ColorOverrideBrands,
+  token: string,
+  onNewOverride: (color: string, newColor: Brands) => void,
+  themeOverrides: Partial<Theme>,
+) => {
+  const colorValue: Brands = colorOverrides[token];
+  const usage = (usageList as unknown as Record<string, string>)[token];
+  const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
+    const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
+    onNewOverride?.(token, newColor);
+  };
+
+  const overridenTokens = Object.keys(themeOverrides);
+  return { colorValue, usage, handleColorChange, overridenTokens };
+};
+
 export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = props => {
   const styles = useStyles();
 
-  const [columns] = React.useState<TableColumnDefinition<TestResult>[]>(columnsDef);
+  const [columns] = React.useState<TableColumnDefinition<string>[]>(columnsDef);
 
   const [columnSizingOptions] = React.useState<TableColumnSizingOptions>({
     colorTokens: {
@@ -175,12 +161,10 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
   const { getRows, columnSizing_unstable, tableRef } = useTableFeatures(
     {
       columns,
-      items: tests,
+      items: coveredTokens,
     },
     [useTableColumnSizing_unstable({ columnSizingOptions })],
   );
-
-  const testResults = getRows();
 
   return (
     <>
@@ -198,15 +182,14 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
           </TableRow>
         </TableHeader>
         <TableBody>
-          {coveredTokens.map(token => {
-            const colorValue: Brands = colorOverrides[token];
-            const usage = (usageList as unknown as Record<string, string>)[token];
-            const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
-              const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-              onNewOverride?.(token, newColor);
-            };
-
-            const overridenTokens = Object.keys(themeOverrides);
+          {getRows().map(rowData => {
+            const token = rowData.item;
+            const { colorValue, usage, handleColorChange, overridenTokens } = constructRowParameters(
+              colorOverrides,
+              token,
+              onNewOverride,
+              themeOverrides,
+            );
 
             return (
               <TableRow key={token}>
@@ -254,21 +237,21 @@ export const TokenIssueList: React.FunctionComponent<TokenIssueListProps> = prop
                   </div>
                 </TableCell>
                 <TableCell className={styles.cellRow}>
-                  {testResults
-                    .filter(o => o.item.testInfo!.currToken === token)
-                    .map((rowData: TableRowData<TestResult>) => {
+                  {tests
+                    .filter(o => o.testInfo!.currToken === token)
+                    .map((testResult: TestResult) => {
                       let hex: string = '';
                       let output;
                       let desiredOutput;
                       const testUnits = testType === TestType.contrastRatio ? 'ratio' : '% dif';
-                      const compToken = rowData.item.testInfo?.compToken;
+                      const compToken = testResult.testInfo?.compToken;
                       if (testType === TestType.contrastRatio) {
-                        const testInfo = rowData.item.testInfo as ContrastRatioTest;
+                        const testInfo = testResult.testInfo as ContrastRatioTest;
                         hex = testInfo.compHex;
                         output = testInfo.ratio;
                         desiredOutput = testInfo.desiredRatio;
                       } else if (testType === TestType.luminosity) {
-                        const testInfo = rowData.item.testInfo as LuminosityTest;
+                        const testInfo = testResult.testInfo as LuminosityTest;
                         hex = testInfo.compHex;
                         output = testInfo.percentDiff;
                         desiredOutput = testInfo.desiredPercentDiff;
