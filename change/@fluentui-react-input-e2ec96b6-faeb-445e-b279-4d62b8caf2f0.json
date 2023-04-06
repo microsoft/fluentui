@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Update react-field version number to beta",
+  "packageName": "@fluentui/react-input",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}
