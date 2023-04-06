@@ -42,6 +42,8 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
 
     options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     options.project = tsConfigFile;
+    options.declaration = false;
+    options.declarationDir = undefined;
   }
 
   return options;
