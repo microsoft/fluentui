@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text, tokens } from '@fluentui/react-components';
+import { FluentProvider, makeStyles, mergeClasses, Text, tokens, webDarkTheme } from '@fluentui/react-components';
 import { shorthands } from '@griffel/react';
 
 const MFSTLogo = () => {
@@ -12,6 +12,7 @@ const MFSTLogo = () => {
     </svg>
   );
 };
+
 export interface HeaderProps {
   className?: string;
 }
@@ -30,6 +31,9 @@ const useStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalL,
     ...shorthands.gap(tokens.spacingHorizontalS),
   },
+  text: {
+    width: '300px',
+  },
 });
 
 export const Header: React.FC<HeaderProps> = props => {
@@ -39,7 +43,7 @@ export const Header: React.FC<HeaderProps> = props => {
     <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
       <div className={styles.logo}>
         <MFSTLogo />
-        <Text>Theme Designer</Text>
+        <Text className={styles.text}>Theme Designer</Text>
       </div>
     </FluentProvider>
   );
