@@ -94,9 +94,9 @@ export function preset() {
   task('ts', () => {
     return series(
       'ts:compile',
-      'copy-compiled',
-      'ts:postprocess',
-      condition('babel:postprocess', () => hasBabel()),
+      // 'copy-compiled',
+      // 'ts:postprocess',
+      // condition('babel:postprocess', () => hasBabel()),
     );
   });
 
@@ -143,13 +143,13 @@ export function preset() {
   task(
     'build:react-components',
     series(
-      'clean',
-      'copy',
-      'sass',
+      // 'clean',
+      // 'copy',
+      // 'sass',
       'ts',
-      'api-extractor',
-      condition('lint-imports:all', () => !isConvergedPackage() && shipsAMD()),
-      condition('lint-imports:amd', () => isConvergedPackage() && shipsAMD()),
+      // 'api-extractor',
+      // condition('lint-imports:all', () => !isConvergedPackage() && shipsAMD()),
+      // condition('lint-imports:amd', () => isConvergedPackage() && shipsAMD()),
     ),
   ).cached!();
   task(
