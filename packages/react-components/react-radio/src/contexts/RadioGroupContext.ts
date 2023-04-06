@@ -12,18 +12,6 @@ export const RadioGroupProvider = RadioGroupContext.Provider;
 /**
  * Get the value of the RadioGroupContext.
  */
-export function useRadioGroupContext_unstable(): RadioGroupContextValue;
-
-/**
- * @deprecated Call useRadioGroupContext_unstable() with no arguments. RadioGroupContext is now a single context object,
- * and a selector is no longer needed
- */
-export function useRadioGroupContext_unstable<T>(selector: (value: RadioGroupContextValue) => T): T;
-
-// Implementation with fallback for deprecated selector
-export function useRadioGroupContext_unstable<T>(
-  selector?: (value: RadioGroupContextValue) => T,
-): T | RadioGroupContextValue {
-  const ctx = React.useContext(RadioGroupContext) || {};
-  return selector ? selector(ctx) : ctx;
+export function useRadioGroupContext_unstable(): RadioGroupContextValue {
+  return React.useContext(RadioGroupContext) || {};
 }

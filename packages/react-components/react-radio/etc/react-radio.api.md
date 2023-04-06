@@ -117,9 +117,6 @@ export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<H
 // @public
 export function useRadioGroupContext_unstable(): RadioGroupContextValue;
 
-// @public @deprecated (undocumented)
-export function useRadioGroupContext_unstable<T>(selector: (value: RadioGroupContextValue) => T): T;
-
 // @public (undocumented)
 export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;
 
