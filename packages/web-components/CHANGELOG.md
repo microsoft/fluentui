@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 06 Apr 2023 04:22:08 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 04:17:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.15)
+
+Fri, 07 Apr 2023 04:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.14..@fluentui/web-components_v3.0.0-alpha.15)
+
+### Changes
+
+- feat(label): adds label as a new web component ([PR #27344](https://github.com/microsoft/fluentui/pull/27344) by brianbrady@microsoft.com)
 
 ## [3.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.14)
 
