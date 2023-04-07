@@ -43,6 +43,10 @@ export const styles = css`
     user-select: none;
     vertical-align: middle;
     cursor: pointer;
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    color: ${colorNeutralForeground3};
   }
   .control {
     position: relative;
@@ -63,10 +67,6 @@ export const styles = css`
   .label {
     align-self: center;
     cursor: inherit;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    color: ${colorNeutralForeground3};
     padding-inline: ${spacingHorizontalS} ${spacingHorizontalXS};
     padding-bottom: ${spacingVerticalS};
     padding-top: ${spacingVerticalS};
@@ -93,14 +93,14 @@ export const styles = css`
     background-color: ${colorCompoundBrandForeground1};
     opacity: 0;
   }
-  :host(:hover) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Hover};
-  }
-  :host(:hover) .label {
+  :host(:hover) {
     color: ${colorNeutralForeground2};
   }
   :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
+  }
+  :host(:hover) .indeterminate-indicator {
+    background-color: ${colorCompoundBrandForeground1Hover};
   }
   :host(:active) .control {
     border-color: ${colorNeutralStrokeAccessiblePressed};
@@ -108,10 +108,9 @@ export const styles = css`
   :host(:active) .indeterminate-indicator {
     background-color: ${colorCompoundBrandForeground1Pressed};
   }
-
-  :host([aria-checked='true']) .label,
-  :host([aria-checked='mixed']) .label,
-  :host(:active) .label {
+  :host([aria-checked='true']),
+  :host([aria-checked='mixed']),
+  :host(:active) {
     color: ${colorNeutralForeground1};
   }
   :host([aria-checked='true']) .control {
@@ -139,12 +138,13 @@ export const styles = css`
   :host([aria-checked='true']:active) .control {
     border-color: ${colorCompoundBrandStrokePressed};
   }
-
   :host([label-position='before']) {
     flex-direction: row-reverse;
   }
   :host([label-position='before']) .label {
-    padding-inline: ${spacingVerticalS} ${spacingHorizontalXS} ${spacingVerticalS} ${spacingHorizontalS};
+    padding-inline: ${spacingHorizontalS} ${spacingHorizontalXS};
+    padding-top: ${spacingVerticalS};
+    padding-bottom: ${spacingVerticalS};
   }
   :host([size='large']) .control {
     width: 20px;
