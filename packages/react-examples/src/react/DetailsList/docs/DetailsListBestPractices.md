@@ -81,3 +81,11 @@ public render(): JSX.Element {
 ```
 
 By re-creating the items array without mutating the values, the inner List will correctly determine its contents have changed and it should then re-render with the new values.
+
+#### My List does not display a horizontal scrollbar when columns overflow the viewport. How can I display the scrollbar?
+
+Set `constrainMode` to `unconstrained` to allow the page to manage scrolling:
+
+```tsx
+<DetailsList constrainMode={ConstrainMode.unconstrained} {...otherProps} />
+```
