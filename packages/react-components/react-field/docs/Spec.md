@@ -354,7 +354,7 @@ The Field itself is not interactive. The wrapped component has the same interact
 - **ARIA pattern**
   - Field itself does not implement a defined ARIA pattern. It has no role applied to the root element.
 - **Attributes**
-  - The following are applied by `useFieldControlProps` or the child render function:
+  - The following are applied by `useFieldControlProps` or passed to the child render function:
     - `id={generatedChildID}` - if the label is present, and the child doesn't have an `id` already.
     - `aria-labelledby={label.id}` - if the label is present. ONLY added if the child is NOT a control that supports being the target of `label.htmlFor`.
     - `aria-describedby={validationMessage.id + ' ' + hint.id}` - if the validationMessage and/or hint are present.
