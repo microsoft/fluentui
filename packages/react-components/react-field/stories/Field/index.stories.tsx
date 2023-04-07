@@ -17,7 +17,7 @@ import descriptionMd from './FieldDescription.md';
 import bestPracticesMd from './FieldBestPractices.md';
 
 export default {
-  title: 'Preview Components/Field',
+  title: 'Components/Field',
   component: Field,
   parameters: {
     docs: {
