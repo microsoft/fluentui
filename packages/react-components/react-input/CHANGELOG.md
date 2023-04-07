@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Tue, 21 Mar 2023 21:23:37 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 00:01:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.8)
+
+Fri, 07 Apr 2023 00:01:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.7..@fluentui/react-input_v9.4.8)
+
+### Patches
+
+- chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
+
+## [9.4.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.7)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.5..@fluentui/react-input_v9.4.7)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.0.0-alpha.29 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+- Bump @fluentui/react-text to v9.3.4 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
 
 ## [9.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.5)
 

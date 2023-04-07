@@ -10,7 +10,7 @@ export const renderOption_unstable = (state: OptionState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.checkIcon {...slotProps.checkIcon} />
+      {slots.checkIcon && <slots.checkIcon {...slotProps.checkIcon} />}
       {slotProps.root.children}
     </slots.root>
   );
