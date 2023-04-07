@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
-import { useRadioGroupContext_unstable } from '../../contexts/RadioGroupContext';
+import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RadioProps, RadioState } from './Radio.types';
 
@@ -16,7 +16,7 @@ import type { RadioProps, RadioState } from './Radio.types';
  * @param ref - reference to `<input>` element of Radio
  */
 export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputElement>): RadioState => {
-  const group = useRadioGroupContext_unstable();
+  const group = useRadioGroupContextValue_unstable();
 
   const {
     name = group.name,
@@ -64,7 +64,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const label = resolveShorthand(props.label, {
     defaultProps: {
       htmlFor: input.id,
-      disabled,
+      disabled: input.disabled,
     },
   });
 

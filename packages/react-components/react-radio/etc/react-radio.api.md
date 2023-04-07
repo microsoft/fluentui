@@ -114,8 +114,11 @@ export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputEl
 // @public
 export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
 
+// @public @deprecated (undocumented)
+export const useRadioGroupContext_unstable: <T>(selector: (ctx: RadioGroupContextValue) => T) => T;
+
 // @public
-export function useRadioGroupContext_unstable(): RadioGroupContextValue;
+export const useRadioGroupContextValue_unstable: () => RadioGroupContextValue;
 
 // @public (undocumented)
 export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;

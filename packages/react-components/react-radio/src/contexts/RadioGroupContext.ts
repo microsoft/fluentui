@@ -7,11 +7,19 @@ import type { RadioGroupContextValue } from '../RadioGroup';
  */
 export const RadioGroupContext = React.createContext<RadioGroupContextValue | undefined>(undefined);
 
+const radioGroupContextDefaultValue: RadioGroupContextValue = {};
+
 export const RadioGroupProvider = RadioGroupContext.Provider;
 
 /**
  * Get the value of the RadioGroupContext.
  */
-export function useRadioGroupContext_unstable(): RadioGroupContextValue {
-  return React.useContext(RadioGroupContext) || {};
-}
+export const useRadioGroupContextValue_unstable = () =>
+  React.useContext(RadioGroupContext) || radioGroupContextDefaultValue;
+
+/**
+ * @deprecated Use useRadioGroupContextValue_unstable instead.
+ * RadioGroupContext is no longer a selector context, and no longer benefits from having a selector.
+ */
+export const useRadioGroupContext_unstable = <T>(selector: (ctx: RadioGroupContextValue) => T): T =>
+  selector(useRadioGroupContextValue_unstable());
