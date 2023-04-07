@@ -1,6 +1,6 @@
 # RFC: Support for components in the Fluent UI umbrella that are not core
 
-[@ling1726](https://github.com/ling1726)
+[@ling1726](https://github.com/ling1726) [@layershifter](https://github.com/layershifter)
 
 ## Summary
 
