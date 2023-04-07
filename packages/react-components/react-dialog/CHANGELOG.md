@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 04 Apr 2023 18:44:48 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 00:01:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.0)
+
+Fri, 07 Apr 2023 00:01:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.4.3..@fluentui/react-dialog_v9.5.0)
+
+### Minor changes
+
+- feat: removes aria-expanded from DialogTrigger ([PR #27372](https://github.com/microsoft/fluentui/pull/27372) by bernardo.sunderhus@gmail.com)
 
 ## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.4.3)
 

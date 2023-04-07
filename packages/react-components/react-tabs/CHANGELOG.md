@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 00:01:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.8)
+
+Fri, 07 Apr 2023 00:01:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.3.7..@fluentui/react-tabs_v9.3.8)
+
+### Patches
+
+- fix: Merged onClick callbacks in Tab ([PR #27477](https://github.com/microsoft/fluentui/pull/27477) by gcox@microsoft.com)
 
 ## [9.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.7)
 
