@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 06 Apr 2023 07:39:05 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 07:39:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.3)
+
+Fri, 07 Apr 2023 07:39:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.2..@fluentui/react_v8.107.3)
+
+### Patches
+
+- fix: GroupedListV2 properly toggles groups ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by seanmonahan@microsoft.com)
 
 ## [8.107.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.2)
 

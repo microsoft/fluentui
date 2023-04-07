@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Hook up FieldContext for use inside a Field",
-  "packageName": "@fluentui/react-slider",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

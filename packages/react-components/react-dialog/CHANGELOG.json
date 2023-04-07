@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Fri, 07 Apr 2023 00:01:38 GMT",
+      "tag": "@fluentui/react-dialog_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ba56da096fffa6b2f114a910afbf12482313ba28",
+            "comment": "feat: removes aria-expanded from DialogTrigger"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:48 GMT",
       "tag": "@fluentui/react-dialog_v9.4.3",
       "version": "9.4.3",
