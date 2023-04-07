@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: GroupedListV2 properly toggles groups",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
