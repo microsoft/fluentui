@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore(react-radio): Remove deprecated RadioGroupField_unstable shim component",
+  "packageName": "@fluentui/react-radio",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

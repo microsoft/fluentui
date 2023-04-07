@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore(react-slider): Remove deprecated SliderField_unstable shim component",
+  "packageName": "@fluentui/react-slider",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
