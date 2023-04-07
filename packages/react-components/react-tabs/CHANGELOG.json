@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Fri, 07 Apr 2023 00:01:44 GMT",
+      "tag": "@fluentui/react-tabs_v9.3.8",
+      "version": "9.3.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "fe885a29eaaae84a902c66ea0af118c22358228b",
+            "comment": "fix: Merged onClick callbacks in Tab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:50 GMT",
       "tag": "@fluentui/react-tabs_v9.3.7",
       "version": "9.3.7",

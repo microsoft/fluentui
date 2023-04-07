@@ -25,6 +25,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     labelPosition = group.layout === 'horizontal-stacked' ? 'below' : 'after',
     disabled = group.disabled,
     required = group.required,
+    'aria-describedby': ariaDescribedBy = group['aria-describedby'],
     onChange,
   } = props;
 
@@ -53,7 +54,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
       defaultChecked,
       disabled,
       required,
-      'aria-describedby': group['aria-describedby'],
+      'aria-describedby': ariaDescribedBy,
       ...nativeProps.primary,
     },
   });

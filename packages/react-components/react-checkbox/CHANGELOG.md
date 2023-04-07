@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Tue, 04 Apr 2023 18:44:47 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 00:01:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.8)
+
+Fri, 07 Apr 2023 00:01:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.1.7..@fluentui/react-checkbox_v9.1.8)
+
+### Patches
+
+- chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.1.7)
 

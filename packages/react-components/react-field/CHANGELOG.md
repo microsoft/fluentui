@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 00:01:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-beta.1)
+
+Fri, 07 Apr 2023 00:01:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.0.0-alpha.29..@fluentui/react-field_v9.0.0-beta.1)
+
+### Changes
+
+- feat: Add FieldContext to pass props to controls inside Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- chore: Bump react-field version to beta ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.0.0-alpha.29)
 
