@@ -35,7 +35,7 @@ export const Circular = () => (
 
 export const Outline = () => (
   <Button id={buttonId} appearance="outline">
-    Hello, world, Hello, world, This is i. Please Workssssa
+    Hello, world, Hello, world, This is i. Please Worksssa
   </Button>
 );
 
