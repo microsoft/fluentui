@@ -135,6 +135,16 @@ describe('List', () => {
 
       expect(rows).toHaveLength(4);
     });
+
+    it('renders List correctly when `renderEarly={true}`', () => {
+      List.prototype.componentDidMount = jest.fn();
+
+      const onRenderCell = () => null;
+      const component = renderer.create(<List items={[]} onRenderCell={onRenderCell} renderEarly={true} />);
+      const tree = component.toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   describe('if provided', () => {
