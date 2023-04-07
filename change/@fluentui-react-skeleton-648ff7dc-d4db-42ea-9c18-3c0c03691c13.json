@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Update package version of react-field",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

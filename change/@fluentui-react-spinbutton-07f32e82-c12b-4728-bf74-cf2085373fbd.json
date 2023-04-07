@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added width 100% to input of spin button",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

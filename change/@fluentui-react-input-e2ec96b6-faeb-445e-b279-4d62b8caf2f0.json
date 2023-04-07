@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update package version of react-field",
-  "packageName": "@fluentui/react-input",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

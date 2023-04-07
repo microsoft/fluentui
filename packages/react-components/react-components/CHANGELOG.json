@@ -2,6 +2,193 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 07 Apr 2023 00:01:35 GMT",
+      "tag": "@fluentui/react-components_v9.18.8",
+      "version": "9.18.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Export hooks for FieldContext"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "ef38eed066906073d7b6e50b1d50afab1c62b3a5",
+            "comment": "fix: React 18 support in typings"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "4f7b946067bda04d92953cf5e9ed90059a98a8fb",
+            "comment": "added width 100% to input of spin button"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "fe885a29eaaae84a902c66ea0af118c22358228b",
+            "comment": "fix: Merged onClick callbacks in Tab"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ba56da096fffa6b2f114a910afbf12482313ba28",
+            "comment": "feat: removes aria-expanded from DialogTrigger"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "feat: Add FieldContext to pass props to controls inside Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Bump react-field version to beta"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:47 GMT",
       "tag": "@fluentui/react-components_v9.18.7",
       "version": "9.18.7",

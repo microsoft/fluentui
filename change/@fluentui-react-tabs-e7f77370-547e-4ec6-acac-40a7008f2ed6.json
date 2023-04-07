@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Merged onClick callbacks in Tab",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

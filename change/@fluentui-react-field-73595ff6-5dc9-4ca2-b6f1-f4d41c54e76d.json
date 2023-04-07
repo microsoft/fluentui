@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Bump react-field version to beta",
-  "packageName": "@fluentui/react-field",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}
