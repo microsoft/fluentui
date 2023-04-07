@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field } from '@fluentui/react-components';
 
 export { Default } from './FieldDefault.stories';
 export { Horizontal } from './FieldHorizontal.stories';
