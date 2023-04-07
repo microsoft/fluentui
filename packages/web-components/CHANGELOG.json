@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 07 Apr 2023 04:17:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.15",
+      "version": "3.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "48980fef03e94733a686deea7dc9454eba6dd8c4",
+            "comment": "feat(label): adds label as a new web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Apr 2023 04:22:08 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.14",
       "version": "3.0.0-alpha.14",
