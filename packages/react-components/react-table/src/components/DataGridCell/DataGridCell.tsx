@@ -4,7 +4,7 @@ import { renderDataGridCell_unstable } from './renderDataGridCell';
 import { useDataGridCellStyles_unstable } from './useDataGridCellStyles';
 import type { DataGridCellProps } from './DataGridCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DataGridCell component
@@ -14,8 +14,7 @@ export const DataGridCell: ForwardRefComponent<DataGridCellProps> = React.forwar
 
   useDataGridCellStyles_unstable(state);
 
-  const { useDataGridCellStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useDataGridCellStyles_unstable')(state);
 
   return renderDataGridCell_unstable(state);
 });
