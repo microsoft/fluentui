@@ -44,6 +44,7 @@ jobs:
             "prId": $(System.PullRequest.PullRequestNumber),
             "commitId": "$(Build.SourceVersion)",
               "generate":true,
+              "clientType":"FLUENTUIV9",
               "blockingPipeline":{
               },
               "nonBlockingPipeline":{
@@ -117,6 +118,7 @@ jobs:
             "prId": $(System.PullRequest.PullRequestNumber),
             "commitId": "$(Build.SourceVersion)",
               "generate":true,
+              "clientType":"FLUENTUIV8",
               "blockingPipeline":{
               },
               "nonBlockingPipeline":{
@@ -192,6 +194,7 @@ jobs:
             "prId": $(System.PullRequest.PullRequestNumber),
             "commitId": "$(Build.SourceVersion)",
               "generate":true,
+              "clientType":"FLUENTUIV0",
               "blockingPipeline":{
               },
               "nonBlockingPipeline":{
@@ -213,6 +216,7 @@ jobs:
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
 
+      #
       # - bash: node node_modules/vrscreenshotdiff/lib/index.js pr --clientType "FluentUI-v0" --buildId $(Build.BuildId) --lkgCIBuild $(LatestBuildId) --pipelineId $(pipelineId) --pipelineName '$(pipelineName)' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0'
       #   displayName: 'Run fluentui-screenshotdiff'
       #   env:
