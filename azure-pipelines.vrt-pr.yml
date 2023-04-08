@@ -67,7 +67,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "fluentuiv9" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
@@ -109,7 +109,7 @@ jobs:
           response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
             parsedResponse=${response/*"access_token"/}
             token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrtestfunctionapp.azurewebsites.net/api/policyState' \
+            curl --location --request POST 'https://vrtestfunctionapp.azurewebsites.net/api/policyStateV2' \
             --header 'Authorization: Bearer '"$token" \
             --header 'Content-Type: application/json' \
             --data-raw '	{
@@ -141,7 +141,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8'
+      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "fluentuiv8" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
@@ -236,7 +236,7 @@ jobs:
       #     VR_APP_NAME: $(VR_APP_NAME)
       #   condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FluentUI-v0" --ciDefinitionId 205 --groupKey 'fluentuiv0' --groupName 'E2E Tests-v0' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FluentUI-v0" --ciDefinitionId 205 --groupKey 'fluentuiv0' --groupName 'E2E Tests-v0' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
