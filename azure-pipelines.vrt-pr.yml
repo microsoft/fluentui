@@ -236,7 +236,7 @@ jobs:
       #     VR_APP_NAME: $(VR_APP_NAME)
       #   condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FluentUI-v0" --ciDefinitionId 205 --groupKey 'fluentuiv0' --groupName 'E2E Tests-v0' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FluentUIV0" --ciDefinitionId 205 --groupKey 'fluentuiv0' --groupName 'E2E Tests-v0' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
