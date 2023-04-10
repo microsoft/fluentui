@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.106.10",
-    "@fluentui/react": "^8.107.3",
+    "@fluentui/fluent2-theme": "^8.106.11",
+    "@fluentui/react": "^8.107.4",
     "@fluentui/react-components": "^9.18.8",
     "@fluentui/react-icons": "^2.0.196",
     "@fluentui/react-theme": "^9.1.7",
