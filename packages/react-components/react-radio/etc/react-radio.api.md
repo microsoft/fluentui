@@ -31,7 +31,7 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 
 // @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;
 
 // @public (undocumented)
 export type RadioGroupContextValues = {
@@ -63,7 +63,7 @@ export type RadioGroupSlots = {
 };
 
 // @public
-export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Partial<Exclude<RadioGroupProps, 'onChange' | 'layout'>>;
+export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
 
 // @public
 export type RadioOnChangeData = {
