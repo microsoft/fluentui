@@ -10,6 +10,7 @@ export const useRadioGroupContextValues = (state: RadioGroupState): RadioGroupCo
     disabled,
     layout,
     required,
+    'aria-describedby': state.root['aria-describedby'],
   };
 
   return { radioGroup };
