@@ -91,8 +91,7 @@ export const styles = css`
     bottom: 0px;
     right: -1px;
     height: max(2px, ${borderRadiusMedium});
-    border-bottom-left-radius: ${borderRadiusMedium};
-    border-bottom-right-radius: ${borderRadiusMedium};
+    border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
     border-bottom: 2px solid ${colorCompoundBrandStroke};
     clip-path: inset(calc(100% - 2px) 1px 0px);
     transform: scaleX(0);
