@@ -2,6 +2,86 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 07 Apr 2023 04:17:30 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.15",
+      "version": "3.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "48980fef03e94733a686deea7dc9454eba6dd8c4",
+            "comment": "feat(label): adds label as a new web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Apr 2023 04:22:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.14",
+      "version": "3.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "55024b9a8799834f6d102445218ffd724a125913",
+            "comment": "Adding TabList, Tab, and TabPanel web components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2a1f8f60205b064140fab122cced18b06177546d",
+            "comment": "feat(menu-button): add menu button as new component"
+          }
+        ],
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ca6e4dd7ed8476810a51384f0e44b54989cc0b66",
+            "comment": "chore(web-components): fixes the alphabetical order of package exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Mar 2023 04:19:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.13",
+      "version": "3.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f5a5e507a3902a9703d5198a13cc96335c82eaa",
+            "comment": "update fast-element and fast-foundation dependencies"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d901fa95e8f90c1b5dabda8602a72ecb77288f0c",
+            "comment": "feat(button): add button web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Mar 2023 04:20:01 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.12",
+      "version": "3.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "d63779409cf8b7565b415fdac51e09cf4dbc6e08",
+            "comment": "Adds Slider as a web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Mar 2023 04:21:22 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.11",
       "version": "3.0.0-alpha.11",
