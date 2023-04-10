@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Field } from '@fluentui/react-field';
-import { ProgressBar } from '@fluentui/react-progress';
+import { ProgressBar } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components/unstable';
 
 const intervalDelay = 100;
 const intervalIncrement = 1;
