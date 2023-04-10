@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding Tabs, Tab and Tab-Panel",
+  "packageName": "@fluentui/web-components",
+  "email": "mibaraka@microsoft.com",
+  "dependentChangeType": "patch"
+}
