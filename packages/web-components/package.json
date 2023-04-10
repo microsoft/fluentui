@@ -80,6 +80,18 @@
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
+    "./tabs": {
+      "types": "./dist/esm/tabs/define.d.ts",
+      "default": "./dist/esm/tabs/define.js"
+    },
+    "./tab": {
+      "types": "./dist/esm/tab/define.d.ts",
+      "default": "./dist/esm/tab/define.js"
+    },
+    "./tab-panel": {
+      "types": "./dist/esm/tab-panel/define.d.ts",
+      "default": "./dist/esm/tab-panel/define.js"
+    },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
