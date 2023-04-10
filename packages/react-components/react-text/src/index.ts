@@ -17,3 +17,4 @@ export { Subtitle2Stronger, subtitle2StrongerClassNames } from './Subtitle2Stron
 export { Title1, title1ClassNames } from './Title1';
 export { Title2, title2ClassNames } from './Title2';
 export { Title3, title3ClassNames } from './Title3';
+export const num = 1;
