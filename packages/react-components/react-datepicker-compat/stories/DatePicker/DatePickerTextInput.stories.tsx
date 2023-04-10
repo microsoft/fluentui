@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '15px',
-  },
   control: {
     maxWidth: '300px',
   },
@@ -17,9 +13,9 @@ export const TextInput = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
-      <DatePicker className={styles.control} label="Start date" allowTextInput aria-label="Select a date" />
-    </div>
+    <Field label="Select a date">
+      <DatePicker allowTextInput placeholder="Select a date..." className={styles.control} />
+    </Field>
   );
 };
 

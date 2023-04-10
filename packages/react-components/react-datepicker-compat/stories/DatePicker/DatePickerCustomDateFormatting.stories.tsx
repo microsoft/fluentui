@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles, Button } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import type { IDatePicker } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
   root: {
@@ -53,17 +54,18 @@ export const CustomDateFormatting = () => {
 
   return (
     <div className={styles.root}>
-      <DatePicker
-        componentRef={datePickerRef}
-        label="Start date"
-        allowTextInput
-        aria-label="Select a date. Input format is day slash month slash year."
-        value={value}
-        onSelectDate={setValue as (date?: Date | null) => void}
-        formatDate={onFormatDate}
-        parseDateFromString={onParseDateFromString}
-        className={styles.control}
-      />
+      <Field label="Select a date. Input format is day slash month slash year.">
+        <DatePicker
+          componentRef={datePickerRef}
+          allowTextInput
+          value={value}
+          onSelectDate={setValue as (date?: Date | null) => void}
+          formatDate={onFormatDate}
+          parseDateFromString={onParseDateFromString}
+          placeholder="Select a date..."
+          className={styles.control}
+        />
+      </Field>
       <div>
         <Button onClick={onClick} className={styles.clearButton}>
           Clear

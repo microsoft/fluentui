@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
   control: {
@@ -12,14 +13,15 @@ export const WeekNumbers = () => {
   const styles = useStyles();
 
   return (
-    <DatePicker
-      showWeekNumbers={true}
-      firstWeekOfYear={1}
-      showMonthPickerAsOverlay={true}
-      label="Start date"
-      placeholder="Select a date..."
-      className={styles.control}
-    />
+    <Field label="Start date">
+      <DatePicker
+        showWeekNumbers={true}
+        firstWeekOfYear={1}
+        showMonthPickerAsOverlay={true}
+        placeholder="Select a date..."
+        className={styles.control}
+      />
+    </Field>
   );
 };
 

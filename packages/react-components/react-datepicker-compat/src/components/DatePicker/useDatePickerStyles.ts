@@ -1,41 +1,25 @@
-import { tokens } from '@fluentui/react-theme';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
 export const datePickerClassNames: SlotClassNames<DatePickerSlots> = {
   root: 'fui-DatePicker',
-  // wrapper: 'fui-DatePicker__wrapper',
+  calendar: 'fui-DatePicker__calendar',
   popover: 'fui-DatePicker__popover',
   popoverSurface: 'fui-DatePicker__popoverSurface',
-  // input: 'fui-DatePicker__input',
-  calendar: 'fui-DatePicker__calendar',
 };
 
-// const useRootStyles = makeStyles({
-// base: {
-//   fontFamily: tokens.fontFamilyBase,
-//   // NOTE: Using 20px as we don't have an 18px font size in the ramp
-//   fontSize: tokens.fontSizeBase500,
-//   fontWeight: tokens.fontWeightRegular,
-// },
-// normalize: {
-//   boxShadow: 'none',
-//   boxSizing: 'border-box',
-//   ...shorthands.margin(0),
-//   ...shorthands.padding(0),
-// },
-// });
-
-const useTextFieldStyles = makeStyles({
+const useStyles = makeStyles({
   base: {
     position: 'relative',
-    '& input[readonly]': {
+    cursor: 'pointer',
+    '& input': {
       cursor: 'pointer',
     },
   },
   disabled: {
-    '& input[readonly]': {
+    cursor: 'default',
+    '& input': {
       cursor: 'default',
     },
   },
@@ -45,29 +29,15 @@ const useTextFieldStyles = makeStyles({
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
-  // const rootStyles = useRootStyles();
-  const textFieldStyles = useTextFieldStyles();
-  const { disabled, isDatePickerShown } = state;
+  const styles = useStyles();
+  const { disabled } = state;
 
   state.root.className = mergeClasses(
     datePickerClassNames.root,
-    // rootStyles.base,
-    isDatePickerShown && 'is-open',
-    // rootStyles.normalize,
-    datePickerClassNames.root,
-    textFieldStyles.base,
-    disabled && textFieldStyles.disabled,
+    styles.base,
+    disabled && styles.disabled,
     state.root.className,
   );
-
-  // state.wrapper.className = mergeClasses(datePickerClassNames.wrapper, state.wrapper.className);
-
-  // state.input.className = mergeClasses(
-  //   datePickerClassNames.input,
-  //   textFieldStyles.base,
-  //   disabled && textFieldStyles.disabled,
-  //   state.input.className,
-  // );
 
   state.popoverSurface.className = mergeClasses(datePickerClassNames.popoverSurface, state.popoverSurface.className);
 

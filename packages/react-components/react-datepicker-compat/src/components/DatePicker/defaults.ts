@@ -1,6 +1,7 @@
 import { defaultCalendarStrings } from '../Calendar/defaults';
 import type { DatePickerStrings } from './DatePicker.types';
 
+// TODO: remove this?
 export const defaultDatePickerStrings: DatePickerStrings = {
   ...defaultCalendarStrings,
   prevMonthAriaLabel: 'Go to previous month',

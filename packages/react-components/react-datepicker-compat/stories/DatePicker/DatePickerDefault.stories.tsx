@@ -15,7 +15,7 @@ export const Default = (props: Partial<DatePickerProps>) => {
 
   return (
     <Field label="Select a date">
-      <DatePicker className={styles.control} {...props} />
+      <DatePicker className={styles.control} placeholder="Select a date..." {...props} />
     </Field>
   );
 };

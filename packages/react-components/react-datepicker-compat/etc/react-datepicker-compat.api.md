@@ -8,7 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { Field } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -155,11 +154,10 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
 // @public (undocumented)
-export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'value' | 'defaultValue'> & {
     componentRef?: React_2.RefObject<IDatePicker>;
     onSelectDate?: (date: Date | null | undefined) => void;
-    label?: string;
-    isRequired?: boolean;
+    required?: boolean;
     disabled?: boolean;
     underlined?: boolean;
     isMonthPickerVisible?: boolean;

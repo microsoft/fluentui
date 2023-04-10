@@ -4,6 +4,7 @@ import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
 import { datePickerClassNames } from './useDatePickerStyles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { Field } from '@fluentui/react-field';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {
@@ -38,10 +39,7 @@ describe('DatePicker', () => {
           props: {},
           expectedClassNames: {
             root: datePickerClassNames.root,
-            field: datePickerClassNames.field,
-            wrapper: datePickerClassNames.wrapper,
             popoverSurface: datePickerClassNames.popoverSurface,
-            input: datePickerClassNames.input,
             calendar: datePickerClassNames.calendar,
           },
           getPortalElement: getDatepickerPopoverElement,
@@ -72,7 +70,7 @@ describe('DatePicker', () => {
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
-    const result = render(<DatePicker isRequired allowTextInput onSelectDate={onSelectDate} />);
+    const result = render(<DatePicker allowTextInput onSelectDate={onSelectDate} />);
     const input = result.getByRole('combobox');
 
     fireEvent.change(input, { target: { value: 'Jan 1 2030' } });
@@ -138,5 +136,22 @@ describe('DatePicker', () => {
     result.getByText('15').click();
 
     expect(input.getAttribute('value')).toBe('15/1/20');
+  });
+
+  it('gets props from a parent Field', () => {
+    const result = render(
+      <Field label="Select a date" validationMessage="Invalid date" required>
+        <DatePicker />
+      </Field>,
+    );
+
+    const datepicker = result.getByRole('combobox') as HTMLInputElement;
+    const label = result.getByText('Select a date') as HTMLLabelElement;
+    const message = result.getByText('Invalid date');
+
+    expect(datepicker.id).toEqual(label.htmlFor);
+    expect(datepicker.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(datepicker.getAttribute('aria-invalid')).toEqual('true');
+    expect(datepicker.required).toBe(true);
   });
 });

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles, Button } from '@fluentui/react-components';
 import { addDays, DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
   root: {
@@ -31,13 +32,14 @@ export const Controlled = () => {
 
   return (
     <div className={styles.root}>
-      <DatePicker
-        value={selectedDate}
-        onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
-        placeholder="Select a date..."
-        aria-label="Select a date"
-        className={styles.control}
-      />
+      <Field label="Select a date">
+        <DatePicker
+          value={selectedDate}
+          onSelectDate={setSelectedDate as (date: Date | null | undefined) => void}
+          placeholder="Select a date..."
+          className={styles.control}
+        />
+      </Field>
       <div>
         <Button className={styles.button} onClick={goPrevious}>
           Previous

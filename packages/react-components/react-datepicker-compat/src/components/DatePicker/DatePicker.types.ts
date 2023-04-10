@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
+import { Input } from '@fluentui/react-input';
 import { PopoverSurface } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
@@ -7,10 +8,7 @@ import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 
 export type DatePickerSlots = {
-  // root: NonNullable<Slot<'div'>>;
-  root: NonNullable<Slot<'input'>>;
-  // input: NonNullable<Slot<typeof Input>>;
-  // wrapper: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<typeof Input>>;
   popover: NonNullable<Slot<Partial<PopoverProps>>>;
   popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
   calendar: NonNullable<Slot<Partial<CalendarProps>>>;
@@ -28,7 +26,7 @@ export interface IDatePicker {
   showDatePickerPopup(): void;
 }
 
-export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'value' | 'defaultValue'> & {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -41,15 +39,10 @@ export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
   onSelectDate?: (date: Date | null | undefined) => void;
 
   /**
-   * Label for the DatePicker
-   */
-  // label?: string;
-
-  /**
-   * Whether the DatePicker is a required field or not
+   * Whether the DatePicker is a required field or not. When using `<Field>`, this prop is automatically set.
    * @default false
    */
-  isRequired?: boolean;
+  required?: boolean;
 
   /**
    * Disabled state of the DatePicker.

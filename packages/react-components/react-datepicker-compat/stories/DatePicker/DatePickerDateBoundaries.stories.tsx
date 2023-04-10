@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
 import { addMonths, addYears, defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-field';
 import type { DatePickerStrings } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
@@ -21,17 +22,17 @@ export const DateBoundaries = () => {
   const styles = useStyles();
 
   return (
-    <DatePicker
-      minDate={minDate}
-      maxDate={maxDate}
+    <Field
       label={`The date boundaries for this example are ${minDate.toLocaleDateString()} to ${maxDate.toLocaleDateString()}.`}
-      aria-label="Select a date"
-      placeholder="Select a date..."
-      allowTextInput
-      // DatePicker uses English strings by default. For localized apps, you must override this prop.
-      strings={strings}
-      input={{ className: styles.inputControl }}
-    />
+    >
+      <DatePicker
+        minDate={minDate}
+        maxDate={maxDate}
+        placeholder="Select a date..."
+        allowTextInput
+        className={styles.inputControl}
+      />
+    </Field>
   );
 };
 

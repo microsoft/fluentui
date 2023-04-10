@@ -2,15 +2,8 @@ import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { Input } from '@fluentui/react-input';
-// import { Field } from '@fluentui/react-field';
-import {
-  getNativeElementProps,
-  mergeCallbacks,
-  resolveShorthand,
-  useControllableState,
-  useId,
-} from '@fluentui/react-utilities';
-import { compareDatePart, getDatePartHashValue, DayOfWeek, FirstWeekOfYear } from '../../utils';
+import { mergeCallbacks, resolveShorthand, useControllableState, useId } from '@fluentui/react-utilities';
+import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { defaultDatePickerStrings } from './defaults';
 import { OnOpenChangeData, OpenPopoverEvents, Popover } from '@fluentui/react-popover';
@@ -87,103 +80,6 @@ function useSelectedDate({ formatDate, onSelectDate, value }: DatePickerProps) {
   return [selectedDate, formattedDate, setSelectedDate, setFormattedDate] as const;
 }
 
-function useErrorMessage(
-  {
-    allowTextInput,
-    formatDate,
-    isRequired,
-    maxDate,
-    minDate,
-    onSelectDate,
-    parseDateFromString,
-    strings,
-  }: DatePickerProps,
-  selectedDate: Date | undefined,
-  setSelectedDate: (date: Date | undefined) => void,
-  inputValue: string,
-  isCalendarShown: boolean,
-) {
-  const [errorMessage, setErrorMessage] = React.useState<string | undefined>();
-  const [statusMessage, setStatusMessage] = React.useState<string | undefined>();
-
-  const validateTextInput = (date: Date | null = null): void => {
-    if (allowTextInput) {
-      if (inputValue || date) {
-        // Don't parse if the selected date has the same formatted string as what we're about to parse.
-        // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
-        // not be able to come up with the exact same date.
-        if (selectedDate && !errorMessage && formatDate && formatDate(date ?? selectedDate) === inputValue) {
-          return;
-        }
-        date = date || parseDateFromString!(inputValue);
-
-        // Check if date is null, or date is Invalid Date
-        if (!date || isNaN(date.getTime())) {
-          // Reset invalid input field, if formatting is available
-          setSelectedDate(selectedDate);
-          // default the newer isResetStatusMessage string to invalidInputErrorMessage for legacy support
-          const selectedText = formatDate ? formatDate(selectedDate) : '';
-          const statusText = strings!.isResetStatusMessage
-            ? strings!.isResetStatusMessage.replace('{0}', inputValue).replace('{1}', selectedText)
-            : strings!.invalidInputErrorMessage || '';
-          setStatusMessage(statusText);
-        } else {
-          // Check against optional date boundaries
-          if (isDateOutOfBounds(date, minDate, maxDate)) {
-            setErrorMessage(strings!.isOutOfBoundsErrorMessage || ' ');
-          } else {
-            setSelectedDate(date);
-            setErrorMessage(undefined);
-            setStatusMessage(undefined);
-          }
-        }
-      } else {
-        // Only show error for empty inputValue if it is a required field
-        setErrorMessage(isRequired ? strings!.isRequiredErrorMessage || ' ' : undefined);
-
-        // If no input date string or input date string is invalid
-        // date variable will be null, callback should expect null value for this case
-        onSelectDate?.(date);
-      }
-    } else if (isRequired && !inputValue) {
-      // Check when DatePicker is a required field but has NO input value
-      setErrorMessage(strings!.isRequiredErrorMessage || ' ');
-    } else {
-      // Cleanup the error message and status message
-      setErrorMessage(undefined);
-      setStatusMessage(undefined);
-    }
-  };
-
-  const minDatePartHashValue = minDate && getDatePartHashValue(minDate);
-  const maxDatePartHashValue = maxDate && getDatePartHashValue(maxDate);
-  const selectedDatePartHashValue = selectedDate && getDatePartHashValue(selectedDate);
-  React.useEffect(() => {
-    if (isRequired && !selectedDate) {
-      setErrorMessage(strings!.isRequiredErrorMessage || ' ');
-    } else if (selectedDate && isDateOutOfBounds(selectedDate, minDate, maxDate)) {
-      setErrorMessage(strings!.isOutOfBoundsErrorMessage || ' ');
-    } else {
-      setErrorMessage(undefined);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    // We don't want to compare the date itself, since two instances of date at the same time are not equal
-    minDatePartHashValue,
-    maxDatePartHashValue,
-    selectedDatePartHashValue,
-    isRequired,
-  ]);
-
-  return [
-    isCalendarShown ? undefined : errorMessage,
-    validateTextInput,
-    setErrorMessage,
-    isCalendarShown ? undefined : statusMessage,
-    setStatusMessage,
-  ] as const;
-}
-
 const defaultFormatDate = (date?: Date) => (date ? date.toDateString() : '');
 const defaultParseDateFromString = (dateStr: string) => {
   const date = Date.parse(dateStr);
@@ -205,7 +101,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     allFocusable = false,
     borderless = false,
     dateTimeFormatter,
-    disabled,
     disableAutoFocus = true,
     firstDayOfWeek = DayOfWeek.Sunday,
     firstWeekOfYear = FirstWeekOfYear.FirstDay,
@@ -214,25 +109,22 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     highlightSelectedMonth = false,
     initialPickerDate = new Date(),
     isMonthPickerVisible = true,
-    isRequired = false,
     maxDate,
     minDate,
     onAfterMenuDismiss,
     onSelectDate: onUserSelectDate,
     parseDateFromString = defaultParseDateFromString,
-    placeholder,
     showCloseButton = false,
     showGoToToday = true,
     showMonthPickerAsOverlay = false,
     showWeekNumbers = false,
     strings = defaultDatePickerStrings,
-    tabIndex,
     today,
     underlined = false,
     value,
+    ...restOfProps
   } = props;
-  const id = useId('DatePicker', props.id);
-  const calloutId = useId('DatePicker-Callout');
+  const popoverSurfaceId = useId('DatePicker-popoverSurface');
 
   const calendar = React.useRef<ICalendar>(null);
 
@@ -258,13 +150,13 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
           // Check if date is null or date is and invalid date
           if (!date || isNaN(date.getTime())) {
-            // Reset Invalid input field if formatting is available
+            // Reset input if formatting is available
             setSelectedDate(selectedDate);
           } else if (!isDateOutOfBounds(date, minDate, maxDate)) {
             setSelectedDate(date);
           }
-        } else {
-          props.onSelectDate?.(date);
+        } else if (onUserSelectDate) {
+          onUserSelectDate(date);
         }
       }
     },
@@ -274,29 +166,12 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       formattedDate,
       maxDate,
       minDate,
+      onUserSelectDate,
       parseDateFromString,
-      props,
       selectedDate,
       setSelectedDate,
     ],
   );
-  // TODO: remove
-  // const [errorMessage, validateTextInput, setErrorMessage, statusMessage, setStatusMessage] = useErrorMessage(
-  //   {
-  //     allowTextInput,
-  //     formatDate,
-  //     isRequired,
-  //     maxDate,
-  //     minDate,
-  //     onSelectDate: onUserSelectDate,
-  //     parseDateFromString,
-  //     strings,
-  //   },
-  //   selectedDate,
-  //   setSelectedDate,
-  //   formattedDate,
-  //   isCalendarShown,
-  // );
 
   const dismissDatePickerPopup = React.useCallback(
     (newlySelectedDate?: Date): void => {
@@ -348,16 +223,13 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       reset() {
         setIsCalendarShown(false);
         setSelectedDate(undefined);
-        // setErrorMessage(undefined);
-        // setStatusMessage(undefined);
       },
       showDatePickerPopup,
     }),
-    // [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, setStatusMessage, showDatePickerPopup],
     [focus, setIsCalendarShown, setSelectedDate, showDatePickerPopup],
   );
 
-  const onInputFocus = React.useCallback((): void => {
+  const onInputFocus: React.FocusEventHandler<HTMLInputElement> = React.useCallback((): void => {
     if (disableAutoFocus) {
       return;
     }
@@ -370,7 +242,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   }, [allowTextInput, disableAutoFocus, preventFocusOpeningPicker, showDatePickerPopup]);
 
-  const onInputBlur = React.useCallback((): void => {
+  const onInputBlur: React.FocusEventHandler<HTMLInputElement> = React.useCallback((): void => {
     validateTextInput();
   }, [validateTextInput]);
 
@@ -396,7 +268,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           ev.preventDefault();
           ev.stopPropagation();
           if (!isCalendarShown) {
-            // validateTextInput();
+            validateTextInput();
             showDatePickerPopup();
           } else {
             // When DatePicker allows input date string directly,
@@ -421,10 +293,17 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
           break;
       }
     },
-    [dismissDatePickerPopup, handleEscKey, isCalendarShown, props.allowTextInput, showDatePickerPopup],
+    [
+      dismissDatePickerPopup,
+      handleEscKey,
+      isCalendarShown,
+      props.allowTextInput,
+      showDatePickerPopup,
+      validateTextInput,
+    ],
   );
 
-  const onInputClick = React.useCallback((): void => {
+  const onInputClick: React.MouseEventHandler<HTMLInputElement> = React.useCallback((): void => {
     // default openOnClick to !props.disableAutoFocus for legacy support of disableAutoFocus behavior
     const openOnClick = props.openOnClick || !props.disableAutoFocus;
     if (openOnClick && !isCalendarShown && !props.disabled) {
@@ -453,8 +332,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }
   };
 
-  const inputId = props.id && props.id !== id ? props.id : id + '-label';
-
   const inputAppearance: InputProps['appearance'] = underlined
     ? 'underline'
     : borderless
@@ -470,31 +347,19 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     [calendarDismissed],
   );
 
-  // const root = getNativeElementProps('div', {
-  //   ref,
-  //   ...props,
-  // });
-
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const rootShorthand = resolveShorthand(props.root, {
+  const rootRef = React.useRef<HTMLInputElement>(null);
+  const rootShorthand = resolveShorthand(restOfProps, {
     required: true,
     defaultProps: {
       appearance: inputAppearance,
-      'aria-controls': isCalendarShown ? calloutId : undefined,
+      'aria-controls': isCalendarShown ? popoverSurfaceId : undefined,
       'aria-expanded': isCalendarShown,
       'aria-haspopup': 'dialog',
-      'aria-label': props['aria-label'],
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
-      disabled,
-      id: inputId,
-      placeholder,
       readOnly: !allowTextInput,
-      required: isRequired,
       role: 'combobox',
-      tabIndex,
-      value: formattedDate,
       root: {
-        ref: inputRef,
+        ref: rootRef,
       },
     },
   });
@@ -503,13 +368,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   rootShorthand.onFocus = mergeCallbacks(onInputFocus, props.onFocus);
   rootShorthand.onKeyDown = mergeCallbacks(onInputKeyDown, props.onKeyDown);
   rootShorthand.onChange = mergeCallbacks(onInputChange, props.onChange);
-
-  // const wrapperShorthand = resolveShorthand(props.wrapper, {
-  //   defaultProps: {
-  //     'aria-owns': isCalendarShown ? calloutId : undefined,
-  //   },
-  //   required: true,
-  // });
 
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const popoverShorthand = resolveShorthand(props.popover, {
@@ -525,7 +383,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const popoverSurfaceShorthand = resolveShorthand(props.popoverSurface, {
     defaultProps: {
       'aria-label': 'Calendar',
-      id: calloutId,
+      id: popoverSurfaceId,
       role: 'dialog',
     },
     required: true,
@@ -556,34 +414,31 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   });
 
   const state: DatePickerState = {
-    disabled: !!disabled,
+    disabled: !!props.disabled,
     isDatePickerShown: isCalendarShown,
 
     // Slots definition
     components: {
-      // root: 'div',
       root: Input,
-      // wrapper: 'div',
       popover: Popover as React.FC<Partial<PopoverProps>>,
       popoverSurface: PopoverSurface,
       calendar: Calendar as React.FC<Partial<CalendarProps>>,
     },
 
     calendar: calendarShorthand,
-    // input: inputShorthand,
     popover: popoverShorthand,
     popoverSurface: popoverSurfaceShorthand,
     root: rootShorthand,
-    // wrapper: wrapperShorthand,
   };
 
+  state.root.value = formattedDate;
   state.calendar.onSelectDate = mergeCallbacks(state.calendar.onSelectDate, calendarDismissed);
 
   React.useEffect(() => {
-    if (inputRef.current) {
-      positioningRef.current?.setTarget(inputRef.current);
+    if (rootRef.current) {
+      positioningRef.current?.setTarget(rootRef.current);
     }
-  }, [inputRef, positioningRef]);
+  }, [rootRef, positioningRef]);
 
   return state;
 };
