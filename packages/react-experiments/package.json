@@ -112,6 +112,11 @@
       "import": "./lib/FolderCover.js",
       "require": "./lib-commonjs/FolderCover.js"
     },
+    "./lib/components/FolderCover/FolderCover.scss": {
+      "types": "./lib/components/FolderCover/FolderCover.scss.d.ts",
+      "import": "./lib/components/FolderCover/FolderCover.scss.js",
+      "require": "./lib-commonjs/components/FolderCover/FolderCover.scss.js"
+    },
     "./lib/Foundation": {
       "types": "./lib/Foundation.d.ts",
       "import": "./lib/Foundation.js",
