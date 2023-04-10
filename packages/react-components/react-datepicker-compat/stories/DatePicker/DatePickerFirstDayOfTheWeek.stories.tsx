@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, useId } from '@fluentui/react-components';
-import { Dropdown, Option } from '@fluentui/react-combobox';
+import { Dropdown, Option, makeStyles, useId } from '@fluentui/react-components';
 import { DatePicker, DayOfWeek } from '@fluentui/react-datepicker-compat';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 
