@@ -76,6 +76,10 @@
       "types": "./dist/esm/spinner/define.d.ts",
       "default": "./dist/esm/spinner/define.js"
     },
+    "./switch": {
+      "types": "./dist/esm/switch/define.d.ts",
+      "default": "./dist/esm/switch/define.js"
+    },
     "./tabs": {
       "types": "./dist/esm/tabs/define.d.ts",
       "default": "./dist/esm/tabs/define.js"
@@ -87,9 +91,6 @@
     "./tab-panel": {
       "types": "./dist/esm/tab-panel/define.d.ts",
       "default": "./dist/esm/tab-panel/define.js"
-    "./switch": {
-      "types": "./dist/esm/switch/define.d.ts",
-      "default": "./dist/esm/switch/define.js"
     },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
