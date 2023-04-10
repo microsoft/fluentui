@@ -91,7 +91,6 @@ export function getFieldControlProps<Props extends FieldControlProps>(
   if (validationMessageId || hintId) {
     // NOTE: Not using ??= since we're merging and overriding the user-provided value.
     props['aria-describedby'] = [validationMessageId, hintId, props?.['aria-describedby']].filter(Boolean).join(' ');
-    console.log(props['aria-describedby']);
   }
 
   if (validationState === 'error') {
