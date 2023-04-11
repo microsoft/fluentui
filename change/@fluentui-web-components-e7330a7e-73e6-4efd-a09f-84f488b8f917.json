@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update fast foundation packages to import bug fixes",
-  "packageName": "@fluentui/web-components",
-  "email": "chhol@microsoft.com",
-  "dependentChangeType": "patch"
-}
