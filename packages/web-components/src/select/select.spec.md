@@ -2,9 +2,7 @@
 
 ## Component Description
 
-Select is a list in which the selected item is always visible while other items are visible on demand by clicking a dropdown button.
-
-Select uses the browser native for the options list. Use a Select when the user can only select one option and there is no need for formatted text.
+The browser-native select control component allows users to choose one option from a dropdown list. It is commonly used in forms for selecting values from a predefined set of options.
 
 ## Design Spec
 
@@ -16,6 +14,15 @@ Select uses the browser native for the options list. Use a Select when the user 
 
 - @attr appearance: "outline" "underline" "filled-darker" "filled-lighter" | "outline"
 - @attr size: "small" "medium" "large" | "medium"
+- @attr disabled: boolean
+- @attr multiple: boolean
+- @attr required: boolean
+- @attr name: string
+- @attr autofocus: boolean
+- @attr autocomplete: "on" "off" | "off"
+- @attr aria-label: string
+- @attr aria-labelledby: string
+- @attr aria-describedby: string
 -
 
 ### Outputs
@@ -24,11 +31,12 @@ None
 
 ### Events
 
-- @change: Called when the user changes the select element's value by selecting an option
+- @input: Fires whenever the value of the `select` has been changed
+- @change: Fires whenever the user modifies the value of `select`
 
 ### Slots
 
-- default: the list of options, either `<option>` or elements with the `option` role
+- default: child elements such as '<option>' will be placed in the default slot
 - icon: the icon, typically a down arrow
 
 ### CSS Variables
@@ -44,22 +52,21 @@ None
   - [x] role="option" for elements that are not `option` elements
 - [x] Does the component support 400% zoom?
 - [ ] What keyboard behaviors does the component support?
-  - [ ] Up / Down to choose value
-  - [ ] Enter to select chosen value
+  - Up / Down : Moves focus between options
+  - Space / Enter: Selects the focused option
+  - Home : Sets focus to the first option
+  - End : Sets focus to the last option
+  - Esc : Closes the dropdown list if it is open
+  - Page Up / Down : Moves focus between options
 
 ## Preparation
 
 - [x] [Find the base FAST Component](https://explore.fast.design/components/) this component will inherit from and document
-  - [FAST Select Component](https://explore.fast.design/components/fast-select)
+  - This will be a wrapper for the browser-native select control and does not have a corresponding FAST component
 - [] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
   - No spec available
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
   - [Fluent React V9 Select](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-select--default)
-  - Differences
-    - FAST Select has an `indicator` slot that is named `icon` in Fluent Select
-    - FAST Select has a few slots that aren't present in the Fluent Select
-      - No `start` slot for the an icon prepending the control
-      - No `end` slot for an icon appending the control
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
   - [Select](https://github.com/orgs/microsoft/projects/652/views/2?pane=issue&itemId=18315933)
 - [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
