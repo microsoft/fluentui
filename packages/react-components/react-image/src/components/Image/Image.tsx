@@ -8,7 +8,6 @@ import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
 
 // Hello Everyone testing the pipeline runs, Hello
 
-
 /**
  * The Image component ensures the consistent styling of images.
  */
