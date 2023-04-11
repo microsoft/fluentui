@@ -223,6 +223,7 @@ const useInputClassName = makeResetStyles({
   fontSize: 'inherit',
   fontWeight: 'inherit',
   lineHeight: 'inherit',
+  width: '100%',
 
   '::placeholder': {
     color: tokens.colorNeutralForeground4,

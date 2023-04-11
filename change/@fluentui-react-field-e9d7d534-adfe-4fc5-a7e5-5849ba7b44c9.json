@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "feat: Add FieldContext to pass props to controls inside Field",
+  "comment": "fix: Make contextValues argument required on renderField_unstable",
   "packageName": "@fluentui/react-field",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
