@@ -488,10 +488,10 @@ exports[`Button renders DefaultButton correctly 1`] = `
           min-height: 32px;
           min-width: 80px;
           outline: transparent;
-          padding-bottom: 6px;
+          padding-bottom: 0;
           padding-left: 16px;
           padding-right: 16px;
-          padding-top: 6px;
+          padding-top: 0;
           position: relative;
           text-align: center;
           text-decoration: none;
@@ -726,10 +726,10 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
           min-height: 32px;
           min-width: 80px;
           outline: transparent;
-          padding-bottom: 6px;
+          padding-bottom: 0;
           padding-left: 16px;
           padding-right: 16px;
-          padding-top: 6px;
+          padding-top: 0;
           position: relative;
           text-align: center;
           text-decoration: none;
