@@ -40,24 +40,17 @@ const secondItems: FlatTreeItemProps[] = [
   },
 ];
 
-const getTreeAddButton = (buttonId: string, parentId: string, addNewItem: () => void) => [
-  {
-    id: buttonId,
-    parentId,
-    children: <TreeItemLayout onClick={addNewItem}>Add new item</TreeItemLayout>,
-  },
-];
-
+const getTreeAddButton = (buttonId: string, parentId: string, addNewItem: () => void) => ({
+  id: buttonId,
+  parentId,
+  children: <TreeItemLayout onClick={addNewItem}>Add new item</TreeItemLayout>,
+});
 
 type RemoveableTreeItemProps = TreeItemProps & {
   id: string;
   onRemove: (id: string) => void;
 };
-const RemoveableTreeItem = ({
-  id,
-  onRemove,
-  ...rest
-}: RemoveableTreeItemProps) => {
+const RemoveableTreeItem = ({ id, onRemove, ...rest }: RemoveableTreeItemProps) => {
   const handleRemove = () => onRemove(id);
 
   return (
@@ -65,31 +58,26 @@ const RemoveableTreeItem = ({
       id={id}
       {...rest}
       actions={
-        <Button
-          aria-label="Remove item"
-          appearance="subtle"
-          onClick={handleRemove}
-          icon={<Delete20Regular />}
-        />
+        <Button aria-label="Remove item" appearance="subtle" onClick={handleRemove} icon={<Delete20Regular />} />
       }
     />
   );
 };
 
-
 export const AddRemoveTreeItem = () => {
   const [firstTree, setFirstTree] = React.useState(firstItems);
   const [secondTree, setSecondTree] = React.useState(secondItems);
-
-  const flatTree = useFlatTree_unstable(
-    [
+  const mergedTree = React.useMemo(
+    () => [
       ...firstTree,
-      ...getTreeAddButton('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
+      getTreeAddButton('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
       ...secondTree,
-      ...getTreeAddButton('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
+      getTreeAddButton('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
     ],
-    { defaultOpenItems: ['1', '2'] },
+    [firstTree, secondTree],
   );
+
+  const flatTree = useFlatTree_unstable(mergedTree, { defaultOpenItems: ['1', '2'] });
 
   const handleAddItem = (tree: FlatTreeItemProps[], setTree: (items: FlatTreeItemProps[]) => void) => {
     const lastItem = tree[tree.length - 1];
