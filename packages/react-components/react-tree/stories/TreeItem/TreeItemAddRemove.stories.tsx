@@ -106,7 +106,7 @@ export const AddRemoveTreeItem = () => {
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
       {Array.from(flatTree.items(), item =>
-        !item.parentId || item.id.includes('btn') ? (
+        item.id.length === 1 || item.id.includes('btn') ? (
           <TreeItem {...item.getTreeItemProps()} key={item.id} />
         ) : (
           <RemoveableTreeItem {...item.getTreeItemProps()} key={item.id} onRemove={handleRemoveItem} />
