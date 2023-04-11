@@ -1,7 +1,7 @@
 import type { Browser } from 'puppeteer';
 import { visitUrl } from '@fluentui/scripts-puppeteer';
 import { PROVIDER_ID } from './constants';
-import { version } from 'react';
+import * as React from 'react';
 
 class RenderError extends Error {
   public name = 'RangeError';
