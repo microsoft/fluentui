@@ -40,12 +40,12 @@ export interface ILegendState {
   isHoverCardVisible: boolean;
   /** Set of legends selected when multiple selection is allowed */
   selectedLegends: { [key: string]: boolean };
-  /** Boolean variable to check if one or more legends are selected */
-  isLegendSelected: boolean;
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
+  /** Boolean variable to check if one or more legends are selected */
+  private _isLegendSelected = false;
 
   public constructor(props: ILegendsProps) {
     super(props);
@@ -54,7 +54,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       activeLegend: '',
       isHoverCardVisible: false,
       selectedLegends: {},
-      isLegendSelected: false,
     };
   }
 
@@ -64,6 +63,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       theme: theme!,
       className,
     });
+    this._isLegendSelected = this.state.selectedLegend !== '' || Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
       <div className={this._classNames.root}>
@@ -79,17 +79,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         )}
       </div>
     );
-  }
-
-  public componentDidUpdate(prevProps: Readonly<ILegendsProps>): void {
-    // Reset legend selections when multiple selection is toggled on or off
-    if (this.props.canSelectMultipleLegends !== prevProps.canSelectMultipleLegends) {
-      this.setState({
-        selectedLegend: '',
-        selectedLegends: {},
-        isLegendSelected: false,
-      });
-    }
   }
 
   private _generateData(): ILegendOverflowData {
@@ -186,10 +175,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         selectedLegends = {};
       }
     }
-    this.setState({
-      selectedLegends,
-      isLegendSelected: Object.keys(selectedLegends).length > 0,
-    });
+    this.setState({ selectedLegends });
   };
 
   /**
@@ -200,15 +186,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   private _canSelectOnlySingleLegend = (legend: ILegend): void => {
     if (this.state.selectedLegend === legend.title) {
-      this.setState({
-        selectedLegend: '',
-        isLegendSelected: false,
-      });
+      this.setState({ selectedLegend: '' });
     } else {
-      this.setState({
-        selectedLegend: legend.title,
-        isLegendSelected: true,
-      });
+      this.setState({ selectedLegend: legend.title });
     }
   };
 
@@ -421,7 +401,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { palette } = theme!;
     let legendColor = color;
     // if one or more legends are selected
-    if (this.state.isLegendSelected) {
+    if (this._isLegendSelected) {
       // if the given legend (title) is one of the selected legends
       if (this.state.selectedLegend === title || this.state.selectedLegends[title]) {
         legendColor = color;
