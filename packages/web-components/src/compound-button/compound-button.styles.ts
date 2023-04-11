@@ -47,11 +47,11 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
   }
 
-  :host ::slotted(svg),
+  ::slotted(svg),
   :host([size='large']) ::slotted(svg) {
-    font-size: 40px !important;
-    height: 40px !important;
-    width: 40px !important;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
   }
 
   :host(:hover) ::slotted([slot='description']) {

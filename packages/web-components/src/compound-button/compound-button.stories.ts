@@ -109,7 +109,7 @@ export const Shape = renderComponent(html<CompoundButtonStoryArgs>`
 
 export const Size = renderComponent(html<CompoundButtonStoryArgs>`
   <fluent-compound-button size="small">Small<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button size="small" icon
+  <fluent-compound-button size="small"
     ><svg
       fill="currentColor"
       slot="start"
@@ -142,7 +142,7 @@ export const Size = renderComponent(html<CompoundButtonStoryArgs>`
   <fluent-compound-button size="medium"
     >Medium<span slot="description">Description content</span></fluent-compound-button
   >
-  <fluent-compound-button size="medium" icon
+  <fluent-compound-button size="medium"
     ><svg
       fill="currentColor"
       slot="start"
@@ -173,7 +173,7 @@ export const Size = renderComponent(html<CompoundButtonStoryArgs>`
       ></path></svg
   ></fluent-compound-button>
   <fluent-compound-button size="large">Large<span slot="description">Description content</span></fluent-compound-button>
-  <fluent-compound-button size="large" icon
+  <fluent-compound-button size="large"
     ><svg
       fill="currentColor"
       slot="start"
