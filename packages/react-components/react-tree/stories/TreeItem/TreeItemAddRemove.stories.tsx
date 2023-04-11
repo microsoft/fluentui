@@ -48,21 +48,15 @@ const getTreeAddButton = (buttonId: string, parentId: string, addNewItem: () => 
 
 type RemoveableTreeItemProps = TreeItemProps & {
   id: string;
-  onRemove: (id: string) => void;
+  onRemove: () => void;
 };
-const RemoveableTreeItem = ({ id, onRemove, ...rest }: RemoveableTreeItemProps) => {
-  const handleRemove = () => onRemove(id);
-
-  return (
-    <TreeItem
-      id={id}
-      {...rest}
-      actions={
-        <Button aria-label="Remove item" appearance="subtle" onClick={handleRemove} icon={<Delete20Regular />} />
-      }
-    />
-  );
-};
+const RemoveableTreeItem = ({ id, onRemove, ...rest }: RemoveableTreeItemProps) => (
+  <TreeItem
+    id={id}
+    {...rest}
+    actions={<Button aria-label="Remove item" appearance="subtle" onClick={onRemove} icon={<Delete20Regular />} />}
+  />
+);
 
 export const AddRemoveTreeItem = () => {
   const [firstTree, setFirstTree] = React.useState(firstItems);
@@ -112,7 +106,7 @@ export const AddRemoveTreeItem = () => {
         item.level === 1 || item.id.includes('btn') ? (
           <TreeItem {...item.getTreeItemProps()} key={item.id} />
         ) : (
-          <RemoveableTreeItem {...item.getTreeItemProps()} key={item.id} onRemove={handleRemoveItem} />
+          <RemoveableTreeItem {...item.getTreeItemProps()} key={item.id} onRemove={() => handleRemoveItem(item.id)} />
         ),
       )}
     </Tree>
