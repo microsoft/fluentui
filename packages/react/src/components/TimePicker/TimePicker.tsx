@@ -168,8 +168,7 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
             errorMessageToDisplay = format(
               strings.timeOutOfBoundsErrorMessage,
               dateStartAnchor.toString(),
-              dateEndAnchor,
-              toString(),
+              dateEndAnchor.toString(),
             );
           }
         }
