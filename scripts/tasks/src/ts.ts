@@ -31,17 +31,19 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.baseUrl = '.';
     options.rootDir = './src';
     options.project = tsConfigFileForCompilation;
+
+    return options;
   }
 
-  const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
+  const { isUsingTsSolutionConfigs, tsConfigFileNames, tsConfigs } = getTsPathAliasesConfig();
 
-  if (isUsingTsSolutionConfigs && tsConfig) {
+  if (isUsingTsSolutionConfigs && tsConfigs.lib) {
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
 
-    const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
+    const tsConfigOutDir = tsConfigs.lib.compilerOptions.outDir as string;
 
     options.outDir = `${tsConfigOutDir}/${options.outDir}`;
-    options.project = tsConfigFile;
+    options.project = tsConfigFileNames.lib;
   }
 
   return options;
