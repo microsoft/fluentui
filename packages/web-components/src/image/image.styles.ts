@@ -1,5 +1,11 @@
 import { css } from '@microsoft/fast-element';
-import { borderRadiusCircular, colorNeutralStroke2, shadow4, strokeWidthThin } from '../theme/design-tokens.js';
+import {
+  borderRadiusCircular,
+  borderRadiusXLarge,
+  colorNeutralStroke2,
+  shadow4,
+  strokeWidthThin,
+} from '../theme/design-tokens.js';
 
 /** Image styles
  *
@@ -26,14 +32,16 @@ export const styles = css`
   :host([fit='none']) ::slotted(img) {
     object-fit: none;
     object-position: top left;
-    height: 100%;
-    width: 100%;
+  }
+  :host([fit='center']) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
   }
   :host([fit='center']) ::slotted(img) {
     object-fit: none;
-    object-position: center;
-    height: 100%;
-    width: 100%;
   }
   :host([fit='contain']) ::slotted(img) {
     object-fit: contain;
@@ -52,5 +60,8 @@ export const styles = css`
   }
   :host([shape='circular']) ::slotted(img) {
     border-radius: ${borderRadiusCircular};
+  }
+  :host([shape='rounded']) ::slotted(img) {
+    border-radius: ${borderRadiusXLarge};
   }
 `;
