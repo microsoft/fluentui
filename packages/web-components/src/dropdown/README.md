@@ -60,12 +60,11 @@ Fluent WC3 DroFluent WC3 Dropdown is a form associated component that extends fr
 
 ### **Methods**
 
-| Name                 | Privacy | Description                                                                | Parameters                                  | Return | Inherited From                                                                                                                   |
-| -------------------- | ------- | -------------------------------------------------------------------------- | ------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| `multipleChanged`    | public  | Sets the multiple property on the proxy element.                           | `prev: boolean or undefined, next: boolean` |        |                                                                                                                                  |
-| `selectFirstOption`  | public  | Moves focus to the first selectable option.                                |                                             | `void` | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
-| `setPositioning`     | public  | Calculate and apply listbox positioning based on available viewport space. |                                             | `void` |                                                                                                                                  |
-| `setSelectedOptions` | public  | Sets an option as selected and gives it focus.                             |                                             |        | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
+| Name                 | Privacy | Description                                                                | Parameters | Return | Inherited From                                                                                                                   |
+| -------------------- | ------- | -------------------------------------------------------------------------- | ---------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `selectFirstOption`  | public  | Moves focus to the first selectable option.                                |            | `void` | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
+| `setPositioning`     | public  | Calculate and apply listbox positioning based on available viewport space. |            | `void` |                                                                                                                                  |
+| `setSelectedOptions` | public  | Sets an option as selected and gives it focus.                             |            |        | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
 
 <br />
 
