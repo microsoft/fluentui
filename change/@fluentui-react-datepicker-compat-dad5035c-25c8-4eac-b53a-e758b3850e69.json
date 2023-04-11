@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Make package public.",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
