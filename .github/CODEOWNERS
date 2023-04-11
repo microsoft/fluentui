@@ -156,7 +156,7 @@ packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-components/react-shared-contexts @microsoft/teams-prg
+packages/react-components/react-shared-contexts @microsoft/teams-prg @microsoft/cxe-red
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
