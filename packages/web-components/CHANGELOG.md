@@ -1,8 +1,55 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 14 Mar 2023 04:21:22 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Apr 2023 04:24:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.16)
+
+Tue, 11 Apr 2023 04:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.15..@fluentui/web-components_v3.0.0-alpha.16)
+
+### Changes
+
+- Adding Tabs, Tab and Tab-Panel ([PR #27505](https://github.com/microsoft/fluentui/pull/27505) by mibaraka@microsoft.com)
+
+## [3.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.15)
+
+Fri, 07 Apr 2023 04:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.14..@fluentui/web-components_v3.0.0-alpha.15)
+
+### Changes
+
+- feat(label): adds label as a new web component ([PR #27344](https://github.com/microsoft/fluentui/pull/27344) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.14)
+
+Thu, 06 Apr 2023 04:22:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.13..@fluentui/web-components_v3.0.0-alpha.14)
+
+### Changes
+
+- Adding TabList, Tab, and TabPanel web components ([PR #27167](https://github.com/microsoft/fluentui/pull/27167) by mibaraka@microsoft.com)
+- feat(menu-button): add menu button as new component ([PR #27396](https://github.com/microsoft/fluentui/pull/27396) by chhol@microsoft.com)
+
+## [3.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.13)
+
+Fri, 31 Mar 2023 04:19:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.12..@fluentui/web-components_v3.0.0-alpha.13)
+
+### Changes
+
+- update fast-element and fast-foundation dependencies ([PR #27392](https://github.com/microsoft/fluentui/pull/27392) by chhol@microsoft.com)
+- feat(button): add button web component ([PR #27278](https://github.com/microsoft/fluentui/pull/27278) by chhol@microsoft.com)
+
+## [3.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.12)
+
+Tue, 28 Mar 2023 04:20:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.11..@fluentui/web-components_v3.0.0-alpha.12)
+
+### Changes
+
+- Adds Slider as a web component ([PR #27165](https://github.com/microsoft/fluentui/pull/27165) by ryan@ryanmerrill.net)
 
 ## [3.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.11)
 
