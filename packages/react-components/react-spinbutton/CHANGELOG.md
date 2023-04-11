@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2023 00:01:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.8)
+
+Fri, 07 Apr 2023 00:01:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.7..@fluentui/react-spinbutton_v9.2.8)
+
+### Patches
+
+- added width 100% to input of spin button ([PR #27421](https://github.com/microsoft/fluentui/pull/27421) by kakrookaran@gmail.com)
+- chore: Update package version of react-field ([PR #27458](https://github.com/microsoft/fluentui/pull/27458) by behowell@microsoft.com)
+- chore: Hook up FieldContext for use inside a Field ([PR #27399](https://github.com/microsoft/fluentui/pull/27399) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.0.0-beta.1 ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by beachball)
 
 ## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.7)
 

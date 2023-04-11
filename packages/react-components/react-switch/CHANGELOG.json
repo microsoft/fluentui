@@ -2,6 +2,33 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Fri, 07 Apr 2023 00:01:44 GMT",
+      "tag": "@fluentui/react-switch_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "5a8d7a29645b3b500eb7145d2e42ac34fcafc4c6",
+            "comment": "chore: Hook up FieldContext for use inside a Field"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "eee5716e76dc6a5bef9316546a352694bbe5750a",
+            "comment": "chore: Update package version of react-field"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.0.0-beta.1",
+            "commit": "7a46cab3d31a233b89b7188e994b24712af5393c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:50 GMT",
       "tag": "@fluentui/react-switch_v9.1.7",
       "version": "9.1.7",

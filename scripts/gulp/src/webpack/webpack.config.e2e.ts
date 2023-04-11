@@ -1,8 +1,7 @@
+import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import webpack from 'webpack';
-
-import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 
 import config from '../config';
 
@@ -25,10 +24,7 @@ const webpackConfig: webpack.Configuration = {
     global: true,
   },
   module: {
-    noParse: [
-      /anchor-js/,
-      /prettier\/parser-typescript/, // prettier issue, should be solved after upgrade prettier to version 2 https://github.com/prettier/prettier/issues/6903
-    ],
+    noParse: [/anchor-js/],
     rules: [
       {
         test: /\.(js|ts|tsx)$/,

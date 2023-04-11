@@ -553,6 +553,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-jsx-runtime": {
+      "root": "packages/react-components/react-jsx-runtime",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-jsx-runtime/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-label": {
       "root": "packages/react-components/react-label",
       "projectType": "library",
