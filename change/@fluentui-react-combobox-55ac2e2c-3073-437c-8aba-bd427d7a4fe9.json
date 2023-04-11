@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "chore(react-combobox): Remove deprecated ComboboxField_unstable shim component",
+  "type": "patch",
+  "comment": "chore: Remove deprecated ComboboxField_unstable shim component",
   "packageName": "@fluentui/react-combobox",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"

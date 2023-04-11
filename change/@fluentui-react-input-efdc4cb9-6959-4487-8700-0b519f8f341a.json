@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "chore(react-input): Remove deprecated InputField_unstable shim component",
+  "type": "patch",
+  "comment": "chore: Remove deprecated InputField_unstable shim component",
   "packageName": "@fluentui/react-input",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
