@@ -48,19 +48,34 @@ const getTreeAddButton = (buttonId: string, parentId: string, addNewItem: () => 
   },
 ];
 
-const TreeItemActions = ({ onRemove }: { onRemove: () => void }) => (
-  <Button aria-label="Remove item" appearance="subtle" onClick={onRemove} icon={<Delete20Regular />} />
-);
 
 type RemoveableTreeItemProps = TreeItemProps & {
   id: string;
   onRemove: (id: string) => void;
 };
-const RemoveableTreeItem = ({ id, onRemove, ...rest }: RemoveableTreeItemProps) => {
+const RemoveableTreeItem = ({
+  id,
+  onRemove,
+  ...rest
+}: RemoveableTreeItemProps) => {
   const handleRemove = () => onRemove(id);
 
-  return <TreeItem id={id} {...rest} actions={<TreeItemActions onRemove={handleRemove} />} />;
+  return (
+    <TreeItem
+      id={id}
+      {...rest}
+      actions={
+        <Button
+          aria-label="Remove item"
+          appearance="subtle"
+          onClick={handleRemove}
+          icon={<Delete20Regular />}
+        />
+      }
+    />
+  );
 };
+
 
 export const AddRemoveTreeItem = () => {
   const [firstTree, setFirstTree] = React.useState(firstItems);
