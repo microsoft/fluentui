@@ -40,8 +40,8 @@ const secondItems: FlatTreeItemProps[] = [
   },
 ];
 
-const getTreeAddButton = (buttonId: string, parentId: string, addNewItem: () => void) => ({
-  id: buttonId,
+const getAddNewTreeItem = (id: string, parentId: string, addNewItem: () => void) => ({
+  id,
   parentId,
   children: <TreeItemLayout onClick={addNewItem}>Add new item</TreeItemLayout>,
 });
@@ -64,9 +64,9 @@ export const AddRemoveTreeItem = () => {
   const mergedTree = React.useMemo(
     () => [
       ...firstTree,
-      getTreeAddButton('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
+      getAddNewTreeItem('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
       ...secondTree,
-      getTreeAddButton('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
+      getAddNewTreeItem('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
     ],
     [firstTree, secondTree],
   );
