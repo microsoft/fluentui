@@ -97,7 +97,7 @@ export function makeDeprecatedField<ControlProps>(Control: React_2.ComponentType
 }): ForwardRefComponent<DeprecatedFieldProps<ControlProps>>;
 
 // @public
-export const renderField_unstable: (state: FieldState, contextValues?: FieldContextValues | undefined) => JSX.Element;
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;

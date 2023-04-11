@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 10 Apr 2023 07:36:30 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Apr 2023 07:43:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.15)
+
+Tue, 11 Apr 2023 07:43:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.14..@fluentui/react-charting_v5.16.15)
+
+### Patches
+
+- Fix shape of triangle and pyramid ([PR #27496](https://github.com/microsoft/fluentui/pull/27496) by atishay.jain@microsoft.com)
 
 ## [5.16.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.14)
 
