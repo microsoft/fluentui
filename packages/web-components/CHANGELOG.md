@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 07 Apr 2023 04:17:30 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Apr 2023 04:24:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.16)
+
+Tue, 11 Apr 2023 04:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.15..@fluentui/web-components_v3.0.0-alpha.16)
+
+### Changes
+
+- Adding Tabs, Tab and Tab-Panel ([PR #27505](https://github.com/microsoft/fluentui/pull/27505) by mibaraka@microsoft.com)
 
 ## [3.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.15)
 

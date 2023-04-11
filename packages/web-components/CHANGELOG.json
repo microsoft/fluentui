@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 11 Apr 2023 04:24:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.16",
+      "version": "3.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "30b72e9804a37880b4b90c0bcd400635506f300e",
+            "comment": "Adding Tabs, Tab and Tab-Panel"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Apr 2023 04:17:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.15",
       "version": "3.0.0-alpha.15",
