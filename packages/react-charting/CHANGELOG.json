@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 11 Apr 2023 07:43:44 GMT",
+      "tag": "@fluentui/react-charting_v5.16.15",
+      "version": "5.16.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fc5d4ac1864cc23b0ace6591d8bf9d6280457aec",
+            "comment": "Fix shape of triangle and pyramid"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Apr 2023 07:36:30 GMT",
       "tag": "@fluentui/react-charting_v5.16.14",
       "version": "5.16.14",
