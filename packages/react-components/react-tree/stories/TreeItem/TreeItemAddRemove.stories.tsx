@@ -26,11 +26,6 @@ const firstItems: FlatTreeItemProps[] = [
     parentId: '1',
     children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
   },
-  {
-    id: '1-3',
-    parentId: '1',
-    children: <TreeItemLayout>Level 2, item 3</TreeItemLayout>,
-  },
 ];
 
 const secondItems: FlatTreeItemProps[] = [
@@ -42,11 +37,6 @@ const secondItems: FlatTreeItemProps[] = [
     id: '2-1',
     parentId: '2',
     children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
-  },
-  {
-    id: '2-2',
-    parentId: '2',
-    children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
   },
 ];
 
@@ -76,24 +66,30 @@ export const AddRemoveTreeItem = () => {
   const [firstTree, setFirstTree] = React.useState(firstItems);
   const [secondTree, setSecondTree] = React.useState(secondItems);
 
-  const flatTree = useFlatTree_unstable([
-    ...firstTree,
-    ...getTreeAddButton('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
-    ...secondTree,
-    ...getTreeAddButton('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
-  ]);
+  const flatTree = useFlatTree_unstable(
+    [
+      ...firstTree,
+      ...getTreeAddButton('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
+      ...secondTree,
+      ...getTreeAddButton('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
+    ],
+    { defaultOpenItems: ['1', '2'] },
+  );
 
   const handleAddItem = (tree: FlatTreeItemProps[], setTree: (items: FlatTreeItemProps[]) => void) => {
     const lastItem = tree[tree.length - 1];
     const lastItemIdParts = lastItem.id.split('-');
-    const newItemId = lastItemIdParts
-      .slice(0, -1)
-      .concat(String(Number(lastItemIdParts.slice(-1)[0]) + 1))
-      .join('-');
+    const newItemId =
+      lastItemIdParts.length > 1
+        ? lastItemIdParts
+            .slice(0, -1)
+            .concat(String(Number(lastItemIdParts.slice(-1)[0]) + 1))
+            .join('-')
+        : `${lastItem.id}-1`;
 
     const newItem: FlatTreeItemProps = {
       id: newItemId,
-      parentId: lastItem.parentId,
+      parentId: lastItem.parentId ? lastItem.parentId : lastItem.id,
       children: <TreeItemLayout>New item {newItemId}</TreeItemLayout>,
     };
 
@@ -110,7 +106,7 @@ export const AddRemoveTreeItem = () => {
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
       {Array.from(flatTree.items(), item =>
-        item.id.includes('btn') ? (
+        !item.parentId || item.id.includes('btn') ? (
           <TreeItem {...item.getTreeItemProps()} key={item.id} />
         ) : (
           <RemoveableTreeItem {...item.getTreeItemProps()} key={item.id} onRemove={handleRemoveItem} />
