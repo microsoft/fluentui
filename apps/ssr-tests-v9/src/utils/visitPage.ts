@@ -22,7 +22,7 @@ export async function visitPage(browser: Browser, url: string) {
       if (
         messageContent.startsWith('Warning: Invalid aria prop %s on <%s> tag.') &&
         messageContent.includes('`aria-description`') &&
-        version.startsWith('17')
+        React.version.startsWith('17')
       ) {
         return;
       }
