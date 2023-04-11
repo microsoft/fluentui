@@ -73,14 +73,14 @@ const LazyTreeItem = ({ item, setTree, isOpen, leaf = false }: LazyTreeItemProps
       await new Promise(resolve => setTimeout(resolve, 1000));
       setLoading(false);
       setTree(prevTree => [
-        ...prevTree.reduce<FlatTreeItemProps[]>((accumulator, itm) => {
-          accumulator.push(itm);
+        ...prevTree.reduce<FlatTreeItemProps[]>((tree, itm) => {
+          tree.push(itm);
           if (itemId === '1' && itm.id === '1') {
-            accumulator.push(...firstTree);
+            tree.push(...firstTree);
           } else if (itemId === '2' && itm.id === '2') {
-            accumulator.push(...secondTree);
+            tree.push(...secondTree);
           }
-          return accumulator;
+          return tree;
         }, []),
       ]);
       setIsLoaded(true);
@@ -122,7 +122,7 @@ export const LazyLoading = () => {
           key={item.id}
           item={item}
           setTree={setTree}
-          leaf={item.id.length !== 1}
+          leaf={item.level !== 1 && item.childrenSize === 0}
           isOpen={openItems.includes(item.id)}
         />
       ))}
