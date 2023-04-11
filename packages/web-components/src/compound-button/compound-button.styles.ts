@@ -62,10 +62,6 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host([disabled]) ::slotted([slot='description']) {
-    color: ${colorNeutralForegroundDisabled};
-  }
-
   :host(:is([appearance='primary'], [appearance='primary']:hover, [appearance='primary']:active))
     ::slotted([slot='description']) {
     color: ${colorNeutralForegroundOnBrand};
@@ -83,6 +79,11 @@ export const styles = css`
 
   :host([appearance='transparent']:active) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandPressed};
+  }
+
+  :host(:is([disabled], [disabled][appearance], [disabled-focusable], [disabled-focusable][appearance]))
+    ::slotted([slot='description']) {
+    color: ${colorNeutralForegroundDisabled};
   }
 
   :host([size='small']) .control {
