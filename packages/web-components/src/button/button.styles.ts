@@ -64,6 +64,7 @@ export const styles = css`
   :host {
     --icon-spacing: ${spacingHorizontalSNudge};
     contain: layout style;
+    vertical-align: middle;
   }
 
   :host .control {
