@@ -103,6 +103,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
     jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
+    justConfig: joinPathFragments(projectConfig.root, 'just.config.ts'),
     rootTsconfig: '/tsconfig.base.json',
     rootPackageJson: '/package.json',
     rootJestPreset: '/jest.preset.js',

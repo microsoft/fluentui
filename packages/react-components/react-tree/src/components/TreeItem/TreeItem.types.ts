@@ -5,6 +5,7 @@ import { treeItemLevelToken } from '../../utils/tokens';
 import * as React from 'react';
 
 export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
+export type TreeItemId = string;
 
 export type TreeItemSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;

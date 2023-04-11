@@ -29,7 +29,7 @@ export const cardBodyClassName = 'ui-card__body';
 /**
  * A CardBody is used to display data in Card body.
  */
-export const CardBody = (React.forwardRef<HTMLDivElement, CardBodyProps>((props, ref) => {
+export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardBody.displayName, context.telemetry);
   setStart();
@@ -67,7 +67,7 @@ export const CardBody = (React.forwardRef<HTMLDivElement, CardBodyProps>((props,
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CardBodyProps> & FluentComponentStaticProps<CardBodyProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardBodyProps> & FluentComponentStaticProps<CardBodyProps>;
 
 CardBody.displayName = 'CardBody';
 

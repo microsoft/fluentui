@@ -7,10 +7,14 @@ import { TimePickerControlledExample } from './TimePicker.Controlled.Example';
 import { TimePickerCustomTimeStringsExample } from './TimePicker.CustomTimeStrings.Example';
 import { TimePickerDateTimePickerExample } from './TimePicker.DateTimePicker.Example';
 
-const TimePickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Basic.Example.tsx') as string;
-const TimePickerControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Controlled.Example.tsx') as string;
-const TimePickerCustomTimeStringsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.CustomTimeStrings.Example.tsx') as string;
-const TimePickerDateTimePickerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.DateTimePicker.Example.tsx') as string;
+const TimePickerBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Basic.Example.tsx') as string;
+const TimePickerControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.Controlled.Example.tsx') as string;
+const TimePickerCustomTimeStringsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.CustomTimeStrings.Example.tsx') as string;
+const TimePickerDateTimePickerExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TimePicker/TimePicker.DateTimePicker.Example.tsx') as string;
 
 export const TimePickerPageProps: IDocPageProps = {
   title: 'TimePicker',

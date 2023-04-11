@@ -75,7 +75,7 @@ export const carouselPaddleSlotClassNames: CarouselPaddleSlotClassNames = {
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
-export const CarouselPaddle = (React.forwardRef<HTMLButtonElement, CarouselPaddleProps & { as: React.ReactNode }>(
+export const CarouselPaddle = React.forwardRef<HTMLButtonElement, CarouselPaddleProps & { as: React.ReactNode }>(
   (props, ref) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
@@ -171,7 +171,7 @@ export const CarouselPaddle = (React.forwardRef<HTMLButtonElement, CarouselPaddl
 
     return result;
   },
-) as unknown) as ForwardRefWithAs<'button', HTMLButtonElement, CarouselPaddleProps> &
+) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, CarouselPaddleProps> &
   FluentComponentStaticProps<CarouselPaddleProps>;
 
 CarouselPaddle.defaultProps = {

@@ -24,7 +24,8 @@ export interface IColorRectangleState {
  */
 export class ColorRectangleBase
   extends React.Component<IColorRectangleProps, IColorRectangleState>
-  implements IColorRectangle {
+  implements IColorRectangle
+{
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,
     ariaLabel: 'Saturation and brightness',
@@ -60,7 +61,19 @@ export class ColorRectangleBase
     }
   }
 
+  public componentDidMount(): void {
+    if (this._root.current) {
+      // with Chrome's passive DOM listeners, stopPropagation and preventDefault only work if passive is false.
+      this._root.current.addEventListener('touchstart', this._onTouchStart, { capture: true, passive: false });
+      this._root.current.addEventListener('touchmove', this._onTouchMove, { capture: true, passive: false });
+    }
+  }
+
   public componentWillUnmount() {
+    if (this._root.current) {
+      this._root.current.removeEventListener('touchstart', this._onTouchStart);
+      this._root.current.removeEventListener('touchmove', this._onTouchMove);
+    }
     this._disposeListeners();
   }
 
@@ -148,7 +161,10 @@ export class ColorRectangleBase
     this._updateColor(ev, updateSV(color, clamp(s, MAX_COLOR_SATURATION), clamp(v, MAX_COLOR_VALUE)));
   };
 
-  private _updateColor(ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent, color: IColor): void {
+  private _updateColor(
+    ev: MouseEvent | KeyboardEvent | React.MouseEvent | React.KeyboardEvent | TouchEvent | React.TouchEvent,
+    color: IColor,
+  ): void {
     const { onChange } = this.props;
 
     const oldColor = this.state.color;
@@ -194,6 +210,28 @@ export class ColorRectangleBase
     }
   };
 
+  private _onTouchStart = (ev: TouchEvent): void => {
+    if (!this._root.current) {
+      return;
+    }
+
+    // prevent touch from scrolling the page so that the touch can be dragged on the color rectangle.
+    ev.stopPropagation();
+  };
+
+  private _onTouchMove = (ev: TouchEvent): void => {
+    if (!this._root.current) {
+      return;
+    }
+    const newColor = _getNewColor(ev, this.state.color, this._root.current);
+    if (newColor) {
+      this._updateColor(ev, newColor);
+    }
+
+    ev.preventDefault();
+    ev.stopPropagation();
+  };
+
   private _disposeListeners = (): void => {
     this._disposables.forEach(dispose => dispose());
     this._disposables = [];
@@ -205,18 +243,48 @@ export class ColorRectangleBase
  * @internal
  */
 export function _getNewColor(
-  ev: MouseEvent | React.MouseEvent,
+  ev: MouseEvent | React.MouseEvent | TouchEvent | React.TouchEvent,
   prevColor: IColor,
   root: HTMLElement,
 ): IColor | undefined {
   const rectSize = root.getBoundingClientRect();
 
-  const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-  const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
+  let coords:
+    | {
+        clientX: number;
+        clientY: number;
+      }
+    | undefined = undefined;
 
-  return updateSV(
-    prevColor,
-    clamp(Math.round(sPercentage * MAX_COLOR_SATURATION), MAX_COLOR_SATURATION),
-    clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE),
-  );
+  const touchEvent = ev as { touches: TouchList };
+  if (touchEvent.touches) {
+    const lastTouch = touchEvent.touches[touchEvent.touches.length - 1];
+    if (lastTouch.clientX !== undefined && lastTouch.clientY !== undefined) {
+      coords = {
+        clientX: lastTouch.clientX,
+        clientY: lastTouch.clientY,
+      };
+    }
+  }
+
+  if (!coords) {
+    const mouseEvent = ev as { clientX: number; clientY: number };
+    if (mouseEvent.clientX !== undefined && mouseEvent.clientY !== undefined) {
+      coords = {
+        clientX: mouseEvent.clientX,
+        clientY: mouseEvent.clientY,
+      };
+    }
+  }
+
+  if (coords) {
+    const sPercentage = (coords.clientX - rectSize.left) / rectSize.width;
+    const vPercentage = (coords.clientY - rectSize.top) / rectSize.height;
+
+    return updateSV(
+      prevColor,
+      clamp(Math.round(sPercentage * MAX_COLOR_SATURATION), MAX_COLOR_SATURATION),
+      clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE),
+    );
+  }
 }

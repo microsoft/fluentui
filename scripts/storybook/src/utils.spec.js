@@ -85,20 +85,6 @@ describe(`utils`, () => {
       };
     }
 
-    it(`should behave as identity function in prod env`, () => {
-      const originalEnv = process.env;
-      process.env = { ...originalEnv, NODE_ENV: 'production' };
-
-      const { tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
-
-      const actual = loadWorkspaceAddon('@myorg/storybook-custom-addon', { tsConfigPath: tsConfigRoot });
-      const expected = '@myorg/storybook-custom-addon';
-
-      expect(actual).toBe(expected);
-
-      process.env = originalEnv;
-    });
-
     it(`should return path to in memory preset loader root`, () => {
       const { npmScope, workspaceRoot, tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
 
@@ -123,7 +109,7 @@ describe(`utils`, () => {
         const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
         function managerWebpack(config, options) {
-        registerTsPaths({config, tsConfigPath: '${tsConfigRoot}'});
+        registerTsPaths({config, configFile: '${tsConfigRoot}'});
         return config;
         }
 

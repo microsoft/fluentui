@@ -446,11 +446,11 @@
       "projectType": "library",
       "implicitDependencies": []
     },
-    "@fluentui/react-datepicker": {
-      "root": "packages/react-components/react-datepicker",
+    "@fluentui/react-datepicker-compat": {
+      "root": "packages/react-components/react-datepicker-compat",
       "projectType": "library",
       "implicitDependencies": [],
-      "sourceRoot": "packages/react-components/react-datepicker/src",
+      "sourceRoot": "packages/react-components/react-datepicker-compat/src",
       "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-dialog": {
@@ -552,6 +552,13 @@
       "sourceRoot": "packages/react-components/react-input/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
+    },
+    "@fluentui/react-jsx-runtime": {
+      "root": "packages/react-components/react-jsx-runtime",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-jsx-runtime/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/react-label": {
       "root": "packages/react-components/react-label",
@@ -960,6 +967,12 @@
       "projectType": "library",
       "tags": ["tools"]
     },
+    "@fluentui/scripts-perf-test-flamegrill": {
+      "root": "scripts/perf-test-flamegrill",
+      "sourceRoot": "scripts/perf-test-flamegrill/src",
+      "projectType": "library",
+      "tags": ["tools", "platform:any"]
+    },
     "@fluentui/scripts-prettier": {
       "root": "scripts/prettier",
       "sourceRoot": "scripts/prettier/src",
@@ -987,6 +1000,12 @@
     "@fluentui/scripts-tasks": {
       "root": "scripts/tasks",
       "sourceRoot": "scripts/tasks/src",
+      "projectType": "library",
+      "tags": ["tools"]
+    },
+    "@fluentui/scripts-test-ssr": {
+      "root": "scripts/test-ssr",
+      "sourceRoot": "scripts/test-ssr/src",
       "projectType": "library",
       "tags": ["tools"]
     },

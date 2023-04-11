@@ -69,7 +69,8 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'web/ThemeSlotsImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
         },
       ];
 

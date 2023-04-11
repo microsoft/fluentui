@@ -49,8 +49,12 @@ export function columnDefinitionsToState<T>(
       return existingColumnState;
     }
 
-    const { defaultWidth, idealWidth = DEFAULT_WIDTH, minWidth = DEFAULT_MIN_WIDTH, padding } =
-      columnSizingOptions[column.columnId] ?? {};
+    const {
+      defaultWidth,
+      idealWidth = DEFAULT_WIDTH,
+      minWidth = DEFAULT_MIN_WIDTH,
+      padding,
+    } = columnSizingOptions[column.columnId] ?? {};
 
     updated = true;
     return {

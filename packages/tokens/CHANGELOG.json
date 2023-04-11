@@ -2,6 +2,57 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Tue, 21 Mar 2023 21:23:17 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.4",
+      "version": "1.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Mar 2023 10:19:53 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.3",
+      "version": "1.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Mar 2023 17:42:50 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.2",
+      "version": "1.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Jan 2023 08:38:52 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.2",
       "version": "1.0.0-alpha.2",

@@ -3,7 +3,8 @@ import { SwatchColorPickerBasicExample } from './SwatchColorPicker.Basic.Example
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const SwatchColorPickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/SwatchColorPicker.Basic.Example.tsx') as string;
+const SwatchColorPickerBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/SwatchColorPicker.Basic.Example.tsx') as string;
 
 export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',

@@ -67,7 +67,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
   });
 
   const filteredColors = colors.filter(color => {
-    const themeColor = ((theme as unknown) as Record<string, string>)[color];
+    const themeColor = (theme as unknown as Record<string, string>)[color];
     if (!themeColor) {
       return;
     }
@@ -90,7 +90,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
       </div>
       <div className={styles.root}>
         {filteredColors.map(color => {
-          const themeColor = ((theme as unknown) as Record<string, string>)[color];
+          const themeColor = (theme as unknown as Record<string, string>)[color];
           if (!themeColor) {
             return;
           }

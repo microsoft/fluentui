@@ -1448,7 +1448,7 @@ export const DirectionalHint: {
 };
 
 // @public (undocumented)
-export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
+export type DirectionalHint = (typeof DirectionalHint)[keyof typeof DirectionalHint];
 
 export { disableBodyScroll }
 
@@ -6781,6 +6781,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
     onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
+    renderEarly?: boolean;
     renderedWindowsAhead?: number;
     renderedWindowsBehind?: number;
     role?: string;
@@ -8131,6 +8132,7 @@ export { isDirectionalKeyCode }
 
 // @public (undocumented)
 export interface ISearchBox {
+    blur(): void;
     focus(): void;
     hasFocus(): boolean;
 }
@@ -10565,7 +10567,7 @@ export const ScrollbarVisibility: {
 };
 
 // @public (undocumented)
-export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];
+export type ScrollbarVisibility = (typeof ScrollbarVisibility)[keyof typeof ScrollbarVisibility];
 
 // @public (undocumented)
 export const ScrollToMode: {
@@ -10576,7 +10578,7 @@ export const ScrollToMode: {
 };
 
 // @public (undocumented)
-export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 // @public (undocumented)
 export const SearchBox: React_2.FunctionComponent<ISearchBoxProps>;

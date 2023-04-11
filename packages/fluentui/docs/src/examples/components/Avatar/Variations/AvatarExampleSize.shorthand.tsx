@@ -10,16 +10,9 @@ const statusProps = {
 
 const AvatarExampleSizeShorthand = () => (
   <Grid columns="80px 1fr">
-    {([
-      'smallest',
-      'smaller',
-      'small',
-      'medium',
-      'medium-large',
-      'large',
-      'larger',
-      'largest',
-    ] as AvatarSizeValue[]).map(size => (
+    {(
+      ['smallest', 'smaller', 'small', 'medium', 'medium-large', 'large', 'larger', 'largest'] as AvatarSizeValue[]
+    ).map(size => (
       <React.Fragment key={size}>
         <strong>{size}</strong>
         <div>

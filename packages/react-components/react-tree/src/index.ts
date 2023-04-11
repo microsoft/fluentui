@@ -6,7 +6,15 @@ export {
   useTree_unstable,
   useTreeContextValues_unstable,
 } from './Tree';
-export type { TreeProps, TreeState, TreeSlots, TreeOpenChangeData, TreeOpenChangeEvent, TreeItemId } from './Tree';
+export type {
+  TreeProps,
+  TreeState,
+  TreeSlots,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+  TreeNavigationEvent_unstable,
+  TreeNavigationData_unstable,
+} from './Tree';
 
 export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
 export type { TreeContextValue } from './contexts';
@@ -20,7 +28,7 @@ export {
   useTreeItemStyles_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
+export type { TreeItemId, TreeItemProps, TreeItemState, TreeItemSlots } from './TreeItem';
 
 export {
   TreeItemLayout,
@@ -44,8 +52,8 @@ export type {
   TreeItemPersonaLayoutState,
 } from './TreeItemPersonaLayout';
 
-export { useFlatTreeItems_unstable } from './hooks/index';
-export type { FlatTreeItemProps, FlatTreeProps, UseFlatTreeItemsOptions, LazyFlatTreeItems } from './hooks/index';
+export { useFlatTree_unstable } from './hooks/index';
+export type { FlatTreeItem, FlatTreeItemProps, FlatTreeProps, FlatTree } from './hooks/index';
 
 export { flattenTree_unstable } from './utils/flattenTree';
 export type { NestedTreeItem } from './utils/flattenTree';

@@ -1,4 +1,4 @@
-import { contrast, hex_to_sRGB, Vec3 } from '@fluent-blocks/colors';
+import { contrast, hex_to_sRGB, Vec3 } from '../../colors';
 import { Theme } from '@fluentui/react-components';
 import { accessiblePairs } from './AccessiblePairs';
 
@@ -11,7 +11,7 @@ export type ContrastRatio = {
 export type ContrastRatioList = Record<string, ContrastRatio[]>;
 
 export const getAccessibilityChecker = (theme: Partial<Theme>) => {
-  const currTheme = (theme as unknown) as Record<string, string>;
+  const currTheme = theme as unknown as Record<string, string>;
 
   const calculateContrastRatio = (curr: string, comp: string, desiredRatio: number) => {
     const currHex: string = currTheme[curr];

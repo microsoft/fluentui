@@ -65,22 +65,20 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   const [dateStartAnchor, setDateStartAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
   const [dateEndAnchor, setDateEndAnchor] = React.useState<Date>(dateAnchor || defaultValue || new Date());
 
-  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue, (_ev, newValue) =>
-    onChange?.(undefined, newValue),
+  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue, (_ev: any, newTime: Date) =>
+    onChange?.(undefined, newTime),
   );
 
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
 
-  const internalDateAnchor = React.useMemo(() => dateAnchor || value || defaultValue || fallbackDateAnchor, [
-    dateAnchor,
-    defaultValue,
-    value,
-    fallbackDateAnchor,
-  ]);
+  const internalDateAnchor = React.useMemo(
+    () => dateAnchor || value || defaultValue || fallbackDateAnchor,
+    [dateAnchor, defaultValue, value, fallbackDateAnchor],
+  );
 
   React.useEffect(() => {
     const clampedStartAnchor = new Date(internalDateAnchor);
-    const clampedEndAnchor = new Date(clampedStartAnchor);
+    const clampedEndAnchor = new Date();
 
     if (timeRange) {
       const clampedTimeRange = clampTimeRange(timeRange);

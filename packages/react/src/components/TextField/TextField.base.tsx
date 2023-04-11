@@ -62,7 +62,8 @@ const HIDE_ICON_NAME = 'Hide';
 
 export class TextFieldBase
   extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
-  implements ITextField {
+  implements ITextField
+{
   public static defaultProps: ITextFieldProps = {
     resizable: true,
     deferredValidationTime: 200,

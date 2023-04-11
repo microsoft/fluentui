@@ -24,7 +24,13 @@ async function test(): Promise<void> {
   let browser: Browser | undefined;
 
   try {
-    browser = await launchBrowser();
+    browser = await launchBrowser({
+      ignoreDefaultArgs: [
+        // If sidebars are hidden, they will have "0px" width. It's not the same as in a real browser
+        // https://github.com/microsoft/fluentui/issues/27357
+        '--hide-scrollbars',
+      ],
+    });
     console.log('Using', await browser.version());
 
     const url =

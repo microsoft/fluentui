@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Combobox } from '@fluentui/react-combobox';
+import { Combobox, Listbox, Option } from '@fluentui/react-combobox';
 
 import descriptionMd from './ComboboxDescription.md';
 import bestPracticesMd from './ComboboxBestPractices.md';
@@ -21,6 +21,10 @@ export { Disabled } from './ComboboxDisabled.stories';
 export default {
   title: 'Components/Combobox',
   component: Combobox,
+  subcomponents: {
+    Option,
+    Listbox,
+  },
   parameters: {
     docs: {
       description: {

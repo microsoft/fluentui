@@ -10,6 +10,7 @@ export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) 
   const mockContext: DialogContextValue = {
     open: false,
     modalType: 'modal',
+    inertTrapFocus: false,
     isNestedDialog: false,
     dialogRef: { current: null },
     requestOpenChange() {
