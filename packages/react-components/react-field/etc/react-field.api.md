@@ -75,7 +75,7 @@ export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<Fi
 };
 
 // @public
-export const renderField_unstable: (state: FieldState, contextValues?: FieldContextValues | undefined) => JSX.Element;
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
