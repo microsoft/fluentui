@@ -46,6 +46,7 @@ steps:
   - script: |
       mkdir -p screenshots
       cp -rf ${{ parameters.vrTestPackagePath }}/dist/screenshots/*.png screenshots/
+      
     displayName: Collate Artifacts
     condition: eq(variables['vrTestSkip'], 'no')
 
