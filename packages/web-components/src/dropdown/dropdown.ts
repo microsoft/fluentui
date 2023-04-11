@@ -2,9 +2,9 @@ import { attr } from '@microsoft/fast-element';
 import { FASTSelect } from '@microsoft/fast-foundation';
 
 /**
- * @class Divider component
+ * @class Dropdown component
  *
  * @remarks
- * This class extends the FASTDivider. A divider groups sections of content to create visual rhythm and hierarchy. Use dividers along with spacing and headers to organize content in your layout.
+ * This class extends the FASTSelect.
  */
 export class Dropdown extends FASTSelect {}
