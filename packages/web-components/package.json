@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.14",
+  "version": "3.0.0-alpha.16",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -87,6 +87,18 @@
     "./switch": {
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
+    },
+    "./tabs": {
+      "types": "./dist/esm/tabs/define.d.ts",
+      "default": "./dist/esm/tabs/define.js"
+    },
+    "./tab": {
+      "types": "./dist/esm/tab/define.d.ts",
+      "default": "./dist/esm/tab/define.js"
+    },
+    "./tab-panel": {
+      "types": "./dist/esm/tab-panel/define.d.ts",
+      "default": "./dist/esm/tab-panel/define.js"
     },
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
