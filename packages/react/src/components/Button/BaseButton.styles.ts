@@ -47,7 +47,7 @@ export const getStyles = memoizeFunction((theme: ITheme): IButtonStyles => {
         boxSizing: 'border-box',
         cursor: 'pointer',
         display: 'inline-block',
-        padding: '6px 16px',
+        padding: '0 16px',
         textDecoration: 'none',
         textAlign: 'center',
         userSelect: 'none',
