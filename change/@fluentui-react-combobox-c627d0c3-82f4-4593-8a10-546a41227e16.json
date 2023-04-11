@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: popup defines fallbackPositions to use when it doesn't fit the screen",
+  "comment": "fix: popup now defines fallbackPositions to use when it doesn't fit the screen",
   "packageName": "@fluentui/react-combobox",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"
