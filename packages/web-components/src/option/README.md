@@ -10,11 +10,11 @@ Fluent WC3 `<fluent-option>` component will only provide internals related to fo
 
 <br />
 
-### Class: `ListboxOption`
+### Component Name: `<fluent-option>`
 
 <br />
 
-### Component Name: `<fluent-option>`
+### Class: `ListboxOption`
 
 <br />
 <br />
@@ -25,7 +25,7 @@ Fluent WC3 `<fluent-option>` component will only provide internals related to fo
 
 | Name                | Privacy   | Type                                                                                                           | Default | Description                                                                                                                                                                          |
 | ------------------- | --------- | -------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `checked`           | public    | `boolean` or `undefined`                                                                                       |         | The checked state is used when the parent listbox is in multiple selection mode. To avoid accessibility conflicts, the checked state should not be present in single selection mode. |
+| `checked`           | public    | `boolean or undefined`                                                                                         |         | The checked state is used when the parent listbox is in multiple selection mode. To avoid accessibility conflicts, the checked state should not be present in single selection mode. |
 | `content`           | public    | `Node[]`                                                                                                       |         | The default slotted content.                                                                                                                                                         |
 | `defaultSelected`   | public    | `boolean`                                                                                                      | `false` | The defaultSelected state of the option.                                                                                                                                             |
 | `disabled`          | public    | `boolean`                                                                                                      | `false` | The disabled state of the option.                                                                                                                                                    |
@@ -36,7 +36,7 @@ Fluent WC3 `<fluent-option>` component will only provide internals related to fo
 | `label`             | public    |                                                                                                                |         |                                                                                                                                                                                      |
 | `text`              | public    | `string`                                                                                                       |         |                                                                                                                                                                                      |
 | `value`             | public    | `string`                                                                                                       |         |                                                                                                                                                                                      |
-| `form`              | public    | `HTMLFormElement` or `null`                                                                                    |         |                                                                                                                                                                                      |
+| `form`              | public    | `HTMLFormElement or null`                                                                                      |         |                                                                                                                                                                                      |
 | `proxy`             |           | <code>new Option(&#96;${this.textContent}&#96;, this.initialValue, this.defaultSelected, this.selected)</code> |         |                                                                                                                                                                                      |
 
 <br />
@@ -83,10 +83,10 @@ Fluent WC3 `<fluent-option>` component will only provide internals related to fo
 <br />
 
 | Name    | Description                                                      |
-| ------- | ---------------------------------------------------------------- | --- |
+| ------- | ---------------------------------------------------------------- |
 |         | The default slot for listbox option content.                     |
 | `start` | Content which can be provided after the listbox option content.  |
-| `end`   | Content which can be provided before the listbox option content. |     |
+| `end`   | Content which can be provided before the listbox option content. |
 
 <br />
 <hr />
@@ -120,10 +120,10 @@ Fluent WC3 `<fluent-option>` component will only provide internals related to fo
 
 | Name           | Reflected ARIA Content Attribute | Privacy | Type                                  | Description                                                          | Default |
 | -------------- | -------------------------------- | ------- | ------------------------------------- | -------------------------------------------------------------------- | ------- |
-| `ariaChecked`  | `aria-checked`                   | public  | `"true" \| "false" \| string \| null` | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
-| `ariaPosInSet` | `aria-posinset`                  | public  | `string \| null`                      | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
-| `ariaSelected` | `aria-selected`                  | public  | `"true" \| "false" \| string \| null` | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
-| `ariaSetSize`  | `aria-setsize`                   | public  | `string \| null`                      | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
+| `ariaChecked`  | `aria-checked`                   | public  | `"true" or "false" or string or null` | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
+| `ariaPosInSet` | `aria-posinset`                  | public  | `string or null`                      | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
+| `ariaSelected` | `aria-selected`                  | public  | `"true" or "false" or string or null` | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
+| `ariaSetSize`  | `aria-setsize`                   | public  | `string or null`                      | See https://www.w3.org/TR/wai-aria-1.2/#option for more information. |         |
 
 <br />
 
