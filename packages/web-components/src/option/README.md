@@ -6,6 +6,8 @@
 
 ## **Engineering Spec**
 
+An implementation of an option. To avoid namespace collisions with the `Option()` constructor, the component class is `ListboxOption`, and the implementation is named `fluent-option`.
+
 Fluent WC3 `<fluent-option>` component will only provide internals related to form association when used within a form-associated component such as `fluent-select`.
 
 <br />
