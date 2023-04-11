@@ -15,6 +15,8 @@ import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IYValueHover } from '../../index';
+import { TooltipText } from './TooltipText';
+import { select as d3Select } from 'd3-selection';
 
 const BREAKPOINTS = [52, 70, 88, 106, 124, 142];
 const ARC_WIDTHS = [12, 16, 20, 24, 28, 32];
@@ -103,13 +105,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           >
             <g transform={`translate(${width / 2}, ${height - (margins.bottom + legendContainerHeight)})`}>
               {this.props.chartTitle && (
-                <text
-                  x={0}
-                  y={-(outerRadius + 11)}
-                  textAnchor="middle"
-                  data-is-focusable={true}
-                  className={this._classNames.chartTitle}
-                >
+                <text x={0} y={-(outerRadius + 11)} textAnchor="middle" className={this._classNames.chartTitle}>
                   {this.props.chartTitle}
                 </text>
               )}
@@ -120,7 +116,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     y={0}
                     textAnchor="end"
                     className={this._classNames.limits}
-                    data-is-focusable={true}
                     role="img"
                     aria-label={`Min value: ${minValue}`}
                   >
@@ -131,7 +126,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     y={0}
                     textAnchor="start"
                     className={this._classNames.limits}
-                    data-is-focusable={true}
                     role="img"
                     aria-label={`Max value: ${maxValue}`}
                   >
@@ -159,31 +153,37 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                 />
               ))}
               <g transform={`rotate(${needleRotation}, 0, 0)`}>{this._renderNeedle(innerRadius, outerRadius, 2)}</g>
-              <text
-                x={0}
-                y={0}
-                textAnchor="middle"
-                className={this._classNames.chartValue}
-                data-is-focusable={true}
-                role="img"
-                aria-label={`Current value: ${sweptFraction[0]} out of ${sweptFraction[1]}, or ${(
-                  (sweptFraction[0] / sweptFraction[1]) *
-                  100
-                ).toFixed()}%`}
-              >
-                {`${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`}
-              </text>
+              <TooltipText
+                content={`${((sweptFraction[0] / sweptFraction[1]) * 100).toFixed()}%`}
+                textProps={{
+                  x: 0,
+                  y: 0,
+                  textAnchor: 'middle',
+                  className: this._classNames.chartValue,
+                  role: 'img',
+                  'aria-label': `Current value: ${sweptFraction[0]} out of ${sweptFraction[1]}, or ${(
+                    (sweptFraction[0] / sweptFraction[1]) *
+                    100
+                  ).toFixed()}%`,
+                }}
+                maxWidth={innerRadius * 2 - 24}
+                wrapContent={this._wrapContent}
+              />
               {this.props.sublabel && (
-                <text
-                  x={0}
-                  y={4}
-                  textAnchor="middle"
-                  dominantBaseline="hanging"
-                  className={this._classNames.sublabel}
-                  data-is-focusable={true}
-                >
-                  {this.props.sublabel}
-                </text>
+                <TooltipText
+                  content={this.props.sublabel}
+                  textProps={{
+                    x: 0,
+                    y: 4,
+                    textAnchor: 'middle',
+                    dominantBaseline: 'hanging',
+                    className: this._classNames.sublabel,
+                    role: 'img',
+                    'aria-label': this.props.sublabel,
+                  }}
+                  maxWidth={innerRadius * 2}
+                  wrapContent={this._wrapContent}
+                />
               )}
             </g>
           </svg>
@@ -213,11 +213,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     return (
       <path
         d={`
-            M 0,${-strokeWidth}
-            L ${-needleLength},${-strokeWidth + 2}
-            A ${strokeWidth + 1},${strokeWidth + 1},0,0,0,${-needleLength},${strokeWidth + 4}
-            L 0,${strokeWidth + 6}
-            A ${strokeWidth + 3},${strokeWidth + 3},0,0,0,0,${-strokeWidth}
+            M 0,${-strokeWidth - 3}
+            L ${-needleLength},${-strokeWidth - 1}
+            A ${strokeWidth + 1},${strokeWidth + 1},0,0,0,${-needleLength},${strokeWidth + 1}
+            L 0,${strokeWidth + 3}
+            A ${strokeWidth + 3},${strokeWidth + 3},0,0,0,0,${-strokeWidth - 3}
           `}
         strokeWidth={strokeWidth * 2}
         className={this._classNames.needle}
@@ -361,6 +361,20 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
   private _onChartMouseOut = () => {
     this.setState({ hoveredElement: null, isCalloutVisible: false, hoverXValue: '', hoverYValues: [] });
+  };
+
+  private _wrapContent = (content: string, id: string, maxWidth: number) => {
+    let textOverflow = false;
+    const text = d3Select<SVGTextElement, {}>(`#${id}`);
+    text.text(content);
+    let textLength = text.node()!.getComputedTextLength();
+    while (textLength > maxWidth && content.length > 0) {
+      content = content.slice(0, -1);
+      text.text(content + '...');
+      textOverflow = true;
+      textLength = text.node()!.getComputedTextLength();
+    }
+    return textOverflow;
   };
 
   // TO DO: Write a common functional component for Multi value callout and divide sub count method

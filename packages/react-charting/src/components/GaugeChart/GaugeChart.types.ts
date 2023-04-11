@@ -31,7 +31,7 @@ export interface IGaugeChartProps {
   currentValue: number;
 
   /** */
-  segments?: IGaugeChartSegment[];
+  segments: IGaugeChartSegment[];
 
   /** */
   minValue?: number;
