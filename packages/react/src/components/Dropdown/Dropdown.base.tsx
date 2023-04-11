@@ -798,7 +798,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     // define the id and label id (for multiselect checkboxes)
     const id = this._listId + item.index;
-    const labelId = item.id ?? (id + '-label');
+    const labelId = item.id ?? id + '-label';
 
     const multiSelectItemStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.multiSelectItem as IStyleFunctionOrObject<

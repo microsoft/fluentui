@@ -1,8 +1,233 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 10 Feb 2023 07:47:24 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Apr 2023 07:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.39)
+
+Mon, 10 Apr 2023 07:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.38..@fluentui/react-docsite-components_v8.11.39)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.4 ([PR #27002](https://github.com/microsoft/fluentui/pull/27002) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.74 ([PR #27002](https://github.com/microsoft/fluentui/pull/27002) by beachball)
+
+## [8.11.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.38)
+
+Fri, 07 Apr 2023 07:39:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.37..@fluentui/react-docsite-components_v8.11.38)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.3 ([commit](https://github.com/microsoft/fluentui/commit/336f91dc2ffd1e85880e1b12187d5ac1bf500f6d) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.73 ([commit](https://github.com/microsoft/fluentui/commit/336f91dc2ffd1e85880e1b12187d5ac1bf500f6d) by beachball)
+
+## [8.11.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.37)
+
+Thu, 06 Apr 2023 07:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.36..@fluentui/react-docsite-components_v8.11.37)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.2 ([PR #27457](https://github.com/microsoft/fluentui/pull/27457) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.72 ([PR #27457](https://github.com/microsoft/fluentui/pull/27457) by beachball)
+
+## [8.11.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.36)
+
+Mon, 03 Apr 2023 07:37:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.35..@fluentui/react-docsite-components_v8.11.36)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.1 ([PR #26920](https://github.com/microsoft/fluentui/pull/26920) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.71 ([PR #26920](https://github.com/microsoft/fluentui/pull/26920) by beachball)
+
+## [8.11.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.35)
+
+Thu, 30 Mar 2023 07:43:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.34..@fluentui/react-docsite-components_v8.11.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.107.0 ([PR #26254](https://github.com/microsoft/fluentui/pull/26254) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.70 ([PR #26254](https://github.com/microsoft/fluentui/pull/26254) by beachball)
+
+## [8.11.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.34)
+
+Tue, 28 Mar 2023 07:38:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.33..@fluentui/react-docsite-components_v8.11.34)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.10 ([PR #26022](https://github.com/microsoft/fluentui/pull/26022) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.69 ([PR #26022](https://github.com/microsoft/fluentui/pull/26022) by beachball)
+
+## [8.11.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.33)
+
+Fri, 24 Mar 2023 22:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.32..@fluentui/react-docsite-components_v8.11.33)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.9 ([PR #27323](https://github.com/microsoft/fluentui/pull/27323) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.68 ([PR #27323](https://github.com/microsoft/fluentui/pull/27323) by beachball)
+
+## [8.11.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.32)
+
+Wed, 22 Mar 2023 08:03:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.31..@fluentui/react-docsite-components_v8.11.32)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.8 ([commit](https://github.com/microsoft/fluentui/commit/298c2a3a12ee95c78650b4a8cf70990844768602) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.67 ([commit](https://github.com/microsoft/fluentui/commit/298c2a3a12ee95c78650b4a8cf70990844768602) by beachball)
+
+## [8.11.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.31)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.30..@fluentui/react-docsite-components_v8.11.31)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.7 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/theme to v2.6.25 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/example-data to v8.4.7 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/public-docsite-setup to v0.3.18 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/react-hooks to v8.6.20 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.66 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/common-styles to v1.2.22 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+
+## [8.11.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.30)
+
+Tue, 14 Mar 2023 07:38:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.29..@fluentui/react-docsite-components_v8.11.30)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.6 ([PR #26749](https://github.com/microsoft/fluentui/pull/26749) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.65 ([PR #26749](https://github.com/microsoft/fluentui/pull/26749) by beachball)
+
+## [8.11.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.29)
+
+Fri, 10 Mar 2023 07:38:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.28..@fluentui/react-docsite-components_v8.11.29)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.5 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+- Bump @fluentui/react-hooks to v8.6.19 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.64 ([commit](https://github.com/microsoft/fluentui/commit/684dafbd5d9efa1dd61330eed7a503d61b1184f3) by beachball)
+
+## [8.11.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.28)
+
+Thu, 09 Mar 2023 07:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.27..@fluentui/react-docsite-components_v8.11.28)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.4 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.63 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+- Bump @fluentui/common-styles to v1.2.21 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+
+## [8.11.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.27)
+
+Mon, 06 Mar 2023 07:43:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.26..@fluentui/react-docsite-components_v8.11.27)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.3 ([PR #26869](https://github.com/microsoft/fluentui/pull/26869) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.62 ([PR #26869](https://github.com/microsoft/fluentui/pull/26869) by beachball)
+- Bump @fluentui/common-styles to v1.2.20 ([PR #26869](https://github.com/microsoft/fluentui/pull/26869) by beachball)
+
+## [8.11.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.26)
+
+Wed, 01 Mar 2023 07:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.25..@fluentui/react-docsite-components_v8.11.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.2 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/theme to v2.6.24 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/react-hooks to v8.6.18 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.61 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+- Bump @fluentui/common-styles to v1.2.19 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+
+## [8.11.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.25)
+
+Wed, 22 Feb 2023 07:44:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.24..@fluentui/react-docsite-components_v8.11.25)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.1 ([commit](https://github.com/microsoft/fluentui/commit/7596e81eaad95fc96ac7098f848602ace5278e03) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.60 ([commit](https://github.com/microsoft/fluentui/commit/7596e81eaad95fc96ac7098f848602ace5278e03) by beachball)
+
+## [8.11.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.24)
+
+Wed, 22 Feb 2023 00:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.23..@fluentui/react-docsite-components_v8.11.24)
+
+### Patches
+
+- Bump @fluentui/react to v8.106.0 ([PR #26574](https://github.com/microsoft/fluentui/pull/26574) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.59 ([PR #26574](https://github.com/microsoft/fluentui/pull/26574) by beachball)
+
+## [8.11.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.23)
+
+Sat, 18 Feb 2023 01:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.22..@fluentui/react-docsite-components_v8.11.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.11 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+- Bump @fluentui/theme to v2.6.23 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+- Bump @fluentui/react-hooks to v8.6.17 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.58 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+- Bump @fluentui/common-styles to v1.2.18 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+
+## [8.11.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.22)
+
+Fri, 17 Feb 2023 22:05:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.21..@fluentui/react-docsite-components_v8.11.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.10 ([PR #26896](https://github.com/microsoft/fluentui/pull/26896) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.57 ([PR #26896](https://github.com/microsoft/fluentui/pull/26896) by beachball)
+
+## [8.11.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.21)
+
+Fri, 17 Feb 2023 07:46:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.20..@fluentui/react-docsite-components_v8.11.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.9 ([PR #26008](https://github.com/microsoft/fluentui/pull/26008) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.56 ([PR #26008](https://github.com/microsoft/fluentui/pull/26008) by beachball)
+
+## [8.11.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.20)
+
+Wed, 15 Feb 2023 07:42:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.19..@fluentui/react-docsite-components_v8.11.20)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.8 ([PR #26848](https://github.com/microsoft/fluentui/pull/26848) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.55 ([PR #26848](https://github.com/microsoft/fluentui/pull/26848) by beachball)
+
+## [8.11.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.19)
+
+Mon, 13 Feb 2023 07:37:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.11.18..@fluentui/react-docsite-components_v8.11.19)
+
+### Patches
+
+- Bump @fluentui/react to v8.105.7 ([PR #26796](https://github.com/microsoft/fluentui/pull/26796) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.54 ([PR #26796](https://github.com/microsoft/fluentui/pull/26796) by beachball)
 
 ## [8.11.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.11.18)
 

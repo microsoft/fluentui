@@ -23,6 +23,7 @@ import { FocusTrapZone } from '../../FocusTrapZone';
 import { useAsync, useOnEvent, useSetTimeout, useWarnings } from '@fluentui/react-hooks';
 import type { IRectangle } from '../../Utilities';
 import type { IPositionedData } from '../../Positioning';
+import type { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import type { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import type { IBeakProps } from './Beak/Beak.types';
 
@@ -401,6 +402,15 @@ function useDeprecationWarning(props: ICoachmarkProps) {
   }
 }
 
+function useGetBounds(props: ICoachmarkProps): IRectangle | undefined {
+  const async = useAsync();
+  const [bounds, setBounds] = React.useState<IRectangle | undefined>();
+  React.useEffect(() => {
+    async.requestAnimationFrame(() => setBounds(getBounds(props.isPositionForced, props.positioningContainerProps)));
+  }, [async, props.isPositionForced, props.positioningContainerProps]);
+  return bounds;
+}
+
 const COMPONENT_NAME = 'CoachmarkBase';
 
 export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.forwardRef<
@@ -467,16 +477,6 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 
   const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
 
-  function useGetBounds(): IRectangle | undefined {
-    const async = useAsync();
-    const [bounds, setBounds] = React.useState<IRectangle | undefined>();
-    const updateAsyncPosition = (): void => {
-      async.requestAnimationFrame(() => setBounds(getBounds(props)));
-    };
-    React.useEffect(updateAsyncPosition);
-    return bounds;
-  }
-
   return (
     <PositioningContainer
       target={target}
@@ -484,7 +484,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
       finalHeight={finalHeight}
       ref={forwardedRef}
       onPositioned={onPositioned}
-      bounds={useGetBounds()}
+      bounds={useGetBounds(props)}
       {...positioningContainerProps}
     >
       <div className={classNames.root}>
@@ -536,7 +536,10 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 });
 CoachmarkBase.displayName = COMPONENT_NAME;
 
-function getBounds({ isPositionForced, positioningContainerProps }: ICoachmarkProps): IRectangle | undefined {
+function getBounds(
+  isPositionForced?: boolean,
+  positioningContainerProps?: IPositioningContainerProps,
+): IRectangle | undefined {
   if (isPositionForced) {
     // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
     // to the window x-axis to have auto positioning work correctly.

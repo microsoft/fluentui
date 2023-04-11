@@ -1680,7 +1680,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseUp={[Function]}
-        role="presentation"
         tabIndex={-1}
         type="button"
       >

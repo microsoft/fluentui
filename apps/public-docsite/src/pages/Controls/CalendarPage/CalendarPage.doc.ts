@@ -16,7 +16,8 @@ export const CalendarPageProps: TFabricPlatformPageProps = {
     related,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/CalendarPage/docs/android/CalendarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/CalendarPage/docs/android/CalendarOverview.md') as string,
     related,
     componentUrl,
   },

@@ -174,7 +174,7 @@
   }
 }
 
-/* Make storybook-addon-export-to-codesandbox button match Figma design */
+/* Make storybook codesandbox export button match Figma design */
 .docs-story .with-code-sandbox-button {
   right: 105px !important;
 }

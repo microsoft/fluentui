@@ -34,9 +34,7 @@ function sharedAfterEach() {
 
   // Do this after unmounting the wrapper to make sure any timers cleaned up on unmount are
   // cleaned up in fake timers world
-  if ((global.setTimeout as any).mock) {
-    jest.useRealTimers();
-  }
+  jest.useRealTimers();
 }
 
 describe('TextField snapshots', () => {
@@ -357,7 +355,7 @@ describe('TextField with error message', () => {
     assertErrorMessage(container, errorMessageJSX);
   });
 
-  it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
+  it('should render error message when onGetErrorMessage returns a Promise<string>', async () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessage : ''));
 
     const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
@@ -367,15 +365,14 @@ describe('TextField with error message', () => {
 
     // Extra rounds of running everything to account for the debounced validator and the promise...
     jest.runAllTimers();
-    return flushPromises().then(() => {
-      jest.runAllTimers();
+    await flushPromises();
+    jest.runAllTimers();
 
-      expect(validator).toHaveBeenCalledTimes(1);
-      assertErrorMessage(container, errorMessage);
-    });
+    expect(validator).toHaveBeenCalledTimes(1);
+    assertErrorMessage(container, errorMessage);
   });
 
-  it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', () => {
+  it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', async () => {
     const validator = jest.fn((value: string) => Promise.resolve(value.length > 3 ? errorMessageJSX : ''));
 
     const { container, getByRole } = render(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
@@ -384,12 +381,10 @@ describe('TextField with error message', () => {
     userEvent.type(input, 'also invalid');
 
     jest.runAllTimers();
-    return flushPromises().then(() => {
-      jest.runAllTimers();
-
-      expect(validator).toHaveBeenCalledTimes(1);
-      assertErrorMessage(container, errorMessageJSX);
-    });
+    await flushPromises();
+    jest.runAllTimers();
+    expect(validator).toHaveBeenCalledTimes(1);
+    assertErrorMessage(container, errorMessageJSX);
   });
 
   it('should render error message on first render when onGetErrorMessage returns a string', () => {
@@ -401,17 +396,15 @@ describe('TextField with error message', () => {
     assertErrorMessage(container, errorMessage);
   });
 
-  it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
+  it('should render error message on first render when onGetErrorMessage returns a Promise<string>', async () => {
     const validator = jest.fn(() => Promise.resolve(errorMessage));
     const { container } = render(<TextField defaultValue="invalid value" onGetErrorMessage={validator} />);
 
+    await flushPromises();
     jest.runAllTimers();
-    return flushPromises().then(() => {
-      jest.runAllTimers();
 
-      expect(validator).toHaveBeenCalledTimes(1);
-      assertErrorMessage(container, errorMessage);
-    });
+    expect(validator).toHaveBeenCalledTimes(1);
+    assertErrorMessage(container, errorMessage);
   });
 
   it('should not render error message when onGetErrorMessage return an empty string', () => {

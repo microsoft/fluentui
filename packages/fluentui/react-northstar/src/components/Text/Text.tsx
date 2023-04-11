@@ -92,7 +92,7 @@ export const textClassName = 'ui-text';
 /**
  * A Text consistently styles and formats occurrences of text.
  */
-export const Text = (React.forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
+export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
   setStart();
@@ -167,7 +167,7 @@ export const Text = (React.forwardRef<HTMLSpanElement, TextProps>((props, ref) =
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, TextProps> & FluentComponentStaticProps<TextProps>;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, TextProps> & FluentComponentStaticProps<TextProps>;
 
 Text.displayName = 'Text';
 

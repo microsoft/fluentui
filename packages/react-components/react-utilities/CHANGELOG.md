@@ -1,8 +1,88 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Fri, 10 Feb 2023 08:50:01 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2023 18:44:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.3)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.2..@fluentui/react-utilities_v9.7.3)
+
+### Patches
+
+- bugfix: increments SlotRenderFunction signature to include children ([PR #27377](https://github.com/microsoft/fluentui/pull/27377) by bernardo.sunderhus@gmail.com)
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.2)
+
+Tue, 21 Mar 2023 21:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.1..@fluentui/react-utilities_v9.7.2)
+
+### Patches
+
+- chore: exports isHTMLElement as public ([PR #27178](https://github.com/microsoft/fluentui/pull/27178) by bernardo.sunderhus@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.1)
+
+Thu, 16 Mar 2023 14:36:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.7.0..@fluentui/react-utilities_v9.7.1)
+
+### Patches
+
+- fix(getSlots): stops slotProps.slot to be typed as never ([PR #27231](https://github.com/microsoft/fluentui/pull/27231) by bernardo.sunderhus@gmail.com)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.7.0)
+
+Mon, 13 Mar 2023 08:58:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.2..@fluentui/react-utilities_v9.7.0)
+
+### Minor changes
+
+- feat: isHTMLElement to support all HTMLElement classes ([PR #27161](https://github.com/microsoft/fluentui/pull/27161) by bernardo.sunderhus@gmail.com)
+
+## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.2)
+
+Fri, 10 Mar 2023 07:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.1..@fluentui/react-utilities_v9.6.2)
+
+### Patches
+
+- fix: ResolveShorthandOptions type to better reflect implementation ([PR #27112](https://github.com/microsoft/fluentui/pull/27112) by bernardo.sunderhus@gmail.com)
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.1)
+
+Wed, 08 Mar 2023 17:42:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.6.0..@fluentui/react-utilities_v9.6.1)
+
+### Patches
+
+- fix: adjust IntrinsicElementProps type to properly support void elements ([PR #27095](https://github.com/microsoft/fluentui/pull/27095) by bernardo.sunderhus@gmail.com)
+- fix: export omit function ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.6.0)
+
+Wed, 15 Feb 2023 11:44:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.3..@fluentui/react-utilities_v9.6.0)
+
+### Minor changes
+
+- feat: Add event helpers to ease working with mouse and touch ([PR #26784](https://github.com/microsoft/fluentui/pull/26784) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- fix(useOnClickOutside): iframe focus detection uses `contains` ([PR #26845](https://github.com/microsoft/fluentui/pull/26845) by lingfangao@hotmail.com)
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.3)
+
+Mon, 13 Feb 2023 23:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.5.2..@fluentui/react-utilities_v9.5.3)
+
+### Patches
+
+- fix: `resolveShorthand` should resolve an object as its copy ([PR #26825](https://github.com/microsoft/fluentui/pull/26825) by yuanboxue@microsoft.com)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.5.2)
 

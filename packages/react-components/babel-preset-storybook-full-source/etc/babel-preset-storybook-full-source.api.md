@@ -4,6 +4,14 @@
 
 ```ts
 
+import * as Babel from '@babel/core';
+
+// @public (undocumented)
+export type BabelPluginOptions = Record<string, DependencyEntry>;
+
+// @public
+export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj;
+
 // (No @packageDocumentation comment for this package)
 
 ```

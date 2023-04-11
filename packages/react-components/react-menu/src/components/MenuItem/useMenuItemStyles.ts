@@ -89,10 +89,32 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
       color: tokens.colorNeutralForegroundDisabled,
+      [`& .${iconFilledClassName}`]: {
+        display: 'none',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${menuItemClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
 
     ':focus': {
       color: tokens.colorNeutralForegroundDisabled,
+    },
+
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+      ':hover': {
+        color: 'GrayText',
+        [`& .${menuItemClassNames.icon}`]: {
+          color: 'GrayText',
+        },
+      },
+      ':focus': {
+        color: 'GrayText',
+      },
     },
   },
 });

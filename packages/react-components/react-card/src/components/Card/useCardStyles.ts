@@ -98,6 +98,11 @@ const useStyles = makeStyles({
     [`> :not([aria-hidden="true"]).${cardPreviewClassNames.root}:last-of-type`]: {
       marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
+
+    // If the last child is a CardHeader or CardFooter, allow it to grow to fill the available space.
+    [`> .${cardHeaderClassNames.root}:last-of-type, > .${cardFooterClassNames.root}:last-of-type`]: {
+      flexGrow: 1,
+    },
   },
   orientationVertical: {
     flexDirection: 'column',

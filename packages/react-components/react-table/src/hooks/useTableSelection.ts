@@ -31,10 +31,13 @@ export function useTableSelectionState<TItem>(
   const { items, getRowId } = tableState;
   const { selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 
-  const [selected, setSelected] = useControllableState({
-    initialState: new Set<TableRowId>(),
-    defaultState: defaultSelectedItems,
-    state: selectedItems,
+  const [selected, setSelected] = useControllableState<Set<TableRowId>>({
+    initialState: new Set(),
+    defaultState: React.useMemo(
+      () => defaultSelectedItems && createSetFromIterable(defaultSelectedItems),
+      [defaultSelectedItems],
+    ),
+    state: React.useMemo(() => selectedItems && createSetFromIterable(selectedItems), [selectedItems]),
   });
 
   const selectionManager = React.useMemo(() => {
@@ -84,4 +87,11 @@ export function useTableSelectionState<TItem>(
       isRowSelected,
     },
   };
+}
+
+/**
+ * Creates a set from a given iterable, in case the iterable is a set itself, returns the given set instead.
+ */
+function createSetFromIterable<V>(iterable: Iterable<V>): Set<V> {
+  return iterable instanceof Set ? iterable : new Set(iterable);
 }

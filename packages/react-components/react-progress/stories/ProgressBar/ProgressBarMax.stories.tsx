@@ -1,8 +1,26 @@
 import * as React from 'react';
-import { ProgressBar } from '@fluentui/react-progress';
+import { ProgressBar } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components/unstable';
+
+const intervalDelay = 100;
+const intervalIncrement = 1;
 
 export const Max = () => {
-  return <ProgressBar max={42} value={13} />;
+  const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setValue(value < 42 ? intervalIncrement + value : 0);
+    }, intervalDelay);
+    return () => {
+      clearInterval(id);
+    };
+  });
+  return (
+    <Field validationMessage={`There have been ${value} files downloaded`} validationState="none">
+      <ProgressBar max={42} value={value} />
+    </Field>
+  );
 };
 
 Max.parameters = {

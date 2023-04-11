@@ -80,6 +80,12 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * @default false
    */
   isCalloutForStack?: boolean;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}
@@ -89,4 +95,9 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
 }

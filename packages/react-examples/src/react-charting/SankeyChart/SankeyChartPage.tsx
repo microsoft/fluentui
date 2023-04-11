@@ -10,8 +10,10 @@ import {
 import { SankeyChartBasicExample } from './SankeyChart.Basic.Example';
 import { SankeyChartInboxExample } from './SankeyChart.Inbox.Example';
 
-const SankeyChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx') as string;
-const SankeyChartInboxExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Inbox.Example.tsx') as string;
+const SankeyChartBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Basic.Example.tsx') as string;
+const SankeyChartInboxExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/SankeyChart.Inbox.Example.tsx') as string;
 
 export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

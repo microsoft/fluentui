@@ -79,7 +79,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  * @accessibility
  * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
  */
-export const Checkbox = (React.forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
+export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -191,7 +191,7 @@ export const Checkbox = (React.forwardRef<HTMLDivElement, CheckboxProps>((props,
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CheckboxProps> & FluentComponentStaticProps<CheckboxProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CheckboxProps> & FluentComponentStaticProps<CheckboxProps>;
 
 Checkbox.displayName = 'Checkbox';
 

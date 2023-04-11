@@ -28,8 +28,8 @@ const _mapping = rawMapping
   .map(entry => {
     const v0IconName = `${entry.v0}`;
     const v9IconName = `${entry.v9}Regular`;
-    const V0Icon = ((v0Icons as unknown) as Record<string, V0IconComponent>)[v0IconName];
-    const V9Icon = ((v9Icons as unknown) as Record<string, V9IconComponent | undefined>)[v9IconName];
+    const V0Icon = (v0Icons as unknown as Record<string, V0IconComponent>)[v0IconName];
+    const V9Icon = (v9Icons as unknown as Record<string, V9IconComponent | undefined>)[v9IconName];
 
     if (!V0Icon) {
       return null;
@@ -43,7 +43,7 @@ const _mapping = rawMapping
     };
   })
   .filter(Boolean);
-const mapping = _mapping.filter(Boolean) as Array<NonNullable<typeof _mapping[number]>>;
+const mapping = _mapping.filter(Boolean) as Array<NonNullable<(typeof _mapping)[number]>>;
 
 const IconCatalogInner: React.FC = () => {
   const styles = useStyles();
@@ -75,9 +75,10 @@ const IconCatalogInner: React.FC = () => {
     [searchTerm, searchV0],
   );
 
-  const onInputChange: InputProps['onChange'] = React.useCallback((e, { value }) => updateSearchDebounced(value), [
-    updateSearchDebounced,
-  ]);
+  const onInputChange: InputProps['onChange'] = React.useCallback(
+    (e, { value }) => updateSearchDebounced(value),
+    [updateSearchDebounced],
+  );
   const onSwitchChange: SwitchProps['onChange'] = React.useCallback((e, { checked }) => setSearchV0(checked), []);
 
   return (

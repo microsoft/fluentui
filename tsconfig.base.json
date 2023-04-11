@@ -38,7 +38,7 @@
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
       "@fluentui/react-data-grid-react-window": ["packages/react-components/react-data-grid-react-window/src/index.ts"],
-      "@fluentui/react-datepicker": ["packages/react-components/react-datepicker/src/index.ts"],
+      "@fluentui/react-datepicker-compat": ["packages/react-components/react-datepicker-compat/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/src/index.ts"],
       "@fluentui/react-drawer": ["packages/react-components/react-drawer/src/index.ts"],
@@ -47,6 +47,7 @@
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
       "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
+      "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
@@ -69,6 +70,9 @@
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
       "@fluentui/react-spinner": ["packages/react-components/react-spinner/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
+      "@fluentui/react-storybook-addon-codesandbox": [
+        "packages/react-components/react-storybook-addon-codesandbox/src/index.ts"
+      ],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
