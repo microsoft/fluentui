@@ -1,44 +1,44 @@
 import { attr } from '@microsoft/fast-element';
 import { FASTAnchor } from '@microsoft/fast-foundation';
-import { AnchorAppearance, AnchorShape, AnchorSize } from './anchor.options.js';
+import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
 
 /**
- * The base class used for constructing a fluent-anchor custom element
+ * The base class used for constructing a fluent-anchor-button custom element
  * @public
  */
-export class Anchor extends FASTAnchor {
+export class AnchorButton extends FASTAnchor {
   /**
-   * The appearance the anchor should have.
+   * The appearance the anchor button should have.
    *
    * @public
    * @remarks
    * HTML Attribute: appearance
    */
   @attr
-  public appearance?: AnchorAppearance | undefined;
+  public appearance?: AnchorButtonAppearance | undefined;
 
   /**
-   * The shape the anchor should have.
+   * The shape the anchor button should have.
    *
    * @public
    * @remarks
    * HTML Attribute: shape
    */
   @attr
-  public shape?: AnchorShape | undefined;
+  public shape?: AnchorButtonShape | undefined;
 
   /**
-   * The size the anchor should have.
+   * The size the anchor button should have.
    *
    * @public
    * @remarks
    * HTML Attribute: size
    */
   @attr
-  public size?: AnchorSize;
+  public size?: AnchorButtonSize;
 
   /**
-   * The anchor has an icon only, no text content
+   * The anchor button has an icon only, no text content
    *
    * @public
    * @remarks
@@ -48,7 +48,7 @@ export class Anchor extends FASTAnchor {
   public iconOnly: boolean = false;
 
   /**
-   * The anchor is disabled
+   * The anchor button is disabled
    *
    * @public
    * @remarks
@@ -67,7 +67,7 @@ export class Anchor extends FASTAnchor {
   }
 
   /**
-   * The anchor is disabled but focusable
+   * The anchor button is disabled but focusable
    *
    * @public
    * @remarks

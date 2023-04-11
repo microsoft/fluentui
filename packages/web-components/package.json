@@ -32,9 +32,9 @@
       "types": "./dist/esm/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
-    "./anchor": {
-      "types": "./dist/esm/anchor/define.d.ts",
-      "default": "./dist/esm/anchor/define.js"
+    "./anchor-button": {
+      "types": "./dist/esm/anchor-button/define.d.ts",
+      "default": "./dist/esm/anchor-button/define.js"
     },
     "./avatar": {
       "types": "./dist/esm/avatar/define.d.ts",
