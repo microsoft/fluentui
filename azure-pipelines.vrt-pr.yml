@@ -67,7 +67,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FLUENTUI" --ciDefinitionId 205 --groupKey 'fluentuiv9' --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '4'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FLUENTUI" --ciDefinitionId 205 --groupName 'E2E Tests-v9' --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '4'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
@@ -141,7 +141,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupKey 'fluentuiv8' --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '4'
+      - bash: vr-app run-diff --screenshotsDirectory ./dist/screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName 'E2E Tests-v8' --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '4'
 
         displayName: 'Run fluentui-screenshotdiff'
         env:
@@ -237,7 +237,7 @@ jobs:
       #     VR_APP_NAME: $(VR_APP_NAME)
       #   condition: eq(variables['vrTestSkip'], 'no')
 
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FluentUI" --ciDefinitionId 205 --groupKey 'fluentuiv0' --groupName 'E2E Tests-v0' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '4'
+      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots/ --clientType "FluentUI" --ciDefinitionId 205 --groupName 'E2E Tests-v0' --locationPrefix 'fluentuiv0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '4'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_URL: $(System.CollectionUri)
