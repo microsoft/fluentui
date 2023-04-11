@@ -23,7 +23,6 @@ The browser-native select control component allows users to choose one option fr
 - @attr aria-label: string
 - @attr aria-labelledby: string
 - @attr aria-describedby: string
--
 
 ### Outputs
 
@@ -49,9 +48,11 @@ None
   - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
 - [x] Are there any accessibility elements unique to this component?
 - [x] List ARIA attributes
-  - [x] role="option" for elements that are not `option` elements
+  - @attr aria-label: string
+  - @attr aria-labelledby: string
+  - @attr aria-describedby: string
 - [x] Does the component support 400% zoom?
-- [ ] What keyboard behaviors does the component support?
+- [x] What keyboard behaviors does the component support?
   - Up / Down : Moves focus between options
   - Space / Enter: Selects the focused option
   - Home : Sets focus to the first option
@@ -63,7 +64,7 @@ None
 
 - [x] [Find the base FAST Component](https://explore.fast.design/components/) this component will inherit from and document
   - This will be a wrapper for the browser-native select control and does not have a corresponding FAST component
-- [] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
+- [x] [Check the Fluent UI React V9 Component Spec](https://github.com/microsoft/fluentui/tree/master/specs) for differences and document
   - No spec available
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
   - [Fluent React V9 Select](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-select--default)
