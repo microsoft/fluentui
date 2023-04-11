@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
@@ -15,6 +16,9 @@ import type { SwitchProps, SwitchState } from './Switch.types';
  * @param ref - reference to `<input>` element of Switch
  */
 export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputElement>): SwitchState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const { checked, defaultChecked, disabled, labelPosition = 'after', onChange, required } = props;
 
   const nativeProps = getPartitionedNativeProps({

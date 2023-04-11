@@ -12,6 +12,7 @@ export async function digestStories(digestConfig: DigestConfig) {
   console.log('Bundling digest..');
 
   const defaultConfigs = defaultConfig(digestConfig);
+
   const webpackConfigs = [];
 
   // TODO: use a real merge. or move this merge into webpack.config.ts and use webpackMerge there.
