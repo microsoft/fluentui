@@ -97,6 +97,14 @@ export const Appearance = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button appearance="transparent">Transparent</fluent-toggle-button>
 `);
 
+export const Checked = renderComponent(html<ToggleButtonStoryArgs>`
+  <fluent-toggle-button checked>Default checked</fluent-toggle-button>
+  <fluent-toggle-button checked appearance="primary">Primary checked</fluent-toggle-button>
+  <fluent-toggle-button checked appearance="outline">Outline checked</fluent-toggle-button>
+  <fluent-toggle-button checked appearance="subtle">Subtle checked</fluent-toggle-button>
+  <fluent-toggle-button checked appearance="transparent">Transparent checked</fluent-toggle-button>
+`);
+
 export const Shape = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button shape="rounded">Rounded</fluent-toggle-button>
   <fluent-toggle-button shape="circular">Circular</fluent-toggle-button>
@@ -105,7 +113,7 @@ export const Shape = renderComponent(html<ToggleButtonStoryArgs>`
 
 export const Size = renderComponent(html<ToggleButtonStoryArgs>`
   <fluent-toggle-button size="small">Small</fluent-toggle-button>
-  <fluent-toggle-button size="small" icon
+  <fluent-toggle-button size="small"
     ><svg
       fill="currentColor"
       slot="start"
@@ -136,7 +144,7 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       ></path></svg
   ></fluent-toggle-button>
   <fluent-toggle-button size="medium">Medium</fluent-toggle-button>
-  <fluent-toggle-button size="medium" icon
+  <fluent-toggle-button size="medium"
     ><svg
       fill="currentColor"
       slot="start"
@@ -167,7 +175,7 @@ export const Size = renderComponent(html<ToggleButtonStoryArgs>`
       ></path></svg
   ></fluent-toggle-button>
   <fluent-toggle-button size="large">Large</fluent-toggle-button>
-  <fluent-toggle-button size="large" icon
+  <fluent-toggle-button size="large"
     ><svg
       fill="currentColor"
       slot="start"

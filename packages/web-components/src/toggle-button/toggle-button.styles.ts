@@ -11,6 +11,9 @@ import {
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
   colorNeutralForeground2BrandSelected,
+  colorNeutralForeground2Hover,
+  colorNeutralForeground2Pressed,
+  colorNeutralForeground2Selected,
   colorNeutralForegroundOnBrand,
   colorNeutralStroke1,
   colorNeutralStroke1Hover,
@@ -62,17 +65,17 @@ export const styles = css`
   :host([aria-pressed='true'][appearance='subtle']) .control {
     border-color: transparent;
     background-color: ${colorSubtleBackgroundSelected};
-    color: ${colorNeutralForeground2BrandSelected};
+    color: ${colorNeutralForeground2Selected};
   }
 
   :host([aria-pressed='true'][appearance='subtle']:hover) .control {
     background-color: ${colorSubtleBackgroundHover};
-    color: ${colorNeutralForeground2BrandHover};
+    color: ${colorNeutralForeground2Hover};
   }
 
   :host([aria-pressed='true'][appearance='subtle']:active) .control {
     background-color: ${colorSubtleBackgroundPressed};
-    color: ${colorNeutralForeground2BrandPressed};
+    color: ${colorNeutralForeground2Pressed};
   }
 
   :host([aria-pressed='true'][appearance='outline']) .control,
