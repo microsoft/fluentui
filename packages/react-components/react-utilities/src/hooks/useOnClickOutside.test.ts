@@ -33,7 +33,7 @@ describe('useOnClickOutside', () => {
     expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
   });
 
-  it('should not add event listeners when disabled', () => {
+  it('should not add or remove event listeners when disabled', () => {
     // Arrange
     const element = { addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown as Document;
 
@@ -42,6 +42,7 @@ describe('useOnClickOutside', () => {
 
     // Assert
     expect(element.addEventListener).toHaveBeenCalledTimes(0);
+    expect(element.removeEventListener).toHaveBeenCalledTimes(0);
   });
 
   it('should invoke callback when active element is an iframe', () => {
