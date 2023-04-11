@@ -50,32 +50,26 @@ const secondItems: FlatTreeItemProps[] = [
   },
 ];
 
-const getTreeAddButton = (lastItemId: string, parentId?: string) => {
-  const array = lastItemId.split('-');
-  const ida = Number(array[array.length - 1]) + 1;
-  const id = `${parentId}-${String(ida)}`;
-  return [
-    {
-      id,
-      parentId,
-      children: <Button>Add new item</Button>,
-    },
-  ];
-};
+const getTreeAddButton = (buttonId: string, parentId: string, addNewItem: () => void) => [
+  {
+    id: buttonId,
+    parentId,
+    children: <TreeItemLayout onClick={addNewItem}>Add new item</TreeItemLayout>,
+  },
+];
 
-const TreeItemActions = ({ onAdd, onRemove }: { onAdd: () => void; onRemove: () => void }) => (
-  <Button aria-label="Remove item menu" appearance="subtle" onClick={onRemove} icon={<Delete20Regular />} />
+const TreeItemActions = ({ onRemove }: { onRemove: () => void }) => (
+  <Button aria-label="Remove item" appearance="subtle" onClick={onRemove} icon={<Delete20Regular />} />
 );
 
 type RemoveableTreeItemProps = TreeItemProps & {
   id: string;
-  onAdd: (id: string) => void;
   onRemove: (id: string) => void;
 };
-const RemoveableTreeItem = ({ id, onAdd, onRemove, ...rest }: RemoveableTreeItemProps) => {
-  const handleAdd = () => onAdd(id);
+const RemoveableTreeItem = ({ id, onRemove, ...rest }: RemoveableTreeItemProps) => {
   const handleRemove = () => onRemove(id);
-  return <TreeItem id={id} {...rest} actions={<TreeItemActions onAdd={handleAdd} onRemove={handleRemove} />} />;
+
+  return <TreeItem id={id} {...rest} actions={<TreeItemActions onRemove={handleRemove} />} />;
 };
 
 export const AddRemoveTreeItem = () => {
@@ -84,25 +78,27 @@ export const AddRemoveTreeItem = () => {
 
   const flatTree = useFlatTree_unstable([
     ...firstTree,
-    ...getTreeAddButton(firstTree[firstTree.length - 1].id, `${firstTree[firstTree.length - 1].parentId}-btn`),
+    ...getTreeAddButton('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
     ...secondTree,
-    // ...getTreeAddButton(secondTree[secondTree.length - 1].id, `${secondTree[secondTree.length - 1].parentId}-btn`),
+    ...getTreeAddButton('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
   ]);
 
-  // const handleAddItem = items => {
-  //   const item = items.find(i => i.id === itemId);
-  //   if (item) {
-  //     const updatedItems = [
-  //       ...items,
-  //       {
-  //         id: `${item.parentId}-1`,
-  //         parentId: itemId,
-  //         children: <TreeItemLayout>New item</TreeItemLayout>,
-  //       },
-  //     ];
-  //     setItems([...updatedItems]);
-  //   }
-  // };
+  const handleAddItem = (tree: FlatTreeItemProps[], setTree: (items: FlatTreeItemProps[]) => void) => {
+    const lastItem = tree[tree.length - 1];
+    const lastItemIdParts = lastItem.id.split('-');
+    const newItemId = lastItemIdParts
+      .slice(0, -1)
+      .concat(String(Number(lastItemIdParts.slice(-1)[0]) + 1))
+      .join('-');
+
+    const newItem: FlatTreeItemProps = {
+      id: newItemId,
+      parentId: lastItem.parentId,
+      children: <TreeItemLayout>New item {newItemId}</TreeItemLayout>,
+    };
+
+    setTree([...tree, newItem]);
+  };
 
   const handleRemoveItem = (itemId: string) => {
     const isFirstTree = itemId.startsWith('1');
@@ -113,14 +109,13 @@ export const AddRemoveTreeItem = () => {
 
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-      {Array.from(flatTree.items(), item => (
-        <RemoveableTreeItem
-          {...item.getTreeItemProps()}
-          key={item.id}
-          onAdd={() => false}
-          onRemove={handleRemoveItem}
-        />
-      ))}
+      {Array.from(flatTree.items(), item =>
+        item.id.includes('btn') ? (
+          <TreeItem {...item.getTreeItemProps()} key={item.id} />
+        ) : (
+          <RemoveableTreeItem {...item.getTreeItemProps()} key={item.id} onRemove={handleRemoveItem} />
+        ),
+      )}
     </Tree>
   );
 };
