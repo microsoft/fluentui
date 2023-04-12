@@ -73,6 +73,7 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackgroundSelected,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    ...shorthands.padding('3px', '10px'),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
