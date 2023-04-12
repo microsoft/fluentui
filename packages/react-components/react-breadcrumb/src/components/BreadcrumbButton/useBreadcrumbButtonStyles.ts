@@ -58,7 +58,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     state.root.className,
   );
 
-  useButtonStyles_unstable({ ...state });
+  useButtonStyles_unstable(state);
 
   return state;
 };
