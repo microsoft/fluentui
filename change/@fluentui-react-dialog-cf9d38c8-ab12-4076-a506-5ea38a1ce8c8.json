@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use tabster to focus on trigger, instead of manually invoking .focus",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

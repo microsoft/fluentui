@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Fri, 07 Apr 2023 00:01:38 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Apr 2023 09:31:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.1)
+
+Wed, 12 Apr 2023 09:31:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.5.0..@fluentui/react-dialog_v9.5.1)
+
+### Patches
+
+- fix: use tabster to focus on trigger, instead of manually invoking .focus ([PR #27512](https://github.com/microsoft/fluentui/pull/27512) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.17 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-aria to v9.3.17 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-tabster to v9.6.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+- Bump @fluentui/react-portal to v9.2.5 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.5.0)
 

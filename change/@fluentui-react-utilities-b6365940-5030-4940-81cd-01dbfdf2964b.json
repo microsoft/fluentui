@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(hooks): cleanup event listeners only when \"disabled\" is false",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
