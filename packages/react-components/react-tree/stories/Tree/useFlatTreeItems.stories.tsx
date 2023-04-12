@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout, useFlatTree_unstable, FlatTreeItemProps } from '@fluentui/react-tree';
-import story from 'useFlatTreeItems.md';
+import story from './useFlatTreeItems.md';
 
 const defaultItems: FlatTreeItemProps[] = [
   {
