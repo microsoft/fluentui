@@ -159,7 +159,6 @@ const templates = {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
         mainEntryPointFilePath:
-          // eslint-disable-next-line @fluentui/max-len
           '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
         apiReport: {
           enabled: true,
@@ -694,6 +693,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   function setupScripts(json: PackageJson) {
     const scripts = {
       test: 'jest --passWithNoTests',
+      'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
       'type-check': 'tsc -b tsconfig.json',
     };
 

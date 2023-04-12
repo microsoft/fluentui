@@ -21,9 +21,9 @@ jobs:
         displayName: yarn
 
       - script: |
-          NorthstarAffected=$(yarn --silent check:affected-package --packages @fluentui/react-northstar --pr)
-          V8Affected=$(yarn --silent check:affected-package --packages @fluentui/react --pr)
-          ReactComponentsAffected=$(yarn --silent check:affected-package --packages @fluentui/react-components --pr)
+          NorthstarAffected=$(yarn --silent check:affected --package @fluentui/react-northstar)
+          V8Affected=$(yarn --silent check:affected --package @fluentui/react)
+          ReactComponentsAffected=$(yarn --silent check:affected --package @fluentui/react-components)
           if [[ $NorthstarAffected == true ]]; then
             echo "##vso[task.setvariable variable=NorthstarPackageAffected;isOutput=true]true"
           fi
@@ -36,7 +36,7 @@ jobs:
         name: PackagesAffected
         displayName: Check if v8, v9 and/or northstar packages were affected
 
-  - job: PerfTestNorthstar
+  - job: PerfTestReactNorthstar
     displayName: Perf test for @fluentui/react-northstar
     dependsOn: CheckIfPackagesAffected
     condition: eq(dependencies.CheckIfPackagesAffected.outputs['PackagesAffected.NorthstarPackageAffected'], true)
@@ -51,20 +51,13 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage build --to @fluentui/perf-test-northstar --to @fluentui/react-conformance --verbose
-        condition: eq(variables.isPR, true)
-        displayName: Build to Perf Test (Northstar)
-
-      - script: |
-          yarn perf:test:base
+          yarn workspace @fluentui/perf-test-northstar perf:test --base
         condition: eq(variables.isPR, false)
-        workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test Base (Northstar)
 
       - script: |
-          yarn perf:test
+          yarn workspace @fluentui/perf-test-northstar perf:test
         condition: eq(variables.isPR, true)
-        workingDirectory: packages/fluentui/perf-test-northstar
         displayName: Run Perf Test (Northstar)
 
       - task: AzureUpload@2
@@ -83,8 +76,8 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathNorthstar)'
-          status: '$(PerfCommentStatusNorthstar)'
+          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathReactNorthstar)'
+          status: '$(PerfCommentStatusReactNorthstar)'
           uniqueId: 'perfComment9424'
 
       - script: |
@@ -107,7 +100,7 @@ jobs:
 
       - template: .devops/templates/cleanup.yml
 
-  - job: PerfTestV8
+  - job: PerfTestReact
     displayName: Perf test for @fluentui/react
     dependsOn: CheckIfPackagesAffected
     condition: eq(dependencies.CheckIfPackagesAffected.outputs['PackagesAffected.V8PackageAffected'], true)
@@ -121,14 +114,8 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage build --to perf-test --verbose
+          yarn workspace @fluentui/perf-test test:perf
         condition: eq(variables.isPR, true)
-        displayName: Build to Perf Test
-
-      - script: |
-          yarn just perf-test
-        condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test
         displayName: Run Perf Test
 
       - task: AzureUpload@2
@@ -147,8 +134,8 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
-          status: '$(PerfCommentStatus)'
+          blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePathReact)'
+          status: '$(PerfCommentStatusReact)'
           uniqueId: 'perfComment9423'
 
       - template: .devops/templates/cleanup.yml
@@ -167,14 +154,8 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage build --to perf-test-react-components --verbose
+          yarn workspace @fluentui/perf-test-react-components test:perf
         condition: eq(variables.isPR, true)
-        displayName: Build to Perf Test
-
-      - script: |
-          yarn just perf-test
-        condition: eq(variables.isPR, true)
-        workingDirectory: apps/perf-test-react-components
         displayName: Run Perf Test
 
       - task: AzureUpload@2

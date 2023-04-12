@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 09:31:45 GMT",
+      "tag": "@fluentui/react-utilities_v9.7.4",
+      "version": "9.7.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1539311d63dfa731f1bbf1e08ab002a43c52f9a0",
+            "comment": "fix(hooks): cleanup event listeners only when \"disabled\" is false"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Apr 2023 18:44:50 GMT",
+      "tag": "@fluentui/react-utilities_v9.7.3",
+      "version": "9.7.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "60f71394c7ac9aa81e6e243cbd011845b43c705f",
+            "comment": "bugfix: increments SlotRenderFunction signature to include children"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 21 Mar 2023 21:23:15 GMT",
       "tag": "@fluentui/react-utilities_v9.7.2",
       "version": "9.7.2",

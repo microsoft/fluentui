@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 24 Mar 2023 22:25:03 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Apr 2023 07:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.4)
+
+Mon, 10 Apr 2023 07:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.3..@fluentui/react_v8.107.4)
+
+### Patches
+
+- fix: re-implement early List rendering behind prop flag ([PR #27002](https://github.com/microsoft/fluentui/pull/27002) by seanmonahan@microsoft.com)
+
+## [8.107.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.3)
+
+Fri, 07 Apr 2023 07:39:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.2..@fluentui/react_v8.107.3)
+
+### Patches
+
+- fix: GroupedListV2 properly toggles groups ([PR #27420](https://github.com/microsoft/fluentui/pull/27420) by seanmonahan@microsoft.com)
+
+## [8.107.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.2)
+
+Thu, 06 Apr 2023 07:39:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.1..@fluentui/react_v8.107.2)
+
+### Patches
+
+- fix: ComboBox updates activeDescendant value ([PR #27457](https://github.com/microsoft/fluentui/pull/27457) by sarah.higley@microsoft.com)
+
+## [8.107.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.1)
+
+Mon, 03 Apr 2023 07:37:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.107.0..@fluentui/react_v8.107.1)
+
+### Patches
+
+- fix: ColorPicker preview box updated to ignore forced colors to display chosen color ([PR #27394](https://github.com/microsoft/fluentui/pull/27394) by gcox@microsoft.com)
+
+## [8.107.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.107.0)
+
+Thu, 30 Mar 2023 07:43:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.106.10..@fluentui/react_v8.107.0)
+
+### Minor changes
+
+- feat: Add blur function to ISearchBox componentRef ([PR #27330](https://github.com/microsoft/fluentui/pull/27330) by behowell@microsoft.com)
+
+### Patches
+
+- Added touch support to ColorPicker ([PR #27349](https://github.com/microsoft/fluentui/pull/27349) by gcox@microsoft.com)
+
+## [8.106.10](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.10)
+
+Tue, 28 Mar 2023 07:38:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.106.9..@fluentui/react_v8.106.10)
+
+### Patches
+
+- fix: Ensure click event object is not passed to calendarDismissed callback in DatePicker. ([PR #26022](https://github.com/microsoft/fluentui/pull/26022) by makotom@microsoft.com)
 
 ## [8.106.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.106.9)
 

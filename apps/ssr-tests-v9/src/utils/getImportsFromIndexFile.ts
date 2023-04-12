@@ -5,6 +5,7 @@ import * as path from 'path';
 type StoryImport = {
   local: string;
   imported: string;
+  filepath: string;
   path: string;
 };
 
@@ -62,12 +63,12 @@ export async function getImportsFromIndexFile(distDir: string, filename: string)
 
         const importName = specifierPath.get('local').node.name;
         // These paths should be always POSIX-like as backslashes are not valid to be used in imports
-        const importPath = path
-          .relative(distDir, path.resolve(path.dirname(filename), sourcePath.node.value))
-          .split(path.sep)
-          .join(path.posix.sep);
+
+        const absolutePath = path.resolve(path.dirname(filename), sourcePath.node.value);
+        const importPath = path.relative(distDir, absolutePath).split(path.sep).join(path.posix.sep);
 
         imports.push({
+          filepath: absolutePath,
           local: importName,
           imported: importPrefix + importName,
           path: importPath,

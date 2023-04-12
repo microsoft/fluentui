@@ -15,9 +15,7 @@ export const TriggerOutsideDialog = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <Button aria-expanded={open} onClick={() => setOpen(true)}>
-        Open Dialog
-      </Button>
+      <Button onClick={() => setOpen(true)}>Open Dialog</Button>
       <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
         <DialogSurface>
           <DialogBody>
