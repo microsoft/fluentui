@@ -1,21 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DatePicker should not render DatePicker when isDatePickerShown is not set 1`] = `
+exports[`DatePicker should not render popup when it is not open 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <span
+        aria-owns="datePicker-popoverSurface1"
         class="fui-Input fui-DatePicker"
       >
         <input
           aria-expanded="false"
           aria-haspopup="dialog"
           class="fui-Input__input"
-          data-tabster="{\\"deloser\\":{}}"
           readonly=""
           role="combobox"
-          tabindex="0"
           type="text"
           value=""
         />
@@ -42,16 +41,15 @@ Object {
   </body>,
   "container": <div>
     <span
+      aria-owns="datePicker-popoverSurface1"
       class="fui-Input fui-DatePicker"
     >
       <input
         aria-expanded="false"
         aria-haspopup="dialog"
         class="fui-Input__input"
-        data-tabster="{\\"deloser\\":{}}"
         readonly=""
         role="combobox"
-        tabindex="0"
         type="text"
         value=""
       />

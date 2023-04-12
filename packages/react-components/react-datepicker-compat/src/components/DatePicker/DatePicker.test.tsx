@@ -4,7 +4,6 @@ import { DatePicker } from './DatePicker';
 import { isConformant } from '../../testing/isConformant';
 import { datePickerClassNames } from './useDatePickerStyles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { Field } from '@fluentui/react-field';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {
@@ -39,7 +38,7 @@ describe('DatePicker', () => {
           props: {},
           expectedClassNames: {
             root: datePickerClassNames.root,
-            popoverSurface: datePickerClassNames.popoverSurface,
+            popupSurface: datePickerClassNames.popupSurface,
             calendar: datePickerClassNames.calendar,
           },
           getPortalElement: getDatepickerPopoverElement,
@@ -53,7 +52,7 @@ describe('DatePicker', () => {
     expect(result.findByTestId('test-id')).toBeTruthy();
   });
 
-  it('should not render DatePicker when isDatePickerShown is not set', () => {
+  it('should not render popup when it is not open', () => {
     const result = render(<DatePicker />);
     expect(result).toMatchSnapshot();
   });

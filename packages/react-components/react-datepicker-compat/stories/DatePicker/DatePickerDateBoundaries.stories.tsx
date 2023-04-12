@@ -1,8 +1,7 @@
 import * as React from 'react';
+import { addMonths, addYears, DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { addMonths, addYears, defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
-import { Field } from '@fluentui/react-field';
-import type { DatePickerStrings } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   inputControl: {
@@ -13,10 +12,6 @@ const useStyles = makeStyles({
 const today = new Date(Date.now());
 const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
-const strings: DatePickerStrings = {
-  ...defaultDatePickerStrings,
-  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()} and ${maxDate.toLocaleDateString()}`,
-};
 
 export const DateBoundaries = () => {
   const styles = useStyles();

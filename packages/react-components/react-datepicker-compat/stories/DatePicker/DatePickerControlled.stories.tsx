@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeStyles, Button } from '@fluentui/react-components';
 import { addDays, DatePicker } from '@fluentui/react-datepicker-compat';
-import { Field } from '@fluentui/react-field';
+import { Button, makeStyles } from '@fluentui/react-components';
+import { Field } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   root: {

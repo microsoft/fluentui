@@ -345,7 +345,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       readOnly: !allowTextInput,
       role: 'combobox',
       root: {
-        ref: triggerRef,
+        ref: useMergedRefs(triggerRef, ref),
+        'aria-owns': popupSurfaceId,
       },
       input: {
         ref: useMergedRefs(rootRef, props.input?.ref),
