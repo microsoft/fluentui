@@ -37,10 +37,20 @@ None
 
 ### Slots
 
-- option: The slot reserved for the option element
-- optgroup: The slot reserved for the optgroup element and child option elements
+- default: The dfeault for `option` and `optgroup` elements. As these are the only elements supported in the native `select` control, we might consider filtering out other elements.
 - icon: the icon, typically a down arrow
 - label: the label for the select
+- Example usage for default slot
+  ```HTML
+  <fluent-select>
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <optgroup label="Group 1">
+      <option value="option3">Option 3</option>
+      <option value="option4">Option 4</option>
+    </optgroup>
+  </fluent-select>
+  ```
 
 ### CSS Variables
 
