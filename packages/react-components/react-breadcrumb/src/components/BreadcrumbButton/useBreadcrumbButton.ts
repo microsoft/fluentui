@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
-import { useButton_unstable, ButtonProps } from '@fluentui/react-button';
+import { useButton_unstable } from '@fluentui/react-button';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
 /**
@@ -19,18 +19,11 @@ export const useBreadcrumbButton_unstable = (
   const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
 
   const { current = false, ...rest } = props;
-  const newProps = {
-    ...rest,
-    appearance: (props.appearance || appearance) as ButtonProps['appearance'],
-    iconPosition,
-  };
-  const buttonState = useButton_unstable(newProps, ref);
   return {
-    ...buttonState,
-    components: {
-      root: 'button',
-      icon: 'span',
-    },
+    ...useButton_unstable(
+      { ...rest, appearance: props.appearance || appearance, iconPosition: props.iconPosition || iconPosition },
+      ref,
+    ),
     current,
     size,
   };

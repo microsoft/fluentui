@@ -34,7 +34,7 @@ export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick
 export type BreadcrumbButtonSlots = ButtonSlots;
 
 // @public
-export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'> & Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>> & Required<Pick<ButtonProps, 'appearance'>>;
+export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'> & Required<Pick<BreadcrumbButtonProps, 'current' | 'size'>>;
 
 // @public (undocumented)
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;

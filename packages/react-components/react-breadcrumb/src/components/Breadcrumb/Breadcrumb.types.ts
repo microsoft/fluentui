@@ -32,14 +32,26 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
    * @default 'transparent'
    */
   appearance?: 'transparent' | 'subtle';
+
+  /**
+   * Controls type of the divider.
+   *
+   * @default 'chevron'
+   */
+  dividerType?: 'chevron' | 'slash';
+
+  /**
+   * Icon position for BreadcrumbButton or BreadcrumbLink.
+   *
+   * @default 'before'
+   */
+  iconPosition?: 'before' | 'after';
+
   /**
    * Controls size of Breadcrumb items and dividers.
    *
    * @default 'medium'
    */
-  dividerType?: 'chevron' | 'slash';
-
-  iconPosition?: 'before' | 'after';
   size?: 'small' | 'medium' | 'large';
 };
 

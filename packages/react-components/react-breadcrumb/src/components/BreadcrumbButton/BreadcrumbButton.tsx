@@ -6,7 +6,7 @@ import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * BreadcrumbButton component - TODO: add more docs
+ * A button component which is used inside the Breadcrumb.
  */
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbButton_unstable(props, ref);
