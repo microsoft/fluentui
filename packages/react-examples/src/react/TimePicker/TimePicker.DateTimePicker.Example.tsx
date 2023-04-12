@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { TimePicker } from '@fluentui/react/lib/TimePicker';
-import { DatePicker } from '@fluentui/react/lib/DatePicker';
-import { Label } from '@fluentui/react/lib/Label';
-import { Text } from '@fluentui/react/lib/Text';
-import { TimePickerExampleWrapper } from '@fluentui/react-examples/lib/react/TimePicker/TimePicker.Example.Wrapper';
+import { TimePicker, DatePicker, Label, Text, IStackTokens, Stack, IStackStyles } from '@fluentui/react';
+
+const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
+const stackTokens: IStackTokens = { childrenGap: 20 };
 
 export const TimePickerDateTimePickerExample: React.FC = () => {
   const currentDate = new Date('2023-02-01 05:00:00');
@@ -24,7 +23,7 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
   }, [currentTime]);
 
   return (
-    <TimePickerExampleWrapper>
+    <Stack tokens={stackTokens} styles={stackStyles}>
       <Label>{'DatePicker and TimePicker combination'}</Label>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridColumnGap: '3px' }}>
         <DatePicker placeholder="Select a date..." value={datePickerDate} onSelectDate={onSelectDate} />
@@ -32,6 +31,6 @@ export const TimePickerDateTimePickerExample: React.FC = () => {
       </div>
       <Text>{`⚓ Date anchor: ${datePickerDate.toString()}`}</Text>
       <Text>{`⌚ Selected time: ${currentTimeString ? currentTimeString : '<no time selected>'}`}</Text>
-    </TimePickerExampleWrapper>
+    </Stack>
   );
 };

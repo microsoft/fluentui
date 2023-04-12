@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { TimePicker } from '@fluentui/react/lib/TimePicker';
-import { Text } from '@fluentui/react/lib/Text';
-import { TimePickerExampleWrapper } from '@fluentui/react-examples/lib/react/TimePicker/TimePicker.Example.Wrapper';
-import { timePickerStyles } from '@fluentui/react-examples/lib/react/TimePicker/TimePickerStyles';
+import { TimePicker, Text, IStackTokens, Stack, IStackStyles, IComboBoxStyles } from '@fluentui/react';
+
+const stackStyles: Partial<IStackStyles> = { root: { width: 500 } };
+const stackTokens: IStackTokens = { childrenGap: 20 };
+
+const timePickerStyles: Partial<IComboBoxStyles> = {
+  optionsContainerWrapper: {
+    height: '500px',
+  },
+  root: {
+    width: '500px',
+  },
+};
 
 export const TimePickerCustomTimeStringsExample: React.FC = () => {
   const [customTimeString, setCustomTimeString] = React.useState<string>('');
@@ -21,7 +30,7 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
   }, []);
 
   return (
-    <TimePickerExampleWrapper>
+    <Stack tokens={stackTokens} styles={stackStyles}>
       <TimePicker
         styles={timePickerStyles}
         onFormatDate={onFormatDate}
@@ -35,6 +44,6 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
       />
       <Text>{`⚓ Date anchor: ${dateAnchor.toString()}`}</Text>
       <Text>{`⌚ Selected time: ${customTimeString ? customTimeString : '<no time selected>'}`}</Text>
-    </TimePickerExampleWrapper>
+    </Stack>
   );
 };
