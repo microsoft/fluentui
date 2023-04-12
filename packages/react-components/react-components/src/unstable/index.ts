@@ -146,7 +146,6 @@ export type {
   TreeItemLayoutState,
   TreeItemLayoutSlots,
   TreeItemLayoutProps,
-  TreeItemId,
   TreeContextValue,
   NestedTreeItem,
   FlatTree,

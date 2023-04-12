@@ -8,12 +8,12 @@ import { treeItemFilter } from '../utils/treeItemFilter';
 import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { useRovingTabIndex } from './useRovingTabIndexes';
 
-export function useFlatTreeNavigation(flatTreeItems: FlatTreeItems) {
+export function useFlatTreeNavigation<Value = string>(flatTreeItems: FlatTreeItems<Value>) {
   const { targetDocument } = useFluent_unstable();
   const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
   const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
 
-  function getNextElement(data: TreeNavigationData_unstable) {
+  function getNextElement(data: TreeNavigationData_unstable<Value>) {
     if (!targetDocument || !treeItemWalkerRef.current) {
       return null;
     }
@@ -25,7 +25,7 @@ export function useFlatTreeNavigation(flatTreeItems: FlatTreeItems) {
         treeItemWalker.currentElement = data.target;
         return nextTypeAheadElement(treeItemWalker, data.event.key);
       case treeDataTypes.arrowLeft:
-        return parentElement(flatTreeItems, data.target, targetDocument);
+        return parentElement(flatTreeItems, data.value, targetDocument);
       case treeDataTypes.arrowRight:
         treeItemWalker.currentElement = data.target;
         return firstChild(data.target, treeItemWalker);
@@ -43,7 +43,7 @@ export function useFlatTreeNavigation(flatTreeItems: FlatTreeItems) {
         return treeItemWalker.previousElement();
     }
   }
-  const navigate = useEventCallback((data: TreeNavigationData_unstable) => {
+  const navigate = useEventCallback((data: TreeNavigationData_unstable<Value>) => {
     const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
@@ -66,10 +66,13 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement(flatTreeItems: FlatTreeItems, target: HTMLElement, document: Document) {
-  const flatTreeItem = flatTreeItems.get(target.id);
-  if (flatTreeItem && flatTreeItem.parentId) {
-    return document.getElementById(flatTreeItem.parentId);
+function parentElement<Value = string>(flatTreeItems: FlatTreeItems<Value>, value: Value, document: Document) {
+  const flatTreeItem = flatTreeItems.get(value);
+  if (flatTreeItem && flatTreeItem.parentValue) {
+    const parentId = flatTreeItems.get(flatTreeItem.parentValue)?.getTreeItemProps().id;
+    if (parentId) {
+      return document.getElementById(parentId);
+    }
   }
   return null;
 }

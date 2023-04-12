@@ -1,24 +1,15 @@
 import * as React from 'react';
-import {
-  Tree,
-  TreeItem,
-  TreeItemLayout,
-  TreeItemId,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
-} from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeOpenChangeData, TreeOpenChangeEvent } from '@fluentui/react-tree';
 import story from './TreeControllingOpenAndClose.md';
 
 export const OpenItemsControlled = () => {
-  const [openItems, setOpenItems] = React.useState<TreeItemId[]>([]);
-  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenItems(curr =>
-      data.open ? [...curr, event.currentTarget.id] : curr.filter(id => id !== event.currentTarget.id),
-    );
+  const [openItems, setOpenItems] = React.useState<string[]>([]);
+  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData<string>) => {
+    setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
   };
   return (
     <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
-      <TreeItem id="tree-item-1">
+      <TreeItem value="tree-item-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
           <TreeItem>
@@ -32,10 +23,10 @@ export const OpenItemsControlled = () => {
           </TreeItem>
         </Tree>
       </TreeItem>
-      <TreeItem id="tree-item-2">
+      <TreeItem value="tree-item-2">
         <TreeItemLayout>level 1, item 2</TreeItemLayout>
         <Tree>
-          <TreeItem id="tree-item-3">
+          <TreeItem value="tree-item-3">
             <TreeItemLayout>level 2, item 1</TreeItemLayout>
             <Tree>
               <TreeItem>
