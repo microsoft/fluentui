@@ -2,7 +2,7 @@
 
 ## Component Description
 
-The browser-native select control component allows users to choose one option from a dropdown list. It is commonly used in forms for selecting values from a predefined set of options.
+The browser-native select control component allows users to choose one option from a list of options. It is commonly used in forms for selecting values from a predefined set of options. This component is a wrapper for the browser-native select control and largely exists to provide a consistent API across browsers, especially on mobile devices.
 
 ## Design Spec
 
@@ -13,9 +13,8 @@ The browser-native select control component allows users to choose one option fr
 ### Inputs
 
 - @attr appearance: "outline" "underline" "filled-darker" "filled-lighter" | "outline"
-- @attr size: "small" "medium" "large" | "medium"
+- @attr component-size: "small" "medium" "large" | "medium"
 - @attr disabled: boolean
-- @attr multiple: boolean
 - @attr required: boolean
 - @attr name: string
 - @attr autofocus: boolean
@@ -23,6 +22,8 @@ The browser-native select control component allows users to choose one option fr
 - @attr aria-label: string
 - @attr aria-labelledby: string
 - @attr aria-describedby: string
+- Use ARIAGlobalStatesAndProperties from @microsoft/fast-foundation
+- No @attr for multiple as it is not supported in the Fluent React implementation
 
 ### Outputs
 
@@ -32,11 +33,14 @@ None
 
 - @input: Fires whenever the value of the `select` has been changed
 - @change: Fires whenever the user modifies the value of `select`
+- Note: These will not be the native events, but will be custom events that bubble
 
 ### Slots
 
-- default: child elements such as '<option>' will be placed in the default slot
+- option: The slot reserved for the option element
+- optgroup: The slot reserved for the optgroup element and child option elements
 - icon: the icon, typically a down arrow
+- label: the label for the select
 
 ### CSS Variables
 
@@ -51,6 +55,7 @@ None
   - @attr aria-label: string
   - @attr aria-labelledby: string
   - @attr aria-describedby: string
+  - Use ARIAGlobalStatesAndProperties from @microsoft/fast-foundation
 - [x] Does the component support 400% zoom?
 - [x] What keyboard behaviors does the component support?
   - Up / Down : Moves focus between options
@@ -68,6 +73,7 @@ None
   - No spec available
 - [x] [Fluent UI React V9 Storybook](https://aka.ms/fluentui-storybook) for implementation differences and document
   - [Fluent React V9 Select](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-select--default)
+  - `size` attribute renamed to `component-size` to not conflict with the HTML `size` attribute
 - [x] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
   - [Select](https://github.com/orgs/microsoft/projects/652/views/2?pane=issue&itemId=18315933)
 - [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
