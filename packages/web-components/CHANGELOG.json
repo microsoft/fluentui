@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 04:19:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.17",
+      "version": "3.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cc0a6678ff55f657b13b70cff02645fe3772c84e",
+            "comment": "feat(toggle-button): add toggle button web component"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "37195a34b36538ab0cc7c765824691bab796502e",
+            "comment": "feat(compound-button): add compound button as new web component"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5ab8f95663fcac978d98dccc65626196679a2ae2",
+            "comment": "feat(anchor-button): add anchor button to web components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Apr 2023 04:24:57 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.16",
       "version": "3.0.0-alpha.16",
