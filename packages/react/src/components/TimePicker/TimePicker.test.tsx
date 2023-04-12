@@ -78,6 +78,55 @@ describe('TimePicker', () => {
     expect(formattedSelectedTime).toEqual(expectedTime);
   });
 
+  it('changes time options to match new base date', () => {
+    let dateAnchor = new Date('April 12, 2023 00:00:00');
+    let _selectedTime: Date | undefined = undefined;
+    const onChange = (ev: React.FormEvent<IComboBox>, time: Date | undefined): void => {
+      _selectedTime = time;
+    };
+
+    const { getByRole, getAllByRole, rerender } = render(
+      <TimePicker
+        showSeconds
+        allowFreeform={false}
+        increments={15}
+        autoComplete="on"
+        label="I am a controlled TimePicker"
+        dateAnchor={dateAnchor}
+        value={_selectedTime}
+        onChange={onChange}
+      />,
+    );
+
+    const timePickerOptionIdx = 6;
+    const initialTimePickerComboBox = getByRole('combobox') as HTMLInputElement;
+    userEvent.click(initialTimePickerComboBox);
+    const timePickerOptions = getAllByRole('option') as HTMLInputElement[];
+    userEvent.click(timePickerOptions[timePickerOptionIdx], undefined, { skipPointerEventsCheck: true });
+    expect(_selectedTime!.toString()).toEqual(new Date('April 12, 2023 01:30:00').toString());
+
+    dateAnchor = new Date('April 05, 2023 00:00:00');
+
+    rerender(
+      <TimePicker
+        showSeconds
+        allowFreeform={false}
+        increments={15}
+        autoComplete="on"
+        label="I am a controlled TimePicker"
+        dateAnchor={dateAnchor}
+        value={_selectedTime}
+        onChange={onChange}
+      />,
+    );
+
+    const updatedTimePickerComboBox = getByRole('combobox') as HTMLInputElement;
+    userEvent.click(updatedTimePickerComboBox);
+    const updatedTimePickerOptions = getAllByRole('option') as HTMLInputElement[];
+    userEvent.click(updatedTimePickerOptions[timePickerOptionIdx], undefined, { skipPointerEventsCheck: true });
+    expect(_selectedTime!.toString()).toEqual(new Date('April 05, 2023 01:30:00').toString());
+  });
+
   describe('validates entered text when', () => {
     it('receives an invalid hour input for 24-hour-no-seconds format', () => {
       const wrapper = mount(<TimePicker id="test" allowFreeform useHour12={false} showSeconds={false} />);
