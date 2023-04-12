@@ -152,9 +152,9 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Localized strings to use in the DatePicker
+   * Localized strings to use in the Calendar
    */
-  strings?: DatePickerStrings;
+  strings?: CalendarStrings;
 
   /**
    * Whether the month picker should highlight the current month
@@ -229,12 +229,12 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
   tabIndex?: number;
 };
 
-export type DatePickerState = ComponentState<DatePickerSlots> &
-  Required<Pick<DatePickerProps, 'open'>> & {
-    disabled: boolean;
-    inlinePopup: boolean;
-  };
+export type DatePickerState = ComponentState<DatePickerSlots> & {
+  disabled: boolean;
+  inlinePopup: boolean;
+};
 
+// TODO: remove this once we add error handling hook
 export interface DatePickerStrings extends CalendarStrings {
   /**
    * Error message to render for Input if isRequired validation fails.

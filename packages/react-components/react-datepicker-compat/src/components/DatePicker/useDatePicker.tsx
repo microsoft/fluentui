@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ArrowDown, Enter, Escape } from '@fluentui/keyboard-keys';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { Input } from '@fluentui/react-input';
+import { useFocusFinders, useModalAttributes } from '@fluentui/react-tabster';
 import {
   mergeCallbacks,
   resolveShorthand,
@@ -9,14 +10,17 @@ import {
   useEventCallback,
   useId,
   useMergedRefs,
+  useOnClickOutside,
+  useOnScrollOutside,
 } from '@fluentui/react-utilities';
 import { compareDatePart, DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
-import { defaultDatePickerStrings } from './defaults';
-import { usePopup } from '../../utils/usePopup';
+import { usePopupPositioning } from '../../utils/usePopupPositioning';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { InputProps, InputOnChangeData } from '@fluentui/react-input';
 import type { CalendarProps, ICalendar } from '../Calendar/Calendar.types';
 import type { DatePickerProps, DatePickerState } from './DatePicker.types';
+import { defaultCalendarStrings } from '../Calendar/defaults';
 
 function isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
   return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
@@ -129,7 +133,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     showGoToToday = true,
     showMonthPickerAsOverlay = false,
     showWeekNumbers = false,
-    strings = defaultDatePickerStrings,
+    strings = defaultCalendarStrings,
     today,
     underlined = false,
     value,
@@ -143,7 +147,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     value,
   });
   const [open, setOpenState] = usePopupVisibility(props);
-  const ignoreNextBlur = React.useRef(false);
+  const popupSurfaceId = useId('datePicker-popoverSurface');
 
   const validateTextInput = React.useCallback(
     (date: Date | null = null): void => {
@@ -321,7 +325,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     } else if (props.allowTextInput) {
       dismissDatePickerPopup();
     }
-    // rootRef.current?.focus();
   };
 
   const inputAppearance: InputProps['appearance'] = underlined
@@ -330,18 +333,23 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ? 'filled-lighter'
     : 'outline';
 
-  let rootShorthand = resolveShorthand(restOfProps, {
+  const [triggerRef, popupRef] = usePopupPositioning(props);
+  const rootShorthand = resolveShorthand(restOfProps, {
     required: true,
     defaultProps: {
-      input: {
-        ref: useMergedRefs(rootRef, props.input?.ref), // TODO: should we be doing this?
-      },
       appearance: inputAppearance,
+      'aria-controls': open ? popupSurfaceId : undefined,
       'aria-expanded': open,
       'aria-haspopup': 'dialog',
       contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
       readOnly: !allowTextInput,
       role: 'combobox',
+      root: {
+        ref: triggerRef,
+      },
+      input: {
+        ref: useMergedRefs(rootRef, props.input?.ref),
+      },
     },
   });
   rootShorthand.onChange = mergeCallbacks(rootShorthand.onChange, onInputChange);
@@ -350,17 +358,47 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   rootShorthand.onFocus = mergeCallbacks(rootShorthand.onFocus, onInputFocus);
   rootShorthand.onClick = mergeCallbacks(rootShorthand.onClick, onInputClick);
 
-  const popupSurfaceId = useId('datePicker-popoverSurface');
-  let popupSurfaceShorthand = open
+  const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
+  const popupSurfaceShorthand = open
     ? resolveShorthand(props.popupSurface, {
         required: true,
         defaultProps: {
           'aria-label': 'Calendar',
+          'aria-modal': true,
           id: popupSurfaceId,
           role: 'dialog',
+          ref: popupRef,
+          ...modalAttributes,
         },
       })
     : undefined;
+
+  const { targetDocument } = useFluent();
+  useOnClickOutside({
+    element: targetDocument,
+    callback: ev => dismissDatePickerPopup(),
+    refs: [triggerRef, popupRef],
+    disabled: !open,
+  });
+
+  useOnScrollOutside({
+    element: targetDocument,
+    callback: ev => dismissDatePickerPopup(),
+    refs: [triggerRef, popupRef],
+    disabled: !open,
+  });
+
+  const { findFirstFocusable } = useFocusFinders();
+  React.useEffect(() => {
+    if (disableAutoFocus) {
+      return;
+    }
+
+    if (open && popupRef.current) {
+      const firstFocusable = findFirstFocusable(popupRef.current);
+      firstFocusable?.focus();
+    }
+  }, [disableAutoFocus, findFirstFocusable, open, popupRef]);
 
   const popupOnClick = useEventCallback(
     mergeCallbacks((ev: React.MouseEvent<HTMLDivElement>) => {
@@ -368,20 +406,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     }, popupSurfaceShorthand?.onClick),
   );
 
-  const popupOnMouseDown = useEventCallback(
-    mergeCallbacks((ev: React.MouseEvent<HTMLDivElement>) => {
-      ignoreNextBlur.current = true;
-    }, popupSurfaceShorthand?.onMouseDown),
-  );
-
   if (popupSurfaceShorthand) {
-    rootShorthand['aria-controls'] = popupSurfaceShorthand.id;
-
     popupSurfaceShorthand.onClick = popupOnClick;
-    popupSurfaceShorthand.onMouseDown = popupOnMouseDown;
   }
-
-  [rootShorthand, popupSurfaceShorthand] = usePopup(props, rootShorthand, popupSurfaceShorthand);
 
   const calendarShorthand = resolveShorthand(props.calendar, {
     required: true,
@@ -423,9 +450,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const state: DatePickerState = {
     disabled: !!props.disabled,
     inlinePopup,
-    open,
 
-    // Slots definition
     components: {
       root: Input,
       calendar: Calendar as React.FC<Partial<CalendarProps>>,
