@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: the BasePicker with List Below variant now sets aria-describedby pointing to selected values",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
