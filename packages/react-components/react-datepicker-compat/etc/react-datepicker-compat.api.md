@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
+import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -165,14 +166,16 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     openOnClick?: boolean;
     defaultOpen?: boolean;
     open?: boolean;
+    onOpenChange?: (open: boolean) => void;
     inlinePopup?: boolean;
+    positioning?: PositioningProps;
     placeholder?: string;
     today?: Date;
     value?: Date;
     formatDate?: (date?: Date) => string;
     parseDateFromString?: (dateStr: string) => Date | null;
     firstDayOfWeek?: DayOfWeek;
-    strings?: DatePickerStrings;
+    strings?: CalendarStrings;
     highlightCurrentMonth?: boolean;
     highlightSelectedMonth?: boolean;
     showWeekNumbers?: boolean;
@@ -184,18 +187,9 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     maxDate?: Date;
     initialPickerDate?: Date;
     allFocusable?: boolean;
-    onAfterMenuDismiss?: () => void;
     showCloseButton?: boolean;
     tabIndex?: number;
 };
-
-// @public (undocumented)
-export interface DatePickerStrings extends CalendarStrings {
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
-    isResetStatusMessage?: string;
-}
 
 // @public
 export enum DateRangeType {
@@ -232,9 +226,6 @@ export const DAYS_IN_WEEK = 7;
 
 // @public (undocumented)
 export const defaultCalendarStrings: CalendarStrings;
-
-// @public (undocumented)
-export const defaultDatePickerStrings: DatePickerStrings;
 
 // @public
 export enum FirstWeekOfYear {
@@ -355,7 +346,7 @@ export const TimeConstants: {
 };
 
 // @public
-export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;
+export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLInputElement>) => DatePickerState;
 
 // @public
 export const useDatePickerStyles_unstable: (state: DatePickerState) => DatePickerState;
