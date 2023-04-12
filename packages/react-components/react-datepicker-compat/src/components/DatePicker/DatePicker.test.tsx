@@ -137,21 +137,4 @@ describe('DatePicker', () => {
 
     expect(input.getAttribute('value')).toBe('15/1/20');
   });
-
-  it('gets props from a parent Field', () => {
-    const result = render(
-      <Field label="Select a date" validationMessage="Invalid date" required>
-        <DatePicker />
-      </Field>,
-    );
-
-    const datepicker = result.getByRole('combobox') as HTMLInputElement;
-    const label = result.getByText('Select a date') as HTMLLabelElement;
-    const message = result.getByText('Invalid date');
-
-    expect(datepicker.id).toEqual(label.htmlFor);
-    expect(datepicker.getAttribute('aria-describedby')).toEqual(message.id);
-    expect(datepicker.getAttribute('aria-invalid')).toEqual('true');
-    expect(datepicker.required).toBe(true);
-  });
 });

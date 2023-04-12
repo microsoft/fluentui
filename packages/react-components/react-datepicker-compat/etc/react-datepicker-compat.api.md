@@ -10,8 +10,6 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
-import type { PopoverProps } from '@fluentui/react-popover';
-import { PopoverSurface } from '@fluentui/react-popover';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -154,7 +152,7 @@ export const DatePicker: ForwardRefComponent<DatePickerProps>;
 export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 
 // @public (undocumented)
-export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'value' | 'defaultValue'> & {
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
     componentRef?: React_2.RefObject<IDatePicker>;
     onSelectDate?: (date: Date | null | undefined) => void;
     required?: boolean;
@@ -165,6 +163,9 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'va
     allowTextInput?: boolean;
     disableAutoFocus?: boolean;
     openOnClick?: boolean;
+    defaultOpen?: boolean;
+    open?: boolean;
+    inlinePopup?: boolean;
     placeholder?: string;
     today?: Date;
     value?: Date;

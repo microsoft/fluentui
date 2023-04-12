@@ -1,12 +1,12 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 
 export const datePickerClassNames: SlotClassNames<DatePickerSlots> = {
   root: 'fui-DatePicker',
   calendar: 'fui-DatePicker__calendar',
-  popover: 'fui-DatePicker__popover',
-  popoverSurface: 'fui-DatePicker__popoverSurface',
+  popupSurface: 'fui-DatePicker__popupSurface',
 };
 
 const useStyles = makeStyles({
@@ -25,11 +25,25 @@ const useStyles = makeStyles({
   },
 });
 
+const usePopupSurfaceClassName = makeResetStyles({
+  backgroundColor: tokens.colorNeutralBackground1,
+  boxShadow: tokens.shadow16,
+  borderRadius: tokens.borderRadiusMedium,
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: tokens.colorTransparentStroke,
+  display: 'inline-flex',
+  color: tokens.colorNeutralForeground1,
+  padding: '16px',
+  ...typographyStyles.body1,
+});
+
 /**
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
   const styles = useStyles();
+  const popupSurfaceClassName = usePopupSurfaceClassName();
   const { disabled } = state;
 
   state.root.className = mergeClasses(
@@ -39,7 +53,13 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
     state.root.className,
   );
 
-  state.popoverSurface.className = mergeClasses(datePickerClassNames.popoverSurface, state.popoverSurface.className);
+  if (state.popupSurface) {
+    state.popupSurface.className = mergeClasses(
+      datePickerClassNames.popupSurface,
+      popupSurfaceClassName,
+      state.popupSurface.className,
+    );
+  }
 
   state.calendar.className = mergeClasses(datePickerClassNames.calendar, state.calendar.className);
 

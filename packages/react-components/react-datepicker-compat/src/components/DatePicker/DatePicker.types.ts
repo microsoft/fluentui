@@ -1,32 +1,30 @@
 import * as React from 'react';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
 import { Input } from '@fluentui/react-input';
-import { PopoverSurface } from '@fluentui/react-popover';
-import type { PopoverProps } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
+import type { PositioningProps } from '@fluentui/react-positioning';
 
 export type DatePickerSlots = {
   root: NonNullable<Slot<typeof Input>>;
-  popover: NonNullable<Slot<Partial<PopoverProps>>>;
-  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
   calendar: NonNullable<Slot<Partial<CalendarProps>>>;
+  popupSurface?: Slot<'div'>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IDatePicker {
-  /** Sets focus to the text field */
+  /** Sets focus to the input */
   focus(): void;
 
   /** Reset the state of the picker to the default */
   reset(): void;
 
-  /** Open the datepicker callout */
+  /** Open the datepicker popup */
   showDatePickerPopup(): void;
 }
 
-export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'value' | 'defaultValue'> & {
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -86,6 +84,39 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'va
    * @default true
    */
   openOnClick?: boolean;
+
+  /**
+   * Whether the DatePicker should be open by default
+   *
+   * @default false
+   */
+  defaultOpen?: boolean;
+
+  /**
+   * Whether the DatePicker is open or not
+   *
+   * @default false
+   */
+  open?: boolean;
+
+  /**
+   * Callback to run when the DatePicker's open state changes
+   */
+  onOpenChange?: (open: boolean) => void;
+
+  /**
+   * Whether the DatePicker should render the popup as inline or in a portal
+   *
+   * @default false
+   */
+  inlinePopup?: boolean;
+
+  /**
+   * Configure the positioning of the DatePicker dialog
+   *
+   * @default below
+   */
+  positioning?: PositioningProps;
 
   /**
    * Placeholder text for the DatePicker
@@ -188,11 +219,6 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'va
   allFocusable?: boolean;
 
   /**
-   * Callback that runs after DatePicker's menu (Calendar) is closed
-   */
-  onAfterMenuDismiss?: () => void;
-
-  /**
    * Whether the CalendarDay close button should be shown or not.
    */
   showCloseButton?: boolean;
@@ -203,10 +229,11 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'va
   tabIndex?: number;
 };
 
-export type DatePickerState = ComponentState<DatePickerSlots> & {
-  disabled: boolean;
-  isDatePickerShown: boolean;
-};
+export type DatePickerState = ComponentState<DatePickerSlots> &
+  Required<Pick<DatePickerProps, 'open'>> & {
+    disabled: boolean;
+    inlinePopup: boolean;
+  };
 
 export interface DatePickerStrings extends CalendarStrings {
   /**
@@ -231,3 +258,8 @@ export interface DatePickerStrings extends CalendarStrings {
    */
   isResetStatusMessage?: string;
 }
+
+export type DatePickerOpenEvents =
+  | React.MouseEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>;

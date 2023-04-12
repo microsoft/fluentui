@@ -13,7 +13,7 @@ export const Required = () => {
   const styles = useStyles();
 
   return (
-    <Field label="Date required" required validationMessage="Hello">
+    <Field label="Date required" required>
       <DatePicker className={styles.control} placeholder="Select a date..." />
     </Field>
   );
