@@ -1,7 +1,31 @@
+import { registerTsPaths, rules } from '@fluentui/scripts-storybook';
 import * as path from 'path';
 
 // TODO: remove just as a dependency. should only be a dev dependency when used.
-import { webpackConfig, webpackMerge, htmlOverlay } from 'just-scripts';
+import { webpackMerge, htmlOverlay, stylesOverlay, fileOverlay, basicWebpackConfig } from 'just-scripts';
+import type { Configuration } from 'webpack';
+
+const tsConfigPath = path.resolve(__dirname, '../../../../tsconfig.base.v0.json');
+
+const webpackConfig = (config: Partial<Configuration>): Configuration => {
+  const mergedConfig = webpackMerge.merge(
+    basicWebpackConfig,
+    stylesOverlay(),
+    {
+      resolve: {
+        extensions: ['.js', '.ts', '.tsx'],
+      },
+      module: { rules: [rules.tsRule] },
+    },
+    fileOverlay(),
+    config,
+  );
+
+  return registerTsPaths({
+    config: mergedConfig,
+    configFile: tsConfigPath,
+  });
+};
 
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 11 Apr 2023 07:43:45 GMT",
+      "tag": "@fluentui/web-components_v2.5.13",
+      "version": "2.5.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d641ed3418a70dbcfcc29ca56acb4f2711551044",
+            "comment": "update fast foundation packages to import bug fixes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:17 GMT",
       "tag": "@fluentui/web-components_v2.5.12",
       "version": "2.5.12",
