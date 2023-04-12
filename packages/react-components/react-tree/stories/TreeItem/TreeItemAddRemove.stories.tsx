@@ -4,111 +4,100 @@ import {
   Tree,
   TreeItem,
   TreeItemLayout,
-  TreeItemProps,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
   useFlatTree_unstable,
 } from '@fluentui/react-tree';
 import { Delete20Regular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-components';
 import story from './TreeItemAddRemove.md';
 
-const firstItems: FlatTreeItemProps[] = [
-  {
-    id: '1',
-    children: <TreeItemLayout>Level 1, item 1</TreeItemLayout>,
-  },
-  {
-    id: '1-1',
-    parentId: '1',
-    children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
-  },
-  {
-    id: '1-2',
-    parentId: '1',
-    children: <TreeItemLayout>Level 2, item 2</TreeItemLayout>,
-  },
+const defaultSubTrees: FlatTreeItemProps[][] = [
+  [
+    { id: '1', children: <TreeItemLayout>Level 1, item 1</TreeItemLayout> },
+    { id: '1-1', parentId: '1', children: <TreeItemLayout>Item 1-1</TreeItemLayout> },
+    { id: '1-2', parentId: '1', children: <TreeItemLayout>Item 1-2</TreeItemLayout> },
+  ],
+  [
+    { id: '2', children: <TreeItemLayout>Level 1, item 2</TreeItemLayout> },
+    { id: '2-1', parentId: '2', children: <TreeItemLayout>Item 2-1</TreeItemLayout> },
+  ],
 ];
-
-const secondItems: FlatTreeItemProps[] = [
-  {
-    id: '2',
-    children: <TreeItemLayout>Level 1, item 2</TreeItemLayout>,
-  },
-  {
-    id: '2-1',
-    parentId: '2',
-    children: <TreeItemLayout>Level 2, item 1</TreeItemLayout>,
-  },
-];
-
-const getAddNewTreeItem = (id: string, parentId: string, addNewItem: () => void) => ({
-  id,
-  parentId,
-  children: <TreeItemLayout onClick={addNewItem}>Add new item</TreeItemLayout>,
-});
-
-type RemoveableTreeItemProps = TreeItemProps & {
-  id: string;
-  onRemove: () => void;
-};
-const RemoveableTreeItem = ({ id, onRemove, ...rest }: RemoveableTreeItemProps) => (
-  <TreeItem
-    id={id}
-    {...rest}
-    actions={<Button aria-label="Remove item" appearance="subtle" onClick={onRemove} icon={<Delete20Regular />} />}
-  />
-);
 
 export const AddRemoveTreeItem = () => {
-  const [firstTree, setFirstTree] = React.useState(firstItems);
-  const [secondTree, setSecondTree] = React.useState(secondItems);
-  const mergedTree = React.useMemo(
-    () => [
-      ...firstTree,
-      getAddNewTreeItem('1-btn', '1', () => handleAddItem(firstTree, setFirstTree)),
-      ...secondTree,
-      getAddNewTreeItem('2-btn', '2', () => handleAddItem(secondTree, setSecondTree)),
-    ],
-    [firstTree, secondTree],
+  const [trees, setTrees] = React.useState(defaultSubTrees);
+
+  const handleOpenChange = (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    if (data.target.id.endsWith('-btn')) {
+      setTrees(currentTrees => {
+        const subtreeIndex = Number(data.target.id[0]) - 1;
+        const lastItem = currentTrees[subtreeIndex][currentTrees[subtreeIndex].length - 1];
+        const newItemId = `${subtreeIndex + 1}-${Number(lastItem.id.slice(2)) + 1}`;
+        const nextSubTree = [
+          ...currentTrees[subtreeIndex],
+          {
+            id: newItemId,
+            parentId: currentTrees[subtreeIndex][0].id,
+            children: <TreeItemLayout>New item {newItemId}</TreeItemLayout>,
+          },
+        ];
+        return [...currentTrees.slice(0, subtreeIndex), nextSubTree, ...currentTrees.slice(subtreeIndex + 1)];
+      });
+    }
+  };
+
+  const removeFlatTreeItem = (id: string) => {
+    const subtreeIndex = Number(id[0]) - 1;
+    const nextSubTree = trees[subtreeIndex].filter(item => item.id !== id);
+    setTrees(currentTrees => [
+      ...currentTrees.slice(0, subtreeIndex),
+      nextSubTree,
+      ...currentTrees.slice(subtreeIndex + 1),
+    ]);
+  };
+
+  const flatTree = useFlatTree_unstable(
+    React.useMemo(
+      () => [
+        ...trees[0],
+        {
+          id: '1-btn',
+          parentId: '1',
+          children: <TreeItemLayout>Add new item</TreeItemLayout>,
+        },
+        ...trees[1],
+        {
+          id: '2-btn',
+          parentId: '2',
+          children: <TreeItemLayout>Add new item</TreeItemLayout>,
+        },
+      ],
+      [trees],
+    ),
+    { defaultOpenItems: ['1', '2'], onOpenChange: handleOpenChange },
   );
-
-  const flatTree = useFlatTree_unstable(mergedTree, { defaultOpenItems: ['1', '2'] });
-
-  const handleAddItem = (tree: FlatTreeItemProps[], setTree: (items: FlatTreeItemProps[]) => void) => {
-    const lastItem = tree[tree.length - 1];
-    const lastItemIdParts = lastItem.id.split('-');
-    const newItemId =
-      lastItemIdParts.length > 1
-        ? lastItemIdParts
-            .slice(0, -1)
-            .concat(String(Number(lastItemIdParts.slice(-1)[0]) + 1))
-            .join('-')
-        : `${lastItem.id}-1`;
-
-    const newItem: FlatTreeItemProps = {
-      id: newItemId,
-      parentId: lastItem.parentId ? lastItem.parentId : lastItem.id,
-      children: <TreeItemLayout>New item {newItemId}</TreeItemLayout>,
-    };
-
-    setTree([...tree, newItem]);
-  };
-
-  const handleRemoveItem = (itemId: string) => {
-    const isFirstTree = itemId.startsWith('1');
-    const tree = isFirstTree ? firstTree : secondTree;
-    const updatedItems = tree.filter(item => item.id !== itemId);
-    (isFirstTree ? setFirstTree : setSecondTree)([...updatedItems]);
-  };
 
   return (
     <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-      {Array.from(flatTree.items(), item =>
-        item.level === 1 || item.id.includes('btn') ? (
-          <TreeItem {...item.getTreeItemProps()} key={item.id} />
-        ) : (
-          <RemoveableTreeItem {...item.getTreeItemProps()} key={item.id} onRemove={() => handleRemoveItem(item.id)} />
-        ),
-      )}
+      {Array.from(flatTree.items(), item => {
+        const isUndeletable = item.level === 1 || item.id.endsWith('-btn');
+        return (
+          <TreeItem
+            key={item.id}
+            {...item.getTreeItemProps()}
+            actions={
+              isUndeletable ? null : (
+                <Button
+                  aria-label="Remove item"
+                  appearance="subtle"
+                  onClick={() => removeFlatTreeItem(item.id)}
+                  icon={<Delete20Regular />}
+                />
+              )
+            }
+          />
+        );
+      })}
     </Tree>
   );
 };
