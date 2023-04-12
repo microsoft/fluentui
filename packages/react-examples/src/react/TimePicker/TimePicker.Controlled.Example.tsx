@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TimePicker, ITimeRange } from '@fluentui/react/lib/TimePicker';
+import { TimePicker } from '@fluentui/react/lib/TimePicker';
 import { Text } from '@fluentui/react/lib/Text';
 import { timePickerStyles, TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
 
