@@ -9,8 +9,8 @@ export { Appearance } from './TreeAppearance.stories';
 export { Size } from './TreeSize.stories';
 export { OpenItemsControlled } from './TreeControllingOpenAndClose.stories';
 export { FlattenTree as flattenTree } from './flattenTree.stories';
+export { UseFlatTreeItems } from './useFlatTreeItems.stories';
 export { Virtualization } from './Virtualization.stories';
-export { LazyLoading } from './TreeLazyLoading.stories';
 
 export default {
   title: 'Preview Components/Tree/Tree',
