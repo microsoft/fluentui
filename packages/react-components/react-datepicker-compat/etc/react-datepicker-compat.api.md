@@ -188,7 +188,6 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     initialPickerDate?: Date;
     allFocusable?: boolean;
     showCloseButton?: boolean;
-    tabIndex?: number;
 };
 
 // @public

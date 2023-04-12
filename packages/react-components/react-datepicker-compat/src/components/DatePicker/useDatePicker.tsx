@@ -107,7 +107,7 @@ const defaultParseDateFromString = (dateStr: string) => {
  * @param props - props from this instance of DatePicker
  * @param ref - reference to root Input slot
  */
-export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLInputElement>): DatePickerState => {
+export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLElement>): DatePickerState => {
   const {
     allowTextInput = false,
     allFocusable = false,
@@ -333,7 +333,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     ? 'filled-lighter'
     : 'outline';
 
-  const [triggerRef, popupRef] = usePopupPositioning(props);
+  const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
   const rootShorthand = resolveShorthand(restOfProps, {
     required: true,
     defaultProps: {
@@ -345,11 +345,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       readOnly: !allowTextInput,
       role: 'combobox',
       root: {
-        ref: useMergedRefs(triggerRef, ref),
+        ref: useMergedRefs(triggerWrapperRef, ref),
         'aria-owns': popupSurfaceId,
       },
       input: {
-        ref: useMergedRefs(rootRef, props.input?.ref),
+        ref: rootRef,
       },
     },
   });
@@ -378,14 +378,14 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   useOnClickOutside({
     element: targetDocument,
     callback: ev => dismissDatePickerPopup(),
-    refs: [triggerRef, popupRef],
+    refs: [triggerWrapperRef, popupRef],
     disabled: !open,
   });
 
   useOnScrollOutside({
     element: targetDocument,
     callback: ev => dismissDatePickerPopup(),
-    refs: [triggerRef, popupRef],
+    refs: [triggerWrapperRef, popupRef],
     disabled: !open,
   });
 

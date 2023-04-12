@@ -222,11 +222,6 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
    * Whether the CalendarDay close button should be shown or not.
    */
   showCloseButton?: boolean;
-
-  /**
-   * The tabIndex of the Input
-   */
-  tabIndex?: number;
 };
 
 export type DatePickerState = ComponentState<DatePickerSlots> & {
@@ -258,8 +253,3 @@ export interface DatePickerStrings extends CalendarStrings {
    */
   isResetStatusMessage?: string;
 }
-
-export type DatePickerOpenEvents =
-  | React.MouseEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
