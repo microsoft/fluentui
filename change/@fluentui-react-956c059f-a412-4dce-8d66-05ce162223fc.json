@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated TimePicker control with controlled and uncontrolled props.",
+  "packageName": "@fluentui/react",
+  "email": "jamwu@microsoft.com",
+  "dependentChangeType": "patch"
+}
