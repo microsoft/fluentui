@@ -408,7 +408,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     if (items.length && index! >= 0) {
       const newEl: HTMLElement | null =
         this.root.current &&
-        (this.root.current.querySelectorAll('[data-selection-index]')[
+        (this.root.current.querySelectorAll('[data-selection-index] > button')[
           Math.min(index!, items.length - 1)
         ] as HTMLElement | null);
       if (newEl) {
