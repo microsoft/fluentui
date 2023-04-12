@@ -120,11 +120,13 @@ describe('TimePicker', () => {
       />,
     );
 
+    expect(_selectedTime!.toString()).toEqual(new Date('April 05, 2023 01:30:00').toString());
+
     const updatedTimePickerComboBox = getByRole('combobox') as HTMLInputElement;
     userEvent.click(updatedTimePickerComboBox);
     const updatedTimePickerOptions = getAllByRole('option') as HTMLInputElement[];
-    userEvent.click(updatedTimePickerOptions[timePickerOptionIdx], undefined, { skipPointerEventsCheck: true });
-    expect(_selectedTime!.toString()).toEqual(new Date('April 05, 2023 01:30:00').toString());
+    userEvent.click(updatedTimePickerOptions[timePickerOptionIdx + 1], undefined, { skipPointerEventsCheck: true });
+    expect(_selectedTime!.toString()).toEqual(new Date('April 05, 2023 01:45:00').toString());
   });
 
   describe('validates entered text when', () => {
