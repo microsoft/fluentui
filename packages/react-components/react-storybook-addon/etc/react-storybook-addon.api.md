@@ -13,6 +13,8 @@ import type { Theme } from '@fluentui/react-theme';
 // @public
 export interface FluentGlobals extends Args {
     // (undocumented)
+    [STRICT_MODE_ID]?: boolean;
+    // (undocumented)
     [THEME_ID]?: ThemeIds;
 }
 
@@ -49,7 +51,7 @@ export function parameters(options?: FluentParameters): {
 export const THEME_ID: "storybook/fluentui-react-addon/theme";
 
 // @public (undocumented)
-export type ThemeIds = typeof themes[number]['id'];
+export type ThemeIds = (typeof themes)[number]['id'];
 
 // @public (undocumented)
 export const themes: readonly [{

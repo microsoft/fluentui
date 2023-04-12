@@ -1,28 +1,33 @@
 import * as React from 'react';
 import { SortDirection } from '../components/Table/Table.types';
+import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 
-export type RowId = string | number;
-export type ColumnId = string | number;
+export type TableRowId = string | number;
+export type TableColumnId = string | number;
 export type SelectionMode = 'single' | 'multiselect';
 
 export interface SortState {
-  sortColumn: ColumnId | undefined;
+  sortColumn: TableColumnId | undefined;
   sortDirection: SortDirection;
 }
 
-export interface CreateColumnOptions<TItem> extends Partial<ColumnDefinition<TItem>> {
-  columnId: ColumnId;
+export interface OnSelectionChangeData {
+  selectedItems: Set<TableRowId>;
 }
 
-export interface ColumnDefinition<TItem> {
-  columnId: ColumnId;
+export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefinition<TItem>> {
+  columnId: TableColumnId;
+}
+
+export interface TableColumnDefinition<TItem> {
+  columnId: TableColumnId;
   compare: (a: TItem, b: TItem) => number;
   renderHeaderCell: () => React.ReactNode;
   renderCell: (item: TItem) => React.ReactNode;
 }
 
-export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
-  row: RowState<TItem>,
+export type RowEnhancer<TItem, TRowState extends TableRowData<TItem> = TableRowData<TItem>> = (
+  row: TableRowData<TItem>,
 ) => TRowState;
 
 export interface TableSortState<TItem> {
@@ -33,25 +38,25 @@ export interface TableSortState<TItem> {
   /**
    * Column id of the currently sorted column
    */
-  sortColumn: ColumnId | undefined;
+  sortColumn: TableColumnId | undefined;
   /**
    * Set the sort direction for the specified column
    */
-  setColumnSort: (event: React.SyntheticEvent, columnId: ColumnId, sortDirection: SortDirection) => void;
+  setColumnSort: (event: React.SyntheticEvent, columnId: TableColumnId, sortDirection: SortDirection) => void;
   /**
    * Toggles the sort direction for specified column
    */
-  toggleColumnSort: (event: React.SyntheticEvent, columnId: ColumnId) => void;
+  toggleColumnSort: (event: React.SyntheticEvent, columnId: TableColumnId) => void;
   /**
    * Returns the sort direction if a column is sorted,
    * returns undefined if the column is not sorted
    */
-  getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
+  getSortDirection: (columnId: TableColumnId) => SortDirection | undefined;
 
   /**
    * Sorts rows and returns a **shallow** copy of original items
    */
-  sort: <TRowState extends RowState<TItem>>(rows: TRowState[]) => TRowState[];
+  sort: <TRowState extends TableRowData<TItem>>(rows: TRowState[]) => TRowState[];
 }
 
 export interface TableSelectionState {
@@ -62,11 +67,11 @@ export interface TableSelectionState {
   /**
    * Selects single row
    */
-  selectRow: (e: React.SyntheticEvent, rowId: RowId) => void;
+  selectRow: (e: React.SyntheticEvent, rowId: TableRowId) => void;
   /**
    * De-selects single row
    */
-  deselectRow: (e: React.SyntheticEvent, rowId: RowId) => void;
+  deselectRow: (e: React.SyntheticEvent, rowId: TableRowId) => void;
   /**
    * Toggle selection of all rows
    */
@@ -74,11 +79,11 @@ export interface TableSelectionState {
   /**
    * Toggle selection of single row
    */
-  toggleRow: (e: React.SyntheticEvent, rowId: RowId) => void;
+  toggleRow: (e: React.SyntheticEvent, rowId: TableRowId) => void;
   /**
    * Collection of row ids corresponding to selected rows
    */
-  selectedRows: Set<RowId>;
+  selectedRows: Set<TableRowId>;
   /**
    * Whether all rows are selected
    */
@@ -91,10 +96,12 @@ export interface TableSelectionState {
   /**
    * Checks if a given rowId is selected
    */
-  isRowSelected: (rowId: RowId) => boolean;
+  isRowSelected: (rowId: TableRowId) => boolean;
+
+  selectionMode: SelectionMode;
 }
 
-export interface RowState<TItem> {
+export interface TableRowData<TItem> {
   /**
    * User provided data
    */
@@ -102,15 +109,15 @@ export interface RowState<TItem> {
   /**
    * The row id, defaults to index position in the collection
    */
-  rowId: RowId;
+  rowId: TableRowId;
 }
 
-export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' | 'getRowId'> {
+export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
   /**
    * The row data for rendering
    * @param rowEnhancer - Enhances the row with extra user data
    */
-  getRows: <TRowState extends RowState<TItem> = RowState<TItem>>(
+  getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
   /**
@@ -124,10 +131,20 @@ export interface TableState<TItem> extends Pick<UseTableOptions<TItem>, 'items' 
   /**
    * Table columns
    */
-  columns: ColumnDefinition<TItem>[];
+  columns: TableColumnDefinition<TItem>[];
+  /**
+   * State and actions to manage column resizing
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  columnSizing_unstable: TableColumnSizingState;
+  /**
+   * A React.Ref object to be set as a ref for the table.
+   * Used with column resizing.
+   */
+  tableRef: React.Ref<HTMLDivElement>;
 }
 
-export interface UseSortOptions {
+export interface UseTableSortOptions {
   /**
    * Used to control sorting
    */
@@ -139,10 +156,10 @@ export interface UseSortOptions {
   /**
    * Called when sort changes
    */
-  onSortChange?: (e: React.SyntheticEvent, state: SortState) => void;
+  onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
-export interface UseSelectionOptions {
+export interface UseTableSelectionOptions {
   /**
    * Can be multi or single select
    */
@@ -150,21 +167,70 @@ export interface UseSelectionOptions {
   /**
    * Used in uncontrolled mode to set initial selected rows on mount
    */
-  defaultSelectedItems?: Set<RowId>;
+  defaultSelectedItems?: Iterable<TableRowId>;
   /**
    * Used to control row selection
    */
-  selectedItems?: Set<RowId>;
+  selectedItems?: Iterable<TableRowId>;
   /**
    * Called when selection changes
    */
-  onSelectionChange?: (e: React.SyntheticEvent, selectedItems: Set<RowId>) => void;
+  onSelectionChange?(e: React.SyntheticEvent, data: OnSelectionChangeData): void;
 }
 
-export interface UseTableOptions<TItem> {
-  columns: ColumnDefinition<TItem>[];
+export interface UseTableFeaturesOptions<TItem> {
+  columns: TableColumnDefinition<TItem>[];
   items: TItem[];
-  getRowId?: (item: TItem) => RowId;
+  getRowId?: (item: TItem) => TableRowId;
 }
 
-export type TableStatePlugin = <TItem>(tableState: TableState<TItem>) => TableState<TItem>;
+export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+
+export interface ColumnWidthState {
+  columnId: TableColumnId;
+  width: number;
+  minWidth: number;
+  idealWidth: number;
+  padding: number;
+}
+
+export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
+export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
+
+export type EnableKeyboardModeOnChangeCallback = (columnId: TableColumnId, isKeyboardMode: boolean) => void;
+
+export interface TableColumnSizingState {
+  getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
+  setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
+  getColumnWidths: () => ColumnWidthState[];
+  getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
+  getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
+  enableKeyboardMode: (
+    columnId: TableColumnId,
+    onChange?: EnableKeyboardModeOnChangeCallback,
+  ) => (e: React.MouseEvent | React.TouchEvent) => void;
+}
+
+export type ColumnResizeState = {
+  getColumnWidth: (columnId: TableColumnId) => number;
+  setColumnWidth: (
+    e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+    data: { columnId: TableColumnId; width: number },
+  ) => void;
+  getColumnById: (columnId: TableColumnId) => ColumnWidthState | undefined;
+  getColumns: () => ColumnWidthState[];
+};
+
+export type TableColumnSizingOptions = Record<
+  TableColumnId,
+  Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & { defaultWidth?: number }
+>;
+
+export type UseTableColumnSizingParams = {
+  columnSizingOptions?: TableColumnSizingOptions;
+  onColumnResize?: (
+    e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+    data: { columnId: TableColumnId; width: number },
+  ) => void;
+  containerWidthOffset?: number;
+};

@@ -6,10 +6,7 @@ import * as minimatch from 'minimatch';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { ProfilerMeasure, ProfilerMeasureCycle } from '../types';
-
-// https://github.com/bvaughn/rfcs/blob/profiler/text/0000-profiler.md
-const Profiler = (React as any).unstable_Profiler;
+import type { ProfilerMeasure, ProfilerMeasureCycle } from './globals';
 
 const mountNode = document.querySelector('#root');
 const performanceExamplesContext = require.context('@fluentui/docs/src/examples/', true, /.perf.tsx$/);
@@ -19,7 +16,7 @@ const performanceExamplesContext = require.context('@fluentui/docs/src/examples/
 const performanceExampleNames: string[] = _.shuffle(performanceExamplesContext.keys());
 
 const asyncRender = (element: React.ReactElement, container: Element) =>
-  new Promise(resolve => {
+  new Promise<void>(resolve => {
     ReactDOM.render(element, container, () => {
       ReactDOM.unmountComponentAtNode(container);
       resolve();
@@ -36,7 +33,7 @@ const renderCycle = async (
 
   await asyncRender(
     <Provider theme={teamsTheme} telemetryRef={telemetryRef}>
-      <Profiler
+      <React.Profiler
         id={exampleName}
         onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
           const renderComponentTelemetry = _.reduce(
@@ -61,7 +58,7 @@ const renderCycle = async (
         }}
       >
         <Component />
-      </Profiler>
+      </React.Profiler>
     </Provider>,
     mountNode,
   );

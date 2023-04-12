@@ -209,8 +209,7 @@ const useTextareaStyles = makeStyles({
       tokens.spacingVerticalS,
       `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
     ),
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    ...typographyStyles.body2,
   },
 });
 

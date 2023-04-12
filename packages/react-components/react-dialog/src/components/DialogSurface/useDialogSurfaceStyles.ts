@@ -4,7 +4,6 @@ import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  SURFACE_BORDER_RADIUS,
   SURFACE_BORDER_WIDTH,
   SURFACE_PADDING,
   useDialogContext_unstable,
@@ -35,7 +34,6 @@ const useStyles = makeStyles({
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
     position: 'fixed',
-    width: '100%',
     height: 'fit-content',
     maxWidth: '600px',
     maxHeight: '100vh',
@@ -44,7 +42,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
     ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
-    ...shorthands.borderRadius(SURFACE_BORDER_RADIUS),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
     },

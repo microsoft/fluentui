@@ -23,12 +23,12 @@ export const ControlledRadioItems = () => {
   };
 
   return (
-    <Menu>
+    <Menu checkedValues={checkedValues} onCheckedValueChange={onChange}>
       <MenuTrigger disableButtonEnhancement>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>
-        <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MenuList>
           <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>

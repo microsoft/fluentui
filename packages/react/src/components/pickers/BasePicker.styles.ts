@@ -61,7 +61,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const focusColor = isFocused && !disabled && (hasErrorMessage ? semanticColors.errorText : inputFocusBorderAlt);
 
   return {
-    root: [classNames.root, className],
+    root: [classNames.root, className, { position: 'relative' }],
     error: [
       classNames.error,
       {

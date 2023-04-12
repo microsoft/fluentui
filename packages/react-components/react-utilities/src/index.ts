@@ -1,4 +1,10 @@
-export { getSlots, resolveShorthand, isResolvedShorthand } from './compose/index';
+export {
+  getSlots,
+  getSlotsNext,
+  resolveShorthand,
+  isResolvedShorthand,
+  SLOT_RENDER_FUNCTION_SYMBOL,
+} from './compose/index';
 export type {
   ExtractSlotProps,
   ComponentProps,
@@ -12,9 +18,11 @@ export type {
   SlotPropsRecord,
   SlotRenderFunction,
   SlotShorthandValue,
+  UnknownSlotProps,
 } from './compose/index';
 
 export {
+  IdPrefixProvider,
   resetIdsForTests,
   useControllableState,
   useEventCallback,
@@ -26,6 +34,7 @@ export {
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,
+  useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
@@ -38,9 +47,17 @@ export {
   getPartitionedNativeProps,
   getRTLSafeKey,
   mergeCallbacks,
-  shouldPreventDefaultOnKeyDown,
+  isHTMLElement,
+  isInteractiveHTMLElement,
+  omit,
 } from './utils/index';
 
 export { applyTriggerPropsToChildren, getTriggerChild, isFluentTrigger } from './trigger/index';
 
 export type { FluentTriggerComponent, TriggerProps } from './trigger/index';
+
+/**
+ * Event utils
+ */
+export type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent, TouchOrMouseEvent } from './events/index';
+export { isTouchEvent, isMouseEvent, getEventClientCoords } from './events/index';

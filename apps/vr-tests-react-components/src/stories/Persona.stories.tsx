@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Persona } from '@fluentui/react-persona';
 import type { PersonaProps } from '@fluentui/react-persona';
@@ -15,7 +15,7 @@ storiesOf('Persona Converged', module)
     </div>
   ))
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory(
     'basic',
@@ -86,16 +86,38 @@ storiesOf('Persona Converged', module)
   .addStory('textAlignment', () => (
     <div className="testWrapper" style={{ display: 'flex', gap: '50px', padding: '10px', maxWidth: '750px' }}>
       {textAlignments.map(textAlignment => (
-        <Persona
-          textAlignment={textAlignment}
-          presenceOnly
-          presence={{ status: 'available' }}
-          name="Kevin Sturgis"
-          secondaryText="Software Engineer"
-          tertiaryText="Available"
-          quaternaryText="Microsoft"
-          key={textAlignment}
-        />
+        <div key={textAlignment} style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
+          <Persona
+            textAlignment={textAlignment}
+            presenceOnly
+            presence={{ status: 'available' }}
+            name="Kevin Sturgis"
+            secondaryText="Software Engineer"
+            tertiaryText="Available"
+            quaternaryText="Microsoft"
+            key={'presence-' + textAlignment}
+          />
+          {/* This test is to verify that when the Avatar takes more space
+          than the text lines, the text lines are centered */}
+          <Persona
+            textAlignment={textAlignment}
+            size="huge"
+            name="Kevin Sturgis"
+            secondaryText="Software Engineer"
+            key={'avatar-' + textAlignment}
+          />
+        </div>
       ))}
+    </div>
+  ))
+  .addStory('textWrap', () => (
+    <div className="testWrapper" style={{ padding: '10px', width: '200px' }}>
+      <Persona
+        presence={{ status: 'available' }}
+        name="Do in incididunt ea minim laboris et est do consequat."
+        secondaryText="Ea cupidatat esse ullamco velit officia sint ea sit duis id ea id eu."
+        tertiaryText="Eiusmod mollit labore cupidatat enim amet dolor dolor."
+        quaternaryText="Commodo est aute sunt eiusmod sint elit irure incididunt reprehenderit culpa."
+      />
     </div>
   ));

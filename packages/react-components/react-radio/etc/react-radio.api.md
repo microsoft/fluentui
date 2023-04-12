@@ -9,17 +9,15 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import { DeprecatedFieldProps } from '@fluentui/react-field';
 import { FC } from 'react';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
@@ -34,21 +32,28 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 
 // @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;
 
 // @public (undocumented)
 export type RadioGroupContextValues = {
     radioGroup: RadioGroupContextValue;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const RadioGroupField_unstable: ForwardRefComponent<RadioGroupFieldProps_unstable>;
 
-// @public (undocumented)
-export const radioGroupFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
+// @public @deprecated (undocumented)
+export const radioGroupFieldClassNames: {
+    control: string;
+    root: string;
+    label: string;
+    validationMessage: string;
+    validationMessageIcon: string;
+    hint: string;
+};
 
-// @public (undocumented)
-export type RadioGroupFieldProps_unstable = FieldProps<typeof RadioGroup>;
+// @public @deprecated (undocumented)
+export type RadioGroupFieldProps_unstable = DeprecatedFieldProps<RadioGroupProps>;
 
 // @public
 export type RadioGroupOnChangeData = {
@@ -75,7 +80,7 @@ export type RadioGroupSlots = {
 };
 
 // @public
-export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Partial<Exclude<RadioGroupProps, 'onChange' | 'layout'>>;
+export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
 
 // @public
 export type RadioOnChangeData = {

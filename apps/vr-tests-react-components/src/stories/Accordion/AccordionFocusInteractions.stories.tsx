@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
@@ -9,8 +9,8 @@ export default {
 
   decorators: [
     story => (
-      <Screener
-        steps={new Screener.Steps()
+      <StoryWright
+        steps={new Steps()
           .snapshot('normal', { cropTo: '.testWrapper' })
           .focus('#opened-btn')
           .snapshot('focus opened', { cropTo: '.testWrapper' })
@@ -21,7 +21,7 @@ export default {
         <div className="testWrapper" style={{ width: '300px' }}>
           {story()}
         </div>
-      </Screener>
+      </StoryWright>
     ),
   ],
 } as ComponentMeta<typeof Accordion>;

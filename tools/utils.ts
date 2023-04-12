@@ -103,6 +103,7 @@ export function getProjectConfig(tree: Tree, options: { packageName: string }) {
     babelConfig: joinPathFragments(projectConfig.root, '.babelrc.json'),
     jestConfig: joinPathFragments(projectConfig.root, 'jest.config.js'),
     jestSetupFile: joinPathFragments(projectConfig.root, 'config', 'tests.js'),
+    justConfig: joinPathFragments(projectConfig.root, 'just.config.ts'),
     rootTsconfig: '/tsconfig.base.json',
     rootPackageJson: '/package.json',
     rootJestPreset: '/jest.preset.js',
@@ -197,12 +198,13 @@ export function isPackageVersionConverged(versionString: string) {
 
 export function isPackageVersionPrerelease(versionString: string) {
   const version = semver.parse(versionString);
-  return version?.prerelease?.length && version?.prerelease?.length > 0;
+  return Boolean(version?.prerelease?.length && version?.prerelease?.length > 0);
 }
 
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const hasVNextTag = !!project.tags?.includes('vNext');
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return isPackageVersionConverged(packageJson.version);
+  return isPackageVersionConverged(packageJson.version) || hasVNextTag;
 }
 
 export function isV8Package(tree: Tree, project: ProjectConfiguration) {

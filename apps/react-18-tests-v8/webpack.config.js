@@ -1,7 +1,7 @@
 const path = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+
+const { getResolveAlias } = require('@fluentui/scripts-webpack');
 
 module.exports = () => {
   return {
@@ -12,14 +12,10 @@ module.exports = () => {
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, '../../tsconfig.base.json'),
-        }),
-      ],
       alias: {
         react: path.resolve(__dirname, './node_modules/react'),
         'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+        ...getResolveAlias(),
       },
     },
     module: {
@@ -27,7 +23,42 @@ module.exports = () => {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: 'swc-loader',
+          use: {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'tsx',
+              target: 'es2019',
+            },
+          },
+        },
+        {
+          test: /\.scss$/,
+          enforce: 'pre',
+          exclude: [/node_modules/],
+          use: [
+            {
+              loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
+            },
+            {
+              loader: 'css-loader', // translates CSS into CommonJS
+              options: {
+                esModule: false,
+                modules: true,
+                importLoaders: 2,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: ['autoprefixer'],
+                },
+              },
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
         },
       ],
     },

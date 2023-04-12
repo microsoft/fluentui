@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { CONTENT_GRID_AREA } from '../../contexts/constants';
-import { typographyStyles } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
   root: 'fui-DialogContent',
@@ -13,11 +13,11 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '100%',
-    height: '100%',
     overflowY: 'auto',
     minHeight: '32px',
     boxSizing: 'border-box',
+    ...shorthands.padding(tokens.strokeWidthThick),
+    ...shorthands.margin(`calc(${tokens.strokeWidthThick} * -1)`),
     ...shorthands.gridArea(CONTENT_GRID_AREA),
     ...typographyStyles.body1,
   },

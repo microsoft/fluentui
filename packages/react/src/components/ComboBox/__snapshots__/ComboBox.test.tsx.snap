@@ -202,7 +202,6 @@ exports[`ComboBox Renders correctly 1`] = `
         value="testValue"
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -222,10 +221,6 @@ exports[`ComboBox Renders correctly 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -295,7 +290,6 @@ exports[`ComboBox Renders correctly 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -537,7 +531,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
         value="Option 2"
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -558,10 +551,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -619,7 +608,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -831,10 +819,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                             font-weight: 400;
                             height: auto;
                             line-height: 20px;
-                            margin-bottom: 0px;
-                            margin-left: 0px;
-                            margin-right: 0px;
-                            margin-top: 0px;
                             min-height: 36px;
                             outline: transparent;
                             overflow-wrap: break-word;
@@ -990,10 +974,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          margin-bottom: 0px;
-                          margin-left: 0px;
-                          margin-right: 0px;
-                          margin-top: 0px;
                           min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -1318,7 +1298,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
         value=""
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -1339,10 +1318,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1400,7 +1375,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >
@@ -1664,6 +1638,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           }
                     >
                       <input
+                        aria-labelledby="ComboBox0-list1-label"
                         aria-selected="false"
                         class=
 
@@ -1765,6 +1740,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           </i>
                         </div>
                         <span
+                          aria-hidden="true"
                           class=
                               ms-ComboBox-optionText
                               {
@@ -1777,6 +1753,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 white-space: nowrap;
                                 word-wrap: break-word;
                               }
+                          id="ComboBox0-list1-label"
                         >
                           Option 1
                         </span>
@@ -1877,6 +1854,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         }
                   >
                     <input
+                      aria-labelledby="ComboBox0-list3-label"
                       aria-selected="true"
                       checked=""
                       class=
@@ -1982,6 +1960,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         </i>
                       </div>
                       <span
+                        aria-hidden="true"
                         class=
                             ms-ComboBox-optionText
                             {
@@ -1994,6 +1973,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               white-space: nowrap;
                               word-wrap: break-word;
                             }
+                        id="ComboBox0-list3-label"
                       >
                         Option 2
                       </span>
@@ -2213,7 +2193,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         value=""
       />
       <button
-        aria-hidden="true"
         class=
             ms-Button
             ms-Button--icon
@@ -2233,10 +2212,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               font-weight: 400;
               height: 100%;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -2306,7 +2281,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
               forced-color-adjust: none;
             }
         data-is-focusable="false"
-        role="presentation"
         tabindex="-1"
         type="button"
       >

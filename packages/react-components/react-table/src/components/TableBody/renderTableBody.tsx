@@ -8,6 +8,5 @@ import type { TableBodyState, TableBodySlots } from './TableBody.types';
 export const renderTableBody_unstable = (state: TableBodyState) => {
   const { slots, slotProps } = getSlots<TableBodySlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <slots.root {...slotProps.root} />;
 };

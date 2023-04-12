@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PositioningVirtualElement, SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { MenuContextValue } from '../../contexts/menuContext';
 import type { MenuListProps } from '../MenuList/MenuList.types';
@@ -11,6 +12,7 @@ export type MenuSlots = {};
  * Extends and drills down Menulist props to simplify API
  */
 export type MenuProps = ComponentProps<MenuSlots> &
+  Pick<PortalProps, 'mountNode'> &
   Pick<
     MenuListProps,
     'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
@@ -20,13 +22,6 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
      */
     children: [JSX.Element, JSX.Element] | JSX.Element;
-
-    /**
-     * Whether the popup is open by default
-     *
-     * @default false
-     */
-    defaultOpen?: boolean;
 
     /**
      * Sets the delay for mouse open/close for the popover one mouse enter/leave
@@ -53,6 +48,13 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * @default false
      */
     open?: boolean;
+
+    /**
+     * Whether the popup is open by default
+     *
+     * @default false
+     */
+    defaultOpen?: boolean;
 
     /**
      * Opens the menu on right click (context menu), removes all other menu open interactions
@@ -89,12 +91,12 @@ export type MenuProps = ComponentProps<MenuSlots> &
   };
 
 export type MenuState = ComponentState<MenuSlots> &
-  Pick<MenuProps, 'onOpenChange' | 'defaultCheckedValues'> &
   Required<
     Pick<
       MenuProps,
       | 'hasCheckmarks'
       | 'hasIcons'
+      | 'mountNode'
       | 'inline'
       | 'checkedValues'
       | 'onCheckedValueChange'
@@ -150,6 +152,20 @@ export type MenuState = ComponentState<MenuSlots> &
      * The ref for the MenuTrigger, used for popup positioning
      */
     triggerRef: React.MutableRefObject<HTMLElement>;
+
+    /**
+     * Call back when the component requests to change value
+     * The `open` value is used as a hint when directly controlling the component
+     * @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    /**
+     * Default values to be checked on mount
+     @deprecated this property is not used internally anymore,
+     * the signature remains just to avoid breaking changes
+     */
+    defaultCheckedValues?: Record<string, string[]>;
   };
 
 export type MenuContextValues = {

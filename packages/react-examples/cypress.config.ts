@@ -1,3 +1,7 @@
-import baseConfig from '@fluentui/scripts/cypress/cypress.config';
+import { baseConfig, baseWebpackConfig } from '@fluentui/scripts-cypress';
+import { createStorybookWebpackConfig } from '@fluentui/scripts-webpack';
 
-export default baseConfig;
+const config = { ...baseConfig };
+config.component.devServer.webpackConfig = createStorybookWebpackConfig(baseWebpackConfig);
+
+export default config;

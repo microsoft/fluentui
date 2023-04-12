@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { FelaComponent, RendererProvider, ThemeProvider } from 'react-fela';
 
-const felaRenderer = (createFelaRenderer() as any).getOriginalRenderer();
+const felaRenderer = (createFelaRenderer()() as any).getOriginalRenderer();
 
 function createSnapshot(component: JSX.Element, theme = {}) {
   const div = document.createElement('div');
@@ -16,7 +16,7 @@ function createSnapshot(component: JSX.Element, theme = {}) {
 
   ReactDOM.render(
     <RendererProvider renderer={felaRenderer}>
-      <ThemeProvider theme={theme}>{component}</ThemeProvider>
+      <ThemeProvider theme={{ direction: 'ltr', ...theme }}>{component}</ThemeProvider>
     </RendererProvider>,
     div,
   );
@@ -102,13 +102,20 @@ describe('felaRenderer', () => {
     expect(snapshot).toMatchSnapshot();
   });
 
+  test('marginLeft is rendered into marginLeft due to LTR', () => {
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />);
+    expect(snapshot).toMatchSnapshot();
+  });
+
   test('marginLeft is rendered into marginRight due to RTL', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { rtl: true });
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { direction: 'rtl' });
     expect(snapshot).toMatchSnapshot();
   });
 
   test('marginLeft is rendered into marginLeft due to RTL with `noFlip`', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px /* @noflip */' }} />);
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px /* @noflip */' }} />, {
+      direction: 'rtl',
+    });
     expect(snapshot).toMatchSnapshot();
   });
 

@@ -13,11 +13,20 @@ describe('Card', () => {
       'has-static-classnames': [
         {
           props: {
-            select: 'Test Select',
+            floatingAction: '<button>Button</button>',
           },
           expectedClassNames: {
             root: cardClassNames.root,
-            select: cardClassNames.select,
+            floatingAction: cardClassNames.floatingAction,
+          },
+        },
+        {
+          props: {
+            selected: true,
+          },
+          expectedClassNames: {
+            root: cardClassNames.root,
+            checkbox: cardClassNames.checkbox,
           },
         },
       ],

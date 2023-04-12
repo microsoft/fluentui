@@ -1,6 +1,6 @@
-import Screener from 'screener-storybook/src/screener';
+import { Steps } from 'storywright';
 
-export const steps = new Screener.Steps()
+export const steps = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
   .click('#snooze-toggle')
   .snapshot('Toggle On', { cropTo: '.testWrapper' })

@@ -19,15 +19,15 @@ export interface IBaseFloatingPickerState {
 
 export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   extends React.Component<P, IBaseFloatingPickerState>
-  implements IBaseFloatingPicker {
+  implements IBaseFloatingPicker
+{
   protected selection: Selection;
 
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
   protected suggestionsControl: React.RefObject<SuggestionsControl<T>> = React.createRef();
-  protected SuggestionsControlOfProperType: new (
-    props: ISuggestionsControlProps<T>,
-  ) => SuggestionsControl<T> = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> =
+    SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected currentPromise: PromiseLike<T[]>;
   protected isComponentMounted: boolean = false;
 
@@ -72,7 +72,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString,
+        queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -281,7 +281,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         if (
           this.props.onRemoveSuggestion &&
           this.suggestionsControl.current &&
-          this.suggestionsControl.current.hasSuggestionSelected &&
+          this.suggestionsControl.current.hasSuggestionSelected() &&
           this.suggestionsControl.current.currentSuggestion &&
           ev.shiftKey
         ) {
@@ -334,13 +334,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   private _onValidateInput = (): void => {
     if (this.state.queryString && this.props.onValidateInput && this.props.createGenericItem) {
-      const itemToConvert: ISuggestionModel<T> = (this.props.createGenericItem as (
-        input: string,
-        isValid: boolean,
-      ) => ISuggestionModel<T>)(
-        this.state.queryString,
-        (this.props.onValidateInput as (input: string) => boolean)(this.state.queryString),
-      );
+      const itemToConvert: ISuggestionModel<T> = (
+        this.props.createGenericItem as (input: string, isValid: boolean) => ISuggestionModel<T>
+      )(this.state.queryString, (this.props.onValidateInput as (input: string) => boolean)(this.state.queryString));
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);
     }

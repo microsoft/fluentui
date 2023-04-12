@@ -170,6 +170,31 @@ describe('DatePicker', () => {
     });
   });
 
+  it('should not set initial error when required input is empty and validateOnLoad is false', () => {
+    // See https://github.com/facebook/react/issues/11565
+    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+
+    safeCreate(
+      <DatePickerBase isRequired={true} allowTextInput={true} textField={{ validateOnLoad: false }} />,
+      datePicker => {
+        const textfield = datePicker.root.findByType(TextField);
+        const input = datePicker.root.findByType('input');
+
+        expect(textfield.props.errorMessage).toBeUndefined();
+
+        // open the datepicker then dismiss
+        renderer.act(() => {
+          input.props.onClick();
+        });
+        renderer.act(() => {
+          input.props.onClick();
+        });
+
+        expect(textfield.props.errorMessage).not.toBeUndefined();
+      },
+    );
+  });
+
   it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
     // See https://github.com/facebook/react/issues/11565
     jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);

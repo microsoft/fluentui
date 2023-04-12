@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
@@ -25,12 +27,16 @@ setAddon({
    */
   addStory(storyName, storyFn, config = {}) {
     this.add(storyName, (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
-      return <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
+      return (
+        <FluentProvider applyStylesToPortals={false} theme={webLightTheme}>
+          {storyFn(context)}
+        </FluentProvider>
+      );
     });
     if (config.includeRtl) {
       this.add(storyName + ' - RTL', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
         return (
-          <FluentProvider theme={webLightTheme} dir="rtl">
+          <FluentProvider applyStylesToPortals={false} theme={webLightTheme} dir="rtl">
             {storyFn(context)}
           </FluentProvider>
         );
@@ -38,15 +44,24 @@ setAddon({
     }
     if (config.includeDarkMode) {
       this.add(storyName + ' - Dark Mode', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
-        return <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>;
+        return (
+          <FluentProvider applyStylesToPortals={false} theme={webDarkTheme}>
+            {storyFn(context)}
+          </FluentProvider>
+        );
       });
     }
     if (config.includeHighContrast) {
-      this.add(storyName + ' - High Contrast', (
-        /** @type {import('../src/utilities/types').StoryContext} */ context,
-      ) => {
-        return <FluentProvider theme={teamsHighContrastTheme}>{storyFn(context)}</FluentProvider>;
-      });
+      this.add(
+        storyName + ' - High Contrast',
+        (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
+          return (
+            <FluentProvider applyStylesToPortals={false} theme={teamsHighContrastTheme}>
+              {storyFn(context)}
+            </FluentProvider>
+          );
+        },
+      );
     }
 
     return this;
@@ -55,8 +70,3 @@ setAddon({
 
 /** @type {import("@fluentui/react-storybook-addon").FluentParameters} */
 export const parameters = { layout: 'none', mode: 'vr-test' };
-
-// For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
-if (typeof window === 'object') {
-  /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
-}

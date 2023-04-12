@@ -1,8 +1,26 @@
 # Change Log - @fluentui/public-docsite-setup
 
-This log was last generated on Mon, 12 Sep 2022 07:39:53 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Feb 2023 07:35:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.16)
+
+Thu, 02 Feb 2023 07:35:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.15..@fluentui/public-docsite-setup_v0.3.16)
+
+### Patches
+
+- fix: remove mwf styles causing conflicts with react components ([PR #26592](https://github.com/microsoft/fluentui/pull/26592) by mgodbolt@microsoft.com)
+
+## [0.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.14)
+
+Tue, 20 Dec 2022 07:53:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.13..@fluentui/public-docsite-setup_v0.3.14)
+
+### Patches
+
+- chore: Updating cdn links to match latest. ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by esteban.230@hotmail.com)
 
 ## [0.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.12)
 

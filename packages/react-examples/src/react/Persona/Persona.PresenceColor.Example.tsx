@@ -15,7 +15,8 @@ const presenceColors = {
 };
 
 const examplePersona: IPersonaSharedProps = {
-  imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
+  imageUrl:
+    'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-react-assets/persona-female.png',
   imageInitials: 'AL',
   text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',

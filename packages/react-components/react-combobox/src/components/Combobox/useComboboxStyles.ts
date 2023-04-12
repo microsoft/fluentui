@@ -1,4 +1,4 @@
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
@@ -80,7 +80,11 @@ const useStyles = makeStyles({
     },
   },
 
-  listbox: {},
+  listbox: {
+    boxShadow: `${tokens.shadow16}`,
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    maxHeight: '80vh',
+  },
 
   listboxCollapsed: {
     display: 'none',
@@ -169,21 +173,18 @@ const useInputStyles = makeStyles({
 
   // size variants
   small: {
-    fontSize: tokens.fontSizeBase200,
     height: fieldHeights.small,
-    lineHeight: tokens.lineHeightBase200,
+    ...typographyStyles.caption1,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   medium: {
-    fontSize: tokens.fontSizeBase300,
     height: fieldHeights.medium,
-    lineHeight: tokens.lineHeightBase300,
+    ...typographyStyles.body1,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   large: {
-    fontSize: tokens.fontSizeBase400,
     height: fieldHeights.large,
-    lineHeight: tokens.lineHeightBase400,
+    ...typographyStyles.body2,
     ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
   },
   disabled: {
@@ -200,6 +201,7 @@ const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
+    cursor: 'pointer',
     display: 'block',
     fontSize: tokens.fontSizeBase500,
 
@@ -225,6 +227,7 @@ const useIconStyles = makeStyles({
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
   },
 });
 

@@ -2,14 +2,16 @@ import * as React from 'react';
 import {
   FolderRegular,
   EditRegular,
+  EditFilled,
   OpenRegular,
   DocumentRegular,
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
   MoreHorizontalRegular,
+  MoreHorizontalFilled,
+  bundleIcon,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import {
   TableBody,
   TableCell,
@@ -19,7 +21,13 @@ import {
   TableHeaderCell,
   TableCellActions,
   TableCellLayout,
-} from '@fluentui/react-components/unstable';
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
+} from '@fluentui/react-components';
+
+const EditIcon = bundleIcon(EditFilled, EditRegular);
+const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 
 const items = [
   {
@@ -69,7 +77,7 @@ const columns = [
 
 export const CellActions = () => {
   return (
-    <Table>
+    <Table aria-label="Table with cell actions">
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -83,14 +91,18 @@ export const CellActions = () => {
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               <TableCellActions>
-                <Button icon={<EditRegular />} appearance="subtle" />
-                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                <Button icon={<EditIcon />} appearance="subtle" />
+                <Button icon={<MoreHorizontalIcon />} appearance="subtle" />
               </TableCellActions>
             </TableCell>
             <TableCell>
               <TableCellLayout
                 media={
-                  <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  <Avatar
+                    aria-label={item.author.label}
+                    name={item.author.label}
+                    badge={{ status: item.author.status as PresenceBadgeStatus }}
+                  />
                 }
               >
                 {item.author.label}
@@ -105,4 +117,17 @@ export const CellActions = () => {
       </TableBody>
     </Table>
   );
+};
+
+CellActions.parameters = {
+  docs: {
+    description: {
+      story: [
+        '`TableCellActions` is a container that is visible when the `TableRow`is hovered',
+        'or when the current focused element is within the row. It is commonly used to contain interactive actions',
+        'like buttons, but can be used for any generic content. Please ensure that the contents of cell actions',
+        'are accessible.',
+      ].join('\n'),
+    },
+  },
 };

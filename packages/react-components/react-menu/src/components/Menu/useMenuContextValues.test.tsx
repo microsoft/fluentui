@@ -15,7 +15,6 @@ describe('useMenuContextValues_unstable', () => {
     expect(result.current.menu).toMatchInlineSnapshot(`
       Object {
         "checkedValues": Object {},
-        "defaultCheckedValues": undefined,
         "hasCheckmarks": false,
         "hasIcons": false,
         "inline": false,
@@ -23,6 +22,7 @@ describe('useMenuContextValues_unstable', () => {
         "menuPopoverRef": Object {
           "current": null,
         },
+        "mountNode": null,
         "onCheckedValueChange": [Function],
         "open": false,
         "openOnContext": false,

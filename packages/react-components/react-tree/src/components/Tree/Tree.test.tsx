@@ -7,10 +7,11 @@ describe('Tree', () => {
   isConformant({
     Component: Tree,
     displayName: 'Tree',
+    disabledTests: ['consistent-callback-args'],
   });
 
   it('renders a default state', () => {
-    const result = render(<Tree>Default Tree</Tree>);
+    const result = render(<Tree />);
     expect(result.container).toMatchSnapshot();
   });
 });

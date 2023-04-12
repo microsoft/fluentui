@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorFullWidth } from '../utilities/index';
 import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from '@fluentui/react';
@@ -71,14 +71,14 @@ storiesOf('Stack', module)
   .addDecorator(TestWrapperDecoratorFullWidth)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Vertical Stack - Default',

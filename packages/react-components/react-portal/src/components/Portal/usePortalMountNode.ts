@@ -5,12 +5,17 @@ import {
 } from '@fluentui/react-shared-contexts';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
+import { useDisposable } from 'use-disposable';
+
+const useInsertionEffect = (React as never)['useInsertion' + 'Effect'] as typeof React.useLayoutEffect | undefined;
 
 export type UsePortalMountNodeOptions = {
   /**
    * Since hooks cannot be called conditionally use this flag to disable creating the node
    */
   disabled?: boolean;
+
+  className?: string;
 };
 
 const useStyles = makeStyles({
@@ -21,34 +26,33 @@ const useStyles = makeStyles({
 });
 
 /**
- * Creates a new element on a document.body to mount portals
+ * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
   const { targetDocument, dir } = useFluent();
   const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-
   const classes = useStyles();
   const themeClassName = useThemeClassName();
 
-  const className = mergeClasses(themeClassName, classes.root);
+  const className = mergeClasses(themeClassName, classes.root, options.className);
 
-  const element = React.useMemo(() => {
+  const element = useDisposable(() => {
     if (targetDocument === undefined || options.disabled) {
-      return null;
+      return [null, () => null];
     }
 
     const newElement = targetDocument.createElement('div');
     targetDocument.body.appendChild(newElement);
+    return [newElement, () => newElement.remove()];
+  }, [targetDocument]);
 
-    return newElement;
-  }, [targetDocument, options.disabled]);
+  if (useInsertionEffect) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useInsertionEffect(() => {
+      if (!element) {
+        return;
+      }
 
-  // This useMemo call is intentional
-  // We don't want to re-create the portal element when its attributes change.
-  // This also should not be done in an effect because, changing the value of css variables
-  // after initial mount can trigger interesting CSS side effects like transitions.
-  React.useMemo(() => {
-    if (element) {
       const classesToApply = className.split(' ').filter(Boolean);
 
       element.classList.add(...classesToApply);
@@ -59,14 +63,24 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
         element.classList.remove(...classesToApply);
         element.removeAttribute('dir');
       };
-    }
-  }, [className, dir, element, focusVisibleRef]);
+    }, [className, dir, element, focusVisibleRef]);
+  } else {
+    // This useMemo call is intentional for React 17
+    // We don't want to re-create the portal element when its attributes change.
+    // This also should not be done in an effect because, changing the value of css variables
+    // after initial mount can trigger interesting CSS side effects like transitions.
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useMemo(() => {
+      if (!element) {
+        return;
+      }
 
-  React.useEffect(() => {
-    return () => {
-      element?.parentElement?.removeChild(element);
-    };
-  }, [element]);
+      // Force replace all classes
+      element.className = className;
+      element.setAttribute('dir', dir);
+      focusVisibleRef.current = element;
+    }, [className, dir, element, focusVisibleRef]);
+  }
 
   return element;
 };

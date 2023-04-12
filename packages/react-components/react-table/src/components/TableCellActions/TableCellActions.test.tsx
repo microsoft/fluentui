@@ -9,8 +9,6 @@ describe('TableCellActions', () => {
     displayName: 'TableCellActions',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<TableCellActions>Default TableCellActions</TableCellActions>);
     expect(result.container).toMatchSnapshot();

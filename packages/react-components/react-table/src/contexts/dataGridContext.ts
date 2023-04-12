@@ -7,6 +7,9 @@ const dataGridContext = createContext<DataGridContextValue | undefined>(undefine
 
 const dataGridContextDefaultValue: DataGridContextValue = {
   ...defaultTableState,
+  subtleSelection: false,
+  selectableRows: false,
+  selectionAppearance: 'brand',
   focusMode: 'none',
 };
 

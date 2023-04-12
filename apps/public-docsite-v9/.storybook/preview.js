@@ -25,12 +25,19 @@ export const parameters = {
         [
           'Introduction',
           'Developer',
-          ['Quick Start', 'Styling Components', 'Positioning Components', 'Component Poster', 'Server-Side Rendering'],
+          [
+            'Quick Start',
+            'Styling Components',
+            'Positioning Components',
+            'Component Poster',
+            'Server-Side Rendering',
+            ['Basic setup', 'Next.js setup', 'Limitations with Portals'],
+          ],
           'Migration',
           [
-            'Overview',
-            'Important changes',
-            'Planning your journey',
+            'Getting Started',
+            'Keeping Design Consistent',
+            'Handling Breaking Changes',
             'from v8',
             ['Component Mapping', 'Color Mapping', 'Troubleshooting'],
             'from v0',

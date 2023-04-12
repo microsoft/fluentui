@@ -133,7 +133,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
             <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
             <ThemeSlots
               theme={this.state.theme}
-              themeRules={this.state.themeRules}
+              themeRules={this.state.themeRules!}
               onFabricPaletteColorChange={this._onFabricPaletteColorChange}
             />
           </Main>
@@ -142,7 +142,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
     );
   }
 
-  private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
+  private _onFabricPaletteColorChange = (newColor: IColor, fabricSlot: FabricSlots) => {
     if (this._fabricPaletteColorChangeTimeout) {
       this._async.clearTimeout(this._fabricPaletteColorChangeTimeout);
     }
@@ -159,7 +159,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
           ThemeGenerator.insureSlots(themeRules, currentIsDark);
         }
       }
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      this.setState({ themeRules }, this._makeNewTheme);
     }, 20);
   };
 
@@ -213,7 +213,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
             ThemeGenerator.insureSlots(themeRules, currentIsDark);
           }
         }
-        this.setState({ themeRules: themeRules }, this._makeNewTheme);
+        this.setState({ themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes inbetween
@@ -250,7 +250,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
     const state = {
       ...colors,
       theme: finalTheme,
-      themeRules: themeRules,
+      themeRules,
     };
 
     return state;

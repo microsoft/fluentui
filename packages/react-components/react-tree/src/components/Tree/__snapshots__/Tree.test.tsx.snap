@@ -4,8 +4,7 @@ exports[`Tree renders a default state 1`] = `
 <div>
   <div
     class="fui-Tree"
-  >
-    Default Tree
-  </div>
+    role="tree"
+  />
 </div>
 `;

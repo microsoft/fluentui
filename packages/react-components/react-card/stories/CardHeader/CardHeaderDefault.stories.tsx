@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardHeader } from '@fluentui/react-card';
+import { CardHeader } from '@fluentui/react-components';
 import { makeStyles, shorthands, Button, Body1, Caption1 } from '@fluentui/react-components';
 import { MoreHorizontal20Filled } from '@fluentui/react-icons';
 
@@ -38,7 +38,7 @@ export const Default = () => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -49,7 +49,7 @@ export const Default = () => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -60,7 +60,7 @@ export const Default = () => {
             <b>App Name</b>
           </Body1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -81,7 +81,7 @@ export const Default = () => {
             <b>App Name</b>
           </Body1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
       />
 
       <CardHeader

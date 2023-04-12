@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Select } from '@fluentui/react-select';
-import { useId } from '@fluentui/react-components';
+import { Select, useId } from '@fluentui/react-components';
 
 export const Size = () => {
   const selectId = useId();

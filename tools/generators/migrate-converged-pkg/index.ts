@@ -116,8 +116,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
     );
     return;
   }
-  // Perform common folder migration first then update TsConfig files accordingly afterwards.
-  migrateCommonFolderToTesting(tree, options);
 
   // 1. update TsConfigs
   const { configs } = updatedLocalTsConfig(tree, options);
@@ -130,21 +128,22 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   // update package npm scripts
   updatePackageJson(tree, optionsWithTsConfigs);
-  updateApiExtractorForLocalBuilds(tree, optionsWithTsConfigs);
+  updateApiExtractor(tree, optionsWithTsConfigs);
 
   // setup storybook
   setupStorybook(tree, options);
 
-  migrateE2ESetupToCypress(tree, options);
   setupCypress(tree, options);
 
   setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
   updateNxWorkspace(tree, options);
-  moveDocsToSubfolder(tree, options);
 
   setupUnstableApi(tree, optionsWithTsConfigs);
+
+  setupSwcConfig(tree, options);
+  setupJustConfig(tree, options);
 }
 
 // ==== helpers ====
@@ -154,19 +153,12 @@ const templates = {
     return {
       main: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-        // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
-        dtsRollup: {
-          enabled: true,
-          untrimmedFilePath: '',
-          publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
-        },
+        extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
       },
       unstable: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+        extends: '@fluentui/scripts-api-extractor/api-extractor.common.v-next.json',
         mainEntryPointFilePath:
-          // eslint-disable-next-line @fluentui/max-len
           '<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts',
         apiReport: {
           enabled: true,
@@ -174,8 +166,7 @@ const templates = {
         },
         dtsRollup: {
           enabled: true,
-          untrimmedFilePath: '<projectFolder>/dist/unstable-untrimmed.d.ts',
-          publicTrimmedFilePath: '<projectFolder>/dist/unstable.d.ts',
+          untrimmedFilePath: '<projectFolder>/dist/unstable.d.ts',
         },
       },
     };
@@ -277,14 +268,16 @@ const templates = {
       },
     };
   },
-  babelConfig: (options: { platform: 'node' | 'web'; extraPresets: Array<string> }) => {
+  babelConfig: (options: { platform: 'node' | 'web'; extraPresets?: Array<unknown>; rootBabelConfigPath?: string }) => {
+    const { extraPresets, platform, rootBabelConfigPath } = options;
     const plugins = ['annotate-pure-calls'];
-    if (options.platform === 'web') {
+    if (platform === 'web') {
       plugins.push('@babel/transform-react-pure-annotations');
     }
 
     return {
-      presets: [...options.extraPresets],
+      extends: rootBabelConfigPath,
+      presets: extraPresets ? [...extraPresets] : undefined,
       plugins,
     };
   },
@@ -307,7 +300,7 @@ const templates = {
         preset: '../../../jest.preset.js',
         globals: {
           'ts-jest': {
-            tsConfig: '<rootDir>/tsconfig.spec.json',
+            tsconfig: '<rootDir>/tsconfig.spec.json',
             diagnostics: false,
           },
         },
@@ -399,6 +392,44 @@ const templates = {
     .git*
     .prettierignore
   ` + os.EOL,
+  swcConfig: () => {
+    return {
+      $schema: 'https://json.schemastore.org/swcrc',
+      exclude: [
+        '/testing',
+        '/**/*.cy.ts',
+        '/**/*.cy.tsx',
+        '/**/*.spec.ts',
+        '/**/*.spec.tsx',
+        '/**/*.test.ts',
+        '/**/*.test.tsx',
+      ],
+      jsc: {
+        parser: {
+          syntax: 'typescript',
+          tsx: true,
+          decorators: false,
+          dynamicImport: false,
+        },
+        externalHelpers: true,
+        transform: {
+          react: {
+            runtime: 'classic',
+            useSpread: true,
+          },
+        },
+        target: 'es2019',
+      },
+      minify: false,
+      sourceMaps: true,
+    };
+  },
+  justConfig: stripIndents`
+    import { preset, task } from '@fluentui/scripts-tasks';
+
+    preset();
+
+    task('build', 'build:react-components').cached?.();`,
 };
 
 function normalizeOptions(host: Tree, options: AssertedSchema) {
@@ -563,6 +594,19 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
+function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
+  const swcConfig = templates.swcConfig();
+  writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
+
+  return tree;
+}
+
+function setupJustConfig(tree: Tree, options: NormalizedSchema) {
+  tree.write(options.paths.justConfig, templates.justConfig);
+
+  return tree;
+}
+
 interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
   tsconfigs: ReturnType<typeof updatedLocalTsConfig>['configs'];
 }
@@ -576,11 +620,11 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   updateUnstablePackageJson();
-  updateUnstableApiExtractorForLocalBuilds();
+  updateUnstableApiExtractor();
 
   return tree;
 
-  function updateUnstableApiExtractorForLocalBuilds() {
+  function updateUnstableApiExtractor() {
     const apiExtractor = templates.apiExtractor();
 
     writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.unstable.json'), apiExtractor.unstable);
@@ -622,6 +666,7 @@ function setupUnstableApi(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       Object.assign(stableJson.exports, {
         './unstable': {
           types: unstableJson.typings?.replace(/\.\.\//g, ''),
+          ...(packageJson.main ? { node: './lib-commonjs/unstable/index.js' } : null),
           ...(packageJson.module ? { import: './lib/unstable/index.js' } : null),
           require: './lib-commonjs/unstable/index.js',
         },
@@ -639,6 +684,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   packageJson = setupScripts(packageJson);
   packageJson = setupExportMaps(packageJson);
+  packageJson = addSwcHelpers(packageJson);
 
   writeJson(tree, options.paths.packageJson, packageJson);
 
@@ -646,8 +692,8 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
   function setupScripts(json: PackageJson) {
     const scripts = {
-      'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
       test: 'jest --passWithNoTests',
+      'test-ssr': 'test-ssr ./stories/**/*.stories.tsx',
       'type-check': 'tsc -b tsconfig.json',
     };
 
@@ -672,6 +718,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     json.exports = {
       '.': {
         types: json.typings,
+        ...(json.main ? { node: normalizePackageEntryPointPaths(json.main) } : null),
         ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
         ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
       },
@@ -681,16 +728,32 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     return json;
 
     function normalizePackageEntryPointPaths(entryPath: string) {
-      return './' + path.normalize(entryPath);
+      return './' + path.posix.normalize(entryPath);
     }
   }
 }
 
-function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
+//TODO: remove after migration to swc transpilation is complete
+function addSwcHelpers(json: PackageJson) {
+  delete json.dependencies?.tslib;
+  json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.14' };
+  return json;
+}
+
+function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const apiExtractor = templates.apiExtractor();
+  const scripts = {
+    'generate-api': 'just-scripts generate-api',
+  };
 
   tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
+
+  updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+    Object.assign(json.scripts, scripts);
+
+    return json;
+  });
 
   return tree;
 }
@@ -754,8 +817,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       return json;
     });
-
-    moveStoriesToPackageRoot(tree, options);
   }
 
   if (sbAction === 'remove') {
@@ -824,116 +885,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 
   return tree;
-}
-/**
- * TODO: Remove function after migration is complete.
- */
-function migrateE2ESetupToCypress(tree: Tree, options: NormalizedSchema) {
-  const e2ePath = joinPathFragments(options.projectConfig.root, 'e2e');
-  const e2eFolderExists = tree.exists(e2ePath);
-
-  if (!e2eFolderExists) {
-    return;
-  }
-
-  visitNotIgnoredFiles(tree, e2ePath, treePath => {
-    if (treePath.includes('selectors.ts')) {
-      const newFilePath = joinPathFragments(options.paths.sourceRoot, 'testing', path.basename(treePath));
-
-      // Move testing helper file to src/testing.
-      tree.rename(treePath, newFilePath);
-      return;
-    }
-
-    if (treePath.includes('.e2e.')) {
-      const content = tree.read(treePath, 'utf8');
-      const fileName = path.basename(treePath).replace('e2e', 'cy');
-      const componentName = fileName.split('.')[0];
-      const newCypressTestPath = joinPathFragments(options.paths.sourceRoot, 'components', componentName, fileName);
-      // Move cypress component test file to appropriate src/components/{ComponentName} location.
-      tree.rename(treePath, newCypressTestPath);
-
-      //Update file imports of cypress component test file.
-      if (content && content.includes('./selectors')) {
-        const newContent = content.replace('./selectors', '../../testing/selectors');
-        tree.write(newCypressTestPath, newContent);
-      }
-      return;
-    }
-
-    if (treePath.includes('tsconfig.json')) {
-      const newCypressTSConfigPath = joinPathFragments(options.projectConfig.root, 'tsconfig.cy.json');
-      // Move e2e folder tsconfig.json to root
-      tree.rename(treePath, newCypressTSConfigPath);
-      return;
-    }
-  });
-}
-
-/**
- * TODO: Remove function after migration is complete.
- */
-function migrateCommonFolderToTesting(tree: Tree, options: NormalizedSchema) {
-  const sourceRoot = options.paths.sourceRoot;
-  const commonFolderPath = joinPathFragments(sourceRoot, 'common');
-  const commonFolderExists = tree.exists(commonFolderPath);
-
-  if (!commonFolderExists) {
-    return;
-  }
-
-  // Move any files in src/common/ to src/testing/
-  visitNotIgnoredFiles(tree, commonFolderPath, treePath => {
-    const fileName = path.basename(treePath);
-    const newPath = joinPathFragments(sourceRoot, 'testing', fileName);
-    tree.rename(treePath, newPath);
-
-    // Update files that import moved file to reflect file location change from common/ to testing/
-    visitNotIgnoredFiles(tree, joinPathFragments(sourceRoot, 'components'), nestedTreePath => {
-      const fileContent = tree.read(nestedTreePath, 'utf8');
-      if (fileContent && fileContent.includes('common/')) {
-        const newContent = fileContent.replace('common/', 'testing/');
-        tree.write(nestedTreePath, newContent);
-      }
-    });
-  });
-}
-
-function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
-  const root = options.projectConfig.root;
-
-  visitNotIgnoredFiles(tree, root, treePath => {
-    const currPath = treePath.toLowerCase();
-    if (currPath.includes('.md') && (currPath.includes('spec') || currPath.includes('migration'))) {
-      const fileName = path.basename(treePath);
-      const newPath = joinPathFragments(root, 'docs', fileName);
-
-      !tree.exists(newPath) && tree.rename(treePath, newPath);
-    }
-  });
-}
-
-/**
- * TODO: Remove function after migration is complete.
- */
-function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
-  const oldStoriesPath = joinPathFragments(options.paths.sourceRoot, 'stories');
-  const storiesExistInNewPath = tree.exists(options.paths.stories);
-
-  if (storiesExistInNewPath) {
-    return;
-  }
-
-  visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
-    if (treePath.includes('.stories.') || treePath.includes('.md')) {
-      const newStoryPath = treePath
-        .split('/')
-        .filter(str => str !== 'src')
-        .join('/');
-
-      tree.rename(treePath, newStoryPath);
-    }
-  });
 }
 
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
@@ -1120,8 +1071,10 @@ function setupBabel(tree: Tree, options: NormalizedSchema) {
   pkgJson.devDependencies = pkgJson.devDependencies || {};
 
   const shouldAddGriffelPreset = pkgJson.dependencies['@griffel/react'] && packageType === 'web';
-  const extraPresets = shouldAddGriffelPreset ? ['@griffel'] : [];
-  const config = templates.babelConfig({ extraPresets, platform: packageType });
+  const rootBabelConfigPath = shouldAddGriffelPreset
+    ? path.relative(options.projectConfig.root, '.babelrc-v9.json')
+    : undefined;
+  const config = templates.babelConfig({ platform: packageType, rootBabelConfigPath });
 
   tree.write(options.paths.babelConfig, serializeJson(config));
   writeJson(tree, options.paths.packageJson, pkgJson);

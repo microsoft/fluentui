@@ -2,8 +2,8 @@ import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { PopoverTrigger } from './PopoverTrigger';
 import * as renderer from 'react-test-renderer';
-import { mockPopoverContext } from '../../common/mockUsePopoverContext';
-import { isConformant } from '../../common/isConformant';
+import { mockPopoverContext } from '../../testing/mockUsePopoverContext';
+import { isConformant } from '../../testing/isConformant';
 
 jest.mock('../../popoverContext');
 

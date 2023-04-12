@@ -1,18 +1,15 @@
 import { isValidElement } from 'react';
-import type { ReplaceNullWithUndefined, SlotShorthandValue, UnknownSlotProps } from './types';
+import type { SlotRenderFunction, SlotShorthandValue, UnknownSlotProps } from './types';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
-export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
-  required?: Required;
-  defaultProps?: Props;
-};
+export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true
+  ? { required: true; defaultProps?: Props }
+  : { required?: Required; defaultProps?: Props };
 
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
-  <P extends Props | null>(
-    value: P | SlotShorthandValue | undefined,
-    options?: ResolveShorthandOptions<P, true>,
-  ): ReplaceNullWithUndefined<P>;
-  <P extends Props | null>(value: P | SlotShorthandValue | undefined, options?: ResolveShorthandOptions<P, boolean>):
-    | ReplaceNullWithUndefined<P>
+  <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
+  <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>):
+    | P
     | undefined;
 };
 
@@ -28,13 +25,26 @@ export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
     return undefined;
   }
 
-  let resolvedShorthand = {} as UnknownSlotProps;
+  let resolvedShorthand: UnknownSlotProps & {
+    [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<UnknownSlotProps>;
+  } = {};
 
-  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement<any>(value)) {
     resolvedShorthand.children = value;
   } else if (typeof value === 'object') {
     resolvedShorthand = value;
   }
 
-  return defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand;
+  resolvedShorthand = {
+    ...defaultProps,
+    ...resolvedShorthand,
+  };
+
+  if (typeof resolvedShorthand.children === 'function') {
+    resolvedShorthand[SLOT_RENDER_FUNCTION_SYMBOL] = resolvedShorthand.children as SlotRenderFunction<UnknownSlotProps>;
+    resolvedShorthand.children = defaultProps?.children;
+  }
+
+  return resolvedShorthand;
 };

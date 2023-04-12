@@ -149,13 +149,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     };
   }
   public render(): React.ReactNode {
-    const {
-      data,
-      xAxisDateFormatString,
-      xAxisNumberFormatString,
-      yAxisDateFormatString,
-      yAxisNumberFormatString,
-    } = this.props;
+    const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
+      this.props;
     this._colorScale = this._getColorScale();
     const { dataSet, xAxisPoints, yAxisPoints } = this._createSet(
       data,
@@ -311,9 +306,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         const rectElement: JSX.Element = (
           <g
             key={id}
-            {...(this.state.calloutId && {
-              'aria-labelledby': `${this.state.calloutId}`,
-            })}
+            role="img"
+            aria-label={this._getAriaLabel(dataPointObject)}
             data-is-focusable={true}
             fillOpacity={this._getOpacity(dataPointObject.legend)}
             transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
@@ -400,6 +394,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._onLegendClick(item.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(item.legend);
         },
         onMouseOutAction: () => {
@@ -415,7 +410,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     const { domainValuesForColorScale, rangeValuesForColorScale } = this.props;
     return d3ScaleLinear()
       .domain(domainValuesForColorScale)
-      .range((rangeValuesForColorScale as unknown) as number[]);
+      .range(rangeValuesForColorScale as unknown as number[]);
   };
 
   private _getXIndex = (value: string | Date | number): string => {
@@ -676,5 +671,17 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: FlattenData): string => {
+    const xValue = point.x;
+    const yValue = point.y;
+    const legend = point.legend;
+    const zValue = point.ratio ? `${point.ratio[0]}/${point.ratio[1]}` : point.rectText || point.value;
+    const description = point.descriptionMessage;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
+    );
   };
 }

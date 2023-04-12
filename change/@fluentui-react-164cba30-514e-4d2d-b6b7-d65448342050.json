@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Making Stack properly render non-ReactElement children.",
-  "packageName": "@fluentui/react",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

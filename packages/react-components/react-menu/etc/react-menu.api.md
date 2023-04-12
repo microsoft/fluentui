@@ -6,14 +6,14 @@
 
 /// <reference types="react" />
 
-import type { ARIAButtonElement } from '@fluentui/react-aria';
+import { ARIAButtonElement } from '@fluentui/react-aria';
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -35,9 +35,10 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'defaultCheckedValues'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
     open: boolean;
     triggerId: string;
+    defaultCheckedValues?: Record<string, string[]>;
 };
 
 // @public (undocumented)
@@ -133,6 +134,8 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
+    disabled?: boolean;
+    disabledFocusable?: boolean;
 };
 
 // @public
@@ -160,7 +163,7 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<ARIAButtonSlotProps<'div'>>;
+    root: Slot<'div'>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
@@ -169,9 +172,7 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
-    isNativeButton: boolean;
-};
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
@@ -180,10 +181,11 @@ export const MenuList: ForwardRefComponent<MenuListProps>;
 export const menuListClassNames: SlotClassNames<MenuListSlots>;
 
 // @public
-export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> & {
+export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIcons' | 'hasCheckmarks'> & {
     setFocusByFirstCharacter?: (e: React_2.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
     toggleCheckbox?: SelectableHandler;
     selectRadio?: SelectableHandler;
+    onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
 
 // @public (undocumented)
@@ -209,7 +211,7 @@ export type MenuListSlots = {
 };
 
 // @public (undocumented)
-export type MenuListState = ComponentState<MenuListSlots> & Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & {
+export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> & {
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
@@ -279,18 +281,18 @@ export type MenuPopoverSlots = {
 };
 
 // @public
-export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
+export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
     inline: boolean;
 };
 
 // @public
-export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
+export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
-    defaultOpen?: boolean;
     hoverDelay?: number;
     inline?: boolean;
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     open?: boolean;
+    defaultOpen?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
     persistOnItemClick?: boolean;
@@ -322,7 +324,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'onOpenChange' | 'defaultCheckedValues'> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
@@ -332,6 +334,8 @@ export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'onOpenChang
     setOpen: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    defaultCheckedValues?: Record<string, string[]>;
 };
 
 // @public
@@ -399,7 +403,7 @@ export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Elemen
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type UninitializedMenuListState = Omit<MenuListState, 'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'> & Partial<Pick<MenuListState, 'checkedValues'>>;
 
 // @public

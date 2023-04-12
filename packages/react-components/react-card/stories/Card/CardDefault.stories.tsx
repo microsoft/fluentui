@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { makeStyles, Body1, Caption1, Button, shorthands } from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
-import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-card';
+import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -25,7 +25,7 @@ export const Default = () => {
   return (
     <Card className={styles.card}>
       <CardHeader
-        image={<img src={resolveAsset('avatar_elvia.svg')} alt="Face of a person" />}
+        image={<img src={resolveAsset('avatar_elvia.svg')} alt="Elvia Atkins avatar picture" />}
         header={
           <Body1>
             <b>Elvia Atkins</b> mentioned you
@@ -34,8 +34,8 @@ export const Default = () => {
         description={<Caption1>5h ago · About us - Overview</Caption1>}
       />
 
-      <CardPreview logo={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word logo" />}>
-        <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document " />
+      <CardPreview logo={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word document" />}>
+        <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document: About Us - Overview" />
       </CardPreview>
 
       <CardFooter>

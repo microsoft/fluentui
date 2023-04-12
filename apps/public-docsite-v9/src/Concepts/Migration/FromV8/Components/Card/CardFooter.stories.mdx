@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Card Migration/CardFooter" />
+
+# CardFooter Migration
+
+Fluent UI v8 provides the `DocumentCardActions` component. Fluent UI v9 provides a more consistent and opinionated `CardFooter` instead.
+
+This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
+
+| v8           | v9        | Notes                                     |
+| ------------ | --------- | ----------------------------------------- |
+| className    | className |                                           |
+| componentRef | ref       |                                           |
+| views        | n/a       | see Migrate `views` prop in this document |
+| role         | role      |                                           |
+| styles       | className |                                           |
+| theme        | n/a       | Use `FluentProvider` to customize themes  |
+
+## Migrate `views` prop
+
+The `views` prop is no longer supported. To migrate, create an element that displays the number of views and pass it to the `CardFooter` `action` prop.
+
+Before:
+
+```tsx
+import { DocumentCard, DocumentCardActions } from '@fluentui/react/lib/DocumentCard';
+
+const documentCardActions = [
+  {
+    iconProps: { iconName: 'Share' },
+    ariaLabel: 'share action',
+  },
+  {
+    iconProps: { iconName: 'Pin' },
+    ariaLabel: 'pin action',
+  },
+  {
+    iconProps: { iconName: 'Ringer' },
+    ariaLabel: 'notifications action',
+  },
+];
+
+export const DocumentCardCompleteExample: React.FunctionComponent = () => (
+  <DocumentCard>
+    <DocumentCardActions actions={documentCardActions} views={432} />
+  </DocumentCard>
+);
+```
+
+After:
+
+```jsx
+import * as React from 'react';
+import { Button, shorthands, makeStyles } from '@fluentui/react-components';
+import { Pin20Regular, Share20Regular, ServiceBell20Regular, Eye20Regular } from '@fluentui/react-icons';
+import { Card, CardFooter } from '@fluentui/react-card/unstable';
+
+const useStyles = makeStyles({
+  card: {
+    width: '300px',
+  },
+
+  actions: {
+    ...shorthands.gap('4px'),
+    ...shorthands.padding('4px'),
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
+
+export const Default = () => {
+  const styles = useStyles();
+
+  return (
+    <Card size="small" className={styles.card}>
+      <CardFooter
+        action={
+          <div className={styles.actions}>
+            <Eye20Regular /> 432
+          </div>
+        }
+      >
+        <Button appearance="transparent" icon={<Share20Regular />} aria-label="Share" />
+        <Button appearance="transparent" icon={<Pin20Regular />} aria-label="Pin" />
+        <Button appearance="transparent" icon={<ServiceBell20Regular />} aria-label="Notifications" />
+      </CardFooter>
+    </Card>
+  );
+};
+```
