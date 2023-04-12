@@ -9,16 +9,6 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
-import { Field } from '@fluentui/react-field';
-import { fieldClassNames } from '@fluentui/react-field';
-import { FieldContextProvider } from '@fluentui/react-field';
-import { FieldContextValue } from '@fluentui/react-field';
-import { FieldContextValues } from '@fluentui/react-field';
-import { FieldControlProps } from '@fluentui/react-field';
-import { FieldControlPropsOptions } from '@fluentui/react-field';
-import { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
-import { FieldState } from '@fluentui/react-field';
 import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { FlatTreeItem } from '@fluentui/react-tree';
@@ -136,26 +126,6 @@ export { AlertProps }
 export { AlertSlots }
 
 export { AlertState }
-
-export { Field }
-
-export { fieldClassNames }
-
-export { FieldContextProvider }
-
-export { FieldContextValue }
-
-export { FieldContextValues }
-
-export { FieldControlProps }
-
-export { FieldControlPropsOptions }
-
-export { FieldProps }
-
-export { FieldSlots }
-
-export { FieldState }
 
 export { flattenTree_unstable }
 
