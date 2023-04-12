@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { TimePicker } from '@fluentui/react/lib/TimePicker';
 import { Text } from '@fluentui/react/lib/Text';
-import { timePickerStyles, TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
+import { TimePickerExampleWrapper } from '@fluentui/react-examples/lib/react/TimePicker/TimePicker.Example.Wrapper';
+import { timePickerStyles } from '@fluentui/react-examples/lib/react/TimePicker/TimePickerStyles';
 
 export const TimePickerCustomTimeStringsExample: React.FC = () => {
   const [customTimeString, setCustomTimeString] = React.useState<string>('');
@@ -23,7 +24,6 @@ export const TimePickerCustomTimeStringsExample: React.FC = () => {
     <TimePickerExampleWrapper>
       <TimePicker
         styles={timePickerStyles}
-        // eslint-disable-next-line react/jsx-no-bind
         onFormatDate={onFormatDate}
         onValidateUserInput={onValidateUserInput}
         onChange={onChange}

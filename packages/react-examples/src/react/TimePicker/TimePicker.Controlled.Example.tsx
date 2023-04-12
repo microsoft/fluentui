@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { TimePicker } from '@fluentui/react/lib/TimePicker';
 import { Text } from '@fluentui/react/lib/Text';
-import { timePickerStyles, TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
+import { TimePickerExampleWrapper } from '@fluentui/react-examples/lib/react/TimePicker/TimePicker.Example.Wrapper';
+import { timePickerStyles } from '@fluentui/react-examples/lib/react/TimePicker/TimePickerStyles';
 
 export const TimePickerControlledExample: React.FC = () => {
   const dateAnchor = new Date('February 27, 2023 08:00:00');

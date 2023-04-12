@@ -3,7 +3,7 @@ import { TimePicker } from '@fluentui/react/lib/TimePicker';
 import { DatePicker } from '@fluentui/react/lib/DatePicker';
 import { Label } from '@fluentui/react/lib/Label';
 import { Text } from '@fluentui/react/lib/Text';
-import { TimePickerExampleWrapper } from './TimePicker.Example.Wrapper';
+import { TimePickerExampleWrapper } from '@fluentui/react-examples/lib/react/TimePicker/TimePicker.Example.Wrapper';
 
 export const TimePickerDateTimePickerExample: React.FC = () => {
   const currentDate = new Date('2023-02-01 05:00:00');
