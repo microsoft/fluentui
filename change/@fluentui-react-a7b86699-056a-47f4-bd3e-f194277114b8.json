@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: BasePicker selects correct focus target in selected items",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
