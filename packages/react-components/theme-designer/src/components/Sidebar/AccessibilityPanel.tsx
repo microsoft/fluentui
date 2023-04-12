@@ -13,13 +13,11 @@ export interface AccessibilityPanelProps {
 
 export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
   const { lightThemeOverrides, darkThemeOverrides, brand } = props;
-  const { failedContrastTests: failLight, failedLuminosityTests: failedLightLuminosityTests } = getAccessibilityChecker(
-    {
-      ...createLightTheme(brand),
-      ...lightThemeOverrides,
-    },
-  );
-  const { failedContrastTests: failDark, failedLuminosityTests: failedDarkLuminosityTests } = getAccessibilityChecker({
+  const { failedContrastTests: failLight } = getAccessibilityChecker({
+    ...createLightTheme(brand),
+    ...lightThemeOverrides,
+  });
+  const { failedContrastTests: failDark } = getAccessibilityChecker({
     ...createDarkTheme(brand),
     ...darkThemeOverrides,
   });
@@ -34,10 +32,8 @@ export const AccessibilityPanel: React.FC<AccessibilityPanelProps> = props => {
     >
       <Label>Light mode</Label>
       <AccessibilityContrastChip failKeys={Object.keys(failLight)} testType={TestType.contrastRatio} />
-      <AccessibilityContrastChip failKeys={Object.keys(failedLightLuminosityTests)} testType={TestType.luminosity} />
       <Label style={{ paddingTop: tokens.spacingVerticalXS }}>Dark mode</Label>
       <AccessibilityContrastChip failKeys={Object.keys(failDark)} testType={TestType.contrastRatio} />
-      <AccessibilityContrastChip failKeys={Object.keys(failedDarkLuminosityTests)} testType={TestType.luminosity} />
     </div>
   );
 };

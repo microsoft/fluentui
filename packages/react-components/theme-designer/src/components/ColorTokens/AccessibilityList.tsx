@@ -76,12 +76,9 @@ export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityCon
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
   const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
 
-  const { all, failedLuminosityTests, failedContrastTests } = getAccessibilityChecker(theme);
+  const { all, failedContrastTests } = getAccessibilityChecker(theme);
 
   const failedContrastKeys = Array.from(new Set(failedContrastTests.map(test => test.testInfo!.currToken)).values());
-  const failedLuminosityKeys = Array.from(
-    new Set(failedLuminosityTests.map(test => test.testInfo!.currToken)).values(),
-  );
 
   return (
     <>
@@ -102,26 +99,6 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
                 onNewOverride={onNewOverride}
                 coveredTokens={sortOverrideableColorTokens(failedContrastKeys)}
                 tests={failedContrastTests}
-              />
-            </AccordionPanel>
-          </AccordionItem>
-        ) : null}
-        {failedLuminosityKeys.length > 0 ? (
-          <AccordionItem value="FailLuminosity">
-            <AccordionHeader>
-              Luminosity Tests &nbsp;
-              <AccessibilityContrastChip failKeys={failedLuminosityKeys} testType={TestType.luminosity} />
-            </AccordionHeader>
-            <AccordionPanel>
-              <TokenIssueList
-                testType={TestType.luminosity}
-                brand={brand}
-                themeName={themeName}
-                colorOverrides={colorOverride}
-                themeOverrides={themeOverrides}
-                onNewOverride={onNewOverride}
-                coveredTokens={sortOverrideableColorTokens(failedLuminosityKeys)}
-                tests={failedLuminosityTests}
               />
             </AccordionPanel>
           </AccordionItem>
