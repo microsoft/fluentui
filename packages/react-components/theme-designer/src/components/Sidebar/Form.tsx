@@ -82,6 +82,7 @@ const useStyles = makeStyles({
   },
 });
 
+const DELAY_INPUT = 20;
 export const Form: React.FC = () => {
   const styles = useStyles();
   const sidebarId = useId();
@@ -101,14 +102,20 @@ export const Form: React.FC = () => {
   const [vibrancy, setVibrancy] = React.useState<number>(0);
 
   // as the user moves through the wheel, we want the page to react in real time
-  const debounceKeyColor: string = useDebounce(keyColor, 100);
+  const debounceKeyColor: string = useDebounce(keyColor, DELAY_INPUT);
+  const debounceHueTorsion: number = useDebounce(hueTorsion, DELAY_INPUT);
+  const debounceVibrancy: number = useDebounce(vibrancy, DELAY_INPUT);
 
   React.useEffect(() => {
     dispatch({
       type: 'updateThemeWithCustomerAttributes',
-      payload: { keyColor: debounceKeyColor.padEnd(7, '0'), hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 },
+      payload: {
+        keyColor: debounceKeyColor.padEnd(7, '0'),
+        hueTorsion: debounceHueTorsion / 100,
+        vibrancy: debounceVibrancy / 100,
+      },
     });
-  }, [dispatch, debounceKeyColor, hueTorsion, vibrancy, keyColor]);
+  }, [dispatch, debounceKeyColor, debounceHueTorsion, debounceVibrancy]);
 
   const generateHexColor = (e: React.ChangeEvent<HTMLInputElement>) =>
     '#' + e.target.value.replace(/\W/g, '').toUpperCase();

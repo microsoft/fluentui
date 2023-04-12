@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
-import { useStaticStyles, useStyles } from './ThemeDesigner.styles';
+import { useStyles } from './ThemeDesigner.styles';
 import { ThemeDesignerContextProvider } from './Context/ThemeDesignerContext';
 import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { Header } from './components/Header/Header';
@@ -12,8 +12,6 @@ import { Content } from './components/Content/Content';
  */
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
-  useStaticStyles();
-
   return (
     <FluentProvider theme={webLightTheme}>
       <ThemeDesignerContextProvider>
