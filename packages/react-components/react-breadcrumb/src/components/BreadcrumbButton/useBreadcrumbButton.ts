@@ -22,7 +22,6 @@ export const useBreadcrumbButton_unstable = (
   const newProps = {
     ...rest,
     appearance: (props.appearance || appearance) as ButtonProps['appearance'],
-    iconOnly: Boolean(!props.children),
     iconPosition,
   };
   const buttonState = useButton_unstable(newProps, ref);
