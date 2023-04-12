@@ -10,7 +10,6 @@ import type {
   UnionToIntersection,
   UnknownSlotProps,
 } from './types';
-import { SLOT_EXTERNAL_CHILDREN_SYMBOL, SLOT_INTERNAL_CHILDREN_SYMBOL } from './constants';
 
 export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
@@ -75,10 +74,6 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
   if (props === undefined) {
     return [null, undefined as R[K]];
   }
-
-  // Symbols must be deleted to ensure new custom pragma won't recognize this as the new version element
-  delete (props as { [SLOT_EXTERNAL_CHILDREN_SYMBOL]: unknown })[SLOT_EXTERNAL_CHILDREN_SYMBOL];
-  delete (props as { [SLOT_INTERNAL_CHILDREN_SYMBOL]: unknown })[SLOT_INTERNAL_CHILDREN_SYMBOL];
 
   const { children, as: asProp, ...rest } = props;
 

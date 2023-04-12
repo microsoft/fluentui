@@ -1,2 +1,2 @@
-export { jsx } from './jsx';
+export { createElement } from './createElement';
 export { Fragment } from 'react';

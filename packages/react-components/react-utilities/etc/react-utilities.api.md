@@ -150,10 +150,7 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
 // @internal
-export const SLOT_EXTERNAL_CHILDREN_SYMBOL: unique symbol;
-
-// @internal
-export const SLOT_INTERNAL_CHILDREN_SYMBOL: unique symbol;
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
 
 // @public
 export type SlotClassNames<Slots> = {

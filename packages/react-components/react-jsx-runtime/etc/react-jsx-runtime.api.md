@@ -7,10 +7,10 @@
 import { Fragment } from 'react';
 import * as React_2 from 'react';
 
-export { Fragment }
+// @public (undocumented)
+export function createElement<P extends {}>(type: React_2.ElementType<P>, props?: P | null, ...children: React_2.ReactNode[]): React_2.ReactElement<P> | null;
 
-// @public
-export function jsx<P extends {}>(type: React_2.ElementType<P>, props?: P | null, ...children: React_2.ReactNode[]): React_2.ReactElement<P> | null;
+export { Fragment }
 
 // (No @packageDocumentation comment for this package)
 

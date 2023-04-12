@@ -1,6 +1,6 @@
 import { isValidElement } from 'react';
-import type { SlotShorthandValue, UnknownSlotProps } from './types';
-import { SLOT_EXTERNAL_CHILDREN_SYMBOL, SLOT_INTERNAL_CHILDREN_SYMBOL } from './constants';
+import type { SlotRenderFunction, SlotShorthandValue, UnknownSlotProps } from './types';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true
   ? { required: true; defaultProps?: Props }
@@ -25,7 +25,9 @@ export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
     return undefined;
   }
 
-  let resolvedShorthand = {} as UnknownSlotProps;
+  let resolvedShorthand: UnknownSlotProps & {
+    [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<UnknownSlotProps>;
+  } = {};
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement<any>(value)) {
@@ -34,10 +36,15 @@ export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
     resolvedShorthand = value;
   }
 
-  return {
+  resolvedShorthand = {
     ...defaultProps,
     ...resolvedShorthand,
-    [SLOT_EXTERNAL_CHILDREN_SYMBOL]: resolvedShorthand.children,
-    [SLOT_INTERNAL_CHILDREN_SYMBOL]: defaultProps?.children,
   };
+
+  if (typeof resolvedShorthand.children === 'function') {
+    resolvedShorthand[SLOT_RENDER_FUNCTION_SYMBOL] = resolvedShorthand.children as SlotRenderFunction<UnknownSlotProps>;
+    resolvedShorthand.children = defaultProps?.children;
+  }
+
+  return resolvedShorthand;
 };

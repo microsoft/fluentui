@@ -3,8 +3,7 @@ export {
   getSlotsNext,
   resolveShorthand,
   isResolvedShorthand,
-  SLOT_EXTERNAL_CHILDREN_SYMBOL,
-  SLOT_INTERNAL_CHILDREN_SYMBOL,
+  SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
 export type {
   ExtractSlotProps,

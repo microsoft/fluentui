@@ -1,10 +1,5 @@
 /**
  * @internal
- * internal symbol used to keep defaultProps.children available
+ * Internal reference for the render function
  */
-export const SLOT_INTERNAL_CHILDREN_SYMBOL = Symbol('fui.slotInternalChildren');
-/**
- * @internal
- * internal symbol used to keep slot.children available
- */
-export const SLOT_EXTERNAL_CHILDREN_SYMBOL = Symbol('fui.slotExternalChildren');
+export const SLOT_RENDER_FUNCTION_SYMBOL = Symbol('fui.slotRenderFunction');

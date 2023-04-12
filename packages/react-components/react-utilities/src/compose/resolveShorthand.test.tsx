@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { resolveShorthand } from './resolveShorthand';
 import type { Slot } from './types';
-import { SLOT_EXTERNAL_CHILDREN_SYMBOL, SLOT_INTERNAL_CHILDREN_SYMBOL } from './constants';
 
 type TestProps = {
   slotA?: Slot<'div'>;
@@ -18,8 +17,6 @@ describe('resolveShorthand', () => {
 
     expect(resolvedProps).toEqual({
       children: 'hello',
-      [SLOT_EXTERNAL_CHILDREN_SYMBOL]: 'hello',
-      [SLOT_INTERNAL_CHILDREN_SYMBOL]: undefined,
     });
   });
 
@@ -29,8 +26,6 @@ describe('resolveShorthand', () => {
 
     expect(resolvedProps).toEqual({
       children: <div>hello</div>,
-      [SLOT_EXTERNAL_CHILDREN_SYMBOL]: <div>hello</div>,
-      [SLOT_INTERNAL_CHILDREN_SYMBOL]: undefined,
     });
   });
 
@@ -40,8 +35,6 @@ describe('resolveShorthand', () => {
 
     expect(resolvedProps).toEqual({
       children: 42,
-      [SLOT_EXTERNAL_CHILDREN_SYMBOL]: 42,
-      [SLOT_INTERNAL_CHILDREN_SYMBOL]: undefined,
     });
   });
 
