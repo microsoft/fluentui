@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 07 Apr 2023 00:01:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Apr 2023 09:31:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.9)
+
+Wed, 12 Apr 2023 09:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.18.8..@fluentui/react-components_v9.18.9)
+
+### Patches
+
+- `@fluentui/react-badge`
+  - fix(react-badge): Use min-width: max-content on Badge to prevent shrinking smaller than content ([PR #27489](https://github.com/microsoft/fluentui/pull/27489) by behowell@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: popup now defines fallbackPositions to use when it doesn't fit the screen ([PR #27521](https://github.com/microsoft/fluentui/pull/27521) by sarah.higley@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: use tabster to focus on trigger, instead of manually invoking .focus ([PR #27512](https://github.com/microsoft/fluentui/pull/27512) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - fix: Have RadioGroup forward aria-describedby to each of the Radio items inside ([PR #27456](https://github.com/microsoft/fluentui/pull/27456) by behowell@microsoft.com)
+- `@fluentui/react-tabs`
+  - added aria-orientation attribute ([PR #27315](https://github.com/microsoft/fluentui/pull/27315) by kakrookaran@gmail.com)
+- `@fluentui/react-utilities`
+  - fix(hooks): cleanup event listeners only when "disabled" is false ([PR #27516](https://github.com/microsoft/fluentui/pull/27516) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-datepicker-compat`
+  - feat: Make package public. ([PR #27524](https://github.com/microsoft/fluentui/pull/27524) by esteban.230@hotmail.com)
+- `@fluentui/react-field`
+  - fix: Make contextValues argument required on renderField_unstable ([PR #27436](https://github.com/microsoft/fluentui/pull/27436) by behowell@microsoft.com)
 
 ## [9.18.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.18.8)
 
