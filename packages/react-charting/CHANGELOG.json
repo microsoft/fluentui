@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 07:39:35 GMT",
+      "tag": "@fluentui/react-charting_v5.16.16",
+      "version": "5.16.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "055497d592f2cbc753ba6cdb14929e72c2c15dd7",
+            "comment": "Fix wrong state narration for multiple selected legends"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Apr 2023 07:43:44 GMT",
       "tag": "@fluentui/react-charting_v5.16.15",
       "version": "5.16.15",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 09:31:45 GMT",
+      "tag": "@fluentui/react-text_v9.3.5",
+      "version": "9.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-utilities to v9.7.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 04 Apr 2023 18:44:50 GMT",
       "tag": "@fluentui/react-text_v9.3.4",
       "version": "9.3.4",
