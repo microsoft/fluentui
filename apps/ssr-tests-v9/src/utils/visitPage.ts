@@ -2,6 +2,7 @@ import type { Browser } from 'puppeteer';
 import { visitUrl } from '@fluentui/scripts-puppeteer';
 import { PROVIDER_ID } from './constants';
 import * as React from 'react';
+import { containsAriaDescriptionWarning } from './helpers';
 
 class RenderError extends Error {
   public name = 'RangeError';
@@ -19,11 +20,7 @@ export async function visitPage(browser: Browser, url: string) {
 
       // Ignoring 'aria-description' warning from react 17 as it's a valid prop
       // https://github.com/facebook/react/issues/21035
-      if (
-        messageContent.startsWith('Warning: Invalid aria prop %s on <%s> tag.') &&
-        messageContent.includes('`aria-description`') &&
-        React.version.startsWith('17')
-      ) {
+      if (containsAriaDescriptionWarning(messageContent) && React.version.startsWith('17')) {
         return;
       }
 
