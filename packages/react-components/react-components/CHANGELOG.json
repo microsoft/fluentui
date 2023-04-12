@@ -2,6 +2,65 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 12 Apr 2023 09:31:42 GMT",
+      "tag": "@fluentui/react-components_v9.18.9",
+      "version": "9.18.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "72acd40b2319325eb725760888185a2fabdd46e7",
+            "comment": "fix(react-badge): Use min-width: max-content on Badge to prevent shrinking smaller than content"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "7b241289e260b97db8cd1fc4347d521a694b06d7",
+            "comment": "fix: popup now defines fallbackPositions to use when it doesn't fit the screen"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "841ea75d516d85b88eb826030718c19c3239ee4d",
+            "comment": "fix: use tabster to focus on trigger, instead of manually invoking .focus"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "865a699268e85c55ba9f26c2b4a109161e48576c",
+            "comment": "fix: Have RadioGroup forward aria-describedby to each of the Radio items inside"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "4652fbe1f9472d5080af23ace0085b1dddd3013c",
+            "comment": "added aria-orientation attribute"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "1539311d63dfa731f1bbf1e08ab002a43c52f9a0",
+            "comment": "fix(hooks): cleanup event listeners only when \"disabled\" is false"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "740f3aa9dc9946d9f646831e92f8eccc34e80a22",
+            "comment": "feat: Make package public."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "3bad9d0fca9713c3e375831b26fc2e9d96f3fd35",
+            "comment": "fix: Make contextValues argument required on renderField_unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Apr 2023 00:01:35 GMT",
       "tag": "@fluentui/react-components_v9.18.8",
       "version": "9.18.8",

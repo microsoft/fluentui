@@ -8,7 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DeprecatedFieldProps } from '@fluentui/react-field';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
@@ -29,22 +28,6 @@ export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appeara
 
 // @public (undocumented)
 export type ComboboxContextValues = ComboboxBaseContextValues;
-
-// @public @deprecated (undocumented)
-export const ComboboxField_unstable: ForwardRefComponent<ComboboxFieldProps_unstable>;
-
-// @public @deprecated (undocumented)
-export const comboboxFieldClassNames: {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @public @deprecated (undocumented)
-export type ComboboxFieldProps_unstable = DeprecatedFieldProps<ComboboxProps>;
 
 // @public (undocumented)
 export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;
