@@ -39,7 +39,7 @@ const iconStyleProps: FluentIconsProps = {
 const Badges = () => {
   const badgeStyles = useBadgeStyles();
   return (
-    <div aria-hidden className={badgeStyles.base}>
+    <div className={badgeStyles.base}>
       <Important16Regular {...iconStyleProps} />
       <CounterBadge count={1} color="danger" size="small" />
     </div>
@@ -49,10 +49,10 @@ const Badges = () => {
 const RenderActions = () => {
   return (
     <>
-      <Button appearance="subtle" icon={<Flag20Regular />} />
+      <Button aria-label="Report" appearance="subtle" icon={<Flag20Regular />} />
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <Button appearance="subtle" icon={<MoreHorizontal20Regular />} />
+          <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
         </MenuTrigger>
 
         <MenuPopover>
@@ -73,7 +73,35 @@ export const TreePersonaLayout = () => {
 
   return (
     <Tree aria-label="Tree">
-      <TreeItem actions={<RenderActions />}>
+      <TreeItem aria-description="1 new message, important" actions={<RenderActions />}>
+        <TreeItemPersonaLayout
+          description={<div className={styles.unread}>Secondary text slot</div>}
+          aside={
+            <>
+              <span>00:00 AM</span>
+              <Badges />
+            </>
+          }
+          media={<Avatar />}
+        >
+          <div className={styles.unread}>Primary text slot</div>
+        </TreeItemPersonaLayout>
+        <Tree>
+          <TreeItem>
+            <TreeItemPersonaLayout description="description" media={<Avatar />}>
+              content
+            </TreeItemPersonaLayout>
+            <Tree>
+              <TreeItem>
+                <TreeItemPersonaLayout description="description" media={<Avatar />}>
+                  content
+                </TreeItemPersonaLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem aria-description="1 message, important" actions={<RenderActions />}>
         <TreeItemPersonaLayout
           description="Secondary text slot"
           aside={
@@ -99,34 +127,6 @@ export const TreePersonaLayout = () => {
             <TreeItemPersonaLayout description="description" media={<Avatar />}>
               content
             </TreeItemPersonaLayout>
-          </TreeItem>
-        </Tree>
-      </TreeItem>
-      <TreeItem actions={<RenderActions />}>
-        <TreeItemPersonaLayout
-          description={<div className={styles.unread}>Secondary text slot</div>}
-          aside={
-            <>
-              <span>00:00 AM</span>
-              <Badges />
-            </>
-          }
-          media={<Avatar />}
-        >
-          <div className={styles.unread}>Primary text slot</div>
-        </TreeItemPersonaLayout>
-        <Tree>
-          <TreeItem>
-            <TreeItemPersonaLayout description="description" media={<Avatar />}>
-              content
-            </TreeItemPersonaLayout>
-            <Tree>
-              <TreeItem>
-                <TreeItemPersonaLayout description="description" media={<Avatar />}>
-                  content
-                </TreeItemPersonaLayout>
-              </TreeItem>
-            </Tree>
           </TreeItem>
         </Tree>
       </TreeItem>
