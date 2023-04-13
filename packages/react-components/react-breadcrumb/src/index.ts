@@ -22,3 +22,11 @@ export {
   useBreadcrumbItem_unstable,
 } from './BreadcrumbItem';
 export type { BreadcrumbItemProps, BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem';
+export {
+  BreadcrumbButton,
+  breadcrumbButtonClassNames,
+  renderBreadcrumbButton_unstable,
+  useBreadcrumbButtonStyles_unstable,
+  useBreadcrumbButton_unstable,
+} from './BreadcrumbButton';
+export type { BreadcrumbButtonProps, BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton';

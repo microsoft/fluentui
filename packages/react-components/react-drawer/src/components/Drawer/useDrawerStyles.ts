@@ -1,11 +1,17 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DrawerSlots, DrawerState } from './Drawer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const drawerClassNames: SlotClassNames<DrawerSlots> = {
   root: 'fui-Drawer',
-  // TODO: add class names for all slots on DrawerSlots.
-  // Should be of the form `<slotName>: 'fui-Drawer__<slotName>`
+};
+
+/**
+ * CSS variable names used internally for uniform styling in Drawer.
+ */
+export const drawerCSSVars = {
+  size: '--fui-Drawer--size',
 };
 
 /**
@@ -13,21 +19,103 @@ export const drawerClassNames: SlotClassNames<DrawerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding('16px'),
+    ...shorthands.borderRadius(0),
+    ...shorthands.border(0),
+
+    boxSizing: 'border-box',
+    width: `var(${drawerCSSVars.size})`,
+    maxWidth: 'calc(100vw - 48px)',
+    height: 'auto',
+    top: 0,
+    bottom: 0,
+    backgroundColor: tokens.colorNeutralBackground1,
   },
 
-  // TODO add additional classes for different states and/or slots
+  leftDrawer: {
+    left: 0,
+    right: 'auto',
+  },
+
+  rightDrawer: {
+    right: 0,
+    left: 'auto',
+  },
+
+  inline: {
+    position: 'relative',
+    alignItems: 'stretch',
+    justifyContent: 'stretch',
+  },
+
+  inlineLeft: {
+    ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
+  },
+
+  inlineRight: {
+    ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
+  },
+
+  temporary: {
+    position: 'fixed',
+  },
+
+  sizeSmall: {
+    [drawerCSSVars.size]: '320px',
+  },
+  sizeMedium: {
+    [drawerCSSVars.size]: '592px',
+  },
+  sizeLarge: {
+    [drawerCSSVars.size]: '940px',
+  },
+  sizeFull: {
+    [drawerCSSVars.size]: '100vw',
+    maxWidth: '100vw',
+  },
 });
+
+function getInlineClasses(state: DrawerState, styles: ReturnType<typeof useStyles>) {
+  const classes = [styles.inline];
+
+  if (state.position === 'left') {
+    classes.push(styles.inlineLeft);
+  }
+
+  if (state.position === 'right') {
+    classes.push(styles.inlineRight);
+  }
+
+  return mergeClasses(...classes);
+}
+
+const sizeMap = {
+  small: 'sizeSmall',
+  medium: 'sizeMedium',
+  large: 'sizeLarge',
+  full: 'sizeFull',
+} as const;
 
 /**
  * Apply styling to the Drawer slots based on the state
  */
 export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(drawerClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const baseClasses = [
+    drawerClassNames.root,
+    styles.root,
+    state.position === 'left' ? styles.leftDrawer : styles.rightDrawer,
+    typeof state.size !== 'number' && styles[sizeMap[state.size]],
+  ];
+
+  if (state.type === 'overlay') {
+    state.root.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
+  }
+
+  if (state.type === 'inline') {
+    state.root.className = mergeClasses(...baseClasses, getInlineClasses(state, styles), state.root.className);
+  }
 
   return state;
 };

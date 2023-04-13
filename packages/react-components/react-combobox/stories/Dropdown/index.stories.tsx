@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Dropdown, Listbox, Option } from '@fluentui/react-combobox';
+import { Dropdown, Listbox, Option } from '@fluentui/react-components';
 
 import descriptionMd from './DropdownDescription.md';
 import bestPracticesMd from './DropdownBestPractices.md';
