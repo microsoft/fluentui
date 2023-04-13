@@ -6,11 +6,12 @@ import previewMd from './DrawerPreview.md';
 export { Default } from './DrawerDefault.stories';
 export { DefaultOpen } from './DrawerDefaultOpen.stories';
 export { AlwaysOpen } from './DrawerAlwaysOpen.stories';
+export { PreventClose } from './DrawerPreventClose.stories';
 export { Position } from './DrawerPosition.stories';
 export { Inline } from './DrawerInline.stories';
 export { Size } from './DrawerSize.stories';
 export { CustomSize } from './DrawerCustomSize.stories';
-export { PreventClose } from './DrawerPreventClose.stories';
+export { Separator } from './DrawerSeparator.stories';
 
 export default {
   title: 'Preview Components/Drawer/Drawer',

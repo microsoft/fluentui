@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Update react-field dependency version",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
