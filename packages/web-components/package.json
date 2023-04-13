@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "3.0.0-alpha.16",
+  "version": "3.0.0-alpha.17",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -111,6 +111,10 @@
     "./text": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
+    },
+    "./toggle-button": {
+      "types": "./dist/esm/toggle-button/define.d.ts",
+      "default": "./dist/esm/toggle-button/define.js"
     }
   },
   "scripts": {
