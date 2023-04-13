@@ -124,15 +124,19 @@ function useMaxHeight(
 
   React.useEffect(() => {
     const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
+    let calculatedHeight: number | undefined;
 
-    // When the calloutMaxHeight is greater than the bottomBounds, we should calculate the max height as if it wasn't
-    // provided to avoid cutting off the callout.
-    if ((!calloutMaxHeight && !hidden) || (calloutMaxHeight && bottomBounds && calloutMaxHeight > bottomBounds)) {
-      if (typeof top === 'number' && bottomBounds) {
-        setMaxHeight(bottomBounds - top);
-      } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
-        setMaxHeight(bottomBounds - topBounds - bottom);
-      }
+    if (typeof top === 'number' && bottomBounds) {
+      calculatedHeight = bottomBounds - top;
+    } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
+      calculatedHeight = bottomBounds - topBounds - bottom;
+    }
+
+    if (
+      (!calloutMaxHeight && !hidden) ||
+      (calloutMaxHeight && calculatedHeight && calloutMaxHeight > calculatedHeight)
+    ) {
+      setMaxHeight(calculatedHeight);
     } else if (calloutMaxHeight) {
       setMaxHeight(calloutMaxHeight);
     } else {
