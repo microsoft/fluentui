@@ -223,8 +223,6 @@ No props
 
 A drawer can be triggered by any button on the screen. When invoked, it slides in from either the left or right side of the screen. How they will behave depends from its `type`:
 
-TODO: Add examples
-
 #### `overlay`
 
 The drawer overlays on top of the main surface. In case the overlay is a modal (by default), it renders an overlay scrim that blocks the whole screen.
@@ -234,26 +232,11 @@ All the mouse, touch, keyboard and screen readers behaviors will follow the same
 
 The drawer pushes content on the main surface to the side to fit. It renders as a `div` element wherever its placed in the DOM order.
 
-TODO: Add the main scenarios for behavior
-
-### `DrawerHeader`
-
-TODO: Add examples of component variation
-
-### `DrawerContent`
-
-TODO: Add examples of component variation and how scroll affects this component
-
-### `DrawerFooter`
-
-TODO: Add examples of component variation
+![Left Drawer entering the screen](assets/left-drawer-entering.png)
+![Left Drawer exiting the screen](assets/left-drawer-exiting.png)
+![Right Drawer entering the screen](assets/right-drawer-entering.png)
+![Right Drawer exiting the screen](assets/right-drawer-exiting.png)
 
 ## Accessibility
 
-### `overlay`
-
 Drawer uses the Dialog under the hood and all accessibility implementation, concerns and recommendations are described in the [Dialog component](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-dialog/docs/Spec.md#behaviors) spec.
-
-### `inline`
-
-WIP
