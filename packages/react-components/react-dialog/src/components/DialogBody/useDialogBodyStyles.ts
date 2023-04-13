@@ -25,8 +25,6 @@ const useStyles = makeStyles({
     '&::backdrop': {
       backgroundColor: 'rgba(0, 0, 0, 0.4)',
     },
-    width: `100%`,
-    height: 'fit-content',
     maxHeight: `calc(100vh - 2 * ${SURFACE_PADDING})`,
     boxSizing: 'border-box',
     gridTemplateRows: 'auto 1fr auto',

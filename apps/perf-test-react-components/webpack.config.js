@@ -8,7 +8,7 @@ const { resources } = require('@fluentui/scripts-webpack');
 // TODO: Should root cause why this only works as a serve config.
 module.exports = resources.createServeConfig(
   {
-    entry: './src/index.scenarios.tsx',
+    entry: './src/app.tsx',
     mode: 'production',
     output: {
       filename: 'perf-test.js',

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
-  props: Omit<Props, 'children' | 'as'>,
+  props: Omit<Props, 'as'>,
 ) => React.ReactNode;
 
 /**
