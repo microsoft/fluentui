@@ -42,22 +42,22 @@ const useStyles = makeStyles({
     left: 'auto',
   },
 
+  overlay: {
+    position: 'fixed',
+  },
+
   inline: {
     position: 'relative',
     alignItems: 'stretch',
     justifyContent: 'stretch',
   },
 
-  inlineLeft: {
+  inlineSeparatorLeft: {
     ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
   },
 
-  inlineRight: {
+  inlineSeparatorRight: {
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
-  },
-
-  temporary: {
-    position: 'fixed',
   },
 
   sizeSmall: {
@@ -78,12 +78,14 @@ const useStyles = makeStyles({
 function getInlineClasses(state: DrawerState, styles: ReturnType<typeof useStyles>) {
   const classes = [styles.inline];
 
-  if (state.position === 'left') {
-    classes.push(styles.inlineLeft);
-  }
+  if (state.separator) {
+    if (state.position === 'left') {
+      classes.push(styles.inlineSeparatorLeft);
+    }
 
-  if (state.position === 'right') {
-    classes.push(styles.inlineRight);
+    if (state.position === 'right') {
+      classes.push(styles.inlineSeparatorRight);
+    }
   }
 
   return mergeClasses(...classes);
@@ -110,7 +112,7 @@ export const useDrawerStyles_unstable = (state: DrawerState): DrawerState => {
   ];
 
   if (state.type === 'overlay') {
-    state.root.className = mergeClasses(...baseClasses, styles.temporary, state.root.className);
+    state.root.className = mergeClasses(...baseClasses, styles.overlay, state.root.className);
   }
 
   if (state.type === 'inline') {

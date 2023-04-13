@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
+import { Field, makeStyles, tokens } from '@fluentui/react-components';
 import type { SkeletonProps } from '@fluentui/react-components/unstable';
-import { Field, Skeleton, SkeletonItem } from '@fluentui/react-components/unstable';
+import { Skeleton, SkeletonItem } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   invertedWrapper: {

@@ -49,6 +49,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     position = 'left',
     size = 'small',
     modal = true,
+    separator = false,
     open: initialOpen = false,
     defaultOpen: initialDefaultOpen = false,
   } = props;
@@ -82,5 +83,6 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     open,
     position,
     size,
+    separator,
   };
 };

@@ -256,6 +256,16 @@ import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
+import { Field } from '@fluentui/react-field';
+import { fieldClassNames } from '@fluentui/react-field';
+import { FieldContextProvider } from '@fluentui/react-field';
+import { FieldContextValue } from '@fluentui/react-field';
+import { FieldContextValues } from '@fluentui/react-field';
+import { FieldControlProps } from '@fluentui/react-field';
+import { FieldControlPropsOptions } from '@fluentui/react-field';
+import { FieldProps } from '@fluentui/react-field';
+import { FieldSlots } from '@fluentui/react-field';
+import { FieldState } from '@fluentui/react-field';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
@@ -492,6 +502,7 @@ import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDivider_unstable } from '@fluentui/react-divider';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
+import { renderField_unstable } from '@fluentui/react-field';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -831,6 +842,11 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useField_unstable } from '@fluentui/react-field';
+import { useFieldContext_unstable } from '@fluentui/react-field';
+import { useFieldContextValues_unstable } from '@fluentui/react-field';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
@@ -1491,6 +1507,26 @@ export { DropdownState }
 
 export { DurationTokens }
 
+export { Field }
+
+export { fieldClassNames }
+
+export { FieldContextProvider }
+
+export { FieldContextValue }
+
+export { FieldContextValues }
+
+export { FieldControlProps }
+
+export { FieldControlPropsOptions }
+
+export { FieldProps }
+
+export { FieldSlots }
+
+export { FieldState }
+
 export { FluentProvider }
 
 export { fluentProviderClassNames }
@@ -1962,6 +1998,8 @@ export { renderDivider_unstable }
 export { renderDropdown_unstable }
 
 export { RendererProvider }
+
+export { renderField_unstable }
 
 export { renderFluentProvider_unstable }
 
@@ -2640,6 +2678,16 @@ export { useDividerStyles_unstable }
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useField_unstable }
+
+export { useFieldContext_unstable }
+
+export { useFieldContextValues_unstable }
+
+export { useFieldControlProps_unstable }
+
+export { useFieldStyles_unstable }
 
 export { useFluent }
 
