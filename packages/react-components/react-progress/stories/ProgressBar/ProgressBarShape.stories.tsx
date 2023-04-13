@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ProgressBar, makeStyles, shorthands } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, ProgressBar, makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

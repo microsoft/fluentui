@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Input, makeResetStyles, tokens } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, Input, makeResetStyles, tokens } from '@fluentui/react-components';
 
 const useStackClassName = makeResetStyles({
   display: 'flex',

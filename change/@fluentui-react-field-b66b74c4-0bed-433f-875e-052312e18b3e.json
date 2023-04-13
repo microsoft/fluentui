@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "chore: Remove utilities for deprecated shim InputField, etc. components",
+  "type": "minor",
+  "comment": "feat: Release Field component as stable",
   "packageName": "@fluentui/react-field",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
