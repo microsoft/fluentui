@@ -3,32 +3,21 @@ import { Drawer } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-components';
 
 export const Default = () => {
-  const [leftOpen, setLeftOpen] = React.useState(false);
-  const [rightOpen, setRightOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <div>
-      <Drawer position="left" open={leftOpen} onOpenChange={(_, { open }) => setLeftOpen(open)}>
-        <Button appearance="outline" onClick={() => setLeftOpen(false)}>
+      <Drawer position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+        <Button appearance="outline" onClick={() => setIsOpen(false)}>
           Close
         </Button>
-        <p>Left Drawer</p>
+
+        <p>Drawer content</p>
       </Drawer>
 
-      <Button appearance="primary" onClick={() => setLeftOpen(true)}>
-        Toggle left
+      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+        Toggle
       </Button>
-
-      <Button appearance="primary" onClick={() => setRightOpen(true)}>
-        Toggle right
-      </Button>
-
-      <Drawer position="right" open={rightOpen} onOpenChange={(_, { open }) => setRightOpen(open)}>
-        <Button appearance="outline" onClick={() => setRightOpen(false)}>
-          Close
-        </Button>
-        <p>Right Drawer</p>
-      </Drawer>
     </div>
   );
 };

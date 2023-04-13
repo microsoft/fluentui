@@ -425,11 +425,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     let descendantText = undefined;
 
-    if (isOpen && selectedIndices.length) {
-      descendantText = options[selectedIndices[0]]?.id ?? this._id + '-list' + selectedIndices[0];
-    } else if (isOpen && this._hasFocus() && newCurrentPendingValueValidIndex !== -1) {
+    if (isOpen && this._hasFocus() && newCurrentPendingValueValidIndex !== -1) {
       descendantText =
         options[newCurrentPendingValueValidIndex].id ?? this._id + '-list' + newCurrentPendingValueValidIndex;
+    } else if (isOpen && selectedIndices.length) {
+      descendantText = options[selectedIndices[0]]?.id ?? this._id + '-list' + selectedIndices[0];
     }
 
     if (descendantText !== this.state.ariaActiveDescendantValue) {
