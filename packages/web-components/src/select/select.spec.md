@@ -37,9 +37,9 @@ None
 
 ### Slots
 
-- default: The dfeault for `option` and `optgroup` elements. As these are the only elements supported in the native `select` control, we might consider filtering out other elements.
+- default: The dfeault for `option` and `optgroup` elements. As these are the only elements supported in the native `select` control, we will filter out any other elements that are slotted.
 - icon: the icon, typically a down arrow
-- label: the label for the select
+- label: the label for the select, optional
 - Example usage for default slot
   ```HTML
   <fluent-select>
