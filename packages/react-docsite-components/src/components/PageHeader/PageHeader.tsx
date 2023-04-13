@@ -84,22 +84,25 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
         {pageSubTitle && <span className={styles.subTitle}>{pageSubTitle}</span>}
       </h1>
       {versionSwitcherDefinition && (
-        <ActionButton
-          className={styles.versionSelector}
-          menuProps={{
-            gapSpace: 3,
-            beakWidth: 8,
-            isBeakVisible: true,
-            shouldFocusOnMount: true,
-            items: versionSwitcherDefinition.versions,
-            directionalHint: DirectionalHint.bottomCenter,
-            styles: {
-              root: { minWidth: 100 },
-            },
-          }}
-        >
-          {versionSwitcherDefinition.selectedMajorName}
-        </ActionButton>
+        <>
+          <a href="https://react.fluentui.dev/">Fluent UI React v9</a>
+          <ActionButton
+            className={styles.versionSelector}
+            menuProps={{
+              gapSpace: 3,
+              beakWidth: 8,
+              isBeakVisible: true,
+              shouldFocusOnMount: true,
+              items: versionSwitcherDefinition.versions,
+              directionalHint: DirectionalHint.bottomCenter,
+              styles: {
+                root: { minWidth: 100 },
+              },
+            }}
+          >
+            {versionSwitcherDefinition.selectedMajorName}
+          </ActionButton>
+        </>
       )}
     </header>
   );
