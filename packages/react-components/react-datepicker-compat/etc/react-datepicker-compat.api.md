@@ -345,7 +345,7 @@ export const TimeConstants: {
 };
 
 // @public
-export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLInputElement>) => DatePickerState;
+export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;
 
 // @public
 export const useDatePickerStyles_unstable: (state: DatePickerState) => DatePickerState;
