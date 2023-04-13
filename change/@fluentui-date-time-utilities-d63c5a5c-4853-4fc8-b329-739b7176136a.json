@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Refactored getDateFromTimeSelection variable names.",
+  "comment": "chore: Refactored getDateFromTimeSelection variable names.",
   "packageName": "@fluentui/date-time-utilities",
   "email": "jamwu@microsoft.com",
   "dependentChangeType": "patch"
