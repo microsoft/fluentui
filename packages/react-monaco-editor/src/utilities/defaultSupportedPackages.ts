@@ -70,6 +70,7 @@ if (typesContext) {
     { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@fluentui/theme', loadTypes },
     { packageName: '@fluentui/utilities', loadTypes },
+    { packageName: '@fluentui/react-charting', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
