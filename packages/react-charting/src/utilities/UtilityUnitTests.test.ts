@@ -1,6 +1,8 @@
 import * as utils from './utilities';
 import * as colors from './colors';
 
+// Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
+
 describe('Unit test to convert data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
     expect(utils.convertToLocaleString(undefined)).toBeUndefined();
