@@ -52,13 +52,21 @@ export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
    * @defaultvalue true
    */
   modal?: boolean;
+
+  /**
+   * Whether the drawer has a separator line.
+   * This prop only works when `type` is `inline`.
+   *
+   * @defaultvalue false
+   */
+  separator?: boolean;
 } & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
 
 /**
  * State used in rendering Drawer
  */
 export type DrawerState = ComponentState<DrawerSlots> &
-  Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size'>> & {
+  Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size' | 'separator'>> & {
     dialog: DialogProps;
     dialogSurface: DialogSurfaceProps;
   };
