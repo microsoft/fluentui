@@ -925,6 +925,7 @@ import { useProgressBarStyles_unstable } from '@fluentui/react-progress';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
@@ -2843,6 +2844,8 @@ export { useRadio_unstable }
 export { useRadioGroup_unstable }
 
 export { useRadioGroupContext_unstable }
+
+export { useRadioGroupContextValue_unstable }
 
 export { useRadioGroupContextValues }
 
